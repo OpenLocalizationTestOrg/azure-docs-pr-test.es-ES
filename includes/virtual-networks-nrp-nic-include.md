@@ -1,30 +1,30 @@
 ## <a name="nic"></a>NIC
-Un recurso de tarjeta de interfaz de red (NIC) proporciona conectividad de red a una subred existente en un recurso de red virtual. Aunque puede crear un NIC como un objeto independiente, debe asociarlo a otro objeto para, realmente, proporcionar conectividad. Una NIC se puede usar para conectar una VM a una subred, a una dirección IP pública o a un equilibrador de carga.  
+Un recurso de tarjeta (NIC) de interfaz de red proporciona conectividad tooan existente subred en un recurso de red virtual. Aunque puede crear una NIC como un objeto independiente, necesita tooassociate se tooanother objeto tooactually proporcionar conectividad. Una NIC puede ser tooconnect usa una subred VM tooa, una dirección IP pública o un equilibrador de carga.  
 
 | Propiedad | Descripción | Valores de ejemplo |
 | --- | --- | --- |
-| **virtualMachine** |VM a la que se asocia la NIC. |/subscriptions/{guid}/../Microsoft.Compute/virtualMachines/vm1 |
-| **macAddress** |Dirección MAC de la NIC |cualquier valor entre 4 y 30 |
-| **networkSecurityGroup** |Grupo de seguridad de red asociado a la NIC |/subscriptions/{guid}/../Microsoft.Network/networkSecurityGroups/myNSG1 |
-| **dnsSettings** |Configuración de DNS para la NIC |Consulte [PIP](#Public-IP-address) |
+| **virtualMachine** |Hola VM NIC está asociado. |/subscriptions/{guid}/../Microsoft.Compute/virtualMachines/vm1 |
+| **macAddress** |Dirección MAC para hello NIC |cualquier valor entre 4 y 30 |
+| **networkSecurityGroup** |NSG asociados toohello NIC |/subscriptions/{guid}/../Microsoft.Network/networkSecurityGroups/myNSG1 |
+| **dnsSettings** |Configuración de DNS para hello NIC |Consulte [PIP](#Public-IP-address) |
 
-La tarjeta de interfaz de red, o NIC, representa una interfaz de red que se puede asociar a una máquina virtual (VM). Una máquina virtual puede tener una o varias NIC.
+Una tarjeta de interfaz de red o NIC, representa una interfaz de red que puede ser la máquina virtual (VM) de tooa asociado. Una máquina virtual puede tener una o varias NIC.
 
 ![NIC en una sola máquina virtual](./media/resource-groups-networking/Figure3.png)
 
 ### <a name="ip-configurations"></a>Configuraciones IP
-Las NIC tienen un objeto secundario llamado **ipConfigurations** que contiene las propiedades siguientes:
+NIC tienen un objeto secundario denominado **ipConfigurations** que contiene Hola propiedades siguientes:
 
 | Propiedad | Descripción | Valores de ejemplo |
 | --- | --- | --- |
-| **subnet** |Subred a la que está conectada la NIC |/subscriptions/{guid}/../Microsoft.Network/virtualNetworks/myvnet1/subnets/mysub1 |
-| **privateIPAddress** |Dirección IP de la NIC en la subred |10.0.0.8 |
+| **subnet** |Hola de subred NIC está conectada a. |/subscriptions/{guid}/../Microsoft.Network/virtualNetworks/myvnet1/subnets/mysub1 |
+| **privateIPAddress** |Dirección IP para hello NIC en la subred de Hola |10.0.0.8 |
 | **privateIPAllocationMethod** |Método de asignación de direcciones IP |Dynamic o Static |
-| **enableIPForwarding** |Si la NIC se puede usar para el enrutamiento |true o false |
-| **primary** |Si la NIC es la NIC principal para la VM |true o false |
-| **publicIPAddress** |PIP asociado a la NIC. |vea [Configuración de DNS](#DNS-settings) |
-| **loadBalancerBackendAddressPools** |Grupos de direcciones de back-end a los que se asocia la NIC | |
-| **loadBalancerInboundNatRules** |Reglas NAT del equilibrador de carga de entrada a las que está asociada la NIC | |
+| **enableIPForwarding** |Si se puede usar Hola NIC para el enrutamiento |true o false |
+| **primary** |Si es Hola NIC Hola NIC principal para hello VM |true o false |
+| **publicIPAddress** |PIP asociada Hola NIC |vea [Configuración de DNS](#DNS-settings) |
+| **loadBalancerBackendAddressPools** |Hacer copia de Hola de grupos de dirección final que está asociado a la NIC | |
+| **loadBalancerInboundNatRules** |Entrada Hola de reglas NAT carga equilibrador A que NIC está asociado | |
 
 Dirección IP pública de ejemplo en formato JSON:
 
@@ -73,5 +73,5 @@ Dirección IP pública de ejemplo en formato JSON:
     }
 
 ### <a name="additional-resources"></a>Recursos adicionales
-* Lea la [documentación de referencia de la API de REST](https://msdn.microsoft.com/library/azure/mt163579.aspx) para obtener información sobre las NIC.
+* Hola de lectura [documentación de referencia de API de REST](https://msdn.microsoft.com/library/azure/mt163579.aspx) de NIC.
 

@@ -1,6 +1,6 @@
 ---
-title: Trabajos de copia de seguridad de StorSimple Snapshot Manager | Microsoft Docs
-description: "Describe cómo usar el complemento MMC de Administrador de instantáneas StorSimple para ver y administrar trabajos de copia de seguridad programados, actualmente en ejecución y completados."
+title: "trabajos de copia de seguridad de administrador de instantáneas aaaStorSimple | Documentos de Microsoft"
+description: "Describe cómo toouse Hola instantáneas de StorSimple Manager MMC complemento tooview y administrar trabajos de copia de seguridad programados, actualmente en ejecución y completados."
 services: storsimple
 documentationcenter: NA
 author: SharS
@@ -14,76 +14,76 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: v-sharos
-ms.openlocfilehash: 03e306b62250f2bb033cc14e856a59760b5406c3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3dba0a2aa527d17d67130f537bcdce5722b05a76
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-storsimple-snapshot-manager-to-view-and-manage-backup-jobs"></a>Uso de Administrador de instantáneas StorSimple para ver y administrar trabajos de copia de seguridad
+# <a name="use-storsimple-snapshot-manager-tooview-and-manage-backup-jobs"></a>Use el Administrador de instantáneas StorSimple tooview y administrar los trabajos de copia de seguridad
 
 ## <a name="overview"></a>Información general
-En el panel **Ámbito**, El nodo **Trabajos** muestra las tareas de copia de seguridad **Programada**, **Últimas 24 horas** y **En ejecución** que se han iniciado de forma interactiva o mediante una directiva configurada. 
+Hola **trabajos** nodo Hola **ámbito** panel muestra hello **programada**, **últimas 24 horas**, y **ejecutando**copia de seguridad de las tareas que inició interactivamente o mediante una directiva configurada. 
 
-Este tutorial explica cómo se puede usar el nodo **Trabajos** para mostrar información sobre los trabajos de copia de seguridad programados, recientes y en ejecución. (La lista de trabajos y la información correspondiente aparecen en el panel **Resultados**). Además, puede es posible hacer clic en un trabajo de la lista y ver un menú contextual que enumera las acciones disponibles.
+Este tutorial le explica cómo puede usar hello **trabajos** información del nodo toodisplay acerca de los trabajos de copia de seguridad programadas, recientes y que se está ejecutando. (lista de Hola de trabajos e información correspondiente aparece en hello **resultados** panel.) Además, puede es posible hacer clic en un trabajo de la lista y ver un menú contextual que enumera las acciones disponibles.
 
 ## <a name="view-scheduled-jobs"></a>Visualización de los trabajos programados
-Use el procedimiento siguiente para ver los trabajos de copia de seguridad programados.
+Hola uso siguiendo el procedimiento tooview programa trabajos de copia de seguridad.
 
-#### <a name="to-view-scheduled-jobs"></a>Para ver los trabajos programados
-1. Haga clic en el icono del escritorio para iniciar Administrador de instantáneas StorSimple. 
-2. En el panel **Ámbito**, expanda el nodo **Trabajos** y, después, haga clic en **Programado**. La siguiente información aparece en el panel **Resultados** :
+#### <a name="tooview-scheduled-jobs"></a>tooview programar trabajos
+1. Haga clic en el icono del escritorio de hello toostart Administrador de instantáneas StorSimple. 
+2. Hola **ámbito** panel, expanda hello **trabajos** nodo y haga clic en **programada**. Hello siguiente información aparece en hello **resultados** panel:
    
-   * **Nombre** : el nombre de la instantánea programada
-   * **Siguiente ejecución** : la fecha y hora de la siguiente instantánea programada
-   * **Última ejecución** : la fecha y hora de la instantánea programada más reciente
+   * **Nombre** : hello nombre de instantánea programada Hola
+   * **A continuación ejecute** : Hola fecha y hora de la siguiente instantánea programada de Hola
+   * **Última ejecución** : Hola fecha y hora de instantánea programada más reciente de Hola
      
      > [!NOTE]
-     > En las instantáneas que se realizan una sola vez, los valores de **Siguiente ejecución** y **Última ejecución** serán iguales.
+     > Para las instantáneas sola una sola vez, Hola **siguiente ejecución** y **última ejecución** será Hola igual.
      
      ![Trabajos de copia de seguridad programados](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_scheduled.png) 
-3. Para realizar acciones adicionales en un trabajo específico, haga clic con el botón derecho en el nombre del trabajo en el panel **Resultados** y realice su selección entre las opciones de menú.
+3. tooperform acciones adicionales en un trabajo específico, haga clic en el nombre del trabajo Hola Hola **resultados** panel y seleccione Hola opciones del menú.
 
 ## <a name="view-recent-jobs"></a>Visualización de los trabajos recientes
-Utilice el procedimiento siguiente para ver la copia de seguridad y restaurar trabajos que se completaron en las últimas 24 horas.
+Usar hello después de la copia de seguridad de procedimiento tooview y restaura los trabajos que se completaron en hello últimas 24 horas.
 
-#### <a name="to-view-recent-jobs"></a>Para ver los trabajos recientes
-1. Haga clic en el icono del escritorio para iniciar Administrador de instantáneas StorSimple.
-2. En el panel **Ámbito**, expanda el nodo **Trabajos** y, luego, haga clic en **Últimas 24 horas**. El panel **Resultados** muestra los trabajos de copia de seguridad de las últimas 24 horas (hasta un máximo de 64 trabajos). La siguiente información aparece en el panel **Resultados**, según las opciones de **Vista** que se hayan especificado:
+#### <a name="tooview-recent-jobs"></a>trabajos recientes tooview
+1. Haga clic en el icono del escritorio de hello toostart Administrador de instantáneas StorSimple.
+2. Hola **ámbito** panel, expanda hello **trabajos** nodo y haga clic en **últimas 24 horas**. Hola **resultados** panel muestra los trabajos de copia de seguridad para hello últimas 24 horas (tooa máximo de 64 trabajos). Hello siguiente información aparece en hello **resultados** panel, dependiendo de hello **vista** opciones especificadas:
    
-   * **Nombre** : el nombre de la instantánea programada.
-   * **Iniciado** : fecha y hora del comienzo de la instantánea.
-   * **Detenido** : fecha y hora de la finalización o la interrupción de la instantánea.
-   * **Transcurrido**: la cantidad de tiempo entre los horarios de **Iniciado** y **Detenido**.
-   * **Estado** : el estado del trabajo completado recientemente. **Éxito** indica que la copia de seguridad se creó correctamente. **Error** indica que el trabajo no se ejecutó correctamente.
-   * **Información** : el motivo del error.
-   * **Bytes procesados (MB)** : la cantidad de datos del grupo de volúmenes que se procesó (en MB). 
+   * **Nombre** : hello nombre de instantánea programada Hola.
+   * **Iniciar** : Hola fecha y la hora de inicio de instantánea de Hola.
+   * **Detenido** : Hola fecha y la hora cuando instantánea Hola se finalizó o canceló.
+   * **Transcurrido** : Hola período de tiempo entre hello **iniciado** y **detenido** veces.
+   * **Estado** : Hola estado de hello completado recientemente trabajo. **Éxito** indica que copia de seguridad de Hola se creó correctamente. **No se pudo** indica que el trabajo de hello no se ha ejecutado correctamente.
+   * **Información** : Hola motivo Hola error.
+   * **Bytes procesados (MB)** : cantidad de Hola de datos del grupo de volúmenes de Hola que se procesó (en MB). 
      
-     ![Trabajos ejecutados en las últimas 24 horas](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_Last_24_hours.png) 
-3. Para realizar acciones adicionales en un trabajo específico, haga clic con el botón derecho en el nombre del trabajo en el panel **Resultados** y realice su selección entre las opciones de menú.
+     ![Trabajos ejecutados en hello últimas 24 horas](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_Last_24_hours.png) 
+3. tooperform acciones adicionales en un trabajo específico, haga clic en el nombre del trabajo Hola Hola **resultados** panel y seleccione Hola opciones del menú.
    
     ![Eliminación de un trabajo](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Delete_backup.png)
 
 ## <a name="view-currently-running-jobs"></a>Visualización de los trabajos en ejecución
-Utilice el procedimiento siguiente para ver los trabajos que se están ejecutando en el momento presente.
+Usar hello después de los trabajos de tooview de procedimiento que se están ejecutando actualmente.
 
-#### <a name="to-view-currently-running-jobs"></a>Para ver los trabajos en ejecución
-1. Haga clic en el icono del escritorio para iniciar Administrador de instantáneas StorSimple.
-2. En el panel **Ámbito**, expanda el nodo **Trabajos** y haga clic en **En ejecución**. Dependiendo de las opciones de **Vista** que se especifiquen, aparece la siguiente información en el panel **Resultados**:
+#### <a name="tooview-currently-running-jobs"></a>tooview trabajos en ejecución
+1. Haga clic en el icono del escritorio de hello toostart Administrador de instantáneas StorSimple.
+2. Hola **ámbito** panel, expanda hello **trabajos** nodo y haga clic en **ejecutando**. Función hello **vista** opciones que se especifiquen, Hola siguiente información aparece en hello **resultados** panel:
    
-   * **Nombre** : el nombre de la instantánea programada.
-   * **Iniciado** : fecha y hora del comienzo de la instantánea.
-   * **Punto de control** : la acción actual de la copia de seguridad.
-   * **Estado** : el porcentaje de finalización.
-   * **Transcurrido** : la cantidad de tiempo que ha transcurrido desde que comenzó la copia de seguridad. 
-   * **Rendimiento medio (MB)** : la relación del total de bytes de datos procesados con el tiempo total necesario para realizar el procesamiento (MB).
+   * **Nombre** : hello nombre de instantánea programada Hola.
+   * **Iniciar** : Hola fecha y la hora de inicio de instantánea de Hola.
+   * **Punto de comprobación** : Hola acción actual de copia de seguridad de Hola.
+   * **Estado** : Hola porcentaje de finalización.
+   * **Transcurrido** : cantidad de Hola de tiempo que ha transcurrido desde que comenzó la copia de seguridad de Hola. 
+   * **Rendimiento medio (MB)** : proporción del total de bytes de datos procesados toothat de tiempo total de procesamiento (MB).
    * **Bytes procesados (MB)** : total de bytes de los datos procesados (en MB).
-   * **Bytes escritos (MB)** : total de bytes de los datos escritos (en MB). Incluye los datos, así como los metadatos y, por tanto, es normalmente mayor que los bytes procesados.
+   * **Bytes escritos (MB)** : total de bytes de los datos escritos (en MB). Incluye datos de hello así como los metadatos de hello y, por lo que es normalmente mayor que Hola Bytes procesados.
      
      ![Trabajos en ejecución](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_running.png)
-3. Para realizar acciones adicionales en un trabajo específico, haga clic con el botón derecho en el nombre del trabajo en el panel **Resultados** y realice su selección entre las opciones de menú.
+3. tooperform acciones adicionales en un trabajo específico, haga clic en el nombre del trabajo Hola Hola **resultados** panel y seleccione Hola opciones del menú.
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Obtenga más información sobre el [uso de Snapshot Manager de StorSimple para administrar la solución de StorSimple](storsimple-snapshot-manager-admin.md).
-* Obtenga más información sobre el [uso de Snapshot Manager de StorSimple para administrar el catálogo de copias de seguridad](storsimple-snapshot-manager-manage-backup-catalog.md).
+* Obtenga información acerca de cómo demasiado[usar Administrador de instantáneas StorSimple tooadminister su solución de StorSimple](storsimple-snapshot-manager-admin.md).
+* Obtenga información acerca de cómo demasiado[usar el catálogo de copia de seguridad de administrador de instantáneas StorSimple toomanage hello](storsimple-snapshot-manager-manage-backup-catalog.md).
 

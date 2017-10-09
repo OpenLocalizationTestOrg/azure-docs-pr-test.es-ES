@@ -1,6 +1,6 @@
 ---
-title: "Adición de un firewall de aplicaciones web en Azure Security Center | Microsoft Docs"
-description: "En este documento se muestra cómo implementar las recomendaciones de agregar un firewall de aplicaciones web y de finalizar la protección de la aplicación de Azure Security Center."
+title: aaaAdd un servidor de aplicaciones web en el centro de seguridad de Azure | Documentos de Microsoft
+description: "Este documento muestra cómo tooimplement Hola recomendaciones de Azure Security Center ** agregar un servidor de seguridad de aplicación web ** y ** finalizar la protección de aplicación **."
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -14,69 +14,69 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2017
 ms.author: terrylan
-ms.openlocfilehash: d04a07237029953d8a9b20704d85e852ce45d867
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bff0aa2a5c6e0dde23396f93de52abe295053581
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="add-a-web-application-firewall-in-azure-security-center"></a>Adición de un firewall de aplicaciones web en el Centro de seguridad de Azure
-Azure Security Center puede recomendarle agregar Firewall de aplicaciones web (WAF) de un asociado de Microsoft para proteger las aplicaciones web. Este documento guía a través de un ejemplo de cómo aplicar esta recomendación.
+Centro de seguridad de Azure puede recomienda agregar un servidor de aplicaciones web (WAFS) desde un toosecure de partner de Microsoft las aplicaciones web. Este documento le guía a través de un ejemplo de cómo tooapply esta recomendación.
 
 Se muestra una recomendación WAFS para cualquier IP pública (dirección IP de nivel de instancia o con equilibrio de carga) que tiene un grupo de seguridad de red asociado con puertos abiertos web entrantes (80 y 443).
 
-Security Center le recomendará que aprovisione un WAF para defenderse de ataques dirigidos a las aplicaciones web que se encuentran tanto en las máquinas virtuales como en App Service Environment. Un entorno de App Service es una opción de plan de servicio [Premium](https://azure.microsoft.com/pricing/details/app-service/) de Azure App Service que proporciona un entorno plenamente aislado y dedicado para ejecutar de forma segura las aplicaciones de Azure App Service. Para más información acerca de ASE, consulte [Documentación de App Service Environment](../app-service/app-service-app-service-environments-readme.md).
+Centro de seguridad, se recomienda que aprovisionar un toohelp WAFS defenderse contra los ataques que se dirige a las aplicaciones web en máquinas virtuales y en el entorno del servicio de aplicaciones. Un entorno de App Service es una opción de plan de servicio [Premium](https://azure.microsoft.com/pricing/details/app-service/) de Azure App Service que proporciona un entorno plenamente aislado y dedicado para ejecutar de forma segura las aplicaciones de Azure App Service. toolearn más información acerca de ASE, vea hello [documentación del entorno de servicio de aplicación](../app-service/app-service-app-service-environments-readme.md).
 
 > [!NOTE]
-> En este documento se presenta el servicio mediante una implementación de ejemplo.  Este documento no es una guía paso a paso.
+> Este documento presentan servicio hello mediante el uso de una implementación de ejemplo.  Este documento no es una guía paso a paso.
 >
 >
 
-## <a name="implement-the-recommendation"></a>Implementación de la recomendación
-1. En la hoja **Recomendaciones**, seleccione **Secure web application using web application firewall** (Proteger la aplicación web con el firewall de aplicaciones web).
+## <a name="implement-hello-recommendation"></a>Implementar la recomendación de Hola
+1. Hola **recomendaciones** hoja, seleccione **proteger la aplicación web con el servidor de aplicaciones web**.
    ![Aplicación web segura][1]
-2. En la hoja **Proteger la aplicación web con Firewall de aplicaciones web** , seleccione una aplicación web. Se abre la hoja **Add a Web Application Firewall** (Agregar un Firewall de aplicaciones web).
+2. Hola **proteger las aplicaciones web utilizando el servidor de aplicaciones web** hoja, seleccione una aplicación web. Hola **agregar un servidor de seguridad de la aplicación Web** abre la hoja.
    ![Add a web application firewall][2]
-3. Puede elegir usar un firewall de aplicaciones web existentes, si está disponible, o puede crear uno nuevo. En este ejemplo no hay ningún WAF existente, por lo que vamos a crear uno.
-4. Para crear un nuevo WAF, seleccione una solución de la lista de partners integrados. En ese ejemplo, seleccionaremos **Firewall de aplicaciones web de Barracuda**.
-5. Se abrirá la hoja **Firewall de aplicaciones web de Barracuda** , que le proporcionará información sobre la solución del partner. Seleccione **Crear** en la hoja de información.
+3. Puede elegir a toouse un servidor de aplicaciones web existentes si está disponible o puede crear uno nuevo. En este ejemplo no hay ningún WAF existente, por lo que vamos a crear uno.
+4. toocreate un WAFS, seleccione una solución de lista de Hola de socios integrados. En ese ejemplo, seleccionaremos **Firewall de aplicaciones web de Barracuda**.
+5. Hola **Firewall de aplicación Web de Barracuda** hoja abre, proporciona información sobre solución de socios de Hola. Seleccione **crear** en la hoja de información de Hola.
 
    ![Hoja de información del firewall][3]
 
-6. Se abrirá la hoja **Nuevo firewall de aplicaciones web** donde puede **configurar la máquina virtual** y proporcionar **información sobre WAF**. Seleccione **Configuración de VM**.
-7. En la hoja **Configuración de VM** , se ingresa la información requerida para poner en marcha la máquina virtual que ejecutará el WAF.
+6. Hola **nuevo Firewall de aplicación Web** se abre la hoja, donde puede realizar **configuración de máquina virtual** pasos y proporcionar **WAFS información**. Seleccione **Configuración de VM**.
+7. Hola **configuración de máquina virtual** hoja, especifique información toospin requiere una máquina virtual de Hola que ejecuta Hola WAFS.
    ![VM configuration][4]
-8. Vuelva a la hoja **Nuevo firewall de aplicaciones web** y seleccione **Información del WAF**. En la hoja **Información de WAF** , configure el WAF. El paso 7 le permite configurar la máquina virtual en que se ejecutará el WAF y el paso 8 le permite aprovisionar el WAF.
+8. Devolver toohello **nuevo Firewall de aplicación Web** hoja y seleccione **WAFS información**. Hola **WAFS información** hoja, configurar WAFS Hola propio. Paso 7 le permite tooconfigure Hola virtual machine en qué Hola WAFS se ejecuta y el paso 8 permite tooprovision Hola WAFS propio.
 
 ## <a name="finalize-application-protection"></a>Finalización de la protección de la aplicación
-1. Vuelva a la hoja **Recomendaciones** . Después de crear el WAF, se generó una entrada nueva, denominada **Finalize application protection**(Finalizar la protección de la aplicación). Dicha le permite saber qué se necesita para completar el proceso de conectar el WAF dentro de la Red virtual de Azure, con el fin de que pueda proteger la aplicación.
+1. Devolver toohello **recomendaciones** hoja. Se genera una nueva entrada después de crear WAFS hello, denominado **finalizar la protección de la aplicación**. Esta entrada le permite saber que necesita el proceso de hello toocomplete de transmitiendo realmente Hola WAFS dentro de hello red Virtual de Azure para que puedan proteger la aplicación hello.
 
    ![Finalización de la protección de la aplicación][5]
 
-2. Seleccione **Finalize application protection**(Finalizar la protección de la aplicación). Se abre una nueva hoja. En ella puede ver que hay una aplicación web que necesita que su tráfico se vuelva a enrutar.
-3. Seleccione la aplicación web. Se abre una hoja en la que encontrará los pasos necesarios para finalizar la configuración del Firewall de aplicaciones web. Complete los pasos y, a continuación, seleccione la opción de **restringir tráfico**. Después, Security Center realizará las conexiones automáticamente.
+2. Seleccione **Finalize application protection**(Finalizar la protección de la aplicación). Se abre una nueva hoja. Puede ver que hay una aplicación web que necesita toohave su tráfico vuelve a enrutar.
+3. Seleccione la aplicación web de hello. Una hoja que se incluyen los pasos para finalizar la instalación de servidor de seguridad de aplicación web de hello abre. Complete los pasos de hello y, a continuación, seleccione **restringir el tráfico**. Centro de seguridad, a continuación, Hola cableado telefónico para usted.
 
    ![Restringir tráfico][6]
 
 > [!NOTE]
-> Puede proteger varias aplicaciones web del Centro de seguridad si agrega estas aplicaciones a las implementaciones de WAF existentes.
+> Puede proteger varias aplicaciones web en el centro de seguridad mediante la adición de estas implementaciones de WAFS aplicaciones tooyour existentes.
 >
 >
 
-Los registros de ese WAF ahora están totalmente integrados. El Centro de seguridad puede comenzar a recopilar y analizar automáticamente los registros, con el fin de poder exponer las alertas de seguridad importantes.
+registros de Hola desde ese WAFS ahora están totalmente integrados. Centro de seguridad puede iniciar automáticamente recopilar y analizar los registros de Hola para que puede aparecer tooyou de alertas de seguridad importante.
 
 ## <a name="next-steps"></a>Pasos siguientes
-En este documento, mostramos cómo implementar la recomendación "Adición de una aplicación web" del Centro de seguridad. Para obtener más información sobre cómo configurar un firewall de aplicaciones web, vea lo siguiente:
+Este documento se ha explicado cómo tooimplement Hola recomendación de centro de seguridad "Agregar una aplicación web". toolearn más información acerca de cómo configurar un firewall de aplicación web, vea Hola recursos siguientes:
 
 * [Configuración de un firewall de aplicaciones web (WAF) para entornos del Servicio de aplicaciones](../app-service-web/app-service-app-service-environment-web-application-firewall.md)
 
-Para más información sobre el Centro de seguridad, consulte los siguientes recursos:
+toolearn más información acerca del centro de seguridad, vea Hola recursos siguientes:
 
-* [Establecimiento de directivas de seguridad en Azure Security Center](security-center-policies.md) : aprenda a configurar directivas de seguridad para las suscripciones y los grupos de recursos de Azure.
-* [Supervisión del estado de seguridad en Azure Security Center](security-center-monitoring.md) : obtenga información sobre cómo supervisar el mantenimiento de los recursos de Azure.
-* [Administración y respuesta a las alertas de seguridad en Azure Security Center](security-center-managing-and-responding-alerts.md) : aprenda a administrar y responder a alertas de seguridad.
+* [Configuración de directivas de seguridad de Azure Security Center](security-center-policies.md) : Obtenga información acerca de cómo tooconfigure las directivas de seguridad para los grupos de recursos y las suscripciones de Azure.
+* [Supervisión de estado de seguridad de Azure Security Center](security-center-monitoring.md) : Obtenga información acerca de cómo toomonitor Hola estado de los recursos de Azure.
+* [Toosecurity de administración y de que responda las alertas en el centro de seguridad de Azure](security-center-managing-and-responding-alerts.md) : Obtenga información acerca de cómo las alertas de toosecurity toomanage y que responden.
 * [Administración de recomendaciones de seguridad en Azure Security Center](security-center-recommendations.md) : recomendaciones que le ayudan a proteger los recursos de Azure.
-* [Preguntas más frecuentes sobre Azure Security Center](security-center-faq.md) : encuentre las preguntas más frecuentes sobre el uso del servicio.
+* [Preguntas más frecuentes de Azure Security Center](security-center-faq.md) --buscar preguntas más frecuentes sobre el uso de servicio de Hola.
 * [Blog de seguridad de Azure](http://blogs.msdn.com/b/azuresecurity/) : encuentre publicaciones de blog sobre el cumplimiento y la seguridad de Azure.
 
 <!--Image references-->

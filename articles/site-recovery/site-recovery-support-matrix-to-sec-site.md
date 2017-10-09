@@ -1,6 +1,6 @@
 ---
-title: "Matriz de compatibilidad de la replicación en un sitio secundario con Azure Site Recovery | Microsoft Docs"
-description: Resumen de los sistemas operativos y los componentes compatibles con Azure Site Recovery.
+title: "matriz de aaaSupport para el sitio secundario de replicación tooa con Azure Site Recovery | Documentos de Microsoft"
+description: Se recogen Hola admitida los sistemas operativos y los componentes de Azure Site Recovery
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 05/24/2017
 ms.author: raynew
-ms.openlocfilehash: db7ee5251f2e2016081e55ca4b295e284c8b08cf
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0b2bbc86aff52308d5a90a56d7a3ff4286877740
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="support-matrix-for-replication-to-a-secondary-site-with-azure-site-recovery"></a>Matriz de compatibilidad de la replicación en un sitio secundario con Azure Site Recovery
+# <a name="support-matrix-for-replication-tooa-secondary-site-with-azure-site-recovery"></a>Matriz de compatibilidad para el sitio secundario de replicación tooa con Azure Site Recovery
 
-En este artículo se resumen los elementos que se admiten cuando usa Azure Site Recovery para replicar en un sitio local secundario.
+Este artículo resume lo que se admite cuando se utiliza el sitio de Azure Site Recovery tooreplicate tooa local secundario.
 
 ## <a name="deployment-options"></a>Opciones de implementación
 
 **Implementación** | **Servidores físicos o de VMware** | **Hyper-V (con o sin SCVMM)**
 --- | --- | --- | ---
-**Portal de Azure** | Máquinas virtuales de VMware locales en sitios secundario de VMware.<br/><br/> Descargue la [Guía del usuario de InMage Scout](http://download.microsoft.com/download/E/0/8/E08B3BCE-3631-4CED-8E65-E3E7D252D06D/InMage_Scout_Standard_User_Guide_8.0.1.pdf) (no disponible en Azure Portal). | VM de Hyper-V en nubes VMM en una nube VMM secundaria local.<br></br> No se admite sin VMM  <br/><br/> Solo replicación de Hyper-V estándar. SAN no es compatible.
+**Portal de Azure** | Máquinas virtuales de VMware toosecondary VMware sitio local.<br/><br/> Descargar hello [Guía de usuario de InMage Scout](http://download.microsoft.com/download/E/0/8/E08B3BCE-3631-4CED-8E65-E3E7D252D06D/InMage_Scout_Standard_User_Guide_8.0.1.pdf) (no disponible en hello portal de Azure). | Máquinas virtuales de Hyper-V en la nube VMM secundaria de tooa de nubes VMM local.<br></br> No se admite sin VMM  <br/><br/> Solo replicación de Hyper-V estándar. SAN no es compatible.
 **Portal clásico** | Solo en el modo mantenimiento. No se pueden crear almacenes nuevos. | Solo en modo de mantenimiento<br></br> No se admite sin SCVMM.
 **PowerShell** | No compatible | Compatible<br></br> No se admite sin SCVMM.
 
@@ -49,20 +49,20 @@ En este artículo se resumen los elementos que se admiten cuando usa Azure Site 
 **Implementación** | **Soporte técnico**
 --- | ---
 **Servidor de máquina virtual de VMware o físico** | vCenter 5.5 o 6.0 (compatible solo con características de 5.5) 
-**Hyper-V (sin VMM)** | Configuración no admitida para la replicación en un sitio secundario
-**Hyper-V con VMM** | Windows Server 2016 y Windows Server 2012 R2 con las actualizaciones más recientes.<br/><br/> Los hosts de Windows Server 2016 deben administrarse mediante VMM 2016.
+**Hyper-V (sin VMM)** | No es una configuración admitida para la replicación de sitio secundario tooa
+**Hyper-V con VMM** | Windows Server 2016 y Windows Server 2012 R2 con las últimas actualizaciones de Hola.<br/><br/> Los hosts de Windows Server 2016 deben administrarse mediante VMM 2016.
 
 ## <a name="support-for-replicated-machine-os-versions"></a>Compatibilidad con las versiones de SO de las máquinas replicadas
-En la tabla siguiente se resume la compatibilidad con los sistemas operativos en los distintos escenarios de implementación que se encuentran cuando se usa Azure Site Recovery. Esta compatibilidad es aplicable a cualquier carga de trabajo que se ejecute en el SO mencionado.
+Hello en la tabla siguiente resume la compatibilidad de sistema operativo en varios escenarios de implementación encontrado durante el uso de Azure Site Recovery. Esta compatibilidad es aplicable para cualquier carga de trabajo que se ejecutan en hello menciona el sistema operativo.
 
 **Servidores físicos o de VMware** | **Hyper-V (con VMM)**
 --- | --- | ---
-Windows Server 2012 R2 de 64 bits, Windows Server 2012, Windows Server 2008 R2 con al menos SP1<br/><br/> Red Hat Enterprise Linux 6.7, 7.1 y 7.2 <br/><br/> CentOS 6.5, 6.6, 6.7, 7.0, 7.1 y 7.2 <br/><br/> Oracle Enterprise Linux 6.4 o 6.5 que ejecuten el kernel compatible de Red Hat o Unbreakable Enterprise Kernel Release 3 (UEK3) <br/><br/> SUSE Linux Enterprise Server 11 SP3 | Cualquier sistema operativo invitado [compatible con Hyper-V](https://technet.microsoft.com/library/mt126277.aspx)
+Windows Server 2012 R2 de 64 bits, Windows Server 2012, Windows Server 2008 R2 con al menos SP1<br/><br/> Red Hat Enterprise Linux 6.7, 7.1 y 7.2 <br/><br/> CentOS 6.5, 6.6, 6.7, 7.0, 7.1 y 7.2 <br/><br/> Oracle Enterprise Linux 6.4 o 6.5 ejecuta kernel compatible de Red Hat de Hola o separable Enterprise Kernel versión 3 (UEK3) <br/><br/> SUSE Linux Enterprise Server 11 SP3 | Cualquier sistema operativo invitado [compatible con Hyper-V](https://technet.microsoft.com/library/mt126277.aspx)
 
 >[!Note]
->Solo se pueden replicar las máquinas Linux con el siguiente almacenamiento: sistema de archivos (EXT3, ETX4, ReiserFS, XFS); software de múltiples rutas / asignador de dispositivos; administrador de volúmenes (LVM2).
+>Se pueden replicar sola máquinas de Linux con hello después de almacenamiento: filesystem (EXT3, ETX4, ReiserFS, XFS); Asignador de múltiples rutas de acceso de dispositivo de software; Administrador de volúmenes (LVM2).
 >No se admiten servidores físicos con almacenamiento de controlador HP CCISS.
->El sistema de archivos ReiserFS solo se admite en SUSE Linux Enterprise Server 11 SP3.
+>sistema de archivos de Hello ReiserFS solo se admite en SUSE Linux Enterprise Server 11 SP3.
 
 ## <a name="network-configuration"></a>Network configuration (Configuración de red)
 
@@ -103,7 +103,7 @@ Varias rutas (MPIO) | Sí | Sí
 **Configuración** | **Servidores físicos o de VMware** | **Hyper-V (con VMM)**
 --- | --- | ---
 VMDK | Sí | N/D
-VHD/VHDX | N/D | Sí (hasta 16 discos)
+VHD/VHDX | N/D | Sí (los discos de too16)
 VM de 2 generación | N/D | Sí
 Disco en clúster compartido | Sí  | No
 Disco cifrado | No | No
@@ -130,10 +130,10 @@ Migrar el almacenamiento, la red y las VM de Azure entre los grupos de recursos 
 **Name** | **Descripción** | **La versión más reciente** | **Detalles**
 --- | --- | --- | --- | ---
 **Proveedor de Azure Site Recovery** | Coordina las comunicaciones entre los servidores locales y Azure <br/><br/> Se instala en servidores VMM locales o en servidores de Hyper-V si no hay ningún servidor VMM | 5.1.19 ([disponible en el portal](http://aka.ms/downloaddra)) | [Características y correcciones más recientes](https://support.microsoft.com/kb/3155002)
-**Servicio de movilidad** | Coordina la replicación entre servidores VMware locales o servidores físicos y el sitio secundario<br/><br/> Se instala en cada VM de VMware o servidor físico que desea replicar  | N/D (disponible en el portal) | N/D
+**Servicio de movilidad** | Coordina la replicación entre servidores de VMware locales o servidores físicos y sitio secundario de Hola<br/><br/> Instalar en VM de VMware o en servidores físicos que desea tooreplicate  | N/D (disponible en el portal) | N/D
 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-- [Replicar las máquinas virtuales de Hyper-V en nubes VMM en una nube secundaria](site-recovery-vmm-to-vmm.md)
-- [Replicación de máquinas virtuales de VMware y servidores físicos en un sitio secundario](site-recovery-vmware-to-vmware.md)
+- [Replicar máquinas virtuales de Hyper-V en el sitio secundario de tooa de nubes VMM](site-recovery-vmm-to-vmm.md)
+- [Replicar máquinas virtuales de VMware y el sitio secundario de tooa de servidores físicos](site-recovery-vmware-to-vmware.md)

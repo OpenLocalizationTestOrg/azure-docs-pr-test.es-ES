@@ -1,4 +1,4 @@
-En este artículo se describe un conjunto de procedimientos probados para ejecutar una máquina virtual (VM) Windows en Azure, teniendo en cuenta la escalabilidad, disponibilidad, manejabilidad y seguridad.
+En este artículo se describe un conjunto de prácticas demostradas de ejecuta una máquina virtual (VM) de Windows en Azure, seguridad, disponibilidad, facilidad de uso y tooscalability de atención de pago.
 
 > [!NOTE]
 > Azure cuenta con dos modelos de implementación diferentes: [Azure Resource Manager][resource-manager-overview] y el clásico. En este artículo se utiliza el Administrador de recursos, que Microsoft recomienda para las implementaciones nuevas.
@@ -9,36 +9,36 @@ No se recomienda usar una sola máquina virtual para cargas de trabajo críticas
 
 ## <a name="architecture-diagram"></a>Diagrama de la arquitectura
 
-El aprovisionamiento de una máquina virtual en Azure implica más piezas en movimiento que la propia máquina virtual. Existen elementos de proceso, red y almacenamiento.
+Aprovisionamiento de una máquina virtual en Azure implica más partes móviles haya que simplemente Hola propia máquina virtual. Existen elementos de proceso, red y almacenamiento.
 
-> Se puede descargar un documento de Visio que incluye este diagrama de arquitectura, y que está disponible en el [Centro de descarga de Microsoft][visio-download]. Este diagrama está en la página "Compute - single VM".
+> Un documento de Visio que incluye este diagrama de arquitectura está disponible para su descarga desde hello [centro de descarga de Microsoft][visio-download]. Este diagrama es en hello "Proceso - VM única" página.
 >
 >
 
 ![[0]][0]
 
-* **Grupo de recursos.** Un [*grupo de recursos*][resource-manager-overview] es un contenedor que incluye recursos relacionados. Cree un grupo de recursos para contener los recursos de esta máquina virtual.
-* **Máquina virtual**. Puede aprovisionar una máquina virtual desde una lista de imágenes publicadas o desde un archivo de disco duro virtual (VHD) cargado en Azure Blob Storage.
-* **Disco del sistema operativo.** El disco del sistema operativo es un VHD almacenado en [Azure Storage][azure-storage]. Esto significa que persiste incluso si el equipo host deja de funcionar.
-* **Disco temporal.** La VM se crea con un disco temporal (la unidad `D:` de Windows). Este disco se almacena en una unidad física del equipo host. *No* se guarda en Azure Storage y podría desaparecer durante los reinicios y otros eventos del ciclo de vida de la máquina virtual. Use este disco solo para datos temporales, como archivos de paginación o de intercambio.
-* **Discos de datos.** Un [disco de datos][data-disk] es un VHD persistente usado para los datos de la aplicación. Los discos de datos se almacenan en Azure Storage, como el disco del sistema operativo.
+* **Grupo de recursos.** Un [*grupo de recursos*][resource-manager-overview] es un contenedor que incluye recursos relacionados. Crear un recurso de recursos del grupo toohold Hola de esta máquina virtual.
+* **Máquina virtual**. Puede aprovisionar una máquina virtual en una lista de imágenes publicadas o desde un archivo de disco duro virtual (VHD) que carga el almacenamiento de blobs de tooAzure.
+* **Disco del sistema operativo.** disco de SO Hello es un disco duro virtual almacenado en [el almacenamiento de Azure][azure-storage]. Esto significa que persiste incluso si el equipo host de hello deja de funcionar.
+* **Disco temporal.** Hello crear máquina virtual con un disco temporal (hello `D:` unidad de Windows). Este disco se almacena en una unidad física en el equipo de host de Hola. *No* se guarda en Azure Storage y podría desaparecer durante los reinicios y otros eventos del ciclo de vida de la máquina virtual. Use este disco solo para datos temporales, como archivos de paginación o de intercambio.
+* **Discos de datos.** Un [disco de datos][data-disk] es un VHD persistente usado para los datos de la aplicación. Discos de datos se almacenan en el almacenamiento de Azure, como disco de SO Hola.
 * **Red virtual y subred.** Cada máquina virtual de Azure se implementa en una red virtual, que se divide a su vez en subredes.
-* **Dirección IP pública.** Es necesaria una dirección IP pública para comunicarse con la máquina virtual&mdash;, por ejemplo, a través de Escritorio remoto (RDP).
-* **Interfaz de red (NIC)**. La NIC permite que la VM se comunique con la red virtual.
-* **Grupo de seguridad de red (NSG)**. El [NSG][nsg] se usa para permitir o denegar el tráfico de red a la subred. Puede asociar un NSG a una NIC individual o a una subred. Si se asocia con una subred, las reglas NSG se aplican a todas las máquinas virtuales de esa subred.
-* **Diagnóstico.** El registro de diagnóstico es fundamental para administrar y solucionar problemas de la VM.
+* **Dirección IP pública.** Una dirección IP pública es necesario toocommunicate con hello VM&mdash;por ejemplo a través de escritorio remoto (RDP).
+* **Interfaz de red (NIC)**. Hola NIC permite hello toocommunicate de máquina virtual con la red virtual de Hola.
+* **Grupo de seguridad de red (NSG)**. Hola [NSG] [ nsg] es la subred de toohello de tráfico de red usado tooallow o denegar. Puede asociar un NSG a una NIC individual o a una subred. Si se asocia con una subred, hello NSG reglas aplican las máquinas virtuales de tooall en esa subred.
+* **Diagnóstico.** Registro de diagnóstico es fundamental para administrar y solucionar problemas de hello VM.
 
 ## <a name="recommendations"></a>Recomendaciones
 
-Las siguientes recomendaciones sirven para la mayoría de los escenarios. Sígalas a menos que tenga un requisito concreto que las invalide.
+Hola se siguen las recomendaciones se aplica para la mayoría de los escenarios. Sígalas a menos que tenga un requisito concreto que las invalide.
 
 ### <a name="vm-recommendations"></a>Recomendaciones de VM
 
-Azure ofrece muchos tamaños de máquinas virtuales, pero se recomiendan las series DS y GS, ya que estos tamaños admiten [Premium Storage][premium-storage]. Seleccione uno de estos tamaños de máquina a menos que tenga una carga de trabajo especializada, como puede ser el caso de la informática de alto rendimiento. Para más información, consulte el artículo sobre [tamaños de máquinas virtuales][virtual-machine-sizes].
+Azure ofrece muchos tamaños de máquina virtual diferente, pero se recomienda Hola DS - y GS-series porque admiten estos tamaños de máquina [almacenamiento Premium][premium-storage]. Seleccione uno de estos tamaños de máquina a menos que tenga una carga de trabajo especializada, como puede ser el caso de la informática de alto rendimiento. Para más información, consulte el artículo sobre [tamaños de máquinas virtuales][virtual-machine-sizes].
 
-Si desplaza una carga de trabajo existente a Azure, comience con el tamaño de máquina virtual que más se parezca a los servidores locales. Luego, mida el rendimiento de la carga de trabajo real con respecto a la CPU, la memoria y las operaciones de entrada/salida por segundo (IOPS) de disco, y ajuste el tamaño, si es necesario. Si necesita varias NIC para la máquina virtual, tenga en cuenta que su número máximo es una función del [tamaño de máquinas virtuales][vm-size-tables].   
+Si va a mover un tooAzure de carga de trabajo existente, inicio con tamaño de máquina virtual de hello es hello tooyour de coincidencia más cercana en servidores locales. A continuación, Hola medir el rendimiento de la carga de trabajo real con respetar tooCPU, memoria y operaciones de entrada/salida de disco por segundo (IOPS) y ajustar el tamaño de hello si es necesario. Si necesita varias NIC para la máquina virtual, tenga en cuenta que el número máximo de Hola de NIC es una función de hello [tamaño de máquina virtual][vm-size-tables].   
 
-Cuando aprovisiona la máquina virtual y otros recursos, debe especificar una región. Por lo general, se recomienda elegir una región más cercana a los usuarios internos o clientes. Sin embargo, no todos los tamaños de máquina virtual están disponibles en todas las regiones. Para más información, consulte los [servicios por región][services-by-region]. Para ver una lista de los tamaños de máquina virtual disponibles en una región dada, ejecute el siguiente comando de la interfaz de la línea de comandos (CLI) de Azure:
+Al realizar el aprovisionamiento Hola máquinas virtuales y otros recursos, debe especificar una región. Por lo general, elija una región más cercana a usuarios internos de tooyour o clientes. Sin embargo, no todos los tamaños de máquina virtual están disponibles en todas las regiones. Para más información, consulte los [servicios por región][services-by-region]. toosee una lista de tamaños de VM Hola disponibles en una región determinada, ejecute hello siguiente comando de la interfaz de línea de comandos (CLI) de Azure:
 
 ```
 azure vm sizes --location <location>
@@ -48,113 +48,113 @@ Para más información sobre cómo elegir una imagen de máquina virtual publica
 
 ### <a name="disk-and-storage-recommendations"></a>Recomendaciones de discos y almacenamiento
 
-Para un mejor rendimiento de la E/S de disco, se recomienda [Premium Storage][premium-storage], que almacena los datos en unidades de estado sólido (SSD). El costo se basa en el tamaño del disco aprovisionado. Las E/S por segundo y el rendimiento también dependen del tamaño del disco, por lo que al aprovisionar un disco, debería tener en cuenta los tres factores (capacidad, E/S por segundo y rendimiento).
+Para un mejor rendimiento de la E/S de disco, se recomienda [Premium Storage][premium-storage], que almacena los datos en unidades de estado sólido (SSD). Costo se basa en el tamaño de Hola de disco aprovisionado Hola. Las E/S por segundo y el rendimiento también dependen del tamaño del disco, por lo que al aprovisionar un disco, debería tener en cuenta los tres factores (capacidad, E/S por segundo y rendimiento).
 
-Cree cuentas de almacenamiento de Azure distintas para cada máquina virtual para almacenar los discos duros virtuales (VHD) con el fin de evitar alcanzar los límites de E/S por segundo para cuentas de almacenamiento.
+Cree cuentas de almacenamiento de Azure independiente para cada discos de duros virtuales (VHD) de VM toohold hello en tooavoid orden alcanzar los límites de IOPS de hello las cuentas de almacenamiento.
 
-Agregue uno o más discos de datos. Cuando se crea un nuevo disco duro virtual, no tiene formato. Inicie sesión en la VM para dar formato al disco. Si tiene un gran número de discos de datos, tenga en cuenta los límites de E/S totales de la cuenta de almacenamiento. Para más información, consulte [Límites de discos de máquinas virtuales][vm-disk-limits].
+Agregue uno o más discos de datos. Cuando se crea un nuevo disco duro virtual, no tiene formato. Inicie sesión en el disco de hello VM tooformat Hola. Si tiene un gran número de discos de datos, tener en cuenta los límites de E/S total de Hola de cuenta de almacenamiento de Hola. Para más información, consulte [Límites de discos de máquinas virtuales][vm-disk-limits].
 
-Cuando sea posible, instale las aplicaciones en un disco de datos, no en el disco del sistema operativo. Sin embargo, en el caso de algunas aplicaciones heredadas, podría ser necesario instalar componentes en la unidad C:. En ese caso, puede [cambiar el tamaño de la unidad del sistema operativo][resize-os-disk] con PowerShell.
+Cuando sea posible, instale aplicaciones en un disco de datos, no el disco de sistema operativo Hola. Sin embargo, algunas aplicaciones heredadas que tenga componentes tooinstall en hello unidad C:. En ese caso, puede [cambiar el tamaño de disco de SO hello] [ resize-os-disk] mediante PowerShell.
 
-Para obtener el mejor rendimiento, cree una cuenta de almacenamiento independiente para contener los registros de diagnóstico. Una cuenta de almacenamiento con redundancia local (LRS) estándar es suficiente para este tipo de registros.
+Para obtener el mejor rendimiento, cree una cuenta de almacenamiento separadas toohold registros de diagnóstico. Una cuenta de almacenamiento con redundancia local (LRS) estándar es suficiente para este tipo de registros.
 
 ### <a name="network-recommendations"></a>Recomendaciones de red
 
-La dirección IP pública puede ser dinámica o estática. El valor predeterminado es dinámica.
+la dirección IP pública Hola puede ser dinámico o estático. valor predeterminado de Hello es dinámico.
 
-* Reserve una [dirección IP estática][static-ip] si necesita una dirección IP fija que no cambie; por ejemplo, si tiene que crear un registro D en DNS o necesita que la dirección IP se agregue a una lista segura.
-* También puede crear un nombre de dominio completo (FQDN) para la dirección IP. Después, puede registrar un [registro CNAME][cname-record] en DNS que apunte al nombre de dominio completo. Para más información, consulte [Crear un nombre de dominio completo en Azure Portal][fqdn].
+* Reserva una [dirección IP estática] [ static-ip] si necesita una dirección IP fija que no cambiará &mdash; por ejemplo, si necesita toocreate una A registrar en DNS o necesita Hola lista segura del agregado tooa de toobe dirección IP.
+* También puede crear un nombre de dominio completo (FQDN) para la dirección IP de Hola. A continuación, puede registrar un [registro CNAME] [ cname-record] en DNS que señala toohello FQDN. Para obtener más información, consulte [crear un nombre de dominio completo en el portal de Azure hello][fqdn].
 
-Todos los NSG contienen un conjunto de [reglas predeterminadas][nsg-default-rules], incluida una que bloquea todo el tráfico de entrada de Internet. No se puede eliminar las reglas predeterminadas, pero otras reglas pueden reemplazarlas. Para permitir el tráfico de Internet, cree reglas que permitan el tráfico entrante a puertos específicos; por ejemplo, el puerto 80 para HTTP.  
+Todos los NSG contienen un conjunto de [reglas predeterminadas][nsg-default-rules], incluida una que bloquea todo el tráfico de entrada de Internet. no se puede eliminar las reglas predeterminadas de Hello, pero pueden reemplazarlos con otras reglas. tooenable tráfico de Internet, crear reglas que permitan el tráfico entrante toospecific puertos &mdash; por ejemplo, el puerto 80 para HTTP.  
 
-Para habilitar RDP, agregue una regla de NSG que permita el tráfico entrante al puerto TCP 3389.
+tooenable RDP, agregue una regla NSG que permita el tráfico entrante tooTCP puerto 3389.
 
 ## <a name="scalability-considerations"></a>Consideraciones sobre escalabilidad
 
-Puede escalar o reducir verticalmente una máquina virtual [cambiando su tamaño](../articles/virtual-machines/windows/sizes.md). Para escalar horizontalmente, coloque dos o más máquinas virtuales en un conjunto de disponibilidad detrás de un equilibrador de carga. Para más detalles, consulte [Running multiple VMs on Azure for scalability and availability][multi-vm] (Ejecución de varias máquinas virtuales en Azure para escalabilidad y disponibilidad).
+Puede escalar una máquina virtual hacia arriba o hacia abajo por [cambiar el tamaño de la máquina virtual de hello](../articles/virtual-machines/windows/sizes.md). tooscale out horizontalmente, coloque dos o más máquinas virtuales en un conjunto detrás de un equilibrador de carga de disponibilidad. Para más detalles, consulte [Running multiple VMs on Azure for scalability and availability][multi-vm] (Ejecución de varias máquinas virtuales en Azure para escalabilidad y disponibilidad).
 
 ## <a name="availability-considerations"></a>Consideraciones sobre disponibilidad
 
 Para una mayor disponibilidad, implemente varias máquinas virtuales en un conjunto de disponibilidad. Este procedimiento también ofrece un [Acuerdo de Nivel de Servicio][vm-sla] (SLA) superior.
 
-La máquina virtual puede verse afectada por un [mantenimiento planeado][planned-maintenance] o un [mantenimiento no planeado][manage-vm-availability]. Puede usar [registros de reinicio de máquina virtual][reboot-logs] para determinar si se produjo un reinicio de la máquina virtual por un mantenimiento planeado.
+La máquina virtual puede verse afectada por un [mantenimiento planeado][planned-maintenance] o un [mantenimiento no planeado][manage-vm-availability]. Puede usar [registros de reinicio de la máquina virtual] [ reboot-logs] toodetermine si reiniciar una máquina virtual se produjo por mantenimiento planificado.
 
 Los VHD se almacenan en [Azure Storage][azure-storage], que se replica para su disponibilidad y durabilidad.
 
-Para protegerse de la pérdida accidental de datos durante las operaciones normales (por ejemplo, debido a errores de usuario), debe implementar también copias de seguridad de un momento dado mediante [instantáneas de blobs][blob-snapshot] u otra herramienta.
+tooprotect contra la pérdida accidental de datos durante las operaciones normales (por ejemplo, debido al error de usuario), también debería implementar copias de seguridad en un momento, mediante [las instantáneas de blob] [ blob-snapshot] u otra herramienta.
 
 ## <a name="manageability-considerations"></a>Consideraciones sobre la manejabilidad
 
-**Grupos de recursos.** Coloque los recursos estrechamente acoplados que comparten el mismo ciclo de vida en un mismo [grupo de recursos][resource-manager-overview]. Los grupos de recursos le permiten implementar y supervisar los recursos como un grupo, y acumular los costos de facturación por grupo de recursos. También se pueden eliminar recursos en conjunto, lo que resulta muy útil para implementaciones de prueba. Asigne a los recursos nombres descriptivos. De esta forma será más fácil encontrarlos y comprender su función. Consulte [Recommended Naming Conventions for Azure Resources][naming conventions] (Convenciones de nomenclatura recomendadas para los recursos de Azure).
+**Grupos de recursos.** Colocar recursos estrechamente asociadas que Hola de recurso compartido de ciclo de vida del mismo en Hola mismo [grupo de recursos][resource-manager-overview]. Grupos de recursos permiten toodeploy y el monitor de recursos como un grupo y se acumulan los costos por grupo de recursos de facturación. También se pueden eliminar recursos en conjunto, lo que resulta muy útil para implementaciones de prueba. Asigne a los recursos nombres descriptivos. Que hace que sea más fácil toolocate un recurso específico y comprender su rol. Consulte [Recommended Naming Conventions for Azure Resources][naming conventions] (Convenciones de nomenclatura recomendadas para los recursos de Azure).
 
-**Diagnósticos de máquina virtual.** Habilite la supervisión y el diagnóstico, como las métricas básicas de estado, los registros de infraestructura de diagnóstico y los [diagnósticos de arranque][boot-diagnostics]. Los diagnósticos de arranque pueden ayudarle a diagnosticar un error de arranque si la máquina virtual entra en un estado de imposibilidad de arranque. Para más información, consulte [Habilitación de supervisión y diagnóstico][enable-monitoring]. Use la extensión [Colección de registros de Azure][log-collector] para recopilar registros de la plataforma Azure y cargarlos en Azure Storage.   
+**Diagnósticos de máquina virtual.** Habilite la supervisión y el diagnóstico, como las métricas básicas de estado, los registros de infraestructura de diagnóstico y los [diagnósticos de arranque][boot-diagnostics]. Los diagnósticos de arranque pueden ayudarle a diagnosticar un error de arranque si la máquina virtual entra en un estado de imposibilidad de arranque. Para más información, consulte [Habilitación de supervisión y diagnóstico][enable-monitoring]. Hola de uso [recopilación de registros de Azure] [ log-collector] toocollect de extensión de la plataforma Azure registra y cargarlos tooAzure almacenamiento.   
 
-El siguiente comando CLI habilita los diagnósticos:
+Hola siguiente comando CLI habilita los diagnósticos de:
 
 ```
 azure vm enable-diag <resource-group> <vm-name>
 ```
 
-**Detención de una máquina virtual.** Azure hace una distinción entre los estados "Detenido" y "Desasignado". Se le cobra cuando el estado de la máquina virtual se detiene, pero no cuando se desasigna la máquina virtual.
+**Detención de una máquina virtual.** Azure hace una distinción entre los estados "Detenido" y "Desasignado". Se le cobrará cuando Hola estado de la VM se detiene, pero no cuando Hola VM está desasignada.
 
-Utilice el siguiente comando de la CLI para desasignar una máquina virtual:
+Usar hello después toodeallocate de comando CLI una máquina virtual:
 
 ```
 azure vm deallocate <resource-group> <vm-name>
 ```
 
-En Azure Portal, con el botón **Detener**, se desasigna la máquina virtual. Sin embargo, si apaga desde dentro del sistema operativo mientras tiene la sesión iniciada, la VM se detiene pero *no* se desasigna, por lo que se le seguirá cobrando.
+Hola portal de Azure, Hola **detener** botón desasigna Hola máquina virtual. Sin embargo, si el apagado a través del Hola OS con la sesión iniciada, hello VM se detiene pero *no* cancela la asignación, por lo que se le cobrará todavía.
 
-**Eliminación de una máquina virtual.** Si elimina una VM, no se eliminarán los discos duros virtuales. Esto significa que puede eliminar de forma segura la VM sin perder datos. Sin embargo, se le seguirá cobrando por el almacenamiento. Para eliminar el VHD, elimine el archivo de [Blob Storage][blob-storage].
+**Eliminación de una máquina virtual.** Si elimina una máquina virtual, no se eliminan Hola discos duros virtuales. Esto significa que puede eliminar con seguridad Hola VM sin perder datos. Sin embargo, se le seguirá cobrando por el almacenamiento. Hola toodelete VHD, elimine el archivo hello [almacenamiento de blobs][blob-storage].
 
-Para evitar eliminaciones por error, use un [bloqueo de recurso][resource-lock] para bloquear el grupo de recursos completo o recursos individuales, como la máquina virtual.
+la eliminación accidental de tooprevent, use un [bloqueo de recurso] [ resource-lock] toolock Hola recursos completo bloqueo o grupo de recursos individuales, como Hola VM.
 
 ## <a name="security-considerations"></a>Consideraciones sobre la seguridad
 
-Use [Azure Security Center][security-center] para obtener una visión central del estado de la seguridad de sus recursos en Azure. Security Center supervisa los posibles problemas de seguridad y proporciona una imagen completa del estado de seguridad de su implementación. El Centro de seguridad se configura por cada suscripción de Azure. Habilite la recolección de datos de seguridad tal como se describe en [Uso del Centro de seguridad]. Una vez que habilite la recolección, el Centro de seguridad busca automáticamente las VM creadas en esa suscripción.
+Use [Azure Security Center] [ security-center] tooget una vista central del estado de seguridad de Hola de los recursos de Azure. Centro de seguridad supervisa los posibles problemas de seguridad y proporciona una imagen completa del estado de seguridad de saludo de la implementación. El Centro de seguridad se configura por cada suscripción de Azure. Habilite la recolección de datos de seguridad tal como se describe en [Uso del Centro de seguridad]. Una vez que habilite la recolección, el Centro de seguridad busca automáticamente las VM creadas en esa suscripción.
 
-**Administración de revisiones.** Si está habilitada esta opción, el Centro de seguridad comprueba si faltan actualizaciones críticas y de seguridad. Use la [configuración de directiva de grupo][group-policy] de la máquina virtual para habilitar las actualizaciones automáticas del sistema.
+**Administración de revisiones.** Si está habilitada esta opción, el Centro de seguridad comprueba si faltan actualizaciones críticas y de seguridad. Use [configuración de directiva de grupo] [ group-policy] en las actualizaciones automáticas del sistema de hello VM tooenable.
 
-**Antimalware.** Si está habilitada esta opción, el Centro de seguridad comprueba si está instalado software antimalware. También puede Security Center para instalar software antimalware desde el Portal de Azure.
+**Antimalware.** Si está habilitada esta opción, el Centro de seguridad comprueba si está instalado software antimalware. También puede utilizar el centro de seguridad tooinstall antimalware software desde dentro de Hola portal de Azure.
 
-**Operaciones.** Use el [control de acceso basado en rol][rbac] (RBAC) para controlar el acceso a los recursos de Azure que implementa. RBAC le permite asignar roles de autorización a los miembros de su equipo de DevOps. Por ejemplo, el rol de lector puede ver recursos de Azure pero no crearlos, administrarlos o eliminarlos. Algunos roles son específicos de un tipo de recurso de Azure determinado. Por ejemplo, el rol Colaborador de máquina virtual puede reiniciar o desasignar una máquina virtual, restablecer la contraseña de administrador, crear una nueva máquina virtual, etc. Otros [roles de RBAC integrados][rbac-roles] que pueden resultar útiles para esta arquitectura de referencia son, por ejemplo, el de [Usuario de DevTest Lab][rbac-devtest] y el de [Colaborador de la red][rbac-network]. Un usuario puede asignarse a varios roles, y es posible crear roles personalizados para una especificación aún más detallada de los permisos.
+**Operaciones.** Use [el control de acceso basado en roles] [ rbac] (RBAC) toocontrol acceso toohello Azure recursos que implemente. RBAC le permite asignar toomembers de roles de autorización del equipo DevOps. Por ejemplo, rol de lector de hello puede ver recursos de Azure, pero no crear, administrar o eliminarlos. Algunos roles son tipos de recursos de Azure tooparticular específico. Por ejemplo, rol de colaborador de la máquina Virtual de hello puede reiniciar o cancelar la asignación de una máquina virtual, restablezca la contraseña de administrador de hello, crear una nueva máquina virtual y así sucesivamente. Otros [roles de RBAC integrados][rbac-roles] que pueden resultar útiles para esta arquitectura de referencia son, por ejemplo, el de [Usuario de DevTest Lab][rbac-devtest] y el de [Colaborador de la red][rbac-network]. Un usuario puede asignarse toomultiple roles, y puede crear roles personalizados para los permisos más granulares aún más.
 
 > [!NOTE]
-> RBAC no limita las acciones que puede realizar un usuario que ha iniciado sesión en una máquina virtual. Esos permisos están determinados por el tipo de cuenta en el sistema operativo invitado.   
+> RBAC no limita las acciones de Hola que puede realizar un usuario ha iniciado sesión en una máquina virtual. Esos permisos están determinados por el tipo de cuenta de hello en el sistema operativo invitado de Hola.   
 >
 >
 
-Para restablecer la contraseña de administrador local, ejecute el comando `vm reset-access` de la CLI de Azure.
+contraseña de administrador local hello tooreset, ejecute hello `vm reset-access` comando de CLI de Azure.
 
 ```
 azure vm reset-access -u <user> -p <new-password> <resource-group> <vm-name>
 ```
 
-Use los [registros de auditoría][audit-logs] para ver las acciones de aprovisionamiento y otros eventos de la máquina virtual.
+Use [registros de auditoría] [ audit-logs] toosee aprovisionamiento de acciones y otros eventos de máquina virtual.
 
-**Cifrado de datos.** Considere la posibilidad de usar [Azure Disk Encryption][disk-encryption] si necesita cifrar los discos de datos y del sistema operativo.
+**Cifrado de datos.** Considere la posibilidad de [cifrado del disco de Azure] [ disk-encryption] si necesita tooencrypt Hola OS y discos de datos.
 
 ## <a name="solution-deployment"></a>Implementación de la solución
 
-Hay disponible una implementación de esta arquitectura de referencia en [GitHub][github-folder]. Incluye una red virtual, un grupo de seguridad de red y una única máquina virtual. Para implementar la arquitectura, siga estos pasos:
+Hay disponible una implementación de esta arquitectura de referencia en [GitHub][github-folder]. Incluye una red virtual, un grupo de seguridad de red y una única máquina virtual. toodeploy Hola arquitectura, siga estos pasos:
 
-1. Haga clic con el botón derecho en el botón siguiente y seleccione "Abrir vínculo en una nueva pestaña" o "Abrir vínculo en una nueva ventana".  
-   [![Implementación en Azure](../articles/guidance/media/blueprints/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Freference-architectures%2Fmaster%2Fguidance-compute-single-vm%2Fazuredeploy.json)
-2. Una vez abierto el vínculo en Azure Portal, debe especificar los valores de algunas de las opciones:
+1. Haga clic en botón Hola siguiente y seleccione cualquier "Abrir vínculo en una nueva pestaña" o "Abrir vínculo en nueva ventana."  
+   [![Implementar tooAzure](../articles/guidance/media/blueprints/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Freference-architectures%2Fmaster%2Fguidance-compute-single-vm%2Fazuredeploy.json)
+2. Una vez que ha abierto el vínculo de Hola Hola portal de Azure, debe especificar valores para algunas de las opciones de hello:
 
-   * El nombre del **Grupo de recursos** ya está definido en el archivo de parámetros, así que seleccione **Crear nuevo** y escriba `ra-single-vm-rg` en el cuadro de texto.
-   * Seleccione la región en el cuadro de lista desplegable **Ubicación**.
-   * No modifique los cuadros de texto **URI raíz de plantilla** o **URI raíz de parámetro**.
-   * Seleccione **Windows** en el cuadro de lista desplegable **Tipo de SO**.
-   * Revise los términos y condiciones, y haga clic en la casilla **Acepto los términos y condiciones indicados anteriormente**.
-   * Haga clic en el botón **Comprar**.
-3. Espere a que la implementación se complete.
-4. Los archivos de parámetros incluyen un nombre de usuario y una contraseña de administrador codificados de forma rígida, y es muy recomendable cambiar ambos inmediatamente. Haga clic en la máquina virtual llamada `ra-single-vm0 ` en Azure Portal. A continuación, haga clic en **Restablecer contraseña** en la hoja **Soporte técnico y solución de problemas**. Seleccione **Restablecer contraseña** en el cuadro de lista desplegable **Modo**, seleccione un **Nombre de usuario** y una **Contraseña**. Haga clic en el botón **Actualizar** para conservar el nuevo nombre de usuario y contraseña.
+   * Hola **grupo de recursos** nombre ya está definido en el archivo de parámetros de hello, así que seleccione **crear nuevo** y escriba `ra-single-vm-rg` en el cuadro de texto de Hola.
+   * Región de SELECT Hola de hello **ubicación** cuadro de lista desplegable.
+   * No modifique hello **plantilla raíz Uri** o hello **parámetro raíz Uri** cuadros de texto.
+   * Seleccione **windows** en hello **tipo de SO** cuadro de lista desplegable.
+   * Revisar Hola términos y condiciones, haga clic en hello **muestro mi conformidad toohello términos y condiciones indicadas anteriormente** casilla de verificación.
+   * Haga clic en hello **compra** botón.
+3. Espere a que hello toocomplete de implementación.
+4. archivos de parámetros de Hello incluyen una contraseña y el nombre de usuario administrador codificado de forma rígida y se recomienda encarecidamente que inmediatamente cambiar ambos ajustes. Haga clic en la máquina virtual denominada hello `ra-single-vm0 `Hola portal de Azure. A continuación, haga clic en **de restablecimiento de contraseña** en hello **soporte técnico y solución de problemas** hoja. Seleccione **de restablecimiento de contraseña** en hello **modo** a continuación, seleccione un nuevo cuadro de lista desplegable **nombre de usuario** y **contraseña**. Haga clic en hello **actualización** botón Hola de toopersist nuevo nombre de usuario y contraseña.
 
-Para más información sobre otras maneras de implementar esta arquitectura de referencia, consulte el archivo Léame en la carpeta de GitHub [guidance-single-vm][github-folder]].
+Para obtener información sobre otras formas toodeploy esta arquitectura de referencia, vea el archivo Léame de Hola Hola [Guía de la vm solo][github-folder]] carpeta de GitHub.
 
-## <a name="customize-the-deployment"></a>Personalización de la implementación
-Si necesita cambiar la implementación para satisfacer sus necesidades, siga las instrucciones que aparecen en el archivo [Léame][github-folder].
+## <a name="customize-hello-deployment"></a>Personalizar la implementación de Hola
+Si necesita toochange Hola implementación toomatch sus necesidades, siga las instrucciones de Hola Hola [Léame][github-folder].
 
 ## <a name="next-steps"></a>Pasos siguientes
 Para una mayor disponibilidad, implemente dos o más máquinas virtuales detrás de un equilibrador de carga. Para más información, consulte el artículo sobre la [ejecución de varias máquinas virtuales en Azure][multi-vm].

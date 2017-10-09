@@ -1,7 +1,7 @@
 
-1. En [Azure Portal](https://portal.azure.com/), haga clic en **Examinar todo** > **App Services** y finalmente en el back-end de Mobile Apps. En **Configuración**, haga clic en **App Service Push** y, después, en el nombre del centro de notificaciones.
-2. Vaya a **Windows (WNS)**, escriba la **Clave de seguridad** (secreto de cliente) y el **SID del paquete** que ha obtenido en el sitio de Servicios Live y, finalmente, haga clic en **Guardar**.
+1. Hola [portal de Azure](https://portal.azure.com/), haga clic en **examinar todos los** > **servicios de aplicaciones**y haga clic en el back-end de aplicaciones móviles. En **Configuración**, haga clic en **App Service Push** y, después, en el nombre del centro de notificaciones.
+2. Vaya demasiado**de Windows (WNS)**, escriba Hola **clave de seguridad** (secreto del cliente) y **SID del paquete** que ha obtenido del sitio de servicios Live de hello y, a continuación, haga clic en  **Guardar**.
 
-    ![Establecimiento de la clave de WNS en el portal](./media/app-service-mobile-configure-wns/mobile-push-wns-credentials.png)
+    ![Establezca la clave WNS de hello en el portal de Hola](./media/app-service-mobile-configure-wns/mobile-push-wns-credentials.png)
 
-El back-end ahora está configurado para usar WNS para enviar notificaciones push.
+El back-end es ahora notificaciones de inserción de toosend WNS toouse configurado.

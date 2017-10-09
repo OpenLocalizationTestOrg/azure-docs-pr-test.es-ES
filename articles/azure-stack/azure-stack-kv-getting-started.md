@@ -1,5 +1,5 @@
 ---
-title: "Introducción al almacén de claves en la pila de Azure | Documentos de Microsoft"
+title: "aaaGetting a trabajar con el almacén de claves en la pila de Azure | Documentos de Microsoft"
 description: "Introducción al uso de almacén de claves de pila de Azure"
 services: azure-stack
 documentationcenter: 
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/23/2017
 ms.author: ricardom
-ms.openlocfilehash: 32fad3ce17c877db661573e67c9cb5948b3c78fa
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 66ae55291951ee0c673ba2b50ea4aecb3df19a88
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="getting-started-with-key-vault"></a>Introducción al almacén de claves
-Esta sección describen los pasos para crear un almacén, administrar claves y secretos, así como para autorizar a los usuarios o aplicaciones para invocar operaciones en el almacén en la pila de Azure. Los siguientes pasos se supone existe una suscripción de inquilino y servicio de KeyVault está registrado en esa suscripción. Todos los comandos de ejemplo se basan en los cmdlets de KeyVault disponibles como parte del SDK de Azure PowerShell.
+Esta sección describen Hola pasos toocreate un almacén, administrar claves y secretos como autorizar usuarios o aplicaciones de operaciones de tooinvoke en el almacén de hello en la pila de Azure. Hola siguiendo los pasos se supone existe una suscripción de inquilino y servicio de KeyVault está registrado en esa suscripción. Todos los comandos de ejemplo de Hola se basan en hello KeyVault cmdlets disponibles como parte del SDK de Azure PowerShell Hola.
 
-## <a name="enabling-the-tenant-subscription-for-vault-operations"></a>Habilitar la suscripción de inquilino para las operaciones del almacén
-Para poder emitir las operaciones en cualquier almacén, debe asegurarse de que su suscripción está habilitada para las operaciones del almacén. Se puede confirmar que emita el siguiente comando de PowerShell:
+## <a name="enabling-hello-tenant-subscription-for-vault-operations"></a>Habilitar la suscripción de inquilino de Hola para las operaciones del almacén
+Para poder emitir las operaciones en cualquier almacén, necesita tooensure que su suscripción está habilitada para las operaciones del almacén. Puede confirmar mediante la emisión de hello siguiente comando de PowerShell:
 
     Get-AzureRmResourceProvider -ProviderNamespace Microsoft.KeyVault | ft -AutoSize
 
-El resultado del comando anterior debería notificar "Registrado" para el estado de "Registro" de cada fila.
+salida de Hello de hello encima comando debería notificar "Registrado" para hello el estado de "Registro" de cada fila.
 
     ProviderNamespace RegistrationState ResourceTypes Locations
     Microsoft.KeyVault Registered {operations} {local}
@@ -36,11 +36,11 @@ El resultado del comando anterior debería notificar "Registrado" para el estado
     Microsoft.KeyVault Registered {vaults/secrets} {local}
 
 
- Si no es el caso, debe invocar el comando siguiente para registrar el servicio de KeyVault dentro de su suscripción:
+ Si no es el caso de hello, debe invocar Hola después de comando tooregister hello KeyVault servicio dentro de su suscripción:
 
     Register-AzureRmResourceProvider -ProviderNamespace Microsoft.KeyVault
 
-Y lo siguiente es el resultado del comando:
+Y lo siguiente hello es resultado de hello de comando de hello:
 
     ProviderNamespace : Microsoft.KeyVault
     RegistrationState : Registered
@@ -49,19 +49,19 @@ Y lo siguiente es el resultado del comando:
 
 
 > [!NOTE]
-> Si se produce un error: "*la suscripción no está registrada con el almacén de claves de Azure*" al invocar KeyVault cmdlets, confirme que ha habilitado el proveedor de recursos de KeyVault por las instrucciones anteriores.
+> Si recibe el error de hello: "*Hola suscripción no está registrada con el almacén de claves de Azure*" al invocar KeyVault cmdlets, confirme que ha habilitado el proveedor de recursos de KeyVault Hola por instrucciones mencionadas anteriormente.
 > 
 > 
 
-## <a name="creating-a-hardened-container-a-vault-in-azure-stack-to-store-and-manage-cryptographic-keys-and-secrets"></a>Crear un contenedor reforzado (un almacén) en la pila de Azure para almacenar y administrar las claves criptográficas y secretos
-Para crear un almacén, un inquilino en primer lugar debe crear un grupo de recursos. Los siguientes comandos de PowerShell crean un grupo de recursos y, a continuación, en un almacén de ese grupo de recursos. El ejemplo también incluye el resultado típico de ese cmdlet.
+## <a name="creating-a-hardened-container-a-vault-in-azure-stack-toostore-and-manage-cryptographic-keys-and-secrets"></a>Crear un contenedor reforzado (un almacén) en Azure pila toostore y administrar las claves criptográficas y secretos
+En orden toocreate un almacén, un inquilino en primer lugar debe crear un grupo de recursos. Hello siguientes comandos de PowerShell crean un grupo de recursos y, a continuación, en un almacén de ese grupo de recursos. ejemplo de Hola también incluye la salida típica Hola de ese cmdlet.
 
 ### <a name="creating-a-resource-group"></a>Crear un grupo de recursos:
     New-AzureRmResourceGroup -Name vaultrg010 -Location local -Verbose -Force
 
 Salida:
 
-    VERBOSE: Performing the operation "Replacing resource group ..." on target "".
+    VERBOSE: Performing hello operation "Replacing resource group ..." on target "".
     VERBOSE: 12:52:51 PM - Created resource group 'vaultrg010' in location 'local'
     ResourceGroupName : vaultrg010
     Location : local
@@ -88,8 +88,8 @@ Salida:
     Object ID : ca342e90-f6aa-435b-a11c-dfe5ef0bfeeb
     Application ID :
     Display Name : Tenant Admin (tenantadmin1@msazurestack.onmicrosoft.com)
-    Permissions to Keys : get, create, delete, list, update, import, backup, restore
-    Permissions to Secrets : all
+    Permissions tooKeys : get, create, delete, list, update, import, backup, restore
+    Permissions tooSecrets : all
     OriginalVault : Microsoft.Azure.Management.KeyVault.Vault
     ResourceId : /subscriptions/fa881715-3802-42cc-a54e-a06adf61584d/resourceGroups/vaultrg010/providers/Microsoft.KeyVault/vaults/vault010
     VaultName : vault010
@@ -98,22 +98,22 @@ Salida:
     Tags : {}
     TagsTable :
 
-El resultado de este cmdlet muestra las propiedades del Almacén de claves que acaba de crear. Las dos propiedades más importantes son:
+salida de Hello de este cmdlet muestra propiedades del almacén de claves de Hola que acaba de crear. propiedades de Hello dos más importantes son:
 
-* **El nombre del almacén**: en el ejemplo, esto es **vault010**. Utilizará este nombre para otros cmdlets del Almacén de claves.
-* **URI de almacén**: en el ejemplo, esto es https://vault010.vault.local.azurestack.global. Las aplicaciones que utilizan el almacén a través de su API de REST deben usar este identificador URI.
+* **El nombre del almacén**: en el ejemplo de Hola, esto es **vault010**. Utilizará este nombre para otros cmdlets del Almacén de claves.
+* **URI de almacén**: en el ejemplo de Hola, es https://vault010.vault.local.azurestack.global. Las aplicaciones que utilizan el almacén a través de su API de REST deben usar este identificador URI.
 
-Su cuenta de Azure ahora está autorizada para realizar operaciones en este Almacén de claves. Hasta el momento, nadie más lo está.
+Su cuenta de Azure es ahora tooperform autorizado cualquier operación en esta clave de seguridad del almacén. Hasta el momento, nadie más lo está.
 
 ## <a name="operating-on-keys-and-secrets"></a>Funciona en las claves y secretos
-Después de crear un almacén, siga los pasos siguientes para crear, administrar claves y secretos:
+Después de crear un almacén, Hola de seguimiento por debajo de los pasos toocreate administrar claves y secretos:
 
 ### <a name="creating-a-key"></a>Crear una clave
-Para crear una clave, use la **Add-AzureKeyVaultKey** por el ejemplo siguiente. Después de la creación de clave correcta, el cmdlet mostrará los detalles de la clave recién creados.
+En el orden toocreate una clave, usar hello **Add-AzureKeyVaultKey** por el siguiente ejemplo de Hola. Después de la creación de clave correcta, Hola cmdlet darán como resultado Hola que acaba de crear detalles de la clave.
 
     Add-AzureKeyVaultKey -VaultName \$vaultName -Name\$keyVaultKeyName -Verbose -Destination Software
 
-El siguiente es el resultado de la *Add-AzureKeyVaultKey* cmdlet:
+Hello aquí te mostramos la salida de hello de hello *Add-AzureKeyVaultKey* cmdlet:
 
     Attributes : Microsoft.Azure.Commands.KeyVault.Models.KeyAttributes
     Key : {"kid":"https://vault010.vault.local.azurestack.global/keys/keyVaultKeyName001/86062b02b10342688f3b0b3713e343ff","kty":"RSA","key\_ops":\["encrypt"
@@ -125,14 +125,14 @@ El siguiente es el resultado de la *Add-AzureKeyVaultKey* cmdlet:
     Version : 86062b02b10342688f3b0b3713e343ff
     Id : https://vault010.vault.local.azurestack.global:443/keys/keyVaultKeyName001/86062b02b10342688f3b0b3713e343ff
 
-Ahora puede utilizar el URI para hacer referencia a esta clave que creó o cargó en el Almacén de claves de Azure. Usar **https://vault010.vault.local.azurestack.global:443/claves/keyVaultKeyName001** para obtener la versión actual, siempre y usar **https://vault010.vault.local.azurestack.global:443/claves / keyVaultKeyName001/86062b02b10342688f3b0b3713e343ff** para obtener esta versión específica.
+Ahora puede hacer referencia a esta clave que se creó o cargó tooAzure el almacén de claves, utilizando su URI. Usar **https://vault010.vault.local.azurestack.global:443/claves/keyVaultKeyName001** tooalways obtener la versión actual de hello; y usar **https://vault010.vault.local.azurestack.global:443/claves / keyVaultKeyName001/86062b02b10342688f3b0b3713e343ff** tooget esta versión específica.
 
 ### <a name="retrieving-a-key"></a>Recuperar una clave
-Use la **Get-AzureKeyVaultKey** para recuperar una clave y sus detalles según el ejemplo siguiente:
+Hola de uso **Get-AzureKeyVaultKey** tooretrieve una clave y sus detalles por Hola después ejemplo:
 
     Get-AzureKeyVaultKey -VaultName vault010 -Name keyVaultKeyName001
 
-El siguiente es el resultado de Get-AzureKeyVaultKey
+Hola aquí te mostramos la salida de hello de Get-AzureKeyVaultKey
 
     Attributes : Microsoft.Azure.Commands.KeyVault.Models.KeyAttributes
     Key : {"kid":"https://vault010.vault.local.azurestack.global/keys/keyVaultKeyName001/86062b02b10342688f3b0b3713e343ff","kty":"RSA","key\_ops":\["encrypt"
@@ -179,17 +179,17 @@ Salida
     Content Type :
     Tags :
 
-Ahora, el Almacén de claves y la clave o el secreto están listos para que los usen las aplicaciones.
-Las aplicaciones deben contar con autorización para poder usarlos.
+Ahora, el almacén de claves y la clave o el secreto está lista para toouse de aplicaciones.
+Debe autorizar aplicaciones toouse ellos.
 
-## <a name="authorize-the-application-to-use-the-key-or-secret"></a>Autorización de la aplicación para que use la clave o el secreto
-Para autorizar la aplicación para tener acceso a la clave o el secreto en el almacén, use Set -**AzureRmKeyVaultAccessPolicy** cmdlet.
+## <a name="authorize-hello-application-toouse-hello-key-or-secret"></a>Autorizar Hola aplicación toouse Hola clave o el secreto
+tooauthorize Hola aplicación tooaccess Hola clave o el secreto en el almacén de Hola Hola use Set -**AzureRmKeyVaultAccessPolicy** cmdlet.
 
-Por ejemplo, si el nombre del almacén es *ContosoKeyVault* y la aplicación que desea autorizar tiene un *Id. de cliente* de *8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed*y ¿desea autorizar a la aplicación para descifrar y firmar con claves en el almacén, ejecute lo siguiente:
+Por ejemplo, si el nombre del almacén es *ContosoKeyVault* y aplicación hello desea tooauthorize tiene un *Id. de cliente* de *8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed*y desea tooauthorize Hola aplicación toodecrypt e inicie sesión con las claves en el almacén, ejecute hello siguiente:
 
     Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalName 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed -PermissionsToKeys decrypt,sign
 
-Si desea autorizar a esa misma aplicación para leer los secretos en el almacén, ejecute lo siguiente:
+Si desea tooauthorize ese mismo secretos tooread de aplicación en el almacén, ejecute hello siguiente:
 
     Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalName 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed -PermissionsToSecrets Get
 

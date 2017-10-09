@@ -1,5 +1,5 @@
 ---
-title: Espacios de nombres emparejados de Azure Service Bus | Microsoft Docs
+title: aaaAzure Service Bus empareja los espacios de nombres | Documentos de Microsoft
 description: "Detalles de la implementación y costos de los espacios de nombres emparejados"
 services: service-bus-messaging
 documentationcenter: na
@@ -14,44 +14,44 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: sethm
-ms.openlocfilehash: a200ea7937b9f5296c743928a9408897adfba428
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4c44b2b95d2228e1ad8075b52634d88a1593d3b1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="paired-namespace-implementation-details-and-cost-implications"></a>Detalles de implementación y costos asociados de los espacios de nombres emparejados
-El método [PairNamespaceAsync][PairNamespaceAsync], que usa una instancia de [SendAvailabilityPairedNamespaceOptions][SendAvailabilityPairedNamespaceOptions], realiza tareas visibles en su nombre. Dado que el uso de esta característica tiene ciertos costes asociados, resulta útil conocer dichas tareas para que su comportamiento no le pille desprevenido. La API interactúa con el siguiente comportamiento automático en su nombre:
+Hola [PairNamespaceAsync] [ PairNamespaceAsync] método, con un [SendAvailabilityPairedNamespaceOptions] [ SendAvailabilityPairedNamespaceOptions] de la instancia, realiza tareas visibles en su nombre. Dado que existen consideraciones de coste al usar la característica de hello, es útil toounderstand las tareas para que se espere el comportamiento de hello cuando esto ocurre. Hola API involucra Hola siguiendo el comportamiento automático en su nombre:
 
 * Creación de colas de trabajos pendientes.
-* Creación de un objeto [MessageSender][MessageSender] que se comunique con colas o temas.
-* Cuando una entidad de mensajería deja de estar disponible, envía mensajes Ping a la entidad para intentar detectar cuándo vuelve a estar disponible dicha entidad.
-* Opcionalmente, crea un conjunto de "suministros de mensajes" que mueven los mensajes de las colas de trabajos pendientes a las colas principales.
-* Coordina el cierre o error de las instancias de [MessagingFactory][MessagingFactory] principal y secundaria.
+* Creación de un [MessageSender] [ MessageSender] objeto que habla tooqueues o temas.
+* Cuando una entidad de mensajería deja de estar disponible, envía los mensajes ping toohello entidad en un intento de toodetect cuando esa entidad vuelve a estar disponible.
+* Opcionalmente, crea un conjunto de "bombeos de mensajes" que mueva los mensajes de Hola colas principales de toohello de colas de trabajo pendiente.
+* Coordina el cierre o error de hello principal y secundaria [MessagingFactory] [ MessagingFactory] instancias.
 
-A un alto nivel, la característica funciona del siguiente modo: cuando la entidad principal es correcta, se producen cambios de comportamiento. Si transcurre la duración de [FailoverInterval][FailoverInterval] y la entidad principal no ve envíos correctos después de unas excepciones [MessagingException][MessagingException] o [TimeoutException no transitorias][TimeoutException], se produce el siguiente comportamiento:
+En un nivel alto, característica de hello funciona del siguiente modo: cuando la entidad principal de hello sea correcta, se produce ningún cambio de comportamiento. Cuando Hola [FailoverInterval] [ FailoverInterval] ha transcurrido de duración, y entidad primaria Hola no ve ningún envía correctamente después de un usuario no transitorio [MessagingException] [ MessagingException] o un [TimeoutException][TimeoutException], Hola siguiendo el comportamiento se produce:
 
-1. Las operaciones de envío a la entidad principal están deshabilitadas y el sistema hace ping a la entidad principal hasta que los pings se puedan entregar correctamente.
+1. Enviar operaciones toohello principal están deshabilitados de entidad y ping de sistema de Hola Hola entidad principal hasta que los pings se entreguen correctamente.
 2. Se selecciona una cola de trabajos pendientes aleatoria.
-3. Los objetos [BrokeredMessage][BrokeredMessage] se enrutan a la cola de trabajos pendientes elegida.
-4. Si se produce un error en una operación de envío a la cola de trabajos pendientes elegidas, dicha cola se extrae de la rotación y se selecciona una nueva cola. Todos los remitentes de la instancia de [MessagingFactory][MessagingFactory] reciben información del error.
+3. [BrokeredMessage] [ BrokeredMessage] objetos son enrutado toohello elegido cola de trabajos pendientes.
+4. Si se produce un error en un toohello de operación de envío seleccionado cola de trabajo pendiente, se extrae esa cola de la rotación de Hola y se selecciona una nueva cola. Todos los remitentes de hello [MessagingFactory] [ MessagingFactory] instancia Obtenga información acerca del error de Hola.
 
-Las ilustraciones siguientes muestran la secuencia. En primer lugar, el remitente envía los mensajes.
+Hola siguiendo las cifras representan secuencia Hola. En primer lugar, el remitente de hello envía mensajes.
 
 ![Espacios de nombres emparejados][0]
 
-Si se produce un error en el envío a la cola principal, el remitente comienza a enviar los mensajes a una cola de trabajos pendientes elegida aleatoriamente. Simultáneamente, se inicia una tarea de ping.
+En la cola principal de error toosend toohello, remitente Hola comienza a enviar tooa mensajes elige aleatoriamente la cola de trabajos pendientes. Simultáneamente, se inicia una tarea de ping.
 
 ![Espacios de nombres emparejados][1]
 
-En este momento, los mensajes siguen en la cola secundaria y no se han entregado a la cola principal. Una vez que la cola principal es correcta de nuevo, al menos un proceso debe ejecutar el sifón. El sifón entrega los mensajes de las distintas colas de trabajos pendientes a las entidades de destino apropiadas (colas y temas).
+En este momento mensajes de saludo siguen en la cola secundaria hello y no se han entregado toohello de cola principal. Una vez que la cola principal Hola nuevo es correcto, debe ejecutar al menos un proceso sifón Hola. sifón Hola ofrece mensajes de Hola desde distintos de trabajo pendiente de Hola todas las entidades de colas toohello destino pertinentes (colas y temas).
 
 ![Espacios de nombres emparejados][2]
 
-En el resto de este tema se tratan los detalles concretos del funcionamiento de estas partes.
+resto de Hola de este tema tratan detalles específicos de Hola de cómo funcionan estas piezas.
 
 ## <a name="creation-of-backlog-queues"></a>Creación de colas de trabajos pendientes
-El objeto [SendAvailabilityPairedNamespaceOptions][SendAvailabilityPairedNamespaceOptions] pasado al método [PairNamespaceAsync][PairNamespaceAsync] indica el número de colas de trabajos pendientes que desea usar. A continuación, se crean las colas de trabajos pendientes con las siguientes propiedades definidas explícitamente (en los restantes valores se seleccionan los valores predeterminados de [QueueDescription][QueueDescription]):
+Hola [SendAvailabilityPairedNamespaceOptions] [ SendAvailabilityPairedNamespaceOptions] objeto pasado toohello [PairNamespaceAsync] [ PairNamespaceAsync] método indica Hola número de trabajo pendiente de las colas desea toouse. Cada cola de trabajo pendiente, a continuación, se crea con hello establecer propiedades siguientes explícitamente (todos los demás valores se establecen toohello [QueueDescription] [ QueueDescription] los valores predeterminados):
 
 | Ruta de acceso | [espacio de nombres principal] / x-servicebus-transfer / [index] donde [index] es un valor de [0, BacklogQueueCount) |
 | --- | --- |
@@ -63,15 +63,15 @@ El objeto [SendAvailabilityPairedNamespaceOptions][SendAvailabilityPairedNamespa
 | EnableDeadLetteringOnMessageExpiration |true |
 | EnableBatchedOperations |true |
 
-Por ejemplo, la primera cola de trabajos pendientes creada para el espacio de nombres **contoso** se denomina `contoso/x-servicebus-transfer/0`.
+Por ejemplo, cola de trabajos pendientes de primera Hola creado para el espacio de nombres **contoso** se denomina `contoso/x-servicebus-transfer/0`.
 
-Cuando se crean las colas, el código comprueba primero si existe dicha cola. Si la cola no existe, se crea. El código no limpiar la colas de trabajos pendientes "adicionales". En concreto, si la aplicación con el espacio de nombres principal **contoso** solicita cinco colas de trabajos pendientes, pero existe una cola con la ruta de acceso `contoso/x-servicebus-transfer/7`, dicha cola de trabajos pendientes adicional está presente pero no se usa. El sistema permite explícitamente que existan colas de trabajos pendientes adicionales que no se usan. El propietario del espacio de nombres, es el responsable de limpiar las colas de trabajos pendientes sin usar o no deseadas. La razón para tomar esta decisión es que el bus de servicio no puede saber qué fines tienen todas las colas del espacio de nombres. Además, si existe una cola con el nombre especificado, pero NO cumple la [QueueDescription][QueueDescription] asumida, las razones son las suyas propias para cambiar el comportamiento predeterminado. No se garantizan las modificaciones en las colas de registros pendientes realizadas por el código. Asegúrese de probar exhaustivamente los cambios.
+Al crear las colas de hello, código de hello comprueba primero toosee si existe dicha cola. Si no existe la cola de Hola, se crea la cola de Hola. código de Hello no limpiar las colas de trabajo pendiente "adicionales". En concreto, si hello aplicación Hola espacio de nombres principal **contoso** solicita cinco colas de trabajo pendiente, pero una cola con la ruta de acceso de hello `contoso/x-servicebus-transfer/7` existe, esa cola de trabajo pendiente adicional sigue presente pero no se usa. sistema de Hello permite explícitamente tooexist de colas de trabajo pendiente adicionales que no se usen. Como propietario del espacio de nombres de hello, es responsable de limpiar las colas de trabajo pendiente sin usar o no deseado. motivo de Hola para tomar esta decisión es que el Bus de servicio no se puede saber la finalidad de todas las colas de hello en el espacio de nombres. Además, si una cola existe con el nombre especificado de hello pero no cumple Hola supone [QueueDescription][QueueDescription], a continuación, los motivos son por su propia cambian el comportamiento predeterminado Hola. Se realiza ninguna garantía de colas de trabajo pendiente de modificaciones toohello por su código. Asegúrese de tootest confirma los cambios exhaustivamente.
 
 ## <a name="custom-messagesender"></a>MessageSender personalizado
-Cuando se envían, todos los mensajes atraviesan un objeto [MessageSender][MessageSender] interno que se comporta con normalidad cuando todo funciona y se redirigen a las colas de trabajos pendiente cuando algo "deja de funcionar". Al recibir un error no transitorio, se inicia un temporizador. Después de un período [TimeSpan][TimeSpan] que consta del valor de la propiedad [FailoverInterval][FailoverInterval] durante el que no se envían mensajes correctos, se activa la conmutación por error. En este punto, esto es lo que ocurre en cada entidad:
+Cuando se envía, todos los mensajes pasan por un interno [MessageSender] [ MessageSender] objeto que tiene un comportamiento normal cuando todo funciona y los redirige las colas de trabajo pendiente de toohello cuando cosas "break". Al recibir un error no transitorio, se inicia un temporizador. Después de un [TimeSpan] [ TimeSpan] período que consta de hello [FailoverInterval] [ FailoverInterval] durante el cual no se envía ningún mensaje correctamente el valor de propiedad , Hola conmutación por error está ocupado. En este momento, hello ocurrirá lo siguiente para cada entidad:
 
-* Se ejecuta una tarea de ping cada [PingPrimaryInterval][PingPrimaryInterval] para comprobar si la entidad está disponible. Una vez que esta tarea se realiza correctamente, todo el código de cliente que usa la entidad inmediatamente comienza a enviar mensajes nuevos al espacio de nombres principal.
-* Las solicitudes de envío a la misma entidad que se realicen en el futuro desde otros remitentes provocarán que el [BrokeredMessage][BrokeredMessage] enviado se modifique para permanecer en la cola de trabajos pendientes. La modificación elimina algunas de las propiedades del objeto [BrokeredMessage][BrokeredMessage] y las almacena en otro lugar. Las siguientes propiedades se borran y se agregan con un nuevo alias, lo que permite que el bus de servicio y el SDK procesen los mensajes de manera uniforme:
+* Ejecuta una tarea de ping cada [PingPrimaryInterval] [ PingPrimaryInterval] toocheck si Hola entidad está disponible. Una vez que esta tarea se realiza correctamente, todo el código de cliente que utiliza entity Hola inmediatamente comienza a enviar nuevos mensajes toohello espacio de nombres principal.
+* Solicitudes futuras toosend toothat misma entidad desde otros remitentes provocará hello [BrokeredMessage] [ BrokeredMessage] enviarse toobe modifica toosit en la cola de trabajos pendientes de Hola. modificación de Hello quita algunas propiedades de hello [BrokeredMessage] [ BrokeredMessage] objeto y los almacena en otro lugar. Hello siguientes propiedades se borran y se agregan con un nuevo alias, lo que permite hello y Bus de servicio de mensajes de SDK de tooprocess uniformemente:
 
 | Nombre de propiedad anterior | Nombre de propiedad nuevo |
 | --- | --- |
@@ -79,23 +79,23 @@ Cuando se envían, todos los mensajes atraviesan un objeto [MessageSender][Messa
 | TimeToLive |x-ms-timetolive |
 | ScheduledEnqueueTimeUtc |x-ms-path |
 
-La ruta de acceso de destino original se almacena también en el mensaje como una propiedad denominada x-ms-path. Este diseño permite que coexistan mensajes de varias entidades en una única cola de trabajos pendientes. El sifón vuelve a convertir las propiedades.
+ruta de acceso de destino original Hello también se almacena en el mensaje de bienvenida como una propiedad denominada x-ms-path. Este diseño permite los mensajes para muchos toocoexist de entidades en una única cola. propiedades de Hola se traducen por sifón Hola.
 
-El objeto [MessageSender][MessageSender] personalizado puede encontrar problemas cuando los mensajes se acerquen al límite de 256 KB y se active la conmutación por error. El objeto [MessageSender][MessageSender] personalizado almacena los mensajes de todas las colas y temas juntos en las colas de trabajos pendientes. Este objeto mezcla los mensajes de muchas entidades principales en las colas de trabajos pendientes. Para controlar el equilibrio de carga entre muchos clientes que no se conocen entre sí, el SDK elige aleatoriamente una cola de trabajos pendientes para cada [QueueClient][QueueClient] o [TopicClient que se crea en el código][TopicClient].
+Hola personalizado [MessageSender] [ MessageSender] objeto puede encontrar problemas cuando mensajes aproximarse al límite de 256 KB de Hola y conmutación por error está ocupado. Hola personalizado [MessageSender] [ MessageSender] objeto almacena los mensajes para todas las colas y temas juntos en las colas de trabajo pendiente de Hola. Este objeto mezcla los mensajes de varias entidades principales juntos en las colas de trabajo pendiente de Hola. toohandle equilibrio de carga entre muchos clientes que no se conocen cada otra Hola SDK aleatoriamente toma una cola de trabajo pendiente para cada [QueueClient] [ QueueClient] o [TopicClient] [ TopicClient] crear en código.
 
 ## <a name="pings"></a>Pings
-Un mensaje Ping es un [BrokeredMessage][BrokeredMessage] vacío con su propiedad [ContentType][ContentType] establecida en application/vnd.ms-servicebus-ping y un valor de [TimeToLive][TimeToLive] de 1 segundo. Este ping tiene una característica especial en Service Bus: el servidor nunca entrega un ping cuando algún llamador solicita un [BrokeredMessage][BrokeredMessage]. Por lo tanto, nunca tendrá que aprender a recibir e ignorar estos mensajes. Se hará ping a todas las entidades (cola o tema únicos) por instancia de [MessagingFactory][MessagingFactory] por cliente cuando se considere que no están disponibles. De forma predeterminada, esto ocurre una vez por minuto. Se considera que los mensajes Ping son mensajes normales del bus de servicio y pueden dar lugar a gastos de ancho de banda y mensajes. En cuanto los clientes detectan que el sistema está disponible, los mensajes se detienen.
+Un mensaje ping está vacío [BrokeredMessage] [ BrokeredMessage] con su [ContentType] [ ContentType] propiedad establece tooapplication/vnd.ms-servicebus-ping y un [TimeToLive] [ TimeToLive] valor de 1 segundo. Este ping tiene una característica especial en el Bus de servicio: servidor hello nunca entrega un ping cuando algún llamador solicita un [BrokeredMessage][BrokeredMessage]. Por lo tanto, nunca tendrá toolearn cómo tooreceive y omitir estos mensajes. Cada entidad (cola o tema únicos) por [MessagingFactory] [ MessagingFactory] instancia por cliente recibirá mensajes de ping cuando se consideran toobe no está disponible. De forma predeterminada, esto ocurre una vez por minuto. Los mensajes ping se consideran mensajes normales de Bus de servicio de toobe y pueden dar lugar a gastos de ancho de banda y mensajes. Tan pronto como los clientes de hello detectan que el sistema de hello está disponible, los mensajes de Hola se detienen.
 
-## <a name="the-syphon"></a>El sifón
-Al menos uno de los programas ejecutables de la aplicación debe ejecutar activamente el sifón. El sifón realiza una recepción de sondeo largo que dura 15 minutos. Si todas las entidades están disponibles y tiene 10 colas de trabajos pendientes, la aplicación que hospeda el sifón llama a la operación de recepción 40 veces por hora, 960 veces al día y 28800 veces en 30 días. Cuando el sifón mueve activamente mensajes desde la cola de trabajos pendientes a la cola principal, cada mensaje experimenta los siguientes cargos (se aplican cargos estándar según el tamaño del mensaje y el ancho de banda en todas las fases):
+## <a name="hello-syphon"></a>sifón Hola
+Al menos un programa ejecutable de la aplicación hello debe estar ejecutándose activamente sifón Hola. sifón Hola realiza un valor largo que dura 15 minutos recepción de sondeo. Cuando todas las entidades están disponibles y tienen 10 colas de trabajo pendiente, Hola aplicación que hospeda las llamadas de sifón de Hola Hola recibirán operación 40 veces por hora, 960 veces al día y 28.800 veces en 30 días. Cuando Hola sifón mueve activamente mensajes desde la cola principal de toohello de trabajo pendiente de hello, cada mensaje experimenta Hola siguientes cargos (cargos estándar según el tamaño del mensaje y el ancho de banda se aplica en todas las fases):
 
-1. Enviar a la cola de trabajos pendientes.
-2. Recibir de la cola de trabajos pendientes.
-3. Enviar a la cola principal.
-4. Recibir de la cola principal.
+1. Enviar trabajo pendiente de toohello.
+2. Recibir de trabajo pendiente de Hola.
+3. Enviar toohello principal.
+4. Recibir de hello principal.
 
 ## <a name="closefault-behavior"></a>Comportamiento de cierre o error
-Dentro de una aplicación que hospeda el sifón, una vez que el elemento principal o secundario [MessagingFactory][MessagingFactory] genera un error o se cierra sin que su partner genere un error o se cierre y el sifón detecta este estado, el sifón actúa. Si el otro [MessagingFactory][MessagingFactory] no se cierra en 5 segundos, el sifón generará un error en el [MessagingFactory][MessagingFactory] que aún está abierto.
+Dentro de una aplicación que hospeda el sifón hello, una vez Hola principal o secundaria [MessagingFactory] [ MessagingFactory] produce un error o se cierra sin su asociado también está error o se cierre y Hola sifón detecta este estado , sifón Hola actúa. Si otro Hola [MessagingFactory] [ MessagingFactory] no se cierra en cinco segundos, Hola sifón creará un error Hola sigue abierto [MessagingFactory] [ MessagingFactory] .
 
 ## <a name="next-steps"></a>Pasos siguientes
 Para más información sobre la mensajería asincrónica de Service Bus, consulte [Patrones de mensajería asincrónica y alta disponibilidad][Asynchronous messaging patterns and high availability]. 

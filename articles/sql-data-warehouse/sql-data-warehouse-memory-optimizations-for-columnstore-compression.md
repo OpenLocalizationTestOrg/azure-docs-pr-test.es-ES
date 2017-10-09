@@ -1,6 +1,6 @@
 ---
-title: "Mejora del rendimiento del índice de almacén de columnas en Azure SQL | Microsoft Docs"
-description: "Reduzca los requisitos de memoria o aumente la memoria disponible para maximizar el número de filas que un índice de almacén de columnas comprime en cada grupo de filas."
+title: "rendimiento del índice de almacén de columnas aaaImprove en SQL Azure | Documentos de Microsoft"
+description: "Reduzca los requisitos de memoria o aumentar Hola memoria disponible toomaximize Hola número de filas de que un índice de almacén de columnas comprime en cada grupo de filas."
 services: sql-data-warehouse
 documentationcenter: NA
 author: shivaniguptamsft
@@ -15,35 +15,35 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 6/2/2017
 ms.author: shigu;barbkess
-ms.openlocfilehash: f0e0b839b4a0c216eee2eb5134d43b91d8f83289
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 2c5a68435aa200236a2dc8538aa4638b52a59093
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>Maximización de la calidad del grupo de filas del almacén de columnas
 
-El número de filas de un grupo de filas determina la calidad del grupo de filas. Reduzca los requisitos de memoria o aumente la memoria disponible para maximizar el número de filas que un índice de almacén de columnas comprime en cada grupo de filas.  Emplee estos métodos para mejorar las tasas de compresión y el rendimiento de las consultas de los índices de almacén de columnas.
+Calidad de un grupo de filas se determina mediante el número de filas de un grupo de filas Hola. Reduzca los requisitos de memoria o aumentar Hola memoria disponible toomaximize Hola número de filas de que un índice de almacén de columnas comprime en cada grupo de filas.  Use las tasas de compresión de métodos tooimprove y rendimiento de las consultas para los índices de almacén de columnas.
 
-## <a name="why-the-rowgroup-size-matters"></a>Por qué importa el tamaño del grupo de filas
-Como los índices de almacén de columnas examinan una tabla mediante el examen de segmentos de columna de grupos de filas individuales, al maximizar el número de filas de cada grupo de estas, se mejora el rendimiento de las consultas. Cuando los grupos de filas presentan un gran número de filas, la compresión de datos mejora; es decir, hay menos datos que se deben leer en el disco.
+## <a name="why-hello-rowgroup-size-matters"></a>¿Por qué es importante el tamaño del grupo de filas de Hola
+Puesto que un índice de almacén recorre una tabla mediante el análisis de segmentos de columna de grupos de filas individuales, maximizar el número de Hola de filas de cada grupo de filas mejora el rendimiento de las consultas. Cuando los grupos de filas tienen un gran número de filas, la compresión de datos mejora lo que significa que hay menos tooread datos desde el disco.
 
 Para obtener más información sobre los grupos de filas, consulte [Guía de índices de almacén de columnas](https://msdn.microsoft.com/library/gg492088.aspx).
 
 ## <a name="target-size-for-rowgroups"></a>Tamaño objetivo de los grupos de filas
-Para obtener el mejor rendimiento de consultas, el objetivo consiste en maximizar el número de filas por grupo de un índice de almacén de columnas. Un grupo de filas puede tener un máximo de 1.048.576 filas. No pasa nada si no se tiene el máximo número de filas por grupo de filas. Los índices de almacén de columnas logran un buen rendimiento cuando los grupos de filas cuentan con al menos 100.000 filas.
+Para obtener el mejor rendimiento de consulta, objetivo de hello es número de hello toomaximize de filas por grupo en un índice de almacén. Un grupo de filas puede tener un máximo de 1.048.576 filas. Su correcto toonot tiene número máximo de Hola de filas por grupo. Los índices de almacén de columnas logran un buen rendimiento cuando los grupos de filas cuentan con al menos 100.000 filas.
 
 ## <a name="rowgroups-can-get-trimmed-during-compression"></a>Los grupos de filas pueden recortarse durante la compresión
 
-Durante una carga masiva o regeneración de índice de almacén columnas, a veces no queda suficiente memoria disponible para comprimir todas las filas designadas para cada grupo de filas. Cuando existe una presión de memoria, los índices de almacén de columnas recortan el tamaño de los grupos de filas para que se pueda realizar la compresión en el almacén de columnas. 
+Durante una regeneración de índice masiva carga o almacén de columnas, en ocasiones, no hay suficiente toocompress disponibles de memoria que todos Hola filas designados para cada grupo de filas. Cuando hay presión de memoria, índices de almacén de columnas recortan tamaños de grupo de filas de Hola para que compresión de almacén de columnas de Hola se realice correctamente. 
 
-Cuando no hay memoria suficiente para comprimir al menos 10.000 filas en cada grupo de filas, SQL Data Warehouse genera un error.
+Cuando hay filas de toocompress al menos 10 000 no hay memoria suficiente en cada grupo de filas, almacenamiento de datos de SQL genera un error.
 
 Para obtener más información sobre la carga masiva, consulte [Carga de datos en un índice de almacén de columnas agrupado](https://msdn.microsoft.com/en-us/library/dn935008.aspx#Bulk load into a clustered columnstore index).
 
-## <a name="how-to-monitor-rowgroup-quality"></a>Cómo supervisar la calidad del grupo de filas
+## <a name="how-toomonitor-rowgroup-quality"></a>La calidad de un grupo de filas toomonitor
 
-Hay una DMV (sys.dm_pdw_nodes_db_column_store_row_group_physical_stats) que expone información útil como el número de filas de los grupos de filas y el motivo para recortar si ha habido recorte. Puede crear la siguiente vista como una forma práctica para consultar esta DMV a fin de obtener información sobre el recorte del grupo de filas.
+Hay una DMV (sys.dm_pdw_nodes_db_column_store_row_group_physical_stats) que expone información útil, como el número de filas de la razón de hello y grupos de filas de recorte si se recorta no existe. Puede crear Hola después de la vista como una forma práctica tooquery esta información de tooget DMV de recorte de un grupo de filas.
 
 ```sql
 create view dbo.vCS_rg_physical_stats
@@ -70,63 +70,63 @@ select *
 from cte;
 ```
 
-trim_reason_desc indica si el grupo de filas se ha recortado (trim_reason_desc = NO_TRIM implica que no ha habido ningún recorte y que el grupo de filas es de calidad óptima). Los siguientes motivos de recorte indican el recorte prematuro del grupo de filas:
-- BULKLOAD: este motivo de recorte se usa cuando el lote entrante de filas de la carga tenía menos de 1 millón de filas. El motor creará grupos de filas comprimidos si hay más de 100.000 filas que se van a insertar (en lugar de insertar en el almacén delta), pero establece el motivo de recorte en BULKLOAD. En este escenario, considere la posibilidad de aumentar la ventana de carga por lotes para acumular más filas. Además, vuelva a evaluar el esquema de partición para asegurarse de que no es demasiado granular si los grupos de filas no pueden abarcar los límites de partición.
-- MEMORY_LIMITATION: para crear grupos de filas con 1 millón de filas, el motor necesita una determinada cantidad de memoria de trabajo. Cuando la memoria disponible de la sesión de carga es inferior a la memoria de trabajo necesaria, los grupos de filas se recortan prematuramente. En las siguientes secciones se explica cómo estimar la memoria necesaria y asignar más.
-- DICTIONARY_SIZE: este motivo de recorte indica que el recorte del grupo de filas se ha producido porque había al menos una columna de cadena con cadenas de cardinalidad anchas o altas. El tamaño del diccionario está limitado a 16 MB de memoria y, cuando se alcanza este límite, se comprime el grupo de filas. Si ejecuta en esta situación, considere la posibilidad de aislar la columna problemática en una tabla independiente.
+Hola trim_reason_desc indica si el grupo de filas de Hola se recorta (trim_reason_desc = NO_TRIM implica no hubo ningún recorte y grupo de filas es de calidad óptima). Hello razones recorte siguientes indican prematura recorte del grupo de filas de hello:
+- Carga masiva: Ello recorte se utiliza al lote entrante de Hola de filas de carga de hello tenía menor que 1 millón de filas. motor de Hello creará grupos de filas comprimido si hay más de 100.000 filas insertadas (como tooinserting lugar en el almacén delta de hello) pero conjuntos Hola tooBULKLOAD motivo recorte. En este escenario, considere la posibilidad de aumentar su tooaccumulate de ventana de carga de lote más filas. Además, vuelva a evaluar su tooensure de esquema de partición no es demasiado específico, como grupos de filas no pueden abarcar los límites de partición.
+- MEMORY_LIMITATION: motor de hello requiere toocreate grupos de filas con 1 millón de filas, una determinada cantidad de memoria de trabajo. Cuando la Hola cargar sesión de memoria disponible es menor que Hola necesaria de memoria de trabajo, prematuramente obtengan recuperan grupos de filas. Hola las secciones siguientes explica cómo tooestimate memoria necesaria y asignar más memoria.
+- DICTIONARY_SIZE: este motivo de recorte indica que el recorte del grupo de filas se ha producido porque había al menos una columna de cadena con cadenas de cardinalidad anchas o altas. el tamaño del diccionario Hello es limitado too16 MB de memoria y una vez que se alcanza este límite grupo de filas de Hola se comprime. Si ejecuta esta situación, considere la posibilidad de aislar columna problemático hello en una tabla independiente.
 
-## <a name="how-to-estimate-memory-requirements"></a>Cómo calcular los requisitos de memoria
+## <a name="how-tooestimate-memory-requirements"></a>¿Cómo tooestimate requisitos de memoria
 
 <!--
-To view an estimate of the memory requirements to compress a rowgroup of maximum size into a columnstore index, download and run the view [dbo.vCS_mon_mem_grant](). This view shows the size of the memory grant that a rowgroup requires for compression in to the columnstore.
+tooview an estimate of hello memory requirements toocompress a rowgroup of maximum size into a columnstore index, download and run hello view [dbo.vCS_mon_mem_grant](). This view shows hello size of hello memory grant that a rowgroup requires for compression in toohello columnstore.
 -->
 
-La memoria máxima requerida para comprimir un grupo de filas es aproximadamente:
+Hola máximo memoria necesaria toocompress un grupo de filas es aproximadamente
 
 - 72 MB +
-- \#filas \* \#columnas \* 8 bytes +
-- \#filas \* \#columnas de cadena corta \* 32 bytes +
+- \#filas \*\#columnas \* 8 bytes +
+- \#filas \*\#columnas de cadena corta \* 32 bytes +
 - \#columnas de cadena larga \* 16 MB para el diccionario de compresión
 
 donde las columnas de cadena corta emplean tipos de datos de cadena de ≤32 bytes y las de cadena larga usan tipos de datos de cadena de >32 bytes.
 
-Las cadenas largas que se comprimen con un método de compresión diseñado para comprimir texto. Este método de compresión utiliza un *diccionario* para almacenar patrones de texto. El tamaño máximo de un diccionario es de 16 MB. Hay solo un diccionario para cada columna de cadena larga del grupo de filas.
+Las cadenas largas que se comprimen con un método de compresión diseñado para comprimir texto. Este método de compresión usa un *diccionario* toostore patrones de texto. tamaño máximo de Hola de un diccionario es de 16 MB. Hay solo un diccionario para cada columna de cadena larga en el grupo de filas de Hola.
 
 Para ver una discusión en profundidad sobre los requisitos de memoria del almacén de columnas, eche un vistazo al vídeo [Azure SQL Data Warehouse scaling: configuration and guidance](https://myignite.microsoft.com/videos/14822) (Escalado de Azure SQL Data Warehouse: configuración y directrices).
 
-## <a name="ways-to-reduce-memory-requirements"></a>Formas de reducir los requisitos de memoria
+## <a name="ways-tooreduce-memory-requirements"></a>Requisitos de memoria de formas tooreduce
 
-Ponga en práctica las siguientes técnicas a fin de reducir los requisitos de memoria para comprimir los grupos de filas en índices de almacén de columnas.
+Usar hello según los requisitos de memoria de técnicas tooreduce Hola para comprimir los grupos de filas en los índices de almacén de columnas.
 
 ### <a name="use-fewer-columns"></a>Utilizar menos columnas
-Si es posible, diseñe la tabla con menos columnas. Cuando se comprime un grupo de filas en el almacén de columnas, el índice de este comprime cada segmento de columna por separado. Por lo tanto, los requisitos de memoria para comprimir un grupo de filas aumentan a la par que el número de columnas.
+Si es posible, diseñar tabla Hola con menos columnas. Cuando un grupo de filas se comprime en el almacén de columnas de hello, índice de almacén de columnas de hello comprime cada segmento de columna por separado. Hola, por tanto, los requisitos de memoria aumentan a medida que Hola aumenta número de columnas toocompress un grupo de filas.
 
 
 ### <a name="use-fewer-string-columns"></a>Utilizar menos columnas de cadena
-Las columnas de tipos de datos de cadena requieren más memoria que los tipos de datos numéricos y de fecha. Para reducir los requisitos de memoria, plantéese la posibilidad de quitar las columnas de cadena de las tablas de hechos y colocarlos en las tablas de dimensiones más pequeñas.
+Las columnas de tipos de datos de cadena requieren más memoria que los tipos de datos numéricos y de fecha. requisitos de memoria de tooreduce, considere la posibilidad de quitar las columnas de cadena de las tablas de hechos y colocarlos en las tablas de dimensión más pequeñas.
 
 Requisitos de memoria adicionales para la compresión de cadenas:
 
-- Los tipos de datos de cadena de hasta 32 caracteres pueden requerir 32 bytes adicionales por valor.
-- Los tipos de datos de cadena con más de 32 caracteres se comprimen con métodos de diccionario.  Cada columna del grupo de filas puede requerir hasta 16 MB adicionales para crear el diccionario.
+- Tipos de datos de cadena de caracteres de too32 pueden requerir 32 bytes adicionales por valor.
+- Los tipos de datos de cadena con más de 32 caracteres se comprimen con métodos de diccionario.  Cada columna de grupo de filas de hello puede requerir diccionario de tooan adicionales de 16 MB toobuild Hola.
 
 ### <a name="avoid-over-partitioning"></a>Evitar un exceso de particiones
 
-Los índices de almacén de columnas crean uno o varios grupos de filas por partición. En SQL Data Warehouse, el número de particiones aumenta rápidamente porque los datos se distribuyen y cada distribución se particiona. Si la tabla presenta demasiadas particiones, es posible que no haya un número de filas suficiente para llenar los grupos de filas. La falta de filas no genera presión de memoria durante la compresión, pero da lugar a grupos de filas que no logran el mejor rendimiento de consultas de almacén de columnas.
+Los índices de almacén de columnas crean uno o varios grupos de filas por partición. En el almacén de datos de SQL, número de Hola de particiones aumenta rápidamente porque Hola datos se distribuyen y se crean particiones de cada distribución. Si tabla hello tiene demasiadas particiones, podría no ser suficiente grupos de filas de filas toofill Hola. falta de Hola de filas no crea presión de memoria durante la compresión, pero lo hace toorowgroups que no se alcance el mejor rendimiento de consultas de almacén de columnas Hola.
 
-Otro motivo para evitar el exceso de particiones es que cargar filas en un índice de columnas en una tabla particionada conlleva una sobrecarga para la memoria. Durante la carga, muchas particiones podrían recibir las filas entrantes, que se guardan en la memoria hasta que cada partición alcance el número de filas suficiente para llevar a cabo la compresión. Si se cuenta con demasiadas particiones, se genera una presión de memoria adicional.
+Otro motivo tooavoid exceso particiones es que hay una sobrecarga de memoria para cargar las filas en un índice de almacén de columnas en una tabla con particiones. Durante la carga de un número de particiones podría recibir filas entrantes hello, que se mantienen en la memoria hasta que cada partición tiene suficiente toobe de filas comprimido. Si se cuenta con demasiadas particiones, se genera una presión de memoria adicional.
 
-### <a name="simplify-the-load-query"></a>Simplificar la consulta de carga
+### <a name="simplify-hello-load-query"></a>Simplificar la consulta de carga de Hola
 
-La base de datos comparte la concesión de memoria para una consulta con todos los operadores de esta. Cuando una consulta de carga presenta ordenaciones y uniones complejas, se reduce la memoria disponible para la compresión.
+base de datos de Hello comparte Hola de concesión de memoria para una consulta entre todos los operadores de hello en consulta Hola. Cuando una consulta de carga tiene ordenaciones complejas y combinaciones, se reduce la memoria de hello disponible para la compresión.
 
-Diseñe la consulta de carga para que se centre únicamente en cargar la consulta. Si tiene que ejecutar transformaciones en los datos, ejecútelas de forma independiente de la consulta de carga. Por ejemplo, almacene provisionalmente los datos en una tabla de montón, ejecute las transformaciones y, después, cargue la tabla de almacenamiento provisional en el índice de almacén de columnas. Puede cargar los datos primero y, después, usar el sistema MPP para transformar los datos.
+Diseñar Hola carga consulta toofocus solo en cargar Hola consulta. Si necesita toorun transformaciones en los datos de hello, ejecutarlos independiente de consulta de carga de Hola. Por ejemplo, almacenar los datos en una tabla de montón, Hola ejecutar transformaciones de hello y, a continuación, cargar Hola tabla de ensayo en el índice de almacén de columnas de Hola. Puede cargar datos de hello en primer lugar y, a continuación, usar datos de saludo de hello MPP sistema tootransform.
 
 ### <a name="adjust-maxdop"></a>Ajustar MAXDOP
 
-Cada distribución comprime los grupos de filas en el almacén de columnas en paralelo cuando hay más de un núcleo de CPU disponible por distribución. El paralelismo requiere recursos de memoria adicionales, lo que puede generar presión de memoria y recorte de los grupos de filas.
+Cada distribución comprime los grupos de filas en almacén de columnas de hello en paralelo cuando hay más de un núcleo de CPU disponible por la distribución. paralelismo de Hello requiere recursos adicionales de memoria, lo que pueden provocar toomemory presión y recorte de un grupo de filas.
 
-Para reducir la presión de memoria, puede usar la sugerencia de consulta MAXDOP a fin de forzar la operación de carga con el objetivo de que se ejecute en modo serie dentro de cada distribución.
+tooreduce presión de memoria, puede usar Hola MAXDOP consulta sugerencia tooforce Hola carga operación toorun en modo serie dentro de cada distribución.
 
 ```
 CREATE TABLE MyFactSalesQuota
@@ -135,16 +135,16 @@ AS SELECT * FROM FactSalesQUota
 OPTION (MAXDOP 1);
 ```
 
-## <a name="ways-to-allocate-more-memory"></a>Formas de asignar más memoria
+## <a name="ways-tooallocate-more-memory"></a>Formas tooallocate más memoria
 
-Juntos, el tamaño de DWU y la clase de recursos de usuario, determinan cuánta memoria hay disponible para la consulta de un usuario. A fin de incrementar la concesión de memoria para una consulta de carga, puede aumentar el número de DWU o la clase de recursos.
+Clase de recursos de usuario de hello y tamaño DWU combinación determinan la cantidad de memoria está disponible para una consulta de usuario. tooincrease Hola de concesión de memoria para una consulta de carga, puede aumentar el número de Hola de a Dwu o aumentar la clase de recurso de hello.
 
-- Para aumentar las DWU, consulte [¿Cómo se realiza el escalado del rendimiento?](sql-data-warehouse-manage-compute-overview.md#scale-compute)
-- Para cambiar la clase de recursos de una consulta, consulte [Cambio de ejemplo de clase de recursos de usuario](sql-data-warehouse-develop-concurrency.md#changing-user-resource-class-example).
+- ¿Hola tooincrease a Dwu, vea [cómo escalar el rendimiento?](sql-data-warehouse-manage-compute-overview.md#scale-compute)
+- clase de recurso de hello toochange para una consulta, vea [cambiar un ejemplo de clase del recurso de usuario](sql-data-warehouse-develop-concurrency.md#changing-user-resource-class-example).
 
-Por ejemplo, con 100 DWU, un usuario de la clase de recursos smallrc puede usar 100 MB de memoria para cada distribución. Para obtener información más detallada, consulte el artículo sobre [simultaneidad en SQL Data Warehouse](sql-data-warehouse-develop-concurrency.md).
+Por ejemplo, en 100 de DWU un usuario en la clase de recurso de hello smallrc puede usar 100 MB de memoria para cada distribución. Para obtener detalles de hello, consulte [simultaneidad en el almacén de datos de SQL](sql-data-warehouse-develop-concurrency.md).
 
-Supongamos que decide que necesita 700 MB de memoria para obtener tamaños de grupo de filas de alta calidad. Estos ejemplos muestran cómo se puede ejecutar la consulta de carga con suficiente memoria.
+Suponga que decide que necesita 700 MB de tamaños de memoria tooget grupo de filas de alta calidad. Estos ejemplos muestran cómo se puede ejecutar la consulta de carga de hello con suficiente memoria.
 
 - Con 1000 DWU y mediumrc, la concesión de memoria es de 800 MB.
 - Con 600 DWU y largerc, la concesión de memoria es de 800 MB.
@@ -152,7 +152,7 @@ Supongamos que decide que necesita 700 MB de memoria para obtener tamaños de gr
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para descubrir más formas de mejorar el rendimiento en SQL Data Warehouse, consulte el tema de [información general sobre rendimiento](sql-data-warehouse-overview-manage-user-queries.md).
+toofind más rendimiento tooimprove de formas en el almacén de datos de SQL, vea hello [información general sobre rendimiento](sql-data-warehouse-overview-manage-user-queries.md).
 
 <!--Image references-->
 

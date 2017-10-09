@@ -1,6 +1,6 @@
 ---
-title: "Configuración de la replicación de clúster de HBase en redes virtuales - Azure | Microsoft Docs"
-description: "Aprenda a configurar la replicación de HBase para equilibrio de carga, alta disponibilidad, migración o actualización sin tiempo de inactividad de una versión de HDInsight a otra y recuperación ante desastres."
+title: "replicación de clúster de HBase aaaConfigure dentro de redes virtuales - Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo tooconfigure HBase replicación equilibrio de carga, alta disponibilidad, sin tiempos de inactividad migración o actualización de una tooanother de versión de HDInsight y recuperación ante desastres."
 services: hdinsight,virtual-network
 documentationcenter: 
 author: mumian
@@ -14,31 +14,31 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/25/2017
 ms.author: jgao
-ms.openlocfilehash: 895709391486acb4a9d7a54ef046956539913f7b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ba1c44f26b7cbf4a7a88159b12b3e064ea9f9a20
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configure-hbase-cluster-replication-within-virtual-networks"></a>Configuración de la replicación de clúster de HBase en redes virtuales
 
-Aprenda a configurar la replicación de HBase en una red virtual (VNet) o entre dos redes virtuales.
+Obtenga información acerca de cómo tooconfigure HBase replicación en una red virtual (VNet) o entre dos redes virtuales.
 
-La replicación de clúster usa una metodología de inserción de origen. Un clúster de HBase puede ser un origen, un destino o cumplir ambos roles a la vez. La replicación es asincrónica y el objetivo de la replicación es la coherencia eventual. Cuando el origen recibe una edición en una familia de columna con la replicación habilitada, esa edición se propaga a todos los clústeres de destino. Cuando se replican datos de un clúster a otro, se realiza un seguimiento del clúster de origen y de todos los clústeres que ya han consumido los datos para evitar bucles de replicación.
+La replicación de clúster usa una metodología de inserción de origen. Un clúster de HBase puede ser un origen, un destino o cumplir ambos roles a la vez. La replicación es asincrónica y objetivo de Hola de replicación es coherencia definitiva. Cuando el origen de Hola recibe una familia de columna de tooa de edición con la replicación habilitada, editar es tooall propagado clústeres de destino. Cuando se replican datos desde un tooanother de clúster, clúster de origen de Hola y todos los clústeres que ya se han utilizado datos Hola son sometidos a seguimiento tooprevent replicación bucles.
 
 En este tutorial, configurará una replicación de origen y de destino. Para otras topologías de clúster, consulte [Guía de referencia de HBase Apache](http://hbase.apache.org/book.html#_cluster_replication).
 
 Casos de uso de replicación de HBase para una única red virtual:
 
-* Equilibrio de carga, por ejemplo: ejecutar exámenes o trabajos MapReduce en el clúster de destino e ingerir datos en el clúster de origen
+* Equilibrio de carga, por ejemplo, ejecutando exámenes o trabajos MapReduce en clúster de destino de hello e introducción de datos en clúster de origen Hola
 * Alta disponibilidad
-* Migración de datos de un clúster de HBase a otro
-* Actualización de un clúster de Azure HDInsight de una versión a otra
+* Migrar datos desde un tooanother de clúster de HBase
+* Actualizar un clúster de HDInsight de Azure desde una tooanother de versión
 
 Casos de uso de replicación de HBase para dos redes virtuales:
 
 * Recuperación ante desastres
-* Equilibrio de carga y creación de particiones de la aplicación
+* Creación de particiones de aplicación hello y equilibrio de carga
 * Alta disponibilidad
 
 Puede replicar clústeres mediante scripts de [acción de script](hdinsight-hadoop-customize-cluster-linux.md) que se encuentran en [GitHub](https://github.com/Azure/hbase-utils/tree/master/replication).
@@ -46,136 +46,136 @@ Puede replicar clústeres mediante scripts de [acción de script](hdinsight-hado
 ## <a name="prerequisites"></a>Requisitos previos
 Antes de comenzar este tutorial, debe tener una suscripción a Azure. Vea [Obtener evaluación gratuita de Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
-## <a name="configure-the-environments"></a>Configuración de los entornos
+## <a name="configure-hello-environments"></a>Configurar entornos de Hola
 
 Hay tres opciones de configuración posibles:
 
 - Dos clústeres de HBase en una única red virtual de Azure
-- Dos clústeres de HBase en dos redes virtuales diferentes de la misma región
+- Dos clústeres de HBase en dos redes virtuales diferentes en Hola misma región
 - Dos clústeres de HBase en dos redes virtuales diferentes de dos regiones distintas (replicación geográfica)
 
-Para que sea más fácil configurar los entornos, hemos creado algunas [plantillas de Azure Resource Manager](../azure-resource-manager/resource-group-overview.md). Si prefiere configurar los entornos mediante otros métodos, consulte:
+toomake lo más fácil de entornos de hello tooconfigure, hemos creado algunos [plantillas de Azure Resource Manager](../azure-resource-manager/resource-group-overview.md). Si prefiere entornos de hello tooconfigure mediante otros métodos, consulte:
 
 - [Creación de clústeres de Hadoop basados en Linux en HDInsight](hdinsight-hadoop-provision-linux-clusters.md)
 - [Create HBase clusters in Azure Virtual Network](hdinsight-hbase-provision-vnet.md) (Creación de clústeres de HBase en Azure Virtual Network)
 
 ### <a name="configure-one-virtual-network"></a>Configuración de una única red virtual
 
-Haga clic en la imagen siguiente para crear dos clústeres de HBase en la misma red virtual. La plantilla se encuentra en [Plantillas de inicio rápido de Azure](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-one-vnet/).
+Haga clic en hello después imagen toocreate dos HBase clústeres Hola misma red virtual. Hola plantilla se almacena en [plantillas de inicio rápido de Azure](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-one-vnet/).
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-replication-one-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hbase-replication/deploy-to-azure.png" alt="Deploy to Azure"></a>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-replication-one-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hbase-replication/deploy-to-azure.png" alt="Deploy tooAzure"></a>
 
-### <a name="configure-two-virtual-networks-in-the-same-region"></a>Configuración de dos redes virtuales en la misma región
+### <a name="configure-two-virtual-networks-in-hello-same-region"></a>Configurar dos redes virtuales en hello misma región
 
-Haga clic en la imagen siguiente para crear dos redes virtuales con emparejamiento de VNet y dos clústeres de HBase en la misma región. La plantilla se encuentra en [Plantillas de inicio rápido de Azure](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-two-vnets-same-region/).
+Haga clic en hello después imagen toocreate dos redes virtuales con intercambio de tráfico de red virtual y dos clústeres de HBase en hello misma región. Hola plantilla se almacena en [plantillas de inicio rápido de Azure](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-two-vnets-same-region/).
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-replication-two-vnets-same-region%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hbase-replication/deploy-to-azure.png" alt="Deploy to Azure"></a>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-replication-two-vnets-same-region%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hbase-replication/deploy-to-azure.png" alt="Deploy tooAzure"></a>
 
 
 
-Este escenario requiere [emparejamiento de VNet](../virtual-network/virtual-network-peering-overview.md). La plantilla permite el emparejamiento de VNet.   
+Este escenario requiere [emparejamiento de VNet](../virtual-network/virtual-network-peering-overview.md). plantilla de Hello permite el intercambio de tráfico de red virtual.   
 
-La replicación de HBase utiliza direcciones IP de las máquinas virtuales ZooKeeper. Debe configurar las direcciones IP estáticas para los nodos ZooKeeper de HBase de destino.
+Replicación de HBase utiliza direcciones IP de hello ZooKeeper las máquinas virtuales. Debe configurar las direcciones IP estáticas para los nodos de HBase ZooKeeper de destino de Hola.
 
-**Para configurar las direcciones IP estáticas**
+**direcciones IP estáticas tooconfigure**
 
-1. Inicie sesión en el [Portal de Azure](https://portal.azure.com).
-2. En el menú de la izquierda, haga clic en **Resource groups** (Grupos de recursos).
-3. Haga clic en el grupo de recursos que contiene el clúster de HBase de destino. Este es el grupo de recursos que especificó al usar la plantilla de Resource Manager para crear el entorno. Puede utilizar el filtro para restringir la lista. Puede ver una lista de recursos que incluye las dos redes virtuales.
-4. Haga clic en la red virtual que contiene el clúster de HBase de destino. Por ejemplo, haga clic en **xxxx-vnet2**. Puede ver tres dispositivos con nombres que empiezan por **nic-zookeepermode-**. Estos dispositivos son las tres máquinas virtuales ZooKeeper.
-5. Haga clic en una de las máquinas virtuales ZooKeeper.
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
+2. Hola menú izquierdo, haga clic en **grupos de recursos**.
+3. Haga clic en el grupo de recursos que contiene el clúster de HBase de destino de Hola. Se trata de un grupo de recursos de Hola que especificó cuando se usa el entorno hello toocreate plantillas de administrador de recursos de Hola. Puede usar Hola filtro toonarrow hacia abajo de la lista de Hola. Puede ver una lista de recursos que contiene las dos redes virtuales de Hola.
+4. Haga clic en la red virtual de Hola que contiene el clúster de HBase de destino de Hola. Por ejemplo, haga clic en **xxxx-vnet2**. Puede ver tres dispositivos con nombres que empiezan por **nic-zookeepermode-**. Los dispositivos están las máquinas virtuales de hello tres ZooKeeper.
+5. Haga clic en uno de hello ZooKeeper las máquinas virtuales.
 6. Haga clic en **IP configurations** (Configuraciones IP).
-7. En la lista, haga clic en **ipConfig1**.
-8. Haga clic en **Static** (Estático) y anote la dirección IP real. Necesitará la dirección IP al ejecutar la acción de script para habilitar la replicación.
+7. Haga clic en **ipConfig1** de lista de Hola.
+8. Haga clic en **estático**y anote la dirección IP real de Hola. Necesitará la dirección IP de hello cuando ejecuta la replicación de tooenable de acción de secuencia de comandos de Hola.
 
   ![Dirección IP estática ZooKeeper de replicación de HBase para HDInsight](./media/hdinsight-hbase-replication/hdinsight-hbase-replication-zookeeper-static-ip.png)
 
-9. Repita el paso 6 para establecer la dirección IP estática para los otros dos nodos ZooKeeper.
+9. Repita el paso 6 tooset Hola IP estática para hello otros dos nodos ZooKeeper.
 
-En el escenario entre redes virtuales, debe usar el modificador **-ip** al llamar a la acción de script **hdi_enable_replication.sh**.
+Para el escenario de red virtual entre hello, debe usar hello **- ip** cambiar al llamar a hello **hdi_enable_replication.sh** acción de secuencia de comandos.
 
 ### <a name="configure-two-virtual-networks-in-two-different-regions"></a>Configuración de dos redes virtuales en dos regiones distintas
 
-Haga clic en la imagen siguiente para crear dos redes virtuales en dos regiones distintas. La plantilla se encuentra almacenada en un contenedor de blobs de Azure público.
+Haga clic en hello después imagen toocreate dos redes virtuales en dos regiones diferentes. plantilla de Hola se almacena en un contenedor de blobs de Azure público.
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fhbaseha%2Fdeploy-hbase-geo-replication.json" target="_blank"><img src="./media/hdinsight-hbase-replication/deploy-to-azure.png" alt="Deploy to Azure"></a>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fhbaseha%2Fdeploy-hbase-geo-replication.json" target="_blank"><img src="./media/hdinsight-hbase-replication/deploy-to-azure.png" alt="Deploy tooAzure"></a>
 
-Cree una puerta de enlace de VPN entre las dos redes virtuales. Para obtener instrucciones, consulte [Create a VNet with a site-to-site connection](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) (Creación de una red virtual con una conexión de sitio a sitio).
+Crear una puerta de enlace VPN entre las dos redes virtuales de Hola. Para obtener instrucciones, consulte [Create a VNet with a site-to-site connection](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) (Creación de una red virtual con una conexión de sitio a sitio).
 
-La replicación de HBase utiliza direcciones IP de las máquinas virtuales ZooKeeper. Debe configurar las direcciones IP estáticas para los nodos ZooKeeper de HBase de destino. Para configurar la dirección IP estática, consulte la sección "Configuración de dos redes virtuales en la misma región" en este artículo.
+Replicación de HBase utiliza direcciones IP de hello ZooKeeper las máquinas virtuales. Debe configurar las direcciones IP estáticas para los nodos de HBase ZooKeeper de destino de Hola. tooconfigure dirección IP estática, consulte la sección "configurar dos redes virtuales en Hola misma región" de hello en este artículo.
 
-En el escenario entre redes virtuales, debe usar el modificador **-ip** al llamar a la acción de script **hdi_enable_replication.sh**.
+Para el escenario de red virtual entre hello, debe usar hello **- ip** cambiar al llamar a hello **hdi_enable_replication.sh** acción de secuencia de comandos.
 
 ## <a name="load-test-data"></a>Carga de datos de prueba
 
-Cuando replica un clúster, debe especificar las tablas que se van a replicar. En esta sección, cargará algunos datos en el clúster de origen. En la siguiente sección, habilitará la replicación entre los dos clústeres.
+Cuando se replica un clúster, debe especificar Hola tablas tooreplicate. En esta sección, se cargará algunos datos en clúster de origen Hola. En la siguiente sección hello, permitirá que la replicación entre dos clústeres de Hola.
 
-Siga las instrucciones de [HBase tutorial: Get started using Apache HBase with Linux-based Hadoop in HDInsight](hdinsight-hbase-tutorial-get-started-linux.md) (Tutorial de HBase: Introducción al uso de Apache HBase con Hadoop basado en Linux en HDInsight) para crear una tabla **Contacts** e insertar algunos datos en la tabla.
+Siga las instrucciones de hello en [HBase tutorial: Introducción al uso de HBase de Apache con basado en Linux, Hadoop en HDInsight](hdinsight-hbase-tutorial-get-started-linux.md) toocreate un **contactos** tabla e insertar algunos datos en la tabla Hola.
 
 ## <a name="enable-replication"></a>Habilitar replicación
 
-Los pasos siguientes muestran cómo llamar al script de acción de script desde Azure Portal. Para ejecutar una acción de script mediante Azure PowerShell y la interfaz de línea de comandos (CLI) de Azure, consulte [Customize Linux-based HDInsight clusters using script action](hdinsight-hadoop-customize-cluster-linux.md) (Personalización de clústeres de HDInsight basado en Linux mediante acciones de script).
+Hola siguientes pasos muestra cómo toocall Hola acción de script de Hola portal de Azure. Para ejecutar una acción de secuencia de comandos mediante el uso de hello interfaz de línea de comandos (CLI) de Azure y Azure PowerShell, consulte [clústeres de HDInsight basados en Linux personalizar mediante la acción de secuencia de comandos](hdinsight-hadoop-customize-cluster-linux.md).
 
-**Para habilitar la replicación de HBase desde Azure Portal**
+**replicación de HBase tooenable de hello portal de Azure**
 
-1. Inicie sesión en el [Portal de Azure](https://portal.azure.com).
-2. Abra el clúster de HBase de origen.
-3. En el menú del clúster, haga clic en **Script Actions** (Acciones de script).
-4. Haga clic en **Submit New** (Enviar nueva) en la parte superior de la hoja.
-5. Seleccione o escriba la siguiente información:
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
+2. Abra el clúster de HBase de origen de Hola.
+3. En el menú de clúster de hello, haga clic en **acciones de Script**.
+4. Haga clic en **Enviar nueva** de arriba Hola de hoja de Hola.
+5. Seleccione o escriba Hola siguiente información:
 
   - **Nombre** especifique **Enable replication** (Habilitar replicación).
   - **URL de script de Bash**: escriba **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh**.
-  - **Principal**: seleccionado. Borre los demás tipos de nodo.
-  - **Parámetros**: los siguientes parámetros de ejemplo habilitan la replicación de todas las tablas existentes y copian todos los datos del clúster de origen en el clúster de destino:
+  - **Principal**: seleccionado. Desactive Hola otros tipos de nodos.
+  - **Parámetros**: siguiente Hola parámetros Habilitar replicación para todas las tablas existentes de Hola de ejemplo y copiar todos los datos de Hola Hola origen clúster toohello destino clúster:
 
             -m hn1 -s <source cluster DNS name> -d <destination cluster DNS name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata
 
-6. Haga clic en **Crear**. El script puede tardar algún tiempo, especialmente cuando se usa el argumento -copydata.
+6. Haga clic en **Crear**. script de Hola puede tardar algún tiempo, especialmente cuando se usa el argumento - copydata de Hola.
 
 Argumentos necesarios:
 
 |Nombre|Descripción|
 |----|-----------|
-|-s, --src-cluster | Especifica el nombre DNS del clúster de HBase de origen. Por ejemplo: -s hbsrccluster, --src-cluster=hbsrccluster |
-|-d, --dst-cluster | Especifica el nombre DNS del clúster de HBase de destino (réplica). Por ejemplo: -s dsthbcluster, --src-cluster=dsthbcluster |
-|-sp, --src-ambari-password | Especifica la contraseña de administrador para Ambari en el clúster de HBase de origen. |
-|-dp, --dst-ambari-password | Especifica la contraseña de administrador para Ambari en el clúster de HBase de destino.|
+|-s, --src-cluster | Especifique el nombre DNS de hello del clúster de HBase de origen de Hola. Por ejemplo: -s hbsrccluster, --src-cluster=hbsrccluster |
+|-d, --dst-cluster | Especifique el nombre DNS de hello del destino de hello (réplica) de clúster de HBase. Por ejemplo: -s dsthbcluster, --src-cluster=dsthbcluster |
+|-sp, --src-ambari-password | Especifique la contraseña de administrador de Hola para Ambari en clúster de HBase de origen de Hola. |
+|-dp, --dst-ambari-password | Especifique la contraseña de administrador de Hola para Ambari en clúster de HBase de destino de Hola.|
 
 Argumentos opcionales:
 
 |Nombre|Descripción|
 |----|-----------|
-|-su, --src-ambari-user | Especifica el nombre de usuario de administrador para Ambari en el clúster de HBase de origen. El valor predeterminado es **admin**. |
-|-du, --dst-ambari-user | Especifica el nombre de usuario de administrador para Ambari en el clúster de HBase de destino. El valor predeterminado es **admin**. |
-|-t, --table-list | Especifica las tablas que se van a replicar. Por ejemplo: --table-list="table1;table2;table3". Si no se especifica unas tablas determinadas, se replican todas las tablas de HBase existentes.|
-|-m, --machine | Especifica el nodo principal en el que se ejecutará la acción de script. El valor es hn1 o hn0. Dado que hn0 suele estar más ocupado, se recomienda utilizar hn1. Esta opción se utiliza si se está ejecutando el script $0 como acción de script desde el portal de HDInsight o Azure PowerShell.|
-|-ip | Este argumento es necesario cuando se habilita la replicación entre dos redes virtuales. Este argumento actúa como un conmutador para utilizar las direcciones IP estáticas de los nodos ZooKeeper de los clústeres de réplica en lugar de los nombres FQDN. Las direcciones IP estáticas deben configurarse antes de habilitar la replicación. |
-|-cp, -copydata | Habilita la migración de datos existentes en las tablas en las que está habilitada la replicación. |
+|-su, --src-ambari-user | Especificar nombre de usuario de administrador de Hola para Ambari en clúster de HBase de origen de Hola. es el valor predeterminado de Hello **administración**. |
+|-du, --dst-ambari-user | Especificar nombre de usuario de administrador de Hola para Ambari en clúster de HBase de destino de Hola. es el valor predeterminado de Hello **administración**. |
+|-t, --table-list | Especifique hello toobe de tablas replicada. Por ejemplo: --table-list="table1;table2;table3". Si no se especifica unas tablas determinadas, se replican todas las tablas de HBase existentes.|
+|-m, --machine | Especificar el nodo principal de Hola donde se ejecutará la acción de secuencia de comandos de Hola. valor de Hello es hn1 o hn0. Dado que hn0 suele estar más ocupado, se recomienda utilizar hn1. Utilice esta opción si estás ejecutando script de Hola $0 como una acción de secuencia de comandos desde el portal de HDInsight de Hola o Azure PowerShell.|
+|-ip | Este argumento es necesario cuando se habilita la replicación entre dos redes virtuales. Este argumento actúa como un conmutador toouse Hola estático direcciones IP de ZooKeeper los nodos de clústeres de réplica en lugar de nombres FQDN. Hola toobe de direcciones IP estática necesidad preconfigurado antes de habilitar la replicación. |
+|-cp, -copydata | Habilite la migración de Hola de los datos existentes en las tablas de Hola donde está habilitada la replicación. |
 |-rpm, -replicate-phoenix-meta | Habilita la replicación en las tablas del sistema Phoenix. <br><br>*Esta opción se debe utilizar con precaución.* Se recomienda volver a crear tablas de Phoenix en clústeres de réplica antes de utilizar este script. |
 |-h, --help | Muestra información de uso. |
 
-La sección print_usage() del [script](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_enable_replication.sh) proporciona una explicación detallada de los parámetros.
+Hola print_usage() sección de hello [script](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_enable_replication.sh) proporciona una explicación detallada de parámetros.
 
-Una vez implementada la acción de script correctamente, puede utilizar SSH para conectarse al clúster de HBase de destino y comprobar que los datos se hayan replicado.
+Después de acción de secuencia de comandos de hello correctamente implementado, puede usar clúster de HBase SSH tooconnect toohello destino y comprobar datos Hola se han replicado.
 
 ### <a name="replication-scenarios"></a>Escenarios de replicación
 
-En la lista siguiente se muestran algunos casos de uso general y la configuración de parámetros:
+Hello lista siguiente muestra algunos casos de uso general y sus valores de parámetro:
 
-- **Habilitar la replicación en todas las tablas entre los dos clústeres**. Este escenario no requiere la copia o migración de datos existentes en las tablas y no utiliza tablas de Phoenix. Utilice los siguientes parámetros:
+- **Habilitar la replicación en todas las tablas entre clústeres de hello dos**. Este escenario no requiere Hola copia/migración de datos existentes en las tablas de hello y no utiliza tablas de Phoenix. Usar hello parámetros siguientes:
 
         -m hn1 -s <source cluster DNS name> -d <destination cluster DNS name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password>  
 
-- **Habilitar la replicación en tablas específicas**. Use los parámetros siguientes para habilitar la replicación en table1, table2 y table3:
+- **Habilitar la replicación en tablas específicas**. Usar hello después de la replicación de tooenable parámetros en table1, table2 y table3:
 
         -m hn1 -s <source cluster DNS name> -d <destination cluster DNS name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3"
 
-- **Habilitar la replicación en tablas específicas y copiar los datos existentes**. Use los parámetros siguientes para habilitar la replicación en table1, table2 y table3:
+- **Habilitar la replicación en tablas específicas y copie los datos existentes de hello**. Usar hello después de la replicación de tooenable parámetros en table1, table2 y table3:
 
         -m hn1 -s <source cluster DNS name> -d <destination cluster DNS name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -copydata
 
-- **Habilitar la replicación en todas las tablas con replicación de metadatos de Phoenix de origen a destino**. La replicación de metadatos de Phoenix no es perfecta, así que debe habilitarse con precaución.
+- **Habilitar la replicación en todas las tablas con replicar phoenix metadatos de origen toodestination**. La replicación de metadatos de Phoenix no es perfecta, así que debe habilitarse con precaución.
 
         -m hn1 -s <source cluster DNS name> -d <destination cluster DNS name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -replicate-phoenix-meta
 
@@ -183,15 +183,15 @@ En la lista siguiente se muestran algunos casos de uso general y la configuraci�
 
 Hay dos scripts de acción de script independientes para copiar o migrar datos después de habilitar la replicación:
 
-- [Script para tablas pequeñas](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_copy_table.sh) (unos pocos gigabytes de tamaño y una copia general deberían finalizar en menos de una hora)
+- [Secuencia de comandos para tablas pequeñas](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_copy_table.sh) (unos pocos gigabytes de tamaño y general copia es toofinish esperado en menos de una hora)
 
-- [Script para tablas grandes](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/nohup_hdi_copy_table.sh) (se espera que tarden más de una hora en copiarse)
+- [Secuencia de comandos para tablas grandes](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/nohup_hdi_copy_table.sh) (se esperaba tootake más de una hora toocopy)
 
-Puede seguir el mismo procedimiento que aparece en [Habilitar replicación](#enable-replication) para llamar a la acción de script con los parámetros siguientes:
+Puede seguir Hola mismo procedimiento en [habilitar la replicación](#enable-replication) toocall Hola Generar script de acción con hello parámetros siguientes:
 
     -m hn1 -t <table1:start_timestamp:end_timestamp;table2:start_timestamp:end_timestamp;...> -p <replication_peer> [-everythingTillNow]
 
-La sección print_usage() del [script](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_copy_table.sh) proporciona una descripción detallada de los parámetros.
+Hola print_usage() sección de hello [script](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_copy_table.sh) ofrece una descripción detallada de los parámetros.
 
 ### <a name="scenarios"></a>Escenarios
 
@@ -210,11 +210,11 @@ La sección print_usage() del [script](https://github.com/Azure/hbase-utils/blob
 
 ## <a name="disable-replication"></a>Deshabilitar replicación
 
-Para deshabilitar la replicación, utilice otro script de acción de script que se encuentra en [GitHub](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh). Puede seguir el mismo procedimiento que aparece en [Habilitar replicación](#enable-replication) para llamar a la acción de script con los parámetros siguientes:
+replicación de toodisable, usa otro script de acción de secuencia de comandos situada [GitHub](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh). Puede seguir Hola mismo procedimiento en [habilitar la replicación](#enable-replication) toocall Hola Generar script de acción con hello parámetros siguientes:
 
     -m hn1 -s <source cluster DNS name> -sp <source cluster Ambari Password> <-all|-t "table1;table2;...">  
 
-La sección print_usage() del [script](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh) proporciona una explicación detallada de los parámetros.
+Hola print_usage() sección de hello [script](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh) proporciona una explicación detallada de parámetros.
 
 ### <a name="scenarios"></a>Escenarios
 
@@ -231,7 +231,7 @@ La sección print_usage() del [script](https://raw.githubusercontent.com/Azure/h
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-En este tutorial, ha aprendido cómo configurar la replicación de HBase entre dos centros de datos. Para obtener más información acerca de HDInsight y HBase, consulte:
+En este tutorial, se habrá aprendido cómo tooconfigure HBase replicación entre dos centros de datos. toolearn más información acerca de HDInsight y HBase, consulte:
 
 * [Get started with Apache HBase in HDInsight][hdinsight-hbase-get-started] (Introducción a HBase Apache en HDInsight)
 * [HDInsight HBase overview][hdinsight-hbase-overview] (Información general de HBase de HDInsight)

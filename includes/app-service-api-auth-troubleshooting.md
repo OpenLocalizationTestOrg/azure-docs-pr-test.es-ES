@@ -1,0 +1,21 @@
+La mayoría de errores de autenticación de tiempo de hello el resultado de la configuración de una configuración incorrecta o incoherente. Éstas son algunas sugerencias específicas para toocheck de cosas.
+
+* Asegúrese de que no se pierda hello **guardar** botón desde cualquier lugar. Esto suele ser fácil toodo y resultado de hello es que se utilizan en los valores correctos de hello en una página de portal, pero realmente no se guardaron en el entorno de Azure de Hola o aplicación de Azure AD.
+* Para la configuración realizada en hello **configuración de la aplicación** hoja de hello portal de Azure, asegúrese de que ese Hola correcta aplicación de API o una aplicación web que se seleccionó cuando se especifica la configuración de Hola.  También asegúrese de que se escribieron configuración hello como **configuración de la aplicación** y no **las cadenas de conexión**, tal y como formato de Hola de secciones de hello dos es similar.
+* Front-end de autenticación tooa JavaScript, descarga Hola nuevo manifiesto tooverify que `oauth2AllowImplicitFlow` se cambió correctamente demasiado`true`.
+* Compruebe que haya usado HTTPS donde haya configurado direcciones URL:
+  
+  * En el código del proyecto
+  * En CORS
+  * En la configuración de la aplicación del entorno de Azure para cada aplicación de API y aplicación web
+  * En la configuración de la aplicación de Azure AD
+    
+    Tenga en cuenta que si copiar dirección URL de una aplicación de API de portal de hello, a menudo tiene `http://` y tiene también cambian toomanually`https://`.
+* Asegúrese de que todos los cambios de código se hayan implementado correctamente. Por ejemplo, en una solución de varios proyectos resulta posible toochange un proyecto de código y accidentalmente elija una de hello otros cuando quiera cambiar de hello toodeploy.
+* Asegúrese de que se van tooHTTPS las direcciones URL en el explorador, no direcciones URL de HTTP. De forma predeterminada, Visual Studio crea perfiles con las direcciones URL HTTP de publicación, y eso es lo que se abre en el Explorador de hello después de implementar un proyecto.
+* Front-end de autenticación tooa JavaScript, asegúrese de que CORS está configurado correctamente en la aplicación de API de hello que Hola llamadas de código de JavaScript. En caso de duda sobre si el problema de hello es relacionados con CORS, intente "*" como Hola permitida la dirección URL de origen. 
+* Un front-end de JavaScript, abra tooget de pestaña de la consola de herramientas para desarrolladores de su explorador más información sobre errores y examine las solicitudes HTTP en hello red. Sin embargo, los mensajes de error de la consola pueden ser confusos. Si recibe un mensaje que indica un error CORS, problema real de hello puede ser la autenticación. Puede comprobar si es el caso de hello ejecutando la aplicación hello con autenticación deshabilitada temporalmente temporalmente.
+* Para una aplicación de API. NET, asegúrese de que está obteniendo tanta información en mensajes de error como sea posible estableciendo [customErrors modo tooOff](../articles/app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md#remoteview).
+* Para una aplicación de API. NET, inicie una [sesión de depuración remota](../articles/app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md#remotedebug)y examinar los valores de hello de variables de Hola que pasan toocode que usa AAL tooacquire un token de portador o código que comprueba notificaciones contra Hola se esperaba identificador principal de servicio. Tenga en cuenta que el código puede recoger los valores de configuración de muchos orígenes diferentes, por lo que es posible toofind sorpresas de este modo. Por ejemplo, si se escribe incorrectamente `ida:ClientId` como `ida:ClientID` al establecer la configuración de entorno de servicio de aplicaciones de Azure, código de hello podría obtener hello `ida:ClientId` valor que está buscando del archivo Web.config de hello, se omitirá la configuración de servicio de aplicaciones de Azure Hola. 
+* Si los procesos no funcionan en una ventana normal de Internet Explorer, podría estar interfiriendo un inicio de sesión existente. Inténtelo con una sesión de exploración de InPrivate o pruébelo en Chrome o Firefox.
+

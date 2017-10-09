@@ -1,0 +1,2 @@
+> [!NOTE]
+> Hola nueva puerta de enlace VPN SKU (VpnGw1, VpnGw2 y VpnGw3) son compatibles con el modelo de implementación de administrador de recursos de hello solo. Redes virtuales clásicas deben continuar toouse Hola SKU anteriores. Para obtener más información acerca de la puerta de enlace anterior de hello SKU, consulte [trabajar con la puerta de enlace de red virtual SKU (antiguo)](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md).

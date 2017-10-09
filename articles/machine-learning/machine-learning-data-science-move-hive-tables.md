@@ -1,6 +1,6 @@
 ---
-title: "Creación de tablas de Hive y carga de datos desde Azure Blob Storage | Microsoft Docs"
-description: "Crear tablas de subárbol y cargar datos de blob en tablas de subárbol"
+title: aaaCreate tablas de Hive y cargar datos desde almacenamiento de blobs de Azure | Documentos de Microsoft
+description: Crear tablas de Hive y cargar datos en tablas de toohive de blob
 services: machine-learning,storage
 documentationcenter: 
 author: bradsev
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: bradsev
-ms.openlocfilehash: eca4ecd8f639bb9816903f4b1d1f999755da819c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 09622972bcac31c2971858393a8340f24e4b7390
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Creación de tablas de Hive y carga de datos desde Azure Blob Storage
-En este tema se presentan consultas genéricas de Hive que crean tablas de Hive y cargan datos desde Azure Blob Storage. También se ofrecen algunas instrucciones acerca de las particiones de tablas de subárbol y de cómo utilizar el formato ORC para mejorar el rendimiento de las consultas.
+En este tema se presentan consultas genéricas de Hive que crean tablas de Hive y cargan datos desde Azure Blob Storage. También se proporciona alguna orientación acerca de las particiones de tablas de Hive y sobre cómo utilizar Hola optimizado fila columnas (ORC) formato tooimprove rendimiento de las consultas.
 
-Este **menú** siguiente redirige a temas en los que se describe cómo introducir datos en entornos de destino en que se pueden almacenar y procesar datos durante el proceso de ciencia de datos en equipos (TDSP).
+Esto **menú** vincula tootopics que describen cómo tooingest datos en entornos de destino donde se pueden almacenar y procesar durante datos Hola Hola proceso de ciencia de datos de equipo (TDSP).
 
 [!INCLUDE [cap-ingest-data-selector](../../includes/cap-ingest-data-selector.md)]
 
@@ -31,101 +31,101 @@ Este **menú** siguiente redirige a temas en los que se describe cómo introduci
 En este artículo se supone que ha:
 
 * Creado una cuenta de almacenamiento de Azure. Para obtener instrucciones, vea [Acerca de las cuentas de almacenamiento de Azure](../storage/common/storage-create-storage-account.md).
-* Aprovisionado un clúster de Hadoop personalizado con el servicio HDInsight.  Si necesita instrucciones, consulte [Personalización de clústeres de Hadoop de HDInsight de Azure para análisis avanzado](machine-learning-data-science-customize-hadoop-cluster.md).
-* Habilitado el acceso remoto para el clúster, iniciado sesión y abierto la consola de la línea de comandos de Hadoop. Si necesita instrucciones, consulte [Acceso al nodo principal del clúster Hadoop](machine-learning-data-science-customize-hadoop-cluster.md#headnode).
+* Aprovisionar un clúster de Hadoop personalizado con hello servicio HDInsight.  Si necesita instrucciones, consulte [Personalización de clústeres de Hadoop de HDInsight de Azure para análisis avanzado](machine-learning-data-science-customize-hadoop-cluster.md).
+* Clúster de toohello de acceso remoto habilitado, se registran en y abre la consola de línea de comandos de Hadoop de Hola. Si necesita instrucciones, consulte [Hola de acceso principal del nodo de clúster de Hadoop](machine-learning-data-science-customize-hadoop-cluster.md#headnode).
 
-## <a name="upload-data-to-azure-blob-storage"></a>Carga de datos en el almacenamiento de blobs de Azure
-Si creó una máquina virtual de Azure siguiendo las instrucciones dadas en [Configuración de una máquina virtual de Azure para análisis avanzado](machine-learning-data-science-setup-virtual-machine.md), este archivo de script debió descargarse en el directorio *C:\\Users\\\<nombre de usuario\>\\Documents\\Data Science Scripts* de la máquina virtual. Estas consultas de subárbol solo requieren que conecte sus propios esquemas de datos y la configuración de almacenamiento de blobs de Azure en los campos adecuados para estar preparado para su envío.
+## <a name="upload-data-tooazure-blob-storage"></a>Cargar el almacenamiento de blobs de datos tooAzure
+Si ha creado una máquina virtual de Azure siguiendo las instrucciones de hello proporcionadas en [configurar una máquina virtual de Azure para análisis avanzado](machine-learning-data-science-setup-virtual-machine.md), el archivo de script debería haber sido descargado toohello *C:\\ Los usuarios\\\<nombre de usuario\>\\documentos\\secuencias de comandos de ciencia de datos* directorio en la máquina virtual de Hola. Estas consultas de Hive solo requieren que conecte en su propio esquema de datos y la configuración de almacenamiento de blobs de Azure en hello campos correspondientes toobe listo para el envío.
 
-Se supone que los datos de las tablas de Hive están en un formato tabular **sin comprimir** y que se han cargado los datos en el contenedor predeterminado (o en otro adicional) de la cuenta de almacenamiento que usa el clúster Hadoop.
+Se supone que los datos de Hola para las tablas de subárbol están en un **sin comprimir** formato tabular, y que los datos de hello ha sido cargado predeterminado de toohello (o tooan adicional) contenedor de hello cuenta de almacenamiento utilizado por el clúster de Hadoop de Hola.
 
-Si desea practicar con el grupo **NYC Taxi Trip Data**, necesita hacer lo siguiente:
+Si desea que toopractice en hello **NYC Taxi recorridos datos**, necesita:
 
-* **Descargue** los 24 archivos de [NYC Taxi Trip Data](http://www.andresmh.com/nyctaxitrips) (12 archivos de carreras y 12 archivos de tarifas).
+* **descargar** Hola 24 [NYC Taxi recorridos datos](http://www.andresmh.com/nyctaxitrips) archivos (12 archivos de ida y vuelta y 12 archivos tarifa),
 * **Descomprima** todos los archivos en archivos .csv.
-* **cargue** los archivos en el contenedor predeterminado (o el contenedor pertinente) de la cuenta de Azure Storage que se creó mediante el procedimiento descrito en el tema [Personalización de los clústeres de Hadoop de HDInsight de Azure para el proceso de ciencia de datos en equipos](machine-learning-data-science-customize-hadoop-cluster.md) . En esta [página](machine-learning-data-science-process-hive-walkthrough.md#upload)encontrará el proceso de cargar los archivos .csv en el contenedor predeterminado de la cuenta de almacenamiento.
+* **cargar** ellos predeterminado toohello (o contenedor adecuado) de Hola cuenta de almacenamiento de Azure que se creó mediante el procedimiento de hello descrito en hello [para el proceso de análisis avanzado y la tecnología de clústeres de Hadoop de HDInsight de Azure de personalizar ](machine-learning-data-science-customize-hadoop-cluster.md) tema. Hola proceso tooupload Hola .csv archivos toohello contenedor predeterminado en la cuenta de almacenamiento de hello puede encontrarse en el objeto [página](machine-learning-data-science-process-hive-walkthrough.md#upload).
 
-## <a name="submit"></a>Envío de consultas de Hive
+## <a name="submit"></a>¿Cómo toosubmit consultas de Hive
 Las consultas de subárbol se pueden enviar mediante:
 
 1. [Enviar consultas de Hive a través de línea de comandos de Hadoop en el nodo principal del clúster de Hadoop](#headnode)
-2. [Enviar consultas de Hive con el Editor de Hive](#hive-editor)
+2. [Enviar consultas de Hive con hello Editor de Hive](#hive-editor)
 3. [Enviar consultas de Hive con los comandos de Azure PowerShell](#ps)
 
-Las consultas de Hive son similares a SQL. Los usuarios familiarizados con SQL pueden encontrar la [hoja de referencia rápida Hive para usuarios de SQL](http://hortonworks.com/wp-content/uploads/2013/05/hql_cheat_sheet.pdf) de gran utilidad.
+Las consultas de Hive son similares a SQL. Si está familiarizado con SQL, es posible hello [Hive para hoja de referencia rápida de los usuarios de SQL](http://hortonworks.com/wp-content/uploads/2013/05/hql_cheat_sheet.pdf) útil.
 
-Al enviar una consulta de subárbol, también puede controlar el destino del resultado de las consultas de subárbol, ya sea en la pantalla o en un archivo local del nodo principal o en un blob de Azure.
+Al enviar una consulta de Hive, también puede controlar el destino de Hola de salida de hello de las consultas de Hive, ya sea en la pantalla o tooa archivo local de hello en el nodo principal de Hola o tooan blobs de Azure.
 
 ### <a name="headnode"></a> 1. Enviar consultas de Hive a través de línea de comandos de Hadoop en el nodo principal del clúster de Hadoop
-Si la consulta es compleja, enviar consultas de Hive directamente en el nodo principal del clúster de Hadoop normalmente permite obtener respuestas más rápidas que si se efectúa el envío mediante un editor de Hive o scripts de Azure PowerShell.
+Si Hola Hive consulta es compleja, enviar que directamente en el nodo principal de Hola de clúster de Hadoop de hello conduce normalmente a su vez toofaster alrededor de envío con un Editor de Hive o secuencias de comandos de PowerShell de Azure.
 
-Inicie sesión en el nodo principal del clúster de Hadoop, abra la línea de comandos de Hadoop en el escritorio del nodo principal y escriba el comando `cd %hive_home%\bin`.
+Inicie sesión en toohello nodo principal del clúster de Hadoop de hello, abra Hola línea de comandos de Hadoop en el escritorio de hello del nodo principal de Hola y escriba el comando `cd %hive_home%\bin`.
 
-Los usuarios disponen de tres maneras de enviar consultas de Hive en la línea de comandos de Hadoop:
+Tiene consultas de Hive de tres maneras toosubmit Hola línea de comandos de Hadoop:
 
 * Directamente
 * usando archivos .hql
-* Con la consola de comandos de Hive
+* con hello Hive consola de comandos
 
 #### <a name="submit-hive-queries-directly-in-hadoop-command-line"></a>Envíe consultas de subárbol directamente en la línea de comandos de Hadoop.
-Los usuarios pueden ejecutar el comando como `hive -e "<your hive query>;` para enviar consultas de Hive sencillas directamente en la línea de comandos de Hadoop. Este es un ejemplo, donde el cuadro rojo muestra el comando que envía la consulta de subárbol y el cuadro verde muestra el resultado de la consulta de subárbol.
+Puede ejecutar el comando como `hive -e "<your hive query>;` toosubmit consultas sencillas de Hive directamente en Hadoop línea de comandos. Este es un ejemplo, donde hello rojo un contorno alrededor Hola comando que envía la consulta de Hive de Hola y Hola recuadro verde contornos Hola resultados de consulta de Hive Hola.
 
 ![Creación del espacio de trabajo](./media/machine-learning-data-science-move-hive-tables/run-hive-queries-1.png)
 
 #### <a name="submit-hive-queries-in-hql-files"></a>Enviar consultas de subárbol en archivos .hql
-Cuando la consulta de subárbol es más complicada y tiene varias líneas, no resulta práctico modificar consultas en la línea de comandos o la consola de comandos de subárbol. Una alternativa es usar un editor de texto en el nodo principal del clúster de Hadoop y guardar las consultas de subárbol en un archivo .hql de un directorio local del nodo principal. A continuación, la consulta de Hive del archivo .hql puede enviarse mediante el argumento `-f` del modo indicado a continuación:
+Cuando la consulta de Hive hello es más complicado y tiene varias líneas, la modificación de consultas en la línea de comandos o la consola de comandos de Hive no resulta práctico. Una alternativa es toouse un editor de texto en el nodo principal de Hola de consultas de Hive de hello toosave clúster de Hadoop hello en un archivo .hql en un directorio local del nodo principal de Hola. A continuación, la consulta de Hive hello en el archivo de hello .hql puede enviarse mediante hello `-f` argumento tal como sigue:
 
-    hive -f "<path to the .hql file>"
+    hive -f "<path toohello .hql file>"
 
 ![Creación del espacio de trabajo](./media/machine-learning-data-science-move-hive-tables/run-hive-queries-3.png)
 
 **Suprimir la impresión de pantalla del estado de progreso de las consultas de subárbol**
 
-De forma predeterminada, después de enviar la consulta de Hive en la línea de comandos de Hadoop, el progreso del trabajo de asignación/reducción se imprimirá en pantalla. Para suprimir la impresión de la pantalla del progreso del trabajo de asignación/reducción, puede usar un argumento `-S` ("S" en mayúsculas) en la línea de comandos del modo indicado a continuación:
+De forma predeterminada, una vez enviada en línea de comandos de Hadoop, en la consulta de Hive progreso de Hola de trabajo de asignación y reducción de Hola se imprime en pantalla. toosuppress Hola imprimir pantalla de progreso del trabajo de asignación y reducción de hello, puede usar un argumento `-S` ("S" en mayúsculas) en hello línea de comandos como se indica a continuación:
 
-    hive -S -f "<path to the .hql file>"
+    hive -S -f "<path toohello .hql file>"
 .    hive -S -e "<Hive queries>"
 
 #### <a name="submit-hive-queries-in-hive-command-console"></a>Envíe consultas de subárbol en la consola de comandos de subárbol.
-Los usuarios también pueden especificar en primer lugar la consola de comandos de Hive al ejecutar el comando `hive` en la línea de comandos de Hadoop y, a continuación, enviar consultas de Hive en la consola de comandos de Hive. Aquí tiene un ejemplo. En este ejemplo, los dos cuadros de color rojo resaltan los comandos que se utilizan para escribir en la consola de comandos de subárbol y la consulta de subárbol enviada en la consola de comandos de subárbol, respectivamente. El cuadro verde resalta el resultado de la consulta de subárbol.
+En primer lugar también puede escribir consola de comandos del subárbol de hello mediante la ejecución de comando `hive` en línea de comandos de Hadoop y, a continuación, enviar consultas de Hive en la consola de comandos de Hive. Aquí tiene un ejemplo. En este ejemplo, hello dos cuadros rojos resaltado Hola comandos usados tooenter Hola consola de comandos de Hive y Hola consulta de Hive enviada en la consola de comandos de Hive, respectivamente. cuadro de Hello verde resalta la salida de hello de consulta de Hive Hola.
 
 ![Creación del espacio de trabajo](./media/machine-learning-data-science-move-hive-tables/run-hive-queries-2.png)
 
-Los ejemplos anteriores generan directamente los resultados de la consulta de subárbol en pantalla. Los usuarios también pueden escribir la salida en un archivo local del nodo principal o en un blob de Azure. A continuación, los usuarios pueden utilizar otras herramientas para analizar más el resultado de las consultas de Hive.
+en los ejemplos anteriores Hola directamente resultados Hola Hive consulta en pantalla. También puede escribir tooa de archivo local en el nodo principal de Hola o tooan blobs de Azure para la salida Hola. A continuación, puede usar otras herramientas toofurther analizar la salida de hello de consultas de Hive.
 
-**Genere los resultados de consulta de subárbol en un archivo local.**
-Para generar los resultados de consultas de Hive en un directorio local del nodo principal, los usuarios tienen que enviar la consulta de Hive de la línea de comandos de Hadoop de la siguiente manera:
+**Salida de archivo local de tooa de resultados de consulta de Hive.**
+toooutput Hive consultar resultados tooa local en el directorio en el nodo principal de hello, tiene consulta de Hive toosubmit Hola Hola línea de comandos de Hadoop como se indica a continuación:
 
-    hive -e "<hive query>" > <local path in the head node>
+    hive -e "<hive query>" > <local path in hello head node>
 
-En el ejemplo siguiente, el resultado de la consulta de Hive se escribe en un archivo `hivequeryoutput.txt` del directorio `C:\apps\temp`.
+En el siguiente ejemplo de Hola, se escribe la salida de hello de consulta de Hive en un archivo `hivequeryoutput.txt` en el directorio `C:\apps\temp`.
 
 ![Creación del espacio de trabajo](./media/machine-learning-data-science-move-hive-tables/output-hive-results-1.png)
 
-**Generar los resultados de consulta de subárbol en un blob de Azure**
+**Salida tooan de resultados de consulta de Hive blobs de Azure**
 
-Los usuarios también pueden generar resultados de consulta de Hive en un blob de Azure, dentro del contenedor predeterminado del clúster de Hadoop. La consulta de Hive para esto es la siguiente:
+También puede generar Hola Hive consulta resultados tooan blob de Azure, dentro de contenedor de hello predeterminado del clúster de Hadoop de Hola. consulta de Hive de Hola para esto es el siguiente:
 
-    insert overwrite directory wasb:///<directory within the default container> <select clause from ...>
+    insert overwrite directory wasb:///<directory within hello default container> <select clause from ...>
 
-En el ejemplo siguiente, el resultado de la consulta de Hive se escribe en un directorio de blob `queryoutputdir` dentro del contenedor predeterminado del clúster de Hadoop. En este caso, solo necesita proporcionar el nombre del directorio, sin el nombre del blob. Se produce un error si proporciona los nombres de directorio y de blob, como `wasb:///queryoutputdir/queryoutput.txt`.
+En el siguiente ejemplo de Hola, salida de hello de consulta de Hive se escribe el directorio de blob tooa `queryoutputdir` dentro de contenedor de hello predeterminado del clúster de Hadoop de Hola. En este caso, solo necesita tooprovide nombre del directorio hello, sin nombre de blob de Hola. Se produce un error si proporciona los nombres de directorio y de blob, como `wasb:///queryoutputdir/queryoutput.txt`.
 
 ![Creación del espacio de trabajo](./media/machine-learning-data-science-move-hive-tables/output-hive-results-2.png)
 
-Si abre el contenedor predeterminado del clúster de Hadoop mediante herramientas como el Explorador de Azure Storage, verá el resultado de la consulta de Hive como se muestra en la ilustración siguiente. Puede aplicar el filtro (resaltado mediante un cuadro rojo) para recuperar solo el blob con letras especificadas en los nombres.
+Si abre el contenedor predeterminado de Hola de clúster de Hadoop de hello mediante el Explorador de almacenamiento de Azure, puede ver la salida de hello de consulta de Hive Hola tal y como se muestra en la figura siguiente de Hola. Puede aplicar Hola filtro (resaltado mediante cuadro rojo) tooonly recuperar Hola blob con letras especificadas en los nombres.
 
 ![Creación del espacio de trabajo](./media/machine-learning-data-science-move-hive-tables/output-hive-results-3.png)
 
-### <a name="hive-editor"></a> 2. Enviar consultas de Hive con el Editor de Hive
-También puede utilizar la consola de consultas (Editor de Hive) escribiendo una dirección URL del formulario *https://&#60;Hadoop cluster name>.azurehdinsight.net/Home/HiveEditor* en un explorador web. Debe haber iniciado sesión para ver esta consola; así pues, tiene que escribir sus credenciales de Hadoop aquí.
+### <a name="hive-editor"></a> 2. Enviar consultas de Hive con hello Editor de Hive
+También puede utilizar Hola consola de consultas (Editor de Hive) mediante la especificación de una dirección URL de formulario de hello *https://&#60; Nombre del clúster de Hadoop >.azurehdinsight.net/Home/HiveEditor* en un explorador web. Debe ser iniciado en hello, vea esta consola y por lo que necesita las credenciales de clúster de Hadoop.
 
 ### <a name="ps"></a> 3. Enviar consultas de Hive con los comandos de Azure PowerShell
-Los usuarios pueden también usar PowerShell para enviar consultas de Hive. Para obtener instrucciones, consulte [Envío de trabajos de Hive mediante PowerShell](../hdinsight/hdinsight-hadoop-use-hive-powershell.md).
+También puede utilizar consultas de Hive toosubmit de PowerShell. Para obtener instrucciones, consulte [Envío de trabajos de Hive mediante PowerShell](../hdinsight/hdinsight-hadoop-use-hive-powershell.md).
 
 ## <a name="create-tables"></a>Creación de tablas y base de datos de Hive
-Las consultas de Hive se comparten en el [repositorio de GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_db_tbls_load_data_generic.hql) y se pueden descargar desde allí.
+Hello consultas de Hive compartidas hello [repositorio de GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_db_tbls_load_data_generic.hql) y puede descargarse desde allí.
 
-Esta es la consulta de subárbol que crea una tabla de subárbol.
+Aquí es la consulta de Hive de Hola que crea una tabla de Hive.
 
     create database if not exists <database name>;
     CREATE EXTERNAL TABLE if not exists <database name>.<table name>
@@ -140,34 +140,34 @@ Esta es la consulta de subárbol que crea una tabla de subárbol.
     ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>' lines terminated by '<line separator>'
     STORED AS TEXTFILE LOCATION '<storage location>' TBLPROPERTIES("skip.header.line.count"="1");
 
-Estas son las descripciones de los campos que los usuarios necesitan para conectar y otras configuraciones:
+Estas son las descripciones de Hola de campos de Hola que necesite tooplug en y otras configuraciones:
 
-* **&#60;nombre de base de datos>**: nombre de la base de datos que los usuarios desean crear. Si los usuarios solo desean usar la base de datos predeterminada, se puede omitir la consulta *crear base de datos...*
-* **&#60;nombre de tabla>**: nombre de la tabla que los usuarios quieren crear en la base de datos especificada. Si los usuarios desean usar la base de datos predeterminada, puede hacer referencia directamente a la tabla *&#60;nombre de tabla>* sin &#60;nombre de base de datos>.
-* **&#60;separador de campos>**: separador que delimita los campos del archivo de datos que se cargará en la tabla de Hive.
-* **&#60;line separator>**: separador que delimita las líneas del archivo de datos.
-* **&#60;storage location>**: la ubicación de Azure Storage para guardar los datos de tablas de Hive. Si los usuarios no especifican *LOCATION &#60;ubicación de almacenamiento>*, la base de datos y las tablas se almacenan de forma predeterminada en el directorio *hive/warehouse/* del contenedor predeterminado del clúster Hive. Si un usuario desea especificar la ubicación de almacenamiento, esta debe estar dentro del contenedor predeterminado para la base de datos y las tablas. A esta ubicación tiene que hacerse referencia como ubicación relativa al contenedor predeterminado del clúster con el formato *'wasb:///&#60;directory 1>/'* o *'wasb:///&#60;directory 1>/&#60;directory 2>/'*, etc. Después de ejecutar la consulta, se crean los directorios relativos dentro del contenedor predeterminado.
-* **TBLPROPERTIES("skip.header.line.count"="1")**: si el archivo de datos tiene una línea de encabezado, los usuarios deben agregar esta propiedad **al final** de la consulta *create table*. De lo contrario, se carga la línea de encabezado como registro en la tabla. Si el archivo de datos no tiene una línea de encabezado, se puede omitir esta configuración en la consulta.
+* **&#60; nombre de base de datos >**: nombre de Hola de base de datos de Hola que desea toocreate. Si su intención es base de datos predeterminada de toouse hello, Hola consulta *crear base de datos...*  puede omitirse.
+* **&#60; nombre de tabla >**: nombre de Hola de tabla de Hola que desea toocreate dentro de la base de datos especificada de Hola. Si desea que la base de datos predeterminada de toouse hello, tabla de hello puede hacer referencia directamente mediante *&#60; nombre de tabla >* sin &#60; nombre de base de datos >.
+* **&#60; separador de campos >**: separador de Hola que delimita los campos de toobe de archivo de datos de hello cargado toohello tabla de Hive.
+* **&#60; separador de línea >**: separador de Hola que delimita las líneas en el archivo de datos de hello.
+* **&#60; ubicación de almacenamiento >**: Hola datos de almacenamiento de Azure ubicación toosave Hola de tablas de Hive. Si no se especifica *ubicación &#60; ubicación de almacenamiento >*, Hola base de datos y tablas hello se almacenan una en *hive/almacenamiento/* directorio en el contenedor de hello predeterminado del clúster de Hive Hola de forma predeterminada. Si desea que la ubicación de almacenamiento de toospecify hello, ubicación de almacenamiento de hello tiene toobe dentro de contenedor de hello predeterminado para la base de datos de Hola y tablas. Esta ubicación tiene toobe hace referencia como contenedor de ubicación relativa toohello predeterminado del clúster de hello en formato de Hola de *' wasb: / / / &#60; directorio 1 > /'* o *' wasb: / / / &#60; directorio 1 > / &#60; directorio 2 > /'*, etcetera. Cuando se ejecuta la consulta de hello, directorios relativa Hola se crean dentro del contenedor predeterminado de Hola.
+* **TBLPROPERTIES("Skip.Header.Line.Count"="1")**: si el archivo de datos de hello tiene una línea de encabezado, tienen tooadd esta propiedad **final hello** de hello *crear tabla* consulta. En caso contrario, se carga la línea de encabezado de hello como una tabla de registro toohello. Si el archivo de datos de hello no tiene una línea de encabezado, se puede omitir esta configuración en la consulta de Hola.
 
-## <a name="load-data"></a>Carga de datos en tablas de Hive
-Esta es la consulta de subárbol que carga datos en una tabla de subárbol.
+## <a name="load-data"></a>Cargar datos tooHive tablas
+Aquí es la consulta de Hive de Hola que carga datos en una tabla de Hive.
 
-    LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
+    LOAD DATA INPATH '<path tooblob data>' INTO TABLE <database name>.<table name>;
 
-* **&#60;ruta de acceso a datos de blob>**: si el archivo de blob que se va a cargar en la tabla de Hive se encuentra en el contenedor predeterminado del clúster Hadoop de HDInsight, *&#60;ruta de acceso a datos de blob>* debe tener el formato "*wasb:///&#60;directorio de este contenedor>/&#60;nombre del archivo de blob>"*. El archivo blob también puede estar en un contenedor adicional del clúster de Hadoop de HDInsight. En este caso, *&#60;ruta de acceso a datos de blob>* debería tener el formato *"wasb://&#60;nombre del contenedor>@&#60;nombre de cuenta de almacenamiento>.blob.core.windows.net/&#60;nombre de archivo de blob>"*.
+* **&#60; datos de ruta de acceso tooblob >**: Hola si Hola blob archivo toobe cargado toohello Hive tabla está en el contenedor de predeterminado de Hola de hello clúster de Hadoop de HDInsight, *&#60; datos de ruta de acceso tooblob >* debe estar en formato de Hola *' wasb: / / / &#60; directorio de este contenedor > / &#60; nombre de archivo de blob >'*. archivo de blob de Hello también puede estar en un contenedor adicional de hello clúster de Hadoop de HDInsight. En este caso, *&#60; datos de ruta de acceso tooblob >* debe estar en formato de hello *' wasb: / / &#60; nombre de contenedor > @&#60; nombre de la cuenta de almacenamiento >.blob.core.windows.net/ &#60; nombre de archivo de blob >'*.
 
   > [!NOTE]
-  > Los datos blob que se van a cargar en la tabla de subárbol tienen que estar en el contenedor adicional o predeterminado de la cuenta de almacenamiento para el clúster de Hadoop. De lo contrario, la consulta *LOAD DATA* genera un error indicando que no puede obtener acceso a los datos.
+  > Hello toobe cargado tooHive tabla de datos de blob tiene toobe en predeterminado de Hola o contenedor adicional de la cuenta de almacenamiento de hello para el clúster de Hadoop de Hola. En caso contrario, Hola *carga datos* consulta produce un error que indica que el que no se puede tener acceso a datos de Hola.
   >
   >
 
 ## <a name="partition-orc"></a>Temas avanzados: tabla con particiones y datos de Hive de almacén en formato ORC
-Si los datos son grandes, crear particiones de la tabla será beneficioso para las consultas que solo necesitan examinar algunas particiones de la tabla. Por ejemplo, es razonable crear particiones de los datos de registro de un sitio web por fechas.
+Si hello es grande, creación de particiones de tabla de hello es beneficioso para las consultas que solo necesitan tooscan algunas particiones de tabla de Hola. Por ejemplo, son datos de registro de hello toopartition razonable de un sitio web por fechas.
 
-Además de crear particiones de tablas de subárbol, también es beneficioso almacenar los datos de subárbol en el formato ORC. Para obtener más información acerca de la aplicación de formato ORC, consulte <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ORC#LanguageManualORC-ORCFiles" target="_blank">El uso de archivos ORC mejora el rendimiento cuando Hive está leyendo, escribiendo y procesando datos</a>.
+En suma toopartitioning Hive tablas, así como datos de Hive de hello toostore beneficioso en formato de optimizado fila columnas (ORC) de Hola. Para obtener más información acerca de la aplicación de formato ORC, consulte <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ORC#LanguageManualORC-ORCFiles" target="_blank">El uso de archivos ORC mejora el rendimiento cuando Hive está leyendo, escribiendo y procesando datos</a>.
 
 ### <a name="partitioned-table"></a>Tabla con particiones
-Esta es la consulta de subárbol que crea una tabla con particiones y carga datos en ella.
+Aquí es la consulta de Hive de Hola que crea una tabla con particiones y carga datos en él.
 
     CREATE EXTERNAL TABLE IF NOT EXISTS <database name>.<table name>
     (field1 string,
@@ -176,10 +176,10 @@ Esta es la consulta de subárbol que crea una tabla con particiones y carga dato
     )
     PARTITIONED BY (<partitionfieldname> vartype) ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>'
          lines terminated by '<line separator>' TBLPROPERTIES("skip.header.line.count"="1");
-    LOAD DATA INPATH '<path to the source file>' INTO TABLE <database name>.<partitioned table name>
+    LOAD DATA INPATH '<path toohello source file>' INTO TABLE <database name>.<partitioned table name>
         PARTITION (<partitionfieldname>=<partitionfieldvalue>);
 
-Al consultar tablas con particiones, se recomienda agregar la condición de partición al **comienzo** de la cláusula `where`, ya que esto mejora la eficacia de la búsqueda de manera significativa.
+Al consultar tablas con particiones, se recomienda tooadd condición de partición Hola Hola **principio** de hello `where` cláusula que esta mejora la eficacia de Hola de búsqueda de forma significativa.
 
     select
         field1, field2, ..., fieldN
@@ -187,9 +187,9 @@ Al consultar tablas con particiones, se recomienda agregar la condición de part
     where <partitionfieldname>=<partitionfieldvalue> and ...;
 
 ### <a name="orc"></a>Almacenamiento de datos de Hive en formato ORC
-Los usuarios no pueden cargar datos directamente desde Blob Storage en tablas de Hive que se almacenan en el formato ORC. Estos son los pasos que los usuarios deben seguir para cargar datos desde blobs de Azure a tablas de Hive almacenadas en formato ORC.
+No se puede cargar directamente datos desde almacenamiento de blobs en tablas de subárbol que se almacena en formato de hello ORC. Estos son los pasos de hello tablas tooHive almacenadas en formato ORC los blobs en ese Hola necesita tootake tooload datos de Azure.
 
-Cree una tabla externa **STORED AS TEXTFILE** y cargue datos del almacenamiento de blobs en la tabla.
+Cree una tabla externa **almacenados archivo de texto de AS** y cargar datos de tabla de toohello de almacenamiento de blobs.
 
         CREATE EXTERNAL TABLE IF NOT EXISTS <database name>.<external textfile table name>
         (
@@ -202,9 +202,9 @@ Cree una tabla externa **STORED AS TEXTFILE** y cargue datos del almacenamiento 
             lines terminated by '<line separator>' STORED AS TEXTFILE
             LOCATION 'wasb:///<directory in Azure blob>' TBLPROPERTIES("skip.header.line.count"="1");
 
-        LOAD DATA INPATH '<path to the source file>' INTO TABLE <database name>.<table name>;
+        LOAD DATA INPATH '<path toohello source file>' INTO TABLE <database name>.<table name>;
 
-Cree una tabla interna con el mismo esquema que la tabla externa del paso 1, con el mismo delimitador de campo, y almacene los datos de subárbol en el formato ORC.
+Crear una tabla interna con hello mismo esquema que la tabla externa de hello en el paso 1, con hello mismo el delimitador de campo y almacenar Hola datos de Hive en formato de hello ORC.
 
         CREATE TABLE IF NOT EXISTS <database name>.<ORC table name>
         (
@@ -215,13 +215,13 @@ Cree una tabla interna con el mismo esquema que la tabla externa del paso 1, con
         )
         ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>' STORED AS ORC;
 
-Seleccionar datos desde la tabla externa del paso 1 e insertarlos en la tabla de ORC
+Seleccionar datos de la tabla externa de hello en el paso 1 e insertar en la tabla de hello ORC
 
         INSERT OVERWRITE TABLE <database name>.<ORC table name>
             SELECT * FROM <database name>.<external textfile table name>;
 
 > [!NOTE]
-> Si la tabla TEXTFILE *&amp;#60;nombre de base de datos&gt;.&amp;#60;nombre de la tabla de archivo de texto externo&gt;`SELECT * FROM <database name>.<external textfile table name>` tiene particiones, en el PASO 3, el comando* selecciona la variable de partición como un campo en el conjunto de datos devuelto. Si se inserta en *&#60;nombre de base de datos>.&#60;nombre de la tabla ORC>* se producirá un error, ya que *&#60;nombre de base de datos>.&#60;nombre de la tabla ORC>* no tiene la variable de partición como un campo en el esquema de tabla. En este caso, los usuarios deben seleccionar específicamente los campos que se van a insertar en *&#60;nombre de base de datos>.&#60;nombre de la tabla ORC>* de la manera siguiente:
+> Si tabla del archivo de texto hello *&#60; nombre de base de datos >. &#60; nombre de la tabla de archivo de texto externo >* tiene particiones, en el paso 3, hello `SELECT * FROM <database name>.<external textfile table name>` comando selecciona Hola variable de partición como un campo de hello devuelve el conjunto de datos. Insertándolo en hello *&#60; nombre de base de datos >. &#60; nombre de la tabla ORC >* se produce un error desde *&#60; nombre de base de datos >. &#60; nombre de la tabla ORC >* no tiene la variable de la partición de Hola como un campo de esquema de la tabla de Hola. En este caso, deberá toospecifically Hola seleccione campos toobe insertar demasiado*&#60; nombre de base de datos >. &#60; nombre de la tabla ORC >* como se indica a continuación:
 >
 >
 
@@ -230,8 +230,8 @@ Seleccionar datos desde la tabla externa del paso 1 e insertarlos en la tabla de
            FROM <database name>.<external textfile table name>
            WHERE <partition variable>=<partition value>;
 
-Es seguro quitar *&#60;nombre de la tabla de archivo de texto externo>* cuando use la consulta siguiente una vez insertados todos los datos en *&#60;nombre de base de datos>.&#60;nombre de la tabla ORC>*:
+Es seguro toodrop hello *&#60; nombre de la tabla de archivo de texto externo >* cuando Hola después de consulta después de todos los datos de uso se ha insertado en *&#60; nombre de base de datos >. &#60; nombre de la tabla ORC >*:
 
         DROP TABLE IF EXISTS <database name>.<external textfile table name>;
 
-Después de seguir este procedimiento, debe tener una tabla con datos en el formato ORC lista para su uso.  
+Después de seguir este procedimiento, debe tener una tabla con datos en hello ORC formato listo toouse.  

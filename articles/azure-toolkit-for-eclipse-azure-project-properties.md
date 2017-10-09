@@ -1,6 +1,6 @@
 ---
-title: Propiedades del proyecto de Azure
-description: "Describe la configuración de propiedades del proyecto de Azure en el kit de herramientas de Azure para Eclipse."
+title: aaaAzure propiedades del proyecto
+description: "Describe la configuración de propiedades del proyecto de Azure de hello en hello Azure Toolkit for Eclipse."
 services: 
 documentationcenter: java
 author: rmcmurray
@@ -14,30 +14,30 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: robmcm
-ms.openlocfilehash: 9d9eb695b63c2f4efa3ebea97ddb2f2780180bca
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6d8993ca38e7e03a8c7ebe96d174594aa0ff78e2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-project-properties"></a>Propiedades del proyecto de Azure
-Se pueden establecer varias configuraciones del proyecto de Azure en el kit de herramientas de Azure para Eclipse.
+Distintas configuraciones del proyecto de Azure se pueden establecer en hello Azure Toolkit for Eclipse.
 
 ## <a name="configuring-azure-project-properties"></a>Configuración de propiedades del proyecto de Azure
-La configuración de las propiedades del proyecto de Azure se logra a través de los cuadros de diálogo de propiedades del proyecto de Azure. Haga clic con el botón secundario en el proyecto, en el panel Explorador de proyectos de Eclipse, haga clic en **Propiedades**, y, a continuación, seleccione el submenú **Azure**.
+Configurar las propiedades del proyecto de Azure se logra a través de los cuadros de diálogo Propiedades de Hola para su proyecto de Azure. Haga clic en proyecto de hello en el panel Explorador de proyectos de Eclipse, haga clic en **propiedades**y, a continuación, seleccione hello **Azure** submenú.
 
 ![][ic719480]
 
-En esta página de propiedades puede cambiar los siguientes elementos: 
+En esta página de propiedades, puede cambiar Hola siguientes elementos: 
 
-* **Nombre de servicio:** el nombre del proyecto de Azure.
-* **Compilado para:** si el proyecto se ha creado para la implementación en Azure o para el emulador de proceso.
-* **SO de destino:** el sistema operativo que se usará cuando el proyecto se implemente en Azure.
+* **Nombre del servicio:** nombre hello para el proyecto de Azure.
+* **Compilación para:** si se establece el proyecto de hello para la creación de toohello tooAzure de implementación o el emulador de proceso.
+* **Sistema operativo de destino:** Hola toouse de sistema operativo cuando el proyecto está implementado tooAzure.
 
 ## <a name="see-also"></a>Otras referencias
 [kit de herramientas de Azure para Eclipse][Azure Toolkit for Eclipse]
 
-[Instalación del Kit de herramientas de Azure para Eclipse][Installing the Azure Toolkit for Eclipse] 
+[Instalar hello Azure Toolkit for Eclipse][Installing hello Azure Toolkit for Eclipse] 
 
 [Creación de una aplicación Hola a todos para Azure en Eclipse][Creating a Hello World Application for Azure in Eclipse]
 
@@ -45,7 +45,7 @@ En esta página de propiedades puede cambiar los siguientes elementos:
 
 [Lista de cuentas de Azure Storage][Azure Storage Account List]
 
-Para obtener más información sobre el uso de Azure con Java, vea el [Centro para desarrolladores de Java de Azure][Azure Java Developer Center].
+Para obtener más información acerca del uso de Azure con Java, vea hello [Centro para desarrolladores de Java de Azure][Azure Java Developer Center].
 
 <!-- URL List -->
 
@@ -54,7 +54,7 @@ Para obtener más información sobre el uso de Azure con Java, vea el [Centro pa
 [Azure Role Properties]: http://go.microsoft.com/fwlink/?LinkID=699525
 [Azure Storage Account List]: http://go.microsoft.com/fwlink/?LinkID=699528
 [Creating a Hello World Application for Azure in Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699533
-[Installing the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
+[Installing hello Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
 
 <!-- IMG List -->
 

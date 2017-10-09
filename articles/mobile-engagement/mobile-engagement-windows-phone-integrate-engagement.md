@@ -1,6 +1,6 @@
 ---
-title: "Integración del SDK de Windows Phone Silverlight Engagement"
-description: "Cómo integrar Azure Mobile Engagement con aplicaciones Windows Phone Silverlight"
+title: "aaaWindows integración con el SDK interacción Phone Silverlight"
+description: "¿Cómo tooIntegrate Azure Mobile Engagement con aplicaciones de Windows Phone Silverlight"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 29b18aecff783cebf617995e2a19f16f0b68b51b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f65683a62e5256cea469a3a73d99ade4331cb6bc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="windows-phone-silverlight-engagement-sdk-integration"></a>Integración del SDK de Windows Phone Silverlight Engagement
 > [!div class="op_single_selector"]
@@ -29,41 +29,41 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-En este procedimiento se describe la manera más sencilla de activar las funciones de análisis y supervisión de Azure Mobile Engagement en su aplicación de Windows Phone Silverlight.
+Este procedimiento describe las funciones en la aplicación de Windows Phone Silverlight de supervisión y análisis hello más sencilla forma tooactivate Azure Mobile Engagement.
 
-Los siguientes pasos son suficientes para activar el informe de los registros necesarios para calcular todas las estadísticas en relación con los usuarios, las sesiones, las actividades, los bloqueos y los aspectos técnicos. El informe de los registros necesarios para calcular otras estadísticas, como eventos, errores y trabajos debe realizarse manualmente mediante la API de Engagement (vea [Cómo usar la API de Engagement en Windows Phone Silverlight](mobile-engagement-windows-phone-use-engagement-api.md) a continuación) debido a que estas estadísticas dependen de la aplicación.
+Hola pasos es que toocompute necesita un suficiente informe de hello tooactivate de los registros de todas las estadísticas relacionadas con los usuarios, sesiones, actividades, se bloquea y Technicals. Hola de registros necesita un informe toocompute otras estadísticas como trabajos, errores y eventos deben realizarse manualmente mediante la API de interacción de Hola (vea [cómo toouse Hola avanzada Mobile Engagement etiquetado API en la aplicación de Windows Phone Silverlight](mobile-engagement-windows-phone-use-engagement-api.md) a continuación) debido a que estas estadísticas son dependientes de la aplicación.
 
 ## <a name="supported-versions"></a>Versiones compatibles
-El SDK de Mobile Engagement para Windows Silverlight solo se puede integrar en las aplicaciones destinadas a lo siguiente:
+Hola Mobile Engagement SDK para Silverlight para Windows sólo se puede integrar en las aplicaciones con destino:
 
 * Windows Phone 8.0
 * Windows Phone 8.1 Silverlight
 
 > [!NOTE]
-> Si va a desarrollar para Windows Phone 8.1 (no Silverlight), consulte entonces el [procedimiento de integración de Windows Universal](mobile-engagement-windows-store-integrate-engagement.md).
+> Si se dirige a Windows Phone 8.1 (no de Silverlight), consulte toohello [procedimiento de integración de Windows Universal](mobile-engagement-windows-store-integrate-engagement.md).
 > 
 > 
 
-## <a name="install-the-mobile-engagement-silverlight-sdk"></a>Instale el SDK de Mobile Engagement Silverlight
-El SDK de Mobile Engagement para Windows Silverlight está disponible como un paquete de Nuget llamado *MicrosoftAzure.MobileEngagement*. Puede instalarlo desde el Administrador de paquetes nuget de Visual Studio. 
+## <a name="install-hello-mobile-engagement-silverlight-sdk"></a>Instalar el SDK de Silverlight de Mobile Engagement Hola
+Hola Mobile Engagement SDK para Silverlight para Windows está disponible como un paquete de Nuget llamado *MicrosoftAzure.MobileEngagement*. Puede instalarlo desde Hola Administrador de paquetes de Nuget de Visual Studio. 
 
-## <a name="add-the-capabilities"></a>Agregar las capacidades
-El SDK de Engagement necesita algunas capacidades del SDK de Windows Phone Silverlight para que funcione correctamente.
+## <a name="add-hello-capabilities"></a>Agregar capacidades de Hola
+Hola Engagement SDK tiene algunas capacidades de hello SDK de Windows Phone Silverlight en orden toowork correctamente.
 
-Abra el archivo `WMAppManifest.xml` y asegúrese de que en el panel `Capabilities` se han declarado las siguientes capacidades:
+Abra su `WMAppManifest.xml` de archivos y asegúrese de que Hola siguiendo las capacidades se declaran en hello `Capabilities` panel:
 
 * `ID_CAP_NETWORKING`
 * `ID_CAP_IDENTITY_DEVICE`
 
-## <a name="initialize-the-engagement-sdk"></a>Inicializar el SDK de Engagement
+## <a name="initialize-hello-engagement-sdk"></a>Inicializar Hola Engagement SDK
 ### <a name="engagement-configuration"></a>Configuración de Engagement
-La configuración de Engagement se centraliza en el archivo `Resources\EngagementConfiguration.xml` del proyecto.
+configuración de la interacción de Hello está centralizada en hello `Resources\EngagementConfiguration.xml` archivo del proyecto.
 
-Edite este archivo para especificar lo siguiente:
+Editar este archivo toospecify:
 
 * La cadena de conexión de la aplicación entre las etiquetas `<connectionString>` and `<\connectionString>`.
 
-Si desea especificarla en tiempo de ejecución, puede llamar al método siguiente antes de la inicialización del agente de Engagement:
+Si desea que toospecify en tiempo de ejecución en su lugar, se puede llamar a siguiente Hola método antes de la inicialización de agente de interacción de hello:
 
     /* Engagement configuration. */
     EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
@@ -72,23 +72,23 @@ Si desea especificarla en tiempo de ejecución, puede llamar al método siguient
     /* Initialize Engagement agent with above configuration. */
     EngagementAgent.Instance.Init(engagementConfiguration);
 
-La cadena de conexión de la aplicación se muestra en el Portal de Azure clásico.
+cadena de conexión de Hello para la aplicación se muestra en hello Portal clásico de Azure.
 
 ### <a name="engagement-initialization"></a>Inicialización de Engagement
-Al crear un nuevo proyecto, se genera un archivo `App.xaml.cs` . Esta clase hereda de `Application` y contiene muchos métodos importantes. También se usará para inicializar el SDK de Engagement.
+Al crear un nuevo proyecto, se genera un archivo `App.xaml.cs` . Esta clase hereda de `Application` y contiene muchos métodos importantes. También será usado tooinitialize Hola Engagement SDK.
 
-Modifique `App.xaml.cs`:
+Modificar Hola `App.xaml.cs`:
 
-* Agregue las instrucciones `using`:
+* Agregar tooyour `using` instrucciones:
   
       using Microsoft.Azure.Engagement;
-* Inserte `EngagementAgent.Instance.Init` en el método `Application_Launching`:
+* Insertar `EngagementAgent.Instance.Init` en hello `Application_Launching` método:
   
       private void Application_Launching(object sender, LaunchingEventArgs e)
       {
         EngagementAgent.Instance.Init();
       }
-* Inserte `EngagementAgent.Instance.OnActivated` en el método `Application_Activated`:
+* Insertar `EngagementAgent.Instance.OnActivated` en hello `Application_Activated` método:
   
       private void Application_Activated(object sender, ActivatedEventArgs e)
       {
@@ -96,20 +96,20 @@ Modifique `App.xaml.cs`:
       }
 
 > [!WARNING]
-> Se desaconseja encarecidamente agregar la inicialización de Engagement en otro lugar de la aplicación. Sin embargo, tenga en cuenta que el método `EngagementAgent.Instance.Init` se ejecuta en un subproceso dedicado y no en el subproceso de la interfaz de usuario.
+> Se desaconseja encarecidamente tooadd Hola interacción inicialización en otro lugar de la aplicación. Sin embargo, tenga en cuenta que hello `EngagementAgent.Instance.Init` método se ejecuta en un subproceso dedicado y no en el subproceso de interfaz de usuario de Hola.
 > 
 > 
 
 ## <a name="basic-reporting"></a>Informes básicos
 ### <a name="recommended-method--overload-your-phoneapplicationpage-classes"></a>Método recomendado: sobrecargar las clases `PhoneApplicationPage`
-Para activar el informe de todos los registros que Engagement necesita para calcular las estadísticas de usuarios, sesiones, actividades, bloqueos y aspectos técnicos, puede hacer que todas las subclases `PhoneApplicationPage` hereden de las clases `EngagementPage`.
+Informe de hello order tooactivate de todos los registros de hello requiere interacción toocompute usuarios, sesiones, actividades, bloqueos y las estadísticas técnicas, basta con hacer que todos los su `PhoneApplicationPage` subclases heredan de hello `EngagementPage` clases.
 
-Este es un ejemplo de cómo hacer esto para una página de la aplicación. Puede hacer lo mismo para todas las páginas de la aplicación.
+Este es un ejemplo de cómo toodo esto en una página de la aplicación. Puede hacer lo mismo para todas las páginas de la aplicación de Hola.
 
 #### <a name="c-source-file"></a>Archivo de código fuente C#
 Modifique el archivo `.xaml.cs` de página:
 
-* Agregue las instrucciones `using`:
+* Agregar tooyour `using` instrucciones:
   
       using Microsoft.Azure.Engagement;
 * Reemplace `PhoneApplicationPage` por `EngagementPage`:
@@ -137,14 +137,14 @@ Modifique el archivo `.xaml.cs` de página:
         }
 
 > [!WARNING]
-> Si la página hereda del método `OnNavigatedTo`, asegúrese de permitir la llamada `base.OnNavigatedTo(e)`. De lo contrario, no se informará la actividad. De hecho, `EngagementPage` llama a `StartActivity` dentro del método `OnNavigatedTo`.
+> Si la página hereda de hello `OnNavigatedTo` método, puede toolet cuidado Hola `base.OnNavigatedTo(e)` llamar. En caso contrario, no se notificarán actividad hello. De hecho, Hola `EngagementPage` llama a `StartActivity` dentro de hello `OnNavigatedTo` método.
 > 
 > 
 
 #### <a name="xaml-file"></a>Archivo XAML
 Modifique el archivo `.xaml` de página:
 
-* Agregue a las declaraciones de espacios de nombres:
+* Agregue las declaraciones de espacios de nombres tooyour:
   
       xmlns:engagement="clr-namespace:Microsoft.Azure.Engagement;assembly=Microsoft.Azure.Engagement.EngagementAgent.WP"
 * Reemplace `phone:PhoneApplicationPage` por `engagement:EngagementPage`:
@@ -163,31 +163,31 @@ Modifique el archivo `.xaml` de página:
             <!-- layout -->
         </engagement:EngagementPage >
 
-#### <a name="override-the-default-behavior"></a>Invalidar el comportamiento predeterminado
-De forma predeterminada, el nombre de clase de la página se informa como el nombre de actividad, sin más. Si la clase usa el sufijo "Página", Engagement también la quitará.
+#### <a name="override-hello-default-behavior"></a>Invalidar el comportamiento predeterminado de Hola
+De forma predeterminada, nombre de la clase de página de Hola Hola se notifica como nombre de la actividad de hello, con ningún extra. Si la clase hello usa el sufijo "Página" Hola, interacción, también se quitará.
 
-Si desea invalidar el comportamiento predeterminado para el nombre, simplemente agregue lo siguiente a su código:
+Si desea comportamiento predeterminado de toooverride Hola para nombre de hello, basta con agregar este código tooyour:
 
-        // in the .xaml.cs file
+        // in hello .xaml.cs file
         protected override string GetEngagementPageName()
         {
            /* your code */
            return "new name";
         }
 
-Si desea informar algunos datos adicionales con su actividad, puede agregar lo siguiente a su código:
+Si desea tooreport cierta información adicional con la actividad, puede agregar este código tooyour:
 
-        // in the .xaml.cs file
+        // in hello .xaml.cs file
         protected override Dictionary<object,object> GetEngagementPageExtra()
         {
            /* your code */
            return extra;
         }
 
-Estos métodos se invocan desde el método `OnNavigatedTo` de la página.
+Estos métodos se invocan desde dentro de hello `OnNavigatedTo` método de la página.
 
 ### <a name="alternate-method-call-startactivity-manually"></a>Método alternativo: llamar a `StartActivity()` manualmente
-Si no puede o no quiere sobrecargar las clases `PhoneApplicationPage`, en su lugar, puede iniciar las actividades mediante una llamada directa a los métodos `EngagementAgent`.
+Si no puede o no desea que toooverload su `PhoneApplicationPage` clases, en su lugar, puede iniciar las actividades mediante una llamada a `EngagementAgent` métodos directamente.
 
 Recomendamos que llame a `StartActivity` dentro del método `OnNavigatedTo` de su PhoneApplicationPage.
 
@@ -200,31 +200,31 @@ Recomendamos que llame a `StartActivity` dentro del método `OnNavigatedTo` de s
 > [!IMPORTANT]
 > Asegúrese de finalizar la sesión correctamente.
 > 
-> El SDK de iOS llama automáticamente al método `EndActivity` cuando se cierra la aplicación. Por lo tanto, es **MUY** recomendable llamar al método `StartActivity` cada vez que cambie la actividad del usuario y no llamar **NUNCA** al método `EndActivity`. Este método envía un mensaje al servidor de Engagement indicando que el usuario actual ha salido de la aplicación, lo que afecta a todos los registros de la aplicación.
+> Hola SDK llama automáticamente a hello `EndActivity` método cuando se cierra la aplicación hello. Por lo tanto, es **alta** recomienda hello toocall `StartActivity` método cada vez que cambia la actividad de hello del usuario de hello y demasiado**nunca** llamada hello `EndActivity` método. Este método envía un servidor de interacción de toohello mensajes que usuario actual de hello ha abandonado la aplicación hello y esto afecta a todos los registros de aplicación.
 > 
 > 
 
 ## <a name="advanced-reporting"></a>Informes avanzados
-Opcionalmente, es aconsejable informar eventos, errores y trabajos de aplicación específicos. Para ello, use los otros métodos que se encuentran en la clase `EngagementAgent`. La API de Engagement permite usar todas las capacidades avanzadas de Engagement.
+Si lo desea, puede que desee eventos específicos de aplicación tooreport, errores y los trabajos y toodo por lo tanto, use otros métodos que se encuentran en Hola Hola `EngagementAgent` clase. Hola interacción API permite toouse todas las capacidades avanzadas de contratación.
 
-Para obtener más información, consulte [Cómo usar la API de etiquetado avanzado de Mobile Engagement en la aplicación de Windows Phone Silverlight](mobile-engagement-windows-phone-use-engagement-api.md).
+Para obtener más información, consulte [cómo toouse Hola avanzada Mobile Engagement etiquetado API en la aplicación de Windows Phone Silverlight](mobile-engagement-windows-phone-use-engagement-api.md).
 
 ## <a name="advanced-configuration"></a>Configuración avanzada
 ### <a name="disable-automatic-crash-reporting"></a>Deshabilitar los informes automáticos de bloqueo
-Puede deshabilitar la característica de informes automáticos de bloqueo de Engagement. A continuación, cuando se produce una excepción no controlada, Engagement no hará nada.
+Puede deshabilitar Hola automática de informes de errores característica de contratación. A continuación, cuando se produce una excepción no controlada, Engagement no hará nada.
 
 > [!WARNING]
-> Si tiene previsto deshabilitar esta característica, tenga en cuenta que cuando se produzca un error no controlado en la aplicación, Engagement no enviará la información del bloqueo **NI** tampoco cerrará la sesión ni los trabajos.
+> Si tiene previsto toodisable esta característica, tenga en cuenta que cuando se producirá un bloqueo no controlado en la aplicación, interacción no enviará bloqueo hello **AND** no cerrará sesión hello y trabajos.
 > 
 > 
 
-Para deshabilitar los informes automáticos de bloqueo, personalice la configuración según la manera en que la declaró:
+bloqueo automático toodisable reporting, simplemente personalizar la configuración según la forma de Hola se declaró:
 
 #### <a name="from-engagementconfigurationxml-file"></a>Desde el archivo `EngagementConfiguration.xml`
-Establezca el informe de bloqueo en `false` entre las etiquetas `<reportCrash>` y `</reportCrash>`.
+Establecer un informe de bloqueo demasiado`false` entre `<reportCrash>` y `</reportCrash>` etiquetas.
 
 #### <a name="from-engagementconfiguration-object-at-run-time"></a>Desde el objeto `EngagementConfiguration` en tiempo de ejecución
-Establezca el informe de bloqueo mediante el objeto EngagementConfiguration.
+Establecer toofalse de bloqueo de informe mediante el objeto EngagementConfiguration.
 
         /* Engagement configuration. */
 
@@ -232,18 +232,18 @@ Establezca el informe de bloqueo mediante el objeto EngagementConfiguration.
         /\* Disable Engagement crash reporting. \*/ engagementConfiguration.Agent.ReportCrash = false;
 
 ### <a name="burst-mode"></a>Modo de ráfaga
-De forma predeterminada, el servicio de Engagement informa los registros en tiempo real. Si la aplicación informa los registros con mucha frecuencia, es mejor almacenar los registros en el búfer e informarlos todos a la vez de forma periódica (esto se denomina "modo de ráfaga").
+De forma predeterminada, los registros de informes del servicio de contratación de hello en tiempo real. Si la aplicación informa de los registros con mucha frecuencia, es mejor toobuffer Hola registros y tooreport usarlas todos a la vez en una base de tiempo regular (Esto se denomina hello "modo de ráfaga").
 
-Para ello, llame al método siguiente:
+toodo por lo tanto, llame al método hello:
 
         EngagementAgent.Instance.SetBurstThreshold(int everyMs);
 
-El argumento es un valor en **milisegundos**. En cualquier momento, si desea volver a activar el registro en tiempo real, simplemente llame al método sin ningún parámetro o con el valor 0.
+Hola argumento es un valor en **milisegundos**. En cualquier momento, si desea que el registro en tiempo real de tooreactivate hello, simplemente llamar a Hola método sin parámetros o con el valor de hello 0.
 
-El modo de ráfaga aumenta ligeramente la duración de la batería, pero afecta al monitor de Engagement: la duración de todas las sesiones y trabajos se redondeará al umbral de ráfaga (por lo tanto, es posible que las sesiones y los trabajos más cortos que el umbral de ráfaga no sean visibles). Se recomienda usar un umbral de ráfaga inferior a 30.000 (30 segundos). Tenga en cuenta que los registros guardados se limitan a 300 elementos. Si el envío es demasiado largo, puede perder algunos registros.
+Hello el modo de ráfaga incremente ligeramente batería Hola vida pero tiene un impacto en hello Monitor de contratación: duración de las sesiones y los trabajos de todos los será redondeado toohello ráfaga umbral (por lo tanto, las sesiones y trabajos más cortos que el umbral de ráfaga de hello puede no estar visible). Es recomendable toouse ya no es un umbral de ráfaga de 30000 (30 s). Tendrá que toobe tenga en cuenta que los registros guardados son elementos too300 limitado. Si el envío es demasiado largo, puede perder algunos registros.
 
 > [!WARNING]
-> El umbral de ráfaga no se puede configurar en un período inferior a un segundo. Si intenta hacerlo, el SDK mostrará un seguimiento con el error y se restablecerá automáticamente en el valor predeterminado; es decir, cero segundos. Esto hará que el SDK informe los registros en tiempo real.
+> Hello umbral de ráfaga no se puede configurar tooa período menor que un segundo. Si intentas toodo por lo tanto, Hola SDK se muestran un seguimiento con error de Hola y configurará automáticamente y restablece toohello valor de manera predeterminada, es decir, cero segundos. Esto desencadenará Hola SDK tooreport Hola registros en tiempo real.
 > 
 > 
 

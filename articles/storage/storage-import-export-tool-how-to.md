@@ -1,6 +1,6 @@
 ---
-title: Uso de la herramienta de Azure Import/Export | Microsoft Docs
-description: "Descubra cómo usar la herramienta Import/Export a fin de preparar los discos duros para un trabajo de importación, así como reparar un trabajo de importación o de exportación."
+title: "Hola aaaUsing herramienta de importación y exportación de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo reparar un trabajo de importación toouse Hola herramienta de importación/exportación tooprepare unidades de disco duro para un trabajo de importación, o reparar un trabajo de exportación."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,27 +14,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-ms.openlocfilehash: 86073f5d15253d658fcb371e913dd3a543a2b075
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: fa2021e5a03281128e494e6e63f58bc6319aeb4c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="using-the-azure-importexport-tool"></a>Uso de la herramienta de Azure Import/Export 
+# <a name="using-hello-azure-importexport-tool"></a>Uso de hello herramienta de importación y exportación de Azure 
 
-La herramienta de Azure Import/Export (WAImportExport.exe) se utiliza para crear y administrar trabajos del servicio Azure Import/Export y le permite transferir grandes volúmenes de datos a Azure Blob Storage o desde él.
+Hola, herramienta de importación y exportación de Azure (WAImportExport.exe) es toocreate usado y administrar trabajos para servicio de importación y exportación de hello, permitiéndole tootransfer grandes cantidades de datos entre o salga de almacenamiento de blobs de Azure.
 
-Esta documentación está destinada a la versión más reciente de la herramienta de Azure Import/Export. Para obtener información sobre cómo usar la versión 1 de la herramienta, consulte [Uso de la herramienta de Azure Import/Export (versión 1)](storage-import-export-tool-how-to-v1.md).
+Esta documentación es para la versión más reciente de Hola de hello herramienta de importación y exportación de Azure. Para obtener información acerca de cómo utilizar la herramienta de v1 hello, visite [hello mediante la herramienta de importación y exportación de Azure v1](storage-import-export-tool-how-to-v1.md).
 
-En estos artículos, verá cómo usar la herramienta para realizar lo siguiente:  
+En estos artículos, verá cómo toouse Hola herramienta toodo Hola a continuación:  
 
-- Instalar y configurar la herramienta de Import/Export.
-- Preparar las unidades de disco duro para un trabajo en el que se importen los datos de las unidades a Azure Blob Storage.
-- Revisar el estado de un trabajo con archivos de registro de copia. 
+- Instalar y configurar la herramienta de importación y exportación de Hola.
+- Preparar las unidades de disco duras para un trabajo que importar datos desde el almacenamiento de blobs de unidades tooAzure.
+- Revise el estado de saludo de un trabajo con archivos de registro de copia. 
 - Reparar un trabajo de importación. 
 - Reparar un trabajo de exportación. 
-- Solucionar problemas de la herramienta de Azure Import/Export, en el caso de que le haya surgido algún problema durante el proceso. 
+- Solucionar problemas de hello herramienta de importación y exportación de Azure, en caso de que ha tenido un problema durante el proceso. 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-* [Configuración de la herramienta WAImportExport](storage-import-export-tool-setup.md)
+* [Configurar la herramienta WAImportExport de Hola](storage-import-export-tool-setup.md)

@@ -1,10 +1,10 @@
-Ahora crearemos una campaña de notificación de inserción simple que enviará una notificación de inserción a nuestra aplicación.
+Se va a crear una campaña de notificación de inserción simple que envía una aplicación de tooour de notificación de inserción.
 
-1. Vaya a la pestaña **COBERTURA** en el portal de Mobile Engagement.
-2. Haga clic en **Nuevo anuncio** para crear la campaña de notificaciones de inserción.
+1. Navegue toohello **ALCANZAR** ficha en el portal de interacción móvil.
+2. Haga clic en **nuevo anuncio** toocreate la campaña de notificación de inserción.
    
     ![](./media/mobile-engagement-windows-push-campaign/new-announcement.png)
-3. Configure el primer campo de la campaña mediante los pasos siguientes:
+3. Configurar el primer campo de saludo de la campaña a través de hello pasos:
    
     ![](./media/mobile-engagement-windows-push-campaign/campaign-first-params.png)
    
@@ -12,14 +12,14 @@ Ahora crearemos una campaña de notificación de inserción simple que enviará 
    
     b. Seleccione **Plazo de entrega** como *En cualquier momento*.
    
-    d. En el texto de la notificación, escriba el **título** que aparecerá en negrita en la inserción.
+    d. En el texto de la notificación de hello - escriba hello **título** que estará en negrita en la inserción de Hola.
    
     e. Luego escriba su **mensaje**
-4. Desplácese hacia abajo y en la sección **Contenido**, seleccione **Solo notificación**.
+4. Desplácese hacia abajo y en hello **contenido** sección, seleccione **solo notificación**.
    
     ![](./media/mobile-engagement-windows-push-campaign/campaign-content.png)
-5. Ya ha terminado de configurar la campaña más básica posible. Ahora, desplácese de nuevo hacia abajo y haga clic en el botón **Crear** para guardar la campaña.
-6. Último paso: haga clic en **Activar** para activar su campaña y enviar notificaciones de inserción.
+5. Ha terminado la posible de campaña más básica de configuración Hola. Ahora, desplácese hacia abajo en nuevo y haga clic en hello **crear** botón toosave la campaña.
+6. Último paso: haga clic en **activar** tooactivate su campaña y toosend notificaciones de inserción.
    
     ![](./media/mobile-engagement-windows-push-campaign/campaign-activate.png)
 

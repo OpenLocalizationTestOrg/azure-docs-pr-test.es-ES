@@ -1,5 +1,5 @@
 ---
-title: "SQL dinámico en SQL Data Warehouse | Microsoft Docs"
+title: "aaaDynamic SQL en el almacén de datos de SQL | Documentos de Microsoft"
 description: "Sugerencias para usar SQL dinámico en Almacenamiento de datos SQL Azure para desarrollar soluciones."
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,14 +15,14 @@ ms.workload: data-services
 ms.custom: queries
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
-ms.openlocfilehash: 29228676373aee8dbc7b1b2a7d92ffc978333804
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4d66eecb37621510f657d1ec9a2a935daaa16052
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="dynamic-sql-in-sql-data-warehouse"></a>SQL dinámico en Almacenamiento de datos SQL
-Al desarrollar código de aplicación para Almacenamiento de datos SQL, puede que necesite usar SQL dinámico con el fin de proporcionar soluciones flexibles, genéricas y modulares. Almacenamiento de datos SQL no admite por el momento tipos de datos blob. Esto puede limitar el tamaño de las cadenas ya que los tipos de blob incluyen tipos varchar (max) y nvarchar (max). Si ha utilizado estos tipos en el código de aplicación al crear cadenas muy grandes, será necesario que divida el código en fragmentos y utilice en su lugar la instrucción EXEC.
+Al desarrollar el código de la aplicación para almacenamiento de datos de SQL, es posible que necesita toouse sql dinámico toohelp entregar soluciones flexibles, genéricas y modulares. Almacenamiento de datos SQL no admite por el momento tipos de datos blob. Esto puede limitar el tamaño de Hola de las cadenas como tipos de blob incluyen tipos varchar (max) y nvarchar (max). Si ha usado estos tipos en el código de aplicación al generar cadenas muy grandes, necesitará toobreak Hola código en fragmentos y use Hola EXEC instrucción en su lugar.
 
 Un ejemplo sencillo:
 
@@ -34,10 +34,10 @@ DECLARE @sql_fragment1 VARCHAR(8000)=' SELECT name '
 EXEC( @sql_fragment1 + @sql_fragment2 + @sql_fragment3);
 ```
 
-Si la cadena es corta, puede usar [sp_executesql][sp_executesql] como de costumbre.
+Si la cadena hello es corta puede usar [sp_executesql] [ sp_executesql] con normalidad.
 
 > [!NOTE]
-> Las instrucciones ejecutadas como SQL dinámico seguirán sujetas a todas las reglas de validación de TSQL.
+> Las instrucciones ejecutadas como SQL dinámico se seguirán las reglas de validación de asunto tooall TSQL.
 > 
 > 
 

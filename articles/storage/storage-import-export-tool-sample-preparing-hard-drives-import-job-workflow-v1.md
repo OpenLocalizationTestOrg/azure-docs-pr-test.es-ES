@@ -1,6 +1,6 @@
 ---
-title: "Flujo de trabajo de ejemplo para preparar unidades de disco duro para un trabajo de importación de Azure Import/Export (versión 1) | Microsoft Docs"
-description: "Vea un tutorial para conocer el proceso completo de preparación de las unidades para un trabajo de importación en el servicio Azure Import/Export."
+title: "trabajo - v1 de importación de aaaSample flujo de trabajo tooprep unidades de disco duro para una importación y exportación de Azure | Documentos de Microsoft"
+description: "Vea un tutorial para completar el proceso de preparar las unidades para un trabajo de importación en el servicio de importación y exportación de Hola Hola."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 313f8c1f3962a943b4c98c530c324ff28aa84c10
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f836fc6104d8b4ad5660cb110a62f61b40b0b7ff
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="sample-workflow-to-prepare-hard-drives-for-an-import-job"></a>Flujo de trabajo de ejemplo para preparar las unidades de disco duro para un trabajo de importación
-Este tema le guiará por el proceso completo de preparar las unidades para un trabajo de importación.  
+# <a name="sample-workflow-tooprepare-hard-drives-for-an-import-job"></a>Unidades de disco duro de tooprepare de flujo de trabajo y ejemplo de un trabajo de importación
+Este tema explica cómo completar el proceso de Hola de preparar las unidades para un trabajo de importación.  
   
-Este ejemplo importa los datos siguientes en una cuenta de Azure Storage denominada `mystorageaccount`:  
+Este ejemplo importan Hola después de datos en una cuenta de almacenamiento de Windows Azure denominada `mystorageaccount`:  
   
 |Ubicación|Descripción|  
 |--------------|-----------------|  
@@ -32,7 +32,7 @@ Este ejemplo importa los datos siguientes en una cuenta de Azure Storage denomin
 |K:\Temp\FavoriteMovie.ISO|Una imagen de disco Blu-ray™, 25 GB.|  
 |\\\bigshare\john\music|Una colección de archivos de música en un recurso compartido de red, 10 GB en total.|  
   
-El trabajo de importación importará estos datos en los siguientes destinos en la cuenta de almacenamiento:  
+trabajo de importación de Hello importará estos datos en hello después de destinos en la cuenta de almacenamiento de hello:  
   
 |Origen|Directorio virtual o blob de destino|  
 |------------|-------------------------------------------|  
@@ -41,13 +41,13 @@ El trabajo de importación importará estos datos en los siguientes destinos en 
 |K:\Temp\FavoriteMovie.ISO|https://mystorageaccount.blob.core.windows.net/favorite/FavoriteMovies.ISO|  
 |\\\bigshare\john\music|https://mystorageaccount.blob.core.windows.net/music|  
   
-Con esta asignación, el archivo `H:\Video\Drama\GreatMovie.mov` se importará al blob `https://mystorageaccount.blob.core.windows.net/video/Drama/GreatMovie.mov`.  
+Con esta asignación, Hola archivo `H:\Video\Drama\GreatMovie.mov` será toohello importados blob `https://mystorageaccount.blob.core.windows.net/video/Drama/GreatMovie.mov`.  
   
-A continuación, para determinar cuántas unidades de disco duro se necesitan, calcule el tamaño de los datos:  
+Después, toodetermine cuántas unidades de disco duro son necesarias, tamaño de Hola de cálculo de los datos de hello:  
   
 `5TB + 30GB + 25GB + 10GB = 5TB + 65GB`  
   
-En este ejemplo, dos unidades de disco duro de 3TB deberían ser suficientes. Sin embargo, dado que el directorio de origen `H:\Video` tiene 5 TB de datos y la capacidad de la unidad de disco duro es de solo 3 TB, es necesario dividir `H:\Video` en dos directorios más pequeños antes de ejecutar la herramienta Microsoft Azure Import/Export: `H:\Video1` y `H:\Video2`. Este paso genera los siguientes directorios de origen:  
+En este ejemplo, dos unidades de disco duro de 3TB deberían ser suficientes. Sin embargo, desde el directorio de origen de hello `H:\Video` tiene 5TB de datos y la capacidad de la unidad de disco duro es solo 3TB, es necesario toobreak `H:\Video` en dos directorios más pequeños antes de ejecutar Hola herramienta de importación y exportación de Microsoft Azure: `H:\Video1` y `H:\Video2`. Este paso produce Hola siguiendo los directorios de origen:  
   
 |Ubicación|Tamaño|Directorio virtual o blob de destino|  
 |--------------|----------|-------------------------------------------|  
@@ -57,9 +57,9 @@ En este ejemplo, dos unidades de disco duro de 3TB deberían ser suficientes. Si
 |K:\Temp\FavoriteMovies.ISO|25 GB|https://mystorageaccount.blob.core.windows.net/favorite/FavoriteMovies.ISO|  
 |\\\bigshare\john\music|10 GB|https://mystorageaccount.blob.core.windows.net/music|  
   
- Tenga en cuenta que aunque el directorio `H:\Video` se ha dividido en dos directorios, ambos apuntan al mismo directorio virtual de destino en la cuenta de almacenamiento. De esta manera, todos los archivos de vídeo se mantienen en un único contenedor `video` en la cuenta de almacenamiento.  
+ Tenga en cuenta que aunque Hola `H:\Video`directory se ha dividido tootwo directorios, señalan toohello mismo directorio virtual de destino en la cuenta de almacenamiento de Hola. De esta manera, todos los archivos de vídeo se mantienen en un único `video` contenedor en la cuenta de almacenamiento de Hola.  
   
- A continuación, los directorios de origen anteriores se distribuyen uniformemente en las dos unidades de disco duro:  
+ A continuación, Hola por encima del origen de directorios se uniformemente distribuidas toohello dos unidades de disco duro:  
   
 ||||  
 |-|-|-|  
@@ -70,7 +70,7 @@ En este ejemplo, dos unidades de disco duro de 3TB deberían ser suficientes. Si
 ||K:\Temp\BlueRay.ISO||  
 ||\\\bigshare\john\music||  
   
-Además, puede establecer los metadatos siguientes para todos los archivos:  
+Además, puede establecer Hola después de metadatos para todos los archivos:  
   
 -   **UploadMethod:** servicio Microsoft Azure Import/Export  
   
@@ -78,7 +78,7 @@ Además, puede establecer los metadatos siguientes para todos los archivos:
   
 -   **CreationDate:** 10/1/2013  
   
-Para establecer los metadatos de los archivos importados, cree un archivo de texto, `c:\WAImportExport\SampleMetadata.txt`, con el siguiente contenido:  
+tooset metadatos para los archivos de hello importado, cree un archivo de texto, `c:\WAImportExport\SampleMetadata.txt`, con hello siguen contenido:  
   
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>  
@@ -89,7 +89,7 @@ Para establecer los metadatos de los archivos importados, cree un archivo de tex
 </Metadata>  
 ```
   
-También puede establecer algunas propiedades para el blob `FavoriteMovie.ISO`:  
+También puede establecer algunas propiedades para hello `FavoriteMovie.ISO` blob:  
   
 -   **Content-Type:** application/octet-stream  
   
@@ -97,7 +97,7 @@ También puede establecer algunas propiedades para el blob `FavoriteMovie.ISO`:
   
 -   **Cache-Control:** no-cache  
   
-Para establecer estas propiedades, cree un archivo de texto, `c:\WAImportExport\SampleProperties.txt`:  
+tooset estas propiedades, cree un archivo de texto, `c:\WAImportExport\SampleProperties.txt`:  
   
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>  
@@ -108,30 +108,30 @@ Para establecer estas propiedades, cree un archivo de texto, `c:\WAImportExport\
 </Properties>  
 ```
   
-Ahora está listo para ejecutar la herramienta Azure Import/Export para preparar las dos unidades de disco duro. Observe lo siguiente:  
+Ahora está listo toorun Hola herramienta de importación y exportación de Azure tooprepare Hola dos unidades de disco duro. Observe lo siguiente:  
   
--   La primera unidad se monta como unidad X.  
+-   Hola primera unidad se monta como unidad X.  
   
--   La segunda unidad se monta como unidad Y.  
+-   Hola segunda unidad se monta como unidad Y.  
   
--   La clave para la cuenta de almacenamiento `mystorageaccount` es `8ImTigJhIwvL9VEIQKB/zbqcXbxrIHbBjLIfOt0tyR98TxtFvUM/7T0KVNR6KRkJrh26u5I8hTxTLM2O1aDVqg==`.  
+-   Hola clave Hola cuenta de almacenamiento `mystorageaccount` es `8ImTigJhIwvL9VEIQKB/zbqcXbxrIHbBjLIfOt0tyR98TxtFvUM/7T0KVNR6KRkJrh26u5I8hTxTLM2O1aDVqg==`.  
 
 ## <a name="preparing-disk-for-import-when-data-is-pre-loaded"></a>Preparación del disco para la importación cuando los datos se han cargado previamente
  
- Si los datos que se van a importar ya están presentes en el disco, use la marca /skipwrite. Tanto el valor de /t como de /srcdir deben apuntar al disco que se está preparando para la importación. Si no es necesario que todos los datos del disco vayan al mismo directorio virtual de destino o raíz de la cuenta de almacenamiento, ejecute el mismo comando para cada directorio por separado manteniendo el valor de/id igual en todas las ejecuciones.
+ Si ya está presente en el disco de Hola Hola toobe de datos importado, utilice Hola marca /skipwrite. Valor de /t y /srcdir debe apuntar disco toohello que se está preparando para la importación. Si no todos Hola datos en disco de hello necesita toogo toohello mismo directorio virtual de destino o raíz de cuenta de almacenamiento Hola Hola ejecución mismo comando para cada directorio mantener por separado de valor de Hola de /id mismo a través de todas las ejecuciones.
 
 >[!NOTE] 
->No especifique /format, porque borrará los datos del disco. Puede especificar /encrypt o /bk dependiendo de si el disco ya está cifrado o no. 
+>No especifique/Format, dado que borrar datos de hello en el disco de Hola. Puede especificar / cifrar o /bk dependiendo de si el disco de hello ya está cifrado o no. 
 >
 
 ```
-    When data is already present on the disk for each drive run the following command.
+    When data is already present on hello disk for each drive run hello following command.
     WAImportExport.exe PrepImport /j:FirstDrive.jrn /id:Video1 /logdir:c:\logs /sk:8ImTigJhIwvL9VEIQKB/zbqcXbxrIHbBjLIfOt0tyR98TxtFvUM/7T0KVNR6KRkJrh26u5I8hTxTLM2O1aDVqg== /t:x /format /encrypt /srcdir:x:\Video1 /dstdir:video/ /MetadataFile:c:\WAImportExport\SampleMetadata.txt /skipwrite
 ```
 
 ## <a name="copy-sessions---first-drive"></a>Copia de sesiones: primera unidad
 
-Para la primera unidad, ejecute la herramienta Azure Import/Export dos veces para copiar los dos directorios de origen:  
+Para la primera unidad de hello, ejecute hello herramienta de importación y exportación de Azure de origen dos veces hello toocopy dos directorios:  
 
 **Primera sesión de copia**
   
@@ -147,7 +147,7 @@ WAImportExport.exe PrepImport /j:FirstDrive.jrn /id:Photo /srcdir:H:\Photo /dstd
 
 ## <a name="copy-sessions---second-drive"></a>Copia de sesiones: segunda unidad
  
-Para la segunda unidad, ejecute la herramienta Azure Import/Export tres veces, una para cada uno de los directorios de origen y otra para el archivo de imagen independiente Blu-Ray™:  
+Para hello segunda unidad, ejecute Hola herramienta de importación y exportación de Azure tres veces, una vez cada uno de ellos para hello directorios de origen y una vez para independiente de hello Blu-Ray™ archivo de imagen):  
   
 **Primera sesión de copia** 
 
@@ -169,7 +169,7 @@ WAImportExport.exe PrepImport /j:SecondDrive.jrn /id:BlueRayIso /srcfile:K:\Temp
 
 ## <a name="copy-session-completion"></a>Finalización de la sesión de copia
 
-Cuando se hayan completado las sesiones de copia, podrá desconectar las dos unidades del equipo de copia y enviarlas al centro de datos de Microsoft Azure adecuado. Cargará los dos archivos de diario, `FirstDrive.jrn` y `SecondDrive.jrn`, cuando cree el trabajo de importación en el [Portal de administración de Microsoft Azure](https://manage.windowsazure.com/).  
+Una vez completaron las sesiones de copia de hello, puede desconectarse dos unidades de Hola de equipo de copia de Hola y enviarlas toohello centro de datos de Windows Azure adecuado. Cargue archivos de diario de hello dos, `FirstDrive.jrn` y `SecondDrive.jrn`, cuando se crea el trabajo de importación de hello en hello [Portal de administración de Windows Azure](https://manage.windowsazure.com/).  
   
 ## <a name="next-steps"></a>Pasos siguientes
 

@@ -1,6 +1,6 @@
 ---
-title: "Clasificación de datos para Azure | Microsoft Docs"
-description: "En este artículo se ofrece una introducción a los fundamentos de la clasificación de datos y se hace hincapié en sus ventajas, especialmente en el contexto de la informática en la nube y con el uso de Microsoft Azure."
+title: "aaaData clasificación de Azure | Documentos de Microsoft"
+description: "Este artículo proporciona una introducción toohello conceptos básicos de la clasificación de datos y resalta su valor, en concreto en el contexto de Hola de cloud computing y con Microsoft Azure"
 services: security
 documentationcenter: na
 author: YuriDio
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/18/2017
 ms.author: yurid
-ms.openlocfilehash: e5d8841c47f91b27131fcf5066bfd3805b5670f2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 726da2482beab3bf7b0ac33510f2b523d5074df8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="data-classification-for-azure"></a>Clasificación de datos para Azure
-En este artículo se ofrece una introducción a los fundamentos de la clasificación de datos y se hace hincapié en sus ventajas, especialmente en el contexto de la informática en la nube y con el uso de Microsoft Azure. 
+Este artículo proporciona una introducción toohello conceptos básicos de la clasificación de datos y su valor, en concreto en el contexto de Hola de cloud computing y con Microsoft Azure resalta. 
 
 ## <a name="data-classification-fundamentals"></a>Fundamentos de la clasificación de datos
 Para clasificar correctamente los datos de una organización, es necesario comprender el amplio abanico de necesidades de la organización y conocer de forma exhaustiva dónde residen sus recursos de datos.  
@@ -34,72 +34,72 @@ Los datos existen en uno de estos tres estados básicos:
 * En curso 
 * En tránsito 
 
-Los tres estados requieren soluciones técnicas únicas para la clasificación de datos, aunque sus principios aplicados deberían ser los mismos para todos ellos. Los datos que se clasifican como confidenciales deben mantener su confidencialidad en reposo, en proceso y en tránsito. 
+Los tres estados requieren soluciones técnicas únicas para la clasificación de datos, pero hello aplicados principios de clasificación de datos debe ser Hola igual para cada uno. Los datos que esté clasificados como confidencial tienen toostay confidencial si está en reposo, en proceso y en tránsito. 
 
-Además, los datos pueden ser estructurados o no estructurados. Los procesos típicos de clasificación para los datos estructurados que se encuentran en bases de datos y hojas de cálculo son de menor complejidad y se dedica menos tiempo a administrarlos, en comparación con los datos no estructurados, como documentos, código fuente y correos electrónicos. 
+Además, los datos pueden ser estructurados o no estructurados. Procesos de clasificación típico para hello estructura de datos que se encuentran en las bases de datos y hojas de cálculo son menos complejo y lento toomanage que los de los datos no estructurados, como documentos, código fuente y correo electrónico. 
 
 > [!TIP]
 > Para más información acerca de las funcionalidades de Azure y los procedimientos recomendados para el cifrado de datos, lea [Azure Data Security and Encryption Best Practices](azure-security-data-encryption-best-practices.md) (Procedimientos recomendados de cifrado y seguridad de datos en Azure)
 > 
 > 
 
-Por lo general, las organizaciones tendrán más datos no estructurados que estructurados. Con independencia de si los datos son estructurados o no, es importante que administre su confidencialidad. Cuando se implementa correctamente, la clasificación de datos ayuda a garantizar que los datos confidenciales o sensibles se administren con mayor supervisión que los recursos de datos que se consideran públicos o de distribución libre. 
+Por lo general, las organizaciones tendrán más datos no estructurados que estructurados. Independientemente de si los datos son estructurados o no estructurados, es importante sensibilidad datos toomanage. Cuando se implementa correctamente, la clasificación de datos le ayuda a garantizar que los datos confidenciales o activos se administran con mayor supervisión de recursos de datos que se consideran toodistribute público o libre. 
 
-### <a name="controlling-access-to-data"></a>Control del acceso a los datos
-Con frecuencia la autenticación y la autorización se confunden y no se comprende bien su función. En realidad, son bastante diferentes, como se muestra en la ilustración siguiente.  
+### <a name="controlling-access-toodata"></a>Control de acceso toodata
+Con frecuencia la autenticación y la autorización se confunden y no se comprende bien su función. En realidad son muy diferentes, como se muestra en la figura siguiente de Hola.  
 
 ![Control y acceso a datos](./media/azure-security-data-classification/azure-security-data-classification-fig1.png)
 
 ### <a name="authentication"></a>Autenticación
-La autenticación normalmente consta de dos partes como mínimo: un identificador o nombre de usuario para identificar a un usuario y un token, como una contraseña, para confirmar que la credencial de nombre de usuario es válida. El proceso no proporciona al usuario autenticado acceso a ningún elemento ni servicio, sino que comprueba que el usuario sea quien dice ser.   
+Autenticación normalmente consta de al menos dos partes: un tooidentify de Id. de usuario o nombre de usuario un usuario y un símbolo (token), como una contraseña, tooconfirm que Hola credencial de nombre de usuario es válido. proceso de Hello no proporciona Hola usuario autenticado con acceso a los elementos de tooany o servicios; comprueba que ese usuario hello es quien dice ser.   
 
 > [!TIP]
-> [Azure Active Directory](../active-directory/active-directory-whatis.md) proporciona servicios de identidad basados en la nube que permiten autenticar y autorizar usuarios. 
+> [Azure Active Directory](../active-directory/active-directory-whatis.md) proporciona servicios de identidad basado en la nube que le permiten tooauthenticate y autorizan a los usuarios. 
 > 
 > 
 
 ### <a name="authorization"></a>Autorización
-La autorización es el proceso de proporcionar a un usuario autenticado la capacidad de acceder a una aplicación, un conjunto de datos, un archivo de datos o algún otro objeto. Para asignar a los usuarios autenticados derechos para usar, modificar o eliminar elementos a los que tengan acceso, es preciso prestar atención a la clasificación de datos. 
+La autorización es el proceso de hello consistente en proporcionar un tooaccess de capacidad de Hola de usuario autenticado de una aplicación, conjunto de datos, archivo de datos o algún otro objeto. Asignar los usuarios autenticados Hola derechos toouse, modificar o eliminar elementos que pueden tener acceso requiere clasificación toodata de atención. 
 
-Para lograr una autorización correcta, se necesita implementar un mecanismo que valide las necesidades de usuarios individuales para acceder a archivos e información teniendo en cuenta una combinación del rol, la directiva de seguridad y la directiva de riesgo. Por ejemplo, quizá no todos los empleados necesiten acceso a determinadas aplicaciones de línea de negocio (LOB) y es probable que solo un pequeño subconjunto de los empleados deba acceder a los archivos de Recursos Humanos (RR. HH.). Sin embargo, para que las organizaciones puedan controlar quién tiene acceso a los datos, además de cuándo y cómo, se debe haber instaurado un sistema eficaz para autenticar a los usuarios. 
+La autorización correctamente requiere la implementación de un mecanismo toovalidate los usuarios individuales necesita archivos de tooaccess y la información en función de una combinación de rol, la directiva de seguridad y consideraciones de la directiva de riesgo. Por ejemplo, datos de aplicaciones específicas line-of-business (LOB) que no precise toobe tiene acceso a todos los empleados, y solo un pequeño subconjunto de los empleados probablemente necesitará tener acceso toohuman archivos de recursos (RR). Pero para las organizaciones toocontrol quién puede acceder a datos, como así como cuándo y cómo, debe ser un sistema eficaz para autenticar a los usuarios en su lugar. 
 
 > [!TIP]
-> En Microsoft Azure, asegúrese de aprovechar el control de acceso basado en rol (RBAC) de Azure para conceder únicamente el nivel de acceso que los usuarios necesiten para realizar su trabajo. Para más información, lea [Uso de asignaciones de roles para administrar el acceso a los recursos de la suscripción de Azure](../active-directory/role-based-access-control-configure.md). 
+> en Microsoft Azure, asegúrese de que tooleverage Azure Role-Based Access Control (RBAC) toogrant únicamente Hola una cantidad de acceso que los usuarios necesitan tooperform sus trabajos. Lectura [usar recursos de Active Directory de rol asignaciones toomanage acceso tooyour](../active-directory/role-based-access-control-configure.md) para obtener más información. 
 > 
 > 
 
 ### <a name="roles-and-responsibilities-in-cloud-computing"></a>Roles y responsabilidades en la informática en la nube
-Aunque los proveedores de nube pueden ayudar a administrar los riesgos, los clientes deben asegurarse de que la administración y el cumplimiento de la clasificación de datos se implementen correctamente para proporcionar el nivel adecuado de servicios de administración de datos.  
+Aunque los proveedores de nube pueden ayudar a administrar los riesgos, los clientes necesitan tooensure que administración de clasificación de datos y se implementa correctamente el cumplimiento tooprovide Hola nivel adecuado de servicios de administración de datos.  
 
-Las responsabilidades en cuanto a la clasificación de datos varían en función de qué modelo de servicio en la nube esté implantado, tal como se muestra en la ilustración siguiente. Los tres modelos principales de servicio en la nube son infraestructura como servicio (IaaS), plataforma como servicio (PaaS) y software como servicio (SaaS). La implementación de los mecanismos de clasificación de datos también varía en función de la dependencia del proveedor de la nube y las expectativas que se tengan respecto a él. 
+Clasificación de datos varían las responsabilidades se basa en qué modelo de servicio de nube está en su lugar, como se muestra en la figura siguiente de Hola. tres modelos de servicio de nube principal Hola son infraestructura como servicio (IaaS), plataforma como servicio (PaaS) y el software como servicio (SaaS). Implementación de mecanismos de clasificación de datos también varían según dependencia hello y expectativas Hola del proveedor de nube. 
 
 ![Roles](./media/azure-security-data-classification/azure-security-data-classification-fig2.png)
 
-Aunque el cliente sea responsable de clasificar sus propios datos, los proveedores de nube deberían comprometerse por escrito acerca de cómo van a proteger y mantener la privacidad de los datos del cliente almacenados en la nube.  
+Aunque tú eres responsable de clasificar los datos, los proveedores de nube deben hacer compromisos escritos acerca de cómo se van a proteger y mantener la privacidad de Hola Hola de datos de clientes almacenados dentro de la nube.  
 
-* Los requisitos de los **proveedores de IaaS** se limitan a garantizar que el entorno virtual puede acomodar las funcionalidades de clasificación de datos y los requisitos de cumplimiento del cliente. Los proveedores de IaaS desempeñan un papel menos importante en la clasificación de datos porque solo deben asegurarse de que los datos del cliente satisfagan los requisitos de cumplimiento. Aun así, los proveedores deben asegurarse de que sus entornos virtuales cumplan los requisitos de la clasificación de datos, además de proteger sus centros de datos.
-* Las responsabilidades de los **proveedores de PaaS** pueden ser variadas, ya que la plataforma se puede usar con un enfoque por niveles para proporcionar seguridad para una herramienta de clasificación. Los proveedores de PaaS pueden ser responsables de la autenticación y posiblemente de algunas reglas de autorización, y deben proporcionar funcionalidades de seguridad y clasificación de datos a su capa de aplicación. De forma muy similar a los proveedores de IaaS, los de PaaS deben asegurarse de que su plataforma cumpla los requisitos de clasificación de datos pertinentes.
-* Con frecuencia, los **proveedores de SaaS** se considerarán parte de una cadena de autorización y tendrán que asegurarse de que los datos almacenados en la aplicación SaaS se puedan controlar en función del tipo de clasificación. Las aplicaciones de SaaS pueden usarse para las aplicaciones LOB, y por su propia naturaleza deben proporcionar los medios para autenticar y autorizar los datos que se utilizan y almacenan. 
+* **Proveedores de IaaS** requisitos se limitan tooensuring que Hola entorno virtual puede dar cabida a las capacidades de clasificación de datos y los requisitos de cumplimiento del cliente. Proveedores de IaaS tienen un rol más pequeño en la clasificación de datos porque sólo necesitarán tooensure que los datos del cliente aborda los requisitos de cumplimiento. Sin embargo, los proveedores aún deben asegurarse que sus entornos virtuales de abordar los requisitos de clasificación de datos de adición toosecuring sus centros de datos.
+* **Proveedores de PaaS** responsabilidades se pueden combinar, porque plataforma Hola podría ser usada en seguridad tooprovide enfoque por capas para una herramienta de clasificación. Proveedores de PaaS pueden ser responsables de la autenticación y posiblemente algunas reglas de autorización y deben proporcionar seguridad y el nivel de aplicación de tootheir de capacidades de clasificación de datos. Mucho como proveedores de IaaS, PaaS proveedores necesitan tooensure que su plataforma cumple con los requisitos de clasificación de datos relevantes.
+* **Proveedores de SaaS** con frecuencia se considerará como parte de una cadena de autorización, y se necesita tooensure que Hola datos almacenados en la aplicación de SaaS hello puede controlarse mediante tipo de clasificación. Aplicaciones de SaaS se pueden utilizar para las aplicaciones LOB, y por su propia naturaleza necesita tooprovide Hola significa tooauthenticate y autorizar a los datos que se usa y se almacena. 
 
 ## <a name="classification-process"></a>Proceso de clasificación
-Muchas organizaciones que comprenden la necesidad de la clasificación de datos y desean implementarla se enfrentan a un desafío básico: ¿por dónde empezar?
+¿Muchas organizaciones que entender Hola necesario para la clasificación de datos y desea tooimplement enfrentan a un desafío básico: donde toobegin?
 
-Una manera sencilla y eficaz de implementar la clasificación de datos es utilizar el modelo PLANEAR, HACER, COMPROBAR, ACTUAR de [MOF](https://technet.microsoft.com/solutionaccelerators/dd320379.aspx). En la siguiente ilustración, se muestran las tareas necesarias para implementar correctamente la clasificación de datos en este modelo.  
+Una manera sencilla y eficaz de clasificación de datos de tooimplement es toouse hello PLAN, lo hace, modelo de comprobación, ACT de [MOF](https://technet.microsoft.com/solutionaccelerators/dd320379.aspx). Hola siguiente ilustración, los gráficos de las tareas hello toosuccessfully necesario implementar la clasificación de datos en este modelo.  
 
-1. **PLANEAR**. Identificar los recursos de datos y al administrador de recursos de datos para implementar el programa de clasificación; desarrollar los perfiles de protección. 
-2. **HACER**. Una vez acordadas las directivas de clasificación de datos, implementar el programa y las tecnologías de cumplimiento según sea necesario para los datos confidenciales.  
-3. **COMPROBAR**. Comprobar y validar los informes para asegurarse de que las herramientas y los métodos que se usen cumplan de forma eficaz las directivas de clasificación. 
-4. **ACTUAR**. Revisar el estado del acceso a los datos, así como los archivos y los datos que necesitan revisión mediante un método de revisión y reclasificación para adoptar los cambios y solventar los nuevos riesgos.  
+1. **PLANEAR**. Identificar los activos de datos, un programa de clasificación de datos custodia toodeploy hello y desarrollar perfiles de protección. 
+2. **HACER**. Una vez acordadas directivas de clasificación de datos, implementar programa hello y tecnologías de cumplimiento según sea necesario para datos confidenciales.  
+3. **COMPROBAR**. Comprobar y validar informes tooensure que herramientas de Hola y los métodos que se va a utilizar eficazmente se dirección Hola directivas de clasificación. 
+4. **ACTUAR**. Revisar el estado de Hola de acceso a datos y revisar los archivos y datos que requieren revisión utilizando una reclasificación y cambios de revisión metodología tooadopt y tooaddress nuevos riesgos.  
 
 ![Planear, hacer, comprobar, actuar](./media/azure-security-data-classification/azure-security-data-classification-fig3.png)
 
 ### <a name="select-a-terminology-model-that-addresses-your-needs"></a>Selección de un modelo terminológico apto para sus necesidades
-Existen varios tipos de procesos para clasificar datos, entre ellos los manuales; los basados en la ubicación que clasifican los datos según la ubicación de un usuario o del sistema; los basados en aplicaciones, como la clasificación específica de las bases de datos; y automatizados, que se usan en diversas tecnologías y se describen en la sección "Protección de datos confidenciales" más adelante en este artículo.  
+Existen varios tipos de procesos para la clasificación de datos, incluidos los procesos manuales, de procesos basada en la ubicación que clasificación los datos según la ubicación de un usuario o del sistema, según las aplicaciones de procesos como la clasificación de la base de datos específica y automatizada procesos usados por varias tecnologías, algunos de los cuales se describen en la sección de "Protección de datos confidenciales" hello más adelante en este artículo.  
 
-En este artículo se presentan dos modelos terminológicos generalizados que se basan en los extendidos y respetados en el sector. Estos modelos terminológicos, que ofrecen tres niveles de confidencialidad para la clasificación, se muestran en la tabla siguiente.  
+En este artículo se presentan dos modelos terminológicos generalizados que se basan en los extendidos y respetados en el sector. Estos modelos de terminología, que ofrecen tres niveles de sensibilidad de clasificación, se muestran en hello en la tabla siguiente.  
 
 > [!NOTE]
-> Cuando clasifique un archivo o un recurso que combine datos que normalmente se clasificarían en diferentes niveles, la clasificación general se debe establecer según el máximo nivel presente. Por ejemplo, un archivo que contenga datos sensibles y restringidos se debe clasificar como restringido.  
+> al clasificar un archivo o recurso que combina datos que normalmente se clasificaría en distintos niveles de nivel más alto de Hola de clasificación presente deben establecer Hola clasificación general. Por ejemplo, un archivo que contenga datos sensibles y restringidos se debe clasificar como restringido.  
 > 
 > 
 
@@ -110,7 +110,7 @@ En este artículo se presentan dos modelos terminológicos generalizados que se 
 | Bajo |Público |Sin restricciones |
 
 #### <a name="confidential-restricted"></a>Confidencial (restringida)
-Entre la información que se clasifica como confidencial o restringida, se incluyen datos cuya pérdida o puesta en peligro puede ser catastrófica para una o varias personas u organizaciones. Esta información se proporciona con frecuencia solo "cuando se necesita saber" y abarca: 
+La información que esté clasificada como confidencial o restringido incluye datos que pueden ser tooone grave o más usuarios o las organizaciones si comprometidas o perdidas. Esta información se proporciona con frecuencia en forma de "necesidad tooknow" y puede incluir: 
 
 * Datos personales, entre ellos información de identificación personal, como los números de documento nacional de identidad o del seguro social, números de pasaporte, números de tarjeta de crédito, números del permiso de conducción, historias clínicas y números identificativos de pólizas de seguro de salud.  
 * Registros financieros, incluidos los números de cuentas financieras, como números de cuentas corrientes o de inversión. 
@@ -123,16 +123,16 @@ Los datos que se clasifican como confidenciales poseen con frecuencia requisitos
 #### <a name="for-internal-use-only-sensitive"></a>Solo para uso interno (sensible)
 La información que se clasifica como de confidencialidad media incluye archivos y datos que no acarrearían repercusiones graves para un individuo o una organización si se pierden o destruyen. Tal información podría incluir: 
 
-* Correos electrónicos, la mayoría de los cuales se pueden eliminar o distribuir sin causar una crisis (excepto los buzones o correos electrónicos de personas que se identifiquen en la clasificación confidencial).  
+* Correo electrónico, la mayoría de los cuales se puedan eliminar o distribuida sin causar una crisis (excepto los buzones de correo o correo electrónico de personas que se identifican en la clasificación de hello confidencial).  
 * Documentos y archivos que no contienen datos confidenciales.
 
-Por lo general, esta clasificación engloba todo lo que no es confidencial. Esta clasificación puede abarcar la mayor parte de los datos empresariales, ya que la mayoría de los archivos que se administran o utilizan a diario pueden clasificarse como sensibles. A excepción de los datos que se hacen públicos o que son confidenciales, todos los datos dentro de una organización empresarial se pueden clasificar como sensibles de forma predeterminada. 
+Por lo general, esta clasificación engloba todo lo que no es confidencial. Esta clasificación puede abarcar la mayor parte de los datos empresariales, ya que la mayoría de los archivos que se administran o utilizan a diario pueden clasificarse como sensibles. Con excepción de Hola de datos que se hace público o son confidencial, todos los datos dentro de una organización de negocios pueden estar clasificados como confidenciales de forma predeterminada. 
 
 #### <a name="public-unrestricted"></a>Pública (sin restricciones)
-La información clasificada como pública incluye archivos y datos que no son esenciales para las operaciones o las necesidades del negocio. Esta clasificación también puede aplicarse a los datos que se hayan comunicado deliberadamente al público para su uso, como material de marketing o anuncios de prensa. Además, esta clasificación puede incluir datos como mensajes de correo electrónico no deseado almacenados por un servicio de correo electrónico. 
+La información que se clasifica como público incluye datos y los archivos que no son críticos toobusiness necesidades u operaciones. Esta clasificación también puede incluir datos que se ha deliberadamente publicada toohello pública para su uso, como anuncios de materiales o presione de marketing. Además, esta clasificación puede incluir datos como mensajes de correo electrónico no deseado almacenados por un servicio de correo electrónico. 
 
 ### <a name="define-data-ownership"></a>Definición de la propiedad de los datos
-Es importante establecer una cadena de custodia clara para la propiedad de todos los recursos de datos. En la tabla siguiente se identifican los diferentes roles de propiedad de datos para las tareas de clasificación de datos y sus respectivos derechos.  
+Es importante tooestablish una cadena de custodia claro de propiedad para todos los activos de datos. Hello tabla siguiente identifican las funciones de propiedad de datos diferentes en los esfuerzos de clasificación de datos y sus derechos respectivos.  
 
 | **Rol** | **Creación** | **Modificar o eliminar** | **Delegar** | **Lectura** | **Archivar o restaurar** |
 | --- | --- | --- | --- | --- | --- |
@@ -148,107 +148,107 @@ Es importante establecer una cadena de custodia clara para la propiedad de todos
 > 
 > 
 
-El **propietario del recurso de datos** es el creador original de los datos, quien puede delegar la propiedad y asignar un administrador. Cuando se crea un archivo, el propietario debería ser capaz de asignar una clasificación, lo que significa que tiene la responsabilidad de comprender qué se debe clasificar como confidencial según las directivas de su organización. Todos los datos del propietario de recursos de datos se pueden clasificar de forma automática como Solo para uso interno (sensible) a menos que sea responsable de tener en propiedad o crear tipos de datos confidenciales (restringidos). Con frecuencia, el rol del propietario cambiará una vez que se clasifiquen los datos. Por ejemplo, el propietario puede crear una base de datos de información clasificada y ceder sus derechos al administrador de recursos de datos.  
+Hola **propietario del recurso de datos** es Hola creador original de los datos de hello, que pueden delegar la propiedad y asignar custodia. Cuando se crea un archivo, el propietario de hello debe ser capaz de tooassign una clasificación, lo que significa que tienen un toounderstand responsabilidad lo que debe toobe clasificado como confidenciales se basa en las directivas de su organización. Todos los datos del propietario de recursos de datos se pueden clasificar de forma automática como Solo para uso interno (sensible) a menos que sea responsable de tener en propiedad o crear tipos de datos confidenciales (restringidos). Con frecuencia, Hola su rol cambiará después de que se clasifican los datos de Hola. Por ejemplo, propietario de hello puede crear una base de datos de información confidencial y ceder a su custodia de datos de toohello de derechos.  
 
 > [!NOTE]
-> Los propietarios de recursos de datos suelen usar una combinación de servicios, dispositivos y medios, algunos de los cuales son personales y otros pertenecen a la organización. Una directiva clara de la organización puede ayudar a asegurarse de que el uso de dispositivos como equipos portátiles y dispositivos inteligentes cumpla las instrucciones de clasificación de datos.  
+> los propietarios de activos de datos suelen utilizar una combinación de servicios, dispositivos y medios, algunos de los cuales son personales y algunos de los cuales pertenecen toohello organización. Una directiva clara de la organización puede ayudar a asegurarse de que el uso de dispositivos como equipos portátiles y dispositivos inteligentes cumpla las instrucciones de clasificación de datos.  
 > 
 > 
 
-El propietario de los recursos (o un delegado) asigna al **administrador de recursos de datos** para que administre los recursos según lo acordado con su propietario o con los requisitos de la directiva pertinentes. Idealmente, el rol de administrador de recursos de datos se puede implementar en un sistema automatizado. El administrador de recursos de datos se asegura de que se proporcionen los controles de acceso necesarios y se responsabiliza de la administración y la protección de los recursos delegados en su cuidado. Entre las responsabilidades del administrador de recursos de datos, se pueden incluir las siguientes:  
+Hola **custodia de activos de datos** está asignado por el propietario del recurso de hello (o su delegado) toomanage Hola asset correspondiente tooagreements con el propietario del recurso de Hola o según los requisitos de la directiva es aplicable. Idealmente, rol de custodia de hello puede implementarse en un sistema automatizado. Custodia de activos corresponda garantiza que los controles de acceso necesarios se proporcionan y es responsables de administrar y proteger los activos delega tootheir atención. responsabilidades de Hola de custodia de activos de Hola se incluyen:  
 
-* Proteger el recurso según las instrucciones o lo acordado con su propietario 
+* Proteger los activos de hello con arreglo a la dirección del propietario del recurso de Hola o de acuerdo con el propietario del recurso de Hola 
 * Garantizar que se cumplan de directivas de clasificación 
-* Informar a los propietarios de los recursos sobre cualquier cambio en los controles o los procedimientos de protección acordados antes de que surtan efecto 
-* Informar al propietario del recurso sobre los cambios en las responsabilidades del administrador de recursos de datos o la eliminación de estas 
-* Un **administrador** representa a un usuario que es responsable de garantizar que se mantenga la integridad, pero no es propietario, administrador ni usuario del recurso de datos. De hecho, muchos de los roles de administrador proporcionan servicios de administración del contenedor de datos sin tener acceso a ellos. El rol de administrador incluye la copia de seguridad y la restauración de los datos, el mantenimiento de registros de los recursos y la selección, adquisición y operación de los dispositivos y el almacenamiento que contienen los recursos. 
-* El usuario del recurso puede ser cualquier persona a la que se conceda acceso a los datos o a un archivo. El propietario suele delegar la asignación de acceso en el administrador de recursos de datos.  
+* Informar a los propietarios de los activos de los cambios tooagreed-en controles o de protección procedimientos anteriores toothose los cambios surten efecto 
+* Propietario del recurso toohello informes acerca de la eliminación de tooor de cambios de las responsabilidades de custodia de hello activo 
+* Un **administrador** representa a un usuario que es responsable de garantizar que se mantenga la integridad, pero no es propietario, administrador ni usuario del recurso de datos. De hecho, muchos de los roles de administrador proporcionan servicios de administración del contenedor de datos sin necesidad de acceder a los datos toohello. rol de administrador de Hello incluye copias de seguridad y restauración de los datos de hello, mantenimiento de registros de activos de hello, y elegir, adquirir y usar Hola dispositivos y almacenamiento que activos de Hola de casa. 
+* usuario de activos de Hello incluye cualquier usuario que se le concede acceso toodata o un archivo. Asignación de acceso se delega a menudo por custodia de hello propietario toohello activo.  
 
 ### <a name="implementation"></a>Implementación
-Las consideraciones sobre la administración se aplican a todas las metodologías de clasificación. Estas consideraciones deben incluir detalles sobre quién, qué, dónde, cuándo y por qué se usaría, se cambiaría o se eliminaría un recurso de datos o se accedería a él. Para llevar a cabo toda la administración de los recursos, se debe comprender cómo considera una organización sus riesgos, pero se puede aplicar una metodología simple tal como se define en el proceso de clasificación de datos. Otras consideraciones para la clasificación de datos son la introducción de nuevas aplicaciones y herramientas, y la administración de los cambios una vez implementado un método de clasificación.  
+Consideraciones sobre la administración aplican las metodologías de clasificación de tooall. Estas consideraciones necesitan tooinclude saber quién, qué, dónde, cuándo y por qué un recurso de datos podría ser utilizado, tiene acceso a, cambiado o eliminado. Toda la administración de activos debe realizarse una vez que entienda cómo una organización ve sus riesgos, pero se puede aplicar una metodología simple tal como se define en el proceso de clasificación de datos de Hola. Las consideraciones adicionales para la clasificación de datos incluyen hello introducción de nuevas aplicaciones y herramientas y administración de cambios después de que se implementa un método de clasificación.  
 
 ### <a name="reclassification"></a>Reclasificación
-La reclasificación o el cambio del estado de clasificación de un recurso de datos debe hacerse cuando un usuario o el sistema determine que ha cambiado el perfil de riesgo o la importancia del recurso de datos. Esta tarea es importante para garantizar que el estado de clasificación siga siendo válido y actual. Gran parte del contenido que no se clasifica manualmente se puede clasificar de forma automática o el propietario o el administrador de recursos de datos puede hacerlo en función del uso. 
+Reclasificar o cambiar el estado de clasificación de Hola de un recurso de datos necesita toobe realiza cuando un usuario o el sistema determina la importancia de dicho activo datos de Hola o se ha cambiado el perfil de riesgo. Este trabajo es importante para garantizar que el estado de clasificación de hello sigue toobe actual y válido. Gran parte del contenido que no se clasifica manualmente se puede clasificar de forma automática o el propietario o el administrador de recursos de datos puede hacerlo en función del uso. 
 
 ### <a name="manual-data-reclassification"></a>Reclasificación manual de datos
-Idealmente, esta tarea garantizará que se capturen y se auditen los detalles de un cambio. El motivo más probable para realizar la reclasificación manual es por motivos de confidencialidad, porque los registros se mantienen en papel o porque es necesario revisar datos que en un principio se clasificaron incorrectamente. Como este documento trata sobre la clasificación de los datos y su movimiento a la nube, las tareas de reclasificación manual requerirían atención individualizada y lo ideal sería llevar a cabo una revisión de la administración de riesgos para satisfacer los requisitos de clasificación. Por lo general, este tipo de trabajo tendría como referencia la directiva de la organización en cuanto a qué se debe clasificar y el estado de clasificación predeterminado (todos los datos y archivos son sensibles, pero no confidenciales). Además, se aceptarían excepciones para los datos de alto riesgo. 
+Idealmente, este esfuerzo garantiza que los detalles de Hola de un cambio de captura y se audita. motivo más probable de Hello modificar la clasificación manual sería por motivos de confidencialidad, o para los registros que se mantiene en formato de papel o un tooreview de datos de requisito que originalmente se clasifican incorrectamente. Dado que este documento considera que la clasificación de datos y mover datos toohello en la nube, los esfuerzos de reclasificación manual requiere atención en caso por caso y una revisión de administración de riesgos sería ideal tooaddress requisitos de clasificación. Por lo general, un intento de este tipo se considere la posibilidad de directiva de la organización de hello sobre lo que debe toobe clasificado, Hola estado de clasificación predeterminado (todos los datos y archivos confidenciales pero no confidencial) y aceptar excepciones para los datos de alto riesgo. 
 
 ### <a name="automatic-data-reclassification"></a>Reclasificación automática de datos
-La reclasificación automática de datos usa la misma regla general que la clasificación manual. La excepción es que las soluciones automatizadas pueden garantizar que las reglas se sigan y se apliquen según sea necesario. La clasificación de datos puede realizarse como parte de una directiva de cumplimiento de clasificación de datos, que se puede aplicar cuando los datos estén almacenados, en uso y en tránsito mediante tecnología de autorización.
+Reclasificación automática de los datos usa Hola mismo general de reglas como la clasificación manual. excepción de Hello es que pueden garantizar soluciones automatizadas que las reglas se seguido y aplican según sea necesario. La clasificación de datos puede realizarse como parte de una directiva de cumplimiento de clasificación de datos, que se puede aplicar cuando los datos estén almacenados, en uso y en tránsito mediante tecnología de autorización.
 
 * Basada en la aplicación. El uso de determinadas aplicaciones establece de forma predeterminada un nivel de clasificación. Por ejemplo, los datos procedentes de software de administración de las relaciones con el cliente (CRM), de Recursos Humanos o de herramientas de administración de historias clínicas son confidenciales de forma predeterminada. 
-* Basada en la ubicación. La ubicación de los datos puede ayudar a identificar su nivel de confidencialidad. Por ejemplo, es más probable que los datos almacenados por el departamento financiero o de Recursos Humanos sean de naturaleza confidencial.  
+* Basada en la ubicación. La ubicación de los datos puede ayudar a identificar su nivel de confidencialidad. Por ejemplo, los datos que se almacenan por un recursos humanos o el departamento financiero están más probable que toobe confidencial por naturaleza.  
 
 ### <a name="data-retention-recovery-and-disposal"></a>Retención, recuperación y eliminación de datos
-La recuperación y la eliminación de datos, al igual que su reclasificación, es un aspecto esencial de la administración de los recursos de datos. Los principios para la recuperación y la eliminación de datos se definirían en una directiva de retención de datos y se aplicarían de la misma manera que la reclasificación de datos; esta tarea sería responsabilidad de los roles de administrador y administrador de recursos de datos en colaboración.  
+La recuperación y la eliminación de datos, al igual que su reclasificación, es un aspecto esencial de la administración de los recursos de datos. Hello principios para la recuperación de datos y eliminación se definiría una directiva de retención de datos y la aplica de hello igual manera que reclasificación de datos; roles de administrador y custodia de hello como una tarea de colaboración que realiza un intento de este tipo.  
 
-La falta de una directiva de retención de datos podría suponer la pérdida de datos o el incumplimiento de los requisitos reglamentarios o de descubrimiento legal. La mayoría de las organizaciones que carecen de una directiva de retención de datos claramente definida tienden a usar una directiva de retención que "mantiene todo" de forma predeterminada. Sin embargo, este tipo de directiva de retención conlleva riesgos adicionales en los escenarios de servicios en la nube. 
+Error toohave una directiva de retención de datos puede significar toocomply pérdidas o errores de datos con los requisitos legales y normativos la detección. La mayoría de las organizaciones que no tienen una directiva de retención de datos definida claramente suelen toouse una directiva de retención predeterminado "tenerlo todo". Sin embargo, este tipo de directiva de retención conlleva riesgos adicionales en los escenarios de servicios en la nube. 
 
-Por ejemplo, una directiva de retención de datos para proveedores de servicios en la nube puede considerarse que dura tanto como la suscripción (mientras se pague el servicio, se conservan los datos). Es posible que un acuerdo de pago por retención de este tipo no tenga en cuenta las directivas de retención corporativas o reglamentarias. La definición de una directiva para datos confidenciales puede garantizar que los datos se almacenen y eliminen de acuerdo con los procedimientos recomendados. Además, se puede crear una directiva de archivado para establecer formalmente qué datos se entiende que deben eliminarse y cuándo. 
+Por ejemplo, una directiva de retención de datos para proveedores de servicios de nube puede considerarse como "duración de saludo de la suscripción de hello" (siempre que servicio Hola se paga por, se retienen los datos de hello). Es posible que un acuerdo de pago por retención de este tipo no tenga en cuenta las directivas de retención corporativas o reglamentarias. La definición de una directiva para datos confidenciales puede garantizar que los datos se almacenen y eliminen de acuerdo con los procedimientos recomendados. Además, puede crearse una directiva de archivado tooformalize una descripción acerca de qué datos se debe desechar de y cuándo. 
 
-En la directiva de retención de datos se deberían considerar los requisitos reglamentarios y de cumplimiento, así como los de retención legal corporativa. Los datos clasificados podrían suscitar preguntas sobre la duración de la retención y las excepciones para los datos que se hayan almacenado con un proveedor. Estas preguntas son más probables para aquellos datos que no se hayan clasificado correctamente. 
+Directiva de retención de datos debería solucionar Hola necesario normas y los requisitos de cumplimiento, así como los requisitos corporativos retención legal. Los datos clasificados podrían suscitar preguntas sobre la duración de la retención y las excepciones para los datos que se hayan almacenado con un proveedor. Estas preguntas son más probables para aquellos datos que no se hayan clasificado correctamente. 
 
 > [!TIP]
-> Para más información acerca de las directivas de retención de datos de Azure, entre otros temas, lea el [Contrato Microsoft Online Subscription](https://azure.microsoft.com/support/legal/subscription-agreement/)
+> obtener más información sobre las directivas de retención de datos de Azure y mucho más leyendo hello [contrato Microsoft Online Subscription](https://azure.microsoft.com/support/legal/subscription-agreement/)
 > 
 > 
 
 ## <a name="protecting-confidential-data"></a>Protección de datos confidenciales
-Una vez clasificados los datos, la búsqueda y la implementación de maneras de proteger los datos confidenciales se convierten en parte integral de cualquier estrategia de implementación de la protección de datos. Para proteger los datos confidenciales, se debe prestar especial atención a cómo se almacenan los datos y cómo se transmiten en arquitecturas convencionales, así como en la nube. 
+Después de que se clasifican los datos, buscar e implementar maneras tooprotect que los datos confidenciales se convierte en una parte integral de cualquier estrategia de implementación de protección de datos. Protección de datos confidenciales requiere datos de toohow de atención adicional se almacenan y se transmiten en arquitecturas convencionales, así como en la nube de Hola. 
 
-En esta sección se proporciona información básica sobre algunas tecnologías que pueden automatizar las tareas de cumplimiento para ayudar a proteger los datos que se hayan clasificado como confidenciales. 
+Esta sección proporciona información básica acerca de algunas tecnologías que puede automatizar los esfuerzos de cumplimiento toohelp proteger los datos que se ha clasificado como confidencial. 
 
-Como se muestra en la siguiente ilustración, estas tecnologías se pueden implementar como soluciones locales o basadas en la nube, o de un modo híbrido, con algunas implementadas de forma local y otras en la nube. (Algunas tecnologías, como el cifrado y la administración de derechos, también se extienden a los dispositivos de los usuarios).  
+Como la siguiente figura muestra de Hola, estas tecnologías se pueden implementar como local o soluciones basadas en la nube, o en un modo híbrido, con algunas de ellos implementado de forma local y otras en la nube de Hola. (Algunas tecnologías, como el cifrado y la administración de derechos, amplían dispositivos toouser.)  
 
 ![Tecnologías](./media/azure-security-data-classification/azure-security-data-classification-fig4.png)
 
 ### <a name="rights-management-software"></a>Software de administración de derechos
-Una solución para evitar la pérdida de datos es un software de administración de derechos. A diferencia de los enfoques que intentan interrumpir el flujo de información en los puntos de salida de una organización, el software de administración de derechos funciona en los niveles profundos de las tecnologías de almacenamiento de datos. Los documentos se cifran y, para controlar quién puede descifrarlos, se usan controles de acceso que se definen en una solución de control de autenticación, como por ejemplo un servicio de directorio.  
+Una solución para evitar la pérdida de datos es un software de administración de derechos. A diferencia de los métodos que traten toointerrupt Hola flujo de la información en los puntos de salida en una organización, software de administración de derechos funciona en niveles profundos de tecnologías de almacenamiento de datos. Los documentos se cifran y, para controlar quién puede descifrarlos, se usan controles de acceso que se definen en una solución de control de autenticación, como por ejemplo un servicio de directorio.  
 
 > [!TIP]
-> Puede usar Azure Rights Management (Azure RMS) como solución de protección de información para proteger los datos en escenarios diferentes. Lea [¿Qué es Azure Rights Management?](https://docs.microsoft.com/rights-management/understand-explore/what-is-azure-rms) para más información sobre esta solución de Azure.
+> Puede usar Azure Rights Management (Azure RMS) como datos tooprotect soluciones de protección de información de hello en escenarios diferentes. Lea [¿Qué es Azure Rights Management?](https://docs.microsoft.com/rights-management/understand-explore/what-is-azure-rms) para más información sobre esta solución de Azure.
 > 
 > 
 
-Algunas de las ventajas del software de administración de derechos son: 
+Algunas de las ventajas de Hola de software de administración de derechos incluyen: 
 
 * Información sensible protegida. Los usuarios pueden proteger sus datos directamente mediante aplicaciones habilitadas para la administración de derechos. No se requiere ningún paso adicional: la experiencia de protección de datos es uniforme cuando se crean documentos, se envían correos electrónicos o se publican datos. 
-* La protección acompaña a los datos. Los clientes permanecen en control de quién tiene acceso a sus datos, ya sea en la nube, en la infraestructura de TI existente o en el escritorio del usuario. Las organizaciones pueden elegir cifrar sus datos y restringir el acceso según sus requisitos empresariales. 
-* Directivas de protección de información predeterminadas. Los administradores y los usuarios pueden utilizar directivas estándar para muchos escenarios empresariales habituales, como "Información confidencial de la compañía: solo lectura" y "No reenviar". Se admite un amplio conjunto de derechos de uso, como leer, copiar, imprimir, guardar, editar y reenviar, para aportar flexibilidad a la definición de derechos de uso personalizados. 
+* Protección viaja con datos de Hola. Los clientes permanecen en el control de quién tiene acceso a datos de tootheir, ya sea en nube de hello, infraestructura de TI existente, o en el escritorio del usuario de Hola. Las organizaciones pueden elegir tooencrypt sus datos y restringir el acceso según tootheir requisitos empresariales. 
+* Directivas de protección de información predeterminadas. Los administradores y los usuarios pueden utilizar directivas estándar para muchos escenarios empresariales habituales, como "Información confidencial de la compañía: solo lectura" y "No reenviar". Un amplio conjunto de derechos de uso se admiten como lectura, copiar, imprimir, guardar, editar y reenviar tooallow flexibilidad en la definición de derechos de uso personalizados. 
 
 > [!TIP]
-> Los datos de Azure Storage se pueden proteger mediante el [Cifrado del servicio Almacenamiento de Azure](../storage/storage-service-encryption.md) para datos en reposo (versión preliminar). [Azure Disk Encryption](azure-security-disk-encryption.md) también se puede utilizar para ayudar a proteger los datos contenidos en discos virtuales usados para Azure Virtual Machines.
+> Los datos de Azure Storage se pueden proteger mediante el [Cifrado del servicio Almacenamiento de Azure](../storage/storage-service-encryption.md) para datos en reposo (versión preliminar). También puede usar [cifrado del disco de Azure](azure-security-disk-encryption.md) toohelp proteger los datos contenidos en los discos virtuales que usa máquinas virtuales de Azure.
 > 
 > 
 
 ### <a name="encryption-gateways"></a>Puertas de enlace de cifrado
-Las puertas de enlace de cifrado operan en sus propios niveles para proporcionar servicios de cifrado mediante la redirección de todo el acceso a datos en la nube. Este enfoque no debe confundirse con el de una red privada virtual (VPN). Las puertas de enlace de cifrado están diseñadas para proporcionar una capa transparente a soluciones basadas en la nube.   
+Las puertas de enlace de cifrado funcionan en sus propios servicios de cifrado de capas tooprovide reenrutamiento en todos los datos de acceso basado en toocloud. Este enfoque no debe confundirse con el de una red privada virtual (VPN). Las puertas de enlace de cifrado son tooprovide diseñado un transparente soluciones basadas en toocloud de las capas.   
 
-Las puertas de enlace de cifrado pueden proporcionar un medio para administrar y proteger los datos que se hayan clasificado como confidenciales, ya que los cifran tanto en tránsito como en reposo.  
+Las puertas de enlace de cifrado pueden proporcionar un medio toomanage y proteger los datos que se ha clasificado como confidencial mediante el cifrado de datos de hello en tránsito, así como datos en reposo.  
 
-Las puertas de enlace de cifrado se insertan en el flujo de datos entre los dispositivos de los usuarios y los centros de datos de aplicaciones para proporcionar servicios de cifrado y descifrado. Estas soluciones, al igual que las VPN, son en su mayor parte soluciones locales. Se diseñan para proporcionar a un tercero control sobre las claves de cifrado, lo que ayuda a reducir el riesgo de asignar la administración tanto de los datos como de las claves a un único proveedor. Estas soluciones están diseñadas, como el cifrado, para funcionar sin problemas y de forma transparente entre los usuarios y el servicio. 
+Las puertas de enlace de cifrado se colocan en Hola de flujo de datos entre los dispositivos de usuario y los servicios de cifrado y descifrado de tooprovide de centros de datos de aplicación. Estas soluciones, al igual que las VPN, son en su mayor parte soluciones locales. Únicamente son tooprovide diseñado un tercero con control sobre las claves de cifrado, lo que ayuda a reduce el riesgo de Hola de colocar datos de Hola y administración de claves con un proveedor. Estas soluciones están diseñadas, igual que el cifrado, toowork sencilla y transparente entre los usuarios y el servicio de Hola. 
 
 > [!TIP]
-> Puede usar Azure ExpressRoute para ampliar sus redes locales a la nube de Microsoft por medio de una conexión privada dedicada. Para más información sobre esta funcionalidad, consulte [Información técnica de ExpressRoute](../expressroute/expressroute-introduction.md). Otra opción para la conectividad entre locales, entre su red local y [Azure es una VPN de sitio a sitio](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+> Puede usar Azure ExpressRoute tooextend sus redes locales en la nube de Microsoft de Hola a través de una conexión privada dedicada. Para más información sobre esta funcionalidad, consulte [Información técnica de ExpressRoute](../expressroute/expressroute-introduction.md). Otra opción para la conectividad entre locales, entre su red local y [Azure es una VPN de sitio a sitio](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
 > 
 > 
 
 ### <a name="data-loss-prevention"></a>Prevención de la pérdida de datos
-La pérdida de datos (también conocida como fuga de datos) es un aspecto importante, y la prevención de la pérdida externa de datos desde dentro de la organización, ya sea accidental o malintencionada, es esencial para muchas organizaciones.  
+Pérdida de datos (en ocasiones denominado tooas pérdida de datos) es una consideración importante y prevención de Hola de pérdida de datos externos a través de Insider malintencionada como accidental es fundamental para muchas organizaciones.  
 
-Las tecnologías de prevención de pérdida de datos (DLP) pueden ayudar a garantizar que soluciones tales como los servicios de correo electrónico no transmitan datos que se hayan clasificado como confidenciales. Las organizaciones pueden aprovechar los características de DLP en los productos existentes para evitar la pérdida de datos. Estas características utilizan directivas que se pueden crear fácilmente desde cero o mediante una plantilla suministrada por el proveedor de software.  
+Las tecnologías de prevención de pérdida de datos (DLP) pueden ayudar a garantizar que soluciones tales como los servicios de correo electrónico no transmitan datos que se hayan clasificado como confidenciales. Las organizaciones pueden sacar partido de las características DLP en los productos existentes toohelp evitar la pérdida de datos. Dichas características utilizan directivas que pueden crearse fácilmente desde el principio o mediante una plantilla suministrada por el proveedor de software de Hola.  
 
-Las tecnologías de DLP pueden realizar un análisis profundo del contenido por medio de coincidencias con palabras clave y diccionarios, la evaluación de expresiones regulares y otros exámenes del contenido para detectar aquel que infrinja las directivas de DLP de la organización. Por ejemplo, DLP puede ayudar a evitar la pérdida de los siguientes tipos de datos: 
+Tecnologías DLP pueden realizar un análisis profundo del contenido a través de coincidencias de palabras clave, coincidencias de diccionario, evaluaciones de expresiones regulares y otro contenido de toodetect de exámenes de contenido que infringe las directivas DLP organizativas. Por ejemplo, DLP puede ayudar a evitar la pérdida de Hola de hello siguientes tipos de datos: 
 
 * Números de documento nacional de identidad o del seguro social 
 * Información bancaria 
 * Números de tarjeta de crédito  
 * Direcciones IP 
 
-Algunas tecnologías de DLP también proporcionan la capacidad de invalidar la configuración de DLP (por ejemplo, si una organización necesita transmitir información que contiene números del seguro social a un procesador de nóminas). Además, es posible configurar la DLP para que los usuarios reciban notificaciones antes de que intenten siquiera enviar información sensible que no se debe transmitir. 
+Algunas tecnologías DLP también proporcionan la configuración de DLP de hello capacidad toooverride Hola (por ejemplo, si una organización necesita procesador de tootransmit número del seguro Social information tooa nómina). Además, es posible tooconfigure DLP para que los usuarios reciben notificaciones antes de que intente incluso toosend información confidencial que no se debe transmitir. 
 
 > [!TIP]
-> Puede usar las funcionalidades de DLP en Office 365 para proteger los documentos. Para más información, lea [Office 365 compliance controls: Data Loss Prevention](https://blogs.office.com/2013/10/28/office-365-compliance-controls-data-loss-prevention/) (Controles de cumplimiento de Office 365: prevención de pérdida de datos).
+> Puede usar Office 365 DLP capacidades tooprotect sus documentos. Para más información, lea [Office 365 compliance controls: Data Loss Prevention](https://blogs.office.com/2013/10/28/office-365-compliance-controls-data-loss-prevention/) (Controles de cumplimiento de Office 365: prevención de pérdida de datos).
 > 
 > 
 

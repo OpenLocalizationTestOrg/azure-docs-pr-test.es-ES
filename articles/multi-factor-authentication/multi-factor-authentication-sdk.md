@@ -1,6 +1,6 @@
 ---
-title: Kit de desarrollo de software MFA para aplicaciones personalizadas | Microsoft Docs
-description: "En este artículo se muestra cómo descargar y usar el SDK de Azure MFA para comprobar en dos pasos sus aplicaciones personalizadas."
+title: kit de desarrollo de software de aaaMFA para aplicaciones personalizadas | Documentos de Microsoft
+description: "Este artículo muestra cómo toodownload y uso Hola verificacion de tooenable de MFA de Azure SDK para las aplicaciones personalizadas."
 services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
@@ -14,86 +14,86 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: kgremban
-ms.openlocfilehash: 281f9c61a30a20027f69808600373aa272255ef6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 10e02e844bf3928575bfca79dbc34717a31a08b4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="building-multi-factor-authentication-into-custom-apps-sdk"></a>Creación de Multi-Factor Authentication en aplicaciones personalizadas (SDK)
 
-El Kit de desarrollo de Software (SDK) de Multi-Factor Authentication de Azure le permite generar una comprobación en dos pasos directamente en los procesos de inicio de sesión o transacción de las aplicaciones de su inquilino de Azure AD.
+Hola permite del Kit de desarrollo de Software (SDK) de Azure Multi-factor Authentication de Hello en que crear verificacion directamente inicio de sesión o procesa transacciones de aplicaciones en su inquilino de Azure AD.
 
-El SDK de Multi-Factor Authentication está disponible para C#, Visual Basic (.NET), Java, Perl, PHP y Ruby. El SDK proporciona un contenedor fino en torno a la comprobación en dos pasos. Incluye todo lo que necesita para escribir su código, incluidos los archivos de código fuente comentados, los archivos de ejemplo y un archivo Léame detallado. Cada SDK también incluye un certificado y una clave privada para cifrar transacciones que son únicos para su proveedor de Multi-Factor Authentication. Siempre y cuando tenga un proveedor, puede descargar el SDK en tantos idiomas y formatos como necesite.
+Hola SDK de autenticación multifactor está disponible para C#, Visual Basic (. NET), Java, Perl, PHP y Ruby. Hola SDK proporciona un contenedor fino alrededor de verificación en dos pasos. Todo lo que necesita toowrite el código, incluidos los archivos de código fuente comentado, archivos de ejemplo y un archivo Léame detallado incluye. Cada SDK también incluye un certificado y clave privada para cifrar las transacciones que están tooyour único proveedor de autenticación multifactor. Siempre y cuando tenga un proveedor, puede descargar Hola SDK en tantos idiomas y formatos como necesite.
 
-La estructura de las API del SDK de Multi-Factor Authentication es sencilla. Cree una llamada de función única a una API con los parámetros de la opción de varios factores (como el modo de comprobación) y los datos de usuario (como el número de teléfono al que llamar o el número PIN que validar). Las API convierten la llamada de función en solicitudes de servicios web al servicio Azure Multi-Factor Authentication basado en la nube. Todas las llamadas deben incluir una referencia al certificado privado que se incluye en todos los SDK.
+estructura de Hola de hello API Hola SDK de autenticación multifactor es simple. Realizar una sola función llamada API tooan con parámetros de opción de multifactor hello (por ejemplo, el modo de comprobación) y los datos de usuario (por ejemplo, toocall de número de teléfono de Hola u Hola PIN número toovalidate). Hello API convierten llamada de función de hello en toohello de las solicitudes de servicios web servicio basado en la nube de Azure Multi-factor Authentication. Todas las llamadas deben incluir un certificado privado de toohello de referencia que se incluye en todos los SDK.
 
-Dado que las API no tienen acceso a los usuarios registrados en Azure Active Directory, debe proporcionar información de usuario en un archivo o una base de datos. Además, las API no proporcionan funciones de administración de inscripciones o usuarios, por lo que necesitará crear estos procesos en la aplicación.
+Porque Hola API no tienen toousers acceso registrado en Azure Active Directory, debe proporcionar información de usuario en un archivo o una base de datos. Además, Hola API no proporcionan características de administración de inscripción o el usuario, por lo que necesita toobuild estos procesos en la aplicación.
 
 > [!IMPORTANT]
-> Para descargar el SDK, debe crear un proveedor de Multi-Factor Auth de Azure, incluso si tiene licencias de Azure MFA, AAD Premium o EMS. Si crea un proveedor de Multi-Factor Auth de Azure para este propósito y ya tiene licencias, asegúrese de crear el proveedor con el modelo **Por usuario habilitado**. A continuación, vincule el proveedor al directorio que contiene las licencias de Azure MFA, Azure AD Premium o EMS. Gracias a esta configuración, se asegura de que no se le cobrará, salvo que tenga más usuarios únicos mediante el SDK que el número de licencias que posee.
+> toodownload Hola SDK, deberá toocreate un proveedor de autenticación multifactor de Azure incluso si tienen licencias de Azure MFA, AAD Premium o EMS. Si crea un proveedor de autenticación multifactor de Azure para este propósito y ya tiene licencias, asegúrese de hello seguro toocreate proveedor con hello **por usuario habilitado** modelo. A continuación, vincular directorio Hola de toohello del proveedor que contiene las licencias de MFA de Azure, Azure AD Premium o EMS de Hola. Esta configuración garantiza que solo se le facturará si tiene más usuarios únicos mediante Hola SDK que número Hola de licencias que posee.
 
 
-## <a name="download-the-sdk"></a>Descarga del SDK
-Para descargar el SDK de Azure Multi-Factor, se requiere un [proveedor de autenticación multifactor](multi-factor-authentication-get-started-auth-provider.md).  Para ello, se necesita una suscripción de Azure completa, aunque se cuenten con licencias de Azure MFA, Azure AD Premium o Enterprise Mobility Suite.  Para descargar el SDK, vaya al Portal de administración de Multi-Factor. Puede tener acceso al portal administrando directamente el proveedor de Multi-Factor Auth o haciendo clic en el vínculo **"Ir al portal"** de la página de configuración del servicio MFA.
+## <a name="download-hello-sdk"></a>Descargar Hola SDK
+Descargar hello Azure multifactor SDK requiere una [proveedor de autenticación multifactor de Azure](multi-factor-authentication-get-started-auth-provider.md).  Para ello, se necesita una suscripción de Azure completa, aunque se cuenten con licencias de Azure MFA, Azure AD Premium o Enterprise Mobility Suite.  Hola toodownload SDK, navegue toohello Portal de administración de varios factores. Se pueden obtener acceso Hola portal mediante la administración del proveedor de autenticación multifactor directamente hello, o haciendo clic en hello **"Go toohello portal"** vínculo en la página de configuración de servicio de hello MFA.
 
-### <a name="download-from-the-azure-classic-portal"></a>Descarga desde el Portal de Azure clásico
-1. Inicie sesión como administrador en el [Portal de Azure clásico](https://manage.windowsazure.com).
-2. En la parte izquierda, seleccione **Active Directory**.
-3. En la parte superior de la página Active Directory, seleccione **Proveedores de Multi-Factor Auth**
-4. En la parte inferior, seleccione **Administrar**. Se abrirá una nueva página.
-5. A la izquierda, en la parte inferior, haga clic en **SDK**.
+### <a name="download-from-hello-azure-classic-portal"></a>Descargar desde Hola portal de Azure clásico
+1. Inicie sesión en toohello [portal de Azure clásico](https://manage.windowsazure.com) como administrador.
+2. Hola izquierda, seleccione **Active Directory**.
+3. En página de Active Directory de hello, en, seleccione superior hello **proveedores de autenticación multifactor**
+4. En la parte inferior de hello seleccione **administrar**. Se abrirá una nueva página.
+5. En hello izquierdo, en la parte inferior de hello, haga clic en **SDK**.
    <center>![Descargar](./media/multi-factor-authentication-sdk/download.png)</center>
-6. Seleccione el idioma que desee y haga clic en uno de los vínculos de descarga asociados.
-7. Guarde el archivo descargado.
+6. Seleccione Hola idioma que desee y haga clic en vínculos de descarga correspondientes Hola uno.
+7. Guardar archivo descargado Hola.
 
-### <a name="download-from-the-service-settings"></a>Descarga desde la configuración del servicio
-1. Inicie sesión como administrador en el [Portal de Azure clásico](https://manage.windowsazure.com).
-2. En la parte izquierda, seleccione **Active Directory**.
+### <a name="download-from-hello-service-settings"></a>Descargar de la configuración del servicio Hola
+1. Inicie sesión en toohello [portal de Azure clásico](https://manage.windowsazure.com) como administrador.
+2. Hola izquierda, seleccione **Active Directory**.
 3. Haga doble clic en la instancia de Azure AD.
-4. En la parte superior, haga clic en **Configurar**
+4. Haga clic en superior de hello **configurar**
 5. En Multi-Factor Authentication, seleccione **Administrar configuración del servicio**
    ![Descargar](./media/multi-factor-authentication-sdk/download2.png)
-6. En la parte inferior de la página de configuración de servicios, haga clic en **Ir al portal**. Se abrirá una nueva página.
+6. En la página de configuración de servicios de hello, en la parte inferior de Hola de pantalla de bienvenida, haga clic en **Go toohello portal**. Se abrirá una nueva página.
    ![Descargar](./media/multi-factor-authentication-sdk/download3a.png)
-7. A la izquierda, en la parte inferior, haga clic en **SDK**.
-8. Seleccione el idioma que desee y haga clic en uno de los vínculos de descarga asociados.
-9. Guarde el archivo descargado.
+7. En hello izquierdo, en la parte inferior de hello, haga clic en **SDK**.
+8. Seleccione Hola idioma que desee y haga clic en vínculos de descarga correspondientes Hola uno.
+9. Guardar archivo descargado Hola.
 
-## <a name="whats-in-the-sdk"></a>Qué contiene el SDK
-El SDK incluye los siguientes elementos:
+## <a name="whats-in-hello-sdk"></a>¿Qué es Hola SDK
+Hola SDK incluye Hola siguientes elementos:
 
-* **LÉAME**. Explica cómo usar las API de Multi-Factor Authentication en una aplicación nueva o existente.
+* **LÉAME**. Explica cómo toouse Hola a las API de autenticación multifactor en una aplicación nueva o existente.
 * **Archivos de origen** para Multi-Factor Authentication
-* **Certificado de cliente** que se usa para comunicarse con el servicio Multi-Factor Authentication
-* **Clave privada** para el certificado
-* **Resultados de la llamada.** Una lista de códigos de resultado de la llamada. Para abrir este archivo, use una aplicación con formato de texto, como WordPad. Use los códigos de resultado de la llamada para probar y solucionar problemas de la implementación de Multi-Factor Authentication en su aplicación. No son códigos de estado de autenticación.
+* **Certificado de cliente** que usar toocommunicate con hello servicio de la autenticación multifactor
+* **Clave privada** certificado Hola
+* **Resultados de la llamada.** Una lista de códigos de resultado de la llamada. tooopen este archivo, utilice una aplicación con formato de texto, como WordPad. Hola uso llamar tootest de códigos de resultado y solucionar problemas de implementación de saludo de la autenticación multifactor en su aplicación. No son códigos de estado de autenticación.
 * **Ejemplos.** Código de ejemplo para una implementación básica de funcionamiento de Multi-Factor Authentication.
 
 > [!WARNING]
-> El certificado de cliente es un certificado privado único que se generó especialmente para usted. No comparta ni pierda este archivo. Es su clave para garantizar la seguridad de las comunicaciones con el servicio Multi-Factor Authentication.
+> certificado de cliente de Hello es un certificado privado único que se generó especialmente para usted. No comparta ni pierda este archivo. Es la seguridad de hello tooensuring clave de las comunicaciones con el servicio de la autenticación multifactor de Hola.
 
 ## <a name="code-sample"></a>Código de ejemplo
-Este ejemplo de código muestra cómo usar las API en el SDK de Azure Multi-Factor Authentication para agregar comprobación de llamadas de voz de modo estándar a la aplicación. El modo estándar es una llamada de teléfono a la que el usuario responde presionando la tecla #.
+Este ejemplo de código muestra cómo llamar toouse Hola API Hola voz de modo estándar de SDK de Azure Multi-factor Authentication tooadd a la aplicación de tooyour de comprobación. Modo estándar es una llamada de teléfono que Hola tooby de usuario responde presionando la tecla # de Hola.
 
-Este ejemplo usa el SDK de Multi-Factor Authentication C# .NET 2.0 en una aplicación ASP.NET básica con lógica de servidor de C#, pero el proceso es similar en otros idiomas. Dado que el SDK incluye archivos de origen, no archivos ejecutables, puede generar los archivos y hacer referencia a ellos o incluirlos directamente en la aplicación.
+Este ejemplo utiliza Hola C# .NET 2.0 SDK Multi-factor Authentication en una aplicación ASP.NET básica con lógica de servidor de C#, pero el proceso de hello es similar en otros lenguajes. Hola SDK incluye los archivos de origen, no archivos ejecutables, puede generar archivos de Hola y hace referencia a ellas o incluirlos directamente en la aplicación.
 
 > [!NOTE]
-> Al implementar Multi-Factor Authentication, use métodos adicionales (llamada de teléfono o mensaje de texto) como la comprobación secundaria o terciaria para complementar el método de autenticación principal (nombre de usuario y contraseña). Estos métodos no están diseñados como métodos de autenticación principal.
+> Al implementar la autenticación multifactor, use métodos adicionales de hello (llamada de teléfono o mensaje de texto) como comprobación secundaria o terciaria toosupplement su método de autenticación principal (nombre de usuario y contraseña). Estos métodos no están diseñados como métodos de autenticación principal.
 
 ### <a name="code-sample-overview"></a>Información general del ejemplo de código
-Este código de ejemplo para una aplicación de demostración web sencilla usa una llamada telefónica con una respuesta de clave # para comprobar la autenticación del usuario. Este factor de llamada de teléfono se conoce en la Multi-Factor Authentication como modo estándar.
+Este código de ejemplo para una aplicación web simple demostración usa una llamada telefónica con un # respuesta clave tooverify Hola autenticación del usuario. Este factor de llamada de teléfono se conoce en la Multi-Factor Authentication como modo estándar.
 
-El código de cliente no incluye ningún elemento específico de Multi-Factor Authentication. Dado que los factores de autenticación adicionales son independientes de la autenticación principal, puede agregarlos sin cambiar la interfaz de inicio de sesión existente. Las API del SDK multifactor le permiten personalizar la experiencia del usuario, pero es posible que no tenga que cambiar nada en absoluto.
+código del lado cliente Hello no incluye los elementos específicos de la autenticación multifactor. Dado que los factores de autenticación adicionales de hello son independientes de autenticación principal hello, puede agregarlos sin cambiar la interfaz de inicio de sesión existente de Hola. Hola API Hola SDK multifactor le permite personalizar la experiencia del usuario hello, pero puede que no tenga toochange nada en absoluto.
 
-El código de servidor agrega autenticación de modo estándar en el paso 2. Crea un objeto PfAuthParams con los parámetros necesarios para la comprobación de modo estándar: nombre de usuario, número de teléfono y modo, y la ruta de acceso al certificado de cliente (CertFilePath), que es necesario en cada llamada. Para obtener una demostración de todos los parámetros en PfAuthParams, consulte el archivo de ejemplo en el SDK.
+código del lado servidor Hello agrega la autenticación en modo estándar en el paso 2. Crea un objeto PfAuthParams con parámetros de Hola que son necesarios para la comprobación de modo estándar: nombre de usuario, número de teléfono y el modo y Hola certificado de cliente de toohello de ruta de acceso (CertFilePath), que es necesario en cada llamada. Para ver una demostración de todos los parámetros de PfAuthParams, consulte el archivo de ejemplo de Hola Hola SDK.
 
-A continuación, el código pasa el objeto PfAuthParams a la función pf_authenticate(). El valor devuelto indica el éxito o fracaso de la autenticación. Los parámetros de salida, callStatus y errorID, contienen información adicional del resultado de la llamada. Los códigos de resultado de la llamada se documentan en el archivo de resultados de la llamada en el SDK.
+A continuación, el código de hello pasa toohello pf_authenticate() función de hello PfAuthParams objeto. valor devuelto de Hello indica Hola éxito o error de autenticación de Hola. Hola parámetros, callStatus y errorID, contienen información de resultado de llamada adicional. códigos de resultado de Hello llamada se documentan en el archivo de resultados de llamada de Hola Hola SDK.
 
 Esta implementación mínima puede escribirse en unas pocas líneas. Sin embargo, en el código de producción, incluiría un tratamiento de errores más sofisticado, código de la base de datos adicional y una experiencia de usuario mejorada.
 
 ### <a name="web-client-code"></a>Código de cliente web
-A continuación se facilita código de cliente web para una página de demostración.
+Hola aquí te mostramos código de cliente web de una página de demostración.
 
     <%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="\_Default" %>
 
@@ -127,7 +127,7 @@ A continuación se facilita código de cliente web para una página de demostrac
 
 
 ### <a name="server-side-code"></a>Código de servidor
-En el siguiente código de servidor, Multi-Factor Authentication se configura y ejecuta en el paso 2. El modo estándar (MODE_STANDARD) es una llamada de teléfono a la que el usuario responde presionando la tecla #.
+Hola después el código del lado servidor, la autenticación multifactor está configurada y se ejecute en el paso 2. Modo estándar (MODE_STANDARD) es que un usuario de llamada de teléfono toowhich Hola responde presionando la tecla # de Hola.
 
     using System;
     using System.Collections.Generic;
@@ -144,7 +144,7 @@ En el siguiente código de servidor, Multi-Factor Authentication se configura y 
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            // Step 1: Validate the username and password
+            // Step 1: Validate hello username and password
             if (username.Text != "Contoso" || password.Text != "password")
             {
                 lblResult.ForeColor = System.Drawing.Color.Red;
@@ -154,14 +154,14 @@ En el siguiente código de servidor, Multi-Factor Authentication se configura y 
             {
                 // Step 2: Perform multi-factor authentication
 
-                // Add call details from the user database.
+                // Add call details from hello user database.
                 PfAuthParams pfAuthParams = new PfAuthParams();
                 pfAuthParams.Username = username.Text;
                 pfAuthParams.Phone = "5555555555";
                 pfAuthParams.Mode = pf_auth.MODE_STANDARD;
 
                 // Specify a client certificate
-                // NOTE: This file contains the private key for the client
+                // NOTE: This file contains hello private key for hello client
                 // certificate. It must be stored with appropriate file
                 // permissions.
                 pfAuthParams.CertFilePath = "c:\\cert_key.p12";

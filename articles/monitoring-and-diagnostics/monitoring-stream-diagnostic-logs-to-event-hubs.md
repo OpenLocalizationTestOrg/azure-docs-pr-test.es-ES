@@ -1,6 +1,6 @@
 ---
-title: "Transmisión de registros de diagnóstico de Azure a un espacio de nombres de Event Hubs | Microsoft Docs"
-description: "Aprenda a transmitir registros de diagnóstico de Azure a un espacio de nombres de Event Hubs."
+title: "aaaStream registros de diagnóstico de Azure tooan Namespace de concentradores de eventos | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toostream diagnóstico de Azure registra el espacio de nombres de tooan centros de eventos."
 author: johnkemnetz
 manager: orenr
 editor: 
@@ -14,90 +14,90 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2017
 ms.author: johnkem
-ms.openlocfilehash: 01ba8ddfcf90e1368ac147296fd180f99420d96f
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 00092ea8f3fe4fa1476e3a697bf1e8645dd21e6e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="stream-azure-diagnostic-logs-to-an-event-hubs-namespace"></a>Transmisión de registros de diagnóstico de Azure a un espacio de nombres de Event Hubs
-Los **[registros de diagnóstico de Azure](monitoring-overview-of-diagnostic-logs.md)** se pueden transmitir casi en tiempo real a cualquier aplicación mediante la opción "Exportar a Event Hubs" integrada en el Portal o habilitando el identificador de regla de Service Bus en una configuración de diagnóstico por medio de los cmdlets de Azure PowerShell o la CLI de Azure.
+# <a name="stream-azure-diagnostic-logs-tooan-event-hubs-namespace"></a>Transmitir tooan Namespace de concentradores de eventos de registros de diagnóstico de Azure
+**[Registros de diagnóstico de Azure](monitoring-overview-of-diagnostic-logs.md)**  se puede transmitir cerca de la aplicación de tooany de en tiempo real mediante la opción "Exportación tooEvent concentradores" integrada Hola Hola Portal o habilitando Hola Id. de regla de Bus de servicio en una configuración de diagnóstico a través de hello Azure PowerShell CLI de Azure o cmdlets.
 
 ## <a name="what-you-can-do-with-diagnostics-logs-and-event-hubs"></a>Qué se puede hacer con registros de diagnóstico y Event Hubs
-Estas son solo algunas formas de usar la funcionalidad de streaming para registros de diagnóstico:
+Aquí se muestran unos pocos maneras puede usar Hola capacidad de streaming para registros de diagnóstico:
 
-* **Streaming de registros a sistemas de registro y telemetría de terceros**: con el tiempo, el streaming de Event Hubs se convertirá en el mecanismo para canalizar los registros de diagnóstico a sistemas de información de seguridad y administración de eventos (SIEM) y soluciones de análisis de registro de terceros.
-* **Visualización del estado del servicio mediante streaming de datos de "ruta de acceso frecuente" a PowerBI**: utilizando Event Hubs, Stream Analytics y Power BI, puede transformar fácilmente los datos de diagnóstico en información casi en tiempo real sobre los servicios de Azure. [En este artículo de documentación se ofrece una excelente introducción sobre cómo configurar Event Hubs, procesar datos con Stream Analytics y usar PowerBI como salida](../stream-analytics/stream-analytics-power-bi-dashboard.md). Estas son algunas recomendaciones para la configuración con los registros de diagnóstico:
+* **Secuencia de registros de sistemas de registro y telemetría de terceros too3rd** – con el tiempo, los concentradores de eventos de transmisión por secuencias se convertirá en hello mecanismo toopipe los registros de diagnóstico de SIEM toothird terceros y soluciones de análisis de registro.
+* **Ver estado del servicio de transmisión por secuencias "ruta de acceso activa" datos tooPowerBI** : uso y centros de eventos, análisis de transmisiones, Power BI, puede transformar fácilmente los datos de diagnóstico en toonear de información en tiempo real en los servicios de Azure. [Este artículo de documentación ofrece una excelente introducción de cómo procesar datos con análisis de transmisiones tooset los concentradores de eventos y usar Power BI como una salida de](../stream-analytics/stream-analytics-power-bi-dashboard.md). Estas son algunas recomendaciones para la configuración con los registros de diagnóstico:
   
-  * Un centro de eventos para una categoría de registros de diagnóstico se crea automáticamente al seleccionar la opción en el portal o habilitarla mediante PowerShell, por lo que debería seleccionar el centro de eventos en el espacio de nombres con el nombre que empieza por **insights-**.
-  * El siguiente código SQL es una consulta de Stream Analytics de ejemplo que puede utilizar para analizar simplemente todos los datos de registro en una tabla de PowerBI:
+  * Un concentrador de eventos para una categoría de registros de diagnóstico se crea automáticamente cuando compruebe la opción de hello en el portal de Hola o habilitarlo mediante PowerShell, por lo que desee tooselect concentrador de eventos de hello en hello espacio de nombres con el nombre de hello comienza con **visión**.
+  * Hola después el código SQL es un ejemplo de análisis de transmisiones de consulta que puede usar todos los datos de registro de hello tooparse en la tabla de PowerBI tooa:
 
     ```sql
     SELECT
-    records.ArrayValue.[Properties you want to track]
+    records.ArrayValue.[Properties you want tootrack]
     INTO
-    [OutputSourceName – the PowerBI source]
+    [OutputSourceName – hello PowerBI source]
     FROM
     [InputSourceName] AS e
     CROSS APPLY GetArrayElements(e.records) AS records
     ```
 
-* **Creación de una plataforma personalizada de registro y telemetría** : si ya tiene una plataforma de telemetría personalizada o está pensando en crear una, la gran escalabilidad en cuanto a la suscripción y la publicación de los Centros de eventos permite introducir registros de diagnóstico de manera flexible. [Consulte la guía de Dan Rosanova para usar Centros de eventos en una plataforma de telemetría de escala global aquí](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/).
+* **Crear una plataforma de registro y telemetría personalizada** : si ya dispone de una plataforma de telemetría personalizada o son solo pensar en uno, Hola altamente escalable publicación / suscripción de edificio naturaleza de los centros de eventos permite tooflexibly introducir diagnóstico registros. [Consulte toousing de guía de Dan Rosanova centros de eventos en una plataforma de telemetría de escala global](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/).
 
 ## <a name="enable-streaming-of-diagnostic-logs"></a>Habilitación del streaming de registros de diagnóstico
-Puede habilitar el streaming de registros de diagnóstico mediante programación, a través del portal o mediante la [API de REST de Azure Monitor](https://docs.microsoft.com/rest/api/monitor/servicediagnosticsettings). En cualquier caso, se crea una configuración de diagnóstico en la que se especifica un espacio de nombres de Event Hubs y las categorías de registro y métricas que se desea enviar al espacio de nombres. Se crea un centro de eventos en el espacio de nombres para cada categoría de registro que se habilita. Una **categoría de registro** de diagnóstico es un tipo de registro que un recurso puede recopilar.
+Puede habilitar la transmisión por secuencias de registros de diagnóstico mediante programación, mediante el portal de hello, o utilizando hello [API de REST de Azure Monitor](https://docs.microsoft.com/rest/api/monitor/servicediagnosticsettings). En cualquier caso, cree una configuración de diagnóstico en el que puede especificar un espacio de nombres de los centros de eventos y categorías de registro de hello y métricas que desee toosend en el espacio de nombres de toohello. Un concentrador de eventos se crea en el espacio de nombres de Hola para cada categoría de registro que se habilita. Una **categoría de registro** de diagnóstico es un tipo de registro que un recurso puede recopilar.
 
 > [!WARNING]
 > La habilitación y streaming de registros de diagnóstico desde recursos de proceso (por ejemplo, máquinas virtuales o Service Fabric) [requiere ejecutar una serie de pasos distinta](../event-hubs/event-hubs-streaming-azure-diags-data.md).
 > 
 > 
 
-El espacio de nombres de Event Hubs o Service Bus no tiene que estar en la misma suscripción que el recurso que emite los registros, siempre que el usuario que configura el ajuste tenga acceso RBAC adecuado a ambas suscripciones.
+Hola Bus de servicio o concentradores de eventos del espacio de nombres no tiene toobe en Hola misma suscripción como recurso de hello emitir registros como usuario de Hola que configura los valores de hello tiene suscripciones de tooboth de acceso RBAC adecuadas.
 
-## <a name="stream-diagnostic-logs-using-the-portal"></a>Streaming de registros de diagnóstico mediante el portal
-1. En el portal, desplácese a Azure Monitor y haga clic en **Configuración de diagnóstico**.
+## <a name="stream-diagnostic-logs-using-hello-portal"></a>Registros de diagnóstico de la secuencia mediante el portal de Hola
+1. En el portal de hello, navegue tooAzure Monitor y haga clic en **configuración de diagnóstico**
 
     ![Sección de supervisión de Azure Monitor](media/monitoring-stream-diagnostic-logs-to-event-hubs/diagnostic-settings-blade.png)
 
-2. Si lo desea, filtre la lista por tipo de recurso o por grupo de recursos y, a continuación, haga clic en el recurso para el que desea establecer la configuración de diagnóstico.
+2. Si lo desea Hola lista Filtrar por tipo de recurso o grupo de recursos, a continuación, haga clic en el recurso de hello para el que le gustaría tooset una configuración de diagnóstico.
 
-3. Si no existe ninguna configuración en el recurso que ha seleccionado, se le pide que cree una. Haga clic en "Activar diagnóstico".
+3. Si ninguna configuración existe en el recurso de Hola que ha seleccionado, son toocreate solicitada una configuración. Haga clic en "Activar diagnóstico".
 
    ![Agregar configuración de diagnóstico: sin configuración actual](media/monitoring-stream-diagnostic-logs-to-event-hubs/diagnostic-settings-none.png)
 
-   Si hay una configuración actual en el recurso, verá una lista de opciones ya configuradas en este recurso. Haga clic en "Agregar configuración de diagnóstico".
+   Si hay una configuración existente en el recurso de hello, verá una lista de configuraciones ya configurado en este recurso. Haga clic en "Agregar configuración de diagnóstico".
 
    ![Agregar configuración de diagnóstico: configuración actual](media/monitoring-stream-diagnostic-logs-to-event-hubs/diagnostic-settings-multiple.png)
 
-3. Asigne un nombre a su configuración y active la casilla **Transmitir a un centro de eventos**; a continuación, seleccione un espacio de nombres de Event Hubs.
+3. Asigne un nombre de su configuración y casilla hello para **concentrador de eventos de flujo tooan**, a continuación, seleccione un espacio de nombres de los centros de eventos.
    
    ![Agregar configuración de diagnóstico: configuración actual](media/monitoring-stream-diagnostic-logs-to-event-hubs/diagnostic-settings-configure.png)
     
-   En el espacio de nombres seleccionado será donde se cree el centro de eventos (si es la primera vez que transmite registros de diagnóstico) o a donde se transmitan (si ya hay recursos que estén transmitiendo esa categoría de registro a este espacio de nombres); la directiva define los permisos que tiene el mecanismo de streaming. En la actualidad, para realizar streaming a un centro de eventos, se necesitan permisos de administración, envío y escucha. Puede crear o modificar las directivas de acceso compartido del espacio de nombres de Event Hubs en la pestaña Configurar del portal para su espacio de nombres. Para actualizar uno de estas opciones de diagnóstico, el cliente tiene que tener el permiso ListKey en la regla de autorización de Event Hubs.
+   Hello espacio de nombres seleccionado será donde se crea (si se trata de la primera vez que los registros de diagnóstico de streaming) o se transmiten demasiado concentrador de eventos de hello (si ya hay recursos que están transmitiendo por secuencias ese espacio de nombres de toothis de categoría de registro), y la directiva de hello define Hola permisos que tiene el mecanismo de transmisión por secuencias de Hola. En la actualidad, streaming tooan concentrador de eventos requiere permisos de administración, envío y escuchar. Puede crear o modificar directivas de acceso de espacio de nombres compartido centros de eventos en el portal de hello en la ficha configurar de hello para el espacio de nombres. tooupdate uno de estos valores de diagnóstico, el cliente hello debe tener permiso de ListKey de hello en la regla de autorización de los centros de eventos de Hola.
 
 4. Haga clic en **Guardar**.
 
-Transcurridos unos instantes, la nueva opción de configuración aparece en la lista de opciones para este recurso y los registros de diagnóstico se transmiten en esa cuenta de almacenamiento en cuanto se generan nuevos datos de eventos.
+Transcurridos unos instantes, nueva configuración de hello aparece en la lista de valores para este recurso y registros de diagnóstico se transmiten cuenta de almacenamiento toothat tan pronto como se generan nuevos datos de evento.
 
 ### <a name="via-powershell-cmdlets"></a>Mediante cmdlets de PowerShell
-Para habilitar el streaming mediante [cmdlets de Azure PowerShell](insights-powershell-samples.md), puede utilizar el cmdlet `Set-AzureRmDiagnosticSetting` con estos parámetros:
+tooenable transmisión por secuencias a través de hello [Cmdlets de PowerShell de Azure](insights-powershell-samples.md), puede usar hello `Set-AzureRmDiagnosticSetting` cmdlet con estos parámetros:
 
 ```powershell
 Set-AzureRmDiagnosticSetting -ResourceId [your resource ID] -ServiceBusRuleId [your Service Bus rule ID] -Enabled $true
 ```
 
-El identificador de regla del Bus de servicio es una cadena con este formato: `{Service Bus resource ID}/authorizationrules/{key name}`, por ejemplo, `/subscriptions/{subscription ID}/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/{Service Bus namespace}/authorizationrules/RootManageSharedAccessKey`.
+Hola Id. de regla de Bus de servicio es una cadena con este formato: `{Service Bus resource ID}/authorizationrules/{key name}`, por ejemplo, `/subscriptions/{subscription ID}/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/{Service Bus namespace}/authorizationrules/RootManageSharedAccessKey`.
 
 ### <a name="via-azure-cli"></a>Mediante la CLI de Azure
-Para habilitar el streaming mediante la [CLI de Azure](insights-cli-samples.md), puede utilizar el comando `insights diagnostic set` del modo siguiente:
+tooenable transmisión por secuencias a través de hello [CLI de Azure](insights-cli-samples.md), puede usar hello `insights diagnostic set` comando similar al siguiente:
 
 ```azurecli
 azure insights diagnostic set --resourceId <resourceID> --serviceBusRuleId <serviceBusRuleID> --enabled true
 ```
 
-Utilice el mismo formato para el identificador de regla del Bus de servicio, como se explicó para el cmdlet de PowerShell.
+Usar hello mismo formato para el Id. de regla de Bus de servicio, como se explica para hello Cmdlet de PowerShell.
 
-## <a name="how-do-i-consume-the-log-data-from-event-hubs"></a>¿Cómo se consumen los datos de registro procedentes de centros de eventos?
+## <a name="how-do-i-consume-hello-log-data-from-event-hubs"></a>¿Cómo se puede consumir datos de registro de hello de centros de eventos?
 Estos son datos de salida de ejemplo de Event Hubs:
 
 ```json
@@ -164,17 +164,17 @@ Estos son datos de salida de ejemplo de Event Hubs:
 | Nombre del elemento | Description |
 | --- | --- |
 | records |Matriz de todos los eventos de registro de esta carga. |
-| Twitter en tiempo |Hora a la que se produjo el error. |
+| Twitter en tiempo |Hora en que hello evento se produjo. |
 | categoría |Categoría de registro para este evento. |
-| resourceId |Id. de recurso del recurso que generó este evento. |
-| operationName |Nombre de la operación. |
-| level |Opcional. Indica el nivel de registro de eventos. |
-| propiedades |Propiedades del evento. |
+| resourceId |Id. de recurso del recurso de Hola que generó este evento. |
+| operationName |Nombre de operación de Hola. |
+| level |Opcional. Indica el nivel de registro de eventos de Hola. |
+| propiedades |Propiedades de evento de Hola. |
 
-Puede ver una lista de todos los proveedores de recursos que admiten el streaming a Event Hubs [aquí](monitoring-overview-of-diagnostic-logs.md).
+Puede ver una lista de todos los proveedores de recursos que admiten la transmisión por secuencias concentradores tooEvent [aquí](monitoring-overview-of-diagnostic-logs.md).
 
 ## <a name="stream-data-from-compute-resources"></a>Transmisión de datos de Recursos de proceso
-También puede transmitir los registros de diagnóstico de los recursos de Compute mediante el agente de Microsoft Azure Diagnostics. [Consulte este artículo](../event-hubs/event-hubs-streaming-azure-diags-data.md) para ver cómo configurarlo.
+También puede transmitir los registros de diagnóstico de recursos de proceso con el agente de hello diagnósticos de Windows Azure. [Consulte este artículo](../event-hubs/event-hubs-streaming-azure-diags-data.md) para saber cómo tooset esa copia.
 
 ## <a name="next-steps"></a>Pasos siguientes
 * [Más información sobre los registros de Diagnósticos de Azure](monitoring-overview-of-diagnostic-logs.md)

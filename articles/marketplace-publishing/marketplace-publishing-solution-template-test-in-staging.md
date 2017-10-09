@@ -1,6 +1,6 @@
 ---
-title: "Prueba de la oferta de plantilla de solución en Marketplace | Microsoft Docs"
-description: "Conozca cómo probar la oferta de plantilla de solución en Azure Marketplace."
+title: "aaaTesting oferta de la plantilla de solución para hello Marketplace | Documentos de Microsoft"
+description: "Comprender cómo tootest oferta de la plantilla de solución para hello Azure Marketplace."
 services: marketplace-publishing
 documentationcenter: 
 author: HannibalSII
@@ -14,35 +14,35 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/04/2015
 ms.author: hascipio; v-divte
-ms.openlocfilehash: da1fc4713fd1d832c7ba91226f72cbef63b241bc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9c195c465d2fc6aa349e4bbcc348e5325f32850d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="test-your-solution-template-offer-in-staging"></a>Prueba de la oferta de plantilla de solución en ensayo
-En la etapa de ensayo se implementa la oferta en un “espacio aislado” privado, donde puede probar y comprobar su funcionalidad antes pasarla a producción. La oferta aparece en un entorno de ensayo tal y como lo haría para un cliente que la ha implementado. La oferta debe estar certificada para pasar a un entorno de ensayo.
+Significa que la implementación de la oferta en privado "espacio aislado" donde puede probar y comprobar su funcionalidad antes de insertar tooproduction de almacenamiento provisional. oferta de Hello aparece en ensayo tal como lo haría a tooa cliente que ha implementado. Su oferta debe ser toostaging toobe certificadas insertado.
 
-Después de preconfigurar la oferta, puede verla y probarla en el [Portal de Azure](https://portal.azure.com/).
+Una vez preconfigurado oferta hello, puede ver y probar oferta Hola Hola [Portal de Azure](https://portal.azure.com/).
 
-Siga los pasos indicados a continuación para insertar la oferta en el entorno de ensayo y probarla en el [Portal de Azure](https://portal.azure.com/).
+Siga los pasos de hello debajo toopush su toostaging de oferta y probarlo en hello [Portal de Azure](https://portal.azure.com/):
 
-1. Vaya al [Portal de publicación](https://publish.windowsazure.com) >  pestaña **Plantillas de solución** > su oferta > **Publicar** > **Push to Staging** (Pasar a ensayo).
-2. Proporcione la lista de suscripciones de Azure que va a usar para obtener la vista previa de la oferta y probarla.
-3. Inicie sesión en el Portal de vista previa de Azure mediante el identificador de suscripción que usó en el paso anterior.
-4. Realice al menos una ronda de pruebas en el Portal de vista previa de Azure sobre los puntos que se mencionan a continuación:
-   * Asegúrese de que el contenido de marketing se muestra correctamente en el Azure Marketplace.
-   * Compruebe la implementación completa de la topología.
+1. Vaya toohello [Portal de publicación](https://publish.windowsazure.com) > **plantillas de solución** ficha > su oferta > **publicar** > **tooStaging de inserción** .
+2. Proporcione la lista de Hola de suscripciones de Azure que usará toopreview y probar su oferta.
+3. Inicie sesión en el portal de vista previa de toohello mediante el uso de Id. de suscripción de Hola que utilizó en el paso anterior de Hola.
+4. Realice al menos una ronda de pruebas en el portal de vista previa de hello en los puntos de Hola que se mencionan más abajo:
+   * Asegúrese de que contenido de marketing aparece correctamente en hello Azure Marketplace.
+   * Implementación to-end de la topología de Hola.
    * Realice pruebas de rendimiento y pruebas de esfuerzo.
-   * Asegúrese de que la topología se ajusta a las prácticas recomendadas.
+   * Garantizar que la topología ajusta toohello los procedimientos recomendados.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Si está satisfecho con los resultados, puede continuar en la fase de publicación de la oferta final, **paso 4**: [Implementación de la oferta en Marketplace](marketplace-publishing-push-to-production.md). Si no, realice cambios en la oferta y vuelva a solicitar la certificación.
+Si está satisfecho con los resultados de hello, puede continuar toohello oferta final fase, la publicación **paso 4**: [implementar el Marketplace de oferta toohello](marketplace-publishing-push-to-production.md). Si no, realice cambios en la oferta y vuelva a solicitar la certificación.
 
 > [!NOTE]
 > Para los cambios de contenido de marketing, no se requiere certificación.
 > 
 > 
 
-Vea [Introducción: Publicación de una oferta en Azure Marketplace](marketplace-publishing-getting-started.md) para obtener una guía de todas las tareas del publicador.
+Vea [Introducción: cómo toopublish una toohello de oferta de Azure Marketplace](marketplace-publishing-getting-started.md) para una tarea de publicador tooall de guía.
 

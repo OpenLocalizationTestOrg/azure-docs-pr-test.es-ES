@@ -1,5 +1,5 @@
 ---
-title: "Programación y ejecución con Data Factory | Microsoft Docs"
+title: "aaaScheduling y la ejecución con factoría de datos | Documentos de Microsoft"
 description: "Obtenga información sobre los aspectos de programación y ejecución del modelo de aplicación de Factoría de datos de Azure."
 services: data-factory
 documentationcenter: 
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: spelluru
-ms.openlocfilehash: e6fd92cde91ae5f171c855c07fa8974a19703b41
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 6114dd4896f5537c789c3b632fb90e501b694285
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Programación y ejecución de Data Factory
-En este artículo se explican los aspectos de programación y ejecución del modelo de aplicación de Azure Data Factory. En este artículo se presupone que comprende los conceptos básicos del modelo de aplicación de Data Factory, como la actividad, las canalizaciones, los servicios vinculados y los conjuntos de datos. Para los conceptos básicos de Azure Data Factory, consulte los artículos siguientes:
+En este artículo se explica los aspectos de programación y la ejecución de Hola Hola Data Factory de Azure del modelo de aplicación. En este artículo se presupone que comprende los conceptos básicos del modelo de aplicación de Data Factory, como la actividad, las canalizaciones, los servicios vinculados y los conjuntos de datos. Para los conceptos básicos de la factoría de datos de Azure, vea Hola siguientes artículos:
 
-* [Introducción al servicio Factoría de datos de Azure](data-factory-introduction.md)
+* [Introducción tooData generador](data-factory-introduction.md)
 * [Procesos](data-factory-create-pipelines.md)
 * [Conjuntos de datos](data-factory-create-datasets.md) 
 
 ## <a name="start-and-end-times-of-pipeline"></a>Horas de inicio y finalización de la canalización
-Una canalización solo está activa entre su hora de **inicio** y de **finalización**. No se ejecuta antes de la hora de inicio ni después de la hora de finalización. Si la canalización está en pausa, no se ejecuta, independientemente de su hora de inicio y de finalización. Para que se ejecute una canalización, no debe estar en pausa. Puede encontrar esta configuración (inicio, finalización y pausa) en la definición de la canalización: 
+Una canalización solo está activa entre su hora de **inicio** y de **finalización**. No se ejecuta antes de la hora de inicio de Hola o después de la hora de finalización de Hola. Si se pausa la canalización de hello, no se ejecuta independientemente de su hora de inicio y finalización. Para una toorun de canalización, se debe no se produce la pausa. Encontrar estos valores (inicio, fin, en pausa) en la definición de la canalización de hello: 
 
 ```json
 "start": "2017-04-01T08:00:00Z",
@@ -40,7 +40,7 @@ Para más información sobre estas propiedades, vea el artículo sobre la [creac
 
 
 ## <a name="specify-schedule-for-an-activity"></a>Definición de la programación de una actividad
-La canalización en sí no se ejecuta. Son las actividades que incluye las que se ejecutan en el contexto general de la canalización. Puede especificar una programación recurrente para una actividad; para ello, use la sección **scheduler** de la actividad JSON. Por ejemplo, puede programar una actividad para que se ejecute cada hora de la manera siguiente:  
+No es canalización Hola que se ejecuta. Es actividades de Hola de canalización de Hola que se ejecutan en hello contexto general de canalización de Hola. Puede especificar una programación periódica para una actividad mediante hello **programador** sección de JSON de la actividad. Por ejemplo, puede programar una actividad toorun cada hora como sigue:  
 
 ```json
 "scheduler": {
@@ -49,18 +49,18 @@ La canalización en sí no se ejecuta. Son las actividades que incluye las que s
 },
 ```
 
-Como se muestra en el diagrama siguiente, al especificar una programación de una actividad se crea una ventana de saltos de tamaño constante con las horas de inicio y finalización de la canalización. Las ventanas de saltos de tamaño constante son series de intervalos de tiempo de tamaño fijo, no superpuestos y contiguos. Estas ventanas de saltos lógicas de tamaño constante para la actividad se denominan **ventanas de actividad**.
+Como se muestra en hello siguiente diagrama, especificar que una programación para una actividad crea una serie de ventanas de saltos de tamaño constante con Hola de canalización de inicio y finalización. Las ventanas de saltos de tamaño constante son series de intervalos de tiempo de tamaño fijo, no superpuestos y contiguos. Estas ventanas de saltos lógicas de tamaño constante para la actividad se denominan **ventanas de actividad**.
 
 ![Ejemplo de programador de actividades](media/data-factory-scheduling-and-execution/scheduler-example.png)
 
-La propiedad **scheduler** de una actividad es opcional. Si especifica esta propiedad, debe coincidir con la cadencia que indique en la definición del conjunto de datos de salida de la actividad. Actualmente, el conjunto de datos de salida es lo que impulsa la programación. Por tanto, debe crear un conjunto de datos de salida incluso si la actividad no produce ninguna salida. 
+Hola **programador** propiedad para una actividad es opcional. Si se especifica esta propiedad, debe coincidir con el ritmo de hello especificado en la definición de hello del conjunto de datos de salida para la actividad de Hola. Actualmente, el conjunto de datos de salida es qué unidades Hola programación. Por lo tanto, debe crear un conjunto de datos de salida aunque actividad hello no genera ningún resultado. 
 
 ## <a name="specify-schedule-for-a-dataset"></a>Definición de la programación de un conjunto de datos
-Una actividad de una canalización de Data Factory puede tomar diversos **conjuntos de datos** de entrada, o ninguno, y generar uno o varios conjuntos de datos de salida. Para una actividad, puede especificar la cadencia con que se encuentran disponibles los datos de entrada o con que se producen los datos de salida en la sección **availability** de las definiciones de los conjuntos de datos. 
+Una actividad de una canalización de Data Factory puede tomar diversos **conjuntos de datos** de entrada, o ninguno, y generar uno o varios conjuntos de datos de salida. Para una actividad, puede especificar el ritmo de hello en qué Hola datos de entrada están disponibles o se generan los datos de salida de hello mediante hello **disponibilidad** sección en definiciones de conjunto de datos de Hola. 
 
-La propiedad **frecuency** de la sección **availability** especifica la unidad de tiempo. Los valores permitidos para frequency son: Minute, Hour, Day, Week y Month. La propiedad **interval** de la sección availability especifica un multiplicador para la frecuencia. Por ejemplo, si la propiedad frecuency se establece en Day y la propiedad interval, en 1 para un conjunto de datos de salida, los datos de salida se generan diariamente. Si especifica frequency como Minute, se recomienda establecer interval en no menos de 15. 
+**Frecuencia** en hello **disponibilidad** sección especifica la unidad de tiempo de Hola. Hola valores permitidos para la frecuencia son: minuto, hora, día, semana y mes. Hola **intervalo** propiedad en la sección de disponibilidad de hello especifica un multiplicador para la frecuencia. Por ejemplo: si establece frecuencia de hello tooDay e intervalo se establece too1 para un conjunto de datos de salida, los datos de salida de hello se generan cada día. Si especifica Hola frecuencia como minuto, se recomienda que establezca Hola intervalo toono inferior a 15. 
 
-En el ejemplo siguiente, los datos de entrada están disponibles cada hora y los datos de salida se generan cada hora (`"frequency": "Hour", "interval": 1`). 
+En el siguiente ejemplo de Hola, datos de entrada de hello están disponibles por hora y los datos de salida de hello se producen cada hora (`"frequency": "Hour", "interval": 1`). 
 
 **Conjunto de datos de entrada:** 
 
@@ -114,9 +114,9 @@ En el ejemplo siguiente, los datos de entrada están disponibles cada hora y los
 }
 ```
 
-Actualmente, **el conjunto de datos de salida impulsa la programación**. En otras palabras, la programación especificada para el conjunto de datos de salida se usa para ejecutar una actividad en tiempo de ejecución. Por tanto, debe crear un conjunto de datos de salida incluso si la actividad no produce ninguna salida. Si la actividad no toma ninguna entrada, puede omitir la creación del conjunto de datos de entrada. 
+Actualmente, **programación de Hola de unidades de conjunto de datos de salida**. En otras palabras, programación de hello especificada para el conjunto de datos de salida de hello es toorun usa una actividad en tiempo de ejecución. Por lo tanto, debe crear un conjunto de datos de salida aunque actividad hello no genera ningún resultado. Si la actividad hello no toma ninguna entrada, puede omitir creación Hola de conjunto de datos entrada. 
 
-En la siguiente definición de la canalización, la propiedad **scheduler** se utiliza para especificar la programación de la actividad. Esta propiedad es opcional. Actualmente, la programación de la actividad debe coincidir con la programación especificada para el conjunto de datos de salida.
+En los siguientes Hola canalización definición, hello **programador** propiedad es programación toospecify usado para la actividad de Hola. Esta propiedad es opcional. Actualmente, programación de hello para la actividad de hello debe coincidir con programación de hello especificada para el conjunto de datos de salida de hello.
  
 ```json
 {
@@ -161,36 +161,36 @@ En la siguiente definición de la canalización, la propiedad **scheduler** se u
 }
 ```
 
-En este ejemplo, la actividad se ejecuta cada hora entre las horas de inicio y finalización de la canalización. Los datos de salida se generan cada hora durante ventanas de tres horas (8:00 a 9:00, 9:00 a 10:00 y 10:00 a 11:00). 
+En este ejemplo, cada hora se ejecuta de actividad de hello entre Hola hora inicial y final de la canalización de Hola. datos de salida de saludo se produce cada hora para windows de tres horas (8 A.M. - 9 AM, 9 a 10 AM y a 10 11 AM). 
 
-Cada unidad de datos consumida o producida por la ejecución de una actividad se denomina **segmento de datos**. El diagrama siguiente muestra un ejemplo de una actividad con un conjunto de datos de entrada y uno de salida: 
+Cada unidad de datos consumida o producida por la ejecución de una actividad se denomina **segmento de datos**. Hola siguiente diagrama muestra un ejemplo de una actividad con un conjunto de datos de entrada y un conjunto de datos de salida: 
 
 ![Programador de disponibilidad](./media/data-factory-scheduling-and-execution/availability-scheduler.png)
 
-En el diagrama se muestran los segmentos de datos por hora para el conjunto de datos de entrada y salida. El diagrama muestra tres segmentos de entrada que están listos para su procesamiento. La actividad 10-11 AM está en curso, produciendo el segmento de salida 10-11 AM. 
+diagrama de Hello muestra cada hora Hola segmentos de datos de Hola de entrada y salida de conjunto de datos. diagrama de Hello muestra tres segmentos de entrada que están listos para su procesamiento. actividad de 10-11 AM Hello está en curso, que produce el segmento de salida de hello 10-11 AM. 
 
-Puede acceder al intervalo de tiempo asociado al segmento actual en el JSON del conjunto de datos con las variables: [SliceStart](data-factory-functions-variables.md#data-factory-system-variables) y [SliceEnd](data-factory-functions-variables.md#data-factory-system-variables). De forma similar, puede acceder al intervalo de tiempo asociado con una ventana de actividad con las variables WindowStart y WindowEnd. La programación de una actividad debe coincidir con la programación del conjunto de datos de salida de la actividad. Por lo tanto, los valores de SliceStart y SliceEnd son los mismos que los valores de WindowStart y WindowEnd, respectivamente. Para más información sobre estas variables, vea el artículo [Funciones y variables del sistema](data-factory-functions-variables.md#data-factory-system-variables).  
+Puede tener acceso a intervalo de tiempo de hello asociado con el intervalo actual de Hola Hola de conjunto de datos JSON mediante variables: [SliceStart](data-factory-functions-variables.md#data-factory-system-variables) y [SliceEnd](data-factory-functions-variables.md#data-factory-system-variables). De forma similar, puede tener acceso a intervalo de tiempo de hello asociado con una ventana de actividad utilizando hello WindowStart y WindowEnd. programación Hola de una actividad debe coincidir con la programación de hello del conjunto de datos de salida de hello para la actividad de Hola. Por lo tanto, Hola SliceStart y SliceEnd valores son Hola mismo como valores WindowStart y WindowEnd respectivamente. Para más información sobre estas variables, vea el artículo [Funciones y variables del sistema](data-factory-functions-variables.md#data-factory-system-variables).  
 
-Puede usar estas variables para distintos fines en el JSON de actividad. Por ejemplo, puede usarlas para seleccionar datos de conjuntos de datos de entrada y salida que representen datos de serie temporal (por ejemplo, de 8:00 a 9:00). En el ejemplo también se usan **WindowStart** y **WindowEnd** para seleccionar datos pertinentes para la ejecución de una actividad y copiarlos en un blob con el valor de **folderPath** adecuado. **folderPath** se parametriza para tener una carpeta independiente para cada hora.  
+Puede usar estas variables para distintos fines en el JSON de actividad. Por ejemplo, puede utilizarlas tooselect datos de entrada y salida conjuntos de datos que representa datos de serie temporal (por ejemplo: ESTOY too9 de 8 A.M.). Este ejemplo también utiliza **WindowStart** y **WindowEnd** tooselect datos relevantes para una actividad ejecutar y cópielo tooa blob con hello adecuado **folderPath**. Hola **folderPath** es toohave con parámetros en una carpeta independiente para cada hora.  
 
-En el ejemplo anterior, la programación especificada para los conjuntos de entrada y salida es la misma (hora). Si el conjunto de datos de entrada para la actividad está disponible en una frecuencia distinta, digamos cada 15 minutos, la actividad que genera este conjunto de datos de salida sigue ejecutándose una vez cada hora, ya que el conjunto de datos de salida es el que impulsa la programación de la actividad. Para más información, vea [Modelado de conjuntos de datos con distintas frecuencias](#model-datasets-with-different-frequencies).
+En el anterior ejemplo de Hola, programación de hello especificada para los conjuntos de datos de entrada y salida se Hola igual (cada hora). Si Hola entrada conjunto de datos de actividad hello está disponible en una frecuencia distinta, digamos cada 15 minutos, actividad de hello generadas por este conjunto de datos de salida sigue ejecutándose una vez cada hora como conjunto de datos de salida de hello es qué unidades Hola programación de actividades. Para más información, vea [Modelado de conjuntos de datos con distintas frecuencias](#model-datasets-with-different-frequencies).
 
 ## <a name="dataset-availability-and-policies"></a>Directivas y disponibilidad del conjunto de datos
-Se ha analizado el uso de las propiedades frequency e interval en la sección availability de la definición del conjunto de datos. Hay otras propiedades que afectan a la programación y ejecución de una actividad. 
+Se muestra el uso de Hola de frecuencia y el intervalo de propiedades en la sección de disponibilidad de Hola de definición de conjunto de datos. Hay algunas propiedades que afectan a la programación de Hola y la ejecución de una actividad. 
 
-### <a name="dataset-availability"></a>Disponibilidad del conjunto de datos 
-La tabla siguiente describe las propiedades que puede utilizar en la sección de **disponibilidad**:
+### <a name="dataset-availability"></a>Conjunto de datos availability 
+Hello tabla siguiente describen propiedades que puede utilizar en hello **disponibilidad** sección:
 
 | Propiedad | Descripción | Obligatorio | Valor predeterminado |
 | --- | --- | --- | --- |
-| frequency |Especifica la unidad de tiempo para la producción de segmentos del conjunto de datos.<br/><br/><b>Frecuencia admitida</b>: Minute, Hour, Day, Week, Month. |Sí |N/D |
-| interval |Especifica un multiplicador para frecuencia<br/><br/>”Frequency x interval” determina la frecuencia con la que se produce el segmento.<br/><br/>Si necesita segmentar el conjunto de datos cada hora, establezca <b>frequency</b> en <b>hour</b> e <b>interval</b> en <b>1</b>.<br/><br/><b>Nota:</b> Si especifica Frequency como Minute, se recomienda establecer interval en no menos de 15. |Sí |N/D |
-| style |Especifica si el segmento debe producirse al principio o al final del intervalo.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>Si frequency se establece en Month y style se establece en EndOfInterval, el segmento se produce el último día del mes. Si style se establece en StartOfInterval, el segmento se produce el primer día del mes.<br/><br/>Si frequency se establece en Day y style se establece en EndOfInterval, el segmento se produce la última hora del día.<br/><br/>Si frequency se establece en Hour y style se establece en EndOfInterval, el segmento se produce al final de la hora. Por ejemplo, para un segmento para el período de 1 p.m. – 2 p.m., el segmento se producirá a las 2 p.m. |No |EndOfInterval |
-| anchorDateTime |Define la posición absoluta en el tiempo usada por el programador para calcular los límites del segmento de conjunto de datos. <br/><br/><b>Nota:</b> Si AnchorDateTime tiene partes de fecha más pormenorizadas que la frecuencia, estas se omitirán. <br/><br/>Por ejemplo, si el valor de <b>interval</b> es <b>hourly</b> (frequency: hour e interval: 1) y <b>AnchorDateTime</b> contiene <b>minutes and seconds</b>, las partes <b>minutes and seconds</b> de AnchorDateTime no se tienen en cuenta. |No |01/01/0001 |
-| Offset |Intervalo de tiempo en función del cual se desplazan el inicio y el final de todos los segmentos del conjunto de datos. <br/><br/><b>Nota:</b> Si se especifican anchorDateTime y offset, el resultado es el desplazamiento combinado. |No |N/D |
+| frequency |Especifica la unidad de tiempo de hello para la producción de segmento del conjunto de datos.<br/><br/><b>Frecuencia admitida</b>: Minute, Hour, Day, Week, Month. |Sí |N/D |
+| interval |Especifica un multiplicador para frecuencia<br/><br/>"Intervalo de frecuencia x" determina con qué frecuencia hello segmento se genera.<br/><br/>Si necesita hello toobe de conjunto de datos se crean sectores de cada hora, establecer <b>frecuencia</b> demasiado<b>hora</b>, y <b>intervalo</b> demasiado<b>1</b>.<br/><br/><b>Tenga en cuenta</b>: si especifica frecuencia como minuto, se recomienda que establezca Hola intervalo toono inferior a 15 |Sí |N/D |
+| style |Especifica si se debe generar segmento hello en hello inicio/final del intervalo de saludo.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>Si se establece la frecuencia de tooMonth y se establece el estilo tooEndOfInterval, Hola segmento se genera Hola último día del mes. Si se establece tooStartOfInterval en estilo de hello, Hola segmento se genera en hello primer día del mes.<br/><br/>Si se establece la frecuencia de tooDay y se establece el estilo tooEndOfInterval, segmento de Hola se genera en la última hora del día de Hola Hola.<br/><br/>Si se establece la frecuencia de tooHour y se establece el estilo tooEndOfInterval, segmento de Hola se genera al final de Hola de hora de Hola. Por ejemplo, para un intervalo durante el período de 1 P.M. – 2 P.M., segmento de Hola se genera a las 2 P.M.. |No |EndOfInterval |
+| anchorDateTime |Define la posición absoluta de hello en el tiempo utilizado por los límites del sector de programador toocompute conjunto de datos. <br/><br/><b>Tenga en cuenta</b>: si hello AnchorDateTime tiene Dateparts más granulares que la frecuencia de hello, hello partes más pormenorizadas se omiten. <br/><br/>Por ejemplo, si hello <b>intervalo</b> es <b>cada hora</b> (frecuencia: hora e intervalo: 1) hello y <b>AnchorDateTime</b> contiene <b>minutos y segundos</b>, a continuación, Hola <b>minutos y segundos</b> partes de hello AnchorDateTime se omiten. |No |01/01/0001 |
+| Offset |Intervalo de tiempo por qué Hola se desplazan inicial y final de todos los sectores de conjunto de datos. <br/><br/><b>Tenga en cuenta</b>: si se especifican anchorDateTime y offset, resultado de hello es Hola combinan MAYÚS. |No |N/D |
 
 ### <a name="offset-example"></a>Ejemplo de offset
-De forma predeterminada, cada día (`"frequency": "Day", "interval": 1`) se inician los segmentos a las 24:00 UTC (medianoche). Si desea que, en su lugar, la hora de inicio sea a las 6:00 UTC, defina el desplazamiento como se muestra en el siguiente fragmento de código: 
+De forma predeterminada, cada día (`"frequency": "Day", "interval": 1`) se inician los segmentos a las 24:00 UTC (medianoche). Si desea Hola inicio toobe 6: 00 UTC hora en su lugar, establezca Hola offset tal como se muestra en el siguiente fragmento de código de hello: 
 
 ```json
 "availability":
@@ -201,7 +201,7 @@ De forma predeterminada, cada día (`"frequency": "Day", "interval": 1`) se inic
 }
 ```
 ### <a name="anchordatetime-example"></a>Ejemplo de anchorDateTime
-En el ejemplo siguiente, el conjunto de datos se produce una vez cada 23 horas. El primer segmento se inicia a la hora especificada en anchorDateTime, que se define en `2017-04-19T08:00:00` (hora UTC).
+En el siguiente ejemplo de Hola Hola conjunto de datos se produce una vez cada 23 horas. Hello primer sector comienza en tiempo de hello especificado por anchorDateTime hello, que se establece demasiado`2017-04-19T08:00:00` (hora UTC).
 
 ```json
 "availability":    
@@ -213,7 +213,7 @@ En el ejemplo siguiente, el conjunto de datos se produce una vez cada 23 horas. 
 ```
 
 ### <a name="offsetstyle-example"></a>Ejemplo de desplazamiento y estilo
-El siguiente conjunto de datos es un conjunto de datos mensual y se produce el tercer día de cada mes a las 8:00 (`3.08:00:00`):
+es un conjunto de datos mensual Hello siguiente conjunto de datos y se genera en 3rd de cada mes a las 8:00 A.M. (`3.08:00:00`):
 
 ```json
 "availability": {
@@ -225,14 +225,14 @@ El siguiente conjunto de datos es un conjunto de datos mensual y se produce el t
 ```
 
 ### <a name="dataset-policy"></a>Directiva del conjunto de datos
-Un conjunto de datos puede tener una directiva de validación definida que especifique cómo se pueden validar los datos generados por la ejecución de un segmento antes de que esté listo para su uso. En estos casos, cuando el segmento ha terminado de ejecutarse, el estado del mismo cambia a **En espera** con un subestado de **Validación**. Una vez validados los segmentos, el estado del segmento cambia a **Listo**. Si se ha generado un segmento de datos, pero no ha pasado la validación, no se procesan las ejecuciones de actividad de los segmentos de nivel inferior que dependen de ese segmento. [Supervisión y administración de canalizaciones](data-factory-monitor-manage-pipelines.md) se tratan los diversos estados de los segmentos de datos en Data Factory.
+Un conjunto de datos puede tener una directiva de validación definida que especifica cómo se pueden validar los datos de hello generados por la ejecución de un segmento antes de que está listo para su uso. En tales casos, después de que ha terminado de ejecutarse, segmento de Hola Hola salida segmento se cambia el estado demasiado**espera** con un subestado de **validación**. Después de validan intervalos de hello, estado del sector Hola cambia demasiado**listo**. Si se ha generado un segmento de datos, pero no superó la validación de hello, no se procesan las ejecuciones de actividad de intervalos de nivel inferiores que dependen de este segmento. [Supervisar y administrar las canalizaciones](data-factory-monitor-manage-pipelines.md) portadas Hola diversos estados de segmentos de datos en la factoría de datos.
 
-En la sección **policy** de la definición del conjunto de datos se definen los criterios o condiciones que deben cumplir los segmentos del conjunto de datos. La tabla siguiente describe las propiedades que puede utilizar en la sección **policy**:
+Hola **directiva** sección de definición de conjunto de datos define los criterios de Hola o debe cumplir la condición de Hola que Hola segmentos del conjunto de datos. Hello tabla siguiente describen propiedades que puede utilizar en hello **directiva** sección:
 
-| Nombre de la directiva | Descripción | Aplicado a | Obligatorio | Valor predeterminado |
+| Nombre de la directiva | Descripción | Aplica demasiado| Obligatorio | Valor predeterminado |
 | --- | --- | --- | --- | --- |
-| minimumSizeMB | Valida que los datos de un **blob de Azure** cumplen los requisitos de tamaño mínimo (en megabytes). |blob de Azure |No |N/D |
-| minimumRows | Valida que los datos de una **base de datos SQL de Azure** o una **tabla de Azure** contienen el número mínimo de filas. |<ul><li>Base de datos SQL de Azure</li><li>tabla de Azure</li></ul> |No |N/D |
+| minimumSizeMB | Valida datos hello en un **blobs de Azure** Hola de cumple los requisitos mínimos de tamaño (en megabytes). |Blob de Azure |No |N/D |
+| minimumRows | Valida datos hello en un **base de datos SQL de Azure** o un **tabla de Azure** contiene Hola número mínimo de filas. |<ul><li>Azure SQL Database</li><li>tabla de Azure</li></ul> |No |N/D |
 
 #### <a name="examples"></a>Ejemplos
 **minimumSizeMB:**
@@ -263,73 +263,73 @@ En la sección **policy** de la definición del conjunto de datos se definen los
 Para consultar ejemplos y más información sobre estas propiedades, vea el artículo [Creación de conjuntos de datos](data-factory-create-datasets.md). 
 
 ## <a name="activity-policies"></a>Directivas de la actividad
-Las directivas afectan al comportamiento en tiempo de ejecución de una actividad, concretamente cuando se procesa el segmento de una tabla. En la tabla siguiente se proporciona los detalles.
+Las directivas afectan al comportamiento de tiempo de ejecución de Hola de una actividad, específicamente cuando se procesa el sector de Hola de una tabla. Hello en la tabla siguiente proporciona detalles de Hola.
 
 | Propiedad | Valores permitidos | Valor predeterminado | Description |
 | --- | --- | --- | --- |
-| simultaneidad |Entero  <br/><br/>Valor máximo: 10 |1 |Número de ejecuciones simultáneas de la actividad.<br/><br/>Determina el número de ejecuciones paralelas de la actividad que pueden tener lugar en distintos segmentos. Por ejemplo, si una actividad tiene que recorrer un gran conjunto de datos disponibles, tener un valor mayor de simultaneidad acelera el procesamiento de datos. |
-| executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |Determina el orden de los segmentos de datos que se están procesando.<br/><br/>Por ejemplo, si tiene 2 segmentos (que tienen lugar uno a las 4 p.m. y el otro a las 5 p.m.) y ambos están pendientes de ejecución. Si establece que executionPriorityOrder sea NewestFirst, se procesará primero el segmento de las 5 p.m. De forma similar, si establece que executionPriorityORder sea OldestFIrst, se procesará el segmento de las 4 p.m. |
-| retry |Entero <br/><br/>El valor máximo permitido es 10 |0 |Número de reintentos antes de que el procesamiento de datos del segmento se marque como error. La ejecución de la actividad de un segmento de datos se vuelve a intentar hasta el número de reintentos especificado. El reintento se realiza tan pronto como sea posible después del error. |
-| timeout |TimeSpan |00:00:00 |Tiempo de espera para la actividad. Ejemplo: 00:10:00 (implica un tiempo de espera de 10 minutos)<br/><br/>Si un valor no se especifica o es 0, el tiempo de espera es infinito.<br/><br/>Si el tiempo de procesamiento de los datos en un segmento supera el valor de tiempo de espera, se cancela y el sistema vuelve a intentar el procesamiento. El número de reintentos depende de la propiedad retry. Si se excede el tiempo de espera, el estado será TimedOut. |
-| delay |TimeSpan |00:00:00 |Especifica el retraso antes de iniciar el procesamiento de los datos del segmento.<br/><br/>La ejecución de la actividad de un segmento de datos se inicia una vez que transcurra el retraso más allá del tiempo de ejecución esperado.<br/><br/>Ejemplo: 00:10:00 (implica un retraso de 10 minutos) |
-| longRetry |Entero <br/><br/>Valor máximo: 10 |1 |Número de reintentos largos antes de que la ejecución de los segmentos produzca error.<br/><br/>Los intentos de longRetry se espacian de acuerdo a longRetryInterval. Por tanto, si necesita especificar un tiempo entre reintentos, utilice longRetry. Si se especifican Retry y longRetry, cada intento de longRetry incluirá el número de intentos de Retry y el número máximo de intentos será Retry * longRetry.<br/><br/>Por ejemplo, si tenemos la siguiente configuración en la directiva de la actividad:<br/>Retry: 3<br/>longRetry: 2<br/>longRetryInterval: 01:00:00<br/><br/>Se supone que existe un solo segmento para ejecutar (el estado es En espera) y la ejecución de la actividad no se puede realizar nunca. Inicialmente habría tres intentos consecutivos de ejecución. Después de cada intento, el estado del segmento sería Retry. Después de los 3 primeros intentos, el estado del segmento sería LongRetry.<br/><br/>Después de una hora (es decir, el valor de longRetryInteval), se produciría otro conjunto de 3 intentos consecutivos de ejecución. Después de eso, el estado del segmento sería Failed y ya no se realizarían más intentos. Por tanto, en total se realizaron 6 intentos.<br/><br/>Si una ejecución se realiza correctamente, el estado del segmento sería Ready y no se realizaría ningún otro reintento.<br/><br/>longRetry puede usarse en situaciones donde llegan datos dependientes a horas no deterministas o el entorno general en el que se produce el procesamiento de datos es poco confiable. En esos casos es posible que realizar reintentos uno tras otro no ayude, mientras que hacerlo después de un intervalo de tiempo puede generar el resultado deseado.<br/><br/>Advertencia: No establezca valores altos para longRetry o longRetryInterval. Normalmente, los valores más altos implican otros problemas sistémicos. |
-| longRetryInterval |TimeSpan |00:00:00 |El retraso entre reintentos largos |
+| simultaneidad |Entero  <br/><br/>Valor máximo: 10 |1 |Número de ejecuciones simultáneas de actividad hello.<br/><br/>Determina el número de Hola de ejecuciones paralelas que pueden ocurrir en distintos sectores. Por ejemplo, si una actividad tiene toogo a través de un conjunto grande de datos disponibles, que tienen un valor mayor de simultaneidad acelera el procesamiento de datos de Hola. |
+| executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |Determina Hola orden de los segmentos de datos que se están procesando.<br/><br/>Por ejemplo, si tiene 2 segmentos (que tienen lugar uno a las 4 p.m. y el otro a las 5 p.m.) y ambos están pendientes de ejecución. Si establece hello executionPriorityOrder toobe NewestFirst, segmento de Hola a las 5 P.M. se procesa en primer lugar. De forma similar si establece hello executionPriorityORder toobe OldestFIrst, segmento de Hola a las 4 P.M. se procesa. |
+| retry |Entero <br/><br/>El valor máximo permitido es 10 |0 |Número de reintentos antes del procesamiento de datos de hello para el segmento de Hola se marca como completada con errores. Ejecución de actividad para un segmento de datos se vuelve a intentar la toohello especificada número de reintentos. Hola reintento se realiza tan pronto como sea posible después de error de Hola. |
+| timeout |TimeSpan |00:00:00 |Tiempo de espera para la actividad de Hola. Ejemplo: 00:10:00 (implica un tiempo de espera de 10 minutos)<br/><br/>Si un valor no se especifica o es 0, el tiempo de espera de hello es infinito.<br/><br/>Si el tiempo de procesamiento de datos de hello en un sector supera el valor de tiempo de espera de hello, que se cancele y sistema de hello trata el procesamiento de hello tooretry. número de Hola de reintentos depende de la propiedad de reintento de Hola. Cuando se produce el tiempo de espera, el estado de Hola se establece tooTimedOut. |
+| delay |TimeSpan |00:00:00 |Especificar el retraso de hello antes del procesamiento de datos de segmento Hola se inicia.<br/><br/>se inicia la ejecución de Hola de actividad para un segmento de datos una vez Hola retraso pasado Hola espera el tiempo de ejecución.<br/><br/>Ejemplo: 00:10:00 (implica un retraso de 10 minutos) |
+| longRetry |Entero <br/><br/>Valor máximo: 10 |1 |número de Hola de reintentos largos intentos antes de que se error al ejecutar el segmento Hola.<br/><br/>Los intentos de longRetry se espacian de acuerdo a longRetryInterval. Por lo que si necesita toospecify un tiempo entre los reintentos, utilice longRetry. Si se especifican Retry y longRetry, cada intento de longRetry incluye los intentos de reintento y número máximo de Hola de intentos es reintento * longRetry.<br/><br/>Por ejemplo, si tenemos Hola después de la configuración de directiva de actividad de hello:<br/>Retry: 3<br/>longRetry: 2<br/>longRetryInterval: 01:00:00<br/><br/>Suponemos que hay solo un tooexecute de segmento (estado de espera) y ejecución de la actividad de Hola se produce un error cada vez. Inicialmente habría tres intentos consecutivos de ejecución. Después de cada intento, estado del sector Hola sería Retry. Después de 3 primeros intentos superan el tiempo de espera, estado del sector Hola sería LongRetry.<br/><br/>Después de una hora (es decir, el valor de longRetryInteval), se produciría otro conjunto de 3 intentos consecutivos de ejecución. Después de eso, el estado del sector de hello podría ser Failed y no podría realizarse ningún reintento más. Por tanto, en total se realizaron 6 intentos.<br/><br/>Si cualquier ejecución se realiza correctamente, el estado del sector de hello sería Ready y no se realiza ningún reintento más.<br/><br/>longRetry puede utilizarse en situaciones donde llegan datos dependientes en momentos no determinista o hello entorno general es inestable en el procesamiento de datos que se produce. En tales casos, no es útil realizar reintentos uno tras otro y hacerlo después de un intervalo de tiempo provoca Hola deseado de salida.<br/><br/>Advertencia: No establezca valores altos para longRetry o longRetryInterval. Normalmente, los valores más altos implican otros problemas sistémicos. |
+| longRetryInterval |TimeSpan |00:00:00 |retraso de Hello entre reintentos largos |
 
 Para más información, vea el artículo [Canalizaciones](data-factory-create-pipelines.md). 
 
 ## <a name="parallel-processing-of-data-slices"></a>Procesamiento en paralelo de segmentos de datos
-Puede establecer la fecha de inicio de la canalización en el pasado. Al hacerlo, Data Factory calcula automáticamente (relleno de fondo) todos los segmentos de datos en el pasado y empieza a procesarlos. Por ejemplo, si crea una canalización con la fecha de inicio 01-04-2017 y la fecha actual es 10-04-2017. Si la cadencia del conjunto de datos de salida es diaria, Data Factory empieza a procesar todos los segmentos desde el 01-04-2017 hasta el 09-04-2017 inmediatamente, porque la fecha de inicio se ha fijado en el pasado. El segmento del 10-04-2017 no se procesa todavía porque el valor de la propiedad style de la sección availability es EndOfInterval de forma predeterminada. El segmento más antiguo se procesa en primer lugar, ya que el valor predeterminado de executionPriorityOrder es OldestFirst. Para obtener una descripción de la propiedad style, vea la sección [Disponibilidad del conjunto de datos](#dataset-availability). Para obtener una descripción de la sección executionPriorityOrder, vea la sección [Directivas de la actividad](#activity-policies). 
+Puede establecer fecha de inicio de hello para la canalización de Hola Hola anteriores. Al hacerlo, factoría de datos automáticamente calcula (rellenos atrás) todos los segmentos de datos en los último hello y empieza a procesarlos. Por ejemplo: si se crea una canalización con fecha de inicio de 2017-04-01 y Hola fecha actual es de 2017-04-10. Si cadencia de Hola de hello salida de conjunto de datos es diariamente, a continuación, inicia el generador de datos procesar todos los sectores de Hola de 2017-04-01 too2017-04-09 inmediatamente porque Hola fecha de inicio se encuentra Hola anterior. Hola segmento de 2017-04-10 no se procesó todavía porque Hola valor de propiedad de estilo en la sección de disponibilidad de hello EndOfInterval de forma predeterminada. Hello más antigua se procesa en primer lugar como valor predeterminado de hello valo executionPriorityOrder es OldestFirst. Para obtener una descripción de la propiedad de estilo de hello, consulte [disponibilidad del conjunto de datos](#dataset-availability) sección. Para obtener una descripción de la sección de executionPriorityOrder hello, vea hello [las directivas de actividad](#activity-policies) sección. 
 
-Puede configurar segmentos de datos de relleno de fondo para que se procesen en paralelo estableciendo la propiedad **concurrency** en la sección **policy** de la actividad JSON. Esta propiedad determina el número de ejecuciones paralelas de la actividad que pueden tener lugar en distintos segmentos. El valor predeterminado de la propiedad concurrency es 1. Por tanto, se procesa un segmento a la vez de forma predeterminada. El valor máximo es 10. Si una actividad tiene que recorrer un gran conjunto de datos disponibles, tener un valor mayor de simultaneidad acelera el procesamiento de datos. 
+Puede configurar toobe de sectores de datos se llene de back procesada en paralelo por establecer Hola **simultaneidad** propiedad Hola **directiva** sección de JSON de la actividad de Hola. Esta propiedad determina el número de Hola de ejecuciones paralelas que pueden ocurrir en distintos sectores. valor predeterminado de Hello para la propiedad de simultaneidad de hello es 1. Por tanto, se procesa un segmento a la vez de forma predeterminada. valor máximo de Hello es 10. Cuando una canalización debe toogo a través de un conjunto grande de datos disponibles, que tienen un valor mayor de simultaneidad acelera el procesamiento de datos de Hola. 
 
 ## <a name="rerun-a-failed-data-slice"></a>Volver a ejecutar un segmento de datos con errores
-Cuando se produce un error durante el procesamiento de un segmento de datos, puede averiguar la causa en las hojas de Azure Portal o con la Aplicación de supervisión y administración. Consulte [Supervisión y administración de canalizaciones mediante hojas de Azure Portal](data-factory-monitor-manage-pipelines.md) o [Aplicación de supervisión y administración](data-factory-monitor-manage-app.md) para más información.
+Cuando se produce un error durante el procesamiento de un segmento de datos, puede averiguar por qué no se pudo procesamiento Hola de un segmento mediante hojas de portal de Azure o supervisar y administrar aplicaciones. Consulte [Supervisión y administración de canalizaciones mediante hojas de Azure Portal](data-factory-monitor-manage-pipelines.md) o [Aplicación de supervisión y administración](data-factory-monitor-manage-app.md) para más información.
 
-Observe el ejemplo siguiente, que muestra dos actividades. Activity1 y Activity2. Activity1 consume un segmento de Dataset1 y genera un segmento de Dataset2, que Activity2 consume como entrada para generar un segmento de Final Dataset.
+Considere la posibilidad de hello siguiente ejemplo, que se muestra en dos actividades. Activity1 y Activity2. Activity1 consume un segmento de Dataset1 y genera un segmento del conjunto de datos 2, que consume como entrada Activity2 tooproduce un segmento de hello Final del conjunto de datos.
 
 ![Segmento con errores](./media/data-factory-scheduling-and-execution/failed-slice.png)
 
-El diagrama muestra que en tres segmentos recientes se produjo un error al generar el segmento 9-10 AM para Dataset2. Data Factory realiza automáticamente el seguimiento de la dependencia para el conjunto de datos de series temporales. Como resultado, no se inicia la ejecución de actividad para el segmento 9-10 AM de bajada.
+Hola diagrama muestra fuera de tres segmentos recientes, que se produjo un segmento de error productor Hola 9 y 10 AM para Dataset2. Factoría de datos realiza automáticamente un seguimiento de dependencia para el conjunto de datos de series de tiempo de Hola. Como resultado, no se inicia de sector de hello 9 y 10 AM siguen en la cadena de ejecución de la actividad de Hola.
 
-Las herramientas de administración y supervisión de Data Factory permiten profundizar en los registros de diagnóstico del segmento con error para encontrar fácilmente la causa principal del problema y solucionarlo. Una vez solucionado el problema, puede iniciar fácilmente la ejecución de la actividad para generar el segmento con error. Para más información sobre cómo repetir la ejecución y entender las transiciones de estado para segmentos de datos, vea [Supervisión y administración de canalizaciones en las hojas de Azure Portal](data-factory-monitor-manage-pipelines.md) o [Aplicación de supervisión y administración](data-factory-monitor-manage-app.md).
+Herramientas de administración y supervisión del generador de datos permiten toodrill en registros de diagnóstico de Hola para hello segmento erróneo tooeasily buscar Hola raíz causa de problema de Hola y de corregirlo. Una vez solucionado el problema de hello, puede iniciar fácilmente actividad hello ejecutar tooproduce Hola error segmento. Para obtener más información acerca de cómo toorerun y comprender las transiciones de estado para segmentos de datos, vea [supervisión y administración de canalizaciones mediante módulos de portal de Azure](data-factory-monitor-manage-pipelines.md) o [aplicación de supervisión y administración](data-factory-monitor-manage-app.md).
 
-Tras haber repetido la ejecución del segmento 9-10 AM para **Dataset2**, Data Factory inicia la ejecución del segmento dependiente de 9-10 AM en el conjunto de datos final.
+Después de volver a ejecutar Hola 9 y 10 AM segmentar de **Dataset2**, factoría de datos inicia Hola ejecute para el segmento de hello 9 y 10 AM dependientes en hello conjunto de datos final.
 
 ![Repetición de ejecución de un segmento con errores](./media/data-factory-scheduling-and-execution/rerun-failed-slice.png)
 
 ## <a name="multiple-activities-in-a-pipeline"></a>Varias actividades en una canalización
-pero se pueden tener más de una actividad en una canalización. Si tiene varias actividades en una canalización y la salida de una actividad no es la entrada de otra actividad, las actividades se pueden ejecutar en paralelo si los segmentos de datos de entrada para las actividades están listos.
+pero se pueden tener más de una actividad en una canalización. Si tiene varias actividades en una canalización y salida de hello de una actividad no es una entrada de otra actividad, las actividades de hello pueden ejecutar en paralelo si los segmentos de datos de entrada para las actividades de hello están listos.
 
-Puede encadenar dos actividades (ejecutar una después de otra) haciendo que el conjunto de datos de salida de una actividad sea el conjunto de datos de entrada de la otra actividad. Las actividades pueden estar en la misma canalización o en canalizaciones diferentes. La segunda actividad se ejecuta solo cuando la primera de ellas se completa correctamente.
+Se pueden encadenar dos actividades (ejecutar actividades de una tras otra) estableciendo el conjunto de datos de salida de hello de una actividad Hola de entrada de conjunto de datos del programa Hola a otra actividad. Hola actividades pueden ser Hola misma canalización o en las canalizaciones diferentes. segunda actividad de Hola se ejecuta sólo cuando hello primero uno finaliza correctamente.
 
-Por ejemplo, observe el siguiente caso en el que una canalización tiene dos actividades:
+Por ejemplo, considere la posibilidad de hello siguiente caso donde una canalización tiene dos actividades:
 
 1. La actividad A1 que requiere el conjunto de datos de entrada externo D1 y genera el conjunto de datos de salida D2.
 2. La actividad A2 que requiere una entrada del conjunto de datos D2 y genera el conjunto de datos de salida D3.
 
-En este escenario, las actividades A1 y A2 se encuentran en la misma canalización. La actividad A1 se ejecuta cuando los datos externos están disponibles y se alcanza la frecuencia de disponibilidad programada. La actividad A2 se ejecuta cuando están disponibles los segmentos programados de D2 y se alcanza la frecuencia de disponibilidad programada. Si se produce un error en uno de los segmentos del conjunto de datos D2, A2 no se ejecuta para ese segmento hasta que está disponible.
+En este escenario, las actividades de A1 y A2 se Hola misma canalización. actividad de Hello que a1 se ejecuta cuando los datos externos de hello están disponibles y se alcanza la frecuencia de disponibilidad de hello programado. Hello actividad A2 se ejecuta cuando hello intervalos programados desde D2 estén disponibles y hello frecuencia disponibilidad programada se alcanza. Si se produce un error en uno de los sectores de hello en el conjunto de datos D2, A2 no se ejecuta para dicho sector hasta que esté disponible.
 
-La vista Diagrama con ambas actividades en la misma canalización tendría un aspecto similar al siguiente diagrama:
+Hola vista de diagrama con ambas actividades Hola misma canalización sería Hola siguiente diagrama:
 
-![Encadenamiento de las actividades de la misma canalización](./media/data-factory-scheduling-and-execution/chaining-one-pipeline.png)
+![El encadenamiento de actividades en hello misma canalización](./media/data-factory-scheduling-and-execution/chaining-one-pipeline.png)
 
-Tal y como se ha mencionado anteriormente, las actividades pueden estar en distintas canalizaciones. En tal escenario, la vista de diagrama tendría un aspecto similar al siguiente diagrama:
+Tal y como se mencionó anteriormente, las actividades de hello pueden estar en diferentes canalizaciones. En este escenario, vista de diagrama de hello sería Hola siguiente diagrama:
 
 ![Encadenamiento de las actividades de dos canalizaciones](./media/data-factory-scheduling-and-execution/chaining-two-pipelines.png)
 
-Vea la sección [Copia secuencial](#copy-sequentially) del anexo para obtener un ejemplo.
+Vea hello [copiar secuencialmente](#copy-sequentially) sección en el apéndice de hello para obtener un ejemplo.
 
 ## <a name="model-datasets-with-different-frequencies"></a>Modelado de conjuntos de datos con distintas frecuencias
-En los ejemplos, las frecuencias de los conjuntos de datos de entrada y salida y de la ventana de programación de actividad eran las mismas. Algunos escenarios requieren que se puedan producir resultados a una frecuencia diferente de las frecuencias de una o más entradas. Data Factory admite el modelado de estos escenarios.
+En los ejemplos de hello, las frecuencias de Hola de entrada y salida hello y conjuntos de datos de actividad ventana de programación se Hola mismo. Algunos escenarios requieren la salida de hello capacidad tooproduce a una frecuencia diferente a las frecuencias de Hola de una o más entradas. Data Factory admite el modelado de estos escenarios.
 
 ### <a name="sample-1-produce-a-daily-output-report-for-input-data-that-is-available-every-hour"></a>Ejemplo 1: Generación de un informe de salida diario para los datos de entrada que esté disponibles cada hora
-Considere un escenario en el que tiene datos de medida de entrada de sensores disponibles cada hora en Azure Blob Storage. Quiere generar un informe agregado diario con estadísticas como media, máximo y mínimo para el día con la [actividad de Hive de Data Factory](data-factory-hive-activity.md).
+Considere un escenario en el que tiene datos de medida de entrada de sensores disponibles cada hora en Azure Blob Storage. Desea tooproduce un informe diario agregado con estadísticas como Media, máximo y mínimo por día Hola con [actividad de hive de factoría de datos](data-factory-hive-activity.md).
 
 A continuación, se muestra cómo puede modelar este escenario con Data Factory:
 
 **Conjunto de datos de entrada**
 
-Se quitan los archivos de entrada de cada hora en la carpeta para el día especificado. La disponibilidad para la entrada se establece en **Hour** (frecuencia: hora, intervalo: 1).
+Hola cada hora de entrada de archivos se colocan en la carpeta Hola Hola dado día. La disponibilidad para la entrada se establece en **Hour** (frecuencia: hora, intervalo: 1).
 
 ```json
 {
@@ -358,7 +358,7 @@ Se quitan los archivos de entrada de cada hora en la carpeta para el día especi
 ```
 **Conjunto de datos de salida**
 
-Cada día se crea un archivo de salida en la carpeta del día. La disponibilidad de la salida se establece en **Day** (frecuencia: día e intervalo: 1).
+Se crea cada día en un archivo de salida en la carpeta del día de Hola. La disponibilidad de la salida se establece en **Day** (frecuencia: día e intervalo: 1).
 
 ```json
 {
@@ -387,7 +387,7 @@ Cada día se crea un archivo de salida en la carpeta del día. La disponibilidad
 
 **Actividad: actividad de Hive en una canalización**
 
-El script de Hive recibe la información adecuada de *DateTime* como parámetros que usan la variable **WindowStart** como se muestra a continuación. El script de Hive usa esta variable para cargar los datos de la carpeta correcta para el día y ejecutar la agregación para generar la salida.
+script de hive Hola recibe Hola adecuado *DateTime* información como parámetros que utilizan hello **WindowStart** variable tal y como se muestra en el siguiente fragmento de código de hello. script de hive Hola emplea estos datos de hello tooload variable desde la carpeta correcta de Hola durante el día de Hola y la salida de hello agregación toogenerate Hola.
 
 ```json
 {  
@@ -436,22 +436,22 @@ El script de Hive recibe la información adecuada de *DateTime* como parámetros
 }
 ```
 
-El diagrama siguiente muestra el escenario desde el punto de vista de la dependencia de datos.
+Hello siguiente diagrama muestra el escenario de Hola desde un punto de vista de dependencia de los datos.
 
 ![Dependencia de los datos](./media/data-factory-scheduling-and-execution/data-dependency.png)
 
-El segmento de salida para cada día depende de 24 segmentos por hora del conjunto de datos de entrada. Data Factory calcula automáticamente estas dependencias al determinar los segmentos de datos de entrada que se encuentran en el mismo período de tiempo que el segmento de salida que se va a producir. Si cualquiera de los 24 segmentos de entrada no está disponible, Data Factory espera a que el segmento de entrada esté listo antes de empezar la ejecución de la actividad diaria.
+segmento de la salida de Hello para cada día depende de 24 sectores por hora de un conjunto de datos de entrada. Calcula de la factoría de datos estas dependencias automáticamente averiguando Hola segmentos de datos de entrada que se encuentran en hello mismo período de tiempo como Hola toobe de segmento de salida generado. Si cualquiera de los segmentos de entrada de hello 24 no está disponible, factoría de datos espera Hola segmento entrada toobe listo antes de iniciar la ejecución de actividad diaria de Hola.
 
 ### <a name="sample-2-specify-dependency-with-expressions-and-data-factory-functions"></a>Ejemplo 2: Especificación de la dependencia con expresiones y funciones de Data Factory
-Consideremos otro escenario. Suponga que tiene una actividad de Hive que procesa dos conjuntos de datos de entrada. Uno de ellos tiene nuevos datos diariamente, pero otro obtiene datos nuevos cada semana. Supongamos que desea combinar las dos entradas y producir una salida cada día.
+Consideremos otro escenario. Suponga que tiene una actividad de Hive que procesa dos conjuntos de datos de entrada. Uno de ellos tiene nuevos datos diariamente, pero otro obtiene datos nuevos cada semana. Suponga que desea toodo una combinación entre dos entradas de Hola y generar una salida de cada día.
 
-El enfoque sencillo, en el que Data Factory determina automáticamente los segmentos de entrada correctos que se van a procesar al alinearlos con el período de los segmentos de datos de salida, no funciona.
+método sencillo de Hello en el que factoría de datos automáticamente determina la entrada derecha Hola segmentos tooprocess alineando salida toohello tiempo del segmento de datos no funciona período.
 
-Debe especificar que para cada ejecución de actividad, Data Factory debe usar el segmento de datos de la semana pasada para el conjunto de datos de entrada semanal. Utilice funciones de Azure Data Factory, como se muestra en el siguiente fragmento para implementar este comportamiento.
+Debe especificar que para cada ejecución de actividad, Hola factoría de datos debe utilizar el segmento de datos de la semana pasada para hello conjunto de datos de entrada semanal. Usar funciones de factoría de datos de Azure como se muestra en hello siguiente fragmento de código tooimplement este comportamiento.
 
 **Input1: blob de Azure**
 
-La primera entrada es el blob de Azure que se actualiza diariamente.
+Hola primera entrada de hello blobs de Azure se actualiza diariamente.
 
 ```json
 {
@@ -481,7 +481,7 @@ La primera entrada es el blob de Azure que se actualiza diariamente.
 
 **Input2: blob de Azure**
 
-Input2 es el blob de Azure que se actualiza semanalmente.
+Entrada2 es hello Azure blob que se actualiza semanalmente.
 
 ```json
 {
@@ -511,7 +511,7 @@ Input2 es el blob de Azure que se actualiza semanalmente.
 
 **Salida: blob de Azure**
 
-Cada día se crea un archivo de salida en la carpeta del día. La disponibilidad de la salida se establece en **day** (frecuencia: día, intervalo: 1).
+Un archivo de salida se crea cada día en la carpeta de Hola para día Hola. Disponibilidad de salida se establece demasiado**día** (frecuencia: día, intervalo: 1).
 
 ```json
 {
@@ -540,7 +540,7 @@ Cada día se crea un archivo de salida en la carpeta del día. La disponibilidad
 
 **Actividad: actividad de Hive en una canalización**
 
-La actividad de Hive toma las dos entradas y genera un segmento de salida cada día. Puede especificar de la forma siguiente el segmento de salida de cada día para que dependa de segmento de entrada de la semana pasada para la entrada semanal.
+actividad de hive Hello toma dos entradas de Hola y genera un segmento de salida todos los días. Puede especificar toodepend de segmento de salida de cada día en Hola segmento de entrada de la semana anterior para la entrada semanal como se indica a continuación.
 
 ```json
 {  
@@ -599,7 +599,7 @@ Para conocer la lista de funciones y variables del sistema que admite Data Facto
 ## <a name="appendix"></a>Anexo
 
 ### <a name="example-copy-sequentially"></a>Ejemplo: copia secuencial
-Es posible ejecutar varias operaciones de copia sucesivas de manera secuencial y ordenada. Por ejemplo, podría tener dos actividades de copia en una canalización (CopyActivity1 y CopyActivity2) con los siguientes conjuntos de datos de entrada y salida:   
+Es posible toorun varias operaciones de copia uno tras otro de forma secuencial/ordenados. Por ejemplo, podría tener conjuntos de datos de salida de datos dos actividades de una canalización (CopyActivity1 y CopyActivity2) con hello después de entrada de copia:   
 
 CopyActivity1
 
@@ -609,9 +609,9 @@ CopyActivity2
 
 Entrada: Dataset2.  Salida: Dataset3.
 
-ActividadCopia2 solo se ejecutaría si ActividadCopia1 se hubiera ejecutado correctamente y ConjuntoDatos2 estuviera disponible.
+CopyActivity2 llevarían a cabo únicamente si se ha ejecutado correctamente hello CopyActivity1 y Dataset2 está disponible.
 
-Esta es el JSON de canalización de ejemplo:
+Aquí es JSON de la canalización de ejemplo Hola:
 
 ```json
 {
@@ -650,7 +650,7 @@ Esta es el JSON de canalización de ejemplo:
                     "interval": 1
                 },
                 "name": "CopyFromBlob1ToBlob2",
-                "description": "Copy data from a blob to another"
+                "description": "Copy data from a blob tooanother"
             },
             {
                 "type": "Copy",
@@ -682,7 +682,7 @@ Esta es el JSON de canalización de ejemplo:
                     "interval": 1
                 },
                 "name": "CopyFromBlob2ToBlob3",
-                "description": "Copy data from a blob to another"
+                "description": "Copy data from a blob tooanother"
             }
         ],
         "start": "2016-08-25T01:00:00Z",
@@ -692,9 +692,9 @@ Esta es el JSON de canalización de ejemplo:
 }
 ```
 
-Observe que en el ejemplo, el conjunto de datos de salida de la primera actividad de copia (ConjuntoDatos2) se especifica como entrada para la segunda. Por lo tanto, la segunda actividad solo se ejecuta cuando el conjunto de datos de salida de la primera está listo.  
+Observe que en el ejemplo de Hola, conjunto de datos de salida de hello de hello primera actividad de copia (Dataset2) se especifica como entrada para la segunda actividad de Hola. Por lo tanto, Hola segunda actividad se ejecuta sólo cuando el conjunto de datos de salida de hello desde la primera actividad de hello está listo.  
 
-En el ejemplo, CopyActivity2 puede tener una entrada distinta, como Dataset3, pero especifica Dataset2 como una entrada de CopyActivity2 para que la actividad no se ejecute hasta que se haya completado CopyActivity1. Por ejemplo:
+En el ejemplo de Hola, CopyActivity2 puede tener una entrada diferente, como Dataset3, pero se especifica Dataset2 como una entrada tooCopyActivity2, por lo que la actividad hello no se ejecuta hasta que finalice la CopyActivity1. Por ejemplo:
 
 CopyActivity1
 
@@ -741,7 +741,7 @@ Entradas: Dataset3, Dataset2. Salida: Dataset4.
                     "interval": 1
                 },
                 "name": "CopyFromBlobToBlob",
-                "description": "Copy data from a blob to another"
+                "description": "Copy data from a blob tooanother"
             },
             {
                 "type": "Copy",
@@ -776,7 +776,7 @@ Entradas: Dataset3, Dataset2. Salida: Dataset4.
                     "interval": 1
                 },
                 "name": "CopyFromBlob3ToBlob4",
-                "description": "Copy data from a blob to another"
+                "description": "Copy data from a blob tooanother"
             }
         ],
         "start": "2017-04-25T01:00:00Z",
@@ -786,7 +786,7 @@ Entradas: Dataset3, Dataset2. Salida: Dataset4.
 }
 ```
 
-Observe que en el ejemplo, hay dos conjuntos de datos de entrada especificados para la segunda actividad de copia. Cuando se especifican varias entradas, solo se usa el primer conjunto de datos de entrada para copiar los datos. Sin embargo, los demás conjuntos de datos se usan como dependencias. CopyActivity2 empezaría solo después de que se cumplen las condiciones siguientes:
+Tenga en cuenta que en el ejemplo de Hola, se especifican dos conjuntos de datos de entrada para la segunda actividad de copia de Hola. Cuando se especifican varias entradas, solo Hola primera entrada conjunto de datos se utiliza para copiar datos, pero otros conjuntos de datos se utilizan como dependencias. CopyActivity2 iniciaría solo después de hello condiciones siguientes se cumplen:
 
-* ActividadCopia1 se ha completado correctamente y ConjuntoDatos2 está disponible. Este conjunto de datos no se usa al copiar datos en Dataset4. Solo actúa como una dependencia de programación de ActividadCopia2.   
-* ConjuntoDatos3 está disponible. Este conjunto de datos representa los datos que se copian en el destino. 
+* ActividadCopia1 se ha completado correctamente y ConjuntoDatos2 está disponible. Este conjunto de datos no se utiliza cuando se copian datos tooDataset4. Solo actúa como una dependencia de programación de ActividadCopia2.   
+* ConjuntoDatos3 está disponible. Este conjunto de datos representa los datos de Hola que constituye el destino de toohello copiada. 

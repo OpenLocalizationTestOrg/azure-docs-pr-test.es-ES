@@ -1,6 +1,6 @@
 ---
-title: "Creación de un equilibrador de carga interno para Azure Cloud Services | Microsoft Docs"
-description: "Información sobre cómo crear un equilibrador de carga interno mediante PowerShell con el modelo de implementación clásica"
+title: aaaCreate un equilibrador de carga interno para servicios de nube de Azure | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toocreate un interno cargar equilibrador de usar PowerShell en el modelo de implementación clásica de Hola"
 services: load-balancer
 documentationcenter: na
 author: kumudd
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
-ms.openlocfilehash: 8dbc951416d577fa7f534c2eab1605c6bee61fce
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: fe7975bca7bec3248626b0ad0fad6823e278ade2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-creating-an-internal-load-balancer-classic-for-cloud-services"></a>Introducción a la creación de un equilibrador de carga interno (clásico) para servicios en la nube
 
@@ -28,32 +28,32 @@ ms.lasthandoff: 07/11/2017
 > * [Cloud Services](../load-balancer/load-balancer-get-started-ilb-classic-cloud.md)
 
 > [!IMPORTANT]
-> Azure tiene dos modelos de implementación diferentes para crear recursos y trabajar con ellos: [Resource Manager y el clásico](../azure-resource-manager/resource-manager-deployment-model.md).  Este artículo trata del modelo de implementación clásico. Microsoft recomienda que las implementaciones más recientes usen el modelo del Administrador de recursos. Obtenga información sobre cómo [realizar estos pasos con el modelo de Resource Manager](load-balancer-get-started-ilb-arm-ps.md).
+> Azure tiene dos modelos de implementación diferentes para crear recursos y trabajar con ellos: [Resource Manager y el clásico](../azure-resource-manager/resource-manager-deployment-model.md).  Este artículo incluye el uso de modelo de implementación clásica de Hola. Microsoft recomienda que más nuevas implementaciones de usar el modelo del Administrador de recursos de Hola. Obtenga información acerca de cómo demasiado[realizar estos pasos con el modelo del Administrador de recursos de hello](load-balancer-get-started-ilb-arm-ps.md).
 
 ## <a name="configure-internal-load-balancer-for-cloud-services"></a>Configuración del equilibrador de carga interno para los servicios en la nube
 
-El equilibrador de carga interno es compatible tanto con las máquinas virtuales como con los servicios en la nube. Un punto de conexión del equilibrador de carga interno creado en un servicio en la nube que está fuera de una red virtual regional solo será accesible dentro del servicio en la nube.
+El equilibrador de carga interno es compatible tanto con las máquinas virtuales como con los servicios en la nube. Un punto de conexión del equilibrador de carga interno creado en un servicio de nube que está fuera de una red virtual regional será accesible únicamente dentro de servicio en la nube Hola.
 
-La configuración del equilibrador de carga interno se debe establecer durante la creación de la primera implementación en el servicio en la nube, como se muestra en el ejemplo siguiente.
+configuración de equilibrador de carga interno de Hello tiene toobe estableció durante la creación de hello de primera implementación de Hola Hola del servicio en nube, como se muestra en el siguiente ejemplo de Hola.
 
 > [!IMPORTANT]
-> Un requisito previo para ejecutar los pasos siguientes es tener ya creada una red virtual para la implementación en la nube. Necesitarás el nombre de red virtual y el nombre de la subred para crear el Equilibrio de carga interno.
+> Un requisito previo toorun Hola estos pasos es una red virtual ya creada para la implementación de nube de hello toohave. Necesitará Hola red virtual nombre y la subred nombre toocreate Hola equilibrio de carga interno.
 
 ### <a name="step-1"></a>Paso 1
 
-Abre el archivo de configuración de servicio (.cscfg) para la implementación en la nube en Visual Studio y agrega la siguiente sección para crear el Equilibrio de carga interno en el último elemento «`</Role>`» para la configuración de red.
+Abra el archivo de configuración de servicio de hello (.cscfg) para la implementación de nube en Visual Studio y agregue Hola después Hola de toocreate sección Equilibrio de carga interno en hello última "`</Role>`" elemento de configuración de red de Hola.
 
 ```xml
 <NetworkConfiguration>
     <LoadBalancers>
-    <LoadBalancer name="name of the load balancer">
+    <LoadBalancer name="name of hello load balancer">
         <FrontendIPConfiguration type="private" subnet="subnet-name" staticVirtualNetworkIPAddress="static-IP-address"/>
     </LoadBalancer>
     </LoadBalancers>
 </NetworkConfiguration>
 ```
 
-Vamos a agregar los valores para que el archivo de configuración de red muestre su aspecto. En el ejemplo, supongamos que creó una red virtual denominada "test_vnet" con una subred 10.0.0.0/24 denominada test_subnet y la dirección IP estática 10.0.0.4. El equilibrador de carga se denominará testLB.
+Vamos a agregar valores de hello para el archivo de configuración de hello red tooshow aspecto que tendrá. En el ejemplo de Hola, suponga que crea una red virtual denominada "test_vnet" con una subred 10.0.0.0/24 denominados test_subnet y una dirección IP estática 10.0.0.4. equilibrador de carga de Hola se denominará PruebaCL.
 
 ```xml
 <NetworkConfiguration>
@@ -65,11 +65,11 @@ Vamos a agregar los valores para que el archivo de configuración de red muestre
 </NetworkConfiguration>
 ```
 
-Para obtener más información sobre el esquema del equilibrador de carga, consulta [Agregar equilibrador de carga](https://msdn.microsoft.com/library/azure/dn722411.aspx)
+Para obtener más información acerca del esquema de equilibrador de carga de hello, consulte [agregar equilibrador de carga](https://msdn.microsoft.com/library/azure/dn722411.aspx).
 
 ### <a name="step-2"></a>Paso 2
 
-Cambia los archivos de definición (.csdef) para agregar extremos al Equilibrio de carga interno. Cuando se crea una instancia de rol, el archivo de definición de servicio agregará las instancias de rol al Equilibrio de carga interno.
+Cambiar los puntos de conexión Hola servicio (.csdef) de la definición archivo tooadd toohello equilibrio de carga interno. momento de Hola que se crea una instancia de rol, archivo de definición de servicio de hello agregará toohello de instancias de rol Hola equilibrio de carga interno.
 
 ```xml
 <WorkerRole name="worker-role-name" vmsize="worker-role-size" enableNativeCodeExecution="[true|false]">
@@ -79,7 +79,7 @@ Cambia los archivos de definición (.csdef) para agregar extremos al Equilibrio 
 </WorkerRole>
 ```
 
-Vamos a agregar los valores del archivo de definición de servicio siguiendo los mismos valores del ejemplo anterior.
+Después de hello mismo los valores de ejemplo de Hola anterior, vamos a agregar archivo de definición de servicio de hello valores toohello.
 
 ```xml
 <WorkerRole name="WorkerRole1" vmsize="A7" enableNativeCodeExecution="[true|false]">
@@ -89,7 +89,7 @@ Vamos a agregar los valores del archivo de definición de servicio siguiendo los
 </WorkerRole>
 ```
 
-La carga del tráfico de red se equilibrará mediante el equilibrador de carga testLB, en el que se usa el puerto 80 para las solicitudes entrantes y se envía a instancias de rol de trabajo también en el puerto 80.
+tráfico de red de Hello será carga equilibrada con el equilibrador de carga de hello PruebaCL utilizando el puerto 80 para las solicitudes entrantes, enviar tooworker instancias de rol también en el puerto 80.
 
 ## <a name="next-steps"></a>Pasos siguientes
 

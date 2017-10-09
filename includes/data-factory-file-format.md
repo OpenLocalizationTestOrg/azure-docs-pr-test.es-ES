@@ -1,5 +1,5 @@
 ## <a name="specifying-formats"></a>Especificación de formatos
-Azure Data Factory admite los siguientes tipos de formato:
+Factoría de datos de Azure admite Hola siguientes tipos de formato:
 
 * [Formato de texto](#specifying-textformat)
 * [Formato JSON](#specifying-jsonformat)
@@ -8,22 +8,22 @@ Azure Data Factory admite los siguientes tipos de formato:
 * [Formato Parquet](#specifying-parquetformat)
 
 ### <a name="specifying-textformat"></a>Especificación de TextFormat
-Si desea analizar los archivos de texto o escribir los datos en formato de texto, establezca la propiedad `format` `type` en **TextFormat**. También puede especificar las siguientes propiedades **opcionales** en la sección `format`. Consulte la sección [Ejemplo de TextFormat](#textformat-example) sobre cómo realizar la configuración.
+Si desea que los archivos de texto hello tooparse o escribir datos de hello en formato de texto, establezca hello `format` `type` propiedad demasiado**TextFormat**. También puede especificar Hola siguiente **opcional** propiedades Hola `format` sección. Vea [ejemplo TextFormat](#textformat-example) sección sobre cómo tooconfigure.
 
 | Propiedad | Descripción | Valores permitidos | Obligatorio |
 | --- | --- | --- | --- |
-| columnDelimiter |El carácter utilizado para separar las columnas en un archivo. Puede usar un carácter no imprimible excepcional que probablemente no existe en los datos: por ejemplo, especifique "\u0001", que representa el inicio de encabezado (SOH). |Solo se permite un carácter. El valor **predeterminado** es **coma (",")**. <br/><br/>Para usar un carácter Unicode, consulte [Caracteres Unicode](https://en.wikipedia.org/wiki/List_of_Unicode_characters) para obtener el código correspondiente. |No |
-| rowDelimiter |El carácter usado para separar las filas en un archivo. |Solo se permite un carácter. El valor **predeterminado** es cualquiera de los siguientes en lectura: **["\r\n", "\r", "\n"]** y **"\r\n"** en escritura. |No |
-| escapeChar |El carácter especial que se usa para anular un delimitador de columna en el contenido del archivo de entrada. <br/><br/>No se puede especificar escapeChar y quoteChar para una tabla. |Solo se permite un carácter. No hay ningún valor predeterminado. <br/><br/>Ejemplo: si tiene la coma (',') como el delimitador de columna, pero quiere tener el carácter de coma en el texto (ejemplo: "Hello, world"), puede definir '$' como carácter de escape y usar la cadena "Hello$, world" en el origen. |No |
-| quoteChar |El carácter usado para poner entre comillas un valor de cadena. Los delimitadores de columna y fila entre comillas se tratarán como parte del valor de la cadena. Esta propiedad se aplica a conjuntos de datos de entrada y salida.<br/><br/>No se puede especificar escapeChar y quoteChar para una tabla. |Solo se permite un carácter. No hay ningún valor predeterminado. <br/><br/>Por ejemplo, si tiene la coma (',') como delimitador de columna, pero quiere tener el carácter de coma en el texto (por ejemplo: <Hello, world>), puede definir " (comillas dobles) como comillas y usar la cadena "Hello, world" en el origen. |No |
-| nullValue |Uno o más caracteres que se usan para representar un valor nulo. |Uno o más caracteres. Los valores **predeterminados** son **"\N" y "NULL"** en lectura y **"\N"** en escritura. |No |
-| encodingName |Especifique el nombre de codificación. |Un nombre de codificación válido. Consulte la [propiedad Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx). Por ejemplo: windows-1250 o shift_jis. El valor **predeterminado** es **UTF-8**. |No |
-| firstRowAsHeader |Especifica si se tendrá en cuenta la primera fila como encabezado. Para un conjunto de datos de entrada, Data Factory lee la primera fila como encabezado. Para un conjunto de datos de salida, Data Factory escribe la primera fila como encabezado. <br/><br/>Consulte [Escenarios de uso `firstRowAsHeader` y `skipLineCount`](#scenarios-for-using-firstrowasheader-and-skiplinecount) para ver ejemplos de escenarios. |True<br/>**False (valor predeterminado)** |No |
-| skipLineCount |Indica el número de filas que se omitirán al leer datos de archivos de entrada. Si se especifican skipLineCount y firstRowAsHeader, las líneas se omiten primero y luego la información del encabezado se lee del archivo de entrada. <br/><br/>Consulte [Escenarios de uso `firstRowAsHeader` y `skipLineCount`](#scenarios-for-using-firstrowasheader-and-skiplinecount) para ver ejemplos de escenarios. |Entero |No |
-| treatEmptyAsNull |Especifica si las cadenas null o vacías se tratarán como valores null al leer datos de un archivo de entrada. |**True (predeterminado)**<br/>False |No |
+| columnDelimiter |carácter de Hello usa tooseparate columnas en un archivo. Puede considerar toouse un char no pueden imprimirse poco frecuente que probablemente no existe en los datos: por ejemplo, especifique "\u0001" que representa el inicio de encabezado (SOH). |Solo se permite un carácter. Hola **predeterminado** valor es **coma (',')**. <br/><br/>toouse un carácter Unicode, consulte demasiado[caracteres Unicode](https://en.wikipedia.org/wiki/List_of_Unicode_characters) tooget Hola código correspondiente para ella. |No |
+| rowDelimiter |carácter de Hello usa tooseparate filas en un archivo. |Solo se permite un carácter. Hola **predeterminado** valor es uno de los siguiente valores de lectura de Hola: **["\r\n", "\r", "\n"]** y **"\r\n"** durante la escritura. |No |
+| escapeChar |caracteres especiales de Hello utilizan tooescape un delimitador de columna en el contenido de hello del archivo de entrada. <br/><br/>No se puede especificar escapeChar y quoteChar para una tabla. |Solo se permite un carácter. No hay ningún valor predeterminado. <br/><br/>Ejemplo: Si tienes por comas (', ') como delimitador de columna Hola pero desea toohave carácter de coma hello en texto hello (ejemplo: "Hello, world"), puede definir "$" como carácter de escape de Hola y utilizar la cadena "Hello$, world" en el origen de Hola. |No |
+| quoteChar |carácter de Hello usa tooquote un valor de cadena. delimitadores de fila y columna de Hello dentro de los caracteres de comillas Hola se trataría como parte del valor de cadena de Hola. Esta propiedad es aplicable tooboth entrada y salida de los conjuntos de datos.<br/><br/>No se puede especificar escapeChar y quoteChar para una tabla. |Solo se permite un carácter. No hay ningún valor predeterminado. <br/><br/>Por ejemplo, si tienes coma (', ') como delimitador de columna Hola pero desea toohave coma en texto hello (ejemplo: < Hola, mundo >), puede definir "(comillas dobles) como Hola delimitar caracteres y usar cadena de Hola"Hola, mundo"en el origen de Hola. |No |
+| nullValue |Uno o más caracteres utilizan toorepresent un valor null. |Uno o más caracteres. Hola **predeterminado** valores son **"\N" y "NULL"** en lectura y **"\N"** durante la escritura. |No |
+| encodingName |Especifique el nombre de codificación de Hola. |Un nombre de codificación válido. Consulte la [propiedad Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx). Por ejemplo: windows-1250 o shift_jis. Hola **predeterminado** valor es **UTF-8**. |No |
+| firstRowAsHeader |Especifica si tooconsider Hola la primera fila como un encabezado. Para un conjunto de datos de entrada, Data Factory lee la primera fila como encabezado. Para un conjunto de datos de salida, Data Factory escribe la primera fila como encabezado. <br/><br/>Consulte [Escenarios de uso `firstRowAsHeader` y `skipLineCount`](#scenarios-for-using-firstrowasheader-and-skiplinecount) para ver ejemplos de escenarios. |True<br/>**False (valor predeterminado)** |No |
+| skipLineCount |Indica el número de Hola de filas tooskip al leer los datos de archivos de entrada. Si se especifican skipLineCount y firstRowAsHeader, líneas de saludo se omiten en primer lugar y, a continuación, se lee información de encabezado de Hola Hola archivo de entrada. <br/><br/>Consulte [Escenarios de uso `firstRowAsHeader` y `skipLineCount`](#scenarios-for-using-firstrowasheader-and-skiplinecount) para ver ejemplos de escenarios. |Entero |No |
+| treatEmptyAsNull |Especifica si hay tootreat una cadena nula o vacía como nula valor al leer los datos de un archivo de entrada. |**True (predeterminado)**<br/>False |No |
 
 #### <a name="textformat-example"></a>Ejemplo de TextFormat
-En el ejemplo siguiente se muestran algunas de las propiedades de formato de TextFormat.
+Hello en el ejemplo siguiente muestra algunas de las propiedades de formato de Hola para TextFormat.
 
 ```json
 "typeProperties":
@@ -44,29 +44,29 @@ En el ejemplo siguiente se muestran algunas de las propiedades de formato de Tex
 },
 ```
 
-Para usar un `escapeChar` en lugar de `quoteChar`, reemplace la línea con `quoteChar` por el siguiente escapeChar:
+toouse una `escapeChar` en lugar de `quoteChar`, reemplace la línea hello con `quoteChar` con hello después de escapeChar:
 
 ```json
 "escapeChar": "$",
 ```
 
 #### <a name="scenarios-for-using-firstrowasheader-and-skiplinecount"></a>Escenarios de uso de firstRowAsHeader y skipLineCount
-* Va a copiar de un origen que no es archivo a un archivo de texto y quiere agregar una línea de encabezado que contenga los metadatos de esquema (por ejemplo, esquema SQL). Especifique `firstRowAsHeader` como true en el conjunto de datos de salida de este escenario.
-* Va a copiar de un archivo de texto que contiene una línea de encabezado a un receptor que no es archivo y quiere eliminar esa línea. Especifique `firstRowAsHeader` como true en el conjunto de datos de entrada.
-* Va a copiar de un archivo de texto y quiere omitir unas cuantas líneas al comienzo que no contienen datos ni información de encabezado. Especifique `skipLineCount` para indicar el número de líneas que se omitirá. Si el resto del archivo contiene una línea de encabezado, también puede especificar `firstRowAsHeader`. Si se especifican `skipLineCount` y `firstRowAsHeader`, las líneas se omiten primero y luego la información del encabezado se lee del archivo de entrada.
+* Va a copiar de un archivo de texto de origen no es un archivo tooa y desearía tooadd una línea de encabezado que contiene los metadatos del esquema de hello (por ejemplo: esquema SQL). Especificar `firstRowAsHeader` como true en el conjunto de datos de salida de hello para este escenario.
+* Va a copiar de un archivo de texto que contiene un receptor no es un archivo de encabezado línea tooa y desearía toodrop que línea. Especificar `firstRowAsHeader` como true en el conjunto de datos de entrada de Hola.
+* Va a copiar desde un archivo de texto y desea tooskip unas cuantas líneas al principio de Hola que no contienen ninguna información de datos o de encabezado. Especifique `skipLineCount` tooindicate Hola número de líneas toobe omitidos. Si el resto de hello del archivo hello contiene una línea de encabezado, también puede especificar `firstRowAsHeader`. Si ambos `skipLineCount` y `firstRowAsHeader` se especifican, líneas de saludo se omiten en primer lugar y, a continuación, se lee información de encabezado de Hola Hola archivo de entrada
 
 ### <a name="specifying-jsonformat"></a>Especificación de JsonFormat
-Para **importar y exportar archivos JSON tal como están hacia o desde Azure Cosmos DB**, consulte la sección sobre la [importación y exportación de documentos JSON](../articles/data-factory/data-factory-azure-documentdb-connector.md#importexport-json-documents) en el conector de Azure Cosmos DB para más información.
+demasiado**importación y exportación de archivos JSON como-está en/desde la base de datos de Azure Cosmos**, consulte [documentos JSON de importación y exportación](../articles/data-factory/data-factory-azure-documentdb-connector.md#importexport-json-documents) sección en Conector de base de datos de Azure Cosmos Hola con detalles.
 
-Si desea analizar los archivos JSON o escribir los datos en formato JSON, establezca la propiedad `format` `type` en **TextFormat**. También puede especificar las siguientes propiedades **opcionales** en la sección `format`. Consulte la sección [Ejemplo de JsonFormat](#jsonformat-example) sobre cómo realizar la configuración.
+Si desea tooparse Hola JSON archivos o escribir datos de hello en formato JSON, establezca hello `format` `type` propiedad demasiado**JsonFormat**. También puede especificar Hola siguiente **opcional** propiedades Hola `format` sección. Vea [JsonFormat ejemplo](#jsonformat-example) sección sobre cómo tooconfigure.
 
 | Propiedad | Descripción | Obligatorio |
 | --- | --- | --- |
-| filePattern |Indica el patrón de los datos almacenados en cada archivo JSON. Estos son los valores permitidos: **setOfObjects** y **arrayOfObjects**. El valor **predeterminado** es **setOfObjects**. Consulte la sección [patrones de archivo JSON](#json-file-patterns) para obtener más información acerca de estos patrones. |No |
-| jsonNodeReference | Si desea iterar y extraer datos de los objetos dentro de un campo de matriz con el mismo patrón, especifique la ruta de acceso JSON de esa matriz. Esta propiedad se admite solo cuando se copian datos desde los archivos JSON. | No |
-| jsonPathDefinition | Especifique la expresión de ruta de acceso JSON para cada asignación de columna con un nombre de columna personalizado (que empiece con minúscula). Esta propiedad se admite solo cuando se copian datos desde archivos JSON y puede extraer datos del objeto o matriz. <br/><br/> Para los campos en el objeto raíz, comience por root $; para los campos dentro de la matriz elegida mediante la propiedad `jsonNodeReference`, empiece desde el elemento de matriz. Consulte la sección [Ejemplo de JsonFormat](#jsonformat-example) sobre cómo realizar la configuración. | No |
-| encodingName |Especifique el nombre de codificación. Para obtener la lista de nombres de codificación válidos, vea el artículo sobre la propiedad [Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx) . Por ejemplo: windows-1250 o shift_jis. El valor **predeterminado** es **UTF-8**. |No |
-| nestingSeparator |Carácter que se usa para separar los niveles de anidamiento. El valor predeterminado es '.' (punto). |No |
+| filePattern |Indicar el patrón de Hola de los datos almacenados en cada archivo JSON. Estos son los valores permitidos: **setOfObjects** y **arrayOfObjects**. Hola **predeterminado** valor es **setOfObjects**. Consulte la sección [patrones de archivo JSON](#json-file-patterns) para obtener más información acerca de estos patrones. |No |
+| jsonNodeReference | Si desea tooiterate y extraer datos de objetos de hello dentro de una matriz de campo con hello mismo patrón, especifique la ruta de acceso de hello JSON de dicha matriz. Esta propiedad se admite solo cuando se copian datos desde los archivos JSON. | No |
+| jsonPathDefinition | Especifique la expresión de ruta de acceso de hello JSON para cada asignación de columna con un nombre de columna personalizada (comienzan con minúscula). Esta propiedad se admite solo cuando se copian datos desde archivos JSON y puede extraer datos del objeto o matriz. <br/><br/> Para los campos en el objeto raíz, comenzar por $ de raíz; para los campos dentro de la matriz de hello elegida por `jsonNodeReference` propiedad, inicio de elemento de la matriz de Hola. Vea [JsonFormat ejemplo](#jsonformat-example) sección sobre cómo tooconfigure. | No |
+| encodingName |Especifique el nombre de codificación de Hola. Para hello lista de nombres de codificación válidos, consulte: [Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx) propiedad. Por ejemplo: windows-1250 o shift_jis. Hola **predeterminado** valor es: **UTF-8**. |No |
+| nestingSeparator |Carácter que es usado tooseparate niveles de anidamiento. valor predeterminado de Hello es '.' (punto). |No |
 
 #### <a name="json-file-patterns"></a>Patrones de archivo JSON
 
@@ -163,11 +163,11 @@ La actividad de copia puede analizar los siguientes patrones de archivos JSON:
 
 **Caso 1: Copia de datos desde archivos JSON**
 
-Vea a continuación dos tipos de ejemplos en los que se copian datos desde archivos JSON, y los puntos de genéricos a tener en cuenta:
+Vea a continuación de los dos tipos de muestras cuando se copian datos desde archivos JSON y Hola toonote puntos genérico:
 
 **Ejemplo 1: extracción de datos de objeto y matriz**
 
-En esta ejemplo, se espera un objeto JSON de raíz que se asigna al registro individual en resultado tabulares. Si tiene un archivo JSON con el siguiente contenido:  
+En este ejemplo, espera un objeto JSON de raíz asigna el registro de toosingle de resultados tabulares. Si tiene un archivo JSON con hello siguen contenido:  
 
 ```json
 {
@@ -192,16 +192,16 @@ En esta ejemplo, se espera un objeto JSON de raíz que se asigna al registro ind
     }
 }
 ```
-y quiere copiarlo en una tabla de SQL de Azure con el formato siguiente extrayendo datos tanto de los objetos como de la matriz:
+y desea que toocopy en una tabla de SQL Azure en la siguiente Hola dar formato, extrayendo datos de objeto y matriz:
 
 | id | deviceType | targetResourceType | resourceManagmentProcessRunId | occurrenceTime |
 | --- | --- | --- | --- | --- |
 | ed0e4960-d9c5-11e6-85dc-d7996816aad3 | PC | Microsoft.Compute/virtualMachines | 827f8aaa-ab72-437c-ba48-d8917a7336a3 | 1/13/2017 11:24:37 AM |
 
-El conjunto de datos de entrada con el tipo **JsonFormat** se define de la siguiente manera: (definición parcial en la que solo se ilustran las secciones relevantes). Más concretamente:
+conjunto de datos de entrada de Hello con **JsonFormat** tipo se define como sigue: (definición parcial con solo partes pertinentes de hello). Más concretamente:
 
-- La sección `structure` permite definir los nombres personalizados de columna y el tipo de datos correspondiente mientras los convierte a datos tabulares. Esta sección es **opcional** a menos que necesite realizar una asignación de columnas. Consulte [Especificación de la definición de la estructura de los conjuntos de datos rectangulares](#specifying-structure-definition-for-rectangular-datasets) para más información.
-- `jsonPathDefinition` especifica la ruta de acceso JSON para cada columna que indica de dónde se deben extraer los datos. Para copiar datos de matriz, puede usar **array[x].property** para extraer el valor de la propiedad especificada desde el objeto xº, o puede usar **array[*] .property** para encontrar el valor de cualquier objeto que contenga dicha propiedad.
+- `structure`sección define Hola personalizado los nombres de columna y el tipo de datos correspondiente de hello al convertir datos tootabular. Esta sección es **opcional** a menos que necesite toodo asignación de columna. Consulte [Especificación de la definición de la estructura de los conjuntos de datos rectangulares](#specifying-structure-definition-for-rectangular-datasets) para más información.
+- `jsonPathDefinition`Especifica la ruta de acceso JSON de Hola para cada columna que indica donde tooextract Hola datos de. toocopy datos de matriz, puede usar **.property de matriz [x]** tooextract valo Hola dada la propiedad de objeto de x-ésima de hello, o se puede usar  **matriz [*] .property** toofind valor de Hola de cualquier objeto que contiene dicha propiedad.
 
 ```json
 "properties": {
@@ -238,9 +238,9 @@ El conjunto de datos de entrada con el tipo **JsonFormat** se define de la sigui
 }
 ```
 
-**Ejemplo 2: aplicación cruzada en varios objetos del mismo patrón de matriz**
+**Ejemplo 2: cross aplicar varios objetos con el mismo patrón de matriz de Hola**
 
-En este ejemplo, se espera transformar un objeto JSON de raíz en varios registros en resultado tabular. Si tiene un archivo JSON con el siguiente contenido:  
+En este ejemplo, espera un objeto JSON raíz tootransform en varios registros en los resultados tabulares. Si tiene un archivo JSON con hello siguen contenido:  
 
 ```json
 {
@@ -263,7 +263,7 @@ En este ejemplo, se espera transformar un objeto JSON de raíz en varios registr
     "city": [ { "sanmateo": "No 1" } ]
 }
 ```
-y desea copiarlo en una tabla de Azure SQL del formato siguiente, puede hacerlo mediante el acoplamiento de los datos dentro de la matriz y la combinación cruzada con la información de la raíz habitual:
+y desea toocopy en una tabla de SQL Azure en la siguiente Hola dar formato, acoplando datos Hola dentro de la matriz de Hola y cross join con información de raíz común de hello:
 
 | ordernumber | orderdate | order_pd | order_price | city |
 | --- | --- | --- | --- | --- |
@@ -271,11 +271,11 @@ y desea copiarlo en una tabla de Azure SQL del formato siguiente, puede hacerlo 
 | 01 | 20170122 | P2 | 13 | [{"sanmateo":"No 1"}] |
 | 01 | 20170122 | P3 | 231 | [{"sanmateo":"No 1"}] |
 
-El conjunto de datos de entrada con el tipo **JsonFormat** se define de la siguiente manera: (definición parcial en la que solo se ilustran las secciones relevantes). Más concretamente:
+conjunto de datos de entrada de Hello con **JsonFormat** tipo se define como sigue: (definición parcial con solo partes pertinentes de hello). Más concretamente:
 
-- La sección `structure` permite definir los nombres personalizados de columna y el tipo de datos correspondiente mientras los convierte a datos tabulares. Esta sección es **opcional** a menos que necesite realizar una asignación de columnas. Consulte [Especificación de la definición de la estructura de los conjuntos de datos rectangulares](#specifying-structure-definition-for-rectangular-datasets) para más información.
-- `jsonNodeReference` indica la iteración y extracción de datos de los objetos con el mismo patrón de las líneas de pedido de **matriz**.
-- `jsonPathDefinition` especifica la ruta de acceso JSON para cada columna que indica de dónde se deben extraer los datos. En este ejemplo, "ordernumber", "orderdate" y "city" están bajo el objeto raíz con la ruta de acceso JSON que empieza por "$.", mientras que "order_pd" y "order_price" se definen con la ruta de acceso que se deriva del elemento de matriz sin "$.".
+- `structure`sección define Hola personalizado los nombres de columna y el tipo de datos correspondiente de hello al convertir datos tootabular. Esta sección es **opcional** a menos que necesite toodo asignación de columna. Consulte [Especificación de la definición de la estructura de los conjuntos de datos rectangulares](#specifying-structure-definition-for-rectangular-datasets) para más información.
+- `jsonNodeReference`indica datos tooiterate y la extracción de objetos de hello con hello mismo patrón en **matriz** orderlines.
+- `jsonPathDefinition`Especifica la ruta de acceso JSON de Hola para cada columna que indica donde tooextract Hola datos de. En este ejemplo, "ordernumber", "orderdate" y "city" están bajo el objeto raíz con la ruta de acceso JSON a partir de "$.", mientras que "order_pd" y "order_price" se definen con la ruta de acceso que se deriva de elemento de la matriz de hello sin "$"..
 
 ```json
 "properties": {
@@ -313,14 +313,14 @@ El conjunto de datos de entrada con el tipo **JsonFormat** se define de la sigui
 }
 ```
 
-**Tenga en cuenta los siguientes puntos:**
+**Tenga en cuenta Hola siguientes puntos:**
 
-* Si no se definen la `structure` y `jsonPathDefinition` en el conjunto de datos de Data Factory, la actividad de copia detecta el esquema del primer objeto y acopla el objeto en su conjunto.
-* Si la entrada JSON tiene una matriz, la actividad de copia convierte de forma predeterminada el valor de toda la matriz en una cadena. Puede elegir extraer los datos de esta mediante `jsonNodeReference` o `jsonPathDefinition`, u omitir la extracción no especificándolo en `jsonPathDefinition`.
-* Si hay algún nombre duplicado en el mismo nivel, la actividad de copia elige el último.
+* Si hello `structure` y `jsonPathDefinition` no estén definidos en conjunto de datos de Data Factory de hello, hello actividad de copia detecta Hola esquema desde el primer objeto de Hola y simplificar el objeto entero Hola.
+* Si la entrada JSON de hello tiene una matriz, de forma predeterminada Hola actividad de copia convierte valor de la matriz completa de hello en una cadena. Puede elegir tooextract datos de mediante `jsonNodeReference` o `jsonPathDefinition`, u omita especificándolo no en `jsonPathDefinition`.
+* Si hay duplicados Hola de nombres en el mismo nivel, Hola actividad de copia toma Hola último.
 * Los nombres de propiedad distinguen entre mayúsculas y minúsculas. Dos propiedades con el mismo nombre, pero con distintas mayúsculas y minúsculas se consideran propiedades independientes.
 
-**Caso 2: Escritura de datos en el archivo JSON**
+**Caso 2: Escribir datos tooJSON en el archivo**
 
 Si tiene la siguiente tabla en SQL Database:
 
@@ -330,7 +330,7 @@ Si tiene la siguiente tabla en SQL Database:
 | 2 | 20170120 | 3500 | Patrick |
 | 3 | 20170121 | 4000 | Jason |
 
-y para cada registro espera escribir en un objeto JSON con el formato siguiente:
+y para cada registro, espera que toowrite tooa JSON objeto en el siguiente formato:
 ```json
 {
     "id": "1",
@@ -342,7 +342,7 @@ y para cada registro espera escribir en un objeto JSON con el formato siguiente:
 }
 ```
 
-El conjunto de datos de salida con el tipo **JsonFormat** se define de la siguiente manera: (definición parcial en la que solo se ilustran las secciones relevantes). Más concretamente, la sección `structure` permite definir los nombres personalizados de las propiedades en el archivo de destino, `nestingSeparator` (el valor predeterminado es ".") se usará para identificar el nivel de anidamiento del nombre. Esta sección es **opcional** a menos que desee cambiar el nombre de la propiedad comparándolo con el nombre de la columna de origen, o anidar algunas de las propiedades.
+con el conjunto de datos de salida de Hello **JsonFormat** tipo se define como sigue: (definición parcial con solo partes pertinentes de hello). Más específicamente, `structure` sección define los nombres de propiedad Hola personalizado en el archivo de destino, `nestingSeparator` (valor predeterminado es ".") será la capa de anidamiento de hello tooidentify usado desde nombre hello. Esta sección es **opcional** a menos que se desea el nombre de la propiedad de hello toochange comparar con el nombre de la columna de origen o anidar algunas de las propiedades de Hola.
 
 ```json
 "properties": {
@@ -374,7 +374,7 @@ El conjunto de datos de salida con el tipo **JsonFormat** se define de la siguie
 ```
 
 ### <a name="specifying-avroformat"></a>Especificación de AvroFormat
-Si desea analizar los archivos Avro o escribir los datos en formato Avro, establezca la propiedad `format` `type` en **AvroFormat**. No es preciso especificar propiedades en la sección Format de la sección typeProperties. Ejemplo:
+Si desea tooparse hello Avro archivos o escribir datos de hello en el formato Avro, establezca hello `format` `type` propiedad demasiado**AvroFormat**. No es necesario toospecify las propiedades en la sección de formato de hello dentro de la sección de typeProperties Hola. Ejemplo:
 
 ```json
 "format":
@@ -383,14 +383,14 @@ Si desea analizar los archivos Avro o escribir los datos en formato Avro, establ
 }
 ```
 
-Para usar el formato Avro en una tabla de Hive, puede consultar [Tutorial de Apache Hive](https://cwiki.apache.org/confluence/display/Hive/AvroSerDe).
+toouse el formato Avro en una tabla de Hive, puede hacer referencia demasiado[tutorial de Apache Hive](https://cwiki.apache.org/confluence/display/Hive/AvroSerDe).
 
-Tenga en cuenta los siguientes puntos:  
+Tenga en cuenta Hola siguientes puntos:  
 
 * No se admiten [tipos de datos complejos](http://avro.apache.org/docs/current/spec.html#schema_complex) (registros, enumeraciones, matrices, asignaciones, uniones y fijos).
 
 ### <a name="specifying-orcformat"></a>Especificación de OrcFormat
-Si desea analizar los archivos ORC o escribir los datos en formato ORC, establezca la propiedad `format` `type` en **ORCFormat**. No es preciso especificar propiedades en la sección Format de la sección typeProperties. Ejemplo:
+Si desea tooparse Hola ORC archivos o escribir datos de hello en formato ORC, Establece hello `format` `type` propiedad demasiado**OrcFormat**. No es necesario toospecify las propiedades en la sección de formato de hello dentro de la sección de typeProperties Hola. Ejemplo:
 
 ```json
 "format":
@@ -400,17 +400,17 @@ Si desea analizar los archivos ORC o escribir los datos en formato ORC, establez
 ```
 
 > [!IMPORTANT]
-> Si no va a copiar archivos ORC **como están** entre almacenes de datos locales y en la nube, debe instalar JRE 8 (Java Runtime Environment) en la máquina de puerta de enlace. Una puerta de enlace de 64 bits requiere JRE de 64 bits y una de 32 bits, JRE de 32 bits. Puede encontrar las dos versiones [aquí](http://go.microsoft.com/fwlink/?LinkId=808605). Elija la más adecuada.
+> Si no va a copiar archivos ORC **como-es** entre local y nube almacenes de datos, necesita tooinstall Hola 8 JRE (Java Runtime Environment) en el equipo de puerta de enlace. Una puerta de enlace de 64 bits requiere JRE de 64 bits y una de 32 bits, JRE de 32 bits. Puede encontrar las dos versiones [aquí](http://go.microsoft.com/fwlink/?LinkId=808605). Elija Hola adecuada.
 >
 >
 
-Tenga en cuenta los siguientes puntos:
+Tenga en cuenta Hola siguientes puntos:
 
 * No se admiten tipos de daros complejos (STRUCT, MAP, LIST, UNION).
-* El archivo ORC tiene tres [opciones relacionadas con la compresión](http://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/): NONE, ZLIB y SNAPPY. Data Factory admite la lectura de datos del archivo ORC en cualquiera de los formatos comprimidos. Se utiliza el códec de compresión en los metadatos para leer los datos. Sin embargo, al escribir en un archivo ORC, Data Factory elige ZLIB que es el valor predeterminado para ORC. Por el momento, no hay ninguna opción para invalidar este comportamiento.
+* El archivo ORC tiene tres [opciones relacionadas con la compresión](http://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/): NONE, ZLIB y SNAPPY. Data Factory admite la lectura de datos del archivo ORC en cualquiera de los formatos comprimidos. Utiliza la compresión de hello códec está en datos de saludo metadatos tooread Hola. Sin embargo, al escribir un archivo de tooan ORC, factoría de datos elige ZLIB, que es el valor predeterminado de Hola para ORC. Actualmente no hay ninguna opción toooverride este comportamiento.
 
 ### <a name="specifying-parquetformat"></a>Especificación de ParquetFormat
-Si desea analizar los archivos Parquet o escribir los datos en formato Parquet, establezca la propiedad `format` `type` en **ParquetFormat**. No es preciso especificar propiedades en la sección Format de la sección typeProperties. Ejemplo:
+Si desea tooparse Hola Parquet archivos o escribir datos de hello en formato Parquet, Establece hello `format` `type` propiedad demasiado**ParquetFormat**. No es necesario toospecify las propiedades en la sección de formato de hello dentro de la sección de typeProperties Hola. Ejemplo:
 
 ```json
 "format":
@@ -419,11 +419,11 @@ Si desea analizar los archivos Parquet o escribir los datos en formato Parquet, 
 }
 ```
 > [!IMPORTANT]
-> Si no va a copiar archivos Parquet **como están** entre almacenes de datos locales y en la nube, debe instalar JRE 8 (Java Runtime Environment) en la máquina de puerta de enlace. Una puerta de enlace de 64 bits requiere JRE de 64 bits y una de 32 bits, JRE de 32 bits. Puede encontrar las dos versiones [aquí](http://go.microsoft.com/fwlink/?LinkId=808605). Elija la más adecuada.
+> Si no va a copiar archivos Parquet **como-es** entre local y nube almacenes de datos, necesita tooinstall Hola 8 JRE (Java Runtime Environment) en el equipo de puerta de enlace. Una puerta de enlace de 64 bits requiere JRE de 64 bits y una de 32 bits, JRE de 32 bits. Puede encontrar las dos versiones [aquí](http://go.microsoft.com/fwlink/?LinkId=808605). Elija Hola adecuada.
 >
 >
 
-Tenga en cuenta los siguientes puntos:
+Tenga en cuenta Hola siguientes puntos:
 
 * No se admiten tipos de daros complejos (MAP, LIST).
-* El archivo Parquet tiene las siguientes opciones relacionadas con la compresión: NONE, SNAPPY, GZIP y LZO. Data Factory admite la lectura de datos del archivo ORC en cualquiera de los formatos comprimidos. Utiliza el códec de compresión en los metadatos para leer los datos. Sin embargo, al escribir en un archivo Parquet, Data Factory elige SNAPPY que es el valor predeterminado para Parquet. Por el momento, no hay ninguna opción para invalidar este comportamiento.
+* Archivo parquet tiene Hola siguientes opciones de compresión: ninguno, SNAPPY, GZIP y LZO. Data Factory admite la lectura de datos del archivo ORC en cualquiera de los formatos comprimidos. Usa códec de compresión de hello en datos de saludo metadatos tooread Hola. Sin embargo, al escribir un archivo de Parquet tooa, factoría de datos elige SNAPPY, que es el predeterminado de hello para el formato de Parquet. Actualmente no hay ninguna opción toooverride este comportamiento.

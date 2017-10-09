@@ -7,8 +7,8 @@ Solo se puede especificar ***una*** combinación de directivas para una conexió
 ### <a name="can-i-specify-a-partial-policy-on-a-connection-eg-only-ike-algorithms-but-not-ipsec"></a>¿Se puede especificar una directiva parcial en una conexión? (p. ej., solo algoritmos IKE, no IPsec)
 No, es preciso especificar todos los algoritmos y parámetros de IKE (modo principal) e IPsec (modo rápido). No se permite la especificación de una directiva parcial.
 
-### <a name="what-are-the-algorithms-and-key-strengths-supported-in-the-custom-policy"></a>¿Cuáles son los algoritmos y los niveles de las claves que se admiten en la directiva personalizada?
-En la tabla siguiente se enumeran los algoritmos criptográficos y los niveles de las claves admitidos que pueden configurar los clientes. Es preciso seleccionar una opción en cada campo.
+### <a name="what-are-hello-algorithms-and-key-strengths-supported-in-hello-custom-policy"></a>¿Cuáles son los algoritmos de Hola y ventajas claves admitidos de directiva personalizada de hello?
+tabla de Hello siguiente muestra hello admitido los algoritmos criptográficos y ventajas claves configurables por los clientes de Hola. Es preciso seleccionar una opción en cada campo.
 
 | **IPsec o IKEv2**  | **Opciones**                                                                   |
 | ---              | ---                                                                           |
@@ -23,14 +23,14 @@ En la tabla siguiente se enumeran los algoritmos criptográficos y los niveles d
 |                  |                                                                               |
 
 > [!IMPORTANT]
-> 1. DHGroup2048 y PFS2048 son los mismos que el grupo Diffie-Hellman **14** en IKE e IPsec PFS. Consulte [Grupos Diffie-Hellman](#DH) para las asignaciones completas.
-> 2. Para los algoritmos GCMAES, debe especificar el mismo algoritmo GCMAES y longitud de clave para el cifrado e integridad de IPsec.
-> 3. La vigencia de SA del modo principal de IKEv2 se fija en 28 800 segundos en las puertas de enlace de VPN de Azure
+> 1. DHGroup2048 & PFS2048 se Hola igual como grupo Diffie-Hellman **14** en IKE e IPsec PFS. Vea [grupos Diffie-Hellman](#DH) por hello, realice las asignaciones.
+> 2. Para los algoritmos GCMAES, debe especificar Hola misma longitud GCMAES el algoritmo y la clave de cifrado de IPsec y la integridad.
+> 3. Duración de la SA de modo principal IKEv2 se fija en 28.800 segundos en puertas de enlace de VPN de Azure Hola
 > 4. Las vigencias de SA de QM son parámetros opcionales. Si no se ha especificado ninguna, se usan los valores predeterminados de 27 000 segundos (7,5 hrs) y 102400000 KBytes (102 GB).
-> 5. UsePolicyBasedTrafficSelector es un parámetro de opción en la conexión. En el siguiente elemento de las preguntas frecuentes encontrará información acerca de "UsePolicyBasedTrafficSelectors".
+> 5. UsePolicyBasedTrafficSelector es un parámetro de opción de conexión de Hola. Vea la siguiente pregunta Frecuente de hello elemento para "UsePolicyBasedTrafficSelectors"
 
-### <a name="does-everything-need-to-match-between-the-azure-vpn-gateway-policy-and-my-on-premises-vpn-device-configurations"></a>¿Es preciso que coincidan todos los elementos de la directiva de Azure VPN Gateway con las configuraciones de mis dispositivos VPN locales?
-La configuración de su dispositivo VPN local debe coincidir o contener los siguientes algoritmos y parámetros que se especifican en la directiva de IPsec o IKE de Azure:
+### <a name="does-everything-need-toomatch-between-hello-azure-vpn-gateway-policy-and-my-on-premises-vpn-device-configurations"></a>¿Todo lo que necesita toomatch entre Hola directiva de puerta de enlace de VPN de Azure y mis configuraciones del dispositivo VPN local?
+La configuración del dispositivo VPN local debe coincidir o contener Hola después de algoritmos y parámetros que especifican en Hola directiva IPsec/IKE de Azure:
 
 * Algoritmo de cifrado IKE
 * Algoritmo de integridad de IKE
@@ -40,18 +40,18 @@ La configuración de su dispositivo VPN local debe coincidir o contener los sigu
 * Grupo PFS
 * Selector de tráfico (*)
 
-Las vigencias de SA solo son especificaciones locales, no es preciso que coincidan.
+vigencias de SA Hola solo especificaciones local, no es necesario toomatch.
 
-Si habilita **UsePolicyBasedTrafficSelectors**, debe asegurarse de que el dispositivo VPN tiene los selectores de tráfico coincidentes definidos con todas las combinaciones de sus prefijos de red local (puerta de enlace de red local) a o desde los prefijos de red virtual de Azure, en lugar de cualquiera a cualquiera. Por ejemplo, si sus prefijos de red local son 10.1.0.0/16 y 10.2.0.0/16, y sus prefijos de red virtual son 192.168.0.0/16 y 172.16.0.0/16, debe especificar los siguientes selectores de tráfico:
+Si habilita **UsePolicyBasedTrafficSelectors**, deberá tooensure el dispositivo VPN tiene Hola coincidencia selectores de tráfico definidos con todas las combinaciones de los prefijos de (puerta de enlace de red local) de la red local de Hola Prefijos de red virtual de Azure, en lugar de y a cualquier. Por ejemplo, si los prefijos de red local son 10.1.0.0/16 y 10.2.0.0/16 y los prefijos de red virtual son 192.168.0.0/16 y 172.16.0.0/16, necesita hello toospecify siguiendo los selectores de tráfico:
 * 10.1.0.0/16 <====> 192.168.0.0/16
 * 10.1.0.0/16 <====> 172.16.0.0/16
 * 10.2.0.0/16 <====> 192.168.0.0/16
 * 10.2.0.0/16 <====> 172.16.0.0/16
 
-Para más información acerca de cómo usar esta opción, consulte [Connect Azure VPN gateways to multiple on-premises policy-based VPN devices using PowerShell](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md) (Conexión de puertas de enlace de VPN de Azure a varios dispositivos VPN basados en directivas locales mediante PowerShell).
+Consulte demasiado[conectar varios dispositivos VPN locales de basada en directivas](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md) para obtener más información acerca de cómo toouse esta opción.
 
 ### <a name ="DH"></a>¿Qué grupos Diffie-Hellman se admiten?
-En la tabla siguiente se enumeran los grupos Diffie-Hellman compatibles para IKE (DHGroup) e IPsec (PFSGroup):
+tabla de Hello siguiente muestra hello admitida grupos de Diffie-Hellman de IKE (DHGroup) e IPsec (PFSGroup):
 
 | **Grupo Diffie-Hellman**  | **Grupo DH**              | **Grupo PFS** | **Longitud de clave** |
 | ---                       | ---                      | ---          | ---            |
@@ -63,25 +63,25 @@ En la tabla siguiente se enumeran los grupos Diffie-Hellman compatibles para IKE
 | 24                        | DHGroup24                | PFS24        | MODP de 2048 bits  |
 |                           |                          |              |                |
 
-Consulte [RFC3526](https://tools.ietf.org/html/rfc3526) y [RFC5114](https://tools.ietf.org/html/rfc5114) para ver información más detallada.
+Consulte demasiado[RFC3526](https://tools.ietf.org/html/rfc3526) y [RFC5114](https://tools.ietf.org/html/rfc5114) para obtener más detalles.
 
-### <a name="does-the-custom-policy-replace-the-default-ipsecike-policy-sets-for-azure-vpn-gateways"></a>¿Reemplaza la directiva personalizada los conjuntos de directivas de IPsec o IKE predeterminados en las puertas de enlace de VPN de Azure?
-Sí, una vez que se especifica una directiva personalizada en una conexión, Azure VPN Gateway solo utilizará la directiva en la conexión, no solo como iniciador de IKE sino también como respondedor de IKE.
+### <a name="does-hello-custom-policy-replace-hello-default-ipsecike-policy-sets-for-azure-vpn-gateways"></a>¿Reemplace directiva personalizada de hello conjuntos de directivas de IPsec/IKE Hola predeterminados para puertas de enlace de VPN de Azure?
+Sí, una vez que se especifica una directiva personalizada en una conexión, puerta de enlace VPN de Azure solo utilizará Directiva hello en conexión hello, como iniciador IKE y contestador IKE.
 
-### <a name="if-i-remove-a-custom-ipsecike-policy-does-the-connection-become-unprotected"></a>Si quito una directiva de IPsec o IKE personalizada, ¿se que la conexión desprotegida?
-No, IPsec o IKE seguirán protegiendo la protección. Una vez que se quite la directiva personalizada de una conexión, Azure VPN Gateway volverá a la [lista predeterminada de las propuestas de IPsec o IKE](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md) y volverá a iniciar el protocolo de enlace de IKE con un dispositivo VPN local.
+### <a name="if-i-remove-a-custom-ipsecike-policy-does-hello-connection-become-unprotected"></a>¿Si quita una directiva de IPsec/IKE personalizada, conexión Hola se convierten en no protegido?
+No, conexión Hola permanecerá protegido por IPsec/IKE. Una vez que quita la directiva personalizada de Hola desde una conexión, puerta de enlace de VPN de Azure de hello volverá atrás toohello [lista predeterminada de las propuestas de IPsec/IKE](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md) y vuelva a iniciar Hola negociación IKE nuevo con el dispositivo VPN local.
 
 ### <a name="would-adding-or-updating-an-ipsecike-policy-disrupt-my-vpn-connection"></a>¿Afectarían a mi conexión VPN la incorporación o actualización de una directiva de IPsec o IKE?
-Sí, podría producirse una pequeña interrupción (unos segundos), ya que Azure VPN Gateway anulará la conexión existente y volverá a iniciar el protocolo de enlace de IKE para restablecer el túnel IPsec con los nuevos parámetros y algoritmos criptográficos. Asegúrese de que el dispositivo VPN local también se configura con los algoritmos y niveles de claves coincidentes para minimizar dicha interrupción.
+Sí, que podría causar una pequeña interrupción (unos segundos) como puerta de enlace de VPN de Azure de Hola se caer la conexión existente de Hola y vuelva a iniciar hello toore de protocolo de enlace de IKE-establecer Hola de túnel de IPsec con nuevos algoritmos criptográficos de Hola y parámetros. Asegúrese de que el dispositivo VPN local también se configura con algoritmos de búsqueda de coincidencias de Hola y las interrupciones de hello toominimize de ventajas clave.
 
 ### <a name="can-i-use-different-policies-on-different-connections"></a>¿Se pueden usar distintas directivas en conexiones diferentes?
-Sí. La directiva personalizada se aplica en función de la conexión. Puede crear y aplicar distintas directivas de IPsec o IKE en conexiones diferentes. También puede elegir aplicar directivas personalizadas a un subconjunto de las conexiones. Las restantes usarán los conjuntos de directivas de IPsec o IKE predeterminados de Azure.
+Sí. La directiva personalizada se aplica en función de la conexión. Puede crear y aplicar distintas directivas de IPsec o IKE en conexiones diferentes. También puede elegir tooapply directivas personalizadas en un subconjunto de las conexiones. Hola los restantes usará conjuntos de directivas de IPsec/IKE de hello predeterminado de Azure.
 
-### <a name="can-i-use-the-custom-policy-on-vnet-to-vnet-connection-as-well"></a>¿Se puedo usar la directiva personalizada también en una conexión entre redes virtuales?
+### <a name="can-i-use-hello-custom-policy-on-vnet-to-vnet-connection-as-well"></a>¿Puedo usar directivas personalizadas de hello en así la conexión de red virtual a red virtual?
 Sí, puede aplicar directivas personalizadas en las conexiones entre entornos de IPsec o las conexiones entre redes virtuales.
 
-### <a name="do-i-need-to-specify-the-same-policy-on-both-vnet-to-vnet-connection-resources"></a>¿Es preciso especificar la misma directiva en los dos recursos de la conexión entre redes virtuales?
-Sí. Un túnel entre redes virtuales consta de dos recursos de conexión en Azure, una para cada dirección. Es preciso asegurarse de que los dos recursos de la conexión tienen la misma directiva, ya que si no es así, la conexión entre redes virtuales no se establecerá.
+### <a name="do-i-need-toospecify-hello-same-policy-on-both-vnet-to-vnet-connection-resources"></a>¿Necesito toospecify Hola la misma directiva en los recursos de conexión de red virtual a red virtual?
+Sí. Un túnel entre redes virtuales consta de dos recursos de conexión en Azure, una para cada dirección. Necesita tooensure los recursos de conexión tienen Hola misma directiva othereise Hola conexión de red virtual a red virtual, no se establecerá.
 
 ### <a name="does-custom-ipsecike-policy-work-on-expressroute-connection"></a>¿Funciona la directiva de IPsec o IKE personalizada en una conexión ExpressRoute?
-No. La directiva de IPsec o IKE solo funciona en conexiones entre redes virtuales a través de las puertas de enlace de VPN de Azure y VPN de S2S.
+No. Directiva IPsec/IKE solo funciona en conexiones de red virtual a red virtual a través de las puertas de enlace VPN de Azure de Hola y de VPN de S2S.

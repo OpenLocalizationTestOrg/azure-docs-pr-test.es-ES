@@ -1,0 +1,7 @@
+## <a name="associate-an-azure-storage-account-tooiot-hub"></a>Asociar un tooIoT de cuenta de almacenamiento de Azure concentrador
+
+Como aplicación de dispositivo simulado de hello carga un blob de tooa de archivo, debe tener un [el almacenamiento de Azure](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account) tooIoT centro de asociados de cuenta. Al asociar una cuenta de almacenamiento de Azure a un centro de IoT, centro de IoT Hola genera un URI de SAS. Un dispositivo puede usar esta carga de URI de SAS toosecurely un contenedor de blobs de tooa de archivo. servicio del centro de IoT de Hola y Hola SDK de dispositivos coordinar proceso Hola que genera Hola URI de SAS y la convierte en tooupload toouse de dispositivo tooa disponible un archivo.
+
+Siga las instrucciones de hello en [cargas de archivos de configuración utilizando el portal de Azure de hello](../articles/iot-hub/iot-hub-configure-file-upload.md) tooassociate un centro de IoT de tooyour de cuenta de almacenamiento de Azure. Asegúrese de que hay un contenedor de blobs asociado a su centro de IoT Hub y que las notificaciones de archivo están habilitadas.
+
+![Habilitación de las notificaciones de archivo en el Portal](media/iot-hub-associate-storage/enable-file-notifications.png)

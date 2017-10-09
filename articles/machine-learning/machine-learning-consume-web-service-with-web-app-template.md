@@ -1,6 +1,6 @@
 ---
-title: "Consumo de un servicio web Machine Learning con una plantilla de aplicación web | Microsoft Docs"
-description: "Use una plantilla de aplicación web en Azure Marketplace para consumir un servicio web predictivo en Aprendizaje automático de Azure."
+title: "un servicio web de aprendizaje automático con una plantilla de aplicación web aaaConsume | Documentos de Microsoft"
+description: "Usar una plantilla de aplicación web en Azure Marketplace tooconsume un servicio web de predicción en aprendizaje automático de Azure."
 keywords: "servicio web,operacionalización,API de REST,aprendizaje automático"
 services: machine-learning
 documentationcenter: 
@@ -15,48 +15,48 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: garye;raymondl
-ms.openlocfilehash: 95aa1fa23d83ec0dcd00870179167e803bafbd16
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1199377bead470807d58ca7f7a667175cbb88450
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="consume-an-azure-machine-learning-web-service-with-a-web-app-template"></a>Consumo de un servicio web de Aprendizaje automático de Azure con una plantilla de aplicación web
 
-Una vez que desarrolla su modelo predictivo y lo implementa como un servicio web de Azure con Estudio de aprendizaje automático o con herramientas como R o Python, puede tener acceso al modelo de operaciones con una API de REST.
+Una vez haya desarrollado el modelo de predicción e implementarla como un servicio web de Azure con estudio de aprendizaje automático, o mediante herramientas como R o Python, puede tener acceso mediante una API de REST de modelo operaciones Hola.
 
-Hay varias maneras de usar la API de REST y tener acceso al servicio web. Por ejemplo, puede escribir una aplicación en C#, R o Python con el código de ejemplo que se generó cuando implementó el servicio web (disponible en el [Portal Servicios web de Machine Learning](https://services.azureml.net/quickstart) o en el panel de servicios web en Machine Learning Studio). O bien, puede usar el libro de Microsoft Excel de ejemplo que se creó al mismo tiempo.
+Hay varias maneras de tooconsume Hola API de REST de servicio y acceso hello web. Por ejemplo, puede escribir una aplicación en C#, R, o código generado automáticamente cuando implementa el servicio web de Hola de ejemplo de Python con hello (disponible en hello [Portal de servicios Web de aprendizaje de máquina](https://services.azureml.net/quickstart) o en el panel de servicio web de hello en Estudio de aprendizaje automático). O bien puede usar el libro de Microsoft Excel de ejemplo de Hola creado para usted en hello mismo tiempo.
 
-Pero la manera más rápida y fácil para tener acceso al servicio web es a través de las plantillas de aplicación web disponibles en [Marketplace de aplicaciones web de Azure](https://azure.microsoft.com/marketplace/web-applications/all/).
+Pero Hola tooaccess de forma más rápida y más fácil su servicio web es a través de plantillas de aplicación de hello Web disponibles en hello [Marketplace de aplicaciones Web de Azure](https://azure.microsoft.com/marketplace/web-applications/all/).
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-## <a name="the-azure-machine-learning-web-app-templates"></a>Plantillas de aplicación web de Aprendizaje automático de Azure
-Las plantillas de aplicación web disponibles en Azure Marketplace pueden crear una aplicación web personalizada que conoce los datos de entrada del servicio web y los resultados esperados. Todo lo que necesita hacer es conceder el acceso de la aplicación web al servicio web y los datos, y la plantilla se encarga del resto.
+## <a name="hello-azure-machine-learning-web-app-templates"></a>Hola plantillas de aplicaciones de Web de aprendizaje de máquina de Azure
+plantillas de aplicación de Hello web disponibles en hello Azure Marketplace pueden compilar una aplicación web personalizada que conoce los datos de entrada de su servicio web y los resultados esperados. Todo lo que necesita toodo es proporcionar datos y servicio web de tooyour de acceso de aplicación de hello web y plantilla de Hola Hola rest.
 
 Existen dos plantillas:
 
 * [Plantilla de aplicación web Request-Response Service de Aprendizaje automático de Azure](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlaspnettemplateforrrs/)
 * [Plantilla de aplicación web Batch Execution Service de Aprendizaje automático de Azure](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/)
 
-Cada plantilla crea una aplicación de ASP.NET de ejemplo mediante el URI de la API y la clave para el servicio web y la implementa como un sitio web en Azure. La plantilla Request-Response Service (RRS) crea una aplicación web que permite enviar una sola fila de datos al servicio web para obtener un resultado único. La plantilla Batch Execution Service (BES) crea una aplicación web que permite enviar muchas filas de datos para obtener varios resultados.
+Cada plantilla crea una aplicación de ASP.NET de ejemplo, mediante Hola URI de API y la clave para el servicio web e implementa como un tooAzure de sitio web. plantilla de servicio de solicitud-respuesta (RR) de Hello crea una aplicación web que le permite toosend una sola fila de datos toohello web servicio tooget un único resultado. plantilla de servicio de ejecución de lotes (BES) de Hello crea una aplicación web que le permite toosend muchas filas de datos tooget varios resultados.
 
-No es necesaria ninguna codificación para usar estas plantillas. Simplemente, proporcione el URI y la clave de API y la plantilla compilará la aplicación.
+Ninguna codificación es necesario toouse estas plantillas. Basta con proporcionar Hola clave de API y el URI y plantilla Hola compila la aplicación hello automáticamente.
 
-Para obtener la clave de API y el URI de solicitud de un servicio web:
+clave de API de hello tooget y URI de la solicitud para un servicio web:
 
-1. En el [Portal Servicios web](https://services.azureml.net/quickstart), para un servicio web nuevo, haga clic en **Servicios web** en la parte superior. O bien, para un servicio web clásico, haga clic en **Servicios web clásicos**.
-2. Haga clic en el servicio web al que desea tener acceso.
-3. Para un servicio web clásico, haga clic en el punto de conexión al que desea tener acceso.
-4. Haga clic en **Consumir** en la parte superior.
-5. Copie la clave **principal** o **secundaria** y guárdela.
-6. Si crea una plantilla de servicio de solicitud-respuesta (RRS), copie el URI de **solicitud-respuesta** y guárdelo. Si crea una plantilla de servicio de ejecución de lotes (BES), copie el URI de las **solicitudes de lote** y guárdelo.
+1. Hola [Portal de servicios Web](https://services.azureml.net/quickstart), para un nuevo servicio web, haga clic en **servicios Web** en la parte superior de Hola. O bien, para un servicio web clásico, haga clic en **Servicios web clásicos**.
+2. Haga clic en el servicio de web de Hola que desee tooaccess.
+3. Para un servicio web clásico, haga clic en punto de conexión de hello desea tooaccess.
+4. Haga clic en **Consume** en la parte superior de Hola.
+5. Hola copia **principal** o **clave secundaria** y guárdelo.
+6. Si está creando una plantilla de servicio de solicitud-respuesta (RR), copie hello **solicitud-respuesta** URI y guárdelo. Si está creando una plantilla de servicio de ejecución de lotes (BES), copie hello **solicitudes por lotes** URI y guárdelo.
 
 
-## <a name="how-to-use-the-request-response-service-rrs-template"></a>Uso de la plantilla Request-Response Service (RRS)
-Siga estos pasos para usar la plantilla de aplicación web de RRS, tal como se indica en el diagrama siguiente.
+## <a name="how-toouse-hello-request-response-service-rrs-template"></a>¿Cómo toouse Hola plantilla de servicio de solicitud-respuesta (RR)
+Siga estos plantilla pasos toouse Hola RR web app, como se muestra en hello siguiente diagrama.
 
-![Proceso para usar la plantilla web RRS][image1]
+![Plantilla de proceso toouse RR web][image1]
 
 
 <!--    ![API Key][image3] -->
@@ -67,61 +67,61 @@ Siga estos pasos para usar la plantilla de aplicación web de RRS, tal como se i
    
     ![Request URI][image4] -->
 
-1. Vaya a [Azure Portal](https://portal.azure.com), **Inicio de sesión**, haga clic en **Nuevo**, busque y seleccione **Azure ML Request-Response Service Web App** (Aplicación web de servicio Solicitud-respuesta de Azure ML) y luego haga clic en **Crear**. 
+1. Vaya toohello [portal de Azure](https://portal.azure.com), **inicio de sesión**, haga clic en **New**, busque y seleccione **Azure ML solicitudes y respuestas Web del servicio de aplicaciones**, a continuación, haga clic en **Crear**. 
    
-   * Asigne un nombre único a la aplicación web. La dirección URL de la aplicación web será este nombre seguido de `.azurewebsites.net.` Por ejemplo, `http://carprediction.azurewebsites.net.`
-   * Seleccione los servicios y la suscripción de Azure en los que se ejecuta el servicio web.
+   * Asigne un nombre único a la aplicación web. dirección URL de Hola de aplicación web de hello será este nombre seguido de `.azurewebsites.net.` por ejemplo,`http://carprediction.azurewebsites.net.`
+   * Seleccione Hola suscripción de Azure y servicios en la que se ejecuta el servicio web.
    * Haga clic en **Crear**.
      
-     ![Crear aplicación web][image5]
+     ![Crear una aplicación web][image5]
 
-4. Cuando Azure termine de implementar la aplicación web, haga clic en la **dirección URL** en la página de configuración de la aplicación web en Azure o escriba la dirección URL en un explorador web. Por ejemplo, `http://carprediction.azurewebsites.net.`
-5. Cuando se ejecute la aplicación web por primera vez, le pedirá la **dirección URL del mensaje de API** y **clave de API**.
-   Escriba los valores que guardó anteriormente (**URI de solicitud** y **Clave de API**, respectivamente).
+4. Cuando Azure ha terminado de implementar la aplicación web de hello, haga clic en hello **URL** Hola página de configuración de aplicación web en Azure, o escriba la dirección URL de hello en un explorador web. Por ejemplo: `http://carprediction.azurewebsites.net.`
+5. Cuando Hola aplicación de web primero se ejecuta le pedirá hello **URL de entrada de la API** y **clave de API**.
+   Escriba los valores de hello guardó anteriormente (**URI de solicitud** y **clave de API**, respectivamente).
      
      Haga clic en **Enviar**.
      
      ![Escriba el URI del mensaje y la clave de API][image6]
 
-6. La aplicación web muestra su página **Configuración de la aplicación web** con la configuración actual del servicio web. Aquí puede realizar cambios en la configuración usada por la aplicación web.
+6. Hola de aplicación web se muestra su **configuración de la aplicación Web** página con la configuración del servicio web actual Hola. Aquí puede realizar cambios toohello configuración de aplicación web de hello.
    
    > [!NOTE]
-   > El cambio de estas opciones solo las cambia para esta aplicación web. No cambia la configuración predeterminada del servicio web. Por ejemplo, si cambia la **Descripción** aquí no cambia la descripción mostrada en el panel del servicio web en Estudio de aprendizaje automático.
+   > Estas opciones de hello solo si se cambia su para esta aplicación web. Configuración predeterminada de Hola de su servicio web no cambia. Por ejemplo, si cambia hello **descripción** aquí no cambia la descripción de Hola se muestra en el panel de servicio web de hello en estudio de aprendizaje automático.
    > 
    > 
    
-    Cuando termine, haga clic en **Guardar cambios** y, luego, haga clic en **Ir a la página principal**.
+    Cuando haya terminado, haga clic en **guardar cambios**y, a continuación, haga clic en **vaya tooHome página**.
 
-7. En la página principal puede escribir valores para enviar al servicio web. Cuando termine, haga clic en **Enviar** y se generará el resultado.
+7. De hello página principal que puede escribir valores de servicio web de toosend tooyour. Haga clic en **enviar** cuando haya terminado, y se devolverá el resultado de hello.
 
-Si desea volver a la página **Configuración**, vaya a la página `setting.aspx` de la aplicación web. Por ejemplo: `http://carprediction.azurewebsites.net/setting.aspx.` le pedirá que vuelva a escribir la clave de API, lo que es necesario para tener acceso a la página y actualizar la configuración.
+Si desea que tooreturn toohello **configuración** página, vaya toohello `setting.aspx` página de aplicación web de hello. Por ejemplo: `http://carprediction.azurewebsites.net/setting.aspx.` podrá volver a clave de API de hello tooenter solicitadas: necesita que tooaccess Hola página y actualizar la configuración de Hola.
 
-Puede detener, reiniciar o eliminar la aplicación web en el Portal de Azure como cualquier otra aplicación web. Mientras se esté ejecutando, puede ir a la dirección web de inicio y escribir los nuevos valores.
+Puede detener, reiniciar o eliminar la aplicación web de Hola Hola portal de Azure como cualquier otra aplicación web. Mientras se está ejecutando puede buscar direcciones web principal de toohello y escribir nuevos valores.
 
-## <a name="how-to-use-the-batch-execution-service-bes-template"></a>Uso de la plantilla Batch Execution Service (BES)
-Puede usar la plantilla de aplicación web BES de la misma manera que la plantilla RRS, excepto que la aplicación web que se crea permite enviar varias filas de datos y recibir varios resultados.
+## <a name="how-toouse-hello-batch-execution-service-bes-template"></a>¿Cómo toouse Hola plantilla de servicio de ejecución de lotes (BES)
+Puede usar hello BES plantilla de aplicación web en hello mismo excepto forma como plantilla de Hola RR, dicha aplicación Hola que se crea, podrá toosubmit varias filas de datos y recibir varios resultados.
 
-Los valores de entrada de un servicio web de ejecución de lotes pueden provenir de Azure Storage o un archivo local; los resultados se almacenan en un contenedor de Azure Storage.
-Por lo tanto, necesitará un contenedor de almacenamiento de Azure para guardar los resultados devueltos por la aplicación web, y deberá preparar los datos de entrada.
+los valores de entrada de Hola para un servicio web de ejecución de lotes pueden proceder de almacenamiento de Azure o un archivo local; Hola resultados se almacenan en un contenedor de almacenamiento de Azure.
+Por lo tanto, será necesario un toohold del contenedor de almacenamiento de Azure Hola resultados devueltos por la aplicación web de hello, y deberá tooget los datos de entrada listo.
 
-![Proceso para usar la plantilla web BES][image2]
+![Procesar toouse BES plantilla web][image2]
 
-1. Siga el mismo procedimiento para crear la aplicación web de BES como lo hizo para la plantilla de RRS, excepto que debe ir a [Plantilla de aplicación web Servicio de ejecución de lotes de Azure ML](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/) para abrir la plantilla BES en Azure Marketplace y haga clic en **Crear aplicación web**.
+1. Seguimiento Hola mismo Hola de toocreate procedimiento BES web app para la plantilla de RR hello, excepto go demasiado[plantilla de aplicación Web de Azure ML lote ejecución servicio](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/) tooopen Hola plantilla BES en Azure Marketplace y haga clic en **crear aplicación Web** .
 
-2. Para especificar dónde desea que se almacenen los resultados, escriba la información del contenedor de destino en la página principal de la aplicación web. Especifique también dónde puede obtener los valores de entrada la aplicación web, en un archivo local o en un contenedor de almacenamiento de Azure.
+2. toospecify donde desea que los resultados de hello almacenados, escriba la información del contenedor de destino de Hola en la página de inicio de aplicación web de Hola. Especificar donde la aplicación web de hello puede obtener valores de entrada de hello, en un archivo local o en un contenedor de almacenamiento de Azure.
    Haga clic en **Enviar**.
    
     ![Información de almacenamiento][image7]
 
-La aplicación web mostrará una página con el estado del trabajo.
-Cuando se haya completado el trabajo, se le proporcionará la ubicación de los resultados en el almacenamiento de blobs de Azure. También tiene la opción de descargar los resultados en un archivo local.
+aplicación web de Hello mostrará una página con el estado del trabajo.
+Cuando se haya completado el trabajo de Hola se le ofrecerán ubicación Hola de resultados de hello en el almacenamiento de blobs de Azure. También tiene opción de Hola de descarga de archivos local de hello resultados tooa.
 
 ## <a name="for-more-information"></a>Para obtener más información
-Para obtener más información sobre...
+más información acerca de toolearn...
 
 * la creación de un experimento de aprendizaje automático con Estudio de aprendizaje automático, consulte [Creación del primer experimento en Estudio de aprendizaje automático de Azure](machine-learning-create-experiment.md)
-* cómo implementar el experimento de aprendizaje automático como un servicio web, consulte [Implementación de un servicio web de Aprendizaje automático de Azure](machine-learning-publish-a-machine-learning-web-service.md)
-* otras formas de tener acceso al servicio web, consulte [Consumo de servicios web Azure Machine Learning](machine-learning-consume-web-services.md).
+* toodeploy experimentar el aprendizaje automático como un servicio web, vea [implementar un servicio web de aprendizaje automático de Azure](machine-learning-publish-a-machine-learning-web-service.md)
+* otras maneras tooaccess el servicio web, vea [cómo tooconsume un servicio Web de aprendizaje de máquina de Azure](machine-learning-consume-web-services.md)
 
 [image1]: media/machine-learning-consume-web-service-with-web-app-template/rrs-web-template-flow.png
 [image2]: media/machine-learning-consume-web-service-with-web-app-template/bes-web-template-flow.png

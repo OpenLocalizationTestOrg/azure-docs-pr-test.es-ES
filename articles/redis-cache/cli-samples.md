@@ -1,5 +1,5 @@
 ---
-title: Ejemplos de la CLI de Azure para Redis Cache | Microsoft Docs
+title: "ejemplos de caché de Redis CLI aaaAzure | Documentos de Microsoft"
 description: Ejemplos de la CLI de Azure para Azure Redis Cache.
 services: redis-cache
 documentationcenter: 
@@ -14,15 +14,15 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: sdanie
-ms.openlocfilehash: a3debf3380b57faa5b7b30f612698fe6de5b7067
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a2eb6f7267951faca599a43ff29b46beb05fea6d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-cli-samples-for-azure-redis-cache"></a>Ejemplos de la CLI de Azure para Azure Redis Cache
 
-En la tabla siguiente se incluyen vínculos a scripts de Bash creados con la CLI de Azure.
+Hello tabla siguiente incluye vínculos toobash scripts creados con hello CLI de Azure.
 
 | | |
 |---|---|
@@ -30,9 +30,9 @@ En la tabla siguiente se incluyen vínculos a scripts de Bash creados con la CLI
 | [Creación de una caché](./scripts/create-cache.md) | Crea un grupo de recursos y una instancia de Azure Redis Cache de nivel básico. |
 | [Creación de una caché premium con agrupación en clústeres](./scripts/create-premium-cache-cluster.md) | Crea un grupo de recursos y un caché de nivel premium con la agrupación de clústeres habilitada.|
 | [Obtención de detalles de caché](./scripts/show-cache.md) | Obtiene los detalles de una instancia de Azure Redis Cache, incluido el estado de aprovisionamiento. |
-| [Obtención del nombre de host, los puertos y las claves](./scripts/cache-keys-ports.md) | Obtiene el nombre de host, los puertos y las claves de una instancia de Azure Redis Cache. |
+| [Obtener las claves, puertos y el nombre de host de Hola](./scripts/cache-keys-ports.md) | Obtiene el nombre de host de hello, puertos y las claves para una instancia de caché en Redis de Azure. |
 |**Web app plus cache**||
-| [Conexión de una aplicación web a Redis Cache](./../app-service-web/scripts/app-service-cli-app-service-redis.md) | Crea una aplicación web de Azure y una instancia de Redis Cache y, luego, agrega los detalles de conexión de Redis a la configuración de la aplicación. |
+| [Conectar una caché de redis de tooa de aplicación web](./../app-service-web/scripts/app-service-cli-app-service-redis.md) | Crea una aplicación web de Azure y una caché de redis, a continuación, agrega la configuración de aplicación de hello redis conexión detalles toohello. |
 |**Delete cache**||
 | [Eliminación de una caché](./scripts/delete-cache.md) | Elimina una instancia de Azure Redis Cache  |
 | | |

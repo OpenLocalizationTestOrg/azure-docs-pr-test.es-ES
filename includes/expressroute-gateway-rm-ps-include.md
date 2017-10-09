@@ -1,4 +1,4 @@
-Los pasos de esta tarea usan una red virtual que se basa en los valores de la siguiente lista de referencia de configuración. En esta lista también se enumeran nombres y valores de configuración adicionales. No se utiliza esta lista directamente en ninguno de los pasos, aunque se agregan variables basadas en los valores que aparecen en ella. Puede copiar la lista para utilizarla como referencia y reemplazar los valores por los suyos propios.
+pasos de Hola para esta tarea, use una red virtual basan en valores Hola Hola después de la lista de referencias de configuración. En esta lista también se enumeran nombres y valores de configuración adicionales. No usamos esta lista directamente en cualquiera de los pasos de hello, aunque se agregue variables basadas en valores de hello en esta lista. Puede copiar hello toouse de lista como referencia, reemplazando los valores de hello con sus propios.
 
 **Lista de referencia de configuración**
 
@@ -17,14 +17,14 @@ Los pasos de esta tarea usan una red virtual que se basa en los valores de la si
 * Nombre de IP pública de puerta de enlace = "gwpip"
 
 ## <a name="add-a-gateway"></a>Adición de una puerta de enlace
-1. Conéctese a su suscripción de Azure.
+1. Conectar tooyour suscripción de Azure.
 
   ```powershell 
   Login-AzureRmAccount
   Get-AzureRmSubscription 
   Select-AzureRmSubscription -SubscriptionName "Name of subscription"
   ```
-2. Declare las variables para este ejercicio. No olvide editar el ejemplo para reflejar la configuración que desea utilizar.
+2. Declare las variables para este ejercicio. Ser tooedit seguro de que desea toouse una Hola ejemplo tooreflect Hola configuración.
 
   ```powershell 
   $RG = "TestRG"
@@ -34,54 +34,54 @@ Los pasos de esta tarea usan una red virtual que se basa en los valores de la si
   $GWIPconfName = "gwipconf"
   $VNetName = "TestVNet"
   ```
-3. Almacene el objeto de red virtual como una variable.
+3. Almacenar objetos de red virtual de hello como una variable.
 
   ```powershell
   $vnet = Get-AzureRmVirtualNetwork -Name $VNetName -ResourceGroupName $RG
   ```
-4. Agregue una subred de puerta de enlace a su red virtual. A la subred de puerta de enlace debe asignarle el nombre "GatewaySubnet". Se recomienda que cree una subred de puerta de enlace con un valor /27 o mayor (/26, /25, etc.).
+4. Agregue un tooyour de subred de puerta de enlace red Virtual. subred de puerta de enlace de Hello debe denominarse "GatewaySubnet". Se recomienda que cree una subred de puerta de enlace con un valor /27 o mayor (/26, /25, etc.).
 
   ```powershell
   Add-AzureRmVirtualNetworkSubnetConfig -Name GatewaySubnet -VirtualNetwork $vnet -AddressPrefix 192.168.200.0/26
   ```
-5. Establezca la configuración.
+5. Establecer configuración de Hola.
 
   ```powershell
   Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
   ```
-6. Almacene la subred de puerta de enlace como una variable.
+6. Almacenar la subred de puerta de enlace de hello como una variable.
 
   ```powershell
   $subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
   ```
-7. Pida una dirección IP pública. La dirección IP se solicita antes de crear la puerta de enlace. No puede especificar la dirección IP que desea usar; se asigna una dinámicamente. Utilizará esta dirección IP en la siguiente sección de configuración. El valor de AllocationMethod debe ser Dynamic.
+7. Pida una dirección IP pública. se requiere una dirección IP Hola antes de crear la puerta de enlace de Hola. No se puede especificar la dirección IP de Hola que desee toouse; se asigna dinámicamente. Usará esta dirección IP en la sección de configuración siguiente Hola. Hola AllocationMethod debe ser dinámicos.
 
   ```powershell
   $pip = New-AzureRmPublicIpAddress -Name $GWIPName  -ResourceGroupName $RG -Location $Location -AllocationMethod Dynamic
   ```
-8. Cree la configuración para su puerta de enlace. La configuración de puerta de enlace define la subred y la dirección IP pública. En este paso, se especifica la configuración que se utilizará al crear la puerta de enlace, pero no se crea realmente el objeto de puerta de enlace. Use el ejemplo siguiente para crear la configuración de la puerta de enlace.
+8. Crear configuración de hello para la puerta de enlace. configuración de puerta de enlace de Hello define la subred de Hola y Hola toouse de dirección IP pública. En este paso, está especificando la configuración de Hola que se usará al crear puerta de enlace de Hola. Este paso no crea objetos de puerta de enlace de Hola. Use la configuración de puerta de enlace de ejemplo de Hola a continuación toocreate.
 
   ```powershell
   $ipconf = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
   ```
-9. Cree la puerta de enlace. En este paso, el elemento **-GatewayType** resulta especialmente importante. Debe utilizar el valor **ExpressRoute**. Después de ejecutar estos cmdlets, la puerta de enlace puede tardar 45 minutos o más en crearse.
+9. Crear puerta de enlace de Hola. En este paso, Hola **- el GatewayType** es especialmente importante. Debe utilizar el valor de hello **ExpressRoute**. Después de ejecutar estos cmdlets, puerta de enlace de hello puede tardar 45 minutos o más toocreate.
 
   ```powershell
   New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG -Location $Location -IpConfigurations $ipconf -GatewayType Expressroute -GatewaySku Standard
   ```
 
-## <a name="verify-the-gateway-was-created"></a>Comprobación de la creación de la puerta de enlace
-Utilice los siguientes comandos para comprobar si se ha creado la puerta de enlace:
+## <a name="verify-hello-gateway-was-created"></a>Compruebe que se creó la puerta de enlace de Hola
+Usar hello siga los comandos tooverify que Hola puerta de enlace se ha creado:
 
 ```powershell
 Get-AzureRmVirtualNetworkGateway -ResourceGroupName $RG
 ```
 
 ## <a name="resize-a-gateway"></a>Cambio del tamaño de una puerta de enlace
-Hay varias [SKU de puerta de enlace](../articles/expressroute/expressroute-about-virtual-network-gateways.md). Puede utilizar el siguiente comando para cambiar en cualquier momento la SKU de puerta de enlace.
+Hay varias [SKU de puerta de enlace](../articles/expressroute/expressroute-about-virtual-network-gateways.md). Puede usar Hola después comando toochange hello SKU de puerta de enlace en cualquier momento.
 
 > [!IMPORTANT]
-> Este comando no funciona para la puerta de enlace de UltraPerformance. Para cambiar la puerta de enlace a una puerta de enlace de UltraPerformance, quite primero la puerta de enlace de ExpressRoute existente y, después, cree una nueva puerta de enlace de UltraPerformance. Para degradar la puerta de enlace desde una puerta de enlace de UltraPerformance, quite primero la puerta de enlace de UltraPerformance existente y, después, cree una nueva puerta de enlace.
+> Este comando no funciona para la puerta de enlace de UltraPerformance. toochange la puerta de enlace de puerta de enlace tooan UltraPerformance, primero quite Hola existente de la puerta de enlace ExpressRoute y, a continuación, crear una nueva puerta de enlace de UltraPerformance. toodowngrade la puerta de enlace de una puerta de enlace UltraPerformance, quite primero Hola UltraPerformance puerta de enlace y, a continuación, cree una nueva puerta de enlace.
 > 
 > 
 
@@ -91,7 +91,7 @@ Resize-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku HighP
 ```
 
 ## <a name="remove-a-gateway"></a>Eliminación de una puerta de enlace
-Para quitar una puerta de enlace, use el siguiente comando:
+Usar hello después tooremove una puerta de enlace de comando:
 
 ```powershell
 Remove-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG

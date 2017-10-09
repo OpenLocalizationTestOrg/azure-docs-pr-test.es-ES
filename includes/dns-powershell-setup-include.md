@@ -2,28 +2,28 @@
 
 ### <a name="before-you-begin"></a>Antes de empezar
 
-Antes de comenzar con la configuración, compruebe que dispone de los elementos siguientes.
+Compruebe que dispone de hello siguientes elementos antes de comenzar la configuración.
 
 * Una suscripción de Azure. Si todavía no la tiene, puede activar sus [ventajas como suscriptor de MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) o registrarse para obtener una [cuenta gratuita](https://azure.microsoft.com/pricing/free-trial/).
-* Necesitará instalar la versión más reciente de los cmdlets de PowerShell de Azure Resource Manager. Para más información, vea [Instalación y configuración de Azure PowerShell](/powershell/azureps-cmdlets-docs).
+* Necesita la versión más reciente de hello tooinstall de hello cmdlets de PowerShell del Administrador de recursos de Azure. Para obtener más información, consulte [cómo tooinstall y configurar Azure PowerShell](/powershell/azureps-cmdlets-docs).
 
-### <a name="sign-in-to-your-azure-account"></a>Inicio de sesión en la cuenta de Azure.
+### <a name="sign-in-tooyour-azure-account"></a>Inicie sesión en tooyour cuenta de Azure
 
-Abre la consola de PowerShell y conéctate a tu cuenta. Para más información, consulte [Uso de PowerShell con Resource Manager](../articles/azure-resource-manager/powershell-azure-resource-manager.md).
+Abra la consola de PowerShell y conectar con tooyour cuenta. Para más información, consulte [Uso de PowerShell con Resource Manager](../articles/azure-resource-manager/powershell-azure-resource-manager.md).
 
 ```powershell
 Login-AzureRmAccount
 ```
 
-### <a name="select-the-subscription"></a>Selección de la suscripción
+### <a name="select-hello-subscription"></a>Seleccione la suscripción de Hola
  
-Compruebe las suscripciones para la cuenta.
+Compruebe las suscripciones de hello para la cuenta de hello.
 
 ```powershell
 Get-AzureRmSubscription
 ```
 
-Elección de la suscripción de Azure que se va a usar.
+Elija qué su toouse de las suscripciones de Azure.
 
 ```powershell
 Select-AzureRmSubscription -SubscriptionName "your_subscription_name"
@@ -31,7 +31,7 @@ Select-AzureRmSubscription -SubscriptionName "your_subscription_name"
 
 ### <a name="create-a-resource-group"></a>Crear un grupo de recursos
 
-El Administrador de recursos de Azure requiere que todos los grupos de recursos especifiquen una ubicación. Esta ubicación se utiliza como ubicación predeterminada para los recursos de ese grupo de recursos. Sin embargo, puesto que todos los recursos DNS son globales y no regionales, la elección de la ubicación del grupo de recursos no incide en DNS de Azure.
+Azure Resource Manager requiere que todos los grupos de recursos especifiquen una ubicación. Esta ubicación se utiliza como ubicación predeterminada de Hola para recursos de ese grupo de recursos. Sin embargo, dado que todos los recursos DNS son globales, no regionales, elección de Hola de ubicación del grupo de recursos tiene ningún impacto en el DNS de Azure.
 
 Puede omitir este paso si utiliza un grupo de recursos existente.
 
@@ -41,7 +41,7 @@ New-AzureRmResourceGroup -Name MyAzureResourceGroup -location "West US"
 
 ### <a name="register-resource-provider"></a>Registro del proveedor de recursos
 
-El proveedor de recursos Microsoft.Network administra el servicio DNS de Azure. La suscripción a Azure debe estar registrada para usar este proveedor de recursos antes de utilizar Azure DNS. Se trata de una operación única para cada suscripción.
+Hola servicio DNS de Azure se administra mediante el proveedor de recursos de Microsoft.Network Hola. Su suscripción de Azure debe estar registrado toouse este proveedor de recursos antes de que se puede usar DNS de Azure. Se trata de una operación única para cada suscripción.
 
 ```powershell
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network

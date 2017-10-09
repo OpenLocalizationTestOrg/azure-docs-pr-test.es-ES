@@ -1,6 +1,6 @@
 ---
-title: "Búsqueda del próximo salto con Próximo salto de Azure Network Watcher (PowerShell) | Microsoft Docs"
-description: "En este artículo se describe cómo encontrar el tipo del próximo salto y la dirección IP mediante la funcionalidad Próximo salto con PowerShell."
+title: "aaaFind próximo salto con Monitor Azure red próximo salto - PowerShell | Documentos de Microsoft"
+description: "En este artículo se describe cómo puede encontrar qué Hola siguiente tipo de salto es y uso de dirección ip del próximo salto de uso de PowerShell."
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-ms.openlocfilehash: 00161e7c6fb4becdb7d8eab266fa27128e50f8ca
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: fdb0b4a02d95fc45c103fe952fc1afa095414c18
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="find-out-what-the-next-hop-type-is-using-the-next-hop-capability-in-azure-network-watcher-using-powershell"></a>Obtenga más información sobre el tipo del próximo salto con la funcionalidad Próximo salto de Azure Network Watcher mediante PowerShell.
+# <a name="find-out-what-hello-next-hop-type-is-using-hello-next-hop-capability-in-azure-network-watcher-using-powershell"></a>Averiguar qué tipo de hello próximo salto es con capacidad de próximo salto de hello en Monitor de red de Azure con PowerShell
 
 > [!div class="op_single_selector"]
 > - [Portal de Azure](network-watcher-check-next-hop-portal.md)
@@ -29,21 +29,21 @@ ms.lasthandoff: 07/11/2017
 > - [CLI 2.0](network-watcher-check-next-hop-cli.md)
 > - [API de REST de Azure](network-watcher-check-next-hop-rest.md)
 
-Próximo salto es una característica de Network Watcher que permite obtener el tipo del próximo salto y la dirección IP para una máquina virtual especificada. Esta característica es útil para determinar si el tráfico que sale de una máquina virtual atraviesa una puerta de enlace, Internet o redes virtuales para llegar a su destino.
+Próximo salto es una característica del Monitor de red que proporciona la capacidad de hello obtener tipo hello de próximo salto y la dirección IP basándose en una máquina virtual especificada. Esta característica es útil para determinar si el tráfico que sale de una máquina virtual recorre una puerta de enlace, internet o redes virtuales tooget tooits destino.
 
 ## <a name="before-you-begin"></a>Antes de empezar
 
-En este escenario, se usa Azure Portal para averiguar el tipo de próximo salto y la dirección IP.
+En este escenario, utilizará Hola tipo toofind portal Azure Hola de próximo salto y la dirección IP.
 
-En este escenario, se da por hecho que ya ha seguido los pasos descritos en [Create an Azure Network Watcher instance](network-watcher-create.md) (Creación de una instancia de Azure Network Watcher) para crear una instancia de Network Watcher. En este escenario también se da por hecho que existe un grupo de recursos con una máquina virtual válida.
+Este escenario se supone que ya ha seguido los pasos de hello en [crear un monitor de red](network-watcher-create.md) toocreate un monitor de red. escenario de Hello también supone que un grupo de recursos con una máquina virtual válida existe toobe usa.
 
 ## <a name="scenario"></a>Escenario
 
-El escenario descrito en este artículo usa Next Hop, una característica de Network Watcher, para averiguar el tipo de próximo salto y la dirección IP de un recurso. Para más información sobre Próximo salto, vea [introducción a Próximo salto](network-watcher-next-hop-overview.md).
+escenario de Hello descrito en este artículo usa próximo salto, una característica de Monitor de red que se determina el tipo de próximo salto hello y dirección IP para un recurso. toolearn más información acerca de próximo salto, visite [información general sobre salto siguiente](network-watcher-next-hop-overview.md).
 
 ## <a name="retrieve-network-watcher"></a>Recuperación de Network Watcher
 
-El primer paso consiste en recuperar la instancia de Network Watcher. La variable `$networkWatcher` pasa al cmdlet de verificación del próximo salto.
+Hola primer paso es instancia de Monitor de red de tooretrieve Hola. Hola `$networkWatcher` pasa una variable toohello próximo salto comprobar cmdlet.
 
 ```powershell
 $nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
@@ -52,18 +52,18 @@ $networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $n
 
 ## <a name="get-a-virtual-machine"></a>Obtención de una máquina virtual
 
-Próximo salto devuelve el próximo salto y la dirección IP del próximo salto de una máquina virtual. Se necesita el identificador de una máquina virtual para ejecutar el cmdlet. Si ya conoce el identificador de la máquina virtual que se va a usar, puede omitir este paso.
+Próximo salto devuelve próximo salto de Hola y la dirección IP de hello del próximo salto de Hola desde una máquina virtual. Un identificador de una máquina virtual se requiere para hello cmdlet. Si ya conoce el identificador de Hola de hello toouse de máquina virtual, puede omitir este paso.
 
 ```powershell
 $VM = Get-AzurermVM -ResourceGroupName "testrg" -Name "testvm1"
 ```
 
 > [!NOTE]
-> Un requisito del próximo salto es que el recurso de máquina virtual esté asignado para ejecutarse.
+> Salto siguiente requiere que el recurso de máquina virtual de Hola se asigna toorun.
 
-## <a name="get-the-network-interfaces"></a>Obtención de las interfaces de red
+## <a name="get-hello-network-interfaces"></a>Obtener interfaces de red de Hola
 
-Se necesita la dirección IP de una NIC en la máquina virtual; en este ejemplo, se recuperan las NIC de una máquina virtual. Si ya conoce la dirección IP que desea probar en la máquina virtual, puede omitir este paso.
+se necesita la dirección IP de Hola de una NIC en la máquina virtual de Hola, en este ejemplo recuperamos Hola NIC en una máquina virtual. Si ya sabe Hola IP de direcciones que desea tootest en la máquina virtual de hello, puede omitir este paso.
 
 ```powershell
 $Nics = Get-AzureRmNetworkInterface | Where {$_.Id -eq $vm.NetworkProfile.NetworkInterfaces.Id.ForEach({$_})}
@@ -71,7 +71,7 @@ $Nics = Get-AzureRmNetworkInterface | Where {$_.Id -eq $vm.NetworkProfile.Networ
 
 ## <a name="get-next-hop"></a>Obtención del próximo salto
 
-Ahora se llama al cmdlet `Get-AzureRmNetworkWatcherNextHop`. Se pasa al cmdlet la instancia de Network Watcher, el identificador de la máquina virtual, la dirección IP de origen y la dirección IP de destino. En este ejemplo, la dirección IP de destino es una máquina virtual en otra red virtual. Hay una puerta de enlace de red virtual entre las dos redes virtuales.
+Ahora se denomina hello `Get-AzureRmNetworkWatcherNextHop` cmdlet. Se pasa Hola cmdlet Hola Monitor de red, máquina virtual de Id., dirección IP y dirección IP de destino de código fuente. En este ejemplo, la dirección IP de destino de Hola es tooa máquina virtual en otra red virtual. Hay una puerta de enlace de red virtual entre las dos redes virtuales de Hola.
 
 ```powershell
 Get-AzureRmNetworkWatcherNextHop -NetworkWatcher $networkWatcher -TargetVirtualMachineId $VM.Id -SourceIPAddress $nics[0].IpConfigurations[0].PrivateIpAddress  -DestinationIPAddress 10.0.2.4 
@@ -79,7 +79,7 @@ Get-AzureRmNetworkWatcherNextHop -NetworkWatcher $networkWatcher -TargetVirtualM
 
 ## <a name="review-results"></a>Revisión de los resultados
 
-Una vez finalizado, se proporcionan los resultados. Se devuelve la dirección IP del próximo salto y el tipo de recurso que es. En este escenario, es la dirección IP pública de la puerta de enlace de red virtual.
+Cuando haya finalizado, se proporcionan los resultados de Hola. se devuelve la dirección IP del próximo salto Hello, así como de tipo hello del recurso es. En este escenario, es la dirección IP pública de Hola de puerta de enlace de red virtual de Hola.
 
 ```
 NextHopIpAddress NextHopType           RouteTableId 
@@ -87,7 +87,7 @@ NextHopIpAddress NextHopType           RouteTableId
 13.78.238.92     VirtualNetworkGateway Gateway Route
 ```
 
-En la lista siguiente se muestran los valores de NextHopType disponibles actualmente:
+Hello lista siguiente muestra valores de hello disponibles actualmente NextHopType:
 
 **Tipo de próximo salto**
 
@@ -101,7 +101,7 @@ En la lista siguiente se muestran los valores de NextHopType disponibles actualm
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Aprenda cómo revisar la configuración del grupo de seguridad de red mediante programación en [NSG Auditing with Network Watcher](network-watcher-nsg-auditing-powershell.md) (Auditoría de NSG con Network Watcher).
+Obtenga información acerca de cómo tooreview la configuración del grupo de seguridad de red mediante programación si visita [NSG auditoría con Monitor de red](network-watcher-nsg-auditing-powershell.md)
 
 
 

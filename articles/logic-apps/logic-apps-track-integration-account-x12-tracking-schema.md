@@ -1,6 +1,6 @@
 ---
-title: "Esquemas de seguimiento de X12 para la supervisión de B2B - Azure Logic Apps | Microsoft Docs"
-description: "Utilice esquemas de seguimiento de X12 para supervisar mensajes B2B de transacciones en la cuenta de la integración de Azure."
+title: "aaaX12 esquemas de seguimiento para la supervisión de B2B - Azure Logic Apps | Documentos de Microsoft"
+description: "Utilice X12 seguimiento de mensajes de toomonitor B2B de esquemas de las transacciones en la cuenta de la integración de Azure."
 author: padmavc
 manager: anneta
 editor: 
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3782c0a76ea8728a146b3d73774f74c31187cbfd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ed1b338730214dcae12c367ebff025d7122328fe
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="start-or-enable-tracking-of-x12-messages-to-monitor-success-errors-and-message-properties"></a>Inicio o habilitación del seguimiento de mensajes X12 para supervisar propiedades de mensaje, errores y éxitos
-Puede usar estos esquemas de seguimiento de X12 en su cuenta de integración de Azure para ayudarle a supervisar las transacciones de negocio a negocio (B2B):
+# <a name="start-or-enable-tracking-of-x12-messages-toomonitor-success-errors-and-message-properties"></a>Los mensajes de inicio o habilitar el seguimiento de X12 toomonitor correcto, los errores y las propiedades de mensaje
+Puede usar estos X12 esquemas de seguimiento en su toohelp de cuenta de la integración de Azure supervisar las transacciones de negocio a negocio (B2B):
 
 * Esquema de seguimiento de conjuntos de transacciones de X12
 * Esquema de seguimiento de confirmación de conjuntos de transacciones de X12
@@ -68,18 +68,18 @@ Puede usar estos esquemas de seguimiento de X12 en su cuenta de integración de 
 | senderIdentifier | string | Identificador del asociado remitente. (Obligatorio) |
 | receiverQualifier | String | Calificador del asociado destinatario. (Obligatorio) |
 | receiverIdentifier | String | Identificador del asociado destinatario. (Obligatorio) |
-| agreementName | String | Nombre del contrato X12 en el que se resuelven los mensajes. (Opcional) |
-| dirección | Enum | Dirección del flujo de mensajes, recibidos o enviados. (Obligatorio) |
+| agreementName | String | Nombre de mensajes de saludo de hello X12 acuerdo toowhich se resuelve. (Opcional) |
+| dirección | Enum | Dirección de flujo de mensajes de Hola, recepción o envío. (Obligatorio) |
 | interchangeControlNumber | String | Número de control de intercambio. (Opcional) |
 | functionalGroupControlNumber | String | Número de control funcional. (Opcional) |
 | transactionSetControlNumber | string | Número de control de conjuntos de transacciones. (Opcional) |
 | CorrelationMessageId | String | Identificador del mensaje de correlación. Una combinación de {AgreementName}{*GroupControlNumber*}{TransactionSetControlNumber}. (Opcional) |
 | messageType | String | Conjunto de transacciones o tipo de documento. (Opcional) |
-| isMessageFailed | Booleano | Si el mensaje X12 genera error. (Obligatorio) |
-| isTechnicalAcknowledgmentExpected | Booleano | Si la confirmación técnica se ha configurado en el contrato X12. (Obligatorio) |
-| isFunctionalAcknowledgmentExpected | Booleano | Si la confirmación funcional se ha configurado en el contrato X12. (Obligatorio) |
-| needAk2LoopForValidMessages | Booleano | Si el bucle AK2 se requiere para un mensaje válido. (Obligatorio) |
-| segmentsCount | Entero | Número de segmentos del conjunto de transacciones de X12. (Opcional) |
+| isMessageFailed | Booleano | Si no se pudo mensaje hello X12. (Obligatorio) |
+| isTechnicalAcknowledgmentExpected | Booleano | ¿Confirmación técnica Hola está configurada en el acuerdo de hello X12. (Obligatorio) |
+| isFunctionalAcknowledgmentExpected | Booleano | ¿Confirmación funcional Hola está configurada en el acuerdo de hello X12. (Obligatorio) |
+| needAk2LoopForValidMessages | Booleano | Si el bucle de hello AK2 es necesario para un mensaje válido. (Obligatorio) |
+| segmentsCount | Entero | Número de segmentos de conjunto de transacciones de hello X12. (Opcional) |
 
 ## <a name="x12-transaction-set-acknowledgement-tracking-schema"></a>Esquema de seguimiento de confirmación de conjuntos de transacciones de X12
 ````java
@@ -123,24 +123,24 @@ Puede usar estos esquemas de seguimiento de X12 en su cuenta de integración de 
 | senderIdentifier | string | Identificador del asociado remitente. (Obligatorio) |
 | receiverQualifier | String | Calificador del asociado destinatario. (Obligatorio) |
 | receiverIdentifier | String | Identificador del asociado destinatario. (Obligatorio) |
-| agreementName | String | Nombre del contrato X12 en el que se resuelven los mensajes. (Opcional) |
-| dirección | Enum | Dirección del flujo de mensajes, recibidos o enviados. (Obligatorio) |
-| interchangeControlNumber | string | Número de control de intercambio de la confirmación funcional. El valor se rellena solo en el lado del envío en el que se ha recibido confirmación funcional de los mensajes enviados al asociado. (Opcional) |
-| functionalGroupControlNumber | String | Número de control del grupo funcional de la confirmación funcional. El valor se rellena solo en el lado del envío en el que se ha recibido confirmación funcional de los mensajes enviados al asociado. (Opcional) |
-| isaSegment | string | Segmento ISA del mensaje. El valor se rellena solo en el lado del envío en el que se ha recibido confirmación funcional de los mensajes enviados al asociado. (Opcional) |
-| gsSegment | String | Segmento GS del mensaje. El valor se rellena solo en el lado del envío en el que se ha recibido confirmación funcional de los mensajes enviados al asociado. (Opcional) |
+| agreementName | String | Nombre de mensajes de saludo de hello X12 acuerdo toowhich se resuelve. (Opcional) |
+| dirección | Enum | Dirección de flujo de mensajes de Hola, recepción o envío. (Obligatorio) |
+| interchangeControlNumber | String | Número de control de confirmación funcional Hola de intercambio. Valor rellena solo para el lado de envío de Hola donde se recibe la confirmación funcional para hello toopartner de mensajes enviados. (Opcional) |
+| functionalGroupControlNumber | String | Número de control de grupo funcional de confirmación funcional Hola. Valor rellena solo para el lado de envío de Hola donde se recibe la confirmación funcional para hello toopartner de mensajes enviados. (Opcional) |
+| isaSegment | String | Segmento ISA del mensaje de bienvenida. Valor rellena solo para el lado de envío de Hola donde se recibe la confirmación funcional para hello toopartner de mensajes enviados. (Opcional) |
+| gsSegment | String | Segmento GS de mensaje de bienvenida. Valor rellena solo para el lado de envío de Hola donde se recibe la confirmación funcional para hello toopartner de mensajes enviados. (Opcional) |
 | respondingfunctionalGroupControlNumber | string | Número de control de intercambio de respuesta. (Opcional) |
-| respondingFunctionalGroupId | String | Identificador del grupo funcional de respuesta, que se asigna a AK101 en la confirmación. (Opcional) |
+| respondingFunctionalGroupId | String | Id. de grupo funcional de responder, que asigna tooAK101 en la confirmación de Hola. (Opcional) |
 | respondingtransactionSetControlNumber | string | Número de control del conjunto de transacciones de respuesta. (Opcional) |
-| respondingTransactionSetId | string | Identificador del conjunto de transacciones de respuesta, que se asigna a AK201 en la confirmación. (Opcional) |
+| respondingTransactionSetId | String | Id., que se asigna tooAK201 en la confirmación de hello del conjunto de transacciones responde. (Opcional) |
 | statusCode | Booleano | Código de estado de la confirmación del conjunto de transacciones. (Obligatorio) |
 | segmentsCount | Enum | Código de estado de la confirmación. Los valores permitidos son **Accepted**, **Rejected**, y **AcceptedWithErrors**. (Obligatorio) |
-| processingStatus | Enum | Estado de procesamiento de la confirmación. Los valores permitidos son **Received**, **Generated** y **Sent**. (Obligatorio) |
+| processingStatus | Enum | Estado de procesamiento de confirmación de Hola. Los valores permitidos son **Received**, **Generated** y **Sent**. (Obligatorio) |
 | CorrelationMessageId | String | Identificador del mensaje de correlación. Una combinación de {AgreementName}{*GroupControlNumber*}{TransactionSetControlNumber}. (Opcional) |
-| isMessageFailed | Booleano | Si el mensaje X12 genera error. (Obligatorio) |
-| ak2Segment | String | Confirmación para un conjunto de transacciones del grupo funcional recibido. (Opcional) |
+| isMessageFailed | Booleano | Si no se pudo mensaje hello X12. (Obligatorio) |
+| ak2Segment | String | La confirmación de un conjunto de transacciones dentro de hello recibió grupo funcional. (Opcional) |
 | ak3Segment | String | Indica que hay errores en un segmento de datos. (Opcional) |
-| ak5Segment | String | Indica si el conjunto de transacciones identificado en el segmento de AK2 se acepta o se rechaza, y el motivo de la aceptación o rechazo. (Opcional) |
+| ak5Segment | String | Indica si se acepta o se rechaza Hola conjunto de transacciones identificado en el segmento de hello AK2 y el motivo. (Opcional) |
 
 ## <a name="x12-interchange-tracking-schema"></a>Esquema de seguimiento de intercambio de X12
 ````java
@@ -180,12 +180,12 @@ Puede usar estos esquemas de seguimiento de X12 en su cuenta de integración de 
 | senderIdentifier | string | Identificador del asociado remitente. (Obligatorio) |
 | receiverQualifier | String | Calificador del asociado destinatario. (Obligatorio) |
 | receiverIdentifier | String | Identificador del asociado destinatario. (Obligatorio) |
-| agreementName | String | Nombre del contrato X12 en el que se resuelven los mensajes. (Opcional) |
-| dirección | Enum | Dirección del flujo de mensajes, recibidos o enviados. (Obligatorio) |
+| agreementName | String | Nombre de mensajes de saludo de hello X12 acuerdo toowhich se resuelve. (Opcional) |
+| dirección | Enum | Dirección de flujo de mensajes de Hola, recepción o envío. (Obligatorio) |
 | interchangeControlNumber | String | Número de control de intercambio. (Opcional) |
 | isaSegment | string | Segmento ISA del mensaje. (Opcional) |
-| isTechnicalAcknowledgmentExpected | Booleano | Si la confirmación técnica se ha configurado en el contrato X12. (Obligatorio) |
-| isMessageFailed | Booleano | Si el mensaje X12 genera error. (Obligatorio) |
+| isTechnicalAcknowledgmentExpected | Booleano | ¿Confirmación técnica Hola está configurada en el acuerdo de hello X12. (Obligatorio) |
+| isMessageFailed | Booleano | Si no se pudo mensaje hello X12. (Obligatorio) |
 | isa09 | string | Fecha de intercambio del documento X12. (Opcional) |
 | isa10 | string | Hora de intercambio del documento X12. (Opcional) |
 | isa11 | string | Identificador de los estándares de control del intercambio de X12. (Opcional) |
@@ -229,12 +229,12 @@ Puede usar estos esquemas de seguimiento de X12 en su cuenta de integración de 
 | senderIdentifier | string | Identificador del asociado remitente. (Obligatorio) |
 | receiverQualifier | String | Calificador del asociado destinatario. (Obligatorio) |
 | receiverIdentifier | String | Identificador del asociado destinatario. (Obligatorio) |
-| agreementName | String | Nombre del contrato X12 en el que se resuelven los mensajes. (Opcional) |
-| dirección | Enum | Dirección del flujo de mensajes, recibidos o enviados. (Obligatorio) |
-| interchangeControlNumber | String | Número de control de intercambio de la confirmación técnica que los asociados reciben. (Opcional) |
-| isaSegment | String | Segmento ISA de la confirmación técnica que los asociados reciben. (Opcional) |
-| respondingInterchangeControlNumber |String | Número de control de intercambio de la confirmación técnica que los asociados reciben. (Opcional) |
-| isMessageFailed | Booleano | Si el mensaje X12 genera error. (Obligatorio) |
+| agreementName | String | Nombre de mensajes de saludo de hello X12 acuerdo toowhich se resuelve. (Opcional) |
+| dirección | Enum | Dirección de flujo de mensajes de Hola, recepción o envío. (Obligatorio) |
+| interchangeControlNumber | String | Número de control de confirmación técnica Hola que se recibe de los socios de intercambio. (Opcional) |
+| isaSegment | String | Segmento ISA para la confirmación técnica Hola que se recibe de los socios. (Opcional) |
+| respondingInterchangeControlNumber |String | Número de control de confirmación técnica Hola que se recibe de los socios de intercambio. (Opcional) |
+| isMessageFailed | Booleano | Si no se pudo mensaje hello X12. (Obligatorio) |
 | statusCode | Enum | Código de estado de la confirmación del intercambio. Los valores permitidos son **Accepted**, **Rejected**, y **AcceptedWithErrors**. (Obligatorio) |
 | processingStatus | Enum | Estado de la confirmación. Los valores permitidos son **Received**, **Generated** y **Sent**. (Obligatorio) |
 | ta102 | String | Fecha de intercambio. (Opcional) |
@@ -281,14 +281,14 @@ Puede usar estos esquemas de seguimiento de X12 en su cuenta de integración de 
 | senderIdentifier | string | Identificador del asociado remitente. (Obligatorio) |
 | receiverQualifier | String | Calificador del asociado destinatario. (Obligatorio) |
 | receiverIdentifier | String | Identificador del asociado destinatario. (Obligatorio) |
-| agreementName | String | Nombre del contrato X12 en el que se resuelven los mensajes. (Opcional) |
-| dirección | Enum | Dirección del flujo de mensajes, recibidos o enviados. (Obligatorio) |
+| agreementName | String | Nombre de mensajes de saludo de hello X12 acuerdo toowhich se resuelve. (Opcional) |
+| dirección | Enum | Dirección de flujo de mensajes de Hola, recepción o envío. (Obligatorio) |
 | interchangeControlNumber | String | Número de control de intercambio. (Opcional) |
 | functionalGroupControlNumber | String | Número de control funcional. (Opcional) |
 | gsSegment | string | Segmento GS del mensaje. (Opcional) |
-| isTechnicalAcknowledgmentExpected | Booleano | Si la confirmación técnica se ha configurado en el contrato X12. (Obligatorio) |
-| isFunctionalAcknowledgmentExpected | Booleano | Si la confirmación funcional se ha configurado en el contrato X12. (Obligatorio) |
-| isMessageFailed | Booleano | Si el mensaje X12 genera error. (Obligatorio)|
+| isTechnicalAcknowledgmentExpected | Booleano | ¿Confirmación técnica Hola está configurada en el acuerdo de hello X12. (Obligatorio) |
+| isFunctionalAcknowledgmentExpected | Booleano | ¿Confirmación funcional Hola está configurada en el acuerdo de hello X12. (Obligatorio) |
+| isMessageFailed | Booleano | Si no se pudo mensaje hello X12. (Obligatorio)|
 | gs01 | String | Código del identificador funcional. (Opcional) |
 | gs02 | string | Código del remitente de la aplicación. (Opcional) |
 | gs03 | String | Código del destinatario de la aplicación. (Opcional) |
@@ -335,24 +335,24 @@ Puede usar estos esquemas de seguimiento de X12 en su cuenta de integración de 
 | senderIdentifier | string | Identificador del asociado remitente. (Obligatorio) |
 | receiverQualifier | String | Calificador del asociado destinatario. (Obligatorio) |
 | receiverIdentifier | String | Identificador del asociado destinatario. (Obligatorio) |
-| agreementName | String | Nombre del contrato X12 en el que se resuelven los mensajes. (Opcional) |
-| dirección | Enum | Dirección del flujo de mensajes, recibidos o enviados. (Obligatorio) |
-| interchangeControlNumber | String | Número de control de intercambio, que se rellena para el lado del envío cuando los asociados reciben la confirmación técnica. (Opcional) |
-| functionalGroupControlNumber | string | Número de control de grupo funcional de la confirmación técnica, que se rellena para el lado del envío cuando los asociados reciben la confirmación técnica. (Opcional) |
+| agreementName | String | Nombre de mensajes de saludo de hello X12 acuerdo toowhich se resuelve. (Opcional) |
+| dirección | Enum | Dirección de flujo de mensajes de Hola, recepción o envío. (Obligatorio) |
+| interchangeControlNumber | String | Número de control de intercambio, que se rellena para hello el lado del envío cuando se recibe una confirmación técnica de socios comerciales. (Opcional) |
+| functionalGroupControlNumber | String | Número de control de grupo funcional de confirmación técnica hello, que se rellena para hello el lado del envío cuando se recibe una confirmación técnica de socios comerciales. (Opcional) |
 | isaSegment | string | Igual que el número de control de intercambio, pero se rellena solo en casos específicos. (Opcional) |
 | gsSegment | string | Igual que el número de control de grupo funcional, pero se rellena solo en casos específicos. (Opcional) |
-| respondingfunctionalGroupControlNumber | string | Número de control del grupo funcional original. (Opcional) |
-| respondingFunctionalGroupId | string | Se asocia con AK101 en el identificador del grupo funcional de confirmación. (Opcional) |
-| isMessageFailed | Booleano | Si el mensaje X12 genera error. (Obligatorio) |
+| respondingfunctionalGroupControlNumber | String | Número de control de grupo funcional original de Hola. (Opcional) |
+| respondingFunctionalGroupId | String | Asigna tooAK101 en Id. de grupo funcional de confirmación de Hola. (Opcional) |
+| isMessageFailed | Booleano | Si no se pudo mensaje hello X12. (Obligatorio) |
 | statusCode | Enum | Código de estado de la confirmación. Los valores permitidos son **Accepted**, **Rejected**, y **AcceptedWithErrors**. (Obligatorio) |
-| processingStatus | Enum | Estado de procesamiento de la confirmación. Los valores permitidos son **Received**, **Generated** y **Sent**. (Obligatorio) |
+| processingStatus | Enum | Estado de procesamiento de confirmación de Hola. Los valores permitidos son **Received**, **Generated** y **Sent**. (Obligatorio) |
 | ak903 | String | Número de conjuntos de transacciones recibidos. (Opcional) |
-| ak904 | string | Número de conjuntos de transacciones aceptados en el grupo funcional identificado. (Opcional) |
-| ak9Segment | string | Si el grupo funcional identificado en el segmento AK1 se acepta o se rechaza, y el motivo de la aceptación o el rechazo. (Opcional) |
+| ak904 | String | Número de conjuntos de transacciones aceptados en el grupo funcional de hello identificado. (Opcional) |
+| ak9Segment | String | Si el grupo funcional de hello identificado en el segmento de hello AK1 es aceptado o rechazado y el motivo. (Opcional) |
 
 ## <a name="next-steps"></a>Pasos siguientes
 * Más información sobre la [supervisión de mensajes B2B](logic-apps-monitor-b2b-message.md).
 * Más información sobre los [esquemas de seguimiento de AS2](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md).
 * Más información sobre los [esquemas de seguimiento personalizado de B2B](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md).
-* Más información sobre el [seguimiento de mensajes B2B en el portal de Operations Management Suite](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
-* Más información sobre el [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)  
+* Obtenga información acerca de [seguimiento de mensajes B2B en el portal de Operations Management Suite hello](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
+* Obtener más información sobre hello [paquete de integración empresarial](../logic-apps/logic-apps-enterprise-integration-overview.md).  

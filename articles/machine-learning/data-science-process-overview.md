@@ -1,6 +1,6 @@
 ---
-title: "Introducción al proceso de ciencia de datos en equipo de Azure | Microsoft Docs"
-description: "Se proporciona una metodología de ciencia de datos que ofrece soluciones de análisis predictivo y aplicaciones inteligentes."
+title: "información general del proceso de ciencia de datos de equipo aaaAzure | Documentos de Microsoft"
+description: "Proporciona un análisis predictivos datos ciencia metodología toodeliver soluciones y aplicaciones inteligentes."
 services: machine-learning
 documentationcenter: 
 author: bradsev
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: bradsev;
-ms.openlocfilehash: 006a1465a7cdced1878111beee709c8da4bc310f
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 2ba03585a6f6f855faaa3b5c0c75149cad0a88bb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="team-data-science-process-overview"></a>Introducción al proceso de ciencia de datos en equipo
 
-El proceso de ciencia de datos en equipo (TDSP) es una metodología de ciencia de datos ágil e iterativa para proporcionar soluciones de análisis predictivo y aplicaciones inteligentes de manera eficiente. TDSP ayuda a mejorar la colaboración en equipo y el aprendizaje. Contiene una extracción de los mejores procedimientos y estructuras de Microsoft y otros fabricantes del sector que facilitan la correcta implementación de iniciativas de ciencia de datos. El objetivo es ayudar a las empresas a que se den cuenta de las ventajas de su programa de análisis.
+Hola proceso de ciencia de datos de equipo (TDSP) es una herramienta ágil, soluciones de análisis predictivo de datos reiterativos ciencia metodología toodeliver y aplicaciones inteligentes eficazmente. TDSP ayuda a mejorar la colaboración en equipo y el aprendizaje. Contiene una destilación de prácticas recomendadas de Hola y estructuras de Microsoft y otros en el sector de Hola que facilitan la implementación correcta de Hola de las iniciativas de ciencias de datos. objetivo de Hello es toohelp compañías totalmente beneficios Hola de su programa de análisis.
 
-En este artículo se proporciona una introducción a TDSP y sus componentes principales. Aquí se ofrece una descripción genérica del proceso que se puede implementar con diversas herramientas. En vínculos a temas adicionales, se incluye una descripción más detallada de las tareas del proyecto y de los roles implicados en el ciclo de vida del proceso. También se proporcionan instrucciones sobre cómo implementar el TDSP mediante un conjunto específico de herramientas de Microsoft y la infraestructura que se usa para implementar el TDSP en nuestros equipos.
+En este artículo se proporciona una introducción a TDSP y sus componentes principales. Proporcionamos una descripción del proceso de hello aquí genérica que se pueden implementar con una variedad de herramientas. Se proporciona una descripción más detallada de las tareas de proyecto de Hola y roles implicados en el ciclo de vida de Hola de proceso de hello en otros temas vinculados. Instrucciones sobre cómo se proporciona también tooimplement hello TDSP con un conjunto específico de infraestructura que utilizamos tooimplement hello TDSP en nuestros equipos y herramientas de Microsoft.
 
-## <a name="key-components-of-the-tdsp"></a>Principales componentes del TDSP
+## <a name="key-components-of-hello-tdsp"></a>Componentes clave de hello TDSP
 
-El TDSP consta de los siguientes componentes clave:
+TDSP consta de hello clave de los componentes siguientes:
 
 - Una definición de **ciclo de vida de ciencia de datos**
 - Una **estructura de proyecto estandarizada**
@@ -38,13 +38,13 @@ El TDSP consta de los siguientes componentes clave:
 
 ## <a name="data-science-lifecycle"></a>Ciclo de vida de ciencia de datos
 
-El proceso de ciencia de datos en equipo (TDSP) proporciona un ciclo de vida para estructurar el desarrollo de los proyectos de ciencia de datos. El ciclo de vida describe el proceso, de principio a fin, que suelen seguir los proyectos al ejecutarlos.
+Hola proceso de ciencia de datos de equipo (TDSP) proporciona un desarrollo de hello toostructure de ciclo de vida de los proyectos de ciencia de datos. ciclo de vida de Hello describe los pasos de hello, de toofinish de inicio, que los proyectos suelen seguir cuando se ejecutan.
 
-Aunque esté usando otro ciclo de vida de ciencia de datos, como [CRISP-DM](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining), [KDD](https://wikipedia.org/wiki/Data_mining#Process) o el proceso personalizado de su organización, puede usar también el TDSP basado en tareas en el contexto de esos ciclos de vida de desarrollo. En un nivel alto, estas distintas metodologías tienen mucho en común. 
+Si está usando otro ciclo de vida de ciencia de datos, como [CRISP-DM](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining), [KDD](https://wikipedia.org/wiki/Data_mining#Process) o el proceso personalizado de la organización, puede seguir usando Hola TDSP basado en tareas en el contexto de Hola de esos desarrollo ciclos de vida. En un nivel alto, estas distintas metodologías tienen mucho en común. 
 
-Este ciclo de vida se ha diseñado para proyectos de ciencia de datos que se enviarán como parte de aplicaciones inteligentes. Estas aplicaciones implementan modelos de aprendizaje o inteligencia artificial de máquina para realizar un análisis predictivo. Los proyectos de ciencia de datos exploratorios o proyectos de análisis ad hoc también se pueden beneficiar del uso de este proceso. Pero, en estos casos, puede que algunos de los pasos descritos no sean necesarios.    
+Este ciclo de vida se ha diseñado para proyectos de ciencia de datos que se enviarán como parte de aplicaciones inteligentes. Estas aplicaciones implementan modelos de aprendizaje o inteligencia artificial de máquina para realizar un análisis predictivo. Los proyectos de ciencia de datos exploratorios o proyectos de análisis ad hoc también se pueden beneficiar del uso de este proceso. Pero en estos casos algunos de los pasos de hello descritos no es necesario.    
 
-El ciclo de vida de TDSP se compone de cinco fases principales que se ejecutan de forma iterativa:
+ciclo de vida de Hello TDSP se compone de cinco fases principales que se ejecutan de forma iterativa:
 
 * **Conocimiento del negocio**
 * **Adquisición y comprensión de los datos**
@@ -52,36 +52,36 @@ El ciclo de vida de TDSP se compone de cinco fases principales que se ejecutan d
 * **Implementación**
 * **Aceptación del cliente**
 
-Esta es una representación visual del **ciclo de vida del proceso de ciencia de datos en equipo**. 
+Esta es una representación visual de hello **ciclo de vida del proceso de ciencia de datos de equipo**. 
 
 ![Ciclo de vida de TDSP](./media/data-science-process-overview/tdsp-lifecycle.png) 
 
-En el tema [Team Data Science Process lifecycle](data-science-process-lifecycle.md) (Ciclo de vida del proceso de ciencia de datos en equipo) se describen los objetivos, las tareas y los artefactos de documentación de cada fase del ciclo de vida de TDSP. Estas tareas y artefactos están asociados con roles de proyecto:
+Hello objetivos, tareas y artefactos de la documentación de cada fase del ciclo de vida de hello en TDSP se describen en hello [ciclo de vida del proceso de ciencia de datos de equipo](data-science-process-lifecycle.md) tema. Estas tareas y artefactos están asociados con roles de proyecto:
 
 - Arquitecto de soluciones
 - Jefe de proyecto
 - Científico de datos
 - Responsable de proyecto 
 
-En el siguiente diagrama se proporciona una vista de cuadrícula de las tareas (en azul) y los artefactos (en verde) asociados con cada fase del ciclo de vida (eje horizontal) de estos roles (eje vertical). 
+Hello siguiente diagrama proporciona una vista de cuadrícula de tareas de hello (en azul) y artefactos (en verde) asociados a cada fase del ciclo de vida de hello (en el eje horizontal de hello) para estos roles (en el eje vertical de hello). 
 
 ![Roles y tareas de TDSP](./media/data-science-process-overview/tdsp-tasks-by-roles.png)
 
 ## <a name="standardized-project-structure"></a>Estructura de proyecto estandarizada
 
-Cuando todos los proyectos comparten una estructura de directorio y usan plantillas para los documentos de proyecto, resulta fácil para los miembros del equipo encontrar información sobre sus proyectos. Todo el código y los documentos se almacenan en un sistema de control de versiones (VCS), como Git, TFS o Subversion para permitir la colaboración en equipo. El seguimiento de las tareas y las características en un sistema de seguimiento de proyectos ágil, como Jira, Rally o Visual Studio Team Services permite seguir más de cerca el código para conocer sus características individuales. Este seguimiento también permite a los equipos obtener mejores estimaciones de los costos. TDSP recomienda crear un repositorio independiente para cada proyecto en el VCS de cara al control de versiones, la seguridad de la información y la colaboración. La estructura estandarizada para todos los proyectos ayuda a crear conocimiento institucional en toda la organización.
+Cuando todos los proyectos comparten una estructura de directorios y utilizar plantillas de documentos del proyecto, resulta fácil para obtener información de miembros toofind equipo de hello sobre sus proyectos. Todo el código y documentos se almacenan en un sistema de control de versiones (VCS) como Git, TFS o Subversion tooenable colaboración en equipo. El seguimiento de las tareas y características en un sistema, como Jira de seguimiento de proyectos ágiles, Rally, Visual Studio Team Services permite más cerca de seguimiento de código de hello de cada característica. Este seguimiento también permite mejorar las estimaciones de costes de tooobtain de los equipos. TDSP recomienda crear un repositorio independiente para cada proyecto en hello VCS para colaboración, seguridad de la información y control de versiones. Hola estandarizados estructura para todos los proyectos ayuda a generar institucional conocimiento a través de la organización de Hola.
 
-Se proporcionan plantillas para la estructura de carpetas y los documentos necesarios en ubicaciones estándar. Esta estructura de carpetas organiza los archivos que contienen código para la exploración de datos y la extracción de características, y los que registran las iteraciones de los modelos. Estas plantillas permiten a los miembros del equipo comprender el trabajo que otros realizan, y agregar nuevos miembros a los equipos de forma fácil. Las plantillas de documento se pueden ver y actualizar fácilmente en formato de marcado. Use plantillas para proporcionar listas de comprobación con preguntas clave en cada proyecto y de esta forma garantizar que el problema esté bien definido y que los resultados entregados satisfagan la calidad esperada. Algunos ejemplos son:
+Se proporcionan plantillas para la estructura de carpetas de Hola y documentos necesarios en las ubicaciones estándar. Esta estructura de carpetas organiza los archivos de Hola que contiene código para la exploración de datos y extracción de características y que registre iteraciones de modelo. Estas plantillas que sea más fácil para el trabajo de toounderstand de los miembros de equipo realizado por otros usuarios y tooadd nuevos miembros tooteams. Es fácil plantillas de documento tooview y update en formato de marcado. Usar listas de comprobación de plantillas tooprovide con preguntas clave para cada tooinsure de proyecto que problema Hola está bien definido y ese entregas cumplan calidad Hola se esperaba. Algunos ejemplos son:
 
-- una carta de constitución de proyecto para documentar los problemas empresariales y el ámbito del proyecto
-- informes de datos para documentar la estructura y las estadísticas de los datos sin procesar
-- informes de modelo para documentar las características derivadas
+- un problema empresarial de proyecto carta toodocument Hola y el ámbito del proyecto de Hola
+- estructura de datos de informes toodocument hello y las estadísticas de los datos sin procesar de Hola
+- Hola de modelo informes toodocument derivada características
 - métricas de rendimiento de modelo, como curvas ROC o MSE
 
 
 ![Directorios de TDSP](./media/data-science-process-overview/tdsp-dir-structure.png)
 
-La estructura de directorio se puede clonar desde [Github](https://github.com/Azure/Azure-TDSP-ProjectTemplate).
+se puede clonar la estructura de directorios de Hola de [Github](https://github.com/Azure/Azure-TDSP-ProjectTemplate).
 
 ## <a name="infrastructure-and-resources-for-data-science-projects"></a>Infraestructura y recursos para los proyectos de ciencia de datos
 
@@ -92,7 +92,7 @@ TDSP proporciona recomendaciones para administrar análisis compartido e infraes
 - clústeres de macrodatos (Hadoop o Spark) 
 - servicios de aprendizaje automático. 
 
-La infraestructura de análisis y almacenamiento puede estar en la nube o en el entorno local. Aquí es donde se almacenan los conjuntos de datos sin procesar y procesados. Esta infraestructura permite un análisis reproducible. También evita la duplicación, lo que puede llevar a incoherencias y costos de infraestructura innecesarios. Se proporcionan herramientas para aprovisionar los recursos compartidos, realizar un seguimiento de ellos y permitir que cada miembro del equipo se conecte a dichos recursos de forma segura. También es una buena práctica pedir a los miembros del proyecto que creen un entorno de proceso coherente. Luego, diferentes miembros del equipo pueden replicar y validar los experimentos.
+infraestructura de almacenamiento y análisis de Hola puede estar en la nube Hola o de forma local. Aquí es donde se almacenan los conjuntos de datos sin procesar y procesados. Esta infraestructura permite un análisis reproducible. También evita la duplicación, lo cual puede conducir tooinconsistencies y los costos de infraestructura innecesaria. Las herramientas son siempre tooprovision Hola recursos compartidos, seguirlos y permitir que cada tooconnect de miembro de equipo toothose recursos forma segura. También es una buena práctica pedir a los miembros del proyecto que creen un entorno de proceso coherente. Luego, diferentes miembros del equipo pueden replicar y validar los experimentos.
 
 Este es un ejemplo de un equipo que trabaja en varios proyectos y que comparte diversos componentes de la infraestructura de análisis.
 
@@ -101,9 +101,9 @@ Este es un ejemplo de un equipo que trabaja en varios proyectos y que comparte d
 
 ## <a name="tools-and-utilities-for-project-execution"></a>Herramientas y utilidades para la ejecución de proyectos
 
-En la mayoría de las organizaciones la introducción de procesos presenta ciertos desafíos. Las herramientas proporcionadas para implementar el proceso y el ciclo de vida de ciencia de datos ayudan a reducir las barreras a su adopción y la normalizan. TDSP proporciona un conjunto inicial de herramientas y scripts para impulsar la adopción de TDSP dentro de un equipo. También ayuda a automatizar algunas de las tareas comunes del ciclo de vida de ciencia de datos, como la exploración de datos y el modelado de línea de base. Existe una estructura bien definida que se proporciona a los individuos para que contribuyan con herramientas y utilidades compartidas al repositorio de código compartido de su equipo. Estos recursos se pueden aprovechar luego en otros proyectos dentro del equipo o en la organización. TDSP también tiene previsto habilitar las contribuciones de herramientas y utilidades a toda la comunidad. Las utilidades de TDSP se pueden clonar desde [Github](https://github.com/Azure/Azure-TDSP-Utilities).
+En la mayoría de las organizaciones la introducción de procesos presenta ciertos desafíos. Se proporcionan herramientas de ciclo de vida y el proceso de ciencia de datos de tooimplement Hola ayudan inferior Hola barreras tooand aumentar la coherencia de Hola de su adopción. TDSP proporciona un conjunto inicial de herramientas y scripts de inicio toojump la adopción de TDSP dentro de un equipo. También ayuda a automatizar algunas tareas comunes de hello en hello ciclo de vida de ciencia de datos, como exploración de datos y modelado de línea de base. Hay una estructura bien definida proporcionados para usuarios toocontribute había compartido herramientas y utilidades en el repositorio de código compartido de su equipo. A continuación, se pueden aprovechar estos recursos por otros proyectos de equipo de hello u organización de Hola. TDSP también planea las contribuciones de hello tooenable de herramientas y utilidades toohello conjunto de la Comunidad. Utilidades de Hello TDSP pueden clonarse de [Github](https://github.com/Azure/Azure-TDSP-Utilities).
 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-En [Team Data Science Process: Roles and tasks](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md) (Proceso de ciencia de datos en equipo: roles y tareas) se subrayan los roles y sus tareas asociadas en un equipo de ciencia de datos que se estandariza en este proceso. 
+[Proceso de ciencia de datos de equipo: Los Roles y tareas](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md) se describen los roles del personal clave hello y sus tareas asociadas para un equipo de ciencia de datos que normaliza en este proceso. 

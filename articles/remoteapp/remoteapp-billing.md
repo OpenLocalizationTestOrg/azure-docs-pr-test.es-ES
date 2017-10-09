@@ -1,6 +1,6 @@
 ---
-title: "Cambio de la facturación de Azure RemoteApp | Microsoft Docs"
-description: "Obtenga información sobre cómo detener la facturación de Azure RemoteApp."
+title: "la facturación de hello aaaChange de RemoteApp de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toostop cobrándole de Azure RemoteApp."
 services: remoteapp
 documentationcenter: 
 author: msmbaldwin
@@ -13,25 +13,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
-ms.openlocfilehash: 18c369c4e8ccf828c35ec4a964e61f13613f899b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a0d449a6a9759c4b55156c1694fcd161a1face76
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-stop-being-billed-for-azure-remoteapp"></a>Procedimiento para detener la facturación de Azure RemoteApp
+# <a name="how-toostop-being-billed-for-azure-remoteapp"></a>Cómo toostop cobrándole de Azure RemoteApp
 > [!IMPORTANT]
-> Azure RemoteApp dejará de estar disponible el 31 de agosto de 2017. Para obtener más información, lea el [anuncio](https://go.microsoft.com/fwlink/?linkid=821148) .
+> Azure RemoteApp dejará de estar disponible el 31 de agosto de 2017. Hola de lectura [anuncio](https://go.microsoft.com/fwlink/?linkid=821148) para obtener más información.
 > 
 > 
 
-Se le cobrará siempre y cuando tenga colecciones de Azure RemoteApp, incluso sin usuarios asignados. Para detener esta facturación, elimine todas las colecciones. 
+Se le cobrará siempre y cuando tenga colecciones de Azure RemoteApp, incluso sin usuarios asignados. toostop este facturación, eliminar todas las colecciones. 
 
-Para eliminar la colección, siga estos pasos:
+toodelete la colección:
 
-1. Abra la página de RemoteApp en el Portal de Azure clásico.
-2. Haga clic en la colección que quiera eliminar y, a después, en el botón **Eliminar** de la parte inferior de la página.
+1. Hola portal de Azure clásico, abra la página de RemoteApp de Hola.
+2. Haga clic en la colección de Hola que desee toodelete y, a continuación, haga clic en **eliminar** final Hola de página Hola.
 3. Repita este paso para cada colección de la suscripción. 
 
-El proceso de eliminación de una colección puede durar unos minutos.
+Es posible que tarde unos toodelete minutos cada colección.
 

@@ -1,6 +1,6 @@
 ---
-title: Uso del SDK de Java para desarrollar aplicaciones en Azure Data Lake Store | Microsoft Docs
-description: "Uso del SDK de Java de Azure Data Lake Store para crear una cuenta de Data Lake Store y realizar operaciones básicas en este"
+title: "las aplicaciones de Java SDK toodevelop Hola de aaaUse en el almacén de Azure Data Lake | Documentos de Microsoft"
+description: "Usar una cuenta de almacén de Data Lake del SDK de Java de almacén de Azure Data Lake toocreate y realizar operaciones básicas en hello almacén de Data Lake"
 services: data-lake-store
 documentationcenter: 
 author: nitinme
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 91128b53a2f1cd3ddcbee5b07da0d67668944fb4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d3bcee449c2a2a4bd2f7b241af46ecc010b6b62e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-azure-data-lake-store-using-java"></a>Introducción al Almacén de Azure Data Lake mediante Java
 > [!div class="op_single_selector"]
@@ -33,32 +33,32 @@ ms.lasthandoff: 07/11/2017
 >
 > 
 
-Aprenda a utilizar el SDK de Java de Azure Data Lake Store para realizar operaciones básicas como crear carpetas, cargar y descargar archivos de datos, etc. Para más información sobre Data Lake, consulte [Azure Data Lake Store](data-lake-store-overview.md).
+Obtenga información acerca de cómo toouse Hola SDK de Java de almacén de Azure Data Lake tooperform las operaciones básicas, como crean carpetas, cargar y descargar archivos de datos, etcetera. Para más información sobre Data Lake, consulte [Azure Data Lake Store](data-lake-store-overview.md).
 
-Puede acceder a los documentos de la API del SDK de Java para Azure Data Lake Store en los [documentos de la API de Java de Azure Data Lake Store](https://azure.github.io/azure-data-lake-store-java/javadoc/).
+Puede tener acceso a documentos de la API del SDK de Java de hello para el almacén de Azure Data Lake en [documentos de la API de Java de almacén de Azure datos Lake](https://azure.github.io/azure-data-lake-store-java/javadoc/).
 
 ## <a name="prerequisites"></a>Requisitos previos
 * Kit de desarrollo de Java (JDK 7 o superior, con Java versión 1.7 o posterior).
-* Cuenta de Azure Data Lake Store. Siga las instrucciones que se describen en [Introducción al Almacén de Azure Data Lake mediante el Portal de Azure](data-lake-store-get-started-portal.md).
-* [Maven](https://maven.apache.org/install.html). Este tutorial usa Maven para crear las dependencias de un proyecto. Aunque es posible generarlas sin utilizar un sistema como Maven o Gradle, estos sistemas facilitan mucho la administración de las dependencias.
+* Cuenta de Azure Data Lake Store. Siga las instrucciones de hello en [empezar a trabajar con el almacén de Azure Data Lake con hello Azure Portal](data-lake-store-get-started-portal.md).
+* [Maven](https://maven.apache.org/install.html). Este tutorial usa Maven para crear las dependencias de un proyecto. Aunque es posible toobuild sin usar un sistema de compilación como Maven o Gradle, asegúrese de estos sistemas es mucho más fácil de dependencias de toomanage.
 * (Opcional) Y un IDE como [IntelliJ IDEA](https://www.jetbrains.com/idea/download/), [Eclipse](https://www.eclipse.org/downloads/) o similar.
 
 ## <a name="how-do-i-authenticate-using-azure-active-directory"></a>¿Cómo se puede autenticar mediante Azure Active Directory?
-En este tutorial, utilizamos un secreto de cliente de la aplicación de Azure AD para recuperar un token de Azure Active Directory (autenticación de servicio a servicio). Usamos este token para crear un objeto de cliente de Data Lake Store para llevar a cabo operaciones de archivos y directorios. Para ver instrucciones sobre cómo autenticar con Azure Data Lake Store mediante el secreto del cliente, realizamos los siguientes pasos de alto nivel:
+En este tutorial se usa un tooretrieve secreto de Azure AD aplicación cliente un token de Azure Active Directory (autenticación de servicio a servicio). Usamos este token toocreate un archivo de las operaciones de tooperform de objetos de almacén de Data Lake cliente y operaciones de directorio. Para obtener instrucciones sobre cómo tooauthenticate con el almacén de Azure Data Lake Hola secreto del cliente, realizamos Hola siguiendo los pasos de alto nivel:
 
 1. Creación de una aplicación web de Azure AD
-2. Recupere el identificador de cliente, el secreto de cliente y el punto de conexión del token para la aplicación web de Azure AD.
-3. Configure el acceso para la aplicación web de Azure AD en el archivo o carpeta Data Lake Store al que desee acceder desde la aplicación de Java que está creando.
+2. Recuperar Id. de cliente de hello, secreto del cliente y extremo de token para hello aplicación web de Azure AD.
+3. Configurar el acceso para la aplicación web de Azure AD de hello en hello almacén de Data Lake archivo o carpeta que desee tooaccess de hello aplicación Java que está creando.
 
-Para ver instrucciones sobre cómo realizar estos pasos, consulte [Creación de una aplicación de Active Directory](data-lake-store-authenticate-using-active-directory.md).
+Para obtener instrucciones sobre cómo tooperform estos pasos, consulte [crear una aplicación de Active Directory](data-lake-store-authenticate-using-active-directory.md).
 
-Azure Active Directory ofrece también otras opciones para recuperar un token. Puede elegir entre una serie de diferentes mecanismos de autenticación para adaptarlos a su escenario; por ejemplo, una aplicación que se ejecuta en un explorador, una aplicación distribuida como una aplicación de escritorio o una aplicación de servidor que se ejecuta de forma local o en una máquina virtual de Azure. También puede elegir entre distintos tipos de credenciales, como contraseñas, certificados, autenticación en dos fases, etc. Además, Azure Active Directory permite sincronizar los usuarios de Active Directory local con la nube. Para más detalles, consulte [Escenarios de autenticación para Azure Active Directory](../active-directory/active-directory-authentication-scenarios.md). 
+Azure Active Directory proporciona que otras opciones también tooretrieve un token. Puede elegir entre una serie de toosuit de mecanismos de autenticación diferentes su escenario, por ejemplo, una aplicación que se ejecuta en un explorador, una aplicación distribuida como una aplicación de escritorio o una aplicación de servidor que se ejecuta de forma local o en una virtual de Azure máquina. También puede elegir entre distintos tipos de credenciales, como contraseñas, certificados, autenticación en dos fases, etc. Además, Azure Active Directory permite toosynchronize los usuarios de Active Directory local con la nube de Hola. Para más detalles, consulte [Escenarios de autenticación para Azure Active Directory](../active-directory/active-directory-authentication-scenarios.md). 
 
 ## <a name="create-a-java-application"></a>Creación de una aplicación Java
-El ejemplo de código disponible [en GitHub](https://azure.microsoft.com/documentation/samples/data-lake-store-java-upload-download-get-started/) le guía a través del proceso de creación de archivos en el almacén, concatenación de archivos, descarga de un archivo y eliminación de algunos archivos en el almacén. Esta sección del artículo le guía a través de las principales partes del código.
+ejemplo de código de Hello disponible [en GitHub](https://azure.microsoft.com/documentation/samples/data-lake-store-java-upload-download-get-started/) le guía por el proceso de Hola de crear archivos en el almacén de hello, concatenación de archivos, descargar un archivo y eliminar algunos archivos de almacén de Hola. En esta sección del artículo Hola le guían por partes principales de Hola de código de hello.
 
-1. Cree un proyecto de Maven con [mvn archetype](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) en la línea de comandos o mediante un IDE. Para ver instrucciones sobre cómo crear un proyecto de Java mediante IntelliJ, consulte [este artículo](https://www.jetbrains.com/help/idea/2016.1/creating-and-running-your-first-java-application.html). Para ver instrucciones sobre cómo crear un proyecto con Eclipse, consulte [este artículo](http://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2FgettingStarted%2Fqs-3.htm). 
-2. Agregue las siguientes dependencias a su archivo **pom.xml** de Maven. Agregue el siguiente fragmento de texto entre las etiquetas **\</version>** y **\</project>**:
+1. Crear un proyecto de Maven con [mvn Arquetipo](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) de Hola de línea de comandos o con el IDE. Para obtener instrucciones sobre cómo toocreate un Java proyecto usando IntelliJ, consulte [aquí](https://www.jetbrains.com/help/idea/2016.1/creating-and-running-your-first-java-application.html). Para obtener instrucciones sobre cómo toocreate un proyecto usando Eclipse, consulte [aquí](http://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2FgettingStarted%2Fqs-3.htm). 
+2. Agregar Hola siguiendo las dependencias tooyour Maven **pom.xml** archivo. Agregar Hola siguiente fragmento de texto entre hello  **\</version >** hello y etiqueta  **\</proyecto >** etiqueta:
    
         <dependencies>
           <dependency>
@@ -73,21 +73,21 @@ El ejemplo de código disponible [en GitHub](https://azure.microsoft.com/documen
           </dependency>
         </dependencies>
    
-    La primera dependencia es el uso del SDK de Data Lake Store (`azure-data-lake-store-sdk`) desde el repositorio de maven. La segunda dependencia (`slf4j-nop`) consiste en especificar qué plataforma de registro se usará para esta aplicación. El SDK de Data Lake Store usa la fachada de registro [slf4j](http://www.slf4j.org/), que permite elegir entre una serie de plataformas de registro populares, como log4j, registro de Java, logback, etc., o no registrarse. En este ejemplo, se deshabilitará el registro; por tanto, usamos el enlace **slf4j-nop**. Para usar otras opciones de registro en su aplicación, consulte [este artículo](http://www.slf4j.org/manual.html#projectDep).
+    Hola primera dependencia es toouse Hola SDK de almacén de Data Lake (`azure-data-lake-store-sdk`) del repositorio de maven Hola. Hola segunda dependencia (`slf4j-nop`) es toospecify qué toouse del marco de trabajo de registro para esta aplicación. usa Hello SDK de almacén de Data Lake [slf4j](http://www.slf4j.org/) fachada de registro, que permite elegir un número de marcos de registro populares, como log4j, Java, registro, logback, etc., o no existe ningún registro. En este ejemplo, se deshabilitará el registro, por lo tanto, usamos hello **slf4j-nop** enlace. toouse otras opciones de registro de la aplicación, consulte [aquí](http://www.slf4j.org/manual.html#projectDep).
 
-### <a name="add-the-application-code"></a>Revisión del código de la aplicación
-Hay tres partes principales en el código.
+### <a name="add-hello-application-code"></a>Agregar código de la aplicación hello
+Hay tres partes principales toohello código.
 
-1. Obtener el token de Azure Active Directory.
-2. Usar el token para crear a un cliente de Data Lake Store.
-3. Utilizar al cliente de Data Lake Store para realizar operaciones.
+1. Obtener token de Azure Active Directory Hola
+2. Utilice Hola token toocreate un cliente de almacén de Data Lake.
+3. Usar operaciones de tooperform de cliente de almacén de Data Lake Hola.
 
 #### <a name="step-1-obtain-an-azure-active-directory-token"></a>Paso 1: Obtención de un token de Azure Active Directory.
-El SDK de Data Lake Store proporciona métodos útiles que permiten obtener los tokens de seguridad necesarios para comunicarse con la cuenta de Data Lake Store. Sin embargo, el SDK no obliga a que se usen solo estos métodos. También puede usar cualquier otro medio de obtención del token, como el [SDK de Azure Active Directory](https://github.com/AzureAD/azure-activedirectory-library-for-java) o su propio código personalizado.
+Hola SDK de almacén de Data Lake proporciona métodos útiles que permiten administrar tokens de seguridad de hello necesarios tootalk toohello cuenta de almacén de Data Lake. Sin embargo, Hola SDK no impone que utilizará estos métodos solamente. Puede usar alguna otra forma de obtener el símbolo (token), como el uso de hello [SDK de Azure Active Directory](https://github.com/AzureAD/azure-activedirectory-library-for-java), o su propio código personalizado.
 
-Para utilizar el SDK de Data Lake Store con el fin de obtener el token para la aplicación web de Active Directory que creó anteriormente, utilice una de las subclases de `AccessTokenProvider` (el ejemplo a continuación utiliza `ClientCredsTokenProvider`). El proveedor de tokens almacena en caché las credenciales que se utilizan para obtener el token en la memoria y renueva el token de forma automática si está a punto de expirar. Puede crear sus propias subclases de `AccessTokenProvider` para que los tokens se obtengan mediante su código de cliente, pero por ahora vamos a usar simplemente el que se proporciona en el SDK.
+Hola toouse SDK de almacén de Data Lake tooobtain símbolo (token) para la aplicación Web de Active Directory de hello que creó anteriormente, use uno de subclase de Hola de `AccessTokenProvider` (ejemplo de Hola siguiente utiliza `ClientCredsTokenProvider`). Hola proveedor de tokens cachés Hola credenciales utilizan el token de hello tooobtain en la memoria y renueva automáticamente el token de hello si se trata de tooexpire. Es posible toocreate su propia subclase de `AccessTokenProvider` para los tokens se obtienen mediante el código de cliente, pero por ahora vamos a simplemente use Hola uno se proporcionan en hello SDK.
 
-Reemplace **FILL-IN-HERE** por los valores reales de la aplicación web de Azure Active Directory.
+Reemplace **rellenar en aquí** con valores reales de Hola para hello aplicación Web de Azure Active Directory.
 
     private static String clientId = "FILL-IN-HERE";
     private static String authTokenEndpoint = "FILL-IN-HERE";
@@ -96,15 +96,15 @@ Reemplace **FILL-IN-HERE** por los valores reales de la aplicación web de Azure
     AccessTokenProvider provider = new ClientCredsTokenProvider(authTokenEndpoint, clientId, clientKey);
 
 #### <a name="step-2-create-an-azure-data-lake-store-client-adlstoreclient-object"></a>Paso 2: Creación de un objeto de cliente de Azure Data Lake Store (ADLStoreClient)
-La creación de un objeto [ADLStoreClient](https://azure.github.io/azure-data-lake-store-java/javadoc/) requiere que especifique el nombre de la cuenta de Data Lake Store y el proveedor de token que generó en el paso anterior. Tenga en cuenta que el nombre de la cuenta de Data Lake Store debe ser un nombre de dominio completo. Por ejemplo, reemplace **FILL-IN-HERE** por algo similar a **mydatalakestore.azuredatalakestore.net**.
+Crear un [ADLStoreClient](https://azure.github.io/azure-data-lake-store-java/javadoc/) objeto requiere toospecify Hola almacén de Data Lake cuenta hello y nombre de proveedor de tokens que generó en el último paso de Hola. Tenga en cuenta que Hola cuenta de almacén de Data Lake nombre necesita toobe un nombre de dominio completo. Por ejemplo, reemplace **FILL-IN-HERE** por algo similar a **mydatalakestore.azuredatalakestore.net**.
 
-    private static String accountFQDN = "FILL-IN-HERE";  // full account FQDN, not just the account name
+    private static String accountFQDN = "FILL-IN-HERE";  // full account FQDN, not just hello account name
     ADLStoreClient client = ADLStoreClient.createClient(accountFQDN, provider);
 
-### <a name="step-3-use-the-adlstoreclient-to-perform-file-and-directory-operations"></a>Paso 3: Uso de ADLStoreClient para realizar operaciones de archivo y directorio
-El código siguiente contiene fragmentos de código de ejemplo de algunas operaciones comunes. Puede buscar en todos los [documentos de la API de SDK de Java de Data Lake Store](https://azure.github.io/azure-data-lake-store-java/javadoc/) del objeto **ADLStoreClient** para ver otras operaciones.
+### <a name="step-3-use-hello-adlstoreclient-tooperform-file-and-directory-operations"></a>Paso 3: Usar operaciones de archivo y directorio de la tooperform del ADLStoreClient Hola
+código de Hello siguiente contiene fragmentos de código de ejemplo de algunas operaciones comunes. Puede mirar Hola completa [documentos de API de SDK de Java del almacén de datos Lake](https://azure.github.io/azure-data-lake-store-java/javadoc/) de hello **ADLStoreClient** objeto toosee otras operaciones.
 
-Tenga en cuenta que los archivos se leen y escribes mediante secuencias de Java estándar. Esto significa que puede crear niveles de cualquiera de las secuencias de Java sobre las secuencias de Data Lake Store para beneficiarse de la capacidad estándar de Java (por ejemplo, secuencias impresión para la salida con formato o cualquiera de las secuencias de compresión o cifrado para una capacidad adicional en la parte superior, etc.).
+Tenga en cuenta que los archivos se leen y escribes mediante secuencias de Java estándar. Esto significa que puede crear niveles en cualquiera de las secuencias de Java de Hola sobre hello que toobenefit de funcionalidad de Java estándar (por ejemplo, impresión flujos de salida con formato, o cualquiera de las secuencias de compresión o cifrado de Hola para una funcionalidad adicional en almacén de Data Lake se transmita por secuencias etcetera superior,.).
 
      // create file and write some content
      String filename = "/a/b/c.txt";
@@ -112,14 +112,14 @@ Tenga en cuenta que los archivos se leen y escribes mediante secuencias de Java 
      PrintStream out = new PrintStream(stream);
      for (int i = 1; i <= 10; i++) {
          out.println("This is line #" + i);
-         out.format("This is the same line (%d), but using formatted output. %n", i);
+         out.format("This is hello same line (%d), but using formatted output. %n", i);
      }
      out.close();
     
     // set file permission
     client.setPermission(filename, "744");
 
-    // append to file
+    // append toofile
     stream = client.getAppendStream(filename);
     stream.write(getSampleContent());
     stream.close();
@@ -132,11 +132,11 @@ Tenga en cuenta que los archivos se leen y escribes mediante secuencias de Java 
     }
     in.close();
 
-    // concatenate the two files into one
+    // concatenate hello two files into one
     List<String> fileList = Arrays.asList("/a/b/c.txt", "/a/b/d.txt");
     client.concatenateFiles("/a/b/f.txt", fileList);
 
-    //rename the file
+    //rename hello file
     client.rename("/a/b/f.txt", "/a/b/g.txt");
 
     // list directory contents
@@ -146,15 +146,15 @@ Tenga en cuenta que los archivos se leen y escribes mediante secuencias de Java 
         printDirectoryInfo(entry);
     }
 
-    // delete directory along with all the subdirectories and files in it
+    // delete directory along with all hello subdirectories and files in it
     client.deleteRecursive("/a");
 
-#### <a name="step-4-build-and-run-the-application"></a>Paso 4: Compilación y ejecución de la aplicación
-1. Para ejecutarla desde un IDE, localícela y presione el botón **Ejecutar**. Para ejecutarla desde Maven, utilice [exec:exec](http://www.mojohaus.org/exec-maven-plugin/exec-mojo.html).
-2. Para generar un archivo jar independiente que puede ejecutar desde la línea de comandos, genere el archivo jar con todas las dependencias incluidas mediante el [complemento de ensamblado de Maven](http://maven.apache.org/plugins/maven-assembly-plugin/usage.html). El archivo pom.xml en el [ejemplo de código fuente en github](https://github.com/Azure-Samples/data-lake-store-java-upload-download-get-started/blob/master/pom.xml) tiene un ejemplo de cómo hacerlo.
+#### <a name="step-4-build-and-run-hello-application"></a>Paso 4: Compilar y ejecutar la aplicación hello
+1. toorun desde dentro de un IDE, buscar y presione hello **ejecutar** botón. toorun de Maven, use [exec: exec](http://www.mojohaus.org/exec-maven-plugin/exec-mojo.html).
+2. un archivo jar independiente que se puede ejecutar desde jar de Hola de compilación de línea de comandos con todas las dependencias incluidas, con hello tooproduce [Maven ensamblado complemento](http://maven.apache.org/plugins/maven-assembly-plugin/usage.html). Hola pom.xml Hola [código fuente de ejemplo en github](https://github.com/Azure-Samples/data-lake-store-java-upload-download-get-started/blob/master/pom.xml) tiene un ejemplo de cómo toodo esto.
 
 ## <a name="next-steps"></a>Pasos siguientes
-* [Explorar JavaDoc para el SDK de Java](https://azure.github.io/azure-data-lake-store-java/javadoc/)
+* [Explorar JavaDoc para hello SDK de Java](https://azure.github.io/azure-data-lake-store-java/javadoc/)
 * [Protección de los datos en el Almacén de Data Lake](data-lake-store-secure-data.md)
 * [Uso de Análisis de Azure Data Lake con el Almacén de Data Lake](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Uso de HDInsight de Azure con el Almacén de Data Lake](data-lake-store-hdinsight-hadoop-use-portal.md)

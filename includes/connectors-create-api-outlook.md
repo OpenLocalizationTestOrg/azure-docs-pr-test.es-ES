@@ -1,17 +1,17 @@
-## <a name="connect-to-outlookcom"></a>Conectarse a Outlook.com
+## <a name="connect-toooutlookcom"></a>Conectar tooOutlook.com
 ### <a name="prerequisites"></a>Requisitos previos
 * Una cuenta de Outlook.com
 
-Para poder usar su cuenta de Outlook.com en una aplicación lógica, debe autorizar a la aplicación lógica para que pueda conectarse a dicha cuenta. Por suerte, esto es muy fácil de hacer desde la aplicación lógica en el Portal de Azure. 
+Antes de poder usar su cuenta de Outlook.com en una aplicación de lógica, debe autorizar la cuenta de hello lógica aplicación tooconnect tooyour Outlook.com. Afortunadamente, puede hacer esto fácilmente desde dentro de la aplicación lógica en hello Portal de Azure. 
 
-Aquí se explica cómo autorizar a la aplicación lógica para conectarse a su cuenta de Outlook.com:
+Estos es Hola pasos tooauthorize su tooconnect de aplicación lógica tooyour cuenta de Outlook.com:
 
-1. Todas las aplicaciones lógicas se inician a través de un desencadenador; por eso, después de crear la aplicación lógica se abrirá el diseñador con una lista de los desencadenadores que puede usar para iniciarla:
+1. Todas las aplicaciones de lógica necesitan toobe iniciada por un desencadenador después de crear la aplicación lógica, se abre Diseñador de Hola y muestra una lista de desencadenadores a los que puede usar toostart la aplicación lógica:
    
    ![](./media/connectors-create-api-outlook/office365-outlook-0.png)
-2. Escriba "outlook" en el cuadro de búsqueda. Vea que la lista se filtra para mostrar todos los desencadenadores que tengan "Outlook" en el nombre: ![](./media/connectors-create-api-outlook/office365-outlook-0-5.png)
+2. Escriba "outlook" en el cuadro de búsqueda de Hola. Lista de Hola de aviso está filtrada toolist todos Hola desencadenadores con "Outlook" en el nombre de hello:![](./media/connectors-create-api-outlook/office365-outlook-0-5.png)
 3. Seleccione **Office 365 Outlook - On new email** (Outlook de Office 365: al recibir correo nuevo).   
-   Si no ha creado ninguna conexión a Outlook antes, se le pedirá que indique sus credenciales de Outlook.com. Estas credenciales se usarán para autorizar a la aplicación lógica a conectarse y acceder a los datos de su cuenta de Outlook.com: ![](./media/connectors-create-api-outlook/office365-outlook-1.png)
+   Si no ha creado ningún tooOutlook conexiones antes, obtendrá tooprovide solicitada sus credenciales de Outlook.com. Estas credenciales se usa tooauthorize su tooconnect de aplicación lógica para y tener acceso a datos de la cuenta de Outlook.com:![](./media/connectors-create-api-outlook/office365-outlook-1.png)
 4. Indique sus credenciales de Outlook e inicie sesión: ![](./media/connectors-create-api-outlook/office365-outlook-2.png)  
-   Eso es todo. Acaba de crear una conexión a Outlook. Esta conexión estará disponible para su uso en cualquier otra aplicación lógica que cree.
+   Eso es todo. Ahora ha creado una tooOutlook de conexión. Esta conexión estará disponible para su uso en cualquier otra aplicación lógica que cree.
 

@@ -1,6 +1,6 @@
 ---
-title: "Cómo elegir algoritmos de aprendizaje automático| Microsoft Docs"
-description: "Cómo elegir algoritmos de Aprendizaje automático de Azure para el aprendizaje supervisado y no supervisado en experimentos de agrupación en clústeres, clasificación o regresión."
+title: "algoritmos de aprendizaje automático de toochoose de aaaHow | Documentos de Microsoft"
+description: "¿Cómo toochoose aprendizaje algoritmos de aprendizaje supervisado y de agrupación en clústeres, clasificación o regresión experimentos."
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -15,65 +15,65 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/25/2017
 ms.author: garye
-ms.openlocfilehash: e7e912f1b9bb57c1e23d10c49216f7d7b4fe4690
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 367b2278acc2435f27f9d24ead8199db58aca283
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-choose-algorithms-for-microsoft-azure-machine-learning"></a>Cómo elegir algoritmos para Aprendizaje automático de Microsoft Azure
-La respuesta a la pregunta "¿qué algoritmo de aprendizaje automático debería usar?" siempre es "Depende". Depende del tamaño, la calidad y la naturaleza de los datos. Depende de qué desea hacer con la respuesta. Depende de cómo se hayan traducido los cálculos del algoritmo en instrucciones para el equipo que está usando. Y también depende del tiempo de que disponga. Ni siquiera los científicos con más experiencia en datos pueden determinar qué algoritmo funcionará mejor antes de probarlos.
+# <a name="how-toochoose-algorithms-for-microsoft-azure-machine-learning"></a>¿Cómo toochoose algoritmos de aprendizaje automático de Microsoft Azure
+Hola responder toohello pregunta "¿qué máquina algoritmo de aprendizaje debo usar?" siempre es "Depende". Depende en tamaño hello, la calidad y la naturaleza de los datos de Hola. Depende de lo que desee toodo con respuesta Hola. Depende de cómo se traducen matemáticas Hola del algoritmo de hello en las instrucciones de equipo de Hola que está utilizando. Y también depende del tiempo de que disponga. Incluso los científicos de datos más experimentado de hello no pueden determinar qué algoritmo llevará a cabo mejor antes de intentar ellos.
 
-## <a name="the-machine-learning-algorithm-cheat-sheet"></a>Hoja de referencia rápida de algoritmos de aprendizaje automático
-La **Hoja de referencia rápida de algoritmos de aprendizaje automático de Microsoft Azure** ayuda a elegir el algoritmo de aprendizaje automático adecuado para sus soluciones de análisis predictivos de la biblioteca de algoritmos de aprendizaje automático de Microsoft Azure.
-En este artículo se explica cómo usarla.
+## <a name="hello-machine-learning-algorithm-cheat-sheet"></a>Hola hoja de referencia rápida de algoritmo de aprendizaje de máquina
+Hola **Microsoft Azure Machine Learning algoritmo referencia rápida hoja** le ayuda a elegir derecha Hola máquina algoritmo de aprendizaje para las soluciones de análisis predictivos de biblioteca de aprendizaje automático de Microsoft Azure Hola de algoritmos.
+En este artículo se explica cómo toouse lo.
 
 > [!NOTE]
-> Para descargar la hoja de referencia rápida y usarla con las instrucciones de este artículo, consulte la [hoja de referencia rápida de algoritmos de aprendizaje automático de Estudio de aprendizaje automático de Microsoft Azure](machine-learning-algorithm-cheat-sheet.md).
+> hoja de referencia de toodownload hello y siga a lo largo de este artículo, vaya demasiado[máquina hoja de referencia de algoritmo de aprendizaje para estudio de aprendizaje automático de Microsoft Azure](machine-learning-algorithm-cheat-sheet.md).
 > 
 > 
 
-Esta hoja de referencia rápida está pensada para un público muy específico: científicos de datos principiantes con conocimientos de aprendizaje automático de nivel universitario que intentan elegir un algoritmo para empezar en Estudio de aprendizaje automático de Azure. Eso significa que en ella se hacen algunas generalizaciones y simplificaciones exageradas, pero le sirve para orientarse bien. También significa que hay muchos algoritmos que no están incluidos aquí. A medida que Aprendizaje automático de Azure vaya creciendo y abarcando un conjunto más completo de métodos disponibles, iremos agregándolos.
+Esta hoja de referencia tiene una audiencia concreta muy en cuenta: principio científico de datos con aprendizaje automático de nivel superiores, intentar toochoose un toostart algoritmo con en estudio de aprendizaje automático de Azure. Eso significa que en ella se hacen algunas generalizaciones y simplificaciones exageradas, pero le sirve para orientarse bien. También significa que hay muchos algoritmos que no están incluidos aquí. A medida que aprendizaje automático de Azure aumenta tooencompass un conjunto más completo de métodos disponibles, vamos a agregar.
 
-Estas recomendaciones son una recopilación de los comentarios y las sugerencias de muchos científicos de datos y expertos en aprendizaje automático. No estuvimos de acuerdo en todo, pero intentamos combinar las opiniones para llegar a un consenso general. La mayoría de los argumentos de desacuerdo comienzan con "Depende...".
+Estas recomendaciones son una recopilación de los comentarios y las sugerencias de muchos científicos de datos y expertos en aprendizaje automático. Se no coincidir con todo, pero he probado tooharmonize nuestra opinión en un consenso aproximado. La mayoría de las instrucciones de Hola de desacuerdo comienzan por "Depende..."
 
-### <a name="how-to-use-the-cheat-sheet"></a>Cómo usar la hoja de referencia rápida
-Lea las etiquetas de ruta de acceso y algoritmo del gráfico con el siguiente formato: "Para *&lt;etiqueta de ruta de acceso&gt;*, use *&lt;algoritmo&gt;*". Por ejemplo, "Para *velocidad*, use la *regresión logística de dos clases*". Ciertas veces, se aplica más de una rama.
-Otras, ninguna de ellas es la ideal. Tienen la finalidad de ser recomendaciones generales, así que no se preocupe si no son exactas.
-Varios de los científicos de datos con los que hablé dijeron que la única forma de encontrar el mejor algoritmo es probarlos todos.
+### <a name="how-toouse-hello-cheat-sheet"></a>La hoja de referencia toouse Hola rápida
+Leer las etiquetas de ruta de acceso y el algoritmo de Hola de gráfico de hello como "para  *&lt;etiqueta de la ruta de acceso&gt;*, use  *&lt;algoritmo&gt;*." Por ejemplo, "Para *velocidad*, use la *regresión logística de dos clases*". Ciertas veces, se aplica más de una rama.
+Otras, ninguna de ellas es la ideal. Está previsto toobe de regla recomendaciones, por lo que no se preocupe que sea exacto.
+Varios científicos de datos describe con dice que solo seguro hasta encontrar el mejor algoritmo de hello es tootry Hola todas ellas.
 
-Este es un ejemplo de la [Galería de Cortana Intelligence](http://gallery.cortanaintelligence.com/) de un experimento en el que se prueban varios algoritmos con los mismos datos y se comparan los resultados: [Comparación de clasificadores multiclase: reconocimiento de letras](http://gallery.cortanaintelligence.com/Details/a635502fc98b402a890efe21cec65b92).
+Este es un ejemplo de Hola [Galería de inteligencia de Cortana](http://gallery.cortanaintelligence.com/) de un experimento que intente varios algoritmos contra Hola mismos datos y compara Hola resultados: [comparación de clasificadores multiclase: reconocimiento de letra ](http://gallery.cortanaintelligence.com/Details/a635502fc98b402a890efe21cec65b92).
 
 > [!TIP]
-> Para descargar e imprimir un diagrama con información general de las funcionalidades de Estudio de aprendizaje automático, consulte [Diagrama de información general de las funcionalidades de Estudio de aprendizaje automático de Azure](machine-learning-studio-overview-diagram.md).
+> toodownload e imprimir un diagrama que ofrezca una visión general de las capacidades de Hola de estudio de aprendizaje automático, consulte [diagrama de información general de las capacidades de estudio de aprendizaje automático de Azure](machine-learning-studio-overview-diagram.md).
 > 
 > 
 
 ## <a name="flavors-of-machine-learning"></a>Variantes del aprendizaje automático
 ### <a name="supervised"></a>Supervisado
-Los algoritmos de aprendizaje supervisado hacen predicciones basadas en un conjunto de ejemplos. Por ejemplo, los precios históricos de las acciones pueden usarse para hacer estimaciones aventuradas de los precios futuros. Cada ejemplo usado para el entrenamiento se etiqueta con el valor de interés; en este caso, el precio de las acciones. Un algoritmo de aprendizaje supervisado busca patrones en esas etiquetas de valor. Puede usar cualquier información que pueda ser relevante, como el día de la semana, la temporada, datos financieros de la empresa, el tipo de sector o la presencia de eventos geopolíticos perjudiciales, y cada algoritmo busca tipos diferentes de patrones. Una vez que el algoritmo encuentra el mejor patrón posible, lo usa para hacer predicciones de datos de prueba sin etiquetar; en este caso, los precios futuros.
+Los algoritmos de aprendizaje supervisado hacen predicciones basadas en un conjunto de ejemplos. Por ejemplo, cotizaciones históricos pueden ser estimaciones toohazard usados en los precios de futuras. Cada ejemplo que se usa para el entrenamiento se etiqueta con el valor de Hola de interés: en este caso Hola precio de las acciones. Un algoritmo de aprendizaje supervisado busca patrones en esas etiquetas de valor. Puede usar cualquier información que podría ser pertinente: día de Hola de semana de hello, temporada de hello, datos financieros de la compañía de hello, tipo hello del sector, presencia de Hola de acontecimientos geopolíticos interrumpen el funcionamiento, y cada algoritmo examina para diferentes tipos de patrones. Una vez que el algoritmo de hello encuentra patrón mejor Hola puede, usa que las predicciones de toomake de patrón de sin etiqueta de datos de prueba, los precios de mañana.
 
-El aprendizaje supervisado es un tipo conocido y útil de aprendizaje automático. Con una única excepción: todos los módulos de Azure Machine Learning son algoritmos de aprendizaje supervisado. Hay varios tipos específicos de aprendizaje supervisado representados en Aprendizaje automático de Azure: la clasificación, la regresión y la detección de anomalías.
+El aprendizaje supervisado es un tipo conocido y útil de aprendizaje automático. Con una excepción, todos los módulos de hello en el aprendizaje automático de Azure supervisados algoritmos de aprendizaje. Hay varios tipos específicos de aprendizaje supervisado representados en Aprendizaje automático de Azure: la clasificación, la regresión y la detección de anomalías.
 
-* **Clasificación**. Cuando los datos se usan para predecir una categoría, el aprendizaje supervisado también se denomina clasificación. Esto ocurre cuando se asigna una imagen, como una foto de un 'gato' o un 'perro'. Cuando hay solo dos opciones, se denomina clasificación **de dos clases** o **binomial**. Cuando hay más categorías, como cuando se predice el ganador del torneo March Madness de la NCAA, este problema se conoce como **clasificación multiclase**.
+* **Clasificación**. Cuando los datos de Hola se toopredict usa una categoría, aprendizaje supervisado también se denomina clasificación. Este es el caso de hello al asignar una imagen como una imagen de un 'cat' o "dog". Cuando hay solo dos opciones, se denomina clasificación **de dos clases** o **binomial**. Cuando hay más categorías, como cuando se predicen ganador Hola de torneo de NCAA marzo Madness hello, este problema se conoce como **clasificación multiclase**.
 * **Regresión**. Cuando se predice un valor, como el precio de las acciones, el aprendizaje supervisado se denomina regresión.
-* **Detección de anomalías**. A veces, el objetivo es identificar puntos de datos que simplemente no son habituales. En la detección de fraudes, por ejemplo, los patrones de gasto de tarjeta de crédito muy poco habituales son sospechosos. Las posibles variaciones son tan numerosas y los ejemplos de formación son tan pocos, que no es posible saber de qué actividad fraudulenta se trata. El enfoque que toma la detección de anomalías es simplemente aprender qué puede considerarse como actividad normal (haciendo uso de las transacciones no fraudulentas del historial) e identificar todo lo que sea significativamente diferente.
+* **Detección de anomalías**. A veces hello objetivo es tooidentify puntos de datos que no son simplemente habituales. En la detección de fraudes, por ejemplo, los patrones de gasto de tarjeta de crédito muy poco habituales son sospechosos. las posibles variaciones de Hello son tan numerosas y Hola ejemplos de entrenamiento tan pocos, que es no es posible toolearn aspecto qué actividades fraudulentas. El enfoque que toma la detección de anomalías es toosimply Obtenga información acerca de qué actividades normales aspecto (con las transacciones no fraudulentas un historial) e identificar cualquier cosa que es significativamente diferente.
 
 ### <a name="unsupervised"></a>Sin supervisar
-En el aprendizaje sin supervisar, los puntos de datos no tienen etiquetas asociadas a ellos. En su lugar, el objetivo de un algoritmo de aprendizaje sin supervisar es organizar los datos de alguna manera o describir su estructura. Esto puede significar agruparlos en clústeres o buscar diferentes maneras de examinar datos complejos para que parezcan más simples o más organizados.
+En el aprendizaje sin supervisar, los puntos de datos no tienen etiquetas asociadas a ellos. En su lugar, el objetivo Hola de un supervisados aprendizaje algoritmo consiste en organizar los datos de Hola de alguna manera o toodescribe su estructura. Esto puede significar agruparlos en clústeres o buscar diferentes maneras de examinar datos complejos para que parezcan más simples o más organizados.
 
 ### <a name="reinforcement-learning"></a>Aprendizaje de refuerzo
-En el aprendizaje de refuerzo, el algoritmo elige una acción en respuesta a cada punto de datos. El algoritmo de aprendizaje también recibe una señal de recompensa un poco más adelante, que indica cómo de buena fue la decisión.
-Según esto, el algoritmo modifica su estrategia para lograr la mayor recompensa. Actualmente no hay ningún módulo de algoritmo de aprendizaje de refuerzo en Aprendizaje automático de Azure. El aprendizaje de refuerzo es común en robótica, donde el conjunto de lecturas del sensor en un punto en el tiempo es un punto de datos, y el algoritmo debe elegir la siguiente acción del robot. También resulta perfecto para las aplicaciones de Internet de las cosas.
+En el aprendizaje de refuerzo, algoritmo de hello obtiene toochoose una acción de punto de datos de respuesta tooeach. algoritmo de aprendizaje de Hello también recibe una señal de recompensa era un poco más adelante, que indica la calidad decisión Hola.
+En función de esto, algoritmo de hello modifica su estrategia de recompensa más alto de orden tooachieve Hola. Actualmente no hay ningún módulo de algoritmo de aprendizaje de refuerzo en Aprendizaje automático de Azure. Aprendizaje de refuerzo es habitual en robótica, donde hello conjunto de lecturas de sensor en un punto en el tiempo es un punto de datos y algoritmo de hello debe elegir la acción siguiente del robot Hola. También resulta perfecto para las aplicaciones de Internet de las cosas.
 
 ## <a name="considerations-when-choosing-an-algorithm"></a>Consideraciones al elegir un algoritmo
 ### <a name="accuracy"></a>Precisión
-No siempre es necesario obtener la respuesta más precisa posible.
-A veces, una aproximación ya es útil, según para qué se la desee usar. Si es así, puede reducir el tiempo de procesamiento de forma considerable al usar métodos más aproximados. Otra ventaja de los métodos más aproximados es que tienden naturalmente a evitar el [sobreajuste](https://youtu.be/DQWI1kvmwRg).
+Obtener respuesta sean más preciso de hello posibles no siempre es necesario.
+A veces, una aproximación ya es útil, según para qué se la desee usar. Si ese es el caso de hello, es posible que pueda toocut el tiempo de procesamiento considerablemente por quede con más métodos aproximados. Otra ventaja de los métodos más aproximados es que tienden naturalmente a evitar el [sobreajuste](https://youtu.be/DQWI1kvmwRg).
 
 ### <a name="training-time"></a>Tiempo de entrenamiento
-La cantidad de minutos u horas necesarios para entrenar un modelo varía mucho según el algoritmo. A menudo, el tiempo de entrenamiento depende de la precisión (generalmente, uno determina al otro). Además, algunos algoritmos son más sensibles a la cantidad de puntos de datos que otros.
-Si el tiempo es limitado, esto puede determinar la elección del algoritmo, especialmente cuando el conjunto de datos es grande.
+Hola número de minutos u horas tootrain es necesario que un modelo de un gran ahorro varía entre los algoritmos. Tiempo de entrenamiento es a menudo estrechamente relacionada con la precisión, uno normalmente acompaña Hola otro. Además, algunos algoritmos son más sensible toohello número de puntos de datos que otras personas.
+Cuando se limita el tiempo puede controlar elegir Hola algoritmo, especialmente cuando el conjunto de datos de hello es grande.
 
 ### <a name="linearity"></a>Linealidad
 Muchos algoritmos de aprendizaje automático hacen uso de la linealidad. Los algoritmos de clasificación lineal suponen que las clases pueden estar separadas mediante una línea recta (o su análogo de mayores dimensiones). Entre ellos, se encuentran la regresión logística y las máquinas de vectores de soporte (como las que se implementan en Aprendizaje automático de Azure).
@@ -81,26 +81,26 @@ Los algoritmos de regresión lineal suponen que las tendencias de datos siguen u
 
 ![Límite de clase no lineal][1]
 
-***Límite de clase no lineal*** *: la dependencia de un algoritmo de clasificación lineal se traduciría en baja precisión*.
+***Límite de clase no lineal****: la dependencia de un algoritmo de clasificación lineal se traduciría en baja precisión*.
 
 ![Datos con tendencia no lineal][2]
 
-***Datos con tendencia no lineal*** *: el uso de un método de regresión lineal generaría errores mucho mayores que los necesarios*
+***Datos con tendencia no lineal****: el uso de un método de regresión lineal generaría errores mucho mayores que los necesarios*
 
-A pesar de los riesgos, los algoritmos lineales son muy populares como primera línea de ataque. Tienden a ser algorítmicamente sencillos y rápidos para entrenar.
+A pesar de los riesgos, los algoritmos lineales son muy populares como primera línea de ataque. Suelen toobe forma algorítmica simple y rápida para entrenar.
 
 ### <a name="number-of-parameters"></a>Cantidad de parámetros
-Los parámetros son los botones que un científico de datos activa al configurar un algoritmo. Son números que afectan al comportamiento del algoritmo, como la tolerancia a errores o la cantidad de iteraciones, o bien opciones de variantes de comportamiento del algoritmo. El tiempo de entrenamiento y la precisión del algoritmo a veces pueden ser muy sensibles y requerir solo la configuración correcta. Normalmente, los algoritmos con parámetros de números grandes requieren la mayor cantidad de pruebas y errores posible para encontrar una buena combinación.
+Los parámetros son botones de hello científico de datos obtiene tooturn al configurar un algoritmo. Únicamente son números que afectan al comportamiento del algoritmo de hello, como tolerancia a errores o el número de iteraciones u opciones entre las variantes de funcionamiento del algoritmo de Hola. tiempo de entrenamiento de Hola y la precisión del algoritmo de Hola a veces pueden ser muy confidenciales toogetting configuración de derechos de hello solo. Normalmente, los algoritmos con parámetros de grandes cantidades requieren hello más prueba y error toofind una combinación válida.
 
-También puede haber un bloque de módulos de [barrido de parámetros](machine-learning-algorithm-parameters-optimize.md) en Aprendizaje automático de Azure que prueba automáticamente todas las combinaciones de parámetros en cualquier granularidad que se elija. Aunque esta es una excelente manera de asegurarse de que se ha distribuido el espacio de parámetros, el tiempo necesario para entrenar un modelo aumenta de manera exponencial con la cantidad de parámetros.
+También puede haber un bloque de módulos de [barrido de parámetros](machine-learning-algorithm-parameters-optimize.md) en Aprendizaje automático de Azure que prueba automáticamente todas las combinaciones de parámetros en cualquier granularidad que se elija. Aunque esto es una excelente manera toomake seguro de que ha ocupa espacio paramétrico de Hola, Hola tiempo necesario tootrain un modelo aumenta exponencialmente con número de Hola de parámetros.
 
-La ventaja es que tener muchos parámetros normalmente indica que un algoritmo tiene mayor flexibilidad. A menudo, puede lograr una precisión muy alta. Siempre y cuando se encuentre la combinación correcta de configuraciones de parámetros.
+Hello ventaja es que tiene muchos parámetros normalmente indica que un algoritmo tiene mayor flexibilidad. A menudo, puede lograr una precisión muy alta. Proporciona que puede encontrar la combinación correcta de Hola de configuración de parámetros.
 
 ### <a name="number-of-features"></a>Cantidad de características
-Para ciertos tipos de datos, la cantidad de características puede ser muy grande en comparación con la cantidad de puntos de datos. Este suele ser el caso de la genética o los datos textuales. Una gran cantidad de características puede trabar algunos algoritmos de aprendizaje y provocar que el tiempo de entrenamiento sea demasiado largo. Las máquinas de vectores de soporte son especialmente adecuadas para este caso (ver abajo).
+Para determinados tipos de datos, el número de Hola de características puede ser toohello en comparación con un gran número de puntos de datos. Suele ser el caso de hello genetics o datos de texto. gran número de características de Hello puede perjudicar algunos algoritmos de aprendizaje, realizar el entrenamiento unfeasibly largos de tiempo. Máquinas de vectores de soporte técnico son especialmente adecuada toothis caso (ver abajo).
 
 ### <a name="special-cases"></a>Casos especiales
-Algunos algoritmos de aprendizaje hacen determinadas suposiciones sobre la estructura de los datos o los resultados deseados. Si encuentra uno que se ajuste a sus necesidades, este puede ofrecerle resultados más útiles, predicciones más precisas o tiempos de entrenamiento más cortos.
+Algunos algoritmos de aprendizaje suposiciones determinado sobre estructura Hola de datos de Hola o los resultados de hello deseado. Si encuentra uno que se ajuste a sus necesidades, este puede ofrecerle resultados más útiles, predicciones más precisas o tiempos de entrenamiento más cortos.
 
 | **Algoritmo** | **Precisión** | **Tiempo de entrenamiento** | **Linealidad** | **Parámetros** | **Notas** |
 | --- |:---:|:---:|:---:|:---:| --- |
@@ -119,7 +119,7 @@ Algunos algoritmos de aprendizaje hacen determinadas suposiciones sobre la estru
 | [bosque de decisión](https://msdn.microsoft.com/library/azure/dn906015.aspx) |● |○ | |6 | |
 | [selva de decisión ](https://msdn.microsoft.com/library/azure/dn905963.aspx) |● |○ | |6 |Uso de memoria bajo |
 | [red neuronal](https://msdn.microsoft.com/library/azure/dn906030.aspx) |● | | |9 |[La personalización adicional es posible](http://go.microsoft.com/fwlink/?LinkId=402867) |
-| [uno frente a todos](https://msdn.microsoft.com/library/azure/dn905887.aspx) |- |- |- |- |Vea las propiedades del método de dos clases seleccionado |
+| [uno frente a todos](https://msdn.microsoft.com/library/azure/dn905887.aspx) |- |- |- |- |Ver propiedades del método de dos clases de hello seleccionado |
 | **Regresión** | | | | | |
 | [lineal](https://msdn.microsoft.com/library/azure/dn905978.aspx) | |● |● |4 | |
 | [Bayesiano lineal](https://msdn.microsoft.com/library/azure/dn906022.aspx) | |○ |● |2 | |
@@ -136,13 +136,13 @@ Algunos algoritmos de aprendizaje hacen determinadas suposiciones sobre la estru
 
 **Propiedades de algoritmo:**
 
-**●** : muestra una precisión excelente, tiempos de entrenamiento breves y uso de linealidad
+**●** -muestra una precisión excelente, períodos de formación rápida y el uso de Hola de linealidad
 
 **○** : muestra buena precisión y tiempos de entrenamiento moderados
 
 ## <a name="algorithm-notes"></a>Notas sobre los algoritmos
 ### <a name="linear-regression"></a>Regresión lineal
-Como se mencionó anteriormente, la [regresión lineal](https://msdn.microsoft.com/library/azure/dn905978.aspx) ajusta una línea (o plano o hiperplano) al conjunto de datos. Es potente, simple y rápida, pero puede ser demasiado simple para algunos problemas.
+Como se mencionó anteriormente, [regresión lineal](https://msdn.microsoft.com/library/azure/dn905978.aspx) se ajuste a un conjunto de datos de toohello de línea (o plano o hiperplano). Es potente, simple y rápida, pero puede ser demasiado simple para algunos problemas.
 Entre aquí para ver un [tutorial sobre regresión lineal](machine-learning-linear-regression-in-azure.md).
 
 ![Datos con tendencia lineal][3]
@@ -150,55 +150,55 @@ Entre aquí para ver un [tutorial sobre regresión lineal](machine-learning-line
 ***Datos con tendencia lineal***
 
 ### <a name="logistic-regression"></a>Regresión logística
-Aunque la inclusión de la palabra “regresión” en el nombre se preste a confusión, la regresión logística es en realidad una herramienta eficaz para la clasificación [de dos clases](https://msdn.microsoft.com/library/azure/dn905994.aspx) y [multiclase](https://msdn.microsoft.com/library/azure/dn905853.aspx). Es rápida y sencilla. El hecho de que use una curva con forma de S en lugar de una línea recta la hace ideal para dividir los datos en grupos. La regresión logística proporciona límites de clase lineal. Por lo tanto, cuando la use, asegúrese de que la aproximación lineal le es útil.
+Aunque confusa incluye 'regresión' en nombre de hello, la regresión logística es realmente una herramienta eficaz para [dos clases](https://msdn.microsoft.com/library/azure/dn905994.aspx) y [multiclase](https://msdn.microsoft.com/library/azure/dn905853.aspx) clasificación. Es rápida y sencilla. Hola el hecho de que usa de una '-facilita una opción natural para dividir los datos en grupos de forma curva en lugar de una línea recta. La regresión logística proporciona límites de clase lineal. Por lo tanto, cuando la use, asegúrese de que la aproximación lineal le es útil.
 
-![Regresión logística a datos de dos clases con una sola característica][4]
+![Datos de la clase tootwo de regresión logística con una sola característica][4]
 
-***Regresión logística a datos de dos clases con una sola característica*** *: el límite de clase es el punto en el que la curva logística tiene la misma distancia hacia ambas clases*
+***Una regresión logística tootwo clases de datos con una sola característica*** *-el límite de la clase es el punto de hello en qué Hola curva logística se cierre simplemente como clases tooboth*
 
 ### <a name="trees-forests-and-jungles"></a>Árboles, bosques y selvas
-Los bosques de decisión ([regresión](https://msdn.microsoft.com/library/azure/dn905862.aspx), [dos clases](https://msdn.microsoft.com/library/azure/dn906008.aspx) y [multiclase](https://msdn.microsoft.com/library/azure/dn906015.aspx)), las selvas de decisión ([dos clases](https://msdn.microsoft.com/library/azure/dn905976.aspx) y [multiclase](https://msdn.microsoft.com/library/azure/dn905963.aspx)) y los árboles de decisión impulsados ([regresión](https://msdn.microsoft.com/library/azure/dn905801.aspx) y [dos clases](https://msdn.microsoft.com/library/azure/dn906025.aspx)) se basan en árboles de decisión, un concepto fundamental del aprendizaje automático. Hay muchas variantes de árboles de decisión, pero todas ellas hacen lo mismo: subdividir el espacio de características en regiones con casi siempre la misma etiqueta. Estas pueden ser regiones de la misma categoría o de un valor constante, según si se está realizando una clasificación o una regresión.
+Los bosques de decisión ([regresión](https://msdn.microsoft.com/library/azure/dn905862.aspx), [dos clases](https://msdn.microsoft.com/library/azure/dn906008.aspx) y [multiclase](https://msdn.microsoft.com/library/azure/dn906015.aspx)), las selvas de decisión ([dos clases](https://msdn.microsoft.com/library/azure/dn905976.aspx) y [multiclase](https://msdn.microsoft.com/library/azure/dn905963.aspx)) y los árboles de decisión impulsados ([regresión](https://msdn.microsoft.com/library/azure/dn905801.aspx) y [dos clases](https://msdn.microsoft.com/library/azure/dn906025.aspx)) se basan en árboles de decisión, un concepto fundamental del aprendizaje automático. Hay muchas variantes de árboles de decisión, pero todas ellas hacen lo mismo: subdivide espacio de características de hello en regiones con principalmente hello misma etiqueta. Estas pueden ser regiones de la misma categoría o de un valor constante, según si se está realizando una clasificación o una regresión.
 
 ![El árbol de decisión subdivide un espacio de características][5]
 
 ***Un árbol de decisión subdivide un espacio de características en regiones de valores más o menos uniformes***
 
-Ya que un espacio de características se puede subdividir en regiones arbitrariamente pequeñas, es fácil imaginar dividirlo lo suficiente como para tener un punto de datos por región. Se trata de un ejemplo extremo de sobreajuste. Para evitar esto, se genera un conjunto grande de árboles con precisión matemática para que los árboles no se correlacionen. El resultado promedio de este "bosque de decisión" es un árbol que evita el sobreajuste. Los bosques de decisión pueden llegar a usar demasiada memoria. Las selvas de decisión son una variante que consume menos memoria a costa de un tiempo de entrenamiento ligeramente más prolongado.
+Dado que un espacio de características puede dividirse en zonas arbitrariamente pequeñas, es fácil tooimagine dividiéndolo con precisión suficiente toohave un punto de datos por región. Se trata de un ejemplo extremo de sobreajuste. En orden tooavoid esto, un conjunto grande de árboles se construyen con especial cuidado matemático realizado que no están correlacionados árboles Hola. promedio de Hola de "bosque de decisión" es un árbol que evita el sobreajuste. Los bosques de decisión pueden llegar a usar demasiada memoria. Las selvas de decisión son una variante que consume menos memoria en gastos de Hola de ligeramente más tiempo de entrenamiento.
 
-Los árboles de decisión impulsados evitan el sobreajuste al limitar la cantidad de veces que pueden subdividir y la cantidad de puntos de datos que se permiten en cada región. El algoritmo genera una secuencia de árboles, cada uno de los cuales aprende a compensar el error que deja el árbol anterior. El resultado es un lector muy preciso que tiende a usar una gran cantidad de memoria. Para obtener la descripción técnica completa, vea el [documento original de Friedman](http://www-stat.stanford.edu/~jhf/ftp/trebst.pdf).
+Los árboles de decisión impulsados evitan el sobreajuste al limitar la cantidad de veces que pueden subdividir y la cantidad de puntos de datos que se permiten en cada región. El algoritmo genera una secuencia de árboles, cada uno de los cuales aprende para compensar el error Hola árbol Hola antes de la izquierda. resultado de Hello es un aprendiz muy preciso que tiende toouse una gran cantidad de memoria. Para la descripción técnica completa de Hola, eche un vistazo [papel original de experiencia](http://www-stat.stanford.edu/~jhf/ftp/trebst.pdf).
 
-[La regresión rápida de bosque por cuantiles](https://msdn.microsoft.com/library/azure/dn913093.aspx) es una variación de los árboles de decisión para los casos especiales en los que se desea conocer no solo el valor típico (medio) de los datos dentro de una región, sino también su distribución en forma de cuantiles.
+[El rápido regresión de bosque por cuantiles](https://msdn.microsoft.com/library/azure/dn913093.aspx) es una variación de árboles de decisión para caso especial de Hola donde desea saber no sólo hello (medio) valor típico de datos de hello dentro de una región, sino también su distribución en forma de Hola de cuantiles.
 
 ### <a name="neural-networks-and-perceptrons"></a>Redes neuronales y perceptrones
-Las redes neuronales son algoritmos de aprendizaje inspirados en el cerebro que abarcan problemas [multiclase](https://msdn.microsoft.com/library/azure/dn906030.aspx), [de dos clases](https://msdn.microsoft.com/library/azure/dn905947.aspx) y [de regresión](https://msdn.microsoft.com/library/azure/dn905924.aspx). Vienen en una variedad infinita, pero las redes neuronales de Aprendizaje automático de Azure tienen todas la forma de gráficos acíclicos dirigidos. Esto significa que las características de entrada se adelantan (nunca se atrasan) en una secuencia de capas antes convertirse en salidas. En cada capa, las entradas se ponderan en varias combinaciones, se suman y se pasan a la siguiente capa. Esta combinación de cálculos sencillos da como resultado la capacidad de aprender límites de clase y tendencias de datos sofisticados, casi como por arte de magia. Las redes de varias capas de este tipo realizan el "aprendizaje profundo" que hace posibles los informes de tecnología y la ciencia ficción.
+Las redes neuronales son algoritmos de aprendizaje inspirados en el cerebro que abarcan problemas [multiclase](https://msdn.microsoft.com/library/azure/dn906030.aspx), [de dos clases](https://msdn.microsoft.com/library/azure/dn905947.aspx) y [de regresión](https://msdn.microsoft.com/library/azure/dn905924.aspx). Provienen de una variedad infinita, pero las redes neuronales hello en aprendizaje automático de Azure son todas del formato de Hola de gráficos acíclicos dirigidos. Esto significa que las características de entrada se adelantan (nunca se atrasan) en una secuencia de capas antes convertirse en salidas. En cada capa se ponderan entradas en diversas combinaciones, sumada y pasará al siguiente nivel de Hola. Esta combinación de resultados de cálculos sencillos en el toolearn de capacidad de una sofisticada tendencias de los límites y los datos de la clase, aparentemente por arte de magia. Redes de varios niveles de este tipo realizan Hola "aprendizaje profundo" que impulsa tanta tech reporting y ciencia ficción.
 
-Sin embargo, el alto rendimiento no es gratuito. Las redes neuronales pueden tardar mucho tiempo para entrenarse, especialmente para grandes conjuntos de datos con muchas características. También tienen más parámetros que la mayoría de los algoritmos, lo que implica que el barrido de parámetros alargue mucho el tiempo de entrenamiento.
-Para los que quieren obtener resultados óptimos y [especificar su propia estructura de red](http://go.microsoft.com/fwlink/?LinkId=402867), las posibilidades son inagotables.
+Sin embargo, el alto rendimiento no es gratuito. Redes neurales pueden tardar un tootrain mucho tiempo, especialmente para grandes conjuntos de datos con una gran cantidad de características. También tienen más parámetros que la mayoría de los algoritmos, lo que significa que barrido de parámetros expande el tiempo de entrenamiento Hola mucho.
+Y para esos overachievers que deseen demasiado[especificar su propia estructura de red](http://go.microsoft.com/fwlink/?LinkId=402867), las posibilidades son inexhaustible.
 
-![Límites que aprenden las redes neuronales][6]
-***Los límites que aprenden las redes neuronales pueden ser complejos e irregulares***
+![Los límites aprendido por redes neurales][6]
+***los límites de hello aprendidos por redes neurales pueden ser complejos e irregulares***
 
-El [perceptrón promedio de dos clases](https://msdn.microsoft.com/library/azure/dn906036.aspx) es la respuesta de las redes neuronales para acortar en gran medida los tiempos de entrenamiento. Este perceptrón usa una estructura de red que proporciona límites de clase lineal. Es casi primitivo según los estándares actuales, pero tiene un largo historial de trabajo sólido y es lo suficientemente pequeño como para aprender rápidamente.
+Hola [perceptrón promedio de dos clases](https://msdn.microsoft.com/library/azure/dn906036.aspx) es períodos de formación de redes neurales respuesta tooskyrocketing. Este perceptrón usa una estructura de red que proporciona límites de clase lineal. Es casi primitivo por los estándares de hoy en día, pero tiene una larga historia de trabajar con solidez y es lo suficientemente pequeño toolearn rápidamente.
 
 ### <a name="svms"></a>SVM
-Las máquinas de vectores de soporte (SVM) buscan el límite que separa las clases con el mayor margen posible. Cuando no se pueden separar bien las dos clases, los algoritmos buscan el mejor límite que pueden. Tal como está escrito en el Aprendizaje automático de Azure, la [SVM de dos clases](https://msdn.microsoft.com/library/azure/dn905835.aspx) hace esto solo con una línea recta. (En el idioma de SVM, usa un kernel lineal). Gracias a que hace esta aproximación lineal, se puede ejecutar con bastante rapidez. Donde realmente se destaca, es con datos de muchas características, como texto o genómica. En estos casos, las SVM pueden separar las clases más rápidamente y con menos sobreajuste que con la mayoría de los otros algoritmos, además de que requieren solo una pequeña cantidad de memoria.
+Las máquinas de vector de soporte (SVM) buscar los límites de Hola que separa las clases como todo un margen como sea posible. Cuando no se pueden separar con claridad dos clases de hello, algoritmos de hello encontrar límites recomendados Hola pueden. Hola a medida que se escriben en aprendizaje automático de Azure, [SVM de dos clases](https://msdn.microsoft.com/library/azure/dn905835.aspx) realiza esto con solo una línea recta. (En el idioma de SVM, usa un kernel lineal). Porque hace que esta aproximación lineal, es capaz de toorun con bastante rapidez. Donde realmente se destaca, es con datos de muchas características, como texto o genómica. En estos casos SVM es clases puede tooseparate más rápidamente y con menos el sobreajuste que otros algoritmos, además toorequiring sólo una pequeña cantidad de memoria.
 
 ![Límite de clase de máquina de vectores de soporte][7]
 
-***Un límite de clase de máquina de vectores de soporte maximiza el margen que separa las dos clases***
+***Un límite de clase de máquina de vector de soporte típico maximiza el margen de hello separar dos clases***
 
-Como otro producto de Microsoft Research, la [SVM de dos clases localmente profunda](https://msdn.microsoft.com/library/azure/dn913070.aspx) es una variante no lineal de SVM que mantiene casi toda la velocidad y la eficiencia de memoria de la versión lineal. Es ideal para los casos en los que el enfoque lineal no proporciona respuestas suficientemente precisas. Para mantener su velocidad, los desarrolladores dividieron el problema en un grupo de pequeños problemas de SVM lineales. Lea la [descripción completa](http://research.microsoft.com/um/people/manik/pubs/Jose13.pdf) para obtener detalles sobre cómo lograron este truco.
+Otro producto de Microsoft Research, Hola [SVM de dos clases localmente profunda](https://msdn.microsoft.com/library/azure/dn913070.aspx) es una variante de SVM que mantiene la mayor parte de la eficacia de velocidad y la memoria de Hola de versión lineal hello no lineal. Es ideal para los casos donde enfoque lineal hello no le ofrece respuestas suficientemente precisas. los desarrolladores de Hola mantienen rápido al dividir problema hello en una serie de problemas SVM lineales pequeños. Hola de lectura [completa descripción](http://research.microsoft.com/um/people/manik/pubs/Jose13.pdf) para obtener detalles de hello sobre cómo saca de este truco.
 
-Mediante una extensión inteligente de SVM no lineales, la [SVM de una clase](https://msdn.microsoft.com/library/azure/dn913103.aspx) dibuja un límite que demarca con precisión todo el conjunto de datos. Es útil para la detección de anomalías. Los puntos de datos nuevos que quedan fuera de ese límite son tan poco habituales que requieren atención.
+Utiliza una extensión inteligente de SVM no lineal, Hola [SVM de una clase](https://msdn.microsoft.com/library/azure/dn913103.aspx) dibuja un límite que describe totalmente Hola todo el conjunto de datos. Es útil para la detección de anomalías. Los nuevos puntos de datos que se encuentran ahora fuera de ese límite son lo suficientemente inusual toobe merece la pena comentar.
 
 ### <a name="bayesian-methods"></a>Métodos bayesianos
-Los métodos bayesianos tienen una calidad muy deseable: evitan el sobreajuste. Para ello, hacen algunas suposiciones anticipadas sobre la posible distribución de la respuesta. Otra característica de este enfoque es que tienen muy pocos parámetros. Azure Machine Learning tiene dos algoritmos bayesianos tanto para la clasificación ([automática de puntos de Bayes de dos clases](https://msdn.microsoft.com/library/azure/dn905930.aspx)) como para la regresión ([regresión lineal bayesiana](https://msdn.microsoft.com/library/azure/dn906022.aspx)).
-Tenga en cuenta que se asume que los datos se pueden dividir o encajan en una línea recta.
+Los métodos bayesianos tienen una calidad muy deseable: evitan el sobreajuste. Para hacerlo con algunas suposiciones con antelación acerca de la distribución probabilidad Hola de respuesta de Hola. Otra característica de este enfoque es que tienen muy pocos parámetros. Azure Machine Learning tiene dos algoritmos bayesianos tanto para la clasificación ([automática de puntos de Bayes de dos clases](https://msdn.microsoft.com/library/azure/dn905930.aspx)) como para la regresión ([regresión lineal bayesiana](https://msdn.microsoft.com/library/azure/dn906022.aspx)).
+Tenga en cuenta que estos se supone que los datos de Hola se pueden dividir o encaja con una línea recta.
 
-Como nota histórica, se desarrollaron las máquinas de puntos de Bayes en Microsoft Research. Presentan un trabajo teórico excepcional. Al alumno interesado se le dirige al [artículo original de JMLR](http://jmlr.org/papers/volume1/herbrich01a/herbrich01a.pdf) y a un [blog revelador de Chris Bishop](http://blogs.technet.com/b/machinelearning/archive/2014/10/30/embracing-uncertainty-probabilistic-inference.aspx).
+Como nota histórica, se desarrollaron las máquinas de puntos de Bayes en Microsoft Research. Presentan un trabajo teórico excepcional. estudiante interesado Hello es dirigido toohello [artículo original en JMLR](http://jmlr.org/papers/volume1/herbrich01a/herbrich01a.pdf) y un [detalle blog de Chris Bishop](http://blogs.technet.com/b/machinelearning/archive/2014/10/30/embracing-uncertainty-probabilistic-inference.aspx).
 
 ### <a name="specialized-algorithms"></a>Algoritmos especializados
-Si tiene un objetivo muy específico, puede que sea su día de suerte. Dentro de la colección de Azure Machine Learning, existen algoritmos que se especializan en:
+Si tiene un objetivo muy específico, puede que sea su día de suerte. Dentro de hello colección de aprendizaje automático de Azure, hay algoritmos que se especializan en:
 
 - predicción de rangos ([regresión ordinal](https://msdn.microsoft.com/library/azure/dn906029.aspx)),
 - predicción de totales ([regresión de Poisson](https://msdn.microsoft.com/library/azure/dn905988.aspx)),
@@ -207,27 +207,27 @@ Si tiene un objetivo muy específico, puede que sea su día de suerte. Dentro de
 
 ![Detección de anomalías basada en PCA][8]
 
-***Detección de anomalías basada en PCA*** *: la inmensa mayoría de los datos entra en una distribución típica; los puntos que se desvían mucho de esa distribución son sospechosos*
+***Detección de anomalías basado en PCA*** *-gran mayoría de los datos de Hola de hello entra en una distribución stereotypical; puntos que difieran considerablemente de distribución están sospechoso*
 
 ![Conjunto de datos agrupados mediante K-Means][9]
 
 ***Un conjunto de datos se agrupa en 5 clústeres mediante K-Means***
 
-También hay un [clasificador multiclase uno contra todos](https://msdn.microsoft.com/library/azure/dn905887.aspx)que divide el problema de clasificación de clase N en problemas de clasificación de dos clases N-1. La precisión, el tiempo de entrenamiento y las propiedades de linealidad se determinan con los clasificadores de dos clases que se usan.
+También hay un conjunto [clasificador multiclase uno v todos](https://msdn.microsoft.com/library/azure/dn905887.aspx), qué problema de clasificación de saltos Hola clase N problemas de clasificación de dos clases de n-1. precisión de Hello, el tiempo de entrenamiento y linealidad propiedades dependen de clasificadores de dos clases de hello usa.
 
-![Clasificadores de dos clases combinados para formar un clasificador de tres clases][10]
+![Clasificadores de dos clases combinan tooform un clasificador tres clases][10]
 
-***Un par de clasificadores de dos clases se combinan para formar un clasificador de tres clases***
+***Un par de clasificadores de dos clases combinar tooform un clasificador tres clases***
 
-Aprendizaje automático de Azure también incluye acceso a un marco de aprendizaje automático eficaz con el título [Vowpal Wabbit](https://msdn.microsoft.com/library/azure/8383eb49-c0a3-45db-95c8-eb56a1fef5bf).
-VW es un reto a la categorización, ya que puede aprender problemas tanto de clasificación como de regresión, e incluso puede aprender a partir de datos parcialmente etiquetados. Puede configurarlo para usar algoritmos de aprendizaje, funciones de pérdida y algoritmos de optimización. Está totalmente diseñado para ser eficiente, paralelo y extremadamente rápido. Administra enormes conjuntos de características con mucha facilidad.
-VW, iniciado y liderado por el propio John Langford de Microsoft Research, es una entrada de Fórmula Uno en un campo de algoritmos de coches de línea. No todos los problemas se adaptan a VW, pero si el suyo lo hace, es posible que valga la pena que aumente la curva de aprendizaje en esa interfaz. También está disponible como [código fuente abierto independiente](https://github.com/JohnLangford/vowpal_wabbit) en varios idiomas.
+Aprendizaje de automático de Azure también incluye marco de aprendizaje de máquina potente de tooa de acceso en el título de Hola de [Vowpal Wabbit](https://msdn.microsoft.com/library/azure/8383eb49-c0a3-45db-95c8-eb56a1fef5bf).
+VW es un reto a la categorización, ya que puede aprender problemas tanto de clasificación como de regresión, e incluso puede aprender a partir de datos parcialmente etiquetados. Se puede configurar toouse cualquiera de una serie de algoritmos, funciones de pérdida y optimización de aprendizaje. Que se diseñó desde Hola masa seguridad toobe eficaz, en paralelo y extremadamente rápida. Administra enormes conjuntos de características con mucha facilidad.
+VW, iniciado y liderado por el propio John Langford de Microsoft Research, es una entrada de Fórmula Uno en un campo de algoritmos de coches de línea. No todos los problemas ajusta VW, pero si el suyo tiene, es posible la pena tooclimb la curva de aprendizaje en su interfaz. También está disponible como [código fuente abierto independiente](https://github.com/JohnLangford/vowpal_wabbit) en varios idiomas.
 
 ## <a name="more-help-with-algorithms"></a>Más ayuda con los algoritmos
 * Para una infografía descargable que describe los algoritmos y proporciona ejemplos, consulte [Infografía descargable: Conceptos básicos de aprendizaje automático con ejemplos de algoritmos](machine-learning-basics-infographic-with-algorithm-examples.md).
-* Para obtener una lista por categoría de todos los algoritmos de aprendizaje de máquina disponibles en estudio de aprendizaje automático de Azure, consulte [inicializar modelo] [ initialize-model] en la Ayuda del módulo y el algoritmo de aprendizaje Studio de la máquina.
-* Para obtener una lista alfabética completa de los algoritmos y los módulos de estudio de aprendizaje automático de Azure, consulte [lista A-z de módulos de estudio de aprendizaje automático] [ a-z-list] en la Ayuda de módulo y el algoritmo de Studio de aprendizaje de máquina.
-* Para descargar e imprimir un diagrama con información general de las funcionalidades de Azure Machine Learning Studio, consulte [Diagrama de información general de las funcionalidades de Azure Machine Learning Studio](machine-learning-studio-overview-diagram.md).
+* Para obtener una lista por categoría de aprendizaje automático de hello todos los algoritmos disponibles en estudio de aprendizaje automático de Azure, consulte [inicializar modelo] [ initialize-model] en hello Studio algoritmo de aprendizaje de máquina y la Ayuda del módulo.
+* Para ver una lista completa de todos los algoritmos de Machine Learning Studio, consulte [A-Z list of Machine Learning Studio modules][a-z-list] (Lista de la A a la Z de módulos de Machine Learning Studio) en la Ayuda de módulos y algoritmos de Machine Learning Studio.
+* toodownload e imprimir un diagrama que ofrezca una visión general de las capacidades de Hola de estudio de aprendizaje automático de Azure, consulte [diagrama de información general de las capacidades de estudio de aprendizaje automático de Azure](machine-learning-studio-overview-diagram.md).
 
 
 <!-- Reference links -->

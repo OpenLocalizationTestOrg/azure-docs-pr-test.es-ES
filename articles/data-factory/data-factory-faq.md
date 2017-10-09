@@ -1,5 +1,5 @@
 ---
-title: "Azure Data Factory: preguntas más frecuentes"
+title: "aaaAzure factoría de datos: preguntas más frecuentes"
 description: "Preguntas más frecuentes acerca de Azure Data Factory."
 services: data-factory
 documentationcenter: 
@@ -14,107 +14,107 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: shlo
-ms.openlocfilehash: 086e6b2fb9bd0ee8541401b6f0d65268926e45a5
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 78289fb4b6e15d74772af6c71ec25c7d2ca1a0bd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure Data Factory: preguntas más frecuentes
 ## <a name="general-questions"></a>Preguntas generales
 ### <a name="what-is-azure-data-factory"></a>¿Qué es Azure Data Factory?
-Data Factory es un servicio de integración de datos basado en la nube que **automatiza el movimiento y la transformación de datos**. Lo mismo que las máquinas de una fábrica toman las materias primas y las transforman en productos acabados, Data Factory organiza los servicios existentes que recopilan datos sin procesar y los transforman en información lista para usar.
+Factoría de datos está basado en una nube servicio de integración de datos **automatiza el movimiento de Hola y la transformación de datos**. Al igual que un generador que se ejecuta equipo materias primas de tootake y transformarlos en terminados, factoría de datos orquesta servicios existentes que recopilan datos sin procesar y transforman en información lista para su uso.
 
-Data Factory le permite crear flujos de trabajo basados en datos para mover datos entre almacenes de datos locales y en la nube, así como para procesar o transformar datos mediante servicios de proceso como Azure HDInsight y Azure Data Lake Analytics. Después de crear una canalización que realice la acción que necesita, puede programar que se ejecute periódicamente (cada hora, diariamente, semanalmente, etc.).   
+Factoría de datos permite los datos de toomove de flujos de trabajo de datos de toocreate entre tanto local y almacenes de datos en la nube, así como datos de proceso o transformar mediante servicios de proceso como HDInsight de Azure y análisis de Data Lake de Azure. Después de crear una canalización que realiza la acción de Hola que necesita, puede programarlo toorun periódicamente (cada hora, diariamente, semanalmente etcetera).   
 
 Para más información, consulte [Información general y conceptos clave](data-factory-introduction.md).
 
 ### <a name="where-can-i-find-pricing-details-for-azure-data-factory"></a>¿Dónde puedo encontrar detalles de precios de Azure Data Factory?
-Vea la [página de detalles de precios de Azure Data Factory][adf-pricing-details] para obtener información al respecto.  
+Vea [página de detalles de precios de factoría de datos] [ adf-pricing-details] para hello detalles de precios de hello Data Factory de Azure.  
 
 ### <a name="how-do-i-get-started-with-azure-data-factory"></a>¿Cómo puedo comenzar con Azure Data Factory?
-* Para obtener información general sobre Azure Data Factory, vea [Introducción a Azure Data Factory](data-factory-introduction.md).
-* Para ver un tutorial sobre cómo **copiar o mover datos** mediante la actividad de copia, consulte [Copiar datos desde Azure Blob Storage a Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
-* Para ver un tutorial sobre cómo **transformar los datos** mediante HDInsight Hive Activity, consulte [Procesamiento de datos mediante la ejecución de scripts de Hive en un clúster Hadoop](data-factory-build-your-first-pipeline.md).
+* Para obtener información general de la factoría de datos de Azure, consulte [tooAzure Introducción factoría de datos](data-factory-introduction.md).
+* Para obtener un tutorial sobre cómo demasiado**copiar o mover datos** con actividad de copia, consulte [copiar los datos de base de datos SQL del almacenamiento de blobs de Azure tooAzure](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+* Para obtener un tutorial sobre cómo demasiado**transformar datos** mediante la actividad de Hive de HDInsight. consulte [Procesamiento de datos mediante la ejecución de scripts de Hive en un clúster Hadoop](data-factory-build-your-first-pipeline.md).
 
-### <a name="what-is-the-data-factorys-region-availability"></a>¿Cuál es la disponibilidad de regiones de la factoría de datos?
-Data Factory está disponible en las regiones **Oeste de EE. UU.** y **Europa del Norte**. Los servicios de Compute y Storage utilizados por las factorías de datos pueden estar en otras regiones. Consulte las [regiones admitidas](data-factory-introduction.md#supported-regions).
+### <a name="what-is-hello-data-factorys-region-availability"></a>¿Qué es la disponibilidad de región del generador de datos de hello?
+Data Factory está disponible en las regiones **Oeste de EE. UU.** y **Europa del Norte**. Hola proceso y servicios de almacenamiento utilizados por los generadores de datos pueden estar en otras regiones. Consulte las [regiones admitidas](data-factory-introduction.md#supported-regions).
 
-### <a name="what-are-the-limits-on-number-of-data-factoriespipelinesactivitiesdatasets"></a>¿Cuáles son los límites en el número de factorías, canalizaciones, actividades y conjuntos de datos?
-Consulte la sección **Límites de Azure Data Factory** del artículo [Límites, cuotas y restricciones de suscripción y servicios de Microsoft Azure](../azure-subscription-service-limits.md#data-factory-limits) .
+### <a name="what-are-hello-limits-on-number-of-data-factoriespipelinesactivitiesdatasets"></a>¿Cuáles son los límites de hello en número de generadores/canalizaciones/actividades/orígenes de datos?
+Vea **límites de factoría de datos de Azure** sección de hello [suscripción de Azure y límites de servicio, cuotas y restricciones](../azure-subscription-service-limits.md#data-factory-limits) artículo.
 
-### <a name="what-is-the-authoringdeveloper-experience-with-azure-data-factory-service"></a>¿Cuál es la experiencia de desarrollador/creación con el servicio Azure Data Factory?
-Puede crear factorías de datos mediante una de las siguientes herramientas y SDK:
+### <a name="what-is-hello-authoringdeveloper-experience-with-azure-data-factory-service"></a>¿Qué es la experiencia de creación/desarrollador de hello con servicio de factoría de datos de Azure?
+Puede crear/crear factorías de datos mediante uno de hello después herramientas/SDK:
 
-* **Azure Portal** : las hojas de Data Factory de Azure Portal proporcionan una interfaz de usuario enriquecida para crear factorías de datos y servicios vinculados. El **Editor de Factoría de datos**, que también forma parte del portal, le permite crear fácilmente servicios vinculados, tablas, conjuntos de datos y canalizaciones mediante la especificación de definiciones de JSON para estos artefactos. Consulte [Creación de la primera canalización de datos mediante Azure Portal](data-factory-build-your-first-pipeline-using-editor.md) para obtener un ejemplo de uso del portal o el editor para crear e implementar una factoría de datos.
-* **Visual Studio** : puede usar Visual Studio para crear una instancia de Data Factory de Azure. Consulte [Compilación de la primera Data Factory de Azure mediante Microsoft Visual Studio](data-factory-build-your-first-pipeline-using-vs.md) .
+* **Portal de Azure** hojas de factoría de datos de Hola Hola portal de Azure proporcionan interfaz de usuario enriquecida para usted toocreate datos generadores ad vinculado servicios. Hola **Editor de generador de datos**, que también forma parte del portal de hello, le permite tooeasily crear servicios vinculados, tablas, conjuntos de datos y las canalizaciones mediante la especificación de las definiciones de JSON para estos artefactos. Vea [crear su primera canalización de datos mediante el portal de Azure](data-factory-build-your-first-pipeline-using-editor.md) para un ejemplo del uso de Hola toocreate/editor del portal e implementar una factoría de datos.
+* **Visual Studio** puede usar Visual Studio toocreate un generador de datos de Azure. Consulte [Compilación de la primera Data Factory de Azure mediante Microsoft Visual Studio](data-factory-build-your-first-pipeline-using-vs.md) .
 * **Azure PowerShell** : consulte el tutorial [Creación y supervisión de Azure Data Factory mediante Azure PowerShell](data-factory-build-your-first-pipeline-using-powershell.md) para crear una factoría de datos mediante PowerShell. Consulte el contenido de [Referencia de cmdlets de Data Factory][adf-powershell-reference] en MSDN Library para obtener documentación completa de los cmdlets de Factoría de datos.
 * **Biblioteca de clases .NET** Se pueden crear factorías de datos mediante programación con el SDK de .NET de Data Factory. Consulte [Creación, supervisión y administración de las factorías de datos mediante el SDK de .NET](data-factory-create-data-factories-programmatically.md) para un ver tutorial sobre la creación de una factoría de datos con el SDK de .NET. Consulte [Referencia de biblioteca de clases de Data Factory][msdn-class-library-reference] para una amplia documentación sobre el SDK de .NET de Factoría de datos.
-* **API de REST** También puede usar la API de REST expuesta por el servicio Azure Data Factory para crear e implementar factorías de datos. Consulte [Referencia de la API de REST de Data Factory][msdn-rest-api-reference] para ver una amplia documentación sobre la API de REST de Data Factory.
+* **API de REST** también puede usar hello REST API expuestas por el servicio toocreate de hello Data Factory de Azure e implementar generadores de datos. Consulte [Referencia de la API de REST de Data Factory][msdn-rest-api-reference] para ver una amplia documentación sobre la API de REST de Data Factory.
 * **Plantilla de Azure Resource Manager** Consulte [Tutorial: Compilación de la primera Data Factory de Azure con la plantilla de Azure Resource Manager](data-factory-build-your-first-pipeline-using-arm.md) para obtener más información.
 
 ### <a name="can-i-rename-a-data-factory"></a>¿Se puede cambiar el nombre de una Factoría de datos?
-No. Al igual que otros recursos de Azure, el nombre de una factoría de datos de Azure no se puede cambiar.
+No. Como los demás recursos de Azure, no se puede cambiar el nombre de Hola de un generador de datos de Azure.
 
-### <a name="can-i-move-a-data-factory-from-one-azure-subscription-to-another"></a>¿Puedo mover una factoría de datos de una suscripción a Azure a otra?
-Sí. Use el botón **Mover** situado en la hoja de la factoría de datos tal como se muestra en el siguiente diagrama:
+### <a name="can-i-move-a-data-factory-from-one-azure-subscription-tooanother"></a>¿Puedo mover una factoría de datos de una tooanother de suscripción de Azure?
+Sí. Hola de uso **mover** situado en la hoja de factoría de datos como se muestra en hello siguiente diagrama:
 
 ![Mover factoría de datos](media/data-factory-faq/move-data-factory.png)
 
-### <a name="what-are-the-compute-environments-supported-by-data-factory"></a>¿Cuáles son los entornos de proceso compatibles con Data Factory?
-En la tabla siguiente se proporciona una lista de entornos de proceso compatibles con Data Factory y las actividades que se pueden ejecutar en ellos.
+### <a name="what-are-hello-compute-environments-supported-by-data-factory"></a>¿Qué entornos de proceso de hello admitidos factoría de datos?
+Hello tabla siguiente proporciona una lista de entornos de ejecución compatible con las actividades de hello y factoría de datos que se pueden ejecutar en ellos.
 
 | Entorno de procesos | actividades |
 | --- | --- |
 | [Clúster de HDInsight a petición](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) o [clúster HDInsight propio](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) |[DotNet](data-factory-use-custom-activities.md), [Hive](data-factory-hive-activity.md), [Pig](data-factory-pig-activity.md), [MapReduce](data-factory-map-reduce.md), [Hadoop Streaming](data-factory-hadoop-streaming-activity.md) |
 | [Azure Batch](data-factory-compute-linked-services.md#azure-batch-linked-service) |[DotNet](data-factory-use-custom-activities.md) |
-| [Azure Machine Learning](data-factory-compute-linked-services.md#azure-machine-learning-linked-service) |[Actividades de Machine Learning: ejecución de Batch y recurso de actualización](data-factory-azure-ml-batch-execution-activity.md) |
+| [Aprendizaje automático de Azure](data-factory-compute-linked-services.md#azure-machine-learning-linked-service) |[Actividades de Machine Learning: ejecución de Batch y recurso de actualización](data-factory-azure-ml-batch-execution-activity.md) |
 | [Análisis con Azure Data Lake](data-factory-compute-linked-services.md#azure-data-lake-analytics-linked-service) |[U-SQL de análisis con Data Lake](data-factory-usql-activity.md) |
 | [Azure SQL](data-factory-compute-linked-services.md#azure-sql-linked-service), [Azure SQL Data Warehouse](data-factory-compute-linked-services.md#azure-sql-data-warehouse-linked-service), [SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) |[Procedimiento almacenado](data-factory-stored-proc-activity.md) |
 
 ### <a name="how-does-azure-data-factory-compare-with-sql-server-integration-services-ssis"></a>¿Cómo se compara Azure Data Factory con SQL Server Integration Services (SSIS)? 
-Consulte la presentación [Azure Data Factory frente a SSIS](http://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS) de uno de nuestros MVP (profesionales más valiosos): Reza Rad. Puede que algunos de los cambios recientes de Data Factory no aparezcan en las diapositivas. Continuamente estamos agregando más funcionalidades a Azure Data Factory. Continuamente estamos agregando más funcionalidades a Azure Data Factory. Se incorporarán estas actualizaciones en la comparación de tecnologías de integración de datos de Microsoft este año más adelante.   
+Vea hello [frente a Data Factory de Azure. SSIS](http://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS) de uno de nuestros MVP (profesionales más valiosos): Reza Rad. Algunos de los cambios recientes de Hola de factoría de datos pueden no aparecer en la presentación de diapositivas de Hola. Vamos a agregar más capacidades tooAzure factoría de datos continuamente. Vamos a agregar más capacidades tooAzure factoría de datos continuamente. Se incorporará estas actualizaciones en la comparación de Hola de tecnologías de integración de datos de Microsoft en algún momento más adelante este año.   
 
 ## <a name="activities---faq"></a>Actividades: preguntas más frecuentes
-### <a name="what-are-the-different-types-of-activities-you-can-use-in-a-data-factory-pipeline"></a>¿Qué tipos de actividades diferentes se pueden usar en una canalización de Data Factory?
-* [Actividades de movimiento de datos](data-factory-data-movement-activities.md) para mover los datos.
-* [Actividades de transformación de datos](data-factory-data-transformation-activities.md) para procesar o transformar los datos.
+### <a name="what-are-hello-different-types-of-activities-you-can-use-in-a-data-factory-pipeline"></a>¿Cuáles son los diferentes tipos de Hola de actividades que se puede utilizar en una canalización de factoría de datos?
+* [Las actividades de movimiento de datos](data-factory-data-movement-activities.md) datos toomove.
+* [Las actividades de transformación de datos](data-factory-data-transformation-activities.md) tooprocess o transformar datos.
 
 ### <a name="when-does-an-activity-run"></a>¿Cuándo se ejecuta una actividad?
-La configuración de **disponibilidad** en la tabla de datos de salida determina cuándo se ejecuta la actividad. Si se especifican conjuntos de datos de entrada, la actividad comprueba si se cumplen todas las dependencias de datos de entrada (es decir, estado **Listo** ) antes de ejecutarse.
+Hola **disponibilidad** tabla de datos determina cuándo se ejecuta la actividad hello de salida de valor de configuración Hola. Si se especifican los conjuntos de datos, la actividad hello comprueba si se cumplen todas las dependencias de datos de entrada de hello (es decir, **listo** estado) antes de que comience la ejecución.
 
 ## <a name="copy-activity---faq"></a>Actividad de copia: preguntas más frecuentes
-### <a name="is-it-better-to-have-a-pipeline-with-multiple-activities-or-a-separate-pipeline-for-each-activity"></a>¿Es mejor tener una canalización con varias actividades o una canalización independiente para cada actividad?
-Se supone que las canalizaciones incluyen actividades relacionadas. Si los conjuntos de datos que las conectan no se consumen en ninguna otra actividad fuera de la canalización, puede mantener estas actividades en una canalización. De este modo, no necesitará períodos activos de canalizaciones de cadena puesto que se alinean con las demás. Además, la integridad de los datos de las tablas internas de la canalización se conservará mejor cuando se actualice la canalización. La actualización de la canalización detiene fundamentalmente todas las actividades en la canalización, las elimina y las vuelve a crear. Desde la perspectiva de la creación, puede ser más fácil ver el flujo de datos dentro de las actividades relacionadas en un archivo JSON para la canalización.
+### <a name="is-it-better-toohave-a-pipeline-with-multiple-activities-or-a-separate-pipeline-for-each-activity"></a>¿Es mejor toohave una canalización con varias actividades o una canalización separada para cada actividad?
+Se supone que las canalizaciones toobundle actividades relacionadas. Si los conjuntos de datos de Hola que los conectan no son consumidos por cualquier otra actividad fuera de la canalización de hello, puede mantener las actividades de hello en una canalización. De este modo, no tendría períodos activos de canalización toochain para que se alineen entre sí. Además, Hola integridad de los datos en tablas de hello toohello interno canalización se conserva mejor al actualizar la canalización de Hola. Actualización de la canalización básicamente detiene todas las actividades de Hola de canalización de hello, elimina y crea de nuevo. Desde la perspectiva de edición, también podría ser más fácil de flujo de hello toosee de datos dentro de hello relacionados con actividades en JSON de un archivo de canalización de Hola.
 
-### <a name="what-are-the-supported-data-stores"></a>¿Qué almacenes de datos son compatibles?
-Copiar actividad en Data Factory realiza una copia de los datos de un almacén de datos de origen a uno receptor. Data Factory admite los siguientes almacenes de datos. Se pueden escribir datos desde cualquier origen en todos los tipos de receptores. Haga clic en un almacén de datos para obtener información sobre cómo copiar datos a un almacén como origen o destino.
+### <a name="what-are-hello-supported-data-stores"></a>¿Qué Hola admite almacenes de datos?
+Actividad de copia de factoría de datos copia datos de un almacén de datos de origen datos almacén tooa receptor. Factoría de datos admite Hola siguientes almacenes de datos. Se pueden escribir datos de cualquier origen tooany receptor. Haga clic en un toolearn de almacén de datos cómo toocopy tooand de datos de ese almacén.
 
 [!INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]
 
 > [!NOTE]
-> Los almacenes de datos con * pueden ser locales o estar en la IaaS de Azure; además, requieren que instale [Data Management Gateway](data-factory-data-management-gateway.md) en una máquina local o de la IaaS de Azure.
+> Almacenes de datos con * puede ser local o en IaaS de Azure y requieren tooinstall [Data Management Gateway](data-factory-data-management-gateway.md) en una máquina de IaaS en local o de Azure.
 
-### <a name="what-are-the-supported-file-formats"></a>¿Qué formatos de archivo son compatibles?
+### <a name="what-are-hello-supported-file-formats"></a>¿Qué Hola formatos de archivo compatibles?
 [!INCLUDE [data-factory-file-format](../../includes/data-factory-file-format.md)]
 
-### <a name="where-is-the-copy-operation-performed"></a>¿Dónde se realiza la operación de copia?
-Consulte la sección [Movimiento de datos disponible globalmente](data-factory-data-movement-activities.md#global) para obtener más información. En resumen, cuando en el proceso participa un almacén de datos local, la operación de copia la realiza Data Management Gateway en el entorno local. Asimismo, cuando el movimiento de datos se produce entre dos almacenes en la nube, la operación de copia se realiza en la región más cercana a la ubicación del receptor en la misma zona geográfica.
+### <a name="where-is-hello-copy-operation-performed"></a>¿Donde se realiza la operación de copia de hello?
+Consulte la sección [Movimiento de datos disponible globalmente](data-factory-data-movement-activities.md#global) para obtener más información. En resumen, cuando se trate de un almacén de datos local, se realizarla en operación de copia de Hola Hola Data Management Gateway en su entorno local. Y, cuando el movimiento de datos de hello entre dos almacenes en la nube, se realiza la operación de copia de hello en lugar de receptor toohello más cercano de Hola de región de hello mismo geography.
 
 ## <a name="hdinsight-activity---faq"></a>Actividad de HDInsight: preguntas más frecuentes
 ### <a name="what-regions-are-supported-by-hdinsight"></a>¿Qué regiones admiten HDInsight?
-Vea la sección Disponibilidad geográfica en el siguiente artículo: o [Detalles de precios de HDInsight][hdinsight-supported-regions].
+Vea Hola sección disponibilidad geográfica en el artículo siguiente de hello: o [detalles de precios HDInsight][hdinsight-supported-regions].
 
 ### <a name="what-region-is-used-by-an-on-demand-hdinsight-cluster"></a>¿Qué región se usa con un clúster de HDInsight a petición?
-El clúster de HDInsight a petición se crea en la misma región que existe para el almacenamiento que se va a usar con el clúster.    
+Hello clúster de HDInsight a petición se crea en Hola misma región donde existe el almacenamiento de hello especificado toobe utilizado con clúster de Hola.    
 
-### <a name="how-to-associate-additional-storage-accounts-to-your-hdinsight-cluster"></a>¿Cómo se asocian cuentas de almacenamiento adicionales al clúster de HDInsight?
-Si está usando su propio clúster de HDInsight (BYOC, Bring Your Own Cluster, traiga su propio clúster), consulte los temas siguientes:
+### <a name="how-tooassociate-additional-storage-accounts-tooyour-hdinsight-cluster"></a>¿Cómo el clúster de HDInsight de tooyour de cuentas de almacenamiento adicional de tooassociate?
+Si está usando su propio HDInsight clúster (BYOC - Traer su propio clúster), vea Hola temas siguientes:
 
 * [Uso de un clúster de HDInsight con cuentas de almacenamiento y tiendas de metadatos alternativas][hdinsight-alternate-storage]
 * [Uso de cuentas de almacenamiento adicionales con HDInsight Hive][hdinsight-alternate-storage-2]
 
-Si usa un clúster a petición que se crea con el servicio Data Factory, especifique cuentas de almacenamiento adicionales para el servicio vinculado de HDInsight de manera que dicho servicio pueda registrarlas en su nombre. En la definición de JSON para el servicio vinculado a petición, use la propiedad **additionalLinkedServiceNames** para especificar las cuentas de almacenamiento alternativas como se muestra en el siguiente fragmento JSON:
+Si está usando un clúster a petición creado por el servicio Data Factory hello, especifique las cuentas de almacenamiento adicional para hello HDInsight el servicio vinculado para que el servicio de factoría de datos de hello puede registrar en su nombre. En la definición de JSON para el servicio vinculado de petición de Hola Hola, use **additionalLinkedServiceNames** cuentas de almacenamiento alternativo de propiedad toospecify tal y como se muestra en hello siguiente fragmento de JSON:
 
 ```JSON
 {
@@ -133,25 +133,25 @@ Si usa un clúster a petición que se crea con el servicio Data Factory, especif
     }
 }
 ```
-En el ejemplo anterior, otherLinkedServiceName1 y otherLinkedServiceName2 representan servicios vinculados cuyas definiciones contienen las credenciales que el clúster de HDInsight necesita para acceder a las cuentas de almacenamiento alternativas.
+En el ejemplo de Hola anterior, otherLinkedServiceName1 y otherLinkedServiceName2 representan servicios vinculados cuyas definiciones contienen las credenciales que Hola cuentas de almacenamiento alternativo de tooaccess de necesidades de clúster de HDInsight.
 
 ## <a name="slices---faq"></a>Segmentos: preguntas más frecuentes
 ### <a name="why-are-my-input-slices-not-in-ready-state"></a>¿Por qué mis segmentos de entrada no presentan el estado Listo?
-Un error común consiste en no definir la propiedad **external** en **rue** en el conjunto de datos de entrada cuando los datos de entrada son externos a la factoría de datos (es decir, que no produce esta).
+Un error común no establece **externo** propiedad demasiado**true** en hello conjunto de datos de entrada cuando los datos de entrada hello es factoría de datos de toohello externo (no generada por factoría de datos de hello).
 
-En el ejemplo siguiente, solo debe establecer **external** en true en **dataset1**.  
+En el siguiente ejemplo de Hola, solo necesita tooset **externo** tootrue en **dataset1**.  
 
-**DataFactory1** Pipeline 1: dataset1 -> activity1 -> dataset2 -> activity2 -> dataset3 Pipeline 2: dataset3-> activity3 -> dataset4
+**DataFactory1** Pipeline 1: dataset1 -&gt; activity1 -&gt; dataset2 -&gt; activity2 -&gt; dataset3 Pipeline 2: dataset3-&gt; activity3 -&gt; dataset4
 
-Si tiene otra factoría de datos con una canalización que toma dataset4 (producido por la canalización 2 de la factoría de datos 1), marque dataset4 como un conjunto de datos externo porque está generado por una factoría de datos distinta (DataFactory1, no DataFactory2).  
+Si tiene otro generador de datos con una canalización que toma dataset4 (producidos por canalización 2 de la factoría de datos 1), marque dataset4 como un conjunto de datos externo porque el conjunto de datos de hello generado por un generador de datos diferentes (DataFactory1, no DataFactory2).  
 
 **DataFactory2**    
 Pipeline 1: dataset4->activity4->dataset5
 
-Si la propiedad externa está configurada correctamente, compruebe si los datos de entrada existen en la ubicación especificada en la definición del conjunto de datos de entrada.
+Si correctamente se establece la propiedad external hello, compruebe si existen datos de entrada de hello en ubicación de hello especificada en definición de conjunto de datos de entrada de Hola.
 
-### <a name="how-to-run-a-slice-at-another-time-than-midnight-when-the-slice-is-being-produced-daily"></a>¿Cómo se ejecuta un segmento en otro momento que no sea medianoche cuando este se produce diariamente?
-Use la propiedad **offset** para especificar la hora en la que desea que se produzca el segmento. Consulte la sección [Disponibilidad del conjunto de datos](data-factory-create-datasets.md#dataset-availability) para obtener más información sobre esta propiedad. Este es un ejemplo rápido:
+### <a name="how-toorun-a-slice-at-another-time-than-midnight-when-hello-slice-is-being-produced-daily"></a>¿Cómo toorun un segmento en otro momento a la medianoche al segmento de Hola se está produciendo diariamente?
+Hola de uso **desplazamiento** tiempo de hello toospecify de propiedad a la que desea Hola segmento toobe generado. Consulte la sección [Disponibilidad del conjunto de datos](data-factory-create-datasets.md#dataset-availability) para obtener más información sobre esta propiedad. Este es un ejemplo rápido:
 
 ```json
 "availability":
@@ -161,36 +161,36 @@ Use la propiedad **offset** para especificar la hora en la que desea que se prod
     "offset": "06:00:00"
 }
 ```
-Los segmentos diarios comienzan a las **6:00** en lugar de a medianoche, que es el valor predeterminado.     
+Se inician los segmentos diarias en **6: 00** en lugar de la medianoche de Hola de forma predeterminada.     
 
 ### <a name="how-can-i-rerun-a-slice"></a>¿Cómo puedo volver a ejecutar un segmento?
-Puede volver a ejecutar un segmento de una de las siguientes maneras:
+Puede volver a ejecutar un segmento en uno de hello siguientes maneras:
 
-* Use la aplicación de supervisión y administración para volver a ejecutar una ventana de actividad o segmento. Consulte [Nueva ejecución de ventanas de actividad seleccionadas](data-factory-monitor-manage-app.md#perform-batch-actions) para ver instrucciones.   
-* Haga clic en **Ejecutar** en la barra de comandos de la hoja **SEGMENTO DE DATOS** para el segmento en Azure Portal.
-* Ejecute el cmdlet **Set-AzureRmDataFactorySliceStatus** con el estado **En espera** para el segmento.   
+* Utilice supervisar y administrar aplicaciones toorerun una ventana actividad o segmento. Consulte [Nueva ejecución de ventanas de actividad seleccionadas](data-factory-monitor-manage-app.md#perform-batch-actions) para ver instrucciones.   
+* Haga clic en **ejecutar** en la barra de comandos de hello en hello **el segmento de datos** hoja de sector de Hola Hola portal de Azure.
+* Ejecutar **conjunto AzureRmDataFactorySliceStatus** cmdlet con el estado se establece demasiado**espera** de sector de Hola.   
 
     ```PowerShell
     Set-AzureRmDataFactorySliceStatus -Status Waiting -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime "02/26/2015 19:00:00" -EndDateTime "02/26/2015 20:00:00"
     ```
-Consulte [Set-AzureRmDataFactorySliceStatus][set-azure-datafactory-slice-status] para obtener más información sobre el cmdlet.
+Vea [conjunto AzureRmDataFactorySliceStatus] [ set-azure-datafactory-slice-status] para obtener más información sobre el cmdlet de Hola.
 
-### <a name="how-long-did-it-take-to-process-a-slice"></a>¿Cuánto tiempo se tardó en procesar un segmento?
-Utilice el explorador de ventana de actividad de la aplicación de supervisión y administración para descubrir cuánto tiempo se tardó en procesar un segmento de datos. Consulte [Explorador de ventanas de actividad](data-factory-monitor-manage-app.md#activity-window-explorer) para obtener más información.
+### <a name="how-long-did-it-take-tooprocess-a-slice"></a>¿Durante cuánto tiempo se tarda tooprocess de un sector?
+Utilice el Explorador de ventana de actividad en el Monitor de & aplicación administrar tooknow cuánto tiempo tardó tooprocess un segmento de datos. Consulte [Explorador de ventanas de actividad](data-factory-monitor-manage-app.md#activity-window-explorer) para obtener más información.
 
-También puede hacer lo siguiente en Azure Portal:  
+También puede hacer Hola sigue de hello portal de Azure:  
 
-1. Haga clic en la ventana **Conjuntos de datos** de la hoja **FACTORÍA DE DATOS** para su factoría de datos.
-2. Haga clic en el conjunto de datos específico de la hoja **Conjuntos de datos** .
-3. Seleccione el segmento en el que está interesado en la lista **Segmentos recientes** de la hoja **TABLA**.
-4. Haga clic en la actividad ejecutada en la lista **Ejecuciones de actividad** de la hoja **SEGMENTO DE DATOS**.
-5. Haga clic en la ventana **Propiedades** de la hoja **DETALLES DE EJECUCIÓN DE ACTIVIDAD**.
-6. Debería ver el campo **DURACIÓN** con un valor. Este valor es el tiempo necesario para procesar el segmento.   
+1. Haga clic en **conjuntos de datos** icono hello **factoría de datos** hoja de la factoría de datos.
+2. Haga clic en un conjunto de datos específico de hello en hello **conjuntos de datos** hoja.
+3. Sector Hola SELECT que le interesa de hello **sectores recientes** lista en hello **tabla** hoja.
+4. Haga clic en ejecutar desde Hola de actividad de hello **ejecuciones de actividad** lista en hello **el segmento de datos** hoja.
+5. Haga clic en **propiedades** icono hello **detalles de ejecución de la actividad** hoja.
+6. Debería ver Hola **duración** campo con un valor. Este valor es el segmento de hello tooprocess tiempo Hola.   
 
-### <a name="how-to-stop-a-running-slice"></a>¿Cómo detener un segmento en ejecución?
-Si necesita detener la ejecución de la canalización, puede usar el cmdlet [Suspend-AzureRmDataFactoryPipeline](/powershell/module/azurerm.datafactories/suspend-azurermdatafactorypipeline) . Actualmente, la suspensión de la canalización no detiene las ejecuciones de segmentos en curso. Cuando terminan las ejecuciones en curso, no se selecciona ningún segmento adicional.
+### <a name="how-toostop-a-running-slice"></a>¿Cómo toostop un segmento de ejecución?
+Si necesita la canalización de hello toostop de ejecutarse, puede usar [AzureRmDataFactoryPipeline Suspend](/powershell/module/azurerm.datafactories/suspend-azurermdatafactorypipeline) cmdlet. Actualmente, suspender canalización hello no detiene las ejecuciones de segmento de Hola que están en curso. Una vez que termine de ejecuciones de hello en curso, no se selecciona ningún segmento adicional.
 
-Si desea realmente detener todas las ejecuciones inmediatamente, la única manera sería eliminar la canalización y crearla de nuevo. Si decide eliminar la canalización, NO es necesario eliminar tablas y servicios vinculados usados por la canalización.
+Si realmente desea toostop todas las ejecuciones de hello inmediatamente, Hola solo forma podría toodelete Hola canalización y crearla de nuevo. Si elige canalización de hello toodelete, no es necesario toodelete tablas y servicios vinculados Hola canalización usa.
 
 [create-factory-using-dotnet-sdk]: data-factory-create-data-factories-programmatically.md
 [msdn-class-library-reference]: /dotnet/api/microsoft.azure.management.datafactories.models

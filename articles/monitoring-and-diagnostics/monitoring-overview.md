@@ -1,6 +1,6 @@
 ---
-title: "Supervisión en Microsoft Azure | Microsoft Docs"
-description: Opciones disponibles si desea supervisar algo en Microsoft Azure. Azure Monitor y Log Analytics de Application Insights
+title: aaaMonitoring en Microsoft Azure | Documentos de Microsoft
+description: Opciones cuando se desea toomonitor nada en Microsoft Azure. Azure Monitor y Log Analytics de Application Insights
 author: rboucher
 manager: carmonm
 editor: 
@@ -14,63 +14,63 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/12/2017
 ms.author: robb
-ms.openlocfilehash: d4a94a92585420cf92018084437422fd0c66fa2d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f5a4f32525c52613f01a913e09a9fe3fbcbaeb21
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="overview-of-monitoring-in-microsoft-azure"></a>Información general sobre la supervisión en Microsoft Azure
-En este artículo se proporciona información general sobre las herramientas de supervisión disponibles en Microsoft Azure. Se aplica a: 
+En este artículo se proporciona información general sobre las herramientas de supervisión disponibles en Microsoft Azure. Se aplica demasiado
 - supervisión de aplicaciones que se ejecutan en Microsoft Azure 
 - herramientas y servicios que se ejecutan fuera de Azure que pueden supervisar objetos en Azure. 
 
-Se tratan de los distintos productos y servicios disponibles y cómo funcionan conjuntamente. Puede ayudar a determinar cuáles son las herramientas más adecuadas para el usuario y en qué casos.  
+Se trata Hola distintos productos y servicios disponibles y cómo funcionan conjuntamente. Le puede ayudar toodetermine cuáles son las herramientas más adecuados para usted en qué casos.  
 
 ## <a name="why-use-monitoring-and-diagnostics"></a>¿Por qué usar supervisión y diagnóstico?
 
-Los problemas de rendimiento de la aplicación en la nube pueden afectar a su negocio. Con varios componentes interconectados y versiones frecuentes, las degradaciones pueden ocurrir en cualquier momento. Y, si va a desarrollar una aplicación, los usuarios normalmente encuentran problemas que no se han detectado durante las pruebas. Debe tener conocimiento de estos problemas de inmediato y disponer de las herramientas de diagnóstico y solución de problemas. Microsoft Azure tiene una gama de herramientas para identificar estos problemas.
+Los problemas de rendimiento de la aplicación en la nube pueden afectar a su negocio. Con varios componentes interconectados y versiones frecuentes, las degradaciones pueden ocurrir en cualquier momento. Y, si va a desarrollar una aplicación, los usuarios normalmente encuentran problemas que no se han detectado durante las pruebas. Debe saber acerca de estos problemas de inmediato y dispone de herramientas para diagnosticar y solucionar problemas de Hola. Microsoft Azure tiene una gama de herramientas para identificar estos problemas.
 
 ## <a name="how-do-i-monitor-my-azure-cloud-apps"></a>¿Cómo puedo supervisar las aplicaciones de nube de Azure?
 
-Hay una gama de herramientas para la supervisión de servicios y aplicaciones de Azure. Algunas de sus características se superponen. Se debe en parte a motivos históricos y en parte al desenfoque entre el desarrollo y el funcionamiento de una aplicación. 
+Hay una gama de herramientas para la supervisión de servicios y aplicaciones de Azure. Algunas de sus características se superponen. Se trata en parte por motivos históricos y en parte debido toohello desenfoque entre el desarrollo y el funcionamiento de una aplicación. 
 
-Estas son las herramientas principales:
+Estos son herramientas principales de hello:
 
--   **Azure Monitor** es una herramienta básica para la supervisión de servicios que se ejecutan en Azure. Proporciona datos a nivel de infraestructura sobre el rendimiento de un servicio y el entorno circundante. Si va a administrar todas las aplicaciones en Azure, decida si desea escalar o reducir verticalmente los recursos y luego Azure Monitor proporciona lo que debe usar para empezar.
+-   **Azure Monitor** es una herramienta básica para la supervisión de servicios que se ejecutan en Azure. Proporciona datos de nivel de la infraestructura sobre rendimiento Hola de un servicio y Hola que rodea el entorno. Si va a administrar las aplicaciones en Azure, decida si tooscale hacia arriba o hacia abajo de recursos, a continuación, Monitor de Azure ofrece lo que usa toostart.
 
--   **Application Insights** puede utilizarse para el desarrollo y como una solución de supervisión de producción. Funciona mediante la instalación de un paquete en la aplicación y, por tanto, ofrece una vista más interna de lo que está sucediendo. Los datos incluyen tiempos de respuesta de dependencias, seguimientos de excepciones, instantáneas de depuración y perfiles de ejecución. Proporciona herramientas inteligentes y sólidas para analizar toda esta telemetría, a fin de ayudar a depurar una aplicación y a saber qué hacen los usuarios con ella. Puede indicar si un pico en los tiempos de respuesta se debe a algo de una aplicación o a algún problema de recursos externo. Si utiliza Visual Studio y la aplicación presenta errores, puede recurrir directamente a las líneas de código del problema para poder corregirlo.  
+-   **Application Insights** puede utilizarse para el desarrollo y como una solución de supervisión de producción. Funciona mediante la instalación de un paquete en la aplicación y, por tanto, ofrece una vista más interna de lo que está sucediendo. Los datos incluyen tiempos de respuesta de dependencias, seguimientos de excepciones, instantáneas de depuración y perfiles de ejecución. Proporciona herramientas inteligentes eficaces para analizar todos los esta telemetría ambos toohelp depurar una aplicación y toohelp entender lo que hacen los usuarios con él. Puede saber si un pico en tiempos de respuesta es due toosomething en una aplicación o algún problema de recursos externo. Si utiliza Visual Studio y aplicación hello es erróneo, se pueden tomar toohello derecho problema las líneas de código para que pueda corregirlos.  
 
--   **Log Analytics** está destinado a quienes necesitan ajustar el rendimiento y planificar el mantenimiento de aplicaciones que se ejecutan en producción. Se basa en Azure. Recopila y agrega los datos de muchos orígenes, aunque con un retraso de 10 a 15 minutos. Proporciona una solución integral de administración de TI para Azure, entornos locales e infraestructuras de terceros basadas en la nube (por ejemplo, Amazon Web Services). Proporciona herramientas más enriquecidas para analizar datos en más orígenes, permite realizar consultas complejas en todos los registros y puede alertar de forma proactiva sobre condiciones específicas.  Incluso puede recopilar datos personalizados en su repositorio central para que pueda consultarlos y visualizarlos. 
+-   **Análisis de registros** está destinado a aquellos que necesitan tootune rendimiento y plan de mantenimiento en aplicaciones que se ejecutan en producción. Se basa en Azure. Recopila y agrega los datos de muchos orígenes, aunque con un retraso de 10 minutos de too15. Proporciona una solución integral de administración de TI para Azure, entornos locales e infraestructuras de terceros basadas en la nube (por ejemplo, Amazon Web Services). Proporciona herramientas más enriquecidas tooanalyze datos a través de varios orígenes, permite que las consultas más complejas a través de todos los registros y proactivamente pueden emitir alertas en las condiciones especificadas.  Incluso puede recopilar datos personalizados en su repositorio central para que pueda consultarlos y visualizarlos. 
 
 -   **System Center Operations Manager (SCOM)** está diseñado para administrar y supervisar grandes instalaciones de la nube. Es posible que ya esté familiarizado con esta solución como una herramienta de administración para nubes locales basadas en Windows Sever e Hyper-V, pero también se puede integrar con aplicaciones de Azure y administrarlas. Entre otras cosas, puede instalar Application Insights en las aplicaciones dinámicas existentes.  Si una aplicación deja de funcionar, se lo notifica en cuestión de segundos. Tenga en cuenta que Log Analytics no sustituye a SCOM. Funcionan bien de forma conjunta.  
 
 
-## <a name="accessing-monitoring-in-the-azure-portal"></a>Acceso a la supervisión en Azure Portal
-Todos los servicios de supervisión de Azure ahora están disponibles en un único panel de interfaz de usuario. Para obtener información sobre cómo acceder a este espacio, vea [Introducción a Azure Monitor](monitoring-get-started.md). 
+## <a name="accessing-monitoring-in-hello-azure-portal"></a>Obtener acceso a supervisión Hola portal de Azure
+Todos los servicios de supervisión de Azure ahora están disponibles en un único panel de interfaz de usuario. Para obtener más información acerca de cómo tooaccess esta área, consulte [empezar a trabajar con el Monitor de Azure](monitoring-get-started.md). 
 
 También puede acceder a funciones de supervisión para recursos específicos; para ello, resalte dichos recursos y explore en profundidad sus opciones de supervisión. 
 
-## <a name="examples-of-when-to-use-which-tool"></a>Ejemplos de cuándo se debe utilizar qué herramienta 
+## <a name="examples-of-when-toouse-which-tool"></a>Ejemplos de cuándo toouse que herramienta 
 
-En las secciones siguientes se muestran algunos escenarios básicos y qué herramientas se deben usar de forma conjunta. 
+Hello las secciones siguientes muestra algunos escenarios básicos y las herramientas que deben usarse juntos. 
 
 ### <a name="scenario-1--fix-errors-in-an-azure-application-under-development"></a>Escenario 1: corregir errores en una aplicación de Azure en desarrollo   
 
-**La mejor opción es usar conjuntamente Application Insights, Azure Monitor y Visual Studio**
+**Hola mejor opción es toouse Application Insights, al Monitor de Azure y Visual Studio juntos**
 
-Ahora, Azure proporciona toda la funcionalidad del depurador de Visual Studio en la nube. Configure Azure Monitor para enviar telemetría a Application Insights. Habilite Visual Studio para incluir el SDK de Application Insights en la aplicación. En Application Insights, puede usar la asignación de aplicaciones para detectar visualmente qué partes de la aplicación en ejecución tienen un estado incorrecto o no. Para aquellas partes que no tienen un estado correcto, los errores y las excepciones se encuentran disponibles a efectos de exploración. Puede usar los distintos análisis de Application Insights para indagar. Si no está seguro del error, puede usar el depurador de Visual Studio para realizar un seguimiento del código y solucionar un problema más adelante. 
+Ahora, Azure proporciona toda la potencia del depurador de Visual Studio de hello en la nube de Hola Hola. Configurar el Monitor de Azure toosend telemetría tooApplication visión. Habilitar tooinclude Hola Application Insights SDK de Visual Studio en la aplicación. Una vez en Application Insights, puede usar toodiscover de asignación de la aplicación hello visualmente qué partes de la aplicación en ejecución son correctos o no. Para aquellas partes que no tienen un estado correcto, los errores y las excepciones se encuentran disponibles a efectos de exploración. Puede usar Hola diversas funciones analíticas en Application Insights toogo más profunda. Si no está seguro sobre error de hello, puede usar tootrace de depurador de Visual Studio de hello en el punto de código y el pin un problema. 
 
-Para más información, vea [Supervisión de aplicaciones web](../application-insights/app-insights-azure-web-apps.md) y consulte el índice de la izquierda para obtener instrucciones sobre los distintos tipos de aplicaciones y lenguajes.  
+Para obtener más información, consulte [supervisión de aplicaciones Web](../application-insights/app-insights-azure-web-apps.md) y consulte toohello tabla de contenido a la izquierda de Hola para obtener instrucciones sobre diversos tipos de aplicaciones y lenguajes.  
 
 ### <a name="scenario-2--debug-an-azure-net-web-application-for-errors-that-only-show-in-production"></a>Escenario 2: depurar una aplicación web de Azure .NET para los errores que solo se muestran en producción 
 
 > [!NOTE]
 > Estas características se encuentran en versión preliminar. 
 
-**La mejor opción es usar Application Insights y, si es posible, Visual Studio para una experiencia integral de depuración.**
+**Hola mejor opción es toouse Application Insights y si es posible, Visual Studio para hello completa experiencia de depuración.**
 
-Use el depurador de instantáneas de Application Insights para depurar la aplicación. Cuando se produce un umbral de error determinado con componentes de producción, el sistema captura telemetría automáticamente en ventanas de tiempo denominadas "instantáneas". La cantidad capturada es segura para una nube de producción porque es lo suficientemente pequeña como para no afectar al rendimiento, pero lo suficientemente grande como para permitir el seguimiento.  El sistema puede capturar varias instantáneas. Puede buscar un momento específico en Azure Portal o usar Visual Studio para una experiencia completa. Con Visual Studio, los desarrolladores pueden recorrer esa instantánea como si estuvieran depurando en tiempo real. Las variables locales, los parámetros, la memoria y los marcos se encuentran disponibles. Es necesario conceder acceso a los desarrolladores a estos datos de producción a través de un rol de RBAC.  
+Uso de hello aplicación visión instantánea depurador toodebug tu aplicación. Cuando se produce un determinado umbral de error con los componentes de producción, Hola automáticamente captura sistema telemetría en ventanas de tiempo denominados "instantáneas". Hello cantidad capturado es seguro para la ejecución de una nube de producción porque es pequeño suficiente no tooaffect rendimiento pero tooallow suficientemente importante como el seguimiento.  sistema de Hello puede capturar varias instantáneas. Puede buscar en un momento dado en hello portal de Azure o use Visual Studio para la experiencia completa de Hola. Con Visual Studio, los desarrolladores pueden recorrer esa instantánea como si estuvieran depurando en tiempo real. Las variables locales, los parámetros, la memoria y los marcos se encuentran disponibles. Los desarrolladores deben tener acceso toothis datos de producción a través de un rol RBAC.  
 
 Para más información, vea [Depuración de instantáneas](../application-insights/app-insights-snapshot-debugger.md). 
 
@@ -81,12 +81,12 @@ Para más información, vea [Depuración de instantáneas](../application-insigh
 
 ### <a name="scenario-4--fix-performance-issues-in-your-azure-application"></a>Escenario 4: corregir problemas de rendimiento en aplicaciones de Azure
 
-[Application Insights Profiler](../application-insights/app-insights-profiler.md) está diseñado para ayudar a solucionar estos tipos de problemas. Puede identificar y solucionar problemas de rendimiento de aplicaciones que se ejecutan en App Services (Web Apps, Logic Apps, Mobile Apps y API Apps) y de otros recursos de procesos como Virtual Machines, Conjuntos de escalado de máquinas virtuales (VMSS), Cloud Services y Service Fabric. 
+Hola [el generador de perfiles de Application Insights](../application-insights/app-insights-profiler.md) está diseñada toohelp solucionar estos tipos de problemas. Puede identificar y solucionar problemas de rendimiento de aplicaciones que se ejecutan en App Services (Web Apps, Logic Apps, Mobile Apps y API Apps) y de otros recursos de procesos como Virtual Machines, Conjuntos de escalado de máquinas virtuales (VMSS), Cloud Services y Service Fabric. 
 
 > [!NOTE]
-> La capacidad de generar perfiles de Virtual Machines, Conjuntos de escalado de máquinas virtuales (VMSS), Cloud Services y Service Fabric se encuentra en versión preliminar.   
+> Capacidad tooprofile máquinas virtuales, conjuntos de escalas de máquina Virtual (VMSS), servicios en la nube y el tejido de servicios está en vista previa.   
 
-Además, se le informa de forma proactiva por correo electrónico sobre determinados tipos de errores, como tiempos de carga de páginas muy lentos, mediante la herramienta de detección inteligente.  No es necesario realizar ninguna configuración en esta herramienta. Para más información, vea [Detección inteligente: anomalías de rendimiento](../application-insights/app-insights-proactive-performance-diagnostics.md) y [Detección inteligente: anomalías de rendimiento](https://azure.microsoft.com/blog/Enhancments-ApplicationInsights-SmartDetection/preview).
+Además, se le proactivamente notificará por correo electrónico sobre determinados tipos de errores, como tiempos de carga de página lenta, mediante una herramienta de detección inteligente Hola.  No es necesario toodo ninguna configuración en esta herramienta. Para más información, vea [Detección inteligente: anomalías de rendimiento](../application-insights/app-insights-proactive-performance-diagnostics.md) y [Detección inteligente: anomalías de rendimiento](https://azure.microsoft.com/blog/Enhancments-ApplicationInsights-SmartDetection/preview).
 
 
 
@@ -95,6 +95,6 @@ Más información acerca de
 
 * [Azure Monitor en un vídeo de Ignite 2016](https://myignite.microsoft.com/videos/4977)
 * [Introducción a Azure Monitor](monitoring-get-started.md)
-* [Diagnósticos de Azure](../azure-diagnostics.md): si intenta diagnosticar problemas en su aplicación de Cloud Services, Virtual Machines, Conjuntos de escalado de máquinas virtuales o Service Fabric.
-* [Application Insights](https://azure.microsoft.com/documentation/services/application-insights/) : si está intentando diagnosticar problemas en su aplicación web de Servicio de aplicaciones.
-* [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) y la solución de supervisión en producción [Operations Management Suite](https://www.microsoft.com/oms/)
+* [Diagnósticos de Azure](../azure-diagnostics.md) si estás intentando toodiagnose problemas en el servicio de nube, Máquina Virtual, Máquina Virtual escalar establecida o servicio aplicación de tejido.
+* [Application Insights](https://azure.microsoft.com/documentation/services/application-insights/) si está tratando de toodiagnostic problemas en la aplicación Web de servicio de aplicación.
+* [Análisis de registros](https://azure.microsoft.com/documentation/services/log-analytics/) hello y [Operations Management Suite](https://www.microsoft.com/oms/) solución de supervisión de producción

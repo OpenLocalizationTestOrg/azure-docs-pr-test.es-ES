@@ -1,15 +1,15 @@
 
-Crear una [aplicación de API](../articles/app-service-api/app-service-api-apps-why-best-platform.md) en el `myAppServicePlan`plan de App Service con el comando [az webapp create](/cli/azure/appservice/web#create). 
+Crear un [aplicación de API](../articles/app-service-api/app-service-api-apps-why-best-platform.md) en hello `myAppServicePlan` plan de servicio de aplicaciones con hello [crear webapp az](/cli/azure/appservice/web#create) comando. 
 
-La aplicación web ofrece un espacio de hospedaje para la API y proporciona una dirección URL para que pueda ver la aplicación implementada.
+aplicación web de Hello proporciona un espacio de hospedaje para la API y proporciona una aplicación Hola implementado de tooview de dirección URL.
 
-En el siguiente comando, reemplace  *\<app_name >* por un nombre único. Si `<app_name>` no es único, obtendrá el mensaje de error "Ya existe un sitio web con el nombre especificado <app_name>". La dirección URL predeterminada de la aplicación web es `https://<app_name>.azurewebsites.net`. 
+Hola siguiente comando, reemplace  *\<app_name >* con un nombre único. Si `<app_name>` es no es único, aparece el mensaje de error de Hola "Sitio Web con el nombre especificado < app_name > ya existe". Hola predeterminado es la dirección URL de aplicación web de hello `https://<app_name>.azurewebsites.net`. 
 
 ```azurecli-interactive
 az webapp create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan
 ```
 
-Cuando se ha creado la aplicación web, la CLI de Azure muestra información similar a la del ejemplo siguiente:
+Cuando se ha creado la aplicación web de hello, Hola CLI de Azure muestra información toohello similar siguiente ejemplo:
 
 ```json
 {

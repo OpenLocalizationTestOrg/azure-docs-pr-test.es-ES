@@ -1,6 +1,6 @@
 ---
-title: "Usar los portales de administración y de usuarios en Azure Stack | Microsoft Docs"
-description: "Aprenda las diferencias entre los portales de administración y de usuarios en Azure Stack."
+title: los portales de administrador y usuario de hello aaaUsing en pila de Azure | Documentos de Microsoft
+description: "Obtenga información acerca de las diferencias de hello entre portales de administrador y usuario de hello en la pila de Azure."
 services: azure-stack
 documentationcenter: 
 author: twooley
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: twooley
-ms.openlocfilehash: 066de8278d1ef4406cde837da4c7c65304854383
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 5e940749917e4aade26483a79bcc238346bf94f5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="using-the-administrator-and-user-portals-in-azure-stack"></a>Usar los portales de administración y de usuarios en Azure Stack
+# <a name="using-hello-administrator-and-user-portals-in-azure-stack"></a>Uso de portales de administrador y usuario de hello en la pila de Azure
 
-Hay dos portales en Azure Stack: el portal de administración y el portal de usuarios (también llamado portal de *inquilinos*). Los portales se apoyan en instancias independientes de Azure Resource Manager.
+Hay dos portales de pila de Azure; Hola portal de administrador y usuario hello (también denominada hello tooas *inquilino* portal). portales de Hola se basan en instancias independientes del Administrador de recursos de Azure.
 
-En la tabla siguiente se muestra cómo conectarse a los portales y a los puntos de conexión de Resource Manager en un entorno de Azure Stack Development Kit.
+tabla Hola siguiente muestra cómo tooconnect toohello portales y los puntos de conexión del Administrador de tooResource en un entorno de Kit de desarrollo de pila de Azure.
 
 |  Portal | URL del portal | URL del punto de conexión de Resource Manager |   
 | -------- | ------------- | ------- |  
@@ -32,44 +32,44 @@ En la tabla siguiente se muestra cómo conectarse a los portales y a los puntos 
 | Usuario | https://portal.local.azurestack.external | https://management.local.azurestack.external  |
 | | |
 
-## <a name="the-administrator-portal"></a>El portal de administración
+## <a name="hello-administrator-portal"></a>portal de administración de Hola
 
-El portal de administración permite que un operador de nube realice tareas administrativas y operativas. Un operador de nube puede hacer cosas como las siguientes:
+portal de administrador de Hello permite a una nube operador tooperform administrativo y operativo las tareas. Un operador de nube puede hacer cosas como las siguientes:
 * Supervisar el estado y las alertas.
 * Administrar la capacidad.
-* Rellenar el Marketplace.
+* rellenar marketplace Hola
 * Crear planes y ofertas.
 * Crear suscripciones para los inquilinos.
 
 Un operador de nube también puede crear recursos, como máquinas virtuales, redes virtuales y cuentas de almacenamiento.
 
- ![El portal de administración](media/azure-stack-manage-portals/image1.png)
+ ![portal de administración de Hola](media/azure-stack-manage-portals/image1.png)
 
- ## <a name="the-user-portal"></a>El portal de usuarios
+ ## <a name="hello-user-portal"></a>portal de usuarios de Hola
 
- El portal de usuarios no proporciona acceso a cualquiera de las funcionalidades administrativas u operativas del portal de administración. En el portal de usuarios, un usuario puede suscribirse a las ofertas públicas y utilizar los servicios que están disponibles a través de dichas ofertas.
+ portal de usuarios de Hello no proporciona acceso tooany de capacidades de hello administrativos u operativos del portal de administrador de Hola. En el portal de usuarios de hello, un usuario puede suscribirse toopublic ofertas y usar servicios de Hola que están disponibles a través de dichas ofertas.
 
-  ![El portal de usuarios](media/azure-stack-manage-portals/image2.png)
+  ![portal de usuarios de Hola](media/azure-stack-manage-portals/image2.png)
  
  ## <a name="subscription-behavior"></a>Comportamiento de la suscripción
  
- Asegúrese de comprender las siguientes diferencias entre el comportamiento de la suscripción en los dos portales.
+ Asegúrese de que comprende Hola siguiendo las diferencias entre el comportamiento de suscripción en los portales de hello dos.
 
  Portal de administración:
-* Hay solo una suscripción que está disponible en el portal de administración. Esta suscripción es la *suscripción de proveedor predeterminada*. No se puede agregar ninguna otra suscripción para usarla en el portal de administración.
-* Como operador de nube, puede agregar suscripciones para los usuarios (incluido usted mismo) desde el portal de administración. Los usuarios (incluido usted) pueden tener acceso a estas suscripciones y usarlas desde el portal de usuarios.
+* Hay solo una suscripción que está disponible en el portal del Administrador de Hola. Esta suscripción es hello *suscripción de proveedor predeterminado*. No se puede agregar cualquier otras suscripciones para su uso en el portal del Administrador de Hola.
+* Como un operador en la nube, puede agregar suscripciones para los usuarios (incluido usted) en el portal del Administrador de Hola. Los usuarios (incluido usted) pueden tener acceso y usar estas suscripciones desde el portal de usuarios de Hola.
 
   >[!NOTE]
-  Debido a la separación de Azure Resource Manager, las suscripciones no se cruzan de un portal a otro. Por ejemplo, si, como operador de nube, inicia sesión en el portal de usuarios, no puede tener acceso a la suscripción de proveedor predeterminada. Por lo tanto, no tiene acceso a las funciones administrativas. Puede crear suscripciones para sí mismo a partir de ofertas públicas, pero se le considerará un usuario inquilino.
+  Debido a la separación de Azure Resource Manager hello, las suscripciones no se transfieren entre portales. Por ejemplo, si como un operador en la nube inicia sesión en el portal de usuarios de toohello, no se puede tener acceso a Hola suscripción de proveedor predeterminado. Por lo tanto, no tiene acceso a las funciones administrativas de tooany. Puede crear suscripciones para sí mismo a partir de ofertas públicas, pero se le considerará un usuario inquilino.
 
 Portal de usuarios:
-* En el portal de usuarios, una cuenta puede tener varias suscripciones.
+* En el portal de usuarios de hello, una cuenta puede tener varias suscripciones.
 
   >[!NOTE]
-  En el entorno del kit de desarrollo, si un usuario inquilino pertenece al mismo directorio que el operador de nube, no se le impide iniciar sesión en el portal de administración. Sin embargo, no tiene acceso a ninguna de las funciones administrativas. Además, no puede agregar suscripciones ni acceder a las ofertas disponibles en el portal de usuarios.
+  En el entorno de kit de desarrollo hello, si un usuario inquilino pertenece toohello mismo directorio como operador de nube de hello, no se podrá iniciar sesión en toohello portal del administrador. Sin embargo, no se puede tener acceso a cualquiera de las funciones administrativas de Hola. Además, no se agregan las suscripciones o acceso ofrece realizadas toothem disponible en el portal de usuarios de Hola.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-[Conexión a Azure Stack](azure-stack-connect-azure-stack.md)
+[Conectar tooAzure pila](azure-stack-connect-azure-stack.md)
 
 [Administración de regiones en Azure Stack](azure-stack-region-management.md)

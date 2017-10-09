@@ -1,6 +1,6 @@
 ---
-title: "Conexión de Raspberry Pi al Conjunto de aplicaciones de IoT de Azure mediante C para admitir las actualizaciones de firmware | Microsoft Docs"
-description: "Use el Starter Kit de IoT de Microsoft Azure para Raspberry Pi 3 y el Conjunto de aplicaciones de IoT de Azure. Use C para conectar su Raspberry Pi a la solución de supervisión remota, enviar telemetría desde sensores a la nube y realizar una actualización de firmware remota."
+title: aaaConnect un tooAzure frambuesa Pi Suite IoT mediante C toosupport firmware actualiza | Documentos de Microsoft
+description: "Utilice hello IoT Starter Kit de Microsoft Azure para hello frambuesa Pi 3 y conjunto de IoT de Azure. Usar C tooconnect la solución de supervisión remota toohello de frambuesa Pi, enviar telemetría desde sensores toohello en la nube y realizar una actualización de firmware remoto."
 services: 
 suite: iot-suite
 documentationcenter: 
@@ -14,143 +14,143 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: dobett
-ms.openlocfilehash: f36f6512bb30e4b109b1bd1c3cdab10300f4edc9
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 36d39c6d754ddb025fd3f6b74d7795ed907b754c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-your-raspberry-pi-3-to-the-remote-monitoring-solution-and-enable-remote-firmware-updates-using-c"></a>Conexión de Raspberry Pi 3 a la solución de supervisión remota y habilitación de las actualizaciones de firmware remotas mediante C
+# <a name="connect-your-raspberry-pi-3-toohello-remote-monitoring-solution-and-enable-remote-firmware-updates-using-c"></a>Conectar la solución de supervisión remota toohello de frambuesa Pi 3 y habilitar las actualizaciones de firmware remotas mediante C
 
 [!INCLUDE [iot-suite-raspberry-pi-kit-selector](../../includes/iot-suite-raspberry-pi-kit-selector.md)]
 
-Este tutorial muestra cómo usar el Starter Kit de IoT de Microsoft Azure para Raspberry Pi 3 para:
+Este tutorial muestra cómo toouse Hola IoT Starter Kit de Microsoft Azure para frambuesa Pi 3 para:
 
-* Desarrollar un lector de temperatura y humedad que pueda comunicarse con la nube.
-* Habilitar y realizar una actualización de firmware remota para actualizar la aplicación cliente en Raspberry Pi.
+* Desarrollar un lector de temperatura y humedad que puede comunicarse con la nube de Hola.
+* Habilitar y realice una aplicación de cliente remoto firmware update tooupdate Hola Hola frambuesa Pi.
 
-El tutorial usa:
+tutorial de Hello usa:
 
-* El SO Raspbian, el lenguaje de programación C y el SDK de IoT de Microsoft Azure para C para implementar un dispositivo de ejemplo.
-* La solución preconfigurada de supervisión remota del Conjunto de aplicaciones de IoT como el back-end basado en la nube.
+* Raspbian OS, lenguaje de programación de C de Hola y Hola IoT de Microsoft Azure SDK para C tooimplement un dispositivo de ejemplo.
+* supervisión remota de Hello IoT conjunto había preconfigurado solución como back-end de hello en la nube.
 
 ## <a name="overview"></a>Información general
 
-En este tutorial, va a completar los siguientes pasos:
+En este tutorial, se realizará Hola pasos:
 
-* Implemente una instancia de la solución preconfigurada de supervisión remota en su suscripción de Azure. Este paso implementa y configura varios servicios de Azure automáticamente.
-* Configure el dispositivo y los sensores para que se comunique con el equipo y la solución de supervisión remota.
-* Actualice el código del dispositivo de ejemplo para que se conecte a la solución de supervisión remota y envíe telemetría que aparezca en el panel de soluciones.
-* Use el código de dispositivo de ejemplo para actualizar la aplicación cliente.
+* Implemente una instancia de hello remoto supervisión solución preconfigurada tooyour suscripción de Azure. Este paso implementa y configura varios servicios de Azure automáticamente.
+* Configurar el dispositivo y sensores toocommunicate con el equipo y Hola remoto de solución de supervisión.
+* Actualizar Hola ejemplo dispositivo código tooconnect toohello solución de supervisión y enviar telemetría que se puede ver en el panel de la solución de Hola.
+* Usar dispositivos de ejemplo Hola código tooupdate Hola cliente aplicación.
 
 [!INCLUDE [iot-suite-raspberry-pi-kit-prerequisites](../../includes/iot-suite-raspberry-pi-kit-prerequisites.md)]
 
 [!INCLUDE [iot-suite-provision-remote-monitoring](../../includes/iot-suite-provision-remote-monitoring.md)]
 
 > [!WARNING]
-> La solución de supervisión remota proporciona un conjunto de servicios de Azure de la suscripción de Azure. La implementación refleja una arquitectura empresarial real. Para evitar cobros de consumo innecesarios de Azure, elimine la instancia de la solución preconfigurada en azureiotsuite.com cuando haya terminado con ella. Si necesita la solución preconfigurada de nuevo, puede crearla fácilmente. Para más información sobre cómo reducir el consumo mientras se ejecuta la solución de supervisión remota, consulte [Configuring Azure IoT Suite preconfigured solutions for demo purposes][lnk-demo-config] (Configuración de soluciones preconfiguradas del Conjunto de aplicaciones de IoT de Azure para fines de demostración).
+> Hola disposiciones de solución de supervisión remoto un conjunto de servicios de Azure en su suscripción de Azure. implementación de Hello refleja una arquitectura empresarial real. tooavoid cargos de consumo innecesario de Azure, elimine la instancia de la solución de hello preconfigurado en azureiotsuite.com cuando haya terminado con él. Si necesita hello solución preconfigurada de nuevo, puede crearla fácilmente. Para obtener más información acerca de cómo reducir el consumo de Hola se ejecuta la solución de supervisión remota, consulte [configurar Azure IoT conjunto preconfigurado soluciones para fines de demostración][lnk-demo-config].
 
 [!INCLUDE [iot-suite-raspberry-pi-kit-view-solution](../../includes/iot-suite-raspberry-pi-kit-view-solution.md)]
 
 [!INCLUDE [iot-suite-raspberry-pi-kit-prepare-pi](../../includes/iot-suite-raspberry-pi-kit-prepare-pi.md)]
 
-## <a name="download-and-configure-the-sample"></a>Descarga y configuración del ejemplo
+## <a name="download-and-configure-hello-sample"></a>Descargar y configurar el ejemplo hello
 
-Ahora puede descargar y configurar la aplicación de cliente de supervisión remota en su Raspberry Pi.
+Ahora puede descargar y configurar la aplicación de cliente de supervisión remota de hello en el instalador de plataforma de frambuesa.
 
-### <a name="clone-the-repositories"></a>Clonación de repositorios
+### <a name="clone-hello-repositories"></a>Clonar repositorios de Hola
 
-Si aún no lo ha hecho, clone los repositorios necesarios mediante la ejecución de los siguientes comandos en Pi:
+Si aún no lo ha hecho lo ha hecho, Hola clon necesario repositorios ejecutando Hola siga los comandos en el instalador de plataforma:
 
 ```sh
 cd ~
 git clone --recursive https://github.com/Azure-Samples/iot-remote-monitoring-c-raspberrypi-getstartedkit.git
 ```
 
-### <a name="update-the-device-connection-string"></a>Actualización de la cadena de conexión de dispositivo
+### <a name="update-hello-device-connection-string"></a>Actualizar la cadena de conexión de dispositivo de Hola
 
-Abra el archivo de configuración de ejemplo en el editor **nano** con el comando siguiente:
+Archivo de configuración de ejemplo de Hola abierto en hello **nano** editor mediante Hola siguiente comando:
 
 ```sh
 nano ~/iot-remote-monitoring-c-raspberrypi-getstartedkit/advanced/config/deviceinfo
 ```
 
-Reemplace los valores de marcador de posición por el identificador de dispositivo y la información de IoT Hub que creó y guardó al principio de este tutorial.
+Reemplazar los valores de marcador de posición de Hola por hello Id. y centro de IoT información del dispositivo ha creado y guardado en el inicio de Hola de este tutorial.
 
-Cuando haya terminado, el contenido del archivo e información del dispositivo debe ser similar al ejemplo siguiente:
+Cuando haya terminado, contenido de hello del archivo de deviceinfo hello debería ser similar Hola siguiente ejemplo:
 
 ```conf
 yourdeviceid
 HostName=youriothubname.azure-devices.net;DeviceId=yourdeviceid;SharedAccessKey=yourdevicekey
 ```
 
-Guarde los cambios (**Ctrl-O**, **ENTRAR**) y salga del editor (**Ctrl-X**).
+Guarde los cambios (**O Ctrl**, **ENTRAR**) y salga del editor hello (**Ctrl-X**).
 
-## <a name="build-the-sample"></a>Compilación del ejemplo
+## <a name="build-hello-sample"></a>Compilar el ejemplo hello
 
-Si todavía no lo ha hecho, instale los paquetes de requisitos previos para el SDK de dispositivo IoT de Microsoft Azure para C ejecutando los comandos siguientes en un terminal en Raspberry Pi:
+Si no lo ha hecho ya, instale los paquetes de requisitos previos de Hola para hello SDK de dispositivos de IoT de Azure de Microsoft para C con hello siguiente comandos en un terminal de hello frambuesa Pi:
 
 ```sh
 sudo apt-get update
 sudo apt-get install g++ make cmake git libcurl4-openssl-dev libssl-dev uuid-dev
 ```
 
-Ahora puede compilar la solución de ejemplo en Raspberry Pi:
+Ahora puede compilar la solución de ejemplo de Hola en hello frambuesa Pi:
 
 ```sh
 chmod +x ~/iot-remote-monitoring-c-raspberrypi-getstartedkit/advanced/1.0/build.sh
 ~/iot-remote-monitoring-c-raspberrypi-getstartedkit/advanced/1.0/build.sh
 ```
 
-Ahora puede ejecutar el programa de ejemplo en Raspberry Pi. Escriba el comando:
+Ahora puede ejecutar el programa de ejemplo de Hola en hello frambuesa Pi. Escriba el comando de hello:
 
   ```sh
   sudo ~/cmake/remote_monitoring/remote_monitoring
   ```
 
-La salida de ejemplo siguiente es un ejemplo de la salida que se ve en el símbolo del sistema en Raspberry Pi:
+Hello resultados del ejemplo siguiente es un ejemplo de salida de hello, vea en línea de comandos de hello en hello frambuesa Pi:
 
 ![Salida de la aplicación Raspberry Pi][img-raspberry-output]
 
-Presione **Ctrl-C** para salir del programa en cualquier momento.
+Presione **Ctrl-C** programa Hola de tooexit en cualquier momento.
 
 [!INCLUDE [iot-suite-raspberry-pi-kit-view-telemetry-advanced](../../includes/iot-suite-raspberry-pi-kit-view-telemetry-advanced.md)]
 
-1. En el panel de soluciones, haga clic en **Dispositivos** para visitar la página **Dispositivos**. Seleccione su Raspberry Pi en la **lista de dispositivos**. A continuación, elija **Métodos**:
+1. En el panel de la solución de hello, haga clic en **dispositivos** toovisit hello **dispositivos** página. Seleccione el instalador de plataforma de frambuesa Hola **lista de dispositivos**. A continuación, elija **Métodos**:
 
     ![Lista de dispositivos en el panel][img-list-devices]
 
-1. En la página **Invocar método**, elija **InitiateFirmwareUpdate** en la lista desplegable **Método**.
+1. En hello **invocar método** página, elija **InitiateFirmwareUpdate** en hello **método** lista desplegable.
 
-1. En el campo **FWPackageURI**, escriba **https://github.com/Azure-Samples/iot-remote-monitoring-c-raspberrypi-getstartedkit/raw/master/advanced/2.0/package/remote_monitoring.zip**. Este archivo contiene la implementación de la versión 2.0 del firmware.
+1. Hola **FWPackageURI** , escriba **https://github.com/Azure-Samples/iot-remote-monitoring-c-raspberrypi-getstartedkit/raw/master/advanced/2.0/package/remote_monitoring.zip**. Este archivo contiene la implementación de hello de la versión 2.0 del firmware de Hola.
 
-1. Elija **Invocar método**. La aplicación en Raspberry Pi envía una confirmación de vuelta al panel de soluciones. Después, inicia el proceso de actualización de firmware mediante la descarga de la nueva versión del firmware:
+1. Elija **Invocar método**. aplicación de Hello en hello frambuesa Pi envía un panel de solución de toohello espera de confirmación. A continuación, inicia el proceso de actualización de firmware de hello descargando la nueva versión del firmware de Hola de hello:
 
     ![Mostrar el historial de métodos][img-method-history]
 
-## <a name="observe-the-firmware-update-process"></a>Observar el proceso de actualización de firmware
+## <a name="observe-hello-firmware-update-process"></a>Observar el proceso de actualización de firmware de Hola
 
-Puede observar el proceso de actualización del firmware a medida que se ejecuta en el dispositivo y ver las propiedades notificadas en el panel de la solución:
+Puede observar el proceso de actualización de firmware de hello mientras se ejecuta en el dispositivo de Hola y viendo Hola notificado propiedades en el panel de la solución de hello:
 
-1. Puede ver el progreso en el proceso de actualización en Raspberry Pi:
+1. Puede ver el progreso de hello en del proceso de actualización de hello en hello frambuesa Pi:
 
     ![Mostrar el progreso de la actualización][img-update-progress]
 
     > [!NOTE]
-    > La aplicación de supervisión remota se reinicia automáticamente cuando finaliza la actualización. Use el comando `ps -ef` para comprobar que se está ejecutando. Si desea terminar el proceso, use el comando `kill` con el identificador de proceso.
+    > aplicación de supervisión remoto Hello en modo silencioso reinicia cuando se completa la actualización de Hola. Use el comando de hello `ps -ef` tooverify se está ejecutando. Si desea que el proceso de hello tooterminate, use hello `kill` comando con Id. de proceso de Hola.
 
-1. Puede ver el estado de la actualización del firmware, tal y como lo notifica el dispositivo, en el portal de solución. La captura de pantalla siguiente muestra el estado y la duración de cada fase del proceso de actualización y la nueva versión de firmware:
+1. Puede ver estado de Hola de actualización de firmware de hello, indicados por dispositivo de hello, en el portal de solución de Hola. Hello captura de pantalla siguiente muestra el estado de Hola y la duración de cada fase del proceso de actualización de hello y la nueva versión de firmware de hello:
 
     ![Mostrar estado del trabajo][img-job-status]
 
-    Si retrocede al panel, puede comprobar que el dispositivo todavía está enviando telemetría tras la actualización del firmware.
+    Si navega toohello back-panel, puede comprobar dispositivo Hola todavía esté enviando telemetría después de la actualización de firmware de Hola.
 
 > [!WARNING]
-> Si deja la solución de supervisión remota ejecutándose en su cuenta de Azure, se le cobra por el tiempo que se ejecute. Para más información sobre cómo reducir el consumo mientras se ejecuta la solución de supervisión remota, consulte [Configuring Azure IoT Suite preconfigured solutions for demo purposes][lnk-demo-config] (Configuración de soluciones preconfiguradas del Conjunto de aplicaciones de IoT de Azure para fines de demostración). Elimine la solución preconfigurada de su cuenta de Azure cuando haya terminado de usarla.
+> Si deja Hola supervisión de solución que se ejecuta en su cuenta de Azure remota, se le facturará por vez Hola que se ejecuta. Para obtener más información acerca de cómo reducir el consumo de Hola se ejecuta la solución de supervisión remota, consulte [configurar Azure IoT conjunto preconfigurado soluciones para fines de demostración][lnk-demo-config]. Eliminar soluciones Hola preconfigurado de su cuenta de Azure cuando termine de usarlo.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Visite el [Centro para desarrolladores de IoT de Azure](https://azure.microsoft.com/develop/iot/) para obtener más ejemplos y la documentación de IoT de Azure.
+Visite hello [centro de desarrollo de Azure IoT](https://azure.microsoft.com/develop/iot/) para obtener más ejemplos y documentación sobre IoT de Azure.
 
 
 [img-raspberry-output]: ./media/iot-suite-raspberry-pi-kit-c-get-started-advanced/app-output.png

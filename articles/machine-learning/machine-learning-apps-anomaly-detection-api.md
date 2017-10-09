@@ -1,5 +1,5 @@
 ---
-title: "API de detección de anomalías de Azure Machine Learning | Microsoft Docs"
+title: "API de detección de anomalías de aprendizaje de máquina aaaAzure | Documentos de Microsoft"
 description: "La API de detección de anomalías es un ejemplo integrado en Aprendizaje automático de Microsoft Azure que detecta anomalías en los datos de serie temporales con valores numéricos espaciados de manera uniforme en el tiempo."
 services: machine-learning
 documentationcenter: 
@@ -14,52 +14,52 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/05/2017
 ms.author: alok;rotimpe
-ms.openlocfilehash: 5ddc02905fbb7f9f7c5deb9b970101788d824642
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ce153689b8ddb36b67a2ad3607d846ea83ebcf61
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>API de detección de anomalías de Machine Learning
 ## <a name="overview"></a>Información general
 La [API de detección de anomalías](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) es un ejemplo integrado en Azure Machine Learning que detecta anomalías en los datos de serie temporales con valores numéricos espaciados de manera uniforme en el tiempo.
 
-Estas API pueden detectar los siguientes tipos de patrones anómalos en datos de series temporales:
+Esta API puede detectar los siguientes tipos de patrones anómalos en los datos de serie temporal de Hola:
 
 * **Tendencias positivas y negativas**: por ejemplo, al supervisar el uso de memoria en informática, una tendencia al alza puede resultar interesante porque puede ser indicativa de una pérdida de memoria.
-* **Cambios en el intervalo dinámico de valores**: por ejemplo, al supervisar las excepciones producidas por un servicio en la nube, cualquier cambio en el intervalo dinámico de valores podría indicar inestabilidad en el estado del servicio.
-* **Cambios abruptos e interrupciones**: por ejemplo, al supervisar el número de errores de inicio de sesión en un servicio o el número de finalizaciones de compras en un sitio de comercio electrónico, los cambios abruptos y las interrupciones podrían indicar un comportamiento anormal.
+* **Cambios en el intervalo dinámico de Hola de valores**: por ejemplo, al supervisar excepciones de hello iniciadas por un servicio de nube, los cambios en el intervalo dinámico de Hola de valores pudieron indicar inestabilidad en estado de Hola de servicio de hello, y
+* **Cambios abruptos e interrupciones**: por ejemplo, al supervisar el número de Hola de errores de inicio de sesión en un servicio o de desprotecciones en un sitio de comercio electrónico, picos o DIP pudieron indicar un comportamiento anómalo.
 
-Estos detectores de aprendizaje automático realizan un seguimiento de dichos cambios en los valores con el paso del tiempo e informan de los cambios continuados en sus valores con puntuaciones de anomalías. No requieren el ajuste del umbral ad hoc y sus puntuaciones pueden utilizarse para controlar el índice de falsos positivos. La API de detección de anomalías es útil en varios escenarios, por ejemplo, la supervisión de servicios mediante el seguimiento de KPI en el tiempo, la supervisión del uso mediante métricas como el número de búsquedas o el número de clics y la supervisión del rendimiento mediante contadores como la memoria, la CPU, las lecturas de archivos, etc., en el tiempo.
+Estos detectores de aprendizaje automático realizan un seguimiento de dichos cambios en los valores con el paso del tiempo e informan de los cambios continuados en sus valores con puntuaciones de anomalías. No requieren ajuste del umbral "ad hoc" y sus puntuaciones pueden ser falsos positivos toocontrol usado. detección de anomalías de Hello API es útil en varios escenarios como la supervisión del servicio de seguimiento de KPI con el tiempo, uso de supervisión a través de las métricas como el número de búsquedas, número de clics, supervisión del rendimiento a través de contadores como archivo de memoria, CPU, lecturas, etc. con el tiempo.
 
-La oferta de detección de anomalías incluye herramientas útiles para comenzar.
+oferta de detección de anomalías de Hello incluye tooget herramientas útiles que se inició.
 
-* La [aplicación web](http://anomalydetection-aml.azurewebsites.net/) le ayuda a evaluar y visualizar los resultados de las API de detección de anomalías en los datos.
+* Hola [aplicación web](http://anomalydetection-aml.azurewebsites.net/) le ayuda a evaluar y visualizar los resultados de Hola de API de detección de anomalías en los datos.
 
 > [!NOTE]
 > Pruebe **IT Anomaly Insights solution** de [esta API](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2).
 > 
-> Para que esta solución se implemente de extremo a extremo en su suscripción de Azure, <a href="https://gallery.cortanaintelligence.com/Solution/Anomaly-Detection-Pre-Configured-Solution-1" target="_blank">**comience por esta página>**</a>.
+> tooget esta solución de tooend final implementado tooyour suscripción de Azure <a href="https://gallery.cortanaintelligence.com/Solution/Anomaly-Detection-Pre-Configured-Solution-1" target="_blank"> **empiece aquí >**</a>
 > 
 >
 
 ## <a name="api-deployment"></a>Implementación de la API
-Para poder usar la API, debe implementarla en su suscripción de Azure, donde se hospedará como un servicio web Machine Learning.  Para ello, puede utilizar la [Galería de Cortana Intelligence](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2).  Con esta acción se implementarán dos servicios web Machine Learning (y sus recursos relacionados) en su suscripción de Azure: uno para la detección de anomalías con detección de estacionalidad y otro sin detección de estacionalidad.  Una vez que la implementación haya finalizado, podrá administrar las API desde la página [Azure Machine Learning Web Services](https://services.azureml.net/webservices/) (Servicios web Machine Learning de Azure).  En esta página podrá buscar sus ubicaciones de punto de conexión y las claves de API, así como código de ejemplo para llamar a la API.  Puede encontrar instrucciones más detalladas [aquí](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-manage-new-webservice).
+Hola de orden toouse API, debe implementarlo tooyour suscripción de Azure donde se hospedará como un servicio web de aprendizaje automático de Azure.  Puede hacerlo desde hello [Cortana Intelligence galería](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2).  Esta acción implementará dos servicios Web de aprendizaje automático de Azure (y sus recursos relacionados) tooyour suscripción de Azure: una para la detección de anomalías con detección de la estacionalidad y otra sin la detección de estacionalidad.  Cuando haya completado la implementación de hello, podrá toomanage capaz de las API de hello [servicios web de aprendizaje automático de Azure](https://services.azureml.net/webservices/) página.  Desde esta página, se ser capaz de toofind las ubicaciones de punto de conexión, las claves de API, así como código de ejemplo para llamar a API de Hola.  Puede encontrar instrucciones más detalladas [aquí](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-manage-new-webservice).
 
-## <a name="scaling-the-api"></a>Escalado de la aplicación
-De forma predeterminada, la implementación tendrá un plan de facturación de desarrollo y pruebas gratuito que incluye 1000 transacciones al mes y 2 horas de proceso al mes.  Puede actualizar a otro plan según sus necesidades.  La información de precios de los distintos planes está disponibles [aquí](https://azure.microsoft.com/en-us/pricing/details/machine-learning/) en "Precios de API web de producción".
+## <a name="scaling-hello-api"></a>API de Hola de ajuste de escala
+De forma predeterminada, la implementación tendrá un plan de facturación de desarrollo y pruebas gratuito que incluye 1000 transacciones al mes y 2 horas de proceso al mes.  Puede actualizar el plan de tooanother según sus necesidades.  Los detalles sobre los precios de Hola de distintos planes están disponibles [aquí](https://azure.microsoft.com/en-us/pricing/details/machine-learning/) en "Precios de API Web de producción".
 
 ## <a name="managing-aml-plans"></a>Administración de los planes de AML 
-Puede administrar el plan de facturación [aquí](https://services.azureml.net/plans/).  El nombre del plan tomará como base el nombre del grupo de recursos que eligió al implementar la API, a lo que se añadirá una cadena única para la suscripción.  Las instrucciones sobre cómo actualizar el plan están disponibles [aquí](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-manage-new-webservice) en la sección "Administración de planes de facturación".
+Puede administrar el plan de facturación [aquí](https://services.azureml.net/plans/).  nombre del plan de Hola se basará en el nombre del grupo de recursos de Hola que eligió al implementar la API de hello, además de una cadena que es el único tooyour suscripción.  Obtener instrucciones sobre cómo tooupgrade su plan están disponibles [aquí](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-manage-new-webservice) en la sección "Administrar planes de facturación" de Hola.
 
 ## <a name="api-definition"></a>Definición de la API
-El servicio web proporciona API basadas en REST a través de HTTPS que se pueden consumir de varias formas, como una aplicación web o móvil, R, Python, Excel, etc.  Los datos de la serie temporal se envían a este servicio mediante una llamada a la API de REST, y se ejecuta una combinación de los tres tipos de anomalías descritos a continuación.
+servicio web Hello proporciona una API basada en REST a través de HTTPS que se pueden usar de maneras diferentes, incluida una web o aplicación móvil, R, Python, Excel, etcetera.  Enviar tiempo serie toothis servicio de datos a través de una llamada de API de REST, y se ejecuta una combinación de los tres tipos de anomalías Hola que se describe a continuación.
 
-## <a name="calling-the-api"></a>Llamada a la API
-Para poder llamar a la API, debe conocer la ubicación del punto de conexión y la clave de API.  Estos dos elementos, junto con el código de ejemplo para llamar a la API, están disponibles en la página [Azure Machine Learning Web Services](https://services.azureml.net/webservices/) (Servicios web Machine Learning de Azure).  Navegue a la API deseada y, a continuación, haga clic en la pestaña "Consume" (Usar) para buscarlos.  Tenga en cuenta que se puede llamar a la API como una API de Swagger (es decir, con el parámetro de dirección URL `format=swagger`) o como una API no Swagger (es decir, sin el parámetro de dirección URL `format`).  El código de ejemplo utiliza el formato de Swagger.  A continuación se muestra una solicitud de ejemplo y una respuesta en formato no Swagger.  Estos ejemplos son para el punto de conexión de estacionalidad.  El punto de conexión de no estacionalidad es similar.
+## <a name="calling-hello-api"></a>Llamar a API de Hola
+Hola de orden toocall API, necesitará ubicación de punto de conexión de tooknow hello y clave de API.  Ambos de estos, junto con el código de ejemplo para llamar a la API de hello, están disponibles en hello [servicios web de aprendizaje automático de Azure](https://services.azureml.net/webservices/) página.  Navegar por la API de toohello deseado y, a continuación, haga clic en toofind de pestaña "Usar" hello ellos.  Tenga en cuenta que puede llamar a la API de hello como una API de Swagger (es decir, con el parámetro de dirección URL de hello `format=swagger`) o como una API no Swagger (es decir, sin hello `format` parámetro de dirección URL).  código de ejemplo de Hola utiliza el formato de Swagger de Hola.  A continuación se muestra una solicitud de ejemplo y una respuesta en formato no Swagger.  Estos ejemplos son el punto de conexión de toohello estacionalidad.  el punto de conexión de Hello no estacionalidad es similar.
 
 ### <a name="sample-request-body"></a>Cuerpo de solicitud de ejemplo
-La solicitud contiene dos objetos: `Inputs` y `GlobalParameters`.  En la solicitud de ejemplo siguiente, algunos parámetros se envían explícitamente mientras que otros no (desplácese hacia abajo para obtener una lista completa de parámetros para cada punto de conexión).  Los parámetros que no se envían explícitamente en la solicitud utilizarán los valores predeterminados que se indican a continuación.
+solicitud de Hello contiene dos objetos: `Inputs` y `GlobalParameters`.  En la solicitud de ejemplo Hola a continuación, algunos parámetros se envían explícitamente mientras que otros no lo están (desplácese hacia abajo para obtener una lista completa de parámetros para cada punto de conexión).  Parámetros que no se envían explícitamente en la solicitud de Hola usará los valores predeterminados de hello indicados a continuación.
 
     {
                 "Inputs": {
@@ -81,7 +81,7 @@ La solicitud contiene dos objetos: `Inputs` y `GlobalParameters`.  En la solicit
     }
 
 ### <a name="sample-response"></a>Respuesta de ejemplo
-Tenga en cuenta que, para ver el campo `ColumnNames`, debe incluir `details=true` como un parámetro de dirección URL en la solicitud.  Consulte las tablas siguientes para conocer el significado de cada uno de estos campos.
+Tenga en cuenta que, en Hola de orden toosee `ColumnNames` campo, debe incluir `details=true` como un parámetro de dirección URL en la solicitud.  Ver tablas de Hola a continuación para el significado de Hola a todos estos campos.
 
     {
         "Results": {
@@ -102,91 +102,91 @@ Tenga en cuenta que, para ver el campo `ColumnNames`, debe incluir `details=true
 
 
 ## <a name="score-api"></a>API de puntuación
-La API de puntuación se utiliza para ejecutar la detección de anomalías en datos de series temporales no estacionales. La API ejecuta una serie de detectores de anomalías en los datos y devuelve sus puntuaciones de anomalías. En la siguiente ilustración se muestra un ejemplo de anomalías que puede detectar la API de puntuación. Esta serie temporal tiene 2 cambios de nivel distintos y 3 picos. Los puntos rojos muestran la hora en que se detecta el cambio de nivel, mientras que los puntos negros muestran los picos detectados.
+Hola API de puntuación se utiliza para ejecutar la detección de anomalías en los datos de serie temporal no estacionales. Hola API ejecuta una serie de detección de anomalías en los datos de Hola y devuelve sus puntuaciones de anomalías. Hola siguiente ilustración muestra un ejemplo de las anomalías que Hola que puede detectar la API de puntuación. Esta serie temporal tiene 2 cambios de nivel distintos y 3 picos. puntos de Hello rojo muestran el tiempo de hello en qué Hola se detecta el cambio del nivel de, mientras que los puntos de hello negro muestran picos de hello detectado.
 ![API de puntuación][1]
 
 ### <a name="detectors"></a>Detectores
-La API de detección de anomalías admite detectores en tres categorías generales. En la siguiente tabla se pueden encontrar detalles sobre parámetros de entrada específicos y salidas para cada detector.
+detección de anomalías de Hello API es compatible con detectores en 3 categorías generales. Obtener más información sobre los parámetros de entrada específicos y los resultados de cada detector puede encontrarse en hello en la tabla siguiente.
 
 | Categoría del detector | Detector | Description | Parámetros de entrada | Salidas |
 | --- | --- | --- | --- | --- |
-| Detectores de pico |Detector de TSpike |Detecta picos y DIP según lo lejos que estén los valores del primer y el tercer cuartil. |*tspikedetector.sensitivity:* toma el valor entero en el intervalo 1-10 (predeterminado: 3); los valores más altos capturarán más valores extremos; por tanto, habrá menos sensibilidad. |TSpike: valores binarios: '1' si se detecta un pico o una interrupción, '0' en caso contrario |
-| Detectores de pico | Detector de ZSpike |Detecta picos y DIP en función de lo lejos que estén los puntos de datos de la media. |*zspikedetector.sensitivity:* toma el valor entero en el intervalo 1-10 (predeterminado: 3); los valores más altos capturarán más valores extremos; por tanto, habrá menos sensibilidad. |ZSpike: valores binarios: '1' si se detecta un pico o una interrupción, si no '0' | |
-| Detector de tendencia lenta |Detector de tendencia lenta |Detección de tendencia positiva lenta según la sensibilidad establecida |*trenddetector.sensitivity:* umbral en la puntuación del detector (valor predeterminado: 3,25, 3,25 - 5 es un intervalo razonable del que seleccionar este valor; cuanto más alto, menos sensible) |tscore: número flotante que representa la puntuación de anomalías en la tendencia |
-| Detectores de cambio de nivel | Detector de cambio de nivel bidireccional |Detección de cambio de nivel ascendente y descendente según la sensibilidad establecida |*bileveldetector.sensitivity* : umbral en la puntuación del detector (valor predeterminado: 3,25, 3,25 - 5 es un intervalo razonable del que seleccionar este valor; cuanto más alto, menos sensible) |rpscore: número flotante que representa la puntuación de anomalía en el cambio de nivel ascendente y descendente | |
+| Detectores de pico |Detector de TSpike |Detectar picos y DIP en función de hello lejano valores están comprendidos entre el primer y el tercer cuartil |*tspikedetector.Sensitivity:* toma el valor entero en el intervalo de saludo predeterminado de 1 a 10: 3; Los valores más altos filtrará los valores extremos más realizar menos sensibles |TSpike: valores binarios: '1' si se detecta un pico o una interrupción, '0' en caso contrario |
+| Detectores de pico | Detector de ZSpike |Detectar picos y DIP en función de la diferencia entre puntos de hello son de su Media |*zspikedetector.Sensitivity:* tomar el valor entero en el intervalo de saludo predeterminado de 1 a 10,: 3; Los valores más altos filtrará los valores extremos más realizar menos sensibles |ZSpike: valores binarios: '1' si se detecta un pico o una interrupción, si no '0' | |
+| Detector de tendencia lenta |Detector de tendencia lenta |Detectar lenta tendencia positiva según la sensibilidad del conjunto de Hola |*trenddetector.Sensitivity:* umbral de puntuación de detector (valor predeterminado: 3,25, 3,25 – 5 es un tooselect intervalo razonable de; Hola Hola superior menos sensible) |tscore: número flotante que representa la puntuación de anomalías en la tendencia |
+| Detectores de cambio de nivel | Detector de cambio de nivel bidireccional |Detectar cambio hacia arriba y hacia abajo nivel según la sensibilidad del conjunto de Hola |*bileveldetector.Sensitivity:* umbral de puntuación de detector (valor predeterminado: 3,25, 3,25 – 5 es un tooselect intervalo razonable de; Hola Hola superior menos sensible) |rpscore: número flotante que representa la puntuación de anomalía en el cambio de nivel ascendente y descendente | |
 
-### <a name="parameters"></a>Parámetros
-En la siguiente tabla se muestra información más detallada sobre estos parámetros de entrada:
+### <a name="parameters"></a>parameters
+Información más detallada sobre estos parámetros de entrada aparece en la tabla de hello siguiente:
 
 | Parámetros de entrada | Description | Configuración predeterminada | Tipo | Intervalo válido | Intervalo sugerido |
 | --- | --- | --- | --- | --- | --- |
 | detectors.historyWindow |Historial (en número de puntos de datos) utilizado para el cálculo de la puntuación de anomalía |500 |integer |10-2000 |Dependiente de la serie temporal |
-| detectors.spikesdips | Si se deben detectar solo subidas, solo bajadas, o ambos |Ambos |enumerated |Ambos, subidas, bajadas |Ambos |
+| detectors.spikesdips | Si toodetect solo tiene un pico, solo DIP, o ambos |Ambos |enumerated |Ambos, subidas, bajadas |Ambos |
 | bileveldetector.sensitivity |Sensibilidad del detector de cambio de nivel bidireccional. |3.25 |double |None |3.25-5 (cuanto menores sean los valores, mayor es la sensibilidad) |
 | trenddetector.sensitivity |Sensibilidad del detector de tendencia positiva. |3.25 |double |None |3.25-5 (cuanto menores sean los valores, mayor es la sensibilidad) |
 | tspikedetector.sensitivity |Sensibilidad del detector TSpike |3 |integer |1-10 |3-5 (cuanto menores sean los valores, mayor es la sensibilidad) |
 | zspikedetector.sensitivity |Sensibilidad del detector ZSpike |3 |integer |1-10 |3-5 (cuanto menores sean los valores, mayor es la sensibilidad) |
-| postprocess.tailRows |Número de los puntos de datos más recientes que se van a mantener en los resultados de salida |0 |integer |0 (se mantienen todos los puntos de datos), o especifique el número de puntos para mantener en los resultados |N/D |
+| postprocess.tailRows |Número de datos más recientes de hello puntos toobe mantienen en los resultados de la salida de hello |0 |integer |0 (mantenga todos los puntos de datos), o especifique el número de puntos tookeep en los resultados |N/D |
 
 ### <a name="output"></a>Salida
-La API ejecuta todos los detectores en los datos de la serie temporal y devuelve puntuaciones de anomalías e indicadores de picos binarios para cada punto en el tiempo. En la tabla siguiente se muestran los resultados de la API. 
+Hola API ejecuta todos los detectores en los datos de serie temporal y devuelve las puntuaciones de anomalías e indicadores de pico binario para cada punto en el tiempo. Hola tabla siguiente enumeran salidas de hello API. 
 
 | Salidas | Description |
 | --- | --- |
 | Hora |Marcas de tiempo de datos sin procesar, o datos agregados (o) atribuidos si se aplica la agregación (o) atribución de los datos que faltan |
 | Datos |Valores de datos sin procesar, o datos agregados (o) atribuidos si se aplica la agregación (o) atribución de los datos que faltan |
-| TSpike |Indicador binario para indicar si el detector TSpike ha detectado un pico |
-| ZSpike |Indicador binario para indicar si el detector ZSpike ha detectado un pico |
+| TSpike |Indicador binario tooindicate si se detecta un pico TSpike Detector |
+| ZSpike |Indicador binario tooindicate si se detecta un pico ZSpike Detector |
 | rpscore |Número flotante que representa la puntuación de anomalía en el cambio de nivel bidireccional |
-| rpalert |Valor 1/0 que indica que hay una anomalía de cambio de nivel bidireccional basada en la sensibilidad de entrada |
+| rpalert |valor de 1/0 que indica un nivel bidireccional cambiar anomalías según su importancia entrada Hola |
 | tscore |Número flotante que representa la puntuación de anomalía en tendencia positiva |
-| talert |Valor 1/0 que indica que hay una anomalía de tendencia positiva basada en la sensibilidad de entrada |
+| talert |valor de 1/0 que se indica es un anomalías de tendencia positiva según su importancia entrada Hola |
 
 ## <a name="scorewithseasonality-api"></a>La API ScoreWithSeasonality
-La API ScoreWithSeasonality se utiliza para ejecutar la detección de anomalías en series temporales que tienen patrones estacionales. Esta API es útil para detectar desviaciones en los patrones estacionales.  
-En la siguiente ilustración se muestra un ejemplo de anomalías detectadas en una serie temporal estacional. La serie temporal tiene un pico (el primer punto negro), dos interrupciones (el segundo punto negro y otro al final) y un cambio de nivel (punto rojo). Tenga en cuenta que tanto la interrupción en el medio de la serie temporal como el cambio de nivel son solo apreciables después de que los componentes estacionales se eliminan de la serie.
+Hola ScoreWithSeasonality API se utiliza para ejecutar la detección de anomalías de serie temporal que tienen patrones estacionales. Esta API es útil toodetect desviaciones en patrones estacionales.  
+Hello en la ilustración siguiente se muestra un ejemplo de anomalías detectado en una serie de tiempo periódico. serie temporal de Hello tiene un pico (punto negro 1 de hello), dos DIP (punto 2 º negro de hello y otro final Hola) y un cambio del nivel (punto rojo). Tenga en cuenta que ambos Hola dip en medio de Hola de serie temporal de Hola y cambio del nivel de hello solo perceptible después de quitaron componentes de temporada de serie de Hola.
 ![API de estacionalidad][2]
 
 ### <a name="detectors"></a>Detectores
-Los detectores en el punto de conexión de estacionalidad son similares a los del punto de conexión de no estacionalidad, pero con nombres de parámetro ligeramente diferentes (incluidos más abajo).
+los detectores de Hello en el punto de conexión de hello estacionalidad son toohello similar que en el punto de conexión de hello no estacionalidad, pero con nombres de parámetro ligeramente diferentes (incluidos más abajo).
 
-### <a name="parameters"></a>Parámetros
+### <a name="parameters"></a>parameters
 
-En la siguiente tabla se muestra información más detallada sobre estos parámetros de entrada:
+Información más detallada sobre estos parámetros de entrada aparece en la tabla de hello siguiente:
 
 | Parámetros de entrada | Description | Configuración predeterminada | Tipo | Intervalo válido | Intervalo sugerido |
 | --- | --- | --- | --- | --- | --- |
-| preprocess.aggregationInterval |Intervalo de agregación en segundos para agregar series temporales de entrada |0 (no se realiza ninguna agregación) |integer |0: omitir agregación, de lo contrario, > 0 |De 5 minutos a 1 día, dependiente de la serie temporal |
-| preprocess.aggregationFunc |Función que se usa para agregar datos al objeto AggregationInterval especificado |mean |enumerated |mean, sum, length |N/D |
-| preprocess.replaceMissing |Valores que se utiliza para atribuir los datos que faltan |lkv (último valor conocido) |enumerated |zero, lkv, mean |N/D |
+| preprocess.aggregationInterval |Intervalo de agregación en segundos para agregar series temporales de entrada |0 (no se realiza ninguna agregación) |integer |0: omitir agregación, de lo contrario, > 0 |día de too1 de 5 minutos, dependiente de la serie temporal |
+| preprocess.aggregationFunc |Función que se usa para agregar datos en hello especificado AggregationInterval |mean |enumerated |mean, sum, length |N/D |
+| preprocess.replaceMissing |Valores utilizan tooimpute los datos que faltan |lkv (último valor conocido) |enumerated |zero, lkv, mean |N/D |
 | detectors.historyWindow |Historial (en número de puntos de datos) utilizado para el cálculo de la puntuación de anomalía |500 |integer |10-2000 |Dependiente de la serie temporal |
-| detectors.spikesdips | Si se deben detectar solo subidas, solo bajadas, o ambos |Ambos |enumerated |Ambos, subidas, bajadas |Ambos |
+| detectors.spikesdips | Si toodetect solo tiene un pico, solo DIP, o ambos |Ambos |enumerated |Ambos, subidas, bajadas |Ambos |
 | bileveldetector.sensitivity |Sensibilidad del detector de cambio de nivel bidireccional. |3.25 |double |None |3.25-5 (cuanto menores sean los valores, mayor es la sensibilidad) |
 | postrenddetector.sensitivity |Sensibilidad del detector de tendencia positiva. |3.25 |double |None |3.25-5 (cuanto menores sean los valores, mayor es la sensibilidad) |
 | negtrenddetector.sensitivity |Sensibilidad del detector de tendencia negativa. |3.25 |double |None |3.25-5 (cuanto menores sean los valores, mayor es la sensibilidad) |
 | tspikedetector.sensitivity |Sensibilidad del detector TSpike |3 |integer |1-10 |3-5 (cuanto menores sean los valores, mayor es la sensibilidad) |
 | zspikedetector.sensitivity |Sensibilidad del detector ZSpike |3 |integer |1-10 |3-5 (cuanto menores sean los valores, mayor es la sensibilidad) |
-| seasonality.enable |Si se realizará el análisis de estacionalidad |true |boolean |true, false |Dependiente de la serie temporal |
-| seasonality.numSeasonality |Número máximo de ciclos periódicos para detectar |1 |integer |1, 2 |1-2 |
+| seasonality.enable |Si el análisis de estacionalidad está toobe realizadas |true |boolean |true, false |Dependiente de la serie temporal |
+| seasonality.numSeasonality |Número máximo de toobe ciclos periódicos detectado |1 |integer |1, 2 |1-2 |
 | seasonality.transform |Si los componentes de tendencia (y) estacionales se eliminarán antes de aplicar la detección de anomalías |deseason |enumerated |none, deseason, deseasontrend |N/D |
-| postprocess.tailRows |Número de los puntos de datos más recientes que se van a mantener en los resultados de salida |0 |integer |0 (se mantienen todos los puntos de datos), o especifique el número de puntos para mantener en los resultados |N/D |
+| postprocess.tailRows |Número de datos más recientes de hello puntos toobe mantienen en los resultados de la salida de hello |0 |integer |0 (mantenga todos los puntos de datos), o especifique el número de puntos tookeep en los resultados |N/D |
 
 ### <a name="output"></a>Salida
-La API ejecuta todos los detectores en los datos de la serie temporal y devuelve puntuaciones de anomalías e indicadores de picos binarios para cada punto en el tiempo. En la tabla siguiente se muestran los resultados de la API. 
+Hola API ejecuta todos los detectores en los datos de serie temporal y devuelve las puntuaciones de anomalías e indicadores de pico binario para cada punto en el tiempo. Hola tabla siguiente enumeran salidas de hello API. 
 
 | Salidas | Description |
 | --- | --- |
 | Hora |Marcas de tiempo de datos sin procesar, o datos agregados (o) atribuidos si se aplica la agregación (o) atribución de los datos que faltan |
 | OriginalData |Valores de datos sin procesar, o datos agregados (o) atribuidos si se aplica la agregación (o) atribución de los datos que faltan |
-| ProcessedData |Cualquiera de las siguientes:  <ul><li>Serie temporal ajustada estacionalmente si se ha detectado una estacionalidad importante y se ha seleccionado la opción deseason.</li><li>Serie temporal ajustada estacionalmente y con anulación de tendencia (detrended) si se ha detectado una estacionalidad importante y se ha seleccionado la opción deseasontrend;</li><li>de lo contrario, es igual a OriginalData.</li> |
-| TSpike |Indicador binario para indicar si el detector TSpike ha detectado un pico |
-| ZSpike |Indicador binario para indicar si el detector ZSpike ha detectado un pico |
+| ProcessedData |Cualquiera de hello siguientes: <ul><li>Serie temporal ajustada estacionalmente si se ha detectado una estacionalidad importante y se ha seleccionado la opción deseason.</li><li>Serie temporal ajustada estacionalmente y con anulación de tendencia (detrended) si se ha detectado una estacionalidad importante y se ha seleccionado la opción deseasontrend;</li><li>en caso contrario, es Hola igual que OriginalData</li> |
+| TSpike |Indicador binario tooindicate si se detecta un pico TSpike Detector |
+| ZSpike |Indicador binario tooindicate si se detecta un pico ZSpike Detector |
 | BiLevelChangeScore |Número flotante que representa la puntuación de anomalía en el cambio de nivel |
-| BiLevelChangeAlert |Valor 1/0 que indica que hay una anomalía de cambio de nivel basada en la sensibilidad de entrada |
+| BiLevelChangeAlert |1/0 valor indica que se está un anomalías de cambio del nivel según su importancia entrada Hola |
 | PosTrendScore |Número flotante que representa la puntuación de anomalía en tendencia positiva |
-| PosTrendAlert |Valor 1/0 que indica que hay una anomalía de tendencia positiva basada en la sensibilidad de entrada |
+| PosTrendAlert |valor de 1/0 que se indica es un anomalías de tendencia positiva según su importancia entrada Hola |
 | NegTrendScore |Número flotante que representa la puntuación de anomalía en tendencia negativa |
-| NegTrendAlert |Valor 1/0 que indica que hay una anomalía de tendencia negativa basada en la sensibilidad de entrada |
+| NegTrendAlert |valor de 1/0 que se indica es un anomalías de tendencia negativa según su importancia entrada Hola |
 
 [1]: ./media/machine-learning-apps-anomaly-detection-api/anomaly-detection-score.png
 [2]: ./media/machine-learning-apps-anomaly-detection-api/anomaly-detection-seasonal.png

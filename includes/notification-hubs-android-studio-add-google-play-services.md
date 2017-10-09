@@ -1,17 +1,17 @@
-1. Abra el Administrador de SDK de Android haciendo clic en el icono de la barra de herramientas de Android Studio o haciendo clic en **Herramientas** -> **Android** -> **SDK Manager** en el menú. Busque la versión de destino del SDK de Android que se usa en su proyecto, ábrala, para lo que debe hacer clic en **Show Package Details** (Mostrar detalles de paquete) y elija **Google APIs** (API de Google), en caso de que no esté instalado.
-2. Haga clic en la pestaña **SDK Tools** (Herramientas del SDK). Si no ha instalado todavía el servicio Google Play, haga clic en **Google Play Services** (Servicios de Google Play), tal como se muestra a continuación. A continuación, haga clic en **Apply** (Aplicar) para instalarlo. 
+1. Hola abrir Administrador de Android SDK, haga clic en el icono de hello en la barra de herramientas de Hola de Android Studio o haciendo clic en **herramientas** -> **Android** -> **SDK Manager**en el menú de Hola. Busque la versión de destino de Hola de hello SDK de Android que se usa en el proyecto, ábralo haciendo clic en **mostrar detalles del paquete**y elija **Google APIs**, si no está ya instalado.
+2. Haga clic en hello **herramientas de SDK** ficha. Si no ha instalado todavía el servicio Google Play, haga clic en **Google Play Services** (Servicios de Google Play), tal como se muestra a continuación. A continuación, haga clic en **aplicar** tooinstall. 
    
-    Tome nota de la ruta de acceso del SDK para usarla en el paso siguiente. 
+    Tenga en cuenta Hola SDK ruta de acceso, para su uso en un paso posterior. 
    
     ![](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-sdk-manager.png)
-3. Abra el archivo **build.gradle** en el directorio de aplicaciones.
+3. Abra hello **build.gradle** archivo en el directorio de aplicación Hola.
    
     ![](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-add-google-play-dependency.png)
 4. Agregue esta línea en *dependencias*: 
    
            compile 'com.google.android.gms:play-services-gcm:9.2.0'
-5. Haga clic en el botón **Sincronizar proyecto con archivos de Gradle** en la barra de herramientas.
-6. Abra **AndroidManifest.xml** y agregue esta etiqueta a la etiqueta *application* .
+5. Haga clic en hello **proyecto de la sincronización con archivos de Gradle** icono en la barra de herramientas de Hola.
+6. Abra **AndroidManifest.xml** y agregue este toohello etiqueta *aplicación* etiqueta.
    
         <meta-data android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />

@@ -1,6 +1,6 @@
 ---
-title: "Notas de la versión de StorSimple 8000 | Microsoft Docs"
-description: "Describe las nuevas características, problemas y soluciones alternativas de la versión de Microsoft Azure StorSimple de julio de 2014."
+title: "notas de la versión de lanzamiento de aaaStorSimple 8000 | Documentos de Microsoft"
+description: "Describe nuevas características de hello, incidencias abiertas y soluciones alternativas disponibles para hello julio de 2014 versión de StorSimple de Microsoft Azure."
 services: storsimple
 documentationcenter: NA
 author: SharS
@@ -14,31 +14,31 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 04/18/2016
 ms.author: v-sharos
-ms.openlocfilehash: 303cdffa15fdfe9b83d0612edecafc6943d218f3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 74863a3e2811dc7be5e6f482a5be4bbc37e3cd71
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="storsimple-8000-series-release-version-release-notes---july-2014"></a>Notas de la versión de StorSimple 8000 Series - julio de 2014
 ## <a name="overview"></a>Información general
-Las notas siguientes identifican los problemas críticos por resolver de la versión de disponibilidad general (GA) de julio de 2014 de StorSimple 8000 Series de Microsoft Azure StorSimple. Esta versión se corresponde con la versión de software 6.3.9600.17215.  
+notas de la versión de Hola seguimiento identifican Hola temas críticos por hello StorSimple 8000 Series versión de disponibilidad general (GA) de julio de 2014 de Microsoft Azure StorSimple. Esta versión corresponde toosoftware versión 6.3.9600.17215.  
 
-A menos que se especifique lo contrario, estas notas de la versión se aplican a todos los dispositivos de StorSimple. Las notas se actualizan continuamente y, a medida que se descubren, se van agregando problemas críticos que requieren una solución alternativa. Antes de implementar la solución de Microsoft Azure StorSimple, tenga en cuenta la siguiente información.  
+A menos que se especifique lo contrario, estas notas de la versión tooall modelos de dispositivo de StorSimple de Hola se aplican. notas de la versión de Hola se actualizan continuamente; Cuando se detectan problemas críticos que requieren una solución, se agregan. Antes de implementar la solución de StorSimple de Microsoft Azure, considere la posibilidad de hello siguiente información.  
 
 ## <a name="known-issues-in-this-release"></a>Problemas conocidos en esta versión
-En la tabla siguiente se proporciona un resumen de los problemas conocidos de esta versión.  
+Hello en la tabla siguiente proporciona un resumen de los problemas conocidos de esta versión.  
 
-| Nº | Característica | Problema | Comentarios/solución alternativa | Se aplica a un dispositivo físico | Se aplica a un dispositivo virtual |
+| No. | Característica | Problema | Comentarios/solución alternativa | Se aplica a dispositivos toophysical | Se aplica a dispositivos toovirtual |
 | --- | --- | --- | --- | --- | --- |
-| 1 |Restablecimiento de fábrica |En algunos casos, al realizar un restablecimiento de fábrica, el dispositivo StorSimple puede bloquearse y mostrar este mensaje: **Restablecimiento de fábrica en curso (fase 8)**. Esto sucede si presiona CTRL+C mientras el cmdlet está en curso. |No presione CTRL+C después de iniciar un restablecimiento de fábrica. Si ya está en este estado, póngase en contacto con el soporte técnico de Microsoft para conocer los pasos siguientes. |Sí |No |
-| 2 |Cuórum de disco |En raras ocasiones, si se desconecta la mayoría de los discos en el revestimiento de EBOD de un dispositivo 8600 y no se produce un cuórum de disco, el bloque de almacenamiento se desconectará. Seguirá desconectado incluso si se vuelven a conectar los discos. |Necesitará reiniciar el dispositivo. Si el problema persiste, póngase en contacto con el soporte técnico de Microsoft para conocer los pasos siguientes. |Sí |No |
-| 3 |Errores de instantánea en la nube |En raras ocasiones, una instantánea en la nube puede producir el error **Se ha alcanzado el límite máximo de copia de seguridad**. Esto ocurre si se superan los 255 clones en línea en el mismo dispositivo, procedentes del mismo volumen original eliminado. | |Sí |Sí |
-| 4 |Identificador de controlador incorrecto |Cuando se realiza un reemplazo de controlador, el controlador 0 puede aparecer como controlador 1. Durante el reemplazo de controlador, cuando se carga la imagen desde el nodo del mismo nivel, el identificador de controlador puede mostrarse inicialmente como el identificador del controlador del mismo nivel. En raras ocasiones, este comportamiento también puede aparecer después del reinicio del sistema. |No se requiere ninguna acción del usuario. La situación se solucionará una vez completado el reemplazo del controlador. |Sí |No |
-| 5 |Gráficos de supervisión de dispositivos |En el servicio de Administrador de StorSimple, los gráficos de supervisión de dispositivos no funcionan cuando está habilitada la autenticación básica o NTLM en la configuración del servidor proxy para el dispositivo. |Modifique la configuración de proxy web para el dispositivo registrado con el servicio de Administrador de StorSimple para que la autenticación se establezca en NONE. Para ello, ejecute el cmdlet Set-HcsWebProxy de Windows PowerShell para StorSimple. |Sí |Sí |
-| 6 |Cuentas de almacenamiento |El uso del servicio de almacenamiento para eliminar la cuenta de almacenamiento es un escenario no admitido. Esto provocará una situación en la que no se pueden recuperar los datos de usuario. | |Sí |Sí |
+| 1 |Restablecimiento de fábrica |En algunos casos, cuando se realiza un restablecimiento de fábrica, Hola dispositivo StorSimple puede bloquearse y mostrar este mensaje: **toofactory restablecimiento está en curso (fase 8)**. Esto sucede si presiona CTRL + C mientras Hola cmdlet está en curso. |No presione CTRL+C después de iniciar un restablecimiento de fábrica. Si ya está en este estado, póngase en contacto con el soporte técnico de Microsoft para conocer los pasos siguientes. |Sí |No |
+| 2 |Cuórum de disco |En raras ocasiones, si la mayoría de Hola de discos del alojamiento EBOD Hola de un dispositivo 8600 se desconecta y no hay quórum de disco, a continuación, grupo de almacenamiento de hello estarán sin conexión. Incluso si se vuelven a conectar discos Hola permanecerá sin conexión. |Necesitará tooreboot dispositivo de Hola. Si persiste el problema de hello, póngase en contacto con Microsoft Support para los pasos siguientes. |Sí |No |
+| 3 |Errores de instantánea en la nube |En raras ocasiones, puede producir un error de una instantánea en la nube con error de hello **ha alcanzado el límite de copia de seguridad de máximo**. Esto ocurre si excede 255 clones en línea en hello mismo dispositivo, de hello mismo volumen original que se ha eliminado. | |Sí |Sí |
+| 4 |Identificador de controlador incorrecto |Cuando se realiza un reemplazo de controlador, el controlador 0 puede aparecer como controlador 1. Durante el reemplazo de controlador, cuando se carga la imagen de Hola desde el nodo del mismo nivel de hello, identificador de la controladora de hello puede mostrarse inicialmente como Id.. del controlador de hello del mismo nivel En raras ocasiones, este comportamiento también puede aparecer después del reinicio del sistema. |No se requiere ninguna acción del usuario. Esta situación se solucionará automáticamente una vez completada la sustitución del controlador Hola. |Sí |No |
+| 5 |Gráficos de supervisión de dispositivos |En el servicio StorSimple Manager hello, gráficos de supervisión de dispositivos de hello no funcionan cuando básica o la autenticación NTLM está habilitada en la configuración de servidor proxy de hello de dispositivo de Hola. |Modificar configuración de proxy web de Hola para dispositivo Hola registrado con el servicio StorSimple Manager para que la autenticación se establece tooNONE. toodo, Hola Hola ejecución Windows PowerShell para el cmdlet Set-HcsWebProxy de StorSimple. |Sí |Sí |
+| 6 |Cuentas de almacenamiento |Usar cuenta de almacenamiento de hello almacenamiento servicio toodelete hello es un escenario no compatible. Esto daría lugar situación tooa en el que no se puede recuperar datos de usuario. | |Sí |Sí |
 | 7 |Conmutación por recuperación |No se admite una conmutación por recuperación durante las 24 horas siguientes a la recuperación ante desastres (DR). | |Sí |No |
-| 8 |Conmutación por error del dispositivo |No se admiten varias conmutaciones por error de un contenedor de volúmenes del mismo dispositivo de origen a diferentes dispositivos de destino. La conmutación por error de un único dispositivo inactivo a varios dispositivos hará que los contenedores de volúmenes del primer dispositivo conmutado por error pierdan la propiedad de los datos. Después de este tipo de conmutación por error, estos contenedores de volúmenes aparecerán o se comportarán de forma diferente cuando se visualicen en el Portal de Azure clásico. | |Sí |No |
-| 9 |Instalación |Durante la instalación del adaptador de StorSimple para SharePoint, deberá proporcionar una dirección IP de dispositivo para que la instalación finalice correctamente. | |Sí |No |
-| 10 |Interfaces de red |Las interfaces de red DATA 2 y DATA 3 se intercambiaron en el software. |Póngase en contacto con el soporte técnico de Microsoft si necesita configurar estas interfaces. |Sí |No |
+| 8 |Conmutación por error del dispositivo |Varias conmutaciones por error de un contenedor de volumen de hello no se admite los mismos dispositivos de destino de toodifferent de dispositivo de origen. Conmutación por error de una única cola de dispositivos toomultiple dispositivos hará que los contenedores de volúmenes de hello en hello primero conmutado por dispositivo pierda la propiedad de los datos. Después de este tipo una conmutación por error, estos contenedores de volumen aparecerán o se comportan de forma diferente cuando se visualizan en hello portal de Azure clásico. | |Sí |No |
+| 9 |Instalación |Durante el adaptador de StorSimple para la instalación de SharePoint, debe tooprovide una dirección IP de dispositivo para hello install toofinish correctamente. | |Sí |No |
+| 10 |Interfaces de red |Interfaces de red DATA 2 y DATA 3 se cambiaron en el software de Hola. |Póngase en contacto con Microsoft Support si necesita tooconfigure estas interfaces. |Sí |No |
 

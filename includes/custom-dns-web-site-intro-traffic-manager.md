@@ -1,0 +1,2 @@
+Cuando se usa un tooyour de tráfico de equilibrio de Microsoft Azure Traffic Manager tooload sitio Web de Azure, ese sitio Web, a continuación, se puede acceder mediante hello  **\*. trafficmanager.net** Azure asignado el nombre de dominio. También puede asociar un nombre de dominio personalizado, por ejemplo, www.contoso.com, su sitio Web en orden tooprovide un nombre de dominio más reconocible para los usuarios.
+

@@ -1,6 +1,6 @@
 ---
-title: "Creación de un equilibrador de carga interno: CLI de Azure clásica | Microsoft Docs"
-description: "Información sobre cómo crear un equilibrador de carga interno mediante la CLI de Azure en el modelo de implementación clásica"
+title: "aaaCreate un interno cargar equilibrador - CLI de Azure clásico | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toocreate un equilibrador de carga interno utilizando Hola CLI de Azure en el modelo de implementación clásica de Hola"
 services: load-balancer
 documentationcenter: na
 author: kumudd
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
-ms.openlocfilehash: d24b95f75b5ffd1116b07cf9f8bac33767a9c835
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ef29dfda5f7a75a411bbabe8b688a31c6bf81113
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-started-creating-an-internal-load-balancer-classic-using-the-azure-cli"></a>Primeros pasos en la creación de un equilibrador de carga interno (clásico) mediante la CLI de Azure
+# <a name="get-started-creating-an-internal-load-balancer-classic-using-hello-azure-cli"></a>Empezar a crear un equilibrador de carga interno (clásico) mediante Hola CLI de Azure
 
 > [!div class="op_single_selector"]
 > * [PowerShell](../load-balancer/load-balancer-get-started-ilb-classic-ps.md)
@@ -31,24 +31,24 @@ ms.lasthandoff: 07/11/2017
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
 > [!IMPORTANT]
-> Azure tiene dos modelos de implementación diferentes para crear recursos y trabajar con ellos: [Resource Manager y el clásico](../azure-resource-manager/resource-manager-deployment-model.md).  Este artículo trata del modelo de implementación clásico. Microsoft recomienda que las implementaciones más recientes usen el modelo del Administrador de recursos. Obtenga información sobre cómo [realizar estos pasos con el modelo de Resource Manager](load-balancer-get-started-ilb-arm-cli.md).
+> Azure tiene dos modelos de implementación diferentes para crear recursos y trabajar con ellos: [Resource Manager y el clásico](../azure-resource-manager/resource-manager-deployment-model.md).  Este artículo incluye el uso de modelo de implementación clásica de Hola. Microsoft recomienda que más nuevas implementaciones de usar el modelo del Administrador de recursos de Hola. Obtenga información acerca de cómo demasiado[realizar estos pasos con el modelo del Administrador de recursos de hello](load-balancer-get-started-ilb-arm-cli.md).
 
 [!INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 
-## <a name="to-create-an-internal-load-balancer-set-for-virtual-machines"></a>Para crear un equilibrador de carga interno establecido para máquinas virtuales
+## <a name="toocreate-an-internal-load-balancer-set-for-virtual-machines"></a>toocreate un equilibrador de carga interno establecido para las máquinas virtuales
 
-Para crear un conjunto con equilibrio de carga interno y los servidores que enviarán su tráfico a él, debe hacer lo siguiente:
+toocreate un equilibrador de carga interno establecido y Hola servidores que enviarán su tráfico tooit, debe hacer los siguiente hello:
 
-1. Crea una instancia de Equilibrio de carga interno que será el extremo del tráfico entrante que su carga se va a equilibrar entre los servidores de un conjunto con equilibrio de carga.
-2. Agregue extremos correspondientes a las máquinas virtuales que van a recibir el tráfico entrante.
-3. Configura los servidores que van a enviar el tráfico cuya carga se va a equilibrar para que lo hagan a la dirección IP virtual (VIP) de la instancia de Equilibrio de carga interno.
+1. Cree una instancia de interno equilibrio de carga que será el punto de conexión de Hola de carga de toobe tráfico entrante están equilibrada en los servidores de Hola de un conjunto con equilibrio de carga.
+2. Agregue extremos correspondientes máquinas virtuales de toohello que va a recibir el tráfico entrante Hola.
+3. Configure los servidores de Hola que van a enviar equilibrio de carga de hello tráfico toobe toosend su tráfico toohello dirección IP virtual (VIP) de instancia de equilibrio de carga interno de Hola.
 
 ## <a name="step-by-step-creating-an-internal-load-balancer-using-cli"></a>Creación paso a paso de un equilibrador de carga interno mediante la CLI
 
-Esta guía muestra cómo crear un equilibrador de carga interno basado en el escenario anterior.
+Esta guía muestra cómo se toocreate un equilibrador de carga interno basada en escenario de hello anterior.
 
-1. Si nunca ha usado la CLI de Azure, consulte [Instalación y configuración de la CLI de Azure](../cli-install-nodejs.md) y siga las instrucciones hasta el punto donde deba seleccionar su cuenta y suscripción de Azure.
-2. Ejecute el comando **azure config mode** para cambiar al modo clásico, como se muestra a continuación.
+1. Si nunca ha utilizado la CLI de Azure, consulte [instalar y configurar hello Azure CLI](../cli-install-nodejs.md) y siga las instrucciones de hello punto toohello donde seleccionar su cuenta de Azure y la suscripción.
+2. Ejecute hello **modo de configuración de azure** tooswitch tooclassic modo de comandos, tal y como se muestra a continuación.
 
     ```azurecli
     azure config mode asm
@@ -60,11 +60,11 @@ Esta guía muestra cómo crear un equilibrador de carga interno basado en el esc
 
 ## <a name="create-endpoint-and-load-balancer-set"></a>Crear punto de conexión y conjunto de equilibrador de carga
 
-En el escenario se supone la presencia de las máquinas virtuales "DB1" y "DB2" en un servicio en la nube denominado "mytestcloud". Ambas máquinas virtuales usan una red virtual denominada mi "testvnet" con la subred "subnet-1".
+escenario de Hello supone Hola máquinas "DB1" y "DB2" en un servicio de nube denominado "mytestcloud". Ambas máquinas virtuales usan una red virtual denominada mi "testvnet" con la subred "subnet-1".
 
 Esta guía creará un conjunto de equilibrador de carga interno mediante el puerto 1433 como puerto privado y 1433 como puerto local.
 
-Se trata de un escenario común donde hay máquinas virtuales de SQL en el back-end que usan un equilibrador de carga interno para garantizar que los servidores de base de datos no se exponen directamente mediante una dirección IP pública.
+Se trata de un escenario común donde haya máquinas virtuales de SQL sobre el uso de back-end de hello que no se expondrá un servidores de bases de datos de carga interno equilibrador tooguarantee Hola directamente mediante una dirección IP pública.
 
 ### <a name="step-1"></a>Paso 1
 
@@ -76,9 +76,9 @@ azure service internal-load-balancer add --serviceName mytestcloud --internalLBN
 
 Para obtener más información, consulte `azure service internal-load-balancer --help` .
 
-Puede comprobar las propiedades del equilibrador de carga interno mediante el comando `azure service internal-load-balancer list` *nombre de servicio en la nube*.
+Puede comprobar las propiedades de equilibrador de carga interno de hello mediante comandos de hello `azure service internal-load-balancer list` *nombre de servicio de nube*.
 
-A continuación se sigue un ejemplo de la salida:
+Sigue aquí un ejemplo de salida de hello:
 
     azure service internal-load-balancer list my-testcloud
     info:    Executing command service internal-load-balancer list
@@ -91,7 +91,7 @@ A continuación se sigue un ejemplo de la salida:
 
 ### <a name="step-2"></a>Paso 2
 
-Configurar el conjunto del equilibrador de carga interno al agregar el primer punto de conexión. En este paso se asociará el punto de conexión, la máquina virtual y el puerto de sondeo al conjunto del equilibrador de carga interno.
+Configure el equilibrador de carga interno de hello establecido cuando se agrega el primer punto de conexión de Hola. Se asociará Hola extremo, la máquina virtual y sondeo puerto toohello equilibrador de carga interno establecido en este paso.
 
 ```azurecli
 azure vm endpoint create db1 1433 --local-port 1433 --protocol tcp --probe-port 1433 --probe-protocol tcp --probe-interval 300 --probe-timeout 600 --internal-load-balancer-name ilbset
@@ -99,13 +99,13 @@ azure vm endpoint create db1 1433 --local-port 1433 --protocol tcp --probe-port 
 
 ### <a name="step-3"></a>Paso 3
 
-Comprobar la configuración del equilibrador de carga mediante el `azure vm show` *nombre de la máquina virtual*
+Compruebe la configuración de equilibrador de carga de hello con `azure vm show` *nombre de máquina virtual*
 
 ```azurecli
 azure vm show DB1
 ```
 
-El resultado será:
+salida de Hello será:
 
     azure vm show DB1
     info:    Executing command vm show
@@ -156,7 +156,7 @@ El resultado será:
 
 ## <a name="create-a-remote-desktop-endpoint-for-a-virtual-machine"></a>Crear un punto de conexión de escritorio remoto para una máquina virtual
 
-Puede crear un punto de conexión de escritorio remoto para reenviar el tráfico de red desde un puerto público a un puerto local para una máquina virtual específica mediante `azure vm endpoint create`.
+Puede crear un tráfico de red de tooforward de punto de conexión de escritorio remoto desde un puerto local tooa del puerto público para una máquina virtual específica mediante `azure vm endpoint create`.
 
 ```azurecli
 azure vm endpoint create web1 54580 -k 3389
@@ -164,9 +164,9 @@ azure vm endpoint create web1 54580 -k 3389
 
 ## <a name="remove-virtual-machine-from-load-balancer"></a>Quitar máquina virtual del equilibrador de carga
 
-Puede quitar una máquina virtual de un equilibrador de carga interno establecido eliminando el punto de conexión asociado. Una vez eliminado el punto de conexión, la máquina virtual deja de pertenecer al conjunto de equilibrador de carga.
+Puede quitar una máquina virtual de un equilibrador de carga interno establecido mediante la eliminación de punto de conexión de hello asociado. Una vez que se quita el punto de conexión de hello, máquina virtual de hello no pertenecen equilibrador de carga de toohello ya establecido.
 
-En el ejemplo anterior, puede quitar el punto de conexión creado para la máquina virtual "DB1" del equilibrador de carga interno "ilbset" mediante el comando `azure vm endpoint delete`.
+Utilizando el ejemplo de Hola anterior, puede quitar extremo de hello creado para la máquina virtual "DB1" de equilibrador de carga interno "ilbset" mediante el comando de hello `azure vm endpoint delete`.
 
 ```azurecli
 azure vm endpoint delete DB1 tcp-1433-1433

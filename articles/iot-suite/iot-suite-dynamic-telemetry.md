@@ -1,6 +1,6 @@
 ---
-title: "Telemetría dinámica | Microsoft Docs"
-description: "Siga este tutorial para aprender a usar la telemetría dinámica con la solución de supervisión remota preconfigurada del Conjunto de aplicaciones de IoT de Azure."
+title: "telemetría dinámica aaaUse | Documentos de Microsoft"
+description: "Siga este tutorial toolearn cómo toouse telemetría dinámica con la supervisión remota de hello Azure IoT conjunto preconfigurado solución."
 services: 
 suite: iot-suite
 documentationcenter: 
@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: dobett
-ms.openlocfilehash: 0114f27f9b8ae76e1170d04ddf66e2c4bf20686a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 06cb2a370b67b4950efdfa4c7d906ac92106f4a0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-dynamic-telemetry-with-the-remote-monitoring-preconfigured-solution"></a>Uso de telemetría dinámica con la solución de supervisión remota preconfigurada
+# <a name="use-dynamic-telemetry-with-hello-remote-monitoring-preconfigured-solution"></a>Use la telemetría dinámica con hello solución preconfigurada de supervisión remota
 
-La telemetría dinámica le permite visualizar los datos de telemetría enviados a la solución preconfigurada de supervisión remota. Los dispositivos simulados que se implementan con la solución preconfigurada envían datos de temperatura y humedad de telemetría que puede visualizar en el panel. Si personaliza los dispositivos simulados existentes, crea nuevos dispositivos simulados o conecta dispositivos físicos a la solución preconfigurada, podrá enviar otros valores de telemetría, como la temperatura exterior, RPM o la velocidad del viento. A continuación podrá visualizar en el panel estos datos de telemetría adicionales.
+Telemetría dinámica permite toovisualize cualquier toohello de telemetría enviado solución preconfigurada de supervisión remoto. dispositivos de Hello simulada que se implementan con la solución de hello preconfigurado envían telemetría de temperatura y humedad, que puede visualizar en el panel de Hola. Si personaliza los dispositivos simulados existentes, crear nuevos dispositivos simulados o conectarse a dispositivos físicos toohello preconfigurado solución puede enviar otros valores de telemetría como una temperatura externo hello, RPM o velocidad del viento. A continuación, puede visualizar esta telemetría adicional en el panel de Hola.
 
-Este tutorial usa un dispositivo simulado Node.js simple que puede modificar fácilmente para experimentar con la telemetría dinámica.
+Este tutorial usa un simple dispositivo simulado de Node.js que puede modificar fácilmente tooexperiment con la telemetría dinámica.
 
-Para completar este tutorial necesitará lo siguiente:
+toocomplete este tutorial, necesitará:
 
 * Una suscripción de Azure activa. En caso de no tener ninguna, puede crear una cuenta de evaluación gratuita en tan solo unos minutos. Para más información, consulte la [evaluación gratuita de Azure][lnk_free_trial].
 * [Node.js][lnk-node] versión 0.12.x, o posteriores.
@@ -40,10 +40,10 @@ Puede completar este tutorial en cualquier sistema operativo, como Windows o Lin
 
 ## <a name="add-a-telemetry-type"></a>Adición de un tipo de datos de telemetría
 
-El siguiente paso es reemplazar los datos de telemetría generados por el dispositivo simulado de Node.js con un nuevo conjunto de valores:
+Hola siguiente paso es telemetría de hello tooreplace generado por dispositivo simulado de hello Node.js con un nuevo conjunto de valores:
 
-1. Presione **Ctrl + C** en el símbolo del sistema o el shell para detener el dispositivo simulado de Node.js.
-2. En el archivo remote_monitoring.js, verá los valores de la base de datos de telemetría para la temperatura, la humedad y la temperatura exterior existentes. Agregue un valor de la base de datos para **rpm** como sigue:
+1. Detener hello Node.js dispositivo simulado escribiendo **Ctrl + C** en el símbolo del sistema o el shell.
+2. En el archivo de remote_monitoring.js hello, puede ver valores de base de datos de Hola para temperatura existente hello, humedad y telemetría de temperatura externo. Agregue un valor de la base de datos para **rpm** como sigue:
 
     ```nodejs
     // Sensors data
@@ -53,7 +53,7 @@ El siguiente paso es reemplazar los datos de telemetría generados por el dispos
     var rpm = 200;
     ```
 
-3. El dispositivo simulado de Node.js usa la función **generateRandomIncrement** del archivo remote_monitoring.js para agregar un incremento aleatorio a los valores de la base de datos. Aleatorice el valor de **rpm** agregando una línea de código después de la aleatorizaciones existentes como sigue:
+3. dispositivo simulado de Hello Node.js usa hello **generateRandomIncrement** funcionando en hello remote_monitoring.js archivo tooadd un incremento aleatorio toohello valores de base de datos. Aleatorizar hello **rpm** valor agregando una línea de código después de aleatorizaciones existente de hello como sigue:
 
     ```nodejs
     temperature += generateRandomIncrement();
@@ -62,7 +62,7 @@ El siguiente paso es reemplazar los datos de telemetría generados por el dispos
     rpm += generateRandomIncrement();
     ```
 
-4. Agregue el nuevo valor de rpm para la carga útil de JSON, que el dispositivo envía al Centro de IoT:
+4. Agregue Hola nueva rpm valor toohello JSON carga Hola dispositivo envía tooIoT concentrador:
 
     ```nodejs
     var data = JSON.stringify({
@@ -74,20 +74,20 @@ El siguiente paso es reemplazar los datos de telemetría generados por el dispos
     });
     ```
 
-5. Ejecute el dispositivo simulado de Node.js con el siguiente comando:
+5. Ejecute dispositivo simulado de hello Node.js con hello siguiente comando:
 
     `node remote_monitoring.js`
 
-6. Observe el nuevo tipo de datos de telemetría RPM que se muestra en el gráfico en el panel:
+6. Tenga en cuenta Hola nuevo RPM telemetría tipo que se muestra en el gráfico de hello en el panel de hello:
 
-![RPM agregado al panel][image3]
+![Agregar RPM toohello panel][image3]
 
 > [!NOTE]
-> Puede que necesite deshabilitar y habilitar el dispositivo de Node.js en la página **Dispositivos** del panel para ver el cambio inmediatamente.
+> Puede necesita toodisable y, a continuación, habilitar el dispositivo de Node.js Hola Hola **dispositivos** página en hello panel toosee Hola de cambios inmediatamente.
 
-## <a name="customize-the-dashboard-display"></a>Personalización de la presentación en el panel
+## <a name="customize-hello-dashboard-display"></a>Personalizar la visualización del panel de Hola
 
-El mensaje **Device-Info** puede incluir metadatos sobre la telemetría que el dispositivo envíe al Centro de IoT. Estos metadatos pueden especificar los tipos de datos de telemetría que envía el dispositivo. Modifique el valor **deviceMetaData** en el archivo remote_monitoring.js para que incluya una definición de **telemetría** después de la definición de **comandos**. El siguiente fragmento de código muestra la definición **Comandos** (asegúrese de agregar un `,` después de la definición **Comandos**):
+Hola **información del dispositivo** mensaje puede incluir metadatos acerca de telemetría de hello dispositivo Hola puede enviar tooIoT concentrador. Estos metadatos pueden especificar tipos de telemetría de Hola Hola dispositivo envíe. Modificar hello **deviceMetaData** valor en hello remote_monitoring.js archivo tooinclude una **telemetría** definición después hello **comandos** definición. Hello fragmento de código siguiente muestra hello **comandos** definición (ser seguro tooadd una `,` después de hello **comandos** definición):
 
 ```nodejs
 'Commands': [{
@@ -119,10 +119,10 @@ El mensaje **Device-Info** puede incluir metadatos sobre la telemetría que el d
 ```
 
 > [!NOTE]
-> La solución de supervisión remota utiliza a una coincidencia de mayúsculas y minúsculas para comparar la definición de metadatos con los datos del flujo de telemetría.
+> solución de supervisión remoto Hello usa una definición de los metadatos de mayúsculas y minúsculas toocompare Hola con datos de flujo de telemetría de Hola.
 
 
-Agregar una definición de **telemetría** como la del fragmento de código anterior no cambia el comportamiento del panel. Sin embargo, los metadatos también pueden incluir los un atributo **DisplayName** para personalizar la presentación en el panel. Actualice la definición de los metadatos de **telemetría** como se muestra en el siguiente fragmento:
+Agregar un **telemetría** definición tal como se muestra en hello anterior fragmento de código no cambia el comportamiento de Hola de panel de Hola. Sin embargo, también pueden incluir metadatos Hola un **DisplayName** toocustomize Hola mostrar en el panel de Hola de atributo. Hola de actualización **telemetría** definición de metadatos, como se muestra en el siguiente fragmento de código de hello:
 
 ```nodejs
 'Telemetry': [
@@ -144,18 +144,18 @@ Agregar una definición de **telemetría** como la del fragmento de código ante
 ]
 ```
 
-En la captura de pantalla siguiente se muestra cómo este cambio modifica la leyenda del gráfico en el panel:
+Hello captura de pantalla siguiente muestra cómo este cambio modifica la leyenda del gráfico de hello en el panel de hello:
 
-![Personalización de la leyenda del gráfico][image4]
+![Personalizar la leyenda del gráfico Hola][image4]
 
 > [!NOTE]
-> Puede que necesite deshabilitar y habilitar el dispositivo de Node.js en la página **Dispositivos** del panel para ver el cambio inmediatamente.
+> Puede necesita toodisable y, a continuación, habilitar el dispositivo de Node.js Hola Hola **dispositivos** página en hello panel toosee Hola de cambios inmediatamente.
 
-## <a name="filter-the-telemetry-types"></a>Filtrado de los tipos de datos de telemetría
+## <a name="filter-hello-telemetry-types"></a>Filtrar los tipos de telemetría de Hola
 
-De forma predeterminada, el gráfico del panel muestra las series de datos en el flujo de telemetría. Puede usar los metadatos de **Device-Info** para suprimir la presentación de determinados tipos de datos de telemetría en el gráfico. 
+De forma predeterminada, el gráfico de hello en el panel de hello muestra cada serie de datos en secuencia de telemetría de Hola. Puede usar hello **información del dispositivo** metadatos toosuppress Hola visualización de tipos de telemetría específica en el gráfico de Hola. 
 
-Para que en el gráfico se muestren solo los datos de telemetría relativos a la temperatura y la humedad, omita el dato de **ExternalTemperature** de los metadatos de **telemetría** de **Device-Info** como sigue:
+gráfico de hello toomake mostrar solo telemetría temperatura y humedad, omitir **ExternalTemperature** de hello **información del dispositivo** **telemetría** metadatos como se indica a continuación:
 
 ```nodejs
 'Telemetry': [
@@ -177,22 +177,22 @@ Para que en el gráfico se muestren solo los datos de telemetría relativos a la
 ]
 ```
 
-La **temperatura exterior** ya no aparece en el gráfico:
+Hola **temperatura exteriores** deja de aparecer en el gráfico de hello:
 
-![Datos de telemetría filtrados en el panel][image5]
+![Filtro de telemetría de hello en el panel de Hola][image5]
 
-Este cambio solo afecta a la visualización del gráfico. Los valores de datos de **ExternalTemperature** siguen almacenados y están disponibles para cualquier procesamiento de back-end.
+Este cambio solo afecta a la presentación del gráfico Hola. Hola **ExternalTemperature** valores de datos aún se almacenan y están disponibles para ningún procesamiento back-end.
 
 > [!NOTE]
-> Puede que necesite deshabilitar y habilitar el dispositivo de Node.js en la página **Dispositivos** del panel para ver el cambio inmediatamente.
+> Puede necesita toodisable y, a continuación, habilitar el dispositivo de Node.js Hola Hola **dispositivos** página en hello panel toosee Hola de cambios inmediatamente.
 
 ## <a name="handle-errors"></a>errores
 
-Para que el gráfico muestre el flujo de datos, su **Type** en los metadatos de **Device-Info** debe coincidir con el tipo de datos de los valores de telemetría. Por ejemplo, si los metadatos que especifican que el **tipo** de datos de humedad es **int** y se encuentra **double** en el flujo de telemetría, los datos de telemetría relativos a la humedad no se muestran en el gráfico. Sin embargo, los valores de **Humidity** (Humedad) siguen almacenados y están disponibles para cualquier procesamiento de back-end.
+Para una toodisplay de flujo de datos en el gráfico de hello, su **tipo** en hello **información del dispositivo** metadatos deben coincidir con el tipo de datos de Hola de valores de telemetría de Hola. Por ejemplo, si hello metadatos especifican ese hello **tipo** humedad de datos son **int** y un **doble** se encuentra en la secuencia de telemetría de hello telemetría de humedad de hello no no se muestran en el gráfico de Hola. Sin embargo, Hola **humedad** valores todavía se almacenan y están disponibles para cualquier procesamiento back-end.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Ahora que ya sabe cómo utilizar la telemetría dinámico, puede obtener más información sobre cómo las soluciones preconfiguradas emplean la información de los dispositivos: [Metadatos de información de dispositivo en la solución preconfigurada de supervisión remota][lnk-devinfo].
+Ahora que ha visto cómo toouse telemetría dinámico, puede obtener más información sobre soluciones preconfiguradas de Hola de cómo usar información del dispositivo: [metadatos de información de dispositivo de supervisión remota de hello preconfigurado solución] [ lnk-devinfo].
 
 [lnk-devinfo]: iot-suite-remote-monitoring-device-info.md
 

@@ -1,7 +1,7 @@
 ---
-title: "Generación del perfil de un servicio en la nube en modo local en el emulador de proceso | Microsoft Docs"
+title: una nube servicio localmente en hello emulador de proceso aaaProfiling | Documentos de Microsoft
 services: cloud-services
-description: Investigar los problemas de rendimiento en servicios en la nube con el generador de perfiles de Visual Studio
+description: Investigar los problemas de rendimiento en servicios en la nube con el generador de perfiles de Visual Studio Hola
 documentationcenter: 
 author: kraigb
 manager: ghogen
@@ -15,34 +15,34 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/18/2016
 ms.author: kraigb
-ms.openlocfilehash: 51c8192d8312dc5cf546b4c357aeecf6f19d56b8
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: fc37c85dad4db4cc0310f73afad56fc0fe5f3963
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Prueba del rendimiento de un servicio en la nube de manera local en el emulador de proceso de Azure con el generador de perfiles de Visual Studio
-Se encuentran disponibles diversas herramientas y técnicas para probar el rendimiento de los servicios en la nube.
-Al publicar un servicio en la nube en Azure, puede usar Visual Studio para recopilar datos para la generación de perfiles y, luego, analizarlos localmente, como se describe en [Generación de un perfil de una aplicación de Azure][1].
-También puede usar un diagnóstico para hacer un seguimiento de una amplia variedad de contadores de rendimiento, como se describe en [Uso de contadores de rendimiento en Azure][2].
-También es posible que desee generar un perfil de la aplicación localmente en el emulador de proceso antes de implementarlo en la nube.
+# <a name="testing-hello-performance-of-a-cloud-service-locally-in-hello-azure-compute-emulator-using-hello-visual-studio-profiler"></a>Hola prueba de rendimiento de un servicio en la nube de forma local en Hola Hola emulador de proceso de Azure con el generador de perfiles de Visual Studio
+Una variedad de herramientas y técnicas están disponibles para probar el rendimiento de hello de servicios en la nube.
+Cuando se publica un tooAzure de servicio de nube, puede tener Visual Studio recopilar datos de generación de perfiles y, a continuación, analizarla localmente, como se describe en [generación de perfiles de una aplicación de Azure][1].
+También puede utilizar tootrack de diagnóstico de los contadores de una variedad de rendimiento, como se describe en [mediante contadores de rendimiento en Azure][2].
+Puede que le interese tooprofile la aplicación localmente en el emulador de proceso de hello antes de implementarla en la nube toohello.
 
-Este artículo abarca el método de muestreo de CPU de la generación de perfiles, que se puede realizar localmente en el emulador. El muestreo de CPU es un método para generar perfiles que no es muy intrusivo. A un intervalo de muestreo designado, el generador de perfiles realiza una instantánea de la pila de llamadas. Los datos se recopilan por un lapso de tiempo y se muestran en un informe. Este método de generación de perfiles tiende a indicar dónde se está realizando la mayoría del trabajo de la CPU en una aplicación informáticamente intensiva.  Esto le da la oportunidad de centrarse en la "ruta de acceso activa" donde su aplicación pasa la mayor parte del tiempo.
+Este artículo trata el método de muestreo de la CPU de Hola de generación de perfiles, que puede realizarse localmente en el emulador de Hola. El muestreo de CPU es un método para generar perfiles que no es muy intrusivo. En un intervalo de muestreo designado, el generador de perfiles de hello toma una instantánea de pila de llamadas de Hola. datos de Hola se recopilan durante un período de tiempo y se muestra en un informe. Este método de generación de perfiles suele tooindicate donde en una aplicación de cálculo intensiva de trabajo de hello CPU que se realiza la mayor parte.  Esto deja Hola toofocus oportunidad en hello "ruta de acceso activa", donde la aplicación está dedicando Hola mayor parte del tiempo.
 
 ## <a name="1-configure-visual-studio-for-profiling"></a>1: Configuración de Visual Studio para la generación de perfiles
-Primero, existen unas pocas opciones de configuración de Visual Studio que podrían ser útiles para la generación de perfiles. Para que los informes de generación de perfiles tengan sentido, necesitará símbolos (archivos .pdb) para su aplicación y también símbolos para las bibliotecas del sistema. Necesitará asegurarse de que hace referencia a los servidores de símbolos disponibles. Para hacer esto, en el menú **Herramientas** de Visual Studio, elija **Opciones** y, a continuación, elija **Depuración** y luego, **Símbolos**. Asegúrese de que los servidores de símbolos de Microsoft aparezcan en **Ubicaciones del archivo de símbolos (.pdb)**.  Puede también hacer referencia a http://referencesource.microsoft.com/symbols, el cual podría tener archivos de símbolo adicionales.
+Primero, existen unas pocas opciones de configuración de Visual Studio que podrían ser útiles para la generación de perfiles. Hola de sentido toomake de informes de generación de perfiles, necesitará símbolos (archivos .pdb) para la aplicación y también los símbolos para las bibliotecas del sistema. Es conveniente que se haga referencia a los servidores de símbolos disponibles de hello toomake. toodo esto en hello **herramientas** menú en Visual Studio, elija **opciones**, a continuación, elija **depuración**, a continuación, **símbolos**. Asegúrese de que los servidores de símbolos de Microsoft aparezcan en **Ubicaciones del archivo de símbolos (.pdb)**.  Puede también hacer referencia a http://referencesource.microsoft.com/symbols, el cual podría tener archivos de símbolo adicionales.
 
 ![Opciones Símbolo][4]
 
-Si lo desea, puede simplificar los informes que genera el generador de perfiles al configurar Solo mi código. Si Solo mi código está habilitado, las pilas de llamadas de función se simplifican de modo que las llamadas que son completamente internas para las bibliotecas y el .NET Framework están ocultas de los informes. En el menú **Herramientas**, elija **Opciones**. A continuación, expanda el nodo **Herramientas de rendimiento** y elija **General**. Seleccione la casilla **Habilitar solo mi código para informes del generador de perfiles**.
+Si lo desea, puede simplificar Hola notifica ese generador de perfiles de hello genera estableciendo solo mi código. Con sólo mi código habilitada, se simplifican las pilas de llamadas de función por lo que llama a toolibraries completamente interno y Hola .NET Framework están ocultos en informes de Hola. En hello **herramientas** menú, elija **opciones**. A continuación, expanda hello **herramientas de rendimiento** nodo y elija **General**. Casilla de Hola de **habilitar solo mi código para los informes del generador de perfiles**.
 
 ![Opciones Solo mi código][17]
 
-Puede usar estas instrucciones con un proyecto existente o con un proyecto nuevo.  Si crea un proyecto nuevo para probar las técnicas que se describen a continuación, elija un proyecto de C# de **Servicio en la nube de Azure** y seleccione un **rol web** y un **rol de trabajo**.
+Puede usar estas instrucciones con un proyecto existente o con un proyecto nuevo.  Si crea un nuevo hello tootry de proyecto técnicas que se describen a continuación, elija una de C# **servicio de nube de Azure** de proyecto y seleccione un **rol Web** y un **rol de trabajo**.
 
 ![Roles de proyecto del servicio en la nube de Azure][5]
 
-Para propósitos de ejemplo, agregue parte del código al proyecto que tarda demasiado tiempo y demuestra un problema de rendimiento obvio. Por ejemplo, agregue el siguiente código a un proyecto de rol de trabajo:
+Por ejemplo, efectos, agregar algún proyecto de código tooyour que tarda mucho tiempo y se muestra algún problema de rendimiento evidente. Por ejemplo, agregar Hola después de proyecto de rol de trabajo de código tooa:
 
     public class Concatenator
     {
@@ -58,11 +58,11 @@ Para propósitos de ejemplo, agregue parte del código al proyecto que tarda dem
         }
     }
 
-Llame a este código desde el método RunAsync en la clase derivada de RoleEntryPoint del rol de trabajo. (Ignore la advertencia sobre el método que se ejecuta sincrónicamente).
+Llamar a este código de hello Coredispatcher método en clase derivada de RoleEntryPoint del rol de trabajo de Hola. (Omitir la advertencia Hola sobre método hello que se ejecuta de forma sincrónica).
 
         private async Task RunAsync(CancellationToken cancellationToken)
         {
-            // TODO: Replace the following with your own logic.
+            // TODO: Replace hello following with your own logic.
             while (!cancellationToken.IsCancellationRequested)
             {
                 Trace.TraceInformation("Working");
@@ -70,61 +70,61 @@ Llame a este código desde el método RunAsync en la clase derivada de RoleEntry
             }
         }
 
-Compile y ejecute localmente su servicio en la nube sin depuración (Ctrl+F5), con la configuración de solución establecida en **Liberar**. Esto asegura que todos los archivos y carpetas se crean para ejecutar la aplicación localmente y asegura que se inicien todos los emuladores. Comience la interfaz de usuario del emulador de proceso desde la barra de tareas para comprobar que el rol de trabajo se está ejecutando.
+Compilar y ejecutar su servicio en la nube localmente sin depurar (CTRL+F5), con la configuración de solución de hello establecido demasiado**versión**. Esto garantiza que todos los archivos y carpetas se crean para ejecutar la aplicación hello localmente y se asegura de que se hayan iniciado todos los emuladores de Hola. Iniciar Hola IU del emulador de proceso de hello tooverify de barra de tareas que se ejecuta el rol de trabajo.
 
-## <a name="2-attach-to-a-process"></a>2: Asociación a un proceso
-En vez de generar un perfil en la aplicación al iniciarla desde Visual Studio 2010 IDE, debe asociar el generador de perfiles a un proceso en ejecución. 
+## <a name="2-attach-tooa-process"></a>2: asociar un proceso de tooa
+En lugar de generación de perfiles de aplicación hello, empiece por hello IDE de Visual Studio 2010, debe adjuntar Hola profiler tooa Ejecutar proceso. 
 
-Para asociar el generador de perfiles a un proceso, en el menú **Analizar**, elija **Generador de perfiles** y **Asociar/desasociar**.
+proceso de tooa de tooattach Hola generador de perfiles, en hello **analizar** menú, elija **Profiler** y **adjuntar y separar**.
 
 ![Opción para adjuntar perfil][6]
 
-Para un rol de trabajo, busque el proceso WaWorkerHost.exe.
+Para un rol de trabajo, busque el proceso de WaWorkerHost.exe de Hola.
 
 ![Proceso WaWorkerHost][7]
 
-Si la carpeta de su proyecto se encuentra en una unidad de red, el generador de perfiles le pedirá proporcionar otra ubicación para guardar los informes de generación de perfiles.
+Si la carpeta del proyecto está en una unidad de red, el generador de perfiles de hello le preguntará si tooprovide Hola de toosave otra ubicación informes de generación de perfiles.
 
- Se puede también asociar a un rol web asociándose al archivo WaIISHost.exe.
-Si hay varios procesos de rol de trabajo en su aplicación, necesita usar processID para distinguirlos. Puede consultar el processID de manera programática al tener acceso al objeto del proceso. Por ejemplo, si agrega este código al método Run de la clase derivada de RoleEntryPoint en un rol, puede ver el registro en la interfaz de usuario del emulador de proceso para conocer el proceso al que debe conectarse.
+ También puede adjuntar el rol web de tooa adjuntando tooWaIISHost.exe.
+Si hay varios procesos de rol de trabajo en la aplicación, necesita toouse Hola processID toodistinguish ellos. Puede consultar Hola processID mediante programación mediante el acceso a objetos de proceso de Hola. Por ejemplo, si agrega este método de ejecución de código toohello de clase derivada de RoleEntryPoint de hello en un rol, se puede volver en el registro en hello IU del emulador de proceso tooknow qué tooconnect de proceso a.
 
     var process = System.Diagnostics.Process.GetCurrentProcess();
     var message = String.Format("Process ID: {0}", process.Id);
     Trace.WriteLine(message, "Information");
 
-Para ver el registro, inicie la interfaz de usuario del emulador de proceso.
+registro de hello tooview, Hola IU del emulador de proceso de inicio.
 
-![Inicio de la interfaz de usuario del emulador de proceso][8]
+![Iniciar Hola IU del emulador de proceso][8]
 
-Abra la ventana de consola de registro del rol de trabajo en la interfaz de usuario del emulador de proceso al hacer clic en la barra de título de la ventana de la consola. Puede ver el identificador de proceso en el registro.
+Abra la ventana de consola de registro de rol de trabajo de Hola Hola IU del emulador de proceso haciendo clic en la barra de título de la ventana de consola de Hola. Puede ver el Id. de proceso de hello en el registro de hello.
 
 ![Visualización del identificador de proceso][9]
 
-Después de que se haya asociado, realice los pasos en la interfaz de usuario de su aplicación (si es necesario) para reproducir el escenario.
+Uno que ha adjuntado, siga los pasos de hello en escenario de Hola de tooreproduce de interfaz de usuario (si es necesario) de la aplicación.
 
-Cuando desee detener la generación de perfiles, seleccione el vínculo **Detener generación de perfiles** .
+Si desea toostop de generación de perfiles, elija hello **detener la generación de perfiles** vínculo.
 
 ![Opción Detener generación de perfiles][10]
 
 ## <a name="3-view-performance-reports"></a>3: Vista de informes de rendimiento
-Aparece el informe de rendimiento de la aplicación.
+se muestra el informe de rendimiento de Hello para la aplicación.
 
-En este punto, el generador de perfiles detiene su ejecución, guarda los datos en un archivo .vsp y exhibe un informe que muestra un análisis de estos datos.
+En este momento, el generador de perfiles de hello deja de ejecutarse, guarda los datos en un archivo .vsp y muestra un informe que muestra un análisis de los datos.
 
 ![Informe del generador de perfiles][11]
 
-Si ve String.wstrcpy en la ruta de acceso activa, haga clic en Solo mi código para cambiar la vista a fin de mostrar el código de usuario solamente.  Si ve String.Concat, intente presionar el botón Mostrar todo el código.
+Si ve String.wstrcpy en Hola ruta de acceso activa, haga clic en sólo mi código toochange Hola vista tooshow código de usuario solo.  Si ve String.Concat, pruebe a presionar el botón Mostrar todo el código de hello.
 
-Debería ver el método Concatenate y String.Concat que ocupan una gran parte del tiempo de ejecución.
+Debería ver método concatenación de hello y String.Concat ocupa una gran parte del tiempo de ejecución de Hola.
 
 ![Análisis del informe][12]
 
-Si agregó el código de concatenación de cadena en este artículo, debería ver una advertencia en la lista de tareas para esta. Es posible que también vea una advertencia de que hay una cantidad excesiva de elementos no utilizados, lo que se debe a la cantidad de cadenas que se crearon y desplegaron.
+Si agrega código de concatenación de cadena de hello en este artículo, verá una advertencia en la lista de tareas de Hola para esto. También puede ver una advertencia que hay una cantidad excesiva de recolección de elementos, que es de vencimiento toohello número de cadenas que se crean y se eliminan.
 
 ![Advertencias de rendimiento][14]
 
 ## <a name="4-make-changes-and-compare-performance"></a>4: Realización de cambios y comparación del rendimiento
-Puede también comparar el rendimiento antes y después de un cambio en el código.  Detenga el proceso de ejecución y edite el código para reemplazar la operación de concatenación de cadena con el uso de StringBuilder:
+También puede comparar el rendimiento de hello antes y después de un cambio en el código.  Detener Hola Ejecutar proceso y editar Hola código tooreplace Hola cadena operación de concatenación con el uso de Hola de StringBuilder:
 
     public static string Concatenate(int number)
     {
@@ -137,26 +137,26 @@ Puede también comparar el rendimiento antes y después de un cambio en el códi
         return builder.ToString();
     }
 
-Realice otra ejecución de rendimiento y, a continuación, compárelo. En el Explorador de rendimiento, si las ejecuciones se encuentran en la misma sesión, simplemente puede seleccionar ambos informes, abrir el menú de acceso directo y seleccionar **Comparar informes de rendimiento**. Si desea realizar una comparación con una ejecución en otra sesión de rendimiento, abra el menú **Analizar** y seleccione **Comparar informes de rendimiento**. En el cuadro de diálogo que aparece, especifique ambos archivos.
+Realice otra ejecución de rendimiento y, a continuación, comparar el rendimiento de Hola. En el Explorador de rendimiento de hello, si hello ejecuciones estarán en hello misma sesión, solo puede seleccionar ambos informes, abra el menú contextual de Hola y elija **comparar informes de rendimiento**. Si desea toocompare con una ejecución en otra sesión de rendimiento, abra hello **analizar** menú y elija **comparar informes de rendimiento**. Especifique ambos archivos en el cuadro de diálogo de Hola que aparece.
 
 ![Opción para comparar informes de rendimiento][15]
 
-Los informes resaltan las diferencias entre las dos ejecuciones.
+informes de Hello resalta las diferencias entre dos ejecuciones de Hola.
 
 ![Informe de comparación][16]
 
-¡Enhorabuena! Ya ha empezado a usar el generador de perfiles.
+¡Enhorabuena! Haya empezado con el generador de perfiles de Hola.
 
 ## <a name="troubleshooting"></a>Solución de problemas
 * Asegúrese de que va a generar un perfil de una compilación de versión e iniciar sin depuración.
-* Si la opción Asociar/Desasociar no está habilitada en el menú del Generador de perfiles, ejecute el Asistente de rendimiento.
-* Use la interfaz de usuario del emulador de proceso para ver el estado de la aplicación. 
-* Si tiene problemas al iniciar aplicaciones en el emulador o asociar el generador de perfiles, apague el emulador de proceso y reinícielo. Si el problema no se soluciona, intente reiniciar. Este problema se produce si usa el emulador de proceso para suspender y quitar implementaciones en ejecución.
-* Si ha utilizado cualquiera de los comandos de generación de perfiles desde la línea de comandos, especialmente la configuración global, asegúrese de que se haya llamado a VSPerfClrEnv /globaloff y que VsPerfMon.exe se haya apagado.
-* Si al realizar el muestreo, ve el mensaje "PRF0025: no se recopilaron datos", compruebe que el proceso al que se asoció tiene actividad de CPU. Es posible que las aplicaciones que no están realizando ningún trabajo informático no produzcan datos de muestreo.  También es posible que el proceso haya finalizado antes de que se haya realizado muestreo alguno. Compruebe que el método de ejecución de un rol para el cual está generando un perfil no termine.
+* Si Hola adjuntar y separar opción no está habilitada en el menú del generador de perfiles de hello, ejecute hello Asistente de rendimiento.
+* Utilice Hola IU del emulador de proceso tooview Hola estado de la aplicación. 
+* Si tiene problemas para iniciar aplicaciones en el emulador de Hola o adjuntar Hola generador de perfiles, apague el emulador de proceso de Hola y reiniciarlo. Si no se soluciona el problema de hello, pruebe a reiniciar. Este problema puede producirse si usa toosuspend de emulador de proceso de Hola y quitar las implementaciones de ejecución.
+* Si ha usado alguna de hello comandos desde la línea de comandos de generación de perfiles, especialmente Hola configuración global, asegúrese de que se ha llamado VSPerfClrEnv /globaloff y que se haya apagado VsPerfMon.exe.
+* Si durante el muestreo, verá un mensaje de saludo "PRF0025: No se recopilaron datos," Compruebe que Hola adjunta actividad toohas CPU de proceso. Es posible que las aplicaciones que no están realizando ningún trabajo informático no produzcan datos de muestreo.  También es posible que el proceso de hello terminado antes de realiza cualquier muestreo. No termina con toosee de comprobación que Hola método Run a un rol que está generando perfiles.
 
 ## <a name="next-steps"></a>Pasos siguientes
-La instrumentación de binarios de Azure en el emulador no es compatible en el generador de perfiles de Visual Studio; sin embargo, si desea probar la asignación de memoria, puede seleccionar esta opción al generar perfiles. También puede seleccionar una generación de perfiles de concurrencia, la cual le ayuda a determinar si los subprocesos están desperdiciando tiempo al competir por bloqueos, o la generación de perfiles de interacción de capa, que le ayuda a hacer un seguimiento de los problemas de rendimiento cuando se interactúa entre las capas de una aplicación, con mayor frecuencia entre la capa de datos y un rol de trabajo.  Puede ver las consultas de la base de datos que genera la aplicación y usar los datos de generación de perfiles para mejorar el uso que hace de la base de datos. Para obtener información sobre la generación de perfiles de interacción de capa, vea la entrada de blog [Walkthrough: Using the Tier Interaction Profiler in Visual Studio Team System 2010][3] (Tutorial: Uso del generador de perfiles de interacción de capas en Visual Studio Team System 2010).
+No se admite la instrumentación de los binarios de Azure en el emulador de hello en el generador de perfiles de Visual Studio de hello, pero si desea que la asignación de memoria tootest, puede elegir esa opción cuando la generación de perfiles. También puede generar perfiles de simultaneidad, que le ayuda a determinar si los subprocesos desaprovechan tiempo compiten por los bloqueos, o de nivel de generación de perfiles de interacción, que le ayudará a realizar un seguimiento de problemas de rendimiento al interactuar entre las capas de una aplicación, más con frecuencia entre la capa de datos de Hola y un rol de trabajo.  Puede ver las consultas de base de datos de Hola que genera la aplicación y usar hello generación de perfiles de datos tooimprove el uso de la base de datos de Hola. Para obtener información sobre la generación de perfiles de interacción de capas, consulte el blog de hello [Tutorial: usar Hola generador de perfiles de interacción de capa de Visual Studio Team System 2010][3].
 
 [1]: http://msdn.microsoft.com/library/azure/hh369930.aspx
 [2]: http://msdn.microsoft.com/library/azure/hh411542.aspx

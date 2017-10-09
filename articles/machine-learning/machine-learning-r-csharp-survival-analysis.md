@@ -1,5 +1,5 @@
 ---
-title: "(en desuso) Análisis de supervivencia con Azure Machine Learning | Microsoft Docs"
+title: "aaa(deprecated) análisis de supervivencia con aprendizaje automático de Azure | Documentos de Microsoft"
 description: "(en desuso) Probabilidad de aparición de eventos de análisis de supervivencia"
 services: machine-learning
 documentationcenter: 
@@ -16,47 +16,47 @@ ms.date: 01/06/2017
 ms.author: zhangya
 ROBOTS: NOINDEX
 redirect_url: https://gallery.cortanaintelligence.com/
-redirect_document_id: TRUE
-ms.openlocfilehash: 7d4066d5f15a39c428d8035257c4841f9b3cc775
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+redirect_document_id: True
+ms.openlocfilehash: af946d8df5ba650a9d74fbabbe3b15d3a07dd508
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deprecated-survival-analysis"></a>(en desuso) Análisis de supervivencia
 
 > [!NOTE]
-> Microsoft DataMarket está en proceso de retirada y esta API está en desuso. 
+> Hola Microsoft DataMarket se ha retirado y esta API está en desuso. 
 > 
-> Puede encontrar muchos experimentos y API de ejemplo útiles en la [Galería de Cortana Intelligence](http://gallery.cortanaintelligence.com). Para más información sobre la Galería, consulte [Uso compartido y descubrimiento de soluciones en la Galería de Cortana Intelligence](machine-learning-gallery-how-to-use-contribute-publish.md).
+> Puede encontrar muchas API y los experimentos de ejemplo muy útil en hello [Cortana Intelligence galería](http://gallery.cortanaintelligence.com). Para obtener más información acerca de la Galería de hello, consulte [compartir y detectar los recursos Hola Galería de inteligencia de Cortana](machine-learning-gallery-how-to-use-contribute-publish.md).
 
-En muchos escenarios, el resultado principal de la evaluación es el momento en que se producirá un evento de interés. En otras palabras, se plantea la pregunta  "¿cuándo se producirá este evento?" Como ejemplos, tenga en cuenta las situaciones donde los datos describen el tiempo transcurrido (días, años, kilometraje, etc.) hasta que el evento de interés (recaída de la enfermedad, grado de doctorado recibido o pastillas de freno estropeadas) se produce. Cada instancia de los datos representa un objeto específico (un paciente, un alumno, un automóvil, etc.).
+En muchos escenarios, resultado principal de hello en evaluación es suceso tooan Hola de interés. En otras palabras, las preguntas de hello "Si este evento se producirá?" "¿cuándo se producirá este evento?" Como ejemplos, tenga en cuenta situaciones donde los datos de hello describen Hola tiempo (días, años, kilometraje, etc.) hasta que Hola se produce el evento de interés (relapse enfermedad, grado de doctorado recibido, frenos panel error). Cada instancia de datos de hello representa un objeto específico (un paciente, un estudiante, un automóvil, etcetera).
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-Este [servicio web](https://datamarket.azure.com/dataset/aml_labs/survivalanalysis) responde a la pregunta "¿qué probabilidad hay de que el evento de interés se produzca en el momento n para el objeto x?". Al proporcionar un modelo de análisis de supervivencia, este servicio web permite a los usuarios proporcionar datos para entrenar el modelo y probarlo. El tema principal del experimento es modelar la duración del tiempo que transcurre hasta que se produzca el evento de interés. 
+Esto [servicio web](https://datamarket.azure.com/dataset/aml_labs/survivalanalysis) se responde Hola pregunta "¿Cuál es la probabilidad de Hola Hola eventos de interés se producen por n de tiempo para el objeto x?" Al proporcionar un modelo de análisis de supervivencia, este servicio web permite a los usuarios toosupply datos tootrain Hola modelo y la prueba. tema principal de Hello del experimento de hello es la longitud de Hola de toomodel de hello tiempo hasta que se produzca el evento de Hola de interés. 
 
-> Este servicio web puede ser consumido por los usuarios; posiblemente a través de una aplicación móvil, a través de un sitio web o incluso en un equipo local, por ejemplo. Pero el objetivo del servicio web también es actuar como un ejemplo de cómo se puede usar Aprendizaje automático de Azure para crear servicios web encima del código R. Con tan solo unas líneas de código R y algunos clics en un botón en Estudio de aprendizaje automático de Microsoft Azure, puede crear un experimento con código R y publicarlo como servicio web. A continuación, el servicio web se puede publicar en Azure Marketplace para que lo puedan usar usuarios y dispositivos en todo el mundo sin necesidad de que el autor del servicio web configure la infraestructura.  
+> Este servicio web puede ser consumido por los usuarios; posiblemente a través de una aplicación móvil, a través de un sitio web o incluso en un equipo local, por ejemplo. Pero Hola de servicio web de hello sirve también tooserve como un ejemplo de cómo se aprendizaje automático de Azure pueden toocreate usa los servicios web sobre el código de R. Con tan solo unas líneas de código R y algunos clics en un botón en Estudio de aprendizaje automático de Microsoft Azure, puede crear un experimento con código R y publicarlo como servicio web. servicio web de Hola, a continuación, puede ser publicado toohello Azure Marketplace y utilizado por los usuarios y dispositivos a través de Hola a todos con ninguna instalación de infraestructura, el autor del servicio web de Hola Hola.  
 > 
 > 
 
 ## <a name="consumption-of-web-service"></a>Uso del servicio web
-El esquema de datos de entrada del servicio web se muestra en la tabla siguiente. Se necesitan seis elementos de información como entrada: los datos de aprendizaje, los datos de prueba, el tiempo de interés, el índice de la dimensión de "tiempo", el índice de la dimensión de "evento" y los tipos de variables (continua o factor). Los datos de aprendizaje se representan con una cadena, donde las filas están separadas por comas y las columnas están separadas por punto y coma. El número de características de los datos es flexible. Todos los elementos de la cadena de entrada deben ser numéricos. En los datos de aprendizaje, la dimensión de "tiempo" indica que el número de unidades de tiempo (días, años, kilometraje, etc.) transcurrido desde el inicio del estudio (un paciente recibe los programas de tratamiento contra el consumo de drogas, un alumno que empieza el doctorado, un automóvil que empieza a conducirse, etc.) hasta que se produce el evento de interés (el paciente vuelve a consumir droga, el alumno obtiene el título de doctorado, el vehículo presenta desgaste de las pastillas de freno, etc.). La dimensión de "evento" indica si se produce el evento de interés al final del estudio. El valor "evento = 1" significa que se produce el evento de interés en el momento indicado por la dimensión de "tiempo"; mientras que "evento = 0" significa que el evento de interés no se ha producido todavía en el momento indicado por la dimensión de "tiempo".
+se muestra el esquema de datos de entrada de Hello del servicio web de hello en hello en la tabla siguiente. Se necesitan seis partes de información como entrada de hello: datos de entrenamiento, datos de prueba, tiempo de interés, índice de Hola de dimensión "hora", el índice de Hola de dimensión "evento" y los tipos de variable hello (continua o factor). datos de entrenamiento de saludo se representan con una cadena, donde hello filas están separadas por comas y columnas de hello están separadas por punto y coma. número de Hola de características de los datos de hello es flexible. Todos los elementos de hello en la cadena de entrada de hello deben ser numéricos. En datos de entrenamiento de hello, dimensión de tiempo"hello" indica Hola varias unidades de tiempo (días, años, kilometraje, etc.) transcurren desde el punto de partida de Hola de hello estudiar (un paciente recibir programas de tratamiento de drogas, un estudio de doctorado inicial de estudiantes, un automóvil a partir de toobe controlado por, etcetera). hasta que hello eventos de interés (paciente de hello devolver toodrug uso, grado de hello estudiante obtención Hola doctorado, car Hola con error de controlador de frenos, etc.) se produce. dimensión de "evento" Hello indica si el evento Hola de interés se produce final Hola de estudio de Hola. Un valor de "evento = 1" significa que los eventos de interés de Hola se produce en tiempo de hello indicado por dimensión de "hora" hello; "evento = 0" significa que los eventos de interés de Hola no se ha producido por Hola de tiempo indicado por dimensión de "hora" Hola.
 
 * trainingdata: una cadena de caracteres Las filas están separadas por coma y las columnas están separadas por punto y coma. Cada fila incluye la dimensión de "tiempo", la dimensión de "evento" y las variables del previsor.
 * testingdata: una fila de datos que contiene variables del previsor para un objeto determinado.
-* time_of_interest: el tiempo transcurrido de interés n.
-* index_time: el índice de columna de la dimensión de "tiempo" (a partir de 1)
-* index_event: el índice de columna de la dimensión de "evento" (a partir de 1)
+* time_of_interest - Hola tiempo transcurrido en n de interés.
+* index_time - índice de columna de Hola de dimensión de "hora" hello (a partir de 1).
+* index_event - índice de columna de Hola de dimensión de "evento" hello (a partir de 1).
 * variable_types: una cadena de caracteres con punto y coma como separadores. 0 representa variables continuas y 1 representa variables factor.
 
-El resultado es la probabilidad de que un evento se produzca en un momento determinado. 
+salida de Hello es la probabilidad de Hola de un evento que ocurra en una fecha determinada. 
 
-> Este servicio cuando está hospedado en Azure Marketplace es un servicio de OData, al que se puede llamar mediante los métodos POST o GET. 
+> Este servicio, cuando está hospedado en hello Azure Marketplace, es un servicio de OData; estos se pueden llamar a través de los métodos POST o GET. 
 > 
 > 
 
-Hay varias maneras de consumir el servicio de forma automática ( [aquí](http://microsoftazuremachinelearning.azurewebsites.net/SurvivalAnalysis.aspx)se puede ver una aplicación de ejemplo). 
+Hay varias maneras de consumo de servicio de Hola de forma automática (una aplicación de ejemplo es [aquí](http://microsoftazuremachinelearning.azurewebsites.net/SurvivalAnalysis.aspx)). 
 
 ### <a name="starting-c-code-for-web-service-consumption"></a>Inicio del código C# para el uso del servicio web:
     public class Input
@@ -93,14 +93,14 @@ Hay varias maneras de consumir el servicio de forma automática ( [aquí](http:/
 
 
 
-Esta prueba se interpreta de la siguiente forma. Supongamos que el objetivo de los datos es modelar el tiempo transcurrido hasta que los pacientes sometidos a algunos de los dos programas de tratamiento contra las drogas vuelven a consumir drogas. El resultado del servicio web es: para pacientes de 35 años, que se han sometido dos veces a un tratamiento anterior contra el consumo de drogas, con un largo programa de tratamiento residencial y que consumían heroína y cocaína, la probabilidad de volver a consumir drogas es del 95,64 % el día 500.
+interpretación de Hola de esta prueba es como sigue. Suponiendo que objetivo Hola de datos de hello toomodel Hola tiempo hasta Hola devolver toodrug uso de pacientes Hola que reciben alguno de los programas de tratamiento de hello dos. Hola salida de hello web servicio lecturas: para los pacientes que se va a 35 años de antigüedad, tener anterior fármaco tratamiento 2 veces, teniendo el programa de tratamiento residencial larga de hello, y con el uso de heroína y cocaína, probabilidad Hola de devolver el uso de fármaco toohello es 95.64% por día 500.
 
 ## <a name="creation-of-web-service"></a>Creación del servicio web
-> Este servicio web se ha creado con el Aprendizaje automático de Azure. Para obtener acceso a una evaluación gratuita y a vídeos introductorios sobre la creación de experimentos y la [publicación de servicios web](machine-learning-publish-a-machine-learning-web-service.md), consulte [azure.com/ml](http://azure.com/ml). A continuación se muestra una captura de pantalla del experimento que creó el código de ejemplo y el servicio web para cada uno de los módulos dentro del experimento.
+> Este servicio web se ha creado con el Aprendizaje automático de Azure. Para obtener acceso a una evaluación gratuita y a vídeos introductorios sobre la creación de experimentos y la [publicación de servicios web](machine-learning-publish-a-machine-learning-web-service.md), consulte [azure.com/ml](http://azure.com/ml). A continuación se muestra una captura de pantalla del experimento de Hola que creó el código de ejemplo y el servicio web Hola para cada uno de los módulos de hello en el experimento de Hola.
 > 
 > 
 
-En Azure Machine Learning se creó un nuevo experimento en blanco y se extrajeron dos módulos [Ejecutar scripts R][execute-r-script] en el área de trabajo. El esquema de datos se creó con un módulo [Ejecutar script R][execute-r-script] sencillo, que define el esquema de datos de entrada para el servicio web. Este módulo está vinculado al segundo módulo [Ejecutar script R][execute-r-script], que hace la mayor parte del trabajo. Este módulo realiza el preprocesamiento de datos, la creación de modelos y las previsiones. En el paso del preprocesamiento de los datos, los datos de entrada representados por una cadena larga se transforman y convierten en una trama de datos. En el paso de creación del modelo, un paquete R externo "survival_2.37 7.zip" se instala en primer lugar para llevar a cabo el análisis de supervivencia. A continuación, se ejecuta la función "coxph" después de una serie de tareas de procesamiento de datos. Se pueden leer los detalles de la función "coxph" para el análisis de supervivencia en la documentación de R. En el paso de previsión, se proporciona una instancia de prueba en el modelo de entrenado con la función "surfit", y la curva de supervivencia para esta instancia de prueba se genera como variable "curva". Por último, se obtiene la probabilidad del tiempo de interés. 
+Desde dentro del aprendizaje automático de Azure, un experimento en blanco nueva se crea y dos [ejecutar Script de R] [ execute-r-script] módulos se extrajeron en el área de trabajo de Hola. Hello esquema de datos creado con un sencillo [ejecutar Script de R][execute-r-script], que define el esquema de datos de entrada de hello para el servicio web de Hola. Este módulo es, a continuación, vincula toohello en segundo lugar [ejecutar Script de R] [ execute-r-script] módulo, que las principales de trabajo. Este módulo realiza el preprocesamiento de datos, la creación de modelos y las previsiones. En el paso de procesamiento de datos de hello, los datos de entrada de hello representados por una cadena larga se transforman y se convierte en una trama de datos. En el paso de compilación de modelo de hello, un paquete de R externo "survival_2.37 7.zip" se instala por primera vez para llevar a cabo análisis de supervivencia. A continuación, se ejecuta la función de "coxph" de hello después de una tarea de procesamiento de datos de serie. pueden leer los detalles del Hola de función de "coxph" hello para el análisis de supervivencia de documentación de hello R. En el paso de la predicción de hello, se proporciona una instancia de prueba en entrenado Hola con función de "surfit" hello y curva de supervivencia de Hola para esta instancia de prueba se genera como variable de "curve". Por último, se obtiene la probabilidad de Hola de tiempo de Hola de interés. 
 
 ### <a name="experiment-flow"></a>Flujo de experimento:
 ![flujo de experimento][1]
@@ -118,7 +118,7 @@ En Azure Machine Learning se creó un nuevo experimento en blanco y se extrajero
 
     sampleInput=data.frame(trainingdata,testingdata,time_of_interest,index_time,index_event,variable_types)
 
-    maml.mapOutputPort("sampleInput"); #send data to output port
+    maml.mapOutputPort("sampleInput"); #send data toooutput port
 
 #### <a name="module-2"></a>Módulo 2:
     #Read data from input port
@@ -148,7 +148,7 @@ En Azure Machine Learning se creó un nuevo experimento en blanco y se extrajero
     install.packages("src/packages_survival/survival_2.37-7.zip",lib=".",repos=NULL,verbose=TRUE)
     library(survival)
 
-    # Prepare to build model
+    # Prepare toobuild model
     attach(mydata)
 
     for (i in 1:n_col){ mydata[,i]=as.numeric(mydata[,i])} 
@@ -160,7 +160,7 @@ En Azure Machine Learning se creó un nuevo experimento en blanco y se extrajero
     variable_types = unlist(strsplit(as.character(variable_types),";"))
 
     len = length(v_predictors)
-    c="" # Construct the execution string
+    c="" # Construct hello execution string
     for (i in 1:len){
     if(i==len){
     if(variable_types[i]!=0){ c=paste(c, "factor(",v_predictors[i],")",sep="")}
@@ -174,7 +174,7 @@ En Azure Machine Learning se creó un nuevo experimento en blanco y se extrajero
     f=paste(f,c)
     f=paste(f,", data=mydata )")
 
-    # Fit a Cox proportional hazards model and get the predicted survival curve for a testing instance 
+    # Fit a Cox proportional hazards model and get hello predicted survival curve for a testing instance 
     fit=eval(parse(text=f))
 
     testingdata = as.data.frame(matrix(testingdata, ncol=len,byrow = TRUE),stringsAsFactors=FALSE)
@@ -183,7 +183,7 @@ En Azure Machine Learning se creó un nuevo experimento en blanco y se extrajero
 
     curve=survfit(fit,testingdata)
 
-    # Based on user input, find the event occurrence probability
+    # Based on user input, find hello event occurrence probability
     position_closest=which.min(abs(prob_event$time - time_of_interest))
 
     if(prob_event[position_closest,"time"]==time_of_interest){# exact match
@@ -196,7 +196,7 @@ En Azure Machine Learning se creó un nuevo experimento en blanco y se extrajero
     }else{output=(prob_event[position_closest,"prob"]+prob_event[position_closest+1,"prob"])/2}
     }
 
-    #Pull out results to send to web service
+    #Pull out results toosend tooweb service
     output=paste(round(100*output, 2), "%") 
     maml.mapOutputPort("output"); #output port
 
@@ -204,10 +204,10 @@ En Azure Machine Learning se creó un nuevo experimento en blanco y se extrajero
 
 
 ## <a name="limitations"></a>Limitaciones
-Este servicio web solo puede aceptar valores numéricos como variables de característica (columnas). La columna "evento" solo puede aceptar el valor 0 o 1. La columna "tiempo" debe ser un entero positivo.
+Este servicio web solo puede aceptar valores numéricos como variables de característica (columnas). columna de "evento" Hello acepta sólo valor 0 ó 1. columna de "hora" Hello debe toobe un número entero positivo.
 
 ## <a name="faq"></a>P+F
-Para ver las preguntas más frecuentes sobre el uso del servicio web o la publicación en Azure Marketplace, haga clic [aquí](machine-learning-marketplace-faq.md).
+Para las preguntas más frecuentes en el consumo del servicio web de Hola o publicación toohello Azure Marketplace, vea [aquí](machine-learning-marketplace-faq.md).
 
 [1]: ./media/machine-learning-r-csharp-survival-analysis/survive_img2.png
 

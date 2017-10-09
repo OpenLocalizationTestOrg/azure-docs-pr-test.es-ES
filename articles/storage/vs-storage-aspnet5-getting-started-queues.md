@@ -1,6 +1,6 @@
 ---
-title: "Introducción a Queue Storage y los servicios conectados de Visual Studio (ASP.NET Core) | Microsoft Docs"
-description: "Introducción al uso de Azure Queue Storage en un proyecto de ASP.NET Core en Visual Studio"
+title: aaaGet a trabajar con Visual Studio y el almacenamiento de cola servicios conectados (ASP.NET Core) | Documentos de Microsoft
+description: "Cómo tooget iniciado mediante el almacenamiento de cola de Azure en un proyecto de ASP.NET Core en Visual Studio"
 services: storage
 documentationcenter: 
 author: TomArcher
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: tarcher
-ms.openlocfilehash: 4622496544ce6e1057ac68a2e9946917573e997e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 75adb7163827ab17ad89707051ff0e48dbae9c3b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-queue-storage-and-visual-studio-connected-services-aspnet-core"></a>Introducción a Queue Storage y a los servicios conectados de Visual Studio (ASP.NET Core)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>Información general
-En este artículo se describe cómo empezar a usar Azure Queue Storage en Visual Studio después de crear una cuenta de Azure Storage en un proyecto de ASP.NET Core mediante el cuadro de diálogo **Add Connected Services** (Agregar servicios conectados) de Visual Studio, o después de hacer referencia a una. La operación **Agregar servicios conectados** instala los paquetes de NuGet adecuados para tener acceso al almacenamiento de Azure en el proyecto y agrega la cadena de conexión de la cuenta de almacenamiento a los archivos de configuración del proyecto.
+Este artículo describe cómo tooget iniciado mediante el almacenamiento de cola de Azure en Visual Studio después de haber creado o hace referencia a una cuenta de almacenamiento de Azure en un proyecto de ASP.NET Core mediante Visual Studio hello **agregar servicios conectados** cuadro de diálogo. Hola **agregar servicios conectados** operación instala tooaccess de paquetes de NuGet adecuado de hello almacenamiento de Azure en el proyecto y agrega la cadena de conexión de Hola para hello cuenta de almacenamiento tooyour archivos de configuración de proyecto.
 
-El almacenamiento de cola de Azure es un servicio para almacenar grandes cantidades de mensajes a los que puede obtenerse acceso desde cualquier lugar del mundo a través de llamadas autenticadas con HTTP o HTTPS. Un único mensaje en cola puede tener un tamaño de hasta 64 kilobytes (KB) y una cola puede contener millones de mensajes, hasta el límite de capacidad total de una cuenta de almacenamiento.
+Almacenamiento de cola de Azure es un servicio para almacenar grandes cantidades de mensajes que pueden tener acceso desde cualquier lugar Hola mundo a través de llamadas autenticadas mediante HTTP o HTTPS. Un mensaje de la cola solo puede estar too64 kilobytes (KB) de tamaño y una cola puede contener millones de mensajes, seguridad toohello límite de capacidad total de una cuenta de almacenamiento.
 
-Para comenzar, necesita crear una cola de Azure en la cuenta de almacenamiento. Le mostraremos cómo crear una cola en el código. También le mostraremos cómo realizar operaciones básicas de cola, como agregar, modificar, leer y quitar mensajes de cola. Los ejemplos están escritos en código C\# y usan la biblioteca del cliente de Azure Storage para .NET. Para obtener más información acerca de ASP.NET, consulte [ASP.NET](http://www.asp.net).
+tooget iniciado, primero debe toocreate una cola de Azure en su cuenta de almacenamiento. Le mostraremos cómo toocreate una cola en el código. También le mostraremos cómo tooperform basic cola operaciones, como agregar, modificar, leer y eliminar mensajes de la cola. Hola ejemplos están escritos en C\# código y utilizar Hola biblioteca de cliente de almacenamiento de Azure para. NET. Para obtener más información acerca de ASP.NET, consulte [ASP.NET](http://www.asp.net).
 
-**NOTA**: Algunas de las API que realizan llamadas a Azure Storage en ASP.NET Core son asincrónicas. Vea [Programación asincrónica con Async y Await](http://msdn.microsoft.com/library/hh191443.aspx) para más información. El código siguiente supone que se están utilizando métodos de programación asincrónica.
+**Nota:** algunas de las API que realizan llamadas tooAzure almacenamiento en ASP.NET Core Hola son asincrónicas. Vea [Programación asincrónica con Async y Await](http://msdn.microsoft.com/library/hh191443.aspx) para más información. código de Hello siguiente se da por supuesto que se usan métodos de programación asincrónica.
 
 * Consulte [Introducción al Almacenamiento en cola de Azure mediante .NET](storage-dotnet-how-to-use-queues.md) para más información sobre la manipulación de colas mediante programación.
 * Vea [Documentación sobre Almacenamiento](https://azure.microsoft.com/documentation/services/storage/) para información general sobre Almacenamiento de Azure.
@@ -38,73 +38,73 @@ Para comenzar, necesita crear una cola de Azure en la cuenta de almacenamiento. 
 * Vea [ASP.NET](http://www.asp.net) para más información sobre la programación de aplicaciones ASP.NET.
 
 ## <a name="access-queues-in-code"></a>Acceso a colas en el código
-Para obtener acceso a las colas de los proyectos de ASP.NET Core, debe incluir los elementos siguientes en los archivos de origen de C# que tengan acceso a Azure Queue Storage.
+colas de tooaccess de proyectos de ASP.NET Core, necesita tooinclude Hola siguiente archivo de código fuente de tooany C# de elementos que tiene acceso a almacenamiento de cola de Azure.
 
-1. Asegúrese de que las declaraciones del espacio de nombres de la parte superior del archivo de C# incluyen estas instrucciones **using** .
+1. Asegúrese de incluyen declaraciones de espacios de nombres de hello en parte superior de hello del archivo hello C# estas **con** instrucciones.
    
         using Microsoft.Framework.Configuration;
         using Microsoft.WindowsAzure.Storage;
         using Microsoft.WindowsAzure.Storage.Queue;
         using System.Threading.Tasks;
         using LogLevel = Microsoft.Framework.Logging.LogLevel;
-2. Obtenga un objeto **CloudStorageAccount** que represente la información de su cuenta de almacenamiento. Use el código siguiente para obtener la cadena de conexión de almacenamiento y la información de la cuenta de almacenamiento de la configuración del servicio de Azure.
+2. Obtenga un objeto **CloudStorageAccount** que represente la información de su cuenta de almacenamiento. Hola de uso después de código tooget Hola su cadena de conexión de almacenamiento y la información de la cuenta de almacenamiento de información de configuración del servicio de Azure Hola.
    
          CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
            CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
-3. Obtenga un objeto **CloudTableClient** para hacer referencia a los objetos de cola en la cuenta de almacenamiento.  
+3. Obtener un **CloudQueueClient** tooreference Hola cola objetos en su cuenta de almacenamiento de objetos.  
    
-        // Create the CloudQueueClient object for the storage account.
+        // Create hello CloudQueueClient object for hello storage account.
         CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
-4. Obtenga un objeto **CloudQueue** para hacer referencia a una cola específica.
+4. Obtener un **CloudQueue** tooreference una cola específica del objeto.
    
-        // Get a reference to the CloudQueue named "messageQueue"
+        // Get a reference toohello CloudQueue named "messageQueue"
         CloudQueue messageQueue = queueClient.GetQueueReference("messageQueue");
 
-**NOTA:** use todo el código anterior delante del código que aparece en las muestras siguientes.
+**Nota:** los Hola encima código frente a código de hello usan en hello siguiendo los ejemplos.
 
 ### <a name="create-a-queue-in-code"></a>Creación de una cola en código
-Para crear la cola de Azure en el código, solo tiene que agregar una llamada a **CreateIfNotExistsAsync**.
+Hola toocreate cola de Azure en el código, basta con agregar una llamada demasiado**CreateIfNotExistsAsync**.
 
-    // Create the CloudQueue if it does not exist.
+    // Create hello CloudQueue if it does not exist.
     await messageQueue.CreateIfNotExistsAsync();
 
-## <a name="add-a-message-to-a-queue"></a>un mensaje a una cola
-Para insertar un mensaje en una cola existente, cree un nuevo objeto **CloudQueueMessage** y luego llame al método **AddMessageAsync**.
+## <a name="add-a-message-tooa-queue"></a>Agregar una cola de mensajes tooa
+tooinsert un mensaje en una cola existente, cree un nuevo **CloudQueueMessage** objeto y, a continuación, llamada hello **AddMessageAsync** método.
 
 Se puede crear un objeto **CloudQueueMessage** a partir de una cadena (en formato UTF-8) o de una matriz de bytes.
 
-Este es un ejemplo que inserta el mensaje "Hello, World".
+Este es un ejemplo que inserta el mensaje de saludo "¡Hello, World".
 
-    // Create a message and add it to the queue.
+    // Create a message and add it toohello queue.
     CloudQueueMessage message = new CloudQueueMessage("Hello, World");
     await messageQueue.AddMessageAsync(message);
 
 ## <a name="read-a-message-in-a-queue"></a>Leer un mensaje de una cola
-Puede inspeccionar el mensaje situado al principio de una cola sin quitarlo de ella, llamando al método **PeekMessageAsync** .
+Puede inspeccionar mensaje hello en la parte delantera de Hola de una cola sin quitarlo de la cola de Hola por Hola que realiza la llamada **PeekMessageAsync** método.
 
-    // Peek the next message in the queue. 
+    // Peek hello next message in hello queue. 
     CloudQueueMessage peekedMessage = await messageQueue.PeekMessageAsync();
 
 
 ## <a name="read-and-remove-a-message-in-a-queue"></a>Leer y eliminar un mensaje de una cola
 Su código puede quitar un mensaje de una cola en dos pasos.
 
-1. Llame a **GetMessageAsync** para obtener el mensaje siguiente de una cola. Un mensaje devuelto por **GetMessageAsync** se hace invisible a cualquier otro código de lectura de mensajes de esta cola. De forma predeterminada, este mensaje permanece invisible durante 30 segundos.
-2. Para terminar de quitar el mensaje de la cola, llame a **DeleteMessageAsync**.
+1. Llame a **GetMessageAsync** siguiente mensaje de saludo de tooget en una cola. Un mensaje devuelto de **GetMessageAsync** se convierte en invisible tooany otro código que lee mensajes de esta cola. De forma predeterminada, este mensaje permanece invisible durante 30 segundos.
+2. toofinish quitar mensajes de bienvenida de cola de hello, llame a **DeleteMessageAsync**.
 
-Este proceso extracción de un mensaje que consta de dos pasos garantiza que si su código no puede procesar un mensaje a causa de un error de hardware o software, otra instancia de su código puede obtener el mismo mensaje e intentarlo de nuevo. El código siguiente llama a **DeleteMessageAsync** justo después de procesar el mensaje.
+Este proceso de dos pasos de la eliminación de un mensaje garantiza que si se produce un error en el código tooprocess que puede obtener un mensaje debido a un error toohardware o software, otra instancia del código Hola mismo mensaje y vuelva a intentarlo. Hola siguiente código llama **DeleteMessageAsync** justo después de que se ha procesado el mensaje de bienvenida.
 
-    // Get the next message in the queue.
+    // Get hello next message in hello queue.
     CloudQueueMessage retrievedMessage = await messageQueue.GetMessageAsync();
 
-    // Process the message in less than 30 seconds.
+    // Process hello message in less than 30 seconds.
 
-    // Then delete the message.
+    // Then delete hello message.
     await messageQueue.DeleteMessageAsync(retrievedMessage);
 
 ## <a name="leverage-additional-options-for-dequeuing-messages"></a>las opciones adicionales de los mensajes quitados de la cola
 Hay dos formas de personalizar la recuperación de mensajes de una cola.
-En primer lugar, puede obtener un lote de mensajes (hasta 32). En segundo lugar, puede establecer un tiempo de espera de la invisibilidad más largo o más corto para que el código disponga de más o menos tiempo para procesar cada mensaje. El siguiente ejemplo de código utiliza el método **GetMessages** para obtener 20 mensajes en una llamada. A continuación, procesa cada mensaje con un bucle **foreach** . También establece el tiempo de espera de la invisibilidad en 5 minutos para cada mensaje. Tenga en cuenta que los 5 minutos empiezan a contar para todos los mensajes al mismo tiempo, por lo que, después de pasar los 5 minutos desde la llamada a **GetMessages**, todos los mensajes que no se han eliminado volverán a estar visibles.
+En primer lugar, puede obtener un lote de mensajes (arriba too32). En segundo lugar, puede establecer un tiempo de espera de invisibilidad mayores o menores, lo que permite el código más o menos toofully tiempo procesar cada mensaje. siguiente Hola código de ejemplo utiliza la **GetMessages** tooget 20 mensajes de método en una llamada. A continuación, procesa cada mensaje con un bucle **foreach** . También establece los minutos de too5 de tiempo de espera de invisibilidad de Hola para cada mensaje. Tenga en cuenta que inicio de 5 minutos de Hola para todos los mensajes en hello mismo tiempo, por lo que tras 5 minutos transcurridos tras la llamada de hello demasiado**GetMessages**, los mensajes que no se eliminaron vuelven a ser visibles.
 
     // Retrieve 20 messages at a time, keeping those messages invisible for 5 minutes, 
     //   delete each message after processing.
@@ -115,39 +115,39 @@ En primer lugar, puede obtener un lote de mensajes (hasta 32). En segundo lugar,
         queue.DeleteMessage(message);
     }
 
-## <a name="get-the-queue-length"></a>la longitud de la cola
-Puede obtener una estimación del número de mensajes existentes en una cola. El método **FetchAttributes** solicita al servicio de cola la recuperación de los atributos de la cola, incluido el número de mensajes. La propiedad **ApproximateMethodCount** devuelve el último valor recuperado por el método **FetchAttributes**, sin llamar a Queue service.
+## <a name="get-hello-queue-length"></a>Obtener la longitud de cola de Hola
+Puede obtener una estimación del número de Hola de mensajes en una cola. El **FetchAttributes** método pide al servicio de cola de Hola para recuperar los atributos de la cola de hello, incluido el número de mensajes de Hola. Hola **ApproximateMethodCount** propiedad devuelve el valor última de hello recuperado por la **FetchAttributes** método sin llamar al servicio de cola de Hola.
 
-    // Fetch the queue attributes.
+    // Fetch hello queue attributes.
     messageQueue.FetchAttributes();
 
-    // Retrieve the cached approximate message count.
+    // Retrieve hello cached approximate message count.
     int? cachedMessageCount = messageQueue.ApproximateMessageCount;
 
-    // Display the number of messages.
+    // Display hello number of messages.
     Console.WriteLine("Number of messages in queue: " + cachedMessageCount);
 
-## <a name="use-the-async-await-pattern-with-common-queue-apis"></a>Uso del patrón Async-Await con API de cola comunes
-En este ejemplo se muestra cómo usar el patrón Async-Await con API de cola comunes. El ejemplo llama a la versión asincrónica de cada uno de los métodos determinados. Esto se puede ver con el postfijo de Async de cada método. Cuando se usa un método asincrónico, el patrón Async-Await suspende la ejecución local hasta que se complete la llamada. Este comportamiento permite que el subproceso actual realice otro trabajo que ayuda a evitar cuellos de botella en el rendimiento y mejora la capacidad de respuesta general de la aplicación. Para más información sobre el uso del patrón Async-Await en. NET, consulte [Async y Await (C# y Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx)
+## <a name="use-hello-async-await-pattern-with-common-queue-apis"></a>Usar el patrón de hello asincrónicas Await con las API de cola común
+Este ejemplo muestra cómo toouse Hola asincrónicas Await patrón con las API de cola común. versión de async de Hola Hola ejemplo llamadas de cada uno de hello tiene métodos. Esto puede verse por revisión posterior a la de hello asincrónico de cada método. Cuando se utiliza un método asincrónico, el patrón de Async y Await Hola suspende la ejecución local hasta que se complete la llamada de Hola. Este comportamiento permite Hola actual subproceso toodo otro trabajo que ayuda a evitar los cuellos de botella de rendimiento y aumenta la capacidad de respuesta general de la aplicación de Hola. Para obtener más detalles sobre el uso de hello patrón Async y Await en. NET, consulte [Async y Await (C# y Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx)
 
-    // Create a message to add to the queue.
+    // Create a message tooadd toohello queue.
     CloudQueueMessage cloudQueueMessage = new CloudQueueMessage("My message");
 
-    // Async enqueue the message.
+    // Async enqueue hello message.
     await messageQueue.AddMessageAsync(cloudQueueMessage);
     Console.WriteLine("Message added");
 
-    // Async dequeue the message.
+    // Async dequeue hello message.
     CloudQueueMessage retrievedMessage = await messageQueue.GetMessageAsync();
     Console.WriteLine("Retrieved message with content '{0}'", retrievedMessage.AsString);
 
-    // Async delete the message.
+    // Async delete hello message.
     await messageQueue.DeleteMessageAsync(retrievedMessage);
     Console.WriteLine("Deleted message");
 ## <a name="delete-a-queue"></a>Eliminación de una cola
-Para eliminar una cola y todos los mensajes contenidos en ella, llame al método **Delete** en el objeto de cola.
+toodelete una cola y todos los mensajes de Hola contenidas en ella, llame a la **eliminar** método hello en objetos de cola.
 
-    // Delete the queue.
+    // Delete hello queue.
     messageQueue.Delete();
 
 

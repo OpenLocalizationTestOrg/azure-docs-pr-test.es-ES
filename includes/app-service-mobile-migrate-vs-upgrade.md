@@ -1,5 +1,5 @@
-Existen dos opciones para pasar de Servicios móviles al Servicio de aplicaciones: migración o actualización. Ambas opciones proporcionarán acceso a toda la funcionalidad de hospedaje del Servicio de aplicaciones:
+Hay dos opciones para migrar desde servicios móviles tooApp servicio: migración o actualización. Cualquiera de las opciones le proporcionará acceso tooall de hello las capacidades de servicio de aplicaciones de hospedaje:
 
-* *Migrar* un servicio solo cambia el entorno subyacente que hospeda el back-end de su dispositivo móvil. No requiere **ningún cambio de código** para el cliente móvil ni el proyecto de servidor móvil. Si usa la opción de migración automatizada, esto conserva su dirección URL de **service.azure-mobile.net** . 
-* *actualización* de un servicio **requiere cambios en el código** en el servidor y el proyecto del cliente, pero le permite aprovechar las nuevas características del SDK móvil, como mejoras en la autenticación y más flexibilidad para el proyecto del servidor. 
+* *Migrar* un servicio solo cambia Hola subyacente entorno que hospeda el back-end de dispositivos móvil. Requiere **ningún cambio de código** tooeither Hola móviles cliente o hello móviles proyecto de servidor. Si se utiliza la opción de migración de hello automatizada, esto conserva su **service.azure-Mobile.NET** dirección URL. 
+* *Actualizar* un servicio **requieren cambios en el código** tooboth el proyecto de servidor y cliente, pero permite tootake aprovechar las nuevas características del SDK móviles, como mejoras tooauthentication y mayor flexibilidad para el proyecto de servidor. 
 

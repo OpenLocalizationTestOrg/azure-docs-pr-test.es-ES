@@ -1,5 +1,5 @@
 ---
-title: "Creación de un servicio de confianza de Azure Service Fabric con C#"
+title: aaaCreate un servicio confiable de Azure Service Fabric con C#
 description: "Creación, implementación y depuración de una aplicación de servicio de confianza integrada en Azure Service Fabric, con Visual Studio."
 services: service-fabric
 documentationcenter: .net
@@ -14,120 +14,120 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/28/2017
 ms.author: ryanwi
-ms.openlocfilehash: f93298e6483fd8c9dfda835964aeebd1a430af69
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 740c866da6e639219b529fe92ed63cbeaa702a35
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-your-first-c-service-fabric-stateful-reliable-services-application"></a>Creación de su primera aplicación de Reliable Services con estado de Service Fabric en C#
 
-Aprenda a implementar su primera aplicación de Service Fabric para .NET en Windows en tan solo unos minutos. Cuando haya terminado, tendrá un clúster local que se ejecuta con una aplicación de servicio de confianza.
+Obtenga información acerca de cómo toodeploy su primera aplicación de Service Fabric para .NET en Windows en tan solo unos minutos. Cuando haya terminado, tendrá un clúster local que se ejecuta con una aplicación de servicio de confianza.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Antes de comenzar, asegúrese de haber [configurado el entorno de desarrollo](service-fabric-get-started.md). Esto incluye la instalación del SDK de Service Fabric SDK y Visual Studio 2017 o 2015.
+Antes de comenzar, asegúrese de haber [configurado el entorno de desarrollo](service-fabric-get-started.md). Esto incluye la instalación de SDK del servicio de Fabric de Hola y 2017 de Visual Studio o 2015.
 
-## <a name="create-the-application"></a>Creación de la aplicación
+## <a name="create-hello-application"></a>Crear aplicación hello
 
 Inicie Visual Studio como **administrador**.
 
 Creación de un proyecto con `CTRL`+`SHIFT`+`N`
 
-En el cuadro de diálogo **Nuevo proyecto**, elija **Nube > Aplicación de Service Fabric**.
+Hola **nuevo proyecto** cuadro de diálogo, elija **en la nube > aplicación de servicio de Fabric**.
 
-Asigne el nombre **MyApplication** a la aplicación y presione **Aceptar**.
+Nombre de la aplicación hello **MyApplication** y presione **Aceptar**.
 
    
 ![Cuadro de diálogo de proyecto nuevo en Visual Studio.][1]
 
-Puede crear cualquier tipo de aplicación de Service Fabric en el cuadro de diálogo siguiente. Para esta guía de inicio rápido, elija **Servicio con estado**.
+Puede crear cualquier tipo de aplicación de Service Fabric del cuadro de diálogo siguiente Hola. Para esta guía de inicio rápido, elija **Servicio con estado**.
 
-Asigne el nombre **MyStatefulService** al servicio y presione **Aceptar**.
+Nombre de servicio de hello **MyStatefulService** y presione **Aceptar**.
 
 ![Cuadro de diálogo de servicio nuevo en Visual Studio.][2]
 
 
-Visual Studio crea el proyecto de aplicación y el proyecto de servicio con estado y los muestra en el Explorador de soluciones.
+Visual Studio crea el proyecto de aplicación de Hola y un proyecto de servicio con estado de Hola y mostrarlos en el Explorador de soluciones.
 
 ![Explorador de soluciones después de la creación de una aplicación con el servicio con estado][3]
 
-El proyecto de aplicación (**MyApplication**) no contiene código directamente. En su lugar, hace referencia a un conjunto de proyectos de servicio. Además, contiene otros tres tipos de contenido:
+proyecto de aplicación Hola (**MyApplication**) no contiene ningún código directamente. En su lugar, hace referencia a un conjunto de proyectos de servicio. Además, contiene otros tres tipos de contenido:
 
 * **Perfiles de publicación**  
-Perfiles para la implementación en entornos diferentes.
+Perfiles para implementar entornos a toodifferent.
 
 * **Scripts**  
 Script de PowerShell para implementar o actualizar la aplicación.
 
 * **Definición de la aplicación**  
-Incluye el archivo ApplicationManifest.xml en *ApplicationPackageRoot* que describe la composición de la aplicación. Los archivos de parámetros de aplicación asociados están en *ApplicationParameters* y se pueden utilizar para especificar parámetros específicos del entorno. Visual Studio seleccionará un archivo de parámetros de aplicación que se especificó en el perfil de publicación asociado durante la implementación en un entorno concreto.
+Incluye el archivo de ApplicationManifest.xml hello en *ApplicationPackageRoot* que describe la composición de la aplicación. Archivos de parámetros de las aplicaciones asociadas están bajo *ApplicationParameters*, que puede ser usado toospecify parámetros específicos del entorno. Perfil de publicación se seleccionan Visual Studio asociado de un archivo de parámetros de la aplicación que se especifica en Hola durante el entorno de implementación tooa específico.
     
-Para obtener información general del contenido del proyecto de servicio, consulte [Introducción a Reliable Services de Microsoft Azure Service Fabric](service-fabric-reliable-services-quick-start.md).
+Para obtener información general del contenido de Hola Hola del proyecto del servicio, consulte [Introducción a servicios de confianza](service-fabric-reliable-services-quick-start.md).
 
-## <a name="deploy-and-debug-the-application"></a>Implemente la aplicación y depúrela
+## <a name="deploy-and-debug-hello-application"></a>Implementar y depurar la aplicación hello
 
 Ahora que tiene una aplicación, ejecútela.
 
-Presione `F5` en Visual Studio para implementar la aplicación, con el fin de depurarla.
+En Visual Studio, presione `F5` toodeploy aplicación de hello para la depuración.
 
 >[!NOTE]
->La primera vez que ejecute e implemente la aplicación localmente, Visual Studio creará un clúster local para la depuración. Esto puede tardar algún tiempo. El estado de creación del clúster se muestra en la ventana de salida de Visual Studio.
+>Hola la primera vez que se ejecute e implementa aplicación de hello localmente, Visual Studio crea un clúster local para la depuración. Esto puede tardar algún tiempo. estado de creación de clúster de Hola se muestra en la ventana de salida de Visual Studio de hello.
 
-Cuando el clúster esté listo, recibirá una notificación de la aplicación de administración de la bandeja de sistema del clúster local que se incluye con el SDK.
+Cuando esté listo clúster hello, obtendrá una notificación de aplicación Hola clúster local system bandeja manager incluido con hello SDK.
    
 ![Notificación de bandeja de sistema del clúster local][4]
 
-Cuando se inicia la aplicación, Visual Studio muestra automáticamente el **visor de eventos de diagnóstico**, donde se pueden ver los resultados del seguimiento del servicio.
+Una vez empieza a aplicación Hola, Visual Studio muestra automáticamente hello **Visor de eventos de diagnóstico**, donde puede ver el resultado del seguimiento de los servicios.
    
 ![Visor de eventos de diagnóstico][5]
 
-La plantilla del servicio con estado que se utilizó muestra simplemente un valor del contador, que se incrementa en el método `RunAsync` de **MyStatefulService.cs**.
+Hello plantilla de servicio con estado usamos simplemente muestra un aumento de valor de contador en hello `RunAsync` método **MyStatefulService.cs**.
 
-Expanda uno de los eventos para ver más detalles, incluido el nodo en que se ejecuta el código. En este caso, es \_Node\_2, aunque puede que en su equipo sea otro.
+Expanda una de hello toosee de eventos para obtener más detalles, incluido nodo Hola donde se está ejecutando código de hello. En este caso, es \_Node\_2, aunque puede que en su equipo sea otro.
    
 ![Detalle del Visor de eventos de diagnóstico][6]
 
-El clúster local contiene cinco nodos que se hospedan en una sola máquina. En un entorno de producción, cada nodo se hospeda en una máquina virtual o física distinta. Para simular la pérdida de una máquina mientras se ejecuta el depurador de Visual Studio, vamos a desactivar uno de los nodos del clúster local.
+clúster local de Hello contiene cinco nodos hospedados en un único equipo. En un entorno de producción, cada nodo se hospeda en una máquina virtual o física distinta. pérdida de hello toosimulate de una máquina al llevar a cabo Hola Visual Studio del depurador en hello mismo tiempo, vamos a poner sin conexión uno de los nodos de hello en clúster local de Hola.
 
-En la ventana del **Explorador de soluciones**, abra **MyStatefulService.cs**. 
+Hola **el Explorador de soluciones** ventana, abra **MyStatefulService.cs**. 
 
-Buscar el método `RunAsync` y establezca un punto de interrupción en la primera línea del método.
+Buscar hello `RunAsync` método y establezca un punto de interrupción en la primera línea del método hello de Hola.
 
 ![Punto de interrupción en el método RunAsync de servicio con estado][7]
 
-Para iniciar la herramienta **Service Fabric Explorer**, haga clic con el botón derecho en la aplicación de la bandeja del sistema de la instancia de **Cluster Manager local** y elija **Manage Local Cluster** (Administrar clúster local).
+Iniciar hello **Service Fabric Explorer** herramienta con el botón secundario en hello **Administrador de clústeres Local** aplicación de bandeja del sistema y elija **administrar clúster Local**.
 
-![Inicie el Explorador de Service Fabric desde el Administrador de clústeres locales][systray-launch-sfx]
+![Inicie el Explorador de Service Fabric desde Hola Administrador de clústeres Local][systray-launch-sfx]
 
-[**Service Fabric Explorer**](service-fabric-visualizing-your-cluster.md) ofrece una representación visual de un clúster. Incluye el conjunto de las aplicaciones implementadas en él y el conjunto de nodos físicos que lo componen.
+[**Service Fabric Explorer**](service-fabric-visualizing-your-cluster.md) ofrece una representación visual de un clúster. Incluye conjunto de Hola de las aplicaciones implementadas tooit y Hola de nodos físicos que lo componen.
 
-En el panel izquierdo, expanda **Clúster > Nodos** y busque el nodo en que se ejecuta el código.
+En el panel izquierdo de hello, expanda **clúster > nodos** y buscar Hola nodo donde se ejecuta el código.
 
-Haga clic en **Acciones > Desactivar (reiniciar)** para simular un reinicio de la máquina.
+Haga clic en **acciones > desactivar (reiniciar)** toosimulate un reinicio del equipo.
 
 ![Detener un nodo en el Explorador de Service Fabric][sfx-stop-node]
 
-Momentáneamente, debería ver que se alcanza el punto de interrupción en Visual Studio cuando el cálculo hacía perfectamente en un nodo se conmuta por error a otro.
+En breve, debería ver el punto de interrupción alcanzado en Visual Studio como cálculo Hola que estabas haciendo perfectamente en un nodo conmuta por error tooanother.
 
 
-A continuación, vuelva al Visor de eventos de diagnóstico y observe los mensajes. El contador no ha dejado de incrementarse, aunque los eventos proceden de otro nodo.
+A continuación, devolver toohello Visor de eventos de diagnóstico y observe los mensajes de saludo. contador de Hello ha ido incremento, incluso si los eventos de hello realmente proceden de un nodo diferente.
 
 ![Visor de eventos de diagnóstico después de la conmutación por error][diagnostic-events-viewer-detail-post-failover]
 
-## <a name="cleaning-up-the-local-cluster-optional"></a>Limpieza del clúster local (opcional)
+## <a name="cleaning-up-hello-local-cluster-optional"></a>Limpiar el clúster local de hello (opcional)
 
-Recuerde que este clúster local es real. La detención del depurador elimina la instancia de la aplicación y anula el registro del tipo de aplicación. No obstante, el clúster se sigue ejecutando en segundo plano. Una vez que está listo para detener el clúster local, hay un par de opciones.
+Recuerde que este clúster local es real. Detener el depurador de hello quita la instancia de la aplicación y anula el registro de tipo de aplicación Hola. Sin embargo, el clúster de hello continúa toorun en segundo plano de Hola. Cuando esté listo toostop Hola local del clúster, hay un par de opciones.
 
 ### <a name="keep-application-and-trace-data"></a>Mantener los datos de aplicación y de seguimiento
 
-Cierre el clúster haciendo clic con el botón derecho en la aplicación de la bandeja del sistema de la instancia de **Cluster Manager local** y seleccione **Stop Local Cluster** (Detener clúster local).
+Apagar clúster Hola con el botón secundario en hello **Administrador de clústeres Local** aplicación de bandeja del sistema y, a continuación, elija **detener clúster Local**.
 
-### <a name="delete-the-cluster-and-all-data"></a>Eliminar el clúster y todos los datos
+### <a name="delete-hello-cluster-and-all-data"></a>Eliminar el clúster de Hola y todos los datos
 
-Elimine el clúster haciendo clic con el botón derecho en la aplicación de la bandeja del sistema de la instancia de **Cluster Manager local** y seleccione **Remove Local Cluster** (Quitar clúster local). 
+Quitar clúster de hello con el botón secundario en hello **Administrador de clústeres Local** aplicación de bandeja del sistema y, a continuación, elija **quitar clúster Local**. 
 
-Si elige esta opción, Visual Studio volverá a implementar el clúster la próxima vez que ejecute la aplicación. Elija esta opción solo si no tiene intención de utilizar el clúster local durante algún tiempo o si necesita reclamar recursos.
+Si elige esta opción, Visual Studio volverá a implementar Hola Hola de clúster siguiente tiempo de aplicación Hola a su ejecución. Elija esta opción si no tiene la intención de clúster local de toouse Hola durante algún tiempo o si necesita recursos tooreclaim.
 
 ## <a name="next-steps"></a>Pasos siguientes
 Más información sobre [Reliable Services](service-fabric-reliable-services-introduction.md).

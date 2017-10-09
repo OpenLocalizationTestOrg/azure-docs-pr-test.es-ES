@@ -1,6 +1,6 @@
 ---
-title: "Conexión a Azure Database for MySQL mediante Go | Microsoft Docs"
-description: "En este tutorial rápido se proporcionan ejemplos de código Go que se pueden usar para conectarse a Azure Database for MySQL y consultar datos en este servicio."
+title: Conectar tooAzure base de datos de MySQL mediante Ir | Documentos de Microsoft
+description: "Este tutorial rápido proporciona varios ejemplos de código de Go puede usar tooconnect y consultar los datos de la base de datos MySQL."
 services: mysql
 author: jasonwhowell
 ms.author: jasonh
@@ -11,32 +11,32 @@ ms.custom: mvc
 ms.devlang: go
 ms.topic: hero-article
 ms.date: 07/18/2017
-ms.openlocfilehash: 42a6b1c37de08971674c8b38f1e13bfd657f8b03
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.openlocfilehash: e8067b807ee729e04850c5325f476806bcd54983
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-database-for-mysql-use-go-language-to-connect-and-query-data"></a>Azure Database for MySQL: uso del lenguaje Go para conectarse y consultar datos
-En este tutorial rápido se muestra cómo conectarse a una instancia de Azure Database for MySQL mediante código escrito en el lenguaje [Go](https://golang.org/) desde las plataformas Windows, Ubuntu Linux y macOS de Apple. Se indica cómo usar instrucciones SQL para consultar, insertar, actualizar y eliminar datos en la base de datos. En este artículo se da por hecho que está familiarizado con el desarrollo mediante Go, pero que nunca ha usado Azure Database for MySQL.
+# <a name="azure-database-for-mysql-use-go-language-tooconnect-and-query-data"></a>Base de datos de Azure para MySQL: utilizan el comando Go lenguaje tooconnect y consultar datos
+Este tutorial rápido muestra cómo tooconnect tooan base de datos de Azure para el uso de MySQL código escrito en hello [vaya](https://golang.org/) idioma de Windows, Ubuntu Linux y Apple plataformas macOS. Muestra cómo toouse tooquery de instrucciones de SQL, insertar, actualizar y eliminar datos en la base de datos de Hola. En este artículo se da por supuesto que está familiarizado con el desarrollo mediante Go, pero que se tooworking nueva con la base de datos de Azure para MySQL.
 
 ## <a name="prerequisites"></a>Requisitos previos
-En este tutorial rápido se usan como punto de partida los recursos creados en una de estas guías:
+Este tutorial rápido usa recursos de hello creados en cualquiera de estas guías como punto de partida:
 - [Create an Azure Database for MySQL server using Azure Portal](./quickstart-create-mysql-server-database-using-azure-portal.md) (Creación de un servidor de Azure Database for MySQL mediante Azure Portal)
 - [Create an Azure Database for MySQL server using Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md) (Creación de un servidor de Azure Database for MySQL mediante la CLI de Azure)
 
 ## <a name="install-go-and-mysql-connector"></a>Instalación de Go y el conector de MySQL
-Instale [Go](https://golang.org/doc/install) y [go-sql-driver for MySQL](https://github.com/go-sql-driver/mysql#installation) en su propia máquina. Dependiendo de la plataforma, siga estos pasos:
+Instalar [vaya](https://golang.org/doc/install) hello y [go--controlador sql para MySQL](https://github.com/go-sql-driver/mysql#installation) en su propio equipo. Dependiendo de la plataforma, siga los pasos de hello:
 
 ### <a name="windows"></a>Windows
-1. [Descargue](https://golang.org/dl/) e instale Go para Microsoft Windows de acuerdo con las [instrucciones de instalación](https://golang.org/doc/install).
-2. En el menú Inicio, inicie el símbolo del sistema.
+1. [Descargar](https://golang.org/dl/) e instale Go para Microsoft Windows según toohello [las instrucciones de instalación](https://golang.org/doc/install).
+2. Inicie símbolo Hola desde el menú de inicio de Hola.
 3. Cree una carpeta para su proyecto, como `mkdir  %USERPROFILE%\go\src\mysqlgo`.
-4. Cambie el directorio a la carpeta de proyecto, por ejemplo `cd %USERPROFILE%\go\src\mysqlgo`.
-5. Establezca la variable de entorno para GOPATH con el fin de que apunte al directorio de código fuente. `set GOPATH=%USERPROFILE%\go`.
-6. Instale [go-sql-driver for mysql](https://github.com/go-sql-driver/mysql#installation) mediante la ejecución del comando `go get github.com/go-sql-driver/mysql`.
+4. Cambie el directorio a la carpeta del proyecto hello, como `cd %USERPROFILE%\go\src\mysqlgo`.
+5. Establezca la variable de entorno de hello para el directorio de código fuente GOPATH toopoint toohello. `set GOPATH=%USERPROFILE%\go`.
+6. Instalar hello [go--controlador sql para mysql](https://github.com/go-sql-driver/mysql#installation) ejecutando hello `go get github.com/go-sql-driver/mysql` comando.
 
-   En resumen, instale Go y después ejecute estos comandos en el símbolo del sistema:
+   En resumen, instale Go, a continuación, ejecute estos comandos en el símbolo del sistema de hello:
    ```cmd
    mkdir  %USERPROFILE%\go\src\mysqlgo
    cd %USERPROFILE%\go\src\mysqlgo
@@ -45,12 +45,12 @@ Instale [Go](https://golang.org/doc/install) y [go-sql-driver for MySQL](https:/
    ```
 
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)
-1. Inicie el shell de Bash. 
+1. Inicie el shell de Bash Hola. 
 2. Instale Go mediante la ejecución de `sudo apt-get install golang-go`.
 3. Cree una carpeta para el proyecto en su directorio principal, como `mkdir -p ~/go/src/mysqlgo/`.
-4. Cambie el directorio a la carpeta, por ejemplo, `cd ~/go/src/mysqlgo/`.
-5. Establezca la variable de entorno GOPATH para que apunte a un directorio de origen válido, como la carpeta go del directorio principal actual. En el shell de Bash, ejecute `export GOPATH=~/go` para agregar el directorio go como GOPATH para la sesión de shell actual.
-6. Instale [go-sql-driver for mysql](https://github.com/go-sql-driver/mysql#installation) mediante la ejecución del comando `go get github.com/go-sql-driver/mysql`.
+4. Cambie el directorio a la carpeta hello, como `cd ~/go/src/mysqlgo/`.
+5. Conjunto hello GOPATH entorno toopoint variable tooa directorio de origen válido, como el principal actual del directorio vaya carpeta. En el shell de bash hello, ejecute `export GOPATH=~/go` tooadd Hola ir directorio como hello GOPATH para la sesión actual de shell de Hola.
+6. Instalar hello [go--controlador sql para mysql](https://github.com/go-sql-driver/mysql#installation) ejecutando hello `go get github.com/go-sql-driver/mysql` comando.
 
    En resumen, ejecute estos comandos de Bash:
    ```bash
@@ -62,12 +62,12 @@ Instale [Go](https://golang.org/doc/install) y [go-sql-driver for MySQL](https:/
    ```
 
 ### <a name="apple-macos"></a>MacOS de Apple
-1. Descargue e instale Go de acuerdo con las [instrucciones de instalación](https://golang.org/doc/install) que coincidan con su plataforma. 
-2. Inicie el shell de Bash. 
+1. Descargue e instale vayan según toohello [las instrucciones de instalación](https://golang.org/doc/install) coincidencia de la plataforma. 
+2. Inicie el shell de Bash Hola. 
 3. Cree una carpeta para el proyecto en su directorio principal, como `mkdir -p ~/go/src/mysqlgo/`.
-4. Cambie el directorio a la carpeta, por ejemplo, `cd ~/go/src/mysqlgo/`.
-5. Establezca la variable de entorno GOPATH para que apunte a un directorio de origen válido, como la carpeta go del directorio principal actual. En el shell de Bash, ejecute `export GOPATH=~/go` para agregar el directorio go como GOPATH para la sesión de shell actual.
-6. Instale [go-sql-driver for mysql](https://github.com/go-sql-driver/mysql#installation) mediante la ejecución del comando `go get github.com/go-sql-driver/mysql`.
+4. Cambie el directorio a la carpeta hello, como `cd ~/go/src/mysqlgo/`.
+5. Conjunto hello GOPATH entorno toopoint variable tooa directorio de origen válido, como el principal actual del directorio vaya carpeta. En el shell de bash hello, ejecute `export GOPATH=~/go` tooadd Hola ir directorio como hello GOPATH para la sesión actual de shell de Hola.
+6. Instalar hello [go--controlador sql para mysql](https://github.com/go-sql-driver/mysql#installation) ejecutando hello `go get github.com/go-sql-driver/mysql` comando.
 
    En resumen, instale Go y después ejecute estos comandos de Bash:
    ```bash
@@ -78,32 +78,32 @@ Instale [Go](https://golang.org/doc/install) y [go-sql-driver for MySQL](https:/
    ```
 
 ## <a name="get-connection-information"></a>Obtención de información sobre la conexión
-Obtenga la información de conexión necesaria para conectarse a Azure Database for MySQL. Necesitará el nombre completo del servidor y las credenciales de inicio de sesión.
+Obtener Hola conexión información necesaria tooconnect toohello base de datos MySQL. Es necesario Hola credenciales de inicio de sesión y nombre de servidor completo.
 
-1. Inicie sesión en [Azure Portal](https://portal.azure.com/).
-2. En el menú izquierdo de Azure Portal, haga clic en **Todos los recursos** y busque el servidor que ha creado, por ejemplo, **myserver4demo**.
-3. Haga clic en el nombre del servidor **myserver4demo**.
-4. Seleccione la página **Propiedades** del servidor. Tome nota del **Nombre del servidor** y del **Server admin login name** (Nombre de inicio de sesión del administrador del servidor).
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com/).
+2. En el menú de la izquierda de hello en el portal de Azure, haga clic en **todos los recursos** y busque servidor hello plegado, como **myserver4demo**.
+3. Haga clic en el nombre del servidor de hello **myserver4demo**.
+4. Servidor de hello seleccione **propiedades** página. Tome nota de hello **nombre del servidor** y **nombre de inicio de sesión del Administrador de servidor**.
  ![Azure Database for MySQL: inicio de sesión del Administrador del servidor](./media/connect-go/1_server-properties-name-login.png)
-5. Si olvida la información de inicio de sesión del servidor, navegue hasta la página **Información general** para ver el nombre de inicio de sesión del administrador del servidor y, si es necesario, restablecer la contraseña.
+5. Si olvida su información de inicio de sesión de servidor, vaya a toohello **información general sobre** página Nombre de inicio de sesión de administrador del servidor de tooview hello y, si es necesario, restablecer la contraseña de Hola.
    
 
 ## <a name="build-and-run-go-code"></a>Compilación y ejecución del código de Go 
-1. Para escribir código Golang, utilice un editor de texto simple, como el Bloc de notas en Microsoft Windows, [vi](http://manpages.ubuntu.com/manpages/xenial/man1/nvi.1.html#contenttoc5) o [Nano](https://www.nano-editor.org/) en Ubuntu, o TextEdit en macOS. Si prefiere un entorno de desarrollo integrado (IDE) más rico, pruebe [Gogland](https://www.jetbrains.com/go/) de Jetbrains, [Visual Studio Code](https://code.visualstudio.com/) de Microsoft o [Atom](https://atom.io/).
-2. Pegue el código de Go de las secciones siguientes en archivos de texto y guárdelos en la carpeta del proyecto con la extensión de archivo \*.go, como la ruta de acceso de Windows `%USERPROFILE%\go\src\mysqlgo\createtable.go` o la ruta de acceso de Linux `~/go/src/mysqlgo/createtable.go`.
-3. Busque las constantes `HOST`, `DATABASE`, `USER` y `PASSWORD` en el código y reemplace los valores de ejemplo con sus propios valores. 
-4. Inicie el símbolo del sistema o el shell de Bash. Cambie el directorio a la carpeta de proyecto. Por ejemplo, en Windows `cd %USERPROFILE%\go\src\mysqlgo\`. En Linux `cd ~/go/src/mysqlgo/`.  Algunos de los editores de IDE mencionados ofrecen funcionalidades de depuración y de tiempo de ejecución sin necesidad de comandos de shell.
-5. Ejecute el código escribiendo el comando `go run createtable.go` para compilar la aplicación y ejecútela. 
-6. Además, para compilar el código en una aplicación nativa, `go build createtable.go`, inicie `createtable.exe` para ejecutar la aplicación.
+1. toowrite Golang código, puede utilizar un editor de texto simple, como el Bloc de notas en Microsoft Windows, [vi](http://manpages.ubuntu.com/manpages/xenial/man1/nvi.1.html#contenttoc5) o [Nano](https://www.nano-editor.org/) en Ubuntu o TextEdit en macOS. Si prefiere un entorno de desarrollo integrado (IDE) más rico, pruebe [Gogland](https://www.jetbrains.com/go/) de Jetbrains, [Visual Studio Code](https://code.visualstudio.com/) de Microsoft o [Atom](https://atom.io/).
+2. Pegue Hola código Go de secciones de hello debajo de en archivos de texto y guarde en la carpeta del proyecto con la extensión de archivo \*.Vaya, por ejemplo, la ruta de acceso de Windows `%USERPROFILE%\go\src\mysqlgo\createtable.go` o ruta de acceso de Linux `~/go/src/mysqlgo/createtable.go`.
+3. Busque hello `HOST`, `DATABASE`, `USER`, y `PASSWORD` constantes en el código de hello y reemplazar los valores de ejemplo de Hola con sus propios valores. 
+4. Inicie el símbolo del sistema de Hola o el shell de bash. Cambie el directorio a la carpeta de proyecto. Por ejemplo, en Windows `cd %USERPROFILE%\go\src\mysqlgo\`. En Linux `cd ~/go/src/mysqlgo/`.  Algunos editores de IDE Hola mencionados ofrecen capacidades de depuración y en tiempo de ejecución sin necesidad de los comandos de shell.
+5. Ejecutar código de hello escribiendo el comando hello `go run createtable.go` toocompile Hola aplicación y ejecútela. 
+6. O bien, toobuild código de hello en una aplicación nativa, `go build createtable.go`, a continuación, inicie `createtable.exe` aplicación de hello toorun.
 
 ## <a name="connect-create-table-and-insert-data"></a>Conexión, creación de una tabla e inserción de datos
-Use el código siguiente para conectarse al servidor, crear una tabla y cargar los datos mediante una instrucción SQL **INSERT**. 
+Siguiente Hola de uso codificar tooconnect toohello server, cree una tabla y cargar datos de hello mediante un **insertar** instrucción SQL. 
 
-El código importa tres paquetes: el [paquete sql](https://golang.org/pkg/database/sql/), el [paquete go sql driver for mysql](https://github.com/go-sql-driver/mysql#installation) como controlador para la comunicación con Azure Database for MySQL y el [paquete fmt](https://golang.org/pkg/fmt/) para la entrada y salida impresas en la línea de comandos.
+código de Hello importa tres paquetes: Hola [paquete sql](https://golang.org/pkg/database/sql/), hello [controlador de sql vaya para mysql](https://github.com/go-sql-driver/mysql#installation) como un toocommunicate de controlador con base de datos de Azure para MySQL Hola y Hola [fmt paquete](https://golang.org/pkg/fmt/)para impreso entrada y salida en la línea de comandos de Hola.
 
-El código llama al método [sql.Open()](http://go-database-sql.org/accessing.html) para conectarse a Azure Database for MySQL y comprueba la conexión mediante el método [db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping). Durante todo el proceso se usa un [identificador de base de datos](https://golang.org/pkg/database/sql/#DB), que contiene el grupo de conexiones del servidor de base de datos. El código llama al método [Exec()](https://golang.org/pkg/database/sql/#DB.Exec) varias veces para ejecutar varios comandos DDL. El código también usa los métodos [Prepare()](http://go-database-sql.org/prepared.html) y Exec() para ejecutar instrucciones preparadas con diferentes parámetros para insertar tres filas. En cada una de las veces se usa un método checkError() personalizado para comprobar si se ha producido un error y, en caso afirmativo, avisa para salir.
+método llama a código de Hello [sql. Open()](http://go-database-sql.org/accessing.html) tooconnect tooAzure base de datos MySQL y comprobaciones de hello conexión mediante el método [base de datos. Ping()](https://golang.org/pkg/database/sql/#DB.Ping). A [identificador de base de datos](https://golang.org/pkg/database/sql/#DB) se utiliza en su totalidad, que contiene el grupo de conexiones de hello para el servidor de base de datos de Hola. Hola de llamadas de código de Hello [Exec()](https://golang.org/pkg/database/sql/#DB.Exec) método varias veces toorun varios comandos DDL. código de Hello también usa hello [Prepare()](http://go-database-sql.org/prepared.html) y Exec() toorun preparado instrucciones con parámetros diferentes tooinsert tres filas. Cada vez que un método checkError() personalizado es toocheck usado si se produjo un error y pánico tooexit.
 
-Reemplace las constantes `host`, `database`, `user` y `password` por sus propios valores. 
+Reemplace hello `host`, `database`, `user`, y `password` constantes con sus propios valores. 
 
 ```Go
 package main
@@ -140,7 +140,7 @@ func main() {
 
     err = db.Ping()
     checkError(err)
-    fmt.Println("Successfully created connection to database.")
+    fmt.Println("Successfully created connection toodatabase.")
 
     // Drop previous table of same name if one exists.
     _, err = db.Exec("DROP TABLE IF EXISTS inventory;")
@@ -174,13 +174,13 @@ func main() {
 ```
 
 ## <a name="read-data"></a>Lectura de datos
-Use el código siguiente para conectarse y leer los datos mediante la instrucción SQL **SELECT**. 
+Código tooconnect siguiente de Hola de uso y leer datos de hello mediante un **seleccione** instrucción SQL. 
 
-El código importa tres paquetes: el [paquete sql](https://golang.org/pkg/database/sql/), el [paquete go sql driver for mysql](https://github.com/go-sql-driver/mysql#installation) como controlador para la comunicación con Azure Database for MySQL y el [paquete fmt](https://golang.org/pkg/fmt/) para la entrada y salida impresas en la línea de comandos.
+código de Hello importa tres paquetes: Hola [paquete sql](https://golang.org/pkg/database/sql/), hello [controlador de sql vaya para mysql](https://github.com/go-sql-driver/mysql#installation) como un toocommunicate de controlador con base de datos de Azure para MySQL Hola y Hola [fmt paquete](https://golang.org/pkg/fmt/)para impreso entrada y salida en la línea de comandos de Hola.
 
-El código llama al método [sql.Open()](http://go-database-sql.org/accessing.html) para conectarse a Azure Database for MySQL y comprueba la conexión mediante el método [db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping). Durante todo el proceso se usa un [identificador de base de datos](https://golang.org/pkg/database/sql/#DB), que contiene el grupo de conexiones del servidor de base de datos. El código llama al método [Query()](https://golang.org/pkg/database/sql/#DB.Query) para ejecutar el comando select. A continuación, ejecuta [Next()](https://golang.org/pkg/database/sql/#Rows.Next) para recorrer en iteración el conjunto de resultados y [Scan()](https://golang.org/pkg/database/sql/#Rows.Scan) para analizar los valores de columna y guardar el valor en variables. En cada una de las veces se usa un método checkError() personalizado para comprobar si se ha producido un error y, en caso afirmativo, avisa para salir.
+método llama a código de Hello [sql. Open()](http://go-database-sql.org/accessing.html) tooconnect tooAzure base de datos MySQL y comprobaciones de hello conexión mediante el método [base de datos. Ping()](https://golang.org/pkg/database/sql/#DB.Ping). A [identificador de base de datos](https://golang.org/pkg/database/sql/#DB) se utiliza en su totalidad, que contiene el grupo de conexiones de hello para el servidor de base de datos de Hola. Hola de llamadas de código de Hello [Query()](https://golang.org/pkg/database/sql/#DB.Query) comando select de método toorun Hola. A continuación, ejecuta [Next()](https://golang.org/pkg/database/sql/#Rows.Next) tooiterate a través del conjunto de resultados de Hola y [Scan()](https://golang.org/pkg/database/sql/#Rows.Scan) tooparse Hola valores de las columnas, guardar el valor de hello en variables. Cada vez que un método checkError() personalizado es toocheck usado si se produjo un error y pánico tooexit.
 
-Reemplace las constantes `host`, `database`, `user` y `password` por sus propios valores. 
+Reemplace hello `host`, `database`, `user`, y `password` constantes con sus propios valores. 
 
 ```Go
 package main
@@ -217,7 +217,7 @@ func main() {
 
     err = db.Ping()
     checkError(err)
-    fmt.Println("Successfully created connection to database.")
+    fmt.Println("Successfully created connection toodatabase.")
 
     // Variables for printing column data when scanned.
     var (
@@ -226,7 +226,7 @@ func main() {
         quantity int
     )
 
-    // Read some data from the table.
+    // Read some data from hello table.
     rows, err := db.Query("SELECT id, name, quantity from inventory;")
     checkError(err)
     defer rows.Close()
@@ -243,13 +243,13 @@ func main() {
 ```
 
 ## <a name="update-data"></a>Actualización de datos
-Use el código siguiente para conectarse y actualizar los datos mediante la instrucción SQL **UPDATE**. 
+Código tooconnect siguiente de Hola de uso y actualizar Hola datos mediante un **actualizar** instrucción SQL. 
 
-El código importa tres paquetes: el [paquete sql](https://golang.org/pkg/database/sql/), el [paquete go sql driver for mysql](https://github.com/go-sql-driver/mysql#installation) como controlador para la comunicación con Azure Database for MySQL y el [paquete fmt](https://golang.org/pkg/fmt/) para la entrada y salida impresas en la línea de comandos.
+código de Hello importa tres paquetes: Hola [paquete sql](https://golang.org/pkg/database/sql/), hello [controlador de sql vaya para mysql](https://github.com/go-sql-driver/mysql#installation) como un toocommunicate de controlador con base de datos de Azure para MySQL Hola y Hola [fmt paquete](https://golang.org/pkg/fmt/)para impreso entrada y salida en la línea de comandos de Hola.
 
-El código llama al método [sql.Open()](http://go-database-sql.org/accessing.html) para conectarse a Azure Database for MySQL y comprueba la conexión mediante el método [db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping). Durante todo el proceso se usa un [identificador de base de datos](https://golang.org/pkg/database/sql/#DB), que contiene el grupo de conexiones del servidor de base de datos. El código llama al método [Exec()](https://golang.org/pkg/database/sql/#DB.Exec) para ejecutar el comando update. En cada una de las veces se usa un método checkError() personalizado para comprobar si se ha producido un error y, en caso afirmativo, avisa para salir.
+método llama a código de Hello [sql. Open()](http://go-database-sql.org/accessing.html) tooconnect tooAzure base de datos MySQL y comprobaciones de hello conexión mediante el método [base de datos. Ping()](https://golang.org/pkg/database/sql/#DB.Ping). A [identificador de base de datos](https://golang.org/pkg/database/sql/#DB) se utiliza en su totalidad, que contiene el grupo de conexiones de hello para el servidor de base de datos de Hola. Hola de llamadas de código de Hello [Exec()](https://golang.org/pkg/database/sql/#DB.Exec) comando de actualización de método toorun Hola. Cada vez que un método checkError() personalizado es toocheck usado si se produjo un error y pánico tooexit.
 
-Reemplace las constantes `host`, `database`, `user` y `password` por sus propios valores. 
+Reemplace hello `host`, `database`, `user`, y `password` constantes con sus propios valores. 
 
 ```Go
 package main
@@ -286,7 +286,7 @@ func main() {
 
     err = db.Ping()
     checkError(err)
-    fmt.Println("Successfully created connection to database.")
+    fmt.Println("Successfully created connection toodatabase.")
 
     // Modify some data in table.
     rows, err := db.Exec("UPDATE inventory SET quantity = ? WHERE name = ?", 200, "banana")
@@ -298,13 +298,13 @@ func main() {
 ```
 
 ## <a name="delete-data"></a>Eliminación de datos
-Use el código siguiente para conectarse y eliminar datos mediante la instrucción SQL **DELETE**. 
+Código tooconnect siguiente de Hola de uso y eliminar los datos mediante un **eliminar** instrucción SQL. 
 
-El código importa tres paquetes: el [paquete sql](https://golang.org/pkg/database/sql/), el [paquete go sql driver for mysql](https://github.com/go-sql-driver/mysql#installation) como controlador para la comunicación con Azure Database for MySQL y el [paquete fmt](https://golang.org/pkg/fmt/) para la entrada y salida impresas en la línea de comandos.
+código de Hello importa tres paquetes: Hola [paquete sql](https://golang.org/pkg/database/sql/), hello [controlador de sql vaya para mysql](https://github.com/go-sql-driver/mysql#installation) como un toocommunicate de controlador con base de datos de Azure para MySQL Hola y Hola [fmt paquete](https://golang.org/pkg/fmt/)para impreso entrada y salida en la línea de comandos de Hola.
 
-El código llama al método [sql.Open()](http://go-database-sql.org/accessing.html) para conectarse a Azure Database for MySQL y comprueba la conexión mediante el método [db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping). Durante todo el proceso se usa un [identificador de base de datos](https://golang.org/pkg/database/sql/#DB), que contiene el grupo de conexiones del servidor de base de datos. El código llama al método [Exec()](https://golang.org/pkg/database/sql/#DB.Exec) para ejecutar el comando delete. En cada una de las veces se usa un método checkError() personalizado para comprobar si se ha producido un error y, en caso afirmativo, avisa para salir.
+método llama a código de Hello [sql. Open()](http://go-database-sql.org/accessing.html) tooconnect tooAzure base de datos MySQL y comprobaciones de hello conexión mediante el método [base de datos. Ping()](https://golang.org/pkg/database/sql/#DB.Ping). A [identificador de base de datos](https://golang.org/pkg/database/sql/#DB) se utiliza en su totalidad, que contiene el grupo de conexiones de hello para el servidor de base de datos de Hola. Hola de llamadas de código de Hello [Exec()](https://golang.org/pkg/database/sql/#DB.Exec) Hola de método toorun comando delete. Cada vez que un método checkError() personalizado es toocheck usado si se produjo un error y pánico tooexit.
 
-Reemplace las constantes `host`, `database`, `user` y `password` por sus propios valores. 
+Reemplace hello `host`, `database`, `user`, y `password` constantes con sus propios valores. 
 
 ```Go
 package main
@@ -340,7 +340,7 @@ func main() {
 
     err = db.Ping()
     checkError(err)
-    fmt.Println("Successfully created connection to database.")
+    fmt.Println("Successfully created connection toodatabase.")
 
     // Modify some data in table.
     rows, err := db.Exec("DELETE FROM inventory WHERE name = ?", "orange")

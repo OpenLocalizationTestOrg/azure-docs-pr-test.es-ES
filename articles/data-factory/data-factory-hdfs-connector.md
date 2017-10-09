@@ -1,6 +1,6 @@
 ---
-title: Traslado de los datos de HDFS local | Microsoft Docs
-description: "Obtenga información acerca de cómo mover datos desde HDFS local mediante Factoría de datos de Azure"
+title: datos de aaaMove de HDFS local | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toomove datos desde local HDFS mediante Data Factory de Azure."
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -14,57 +14,57 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: jingwang
-ms.openlocfilehash: 9a8f3156a62a1a7aa49377349e8a85454efeda50
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 96387e5dd089099fc2e983ab26d67c2044b973b0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="move-data-from-on-premises-hdfs-using-azure-data-factory"></a>Movimiento de datos desde HDFS local mediante Azure Data Factory
-En este artículo se explica el uso de la actividad de copia en Azure Data Factory para mover datos de HDFS local. Se basa en la información general que ofrece el artículo [Movimiento de datos con la actividad de copia](data-factory-data-movement-activities.md).
+Este artículo explica cómo toouse Hola actividad de copia de datos de toomove Data Factory de Azure desde un HDFS local. Se basa en hello [las actividades de movimiento de datos](data-factory-data-movement-activities.md) artículo, que presenta una descripción general de movimiento de datos con la actividad de copia de Hola.
 
-Puede copiar datos de HDFS en cualquier almacén de datos de receptor admitido. Para ver una lista de almacenes de datos admitidos como receptores por la actividad de copia, consulte la tabla de [almacenes de datos compatibles](data-factory-data-movement-activities.md#supported-data-stores-and-formats). En la actualidad, Factoría de datos solo admite el movimiento de datos desde HDFS local a otros almacenes de datos, pero no el movimiento inverso.
+Puede copiar datos de almacén de datos de receptor HDFS tooany compatible. Para obtener una lista de datos admite los almacenes como receptores de actividad de copia de hello, vea hello [admite almacenes de datos](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabla. Factoría de datos admite actualmente solo mover datos desde un almacenes de datos de tooother HDFS local, pero no para mover los datos de otros datos tooan almacenes locales HDFS.
 
 > [!NOTE]
-> La actividad de copia no elimina el archivo de origen una vez copiado correctamente en el destino. Si necesita eliminar el archivo de origen tras una copia correcta, cree una actividad personalizada para tal fin y úsela en la canalización. 
+> Actividad de copia no elimina archivos de origen de Hola cuando este destino toohello copió correctamente. Si necesita toodelete archivo de código fuente de hello después de una copia correcta, cree un archivo de actividad personalizada toodelete hello y usar actividad hello en la canalización de Hola. 
 
 ## <a name="enabling-connectivity"></a>Habilitación de la conectividad
-El servicio Factoría de datos admite la conexión a HDFS local mediante Data Management Gateway. Consulte el artículo sobre cómo [mover datos entre ubicaciones locales y la nube](data-factory-move-data-between-onprem-and-cloud.md) para obtener información acerca de Data Management Gateway, así como instrucciones paso a paso sobre cómo configurar la puerta de enlace. Use la puerta de enlace para conectar con HDFS, aunque esté hospedado en una máquina virtual de IaaS de Azure.
+Servicio de factoría de datos admite la conexión HDFS local tooon con hello Data Management Gateway. Vea [mover datos entre ubicaciones locales y en la nube](data-factory-move-data-between-onprem-and-cloud.md) toolearn artículo acerca de la puerta de enlace de datos de administración y las instrucciones paso a paso sobre cómo configurar la puerta de enlace de Hola. Utilice Hola puerta de enlace tooconnect tooHDFS incluso si está hospedado en una máquina virtual de IaaS de Azure.
 
 > [!NOTE]
-> Asegúrese de que Data Management Gateway puede obtener acceso a **TODOS** los [servidor de nodo de nombres]:[puerto de nodo de nombres] y [servidores de nodos de datos]:[puerto de nodo de datos] del clúster de Hadoop. El [puerto de nodo de nombres] predeterminado es 50070 y el [puerto de nodo de datos] es 50075.
+> Asegúrese de Hola que puede tener acceso Data Management Gateway demasiado**todos los** Hola [servidor de nombres de nodo]: [nombre de puerto de nodo] y [servidores de nodos de datos]: [puerto de nodo de datos] de clúster de Hadoop de Hola. El [puerto de nodo de nombres] predeterminado es 50070 y el [puerto de nodo de datos] es 50075.
 
-Aunque puede instalar la puerta de enlace en el mismo equipo local o en la máquina virtual de Azure como HDFS, se recomienda que instale la puerta de enlace en un equipo independiente o una máquina virtual de IaaS de Azure. Al tener la puerta de enlace en un equipo independiente, se reduce la contención de recursos y se mejora el rendimiento. Al instalar la puerta de enlace en una máquina independiente, la máquina debería poder acceder a la máquina con HDFS.
+Durante la instalación de puerta de enlace en hello mismo locales máquina o hello Azure VM Hola HDFS, se recomienda que instale la puerta de enlace de hello en un equipo independiente/Azure VM de IaaS. Al tener la puerta de enlace en un equipo independiente, se reduce la contención de recursos y se mejora el rendimiento. Cuando se instala la puerta de enlace de hello en un equipo independiente, máquina Hola debe ser capaz de tooaccess máquina de hello con hello HDFS.
 
 ## <a name="getting-started"></a>Introducción
 Puede crear una canalización con actividad de copia que mueva los datos desde un origen de HDFS mediante el uso de diferentes herramientas o API.
 
-La manera más fácil de crear una canalización es usar el **Asistente para copia**. Consulte [Tutorial: crear una canalización con la actividad de copia mediante el Asistente para copia de Data Factory](data-factory-copy-data-wizard-tutorial.md) para ver un tutorial rápido sobre la creación de una canalización mediante el Asistente para copiar datos.
+toocreate de manera más fácil de Hello una canalización es hello de toouse **Asistente para copiar**. Vea [Tutorial: crear una canalización mediante el Asistente para copiar](data-factory-copy-data-wizard-tutorial.md) para ver un tutorial sobre cómo crear una canalización mediante el Asistente para datos de copia de hello rápido.
 
-También puede usar las herramientas siguientes para crear una canalización: **Azure Portal**, **Visual Studio**, **Azure PowerShell**, **plantilla de Azure Resource Manager**, **API de .NET** y **API de REST**. Consulte el [tutorial de actividad de copia](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) para obtener instrucciones paso a paso sobre cómo crear una canalización con una actividad de copia.
+También puede usar Hola después herramientas toocreate una canalización: **portal de Azure**, **Visual Studio**, **Azure PowerShell**, **plantilla del Administrador de recursos de Azure** , **API de .NET**, y **API de REST**. Vea [tutorial de la actividad de copia](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) para obtener instrucciones paso a paso toocreate una canalización con una actividad de copia.
 
-Tanto si usa las herramientas como las API, realice los pasos siguientes para crear una canalización que mueva datos de un almacén de datos de origen a un almacén de datos receptor:
+Si usa herramientas de Hola o las API, realizar Hola siguiendo los pasos toocreate una canalización que mueve el almacén de datos del receptor de tooa del almacén de datos desde un origen de datos:
 
-1. Cree **servicios vinculados** para vincular almacenes de datos de entrada y salida a la factoría de datos.
-2. Cree **conjuntos de datos** con el fin de representar los datos de entrada y salida para la operación de copia.
+1. Crear **servicios vinculados** factoría de datos de tooyour de almacenes de datos de entrada y salida de toolink.
+2. Crear **conjuntos de datos** toorepresent de entrada y salida la operación de copia de datos de Hola.
 3. Cree una **canalización** con una actividad de copia que tome como entrada un conjunto de datos y un conjunto de datos como salida.
 
-Cuando se usa el Asistente, se crean automáticamente definiciones de JSON para estas entidades de Data Factory (servicios vinculados, conjuntos de datos y la canalización). Al usar herramientas o API (excepto la API de .NET), se definen estas entidades de Data Factory con el formato JSON.  Para obtener un ejemplo con definiciones de JSON para entidades de Data Factory que se utilizan para copiar los datos de un almacén de datos de HDFS, consulte la sección [Ejemplo de JSON: Copiar datos de HDFS local a un blob de Azure](#json-example-copy-data-from-on-premises-hdfs-to-azure-blob) de este artículo.
+Cuando se utiliza el Asistente de hello, las definiciones de JSON para estas entidades de la factoría de datos (servicios vinculados, conjuntos de datos y canalización Hola) se crean automáticamente para usted. Al usar herramientas y API (excepto la API. NET), se definen estas entidades de la factoría de datos con formato JSON de Hola.  Para obtener un ejemplo con definiciones de JSON para entidades de la factoría de datos que son datos de uso toocopy desde un almacén de datos HDFS, consulte [ejemplo de JSON: copiar los datos de tooAzure HDFS local Blob](#json-example-copy-data-from-on-premises-hdfs-to-azure-blob) sección de este artículo.
 
-En las secciones siguientes se proporcionan detalles sobre las propiedades JSON que se usan para definir entidades de Data Factory específicas de HDFS:
+Hola las secciones siguientes proporciona detalles acerca de las propiedades JSON que son entidades de factoría de datos usado toodefine tooHDFS específico:
 
 ## <a name="linked-service-properties"></a>Propiedades del servicio vinculado
-Un servicio vinculado vincula un almacén de datos a una factoría de datos. Se crea un servicio vinculado de tipo **Hdfs** para vincular HDFS local a la factoría de datos. En la tabla siguiente se proporciona la descripción de los elementos JSON específicos del servicio vinculado de HDFS.
+Un servicio vinculado vincula una factoría de datos de tooa de almacén de datos. Crear un servicio vinculado de tipo **Hdfs** toolink una factoría de datos de tooyour HDFS local. Hello en la tabla siguiente proporciona la descripción del servicio JSON elementos específicos tooHDFS vinculado.
 
 | Propiedad | Descripción | Obligatorio |
 | --- | --- | --- |
-| type |La propiedad type debe establecerse en: **Hdfs** |Sí |
-| URL |Dirección URL a HDFS |Sí |
-| authenticationType |Anónima o Windows. <br><br> Para usar la **autenticación Kerberos** para el conector HDFS, consulte [esta sección](#use-kerberos-authentication-for-hdfs-connector) a fin de configurar el entorno local en consecuencia. |Sí |
+| type |propiedad de tipo Hello debe establecerse en: **Hdfs** |Sí |
+| URL |Dirección URL toohello HDFS |Sí |
+| authenticationType |Anónima o Windows. <br><br> toouse **la autenticación Kerberos** para conector HDFS, consulte demasiado[en esta sección](#use-kerberos-authentication-for-hdfs-connector) tooset del entorno local en consecuencia. |Sí |
 | userName |Nombre de usuario para la autenticación de Windows |Sí (para la autenticación de Windows) |
 | contraseña |Contraseña para la autenticación de Windows |Sí (para la autenticación de Windows) |
-| gatewayName |Nombre de la puerta de enlace que el servicio Factoría de datos debe usar para conectarse a HDFS. |Sí |
-| encryptedCredential |[New-AzureRMDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) de la credencial de acceso. |No |
+| gatewayName |Nombre de puerta de enlace de Hola Hola servicio Data Factory debe usar tooconnect toohello HDFS. |Sí |
+| encryptedCredential |[Nueva AzureRMDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) salida de credenciales de acceso de Hola. |No |
 
 ### <a name="using-anonymous-authentication"></a>Uso de autenticación anónima
 
@@ -105,25 +105,25 @@ Un servicio vinculado vincula un almacén de datos a una factoría de datos. Se 
 }
 ```
 ## <a name="dataset-properties"></a>Propiedades del conjunto de datos
-Para una lista completa de las secciones y propiedades disponibles para definir conjuntos de datos, vea el artículo [Creación de conjuntos de datos](data-factory-create-datasets.md). Las secciones como structure, availability y policy del código JSON del conjunto de datos son similares para todos los tipos de conjunto de datos (SQL Azure, blob de Azure, tabla de Azure, etc.).
+Para obtener una lista completa de secciones y propiedades disponibles para definir conjuntos de datos, vea hello [crear conjuntos de datos](data-factory-create-datasets.md) artículo. Las secciones como structure, availability y policy del código JSON del conjunto de datos son similares para todos los tipos de conjunto de datos (SQL Azure, blob de Azure, tabla de Azure, etc.).
 
-La sección **typeProperties** es diferente en cada tipo de conjunto de datos y proporciona información acerca de la ubicación de los datos en el almacén de datos. La sección typeProperties del conjunto de datos del tipo **FileShare** (que incluye el conjunto de datos de HDFS) tiene las propiedades siguientes:
+Hola **typeProperties** sección es diferente para cada tipo de conjunto de datos y proporciona información acerca de la ubicación de Hola de hello datos Hola almacén de datos. sección typeProperties Hello para el conjunto de datos de tipo **FileShare** (que incluye el conjunto de datos HDFS) tiene Hola propiedades siguientes
 
 | Propiedad | Descripción | Obligatorio |
 | --- | --- | --- |
-| folderPath |Ruta de acceso a la carpeta. Ejemplo: `myfolder`<br/><br/>Use el carácter de escape "\" para los caracteres especiales de la cadena. Por ejemplo: para folder\subfolder, especifique la carpeta\\\\subcarpeta y para d:\samplefolder, especifique d:\\\\samplefolder.<br/><br/>Puede combinar esta propiedad con **partitionBy** para que las rutas de acceso de carpeta se basen en las fechas y horas de inicio y finalización del segmento. |Sí |
-| fileName |Especifique el nombre del archivo en **folderPath** si quiere que la tabla haga referencia a un archivo específico de la carpeta. Si no especifica ningún valor para esta propiedad, la tabla apunta a todos los archivos de la carpeta.<br/><br/>Si no se especifica fileName para un conjunto de datos de salida, el nombre del archivo generado estaría en el siguiente formato: <br/><br/>Data<Guid>.txt (por ejemplo: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |No |
-| partitionedBy |partitionedBy se puede usar para especificar un valor de folderPath dinámico, un nombre de archivo para datos de series temporales. Por ejemplo, folderPath se parametriza para cada hora de datos. |No |
-| formato | Se admiten los siguientes tipos de formato: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat** y **ParquetFormat**. Establezca la propiedad **type** de formato en uno de los siguientes valores. Para más información, consulte las secciones [Formato de texto](data-factory-supported-file-and-compression-formats.md#text-format), [Formato Json](data-factory-supported-file-and-compression-formats.md#json-format), [Formato Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [Formato Orc](data-factory-supported-file-and-compression-formats.md#orc-format) y [Formato Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format). <br><br> Si desea **copiar los archivos tal cual** entre los almacenes basados en archivos (copia binaria), omita la sección de formato en las definiciones de los conjuntos de datos de entrada y salida. |No |
-| compresión | Especifique el tipo y el nivel de compresión de los datos. Los tipos admitidos son **GZip**, **Deflate**, **BZip2** y **ZipDeflate**. Los niveles admitidos son **Optimal** y **Fastest**. Para más información, consulte el artículo sobre [formatos de compresión de archivos en Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |No |
+| folderPath |Carpeta de toohello de ruta de acceso. Ejemplo: `myfolder`<br/><br/>Utilice el carácter de escape ' \ ' para los caracteres especiales en la cadena de Hola. Por ejemplo: para folder\subfolder, especifique la carpeta\\\\subcarpeta y para d:\samplefolder, especifique d:\\\\samplefolder.<br/><br/>Puede combinar esta propiedad con **partitionBy** toohave de rutas de acceso de carpeta según fechas y horas de inicio y fin. |Sí |
+| fileName |Especifique el nombre de hello del archivo hello en hello **folderPath** si desea Hola tabla toorefer tooa archivo específico en la carpeta de Hola. Si no especifica ningún valor para esta propiedad, tabla de hello señala tooall archivos en la carpeta de Hola.<br/><br/>Cuando no se especifica el nombre de archivo para un conjunto de datos de salida, nombre de hello del archivo hello genera sería Hola siguiendo este formato: <br/><br/>Data<Guid>.txt (por ejemplo: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |No |
+| partitionedBy |partitionedBy puede ser usado toospecify un folderPath dinámico, nombre de archivo de datos de series temporales. Por ejemplo, folderPath se parametriza para cada hora de datos. |No |
+| formato | se admite los siguientes tipos de formato de Hello: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**,  **ParquetFormat**. Conjunto hello **tipo** propiedad en formato tooone de estos valores. Para más información, consulte las secciones [Formato de texto](data-factory-supported-file-and-compression-formats.md#text-format), [Formato Json](data-factory-supported-file-and-compression-formats.md#json-format), [Formato Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [Formato Orc](data-factory-supported-file-and-compression-formats.md#orc-format) y [Formato Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format). <br><br> Si desea demasiado**copiar archivos como-es** entre los almacenes basados en archivos (copia binaria), omita la sección de formato de hello en ambas definiciones de conjunto de datos de entrada y salida. |No |
+| compresión | Especificar tipo de Hola y el nivel de compresión para datos de Hola. Los tipos admitidos son **GZip**, **Deflate**, **BZip2** y **ZipDeflate**. Los niveles admitidos son **Optimal** y **Fastest**. Para más información, consulte el artículo sobre [formatos de compresión de archivos en Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |No |
 
 > [!NOTE]
 > filename y fileFilter no pueden usarse simultáneamente.
 
 ### <a name="using-partionedby-property"></a>Uso de la propiedad partitionedBy
-Como ya se ha indicado en la sección anterior, se puede especificar un valor dinámico de folderPath y filename para datos de series temporales con la propiedad **partitionedBy**, [funciones de Data Factory y las variables del sistema](data-factory-functions-variables.md).
+Como se mencionó en la sección anterior de hello, puede especificar un folderPath dinámica y el nombre de archivo de datos de serie temporal con hello **partitionedBy** propiedad, [funciones de factoría de datos y las variables del sistema hello](data-factory-functions-variables.md).
 
-Para aprender más sobre los conjuntos de datos de series temporales [Creación de conjuntos de datos](data-factory-create-datasets.md), [Programación y ejecución](data-factory-scheduling-and-execution.md) y [Creación de canalizaciones](data-factory-create-pipelines.md) para conocer más detalles sobre los conjuntos de datos de series temporales, la programación y los segmentos.
+toolearn más información acerca de los conjuntos de datos de series de tiempo, la programación y sectores, consulte [crear conjuntos de datos](data-factory-create-datasets.md), [ejecución y programación](data-factory-scheduling-and-execution.md), y [crear canalizaciones](data-factory-create-pipelines.md) artículos.
 
 #### <a name="sample-1"></a>Muestra 1:
 
@@ -134,7 +134,7 @@ Para aprender más sobre los conjuntos de datos de series temporales [Creación 
     { "name": "Slice", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyyMMddHH" } },
 ],
 ```
-En este ejemplo, {Slice} se reemplaza por el valor de la variable del sistema SliceStart de Data Factory en el formato (YYYYMMDDHH) especificado. SliceStart hace referencia a la hora de inicio del segmento. folderPath es diferente para cada segmento. Por ejemplo: wikidatagateway/wikisampledataout/2014100103 o wikidatagateway/wikisampledataout/2014100104.
+En este ejemplo {Slice} se reemplaza con el valor de Hola de variable del sistema SliceStart factoría de datos en formato de hello (AAAAMMDDHH) especificado. Hola SliceStart refiere a tiempo toostart de segmento de Hola. Hola folderPath es diferente para cada segmento. Por ejemplo: wikidatagateway/wikisampledataout/2014100103 o wikidatagateway/wikisampledataout/2014100104.
 
 #### <a name="sample-2"></a>Ejemplo 2:
 
@@ -152,25 +152,25 @@ En este ejemplo, {Slice} se reemplaza por el valor de la variable del sistema Sl
 En este ejemplo, year, month, day y time de SliceStart se extraen en variables independientes que se usan en las propiedades folderPath y fileName.
 
 ## <a name="copy-activity-properties"></a>Propiedades de la actividad de copia
-Para ver una lista completa de las secciones y propiedades disponibles para definir actividades, consulte el artículo [Creación de canalizaciones](data-factory-create-pipelines.md). Las propiedades (como nombre, descripción, tablas de entrada y salida, y directivas) están disponibles para todos los tipos de actividades.
+Para obtener una lista completa de secciones y propiedades disponibles para la definición de actividades, vea hello [crear canalizaciones](data-factory-create-pipelines.md) artículo. Las propiedades (como nombre, descripción, tablas de entrada y salida, y directivas) están disponibles para todos los tipos de actividades.
 
-Por otra parte, las propiedades disponibles en la sección typeProperties de la actividad varían con cada tipo de actividad. Para la actividad de copia, varían en función de los tipos de orígenes y receptores.
+Mientras que las propiedades disponibles en la sección de typeProperties de Hola de actividad hello varían con cada tipo de actividad. Para la actividad de copia, varían en función de los tipos de Hola de orígenes y receptores.
 
-En caso de actividad de copia, si el origen es del tipo **FileSystemSource** , estarán disponibles las propiedades siguientes en la sección typeProperties:
+Para la actividad de copia, cuando el origen es de tipo **FileSystemSource** Hola propiedades siguientes está disponible en la sección typeProperties:
 
-**FileSystemSource** admite las siguientes propiedades:
+**FileSystemSource** admite Hola propiedades siguientes:
 
 | Propiedad | Descripción | Valores permitidos | Obligatorio |
 | --- | --- | --- | --- |
-| recursive |Indica si los datos se leen de forma recursiva de las subcarpetas o solo de la carpeta especificada. |True, False (predeterminada) |No |
+| recursive |Indica si hello es leer los datos de forma recursiva de subcarpetas de Hola o solo de carpeta especificada de Hola. |True, False (predeterminada) |No |
 
 ## <a name="supported-file-and-compression-formats"></a>Formatos de archivo y de compresión admitidos
 Consulte los detalles en [Formatos de compresión y de archivos en Azure Data Factory](data-factory-supported-file-and-compression-formats.md).
 
-## <a name="json-example-copy-data-from-on-premises-hdfs-to-azure-blob"></a>Ejemplo de JSON: Copiar datos de HDFS local a un blob de Azure
-En este ejemplo, se muestra cómo copiar datos de un sistema HDFS local al Almacenamiento de blobs de Azure. Sin embargo, se pueden copiar datos **directamente** a cualquiera de los receptores indicados [aquí](data-factory-data-movement-activities.md#supported-data-stores-and-formats) mediante la actividad de copia en Data Factory de Azure.  
+## <a name="json-example-copy-data-from-on-premises-hdfs-tooazure-blob"></a>Ejemplo de JSON: copiar los datos de tooAzure HDFS local Blob
+Este ejemplo se muestra cómo toocopy datos desde un tooAzure HDFS local almacenamiento de blobs. Sin embargo, se pueden copiar datos **directamente** tooany de receptores de hello indicadas [aquí](data-factory-data-movement-activities.md#supported-data-stores-and-formats) utilizando Hola actividad de copia de factoría de datos de Azure.  
 
-El ejemplo proporciona definiciones de JSON para las siguientes entidades de Data Factory. Puede utilizar estas definiciones para crear una canalización para copiar datos desde HDFS a Azure Blob Storage mediante [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) o [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md).
+ejemplo de Hola proporciona definiciones de JSON para hello siguiendo las entidades de la factoría de datos. Puede usar estos toocreate definiciones una toocopy de datos de canalización de HDFS tooAzure almacenamiento de blobs mediante [portal de Azure](data-factory-copy-activity-tutorial-using-azure-portal.md) o [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) o [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md).
 
 1. Un servicio vinculado del tipo [OnPremisesHdfs](#linked-service-properties).
 2. Un servicio vinculado de tipo [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)
@@ -178,11 +178,11 @@ El ejemplo proporciona definiciones de JSON para las siguientes entidades de Dat
 4. Un [conjunto de datos](data-factory-create-datasets.md) de salida de tipo [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
 5. Una [canalización](data-factory-create-pipelines.md) con la actividad de copia que usa [FileSystemSource](#copy-activity-properties) y [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-El ejemplo copia los datos de un HDFS local a un blob de Azure cada hora. Las propiedades JSON usadas en estos ejemplos se describen en las secciones que aparecen después de los ejemplos.
+ejemplo de Hola copia datos de un tooan HDFS local blobs de Azure cada hora. propiedades JSON de Hello utilizadas en estos ejemplos se describen en los apartados siguientes a los ejemplos de hello.
 
-En primer lugar, configure la puerta de enlace de administración de datos. Las instrucciones se encuentran en el artículo sobre cómo [mover datos entre ubicaciones locales y en la nube](data-factory-move-data-between-onprem-and-cloud.md) .
+Como primer paso, configurar la puerta de enlace de administración de datos de Hola. Hola instrucciones de hello [mover datos entre ubicaciones locales y en la nube](data-factory-move-data-between-onprem-and-cloud.md) artículo.
 
-**Servicio vinculado de HDFS:** En este ejemplo se usa la autenticación de Windows. Consulte la sección [Propiedades del servicio vinculado de HDFS](#linked-service-properties) para conocer los diferentes tipos de autenticación que se pueden usar.
+**Servicio vinculado de HDFS:** en este ejemplo usa Hola autenticación de Windows. Consulte la sección [Propiedades del servicio vinculado de HDFS](#linked-service-properties) para conocer los diferentes tipos de autenticación que se pueden usar.
 
 ```JSON
 {
@@ -216,9 +216,9 @@ En primer lugar, configure la puerta de enlace de administración de datos. Las 
 }
 ```
 
-**Conjunto de datos de entrada de HDFS:** Este conjunto de datos hace referencia a la carpeta DataTransfer/UnitTest/ de HDFS. La canalización copia todos los archivos de su carpeta en el destino.
+**Conjunto de datos de entrada de HDFS:** este conjunto de datos hace referencia a carpeta HDFS toohello DataTransfer/UnitTest /. canalización de Hello copia todos los archivos de hello en este destino de carpeta toohello.
 
-Si se establece "external": "true", se informa al servicio Data Factory que el conjunto de datos es externo a Data Factory y que no lo genera ninguna actividad de la factoría de datos.
+Establecer "externo": "true" informa a servicio de factoría de datos de hello ese conjunto de datos de hello es factoría de datos de toohello externo y no se crea una actividad de factoría de datos de Hola.
 
 ```JSON
 {
@@ -240,7 +240,7 @@ Si se establece "external": "true", se informa al servicio Data Factory que el c
 
 **Conjunto de datos de salida de blob de Azure:**
 
-Los datos se escriben en un nuevo blob cada hora (frecuencia: hora, intervalo: 1). La ruta de acceso de la carpeta para el blob se evalúa dinámicamente según la hora de inicio del segmento que se está procesando. La ruta de acceso de la carpeta usa las partes year, month, day y hours de la hora de inicio.
+Los datos se escriben tooa nuevo blob cada hora (frecuencia: hora, intervalo: 1). ruta de acceso de carpeta de Hola para blob Hola se evalúa dinámicamente según el tiempo de inicio de Hola de sector de Hola que se está procesando. ruta de acceso de carpeta Hola utiliza elementos de año, mes, día y horas de tiempo de inicio de Hola.
 
 ```JSON
 {
@@ -298,9 +298,9 @@ Los datos se escriben en un nuevo blob cada hora (frecuencia: hora, intervalo: 1
 }
 ```
 
-**Actividad de copia en una canalización con el origen del sistema de archivos y el receptor de blob:**
+**Actividad de copia en una canalización con origen del sistema de archivos y receptor blob:**
 
-La canalización contiene una actividad de copia que está configurada para usar estos conjuntos de datos de entrada y de salida y está programada para ejecutarse cada hora. En la definición de JSON de canalización, el tipo **source** se establece en **FileSystemSource** y el tipo **sink** se establece en **BlobSink**. La consulta SQL especificada para la propiedad **query** selecciona los datos de la última hora que se van a copiar.
+canalización de Hello contiene una actividad de copia que esté configurado toouse estos conjuntos de datos de entrada y salidas o toorun programada cada hora. En la definición de JSON de canalización de hello, Hola **origen** tipo está establecido demasiado**FileSystemSource** y **receptor** tipo está establecido demasiado**BlobSink**. consulta SQL Hola especificada para hello **consulta** propiedad selecciona datos Hola Hola más allá de hora toocopy.
 
 ```JSON
 {
@@ -341,7 +341,7 @@ La canalización contiene una actividad de copia que está configurada para usar
 ```
 
 ## <a name="use-kerberos-authentication-for-hdfs-connector"></a>Uso de autenticación Kerberos para el conector HDFS
-Existen dos opciones para configurar el entorno local para usar la autenticación Kerberos en el conector HDFS. Puede elegir la que mejor se adapte en su caso.
+Hay dos tooset de opciones de entorno local de hello así como toouse la autenticación Kerberos en el conector de HDFS. Puede elegir Hola uno se adapta mejor a su caso.
 * Opción 1: [Unirse a la máquina de puerta de enlace en el dominio Kerberos](#kerberos-join-realm)
 * Opción 2: [Habilitar la confianza mutua entre el dominio de Windows y el dominio Kerberos](#kerberos-mutual-trust)
 
@@ -349,22 +349,22 @@ Existen dos opciones para configurar el entorno local para usar la autenticació
 
 #### <a name="requirement"></a>Requisito:
 
-* La máquina de puerta de enlace debe unirse al dominio Kerberos y no puede unirse a ningún dominio de Windows.
+* máquina de puerta de enlace de Hello necesita dominio Kerberos de toojoin hello y no puede unir a ningún dominio de Windows.
 
-#### <a name="how-to-configure"></a>Configuración:
+#### <a name="how-tooconfigure"></a>¿Cómo tooconfigure:
 
 **En la máquina de puerta de enlace:**
 
-1.  Ejecute la utilidad **Ksetup** para configurar el dominio y el servidor KDC de Kerberos.
+1.  Ejecute hello **Ksetup** utilidad tooconfigure Hola servidor KDC de Kerberos o el dominio Kerberos.
 
-    La máquina debe configurarse como miembro de un grupo de trabajo dado que un dominio Kerberos es diferente de un dominio de Windows. Para ello, establezca el dominio Kerberos y agregue un servidor KDC de la manera siguiente: Sustituya *REALM.COM* por su dominio respectivo, según sea necesario.
+    máquina de Hello debe configurarse como un miembro de un grupo de trabajo desde un dominio Kerberos que es diferente de un dominio de Windows. Esto puede lograrse estableciendo el dominio Kerberos de Hola y agregar un servidor KDC como sigue. Sustituya *REALM.COM* por su dominio respectivo, según sea necesario.
 
             C:> Ksetup /setdomain REALM.COM
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
 
-    **Reinicie** la máquina después de ejecutar estos 2 comandos.
+    **Reinicie** máquina Hola después de ejecutar estos 2 comandos.
 
-2.  Compruebe la configuración con el comando **Ksetup**. La salida debe ser como la siguiente:
+2.  Comprobar la configuración de hello con **Ksetup** comando. salida de Hello será similar:
 
             C:> Ksetup
             default realm = REALM.COM (external)
@@ -373,22 +373,22 @@ Existen dos opciones para configurar el entorno local para usar la autenticació
 
 **En Azure Data Factory:**
 
-* Configure el conector HDFS mediante la **autenticación de Windows** junto con el nombre y la contraseña de la entidad de seguridad de Kerberos para conectarse al origen de datos de HDFS. Compruebe la sección [HDFS Linked Service properties](#linked-service-properties) (Propiedades de servicio vinculado de HDFS) en los detalles de configuración.
+* Configure el conector HDFS de hello mediante **autenticación de Windows** junto con Kerberos principal nombre y la contraseña tooconnect toohello HDFS origen de datos. Compruebe la sección [HDFS Linked Service properties](#linked-service-properties) (Propiedades de servicio vinculado de HDFS) en los detalles de configuración.
 
 ### <a name="kerberos-mutual-trust"></a>Opción 2: Habilitar la confianza mutua entre el dominio de Windows y el dominio Kerberos
 
 #### <a name="requirement"></a>Requisito:
-*   La máquina de puerta de enlace debe unirse a un dominio de Windows.
-*   Necesita permiso para actualizar la configuración del controlador de dominio.
+*   máquina de puerta de enlace de Hello debe unirse a un dominio de Windows.
+*   Necesita una configuración del controlador de dominio de permiso tooupdate Hola.
 
-#### <a name="how-to-configure"></a>Configuración:
+#### <a name="how-tooconfigure"></a>¿Cómo tooconfigure:
 
 > [!NOTE]
-> Sustituya REALM.COM y AD.COM en el siguiente tutorial por su propio dominio y controlador de dominio, según sea necesario.
+> Reemplazar dominio.com y AD.COM en hello sigue el tutorial con su propio controlador de dominio Kerberos y el dominio respectivo según sea necesario.
 
 **En el servidor KDC:**
 
-1.  Edite la configuración de KDC en el archivo **krb5.conf** para permitir que KDC confíe en el dominio de Windows que hace referencia a la siguiente plantilla de configuración. De forma predeterminada, la configuración está ubicada en **/etc/krb5.conf**.
+1.  Editar configuración de KDC de hello en **krb5.conf** toolet archivo KDC confiar en que hace referencia toohello después de la plantilla de configuración de dominio de Windows. De forma predeterminada, se encuentra en configuración de hello **/etc/krb5.conf**.
 
             [logging]
              default = FILE:/var/log/krb5libs.log
@@ -424,9 +424,9 @@ Existen dos opciones para configurar el entorno local para usar la autenticació
               REALM.COM = .
              }
 
-  **Reinicie** el servicio KDC después de la configuración.
+  **Reinicie** Hola servicio KDC después de la configuración.
 
-2.  Prepare una entidad de seguridad llamada **krbtgt/REALM.COM@AD.COM** en el servidor KDC con el siguiente comando:
+2.  Preparar una entidad de seguridad denominado  **krbtgt/REALM.COM@AD.COM**  en el servidor KDC con hello siguiente comando:
 
             Kadmin> addprinc krbtgt/REALM.COM@AD.COM
 
@@ -434,55 +434,55 @@ Existen dos opciones para configurar el entorno local para usar la autenticació
 
 **En el controlador de dominio:**
 
-1.  Ejecute los siguientes comandos **Ksetup** para agregar una entrada de dominio:
+1.  Ejecute hello siguiente **Ksetup** comandos tooadd una entrada de dominio:
 
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
             C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
 
-2.  Establezca la confianza entre el dominio de Windows y el dominio Kerberos. [contraseña] es la contraseña de la entidad de seguridad  **krbtgt/REALM.COM@AD.COM**.
+2.  Establecer la confianza de dominio Kerberos del dominio de Windows tooKerberos. [contraseña] es la contraseña de Hola de entidad de seguridad de hello  **krbtgt/REALM.COM@AD.COM** .
 
             C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /passwordt:[password]
 
 3.  Seleccione el algoritmo de cifrado usado en Kerberos.
 
-    1. Vaya a Administrador de servidores > Administración de directivas de grupo > Dominio > Objetos de directiva de grupo > Default or Active Domain Policy (Directiva de dominio predeterminada o activa) y haga clic en Editar.
+    1. Vaya tooServer Manager > Administración de directivas de grupo > dominio > objetos de directiva de grupo > predeterminado o la directiva de dominio de Active y la edición.
 
-    2. En la ventana emergente **Editor de administración de directivas de grupo**, vaya a Configuración de equipo > Directivas > Configuración de Windows > Configuración de seguridad > Directivas locales > Opciones de seguridad, y configure **Seguridad de red: configurar tipos de cifrado permitidos para Kerberos**.
+    2. Hola **Editor de administración de directivas de grupo** ventana emergente, vaya tooComputer configuración > directivas > configuración de Windows > configuración de seguridad > directivas locales > Opciones de seguridad y configurar **red seguridad: configurar los tipos de cifrado permitidos para que Kerberos**.
 
-    3. Seleccione el algoritmo de cifrado que quiere usar al conectarse a KDC. Normalmente, puede seleccionar todas las opciones.
+    3. Algoritmo de cifrado de hello seleccione desea toouse cuando conecta tooKDC. Normalmente, puede seleccionar simplemente todas las opciones de Hola.
 
         ![Configuración de tipos de cifrado para Kerberos](media/data-factory-hdfs-connector/config-encryption-types-for-kerberos.png)
 
-    4. Use el comando **Ksetup** para especificar el algoritmo de cifrado que se usará en el dominio específico.
+    4. Use **Ksetup** toobe comando toospecify Hola cifrado algoritmo usado en hello territorio específico.
 
                 C:> ksetup /SetEncTypeAttr REALM.COM DES-CBC-CRC DES-CBC-MD5 RC4-HMAC-MD5 AES128-CTS-HMAC-SHA1-96 AES256-CTS-HMAC-SHA1-96
 
-4.  Cree la asignación entre la cuenta de dominio y la entidad de seguridad de Kerberos, a fin de usar la entidad de seguridad de Kerberos en el dominio de Windows.
+4.  Crear asignación de hello entre Hola cuenta y de dominio Kerberos principal, en orden toouse principal de Kerberos en el dominio de Windows.
 
-    1. Inicie las herramientas administrativas > **Usuarios y equipos de Active Directory**.
+    1. Iniciar herramientas administrativas de hello > **equipos y usuarios de Active Directory**.
 
     2. Configure características avanzadas; para ello, haga clic en **Ver** > **Características avanzadas**.
 
-    3. Busque la cuenta a la que quiere crear asignaciones y haga clic con el botón derecho para ver **Asignaciones de nombres** > haga clic en la pestaña **Nombres de Kerberos**.
+    3. Busque Hola cuenta toowhich desee toocreate asignaciones y haga clic en tooview **las asignaciones de nombres** > haga clic en **nombres Kerberos** ficha.
 
-    4. Agregue una entidad de seguridad desde el dominio.
+    4. Agregar una entidad de seguridad de dominio Kerberos de Hola.
 
         ![Asignación de la identidad de seguridad](media/data-factory-hdfs-connector/map-security-identity.png)
 
 **En la máquina de puerta de enlace:**
 
-* Ejecute los siguientes comandos **Ksetup** para agregar una entrada de dominio.
+* Ejecute hello siguiente **Ksetup** comandos tooadd una entrada de dominio Kerberos.
 
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
             C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
 
 **En Azure Data Factory:**
 
-* Configure el conector de HDFS mediante la **autenticación de Windows** en combinación con la cuenta de dominio o la entidad de seguridad de Kerberos para conectarse al origen de datos de HDFS. Compruebe la sección [HDFS Linked Service properties](#linked-service-properties) (Propiedades de servicio vinculado de HDFS) en los detalles de configuración.
+* Configure el conector HDFS de hello mediante **autenticación de Windows** junto con su cuenta de dominio o el origen de datos de entidad de seguridad de Kerberos tooconnect toohello HDFS. Compruebe la sección [HDFS Linked Service properties](#linked-service-properties) (Propiedades de servicio vinculado de HDFS) en los detalles de configuración.
 
 > [!NOTE]
-> Para asignar columnas del conjunto de datos de origen a columnas del conjunto de datos del receptor, consulte [Mapping dataset columns in Azure Data Factory](data-factory-map-columns.md) (Asignación de columnas de conjunto de datos en Azure Data Factory).
+> columnas de toomap de toocolumns de conjunto de datos de origen del conjunto de datos del receptor, consulte [asignar columnas de conjunto de datos de Data Factory de Azure](data-factory-map-columns.md).
 
 
 ## <a name="performance-and-tuning"></a>Rendimiento y optimización
-Consulte [Guía de optimización y rendimiento de la actividad de copia](data-factory-copy-activity-performance.md) para más información sobre los factores clave que afectan al rendimiento del movimiento de datos (actividad de copia) en Azure Data Factory y las diversas formas de optimizarlo.
+Vea [guía para la optimización y rendimiento de la actividad de copia](data-factory-copy-activity-performance.md) toolearn acerca de la clave de factores que afectan al rendimiento de movimiento de datos (actividad de copia) en la factoría de datos de Azure y toooptimize de diversas maneras.

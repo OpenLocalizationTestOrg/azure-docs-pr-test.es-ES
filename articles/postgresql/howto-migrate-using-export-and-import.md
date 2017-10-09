@@ -1,6 +1,6 @@
 ---
-title: "Migración de una base de datos mediante importación y exportación en Azure Database for PostgreSQL | Microsoft Docs"
-description: "Describe cómo extraer una base de datos PostgreSQL en un archivo de script e importar los datos en la base de datos de destino desde ese archivo."
+title: "aaaMigrate una base de datos mediante importación y exportación de base de datos de Azure para PostgreSQL | Documentos de Microsoft"
+description: "Describe cómo extraer una base de datos PostgreSQL en un archivo de script e importar datos de hello en la base de datos de destino de Hola desde ese archivo."
 services: postgresql
 author: SaloniSonpal
 ms.author: salonis
@@ -9,25 +9,25 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 06/14/2017
-ms.openlocfilehash: 5e306d516d04789e4526bfd09bf99139b83573ba
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 5ca4650782b02e1067c5a8a3710f2dfbc8c76063
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="migrate-your-postgresql-database-using-export-and-import"></a>Migración de una base de datos de PostgreSQL mediante exportación e importación
-Puede usar [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) para extraer una base de datos PostgreSQL en un archivo de script y [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) para importar los datos en la base de datos de destino desde ese archivo.
+Puede usar [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) tooextract una base de datos PostgreSQL en un archivo de script y [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) tooimport datos de hello en la base de datos de destino de Hola desde ese archivo.
 
 ## <a name="prerequisites"></a>Requisitos previos
-Para seguir esta guía, necesitará:
-- Un [servidor de Azure Database for PostgreSQL](quickstart-create-server-database-portal.md) con reglas de firewall para permitir el acceso a las bases de datos que hay en él.
+toostep a través de este tooguide cómo, necesita:
+- Un [base de datos de Azure para PostgreSQL server](quickstart-create-server-database-portal.md) con acceso de tooallow de reglas de firewall y la base de datos en él.
 - La utilidad de línea de comandos [pg_dump](https://www.postgresql.org/docs/9.6/static/app-pgdump.html) instalada.
 - La utilidad de línea de comandos [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) instalada.
 
-Siga estos pasos para exportar e importar la base de datos de PostgreSQL.
+Siga estos pasos tooexport e importar la base de datos PostgreSQL.
 
-## <a name="create-a-script-file-using-pgdump-that-contains-the-data-to-be-loaded"></a>Creación de un archivo de script mediante pg_dump con los datos que se van a cargar
-Para exportar la base de datos de PostgreSQL existente en el entorno local o en una máquina virtual a un archivo de script de SQL, ejecute el siguiente comando en el entorno existente:
+## <a name="create-a-script-file-using-pgdump-that-contains-hello-data-toobe-loaded"></a>Cree un archivo de script mediante pg_dump que contenga Hola datos toobe cargado
+tooexport su existente PostgreSQL local de la base de datos o en un archivo de script sql de tooa de máquina virtual, ejecute hello siguiente comando en el entorno existente:
 ```bash
 pg_dump –-host=<host> --username=<name> --dbname=<database name> --file=<database>.sql
 ```
@@ -36,15 +36,15 @@ Por ejemplo, si tiene un servidor local y una base de datos llamada **testdb** e
 pg_dump --host=localhost --username=masterlogin --dbname=testdb --file=testdb.sql
 ```
 
-## <a name="import-the-data-on-target-azure-database-for-postrgesql"></a>Importación de los datos en la instancia de Azure Database for PostrgeSQL de destino
-Puede usar la utilidad de la línea de comandos psql y el parámetro -d, --dbname para importar los datos en la instancia de Azure Database for PostrgeSQL que creamos y cargar los datos desde el archivo de SQL.
+## <a name="import-hello-data-on-target-azure-database-for-postrgesql"></a>Importar datos de hello en la base de datos de destino para PostrgeSQL
+Puede usar la línea de comandos de psql de Hola y Hola -d, datos de saludo de--dbname parámetro tooimport en la base de datos de Azure para PostrgeSQL se crea y cargar datos desde el archivo de sql de Hola.
 ```bash
 psql --file=<database>.sql --host=<server name> --port=5432 --username=<user@servername> --dbname=<target database name>
 ```
-En este ejemplo se usa la utilidad psql y el archivo de script **testdb.sql** del paso anterior para importar los datos en la base de datos **mypgsqldb**, en el servidor de destino **mypgserver-20170401.postgres.database.azure.com**.
+Este ejemplo utiliza psql utilidad y un archivo de script denominado **testdb.sql** de datos de tooimport paso anterior en la base de datos de hello **mypgsqldb** en el servidor de destino  **mypgserver 20170401.postgres.database.azure.com**.
 ```bash
 psql --file=testdb.sql --host=mypgserver-20170401.database.windows.net --port=5432 --username=mylogin@mypgserver-20170401 --dbname=mypgsqldb
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-- Para migrar una base de datos de PostgreSQL mediante volcado y restauración, consulte [Migración de una base de datos de PostgreSQL mediante volcado y restauración](howto-migrate-using-dump-and-restore.md).
+- toomigrate una base de datos PostgreSQL mediante el volcado de memoria y la restauración, vea [migrar la base de datos PostgreSQL mediante dump y restore](howto-migrate-using-dump-and-restore.md)

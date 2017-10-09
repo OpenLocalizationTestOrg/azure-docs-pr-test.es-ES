@@ -1,6 +1,6 @@
 ---
-title: "Introducción al almacenamiento de tablas y los servicios conectados de Visual Studio (servicios en la nube) | Microsoft Docs"
-description: "Cómo empezar a usar el almacenamiento de tablas de Azure en un proyecto de servicio en la nube en Visual Studio después de conectarse a una cuenta de almacenamiento mediante los servicios conectados de Visual Studio"
+title: aaaGet a trabajar con el almacenamiento de tabla y Visual Studio servicios conectados (servicios en la nube) | Documentos de Microsoft
+description: "Cómo tooget iniciado mediante el almacenamiento de tabla de Azure en un proyecto de servicio de nube en Visual Studio después de conectar la cuenta de almacenamiento de tooa con Visual Studio servicios conectados"
 services: storage
 documentationcenter: 
 author: TomArcher
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: tarcher
-ms.openlocfilehash: 3208ddb1a1246a5ff25d272bfc7d8ba842348a36
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: efb16953e05764cb162cbdae4d0eab57f781682d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="getting-started-with-azure-table-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Introducción al almacenamiento de tablas de Azure y a los servicios conectados de Visual Studio (proyectos de servicios en la nube)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
 ## <a name="overview"></a>Información general
-En este artículo se describe cómo empezar a usar el almacenamiento de tablas de Azure en Visual Studio después de haber creado o hecho referencia a una cuenta de almacenamiento de Azure en un proyecto de servicios en la nube mediante el cuadro de diálogo **Agregar servicios conectados** de Visual Studio. La operación **Agregar servicios conectados** instala los paquetes de NuGet adecuados para tener acceso al almacenamiento de Azure en el proyecto y agrega la cadena de conexión de la cuenta de almacenamiento a los archivos de configuración del proyecto.
+Este artículo describe cómo tooget iniciado mediante el almacenamiento de tabla de Azure en Visual Studio después de haber creado o hace referencia a una cuenta de almacenamiento de Azure en un proyecto de servicios de nube mediante Visual Studio hello **agregar servicios conectados** cuadro de diálogo . Hola **agregar servicios conectados** operación instala tooaccess de paquetes de NuGet adecuado de hello almacenamiento de Azure en el proyecto y agrega la cadena de conexión de Hola para hello cuenta de almacenamiento tooyour archivos de configuración de proyecto.
 
-El servicio de almacenamiento de tabla de Azure permite almacenar una gran cantidad de datos estructurados. El servicio es un almacén de datos NoSQL que acepta llamadas autenticadas desde dentro y fuera de la nube de Azure. Las tablas de Azure son ideales para el almacenamiento de datos estructurados no relacionales.
+Hola servicio de almacenamiento de tabla de Azure permite toostore grandes cantidades de datos estructurados. servicio de Hello es un almacén de datos NoSQL que acepta llamadas autenticadas de dentro y fuera Hola nube de Azure. Las tablas de Azure son ideales para el almacenamiento de datos estructurados no relacionales.
 
-Para comenzar, necesita crear una tabla en su cuenta de almacenamiento. También le mostraremos cómo crear una tabla de Azure en código, además de cómo realizar operaciones básicas de tabla y de entidad, como agregar, modificar y leer entidades de tabla. Los ejemplos están escritos en código C\# y usan la [biblioteca del cliente de Microsoft Azure Storage para .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx).
+tooget iniciado, primero debe toocreate una tabla en la cuenta de almacenamiento. Le mostraremos cómo tabla toocreate un Azure en el código y cómo tabla básica tooperform y operaciones de entidad, como agregar, modificar, leer y leer la tabla de entidades. Hola ejemplos están escritos en C\# código y utilizar hello [biblioteca de cliente de almacenamiento de Microsoft Azure para .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx).
 
-**NOTA:** algunas de las API que realizan llamadas al almacenamiento de Azure son asincrónicas. Vea [Programación asincrónica con Async y Await](http://msdn.microsoft.com/library/hh191443.aspx) para más información. El código siguiente supone que se están utilizando métodos de programación asincrónica.
+**Nota:** algunas de las API que realizan llamadas tooAzure almacenamiento hello son asincrónicas. Vea [Programación asincrónica con Async y Await](http://msdn.microsoft.com/library/hh191443.aspx) para más información. código de Hello siguiente se da por supuesto que se usan métodos de programación asincrónica.
 
 * Consulte [Introducción al Almacenamiento de tablas de Azure mediante .NET](storage-dotnet-how-to-use-tables.md) para más información sobre la manipulación de tablas mediante programación.
 * Vea [Documentación sobre Almacenamiento](https://azure.microsoft.com/documentation/services/storage/) para información general sobre Almacenamiento de Azure.
@@ -38,41 +38,41 @@ Para comenzar, necesita crear una tabla en su cuenta de almacenamiento. También
 * Vea [ASP.NET](http://www.asp.net) para más información sobre la programación de aplicaciones ASP.NET.
 
 ## <a name="access-tables-in-code"></a>Acceso a tablas en código
-Para obtener acceso a las tablas en los proyectos de servicios en la nube, deberá incluir los elementos siguientes en los archivos de origen C# que acceden al almacenamiento Tabla de Azure.
+tooaccess tablas en proyectos de servicios de nube, debe hello tooinclude siguientes archivos de origen de tooany C# de elementos que tienen acceso a almacenamiento de tabla de Azure.
 
-1. Asegúrese de que las declaraciones del espacio de nombres de la parte superior del archivo de C# incluyen estas instrucciones **using** .
+1. Asegúrese de incluyen declaraciones de espacios de nombres de hello en parte superior de hello del archivo hello C# estas **con** instrucciones.
    
         using Microsoft.Framework.Configuration;
         using Microsoft.WindowsAzure.Storage;
         using Microsoft.WindowsAzure.Storage.Table;
         using System.Threading.Tasks;
         using LogLevel = Microsoft.Framework.Logging.LogLevel;
-2. Obtenga un objeto **CloudStorageAccount** que represente la información de su cuenta de almacenamiento. Use el código siguiente para obtener la cadena de conexión de almacenamiento y la información de la cuenta de almacenamiento de la configuración del servicio de Azure.
+2. Obtenga un objeto **CloudStorageAccount** que represente la información de su cuenta de almacenamiento. Usar hello siguientes código tooget Hola almacenamiento conexión cadena y almacenamiento de información de la cuenta de configuración de servicio de Azure Hola.
    
          CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
            CloudConfigurationManager.GetSetting("<storage account name>
          _AzureStorageConnectionString"));
    > [!NOTE]
-   > Use todo el código anterior delante del código que aparece en los ejemplos siguientes.
+   > Use todos Hola encima código frente a código de hello en los siguientes ejemplos de hello.
    > 
    > 
-3. Obtenga un objeto **CloudTableClient** para hacer referencia a los objetos de tabla de la cuenta de almacenamiento.
+3. Obtener un **CloudTableClient** tooreference Hola tabla objetos en la cuenta de almacenamiento de objetos.
    
-         // Create the table client.
+         // Create hello table client.
          CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
-4. Obtenga un objeto de referencia **CloudTable** para hacer referencia a una tabla y a entidades específicas.
+4. Obtener un **CloudTable** hacen referencia a una tabla específica del objeto tooreference y entidades.
    
-        // Get a reference to a table named "peopleTable".
+        // Get a reference tooa table named "peopleTable".
         CloudTable peopleTable = tableClient.GetTableReference("peopleTable");
 
 ## <a name="create-a-table-in-code"></a>Crear una tabla en el código
-Para crear la tabla de Azure, basta con que agregue una llamada a **CreateIfNotExistsAsync** después de obtener el objeto **CloudTable**, tal como se describe en la sección "Acceso a tablas en código".
+Hola toocreate tabla de Azure, basta con agregar una llamada demasiado**CreateIfNotExistsAsync** toohello después de obtener un **CloudTable** objeto tal y como se describe en la sección de "Acceso a tablas en el código" Hola.
 
-    // Create the CloudTable if it does not exist.
+    // Create hello CloudTable if it does not exist.
     await peopleTable.CreateIfNotExistsAsync();
 
-## <a name="add-an-entity-to-a-table"></a>Adición de una entidad a una tabla
-Para agregar una entidad a una tabla, cree una clase que defina las propiedades de la entidad. El código siguiente define una clase de entidad llamada **CustomerEntity** que usa el nombre del cliente como clave de fila y el apellido como clave de partición.
+## <a name="add-an-entity-tooa-table"></a>Agregar una tabla de tooa de entidad
+tooadd una tabla de tooa de entidad, cree una clase que define las propiedades de saludo de la entidad. Hello código siguiente define una clase de entidad denominada **CustomerEntity** que usa Hola nombre del cliente como clave de fila de Hola y Hola last name como clave de partición de Hola.
 
     public class CustomerEntity : TableEntity
     {
@@ -89,51 +89,51 @@ Para agregar una entidad a una tabla, cree una clase que defina las propiedades 
         public string PhoneNumber { get; set; }
     }
 
-Las operaciones de tablas que afectan a las entidades se realizan con el objeto **CloudTable** que se creó anteriormente en el apartado "Acceso a tablas en código". El objeto **TableOperation** representa la operación que se va a realizar. En el ejemplo de código siguiente se muestra cómo crear un objeto **CloudTable** y un objeto **CustomerEntity**. Para preparar la operación, se crea un objeto **TableOperation** para insertar la entidad de cliente en la tabla. Por último, la operación se ejecuta llamando a **CloudTable.ExecuteAsync**.
+Operaciones de tabla que implican las entidades se realizan mediante hello **CloudTable** objeto que creó anteriormente en "Acceso a las tablas en el código". Hola **TableOperation** objeto representa Hola operación toobe realizada. Hola siguiendo el ejemplo de código muestra cómo toocreate una **CloudTable** objeto y un **CustomerEntity** objeto. operación de hello tooprepare, un **TableOperation** se crea la entidad customer ya tooinsert hello en tabla Hola. Por último, se ejecuta la operación de hello mediante una llamada a **CloudTable.ExecuteAsync**.
 
     // Create a new customer entity.
     CustomerEntity customer1 = new CustomerEntity("Harp", "Walter");
     customer1.Email = "Walter@contoso.com";
     customer1.PhoneNumber = "425-555-0101";
 
-    // Create the TableOperation that inserts the customer entity.
+    // Create hello TableOperation that inserts hello customer entity.
     TableOperation insertOperation = TableOperation.Insert(customer1);
 
-    // Execute the insert operation.
+    // Execute hello insert operation.
     await peopleTable.ExecuteAsync(insertOperation);
 
 
 ## <a name="insert-a-batch-of-entities"></a>Inserción de un lote de entidades
-Puede insertar varias entidades en una tabla mediante una única operación de escritura. En el ejemplo de código siguiente se crean dos objetos de entidad ("Jeff Smith" y "Ben Smith") que se agregan a un objeto **TableBatchOperation** mediante el método Insert y, a continuación, se inicia la operación llamando a **CloudTable.ExecuteBatchAsync**.
+Puede insertar varias entidades en una tabla mediante una única operación de escritura. Hello ejemplo de código siguiente crea dos objetos de entidad ("Jeff Smith" y "Ben Smith"), se agrega tooa **TableBatchOperation** objeto mediante Hola método Insert y, a continuación, inicia Hola operación mediante una llamada a  **CloudTable.ExecuteBatchAsync**.
 
-    // Create the batch operation.
+    // Create hello batch operation.
     TableBatchOperation batchOperation = new TableBatchOperation();
 
-    // Create a customer entity and add it to the table.
+    // Create a customer entity and add it toohello table.
     CustomerEntity customer1 = new CustomerEntity("Smith", "Jeff");
     customer1.Email = "Jeff@contoso.com";
     customer1.PhoneNumber = "425-555-0104";
 
-    // Create another customer entity and add it to the table.
+    // Create another customer entity and add it toohello table.
     CustomerEntity customer2 = new CustomerEntity("Smith", "Ben");
     customer2.Email = "Ben@contoso.com";
     customer2.PhoneNumber = "425-555-0102";
 
-    // Add both customer entities to the batch insert operation.
+    // Add both customer entities toohello batch insert operation.
     batchOperation.Insert(customer1);
     batchOperation.Insert(customer2);
 
-    // Execute the batch operation.
+    // Execute hello batch operation.
     await peopleTable.ExecuteBatchAsync(batchOperation);
 
-## <a name="get-all-of-the-entities-in-a-partition"></a>Obtención de todas las entidades en una partición
-Para consultar una tabla a fin de obtener todas las entidades de una partición, use un objeto **TableQuery** . El ejemplo de código siguiente especifica un filtro para las entidades en las que “Smith” es la clave de partición. En este ejemplo, los campos de cada entidad se imprimen en la consola, como parte de los resultados de la consulta.
+## <a name="get-all-of-hello-entities-in-a-partition"></a>Obtener todas las entidades de hello en una partición
+tooquery una tabla para todas las entidades de hello en una partición, use un **TableQuery** objeto. Hello ejemplo de código siguiente especifica un filtro para las entidades donde "Smith" es la clave de partición de Hola. Este ejemplo imprime campos Hola de cada entidad en la consola de toohello de resultados de consultas de Hola.
 
-    // Construct the query operation for all customer entities where PartitionKey="Smith".
+    // Construct hello query operation for all customer entities where PartitionKey="Smith".
     TableQuery<CustomerEntity> query = new TableQuery<CustomerEntity>()
         .Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Smith"));
 
-    // Print the fields for each customer.
+    // Print hello fields for each customer.
     TableContinuationToken token = null;
     do
     {
@@ -151,45 +151,45 @@ Para consultar una tabla a fin de obtener todas las entidades de una partición,
 
 
 ## <a name="get-a-single-entity"></a>Obtención de una sola entidad
-Puede escribir una consulta para obtener una sola entidad concreta. El código siguiente utiliza un objeto **TableOperation** para especificar el cliente llamado "Ben Smith". Este método devuelve solo una entidad, en lugar de una colección, y el valor devuelto en **TableResult.Result** es un objeto **CustomerEntity**. La forma más rápida de recuperar una sola entidad del servicio **Tabla** es especificar claves tanto de partición como de fila en las consultas.
+Puede escribir una consulta tooget una entidad única, específica. Hola siguiente de código utiliza un **TableOperation** toospecify un cliente llamado "Ben Smith" del objeto. Este método devuelve una sola entidad, en lugar de una colección y Hola devolvió el valor en **TableResult.Result** es un **CustomerEntity** objeto. La especificación de claves de partición y fila en una consulta es tooretrieve de manera más rápida de hello una entidad única desde hello **tabla** servicio.
 
     // Create a retrieve operation that takes a customer entity.
     TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>("Smith", "Ben");
 
-    // Execute the retrieve operation.
+    // Execute hello retrieve operation.
     TableResult retrievedResult = await peopleTable.ExecuteAsync(retrieveOperation);
 
-    // Print the phone number of the result.
+    // Print hello phone number of hello result.
     if (retrievedResult.Result != null)
        Console.WriteLine(((CustomerEntity)retrievedResult.Result).PhoneNumber);
     else
-       Console.WriteLine("The phone number could not be retrieved.");
+       Console.WriteLine("hello phone number could not be retrieved.");
 
 ## <a name="delete-an-entity"></a>Eliminación de una entidad
-Puede eliminar fácilmente una entidad después de haberla encontrado. El código siguiente busca una entidad de cliente denominada "Ben Smith" y, si la encuentra, la elimina.
+Puede eliminar fácilmente una entidad después de haberla encontrado. Hello código siguiente busca una entidad de cliente denominada "Ben Smith" y, si lo encuentra, elimina.
 
     // Create a retrieve operation that expects a customer entity.
     TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>("Smith", "Ben");
 
-    // Execute the operation.
+    // Execute hello operation.
     TableResult retrievedResult = peopleTable.Execute(retrieveOperation);
 
-    // Assign the result to a CustomerEntity object.
+    // Assign hello result tooa CustomerEntity object.
     CustomerEntity deleteEntity = (CustomerEntity)retrievedResult.Result;
 
-    // Create the Delete TableOperation and then execute it.
+    // Create hello Delete TableOperation and then execute it.
     if (deleteEntity != null)
     {
        TableOperation deleteOperation = TableOperation.Delete(deleteEntity);
 
-       // Execute the operation.
+       // Execute hello operation.
        await peopleTable.ExecuteAsync(deleteOperation);
 
        Console.WriteLine("Entity deleted.");
     }
 
     else
-       Console.WriteLine("Couldn't delete the entity.");
+       Console.WriteLine("Couldn't delete hello entity.");
 
 ## <a name="next-steps"></a>Pasos siguientes
 [!INCLUDE [vs-storage-dotnet-tables-next-steps](../../includes/vs-storage-dotnet-tables-next-steps.md)]

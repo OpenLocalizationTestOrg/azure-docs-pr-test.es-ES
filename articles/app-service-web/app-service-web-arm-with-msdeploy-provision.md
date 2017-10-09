@@ -1,6 +1,6 @@
 ---
-title: "Implementación de una aplicación web con MSDeploy con un nombre de host personalizado y un certificado SSL"
-description: "Use una plantilla del Administrador de recursos de Azure para implementar una aplicación web mediante MSDeploy y configurar un nombre de host personalizado y un certificado SSL"
+title: "aaaDeploy una aplicación web con MSDeploy con certificado ssl y el nombre de host"
+description: "Usar un toodeploy de plantilla de Azure Resource Manager en una aplicación web usando MSDeploy y configurar un certificado SSL y un nombre de host personalizado"
 services: app-service\web
 manager: erikre
 documentationcenter: 
@@ -13,30 +13,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2016
 ms.author: jodehavi
-ms.openlocfilehash: a0e944d0d74ecb72a919538d54db330cbbdeef64
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: ac13f4a7d14ae182e8e7ced5adff30491422d1e4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deploy-a-web-app-with-msdeploy-custom-hostname-and-ssl-certificate"></a>Implementación de una aplicación web con MSDeploy, un nombre de host personalizado y un certificado SSL
-En esta guía, se recorre el proceso de crear una implementación integral para una aplicación web de Azure, sacar provecho de MSDeploy, así como agregar un nombre de host personalizado y un certificado SSL a la plantilla de ARM.
+Esta guía se describen la creación de una implementación de extremo a extremo de una aplicación Web de Azure, aprovechar MSDeploy, así como agregar un nombre de host personalizado y una plantilla de ARM de toohello de certificado SSL.
 
 Para obtener más información sobre la creación de plantillas, consulte [Creación de plantillas de Administrador de recursos de Azure](../azure-resource-manager/resource-group-authoring-templates.md).
 
 ### <a name="create-sample-application"></a>Creación de la aplicación de ejemplo
-Va a implementar una aplicación web ASP.NET. El primer paso consiste en crear una aplicación web sencilla (o puede elegir usar una existente, en cuyo caso puede omitir este paso).
+Va a implementar una aplicación web ASP.NET. Hola primer paso es toocreate una aplicación web simple (o puede elegir toouse uno ya existente; en cuyo caso, puede omitir este paso).
 
-Abra Visual Studio 2015 y seleccione Archivo > Nuevo proyecto. En el cuadro de diálogo que aparece, elija Web > Aplicación web ASP.NET. En Plantillas, elija Web y después la plantilla MVC. En *Change authentication type* (Cambiar tipo de autenticación), seleccione *No Authentication* (Sin autenticación). Esto es solo para hacer la aplicación de ejemplo tan sencilla como sea posible.
+Abra Visual Studio 2015 y seleccione Archivo > Nuevo proyecto. En el cuadro de diálogo de Hola que aparece, elija Web > aplicación Web ASP.NET. En plantillas elija Web y elija la plantilla MVC Hola. Seleccione *cambiar el tipo de autenticación* demasiado*sin autenticación*. Esto es simplemente toomake Hola aplicación de ejemplo tan simple como sea posible.
 
-En este punto, tendrá una aplicación web ASP.NET básica lista para usarla como parte del proceso de implementación.
+En este momento tendrá un toouse listo de ASP.Net web app básica como parte del proceso de implementación.
 
 ### <a name="create-msdeploy-package"></a>Creación del paquete MSDeploy
-El siguiente paso consiste en crear el paquete para implementar la aplicación web en Azure. Para ello, guarde el proyecto y después ejecute lo siguiente en la línea de comandos:
+Siguiente paso es toocreate Hola paquete toodeploy hello web app tooAzure. toodo, guarde el proyecto y, a continuación, ejecute el siguiente de Hola desde línea de comandos de hello:
 
     msbuild yourwebapp.csproj /t:Package /p:PackageLocation="path\to\package.zip"
 
-Esto creará un paquete comprimido en la carpeta PackageLocation. La aplicación está lista para implementarse y ahora puede crear una plantilla del Administrador de recursos de Azure para hacerlo.
+Esto creará un paquete comprimido en la carpeta de PackageLocation Hola. Hello aplicación está ahora listo toobe implementado, que ahora puede crear un toodo de plantilla de Azure Resource Manager que.
 
 ### <a name="create-arm-template"></a>Creación de la plantilla de ARM
 En primer lugar, vamos a comenzar con una plantilla de ARM básica que creará una aplicación web y un plan de hospedaje (tenga en cuenta que no se muestran los parámetros ni las variables por brevedad).
@@ -75,7 +75,7 @@ En primer lugar, vamos a comenzar con una plantilla de ARM básica que creará u
         }
     }
 
-A continuación, debe modificar el recurso de la aplicación web para que admita un recurso de MSDeploy anidado. Esto le permitirá hacer referencia al paquete creado antes e indicar al Administrador de recursos de Azure que use MSDeploy para implementar el paquete en la aplicación web de Azure. A continuación, se muestra el recurso Microsoft.Web/sites con el recurso de MSDeploy anidado:
+A continuación, deberá toomodify hello web app recursos tootake un recurso anidado de MSDeploy. Esto permitirá tooreference Hola paquete creado anteriormente y saber Azure Resource Manager toouse MSDeploy toodeploy Hola paquete toohello WebApp de Azure. siguiente Hola muestra Hola de recursos de Microsoft.Web/sites con recursos de MSDeploy Hola anidado:
 
     {
         "name": "[variables('webAppName')]",
@@ -117,13 +117,13 @@ A continuación, debe modificar el recurso de la aplicación web para que admita
         ]
     }
 
-Ahora verá que el recurso de MSDeploy admite una propiedad **packageUri** que se define como sigue:
+Ahora observará ese Hola MSDeploy recurso toma una **packageUri** propiedad que se define como sigue:
 
     "packageUri": "[concat(parameters('_artifactsLocation'), '/', parameters('webDeployPackageFolder'), '/', parameters('webDeployPackageFileName'), parameters('_artifactsLocationSasToken'))]"
 
-Esta propiedad **packageUri** admite el identificador URI de la cuenta de almacenamiento que apunta a la cuenta de almacenamiento donde se cargará el archivo comprimido del paquete. El Administrador de recursos de Azure aprovechará las [firmas de acceso compartido](../storage/common/storage-dotnet-shared-access-signature-part-1.md) para descargar el paquete localmente desde la cuenta de almacenamiento cuando se implemente la plantilla. Este proceso se automatizará mediante un script de PowerShell que cargará el paquete y llamará a la API de administración de Azure para crear las claves requeridas y pasarlas a la plantilla como parámetros (*_artifactsLocation* y *_artifactsLocationSasToken*). Debe definir los parámetros de la carpeta y el nombre de archivo donde se carga el paquete en el contenedor de almacenamiento.
+Esto **packageUri** toma Hola uri de la cuenta de almacenamiento que señala toohello cuenta de almacenamiento donde se cargará el zip de paquete a. Hello Azure Resource Manager aprovecharán [firmas de acceso compartido](../storage/common/storage-dotnet-shared-access-signature-part-1.md) paquete de hello toopull hacia abajo localmente desde la cuenta de almacenamiento de hello al implementar la plantilla de Hola. Este proceso se automatiza a través de una secuencia de comandos de PowerShell que cargar paquete de Hola y llamar a Hola API de administración de Azure toocreate hello las claves se requieren y en la plantilla de hello pasar como parámetros (*_artifactsLocation* y *_artifactsLocationSasToken*). Necesitará toodefine parámetros para la carpeta de Hola y nombre de archivo paquete de hello es el contenedor de almacenamiento de Hola de toounder cargado.
 
-Después, debe agregar otro recurso anidado para configurar los enlaces de nombre de host para sacar provecho de un dominio personalizado. En primer lugar, deberá asegurarse de que posee el nombre de host y configurarlo para que Azure compruebe que en efecto lo posee; consulte [Configurar un nombre de dominio personalizado en el Servicio de aplicaciones de Azure](app-service-web-tutorial-custom-domain.md). Una vez hecho esto, puede agregar lo siguiente a la plantilla en la sección de recursos Microsoft.Web/sites:
+A continuación debe tooadd en otro recurso anidado toosetup Hola hostname enlaces tooleverage un dominio personalizado. Que se van a primera tooensure de necesidad que posee el nombre de host de Hola y configurarla toobe Azure comprobado que usted es el propietario: vea [configurar un nombre de dominio personalizado en el servicio de aplicación de Azure](app-service-web-tutorial-custom-domain.md). Una vez que se hace puede agregar Hola sigue tooyour template en la sección de recursos de Hola Microsoft.Web/sites:
 
     {
         "apiVersion": "2015-08-01",
@@ -139,7 +139,7 @@ Después, debe agregar otro recurso anidado para configurar los enlaces de nombr
         }
     }
 
-Por último, debe agregar otro recurso de nivel superior, Microsoft.Web/certificates. Este recurso contendrá su certificado SSL y se encontrará en el mismo nivel que la aplicación web y el plan de hospedaje.
+Por último, debe tooadd otro recurso de nivel superior, Microsoft.Web/certificates. Este recurso contendrá su certificado SSL y seguirán existiendo en el plan de mismo nivel que la aplicación web y el hospedaje de Hola.
 
     {
         "name": "[parameters('certificateName')]",
@@ -152,25 +152,25 @@ Por último, debe agregar otro recurso de nivel superior, Microsoft.Web/certific
         }
     }
 
-Debe tener un certificado SSL válido para configurar este recurso. Una vez que tenga ese certificado válido, debe extraer los bytes pfx como una cadena de base64. Una opción para extraerlos es usar el siguiente comando de PowerShell:
+Deberá toohave un certificado SSL válido en orden tooset este recurso. Una vez que tenga ese certificado válido debe bytes de pfx hello tooextract como una cadena de base64. Una opción tooextract es hello toouse siguiente comando de PowerShell:
 
     $fileContentBytes = get-content 'C:\path\to\cert.pfx' -Encoding Byte
 
     [System.Convert]::ToBase64String($fileContentBytes) | Out-File 'pfx-bytes.txt'
 
-Después podría pasarlos como parámetro a la plantilla de implementación de ARM.
+A continuación, se podría pasar como una plantilla de implementación de parámetro tooyour ARM.
 
-En este punto, la plantilla de ARM está lista.
+En este momento la plantilla de ARM de hello está listo.
 
 ### <a name="deploy-template"></a>Implementar plantilla
-Los pasos finales sirven para juntar todo en una implementación integral completa. Para facilitar la implementación, puede aprovechar el script de PowerShell **Deploy-AzureResourceGroup.ps1** que se agrega al crear un proyecto de grupo de recursos de Azure en Visual Studio para ayudar con la carga de los artefactos necesarios en la plantilla. Es necesario crear la cuenta de almacenamiento que desee usar con antelación. En este ejemplo, he creado una cuenta de almacenamiento compartido en la que cargar el archivo package.zip. El script hará uso de AzCopy para cargar el paquete en la cuenta de almacenamiento. Se pasa la ubicación de la carpeta de artefactos y el script cargará automáticamente todos los archivos de ese directorio en el contenedor de almacenamiento con nombre. Después de llamar a Deploy-AzureResourceGroup.ps1, tendrá que actualizar los enlaces SSL para asignar el nombre de host personalizado a su certificado SSL.
+Hola pasos finales son toopiece esto todo junto en una implementación end-to-end. toomake implementación más fácil, puede aprovechar hello **Deploy-AzureResourceGroup.ps1** secuencia de comandos de PowerShell que se agrega al crear un proyecto del grupo de recursos de Azure en Visual Studio toohelp con la carga de los artefactos necesarios en plantilla de Hola. Requiere toohave creado una cuenta de almacenamiento que desee toouse antelación. En este ejemplo, crea una cuenta de almacenamiento compartido para hello package.zip toobe cargado. script de Hola aprovecharán la cuenta de almacenamiento de AzCopy tooupload Hola paquete toohello. Se pasa en la ubicación de carpeta artefacto y script de Hola cargará automáticamente todos los archivos de ese toohello de directorio con el nombre de contenedor de almacenamiento. Después de llamar a Deploy-AzureResourceGroup.ps1 tiene toothen actualización Hola SSL enlaces toomap Hola nombre de host personalizado con su certificado SSL.
 
-El siguiente script de PowerShell muestra la implementación completa con una llamada a Deploy-AzureResourceGroup.ps1:
+Hola siguientes se muestra en PowerShell Hola Hola que realiza la llamada de implementación completa Deploy-AzureResourceGroup.ps1:
 
     #Set resource group name
     $rgName = "Name-of-resource-group"
 
-    #call deploy-azureresourcegroup script to deploy web app
+    #call deploy-azureresourcegroup script toodeploy web app
 
     .\Deploy-AzureResourceGroup.ps1 -ResourceGroupLocation "East US" `
                                     -ResourceGroupName $rgName `
@@ -181,7 +181,7 @@ El siguiente script de PowerShell muestra la implementación completa con una ll
                                     -TemplateParametersFile "web-app-deploy-parameters.json" `
                                     -ArtifactStagingDirectory "C:\path\to\packagefolder\"
 
-    #update web app to bind ssl certificate to hostname. This has to be done after creation above.
+    #update web app toobind ssl certificate toohostname. This has toobe done after creation above.
 
     $cert = Get-PfxCertificate -FilePath C:\path\to\certificate.pfx
 
@@ -195,5 +195,5 @@ El siguiente script de PowerShell muestra la implementación completa con una ll
 
     Set-AzureRmResource -ApiVersion 2014-11-01 -Name nameofwebsite -ResourceGroupName $rgName -ResourceType Microsoft.Web/sites -PropertyObject $props
 
-En este momento, se debería haber implementado la aplicación y debería poder ir a ella mediante https://www.yourcustomdomain.com
+En este momento la aplicación debe se han implementado y debe ser capaz de toobrowse tooit a través de https://www.yourcustomdomain.com
 

@@ -1,5 +1,5 @@
 ---
-title: "Ejemplo de script de la CLI de Azure - Ejecución de un trabajo con Batch | Microsoft Docs"
+title: aaaAzure ejemplo de secuencia de comandos de CLI - ejecutando un trabajo con lote | Documentos de Microsoft
 description: "Ejemplo de script de la CLI de Azure - Ejecución de un trabajo con Batch"
 services: batch
 documentationcenter: 
@@ -14,30 +14,30 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/02/2017
 ms.author: antisch
-ms.openlocfilehash: 5fe1e3595d9459e60b2fd54d6f17f6822731f453
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f73a7cb341e550fd1c92f92201e20b27fa20d238
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="running-jobs-on-azure-batch-with-azure-cli"></a>Ejecución de trabajos en Azure Batch con la CLI de Azure
 
-Este script crea un trabajo de Batch y agrega una serie de tareas a dicho trabajo. También muestra cómo supervisar un trabajo y sus tareas. Finalmente, muestra cómo consultar el servicio Batch de forma eficaz para obtener información sobre las tareas del trabajo.
+Este script crea un trabajo por lotes y agrega una serie de trabajo de toohello de tareas. También se muestra cómo toomonitor un trabajo y sus tareas. Por último, se muestra cómo tooquery Hola servicio por lotes eficaz para obtener información acerca de las tareas del trabajo de Hola.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-- Instale la CLI de Azure con las instrucciones que se encuentran en la [guía de instalación de la CLI de Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) si aún no lo ha hecho.
-- Cree una cuenta de Batch si aún no tiene una. Consulte [Creación de una cuenta de Batch con la CLI de Azure](https://docs.microsoft.com/azure/batch/scripts/batch-cli-sample-create-account) para ver un script de ejemplo que crea una cuenta.
-- Configure una aplicación para que se ejecute desde una tarea de inicio si aún no lo ha hecho. Consulte [Adición de aplicaciones a Azure Batch con la CLI de Azure](https://docs.microsoft.com/azure/batch/scripts/batch-cli-sample-add-application) para ver un script de ejemplo que crea una aplicación y carga un paquete de aplicación en Azure.
-- Configure un grupo en el que se ejecutará el trabajo. Consulte [Administración de grupos de Azure Batch con la CLI de Azure](https://docs.microsoft.com/azure/batch/batch-cli-sample-manage-pool) para ver un script de ejemplo que crea un grupo con una configuración de servicios en la nube o de máquinas virtuales.
+- Instalación Hola CLI de Azure utilizando instrucciones de hello proporcionadas en hello [Guía de instalación de CLI de Azure](https://docs.microsoft.com/cli/azure/install-azure-cli), si aún no lo ha hecho.
+- Cree una cuenta de Batch si aún no tiene una. Vea [crear una cuenta de lote con hello Azure CLI](https://docs.microsoft.com/azure/batch/scripts/batch-cli-sample-create-account) para una secuencia de comandos de ejemplo que crea una cuenta.
+- Configurar una toorun de aplicación de una tarea de inicio si aún no lo ha hecho. Vea [agregar aplicaciones tooAzure por lotes con Azure CLI](https://docs.microsoft.com/azure/batch/scripts/batch-cli-sample-add-application) para una secuencia de comandos de ejemplo que crea una aplicación y carga un tooAzure del paquete de aplicación.
+- Configurar un grupo de en qué Hola se ejecutará el trabajo. Consulte [Administración de grupos de Azure Batch con la CLI de Azure](https://docs.microsoft.com/azure/batch/batch-cli-sample-manage-pool) para ver un script de ejemplo que crea un grupo con una configuración de servicios en la nube o de máquinas virtuales.
 
 ## <a name="sample-script"></a>Script de ejemplo
 
-[!code-azurecli[main](../../../cli_scripts/batch/run-job/run-job.sh "Ejecutar trabajo")]
+[!code-azurecli[main](../../../cli_scripts/batch/run-job/run-job.sh "Run Job")]
 
 ## <a name="clean-up-job"></a>Limpieza de un trabajo
 
-Después de ejecutar el script de ejemplo anterior, ejecute el comando siguiente para quitar el trabajo y todas sus tareas. Tenga en cuenta que el grupo debe eliminarse por separado. Consulte [Administración de grupos de Azure Batch con la CLI de Azure](./batch-cli-sample-manage-pool.md) para obtener más información sobre cómo crear y eliminar grupos.
+Después de ejecutar Hola por encima de la secuencia de comandos de ejemplo, ejecute hello después comando tooremove el trabajo y todas sus tareas. Tenga en cuenta que el grupo de hello necesitará toobe eliminar por separado. Consulte [Administración de grupos de Azure Batch con la CLI de Azure](./batch-cli-sample-manage-pool.md) para obtener más información sobre cómo crear y eliminar grupos.
 
 ```azurecli
 az batch job delete --job-id myjob
@@ -45,7 +45,7 @@ az batch job delete --job-id myjob
 
 ## <a name="script-explanation"></a>Explicación del script
 
-Este script usa los siguientes comandos para crear un trabajo de Batch y las tareas. Cada comando de la tabla crea un vínculo a documentación específica de comando.
+Este script utiliza Hola después comandos toocreate un proceso por lotes y las tareas. Cada comando de la tabla de hello vincula documentación específica del toocommand.
 
 | Comando | Notas |
 |---|---|
@@ -53,12 +53,12 @@ Este script usa los siguientes comandos para crear un trabajo de Batch y las tar
 | [az batch job create](https://docs.microsoft.com/cli/azure/batch/job#create) | Crea un trabajo de Batch.  |
 | [az batch job set](https://docs.microsoft.com/cli/azure/batch/job#set) | Actualiza las propiedades de un trabajo de Batch.  |
 | [az batch job show](https://docs.microsoft.com/cli/azure/batch/job#show) | Recupera los detalles de un trabajo de Batch especificado.  |
-| [az batch task create](https://docs.microsoft.com/cli/azure/batch/task#create) | Agrega una tarea al trabajo de Batch especificado.  |
-| [az batch task show](https://docs.microsoft.com/cli/azure/batch/task#show) | Recupera los detalles de una tarea del trabajo de Batch especificado.  |
-| [az batch task list](https://docs.microsoft.com/cli/azure/batch/task#list) | Enumera las tareas asociadas con el trabajo especificado.  |
+| [az batch task create](https://docs.microsoft.com/cli/azure/batch/task#create) | Agrega que una tarea toohello especifica el trabajo por lotes.  |
+| [az batch task show](https://docs.microsoft.com/cli/azure/batch/task#show) | Recupera los detalles de Hola de una tarea de hello especifican trabajo por lotes.  |
+| [az batch task list](https://docs.microsoft.com/cli/azure/batch/task#list) | Muestra las tareas de hello asociadas con el trabajo especificado Hola.  |
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para más información sobre la CLI de Azure, consulte la [documentación de la CLI de Azure](https://docs.microsoft.com/cli/azure/overview).
+Para obtener más información sobre Hola CLI de Azure, consulte [documentación de Azure CLI](https://docs.microsoft.com/cli/azure/overview).
 
-Puede encontrar ejemplos de script adicionales de la CLI de Batch en la [documentación de la CLI de Azure Batch](../batch-cli-samples.md).
+Encontrará más ejemplos de secuencias de comandos de CLI de lote en hello [documentación de CLI de lote de Azure](../batch-cli-samples.md).

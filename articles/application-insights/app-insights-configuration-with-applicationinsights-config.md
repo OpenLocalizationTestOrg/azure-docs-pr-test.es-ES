@@ -1,5 +1,5 @@
 ---
-title: 'Referencia de ApplicationInsights.config: Azure | Microsoft Docs'
+title: referencia de aaaApplicationInsights.config - Azure | Documentos de Microsoft
 description: "Habilitación o deshabilitación de los módulos de recopilación de datos e incorporación de contadores de rendimiento y otros parámetros."
 services: application-insights
 documentationcenter: 
@@ -14,126 +14,126 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/3/2017
 ms.author: bwren
-ms.openlocfilehash: 7737f47d4181b5e920434f3a5372991efb58f63e
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 76cb11349d87dfc508ec8b1c454259a0b079c48a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Configuración del SDK de Application Insights con ApplicationInsights.config o .xml
-El SDK de Application Insights para .NET consta de varios paquetes de NuGet. El [paquete principal](http://www.nuget.org/packages/Microsoft.ApplicationInsights) proporciona la API para enviar telemetría a Application Insights. Los [paquetes adicionales](http://www.nuget.org/packages?q=Microsoft.ApplicationInsights) proporcionan *módulos* e *inicializadores* de telemetría para hacer un seguimiento automático de la aplicación y su contexto. Si ajusta el archivo de configuración, puede habilitar o deshabilitar los módulos e inicializadores de telemetría, y establecer los parámetros para algunos de ellos.
+# <a name="configuring-hello-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Configurar Hola Application Insights SDK con ApplicationInsights.config o .xml
+Hola Application Insights .NET SDK está formado por un número de paquetes de NuGet. El [paquete core](http://www.nuget.org/packages/Microsoft.ApplicationInsights) proporciona API de Hola para enviar telemetría a saludos Application Insights. Los [paquetes adicionales](http://www.nuget.org/packages?q=Microsoft.ApplicationInsights) proporcionan *módulos* e *inicializadores* de telemetría para hacer un seguimiento automático de la aplicación y su contexto. Ajustando el archivo de configuración de hello, puede habilitar o deshabilitar inicializadores y módulos de telemetría y establecer los parámetros para algunos de ellos.
 
-El archivo de configuración se denomina `ApplicationInsights.config` o `ApplicationInsights.xml`, dependiendo del tipo de la aplicación. Se agrega automáticamente al proyecto cuando se [instalan la mayoría de las versiones del SDK][start]. También se agrega a una aplicación web con el [Monitor de estado en un servidor IIS][redfield] o al seleccionar la [extensión de Application Insights para un sitio web o una máquina virtual de Azure](app-insights-azure-web-apps.md).
+se denomina archivo de configuración de Hello `ApplicationInsights.config` o `ApplicationInsights.xml`, según el tipo de saludo de la aplicación. Se agrega automáticamente tooyour proyecto cuando se [instalar la mayoría de las versiones de SDK de hello][start]. También se agrega tooa aplicación web [Monitor de estado en un servidor IIS][redfield], o cuando se selecciona la visión de la aplicación de hello [extensión para un sitio Web de Azure o la máquina virtual](app-insights-azure-web-apps.md).
 
-No hay un archivo equivalente para controlar el [SDK en una página web][client].
+No hay un Hola de toocontrol archivo equivalente [SDK en una página web][client].
 
-En este documento se describen las secciones que verá en el archivo de configuración, cómo controlan los componentes del SDK y qué paquetes NuGet cargan esos componentes.
+Este documento describe secciones Hola que verá en la configuración de Hola de archivos, cómo controlan los componentes de Hola de hello SDK, y los paquetes de NuGet cargar esos componentes.
 
 ## <a name="telemetry-modules-aspnet"></a>Módulos de telemetría (ASP.NET)
-Cada módulo de telemetría recopila un tipo específico de datos y usa la API principal para enviar dichos datos. Los módulos los instalan diferentes paquetes NuGet, que también agregan las líneas necesarias al archivo .config.
+Cada módulo de telemetría recopila un tipo específico de datos y la usa core Hola datos de API toosend Hola. Hola módulos se instalan diferentes paquetes de NuGet, que también agrega el archivo .config de hello líneas requeridas toohello.
 
-Hay un nodo en el archivo de configuración para cada módulo. Para deshabilitar un módulo, elimine el nodo o conviértalo en comentario.
+Hay un nodo en el archivo de configuración de Hola para cada módulo. toodisable un módulo, eliminar nodo de Hola o márquelo como comentario fuera.
 
 ### <a name="dependency-tracking"></a>Seguimiento de dependencia
-[Dependency tracking](app-insights-asp-net-dependencies.md) recopila la telemetría sobre las llamadas que realiza la aplicación a bases de datos y a servicios y bases de datos externos. Para permitir que este módulo funcione en un servidor IIS, deberá [instalar el Monitor de estado][redfield]. Para utilizarlo en aplicaciones web o máquinas virtuales de Azure, [seleccione la extensión Application Insights](app-insights-azure-web-apps.md).
+[Seguimiento de dependencias](app-insights-asp-net-dependencies.md) recopila telemetría acerca de las llamadas que la aplicación realiza toodatabases y servicios externos y las bases de datos. tooallow toowork de este módulo en un servidor IIS, necesita demasiado[instalar el Monitor de estado][redfield]. toouse en aplicaciones web de Azure o máquinas virtuales, [Seleccionar extensión de Application Insights hello](app-insights-azure-web-apps.md).
 
-También puede escribir su propio código de seguimiento de dependencias con la [API de TrackDependency](app-insights-api-custom-events-metrics.md#trackdependency).
+También puede escribir su propio código utilizando Hola de seguimiento de dependencias [TrackDependency API](app-insights-api-custom-events-metrics.md#trackdependency).
 
 * `Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule`
 * [Microsoft.ApplicationInsights.DependencyCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) .
 
 ### <a name="performance-collector"></a>Recopilador de rendimiento
-[Recopila contadores de rendimiento del sistema](app-insights-performance-counters.md) como CPU, memoria y carga de la red desde instalaciones de IIS. Puede especificar qué contadores recopilar, incluidos los contadores de rendimiento que ha configurado usted mismo.
+[Recopila contadores de rendimiento del sistema](app-insights-performance-counters.md) como CPU, memoria y carga de la red desde instalaciones de IIS. Puede especificar qué toocollect contadores, incluidos los contadores de rendimiento que se ha configurado manualmente.
 
 * `Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.PerformanceCollectorModule`
 * [Microsoft.ApplicationInsights.PerfCounterCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector) .
 
 ### <a name="application-insights-diagnostics-telemetry"></a>Telemetría de diagnósticos de Application Insights
-`DiagnosticsTelemetryModule` informa de errores en el propio código de instrumentación de Application Insights. Por ejemplo, si el código no puede tener acceso a los contadores de rendimiento o si un `ITelemetryInitializer` inicia una excepción. La telemetría de seguimiento que sigue este módulo aparece en la [Búsqueda de diagnóstico][diagnostic]. Envía datos de diagnóstico a dc.services.vsallin.net.
+Hola `DiagnosticsTelemetryModule` informa de errores en el propio código de instrumentación Application Insights Hola. Por ejemplo, si el código de hello no puede tener acceso a los contadores de rendimiento o un `ITelemetryInitializer` produce una excepción. Realiza un seguimiento por este módulo de telemetría de seguimiento aparece en hello [búsqueda diagnóstico][diagnostic]. Envía datos de diagnóstico toodc.services.vsallin.net.
 
 * `Microsoft.ApplicationInsights.Extensibility.Implementation.Tracing.DiagnosticsTelemetryModule`
-* [Microsoft.ApplicationInsights](http://www.nuget.org/packages/Microsoft.ApplicationInsights) . Si solamente se instala este paquete, el archivo ApplicationInsights.config no se crea automáticamente.
+* [Microsoft.ApplicationInsights](http://www.nuget.org/packages/Microsoft.ApplicationInsights) . Si instala solo este paquete, archivo de hello ApplicationInsights.config no se crea automáticamente.
 
 ### <a name="developer-mode"></a>Modo de programador
-`DeveloperModeWithDebuggerAttachedTelemetryModule` fuerza al `TelemetryChannel` de Application Insights a enviar los datos inmediatamente, elemento de telemetría a elemento, cuando se adjunta un depurador al proceso de aplicación. Esto reduce la cantidad de tiempo entre el momento en que la aplicación realiza un seguimiento de telemetría y el momento en que esta aparece en el portal de Application Insights. Esto provoca una sobrecarga considerable en la CPU y el ancho de banda.
+`DeveloperModeWithDebuggerAttachedTelemetryModule`fuerza Hola Application Insights `TelemetryChannel` toosend datos inmediatamente, elemento de telemetría de uno a la vez, cuando un depurador adjuntarán toohello proceso de la aplicación. Esto reduce la cantidad de Hola de tiempo entre el momento de hello cuando la aplicación realiza un seguimiento de telemetría y cuando aparece en el portal de Application Insights Hola. Esto provoca una sobrecarga considerable en la CPU y el ancho de banda.
 
 * `Microsoft.ApplicationInsights.WindowsServer.DeveloperModeWithDebuggerAttachedTelemetryModule`
-* [Application Insights Windows Server](http://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) 
+* [Application Insights Windows Server](http://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/)
 
 ### <a name="web-request-tracking"></a>Seguimiento de solicitud web
-Informa del [tiempo de respuesta y del código del resultado](app-insights-asp-net.md) de solicitudes HTTP.
+Hola informes [código de tiempo y el resultado de la respuesta](app-insights-asp-net.md) de solicitudes HTTP.
 
 * `Microsoft.ApplicationInsights.Web.RequestTrackingTelemetryModule`
-* [Microsoft.ApplicationInsights.Web](http://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) 
+* [Microsoft.ApplicationInsights.Web](http://www.nuget.org/packages/Microsoft.ApplicationInsights.Web)
 
 ### <a name="exception-tracking"></a>Seguimiento de excepciones
 `ExceptionTrackingTelemetryModule` realiza excepciones no controladas en la aplicación web. Consulte [Errores y excepciones][exceptions].
 
 * `Microsoft.ApplicationInsights.Web.ExceptionTrackingTelemetryModule`
-* [Microsoft.ApplicationInsights.Web](http://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) 
+* [Microsoft.ApplicationInsights.Web](http://www.nuget.org/packages/Microsoft.ApplicationInsights.Web)
 * `Microsoft.ApplicationInsights.WindowsServer.UnobservedExceptionTelemetryModule` - Realiza un seguimiento de [excepciones de tareas inadvertidas](http://blogs.msdn.com/b/pfxteam/archive/2011/09/28/task-exception-handling-in-net-4-5.aspx).
 * `Microsoft.ApplicationInsights.WindowsServer.UnhandledExceptionTelemetryModule` - Realiza un seguimiento de excepciones no controladas para roles de trabajo, servicios de Windows y aplicaciones de consola.
 * [Application Insights Windows Server](http://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) .
 
 ### <a name="eventsource-tracking"></a>Seguimiento de EventSource
-`EventSourceTelemetryModule` permite configurar eventos EventSource para enviarse a Application Insights como seguimientos. Para obtener información sobre el seguimiento de eventos EventSource, vea [Uso de eventos EventSource](app-insights-asp-net-trace-logs.md#using-eventsource-events).
+`EventSourceTelemetryModule`le permite tooconfigure EventSource eventos toobe enviado tooApplication visión como seguimientos. Para obtener información sobre el seguimiento de eventos EventSource, vea [Uso de eventos EventSource](app-insights-asp-net-trace-logs.md#using-eventsource-events).
 
 * `Microsoft.ApplicationInsights.EventSourceListener.EventSourceTelemetryModule`
 * [Microsoft.ApplicationInsights.EventSourceListener](http://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener) 
 
 ### <a name="etw-event-tracking"></a>Seguimiento de eventos ETW
-`EtwCollectorTelemetryModule` permite configurar eventos de proveedores ETW para enviarse a Application Insights como seguimientos. Para obtener información sobre el seguimiento de eventos ETW de seguimiento, vea [Uso de eventos ETW](app-insights-asp-net-trace-logs.md#using-etw-events).
+`EtwCollectorTelemetryModule`le permite tooconfigure eventos de ETW proveedores toobe enviado tooApplication visión como seguimientos. Para obtener información sobre el seguimiento de eventos ETW de seguimiento, vea [Uso de eventos ETW](app-insights-asp-net-trace-logs.md#using-etw-events).
 
 * `Microsoft.ApplicationInsights.EtwCollector.EtwCollectorTelemetryModule`
 * [Microsoft.ApplicationInsights.EtwCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector) 
 
 ### <a name="microsoftapplicationinsights"></a>Microsoft.ApplicationInsights
-El paquete Microsoft.ApplicationInsights proporciona la [API principal](https://msdn.microsoft.com/library/mt420197.aspx) del SDK. Los otros módulos de telemetría usan esto y también puede [usarlo usted mismo para definir su propia telemetría](app-insights-api-custom-events-metrics.md).
+paquete de Hola a Microsoft.ApplicationInsights proporciona hello [principales API](https://msdn.microsoft.com/library/mt420197.aspx) de hello SDK. Hello otros módulos de telemetría utilizan y también puede [usar toodefine su propio telemetría](app-insights-api-custom-events-metrics.md).
 
 * No hay entrada en ApplicationInsights.config.
 * [Microsoft.ApplicationInsights](http://www.nuget.org/packages/Microsoft.ApplicationInsights) . Si solamente instala este NuGet, no se genera ningún archivo .config.
 
 ## <a name="telemetry-channel"></a>Canal de telemetría
-El canal de telemetría administra el almacenamiento en búfer y la transmisión de telemetría al servicio Application Insights.
+canal de telemetría de Hello administra el almacenamiento en búfer y transmisión de telemetría toohello servicio Application Insights.
 
-* `Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel` es el canal predeterminado para servicios. Almacena en búfer los datos de la memoria.
-* `Microsoft.ApplicationInsights.PersistenceChannel` es una alternativa para aplicaciones de consola. Pueden guardar los datos no vaciados en almacenamiento persistente cuando la aplicación se cierre y se enviarán cuando la aplicación se inicie de nuevo.
+* `Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel`es el canal de hello predeterminado para los servicios. Almacena en búfer los datos de la memoria.
+* `Microsoft.ApplicationInsights.PersistenceChannel` es una alternativa para aplicaciones de consola. Puede guardar cualquier almacenamiento de datos unflushed toopersistent cuando la aplicación cierra y enviará cuando la aplicación hello se inicia de nuevo.
 
 ## <a name="telemetry-initializers-aspnet"></a>Inicializadores de telemetría (ASP.NET)
 Los inicializadores de telemetría establecen propiedades de contexto que se envían junto con todos los elementos de telemetría.
 
-También puede [escribir sus propios inicializadores](app-insights-api-filtering-sampling.md#add-properties) para establecer propiedades de contexto.
+También puede [escribir sus propios inicializadores](app-insights-api-filtering-sampling.md#add-properties) tooset las propiedades de contexto.
 
-Los inicializadores estándar están todos establecidos por los paquetes NuGet web o  WindowsServer:
+inicializadores de Hello estándar se configuraron todos haciendo hello Web o WindowsServer NuGet paquetes:
 
-* `AccountIdTelemetryInitializer` establece la propiedad AccountId.
-* `AuthenticatedUserIdTelemetryInitializer` establece la propiedad AuthenticatedUserId establecida por el SDK de JavaScript.
-* `AzureRoleEnvironmentTelemetryInitializer` actualiza las propiedades `RoleName` y `RoleInstance` del contexto `Device` para todos los elementos de telemetría con información extraída del entorno de tiempo de ejecución de Azure.
-* `BuildInfoConfigComponentVersionTelemetryInitializer` actualiza la propiedad `Version` del contexto `Component` para todos los elementos de telemetría con el valor extraído del archivo `BuildInfo.config` que produce MS Build.
-* `ClientIpHeaderTelemetryInitializer` actualiza la propiedad `Ip` del contexto `Location` de todos los elementos de telemetría según el encabezado HTTP `X-Forwarded-For` de la solicitud.
-* `DeviceTelemetryInitializer` actualiza las propiedades siguientes del contexto `Device` para todos los elementos de telemetría.
-  * `Type` se establece en "PC".
-  * `Id` se establece en el nombre de dominio del equipo donde se ejecuta la aplicación web.
-  * `OemName` se establece en el valor extraído del campo `Win32_ComputerSystem.Manufacturer` con WMI.
-  * `Model` se establece en el valor extraído del campo `Win32_ComputerSystem.Model` con WMI.
-  * `NetworkType` se establece en el valor extraído de `NetworkInterface`.
-  * `Language` se establece en el nombre de `CurrentCulture`.
-* `DomainNameRoleInstanceTelemetryInitializer` actualiza la propiedad `RoleInstance` del contexto `Device` para todos los elementos de telemetría con el nombre de dominio del equipo donde se ejecuta la aplicación web.
-* `OperationNameTelemetryInitializer` actualiza la propiedad `Name` de la propiedad `RequestTelemetry` y `Name` propiedad del contexto `Operation` de todos los elementos de telemetría según el método HTTP, así como los nombres del controlador MVC de ASP.NET y la acción que se invoca para procesar la solicitud.
-* `OperationIdTelemetryInitializer` o `OperationCorrelationTelemetryInitializer` actualizan la propiedad de contexto `Operation.Id` de todos los elementos de telemetría de los que se realiza un seguimiento mientras se controla una solicitud con el `RequestTelemetry.Id` que se genera.
-* `SessionTelemetryInitializer` actualiza la propiedad `Id` del contexto `Session` para todos los elementos de telemetría con valor extraído de la cookie `ai_session` que genera el código de instrumentación JavaScript de Application Insights que se ejecuta en el explorador del usuario.
-* `SyntheticTelemetryInitializer` o `SyntheticUserAgentTelemetryInitializer` actualizan las propiedades de los contextos `User`, `Session` y `Operation` de todos los elementos de telemetría de los que se realiza un seguimiento al tratar una solicitud de un origen sintético, como una prueba de disponibilidad o un bot de motor de búsqueda. De forma predeterminada, [Explorador de métricas](app-insights-metrics-explorer.md) no muestra telemetría sintética.
+* `AccountIdTelemetryInitializer`establece la propiedad de identificador de cuenta de hello.
+* `AuthenticatedUserIdTelemetryInitializer`establece hello AuthenticatedUserId propiedad como conjunto Hola SDK de JavaScript.
+* `AzureRoleEnvironmentTelemetryInitializer`Hola actualizaciones `RoleName` y `RoleInstance` propiedades de hello `Device` contexto para todos los elementos de telemetría con la información extraída del entorno de Azure en tiempo de ejecución de Hola.
+* `BuildInfoConfigComponentVersionTelemetryInitializer`Hola actualizaciones `Version` propiedad de hello `Component` contexto para todos los elementos de telemetría con valor de hello extraído de hello `BuildInfo.config` archivo generado por MS Build.
+* `ClientIpHeaderTelemetryInitializer`actualizaciones `Ip` propiedad de hello `Location` según el contexto de todos los elementos de telemetría hello `X-Forwarded-For` encabezado HTTP de solicitud de saludo.
+* `DeviceTelemetryInitializer`Hola de las actualizaciones siguientes propiedades de hello `Device` contexto para todos los elementos de telemetría.
+  * `Type`se establece demasiado "PC"
+  * `Id`se establece toohello nombre de dominio Hola equipo donde se ejecuta la aplicación web de hello.
+  * `OemName`está establecido el valor de toohello extraído de hello `Win32_ComputerSystem.Manufacturer` campo mediante WMI.
+  * `Model`está establecido el valor de toohello extraído de hello `Win32_ComputerSystem.Model` campo mediante WMI.
+  * `NetworkType`está establecido el valor de toohello extraído de hello `NetworkInterface`.
+  * `Language`se establece el nombre toohello de hello `CurrentCulture`.
+* `DomainNameRoleInstanceTelemetryInitializer`Hola actualizaciones `RoleInstance` propiedad de hello `Device` contexto para todos los elementos de telemetría con el nombre de dominio de hello del equipo de Hola donde se ejecuta la aplicación web de hello.
+* `OperationNameTelemetryInitializer`Hola actualizaciones `Name` propiedad de hello `RequestTelemetry` hello y `Name` propiedad de hello `Operation` contexto de todos los elementos de telemetría basado en método hello HTTP, así como nombres de Hola de tooprocess invocado de acción y controlador de MVC de ASP.NET solicitud.
+* `OperationIdTelemetryInitializer`o `OperationCorrelationTelemetryInitializer` Hola actualizaciones `Operation.Id` realiza el seguimiento de propiedad de contexto de todos los elementos de telemetría al controlar una solicitud con hello generada automáticamente `RequestTelemetry.Id`.
+* `SessionTelemetryInitializer`Hola actualizaciones `Id` propiedad de hello `Session` contexto para todos los elementos de telemetría con valor extraído de hello `ai_session` cookie generados por hello código de instrumentación ApplicationInsights JavaScript ejecuta en el explorador del usuario de Hola.
+* `SyntheticTelemetryInitializer`o `SyntheticUserAgentTelemetryInitializer` Hola actualizaciones `User`, `Session` y `Operation` realiza el seguimiento de propiedades de contextos de todos los elementos de telemetría cuando controla una solicitud de una fuente sintética, como una disponibilidad de prueba o bot de motor de búsqueda. De forma predeterminada, [Explorador de métricas](app-insights-metrics-explorer.md) no muestra telemetría sintética.
 
-    Conjunto de `<Filters>` que identifica las propiedades de las solicitudes.
-* `UserAgentTelemetryInitializer` actualiza la propiedad `UserAgent` del contexto `User` de todos los elementos de telemetría según el encabezado HTTP `User-Agent` de la solicitud.
-* `UserTelemetryInitializer` actualiza las propiedades `Id` y `AcquisitionDate` del contexto `User` para todos los elementos de telemetría con valores extraídos de la cookie `ai_user` que genera el código de instrumentación JavaScript de Application Insights que se ejecuta en el explorador del usuario.
-* `WebTestTelemetryInitializer` establece el identificador de usuario, el identificador de sesión y las propiedades de origen sintético de las solicitudes HTTP que proceden de [pruebas de disponibilidad](app-insights-monitor-web-app-availability.md).
-  Conjunto de `<Filters>` que identifica las propiedades de las solicitudes.
+    Hola `<Filters>` establece la identificación de propiedades de las solicitudes de Hola.
+* `UserAgentTelemetryInitializer`Hola actualizaciones `UserAgent` propiedad de hello `User` según el contexto de todos los elementos de telemetría hello `User-Agent` encabezado HTTP de solicitud de Hola.
+* `UserTelemetryInitializer`Hola actualizaciones `Id` y `AcquisitionDate` propiedades de `User` contexto para todos los elementos de telemetría con los valores extraídos de hello `ai_user` cookie generada por código de instrumentación de Application Insights JavaScript Hola ejecutando Hola explorador del usuario.
+* `WebTestTelemetryInitializer`conjuntos de Hola Id. de usuario, Id. de sesión y propiedades de origen sintético para solicitudes HTTP que vienen de [pruebas de disponibilidad](app-insights-monitor-web-app-availability.md).
+  Hola `<Filters>` establece la identificación de propiedades de las solicitudes de Hola.
 
-Para aplicaciones de .NET que se ejecutan en Service Fabric, puede incluir el paquete de NuGet `Microsoft.ApplicationInsights.ServiceFabric`. Este paquete incluye `FabricTelemetryInitializer`, que agrega propiedades de Service Fabric a elementos de telemetría. Para obtener más información, consulte la [página de GitHub](https://go.microsoft.com/fwlink/?linkid=848457) sobre las propiedades que agrega este paquete de NuGet.
+Para aplicaciones de .NET que se ejecutan en el tejido de servicio, puede incluir hello `Microsoft.ApplicationInsights.ServiceFabric` paquete NuGet. Este paquete incluye un `FabricTelemetryInitializer`, que agrega elementos de tootelemetry de propiedades de Service Fabric. Para obtener más información, vea hello [página de GitHub](https://go.microsoft.com/fwlink/?linkid=848457) acerca de las propiedades de hello agregadas por este paquete de NuGet.
 
 ## <a name="telemetry-processors-aspnet"></a>Procesadores de telemetría (ASP.NET)
-Los procesadores de telemetría pueden filtrar y modificar cada elemento de telemetría justo antes de que se envíe desde el SDK al portal.
+Pueden filtrar y modificar cada elemento de telemetría justo antes de que se envía desde el portal de hello SDK toohello procesadores de telemetría.
 
 También puede [escribir sus propios procesadores de telemetría](app-insights-api-filtering-sampling.md#filtering).
 
@@ -150,7 +150,7 @@ Esta opción está habilitada de manera predeterminada. Si la aplicación envía
 
 ```
 
-El parámetro proporciona el destino que el algoritmo intenta alcanzar. Cada instancia del SDK funciona de forma independiente, por lo que si el servidor es un clúster de varios equipos, se multiplicará el volumen real de telemetría en consonancia.
+parámetro Hello proporciona destino Hola Hola algoritmo intenta tooachieve. Cada instancia de hello SDK funciona de forma independiente, por lo que si el servidor es un clúster de varios equipos, el volumen real de Hola de telemetría se multiplicará según corresponda.
 
 [Obtenga más información sobre el muestreo](app-insights-sampling.md).
 
@@ -162,7 +162,7 @@ También hay un [procesador de telemetría de muestreo](app-insights-api-filteri
     <TelemetryProcessors>
      <Add Type="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.SamplingTelemetryProcessor, Microsoft.AI.ServerTelemetryChannel">
 
-     <!-- Set a percentage close to 100/N where N is an integer. -->
+     <!-- Set a percentage close too100/N where N is an integer. -->
      <!-- E.g. 50 (=100/2), 33.33 (=100/3), 25 (=100/4), 20, 1 (=100/100), 0.1 (=100/1000) -->
      <SamplingPercentage>10</SamplingPercentage>
      </Add>
@@ -173,10 +173,10 @@ También hay un [procesador de telemetría de muestreo](app-insights-api-filteri
 
 
 ## <a name="channel-parameters-java"></a>Parámetros de canal (Java)
-Estos parámetros afectan al modo en que el SDK de Java debe almacenar y vaciar los datos de telemetría que recopila.
+Estos parámetros afectan a cómo debe almacenar y vaciar los datos de telemetría de Hola que recopila Hola SDK de Java.
 
 #### <a name="maxtelemetrybuffercapacity"></a>MaxTelemetryBufferCapacity
-El número de elementos de telemetría que pueden almacenarse en el almacenamiento del SDK en memoria. Cuando se alcanza este número, se vacía el búfer de telemetría; es decir, los elementos de telemetría se envían al servidor de Application Insights.
+número de Hola de elementos de telemetría que pueden almacenarse en el almacenamiento en memoria del SDK de Hola. Cuando se alcanza este número, se vacía el búfer de telemetría de hello: es decir, los elementos de telemetría de Hola se envían toohello servidor de Application Insights.
 
 * Mín: 1
 * Máx: 1000
@@ -194,7 +194,7 @@ El número de elementos de telemetría que pueden almacenarse en el almacenamien
 ```
 
 #### <a name="flushintervalinseconds"></a>FlushIntervalInSeconds
-Determina la frecuencia con que los datos almacenados en el almacenamiento en memoria deben vaciarse (enviarse a Application Insights).
+Determina la frecuencia con hello datos que están almacenados en el almacenamiento en memoria de Hola deberían estar vació (enviado tooApplication visión).
 
 * Mín: 1
 * Máx: 300
@@ -212,7 +212,7 @@ Determina la frecuencia con que los datos almacenados en el almacenamiento en me
 ```
 
 #### <a name="maxtransmissionstoragecapacityinmb"></a>MaxTransmissionStorageCapacityInMB
-Determina el tamaño máximo en MB que se asigna al almacenamiento persistente en el disco local. Este almacenamiento se utiliza para conservar los elementos de telemetría que no pudieron transmitirse al extremo de Application Insights. Cuando se ha alcanzado el tamaño de almacenamiento, se descartarán los nuevos elementos de telemetría.
+Determina el tamaño máximo de hello en MB que se asigna a un almacenamiento persistente en el disco local de hello toohello. Este almacenamiento se utiliza para almacenar elementos de telemetría que dieron error toobe transmitida toohello Application Insights extremo. Cuando se ha cumplido el tamaño de almacenamiento de hello, se descartarán los nuevos elementos de telemetría.
 
 * Mín: 1
 * Máx: 100
@@ -232,11 +232,11 @@ Determina el tamaño máximo en MB que se asigna al almacenamiento persistente e
 
 
 ## <a name="instrumentationkey"></a>InstrumentationKey
-Esto determina el recurso de Application Insights en el que aparecen los datos. Normalmente se crea un recurso independiente, con una clave independiente, para cada una de las aplicaciones.
+Esto determina los recursos de Application Insights de hello en el que aparecen los datos. Normalmente se crea un recurso independiente, con una clave independiente, para cada una de las aplicaciones.
 
-Si desea establecer la clave de forma dinámica (por ejemplo, si desea enviar los resultados de su aplicación a distintos recursos) puede omitir la clave del archivo de configuración y establecerla en el código.
+Si desea tooset Hola clave dinámicamente: por ejemplo, si desea que los resultados de toosend de sus recursos de aplicación toodifferent - puede omitir clave Hola Hola del archivo de configuración y establecer en el código.
 
-Para establecer la clave de todas las instancias de TelemetryClient, incluidos los módulos de telemetría estándar, establezca la clave en TelemetryConfiguration.Active. Hágalo en un método de inicialización, como global.aspx.cs, en un servicio de ASP.NET:
+clave de hello tooset para todas las instancias de TelemetryClient, incluidos los módulos de telemetría estándar, Establece clave hello en TelemetryConfiguration.Active. Hágalo en un método de inicialización, como global.aspx.cs, en un servicio de ASP.NET:
 
 ```C#
 
@@ -249,7 +249,7 @@ Para establecer la clave de todas las instancias de TelemetryClient, incluidos l
       //...
 ```
 
-Si solo desea enviar un conjunto específico de eventos a un recurso diferente, puede establecer la clave para un TelemetryClient específico:
+Si su intención es toosend un conjunto específico de recursos distinto de tooa de eventos, puede establecer clave Hola para un TelemetryClient específica:
 
 ```C#
 
@@ -260,10 +260,10 @@ Si solo desea enviar un conjunto específico de eventos a un recurso diferente, 
 
 ```
 
-Para obtener una nueva clave, [cree un nuevo recurso en el portal de Application Insights][new].
+una nueva clave, tooget [crear un nuevo recurso en el portal de Application Insights hello][new].
 
 ## <a name="next-steps"></a>Pasos siguientes
-[Más información acerca de la API][api].
+[Obtener más información sobre la API de hello][api].
 
 <!--Link references-->
 

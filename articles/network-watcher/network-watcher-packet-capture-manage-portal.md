@@ -1,6 +1,6 @@
 ---
-title: "Administración de capturas de paquetes con Azure Network Watcher: Azure Portal | Microsoft Docs"
-description: "En esta página se explica cómo administrar la característica de captura de paquetes de Network Watcher mediante Azure Portal"
+title: 'captura de paquetes de aaaManage con Monitor de red de Azure: portal de Azure | Documentos de Microsoft'
+description: "Esta página explica cómo toomanage Hola característica de captura de paquetes de Monitor de red mediante el portal de Azure"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-ms.openlocfilehash: 33390532cc4fc1129a4f960d589f41bc95e5a1ff
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 431b145ee215b8d9421fb2aacdce08a0de90b35e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>Administración de capturas de paquetes con Azure Network Watcher mediante Azure Portal
+# <a name="manage-packet-captures-with-azure-network-watcher-using-hello-portal"></a>Administrar capturas de paquetes con Monitor de red de Azure mediante el portal de Hola
 
 > [!div class="op_single_selector"]
 > - [Portal de Azure](network-watcher-packet-capture-manage-portal.md)
@@ -29,9 +29,9 @@ ms.lasthandoff: 07/11/2017
 > - [CLI 2.0](network-watcher-packet-capture-manage-cli.md)
 > - [API de REST de Azure](network-watcher-packet-capture-manage-rest.md)
 
-La captura de paquetes de Network Watcher permite crear sesiones de captura para realizar el seguimiento del tráfico hacia y desde una máquina virtual. La sesión de captura cuenta con filtros para asegurarse de capturar solo el tráfico que se desea. La captura de paquetes ayuda a diagnosticar anomalías de la red, tanto de forma activa como reactiva. Otros usos son la recopilación de estadísticas de red, la obtención de información sobre las intrusiones de red y la depuración de las comunicaciones cliente-servidor, entre otros. Esta funcionalidad permite desencadenar capturas de paquetes de forma remota, lo que reduce la carga de tener que ejecutar una captura de paquetes manualmente y en el equipo deseado, y permite ahorrar tiempo.
+Captura de paquetes de Monitor de red le permite toocreate captura sesiones tootrack tráfico tooand desde una máquina virtual. Los filtros se proporcionan para tooensure de sesión de captura de hello que capturar solamente el tráfico de Hola que desee. Captura de paquetes le ayuda a anomalías de la red toodiagnose tanto de forma reactiva y proactiva. Otros usos incluyen la recopilación de estadísticas de red, obtenga información sobre las intrusiones de red, toodebug cliente-servidor las comunicaciones y mucho más. Al ser capaz de tooremotely capturas de paquetes de desencadenador, esta capacidad reduce la carga de Hola de una captura de paquetes en ejecución en el equipo deseado de hello, que permite ahorrar tiempo y manualmente.
 
-Este artículo le guiará por las diferentes tareas de administración que están actualmente disponibles para la captura de paquetes.
+En este artículo le guiará Hola diferentes tareas de administración que están actualmente disponibles para la captura de paquetes.
 
 - [**Inicio de una captura de paquetes**](#start-a-packet-capture)
 - [**Detención de una captura de paquetes**](#stop-a-packet-capture)
@@ -40,103 +40,103 @@ Este artículo le guiará por las diferentes tareas de administración que está
 
 ## <a name="before-you-begin"></a>Antes de empezar
 
-En este artículo se da por hecho que tiene los siguientes recursos:
+Este artículo se supone que dispone de hello recursos siguientes:
 
-- Una instancia de Network Watcher en la región donde desea crear una captura de paquetes
-- Una máquina virtual con la extensión de captura de paquetes habilitada.
+- Una instancia del Monitor de red en la región de Hola que desea toocreate una captura de paquetes
+- Una máquina virtual con el paquete de saludo capturar extensión habilitada.
 
 > [!IMPORTANT]
-> La captura de paquetes requiere una extensión de máquina virtual `AzureNetworkWatcherExtension`. Para instalar la extensión en una máquina virtual Windows, consulte [Extensión de máquina virtual del agente de Azure Network Watcher para Windows](../virtual-machines/windows/extensions-nwa.md), y en una máquina virtual con Linux, consulte [Extensión de máquina virtual del agente de Azure Network Watcher para Linux](../virtual-machines/linux/extensions-nwa.md).
+> La captura de paquetes requiere una extensión de máquina virtual `AzureNetworkWatcherExtension`. Para instalar la extensión de hello en una máquina virtual de Windows, visite [extensión de máquina virtual de agente de Monitor de red de Azure para Windows](../virtual-machines/windows/extensions-nwa.md) y para la visita de VM de Linux [extensión de máquina virtual de agente de Monitor de red de Azure para Linux](../virtual-machines/linux/extensions-nwa.md).
 
-### <a name="packet-capture-agent-extension-through-the-portal"></a>Extensión del agente de captura de paquetes a través del portal
+### <a name="packet-capture-agent-extension-through-hello-portal"></a>Extensión del agente de captura de paquetes a través del portal de Hola
 
-Para instalar el agente de captura de paquetes de máquina virtual a través del portal, vaya a la máquina virtual, haga clic en **Extensiones** > **Agregar** y busque **Agente para Windows de Network Watcher**
+captura de paquetes de saludo tooinstall agente de máquina virtual a través del portal de hello, navegar por la máquina virtual de tooyour, haga clic en **extensiones** > **agregar** y busque **agente del Monitor de red para Windows**
 
 ![Vista del agente][agent]
 
 ## <a name="packet-capture-overview"></a>Introducción a la captura de paquetes
 
-Navegue hasta [Azure Portal](https://portal.azure.com) y haga clic en **Redes** > **Network Watcher** > **Captura de paquetes**
+Navegue toohello [portal de Azure](https://portal.azure.com) y haga clic en **red** > **Monitor de red** > **de captura de paquetes**
 
-La página de información general muestra una lista de todos los paquetes que existen independientemente de su estado.
+página de información general de Hello muestra una lista de todos los paquetes que existen independientemente del estado de hello captura.
 
 > [!NOTE]
-> La captura de paquetes requiere conectividad a la cuenta de almacenamiento a través del puerto 443.
+> Captura de paquetes requiere la cuenta de almacenamiento de toohello de conectividad en el puerto 443.
 
 ![Pantalla de introducción a la captura de paquetes][1]
 
 ## <a name="start-a-packet-capture"></a>Inicio de una captura de paquetes
 
-Haga clic en **Agregar** para crear una captura de paquetes.
+Haga clic en **agregar** toocreate una captura de paquetes.
 
-Las propiedades que se pueden definir en una captura de paquetes son:
+Hola las propiedades que se pueden definir en una captura de paquetes son:
 
 **Configuración principal**
 
-- **Suscripción**: este valor es la suscripción que se utiliza, se necesita una instancia de Network Watcher en cada suscripción.
-- **Grupo de recursos**: el grupo de recursos de destino de la máquina virtual.
-- **Máquina virtual de destino**: la máquina virtual que está ejecutando la captura de paquetes.
-- **Nombre de la captura de paquetes**: este valor es el nombre de la captura de paquetes.
+- **Suscripción** -este valor es la suscripción de Hola que se usa, se necesita una instancia del Monitor de red en cada suscripción.
+- **Grupo de recursos** -grupo de recursos de Hola de máquina virtual de Hola que se destina.
+- **Máquina virtual de destino** -Hola máquina que se está ejecutando la captura de paquetes de saludo
+- **Nombre de la captura de paquetes** -este valor es el nombre de Hola de captura de paquetes de saludo.
 
 **Configuración de captura**
 
 - **Cuenta de almacenamiento**: determina si la captura de paquetes se guarda en una cuenta de almacenamiento.
-- **Archivo**: determina si una captura de paquetes se guarda localmente en la máquina virtual.
-- **Cuentas de almacenamiento**: la cuenta de almacenamiento seleccionada para guardar la captura de paquetes. La ubicación predeterminada es https://{nombre de la cuenta de almacenamiento}.blob.core.windows.net/network-watcher-logs/subscriptions/{subscription id}/resourcegroups/{nombre del grupo de recursos}/providers/microsoft.compute/virtualmachines/{nombre de la máquina virtual}/{YY}/{MM}/{DD}/packetcapture_{HH}_{MM}_{SS}_{XXX}.cap. (Solo se habilita si está seleccionada la opción **Almacenamiento**)
-- **Ruta de acceso de archivo local**: la ruta de acceso local en una máquina virtual para guardar la captura de paquetes. (Solo se habilita si está seleccionada la opción **Archivo**). Se tiene que proporcionar una ruta de acceso válida
-- **Número máximo de bytes por paquete**: el número de bytes de cada paquete que se captura, si se deja en blanco se capturan todos los bytes.
-- **Número máximo de bytes por sesión**: número total de bytes que se capturan, una vez que se alcanza este valor la captura de paquetes se detiene.
-- **Límite de tiempo (segundos)**: establece un límite de tiempo para detener la captura del paquete. El valor predeterminado es 18 000 segundos.
+- **Archivo** -determina si una captura de paquetes se guarda localmente en la máquina virtual de Hola.
+- **Las cuentas de almacenamiento** -Hola seleccionado captura de paquetes de almacenamiento cuenta toosave hello en. La ubicación predeterminada es https://{nombre de la cuenta de almacenamiento}.blob.core.windows.net/network-watcher-logs/subscriptions/{subscription id}/resourcegroups/{nombre del grupo de recursos}/providers/microsoft.compute/virtualmachines/{nombre de la máquina virtual}/{YY}/{MM}/{DD}/packetcapture_{HH}_{MM}_{SS}_{XXX}.cap. (Solo se habilita si está seleccionada la opción **Almacenamiento**)
+- **Ruta de acceso de archivo local** -ruta de acceso local de hello en una captura de paquetes de máquina virtual toosave Hola. (Solo se habilita si está seleccionada la opción **Archivo**). Se tiene que proporcionar una ruta de acceso válida
+- **Número máximo de bytes por paquete** -Hola número de bytes de cada paquete que se capturan, se capturan todos los bytes si se deja en blanco.
+- **Número máximo de bytes por sesión** : Total número de bytes que se capturan, una vez que se alcanza el valor de hello deja de captura de paquetes de Hola.
+- **Límite de tiempo (segundos)** -establece un límite de tiempo para toostop de captura de paquetes de saludo. El valor predeterminado es 18 000 segundos.
 
 > [!NOTE]
 > Actualmente las cuentas de Premium Storage no se admiten para almacenar paquetes de captura.
 
 **Filtrado (opcional)**
 
-- **Protocolo**: el protocolo para filtrar la captura de paquetes. Los valores disponibles son TCP, UDP y Any (cualquiera).
-- **Dirección IP local**: este valor filtra la captura de paquetes a los paquetes en los que la dirección IP local coincide con este valor de filtro.
-- **Puerto local**: este valor filtra la captura de paquetes a los paquetes en los que el puerto local coincide con este valor de filtro.
-- **Dirección IP remota**: este valor filtra la captura de paquetes a los paquetes en los que la dirección IP remota coincide con este valor de filtro.
-- **Puerto remoto**: este valor filtra la captura de paquetes a los paquetes en los que el puerto remoto coincide con este valor de filtro.
+- **Protocolo** -Hola toofilter de protocolo para la captura de paquetes de saludo. los valores disponibles de Hello son TCP, UDP y ninguno.
+- **La dirección IP local** -este valor filtra toopackets de captura de paquetes de saludo donde la dirección IP local Hola coincide con este valor de filtro.
+- **Puerto local** -este valor filtra toopackets de captura de paquetes de saludo donde puerto local Hola coincide con este valor de filtro.
+- **Dirección IP remota** -este valor filtra toopackets de captura de paquetes de saludo donde hello remoto IP coincide con este valor de filtro.
+- **Puerto remoto** -este valor filtra toopackets de captura de paquetes de saludo donde puerto remoto hello coincide con este valor de filtro.
 
 > [!NOTE]
 > Los valores de dirección IP y puerto pueden ser un solo valor, un rango de valores o un conjunto. (es decir, 80-1024 para el puerto) Puede definir tantos filtros como desee.
 
-Una vez que se rellenan los valores, haga clic en **Aceptar** para crear la captura de paquetes.
+Una vez que se rellenan los valores de hello, haga clic en **Aceptar** toocreate captura de paquetes de saludo.
 
 ![Creación de una captura de paquetes][2]
 
-Una vez que haya transcurrido el límite de tiempo establecido en la captura de paquetes, esta se detendrá y se podrá revisar. También puede detener manualmente las sesiones de captura de paquetes.
+Después de establecer el límite de tiempo de hello en captura de paquetes de saludo ha expirado, captura de paquetes de saludo se detendrá y se puedan revisar. También puede detener manualmente sesiones de capturas de paquetes de Hola.
 
 ## <a name="delete-a-packet-capture"></a>Eliminación de una captura de paquetes
 
-En la vista de captura de paquetes, haga clic en el **menú contextual** (...) o haga clic con el botón derecho y haga clic en **Eliminar** para detener la captura de paquetes
+Paquete de saludo capturar vista, haga clic en hello **menú contextual** (...) o haga clic en y haga clic en **eliminar** captura de paquetes de saludo toostop
 
 ![Eliminación de una captura de paquetes][3]
 
 > [!NOTE]
-> La eliminación de una captura de paquetes no elimina el archivo en la cuenta de almacenamiento.
+> Eliminar una captura de paquetes no elimina archivos hello en la cuenta de almacenamiento de Hola.
 
-Se le pide que confirme que desea eliminar la captura de paquetes, haga clic en **Sí**
+Se le pide tooconfirm desea toodelete captura de paquetes de saludo, haga clic en **sí**
 
 ![Confirmación][4]
 
 ## <a name="stop-a-packet-capture"></a>Detención de una captura de paquetes
 
-En la vista de captura de paquetes, haga clic en el **menú contextual** (...) o haga clic con el botón derecho y haga clic en **Detener** para detener la captura de paquetes
+Paquete de saludo capturar vista, haga clic en hello **menú contextual** (...) o haga clic en y haga clic en **detener** captura de paquetes de saludo toostop
 
 ## <a name="download-a-packet-capture"></a>Descarga de una captura de paquetes
 
-Una vez finalizada la sesión de captura de paquetes, el archivo de captura se carga en Blob Storage o en un archivo local en la máquina virtual. La ubicación de almacenamiento de la captura de paquetes se define al crear la sesión. Una herramienta práctica para acceder a estos archivos de captura guardados en una cuenta de almacenamiento es el Explorador de Microsoft Azure Storage, que puede descargarse aquí: http://storageexplorer.com/
+Una vez que haya finalizado la sesión de captura de paquetes, Hola captura archivo es tooblob cargado tooa o almacenamiento local en hello máquina virtual. ubicación de almacenamiento de Hola de captura de paquetes de saludo se define en la creación de sesión de Hola. Una herramienta adecuada tooaccess estos capturar los archivos de cuenta de almacenamiento de tooa guardado es Microsoft Azure Storage Explorer, que puede descargarse aquí: http://storageexplorer.com/
 
-Si se especifica una cuenta de almacenamiento, los archivos de captura de paquetes se guardan en una cuenta de almacenamiento en la siguiente ubicación:
+Si se especifica una cuenta de almacenamiento, archivos de captura de paquetes se guardan tooa cuenta de almacenamiento en hello ubicación siguiente:
 ```
 https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscriptions/{subscriptionId}/resourcegroups/{storageAccountResourceGroup}/providers/microsoft.compute/virtualmachines/{VMName}/{year}/{month}/{day}/packetCapture_{creationTime}.cap
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Aprenda a automatizar capturas de paquetes con las alertas de máquina virtual en el artículo sobre cómo [crear una captura de paquetes desencadenada por alertas](network-watcher-alert-triggered-packet-capture.md)
+Obtenga información acerca de la captura de paquetes de tooautomate con las alertas de la máquina Virtual mediante la visualización [crear una captura de paquetes desencadenadas alerta](network-watcher-alert-triggered-packet-capture.md)
 
 Para comprobar si se permite cierto tráfico hacia o desde la máquina virtual, vea cómo [consultar la Comprobación del flujo de IP](network-watcher-check-ip-flow-verify-portal.md)
 

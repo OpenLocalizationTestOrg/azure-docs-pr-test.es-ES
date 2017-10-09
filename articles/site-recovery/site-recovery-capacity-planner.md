@@ -1,6 +1,6 @@
 ---
-title: "Estimación de la capacidad de replicación en Azure | Microsoft Docs"
-description: "Use este artículo para hacer estimaciones cuando se realizan replicaciones con Azure Site Recovery."
+title: "capacidad de replicación de aaaEstimate en Azure | Documentos de Microsoft"
+description: "Utilizar esta capacidad de tooestimate de artículo al replicar con Azure Site Recovery"
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -14,115 +14,115 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: nisoneji
-ms.openlocfilehash: 134e17ebda3105be2b53d072fdef7aeda4a98bde
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 54d10e50dd4fc1b875273c7fc0f38f0e85dadddc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="plan-capacity-for-protecting-virtual-machines-and-physical-servers-in-azure-site-recovery"></a>Planeación de la capacidad para la protección de máquinas virtuales y de los servidores físicos en Azure Site Recovery
 
-La herramienta Azure Site Recovery Capacity Planner lo ayuda a determinar los requisitos de capacidad para replicar máquinas virtuales de Hyper-V, máquinas virtuales de VMware y servidores físicos de Windows/Linux con Azure Site Recovery.
+herramienta de programador de capacidad de recuperación de sitio de Azure Hola ayuda a toofigure a sus necesidades de capacidad al replicar las máquinas virtuales de Hyper-V, máquinas virtuales de VMware y servidores físicos de Windows o Linux, con Azure Site Recovery.
 
-Use Capacity Planner de Site Recovery para analizar el entorno de origen y las cargas de trabajo, calcular las necesidades de ancho de banda, los recursos de servidor que necesita en la ubicación de origen y los recursos (máquinas virtuales y almacenamiento, etc.) que necesitará en su ubicación de destino.
+Usar Hola planificador de capacidad de recuperación de sitio tooanalyze su entorno de origen y las cargas de trabajo, calcular las necesidades de ancho de banda y recursos del servidor que necesitará para la ubicación de origen de Hola y recursos de hello (máquinas virtuales y almacenamiento etcetera), que necesita en el destino de Hola ubicación.
 
-Puede ejecutar la herramienta de dos modos distintos:
+Puede ejecutar la herramienta Hola de dos modos:
 
-* **Planeación rápida**: ejecute la herramienta en este modo para obtener las proyecciones de la red y del servidor según el promedio de las máquinas virtuales, discos, almacenamiento y tasa de cambio.
-* **Planeación detallada**: ejecute la herramienta en este modo y proporcione detalles de cada carga de trabajo en el nivel de la máquina virtual. Analice la compatibilidad de la máquina virtual y obtenga proyecciones de red y del servidor.
+* **Planeación de rápido**: ejecutar la herramienta de hello en este modo tooget red y el servidor las proyecciones basadas en un número medio de las máquinas virtuales, discos, almacenamiento y tasa de cambio.
+* **Planificación detallada**: ejecutar la herramienta de hello en este modo y proporcionar detalles de cada carga de trabajo en el nivel de máquina virtual. Analice la compatibilidad de la máquina virtual y obtenga proyecciones de red y del servidor.
 
 ## <a name="before-you-start"></a>Antes de comenzar
 
 
 1. Recopile información sobre su entorno, incluidas las máquinas virtuales, discos por máquina virtual y almacenamiento por disco.
-2. Identifique la tasa de cambio (renovación) diaria para los datos replicados. Para ello, siga estos pasos:
+2. Identifique la tasa de cambio (renovación) diaria para los datos replicados. toodo esto:
 
-   * Si está replicando máquinas virtuales de Hyper-V, descargue la [herramienta de planeamiento de capacidad de Hyper-V](https://www.microsoft.com/download/details.aspx?id=39057) para obtener la tasa de cambio. [Más información](site-recovery-capacity-planning-for-hyper-v-replication.md) sobre esta herramienta. Se recomienda ejecutar esta herramienta durante una semana para capturar los promedios.
-   * Si va a replicar máquinas virtuales de VMware, use [Azure Site Recovery Deployment Planner](./site-recovery-deployment-planner.md) para calcular la frecuencia de renovación.
-   * Si está replicando servidores físicos, debe realizar los cálculos manualmente.
+   * Si replica máquinas virtuales de Hyper-V, a continuación, descargue hello [herramienta de planeación de capacidad de Hyper-V](https://www.microsoft.com/download/details.aspx?id=39057) tasa de cambio de tooget Hola. [Más información](site-recovery-capacity-planning-for-hyper-v-replication.md) sobre esta herramienta. Se recomienda que ejecutar esta herramienta en una semana toocapture promedios.
+   * Si replica máquinas virtuales de VMware, usar hello [planificador de implementación de recuperación de sitio de Azure](./site-recovery-deployment-planner.md) toofigure out Hola tasa de renovación.
+   * Si se están replicando servidores físicos, deberá tooestimate manualmente.
 
-## <a name="run-the-quick-planner"></a>Ejecución de Quick Planner
-1. Descargue la herramienta [Capacity Planner de Azure Site Recovery](http://aka.ms/asr-capacity-planner-excel) y ábrala. Como debe ejecutar macros, seleccione las opciones de permitir la edición y de habilitar el contenido cuando se le solicite.
-2. En **Select a planner type** (Seleccione un tipo de planeador), seleccione **Quick Planner** (Planificador rápido) en el cuadro de lista.
+## <a name="run-hello-quick-planner"></a>Ejecute hello Planner rápido
+1. Descargue y abra hello [planificador de capacidad de recuperación de sitio de Azure](http://aka.ms/asr-capacity-planner-excel) herramienta. Necesita toorun macros, así que seleccione Edición tooenable y habilitar contenido cuando se le solicite.
+2. En **seleccione un tipo de programador** seleccione **rápido Planner** Hola cuadro de lista.
 
    ![Introducción](./media/site-recovery-capacity-planner/getting-started.png)
-3. En la hoja de cálculo **Capacity Planner** , escriba la información que necesite. Debe rellenar todos los campos rodeados por un círculo rojo de la captura de pantalla siguiente.
+3. Hola **Capacity Planner** hoja de cálculo, escriba información de hello necesario. Debe completar todos los campos de hello con un círculo rojo en la siguiente captura de pantalla de Hola.
 
-   * En **Select your scenario** (Seleccionar escenario) elija **Hyper-V to Azure** (Hyper-V a Azure) o **VMware/Physical to Azure** (VMWare/Físico a Azure).
-   * En **Average daily data change rate (%)** [Tasa media diaria de cambio de datos (%)], agregue la información que ha recopilado con la [herramienta de planeamiento de capacidad de Hyper-V](site-recovery-capacity-planning-for-hyper-v-replication.md) o con [Azure Site Recovery Deployment Planner](./site-recovery-deployment-planner.md).  
-   * **Compresión** solo se aplica a la compresión que se ofrece al replicar máquinas virtuales de VMware o servidores físicos en Azure. Consideramos que es del 30 % o más, pero el valor se puede modificar según sea necesario. Para la replicación de máquinas virtuales de Hyper-V a la compresión de Azure puede usar un dispositivo de terceros, como Riverbed.
-   * En **Entradas de retención** especifique durante cuánto tiempo hay que conservar las réplicas. Si está replicando VMware o servidores físicos, especifique un valor en días. Si está replicando Hyper-V, especifique el tiempo en horas.
-   * En **Number of hours in which initial replication for the batch of virtual machines should complete** (Número de horas en las que debe completarse la replicación inicial para el lote de máquinas virtuales) y **Number of virtual machines per initial replication batch** (Número de máquinas virtuales por lote de replicación inicial) hay que especificar la configuración que se ha usado para procesar los requisitos de replicación iniciales.  Cuando se implementa Site Recovery, se debe cargar el conjunto de datos inicial completo.
+   * En **seleccionar el escenario**, elija **tooAzure de Hyper-V** o **tooAzure físicos/VMware**.
+   * En **(%) de la tasa de cambio de datos diarios medio**, colocar información de hello recopilar usando hello [herramienta de planeación de capacidad de Hyper-V](site-recovery-capacity-planning-for-hyper-v-replication.md) o hello [planificador de implementación de recuperación de sitio de Azure](./site-recovery-deployment-planner.md).  
+   * **Compresión** solo se aplica toocompression que ofrece al replicar máquinas virtuales de VMware o tooAzure de servidores físicos. Estimar el 30% o más, pero puede modificar la configuración de hello según sea necesario. Para la replicación de máquinas virtuales de Hyper-V tooAzure compresión, puede usar un dispositivo de terceros como Riverbed.
+   * En **Entradas de retención** especifique durante cuánto tiempo hay que conservar las réplicas. Si replica VMware o servidores físicos, el valor de Hola de entrada en días. Si replica Hyper-V, especifique tiempo hello en horas.
+   * En **debe completarse el número de horas en que la replicación inicial para el lote de Hola de máquinas virtuales** y **número de máquinas virtuales por lote de la replicación inicial**, entrada de configuración que se usa requisitos de la replicación inicial de toocompute.  Cuando se implementa la recuperación del sitio, se debe cargar el conjunto de datos inicial completa Hola.
 
    ![Entradas](./media/site-recovery-capacity-planner/inputs.png)
-4. Después de haber especificado los valores para el entorno de origen, la salida mostrada incluye:
+4. Una vez que haya colocado en valores de hello para el entorno de origen de hello, salida mostrada incluye:
 
-   * **Ancho de banda necesario para la replicación diferencial** (MB/s). El ancho de banda de red necesario para la replicación diferencial se calcula según la tasa media diaria de cambio de datos.
-   * **Ancho de banda necesario para la replicación inicial** (MB/s). El ancho de banda de red para la replicación inicial se calcula según los valores de replicación inicial establecidos.
-   * **Almacenamiento necesario (en GB)** es el almacenamiento total requerido en Azure.
-   * **IOPS totales en cuentas de almacenamiento estándar** se calcula en función de un tamaño de unidad IOPS de 8 K en las cuentas de almacenamiento estándar totales.  Para Quick Planner, el número se calcula en función de todos los discos de máquinas virtuales de origen y la tasa de cambio de los datos diarios. Para Detailed Planner el número se calcula en función del número total de máquinas virtuales que se asignan a las máquinas virtuales estándar de Azure y a la tasa de cambio de los datos en dichas máquinas virtuales.
-   * **Número de cuentas de almacenamiento estándar** proporciona el número total de cuentas de almacenamiento estándar necesarias para proteger las máquinas virtuales. Una cuenta de almacenamiento estándar puede contener hasta 20 000 IOPS en todas las máquinas virtuales de un almacenamiento estándar y admite un máximo de 500 IOPS por disco.
-   * **Número de discos blob necesarios** proporciona el número de discos que se crearán en el almacenamiento de Azure.
-   * **Número de cuentas de almacenamiento premium necesarias** proporciona el número total de cuentas de almacenamiento premium necesarias para proteger las máquinas virtuales. Una máquina virtual de origen con una IOPS elevada (más de 20000) necesita una cuenta de Premium Storage. Una cuenta de almacenamiento premium puede contener hasta 80 000 IOPS.
-   * **IOPS totales en cuentas de almacenamiento premium** se calcula en función de un tamaño de unidad IOPS de 256 K en las cuentas de almacenamiento premium totales.  Para Quick Planner, el número se calcula en función de todos los discos de máquinas virtuales de origen y la tasa de cambio de los datos diarios. Para Detailed Planner el número se calcula en función del número total de máquinas virtuales que se asignan a las máquinas virtuales premium de Azure (serie DS y GS) y a la tasa de cambio de los datos en dichas máquinas virtuales.
-   * **Número de servidores de configuración necesarios** muestra cuántos servidores de configuración son necesarios para la implementación.
-   * **Número de servidores de procesos adicionales necesarios** muestra si se requieren servidores de procesos adicionales, además del servidor de proceso configurado en el servidor de configuración de forma predeterminada.
-   * **100 % de almacenamiento adicional en origen** muestra si se necesita almacenamiento adicional en la ubicación de origen.
+   * **Ancho de banda necesario para la replicación diferencial** (MB/s). Ancho de banda de red para la replicación de datos se calcula en hello promedio tasa de cambio de datos diario.
+   * **Ancho de banda necesario para la replicación inicial** (MB/s). Ancho de banda de red para la replicación inicial se calcula en valores de la replicación inicial de Hola que coloque en.
+   * **Almacenamiento necesario (en GB)** es Hola almacenamiento de Azure total necesario.
+   * **Total de e/s por segundo en las cuentas de almacenamiento estándar** se calcula basándose en el tamaño de unidad IOPS de 8 K Hola total estándar en cuentas de almacenamiento.  Para hello Planner rápido, número de Hola se calcula según en todos los discos de máquinas virtuales de origen de Hola y diariamente de tasa de cambio de datos. Para Hola Planner detallada, número de hello es calculado en función de número total de máquinas virtuales que están asignada toostandard máquinas virtuales de Azure y velocidad en esas máquinas virtuales de cambio de datos.
+   * **Número de cuentas de almacenamiento estándar** proporciona el número total de Hola de almacenamiento estándar las cuentas necesarias tooprotect hello las máquinas virtuales. Una cuenta de almacenamiento estándar puede contener una too20000 e/s por segundo en todas las máquinas virtuales de hello en un almacenamiento estándar y se admite un máximo de 500 IOPS por disco.
+   * **Número de discos de blob necesarios** proporciona Hola número de discos que se creará en el almacenamiento de Azure.
+   * **Número de cuentas de almacenamiento premium requerido** proporciona el número total de Hola de tooprotect de las cuentas necesarias de almacenamiento premium hello las máquinas virtuales. Una máquina virtual de origen con una IOPS elevada (más de 20000) necesita una cuenta de Premium Storage. Una cuenta de almacenamiento premium puede contener una too80000 e/s por segundo.
+   * **Total de e/s por segundo en almacenamiento premium** se calcula basándose en el tamaño de la unidad de 256 K IOPS Hola premium total en cuentas de almacenamiento.  Para hello Planner rápido, número de Hola se calcula según en todos los discos de máquinas virtuales de origen de Hola y diariamente de tasa de cambio de datos. Para Hola Planner detallada, número de hello es número total de hello según calculado de máquinas virtuales que están asignada toopremium (serie DS y GS) de la máquina virtual de Azure y datos Hola cambian frecuencia en esas máquinas virtuales.
+   * **Número de servidores de configuración necesarios** muestra cuántos servidores de configuración son necesarios para la implementación de Hola.
+   * **Número de servidores de proceso adicionales necesarios** muestra si los servidores de proceso adicionales son necesarios, en el servidor de procesos de toohello de suma que se ejecuta en el servidor de configuración de Hola de forma predeterminada.
+   * **almacenamiento adicional de 100% en el origen de hello** muestra si se requiere almacenamiento adicional en la ubicación de origen de Hola.
 
    ![Salida](./media/site-recovery-capacity-planner/output.png)
 
-## <a name="run-the-detailed-planner"></a>Ejecución de Detailed Planner
+## <a name="run-hello-detailed-planner"></a>Ejecución Hola Planner detallada
 
-1. Descargue la herramienta [Capacity Planner de Azure Site Recovery](http://aka.ms/asr-capacity-planner-excel) y ábrala. Como debe ejecutar macros, seleccione las opciones de permitir la edición y de habilitar el contenido cuando se le solicite.
-2. En **Seleccionar un tipo de planificador**, elija **Planificador detallado** en el cuadro de lista.
+1. Descargue y abra hello [planificador de capacidad de recuperación de sitio de Azure](http://aka.ms/asr-capacity-planner-excel) herramienta. Necesita toorun macros, así que seleccione Edición tooenable y habilitar contenido cuando se le solicite.
+2. En **seleccione un tipo de programador**, seleccione **Planner detallada** Hola cuadro de lista.
 
    ![Introducción](./media/site-recovery-capacity-planner/getting-started-2.png)
-3. En la hoja de cálculo **Workload Qualification** , escriba la información necesaria. Debe rellenar todos los campos marcados.
+3. Hola **calificación de carga de trabajo** hoja de cálculo, escriba información de hello necesario. Debe completar Hola todos los campos marcados.
 
-   * En **Núcleos de procesador**, especifique el número total de núcleos de un servidor de origen.
-   * En **Asignación de memoria en MB**, especifique el tamaño de la RAM de un servidor de origen.
-   * El valor **Número de NIC** especifica el número de adaptadores de red de un servidor de origen.
-   * En **Almacenamiento total (en GB)**, especifique el tamaño total del almacenamiento de la máquina virtual. Por ejemplo, si el servidor de origen tiene 3 discos con 500 GB cada uno, el tamaño de almacenamiento total es de 1500 GB.
-   * En **Número de discos conectados**, especifique el número total de discos de un servidor de origen.
-   * En **Utilización de la capacidad de disco**, especifique el promedio de uso.
-   * En **Tasa de cambios diaria (%)**, especifique la tasa de cambios de datos diaria de un servidor de origen.
-   * En **Tamaño de asignación de Azure**, escriba el tamaño de la máquina virtual de Azure que desea asignar. Si no quiere hacerlo manualmente, haga clic en **Compute IaaS VMs** (Calcular máquinas virtuales IaaS). Si especifica un valor de configuración manual y hace clic en Procesar máquinas virtuales de IaaS, puede que se sobrescriba la configuración manual, ya que el proceso identifica automáticamente la mejor coincidencia de tamaño de máquina virtual de Azure.
+   * En **núcleos de procesador**, especifique el número total de Hola de núcleos en un servidor de origen.
+   * En **la asignación de memoria en MB**, especifique el tamaño de hello RAM de un servidor de origen.
+   * Hola **número de NIC**, especifique el número de Hola de adaptadores de red en un servidor de origen.
+   * En **Total de almacenamiento (en GB)**, especifique el tamaño total de Hola Hola de almacenamiento de VM. Por ejemplo, si el servidor de origen de hello tiene 3 discos con 500 GB, el tamaño de almacenamiento total es 1500 GB.
+   * En **número de discos conectados**, especifique el número total de Hola de discos de un servidor de origen.
+   * En **utilización de la capacidad de disco**, especificar la utilización media de Hola.
+   * En **(%) de velocidad de cambio diariamente**, especificar datos diario de hello tasa de cambio de un servidor de origen.
+   * En **tamaño de asignación de Azure**, escriba el tamaño de VM de Azure de Hola que desea toomap. Si no desea toodo este manualmente, haga clic en **máquinas virtuales de IaaS de proceso**. Si una configuración manual de entrada y, a continuación, haga clic en máquinas virtuales de IaaS de proceso, configuración manual de hello podría sobrescribirse porque el proceso de cálculo de hello identifica automáticamente la mejor coincidencia de hello en el tamaño de la máquina virtual de Azure.
 
    ![Workload Qualification](./media/site-recovery-capacity-planner/workload-qualification.png)
 4. Al hacer clic en **Procesar máquinas virtuales de IaaS** :
 
-   * Se validan las entradas obligatorias.
-   * Se calculan las IOPS y se sugiere la mejor coincidencia de tamaño de máquina virtual de Azure para cada máquina virtual apta para la replicación en Azure. Se produce un error si no se detecta un tamaño adecuado para la máquina virtual de Azure. Por ejemplo, si el número de discos conectados es 65, se produce un error ya que el tamaño máximo de una máquina virtual de Azure es 64.
+   * Valida las entradas obligatorias de Hola.
+   * Calcula las IOPS y sugiere Hola mejor VM de Azure aize coincidencia para cada VM, que es apto para la replicación tooAzure. Se produce un error si no se detecta un tamaño adecuado para la máquina virtual de Azure. Por ejemplo, si el número de Hola de discos conectados en 65, se emite un error porque el tamaño máximo de hello VM de Azure es 64.
    * Sugiere una cuenta de almacenamiento que puede usar para una máquina virtual de Azure.
-   * Calcula el número total de cuentas de almacenamiento estándar y de cuentas de almacenamiento premium que son necesarias para la carga de trabajo. Desplácese hacia abajo para ver el tipo de almacenamiento de Azure y la cuenta de almacenamiento que puede usar para un servidor de origen.
-   * Completa y ordena el resto de la tabla basándose en el tipo de almacenamiento necesario (estándar o premium) asignado a una máquina virtual y el número de discos conectados. En todas las máquinas virtuales que cumplen los requisitos de Azure, la columna **Is VM qualified?** (¿Está calificada la máquina virtual?) muestra **Yes** (Sí). Si no se puede realizar una copia de seguridad de la máquina virtual en Azure, se muestra un error.
+   * Calcula el número total de Hola de cuentas de almacenamiento estándar y cuentas de almacenamiento premium necesarias para la carga de trabajo de Hola. Desplácese hacia abajo tooview Hola tipo de almacenamiento de Azure y cuenta de almacenamiento de Hola que puede usarse para un servidor de origen.
+   * Completa y ordena el resto de Hola de tabla de hello en función de tipo de almacenamiento necesaria (standard o premium) asignado para una máquina virtual y el número de Hola de los discos conectados. Para todas las máquinas virtuales que cumplen los requisitos de Hola de Azure, Hola columna **VM está calificado?** muestra **Sí**. Si una máquina virtual no puede hacerse tooAzure, se muestra un error.
 
-Las columnas AA hasta AE muestran los resultados y proporcionan información de cada máquina virtual.
+Columnas AA tooAE salida y proporcionan información para cada máquina virtual.
 
 ![Workload Qualification](./media/site-recovery-capacity-planner/workload-qualification-2.png)
 
 ### <a name="example"></a>Ejemplo
-Como ejemplo, para seis máquinas virtuales con los valores que se muestran en la tabla, la herramienta calcula y asigna la mejor coincidencia de máquina virtual de Azure y los requisitos de almacenamiento de Azure.
+Por ejemplo, para seis máquinas virtuales con valores de hello que se muestra en la tabla de hello, herramienta de hello calcula y asigna la mejor coincidencia de máquina virtual de Azure hello y requisitos de almacenamiento de Azure de Hola.
 
 ![Workload Qualification](./media/site-recovery-capacity-planner/workload-qualification-3.png)
 
-* En el resultado del ejemplo, tenga en cuenta lo siguiente:
+* En la salida de ejemplo de Hola, tenga en cuenta Hola siguiente:
 
-  * La primera columna es una columna de validación para las máquinas virtuales, discos y renovación.
+  * Hola primera columna es una columna de validación para las máquinas virtuales de hello, discos y la renovación.
   * Se requieren dos cuentas de almacenamiento estándar y una cuenta de almacenamiento premium para las cinco máquinas virtuales.
   * VM3 no cumple los requisitos para la protección porque uno o más discos tienen más de 1 TB.
-  * VM1 y VM2 pueden usar la primera cuenta de almacenamiento estándar
-  * VM4 puede usar la segunda cuenta de almacenamiento estándar
+  * VM1 y VM2 pueden usar la primera cuenta de almacenamiento estándar Hola
+  * VM4 puede usar la segunda cuenta de almacenamiento estándar Hola.
   * VM5 y VM6 necesitan una cuenta de Premium Storage y ambas pueden usar una única cuenta.
 
     > [!NOTE]
-    > Las IOPS de almacenamiento estándar y premium se calculan en el nivel de máquina virtual y no en el nivel de disco. Una máquina virtual estándar puede controlar hasta 500 IOPS por disco. Si las IOPS de un disco son más de 500, necesitará Premium Storage. Sin embargo, si las IOPS de un disco son más de 500, pero las IOPS de todos los discos de máquina virtual están dentro de los límites admitidos para máquinas virtuales de Azure estándar (tamaño de máquina virtual, número de discos, número de adaptadores, CPU, memoria), el planificador elige una máquina virtual estándar en lugar de la serie DS o GS. El usuario debe actualizar manualmente la asignación de la celda de tamaño de Azure con la máquina virtual de serie DS o GS correspondiente.
+    > E/s por segundo en almacenamiento estándar y premium se calculan en hello nivel de máquina virtual y no en el nivel de disco. Una máquina virtual estándar puede controlar la too500 de IOPS por disco. Si las IOPS de un disco son más de 500, necesitará Premium Storage. Sin embargo, si IOPS para un disco son más de 500, pero IOPS para discos de máquina virtual total Hola son dentro de hello es compatible con límites de máquina virtual de Azure estándares (tamaño de máquina virtual, número de discos, número de adaptadores, CPU, memoria), programador de hello toma una máquina virtual y no Hola DS o GS serie estándar. Necesita celda de tamaño de Azure de asignación de Hola de actualización de toomanually con serie DS o GS correspondiente máquina virtual.
 
 
-Cuando toda la información esté definida, haga clic en **Enviar datos a la herramienta del planificador** para abrir la herramienta**Capacity Planner**. Las cargas de trabajo se resaltan para mostrar si cumplen los requisitos para la protección.
+Después de que todos los detalles de hello están instalados, haga clic en **herramienta de planeación de enviar datos toohello** tooopen hello **Capacity Planner** cargas de trabajo resaltado, tooshow si son aptos para la protección o no.
 
-### <a name="submit-data-in-the-capacity-planner"></a>Enviar datos en Capacity Planner
-1. Cuando se abre la hoja de datos **Capacity Planner** , esta se rellena en función de la configuración que haya especificado. La palabra «Workload» aparece en la celda **Origen de entradas de infraestructura** para mostrar la entrada de la hoja de cálculo **Workload Qualification**.
-2. Si desea realizar cambios, deberá modificar la hoja de cálculo **Workload Qualification** y hacer clic de nuevo en **Enviar datos a la herramienta del planificador**.  
+### <a name="submit-data-in-hello-capacity-planner"></a>Enviar datos de hello Capacity Planner
+1. Cuando abre hello **Capacity Planner** hoja de cálculo se rellena en función de configuración de Hola que haya especificado. Hello word 'Carga de trabajo' aparece en hello **origen de entradas de Infra** celda, tooshow que Hola entrada es hello **calificación de carga de trabajo** hoja de cálculo.
+2. Si desea que los cambios de toomake, necesita hello toomodify **calificación de carga de trabajo** hoja de cálculo y haga clic en **herramienta de planeación de enviar datos toohello** nuevo.  
 
    ![Capacity Planner](./media/site-recovery-capacity-planner/capacity-planner.png)

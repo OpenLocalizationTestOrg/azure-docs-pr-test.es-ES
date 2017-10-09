@@ -1,6 +1,6 @@
 ---
-title: "Administración de Azure Data Lake Analytics con Azure PowerShell | Microsoft Docs"
-description: "Aprenda a administrar cuentas de Data Lake Analytics, orígenes de datos, trabajos y elementos de catálogo. "
+title: "Análisis de Data Lake de Azure con Azure PowerShell aaaManage | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toomanage cuentas de análisis de Data Lake, orígenes de datos, trabajos y elementos del catálogo. "
 services: data-lake-analytics
 documentationcenter: 
 author: matt1883
@@ -14,28 +14,28 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/23/2017
 ms.author: mahi
-ms.openlocfilehash: 862e9551f1e129b7bba06651fbae94e337c92dcb
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 5954f0efb7d5a9778727edfccae83aec046343bd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>Administración de Análisis de Azure Data Lake mediante Azure PowerShell
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-Aprenda a administrar cuentas de Azure Data Lake Analytics, orígenes de datos, trabajos y elementos de catálogo mediante Azure PowerShell. 
+Obtenga información acerca de cómo trabajos de cuentas de análisis de Azure Data Lake toomanage, orígenes de datos y elementos del catálogo con Azure PowerShell. 
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Al crear una cuenta de Data Lake Analytics, debe saber:
+Al crear una cuenta de análisis de Data Lake, necesita tooknow:
 
-* **Id. de suscripción**: Id. de la suscripción de Azure en la que reside la cuenta de Data Lake Analytics.
-* **Grupo de recursos**: el nombre del grupo de recursos de Azure que contiene la cuenta de Data Lake Analytics.
-* **Nombre de la cuenta de Data Lake Analytics**: el nombre de la cuenta solo debe contener letras minúsculas y números.
-* **Cuenta predeterminada de Data Lake Store**: cada cuenta de Data Lake Analytics tiene una cuenta de Data Lake Store predeterminada. Estas cuentas deben estar en la misma ubicación.
-* **Ubicación**: la ubicación de la cuenta de Data Lake Analytics como "Este de EE. UU. 2" u otras ubicaciones admitidas. Las ubicaciones admitidas se pueden consultar en nuestra [página de precios](https://azure.microsoft.com/pricing/details/data-lake-analytics/).
+* **Id. de suscripción**: Hola Id. de suscripción de Azure en el que reside la cuenta de análisis de Data Lake.
+* **Grupo de recursos**: nombre de Hola Hola Azure del grupo de recursos que contiene la cuenta de análisis de Data Lake.
+* **Nombre de la cuenta de análisis de Data Lake**: Hola cuenta nombre solo debe contener letras minúsculas y números.
+* **Cuenta predeterminada de Data Lake Store**: cada cuenta de Data Lake Analytics tiene una cuenta de Data Lake Store predeterminada. Estas cuentas deben estar en hello misma ubicación.
+* **Ubicación**: ubicación de saludo de la cuenta de análisis de Data Lake, como "UU 2" u otra admite ubicaciones. Las ubicaciones admitidas se pueden consultar en nuestra [página de precios](https://azure.microsoft.com/pricing/details/data-lake-analytics/).
 
-Los fragmentos de código de PowerShell de este tutorial usan estas variables para almacenar esta información
+fragmentos de código de PowerShell de Hello en este tutorial usa estas variables toostore esta información
 
 ```powershell
 $subId = "<SubscriptionId>"
@@ -59,7 +59,7 @@ Inicie sesión con un nombre de suscripción.
 Login-AzureRmAccount -SubscriptionName $subname 
 ```
 
-El cmdlet `Login-AzureRmAccount` siempre pide las credenciales. Puede evitar que se le pidan mediante los cmdlets siguientes:
+Hola `Login-AzureRmAccount` cmdlet siempre pide las credenciales. Puede evitar que se le solicite mediante el uso de hello siguientes cmdlets:
 
 ```powershell
 # Save login session information
@@ -73,7 +73,7 @@ Select-AzureRmProfile -Path D:\profile.json
 
 ### <a name="create-a-data-lake-analytics-account"></a>Creación de una cuenta de Análisis de Data Lake
 
-Si aún no tiene un [grupo de recursos](../azure-resource-manager/resource-group-overview.md#resource-groups) para usar, cree uno. 
+Si aún no tiene un [grupo de recursos](../azure-resource-manager/resource-group-overview.md#resource-groups) toouse, cree uno. 
 
 ```powershell
 New-AzureRmResourceGroup -Name  $rg -Location $location
@@ -99,13 +99,13 @@ Obtener detalles acerca de una cuenta.
 Get-AdlAnalyticsAccount -Name $adla
 ```
 
-Comprobar la existencia de una cuenta específica de Data Lake Analytics. El cmdlet devuelve `True` o `False`.
+Comprobar la existencia de Hola de una cuenta de análisis de Data Lake concreta. Hola cmdlet devuelve `True` o `False`.
 
 ```powershell
 Test-AdlAnalyticsAccount -Name $adla
 ```
 
-Compruebe la existencia de una cuenta determinada de Data Lake Store. El cmdlet devuelve `True` o `False`.
+Comprobar la existencia de Hola de una cuenta de almacén de Data Lake concreta. Hola cmdlet devuelve `True` o `False`.
 
 ```powershell
 Test-AdlStoreAccount -Name $adls
@@ -113,7 +113,7 @@ Test-AdlStoreAccount -Name $adls
 
 ### <a name="listing-accounts"></a>Lista de cuentas
 
-Enumerar cuentas de Data Lake Analytics dentro de la suscripción actual.
+Cuentas de análisis de Data Lake de lista dentro de la suscripción actual de Hola.
 
 ```powershell
 Get-AdlAnalyticsAccount
@@ -169,21 +169,21 @@ Set-AdlAnalyticsAccount -Name $adla -FirewallState Disabled
 ```
 
 ## <a name="managing-data-sources"></a>Administración de orígenes de datos
-Actualmente, Azure Data Lake Analytics admite los siguientes orígenes de datos:
+Análisis de Azure Data Lake admite actualmente Hola siguientes orígenes de datos:
 
 * [Almacén de Azure Data Lake](../data-lake-store/data-lake-store-overview.md)
-* [Almacenamiento de Azure](../storage/common/storage-introduction.md)
+* [Azure Storage](../storage/common/storage-introduction.md)
 
-Cuando se crea una cuenta de Analytics, se debe designar una cuenta de Data Lake Store para que sea el origen de datos predeterminado. La cuenta predeterminada de Almacén de Data Lake sirve para almacenar los registros de auditoría y de metadatos de trabajos. Una vez creada la cuenta de Data Lake Analytics, puede agregar más cuentas de Data Lake Store o cuentas de Storage. 
+Cuando se crea una cuenta de análisis, debe designar un origen de datos de almacén de Data Lake cuenta toobe Hola predeterminado. Hello almacén de Data Lake cuenta predeterminada se utiliza registros de auditoría de metadatos de trabajo toostore y trabajo. Una vez creada la cuenta de Data Lake Analytics, puede agregar más cuentas de Data Lake Store o cuentas de Storage. 
 
-### <a name="find-the-default-data-lake-store-account"></a>Búsqueda de la cuenta predeterminada de Almacén de Data Lake
+### <a name="find-hello-default-data-lake-store-account"></a>Buscar cuenta de almacén de Data Lake Hola predeterminada
 
 ```powershell
 $adla_acct = Get-AdlAnalyticsAccount -Name $adla
 $dataLakeStoreName = $adla_acct.DefaultDataLakeAccount
 ```
 
-Puede encontrar la cuenta predeterminada de Data Lake Store si filtra la lista de orígenes de datos por la propiedad `IsDefault`:
+Puede encontrar cuenta de almacén de Data Lake Hola predeterminada si filtra la lista de Hola de orígenes de datos por hello `IsDefault` propiedad:
 
 ```powershell
 Get-AdlAnalyticsDataSource -Account $adla  | ? { $_.IsDefault } 
@@ -206,7 +206,7 @@ Add-AdlAnalyticsDataSource -Account $adla -DataLakeStore $AzureDataLakeStoreName
 ### <a name="list-data-sources"></a>Enumerar orígenes de datos
 
 ```powershell
-# List all the data sources
+# List all hello data sources
 Get-AdlAnalyticsDataSource -Name $adla
 
 # List attached Data Lake Store accounts
@@ -229,7 +229,7 @@ $script = @"
             ("Woodgrove", 2700.0)
         ) AS D( customer, amount );
 OUTPUT @a
-    TO "/data.csv"
+    too"/data.csv"
     USING Outputters.Csv();
 "@
 
@@ -250,9 +250,9 @@ Submit-AdlJob -AccountName $adla –ScriptPath $scriptpath -Name "Demo"
 
 ## <a name="list-jobs-in-an-account"></a>Enumerar trabajos en una cuenta
 
-### <a name="list-all-the-jobs-in-the-account"></a>Muestre todos los trabajos de la cuenta. 
+### <a name="list-all-hello-jobs-in-hello-account"></a>Enumera todos los trabajos de hello en la cuenta de hello. 
 
-El resultado incluye los trabajos actualmente en ejecución y aquellos que se han completado recientemente.
+salida de Hello incluye Hola actualmente en ejecución trabajos y los pasos de trabajo completaron recientemente.
 
 ```powershell
 Get-AdlJob -Account $adla
@@ -261,16 +261,16 @@ Get-AdlJob -Account $adla
 
 ### <a name="list-a-specific-number-of-jobs"></a>Mostrar un número determinado de trabajos
 
-De forma predeterminada, la lista de trabajos se ordena por hora de envío. Así, los trabajos enviados más recientemente aparecen en primer lugar. De forma predeterminada, la cuenta de ADLA recuerda los trabajos durante 180 días, pero el cmdlet Ge-AdlJob devuelve solo los primeros 500. Use el parámetro -Top para mostrar un número específico de trabajos.
+De forma predeterminada se ordena la lista Hola de trabajos en el momento del envío. Por lo que se envió más recientemente Hola trabajos aparecen en primer lugar. De forma predeterminada, Hola cuenta ADLA recuerda trabajos durante 180 días, pero Hola Ge AdlJob cmdlet devuelve de forma predeterminada sólo Hola 500 primeros. Use - toolist parámetro superior un número específico de trabajos.
 
 ```powershell
 $jobs = Get-AdlJob -Account $adla -Top 10
 ```
 
 
-### <a name="list-jobs-based-on-the-value-of-job-property"></a>Enumerar trabajos según el valor de la propiedad del trabajo
+### <a name="list-jobs-based-on-hello-value-of-job-property"></a>Enumerar trabajos según Hola valor de propiedad del trabajo
 
-Mediante el parámetro `-State`. Puede combinar cualquiera de estos valores:
+Con hello `-State` parámetro. Puede combinar cualquiera de estos valores:
 
 * `Accepted`
 * `Compiling`
@@ -283,17 +283,17 @@ Mediante el parámetro `-State`. Puede combinar cualquiera de estos valores:
 * `Start`
 
 ```powershell
-# List the running jobs
+# List hello running jobs
 Get-AdlJob -Account $adla -State Running
 
-# List the jobs that have completed
+# List hello jobs that have completed
 Get-AdlJob -Account $adla -State Ended
 
-# List the jobs that have not started yet
+# List hello jobs that have not started yet
 Get-AdlJob -Account $adla -State Accepted,Compiling,New,Paused,Scheduling,Start
 ```
 
-Use el parámetro `-Result` para detectar si los trabajos finalizados se han realizado correctamente. Tiene estos valores:
+Hola de uso `-Result` toodetect parámetro si los trabajos finalizados se ha completado correctamente. Tiene estos valores:
 
 * Cancelado
 * Con error
@@ -309,21 +309,21 @@ Get-AdlJob -Account $adla -State Ended -Result Failed
 ```
 
 
-El parámetro `-Submitter` ayuda a identificar quién ha enviado un trabajo.
+Hola `-Submitter` parámetro ayuda a identificar quién envió un trabajo.
 
 ```powershell
 Get-AdlJob -Account $adla -Submitter "joe@contoso.com"
 ```
 
-`-SubmittedAfter` es útil al filtrar por un intervalo de tiempo.
+Hola `-SubmittedAfter` es útil en el intervalo de tiempo de tooa de filtrado.
 
 
 ```powershell
-# List  jobs submitted in the last day.
+# List  jobs submitted in hello last day.
 $d = [DateTime]::Now.AddDays(-1)
 Get-AdlJob -Account $adla -SubmittedAfter $d
 
-# List  jobs submitted in the last seven day.
+# List  jobs submitted in hello last seven day.
 $d = [DateTime]::Now.AddDays(-7)
 Get-AdlJob -Account $adla -SubmittedAfter $d
 ```
@@ -332,11 +332,11 @@ Get-AdlJob -Account $adla -SubmittedAfter $d
 
 
 ```
-# List jobs submitted in the last five days and that successfully completed.
+# List jobs submitted in hello last five days and that successfully completed.
 $d = (Get-Date).AddDays(-5)
 Get-AdlJob -Account $adla -SubmittedAfter $d -State Ended -Result Succeeded
 
-# List all failed jobs submitted by "joe@contoso.com" within the past seven days.
+# List all failed jobs submitted by "joe@contoso.com" within hello past seven days.
 Get-AdlJob -Account $adla `
     -Submitter "joe@contoso.com" `
     -SubmittedAfter (Get-Date).AddDays(-7) `
@@ -345,9 +345,9 @@ Get-AdlJob -Account $adla `
 
 ## <a name="filtering-a-list-of-jobs"></a>Filtrado de una lista de trabajos
 
-Una vez que tenga una lista de trabajos en la sesión actual de PowerShell, puede usar cmdlets normales de PowerShell para filtrar la lista.
+Una vez que tenga una lista de trabajos en la sesión actual de PowerShell, Puede usar la lista de Hola de toofilter de cmdlets de PowerShell normal.
 
-Filtrar una lista de trabajos por los trabajos enviados en las últimas 24 horas
+Filtrar una lista de trabajos de toohello trabajos enviados en hello últimas 24 horas
 
 ```
 $upperdate = Get-Date
@@ -355,7 +355,7 @@ $lowerdate = $upperdate.AddHours(-24)
 $jobs | Where-Object { $_.EndTime -ge $lowerdate }
 ```
 
-Filtrar una lista de trabajos por los trabajos finalizados en las últimas 24 horas
+Filtrar una lista de trabajos de toohello de trabajos que finalizaron en hello últimas 24 horas
 
 ```
 $upperdate = Get-Date
@@ -363,7 +363,7 @@ $lowerdate = $upperdate.AddHours(-24)
 $jobs | Where-Object { $_.SubmitTime -ge $lowerdate }
 ```
 
-Filtre una lista de trabajos por los trabajos que se han empezado a ejecutar. Se puede producir un error en un trabajo en tiempo de compilación, por lo que nunca se inicia. Se van a examinar los trabajos con errores que realmente empezaron a ejecutarse y luego experimentaron un error.
+Filtrar una lista de trabajos de toohello de trabajos que se empezó a ejecutarse. Se puede producir un error en un trabajo en tiempo de compilación, por lo que nunca se inicia. Echemos un vistazo a los trabajos de hello no se pudo que realmente empezó a ejecutarse y, a continuación, no se pudo.
 
 ```powershell
 $jobs | Where-Object { $_.StartTime -ne $null }
@@ -371,22 +371,22 @@ $jobs | Where-Object { $_.StartTime -ne $null }
 
 ### <a name="analyzing-a-list-of-jobs"></a>Análisis de una lista de trabajos
 
-Use el cmdlet `Group-Object` para analizar una lista de trabajos.
+Hola de uso `Group-Object` cmdlet tooanalyze una lista de trabajos.
 
 ```
-# Count the number of jobs by Submitter
+# Count hello number of jobs by Submitter
 $jobs | Group-Object Submitter | Select -Property Count,Name
 
-# Count the number of jobs by Result
+# Count hello number of jobs by Result
 $jobs | Group-Object Result | Select -Property Count,Name
 
-# Count the number of jobs by State
+# Count hello number of jobs by State
 $jobs | Group-Object State | Select -Property Count,Name
 
-#  Count the number of jobs by DegreeOfParallelism
+#  Count hello number of jobs by DegreeOfParallelism
 $jobs | Group-Object DegreeOfParallelism | Select -Property Count,Name
 ```
-Al realizar un análisis, puede ser útil agregar propiedades a los objetos de trabajo para facilitar el filtrado y la agrupación. El fragmento de código siguiente muestra cómo anotar un elemento JobInfo con propiedades calculadas.
+Al realizar un análisis, puede ser útil tooadd propiedades toohello trabajo objetos toomake de filtrado y agrupación más sencilla. Hola siguiente fragmento de código muestra el modo en que tooannotate una JobInfo con calcula propiedades.
 
 ```
 function annotate_job( $j )
@@ -411,7 +411,7 @@ $jobs = $jobs | %{ annotate_job( $_ ) }
 
 ## <a name="get-information-about-pipelines-and-recurrences"></a>Obtención de información sobre canalizaciones y repeticiones
 
-Use el cmdlet `Get-AdlJobPipeline` para ver la información de canalización de trabajos enviados previamente.
+Hola de uso `Get-AdlJobPipeline` información de canalización de cmdlet toosee Hola enviados previamente trabajos.
 
 ```powershell
 $pipelines = Get-AdlJobPipeline -Account $adla
@@ -419,7 +419,7 @@ $pipelines = Get-AdlJobPipeline -Account $adla
 $pipeline = Get-AdlJobPipeline -Account $adla -PipelineId "<pipeline ID>"
 ```
 
-Use el cmdlet `Get-AdlJobRecurrence` para ver la información de repetición de trabajos enviados previamente.
+Hola de uso `Get-AdlJobRecurrence` información de periodicidad de cmdlet toosee Hola para los trabajos enviados anteriormente.
 
 ```powershell
 $recurrences = Get-AdlJobRecurrence -Account $adla
@@ -431,15 +431,15 @@ $recurrence = Get-AdlJobRecurrence -Account $adla -RecurrenceId "<recurrence ID>
 
 ### <a name="get-job-status"></a>Obtención de estado del trabajo
 
-Obtenga el estado de un trabajo específico.
+Obtener estado de Hola de un trabajo específico.
 
 ```powershell
 Get-AdlJob -AccountName $adla -JobId $job.JobId
 ```
 
-### <a name="examine-the-job-outputs"></a>Examen de las salidas del trabajo
+### <a name="examine-hello-job-outputs"></a>Examinar Hola salidas de trabajo
 
-Después de finalizar el trabajo, compruebe si existe el archivo de salida; para ello, enumere los archivos de una carpeta.
+Una vez ha finalizado el trabajo de hello, compruebe si existe el archivo de salida de hello haciendo una lista de archivos de hello en una carpeta.
 
 ```powershell
 Get-AdlStoreChildItem -Account $adls -Path "/"
@@ -453,9 +453,9 @@ Get-AdlStoreChildItem -Account $adls -Path "/"
 Stop-AdlJob -Account $adls -JobID $jobID
 ```
 
-### <a name="wait-for-a-job-to-finish"></a>Espera de fin de un trabajo
+### <a name="wait-for-a-job-toofinish"></a>Espere a que un trabajo toofinish
 
-En lugar de repetir `Get-AdlAnalyticsJob` hasta que finalice un trabajo, puede usar el cmdlet `Wait-AdlJob` para esperar a que finalice el trabajo.
+En lugar de repetir `Get-AdlAnalyticsJob` hasta que finalice un trabajo, puede usar hello `Wait-AdlJob` toowait de cmdlet para hello tooend de trabajo.
 
 ```powershell
 Wait-AdlJob -Account $adla -JobId $job.JobId
@@ -465,7 +465,7 @@ Wait-AdlJob -Account $adla -JobId $job.JobId
 
 ### <a name="list-existing-compute-policies"></a>Lista de directivas de proceso existentes
 
-El cmdlet `Get-AdlAnalyticsComputePolicy` recupera información sobre las directivas de proceso de una cuenta de Data Lake Analytics.
+Hola `Get-AdlAnalyticsComputePolicy` cmdlet recupera información acerca de las directivas de proceso para una cuenta de análisis de Data Lake.
 
 ```powershell
 $policies = Get-AdlAnalyticsComputePolicy -Account $adla
@@ -473,7 +473,7 @@ $policies = Get-AdlAnalyticsComputePolicy -Account $adla
 
 ### <a name="create-a-compute-policy"></a>Creación de una directiva de proceso
 
-El cmdlet `New-AdlAnalyticsComputePolicy` crea una nueva directiva de proceso para una cuenta de Data Lake Analytics. En este ejemplo se establecen las unidades de asignación (AU) máximas disponibles para el usuario especificado en 50 y la prioridad mínima del trabajo en 250.
+Hola `New-AdlAnalyticsComputePolicy` crea una nueva directiva de cálculo para una cuenta de análisis de Data Lake. En este ejemplo conjuntos Hola toohello disponible de AUs máximo especificado too50 de usuario y too250 de prioridad de trabajo mínimo de Hola.
 
 ```powershell
 $userObjectId = (Get-AzureRmAdUser -SearchString "garymcdaniel@contoso.com").Id
@@ -481,7 +481,7 @@ $userObjectId = (Get-AzureRmAdUser -SearchString "garymcdaniel@contoso.com").Id
 New-AdlAnalyticsComputePolicy -Account $adla -Name "GaryMcDaniel" -ObjectId $objectId -ObjectType User -MaxDegreeOfParallelismPerJob 50 -MinPriorityPerJob 250
 ```
 
-## <a name="check-for-the-existence-of-a-file"></a>Compruebe la existencia de un archivo.
+## <a name="check-for-hello-existence-of-a-file"></a>Comprobar existencia de Hola de un archivo.
 
 ```powershell
 Test-AdlStoreItem -Account $adls -Path "/data.csv"
@@ -514,13 +514,13 @@ Export-AdlStoreItem -AccountName $adls -Path "/" -Destination "c:\myData\" -Recu
 ```
 
 > [!NOTE]
-> Si se interrumpe el proceso de carga o descarga, puede intentar reanudar el proceso ejecutando el cmdlet de nuevo con la opción ``-Resume``.
+> Si hello cargar o se interrumpe el proceso de descarga, puede intentar el proceso de hello tooresume mediante la ejecución del cmdlet Hola nuevo con hello ``-Resume`` marca.
 
 ## <a name="manage-catalog-items"></a>Administración de elementos de catálogo
 
-El catálogo de U-SQL se usa para estructurar datos y código, para que puedan compartirse mediante scripts de U-SQL. El catálogo permite el mayor rendimiento posible con los datos en Azure Data Lake. Para obtener más información, consulte [Uso del catálogo de U-SQL](data-lake-analytics-use-u-sql-catalog.md).
+catálogo de Hello U-SQL es toostructure usa datos y el código para que pueda compartir por secuencias de comandos SQL U. catálogo de Hello permite Hola mayor rendimiento posible con los datos de Azure Data Lake. Para obtener más información, consulte [Uso del catálogo de U-SQL](data-lake-analytics-use-u-sql-catalog.md).
 
-### <a name="list-items-in-the-u-sql-catalog"></a>Enumerar elementos en el catálogo de U-SQL
+### <a name="list-items-in-hello-u-sql-catalog"></a>Elementos de lista en el catálogo de hello U-SQL
 
 ```powershell
 # List U-SQL databases
@@ -533,7 +533,7 @@ Get-AdlCatalogItem -Account $adla -ItemType Table -Path "database"
 Get-AdlCatalogItem -Account $adla -ItemType Table -Path "database.schema"
 ```
 
-Enumere todos los ensamblados de todas las bases de datos de una cuenta de ADLA.
+Enumerar todos los ensamblados de hello en todas las bases de datos de hello en una cuenta de ADLA.
 
 ```powershell
 $dbs = Get-AdlCatalogItem -Account $adla -ItemType Database
@@ -562,7 +562,7 @@ Test-AdlCatalogItem  -Account $adla -ItemType Database -Path "master"
 
 ### <a name="create-credentials-in-a-catalog"></a>Crear credenciales en un catálogo
 
-Dentro de una base de datos U-SQL, cree un objeto de credenciales para una base de datos hospedada en Azure. Actualmente, las credenciales U-SQL son el único tipo de elemento de catálogo que se puede crear a través de PowerShell.
+Dentro de una base de datos U-SQL, cree un objeto de credenciales para una base de datos hospedada en Azure. Actualmente, las credenciales SQL U son Hola único tipo de elemento de catálogo que se puede crear a través de PowerShell.
 
 ```powershell
 $dbName = "master"
@@ -578,7 +578,7 @@ New-AdlCatalogCredential -AccountName $adla `
 
 ### <a name="get-basic-information-about-an-adla-account"></a>Obtener información básica sobre una cuenta de ADLA
 
-Dado un nombre de cuenta, el código siguiente busca información básica sobre la cuenta
+Debido a un nombre de cuenta, Hola siguiente código busca información básica acerca de la cuenta de hello
 
 ```
 $adla_acct = Get-AdlAnalyticsAccount -Name "saveenrdemoadla"
@@ -674,7 +674,7 @@ foreach ($sub in $subs)
 
 ## <a name="create-a-data-lake-analytics-account-using-a-template"></a>Creación de una cuenta de Data Lake Analytics mediante una plantilla
 
-También puede usar una plantilla de grupo de recursos de Azure mediante el siguiente script de PowerShell:
+También puede usar una plantilla de grupo de recursos de Azure con hello siguiente script de PowerShell:
 
 ```powershell
 $subId = "<Your Azure Subscription ID>"
@@ -685,15 +685,15 @@ $adls = "<New Data Lake Store Account Name>"
 $adla = "<New Data Lake Analytics Account Name>"
 
 $deploymentName = "MyDataLakeAnalyticsDeployment"
-$armTemplateFile = "<LocalFolderPath>\azuredeploy.json"  # update the JSON template path 
+$armTemplateFile = "<LocalFolderPath>\azuredeploy.json"  # update hello JSON template path 
 
-# Log in to Azure
+# Log in tooAzure
 Login-AzureRmAccount -SubscriptionId $subId
 
-# Create the resource group
+# Create hello resource group
 New-AzureRmResourceGroup -Name $rg -Location $location
 
-# Create the Data Lake Analytics account with the default Data Lake Store account.
+# Create hello Data Lake Analytics account with hello default Data Lake Store account.
 $parameters = @{"adlAnalyticsName"=$adla; "adlStoreName"=$adls}
 New-AzureRmResourceGroupDeployment -Name $deploymentName -ResourceGroupName $rg -TemplateFile $armTemplateFile -TemplateParameterObject $parameters 
 ```
@@ -702,7 +702,7 @@ Para obtener más información , consulte el artículo sobre cómo [implementar 
 
 **Plantilla de ejemplo**
 
-Guarde el siguiente texto como un archivo `.json` y, a continuación, utilice el script de PowerShell anterior para usar la plantilla. 
+Guardar Hola después de texto como un `.json` de archivos y, a continuación, usar hello anterior plantilla de hello toouse de script de PowerShell. 
 
 ```json
 {
@@ -712,13 +712,13 @@ Guarde el siguiente texto como un archivo `.json` y, a continuación, utilice el
     "adlAnalyticsName": {
       "type": "string",
       "metadata": {
-        "description": "The name of the Data Lake Analytics account to create."
+        "description": "hello name of hello Data Lake Analytics account toocreate."
       }
     },
     "adlStoreName": {
       "type": "string",
       "metadata": {
-        "description": "The name of the Data Lake Store account to create."
+        "description": "hello name of hello Data Lake Store account toocreate."
       }
     }
   },

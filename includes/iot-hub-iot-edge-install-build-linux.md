@@ -1,27 +1,27 @@
-## <a name="install-the-prerequisites"></a>Instalación de los requisitos previos
+## <a name="install-hello-prerequisites"></a>Instalar requisitos previos de Hola
 
-En los pasos de este tutorial se supone que está ejecutando Ubuntu Linux.
+pasos de Hello en este tutorial supone que está ejecutando Ubuntu Linux.
 
-Abra un shell y ejecute los comandos siguientes para instalar los paquetes de requisitos previos:
+Abra un shell y ejecute Hola después de paquetes de requisitos previos de Hola de tooinstall de comandos:
 
 ```bash
 sudo apt-get update
 sudo apt-get install curl build-essential libcurl4-openssl-dev git cmake libssl-dev uuid-dev valgrind libglib2.0-dev libtool autoconf
 ```
 
-En el shell, ejecute el siguiente comando para clonar el repositorio de GitHub de Azure IoT Edge en la máquina local:
+En el shell de hello, ejecute hello siguiendo el equipo local del tooyour de repositorio de comando tooclone hello Azure IoT borde GitHub:
 
 ```bash
 git clone https://github.com/Azure/iot-edge.git
 ```
 
-## <a name="how-to-build-the-sample"></a>Compilación del ejemplo
+## <a name="how-toobuild-hello-sample"></a>¿Cómo toobuild Hola ejemplo
 
-Ya puede compilar el runtime de IoT Edge y los ejemplos en la máquina local:
+Ahora puede compilar hello borde IoT en tiempo de ejecución y ejemplos en el equipo local:
 
 1. Abra un shell.
 
-1. Vaya a la carpeta raíz en la copia local del repositorio **iot-edge**.
+1. Desplazarse por las carpetas raíz de toohello en su copia local de hello **iot borde** repositorio.
 
 1. Ejecute el script de compilación como sigue:
 
@@ -29,7 +29,7 @@ Ya puede compilar el runtime de IoT Edge y los ejemplos en la máquina local:
     tools/build.sh --disable-native-remote-modules
     ```
 
-Este script emplea la utilidad **cmake** para crear una carpeta llamada **build** en la carpeta raíz de la copia local del repositorio **iot-edge** y generar un archivo Make. A continuación, el script compila la solución, omitiendo las pruebas unitarias y las pruebas completas. Si desea compilar y ejecutar las pruebas unitarias, agregue el parámetro `--run-unittests`. Si desea compilar y ejecutar pruebas de extremo a extremo, agregue `--run-e2e-tests`.
+Esta secuencia de comandos utiliza el **cmake** toocreate utilidad una carpeta llamada **generar** en carpeta de raíz de hello de la copia local de la **iot borde** repositorio y generar un archivo MAKE. script de Hola, a continuación, compile la solución de hello, omitiendo las pruebas unitarias y pruebas de tooend final. Si desea toobuild y ejecutar pruebas unitarias de hello, agregar hello `--run-unittests` parámetro. Si desea toobuild y ejecutar pruebas de hello final tooend, agregar hello `--run-e2e-tests`.
 
 > [!NOTE]
-> Cada vez que ejecute el script **build.sh**, elimina y luego vuelve a crear la carpeta **build** en la carpeta raíz de la copia local del repositorio **iot-edge**.
+> Cada vez que ejecute hello **build.sh** secuencia de comandos, elimina y, a continuación, vuelve a crear hello **compilar** carpeta raíz de Hola de su copia local de hello **iot borde** repositorio.

@@ -1,6 +1,6 @@
 ---
-title: Comprender el esquema de webhook usado en las alertas del registro de actividad | Microsoft Docs
-description: "Obtenga información acerca del esquema del archivo JSON que se publica en una dirección URL de webhook cuando se activa una alerta del registro de actividad."
+title: esquema de webhook de hello aaaUnderstand utilizado en las alertas de registro de actividad | Documentos de Microsoft
+description: "Obtenga información acerca del esquema de Hola de hello JSON que se registra la dirección URL del webhook tooa cuando se activa una alerta de registro de actividad."
 author: johnkemnetz
 manager: orenr
 editor: 
@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: johnkem
-ms.openlocfilehash: 75c71bcd16573d4f4dd3377c623aa9b414aa3906
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 75562e0589222d3e392ea73eacfd7414a422d115
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Webhooks para alertas del registro de actividad de Azure
-Como parte de la definición de un grupo de acciones, se pueden configurar puntos de conexión de webhook para recibir notificaciones de alertas del registro de actividad. Los webhooks permiten enrutar estas notificaciones a otros sistemas para su procesamiento posterior o acciones personalizadas. Este artículo muestra el aspecto de la carga útil para HTTP POST a un webhook.
+Como parte de la definición de Hola de un grupo de acciones, puede configurar notificaciones de alerta de webhook extremos tooreceive actividad registro. Con webhooks, es posible distribuir estos sistemas de tooother notificaciones para las acciones posteriores al procesamiento o personalizados. Este artículo muestra qué carga Hola Hola HTTP POST tooa webhook aspecto.
 
-Para más información sobre las alertas del registro de actividad, consulte cómo [crear alertas del registro de actividad de Azure](monitoring-activity-log-alerts.md).
+Para obtener más información sobre las alertas de registro de actividad, vea cómo demasiado[crear alertas de registro de actividad de Azure](monitoring-activity-log-alerts.md).
 
-Para obtener información sobre los grupos de acciones, consulte cómo [crear grupos de acciones](monitoring-action-groups.md).
+Para obtener información sobre grupos de acciones, vea cómo demasiado[crear grupos de acciones](monitoring-action-groups.md).
 
-## <a name="authenticate-the-webhook"></a>Autenticación del webhook
-El webhook puede usar opcionalmente autorización basada en token para la autenticación. El identificador URI del webhook se guarda con un identificador de token, por ejemplo, `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`.
+## <a name="authenticate-hello-webhook"></a>Autenticar hello webhook
+Hola webhook puede utilizar opcionalmente la autorización basada en el símbolo (token) para la autenticación. Hola webhook URI se guarda con un identificador de token, por ejemplo, `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`.
 
 ## <a name="payload-schema"></a>Esquema de carga
-La carga útil JSON incluida en la operación POST difiere según el campo data.context.activityLog.eventSource de la carga útil.
+carga JSON de Hello contenido en hello operación POST difiere según el en el campo de data.context.activityLog.eventSource de carga de Hola.
 
 ###<a name="common"></a>Común
 ```json
@@ -122,41 +122,41 @@ La carga útil JSON incluida en la operación POST difiere según el campo data.
 
 Para obtener detalles del esquema específico sobre alertas del registro de actividad de notificaciones de mantenimiento del servicio, consulte [Notificaciones de mantenimiento del servicio](monitoring-service-notifications.md).
 
-Para obtener información del esquema específico en todas las otras alertas del registro de actividad, consulte [Información general sobre el registro de actividad de Azure](monitoring-overview-activity-logs.md).
+Para obtener información de esquema específico en todas las otras alertas de registro de actividad, consulte [información general sobre el registro de actividad de Azure de hello](monitoring-overview-activity-logs.md).
 
 | Nombre del elemento | Descripción |
 | --- | --- |
-| status |Usado para alertas de métrica. Siempre se establece en "activated" para las alertas del registro de actividad. |
-| contexto |Contexto del evento |
-| resourceProviderName |Proveedor de recursos del recurso afectado |
+| status |Usado para alertas de métrica. Siempre se establece demasiado "activado" para las alertas de registro de actividad. |
+| contexto |Contexto de evento de Hola. |
+| resourceProviderName |proveedor de recursos de Hola de hello afectado recursos. |
 | conditionType |Siempre "Event" |
-| name |Nombre de la regla de alerta. |
-| id |Identificador de recurso de la alerta |
-| description |Descripción de la alerta establecida al crear la alerta. |
+| name |Nombre de regla de alerta de Hola. |
+| id |Id. de recurso de alerta de Hola. |
+| description |Descripción de la alerta establece cuando se crea la alerta de Hola. |
 | subscriptionId |Identificador de suscripción de Azure |
-| timestamp |Cuándo generó el evento el servicio de Azure que procesó la solicitud |
-| resourceId |Identificador de recurso del recurso afectado. |
-| resourceGroupName |Nombre del grupo de recursos del recurso afectado. |
-| propiedades |Conjunto de pares `<Key, Value>` (es decir, `Dictionary<String, String>`) que incluye detalles sobre el evento. |
-| event |Elemento que contiene metadatos sobre el evento. |
-| authorization |Las propiedades del Control de acceso basado en rol del evento. Estas propiedades normalmente incluyen la acción, el rol y el ámbito. |
-| categoría |Categoría del evento. Los valores admitidos incluyen: Administrative, Alert, Security, ServiceHealth y Recommendation. |
-| caller |Dirección de correo electrónico del usuario que realizó la operación, la notificación de UPN o la notificación de SPN basada en la disponibilidad. Puede ser null para ciertas llamadas del sistema. |
-| correlationId |Normalmente, un GUID en formato de cadena. Los eventos con correlationId pertenecen a la misma acción de mayor tamaño y suelen compartir un campo correlationId. |
-| eventDescription |Descripción de texto estático del evento |
-| eventDataId |Identificador único para el evento |
-| eventSource |Nombre de la infraestructura o el servicio de Azure que generó el evento |
-| httpRequest |La solicitud normalmente incluye clientRequestId, clientIpAddress y el método HTTP (por ejemplo, PUT). |
-| level |Uno de los siguientes valores: Critical, Error, Warning, Informational y Verbose. |
-| operationId |Por lo general, un GUID compartido entre los eventos correspondientes a una sola operación |
-| operationName |Nombre de la operación. |
-| propiedades |Propiedades del evento. |
-| status |String. Estado de la operación. Entre los valores habituales, se incluyen Started, In Progress, Succeeded, Failed, Active y Resolved. |
-| subStatus |Normalmente, incluye el código de estado HTTP de la llamada de REST correspondiente. También podría incluir otras cadenas que describen un subestado. Entre los valores de subestado habituales se incluyen OK (código de estado HTTP: 200), Created (código de estado HTTP: 201), Accepted (código de estado HTTP: 202), No Content (código de estado HTTP: 204), Bad Request (código de estado HTTP: 400), Not Found (código de estado HTTP: 404), Conflict (código de estado HTTP: 409), Internal Server Error (código de estado HTTP: 500), Service Unavailable (código de estado HTTP: 503) y Gateway Timeout (código de estado HTTP: 504). |
+| timestamp |Hora a qué Hola se generó el evento por el servicio de Azure que procesa la solicitud de Hola Hola. |
+| resourceId |Id. de recurso de hello afectado recursos. |
+| resourceGroupName |Nombre de grupo de recursos de Hola Hola afectado recursos. |
+| propiedades |Conjunto de `<Key, Value>` pares (es decir, `Dictionary<String, String>`) que incluye detalles acerca del evento Hola. |
+| event |Elemento que contiene metadatos acerca del evento Hola. |
+| authorization |propiedades de Control de acceso basado en roles de Hola de evento de Hola. Normalmente, estas propiedades incluyen acción hello, rol Hola y Hola ámbito. |
+| categoría |Categoría de eventos de Hola. Los valores admitidos incluyen: Administrative, Alert, Security, ServiceHealth y Recommendation. |
+| caller |Dirección de correo electrónico del usuario de Hola que realizó la operación de hello, notificación de UPN o notificación SPN según su disponibilidad. Puede ser null para ciertas llamadas del sistema. |
+| correlationId |Normalmente, un GUID en formato de cadena. Eventos con correlationId pertenecen toohello misma acción mayor y normalmente comparten un correlationId. |
+| eventDescription |Descripción de texto estático de evento Hola. |
+| eventDataId |Identificador único para el evento de Hola. |
+| eventSource |Nombre de Hola servicio de Azure o la infraestructura de ese evento Hola generado. |
+| httpRequest |Hello solicitud normalmente incluye hello clientRequestId, clientIpAddress y método HTTP (por ejemplo, PUT). |
+| level |Uno de hello siguientes valores: crítico, Error, advertencia, informativo y detallado. |
+| operationId |Normalmente un GUID que se comparten entre eventos de hello correspondiente toosingle operación. |
+| operationName |Nombre de operación de Hola. |
+| propiedades |Propiedades de evento de Hola. |
+| status |String. Estado de operación de Hola. Entre los valores habituales, se incluyen Started, In Progress, Succeeded, Failed, Active y Resolved. |
+| subStatus |Normalmente incluye código de estado HTTP de Hola de llamada REST de hello correspondiente. También podría incluir otras cadenas que describen un subestado. Entre los valores de subestado habituales se incluyen OK (código de estado HTTP: 200), Created (código de estado HTTP: 201), Accepted (código de estado HTTP: 202), No Content (código de estado HTTP: 204), Bad Request (código de estado HTTP: 400), Not Found (código de estado HTTP: 404), Conflict (código de estado HTTP: 409), Internal Server Error (código de estado HTTP: 500), Service Unavailable (código de estado HTTP: 503) y Gateway Timeout (código de estado HTTP: 504). |
 
 ## <a name="next-steps"></a>Pasos siguientes
-* [Más información sobre el registro de actividad](monitoring-overview-activity-logs.md).
+* [Obtener más información sobre el registro de actividad de hello](monitoring-overview-activity-logs.md).
 * [Ejecución de scripts de Azure Automation (runbooks) en alertas de Azure](http://go.microsoft.com/fwlink/?LinkId=627081).
-* [Uso de una aplicación lógica para enviar un SMS a través de Twilio desde una alerta de Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app). Este ejemplo es para alertas de métrica, pero podría modificarse para funcionar con una alerta del registro de actividad.
-* [Uso de una aplicación lógica para enviar un mensaje de Slack desde una alerta de Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app). Este ejemplo es para alertas de métrica, pero podría modificarse para funcionar con una alerta del registro de actividad.
-* [Uso de una aplicación lógica para enviar un mensaje a una cola de Azure desde una alerta de Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app). Este ejemplo es para alertas de métrica, pero podría modificarse para funcionar con una alerta del registro de actividad.
+* [Usar un toosend de aplicación lógica un SMS a través de Twilio de una alerta Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app). En este ejemplo es para alertas métricas, pero puede ser modificado toowork con una alerta de registro de actividad.
+* [Usar un toosend de aplicación lógica un mensaje desde una alerta Azure demora](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app). En este ejemplo es para alertas métricas, pero puede ser modificado toowork con una alerta de registro de actividad.
+* [Usar un toosend de aplicación lógica un tooan mensaje Azure cola desde una alerta Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app). En este ejemplo es para alertas métricas, pero puede ser modificado toowork con una alerta de registro de actividad.

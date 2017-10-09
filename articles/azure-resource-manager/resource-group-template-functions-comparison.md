@@ -1,6 +1,6 @@
 ---
-title: "Funciones de la plantilla de Azure Resource Manager: comparación | Microsoft Docs"
-description: Describe las funciones para usar en una plantilla de Azure Resource Manager para comparar valores.
+title: "funciones de plantilla de administrador de recursos de aaaAzure - comparación | Documentos de Microsoft"
+description: Describe hello toouse de funciones en un toocompare de valores de la plantilla de Azure Resource Manager.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2017
 ms.author: tomfitz
-ms.openlocfilehash: 521e5ed06c138bcd374913588f06a2e6c1e99963
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: ebcfc9ed6c93f8b540ec4c066e9457c621800b7b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="comparison-functions-for-azure-resource-manager-templates"></a>Funciones de comparación para las plantillas de Azure Resource Manager
 
@@ -39,16 +39,16 @@ Comprueba si dos valores son iguales.
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| arg1 |Sí |entero, cadena, matriz u objeto |El primer valor en el que comprobar la igualdad. |
-| arg2 |Sí |entero, cadena, matriz u objeto |El segundo valor en el que comprobar la igualdad. |
+| arg1 |Sí |entero, cadena, matriz u objeto |Hola primer toocheck de valor para la igualdad. |
+| arg2 |Sí |entero, cadena, matriz u objeto |Hola segundo toocheck de valor para la igualdad. |
 
 ### <a name="return-value"></a>Valor devuelto
 
-Devuelve **True** si los valores son iguales; en caso contrario, **False**.
+Devuelve **True** si Hola valores son iguales; en caso contrario, **False**.
 
 ### <a name="remarks"></a>Comentarios
 
-La función equals se suele usar con el elemento `condition` para comprobar si está implementado un recurso.
+Hello es igual a función se suele utilizar con hello `condition` tootest del elemento si se implementa un recurso.
 
 ```json
 {
@@ -67,7 +67,7 @@ La función equals se suele usar con el elemento `condition` para comprobar si e
 
 ### <a name="example"></a>Ejemplo
 
-La plantilla de ejemplo comprueba diferentes tipos de valores para la igualdad. Todos los valores predeterminados devuelven True.
+plantilla de ejemplo de Hola comprueba diferentes tipos de valores para la igualdad. Todos los valores predeterminados de hello devuelven True.
 
 ```json
 {
@@ -130,7 +130,7 @@ La plantilla de ejemplo comprueba diferentes tipos de valores para la igualdad. 
 }
 ```
 
-La salida del ejemplo anterior con el valor predeterminado es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -140,7 +140,7 @@ La salida del ejemplo anterior con el valor predeterminado es:
 | checkObjects | Booleano | True |
 
 
-En el siguiente ejemplo se usa [not](resource-group-template-functions-logical.md#not) con **equals**.
+Hello siguiente ejemplo se utiliza [no](resource-group-template-functions-logical.md#not) con **es igual a**.
 
 ```json
 {
@@ -156,7 +156,7 @@ En el siguiente ejemplo se usa [not](resource-group-template-functions-logical.m
     }
 ```
 
-El resultado del ejemplo anterior es:
+resultado Hola Hola anterior ejemplo es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -166,22 +166,22 @@ El resultado del ejemplo anterior es:
 ## <a name="greater"></a>greater
 `greater(arg1, arg2)`
 
-Comprueba si el primer valor es mayor que el segundo.
+Comprueba si el primer valor de hello es mayor que el segundo valor de Hola.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| arg1 |Sí |entero o cadena |El primer valor de la comparación mayor. |
-| arg2 |Sí |entero o cadena |El segundo valor de la comparación mayor. |
+| arg1 |Sí |entero o cadena |Hola primer valor de comparación mayor Hola. |
+| arg2 |Sí |entero o cadena |Hola segundo valor de comparación mayor Hola. |
 
 ### <a name="return-value"></a>Valor devuelto
 
-Devuelve **True** si el primer valor es mayor que el segundo; en caso contrario, **False**.
+Devuelve **True** si Hola primer valor es mayor que el segundo valor de hello; en caso contrario, **False**.
 
 ### <a name="example"></a>Ejemplo
 
-La plantilla de ejemplo comprueba si un valor es mayor que el otro.
+plantilla de ejemplo de Hola comprueba si un valor de hello es mayor que Hola otro.
 
 ```json
 {
@@ -220,7 +220,7 @@ La plantilla de ejemplo comprueba si un valor es mayor que el otro.
 }
 ```
 
-La salida del ejemplo anterior con el valor predeterminado es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -231,22 +231,22 @@ La salida del ejemplo anterior con el valor predeterminado es:
 ## <a name="greaterorequals"></a>greaterOrEquals
 `greaterOrEquals(arg1, arg2)`
 
-Comprueba si el primer valor es mayor o igual que el segundo.
+Comprueba si el primer valor de hello es igual o mayor que toohello segundo valor.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| arg1 |Sí |entero o cadena |El primer valor de la comparación mayor o igual. |
-| arg2 |Sí |entero o cadena |El segundo valor de la comparación mayor o igual. |
+| arg1 |Sí |entero o cadena |Hola primer valor de comparación mayor o igual que de Hola. |
+| arg2 |Sí |entero o cadena |Hola segundo valor de comparación mayor o igual que de Hola. |
 
 ### <a name="return-value"></a>Valor devuelto
 
-Devuelve **True** si el primer valor es mayor o igual que el segundo; en caso contrario, **False**.
+Devuelve **True** si Hola primer valor es mayor o igual toohello segundo; en caso contrario, **False**.
 
 ### <a name="example"></a>Ejemplo
 
-La plantilla de ejemplo comprueba si un valor es mayor o igual que el otro.
+plantilla de ejemplo de Hola comprueba si un valor de hello es mayor que o igual toohello otro.
 
 ```json
 {
@@ -285,7 +285,7 @@ La plantilla de ejemplo comprueba si un valor es mayor o igual que el otro.
 }
 ```
 
-La salida del ejemplo anterior con el valor predeterminado es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -297,22 +297,22 @@ La salida del ejemplo anterior con el valor predeterminado es:
 ## <a name="less"></a>less
 `less(arg1, arg2)`
 
-Comprueba si el primer valor es menor que el segundo.
+Comprueba si Hola primer valor es menor que Hola segundo valor.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| arg1 |Sí |entero o cadena |El primer valor de la comparación menor. |
-| arg2 |Sí |entero o cadena |El segundo valor de la comparación menor. |
+| arg1 |Sí |entero o cadena |primer valor de Hola para hello menos comparación. |
+| arg2 |Sí |entero o cadena |segundo valor de Hola para hello menos comparación. |
 
 ### <a name="return-value"></a>Valor devuelto
 
-Devuelve **True** si el primer valor es menor que el segundo; en caso contrario, **False**.
+Devuelve **True** si Hola primer valor es menor que Hola segundo valor; en caso contrario, **False**.
 
 ### <a name="example"></a>Ejemplo
 
-La plantilla de ejemplo comprueba si un valor es menor que el otro.
+plantilla de ejemplo de Hola comprueba si un valor de hello es menor que Hola otro.
 
 ```json
 {
@@ -351,7 +351,7 @@ La plantilla de ejemplo comprueba si un valor es menor que el otro.
 }
 ```
 
-La salida del ejemplo anterior con el valor predeterminado es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -362,22 +362,22 @@ La salida del ejemplo anterior con el valor predeterminado es:
 ## <a name="lessorequals"></a>lessOrEquals
 `lessOrEquals(arg1, arg2)`
 
-Comprueba si el primer valor es menor o igual que el segundo.
+Comprueba si el primer valor de hello es menor o igual toohello segundo valor.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| arg1 |Sí |entero o cadena |El primer valor de la comparación menor o igual. |
-| arg2 |Sí |entero o cadena |El segundo valor de la comparación menor o igual. |
+| arg1 |Sí |entero o cadena |primer valor de Hola para hello menos o comparación de igualdad. |
+| arg2 |Sí |entero o cadena |Hola segundo valor de hello menor o igual que comparación. |
 
 ### <a name="return-value"></a>Valor devuelto
 
-Devuelve **True** si el primer valor es menor o igual que el segundo; en caso contrario, **False**.
+Devuelve **True** si Hola primer valor es menor o igual toohello segundo valor; en caso contrario, **False**.
 
 ### <a name="example"></a>Ejemplo
 
-La plantilla de ejemplo comprueba si un valor es menor o igual que el otro.
+Hello plantilla en el ejemplo se comprueba si un valor de hello es menor o igual toohello otro.
 
 ```json
 {
@@ -416,7 +416,7 @@ La plantilla de ejemplo comprueba si un valor es menor o igual que el otro.
 }
 ```
 
-La salida del ejemplo anterior con el valor predeterminado es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -426,8 +426,8 @@ La salida del ejemplo anterior con el valor predeterminado es:
 
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Para obtener una descripción de las secciones de una plantilla de Azure Resource Manager, vea [Creación de plantillas de Azure Resource Manager](resource-group-authoring-templates.md).
-* Para combinar varias plantillas, vea [Uso de plantillas vinculadas con Azure Resource Manager](resource-group-linked-templates.md).
-* Para iterar una cantidad de veces específica al crear un tipo de recurso, vea [Creación de varias instancias de recursos en el Administrador de recursos de Azure](resource-group-create-multiple.md).
-* Para saber cómo implementar la plantilla que creó, consulte [Implementación de una aplicación con la plantilla de Azure Resource Manager](resource-group-template-deploy.md).
+* Para obtener una descripción de las secciones de hello en una plantilla de Azure Resource Manager, consulte [plantillas del Administrador de recursos de Azure de creación](resource-group-authoring-templates.md).
+* toomerge varias plantillas, consulte [mediante plantillas vinculadas con el Administrador de recursos de Azure](resource-group-linked-templates.md).
+* tooiterate un número especificado de veces al crear un tipo de recurso, vea [crear varias instancias de recursos en el Administrador de recursos de Azure](resource-group-create-multiple.md).
+* toosee cómo toodeploy plantilla de Hola que haya creado, vea [implementar una aplicación con la plantilla de Azure Resource Manager](resource-group-template-deploy.md).
 

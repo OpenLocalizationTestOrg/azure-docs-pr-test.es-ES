@@ -1,35 +1,21 @@
 ---
-title: 'API de DocumentDB de Azure Cosmos DB: sintaxis SQL | Microsoft Docs'
-description: "Documentación de referencia para el lenguaje de consulta SQL de la API de DocumentDB de Azure Cosmos DB."
-services: cosmos-db
-author: mimig1
-manager: jhubbard
-editor: mimig
-documentationcenter: 
-ms.assetid: 
-ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: reference
-ms.date: 06/13/2017
-ms.author: mimig
-ms.openlocfilehash: 63b2d20c74df4fd6173994ee1a727594ba8afba3
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
-ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+título: aaa "API de documentos de base de datos de Azure Cosmos: sintaxis SQL | Descripción de Microsoft Docs": hacer referencia a documentación de hello lenguaje de consulta SQL de API de Azure Cosmos DB documentos.
+servicios: cosmos db autor: mimig1 manager: editor de jhubbard: mimig documentationcenter: ''
+
+MS.AssetId: ms.service: cosmos db ms.workload: ms.tgt_pltfrm de servicios de datos: na ms.devlang: na ms.topic: referencia ms.date: 06/13/2017 ms.author: mimig
+
 ---
+
 # <a name="azure-cosmos-db-documentdb-api-sql-syntax-reference"></a>API de DocumentDB de Azure Cosmos DB: referencia de sintaxis SQL
 
-La API de DocumentDB de Azure Cosmos DB admite consultar documentos mediante una instancia de SQL (lenguaje de consulta estructurado) familiar, como gramática, en documentos JSON jerárquicos sin necesidad de esquemas explícitos ni de índices secundarios. En este tema se ofrece documentación de referencia para el lenguaje de consulta SQL de la API de DocumentDB.
+Hola API de documentos de base de datos de Azure Cosmos admite consultas documentos mediante una instancia de SQL (lenguaje de consulta estructurado) familiar gramática similar en documentos JSON jerárquicos sin necesidad de esquema explícito o la creación de índices secundarios. En este tema se proporciona documentación de referencia de lenguaje de consulta SQL de la API de documentos de Hola.
 
-Para ver un tutorial del lenguaje de consulta SQL de la API de DocumentDB, consulte [SQL queries for Azure Cosmos DB DocumentDB API](documentdb-sql-query.md) (Consultas SQL para la API de DocumentDB de Azure Cosmos DB).  
+Para ver un tutorial de hello lenguaje de consulta SQL de la API de documentos, consulte [consultas SQL para la API de documentos de base de datos de Azure Cosmos](documentdb-sql-query.md).  
   
-Le invitamos a visitar también [Query Playground](http://www.documentdb.com/sql/demo), donde puede probar Azure Cosmos DB y ejecutar consultas SQL en nuestro conjunto de datos.  
+También le invitamos hello toovisit [Query Playground](http://www.documentdb.com/sql/demo) donde puede probar la base de datos de Azure Cosmos y ejecutar consultas SQL contra nuestro conjunto de datos.  
   
 ## <a name="select-query"></a>Consulta SELECT  
-Recupera documentos JSON de la base de datos. Es compatible con la evaluación de expresiones, las proyecciones, el filtrado y las combinaciones.  Las convenciones que se usan para describir las instrucciones SELECT se tabulan en la sección de convenciones de sintaxis.  
+Recupera documentos JSON de base de datos de Hola. Es compatible con la evaluación de expresiones, las proyecciones, el filtrado y las combinaciones.  convenciones de Hello utilizadas para describir las instrucciones SELECT de Hola se tabulan en hello sección de convenciones de sintaxis.  
   
 **Sintaxis**  
   
@@ -53,31 +39,31 @@ SELECT <select_specification>
   
 -   [Cláusula ORDER BY](#bk_orderby_clause)  
   
-Las cláusulas de la instrucción SELECT se deben ordenar como se indicó anteriormente. Se puede omitir cualquiera de las cláusulas opcionales. Pero cuando se usen, deben aparecer en el orden correcto.  
+cláusulas de Hello en la instrucción SELECT de Hola se deben ordenar como se indicó anteriormente. Se puede omitir cualquiera de las cláusulas opcionales de Hola. Pero cuando se usan cláusulas opcionales, deben aparecer en el orden correcto de Hola.  
   
-**Orden de procesamiento lógico de la instrucción SELECT**  
+**Orden de procesamiento lógico de la instrucción SELECT de Hola**  
   
-El orden en que se procesan las cláusulas es el siguiente:  
+orden de Hello en el que se procesan las cláusulas es:  
 
 1.  [Cláusula FROM](#bk_from_clause)  
 2.  [Cláusula WHERE](#bk_where_clause)  
 3.  [Cláusula ORDER BY](#bk_orderby_clause)  
 4.  [Cláusula SELECT](#bk_select_query)  
 
-Tenga en cuenta que difiere del orden en que aparecen en la sintaxis. La ordenación es tal que todos los símbolos nuevos introducidos por una cláusula procesada son visibles y pueden utilizarse en las cláusulas que se procesen después. Por ejemplo, las cláusulas WHERE y SELECT pueden acceder a los alias declarados en una cláusula FROM.  
+Tenga en cuenta que esto es diferente del orden de hello en que aparecen en la sintaxis de Hola. Hola ordenación es tal que todos los símbolos nuevos introducidos por una cláusula procesada son visibles y pueden utilizarse en las cláusulas procesadas posteriormente. Por ejemplo, las cláusulas WHERE y SELECT pueden acceder a los alias declarados en una cláusula FROM.  
 
 **Comentarios y caracteres de espacio en blanco**  
 
-Todos los caracteres de espacio en blanco que no formen parte de una cadena o identificador entrecomillados no forman parte de la gramática del lenguaje y se omiten durante el análisis.  
+Todos los caracteres de espacio en blanco que no forman parte de una cadena entrecomillada o identificador entrecomillado no forman parte de la gramática del lenguaje de Hola y se omiten durante el análisis.  
 
-El lenguaje de consulta admite comentarios del estilo de T-SQL como  
+lenguaje de consulta de Hello admite comentarios de estilo de T-SQL como  
 
 -   Instrucción SQL `-- comment text [newline]`.  
 
-Aunque los comentarios y los caracteres de espacio en blanco no tienen significado en la gramática, deben utilizarse para separar tokens. Por ejemplo: `-1e5` es un token de un solo número, mientras que `: – 1 e5` es un token de menos seguido por el número 1 y el identificador e5.  
+Mientras que los comentarios y espacios en blanco no tiene importancia en la gramática de hello, deben ser tokens tooseparate usado. Por ejemplo: `-1e5` es un token de un solo número, mientras que `: – 1 e5` es un token de menos seguido por el número 1 y el identificador e5.  
 
 ##  <a name="bk_select_query"></a> Cláusula SELECT  
-Las cláusulas de la instrucción SELECT se deben ordenar como se indicó anteriormente. Se puede omitir cualquiera de las cláusulas opcionales. Pero cuando se usen, deben aparecer en el orden correcto.  
+cláusulas de Hello en la instrucción SELECT de Hola se deben ordenar como se indicó anteriormente. Se puede omitir cualquiera de las cláusulas opcionales de Hola. Pero cuando se usan cláusulas opcionales, deben aparecer en el orden correcto de Hola.  
 
 **Sintaxis**  
 ```  
@@ -97,27 +83,27 @@ SELECT <select_specification>
   
  `<select_specification>`  
   
- Propiedades o valor que se van a seleccionar para los resultados.  
+ Establece propiedades o el valor toobe seleccionado para el resultado de hello.  
   
  `'*'`  
   
-Especifica que se debe recuperar el valor sin cambios. En particular, si el valor procesado es un objeto, se recuperarán todas las propiedades.  
+Especifica que se debe recuperar el valor de hello sin realizar ningún cambio. En concreto si valor Hola procesado es un objeto, se recuperarán todas las propiedades.  
   
  `<object_property_list>`  
   
-Especifica la lista de propiedades que se recuperan. Los valores devueltos serán objetos con las propiedades especificadas.  
+Especifica la lista de Hola de toobe de propiedades que se recuperan. Cada valor devuelto será un objeto con propiedades de hello especificadas.  
   
 `VALUE`  
   
-Especifica que se debe recuperar el valor JSON en lugar del objeto JSON completo. Esto, a diferencia de `<property_list>`, no encapsula el valor proyectado en un objeto.  
+Especifica que se debe recuperar el valor JSON de hello en lugar del objeto JSON completo de Hola. Esto, a diferencia `<property_list>` no ajusta el valor de hello proyectada en un objeto.  
   
 `<scalar_expression>`  
   
-Expresión que representa el valor que hay que calcular. Consulte la sección [Expresiones escalares](#bk_scalar_expressions) para más información.  
+Calcula la expresión que representa Hola valor toobe. Consulte la sección [Expresiones escalares](#bk_scalar_expressions) para más información.  
   
 **Comentarios**  
   
-La sintaxis `SELECT *` solo es válida si la cláusula FROM ha declarado exactamente un alias. `SELECT *` proporciona una proyección de identidad, que puede resultar útil si no se necesitan proyecciones. SELECT * solo es válida si se especifica cláusula FROM y se introdujo solo un origen de entrada.  
+Hola `SELECT *` sintaxis sólo es válida si la cláusula FROM ha declarado exactamente un alias. `SELECT *` proporciona una proyección de identidad, que puede resultar útil si no se necesitan proyecciones. SELECT * solo es válida si se especifica cláusula FROM y se introdujo solo un origen de entrada.  
   
 Tenga en cuenta que `SELECT <select_list>` y `SELECT *` son código sintáctico y pueden expresarse también mediante instrucciones SELECT sencillas, como se muestra a continuación.  
   
@@ -139,7 +125,7 @@ Tenga en cuenta que `SELECT <select_list>` y `SELECT *` son código sintáctico 
 [Cláusula SELECT](#bk_select_query)  
   
 ##  <a name="bk_from_clause"></a> Cláusula FROM  
-Especifica el origen o la combinación de orígenes. La cláusula FROM es opcional. Si no se especifica, las demás cláusulas se continuarán ejecutando como si la cláusula FROM proporcionara un documento único.  
+Especifica el origen de Hola o los orígenes combinados. Hola FROM cláusula es opcional. Si no se especifica, las demás cláusulas se continuarán ejecutando como si la cláusula FROM proporcionara un documento único.  
   
 **Sintaxis**  
   
@@ -165,47 +151,47 @@ FROM <from_specification>
   
 `<from_source>`  
   
-Especifica un origen de datos, con o sin alias. Si no se especifica, se deducirá de `<collection_expression>` con las siguientes reglas:  
+Especifica un origen de datos, con o sin alias. Si no se especifica, se inferirán de hello `<collection_expression>` con las siguientes reglas:  
   
--   Si la expresión es un nombre de colección, se utilizará collection_name como alias.  
+-   Si expresión de hello es un collection_name, se utilizará collection_name como alias.  
   
--   Si la expresión es `<collection_expression>`, se utilizará property_name como alias. Si la expresión es un nombre de colección, se utilizará collection_name como alias.  
+-   Si la expresión de hello es `<collection_expression>`, entonces se usará property_name y, a continuación, property_name como alias. Si expresión de hello es un collection_name, se utilizará collection_name como alias.  
   
 AS `input_alias`.  
   
-Especifica que `input_alias` es un conjunto de valores que devuelve la expresión de la colección subyacente.  
+Especifica que hello `input_alias` es un conjunto de valores devueltos por hello subyacente de la expresión de colección.  
  
 `input_alias` IN  
   
-Especifica que `input_alias` debe representar el conjunto de valores obtenidos al recorrer en iteración todos los elementos de las matrices que devuelve la expresión de la colección subyacente. Se omite cualquier valor que la expresión de colección subyacente devuelva que no sea una matriz.  
+Especifica que hello `input_alias` debe representar el conjunto de Hola de valores obtenidos por recorrer en iteración todos los elementos de la matriz de cada matriz devuelta por hello subyacente de la expresión de colección. Se omite cualquier valor que la expresión de colección subyacente devuelva que no sea una matriz.  
   
 `<collection_expression>`  
   
-Especifica la expresión de colección que se usará para recuperar los documentos.  
+Especifica Hola colección expresión toobe usa documentos de hello tooretrieve.  
   
 `ROOT`  
   
-Especifica que debe recuperarse ese documento predeterminado de la colección actualmente conectada.  
+Especifica que debe recuperarse ese documento de Hola de forma predeterminada, colección actualmente conectada.  
   
 `collection_name`  
   
-Especifica que debe recuperarse ese documento de la colección indicada. El nombre de la colección debe coincidir con el nombre de la colección conectada actualmente.  
+Especifica que debe recuperarse ese documento de colección de hello proporcionado. Hola nombre de colección de hello debe coincidir con hello de colección de hello conectado actualmente.  
   
 `input_alias`  
   
-Especifica que debe recuperarse ese documento desde otro origen que define el alias proporcionado.  
+Especifica que debe recuperarse ese documento de hello otro origen definido por el alias de hello proporcionado.  
   
 `<collection_expression> '.' property_`  
   
-Especifica que debe recuperarse ese documento mediante el acceso a la propiedad `property_name` o el elemento de matriz array_index para todos los documentos que recupera una expresión de colección específica.  
+Especifica que debe recuperarse ese documento accediendo hello `property_name` especifica el elemento de matriz de propiedad o array_index para todos los documentos recuperados por expresión de colección.  
   
 `<collection_expression> '[' "property_name" | array_index ']'`  
   
-Especifica que debe recuperarse ese documento mediante el acceso a la propiedad `property_name` o el elemento de matriz array_index para todos los documentos que recupera una expresión de colección específica.  
+Especifica que debe recuperarse ese documento accediendo hello `property_name` especifica el elemento de matriz de propiedad o array_index para todos los documentos recuperados por expresión de colección.  
   
 **Comentarios**  
   
-Todos los alias proporcionados o deducidos en `<from_source>(` deben ser únicos. La sintaxis de property_name de `<collection_expression>.` es la misma que la de `<collection_expression>' ['"property_name"']'`. Sin embargo, esta última puede usarse si un nombre de propiedad contiene caracteres que no sean identificadores.  
+Todos los alias proporcionados o deducidos en hello `<from_source>(`s) deben ser únicos. Hola sintaxis `<collection_expression>.`property_name es Hola igual que `<collection_expression>' ['"property_name"']'`. Sin embargo, pueden utilizarse esta última sintaxis de hello si un nombre de propiedad contiene un carácter no son identificadores.  
   
 **Manejo de situaciones en las que faltan propiedades o elementos de matriz o en las que hay valores sin definir**  
   
@@ -215,27 +201,27 @@ Si una expresión de colección accede a propiedades o elementos de matriz y el 
   
 El ámbito de las expresiones de colección puede ser de colección o de documento:  
   
--   Una expresión es de ámbito de colección si el origen subyacente de la expresión de colección es ROOT o `collection_name`. Este tipo de expresión representa un conjunto de documentos que se recuperan directamente de la colección y no dependen del procesamiento de otras expresiones de colección.  
+-   Una expresión es de ámbito de la colección, si hello origen subyacente de la expresión de colección de hello es ROOT o `collection_name`. Este tipo de expresión representa un conjunto de documentos directamente recuperados de la colección de hello directamente y no es dependiente del procesamiento de Hola de otras expresiones de la colección.  
   
--   Una expresión es de ámbito de documento si el origen subyacente de la expresión de colección es el valor `input_alias` introducido anteriormente en la consulta. Esta expresión representa un conjunto de documentos obtenidos al evaluar la expresión de colección en el ámbito de cada documento perteneciente al conjunto asociado a la colección del alias.  El conjunto resultante será una unión de los conjuntos obtenidos al evaluar la expresión de colección para cada uno de los documentos del conjunto subyacente.  
+-   Una expresión es de ámbito de documento, si hello origen subyacente de la expresión de colección de hello es `input_alias` presentada anteriormente en la consulta de Hola. Dicha expresión representa un conjunto de documentos obtenidos al evaluar la expresión de colección hello en el ámbito de Hola de cada documento que pertenece el conjunto de toohello asociado a la colección de alias de Hola.  conjunto resultante de Hello será una unión de los conjuntos obtenidos mediante la evaluación de expresión de colección de Hola para cada uno de los documentos de Hola Hola subyacente conjunto.  
   
 **Combinaciones**  
   
-En la versión actual, Azure Cosmos DB admite combinaciones internas. Las funcionalidades de combinación adicionales estarán disponibles próximamente.
+En la versión actual de hello, base de datos de Azure Cosmos admite combinaciones internas. Las funcionalidades de combinación adicionales estarán disponibles próximamente.
 
-Las combinaciones internas derivan en un producto cruzado completo con los conjuntos participantes en la combinación. El resultado de una combinación de N es un conjunto de tuplas de N elementos, donde cada valor de la tupla se asocia con el conjunto del alias participante en la combinación, accesible mediante una referencia a ese alias en otras cláusulas.  
+Conjuntos de resultados de combinaciones internas en un producto cruzado completado de hello participan en la combinación de Hola. resultado de Hello de una combinación de N es un conjunto de tuplas de N elementos, donde cada valor de tupla Hola está asociado con un alias de hello establecer participan en la combinación de Hola y son accesibles mediante una referencia a ese alias en otras cláusulas.  
   
-La evaluación de la combinación depende del ámbito del contexto de los conjuntos participantes:  
+evaluación de saludo de combinación de hello depende de ámbito de contexto de Hola de hello participa conjuntos:  
   
 -  La combinación entre un conjunto de ámbito de colección A y otro B da como resultado un producto cruzado de todos los elementos de los conjuntos A y B.
   
 -   La combinación entre un conjunto A y un conjunto de ámbito de documento B da como resultado una unión de todos los conjuntos obtenidos de la evaluación de B para cada documento del conjunto A.  
   
- En la versión actual, el procesador de consultas admite un máximo de una expresión de ámbito de colección.  
+ En la versión actual de hello, se admite un máximo de una expresión de ámbito de la colección por el procesador de consultas de Hola.  
   
 **Ejemplos de combinaciones:**  
   
-Observemos la siguiente cláusula FROM: `<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`  
+Echemos un vistazo a Hola siguiente cláusula FROM:`<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`  
   
  Los orígenes definirán `input_alias1, input_alias2, …, input_aliasN`. Esta cláusula FROM devuelve un conjunto de N tuplas (tupla con N valores). Cada tupla tiene valores generados por sus respectivos conjuntos en iteración de todos los alias de colección.  
   
@@ -251,7 +237,7 @@ Observemos la siguiente cláusula FROM: `<from_source1> JOIN <from_source2> JOIN
   
     {4, 5} para `input_alias1 = C,`  
   
-- La cláusula FROM `<from_source1> JOIN <from_source2>` dará como resultado las siguientes tuplas:  
+- Hola de cláusula `<from_source1> JOIN <from_source2>` dará como resultado Hola siguientes tuplas:  
   
     (`input_alias1, input_alias2`):  
   
@@ -275,14 +261,14 @@ Observemos la siguiente cláusula FROM: `<from_source1> JOIN <from_source2> JOIN
   
     {300} para `input_alias2 = 3,`  
   
-- La cláusula FROM `<from_source1> JOIN <from_source2> JOIN <from_source3>` dará como resultado las siguientes tuplas:  
+- Hola de cláusula `<from_source1> JOIN <from_source2> JOIN <from_source3>` dará como resultado Hola siguientes tuplas:  
   
     (input_alias1, input_alias2, input_alias3):  
   
     (A, 1, 100), (A, 1, 200), (B, 3, 300)  
   
 > [!NOTE]
-> Faltan tuplas para otros valores de `input_alias1` y `input_alias2`, para los cuales `<from_source3>` no devolvió ningún valor.  
+> Falta de tuplas para otros valores de `input_alias1`, `input_alias2`, para qué hello `<from_source3>` no devolvió ningún valor.  
   
 *Ejemplo de COMBINACIÓN 3, con 3 orígenes:*  
   
@@ -298,27 +284,27 @@ Observemos la siguiente cláusula FROM: `<from_source1> JOIN <from_source2> JOIN
   
     {4, 5} para `input_alias1 = C,`  
   
-- `<from_source3>` tendrá el ámbito `input_alias1` y representará los conjuntos:  
+- Permiten `<from_source3>` con demasiado el ámbito`input_alias1` y representa conjuntos:  
   
     {100, 200} para `input_alias2 = A,`  
   
     {300} para `input_alias2 = C,`  
   
-- La cláusula FROM `<from_source1> JOIN <from_source2> JOIN <from_source3>` dará como resultado las siguientes tuplas:  
+- Hola de cláusula `<from_source1> JOIN <from_source2> JOIN <from_source3>` dará como resultado Hola siguientes tuplas:  
   
     (`input_alias1, input_alias2, input_alias3`):  
   
     (A, 1, 100), (A, 1, 200), (A, 2, 100), (A, 2, 200), (C, 4, 300), (C, 5, 300)  
   
 > [!NOTE]
-> Esto dio como resultado un producto cruzado entre `<from_source2>` y `<from_source3>`, ya que ambos tienen como ámbito el mismo `<from_source1>`.  Esto dio como resultado 4 (2 x 2) tuplas con valor A, 0 tuplas con valor B (1 x 0) y 2 (2 x 1) tuplas con valor C.  
+> Esto da como resultado un producto cruzado entre `<from_source2>` y `<from_source3>` porque ambos son toohello ámbito mismo `<from_source1>`.  Esto dio como resultado 4 (2 x 2) tuplas con valor A, 0 tuplas con valor B (1 x 0) y 2 (2 x 1) tuplas con valor C.  
   
 **Consulte también**  
   
  [Cláusula SELECT](#bk_select_query)  
   
 ##  <a name="bk_where_clause"></a> Cláusula WHERE  
- Especifica la condición de búsqueda para los documentos que devuelve la consulta.  
+ Especifica la condición de búsqueda de Hola para documentos de hello devuelto por la consulta de Hola.  
   
  **Sintaxis**  
   
@@ -332,18 +318,18 @@ WHERE <filter_condition>
   
 -   `<filter_condition>`  
   
-     Especifica la condición que debe cumplirse para que se devuelvan los documentos.  
+     Especifica Hola condición toobe cumplido para hello documentos toobe devuelto.  
   
 -   `<scalar_expression>`  
   
-     Expresión que representa el valor que hay que calcular. Consulte la sección [Expresiones escalares](#bk_scalar_expressions) para más información.  
+     Calcula la expresión que representa Hola valor toobe. Vea hello [expresiones escalares](#bk_scalar_expressions) sección para obtener más información.  
   
  **Comentarios**  
   
- Para que el documento se devuelva, debe establecerse en true una expresión especificada como condición de filtro. Solo un valor booleano true cumplirá la condición, los demás valores: undefined, null, false, número, matriz u objeto, no cumplirán la condición.  
+ En orden para hello toobe documento devuelve una expresión especificada como condición de filtro debe evaluarse tootrue. Solo un valor booleano true cumplirá la condición de hello, cualquier otro valor: sin definir, null, false, número, matriz u objeto no cumplirá la condición de Hola.  
   
 ##  <a name="bk_orderby_clause"></a> Cláusula ORDER BY  
- Especifica el criterio de ordenación para los resultados que devuelve la consulta.  
+ Especifica Hola orden de clasificación de resultados devueltos por la consulta de Hola.  
   
  **Sintaxis**  
   
@@ -358,30 +344,30 @@ ORDER BY <sort_specification>
   
 -   `<sort_specification>`  
   
-     Especifica una propiedad o una expresión para ordenar el conjunto de resultados de la consulta. Se puede especificar una columna de ordenación como alias de nombre o de columna.  
+     Especifica una propiedad o una expresión en la que del conjunto de resultados de consulta de hello toosort. Se puede especificar una columna de ordenación como alias de nombre o de columna.  
   
-     Se pueden especificar varias columnas de ordenación. Los nombres de columna deben ser únicos. La secuencia de las columnas de ordenación en la cláusula ORDER BY define la organización del conjunto de resultados ordenado. Es decir, el conjunto de resultados se ordena en función de la primera propiedad, esa lista ordenada se ordena en función de la segunda propiedad y así sucesivamente.  
+     Se pueden especificar varias columnas de ordenación. Los nombres de columna deben ser únicos. secuencia de Hola Hola de columnas de ordenación en la cláusula ORDER BY Hola define la organización de Hola Hola ordenado de conjunto de resultados. Es decir, conjunto de resultados de Hola se ordena por la primera propiedad de hello y, a continuación, esa lista ordenada se ordena por la segunda propiedad de Hola y así sucesivamente.  
   
-     Los nombres de columna indicados en la cláusula ORDER BY deben corresponderse con una columna de la lista seleccionada o con una que se defina en una tabla que se especifique en la cláusula FROM sin ambigüedades.  
+     nombres de columna de Hello hace referencia en la cláusula ORDER BY Hola deben corresponderse tooeither una columna de hello seleccione lista o tooa columna definida en la tabla especificada en la cláusula FROM de hello sin ambigüedades.  
   
 -   `<sort_expression>`  
   
-     Especifica una propiedad o expresión únicas para ordenar el conjunto de resultados de la consulta.  
+     Especifica una propiedad única o una expresión en qué conjunto de resultados de consulta de hello toosort.  
   
 -   `<scalar_expression>`  
   
-     Consulte la sección [Expresiones escalares](#bk_scalar_expressions) para más información.  
+     Vea hello [expresiones escalares](#bk_scalar_expressions) sección para obtener más información.  
   
 -   `ASC | DESC`  
   
-     Especifica que los valores de la columna especificada se deben ordenar en orden ascendente o descendente. ASC ordena los valores de menor a mayor. DESC ordena los valores de mayor a menos. ASC es el criterio de ordenación predeterminado. Los valores null se tratan como valores mínimos.  
+     Especifica que los valores de hello en la columna especificada de Hola se deben ordenar en orden ascendente o descendente. ASC ordena del valor de toohighest de valor más bajo de Hola. DESC ordena del valor de toolowest de valor más alto. ASC es el criterio de ordenación predeterminado de Hola. Valores NULL se tratan como valores de hello más bajos posibles.  
   
  **Comentarios**  
   
- Aunque la gramática de consulta admite varias propiedades para order by, el tiempo de ejecución de consulta de Azure Cosmos DB admite solo la ordenación por una propiedad y únicamente según los nombres de propiedad, es decir, no según las propiedades calculadas. La ordenación también requiere que la directiva de indexación incluya un índice de intervalo para la propiedad y el tipo especificado, con máxima precisión. Consulte la documentación de la directiva de indexación para más detalles.  
+ Durante la gramática de consulta de hello permite varios pedidos por propiedades, tiempo de ejecución de consulta de base de datos de Azure Cosmos de hello admite ordenación únicamente en una sola propiedad y únicamente en los nombres de propiedad, es decir, no en las propiedades calculadas. Ordenar también requiere que Hola directiva de indexación incluye un índice de intervalo para la propiedad de Hola y Hola especificado tipo, con una precisión máxima de Hola. Consulte toohello documentación para obtener más detalles de la directiva de indización.  
   
 ##  <a name="bk_scalar_expressions"></a> Expresiones escalares  
- Una expresión escalar es una combinación de símbolos y operadores que se puede evaluar para obtener un solo valor. Las expresiones simples pueden ser constantes, referencias de propiedad, referencias de elementos de matriz, referencias de alias o llamadas de función. Las expresiones simples se pueden combinar en expresiones complejas con operadores.  
+ Una expresión escalar es una combinación de símbolos y operadores que se pueden evalúan tooobtain un valor único. Las expresiones simples pueden ser constantes, referencias de propiedad, referencias de elementos de matriz, referencias de alias o llamadas de función. Las expresiones simples se pueden combinar en expresiones complejas con operadores.  
   
  Para más información sobre los valores que puede tener una expresión escalar, consulte la sección [Constantes](#bk_constants).  
   
@@ -422,24 +408,24 @@ ORDER BY <sort_specification>
   
 -   `input_alias`  
   
-     Representa un valor definido por `input_alias`, introducido en la cláusula `FROM`.  
-    Este valor nunca será **undefined**, los valores **undefined** se omiten de la entrada.  
+     Representa un valor definido por hello `input_alias` introducidas en hello `FROM` cláusula.  
+    Este valor se garantiza toonot ser **indefinido** :**indefinido** se omiten los valores de entrada de Hola.  
   
 -   `<scalar_expression>.property_name`  
   
-     Representa un valor de propiedad de un objeto. Si la propiedad no existe o se hace referencia a ella con un valor que no es un objeto, la expresión se evalúa como valor **undefined**.  
+     Representa un valor de propiedad de Hola de un objeto. Si no existe ninguna propiedad de Hola o propiedad que se hace referencia en un valor que no es un objeto y luego Hola expresión, se evalúa como demasiado**indefinido** valor.  
   
 -   `<scalar_expression>'['"property_name"|array_index']'`  
   
-     Representa un valor de propiedad con nombre `property_name` o de elemento de matriz con el índice `array_index` de un objeto o matriz. Si la propiedad no existe o se hace referencia a ella con un valor que no es un objeto, la expresión se evalúa como valor undefined.  
+     Representa un valor de propiedad de hello con nombre `property_name` o elemento de matriz con el índice `array_index` de una matriz de objetos. Si no existe el índice de propiedad o matriz de Hola o índice de la propiedad/matriz Hola se hace referencia en un valor que no es una matriz de objetos, a continuación, Hola expresión se evalúa como el valor de tooundefined.  
   
 -   `unary_operator <scalar_expression>`  
   
-     Representa un operador que se aplica a un único valor. Consulte la sección [Operadores](#bk_operators) para más información.  
+     Representa un operador que sea tooa aplicado un solo valor. Consulte la sección [Operadores](#bk_operators) para más información.  
   
 -   `<scalar_expression> binary_operator <scalar_expression>`  
   
-     Representa un operador que se aplica a dos valores. Consulte la sección [Operadores](#bk_operators) para más información.  
+     Representa un operador que es tener valores tootwo aplicada. Consulte la sección [Operadores](#bk_operators) para más información.  
   
 -   `<scalar_function_expression>`  
   
@@ -447,11 +433,11 @@ ORDER BY <sort_specification>
   
 -   `udf_scalar_function`  
   
-     Función escalar definida por el nombre del usuario.  
+     Función escalar definida por el nombre de usuario de Hola.  
   
 -   `builtin_scalar_function`  
   
-     Nombre de la función escalar incorporada.  
+     Nombre de función escalar integrada de Hola.  
   
 -   `<create_object_expression>`  
   
@@ -463,18 +449,18 @@ ORDER BY <sort_specification>
   
 -   `parameter_name`  
   
-     Representa un valor del nombre de parámetro especificado. Los nombres de parámetro deben tener un único @ como primer carácter.  
+     Representa un valor de nombre de parámetro especificado de Hola. Nombres de parámetro deben tener un único @ como primer carácter de Hola.  
   
  **Comentarios**  
   
- Todos los argumentos deben estar definidos al llamar a una función escalar incorporada o definida por el usuario. Si alguno de los argumentos no está definido, no se llamará a la función y el resultado será undefined.  
+ Todos los argumentos deben estar definidos al llamar a una función escalar incorporada o definida por el usuario. Si alguno de los argumentos de hello no está definido, no se llamará función hello y Hola resultado será indefinido.  
   
- Al crear un objeto, se omitirá cualquier propiedad a la que se le haya asignado un valor undefined y no se incluirá en el objeto creado.  
+ Cuando se crea un objeto, cualquier propiedad que se asigna el valor no definido se omite y no se incluyen en hello creado el objeto.  
   
- Al crear una matriz, se omitirá cualquier elemento al que se le haya asignado un valor **undefined** y no se incluirá en el objeto creado. Esto hará que el siguiente elemento definido ocupe su lugar de manera que la matriz creada no tenga índices omitidos.  
+ Cuando se asigna la creación de una matriz, cualquier valor del elemento que **indefinido** valor se omite y no se incluyen en el objeto Hola creado. Esto hará que tootake de elemento de Hola a continuación definida su lugar como dicha matriz Hola creado no tenga índices omitidos.  
   
 ##  <a name="bk_operators"></a> Operadores  
- En esta sección se describen los operadores compatibles. Cada operador puede asignarse exactamente a una categoría.  
+ Esta sección describe los operadores de hello compatible. Cada operador puede ser tooexactly asignado una categoría.  
   
  Consulte la siguiente tabla, **Categorías de operadores**, para más información acerca del control de los valores **undefined**, los requisitos de tipo de valores de entrada y el control de los valores con tipos no coincidentes.  
   
@@ -482,17 +468,17 @@ ORDER BY <sort_specification>
   
 |**Categoría**|**Detalles**|  
 |-|-|  
-|**aritméticos**|El operador espera que las entradas sean números. La salida también es un número. Si alguna de las entradas es **undefined** o de un tipo que no sea un número, el resultado es **undefined**.|  
-|**bit a bit**|El operador espera que las entradas sean números enteros con signo de 32 bits. La salida también es un número entero con signo de 32 bits.<br /><br /> Los valores que no sean enteros se redondean. Los valores positivos se redondean a la baja y los negativos, a la alta.<br /><br /> Se convertirá cualquier valor que esté fuera del intervalo de enteros de 32 bits, aprovechando los últimos 32 bits de su notación de complemento a dos.<br /><br /> Si alguna de las entradas es **undefined** o de un tipo que no sea un número, el resultado es **undefined**.<br /><br /> **Nota:** El comportamiento anterior es compatible con el comportamiento del operador bit a bit de JavaScript.|  
-|**lógicos**|El operador espera que las entradas sean booleanos. La salida también es un booleano.<br />Si alguna de las entradas es **undefined** o de un tipo que no sea un booleano, el resultado es **undefined**.|  
-|**de comparación**|El operador espera que las entradas sean del mismo tipo y sin valores undefined. La salida es un booleano.<br /><br /> Si alguna de las entradas es **undefined** o tienen distintos tipos, el resultado es **undefined**.<br /><br /> Consulte la tabla **Ordenación de los valores para la comparación** para conocer los detalles de ordenación de los valores.|  
-|**cadena**|El operador espera que las entradas sean cadenas. La salida también es una cadena.<br />Si alguna de las entradas es **undefined** o de un tipo que no sea una cadena, el resultado es **undefined**.|  
+|**aritméticos**|El operador espera que las entradas toobe números. La salida también es un número. Si se cumple alguna de las entradas de hello **indefinido** o es de tipo que no sea resultado de número, a continuación, hello **indefinido**.|  
+|**bit a bit**|El operador espera que las entradas entero con signo de 32 bits de toobe números. La salida también es un número entero con signo de 32 bits.<br /><br /> Los valores que no sean enteros se redondean. Los valores positivos se redondean a la baja y los negativos, a la alta.<br /><br /> Se convertirá cualquier valor que está fuera del intervalo de entero de 32 bits de hello, aprovechando los últimos 32 bits de sus dos notaciones de complementos.<br /><br /> Si se cumple alguna de las entradas de hello **indefinido** o tipo que no sea número, entonces el resultado de hello es **indefinido**.<br /><br /> **Nota:** Hola anteriormente el comportamiento es compatible con el comportamiento del operador bit a bit de JavaScript.|  
+|**lógicos**|El operador espera que las entradas toobe booleanas. La salida también es un booleano.<br />Si se cumple alguna de las entradas de hello **indefinido** o tipo que no sea un valor booleano, será el resultado de hello **indefinido**.|  
+|**de comparación**|El operador espera que las entradas toohave Hola mismo tipo y no sean sin definir. La salida es un booleano.<br /><br /> Si se cumple alguna de las entradas de hello **indefinido** u Hola entradas tienen tipos diferentes, el resultado de hello es **indefinido**.<br /><br /> Consulte la tabla **Ordenación de los valores para la comparación** para conocer los detalles de ordenación de los valores.|  
+|**cadena**|El operador espera que las entradas toobe cadenas. La salida también es una cadena.<br />Si se cumple alguna de las entradas de hello **indefinido** o es de tipo que no sea resultado de cadena, a continuación, hello **indefinido**.|  
   
  **Operadores unarios:**  
   
 |**Name**|**Operador**|**Detalles**|  
 |-|-|-|  
-|**aritméticos**|+<br /><br /> -|Devuelve el valor numérico.<br /><br /> Negativos bit a bit. Devuelve el valor numérico negativo.|  
+|**aritméticos**|+<br /><br /> -|Devuelve el valor número Hola.<br /><br /> Negativos bit a bit. Devuelve el valor numérico negativo.|  
 |**bit a bit**|~|Complemento de uno. Devuelve un complemento de un valor numérico.|  
 |**lógicos**|**NOT**|Negación. Devuelve el valor booleano negativo.|  
   
@@ -503,12 +489,12 @@ ORDER BY <sort_specification>
 |**aritméticos**|+<br /><br /> -<br /><br /> *<br /><br /> /<br /><br /> %|Suma.<br /><br /> Resta.<br /><br /> Multiplicación.<br /><br /> División.<br /><br /> Modulación.|  
 |**bit a bit**|&#124;<br /><br /> &<br /><br /> ^<br /><br /> <<<br /><br /> >><br /><br /> >>>|OR bit a bit.<br /><br /> AND bit a bit.<br /><br /> XOR bit a bit.<br /><br /> Desplazamiento a la izquierda.<br /><br /> Desplazamiento a la derecha.<br /><br /> Desplazamiento a la derecha con relleno de ceros.|  
 |**lógicos**|**AND**<br /><br /> **O bien**|Conjunción lógica. Devuelve **true** si ambos argumentos son **true**, devuelve **false** en caso contrario.<br /><br /> Conjunción lógica. Devuelve **true** si ambos argumentos son **true**, devuelve **false** en caso contrario.|  
-|**de comparación**|**=**<br /><br /> **!=, <>**<br /><br /> **>**<br /><br /> **>=**<br /><br /> **<**<br /><br /> **<=**<br /><br /> **??**|Igual a. Devuelve **true** si ambos argumentos son iguales, en caso contrario, devuelve **false**.<br /><br /> Diferente de. Devuelve **true** si ambos argumentos no son iguales, en caso contrario, devuelve **false**.<br /><br /> Mayor que. Devuelve **true** si el primer argumento es mayor que el segundo, en caso contrario, devuelve **false**.<br /><br /> Mayor o igual que. Devuelve **true** si el primer argumento es mayor o igual que el segundo, en caso contrario, devuelve **false**.<br /><br /> Menor que. Devuelve **true** si el primer argumento es menor que el segundo, en caso contrario, devuelve **false**.<br /><br /> Menor o igual que. Devuelve **true** si el primer argumento es menor o igual que el segundo, en caso contrario, devuelve **false**.<br /><br /> Fusionar. Devuelve el segundo argumento si el primero es un valor **undefined**.|  
-|**String**|**&#124;&#124;**|Concatenación. Devuelve una concatenación de ambos argumentos.|  
+|**de comparación**|**=**<br /><br /> **!=, &lt;&gt;**<br /><br /> **>**<br /><br /> **>=**<br /><br /> **<**<br /><br /> **<=**<br /><br /> **??**|Igual a. Devuelve **true** si ambos argumentos son iguales, en caso contrario, devuelve **false**.<br /><br /> Diferente de. Devuelve **true** si ambos argumentos no son iguales, en caso contrario, devuelve **false**.<br /><br /> Mayor que. Devuelve **true** si el primer argumento es mayor que otra de Hola, devolver **false** en caso contrario.<br /><br /> Mayor o igual que. Devuelve **true** si el primer argumento es mayor o igual a otra toohello, devolver **false** en caso contrario.<br /><br /> Menor que. Devuelve **true** si el primer argumento es menor que otra de Hola, devolver **false** en caso contrario.<br /><br /> Menor o igual que. Devuelve **true** si el primer argumento es menor o igual toohello segundo uno, devuelto **false** en caso contrario.<br /><br /> Fusionar. Devuelve Hola segundo argumento si Hola primer argumento es un **indefinido** valor.|  
+|**String**|**&amp;#124;&amp;#124;**|Concatenación. Devuelve una concatenación de ambos argumentos.|  
   
  **Operadores ternarios:**  
   
-|Operador ternario|?|Devuelve el segundo argumento si el primero se evalúa como **true**, en caso contrario, devuelve el tercer argumento.|  
+|Operador ternario|?|Devuelve Hola segundo argumento si Hola primer argumento se evalúa demasiado**true**; devuelve el tercer argumento de hello en caso contrario.|  
 |-|-|-|  
   
  **Ordenación de los valores para la comparación**  
@@ -524,20 +510,20 @@ ORDER BY <sort_specification>
   
  **Comentarios**  
   
- En Azure Cosmos DB, a menudo no se conocen los tipos de los valores hasta que se recuperan de la base de datos. Para admitir la ejecución de consultas de forma eficaz, la mayoría de los operadores tienen requisitos de tipo estrictos. Además, los operadores por sí mismos no realizan conversiones implícitas.  
+ En la base de datos de Azure Cosmos, tipos de Hola de valores a menudo no se conocen hasta que realmente se recuperan de la base de datos de Hola. En orden toosupport una ejecución eficaz de las consultas, la mayoría de los operadores de hello tiene estrictos requisitos de tipos. Además, los operadores por sí mismos no realizan conversiones implícitas.  
   
- Esto significa que una consulta como: SELECT * FROM ROOT r WHERE r.Age = 21 solo devolverá documentos con la propiedad Age igual al número 21. Los documentos con la propiedad Age igual a la cadena "21" o a la cadena "0021" no coincidirán, ya que la expresión "21" = 21 se cuenta como undefined. Esto permite un mejor uso de los índices, ya que la búsqueda de un valor específico (es decir, el número 21) es más rápida que la búsqueda de un número indefinido de coincidencias posibles (es decir, el número 21 o las cadenas "21", "021", "21,0", etc.). Esto difiere de la evaluación de los distintos tipos de valores de los operadores en JavaScript.  
+ Esto significa que una consulta como: seleccione * FROM ROOT r WHERE r.Age = 21 solo devolverá documentos con la propiedad Age igual toohello número 21. Documentos con la propiedad Age igual toohello cadena "21" u Hola "0021" no coincidirán, como expresión de Hola "21" = 21 se evalúa como tooundefined. Esto permite un mejor uso de índices, porque búsqueda Hola de un valor específico (es decir, el número 21) es más rápido que busque un número indefinido de coincidencias posibles (es decir, el número 21 o las cadenas "21", "021", "21.0"...). Esto difiere de la evaluación de los distintos tipos de valores de los operadores en JavaScript.  
   
  **Comparación e igualdad de objetos y matrices**  
   
  La comparación de valores de Array u Object mediante los operadores de intervalo (>, > =, <, < =) dará como resultado undefined, ya que no hay orden definido en los valores de Object o Array. Sin embargo, se admite con operadores de igualdad y desigualdad (=,! =, <>) y los valores se compararán estructuralmente.  
   
- Las matrices son iguales si ambas tienen el mismo número de elementos y los elementos de las posiciones coincidentes también son iguales. Si la comparación de cualquier par de resultados de elementos es undefined, el resultado de la comparación de matrices es undefined.  
+ Las matrices son iguales si ambas tienen el mismo número de elementos y los elementos de las posiciones coincidentes también son iguales. Si compara cualquier par de elementos da como resultado sin definir, resultado de hello de comparación de la matriz es indefinido.  
   
- Los objetos son iguales si tienen las mismas propiedades definidas y si los valores de las propiedades coincidentes también son iguales. Si la comparación de cualquier par de valores de propiedad es undefined, el resultado de la comparación de objetos es undefined.  
+ Los objetos son iguales si tienen las mismas propiedades definidas y si los valores de las propiedades coincidentes también son iguales. Si compara cualquier par de valores de propiedad da como resultado sin definir, resultado de hello de comparación de objetos es indefinido.  
   
 ##  <a name="bk_constants"></a> Constantes  
- Una constante, también conocida como valor literal o escalar, es un símbolo que representa un valor de datos específicos. El formato de una constante depende del tipo de datos del valor que representa.  
+ Una constante, también conocida como valor literal o escalar, es un símbolo que representa un valor de datos específicos. formato de Hola de una constante depende de tipo de datos de hello del valor de Hola que representa.  
   
  **Tipos de datos escalares admitidos:**  
   
@@ -639,23 +625,23 @@ ORDER BY <sort_specification>
 |\uXXXX|Carácter Unicode definidos por 4 dígitos hexadecimales.|U + XXXX|  
   
 ##  <a name="bk_query_perf_guidelines"></a> Guías de rendimiento de las consultas  
- Para que una consulta se ejecute de forma eficaz con una colección extensa, debe utilizar filtros que puedan obtenerse a través de uno o más índices.  
+ En orden para un toobe consulta ejecutado eficazmente para una colección de gran tamaño, debe utilizar filtros que pueden obtenerse a través de uno o más índices.  
   
- Para la búsqueda de índices, se considerarán los filtros siguientes:  
+ Hola después de filtros se considerará de búsqueda del índice:  
   
 -   Utilice el operador de igualdad (=) con expresiones de ruta de acceso de documentos y constantes.  
   
 -   Utilice los operadores de intervalo (<, \<=, >, >=) con expresiones de ruta de acceso de documentos y constantes numéricas.  
   
--   Una expresión de ruta de acceso de documento es cualquier expresión que identifica una ruta de acceso constante en los documentos de la colección de la base de datos a la que se hace referencia.  
+-   Expresión de ruta de acceso de documento indica cualquier expresión que identifica una ruta de acceso constante en documentos de Hola de colección de la base de datos de hello al que hace referencia.  
   
  **Expresión de ruta de acceso de documento**  
   
- Las expresiones de ruta de acceso de documento son expresiones que evalúan la ruta de una propiedad o un indexador de matrices en un documento procedente de la colección de bases de datos. Esta ruta de acceso sirve para identificar directamente la ubicación de los valores a los que se hace referencia en un filtro en los documentos de la colección de la base de datos.  
+ Las expresiones de ruta de acceso de documento son expresiones que evalúan la ruta de una propiedad o un indexador de matrices en un documento procedente de la colección de bases de datos. Esta ruta de acceso puede ser usado tooidentify Hola ubicación de valores que se hace referencia en un filtro directamente dentro de los documentos de hello en la colección de la base de datos de Hola.  
   
- Para que una expresión se considere una expresión de ruta de acceso de documento, debe:  
+ Para que una expresión toobe considera una expresión de ruta de acceso del documento, debe:  
   
-1.  Hacer referencia directamente a la raíz de la colección.  
+1.  Referencia Hola raíz directamente.  
   
 2.  Hacer referencia al indexador de matrices de propiedad o constantes de alguna expresión de ruta de acceso de documento.  
   
@@ -663,36 +649,36 @@ ORDER BY <sort_specification>
   
      **Convenciones de sintaxis**  
   
-     En la tabla siguiente se indican las convenciones utilizadas para describir la sintaxis de las referencias del lenguaje de consulta de la API de DocumentDB.  
+     Hello en la tabla siguiente describe la sintaxis de toodescribe de hello convenciones utilizadas en la referencia del lenguaje de consulta de API de documentos Hola.  
   
     |**Convención**|**Se usa para**|  
     |-|-|    
     |MAYÚSCULAS|Palabras clave sin distinción entre mayúsculas y minúsculas.|  
     |minúsculas|Palabras clave con distinción entre mayúsculas y minúsculas.|  
-    |\<noterminal>|Elemento no terminal, se define por separado.|  
-    |\<noterminal> ::=|Definición de la sintaxis del elemento no terminal.|  
+    |\<noterminal&gt;|Elemento no terminal, se define por separado.|  
+    |\<noterminal&gt; ::=|Definición de la sintaxis de elemento no Terminal de Hola.|  
     |otro_terminal|Terminal (token), se describe detalladamente en palabras.|  
     |identificador|Identificador. Solo admite los caracteres siguientes:, a-z, A-Z, 0-9 _El primer carácter no puede ser un dígito.|  
     |"cadena"|Cadena entrecomillada. Permite cualquier cadena válida. Vea la descripción de string_literal.|  
-    |'símbolo'|Símbolo literal que forma parte de la sintaxis.|  
-    |&#124; (barra vertical)|Alternativas para los elementos de la sintaxis. Puede usar solo uno de los elementos especificados.|  
+    |'símbolo'|Símbolo literal que forma parte de la sintaxis de Hola.|  
+    |&#124; (barra vertical)|Alternativas para los elementos de la sintaxis. Puede usar solo uno de los elementos de hello especificados.|  
     |[] /(corchetes)|Los corchetes contienen uno o varios elementos opcionales.|  
-    |[, ...n]|Indica que el elemento anterior se puede repetir un número n de veces. Los elementos se separan por comas.|  
-    |[ ...n]|Indica que el elemento anterior se puede repetir un número n de veces. Los elementos se separan por espacios en blanco.|  
+    |[, ...n]|Indica Hola anterior elemento se puede repetir n número de veces. Hola elementos se separan por comas.|  
+    |[ ...n]|Indica Hola anterior elemento se puede repetir n número de veces. elementos de Hola se separan mediante espacios en blanco.|  
   
 ##  <a name="bk_built_in_functions"></a> Funciones integradas  
- Azure Cosmos DB proporciona muchas funciones de SQL integradas. Las categorías de las funciones integradas aparecen a continuación.  
+ Azure Cosmos DB proporciona muchas funciones de SQL integradas. categorías de Hola de funciones integradas se enumeran a continuación.  
   
 |Función|Descripción|  
 |--------------|-----------------|  
-|[Funciones matemáticas](#bk_mathematical_functions)|Las funciones matemáticas realizan un cálculo, basado normalmente en valores de entrada proporcionados como argumentos, y devuelven un valor numérico.|  
-|[Funciones de comprobación de tipos](#bk_type_checking_functions)|Las funciones de comprobación de tipos permiten comprobar el tipo de una expresión dentro de consultas SQL.|  
-|[Funciones de cadena](#bk_string_functions)|Las siguientes funciones de cadena realizan una operación sobre un valor de entrada de cadena y devuelven una cadena, un valor numérico o un booleano.|  
-|[Funciones de matriz](#bk_array_functions)|Las siguientes funciones de matriz realizan una operación en un valor de entrada de matriz y devolver un valor numérico, booleano o de matriz.|  
-|[Funciones espaciales](#bk_spatial_functions)|Las siguientes funciones espaciales realizan una operación en un valor de entrada de objeto espacial y devuelven un valor numérico o un booleano.|  
+|[Funciones matemáticas](#bk_mathematical_functions)|Hola funciones matemáticas cada realizan un cálculo, normalmente basado en valores de entrada que se proporcionan como argumentos y devuelven un valor numérico.|  
+|[Funciones de comprobación de tipos](#bk_type_checking_functions)|funciones de comprobación de tipo Hello permiten a tipo de hello toocheck de una expresión dentro de las consultas SQL.|  
+|[Funciones de cadena](#bk_string_functions)|funciones de cadena de Hello realizan una operación sobre un valor de cadena de entrada y devuelven una cadena, valor numérico o booleano.|  
+|[Funciones de matriz](#bk_array_functions)|funciones de matriz de Hello realizan una operación en un valor de matriz de entrada y devuelven numérico, un valor booleano o de matriz.|  
+|[Funciones espaciales](#bk_spatial_functions)|funciones espaciales Hola realizan una operación sobre un valor de entrada de objeto espacial y devuelven un valor numérico o booleano.|  
   
 ###  <a name="bk_mathematical_functions"></a> Funciones matemáticas  
- Las siguientes funciones realizan un cálculo, basado normalmente en valores de entrada que se proporcionan como argumentos, y devuelven un valor numérico.  
+ Hello siguientes funciones realizan un cálculo, normalmente basado en valores de entrada que se proporcionan como argumentos y devuelven un valor numérico.  
   
 ||||  
 |-|-|-|  
@@ -706,7 +692,7 @@ ORDER BY <sort_specification>
 |[TAN](#bk_tan)|[TRUNC](#bk_trunc)||  
   
 ####  <a name="bk_abs"></a> ABS  
- Devuelve el valor absoluto (positivo) de la expresión numérica especificada.  
+ Devuelve Hola valor absoluto (positivo) de hello especifica la expresión numérica.  
   
  **Sintaxis**  
   
@@ -726,20 +712,20 @@ ABS (<numeric_expression>)
   
  **Ejemplos**  
   
- En el ejemplo siguiente se muestran los resultados de usar la función ABS en tres números distintos.  
+ Hello en el ejemplo siguiente se muestra los resultados de Hola de usar la función hello ABS en tres números distintos.  
   
 ```  
 SELECT ABS(-1), ABS(0), ABS(1)  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{$1: 1, $2: 0, $3: 1}]  
 ```  
   
 ####  <a name="bk_acos"></a> ACOS  
- Devuelve el ángulo, en radianes, cuyo coseno es la expresión numérica especificada; también se denomina arcocoseno.  
+ Ángulo de hello devuelve, en radianes, cuyo coseno es Hola expresión numérica especificada; También se denomina arco coseno.  
   
  **Sintaxis**  
   
@@ -759,20 +745,20 @@ ACOS(<numeric_expression>)
   
  **Ejemplos**  
   
- El siguiente ejemplo devuelve el arcocoseno de -1:  
+ Hello en el ejemplo siguiente se devuelve Hola ACOS de -1.  
   
 ```  
 SELECT ACOS(-1)  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{"$1": 3.1415926535897931}]  
 ```  
   
 ####  <a name="bk_asin"></a> ASIN  
- Devuelve el ángulo, en radianes, cuyo seno es la expresión numérica especificada. También se denomina arcoseno.  
+ Ángulo de hello devuelve, en radianes, cuyo seno es hello especifica expresión numérica. También se denomina arcoseno.  
   
  **Sintaxis**  
   
@@ -792,20 +778,20 @@ ASIN(<numeric_expression>)
   
  **Ejemplos**  
   
- El siguiente ejemplo devuelve el arcoseno de -1:  
+ Hello en el ejemplo siguiente se devuelve Hola ASIN de -1.  
   
 ```  
 SELECT ASIN(-1)  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{"$1": -1.5707963267948966}]  
 ```  
   
 ####  <a name="bk_atan"></a> ATAN  
- Devuelve el ángulo, en radianes, cuya tangente es la expresión numérica especificada. También se denomina arcotangente.  
+ Ángulo de hello devuelve, en radianes, cuya tangente es hello especifica expresión numérica. También se denomina arcotangente.  
   
  **Sintaxis**  
   
@@ -825,20 +811,20 @@ ATAN(<numeric_expression>)
   
  **Ejemplos**  
   
- El siguiente ejemplo devuelve la arcotangente del valor especificado.  
+ Hola siguiente ejemplo devuelve Hola ATAN de hello valor especificado.  
   
 ```  
 SELECT ATAN(-45.01)  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{"$1": -1.5485826962062663}]  
 ```  
   
 ####  <a name="bk_atn2"></a> ATN2  
- Devuelve el valor principal de la arcotangente de y/x, expresado en radianes.  
+ Devuelve el valor de entidad de seguridad de Hola de hello arco tangente de y/x x, expresado en radianes.  
   
  **Sintaxis**  
   
@@ -858,20 +844,20 @@ ATN2(<numeric_expression>, <numeric_expression>)
   
  **Ejemplos**  
   
- En el siguiente ejemplo se calcula ATN2 para los componentes x e y especificados.  
+ Hello en el ejemplo siguiente se calcula hello ATN2 para hello especificado x e y componentes.  
   
 ```  
 SELECT ATN2(35.175643, 129.44)  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{"$1": 1.3054517947300646}]  
 ```  
   
 ####  <a name="bk_ceiling"></a> CEILING  
- Devuelve el valor entero más pequeño mayor o igual que la expresión numérica especificada.  
+ Devuelve Hola valor entero más pequeño mayor o igual a, Hola expresión numérica especificada.  
   
  **Sintaxis**  
   
@@ -891,20 +877,20 @@ CEILING (<numeric_expression>)
   
  **Ejemplos**  
   
- En el ejemplo siguiente se muestran valores numéricos positivos, negativos y cero con la función CEILING.  
+ Hola siguiente ejemplo muestra numéricos positivos, negativos y valores cero con Hola función CEILING.  
   
 ```  
 SELECT CEILING(123.45), CEILING(-123.45), CEILING(0.0)  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{$1: 124, $2: -123, $3: 0}]  
 ```  
   
 ####  <a name="bk_cos"></a> COS  
- Devuelve el coseno trigonométrico del ángulo especificado, en radianes, en la expresión especificada.  
+ Devuelve Hola coseno trigonométrico Hola especifica el ángulo, en radianes, en hello expresión especificada.  
   
  **Sintaxis**  
   
@@ -924,20 +910,20 @@ COS(<numeric_expression>)
   
  **Ejemplos**  
   
- En el ejemplo siguiente se calcula el coseno del ángulo especificado.  
+ Hola siguiente ejemplo calcula Hola COS de hello especifica el ángulo.  
   
 ```  
 SELECT COS(14.78)  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{"$1": -0.59946542619465426}]  
 ```  
   
 ####  <a name="bk_cot"></a> COT  
- Devuelve la cotangente trigonométrica del ángulo especificado, en radianes, en la expresión numérica especificada.  
+ Devuelve Hola cotangente trigonométrica Hola especifica el ángulo, en radianes, en hello especifica la expresión numérica.  
   
  **Sintaxis**  
   
@@ -957,20 +943,20 @@ COT(<numeric_expression>)
   
  **Ejemplos**  
   
- En el ejemplo siguiente se calcula la cotangente del ángulo especificado.  
+ Hola siguiente ejemplo calcula Hola COT del ángulo especificado Hola.  
   
 ```  
 SELECT COT(124.1332)  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{"$1": -0.040311998371148884}]  
 ```  
   
 ####  <a name="bk_degrees"></a> DEGREES  
- Devuelve el ángulo correspondiente en grados de un ángulo especificado en radianes.  
+ Devuelve Hola ángulo correspondiente en grados para un ángulo especificado en radianes.  
   
  **Sintaxis**  
   
@@ -990,20 +976,20 @@ DEGREES (<numeric_expression>)
   
  **Ejemplos**  
   
- En el ejemplo siguiente se devuelven los grados de un ángulo de pi/2 radianes.  
+ Hello en el ejemplo siguiente se devuelve Hola número de grados en un ángulo de PI/2 radianes.  
   
 ```  
 SELECT DEGREES(PI()/2)  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{"$1": 90}]  
 ```  
   
 ####  <a name="bk_floor"></a> FLOOR  
- Devuelve el valor entero más grande menor o igual que la expresión numérica especificada.  
+ Devuelve Hola mayor entero menor o igual toohello especifica la expresión numérica.  
   
  **Sintaxis**  
   
@@ -1023,20 +1009,20 @@ FLOOR (<numeric_expression>)
   
  **Ejemplos**  
   
- En el ejemplo siguiente se muestran valores numéricos positivos, negativos y cero con la función FLOOP.  
+ Hola siguiente ejemplo muestra numéricos positivos, negativos y cero valores con Hola FLOOR (función).  
   
 ```  
 SELECT FLOOR(123.45), FLOOR(-123.45), FLOOR(0.0)  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{$1: 123, $2: -124, $3: 0}]  
 ```  
   
 ####  <a name="bk_exp"></a> EXP  
- Devuelve el valor exponencial de la expresión numérica especificada.  
+ Devuelve Hola valor exponencial de hello especifica la expresión numérica.  
   
  **Sintaxis**  
   
@@ -1056,40 +1042,40 @@ EXP (<numeric_expression>)
   
  **Comentarios**  
   
- La constante **e** (2,718281 …) es la base de los logaritmos naturales.  
+ constante de Hello **e** (2,718281 …) es Hola base de los logaritmos naturales.  
   
- El exponente de un número es la constante **e** elevada a la potencia del número. Por ejemplo EXP(1,0) = e^1,0 = 2,718 281 828 459 05 y EXP(10) = e^10 = 22 026,465 794 806 7.  
+ Hello exponente de un número es constante de hello **e** genera potencia de toohello de número de Hola. Por ejemplo EXP(1,0) = e^1,0 = 2,718 281 828 459 05 y EXP(10) = e^10 = 22 026,465 794 806 7.  
   
- El valor exponencial del logaritmo natural de un número es el mismo número: EXP (LOG [n]) = n. Y el logaritmo natural del valor exponencial de un número es el mismo número: LOG (EXP [n]) = n.  
+ Hola valor exponencial del logaritmo natural de Hola de un número es el número de hello propio: EXP (LOG (n)) = n. Logaritmo natural de Hola de hello exponencial de un número es el número de hello propio: LOG (EXP (n)) = n.  
   
  **Ejemplos**  
   
- En el ejemplo siguiente se declara una variable y se devuelve el valor exponencial de la variable especificada (10).  
+ Hello en el ejemplo siguiente se declara una variable y devuelve el valor exponencial de saludo de la variable especificada de hello (10).  
   
 ```  
 SELECT EXP(10)  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{$1: 22026.465794806718}]  
 ```  
   
- En el ejemplo siguiente se devuelve el valor exponencial del logaritmo natural de 20 y el logaritmo natural del valor exponencial de 20. Dado que estas funciones son inversas entre sí, el valor devuelto con redondeo para las operaciones matemáticas de punto flotante en ambos casos es 20.  
+ Hello en el ejemplo siguiente se devuelve Hola valor exponencial del logaritmo natural de Hola de 20 y el logaritmo natural de Hola de hello exponencial de 20. Dado que estas funciones son funciones inversas entre sí, valor devuelto de hello con redondeo para matemáticas en ambos casos son 20 de punto flotante.  
   
 ```  
 SELECT EXP(LOG(20)), LOG(EXP(20))  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{$1: 19.999999999999996, $2: 20}]  
 ```  
   
 ####  <a name="bk_log"></a> LOG  
- Devuelve el algoritmo natural de la expresión numérica especificada.  
+ Devuelve el logaritmo de natural de Hola de hello especificado expresión numérica.  
   
  **Sintaxis**  
   
@@ -1105,7 +1091,7 @@ LOG (<numeric_expression> [, <base>])
   
 -   `base`  
   
-     Argumento numérico opcional que establece la base del logaritmo.  
+     Argumento numérico opcional que establece base logaritmo Hola Hola.  
   
  **Tipos de valor devuelto**  
   
@@ -1113,40 +1099,40 @@ LOG (<numeric_expression> [, <base>])
   
  **Comentarios**  
   
- De forma predeterminada, LOG() devuelve el logaritmo natural. Puede cambiar la base del logaritmo a otro valor mediante el parámetro base opcional.  
+ De forma predeterminada, LOG() devuelve el logaritmo natural de Hola. Puede cambiar Hola base del valor de hello logaritmo tooanother mediante el uso del parámetro base opcional Hola.  
   
- El logaritmo natural es el logaritmo en base **e**, donde **e** es una constante irracional aproximadamente igual a 2,718 281 828.  
+ logaritmo natural de Hello es Hola logaritmo toohello base **e**, donde **e** es un too2.718281828 aproximadamente igual constante irracional.  
   
- El logaritmo natural del valor exponencial de un número es el mismo número: LOG (EXP [n]) = n. Y el valor exponencial del logaritmo natural de un número es el mismo número: EXP (LOG [n]) = n.  
+ logaritmo natural de Hola de hello exponencial de un número es el número de hello propio: LOG (EXP (n)) = n. Hola valor exponencial del logaritmo natural de Hola de un número es el número de hello propio: EXP (LOG (n)) = n.  
   
  **Ejemplos**  
   
- En el ejemplo siguiente se declara una variable y se devuelve el valor logarítmico de la variable especificada (10).  
+ Hello en el ejemplo siguiente se declara una variable y devuelve Hola logaritmo valor de la variable especificada de hello (10).  
   
 ```  
 SELECT LOG(10)  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{$1: 2.3025850929940459}]  
 ```  
   
- En el ejemplo siguiente se calcula el logaritmo del exponente de un número.  
+ Hello en el ejemplo siguiente se calcula Hola registro exponente Hola de un número.  
   
 ```  
 SELECT EXP(LOG(10))  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{$1: 10.000000000000002}]  
 ```  
   
 ####  <a name="bk_log10"></a> LOG10  
- Devuelve el logaritmo de base 10 de la expresión numérica especificada.  
+ Devuelve el logaritmo de base 10 de Hola de hello especifica la expresión numérica.  
   
  **Sintaxis**  
   
@@ -1166,24 +1152,24 @@ LOG10 (<numeric_expression>)
   
  **Comentarios**  
   
- Las funciones LOG10 y POWER tienen una relación inversa. Por ejemplo, 10 ^ LOG10 (n) = n.  
+ Hola LOG10 y funciones POWER están relacionada inversamente tooone otro. Por ejemplo, 10 ^ LOG10 (n) = n.  
   
  **Ejemplos**  
   
- En el ejemplo siguiente se declara una variable y se devuelve el valor de LOG10 de la variable especificada (100).  
+ Hello en el ejemplo siguiente se declara una variable y devuelve Hola LOG10 valor de la variable especificada de hello (100).  
   
 ```  
 SELECT LOG10(100)  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{$1: 2}]  
 ```  
   
 ####  <a name="bk_pi"></a> PI  
- Devuelve el valor constante de PI.  
+ Devuelve Hola valor constante de PI.  
   
  **Sintaxis**  
   
@@ -1203,20 +1189,20 @@ PI ()
   
  **Ejemplos**  
   
- El siguiente ejemplo devuelve el valor de pi.  
+ Hello en el ejemplo siguiente se devuelve el valor de Hola de PI.  
   
 ```  
 SELECT PI()  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{"$1": 3.1415926535897931}]  
 ```  
   
 ####  <a name="bk_power"></a> POWER  
- Devuelve el valor de la expresión especificada a la potencia especificada.  
+ Devuelve Hola valo Hola especificado expresión toohello potencia especificada.  
   
  **Sintaxis**  
   
@@ -1232,7 +1218,7 @@ POWER (<numeric_expression>, <y>)
   
 -   `y`  
   
-     Es la potencia a la que se eleva `numeric_expression`.  
+     Es Hola power toowhich tooraise `numeric_expression`.  
   
  **Tipos de valor devuelto**  
   
@@ -1240,13 +1226,13 @@ POWER (<numeric_expression>, <y>)
   
  **Ejemplos**  
   
- En el ejemplo siguiente se muestra cómo elevar un número a la potencia de 3 (el cubo del número).  
+ Hola de ejemplo siguiente se muestra cómo elevar números toohello potencia de 3 (Hola cubo del número de hello).  
   
 ```  
 SELECT POWER(2, 3), POWER(2.5, 3)  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{$1: 8, $2: 15.625}]  
@@ -1273,13 +1259,13 @@ RADIANS (<numeric_expression>)
   
  **Ejemplos**  
   
- En el ejemplo siguiente se toman unos ángulos como entrada y se devuelven sus correspondientes valores en radianes.  
+ Hello en el ejemplo siguiente se toma unos ángulos como entrada y devuelve sus correspondientes valores en radianes.  
   
 ```  
 SELECT RADIANS(-45.01), RADIANS(-181.01), RADIANS(0), RADIANS(0.1472738), RADIANS(197.1099392)  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{  
@@ -1292,7 +1278,7 @@ SELECT RADIANS(-45.01), RADIANS(-181.01), RADIANS(0), RADIANS(0.1472738), RADIAN
 ```  
   
 ####  <a name="bk_round"></a> ROUND  
- Devuelve un valor numérico, redondeado al valor entero más cercano.  
+ Devuelve un valor numérico, redondeado toohello valor de entero más cercano.  
   
  **Sintaxis**  
   
@@ -1312,20 +1298,20 @@ ROUND(<numeric_expression>)
   
  **Ejemplos**  
   
- En el ejemplo siguiente se redondean los siguientes números positivos y negativos al entero más próximo.  
+ Hello en el ejemplo siguiente se redondea Hola después toohello números positivos y negativos al entero más próximo.  
   
 ```  
 SELECT ROUND(2.4), ROUND(2.6), ROUND(2.5), ROUND(-2.4), ROUND(-2.6)  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{$1: 2, $2: 3, $3: 3, $4: -2, $5: -3}]  
 ```  
   
 ####  <a name="bk_sign"></a> SIGN  
- Devuelve el signo positivo (+1), cero (0) o negativo (-1) de la expresión numérica especificada.  
+ Devuelve Hola positivo (+ 1), cero (0), o signo negativo (-1) de hello especificado expresión numérica.  
   
  **Sintaxis**  
   
@@ -1345,20 +1331,20 @@ SIGN(<numeric_expression>)
   
  **Ejemplos**  
   
- En el ejemplo siguiente se devuelven los valores del signo de números entre -2 y 2.  
+ Hello en el ejemplo siguiente se devuelve valores de inicio de sesión de Hola de números de-2 too2.  
   
 ```  
 SELECT SIGN(-2), SIGN(-1), SIGN(0), SIGN(1), SIGN(2)  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{$1: -1, $2: -1, $3: 0, $4: 1, $5: 1}]  
 ```  
   
 ####  <a name="bk_sin"></a> SIN  
- Devuelve el seno trigonométrico del ángulo especificado, en radianes, en la expresión especificada.  
+ Devuelve Hola seno trigonométrico Hola especifica el ángulo, en radianes, en hello expresión especificada.  
   
  **Sintaxis**  
   
@@ -1378,20 +1364,20 @@ SIN(<numeric_expression>)
   
  **Ejemplos**  
   
- En el ejemplo siguiente se calcula el seno del ángulo especificado.  
+ Hola siguiente ejemplo calcula Hola seno del ángulo especificado Hola.  
   
 ```  
 SELECT SIN(45.175643)  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{"$1": 0.929607286611012}]  
 ```  
   
 ####  <a name="bk_sqrt"></a> SQRT  
- Devuelve la raíz cuadrada del valor numérico especificado.  
+ Devuelve Hola cuadrado raíz de hello especifica el valor numérico.  
   
  **Sintaxis**  
   
@@ -1411,20 +1397,20 @@ SQRT(<numeric_expression>)
   
  **Ejemplos**  
   
- En el ejemplo siguiente se devuelven las raíces cuadradas de los números 1-3.  
+ Hello en el ejemplo siguiente se devuelve raíces cuadradas de Hola de números 1 a 3.  
   
 ```  
 SELECT SQRT(1), SQRT(2.0), SQRT(3)  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{$1: 1, $2: 1.4142135623730952, $3: 1.7320508075688772}]  
 ```  
   
 ####  <a name="bk_square"></a> SQUARE  
- Devuelve el cuadrado del valor numérico especificado.  
+ Hola devuelve cuadrado de hello especifica el valor numérico.  
   
  **Sintaxis**  
   
@@ -1444,20 +1430,20 @@ SQUARE(<numeric_expression>)
   
  **Ejemplos**  
   
- En el ejemplo siguiente se devuelven los cuadrados de los números 1-3.  
+ Hello en el ejemplo siguiente se devuelve cuadrados Hola de números 1 a 3.  
   
 ```  
 SELECT SQUARE(1), SQUARE(2.0), SQUARE(3)  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{$1: 1, $2: 4, $3: 9}]  
 ```  
   
 ####  <a name="bk_tan"></a> TAN  
- Devuelve la tangente del ángulo especificado, en radianes, en la expresión especificada.  
+ Tangente de hello devuelve de hello especifica el ángulo, en radianes, en hello expresión especificada.  
   
  **Sintaxis**  
   
@@ -1477,20 +1463,20 @@ TAN (<numeric_expression>)
   
  **Ejemplos**  
   
- En el ejemplo siguiente se calcula la tangente de pi()/2.  
+ Hello en el ejemplo siguiente se calcula tangente de Hola de PI () / 2.  
   
 ```  
 SELECT TAN(PI()/2);  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{"$1": 16331239353195370 }]  
 ```  
   
 ####  <a name="bk_trunc"></a> TRUNC  
- Devuelve un valor numérico, truncado al valor entero más cercano.  
+ Devuelve un valor numérico, el valor entero más cercano de toohello truncado.  
   
  **Sintaxis**  
   
@@ -1510,20 +1496,20 @@ TRUNC(<numeric_expression>)
   
  **Ejemplos**  
   
- En el ejemplo siguiente se truncan los siguientes números positivos y negativos al valor entero más próximo.  
+ Hola de ejemplo siguiente trunca Hola siguientes números positivos y negativos toohello valor entero más cercano.  
   
 ```  
 SELECT TRUNC(2.4), TRUNC(2.6), TRUNC(2.5), TRUNC(-2.4), TRUNC(-2.6)  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{$1: 2, $2: 2, $3: 2, $4: -2, $5: -2}]  
 ```  
   
 ###  <a name="bk_type_checking_functions"></a> Funciones de comprobación de tipos  
- Las siguientes funciones admiten la comprobación de tipos de valores de entrada y devuelven un valor booleano.  
+ Hello siguientes funciones admiten la comprobación de tipos contra valores de entrada y devuelven un valor booleano.  
   
 ||||  
 |-|-|-|  
@@ -1532,7 +1518,7 @@ SELECT TRUNC(2.4), TRUNC(2.6), TRUNC(2.5), TRUNC(-2.4), TRUNC(-2.6)
 |[IS_PRIMITIVE](#bk_is_primitive)|[IS_STRING](#bk_is_string)||  
   
 ####  <a name="bk_is_array"></a> IS_ARRAY  
- Devuelve un valor booleano que indica si el tipo de la expresión especificada es una matriz.  
+ Devuelve un valor booleano que indica si el tipo de saludo de hello especifica expresión es una matriz.  
   
  **Sintaxis**  
   
@@ -1552,7 +1538,7 @@ IS_ARRAY(<expression>)
   
  **Ejemplos**  
   
- En el ejemplo siguiente se comprueban objetos de los tipos JSON Boolean, number, string, null, object, array y undefined, mediante la función IS_ARRAY.  
+ Hello en el ejemplo siguiente se comprueba objetos de JSON Boolean, number, string, null, objeto, matriz y tipos sin definir mediante Hola función IS_ARRAY.  
   
 ```  
 SELECT   
@@ -1565,14 +1551,14 @@ SELECT
  IS_ARRAY({prop: "value"}.prop2)  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{$1: false, $2: false, $3: false, $4: false, $5: false, $6: true}]  
 ```  
   
 ####  <a name="bk_is_bool"></a> IS_BOOL  
- Devuelve un valor booleano que indica si el tipo de la expresión especificada es un valor booleano.  
+ Devuelve un valor booleano que indica si el tipo de saludo de hello especifica expresión es un valor booleano.  
   
  **Sintaxis**  
   
@@ -1592,7 +1578,7 @@ IS_BOOL(<expression>)
   
  **Ejemplos**  
   
- En el ejemplo siguiente se comprueban objetos de los tipos JSON Boolean, number, string, null, object, array y undefined, mediante la función IS_BOOL.  
+ Hello en el ejemplo siguiente se comprueba objetos de JSON Boolean, number, string, null, objeto, matriz y tipos sin definir mediante Hola función IS_BOOL.  
   
 ```  
 SELECT   
@@ -1605,14 +1591,14 @@ SELECT
     IS_BOOL({prop: "value"}.prop2)  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{$1: true, $2: false, $3: false, $4: false, $5: false, $6: false}]  
 ```  
   
 ####  <a name="bk_is_defined"></a> IS_DEFINED  
- Devuelve un valor booleano que indica si se ha asignado un valor a la propiedad.  
+ Devuelve un valor booleano que indica si la propiedad de Hola se ha asignado un valor.  
   
  **Sintaxis**  
   
@@ -1632,13 +1618,13 @@ IS_DEFINED(<expression>)
   
  **Ejemplos**  
   
- En el ejemplo siguiente se comprueba la presencia de una propiedad en el documento JSON especificado. En el primer caso se devuelve true, ya que "a" está presente, pero en el segundo, false, ya que "b" no lo está.  
+ Hola siguiendo en el ejemplo se comprueba presencia de Hola de una propiedad dentro de hello había especificado documento JSON. Hola primero devuelve true, ya que "a" está presente, pero Hola segundo devuelve false porque "b" no está presente.  
   
 ```  
 SELECT IS_DEFINED({ "a" : 5 }.a), IS_DEFINED({ "a" : 5 }.b)  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{  
@@ -1648,7 +1634,7 @@ SELECT IS_DEFINED({ "a" : 5 }.a), IS_DEFINED({ "a" : 5 }.b)
 ```  
   
 ####  <a name="bk_is_null"></a> IS_NULL  
- Devuelve un valor booleano que indica si el tipo de la expresión especificada es nulo.  
+ Devuelve un valor booleano que indica si el tipo de saludo de hello especifica expresión es null.  
   
  **Sintaxis**  
   
@@ -1668,7 +1654,7 @@ IS_NULL(<expression>)
   
  **Ejemplos**  
   
- En el ejemplo siguiente se comprueban objetos de los tipos JSON Boolean, number, string, null, object, array y undefined, mediante la función IS_NULL.  
+ Hello en el ejemplo siguiente se comprueba objetos de JSON Boolean, number, string, null, objeto, matriz y tipos sin definir mediante Hola función IS_NULL.  
   
 ```  
 SELECT   
@@ -1681,14 +1667,14 @@ SELECT
     IS_NULL({prop: "value"}.prop2)  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{$1: false, $2: false, $3: false, $4: true, $5: false, $6: false}]  
 ```  
   
 ####  <a name="bk_is_number"></a> IS_NUMBER  
- Devuelve un valor booleano que indica si el tipo de la expresión especificada es un número.  
+ Devuelve un valor booleano que indica si el tipo de saludo de hello especifica expresión es un número.  
   
  **Sintaxis**  
   
@@ -1708,7 +1694,7 @@ IS_NUMBER(<expression>)
   
  **Ejemplos**  
   
- En el ejemplo siguiente se comprueban objetos de los tipos JSON Boolean, number, string, null, object, array y undefined, mediante la función IS_NULL.  
+ Hello en el ejemplo siguiente se comprueba objetos de JSON Boolean, number, string, null, objeto, matriz y tipos sin definir mediante Hola función IS_NULL.  
   
 ```  
 SELECT   
@@ -1721,14 +1707,14 @@ SELECT
     IS_NUMBER({prop: "value"}.prop2)  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{$1: false, $2: true, $3: false, $4: false, $5: false, $6: false}]  
 ```  
   
 ####  <a name="bk_is_object"></a> IS_OBJECT  
- Devuelve un valor booleano que indica si el tipo de la expresión especificada es un objeto JSON.  
+ Devuelve un valor booleano que indica si el tipo de saludo de hello especifica expresión es un objeto JSON.  
   
  **Sintaxis**  
   
@@ -1748,7 +1734,7 @@ IS_OBJECT(<expression>)
   
  **Ejemplos**  
   
- En el ejemplo siguiente se comprueban objetos de los tipos JSON Boolean, number, string, null, object, array y undefined, mediante la función IS_OBJECT.  
+ Hello en el ejemplo siguiente se comprueba objetos de JSON Boolean, number, string, null, objeto, matriz y tipos sin definir mediante Hola función IS_OBJECT.  
   
 ```  
 SELECT   
@@ -1761,14 +1747,14 @@ SELECT
     IS_OBJECT({prop: "value"}.prop2)  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{$1: false, $2: false, $3: false, $4: false, $5: true, $6: false}]  
 ```  
   
 ####  <a name="bk_is_primitive"></a> IS_PRIMITIVE  
- Devuelve un valor booleano que indica si el tipo de la expresión especificada es primitivo (cadena, booleano, numérico o nulo).  
+ Devuelve un valor booleano que indica si el tipo de saludo de hello especifica expresión es un tipo primitivo (cadena, booleano, numérico o null).  
   
  **Sintaxis**  
   
@@ -1788,7 +1774,7 @@ IS_PRIMITIVE(<expression>)
   
  **Ejemplos**  
   
- En el ejemplo siguiente se comprueban los objetos de los tipos JSON Boolean, number, string, null, object, array y undefined, mediante la función IS_PRIMITIVE.  
+ Hello en el ejemplo siguiente se comprueba objetos de JSON Boolean, number, string, null, objeto, matriz y tipos sin definir mediante Hola función IS_PRIMITIVE.  
   
 ```  
 SELECT   
@@ -1801,14 +1787,14 @@ SELECT
            IS_PRIMITIVE({prop: "value"}.prop2)  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{"$1": true, "$2": true, "$3": true, "$4": true, "$5": false, "$6": false, "$7": false}]  
 ```  
   
 ####  <a name="bk_is_string"></a> IS_STRING  
- Devuelve un valor booleano que indica si el tipo de la expresión especificada es una cadena.  
+ Devuelve un valor booleano que indica si el tipo de saludo de hello especifica expresión es una cadena.  
   
  **Sintaxis**  
   
@@ -1828,7 +1814,7 @@ IS_STRING(<expression>)
   
  **Ejemplos**  
   
- En el ejemplo siguiente se comprueban objetos de los tipos JSON Boolean, number, string, null, object, array y undefined, mediante la función IS_STRING.  
+ Hello en el ejemplo siguiente se comprueba objetos de JSON Boolean, number, string, null, objeto, matriz y tipos sin definir mediante Hola función IS_STRING.  
   
 ```  
 SELECT   
@@ -1841,14 +1827,14 @@ SELECT
        IS_STRING({prop: "value"}.prop2)  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{$1: false, $2: false, $3: true, $4: false, $5: false, $6: false}]  
 ```  
   
 ###  <a name="bk_string_functions"></a> Funciones de cadena  
- Las siguientes funciones escalares realizan una operación sobre un valor de entrada de cadena y devuelven una cadena, un valor numérico o un booleano.  
+ Hola siguientes funciones escalares realizan una operación sobre un valor de cadena de entrada y devuelven una cadena, valor numérico o booleano.  
   
 ||||  
 |-|-|-|  
@@ -1860,7 +1846,7 @@ SELECT
 |[UPPER](#bk_upper)|||  
   
 ####  <a name="bk_concat"></a> CONCAT  
- Devuelve una cadena que es el resultado de concatenar dos o más valores de cadena.  
+ Devuelve una cadena que es el resultado de hello de concatenar dos o más valores de cadena.  
   
  **Sintaxis**  
   
@@ -1880,20 +1866,20 @@ CONCAT(<str_expr>, <str_expr> [, <str_expr>])
   
  **Ejemplos**  
   
- El siguiente ejemplo devuelve la cadena concatenada de los valores especificados.  
+ Hola siguiendo en el ejemplo se devuelve una cadena concatenada de Hola de hello valores especificados.  
   
 ```  
 SELECT CONCAT("abc", "def")  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{"$1": "abcdef"}  
 ```  
   
 ####  <a name="bk_contains"></a> CONTAINS  
- Devuelve un valor booleano que indica si la primera expresión de cadena contiene la segunda.  
+ Devuelve un valor booleano que indica si primera expresión de cadena hello contiene hello en segundo lugar.  
   
  **Sintaxis**  
   
@@ -1913,20 +1899,20 @@ CONTAINS(<str_expr>, <str_expr>)
   
  **Ejemplos**  
   
- En el ejemplo siguiente se comprueba si "abc" contiene "ab" y contiene "d".  
+ Hello en el ejemplo siguiente se comprueba si "abc" contiene "ab" y contiene "d".  
   
 ```  
 SELECT CONTAINS("abc", "ab"), CONTAINS("abc", "d")  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{"$1": true, "$2": false}]  
 ```  
   
 ####  <a name="bk_endswith"></a> ENDSWITH  
- Devuelve un valor booleano que indica si la primera expresión de cadena finaliza con la segunda.  
+ Devuelve un valor booleano que indica si primera expresión de cadena Hola termina con hello en segundo lugar.  
   
  **Sintaxis**  
   
@@ -1946,20 +1932,20 @@ ENDSWITH(<str_expr>, <str_expr>)
   
  **Ejemplos**  
   
- El siguiente ejemplo devuelve las terminaciones "b" y "bc"de "abc".  
+ Hello en el ejemplo siguiente se devuelve Hola "abc" termina con "b" y "bc".  
   
 ```  
 SELECT ENDSWITH("abc", "b"), ENDSWITH("abc", "bc")  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{"$1": false, "$2": true}]  
 ```  
   
 ####  <a name="bk_index_of"></a> INDEX_OF  
- Devuelve la posición inicial de la primera aparición de la expresión de la segunda cadena dentro de la primera expresión de cadena especificada, o -1 si no se encuentra la cadena.  
+ Devuelve Hola a partir de la posición de la primera aparición de hello de la segunda expresión de cadena Hola dentro de la primera expresión de cadena especificada de hello, o -1 si no se encuentra la cadena de Hola.  
   
  **Sintaxis**  
   
@@ -1979,20 +1965,20 @@ INDEX_OF(<str_expr>, <str_expr>)
   
  **Ejemplos**  
   
- En el ejemplo siguiente se devuelve el índice de varias subcadenas dentro de "abc".  
+ Hello en el ejemplo siguiente se devuelve el índice de Hola de varias subcadenas dentro de "abc".  
   
 ```  
 SELECT INDEX_OF("abc", "ab"), INDEX_OF("abc", "b"), INDEX_OF("abc", "c")  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{"$1": 0, "$2": 1, "$3": -1}]  
 ```  
   
 ####  <a name="bk_left"></a> LEFT  
- Devuelve la parte izquierda de una cadena con el número especificado de caracteres.  
+ Devuelve Hola parte izquierda de una cadena con hello especificada número de caracteres.  
   
  **Sintaxis**  
   
@@ -2016,20 +2002,20 @@ LEFT(<str_expr>, <num_expr>)
   
  **Ejemplos**  
   
- En el ejemplo siguiente se devuelve la parte izquierda de "abc" para distintos valores de longitud.  
+ Hello en el ejemplo siguiente se devuelve Hola izquierda de "abc" para distintos valores de longitud.  
   
 ```  
 SELECT LEFT("abc", 1), LEFT("abc", 2)  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{"$1": "ab", "$2": "ab"}]  
 ```  
   
 ####  <a name="bk_length"></a> LENGTH  
- Devuelve el número de caracteres de la expresión de cadena especificada.  
+ Devuelve el número de caracteres de Hola Hola especificado expresión de cadena.  
   
  **Sintaxis**  
   
@@ -2049,20 +2035,20 @@ LENGTH(<str_expr>)
   
  **Ejemplos**  
   
- En el ejemplo siguiente se devuelve la longitud de una cadena.  
+ Hello en el ejemplo siguiente se devuelve Hola longitud de una cadena.  
   
 ```  
 SELECT LENGTH("abc")  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{"$1": 3}]  
 ```  
   
 ####  <a name="bk_lower"></a> LOWER  
- Devuelve una expresión de cadena después de convertir los datos de caracteres en mayúsculas a minúsculas.  
+ Devuelve una expresión de cadena después de convertir toolowercase de datos de caracteres en mayúsculas.  
   
  **Sintaxis**  
   
@@ -2082,13 +2068,13 @@ LOWER(<str_expr>)
   
  **Ejemplos**  
   
- En el ejemplo siguiente se muestra cómo utilizar LOWER en una consulta.  
+ Hola siguiente ejemplo se muestra cómo toouse inferior en una consulta.  
   
 ```  
 SELECT LOWER("Abc")  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{"$1": "abc"}]  
@@ -2116,13 +2102,13 @@ LTRIM(<str_expr>)
   
  **Ejemplos**  
   
- En el ejemplo siguiente se muestra cómo utilizar LTRIM en una consulta.  
+ Hola siguiente ejemplo se muestra cómo toouse LTRIM dentro de una consulta.  
   
 ```  
 SELECT LTRIM("  abc"), LTRIM("abc"), LTRIM("abc   ")  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{"$1": "abc", "$2": "abc", "$3": "abc   "}]  
@@ -2149,13 +2135,13 @@ REPLACE(<str_expr>, <str_expr>, <str_expr>)
   
  **Ejemplos**  
   
- En el ejemplo siguiente se muestra cómo utilizar REPLACE en una consulta.  
+ Hola de ejemplo siguiente muestra cómo reemplazar el toouse en una consulta.  
   
 ```  
 SELECT REPLACE("This is a Test", "Test", "desk")  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{"$1": "This is a desk"}]  
@@ -2186,20 +2172,20 @@ REPLICATE(<str_expr>, <num_expr>)
   
  **Ejemplos**  
   
- En el ejemplo siguiente se muestra cómo utilizar REPLICATE en una consulta.  
+ Hola de ejemplo siguiente muestra cómo REPLICAR toouse en una consulta.  
   
 ```  
 SELECT REPLICATE("a", 3)  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{"$1": "aaa"}]  
 ```  
   
 ####  <a name="bk_reverse"></a> REVERSE  
- Devuelve el orden inverso de un valor de cadena.  
+ Devuelve Hola invirtiendo el orden de un valor de cadena.  
   
  **Sintaxis**  
   
@@ -2219,20 +2205,20 @@ REVERSE(<str_expr>)
   
  **Ejemplos**  
   
- En el ejemplo siguiente se muestra cómo utilizar REVERSE en una consulta.  
+ Hola de ejemplo siguiente muestra cómo toouse INVERTIR en una consulta.  
   
 ```  
 SELECT REVERSE("Abc")  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{"$1": "cbA"}]  
 ```  
   
 ####  <a name="bk_right"></a> RIGHT  
- Devuelve la parte derecha de una cadena con el número especificado de caracteres.  
+ Hola devuelve parte derecha de una cadena con hello del número de caracteres especificado.  
   
  **Sintaxis**  
   
@@ -2256,13 +2242,13 @@ RIGHT(<str_expr>, <num_expr>)
   
  **Ejemplos**  
   
- En el ejemplo siguiente se devuelve la parte derecha de "abc" para distintos valores de longitud.  
+ Hello en el ejemplo siguiente se devuelve Hola la parte derecha de "abc" para distintos valores de longitud.  
   
 ```  
 SELECT RIGHT("abc", 1), RIGHT("abc", 2)  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{"$1": "c", "$2": "bc"}]  
@@ -2289,20 +2275,20 @@ RTRIM(<str_expr>)
   
  **Ejemplos**  
   
- En el ejemplo siguiente se muestra cómo utilizar RTRIM en una consulta.  
+ Hola siguiente ejemplo se muestra cómo toouse RTRIM dentro de una consulta.  
   
 ```  
 SELECT RTRIM("  abc"), RTRIM("abc"), RTRIM("abc   ")  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{"$1": "   abc", "$2": "abc", "$3": "abc"}]  
 ```  
   
 ####  <a name="bk_startswith"></a> STARTSWITH  
- Devuelve un valor booleano que indica si la primera expresión de cadena empieza con la segunda.  
+ Devuelve un valor booleano que indica si primera expresión de cadena Hola empieza por hello en segundo lugar.  
   
  **Sintaxis**  
   
@@ -2322,20 +2308,20 @@ STARTSWITH(<str_expr>, <str_expr>)
   
  **Ejemplos**  
   
- En el ejemplo siguiente se comprueba si la cadena "abc" empieza por "b" y "a".  
+ Hello el ejemplo siguiente se comprueba si hello cadena "abc" comienza con "b" y "a".  
   
 ```  
 SELECT STARTSWITH("abc", "b"), STARTSWITH("abc", "a")  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{"$1": false, "$2": true}]  
 ```  
   
 ####  <a name="bk_substring"></a> SUBSTRING  
- Devuelve parte de una expresión de cadena a partir de la posición de base cero del carácter especificado y continúa hasta la longitud especificada, o hasta el final de la cadena.  
+ Devuelve parte de una expresión de cadena a partir de hello especifica la posición de base cero del carácter y continúa toohello especifica la longitud o toohello final de cadena de Hola.  
   
  **Sintaxis**  
   
@@ -2359,20 +2345,20 @@ SUBSTRING(<str_expr>, <num_expr> [, <num_expr>])
   
  **Ejemplos**  
   
- En el ejemplo siguiente se devuelve la subcadena de "abc" que empieza por 1 y tiene una longitud de 1 carácter.  
+ Hello en el ejemplo siguiente se devuelve Hola subcadena de "abc" comienza en 1 y una longitud de 1 carácter.  
   
 ```  
 SELECT SUBSTRING("abc", 1, 1)  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{"$1": "b"}]  
 ```  
   
 ####  <a name="bk_upper"></a> UPPER  
- Devuelve una expresión de cadena después de convertir datos de caracteres en minúsculas a mayúsculas.  
+ Devuelve una expresión de cadena después de convertir toouppercase de datos de carácter en minúscula.  
   
  **Sintaxis**  
   
@@ -2392,20 +2378,20 @@ UPPER(<str_expr>)
   
  **Ejemplos**  
   
- En el ejemplo siguiente se muestra cómo utilizar UPPER en una consulta.  
+ Hola siguiente ejemplo se muestra cómo toouse superior en una consulta  
   
 ```  
 SELECT UPPER("Abc")  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{"$1": "ABC"}]  
 ```  
   
 ###  <a name="bk_array_functions"></a> Funciones de matriz  
- Las siguientes funciones escalares realizan una operación en un valor de entrada de matriz y devuelven un valor numérico, booleano o de matriz.  
+ Hola siguientes funciones escalares realiza una operación sobre un valor de entrada de matriz y devolución numérico, booleano o matriz.  
   
 ||||  
 |-|-|-|  
@@ -2413,7 +2399,7 @@ SELECT UPPER("Abc")
 |[ARRAY_SLICE](#bk_array_slice)|||  
   
 ####  <a name="bk_array_concat"></a> ARRAY_CONCAT  
- Devuelve una matriz que es el resultado de concatenar dos o más valores de la matriz.  
+ Devuelve una matriz que es el resultado de hello de concatenar dos o más valores de la matriz.  
   
  **Sintaxis**  
   
@@ -2433,20 +2419,20 @@ ARRAY_CONCAT (<arr_expr>, <arr_expr> [, <arr_expr>])
   
  **Ejemplos**  
   
- En el ejemplo siguiente se muestra cómo concatenar dos matrices.  
+ Hola después ejemplo cómo tooconcatenate dos matrices.  
   
 ```  
 SELECT ARRAY_CONCAT(["apples", "strawberries"], ["bananas"])  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{"$1": ["apples", "strawberries", "bananas"]}]  
 ```  
   
 ####  <a name="bk_array_contains"></a> ARRAY_CONTAINS  
- Devuelve un valor booleano que indica si la matriz contiene el valor especificado.  
+ Devuelve un valor booleano que indica si la matriz de hello contiene Hola valor especificado.  
   
  **Sintaxis**  
   
@@ -2470,7 +2456,7 @@ ARRAY_CONTAINS (<arr_expr>, <expr>)
   
  **Ejemplos**  
   
- En el siguiente ejemplo se muestra cómo comprobar la pertenencia a una matriz con ARRAY_CONTAINS.  
+ Hola siguiente ejemplo de cómo toocheck pertenencia a una matriz usar ARRAY_CONTAINS.  
   
 ```  
 SELECT   
@@ -2478,14 +2464,14 @@ SELECT
            ARRAY_CONTAINS(["apples", "strawberries", "bananas"], "mangoes")  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{"$1": true, "$2": false}]  
 ```  
   
 ####  <a name="bk_array_length"></a> ARRAY_LENGTH  
- Devuelve el número de elementos de la expresión de matriz especificada.  
+ Devuelve el número de elementos de Hola Hola especifica la expresión de matriz.  
   
  **Sintaxis**  
   
@@ -2505,13 +2491,13 @@ ARRAY_LENGTH(<arr_expr>)
   
  **Ejemplos**  
   
- En el siguiente ejemplo se muestra cómo obtener la longitud de una matriz con ARRAY_LENGTH.  
+ Hola después ejemplo cómo tooget Hola longitud de una matriz usar ARRAY_LENGTH.  
   
 ```  
 SELECT ARRAY_LENGTH(["apples", "strawberries", "bananas"])  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{"$1": 3}]  
@@ -2542,7 +2528,7 @@ ARRAY_SLICE (<arr_expr>, <num_expr> [, <num_expr>])
   
  **Ejemplos**  
   
- En el siguiente ejemplo se muestra cómo obtener una parte de una matriz con ARRAY_SLICE.  
+ Hola siguiente ejemplo de cómo tooget una parte de una matriz usar ARRAY_SLICE.  
   
 ```  
 SELECT   
@@ -2550,7 +2536,7 @@ SELECT
            ARRAY_SLICE(["apples", "strawberries", "bananas"], 1, 1)  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{  
@@ -2560,7 +2546,7 @@ SELECT
 ```  
   
 ###  <a name="bk_spatial_functions"></a> Funciones espaciales  
- Las siguientes funciones escalares realizan una operación en un valor de entrada de objeto espacial y devuelven un valor numérico o un booleano.  
+ Hola siguientes funciones escalares realizan una operación sobre un valor de entrada de objeto espacial y devuelven un valor numérico o booleano.  
   
 ||||  
 |-|-|-|  
@@ -2568,7 +2554,7 @@ SELECT
 |[ST_ISVALIDDETAILED](#bk_st_isvaliddetailed)|||  
   
 ####  <a name="bk_st_distance"></a> ST_DISTANCE  
- Devuelve la distancia entre dos expresiones Point, Polygon o LineString de GeoJSON.  
+ Devuelve la distancia de hello entre expresiones de punto de GeoJSON, polígono o LineString Hola dos.  
   
  **Sintaxis**  
   
@@ -2584,11 +2570,11 @@ ST_DISTANCE (<spatial_expr>, <spatial_expr>)
   
  **Tipos de valor devuelto**  
   
- Devuelve una expresión numérica con la distancia, que se expresa en metros para el sistema de referencia predeterminado.  
+ Devuelve una expresión numérica que contiene la distancia de Hola. Esto se expresa en metros Hola predeterminado sistema de referencia.  
   
  **Ejemplos**  
   
- En el siguiente ejemplo se muestra cómo se devuelven todos los documentos de la familia en un radio de 30 km a partir de la ubicación especificada mediante la función integrada ST_DISTANCE. .  
+ Hola siguiente ejemplo se muestra cómo tooreturn todos los documentos de familia que están dentro de 30 km de hello especificado ubicación mediante la función integrada de hello ST_DISTANCE. .  
   
 ```  
 SELECT f.id   
@@ -2596,7 +2582,7 @@ FROM Families f
 WHERE ST_DISTANCE(f.location, {'type': 'Point', 'coordinates':[31.9, -4.8]}) < 30000  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{  
@@ -2605,7 +2591,7 @@ WHERE ST_DISTANCE(f.location, {'type': 'Point', 'coordinates':[31.9, -4.8]}) < 3
 ```  
   
 ####  <a name="bk_st_within"></a> ST_WITHIN  
- Devuelve una expresión condicional que indica si el objeto de GeoJSON (Point, Polygon o LineString) especificado en el primer argumento se encuentra en el objeto de GeoJSON (Point, Polygon o LineString) del segundo.  
+ Devuelve una expresión booleana que indica si hello GeoJSON el objeto (punto, polígono o LineString) especificado en el primer argumento de hello es dentro de hello GeoJSON (punto, polígono o LineString) en el segundo argumento de Hola.  
   
  **Sintaxis**  
   
@@ -2629,7 +2615,7 @@ ST_WITHIN (<spatial_expr>, <spatial_expr>)
   
  **Ejemplos**  
   
- En el ejemplo siguiente se muestra cómo buscar todos los documentos de la familia en un polígono con ST_WITHIN.  
+ Hola de ejemplo siguiente muestra cómo toofind familia de todos los documentos dentro de un polígono con ST_WITHIN.  
   
 ```  
 SELECT f.id   
@@ -2640,14 +2626,14 @@ WHERE ST_WITHIN(f.location, {
 })  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{ "id": "WakefieldFamily" }]  
 ```  
 
 ####  <a name="bk_st_intersects"></a> ST_INTERSECTS  
- Devuelve una expresión condicional que indica si el objeto de GeoJSON (Point, Polygon o LineString) especificado en el primer argumento forma intersección con el objeto de GeoJSON (Point, Polygon o LineString) del segundo.  
+ Devuelve una expresión booleana que indica si el objeto de la GeoJSON de hello (punto, polígono o LineString) especificado en el primer argumento de hello superpuesto hello GeoJSON (punto, polígono o LineString) en el segundo argumento de Hola.  
   
  **Sintaxis**  
   
@@ -2671,7 +2657,7 @@ ST_INTERSECTS (<spatial_expr>, <spatial_expr>)
   
  **Ejemplos**  
   
- En el siguiente ejemplo se muestra cómo buscar todas las áreas de intersección con el polígono indicado.  
+ Hola siguiente ejemplo se muestra cómo toofind todas las áreas que forma una intersección con Hola especificado polígono.  
   
 ```  
 SELECT a.id   
@@ -2682,14 +2668,14 @@ WHERE ST_INTERSECTS(a.location, {
 })  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{ "id": "IntersectingPolygon" }]  
 ```  
   
 ####  <a name="bk_st_isvalid"></a> ST_ISVALID  
- Devuelve un valor booleano que indica si la expresión de Point, Polygon o LineString de GeoJSON especificada es válida.  
+ Devuelve un valor booleano que indica si Hola especifica LineString, Polygon o punto de GeoJSON una expresión es válida.  
   
  **Sintaxis**  
   
@@ -2709,24 +2695,24 @@ ST_ISVALID(<spatial_expr>)
   
  **Ejemplos**  
   
- En el ejemplo siguiente se muestra cómo comprobar si un punto es válido con ST_VALID.  
+ Hola siguiente ejemplo se muestra cómo toocheck si un punto es válido utilizando ST_VALID.  
   
- Por ejemplo, este punto tiene un valor de latitud que no está en el intervalo válido de valores [-90, 90], por lo que la consulta devuelve false.  
+ Por ejemplo, este punto tiene un valor de latitud que no está en el intervalo válido de Hola de valores [-90, 90], Hola por lo que la consulta devuelve false.  
   
- Para los polígonos, la especificación de GeoJSON requiere que el último par de coordenadas indicado sea igual que el primero, para crear una forma cerrada. El orden de los puntos dentro de un polígono debe especificarse siguiendo el sentido contrario al de las agujas del reloj. Un polígono cuyos puntos se hayan especificado en el sentido de las agujas del reloj representa el inverso de la región dentro de él.  
+ Para los polígonos, hello GeoJSON especificación requiere que debe ser proporcionado de par de coordenadas última Hola Hola igual como hello en primer lugar, toocreate una forma cerrada. El orden de los puntos dentro de un polígono debe especificarse siguiendo el sentido contrario al de las agujas del reloj. Un polígono especificado en el orden de las agujas del reloj representa inverso de Hola de región de hello dentro de él.  
   
 ```  
 SELECT ST_ISVALID({ "type": "Point", "coordinates": [31.9, -132.8] })  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{ "$1": false }]  
 ```  
   
 ####  <a name="bk_st_isvaliddetailed"></a> ST_ISVALIDDETAILED  
- Devuelve un valor JSON que contiene un valor booleano si la expresión de Point, Polygon o LineString de GeoJSON especificada es válida; si no es válida, devuelve también el motivo como un valor de cadena.  
+ Devuelve un valor JSON que contiene un valor booleano si Hola especifica LineString, Polygon o punto de GeoJSON una expresión es válida y si no es válido, además Hola motivo como un valor de cadena.  
   
  **Sintaxis**  
   
@@ -2742,11 +2728,11 @@ ST_ISVALID(<spatial_expr>)
   
  **Tipos de valor devuelto**  
   
- Devuelve un valor JSON que contiene un valor booleano si la expresión de punto o polígono GeoJSON especificada es válida; si no es válida, devuelve también el motivo en forma de valor de cadena.  
+ Devuelve un valor JSON que contiene un valor booleano si Hola especifica el punto de GeoJSON o expresión de polígono es válida y, si no es válido, además Hola motivo como un valor de cadena.  
   
  **Ejemplos**  
   
- En el siguiente ejemplo se muestra cómo comprobar la validez (con detalles) mediante ST_ISVALIDDETAILED.  
+ Hola siguiente ejemplo de cómo toocheck validez (con detalles) mediante ST_ISVALIDDETAILED.  
   
 ```  
 SELECT ST_ISVALIDDETAILED({   
@@ -2755,13 +2741,13 @@ SELECT ST_ISVALIDDETAILED({
 })  
 ```  
   
- El conjunto de resultados es el siguiente:  
+ Este es el conjunto de resultados de Hola.  
   
 ```  
 [{  
   "$1": {   
     "valid": false,   
-    "reason": "The Polygon input is not valid because the start and end points of the ring number 1 are not the same. Each ring of a polygon must have the same start and end points."   
+    "reason": "hello Polygon input is not valid because hello start and end points of hello ring number 1 are not hello same. Each ring of a polygon must have hello same start and end points."   
   }  
 }]  
 ```  

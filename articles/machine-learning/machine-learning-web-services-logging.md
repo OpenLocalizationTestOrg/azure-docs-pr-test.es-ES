@@ -1,6 +1,6 @@
 ---
-title: Registro para servicios web Machine Learning | Microsoft Docs
-description: "Aprenda cómo habilitar el registro para los servicios web de Aprendizaje automático. El registro proporciona información adicional para ayudar a solucionar las API."
+title: "aaaLogging para servicios web de aprendizaje automático | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo tooenable el registro para el aprendizaje automático web services. El registro proporciona información adicional toohelp solucionar Hola API."
 services: machine-learning
 documentationcenter: 
 author: raymondlaghaeian
@@ -14,73 +14,73 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/15/2017
 ms.author: raymondl;garye
-ms.openlocfilehash: 7d0b2db01427430d6b0a317cdfefc265dd4b06e2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ed23933d52d2151af658af2307d7df8743071f65
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="enable-logging-for-machine-learning-web-services"></a>Habilitar el registro para los servicios web de Aprendizaje automático
-Este documento proporciona información sobre la funcionalidad de registro de los servicios web Machine Learning. El registro ofrece información adicional, más allá de simplemente un número de error y un mensaje, que puede ayudarle a solucionar problemas con las llamadas a las API de Machine Learning.  
+Este documento proporciona información sobre Hola registro capacidad de servicios web de aprendizaje automático. El registro proporciona información adicional, más allá de solo un número de error y un mensaje, que puede ayudarle a solucionar problemas de su toohello de llamadas API de aprendizaje de máquina.  
 
-## <a name="how-to-enable-logging-for-a-web-service"></a>Habilitación del registro para un servicio web
+## <a name="how-tooenable-logging-for-a-web-service"></a>¿Cómo registro tooenable para un servicio Web
 
-El registro se habilita desde el portal de [servicios web de Azure Machine Learning](https://services.azureml.net). 
+Para habilitar el registro de hello [servicios Web de Azure Machine Learning](https://services.azureml.net) portal. 
 
-1. Inicie sesión en el portal de servicios web de Machine Learning en [https://services.azureml.net](https://services.azureml.net). Para servicios web clásicos, también puede llegar al portal si hace clic en **New Web Services Experience** (Nueva experiencia de servicios web) en la página de servicios web de Machine Learning en Machine Learning Studio.
+1. Inicie sesión en el portal de servicios Web de Azure Machine Learning toohello en [https://services.azureml.net](https://services.azureml.net). Para un servicio web clásico, también puede obtener toohello portal, haga clic en **nueva experiencia de servicios Web** en la página de servicios Web de aprendizaje de máquina de hello en estudio de aprendizaje automático.
 
    ![Nuevo vínculo a la experiencia de servicios web](media/machine-learning-web-services-logging/new-web-services-experience-link.png)
 
-2. En la barra de menús superior, haga clic en **Servicios web** si es un nuevo servicio web o en **Classic Web Services** (Servicios web clásicos) si es un servicio web clásico.
+2. En la barra de menús superior hello, haga clic en **servicios Web** para un nuevo servicio web o haga clic en **clásico servicios Web** para un clásico de servicio web.
 
    ![Selección de servicios web nuevos o clásicos](media/machine-learning-web-services-logging/select-web-service.png)
 
-3. Si es un nuevo servicio web, haga clic en el nombre del servicio web. Si es un servicio web clásico, haga clic en el nombre del servicio web y, a continuación, en la siguiente página, haga clic en el punto de conexión adecuado.
+3. Para un nuevo servicio web, haga clic en el nombre del servicio web Hola. Para un servicio web clásico, haga clic en el nombre del servicio web hello y, a continuación, en la página siguiente de hello, haga clic en punto de conexión adecuado de Hola.
 
-4. En la barra de menús superior, haga clic en **Configurar**.
+4. En la barra de menús superior hello, haga clic en **configurar**.
 
-5. Establezca la opción **Habilitar registro** en *Error* (para registrar solo los errores) o en *Todo* (para realizar un registro completo).
+5. Conjunto hello **Habilitar registro** opción demasiado*Error* (toolog solo errores) o *todos los* (para el registro completo).
 
    ![Selección del nivel de registro](media/machine-learning-web-services-logging/enable-logging.png)
 
 6. Haga clic en **Guardar**.
 
-7. En servicios web clásicos, cree el contenedor **ml-diagnostics**.
+7. Para los servicios web estándar, crear hello **ml diagnósticos** contenedor.
 
-   Todos los registros de servicios web se mantienen en un contenedor de blobs llamado **ml-diagnostics** en la cuenta de almacenamiento asociada con el servicio web. En nuevos servicios web, este contenedor se crea la primera vez que se accede al servicio web. En servicios web clásicos, debe crear el contenedor si aún no existe. 
+   Todos los registros del servicio web se conservan en un contenedor de blobs denominado **ml diagnósticos** en hello cuenta de almacenamiento asociada con el servicio web de Hola. Para los nuevos servicios web, este contenedor se crea Hola primera vez que acceda a servicio web de Hola. Para los servicios web estándar, deberá contenedor de hello toocreate si aún no existe. 
 
-   1. En [Azure Portal](https://portal.azure.com), vaya a la cuenta de almacenamiento asociada con el servicio web.
+   1. Hola [portal de Azure](https://portal.azure.com), vaya toohello cuenta de almacenamiento asociada con el servicio web de Hola.
 
    2. En **Blob service**, haga clic en **Contenedores**.
 
-   3. Si el contenedor **ml-diagnostics** no existe, haga clic en **+Contenedor**, proporcione al contenedor el nombre "ml-diagnostics" y seleccione "Blob" como el **Tipo de acceso**. Haga clic en **Aceptar**.
+   3. Si el contenedor de hello **diagnósticos de aprendizaje automático** no existe, haga clic en **+ contenedor**, asigne Hola contenedor Hola nombre "ml-diagnostics" y seleccione hello **tipo de acceso** como "Blob". Haga clic en **Aceptar**.
 
       ![Selección del nivel de registro](media/machine-learning-web-services-logging/create-ml-diagnostics-container.png)
 
 > [!TIP]
 >
-> En servicios web clásicos, el panel de servicios web de Machine Learning Studio tiene también un conmutador para habilitar el registro. Sin embargo, puesto que el registro se administra ahora mediante el portal de servicios web, deberá habilitarlo en dicho portal, como se describe en este artículo. Si ya habilitó el registro en Studio, en el portal de servicios web deshabilítelo y vuelva a habilitarlo.
+> Para un servicio web clásico, Hola panel de servicios Web en estudio de aprendizaje automático también tiene un registro de tooenable de conmutador. Sin embargo, dado que el registro ahora se administra a través del portal de servicios Web de hello, debe tooenable registro a través del portal de hello, tal como se describe en este artículo. Si ha habilitado el registro en Studio, en el Portal de servicios Web de hello, deshabilitar el registro y vuelva a habilitarla.
 
 
-## <a name="the-effects-of-enabling-logging"></a>Consecuencias de habilitar el registro
-Cuando el registro está habilitado, el diagnóstico y los errores del punto de conexión de servicio Web se registran en el contenedor de blobs **ml-diagnostics** en la cuenta de Azure Storage vinculada al área de trabajo del usuario. Este contenedor incluye toda la información de diagnóstico de todos los puntos de conexión de servicio Web relativos a todas las áreas de trabajo asociadas a esta cuenta de almacenamiento.
+## <a name="hello-effects-of-enabling-logging"></a>efectos de Hello habilitación del registro
+Cuando se habilita el registro, diagnósticos de Hola y errores de extremo de servicio web de Hola se registran en hello **ml diagnósticos** contenedor de blobs en hello cuenta de almacenamiento de Azure vinculado con el área de trabajo del usuario de Hola. Este contenedor contiene toda la información de diagnóstico de Hola para todos los extremos de servicio web de Hola para todas las áreas de trabajo de hello asociadas a esta cuenta de almacenamiento.
 
-Los registros pueden verse mediante cualquiera de las diversas herramientas disponibles para explorar una cuenta de Azure Storage. Lo más sencillo puede ser desplazarse a la cuenta de almacenamiento en el portal de Azure, hacer clic en **Contenedores** y luego en el contenedor **ml-diagnostics**.  
+Hola registros pueden verse mediante cualquiera de hello tooexplore disponibles de varias herramientas una cuenta de almacenamiento de Azure. Hola más sencilla puede ser toonavigate toohello cuenta de almacenamiento en hello portal de Azure, haga clic en **contenedores**y, a continuación, haga clic en el contenedor de hello **ml diagnósticos**.  
 
 ## <a name="log-blob-detail-information"></a>Información detallada sobre el blob de registro
-Cada blob del contenedor incluye la información de diagnóstico de exactamente una de las siguientes acciones:
+Cada blob en contenedor de hello contiene información de diagnóstico de Hola para exactamente uno de hello siguientes acciones:
 
-* Una ejecución del método Batch-Execution  
-* Una ejecución del método Request-Response  
+* Una ejecución del método hello ejecución por lotes  
+* Una ejecución del método hello solicitudes y respuestas  
 * Inicialización de un contenedor Request-Response
 
-El nombre de cada blob tiene un prefijo con la forma siguiente: 
+nombre de Hola de cada blob tiene un prefijo de hello siguiente forma: 
 
 
 `{Workspace Id}-{Web service Id}-{Endpoint Id}/{Log type}`
 
 
-Donde el _tipo de registro_ es uno de los valores siguientes:  
+Donde _tipo de registro_ es uno de hello siguientes valores:  
 
 * proceso por lotes  
 * puntuación/solicitudes  

@@ -1,6 +1,6 @@
 ---
-title: "Solución de problemas de las conexiones y la puerta de enlace de Virtual Network mediante Azure Network Watcher: REST | Microsoft Docs"
-description: "Esta página explica cómo solucionar problemas de las conexiones y las puertas de enlace de Virtual Network con Azure Network Watcher usando REST"
+title: 'aaaTroubleshoot la puerta de enlace de red Virtual y las conexiones con el Monitor de red de Azure: REST | Documentos de Microsoft'
+description: "Esta página explica cómo se REST tootroubleshoot puertas de enlace de red Virtual y las conexiones con el Monitor de red de Azure"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: gwallace
-ms.openlocfilehash: bc61be74d85a309c158716460b918baaf4fa94dc
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: cc89b46643fdbfefe53727b45d6b7d06914b58a6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher"></a>Solución de problemas de las conexiones y la puerta de enlace de Virtual Network mediante Azure Network Watcher
 
@@ -29,24 +29,24 @@ ms.lasthandoff: 08/29/2017
 > - [CLI 2.0](network-watcher-troubleshoot-manage-cli.md)
 > - [API DE REST](network-watcher-troubleshoot-manage-rest.md)
 
-Network Watcher proporciona numerosas funcionalidades con relación a los recursos de red de Azure. Una de estas funcionalidades es la solución de problemas de recursos. Se puede llamar a la solución de problemas de recursos mediante el portal, PowerShell, la CLI o la API de REST. Cuando se llama a Network Watcher, este inspecciona el estado de una puerta de enlace de Virtual Network o de una conexión y devuelve sus conclusiones.
+Monitor de red proporciona muchas de las capacidades en lo referente a toounderstanding los recursos de red en Azure. Una de estas funcionalidades es la solución de problemas de recursos. Solución de problemas de recursos se puede llamar a través del portal de hello, PowerShell, CLI o API de REST. Cuando se llama, Monitor de red inspecciona el estado de saludo de una puerta de enlace de red Virtual o una conexión y devuelve sus conclusiones.
 
-Este artículo le guiará por las diferentes tareas de administración que están actualmente disponibles para la solución de problemas de recursos.
+En este artículo le guiará por las tareas de administración diferente de Hola que están actualmente disponibles para solucionar problemas de recursos.
 
 - [**Solución de problemas de una puerta de enlace de Virtual Network**](#troubleshoot-a-virtual-network-gateway)
 - [**Solución de problemas de una conexión**](#troubleshoot-connections)
 
 ## <a name="before-you-begin"></a>Antes de empezar
 
-ARMclient se usa para llamar a la API de REST con PowerShell. ARMClient se encuentra en Chocolatey en [ARMClient en Chocolatey](https://chocolatey.org/packages/ARMClient)
+ARMclient es la API de REST de hello toocall utilizados mediante PowerShell. ARMClient se encuentra en Chocolatey en [ARMClient en Chocolatey](https://chocolatey.org/packages/ARMClient)
 
-En este escenario, se da por hecho que ya ha seguido los pasos descritos en [Create an Azure Network Watcher instance](network-watcher-create.md) (Creación de una instancia de Azure Network Watcher) para crear una instancia de Network Watcher.
+Este escenario se supone que ya ha seguido los pasos de hello en [crear un monitor de red](network-watcher-create.md) toocreate un monitor de red.
 
 Para obtener una lista de los tipos de puerta de enlace compatibles, vea el artículo sobre los [tipos de puerta de enlace compatibles](network-watcher-troubleshoot-overview.md#supported-gateway-types).
 
 ## <a name="overview"></a>Información general
 
-La solución de problemas de Network Watcher permite solucionar los problemas que surgen con las puertas de enlace de Virtual Network y las conexiones. Cuando se envía una solicitud para solucionar problemas de recursos, se consultan y se inspeccionan los registros. Una vez finalizada la inspección, se devuelven los resultados. Las solicitudes de la API para solucionar problemas son de larga ejecución, y podrían tardar varios minutos en devolver un resultado. Los registros se almacenan en un contenedor en una cuenta de almacenamiento.
+Solución de problemas del Monitor de red proporciona la capacidad de hello solucionar los problemas que surgen con puertas de enlace de red Virtual y las conexiones. Cuando se realiza una solicitud de recursos de toohello solución de problemas, registros están consultando e inspeccionan. Una vez finalizada la inspección, se devuelven resultados de Hola. Hola solucionar API solicitudes son largos de solicitudes, que pueden durar varias tooreturn minutos un resultado en ejecución. Los registros se almacenan en un contenedor en una cuenta de almacenamiento.
 
 ## <a name="log-in-with-armclient"></a>Inicio de sesión con ARMClient
 
@@ -57,9 +57,9 @@ armclient login
 ## <a name="troubleshoot-a-virtual-network-gateway"></a>Solución de problemas de una puerta de enlace de Virtual Network
 
 
-### <a name="post-the-troubleshoot-request"></a>REGISTRO de la solicitud de solución de problemas
+### <a name="post-hello-troubleshoot-request"></a>Hola POST solucionar problemas de solicitud
 
-En el ejemplo siguiente se consulta el estado de una puerta de enlace de Virtual Network.
+Hola después de estado de Hola de las consultas de ejemplo de una puerta de enlace de red Virtual.
 
 ```powershell
 
@@ -84,12 +84,12 @@ $requestBody = @"
 armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${NWresourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/troubleshoot?api-version=2016-03-30 "
 ```
 
-Puesto que esta operación es de larga ejecución, el URI para consultar la operación y el URI para el resultado se devuelven en el encabezado de respuesta como se muestra en la siguiente respuesta:
+Puesto que esta operación es larga ejecuta, Hola URI para consultar la operación de Hola y Hola URI para el resultado de hello se devuelve en el encabezado de respuesta de hello como se muestra en hello después de respuesta:
 
 **Valores importantes**
 
-* **Azure AsyncOperation**: esta propiedad contiene el URI para consultar la operación asincrónica de solución de problemas
-* **Ubicación**: esta propiedad contiene el URI donde se encuentran los resultados una vez completada la operación
+* **Azure AsyncOperation** -esta propiedad contiene Hola URI tooquery Hola Async solucionar problemas de operación
+* **Ubicación** -esta propiedad contiene Hola URI donde hello resultados no están cuando hello operación está completa
 
 ```
 HTTP/1.1 202 Accepted
@@ -109,15 +109,15 @@ Date: Thu, 12 Jan 2017 18:32:01 GMT
 null
 ```
 
-### <a name="query-the-async-operation-for-completion"></a>Consulta del estado acabado de la operación asincrónica
+### <a name="query-hello-async-operation-for-completion"></a>Operación asincrónica de hello para la finalización de la consulta
 
-Utilice las operaciones de URI para consultar el progreso de la operación tal como se muestra en el ejemplo siguiente:
+Utilice tooquery URI de las operaciones de hello para el progreso de operación de Hola Hola tal como se muestra en el siguiente ejemplo de Hola:
 
 ```powershell
 armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westcentralus/operations/8a1167b7-6768-4ac1-85dc-703c9c9b9247?api-version=2016-03-30"
 ```
 
-Mientras la operación está en curso, se muestra la respuesta **InProgress**, tal como se ven en el ejemplo siguiente:
+Mientras está en curso la operación de hello, Hola respuesta muestra **InProgress** tal como se muestra en el siguiente ejemplo de Hola:
 
 ```json
 {
@@ -125,7 +125,7 @@ Mientras la operación está en curso, se muestra la respuesta **InProgress**, t
 }
 ```
 
-Una vez completada la operación, el estado cambia a **Succeeded**.
+Cuando operación hello es cambios de estado de hello completa demasiado**correcto**.
 
 ```json
 {
@@ -133,15 +133,15 @@ Una vez completada la operación, el estado cambia a **Succeeded**.
 }
 ```
 
-### <a name="retrieve-the-results"></a>Recuperación de los resultados
+### <a name="retrieve-hello-results"></a>Recuperar resultados de Hola
 
-Una vez que el estado devuelto es **Succeeded**, llame a un método GET en el URI operationResult para recuperar los resultados de la operación.
+Una vez que el estado de hello devuelto es **correcto**, llamar a un método GET en tooretrieve URI de resultado de la operación de hello resultados Hola.
 
 ```powershell
 armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westcentralus/operationResults/8a1167b7-6768-4ac1-85dc-703c9c9b9247?api-version=2016-03-30"
 ```
 
-Las respuestas siguientes son ejemplos de un típica respuesta degradada devuelta al consultar los resultados de la solución de problemas de una puerta de enlace. Consulte [Descripción de los resultados](#understanding-the-results) para obtener información más detallada sobre lo que significan las propiedades en la respuesta.
+Hello respuestas siguientes son ejemplos de un degradado típico de respuesta devuelto al consultar los resultados de Hola de solución de problemas de una puerta de enlace. Vea [descripción de los resultados de hello](#understanding-the-results) tooget información más detallada sobre qué propiedades de hello en medio de respuesta de Hola.
 
 ```json
 {
@@ -152,15 +152,15 @@ Las respuestas siguientes son ejemplos de un típica respuesta degradada devuelt
     {
       "id": "PlatformInActive",
       "summary": "We are sorry, your VPN gateway is in standby mode",
-      "detail": "During this time the gateway will not initiate or accept VPN connections with on premises VPN devices or other Azure VPN Gateways. This is a transient state while the Azure platform is being updated.",
+      "detail": "During this time hello gateway will not initiate or accept VPN connections with on premises VPN devices or other Azure VPN Gateways. This is a transient state while hello Azure platform is being updated.",
       "recommendedActions": [
         {
-          "actionText": "If the condition persists, please try resetting your Azure VPN gateway",
+          "actionText": "If hello condition persists, please try resetting your Azure VPN gateway",
           "actionUri": "https://azure.microsoft.com/en-us/documentation/articles/vpn-gateway-resetgw-classic/",
-          "actionUriText": "resetting the VPN Gateway"
+          "actionUriText": "resetting hello VPN Gateway"
         },
         {
-          "actionText": "If your VPN gateway isn't up and running by the expected resolution time, contact support",
+          "actionText": "If your VPN gateway isn't up and running by hello expected resolution time, contact support",
           "actionUri": "http://azure.microsoft.com/support",
           "actionUriText": "contact support"
         }
@@ -172,7 +172,7 @@ Las respuestas siguientes son ejemplos de un típica respuesta degradada devuelt
       "detail": "There aren't any known Azure platform problems affecting this VPN Connection",
       "recommendedActions": [
         {
-          "actionText": "If you are still experience problems with the VPN gateway, please try resetting the VPN gateway.",
+          "actionText": "If you are still experience problems with hello VPN gateway, please try resetting hello VPN gateway.",
           "actionUri": "https://azure.microsoft.com/en-us/documentation/articles/vpn-gateway-resetgw-classic/",
           "actionUriText": "resetting VPN gateway"
         },
@@ -190,7 +190,7 @@ Las respuestas siguientes son ejemplos de un típica respuesta degradada devuelt
 
 ## <a name="troubleshoot-connections"></a>Solución de problemas de conexión
 
-En el ejemplo siguiente se consulta el estado de una conexión.
+Hola después de estado de Hola de las consultas de ejemplo de una conexión.
 
 ```powershell
 
@@ -213,14 +213,14 @@ armclient post "https://management.azure.com/subscriptions/${subscriptionId}/Res
 ```
 
 > [!NOTE]
-> La operación de solución de problemas no se puede ejecutar en paralelo en una conexión y sus puertas de enlace correspondientes. La operación tiene que completarse antes de ejecutarla en el recurso anterior.
+> Hola solucionar problemas de operación no se puede ejecutar en paralelo en una conexión y sus puertas de enlace correspondientes. debe completar la operación de Hello toorunning anterior en el recurso de hello anterior.
 
-Puesto que esta es una transacción de larga ejecución, en el encabezado de respuesta, el URI para consultar la operación y el URI para el resultado se devuelven como se muestra en la siguiente respuesta:
+Puesto que se trata de una transacción de larga duración, en el encabezado de respuesta Hola Hola URI para consultar la operación de Hola y Hola URI para el resultado de hello se devuelve como se muestra en hello después de respuesta:
 
 **Valores importantes**
 
-* **Azure AsyncOperation**: esta propiedad contiene el URI para consultar la operación asincrónica de solución de problemas
-* **Ubicación**: esta propiedad contiene el URI donde se encuentran los resultados una vez completada la operación
+* **Azure AsyncOperation** -esta propiedad contiene Hola URI tooquery Hola Async solucionar problemas de operación
+* **Ubicación** -esta propiedad contiene Hola URI donde hello resultados no están cuando hello operación está completa
 
 ```
 HTTP/1.1 202 Accepted
@@ -240,15 +240,15 @@ Date: Thu, 12 Jan 2017 18:32:01 GMT
 null
 ```
 
-### <a name="query-the-async-operation-for-completion"></a>Consulta del estado acabado de la operación asincrónica
+### <a name="query-hello-async-operation-for-completion"></a>Operación asincrónica de hello para la finalización de la consulta
 
-Utilice las operaciones de URI para consultar el progreso de la operación tal como se muestra en el ejemplo siguiente:
+Utilice tooquery URI de las operaciones de hello para el progreso de operación de Hola Hola tal como se muestra en el siguiente ejemplo de Hola:
 
 ```powershell
 armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westcentralus/operations/843b1c31-4717-4fdd-b7a6-4c786ca9c501?api-version=2016-03-30"
 ```
 
-Mientras la operación está en curso, se muestra la respuesta **InProgress**, tal como se ven en el ejemplo siguiente:
+Mientras está en curso la operación de hello, Hola respuesta muestra **InProgress** tal como se muestra en el siguiente ejemplo de Hola:
 
 ```json
 {
@@ -256,7 +256,7 @@ Mientras la operación está en curso, se muestra la respuesta **InProgress**, t
 }
 ```
 
-Una vez completada la operación, el estado cambia a **Succeeded**.
+Cuando se completa la operación de hello, también cambia el estado de hello**correcto**.
 
 ```json
 {
@@ -264,17 +264,17 @@ Una vez completada la operación, el estado cambia a **Succeeded**.
 }
 ```
 
-Las respuestas siguientes son ejemplos de un típica respuesta devuelta al consultar los resultados de la solución de problemas de una conexión.
+Hello respuestas siguientes son ejemplos de una respuesta típica que se devuelve al consultar los resultados de Hola de solución de problemas de una conexión.
 
-### <a name="retrieve-the-results"></a>Recuperación de los resultados
+### <a name="retrieve-hello-results"></a>Recuperar resultados de Hola
 
-Una vez que el estado devuelto es **Succeeded**, llame a un método GET en el URI operationResult para recuperar los resultados de la operación.
+Una vez que el estado de hello devuelto es **correcto**, llamar a un método GET en tooretrieve URI de resultado de la operación de hello resultados Hola.
 
 ```powershell
 armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westcentralus/operationResults/843b1c31-4717-4fdd-b7a6-4c786ca9c501?api-version=2016-03-30"
 ```
 
-Las respuestas siguientes son ejemplos de un típica respuesta devuelta al consultar los resultados de la solución de problemas de una conexión.
+Hello respuestas siguientes son ejemplos de una respuesta típica que se devuelve al consultar los resultados de Hola de solución de problemas de una conexión.
 
 ```json
 {
@@ -285,16 +285,16 @@ Las respuestas siguientes son ejemplos de un típica respuesta devuelta al consu
     {
       "id": "PlatformInActive",
       "summary": "We are sorry, your VPN gateway is in standby mode",
-      "detail": "During this time the gateway will not initiate or accept VPN connections with on premises VPN devices or other Azure VPN Gateways. This 
-is a transient state while the Azure platform is being updated.",
+      "detail": "During this time hello gateway will not initiate or accept VPN connections with on premises VPN devices or other Azure VPN Gateways. This 
+is a transient state while hello Azure platform is being updated.",
       "recommendedActions": [
         {
-          "actionText": "If the condition persists, please try resetting your Azure VPN gateway",
+          "actionText": "If hello condition persists, please try resetting your Azure VPN gateway",
           "actionUri": "https://azure.microsoft.com/en-us/documentation/articles/vpn-gateway-resetgw-classic/",
-          "actionUriText": "resetting the VPN gateway"
+          "actionUriText": "resetting hello VPN gateway"
         },
         {
-          "actionText": "If your VPN Connection isn't up and running by the expected resolution time, contact support",
+          "actionText": "If your VPN Connection isn't up and running by hello expected resolution time, contact support",
           "actionUri": "http://azure.microsoft.com/support",
           "actionUriText": "contact support"
         }
@@ -306,7 +306,7 @@ is a transient state while the Azure platform is being updated.",
       "detail": "There aren't any known Azure platform problems affecting this VPN Connection",
       "recommendedActions": [
         {
-          "actionText": "If you are still experience problems with the VPN gateway, please try resetting the VPN gateway.",
+          "actionText": "If you are still experience problems with hello VPN gateway, please try resetting hello VPN gateway.",
           "actionUri": "https://azure.microsoft.com/en-us/documentation/articles/vpn-gateway-resetgw-classic/",
           "actionUriText": "resetting VPN gateway"
         },
@@ -321,12 +321,12 @@ is a transient state while the Azure platform is being updated.",
 }
 ```
 
-## <a name="understanding-the-results"></a>Descripción de los resultados
+## <a name="understanding-hello-results"></a>Descripción de los resultados de Hola
 
-El texto de la acción ofrece instrucciones generales sobre cómo resolver el problema. Si se puede realizar una acción para el problema, se proporciona un vínculo con instrucciones adicionales. Si no hay instrucciones adicionales, la respuesta proporciona la dirección URL para abrir un caso de soporte técnico.  Para más información acerca de las propiedades de la respuesta y lo que incluye, consulte la [introducción a la solución de problemas en Network Watcher](network-watcher-troubleshoot-overview.md)
+texto de acción de Hello ofrece instrucciones generales sobre cómo tooresolve Hola problema. Si el problema de Hola se pueda realizar una acción, se proporciona un vínculo con instrucciones adicionales. En caso de hello donde no haya ninguna orientación adicional, respuesta de hello proporciona Hola url tooopen un caso de soporte técnico.  Para obtener más información acerca de las propiedades de Hola de respuesta de Hola y qué se incluye, visite [información general de solución de problemas del Monitor de red](network-watcher-troubleshoot-overview.md)
 
-Para más instrucciones acerca de cómo descargar archivos desde cuentas de Azure Storage, consulte [Introducción a Azure Blob Storage mediante .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Otra herramienta que se puede utilizar es el Explorador de Storage. Encontrará más información acerca del Explorador de Storage en el siguiente vínculo: [Explorador de Storage](http://storageexplorer.com/)
+Para obtener instrucciones acerca de cómo descargar archivos desde cuentas de almacenamiento de azure, consulte demasiado[Introducción al almacenamiento de blobs de Azure mediante .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Otra herramienta que se puede utilizar es el Explorador de Storage. Para obtener más información acerca del explorador de almacenamiento puede encontrarse aquí en hello siguiente vínculo: [Explorador de almacenamiento](http://storageexplorer.com/)
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Si se cambió la configuración y la conectividad de VPN se ha detenido, consulte [Administración de grupos de seguridad de red](../virtual-network/virtual-network-manage-nsg-arm-portal.md) para realizar un seguimiento de los grupos de seguridad de red y las reglas de seguridad que pueden estar afectados.
+Si se cambiaron las configuraciones que detenga la conectividad de VPN, consulte [administrar grupos de seguridad de red](../virtual-network/virtual-network-manage-nsg-arm-portal.md) tootrack hacia abajo Hola red seguridad y el grupo de reglas de seguridad que pueden estar en cuestión.

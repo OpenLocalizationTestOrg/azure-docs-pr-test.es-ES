@@ -1,19 +1,19 @@
 
 <!-- A-series, Av2-series, D-series, Dv2-series, DS-series*, DSv2-series* -->
 
-- Las máquinas virtuales de las series A y Av2 se pueden implementar en diversos procesadores y tipos de hardware. Según el hardware, el tamaño es una limitación para ofrecer un rendimiento coherente del procesador para la instancia en ejecución, independientemente del hardware en que se implementó. Con el fin de determinar el hardware físico en que se implementó este tamaño, cree una consulta para el hardware virtual desde dentro de la máquina virtual.
+- Hola serie y máquinas virtuales de serie Av2 pueden implementarse en una variedad de tipos de hardware y los procesadores. Limitar tamaño de Hello, basado en hardware de hello, rendimiento de procesador coherente toooffer para hello ejecutando la instancia, con independencia de hardware de Hola se implementa en. toodetermine Hola hardware físico en el que se implementa este tamaño, consulta Hola hardware virtual desde dentro de hello Máquina Virtual.
 
-- Las máquinas virtuales de la serie D están diseñadas para ejecutar aplicaciones que exigen mayor capacidad de proceso y rendimiento de disco temporal. Las máquinas virtuales de la serie D proporcionan procesadores más rápidos, una mayor proporción de memoria a vCPU y una unidad de estado sólido (SSD) para el disco temporal. Para obtener más información, consulte el anuncio en el blog de Azure, [Nuevos tamaños de máquinas virtuales de la serie D](https://azure.microsoft.com/blog/2014/09/22/new-d-series-virtual-machine-sizes/).
+- Máquinas virtuales de la serie D son toorun diseñado aplicaciones que requieren mayor capacidad de proceso y rendimiento de disco temporal. Máquinas virtuales de serie D proporcionan procesadores más rápidos y una mayor proporción de memoria para vCPU, una unidad de estado sólida (SSD) para el disco temporal de Hola. Para obtener más información, consulte el anuncio de Hola en hello blog de Azure, [nuevos tamaños de máquina Virtual de serie D](https://azure.microsoft.com/blog/2014/09/22/new-d-series-virtual-machine-sizes/).
 
-- Serie de Dv2, una evolución de la serie D original, presenta una CPU más eficaz. La CPU de la serie Dv2 es un 35 % aproximadamente más rápida que la CPU de la serie D. Se basa en el procesador Intel Xeon® E5-2673 v3 (Haswell) de 2,4 GHz de la última generación; y con Intel Turbo Boost Technology 2.0, puede alcanzar los 3,1 GHz. La serie Dv2 tiene las mismas configuraciones de disco y memoria que la serie D.
+- Serie de Dv2, un toohello continuada serie D original, cuenta con una CPU más eficaz. Hola Dv2 serie CPU es aproximadamente un 35% más rápido que Hola serie D CPU. Se basa en hello última generación v3 de 2,4 GHz Intel Xeon® E5-2673 procesador (Haswell) y con hello aumento tecnología Intel Turbo 2.0, pueden crecer hasta too3.1 GHz. Hola Dv2 serie tiene Hola mismas configuraciones de memoria y disco como Hola serie D.
 
-- Los tamaños de niveles básicos se utilizan sobre todo para cargas de trabajo de desarrollo y otras aplicaciones que no requieren equilibrio de carga, escalado automático o máquinas virtuales de uso intensivo de memoria. Para más información sobre los tamaños de máquinas virtuales más adecuados para las aplicaciones de producción, consulte (Tamaños de las máquinas virtuales) [virtual-machines-size-specs.md] y para obtener información sobre sus precios, consulte [Precios de máquinas virtuales](https://azure.microsoft.com/pricing/details/virtual-machines/).
+- los tamaños de nivel básico de Hello son principalmente para las cargas de trabajo de desarrollo y otras aplicaciones que no requieren equilibrio de carga, la escala automática, o que utilizan mucha memoria máquinas virtuales. Para más información sobre los tamaños de máquinas virtuales más adecuados para las aplicaciones de producción, consulte (Tamaños de las máquinas virtuales) [virtual-machines-size-specs.md] y para obtener información sobre sus precios, consulte [Precios de máquinas virtuales](https://azure.microsoft.com/pricing/details/virtual-machines/).
 
 ## <a name="dsv3-series"></a>Serie Dsv3
 
 ACU: 160-190
 
-Los tamaños de la serie Dsv3 se basan en el procesador Intel XEON® E5-2673 v4 (Broadwell) de 2,3 GHz y pueden llegar a 3,5 GHz con la tecnología Intel Turbo Boost Technology 2.0 y el uso de Premium Storage. Los tamaños de la serie Dsv3 ofrecen una combinación de vCPU, memoria y almacenamiento local adecuados para la mayoría de las cargas de trabajo de producción.
+Tamaños de Dsv3-series están basados en hello v4 de 2,3 GHz Intel XEON® E5-2673 procesador (Broadwell) y pueden conseguir 3.5GHz con tecnología de Intel Turbo Boost 2.0 y usar almacenamiento premium. tamaños de Dsv3 serie Hola ofrecen una combinación de vCPU, memoria y almacenamiento temporal para la mayoría de las cargas de trabajo de producción.
 
 
 | Tamaño             | vCPU | Memoria: GiB | GiB de almacenamiento temporal (SSD) | Discos de datos máx. | Rendimiento de almacenamiento temporal en caché y máx.: E/S por segundo / MBps (tamaño de caché en GiB) | Rendimiento de disco no en caché máx.: E/S por segundo / Mbps | Nº máx. NIC / rendimiento de red esperado (Mbps) |
@@ -28,9 +28,9 @@ Los tamaños de la serie Dsv3 se basan en el procesador Intel XEON® E5-2673 v4 
 
 ACU: 160-190
 
-Los tamaños de la serie Dv3 se basan en el procesador Intel XEON ® E5-2673 v4 (Broadwell) de 2,3 GHz y pueden llegar a 3,5 GHz con la tecnología Intel Turbo Boost Technology 2.0. Los tamaños de la serie Dv3 ofrecen una combinación de vCPU, memoria y almacenamiento local adecuados para la mayoría de las cargas de trabajo de producción.
+Tamaños de Dv3-series están basados en hello v4 de 2,3 GHz Intel XEON® E5-2673 procesador (Broadwell) y que puede lograr 3.5GHz con tecnología de Intel Turbo Boost 2.0. tamaños de Dv3 serie Hola ofrecen una combinación de vCPU, memoria y almacenamiento temporal para la mayoría de las cargas de trabajo de producción.
 
-El almacenamiento en disco de datos se factura de forma independiente a las máquinas virtuales. Para usar discos de Premium Storage, utilice los tamaños Dsv3. El precio y los medidores de facturación para los tamaños Dsv3 son los mismos que para la serie Dv3. 
+El almacenamiento en disco de datos se factura de forma independiente a las máquinas virtuales. discos de almacenamiento de toouse premium, use tamaños de Dsv3 Hola. Hola precios y facturación medidores de tamaños de Dsv3 se Hola igual que Dv3-series. 
 
 
 | Tamaño            | vCPU | Memoria: GiB | GiB de almacenamiento temporal (SSD) | Discos de datos máx. | Rendimiento máximo del almacenamiento temporal: E/S por segundo / MBps de lectura / MBps de escritura | Ancho de banda de red/NIC máx. |
@@ -129,10 +129,10 @@ ACU: 50-100
 | Standard_A7 |8 |56 |605 |16 |16x500 |4 / 2000 |
 <br>
 
-*El tamaño A0 está sobresuscrito en el hardware físico. Solo en este tamaño específico, las implementaciones de otros clientes podrían afectar el rendimiento de la carga de trabajo en ejecución. A continuación, se indica el rendimiento relativo como la línea base esperada, sujeta a una variabilidad aproximada de 15 por ciento.
+* Hola Tamaño A0 es excesiva suscrito en el hardware físico de Hola. Solo este tamaño específico, otras implementaciones de cliente pueden afectar al rendimiento de hello de la carga de trabajo de ejecución. a continuación se indica el rendimiento relativo de Hello como línea base Hola esperado, variabilidad aproximado de asunto tooan de 15 por ciento.
 
 ### <a name="standard-a0---a4-using-cli-and-powershell"></a>Standard_A0 - A4 con CLI y PowerShell
-En el modelo de implementación clásica, algunos nombres de tamaños de VM varían ligeramente en la CLI y en PowerShell:
+En el modelo de implementación clásica de hello, algunos nombres de tamaño de máquina virtual son ligeramente diferentes en CLI y PowerShell:
 
 * Standard_A0 es ExtraSmall 
 * Standard_A1 es Small

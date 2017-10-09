@@ -1,5 +1,5 @@
 ---
-title: "Exploración de datos en una máquina virtual de SQL Server de Azure | Microsoft Docs"
+title: "aaaExplore datos en una máquina virtual de SQL Server en Azure | Documentos de Microsoft"
 description: "Exploración de datos y creación de características en una máquina virtual de SQL Server de Azure"
 services: machine-learning
 documentationcenter: 
@@ -14,44 +14,44 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: fashah;garye;bradsev
-ms.openlocfilehash: 16fabb29bdc8ec770efd843e18e9016e338a8f4e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 67f4b058b0f6557ee15fd42795c918d68f1a9871
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="heading"></a>Proceso de datos en una máquina virtual de SQL Server en Azure
-En este documento se aborda cómo explorar datos y generar características para los datos almacenados en una VM de SQL Server en Azure. Esto puede hacerse mediante la administración de datos usando SQL o mediante un lenguaje de programación como Python.
+Este documento cubre cómo tooexplore datos y generar características de los datos almacenados en una VM de SQL Server en Azure. Esto puede hacerse mediante la administración de datos usando SQL o mediante un lenguaje de programación como Python.
 
 > [!NOTE]
-> En las instrucciones SQL de ejemplo de este documento se supone que los datos están en SQL Server. Si no lo están, consulte el mapa de proceso de ciencia de datos en la nube para obtener información sobre cómo mover los datos a SQL Server.
+> instrucciones de SQL de ejemplo de Hola en este documento se suponen que los datos están en SQL Server. Si no es así, consulte cómo toohello nube datos ciencia proceso mapa toolearn toomove su tooSQL de datos servidor.
 > 
 > 
 
 ## <a name="SQL"></a>Uso de SQL
-En esta sección, se describen las siguientes tareas de tratamiento de datos mediante SQL:
+Describimos Hola después problemas con tareas de datos en esta sección con SQL:
 
 1. [Exploración de datos](#sql-dataexploration)
 2. [Generación de características](#sql-featuregen)
 
 ### <a name="sql-dataexploration"></a>Exploración de datos
-A continuación se muestran algunos scripts de SQL de ejemplo que se pueden usar para explorar los almacenes de datos en SQL Server.
+Estos son algunos scripts SQL de ejemplo que pueden ser utilizados tooexplore almacenes de datos en SQL Server.
 
 > [!NOTE]
-> Para obtener un ejemplo práctico, puede usar el conjunto de datos [NYC Taxi dataset](http://www.andresmh.com/nyctaxitrips/) y consultar el IPNB denominado [NYC Data wrangling using IPython Notebook and SQL Server](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) (Tratamiento de datos de la ciudad de Nueva York mediante IPython Notebook y SQL Server), que ofrece un tutorial completo.
+> Para obtener un ejemplo práctico, puede usar hello [conjunto de datos de Nueva York Taxi](http://www.andresmh.com/nyctaxitrips/) y consulte toohello IPNB titulada [datos NYC problemas con mediante el Bloc de notas de IPython y SQL Server](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) para un tutorial to-end.
 > 
 > 
 
-1. Obtener el número de observaciones por día
+1. Obtener el recuento de Hola de observaciones por día
    
     `SELECT CONVERT(date, <date_columnname>) as date, count(*) as c from <tablename> group by CONVERT(date, <date_columnname>)` 
-2. Obtenga los niveles de una columna de categorías
+2. Obtener niveles de hello en una columna de categorías
    
     `select  distinct <column_name> from <databasename>`
-3. Obtener el número de niveles de combinación de dos columnas de categorías 
+3. Obtener número de Hola de niveles de combinación de dos columnas de categorías 
    
     `select <column_a>, <column_b>,count(*) from <tablename> group by <column_a>, <column_b>`
-4. Obtener la distribución para columnas numéricas
+4. Obtener la distribución de Hola para columnas numéricas
    
     `select <column_name>, count(*) from <tablename> group by <column_name>`
 
@@ -60,15 +60,15 @@ En esta sección, se describen formas de generar características mediante SQL:
 
 1. [Generación de características basadas en recuentos](#sql-countfeature)
 2. [Generación de características de discretización](#sql-binningfeature)
-3. [Implementación de las características de una sola columna](#sql-featurerollout)
+3. [Implementar características de Hola de una sola columna](#sql-featurerollout)
 
 > [!NOTE]
-> Cuando genere características adicionales, puede agregarlas como columnas a la tabla existente o crear una nueva tabla con las características adicionales y la clave principal, que se pueden combinar con la tabla original. 
+> Una vez que generar características adicionales, puede agregarlas como tabla de columnas toohello existente o crear una nueva tabla con características adicionales de Hola y la clave principal, que puede combinarse con la tabla original de Hola. 
 > 
 > 
 
 ### <a name="sql-countfeature"></a>Generación de características basadas en recuentos
-Los ejemplos siguientes muestran dos formas de generar características de recuento. El primer método usa la suma condicional y el segundo utiliza la cláusula 'where'. Estos pueden entonces combinarse con la tabla original (con columnas de clave principal) para disponer de características de recuento junto con los datos originales.
+Hello en los ejemplos siguientes muestran dos maneras de generar características de recuento. Hola primero usa suma condicional y el segundo método utiliza de Hola Hola cláusula 'where'. Estos, a continuación, pueden combinarse con hello original (con columnas de clave principal) toohave recuento características para tablas junto con los datos originales de Hola.
 
     select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3> 
 
@@ -76,28 +76,28 @@ Los ejemplos siguientes muestran dos formas de generar características de recue
     where <column_name3> = '<some_value>' group by <column_name1>,<column_name2> 
 
 ### <a name="sql-binningfeature"></a>Generación de características de discretización
-En el ejemplo siguiente se muestra cómo generar características discretizadas mediante la discretización (con cinco discretizaciones) de una columna numérica que puede usarse en su lugar como una característica:
+Hello en el ejemplo siguiente se muestra cómo toogenerate había discretizado características mediante discretización (con cinco ubicaciones) una columna numérica que puede utilizarse como una característica en su lugar:
 
     `SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <tablename>`
 
 
-### <a name="sql-featurerollout"></a>Implementación de las características de una sola columna
-En esta sección, se muestra cómo se implementa una sola columna de una tabla para generar características adicionales. En el ejemplo se supone que hay una columna de latitud o longitud en la tabla a partir de la cual está intentando generar características.
+### <a name="sql-featurerollout"></a>Implementar características de Hola de una sola columna
+En esta sección, demostraremos cómo tooroll espera una sola columna en una tabla toogenerate más características. ejemplo de Hola se da por supuesto que hay una columna de latitud o longitud de tabla Hola desde el que está tratando de toogenerate características.
 
-Aquí se incluye un breve manual sobre los datos de ubicación de latitud y longitud (extraído de stackoverflow [How to measure the accuracy of latitude and longitude?](http://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude)(¿Cómo medir la precisión de la latitud y la longitud?)). Resulta útil para comprender bien todo antes de caracterizar el campo de ubicación:
+Aquí es un manual breve sobre los datos de ubicación de latitud y longitud (con los recursos de stackoverflow [cómo toomeasure Hola precisión de latitud y longitud?](http://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude)). Esto es útil toounderstand antes de campo de ubicación de hello featurizing:
 
-* La señal indica si estamos en el norte o sur, y este u oeste del mundo.
+* inicio de sesión de Hello nos dice si estamos Norte o sur, este u oeste mundo Hola.
 * Un dígito de las centenas distinto de cero indica que se usa la longitud y no la latitud.
-* El dígito de las decenas ofrece una posición a aproximadamente 1.000 kilómetros. Nos brinda información útil sobre el continente u océano en el que nos encontramos.
-* El dígito de las unidades (un grado decimal) indica una posición de hasta 111 kilómetros (60 millas náuticas, aproximadamente 69 millas). Puede informarnos aproximadamente del estado grande o país en que nos encontramos.
-* La primera posición decimal tiene un valor de hasta 11,1 km: puede distinguir la posición de una ciudad grande de otra ciudad grande vecina.
-* La segundo posición decimal tiene un valor de hasta 1,1 km: puede separar un pueblo del siguiente.
-* La tercera posición decimal tiene un valor de hasta 110 m: puede identificar un campo agrícola extenso o campus universitario.
-* La cuarta posición decimal tiene un valor de hasta 11 m: puede identificar una parcela de tierra. Es comparable a la precisión típica de una unidad GPS sin corregir y sin interferencias.
-* La quinta posición decimal tiene un valor de hasta 1,1 m: puede distinguir entre distintos árboles. Solo es posible conseguir una precisión de este nivel con unidades GPS comerciales con corrección diferencial.
-* La sexta posición decimal tiene un valor de hasta 0,11 m: puede usarse para diseñar estructuras en detalle, para el diseño de paisajes o la construcción de carreteras. Debería ser más que suficiente para realizar el seguimiento de los movimientos de glaciares y ríos. Esto se consigue al tomar medidas meticulosas con GPS, como GPS corregido de forma diferencial.
+* dígito de Hello decenas ofrece un tooabout posición 1.000 kilómetros. Nos brinda información útil sobre el continente u océano en el que nos encontramos.
+* dígito de unidades de Hello (un grado decimal) ofrece una posición hacia arriba too111 kilómetros (60 millas náuticas, unos 69 millas). Puede informarnos aproximadamente del estado grande o país en que nos encontramos.
+* Hola primer decimal merece una too11.1 km: puede distinguir la posición de Hola de una ciudad grande de una ciudad grande vecino.
+* Hola segundo decimal merece una too1.1 km: puede separar un pueblo de Hola a continuación.
+* posición decimal de la tercera Hola merece la pena seguridad too110 m: puede identificar un campo agrícola grande o recinto institucional.
+* Hola cuarto decimal merece una too11 m: puede identificar un lote de tierra. Es comparable toohello precisión típica de una unidad GPS no corregida y sin interferencias.
+* Hola quinto decimal inferior es que vale la pena hasta too1.1 m: que árboles distinguen entre sí. Nivel de precisión toothis con unidades GPS comerciales solo se puede lograr con corrección diferencial.
+* posición decimal de la sexta Hola merece la pena seguridad m: too0.11 que ya puede utilizarla para diseñar estructuras en detalle, para diseñar los entornos, crear carreteras. Debería ser más que suficiente para realizar el seguimiento de los movimientos de glaciares y ríos. Esto se consigue al tomar medidas meticulosas con GPS, como GPS corregido de forma diferencial.
 
-La información de ubicación se puede caracterizar como sigue, con diferencias entre la información de región, ubicación y ciudad. Tenga en cuenta que también es posible llamar a un punto de conexión de REST, como la API de mapas de Bing disponible en [Find a Location by Point](https://msdn.microsoft.com/library/ff701710.aspx) (Encontrar una ubicación por punto) para obtener la información de la región o el distrito.
+información de ubicación de Hello puede ser caracterizará como sigue, separar los región, la ubicación y la información de la ciudad. Tenga en cuenta que también puede llamar a un extremo REST, como la API de Bing Maps disponibles en [buscar una ubicación de punto de](https://msdn.microsoft.com/library/ff701710.aspx) información de tooget Hola región/distrito.
 
     select 
         <location_columnname>
@@ -110,36 +110,36 @@ La información de ubicación se puede caracterizar como sigue, con diferencias 
         ,l7=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 6 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),6,1) else '0' end     
     from <tablename>
 
-Estas características basadas en ubicación se pueden usar aún más para generar características de recuento adicionales, tal y como se describió anteriormente. 
+Estas características basadas en la ubicación pueden ser más características de recuento adicionales toogenerate usado como se describió anteriormente. 
 
 > [!TIP]
-> Puede insertar mediante programación los registros con el lenguaje que prefiera. Es posible que deba insertar los datos en fragmentos para mejorar el rendimiento de escritura (para obtener un ejemplo de cómo obtener esto mediante pyodbc, consulte [A HelloWorld sample to access SQLServer with python](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)(Un ejemplo Hola a todos para acceder a SQLServer con python)). Otra alternativa consiste en insertar datos en la base de datos mediante la [utilidad BCP](https://msdn.microsoft.com/library/ms162802.aspx).
+> Puede insertar mediante programación los registros de hello mediante el lenguaje seleccionado. Puede que necesite tooinsert datos de hello en la eficacia de escritura de fragmentos tooimprove (para obtener un ejemplo de cómo toodo este uso pyodbc, consulte [tooaccess de ejemplo HelloWorld A SQL Server con python](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)). Otra alternativa es tooinsert base de datos de hello mediante hello [utilidad BCP](https://msdn.microsoft.com/library/ms162802.aspx).
 > 
 > 
 
-### <a name="sql-aml"></a>Conexión con Aprendizaje automático de Azure
-La característica recién generada se puede agregar como una columna a una tabla existente o se puede almacenar en una tabla nueva y combinar con la tabla original para el aprendizaje automático. Es posible generar o tener acceso a las características si ya se han creado, mediante el módulo [Importar datos][import-data] en Azure Machine Learning, como se muestra a continuación:
+### <a name="sql-aml"></a>Conexión tooAzure aprendizaje automático
+característica Hola recién generado puede agrega como una tabla existente de columna tooan o almacenado en una tabla nueva y estar combinada con la tabla original de hello para el aprendizaje automático. Características se pueden genera o acceder si ya ha creado, con hello [importar datos] [ import-data] módulo aprendizaje automático de Azure tal y como se muestra a continuación:
 
 ![Lectores de azureml][1] 
 
 ## <a name="python"></a>Uso de un lenguaje de programación como Python
-Usar Python para generar explorar datos y generar características cuando los datos están en SQL Server es parecido a procesar los datos en blobs de Azure mediante Python, como se documenta en [Proceso de datos de blobs de Azure en su entorno de ciencia de datos](machine-learning-data-science-process-data-blob.md). Los datos deben cargarse desde la base de datos en una trama de datos de Pandas y, a continuación, se pueden procesar aún más. Se documenta el proceso de conexión a la base de datos y carga de los datos en la trama de datos de esta sección.
+Usar datos de Python tooexplore y generar características cuando hello datos están en SQL Server es datos tooprocessing similares en Azure blob mediante Python como se documenta en [datos de Blob de Azure de proceso en el entorno de ciencia de datos](machine-learning-data-science-process-data-blob.md). datos de Hello toobe cargado desde la base de datos de hello en una trama de datos pandas es necesario y, a continuación, pueden seguir procesándose. Se documente proceso de Hola de conexión de base de datos de toohello y carga datos de hello en la trama de datos de hello en esta sección.
 
-El formato de cadena de conexión siguiente puede usarse para conectarse a una base de datos de SQL Server desde Python mediante pyodbc (reemplace servername, dbname, username y password con sus valores específicos):
+Hola siguiendo el formato de cadena de conexión puede ser usado tooconnect base de datos de SQL Server de la tooa de Python mediante pyodbc (replace servername, dbname, nombre de usuario y contraseña con los valores específicos):
 
-    #Set up the SQL Azure connection
+    #Set up hello SQL Azure connection
     import pyodbc    
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-La [biblioteca Pandas](http://pandas.pydata.org/) en Python ofrece un amplio conjunto de herramientas de análisis de datos y estructuras de datos para la manipulación de datos para la programación en Python. El código siguiente lee los resultados que se devuelven desde una base de datos de SQL Server en una trama de datos de Pandas:
+Hola [biblioteca Pandas](http://pandas.pydata.org/) en Python proporciona un amplio conjunto de estructuras de datos y herramientas de análisis de datos para la manipulación de datos para la programación de Python. código de Hello siguiente lee devuelven resultados de Hola de una base de datos de SQL Server en una trama de datos de Pandas:
 
-    # Query database and load the returned results in pandas data frame
+    # Query database and load hello returned results in pandas data frame
     data_frame = pd.read_sql('''select <columnname1>, <cloumnname2>... from <tablename>''', conn)
 
-Ya puede trabajar con la trama de datos de Pandas como se explica en el artículo [Proceso de datos de blobs de Azure en su entorno de ciencia de datos](machine-learning-data-science-process-data-blob.md).
+Ahora puede trabajar con la trama de datos de hello Pandas tal como se explicó en el artículo hello [datos de Blob de Azure de proceso en el entorno de ciencia de datos](machine-learning-data-science-process-data-blob.md).
 
 ## <a name="azure-data-science-in-action-example"></a>Ejemplo de ciencia de datos de Azure en acción
-Para obtener un ejemplo de tutorial completo del Proceso de ciencia de datos de Azure mediante un conjunto de datos público, consulte [Proceso de ciencia de datos de Azure en acción](machine-learning-data-science-process-sql-walkthrough.md).
+Para obtener un ejemplo de tutorial de extremo a extremo de hello proceso de ciencia de datos de Azure con un conjunto de datos pública, consulte [proceso de ciencia de datos de Azure en acción](machine-learning-data-science-process-sql-walkthrough.md).
 
 [1]: ./media/machine-learning-data-science-process-sql-server-virtual-machine/reader_db_featurizedinput.png
 

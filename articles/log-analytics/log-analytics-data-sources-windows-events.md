@@ -1,6 +1,6 @@
 ---
-title: "Recopilación y análisis de registros de eventos de Windows en Log Analytics (OMS) | Microsoft Docs"
-description: "Los registros de eventos de Windows son uno de los orígenes de datos más comunes que usa Log Analytics.  En este artículo se describe cómo configurar la recopilación de registros de eventos de Windows y detalles de los registros que crean en el repositorio de OMS."
+title: "aaaCollect y analizar los registros de eventos de Windows en el análisis de registros de OMS | Documentos de Microsoft"
+description: "Registros de eventos de Windows son uno de los orígenes de datos más comunes Hola utilizados por el análisis de registros.  Este artículo describe cómo tooconfigure colección de registros de eventos de Windows y detalles de los registros de hello crean en el repositorio de OMS Hola."
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -14,55 +14,55 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/15/2017
 ms.author: bwren
-ms.openlocfilehash: 1be8500ec2cb78ef0edf57f4d8561336cf00ebcb
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: c05648af39258443f22fd11e1d751b5ccec8c391
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="windows-event-log-data-sources-in-log-analytics"></a>Orígenes de datos de registros de eventos de Windows en Log Analytics
-Muchas aplicaciones escriben en el registro de eventos de Windows, por lo que constituye uno de los [orígenes de datos](log-analytics-data-sources.md) más comunes para recopilar información mediante agentes de Windows.  Puede recopilar eventos de registros estándar, como el sistema y la aplicación, además de especificar cualquier registro personalizado creado por las aplicaciones que debe supervisar.
+Registros de eventos de Windows son uno de los más comunes de hello [orígenes de datos](log-analytics-data-sources.md) para recopilar datos con agentes de Windows, ya que muchas aplicaciones escriben toohello registro de eventos de Windows.  Puede recopilar eventos de registros estándares, como la aplicación y del sistema en suma toospecifying los registros personalizados creados por las aplicaciones necesita toomonitor.
 
 ![Eventos de Windows](media/log-analytics-data-sources-windows-events/overview.png)     
 
 ## <a name="configuring-windows-event-logs"></a>Configuración de registros de eventos de Windows
-Configure los registros de eventos de Windows en el [menú Datos en Configuración de Log Analytics](log-analytics-data-sources.md#configuring-data-sources).
+Configurar registros de eventos de Windows de hello [menú datos de configuración de análisis de registro](log-analytics-data-sources.md#configuring-data-sources).
 
-Log Analytics solo recopila eventos de los registros de eventos de Windows que se especifican en la configuración.  Para agregar un registro nuevo, escriba el nombre y haga clic en **+**.  Para cada registro, solo se recopilan los eventos con los niveles de gravedad seleccionados.  Compruebe las gravedades del registro determinado que desea recopilar.  No puede proporcionar criterios adicionales para filtrar eventos.
+Análisis de registros solo recopila eventos de registros de eventos de Windows hello que se especifican en la configuración de Hola.  Puede agregar un registro de eventos de escribir el nombre del registro de hello hello y haciendo clic en  **+** .  Para cada registro, se recopilan sólo los eventos Hola con niveles de gravedad de hello seleccionado.  Comprobar los niveles de gravedad de Hola para registro de hello determinado que desea toocollect.  No puede proporcionar los criterios adicionales toofilter eventos.
 
-A medida que escribe el nombre de un registro de eventos, Log Analytics da sugerencias de nombres comunes de este tipo de registros. Aun cuando el registro que desea agregar no aparezca en la lista, puede incluirlo escribiendo su nombre completo. Encontrará el nombre completo del registro en el Visor de eventos. En el Visor de eventos, abra la página *Propiedades* del registro y copie la cadena del campo *Nombre completo*.
+Tal y como se escribe el nombre de Hola de un registro de eventos, análisis de registros proporciona sugerencias de nombres comunes de registro de eventos. Si desea tooadd de registro de hello no aparece en la lista de hello, puede agregarlo escribiendo en el nombre completo de hello del registro de hello. Puede encontrar el nombre completo de hello del registro de hello mediante el Visor de eventos. En el Visor de eventos, abra hello *propiedades* página para hello registro y copia Hola cadena hello *nombre completo* campo.
 
 ![Configurar eventos de Windows](media/log-analytics-data-sources-windows-events/configure.png)
 
 ## <a name="data-collection"></a>Colección de datos
-Log Analytics recopila cada evento que coincide con una gravedad seleccionada de un registro de eventos supervisado al crear el evento.  El agente registra su lugar en cada registro de eventos del que recopila entradas.  Si el agente queda sin conexión durante un período, Log Analytics recopila los eventos desde donde quedó, aunque esos eventos se hayan creado mientras el agente estaba sin conexión.  Sin embargo, existe la posibilidad de que estos eventos no se recopilen si el registro de eventos hace que los eventos no recopilados se sobrescriban mientras el agente está sin conexión.
+Análisis de registros recopila cada evento que coincida con una gravedad seleccionada de un registro de eventos supervisado que se crea el evento de Hola.  agente de Hello registra su lugar en cada registro de eventos que recopila de.  Si el agente de Hola se queda sin conexión durante un período de tiempo, análisis de registros recopila eventos desde donde se quedó, incluso si se crearon los eventos mientras el agente de hello estaba sin conexión.  Hay un riesgo potencial para recopilar estos eventos toonot si ajusta el registro de eventos de hello con eventos sin recopilar se sobrescriben mientras se ejecuta el agente de hello está sin conexión.
 
 >[!NOTE]
 >Log Analytics no recopila eventos de auditoría creados por SQL Server del origen *MSSQLSERVER* con Id. de evento 18453 que contengan palabras clave *Classic* o *Audit Success* y la palabra clave *0xa0000000000000*.
 >
 
 ## <a name="windows-event-records-properties"></a>Propiedades de los registros de eventos de Windows
-Los registros de eventos de Windows tienen un tipo **Event** y las propiedades que aparecen en la tabla siguiente:
+Registros de eventos de Windows tienen un tipo de **eventos** y que tienen propiedades de hello en hello en la tabla siguiente:
 
 | Propiedad | Descripción |
 |:--- |:--- |
-| Equipo |Nombre del equipo desde el que se recopiló el evento. |
-| EventCategory |Categoría del evento. |
+| Equipo |Nombre del equipo de Hola que Hola eventos se recopilaron de. |
+| EventCategory |Categoría de eventos de Hola. |
 | EventData |Todos los datos con formato sin procesar. |
-| EventId |El número del evento. |
-| EventLevel |La gravedad del evento en formato numérico. |
-| EventLevelName |La gravedad del evento en formato de texto. |
-| EventLog |El nombre del registro de eventos desde el que se recopiló el evento. |
+| EventId |Número de eventos de Hola. |
+| EventLevel |Gravedad del evento de hello en formato numérico. |
+| EventLevelName |Gravedad del evento de hello en formato de texto. |
+| EventLog |Nombre del registro de eventos de Hola que Hola eventos se recopilaron de. |
 | ParameterXml |Los valores de parámetro de evento en formato XML. |
-| ManagementGroupName |Nombre del grupo de administración de agentes de System Center Operations Manager.  En el caso de los otros agentes, este valor es AOI-<workspace ID>. |
+| ManagementGroupName |Nombre del grupo de administración de Hola para los agentes de System Center Operations Manager.  En el caso de los otros agentes, este valor es AOI-<workspace ID>. |
 | RenderedDescription |La descripción del evento con valores de parámetro. |
-| Origen |El origen del evento. |
-| SourceSystem |El tipo de agente desde el que se recopiló el evento. <br> OpsManager: agente de Windows, ya sea una conexión directa o administrado por Operations Manager <br> Linux: todos los agentes de Linux.  <br> AzureStorage: Diagnósticos de Azure |
-| TimeGenerated |La fecha y la hora de creación del evento en Windows. |
-| UserName |El nombre de usuario de la cuenta que registró el evento. |
+| Origen |Origen del evento de Hola. |
+| SourceSystem |Tipo de evento de Hola de agente se recopilaron de. <br> OpsManager: agente de Windows, ya sea una conexión directa o administrado por Operations Manager <br> Linux: todos los agentes de Linux.  <br> AzureStorage: Diagnósticos de Azure |
+| TimeGenerated |Evento de Hola de fecha y hora se creó en Windows. |
+| UserName |Nombre de usuario de cuenta de hello que registró el evento de Hola. |
 
 ## <a name="log-searches-with-windows-events"></a>Búsquedas de registros con eventos de Windows
-La tabla siguiente proporciona distintos ejemplos de búsquedas de registros que recuperar registros de eventos de Windows.
+Hello tabla siguiente proporciona diferentes ejemplos de búsquedas de registros que recuperar registros de eventos de Windows.
 
 | Consultar | Descripción |
 |:--- |:--- |
@@ -73,7 +73,7 @@ La tabla siguiente proporciona distintos ejemplos de búsquedas de registros que
 
 
 >[!NOTE]
-> Si el área de trabajo se ha actualizado al [nuevo lenguaje de consulta de Log Analytics](log-analytics-log-search-upgrade.md), las consultas anteriores cambiarían como sigue.
+> Si el área de trabajo se ha actualizado toohello [lenguaje de consulta de análisis de registros nueva](log-analytics-log-search-upgrade.md), a continuación, Hola por encima de las consultas cambiaría toohello siguiente.
 >
 >| Consultar | Descripción |
 |:---|:---|
@@ -84,7 +84,7 @@ La tabla siguiente proporciona distintos ejemplos de búsquedas de registros que
 
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Configure Log Analytics para recopilar otros [orígenes de datos](log-analytics-data-sources.md) para su análisis.
-* Obtenga información sobre las [búsquedas de registros](log-analytics-log-searches.md) para analizar los datos recopilados desde soluciones y orígenes de datos.  
-* Use [Campos personalizados](log-analytics-custom-fields.md) para redistribuir los registros de eventos en campos individuales.
+* Configurar análisis de registros toocollect otros [orígenes de datos](log-analytics-data-sources.md) para el análisis.
+* Obtenga información acerca de [búsquedas de registro](log-analytics-log-searches.md) recopilan los datos de Hola de tooanalyze desde orígenes de datos y soluciones.  
+* Use [campos personalizados](log-analytics-custom-fields.md) tooparse registros de eventos de hello en campos individuales.
 * Configure la [recopilación de contadores de rendimiento](log-analytics-data-sources-performance-counters.md) desde los agentes de Windows.

@@ -1,6 +1,6 @@
 ---
-title: "Introducción a las pruebas en producción para las aplicaciones web"
-description: "Obtenga información acerca de la característica de prueba en producción (TiP) en Aplicaciones web del Servicio de aplicaciones."
+title: "aaaGet partió de prueba en producción para las aplicaciones Web"
+description: "Obtenga información acerca de hello pruebas en función de la producción (TiP) en aplicaciones de Web del servicio de aplicación de Azure."
 services: app-service\web
 documentationcenter: 
 author: cephalin
@@ -14,68 +14,68 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/13/2016
 ms.author: cephalin
-ms.openlocfilehash: 9f38b635140cacf0513c75385bce3c110a930969
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2ddbd532ffe2a4f3e07fd386d9741a3fde3639ca
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-test-in-production-for-web-apps"></a>Introducción a las pruebas en producción para las aplicaciones web
-Las pruebas en producción o pruebas en directo de una aplicación web usando el tráfico de clientes, es una estrategia de prueba que los desarrolladores de aplicaciones integran cada vez más en sus metodologías de [desarrollo ágil](https://en.wikipedia.org/wiki/Agile_software_development) . Esta estrategia le permite probar la calidad de sus aplicaciones con un tráfico de usuarios activos en el entorno de producción, en lugar de con datos sintetizados en un entorno de prueba. Al exponer su nueva aplicación a usuarios reales, tiene la posibilidad de recibir información sobre problemas reales a los que se puede enfrentar la aplicación una vez que se implemente. Puede comprobar la funcionalidad, el rendimiento y el valor de las actualizaciones de la aplicación con el volumen, la velocidad y la variedad del tráfico real de usuarios , algo a lo que un entorno de prueba no llega a aproximarse.
+Las pruebas en producción o pruebas en directo de una aplicación web usando el tráfico de clientes, es una estrategia de prueba que los desarrolladores de aplicaciones integran cada vez más en sus metodologías de [desarrollo ágil](https://en.wikipedia.org/wiki/Agile_software_development) . Le permite tootest calidad de Hola de las aplicaciones con el tráfico de usuario en vivo en el entorno de producción, como datos toosynthesized opuestos en un entorno de prueba. Mediante la exposición de los usuarios nuevos de tooreal de aplicación, pueda estar informado sobre los problemas reales de hello que puede enfrentarse a la aplicación una vez que se implementa. Puede comprobar la funcionalidad de hello, el rendimiento y el valor de las actualizaciones de la aplicación en volumen de hello, progreso y variedad de tráfico de usuario real, que no puede aproximar nunca en un entorno de prueba.
 
 ## <a name="traffic-routing-in-app-service-web-apps"></a>Enrutamiento de tráfico en las aplicaciones web del Servicio de aplicaciones
-Con la característica de enrutamiento del tráfico de [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714), puede dirigir una parte del tráfico de usuario activo a una o varias [ranuras de implementación](web-sites-staged-publishing.md) y, después, analizar su aplicación con [Azure Application Insights](/services/application-insights/) o [Azure HDInsight](/services/hdinsight/), o con una herramienta de terceros como [New Relic](/marketplace/partners/newrelic/newrelic/) para validar el cambio. Por ejemplo, con el Servicio de aplicaciones puede implementar los siguientes escenarios:
+Con el enrutamiento de tráfico de hello de características en [servicio de aplicaciones de Azure](http://go.microsoft.com/fwlink/?LinkId=529714), puede dirigir una parte de tooone de tráfico de usuario en vivo o más [ranuras de implementación](web-sites-staged-publishing.md)y, a continuación, analizar la aplicación con [aplicación de Azure Visión](/services/application-insights/) o [HDInsight de Azure](/services/hdinsight/), o una herramienta de terceros, como [New Relic](/marketplace/partners/newrelic/newrelic/) toovalidate el cambio. Por ejemplo, puede implementar Hola con servicio de aplicaciones de los escenarios siguientes:
 
-* Detectar errores funcionales o identificar cuellos de botella en el rendimiento de las actualizaciones antes de realizar su implementación en todo el sitio
-* Realizar "vuelos de prueba controlados" de los cambios realizando la medición de las métricas de facilidad de uso en la versión beta de la aplicación
-* Cambiar gradualmente a una nueva actualización y volver sin problemas a la versión actual si se produce un error 
+* Detectar errores funcionales o identificar los cuellos de botella de rendimiento en la implementación de actualizaciones anteriores toosite todo
+* Realizar "vuelos de pruebas controlado" de los cambios mediante la medición de las métricas de facilidad de uso en la aplicación de la versión beta de hello
+* Optimizar gradualmente tooa nueva actualización y correctamente hacia abajo de la versión actual de toohello si se produce un error 
 * Optimizar los resultados empresariales de su aplicación mediante la ejecución de [pruebas A/B](https://en.wikipedia.org/wiki/A/B_testing) o [pruebas sobre múltiples variables](https://en.wikipedia.org/wiki/Multivariate_testing_in_marketing) en varias ranuras de implementación
 
 ### <a name="requirements-for-using-traffic-routing-in-web-apps"></a>Requisitos para usar el enrutamiento del tráfico en las aplicaciones web
 * La aplicación web se debe ejecutar en los niveles **Estándar** o **Premium**, ya que es lo que se requiere cuando hay varias ranuras de implementación.
-* Para que funcione correctamente, el enrutamiento del tráfico las cookies tienen que estar habilitadas en el explorador del usuario. El enrutamiento de tráfico usa cookies para anclar un explorador cliente a una ranura de implementación mientras dura la sesión del cliente.
+* En orden toowork correctamente, el enrutamiento de tráfico requiere toobe las cookies habilitada en el Explorador de los usuarios de Hola. Enrutamiento de tráfico usa toopin una ranura de implementación de cliente explorador tooa de cookies de sesión de cliente de Hola Hola vida.
 * El enrutamiento de tráfico admite escenarios avanzados de TiP mediante cmdlets de PowerShell de Azure.
 
-## <a name="route-traffic-segment-to-a-deployment-slot"></a>Enrutamiento de un segmento de tráfico a una ranura de implementación
-En el nivel básico en todas las situaciones TiP, se enruta un porcentaje predefinido del tráfico directo a una ranura de implementación que no sea de producción. Para ello, siga estos pasos:
+## <a name="route-traffic-segment-tooa-deployment-slot"></a>Ranura de implementación de ruta tráfico segmento tooa
+En el nivel básico de hello en cada escenario de sugerencia, enrutar una porcentaje predefinido de la ranura de implementación de producción no tooa el tráfico en vivo. toodo, a continuación siga los pasos hello:
 
 > [!NOTE]
-> En estos pasos se asume que ya tiene una [ranura de implementación que no es de producción](web-sites-staged-publishing.md) y que el contenido de la aplicación web deseado ya está [implementado](web-sites-deploy.md) en ella.
+> Hello estos pasos se da por supuesto que ya tiene un [ranura de implementación no es de producción](web-sites-staged-publishing.md) y ese Hola desea el contenido de las aplicaciones web ya está [implementa](web-sites-deploy.md) tooit.
 > 
 > 
 
-1. Inicie sesión en el [Portal de Azure](https://portal.azure.com/).
+1. Inicie sesión en hello [Portal de Azure](https://portal.azure.com/).
 2. En la hoja de la aplicación web, haga clic en **Configuración** > **Enrutamiento de tráfico**.
    ![](./media/app-service-web-test-in-production/01-traffic-routing.png)
-3. Seleccione la ranura a la que desea enrutar el tráfico y el porcentaje del tráfico total que desee, haga clic en **Guardar**.
+3. Ranura de hello SELECT que desea que el porcentaje de tooroute tráfico tooand Hola de hello total de tráfico que desee y luego haga clic en **guardar**.
    
     ![](./media/app-service-web-test-in-production/02-select-slot.png)
-4. Vaya la hoja de la ranura de implementación. Debería ver tráfico real que se enruta hacia la ranura.
+4. Hoja de la ranura de implementación de toohello vaya. Ahora debería ver el tráfico en vivo que se va a tooit enrutado.
    
     ![](./media/app-service-web-test-in-production/03-traffic-routed.png)
 
-Una vez configurado el enrutamiento de tráfico, el porcentaje especificado de clientes se enrutará al azar a la ranura que no es de producción. De cualquier forma, es importante tener en cuenta que una vez que se enruta automáticamente a un cliente a una ranura específica, este cliente permanecerá "fijo" en esa ranura mientras dure su sesión. Esta operación se realiza mediante una cookie que ancla la sesión de usuario. Si inspecciona las solicitudes HTTP, encontrará una cookie `TipMix` en cada solicitud posterior.
+Una vez configurado el enrutamiento del tráfico, Hola especificados porcentaje de clientes estarán ranura de tooyour aleatoriamente enrutado no sea de producción. Sin embargo, es importante toonote que una vez que un cliente se tooa automáticamente enrutado específico ranura, estará ranura toothat "anclados" para la vida Hola de esa sesión de cliente. Esto se realiza mediante una sesión de usuario de cookie toopin Hola. Si examina las solicitudes HTTP de hello, encontrará un `TipMix` cookie en cada solicitud posterior.
 
 ![](./media/app-service-web-test-in-production/04-tip-cookie.png)
 
-## <a name="force-client-requests-to-a-specific-slot"></a>Forzamiento de las solicitudes de cliente a una ranura específica
-Además del enrutamiento automático del tráfico, el Servicio de aplicaciones puede enrutar solicitudes a una ranura específica. Esto es útil cuando desee que los usuarios puedan escoger el enrutamiento a la aplicación beta, o la exclusión voluntaria de la misma. Para ello use el parámetro de consulta `x-ms-routing-name` .
+## <a name="force-client-requests-tooa-specific-slot"></a>Forzar la ranura específico de tooa de solicitudes de cliente
+En suma tooautomatic enrutamiento del tráfico, servicio de aplicaciones es ranura específico de tooroute capaz de solicitudes tooa. Esto es útil cuando desea que su tooopt capaz de usuarios toobe-en o desactivación de la aplicación de la versión beta. toodo, usar hello `x-ms-routing-name` parámetro de consulta.
 
-Para redirigir usuarios a una ranura específica mediante `x-ms-routing-name`, tiene que asegurarse de que la ranura se ha agregado a la lista de Enrutamiento de tráfico. Dado que desea enrutar a una ranura de forma explícita, no importa el porcentaje de enrutamiento que se establece. Si lo desea puede crear un "vínculo beta" en el que los usuarios pueden hacer clic para acceder a la aplicación beta.
+tooreroute usuarios tooa ranura específico utilizando `x-ms-routing-name`, debe asegurarse de que esa ranura Hola ya se ha agregado toohello lista de enrutamiento del tráfico. Debido a que desea tooroute tooa ranura explícitamente, no importa el porcentaje de enrutamiento real Hola establece. Si lo desea, puede crear un "vínculo beta" que los usuarios puedan seleccionar tooaccess Hola aplicación beta.
 
 ![](./media/app-service-web-test-in-production/06-enable-x-ms-routing-name.png)
 
 ### <a name="opt-users-out-of-beta-app"></a>Exclusión voluntaria de la aplicación beta para los usuarios
-Para permitir que los usuarios opten por la exclusión del enrutamiento a la aplicación beta, por ejemplo, puede poner este vínculo en la página web:
+toolet a los usuarios que no formen parte de la aplicación de la versión beta, por ejemplo, se puede colocar este vínculo en la página web:
 
-    <a href="<webappname>.azurewebsites.net/?x-ms-routing-name=self">Go back to production app</a>
+    <a href="<webappname>.azurewebsites.net/?x-ms-routing-name=self">Go back tooproduction app</a>
 
-La cadena `x-ms-routing-name=self` especifica la ranura de producción. Una vez que el explorador del cliente accede al vínculo, no solo se redirige a la zona de producción, sino que cada solicitud posterior contendrá la cookie `x-ms-routing-name=self` que ancla la sesión a la ranura de producción.
+Hola cadena `x-ms-routing-name=self` especifica la zona de producción de hello. Una vez hello vínculo de Hola de acceso de explorador de cliente, no solo se redirige toohello ranura de producción, pero todas las solicitudes subsiguientes contendrá hello `x-ms-routing-name=self` cookie que ancla ranura de producción de hello sesión toohello.
 
 ![](./media/app-service-web-test-in-production/05-access-production-slot.png)
 
-### <a name="opt-users-in-to-beta-app"></a>Selección voluntaria de la aplicación beta para los usuarios
-Para permitir a los usuarios participar en la aplicación de la versión beta, establezca el mismo parámetro de consulta con el nombre de la ranura que no es de producción, por ejemplo:
+### <a name="opt-users-in-toobeta-app"></a>Participación de los usuarios de aplicación toobeta
+toolet a los usuarios participar en aplicaciones de la versión beta de tooyour, conjunto Hola misma consulta toohello nombre del parámetro de la ranura de no producción de hello, por ejemplo:
 
         <webappname>.azurewebsites.net/?x-ms-routing-name=staging
 

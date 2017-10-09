@@ -1,6 +1,6 @@
 ---
-title: Uso de las funcionalidades de Cognitive en U-SQL para Azure Data Lake Analytics | Microsoft Docs
-description: "Obtenga información sobre cómo usar la inteligencia de las funcionalidades de Cognitive en U-SQL"
+title: "aaaUsing U-SQL cognitivos capacidades de análisis de Data Lake de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toouse Hola inteligencia de cognitivas capacidades de U-SQL"
 services: data-lake-analytics
 documentationcenter: 
 author: saveenr
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: saveenr
-ms.openlocfilehash: f77329f9838d6e824afa7234de90f62257a004de
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2c9ac71f490e929070fa0e72b93c3ffdb1ab243b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="tutorial-get-started-with-the-cognitive-capabilities-of-u-sql"></a>Tutorial: Introducción a las funcionalidades de Cognitive de U-SQL
+# <a name="tutorial-get-started-with-hello-cognitive-capabilities-of-u-sql"></a>Tutorial: Introducción con capacidades cognitivos Hola de U-SQL
 
-Las funcionalidades de Cognitive para U-SQL permiten a los desarrolladores usar inteligencia en sus programas de macrodatos. El proceso general es sencillo:
+Capacidades cognitivas para SQL U permiten toouse a los desarrolladores colocar inteligencia en sus programas de grandes cantidades de datos. Hola proceso general en simple:
 
-* Utilice la instrucción de REFERENCE ASSEMBLY para habilitar las características de Cognitive para el script de U-SQL.
-* Llame a la operación PROCESS para utilizar las funcionalidades de Cognitive 
+* Usar características cognitivas de Hola de tooenable ENSAMBLADO de referencia de instrucción de Hola para hello Script U-SQL
+* Llamar a la operación de procesamiento de Hola capacidades cognitivas de hello toouse 
 
 ## <a name="imaging-scenarios"></a>Escenarios de imágenes
 
 ### <a name="example-image-tagging"></a>Ejemplo: etiquetado de imágenes
 
-En el ejemplo siguiente se muestra un uso integral de las funcionalidades relacionadas con las imágenes para detectar objetos dentro de estas.
+Hola de ejemplo siguiente muestra un uso de-to-end de hello objetos de toodetect capacidades en las imágenes de la creación de imágenes.
 
     REFERENCE ASSEMBLY ImageCommon;
     REFERENCE ASSEMBLY FaceSdk;
@@ -44,7 +44,7 @@ En el ejemplo siguiente se muestra un uso integral de las funcionalidades relaci
         FROM @"/images/{FileName:*}.jpg"
         USING new Cognition.Vision.ImageExtractor();
 
-    // Extract the number of objects on each image and tag them 
+    // Extract hello number of objects on each image and tag them 
     @objects =
         PROCESS @imgs 
         PRODUCE FileName,
@@ -120,7 +120,7 @@ Suponga que tenemos una entrada que consta de "Guerra y Paz" por León Tolstói.
                 Text
         USING new Cognition.Text.KeyPhraseExtractor();
 
-    // Tokenize the key phrases.
+    // Tokenize hello key phrases.
     @kpsplits =
         SELECT No,
             Year,

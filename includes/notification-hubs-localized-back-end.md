@@ -2,7 +2,7 @@
 
 
 
-Cuando envía notificaciones de plantilla, solo es necesario proporcionar un conjunto de propiedades; en nuestro caso, enviaremos, por ejemplo, el conjunto de propiedades que contiene la versión localizada de las noticias de actualidad:
+Cuando se envían notificaciones de plantilla que solo necesita tooprovide un conjunto de propiedades, en nuestro caso enviaremos conjunto Hola de propiedades que contienen versiones localizadas de Hola de noticias de hello actual, por ejemplo:
 
     {
         "News_English": "World News in English!",
@@ -11,22 +11,22 @@ Cuando envía notificaciones de plantilla, solo es necesario proporcionar un con
     }
 
 
-En esta sección se muestra cómo enviar notificaciones con una aplicación de consola
+Esta sección se muestra cómo las notificaciones de toosend desde una aplicación de consola
 
-El código incluido se difunde tanto a los dispositivos de la Tienda Windows como a los iOS, dado que el back-end puede difundir a cualquiera de los dispositivos compatibles.
+Hola incluía código difusiones tooboth Windows almacén y dispositivos iOS, puesto que Hola back-end puede difundir tooany de dispositivos de hello admitida.
 
-### <a name="to-send-notifications-using-a-c-console-app"></a>Para enviar notificaciones mediante una aplicación de consola de C#
-Modifique el método `SendTemplateNotificationAsync` en la aplicación de consola que creó anteriormente con el código siguiente. Observe cómo en este caso no hay necesidad de enviar varias notificaciones para diferentes configuraciones regionales y plataformas.
+### <a name="toosend-notifications-using-a-c-console-app"></a>notificaciones de toosend mediante una aplicación de consola de C#
+Modificar hello `SendTemplateNotificationAsync` método de aplicación de consola de hello creado previamente con el siguiente código de hello. Observe cómo en este caso no hay ninguna necesidad de toosend varias notificaciones para distintas configuraciones regionales y plataformas.
 
         private static async void SendTemplateNotificationAsync()
         {
-            // Define the notification hub.
+            // Define hello notification hub.
             NotificationHubClient hub = 
                 NotificationHubClient.CreateClientFromConnectionString(
                     "<connection string with full access>", "<hub name>");
 
-            // Sending the notification as a template notification. All template registrations that contain 
-            // "messageParam" or "News_<local selected>" and the proper tags will receive the notifications. 
+            // Sending hello notification as a template notification. All template registrations that contain 
+            // "messageParam" or "News_<local selected>" and hello proper tags will receive hello notifications. 
             // This includes APNS, GCM, WNS, and MPNS template registrations.
             Dictionary<string, string> templateParams = new Dictionary<string, string>();
 
@@ -52,10 +52,10 @@ Modifique el método `SendTemplateNotificationAsync` en la aplicación de consol
         }
 
 
-Tenga en cuenta que esta simple llamada entregará la noticia localizada a **todos** los dispositivos, con independencia de la plataforma, puesto que el Centro de notificaciones crea y entrega la carga nativa correcta a todos los dispositivos suscritos a una etiqueta específica.
+Tenga en cuenta que esta llamada simple cumplirán lo fragmento localizada de Hola de noticias demasiado**todos los** los dispositivos, independientemente de la plataforma de hello, como el centro de notificaciones genera y entrega Hola correcto de dispositivos de carga nativo tooall Hola suscrito tooa etiqueta específica.
 
-### <a name="sending-the-notification-with-mobile-services"></a>Envío de la notificación con Servicios móviles
-En el programador de servicios móviles, puede usar el siguiente script:
+### <a name="sending-hello-notification-with-mobile-services"></a>Enviar notificación de hello con servicios móviles
+En el programador de servicio móvil, puede utilizar Hola siguiente secuencia de comandos:
 
     var azure = require('azure');
     var notificationHubService = azure.createNotificationHubService('<hub name>', '<connection string with full access>');

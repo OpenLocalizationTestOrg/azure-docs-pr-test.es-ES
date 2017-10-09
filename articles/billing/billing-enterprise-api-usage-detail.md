@@ -1,6 +1,6 @@
 ---
-title: "API de facturación de Azure Enterprise - Detalles de uso| Microsoft Docs"
-description: "Obtenga información sobre las API de RateCard y de uso de facturación de Azure que se usan para proporcionar información sobre el consumo de recursos y tendencias de Azure."
+title: "aaaAzure las API de empresa de facturación: obtener detalles de uso | Documentos de Microsoft"
+description: "Obtenga información acerca del uso de facturación de Azure y RateCard APIs, que son visiones tooprovide usado del consumo de recursos de Azure y tendencias."
 services: 
 documentationcenter: 
 author: aedwin
@@ -15,20 +15,20 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: aedwin
-ms.openlocfilehash: 5b49220e6eb27544dba54255ee88c56ad79c3141
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: def0805008261df5872f015db3d2b26e47d25569
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="reporting-apis-for-enterprise-customers---usage-details"></a>API de informes para clientes de Enterprise: detalles de uso
 
-La API de detalles de uso ofrece un desglose diario de cantidades consumidas y gastos estimados por una inscripción. El resultado también incluye información sobre instancias, medidores y departamentos. La API se puede consultar por período de facturación o por una fecha de inicio y finalización especificada. 
+Hola API de detalle de uso proporciona un desglose diario de cantidades consumidas y gastos estimados por una inscripción. resultado de Hello también incluye información sobre instancias, medidores y departamentos. Hola API se puede consultar por período de facturación o por una apertura especificada y la fecha de finalización. 
 ## <a name="consumption-apis"></a>API de consumo
 
 
 ##<a name="request"></a>Solicitud 
-Las propiedades de encabezado comunes que tienen que agregarse se especifican [aquí](billing-enterprise-api.md). Si no se especifica un período de facturación, se devuelven datos para el período de facturación actual. Los intervalos de tiempo personalizados pueden especificarse con los parámetros de fecha de inicio y finalización que están en formato aaaa-MM-dd. El intervalo de tiempo máximo compatible es de 36 meses.  
+Se especifican las propiedades de encabezado comunes que necesitan toobe agrega [aquí](billing-enterprise-api.md). Si no se especifica un período de facturación, a continuación, datos de facturación actual de Hola período se devuelven. Intervalos de tiempo personalizado se pueden especificar con inicio de Hola y terminar los parámetros de fecha que se encuentran en hello formato aaaa-MM-dd. intervalo de tiempo máximo que compatibles Hello es 36 meses.  
 
 |Método | URI de solicitud|
 |-|-|
@@ -37,12 +37,12 @@ Las propiedades de encabezado comunes que tienen que agregarse se especifican [a
 |GET|https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/usagedetailsbycustomdate?startTime=2017-01-01&endTime=2017-01-10|
 
 > [!Note]
-> Para usar la versión preliminar de la API, reemplace v2 por v1 en la dirección URL anterior.
+> versión de vista previa de hello toouse de API, reemplace v2 con v1 en hello por encima de la dirección URL.
 >
 
-## <a name="response"></a>Respuesta
+## <a name="response"></a>Response
 
-> Debido al volumen potencialmente grande de datos, se pagina el conjunto de datos. La propiedad nextLink, si está presente, especifica el vínculo de la página siguiente de datos. Si el vínculo está vacío, indica que es la última página. 
+> Pagar toohello volumen potencialmente grande de resultado de hello de datos se pagina conjunto. propiedad de nextLink Hello, si está presente, especifica vínculo Hola de página siguiente de Hola de datos. Si el vínculo de hello está vacío, indica que es Hola última página. 
 <br/>
 
     {
@@ -92,42 +92,42 @@ Las propiedades de encabezado comunes que tienen que agregarse se especifican [a
 
 |Nombre de propiedad| Tipo| Descripción
 |-|-|-|
-|id| cadena| El identificador único de la llamada API. |
-|data| Matriz JSON| La matriz de detalles de uso diario para cada instancia/medidor.|
-|nextLink| cadena| Cuando hay más páginas de datos, los puntos de nextLink de la dirección URL para devolver la siguiente página de datos. |
+|id| cadena| Hola identificador único para la llamada de API de Hola. |
+|data| Matriz JSON| Matriz de los detalles de uso diario para cada instance\meter Hola.|
+|nextLink| cadena| Cuando hay más páginas de datos Hola nextLink puntos toohello URL tooreturn Hola página siguiente de datos. |
 |accountId| int| Campo obsoleto. Presente por compatibilidad con versiones anteriores. |
 |productId| int| Campo obsoleto. Presente por compatibilidad con versiones anteriores. |
 |resourceLocationId| int| Campo obsoleto. Presente por compatibilidad con versiones anteriores. |
 |consumedServiceID| int| Campo obsoleto. Presente por compatibilidad con versiones anteriores. |
 |departmentId| int| Campo obsoleto. Presente por compatibilidad con versiones anteriores. |
-|accountOwnerEmail| cadena| Cuenta de correo electrónico del propietario de la cuenta. |
-|accountName| cadena| Nombre de cliente especificado de la cuenta. |
+|accountOwnerEmail| cadena| Cuenta de correo electrónico del propietario de la cuenta de hello. |
+|accountName| cadena| Nombre de cliente especificado de cuenta de hello. |
 |serviceAdministratorId| cadena| Dirección de correo electrónico del administrador de servicios. |
 |subscriptionId| int| Campo obsoleto. Presente por compatibilidad con versiones anteriores. |
-|subscriptionGuid| cadena| Identificador único global para la suscripción. |
-|subscriptionName| cadena| Nombre de la suscripción. |
-|fecha| cadena| Fecha en la que se produjo el consumo. |
-|product| cadena| Detalles adicionales sobre el medidor. Ejemplo: A1 (VM) Windows - Este de Asia Pacífico|
-|meterId| cadena| Identificador para el medidor que emitió la utilización. |
-|meterCategory| cadena| Servicio de la plataforma de Azure que se usó. |
-|meterSubCategory| cadena| Define el tipo de servicio de Azure que puede afectar a la tarifa. Ejemplo : VM A1 (no Windows)|
-|meterRegion| cadena| Identifica la ubicación del centro de datos para ciertos servicios cuyos precios se establecen según la ubicación del centro de datos. |
-|meterName| cadena| Nombre del medidor. |
-|consumedQuantity| double| Cantidad del medidor consumida. |
-|resourceRate| double| Tipo aplicable por unidad facturable. |
-|cost| double| El cargo que se ha aplicado para el medidor. |
-|resourceLocation| cadena| Identifica el centro de datos donde se está ejecutando el medidor. |
-|consumedService| cadena| Servicio de la plataforma de Azure que se usó. |
-|instanceId| cadena| Este identificador es el nombre del recurso o el identificador de recurso completo. Para más información, consulte [Azure Resource Manager API](https://docs.microsoft.com/rest/api/resources/resources) (API de Azure Resource Manager). |
+|subscriptionGuid| cadena| Identificador único global para la suscripción de Hola. |
+|subscriptionName| cadena| Nombre de suscripción de Hola. |
+|fecha| cadena| fecha de Hello en el que ocurrió el consumo. |
+|product| cadena| Detalles adicionales en el medidor de Hola. Ejemplo: A1 (VM) Windows - Este de Asia Pacífico|
+|meterId| cadena| identificador de Hello para el medidor de Hola que emite el uso. |
+|meterCategory| cadena| Hola servicio de la plataforma Windows Azure que se utilizó. |
+|meterSubCategory| cadena| Define el tipo de servicio de Azure de Hola que puede afectar a la velocidad de Hola. Ejemplo : VM A1 (no Windows)|
+|meterRegion| cadena| Identifica la ubicación de Hola de centro de datos de Hola para determinados servicios que tienen un precio en función de la ubicación de centro de datos. |
+|meterName| cadena| Nombre del contador de Hola. |
+|consumedQuantity| double| cantidad de Hola de medidor de Hola que se ha consumido. |
+|resourceRate| double| Hola aplicable por unidad facturable. |
+|cost| double| cargos de Hola que se ha incurrido para medidor Hola. |
+|resourceLocation| cadena| Identifica Hola centro de datos donde se está ejecutando medidor Hola. |
+|consumedService| cadena| Hola servicio de la plataforma Windows Azure que se utilizó. |
+|instanceId| cadena| Este identificador es el nombre de hello del recurso de Hola u Hola completo identificador de recurso. Para más información, consulte [Azure Resource Manager API](https://docs.microsoft.com/rest/api/resources/resources) (API de Azure Resource Manager). |
 |serviceInfo1| cadena| Metadatos de servicio de Azure interno. |
 |serviceInfo2| cadena| Por ejemplo, un tipo de imagen de una máquina virtual y un nombre de ISP para ExpressRoute. |
 |additionalInfo| cadena| Metadatos específicos del servicio. Por ejemplo, un tipo de imagen de una máquina virtual. |
 |etiquetas| cadena| Etiquetas agregadas del cliente. Para más información, consulte [Organize your Azure resources with tags](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-using-tags) (Organización de los recursos de Azure con etiquetas). |
 |storeServiceIdentifier| cadena| Esta columna no se utiliza. Presente por compatibilidad con versiones anteriores. |
-|departmentName| cadena| Nombre del departamento. |
-|costCenter| cadena| Centro de costo al que está asociada la utilización. |
-|unitOfMeasure| cadena| Identifica la unidad en que se cobra el servicio. Por ejemplo, GB, horas, 10 000 s. |
-|resourceGroup| cadena| Grupo de recursos en el que se ejecuta el medidor implementado. Para más información, consulte [Información general de Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). |
+|departmentName| cadena| Nombre del departamento de Hola. |
+|costCenter| cadena| Centro de costo de Hola que está asociado el uso de Hola. |
+|unitOfMeasure| cadena| Identifique la unidad Hola que se cobra servicio hello en. Por ejemplo, GB, horas, 10 000 s. |
+|resourceGroup| cadena| en qué Hola medidor implementada se ejecuta en el grupo de recursos de Hola. Para más información, consulte [Información general de Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). |
 <br/>
 ## <a name="see-also"></a>Otras referencias
 

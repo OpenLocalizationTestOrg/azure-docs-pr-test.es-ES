@@ -1,5 +1,5 @@
 ---
-title: "Procedimiento para crear una aplicación que pueda iniciar sesión cualquier usuario de Azure AD | Microsoft Docs"
+title: "aaaHow toobuild una aplicación que puede iniciar sesión en cualquier usuario de Azure AD | Documentos de Microsoft"
 description: "Instrucciones paso a paso para crear una aplicación que pueda iniciar la sesión de un usuario desde cualquier inquilino de Azure Active Directory, lo que se conoce también como aplicación multiempresa."
 services: active-directory
 documentationcenter: 
@@ -15,62 +15,61 @@ ms.workload: identity
 ms.date: 04/26/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: f1c79fa7e3b0e160487b5941741f6a6c677c6b81
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 123ea8125fa3c308ce0f124cc58e85ec28d476d5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-sign-in-any-azure-active-directory-ad-user-using-the-multi-tenant-application-pattern"></a>Inicio de sesión de cualquier usuario de Azure Active Directory (AD) mediante el patrón de aplicación multiempresa
-Si ofrece una aplicación de software como servicio a muchas organizaciones, puede configurar la aplicación para que acepte inicios de sesión de cualquier inquilino de Azure AD.  En Azure AD, esto se conoce como convertir su aplicación en una aplicación multiempresa.  Los usuarios de cualquier inquilino de Azure AD podrán iniciar sesión en su aplicación después de dar su consentimiento al uso de su cuenta con ella.  
+# <a name="how-toosign-in-any-azure-active-directory-ad-user-using-hello-multi-tenant-application-pattern"></a>¿Cómo toosign en cualquier usuario de Azure Active Directory (AD) mediante Hola patrón de aplicación de varios inquilinos
+Si ofrece un Software como un toomany de aplicación de servicio de las organizaciones, puede configurar sus aplicación tooaccept inicios de sesión desde cualquier inquilino de Azure AD.  En Azure AD, esto se conoce como convertir su aplicación en una aplicación multiempresa.  Los usuarios de cualquier inquilino de Azure AD será capaz de toosign en tooyour aplicación después de dar su consentimiento toouse su cuenta con la aplicación.  
 
-Si tiene una aplicación existente que tiene su propio sistema de cuenta o es compatible con otros tipos de inicio de sesión de otros proveedores de nube, es sencillo agregar el inicio de sesión de Azure AD desde cualquier inquilino. Solo tiene que registrar la aplicación, agregar el código de inicio de sesión a través de OAuth2, OpenID Connect o SAML e incluir el botón "Iniciar sesión con Microsoft" en la aplicación. Haga clic en el botón siguiente para más información sobre la personalización de marca de la aplicación.
+Si tiene una aplicación existente que tiene su propio sistema de cuenta o es compatible con otros tipos de inicio de sesión de otros proveedores de nube, es sencillo agregar el inicio de sesión de Azure AD desde cualquier inquilino. Solo tiene que registrar la aplicación, agregar el código de inicio de sesión a través de OAuth2, OpenID Connect o SAML e incluir el botón "Iniciar sesión con Microsoft" en la aplicación. Haga clic en hello después botón toolearn más información acerca de la aplicación de personalización de marca.
 
 [![Sign in button][AAD-Sign-In]][AAD-App-Branding]
 
-En este artículo se da por supuesto que ya está familiarizado con la creación de una aplicación de un solo inquilino para Azure AD.  Si no lo está, vuelva a la [página principal de la guía del desarrollador][AAD-Dev-Guide] y pruebe una de nuestras guías de inicio rápido.
+En este artículo se da por supuesto que ya está familiarizado con la creación de una aplicación de un solo inquilino para Azure AD.  Si no está, head respaldar toohello [página principal de guía para desarrolladores] [ AAD-Dev-Guide] y pruebe una de nuestras guías de inicio rápidos.
 
-Para convertir la aplicación en una aplicación multiempresa de Azure AD, siga estos cuatro sencillos pasos:
+Hay cuatro tooconvert sencillos pasos de la aplicación en una aplicación de varios inquilinos de Azure AD:
 
-1. Actualice el registro de aplicación para que sea multiempresa
-2. Actualice el código para enviar solicitudes al punto de conexión /common 
-3. Actualice el código para administrar varios valores issuer
+1. Actualizar al inquilino de varios de toobe de registro de aplicación
+2. Actualizar su/Common toohello de las solicitudes de código toosend extremo 
+3. Actualizar el código toohandle varios valores de emisor
 4. Comprenda el consentimiento de administrador y usuario y realice los cambios apropiados en el código
 
-Vamos a examinar cada paso con detalle. También puede ir directamente a [esta lista de ejemplos de multiinquilino][AAD-Samples-MT].
+Vamos a examinar cada paso con detalle. También puede saltar directamente demasiado[esta lista de ejemplos de varios inquilinos][AAD-Samples-MT].
 
-## <a name="update-registration-to-be-multi-tenant"></a>Actualización del registro para que sea multiempresa
-De forma predeterminada, los registros de API y de aplicación web en Azure son de un solo inquilino.  Para convertir su registro en multiinquilino, busque el conmutador "Multiinquilino" en la página de propiedades del registro de la aplicación en [Azure Portal][AZURE-portal] y establézcalo en "Sí".
+## <a name="update-registration-toobe-multi-tenant"></a>Actualizar a varios inquilinos de registro toobe
+De forma predeterminada, los registros de API y de aplicación web en Azure son de un solo inquilino.  Puede realizar el registro de varios inquilinos mediante la búsqueda de Hola "varios inquilinos" cambiar de página de propiedades de Hola de su registro de la aplicación Hola [portal de Azure] [ AZURE-portal] y si se establece demasiado "Sí".
 
-Tenga en cuenta que, para que la aplicación pueda convertirse en multiempresa, Azure AD requiere que el URI de id. de aplicación sea único a nivel global. El URI de id. de aplicación es una de las maneras en que una aplicación se identifica en los mensajes de protocolo.  Cuando la aplicación es de un solo inquilino, es suficiente con que el URI de id. de aplicación sea único en dicho inquilino.  En el caso de una aplicación multiempresa, debe ser único a nivel global de forma que Azure AD pueda encontrar la aplicación entre todos los inquilinos.  El carácter globalmente único viene impuesto por la necesidad de que el URI de id. de aplicación tenga un nombre de host que coincida con un dominio comprobado del inquilino de Azure AD.  Por ejemplo, si el nombre del inquilino era contoso.onmicrosoft.com, un identificador 
-URI de id. de aplicación válido sería `https://contoso.onmicrosoft.com/myapp`.  Si el inquilino tenía el dominio comprobado `contoso.com`, también sería un URI de id. de aplicación válido `https://contoso.com/myapp`.  La configuración de una aplicación como multiempresa dará error si el URI de id. de aplicación no sigue este patrón.
+También tenga en cuenta que para poder realizar una aplicación multiempresa, Azure AD necesita Hola App ID URI de hello aplicación toobe único global. Hola App ID URI es uno de los modos de hello que identifica a una aplicación en los mensajes de protocolo.  Para una aplicación de un solo inquilino, es suficiente para hello App ID URI toobe único dentro de ese inquilino.  Para una aplicación de varios inquilinos, debe ser único globalmente para que Azure AD pueda encontrar la aplicación hello entre todos los inquilinos.  Se aplica la unicidad global exigiendo Hola App ID URI toohave un nombre de host que coincida con un dominio comprobado del inquilino de Azure AD Hola.  Por ejemplo, si el nombre de hello del inquilino era contoso.onmicrosoft.com, a continuación, válido App ID URI sería `https://contoso.onmicrosoft.com/myapp`.  Si el inquilino tenía el dominio comprobado `contoso.com`, también sería un URI de id. de aplicación válido `https://contoso.com/myapp`.  Se producirá un error al configurar una aplicación como multiempresa si Hola App ID URI no sigue este patrón.
 
-Los registros de cliente nativo son multiempresa de forma predeterminada.  No es necesario realizar ninguna acción para convertir un registro de aplicación cliente nativa en multiempresa.
+Los registros de cliente nativo son multiempresa de forma predeterminada.  No es necesario tootake cualquier toomake acción cliente nativo aplicación registro de varios inquilinos.
 
-## <a name="update-your-code-to-send-requests-to-common"></a>Actualización del código para enviar solicitudes a /common
-En una aplicación de un solo inquilino, las solicitudes de inicio de sesión se envían al punto de conexión de inicio de sesión del inquilino. Por ejemplo, para contoso.onmicrosoft.com, el punto de conexión sería:
+## <a name="update-your-code-toosend-requests-toocommon"></a>Actualizar el código toosend solicitudes demasiado/comunes
+En una aplicación de un solo inquilino, las solicitudes de inicio de sesión se envían inicio de sesión de extremo del inquilino de toohello. Por ejemplo, para contoso.onmicrosoft.com extremo Hola sería:
 
     https://login.microsoftonline.com/contoso.onmicrosoft.com
 
-Las solicitudes enviadas al punto de conexión de un inquilino pueden iniciar la sesión de los usuarios (o invitados) de ese inquilino en las aplicaciones de dicho inquilino.  Con una aplicación multiempresa, la aplicación no sabe de antemano de qué inquilino procede el usuario, así que no puede enviar solicitudes al punto de conexión de uno de los inquilinos.  En su lugar, las solicitudes se envían a un punto de conexión que las multiplexa en todos los inquilinos de Azure AD:
+Las solicitudes se envían el extremo del inquilino de tooa puede iniciar sesión en los usuarios (o invitados) en ese tooapplications inquilino en ese inquilino.  Con una aplicación de varios inquilinos, no sabe la aplicación hello por adelantado qué usuario Hola de inquilinos es, por lo que no se puede enviar solicitudes de punto de conexión del inquilino de tooa.  En su lugar, las solicitudes se envían extremo tooan que multiplexes entre AD de Azure todos los inquilinos:
 
     https://login.microsoftonline.com/common
 
-Cuando Azure AD recibe una solicitud en el punto de conexión /common, inicia la sesión del usuario y, como consecuencia, detecta cuál es el inquilino del que procede.  El punto de conexión /common funciona con todos los protocolos de autenticación compatibles con Azure AD: OpenID Connect, OAuth 2.0, SAML 2.0 y WS-Federation.
+Cuando Azure AD recibe una solicitud en hello/extremo común, inicia la sesión de usuario de hello en y como consecuencia detecta que el usuario inquilino Hola pertenece.  Hola/extremo común funciona con todos los protocolos de autenticación de hello compatibles con Azure AD: OpenID Connect, OAuth 2.0, SAML 2.0 y WS-Federation.
 
-La respuesta de inicio de sesión a la aplicación contiene un token que representa al usuario.  El valor issuer del token indica a una aplicación el inquilino del que procede el usuario.  Cuando el punto de conexión /common devuelva una respuesta, el valor issuer del token corresponderá al inquilino del usuario.  Es importante advertir que el punto de conexión /common no es un inquilino ni un emisor, sino un multiplexador.  Para tener esto en cuenta, la lógica de la aplicación para validar los tokens debe estar actualizada al utilizar /common. 
+aplicación de toohello de respuesta de inicio de sesión de Hello, a continuación, contiene un token que representa el usuario de Hola.  valor de emisor de Hello en el token de hello indica que una aplicación qué usuario Hola de inquilinos es de.  Cuando devuelve una respuesta de Hola/extremo común, valor de emisor de hello en el token de hello corresponderá a inquilino del usuario toohello.  Es importante toonote Hola/extremo común no es un inquilino y no es un emisor, es simplemente un multiplexor.  Cuando se utiliza/Common, lógica de hello en los tokens de toovalidate de aplicación debe toobe actualiza tootake esto en cuenta. 
 
-Como se mencionó anteriormente, las aplicaciones multiinquilino también deben proporcionar una experiencia coherente de inicio de sesión para los usuarios, que se ajuste a las directrices de personalización de marca de la aplicación de Azure AD. Haga clic en el botón siguiente para más información sobre la personalización de marca de la aplicación.
+Como las aplicaciones de varios inquilinos mencionadas anteriormente, también deben proporcionar una experiencia de inicio de sesión coherente para los usuarios, siguiente Hola directrices de personalización de marca de aplicación de Azure AD. Haga clic en hello después botón toolearn más información acerca de la aplicación de personalización de marca.
 
 [![Sign in button][AAD-Sign-In]][AAD-App-Branding]
 
-Echemos un vistazo detenidamente a la utilización del punto de conexión más común y a la implementación de código.
+¡Eche un vistazo a la utilice Hola de/Common Hola punto de conexión y su implementación en el código con más detalle.
 
-## <a name="update-your-code-to-handle-multiple-issuer-values"></a>Actualice el código para administrar varios valores issuer
+## <a name="update-your-code-toohandle-multiple-issuer-values"></a>Actualizar el código toohandle varios valores de emisor
 Las aplicaciones web y las API web reciben y validan los tokens desde Azure AD.  
 
 > [!NOTE]
-> Si bien las aplicaciones cliente nativas solicitan y reciben tokens de Azure AD, lo hacen para enviarlos a las API, donde se validan.  Las aplicaciones nativas no validan los tokens y deben tratarlos como opacos.
+> Mientras que las aplicaciones cliente nativas solicitar y reciban tokens de Azure AD, lo hacen toosend por lo que les tooAPIs, en el que se validarán.  Las aplicaciones nativas no validan los tokens y deben tratarlos como opacos.
 > 
 > 
 
@@ -78,106 +77,106 @@ Veamos cómo una aplicación valida los tokens que recibe de Azure AD.  Una apli
 
     https://login.microsoftonline.com/contoso.onmicrosoft.com
 
-y lo usará para crear una URL de metadatos (en este caso, OpenID Connect) como:
+y use tooconstruct como una dirección URL de metadatos (en este caso, OpenID Connect):
 
     https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration
 
-para descargar dos tipos de información esenciales que se usan para validar los tokens: las claves de firma del inquilino y el valor issuer.  Cada inquilino de Azure AD tiene un valor issuer único con la forma:
+partes esenciales toodownload dos de información que son utilizados toovalidate tokens: inquilino Hola de firma de claves y el valor del emisor.  Cada inquilino de Azure AD tiene un valor único del emisor del formulario de hello:
 
     https://sts.windows.net/31537af4-6d77-4bb9-a681-d2394888ea26/
 
-donde el valor de GUID es la versión segura de cambio de nombre del id. del inquilino.  Si hace clic en el vínculo de metadatos anterior en `contoso.onmicrosoft.com`, puede ver este valor issuer en el documento.
+donde el valor GUID de hello es versión de Hola seguro para cambiar el nombre de identificador del inquilino Hola de Hola.  Si hace clic en hello anterior vínculo de metadatos para `contoso.onmicrosoft.com`, puede ver este valor del emisor en el documento de Hola.
 
-Cuando una aplicación de un solo inquilino valida un token, comprueba la firma del token con las claves de firma del documento de metadatos. Esto le permite asegurarse de que el valor issuer del token coincide con el que se encuentran en el documento de metadatos.
+Cuando una aplicación de un solo inquilino valida un token, comprueba la firma de hello del token de hello contra Hola claves de documento de metadatos de Hola de firma. Esto le permite toomake que el valor de emisor Hola Hola coincidencias token Hola uno que se encontró en el documento de metadatos de Hola.
 
-Como el punto de conexión /common no corresponde a un inquilino y no es un emisor, cuando examine el valor issuer en los metadatos de /common tendrá una URL con plantilla en lugar de un valor real:
+Desde Hola/comunes punto de conexión no corresponde a tooa inquilino y no es un emisor, al examinar el valor de emisor de hello en los metadatos de Hola para/común tiene una dirección URL basada en plantilla en lugar de un valor real:
 
     https://sts.windows.net/{tenantid}/
 
-Por lo tanto, una aplicación multiempresa no puede validar los tokens simplemente haciendo coincidir el valor issuer de los metadatos con el valor `issuer` del token.  Una aplicación multiempresa necesita una lógica para decidir qué valores issuer son válidos y cuáles no, según la parte del id. de inquilino del valor issuer.  
+Por lo tanto, una aplicación de varios inquilinos no puede validar los tokens simplemente comparando el valor de emisor de hello en los metadatos de hello con hello `issuer` valor de token de Hola.  Una aplicación multiempresa necesidades de lógica toodecide qué valores de emisor son válidos y que están no, tomando como base el inquilino de hello parte del identificador del valor de emisor de Hola.  
 
-Por ejemplo, si una aplicación multiinquilino solo permite el inicio de sesión desde inquilinos específicos que se han registrado para su servicio, debe comprobar el valor issuer o el valor de notificación `tid` en el token para asegurarse de que el inquilino se encuentra en su lista de suscriptores.  Si una aplicación multiempresa solo trata con individuos y no toma ninguna decisión de acceso basada en los inquilinos, puede omitir completamente el valor issuer.
+Por ejemplo, si una aplicación de varios inquilinos solo permite iniciar sesión de inquilinos específicos que se suscribieron para su servicio, a continuación, debe comprobar el valor del emisor de Hola o hello `tid` valor en hello token toomake seguro de ese inquilino está en su lista de notificación suscriptores.  Si una aplicación multiempresa sólo trabaja con usuarios y no tiene ninguna decisión relativa al acceso en función de los inquilinos, a continuación, puede omitir el valor del emisor de Hola por completo.
 
-En los ejemplos de multiinquilino de la sección [Contenido relacionado](#related-content) al final de este artículo, la validación del emisor está deshabilitada para permitir que cualquier inquilino de Azure AD inicie sesión.
+En los ejemplos de varios inquilinos de Hola Hola [Related Content](#related-content) sección Hola final de este artículo, la validación del emisor está deshabilitado tooenable cualquier toosign del inquilino de Azure AD en.
 
-Ahora veamos la experiencia para los usuarios que inician sesión en aplicaciones multiempresa.
+Ahora Echemos un vistazo a la experiencia del usuario de Hola para los usuarios que inician sesión en las aplicaciones de inquilinos toomulti.
 
 ## <a name="understanding-user-and-admin-consent"></a>Comprensión del consentimiento de usuario y administrador
-Para que un usuario inicie sesión en una aplicación en Azure AD, la aplicación debe estar representada en el inquilino del usuario.  Esto permite que la organización realice cosas como aplicar directivas únicas cuando los usuarios de su inquilino inician sesión en la aplicación.  Para una aplicación de un solo inquilino, este registro es sencillo; es lo que sucede cuando registra la aplicación en [Azure Portal][AZURE-portal].
+Para toosign de usuario en la aplicación tooan en Azure AD, aplicación hello debe estar representado en el inquilino del usuario de Hola.  Esto permite organizar de hello toodo cosas como aplicar directivas únicas cuando los usuarios de su inquilino de sesión en la aplicación toohello.  En una aplicación de un solo inquilino, este registro es simple; ha Hola uno que se produce al registrar la aplicación hello en hello [portal de Azure][AZURE-portal].
 
-Para una aplicación multiempresa, el registro inicial de la aplicación reside en el inquilino de Azure AD utilizado por el desarrollador.  Cuando usuarios de otro inquilino inician sesión en la aplicación por primera vez, Azure AD les pide que den su consentimiento a los permisos solicitados por ella.  Si aceptan, se crea una representación de la aplicación llamada *entidad de servicio* en el inquilino del usuario, y el inicio de sesión puede continuar. También se crea una delegación en el directorio que registra el consentimiento del usuario a la aplicación. Para más información sobre los objetos Application y ServicePrincipal y cómo se relacionan entre sí, consulte [Objetos Application y objetos ServicePrincipal][AAD-App-SP-Objects].
+Para una aplicación de varios inquilinos, Hola inicial en el registro para aplicación hello vive en hello inquilino de Azure AD utilizada Hola programador.  Cuando un usuario de un inquilino diferente inicia sesión en la aplicación de toohello para hello primera vez, Azure AD les pide tooconsent toohello permisos solicitados por la aplicación hello.  Si dar el consentimiento, a continuación, llama a una representación de la aplicación hello un *entidad de servicio* se crea en Hola inquilino del usuario y en el inicio de sesión puede continuar. También se crea una delegación en directorio de Hola que registra la aplicación de toohello de consentimiento del usuario de Hola. Vea [objetos de entidad de servicio y aplicación] [ AAD-App-SP-Objects] para obtener más información sobre la aplicación hello objetos Application y ServicePrincipal, y cómo se relacionan tooeach otro.
 
-![Consentimiento para aplicaciones de nivel sencillo][Consent-Single-Tier] 
+![Aplicación de toosingle-nivel de consentimiento][Consent-Single-Tier] 
 
-Esta experiencia de consentimiento depende de los permisos solicitados por la aplicación.  Azure AD admite dos clases de permisos, solo de aplicación o delegado:
+Esta experiencia de consentimiento se ve afectada por permisos de hello solicitados por la aplicación hello.  Azure AD admite dos clases de permisos, solo de aplicación o delegado:
 
-* Un permiso delegado concede a una aplicación la posibilidad de actuar como un usuario que inicia sesión para un subconjunto de las cosas que el usuario puede hacer.  Por ejemplo, puede conceder a una aplicación el permiso delegado para leer el calendario del usuario que ha iniciado la sesión.
-* Un permiso de aplicación se concede directamente a la identidad de la aplicación.  Por ejemplo, puede conceder a una aplicación el permiso de solo aplicación para leer la lista de usuarios de un inquilino, con independencia de quién haya iniciado sesión en la aplicación.
+* Un permiso delegado concede un tooact de capacidad de aplicación Hola pueda realizar un usuario con sesión iniciada para un subconjunto de usuario de hello cosas Hola.  Por ejemplo, puede conceder a una aplicación Hola permisos delegados tooread Hola firmado en el calendario del usuario.
+* Se concede un permiso de solo de aplicación directamente toohello identidad de aplicación hello.  Por ejemplo, puede conceder una lista de hello aplicación Hola permiso de solo aplicación tooread de usuarios en un inquilino, sin tener en cuenta que ha iniciado sesión en la aplicación toohello.
 
-Algunos permisos pueden tener el consentimiento de un usuario normal, mientras que otros necesitan el del administrador del inquilino. 
+Algunos permisos pueden ser tooby con consentimiento de un usuario normal, mientras que otras requieren el consentimiento del Administrador de inquilinos. 
 
 ### <a name="admin-consent"></a>Consentimiento de administrador
-Los permisos de solo aplicación siempre requieren el consentimiento del administrador de inquilinos.  Si la aplicación solicita un permiso de solo aplicación y un usuario intenta iniciar sesión en la aplicación, aparecerá un mensaje de error que indica que el usuario no puede dar su consentimiento.
+Los permisos de solo aplicación siempre requieren el consentimiento del administrador de inquilinos.  Si la aplicación solicita un permiso de solo de aplicación y un usuario intenta toosign en toohello aplicación, se mostrará un mensaje de error que indica que el usuario de hello no es capaz de tooconsent.
 
-Algunos permisos delegados también requieren el consentimiento del administrador de inquilinos.  Por ejemplo, la posibilidad de reescribir en Azure AD como el usuario que ha iniciado la sesión requiere el consentimiento del administrador de inquilinos.  Al igual que los permisos de solo aplicación, si un usuario ordinario intenta iniciar sesión en una aplicación que solicita un permiso delegado que requiere el consentimiento del administrador, la aplicación recibirá un error.  Que un permiso requiera o no el consentimiento del administrador viene determinado por el desarrollador que publica el recurso, y se puede encontrar en la documentación del recurso.  En la sección [Contenido relacionado](#related-content) de este artículo se pueden encontrar vínculos que describen los permisos disponibles para la API de Azure AD Graph.
+Algunos permisos delegados también requieren el consentimiento del administrador de inquilinos.  Por ejemplo, hello capacidad toowrite atrás tooAzure AD como Hola firmado en usuario requiere consentimiento del Administrador de inquilinos.  Como los permisos de solo de aplicación, si trata de un usuario normal toosign en la aplicación de tooan que solicita un permiso delegado que requiere el consentimiento del administrador, la aplicación recibirá un error.  Si un permiso requiere consentimiento del administrador viene determinado por el desarrollador de Hola que publican los recursos de Hola y puede encontrarse en la documentación de hello para el recurso de Hola.  Vincula tootopics que describe los permisos disponibles de Hola para hello Azure AD Graph API y la API de Graph de Microsoft son Hola [Related Content](#related-content) sección de este artículo.
 
-Si la aplicación usa permisos que requieren el consentimiento del administrador, necesita tener un gesto, como un botón o un vínculo donde el administrador pueda iniciar la acción.  La solicitud que la aplicación envía para esta acción es una solicitud de autorización habitual de OAuth2 o OpenID Connect, pero también incluye el parámetro de cadena de consulta `prompt=admin_consent` .  Una vez que el administrador ha dado su consentimiento y la entidad de servicio se crea en el inquilino del cliente, las posteriores solicitudes de inicio de sesión no necesitan el parámetro `prompt=admin_consent`. Dado que el administrador ha decido que los permisos solicitados son aceptables, en adelante no se solicitará consentimiento a ningún otro usuario.
+Si la aplicación usa los permisos que requieren el consentimiento del administrador, deberá toohave un movimiento como un botón o vínculo que Hola, administrador puede iniciar la acción de Hola.  solicitud de Hello envía su aplicación para esta acción es una solicitud de autorización de OAuth2/OpenID Connect habitual, pero que también incluye hello `prompt=admin_consent` parámetro de cadena de consulta.  Una vez que ha dado su consentimiento Hola, administrador y entidad de servicio de Hola se crea en el inquilino del cliente de hello, las solicitudes de inicio de sesión posteriores no es necesario hello `prompt=admin_consent` parámetro. Puesto que ha decidido administrador Hola Hola solicita permisos son aceptables, ningún otro usuario de inquilino de hello le pedirá su consentimiento a partir de ese punto.
 
-El parámetro `prompt=admin_consent` también se puede utilizar en las aplicaciones que solicitan permisos que no requieren el consentimiento del administrador. Esto se hace cuando la aplicación requiere una experiencia en la que el administrador del inquilino se "registra" una vez, y no se solicita a otros usuarios que den su consentimiento a partir de entonces.
+Hola `prompt=admin_consent` parámetro también se puede utilizar con las aplicaciones que solicitan permisos que no se requiere el consentimiento del administrador. Esto se hace cuando la aplicación hello requiere una experiencia donde un administrador de inquilinos Hola "se suscribe" uno se piden a los usuarios de tiempo y ninguna otros consentimiento desde ese punto en.
 
-Si una aplicación requiere el consentimiento del administrador y un administrador inicia sesión, pero no se envía el parámetro `prompt=admin_consent`, el administrador da su consentimiento correctamente a la aplicación **solo para su cuenta de usuario**.  Los usuarios normales seguirán sin poder iniciar sesión y dar su consentimiento a la aplicación.  Esto resulta útil si quiere dar al administrador de inquilinos la posibilidad de explorar la aplicación antes de permitir el acceso a otros usuarios.
+Si una aplicación requiere el consentimiento del administrador y un administrador inicia sesión en pero hello `prompt=admin_consent` parámetro no se envía, Hola, administrador correctamente dar su consentimiento aplicación toohello **únicamente para su cuenta de usuario**.  Los usuarios regulares todavía no estará pueda toosign en y aplicación toohello de consentimiento.  Esto es útil si desea que Administrador de inquilinos de toogive Hola Hola capacidad tooexplore la aplicación antes de permitir el acceso a otros usuarios.
 
-Un administrador de inquilinos puede deshabilitar la posibilidad de que los usuarios normales den su consentimiento a las aplicaciones.  En este caso, para que la aplicación se instale en el inquilino siempre se solicitará el consentimiento del administrador.  Si quiere probar la aplicación con el consentimiento de usuarios normales deshabilitado, puede encontrar el conmutador de configuración en la sección de configuración de inquilinos de Azure AD de [Azure Portal][AZURE-portal].
+Un administrador de inquilinos puede deshabilitar la capacidad de Hola para los usuarios regulares tooconsent tooapplications.  Si se deshabilita esta capacidad, siempre es necesario para hello toobe de aplicación configurado en el inquilino de hello consentimiento del administrador.  Si desea que tootest su aplicación con consentimiento de usuario normal deshabilitada, encontrará modificador de configuración de hello en inquilino de Azure AD Hola sección de configuración del programa Hola a [portal de Azure][AZURE-portal].
 
 > [!NOTE]
-> En algunas aplicaciones se busca una experiencia en la que los usuarios normales puedan dar su consentimiento inicialmente; más tarde, se puede hacer partícipe al administrador y solicitar permisos que requieran su consentimiento.  Esto no hay forma de hacerlo actualmente con un solo registro de aplicación en Azure AD.  El punto de conexión de Azure AD v2 que se lanzará próximamente permitirá que las aplicaciones soliciten permisos en tiempo de ejecución, en lugar de en el momento del registro, lo que permitirá este escenario.  Para más información, consulte la [Guía del desarrollador para el modelo de aplicaciones v2 de Azure AD][AAD-V2-Dev-Guide].
+> Algunas aplicaciones desea una experiencia donde los usuarios normales son tooconsent capaz de inicialmente, y puede incluir la aplicación hello posterior administrador hello y solicitar los permisos que requieren el consentimiento del administrador.  No hay ningún toodo de manera esto con un registro de aplicación único en Azure AD hoy en día.  el punto de conexión de Hello próximo AD Azure v2 le permitirá aplicaciones toorequest permisos en tiempo de ejecución, en lugar de en tiempo de registro, lo que le permitirá este escenario.  Para obtener más información, vea hello [guía para desarrolladores de modelo de aplicación de Azure AD v2][AAD-V2-Dev-Guide].
 > 
 > 
 
 ### <a name="consent-and-multi-tier-applications"></a>Consentimiento y aplicaciones de niveles múltiples
-La aplicación puede tener varios niveles, cada uno representado por su propio registro en Azure AD.  Por ejemplo, una aplicación nativa que llama a una API web o una aplicación web que llama a una API web.  En ambos casos, el cliente (aplicación nativa o aplicación web) solicita permisos para llamar al recurso (API web).  Para que la aplicación nativa o la aplicación web se acepten correctamente como inquilinos del cliente, todos los recursos a los que solicitan permisos deben ya existir en el inquilino del cliente.  Si no se cumple esta condición, Azure AD devolverá un error indicando que primero se debe agregar el recurso.
+La aplicación puede tener varios niveles, cada uno representado por su propio registro en Azure AD.  Por ejemplo, una aplicación nativa que llama a una API web o una aplicación web que llama a una API web.  En ambos casos, cliente de hello (aplicación nativa o una aplicación web) solicita recursos Hola de toocall permisos (API de web).  Para hello cliente toobe aceptada correctamente en el inquilino de un cliente, todos los toowhich de recursos solicita permisos ya debe existir en el inquilino del cliente de Hola.  Si no se cumple esta condición, Azure AD devolverá un error que Hola recursos debe agregarse en primer lugar.
 
 **Múltiples niveles en un solo inquilino**
 
-Esto puede ser un problema si la aplicación lógica consta de dos o más registros de aplicación, por ejemplo, un cliente y un recurso independientes.  ¿Cómo se convierte primero el recurso en el inquilino del cliente?  Azure AD aborda este caso al habilitar el consentimiento del cliente y del recurso en un solo paso. El usuario ve la suma total de los permisos solicitados por el cliente y el recurso en la página de consentimiento.  Para permitir este comportamiento, el registro de la aplicación del recurso debe incluir el id. de aplicación del cliente como un elemento `knownClientApplications` en su manifiesto de aplicación.  Por ejemplo:
+Esto puede ser un problema si la aplicación lógica consta de dos o más registros de aplicación, por ejemplo, un cliente y un recurso independientes.  ¿Cómo se consigue recursos hello en el inquilino de cliente hello primera?  Azure AD trata este caso habilitando el cliente y el recurso toobe consentido en un solo paso. usuario de Hello ve la suma total de Hola de permisos de Hola solicitados por el cliente de Hola y recursos en la página de consentimiento de Hola.  tooenable este comportamiento, registro de la aplicación del recurso de Hola debe incluir el identificador de aplicación del cliente de Hola como un `knownClientApplications` en su manifiesto de aplicación.  Por ejemplo:
 
     knownClientApplications": ["94da0930-763f-45c7-8d26-04d5938baab2"]
 
-Esta propiedad se puede actualizar a través del [manifiesto de la aplicación][AAD-App-Manifest] del recurso. Esto se demuestra en un ejemplo de llamada a la API web de un cliente nativo de niveles múltiples en la sección [Contenido relacionado](#related-content) al final de este artículo. En el diagrama siguiente se ofrece información general sobre el consentimiento de una aplicación de niveles múltiples registrada en un solo inquilino:
+Esta propiedad se puede actualizar a través de recursos de hello [manifiesto de la aplicación][AAD-App-Manifest]. Esto se muestra en un cliente nativo de nivel múltiples llamar al ejemplo de API web de hello [Related Content](#related-content) sección Hola final de este artículo. Hello siguiente diagrama proporciona una visión general de consentimiento para una aplicación de varios nivel registrada en un solo inquilino:
 
-![Consentimiento para aplicaciones cliente conocidas con niveles múltiples][Consent-Multi-Tier-Known-Client] 
+![Aplicación de cliente conocidas de toomulti nivel de consentimiento][Consent-Multi-Tier-Known-Client] 
 
 **Múltiples niveles en varios inquilinos**
 
-Un caso parecido tiene lugar si los diferentes niveles de una aplicación se registran en distintos inquilinos.  Por ejemplo, considere el caso de la creación de una aplicación cliente nativa que llama a la API de Office 365 Exchange Online.  Para desarrollar la aplicación nativa y, más tarde, para que se ejecute en el inquilino de un cliente, la entidad de servicio de Exchange Online debe existir.  En este caso, el desarrollador y el cliente tienen que comprar Exchange Online para que la entidad de servicio se cree en sus inquilinos.  
+Un caso similar se produce si se ha registrado distintos niveles de una aplicación de hello en varios inquilinos.  Por ejemplo, considere el caso de hello de la creación de una aplicación cliente nativa que llama Hola API de Office 365 Exchange Online.  toodevelop Hola nativos aplicaciones y versiones posteriores para toorun de la aplicación nativa de hello en el inquilino de un cliente, de entidad de servicio de Exchange Online de hello debe estar presente.  En este caso, hello desarrollador y el cliente deben adquirir Exchange Online para toobe principal del servicio Hola creado en sus inquilinos.  
 
-En el caso de una API creada por una organización que no sea Microsoft, el desarrollador de la API debe proporcionar una forma de que sus clientes acepten dar su consentimiento a la aplicación en los inquilinos del cliente. El diseño recomendado tiene la finalidad de que el desarrollador de terceros cree la API de tal forma que también pueda funcionar como un cliente web para implementar el registro:
+En caso de hello de una API generada por una organización que no sea de Microsoft, el desarrollador de Hola de hello API debe tooprovide una manera para su aplicación de los clientes tooconsent hello en los inquilinos de sus clientes. Hola recomienda diseño es para Hola 3ª parte developer toobuild Hola API tal que también puede funcionar como un inicio de sesión de tooimplement de cliente web:
 
-1. Consulte las secciones anteriores para asegurarse de que la API implementa los requisitos de código y el registro de aplicaciones multiinquilino.
-2. Además de exponer los roles y ámbitos de la API, asegúrese de que el registro incluye el permiso predeterminado de Azure AD "Iniciar sesión y leer el perfil del usuario".
-3. Implemente una página de inicio de sesión o registro en el cliente web, según las instrucciones para el [consentimiento del administrador](#admin-consent) expuestas anteriormente. 
-4. Una vez que el usuario da su consentimiento a la aplicación, se crean los vínculos a la delegación de consentimiento y a la entidad de servicio en el inquilino, y la aplicación nativa puede obtener tokens para la API.
+1. Siga Hola Hola de tooensure secciones anterior API implementa los requisitos / código de registro de aplicación de varios inquilinos de Hola
+2. Además tooexposing Hola API ámbitos o roles, asegúrese de registro de hello incluye Hola "iniciar sesión y leer el perfil de usuario" permiso de Azure AD (proporcionada de forma predeterminada)
+3. Implementar una página de inicio de sesión-en/sesión-up en el cliente web de hello, después de hello [consentimiento del administrador](#admin-consent) guía se ha descrito anteriormente 
+4. Una vez que la aplicación toohello de consentimiento del usuario de hello, hello servicio principal y consentimiento delegación se crean los vínculos en su inquilino y aplicación nativa de hello puede obtener tokens para hello API
 
-En el diagrama siguiente se ofrece información general sobre el consentimiento de una aplicación de múltiples niveles registrada en diferentes inquilinos:
+Hola siguiente diagrama proporciona una introducción de consentimiento para una aplicación de varios nivel registrada en distintos inquilinos:
 
-![Consentimiento para aplicaciones de terceros con niveles múltiples][Consent-Multi-Tier-Multi-Party] 
+![Aplicación de varias parte de toomulti-nivel de consentimiento][Consent-Multi-Tier-Multi-Party] 
 
 ### <a name="revoking-consent"></a>Revocación del consentimiento
-Los usuarios y administradores pueden revocar el consentimiento a la aplicación en cualquier momento:
+Los usuarios y administradores pueden revocar el consentimiento tooyour aplicación en cualquier momento:
 
-* Los usuarios revocan el acceso a aplicaciones individuales quitándolas de su lista [Aplicaciones del panel de acceso][AAD-Access-Panel].
-* Los administradores revocan el acceso a las aplicaciones quitándolas de Azure AD mediante la sección de administración de Azure AD de [Azure Portal][AZURE-portal].
+* Las aplicaciones de access tooindividual revoke de los usuarios mediante la eliminación de sus [aplicaciones de Panel de acceso] [ AAD-Access-Panel] lista.
+* Los administradores de revocación el acceso tooapplications quitándolos de Azure AD utilizando la sección de administración de hello Azure AD de hello [portal de Azure][AZURE-portal].
 
-Si un administrador da su consentimiento a una aplicación que incluye a todos los usuarios de un inquilino, los usuarios no pueden revocar el acceso de forma individual.  Solo el administrador puede revocar el acceso y solo para la aplicación entera.
+Si un administrador consiente tooan aplicación para todos los usuarios en un inquilino, los usuarios no pueden revocar el acceso individualmente.  Solo el Administrador de hello puede revocar el acceso y solo para toda aplicación Hola.
 
 ### <a name="consent-and-protocol-support"></a>Compatibilidad con el consentimiento y los protocolos
-El consentimiento se admite en Azure AD mediante los protocolos OAuth, OpenID Connect, WS-Federation y SAML.  Los protocolos SAML y WS-Federation no admiten el parámetro `prompt=admin_consent` , de modo que el consentimiento solo es posible mediante OAuth y OpenID Connect.
+Consentimiento se admite en Azure AD a través de hello OAuth, OpenID Connect, WS-Federation y protocolos SAML.  Hello protocolos SAML y WS-Federation no admiten hello `prompt=admin_consent` parámetro, por lo que solo es posible a través de OAuth y OpenID Connect de consentimiento del administrador.
 
 ## <a name="multi-tenant-applications-and-caching-access-tokens"></a>Aplicaciones multiempresa y almacenamiento en caché de los tokens de acceso
-Las aplicaciones multiempresa también pueden obtener tokens de acceso para llamar a las API que están protegidas por Azure AD.  Un error común al usar la biblioteca de autenticación de Active Directory (ADAL) con una aplicación multiempresa es solicitar inicialmente un token para un usuario que utiliza /common, recibir una respuesta y, luego, solicitar posteriormente un token para ese mismo usuario también mediante /common.  Dado que la respuesta de Azure AD proviene de un inquilino, y no de /common, ADAL almacena en caché el token como si fuera el inquilino. La posterior llamada a /common para obtener un token de acceso para el usuario carece de la entrada de caché, y se pide al usuario que inicie la sesión de nuevo.  Para evitar la pérdida de la caché, asegúrese de que las posteriores llamadas para un usuario que ya ha iniciado sesión se realizan al punto de conexión del inquilino.
+Aplicaciones de varios inquilinos también pueden obtener toocall de tokens de acceso a las API que están protegidas por Azure AD.  Un error común al utilizar Hola biblioteca de autenticación de Active Directory (ADAL) con una aplicación de varios inquilinos, es tooinitially solicitud un token para un usuario con/Common, recibir una respuesta y solicitar un token posterior para ese mismo usuario también usa/Common.  Puesto que la respuesta de Hola de Azure AD procede de un inquilino, no/común, AAL almacena en memoria caché de token de hello como procedente de inquilino de Hola. Hola subsiguientes, llame a tooget demasiado común o un token de acceso de entrada de caché de Hola de errores de usuario de Hola y Hola usuario vuelve a estar toosign solicitada en.  tooavoid falta memoria caché de hello, asegúrese de que seguidamente para un usuario de la sesión ya iniciada se realizan llamadas extremo del inquilino de toohello.
 
 ## <a name="next-steps"></a>Pasos siguientes
-En este artículo ha aprendido a crear una aplicación que puede hacer que un usuario inicie sesión desde cualquier inquilino de Azure Active Directory. Después de habilitar el inicio de sesión único entre la aplicación y Azure Active Directory, también puede actualizar la aplicación para acceder a las API expuestas por recursos de Microsoft como Office 365. Por tanto, puede ofrecer una experiencia personalizada en su aplicación, por ejemplo, que muestre información contextual a los usuarios, como su imagen de perfil o su próxima cita de calendario. Para obtener más información sobre cómo realizar llamadas de API a Azure Active Directory y servicios de Office 365 como Exchange, SharePoint, OneDrive, OneNote, Planner, Excel y muchos más, visite: [Microsoft Graph API][MSFT-Graph-overview].
+En este artículo, se habrá aprendido cómo toobuild una aplicación que puede iniciar sesión en un usuario de cualquier inquilino de Azure Active Directory. Después de habilitar el inicio de sesión único entre la aplicación y Azure Active Directory, también puede actualizar su tooaccess aplicación API expuestas por los recursos de Microsoft, como Office 365. Por lo que puede ofrecer una experiencia personalizada en su aplicación, por ejemplo, que muestra información contextual toohello a los usuarios, como su imagen de perfil o su próxima cita de calendario. toolearn más acerca de cómo realizar API llama tooAzure Active Directory y servicios de Office 365 como Exchange, SharePoint, OneDrive, OneNote, Planner, Excel y obtener más información, visitan: [Microsoft Graph API][MSFT-Graph-overview].
 
 
 ## <a name="related-content"></a>Contenido relacionado
@@ -186,11 +185,11 @@ En este artículo ha aprendido a crear una aplicación que puede hacer que un us
 * [Guía del desarrollador de Azure AD][AAD-Dev-Guide]
 * [Objetos Application y objetos ServicePrincipal][AAD-App-SP-Objects]
 * [Integración de aplicaciones con Azure Active Directory][AAD-Integrating-Apps]
-* [Información general sobre el marco de consentimiento][AAD-Consent-Overview]
+* [Información general de hello marco de consentimiento][AAD-Consent-Overview]
 * [Ámbitos de permiso de la API Graph de Microsoft][MSFT-Graph-permision-scopes]
 * [Ámbitos de permiso de la API Graph de Azure AD][AAD-Graph-Perm-Scopes]
 
-Use la siguiente sección de comentarios para proporcionar sus opiniones y ayudarnos a afinar y remodelar el contenido.
+Use Hola después de comentarios de tooprovide de sección de comentarios y nos ayudan a refinar y dar forma a nuestro contenido.
 
 <!--Reference style links IN USE -->
 [AAD-Access-Panel]:  https://myapps.microsoft.com

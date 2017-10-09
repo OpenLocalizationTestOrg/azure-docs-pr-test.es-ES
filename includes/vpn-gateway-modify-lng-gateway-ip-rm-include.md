@@ -1,8 +1,8 @@
-### <a name="gwipnoconnection"></a>Para modificar la puerta de enlace de red local "GatewayIpAddress": no hay ninguna conexión de puerta de enlace
+### <a name="gwipnoconnection"></a>puerta de enlace de la red local de hello toomodify 'GatewayIpAddress': no hay ninguna conexión de puerta de enlace
 
-Si el dispositivo VPN al que desea conectarse ha cambiado su dirección IP pública, debe modificar la puerta de enlace de red local para reflejar ese cambio. Use el ejemplo para modificar una puerta de enlace de red local que no tenga una conexión de puerta de enlace.
+Si el dispositivo VPN de Hola que desea tooconnect toohas cambia su dirección IP pública, debe toomodify tooreflect de puerta de enlace de red local de Hola que cambian. Utilice toomodify de ejemplo de Hola una puerta de enlace de red local que no tiene una conexión de puerta de enlace.
 
-Al modificar este valor, también puede modificar al mismo tiempo los prefijos de dirección. Asegúrese de usar el nombre existente de la puerta de enlace de la red local para sobrescribir la configuración actual. Si usa otro nombre, creará una nueva puerta de enlace de red local, en lugar de sobrescribir la existente.
+Cuando se modifica este valor, también puede modificar los prefijos de direcciones de hello en hello mismo tiempo. Ser seguro toouse Hola existente nombre de la puerta de enlace de red local en la configuración actual de orden toooverwrite Hola. Si utiliza un nombre diferente, puede crear una nueva puerta de enlace de red local, en lugar de sobrescribir Hola uno ya existente.
 
 ```powershell
 New-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName `
@@ -10,34 +10,34 @@ New-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName `
 -GatewayIpAddress "5.4.3.2" -ResourceGroupName MyRGName
 ```
 
-### <a name="gwipwithconnection"></a>Para modificar la puerta de enlace de red local "GatewayIpAddress": conexión de puerta de enlace existente
+### <a name="gwipwithconnection"></a>puerta de enlace de la red local de hello toomodify 'GatewayIpAddress' - conexión de puerta de enlace existente
 
-Si el dispositivo VPN al que desea conectarse ha cambiado su dirección IP pública, debe modificar la puerta de enlace de red local para reflejar ese cambio. Si ya existe una conexión de puerta de enlace, primero deberá quitar esa conexión. Después de quitar la conexión, puede modificar la dirección IP de la puerta de enlace y volver a crear una nueva conexión. También puede modificar los prefijos de dirección al mismo tiempo. Esto tendrá como resultado un tiempo de inactividad para la conexión VPN. Al modificar la dirección IP de puerta de enlace, no es necesario eliminar la puerta de enlace VPN. Basta con quitar la conexión.
+Si el dispositivo VPN de Hola que desea tooconnect toohas cambia su dirección IP pública, debe toomodify tooreflect de puerta de enlace de red local de Hola que cambian. Si la puerta de enlace ya existe una conexión, primero debe conexión de hello tooremove. Después de quita la conexión de hello, puede modificar la dirección IP de puerta de enlace de Hola y volver a crear una nueva conexión. También puede modificar los prefijos de direcciones de hello en hello mismo tiempo. Esto tendrá como resultado un tiempo de inactividad para la conexión VPN. Cuando se modifica la dirección IP de puerta de enlace de hello, no necesita la puerta de enlace VPN toodelete Hola. Solo necesita conexión de hello tooremove.
  
 
-1. Cierre la conexión. Puede encontrar el nombre de la conexión mediante el cmdlet 'Get-AzureRmVirtualNetworkGatewayConnection'.
+1. Quitar conexión de Hola. Puede encontrar Hola nombre de la conexión mediante el cmdlet de hello 'Get-AzureRmVirtualNetworkGatewayConnection'.
 
   ```powershell
   Remove-AzureRmVirtualNetworkGatewayConnection -Name MyGWConnectionName `
   -ResourceGroupName MyRGName
   ```
-2. Modifique el valor de 'GatewayIpAddress'. También puede modificar los prefijos de dirección al mismo tiempo. Asegúrese de utilizar el nombre de la puerta de enlace de la red local existente para sobrescribir la configuración actual. Si no lo hace, creará una nueva puerta de enlace de la red local, en lugar de sobrescribir la existente.
+2. Modifique el valor de 'GatewayIpAddress' hello. También puede modificar los prefijos de direcciones de hello en hello mismo tiempo. Ser seguro toouse Hola existente nombre de la configuración actual de red local puerta de enlace toooverwrite Hola. Si no lo hace, puede crear una nueva puerta de enlace de red local, en lugar de sobrescribir Hola uno ya existente.
 
   ```powershell
   New-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName `
   -Location "West US" -AddressPrefix @('10.0.0.0/24','20.0.0.0/24','30.0.0.0/24') `
   -GatewayIpAddress "104.40.81.124" -ResourceGroupName MyRGName
   ```
-3. Cree la conexión. En este ejemplo, vamos a configurar un tipo de conexión de IPsec. Cuando se vuelva a crear la conexión, use el tipo de conexión que se especifica para la configuración. Para otros tipos de conexión, consulte la página de [cmdlets de PowerShell](https://msdn.microsoft.com/library/mt603611.aspx) .  Para obtener el nombre de VirtualNetworkGateway, puede ejecutar el cmdlet 'Get-AzureRmVirtualNetworkGateway'.
+3. Crear conexiones de Hola. En este ejemplo, vamos a configurar un tipo de conexión de IPsec. Cuando se vuelve a crear la conexión, use el tipo de conexión de Hola que se especifica para la configuración. Para los tipos de conexión adicionales, vea hello [cmdlet de PowerShell](https://msdn.microsoft.com/library/mt603611.aspx) página.  nombre de tooobtain hello VirtualNetworkGateway, puede ejecutar hello 'Get-AzureRmVirtualNetworkGateway' cmdlet.
    
-    Establezca las variables.
+    Establecer variables de Hola.
 
   ```powershell
   $local = Get-AzureRMLocalNetworkGateway -Name MyLocalNetworkGWName -ResourceGroupName MyRGName `
   $vnetgw = Get-AzureRmVirtualNetworkGateway -Name RMGateway -ResourceGroupName MyRGName
   ```
    
-    Cree la conexión.
+    Crear conexiones de Hola.
 
   ```powershell 
   New-AzureRmVirtualNetworkGatewayConnection -Name MyGWConnectionName -ResourceGroupName MyRGName `

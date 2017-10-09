@@ -1,5 +1,5 @@
 ---
-title: "Códigos de error de SQL: error de conexión de base de datos | Microsoft Docs"
+title: "códigos de error de aaaSQL: error de conexión de base de datos | Documentos de Microsoft"
 description: "Obtenga información acerca de los códigos de error de SQL de las aplicaciones cliente de la Base de datos SQL, como los errores de conexión de base de datos más comunes, los problemas de copia de la base de datos y los errores generales. "
 keywords: "código de error de SQL, acceder a SQL, error de conexión de base de datos, códigos de error de SQL"
 services: sql-database
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2016
 ms.author: sstein
-ms.openlocfilehash: 2ef879aa31c8ee44a2c6281438f24a8b94649b1b
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 683a7d72c935742f3f9f9a0c683e5d8161167d6c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-error-and-other-issues"></a>Códigos de error para las aplicaciones cliente de la Base de datos SQL: error de conexión de base de datos y otros problemas.
 <!--
@@ -30,66 +30,66 @@ Dx 4cff491e-9359-4454-bd7c-fb72c4c452ca
 -->
 
 
-En este artículo se enumeran los códigos de error de SQL de la aplicación cliente de Base de datos SQL, incluidos los errores de conexión de base de datos, los errores transitorios, los errores de regulación de recursos, los problemas de copia de la base de datos, el grupo elástico y otros errores. La mayoría de las categorías son específicas de la Base de datos SQL de Azure y no se aplican a Microsoft SQL Server.
+En este artículo se enumeran los códigos de error de SQL de la aplicación cliente de Base de datos SQL, incluidos los errores de conexión de base de datos, los errores transitorios, los errores de regulación de recursos, los problemas de copia de la base de datos, el grupo elástico y otros errores. Mayoría de las categorías es tooAzure determinada base de datos SQL y no aplica tooMicrosoft SQL Server.
 
 ## <a name="database-connection-errors-transient-errors-and-other-temporary-errors"></a>Errores de conexión de base de datos, errores transitorios y otros errores temporales
-En la siguiente tabla se abordan los códigos de error de SQL para errores de pérdida de conexión y otros errores transitorios que pueden surgir cuando la aplicación intenta obtener acceso a la Base de datos SQL. Para obtener tutoriales de introducción acerca de cómo conectarse a Base de datos de SQL Azure, consulte [Conexión a Base de datos SQL de Azure](sql-database-libraries.md).
+Hello siguiente tabla recogen códigos de error SQL de Hola para errores de pérdida de conexión y otros errores transitorios que pueden producirse cuando la aplicación trata de tooaccess base de datos SQL. Para los tutoriales de introducción acerca de cómo tooconnect tooAzure base de datos de SQL, consulte [conectar tooAzure base de datos SQL](sql-database-libraries.md).
 
 ### <a name="most-common-database-connection-errors-and-transient-fault-errors"></a>Errores de conexión de base de datos y errores transitorios más comunes
-La infraestructura de Azure ofrece la posibilidad de volver a configurar dinámicamente servidores cuando surgen cargas de trabajo pesadas en el servicio de Base de datos SQL.  Este comportamiento dinámico podría dar lugar a que el programa cliente perdiera su conexión a Base de datos SQL. Este tipo de condición de error se conoce como *error transitorio*.
+Hola infraestructura de Azure tiene Hola capacidad toodynamically volver a configurar los servidores cuando surgen de cargas de trabajo en hello servicio de base de datos SQL.  Este comportamiento dinámico podría hacer que su cliente programa toolose su tooSQL de conexión base de datos. Este tipo de condición de error se conoce como *error transitorio*.
 
-Se recomienda encarecidamente que el programa cliente tenga lógica de reintento para poder tratar de restablecer una conexión después de dar tiempo a que se corrijan los errores transitorios.  Se recomienda un retraso de 5 segundos antes del primer reintento. Si se vuelve a intentar después de un retraso menor de 5 segundos, se correrá el riesgo de sobrecargar el servicio en la nube. Para cada intento siguiente el retraso debe aumentar exponencialmente, hasta un máximo de 60 segundos.
+Se recomienda encarecidamente que el programa de cliente tiene lógica de reintento para que puede restablecer una conexión después de dar Hola errores transitorios tiempo toocorrect propio.  Se recomienda un retraso de 5 segundos antes del primer reintento. Reintentar después de un retraso inferior a 5 segundos corre el riesgo de servicio en la nube Hola abrumador. Para cada reintento subsiguientes retraso Hola debe crecer exponencialmente, tooa máximo de 60 segundos.
 
-Los errores transitorios suelen manifestarse como uno de los siguientes mensajes de error de los programas cliente:
+Los errores transitorios de manifiesto normalmente como uno de los siguientes mensajes de error de los programas de cliente de hello:
 
-* La base de datos &lt;db_name&gt; del servidor &lt;Azure_instance&gt; no está disponible actualmente. Vuelva a intentar la conexión más tarde. Si el problema continúa, póngase en contacto con el servicio de asistencia al cliente y proporcióneles el identificador de seguimiento de sesión de &lt;session_id&gt;.
-* La base de datos &lt;db_name&gt; del servidor &lt;Azure_instance&gt; no está disponible actualmente. Vuelva a intentar la conexión más tarde. Si el problema continúa, póngase en contacto con el servicio de asistencia al cliente y proporcióneles el identificador de seguimiento de sesión de &lt;session_id&gt;. (Microsoft SQL Server, error: 40613)
-* El host remoto cerró a la fuerza una conexión ya existente.
-* System.Data.Entity.Core.EntityCommandExecutionException: Se produjo un error al ejecutar la definición del comando. Vea la excepción interna para obtener detalles. ---> System.Data.SqlClient.SqlException: Error en el nivel del transporte al recibir los resultados del servidor. (proveedor: proveedor de sesión, error: 19: La conexión física es inservible)
-* Error al tratar de conectarse a una base de datos secundaria porque la base de datos está en proceso de reconfiguración y ocupada aplicando nuevas páginas en mitad de una transacción activa en la base de datos principal. 
+* La base de datos &lt;db_name&gt; del servidor &lt;Azure_instance&gt; no está disponible actualmente. Vuelva a intentar la conexión de hello más tarde. Si persiste el problema de hello, póngase en contacto con soporte al cliente y proporcióneles Hola Id. de seguimiento de sesión de &lt;session_id&gt;
+* La base de datos &lt;db_name&gt; del servidor &lt;Azure_instance&gt; no está disponible actualmente. Vuelva a intentar la conexión de hello más tarde. Si persiste el problema de hello, póngase en contacto con soporte al cliente y proporcióneles Hola Id. de seguimiento de sesión de &lt;session_id&gt;. (Microsoft SQL Server, error: 40613)
+* Host de hello remoto forzó el cierre una conexión existente.
+* System.Data.Entity.Core.EntityCommandExecutionException: Se produjo un error al ejecutar la definición de comando Hola. Vea Hola la excepción interna para obtener más información. ---> System.Data.SqlClient.SqlException: se produjo un error de nivel de transporte al recibir los resultados del servidor de Hola. (proveedor: proveedor de sesión, error: 19: La conexión física es inservible)
+* Una base de datos secundaria de la tooa del intento de conexión no se pudo como base de datos de hello está en proceso de Hola de reconfguration y está ocupado aplicar nuevas páginas en medio de Hola de una transacción activa en la base de datos principal de Hola. 
 
 Para obtener ejemplos de lógica de reintento, vea:
 
 * [Bibliotecas de conexiones para la base de datos SQL y SQL Server](sql-database-libraries.md) 
-* [Acciones para corregir errores de conexión y errores transitorios en Base de datos SQL](sql-database-connectivity-issues.md)
+* [Errores de conexión de toofix de acciones y los errores transitorios en base de datos SQL](sql-database-connectivity-issues.md)
 
-Una explicación del *período de bloqueo* para clientes que usan ADO.NET está disponible en [Grupos de conexión de SQL Server (ADO.NET)](http://msdn.microsoft.com/library/8xx3tyca.aspx).
+Obtener una explicación de hello *período de bloqueo* para los clientes que utilizan ADO.NET está disponible en [SQL Server Connection Pooling (ADO.NET)](http://msdn.microsoft.com/library/8xx3tyca.aspx).
 
 ### <a name="transient-fault-error-codes"></a>Códigos de errores transitorios
-Los siguientes errores son transitorios y se deben volver a probar en la lógica de aplicación 
+Hello siguientes errores son transitorios y deben reintentarse en lógica de la aplicación 
 
 | Código de error | Gravedad | Descripción |
 | ---:| ---:|:--- |
-| 4060 |16 |No se puede abrir la base de datos "%.&#x2a;ls" solicitada por el inicio de sesión. Error de inicio de sesión. |
-| 40197 |17 |Error en el servicio al procesar la solicitud. Vuelva a intentarlo. Código de error %d.<br/><br/>Recibirá este error cuando el servicio esté inactivo debido a actualizaciones de software o hardware, errores de hardware u otros problemas de conmutación por error. El código de error (%d) incrustado en el mensaje de error 40197 proporciona información adicional sobre el tipo de error o conmutación por error que se ha producido. Algunos ejemplos de los códigos de error que se incrustan dentro del mensaje de error 40197 son 40020, 40143, 40166 y 40540.<br/><br/>Al volver a conectarse al servidor de Base de datos SQL se conectará automáticamente a una copia correcta de su base de datos. La aplicación debe detectar el error 40197, registrar el código de error incrustado (%d) dentro del mensaje para solucionar problemas y volver a conectarse a la base de datos SQL hasta que los recursos estén disponibles; entonces, la conexión se establecerá de nuevo. |
-| 40501 |20 |El servicio está ocupado actualmente. Vuelva a intentar la solicitud después de 10 segundos. Identificador de incidente: %ls. Código: %d.<br/><br/>*Nota:* Para obtener más información, consulte:<br/>• [Límites de recursos de Base de datos SQL](sql-database-resource-limits.md). |
-| 40613 |17 |La base de datos '%.&#x2a;ls' en el servidor '%.&#x2a;ls' no está disponible actualmente. Vuelva a intentar la conexión más tarde. Si el problema continúa, póngase en contacto con el servicio de soporte al cliente y proporcióneles el id. de seguimiento de sesión de '%.&#x2a;ls'. |
-| 49918 |16 |No se puede procesar la solicitud. No hay suficientes recursos para procesar la solicitud.<br/><br/>El servicio está ocupado actualmente. Vuelva a intentar realizar la solicitud más tarde. |
-| 49919 |16 |No se procesar, crear ni actualizar la solicitud. Hay demasiadas operaciones de creación o actualización en curso para la suscripción "%ld".<br/><br/>El servicio está ocupado procesando varias solicitudes de creación o actualización para su suscripción o servidor. Actualmente las solicitudes están bloqueadas para la optimización de recursos. Consulta [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) para las operaciones pendientes. Espere a que se completen solicitudes de creación o actualización pendientes o elimine una de las solicitudes pendientes y vuelva a intentar la solicitud más tarde. |
-| 49920 |16 |No se puede procesar la solicitud. Hay demasiadas operaciones en curso para la suscripción "%ld".<br/><br/>El servicio está ocupado procesando varias solicitudes para esta suscripción. Actualmente las solicitudes están bloqueadas para la optimización de recursos. Consulta [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) para el estado de la operación. Espere a que las solicitudes pendientes se hayan completado o elimine una de las solicitudes pendientes y vuelva a intentar la solicitud más tarde. |
-| 4221 |16 |No se pudo iniciar sesión en el secundario de lectura debido a una espera prolongada en HADR_DATABASE_WAIT_FOR_TRANSITION_TO_VERSIONING. La réplica no está disponible para el inicio de sesión porque faltan las versiones de las filas de transacciones que estaban en proceso cuando se recicló la réplica. Se puede resolver el problema al revertir o asignar las transacciones activas en la réplica principal. Se pueden minimizar las repeticiones de esta condición al evitar escribir transacciones en la principal. |
+| 4060 |16 |No se puede abrir la base de datos "%. & #x2a; %.*ls" solicitada por el inicio de sesión de Hola. Error de inicio de sesión de Hola. |
+| 40197 |17 |servicio de Hello ha encontrado un error al procesar la solicitud. Vuelva a intentarlo. Código de error %d.<br/><br/>Recibirá este error, al servicio Hola está inactivo debido a toosoftware o actualizaciones de hardware, errores de hardware o cualquier otro problema de conmutación por error. código de error de Hello (%d) incrustado en el mensaje de saludo de error 40197 proporciona información adicional sobre el tipo de saludo de error o conmutación por error que se ha producido. Algunos ejemplos de errores de hello códigos incrustados dentro del mensaje de saludo de error 40197 son 40020, 40143, 40166 y 40540.<br/><br/>Servidor de base de datos SQL de reconexión tooyour conectará automáticamente tooa copia correcta de la base de datos. La aplicación debe detectar el error 40197, registro Hola incrustado código de error (%d) dentro de mensaje de Hola para solucionar problemas e intente conectarse de nuevo tooSQL base de datos hasta que Hola recursos están disponibles, y la conexión se establezca de nuevo. |
+| 40501 |20 | |servicio de Hello está ocupado actualmente. Vuelva a intentar la solicitud de hello tras 10 segundos. Identificador de incidente: %ls. Código: %d.<br/><br/>*Nota:* Para obtener más información, consulte:<br/>• [Límites de recursos de Base de datos SQL](sql-database-resource-limits.md). |
+| 40613 |17 |La base de datos '%.&#x2a;ls' en el servidor '%.&#x2a;ls' no está disponible actualmente. Vuelva a intentar la conexión de hello más tarde. Si persiste el problema de hello, póngase en contacto con soporte al cliente y proporcióneles Hola Id. de seguimiento de sesión de '%. & #x2a; ls'. |
+| 49918 |16 |No se puede procesar la solicitud. No hay suficientes recursos tooprocess la solicitud.<br/><br/>servicio de Hello está ocupado actualmente. Vuelva a intentar la solicitud de hello más tarde. |
+| 49919 |16 |No se procesar, crear ni actualizar la solicitud. Hay demasiadas operaciones de creación o actualización en curso para la suscripción "%ld".<br/><br/>Hola servicio está ocupado procesando varios crear o actualizar las solicitudes de la suscripción o el servidor. Actualmente las solicitudes están bloqueadas para la optimización de recursos. Consulta [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) para las operaciones pendientes. Espere a que se completen solicitudes de creación o actualización pendientes o elimine una de las solicitudes pendientes y vuelva a intentar la solicitud más tarde. |
+| 49920 |16 |No se puede procesar la solicitud. Hay demasiadas operaciones en curso para la suscripción "%ld".<br/><br/>servicio de Hello está ocupado procesando varias solicitudes para esta suscripción. Actualmente las solicitudes están bloqueadas para la optimización de recursos. Consulta [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) para el estado de la operación. Espere a que las solicitudes pendientes se hayan completado o elimine una de las solicitudes pendientes y vuelva a intentar la solicitud más tarde. |
+| 4221 |16 |Error de inicio de sesión tooread-base de datos secundaria debido espera toolong en 'HADR_DATABASE_WAIT_FOR_TRANSITION_TO_VERSIONING'. Hola réplica no está disponible para el inicio de sesión porque faltan las versiones de fila para las transacciones que estaban en curso cuando se recicla la réplica de Hola. Hola problema puede resolverse por revertir o confirmar las transacciones activas de hello en la réplica principal de Hola. Repeticiones de esta condición pueden reducirse al evitar las transacciones de escritura de larga duración en hello principal. |
 
 ## <a name="database-copy-errors"></a>Errores de copia de base de datos
-Pueden encontrarse los siguientes errores al copiar una base de datos en Base de datos SQL de Azure. Para más información, vea [Copiar una base de datos SQL de Azure](sql-database-copy.md).
+Hola siguientes errores puede encontrarse al copiar una base de datos en la base de datos de SQL Azure. Para más información, vea [Copiar una base de datos SQL de Azure](sql-database-copy.md).
 
 | Código de error | Gravedad | Descripción |
 | ---:| ---:|:--- |
 | 40635 |16 |El cliente con la dirección IP '%.&#x2a;ls' está deshabilitado temporalmente. |
 | 40637 |16 |Crear copia de base de datos está deshabilitado actualmente. |
-| 40561 |16 |Error al copiar la base de datos. No existe la base de datos de origen o de destino. |
-| 40562 |16 |Error al copiar la base de datos. La base de datos de origen se ha quitado. |
-| 40563 |16 |Error al copiar la base de datos. La base de datos de destino se ha quitado. |
-| 40564 |16 |No se pudo copiar la base de datos debido a un error interno. Quite la base de datos de destino e inténtelo de nuevo. |
-| 40565 |16 |Error al copiar la base de datos. No se permite más de una copia de base de datos simultánea para el mismo origen. Quite la base de datos de destino y vuelva a intentarlo más adelante. |
-| 40566 |16 |No se pudo copiar la base de datos debido a un error interno. Quite la base de datos de destino e inténtelo de nuevo. |
-| 40567 |16 |No se pudo copiar la base de datos debido a un error interno. Quite la base de datos de destino e inténtelo de nuevo. |
+| 40561 |16 |Error al copiar la base de datos. Cualquier base de datos de origen o destino de hello no existe. |
+| 40562 |16 |Error al copiar la base de datos. se quitó la base de datos de origen de Hola. |
+| 40563 |16 |Error al copiar la base de datos. se quitó la base de datos de destino de Hola. |
+| 40564 |16 |No se pudo copiar base de datos debido a error interno de tooan. Quite la base de datos de destino e inténtelo de nuevo. |
+| 40565 |16 |Error al copiar la base de datos. Copia de no más de 1 base de datos simultáneas de Hola se permite el mismo origen. Quite la base de datos de destino y vuelva a intentarlo más adelante. |
+| 40566 |16 |No se pudo copiar base de datos debido a error interno de tooan. Quite la base de datos de destino e inténtelo de nuevo. |
+| 40567 |16 |No se pudo copiar base de datos debido a error interno de tooan. Quite la base de datos de destino e inténtelo de nuevo. |
 | 40568 |16 |Error al copiar la base de datos. La base de datos de origen ha dejado de estar disponible. Quite la base de datos de destino e inténtelo de nuevo. |
 | 40569 |16 |Error al copiar la base de datos. La base de datos de destino ha dejado de estar disponible. Quite la base de datos de destino e inténtelo de nuevo. |
-| 40570 |16 |No se pudo copiar la base de datos debido a un error interno. Quite la base de datos de destino y vuelva a intentarlo más adelante. |
-| 40571 |16 |No se pudo copiar la base de datos debido a un error interno. Quite la base de datos de destino y vuelva a intentarlo más adelante. |
+| 40570 |16 |No se pudo copiar base de datos debido a error interno de tooan. Quite la base de datos de destino y vuelva a intentarlo más adelante. |
+| 40571 |16 |No se pudo copiar base de datos debido a error interno de tooan. Quite la base de datos de destino y vuelva a intentarlo más adelante. |
 
 ## <a name="resource-governance-errors"></a>Errores de regulación de recursos
-La causa de los siguientes errores es un uso excesivo de recursos mientras se trabaja con Base de datos SQL de Azure. Por ejemplo:
+Hola siguientes errores está provocado por el uso excesivo de recursos mientras se trabaja con la base de datos de SQL Azure. Por ejemplo:
 
 * Una transacción ha permanecido abierta durante demasiado tiempo.
 * Una transacción contiene demasiados bloqueos.
@@ -102,40 +102,40 @@ Temas relacionados:
 
 | Código de error | Gravedad | Descripción |
 | ---:| ---:|:--- |
-| 10928 |20 |Id. de recurso: %d. El límite %s para la base de datos es %d y se ha alcanzado. Para más información, vea [http://go.microsoft.com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637).<br/><br/>El identificador de recurso indica el recurso que ha alcanzado el límite. Para subprocesos de trabajo, el id. de recurso = 1. Para las sesiones, Identificador de recurso = 2.<br/><br/>*Nota:* Para obtener más información sobre este error y cómo solucionarlo, consulte:<br/>• [Límites de recursos de Base de datos SQL](sql-database-resource-limits.md). |
-| 10929 |20 |Id. de recurso: %d. La garantía mínima de %s es de %d, el límite máximo es %d y el uso actual de la base de datos es %d. Sin embargo, el servidor está demasiado ocupado en estos momentos para admitir solicitudes mayores que %d para esta base de datos. Para más información, vea [http://go.microsoft.com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637). De lo contrario, Inténtelo de nuevo más tarde.<br/><br/>El identificador de recurso indica el recurso que ha alcanzado el límite. Para subprocesos de trabajo, el id. de recurso = 1. Para las sesiones, Identificador de recurso = 2.<br/><br/>*Nota:* Para obtener más información sobre este error y cómo solucionarlo, consulte:<br/>• [Límites de recursos de Base de datos SQL](sql-database-resource-limits.md). |
-| 40544 |20 |La base de datos ha alcanzado su cuota de tamaño. Cree particiones o elimine datos, quite índices o consulte la documentación para obtener soluciones posibles. |
+| 10928 |20 |Id. de recurso: %d. límite de %s Hola para base de datos de hello es %d y se ha alcanzado. Para más información, vea [http://go.microsoft.com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637).<br/><br/>recursos de Hola que ha alcanzado el límite de Hola indica mediante Hola Id. de recurso. Para los subprocesos de trabajo, Hola Id. de recurso = 1. Para las sesiones, Hola Id. de recurso = 2.<br/><br/>*Nota:* para obtener más información sobre este error y cómo tooresolve, consulte:<br/>• [Límites de recursos de Base de datos SQL](sql-database-resource-limits.md). |
+| 10929 |20 |Id. de recurso: %d. garantía mínima de Hello %s es %d, límite máximo es %d y uso actual de Hola de base de datos de hello es %d. Sin embargo, el servidor de hello está actualmente demasiado ocupado toosupport solicitudes mayores que %d para esta base de datos. Para más información, vea [http://go.microsoft.com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637). De lo contrario, Inténtelo de nuevo más tarde.<br/><br/>recursos de Hola que ha alcanzado el límite de Hola indica mediante Hola Id. de recurso. Para los subprocesos de trabajo, Hola Id. de recurso = 1. Para las sesiones, Hola Id. de recurso = 2.<br/><br/>*Nota:* para obtener más información sobre este error y cómo tooresolve, consulte:<br/>• [Límites de recursos de Base de datos SQL](sql-database-resource-limits.md). |
+| 40544 |20 | |base de datos de Hello ha alcanzado su cuota de tamaño. Cree particiones o elimine datos, quite índices o consulte la documentación de Hola para ver posibles soluciones. |
 | 40549 |16 |La sesión terminó porque tiene una transacción de larga duración. Intente reducir la transacción. |
-| 40550 |16 |La sesión ha terminado porque ha adquirido demasiados bloqueos. Intente leer o modificar menos filas en una sola transacción. |
-| 40551 |16 |La sesión ha terminado debido al uso excesivo de `TEMPDB` . Intente modificar la consulta para reducir el uso del espacio de la tabla temporal.<br/><br/>*Sugerencia:* si está usando objetos temporales, puede ahorrar espacio en la base de datos `TEMPDB` quitándolos una vez que la sesión ya no los necesite. |
-| 40552 |16 |La sesión ha terminado debido al excesivo uso de espacio del registro de transacciones. Intente modificar menos filas en una sola transacción.<br/><br/>*Sugerencia:* si realiza inserciones masivas con la utilidad `bcp.exe` o la clase `System.Data.SqlClient.SqlBulkCopy`, intente usar las opciones `-b batchsize` o `BatchSize` para limitar el número de filas copiadas al servidor en cada transacción. Si está volviendo a crear un índice con la instrucción `ALTER INDEX`, intente usar la opción `REBUILD WITH ONLINE = ON`. |
-| 40553 |16 |La sesión ha terminado debido al uso excesivo de la memoria. Intente modificar su consulta para procesar menos filas.<br/><br/>*Sugerencia:* la reducción del número de operaciones `ORDER BY` y `GROUP BY` en el código Transact-SQL disminuye los requisitos de memoria de la consulta. |
+| 40550 |16 |Hola sesión ha terminado porque ha adquirido demasiados bloqueos. Intente leer o modificar menos filas en una sola transacción. |
+| 40551 |16 |Hola sesión ha terminado debido a exceso `TEMPDB` uso. Intente modificar el uso del espacio de tabla temporal de consulta tooreduce Hola.<br/><br/>*Sugerencia:* si está usando objetos temporales, puede ahorrar espacio en hello `TEMPDB` base de datos colocando objetos temporales después de sesión de hello ya no los necesite. |
+| 40552 |16 |Hola sesión ha terminado debido al uso de espacio de registro de transacciones excesivo. Intente modificar menos filas en una sola transacción.<br/><br/>*Sugerencia:* si realiza inserciones masivas mediante hello `bcp.exe` utilidad o hello `System.Data.SqlClient.SqlBulkCopy` clase, pruebe a usar hello `-b batchsize` o `BatchSize` número de hello toolimit de opciones de filas se han copiado toohello server en cada transacción. Si se regenera un índice con hello `ALTER INDEX` (instrucción), pruebe a utilizar hello `REBUILD WITH ONLINE = ON` opción. |
+| 40553 |16 |Hola sesión ha terminado debido al uso excesivo de memoria. Intente modificar la consulta tooprocess menos filas.<br/><br/>*Sugerencia:* reducir el número de Hola de `ORDER BY` y `GROUP BY` operaciones en el código de Transact-SQL reduce los requisitos de memoria de saludo de la consulta. |
 
 ## <a name="elastic-pool-errors"></a>Errores de grupos elásticos
-Los errores siguientes están relacionados con la creación y el uso de grupos elásticos.
+Hola siguientes errores es toocreating relacionado y uso de grupos de Elastics.
 
 | ErrorNumber | ErrorSeverity | ErrorFormat | ErrorInserts | ErrorCause | ErrorCorrectiveAction |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| 1132 |EX_RESOURCE |El grupo elástico ha alcanzado su límite de almacenamiento. El uso del almacenamiento del grupo elástico no puede superar (%d) MB. |Límite de espacio del grupo elástico en MB. |Se ha intentado escribir datos en una base de datos cuando se ha alcanzado el límite de almacenamiento del grupo elástico. |Considere la posibilidad de incrementar el número de DTU del grupo elástico si es posible para aumentar su límite de almacenamiento, reduzca el almacenamiento usado por las bases de datos individuales del grupo elástico o quite bases de datos del grupo elástico. |
-| 10929 |EX_USER |La garantía mínima de %s es de %d, el límite máximo es %d y el uso actual de la base de datos es %d. Sin embargo, el servidor está demasiado ocupado en estos momentos para admitir solicitudes mayores que %d para esta base de datos. Vea [http://go.microsoft.com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637) para obtener ayuda. De lo contrario, Inténtelo de nuevo más tarde. |Número mínimo de DTU por cada base de datos; número máximo de DTU por base de datos. |El número total de trabajadores simultáneos (solicitudes) de todas las bases de datos del grupo elástico intentó superar el límite del grupo. |Considere la posibilidad de incrementar el número de DTU del grupo elástico si es posible para aumentar el límite de trabajadores, o bien quite bases de datos del grupo elástico. |
+| 1132 |EX_RESOURCE |grupo elástico Hola ha alcanzado su límite de almacenamiento. uso de almacenamiento de Hello para el grupo elástico hello no puede superar los MB (%d). |Límite de espacio del grupo elástico en MB. |Se intentó una base de datos de toowrite datos tooa cuando se ha alcanzado el límite de almacenamiento de Hola de grupo elástico Hola. |Considere la posibilidad de Dtu de hello creciente de grupo elástico Hola si es posible en orden tooincrease su límite de almacenamiento, reducir almacenamiento de hello usado por las bases de datos individuales dentro de grupo elástico de hello o bien quitar las bases de datos de grupo elástico Hola. |
+| 10929 |EX_USER |garantía mínima de Hello %s es %d, límite máximo es %d y uso actual de Hola de base de datos de hello es %d. Sin embargo, el servidor de hello está actualmente demasiado ocupado toosupport solicitudes mayores que %d para esta base de datos. Vea [http://go.microsoft.com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637) para obtener ayuda. De lo contrario, Inténtelo de nuevo más tarde. |Número mínimo de DTU por cada base de datos; número máximo de DTU por base de datos. |Hola número total de trabajos simultáneos (solicitudes) a través de todas las bases de datos de límite de grupo de hello grupo elástico tooexceed ha intentado Hola. |Por favor, considere la posibilidad de aumentar su límite de trabajo de hello Dtu de grupo elástico Hola si es posible en orden tooincrease o quitar las bases de datos de grupo elástico de Hola. |
 | 40844 |EX_USER |La base de datos '%ls' del servidor '%ls' es una base de datos de la versión '%ls' de un grupo elástico y no puede tener una relación de copia continua. |Nombre de la base de datos, versión de base de datos, nombre del servidor. |Se emitió un comando StartDatabaseCopy para una base de datos que no es Premium de un grupo elástico. |Próximamente |
-| 40857 |EX_USER |Grupo elástico no encontrado para el servidor: '%ls', nombre del grupo elástico: '%ls'. |Nombre del servidor; nombre del grupo elástico. |El grupo elástico especificado no existe en el servidor especificado. |Especifique un nombre de grupo elástico válido. |
-| 40858 |EX_USER |El grupo elástico '%ls' ya existe en el servidor: '%ls' |Nombre de grupo elástico, nombre del servidor. |El grupo elástico especificado ya existe en el servidor lógico especificado. |Proporcione un nuevo nombre de grupo elástico. |
-| 40859 |EX_USER |El grupo elástico no admite el nivel de servicio '%ls'. |Nivel de servicio de grupo elástico. |El nivel de servicio especificado no se admite para el aprovisionamiento de grupo elástico. |Especifique la versión correcta o deje el nivel de servicio en blanco para usar el nivel de servicio predeterminado. |
+| 40857 |EX_USER |Grupo elástico no encontrado para el servidor: '%ls', nombre del grupo elástico: '%ls'. |Nombre del servidor; nombre del grupo elástico. |Grupo elástico especificado no existe en el servidor especificado de Hola. |Especifique un nombre de grupo elástico válido. |
+| 40858 |EX_USER |El grupo elástico '%ls' ya existe en el servidor: '%ls' |Nombre de grupo elástico, nombre del servidor. |Grupo elástico especificado ya existe en el servidor lógico de hello especificado. |Proporcione un nuevo nombre de grupo elástico. |
+| 40859 |EX_USER |El grupo elástico no admite el nivel de servicio '%ls'. |Nivel de servicio de grupo elástico. |El nivel de servicio especificado no se admite para el aprovisionamiento de grupo elástico. |Proporcionar la edición correcta de Hola o deje el nivel de servicio de servicio capa toouse en blanco Hola de forma predeterminada. |
 | 40860 |EX_USER |La combinación del grupo elástico '%ls' y del objetivo de servicio '%ls' no es válida. |Nombre del grupo flexible; nombre del objetivo de nivel de servicio. |El grupo elástico y el objetivo de servicio pueden especificarse juntos solo si se especifica el objetivo de servicio como "ElasticPool". |Especifique la combinación correcta de grupo elástico y objetivo de servicio. |
-| 40861 |EX_USER |La versión de la base de datos '%.*ls' no puede ser distinta del nivel de servicio del grupo elástico, que es '%.*ls'. |Versión de la base de datos, nivel de servicio del grupo elástico. |La versión de la base de datos es distinta del nivel de servicio del grupo elástico. |No especifique una versión de la base de datos distinta del nivel de servicio del grupo elástico.  Tenga en cuenta que no es necesario especificar la versión de la base de datos. |
-| 40862 |EX_USER |Debe especificarse el nombre del grupo elástico si se especifica el objetivo de servicio del grupo elástico. |None |El objetivo del servicio de grupo elástico no identifica de manera única un grupo elástico. |Especifique el nombre del grupo elástico si usa el objetivo del servicio de grupo elástico. |
-| 40864 |EX_USER |El número de DTU del grupo elástico debe ser de al menos (%d) DTU para el nivel de servicio ' %.* ls'. |Número de DTU del grupo elástico; nivel de servicio del grupo elástico. |Se intentó establecer el número de DTU para el grupo elástico por debajo del límite mínimo. |Vuelva a intentar establecer el número de DTU para el grupo elástico al menos en el límite mínimo. |
-| 40865 |EX_USER |El número de DTU del grupo elástico no puede superar (%d) DTU para el nivel de servicio ' %.* ls'. |Número de DTU del grupo elástico; nivel de servicio del grupo elástico. |Se intentó establecer el número de DTU para el grupo elástico por encima del máximo. |Vuelva a intentar establecer el número de DTU para el grupo elástico a un valor inferior al límite máximo. |
-| 40867 |EX_USER |El número máximo de DTU por base de datos debe ser al menos (%d) para el nivel de servicio '%.*ls'. |Número máximo de DTU por base de datos, nivel de servicio del grupo elástico. |Se intentó establecer el número máximo de DTU por base de datos por debajo del límite admitido. |Considere la posibilidad de utilizar el nivel de servicio del grupo elástico que admita la configuración deseada. |
-| 40868 |EX_USER |El número máximo de DTU por base de datos no puede superar (%d) para el nivel de servicio '%.*ls'. |Número máximo de DTU por base de datos, nivel de servicio del grupo elástico. |Se intentó establecer el número máximo de DTU por base de datos por encima del límite admitido. |Considere la posibilidad de utilizar el nivel de servicio del grupo elástico que admita la configuración deseada. |
-| 40870 |EX_USER |El número mínimo de DTU por base de datos no puede superar (%d) para el nivel de servicio '%.*ls'. |Número mínimo de DTU por base de datos, nivel de servicio del grupo elástico. |Se intentó establecer el número mínimo de DTU por base de datos por encima del límite admitido. |Considere la posibilidad de utilizar el nivel de servicio del grupo elástico que admita la configuración deseada. |
-| 40873 |EX_USER |El número de bases de datos (%d) y el mínimo de DTU por base de datos (%d) no puede superar el número de DTU del grupo elástico (%d). |Número de bases de datos del grupo elástico; número mínimo de DTU por base de datos; número de DTU del grupo elástico. |Se intentó especificar un número mínimo de DTU para las bases de datos del grupo elástico que supera el número de DTU del grupo elástico. |Considere la posibilidad de aumentar el número de DTU del grupo elástico, reduzca el número mínimo de DTU por base de datos, o bien reduzca el número de bases de datos del grupo elástico. |
-| 40877 |EX_USER |No se puede eliminar un grupo elástico a menos que no contenga ninguna base de datos. |None |El grupo elástico contiene una o más bases de datos y no se puede eliminar. |Quite las bases de datos del grupo elástico para poder eliminarlo. |
-| 40881 |EX_USER |El grupo elástico ' %.* ls' ha alcanzado el límite de recuento de bases de datos.  El límite de bases de datos del grupo elástico no puede superar (%d) para un grupo elástico con (%d) DTU. |Nombre del grupo elástico; límite de bases de datos del grupo elástico; número de eDTU del grupo de recursos. |Se intentó crear una base de datos en el grupo elástico, o agregar una base de datos al grupo elástico, cuando se ha alcanzado el límite de bases de datos del grupo elástico. |Considere la posibilidad de incrementar el número de DTU del grupo elástico si es posible para aumentar el límite de bases de datos, o bien quite bases de datos del grupo elástico. |
-| 40889 |EX_USER |El límite de DTU o de almacenamiento del grupo elástico ' %.* ls' no se puede reducir, puesto que no proporcionaría suficiente espacio de almacenamiento para sus bases de datos. |Nombre del grupo elástico. |Se intentó reducir el límite de almacenamiento del grupo elástico por debajo de su uso de almacenamiento. |Considere la posibilidad de reducir el uso de almacenamiento de bases de datos individuales del grupo elástico, o bien quite bases de datos del grupo para reducir su número de DTU o el límite de almacenamiento. |
-| 40891 |EX_USER |El número mínimo de DTU por base de datos (%d) no puede superar el número máximo de DTU por base de datos (%d). |Número mínimo de DTU por base de datos; número máximo de DTU por base de datos. |Se intentó establecer el número mínimo de DTU por base de datos con un valor superior al número máximo de DTU por base de datos. |Asegúrese de que el número mínimo de DTU por base de datos no supere el número máximo de DTU por base de datos. |
-| TBD |EX_USER |El tamaño de almacenamiento para una base de datos individual de un grupo elástico no puede superar el tamaño máximo permitido por el grupo elástico del nivel de servicio ' %.* ls'. |Nivel de servicio de grupo elástico. |El tamaño máximo de la base de datos supera el tamaño máximo permitido por el nivel de servicio del grupo elástico. |Establezca el tamaño máximo de la base de datos por debajo de los límites de tamaño máximo permitidos por el nivel de servicio del grupo elástico. |
+| 40861 |EX_USER |edición de la base de datos de Hello ' %. *ls' no pueden ser diferentes de nivel de servicio de grupo elástico de Hola que es ' %.* ls'. |Versión de la base de datos, nivel de servicio del grupo elástico. |edición de la base de datos de Hello es diferente de nivel de servicio del grupo elástico de Hola. |No especifique una edición de base de datos que es diferente de nivel de servicio del grupo elástico de Hola.  Tenga en cuenta que esa edición de base de datos de hello no es necesario toobe especificado. |
+| 40862 |EX_USER |Nombre de grupo elástico debe especificar si se especifica el objetivo de servicio del grupo elástico de Hola. |None |El objetivo del servicio de grupo elástico no identifica de manera única un grupo elástico. |Especifique el nombre del grupo elástico de hello si usa el objetivo de servicio del grupo elástico de Hola. |
+| 40864 |EX_USER |Hola Dtu de grupo elástico Hola debe ser como mínimo (%d) en Dtu de nivel de servicio ' %. * ls'. |Número de DTU del grupo elástico; nivel de servicio del grupo elástico. |Se intentó una tooset hello Dtu de grupo elástico de Hola por debajo del límite mínimo de Hola. |Vuelva a intentar establecer hello Dtu para hello grupo elástico tooat menos límite mínimo de Hola. |
+| 40865 |EX_USER |Hola Dtu de grupo elástico hello no puede superar (%d) en Dtu de nivel de servicio ' %. * ls'. |Número de DTU del grupo elástico; nivel de servicio del grupo elástico. |Se intentó una tooset hello Dtu de grupo elástico de Hola por encima del límite máximo de Hola. |Vuelva a intentar establecer mayor que el límite máximo de Hola Hola Dtu para toono de grupo elástico Hola. |
+| 40867 |EX_USER |Hola DTU máx. por base de datos debe ser al menos (%d) de nivel de servicio ' %. * ls'. |Número máximo de DTU por base de datos, nivel de servicio del grupo elástico. |Intentar tooset hello DTU máx. por base de datos por debajo de hello admite límite. |Por favor, considere el uso de nivel de servicio de grupo elástico de Hola que admite la configuración de hello deseado. |
+| 40868 |EX_USER |Hola DTU máx. por base de datos no puede superar (%d) de nivel de servicio ' %. * ls'. |Número máximo de DTU por base de datos, nivel de servicio del grupo elástico. |Intentar tooset hello DTU máx. por base de datos más allá de hello admite límite. |Por favor, considere el uso de nivel de servicio de grupo elástico de Hola que admite la configuración de hello deseado. |
+| 40870 |EX_USER |Hola DTU mín. por base de datos no puede superar (%d) de nivel de servicio ' %. * ls'. |Número mínimo de DTU por base de datos, nivel de servicio del grupo elástico. |Intentar tooset hello DTU mín. por base de datos más allá de hello admite límite. |Por favor, considere el uso de nivel de servicio de grupo elástico de Hola que admite la configuración de hello deseado. |
+| 40873 |EX_USER |número de Hola de bases de datos (%d) y DTU mín. por base de datos (%d) no puede superar hello Dtu de grupo elástico de hello (%d). |Número de bases de datos del grupo elástico; número mínimo de DTU por base de datos; número de DTU del grupo elástico. |Se intentó una toospecify DTU mínima para bases de datos de grupo elástico Hola que supera hello Dtu de grupo elástico Hola. |Considere la posibilidad de aumentar hello Dtu de grupo elástico de hello, o reducir hello DTU mín. por base de datos o bien, reducir el número de Hola de bases de datos de grupo elástico de Hola. |
+| 40877 |EX_USER |No se puede eliminar un grupo elástico a menos que no contenga ninguna base de datos. |None |grupo elástico Hello contiene uno o más bases de datos y, por tanto, no se puede eliminar. |Por favor, quitar las bases de datos de grupo elástico de hello en orden toodelete se. |
+| 40881 |EX_USER |Hola grupo elástico ' %. * ls' ha alcanzado el límite del número de base de datos.  límite de cantidad de base de datos de Hola de grupo elástico hello no puede superar (%d) para un grupo elástico con (%d) Dtu. |Nombre del grupo elástico; límite de bases de datos del grupo elástico; número de eDTU del grupo de recursos. |Agregar grupo de tooelastic de base de datos cuando se alcanza el límite del número de base de datos de Hola de grupo elástico de Hola o lo intentan toocreate. |Por favor, considere aumentar el límite de la base de datos de hello Dtu de grupo elástico Hola si es posible en orden tooincrease o quitar las bases de datos de grupo elástico Hola. |
+| 40889 |EX_USER |Hola Dtu o límite de almacenamiento para el grupo elástico hello ' %. * ls' no se puede reducir desde que no proporcionaría suficiente espacio de almacenamiento para sus bases de datos. |Nombre del grupo elástico. |Intento de límite de almacenamiento de hello toodecrease de grupo elástico de Hola por debajo de su uso de almacenamiento. |Considere la posibilidad de reducir el uso de almacenamiento de Hola de bases de datos individuales en el grupo elástico de Hola o quitar bases de datos de grupo de hello en orden tooreduce su Dtu o almacenamiento de límite. |
+| 40891 |EX_USER |Hola DTU mín. por base de datos (%d) no puede superar el número máximo DTU de Hola por base de datos (%d). |Número mínimo de DTU por base de datos; número máximo de DTU por base de datos. |Se intentó una tooset hello DTU mín. por base de datos mayor que hello DTU máx. por base de datos. |Asegúrese de hello DTU mín. por las bases de datos no supere los hello DTU máx. por base de datos. |
+| TBD |EX_USER |tamaño de almacenamiento de Hola para una base de datos individual en un grupo elástico no puede superar el tamaño máximo de hello permitido por ' %. * ls' grupo elástico de nivel de servicio. |Nivel de servicio de grupo elástico. |tamaño máximo de Hola para base de datos de hello excede el tamaño máximo de hello permitido por nivel de servicio del grupo elástico de Hola. |Establezca el tamaño máximo de Hola de base de datos de hello dentro de los límites de Hola de hello tamaño máximo permitido por nivel de servicio del grupo elástico de Hola. |
 
 Temas relacionados:
 
@@ -145,74 +145,74 @@ Temas relacionados:
 * [Supervisión y administración de un grupo elástico (PowerShell)](sql-database-elastic-pool-manage-powershell.md)
 
 ## <a name="general-errors"></a>Errores generales
-Los siguientes errores no se incluyen en ninguna categoría anterior.
+Hola siguientes errores no pertenecen a las categorías anteriores.
 
 | Código de error | Gravedad | Descripción |
 | ---:| ---:|:--- |
 | 15006 |16 |<AdministratorLogin> no es un nombre válido porque contiene caracteres no válidos. |
-| 18452 |14 |Error de inicio de sesión. El inicio de sesión se realiza desde un dominio que no es de confianza y no se puede utilizar con autenticación de Windows.%.&#x2a;ls (Los inicios de sesión de Windows no se admiten en esta versión de SQL Server.). |
-| 18456 |14 |Error de inicio de sesión del usuario '%.&#x2a;ls'.%.&#x2a;ls%.&#x2a;ls (Error de inicio de sesión del usuario "%.&#x2a;ls". Error de cambio de contraseña. El cambio de contraseña durante el inicio de sesión no se admite en esta versión de SQL Server.) |
-| 18470 |14 |Error de inicio de sesión del usuario '%.&#x2a;ls'. Motivo: la cuenta está deshabilitada.%.&#x2a;ls |
-| 40014 |16 |No se pueden utilizar varias bases de datos en la misma transacción. |
+| 18452 |14 |Error de inicio de sesión. es de un dominio de confianza Hello inicio de sesión y no se puede usar con Windows authentication.%. & #x2a; ls (inicios de sesión de Windows no se admiten en esta versión de SQL Server). |
+| 18456 |14 |Error de inicio de sesión para el usuario ' %. #x2a;ls'.%. & #x2a; % ls. & #x2a; ls (error de inicio de sesión de hello para el usuario "%. & #x2a; ls". Error de cambio de contraseña de Hola. El cambio de contraseña durante el inicio de sesión no se admite en esta versión de SQL Server.) |
+| 18470 |14 |Error de inicio de sesión del usuario '%.&#x2a;ls'. Motivo: cuenta de hello es disabled.%. & #x2a; ls |
+| 40014 |16 |No se puede usar varias bases de datos en hello misma transacción. |
 | 40054 |16 |No se admiten las tablas sin un índice agrupado en esta versión de SQL Server. Crear un índice agrupado e inténtelo de nuevo. |
 | 40133 |15 |No se admite esta operación en esta versión de SQL Server. |
 | 40506 |16 |El SID especificado no es válido para esta versión de SQL Server. |
 | 40507 |16 |No se puede invocar '%.&#x2a;ls' con parámetros en esta versión de SQL Server. |
-| 40508 |16 |No se admite la instrucción de USE para cambiar entre bases de datos. Use una nueva conexión para conectarse a una base de datos diferente. |
+| 40508 |16 |Instrucción USE no es compatible tooswitch entre bases de datos. Use la nueva conexión tooconnect tooa otra base de datos. |
 | 40510 |16 |No se admite la instrucción '%.&#x2a;ls' en esta versión de SQL Server. |
 | 40511 |16 |No se admite la instrucción integrada '%.&#x2a;ls' en esta versión de SQL Server. |
 | 40512 |16 |No se admite la característica desusada '%ls' en esta versión de SQL Server. |
 | 40513 |16 |No se admite la variable del servidor '%.&#x2a;ls' en esta versión de SQL Server. |
 | 40514 |16 |No se admite '%ls' en esta versión de SQL Server. |
-| 40515 |16 |No se admite referencia al nombre de la base de datos o del servidor en '%.&#x2a;ls' en esta versión de SQL Server. |
+| 40515 |16 |Nombre de referencia toodatabase o del servidor en ' %. & #x2a; ls' no se admite en esta versión de SQL Server. |
 | 40516 |16 |Los objetos temporales globales no se admiten en esta versión de SQL Server. |
 | 40517 |16 |No se admite la opción de palabra clave o instrucción '%.&#x2a;ls' en esta versión de SQL Server. |
 | 40518 |16 |No se admite el comando DBCC '%.&#x2a;ls' en esta versión de SQL Server. |
 | 40520 |16 |La clase protegible '%S_MSG' no se admite en esta versión de SQL Server. |
-| 40521 |16 |La clase protegible '%S_MSG' no se admite en el ámbito de servidor en esta versión de SQL Server. |
+| 40521 |16 |Clase protegible '% S_MSG' no se admite en el ámbito del servidor hello en esta versión de SQL Server. |
 | 40522 |16 |El tipo de entidad de seguridad de base de datos '%.&#x2a;ls' no se admite en esta versión de SQL Server. |
-| 40523 |16 |La creación de usuario implícita '%.&#x2a;ls' no se admite en esta versión de SQL Server. Cree el usuario de forma explícita antes de usarlo. |
+| 40523 |16 |La creación de usuario implícita '%.&#x2a;ls' no se admite en esta versión de SQL Server. Cree explícitamente usuario Hola antes de usarlo. |
 | 40524 |16 |El tipo de datos '%.&#x2a;ls' no se admite en esta versión de SQL Server. |
 | 40525 |16 |WITH '%ls' no se admite en esta versión de SQL Server. |
 | 40526 |16 |El proveedor de conjuntos de filas '%.&#x2a;ls' no se admite en esta versión de SQL Server. |
 | 40527 |16 |Los servidores vinculados no se admiten en esta versión de SQL Server. |
-| 40528 |16 |Los usuarios no se pueden asignar a certificados, claves asimétricas o inicios de sesión de Windows en esta versión de SQL Server. |
+| 40528 |16 |Los usuarios no pueden ser toocertificates asignadas, las claves asimétricas o inicios de sesión de Windows en esta versión de SQL Server. |
 | 40529 |16 |La función integrada '%.&#x2a;ls' en el contexto de suplantación no se admite en esta versión de SQL Server. |
-| 40532 |11 |No se puede abrir el servidor "%.&#x2a;ls" solicitado por el inicio de sesión. Error de inicio de sesión. |
-| 40553 |16 |La sesión ha terminado debido al uso excesivo de la memoria. Intente modificar su consulta para procesar menos filas.<br/><br/>*Nota:* La reducción del número de operaciones `ORDER BY` y `GROUP BY` en el código Transact-SQL ayuda a disminuir los requisitos de memoria de la consulta. |
-| 40604 |16 |No se pudo CREATE/ALTER DATABASE porque superaría la cuota del servidor. |
+| 40532 |11 |No se puede abrir el servidor "%. & #x2a; %.*ls" solicitada por el inicio de sesión de Hola. Error de inicio de sesión de Hola. |
+| 40553 |16 |Hola sesión ha terminado debido al uso excesivo de memoria. Intente modificar la consulta tooprocess menos filas.<br/><br/>*Nota:* reducir el número de Hola de `ORDER BY` y `GROUP BY` operaciones en el código de Transact-SQL ayuda a reducir los requisitos de memoria de saludo de la consulta. |
+| 40604 |16 |Podría no CREATE/ALTER DATABASE porque superaría la cuota de Hola de servidor hello. |
 | 40606 |16 |Adjuntar base de datos no se admite en esta versión de SQL Server. |
 | 40607 |16 |Los inicios de sesión de Windows no se admiten en esta versión de SQL Server. |
 | 40611 |16 |Los servidores pueden tener como máximo 128 reglas de firewall definidas. |
 | 40614 |16 |La dirección IP de inicio de la regla de firewall no puede superar la dirección IP final. |
-| 40615 |16 |No se puede abrir el servidor '{0}' solicitado por el inicio de sesión. No está permitido que el cliente con la dirección IP '{1}' acceda al servidor.  Para habilitar el acceso, use el Portal de bases de datos SQL o ejecute sp_set_firewall_rule en la base de datos maestra para crear una regla de firewall para esta dirección IP o intervalo de direcciones.  Puede tardar hasta cinco minutos que este cambio surta efecto. |
-| 40617 |16 |El nombre de regla de firewall que comienza por <rule name> es demasiado largo. La longitud máxima es 128. |
-| 40618 |16 |El nombre de la regla de firewall no puede estar vacío. |
-| 40620 |16 |Error de inicio de sesión del usuario "%.&#x2a;ls". Error de cambio de contraseña. El cambio de contraseña durante el inicio de sesión no se admite en esta versión de SQL Server. |
+| 40615 |16 |No se puede abrir el servidor '{0}' solicitado por el inicio de sesión de Hola. Cliente con la dirección IP '{1}' no tiene servidor de hello tooaccess.  acceso de tooenable, usar hello Portal de la base de datos de SQL o ejecute sp_set_firewall_rule en la base de datos maestra de hello toocreate una regla de firewall para esta dirección IP o intervalo de direcciones.  Puede tardar minutos toofive para este efecto tootake de cambio. |
+| 40617 |16 |nombre de regla de firewall de Hola que comienza con <rule name> es demasiado largo. La longitud máxima es 128. |
+| 40618 |16 |nombre de regla de firewall de Hello no puede estar vacío. |
+| 40620 |16 |Error de inicio de sesión de Hello para el usuario "%. & #x2a; ls". Error de cambio de contraseña de Hola. El cambio de contraseña durante el inicio de sesión no se admite en esta versión de SQL Server. |
 | 40627 |20 |La operación en el servidor '{0}' y la base de datos '{1}' está en curso. Espere algunos minutos antes de volver a intentarlo. |
-| 40630 |16 |Error de validación de contraseña. La contraseña no cumple los requisitos de directiva porque es demasiado corta. |
-| 40631 |16 |La contraseña especificada es demasiado larga. No debe tener más de 128 caracteres. |
-| 40632 |16 |Error de validación de contraseña. La contraseña no cumple los requisitos de directiva porque no es lo suficientemente compleja. |
+| 40630 |16 |Error de validación de contraseña. Hola contraseña no cumple los requisitos de directiva porque es demasiado corta. |
+| 40631 |16 |contraseña de Hola que especificó es demasiado largo. Hola debe tener no más de 128 caracteres. |
+| 40632 |16 |Error de validación de contraseña. contraseña de Hello no cumple los requisitos de directiva porque no es bastante compleja. |
 | 40636 |16 |No se puede usar un nombre de base de datos reservado '%.&#x2a;ls' en esta operación. |
 | 40638 |16 |Id. de suscripción <identificador_de_suscripción> no válido. La suscripción no existe. |
-| 40639 |16 |La solicitud no se ajusta al esquema: <schema error>. |
-| 40640 |20 |El servidor detectó una excepción inesperada. |
-| 40641 |16 |La ubicación especificada no es válida. |
-| 40642 |17 |El servidor está demasiado ocupado. Inténtelo de nuevo más tarde. |
-| 40643 |16 |El valor del encabezado x-ms-version especificado no es válido. |
-| 40644 |14 |No se pudo autorizar el acceso a la suscripción especificada. |
-| 40645 |16 |El nombre de servidor <servername> no puede estar vacío ni ser NULL. Solo puede contener letras minúsculas de la 'a' a la 'z', los números del 0 al 9 y guiones. El guión no puede estar al principio ni al final del nombre. |
+| 40639 |16 |Solicitud no es conforme tooschema: <schema error>. |
+| 40640 |20 | |servidor de Hello detectó una excepción inesperada. |
+| 40641 |16 |Hola especifica la ubicación no es válida. |
+| 40642 |17 |Hola servidor actualmente está demasiado ocupado. Inténtelo de nuevo más tarde. |
+| 40643 |16 |Hola especifica el valor del encabezado x-ms-version no es válido. |
+| 40644 |14 |Tooauthorize error acceso toohello especifica la suscripción. |
+| 40645 |16 |El nombre de servidor <servername> no puede estar vacío ni ser NULL. Solo puede se compone de letras minúsculas 'a'-'z', números de hello 0-9 y guión Hola. guión de Hello no puede producir o final Hola nombre. |
 | 40646 |16 |El id. de suscripción no puede estar vacío. |
 | 40647 |16 |La suscripción <subscription-id no tiene nombre de servidor. |
 | 40648 |17 |Se han realizado demasiadas solicitudes. Inténtelo de nuevo más tarde. |
 | 40649 |16 |Se ha especificado un content-type no válido. Solo se admite application/xml. |
-| 40650 |16 |La suscripción <subscription-id> no existe o no está lista para la operación. |
-| 40651 |16 |No se pudo crear el servidor porque la suscripción <subscription-id> está deshabilitada. |
+| 40650 |16 |Suscripción < id-suscripción > no existe o no está preparada para el funcionamiento de Hola. |
+| 40651 |16 |No se pudo toocreate server porque la suscripción Hola < id-suscripción > está deshabilitada. |
 | 40652 |16 |No se puede mover ni crear un servidor. La suscripción <subscription-id> superará la cuota de servidor. |
-| 40671 |17 |Error de comunicación entre la puerta de enlace y el servicio de administración. Inténtelo de nuevo más tarde. |
-| 40852 |16 |No se puede abrir la base de datos '%.*ls' del servidor '%.*ls' solicitada por el inicio de sesión. Solo se permite el acceso a la base de datos mediante una cadena de conexión habilitada para seguridad. Para obtener acceso a esta base de datos, modifique las cadenas de conexión que contienen 'secure' en el FQDN de servidor - 'nombre de servidor'.database.windows.net debe cambiarse a 'nombre de servidor'.database.`secure`.windows.net. |
-| 45168 |16 |El sistema de SQL Azure está bajo carga y está colocando un límite superior en operaciones DB CRUD simultáneas para un único servidor (por ejemplo, crear base de datos). El servidor especificado en el mensaje de error ha superado el número máximo de conexiones simultáneas. Inténtelo de nuevo más tarde. |
-| 45169 |16 |El sistema de SQL Azure está bajo carga y está colocando un límite superior en operaciones CRUD de servidor simultáneas para una única suscripción (por ejemplo, crear servidor). La suscripción especificada en el mensaje de error ha superado el número máximo de conexiones simultáneas y se denegó la solicitud. Inténtelo de nuevo más tarde. |
+| 40671 |17 |Error de comunicación entre la puerta de enlace de Hola y el servicio de administración de Hola. Inténtelo de nuevo más tarde. |
+| 40852 |16 |No se puede abrir la base de datos ' %. *ls' en el servidor ' %.* ls' solicitado por el inicio de sesión de Hola. Base de datos de Access toohello solo se permite usar una cadena de conexión con seguridad habilitada. tooaccess esta base de datos, modifique la toocontain de cadenas de conexión 'segura' en el servidor de hello FQDN -.database.windows 'nombreDeServidor'.net debe ser modificada too'server nombre ' base de datos. `secure`. windows.net. |
+| 45168 |16 |Hola sistema SQL Azure está bajo carga y está colocando un límite superior en operaciones DB CRUD simultáneas para un único servidor (por ejemplo, crear base de datos). servidor Hello especificado en el mensaje de error de hello ha superado el número máximo de Hola de conexiones simultáneas. Inténtelo de nuevo más tarde. |
+| 45169 |16 |Hola sistema SQL azure está bajo carga y está colocando un límite superior en el número de Hola de operaciones CRUD de servidor simultáneas para una sola suscripción (por ejemplo, create server). suscripción de Hola especificado en error Hola mensaje superó el número máximo de Hola de conexiones simultáneas y se denegó la solicitud de saludo. Inténtelo de nuevo más tarde. |
 
 ## <a name="related-links"></a>Vínculos relacionados
 * [Características de Azure SQL Database](sql-database-features.md)

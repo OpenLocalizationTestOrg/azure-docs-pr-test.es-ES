@@ -1,6 +1,6 @@
 ---
-title: "Administración de dispositivos con Azure Portal (versión preliminar) | Microsoft Docs"
-description: Aprenda a usar Azure Portal para administrar dispositivos.
+title: dispositivos de aaaManaging mediante Hola portal de Azure - vista previa | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toouse Hola dispositivos toomanage de portal de Azure."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -15,28 +15,28 @@ ms.topic: article
 ms.date: 08/24/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 4b46e1627a229b0649d9ccd2550cd28fda9849f8
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: a39d14e4ce8bb79f0223a9de40d5f1259a869927
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="managing-devices-using-the-azure-portal---preview"></a>Administración de dispositivos con Azure Portal (versión preliminar)
+# <a name="managing-devices-using-hello-azure-portal---preview"></a>Administrar los dispositivos con Hola portal de Azure: obtener una vista previa
 
 >[!NOTE]
->Esta funcionalidad se encuentra actualmente en versión preliminar pública. Debe estar preparado para deshacer o eliminar los cambios. La característica está disponible en cualquier suscripción de Azure Active Directory (Azure AD) durante el período de versión preliminar pública. Pero cuando ya esté disponible con carácter general, algunos aspectos de ella podrían requerir una suscripción Premium de Azure Active Directory.
+>Esta funcionalidad se encuentra actualmente en versión preliminar pública. Prepararán toorevert o quitar los cambios. Hola característica está disponible en ninguna suscripción de Azure Active Directory (Azure AD) durante la vista previa pública. Sin embargo, cuando característica Hola deja de estar disponible con carácter general, algunos aspectos de la característica de hello pueden requerir una suscripción premium a Azure Active Directory.
 
 
 Con la administración de dispositivos en Azure Active Directory (Azure AD), puede asegurarse de que los usuarios tienen acceso a los recursos desde dispositivos que cumplen los estándares de seguridad y cumplimiento. 
 
 En este tema:
 
-- Se da por hecho que está familiarizado con la [introducción a la administración de dispositivos en Azure Active Directory](device-management-introduction.md)
+- Se da por supuesto que está familiarizado con hello [administración toodevice de introducción en Azure Active Directory](device-management-introduction.md)
 
-- Se proporciona información sobre la administración de dispositivos mediante Azure Portal
+- Proporciona información acerca de cómo administrar los dispositivos con Hola portal de Azure
 
 
-Para administrar dispositivos en Azure Portal, debe hacer clic en **Dispositivos** en la sección **Administrar** de la hoja **Azure Active Directory**.
+dispositivos de toomanage Hola portal de Azure, necesita tooclick **dispositivos** en hello **administrar** sección de Hola Hola **Azure Active Directory** hoja.
 
 ![Administración de un dispositivo de Intune](./media/device-management-azure-portal/11.png)
 
@@ -45,25 +45,25 @@ Para administrar dispositivos en Azure Portal, debe hacer clic en **Dispositivos
 
 ## <a name="configure-device-settings"></a>Configuración de dispositivo
 
-Para administrar los dispositivos mediante Azure Portal, estos deben estar registrados o unidos a Azure AD. Como administrador, puede ajustar el proceso de registro y unión de dispositivos al configurar los valores del dispositivo.
+toomanage los dispositivos con hello portal de Azure, que necesitan toobe registrado o Unidos tooAzure AD. Como administrador, puede ajustar el proceso de Hola de registrar y al unir dispositivos al establecer la configuración de dispositivo de Hola.
 
 ![Administración de un dispositivo de Intune](./media/device-management-azure-portal/22.png)
 
 
-La hoja de configuración de dispositivo permite configurar:
+hoja de configuración de dispositivo de Hello permite tooconfigure:
 
-- **Los usuarios pueden inscribir dispositivos en Azure AD**: esta opción permite seleccionar los usuarios que pueden unir dispositivos a Azure AD. El valor predeterminado es **Todos**.
+- **Los usuarios pueden inscribir dispositivos tooAzure AD** : esta configuración permite a los usuarios de tooselect Hola que se pueden unir dispositivos tooAzure AD. valor predeterminado de Hello es **todos los**.
 
-- **Administradores locales adicionales en dispositivos unidos a Azure AD**: puede seleccionar a qué usuarios se conceden derechos de administrador local en un dispositivo. Los usuarios agregados aquí se agregan al rol *Administradores de dispositivos* de Azure AD. De forma predeterminada, a los administradores globales de Azure AD y a los propietarios de dispositivos se les conceden derechos de administrador local. Esta opción es una capacidad de la edición Premium disponible en productos como Azure AD Premium o Enterprise Mobility Suite (EMS). 
+- **Dispositivos Unidos a los administradores locales adicionales de Azure AD** -puede seleccionar los usuarios de Hola que tienen derechos de administrador local en un dispositivo. Los usuarios agregados aquí se agregan toohello *administradores de dispositivos* rol en Azure AD. De forma predeterminada, a los administradores globales de Azure AD y a los propietarios de dispositivos se les conceden derechos de administrador local. Esta opción es una capacidad de edición premium disponible a través de productos como Azure AD Premium o hello Enterprise Mobility Suite (EMS). 
 
-- **Los usuarios pueden registrar sus dispositivos con Azure AD**: debe configurar esta opción para permitir que los dispositivos se registren en Azure AD. Si selecciona **Ninguno**, no se permite a los dispositivos registrarse si no están unidos a Azure AD o a Azure AD híbrido. La inscripción en Microsoft Intune o Administración de dispositivos móviles (MDM) para Office 365 exige registrarse. Si ha configurado alguno de estos servicios, se selecciona **TODOS** y **NINGUNO** no está disponible.
+- **Los usuarios pueden registrar sus dispositivos con Azure AD** -necesita tooconfigure esta toobe de dispositivos de tooallow de configuración registrada con Azure AD. Si selecciona **ninguno**, no se admiten los dispositivos tooregister cuando no estén Unido de Azure AD ni híbrida unido Azure AD. La inscripción en Microsoft Intune o Administración de dispositivos móviles (MDM) para Office 365 exige registrarse. Si ha configurado alguno de estos servicios, se selecciona **TODOS** y **NINGUNO** no está disponible.
 
-- **Requerir Multi-factor Auth para conectar dispositivos**: puede decidir si se exige a los usuarios proporcionar un segundo factor de autenticación para unir su dispositivo a Azure AD. El valor predeterminado es **No**. Se recomienda exigir Multi-Factor Authentication al registrar un dispositivo. Antes de habilitar Multi-Factor Authentication para este servicio, debe asegurarse de que está configurado para los usuarios que registran sus dispositivos. Para más información sobre los distintos servicios de Azure Multi-Factor Authentication, vea [Introducción a Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication-get-started.md). 
+- **Requiere que los dispositivos de la autenticación multifactor toojoin** -puede elegir si los usuarios son tooprovide necesaria una segunda autenticación factor toojoin su tooAzure dispositivo AD. valor predeterminado de Hello es **No**. Se recomienda exigir Multi-Factor Authentication al registrar un dispositivo. Antes de habilitar la autenticación multifactor para este servicio, debe asegurarse de que la autenticación multifactor está configurada para usuarios de Hola que registren sus dispositivos. Para más información sobre los distintos servicios de Azure Multi-Factor Authentication, vea [Introducción a Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication-get-started.md). 
 
-- **Número máximo de dispositivos**: esta opción permite seleccionar el número máximo de dispositivos que puede tener un usuario en Azure AD. Si un usuario alcanza esta cuota, no puede agregar dispositivos adicionales hasta que se quitan uno o varios de los dispositivos existentes. La cuota de dispositivos cuenta todos los dispositivos unidos a Azure AD o registrados en Azure AD hoy. El valor predeterminado es **20**.
+- **Número máximo de dispositivos** -esta opción le permite el número máximo de hello tooselect de dispositivos que puede tener un usuario en Azure AD. Si un usuario alcanza esta cuota, que éstos no estén tooadd capaz de más dispositivos hasta que uno o varios de los dispositivos existentes Hola se quitan. oferta de dispositivo de Hola se cuenta para todos los dispositivos de Azure AD Unido o Azure AD registrado hoy en día. es el valor predeterminado de Hello **20**.
 
-- **Los usuarios pueden sincronizar la configuración y los datos de aplicaciones en distintos dispositivos**: de forma predeterminada, esta opción se establece en **NINGUNO**. La selección de usuarios o grupos concretos o de TODOS permite sincronizar la configuración y los datos de aplicación del usuario en sus dispositivos Windows 10. Más información sobre cómo funciona la sincronización en Windows 10.
-Esta opción es una capacidad Premium disponible en productos como Azure AD Premium o Enterprise Mobility Suite (EMS).
+- **Los usuarios pueden sincronizar la configuración y los datos de aplicación en todos los dispositivos** : de forma predeterminada, esta opción se establece demasiado**NONE**. Selección de usuarios específicos o grupos o todos permite configuración del usuario de Hola y toosync de datos de aplicación a través de sus dispositivos Windows 10. Más información sobre cómo funciona la sincronización en Windows 10.
+Esta opción es una capacidad de premium disponible a través de productos como Azure AD Premium o hello Enterprise Mobility Suite (EMS).
  
     ![Administración de un dispositivo de Intune](./media/device-management-azure-portal/21.png)
 
@@ -72,27 +72,27 @@ Esta opción es una capacidad Premium disponible en productos como Azure AD Prem
 
 ## <a name="locate-devices"></a>Búsqueda de dispositivos
 
-Como administrador, en Azure Portal tiene dos opciones para buscar dispositivos registrados y unidos:
+Como administrador, Hola portal de Azure, tienes dos opciones toolocate registró y unió dispositivos:
 
-- **Todos los dispositivos** en la sección **Administrar** de la hoja **Dispositivos**  
+- **Todos los dispositivos** en hello **administrar** sección de hello **dispositivos** hoja  
 
     ![Todos los dispositivos](./media/device-management-azure-portal/41.png)
 
 
-- **Dispositivos** en la sección **Administrar** de la hoja **Usuarios**
+- **Dispositivos** en hello **administrar** sección de un **usuario** hoja
  
     ![Todos los dispositivos](./media/device-management-azure-portal/43.png)
 
 
 
-Con ambas opciones, puede ir a una vista que:
+Con ambas opciones, puede obtener vista tooa:
 
 
-- Permite buscar dispositivos si se usa el nombre para mostrar como filtro.
+- Le permite toosearch para dispositivos con nombre para mostrar hello como filtro.
 
 - Proporciona información general detallada de los dispositivos registrados y unidos.
 
-- Permite realizar tareas comunes de administración de dispositivos.
+- Le permite tooperform tareas comunes de la administración de dispositivos
    
 
 ![Todos los dispositivos](./media/device-management-azure-portal/51.png)
@@ -100,7 +100,7 @@ Con ambas opciones, puede ir a una vista que:
 
 ## <a name="device-management-tasks"></a>Tareas de administración de dispositivos
 
-Como administrador, puede administrar los dispositivos registrados o unidos. En esta sección se proporciona información sobre las tareas comunes de administración de dispositivos.
+Como administrador, puede administrar Hola registrado o dispositivos Unidos a un. En esta sección se proporciona información sobre las tareas comunes de administración de dispositivos.
 
 
 **Administrar un dispositivo de Intune**: si es administrador de Intune, puede administrar los dispositivos marcados como **Microsoft Intune**. Un administrador puede ver dispositivos adicionales 
@@ -110,38 +110,38 @@ Como administrador, puede administrar los dispositivos registrados o unidos. En 
 
 **Habilitar o deshabilitar un dispositivo de Azure AD**
 
-Para habilitar o deshabilitar un dispositivo, debe ser administrador global en Azure AD. Al deshabilitar un dispositivo se evita que acceda a los recursos de Azure AD.  Para deshabilitar el dispositivo, puede hacer clic en *...* o hacer clic en el dispositivo para obtener más detalles.
+tooenable o deshabilitar un dispositivo, deberá toobe un administrador global en Azure AD. Al deshabilitar un dispositivo se evita que acceda a los recursos de Azure AD.  dispositivo de hello toodisable, puede hacer clic en *...* Haga clic en el dispositivo de Hola para obtener más detalles.
 
  
 ![Administración de un dispositivo de Intune](./media/device-management-azure-portal/33.png)
 
-Al deshabilitar un dispositivo, el estado de la columna **HABILITADO** cambia a **No**.
+Al deshabilitar un dispositivo cambia el estado de Hola Hola **habilitado** columna demasiado**No**.
 
 ![Deshabilitación de un dispositivo](./media/device-management-azure-portal/32.png)
 
 
-**Eliminar un dispositivo de Azure AD**: para eliminar un dispositivo, debe ser administrador global en Azure AD.  
+**Eliminar un dispositivo de Azure AD** -toodelete un dispositivo, deberá toobe un administrador global de Azure AD.  
 La eliminación de un dispositivo:
  
 - Evita que un dispositivo acceda a los recursos de Azure AD 
 
-- Quita todos los detalles asociados al dispositivo, por ejemplo, las claves de BitLocker de dispositivos Windows  
+- Quita todos los detalles que se adjunta toohello dispositivo, por ejemplo, las claves de BitLocker para dispositivos Windows  
 
 - Representa una actividad no recuperable y no se recomienda a menos que sea necesaria
 
-Si un dispositivo está administrado por otra entidad de administración (por ejemplo, Microsoft Intune), asegúrese de que el dispositivo se haya borrado o retirado antes de eliminarlo de Azure AD.
+Si un dispositivo está administrado por otra entidad de administración (por ejemplo, Microsoft Intune), asegúrese de que dicho dispositivo Hola se ha borrado / retirado antes de eliminar el dispositivo de hello en Azure AD.
 
-Puede seleccionar "..." para eliminar el dispositivo o hacer clic en él para obtener más detalles
+Puede seleccionar "..." dispositivo de hello toodelete o haga clic en el dispositivo de Hola para obtener más detalles
  
 ![Eliminar un dispositivo](./media/device-management-azure-portal/34.png)
 
 
-**Ver o copiar el identificador de dispositivo**: puede usar un identificador de dispositivo para comprobar los detalles del identificador de dispositivo en el dispositivo o usar PowerShell durante la solución de problemas. Para acceder a la opción de copia, haga clic en el dispositivo.
+**Ver o copiar el Id. de dispositivo** : puede usar un detalles del Id. de dispositivo de dispositivo ID tooverify Hola de dispositivo de Hola o con PowerShell durante la solución de problemas. tooaccess Hola copia opción, haga clic en el dispositivo de Hola.
 
 ![Visualización de identificador de dispositivo](./media/device-management-azure-portal/35.png)
   
 
-**Ver o copiar las claves de BitLocker**: si es administrador, puede ver y copiar las claves de BitLocker para ayudar a los usuarios a recuperar su unidad cifrada. Estas claves solo están disponibles para dispositivos Windows cifrados y con las claves almacenadas en Azure AD. Puede copiar estas claves al acceder a los detalles del dispositivo.
+**Ver o copiar las claves de BitLocker** -si eres un administrador, puede ver y Hola copia BitLocker claves toohelp toorecover de los usuarios de su unidad cifrada. Estas claves solo están disponibles para dispositivos Windows cifrados y con las claves almacenadas en Azure AD. Puede copiar estas claves al tener acceso a los detalles del dispositivo de Hola.
  
 ![Visualización de claves de BitLocker](./media/device-management-azure-portal/36.png)
 
@@ -150,37 +150,37 @@ Puede seleccionar "..." para eliminar el dispositivo o hacer clic en él para ob
 ## <a name="audit-logs"></a>Registros de auditoría
 
 
-Las actividades de un dispositivo están disponibles a través de los registros de actividad. Esto incluye actividades desencadenadas por el servicio de registro de dispositivos o por el usuario:
+Hola dispositivo actividades están disponibles a través de los registros de actividad de Hola. Esto incluye actividades desencadenadas por el servicio de registro de dispositivo de Hola o por el usuario de hello:
 
-- Creación de dispositivos e incorporación de propietarios o usuarios al dispositivo
+- Creación de dispositivos y agregar propietarios o los usuarios en el dispositivo de Hola
 
-- Cambios en la configuración de un dispositivo
+- Cambia la configuración de toodevice
 
 - Operaciones de dispositivo como eliminar o actualizar un dispositivo
  
-El punto de entrada a los datos de auditoría es **Registros de auditoría**, en la sección **Actividad** de la hoja **Dispositivos*.
+Es el toohello de punto de entrada, datos de auditoría **registros de auditoría** en hello **actividad** sección de hello **dispositivos* hoja.
 
 ![Registros de auditoría](./media/device-management-azure-portal/61.png)
 
 
 Un registro de auditoría tiene una vista de lista predeterminada que muestra:
 
-- la fecha y hora de la repetición
+- Hola fecha y hora de aparición de Hola
 
-- los destinos
+- destinos de Hola
 
-- el iniciador o actor (quién) de una actividad
+- Hola iniciador / actor (que) de una actividad
 
-- la actividad (qué)
+- actividad de Hello (¿qué)
 
 ![Registros de auditoría](./media/device-management-azure-portal/63.png)
 
-Puede personalizar la vista de lista, haga clic en **Columnas** en la barra de herramientas.
+Puede personalizar la vista de lista Hola haciendo clic en **columnas** en la barra de herramientas de Hola.
  
 ![Registros de auditoría](./media/device-management-azure-portal/64.png)
 
 
-Para restringir los datos del informe a un nivel que se adapte a sus necesidades, puede filtrar los datos de auditoría con los siguientes campos:
+toonarrow hacia abajo Hola informó de un nivel de tooa de datos que funciona para usted, puede filtrar datos de auditoría de hello mediante Hola siguientes campos:
 
 - Categoría
 - Tipo de recurso de actividad
@@ -189,13 +189,13 @@ Para restringir los datos del informe a un nivel que se adapte a sus necesidades
 - Destino
 - Iniciado por (actor)
 
-Además de los filtros, puede buscar entradas concretas.
+Además toohello filtros, puede buscar entradas específicas.
 
 ![Registros de auditoría](./media/device-management-azure-portal/65.png)
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-* [Introducción a la administración de dispositivos en Azure Active Directory](device-management-introduction.md)
+* [Administración de toodevice de introducción en Azure Active Directory](device-management-introduction.md)
 
 
 

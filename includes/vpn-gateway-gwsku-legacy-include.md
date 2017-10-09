@@ -1,14 +1,14 @@
-Las SKU de puertas de enlace de VPN heredadas (antiguas) son:
+Hola heredado (antiguo) puerta de enlace VPN SKU son:
 
 * Básica
 * Estándar
 * HighPerformance
 
-La VPN Gateway no utiliza la SKU de puerta de enlace de UltraPerformance. Para obtener información acerca de la SKU de UltraPerformance, consulte la documentación de [ExpressRoute](../articles/expressroute/expressroute-about-virtual-network-gateways.md).
+Puerta de enlace de VPN no utiliza la puerta de enlace de hello UltraPerformance SKU. Para obtener información acerca de hello UltraPerformance SKU, vea hello [ExpressRoute](../articles/expressroute/expressroute-about-virtual-network-gateways.md) documentación.
 
-Cuando trabaje con las SKU heredadas, tenga en cuenta lo siguiente:
+Cuando se trabaja con Hola SKU heredadas, tenga en cuenta los siguiente hello:
 
-* Si desea utilizar un tipo de VPN PolicyBased, debe utilizar la SKU de nivel Básico. Las VPN PolicyBased (que anteriormente se denominaba enrutamiento estático) no se admiten en otra SKU.
-* BGP no es compatible con la SKU de nivel Básico.
-* Las configuraciones de la coexistencia de ExpressRoute-VPN Gateway no se admiten en la SKU de nivel Básico.
-* Las conexiones de VPN Gateway S2S activo/activo solo pueden configurarse en la SKU HighPerformance.
+* Si desea toouse un tipo de PolicyBased VPN, debe usar hello SKU básica. Las VPN PolicyBased (que anteriormente se denominaba enrutamiento estático) no se admiten en otra SKU.
+* BGP no se admite en hello SKU básica.
+* Coexistencia de puerta de enlace VPN de ExpressRoute no se admiten configuraciones en hello SKU básica.
+* Conexiones de puerta de enlace de VPN de S2S de activo / activo pueden configurarse en hello HighPerformance SKU.

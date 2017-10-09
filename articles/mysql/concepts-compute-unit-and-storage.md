@@ -1,6 +1,6 @@
 ---
 title: "Explicación de las unidades de proceso en Azure Database for MySQL | Microsoft Docs"
-description: "Azure Database for MySQL: en este artículo se explica el concepto de unidades de proceso y lo que sucede cuando se alcanza el número máximo de tales unidades en la carga de trabajo."
+description: "Base de datos de Azure para MySQL: este artículo se explican conceptos de Hola de unidades de proceso y lo que ocurre cuando la carga de trabajo alcanza Hola la capacidad máxima de proceso."
 services: mysql
 author: jasonwhowell
 ms.author: jasonh
@@ -9,38 +9,38 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
 ms.date: 05/23/2017
-ms.openlocfilehash: a82c283df688d36cd284973312e276f30ed893c0
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 751b4fff2760e55565e2bc80d49db17a57397779
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="explaining-compute-units-in-azure-database-for-mysql"></a>Explicación de las unidades de proceso en Azure Database for MySQL
-En este artículo se explica el concepto de unidades de proceso y lo que sucede cuando se alcanza el número máximo de tales unidades en la carga de trabajo.
+Este artículo explica el concepto de Hola de unidades de proceso y lo que ocurre cuando la carga de trabajo alcanza Hola la capacidad máxima de proceso.
 
 ## <a name="what-are-compute-units"></a>¿Qué son las unidades de proceso?
-Las unidades de proceso son una medida del rendimiento de procesamiento de la CPU cuya disponibilidad está garantizada para un único servidor de Azure Database for MySQL. Una unidad de proceso es una medida combinada de recursos de CPU y memoria. Por lo general, 50 unidades de proceso equivalen a medio núcleo. 100 unidades de proceso equivalen a un núcleo. 2000 unidades de proceso equivalen a una disponibilidad de rendimiento de procesamiento de veinte núcleos garantizada para el servidor.
+Proceso de unidades son una medida de rendimiento de procesamiento de CPU que se garantiza toobe disponible tooa única base de datos de MySQL server. Una unidad de proceso es una medida combinada de recursos de CPU y memoria. En general, 50 unidades de proceso equivaler toohalf de un núcleo. 100 unidades de proceso equivaler tooone core. Unidades de proceso de 2000 equivaler tootwenty núcleos del servidor de procesamiento garantizada rendimiento tooyour disponible.
 
-La cantidad de memoria por unidad de proceso está optimizada para los planes de tarifa Básico y Estándar. Duplicar las unidades de proceso aumentando el nivel de rendimiento equivale a duplicar el conjunto de recursos disponibles para ese único servidor de Azure Database for MySQL.
+cantidad de Hola de memoria por unidad de proceso se optimiza para hello Basic y niveles de precios estándar. Duplica Hola proceso unidades aumentando el nivel de rendimiento de hello equivale toodoubling Hola formado por recursos disponibles toothat única base de datos de MySQL.
 
-Por ejemplo, 800 unidades de proceso de un plan Estándar proporcionan 8 veces más rendimiento de CPU y memoria que una configuración Estándar con 100 unidades de proceso. Sin embargo, mientras que 100 unidades de proceso de un plan Estándar proporcionan el mismo rendimiento de CPU que 100 unidades de proceso de uno Básico, la cantidad de memoria preconfigurada en el plan de tarifa Estándar es el doble de la configurada para el Básico. Por tanto, el plan de tarifa Estándar ofrece un mejor rendimiento para cargas de trabajo y una menor latencia en las transacciones que el Básico con las mismas unidades de proceso seleccionadas.
+Por ejemplo, 800 unidades de proceso de un plan Estándar proporcionan 8 veces más rendimiento de CPU y memoria que una configuración Estándar con 100 unidades de proceso. Sin embargo, mientras que las unidades de proceso de 100 estándar ofrecen Hola mismo rendimiento de CPU en comparación con tooBasic 100 unidades de proceso, Hola de memoria que está preconfigurado en el nivel de precios estándar es double Hola cantidad de memoria configurada para el nivel de precios de Basic. Por lo tanto, nivel de precios estándar proporciona un mejor rendimiento de carga de trabajo y menor latencia de las transacciones de nivel de precios básico con hello que mismas unidades de proceso seleccionada.
 
-## <a name="how-can-i-determine-the-number-of-compute-units-needed-for-my-workload"></a>¿Cómo puedo determinar el número de unidades de proceso necesarias para la carga de trabajo?
-Si lo que quiere es migrar un servidor de MySQL que se esté ejecutando en un entorno local o una máquina virtual, puede calcular de forma estimada cuántos núcleos de rendimiento de procesamiento necesita su carga de trabajo para determinar el número de unidades de proceso. 
+## <a name="how-can-i-determine-hello-number-of-compute-units-needed-for-my-workload"></a>¿Cómo se puede determinar el número de Hola de unidades de proceso necesarios para la carga de trabajo?
+Si desea toomigrate un servidor MySQL existente que se ejecuta de forma local o en una máquina virtual, puede determinar Hola número de unidades de proceso calculando el número de núcleos del rendimiento de procesamiento de la carga de trabajo necesita. 
 
 Si el servidor del entorno local o de la máquina virtual está usando actualmente 4 núcleos (sin contar el hiperproceso de CPU), empiece por configurar 400 unidades de proceso para el servidor de Azure Database for MySQL. Las unidades de proceso se pueden escalar o reducir verticalmente y de forma dinámica en función de las necesidades de la carga de trabajo sin apenas tiempo de inactividad de las aplicaciones. 
 
-Supervise el grafo de métricas de Azure Portal o escriba comandos de CLI de Azure para medir las unidades de proceso. Las métricas pertinentes que se deben supervisar son el porcentaje de unidades de proceso y el límite de unidades de proceso.
+Gráfico de métricas de monitor Hola Hola Azure portal o escritura CLI de Azure comandos - toomeasure unidades de proceso. Toomonitor de métricas pertinente son el porcentaje de la unidad de proceso de Hola y límite de unidad de proceso.
 
 >[!IMPORTANT]
-> Si detecta que las E/S por segundo del almacenamiento no se usan a máxima capacidad, considere supervisar también la utilización de las unidades de proceso. Aumentar el número de unidades de proceso puede incrementar el rendimiento de E/S reduciendo los cuellos de botella de rendimiento que se producen debido a limitaciones en la CPU o la memoria.
+> Si encuentra almacenamiento IOPS no son totalmente utiliza toohello máximo, considere la posibilidad de supervisión de uso de unidades de proceso de hello así. Cuando se genera Hola proceso unidades puede permiten un mayor rendimiento de E/S por lo que reduce cuello de botella de rendimiento de hello debido toolimited CPU o memoria.
 
 ## <a name="what-happens-when-i-hit-my-maximum-compute-units"></a>¿Qué ocurre cuando se alcanza el número máximo de unidades de proceso?
-Los niveles de rendimiento se calibran y regulan para proporcionar recursos para ejecutar la carga de trabajo de la base de datos hasta los límites máximos del plan de tarifa y el nivel de rendimiento seleccionados. 
+Los niveles de rendimiento estén calibrados y rigen tooprovide recursos toorun la carga de trabajo de la base de datos los límites de max toohello de tarifa seleccionado hello y nivel de rendimiento. 
 
-Si la carga de trabajo alcanza los límites máximos de unidades de proceso o de E/S por segundo provistas, puede continuar usando los recursos al nivel máximo permitido, pero es probable que perciba un aumento de las latencias de las consultas. Alcanzar estos límites no provocará errores, sino una ralentización de la carga de trabajo, a menos que esta ralentización sea tan grave que empiece a agotarse el tiempo de espera de las consultas. 
+Si la carga de trabajo alcanza los límites máximos de hello en ser Hola proceso unidades o los límites IOPS aprovisionados, puede continuar tooutilize recursos de Hola a nivel máximo permitido de hello, pero las consultas son las latencias de toosee probable aumentado. Estos límites no dan lugar a errores, pero en su lugar una ralentización de la carga de trabajo de hello, a menos que esté tan grave que el tiempo de espera de consulta ralentización Hola. 
 
-Si la carga de trabajo alcanza los límites máximos de número de conexiones, se producen errores explícitos. Para obtener más información sobre los límites de los recursos, consulte [Limitaciones en Azure Database for MySQL](concepts-limits.md).
+Si la carga de trabajo alcanza el límite máximo de hello en número de conexiones, se producen errores explícitos. Para obtener más información sobre los límites de los recursos, consulte [Limitaciones en Azure Database for MySQL](concepts-limits.md).
 
 ## <a name="next-steps"></a>Pasos siguientes
 Para obtener más información sobre los planes de tarifa, consulte [Planes de tarifa de Azure Database for MySQL](./concepts-service-tiers.md).

@@ -1,4 +1,4 @@
 > [!TIP]
 >
-> Si planea usar los enlaces HTTP o WebHook, debe evitar el agotamiento de puertos que puede deberse a la creación incorrecta de instancias de `HttpClient`. Para más información, consulte el artículo [Improper Instantiation antipattern](https://docs.microsoft.com/en-us/azure/architecture/antipatterns/improper-instantiation/) (Antipatrón de creación incorrecta de instancias).
+> Si tiene previsto toouse Hola HTTP o enlaces de WebHook, planear el agotamiento de puertos tooavoid que puede estar causado por la creación de instancias incorrecta de `HttpClient`. Para obtener más información, lea el artículo hello [antipattern de creación de instancias incorrecta](https://docs.microsoft.com/en-us/azure/architecture/antipatterns/improper-instantiation/).
 >

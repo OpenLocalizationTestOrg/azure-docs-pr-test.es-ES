@@ -1,6 +1,6 @@
 ---
-title: "Personalización de los clústeres de HDInsight con Bootstrap - Azure | Microsoft Docs"
-description: "Obtenga información acerca de cómo personalizar clústeres de HDInsight con bootstrap."
+title: "Clústeres de HDInsight con arranque: Azure aaaCustomize | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toocustomize HDInsight clústeres utilizando el arranque."
 services: hdinsight
 documentationcenter: 
 author: mumian
@@ -16,15 +16,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
-ms.openlocfilehash: c7a6fafa90eac66774d564c82c926c662baf784c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0029680fd1aa0e9e6aa9cdf667256c31b7ddc565
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>Personalización de los clústeres de HDInsight con Bootstrap
 
-Es probable que en ocasiones desee establecer los valores de archivos de configuración, que incluyen lo siguiente:
+A veces, desea que los archivos de configuración de tooconfigure hello, que incluyen:
 
 * clusterIdentity.xml
 * core-site.xml
@@ -42,7 +42,7 @@ Es probable que en ocasiones desee establecer los valores de archivos de configu
 * webhcat-site.xml
 * yarn-site.xml
 
-Hay tres métodos para usar bootstrap:
+Hay tres toouse métodos arranque:
 
 * Uso de Azure PowerShell
 * Uso del SDK de .NET
@@ -50,12 +50,12 @@ Hay tres métodos para usar bootstrap:
 
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
-Para obtener información sobre cómo instalar más componentes en el clúster de HDInsight durante la creación, vea:
+Para obtener información acerca de cómo instalar componentes adicionales en el clúster de HDInsight durante el tiempo de creación de hello, vea:
 
 * [Personalización de clústeres de HDInsight mediante la acción de scripts (Linux)](hdinsight-hadoop-customize-cluster-linux.md)
 
 ## <a name="use-azure-powershell"></a>Uso de Azure PowerShell
-El siguiente código de PowerShell personaliza una configuración de Hive:
+Hola siguiente código de PowerShell personaliza una configuración de Hive:
 
     # hive-site.xml configuration
     $hiveConfigValues = @{ "hive.metastore.client.socket.timeout"="90" }
@@ -80,19 +80,19 @@ El siguiente código de PowerShell personaliza una configuración de Hive:
 
 En el [Anexo A](#hdinsight-hadoop-customize-cluster-bootstrap.md/appx-a:-powershell-sample)aparece un script de PowerShell completamente en uso.
 
-**Para comprobar el cambio:**
+**cambio de Hola tooverify:**
 
-1. Inicie sesión en el [Portal de Azure](https://portal.azure.com).
-2. Haga clic en **Clústeres de HDInsight** en el menú de la izquierda. Si no lo ve, haga clic primero en **Más servicios**.
-3. Haga clic en el clúster que acaba de crear mediante el script de PowerShell.
-4. Haga clic en el **Panel** desde la parte superior de la hoja para abrir la IU de Ambari.
-5. Haga clic en **Hive** en el menú izquierdo.
+1. Inicio de sesión toohello [portal de Azure](https://portal.azure.com).
+2. Hola menú izquierdo, haga clic en **clústeres de HDInsight**. Si no lo ve, haga clic primero en **Más servicios**.
+3. Haga clic en el clúster de Hola que acaba de crear mediante script de PowerShell de Hola.
+4. Haga clic en **panel** de arriba Hola de hello hoja tooopen Hola Ambari UI.
+5. Haga clic en **Hive** desde el menú de la izquierda Hola.
 6. Haga clic en **HiveServer2** en **Summary** (Resumen).
-7. Seleccione la pestaña **Configs** (Configuraciones).
-8. Haga clic en **Hive** en el menú izquierdo.
-9. Haga clic en la pestaña **Advanced** (Opciones avanzadas).
+7. Haga clic en hello **configuraciones** ficha.
+8. Haga clic en **Hive** desde el menú de la izquierda Hola.
+9. Haga clic en hello **avanzadas** ficha.
 10. Desplácese hacia abajo y expanda **Advanced hive-site**(Sitio de Hive avanzado).
-11. Busque **hive.metastore.client.socket.timeout** en la sección.
+11. Busque **hive.metastore.client.socket.timeout** en la sección de Hola.
 
 Otros ejemplos de cómo personalizar otros archivos de configuración:
 
@@ -111,7 +111,7 @@ Otros ejemplos de cómo personalizar otros archivos de configuración:
 Para más información, vea el blog de Azim Uddin titulado [Customizing HDInsight Cluster creation](http://blogs.msdn.com/b/bigdatasupport/archive/2014/04/15/customizing-hdinsight-cluster-provisioning-via-powershell-and-net-sdk.aspx)(Personalización de la creación de clústeres de HDInsight).
 
 ## <a name="use-net-sdk"></a>Uso del SDK de .NET
-Consulte [Crear clústeres basados en Linux en HDInsight con el SDK de .NET](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md#use-bootstrap).
+Vea [basados en Linux crear clústeres de HDInsight utilizando Hola .NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md#use-bootstrap).
 
 ## <a name="use-resource-manager-template"></a>Uso de plantillas de Resource Manager
 Puede usar Bootstrap en la plantilla de Resource Manager:
@@ -129,7 +129,7 @@ Puede usar Bootstrap en la plantilla de Resource Manager:
 ![HDInsight Hadoop personaliza la plantilla de Azure Resource Manager de Bootstrap del clúster](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
 
 ## <a name="see-also"></a>Otras referencias
-* En [Creación de clústeres de Hadoop en HDInsight][hdinsight-provision-cluster] se proporcionan instrucciones sobre cómo crear un clúster de HDInsight con otras opciones personalizadas.
+* [Crear clústeres de Hadoop en HDInsight] [ hdinsight-provision-cluster] proporciona instrucciones sobre cómo toocreate una HDInsight de clúster mediante el uso de otras opciones personalizadas.
 * [Desarrollo de acciones de script con HDInsight][hdinsight-write-script]
 * [Instalación y uso de Spark en clústeres de HDInsight][hdinsight-install-spark]
 * [Instalación y uso de R en clústeres de Hadoop de HDInsight][hdinsight-install-r]
@@ -181,10 +181,10 @@ Este script de PowerShell crea un clúster de HDInsight y personaliza una config
     $ErrorActionPreference = "Stop"
 
     ####################################
-    # Connect to Azure
+    # Connect tooAzure
     ####################################
-    #region - Connect to Azure subscription
-    Write-Host "`nConnecting to your Azure subscription ..." -ForegroundColor Green
+    #region - Connect tooAzure subscription
+    Write-Host "`nConnecting tooyour Azure subscription ..." -ForegroundColor Green
     try{Get-AzureRmContext}
     catch{Login-AzureRmAccount}
     #endregion
@@ -198,7 +198,7 @@ Este script de PowerShell crea un clúster de HDInsight y personaliza una config
         -Name  $resourceGroupName `
         -Location $location
 
-    Write-Host "Creating the default storage account and default blob container ..."  -ForegroundColor Green
+    Write-Host "Creating hello default storage account and default blob container ..."  -ForegroundColor Green
     New-AzureRmStorageAccount `
         -ResourceGroupName $resourceGroupName `
         -Name $defaultStorageAccountName `
@@ -213,7 +213,7 @@ Este script de PowerShell crea un clúster de HDInsight y personaliza una config
                                     -StorageAccountKey $defaultStorageAccountKey
     New-AzureStorageContainer `
         -Name $defaultBlobContainerName `
-        -Context $defaultStorageContext #use the cluster name as the container name
+        -Context $defaultStorageContext #use hello cluster name as hello container name
 
     ####################################
     # Create a configuration object
@@ -249,7 +249,7 @@ Este script de PowerShell crea un clúster de HDInsight y personaliza una config
         -Config $config
 
     ####################################
-    # Verify the cluster
+    # Verify hello cluster
     ####################################
     Get-AzureRmHDInsightCluster -ClusterName $hdinsightClusterName
 

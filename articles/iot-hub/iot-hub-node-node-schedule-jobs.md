@@ -1,6 +1,6 @@
 ---
-title: "Cómo programar trabajos con IoT Hub de Azure | Microsoft Docs"
-description: "Cómo programar un trabajo de IoT Hub de Azure para invocar un método directo en varios dispositivos. El SDK de IoT de Azure para Node.js se usa para implementar la aplicación de dispositivo simulado y una aplicación de servicio para ejecutar el trabajo."
+title: trabajos de aaaSchedule con el centro de IoT de Azure (nodo) | Documentos de Microsoft
+description: "¿Cómo tooschedule un centro de IoT de Azure trabajo tooinvoke un método directo en varios dispositivos. Utilice hello Azure IoT SDK para aplicaciones de dispositivos de Node.js tooimplement Hola simulado y un trabajo de Hola de toorun de aplicación de servicio."
 services: iot-hub
 documentationcenter: .net
 author: juanjperez
@@ -14,43 +14,43 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/30/2016
 ms.author: juanpere
-ms.openlocfilehash: 42e594dc6a8a8be619b5652bf8e44cf883650489
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: be293362447fbcddaa3433b66f208f22545fe0c2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="schedule-and-broadcast-jobs-node"></a>Programación y difusión de trabajos (Node)
 
 [!INCLUDE [iot-hub-selector-schedule-jobs](../../includes/iot-hub-selector-schedule-jobs.md)]
 
-IoT Hub de Azure es un servicio completamente administrado que permite a una aplicación back-end crear y realizar un seguimiento de los trabajos que programan y actualizan millones de dispositivos.  Los trabajos pueden utilizarse para las siguientes acciones:
+Centro de IoT de Azure es un servicio completamente administrado que permite un toocreate de aplicaciones back-end y los trabajos de seguimiento que el programa y actualización millones de dispositivos.  Los trabajos pueden utilizarse para hello siguientes acciones:
 
 * Actualizar las propiedades deseadas
 * Actualizar etiquetas
 * Invocar métodos directos
 
-Conceptualmente, un trabajo contiene una de estas acciones y realiza un seguimiento del progreso de ejecución en un conjunto de dispositivos, que define una consulta de dispositivo gemelo.  Por ejemplo, una aplicación back-end puede usar un trabajo para invocar un método de reinicio en 10 000 dispositivos, especificado por una consulta de dispositivos gemelos y programada en el futuro.  Esa aplicación puede después seguir el progreso cuando cada uno de estos dispositivos reciben y ejecutan el método de reinicio.
+Conceptualmente, un trabajo contiene una de estas acciones y pistas Hola progreso de la ejecución con un conjunto de dispositivos, que se define mediante una consulta de gemelas de dispositivo.  Por ejemplo, una aplicación de back-end puede utilizar un trabajo tooinvoke un método de reinicio en 10.000 dispositivos, especificado por una consulta de gemelas de dispositivo y programada en el futuro.  Esa aplicación, a continuación, puede seguir el progreso de cada uno de los dispositivos de recepción y ejecutar el método de reinicio de Hola.
 
 Más información sobre estas funcionalidades en estos artículos:
 
-* Dispositivo gemelo y propiedades: [Introducción a los dispositivos gemelos][lnk-get-started-twin] y [Tutorial: Uso de las propiedades deseadas para configurar dispositivos][lnk-twin-props]
+* Gemelos de dispositivo y propiedades: [empezar a trabajar con: los gemelos de dispositivo] [ lnk-get-started-twin] y [Tutorial: cómo toouse dispositivo dos propiedades][lnk-twin-props]
 * Métodos directos: [Guía del desarrollador de IoT Hub: métodos directos][lnk-dev-methods] y [Tutorial: Uso de métodos directos][lnk-c2d-methods]
 
 En este tutorial se muestra cómo realizar las siguientes acciones:
 
-* Crear una aplicación de dispositivo simulado con un método directo que permita **lockDoor** que se pueda llamar por la solución back-end.
-* Crear una aplicación de consola de Node.js que llame al método directo **lockDoor** en la aplicación de dispositivo simulado mediante un trabajo y actualice las propiedades deseadas mediante un trabajo de dispositivo.
+* Crear una aplicación de dispositivo simulado que tiene un método directo que permite **lockDoor** que puede llamarse mediante Hola solución back-end.
+* Crear una aplicación de consola Node.js ese Hola llamadas **lockDoor** método directo en aplicación de dispositivo simulado de hello mediante un Hola de trabajo y las actualizaciones de las propiedades con un trabajo del dispositivo adecuadas.
 
-Al final de este tutorial tendrá dos aplicaciones de consola de Node.js:
+Al final de Hola de este tutorial, tiene dos aplicaciones de consola de Node.js:
 
-**simDevice.js**, que se conecta al centro de IoT con la identidad del dispositivo y recibe un método directo **lockDoor**.
+**simDevice.js**, que se conecta el centro de IoT tooyour con la identidad del dispositivo hello y recibe un **lockDoor** método directo.
 
-**scheduleJobService.js**, que llama a un método directo en la aplicación de dispositivo simulado y actualiza las propiedades deseadas del dispositivo gemelo mediante un trabajo.
+**scheduleJobService.js**, que llama a un método directo en el dispositivo de Hola de aplicación y la actualización del dispositivo simulado Hola propiedades deseadas de gemelas con un trabajo.
 
-Para completar este tutorial, necesitará lo siguiente:
+toocomplete este tutorial, necesita Hola siguientes:
 
-* Node.js versión 0.12.x o posteriores. <br/>  En [Preparación del entorno de desarrollo][lnk-dev-setup] se describe cómo instalar Node.js para este tutorial en Windows o Linux.
+* Node.js versión 0.12.x o posteriores. <br/>  [Preparar el entorno de desarrollo] [ lnk-dev-setup] describe cómo tooinstall Node.js para este tutorial en Windows o Linux.
 * Una cuenta de Azure activa. (En caso de no tenerla, puede crear una [cuenta gratuita][lnk-free-trial] en solo unos minutos).
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
@@ -58,20 +58,20 @@ Para completar este tutorial, necesitará lo siguiente:
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
 ## <a name="create-a-simulated-device-app"></a>Creación de una aplicación de dispositivo simulado
-En esta sección, creará una aplicación de consola de Node.js que responde a un método directo que se invoca desde la nube, que desencadena un reinicio del dispositivo simulado y utiliza las propiedades notificadas para habilitar consultas en el dispositivo gemelo con el fin de identificar los dispositivos y cuándo se reiniciaron por última vez.
+En esta sección, creará una aplicación de consola de Node.js que responde tooa método directo llamado a la nube de hello, lo que desencadena un reinicio del dispositivo simulado y utiliza Hola notificado propiedades tooenable dispositivos gemelas consultas tooidentify dispositivos y cuando reinició por última vez.
 
-1. Cree una nueva carpeta vacía denominada **simDevice**.  En la carpeta **simDevice**, cree un archivo package.json con el siguiente comando en el símbolo del sistema.  Acepte todos los valores predeterminados:
+1. Cree una nueva carpeta vacía denominada **simDevice**.  Hola **simDevice** carpeta, cree un archivo de package.json mediante Hola siguiente comando en el símbolo del sistema.  Acepte todos los valores predeterminados de hello:
    
     ```
     npm init
     ```
-2. En el símbolo del sistema, en la carpeta **simDevice**, ejecute el siguiente comando para instalar el paquete del SDK de dispositivo **azure-iot-device** y el paquete **azure-iot-device-mqtt**:
+2. En el símbolo del sistema en hello **simDevice** carpeta, ejecute hello después comando tooinstall hello **dispositivos de iot de azure** paquete del SDK de dispositivo y **azure-iot-dispositivo-mqtt** paquete:
    
     ```
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
-3. Con un editor de texto, cree un nuevo archivo **simDevice.js** en la carpeta **simDevice**.
-4. Agregue las siguientes instrucciones "require" al principio del archivo **simDevice.js**:
+3. Con un editor de texto, cree un nuevo **simDevice.js** archivo Hola **simDevice** carpeta.
+4. Agregar siguiente hello 'requiere' instrucciones al principio de Hola de hello **simDevice.js** archivo:
    
     ```
     'use strict';
@@ -79,63 +79,63 @@ En esta sección, creará una aplicación de consola de Node.js que responde a u
     var Client = require('azure-iot-device').Client;
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
-5. Agregue una variable **connectionString** y utilícela para crear una instancia de **cliente**.  
+5. Agregar un **connectionString** variable y utilizar toocreate un **cliente** instancia.  
    
     ```
     var connectionString = 'HostName={youriothostname};DeviceId={yourdeviceid};SharedAccessKey={yourdevicekey}';
     var client = Client.fromConnectionString(connectionString, Protocol);
     ```
-6. Agregue la siguiente función para controlar el método **lockDoor**.
+6. Agregar Hola después Hola de función toohandle **lockDoor** método.
    
     ```
     var onLockDoor = function(request, response) {
    
-        // Respond the cloud app for the direct method
+        // Respond hello cloud app for hello direct method
         response.send(200, function(err) {
             if (!err) {
                 console.error('An error occured when sending a method response:\n' + err.toString());
             } else {
-                console.log('Response to method \'' + request.methodName + '\' sent successfully.');
+                console.log('Response toomethod \'' + request.methodName + '\' sent successfully.');
             }
         });
    
         console.log('Locking Door!');
     };
     ```
-7. Agregue el código siguiente para registrar el controlador del método **lockDoor**.
+7. Agregar Hola siguiente controlador de hello tooregister de código de hello **lockDoor** método.
    
     ```
     client.open(function(err) {
         if (err) {
-            console.error('Could not connect to IotHub client.');
+            console.error('Could not connect tooIotHub client.');
         }  else {
-            console.log('Client connected to IoT Hub. Register handler for lockDoor direct method.');
+            console.log('Client connected tooIoT Hub. Register handler for lockDoor direct method.');
             client.onDeviceMethod('lockDoor', onLockDoor);
         }
     });
     ```
-8. Guarde y cierre el archivo **simDevice.js**.
+8. Guarde y cierre hello **simDevice.js** archivo.
 
 > [!NOTE]
-> Por simplificar, este tutorial no implementa ninguna directiva de reintentos. En el código de producción, deberá implementar directivas de reintentos (por ejemplo, retroceso exponencial), tal y como se sugiere en el artículo de MSDN [Transient Fault Handling][lnk-transient-faults] (Tratamiento de errores temporales).
+> tookeep cosas simples, este tutorial no implementa ninguna directiva de reintento. En el código de producción, debe implementar directivas de reintento (por ejemplo, un retroceso exponencial), como se indica en el artículo de MSDN de hello [control de errores transitorios][lnk-transient-faults].
 > 
 > 
 
 ## <a name="schedule-jobs-for-calling-a-direct-method-and-updating-a-device-twins-properties"></a>Programación de trabajos para llamar un método directo y actualización de las propiedades de un dispositivo gemelo
-En esta sección, creará una aplicación de consola de Node.js que inicia un **lockDook** remoto en un dispositivo con un método directo y actualiza las propiedades del dispositivo gemelo.
+En esta sección, creará una aplicación de consola de Node.js que inicia un equipo remoto **lockDoor** en un dispositivo mediante las propiedades de un directo método y actualización Hola dispositivo gemelas.
 
-1. Cree una nueva carpeta vacía denominada **scheduleJobService**.  En la carpeta **scheduleJobService**, cree un archivo package.json con el siguiente comando en el símbolo del sistema.  Acepte todos los valores predeterminados:
+1. Cree una nueva carpeta vacía denominada **scheduleJobService**.  Hola **scheduleJobService** carpeta, cree un archivo de package.json mediante Hola siguiente comando en el símbolo del sistema.  Acepte todos los valores predeterminados de hello:
    
     ```
     npm init
     ```
-2. En el símbolo del sistema, en la carpeta **scheduleJobService**, ejecute el siguiente comando para instalar el paquete del SDK de dispositivo **azure-iothub** y el paquete **azure-iot-device-mqtt**:
+2. En el símbolo del sistema en hello **scheduleJobService** carpeta, ejecute hello después comando tooinstall hello **el centro de IOT de azure** paquete del SDK de dispositivo y **azure iot dispositivo-mqtt**paquete:
    
     ```
     npm install azure-iothub uuid --save
     ```
-3. Con un editor de texto, cree un nuevo archivo **scheduleJobService.js** en la carpeta **scheduleJobService**.
-4. Agregue las siguientes instrucciones "require" al principio del archivo **dmpatterns_gscheduleJobServiceetstarted_service.js**:
+3. Con un editor de texto, cree un nuevo **scheduleJobService.js** archivo Hola **scheduleJobService** carpeta.
+4. Agregar siguiente hello 'requiere' instrucciones al principio de Hola de hello **dmpatterns_gscheduleJobServiceetstarted_service.js** archivo:
    
     ```
     'use strict';
@@ -143,7 +143,7 @@ En esta sección, creará una aplicación de consola de Node.js que inicia un **
     var uuid = require('uuid');
     var JobClient = require('azure-iothub').JobClient;
     ```
-5. Agregue las siguientes declaraciones de variable y reemplace los valores de marcador de posición:
+5. Agregue Hola siguiendo las declaraciones de variable y reemplace los valores de marcador de posición de hello:
    
     ```
     var connectionString = '{iothubconnectionstring}';
@@ -152,7 +152,7 @@ En esta sección, creará una aplicación de consola de Node.js que inicia un **
     var maxExecutionTimeInSeconds =  3600;
     var jobClient = JobClient.fromConnectionString(connectionString);
     ```
-6. Agregue la función siguiente que se utilizará para supervisar la ejecución del trabajo:
+6. Agregue Hola después de la función que será usado toomonitor Hola ejecución del trabajo de hello:
    
     ```
     function monitorJob (jobId, callback) {
@@ -171,13 +171,13 @@ En esta sección, creará una aplicación de consola de Node.js que inicia un **
         }, 5000);
     }
     ```
-7. Agregue el código siguiente para programar el trabajo que llama al método de dispositivo:
+7. Agregue Hola siguiendo el trabajo de hello tooschedule de código que llama el método de dispositivo de hello:
    
     ```
     var methodParams = {
         methodName: 'lockDoor',
         payload: null,
-        responseTimeoutInSeconds: 15 // Timeout after 15 seconds if device is unable to process method
+        responseTimeoutInSeconds: 15 // Timeout after 15 seconds if device is unable tooprocess method
     };
    
     var methodJobId = uuid.v4();
@@ -201,7 +201,7 @@ En esta sección, creará una aplicación de consola de Node.js que inicia un **
         }
     });
     ```
-8. Agregue el código siguiente para programar el trabajo para que actualice el dispositivo gemelo:
+8. Agregue Hola después a gemelas de código tooschedule Hola trabajo tooupdate Hola dispositivo:
    
     ```
     var twinPatch = {
@@ -234,31 +234,31 @@ En esta sección, creará una aplicación de consola de Node.js que inicia un **
         }
     });
     ```
-9. Guarde y cierre el archivo **scheduleJobService.js**.
+9. Guarde y cierre hello **scheduleJobService.js** archivo.
 
-## <a name="run-the-applications"></a>Ejecución de las aplicaciones
-Ahora está preparado para ejecutar las aplicaciones.
+## <a name="run-hello-applications"></a>Ejecutar aplicaciones de Hola
+Ya estás listo toorun aplicaciones de Hola.
 
-1. En el símbolo del sistema dentro de la carpeta **simDevice**, ejecute el siguiente comando para iniciar la escucha del método directo de reinicio.
+1. En línea de comandos de Hola Hola **simDevice** carpeta, ejecute hello después toobegin comando realizar escuchas de método directo de reinicio de Hola.
    
     ```
     node simDevice.js
     ```
-2. En el símbolo del sistema de la carpeta **scheduleJobService**, ejecute el siguiente comando para desencadenar los trabajos a fin de bloquear la puerta y actualizar el dispositivo gemelo.
+2. En línea de comandos de Hola Hola **scheduleJobService** carpeta, ejecute hello después comando tootrigger Hola trabajos toolock Hola puerta y actualización Hola gemelas
    
     ```
     node scheduleJobService.js
     ```
-3. Verá la respuesta del dispositivo al método directo en la consola.
+3. Consulte dispositivo respuesta toohello directo método hello en la consola de Hola.
 
 ## <a name="next-steps"></a>Pasos siguientes
-En este tutorial, ha utilizado un trabajo para programar un método directo para un dispositivo y la actualización de las propiedades del dispositivo gemelo.
+En este tutorial, ha utilizado un trabajo tooschedule un dispositivo de tooa método directo y actualización de Hola de las propiedades del doble del dispositivo de Hola.
 
-Para continuar con la introducción de IoT Hub y los patrones de administración de dispositivos como remoto a través de la actualización de firmware de aire, consulte:
+toocontinue Introducción a centro de IoT y patrones de la administración de dispositivos como el remoto a través de la actualización de firmware de aire hello, vea:
 
-[Tutorial: Realización de una actualización de firmware][lnk-fwupdate]
+[Tutorial: Cómo toodo un firmware actualizar][lnk-fwupdate]
 
-Para continuar con la introducción a IoT Hub, consulte [Introducción a Azure IoT Edge][lnk-iot-edge].
+toocontinue Introducción a centro de IoT, consulte [Introducción a Azure IoT borde][lnk-iot-edge].
 
 [lnk-get-started-twin]: iot-hub-node-node-twin-getstarted.md
 [lnk-twin-props]: iot-hub-node-node-twin-how-to-configure.md

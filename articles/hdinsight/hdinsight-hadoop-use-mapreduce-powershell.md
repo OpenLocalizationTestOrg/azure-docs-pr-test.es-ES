@@ -1,6 +1,6 @@
 ---
-title: Uso de MapReduce y PowerShell con Hadoop (Azure HDInsight)| Microsoft Docs
-description: "Obtenga información sobre cómo usar PowerShell para ejecutar trabajos de MapReduce de forma remota con Hadoop en HDInsight."
+title: aaaUse MapReduce y PowerShell con Hadoop - HDInsight de Azure | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toouse PowerShell tooremotely ejecutar trabajos de MapReduce con Hadoop en HDInsight."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,56 +16,56 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/16/2017
 ms.author: larryfr
-ms.openlocfilehash: c3801573808709f29cb1e563ac803f225a28cafc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 59524f0e8813d4c017f92bccb2e50d4c018acf71
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="run-mapreduce-jobs-with-hadoop-on-hdinsight-using-powershell"></a>Ejecución de trabajos de MapReduce con Hadoop en HDInsight con PowerShell
 
 [!INCLUDE [mapreduce-selector](../../includes/hdinsight-selector-use-mapreduce.md)]
 
-Este documento proporciona un ejemplo de uso de Azure PowerShell para ejecutar un trabajo de MapReduce en un Hadoop de un clúster de HDInsight.
+Este documento proporciona un ejemplo del uso de PowerShell de Azure toorun un trabajo MapReduce en un Hadoop en clúster de HDInsight.
 
 ## <a id="prereq"></a>Requisitos previos
 
 * **Un clúster de HDInsight (Hadoop en HDInsight)**.
 
   > [!IMPORTANT]
-  > Linux es el único sistema operativo que se usa en la versión 3.4 de HDInsight, o en las superiores. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+  > Linux es Hola único sistema operativo usado en HDInsight versión 3.4 o superior. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * **Una estación de trabajo con Azure PowerShell**.
 
 ## <a id="powershell"></a>Ejecución de un trabajo de MapReduce mediante Azure PowerShell
 
-Azure PowerShell proporciona *cmdlets* que le permiten ejecutar de manera remota trabajos de MapReduce en HDInsight. De manera interna, esto se logra mediante llamadas REST a [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) (anteriormente llamado Templeton), que se ejecuta en el clúster de HDInsight.
+Azure PowerShell ofrece *cmdlets* que le permiten tooremotely ejecutar trabajos de MapReduce en HDInsight. Internamente, esto se logra mediante llamadas a REST demasiado[WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) (anteriormente denominados Templeton) se ejecuta en Hola clúster de HDInsight.
 
-Los siguientes cmdlets se utilizan al ejecutar trabajos de MapReduce en un clúster de HDInsight remoto.
+Hello siguientes cmdlets se utilizan al ejecutar los trabajos de MapReduce en un clúster de HDInsight remoto.
 
-* **Login-AzureRmAccount**: autentica Azure PowerShell en la suscripción de Azure.
+* **Inicio de sesión AzureRmAccount**: autentica Azure PowerShell tooyour suscripción de Azure.
 
-* **New-AzureRmHDInsightMapReduceJobDefinition**: crea una nueva *definición de trabajo* usando la información especificada de MapReduce.
+* **Nueva AzureRmHDInsightMapReduceJobDefinition**: crea un nuevo *definición de trabajo* mediante el uso de hello especifica información de MapReduce.
 
-* **Start-AzureRmHDInsightJob**: envía la definición del trabajo a HDInsight, inicia el trabajo y devuelve un objeto de *trabajo* que se puede usar para comprobar el estado del trabajo.
+* **Start-AzureRmHDInsightJob**: envía tooHDInsight de definición de trabajo de hello, inicia el trabajo de Hola y devuelve un *trabajo* objetos que pueden ser utilizados toocheck Hola estado del trabajo de Hola.
 
-* **Wait-AzureRmHDInsightJob**: usa el objeto de trabajo para comprobar el estado del trabajo. Esperará hasta que el trabajo se complete o se supere el tiempo de espera.
+* **Espera AzureRmHDInsightJob**: utiliza el estado del objeto toocheck Hola de hello trabajo del trabajo de Hola. Espera hasta que complete el trabajo de Hola o se supera el tiempo de espera de Hola.
 
-* **Get-AzureRmHDInsightJobOutput**: se usa para recuperar la salida del trabajo.
+* **Get-AzureRmHDInsightJobOutput**: utiliza la salida de hello tooretrieve de trabajo de Hola.
 
-Los pasos siguientes muestran cómo usar estos cmdlets para ejecutar un trabajo en el clúster de HDInsight.
+Hello pasos siguientes demuestran cómo toouse estos toorun cmdlets un trabajo en el clúster de HDInsight.
 
-1. Mediante un editor, guarde el código siguiente como **mapreducejob.ps1**.
+1. Con el editor, guardar Hola siguiente código como **mapreducejob.ps1**.
 
     [!code-powershell[main](../../powershell_scripts/hdinsight/use-mapreduce/use-mapreduce.ps1?range=5-69)]
 
-2. Abra un nuevo símbolo del sistema de **Azure PowerShell** . Cambie los directorios a la ubicación del archivo **mapreducejob.ps1** y, a continuación, utilice el siguiente comando para ejecutar el script:
+2. Abra un nuevo símbolo del sistema de **Azure PowerShell** . Cambiar ubicación de toohello de directorios de hello **mapreducejob.ps1** de archivos, a continuación, usar hello sigue la secuencia de comandos de Hola toorun:
 
         .\mapreducejob.ps1
 
-    Cuando se ejecuta el script, se le pide el nombre del clúster de HDInsight y el nombre de la cuenta de administrador/HTTPS y la contraseña del clúster. Puede que también se le pida que autentique su suscripción de Azure.
+    Al ejecutar el script de Hola, le pediremos nombre Hola Hola del clúster de HDInsight y nombre de la cuenta de hello HTTPS/Admin y la contraseña para el clúster de Hola. También es posible que tooauthenticate solicitadas tooyour suscripción de Azure.
 
-3. Cuando se complete el trabajo, obtendrá un texto similar al siguiente:
+3. Cuando se completa el trabajo de hello, recibirá toohello similar de salida siguiente texto:
 
         Cluster         : CLUSTERNAME
         ExitCode        : 0
@@ -77,27 +77,27 @@ Los pasos siguientes muestran cómo usar estos cmdlets para ejecutar un trabajo 
         SubmissionTime  : 12/5/2014 8:34:09 PM
         JobId           : job_1415949758166_0071
 
-    Esto indica que el trabajo se ha completado correctamente.
+    Este resultado indica que el trabajo de Hola se completó correctamente.
 
     > [!NOTE]
-    > Si **ExitCode** es un valor distinto de 0, consulte [Solución de problemas](#troubleshooting).
+    > Si hello **ExitCode** es un valor distinto de 0, vea [solución de problemas](#troubleshooting).
 
-    En este ejemplo también se almacenarán los archivos descargados en el archivo **output.txt**, en el directorio desde el que se ejecuta el script.
+    En este ejemplo también almacena Hola descargan archivos tooan **output.txt** archivo directorio Hola que ejecutar script de Hola de.
 
 ### <a name="view-output"></a>Visualización de la salida
 
-Abra el archivo **output.txt** en un editor de texto para ver las palabras y los números generados por el trabajo.
+Abra hello **output.txt** archivo en un hello toosee de editor de texto es decir y cuenta producido por trabajo Hola.
 
 > [!NOTE]
-> Los archivos de salida de un trabajo de MapReduce no se pueden mover. Por lo tanto, si vuelve a ejecutar esta muestra, debe cambiar el nombre del archivo de salida.
+> archivos de salida de Hello de un trabajo de MapReduce son inmutables. Por lo que si se vuelve a ejecutar este ejemplo, necesita toochange Hola nombre hello del archivo de salida.
 
 ## <a id="troubleshooting"></a>Solución de problemas
 
-Si no se devuelve ninguna información cuando se completa el trabajo, pudo haberse producido un error durante el procesamiento. Para ver información de error para este trabajo, agregue el siguiente comando al final del archivo **mapreducejob.ps1** , guárdelo y luego ejecútelo de nuevo.
+Si no se devuelve información cuando se completa el trabajo de hello, puede deberse a un error durante el procesamiento. información de error de tooview para este trabajo, agregar Hola siguiente comando toohello final de hello **mapreducejob.ps1** archivo, guárdelo y, a continuación, vuelva a ejecutarlo.
 
 ```powershell
-# Print the output of the WordCount job.
-Write-Host "Display the standard output ..." -ForegroundColor Green
+# Print hello output of hello WordCount job.
+Write-Host "Display hello standard output ..." -ForegroundColor Green
 Get-AzureRmHDInsightJobOutput `
         -Clustername $clusterName `
         -JobId $wordCountJob.JobId `
@@ -105,11 +105,11 @@ Get-AzureRmHDInsightJobOutput `
         -DisplayOutputType StandardError
 ```
 
-Este cmdlet devuelve la información escrita en STDERR en el servidor cuando ejecute el trabajo y puede ayudar a determinar por qué se ha producido el error en el trabajo.
+Este cmdlet devuelve información de Hola que escribió tooSTDERR en servidor hello cuando ejecutó el trabajo de Hola y puede ayudar a determinar por qué se producen errores en trabajo Hola.
 
 ## <a id="summary"></a>Resumen
 
-Como puede ver, Azure PowerShell proporciona una manera fácil de ejecutar trabajos de MapReduce en un clúster de HDInsight, de supervisar el estado del trabajo y de recuperar el resultado.
+Como puede ver, Azure PowerShell ofrece una manera sencilla de toorun trabajos MapReduce en un clúster de HDInsight, supervisar el estado de trabajo de Hola y salida de hello de recuperar.
 
 ## <a id="nextsteps"></a>Pasos siguientes
 

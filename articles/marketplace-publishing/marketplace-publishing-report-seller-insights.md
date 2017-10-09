@@ -1,6 +1,6 @@
 ---
-title: "Información sobre los informes de vendedores y los informes basados en uso de Azure Marketplace | Microsoft Docs"
-description: "Como vendedor en Azure Marketplace, conozca el informe basado en el uso, también conocido como informe de perspectivas de vendedor."
+title: "aaaUnderstanding Azure Marketplace basada en el uso de informes e información de vendedor reporting | Documentos de Microsoft"
+description: "Como vendedor en hello Azure Marketplace, comprender el informe basada en uso, también conocido como un informe de la información del vendedor"
 services: Azure Marketplace
 documentationcenter: na
 author: v-jeana
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/16/2017
 ms.author: v-jeana; hascipio; v-dabosl
-ms.openlocfilehash: e098e27e32f7b7ae2009580a430f262aa7225206
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a9aa09a84ddce94acd5b988155b8af98edec766f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="understand-your-seller-insights-report"></a>Descripción del informe de perspectivas de vendedor
 **¿Qué son las perspectivas de vendedor?**
@@ -27,12 +27,12 @@ Todos los publicadores de servicios de desarrolladores con facturación basada e
 
 **¿Qué es lo que se recibe?**
 
-* **Correo electrónico de bienvenida:** como nuevo publicador, recibirá un correo electrónico de bienvenida para notificarle que empezará a recibir los informes mensuales de perspectivas de vendedor.
-* **Informes de ventas mensuales:** si ha habido consumo, recibirá un segundo correo electrónico con los informes e instrucciones sobre cómo acceder a la contraseña:
+* **Correo electrónico de bienvenida:** como un nuevo publicador, recibirá un correo electrónico de bienvenida toonotify, que se empezarán a recibir informes mensuales de hello vendedor visión.
+* **Informes de ventas mensuales:** si dispone de uso, recibirá una segunda notificación que contiene los informes y obtener instrucciones sobre cómo tooaccess la contraseña:
 
-  * Si tiene una VM o una SKU de servicios de desarrolladores con facturación basados en uso y que generan consumo, en el informe mensual se mostrará información sobre los pedidos, el uso y los mercados, así como detalles del cliente para las ofertas.
-  * Los informes se bloquean con una contraseña que solo usted y Microsoft conocen para proteger los datos de sus clientes.
-  * Microsoft no enviará un informe si ninguna de sus ofertas ha generado uso durante el mes.
+  * Si tiene una máquina virtual o basada en uso servicios para desarrolladores facturación SKU que está generando el uso, el informe mensual mostrará detalles sobre pedidos de hello, uso, mercados y detalles del cliente para las ofertas.
+  * Los informes se bloquean con una contraseña que solo usted y Microsoft saben en orden tooprotect datos de los clientes.
+  * Microsoft no le enviará un informe si ninguno de sus ofertas han generado uso durante el mes de Hola.
 
 ## <a name="understand-your-seller-insights-report"></a>Descripción del informe de perspectivas de vendedor
 **Pedidos por tipo de licencia y SKU: pestaña Pedidos de Marketplace**
@@ -42,7 +42,7 @@ Todos los publicadores de servicios de desarrolladores con facturación basada e
 * Las segmentaciones de datos ayudan a filtrar el informe por cada elemento.
 * Un gráfico muestra los pedidos mensuales por tipo de licencia de Azure. Cada barra muestra los pedidos totales para ese mes, desglosados por tipo de licencia de Azure.
 * Un gráfico muestra los pedidos mensuales por SKU. Cada barra muestra los pedidos totales mensuales para todos los SKU, desglosados por SKU.
-* Un gráfico muestra la tendencia mensual de pedidos por tipo de licencia de Azure y tipo de licencia de Azure Marketplace.
+* Un gráfico muestra la tendencia mensual de Hola de pedidos por tipo de licencia de Azure y el tipo de licencia de Azure Marketplace.
 * Los gráficos circulares muestran pedidos por tipo de licencia de Azure y tipo de licencia de Marketplace.
 * Una tabla muestra los pedidos mensuales totales por tipo de licencia de Marketplace, los totales mensuales y los totales acumulados de todos los meses.
 
@@ -54,13 +54,13 @@ Todos los publicadores de servicios de desarrolladores con facturación basada e
 * Debe seleccionar uso de máquinas virtuales normalizado o uso sin procesar.
 * Un gráfico muestra el uso mensual por tipo de licencia de Azure. Cada barra muestra el uso total para ese mes, desglosado por tipo de licencia de Azure.
 * Un gráfico muestra el uso mensual por SKU. Cada barra muestra el uso total mensual para todos los SKU, desglosado por SKU.
-* Un gráfico muestra la tendencia mensual de uso por tipo de licencia de Azure y tipo de licencia de Marketplace.
+* Un gráfico muestra la tendencia mensual de Hola de uso por tipo de licencia de Azure y el tipo de licencia de Marketplace.
 * Los gráficos circulares muestran el uso por tipo de licencia de Azure y tipo de licencia de Marketplace.
 * Una tabla muestra el uso total mensual por tipo de licencia de Marketplace, los totales mensuales y los totales acumulados de todos los meses.
 
 **Pestañas Datos de pedidos y Datos de uso**
 
-Estas pestañas ofrecen los datos detallados que se usan para generar el informe.
+Estas fichas proporcionan Hola detallada datos usar informes de hello toogenerate.
 
 ![orderdata][4]
 
@@ -70,37 +70,36 @@ Estas pestañas ofrecen los datos detallados que se usan para generar el informe
 
 ![customerstab][6]
 
-* Tenga en cuenta la cláusula de confidencialidad.
+* Cláusula de confidencialidad de Hola de nota.
 * Esta pestaña contiene una lista de clientes por SKU, información del perfil, fecha de transacción y participación en contacto promocional.
-* El informe incluye el número de pedidos por SKU y los totales.
+* informe de Hello incluye el número de pedidos por SKU y los totales.
 
 **Renuncias de responsabilidades legales**
 
 ![legal][1]
 
-Lea atentamente las renuncias de responsabilidades legales. Si tiene preguntas o comentarios, haga clic en el vínculo situado en la parte inferior de las renuncias de responsabilidades para ir a la página de soporte técnico de Marketplace.
+Lea detenidamente renuncias legales Hola. Si tiene preguntas o comentarios, haga clic en vínculo Hola final Hola de hello renuncias toobe enrutado toohello página de soporte técnico de Marketplace.
 
 ## <a name="request-a-password-reminder"></a>Solicitud de un recordatorio de contraseña
-Vaya a https://publish.windowsazure.com/ e inicie sesión con sus credenciales de cuenta de Microsoft.
+Desplácese toohttps://publish.windowsazure.com/ e inicie sesión con sus credenciales de cuenta de Microsoft.
 ![passwordreminder][7]
 
-Seleccione la pestaña **Publicadores** .
-![selectpublisherstab][8]
+Seleccione hello **publicadores** ficha ![selectpublisherstab][8]
 
-Busque el identificador del publicador en la dirección URL:
+Buscar Id. de publicador de hello en dirección URL de hello:
 
-* Use este identificador como contraseña para abrir el archivo de Excel de perspectivas de vendedor.
+* Use este identificador como Hola tooopen contraseña el archivo de Excel de la visión de vendedor.
   Esta es su contraseña hasta nuevo aviso.
 * Se recomienda usar Microsoft Office 2013 con Windows como lector de libro de su elección.  Algunos usuarios han notificado problemas con Microsoft Office para Mac.
 
 ![publisherid][9]
 
 ## <a name="next-steps"></a>Pasos siguientes
-Si tiene alguna pregunta relacionada con los informes y perspectivas, póngase en contacto con nuestro equipo de soporte técnico.
+Si tiene alguna pregunta relacionada con tooreports e información, póngase en contacto con nuestro equipo de soporte técnico:
 
-1. Vaya a las páginas de soporte técnico en https://publish.windowsazure.com/.
-2. En el cuadro **Tipo de problema**, seleccione **Informes y perspectivas**.
-3. En el cuadro **Categoría**, seleccione **Preguntas relacionadas con informes**.
+1. Navegar por las páginas de soporte técnico de toohello en https://publish.windowsazure.com/.
+2. Hola **tipo de problema** cuadro, seleccione **informes y visión**.
+3. Hola **categoría** cuadro, seleccione **tiene preguntas relacionadas con tooreports**.
 4. Haga clic en **Solicitud de inicio**.
    ![sellerinsightsquestions][10]
 

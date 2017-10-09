@@ -1,6 +1,6 @@
 ---
-title: "Vista previa de uso de disco para un trabajo de exportación de Azure Import/Export (versión 1) | Microsoft Docs"
-description: "Obtenga información sobre cómo conseguir una vista previa de la lista de blobs que ha seleccionado para un trabajo de exportación en el servicio Azure Import/Export."
+title: "uso de la unidad de aaaPreviewing para un trabajo de exportación de importación y exportación de Azure - v1 | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toopreview Hola lista de blobs ha seleccionado para un trabajo de exportación en el servicio de importación y exportación de Azure de Hola."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,39 +14,39 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-ms.openlocfilehash: 7bf74247090f91e17f81a9bc98ebfa78334c8c10
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 88495f921371458c0451da6878fd7cc9a45d20cd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="previewing-drive-usage-for-an-export-job"></a>Vista previa de uso de disco para un trabajo de exportación
-Antes de crear un trabajo de exportación, debe elegir un conjunto de blobs que se van a exportar. El servicio Microsoft Azure Import/Export permite usar una lista de rutas de acceso de blob o prefijos de blob para representar los blobs que ha seleccionado.  
+Antes de crear un trabajo de exportación, debe exportar un conjunto de blobs toobe de toochoose. Hola servicio de importación y exportación de Microsoft Azure permite toouse una lista de rutas de acceso de blob o prefijos de blob blobs de hello toorepresent que ha seleccionado.  
   
-A continuación, debe determinar cuántas unidades necesita enviar. La herramienta Import/Export proporciona el comando `PreviewExport` para obtener una vista previa del uso de la unidad para los blobs que ha seleccionado, en función del tamaño de las unidades que se van a usar.
+A continuación, debe toodetermine cuántas unidades necesita toosend. Herramienta de importación y exportación de Hello proporciona hello `PreviewExport` uso del comando toopreview unidad para los blobs de hello ha seleccionado, en función hello tamaño de unidades de hello va toouse.
 
 ## <a name="command-line-parameters"></a>Parámetros de línea de comandos
 
-Puede usar los parámetros siguientes al usar el comando `PreviewExport` de la herramienta Import/Export.
+Puede usar Hola parámetros siguientes al usar hello `PreviewExport` comando de hello herramienta de importación/exportación.
 
 |Parámetro de línea de comandos|Descripción|  
 |--------------------------|-----------------|  
-|**/logdir:**<DirectorioRegistro\>|Opcional. El directorio de registro. Los archivos de registro detallados se escribirán en este directorio. Si no se especifica un directorio de registro, se usará el directorio actual como directorio de registro.|  
-|**/sn:**<NombreCuentaAlmacenamiento\>|Obligatorio. El nombre de la cuenta de almacenamiento para el trabajo de exportación.|  
-|**/sk:**<ClaveCuentaAlmacenamiento\>|Necesario únicamente si no se especifica un contenedor SAS. La clave de cuenta para la cuenta de almacenamiento correspondiente al trabajo de exportación.|  
-|**/csas:**<SasContenedor\>|Requerido únicamente si no se especifica una clave de cuenta de almacenamiento. El contenedor SAS para enumerar los blobs que se van a exportar en el trabajo de exportación.|  
-|**/ExportBlobListFile:**<ArchivoListaBlobExportación\>|Obligatorio. Ruta de acceso al archivo XML que contiene una lista de rutas de acceso de blob o prefijos de ruta de acceso para los blobs que se van a exportar. El formato de archivo usado en el elemento `BlobListBlobPath` de la operación [Put Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) de la API de REST del servicio Import/Export.|  
-|**/DriveSize:**<TamañoUnidad\>|Obligatorio. El tamaño de las unidades que se van a usar para un trabajo de exportación, *por ejemplo*, 500 GB o 1,5 TB.|  
+|**/logdir:**&lt;DirectorioRegistro\>|Opcional. directorio de registro de Hello. Archivos de registro detallado se escribirán toothis directory. Si no se especifica ningún directorio de registro, se utilizará el directorio actual de hello como directorio de registro de hello.|  
+|**/sn:**&lt;NombreCuentaAlmacenamiento\>|Necesario. nombre de Hola de cuenta de almacenamiento de Hola para hello el trabajo de exportación.|  
+|**/sk:**&lt;ClaveCuentaAlmacenamiento\>|Necesario únicamente si no se especifica un contenedor SAS. trabajo de exportación de la clave de cuenta de almacenamiento de Hola para Hola Hola.|  
+|**/csas:**&lt;SasContenedor\>|Requerido únicamente si no se especifica una clave de cuenta de almacenamiento. contenedor de Hello SAS para toobe de blobs de anuncio Hola se exporta en el trabajo de exportación de Hola.|  
+|**/ExportBlobListFile:**&lt;ArchivoListaBlobExportación\>|Necesario. Ruta de acceso toohello XML archivo que contiene una lista de rutas de acceso de blob o prefijos de ruta de acceso para hello blobs toobe exportado de blob. formato de archivo de Hello usado en hello `BlobListBlobPath` elemento Hola [Put Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operación de servicio de importación y exportación de API de REST de hello.|  
+|**/DriveSize:**&lt;TamañoUnidad\>|Necesario. Hola tamaño de unidades toouse para un trabajo de exportación, *p. ej.*, 500 GB, 1,5 TB.|  
 
 ## <a name="command-line-example"></a>Ejemplo de línea de comandos
 
-En el siguiente ejemplo se muestra el comando `PreviewExport`:  
+Hello en el ejemplo siguiente se muestra hello `PreviewExport` comando:  
   
 ```  
 WAImportExport.exe PreviewExport /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /ExportBlobListFile:C:\WAImportExport\mybloblist.xml /DriveSize:500GB    
 ```  
   
-El archivo de lista de blobs de exportación puede contener nombres de blob y prefijos de blob, como se muestra aquí:  
+Hello archivo de lista de blobs de exportación puede contener nombres de blob y prefijos de blob, como se muestra aquí:  
   
 ```xml 
 <?xml version="1.0" encoding="utf-8"?>  
@@ -57,9 +57,9 @@ El archivo de lista de blobs de exportación puede contener nombres de blob y pr
 </BlobList>  
 ```
 
-La herramienta Azure Import/Export enumera todos los blobs que se van a exportar y calcula cómo empaquetarlos en unidades del tamaño especificado, teniendo en cuenta cualquier sobrecarga necesaria; después calcula el número de unidades necesarias para albergar los blobs y la información de uso de la unidad.  
+Hola herramienta de importación y exportación de Azure enumera todos los toobe blobs exportado y calcula cómo toopack en unidades de hello especifica tamaño, teniendo en cuenta cualquier sobrecarga necesaria, a continuación, calcula el número de Hola de unidades necesario toohold blobs de Hola y uso de la unidad información.  
   
-Este es un ejemplo de la salida, con los registros informativos omitidos:  
+Este es un ejemplo de salida de hello, con registros informativos omitidos:  
   
 ```  
 Number of unique blob paths/prefixes:   3  

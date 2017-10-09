@@ -1,6 +1,6 @@
 ---
-title: "Documentación sobre Azure Multi-Factor Authentication: tutoriales y referencia de API | Microsoft Docs"
-description: "Aprenda a implementar la autenticación multifactor con diversos métodos de verificación que proporcionan un proceso de inicio de sesión simple. Tutoriales, un SDK y mucho más."
+title: "aaaAzure documentación de autenticación multifactor - tutoriales, referencia de API | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toodeploy la autenticación multifactor con una variedad de métodos de comprobación que proporcionan un proceso de inicio de sesión simple. Tutoriales, un SDK y mucho más."
 services: multi-factor-authentication
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: c4aaa14007bf441f99ef6599bda411bcaed92a92
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0ede2ad48a3d4e756aeb0b1f6bc0e07e4e7b1fcc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="multi-factor-authentication-documentation"></a>Documentación de Multi-Factor Authentication
 
-Aprenda a implementar y administrar Azure Multi-Factor Authentication, un sistema de verificación de identidad en dos pasos. En los tutoriales, el SDK y otra documentación, se muestra cómo proporcionar una autenticación sólida con diversos métodos de verificación al mismo tiempo que se ofrece un proceso de inicio de sesión simple.
+Obtenga información acerca de cómo toodeploy y administrar la autenticación multifactor Azure, un sistema de comprobación de identidad de dos pasos. Tutoriales, un SDK y otra documentación mostrarle cómo toodeliver una autenticación segura con una variedad de métodos de comprobación al proporcionar un proceso de inicio de sesión simple.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -88,7 +88,7 @@ Aprenda a implementar y administrar Azure Multi-Factor Authentication, un sistem
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Introducción a Azure Multi-Factor Authentication en la nube</h3>
+                        <h3>Empezar a trabajar con la autenticación multifactor Azure en la nube de Hola</h3>
                     </div>
                 </div>
             </div>

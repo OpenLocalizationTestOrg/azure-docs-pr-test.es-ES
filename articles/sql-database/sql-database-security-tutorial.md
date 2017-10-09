@@ -1,6 +1,6 @@
 ---
-title: "Protección de la base de datos de Azure SQL | Microsoft Docs"
-description: "Conozca las técnicas y características para proteger su base de datos de Azure SQL."
+title: aaaSecure la base de datos SQL de Azure | Documentos de Microsoft
+description: "Obtenga información sobre características y técnicas de toosecure la base de datos de SQL Azure."
 services: sql-database
 documentationcenter: 
 author: DRediske
@@ -16,22 +16,22 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 06/28/2017
 ms.author: daredis
-ms.openlocfilehash: 4bc09ad13ed0c9dc9257e9c75ec6f9ff3d689a0b
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 1450d633d6f65faf1b8a2dc0dc7dfe996fb0719d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="secure-your-azure-sql-database"></a>Protección de Azure SQL Database
 
-SQL Database protege los datos mediante la limitación del acceso a la base de datos a través de reglas de firewall, de mecanismos de autenticación que requieren que los usuarios prueben su identidad y de la autorización a través de pertenencias y permisos basados en roles, así como la seguridad de nivel de fila y el enmascaramiento dinámico de datos.
+Base de datos SQL protege los datos mediante la limitación de base de datos de access tooyour mediante las reglas de firewall que requieren los usuarios tooprove su identidad y autorización toodata a través de pertenencia basada en roles y permisos, así como a través de mecanismos de autenticación seguridad de nivel de fila y enmascaramiento dinámico de datos.
 
-Con unos pocos pasos sencillos puede mejorar la protección de su base de datos contra usuarios malintencionados o acceso no autorizado. En este tutorial, aprenderá a: 
+Puede mejorar la protección de hello de la base de datos frente a accesos no autorizados con unos pocos pasos sencillos o usuarios malintencionados. En este tutorial, aprenderá a: 
 
 > [!div class="checklist"]
-> * Configurar reglas de firewall de nivel de servidor para el servidor en Azure Portal
+> * Configurar reglas de firewall de nivel de servidor para el servidor en hello portal de Azure
 > * Configurar reglas de firewall de nivel de base de datos para la base de datos con SSMS
-> * Conexión a una base de datos mediante una cadena de conexión segura
+> * Conéctese utilizando una cadena de conexión segura de base de datos de tooyour
 > * Administrar el acceso de los usuarios
 > * Protección de los datos con cifrado
 > * Habilitación de la auditoría de SQL Database
@@ -41,78 +41,78 @@ Si no tiene una suscripción a Azure, cree una [cuenta gratuita](https://azure.m
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Para completar este tutorial, asegúrese de lo siguiente:
+toocomplete Asegúrese de este tutorial, deberá asegurarse de que Hola siguientes:
 
-- Se ha instalado la versión más reciente de [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS). 
+- Versión más reciente de hello instalada de [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS). 
 - Se ha instalado Microsoft Excel
-- Se ha creado una base de datos y un servidor de SQL Azure: vea [Creación de una base de datos de Azure SQL Database en Azure Portal](sql-database-get-started-portal.md), [Creación de una sola base de datos de Azure SQL Database con la CLI de Azure](sql-database-get-started-cli.md) y [Creación de una sola base de datos de Azure SQL Database con PowerShell](sql-database-get-started-powershell.md). 
+- Crea un servidor de SQL Azure y la base de datos: vea [crear una base de datos de SQL Azure en el portal de Azure hello](sql-database-get-started-portal.md), [crear una base de datos de SQL Azure único con hello Azure CLI](sql-database-get-started-cli.md), y [crear una instancia única de SQL Azure uso de PowerShell de la base de datos](sql-database-get-started-powershell.md). 
 
-## <a name="log-in-to-the-azure-portal"></a>Inicio de sesión en Azure Portal
+## <a name="log-in-toohello-azure-portal"></a>Inicie sesión en toohello portal de Azure
 
-Inicie sesión en [Azure Portal](https://portal.azure.com/).
+Inicie sesión en toohello [portal de Azure](https://portal.azure.com/).
 
-## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Creación de una regla de firewall de nivel a servidor en Azure Portal
+## <a name="create-a-server-level-firewall-rule-in-hello-azure-portal"></a>Crear una regla de firewall de nivel de servidor en hello portal de Azure
 
-En Azure, las bases de datos SQL están protegidas mediante un firewall. De forma predeterminada, todas las conexiones al servidor y a las bases de datos que contiene se rechazan, excepto las conexiones desde otros servicios de Azure. Para más información, consulte [Reglas de firewall de nivel de base de datos y de nivel de servidor de Azure SQL Database](sql-database-firewall-configure.md).
+En Azure, las bases de datos SQL están protegidas mediante un firewall. De forma predeterminada, se rechazan todas las conexiones toohello hello y servidor de bases de datos dentro de servidor hello excepto para las conexiones desde otros servicios de Azure. Para más información, consulte [Reglas de firewall de nivel de base de datos y de nivel de servidor de Azure SQL Database](sql-database-firewall-configure.md).
 
-La opción más segura es seleccionar Desactivado en "Permitir el acceso a servicios de Azure". Si necesita conectarse a la base de datos desde una máquina virtual o un servicio en la nube de Azure, debe crear una [IP reservada](../virtual-network/virtual-networks-reserved-public-ip.md) y permitir que solo la IP reservada acceda a través del firewall. 
+configuración más segura de Hello es tooset 'Permitir acceso a servicios tooAzure' tooOFF. Si necesita tooconnect toohello base de datos de un servicio de máquina virtual de Azure o en la nube, debe crear un [IP reservada](../virtual-network/virtual-networks-reserved-public-ip.md) y permitir solo Hola reservado IP abordar el acceso a través de firewall de Hola. 
 
-Siga estos pasos para crear una [regla de firewall de nivel de servidor de SQL Database](sql-database-firewall-configure.md) para el servidor, a fin de permitir conexiones desde una dirección IP específica. 
+Siga estos pasos toocreate una [regla de firewall de nivel de servidor de base de datos SQL](sql-database-firewall-configure.md) para las conexiones del servidor tooallow desde una dirección IP específica. 
 
 > [!NOTE]
-> Si ha creado una base de datos de ejemplo en Azure mediante una de las plantillas de inicio rápido o de los tutoriales anteriores, y está siguiendo este en un equipo con la misma dirección IP que tenía cuando seguía esos tutoriales, puede omitir este paso ya que se habrá creado una regla de firewall de nivel de servidor.
+> Si ha creado una base de datos de ejemplo en Azure mediante uno de los tutoriales anteriores de Hola o tutoriales rápidos y están realizando este tutorial en un equipo con hello mismo de direcciones IP que TI tenía cuando le guía por los tutoriales, puede omitir este paso ya que tendrá ya creó una regla de firewall de nivel de servidor.
 >
 
-1. Haga clic en **Bases de datos SQL** en el menú izquierdo y haga clic en la base de datos para la que desea configurar la regla de firewall en la página **Bases de datos SQL**. Se abre la página de información general de la base de datos, que muestra el nombre completo del servidor (por ejemplo, **mynewserver-20170313.database.windows.net**) y proporciona opciones para otras configuraciones.
+1. Haga clic en **bases de datos SQL** de hello izquierdo menú y haga clic en hello base de datos desearía tooconfigure regla de firewall de Hola para en hello **bases de datos SQL** página. página de información general para abrir el base de datos, que muestra que Hola totalmente Hello calificado nombre del servidor (como **mynewserver 20170313.database.windows.net**) y proporciona opciones para otra configuración.
 
       ![regla de firewall del servidor](./media/sql-database-security-tutorial/server-firewall-rule.png) 
 
-2. Haga clic en **Establecer el firewall del servidor** en la barra de herramientas, como se muestra en la imagen anterior. Se abrirá la página **Configuración del firewall** del servidor de SQL Database. 
+2. Haga clic en **Configurar firewall de servidor** de barra de herramientas de hello tal y como se muestra en la imagen anterior de Hola. Hola **configuración del Firewall** se abre la página servidor de base de datos de SQL de Hola. 
 
-3. Haga clic en **Agregar IP de cliente** en la barra de herramientas para agregar la dirección IP pública del equipo conectado al portal o escriba manualmente la regla de firewall y luego haga clic en **Guardar**.
+3. Haga clic en **agregar dirección IP del cliente** en Hola barra de herramientas tooadd Hola dirección IP pública del portal de hello equipo toohello conectado con o escribir la regla de firewall de hello manualmente y, a continuación, haga clic en **guardar**.
 
       ![establecer regla de firewall del servidor](./media/sql-database-security-tutorial/server-firewall-rule-set.png) 
 
-4. Haga clic en **Aceptar** y, después, en la **X** para cerrar la página **Configuración de firewall**.
+4. Haga clic en **Aceptar** y, a continuación, haga clic en hello **X** tooclose hello **configuración del Firewall** página.
 
-Ahora puede conectarse a cualquier base de datos del servidor con la dirección IP o el intervalo de direcciones IP especificados.
+Ahora puede conectarse tooany base de datos en el servidor de hello con hello especificado intervalo de direcciones IP o la dirección IP.
 
 > [!NOTE]
-> SQL Database se comunica a través del puerto 1433. Si intenta conectarse desde dentro de una red corporativa, es posible que el firewall de la red no permita el tráfico de salida a través del puerto 1433. Si es así, no podrá conectarse al servidor de Azure SQL Database, a menos que el departamento de TI abra el puerto 1433.
+> SQL Database se comunica a través del puerto 1433. Si está tratando de tooconnect desde dentro de una red corporativa, es posible que firewall de su red no permite el tráfico saliente en el puerto 1433. Si es así, no será capaz de tooconnect tooyour base de datos de SQL Azure servidor a menos que el departamento de TI abre el puerto 1433.
 >
 
 ## <a name="create-a-database-level-firewall-rule-using-ssms"></a>Creación de una regla de firewall de nivel de base de datos con SSMS
 
-Las reglas de firewall de nivel de base de datos le permiten crear una configuración de firewall diferente para bases de datos distintas dentro del mismo servidor lógico y crear reglas de firewall que sean portátiles, lo que significa que siguen la base de datos durante una [conmutación por error](sql-database-geo-replication-overview.md) en lugar de almacenarse en el servidor SQL. Las reglas de firewall de nivel de base de datos solo pueden configurarse mediante instrucciones Transact-SQL y solo después de haber configurado la primera regla de firewall de nivel de servidor. Para más información, consulte [Reglas de firewall de nivel de base de datos y de nivel de servidor de Azure SQL Database](sql-database-firewall-configure.md).
+Las reglas de firewall de nivel de base de datos Habilitar configuración de otro firewall toocreate para bases de datos diferentes dentro de hello mismo firewall de servidor y toocreate lógico reglas que sean portables - lo que significa que se adecuan a base de datos de Hola durante un [conmutación por error ](sql-database-geo-replication-overview.md) en lugar de almacenarse en SQL server de Hola. Reglas de firewall de nivel de base de datos solo se pueden configurar mediante el uso de instrucciones Transact-SQL como solo después de haber configurado la primera regla de firewall de nivel de servidor de Hola. Para más información, consulte [Reglas de firewall de nivel de base de datos y de nivel de servidor de Azure SQL Database](sql-database-firewall-configure.md).
 
-Siga estos pasos para crear una regla de firewall específica de base de datos.
+Sigue estos toocreate pasos una regla de firewall de base de datos específica.
 
-1. Conéctese a la base de datos, para lo que puede usar, por ejemplo, [SQL Server Management Studio](./sql-database-connect-query-ssms.md).
+1. Conectar la base de datos de tooyour, por ejemplo mediante [SQL Server Management Studio](./sql-database-connect-query-ssms.md).
 
-2. En el Explorador de objetos, haga clic con el botón derecho en la base de datos para la que quiere agregar una regla de firewall y haga clic en **Nueva consulta**. Se abre una ventana de consulta en blanco que está conectada a la base de datos.
+2. En el Explorador de objetos, haga doble clic en la base de datos de hello desea tooadd un firewall para de la regla y haga clic en **nueva consulta**. Abre una ventana de consulta en blanco que es conectado tooyour base de datos.
 
-3. En la ventana de consulta, modifique la dirección IP con su dirección IP pública y, a continuación, ejecute la siguiente consulta:
+3. En la ventana de consulta de hello, modifique hello tooyour pública dirección IP y, a continuación, ejecute hello después de consulta:
 
     ```sql
     EXECUTE sp_set_database_firewall_rule N'Example DB Rule','0.0.0.4','0.0.0.4';
     ```
 
-4. En la barra de herramientas, haga clic en **Ejecutar** para crear la regla de firewall.
+4. En la barra de herramientas de hello, haga clic en **Execute** regla de firewall toocreate Hola.
 
-## <a name="view-how-to-connect-an-application-to-your-database-using-a-secure-connection-string"></a>Vea cómo conectar una aplicación a una base de datos con una cadena de conexión segura
+## <a name="view-how-tooconnect-an-application-tooyour-database-using-a-secure-connection-string"></a>Ver cómo tooconnect tooyour de una aplicación de base de datos mediante una cadena de conexión segura
 
-Para garantizar una conexión cifrada y segura entre una aplicación cliente y SQL Database, la cadena de conexión debe estar configurada para:
+tooensure una conexión cifrada segura entre una aplicación cliente y la base de datos SQL, cadena de conexión de hello tiene toobe configurado para:
 
 - Solicitar una conexión cifrada y
-- No confiar en el certificado de servidor. 
+- certificado de servidor de toonot confianza Hola. 
 
-De esta forma se establece una conexión mediante Seguridad de la capa de transporte (TLS) y se reduce el riesgo de ataques de tipo "Man in the middle". Para obtener cadenas de conexión configuradas correctamente para SQL Database para los controladores de cliente admitidos, vaya a Azure Portal, como se muestra en la captura de pantalla para ADO.net.
+Esto establece una conexión con seguridad de capa de transporte (TLS) y reduce el riesgo de Hola de man-in-the-middle ataques. Puede obtener las cadenas de conexión configurada correctamente para la base de datos SQL de cliente admitida controladores de hello portal de Azure como se muestra para ADO.net en esta captura de pantalla.
 
-1. Seleccione **Bases de datos SQL** en el menú de la izquierda y haga clic en la base de datos en la página **Bases de datos SQL**.
+1. Seleccione **bases de datos SQL** desde el menú de la izquierda, hello y haga clic en la base de datos en hello **bases de datos SQL** página.
 
-2. En la página **Overview** (Información general), haga clic en **Mostrar las cadenas de conexión de la base de datos**.
+2. En hello **Introducción** página de la base de datos, haga clic en **mostrar cadenas de conexión de base de datos**.
 
-3. Revise la cadena de conexión completa de **ADO.NET**.
+3. Hola de revisión completa **ADO.NET** cadena de conexión.
 
     ![Cadena de conexión ADO.NET](./media/sql-database-security-tutorial/adonet-connection-string.png)
 
@@ -120,130 +120,130 @@ De esta forma se establece una conexión mediante Seguridad de la capa de transp
 
 Antes de crear los usuarios, primero debe elegir uno de dos tipos de autenticación admitidos por Azure SQL Database: 
 
-**Autenticación de SQL**, que usa el nombre de usuario y la contraseña para inicios de sesión y usuarios que son válidos únicamente en el contexto de una base de datos específica dentro de un servidor lógico. 
+**Autenticación de SQL**, que utiliza el nombre de usuario y contraseña para los inicios de sesión y Hola a los usuarios que son válidos únicamente en el contexto de una base de datos dentro de un servidor lógico. 
 
 **Autenticación de Azure Active Directory**, que usa identidades administradas por Azure Active Directory. 
 
-Si desea usar [Azure Active Directory](./sql-database-aad-authentication.md) para autenticarse en SQL Database, debe existir una instancia de Azure Active Directory rellenada antes de continuar.
+Si desea que toouse [Azure Active Directory](./sql-database-aad-authentication.md) tooauthenticate en base de datos de SQL, debe existir un rellenado Azure Active Directory antes de continuar.
 
-Siga estos pasos para crear un usuario mediante la autenticación de SQL:
+Siga estos pasos toocreate un usuario mediante la autenticación de SQL:
 
-1. Conéctese a la base de datos, para lo que puede usar, por ejemplo, [SQL Server Management Studio](./sql-database-connect-query-ssms.md) con sus credenciales de administrador de servidor.
+1. Conectar la base de datos de tooyour, por ejemplo mediante [SQL Server Management Studio](./sql-database-connect-query-ssms.md) con sus credenciales de administrador de servidor.
 
-2. En el Explorador de objetos, haga clic con el botón derecho en la base de datos a la que quiere agregar un nuevo usuario y haga clic en **Nueva consulta**. Se abre una ventana de consulta en blanco que está conectada a la base de datos seleccionada.
+2. En el Explorador de objetos, haga doble clic en la base de datos de Hola que desee tooadd un usuario nuevo y haga clic en **nueva consulta**. Abre una ventana de consulta en blanco que es toohello conectado la base de datos seleccionada.
 
-3. En la ventana Consulta, escriba la consulta siguiente:
+3. En la ventana de consulta de hello, escriba Hola después de consulta:
 
     ```sql
     CREATE USER ApplicationUser WITH PASSWORD = 'YourStrongPassword1';
     ```
 
-4. En la barra de herramientas, haga clic en **Ejecutar** para crear el usuario.
+4. En la barra de herramientas de hello, haga clic en **Execute** toocreate usuario de Hola.
 
-5. De forma predeterminada, el usuario puede conectarse a la base de datos, pero no tiene permisos para leer o escribir datos. Para conceder estos permisos al usuario recién creado, ejecute los dos comandos siguientes en una nueva ventana de consulta
+5. De forma predeterminada, usuario de hello puede conectar la base de datos de toohello, pero no tiene ningún dato de tooread o de escritura de permisos. toogrant estas toohello permisos usuario creado recientemente, ejecute hello siguiendo dos comandos en una nueva ventana de consulta
 
     ```sql
     ALTER ROLE db_datareader ADD MEMBER ApplicationUser;
     ALTER ROLE db_datawriter ADD MEMBER ApplicationUser;
     ```
 
-Es aconsejable crear estas cuentas sin privilegios de administrador en el nivel de base de datos para conectarse a la base de datos a menos que necesite ejecutar tareas de administrador, como crear nuevos usuarios. Revise el [tutorial de Azure Active Directory](./sql-database-aad-authentication-configure.md) sobre cómo autenticarse con Azure Active Directory.
+Es mejor toocreate práctica estas cuentas sin privilegios de administrador en tooyour de tooconnect de nivel de base de datos de Hola de base de datos a menos que necesite tooexecute tareas de administrador como la creación de nuevos usuarios. Revise hello [tutorial de Azure Active Directory](./sql-database-aad-authentication-configure.md) acerca de cómo tooauthenticate con Azure Active Directory.
 
 
 ## <a name="protect-your-data-with-encryption"></a>Protección de los datos con cifrado
 
-El cifrado de datos transparente (TDE) de Azure SQL Database cifra automáticamente los datos en reposo, sin exigir ningún cambio en la aplicación que accede a la base de datos cifrada. Para las bases de datos recién creadas, el TDE está activado de forma predeterminada. Para habilitar el TDE para la base de datos o para comprobar que está activado, siga estos pasos:
+Cifrado de datos transparente de base de datos de SQL Azure (TDE) cifra automáticamente los datos en reposo, sin necesidad de realizar los cambios toohello aplicación acceso a Hola base de datos cifrada. Para las bases de datos recién creadas, el TDE está activado de forma predeterminada. tooenable TDE para su base de datos o tooverify que TDE está activado, siga estos pasos:
 
-1. Seleccione **Bases de datos SQL** en el menú de la izquierda y haga clic en la base de datos en la página **Bases de datos SQL**. 
+1. Seleccione **bases de datos SQL** desde el menú de la izquierda, hello y haga clic en la base de datos en hello **bases de datos SQL** página. 
 
-2. Haga clic en **Cifrado de datos transparente** para abrir la página de configuración de TDE.
+2. Haga clic en **cifrado de datos transparente** página de configuración de hello tooopen de TDE.
 
     ![Cifrado de datos transparente](./media/sql-database-security-tutorial/transparent-data-encryption-enabled.png)
 
-3. Si es necesario, establezca **Cifrado de datos** en Activado y haga clic en **Guardar**.
+3. Si es necesario, establezca **cifrado de datos** tooON y haga clic en **guardar**.
 
-Se inicia el proceso de cifrado en segundo plano. Para supervisar el progreso, conéctese a SQL Database mediante [SQL Server Management Studio](./sql-database-connect-query-ssms.md) consultando la columna encryption_state de la vista `sys.dm_database_encryption_keys`.
+se inicia el proceso de cifrado de Hello en segundo plano de Hola. Puede supervisar el progreso de hello usando conexión de base de datos de tooSQL [SQL Server Management Studio](./sql-database-connect-query-ssms.md) consultando la columna encryption_state de Hola de hello `sys.dm_database_encryption_keys` vista.
 
 ## <a name="enable-sql-database-auditing-if-necessary"></a>Habilitación de la auditoría de SQL Database, si es necesario
 
-Auditoría de Azure SQL Database realiza un seguimiento de eventos de bases de datos y registra los eventos en un registro de auditoría de la cuenta de Azure Storage. La auditoría puede ayudarle a mantener el cumplimiento de normativas y conocer la actividad de las bases de datos, así como las discrepancias y anomalías que pueden indicar la existencia de potenciales infracciones de la seguridad. Siga estos pasos para crear un directiva de auditoría predeterminada para SQL Database:
+Auditoría de base de datos de SQL Azure realiza un seguimiento de eventos de base de datos y escribe el registro de auditoría tooan en su cuenta de almacenamiento de Azure. La auditoría puede ayudarle a mantener el cumplimiento de normativas y conocer la actividad de las bases de datos, así como las discrepancias y anomalías que pueden indicar la existencia de potenciales infracciones de la seguridad. Siga estos toocreate pasos una directiva de auditoría predeterminada para la base de datos SQL:
 
-1. Seleccione **Bases de datos SQL** en el menú de la izquierda y haga clic en la base de datos en la página **Bases de datos SQL**. 
+1. Seleccione **bases de datos SQL** desde el menú de la izquierda, hello y haga clic en la base de datos en hello **bases de datos SQL** página. 
 
-2. En la hoja Configuración, seleccione **Auditoría y detección de amenazas**. Observe que la auditoría de nivel de servidor está deshabilitada y hay un vínculo **Ver configuración de servidor** que le permite ver o modificar la configuración de auditoría del servidor desde este contexto.
+2. En la hoja de configuración de hello, seleccione **auditoría y la detección de amenazas**. Observe que ha sido la auditoría de nivel de servidor y que hay un **ver configuración del servidor** vínculo que le permite tooview o modificar la configuración de auditoría de servidor hello en este contexto.
 
     ![Hoja Auditoría](./media/sql-database-security-tutorial/auditing-get-started-settings.png)
 
-3. Si prefiere habilitar un tipo (¿o ubicación?) de auditoría distinto del especificado en el nivel de servidor, **active** la auditoría y elija el tipo de autoría **Blob** . Si está habilitada la auditoría de blobs del servidor, la auditoría configurada de base de datos se producirá de forma paralela a la auditoría de blobs del servidor.
+3. Si lo prefiere tooenable un tipo de auditoría (o ubicación?) diferente de hello especificada en el nivel de servidor hello, activar **ON** auditoría y elija hello **Blob** tipo de auditoría. Si está habilitada la auditoría de servidor blobs, auditoría de base de datos configurada de hello existirá paralelo con la auditoría de Blob de servidor hello.
 
     ![Activar la auditoría](./media/sql-database-security-tutorial/auditing-get-started-turn-on.png)
 
-4. Seleccione **Detalles de almacenamiento** para abrir la hoja de almacenamiento de registros de auditoría. Seleccione la cuenta de almacenamiento de Azure donde se guardarán los registros, y el período de retención, después del cual se eliminarán los registros antiguos. A continuación, haga clic en **Aceptar** en la parte inferior. 
+4. Seleccione **detalles de almacenamiento** tooopen Hola hoja de almacenamiento de registros de auditoría. Cuenta de almacenamiento de Azure Hola seleccione donde se guardará los registros y período de retención de hello, se eliminarán los registros antiguos después qué hello, a continuación, haga clic en **Aceptar** final Hola. 
 
    > [!TIP]
-   > Use la misma cuenta de almacenamiento para todas las bases de datos auditadas con el fin de obtener el máximo partido de las plantillas de informes de auditorías.
+   > Use Hola misma cuenta de almacenamiento para todas las bases de datos auditados tooget hello máximo partido de auditoría de hello informa de plantillas.
    > 
 
 5. Haga clic en **Guardar**.
 
 > [!IMPORTANT]
-> Si quiere personalizar los eventos auditados, puede hacerlo mediante PowerShell o la API de REST (consulte la sección [Automation (PowerShell/API de REST)](sql-database-auditing.md#subheading-7) para más información.
+> Si desea toocustomize Hola auditar eventos, puede hacerlo a través de PowerShell o API de REST - vea hello [automatización (PowerShell / API de REST)](sql-database-auditing.md#subheading-7) sección para obtener más detalles.
 >
 
 ## <a name="enable-sql-database-threat-detection"></a>Habilitación de la detección de amenazas de SQL Database
 
-Detección de amenazas ofrece un nuevo nivel de seguridad, que permite a los clientes detectar amenazas potenciales y responder a ellas a medida que se producen, gracias a las alertas de seguridad sobre actividades anómalas que se proporcionan. Los usuarios pueden explorar los eventos sospechosos mediante la auditoría de SQL Database para determinar si proceden de un intento de acceder a los datos en la base de datos, infringir su seguridad o aprovecharlos. Detección de amenazas facilita la solución de las posibles amenazas a la base de datos sin necesidad de ser un experto en seguridad ni administrar sistemas de supervisión de seguridad avanzada.
-Por ejemplo, Detección de amenazas detecta determinadas actividades anómalas en la base de datos que sugieren posibles intentos de inyección de código SQL. La inyección de código SQL es uno de los problemas de seguridad habituales entre las aplicaciones web en Internet y se usa para atacar aplicaciones controladas por datos. Los atacantes aprovechan las vulnerabilidades de la aplicación para inyectar instrucciones SQL malintencionadas en los campos de entrada de la aplicación, con el fin de infringir la seguridad o modificar datos en la base de datos.
+La detección de amenazas proporciona una nueva capa de seguridad, lo cual permite toodetect de los clientes y responde a amenazas de toopotential cuando se producen al proporcionar alertas de seguridad en actividades anómalas. Los usuarios pueden explorar eventos sospechosos hello mediante toodetermine de auditoría de base de datos de SQL Server si producir un tooaccess de intento de infracción o vulnerabilidad de seguridad de datos en la base de datos de Hola. La detección de amenazas resulta sencillo tooaddress posibles amenazas toohello base de datos sin necesidad de hello toobe un experto en seguridad o administrar sistemas de supervisión de seguridad avanzada.
+Por ejemplo, Detección de amenazas detecta determinadas actividades anómalas en la base de datos que sugieren posibles intentos de inyección de código SQL. Inyección de código SQL es uno de hello Web aplicación problemas de seguridad comunes en hello Internet, aplicaciones usadas tooattack controladas por datos. Los atacantes aprovechar aplicación vulnerabilidades tooinject instrucciones SQL malintencionadas en campos de entrada de la aplicación, para la infracción o modificar datos en la base de datos de Hola.
 
-1. Vaya a la hoja de configuración de Base de datos SQL que desea supervisar. En la hoja Configuración, seleccione **Auditoría y detección de amenazas**.
+1. Navegue toohello hoja de configuración de base de datos SQL que desee toomonitor hello. En la hoja de configuración de hello, seleccione **auditoría y la detección de amenazas**.
 
     ![Panel de navegación](./media/sql-database-security-tutorial/auditing-get-started-settings.png)
-2. En la hoja de configuración **Auditoría y detección de amenazas**, **active** la auditoría; se mostrará la configuración de detección de amenazas.
+2. Hola **auditoría y la detección de amenazas** hoja de configuración a su vez **ON** auditoría, que mostrarán opciones de detección de amenazas de Hola.
 
 3. **Active** la detección de amenazas.
 
-4. Configure la lista de correos electrónicos que recibirán alertas de seguridad cuando se detecten actividades anómalas en la base de datos.
+4. Configurar la lista de Hola de mensajes de correo electrónico que recibirán las alertas de seguridad tras la detección de actividades anómalas de la base de datos.
 
-5. Haga clic en **Guardar** en la hoja **Auditoría y detección de amenazas** para guardar la directiva de auditoría y detección de amenazas nueva o actualizada.
+5. Haga clic en **guardar** en hello **detección de auditoría y amenaza** hoja toosave Hola nuevo o actualizado directiva de detección de amenaza y auditoría.
 
     ![Panel de navegación](./media/sql-database-security-tutorial/td-turn-on-threat-detection.png)
 
-    Si se detectan actividades anómalas en la base de datos, recibirá una notificación por correo electrónico. El correo electrónico proporciona información sobre el evento de seguridad sospechoso, en la que se incluyen la naturaleza de las actividades anómalas, el nombre de la base de datos, el nombre del servidor y la hora del evento. Además, se proporcionará información sobre las posibles causas y las medidas recomendadas para investigar y mitigar la amenaza potencial para la base de datos. Los siguientes pasos le guían a través de lo que debe hacer si recibe un mensaje de correo electrónico de este tipo:
+    Si se detectan actividades anómalas en la base de datos, recibirá una notificación por correo electrónico. correo electrónico de Hello proporcionará información sobre eventos de seguridad sospechosos de hello incluidos naturaleza Hola de actividades anómalas hello, el nombre de base de datos, hora del evento de hello y nombre de servidor. Además, se proporcionará información sobre las posibles causas y recomienda acciones tooinvestigate y mitigar la base de datos de toohello de amenaza potencial de Hola. recorrido Hola de pasos siguiente le guían a través de qué toodo debería recibir un mensaje de correo electrónico:
 
     ![Correo electrónico de detección de amenazas](./media/sql-database-threat-detection-get-started/4_td_email.png)
 
-6. En el correo electrónico, haga clic en el vínculo **Registro de auditoría SQL de Azure**, lo que iniciará el portal de Azure y mostrará los registros de auditoría pertinentes en torno a la hora del evento sospechoso.
+6. En correo electrónico de hello, haga clic en hello **el registro de auditoría de SQL de Azure** vínculo, que se inicie Hola portal de Azure y mostrar registros de auditoría relevantes de hello aproximadamente hora de Hola de eventos sospechosos Hola.
 
     ![Registros de auditoría](./media/sql-database-threat-detection-get-started/5_td_audit_records.png)
 
-7. Haga clic en los registros de auditoría para ver más detalles sobre las actividades sospechosas en la base de datos, como instrucción SQL, motivo del error e IP de cliente.
+7. Haga clic en tooview de registros de auditoría de hello más detalles sobre las actividades de base de datos sospechosa hello como instrucción SQL, IP de cliente y el motivo del error.
 
     ![Detalles del registro](./media/sql-database-security-tutorial/6_td_audit_record_details.png)
 
-8. En la hoja Registros de auditoría, haga clic en **Abrir en Excel** para abrir una plantilla de Excel ya configurada para importar y ejecutar un análisis más profundo del registro de auditoría en torno a la hora del evento sospechoso.
+8. En la hoja de registros de auditoría de hello, haga clic en **abierto en Excel** tooopen configurada previamente excel tooimport de plantilla y ejecución análisis más profundos de registro de auditoría de hello aproximadamente hora de Hola de eventos sospechosos Hola.
 
     > [!NOTE]
-    > En Excel 2010 o superior, se requieren Power Query y la opción **Combinación rápida**.
+    > En Excel 2010 o posterior, Power Query y hello **combinación rápida** configuración es necesaria.
 
     ![Abrir registros en Excel](./media/sql-database-threat-detection-get-started/7_td_audit_records_open_excel.png)
 
-9. Para definir la configuración **Combinación rápida**: en la pestaña **POWER QUERY** de la cinta, seleccione **Opciones** para mostrar el cuadro de diálogo Opciones. Seleccione la sección Privacidad y elija la segunda opción, "Omitir los niveles de privacidad para mejorar el rendimiento":
+9. Hola tooconfigure **combinación rápida** configuración - Hola **POWER QUERY** ficha de cinta de opciones, seleccione **opciones** cuadro de diálogo de opciones de toodisplay Hola. Seleccione la sección de privacidad de Hola y elige Hola segunda opción - 'Ignorar los niveles de privacidad de Hola y mejorar el rendimiento potencialmente':
 
     ![Combinación rápida de Excel](./media/sql-database-threat-detection-get-started/8_td_excel_fast_combine.png)
 
-10. Para cargar registros de auditoría SQL, asegúrese de que los parámetros de la pestaña Configuración sean correctos y después seleccione "Datos" en la cinta y haga clic en el botón "Actualizar todo".
+10. registros de auditoría SQL tooload, asegúrese de que parámetros hello en la pestaña de configuración de hello están establecidos correctamente y, a continuación, seleccione la cinta de opciones de "Datos" hello y haga clic en botón 'Actualizar todo' hello.
 
     ![Parámetros de Excel](./media/sql-database-threat-detection-get-started/9_td_excel_parameters.png)
 
-11. Los resultados aparecen en la hoja **Registros de auditoría SQL** , que permite ejecutar un análisis más profundo de las actividades anómalas que se detectaron y mitigar el impacto del evento de seguridad en la aplicación.
+11. los resultados de Hello aparecen en hello **los registros de auditoría de SQL** hoja que le permite realizar análisis más profundos toorun actividades anómalas de Hola que se detectaron y mitigar el impacto de Hola de eventos de seguridad de hello en la aplicación.
 
 
 ## <a name="next-steps"></a>Pasos siguientes
-Con unos pocos pasos sencillos puede mejorar la protección de su base de datos contra usuarios malintencionados o acceso no autorizado. En este tutorial, aprenderá a: 
+Puede mejorar la protección de hello de la base de datos frente a accesos no autorizados con unos pocos pasos sencillos o usuarios malintencionados. En este tutorial, aprenderá a: 
 
 > [!div class="checklist"]
 > * Configurar reglas de firewall para un servidor o una base de datos
-> * Conexión a una base de datos mediante una cadena de conexión segura
+> * Conéctese utilizando una cadena de conexión segura de base de datos de tooyour
 > * Administrar el acceso de los usuarios
 > * Protección de los datos con cifrado
 > * Habilitación de la auditoría de SQL Database

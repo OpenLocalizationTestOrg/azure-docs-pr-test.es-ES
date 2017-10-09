@@ -1,6 +1,6 @@
 ---
-title: "Configuración del glosario empresarial para el etiquetado regulado en Azure Data Catalog| Microsoft Docs"
-description: "Artículo de procedimientos que resalta el glosario empresarial en Catálogo de datos de Azure para definir y utilizar un vocabulario empresarial común para etiquetar recursos de datos registrados."
+title: "aaaSet los glosarios empresariales de Hola para etiquetar los controlada en el catálogo de datos de Azure | Documentos de Microsoft"
+description: "Cómo tooarticle Glosario de negocio de hello resaltado en el catálogo de datos para definir y utilizar un tootag de vocabulario empresarial común registrado activos de datos."
 services: data-catalog
 documentationcenter: 
 author: steelanddata
@@ -15,71 +15,71 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 08/15/2017
 ms.author: maroche
-ms.openlocfilehash: 83ca3b2d89a335a5fd6dddeaca7c11f6d0492234
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: c9adf663bd08ac3c0c7b5d3551e6af409fe69ebc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="set-up-the-business-glossary-for-governed-tagging"></a>Configuración del glosario empresarial para el etiquetado regulado
+# <a name="set-up-hello-business-glossary-for-governed-tagging"></a>Configurar glosarios empresariales de Hola para rige etiquetado
 ## <a name="introduction"></a>Introducción
-Azure Data Catalog permite la detección de orígenes de datos, con el fin de que pueda detectar y conocer fácilmente los orígenes de datos que necesita para realizar análisis y tomar decisiones. Estas funcionalidades consiguen el mayor impacto cuando se puede buscar y conocer el rango más amplio de orígenes de datos disponibles.
+Catálogo de datos de Azure habilita la detección de origen de datos, por lo que puede detectar fácilmente y comprender los orígenes de datos de Hola que necesita tooperform análisis y tomar decisiones. Estas capacidades convierten mayor impacto de hello cuando se puede encontrar y entender la gama más amplia de Hola de orígenes de datos disponibles.
 
-Una característica del Catálogo de datos que promueve una mejor comprensión de los datos de recursos es el etiquetado. Con las etiquetas es posible asociar palabras clave a un recurso o una columna, lo que, a su vez, facilita la detección del recurso mediante la búsqueda o la exploración. El etiquetado también le ayuda a conocer más fácilmente el contexto y el propósito del recurso.
+Una característica del Catálogo de datos que promueve una mejor comprensión de los datos de recursos es el etiquetado. Mediante el uso de etiquetado, puede asociar palabras clave a un recurso o una columna, que a su vez resulta más fácil de activos de hello toodiscover a través de la búsqueda o la exploración. Etiquetado también más ayuda a comprender fácilmente el contexto de Hola y el propósito del activo de Hola.
 
 Sin embargo, el etiquetado a veces puede causar problemas por sí mismo. Estos son algunos ejemplos de los problemas que puede presentar el etiquetado:
 
-* El uso de abreviaturas en algunos recursos y texto expandido en otros. Esta incoherencia dificulta la detección de los recursos, aunque el propósito fuera usar la misma etiqueta con los recursos.
-* Posibles variaciones de significado en función del contexto. Por ejemplo, una etiqueta denominada *Ingresos* en un conjunto de datos de cliente puede significar ingresos por cliente, pero la misma etiqueta en un conjunto de datos de ventas trimestral puede significar ingresos trimestrales de la empresa.  
+* Hola el uso de las abreviaturas en algunos activos y texto expandido en otras versiones. Esta incoherencia afecta negativamente al detección Hola de activos, aunque el intento de hello era activos de hello tootag con hello misma etiqueta.
+* Posibles variaciones de significado en función del contexto. Por ejemplo, una etiqueta denominada *ingresos* en un cliente, conjunto de datos podría significar ingresos por cliente, pero hello misma etiqueta en un conjunto de datos de ventas trimestral, podría significar ingresos trimestrales para empresa Hola.  
 
-Para ayudar a solucionar estos y otros problemas similares, Data Catalog incluye un glosario empresarial.
+toohelp resolver éstos y otros desafíos similares, el catálogo de datos incluye un glosario empresarial.
 
-Con el glosario empresarial de Data Catalog, las organizaciones pueden documentar los términos empresariales clave y sus definiciones para crear un vocabulario empresarial común. Esta regulación permite la coherencia del uso de datos por la organización. Una vez que un término se define un término en el glosario empresarial, se puede asignar a un recurso de datos del catálogo. Este enfoque, el *etiquetado regulado*, es el mismo que el etiquetado.
+Mediante el uso de glosario de hello catálogo de datos empresariales, una organización puede documentar términos empresariales clave y su toocreate definiciones un vocabulario empresarial común. Este control permite coherencia en el uso de datos a través de la organización de Hola. Después de define un término de glosario empresarial de hello, que puede asignarse a tooa datos activos en el catálogo de Hola. Este enfoque, *rige etiquetado*, es Hola mismo enfoque como el etiquetado.
 
 ## <a name="glossary-availability-and-privileges"></a>Disponibilidad del glosario y privilegios
-El glosario empresarial solo está disponible en la Edición Estándar del Catálogo de datos de Azure. La edición gratuita de Data Catalog no incluye un glosario y no proporciona funcionalidades para el etiquetado regulado.
+Glosario de Hello empresarial solo está disponible en hello edición estándar de catálogo de datos de Azure. Hello edición gratuita de catálogo de datos no incluye un glosario, y no proporciona funciones para etiquetar los controlados.
 
-Para acceder al glosario empresarial, es preciso usar la opción **Glosario** del menú de navegación del portal de Data Catalog.  
+Puede tener acceso a los glosarios empresariales de Hola a través de hello **glosario** opción en el menú de navegación del portal del catálogo de datos de Hola.  
 
-![Acceso al glosario empresarial](./media/data-catalog-how-to-business-glossary/01-portal-menu.png)
+![Obtener acceso a los glosarios empresariales de Hola](./media/data-catalog-how-to-business-glossary/01-portal-menu.png)
 
-Los administradores de Data Catalog y los miembros del rol de administradores de glosario pueden crear, editar y eliminar términos en el glosario empresarial. Todos los usuarios de Data Catalog pueden ver las definiciones de términos y etiquetar los recursos con los términos del glosario.
+Los administradores del catálogo de datos y los miembros de glosario de hello rol de los administradores pueden crear, editar y eliminar Glosario de términos de glosario empresarial de Hola. Todos los usuarios del catálogo de datos pueden ver definiciones de términos de Hola y activos de etiqueta con términos de glosario.
 
 ![Adición de nuevo término de glosario](./media/data-catalog-how-to-business-glossary/02-new-term.png)
 
 ## <a name="creating-glossary-terms"></a>Creación de términos de glosario
-Tanto los administradores de Data Catalog como los del glosario pueden crear nuevos términos del glosario haciendo clic en el botón **Nuevo término**. Todos los términos del glosario contienen los siguientes campos:
+Los administradores del catálogo de datos y los administradores de glosario pueden crear términos del glosario haciendo clic en hello **nuevo término** botón. Cada término de glosario contiene Hola siguientes campos:
 
-* Una definición empresarial del término
-* Una descripción que captura el uso previsto o las reglas de negocio de la columna o recurso
-* Una lista de las partes interesadas que más saben del término
-* El término primario, que define la jerarquía en el que se organiza el término
+* Una definición de negocios durante el período de Hola
+* Una descripción que captura Hola pensado reglas de uso o business de activos de Hola o columna
+* Una lista de las partes interesadas que sabe hello más acerca de los términos de Hola
+* término primario de Hello, que define la jerarquía de hello en qué Hola se organiza término
 
 ## <a name="glossary-term-hierarchies"></a>Jerarquías de términos de glosario
-Mediante el uso del glosario empresarial de Data Catalog, una organización puede describir su vocabulario empresarial como una jerarquía de términos y puede crear la clasificación de los términos que mejor represente la taxonomía de su negocio.
+Mediante el uso de glosario de hello catálogo de datos empresariales, una organización puede describir su vocabulario empresarial como una jerarquía de términos y puede crear una clasificación de los términos que represente mejor su taxonomía de negocios.
 
-Cada término debe ser único en un nivel determinado de jerarquía. No se permiten nombres duplicados. No hay límite en el número de niveles de una jerarquía, pero una jerarquía a menudo se entiende mejor cuando hay tres niveles como máximo.
+Cada término debe ser único en un nivel determinado de jerarquía. No se permiten nombres duplicados. No hay ningún toohello limitar el número de niveles en una jerarquía, pero una jerarquía es a menudo más comprensible cuando hay tres niveles o menos.
 
-El uso de jerarquías en el glosario empresarial es opcional. Si se deja en blanco el campo del elemento primario en el glosario de términos, se crea una lista plana (sin jerarquía) de los términos del glosario.  
+uso de Hola de jerarquías en glosarios empresariales de hello es opcional. Dejando Hola campo primario por el término en blanco para los términos del glosario crea una lista plana (sin jerarquía) de términos en Glosario de Hola.  
 
 ## <a name="tagging-assets-with-glossary-terms"></a>Etiquetado de recursos con los términos del glosario
-Una vez que se hayan definido los términos del glosario en el catálogo, se optimiza la experiencia del etiquetado para buscar en el glosario a medida que un usuario escribe una etiqueta. El portal de Data Catalog muestra una lista de términos del glosario coincidentes entre los que se puede elegir. Si el usuario selecciona un término del glosario en la lista, este se agrega al recurso en forma de etiqueta (también se denomina etiqueta de glosario). El usuario también puede crear una nueva etiqueta escribiendo un término que no esté en el glosario (también se denomina etiqueta de usuario).
+Después de definir los términos del glosario en el catálogo de hello, experiencia de Hola de etiquetado de activos es Glosario de hello toosearch optimizado como un usuario escribe una etiqueta. portal del catálogo de datos de Hello muestra una lista de búsqueda de coincidencias toochoose de términos de glosario de. Si el usuario de hello selecciona un término de glosario de lista de hello, se agrega el término de hello toohello asset como una etiqueta (también denominada una etiqueta de glosario). Hello usuario también puede elegir toocreate una nueva etiqueta escribiendo un término que no esté en hello Glosario (también denominada una etiqueta de usuario).
 
 ![Recurso de datos etiquetados con una etiqueta de usuario y dos etiquetas de glosario](./media/data-catalog-how-to-business-glossary/03-tagged-asset.png)
 
 > [!NOTE]
-> Las etiquetas de usuario son el único tipo de etiqueta que admite la edición gratuita de Data Catalog.
+> Usuario distinguen Hola solo tipo de etiqueta es compatible con Hola edición gratuita de catálogo de datos.
 >
 >
 
 ### <a name="hover-behavior-on-tags"></a>Comportamiento al mantener el puntero en las etiquetas
-En el portal de Data Catalog, los dos tipos de etiquetas son visualmente distintas y presentan diferentes comportamientos al mantener el puntero sobre ellas. Si se mantiene el puntero sobre una etiqueta de usuario, se puede ver tanto el texto de la etiqueta como al usuario, o usuarios, que han agregado la etiqueta. Cuando el puntero se mantiene sobre una etiqueta de glosario, también se ven la definición del término del glosario y un vínculo para abrir el glosario empresarial para ver la definición completa del término.
+En el portal del catálogo de datos de hello, Hola dos tipos de etiquetas son comportamientos de desplazamiento diferentes visualmente distintos y se presente. Cuando mantenga el mouse sobre una etiqueta de usuario, puede ver el texto de etiqueta de Hola y Hola o varios usuarios que hayan agregado etiqueta Hola. Cuando mantenga el mouse sobre una etiqueta de glosario, también ver definición de Hola de término de glosario de Hola y una vínculo tooopen Hola business glosario tooview Hola definición completa de términos de Hola.
 
 ### <a name="search-filters-for-tags"></a>Filtros de búsqueda de etiquetas
 Se pueden realizar búsquedas tanto en las etiquetas de glosario como en las de usuario y se pueden aplicar como filtros en una búsqueda.
 
 ## <a name="summary"></a>Resumen
-Mediante el uso del glosario empresarial en Azure Data Catalog y del etiquetado regulado que se puede identificar, administrar y detectar recursos de datos de forma coherente. El glosario empresarial pueden promover que los miembros de la organización aprendan el vocabulario empresarial. El glosario también admite la captura de metadatos descriptivos, lo que simplifica el conocimiento y la detección de recursos.
+Mediante el uso de glosario empresarial de hello en el catálogo de datos de Azure y Hola rige etiquetado permite, puede identificar, administrar e incluye los activos de datos de una manera coherente. Glosario de Hello empresarial puede promover aprendizaje de vocabulario empresarial de hello los miembros de la organización. Glosario de Hello también admite la captura de metadatos significativo, lo que simplifica la comprensión y detección de activos.
 
 ## <a name="next-steps"></a>Pasos siguientes
 * [Documentación de API de REST para las operaciones del glosario empresarial](https://msdn.microsoft.com/library/mt708855.aspx)

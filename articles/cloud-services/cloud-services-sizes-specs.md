@@ -1,6 +1,6 @@
 ---
-title: "Tamaños de máquina virtual para Azure Cloud Services | Microsoft Docs"
-description: "Enumera los diferentes tamaños (e ids.) de máquina virtual para los roles web y de trabajo del servicio en la nube de Azure."
+title: "tamaños de máquina de aaaVirtual de servicios en la nube de Azure | Documentos de Microsoft"
+description: "Enumera los tamaños de máquina virtual diferente de hello (e identificadores) para los roles de web y de trabajo de servicio de nube de Azure."
 services: cloud-services
 documentationcenter: 
 author: Thraka
@@ -14,43 +14,43 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 07/18/2017
 ms.author: adegeo
-ms.openlocfilehash: 1ba56eb9539a4295fdaaab523cfd2a7e1587ef54
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 93d91a67afc352f3d18c31e0dd5cf976bf46350c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="sizes-for-cloud-services"></a>Tamaños de los servicios en la nube
-En este tema se describen las opciones y los tamaños disponibles para las instancias de rol de servicio en la nube (roles web y roles de trabajo). También ofrece consideraciones de implementación que hay que tener en cuenta a la hora de planear usar estos recursos. Cada tamaño tiene un identificador que pondrá en su [archivo de definición de servicio](cloud-services-model-and-package.md#csdef). Los precios para cada tamaño están disponibles en la página [Precios de Cloud Services](https://azure.microsoft.com/pricing/details/cloud-services/).
+En este tema se describe los tamaños disponibles de Hola y las opciones para instancias de rol de servicio en la nube (roles web y roles de trabajo). También proporciona toobe de consideraciones de implementación tenga en cuenta al planear toouse estos recursos. Cada tamaño tiene un identificador que pondrá en su [archivo de definición de servicio](cloud-services-model-and-package.md#csdef). Los precios para cada tamaño de están disponibles en hello [precios de servicios de nube](https://azure.microsoft.com/pricing/details/cloud-services/) página.
 
 > [!NOTE]
-> Para ver límites relacionados de Azure, consulte [Suscripción de Azure y límites de servicio, cuotas y restricciones](../azure-subscription-service-limits.md)
+> toosee relacionadas con el límite de Azure, consulte [suscripción de Azure y límites de servicio, cuotas y restricciones](../azure-subscription-service-limits.md)
 >
 >
 
 ## <a name="sizes-for-web-and-worker-role-instances"></a>Tamaños de instancias de roles web y de trabajo
-Hay varios tamaños estándar para elegir en Azure. Entre las consideraciones para algunos de estos tamaños, se incluyen:
+Hay varias toochoose tamaños estándar de en Azure. Entre las consideraciones para algunos de estos tamaños, se incluyen:
 
-* Las máquinas virtuales de la serie D están diseñadas para ejecutar aplicaciones que exigen mayor capacidad de proceso y rendimiento de disco temporal. Las máquinas virtuales de la serie D proporcionan procesadores más rápidos, una mayor proporción de memoria a núcleo y una unidad de estado sólido (SSD) para el disco temporal. Para obtener más información, consulte el anuncio en el blog de Azure, [Nuevos tamaños de máquinas virtuales de la serie D](https://azure.microsoft.com/blog/2014/09/22/new-d-series-virtual-machine-sizes/).
-* Serie de Dv2, una evolución de la serie D original, presenta una CPU más eficaz. La CPU de la serie Dv2 es un 35 % aproximadamente más rápida que la CPU de la serie D. Se basa en el procesador Intel Xeon® E5-2673 v3 (Haswell) de 2,4 GHz de la última generación; y con Intel Turbo Boost Technology 2.0, puede alcanzar los 3,1 GHz. La serie Dv2 tiene las mismas configuraciones de disco y memoria que la serie D.
-* Las máquinas virtuales de la serie G ofrecen la mayor cantidad de memoria y se ejecutan en hosts con procesadores de la familia Intel Xeon E5 V3.
-* Las máquinas virtuales de la serie A se pueden implementar en diversos procesadores y tipos de hardware. Según el hardware, el tamaño es una limitación para ofrecer un rendimiento coherente del procesador para la instancia en ejecución, independientemente del hardware en que se implementó. Con el fin de determinar el hardware físico en que se implementó este tamaño, cree una consulta para el hardware virtual desde dentro de la máquina virtual.
-* El tamaño A0 está sobresuscrito en el hardware físico. Solo en este tamaño específico, las implementaciones de otros clientes podrían afectar el rendimiento de la carga de trabajo en ejecución. A continuación, se indica el rendimiento relativo como la línea base esperada, sujeta a una variabilidad aproximada de 15 por ciento.
+* Máquinas virtuales de la serie D son toorun diseñado aplicaciones que requieren mayor capacidad de proceso y rendimiento de disco temporal. Máquinas virtuales de serie D proporcionan procesadores más rápidos, una mayor proporción de memoria a núcleo y una unidad de estado sólida (SSD) para el disco temporal de Hola. Para obtener más información, consulte el anuncio de Hola en hello blog de Azure, [nuevos tamaños de máquina Virtual de serie D](https://azure.microsoft.com/blog/2014/09/22/new-d-series-virtual-machine-sizes/).
+* Serie de Dv2, un toohello continuada serie D original, cuenta con una CPU más eficaz. Hola Dv2 serie CPU es aproximadamente un 35% más rápido que Hola serie D CPU. Se basa en hello última generación v3 de 2,4 GHz Intel Xeon® E5-2673 procesador (Haswell) y con hello aumento tecnología Intel Turbo 2.0, pueden crecer hasta too3.1 GHz. Hola Dv2 serie tiene Hola mismas configuraciones de memoria y disco como Hola serie D.
+* Máquinas virtuales de serie G ofrecen hello más memoria y ejecutan en hosts que tienen procesadores de la familia Intel Xeon E5 V3.
+* Hola serie a las máquinas virtuales se puede implementar en varios tipos de hardware y procesadores. Limitar tamaño de Hello, basados en hardware de hello, rendimiento de procesador coherente toooffer para hello ejecutando la instancia, con independencia de hardware de Hola se implementa en. toodetermine Hola hardware físico en el que se implementa este tamaño, consulta Hola hardware virtual desde dentro de hello Máquina Virtual.
+* Hola Tamaño A0 es excesiva suscrito en el hardware físico de Hola. Solo este tamaño específico, otras implementaciones de cliente pueden afectar al rendimiento de hello de la carga de trabajo de ejecución. a continuación se indica el rendimiento relativo de Hello como línea base Hola esperado, variabilidad aproximado de asunto tooan de 15 por ciento.
 
-El tamaño de la máquina virtual afecta a los precios. El tamaño también afecta a la capacidad de procesamiento, memoria y almacenamiento de la máquina virtual. Los costes de almacenamiento se calculan por separado según las páginas utilizadas en la cuenta de almacenamiento. Para más información, consulte [Detalles de precios de Cloud Services](https://azure.microsoft.com/pricing/details/cloud-services/) y [Precios de Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
+tamaño de Hola de máquina virtual de hello afecta a precios de Hola. tamaño de Hello también afecta a la capacidad de procesamiento, memoria y almacenamiento de Hola de máquina virtual de Hola. Los costos de almacenamiento se calculan por separado según las páginas usadas en la cuenta de almacenamiento de Hola. Para más información, consulte [Detalles de precios de Cloud Services](https://azure.microsoft.com/pricing/details/cloud-services/) y [Precios de Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
 
-Las consideraciones siguientes pueden ayudarle a decidirse por un tamaño:
+Hola después consideraciones podría ayudarle a decidirse por un tamaño:
 
-* Los tamaños A8-A11 los de la serie H también se conocen como *instancias de proceso intensivo*. El hardware que ejecuta estos tamaños está diseñado y optimizado para aplicaciones de proceso intensivo que consumen muchos recursos de red, incluidas las aplicaciones de clúster de proceso de alto rendimiento (HPC), el modelado y las simulaciones. La serie A8-A11 utiliza Intel Xeon E5-2670 a 2,6 GHz y la serie H, Intel Xeon E5-2667 v3 a 3,2 GHz. Para más información y consideraciones sobre el uso de estos tamaños, consulte [Tamaños de máquina virtual de informática de alto rendimiento](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Hello tamaños A8 A11 y H-series son también se denomina *instancias de proceso intensivo*. hardware de Hola que ejecuta estos tamaños está diseñado y optimizado para el proceso intensivo y aplicaciones, modelado y simulaciones de clúster de aplicaciones de red intensiva, incluido informática de alto rendimiento (HPC). Hola A8 A11 serie utiliza Intel Xeon E5-2670 a 2,6 GHZ y Hola H-series utiliza Intel Xeon E5-2667 v3 @ 3,2 GHz. Para más información y consideraciones sobre el uso de estos tamaños, consulte [Tamaños de máquina virtual de informática de alto rendimiento](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Las series Dv2, D y G son ideales para las aplicaciones que requieren CPU más rápidas, mejor rendimiento de disco local, o tienen mayor demanda de memoria. Ofrecen una combinación eficaz para muchas aplicaciones de clase empresarial.
-* Puede que algunos de los hosts físicos de los centros de datos de Azure no admitan tamaños de máquinas virtuales grandes, como A5 – A11. En consecuencia, puede ver el mensaje de error **No se pudo configurar la máquina virtual {nombre de la máquina}** o **No se pudo crear la máquina virtual {nombre de la máquina}** al cambiar el tamaño de una máquina virtual existente por un nuevo tamaño, al crear una nueva máquina virtual en una red virtual creada antes del 16 de abril de 2013 o al agregar una nueva máquina virtual a un servicio en la nube existente. Consulte [Error: "No se pudo configurar la máquina virtual"](https://social.msdn.microsoft.com/Forums/9693f56c-fcd3-4d42-850e-5e3b56c7d6be/error-failed-to-configure-virtual-machine-with-a5-a6-or-a7-vm-size?forum=WAVirtualMachinesforWindows) en el foro de soporte técnico para ver una lista de soluciones alternativas para cada escenario de implementación.
-* La suscripción también podría limitar el número de núcleos que se pueden implementar en ciertas familias de tamaños. Para aumentar una cuota, póngase en contacto con el soporte técnico de Azure.
+* Puede que algunos de los hosts físicos de hello en los centros de datos de Azure no admitan tamaños mayores de máquina virtual, como A5-A11. Como resultado, verá el mensaje de error de hello **máquina virtual de tooconfigure error {nombre de la máquina}** o **máquina virtual de toocreate error {nombre de la máquina}** al cambiar el tamaño de una existente tooa de máquina virtual nueva tamaño; crear una nueva máquina virtual en una red virtual creada antes del 16 de abril de 2013; o bien, agregar un nueva máquina virtual tooan existente servicio en la nube. Vea [Error: "Error tooconfigure virtual machine"](https://social.msdn.microsoft.com/Forums/9693f56c-fcd3-4d42-850e-5e3b56c7d6be/error-failed-to-configure-virtual-machine-with-a5-a6-or-a7-vm-size?forum=WAVirtualMachinesforWindows) en el foro de soporte técnico de Hola para las soluciones alternativas para cada escenario de implementación.
+* La suscripción también puede limitar el número de Hola de núcleos que se puede implementar en ciertas familias de tamaño. tooincrease una cuota, póngase en contacto con soporte técnico de Azure.
 
 ## <a name="performance-considerations"></a>Consideraciones sobre rendimiento
-Creamos el concepto de unidad de proceso de Azure (ACU) para brindar una forma de comparar el rendimiento de los procesos (CPU) en todas las SKU de Azure e identificar qué SKU es más probable que satisfaga nuestras necesidades de rendimiento.  Actualmente, una ACU está estandarizada en una máquina virtual pequeña (Standard_A1) como 100 y todas las demás SKU representan, aproximadamente, qué tanto más rápido esa SKU puede ejecutar una prueba comparativa estándar.
+Hemos creado concepto de Hola de hello unidad de proceso de Azure (ACU) tooprovide una manera de comparar el rendimiento de proceso (CPU) a través de SKU de Azure y tooidentify que SKU es probablemente toosatisfy el rendimiento necesario.  Actualmente, una ACU está estandarizada en una máquina virtual pequeña (Standard_A1) como 100 y todas las demás SKU representan, aproximadamente, qué tanto más rápido esa SKU puede ejecutar una prueba comparativa estándar.
 
 > [!IMPORTANT]
-> La ACU es solo una referencia. Los resultados de la carga de trabajo pueden variar.
+> Hola ACU es solo una directriz. resultados de Hello para la carga de trabajo pueden variar.
 >
 >
 
@@ -69,15 +69,15 @@ Creamos el concepto de unidad de proceso de Azure (ACU) para brindar una forma d
 | [G1 5](#g-series) |180 - 240* |
 | [H](#h-series) |290 - 300* |
 
-Las ACU marcadas con un asterisco * usan la tecnología Intel® Turbo para incrementar la frecuencia de CPU y brindar una mejora del rendimiento. El volumen de la mejora puede variar según el tamaño de la máquina virtual, la carga de trabajo y las otras cargas de trabajo que se ejecutan en el mismo host.
+ACUs marcados con un * usan una frecuencia tooincrease CPU de Intel® Turbo tecnología y proporcionar un aumento del rendimiento. Hello cantidad de aumento de hello puede variar en función de tamaño de máquina virtual de hello, carga de trabajo y otras cargas de trabajo que se ejecutan en hello mismo host.
 
 ## <a name="size-tables"></a>Tablas de tamaño
-Las siguientes tablas muestran los tamaños y las capacidades que ofrecen.
+Hello en las tablas siguientes muestran tamaños de Hola y capacidades de hello proporcionan.
 
-* La capacidad de almacenamiento se muestra en unidades de GiB o 1024^3 bytes. Cuando compare discos que se miden en GB (1000^3 bytes) con discos que se miden en GiB (1024^3), recuerde que los números que representan la capacidad en GiB pueden parecer más pequeños. Por ejemplo, 1023 GiB = 1098.4 GB
+* La capacidad de almacenamiento se muestra en unidades de GiB o 1024^3 bytes. Al comparar discos medido en GB (1000 ^ 3 bytes) toodisks medido en GiB (1024 ^ 3) Recuerde que los números de capacidad en GiB pueden aparecer más pequeños. Por ejemplo, 1023 GiB = 1098.4 GB
 * Se midió el rendimiento de disco en operaciones de entrada/salida por segundo (E/S por segundo) y Mbps, donde Mbps = 10^6 bytes/s.
-* Los discos de datos pueden funcionar en modo en caché o en modo no en caché. En el caso de la operación de disco de datos en caché, el modo de caché del host está establecido en **ReadOnly** o **ReadWrite**. En el caso de la operación de disco de datos no en caché, el modo de caché del host está definido en **None**.
-* El ancho de banda de red máximo es el ancho de banda agregado máximo que se asigna por cada tipo de VM. El ancho de banda máximo proporciona una orientación a la hora de seleccionar el tipo de VM correcto a fin de garantizar la disponibilidad de la capacidad de red adecuada. Al cambiar a Bajo, Moderado, Alto y Muy alto, el rendimiento aumentará en consecuencia. El rendimiento de red real dependerá de muchos factores (como, por ejemplo, las cargas de la red y de la aplicación y la configuración de red de la aplicación).
+* Los discos de datos pueden funcionar en modo en caché o en modo no en caché. Para la operación de disco de datos almacenados en caché, modo de caché de host de Hola se establece demasiado**ReadOnly** o **ReadWrite**. Para la operación de disco de datos sin almacenar en caché, modo de caché de host de Hola se establece demasiado**ninguno**.
+* Ancho de banda de red máximo es Hola agregados ancho de banda máximo asignado y asignado por el tipo de máquina virtual. ancho de banda máximo de Hello proporciona orientación para la selección de hello derecho VM tipo tooensure suficiente capacidad de la red está disponible. Al mover entre baja, moderada, alta y muy alta, el rendimiento de hello aumenta en consecuencia. El rendimiento de red real dependerá de muchos factores (como, por ejemplo, las cargas de la red y de la aplicación y la configuración de red de la aplicación).
 
 ## <a name="a-series"></a>Serie A
 | Tamaño            | Núcleos de CPU | Memoria: GiB  | HDD local: GiB       | Ancho de banda de red/NIC máx. |
@@ -152,9 +152,9 @@ Para más información y consideraciones sobre el uso de estos tamaños, consult
 | Standard_G5     | 32        | 448          | 6144                |8 / extremadamente alto |
 
 ## <a name="h-series"></a>Serie H
-Las máquinas virtuales de la serie H son las de próxima generación informática de alto rendimiento que abordan las necesidades informáticas de gama alta, como el modelado molecular y la dinámica de fluidos computacional. Estas máquinas virtuales de 8 y 16 núcleos se basan en la tecnología de procesador Intel Haswell E5-2667 V3 con memoria DDR4 y almacenamiento basado en SSD local.
+Máquinas virtuales de Azure H-series son Hola siguiente generación informática de alto rendimiento que las máquinas virtuales dirigidas a las necesidades de cálculo de high-end, como modelado molecular y dinámica de fluidos computacional. Estas 8 y 16 núcleos las máquinas virtuales se crean en la tecnología de procesador de hello Intel 2667 Haswell E5 V3 que incluye DDR4 memoria y almacenamiento basada en SSD local.
 
-Además de una potencia de CPU notable, la serie H ofrece varias opciones para las redes RDMA de baja latencia con FDR InfiniBand y varias configuraciones de memoria para admitir requisitos computacionales de uso intensivo de la memoria.
+Además toohello gran potencia de la CPU, Hola H-series ofrece diversas opciones para las redes de RDMA de latencia baja mediante FDR InfiniBand y varias configuraciones toosupport memoria intensivas cálculo requisitos de memoria.
 
 | Tamaño            | Núcleos de CPU | Memoria: GiB  | SSD local: GiB       | Ancho de banda de red/NIC máx. |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
@@ -168,9 +168,9 @@ Además de una potencia de CPU notable, la serie H ofrece varias opciones para l
 \*Compatible con RDMA
 
 ## <a name="configure-sizes-for-cloud-services"></a>Configuración de tamaños para los Servicios en la nube
-Puede especificar el tamaño de la máquina virtual de una instancia de rol como parte del modelo de servicio descrito por el [archivo de definición de servicio](cloud-services-model-and-package.md#csdef). El tamaño del rol determina la cantidad de núcleos de CPU, la capacidad de memoria y el tamaño del sistema de archivos local que se asigna a una instancia en ejecución. Elija el tamaño del rol en función del requisito de recursos de la aplicación.
+Puede especificar el tamaño de una instancia de rol de máquina Virtual de hello como parte del modelo de servicio de hello descrito por hello [archivo de definición de servicio](cloud-services-model-and-package.md#csdef). tamaño de Hola de rol Hola determina número Hola de núcleos de CPU, capacidad de memoria de Hola y tamaño del sistema de archivos local Hola que se asigna tooa ejecuta la instancia. Elegir tamaño de rol de hello en función de los requisitos de recursos de la aplicación.
 
-Este es un ejemplo de cómo establecer el tamaño del rol como [Standard_D2](#general-purpose-d) para una instancia de rol web:
+Este es un ejemplo para establecer toobe de tamaño de rol de hello [Standard_D2](#general-purpose-d) para una instancia de rol Web:
 
 ```xml
 <WorkerRole name="Worker1" vmsize="Standard_D2">
@@ -178,17 +178,17 @@ Este es un ejemplo de cómo establecer el tamaño del rol como [Standard_D2](#ge
 </WorkerRole>
 ```
 
-## <a name="changing-the-size-of-an-existing-role"></a>Cambio de tamaño de un rol existente
+## <a name="changing-hello-size-of-an-existing-role"></a>Cambiar el tamaño de Hola de un rol existente
 
-A medida que cambia la naturaleza de la carga de trabajo o los tamaños de la nueva máquina virtual están disponibles, puede que desee cambiar el tamaño de su rol. Para ello, debe cambiar el tamaño de la máquina virtual en el archivo de definición de servicio (tal y como se muestra arriba), volver a empaquetar Cloud Service e implementarlo. No es posible cambiar los tamaños de máquina virtual directamente desde el portal o PowerShell.
+Como la naturaleza de Hola de los cambios de carga de trabajo o los nuevos tamaños de máquina virtual esté disponibles, puede que desee toochange tamaño de Hola de su rol. toodo por lo tanto, también debe cambiar el tamaño VM de hello en el archivo de definición de servicio (tal y como se muestra arriba), volver a empaquetar el servicio en la nube e implementarlo. No es posible toochange tamaños de máquina virtual directamente desde el portal de Hola o PowerShell.
 
 >[!TIP]
-> Puede que desee utilizar diferentes tamaños de máquina virtual para su rol en diferentes entornos (p. ej. prueba frente a producción). Una manera de hacer esto es crear varios archivos de definición de servicio (.csdef) en el proyecto, luego cree diferentes paquetes de servicio en la nube por entorno durante la compilación automatizada con la herramienta CSPack. Para obtener más información acerca de los elementos de un paquete de Cloud Services y cómo crearlos, vea [¿Qué es el modelo de Cloud Services y cómo empaquetarlo?](cloud-services-model-and-package.md)
+> Puede que desee toouse distintos tamaños de máquina virtual para el rol en diferentes entornos (p. ej. prueba frente a producción). Toodo una manera de esto es toocreate varios archivos de definición (.csdef) de servicio en el proyecto y después crear paquetes de servicio por cada entorno de nube diferente durante la compilación automatizada con la herramienta CSPack de Hola. ¿paquete de servicios de toolearn más información acerca de los elementos de una nube hello y cómo toocreate, consulte [Novedades en la nube hello de servicios de modelo y cómo empaquetarla?](cloud-services-model-and-package.md)
 >
 >
 
 ## <a name="get-a-list-of-sizes"></a>Obtención de una lista de tamaños
-Puede usar PowerShell o la API de REST para obtener una lista de tamaños. La API de REST de Storm se documenta [aquí](https://msdn.microsoft.com/library/azure/dn469422.aspx). El código siguiente es un comando de PowerShell que enumerará todos los tamaños disponibles actualmente para el servicio en la nube.
+También puede usar PowerShell o hello tooget una lista de tamaños de API de REST. Hello API de REST se documenta [aquí](https://msdn.microsoft.com/library/azure/dn469422.aspx). Hello código siguiente es un comando de PowerShell que mostrará una lista de todos los tamaños de hello disponibles actualmente para el servicio de nube.
 
 ```powershell
 Get-AzureRoleSize | where SupportedByWebWorkerRoles -eq $true | select InstanceSize

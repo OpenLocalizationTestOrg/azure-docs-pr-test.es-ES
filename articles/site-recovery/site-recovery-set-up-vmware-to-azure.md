@@ -1,6 +1,6 @@
 ---
-title: "Configuración del entorno de origen (VMware a Azure) | Microsoft Docs"
-description: "En este artículo se describe cómo configurar el entorno local para comenzar a replicar máquinas virtuales de VMware en Azure."
+title: Configurar el entorno de origen hello (VMware tooAzure) | Documentos de Microsoft
+description: "Este artículo describe cómo tooset seguridad su toostart del entorno local replicar VMware virtual máquinas tooAzure."
 services: site-recovery
 documentationcenter: 
 author: AnoopVasudavan
@@ -14,79 +14,79 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/29/2017
 ms.author: anoopkv
-ms.openlocfilehash: a2fabc56463c8cbf0b8a76b7a84369ed8e535486
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: cbeeffc1061b11223e12ff3e237fa7e55b999aca
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="set-up-the-source-environment-vmware-to-azure"></a>Configuración del entorno de origen (VMware a Azure)
+# <a name="set-up-hello-source-environment-vmware-tooazure"></a>Configurar el entorno de origen hello (tooAzure de VMware)
 > [!div class="op_single_selector"]
-> * [VMware a Azure](./site-recovery-set-up-vmware-to-azure.md)
-> * [Físico en Azure](./site-recovery-set-up-physical-to-azure.md)
+> * [TooAzure de VMware](./site-recovery-set-up-vmware-to-azure.md)
+> * [TooAzure físico](./site-recovery-set-up-physical-to-azure.md)
 
-En este artículo se describe cómo configurar el entorno local para comenzar a replicar máquinas virtuales que se ejecutan en VMware en Azure.
+Este artículo describe cómo ejecutar los equipos de tooset seguridad su toostart del entorno local replicar virtual de VMware tooAzure.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-En este artículo se supone que ya creó:
-- Un almacén de Recovery Services en [Azure Portal](http://portal.azure.com "Azure Portal").
+artículo de Hola se supone que ya ha creado:
+- Un almacén de servicios de recuperación de hello [portal de Azure](http://portal.azure.com "portal de Azure").
 - Una cuenta dedicada en el vCenter de VMware que se puede usar para [detección automática](./site-recovery-vmware-to-azure.md).
-- Una máquina virtual en donde instalar el servidor de configuración.
+- Una máquina virtual en el servidor de configuración de tooinstall Hola.
 
 ## <a name="configuration-server-minimum-requirements"></a>Requisitos mínimos del servidor de configuración
-El software del servidor de configuración se debe implementar en una máquina virtual de VMware de alta disponibilidad. En la siguiente tabla se muestran los requisitos mínimos de hardware, software y red para un servidor de configuración.
+software de servidor de configuración de Hello debe implementarse en una máquina virtual de VMware alta disponibilidad. Hello en la tabla siguiente enumera Hola mínimos de hardware, software y requisitos de red para un servidor de configuración.
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 
 > [!NOTE]
-> El servidor de configuración no admite los servidores proxy basados en HTTPS.
+> No se admiten servidores proxy basada en HTTPS al servidor de configuración de Hola.
 
 ## <a name="choose-your-protection-goals"></a>Selección de los objetivos de protección
 
-1. En Azure Portal, vaya a la hoja de los almacenes de **Recovery Services** y seleccione su almacén.
-2. En el menú de recursos del almacén, haga clic en **Introducción** > **Site Recovery** > **Paso 1: Preparar la infraestructura** > **Objetivo de protección**.
+1. Hola portal de Azure, vaya toohello **servicios de recuperación** hoja del almacén y seleccione el almacén.
+2. En el menú de recursos de Hola de almacén de hello, que se vaya demasiado**Introducción** > **Site Recovery** > **paso 1: preparar la infraestructura**  >  **Objetivo de protección**.
 
     ![Elegir objetivos](./media/site-recovery-set-up-vmware-to-azure/choose-goals.png)
-3. En **Objetivo de protección**, seleccione **To Azure** (En Azure) y **Yes, with VMware vSphere Hypervisor** (Sí, con VMware vSphere Hypervisor). y, a continuación, haga clic en **Aceptar**.
+3. En **objetivo de protección**, seleccione **tooAzure**y elija **Sí, con el hipervisor de VMware vSphere**. y, a continuación, haga clic en **Aceptar**.
 
     ![Elegir objetivos](./media/site-recovery-set-up-vmware-to-azure/choose-goals2.png)
 
-## <a name="set-up-the-source-environment"></a>Configuración del entorno de origen
-Configurar el entorno de origen implica dos actividades principales:
+## <a name="set-up-hello-source-environment"></a>Configurar el entorno de origen Hola
+Configurar el entorno de origen Hola implica dos actividades principales:
 
 - Instale y registre un servidor de configuración con Site Recovery.
-- Detecte sus máquinas virtuales locales a través de la conexión de Site Recovery con los hosts EXSi de vSphere o vCenter de VMware locales.
+- Descubra las máquinas virtuales de local mediante la conexión de Site Recovery tooyour local vCenter o vSphere EXSi hosts de VMware.
 
 ### <a name="step-1-install-and-register-a-configuration-server"></a>Paso 1: Instalar y registrar un servidor de configuración
 
-1. Haga clic en **Paso 1: Preparar la infraestructura** > **Origen**. En **Preparar origen**, si no tiene un servidor de configuración, haga clic en **+Servidor de configuración** para agregar uno.
+1. Haga clic en **Paso 1: Preparar la infraestructura** > **Origen**. En **preparar origen**, si no tiene un servidor de configuración, haga clic en **+ servidor de configuración** tooadd uno.
 
     ![Configurar origen](./media/site-recovery-set-up-vmware-to-azure/set-source1.png)
-2. En la hoja **Agregar servidor**, compruebe que **Servidor de configuración** aparezca en **Tipo de servidor**.
-4. Descargue el archivo de instalación unificada de Site Recovery.
-5. Descargue la clave de registro del almacén. Necesita la clave de registro cuando ejecuta la instalación unificada. La clave será válida durante cinco días a partir del momento en que se genera.
+2. En hello **Agregar servidor** hoja, compruebe que **servidor de configuración** aparece en **tipo de servidor**.
+4. Descargue el archivo de instalación de configuración de Site Recovery unificado de Hola.
+5. Descargue la clave de registro del almacén de Hola. Se necesita la clave de registro de hello al ejecutar el programa de instalación unificada. clave de Hello es válida durante cinco días después de generarlo.
 
     ![Configurar origen](./media/site-recovery-set-up-vmware-to-azure/set-source2.png)
-6. En la máquina que usa como el servidor de configuración, ejecute la **instalación unificada de Azure Site Recovery** para instalar el servidor de configuración, el servidor de procesos y el servidor de destino maestro.
+6. En el equipo de Hola que utilice como servidor de configuración de hello, ejecute **instalación unificada de Azure Site Recovery** servidor de configuración de tooinstall Hola, servidor de procesos de Hola y Hola maestro servidor de destino.
 
 #### <a name="run-azure-site-recovery-unified-setup"></a>Ejecución de la instalación unificada de Azure Site Recovery
 
 > [!TIP]
-> El registro del servidor de configuración presenta errores si la hora del reloj del sistema de su equipo difiere más de cinco minutos con respecto a la hora local. Sincronice el reloj del sistema con un [servidor horario](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service) antes de comenzar la instalación.
+> Se produce un error en el registro del servidor de configuración si la hora de hello en el reloj del sistema del equipo difiere de la hora local en más de cinco minutos. Sincronizar el reloj del sistema con un [servidor horario](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service) antes de iniciar la instalación de Hola.
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
 > [!NOTE]
-> El servidor de configuración se puede instalar a través de la línea de comandos. Para más información, consulte [Instalación del servidor de configuración con herramientas de línea de comandos](http://aka.ms/installconfigsrv).
+> servidor de configuración de Hello puede instalarse a través de la línea de comandos. Para obtener más información, consulte [instalar servidor de configuración de hello mediante herramientas de línea de comandos](http://aka.ms/installconfigsrv).
 
-#### <a name="add-the-vmware-account-for-automatic-discovery"></a>Incorporación de la cuenta de VMware para detección automática
+#### <a name="add-hello-vmware-account-for-automatic-discovery"></a>Agregar cuenta de VMware de hello para la detección automática
 
 [!INCLUDE [site-recovery-add-vcenter-account](../../includes/site-recovery-add-vcenter-account.md)]
 
 ### <a name="step-2-add-a-vcenter"></a>Paso 2: Agregar un vCenter
-Para permitir que Azure Site Recovery detecte las máquinas virtuales que se ejecutan en el entorno local, debe conectar los hosts ESXi de vSphere o servidor vCenter de VMware con Site Recovery.
+tooallow Azure Site Recovery toodiscover máquinas virtuales que ejecutan en su entorno local, debe tooconnect el servidor VMware vCenter o hosts de ESXi vSphere con Site Recovery.
 
-Seleccione **+vCenter** para comenzar a conectar un servidor vCenter de VMware o un host ESXi de vSphere de VMware.
+Seleccione **+ vCenter** toostart conectar un servidor VMware vCenter o un host de VMware vSphere ESXi.
 
 [!INCLUDE [site-recovery-add-vcenter](../../includes/site-recovery-add-vcenter.md)]
 

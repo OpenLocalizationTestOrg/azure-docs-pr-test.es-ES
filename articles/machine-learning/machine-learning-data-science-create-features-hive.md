@@ -1,5 +1,5 @@
 ---
-title: "Crear características para datos en un clúster de Hadoop mediante consultas de Hive | Microsoft Docs"
+title: "características de aaaCreate para los datos en un clúster de Hadoop mediante consultas de Hive | Documentos de Microsoft"
 description: "Ejemplos de consultas de Hive que generan características en datos almacenados en un clúster de Hadoop de HDInsight de Azure."
 services: machine-learning
 documentationcenter: 
@@ -14,33 +14,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: hangzh;bradsev
-ms.openlocfilehash: e027a6ffcb63868be13432870e484c5cbf2eef4b
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 686282bf0fb84ea82758d3c5b7de2bd90f0cf159
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-features-for-data-in-an-hadoop-cluster-using-hive-queries"></a>Crear características para datos en un clúster de Hadoop mediante consultas de Hive
-Este documento muestra cómo crear características para los datos almacenados en un clúster de Hadoop para HDInsight de Azure mediante consultas de Hive. Estas consultas de Hive usan funciones definidas por el usuario (UDF), los scripts para los que se ofrecen.
+Este documento muestra cómo toocreate características para los datos almacenan en un clúster de Hadoop de HDInsight de Azure mediante consultas de Hive. Estas consultas de Hive usan incrustado Hive User Defined Functions (UDF), scripts de hello para el que se proporcionan.
 
-Las operaciones necesarias para crear características pueden consumir mucha memoria. El rendimiento de las consultas de Hive resulta más importante en estos casos y se puede mejorar ajustando ciertos parámetros. El ajuste de estos parámetros se describe en la sección final.
+Hola operaciones necesarias toocreate características pueden consumir mucha memoria. rendimiento de Hola de consultas de Hive resulta más importante en estos casos y se puede mejorar con determinados parámetros de ajuste. Hello para la optimización de estos parámetros se describe en la sección final Hola.
 
-También se ofrecen ejemplos de las consultas que son específicos de escenarios de [NYC Taxi Trip Data](http://chriswhong.com/open-data/foil_nyc_taxi/) en el [repositorio de GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts). Estas consultas ya tienen el esquema de datos especificado y están listas para enviarse para su ejecución. En la última sección, también se describen los parámetros que los usuarios pueden ajustar para que se pueda mejorar el rendimiento de las consultas de Hive.
+Ejemplos de consultas de Hola que se presentan son específico toohello [NYC Taxi recorridos datos](http://chriswhong.com/open-data/foil_nyc_taxi/) escenarios también se proporcionan en [repositorio de GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts). Estas consultas ya tiene el esquema de datos especificado y está listo toobe enviado toorun. En la sección final de hello, también se describen los parámetros que los usuarios pueden ajustar para que se puede mejorar el rendimiento de Hola de consultas de Hive.
 
 [!INCLUDE [cap-create-features-data-selector](../../includes/cap-create-features-selector.md)]
 
-Este **menú** vincula a temas en los que se describe cómo crear características para datos en diversos entornos. Esta tarea constituye un paso del [proceso de ciencia de datos en equipos (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
+Esto **menú** vincula tootopics que describen cómo toocreate características para los datos en varios entornos. Esta tarea es un paso en hello [proceso de ciencia de datos de equipo (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
 
 ## <a name="prerequisites"></a>Requisitos previos
 En este artículo se supone que ha:
 
 * Creado una cuenta de almacenamiento de Azure. Si necesita instrucciones, consulte [Creación de una cuenta de almacenamiento de Azure](../storage/common/storage-create-storage-account.md#create-a-storage-account)
-* Aprovisionado un clúster de Hadoop personalizado con el servicio HDInsight.  Si necesita instrucciones, consulte [Personalización de clústeres de Hadoop de HDInsight de Azure para análisis avanzado](machine-learning-data-science-customize-hadoop-cluster.md).
-* Se han cargado los datos en tablas de subárbol en clústeres de Hadoop de HDInsight de Azure. De no ser así, siga [Crear y cargar datos en tablas de Hive](machine-learning-data-science-move-hive-tables.md) para cargar los datos en tablas de Hive primero.
-* Habilitado el acceso remoto al clúster. Si necesita instrucciones, consulte [Acceso al nodo principal del clúster de Hadoop](machine-learning-data-science-customize-hadoop-cluster.md#headnode).
+* Aprovisionar un clúster de Hadoop personalizado con hello servicio HDInsight.  Si necesita instrucciones, consulte [Personalización de clústeres de Hadoop de HDInsight de Azure para análisis avanzado](machine-learning-data-science-customize-hadoop-cluster.md).
+* datos de Hello ha sido cargado tooHive tablas en clústeres de HDInsight Hadoop de Azure. Si no es así, siga [carga y crear tablas de tooHive datos](machine-learning-data-science-move-hive-tables.md) tooupload datos tooHive tablas en primer lugar.
+* Clúster de toohello de acceso remoto habilitado. Si necesita instrucciones, consulte [Hola de acceso principal del nodo de clúster de Hadoop](machine-learning-data-science-customize-hadoop-cluster.md#headnode).
 
 ## <a name="hive-featureengineering"></a>Generación de características
-En esta sección se describen varios ejemplos de las maneras en que se pueden generar características mediante consultas de Hive. Una vez que haya generado características adicionales, puede agregarlas como columnas a la tabla existente o crear una nueva tabla con las características adicionales y la clave principal, que se pueden combinar a continuación con la tabla original. Estos son los ejemplos presentados:
+En esta sección se describen varios ejemplos de formas de hello en el que se pueden generar características usan consultas de Hive. Una vez haya generado características adicionales, puede agregarlas como tabla de columnas toohello existente o crear una nueva tabla con características adicionales de Hola y la clave principal, que, a continuación, puede combinarse con la tabla original de Hola. Estos son ejemplos de hello presentados:
 
 1. [Generación de características basada en frecuencia](#hive-frequencyfeature)
 2. [Riesgos de las variables de categorías en la clasificación binaria](#hive-riskfeature)
@@ -49,7 +49,7 @@ En esta sección se describen varios ejemplos de las maneras en que se pueden ge
 5. [Calcular distancia entre las coordenadas GPS](#hive-gpsdistance)
 
 ### <a name="hive-frequencyfeature"></a>Generación de características basada en frecuencia
-A menudo resulta útil calcular las frecuencias de los niveles de una variable de categoría o las frecuencias de determinadas combinaciones de niveles desde varias variables de categorías. Los usuarios pueden usar el siguiente script para calcular estas frecuencias:
+A menudo resulta útil toocalculate las frecuencias de Hola de hello niveles de una variable de categoría o las frecuencias de Hola de ciertas combinaciones de niveles de varias variables de categorías. Los usuarios pueden usar Hola después de la secuencia de comandos toocalculate estas frecuencias:
 
         select
             a.<column_name1>, a.<column_name2>, a.sub_count/sum(a.sub_count) over () as frequency
@@ -63,7 +63,7 @@ A menudo resulta útil calcular las frecuencias de los niveles de una variable d
 
 
 ### <a name="hive-riskfeature"></a>Riesgos de las variables de categorías en la clasificación binaria
-En la clasificación binaria, necesitamos convertir las variables de categorías no numéricas en características numéricas cuando los modelos que se utilizan solo toman características numéricas. Para ello, reemplace cada nivel no numérico por un riesgo numérico. En esta sección mostramos algunas consultas de subárbol genéricas que calculan los valores de riesgo (probabilidades de registro) de una variable de categoría.
+En la clasificación binaria, necesitamos tooconvert las variables de categorías no numéricos en características numéricas cuando modelos Hola usándola solo tienen características numéricas. Para ello, reemplace cada nivel no numérico por un riesgo numérico. En esta sección, se muestran algunas consultas de Hive genéricos que calculen los valores de riesgo de hello (logaritmos de posibilidades) de una variable de categoría.
 
         set smooth_param1=1;
         set smooth_param2=20;
@@ -83,40 +83,40 @@ En la clasificación binaria, necesitamos convertir las variables de categorías
             group by <column_name1>, <column_name2>
             )b
 
-En este ejemplo, las variables `smooth_param1` y `smooth_param2` se establecen para suavizar los valores de riesgo calculados a partir de los datos. Los riesgos tienen un intervalo comprendido entre -Inf y Inf. Un riesgo > 0 indica que la probabilidad de que el destino sea igual a 1 es mayor que 0,5.
+En este ejemplo, las variables `smooth_param1` y `smooth_param2` se calculan valores de riesgo de conjunto toosmooth Hola de datos de Hola. Los riesgos tienen un intervalo comprendido entre -Inf y Inf. Los riesgos > 0 indica que probabilidad de Hola que tienen como destino hello es igual too1 es mayor que 0.5.
 
-Después de calcularse la tabla de riesgos, los usuarios pueden asignar valores de riesgo a una tabla uniéndola a la tabla de riesgo. La consulta de combinación de subárbol se ha proporcionado en la sección anterior.
+Después de que se calcula la tabla de riesgo de hello, los usuarios pueden asignar tooa tabla de valores de riesgos mediante la combinación con la tabla de riesgo de Hola. consulta de unión de Hive Hola se proporcionó en la sección anterior.
 
 ### <a name="hive-datefeatures"></a>Extraer características de campos de fecha y hora
-El subárbol se incluye con un conjunto de UDF para el procesamiento de campos de fecha y hora. En el subárbol, el formato de fecha y hora predeterminado es 'aaaa-MM-dd 00:00:00 ' ('1970-01-01 12:21:32' por ejemplo). En esta sección mostramos ejemplos que extraen el día de un mes, el mes de un campo de fecha y hora, y otros ejemplos que convierten una cadena de fecha y hora en un formato distinto del predeterminado en una cadena de fecha y hora en el formato predeterminado.
+El subárbol se incluye con un conjunto de UDF para el procesamiento de campos de fecha y hora. En el subárbol, formato de fecha y hora de hello predeterminado es ' aaaa-MM-dd 00:00:00 ' ('1970-01-01 12:21:32 ' por ejemplo). En esta sección, se muestran ejemplos que extraer Hola día de un mes, el mes de Hola de un campo de fecha y hora y otros ejemplos que convertir una cadena de fecha y hora en un formato de cadena de fecha y hora de tooa de formato de hello predeterminada en el formato predeterminado.
 
         select day(<datetime field>), month(<datetime field>)
         from <databasename>.<tablename>;
 
-Esta consulta de Hive asume que *&#60;datetime field>* está en el formato de fecha y hora predeterminado.
+Esta consulta de Hive se da por supuesto que hello *&#60; campo de fecha y hora >* está en formato de fecha y hora de hello predeterminado.
 
-Si un campo de fecha y hora no se encuentra en el formato predeterminado, deberá convertir el campo de fecha y hora en la marca de tiempo de Unix primero y, a continuación, convertir la marca de tiempo de Unix a una cadena de fecha y hora que se encuentra en el formato predeterminado. Cuando la fecha y hora se encuentra en el formato predeterminado, los usuarios pueden aplicar los UDF de fecha y hora incrustado para extraer características.
+Si no es un campo de fecha y hora en formato predeterminado de hello, necesita campo de fecha y hora de hello tooconvert en la marca de tiempo de Unix en primer lugar y, a continuación, hora de Unix de Hola de convert marca tooa datetime de cadena que se encuentra en valor predeterminado de Hola formato. Una vez Hola fecha y hora de forma predeterminada en formato, los usuarios pueden aplicar Hola incrustado datetime UDF tooextract características.
 
-        select from_unixtime(unix_timestamp(<datetime field>,'<pattern of the datetime field>'))
+        select from_unixtime(unix_timestamp(<datetime field>,'<pattern of hello datetime field>'))
         from <databasename>.<tablename>;
 
-En esta consulta, si *&#60;datetime field>* sigue un patrón de tipo *03/26/2015 12:04:39*, *'&#60;pattern of the datetime field>'* debe ser `'MM/dd/yyyy HH:mm:ss'`. Para probarlo, los usuarios pueden ejecutar
+En esta consulta, si hello *&#60; campo de fecha y hora >* tiene Hola patrón como *26/03/2015 12:04:39*, hello *' &#60; el patrón del campo de fecha y hora de hello >'* debería ser `'MM/dd/yyyy HH:mm:ss'`. tootest, los usuarios pueden ejecutar
 
         select from_unixtime(unix_timestamp('05/15/2015 09:32:10','MM/dd/yyyy HH:mm:ss'))
         from hivesampletable limit 1;
 
-La tabla *hivesampletable* de esta consulta viene preinstalada en todos los clústeres de Hadoop de HDInsight de Azure de forma predeterminada cuando se aprovisionan los clústeres.
+Hola *hivesampletable* en esta consulta viene preinstalado en todos los clústeres de Hadoop de HDInsight de Azure de forma predeterminada cuando se aprovisionan clústeres Hola.
 
 ### <a name="hive-textfeatures"></a>Extracción de características de campos de texto
-Cuando la tabla de subárbol tiene un campo de texto que contiene una cadena de palabras delimitadas por espacios, la consulta siguiente extrae la longitud de la cadena y el número de palabras de la cadena.
+Cuando la tabla de Hive hello tiene un campo de texto que contiene una cadena de palabras que están delimitados por espacios, hello siguiente consulta extrae longitud Hola de cadena de Hola y número de Hola de palabras en la cadena de Hola.
 
         select length(<text field>) as str_len, size(split(<text field>,' ')) as word_num
         from <databasename>.<tablename>;
 
 ### <a name="hive-gpsdistance"></a>Cálculo de la distancia entre conjuntos de coordenadas de GPS
-La consulta proporcionada en esta sección puede aplicarse directamente a los datos de carreras de taxi de Nueva York. El propósito de esta consulta es mostrar cómo aplicar una función matemática incrustada en el subárbol para generar características.
+consulta de Hello proporcionado en esta sección puede ser toohello directamente aplicado NYC Taxi recorridos datos. Hola de esta consulta sirve tooshow cómo tooapply incrustada funciones matemáticas en las características de toogenerate de Hive.
 
-Los campos que se usan en esta consulta son las coordenadas GPS de ubicaciones de recogida y entrega, denominadas *pickup\_longitude*, *pickup\_latitude*, *dropoff\_longitude* y *dropoff\_latitude*. Las consultas que calculan la distancia directa entre las coordenadas de recogida y entrega son:
+campos que se usan en esta consulta Hello son coordenadas GPS de Hola de ubicaciones de recogida y caída, denominados *recogida\_longitud*, *recogida\_latitud*,  *caída\_longitud*, y *caída\_latitud*. las consultas de Hola que calcular Hola distancia directa entre las coordenadas de recogida y caída de hello son:
 
         set R=3959;
         set pi=radians(180);
@@ -134,34 +134,34 @@ Los campos que se usan en esta consulta son las coordenadas GPS de ubicaciones d
         and dropoff_latitude between 30 and 90
         limit 10;
 
-Las ecuaciones matemáticas que calculan la distancia entre dos coordenadas GPS pueden encontrarse en el sitio <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">Movable Type Scripts</a> (Scripts de tipo movibles), creado por Peter Lapisu. En su JavaScript, la función `toRad()` es simplemente *lat_or_lon*pi/180*, que convierte grados a radianes. Aquí, *lat_or_lon* es la latitud o la longitud. Debido a que Hive no proporciona la función `atan2`, pero sí la función `atan`, la función `atan2` se implementa en la función `atan` en la consulta de Hive anterior mediante la definición incluida en <a href="http://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a>.
+ecuaciones matemáticas Hola que calcular la distancia de hello entre dos coordenadas GPS pueden encontrarse en hello <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">secuencias de comandos de tipo móvil</a> sitio, creado por Peter Lapisu. En su Javascript Hola función `toRad()` es *lat_or_lon*180/pi *, que convierte grados tooradians. En este caso, *lat_or_lon* es Hola latitud o longitud. Puesto que el subárbol no proporciona la función hello `atan2`, pero proporciona la función hello `atan`, hello `atan2` función se implementa mediante `atan` función Hola por encima de la consulta de Hive mediante definición de hello proporcionada en <a href="http://en.wikipedia.org/wiki/Atan2" target="_blank"> Wikipedia</a>.
 
 ![Creación del espacio de trabajo](./media/machine-learning-data-science-create-features-hive/atan2new.png)
 
-Se puede encontrar una lista completa de las UDF incrustadas de Hive en la sección **Funciones integradas** de la wiki de <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions" target="_blank">Apache Hive</a>.  
+Una lista completa de Hive UDF incrustadas pueden encontrarse en hello **funciones integradas** sección en hello <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions" target="_blank">Apache Hive wiki</a>).  
 
-## <a name="tuning"></a> Temas avanzados: Ajustar parámetros de Hive para mejorar la velocidad de consulta
-La configuración de parámetros predeterminados del clúster de subárbol podría no ser adecuada para las consultas de subárbol y los datos que estas consultas procesan. En esta sección se describen algunos parámetros que los usuarios pueden ajustar y que mejoran el rendimiento de las consultas de subárbol. Los usuarios necesitan agregar el parámetro que optimiza las consultas antes de las consultas de procesamiento de datos.
+## <a name="tuning"></a>Temas avanzados: tooImprove de parámetros de Hive de optimizar la velocidad de consulta
+Hola configuración de clúster de Hive podría no ser adecuados para consultas de Hive de Hola y los datos de Hola que se están procesando las consultas de hello un parámetro predeterminado. En esta sección se explican algunos parámetros que los usuarios pueden ajustar que mejoran el rendimiento de Hola de consultas de Hive. Los usuarios necesitan el parámetro de hello tooadd optimizar consultas antes de las consultas de hello del procesamiento de datos.
 
-1. **Espacio de montón de Java**: para las consultas que implican la combinación de grandes conjuntos de datos, o el procesamiento de largos registros, un error habitual es **quedarse sin espacio en el montón**. Esto se puede ajustar estableciendo los parámetros *mapreduce.map.java.opts* y *mapreduce.task.io.sort.mb* en los valores deseados. Aquí tiene un ejemplo:
+1. **Espacio de montón de Java**: para las consultas que implican combinar conjuntos de datos grandes o procesar registros largos, **quedando sin espacio en el montón** es uno de los errores comunes de Hola. Esto puede corregirse estableciendo parámetros *mapreduce.map.java.opts* y *mapreduce.task.io.sort.mb* toodesired valores. Aquí tiene un ejemplo:
    
         set mapreduce.map.java.opts=-Xmx4096m;
         set mapreduce.task.io.sort.mb=-Xmx1024m;
 
-    Este parámetro asigna 4 GB de memoria al espacio de montón de Java y también hace que la ordenación sea más eficiente al asignar más memoria para él. Es buena idea jugar con estas asignaciones si no hay ningún error de trabajo relacionado con el espacio en el montón.
+    Este parámetro asigna espacio de montón de tooJava de memoria de 4GB y también realiza la ordenación más eficaz asignando más memoria para él. Es un tooplay buena idea con estas asignaciones si hay un espacio de trabajo error errores tooheap relacionados.
 
-1. **Tamaño de bloque de DFS** : este parámetro establece la unidad más pequeña de datos que el sistema de archivos almacena. Por ejemplo, si el tamaño de bloque DFS es 128 MB, a continuación, los datos de un tamaño menor que 128 MB, que también será el tamaño máximo, se almacenará en un solo bloque, mientras que a los datos mayores de 128 MB se les asignará bloques adicionales. Al elegir un tamaño de bloque muy pequeño se producirán grandes sobrecargas en Hadoop puesto que el nodo de nombre tiene que procesar muchas más solicitudes para buscar el bloque relevante relacionado con el archivo. Una configuración recomendada al tratar con datos de gigabytes (o mayores) es:
+1. **Tamaño de bloque de DFS** : este parámetro establece la unidad más pequeña de Hola de datos que Hola almacenes del sistema de archivos. Por ejemplo, si el tamaño de bloque DFS de hello es 128MB, a continuación, ningún dato de tamaño inferior o superior too128MB se almacena en un único bloque, mientras que los datos que es mayores que 128MB se asigna a bloques adicionales. Elegir un tamaño de bloque muy pequeño hace grandes sobrecargas en Hadoop como nodo de nombre de hello tiene tooprocess muchas más solicitudes toofind Hola relevante bloque pertenecen toohello archivo. Una configuración recomendada al tratar con datos de gigabytes (o mayores) es:
    
         set dfs.block.size=128m;
-2. **Optimización de la operación de unión en Hive** : Aunque las operaciones de unión en el marco de asignación/reducción suelen tener lugar en la fase de reducción, en ocasiones se pueden obtener ganancias enormes mediante la programación de uniones en la fase de asignación (también denominada "mapjoins"). Para indicar al subárbol que haga esto siempre que sea posible, podemos establecer:
+2. **Optimizar la operación de combinación en el subárbol** : mientras las operaciones de combinación en el marco de trabajo de asignación/reducción de hello normalmente tienen lugar en hello reducir fase, a veces, una enorme puede mejorar mediante la programación de combinaciones en fase de asignación de hello (también denominada "mapjoins"). toodirect subárbol toodo esto siempre que sea posible, podemos establecer:
    
         set hive.auto.convert.join=true;
-3. **Especificación del número de asignadores a Hive** : aunque Hadoop permite al usuario establecer el número de reductores, este no suele hacerlo. Un truco que permite cierto grado de control sobre este número es elegir las variables de Hadoop, *mapred.min.split.size* y *mapred.max.split.size*, puesto que el tamaño de cada tarea de asignación se determina mediante:
+3. **Especifica el número de Hola de asignadores tooHive** : Hadoop mientras permite Hola usuario tooset Hola número de reductores, el número de Hola de asignadores es normalmente no se establece por usuario de Hola. Un truco que permite cierto grado de control en este número es una variable de Hadoop de hello toochoose, *mapred.min.split.size* y *mapred.max.split.size* como tamaño de Hola de cada asignación de tarea viene determinada por:
    
         num_maps = max(mapred.min.split.size, min(mapred.max.split.size, dfs.block.size))
    
-    Normalmente, el valor predeterminado de *mapred.min.split.size* es 0, el de *mapred.max.split.size* es **Long.MAX** y de *dfs.block.size* es 64 MB. Como podemos ver, dado el tamaño de los datos, el ajuste de estos parámetros mediante su "configuración" nos permite optimizar el número de asignadores que se usan.
-4. A continuación se mencionan algunas otras **opciones avanzadas** más para optimizar el rendimiento de Hive. Estas permiten establecer la memoria asignada para asignar y reducir tareas, y pueden ser útiles para modificar el rendimiento. Tenga en cuenta que el valor de *mapreduce.reduce.memory.mb* no puede ser mayor que el tamaño de la memoria física de cada nodo de trabajo del clúster de Hadoop.
+    Por lo general, Hola valor predeterminado de *mapred.min.split.size* es 0, que de *mapred.max.split.size* es **Long.MAX** y el de *dfs.block.size* es de 64MB. Como podemos ver, tamaño de los datos Hola determinado, estos parámetros "configuración" de ajuste les permite nos tootune Hola número de asignadores usa.
+4. A continuación se mencionan algunas otras **opciones avanzadas** más para optimizar el rendimiento de Hive. Estos permiten tooset Hola memoria asignada toomap y reducen las tareas y pueden ser útiles para aumentar el rendimiento. Tenga en cuenta que hello *mapreduce.reduce.memory.mb* no puede ser mayor que el tamaño de memoria física de Hola de cada nodo de trabajo en clúster de Hadoop de Hola.
    
         set mapreduce.map.memory.mb = 2048;
         set mapreduce.reduce.memory.mb=6144;

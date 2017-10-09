@@ -1,6 +1,6 @@
 ---
-title: "Guía de solución de problemas del Explorador de Azure Storage | Microsoft Docs"
-description: "Información general sobre las dos funciones de depuración de Azure"
+title: "Guía para solucionar problemas del explorador de almacenamiento de aaaAzure | Documentos de Microsoft"
+description: "Información general sobre la característica de depuración de hello dos de Azure"
 services: virtual-machines
 documentationcenter: 
 author: Deland-Han
@@ -14,68 +14,68 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: delhan
-ms.openlocfilehash: e9b833b07556378f17d9aaff0912c7d73dff44eb
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 21705629500359222bc566c599f0864ad50036ec
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Guía de solución de problemas del Explorador de Azure Storage
 
 ## <a name="introduction"></a>Introducción
 
-El Explorador de Microsoft Azure Storage (versión preliminar) es una aplicación independiente que permite trabajar fácilmente con los datos de Azure Storage en Windows, macOS y Linux. La aplicación puede conectarse a las cuentas de Storage hospedadas en Azure, nubes independientes y Azure Stack.
+Explorador de almacenamiento de Microsoft Azure (vista previa) es una aplicación independiente que permite trabajar tooeasily con los datos de almacenamiento de Azure en Windows, Mac OS y Linux. aplicación Hello puede conectarse a las cuentas de toStorage hospedadas en Azure, la condición soberano nubes y la pila de Azure.
 
 Esta guía resume las soluciones para problemas comunes en el Explorador de Storage.
 
 ## <a name="sign-in-issues"></a>Problemas de inicio de sesión
 
-Solo se admiten las cuentas de Azure Active Directory (AAD). Si usa una cuenta de AD FS, se espera que el inicio de sesión en el Explorador de Storage no funcione. Antes de continuar, pruebe a reiniciar la aplicación para ver si se pueden corregir los problemas.
+Solo se admiten las cuentas de Azure Active Directory (AAD). Si usa una cuenta de AD FS, se espera ese inicio de sesión tooStorage que Explorer no funcionará. Antes de continuar, pruebe a reiniciar la aplicación y vea si se pueden corregir los problemas de Hola.
 
 ### <a name="error-self-signed-certificate-in-certificate-chain"></a>Error: Certificado autofirmado de cadena de certificados
 
-Hay varias razones por las puede encontrar este error, y las dos causas más comunes son los siguientes:
+Hay varias razones por las este error puede aparecer, y hello más dos motivos principales son los siguientes:
 
-1. La aplicación se conecta a través de un "proxy transparente", lo que significa que un servidor (por ejemplo, el servidor de la compañía) intercepta el tráfico HTTPS, lo descifra y, luego, lo cifrar mediante un certificado autofirmado.
+1. aplicación Hello se conecta a través de "proxy transparente", lo que significa un servidor (por ejemplo, el servidor de la compañía) es interceptar tráfico HTTPS, el descifrado y, a continuación, cifrar mediante un certificado autofirmado.
 
-2. Ejecuta una aplicación, como software antivirus, que inserta un certificado SSL autofirmado en los mensajes HTTPS que recibe.
+2. Ejecuta una aplicación, como software antivirus, que se inserte un certificado SSL autofirmado en los mensajes de Hola HTTPS que recibirá.
 
-Cuando el Explorador de Storage se encuentra uno de estos problemas, no puede saber si se alteró el mensaje HTTPS recibido. Si tiene una copia del certificado autofirmado, puede dejar que el Explorador de Storage confíe en él. Si no está seguro de quién insertó el certificado, siga estos pasos para descubrirlo:
+Cuando el Explorador de almacenamiento se encuentra uno de los problemas de hello, puede ya no se sabe si se manipula el mensaje de bienvenida recibido de HTTPS. Si tiene una copia del certificado autofirmado de hello, puede dejar que el Explorador de almacenamiento confiar en él. Si no está seguro de que inserte certificado hello, siga estos pasos toofind:
 
 1. Instale Open SSL.
 
-    - [Windows](https://slproweb.com/products/Win32OpenSSL.html) (cualquiera de las versiones ligeras debería ser suficiente).
+    - [Windows](https://slproweb.com/products/Win32OpenSSL.html) (cualquiera de las versiones claro Hola debería ser suficiente)
 
     - Mac y Linux: debe estar incluido con el sistema operativo.
 
 2. Ejecute Open SSL.
 
-    - Windows: abra el directorio de instalación, haga clic en **/bin/**y, luego, haga doble clic en **openssl.exe**.
+    - Windows: abrir el directorio de instalación de hello, haga clic en **/bin/**y, a continuación, haga doble clic en **openssl.exe**.
     - Mac y Linux: ejecute **openssl** desde un terminal.
 
 3. Ejecute s_client -showcerts -connect microsoft.com:443.
 
-4. Busque certificados autofirmados. Si no está seguro de cuáles son autofirmados, busque cualquier lugar en el que el asunto ("s:") y el emisor ("i:") sean el mismo.
+4. Busque certificados autofirmados. Si no está seguro de que están autofirmados, busque en cualquier lugar asunto Hola ("s:") y emisor ("i") se Hola igual.
 
-5. Cuando haya encontrado cualquier certificado autofirmado, para cada uno, copie y pegue todo el contenido desde **---BEGIN CERTIFICATE---** a **---END CERTIFICATE---** (inclusive) a un archivo .cer nuevo.
+5. Cuando haya encontrado los certificados autofirmados, para cada una de ellas, copiar y pegar todo el contenido de e incluidas **---BEGIN CERTIFICATE---** demasiado**---END CERTIFICATE---** tooa nueva CER.
 
-6. Abra el Explorador de Storage, haga clic en **Editar** > **Certificados SSL** > **Importar certificados** y, luego, utilice el selector de archivos para encontrar, seleccionar y abrir los archivos .cer que ha creado.
+6. Abra el Explorador de almacenamiento, haga clic en **editar** > **certificados SSL** > **importar certificados**y, a continuación, use Hola archivo selector toofind, seleccione esta opción, y abrir archivos de CER Hola que ha creado.
 
-Si no se encuentra ningún certificado autofirmado siguiendo los pasos anteriores, póngase en contacto con nosotros mediante la herramienta de comentarios para obtener más ayuda.
+Si no se encuentra ningún certificado autofirmado con hello por encima de los pasos, póngase en contacto con nosotros a través de la herramienta de comentarios de Hola para obtener más ayuda.
 
-### <a name="unable-to-retrieve-subscriptions"></a>No se pueden recuperar las suscripciones
+### <a name="unable-tooretrieve-subscriptions"></a>No se puede tooretrieve suscripciones
 
-Si no puede recuperar las suscripciones después de iniciar la sesión correctamente, siga estos pasos para solucionar este problema:
+Si es que no se puede tooretrieve las suscripciones después de iniciar sesión correctamente, siga estos pasos tootroubleshoot este problema:
 
-- Verifique que la cuenta tiene acceso a las suscripciones al iniciar sesión en Azure Portal.
+- Compruebe que la cuenta tiene acceso toohello suscripciones al iniciar sesión en hello portal de Azure.
 
-- Asegúrese de que ha iniciado sesión usando el entorno correcto (Azure, Azure China, Azure Alemania, Azure US Government, o entorno personalizado o Azure Stack).
+- Asegúrese de que ha iniciado sesión con entorno correcto de hello (Azure, Azure China, Azure en Alemania, gobierno de EE o personalizado entorno/Azure pila).
 
-- Si está detrás de un proxy, asegúrese de que ha configurado correctamente el proxy del Explorador de Storage.
+- Si está detrás de un proxy, asegúrese de que ha configurado el proxy del explorador de almacenamiento de hello correctamente.
 
-- Pruebe a quitar la cuenta y volver a agregarla.
+- Intente quitar y volver a agregar la cuenta de hello.
 
-- Intente eliminar los siguientes archivos del directorio raíz (es decir, C:\Users\ContosoUser) y, luego, intente volver a agregar la cuenta:
+- Intente eliminar Hola siguientes archivos desde el directorio raíz (es decir, C:\Users\ContosoUser) y, a continuación, volver a agregar la cuenta de hello:
 
     - .adalcache
 
@@ -83,25 +83,25 @@ Si no puede recuperar las suscripciones después de iniciar la sesión correctam
 
     - .extaccounts
 
-- Revise la consola de las herramientas de desarrollo (presionando F12) cuando se inicie sesión por si aparecieran mensajes de error:
+- Consola de herramientas de desarrollador de Hola de inspección (presionando F12) cuando se firma los mensajes de error:
 
 ![herramientas de desarrollo](./media/storage-explorer-troubleshooting/4022501_en_2.png)
 
-### <a name="unable-to-see-the-authentication-page"></a>No se puede ver la página de autenticación
+### <a name="unable-toosee-hello-authentication-page"></a>Página de autenticación de hello toosee no se puede
 
-Si no puede ver la página de autenticación, siga estos pasos para solucionar este problema:
+Si es que la página de autenticación de hello toosee no se puede, siga estos pasos tootroubleshoot este problema:
 
-- Según la velocidad de la conexión, la página de inicio de sesión puede tardar unos instantes en cargar; espere al menos un minuto antes de cerrar el cuadro de diálogo de autenticación.
+- Según la velocidad de saludo de la conexión, puede tardar un poco para tooload de la página de inicio de sesión de hello, espere al menos un minuto antes de cerrar el cuadro de diálogo de autenticación de Hola.
 
-- Si está detrás de un proxy, asegúrese de que ha configurado correctamente el proxy del Explorador de Storage.
+- Si está detrás de un proxy, asegúrese de que ha configurado el proxy del explorador de almacenamiento de hello correctamente.
 
-- Consulte la consola del desarrollador presionando la tecla F12. Revise las respuestas de la consola del desarrollador y vea si puede encontrar alguna pista para saber por qué no funciona la autenticación.
+- Ver la consola para desarrolladores de hello presionando la tecla F12 de Hola. Ver las respuestas de Hola desde la consola para desarrolladores hello y vea si puede encontrar ninguna pista para saber por qué no funciona la autenticación.
 
 ### <a name="cannot-remove-account"></a>No se puede quitar la cuenta
 
-Si no puede quitar una cuenta, o si el vínculo para volver a autenticar no hace nada, siga estos pasos para solucionar este problema:
+Si no se puede tooremove una cuenta o si Hola volver a autenticar vínculo no hace nada, siga estos pasos tootroubleshoot este problema:
 
-- Intente eliminar los siguientes archivos del directorio raíz y, luego, intente volver a agregar la cuenta:
+- Intente eliminar Hola siguientes archivos desde el directorio raíz y, a continuación, volver a agregar la cuenta de hello:
 
     - .adalcache
 
@@ -109,7 +109,7 @@ Si no puede quitar una cuenta, o si el vínculo para volver a autenticar no hace
 
     - .extaccounts
 
-- Si desea quitar recursos de Storage conectados a SAS, elimine los siguientes archivos:
+- Si desea que tooremove SAS adjunta los recursos de almacenamiento, elimine Hola siguientes archivos:
 
     - Carpeta %AppData%/StorageExplorer para Windows
 
@@ -118,67 +118,67 @@ Si no puede quitar una cuenta, o si el vínculo para volver a autenticar no hace
     - ~/.config/StorageExplorer para Linux
 
 > [!NOTE]
->  Tendrá que volver a escribir todas sus credenciales si elimina estos archivos.
+>  Tendrá tooreenter todas sus credenciales si elimina estos archivos.
 
 ## <a name="proxy-issues"></a>Problemas de proxy
 
-En primer lugar, asegúrese de que la siguiente información que especificó sea correcta:
+En primer lugar, asegúrese de que ese Hola siguiendo la información que especificó son correctos:
 
-- La dirección URL del proxy y el número de puerto
+- Hola dirección URL del proxy y el puerto número
 
-- El nombre de usuario y la contraseña si los exige el proxy
+- Nombre de usuario y contraseña si es necesario por proxy Hola
 
 ### <a name="common-solutions"></a>Soluciones comunes
 
-Si sigue experimentando problemas, siga estos pasos para solucionarlos:
+Si sigue experimentando problemas, siga estos pasos tootroubleshoot ellos:
 
-- Si puede conectarse a Internet sin usar el proxy, compruebe que el Explorador de Storage funciona sin la configuración del proxy habilitada. Si este es así, puede haber un problema con la configuración de proxy. Trabaje con el administrador del servidor proxy para identificar los problemas.
+- Si puede conectarse toohello Internet sin usar al proxy, compruebe que el Explorador de almacenamiento funciona sin la configuración del proxy habilitada. Si éste es el caso de hello, puede haber un problema con la configuración de proxy. Trabajar con sus problemas de proxy administrador tooidentify Hola.
 
-- Compruebe que otras aplicaciones que utilicen el servidor proxy funcionen según lo esperado.
+- Compruebe que otras aplicaciones que utilicen el servidor proxy de hello funcionan según lo esperado.
 
-- Compruebe que pueda conectarse a Microsoft Azure Portal mediante el explorador web.
+- Compruebe que puede conectar el portal de Microsoft Azure toohello mediante el explorador web
 
 - Compruebe que puede recibir las respuestas de los puntos de conexión de servicio. Especifique una de las direcciones URL de punto de conexión en el explorador. Si puede conectarse, debería recibir un InvalidQueryParameterValue o una respuesta XML similar.
 
-- Si otra persona también usa el Explorador de Storage con el servidor proxy, compruebe que pueda conectarse. Si se puede conectar, quizá deba ponerse en contacto con el administrador del servidor proxy.
+- Si otra persona también usa el Explorador de Storage con el servidor proxy, compruebe que pueda conectarse. Si puede conectar, puede tener toocontact el administrador del servidor proxy.
 
 ### <a name="tools-for-diagnosing-issues"></a>Herramientas para el diagnóstico de problemas
 
-Si dispone de herramientas de red, como Fiddler para Windows, es posible que pueda diagnosticar los problemas como se indica a continuación:
+Si dispone de herramientas de red, como Fiddler para Windows, es posible que los siguientes problemas de hello toodiagnose capaz de:
 
-- Si tiene que trabajar a través del proxy, es posible que tenga que configurar la herramienta de red para conectarse a través del proxy.
+- Si tienes toowork a través de proxy, puede tener tooconfigure su red tooconnect de herramienta a través de proxy de Hola.
 
-- Compruebe el número de puerto utilizado por la herramienta de red.
+- Compruebe el número de puerto de hello utilizado por la herramienta de red.
 
-- Escriba la dirección URL del host local y el número de puerto de la herramienta de red como configuración de proxy en el Explorador de Storage. Si se hace correctamente, la herramienta de red inicia el registro de las solicitudes de red realizadas por el Explorador de Storage para puntos de conexión de servicio y administración. Por ejemplo, escriba https://cawablobgrs.blob.core.windows.net/ para el punto de conexión de blob en un explorador y recibirá una respuesta similar a la siguiente, lo que sugiere que el recurso existe, aunque no se puede obtener acceso a él.
+- Escriba la dirección URL del host local de Hola y Hola número de puerto de la herramienta de red como configuración de proxy en el Explorador de almacenamiento. Si se realiza correctamente, la herramienta de red inicia el registro de las solicitudes de red realizadas por los extremos de servicio y toomanagement de explorador de almacenamiento. Por ejemplo, escriba https://cawablobgrs.blob.core.windows.net/ para el extremo de blob en un explorador, y recibirá una respuesta similar a la siguiente hello, lo que sugiere Hola recurso existe, aunque no se puede obtener acceso a él.
 
 ![ejemplo de código](./media/storage-explorer-troubleshooting/4022502_en_2.png)
 
 ### <a name="contact-proxy-server-admin"></a>Póngase en contacto con el administrador del servidor proxy
 
-Si es correcta la configuración de proxy, tendrá que ponerse en contacto con el administrador del servidor proxy y, además, deberá hacer lo siguiente:
+Si es correcta la configuración de proxy, puede que tenga toocontact el administrador del servidor proxy, y
 
-- Asegúrese de que el proxy no bloquee el tráfico a los puntos de conexión de administración de Azure o de los recursos.
+- Asegúrese de que el proxy no bloquee el tráfico tooAzure administración o recurso de puntos de conexión.
 
-- Compruebe el protocolo de autenticación utilizado por el servidor proxy. En estos momentos, el Explorador de Storage no admite los servidores proxy NTLM.
+- Comprobar el protocolo de autenticación de hello utilizada por el servidor proxy. En estos momentos, el Explorador de Storage no admite los servidores proxy NTLM.
 
-## <a name="unable-to-retrieve-children-error-message"></a>Mensaje de error "No se pueden recuperar los elementos secundarios"
+## <a name="unable-tooretrieve-children-error-message"></a>Mensaje de error "No se puede tooRetrieve elementos secundarios"
 
-Si está conectado a Azure a través de un servidor proxy, compruebe que la configuración de proxy sea correcta. Si el propietario de una suscripción o una cuenta concedió acceso a un recurso, compruebe que disponga de permisos de lectura o lista para dicho recurso.
+Si está conectado tooAzure a través de un servidor proxy, compruebe que la configuración de proxy es correcta. Si se concede acceso tooa recursos de propietario de Hola de suscripción de Hola o la cuenta, compruebe que ha leído o lista de permisos para dicho recurso.
 
 ### <a name="issues-with-sas-url"></a>Problemas con la URL de SAS
-Si se conecta a un servicio mediante una dirección URL de SAS y se produce este error:
+Si va a conectar tooa servicio mediante una dirección URL de SAS y experimentando este error:
 
-- Compruebe que la dirección URL proporciona los permisos necesarios para leer o enumerar los recursos.
+- Compruebe que Hola URL proporciona los permisos necesarios de hello tooread o una lista de recursos.
 
-- Compruebe que la dirección URL no haya expirado.
+- Compruebe que Hola que dirección URL no ha expirado.
 
-- Si la dirección URL de SAS se basa en una directiva de acceso, compruebe que la directiva de acceso no haya sido revocada.
+- Si Hola URL de SAS se basa en una directiva de acceso, compruebe que la directiva de acceso de hello no ha sido revocada.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Si ninguna de las soluciones funciona, envíe su problema mediante la herramienta de comentarios con su dirección de correo electrónico y todos los detalles sobre el problema como sea posible, para que podemos ponernos en contacto con usted para corregir el problema.
+Si ninguna de las soluciones de hello funciona, enviar su problema a través de la herramienta de comentarios de Hola con el correo electrónico y como muchos detalles sobre el problema de hello incluidos como se pueden, por lo que podemos enviarte para corregir el problema de Hola.
 
-Para ello, haga clic en el menú **Ayuda** y, luego, haga clic en **Enviar comentarios**.
+toodo, haga clic en **ayuda** menú y, a continuación, haga clic en **enviar comentarios**.
 
 ![Comentarios](./media/storage-explorer-troubleshooting/4022503_en_1.png)

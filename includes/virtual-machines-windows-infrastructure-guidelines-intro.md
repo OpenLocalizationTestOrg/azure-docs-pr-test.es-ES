@@ -1,0 +1,2 @@
+Este artículo forma parte de un tooprovide serie más amplia que con las consideraciones de diseño y directrices que crear una infraestructura de aplicación en Azure. También puede [ver temas adicionales de hello en serie de hello](#next-steps). Aunque puede crear rápidamente un entorno de desarrollo y pruebas en Azure, existen consideraciones adicionales que se deben tener en cuenta al tratar de implementar un entorno listo para producción, sumamente disponible y seguro.
+

@@ -17,7 +17,7 @@
 ### [CLI 1.0](network-watcher-packet-capture-manage-cli-nodejs.md)
 ### [CLI 2.0](network-watcher-packet-capture-manage-cli.md)
 ### [REST](network-watcher-packet-capture-manage-rest.md)
-## Comprobación de los flujos de IP hacia y desde una máquina virtual
+## Compruebe tooand de flujos IP de una máquina virtual
 ### [Portal](network-watcher-check-ip-flow-verify-portal.md)
 ### [PowerShell](network-watcher-check-ip-flow-verify-powershell.md)
 ### [CLI 1.0](network-watcher-check-ip-flow-verify-cli-nodejs.md)
@@ -59,8 +59,8 @@
 # Procedimientos
 ## [Supervisión de VPN Gateway con Azure Automation](network-watcher-monitor-with-azure-automation.md)
 ## [Diagnóstico de la conectividad local a través de VPN Gateway](network-watcher-diagnose-on-premises-connectivity.md)
-## [Análisis de las capturas de paquetes para detectar anomalías](network-watcher-deep-packet-inspection.md)
-## [Uso de la captura de paquetes para realizar la supervisión proactiva de redes con Azure Functions](network-watcher-alert-triggered-packet-capture.md)
+## [Analizar las anomalías toofind de capturas de paquetes](network-watcher-deep-packet-inspection.md)
+## [Usar paquetes captura toodo automático supervisión de red con funciones de Azure](network-watcher-alert-triggered-packet-capture.md)
 ## [Visualización de registros de flujo con Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 ## [Visualización de registros de flujo con herramientas de código abierto](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
 ## [Visualización de patrones de tráfico de red mediante herramientas de código abierto](network-watcher-using-open-source-tools.md)

@@ -1,6 +1,6 @@
 ---
-title: "Configuración del entorno de desarrollo en Mac OS X para trabajar con Azure Service Fabric | Microsoft Docs"
-description: "Instale las herramientas, el SDK y el motor en tiempo de ejecución y cree un clúster de desarrollo local. Después de completar esta instalación, estará listo para compilar aplicaciones en Mac OS X."
+title: aaaSet del entorno de desarrollo en Mac OS X toowork con Azure Service Fabric | Documentos de Microsoft
+description: "Instalar en tiempo de ejecución de hello, SDK y herramientas y crear un clúster de desarrollo local. Después de completar la instalación, estará listo toobuild aplicaciones en Mac OS X."
 services: service-fabric
 documentationcenter: java
 author: sayantancs
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/21/2017
 ms.author: saysa
-ms.openlocfilehash: 8b4fc0ab9034263418cac42ced203035e0a8fcad
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 0b8a6c1fc1871fa76f3e21cefbc7f66f79072797
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Configuración de su entorno de desarrollo en Mac OS X
 > [!div class="op_single_selector"]
@@ -28,64 +28,64 @@ ms.lasthandoff: 08/29/2017
 >
 >  
 
-Puede compilar aplicaciones de Service Fabric para que ejecuten en clústeres de Linux con Mac OS X. En este artículo se describe cómo configurar su Mac para desarrollo.
+Puede compilar toorun de aplicaciones de Service Fabric en clústeres de Linux con Mac OS X. Este artículo se trata cómo tooset una el equipo Mac para el desarrollo.
 
 ## <a name="prerequisites"></a>Requisitos previos
-Service Fabric no se ejecuta de forma nativa en OS X. Para ejecutar un clúster de Service Fabric local, proporcionamos una máquina virtual de Ubuntu preconfigurada mediante Vagrant y VirtualBox. Antes de comenzar, necesita:
+Service Fabric no ejecuten de forma nativa en OS X. toorun un clúster de Service Fabric local, proporcionamos una máquina de virtual Ubuntu configurada previamente con Vagrant y VirtualBox. Antes de comenzar, necesita:
 
 * [Vagrant (v1.8.4 o versiones posteriores)](http://www.vagrantup.com/downloads.html)
 * [VirtualBox](http://www.virtualbox.org/wiki/Downloads)
 
 >[!NOTE]
-> Tiene que utilizar versiones de Vagrant y VirtualBox que sean compatibles entre sí. Con una versión no compatible de VirtualBox, Vagrant pueden comportarse de forma errática.
+> Necesita toouse mutuamente admite versiones de Vagrant y VirtualBox. Con una versión no compatible de VirtualBox, Vagrant pueden comportarse de forma errática.
 >
 
-## <a name="create-the-local-vm"></a>Creación de la máquina virtual local
-Para crear la máquina virtual local que contenga un clúster de Service Fabric de 5 nodos, realice los pasos siguientes:
+## <a name="create-hello-local-vm"></a>Crear Hola VM local
+toocreate Hola VM local que contenga un clúster de Service Fabric de 5 nodos, lleve a cabo Hola pasos:
 
-1. Clone el repositorio `Vagrantfile`
+1. Hola clon `Vagrantfile` repositorio
 
     ```bash
     git clone https://github.com/azure/service-fabric-linux-vagrant-onebox.git
     ```
-    Este paso reduce el archivo `Vagrantfile` que contiene la configuración de la máquina virtual, junto con la ubicación desde la que se descarga la máquina virtual.
+    Poner este pasos listas desplegables Hola archivo `Vagrantfile` que contiene Hola VM configuración junto con Hola Hola de ubicación VM se descarga desde.
 
-2. Vaya al clon local del repositorio
+2. Navegue toohello clon local del repositorio de Hola
 
     ```bash
     cd service-fabric-linux-vagrant-onebox
     ```
-3. (Opcional) Modifique la configuración predeterminada de la máquina virtual
+3. (Opcional) Modificar la configuración de máquina virtual de hello predeterminada
 
-    De forma predeterminada, la máquina virtual local está configurada de la siguiente manera:
+    De forma predeterminada, hello VM local se configura como se indica a continuación:
 
    * 3 GB de memoria asignada
-   * Red host privada configurada en la dirección IP 192.168.50.50, que permite el acceso directo del tráfico desde el host de Mac
+   * Red privada host configurado en la dirección IP 192.168.50.50 habilitar paso a través del tráfico de host de Mac Hola
 
-     Puede cambiar cualquiera de estas opciones o agregar otra configuración a la máquina virtual en `Vagrantfile`. Consulte la [documentación de Vagrant](http://www.vagrantup.com/docs) para obtener una lista completa de las opciones de configuración.
-4. Creación de la máquina virtual
+     Puede cambiar cualquiera de estos valores o agregar otro toohello configuración VM en hello `Vagrantfile`. Vea hello [documentación Vagrant](http://www.vagrantup.com/docs) para lista completa de Hola de opciones de configuración.
+4. Crear hello VM
 
     ```bash
     vagrant up
     ```
 
-   En este paso, se descarga la imagen de máquina virtual preconfigurada, se arranca localmente y, a continuación, se configura un clúster de Service Fabric local en ella. Tenga en cuenta que puede tardar unos minutos. Si la instalación se completa correctamente, verá un mensaje en la salida que indica que el clúster se está iniciando.
+   Este paso descarga la imagen de VM de hello preconfigurado, arranque lo localmente y, a continuación, configure un tejido de servicio local de clúster en ella. Se debería tootake unos minutos. Si el programa de instalación finaliza correctamente, verá un mensaje en la salida de hello que indica que ese clúster Hola se está iniciando.
 
     ![El programa de instalación del clúster se inicia después de aprovisionar la máquina virtual][cluster-setup-script]
 
     >[!TIP]
-    > Si la descarga de la máquina virtual tarda mucho tiempo, puede descargarla mediante wget o curl, o si usa un explorador, navegando al vínculo que especifica **config.vm.box_url** en el archivo `Vagrantfile`. Después de descargarlo localmente, edite `Vagrantfile` para que apunte a la ruta de acceso local en la que descargó la imagen. Por ejemplo si la descargó en /home/users/test/azureservicefabric.tp8.box, establezca **config.vm.box_url** en dicha ruta.
+    > Si la descarga de la máquina virtual de hello tarda mucho tiempo, puede descargar mediante wget o curl o a través de un explorador navegando vínculo toohello especificado por **config.vm.box_url** en el archivo hello `Vagrantfile`. Después de descargarlo de forma local, editar `Vagrantfile` toopoint toohello ruta local en la que descargó imagen Hola. Por ejemplo si descargó Hola imagen too/home/users/test/azureservicefabric.tp8.box, a continuación, establezca **config.vm.box_url** toothat ruta de acceso.
     >
 
-5. Para comprobar que el clúster se ha instalado correctamente, vaya a Service Fabric Explorer en http://192.168.50.50:19080/Explorer (suponiendo que mantenga la IP de la red privada predeterminada).
+5. Probar esa Hola clúster se ha configurado correctamente desplazándose tooService explorador Fabric en http://192.168.50.50:19080/explorador (suponiendo que mantienen IP de red privada de Hola de forma predeterminada).
 
-    ![Service Fabric Explorer visto desde el equipo Mac host][sfx-mac]
+    ![Explorador de Service Fabric ven de hello dirección Mac del host][sfx-mac]
 
 
 ## <a name="create-application-on-mac-using-yeoman"></a>Creación de la aplicación en el equipo Mac usando Yeoman
-Service Fabric proporciona herramientas de scaffolding que le ayudarán a crear una aplicación de Service Fabric desde el terminal mediante el generador de plantillas Yeoman. Siga los pasos siguientes para asegurarse de que el generador de plantillas yeoman de Service Fabric está en funcionamiento en la máquina.
+Service Fabric proporciona herramientas de scaffolding que le ayudarán a crear una aplicación de Service Fabric desde el terminal mediante el generador de plantillas Yeoman. Siga estos pasos hello tooensure que tiene generador de plantilla yeoman de Service Fabric Hola trabajar en su equipo.
 
-1. Debe tener Node.js y NPM instalados en el equipo Mac. Si no los tiene, puede instalar Node.js y NPM mediante Homebrew utilizando lo siguiente. Para comprobar las versiones de Node.js y NPM instaladas en el equipo Mac, puede usar la opción ``-v``.
+1. Necesita toohave Node.js y NPM instalado en mac. Si no puede instalar Node.js y NPM mediante Homebrew con hello siguientes. versiones de hello toocheck de Node.js y NPM instalado en el equipo Mac, puede usar hello ``-v`` opción.
 
   ```bash
   brew install node
@@ -97,30 +97,30 @@ Service Fabric proporciona herramientas de scaffolding que le ayudarán a crear 
   ```bash
   npm install -g yo
   ```
-3. Para instalar el generador Yeoman que desea usar, siga los pasos descritos en la [documentación](service-fabric-get-started-linux.md) de introducción. Para crear aplicaciones de Service Fabric mediante Yeoman, siga estos pasos:
+3. Instalar hello Yeoman generador desea toouse, siga los pasos de Hola Hola Introducción [documentación](service-fabric-get-started-linux.md). Aplicaciones de tejido de servicio toocreate mediante Yeoman, siga pasos hello:
 
   ```bash
   npm install -g generator-azuresfjava       # for Service Fabric Java Applications
   npm install -g generator-azuresfguest      # for Service Fabric Guest executables
   npm install -g generator-azuresfcontainer  # for Service Fabric Container Applications
   ```
-4. Para compilar una aplicación de Java de Service Fabric en Mac, necesita JDK 1.8 y Gradle instalados en el equipo.
+4. toobuild una aplicación Java de tejido de servicio en Mac, necesitaría - JDK 1.8 y Gradle instalados en el equipo de Hola.
 
 
-## <a name="install-the-service-fabric-plugin-for-eclipse-neon"></a>Instalación del complemento de Eclipse Neon para Service Fabric
+## <a name="install-hello-service-fabric-plugin-for-eclipse-neon"></a>Instalar el complemento de Service Fabric Hola para Eclipse Neon
 
-Service Fabric proporciona un complemento para **IDE de Java para Eclipse Neon** que puede simplificar el proceso de creación, compilación e implementación de servicios de Java. Puede seguir los pasos de instalación que se indican en esta [documentación](service-fabric-get-started-eclipse.md#install-or-update-the-service-fabric-plug-in-in-eclipse-neon) general acerca de cómo instalar o actualizar el complemento de Eclipse para Service Fabric.
+Service Fabric proporciona un complemento para hello **Neon Eclipse IDE Java** que pueden simplificar el proceso de Hola de crear, compilar e implementar servicios de Java. Puede seguir los pasos de instalación de hello mencionados en esta general [documentación](service-fabric-get-started-eclipse.md#install-or-update-the-service-fabric-plug-in-in-eclipse-neon) acerca de cómo instalar o actualizar el complemento de Eclipse de tejido de servicio.
 
 >[!TIP]
-> De forma predeterminada, se admite la dirección IP predeterminada como se menciona en ``Vagrantfile``, en el archivo ``Local.json`` de la aplicación generada. En caso de cambiar esta configuración e implementar Vagrant con una dirección IP diferente, actualice la dirección IP correspondiente en el archivo ``Local.json`` de la aplicación.
+> De forma predeterminada admitimos hello IP de forma predeterminada como se mencionó en hello ``Vagrantfile`` en hello ``Local.json`` de aplicación hello generado. En caso de cambiar esta configuración e implementar Vagrant con una dirección IP diferente, actualice Hola IP correspondiente en ``Local.json`` de la aplicación.
 
 ## <a name="next-steps"></a>Pasos siguientes
 <!-- Links -->
 * [Creación e implementación de la primera aplicación de Java para Service Fabric en Linux con Yeoman](service-fabric-create-your-first-linux-application-with-java.md)
 * [Creación e implementación de la primera aplicación de Java para Service Fabric con el complemento de Eclipse para Service Fabric](service-fabric-get-started-eclipse.md)
-* [Configuración de un clúster de Service Fabric en Azure Portal](service-fabric-cluster-creation-via-portal.md)
-* [Creación de un clúster de Service Fabric en Azure mediante Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-* [Entender el modelo de aplicación de Service Fabric](service-fabric-application-model.md)
+* [Crear un clúster de Service Fabric en hello portal de Azure](service-fabric-cluster-creation-via-portal.md)
+* [Crear un clúster de Service Fabric mediante hello Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
+* [Entender el modelo de aplicaciones de Service Fabric Hola](service-fabric-application-model.md)
 
 <!-- Images -->
 [cluster-setup-script]: ./media/service-fabric-get-started-mac/cluster-setup-mac.png

@@ -1,6 +1,6 @@
 ---
-title: "Configuración de un almacén para la replicación de VM de Azure entre regiones con Azure Site Recovery | Microsoft Docs"
-description: "Se resumen los pasos que hay que seguir para configurar un almacén para la replicación de Azure entre regiones de Azure con Azure Site Recovery."
+title: "aaaSet un almacén para su máquina virtual de Azure repliction entre las regiones con Azure Site Recovery | Documentos de Microsoft"
+description: "Resume los pasos de hello necesita tooset un almacén para la replicación de Azure entre regiones de Azure con Azure Site Recovery"
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: raynew
-ms.openlocfilehash: e03d17992ee0b12049636e40188950bcc4a6f31e
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 9959c59c7ea57114763f13bf060404ddd267ba80
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="step-4-set-up-a-vault-for-azure-to-azure-replication"></a>Paso 4: Configuración de un almacén de Azure para realizar la replicación de Azure
+# <a name="step-4-set-up-a-vault-for-azure-tooazure-replication"></a>Paso 4: Configurar un almacén para la replicación de tooAzure de Azure
 
-Después de [planear redes](azure-to-azure-walkthrough-network.md), use este artículo para configurar un almacén para máquinas virtuales (VM) de Azure que realizan la replicación en otra región de Azure mediante el servicio [Azure Site Recovery](site-recovery-overview.md) en Azure Portal.
+Después de [Planear redes](azure-to-azure-walkthrough-network.md), use este tooset artículo un almacén, para máquinas virtuales (VM) Azure replicar tooanother región de Azure, mediante hello [Azure Site Recovery](site-recovery-overview.md) servicio Hola portal de Azure.
 
-- Cuando termine el artículo, debe tener un almacén de Recovery Services configurado.
-- Publique cualquier comentario en la parte inferior de este artículo, o bien en el [foro de Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+- Cuando termine de artículo hello, debe tener un almacén de servicios de recuperación configurado.
+- Registrar los comentarios de la parte inferior de Hola de este artículo, o formular alguna pregunta en hello [foro de servicios de recuperación de Azure](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
 
 
@@ -42,9 +42,9 @@ Después de [planear redes](azure-to-azure-walkthrough-network.md), use este art
 
 >[!NOTE]
 >
-> Le recomendamos que cree el almacén de Recovery Services en la ubicación donde quiere que se repliquen las máquinas virtuales. Por ejemplo, si la ubicación de destino está en el centro de EE. UU., crear el almacén en **Centro de EE. UU**.
+> Le recomendamos que cree el almacén de servicios de recuperación de hello en ubicación de Hola donde desea que su tooreplicate de máquinas virtuales. Por ejemplo, si la ubicación de destino es hello centro nos, crear almacén de hello en **Central US**.
 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Vaya a [Paso 5: Habilitación de la replicación](azure-to-azure-walkthrough-enable-replication.md)
+Vaya demasiado[paso 5: habilitar la replicación](azure-to-azure-walkthrough-enable-replication.md)

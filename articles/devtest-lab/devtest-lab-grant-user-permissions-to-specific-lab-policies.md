@@ -1,6 +1,6 @@
 ---
-title: "Concesión de permisos de usuario a directivas específicas de laboratorio | Microsoft Docs"
-description: "Obtenga información acerca de cómo conceder permisos de usuario para las directivas específicas de laboratorio en DevTest Labs según las necesidades de cada usuario"
+title: las directivas de laboratorio de aaaGrant usuario permisos toospecific | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toogrant permisos toospecific laboratorio las directivas de usuario en los laboratorios de desarrollo y pruebas según las necesidades de cada usuario"
 services: devtest-lab,virtual-machines,visual-studio-online
 documentationcenter: na
 author: tomarcher
@@ -14,37 +14,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/25/2016
 ms.author: tarcher
-ms.openlocfilehash: 0bd9f83257834d9681479ba9117c48ffd6d6e166
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 35647ab837243188f06566cdf365b67fe33a3865
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="grant-user-permissions-to-specific-lab-policies"></a>Concesión de permisos de usuario a directivas específicas de laboratorio
+# <a name="grant-user-permissions-toospecific-lab-policies"></a>Conceder permisos de usuario toospecific directivas de laboratorio
 ## <a name="overview"></a>Información general
-Este artículo muestra cómo usar PowerShell para conceder permisos de usuario a una directiva concreta de laboratorio. De este modo, se pueden aplicar permisos en función de las necesidades de cada usuario. Por ejemplo, quizá prefiera conceder a un usuario determinado la posibilidad de cambiar la configuración de directiva de máquina virtual, pero no las directivas de costos.
+Este artículo se explica cómo toouse directiva de PowerShell toogrant a los usuarios permisos tooa laboratorio determinado. De este modo, se pueden aplicar permisos en función de las necesidades de cada usuario. Por ejemplo, puede toogrant una configuración de directiva de usuario determinado Hola capacidad toochange Hola VM, pero no Hola costo directivas.
 
 ## <a name="policies-as-resources"></a>Directivas como recursos
-Tal y como se describe en el artículo [Control de acceso basado en roles de Azure](../active-directory/role-based-access-control-configure.md) , RBAC permite la administración de acceso específica de recursos para Azure. Gracias a RBAC puede dividir las tareas entre el equipo de DevOps, y conceder a los usuarios únicamente el nivel de acceso que necesitan para realizar su trabajo.
+Según lo descrito en hello [el Control de acceso basado en roles de Azure](../active-directory/role-based-access-control-configure.md) artículo, RBAC permite la administración de acceso específico de recursos de Azure. Usar RBAC, puede separar los derechos en el equipo de DevOps y conceder únicamente una cantidad Hola de toousers de acceso que necesitan tooperform sus trabajos.
 
-En DevTest Labs, una directiva es un tipo de recurso que permite la acción de RBAC **Microsoft.DevTestLab/labs/policySets/policies/**. Cada directiva de laboratorio es un recurso en el tipo de recurso Directiva, y se puede asignar como ámbito a un rol RBAC.
+En los laboratorios de desarrollo y pruebas, una directiva es un tipo de recurso que permite la acción de RBAC hello **Microsoft.DevTestLab/labs/policySets/policies/**. Cada directiva de laboratorio es un recurso en el tipo de recurso de directiva de Hola y puede asignarse como un ámbito de la función de RBAC tooan.
 
-Por ejemplo, para conceder permiso de lectura/escritura de los usuarios para el **tamaños de máquina virtual permite** directiva, debe crear un rol personalizado que funcione con el **Microsoft.DevTestLab/labs/policySets/policies/*** acción y, a continuación, asignar los usuarios adecuados a este rol de seguridad en el ámbito de **Microsoft.DevTestLab/labs/policySets/policies/AllowedVmSizesInLab**.
+Por ejemplo, en toohello de permiso de lectura/escritura de orden toogrant usuarios **tamaños de máquina virtual permite** directiva, debe crear un rol personalizado que funcione con hello **Microsoft.DevTestLab/labs/policySets/policies/** * acción y, a continuación, asignar Hola usuarios adecuados toothis rol personalizado en el ámbito de Hola de **Microsoft.DevTestLab/labs/policySets/policies/AllowedVmSizesInLab**.
 
-Para obtener más información sobre los roles personalizados de RBAC, consulte [Control de acceso de los roles personalizados](../active-directory/role-based-access-control-custom-roles.md).
+toolearn más información acerca de las funciones personalizadas en RBAC, vea hello [control de acceso de roles personalizados](../active-directory/role-based-access-control-custom-roles.md).
 
 ## <a name="creating-a-lab-custom-role-using-powershell"></a>Creación de un rol personalizado de laboratorio con PowerShell
-Para empezar, debe leer el artículo siguiente, donde se explica cómo instalar y configurar los cmdlets de Azure PowerShell: [https://azure.microsoft.com/blog/azps-1-0-pre](https://azure.microsoft.com/blog/azps-1-0-pre).
+En orden tooget iniciado, necesitará hello tooread después de artículo, que se explicará cómo tooinstall y configurar los cmdlets de PowerShell de Azure de hello: [https://azure.microsoft.com/blog/azps-1-0-pre](https://azure.microsoft.com/blog/azps-1-0-pre).
 
-Una vez haya configurado los cmdlets de Azure PowerShell, podrá realizar las siguientes tareas:
+Una vez haya configurado Hola cmdlets de PowerShell de Azure, puede realizar Hola siguientes tareas:
 
-* Enumerar todas las operaciones y acciones para un proveedor de recursos
+* Lista de todas las operaciones de Hola/acciones para un proveedor de recursos
 * Enumerar las acciones de un rol determinado
 * Crear un rol personalizado
 
-El siguiente script de PowerShell muestra ejemplos de cómo realizar estas tareas:
+Hola siguiente script de PowerShell muestra ejemplos de cómo tooperform estas tareas:
 
-    ‘List all the operations/actions for a resource provider.
+    ‘List all hello operations/actions for a resource provider.
     Get-AzureRmProviderOperation -OperationSearchString "Microsoft.DevTestLab/*"
 
     ‘List actions in a particular role.
@@ -60,10 +60,10 @@ El siguiente script de PowerShell muestra ejemplos de cómo realizar estas tarea
     $policyRoleDef.Actions.Add("Microsoft.DevTestLab/labs/policySets/policies/*")
     $policyRoleDef = (New-AzureRmRoleDefinition -Role $policyRoleDef)
 
-## <a name="assigning-permissions-to-a-user-for-a-specific-policy-using-custom-roles"></a>Asignación de permisos a un usuario para una directiva determinada utilizando roles personalizados
-Una vez haya definido los roles personalizados, puede asignárselos a los usuarios. A fin de asignar un rol personalizado a un usuario, primero debe obtener el **ObjectId** que representa a ese usuario. Para ello, utilice el cmdlet **Get-AzureRmADUser** .
+## <a name="assigning-permissions-tooa-user-for-a-specific-policy-using-custom-roles"></a>Asignar permisos de usuario de tooa para una directiva determinada utilizando roles personalizados
+Una vez que haya definido sus funciones personalizadas, puede asignarlos toousers. En orden tooassign un usuario de tooa roles personalizados, primero debe obtener hello **ObjectId** que representa ese usuario. toodo que usar hello **AzureRmADUser Get** cmdlet.
 
-En el ejemplo siguiente, el valor **ObjectId** del usuario *SomeUser* es 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3.
+En el siguiente ejemplo de Hola Hola **ObjectId** de hello *SomeUser* usuario es 05DEFF7B 0AC3 4ABF B74D 6A72CD5BF3F3.
 
     PS C:\>Get-AzureRmADUser -SearchString "SomeUser"
 
@@ -71,11 +71,11 @@ En el ejemplo siguiente, el valor **ObjectId** del usuario *SomeUser* es 05DEFF7
     -----------                    ----                           --------
     someuser@hotmail.com                                          05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3
 
-Una vez que tenga el **ObjectId** para el usuario y un nombre de rol personalizado, puede asignar ese rol al usuario con el cmdlet **New-AzureRmRoleAssignment**:
+Una vez que tenga hello **ObjectId** de usuario de Hola y el nombre de rol personalizado, puede asignar ese usuario toohello de rol con hello **AzureRmRoleAssignment New** cmdlet:
 
     PS C:\>New-AzureRmRoleAssignment -ObjectId 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3 -RoleDefinitionName "Policy Contributor" -Scope /subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.DevTestLab/labs/<LabName>/policySets/policies/AllowedVmSizesInLab
 
-En el ejemplo anterior, se utiliza la directiva **AllowedVmSizesInLab** . Puede utilizar cualquiera de las directivas siguientes:
+En el ejemplo anterior de hello, Hola **AllowedVmSizesInLab** se utiliza la directiva. Puede usar cualquiera de hello las directivas siguientes:
 
 * MaxVmsAllowedPerUser
 * MaxVmsAllowedPerLab
@@ -85,11 +85,11 @@ En el ejemplo anterior, se utiliza la directiva **AllowedVmSizesInLab** . Puede 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="next-steps"></a>Pasos siguientes
-Una vez que haya concedido permisos de usuario a las directivas específicas del laboratorio, estos son algunos de los siguientes pasos que debe considerar:
+Una vez haya concedido directivas de laboratorio de toospecific de permisos de usuario, estas son algunas tooconsider de pasos siguiente:
 
-* [Acceso seguro a un laboratorio](devtest-lab-add-devtest-user.md)
+* [Laboratorio de acceso seguro tooa](devtest-lab-add-devtest-user.md).
 * [Definición de directivas de laboratorio](devtest-lab-set-lab-policy.md)
 * [Creación de una plantilla de laboratorio](devtest-lab-create-template.md)
 * [Creación de artefactos personalizados para máquinas virtuales](devtest-lab-artifact-author.md)
-* [Incorporación de una máquina virtual con artefactos a un laboratorio](devtest-lab-add-vm-with-artifacts.md)
+* [Agregar una máquina virtual con el laboratorio de artefactos tooa](devtest-lab-add-vm-with-artifacts.md).
 

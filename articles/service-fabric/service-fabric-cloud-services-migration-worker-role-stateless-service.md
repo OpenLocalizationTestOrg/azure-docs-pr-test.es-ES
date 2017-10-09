@@ -1,6 +1,6 @@
 ---
-title: "Conversión de aplicaciones de Azure Cloud Services en microservicios | Microsoft Docs"
-description: "Esta guía compara los roles web y de trabajo de Servicios en la nube y los servicios sin estado de Service Fabric para ayudar a la migración desde Servicios en la nube a Service Fabric."
+title: aaaConvert toomicroservices de aplicaciones de servicios de nube de Azure | Documentos de Microsoft
+description: "Esta guía compara Web de servicios de nube y Roles de trabajo y Service Fabric servicios sin estado toohelp migran desde servicios en la nube tooService tejido."
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,34 +14,34 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: vturecek
-ms.openlocfilehash: 4ab1f83e88b262b1752300b2786340d9abca8154
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c43b11623b2ba7f6069782a8b7e030c82572a6e2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Guía de conversión de roles web y de trabajo a servicios sin estado de Service Fabric
-Este artículo describe cómo migrar los roles web y de trabajo de los Servicios en la nube a los servicios sin estado de Service Fabric. Se trata de la ruta de migración más sencilla desde los Servicios en la nube a Service Fabric para aquellas aplicaciones cuya arquitectura global va a permanecer más o menos igual.
+# <a name="guide-tooconverting-web-and-worker-roles-tooservice-fabric-stateless-services"></a>Guía de tooconverting servicios Web y Roles de trabajo tooService tejido sin estado
+Este artículo se describe cómo toomigrate los Roles de trabajador y Web de servicios de nube tooService tejido servicios sin estado. Se trata de ruta de migración más sencilla de hello de servicios en la nube tooService tejido para aplicaciones cuya arquitectura global va aproximadamente toostay Hola igual.
 
-## <a name="cloud-service-project-to-service-fabric-application-project"></a>Proyecto de Servicios en la nube en comparación con proyecto de la aplicación de Service Fabric
- Un proyecto de Servicio en la nube y un proyecto de la aplicación de Service Fabric tienen una estructura similar y ambos representan la unidad de implementación para la aplicación, es decir, cada uno de ellos define el paquete completo que se implementa para ejecutar la aplicación. Un proyecto de Servicio en la nube contiene uno o varios roles web o de trabajo. De igual forma, un proyecto de la aplicación de Service Fabric contiene uno o más servicios. 
+## <a name="cloud-service-project-tooservice-fabric-application-project"></a>Proyecto de aplicación de tejido de tooService de proyecto de servicio de nube
+ Un proyecto de servicio de nube y un proyecto de aplicación de tejido de servicio tienen una estructura similar y ambos unidad de implementación de hello representan para su aplicación, es decir, cada uno de ellos definen el paquete completo de Hola que es toorun implementado la aplicación. Un proyecto de Servicio en la nube contiene uno o varios roles web o de trabajo. De igual forma, un proyecto de la aplicación de Service Fabric contiene uno o más servicios. 
 
-La diferencia es que el proyecto de Servicio en la nube une la implementación de la aplicación con una implementación de máquina virtual y, por tanto, contiene valores de configuración de máquina virtual, mientras que el proyecto de la aplicación de Service Fabric solo define una aplicación que se va a implementar en un conjunto de máquinas virtuales existentes en un clúster de Service Fabric. El propio clúster de Service Fabric solo se implementa una vez, a través de una plantilla de Resource Manager o a través de Azure Portal y se pueden implementar varias aplicaciones de Service Fabric en él.
+diferencia de Hello es que parejas de proyecto de servicio de nube de Hola Hola implementación de aplicación con una implementación de máquina virtual y, por tanto, contiene valores de configuración de máquina virtual, mientras que el proyecto de aplicación de servicio Fabric Hola solo define una aplicación que se va a implementar tooa el conjunto de máquinas virtuales existentes en un clúster de Service Fabric. propio clúster de Service Fabric Hola solo se implementa una vez, ya sea a través de una plantilla de administrador de recursos o a través del portal de Azure de Hola y varias aplicaciones pueden ser de Service Fabric implementan tooit.
 
 ![Comparación de proyectos de Service Fabric y de Servicios en la nube][3]
 
-## <a name="worker-role-to-stateless-service"></a>Rol de trabajo a servicio sin estado
-Conceptualmente, un rol de trabajo representa una carga de trabajo sin estado, lo que significa que cada instancia de la carga de trabajo es idéntica y las solicitudes se pueden enrutar a cualquier instancia en cualquier momento. No se espera que cada instancia recuerde la solicitud anterior. El estado en el que opera la carga de trabajo es administrado por un almacén de estado externo, como Almacenamiento de tablas de Azure o Azure DocumentDB. En Service Fabric, este tipo de carga de trabajo se representa mediante un servicio sin estado. La manera más sencilla de migrar un rol de trabajo a Service Fabric se puede realizar mediante la conversión de un código de rol de trabajo a un servicio sin estado.
+## <a name="worker-role-toostateless-service"></a>Servicio de toostateless de rol de trabajo
+Conceptualmente, un rol de trabajo representa una carga de trabajo sin estado, lo que significa que todas las instancias de la carga de trabajo de hello es idéntica y las solicitudes pueden tener tooany enrutado instancia en cualquier momento. Cada instancia no es solicitud anterior de hello tooremember esperado. Estado esa carga de trabajo de hello funciona en está administrado por un almacén de estado externo, como almacenamiento de tablas de Azure o base de datos de documentos de Azure. En Service Fabric, este tipo de carga de trabajo se representa mediante un servicio sin estado. Hola más simple enfoque toomigrating un tooService de rol de trabajo tejido puede realizarse mediante la conversión de código de rol de trabajo tooa servicio sin estado.
 
-![Rol de trabajo a servicio sin estado][4]
+![Rol de trabajo tooStateless servicio][4]
 
-## <a name="web-role-to-stateless-service"></a>Rol web a servicio sin estado
-Igual que el rol de trabajo, un rol web también representa una carga de trabajo sin estado y, por tanto, conceptualmente también se puede asignar a un servicio sin estado de Service Fabric. Sin embargo, a diferencia de los roles web, Service Fabric no admite IIS. Para migrar una aplicación web desde un rol web a un servicio sin estado debe moverla primero a un marco web autohospedado que no dependa de IIS o System.Web, como ASP.NET Core 1.
+## <a name="web-role-toostateless-service"></a>Servicio de rol toostateless Web
+TooWorker similar rol, un rol Web también representa una carga de trabajo sin estado y así conceptualmente demasiado puede ser asignado tooa servicio sin estado de Service Fabric. Sin embargo, a diferencia de los roles web, Service Fabric no admite IIS. toomigrate una aplicación web desde un servicio sin estado de rol Web tooa requiere primer marco web tooa móvil que puede ser hospeda a sí mismo y no depende de IIS o System.Web, por ejemplo, ASP.NET Core 1.
 
 | **Aplicación** | **Compatible** | **Ruta de migración** |
 | --- | --- | --- |
-| Formularios Web Forms ASP.NET |No |Conversión a ASP.NET Core 1 MVC |
-| ASP.NET MVC |Con migración |Actualización a ASP.NET Core 1 MVC |
+| Formularios Web Forms ASP.NET |No |Convertir tooASP.NET principales 1 MVC |
+| ASP.NET MVC |Con migración |Actualización tooASP.NET principales 1 MVC |
 | ASP.NET Web API |Con migración |Uso de servidor autohospedado o ASP.NET Core 1 |
 | ASP.NET Core 1 |Sí |N/D |
 
@@ -105,17 +105,17 @@ namespace Stateless1
 
 ```
 
-Ambos tienen un reemplazo principal "Run" en el que se va a iniciar el procesamiento. Los servicios de Service Fabric combinan `Run`, `Start`, y `Stop` en un único punto de entrada, `RunAsync`. El servicio debe empezar a trabajar cuando empieza `RunAsync` y debe dejar de funcionar cuando se señala el token de cancelación del método `RunAsync`. 
+Ambos tienen un reemplazo principal "ejecutar" procesamiento que toobegin. Los servicios de Service Fabric combinan `Run`, `Start`, y `Stop` en un único punto de entrada, `RunAsync`. El servicio debe empezar a trabajar cuando `RunAsync` se inicia y debe dejar de funcionar cuando hello `RunAsync` se señaliza CancellationToken del método. 
 
-Hay varias diferencias claves entre el ciclo de vida y la duración de los servicios de roles de trabajo y los de Service Fabric:
+Hay varias diferencias claves entre el ciclo de vida de Hola y duración de los servicios de Roles de trabajo y el tejido de servicio:
 
-* **Ciclo de vida:** la principal diferencia es que un rol de trabajo es una máquina virtual y, por tanto, su ciclo de vida está asociado al de la máquina virtual e incluye eventos para cuando se inicia y detiene dicha máquina virtual. Un servicio de Service Fabric tiene un ciclo de vida que es independiente del ciclo de vida de la máquina virtual, por lo que no incluye eventos para cuando el equipo o máquina virtual host se inicia y se detiene, ya que no están relacionados.
-* **Duración:`Run` Una instancia de rol de trabajo se reciclará si se sale del método** . No obstante, el método `RunAsync` en un servicio de Service Fabric se puede ejecutar hasta su finalización y la instancia de servicio permanecerá disponible. 
+* **Ciclo de vida:** diferencia estriba hello es que un rol de trabajo es una máquina virtual y por lo que su ciclo de vida relacionado toohello máquina virtual, que incluye eventos para cuando se inicia y detiene Hola máquina virtual. Un servicio de Service Fabric tiene un ciclo de vida que es independiente de ciclo de vida VM de hello, por lo que no incluye eventos para cuando Hola host VM o equipo se inicia y se detenga, tal y como no están relacionadas.
+* **Duración:** se reciclará una instancia de rol de trabajo si hello `Run` sale del método. Hola `RunAsync` método en un servicio de Service Fabric. sin embargo puede ejecutar toocompletion e instancia del servicio Hola estarán activos. 
 
-Service Fabric ofrece un punto de entrada de configuración de comunicación opcional para servicios que atienden las solicitudes de cliente. Tanto RunAsync como el punto de entrada de comunicación son reemplazos opcionales en los servicios de Service Fabric. El servicio puede elegir entre solo atender a las solicitudes de cliente o solo ejecutar un bucle de procesamiento o ambas cosas, razón por la cual se permite al método RunAsync salir sin necesidad de reiniciar la instancia de servicio, ya que puede continuar atendiendo a las solicitudes de cliente.
+Service Fabric ofrece un punto de entrada de configuración de comunicación opcional para servicios que atienden las solicitudes de cliente. Hola Coredispatcher y punto de entrada de comunicación son reemplazos opcionales en servicios de Service Fabric - el servicio puede elegir tooonly solicitudes de tooclient de escucha, o solo ejecutar un bucle de procesamiento, o ambos - motivo por el cual hello Coredispatcher método se permite tooexit sin reiniciar la instancia de servicio de hello, ya que puede seguir toolisten para las solicitudes de cliente.
 
 ## <a name="application-api-and-environment"></a>API de la aplicación y entorno
-La API del entorno de Servicios en la nube proporciona información y funcionalidad para la instancia de máquina virtual actual, así como información acerca de otras instancias de rol de VM. Service Fabric proporciona información relacionada con su tiempo de ejecución y algo de información sobre el nodo en el que un servicio se está ejecutando. 
+entorno de servicios en la nube de Hello API proporciona información y funcionalidad para la instancia actual de VM de hello, así como información acerca de otras instancias de rol de máquina virtual. Service Fabric proporciona información relacionada con el tiempo de ejecución de tooits y alguna información sobre el nodo de hello un servicio se está ejecutando actualmente. 
 
 | **Tarea del entorno** | **Servicios en la nube** | **Service Fabric** |
 | --- | --- | --- |
@@ -126,17 +126,17 @@ La API del entorno de Servicios en la nube proporciona información y funcionali
 | Evento de cambio simultáneo |`RoleEnvironment` |N/D |
 
 ## <a name="configuration-settings"></a>Valores de configuración
-Los valores de configuración de los Servicios en la nube se establecen para un rol de VM y se aplican a todas las instancias de ese rol de VM. Estos valores son pares de clave-valor establecidos en los archivos Serviceconfiguration.*.cscfg a los que se puede acceder directamente a través de RoleEnvironment. En Service Fabric, la configuración se aplica individualmente a cada servicio y a cada aplicación, en lugar de a una máquina virtual, ya que una máquina virtual puede hospedar varios servicios y aplicaciones. Un servicio se compone de tres paquetes:
+Valores de configuración de servicios en la nube se establecen para un rol de VM y aplican tooall instancias de ese rol de máquina virtual. Estos valores son pares de clave-valor establecidos en los archivos Serviceconfiguration.*.cscfg a los que se puede acceder directamente a través de RoleEnvironment. En Service Fabric, configuración se aplica individualmente tooeach servicio y aplicación tooeach, en lugar de tooa de máquina virtual, ya que una máquina virtual puede hospedar varios servicios y aplicaciones. Un servicio se compone de tres paquetes:
 
-* **Código:** contiene los archivos ejecutables de servicio, los archivos binarios, los archivos DLL y cualquier otro archivo necesario para que se ejecute un servicio.
+* **Código:** contiene Hola ejecutables del servicio, los archivos binarios, archivos DLL y cualquier otro archivo de un servicio necesita toorun.
 * **Config:** todos los valores y archivos de configuración de un servicio.
-* **Datos:** los archivos de datos estáticos asociados al servicio.
+* **Datos:** archivos de datos estáticos asociados con el servicio de Hola.
 
-Cada uno de estos paquetes puede tener versiones y actualizaciones independientes. De forma similar a los Servicios en la nube, se puede acceder a un paquete de configuración mediante programación a través de una API y los eventos están disponibles para notificar al servicio de un cambio del paquete de configuración. Se puede utilizar un archivo Settings.xml para la configuración de los pares clave-valor y el acceso mediante programación similar a la sección de configuración de aplicaciones de un archivo App.config. Sin embargo, a diferencia de los Servicios en la nube, un paquete de configuración de Service Fabric puede contener todos los archivos de configuración en cualquier formato, ya sea en XML, JSON, YAML o en un formato binario personalizado. 
+Cada uno de estos paquetes puede tener versiones y actualizaciones independientes. Servicios de tooCloud similares, un paquete de configuración pueden obtenerse mediante programación a través de una API y eventos se servicio de hello toonotify disponibles de un cambio de paquete de configuración. Un archivo Settings.xml puede utilizarse para la configuración de valores de clave y acceso mediante programación similar toohello aplicación sección Configuración de un archivo App.config. Sin embargo, a diferencia de los Servicios en la nube, un paquete de configuración de Service Fabric puede contener todos los archivos de configuración en cualquier formato, ya sea en XML, JSON, YAML o en un formato binario personalizado. 
 
 ### <a name="accessing-configuration"></a>Acceso a la configuración
 #### <a name="cloud-services"></a>Servicios en la nube
-Se puede acceder a los valores de configuración de Serviceconfiguration.*.cscfg a través de `RoleEnvironment`. Estas opciones están disponibles globalmente para todas las instancias de rol en la misma implementación del Servicio en la nube.
+Se puede acceder a los valores de configuración de Serviceconfiguration.*.cscfg a través de `RoleEnvironment`. Estas opciones están disponibles globalmente tooall instancias de rol en hello misma implementación del servicio de nube.
 
 ```C#
 
@@ -145,9 +145,9 @@ string value = RoleEnvironment.GetConfigurationSettingValue("Key");
 ```
 
 #### <a name="service-fabric"></a>Service Fabric
-Cada servicio tiene su propio paquete de configuración individual. No hay ningún mecanismo integrado para los valores de configuración global al que puedan acceder todas las aplicaciones de un clúster. Cuando utiliza el archivo de configuración especial Settings.xml de Service Fabric dentro de un paquete de configuración, los valores en Settings.xml se pueden reemplazar en el nivel de aplicación lo que permite la configuración en dicho nivel de aplicación.
+Cada servicio tiene su propio paquete de configuración individual. No hay ningún mecanismo integrado para los valores de configuración global al que puedan acceder todas las aplicaciones de un clúster. Al usar archivo de configuración de Settings.xml especial del tejido de servicio dentro de un paquete de configuración, se pueden sobrescribir valores en Settings.xml a nivel de aplicación Hola, lo que permite valores de configuración de nivel de aplicación.
 
-Se puede acceder a los valores de configuración de cada instancia de servicio a través de `CodePackageActivationContext`del servicio.
+Valores de configuración son accesos dentro de cada instancia de servicio a través del servicio de hello `CodePackageActivationContext`.
 
 ```C#
 
@@ -167,8 +167,8 @@ using (StreamReader reader = new StreamReader(Path.Combine(configPackage.Path, "
 ```
 
 ### <a name="configuration-update-events"></a>Eventos de actualización de configuración
-#### <a name="cloud-services"></a>Servicios en la nube
-El evento `RoleEnvironment.Changed` se utiliza para notificar a todas las instancias de rol cuando se produce un cambio en el entorno, como un cambio de configuración. Esto se usa para consumir las actualizaciones de configuración sin reciclar las instancias de rol ni reiniciar un proceso de trabajo.
+#### <a name="cloud-services"></a>Cloud Services
+Hola `RoleEnvironment.Changed` evento es utilizado toonotify todas las instancias de rol cuando un cambio se produce en el entorno de hello, por ejemplo, un cambio de configuración. Se trata de las actualizaciones de configuración de tooconsume usado sin reciclado de instancias de rol o reiniciar un proceso de trabajo.
 
 ```C#
 
@@ -176,7 +176,7 @@ RoleEnvironment.Changed += RoleEnvironmentChanged;
 
 private void RoleEnvironmentChanged(object sender, RoleEnvironmentChangedEventArgs e)
 {
-   // Get the list of configuration changes
+   // Get hello list of configuration changes
    var settingChanges = e.Changes.OfType<RoleEnvironmentConfigurationSettingChange>();
 foreach (var settingChange in settingChanges) 
    {
@@ -187,9 +187,9 @@ foreach (var settingChange in settingChanges)
 ```
 
 #### <a name="service-fabric"></a>Service Fabric
-Cada uno de los tres tipos de paquete de un servicio, Código, Config y Datos, tienen eventos que notifican a una instancia de servicio cuando se actualiza, agrega o quita un paquete. Un servicio puede contener varios paquetes de cada tipo. Por ejemplo, un servicio puede tener varios paquetes de configuración, cada uno individualmente con varias versiones y actualizaciones. 
+Cada uno de los tres tipos de paquete hello en un servicio en código, configuración y datos - tienen eventos que notificar a una instancia de servicio cuando se actualiza, se agrega o se quita un paquete. Un servicio puede contener varios paquetes de cada tipo. Por ejemplo, un servicio puede tener varios paquetes de configuración, cada uno individualmente con varias versiones y actualizaciones. 
 
-Estos eventos están disponibles para consumir los cambios en los paquetes de servicio sin necesidad de reiniciar la instancia de servicio.
+Estos eventos son cambios de tooconsume disponibles en los paquetes de servicio sin necesidad de reiniciar la instancia de servicio de Hola.
 
 ```C#
 
@@ -205,9 +205,9 @@ private void CodePackageActivationContext_ConfigurationPackageModifiedEvent(obje
 ```
 
 ## <a name="startup-tasks"></a>Tareas de inicio
-Las tareas de inicio son acciones que se realizan antes de que se inicie una aplicación. Una tarea de inicio se utiliza normalmente para ejecutar scripts de configuración con privilegios elevados. Tanto Servicios en la nube como Service Fabric admiten tareas de inicio. La principal diferencia estriba en que en los Servicios en la nube, una tarea de inicio está asociada a una máquina virtual porque forma parte de una instancia de rol, mientras que en Service Fabric una tarea de inicio se asocia a un servicio que no está asociado a ninguna máquina virtual concreta.
+Las tareas de inicio son acciones que se realizan antes de que se inicie una aplicación. Una tarea de inicio es toorun normalmente se usan scripts de instalación con privilegios elevados. Tanto Servicios en la nube como Service Fabric admiten tareas de inicio. Hola principal diferencia es que en servicios en la nube, una tarea de inicio es tooa ligada VM porque forma parte de una instancia de rol, mientras que en Service Fabric una tarea de inicio es servicio de tooa relacionados, que no está ligada tooany máquina virtual concreta.
 
-| Servicios en la nube | Service Fabric |
+| Cloud Services | Service Fabric |
 | --- | --- | --- |
 | Ubicación de configuración |ServiceDefinition.csdef |
 | Privilegios |"limitados" o "elevados" |
@@ -249,13 +249,13 @@ En Service Fabric se configura un punto de entrada de inicio por servicio en Ser
 ``` 
 
 ## <a name="a-note-about-development-environment"></a>Nota acerca de un entorno de desarrollo
-Los Servicios en la nube y Service Fabric se integran con Visual Studio mediante plantillas de proyecto y soporte para depuración, configuración e implementación tanto local como en Azure. Los Servicios en la nube y Service Fabric también proporcionan un entorno de desarrollo local en tiempo de ejecución. La diferencia es que mientras que el tiempo de ejecución de desarrollo del Servicio en la nube emula el entorno de Azure en el que se ejecuta, Service Fabric no utiliza un emulador, sino que usa el tiempo de ejecución de Service Fabric completo. El entorno de Service Fabric que ejecuta en el equipo de desarrollo local es el mismo entorno que se ejecuta en producción.
+Servicios en la nube y tejido de servicio se integran con Visual Studio con plantillas de proyecto y la compatibilidad con la depuración, configurar e implementar ambos localmente y tooAzure. Los Servicios en la nube y Service Fabric también proporcionan un entorno de desarrollo local en tiempo de ejecución. Hello diferencia es que mientras el servicio de nube en tiempo de ejecución de desarrollo emula Hola Hola entorno de Azure en el que se ejecuta, Service Fabric no usa un emulador, sino que usa el tiempo de ejecución de hello completo Service Fabric. Hello Service Fabric es de entorno que se ejecuta en el equipo de desarrollo local Hola mismo entorno que se ejecuta en producción.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Conozca más información sobre Reliable Services de Service Fabric y las diferencias fundamentales entre los Servicios en la nube y la arquitectura de la aplicación de Service Fabric para aprender a aprovechar el conjunto completo de características de Service Fabric.
+Leer más sobre servicios confiables de tejido de servicio y las diferencias fundamentales de hello entre servicios en la nube y toounderstand de arquitectura de aplicación de Service Fabric cómo tootake aprovechar Hola completo conjunto de características de Service Fabric.
 
 * [Introducción a Reliable Services de Service Fabric](service-fabric-reliable-services-quick-start.md)
-* [Guía conceptual acerca de las diferencias entre Servicios en la nube y Service Fabric](service-fabric-cloud-services-migration-differences.md)
+* [Diferencias de toohello guía conceptual entre servicios en la nube y el tejido de servicio](service-fabric-cloud-services-migration-differences.md)
 
 <!--Image references-->
 [3]: ./media/service-fabric-cloud-services-migration-worker-role-stateless-service/service-fabric-cloud-service-projects.png

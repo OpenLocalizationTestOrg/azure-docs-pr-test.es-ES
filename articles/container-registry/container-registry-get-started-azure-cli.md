@@ -1,6 +1,6 @@
 ---
-title: "Creación del registro de contenedores privado de Docker: CLI de Azure | Microsoft Docs"
-description: "Introducción a la creación y la administración de registros de contenedor privados de Docker mediante la CLI de Azure 2.0"
+title: registro de contenedor de Docker privada de aaaCreate - CLI de Azure | Documentos de Microsoft
+description: Empezar a crear y administrar registros de contenedor de Docker privados con hello 2.0 de CLI de Azure
 services: container-registry
 documentationcenter: 
 author: stevelas
@@ -17,43 +17,43 @@ ms.workload: na
 ms.date: 06/06/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2875f4089231ed12a0312b2c2e077938440365c6
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: f0d876a70b71a5e1bd564fbc9198f693dfe8a347
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-private-docker-container-registry-using-the-azure-cli-20"></a>Creación de un registro de contenedor privado de Docker con la CLI de Azure 2.0
-Use los comandos de la [CLI de Azure 2.0](https://github.com/Azure/azure-cli) para crear un registro de contenedor y administrar su configuración desde un equipo Linux, Mac o Windows. También puede crear y administrar registros de contenedor mediante [Azure Portal](container-registry-get-started-portal.md) o mediante programación con la [API de REST](https://go.microsoft.com/fwlink/p/?linkid=834376) de Container Registry.
+# <a name="create-a-private-docker-container-registry-using-hello-azure-cli-20"></a>Crear un registro de contenedor de Docker privado mediante Hola 2.0 de CLI de Azure
+Usar comandos en hello [CLI de Azure 2.0](https://github.com/Azure/azure-cli) toocreate un registro de contenedor y administrar su configuración desde un equipo Linux, Mac o Windows. También puede crear y administrar registros de contenedor con hello [portal de Azure](container-registry-get-started-portal.md) o mediante programación con registro de contenedor de hello [API de REST](https://go.microsoft.com/fwlink/p/?linkid=834376).
 
 
-* Para más información sobre el entorno y los conceptos, consulte [la información general](container-registry-intro.md)
-* Para obtener ayuda sobre los comandos de la CLI de Container Registry (`az acr` comandos), pase el parámetro `-h` a cualquier comando.
+* En el fondo y conceptos, vea [Hola información general](container-registry-intro.md)
+* Para obtener ayuda sobre los comandos de CLI de contenedor del registro (`az acr` comandos), pasar hello `-h` comando tooany de parámetro.
 
 
 ## <a name="prerequisites"></a>Requisitos previos
-* **CLI de Azure 2.0**: para instalar y empezar a trabajar con la CLI 2.0, consulte las [instrucciones de instalación](/cli/azure/install-azure-cli). Inicie sesión en la suscripción de Azure mediante la ejecución de `az login`. Para más información, consulte la [introducción a la CLI 2.0](/cli/azure/get-started-with-azure-cli).
-* **Grupo de recursos**: cree un [grupo de recursos](../azure-resource-manager/resource-group-overview.md#resource-groups) antes de crear un registro de contenedor o utilice un grupo de recursos ya existente. Asegúrese de que el grupo de recursos está en una ubicación donde el servicio Container Registry está [disponible](https://azure.microsoft.com/regions/services/). Para crear un grupo de recursos con la CLI 2.0, consulte la [referencia de la CLI 2.0](/cli/azure/group).
-* **Cuenta de almacenamiento** (opcional): cree una [cuenta de almacenamiento](../storage/common/storage-introduction.md) estándar de Azure para realizar copias del registro de contenedor en la misma ubicación. Si no especifica una cuenta de almacenamiento al crear un registro con `az acr create`, el comando creará una automáticamente. Para crear una cuenta de almacenamiento con la CLI 2.0, consulte la [referencia de la CLI 2.0](/cli/azure/storage/account). Premium Storage no se admite actualmente.
-* **Entidad de servicio** (opcional): cuando crea un registro con la CLI, el acceso a este no está configurado de forma predeterminada. Según sus necesidades, puede asignar una entidad de servicio de Azure Active Directory existente a un registro (o crear y asignar una nueva), o habilitar la cuenta de usuario del administrador del registro. Consulte las secciones más adelante en este artículo. Para más información acerca del acceso al registro, consulte [Authenticate with the container registry](container-registry-authentication.md) (Autenticación con el registro de contenedor).
+* **Azure 2.0 CLI**: tooinstall y empezar a trabajar con hello 2.0 de CLI, consulte hello [las instrucciones de instalación](/cli/azure/install-azure-cli). Inicie sesión en tooyour suscripción de Azure ejecutando `az login`. Para obtener más información, consulte [empezar a trabajar con hello CLI 2.0](/cli/azure/get-started-with-azure-cli).
+* **Grupo de recursos**: cree un [grupo de recursos](../azure-resource-manager/resource-group-overview.md#resource-groups) antes de crear un registro de contenedor o utilice un grupo de recursos ya existente. Asegúrese de que el grupo de recursos de hello está en una ubicación donde hello servicio de registro de contenedor es [disponibles](https://azure.microsoft.com/regions/services/). toocreate un grupo de recursos con Hola 2.0 de CLI, consulte [Hola referencia CLI 2.0](/cli/azure/group).
+* **Cuenta de almacenamiento** (opcional): crear un estándar Azure [cuenta de almacenamiento](../storage/common/storage-introduction.md) tooback registro de contenedor de Hola Hola misma ubicación. Si no especifica una cuenta de almacenamiento al crear un registro con `az acr create`, comando hello crea uno automáticamente. toocreate cuenta de almacenamiento mediante Hola 2.0 de CLI, consulte [Hola referencia CLI 2.0](/cli/azure/storage/account). Premium Storage no se admite actualmente.
+* **Entidad de servicio** (opcional): cuando se crea un registro con hello CLI, de forma predeterminada no está configurado para el acceso. Según sus necesidades, puede asignar un registro de tooa principal de servicio de Azure Active Directory existente (o crear y asignar una nueva), o habilitar la cuenta de usuario de administrador del registro de hello. Vea las secciones de hello más adelante en este artículo. Para obtener más información acerca del acceso del registro, consulte [autenticar con registro de contenedor de hello](container-registry-authentication.md).
 
 ## <a name="create-a-container-registry"></a>Creación de un registro de contenedor
-Ejecute el comando `az acr create` para crear un registro de contenedor.
+Ejecute hello `az acr create` comando toocreate un registro de contenedor.
 
 > [!TIP]
-> Cuando cree un registro, especifique un nombre de dominio de nivel superior único global que contenga solo letras y números. El nombre del registro en los ejemplos es `myRegistry1`, pero puede sustituirlo por un nombre único de su elección.
+> Cuando cree un registro, especifique un nombre de dominio de nivel superior único global que contenga solo letras y números. nombre del registro de Hello en los ejemplos de hello `myRegistry1`, pero sustituir un nombre único de su elección.
 >
 >
 
-El siguiente comando utiliza los parámetros mínimos necesarios para crear el registro de contenedor `myRegistry1` en el grupo de recursos `myResourceGroup` y en la SKU *Basic*:
+Hola el siguiente comando utiliza Hola del registro de contenedor de parámetros mínimos toocreate `myRegistry1` en grupo de recursos de hello `myResourceGroup`y el uso de hello *básica* sku:
 
 ```azurecli
 az acr create --name myRegistry1 --resource-group myResourceGroup --sku Basic
 ```
 
-* `--storage-account-name` es opcional. Si no se especifica, se crea una cuenta de almacenamiento con un nombre formado por el nombre del registro y una marca de tiempo del grupo de recursos especificado.
+* `--storage-account-name` es opcional. Si no se especifica, se crea una cuenta de almacenamiento con un nombre que consta del nombre del registro de hello y una marca de tiempo en hello especifica el grupo de recursos.
 
-Cuando se crea el registro, el resultado es similar al siguiente:
+Cuando se crea el registro de hello, salida de hello es siguiente de toohello similar:
 
 ```azurecli
 {
@@ -81,14 +81,14 @@ Cuando se crea el registro, el resultado es similar al siguiente:
 
 Tenga en cuenta especialmente:
 
-* `id`: el identificador del registro en la suscripción, que necesitará si desea asignar una entidad de servicio.
-* `loginServer`: el nombre completo que especifique para [iniciar sesión en el registro](container-registry-authentication.md). En este ejemplo, el nombre es `myregistry1.exp.azurecr.io` (todo en minúsculas).
+* `id`-Identificador de registro de hello en su suscripción, que es necesario si desea tooassign una entidad de servicio.
+* `loginServer`-nombre completo de Hola que especifique demasiado[inicie sesión en el registro de toohello](container-registry-authentication.md). En este ejemplo, se denomina hello `myregistry1.exp.azurecr.io` (en minúsculas).
 
 ## <a name="assign-a-service-principal"></a>Asignación de una entidad de servicio
-Use los comandos de la CLI 2.0 para asignar una entidad de servicio de Azure Active Directory a un registro. A la entidad de servicio en estos ejemplos se le asigna el rol de propietario, pero puede asignar [otros roles](../active-directory/role-based-access-control-configure.md) si lo desea.
+Usar comandos de CLI 2.0 tooassign un registro de tooa principal de servicio de Azure Active Directory. Hello entidad de servicio en estos ejemplos se asigna el rol de propietario de hello, pero puede asignar [otros roles](../active-directory/role-based-access-control-configure.md) si desea.
 
-### <a name="create-a-service-principal-and-assign-access-to-the-registry"></a>Creación de una entidad de servicio y asignación de acceso al registro
-En el siguiente comando, se le asigna a una nueva entidad de servicio un acceso de rol de propietario para el identificador del registro pasado con el parámetro `--scopes`. Especifique una contraseña segura con el parámetro `--password`.
+### <a name="create-a-service-principal-and-assign-access-toohello-registry"></a>Crear a una entidad de servicio y asignar del registro de acceso toohello
+En el siguiente comando de hello, una nueva entidad de servicio se asigna identificador Propietario rol acceso toohello del registro se ha superado con hello `--scopes` parámetro. Especifique una contraseña segura con hello `--password` parámetro.
 
 ```azurecli
 az ad sp create-for-rbac --scopes /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myresourcegroup/providers/Microsoft.ContainerRegistry/registries/myregistry1 --role Owner --password myPassword
@@ -97,7 +97,7 @@ az ad sp create-for-rbac --scopes /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx
 
 
 ### <a name="assign-an-existing-service-principal"></a>Asignación de una entidad de servicio existente
-Si ya tiene una entidad de servicio y desea asignar a esta un acceso de rol de propietario al registro, ejecute un comando similar al del ejemplo siguiente. Pase el identificador de la aplicación de la entidad de servicio mediante el parámetro `--assignee`:
+Si ya tiene una entidad de servicio y desea tooassign el registro de toohello de propietario rol acceso, que se ejecute un toohello similar de comando siguiente ejemplo. Pasar el identificador de la aplicación principal de servicio hello mediante hello `--assignee` parámetro:
 
 ```azurecli
 az role assignment create --scope /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myresourcegroup/providers/Microsoft.ContainerRegistry/registries/myregistry1 --role Owner --assignee myAppId
@@ -106,7 +106,7 @@ az role assignment create --scope /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx
 
 
 ## <a name="manage-admin-credentials"></a>Administración de las credenciales de administrador
-Se crea automáticamente una cuenta de administrador para cada registro de contenedor, que estará deshabilitada de forma predeterminada. Los ejemplos siguientes muestran los comandos de la CLI `az acr` para administrar las credenciales de administrador del registro de contenedor.
+Se crea automáticamente una cuenta de administrador para cada registro de contenedor, que estará deshabilitada de forma predeterminada. Hola siguientes ejemplos se muestra `az acr` toomanage credenciales de administrador de hello para el registro de contenedor de comandos de CLI.
 
 ### <a name="obtain-admin-user-credentials"></a>Obtención de las credenciales de administrador
 ```azurecli
@@ -124,25 +124,25 @@ az acr update -n myRegistry1 --admin-enabled false
 ```
 
 ## <a name="list-images-and-tags"></a>Lista de las imágenes y etiquetas
-Use los comandos de la CLI `az acr` para consultar las imágenes y etiquetas en un repositorio.
+Hola de uso `az acr` tooquery imágenes de Hola y etiquetas en un repositorio de los comandos de CLI.
 
 > [!NOTE]
-> Actualmente, Container Registry no admite el comando `docker search` para consultar las imágenes y etiquetas.
+> Actualmente, el registro de contenedor no admite hello `docker search` tooquery de comando para imágenes y etiquetas.
 
 
 ### <a name="list-repositories"></a>Lista de repositorios
-En el ejemplo siguiente se enumeran los repositorios de un registro en formato JSON (notación de objetos JavaScript):
+Hello en el ejemplo siguiente se enumera los repositorios de hello en un registro, en formato JSON (JavaScript Object Notation):
 
 ```azurecli
 az acr repository list -n myRegistry1 -o json
 ```
 
 ### <a name="list-tags"></a>Lista de etiquetas
-En el ejemplo siguiente se muestran las etiquetas del repositorio **samples/nginx**, en formato JSON:
+Hello en el ejemplo siguiente se muestra etiquetas de hello en hello **ejemplos/nginx** repositorio, en formato JSON:
 
 ```azurecli
 az acr repository show-tags -n myRegistry1 --repository samples/nginx -o json
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-* [Insertar la primera imagen mediante la CLI de Docker](container-registry-get-started-docker-cli.md)
+* [Insertar la primera imagen con hello CLI de Docker](container-registry-get-started-docker-cli.md)

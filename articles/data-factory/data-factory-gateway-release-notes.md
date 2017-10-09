@@ -1,5 +1,5 @@
 ---
-title: "Notas de la versión de Data Management Gateway | Microsoft Docs"
+title: notas de la aaaRelease de Data Management Gateway | Documentos de Microsoft
 description: "Notas de la versión de Data Management Gateway"
 services: data-factory
 author: nabhishek
@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 06/19/2017
 ms.author: abnarain
 published: True
-ms.openlocfilehash: c052d7e9f757164429ce867201b96305e405dce9
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 3165d7537410a0531e0bb7f7fe584767f9155574
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Notas de la versión de Data Management Gateway
-Uno de los desafíos de la integración de datos moderna es la migración de datos entre la ubicación local y la nube. Data Factory realiza la integración con Data Management Gateway, un agente que se puede instalar de forma local para permitir la migración de datos híbridos.
+Uno de los desafíos de hello para la integración de datos modernas es toomove datos tooand desde toocloud local. Factoría de datos hace que esta integración con Data Management Gateway, que es un agente que puede instalar el movimiento de datos local tooenable híbrida.
 
-En los siguientes artículos se proporciona información detallada sobre Data Management Gateway y cómo utilizarlo:
+Vea Hola siguientes artículos para obtener información detallada acerca de la puerta de enlace de datos de administración y cómo toouse:
 
 *  [Data Management Gateway](data-factory-data-management-gateway.md)
 *  [Movimiento de datos entre una ubicación local y la nube mediante Factoría de datos de Azure](data-factory-move-data-between-onprem-and-cloud.md)
@@ -32,9 +32,9 @@ En los siguientes artículos se proporciona información detallada sobre Data Ma
 ## <a name="current-version-21063477"></a>VERSIÓN ACTUAL (2.10.6347.7)
 
 ### <a name="enhancements-"></a>Mejoras-
-- Puede agregar entradas DNS a la lista de Service Bus permitidos en vez de incluir todas las direcciones IP de Azure en la lista de permitidas del firewall (en caso necesario). Puede encontrar la entrada DNS correspondiente en Azure Portal (Data Factory -> "Crear e implementar" -> "Puertas de enlace" -> "serviceUrls" (en JSON)
+- Puede agregar bus de servicio de toowhitelist de las entradas DNS en lugar de crear listas blancas con todas las direcciones IP de Azure desde el servidor de seguridad (si es necesario). Puede encontrar la entrada DNS correspondiente en Azure Portal (Data Factory -> "Crear e implementar" -> "Puertas de enlace" -> "serviceUrls" (en JSON)
 - El conector HDFS admite ahora certificados públicos autofirmados para poder omitir la validación de SSL.
-- Solucionado: problema con la puerta de enlace sin conexión durante la actualización (debido a la distorsión del reloj)
+- Corregido: Problema con la puerta de enlace sin conexión durante la actualización (vence tooclock sesgo)
 
 
 
@@ -42,12 +42,12 @@ En los siguientes artículos se proporciona información detallada sobre Data Ma
 
 ## <a name="2963132"></a>2.9.6313.2
 ### <a name="enhancements-"></a>Mejoras-
--   Puede agregar entradas DNS a la lista blanca de Service Bus en vez de incluir todas las direcciones IP de Azure en la lista blanca del firewall (en caso necesario). Más detalles aquí.
--   Ahora puede copiar hasta 4,75 TB de datos (tamaño máximo admitido para blob en bloques) en un único blob en bloques, y viceversa (el límite anterior era 195 GB).
+-   Puede agregar las entradas DNS toowhitelist Bus de servicio en lugar de crear listas blancas con todas las direcciones IP de Azure desde el servidor de seguridad (si es necesario). Más detalles aquí.
+-   Ahora puede copiar datos de un blob en bloques solo seguridad too4.75 TB, que es el tamaño de hello max compatible de blob en bloques. (el límite anterior era 195 GB).
 -   Problema solucionado: memoria agotada al descomprimir varios archivos pequeños durante la actividad de copia.
--   Problema solucionado: índice fuera de rango al copiar de Document DB a una instancia de SQL Server local con la característica de idempotencia.
+-   Problema corregido: Índice fuera del problema de intervalo mientras se copiaba del tooan de base de datos de documentos en SQL Server local con la característica de idempotencia.
 -   Problema solucionado: el script de limpieza SQL no funciona en la instancia de SQL Server local desde el Asistente para copia.
--   Problema solucionado: nombre de columna con espacio al final no funciona en la actividad de copia.
+-   Problema corregido: Nombre de la columna con espacio final hello no funciona en la actividad de copia.
 
 ## <a name="28662833"></a>2.8.66283.3
 ### <a name="enhancements-"></a>Mejoras-
@@ -71,58 +71,58 @@ En los siguientes artículos se proporciona información detallada sobre Data Ma
 
 ## <a name="2561641"></a>2.5.6164.1
 ### <a name="enhancements"></a>Mejoras
-- Experiencia de registro de la puerta de enlace mejorada y más sólida: ahora puede realizar el seguimiento del estado del progreso durante el proceso de registro de la puerta de enlace, con lo que la experiencia de registro tiene una mayor capacidad de respuesta.
-- Mejora del proceso de restauración de la puerta de enlace: puede recuperar la puerta de enlace incluso si no tiene el archivo de copia de seguridad de la puerta de enlace con esta actualización. Esto requeriría restablecer credenciales de servicio vinculado en el Portal.
+- Mejorada y más sólida puerta de enlace registro experiencia: ahora puede realizar el seguimiento del estado del progreso durante el proceso de registro de puerta de enlace de hello, lo que permite el registro de hello experimentar mayor capacidad de respuesta.
+- Mejora de la puerta de enlace restaurar proceso - que todavía puede recuperar la puerta de enlace incluso si no tiene archivos de copia de seguridad de puerta de enlace de hello con esta actualización. Esto requeriría tooreset las credenciales de servicio vinculado en el Portal.
 - Corrección de errores.
 
 ## <a name="2461511"></a>2.4.6151.1
 
 ### <a name="whats-new"></a>Novedades
 
-- Ahora puede almacenar localmente las credenciales de origen de datos. Las credenciales se cifran. Las credenciales del origen de datos se pueden recuperar y restaurar usando el archivo de copia de seguridad que se puede exportar desde la puerta de enlace existente, todo de manera local.
+- Ahora puede almacenar localmente las credenciales de origen de datos. Hola credenciales se cifran. las credenciales del origen de datos de Hola se pueden recuperar y restauran con el archivo de copia de seguridad de hello que se pueden exportar desde Hola existente de la puerta de enlace local en todos los.
 
 ### <a name="enhancements-"></a>Mejoras-
 
 - Experiencia de registro de puerta de enlace mejorada y más eficaz.
-- Compatibilidad con detección automática de la configuración de QuoteChar para formato de texto en el Asistente para copia y mejorar la precisión de la detección de formato general.
+- Compatibilidad con detección automática de la configuración de QuoteChar texto sin formato en el Asistente para copiar y mejorar Hola precisión en la detección de formato general.
 
 ## <a name="2361002"></a>2.3.6100.2
 
 - Compatibilidad con la detección automática de firstRowAsHeader y SkipLineCount en el Asistente para copia para archivos de texto en el sistema de archivos local y HDFS.
-- Mejora de la estabilidad de la conexión de red entre la puerta de enlace y Service Bus
+- Mejorar la estabilidad de Hola de conexión de red entre la puerta de enlace y el Bus de servicio
 - Unas pocas correcciones de errores
 
 
 ## <a name="2260721"></a>2.2.6072.1
 
-*  Admite la configuración de proxy HTTP para la puerta de enlace con el Administrador de configuración de Data Management Gateway. Si está configurado, se accede a Blob de Azure, Tabla de Azure, Azure Data Lake y DocumentDB a través del proxy HTTP.
-*  Admite el control de encabezados para TextFormat al copiar datos en Blob de Azure, Azure Data Lake Store, el sistema de archivos local y el HDFS local como origen y destino.
-*  Admite la copia de datos desde blobs en anexos y blobs en páginas junto con los blobs en bloques que ya eran compatibles.
-*  Introduce un nuevo estado de puerta de enlace **Online (Limited)**(En línea [limitado]), lo que indica que se puede utilizar sin problemas la funcionalidad principal de la puerta de enlace, pero la operación interactiva del Asistente para copia.
-*  Mejora la estabilidad del registro de puerta de enlace mediante la clave de registro.
+*  Admite la configuración de proxy HTTP para el uso de la puerta de enlace de Hola Hola puerta de enlace de Configuration Manager. Si está configurado, se accede a Blob de Azure, Tabla de Azure, Azure Data Lake y DocumentDB a través del proxy HTTP.
+*  Encabezado de admite el control de TextFormat cuando se copian datos desde / tooAzure Blob, almacén de Azure Data Lake, sistema de archivos local y HDFS local.
+*  Permite copiar los datos de Blob de anexar y Blob en páginas junto con hello ya admite Blob en bloques.
+*  Presenta un nuevo estado de puerta de enlace **en línea (limitado)**, lo que indica que esa funcionalidad principal de Hola de puerta de enlace de hello funciona excepto la compatibilidad con la operación interactiva de hello para el Asistente para copiar.
+*  Mejora la solidez del saludo del registro de puerta de enlace con la clave de registro.
 
 ## <a name="216040"></a>2.1.6040.
 
-*  El controlador DB2 se incluye ahora en el paquete de instalación de la puerta de enlace. No es necesario instalarlo por separado.
-*  El controlador DB2 ahora admite z/OS y DB2 para i (AS / 400) junto con las plataformas ya admitidas (Linux, Unix y Windows).
+*  Controlador de DB2 se incluye en el paquete de instalación de puerta de enlace de hello ahora. No es necesario tooinstall lo por separado.
+*  Controlador de DB2 ahora es compatible con z/OS y DB2 para (AS / 400) junto con plataformas de hello ya compatibles (Linux, Unix y Windows).
 *  Admite el uso de Azure Cosmos DB como origen o destino para almacenes de datos locales
-*  Admite la copia de datos desde/a blobs de almacenamiento en frío y en caliente junto con la cuenta de almacenamiento general ya admitida.
-*  Le permite conectarse a la instancia local de SQL Server a través de la puerta de enlace con privilegios de inicio de sesión remoto.  
+*  Permite la copia de almacenamiento de blobs de/toocold/activos de datos junto con hello ya admite la cuenta de almacenamiento general.
+*  Le permite tooconnect tooon local SQL Server a través de puerta de enlace con privilegios de inicio de sesión remoto.  
 
 ## <a name="2060131"></a>2.0.6013.1
 
-*  Puede seleccionar el idioma o la referencia cultural que utilizará una puerta de enlace durante la instalación manual.
+*  Puede seleccionar toobe de lenguaje o la referencia cultural de hello usa una puerta de enlace durante la instalación manual.
 
-*  Cuando la puerta de enlace no funciona del modo previsto, puede optar por enviar los registros de la puerta de enlace de los últimos 7 días a Microsoft para que pueda solucionar el problema. Si la puerta de enlace no está conectada al servicio en la nube, puede guardar y archivar los registros de la puerta de enlace.  
+*  Cuando la puerta de enlace no funciona según lo previsto, puede elegir toosend registros de puerta de enlace de últimos siete días tooMicrosoft toofacilitate solución de problemas de emisión de Hola. Si la puerta de enlace no está conectado toohello servicio en la nube, puede elegir toosave y almacene los registros de puerta de enlace.  
 
 *  Mejoras de la interfaz de usuario del Administrador de configuración de puertas de enlace:
 
-    *  Mayor visibilidad del estado de la puerta de enlace en la pestaña Inicio.
+    *  Asegúrese de estado de la puerta de enlace más visible en la pestaña Inicio de Hola.
 
     *  Controles reorganizados y simplificados.
 
-    *  Puede copiar datos desde un almacenamiento mediante la [herramienta de vista previa de código abierto](data-factory-copy-data-wizard-tutorial.md). Para obtener más información general sobre esta característica consulte [Copias almacenadas provisionalmente](data-factory-copy-activity-performance.md#staged-copy) .
-*  Puede utilizar Data Management Gateway para transferir los datos directamente de la base de datos de SQL Server local a Aprendizaje automático de Azure.
+    *  Puede copiar los datos de un almacenamiento con hello [herramienta de vista previa de la copia sin código](data-factory-copy-data-wizard-tutorial.md). Para obtener más información general sobre esta característica consulte [Copias almacenadas provisionalmente](data-factory-copy-activity-performance.md#staged-copy) .
+*  Puede utilizar Data Management Gateway tooingress directamente los datos de una base de datos de SQL Server local en aprendizaje automático de Azure.
 
 *  Mejoras en el rendimiento
 
@@ -134,9 +134,9 @@ En los siguientes artículos se proporciona información detallada sobre Data Ma
 
 ## <a name="11159181"></a>1.11.5918.1
 
-*  El tamaño máximo del registro de eventos de puerta de enlace ha aumentado de 1 MB a 40 MB.
+*  Se ha aumentado el tamaño máximo del registro de eventos de puerta de enlace de Hola de 1 MB de too40 MB.
 
-*  En caso de que se requiera un reinicio durante la actualización automática de la puerta de enlace, se muestra un cuadro de diálogo de advertencia. Puede elegir reiniciar en ese mismo momento o más adelante.
+*  En caso de que se requiera un reinicio durante la actualización automática de la puerta de enlace, se muestra un cuadro de diálogo de advertencia. Puede elegir toorestart derecha, a continuación, o una versión posterior.
 
 *  En caso de error en la actualización automática, el instalador de puerta de enlace volverá a intentar esta operación 3 veces al máximo.
 
@@ -156,8 +156,8 @@ En los siguientes artículos se proporciona información detallada sobre Data Ma
 
 *  Funcionalidad de actualización automática sin intervención del usuario
 *  Icono de bandeja de nuevo con indicadores de estado de la puerta de enlace
-*  Capacidad para "Actualizar ahora" desde el cliente
-*  Capacidad para establecer la hora de programación de las actualizaciones
+*  Capacidad demasiado "Actualizar ahora" desde el cliente de Hola
+*  Hora de programación de actualización de capacidad tooset
 *  Script de PowerShell para activar y desactivar la actualización automática
 *  Compatibilidad con formato JSON  
 *  Mejoras en el rendimiento
@@ -237,12 +237,12 @@ En los siguientes artículos se proporciona información detallada sobre Data Ma
 ### <a name="1454921"></a>1.4.5492.1
 
 *  Binario unificado que admite los servicios Factoría de datos de Microsoft Azure y Office 365 Power BI
-*  Restricción de la interfaz de usuario de configuración y del proceso de registro
+*  Refinar el proceso de interfaz de usuario de configuración y el registro de hello
 *  Factoría de datos de Azure: compatibilidad de entrada y salida de Azure con origen de datos SQL Server
 
 ### <a name="1253031"></a>1.2.5303.1
 
-*  Corrección del problema del tiempo de espera para admitir más conexiones de orígenes de datos que requieren mucho tiempo.
+*  Corregir toosupport de problema de tiempo de espera más conexiones que consumen muchos recursos de orígenes de datos.
 
 ### <a name="1155268"></a>1.1.5526.8
 

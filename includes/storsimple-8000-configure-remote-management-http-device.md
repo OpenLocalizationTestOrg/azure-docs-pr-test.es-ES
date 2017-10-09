@@ -1,21 +1,21 @@
 
-#### <a name="to-configure-remote-management-on-cloud-appliance"></a>Para configurar la administración remota en el dispositivo de nube, siga estos pasos:
+#### <a name="tooconfigure-remote-management-on-cloud-appliance"></a>administración remota de tooconfigure en el dispositivo en la nube
 
-1. En el servicio StorSimple Device Manager, haga clic en **Dispositivos**. Seleccione el dispositivo de nube y haga clic en él en la lista de dispositivos conectados al servicio.
+1. En el servicio StorSimple Device Manager, haga clic en **Dispositivos**. Seleccione y haga clic en el dispositivo en la nube de lista Hola de dispositivos conectados toohello servicio.
     ![Selección de dispositivo de nube de StorSimple](./media/storsimple-8000-configure-remote-management-http-device/sca-remote-manage1.png)
 
-2. Vaya a **Configuración > Seguridad** para abrir la hoja **Configuración de seguridad**.
+2. Vaya demasiado**configuración > seguridad** tooopen hello **configuración de seguridad** hoja.
 
      ![Configuración de seguridad de StorSimple](./media/storsimple-8000-configure-remote-management-http-device/sca-remote-manage2.png)
 
-3. Vaya a la sección **Administración remota**. Haga clic en el cuadro **Administración remota**.
+3. Vaya toohello **administración remota** sección. Haga clic en el cuadro **Administración remota**.
      ![Administración remota de StorSimple](./media/storsimple-8000-configure-remote-management-http-device/sca-remote-manage3.png)
 
-4. En la hoja **Administración remota**:
+4. Hola **administración remota** hoja:
 
     1. Asegúrese de que la opción **Enable remote administration** (Habilitar la administración remota) esté habilitada.
-    2. El valor predeterminado es conectarse a través de HTTPS. Puede elegir conectarse mediante HTTP. La conexión a través de HTTP solo es aceptable en redes de confianza. Asegúrese de que HTTP esté habilitado.
-    3. En la barra de comandos de la parte superior de la hoja, haga clic en **... Más** y luego haga clic en **Descargar certificado** para descargar un certificado de administración remota. Puede especificar la ubicación en la que quiere guardar este archivo. Este certificado debe estar instalado en la máquina cliente o host que usa para conectarse al dispositivo de nube.
+    2. valor predeterminado de Hello es tooconnect a través de HTTPS. Puede elegir tooconnect mediante HTTP. La conexión a través de HTTP solo es aceptable en redes de confianza. Asegúrese de que HTTP esté habilitado.
+    3. En la barra de comandos de hello en parte superior de Hola de hoja, haga clic en **... Más** y, a continuación, haga clic en **Descargar certificado** toodownload un certificado de administración remota. Puede especificar una ubicación en que toosave este archivo. Este certificado debe estar instalado en el equipo cliente o host de Hola que utilice tooconnect toohello nube dispositivo.
 
         ![Hoja Administración remota](./media/storsimple-8000-configure-remote-management-http-device/sca-remote-manage4.png)
-5. Haga clic en **Guardar** y, cuando se le pida, confirme los cambios.
+5. Haga clic en **guardar** y cuando se le pida, confirme los cambios de Hola.

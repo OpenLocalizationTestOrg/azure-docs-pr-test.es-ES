@@ -1,8 +1,8 @@
-1. En la página **Configuración** de la red virtual, navegue hasta **Servidores DNS** y haga clic para abrir la hoja **Servidores DNS**.
+1. En hello **configuración** página de la red virtual, navegue demasiado**servidores DNS** y haga clic en hello tooopen **servidores DNS** hoja.
 
     ![Agregar servidor DNS](./media/vpn-gateway-add-dns-rm-portal/add_dns_server.png "Agregar servidor DNS")
 
   - **Servidores DNS:** seleccione **Personalizado**.
-  - **Agregar servidor DNS:** escriba la dirección IP del servidor DNS que desea usar para la resolución de nombres.
+  - **Agregar el servidor DNS:** escriba Hola dirección IP del servidor DNS de Hola que quiere toouse de resolución de nombres.
 
-2. Cuando acabe de agregar servidores DNS, haga clic en **Guardar** en la parte superior de la hoja.
+2. Cuando haya terminado de agregar servidores DNS, haga clic en **guardar** princip Hola de hoja de Hola.

@@ -1,6 +1,6 @@
 ---
-title: "Importación de datos en Machine Learning Studio | Microsoft Docs"
-description: "Cómo importar los datos en Estudio de aprendizaje automático de Azure desde varios orígenes de datos. Obtenga información sobre qué tipos de datos y formatos de datos son compatibles."
+title: "datos de aaaImport en estudio de aprendizaje automático | Documentos de Microsoft"
+description: "¿Cómo tooimport los datos en estudio de aprendizaje automático de Azure desde varios orígenes de datos. Obtenga información sobre qué tipos de datos y formatos de datos son compatibles."
 keywords: "importar datos, formato de datos, tipos de datos, orígenes de datos, datos de entrenamiento"
 services: machine-learning
 documentationcenter: 
@@ -15,46 +15,46 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: garye;bradsev
-ms.openlocfilehash: b92b480e62f4ce4f4836dc5d0f6afbe80c6b664a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 830dcdde9d43809900c520a41d6d94a65731ca3c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-from-various-data-sources"></a>Importación de datos de entrenamiento en Estudio de aprendizaje automático de Azure desde varios orígenes de datos
-Para usar sus propios datos en Estudio de aprendizaje automático para desarrollar y entrenar una solución de análisis predictivo, puede: 
+toouse sus propios datos en estudio de aprendizaje automático toodevelop y entrenar una solución de análisis predictivos, puede: 
 
-* Cargar datos de un **archivo local** con antelación desde el disco duro para crear un módulo de conjunto de datos en el área de trabajo.
-* Acceder a los datos desde cualquiera de los **orígenes de datos** en línea mientras su experimento se ejecuta con el módulo [Importar datos][import-data]. 
+* cargar datos desde una **archivo local** de tiempo de la unidad de disco duro toocreate un módulo de conjunto de datos en el área de trabajo
+* acceso a datos de uno de varios **orígenes de datos en línea** mientras está ejecutando el experimento usando hello [importar datos] [ import-data] módulo 
 * Usar datos de otro **experimento** de Azure Machine Learning guardado como un conjunto de datos.
 * Usar los datos de instancia local de **SQL Server Database**.
 
-Cada una de estas opciones se describen en uno de los temas del menú inferior. En estos temas se muestra cómo importar datos desde estos diversos orígenes de datos para usarlos en Machine Learning Studio. 
+Cada una de estas opciones se describe en uno de los temas de hello en el menú de Hola a continuación. Estos temas muestra cómo toouse en estudio de aprendizaje automático de los orígenes de datos de tooimport de estos datos distintos. 
 
 [!INCLUDE [import-data-into-aml-studio-selector](../../includes/machine-learning-import-data-into-aml-studio.md)]
 
 > [!NOTE]
-> Existe una gran variedad de conjuntos de datos de ejemplo disponibles en Machine Learning Studio que puede usar como datos de aprendizaje. Para obtener información al respecto, consulte [Uso de los conjuntos de datos de ejemplo en Estudio de aprendizaje automático de Azure](machine-learning-use-sample-datasets.md).
+> Existe una gran variedad de conjuntos de datos de ejemplo disponibles en Machine Learning Studio que puede usar como datos de aprendizaje. Para obtener información al respecto, consulte [usar conjuntos de datos de ejemplo de Hola en estudio de aprendizaje automático de Azure](machine-learning-use-sample-datasets.md)).
 > 
 > 
 
-En este tema de introducción también se explica cómo obtener datos listos para su uso en Machine Learning Studio de aprendizaje automático y se describe qué tipos y formatos de datos son compatibles. 
+Este tema de Introducción también describe cómo tooget datos listos para usar en estudio de aprendizaje automático y se admiten los tipos de datos y formatos de datos. 
 
 > [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 > 
 > 
 
 ## <a name="get-data-ready-for-use-in-azure-machine-learning-studio"></a>Preparación de los datos para usarlos en Estudio de aprendizaje automático de Azure
-Estudio de aprendizaje automático está diseñado para trabajar con datos rectangulares o tabulares, como datos de texto delimitados o datos estructurados de una base de datos, aunque en algunas circunstancias, es posible usar datos no rectangulares.
+Estudio de aprendizaje automático es toowork diseñada con datos rectangulares o tabulares, como datos de texto que se delimitan o estructura de una base de datos, aunque en algunas circunstancias se pueden usar datos no rectangulares.
 
-Se recomienda que los datos estén relativamente limpios. Es decir, querrá ocuparse de problemas como las cadenas sin comillas antes de cargar los datos en su experimento.
+Se recomienda que los datos estén relativamente limpios. Es decir, le interesará tootake atención problemas tales como las cadenas sin comillas antes de cargar datos de hello en el experimento.
 
-Sin embargo, hay módulos disponibles en Estudio de aprendizaje automáticos que le permitirán manipular levemente los datos en el experimento. Dependiendo de los algoritmos de aprendizaje automático que usará, es posible que deba decidir cómo controlar los problemas estructurales de los datos, como valores que faltan y datos esparcidos y existen módulos que pueden ayudar en esto. Observe la sección **Transformación de datos** de la paleta de módulos para los módulos que realizan estas funciones.
+Sin embargo, hay módulos disponibles en Estudio de aprendizaje automáticos que le permitirán manipular levemente los datos en el experimento. Dependiendo de los algoritmos de aprendizaje automático de Hola que vamos a usar, puede que necesite toodecide cómo podrá controlar problemas estructurales de datos como los valores que faltan y datos dispersos, y hay módulos que pueden ayudar a que. Buscar en hello **transformación de datos** sección de la paleta de módulo de Hola para módulos que llevan a cabo estas funciones.
 
-En cualquier momento del experimento puede ver o descargar los datos que genera un módulo con un clic en el puerto de salida. Dependiendo del módulo, es posible que haya distintas opciones de descarga disponibles, o bien que se puedan visualizar los datos dentro del explorador web en Machine Learning Studio.
+Puede ver o descargar datos Hola generado por un módulo haciendo clic en el puerto de salida de hello en cualquier momento en el experimento. Función de módulo de hello, puede haber descarga diferentes opciones disponibles o es posible que los datos de hello toovisualize pueda dentro del explorador web en estudio de aprendizaje automático.
 
 ## <a name="data-formats-and-data-types-supported"></a>Tipos y formatos de datos admitidos
-Puede importar diversos tipos de datos al experimento, dependiendo del mecanismo que usa para importar los datos y de dónde provienen estos:
+Puede importar un número de tipos de datos en el experimento, dependiendo de qué mecanismo use datos tooimport y donde procede de:
 
 * Texto sin formato (.txt)
 * Valores separados por coma (CSV) con un encabezado (.csv) o sin encabezado (.nh.csv)
@@ -64,18 +64,18 @@ Puede importar diversos tipos de datos al experimento, dependiendo del mecanismo
 * Tabla de Hive
 * Tabla de Base de datos SQL
 * Valores de OData
-* Datos SVMLight (.svmlight) (consulte la [definición de SVMLight](http://svmlight.joachims.org/) para obtener más información sobre el formato)
-* Datos de formato de archivo con relación de atributo (ARFF) (.arff) (consulte la [definición de ARFF](http://weka.wikispaces.com/ARFF) si desea ver información sobre el formato)
+* Datos de SVMLight (.svmlight) (vea hello [SVMLight definición](http://svmlight.joachims.org/) para obtener información de formato)
+* Atributo de datos de formato de archivo de relación (ARFF) (.arff) (vea hello [definición ARFF](http://weka.wikispaces.com/ARFF) para obtener información de formato)
 * Archivo ZIP (.zip)
 * Archivo de área de trabajo u objeto de R (.RData)
 
-Si importa datos en un formato distinto de ARFF que incluyan metadatos, Estudio de aprendizaje automático usa estos metadatos para definir el tipo de datos y encabezado de cada columna.
+Si importa los datos en un formato como ARFF que incluya los metadatos, estudio de aprendizaje automático utiliza este encabezado de metadatos toodefine Hola y el tipo de datos de cada columna.
 
-Si importa datos en formato TSV o CSV que no incluyan estos metadatos, Estudio de aprendizaje automático infiere el tipo de datos de cada columna tomando una muestra de los mismos. Si los datos no tienen encabezados de columna, Estudio de aprendizaje automático proporciona nombres predeterminados.
+Si importa los datos como formato TSV o CSV que no incluya estos metadatos, estudio de aprendizaje automático deduce el tipo de datos de Hola para cada columna mediante el muestreo de datos de Hola. Si los datos de hello también no tienen encabezados de columna, estudio de aprendizaje automático proporciona nombres predeterminados.
 
-Puede especificar o cambiar explícitamente los encabezados y los tipos de datos de las columnas usando el módulo [Editar metadatos][edit-metadata].
+Puede especificar explícitamente o cambiar Hola encabezados y tipos de datos para las columnas con hello [editar metadatos][edit-metadata].
 
-Estudio de aprendizaje automático reconoce los siguientes **tipos de datos** :
+siguiente Hello **tipos de datos** reconocidos por estudio de aprendizaje automático:
 
 * String
 * Entero
@@ -84,12 +84,12 @@ Estudio de aprendizaje automático reconoce los siguientes **tipos de datos** :
 * DateTime
 * TimeSpan
 
-Machine Learning Studio usa un tipo de datos interno llamado ***Tabla de datos*** para pasar datos entre los módulos. Puede convertir explícitamente sus datos en formato de tabla de datos con el módulo [Convertir al conjunto de datos][convert-to-dataset].
+Estudio de aprendizaje automático utiliza un tipo de datos interno denominado ***tabla de datos*** datos toopass entre módulos. Puede convertir explícitamente los datos en formato de tabla de datos mediante hello [convertir tooDataset] [ convert-to-dataset] módulo.
 
-Todo módulo que acepta formatos distintos de Tabla de datos convertirá los datos a Tabla de datos de manera silenciosa antes de pasarlos al módulo siguiente.
+Cualquier módulo que acepta formatos distintos de la tabla de datos, Hola datos tooData tabla se convertirá en modo silencioso antes de pasarlo toohello siguiente módulo.
 
 En caso de ser necesario, puede convertir el formato Tabla de datos de vuelta al formato CSV, TSV, ARFF o SVMLight mediante el uso de otros módulos de conversión.
-Consulte la sección **Conversiones de formatos de datos** de la paleta de módulos para ver los módulos que realizan estas funciones.
+Buscar en hello **conversiones de formato de datos** sección de la paleta de módulo de Hola para módulos que llevan a cabo estas funciones.
 
 <!-- Module References -->
 [convert-to-dataset]: https://msdn.microsoft.com/library/azure/72bf58e0-fc87-4bb1-9704-f1805003b975/

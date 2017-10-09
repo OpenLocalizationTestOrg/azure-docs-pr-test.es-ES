@@ -1,6 +1,6 @@
 ---
-title: "Integración del SDK web de Azure Mobile Engagement | Microsoft Docs"
-description: "Actualizaciones y procedimientos más recientes para el SDK web de Azure Mobile Engagement"
+title: "integración con el SDK de Mobile Engagement Web aaaAzure | Documentos de Microsoft"
+description: "Hola actualizaciones más recientes y procedimientos para hello Web SDK de Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,11 +14,11 @@ ms.devlang: js
 ms.topic: article
 ms.date: 02/29/2016
 ms.author: piyushjo
-ms.openlocfilehash: 7d8eaa180e277741a583522ee62d68f5247b92bb
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 99613b68b615bec4ddcfcc8e4e0133ce9d887bad
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="integrate-azure-mobile-engagement-in-a-web-application"></a>Integración de Azure Mobile Engagement en una aplicación web
 > [!div class="op_single_selector"]
@@ -29,21 +29,21 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-En este procedimiento se describe la manera más sencilla de activar las funciones de análisis y supervisión de Azure Mobile Engagement en su aplicación web.
+procedimientos de Hello en este artículo describen los análisis de Hola de manera más sencilla de hello tooactivate y las funciones de Azure Mobile Engagement en la aplicación web de supervisión.
 
-Siga los pasos para activar los informes de registro necesarios para calcular todas las estadísticas acerca de los usuarios, las sesiones, las actividades, los bloqueos y los aspectos técnicos. Para las estadísticas que dependen de la aplicación, tales como eventos, errores y trabajos, debe activar los informes de registro manualmente mediante la API de Azure Mobile Engagement. Para más información, aprenda a [usar la API de etiquetado de Mobile Engagement en una aplicación web](mobile-engagement-web-use-engagement-api.md).
+Siga Hola pasos tooactivate Hola informes de registro que son necesario toocompute todas las estadísticas sobre los usuarios, sesiones, actividades, se bloquea y technicals. Para las estadísticas depende de la aplicación, como eventos y errores, trabajos, deberá activar manualmente los informes del registro mediante el uso de API de Azure Mobile Engagement Hola. Para obtener más información, consulte [cómo toouse Hola avanzada etiquetado API en una aplicación web de Mobile Engagement](mobile-engagement-web-use-engagement-api.md).
 
 ## <a name="introduction"></a>Introducción
-[Descargue el SDK web de Azure Mobile Engagement](http://aka.ms/P7b453).
-El SDK web de Mobile Engagement se distribuye como un único archivo de JavaScript llamado azure-engagement.js, que se debe incluir en cada página del sitio o aplicación web.
+[Descargar SDK de Azure Mobile Engagement Web hello](http://aka.ms/P7b453).
+Hola Web de interacción móvil SDK se incluye como un único archivo de JavaScript, azure engagement.js, que tiene tooinclude en cada página de su sitio o aplicación web.
 
 > [!IMPORTANT]
-> Antes de ejecutar este script, debe ejecutar un fragmento de código o script que escriba para configurar Mobile Engagement para su aplicación.
+> Antes de ejecutar este script, debe ejecutar un script o que escriba tooconfigure Mobile Engagement para la aplicación de fragmento de código.
 > 
 > 
 
 ## <a name="browser-compatibility"></a>Compatibilidad con el explorador
-El SDK web de Mobile Engagement usa codificación y descodificación JSON nativas, además de solicitudes AJAX entre dominios (basadas en la especificación CORS del W3C). Es compatible con los siguientes exploradores:
+Hola SDK de Mobile Engagement Web usa JSON nativo de codificación y descodificación, además de las solicitudes de AJAX de dominio toocross (depender de la especificación de W3C CORS Hola). Es compatible con hello siguientes exploradores:
 
 * Microsoft Edge 12+
 * Internet Explorer 10+
@@ -53,7 +53,7 @@ El SDK web de Mobile Engagement usa codificación y descodificación JSON nativa
 * Opera 12+
 
 ## <a name="configure-mobile-engagement"></a>Configuración de Mobile Engagement
-Escriba un script que cree un objeto JavaScript `azureEngagement` global como en el siguiente ejemplo. Como el sitio puede tener varias páginas, en el ejemplo se da por hecho que el script se incluye en cada página. En el ejemplo, el objeto JavaScript se llama `azure-engagement-conf.js`.
+Escribir un script que crea global `azureEngagement` objeto de JavaScript, como en el siguiente ejemplo de Hola. Como el sitio puede tener varias páginas, en el ejemplo se da por hecho que el script se incluye en cada página. En este ejemplo, se denomina objeto de JavaScript de hello `azure-engagement-conf.js`.
 
     window.azureEngagement = {
       connectionString: 'Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}',
@@ -61,7 +61,7 @@ Escriba un script que cree un objeto JavaScript `azureEngagement` global como en
       appVersionCode: 1
     };
 
-El valor de `connectionString` para la aplicación se muestra en el Portal de Azure.
+Hola `connectionString` valor de la aplicación se muestra en Hola portal de Azure.
 
 > [!NOTE]
 > `appVersionName` y `appVersionCode` son opcionales. Sin embargo, se recomienda configurarlos para que el análisis pueda procesar la información acerca de la versión.
@@ -69,7 +69,7 @@ El valor de `connectionString` para la aplicación se muestra en el Portal de Az
 > 
 
 ## <a name="include-mobile-engagement-scripts-in-your-pages"></a>Incorporación de scripts de Mobile Engagement en las páginas
-Agregue scripts de Mobile Engagement a las páginas de una de las siguientes maneras:
+Agregar páginas de Mobile Engagement scripts tooyour de hello siguientes maneras:
 
     <head>
       ...
@@ -88,9 +88,9 @@ O bien:
     </body>
 
 ## <a name="alias"></a>Alias
-Una vez cargado el script del SDK web de Mobile Engagement, crea el alias **engagement** para obtener acceso a las API del SDK. Este alias no se puede usar para definir la configuración del SDK. El alias se usa como referencia en esta documentación.
+Después de carga hello secuencia de comandos de SDK de Mobile Engagement Web, crea hello **interacción** alias tooaccess Hola API del SDK. No se puede usar esta configuración de SDK de alias toodefine Hola. El alias se usa como referencia en esta documentación.
 
-Tenga en cuenta que si el alias predeterminado entra en conflicto con otra variable global de la página, puede volver a definirlo en la configuración antes de cargar el SDK web de Mobile Engagement, de la siguiente manera:
+Tenga en cuenta que si alias predeterminado de hello entra en conflicto con otra variable global de la página, puede volver a definir, en configuración de hello como se indica a continuación antes de cargarlos Hola SDK de Mobile Engagement Web:
 
     window.azureEngagement = {
       connectionString: 'Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}',
@@ -105,9 +105,9 @@ Los informes básicos de Mobile Engagement incluyen estadísticas de nivel de se
 ### <a name="session-tracking"></a>Seguimiento de sesión
 Las sesiones de Mobile Engagement se dividen en secuencias de actividades que se identifican por el nombre.
 
-En un sitio web clásico, se recomienda declarar una actividad diferente en cada página del sitio. Para un sitio web o aplicación web en el que la página actual nunca cambia, puede realizar un seguimiento de las actividades en una escala menor, por ejemplo, dentro de la página.
+En un sitio web clásico, se recomienda declarar una actividad diferente en cada página del sitio. Para un sitio Web o aplicación web en qué Hola página actual nunca cambia, conviene tootrack actividades de hello en una escala más pequeña, como en la página de Hola.
 
-En cualquier caso, para iniciar o cambiar la actividad del usuario actual, llame a la función `engagement.agent.startActivity` . Por ejemplo:
+Ya sea cierto, toostart o cambiar Hola actividad del usuario actual, llamada hello `engagement.agent.startActivity` función. Por ejemplo:
 
     <body onload="yourOnload()">
 
@@ -118,28 +118,28 @@ En cualquier caso, para iniciar o cambiar la actividad del usuario actual, llame
       engagement.agent.startActivity('welcome');
     };
 
-El servidor de Mobile Engagement finaliza una sesión abierta 3 minutos después de que se cierre la página de la aplicación.
+servidor de Mobile Engagement Hola termina automáticamente una sesión abierta en tres minutos después de cerrar la página de aplicación Hola.
 
-También puede finalizar una sesión manualmente mediante una llamada a `engagement.agent.endActivity`. Esto establece la actividad del usuario actual en ‘Idle’ (inactiva).  La sesión finalizará 10 segundos después, a menos que una nueva llamada a `engagement.agent.startActivity` reanude la sesión.
+También puede finalizar una sesión manualmente mediante una llamada a `engagement.agent.endActivity`. Esto establece hello too'Idle de actividad de usuario actual.'  sesión de Hello finalizará 10 segundos más tarde, a menos que un nuevo llamar demasiado`engagement.agent.startActivity` se reanuda la sesión de Hola.
 
-Puede configurar el retraso de 10 segundos en el objeto engagement global, de la siguiente manera:
+Puede configurar retraso de 10 segundos de hello en objetos de interacción global hello, como sigue:
 
     engagement.sessionTimeout = 2000; // 2 seconds
     // or
-    engagement.sessionTimeout = 0; // end the session as soon as endActivity is called
+    engagement.sessionTimeout = 0; // end hello session as soon as endActivity is called
 
 > [!NOTE]
-> No puede usar `engagement.agent.endActivity` en la devolución de llamada `onunload` porque no se pueden realizar llamadas AJAX en esta etapa.
+> No se puede utilizar `engagement.agent.endActivity` en hello `onunload` devolución de llamada porque no se puede realizar llamadas de AJAX en esta fase.
 > 
 > 
 
 ## <a name="advanced-reporting"></a>Informes avanzados
-De manera opcional, si desea notificar eventos, errores y trabajos específicos de la aplicación, deberá usar la API de Mobile Engagement. Se obtiene acceso a la API de Mobile Engagement mediante el objeto `engagement.agent` .
+Opcionalmente, si desea que los trabajos, los errores y eventos específicos de la aplicación de tooreport, deberá toouse Hola API de Mobile Engagement. Tiene acceso a API de Mobile Engagement hello mediante hello `engagement.agent` objeto.
 
-Puede acceder a todas las funcionalidades avanzadas de Mobile Engagement en la API de Mobile Engagement. La API se describe con más detalle en el artículo sobre [cómo usar la API de etiquetado avanzada de Mobile Engagement en una aplicación web](mobile-engagement-web-use-engagement-api.md).
+Puede tener acceso a toda Hola capacidades en Mobile Engagement en hello Mobile Engagement API avanzadas. Hola API se detalla en el artículo hello [cómo toouse Hola avanzada etiquetado API en una aplicación web de Mobile Engagement](mobile-engagement-web-use-engagement-api.md).
 
-## <a name="customize-the-urls-used-for-ajax-calls"></a>Direcciones URL personalizadas para las llamadas AJAX
-Puede personalizar las direcciones URL que usa el SDK web de Mobile Engagement. Por ejemplo, para volver a definir la dirección URL de registro (punto de conexión del SDK para el registro), puede invalidar la configuración de la siguiente manera:
+## <a name="customize-hello-urls-used-for-ajax-calls"></a>Personalizar direcciones URL de hello usadas para las llamadas AJAX
+Puede personalizar las direcciones URL que hello que usa el SDK de Mobile Engagement Web. Por ejemplo, tooredefine Hola dirección URL de registro (Hola SDK punto de conexión para el registro), se puede invalidar la configuración de hello similar a éste:
 
     window.azureEngagement = {
       ...
@@ -151,7 +151,7 @@ Puede personalizar las direcciones URL que usa el SDK web de Mobile Engagement. 
       }
     };
 
-Si las funciones de la dirección URL devuelven una cadena que empieza por `/`, `//`, `http://` o `https://`, no se usa el esquema predeterminado. De forma predeterminada, para esas direcciones URL se usa el esquema `https://` . Si quiere personalizar el esquema predeterminado, invalide la configuración de la siguiente manera:
+Si las funciones de dirección URL devuelven una cadena que comienza con `/`, `//`, `http://`, o `https://`, no se utiliza el esquema predeterminado de Hola. De forma predeterminada, Hola `https://` esquema se utiliza para las direcciones URL. Si desea que el esquema predeterminado de toocustomize hello, invalidar la configuración de hello, similar al siguiente:
 
     window.azureEngagement = {
       ...

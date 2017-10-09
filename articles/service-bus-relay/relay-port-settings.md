@@ -1,5 +1,5 @@
 ---
-title: "Configuración de puerto de Azure Relay | Microsoft Docs"
+title: "configuración de puertos de retransmisión aaaAzure | Documentos de Microsoft"
 description: "Obtenga información sobre los valores de puerto de Azure Relay."
 services: service-bus-relay
 documentationcenter: na
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/03/2017
 ms.author: sethm
-ms.openlocfilehash: 5906495c565dad583e74a43b2e5eed57e0c68df1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e66785f786ee241c974d250f9ec29dfcc1fdc3fe
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-relay-port-settings"></a>Configuración de puerto de Relay de Azure
 
-En la tabla siguiente se describe la configuración que se requiere para los valores de los puerto de Azure Relay.
+Hello tabla siguiente describe Hola de configuración necesarios para los valores de puerto para la retransmisión de Azure.
 
 ## <a name="hybrid-connections"></a>conexiones híbridas
-Las conexiones híbridas emplean protocolos WebSocket como mecanismo de transporte subyacente, utilizando solo **HTTPS**. 
+Las conexiones híbridas utiliza WebSockets como Hola subyacente mecanismo de transporte, que utiliza **HTTPS** solo. 
 
 ## <a name="wcf-relays"></a>Relés de WCF
   
@@ -49,6 +49,6 @@ Las conexiones híbridas emplean protocolos WebSocket como mecanismo de transpor
 |[Clase WS2007HttpRelayBinding](/dotnet/api/microsoft.servicebus.ws2007httprelaybinding) (servicio)|Es posible usar el|9351/HTTP|
 
 ## <a name="next-steps"></a>Pasos siguientes
-Para obtener más información sobre Azure Relay, visite estos vínculos:
+toolearn más información acerca de la retransmisión de Azure, visite estos vínculos:
 * [¿Qué es Relay de Azure?](relay-what-is-it.md)
 * [Preguntas más frecuentes acerca de Relay](relay-faq.md)

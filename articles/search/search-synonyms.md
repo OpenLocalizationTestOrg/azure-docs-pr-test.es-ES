@@ -1,6 +1,6 @@
 ---
 pageTitle: Synonyms in Azure Search (preview) | Microsoft Docs
-description: "La documentación preliminar de la característica Sinónimos (versión preliminar), expuesta en la API de REST de Azure Search."
+description: "Documentación preliminar de característica de sinónimos (vista previa) de hello, expuesta en hello API de REST de búsqueda de Azure."
 services: search
 documentationCenter: 
 authors: mhko
@@ -13,43 +13,43 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 07/07/2016
 ms.author: nateko
-ms.openlocfilehash: 739a0ad77c68ea74ec25bc80c7539ac8b3f18201
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2695139d2b298fa2e7c1814715fdf96729f594ce
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="synonyms-in-azure-search-preview"></a>Sinónimos en Azure Search (versión preliminar)
 
-Los sinónimos de los motores de búsqueda asocian términos equivalentes que expanden implícitamente el ámbito de una consulta, sin que el usuario tenga que proporcionar realmente el término. Por ejemplo, con el término "perro" y las asociaciones de sinónimos de "canino" y "cachorro", los documentos que contengan los términos "perro", "canino" o "cachorro" estarán dentro del ámbito de la consulta.
+Sinónimos en los motores de búsqueda asocian términos equivalentes que se expanden implícitamente ámbito Hola de una consulta, sin que el usuario de hello tener tooactually proporcionar término Hola. Por ejemplo, hello determinado término "dog" y las asociaciones de sinónimos de "perro" y "cachorro", todos los documentos que contengan "dog", "perro" o "cachorro" entrarán en ámbito de Hola de consulta de Hola.
 
-En Azure Search, la expansión de sinónimos se realiza en el momento de la consulta. Puede agregar asignaciones de sinónimos a un servicio sin que se interrumpan las operaciones existentes. Puede agregar una propiedad **synonymMaps** a una definición de campo sin tener que volver a crear un índice. Para más información, vea [Actualización de índice](https://docs.microsoft.com/rest/api/searchservice/update-index).
+En Azure Search, la expansión de sinónimos se realiza en el momento de la consulta. Puede agregar sinónimo mapas tooa servicio con ninguna operación de tooexisting de interrupción. Puede agregar un **synonymMaps** definición de campo de propiedad tooa sin necesidad de índice de hello toorebuild. Para más información, vea [Actualización de índice](https://docs.microsoft.com/rest/api/searchservice/update-index).
 
 ## <a name="feature-availability"></a>Disponibilidad de características
 
-La característica Sinónimos está actualmente en la versión preliminar y solo es compatible con la versión de la API de versión preliminar más reciente (api-version=2016-09-01-Preview). En este momento no es compatible con Azure Portal. Puesto que la versión de la API se especifica en la solicitud, es posible combinar API de versión preliminar y disponibles en general en la misma aplicación. Sin embargo, la versión preliminar de las API no se someten a las condiciones del Acuerdo de Nivel de Servicio y sus características pueden cambiar, por lo que no se recomienda su uso en aplicaciones de producción.
+sinónimos de Hello característica está actualmente en vista previa y solo es compatible en Hola versión de api de vista previa más reciente (api-version = 2016-09-01-versión preliminar). En este momento no es compatible con Azure Portal. Porque se especifica la versión de API de hello en solicitud de hello, es posible toocombine disponible con carácter general (GA) y API de vista previa en hello misma aplicación. Sin embargo, la versión preliminar de las API no se someten a las condiciones del Acuerdo de Nivel de Servicio y sus características pueden cambiar, por lo que no se recomienda su uso en aplicaciones de producción.
 
-## <a name="how-to-use-synonyms-in-azure-search"></a>Cómo utilizar sinónimos en Azure Search
+## <a name="how-toouse-synonyms-in-azure-search"></a>Cómo buscar sinónimos toouse en Azure
 
-En Azure Search, la compatibilidad de los sinónimos se basa en las asignaciones de sinónimos que defina y cargue en el servicio. Estas asignaciones constituyen un recurso independiente (como índices u orígenes de datos), y cualquier campo buscable puede usarlas en cualquier índice en el servicio de búsqueda.
+En búsqueda de Azure, compatibilidad con sinónimos se basa en los mapas de sinónimo que define y cargar el servicio tooyour. Estas asignaciones constituyen un recurso independiente (como índices u orígenes de datos), y cualquier campo buscable puede usarlas en cualquier índice en el servicio de búsqueda.
 
-Los índices y asignaciones de sinónimos se mantienen de forma independiente. Una vez que defina una asignación de sinónimos y la cargue en el servicio, podrá habilitar la característica Sinónimos en un campo agregando una nueva propiedad denominada **synonymMaps** en la definición del campo. La creación, carga y eliminación de una asignación de sinónimos es siempre una operación de documento completo, lo que significa que no puede crear, actualizar o eliminar partes de la asignación de sinónimos de forma incremental. La actualización de incluso una entrada única requiere que se vuelva a cargar.
+Los índices y asignaciones de sinónimos se mantienen de forma independiente. Una vez que se define un mapa de sinónimo y cargarlo tooyour servicio, puede habilitar característica de sinónimo de hello en un campo mediante la adición de una nueva propiedad llamada **synonymMaps** en la definición de campo de Hola. Crear, actualizar y eliminar que una asignación de sinónimo siempre es una operación de documento de enteros, lo que significa que no se puede crear, actualización o eliminen elementos de mapa de sinónimo Hola incrementalmente. La actualización de incluso una entrada única requiere que se vuelva a cargar.
 
 La incorporación de sinónimos en la aplicación de búsqueda es un proceso de dos pasos:
 
-1.  Agregar una asignación de sinónimos al servicio de búsqueda a través de las API siguientes.  
+1.  Agregar un servicio de búsqueda de sinónimo mapa tooyour a través de las API debajo de Hola.  
 
-2.  Configurar un campo buscable para usar la asignación de sinónimos en la definición del índice.
+2.  Configurar una asignación de campo de búsqueda toouse Hola sinónimo en la definición del índice Hola.
 
 ### <a name="synonymmaps-resource-apis"></a>API de recursos de SynonymMaps
 
 #### <a name="add-or-update-a-synonym-map-under-your-service-using-post-or-put"></a>Adición o actualización de una asignación de sinónimos en su servicio, con POST o PUT
 
-Las asignaciones de sinónimos se cargan en el servicio a través de POST o PUT. Cada regla debe estar delimitada por el nuevo carácter de línea ('\n'). Puede definir hasta 5000 reglas por asignación de sinónimos en un servicio gratuito y 10 000 reglas en las demás SKU. Cada regla puede tener hasta 20 expansiones.
+Mapas de sinónimo se cargan toohello servicio a través de POST o PUT. Cada regla debe estar delimitado por el carácter de nueva línea ('\n') de Hola. Puede definir too5, 000 reglas por asignación sinónimo en un servicio gratuito y 10 000 reglas en todas las SKU que otros. Cada regla puede tener hasta too20 expansiones.
 
-En esta versión preliminar, las asignaciones de sinónimos deben estar en formato Apache Solr, que se explica a continuación. Si dispone de un diccionario de sinónimos existente en un formato distinto y desea usarlo directamente, háganoslo saber en [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
+En esta versión preliminar, mapas de sinónimo deben tener formato de Apache Solr Hola que se explica a continuación. Si tiene un diccionario de sinónimos existentes en un formato diferente y desea toouse lo directamente, háganoslo saber en [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
 
-Puede crear una nueva asignación de sinónimos con HTTP POST, como en el siguiente ejemplo:
+Puede crear un nuevo mapa de sinónimo utilizando HTTP POST, como en el siguiente ejemplo de Hola:
 
     POST https://[servicename].search.windows.net/synonymmaps?api-version=2016-09-01-Preview
     api-key: [admin key]
@@ -62,7 +62,7 @@ Puede crear una nueva asignación de sinónimos con HTTP POST, como en el siguie
           Washington, Wash., WA => WA\n"
     }
 
-De forma alternativa, puede usar PUT y especificar el nombre de asignación del sinónimo en el identificador URI. Si la asignación de sinónimos no existe, se creará.
+Como alternativa, puede usar PUT y especifique el nombre de asignación de sinónimo de hello en hello URI. Si el mapa de sinónimo hello no existe, se creará.
 
     PUT https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2016-09-01-Preview
     api-key: [admin key]
@@ -76,14 +76,14 @@ De forma alternativa, puede usar PUT y especificar el nombre de asignación del 
 
 ##### <a name="apache-solr-synonym-format"></a>Formato de sinónimos de Apache
 
-El formato Solr es compatible con asignaciones de sinónimos equivalentes y explícitos. Las reglas de asignación se adhieren a la especificación del filtro de sinónimos de código abierto de Apache Solr descrita en este documento: [SynonymFilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter). A continuación se muestra una regla de ejemplo para los sinónimos equivalentes.
+formato de Hello Solr admite asignaciones de sinónimo equivalente y explícita. Las reglas de asignación cumplen la especificación del filtro sinónimo toohello de código abierto de Apache Solr, se describe en este documento: [SynonymFilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter). A continuación se muestra una regla de ejemplo para los sinónimos equivalentes.
 ```
               USA, United States, United States of America
 ```
 
-Con la regla anterior, la consulta de búsqueda "EE. UU." se ampliará a "EE. UU." O "Estados Unidos" O "Estados Unidos de América".
+Con la regla de hello anterior, una consulta de búsqueda "EE" expandirá demasiado "EE" o "United States" o "Estados Unidos".
 
-La asignación explícita se denota mediante una flecha "=>". Cuando se especifica, una secuencia de términos de una consulta de búsqueda que coincide con el lateral izquierdo de "=>" se sustituirá por las alternativas de la derecha. Según la regla siguiente, las consultas de búsqueda "Washington", "Wash." o "WA" se reescribirán a "WA". La asignación explícita solo se aplica en la dirección especificada y no reescribe la consulta "WA" a "Washington" en este caso.
+La asignación explícita se denota mediante una flecha "=>". Cuando especifica una secuencia de términos de una consulta de búsqueda que coincide con hello del lado izquierdo de "= >" se reemplazará con alternativas de hello en hello del lado derecho. Dada la regla de Hola a continuación, las consultas de búsqueda "Washington", "Washington" o "WA" todos se reescribirán demasiado "WA". Asignación explícita solo se aplica en la dirección de hello especificada y no vuelva a escribir consultas de Hola "WA" demasiado "Washington" en este caso.
 ```
               Washington, Wash., WA => WA
 ```
@@ -103,9 +103,9 @@ La asignación explícita se denota mediante una flecha "=>". Cuando se especifi
     DELETE https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2016-09-01-Preview
     api-key: [admin key]
 
-### <a name="configure-a-searchable-field-to-use-the-synonym-map-in-the-index-definition"></a>Configuración de un campo buscable para usar la asignación de sinónimos en la definición del índice
+### <a name="configure-a-searchable-field-toouse-hello-synonym-map-in-hello-index-definition"></a>Configurar una asignación de campo de búsqueda toouse Hola sinónimo en la definición del índice Hola.
 
-Puede usarse una nueva propiedad de campo **synonymMaps** para especificar una asignación de sinónimos que usar para un campo buscable. Las asignaciones de sinónimos son recursos de nivel de servicio y puede hacerse referencia a ellas mediante cualquier campo del índice en el servicio.
+Una nueva propiedad de campo **synonymMaps** puede ser usado toospecify un toouse de mapa de sinónimo para un campo de búsqueda. Las asignaciones de sinónimo son recursos de nivel de servicio y pueden hacer referencia a cualquier campo de un índice mediante el servicio Hola.
 
     POST https://[servicename].search.windows.net/indexes?api-version=2016-09-01-Preview
     api-key: [admin key]
@@ -139,29 +139,29 @@ Puede usarse una nueva propiedad de campo **synonymMaps** para especificar una a
        ]
     }
 
-**synonymMaps** puede especificarse para los campos buscables del tipo 'Edm.String' o 'Collection(Edm.String)'.
+**synonymMaps** se puede especificar para campos de búsqueda de tipo hello 'Edm.String' o 'Collection (EDM.String)'.
 
 > [!NOTE]
-> En esta versión preliminar, solo puede tener una asignación de sinónimos por campo. Si desea usar varias asignaciones de sinónimos, indíquenoslo en [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
+> En esta versión preliminar, solo puede tener una asignación de sinónimos por campo. Si desea toouse varias asignaciones de sinónimo, háganoslo saber en [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
 
 ## <a name="impact-of-synonyms-on-other-search-features"></a>Repercusión de Sinónimos en otras características de búsqueda
 
-La característica Sinónimos reescribe la consulta original con sinónimos con el operador OR. Por este motivo, el resaltado de referencias y los perfiles de puntuación tratan el término original y los sinónimos como equivalentes.
+característica de sinónimos de Hello reescribe la consulta original de hello con sinónimos con hello operador OR. Por esta razón, resaltado de llamadas y los perfiles de puntuación tratan término original de Hola y sinónimos como equivalentes.
 
-La característica Sinónimos se aplica a consultas de búsquedas y no se aplica a filtros o facetas. De forma similar, las sugerencias se basan solo en el término original; las coincidencias de sinónimos no aparecen en la respuesta.
+Característica de sinónimo aplica a las consultas de toosearch y no hay ningún toofilters o facetas. De forma similar, las sugerencias se basan únicamente en términos de hello original; coincidencias de sinónimos no aparecen en la respuesta de Hola.
 
-Las expansiones de sinónimos no se aplican a los términos de búsqueda de carácter comodín; los prefijos, las coincidencias parciales y las regex no se expanden.
+Expansiones de sinónimo no aplican los términos de búsqueda toowildcard; no se expanden prefijo, de forma aproximada y los términos de regex.
 
 ## <a name="tips-for-building-a-synonym-map"></a>Consejos para crear un asignación de sinónimos
 
-- Una asignación de sinónimos concisa y bien diseñada es más eficiente que una lista exhaustiva de posibles coincidencias. Unos diccionarios excesivamente grandes o complejos tardan más en analizarse y afectan a la latencia de la consulta si esta se expande a muchos sinónimos. En lugar de adivinar qué términos pueden usarse, puede obtener los verdaderos términos a través de un [informe de análisis de tráfico de búsqueda](search-traffic-analytics.md).
+- Una asignación de sinónimos concisa y bien diseñada es más eficiente que una lista exhaustiva de posibles coincidencias. Diccionarios excesivamente grandes o complejos tardar más tiempo tooparse y afecta a la latencia de consulta Hola si consulta Hola expande toomany sinónimos. En lugar de estimación en el que podrían utilizarse términos, puede obtener términos real de Hola a través de un [buscar informes de análisis de tráfico](search-traffic-analytics.md).
 
-- Como ejercicio preliminar y de validación, habilite y luego use este informe para determinar de forma precisa qué términos se beneficiarán de una coincidencia de sinónimo y, a continuación, siga usándolo como validación de que la asignación de sinónimos está generando un mejor resultado. En el informe predefinido, los iconos "Consultas de búsquedas más comunes" y "Consultas de búsqueda con resultado cero" le proporcionarán la información necesaria.
+- Como ejercicio un preliminar y la validación, habilitar y, a continuación, use este informe tooprecisely determinar cuáles son los términos beneficiarse de una coincidencia de sinónimo y, a continuación, continuar toouse como que la asignación de sinónimo produce mejores resultados de validación. En el informe de hello predefinido, Hola iconos "consultas de búsqueda más comunes" e "consultas de búsqueda de resultado de cero" le proporcionará la información necesaria de Hola.
 
 - Puede crear varias asignaciones para la aplicación de búsqueda (por ejemplo, mediante el idioma si la aplicación es compatible con una base de cliente de varios idiomas). Actualmente, un campo solo puede usar una de ellas. Puede actualizar una propiedad synonymMaps del campo en cualquier momento.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-- Si dispone de un índice existente en un entorno de desarrollo (no producción), experimente con un diccionario pequeño para ver cómo la adición de sinónimos cambia la experiencia de búsqueda, incluida la repercusión en los perfiles de puntuación, el resaltado de referencias y las sugerencias.
+- Si tiene un índice existente en un entorno de desarrollo (no es de producción), experimentar con un pequeño diccionario toosee cómo cambia la experiencia de búsqueda de hello, incluido el impacto en los perfiles de puntuación, posicionamiento resaltado y sugerencias suma Hola de sinónimos.
 
-- [Habilite el análisis de tráfico de búsqueda](search-traffic-analytics.md) y use el informe de Power BI predefinido para conocer qué términos se usan con mayor frecuencia y cuáles devuelven cero documentos. Con estos datos, revise el diccionario para incluir sinónimos para consultas que no sean productivas que deban resolverse en documentos en su índice.
+- [Habilitar el análisis de tráfico de búsqueda](search-traffic-analytics.md) y use Hola predefinidos toolearn qué términos se usan Hola mayoría y los que los devuelto cero documentos de informe de Power BI. Gracias a estas informaciones, revise los sinónimos de tooinclude de diccionario de Hola para consultas improductivos que deberían estar resolviendo toodocuments en el índice.

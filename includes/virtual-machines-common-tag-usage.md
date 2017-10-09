@@ -1,20 +1,20 @@
 
 
 
-## <a name="viewing-your-tags-in-the-usage-details"></a>Visualización de etiquetas en los detalles de uso
-Las etiquetas colocadas en los recursos de proceso, red y almacenamiento en el modelo de implementación de Resource Manager se rellenarán en los detalles de uso del [portal de facturación](https://account.windowsazure.com/).
+## <a name="viewing-your-tags-in-hello-usage-details"></a>Ver las etiquetas en los detalles de uso de Hola
+Colocan etiquetas en proceso, red, y los recursos de almacenamiento en el modelo de implementación del Administrador de recursos de Hola se rellenarán en los detalles de uso en hello [portal de facturación](https://account.windowsazure.com/).
 
-Haga clic en **Descargar detalles de uso** para ver los detalles de uso de la suscripción.
+Haga clic en **descargar detalles de uso** tooview obtener detalles de uso de hello en su suscripción.
 
 ![Detalles de uso en el Portal de Azure](./media/virtual-machines-common-tag-usage/azure-portal-tags-usage-details.png)
 
-Seleccione el extracto de facturación y los detalles de uso de la **versión 2** :
+Seleccione la instrucción de facturación y hello **versión 2** obtener detalles de uso:
 
 ![Detalles de uso de la vista previa de la versión 2 en el Portal de Azure](./media/virtual-machines-common-tag-usage/azure-portal-version2-usage-details.png)
 
-En los detalles de uso puede ver todas las etiquetas en la columna de **etiquetas** :
+En obtener detalles de uso de hello, puede ver todas las etiquetas de Hola Hola **etiquetas** columna:
 
 ![Columna de etiquetas en el Portal de Azure](./media/virtual-machines-common-tag-usage/azure-portal-tags-column.png)
 
-Mediante el análisis de estas junto con el uso, las organizaciones podrán obtener nuevos puntos de vista en sus datos de consumo.
+Al analizar estas etiquetas junto con el uso, las organizaciones será capaz de toogain nuevas perspectivas en sus datos de consumo.
 

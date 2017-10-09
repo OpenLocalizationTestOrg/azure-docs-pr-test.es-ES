@@ -1,6 +1,6 @@
 ---
-title: Uso de cmdlets de PowerShell con RemoteApp de Azure | Microsoft Docs
-description: "Vea cómo usar los cmdlets de Windows PowerShell con Azure RemoteApp"
+title: cmdlets de PowerShell con Azure RemoteApp aaaUse | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toouse cmdlets de Windows PowerShell en Azure RemoteApp."
 services: remoteapp
 documentationcenter: 
 author: guscatalano
@@ -14,39 +14,39 @@ ms.tgt_pltfrm: na
 ms.workload: compute
 ms.date: 04/26/2017
 ms.author: mbaldwin
-ms.openlocfilehash: 699b20a4dadd4ecaff57e2cc80355fe545360663
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: a09cae2093e2c3a4a2ed673b5d148a22ceb935f9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-windows-powershell-cmdlets-with-azure-remoteapp"></a>Uso de cmdlets de Windows PowerShell con Azure RemoteApp
 > [!IMPORTANT]
-> Azure RemoteApp dejará de estar disponible el 31 de agosto de 2017. Para obtener más información, lea el [anuncio](https://go.microsoft.com/fwlink/?linkid=821148) .
+> Azure RemoteApp dejará de estar disponible el 31 de agosto de 2017. Hola de lectura [anuncio](https://go.microsoft.com/fwlink/?linkid=821148) para obtener más información.
 > 
 > 
 
- Puede usar los cmdlets de PowerShell de RemoteApp de Azure para administrar y mantener las colecciones. Use la siguiente información para comenzar.
+ Puede usar tooadminister de cmdlets de PowerShell de Azure RemoteApp hello y mantener las colecciones. Usar hello después tooget de información que se inició.
 
-## <a name="get-the-cmdlets"></a>Obtención de los cmdlets
+## <a name="get-hello-cmdlets"></a>Obtener Hola cmdlets
 - - -
-En primer lugar, descargue [aquí](http://go.microsoft.com/?linkid=9811175)los cmdlets de Azure PowerShell, que incluyen los de RemoteApp. 
+En primer lugar descargar cmdlets de Powershell de Azure de hello [aquí](http://go.microsoft.com/?linkid=9811175), Hola RemoteApp cmdlets se incluyen en ella. 
 
-Consulte la [ayuda de cmdlets de Azure RemoteApp](/powershell/module/azure?view=azuresmps-3.7.0).
+Extraer del repositorio hello [ayuda de cmdlet de Azure RemoteApp](/powershell/module/azure?view=azuresmps-3.7.0).
 
-## <a name="configure-azure-cmdlets-to-use-your-subscription"></a>Configuración de los cmdlets de Azure para usar su suscripción
+## <a name="configure-azure-cmdlets-toouse-your-subscription"></a>Configurar la suscripción de toouse de cmdlets de Azure
 - - -
-Siga [esta guía](/powershell/azure/overview) para poder usar los cmdlets en su suscripción de Azure.
+Siga [esta guía](/powershell/azure/overview) para poder usar cmdlets de hello en su suscripción de Azure.
 
-Puede usar estos pasos para una introducción rápida:
+Puede usar estos tooget pasos incluye una rápida introducción:
 
-1. Descargue e instale los [cmdlets de Azure PowerShell](http://go.microsoft.com/?linkid=9811175).
+1. Descargue e instale hello [cmdlets de PowerShell de Azure](http://go.microsoft.com/?linkid=9811175).
 2. Inicie Microsoft Azure PowerShell.
-3. Ejecute **Add-AzureAccount** para autenticarse en su suscripción de Azure. Cuando se le solicite, escriba el mismo nombre de usuario y contraseña que usó para iniciar sesión en el Portal de Azure.  
-4. Ejecute **Get-AzureSubscription** para enumerar las suscripciones asociadas a su cuenta de usuario. 
-5. Ejecute **Select-AzureSubscription -SubscriptionName &lt;nombre de la suscripción&gt;** o **Select-AzureSubscription -SubscriptionId &lt;ID de la suscripción&gt;** para especificar la suscripción que se va a usar.
+3. Ejecutar **Add-AzureAccount** tooauthenticate tooyour suscripción de Azure. Cuando se le solicite, escriba Hola el mismo nombre de usuario y la contraseña que usa toosign en tooAzure portal.  
+4. Ejecutar **Get-AzureSubscription** suscripciones de hello toolist asociadas con su cuenta de usuario. 
+5. Ejecutar **Select-AzureSubscription - SubscriptionName &lt;nombre de la suscripción&gt;**  o **Select-AzureSubscription - SubscriptionId &lt;Id. de suscripción&gt;**  toospecify Hola suscripción toouse.
 
-Enhorabuena, la consola de Azure PowerShell se ha configurado y está lista para usarse. Tenga en cuenta que necesitará repetir los pasos del 2 al 5 cada vez que inicie la consola de Azure PowerShell.  
+Enhorabuena, la consola de PowerShell de Azure está configurado y listo toouse. Tenga en cuenta que, cada vez que inicie la consola de Azure PowerShell Hola Hola, necesitará toorepeate los pasos 2 a 5.  
 
 
 ## <a name="list-all-collections"></a>Lista de todas las colecciones
@@ -61,24 +61,24 @@ Ejemplo: `Remove-AzureRemoteAppCollection ContosoProduction`.
 
 ## <a name="create-a-cloud-collection"></a>Creación de una colección en la nube
 - - -
-Es sencillo, ejecute el siguiente comando:
+Es sencillo, ejecute el siguiente comando de hello:
 
     New-AzureRemoteAppCollection -Collectionname RAppO365Col1 -ImageName "Office 365 ProPlus (Subscription required)" -Plan Basic -Location "West US" - Description "Office 365 Collection."
 
-El comando anterior publica automáticamente las aplicaciones de Microsoft Office 365 (Excel, OneNote, Outlook, PowerPoint, Visio y Word).
+Hola encima comando publica automáticamente las aplicaciones de Microsoft Office 365 (Excel, OneNote, Outlook, PowerPoint, Visio y Word).
 
-La creación de la colección puede tardar 30 minutos o más en completarse. Por lo tanto, este comando devuelve un identificador de seguimiento que se puede utilizar como sigue:
+Creación de la colección puede tardar 30 minutos o más toocomplete. Por lo tanto, este comando devuelve un identificador de seguimiento que se puede utilizar como sigue:
 
     Get-AzureRemoteAppOperationResult -TrackingId xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 
-Cuando la colección esté lista, puede agregar usuarios a la colección con el siguiente comando:
+Después de realiza la recopilación de hello, puede agregar la recopilación de toohello de usuarios con hello siguiente comando:
 
     Add-AzureRemoteAppUser -CollectionName RAppO365Col1 -Type microsoftAccount -UserUpn someone@domain.com
 
-¡Y ya está! Ese usuario debería ser capaz de conectarse a la aplicación mediante el cliente de Azure RemoteApp que se encuentra [aquí](https://www.remoteapp.windowsazure.com/).
+¡Y ya está! Ese usuario debe ser capaz de tooconnect toohello con cliente de Azure RemoteApp Hola encontró [aquí](https://www.remoteapp.windowsazure.com/).
 
 ## <a name="available-cmdlets"></a>Cmdlets disponibles
-Tenemos muchos otros comandos, cuya información se pondrá pronto a disposición de los usuarios:
+Hay muchos otros comandos que tenemos, documentación de Hola para ellos estará disponible en breve:
 
 Cmdlets básicos de la colección de RemoteApp 
 

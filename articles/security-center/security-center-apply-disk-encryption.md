@@ -1,6 +1,6 @@
 ---
-title: "Aplicación del cifrado de discos en Azure Security Center | Microsoft Docs"
-description: "En este documento, se muestra cómo implementar la recomendación **Aplicar el cifrado de discos** del Centro de seguridad de Azure."
+title: cifrado del disco aaaApply en el centro de seguridad de Azure | Documentos de Microsoft
+description: "Este documento muestra cómo tooimplement Hola recomendación de Azure Security Center ** aplicar el cifrado de disco **."
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -14,53 +14,53 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
-ms.openlocfilehash: 67cff664f3723b2194ecd1519729cca17069d07f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: cd803f1120018c5c86da91186eec1e59d425ede7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="apply-disk-encryption-in-azure-security-center"></a>Aplicación del cifrado de discos en el Centro de seguridad de Azure
-Azure Security Center recomienda que aplique el cifrado de discos si tiene discos de máquina virtual de Windows o Linux que no estén cifrados con Azure Disk Encryption. El Cifrado de discos permite cifrar los discos de máquina virtual IaaS de Windows y Linux.  Se recomienda cifrar tanto los volúmenes de datos como los del sistema operativo en la máquina virtual.
+Azure Security Center recomienda que aplique el cifrado de discos si tiene discos de máquina virtual de Windows o Linux que no estén cifrados con Azure Disk Encryption. El Cifrado de discos permite cifrar los discos de máquina virtual IaaS de Windows y Linux.  El cifrado se recomienda para hello SO y volúmenes de datos en la máquina virtual.
 
-Disk Encryption usa la característica [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) estándar del sector de Windows y la característica [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) de Linux. Estas características proporcionan cifrado de datos y del sistema operativo para proteger sus datos y asumir las responsabilidades de cumplimiento y seguridad de la organización. La solución se integra con [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) para ayudarle a controlar y administrar las claves y los secretos de cifrado de discos en su suscripción de Key Vault, al mismo tiempo que garantiza que todos los datos de los discos de las máquinas virtuales se cifran en reposo en [Azure Storage](https://azure.microsoft.com/documentation/services/storage/).
+Cifrado de disco usa estándar del sector hello [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) característica de Windows y hello [DM Crypt](https://en.wikipedia.org/wiki/Dm-crypt) característica de Linux. Estas características proporcionan SO y toohelp de cifrado de datos, proteger y proteger sus datos y satisfagan los compromisos de cumplimiento de normas y la seguridad de la organización. Cifrado del disco se integra con [el almacén de claves de Azure](https://azure.microsoft.com/documentation/services/key-vault/) toohelp controlar y administrar claves de cifrado de disco de Hola y secretos en su suscripción de almacén de claves, asegurándose de que todos los datos en discos de máquina virtual de Hola se cifran en reposo en su [ Almacenamiento de Azure](https://azure.microsoft.com/documentation/services/storage/).
 
 > [!NOTE]
-> El Cifrado de discos de Azure es compatible con los siguientes sistemas operativos de Windows Server: Windows Server 2008 R2, Windows Server 2012 y Windows Server 2012 R2. El cifrado de discos es compatible con los siguientes sistemas operativos de Linux Server: Ubuntu, CentOS, SUSE y SUSE Linux Enterprise Server (SLES).
+> Cifrado de disco Azure es compatible con hello después de sistemas de operativos Windows server - Windows Server 2008 R2, Windows Server 2012 y Windows Server 2012 R2. Se admite el cifrado de disco en hello después de sistemas operativos Linux - Ubuntu, CentOS, SUSE y SUSE Linux Enterprise Server (SLES).
 >
 >
 
-## <a name="implement-the-recommendation"></a>Implementación de la recomendación
-1. En la hoja **Recomendaciones**, seleccione **Aplicar cifrado de discos**.
-2. En la hoja **Aplicar cifrado de discos**, verá una lista de las máquinas virtuales para las que se recomienda el cifrado de discos.
-3. Siga las instrucciones para aplicar el cifrado a estas máquinas virtuales.
+## <a name="implement-hello-recommendation"></a>Implementar la recomendación de Hola
+1. Hola **recomendaciones** hoja, seleccione **aplicar el cifrado de disco**.
+2. Hola **aplicar el cifrado de disco** hoja, verá una lista de máquinas virtuales para el que se recomienda el cifrado del disco.
+3. Siga toothese de cifrado de hello instrucciones tooapply máquinas virtuales.
 
 ![][1]
 
-Para cifrar las máquinas virtuales de Azure que Security Center ha identificado que necesitan cifrado, recomendamos que siga los siguientes pasos:
+tooencrypt máquinas virtuales de Azure que se han identificado por el centro de seguridad como la necesidad de cifrado, se recomienda Hola pasos:
 
-* Instale y configure Azure PowerShell. Esto permite ejecutar los comandos de PowerShell para configurar los requisitos previos necesarios para cifrar Azure Virtual Machines.
-* Obtenga y ejecute el script de Azure PowerShell de requisitos previos de Cifrado de discos de Azure.
+* Instale y configure Azure PowerShell. Esto le permite toorun Hola PowerShell comandos necesario tooset seguridad Hola requisitos previos necesarios tooencrypt máquinas virtuales de Azure.
+* Obtener y ejecutar el script de PowerShell de Azure de requisitos previos de cifrado de disco de Azure de Hola.
 * Cifre las máquinas virtuales.
 
-[Encrypt an Azure Virtual Machine](security-center-disk-encryption.md) (Cifrado de una máquina virtual de Azure) le guiará a través de estos pasos.  En este tema se asume que utiliza Windows 10 como máquina cliente desde la que configura el cifrado de disco.
+[Encrypt an Azure Virtual Machine](security-center-disk-encryption.md) (Cifrado de una máquina virtual de Azure) le guiará a través de estos pasos.  En este tema se da por supuesto que usa Windows 10 como equipo de cliente de hello en el que configurar el cifrado del disco.
 
-Existen varios enfoques que se pueden usar para Azure Virtual Machines. Si conoce bien Azure PowerShell o CLI de Azure, puede preferir el uso de métodos alternativos. Para más información sobre estos otros enfoques, consulte [Azure Disk Encryption](../security/azure-security-disk-encryption.md).
+Existen varios enfoques que se pueden usar para Azure Virtual Machines. Si ya están muy versado en Azure PowerShell o CLI de Azure, quizás prefiera toouse los métodos alternativos. toolearn sobre estos otros enfoques, consulte [cifrado de disco de Azure](../security/azure-security-disk-encryption.md).
 
-## <a name="see-also"></a>Consulte también
-En este documento, mostramos cómo implementar la recomendación "Aplicar el cifrado de discos" del Centro de seguridad. Para más información acerca del cifrado de discos, consulte lo siguiente:
+## <a name="see-also"></a>Otras referencias
+Este documento se ha explicado cómo tooimplement Hola centro de seguridad recomendación "aplicar cifrado del disco." toolearn más información acerca del cifrado del disco, vea Hola recursos siguientes:
 
-* [Encryption and key management with Azure Key Vault](https://azure.microsoft.com/documentation/videos/azurecon-2015-encryption-and-key-management-with-azure-key-vault/) (Cifrado y administración de claves con el Almacén de claves de Azure) (vídeo, 36 m y 39 s): aprenda a usar la administración del cifrado de discos para máquinas virtuales IaaS y el Almacén de claves de Azure para ayudar a proteger sus datos.
-* [Cifrado de una máquina virtual de Azure](security-center-disk-encryption.md) (documento), aprenda a cifrar las máquinas virtuales de Azure.
-* [Cifrado de discos de Azure](../security/azure-security-disk-encryption.md) (documento): aprenda a habilitar el cifrado de discos para máquinas virtuales de Windows y Linux.
+* [Cifrado y administración de claves con el almacén de claves de Azure](https://azure.microsoft.com/documentation/videos/azurecon-2015-encryption-and-key-management-with-azure-key-vault/) (vídeo, 36 39 min.): Obtenga información acerca de cómo toouse disco de administración de cifrado para las máquinas virtuales IaaS y almacén de claves de Azure toohelp protección y protección sus datos.
+* [Cifrar una máquina Virtual de Azure](security-center-disk-encryption.md) (documento): Obtenga información acerca de cómo tooencrypt máquinas virtuales de Azure.
+* [Cifrado de disco de Azure](../security/azure-security-disk-encryption.md) (documento): Obtenga información acerca de cómo tooenable disco cifrado para Windows y máquinas virtuales de Linux.
 
-Para más información sobre el Centro de seguridad, consulte los siguientes recursos:
+toolearn más información acerca del centro de seguridad, vea Hola recursos siguientes:
 
-* [Establecimiento de directivas de seguridad en Azure Security Center](security-center-policies.md) : aprenda a configurar directivas de seguridad.
-* [Supervisión del estado de seguridad en el Azure Security Center](security-center-monitoring.md) : obtenga información sobre cómo supervisar el estado de los recursos de Azure.
-* [Administración y respuesta a las alertas de seguridad en Azure Security Center](security-center-managing-and-responding-alerts.md) : aprenda a administrar y responder a alertas de seguridad.
+* [Configuración de directivas de seguridad en el centro de seguridad de Azure](security-center-policies.md) : Obtenga información acerca de cómo las directivas de seguridad de tooconfigure.
+* [Supervisión de estado de seguridad de Azure Security Center](security-center-monitoring.md) : Obtenga información acerca de cómo toomonitor Hola estado de los recursos de Azure.
+* [Toosecurity de administración y de que responda las alertas en el centro de seguridad de Azure](security-center-managing-and-responding-alerts.md) : Obtenga información acerca de cómo las alertas de toosecurity toomanage y que responden.
 * [Administración de recomendaciones de seguridad en Azure Security Center](security-center-recommendations.md) : recomendaciones que le ayudan a proteger los recursos de Azure.
-* [Preguntas más frecuentes sobre Azure Security Center](security-center-faq.md) : encuentre las preguntas más frecuentes sobre el uso del servicio.
+* [Preguntas más frecuentes de Azure Security Center](security-center-faq.md) --buscar preguntas más frecuentes sobre el uso de servicio de Hola.
 * [Blog de seguridad de Azure](http://blogs.msdn.com/b/azuresecurity/) : encuentre publicaciones de blog sobre el cumplimiento y la seguridad de Azure.
 
 <!--Image references-->

@@ -1,6 +1,6 @@
 ---
-title: "Implementación de un nuevo servicio web en Azure Machine Learning | Microsoft Docs"
-description: "Flujo de trabajo de la implementación de un servicio web basado en ARM"
+title: "aaaDeploying un nuevo servicio web de aprendizaje automático de Azure | Documentos de Microsoft"
+description: "flujo de trabajo de saludo de la implementación de un BRAZO en función de servicio web"
 services: machine-learning
 documentationcenter: 
 author: vDonGlover
@@ -16,17 +16,17 @@ ms.date: 02/13/2017
 ms.author: v-donglo
 ROBOTS: NOINDEX
 redirect_url: machine-learning-publish-a-machine-learning-web-service
-redirect_document_id: TRUE
-ms.openlocfilehash: 1415709f9da2bb2cce859af9feb0ec15c1fa5801
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+redirect_document_id: True
+ms.openlocfilehash: 2cbfda44b97a6b992fbdfdfb0c761e6c9e169035
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deploy-a-new-web-service"></a>Implementación de servicios web nuevos
-Ahora, Microsoft Azure Machine Learning proporciona servicios web basados en [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) , con lo que se pueden usar nuevas opciones de planes de facturación e implementar el servicio web en varias regiones.
+Microsoft Azure Machine learning ahora proporciona servicios web que se basan en [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) permitiendo nuevas opciones del plan de facturación y la implementación de las áreas de toomultiple del servicio web.
 
-El flujo de trabajo general para implementar un servicio web mediante el portal de servicios web de Aprendizaje automático de Microsoft Azure Machine es el siguiente:
+flujo de trabajo general de Hello toodeploy un servicio web mediante servicios Web de Microsoft Azure Machine Learning es:
 
 * Crear un experimento predictivo
 * Implementarlo
@@ -35,66 +35,66 @@ El flujo de trabajo general para implementar un servicio web mediante el portal 
 * Probarlo
 * Utilizarlo
 
-En el siguiente gráfico se ilustra el flujo de trabajo.
+Hola siguiente gráfico ilustra el flujo de trabajo de Hola.
 
 ![Flujo de trabajo de implementación de servicios web][1]
 
 ## <a name="deploy-web-service-from-studio"></a>Implementación de servicios web desde Studio
-Para implementar un experimento como servicio web nuevo, inicie sesión en Estudio de aprendizaje automático de Microsoft Azure y cree un nuevo servicio web predictivo. 
+toodeploy un experimento como un nuevo servicio web. Inicie sesión en estudio de aprendizaje automático de Hola y crear un nuevo servicio web de predicción. 
 
 **Nota**: Si ya ha implementado un experimento como servicio web clásico, no se podrá implementar como nuevo.
 
-Haga clic en la opción **Ejecutar** de la parte inferior del lienzo del experimento y luego en **Deploy Web Service** (Implementar servicio web) y en **Deploy Web Service [New]** (Implementar servicio web [nuevo]). Se abrirá la página de implementación del administrador de servicios web de Aprendizaje automático.
+Haga clic en **ejecutar** final Hola de hello experimentar el lienzo y, a continuación, haga clic en **implementar el servicio de Web** y **implementar [New] servicio Web**. se abrirá la página de implementación de Hello del administrador del servicio Web de aprendizaje de máquina de Hola.
 
 ## <a name="machine-learning-web-service-manager-deploy-experiment-page"></a>Página de implementación de experimentos del administrador de servicios web de Aprendizaje automático
-En la página de implementación de experimentos, escriba un nombre para el servicio web.
-Seleccione un plan de tarifa. Si ya tiene uno, puede seleccionarlo; si no, debe crear uno nuevo para el servicio. 
+En página de experimento implementar hello, escriba un nombre para el servicio web de Hola.
+Seleccione un plan de tarifa. En caso contrario, si tiene un plan de precios existente que seleccione la plantilla, debe crear un nuevo plan de precios para el servicio de Hola. 
 
-1. En el menú desplegable **Price Plan** (Plan de precios), seleccione un plan existente o elija la opción **Select new plan** (Seleccionar nuevo plan).
-2. En **Nombre del plan**, escriba un nombre que identifique el plan en la factura.
-3. Seleccione uno de los **niveles de planes mensuales**. Tenga en cuenta que los niveles de los planes predeterminados son los de la región predeterminada y que el servicio web se implementa en dicha región.
+1. Hola **Plan de precios** de lista desplegable, seleccione un plan existente o hello **seleccione Nuevo plan** opción.
+2. En **el nombre del Plan**, escriba un nombre que identificará el plan de hello en la factura.
+3. Seleccione uno de hello **mensual niveles planear**. Tenga en cuenta que los niveles de plan de hello predeterminado toohello planes para la región predeterminada y el servicio web es la región de toothat implementado.
 
-Haga clic en las páginas **Implementar** e Inicio rápido del servicio web que se abre.
+Haga clic en **implementar** y se abre la página de inicio rápido de hello para el servicio web.
 
 ## <a name="quickstart-page"></a>Página Inicio rápido
-A través de la página Inicio rápido del servicio web podrá acceder a las tareas más comunes que se realizarán después de crear un servicio web nuevo, así como instrucciones sobre cómo hacerlo. Desde aquí, también puede acceder fácilmente a las páginas **Prueba** y **Consume** (Consumo).
+página de inicio rápido del servicio de Hello web proporciona acceso e instrucciones sobre las tareas más comunes de hello que llevará a cabo después de crear un nuevo servicio web. Desde aquí puede acceder fácilmente ambos hello **prueba** página y **Consume** página.
 
 ## <a name="testing-your-web-service"></a>Pruebas del servicio web
-En la página Inicio rápido, haga clic en la opción Test web service (Probar servicio web) de las tareas comunes.   
+Desde la página de inicio rápido de hello, haga clic en servicio web de prueba en las tareas comunes.   
 
-Para probar el servicio web como servicio de solicitud-respuesta (RRS), siga estos pasos:
+servicio web de hello tootest como un servicio de solicitud-respuesta (RR):
 
-* Haga clic en **Probar** en la barra de menús.
+* Haga clic en **prueba** en la barra de menús de Hola.
 * Haga clic en **Request-Response**(Solicitud-respuesta).
-* Escriba los valores adecuados para las columnas de entrada del experimento.
+* Escriba los valores adecuados para las columnas de entrada de su experimento Hola.
 * Haga clic en **Test Request-Response**(Probar solicitud-respuesta).
 
-Los resultados se mostrarán en el lado derecho de la página.
+Resultados se muestran en hello lado derecho de la página de Hola.
 
-Para probar un servicio web de servicio de ejecución de lotes (BES), hay que utilizar un archivo CSV:
+tootest un servicio web de servicio de ejecución de lotes (BES), se utilizará un archivo CSV:
 
-* Haga clic en **Probar** en la barra de menús.
+* Haga clic en **prueba** en la barra de menús de Hola.
 * Haga clic en **Lotes**.
-* En la entrada, haga clic en Examinar y vaya hasta al archivo de datos de ejemplo.
+* En la entrada, haga clic en Examinar y navegar por el archivo de datos de ejemplo de tooyour.
 * Haga clic en **Probar**.
 
-El estado de la prueba se muestra en **Test Batch Jobs**(Trabajos de pruebas por lotes).
+estado de saludo de la prueba se muestra bajo **probar los trabajos por lotes**.
 
 ## <a name="consuming-your-web-service"></a>Uso de servicios web
-Cuando se implementa como servicio web, los experimentos de Aprendizaje automático de Azure proporcionan una API de REST que puede ser consumida por una amplia gama de dispositivos y plataformas. Esto es porque la sencilla API de REST acepta y responde con mensajes de formato JSON. El portal de Aprendizaje automático de Azure proporciona código que se puede utilizar para llamar al servicio web en R, C# y Python.
+Cuando se implementa como servicio web, los experimentos de Aprendizaje automático de Azure proporcionan una API de REST que puede ser consumida por una amplia gama de dispositivos y plataformas. Esto es porque los mensajes con formato Hola simple API de REST acepta y responde con JSON. portal de aprendizaje automático de Azure Hello proporciona código que se puede usar toocall Hola servicio web en R, C# y Python.
 
-En la página Consuming (Consumo), puede encontrar la siguiente información:
+En la página de hello Consuming encontrará:
 
-* La clave de API y los URI para utilizar servicios web en aplicaciones
-* Plantillas de aplicaciones web y de Excel para iniciar rápidamente el proceso de consumo.
-* El código de ejemplo en C#, Python y R para poder comenzar.
+* clave de API de Hola y el URI para consumir el servicio web en aplicaciones.
+* Tookick de plantillas de aplicación web y Excel inicie el proceso de consumo.
+* Código de ejemplo en C#, python y R tooget ha iniciado.
 
-Para más información sobre el consumo de servicios web, vea [Cómo consumir un servicio web Azure Machine Learning](machine-learning-consume-web-services.md).
+Para obtener más información sobre el consumo de servicios web, consulte [cómo tooconsume un servicio Web de aprendizaje de máquina de Azure](machine-learning-consume-web-services.md).
 
 ## <a name="next-steps"></a>Pasos siguientes
 Para más información sobre el consumo de servicios web, consulte:
 
-[Cómo consumir un servicio web Azure Machine Learning](machine-learning-consume-web-services.md)
+[¿Cómo tooconsume un servicio Web de aprendizaje de máquina de Azure](machine-learning-consume-web-services.md)
 
 [Servicios web Azure Machine Learning: Implementación y consumo](machine-learning-deploy-consume-web-service-guide.md)
 

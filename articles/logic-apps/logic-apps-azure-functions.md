@@ -1,5 +1,5 @@
 ---
-title: "Código personalizado para Azure Logic Apps con Azure Functions | Microsoft Docs"
+title: "código de aaaCustom para las aplicaciones de la lógica de Azure con funciones de Azure | Documentos de Microsoft"
 description: "Cree y ejecute código personalizado para Azure Logic Apps con Azure Functions"
 services: logic-apps,functions
 documentationcenter: .net,nodejs,java
@@ -15,28 +15,28 @@ ms.workload: integration
 ms.custom: H1Hack27Feb2017
 ms.date: 10/18/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 18442c87b049200fac5ed41cc7034ba7a848b8d3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 18b3821ed7e434feb568b9b96e9a5a2189dba3bd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="add-and-run-custom-code-for-logic-apps-through-azure-functions"></a>Adición y ejecución de código personalizado para aplicaciones lógicas con Azure Functions
 
-Para ejecutar fragmentos de código personalizados de C# o node.js en aplicaciones lógicas, puede crear funciones personalizadas a través de Azure Functions. 
+toorun fragmentos de código personalizado de C# o node.js en las aplicaciones lógicas, puede crear funciones personalizadas a través de funciones de Azure. 
 [Azure Functions](../azure-functions/functions-overview.md) ofrece una computación sin servidor en Microsoft Azure y es útil para realizar estas tareas:
 
 * Formato o proceso avanzados de los campos de Logic Apps.
 * Realización de cálculos en un flujo de trabajo.
-* Extensión de la funcionalidad de las aplicaciones lógicas con funciones que se admiten en C# o node.js.
+* Ampliar la funcionalidad de la aplicación hello lógica con funciones que se admiten en C# o node.js
 
 ## <a name="create-custom-functions-for-your-logic-apps"></a>Creación de funciones personalizadas para las aplicaciones lógicas
 
-Se recomienda crear una función en el portal de Azure Functions mediante las plantillas **Generic Webhook - Node** o **Generic Webhook - C#**. El resultado crea una plantilla que se rellena automáticamente que acepta `application/json` de una aplicación lógica. Las funciones que se crean con estas plantillas se detectan automáticamente y aparecen en el Diseñador de aplicaciones lógicas en **Azure Functions in my region** (Azure Functions en mi región).
+Le recomendamos que cree una función en portal de Azure funciones hello, de hello **Webhook genérico - nodo** o **Webhook genérico - C#** plantillas. resultado de Hello crea un rellena automáticamente una plantilla que acepta `application/json` desde una aplicación de lógica. Las funciones que cree a partir de estas plantillas se detectan automáticamente y aparecen en hello Diseñador de la aplicación lógica en **funciones de Azure en mi región.**
 
-En Azure Portal, en el panel **Integrar** de una función, la plantilla debe mostrar que en **Modo** está seleccionado **Webhook** y en **Tipo de webhook** está seleccionado **JSON genérico**. 
+En el portal de Azure, en Hola Hola **integrar** panel de la función, la plantilla debe mostrar que **modo** establecido demasiado**Webhook** y **Webhook tipo** se establece demasiado**JSON genérico**. 
 
-Las funciones de Webhook aceptan una solicitud y las pasan al método mediante una variable `data` . Puede acceder a las propiedades de la carga mediante una notación de puntos, como `data.function-name`. Por ejemplo, una función de JavaScript simple que convierte un valor de DateTime en una cadena de fecha es similar al siguiente ejemplo:
+Funciones de Webhook Aceptar una solicitud y lo pasa en el método de Hola a través de un `data` variable. Puede tener acceso a propiedades de saludo de la carga mediante el uso de la notación de puntos como `data.function-name`. Por ejemplo, una función de JavaScript simple que convierte un valor de fecha y hora en una cadena de fecha aspecto Hola siguiente ejemplo:
 
 ```
 function start(req, res){
@@ -49,29 +49,29 @@ function start(req, res){
 
 ## <a name="call-azure-functions-from-logic-apps"></a>Llamada a Azure Functions desde Logic Apps
 
-Para enumerar los contenedores de una suscripción y seleccionar la función a la que se desea llamado, en el Diseñador de aplicaciones lógicas, haga clic en el menú **Actions** (Acciones) y selecciónelos en **Azure Functions in my Region** (Azure Functions en mi región).
+contenedores de hello toolist en su suscripción y la función hello select que desea toocall, en el Diseñador de la aplicación de lógica, haga clic en hello **acciones** menú y seleccione desde **funciones de Azure en mi región**.
 
-Después de seleccionar la función, se le solicita que especifique un objeto de carga de entrada. Este objeto es el mensaje que la aplicación lógica envía a la función y debe ser un objeto JSON. Por ejemplo, si desea pasar la fecha de última modificación, **Last Modified Date**, de un desencadenador de Salesforce, la carga de la función podría ser similar a la de este ejemplo:
+Después de seleccionar la función hello, es más frecuentes toospecify un objeto de carga de la entrada. Este objeto es mensaje Hola Hola lógica aplicación envía toohello función y debe ser un objeto JSON. Por ejemplo, si desea toopass Hola **última modificación** fecha desde un desencadenador de Salesforce, carga de función hello podría ser similar a este ejemplo:
 
 ![Fecha de última modificación][1]
 
 ## <a name="trigger-logic-apps-from-a-function"></a>Desencadenamiento de aplicaciones lógicas desde una función
 
-Una aplicación lógica se puede desencadenar desde dentro de una función. Consulte [Aplicaciones lógicas como puntos de conexión invocables](logic-apps-http-endpoint.md). Cree una aplicación lógica que tenga un desencadenador manual y, después, desde la función, genere una solicitud HTTP POST a la dirección URL del desencadenador manual con la carga que desee que se envíe a la aplicación lógica.
+Una aplicación lógica se puede desencadenar desde dentro de una función. Consulte [Aplicaciones lógicas como puntos de conexión invocables](logic-apps-http-endpoint.md). Crear una aplicación de lógica que tiene un desencadenador manual y, a continuación, desde dentro de la función, generar una dirección URL de desencadenador manual de HTTP POST toohello con una carga de Hola que desee enviar la aplicación de la lógica de toohello.
 
 ### <a name="create-a-function-from-logic-app-designer"></a>Creación de una función en el Diseñador de aplicaciones lógicas
 
-Una función de webhook de node.js también se puede crear desde el diseñador. En primer lugar, seleccione **Azure Functions in my region** (Funciones de Azure en mi región) y elija un contenedor para la función. Si todavía no dispone de ningún contenedor, tendrá que crearlo en el [portal de Funciones de Azure](https://functions.azure.com/signin). Seleccione **Crear nuevo**.  
+También puede crear una función de webhook de node.js desde el Diseñador de Hola. En primer lugar, seleccione **Azure Functions in my region** (Funciones de Azure en mi región) y elija un contenedor para la función. Si aún no tiene un contenedor, deberá toocreate de hello [portal de Azure funciones](https://functions.azure.com/signin). Seleccione **Crear nuevo**.  
 
-Para generar una plantilla basada en los datos que desea procesar, especifique el objeto de contexto que piensa pasar a una función, que debe ser un objeto JSON. Por ejemplo, si pasa el contenido del archivo de una acción de FTP, la carga del contexto será similar a la de este ejemplo:
+toogenerate una plantilla basada en datos de saludo que desea que toocompute, especifique el objeto de contexto de Hola que planea toopass a una función. que debe ser un objeto JSON. Por ejemplo, si se pasa el contenido del archivo de Hola desde una acción de FTP, carga de contexto de hello es similar en este ejemplo:
 
 ![Carga de contexto][2]
 
 > [!NOTE]
-> Puesto que este objeto no se transmitió como una cadena, el contenido se agrega directamente a la carga de JSON. Sin embargo, si el objeto no es un token JSON (es decir, una cadena o un objeto o matriz JSON), se produce un error. Para trasmitir el objeto como una cadena, agregue comillas como se muestra en la primera ilustración de este artículo.
+> Dado que este objeto no se ha convertido en una cadena, contenido de Hola se agrega directamente toohello carga JSON. Sin embargo, se produce un error si el objeto de hello no es un token JSON (es decir, una cadena o una JSON/matriz de objetos). objeto de hello toocast como una cadena, agregar comillas tal y como se muestra en la primera ilustración de hello en este artículo.
 > 
 
-A continuación, el diseñador genera una plantilla de función que puede crear en línea. Las variables se crean previamente de acuerdo con el contexto que se va a pasar a la función.
+Diseñador de Hello, a continuación, genera una plantilla de función que se puede crear en línea. Las variables se crean previamente basándose en el contexto de Hola que planea toopass en función de Hola.
 
 <!--Image references-->
 [1]: ./media/logic-apps-azure-functions/callfunction.png

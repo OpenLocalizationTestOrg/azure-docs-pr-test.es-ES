@@ -1,6 +1,6 @@
 ---
-title: "Alternancia entre los modo de vista y de edición de informes en Azure Power BI Embedded | Microsoft Docs"
-description: "Aprenda a alternar entre los modos de vista y de edición en los informes de Power BI Embedded."
+title: aaaToggle entre el modo de ver y editar informes en Azure Power BI Embedded | Documentos de Microsoft
+description: "Obtenga información acerca de cómo tootoggle entre el modo de ver y editar para los informes en Power BI Embedded."
 services: power-bi-embedded
 documentationcenter: 
 author: guyinacube
@@ -15,22 +15,22 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 03/11/2017
 ms.author: asaxton
-ms.openlocfilehash: f73bf05b41523a5833cc9366fb84cb7021b4b7a9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c9e3da5f9ae74d221af650adebde7c9d83b38a99
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="toggle-between-view-and-edit-mode-for-reports-in-power-bi-embedded"></a>Alternancia entre los modo de vista y de edición de informes en Power BI Embedded
 
-Aprenda a alternar entre los modos de vista y de edición en los informes de Power BI Embedded.
+Obtenga información acerca de cómo tootoggle entre el modo de ver y editar para los informes en Power BI Embedded.
 
 ## <a name="creating-an-access-token"></a>Creación de un token de acceso
 
-Tendrá que crear un token de acceso que le proporcione la capacidad de ver y editar informes. Para editar y guardar un informe, necesitará el permiso del token **Report.ReadWrite**. Para más información, consulte [Autenticación y autorización con Power BI Embedded](power-bi-embedded-app-token-flow.md).
+Deberá toocreate un token de acceso que proporciona una vista de tooboth de capacidad de Hola y editar un informe. tooedit y guardar un informe, deberá hello **Report.ReadWrite** permiso del token. Para más información, consulte [Autenticación y autorización con Power BI Embedded](power-bi-embedded-app-token-flow.md).
 
 > [!NOTE]
-> Esto le permitirá realizar modificaciones y guardar los cambios en un informe existente. Si también desea la función de admitir **Guardar como**, será preciso que proporcione permisos adicionales. Para más información, consulte [Scopes](power-bi-embedded-app-token-flow.md#scopes) (Ámbitos).
+> Esto le permiten tooedit y guardar los cambios tooan de informe existente. Si también desea que la función hello de admitir **Guardar como**, necesitará permisos adicionales de toosupply. Para más información, consulte [Scopes](power-bi-embedded-app-token-flow.md#scopes) (Ámbitos).
 
 ```
 using Microsoft.PowerBI.Security;
@@ -44,7 +44,7 @@ var token = embedToken.Generate("{access key}");
 
 ## <a name="embed-configuration"></a>Configuración de la inserción
 
-Tendrá que suministrar permisos y una propiedad viewMode para ver el botones de save en modo de edición. Para más información, consulte [Embed configuration details](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details) (Detalles de configuración de la inserción).
+Necesitará permisos de toosupply y un viewMode Hola de orden toosee guardar botón cuando está en modo de edición. Para más información, consulte [Embed configuration details](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details) (Detalles de configuración de la inserción).
 
 Por ejemplo, en JavaScript:
 
@@ -54,7 +54,7 @@ Por ejemplo, en JavaScript:
     // Get models. Models, it contains enums that can be used.
     var models = window['powerbi-client'].models;
 
-    // Embed configuration used to describe the what and how to embed.
+    // Embed configuration used toodescribe hello what and how tooembed.
     // This object is used when calling powerbi.embed.
     // This also includes settings and options such as filters.
     // You can find more information at https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details.
@@ -71,48 +71,48 @@ Por ejemplo, en JavaScript:
         }
     };
 
-    // Get a reference to the embedded report HTML element
+    // Get a reference toohello embedded report HTML element
     var reportContainer = $('#reportContainer')[0];
 
-    // Embed the report and display it within the div container.
+    // Embed hello report and display it within hello div container.
     var report = powerbi.embed(reportContainer, config);
 ```
 
-Esto se indicará para insertar el informe en modo de vista en función del **viewMode** que se establece en **modelos.ViewMode.View**.
+Esto indicará tooembed informe de hello en modo de vista en función del **viewMode** se establece demasiado**modelos. ViewMode.View**.
 
 ## <a name="view-mode"></a>Modo de vista
 
-Si se encuentra en modo de edición, puede usar el siguiente código de JavaScript para cambiar al modo de vista.
+Puede usar Hola después tooswitch de JavaScript en modo de vista, si se encuentra en modo de edición.
 
 ```
-// Get a reference to the embedded report HTML element
+// Get a reference toohello embedded report HTML element
 var reportContainer = $('#reportContainer')[0];
 
-// Get a reference to the embedded report.
+// Get a reference toohello embedded report.
 report = powerbi.get(reportContainer);
 
-// Switch to view mode.
+// Switch tooview mode.
 report.switchMode("view");
 
 ```
 
 ## <a name="edit-mode"></a>Modo de edición
 
-Si se encuentra en modo de vista, puede usar el siguiente código de JavaScript para cambiar al modo de edición.
+Puede usar Hola después tooswitch de JavaScript en modo de edición, si se encuentra en la vista de modo.
 
 ```
-// Get a reference to the embedded report HTML element
+// Get a reference toohello embedded report HTML element
 var reportContainer = $('#reportContainer')[0];
 
-// Get a reference to the embedded report.
+// Get a reference toohello embedded report.
 report = powerbi.get(reportContainer);
 
-// Switch to edit mode.
+// Switch tooedit mode.
 report.switchMode("edit");
 
 ```
 
-## <a name="see-also"></a>Consulte también
+## <a name="see-also"></a>Otras referencias
 
 [Get started with Microsoft Power BI Embedded sample (Introducción a Microsoft Power BI Embedded: ejemplo)](power-bi-embedded-get-started-sample.md)  
 [Embed a report in Power BI Embedded](power-bi-embedded-embed-report.md) (Inserción de un informe en Power BI Embedded)  
@@ -121,4 +121,4 @@ report.switchMode("edit");
 [JavaScript Embed Sample](https://microsoft.github.io/PowerBI-JavaScript/demo/) (Ejemplo de inserción de JavaScript)  
 [Repositorio GIT PowerBI-CSharp](https://github.com/Microsoft/PowerBI-CSharp)  
 [Repositorio GIT PowerBI-Node](https://github.com/Microsoft/PowerBI-Node)  
-¿Tiene más preguntas? [Pruebe la comunidad de Power BI](http://community.powerbi.com/)
+¿Tiene más preguntas? [Intente Hola Comunidad de Power BI](http://community.powerbi.com/)

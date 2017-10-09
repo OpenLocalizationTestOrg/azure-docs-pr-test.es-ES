@@ -1,6 +1,6 @@
 ---
-title: Copiar datos hacia y desde Azure Blob Storage | Microsoft Docs
-description: 'Aprenda a copiar datos de blob en Data Factory de Azure. Use nuestro ejemplo: Copia de datos entre Almacenamiento de blobs de Azure y Base de datos SQL de Azure.'
+title: datos de aaaCopy hacia/desde el almacenamiento de blobs de Azure | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toocopy blob datos en Data Factory de Azure. Utilice nuestro ejemplo: cómo toocopy tooand de datos de almacenamiento de blobs de Azure y base de datos de SQL Azure."
 keywords: datos de blob, copia de blobs de azure
 services: data-factory
 documentationcenter: 
@@ -15,74 +15,74 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jingwang
-ms.openlocfilehash: 2cf955b52010869a4e753c441e17bdd32fd2e63d
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 8428c64e8e8b1084b3f2f680c4e1819559e4ffa3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Copia de datos hacia Azure Blob Storage o desde él con Azure Data Factory
-En este artículo se explica el uso de la actividad de copia en Azure Data Factory para copiar datos hacia Azure Blob Storage y desde este servicio. Se basa en la información general ofrecida en el artículo [Actividades de movimiento de datos](data-factory-data-movement-activities.md).
+# <a name="copy-data-tooor-from-azure-blob-storage-using-azure-data-factory"></a>Copiar datos tooor de almacenamiento de blobs de Azure mediante Data Factory de Azure
+Este artículo explica cómo toouse Hola actividad de copia de Data Factory de Azure toocopy datos tooand desde el almacenamiento de blobs de Azure. Se basa en hello [las actividades de movimiento de datos](data-factory-data-movement-activities.md) artículo, que presenta una descripción general de movimiento de datos con la actividad de copia de Hola.
 
 ## <a name="overview"></a>Información general
-Puede copiar datos de cualquier almacén de datos de origen compatible a Azure Blob Storage o de Azure Blob Storage a cualquier almacén de datos del receptor compatible. En la tabla siguiente se proporciona una lista de almacenes de datos que se admiten como orígenes o receptores de la actividad de copia. Por ejemplo, puede mover datos **de** una base de datos SQL Server o una base de datos Azure SQL **a** una instancia de Azure Blob Storage. Y, puede copiar datos **desde** Azure Blob Storage **hacia** una instancia de Azure SQL Data Warehouse o una colección de Azure Cosmos DB. 
+Puede copiar datos desde cualquier origen compatible almacenan tooAzure almacenamiento de blobs de datos o de datos de receptor de almacenamiento de blobs de Azure tooany admitida almacenan. Hello tabla siguiente proporciona una lista de almacenes de datos que se admiten como orígenes o receptores de actividad de copia de Hola. Por ejemplo, puede mover datos **de** una base de datos SQL Server o una base de datos Azure SQL **a** una instancia de Azure Blob Storage. Y, puede copiar datos **desde** Azure Blob Storage **hacia** una instancia de Azure SQL Data Warehouse o una colección de Azure Cosmos DB. 
 
 ## <a name="supported-scenarios"></a>Escenarios admitidos
-Puede copiar datos **desde Azure Blob Storage** hacia los siguientes almacenes de datos:
+Puede copiar datos **desde el almacenamiento de blobs de Azure** toohello siguientes almacenes de datos:
 
 [!INCLUDE [data-factory-supported-sink](../../includes/data-factory-supported-sinks.md)]
 
-Puede copiar datos desde los siguientes almacenes de datos **hacia Azure Blob Storage**:
+Puede copiar los datos de hello siguientes almacenes de datos **tooAzure almacenamiento de blobs**:
 
 [!INCLUDE [data-factory-supported-sources](../../includes/data-factory-supported-sources.md)]
  
 > [!IMPORTANT]
-> La actividad de copia es compatible con la copia de datos desde y hacia cuentas de Azure Storage de propósito general y el almacenamiento de blobs en frío y en caliente. La actividad admite **leer desde blobs en bloques, en anexos o en páginas**, pero solo permite **escribir en blobs en bloques**. Azure Premium Storage no es compatible como receptor porque está respaldado por blobs en páginas.
+> Actividad de copia es compatible con copia de datos de / tooboth cuentas de almacenamiento de Azure general y estrechamente/estupendo almacenamiento de blobs. admite la actividad Hello **leyendo de bloque, anexar o blobs en páginas**, pero es compatible con **escritura de blobs en bloques tooonly**. Azure Premium Storage no es compatible como receptor porque está respaldado por blobs en páginas.
 > 
-> La actividad de copia no elimina datos del origen una vez copiados los datos correctamente en el destino. Si necesita eliminar datos de origen tras una copia correcta, cree una [actividad personalizada](data-factory-use-custom-activities.md) para tal fin y úsela en la canalización. Para más información, consulte el [ejemplo de eliminación de un blob o una carpeta en GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/DeleteBlobFileFolderCustomActivity). 
+> Actividad de copia no elimina datos de origen de hello después Hola datos están correctamente copiados toohello destino. Si necesita datos de origen de toodelete después de una copia correcta, cree un [actividad personalizada](data-factory-use-custom-activities.md) toodelete Hola datos y usar actividad hello en canalización Hola. Para obtener un ejemplo, vea hello [ejemplo de Delete blob o una carpeta en GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/DeleteBlobFileFolderCustomActivity). 
 
-## <a name="get-started"></a>Introducción
+## <a name="get-started"></a>Primeros pasos
 Puede crear una canalización con actividad de copia que mueva los datos desde Azure Blob Storage o hacia él mediante el uso de diferentes herramientas o API.
 
-La manera más fácil de crear una canalización es usar el **Asistente para copia**. Este artículo tiene un [tutorial](#walkthrough-use-copy-wizard-to-copy-data-tofrom-blob-storage) para crear una canalización para copiar datos entre ubicaciones de Azure Blob Storage. Para ver un tutorial sobre la creación de una canalización para copiar datos desde una instancia de Azure Blob Storage hacia una instancia de Azure SQL Database, consulte [Tutorial: crear una canalización mediante el Asistente para copia](data-factory-copy-data-wizard-tutorial.md).
+toocreate de manera más fácil de Hello una canalización es hello de toouse **Asistente para copiar**. Este artículo tiene un [tutorial](#walkthrough-use-copy-wizard-to-copy-data-tofrom-blob-storage) para crear una canalización de datos de toocopy de un tooanother de ubicación de almacenamiento de blobs de Azure ubicación de almacenamiento de blobs de Azure. Para obtener un tutorial sobre cómo crear un toocopy de datos de canalización desde una base de datos SQL de tooAzure de almacenamiento de blobs de Azure, consulte [Tutorial: crear una canalización mediante el Asistente para copiar](data-factory-copy-data-wizard-tutorial.md).
 
-También puede usar las herramientas siguientes para crear una canalización: **Azure Portal**, **Visual Studio**, **Azure PowerShell**, **plantilla de Azure Resource Manager**, **API de .NET** y **API de REST**. Consulte el [tutorial de actividad de copia](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) para obtener instrucciones paso a paso sobre cómo crear una canalización con una actividad de copia.
+También puede usar Hola después herramientas toocreate una canalización: **portal de Azure**, **Visual Studio**, **Azure PowerShell**, **plantilla del Administrador de recursos de Azure** , **API de .NET**, y **API de REST**. Vea [tutorial de la actividad de copia](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) para obtener instrucciones paso a paso toocreate una canalización con una actividad de copia.
 
-Tanto si usa las herramientas como las API, realice los pasos siguientes para crear una canalización que mueva datos de un almacén de datos de origen a un almacén de datos receptor:
+Si usa herramientas de Hola o las API, realizar Hola siguiendo los pasos toocreate una canalización que mueve el almacén de datos del receptor de tooa del almacén de datos desde un origen de datos:
 
 1. Crear una **factoría de datos**. Una factoría de datos puede contener una o más canalizaciones. 
-2. Cree **servicios vinculados** para vincular almacenes de datos de entrada y salida a la factoría de datos. Por ejemplo, si va a copiar datos desde una instancia de Azure Blob Storage hacia una instancia de Azure SQL Database, creará dos servicios vinculados para vincular la cuenta de Azure Storage y la instancia de Azure SQL Database a su factoría de datos. Para información sobre las propiedades de los servicios vinculados que son específicas de Azure Blob Storage, consulte la sección [Propiedades del servicio vinculado](#linked-service-properties). 
-2. Cree **conjuntos de datos** con el fin de representar los datos de entrada y salida para la operación de copia. En el ejemplo mencionado en el último paso, se crea un conjunto de datos para especificar el contenedor de blobs y la carpeta que contiene los datos de entrada. Además, se crea otro conjunto de datos para especificar la tabla SQL en la instancia de Azure SQL Database que contiene los datos copiados del almacenamiento de blobs. Para información sobre las propiedades del conjunto de datos que son específicas de Azure Blob Storage, consulte la sección [Propiedades del conjunto de datos](#dataset-properties).
-3. Cree una **canalización** con una actividad de copia que tome como entrada un conjunto de datos y un conjunto de datos como salida. En el ejemplo que se ha mencionado anteriormente, se usa BlobSource como origen y SqlSink como receptor para la actividad de copia. De igual forma, si va a copiar desde Azure SQL Database hacia Azure Blob Storage, se usa SqlSource y BlobSink en la actividad de copia. Para información sobre las propiedades de la actividad de copia que son específicas de Azure Blob Storage, consulte la sección [Propiedades de la actividad de copia](#copy-activity-properties). Para más información sobre cómo usar un almacén de datos como origen o como receptor, haga clic en el vínculo de la sección anterior para el almacén de datos.  
+2. Crear **servicios vinculados** factoría de datos de tooyour de almacenes de datos de entrada y salida de toolink. Por ejemplo, si va a copiar datos desde una base de datos de SQL Azure del tooan de almacenamiento blob de Azure, cree dos toolink servicios vinculados su cuenta de almacenamiento de Azure y la factoría de datos de tooyour de base de datos de SQL Azure. Para las propiedades de servicio vinculado que son específico tooAzure almacenamiento de blobs, vea [vinculado propiedades del servicio](#linked-service-properties) sección. 
+2. Crear **conjuntos de datos** toorepresent de entrada y salida la operación de copia de datos de Hola. En el ejemplo de Hola mencionado en el último paso de hello, se crea un contenedor de blobs de hello toospecify de conjunto de datos y la carpeta que contiene los datos de entrada de Hola. Y crear tabla de otro conjunto de datos toospecify Hola SQL en la base de datos de SQL Azure de Hola que contiene los datos de hello copiados desde el almacenamiento de blobs de Hola. Para las propiedades del conjunto de datos que son específico tooAzure almacenamiento de blobs, vea [propiedades de conjunto de datos](#dataset-properties) sección.
+3. Cree una **canalización** con una actividad de copia que tome como entrada un conjunto de datos y un conjunto de datos como salida. En el ejemplo de Hola que se ha mencionado anteriormente, use BlobSource como un origen y SqlSink como un receptor para la actividad de copia de Hola. De forma similar, si va a copiar desde la base de datos de SQL Azure tooAzure almacenamiento de blobs, utilice SqlSource y BlobSink en la actividad de copia de Hola. Para copiar propiedades de actividad que son específico tooAzure almacenamiento de blobs, vea [copiar propiedades de la actividad](#copy-activity-properties) sección. Para obtener detalles sobre cómo toouse un almacén de datos como un origen o un receptor, haga clic en el vínculo de hello en la sección anterior de hello para el almacén de datos.  
 
-Cuando se usa el Asistente, se crean automáticamente definiciones de JSON para estas entidades de Data Factory (servicios vinculados, conjuntos de datos y la canalización). Al usar herramientas o API (excepto la API de .NET), se definen estas entidades de Data Factory con el formato JSON.  Para obtener ejemplos con definiciones de JSON para entidades de Data Factory que se utilizan para copiar datos con Azure Blob Storage como origen y destino, consulte la sección [Ejemplos de JSON](#json-examples-for-copying-data-to-and-from-blob-storage  ) de este artículo.
+Cuando se utiliza el Asistente de hello, las definiciones de JSON para estas entidades de la factoría de datos (servicios vinculados, conjuntos de datos y canalización Hola) se crean automáticamente para usted. Al usar herramientas y API (excepto la API. NET), se definen estas entidades de la factoría de datos con formato JSON de Hola.  Para obtener ejemplos con definiciones de JSON para entidades de la factoría de datos que son utilizados toocopy datos hacia y desde un almacenamiento de blobs de Azure, vea [ejemplos JSON](#json-examples-for-copying-data-to-and-from-blob-storage  ) sección de este artículo.
 
-En las secciones siguientes se proporcionan detalles sobre las propiedades JSON que se usan para definir entidades de Data Factory específicas de Azure Blob Storage.
+Hello las secciones siguientes proporciona detalles acerca de las propiedades JSON que son utilizados toodefine factoría de datos entidades específica tooAzure almacenamiento de blobs.
 
 ## <a name="linked-service-properties"></a>Propiedades del servicio vinculado
-Hay dos tipos de servicios vinculados que puede usar para vincular una instancia de Azure Storage a una instancia de Azure Data Factory. Se trata del servicio vinculado **AzureStorage** y el servicio vinculado **AzureStorageSas**. El servicio vinculado de Almacenamiento de Azure proporciona a la factoría de datos acceso global al Almacenamiento de Azure. Mientras que el servicio vinculado de SAS (firma de acceso compartido) de Almacenamiento de Azure proporciona a la factoría de datos acceso restringido/controlado por tiempo al Almacenamiento de Azure. No existen otras diferencias entre estos dos servicios vinculados. Elija el servicio vinculado que se adapte a sus necesidades. En las siguientes secciones se ofrecen más detalles sobre estos dos servicios vinculados.
+Hay dos tipos de servicios vinculados que se puede usar toolink un generador de datos de Azure de tooan de almacenamiento de Azure. Se trata del servicio vinculado **AzureStorage** y el servicio vinculado **AzureStorageSas**. Hola servicio vinculado de almacenamiento de Azure proporciona factoría de datos de hello con acceso global toohello almacenamiento de Azure. Mientras que vinculado hello Azure almacenamiento SAS (firma de acceso compartido) servicio proporciona factoría de datos de hello con acceso restringido tiempo enlazadas toohello almacenamiento de Azure. No existen otras diferencias entre estos dos servicios vinculados. Elegir servicio de hello vinculado que se adapte a sus necesidades. Hello las secciones siguientes proporcionan más detalles sobre estos dos servicios vinculados.
 
 [!INCLUDE [data-factory-azure-storage-linked-services](../../includes/data-factory-azure-storage-linked-services.md)]
 
 ## <a name="dataset-properties"></a>Propiedades del conjunto de datos
-Para especificar un conjunto de datos para representar datos de entrada o salida en Azure Blob Storage, establezca la propiedad de tipo del conjunto de datos en **AzureBlob**. Establezca la propiedad **linkedServiceName** del conjunto de datos en el nombre del servicio vinculado Azure Storage o SAS de Azure Storage.  Las propiedades de tipo del conjunto de datos especifican el **contenedor de blobs** y la **carpeta** en Blob Storage.
+toospecify un conjunto de datos toorepresent datos de entrada o salidas de un almacenamiento de blobs de Azure, Establece Hola de propiedad de tipo de conjunto de datos de Hola para: **AzureBlob**. Conjunto hello **linkedServiceName** servicio vinculado de propiedad del nombre de toohello de conjunto de datos de Hola de hello almacenamiento de Azure o SAS de almacenamiento de Azure.  propiedades de tipo Hello del conjunto de datos de hello especifican hello **contenedor de blobs** hello y **carpeta** Hola almacenamiento de blobs.
 
-Para obtener una lista completa de las secciones y propiedades JSON disponibles para definir conjuntos de datos, consulte el artículo [Creación de conjuntos de datos](data-factory-create-datasets.md). Las secciones como structure, availability y policy del código JSON del conjunto de datos son similares para todos los tipos de conjunto de datos (SQL Azure, blob de Azure, tabla de Azure, etc.).
+Para obtener una lista completa de secciones JSON y propiedades disponibles para definir conjuntos de datos, vea hello [crear conjuntos de datos](data-factory-create-datasets.md) artículo. Las secciones como structure, availability y policy del código JSON del conjunto de datos son similares para todos los tipos de conjunto de datos (SQL Azure, blob de Azure, tabla de Azure, etc.).
 
-Data factory admite los siguientes valores de tipo basados en .NET compatible con CLS con el fin de proporcionar información de tipos en la sección "structure" del esquema de los orígenes de datos de lectura como un blob de Azure: Int16, Int32, Int64, Single, Double, Decimal, Byte[], Bool, String, Guid, Datetime, Datetimeoffset y Timespan. Data Factory realiza automáticamente las conversiones de tipo al mover datos desde un almacén de datos de origen a un almacén de datos de receptor.
+Factoría de datos admite Hola después de valores de tipo conforme a CLS .NET según para proporcionar información de tipo en "estructura" para orígenes de datos de lectura de esquema como blobs de Azure: Int16, Int32, Int64, Single, Double, Decimal, Byte [], Bool, String, Guid, Datetime, DateTimeOffset, Timespan. Factoría de datos realiza automáticamente las conversiones de tipos al mover el almacén de datos del receptor de tooa del almacén de datos desde un origen de datos.
 
-La sección **typeProperties** es diferente para cada tipo de conjunto de datos y proporciona información acerca de la ubicación, el formato, etc. de los datos del almacén de datos. La sección typeProperties del conjunto de datos de tipo **AzureBlob** tiene las propiedades siguientes:
+Hola **typeProperties** sección es diferente para cada tipo de conjunto de datos y se proporciona información acerca de la ubicación de hello, etc., formato de datos de hello en el almacén de datos de Hola. sección typeProperties Hello para el conjunto de datos de tipo **AzureBlob** conjunto de datos tiene Hola propiedades siguientes:
 
 | Propiedad | Descripción | Obligatorio |
 | --- | --- | --- |
-| folderPath |Ruta de acceso para el contenedor y la carpeta en el almacenamiento de blobs. Ejemplo: myblobcontainer\myblobfolder\ |Sí |
-| fileName |Nombre del blob. La propiedad fileName es opcional y distingue entre mayúsculas y minúsculas.<br/><br/>Si especifica fileName, la actividad (incluida la copia) funciona en el blob específico.<br/><br/>Cuando no se especifica fileName, la copia incluirá todos los blobs de folderPath para el conjunto de datos de entrada.<br/><br/>Si no se especifica **fileName** para un conjunto de datos de salida y no se especifica **preserveHierarchy** en el receptor de actividad, el nombre del archivo generado tendrá el siguiente formato: Data.<Guid>.txt (por ejemplo: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |No |
-| partitionedBy |partitionedBy es una propiedad opcional. Puede usarla para especificar un folderPath dinámico y un nombre de archivo para datos de series temporales. Por ejemplo, se puede parametrizar folderPath por cada hora de datos. Consulte la sección [Uso de la propiedad partitionedBy](#using-partitionedBy-property) para ver información detallada y ejemplos. |No |
-| formato | Se admiten los siguientes tipos de formato: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat** y **ParquetFormat**. Establezca la propiedad **type** de formato en uno de los siguientes valores. Para más información, consulte las secciones [Formato de texto](data-factory-supported-file-and-compression-formats.md#text-format), [Formato Json](data-factory-supported-file-and-compression-formats.md#json-format), [Formato Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [Formato Orc](data-factory-supported-file-and-compression-formats.md#orc-format) y [Formato Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format). <br><br> Si desea **copiar los archivos tal cual** entre los almacenes basados en archivos (copia binaria), omita la sección de formato en las definiciones de los conjuntos de datos de entrada y salida. |No |
-| compresión | Especifique el tipo y el nivel de compresión de los datos. Los tipos admitidos son **GZip**, **Deflate**, **BZip2** y **ZipDeflate**. Los niveles admitidos son **Optimal** y **Fastest**. Para más información, consulte el artículo sobre [formatos de compresión de archivos en Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |No |
+| folderPath |Contenedor de toohello de ruta de acceso y la carpeta en el almacenamiento de blobs de Hola. Ejemplo: myblobcontainer\myblobfolder\ |Sí |
+| fileName |Nombre del blob de Hola. La propiedad fileName es opcional y distingue entre mayúsculas y minúsculas.<br/><br/>Si especifica un nombre de archivo, funciona de la actividad (incluida la copia) de hello en Hola Blob en cuestión.<br/><br/>Cuando no se especifica el nombre de archivo, copia incluye todos los Blobs en folderPath hello para el conjunto de datos de entrada.<br/><br/>Cuando **fileName** no se especifica para un conjunto de datos de salida y **preserveHierarchy** no se especifica en el receptor de actividad, nombre de hello del archivo hello genera sería Hola siguiendo este formato: datos.<Guid>. txt (por ejemplo:: Data.0a405f8a 93ff 4c6f b3be f69616f1df7a.txt |No |
+| partitionedBy |partitionedBy es una propiedad opcional. Se pueden usar toospecify un folderPath dinámica y nombre de archivo de datos de series temporales. Por ejemplo, se puede parametrizar folderPath por cada hora de datos. Vea hello [mediante partitionedBy propiedad sección](#using-partitionedBy-property) para obtener información detallada y ejemplos. |No |
+| formato | se admite los siguientes tipos de formato de Hello: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**,  **ParquetFormat**. Conjunto hello **tipo** propiedad en formato tooone de estos valores. Para más información, consulte las secciones [Formato de texto](data-factory-supported-file-and-compression-formats.md#text-format), [Formato Json](data-factory-supported-file-and-compression-formats.md#json-format), [Formato Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [Formato Orc](data-factory-supported-file-and-compression-formats.md#orc-format) y [Formato Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format). <br><br> Si desea demasiado**copiar archivos como-es** entre los almacenes basados en archivos (copia binaria), omita la sección de formato de hello en ambas definiciones de conjunto de datos de entrada y salida. |No |
+| compresión | Especificar tipo de Hola y el nivel de compresión para datos de Hola. Los tipos admitidos son **GZip**, **Deflate**, **BZip2** y **ZipDeflate**. Los niveles admitidos son **Optimal** y **Fastest**. Para más información, consulte el artículo sobre [formatos de compresión de archivos en Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |No |
 
 ### <a name="using-partitionedby-property"></a>Uso de la propiedad partitionedBy
-Como ya se ha indicado en la sección anterior, se puede especificar un valor dinámico de folderPath y filename para datos de series temporales con la propiedad **partitionedBy**, [funciones de Data Factory y las variables del sistema](data-factory-functions-variables.md).
+Como se mencionó en la sección anterior de hello, puede especificar un folderPath dinámica y el nombre de archivo de datos de serie temporal con hello **partitionedBy** propiedad, [funciones de factoría de datos y las variables del sistema hello](data-factory-functions-variables.md).
 
 Para más información sobre los conjuntos de datos de series temporales, la programación y los segmentos, consulte los artículos [Creación de conjuntos de datos](data-factory-create-datasets.md) y [Programación y ejecución](data-factory-scheduling-and-execution.md).
 
@@ -96,7 +96,7 @@ Para más información sobre los conjuntos de datos de series temporales, la pro
 ],
 ```
 
-En este ejemplo, {Slice} se reemplaza por el valor de la variable del sistema SliceStart de Data Factory en el formato (YYYYMMDDHH) especificado. SliceStart hace referencia a la hora de inicio del segmento. folderPath es diferente para cada segmento. Por ejemplo: wikidatagateway/wikisampledataout/2014100103 o wikidatagateway/wikisampledataout/2014100104
+En este ejemplo, {Slice} se reemplaza con el valor de Hola de variable del sistema SliceStart factoría de datos en formato de hello (AAAAMMDDHH) especificado. Hola SliceStart refiere a tiempo toostart de segmento de Hola. Hola folderPath es diferente para cada segmento. Por ejemplo: wikidatagateway/wikisampledataout/2014100103 o wikidatagateway/wikisampledataout/2014100104
 
 #### <a name="sample-2"></a>Ejemplo 2
 
@@ -115,157 +115,157 @@ En este ejemplo, {Slice} se reemplaza por el valor de la variable del sistema Sl
 En este ejemplo, year, month, day y time de SliceStart se extraen en variables independientes que se usan en las propiedades folderPath y fileName.
 
 ## <a name="copy-activity-properties"></a>Propiedades de la actividad de copia
-Para ver una lista completa de las secciones y propiedades disponibles para definir actividades, consulte el artículo [Creación de canalizaciones](data-factory-create-pipelines.md). Las propiedades (como nombre, descripción, conjuntos de datos de entrada y salida, y directivas) están disponibles para todos los tipos de actividades. Por otra parte, las propiedades disponibles en la sección **typeProperties** de la actividad varían con cada tipo de actividad. Para la actividad de copia, varían en función de los tipos de orígenes y receptores. Si va a mover datos desde un Azure Blob Storage, establezca el tipo de origen en la actividad de copia en **BlobSource**. De igual forma, si va a mover datos desde un Azure Blob Storage, establezca el tipo de receptor en la actividad de copia en **BlobSink**. Esta sección proporciona una lista de propiedades admitidas por BlobSource y BlobSink.
+Para obtener una lista completa de secciones y propiedades disponibles para la definición de actividades, vea hello [crear canalizaciones](data-factory-create-pipelines.md) artículo. Las propiedades (como nombre, descripción, conjuntos de datos de entrada y salida, y directivas) están disponibles para todos los tipos de actividades. Mientras que propiedades disponibles en hello **typeProperties** sección de actividad hello varían con cada tipo de actividad. Para la actividad de copia, varían en función de los tipos de Hola de orígenes y receptores. Si va a mover datos desde un almacenamiento de blobs de Azure, configure tipo de origen de hello en la actividad de copia de hello demasiado**BlobSource**. De forma similar, si va a mover datos tooan almacenamiento de blobs de Azure, Establece el tipo de receptor de hello en actividad de copia de hello demasiado**BlobSink**. Esta sección proporciona una lista de propiedades admitidas por BlobSource y BlobSink.
 
-**BlobSource** admite las siguientes propiedades en la sección **typeProperties**:
-
-| Propiedad | Descripción | Valores permitidos | Obligatorio |
-| --- | --- | --- | --- |
-| recursive |Indica si los datos se leen de forma recursiva de las subcarpetas o solo de la carpeta especificada. |True (valor predeterminado), False |No |
-
-**BlobSink** admite las siguientes propiedades en la sección **typeProperties**:
+**BlobSource** admite Hola propiedades Hola siguientes **typeProperties** sección:
 
 | Propiedad | Descripción | Valores permitidos | Obligatorio |
 | --- | --- | --- | --- |
-| copyBehavior |Define el comportamiento de copia cuando el origen es BlobSource o FileSystem. |<b>PreserveHierarchy:</b> conserva la jerarquía de archivos en la carpeta de destino. La ruta de acceso relativa del archivo de origen que apunta a la carpeta de origen es idéntica a la ruta de acceso relativa del archivo de destino que apunta a la carpeta de destino.<br/><br/><b>FlattenHierarchy:</b> todos los archivos de la carpeta de origen están en el primer nivel de la carpeta de destino. Los archivos de destino tienen un nombre generado automáticamente. <br/><br/><b>MergeFiles:</b> combina todos los archivos de la carpeta de origen en un archivo. Si se especifica el nombre de archivo/blob, el nombre de archivo combinado sería el nombre especificado; de lo contrario, sería el nombre de archivo generado automáticamente. |No |
+| recursive |Indica si hello es leer los datos de forma recursiva de subcarpetas de Hola o solo de carpeta especificada de Hola. |True (valor predeterminado), False |No |
+
+**BlobSink** admite Hola propiedades siguientes **typeProperties** sección:
+
+| Propiedad | Descripción | Valores permitidos | Obligatorio |
+| --- | --- | --- | --- |
+| copyBehavior |Define el comportamiento de la copia de hello al origen de hello es BlobSource o sistema de archivos. |<b>PreserveHierarchy</b>: conserva Hola jerarquía de archivos en la carpeta de destino de Hola. ruta de acceso relativa de Hola de carpeta de origen del archivo toosource es idéntico toohello ruta de acceso relativa de la carpeta de tootarget de archivo de destino.<br/><br/><b>FlattenHierarchy</b>: todos los archivos de la carpeta de origen Hola están en hello primero niveles de carpeta de destino. archivos de destino de Hello tienen nombre generado automáticamente. <br/><br/><b>MergeFiles</b>: combina todos los archivos del archivo de tooone de carpeta de origen de hello. Si se especifica Hola nombre de archivo o Blob, nombre de archivo combinado Hola sería Hola especificado de lo contrario, sería el nombre de archivo generado automáticamente. |No |
 
 **BlobSource** también admite estas dos propiedades para ofrecer compatibilidad con versiones anteriores.
 
-* **treatEmptyAsNull**: especifica si se debe tratar una cadena nula o vacía como un valor nulo.
+* **treatEmptyAsNull**: Especifica si una cadena nula o vacía tootreat como un valor nulo.
 * **skipHeaderLineCount** : especifica cuántas líneas deben omitirse. Es aplicable únicamente cuando el conjunto de datos de entrada usa TextFormat.
 
-De forma similar, **BlobSink** admite la siguiente propiedad para ofrecer compatibilidad con versiones anteriores.
+De forma similar, **BlobSink** admite Hola después de propiedad para la compatibilidad con versiones anteriores.
 
-* **blobWriterAddHeader**: especifica si se debe agregar un encabezado de definiciones de columna al escribir en un conjunto de datos de salida.
+* **blobWriterAddHeader**: Especifica si el conjunto de datos de salida de un encabezado de definiciones de columna al escribir tooan tooadd.
 
-Los conjuntos de datos ahora son compatibles con las siguientes propiedades que implementan la misma funcionalidad: **treatEmptyAsNull**, **skipLineCount**, **firstRowAsHeader**.
+Hola de conjuntos de datos ahora compatibilidad con propiedades que implementan siguientes Hola misma funcionalidad: **treatEmptyAsNull**, **skipLineCount**, **firstRowAsHeader**.
 
-En la tabla siguiente se proporciona orientación sobre cómo utilizar las nuevas propiedades de conjunto de datos en lugar de estas propiedades de origen/receptor de blob.
+Hello tabla siguiente proporciona orientación sobre el uso de propiedades de conjunto de datos nuevo hello en lugar de estas propiedades de origen/receptor de blob.
 
 | Propiedad de la actividad de copia | Propiedad de conjunto de datos |
 |:--- |:--- |
-| skipHeaderLineCount en BlobSource |skipLineCount y firstRowAsHeader. Las líneas se omiten en primer lugar y, a continuación, se lee la primera fila como encabezado. |
+| skipHeaderLineCount en BlobSource |skipLineCount y firstRowAsHeader. Las líneas se omiten en primer lugar y, a continuación, se lee la primera fila de Hola como un encabezado. |
 | treatEmptyAsNull en BlobSource |treatEmptyAsNull en el conjunto de datos de entrada |
 | blobWriterAddHeader en BlobSink |firstRowAsHeader en el conjunto de datos de salida |
 
 Consulte la sección [Especificación de TextFormat](data-factory-supported-file-and-compression-formats.md#text-format) para obtener información detallada acerca de estas propiedades.    
 
 ### <a name="recursive-and-copybehavior-examples"></a>Ejemplos de recursive y copyBehavior
-En esta sección se describe el comportamiento resultante de la operación de copia para diferentes combinaciones de valores recursive y copyBehavior.
+Esta sección describe el comportamiento resultante de Hola de operación de copia de Hola para diferentes combinaciones de valores recursiva y copyBehavior.
 
 | recursive | copyBehavior | Comportamiento resultante |
 | --- | --- | --- |
-| true |preserveHierarchy |Si la carpeta de origen Folder1 tiene esta estructura:  <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>la carpeta de destino Folder1 se crea con la misma estructura que la de origen<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. |
-| true |flattenHierarchy |Si la carpeta de origen Folder1 tiene esta estructura:  <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>la carpeta de destino Folder1 se crea con la estructura siguiente: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Nombre de archivo generado automáticamente para File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Nombre de archivo generado automáticamente para File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Nombre de archivo generado automáticamente para File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;Nombre de archivo generado automáticamente para File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;Nombre de archivo generado automáticamente para File5 |
-| true |mergeFiles |Si la carpeta de origen Folder1 tiene esta estructura:  <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>la carpeta de destino Folder1 se crea con la estructura siguiente: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;El contenido de File1 + File2 + File3 + File4 + File 5 se combina en un archivo con un nombre de archivo generado automáticamente |
-| false |preserveHierarchy |Si la carpeta de origen Folder1 tiene esta estructura:  <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>la carpeta de destino Folder1 se crea con la estructura siguiente<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/><br/><br/>No se selecciona la subcarpeta Subfolder1, que contiene los archivos File3, File4 y File5. |
-| false |flattenHierarchy |Si la carpeta de origen Folder1 tiene esta estructura: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>la carpeta de destino Folder1 se crea con la estructura siguiente<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Nombre de archivo generado automáticamente para File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Nombre de archivo generado automáticamente para File2<br/><br/><br/>No se selecciona la subcarpeta Subfolder1, que contiene los archivos File3, File4 y File5. |
-| false |mergeFiles |Si la carpeta de origen Folder1 tiene esta estructura: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>la carpeta de destino Folder1 se crea con la estructura siguiente<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;El contenido de File1 + File2 se combina en un archivo con un nombre de archivo generado automáticamente. Nombre de archivo generado automáticamente para File1<br/><br/>No se selecciona la subcarpeta Subfolder1, que contiene los archivos File3, File4 y File5. |
+| true |preserveHierarchy |Para una carpeta de origen carpeta1 con hello siguiente estructura: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;File5<br/><br/>se crea la carpeta de destino de Hello carpeta1 con hello misma estructura como origen de Hola<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;File5. |
+| true |flattenHierarchy |Para una carpeta de origen carpeta1 con hello siguiente estructura: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;File5<br/><br/>se crea el destino de Hola carpeta1 con hello siguiente estructura: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Nombre de archivo generado automáticamente para File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Nombre de archivo generado automáticamente para File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Nombre de archivo generado automáticamente para File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;Nombre de archivo generado automáticamente para File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;Nombre de archivo generado automáticamente para File5 |
+| true |mergeFiles |Para una carpeta de origen carpeta1 con hello siguiente estructura: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;File5<br/><br/>se crea el destino de Hola carpeta1 con hello siguiente estructura: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;El contenido de File1 + File2 + File3 + File4 + File 5 se combina en un archivo con un nombre de archivo generado automáticamente |
+| false |preserveHierarchy |Para una carpeta de origen carpeta1 con hello siguiente estructura: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;File5<br/><br/>se crea la carpeta de destino de Hello carpeta1 con hello siguiendo estructura<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/><br/><br/>No se selecciona la subcarpeta Subfolder1, que contiene los archivos File3, File4 y File5. |
+| false |flattenHierarchy |Para una carpeta de origen carpeta1 con hello siguiente estructura:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;File5<br/><br/>se crea la carpeta de destino de Hello carpeta1 con hello siguiendo estructura<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Nombre de archivo generado automáticamente para File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Nombre de archivo generado automáticamente para File2<br/><br/><br/>No se selecciona la subcarpeta Subfolder1, que contiene los archivos File3, File4 y File5. |
+| false |mergeFiles |Para una carpeta de origen carpeta1 con hello siguiente estructura:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;File5<br/><br/>se crea la carpeta de destino de Hello carpeta1 con hello siguiendo estructura<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;El contenido de File1 + File2 se combina en un archivo con un nombre de archivo generado automáticamente. Nombre de archivo generado automáticamente para File1<br/><br/>No se selecciona la subcarpeta Subfolder1, que contiene los archivos File3, File4 y File5. |
 
-## <a name="walkthrough-use-copy-wizard-to-copy-data-tofrom-blob-storage"></a>Tutorial: Uso del Asistente para copia para copiar datos a y desde Blob Storage
-Vamos a ver cómo copiar rápidamente datos a y desde una instancia de Azure Blob Storage. En este tutorial, los almacenes de datos de origen y destino son de tipo: Azure Blob Storage. La canalización en este tutorial copia datos de una carpeta a otra carpeta en el mismo contenedor de blobs. Este tutorial es sencillo a propósito para mostrar sus valores de configuración o propiedades al usar Blob Storage como origen o receptor. 
+## <a name="walkthrough-use-copy-wizard-toocopy-data-tofrom-blob-storage"></a>Tutorial: Datos de toocopy usar el Asistente para copia de almacenamiento de blobs
+Echemos un vistazo a cómo el almacenamiento de blobs tooquickly copiar datos desde un Azure. En este tutorial, los almacenes de datos de origen y destino son de tipo: Azure Blob Storage. Hello canalización en este tutorial copia datos de una carpeta de tooanother en hello mismo contenedor de blob. Este tutorial es deliberadamente simple tooshow valores o propiedades cuando se usa el almacenamiento de blobs como origen o receptor. 
 
 ### <a name="prerequisites"></a>Requisitos previos
-1. Si aún no tiene una, cree una **cuenta de Azure Storage** de uso general. En este tutorial usará el almacenamiento de blobs como almacén de datos de **origen** y **destino**. Si no tiene una cuenta de Almacenamiento de Azure, consulte la sección [Crear una cuenta de almacenamiento](../storage/common/storage-create-storage-account.md#create-a-storage-account) para ver los pasos para su creación.
-2. Cree un contenedor de blobs denominado **adfblobconnector** en la cuenta de almacenamiento. 
-4. Cree una carpeta denominada **entrada** en el contenedor **adfblobconnector**.
-5. Cree un archivo denominado **emp.txt** con el siguiente contenido y cárguelo en la carpeta **entrada** mediante herramientas como el [Explorador de Azure Storage](https://azurestorageexplorer.codeplex.com/).
+1. Si aún no tiene una, cree una **cuenta de Azure Storage** de uso general. Usar el almacenamiento de blobs de hello como **origen** y **destino** almacén de datos en este tutorial. Si no tiene una cuenta de almacenamiento de Azure, vea hello [crear una cuenta de almacenamiento](../storage/common/storage-create-storage-account.md#create-a-storage-account) artículo para toocreate pasos uno.
+2. Crear un contenedor de blobs denominado **adfblobconnector** en la cuenta de almacenamiento de Hola. 
+4. Cree una carpeta denominada **entrada** en hello **adfblobconnector** contenedor.
+5. Cree un archivo denominado **emp.txt** con hello después de contenido y cargarlo toohello **entrada** carpeta mediante herramientas como [Explorador de almacenamiento de Azure](https://azurestorageexplorer.codeplex.com/)
     ```json
     John, Doe
     Jane, Doe
     ```
-### <a name="create-the-data-factory"></a>Creación de la factoría de datos
-1. Inicie sesión en el [Portal de Azure](https://portal.azure.com).
-2. Haga clic en **+ NUEVO** en la esquina superior izquierda, después en **Inteligencia y análisis** y en **Data Factory**.
-3. En la hoja **Nueva factoría de datos** :   
-    1. Escriba **ADFBlobConnectorDF** como **nombre**. El nombre del generador de datos de Azure debe ser único global. Si recibe el siguiente error: `*Data factory name “ADFBlobConnectorDF” is not available`, cambie el nombre de la factoría de datos (por ejemplo, yournameADFBlobConnectorDF) e intente crearla de nuevo. Consulte el tema [Data Factory: reglas de nomenclatura](data-factory-naming-rules.md) para conocer las reglas de nomenclatura para los artefactos de Data Factory.
+### <a name="create-hello-data-factory"></a>Crear Hola factoría de datos
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
+2. Haga clic en **+ nuevo** desde la esquina superior izquierda de hello, haga clic en **Intelligence + análisis**y haga clic en **factoría de datos**.
+3. Hola **factoría de datos** hoja:   
+    1. Escriba **ADFBlobConnectorDF** para hello **nombre**. nombre de Hola Hola Azure factoría de datos debe ser único globalmente. Si recibe el error hello: `*Data factory name “ADFBlobConnectorDF” is not available`, cambiar nombre de Hola Hola factoría de datos (por ejemplo, yournameADFBlobConnectorDF) y pruebe a crear de nuevo. Consulte el tema [Factoría de datos: reglas de nomenclatura](data-factory-naming-rules.md) para las reglas de nomenclatura para los artefactos de Factoría de datos.
     2. Selección la **suscripción**de Azure.
-    3. Para Grupo de recursos, seleccione **Usar el existente** para seleccionar un grupo de recursos existente (o) seleccione **Crear nuevo** para escribir un nombre para un grupo de recursos.
-    4. Seleccione una **ubicación** para la factoría de datos.
-    5. Seleccione la casilla **Anclar al panel** en la parte inferior de la hoja.
+    3. Para el grupo de recursos, seleccione **usar existente** tooselect una existente recursos grupo (o) seleccione **crear nuevo** tooenter un nombre para un grupo de recursos.
+    4. Seleccione un **ubicación** de factoría de datos de Hola.
+    5. Seleccione **toodashboard Pin** casilla situada en la parte inferior de Hola de hoja de Hola.
     6. Haga clic en **Crear**.
-3. Una vez finalizada la creación, puede ver la hoja **Data Factory** como se muestra en la siguiente imagen: ![página principal de Data Factory](./media/data-factory-azure-blob-connector/data-factory-home-page.png)
+3. Una vez completada la creación de hello, vea hello **factoría de datos** hoja como se muestra en hello después de imagen: ![página principal de generador de datos](./media/data-factory-azure-blob-connector/data-factory-home-page.png)
 
 ### <a name="copy-wizard"></a>Asistente para copia
-1. En la página principal de Data Factory, haga clic en el icono **Copy data [PREVIEW]** (Copiar datos) [versión preliminar] para iniciar el **Asistente para copia de datos** en una pestaña aparte.    
+1. En la página de inicio de la factoría de datos de hello, haga clic en hello **copiar datos [vista previa]** icono toolaunch **Asistente para copia de datos** en una pestaña independiente.    
     
     > [!NOTE]
-    >    Si ve que el explorador web está atascado en "Autorizando...", deshabilite o desactive la opción **Block third-party cookies and site data** (Bloquear cookies y datos de sitios de terceros) o déjela habilitada y cree una excepción para **login.microsoftonline.com** e intente volver a iniciar el asistente.
-2. En la página **Propiedades** :
-    1. Escriba **CopyPipeline** en **Task name** (Nombre de tarea). El nombre de la tarea es el nombre de la canalización de la factoría de datos.
-    2. Escriba una **descripción** para la tarea (opcional).
-    3. En **Task cadence or Task schedule** (Cadencia de tareas o programación de tareas), mantenga la opción **Run regularly on schedule** (Copiar datos periódicamente según programación). Si quiere ejecutar esta tarea solo una vez en lugar de ejecutarla varias veces según una programación, seleccione **Run once now** (Ejecutar una vez ahora). Si selecciona la opción **Run once now** (Ejecutar una vez ahora), se crea una [canalización única](data-factory-create-pipelines.md#onetime-pipeline). 
-    4. Conserve el valor de configuración de **Recurring pattern** (Patrón de repetición). Esta tarea se ejecuta diariamente entre las horas de inicio y finalización que especifique en el paso siguiente.
-    5. Cambie la **fecha y hora de inicio** a **04/21/2017**. 
-    6. Cambie la **fecha y hora de finalización** a **04/25/2017**. Puede escribir la fecha en lugar de buscarla en el calendario.     
+    >    Si ve ese explorador web de hello está atascado en "Autorizar …", deshabilite o desactive **bloquear las cookies de terceros y datos de sitio** configuración (o) manténgala habilitada y cree una excepción para **login.microsoftonline.com**y, a continuación, intente iniciar Asistente de Hola de nuevo.
+2. Hola **propiedades** página:
+    1. Escriba **CopyPipeline** en **Task name** (Nombre de tarea). nombre de la tarea de Hello es Hola de canalización de saludo de la factoría de datos.
+    2. Escriba un **descripción** para la tarea de hello (opcional).
+    3. Para **cadencia de tarea o la programación de tareas**, mantener hello **ejecute con regularidad en programación** opción. Si desea que toorun esta tarea solo una vez en lugar de ejecutar repetidamente según una programación, seleccione **ejecutar una vez ahora**. Si selecciona la opción **Run once now** (Ejecutar una vez ahora), se crea una [canalización única](data-factory-create-pipelines.md#onetime-pipeline). 
+    4. Mantener valores de hello para **periódica patrón**. Esta tarea se ejecuta diariamente entre Hola empezar y terminar horas se especifique en el paso siguiente de Hola.
+    5. Hola de cambio **fecha hora de inicio** demasiado**21/04/2017**. 
+    6. Hola de cambio **fecha hora de finalización** demasiado**04/25/2017**. Puede que desee fecha de hello tootype en lugar de examinar calendario Hola.     
     8. Haga clic en **Siguiente**.
       ![Herramienta de copia: Página de propiedades](./media/data-factory-azure-blob-connector/copy-tool-properties-page.png) 
-3. En la página **Almacén de datos de origen**, haga clic en el icono **Azure Blob Storage**. Use esta página para especificar el almacén de datos de origen para la tarea de copia. Puede usar un servicio vinculado del almacén de datos existente, o bien especificar un almacén de datos nuevo. Para usar un servicio vinculado existente, seleccionaría **FROM EXISTING LINKED SERVICES** (DE SERVICIOS VINCULADOS EXISTENTES) y luego el servicio vinculado correcto. 
+3. En hello **almacén de datos de origen** página, haga clic en **almacenamiento de blobs de Azure** icono. Utilice este almacén de datos de origen de página toospecify hello para la tarea de copia de hello. Puede usar un servicio vinculado del almacén de datos existente, o bien especificar un almacén de datos nuevo. servicio vinculado de toouse existente, se debe seleccionar **de existente servicios vinculados** y seleccione Hola derecho servicio vinculado. 
     ![Herramienta de copia: Página de almacén de datos de origen](./media/data-factory-azure-blob-connector/copy-tool-source-data-store-page.png)
-4. En la página **Especificar cuenta de Almacenamiento de blobs de Azure** :
-   1. En **Nombre de la conexión**, mantenga el nombre generado automáticamente. El nombre de conexión es el nombre del servicio vinculado de tipo: Azure Storage. 
+4. En hello **especificar cuenta de almacenamiento de blobs de Azure de hello** página:
+   1. Mantener el nombre generado automáticamente Hola para **nombre de la conexión**. nombre de la conexión de Hello es el nombre de hello del servicio de hello vinculado del tipo: el almacenamiento de Azure. 
    2. Confirme que la opción **De suscripciones de Azure** está seleccionada para **Método de selección de cuenta**.
    3. Seleccione la suscripción de Azure o mantenga **Seleccionar todo** para **Suscripción de Azure**.   
-   4. Seleccione una **cuenta de Azure Storage** en la lista de cuentas de Azure Storage disponibles en la suscripción seleccionada. También puede elegir especificar la configuración de la cuenta de almacenamiento manualmente, para lo que debe seleccionar la opción **Enter manually** (Especificar manualmente) en **Account selection method** (Método de selección de cuenta).
-   5. Haga clic en **Next**. 
-      ![Herramienta de copia: Especificación de la cuenta de Azure Blob Storage](./media/data-factory-azure-blob-connector/copy-tool-specify-azure-blob-storage-account.png)
-5. En la página **Elegir el archivo o la carpeta de entrada** :
+   4. Seleccione un **cuenta de almacenamiento de Azure** de hello cuentas disponible en la suscripción de hello seleccionado lista de almacenamiento de Azure. También puede elegir tooenter configuración de la cuenta de almacenamiento manualmente mediante la selección **escribir manualmente** opción para hello **método de selección de la cuenta**.
+   5. Haga clic en **Siguiente**. 
+      ![Herramienta Copiar: especificar la cuenta de almacenamiento de blobs de Azure Hola](./media/data-factory-azure-blob-connector/copy-tool-specify-azure-blob-storage-account.png)
+5. En **Elegir archivo de entrada de Hola o una carpeta** página:
    1. Haga doble clic en **adfblobcontainer**.
-   2. Seleccione **entrada** y haga clic en **Elegir**. En este tutorial, seleccionará la carpeta de entrada. También podría seleccionar en su lugar el archivo emp.txt de la carpeta. 
-      ![Herramienta de copia: Selección del archivo o la carpeta de entrada](./media/data-factory-azure-blob-connector/copy-tool-choose-input-file-or-folder.png)
-6. En la página **Choose the input file or folder** (Elegir el archivo o la carpeta de entrada):
-    1. Confirme que el **archivo o la carpeta** están establecidos en **adfblobconnector/entrada**. Si los archivos se encuentran en subcarpetas, por ejemplo, 2017/04/01, 2017/04/02, etc., escriba adfblobconnector/entrada/{año}/{mes}/{día} para el archivo o la carpeta. Al presionar la tecla de tabulación fuera del cuadro de texto, verá tres listas desplegables para seleccionar el formato de año (aaaa), meso (MM) y día (dd). 
-    2. No marque la casilla **Copy file recursively** (Copiar archivo de forma recursiva). Seleccione esta opción para recorrer las carpetas de forma recursiva para encontrar los archivos que se van a copiar en el destino. 
-    3. No marque la opción **Binary copy** (Copia binaria). Seleccione esta opción para realizar una copia binaria del archivo de origen en el destino. No la seleccione para este tutorial, así podrá ver más opciones en las páginas siguientes. 
-    4. Confirme que **Compression type** (Tipo de compresión) está establecido en **Ninguno**. Seleccione un valor para esta opción si sus archivos de origen están comprimidos en uno de los formatos admitidos. 
-    5. Haga clic en **Next**.
-    ![Herramienta de copia: Selección del archivo o la carpeta de entrada](./media/data-factory-azure-blob-connector/chose-input-file-folder.png) 
-7. En la página **Configuración de formato de archivo**, verá los delimitadores y el esquema que el asistente detecta automáticamente al analizar el archivo. 
-    1. Confirme las siguientes opciones: a. El **formato de archivo** está establecido en **Formato de texto**. Puede ver todos los formatos admitidos en la lista desplegable. Por ejemplo: JSON, Avro, ORC, Parquet.
-        b. El **delimitador de columnas** está establecido en `Comma (,)`. Puede ver los demás delimitadores de columna compatibles Data Factory en la lista desplegable. También puede especificar un delimitador personalizado.
-        c. El **delimitador de filas** está establecido en `Carriage Return + Line feed (\r\n)`. Puede ver los otros delimitadores de fila admitidos por Data Factory en la lista desplegable. También puede especificar un delimitador personalizado.
-        d. El **número de líneas que se omiten** está establecido en **0**. Si quiere que se omitan algunas líneas al principio del archivo, escriba aquí el número.
-        e.  La casilla **first data row contains column names** (La primera fila de datos contiene nombres de columna) no esta seleccionada. Si los archivos de origen contienen nombres de columna en la primera fila, seleccione esta opción.
-        f. La opción **treat empty column value as null** (Tratar el valor de columna vacío como null) está seleccionada.
-    2. Expanda **Configuración avanzada** para ver las opciones avanzadas disponibles.
-    3. En la parte inferior de la página, obtenga la **vista previa** de datos del archivo emp.txt.
-    4. Haga clic en la pestaña **ESQUEMA** en la parte inferior para ver el esquema que dedujo el Asistente para copia examinando los datos del archivo de origen.
-    5. Haga clic en **Siguiente** después de revisar los delimitadores y obtener una vista previa de los datos.
+   2. Seleccione **entrada** y haga clic en **Elegir**. En este tutorial, se selecciona la carpeta de entrada de Hola. También podría seleccionar archivo de hello emp.txt en la carpeta de hello en su lugar. 
+      ![Herramienta Copiar: elegir el archivo de entrada de Hola o una carpeta](./media/data-factory-azure-blob-connector/copy-tool-choose-input-file-or-folder.png)
+6. En hello **Elegir archivo de entrada de Hola o una carpeta** página:
+    1. Confirme que hello **archivo o carpeta** se establece demasiado**adfblobconnector/entrada**. Si hay archivos de hello en subcarpetas, por ejemplo, de 2017/04/01, 2017/04/02 y así sucesivamente, escriba adfblobconnector/entrada / {year} / {month} / {day} para archivo o carpeta. Al presionar TAB fuera del cuadro de texto hello, verá tres formatos de tooselect listas desplegables para year (aaaa), month (MM) y día (dd). 
+    2. No marque la casilla **Copy file recursively** (Copiar archivo de forma recursiva). Seleccione este recorrido de toorecursively opción a través de las carpetas de destino de archivos toobe toohello copiada. 
+    3. Hola no **copia binaria** opción. Seleccione este tooperform opción una copia binaria del destino de toohello del archivo de origen. No seleccione para este tutorial para que puedan ver más opciones para páginas siguientes del saludo. 
+    4. Confirme que hello **el tipo de compresión** se establece demasiado**ninguno**. Seleccione un valor para esta opción si los archivos de origen están comprimidos en uno de los formatos de hello compatible. 
+    5. Haga clic en **Siguiente**.
+    ![Herramienta Copiar: elegir el archivo de entrada de Hola o una carpeta](./media/data-factory-azure-blob-connector/chose-input-file-folder.png) 
+7. En hello **configuración de formato de archivo** página, verá los delimitadores de Hola y Hola esquema detecta automáticamente por el Asistente de hello bien analizando el archivo hello. 
+    1. Confirmar Hola siguientes opciones: una. Hola **formato de archivo** se establece demasiado**formato de texto**. Puede ver todos los formatos de hello compatibles en la lista desplegable de Hola. Por ejemplo: JSON, Avro, ORC, Parquet.
+        b. Hola **delimitador de columna** se establece demasiado`Comma (,)`. Puede ver Hola otros delimitadores de columna admitidos por factoría de datos en la lista desplegable de Hola. También puede especificar un delimitador personalizado.
+        c. Hola **delimitador de filas** se establece demasiado`Carriage Return + Line feed (\r\n)`. Puede ver Hola otros delimitadores de fila admitidos por factoría de datos en la lista desplegable de Hola. También puede especificar un delimitador personalizado.
+        d. Hola **omitir recuento de líneas** se establece demasiado**0**. Si desea que unos toobe líneas omiten en la parte superior de hello del archivo hello, escriba aquí el número de Hola.
+        e.  Hola **primera fila de datos contiene nombres de columna** no se ha establecido. Si los archivos de origen de hello contienen nombres de columna en la primera fila de hello, seleccione esta opción.
+        f. Hola **tratar el valor de la columna vacía como null** opción está establecida.
+    2. Expanda **configuración avanzada** toosee avanzada opción disponible.
+    3. En parte inferior de Hola de página de hello, vea hello **vista previa** de datos de archivo de hello emp.txt.
+    4. Haga clic en **esquema** pestaña en el esquema de hello inferior toosee Hola ese asistente para copiar de hello inferida examinando datos hello en el archivo de código fuente de Hola.
+    5. Haga clic en **siguiente** después de revisar los delimitadores de Hola y obtener una vista previa de los datos.
     ![Herramienta de copia: Configuración de formato de archivo](./media/data-factory-azure-blob-connector/copy-tool-file-format-settings.png)  
-8. En la página **Destination data store** (Almacén de datos de destino), seleccione **Azure Blob Storage** y haga clic en **Siguiente**. En este tutorial usará Azure Blob Storage como almacén de datos de origen y de destino.    
+8. En hello **página de almacén de datos de destino**, seleccione **almacenamiento de blobs de Azure**y haga clic en **siguiente**. Hola almacenamiento de blobs de Azure que usa como ambos almacenes de datos de origen y destino de hello en este tutorial.    
     ![Herramienta de copia: Selección del almacén de datos de destino](media/data-factory-azure-blob-connector/select-destination-data-store.png)
-9. En la página **Specify the Azure Blob storage account** (Especificar cuenta de Azure Blob Storage):
-   1. Escriba **AzureStorageLinkedService** en el campo **Nombre de la conexión**.
+9. En **especificar cuenta de almacenamiento de blobs de Azure de hello** página:
+   1. Escriba **AzureStorageLinkedService** para hello **nombre de la conexión** campo.
    2. Confirme que la opción **De suscripciones de Azure** está seleccionada para **Método de selección de cuenta**.
    3. Selección la **suscripción**de Azure.  
    4. Seleccione su cuenta de almacenamiento de Azure. 
-   5. Haga clic en **Next**.     
-10. En la página **Choose the output file or folder** (Elegir el archivo o la carpeta de salida): 
+   5. Haga clic en **Siguiente**.     
+10. En hello **Hola Elegir archivo o carpeta de salida** página: 
     6. Especifique la **ruta de acceso de carpeta** como **adfblobconnector/output/{year}/{month}/{day}**. Escriba **TAB**.
-    7. Para el **año**, seleccione **aaaa**.
-    8. Para el **mes**, confirme que está configurado como **MM**.
-    9. Para el **día**, confirme que está configurado como **dd**.
-    10. Confirme que **Compression type** (Tipo de compresión) está establecido en **Ninguno**.
-    11. Confirme que el **comportamiento de copia** está establecido en **Merge files** (Combinar archivos). Si ya existe un archivo de salida con el mismo nombre, el nuevo contenido se agrega al final al mismo archivo.
+    7. Para hello **año**, seleccione **aaaa**.
+    8. Para hello **mes**, confirme que está establecido demasiado**MM**.
+    9. Para hello **día**, confirme que está establecido demasiado**dd**.
+    10. Confirme que hello **el tipo de compresión** se establece demasiado**ninguno**.
+    11. Confirme que hello **Copiar comportamiento** se establece demasiado**combinar archivos**. Si el archivo con hello ya existe el mismo nombre de salida de hello, hello contenido nuevo es agregado toohello mismo archivo al final de Hola.
     12. Haga clic en **Siguiente**.
     ![Herramienta de copia: Selección del archivo o la carpeta de salida](media/data-factory-azure-blob-connector/choose-the-output-file-or-folder.png)
-11. En la página **File format settings** (Configuración de formato de archivo), revise la configuración y haga clic en **Siguiente**. Una de las opciones adicionales aquí es agregar un encabezado al archivo de salida. Si selecciona esta opción, se agrega una fila de encabezado con nombres de las columnas del esquema de origen. Puede cambiar los nombres de columna predeterminados al visualizar el esquema para el origen. Por ejemplo, podría cambiar la primera columna a Nombre y la segunda columna a Apellido. El archivo de salida se genera entonces con un encabezado con estos nombres como nombres de columna. 
+11. En hello **configuración de formato de archivo** página, revise la configuración de Hola y haga clic en **siguiente**. Una de estas opciones adicionales de hello es tooadd un archivo de salida de encabezado toohello. Si selecciona esta opción, se agrega una fila de encabezado con nombres de columnas de hello del esquema de Hola de origen Hola. Puede cambiar los nombres de columna predeterminados de hello al ver el esquema de hello para el origen de Hola. Por ejemplo, puede cambiar Hola primera columna tooFirst nombre y la segunda columna tooLast nombre. A continuación, archivo de salida de hello se genera con un encabezado con estos nombres como nombres de columna. 
     ![Herramienta de copia: Configuración del formato de archivo de destino](media/data-factory-azure-blob-connector/file-format-destination.png)
-12. En la página **Performance settings** (Configuración de rendimiento), confirme que **cloud units** (Unidades de nube) y **parallel copies** (Copias paralelas) están establecidas en **Auto** y haga clic en Siguiente. Para más información sobre esta configuración, consulte [Guía de optimización y rendimiento de la actividad de copia](data-factory-copy-activity-performance.md#parallel-copy).
+12. En hello **configuración de rendimiento** página, confirme que **unidades en la nube** y **copias en paralelo** se establecen demasiado**automática**y haga clic en siguiente. Para más información sobre esta configuración, consulte [Guía de optimización y rendimiento de la actividad de copia](data-factory-copy-activity-performance.md#parallel-copy).
     ![Herramienta de copia: Configuración de rendimiento](media/data-factory-azure-blob-connector/copy-performance-settings.png) 
-14. En la página **Resumen**, revise toda la configuración (propiedades de tareas, configuración de origen y destino y configuración de copia) y haga clic en **Siguiente**.
+14. En hello **resumen** página, revise todas las configuraciones (propiedades de la tarea, configuración de origen y de destino y Copiar configuración) y haga clic en **siguiente**.
     ![Herramienta de copia: Página de resumen](media/data-factory-azure-blob-connector/copy-tool-summary-page.png)
-15. Revise la información de la página **Resumen** y haga clic en **Finalizar**. El asistente crea dos servicios vinculados, dos conjuntos de datos (entrada y salida) y una canalización en la factoría de datos (desde donde se inició al Asistente para copia).
+15. Revise la información en hello **resumen** página y haga clic en **finalizar**. Asistente de Hello crea dos servicios vinculados, dos conjuntos de datos (entrada y salida) y una canalización de factoría de datos de hello (desde donde se haya iniciado Hola Asistente para copiar).
     ![Herramienta de copia: Página de implementación](media/data-factory-azure-blob-connector/copy-tool-deployment-page.png)
 
-### <a name="monitor-the-pipeline-copy-task"></a>Supervisión de la canalización (tarea de copia)
+### <a name="monitor-hello-pipeline-copy-task"></a>Supervisar la canalización de hello (tarea de copia)
 
-1. Haga clic en el vínculo `Click here to monitor copy pipeline` de la página **Implementación**. 
-2. Verá la opción **Monitor and Manage application** (Supervisar y administrar la aplicación) en una pestaña aparte.  ![Supervisar y administrar la aplicación](media/data-factory-azure-blob-connector/monitor-manage-app.png)
-3. Cambie la hora de **inicio** de la parte superior a `04/19/2017` y la hora de **finalización** a `04/27/2017`; a continuación, haga clic en **Aplicar**. 
-4. Verá cinco ventanas de actividad en la lista **ACTIVITY WINDOWS** (VENTANAS DE ACTIVIDAD). Las horas de **WindowStart** deben abarcar todos los días desde las horas de inicio hasta las horas de finalización de la canalización. 
-5. Haga clic en el botón **Actualizar** de la lista **ACTIVITY WINDOWS** (VENTANAS DE ACTIVIDAD) unas cuantas veces hasta que vea el estado de todas las ventanas de actividad establecido en Listo. 
-6. Ahora, compruebe que los archivos de salida se generan en la carpeta de salida del contenedor adfblobconnector. Verá la siguiente estructura de carpetas en la carpeta de salida: 
+1. Haga clic en el vínculo de hello `Click here toomonitor copy pipeline` en hello **implementación** página. 
+2. Debería ver Hola **supervisar y administrar aplicaciones** en una pestaña independiente.  ![Supervisar y administrar la aplicación](media/data-factory-azure-blob-connector/monitor-manage-app.png)
+3. Hola de cambio **iniciar** de demasiado tiempo en la parte superior de hello`04/19/2017` y **final** demasiado tiempo`04/27/2017`y, a continuación, haga clic en **aplicar**. 
+4. Debería ver cinco ventanas de la actividad en hello **WINDOWS actividad** lista. Hola **WindowStart** veces deben cubrir todos los días de horas de finalización de toopipeline de inicio de canalización. 
+5. Haga clic en **actualizar** botón para hello **WINDOWS actividad** lista varias veces hasta que vea Estado Hola de todas las ventanas de la actividad de Hola se establece tooReady. 
+6. Ahora, compruebe que se generan archivos de salida de hello en carpeta de salida de hello de contenedor adfblobconnector. Debería ver Hola siguiendo la estructura de carpetas en la carpeta de salida de hello: 
     ```
     2017/04/21
     2017/04/22
@@ -276,24 +276,24 @@ Vamos a ver cómo copiar rápidamente datos a y desde una instancia de Azure Blo
 Para más información sobre la supervisión y administración de factorías de datos, consulte el artículo [Supervisión y administración de canalizaciones de Data Factory](data-factory-monitor-manage-app.md). 
  
 ### <a name="data-factory-entities"></a>Entidades de Factoría de datos
-Ahora, vuelva a la pestaña con la página principal de Data Factory. Observe que ahora hay en su factoría de datos dos servicios vinculados, dos conjuntos de datos y una canalización. 
+Ahora, cambie toohello back-pestaña con la página principal de hello factoría de datos. Observe que ahora hay en su factoría de datos dos servicios vinculados, dos conjuntos de datos y una canalización. 
 
 ![Página principal de Data Factory con entidades](media/data-factory-azure-blob-connector/data-factory-home-page-with-numbers.png)
 
-Haga clic en **Author and deploy** (Crear e implementar) para iniciar Data Factory Editor. 
+Haga clic en **autor e implementar** toolaunch Editor de generador de datos. 
 
 ![Editor de la Factoría de datos](media/data-factory-azure-blob-connector/data-factory-editor.png)
 
-Verá las siguientes entidades de Data Factory en su factoría de datos: 
+Debería ver Hola siguiendo las entidades de la factoría de datos de la factoría de datos: 
 
- - Dos servicios vinculados. Uno para el origen y el otro para el destino. Ambos servicios vinculados hacen referencia a la misma cuenta de Azure Storage de este tutorial. 
- - Dos conjuntos de datos. Un conjunto de datos de entrada y un conjunto de datos de salida. En este tutorial, ambos usan el mismo contenedor de blobs, pero hacen referencia a carpetas diferentes (entrada y salida).
- - Una canalización. La canalización contiene una actividad de copia que usa un origen de blob y un receptor de blob para copiar datos entre ubicaciones de blob de Azure. 
+ - Dos servicios vinculados. Uno para el origen de Hola y Hola otro destino Hola. Ambos servicios Hola vinculado que hacen referencia toohello misma cuenta de almacenamiento de Azure en este tutorial. 
+ - Dos conjuntos de datos. Un conjunto de datos de entrada y un conjunto de datos de salida. En este tutorial, ambos usan Hola mismo contenedor de blob, pero hacen referencia a las carpetas de toodifferent (entrada y salida).
+ - Una canalización. canalización de Hello contiene una actividad de copia que utiliza un origen de blobs y una blob receptor toocopy de datos de un tooanother de ubicación de blob de Azure ubicación del blob de Azure. 
 
-En las secciones siguientes se proporciona más información sobre estas entidades. 
+Hello las secciones siguientes proporcionan más información acerca de estas entidades. 
 
 #### <a name="linked-services"></a>Servicios vinculados
-Verá dos servicios vinculados. Uno para el origen y el otro para el destino. En este tutorial, ambas definiciones parecen las mismas, si exceptuamos los nombres. El **tipo** del servicio vinculado se establece en **AzureStorage**. La propiedad más importante de la definición del servicio vinculado es **connectionString**, que se usa en Data Factory para la conexión a la cuenta de Azure Storage en tiempo de ejecución. Omita la propiedad hubName en la definición. 
+Verá dos servicios vinculados. Uno para el origen de Hola y Hola otro destino Hola. En este tutorial, ambos buscar definiciones Hola mismo salvo para los nombres de Hola. Hola **tipo** de hello servicio vinculado se establece demasiado**AzureStorage**. Propiedad más importante de la definición del servicio vinculado de hello es hello **connectionString**, que se usa por factoría de datos tooconnect tooyour cuenta de almacenamiento de Azure en tiempo de ejecución. Caso omiso hello hubName propiedad en la definición de Hola. 
 
 ##### <a name="source-blob-storage-linked-service"></a>Servicio vinculado de almacenamiento de blobs de origen
 ```json
@@ -325,11 +325,11 @@ Verá dos servicios vinculados. Uno para el origen y el otro para el destino. En
 Para más información sobre el servicio vinculado Azure Storage, consulte la sección [Propiedades del servicio vinculado](#linked-service-properties). 
 
 #### <a name="datasets"></a>Conjuntos de datos
-Hay dos conjuntos de datos: un conjunto de datos de entrada y un conjunto de datos de salida. El tipo del conjunto de datos está establecido en **AzureBlob** para ambos. 
+Hay dos conjuntos de datos: un conjunto de datos de entrada y un conjunto de datos de salida. tipo de Hello del conjunto de datos de Hola se establece demasiado**AzureBlob** para ambos. 
 
-El conjunto de datos de entrada apunta a la carpeta **entrada** del contenedor de blobs **adfblobconnector**. La propiedad **external** está establecida en **true** para este conjunto de datos ya que los datos no se generan mediante la canalización con la actividad de copia que toma este conjunto de datos como entrada. 
+conjunto de datos de entrada de Hello señala toohello **entrada** carpeta de hello **adfblobconnector** contenedor de blobs. Hola **externo** propiedad se establece demasiado**true** para este conjunto de datos como Hola datos no se crea por canalización Hola con la actividad de copia de Hola que toma este conjunto de datos como entrada. 
 
-El conjunto de datos de salida apunta a la carpeta **salida** del mismo contenedor de blobs. También usa el año, mes y día de la variable del sistema **SliceStart** para evaluar de forma dinámica la ruta de acceso del archivo de salida. Para ver la lista de funciones y variables del sistema que admite Data Factory, consulte [Azure Data Factory: funciones y variables del sistema](data-factory-functions-variables.md). La propiedad **external** está establecida en **false** (valor predeterminado) porque este conjunto de datos lo genera la canalización. 
+Hola toohello de puntos del conjunto de datos de salida **salida** carpeta de hello mismo contenedor de blob. Hello conjunto de datos de salida también utiliza Hola año, mes y día de hello **SliceStart** toodynamically variable del sistema evaluar la ruta de acceso de hello para el archivo de salida de hello. Para ver la lista de funciones y variables del sistema que admite Data Factory, consulte [Azure Data Factory: funciones y variables del sistema](data-factory-functions-variables.md). Hola **externo** propiedad se establece demasiado**false** (valor predeterminado) porque este conjunto de datos generado por la canalización de Hola. 
 
 Para más información sobre las propiedades admitidas por el conjunto de datos de blob de Azure, consulte la sección [Propiedades del conjunto de datos](#dataset-properties).
 
@@ -397,7 +397,7 @@ Para más información sobre las propiedades admitidas por el conjunto de datos 
 ```
 
 #### <a name="pipeline"></a>Canalización
-La canalización tiene una sola actividad. El **tipo** de la actividad se establece en **Copia**.  En las propiedades de tipo de la actividad, hay dos secciones, una para el origen y otra para el receptor. El tipo de origen se establece en **BlobSource** ya que la actividad es copiar datos de un almacenamiento de blobs. El tipo de receptor se establece en **BlobSink** ya que la actividad es copiar datos en un almacenamiento de blobs. La actividad de copia toma InputDataset z4y como entrada y OutputDataset-z4y como salida. 
+canalización de Hello tiene solo una actividad. Hola **tipo** de hello actividad se establece demasiado**copia**.  En Propiedades de tipos de Hola de actividad hello, hay dos secciones, una para el origen y hello otro para el receptor. tipo de origen de Hola se establece demasiado**BlobSource** como actividad hello es copiar datos desde un almacenamiento de blobs. Hello el tipo de receptor se establece demasiado**BlobSink** como actividad hello copiando el almacenamiento de blobs de datos tooa. actividad de copia de Hello toma InputDataset z4y como entrada de Hola y OutputDataset z4y como salida de hello. 
 
 Para más información sobre las propiedades admitidas por BlobSource y BlobSink, consulte la sección [Propiedades de la actividad de copia](#copy-activity-properties). 
 
@@ -454,11 +454,11 @@ Para más información sobre las propiedades admitidas por BlobSource y BlobSink
 }
 ```
 
-## <a name="json-examples-for-copying-data-to-and-from-blob-storage"></a>Ejemplos de JSON para copiar datos hacia y desde Blob Storage  
-En los siguientes ejemplos se proporcionan definiciones JSON que puede usar para crear una canalización mediante [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md) o [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) o [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Muestran cómo copiar datos entre el Almacenamiento de blobs de Azure y la Base de datos SQL de Azure. Sin embargo, los datos se pueden copiar **directamente** de cualquiera de los orígenes a cualquiera de los receptores indicados [aquí](data-factory-data-movement-activities.md#supported-data-stores-and-formats) mediante la actividad de copia en Data Factory de Azure.
+## <a name="json-examples-for-copying-data-tooand-from-blob-storage"></a>Ejemplos JSON para copiar datos tooand del almacenamiento de blobs  
+Hello en los ejemplos siguientes proporcionan las definiciones de JSON de ejemplo que puede utilizar toocreate una canalización mediante [portal de Azure](data-factory-copy-activity-tutorial-using-azure-portal.md) o [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) o [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Muestran cómo toocopy tooand de datos de almacenamiento de blobs de Azure y base de datos de SQL Azure. Sin embargo, se pueden copiar datos **directamente** desde cualquiera de tooany orígenes de receptores de hello indicadas [aquí](data-factory-data-movement-activities.md#supported-data-stores-and-formats) utilizando Hola actividad de copia de factoría de datos de Azure.
 
-### <a name="json-example-copy-data-from-blob-storage-to-sql-database"></a>Ejemplo de JSON: Copia de datos de Blob Storage a SQL Database
-El ejemplo siguiente muestra:
+### <a name="json-example-copy-data-from-blob-storage-toosql-database"></a>Ejemplo JSON: Copiar los datos de almacenamiento de blobs tooSQL base de datos
+Hola el siguiente ejemplo se muestra:
 
 1. Un servicio vinculado de tipo [AzureSqlDatabase](data-factory-azure-sql-connector.md#linked-service-properties).
 2. Un servicio vinculado de tipo [AzureStorage](#linked-service-properties)
@@ -466,7 +466,7 @@ El ejemplo siguiente muestra:
 4. Un [conjunto de datos](data-factory-create-datasets.md) de salida de tipo [AzureSqlTable](data-factory-azure-sql-connector.md#dataset-properties).
 5. Una [canalización](data-factory-create-pipelines.md) con una actividad de copia que usa [BlobSource](#copy-activity-properties) y [SqlSink](data-factory-azure-sql-connector.md#copy-activity-properties).
 
-El ejemplo copia los datos de la serie temporal desde un blob de Azure a una tabla de SQL de Azure cada hora. Las propiedades JSON usadas en estos ejemplos se describen en las secciones que aparecen después de los ejemplos.
+ejemplo de Hola copia datos de serie temporal de una tabla de SQL Azure tooan de blobs de Azure cada hora. propiedades JSON de Hello utilizadas en estos ejemplos se describen en los apartados siguientes a los ejemplos de hello.
 
 **Servicio vinculado SQL de Azure:**
 
@@ -494,11 +494,11 @@ El ejemplo copia los datos de la serie temporal desde un blob de Azure a una tab
   }
 }
 ```
-Azure Data Factory admite dos tipos de servicios vinculados de Azure Storage: **AzureStorage** y **AzureStorageSas**. En el primer caso, especifique la cadena de conexión que incluye la clave de cuenta. En el segundo, especifique el Uri de firma de acceso compartido (SAS). Para más información, consulte la sección [Servicios vinculados](#linked-service-properties).  
+Azure Data Factory admite dos tipos de servicios vinculados de Azure Storage: **AzureStorage** y **AzureStorageSas**. Para Hola primero, especificar cadena de conexión de Hola que incluye la clave de la cuenta de hello y para hello uno posterior, especificar Hola Uri de firma de acceso compartido (SAS). Para más información, consulte la sección [Servicios vinculados](#linked-service-properties).  
 
 **Conjunto de datos de entrada de blob de Azure:**
 
-Los datos se seleccionan de un nuevo blob cada hora (frecuencia: hora, intervalo: 1). La ruta de acceso de la carpeta y el nombre de archivo para el blob se evalúan dinámicamente según la hora de inicio del segmento que se está procesando. La ruta de acceso de la carpeta usa la parte year, month y day de la hora de inicio y el nombre de archivo, la parte hour. El valor "external": "true" informa a Data Factory de que la tabla es externa a la factoría de datos y no la produce ninguna actividad de dicha factoría.
+Los datos se seleccionan de un nuevo blob cada hora (frecuencia: hora, intervalo: 1). Hola ruta de acceso y nombre de la carpeta para el blob de Hola se evalúan dinámicamente en función del tiempo de inicio de Hola de sector de Hola que se está procesando. ruta de acceso de carpeta de Hello utiliza year, month y parte del día de la hora de inicio de Hola y el nombre de archivo usa parte de hora de inicio de Hola Hola. "externo": "true" configuración indica factoría de datos de esa tabla hello es factoría de datos de toohello externos y no se crea una actividad de factoría de datos de Hola.
 
 ```json
 {
@@ -538,7 +538,7 @@ Los datos se seleccionan de un nuevo blob cada hora (frecuencia: hora, intervalo
 ```
 **Conjunto de datos de salida SQL de Azure:**
 
-El ejemplo copia los datos a una tabla denominada "MyTable" en una base de datos SQL de Azure. Cree la tabla en la Base de datos SQL de Azure con el mismo número de columnas que espera que contenga el archivo CSV de blob. Se agregan nuevas filas a la tabla cada hora.
+ejemplo de Hola copia la tabla de tooa de datos denominado "MyTable" en una base de datos de SQL Azure. Crear tabla de hello en la base de datos de SQL Azure con Hola mismo número de columnas, tal como se esperaba toocontain de archivo CSV de Blob de Hola. Se agregan nuevas filas toohello tabla cada hora.
 
 ```json
 {
@@ -558,7 +558,7 @@ El ejemplo copia los datos a una tabla denominada "MyTable" en una base de datos
 ```
 **Una actividad de copia en una canalización con el origen de blob y el receptor SQL:**
 
-La canalización contiene una actividad de copia que está configurada para usar los conjuntos de datos de entrada y de salida y está programada para ejecutarse cada hora. En la definición de JSON de canalización, el tipo **source** se establece en **BlobSource** y el tipo **sink**, en **SqlSink**.
+Hello canalización contiene una actividad de copia que está configurado toouse Hola conjuntos de datos de entrada y salida y está programada toorun cada hora. En la definición de JSON de canalización de hello, Hola **origen** tipo está establecido demasiado**BlobSource** y **receptor** tipo está establecido demasiado**SqlSink**.
 
 ```json
 {  
@@ -605,8 +605,8 @@ La canalización contiene una actividad de copia que está configurada para usar
    }
 }
 ```
-### <a name="json-example-copy-data-from-azure-sql-to-azure-blob"></a>Ejemplo de JSON: Copia de datos de Azure SQL a Azure Blob
-El ejemplo siguiente muestra:
+### <a name="json-example-copy-data-from-azure-sql-tooazure-blob"></a>Ejemplo JSON: Copiar los datos de SQL Azure tooAzure Blob
+Hola el siguiente ejemplo se muestra:
 
 1. Un servicio vinculado de tipo [AzureSqlDatabase](data-factory-azure-sql-connector.md#linked-service-properties).
 2. Un servicio vinculado de tipo [AzureStorage](#linked-service-properties)
@@ -614,7 +614,7 @@ El ejemplo siguiente muestra:
 4. Un [conjunto de datos](data-factory-create-datasets.md) de salida de tipo [AzureBlob](#dataset-properties).
 5. Una [canalización](data-factory-create-pipelines.md) con la actividad de copia que usa [SqlSource](data-factory-azure-sql-connector.md#copy-activity-properties) y [BlobSink](#copy-activity-properties).
 
-El ejemplo copia los datos de la serie temporal desde una tabla de SQL de Azure a un blob de Azure cada hora. Las propiedades JSON usadas en estos ejemplos se describen en las secciones que aparecen después de los ejemplos.
+ejemplo Hello copia datos de serie temporal de un tooan de tabla de SQL Azure blob de Azure cada hora. propiedades JSON de Hello utilizadas en estos ejemplos se describen en los apartados siguientes a los ejemplos de hello.
 
 **Servicio vinculado SQL de Azure:**
 
@@ -642,13 +642,13 @@ El ejemplo copia los datos de la serie temporal desde una tabla de SQL de Azure 
   }
 }
 ```
-Azure Data Factory admite dos tipos de servicios vinculados de Azure Storage: **AzureStorage** y **AzureStorageSas**. En el primer caso, especifique la cadena de conexión que incluye la clave de cuenta. En el segundo, especifique el Uri de firma de acceso compartido (SAS). Para más información, consulte la sección [Servicios vinculados](#linked-service-properties).  
+Azure Data Factory admite dos tipos de servicios vinculados de Azure Storage: **AzureStorage** y **AzureStorageSas**. Para Hola primero, especificar cadena de conexión de Hola que incluye la clave de la cuenta de hello y para hello uno posterior, especificar Hola Uri de firma de acceso compartido (SAS). Para más información, consulte la sección [Servicios vinculados](#linked-service-properties).  
 
 **Conjunto de datos de entrada SQL de Azure:**
 
-El ejemplo supone que ha creado una tabla "MyTable" en SQL de Azure y que contiene una columna denominada "timestampcolumn" para los datos de series temporales.
+ejemplo de Hola se da por supuesto que ha creado una tabla "MyTable" en SQL Azure y contiene una columna denominada "timestampcolumn" para los datos de serie temporal.
 
-Si se establece "external": "true", se informa al servicio Data Factory de que la tabla es externa a la factoría de datos y no la produce ninguna actividad de dicha factoría.
+Establecer "externo": "true" informa a servicio Data Factory esa tabla hello es factoría de datos de toohello externos y no se crea una actividad de factoría de datos de Hola.
 
 ```json
 {
@@ -677,7 +677,7 @@ Si se establece "external": "true", se informa al servicio Data Factory de que l
 
 **Conjunto de datos de salida de blob de Azure:**
 
-Los datos se escriben en un nuevo blob cada hora (frecuencia: hora, intervalo: 1). La ruta de acceso de la carpeta para el blob se evalúa dinámicamente según la hora de inicio del segmento que se está procesando. La ruta de acceso de la carpeta usa las partes year, month, day y hours de la hora de inicio.
+Los datos se escriben tooa nuevo blob cada hora (frecuencia: hora, intervalo: 1). ruta de acceso de carpeta de Hola para blob Hola se evalúa dinámicamente según el tiempo de inicio de Hola de sector de Hola que se está procesando. ruta de acceso de carpeta Hola utiliza elementos de año, mes, día y horas de tiempo de inicio de Hola.
 
 ```json
 {
@@ -711,7 +711,7 @@ Los datos se escriben en un nuevo blob cada hora (frecuencia: hora, intervalo: 1
 
 **Actividad de copia en una canalización con el origen SQL y el receptor de blob:**
 
-La canalización contiene una actividad de copia que está configurada para usar los conjuntos de datos de entrada y de salida y está programada para ejecutarse cada hora. En la definición de la canalización JSON, el tipo **source** se establece en **SqlSource** y el tipo **sink**, en **BlobSink**. La consulta SQL especificada para la propiedad **SqlReaderQuery** selecciona los datos de la última hora que se van a copiar.
+Hello canalización contiene una actividad de copia que está configurado toouse Hola conjuntos de datos de entrada y salida y está programada toorun cada hora. En la definición de JSON de canalización de hello, Hola **origen** tipo está establecido demasiado**SqlSource** y **receptor** tipo está establecido demasiado**BlobSink**. consulta SQL Hola especificada para hello **SqlReaderQuery** propiedad selecciona datos Hola Hola más allá de hora toocopy.
 
 ```json
 {  
@@ -761,7 +761,7 @@ La canalización contiene una actividad de copia que está configurada para usar
 ```
 
 > [!NOTE]
-> Para asignar columnas del conjunto de datos de origen a las del conjunto de datos receptor, consulte el artículo sobre la [asignación de columnas de conjuntos de datos en Azure Data Factory](data-factory-map-columns.md).
+> columnas de toomap de toocolumns de conjunto de datos de origen del conjunto de datos del receptor, consulte [asignar columnas de conjunto de datos de Data Factory de Azure](data-factory-map-columns.md).
 
 ## <a name="performance-and-tuning"></a>Rendimiento y optimización
-Consulte [Guía de optimización y rendimiento de la actividad de copia](data-factory-copy-activity-performance.md) para más información sobre los factores clave que afectan al rendimiento del movimiento de datos (actividad de copia) en Azure Data Factory y las diversas formas de optimizarlo.
+Vea [guía para la optimización y rendimiento de la actividad de copia](data-factory-copy-activity-performance.md) toolearn acerca de la clave de factores que afectan al rendimiento de movimiento de datos (actividad de copia) en la factoría de datos de Azure y toooptimize de diversas maneras.

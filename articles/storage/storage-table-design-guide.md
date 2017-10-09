@@ -1,5 +1,5 @@
 ---
-title: "Guía de diseño de tablas de Azure Storage | Microsoft Docs"
+title: "Guía de diseño de tabla de almacenamiento aaaAzure | Documentos de Microsoft"
 description: "Diseño de tablas escalables y eficientes en Azure Table Storage"
 services: storage
 documentationcenter: na
@@ -14,28 +14,28 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 02/28/2017
 ms.author: jahogg
-ms.openlocfilehash: 5ddb234cc97b3113ec865f97195c871b9f2f40d3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bbac5e83fe994c1ba1408dd43367fbcfca6a2148
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Guía de diseño de tablas de Azure Storage: diseño de tablas escalables y eficientes
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
 
-Para diseñar tablas escalables y de rendimiento debe tener en cuenta una serie de factores, como el rendimiento, la escalabilidad y el coste. Si anteriormente ha diseñado esquemas de bases de datos relacionales, estas consideraciones le serán familiares, pero aunque hay algunas similitudes entre los modelos relacionales y el modelo de almacenamiento de Azure Table service, también existen muchas diferencias importantes. Normalmente, estas diferencias provocan diseños muy diferentes que pueden parecer no intuitivos o incorrectos a alguien que esté familiarizado con las bases de datos relacionales, pero que sí tienen sentido si va a diseñar un almacén de claves/valores de NoSQL como Azure Table service. Muchas de sus diferencias de diseño reflejarán el hecho de que Table service está diseñado para admitir aplicaciones de escala de nube que pueden contener miles de millones de entidades (filas en terminología de base de datos de relación) de datos o de conjuntos de datos que deben ser compatibles con volúmenes de transacciones muy elevadas: por lo tanto, tendrá que pensar cómo almacenar los datos de forma diferente y comprender cómo funciona Table service. Un almacén de datos NoSQL bien diseñado puede permitir a su solución escalar mucho más (y a un costo más bajo) que una solución que utiliza una base de datos relacional. Esta guía le ayuda con estos temas.  
+toodesign escalable y tablas de rendimiento debe tener en cuenta una serie de factores como el rendimiento, escalabilidad y costo. Si previamente ha diseñado esquemas para bases de datos relacionales, estas consideraciones será tooyou familiar, pero aunque hay algunas similitudes entre el modelo de almacenamiento del servicio de tabla de Azure de Hola y modelos relacionales, también hay muchos importante diferencias. Normalmente, estas diferencias provocan toovery distintos diseños que puede ser contraproducente o incorrecto toosomeone familiarizado con bases de datos relacionales, pero que realizar idea clara si está diseñando para un almacén de clave/valor de NoSQL como Hola servicio tabla de Azure. Muchas de sus diferencias de diseño reflejarán Hola ausencia de servicio de la tabla de hello toosupport diseñado aplicaciones de escala de nube que pueden contener miles de millones de entidades (filas en la terminología de base de datos relacional) de datos o conjuntos de datos que debe admitir muy alto volúmenes de transacciones: por lo tanto, necesita toothink diferente sobre cómo almacenar los datos y comprender el funcionamiento de hello servicio tabla. Un almacén de datos NoSQL bien diseñado puede habilitar su tooscale solución mucho más allá (y a un costo menor) a una solución que usa una base de datos relacional. Esta guía le ayuda con estos temas.  
 
-## <a name="about-the-azure-table-service"></a>Acerca de Azure Table service
-En esta sección se resaltan algunas de las características clave de Table service que son especialmente importantes para obtener un diseño que confiera rendimiento y escalabilidad. Si no está familiarizado con Azure Storage y Table service, consulte primero [Introducción a Microsoft Azure Storage](storage-introduction.md) e [Introducción a Azure Table Storage mediante .NET](storage-dotnet-how-to-use-tables.md) antes de leer el resto de este artículo. Aunque esta guía se centra en Table service, incluirá información sobre los servicios Azure Queue y Blob, y cómo usarlos junto con Table service en una solución.  
+## <a name="about-hello-azure-table-service"></a>Acerca de hello servicio tabla de Azure
+Esta sección resalta algunas de hello características clave de servicio de la tabla de Hola que son especialmente relevante toodesigning de rendimiento y escalabilidad. Si está tooAzure nuevo almacenamiento y Hola servicio tabla, primero lea [Introducción tooMicrosoft almacenamiento de Azure](storage-introduction.md) y [Introducción al almacenamiento de tabla de Azure mediante .NET](storage-dotnet-how-to-use-tables.md) antes de leer el resto de Hola de este artículo. Aunque el objetivo de Hola de esta guía se encuentra en hello servicio tabla, se incluyen algunos discusión de hello cola de Azure y servicios de Blob y cómo puede usar junto con hello servicio de tabla en una solución.  
 
-¿Qué es Table service? Como cabría esperar por su nombre, Table service usa un formato tabular para almacenar los datos. En la terminología estándar, cada fila de la tabla representa una entidad y las columnas almacenan las distintas propiedades de la entidad. Cada entidad tiene un par de claves para identificar de forma exclusiva y una columna de marca de tiempo que Table service utiliza para realizar un seguimiento de cuando la entidad se ha actualizado por última vez (esto ocurre automáticamente y no se puede sobrescribir manualmente la marca de tiempo con un valor arbitrario). Table service usa esta última marca de tiempo modificada (LMT) para administrar la simultaneidad optimista.  
+¿Qué es el servicio de la tabla de hello? Como cabría esperar en nombre de hello, Hola servicio tabla utiliza un datos de toostore formato tabular. En la terminología estándar de hello, cada fila de tabla de hello representa una entidad y almacén de columnas de Hola Hola distintas propiedades de esa entidad. Cada entidad tiene un par de claves toouniquely identificarlo y una columna de marca de tiempo que Hola servicio tabla usa tootrack cuando se actualizó por última vez la entidad de hello (Esto ocurre automáticamente y no se puede sobrescribir manualmente Hola marca de tiempo con un valor arbitrario). Hola servicio tabla utiliza esta simultaneidad optimista de toomanage de marca de hora de última modificación (LMT).  
 
 > [!NOTE]
-> Las operaciones de API de REST de Table service también devuelven un valor **ETag** que se deriva del LMT. En este documento se utilizarán los términos ETag y LMT indistintamente porque hacen referencia a los mismos datos subyacentes.  
+> operaciones de API de REST del servicio de tabla de Hello también devuelven un **ETag** valor que se derive de marca de hora de última modificación de hello (LMT). En este documento se usará Hola términos ETag y LMT indistintamente porque hacen referencia toohello mismos datos subyacentes.  
 > 
 > 
 
-En el ejemplo siguiente se muestra el diseño de una tabla sencilla para almacenar las entidades employee y department. Muchos de los ejemplos que se muestran más adelante en esta guía se basan en este diseño simple.  
+Hello en el ejemplo siguiente se muestra un toostore de diseño de tabla simple entidades employee y department. Muchos de los ejemplos de hello que se muestra más adelante en esta guía se basan en este diseño simple.  
 
 <table>
 <tr>
@@ -125,82 +125,82 @@ En el ejemplo siguiente se muestra el diseño de una tabla sencilla para almacen
 </table>
 
 
-Hasta ahora, parece muy similar a una tabla en una base de datos relacional, con las diferencias clave de las columnas obligatorias y la capacidad de almacenar varios tipos de entidad en la misma tabla. Además, cada una de las propiedades definidas por el usuario como **FirstName** o **Age** tienen un tipo de datos, como un número entero o una cadena, como una columna en una base de datos relacional. Aunque a diferencia de una base de datos relacional, la naturaleza sin esquema de Table service significa que una propiedad no necesita tener los mismos tipos de datos en cada entidad. Para almacenar tipos de datos complejos en una sola propiedad, debe utilizar un formato serializado como JSON o XML. Para obtener más información sobre Table service, como los tipos de datos admitidos, los intervalos de fechas admitidos, las reglas de nomenclatura y las restricciones de tamaño, consulte [Introducción al modelo de datos de Table service](http://msdn.microsoft.com/library/azure/dd179338.aspx).
+Hasta ahora, parece muy similar tabla tooa en una base de datos relacional con diferencias clave Hola está Hola columnas obligatorias y hello capacidad toostore varios tipos de entidad en hello misma tabla. Además, cada uno de Hola propiedades definidas por el usuario como **FirstName** o **Age** tiene un tipo de datos, como entero o cadena, simplemente como una columna en una base de datos relacional. Aunque a diferencia de una base de datos relacional, naturaleza sin esquema de Hola de hello significa de servicio de tabla que no necesita tener una propiedad Hola mismo tipo de datos de cada entidad. toostore tipos de datos complejos en una sola propiedad, debe usar un formato serializado como JSON o XML. Para obtener más información acerca de los tipos de datos de servicio como las de tabla de hello, intervalos de fechas admitido, las reglas de nomenclatura y las restricciones de tamaño, vea [Hola de entender el modelo de datos del servicio de tabla](http://msdn.microsoft.com/library/azure/dd179338.aspx).
 
-Como puede ver, la elección del **PartitionKey** y **RowKey** es fundamental para el diseño de tabla válida. Todas las entidades almacenadas en una tabla deben tener una combinación única de **PartitionKey** y **RowKey**. Al igual que con las claves en una tabla de base de datos relacional, los valores **PartitionKey** y **RowKey** están indexados para crear un índice agrupado que permite búsquedas rápidas; sin embargo, Table Service no crea índices secundarios, por lo que estas son las dos únicas propiedades indexadas (algunos de los patrones descritos más adelante muestran cómo evitar esta limitación aparente).  
+Como verá, la elección de **PartitionKey** y **RowKey** es el diseño de tabla toogood fundamentales. Todas las entidades almacenadas en una tabla deben tener una combinación única de **PartitionKey** y **RowKey**. Al igual que con las claves en una tabla de base de datos relacional, Hola **PartitionKey** y **RowKey** valores están indizada toocreate un índice agrupado que permite búsquedas rápidas; sin embargo, Hola servicio tabla no crea ninguno índices secundarios, por lo que se trata de hello solo dos propiedades (para algunos de los patrones de Hola que se describe más adelante, muestran cómo puede solucionar esta limitación aparente) indizan.  
 
-Una tabla está formada por una o varias particiones y, como podrá ver, muchas de las decisiones de diseño que tome estarán relacionadas con la elección de un **PartitionKey** y **RowKey** adecuado para optimizar la solución. Una solución puede constar de solo una única tabla que contenga todas las entidades que se organizan en particiones, pero normalmente las soluciones tendrán varias tablas. Tablas le ayuda a organizar las entidades de manera lógica, le ayudará a administrar el acceso a los datos mediante listas de control de acceso y puede quitar una tabla completa mediante una sola operación de almacenamiento.  
+Una tabla está formada por una o varias particiones, como verá, muchas de hello decisiones de diseño que realice torno eligiendo un adecuado **PartitionKey** y **RowKey** toooptimize la solución. Una solución puede constar de solo una única tabla que contenga todas las entidades que se organizan en particiones, pero normalmente las soluciones tendrán varias tablas. Ayudarle a tablas toologically organizar las entidades, ayudará a administrar toohello el acceso a datos mediante acceso a las listas de control y puede quitar una tabla completa con una sola operación de almacenamiento.  
 
 ### <a name="table-partitions"></a>Particiones de tabla
-El nombre de la cuenta, el nombre de la tabla y **PartitionKey** juntos identifican la partición dentro del servicio de almacenamiento donde Table service almacena la entidad. Además de ser parte del esquema de direccionamiento de las entidades, las particiones definen un ámbito para las transacciones (vea [Transacciones de grupo de entidad](#entity-group-transactions) a continuación) y forman la base de cómo escala Table service. Para obtener más información sobre las particiones, vea [Objetivos de rendimiento y escalabilidad de Azure Storage](storage-scalability-targets.md).  
+nombre de la cuenta de Hello, nombre de tabla y **PartitionKey** juntos identifican la partición de hello en el servicio de almacenamiento de Hola donde el servicio de la tabla de Hola almacena entidad Hola. Además de ser parte del esquema para las entidades de direccionamiento de hello, las particiones definen un ámbito para las transacciones (vea [transacciones de grupo de la entidad](#entity-group-transactions) a continuación) y formulario Hola de cómo el servicio de tabla de hello escala. Para obtener más información sobre las particiones, vea [Objetivos de rendimiento y escalabilidad de Azure Storage](storage-scalability-targets.md).  
 
-En Table service, un nodo individual da servicio a una o más particiones completas y el servicio se escala equilibrando dinámicamente la carga de las particiones entre nodos. Si un nodo está bajo carga, Table Service puede *dividir* el intervalo de particiones atendidas por ese nodo en nodos diferentes; cuando el tráfico disminuye, el servicio puede *combinar* los intervalos de la partición de nodos silenciosos a un único nodo.  
+Hola servicio tabla, un nodo individual de servicios de uno o varios completar las particiones y Hola escalas de servicio mediante Equilibrio de carga de forma dinámica particiones entre nodos. Si un nodo está bajo carga, servicio de la tabla de hello puede *dividir* intervalo Hola de particiones da servicio ese nodo en nodos diferentes; cuando desaparezca el tráfico, puede servicio hello *mezcla* partición Hola comprendido entre nodos silenciosos en un único nodo.  
 
-Para obtener más información acerca de los detalles internos de Table service y saber en particular cómo administra las particiones, consulte el artículo [Microsoft Azure Storage: Un servicio de almacenamiento en la nube altamente disponible con gran coherencia](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).  
+Para obtener más información acerca de Hola servicio tabla Detalles internos de hello y, en particular cómo servicio hello: administra las particiones, vea papel hello [almacenamiento de Microsoft Azure: A altamente disponible en la nube servicio de almacenamiento seguro coherencia](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).  
 
 ### <a name="entity-group-transactions"></a>Transacciones de grupo de entidad
-En Table service, las transacciones de grupo de entidad (EGT) son el único mecanismo integrado para realizar actualizaciones atómicas en varias entidades. Las EGT también se conocen como *transacciones por lotes* en algunos documentos. Las EGT funcionan únicamente en entidades almacenadas en la misma partición (comparten la misma clave de partición en una tabla determinada), por lo que siempre que necesite un comportamiento transaccional atómico a través de varias entidades, debe asegurarse de que las entidades se encuentren en la misma partición. Este suele ser un motivo para mantener varios tipos de entidad en la misma tabla (y partición) y no utilizar varias tablas para diferentes tipos de entidad. Una sola EGT puede operar en 100 entidades como máximo.  Si envía varias EGT simultáneas para procesamiento, es importante asegurarse de que esas EGT no funcionan en las entidades que son comunes en EGT, ya que de lo contrario se puede retrasar el procesamiento.
+Hola servicio tabla, las transacciones de grupo de entidad (EGTs) son el mecanismo de solo integrados de Hola para llevar a cabo actualizaciones atómicas en varias entidades. EGTs también son que se hace referencia tooas *procesar por lotes las transacciones* en algunos documentos. EGTs sólo pueden funcionar en entidades almacenadas en hello misma partición (Hola de recurso compartido misma clave de partición en una tabla determinada), por lo que siempre que necesite comportamiento transaccional atómica a través de varias entidades necesita tooensure que esas entidades se encuentran en hello misma partición. Por lo general, suele ser una razón para conservar varios tipos de entidad en hello misma tabla (y crear particiones) y no utilizar varias tablas para los tipos de entidad diferente. Una sola EGT puede operar en 100 entidades como máximo.  Si envía varios EGTs simultáneas para procesarlo es importante tooensure esas EGTs no funcionar en entidades que son comunes entre EGTs tal y como se puede retrasar el procesamiento en caso contrario.
 
-Las EGT también presentan una desventaja potencial que debe evaluar en su diseño: el uso de más particiones aumentará la escalabilidad de la aplicación porque Azure tiene más oportunidades para equilibrar la carga de solicitudes entre nodos, pero esto podría limitar la capacidad de la aplicación de realizar transacciones atómicas y mantener la coherencia segura para sus datos. Además, existen destinos de escalabilidad específicos en el nivel de una partición que puede limitar el rendimiento de las transacciones que se pueden esperar de un solo nodo. Para más información sobre los objetivos de escalabilidad para las cuentas de Azure Storage y Table Service, consulte [Objetivos de rendimiento y escalabilidad de Azure Storage](storage-scalability-targets.md). En secciones posteriores de esta guía se trata sobre diversas estrategias de diseño que le ayudarán a administrar los inconvenientes de este, y se explica cómo elegir mejor su clave de partición según los requisitos específicos de su aplicación cliente.  
+EGTs también presentan una solución de compromiso potencial para tooevaluate en el diseño: uso más particiones aumentará la escalabilidad de saludo de la aplicación porque Azure tiene más oportunidades para equilibrar las solicitudes en todos los nodos, pero esto podría limitar Hola capacidad de las transacciones atómicas tooperform de aplicación y mantener la coherencia segura para los datos. Además, hay objetivos de escalabilidad específico en el nivel de Hola de una partición que puede limitar el rendimiento de Hola de las transacciones que se pueden esperar de un solo nodo: para obtener más información acerca de los destinos de escalabilidad de Hola para cuentas de almacenamiento de Azure y tabla de Hola servicio, vea [objetivos de rendimiento y escalabilidad de almacenamiento de Azure](storage-scalability-targets.md). En secciones posteriores de esta guía trata sobre diversas estrategias que le ayudarán a administración ventajas e inconvenientes como éste y comente la mejor toochoose su clave de partición basado en requisitos específicos de saludo de la aplicación de cliente de diseño.  
 
 ### <a name="capacity-considerations"></a>Consideraciones de capacidad
-En la tabla siguiente se incluyen algunos de los valores de clave a tener en cuenta al diseñar una solución de Table service:  
+Hello tabla siguiente incluyen algunos toobe de valores de clave de hello en cuenta al diseñar una solución de servicio de tabla:  
 
 | Capacidad total de una cuenta de Azure Storage | 500 TB |
 | --- | --- |
-| Número de tablas en una cuenta de Azure Storage |Solo limitadas por la capacidad de la cuenta de almacenamiento |
-| Número de particiones en una tabla |Solo limitadas por la capacidad de la cuenta de almacenamiento |
-| Número de entidades de una partición |Solo limitadas por la capacidad de la cuenta de almacenamiento |
-| Tamaño de una entidad individual |Hasta 1 MB con un máximo de 255 propiedades (incluyendo **PartitionKey**, **RowKey** y **Timestamp**) |
-| Tamaño de la **PartitionKey** |Una cadena de hasta 1 KB |
-| Tamaño de la **RowKey** |Una cadena de hasta 1 KB |
-| Tamaño de una transacción de un grupo de entidades |Una transacción puede incluir como máximo 100 entidades y la carga debe ser inferior a 4 MB. Un EGT solo puede actualizar una entidad una vez. |
+| Número de tablas en una cuenta de Azure Storage |Limitado solo por la capacidad de Hola de cuenta de almacenamiento de Hola |
+| Número de particiones en una tabla |Limitado solo por la capacidad de Hola de cuenta de almacenamiento de Hola |
+| Número de entidades de una partición |Limitado solo por la capacidad de Hola de cuenta de almacenamiento de Hola |
+| Tamaño de una entidad individual |Una copia de seguridad too1 MB con un máximo de 255 propiedades (incluidos hello **PartitionKey**, **RowKey**, y **Timestamp**) |
+| Tamaño de hello **PartitionKey** |Una cadena de seguridad too1 KB de tamaño |
+| Tamaño de hello **RowKey** |Una cadena de seguridad too1 KB de tamaño |
+| Tamaño de una transacción de un grupo de entidades |Una transacción puede incluir como máximo 100 entidades y carga de hello debe ser inferior a 4 MB de tamaño. Un EGT solo puede actualizar una entidad una vez. |
 
-Para más información, consulte [Descripción del modelo de datos de Table service](http://msdn.microsoft.com/library/azure/dd179338.aspx).  
+Para obtener más información, consulte [Hola de entender el modelo de datos del servicio de tabla](http://msdn.microsoft.com/library/azure/dd179338.aspx).  
 
 ### <a name="cost-considerations"></a>Consideraciones sobre el coste
-El almacenamiento en tablas es relativamente económico, pero debe incluir las estimaciones de costes para el uso de la capacidad y la cantidad de transacciones como parte de la evaluación de cualquier solución que utilice Table service. Sin embargo, en muchos escenarios, el almacenamiento de datos duplicados o sin normalizar para mejorar el rendimiento o la escalabilidad de su solución es un enfoque válido que se puede tomar. Para obtener más información sobre los precios, consulte [Precios de Azure Storage](https://azure.microsoft.com/pricing/details/storage/).  
+Almacenamiento de tabla es relativamente económico, pero debe incluir las estimaciones de costos para ambos cantidad de capacidad de Hola y el uso de transacciones como parte de la evaluación de cualquier solución que utilice el servicio de la tabla de Hola. Sin embargo, en muchos escenarios de almacenamiento de datos duplicados o sin normalizar en hello tooimprove de orden rendimiento o la escalabilidad de la solución es un enfoque válido tootake. Para obtener más información sobre los precios, consulte [Precios de Azure Storage](https://azure.microsoft.com/pricing/details/storage/).  
 
 ## <a name="guidelines-for-table-design"></a>Directrices para el diseño de tablas
-En estas listas se resumen algunas de las instrucciones claves que debe tener en cuenta al diseñar las tablas y esta guía abordará todo con más detalle posteriormente. Estas instrucciones son muy diferentes de las directrices que seguiría normalmente para el diseño de la base de datos relacional.  
+Estas listas resumen algunas de las instrucciones de clave de hello que debe tener en cuenta al diseñar las tablas y, en esta guía se tratarlas en más detalle más adelante en. Estas instrucciones son muy diferentes de directrices de Hola para ello se usaría normalmente para el diseño de la base de datos relacional.  
 
-Diseñe una solución de Table service cuya *lectura* sea eficaz:
+Diseñar la toobe de solución de servicio de tabla *leer* eficaz:
 
-* ***Diseño para realizar consultas en aplicaciones con muchas lecturas.*** Al diseñar las tablas, piense en las consultas (especialmente las sensibles a la latencia) que ejecutará antes de pensar cómo actualizará las entidades. Normalmente esto produce una solución eficiente y de rendimiento.  
-* ***Especificar tanto PartitionKey como RowKey en sus consultas.*** *consultas puntuales* como estas son las consultas más eficaces de Table service.  
-* ***Tenga en cuenta la posibilidad de almacenar copias duplicadas de las entidades.*** El almacenamiento en tablas es barato por lo que puede almacenar la misma entidad varias veces (con claves diferentes) para permitir que se realicen consultas más eficaces.  
-* ***Considere la posibilidad de desnormalizar sus datos.*** El almacenamiento en tablas es barato, por tanto, piense en desnormalizar sus datos. Por ejemplo, almacene entidades de resumen para que las consultas para datos agregados solo necesiten acceder a una única entidad.  
-* ***Use valores de clave compuestos.*** Las únicas claves de las que dispone son **PartitionKey** y **RowKey**. Por ejemplo, s los valores de clave compuestos para habilitar rutas de acceso con clave alternativas a las entidades.  
-* ***Use la proyección de consultas.*** Puede reducir la cantidad de datos que se transfieren a través de la red mediante el uso de consultas que seleccionen solo los campos que necesite.  
+* ***Diseño para realizar consultas en aplicaciones con muchas lecturas.*** Al diseñar las tablas, tenga en cuenta las consultas de hello (especialmente Hola latencia de las minúsculas) que va a ejecutar antes de pensar en cómo se actualizarán las entidades. Normalmente esto produce una solución eficiente y de rendimiento.  
+* ***Especificar tanto PartitionKey como RowKey en sus consultas.*** *Seleccione las consultas* , como se trata de consultas del servicio de tabla más eficaces de Hola.  
+* ***Tenga en cuenta la posibilidad de almacenar copias duplicadas de las entidades.*** Almacenamiento de tabla es barato por lo que puede almacenar Hola misma entidad varias veces (con claves diferentes) tooenable consultas más eficaces.  
+* ***Considere la posibilidad de desnormalizar sus datos.*** El almacenamiento en tablas es barato, por tanto, piense en desnormalizar sus datos. Por ejemplo, almacenar entidades de resumen para que las consultas de datos agregados sólo necesitan tooaccess una sola entidad.  
+* ***Use valores de clave compuestos.*** Hello solo claves tiene son **PartitionKey** y **RowKey**. Por ejemplo, utilice tooentities de rutas de acceso de valores de clave compuesta tooenable acceso con claves alternativas.  
+* ***Use la proyección de consultas.*** Puede reducir la cantidad de Hola de datos que transfieren por red hello mediante el uso de consultas que seleccionan solo los campos de hello que necesarios.  
 
-Diseñe su solución de Table service cuya *escritura* sea eficaz:  
+Diseñar la toobe de solución de servicio de tabla *escribir* eficaz:  
 
-* ***No cree particiones activas.*** Elija claves que le permitan distribuir las solicitudes en varias particiones en cualquier momento.  
-* ***Evite picos de tráfico.*** Equilibre el tráfico en un período de tiempo razonable y evite picos de tráfico.
-* ***No es preciso crear necesariamente una tabla independiente para cada tipo de entidad.*** Cuando necesite transacciones atómicas en los tipos de entidad, puede almacenar estos distintos tipos de entidad en la misma partición de la misma tabla.
-* ***Tenga en cuenta el rendimiento máximo que debe alcanzar.*** Debe tener en cuenta los objetivos de escalabilidad de Table service y asegurarse de que su diseño no los superará.  
+* ***No cree particiones activas.*** Elija las solicitudes de teclas que le permiten toospread en varias particiones en cualquier momento.  
+* ***Evite picos de tráfico.*** Suavizar el tráfico de Hola durante un período razonable de tiempo y evitar picos de tráfico.
+* ***No es preciso crear necesariamente una tabla independiente para cada tipo de entidad.*** Cuando necesite transacciones atómicas en tipos de entidad, puede almacenar estos varios tipos de entidad en hello igual de partición en hello misma tabla.
+* ***Tenga en cuenta que debe lograr el rendimiento máximo Hola.*** Debe tener en cuenta los objetivos de escalabilidad de Hola de hello servicio tabla y asegurarse de que su diseño no hará que tooexceed ellos.  
 
 A medida que lea esta guía, verá ejemplos en los que se ponen en práctica todos estos principios.  
 
 ## <a name="design-for-querying"></a>Diseño de consulta
-Las soluciones de Table service pueden requerir mucha lectura, escritura o una combinación de ambas. Esta sección se centra en los aspectos a tener en cuenta al diseñar Table service para admitir operaciones de lectura de forma eficaz. Normalmente, un diseño que admite operaciones de lectura eficazmente también es eficaz para las operaciones de escritura. Sin embargo, hay algunas consideraciones adicionales que hay que tener en cuenta durante el diseño para admitir operaciones de escritura y que se explican en la siguiente sección, [Diseño para la modificación de datos](#design-for-data-modification).
+Soluciones de servicio de tabla pueden ser lectura intensiva, escritura intensiva o una combinación de hello dos. En esta sección se centra en hello toobear de cosas en cuenta al diseñar su toosupport de servicio de tabla las operaciones de lectura de forma eficaz. Normalmente, un diseño que admite operaciones de lectura eficazmente también es eficaz para las operaciones de escritura. Sin embargo, hay consideraciones adicionales toobear en cuenta al diseñar toosupport escribir operaciones, descritas en la siguiente sección hello, [diseño para la modificación de datos](#design-for-data-modification).
 
-Un buen punto de partida para diseñar la solución de Table service para que pueda leer los datos de manera eficiente es preguntar "¿Qué consultas necesitará ejecutar mi aplicación para recuperar los datos que necesita de Table service?"  
+Un buen punto de partida para diseñar su tooenable de solución de servicio de tabla tooread datos eficazmente están tooask "las consultas que será necesario tooexecute tooretrieve Hola datos de mi aplicación que necesita de hello servicio tabla?"  
 
 > [!NOTE]
-> Con Table service, es importante obtener el diseño correcto por adelantado, ya que resulta difícil y caro cambiarlo posteriormente. Por ejemplo, en una base de datos relacional a menudo resulta posible resolver problemas de rendimiento agregando índices a una base de datos existente: esto no es una opción con Table service.  
+> Con hello servicio tabla, es importante tooget Hola correcto de diseño por adelantado porque es difícil y costosa toochange que más adelante. Por ejemplo, en una base de datos relacional a menudo resulta tooaddress posibles problemas de rendimiento mediante la adición de índices de base de datos existente de tooan: no es una opción con hello servicio tabla.  
 > 
 > 
 
-Esta sección se centra en los problemas clave que se deben solucionar al diseñar las tablas para las consultas. Entre los temas tratados en esta sección se incluyen:
+En esta sección se centra en los problemas clave de Hola que debe tratar al diseñar las tablas para las consultas. Hola los temas tratados en esta sección incluyen:
 
 * [Cómo afecta al rendimiento de las consultas su elección de PartitionKey y RowKey](#how-your-choice-of-partitionkey-and-rowkey-impacts-query-performance)
 * [Elegir un PartitionKey apropiado](#choosing-an-appropriate-partitionkey)
-* [Optimización de consultas para Table service](#optimizing-queries-for-the-table-service)
-* [Ordenación de los datos de Table service](#sorting-data-in-the-table-service)
+* [Optimizar las consultas para hello servicio tabla](#optimizing-queries-for-the-table-service)
+* [Ordenar datos en hello servicio tabla](#sorting-data-in-the-table-service)
 
 ### <a name="how-your-choice-of-partitionkey-and-rowkey-impacts-query-performance"></a>Cómo afecta al rendimiento de las consultas su elección de PartitionKey y RowKey
-Los ejemplos siguientes asumen que Table service almacena las entidades employee con la estructura siguiente (la mayoría de los ejemplos omiten la propiedad **Timestamp** para mayor claridad):  
+Hello en los ejemplos siguientes se suponen servicio de la tabla de hello es almacenar entidades employee con hello siguiendo estructura (la mayoría de los ejemplos de hello omite hello **Timestamp** propiedad por motivos de claridad):  
 
 | *Nombre de la columna* | *Tipo de datos* |
 | --- | --- |
@@ -209,125 +209,125 @@ Los ejemplos siguientes asumen que Table service almacena las entidades employee
 | **Nombre** |String |
 | **Apellidos** |String |
 | **Edad** |Entero |
-| **EmailAddress** |Cadena |
+| **EmailAddress** |String |
 
-En la sección [Descripción general de Table Service](#overview) se describen algunas de las características clave de Azure Table Service que tienen influencia directa en el diseño de la consulta. Estos dan como resultado las siguientes directrices generales para diseñar consultas de Table service. Tenga en cuenta que la sintaxis de filtro utilizada en los ejemplos siguientes es de la API de REST del Table Service. Para más información, consulte [Entidades de consulta](http://msdn.microsoft.com/library/azure/dd179421.aspx).  
+Hola sección anterior [Introducción al servicio tabla de Azure](#overview) se describen algunas características clave Hola de hello servicio tabla de Azure que tienen una influencia directa en el diseño de la consulta. Estos dan como resultado de hello siguiendo las directrices generales para diseñar las consultas del servicio tabla. Tenga en cuenta que es sintaxis de filtro de hello usada en ejemplos de hello siguientes desde el servicio de tabla de hello API de REST, para más información, vea [Query Entities](http://msdn.microsoft.com/library/azure/dd179421.aspx).  
 
-* Una ***consulta de punto*** es la búsqueda más eficaz que puede usar y se recomienda para búsquedas de gran volumen o búsquedas que requieren menor latencia. Este tipo de consulta puede utilizar los índices para localizar una entidad individual con gran eficacia si se especifican los valores **PartitionKey** y **RowKey**. Por ejemplo: $filter=(PartitionKey eq 'Sales') y (RowKey eq '2')  
-* La segunda opción más eficaz es una ***Consulta por rango*** que use **PartitionKey** y filtre un rango de valores **RowKey** para devolver más de una entidad. El valor **PartitionKey** identifica una partición específica y los valores **RowKey** identifican un subconjunto de las entidades de esa partición. Por ejemplo: $filter=PartitionKey eq 'Sales”, RowKey ge 'S' y RowKey lt 'T'  
-* En tercer lugar, tiene un ***Examen de partición*** que usa **PartitionKey** y filtra otra propiedad no clave y que puede devolver más de una entidad. El valor **PartitionKey** identifica una partición específica y los valores de propiedad seleccionan un subconjunto de las entidades de esa partición. Por ejemplo: $filter=PartitionKey eq 'Sales' y LastName eq 'Smith'  
-* Un ***Examen de tabla*** no incluye la **PartitionKey** y es bastante ineficaz, ya que busca en todas las particiones que componen la tabla todas las entidades coincidentes. Realizará un recorrido de tabla independientemente de si su filtro usa **RowKey**. Por ejemplo: $filter=LastName eq 'Jones'  
-* Las consultas que devuelven varias entidades las devuelven ordenadas en orden **PartitionKey** y **RowKey**. Para evitar reordenar las entidades del cliente, seleccione un **RowKey** que defina el criterio de ordenación más común.  
+* A ***punto consulta*** es toouse de búsqueda más eficaz de Hola y se recomienda toobe utilizada para realizar búsquedas de gran volumen o búsquedas que requieren menor latencia. Este tipo de consulta puede utilizan de manera muy eficaz Hola índices toolocate una entidad individual mediante la especificación de ambos Hola **PartitionKey** y **RowKey** valores. Por ejemplo: $filter=(PartitionKey eq 'Sales') y (RowKey eq '2')  
+* En segundo lugar mejor es un ***consulta por rango*** que usa hello **PartitionKey** y filtros en un intervalo de **RowKey** valores tooreturn más de una entidad. Hola **PartitionKey** valor identifica una partición específica y hello **RowKey** valores identifican un subconjunto de las entidades de hello en esa partición. Por ejemplo: $filter=PartitionKey eq 'Sales”, RowKey ge 'S' y RowKey lt 'T'  
+* Tercer lo mejor es un ***partición examinar*** que usa hello **PartitionKey** y filtros en otra propiedad de no son de clave y que pueden devolver más de una entidad. Hola **PartitionKey** valor identifica una partición específica, y seleccione un subconjunto de las entidades de hello en esa partición de valores de propiedad de Hola. Por ejemplo: $filter=PartitionKey eq 'Sales' y LastName eq 'Smith'  
+* A ***Table Scan*** no incluye hello **PartitionKey** y es muy eficaz ya que busca en todas las particiones de Hola que componen la tabla a su vez para todas las entidades coincidentes. Llevará a cabo un recorrido de tabla, independientemente de si su filtro usa hello **RowKey**. Por ejemplo: $filter=LastName eq 'Jones'  
+* Las consultas que devuelven varias entidades las devuelven ordenadas en orden **PartitionKey** y **RowKey**. tooavoid de entidades de hello ordenar de nuevo en el cliente de hello, elija un **RowKey** que define el criterio de ordenación de hello más comunes.  
 
-Tenga en cuenta que si usa un "**or**" para especificar un filtro basado en valores **RowKey**, se generará un examen de partición y no se tratará como una consulta de intervalo. Por lo tanto, debe evitar las consultas que usan filtros como: $filter=PartitionKey eq 'Sales' y (RowKey eq '121' o RowKey eq '322')  
+Tenga en cuenta que cuando se utiliza un "**o**" toospecify un filtro basado en **RowKey** valores da como resultado un examen de la partición y no se trata como una consulta por rango. Por lo tanto, debe evitar las consultas que usan filtros como: $filter=PartitionKey eq 'Sales' y (RowKey eq '121' o RowKey eq '322')  
 
-Para obtener ejemplos de código de cliente que utilizan la biblioteca de clientes de Storage para ejecutar consultas eficaces, consulte:  
+Para obtener ejemplos de código de cliente que usan consultas eficaces de hello biblioteca cliente de almacenamiento tooexecute, consulte:  
 
-* [Ejecutar una consulta de punto mediante la biblioteca de clientes de Storage](#executing-a-point-query-using-the-storage-client-library)
+* [Ejecutar una consulta de punto mediante Hola biblioteca cliente de almacenamiento](#executing-a-point-query-using-the-storage-client-library)
 * [Recuperar varias entidades con LINQ](#retrieving-multiple-entities-using-linq)
 * [Proyección de servidor](#server-side-projection)  
 
-Para obtener ejemplos de código de cliente que pueda administrar varios tipos de entidad almacenados en la misma tabla, consulte:  
+Para obtener ejemplos de código de cliente que puede controlar varios entidad tipos almacenan en hello misma tabla, vea:  
 
 * [Trabajar con tipos de entidad heterogéneos](#working-with-heterogeneous-entity-types)  
 
 ### <a name="choosing-an-appropriate-partitionkey"></a>Elegir un PartitionKey apropiado
-La elección del **PartitionKey** debe equilibrar la necesidad de habilitar el uso de EGT (para garantizar la coherencia) frente a la necesidad de distribuir las entidades en varias particiones (para asegurar que una solución escalable).  
+La elección de **PartitionKey** debe equilibrar Hola necesidad tooenables Hola utilizar EGTs (tooensure coherencia) contra Hola requisito toodistribute las entidades en varias particiones (tooensure una solución escalable).  
 
-En un extremo, puede almacenar todas las entidades en una sola partición, pero esto puede limitar la escalabilidad de su solución y podría impedir a Table service equilibrar la carga de las solicitudes. En el otro extremo, puede almacenar una entidad por cada partición que sería muy escalable y que permite a Table service equilibrar la carga de las solicitudes, pero que podrían impedir que se utilicen transacciones de grupo de la entidad.  
+En un extremo, podría almacenar todas las entidades en una sola partición, pero esto puede limitar la escalabilidad de saludo de la solución y evitaría que servicio de la tabla de Hola se pueda tooload-equilibrar las solicitudes. En hello otro extremo, puede almacenar una entidad por partición, lo que sería muy escalable y lo que permite tooload equilibrar las solicitudes del servicio de tabla hello, pero que impiden que se usan transacciones de grupo de entidad.  
 
-Un **PartitionKey** idóneo es el que permite utilizar consultas eficaces y que tiene suficientes particiones para asegurarse de que su solución es escalable. Normalmente, encontrará que las entidades tendrán una propiedad adecuada que distribuye las entidades entre particiones suficientes.
+Ideal **PartitionKey** es aquel que le permite conseguir consultas eficaces toouse y que tiene suficientes tooensure de particiones, la solución es escalable. Normalmente, encontrará que las entidades tendrán una propiedad adecuada que distribuye las entidades entre particiones suficientes.
 
 > [!NOTE]
-> Por ejemplo, en un sistema que almacena información acerca de los usuarios o empleados, el identificador del usuario puede ser un buen PartitionKey. Puede que tenga varias entidades que utilizan un determinado identificador de usuario como clave de partición. Cada entidad que almacena los datos de un usuario se agrupa en una sola partición y, de esta manera estas entidades están accesibles a través de las transacciones de grupo de entidad, y continúan siendo altamente escalables.
+> Por ejemplo, en un sistema que almacena información acerca de los usuarios o empleados, el identificador del usuario puede ser un buen PartitionKey. Puede tener varias entidades que utilizan un determinado identificador de usuario como clave de partición de Hola. Cada entidad que almacena los datos de un usuario se agrupa en una sola partición y, de esta manera estas entidades están accesibles a través de las transacciones de grupo de entidad, y continúan siendo altamente escalables.
 > 
 > 
 
-Existen otros puntos adicionales que se tienen en cuenta al elegir **PartitionKey** y que están relacionados con la forma de insertar, actualizar y eliminar entidades: consulte la sección [Diseño de modificación de datos](#design-for-data-modification) .  
+Existen consideraciones adicionales en su elección de **PartitionKey** que relacionan toohow se insertar, actualizar y eliminar entidades: consulte la sección de hello [diseño para la modificación de datos](#design-for-data-modification) a continuación.  
 
-### <a name="optimizing-queries-for-the-table-service"></a>Optimización de consultas para Table service
-Table Service indexará automáticamente las entidades mediante los valores **PartitionKey** y **RowKey** en un índice agrupado único, por lo tanto, este es el motivo por el que las consultas de punto son las más eficaces. Sin embargo, no hay ningún índice distinto del índice agrupado en **PartitionKey** y **RowKey**.
+### <a name="optimizing-queries-for-hello-table-service"></a>Optimizar las consultas para hello servicio tabla
+Hola servicio tabla indizará automáticamente las entidades con hello **PartitionKey** y **RowKey** valores en un índice clúster único, por lo tanto, Hola motivo que las consultas de punto se Hola toouse más eficaz . Sin embargo, no hay ningún índice distinto en el índice agrupado de hello en hello **PartitionKey** y **RowKey**.
 
-Muchos diseños deben cumplir los requisitos para habilitar la búsqueda de entidades según varios criterios. Por ejemplo, localizar las entidades employee en función de correo electrónico, Id. de empleado o apellido. Los siguientes patrones de la sección [Patrones de diseño de tabla](#table-design-patterns) tratan estos tipos de requisitos y describen las formas de solucionar el hecho de que Table Service no proporciona índices secundarios:  
+Muchos diseños deben cumplir con búsqueda de tooenable requisitos de entidades basándose en varios criterios. Por ejemplo, localizar las entidades employee en función de correo electrónico, Id. de empleado o apellido. Hola siguientes patrones en la sección de hello [patrones de diseño de tabla](#table-design-patterns) tratar estos tipos de requisito y se describen las formas de trabajar con los hechos de Hola que el servicio de la tabla de Hola no proporciona índices secundarios:  
 
-* [Patrón de índice secundario dentro de la partición](#intra-partition-secondary-index-pattern): almacenar varias copias de cada entidad con diferentes valores **RowKey** (en la misma partición) para habilitar búsquedas rápidas y eficaces y ordenaciones alternativas mediante el uso de diferentes valores **RowKey**.  
-* [Patrón de índice secundario entre particiones](#inter-partition-secondary-index-pattern): almacenar varias copias de cada entidad con diferentes valores RowKey en particiones o en tablas independientes para habilitar búsquedas rápidas y eficaces y ordenaciones alternativas mediante el uso de diferentes valores **RowKey**.  
-* [Patrón de entidades de índice](#index-entities-pattern): mantener las entidades de índice para habilitar búsquedas eficaces que devuelvan listas de entidades.  
+* [Patrón de índice secundario intra-partition](#intra-partition-secondary-index-pattern) -almacenar varias copias de cada entidad con diferentes **RowKey** valores (Hola misma partición) tooenable rápidos y eficaces búsquedas y ordenación alternativa se ordena mediante el uso de diferentes **RowKey** valores.  
+* [Patrón de índice secundario de partición entre](#inter-partition-secondary-index-pattern) : almacenar varias copias de cada entidad con distintos valores de RowKey en particiones independientes o en tablas independientes tooenable rápida y búsquedas eficaces y ordenación alternativo se ordena mediante el uso de diferentes **RowKey** valores.  
+* [Patrón de entidades de índice](#index-entities-pattern) -mantener el índice entidades tooenable búsquedas eficaces que devuelven listas de entidades.  
 
-### <a name="sorting-data-in-the-table-service"></a>Ordenación de los datos de Table service
-Table Service devuelve entidades ordenadas en orden ascendente según **PartitionKey** y, a continuación, por **RowKey**. Estas claves son valores de cadena y para asegurarse de que los valores numéricos se ordenen correctamente, debe convertirlos a una longitud fija y rellenarlos con ceros. Por ejemplo, si el valor de identificador de empleado que utiliza como **RowKey** es un valor entero, debe convertir el identificador de empleado **123** en **00000123**.  
+### <a name="sorting-data-in-hello-table-service"></a>Ordenar datos en hello servicio tabla
+Hola servicio tabla devuelve las entidades que se ordenan en orden ascendente según **PartitionKey** y, a continuación, por **RowKey**. Estas claves son valores de cadena y tooensure que los valores numéricos se ordenan correctamente, debe convertirlos tooa fijada de longitud y ellos rellenar con ceros. Por ejemplo, si hello valor de identificador de empleado use como hello **RowKey** es un valor entero, se debe convertir el Id. de empleado **123** demasiado**00000123**.  
 
-Muchas aplicaciones tienen requisitos para utilizar datos ordenados en distintos órdenes: por ejemplo, ordenar los empleados por su nombre o por su fecha de contratación. Los patrones siguientes de la sección [Patrones de diseño de tabla](#table-design-patterns) tratan cómo alternar órdenes de clasificación para sus entidades:  
+Muchas aplicaciones tienen requisitos toouse datos ordenan en un orden diferente: por ejemplo, ordenar los empleados por su nombre, o mediante la combinación de fecha. Hola siguientes patrones en la sección de hello [patrones de diseño de tabla](#table-design-patterns) cómo tooalternate criterios de ordenación para las entidades de direcciones:  
 
-* [Patrón de índice secundario dentro de la partición](#intra-partition-secondary-index-pattern): almacenar varias copias de cada entidad con diferentes valores RowKey (en la misma partición) para habilitar búsquedas rápidas y eficaces y ordenaciones alternativas mediante el uso de diferentes valores RowKey.  
-* [Patrón de índice secundario entre particiones](#inter-partition-secondary-index-pattern): almacenar varias copias de cada entidad con diferentes valores RowKey en particiones en tablas independientes para habilitar búsquedas rápidas y eficaces y ordenaciones alternativas mediante el uso de diferentes valores RowKey.
-* [Patrón final del registro](#log-tail-pattern): recupere las entidades *n* agregadas recientemente a una partición utilizando un valor **RowKey** que se clasifique en orden de fecha y hora inverso.  
+* [Patrón de índice secundario intra-partition](#intra-partition-secondary-index-pattern) -almacenar varias copias de cada entidad con distintos valores de RowKey (Hola misma partición) tooenable rápidos y eficaces búsquedas y ordenación alternativa ordena utilizando diferentes valores de RowKey.  
+* [Patrón de índice secundario de partición entre](#inter-partition-secondary-index-pattern) : almacenar varias copias de cada entidad con distintos valores de RowKey en particiones independientes en tablas independientes tooenable rápida y búsquedas eficaces y ordenación alternativo se ordena mediante el uso de diferentes RowKey valores.
+* [Patrón de final del registro](#log-tail-pattern) -recuperar hello  *n*  entidades agregan más recientemente tooa partición mediante el uso de un **RowKey** valor que ordena en fecha inversa y orden cronológico.  
 
 ## <a name="design-for-data-modification"></a>Diseño para la modificación de datos
-Esta sección se centra en las consideraciones de diseño para optimizar las inserciones, actualizaciones y eliminaciones. En algunos casos, deberá evaluar el equilibrio entre los diseños que se optimizan para realizar una consulta en diseños que optimizan la modificación de datos como lo hace usted en los diseños de bases de datos relacionales (aunque las técnicas para administrar las ventajas y desventajas de diseño son diferentes en una base de datos relacional). En la sección [Patrones de diseño de tabla](#table-design-patterns) se describen algunos modelos de diseño detallados para Table service y se destacan algunas de estas ventajas e inconvenientes. En la práctica, encontrará que muchos diseños optimizados para consultar entidades también funcionan bien para la modificación de entidades.  
+En esta sección se centra en las consideraciones de diseño de Hola para optimizar las inserciones, actualizaciones y eliminaciones. En algunos casos, será necesario ventajas y desventajas de tooevaluate Hola entre los diseños que optimizar para realizar una consulta en diseños de optimizar la modificación de datos tal como se hace en diseños de bases de datos relacionales (aunque Hola de técnicas de Hola para administrar el diseño ventajas e inconvenientes son diferentes en una base de datos relacional). Hola sección [patrones de diseño de tabla](#table-design-patterns) se describen algunos modelos de diseño detallado de hello servicio tabla y destaca algunas de estas ventajas e inconvenientes. En la práctica, encontrará que muchos diseños optimizados para consultar entidades también funcionan bien para la modificación de entidades.  
 
-### <a name="optimizing-the-performance-of-insert-update-and-delete-operations"></a>Optimizar el rendimiento de las operaciones de inserción, actualización y eliminación
-Para actualizar o eliminar una entidad, debe poder identificarla mediante el uso de los valores **PartitionKey** y **RowKey**. En este sentido, la elección de **PartitionKey** y **RowKey** para modificar entidades debería seguir criterios similares a su elección para admitir consultas de punto porque desea identificar las entidades de la forma más eficaz posible. No desea utilizar un examen ineficaz de partición o de tabla para buscar una entidad con el fin de detectar los valores **PartitionKey** y **RowKey** que necesita actualizar o eliminar.  
+### <a name="optimizing-hello-performance-of-insert-update-and-delete-operations"></a>Optimizar el rendimiento de Hola de insertar, actualizar y eliminar operaciones
+tooupdate o eliminar una entidad, debe ser capaz de tooidentify mediante hello **PartitionKey** y **RowKey** valores. En este sentido, la elección de **PartitionKey** y **RowKey** modificar entidades debe seguir similar criterios tooyour elección toosupport seleccione consultas ya que desea que las entidades de tooidentify como más eficaz posible. No desea toouse una toolocate de examen ineficaz de partición o tabla de una entidad en Hola de orden toodiscover **PartitionKey** y **RowKey** valores necesita tooupdate o eliminarlo.  
 
-Los modelos siguientes de la sección [Patrones de diseño de tabla](#table-design-patterns) tratan la optimización del rendimiento o la inserción, actualización y las operaciones de eliminación:  
+Hola siguientes patrones en la sección de hello [patrones de diseño de tabla](#table-design-patterns) dirección de optimizar el rendimiento de Hola o la inserción, actualización y las operaciones de eliminación:  
 
-* [Patrón de eliminación de gran volumen](#high-volume-delete-pattern): habilitar la eliminación de un gran volumen de entidades mediante el almacenamiento de todas las entidades para su eliminación simultánea en su propia tabla independiente; elimine las entidades mediante la eliminación de la tabla.  
-* [Patrón de serie de datos](#data-series-pattern): almacenar una serie de datos completa en una sola entidad para minimizar el número de solicitudes que realice.  
-* [Patrón de entidades amplio](#wide-entities-pattern): usar varias entidades físicas para almacenar entidades lógicas con más de 252 propiedades.  
-* [Patrón de entidades de gran tamaño](#large-entities-pattern): use Blob Storage para almacenar valores de propiedad de gran tamaño.  
+* [Eliminación del modelo de gran volumen](#high-volume-delete-pattern) -habilitar la eliminación de Hola de un gran volumen de entidades mediante el almacenamiento de todas las entidades de Hola para su eliminación simultánea en su propia tabla independiente; debe eliminar entidades de hello mediante la eliminación de la tabla de Hola.  
+* [Modelo de serie de datos](#data-series-pattern) -series de datos completa de almacén en un número de entidad única toominimize Hola de solicitudes que realice.  
+* [Patrón de entidades amplia](#wide-entities-pattern) -usar varias entidades lógicas toostore de entidades físicas con más de 252 propiedades.  
+* [Patrón de entidades de gran tamaño](#large-entities-pattern) -valores de propiedad grande de toostore de almacenamiento de blob de uso.  
 
 ### <a name="ensuring-consistency-in-your-stored-entities"></a>Garantizar la coherencia en las entidades almacenadas
-El otro factor clave que afecta a su elección de claves para optimizar las modificaciones de datos es cómo garantizar la coherencia mediante el uso de transacciones atómicas. Solo puede utilizar un EGT para operar en las entidades almacenadas en la misma partición.  
+Hola otro factor clave que influye en la elección de las claves para optimizar las modificaciones de datos es cómo tooensure coherencia mediante el uso de transacciones atómicas. Solo puede usar un toooperate EGT en entidades almacenadas en hello misma partición.  
 
-Los siguientes patrones de la sección [Patrones de diseño de tabla](#table-design-patterns) tratan la administración de coherencia:  
+Hola siguientes patrones en la sección de hello [patrones de diseño de tabla](#table-design-patterns) administrar la coherencia de dirección:  
 
-* [Patrón de índice secundario dentro de la partición](#intra-partition-secondary-index-pattern): almacenar varias copias de cada entidad con diferentes valores **RowKey** (en la misma partición) para habilitar búsquedas rápidas y eficaces y ordenaciones alternativas mediante el uso de diferentes valores **RowKey**.  
-* [Patrón de índice secundario entre particiones](#inter-partition-secondary-index-pattern): almacenar varias copias de cada entidad con diferentes valores RowKey en particiones o en tablas independientes para habilitar búsquedas rápidas y eficaces y ordenaciones alternativas mediante el uso de diferentes valores **RowKey** .  
-* [Patrón final coherente de transacciones](#eventually-consistent-transactions-pattern): habilitar el comportamiento final coherente a través de límites de partición o los límites del sistema de almacenamiento mediante el uso de las colas de Azure.
-* [Patrón de entidades de índice](#index-entities-pattern): mantener las entidades de índice para habilitar búsquedas eficaces que devuelvan listas de entidades.  
-* [Patrón de desnormalización](#denormalization-pattern): combinar datos relacionados entre sí en una sola entidad para recuperar todos los datos que necesita con una consulta de punto único.  
-* [Patrón de serie de datos](#data-series-pattern): almacenar una serie de datos completa en una sola entidad para minimizar el número de solicitudes que realice.  
+* [Patrón de índice secundario intra-partition](#intra-partition-secondary-index-pattern) -almacenar varias copias de cada entidad con diferentes **RowKey** valores (Hola misma partición) tooenable rápidos y eficaces búsquedas y ordenación alternativa se ordena mediante el uso de diferentes **RowKey** valores.  
+* [Patrón de índice secundario de partición entre](#inter-partition-secondary-index-pattern) : almacenar varias copias de cada entidad con distintos valores de RowKey en particiones independientes o en tablas independientes tooenable rápida y búsquedas eficaces y ordenación alternativo se ordena mediante el uso de diferentes **RowKey** valores.  
+* [Patrón final coherente de transacciones](#eventually-consistent-transactions-pattern) : habilitar el comportamiento final coherente a través de límites de partición o los límites del sistema de almacenamiento mediante el uso de las colas de Azure.
+* [Patrón de entidades de índice](#index-entities-pattern) -mantener el índice entidades tooenable búsquedas eficaces que devuelven listas de entidades.  
+* [Patrón de desnormalización](#denormalization-pattern) -combinar los datos relacionados con juntos en una sola entidad tooenable tooretrieve todos los datos que necesita con una consulta de punto único de Hola.  
+* [Modelo de serie de datos](#data-series-pattern) -series de datos completa de almacén en un número de entidad única toominimize Hola de solicitudes que realice.  
 
-Para obtener información sobre EGT, consulte la sección [Transacciones de grupo de entidad (EGT)](#entity-group-transactions).  
+Para obtener información acerca de las transacciones de grupo de entidad, vea la sección de hello [transacciones de grupo de la entidad](#entity-group-transactions).  
 
 ### <a name="ensuring-your-design-for-efficient-modifications-facilitates-efficient-queries"></a>Garantizar su diseño para efectuar modificaciones eficientes facilita la realización de consultas eficaces
-En muchos casos, un diseño para los resultados de consultas eficaces en modificaciones eficaces, pero siempre debe evaluar si este es el caso para su escenario concreto. Algunos de los patrones de la sección [Patrones de diseño de tabla](#table-design-patterns) evalúan explícitamente equilibrios entre entidades de consulta y modificación, y debe tener siempre en cuenta el número de cada tipo de operación.  
+En muchos casos, un diseño para los resultados de consultas eficaz en modificaciones eficaz, pero siempre debe evaluar si se trata de caso de hello para su escenario concreto. Algunos de los patrones de hello en la sección de hello [patrones de diseño de tabla](#table-design-patterns) explícitamente evaluar ventajas y desventajas de consultar y modificar las entidades, y debe tener siempre en número de Hola de cuenta de cada tipo de operación.  
 
-Los siguientes patrones de la sección [Patrones de diseño de tabla](#table-design-patterns) tratan el equilibrio entre diseños para efectuar consultas eficaces y diseños para la modificación eficaz de datos:  
+Hola siguientes patrones en la sección de hello [patrones de diseño de tabla](#table-design-patterns) ventajas y desventajas de diseño para conseguir consultas eficaces y diseño para la modificación de datos eficaz de direcciones:  
 
-* [Patrón de clave compuesta](#compound-key-pattern) : utilice valores **RowKey** compuestos para permitir a un cliente buscar datos relacionados con una consulta de punto único.  
-* [Patrón final del registro](#log-tail-pattern): recupere las entidades *n* agregadas recientemente a una partición utilizando un valor **RowKey** que se clasifique en orden de fecha y hora inverso.  
+* [Patrón de clave compuesta](#compound-key-pattern) -uso compuesta **RowKey** valores tooenable un toolookup de cliente relacionadas con datos con una consulta de punto único.  
+* [Patrón de final del registro](#log-tail-pattern) -recuperar hello  *n*  entidades agregan más recientemente tooa partición mediante el uso de un **RowKey** valor que ordena en fecha inversa y orden cronológico.  
 
 ## <a name="encrypting-table-data"></a>Cifrado de datos de tablas
-La biblioteca de clientes de Azure Storage para .NET admite el cifrado de propiedades de entidades de cadena en operaciones de insertar y reemplazar. Las cadenas cifradas se almacenan en el servicio como propiedades binarias y se convierten de nuevo en cadenas después del descifrado.    
+Biblioteca de cliente de almacenamiento de Azure .NET admite el cifrado de propiedades de la entidad de cadena para la inserción de Hola y reemplace operaciones. cadenas de Hello cifrado se almacenan en el servicio de hello como propiedades binarias y se convierten toostrings atrás tras la descodificación.    
 
-Para las tablas, además de la directiva de cifrado, los usuarios deben especificar las propiedades que se van a cifrar. Para ello, pueden especificar un atributo EncryptProperty (para las entidades POCO que se derivan de TableEntity) o una resolución de cifrado en las opciones de solicitud. Una resolución de cifrado es un delegado que toma una clave de partición, una clave de fila y un nombre de propiedad y devuelve un valor booleano que indica si se debe cifrar dicha propiedad. Durante el cifrado, la biblioteca de cliente usará esta información para decidir si se debe cifrar una propiedad mientras se escribe en la conexión. El delegado también proporciona la posibilidad de lógica con respecto a la forma de cifrar las propiedades. (Por ejemplo, si el valor es X, hay que cifrar la propiedad A; en caso contrario, hay que cifrar las propiedades A y B). Tenga en cuenta que no es necesario proporcionar esta información para leer o consultar entidades.
+Para las tablas, además toohello directiva de cifrado, los usuarios deben especificar Hola propiedades toobe cifrado. Para ello, pueden especificar un atributo EncryptProperty (para las entidades POCO que se derivan de TableEntity) o una resolución de cifrado en las opciones de solicitud. Una resolución de cifrado es un delegado que toma una clave de partición, una clave de fila y un nombre de propiedad y devuelve un valor booleano que indica si se debe cifrar dicha propiedad. Durante el cifrado, biblioteca de cliente de hello utilizará esta toodecide información si se debe cifrar una propiedad al escribir el cable toohello. delegado de Hello también proporciona posibilidad de Hola de lógica de alrededor de cómo se cifran las propiedades. (Por ejemplo, si el valor es X, hay que cifrar la propiedad A; en caso contrario, hay que cifrar las propiedades A y B). Tenga en cuenta que TI es tooprovide no es necesario que esta información al leer o consultar entidades.
 
-Tenga en cuenta que actualmente no se admite la combinación. Puesto que un subconjunto de propiedades puede haberse cifrado previamente con una clave distinta, si simplemente se combinan las nuevas propiedades y se actualizan los metadatos, se producirá una pérdida de datos. Para realizar una combinación es necesario realizar llamadas de servicio adicionales para leer la entidad existente desde el servicio. También puede usar una nueva clave por propiedad. Ninguno de estos procedimientos es adecuado por motivos de rendimiento.     
+Tenga en cuenta que actualmente no se admite la combinación. Puesto que un subconjunto de propiedades se puede haber cifrado previamente mediante una clave diferente, simplemente combinar nuevas propiedades de Hola y actualizar metadatos de hello producirá pérdida de datos. Combinar cualquiera requiere servicio adicional de realizar llamadas entidad preexistente de hello tooread del servicio de hello, o mediante una clave nueva por cada propiedad, los cuales no son adecuados por motivos de rendimiento.     
 
 Para información acerca del cifrado de datos de tablas, consulte [Cifrado del lado cliente y Azure Key Vault para Microsoft Azure Storage](storage-client-side-encryption.md).  
 
 ## <a name="modelling-relationships"></a>Relaciones de modelos
-La creación de modelos de dominio es un paso clave en el diseño de sistemas complejos. Normalmente, se utiliza el proceso de modelo para identificar las entidades y las relaciones entre ellos como manera de entender el dominio de negocio e informar del diseño del sistema. Esta sección se centra en cómo puede convertir algunos de los tipos de relación comunes encontrados en los modelos de dominio en diseños para Table service. El proceso de asignación de un modelo de datos lógico a uno físico basado en NoSQL es muy diferente del que se utiliza cuando se diseña una base de datos relacional. El diseño de bases de datos relacionales normalmente supone un proceso de normalización de datos optimizado para minimizar la redundancia y una capacidad de consulta declarativa que abstrae el modo de funcionamiento de la implementación de la base de datos.  
+Creación de modelos de dominio es un paso clave en el diseño de hello sistemas complejos. Por lo general, usa Hola modelización proceso tooidentify entidades y relaciones de hello entre ellos como una manera toounderstand Hola dominio de negocio e informar al diseño de saludo del sistema. En esta sección se centra en cómo puede traducir algunos de los tipos de relación común Hola que se encuentra en toodesigns de modelos de dominio para hello servicio tabla. proceso de Hola de asignación de un lógica tooa de modelo de datos físico NoSQL según modelo de datos es muy diferente del que se utiliza cuando se diseña una base de datos relacional. Diseño de bases de datos relacionales normalmente se da por supuesto un proceso de normalización de datos con optimización para minimizar la redundancia y una capacidad de consulta declarativa que resúmenes Hola la implementación del funcionamiento de la base de datos de Hola.  
 
 ### <a name="one-to-many-relationships"></a>Relaciones uno a varios
-Las relaciones uno a varios entre los objetos de dominio de negocio se producen con mucha frecuencia: por ejemplo, cuando un departamento tiene muchos empleados. Hay varias formas de implementar relaciones uno a varios en Table service, cada una con los correspondientes pros y contras para el escenario en concreto.  
+Las relaciones uno a varios entre los objetos de dominio de negocio se producen con mucha frecuencia: por ejemplo, cuando un departamento tiene muchos empleados. Hay varias relaciones de uno a varios de formas tooimplement en hello servicio tabla cada con ventajas y desventajas que pueden ser relevantes toohello escenario en particular.  
 
-Considere el ejemplo de una gran empresa multinacional con decenas de miles de departamentos y entidades de empleado en las que cada departamento tiene muchos empleados y cada empleado está asociado a un departamento determinado. Un enfoque consiste en almacenar el departamento independiente y entidades de empleado como las siguientes:  
+Considere el ejemplo de Hola de una gran empresa multinacional con decenas de miles de departamentos y entidades employee donde cada departamento tiene muchos empleados y cada empleado como asociada a un departamento específico. Un enfoque es toostore independiente departamento y entidades de empleado como los siguientes:  
 
 ![][1]
 
-En este ejemplo se muestra una relación de uno a varios implícita entre los tipos basados en el valor **PartitionKey** . Cada departamento puede tener muchos empleados.  
+Este ejemplo muestra una relación de uno a varios implícita entre tipos de hello basada en hello **PartitionKey** valor. Cada departamento puede tener muchos empleados.  
 
-En este ejemplo también se muestra una entidad de departamento y sus entidades relacionadas de empleado relacionadas en la misma partición. Puede elegir usar distintas particiones, tablas o incluso cuentas de almacenamiento para los diferentes tipos de entidad.  
+En este ejemplo también muestra una entidad de departamento y sus entidades relacionadas empleado en Hola misma partición. Puede elegir toouse distintas particiones, tablas o incluso las cuentas de almacenamiento Hola diferentes tipos de entidad.  
 
-Un enfoque alternativo es desnormalizar los datos y almacenar solo las entidades de empleado con datos sin normalizar de departamentos tal como se muestra en el ejemplo siguiente. En este escenario concreto, este enfoque sin normalizar puede que no sea el mejor si tiene un requisito para poder cambiar los detalles de un administrador de departamento porque para ello deberá actualizar a todos los empleados del departamento.  
+Un enfoque alternativo es toodenormalize las entidades de empleado único almacén y de datos con datos sin normalizar departamento como se muestra en el siguiente ejemplo de Hola. En este escenario en particular, este enfoque sin normalizar no puede Hola recomendada si tiene un requisito toobe toochange capaz de Hola obtener información detallada de un administrador del departamento porque toodo esta operación, necesita tooupdate todos los empleados en el departamento de Hola.  
 
 ![][2]
 
-Para obtener más información, consulte más adelante en esta guía el [Patrón de desnormalización](#denormalization-pattern) .  
+Para obtener más información, vea hello [patrón de desnormalización](#denormalization-pattern) más adelante en esta guía.  
 
-En la tabla siguiente se resumen las ventajas y desventajas de cada uno de los métodos descritos anteriormente para almacenar entidades de departamento y empleado que tienen una relación uno a varios. También debe tener en cuenta la frecuencia con que espera realizar varias operaciones: puede ser aceptable tener un diseño que incluye una operación costosa si esa operación solo ocurre con poca frecuencia.  
+Hello siguiente tabla resume Hola ventajas y desventajas de cada uno de los enfoques de hello descritos anteriormente para almacenar los empleados y las entidades de departamento que tienen una relación uno a varios. También debería considerar la frecuencia con que espera tooperform varias operaciones: puede ser aceptable toohave un diseño que incluye una operación costosa si esa operación solo se produce con poca frecuencia.  
 
 <table>
 <tr>
@@ -340,14 +340,14 @@ En la tabla siguiente se resumen las ventajas y desventajas de cada uno de los m
 <td>
 <ul>
 <li>Puede actualizar una entidad de departamento con una sola operación.</li>
-<li>Puede usar un EGT para mantener la coherencia si tiene un requisito para modificar una entidad department siempre que se actualice, inserte o elimine una entidad de empleado. Por ejemplo, si mantiene un recuento de empleado del departamento para cada departamento.</li>
+<li>Puede usar una coherencia de toomaintain EGT si tiene un requisito toomodify una entidad department cada vez que se actualizaciones, inserciones y eliminaciones una entidad empleado. Por ejemplo, si mantiene un recuento de empleado del departamento para cada departamento.</li>
 </ul>
 </td>
 <td>
 <ul>
-<li>Puede que necesite recuperar una entidad de empleado y de departamento para algunas actividades de cliente.</li>
-<li>Las operaciones de almacenamiento se producen en la misma partición. Con volúmenes de transacciones elevados, esto puede producir un punto de conflicto.</li>
-<li>No se puede mover a un empleado a un nuevo departamento mediante un EGT.</li>
+<li>Puede necesitar tooretrieve un empleado y una entidad de departamento para algunas actividades de cliente.</li>
+<li>Almacenamiento llevan a cabo operaciones en hello misma partición. Con volúmenes de transacciones elevados, esto puede producir un punto de conflicto.</li>
+<li>No se puede mover un empleado tooa nuevo departamento con un EGT.</li>
 </ul>
 </td>
 </tr>
@@ -356,14 +356,14 @@ En la tabla siguiente se resumen las ventajas y desventajas de cada uno de los m
 <td>
 <ul>
 <li>Puede actualizar una entidad de departamento o de empleado con una sola operación.</li>
-<li>Con volúmenes de transacciones altos, esto puede ayudar a distribuir la carga entre más particiones.</li>
+<li>En los volúmenes de transacciones alta, esto puede ayudar a spread Hola carga entre varias particiones.</li>
 </ul>
 </td>
 <td>
 <ul>
-<li>Puede que necesite recuperar una entidad de empleado y de departamento para algunas actividades de cliente.</li>
-<li>No se pueden usar EGT para mantener la coherencia cuando se actualiza, inserta y elimina un empleado y se actualiza un departamento. Por ejemplo, actualizando un recuento de empleados en una entidad de departamento.</li>
-<li>No se puede mover a un empleado a un nuevo departamento mediante un EGT.</li>
+<li>Puede necesitar tooretrieve un empleado y una entidad de departamento para algunas actividades de cliente.</li>
+<li>No se puede utilizar EGTs toomaintain coherencia cuando se actualizaciones, inserciones y eliminaciones un empleado y un departamento de la actualización. Por ejemplo, actualizando un recuento de empleados en una entidad de departamento.</li>
+<li>No se puede mover un empleado tooa nuevo departamento con un EGT.</li>
 </ul>
 </td>
 </tr>
@@ -371,96 +371,96 @@ En la tabla siguiente se resumen las ventajas y desventajas de cada uno de los m
 <td>Desnormalizar en un único tipo de entidad</td>
 <td>
 <ul>
-<li>Puede recuperar toda la información que necesita con una única solicitud.</li>
+<li>Puede recuperar toda la información de Hola que necesita con una única solicitud.</li>
 </ul>
 </td>
 <td>
 <ul>
-<li>Puede ser costoso de mantener la coherencia si necesita actualizar la información de departamento (esto requerirá actualizar a todos los empleados de un departamento).</li>
+<li>Puede ser costoso toomaintain coherencia si necesita información de departamento tooupdate (Esto requeriría tooupdate todos los empleados de Hola de un departamento).</li>
 </ul>
 </td>
 </tr>
 </table>
 
-Cómo elegir entre estas opciones y cuáles de las ventajas y desventajas son más importantes, depende de los escenarios de aplicación concretos. Por ejemplo, la frecuencia con que modifica las entidades de departamento; necesitan todas las consultas de empleados la información adicional del departamento; ¿cómo de cerca se encuentra de los límites de escalabilidad de sus particiones o de su cuenta de almacenamiento?  
+Cómo elegir entre estas opciones y que los profesionales de TI de Hola e inconvenientes son más significativos, depende de los escenarios de aplicación específica. Por ejemplo, ¿con qué frecuencia modificar entidades de departamento; es necesario todas las consultas de empleado Hola departamento una información suplementaria; ¿grado de aproximación son límites de escalabilidad de toohello en las particiones o la cuenta de almacenamiento?  
 
 ### <a name="one-to-one-relationships"></a>Relaciones uno a uno
-Es posible que los modelos de dominio incluyan relaciones uno a uno entre las entidades. Si necesita implementar una relación uno a uno en Table service, también debe elegir cómo vincular las dos entidades relacionadas cuando se necesita para recuperar ambas. Este vínculo puede ser implícito, en función de una convención en los valores de clave o explícito almacenando un vínculo en el formulario de los valores **PartitionKey** y **RowKey** de cada entidad con su entidad relacionada. Para obtener una explicación sobre si debe almacenar las entidades relacionadas en la misma partición, consulte la sección [Relaciones uno a varios](#one-to-many-relationships).  
+Es posible que los modelos de dominio incluyan relaciones uno a uno entre las entidades. Si necesita tooimplement una relación uno a uno en hello servicio tabla, también debe elegir cómo toolink Hola dos entidades relacionadas cuando necesite tooretrieve ambos. Este vínculo puede ser implícita, en función de una convención de valores de clave de Hola o explícita mediante el almacenamiento de un vínculo en forma de Hola de **PartitionKey** y **RowKey** valores de cada entidad tooits entidades relacionan. Para obtener información sobre si debe almacenar hello las entidades relacionadas en Hola la misma partición, vea la sección de hello [uno a varios relaciones](#one-to-many-relationships).  
 
-Tenga en cuenta que también hay consideraciones de implementación que podrían provocar la implementación de relaciones uno a uno en Table service:  
+Tenga en cuenta que también existen consideraciones de implementación que puedan provocar relaciones uno a uno tooimplement en servicio de la tabla de hello:  
 
 * Administración de entidades de gran tamaño (para obtener más información, consulte [Patrón de entidades de gran tamaño](#large-entities-pattern)).  
 * Implementación de controles de acceso (para más información, consulte [Control de acceso con firmas de acceso compartido](#controlling-access-with-shared-access-signatures)).  
 
-### <a name="join-in-the-client"></a>Únase al cliente
-Aunque hay formas de modelar las relaciones en Table service, no debe olvidar que las dos razones principales para utilizar Table service son la escalabilidad y el rendimiento. Si encuentra que está modelando muchas relaciones que ponen en peligro el rendimiento y la escalabilidad de su solución, debe preguntarse si es necesario crear todas las relaciones de datos en el diseño de tabla. Es posible que pueda simplificar el diseño y mejorar la escalabilidad y el rendimiento de la solución si permite que la aplicación cliente realice las uniones necesarias.  
+### <a name="join-in-hello-client"></a>Combinación en el cliente de Hola
+Aunque existen relaciones de formas toomodel Hola servicio tabla, no debe olvidar que Hola dos razones principales para utilizar el servicio de la tabla de hello son escalabilidad y rendimiento. Si encuentra que se modelización muchas relaciones que poner en peligro Hola rendimiento y escalabilidad de la solución, debe pregúntese lo siguiente: si es necesario toobuild todas Hola relaciones de datos al diseño de la tabla. Puede toosimplify capaz de diseño de Hola y mejorar la escalabilidad de Hola y rendimiento de la solución si permite que la aplicación cliente realizar las operaciones de combinación necesarios.  
 
-Por ejemplo, si tiene tablas pequeñas que contienen datos que no cambian muy a menudo, puede recuperar estos datos una vez y almacenarlos en la caché en el cliente. Esto puede evitar repetidas idas y vueltas para recuperar los mismos datos. En los ejemplos que hemos visto en esta guía, es probable que el conjunto de departamentos de una organización pequeña sea pequeño y cambie con poca frecuencia, lo que lo convierte en un buen candidato para los datos que la aplicación cliente puede descargar una vez y almacenar en la memoria caché como datos de búsqueda.  
+Por ejemplo, si tiene tablas pequeñas que contienen datos que no cambian con frecuencia, puede recuperar estos datos una vez y almacenarla en la caché de cliente de Hola. Esto puede evitar los repetidos idas y vueltas tooretrieve Hola los mismos datos. En los ejemplos de hello que hemos examinado en esta guía, hello conjunto de departamentos en una organización pequeña es probable toobe pequeño y cambie con poca frecuencia lo que un buen candidato para datos de la aplicación cliente puede descargar una vez y la memoria caché como datos de búsqueda.  
 
 ### <a name="inheritance-relationships"></a>Relaciones de herencia
-Si la aplicación cliente usa un conjunto de clases que forman parte de una relación de herencia para representar entidades empresariales, puede conservar fácilmente las entidades en Table service. Por ejemplo, el siguiente conjunto de clases puede estar definido en la aplicación cliente, donde **Person** es una clase abstracta.
+Si la aplicación cliente usa un conjunto de clases que forman parte de una herencia relación toorepresent las entidades empresariales, puede conservar fácilmente las entidades en hello servicio tabla. Por ejemplo, podría tener Hola siguiendo el conjunto de clases definidas en la aplicación cliente donde **persona** es una clase abstracta.
 
 ![][3]
 
-Puede conservar las instancias de las dos clases concretas en Table service utilizando una sola tabla Person mediante entidades que presentan este aspecto:  
+Puede conservar las instancias de dos clases concretas Hola Hola servicio tabla utilizando una sola tabla de persona con entidades en ese aspecto similar al siguiente:  
 
 ![][4]
 
-Para más información acerca de cómo trabajar con varios tipos de entidad en la misma tabla en el código de cliente, consulte la sección [Trabajo con tipos de entidad heterogéneos](#working-with-heterogeneous-entity-types) posteriormente en esta misma guía. Esto proporciona ejemplos de cómo reconocer el tipo de entidad en el código de cliente.  
+Para obtener más información sobre cómo trabajar con varios tipos de entidad en la misma tabla en el código de cliente de hello, vea la sección de hello [trabajar con tipos de entidades heterogéneas](#working-with-heterogeneous-entity-types) más adelante en esta guía. Esto proporciona ejemplos de cómo toorecognize Hola tipo de entidad en el código de cliente.  
 
 ## <a name="table-design-patterns"></a>Patrones de diseño de tabla
-En las secciones anteriores, ha visto algunas discusiones detalladas acerca de cómo optimizar su diseño de tabla para recuperar datos de entidad mediante consultas y para insertar, actualizar y eliminar datos de la entidad. En esta sección se describen algunos modelos adecuados para usarse con soluciones de Table service. Además, verá cómo puede prácticamente abordar algunos de los problemas y las ventajas e inconvenientes generados anteriormente en esta guía. En el diagrama siguiente se resumen las relaciones entre los distintos patrones:  
+En las secciones anteriores, ha visto algunas explicaciones detalladas acerca de cómo toooptimize la tabla de diseño para ambos al recuperar datos de la entidad mediante consultas y para insertar, actualizar y eliminar datos de la entidad. En esta sección se describen algunos modelos adecuados para usarse con soluciones de Table service. Además, verá cómo puede prácticamente solucionar algunos problemas de Hola y ventajas e inconvenientes generados anteriormente en esta guía. Hello diagrama siguiente resume Hola relaciones entre los distintos patrones de hello:  
 
 ![][5]
 
-La asignación de patrones anterior resalta algunas relaciones entre patrones (azules) y antipatrones (naranja) que se documentan en esta guía. Por supuesto, existen muchos otros patrones que merece la pena tener en cuenta. Por ejemplo, uno de los escenarios clave de Table Service es almacenar el [patrón de vistas materializadas](https://msdn.microsoft.com/library/azure/dn589782.aspx) desde [Segregación de responsabilidades de consultas de comandos (CQRS)](https://msdn.microsoft.com/library/azure/jj554200.aspx).  
+mapa de patrón de Hello anteriormente resalta algunas relaciones entre patrones (azules) y antipatrones (naranja) que se documentan en esta guía. Por supuesto, existen muchos otros patrones que merece la pena tener en cuenta. Por ejemplo, uno de los escenarios clave de hello para el servicio tabla es hello toouse [materializar el patrón de vista](https://msdn.microsoft.com/library/azure/dn589782.aspx) de hello [segregación de responsabilidad de consulta de comandos (CQRS)](https://msdn.microsoft.com/library/azure/jj554200.aspx) patrón.  
 
 ### <a name="intra-partition-secondary-index-pattern"></a>Patrón de índice secundario dentro de la partición
-Almacene varias copias de cada entidad con diferentes valores **RowKey** (en la misma partición) para habilitar búsquedas rápidas y eficaces y ordenaciones alternativas mediante el uso de diferentes valores **RowKey**. La coherencia de las actualizaciones entre copias se puede mantener mediante EGT.  
+Almacenar varias copias de cada entidad con diferentes **RowKey** valores (Hola misma partición) tooenable rápidos y eficaces búsquedas y ordenación alternativa se ordena mediante diferentes **RowKey** valores. La coherencia de las actualizaciones entre copias se puede mantener mediante EGT.  
 
 #### <a name="context-and-problem"></a>Contexto y problema
-Table Service indexa automáticamente entidades mediante los valores **PartitionKey** y **RowKey**. Esto permite que una aplicación cliente recupere una entidad eficazmente con estos valores. Por ejemplo, si se usa la estructura de tabla que se muestra a continuación, una aplicación cliente puede utilizar una consulta puntual para recuperar una entidad de empleado individual mediante el uso del nombre del departamento y el identificador de empleado (los valores **PartitionKey** y **RowKey**). Un cliente también puede recuperar las entidades ordenadas por identificador de empleado dentro de cada departamento.
+Hola servicio tabla indizará automáticamente entidades mediante hello **PartitionKey** y **RowKey** valores. Esto permite a un tooretrieve de aplicación de cliente en una entidad eficazmente con estos valores. Por ejemplo, mediante la estructura de tabla de Hola se muestra a continuación, una aplicación cliente puede utilizar un tooretrieve de consulta de punto de una entidad de empleados individuales utilizando el nombre del departamento de Hola y el Id. de empleado de hello (hello **PartitionKey** y  **RowKey** valores). Un cliente también puede recuperar las entidades ordenadas por identificador de empleado dentro de cada departamento.
 
 ![][6]
 
-Si desea ser capaz de encontrar una entidad de empleado basada en el valor de otra propiedad, como la dirección de correo electrónico, debe usar un examen de la partición menos eficiente para encontrar a coincidencia. Esto se debe a que Table service no proporciona índices secundarios. Además, no hay ninguna opción para solicitar una lista de empleados ordenados en un orden diferente a **RowKey** .  
+Si también desea toobe capaz toofind una entidad de empleado según Hola valor de otra propiedad, como la dirección de correo electrónico, debe usar un toofind de examen de partición menos eficaz una coincidencia. Esto es porque el servicio de la tabla de hello no proporciona índices secundarios. Además, no hay ninguna opción toorequest una lista de empleados ordenados en un orden diferente del **RowKey** orden.  
 
 #### <a name="solution"></a>Solución
-Para solucionar la falta de índices secundarios, puede almacenar varias copias de cada entidad con cada copia mediante un valor **RowKey** diferente. Si almacena una entidad con las estructuras que se muestran a continuación, puede recuperar eficazmente las entidades de empleado en función de un identificador de empleado o de dirección de correo electrónico. Los valores de prefijo de **RowKey**, "empid" y "email" permiten consultar un solo empleado o un intervalo de empleados mediante un intervalo de direcciones de correo electrónico o identificadores de empleado.  
+toowork alrededor de falta de Hola de índices secundarios, puede almacenar varias copias de cada entidad con cada copia con otro **RowKey** valor. Si almacena una entidad con estructuras de Hola que se muestra a continuación, puede recuperar eficazmente entidades de empleado basándose en el identificador de empleado o de dirección de correo electrónico. Hola valores de prefijo para hello **RowKey**, "empid_" y "email_" permiten tooquery en un único empleado o un intervalo de empleados mediante el uso de un intervalo de direcciones de correo electrónico o Id. de empleados.  
 
 ![][7]
 
-Los dos criterios de filtro siguientes (uno de búsqueda por identificador de empleado y uno de búsqueda por dirección de correo electrónico) especifican consultas de punto:  
+Hola siguiendo dos criterios de filtro (uno Buscar por Id. de empleado y una búsqueda por dirección de correo electrónico) ambos especifica consultas de punto:  
 
 * $filter=(PartitionKey eq 'Sales') y (RowKey eq 'empid_000223')  
 * $filter=(PartitionKey eq 'Sales') y (RowKey eq 'email_jonesj@contoso.com')  
 
-Si consulta un intervalo de entidades de empleado, puede especificar un intervalo ordenado por identificador de empleado o un intervalo ordenado por dirección de correo electrónico mediante la consulta de entidades con el prefijo adecuado en **RowKey**.  
+Si se consulta para un intervalo de entidades de empleado, puede especificar un intervalo ordenado en orden de Id. de empleado o un intervalo que se ordenan en orden de la dirección de correo electrónico mediante una consulta para entidades con prefijo adecuado de Hola Hola **RowKey**.  
 
-* Para buscar todos los empleados del departamento de ventas con un id. de empleado en el rango de 000100 a 000199 use: $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000100') and (RowKey le 'empid_000199')  
-* Para buscar todos los empleados del departamento de ventas con una dirección de correo electrónico que empiece por la letra 'a' use: $filter=(PartitionKey eq 'Sales') y (RowKey ge 'email_a') y (RowKey lt 'email_b')  
+* usan de todos los empleados de Hola Hola departamento de ventas con un identificador de empleado en hello intervalo 000100 too000199 toofind: $filter = (PartitionKey eq 'Ventas') y (RowKey ge 'empid_000100') y (RowKey le 'empid_000199')  
+* toofind todos Hola empleados Hola departamento de ventas con una dirección de correo electrónico a partir de hello letra 'a' uso: $filter = (PartitionKey eq 'Ventas') y (RowKey ge 'email_a') y (RowKey lt 'email_b')  
   
-  Tenga en cuenta que la sintaxis de filtro usada en los ejemplos anteriores corresponde a la API de REST de Table Service. Para más información, consulte [Entidades de consulta](http://msdn.microsoft.com/library/azure/dd179421.aspx).  
+  Observe que la sintaxis de filtro de hello usada en ejemplos de hello anteriores es de servicio de tabla de hello API de REST, para más información, vea [Query Entities](http://msdn.microsoft.com/library/azure/dd179421.aspx).  
 
 #### <a name="issues-and-considerations"></a>Problemas y consideraciones
-Tenga en cuenta los puntos siguientes al decidir cómo implementar este patrón:  
+Considere la posibilidad de hello siguientes puntos cuando decida cómo tooimplement este patrón:  
 
-* El almacenamiento en tablas es relativamente barato, por lo que la sobrecarga de costes de almacenamiento de datos duplicados no debe ser una preocupación importante. Sin embargo, debe evaluar siempre el coste del diseño según los requisitos de almacenamiento previstos y solo agregar entidades duplicadas para admitir las consultas que ejecutará la aplicación cliente.  
-* Dado que las entidades de índice secundario se almacenan en la misma partición que las entidades originales, debe asegurarse de que no superen los objetivos de escalabilidad para una partición individual.  
-* Puede mantener la coherencia de las entidades duplicadas utilizando EGT para actualizar las dos copias de la entidad de forma atómica. Esto implica que debe almacenar todas las copias de una entidad en la misma partición. Para más información, consulte la sección [Uso de transacciones de grupos de entidades](#entity-group-transactions).  
-* El valor que se usa **RowKey** debe ser único para cada entidad. Considere la posibilidad de usar valores de clave compuestos.  
-* Rellenar valores numéricos en **RowKey** (por ejemplo, el identificador de empleado 000223) permite corregir los criterios de ordenación y filtro en función de los límites inferior y superior.  
-* No es necesario duplicar todas las propiedades de su entidad. Por ejemplo, si las consultas que realizan búsquedas en las entidades mediante la dirección de correo electrónico de **RowKey** nunca necesitan la edad del empleado, dichas entidades podrían tener la siguiente estructura:
+* Almacenamiento de tabla es relativamente barato toouse para que hello costo sobrecarga de almacenamiento de datos duplicados no debe ser un gran problema. Sin embargo, debe siempre se evalúan costo Hola del diseño según sus requisitos de almacenamiento previstas y solo agregar entidades duplicadas toosupport Hola consultas que se ejecutará la aplicación cliente.  
+* Como entidades de índice secundario de Hola se almacenan en hello igual de partición como entidades de hello original, debes asegurarte de que no superen los objetivos de escalabilidad de Hola para una partición individual.  
+* Puede mantener las entidades duplicadas sean coherentes entre sí utilizando las dos copias de hello del tooupdate de EGTs de entidad de Hola de forma atómica. Esto implica que debe almacenar todas las copias de una entidad en hello misma partición. Para obtener más información, vea la sección de hello [usando transacciones de grupo de la entidad](#entity-group-transactions).  
+* Hola valor utilizado para hello **RowKey** debe ser único para cada entidad. Considere la posibilidad de usar valores de clave compuestos.  
+* Relleno de valores numéricos en hello **RowKey** (por ejemplo, Id. de empleado de hello 000223) permite corregir para ordenar y filtrar según superior e inferior.  
+* No es necesariamente necesario tooduplicate todas las propiedades de saludo de la entidad. Por ejemplo, si hello las consultas que enviar por correo electrónico en entidades de búsqueda hello mediante Hola dirección en hello **RowKey** nunca tendrá la edad del empleado de hello, estas entidades pudieron tener Hola siguiendo estructura:
 
 ![][8]
 
-* Normalmente es mejor almacenar los datos duplicados y asegurarse de que puede recuperar todos los datos que necesita con una sola consulta que usar una consulta para buscar una entidad y otra para buscar los datos necesarios.  
+* Es mejor normalmente toostore los datos duplicados y asegurarse de que puede recuperar todos los datos de Hola que necesita con una sola consulta, que toouse una consulta toolocate requiere datos de una entidad y otro hello toolookup.  
 
-#### <a name="when-to-use-this-pattern"></a>Cuándo usar este patrón
-Utilice este patrón cuando la aplicación cliente necesite recuperar entidades mediante una serie de claves diferentes, cuando el cliente necesite recuperar entidades de diferentes criterios de ordenación y cuando pueda identificar cada entidad mediante una serie de valores únicos. Sin embargo, debe asegurarse de no superar los límites de escalabilidad de partición al realizar búsquedas de entidad utilizando los diferentes valores **RowKey** .  
+#### <a name="when-toouse-this-pattern"></a>Cuando toouse este patrón
+Use este patrón cuando la aplicación cliente necesita entidades tooretrieve mediante una variedad de claves diferentes, cuando el cliente necesita tooretrieve entidades en distintos criterios de ordenación, y donde se puede identificar cada entidad con una variedad de valores únicos. Sin embargo, debe asegurarse de que no superan los límites de escalabilidad de partición de hello al realizar búsquedas de entidad usando Hola diferentes **RowKey** valores.  
 
 #### <a name="related-patterns-and-guidance"></a>Orientación y patrones relacionados
-Los patrones y las directrices siguientes también pueden ser importantes a la hora de implementar este patrón:  
+Hello patrones y las directrices siguientes también pueden ser importantes al implementar este patrón:  
 
 * [Patrón de índice secundario entre particiones](#inter-partition-secondary-index-pattern)
 * [Patrón de clave compuesta](#compound-key-pattern)
@@ -468,51 +468,51 @@ Los patrones y las directrices siguientes también pueden ser importantes a la h
 * [Trabajar con tipos de entidad heterogéneos](#working-with-heterogeneous-entity-types)
 
 ### <a name="inter-partition-secondary-index-pattern"></a>Patrón de índice secundario entre particiones
-Almacene varias copias de cada entidad con distintos valores de **RowKey** diferentes en particiones independientes o en tablas independientes para habilitar la realización de búsquedas rápidas y eficaces y órdenes alternativos utilizando valores **RowKey** diferentes.  
+Almacenar varias copias de cada entidad con diferentes **RowKey** valores en particiones independientes o en tablas independientes tooenable rápidos y eficaces las búsquedas y ordenación alternativos mediante diferentes **RowKey**valores.  
 
 #### <a name="context-and-problem"></a>Contexto y problema
-Table Service indexa automáticamente entidades mediante los valores **PartitionKey** y **RowKey**. Esto permite que una aplicación cliente recupere una entidad eficazmente con estos valores. Por ejemplo, si se usa la estructura de tabla que se muestra a continuación, una aplicación cliente puede utilizar una consulta puntual para recuperar una entidad de empleado individual mediante el uso del nombre del departamento y el identificador de empleado (los valores **PartitionKey** y **RowKey**). Un cliente también puede recuperar las entidades ordenadas por identificador de empleado dentro de cada departamento.  
+Hola servicio tabla indizará automáticamente entidades mediante hello **PartitionKey** y **RowKey** valores. Esto permite a un tooretrieve de aplicación de cliente en una entidad eficazmente con estos valores. Por ejemplo, mediante la estructura de tabla de Hola se muestra a continuación, una aplicación cliente puede utilizar un tooretrieve de consulta de punto de una entidad de empleados individuales utilizando el nombre del departamento de Hola y el Id. de empleado de hello (hello **PartitionKey** y  **RowKey** valores). Un cliente también puede recuperar las entidades ordenadas por identificador de empleado dentro de cada departamento.  
 
 ![][9]
 
-Si desea ser capaz de encontrar una entidad de empleado basada en el valor de otra propiedad, como la dirección de correo electrónico, debe usar un examen de la partición menos eficiente para encontrar a coincidencia. Esto se debe a que Table service no proporciona índices secundarios. Además, no hay ninguna opción para solicitar una lista de empleados ordenados en un orden diferente a **RowKey** .  
+Si también desea toobe capaz toofind una entidad de empleado según Hola valor de otra propiedad, como la dirección de correo electrónico, debe usar un toofind de examen de partición menos eficaz una coincidencia. Esto es porque el servicio de la tabla de hello no proporciona índices secundarios. Además, no hay ninguna opción toorequest una lista de empleados ordenados en un orden diferente del **RowKey** orden.  
 
-Prevé un gran volumen de transacciones en estas entidades y desea minimizar el riesgo de que Table service limite a su cliente.  
+Se anticipan un volumen elevado de transacciones en estas entidades y desea riesgo de hello toominimize de hello limitación del cliente de servicio de tabla.  
 
 #### <a name="solution"></a>Solución
-Para evitar la falta de índices secundarios, puede almacenar varias copias de cada entidad con cada copia con valores **PartitionKey** y **RowKey** diferentes. Si almacena una entidad con las estructuras que se muestran a continuación, puede recuperar eficazmente las entidades de empleado en función de un identificador de empleado o de dirección de correo electrónico. Los valores de prefijo de **PartitionKey**, "empid" y "email" le permiten identificar qué índice desea utilizar para una consulta.  
+toowork alrededor de falta de Hola de índices secundarios, puede almacenar varias copias de cada entidad con cada copia con diferentes **PartitionKey** y **RowKey** valores. Si almacena una entidad con estructuras de Hola que se muestra a continuación, puede recuperar eficazmente entidades de empleado basándose en el identificador de empleado o de dirección de correo electrónico. Hola valores de prefijo para hello **PartitionKey**, "empid_" y "email_" permiten tooidentify que índice al que desea toouse para una consulta.  
 
 ![][10]
 
-Los dos criterios de filtro siguientes (uno de búsqueda por identificador de empleado y uno de búsqueda por dirección de correo electrónico) especifican consultas de punto:  
+Hola siguiendo dos criterios de filtro (uno Buscar por Id. de empleado y una búsqueda por dirección de correo electrónico) ambos especifica consultas de punto:  
 
 * $filter=(PartitionKey eq 'empid_Sales') y (RowKey eq '000223')
 * $filter=(PartitionKey eq 'email_Sales') y (RowKey eq 'jonesj@contoso.com')  
 
-Si consulta un intervalo de entidades de empleado, puede especificar un intervalo ordenado por identificador de empleado o un intervalo ordenado por dirección de correo electrónico mediante la consulta de entidades con el prefijo adecuado en **RowKey**.  
+Si se consulta para un intervalo de entidades de empleado, puede especificar un intervalo ordenado en orden de Id. de empleado o un intervalo que se ordenan en orden de la dirección de correo electrónico mediante una consulta para entidades con prefijo adecuado de Hola Hola **RowKey**.  
 
-* Para buscar todos los empleados del departamento de ventas con un identificador de empleado en el rango de **000100** a **000199** ordenados en orden de identificador de empleado, use: $filter=(PartitionKey eq 'empid_Sales') y (RowKey ge '000100') y (RowKey le '000199')  
-* Para buscar todos los empleados del departamento de ventas con una dirección de correo electrónico que empiece por 'a' ordenados en el orden de dirección de correo electrónico, use: $filter=(PartitionKey eq 'email_Sales') y (RowKey ge 'a') y (RowKey lt 'b')  
+* Hola a toofind Hola a todos los empleados en el departamento de ventas con un identificador de empleado en el intervalo de hello **000100** demasiado**000199** ordenados en uso de orden de Id. de empleado: $filter = (PartitionKey eq ' empid_Sales') y (ge RowKey ' 000100') y (RowKey le '000199')  
+* toofind uso de orden de dirección de correo electrónico todos los empleados de Hola Hola departamento de ventas con una dirección de correo electrónico que empieza con 'a' ordenada en: $filter = (PartitionKey eq ' email_Sales') y (ge RowKey 'a') y (RowKey lt 'b')  
 
-Tenga en cuenta que la sintaxis de filtro usada en los ejemplos anteriores corresponde a la API de REST de Table Service. Para más información, consulte [Entidades de consulta](http://msdn.microsoft.com/library/azure/dd179421.aspx).  
+Observe que la sintaxis de filtro de hello usada en ejemplos de hello anteriores es de servicio de tabla de hello API de REST, para más información, vea [Query Entities](http://msdn.microsoft.com/library/azure/dd179421.aspx).  
 
 #### <a name="issues-and-considerations"></a>Problemas y consideraciones
-Tenga en cuenta los puntos siguientes al decidir cómo implementar este patrón:  
+Considere la posibilidad de hello siguientes puntos cuando decida cómo tooimplement este patrón:  
 
-* Puede mantener las entidades duplicadas coherentes entre sí en última instancia con el [patrón de transacciones coherentes en última instancia](#eventually-consistent-transactions-pattern) para conservar las entidades de índice principal y secundaria.  
-* El almacenamiento en tablas es relativamente barato, por lo que la sobrecarga de costes de almacenamiento de datos duplicados no debe ser una preocupación importante. Sin embargo, debe evaluar siempre el coste del diseño según los requisitos de almacenamiento previstos y solo agregar entidades duplicadas para admitir las consultas que ejecutará la aplicación cliente.  
-* El valor que se usa **RowKey** debe ser único para cada entidad. Considere la posibilidad de usar valores de clave compuestos.  
-* Rellenar valores numéricos en **RowKey** (por ejemplo, el identificador de empleado 000223) permite corregir los criterios de ordenación y filtro en función de los límites inferior y superior.  
-* No es necesario duplicar todas las propiedades de su entidad. Por ejemplo, si las consultas que realizan búsquedas en las entidades mediante la dirección de correo electrónico de **RowKey** nunca necesitan la edad del empleado, dichas entidades podrían tener la siguiente estructura:
+* Puede mantener las entidades duplicadas finalmente sean coherentes entre sí mediante el uso de hello [patrón coherente transacciones](#eventually-consistent-transactions-pattern) entidades de toomaintain Hola índice principal y secundaria.  
+* Almacenamiento de tabla es relativamente barato toouse para que hello costo sobrecarga de almacenamiento de datos duplicados no debe ser un gran problema. Sin embargo, debe siempre se evalúan costo Hola del diseño según sus requisitos de almacenamiento previstas y solo agregar entidades duplicadas toosupport Hola consultas que se ejecutará la aplicación cliente.  
+* Hola valor utilizado para hello **RowKey** debe ser único para cada entidad. Considere la posibilidad de usar valores de clave compuestos.  
+* Relleno de valores numéricos en hello **RowKey** (por ejemplo, Id. de empleado de hello 000223) permite corregir para ordenar y filtrar según superior e inferior.  
+* No es necesariamente necesario tooduplicate todas las propiedades de saludo de la entidad. Por ejemplo, si hello las consultas que enviar por correo electrónico en entidades de búsqueda hello mediante Hola dirección en hello **RowKey** nunca tendrá la edad del empleado de hello, estas entidades pudieron tener Hola siguiendo estructura:
   
   ![][11]
-* Normalmente es mejor almacenar los datos duplicados y asegurarse de que puede recuperar todos los datos que necesita con una sola consulta que usar una consulta para buscar una entidad mediante el índice secundario y otra para buscar los datos necesarios en el índice principal.  
+* Es normalmente mejores datos duplicados toostore y asegúrese de que se pueden recuperar todos los datos de Hola que necesita con una única consulta de toouse una consulta toolocate una entidad con Hola índice secundario y otro toolookup Hola datos necesarios en el índice principal de Hola.  
 
-#### <a name="when-to-use-this-pattern"></a>Cuándo usar este patrón
-Utilice este patrón cuando la aplicación cliente necesite recuperar entidades mediante una serie de claves diferentes, cuando el cliente necesite recuperar entidades de diferentes criterios de ordenación y cuando pueda identificar cada entidad mediante una serie de valores únicos. Utilice este patrón cuando desee no exceder los límites de escalabilidad de la partición al realizar búsquedas de entidades que usen los diferentes valores **RowKey** .  
+#### <a name="when-toouse-this-pattern"></a>Cuando toouse este patrón
+Use este patrón cuando la aplicación cliente necesita entidades tooretrieve mediante una variedad de claves diferentes, cuando el cliente necesita tooretrieve entidades en distintos criterios de ordenación, y donde se puede identificar cada entidad con una variedad de valores únicos. Utilice este patrón cuando desee tooavoid exceder el límite de escalabilidad de partición de hello al realizar búsquedas de entidad usando Hola diferentes **RowKey** valores.  
 
 #### <a name="related-patterns-and-guidance"></a>Orientación y patrones relacionados
-Los patrones y las directrices siguientes también pueden ser importantes a la hora de implementar este patrón:  
+Hello patrones y las directrices siguientes también pueden ser importantes al implementar este patrón:  
 
 * [Patrón final coherente de transacciones](#eventually-consistent-transactions-pattern)  
 * [Patrón de índice secundario dentro de la partición](#intra-partition-secondary-index-pattern)  
@@ -524,118 +524,118 @@ Los patrones y las directrices siguientes también pueden ser importantes a la h
 Habilitar el comportamiento final coherente a través de límites de partición o los límites del sistema de almacenamiento mediante el uso de las colas de Azure.  
 
 #### <a name="context-and-problem"></a>Contexto y problema
-Los EGT permiten transacciones atómicas a través de varias entidades que comparten la misma clave de partición. Por motivos de escalabilidad y rendimiento, puede decidir almacenar entidades con requisitos de coherencia en particiones independientes o en un sistema de almacenamiento independiente: en este escenario, no puede utilizar EGT para mantener la coherencia. Por ejemplo, podría tener un requisito de mantener la coherencia eventual entre:  
+EGTs Habilitar transacciones atómicas en varias entidades que comparten Hola misma clave de partición. Por motivos de escalabilidad y rendimiento, podría decidir toostore entidades que tienen requisitos de coherencia en particiones independientes o en un sistema de almacenamiento independiente: en este escenario, no puede usar EGTs toomaintain coherencia. Por ejemplo, podría tener una coherencia definitiva de requisito toomaintain entre:  
 
-* Entidades almacenadas en dos particiones diferentes de la misma tabla, en tablas diferentes y en diferentes cuentas de almacenamiento.  
-* Una entidad almacenada en Table service y un blob almacenado en Blob service.  
-* Una entidad almacenada en Table service y un archivo en un sistema de archivos.  
-* Un almacén de entidad en Table service ya indexado utilizando el servicio Azure Search.  
+* Entidades almacenadas en dos particiones diferentes en la misma tabla, en tablas diferentes, en diferentes cuentas de almacenamiento de Hola.  
+* Una entidad que se almacenan en hello servicio tabla y un blob almacenado en hello servicio Blob.  
+* Una entidad que se almacenan en el servicio de la tabla de Hola y un archivo en un sistema de archivos.  
+* Una entidad almacenar en hello servicio tabla aún indizarse utilizando el servicio de búsqueda de Azure Hola.  
 
 #### <a name="solution"></a>Solución
 Mediante el uso de las colas de Azure, puede implementar una solución que ofrece coherencia final entre dos o más particiones o sistemas de almacenamiento.
-Para ilustrar este enfoque, suponga que tiene un requisito para poder almacenar entidades de empleado antiguas. Las entidades de empleado antiguas rara vez se consultan y deben excluirse de las actividades relacionadas con los empleados actuales. Para implementar este requisito, almacene empleados activos en la tabla **Current** y empleados antiguos en la tabla **Archive**. Para archivar un empleado, es preciso eliminar la entidad de la tabla **Current** y agregarla a la tabla **Archive**, pero no se puede usar una EGT para realizar estas dos operaciones. Para evitar el riesgo de que un error provoque la aparición de una entidad en las dos tablas o en ninguna, la operación de almacenamiento debe ser coherente con el tiempo. En el diagrama de secuencia siguiente se describen los pasos de esta operación. En el texto siguiente se proporcionan más detalles para las rutas de excepción.  
+tooillustrate este enfoque, suponga que tiene un requisito toobe tooarchive pueda antiguo empleado las entidades. Las entidades de empleado antiguas rara vez se consultan y deben excluirse de las actividades relacionadas con los empleados actuales. tooimplement este requisito almacenar empleados activos en hello **actual** tabla y antiguos empleados en hello **archivo** tabla. Archivar un empleado requiere toodelete entidad Hola Hola **actual** de tabla y agregue Hola entidad toohello **archivo** tabla, pero no se puede usar un tooperform EGT estas dos operaciones. riesgo de hello tooavoid que un error provoca una entidad tooappear de tablas de ambos o ninguno, operación de almacenamiento de hello debe ser coherente. Hello diagrama de secuencia siguiente describe los pasos de hello en esta operación. Para las rutas de acceso de excepción en el texto que siga Hola se proporcionan más detalles.  
 
 ![][12]
 
-Un cliente inicia la operación de almacenamiento mediante la colocación de un mensaje en una cola de Azure, en este ejemplo para archivar el empleado #456. Un rol de trabajador sondea la cola de mensajes nuevos; si encuentra alguno, lee el mensaje y deja una copia oculta en la cola. A continuación, el rol de trabajo busca una copia de la entidad en la tabla **Current**, inserta una copia en la tabla **Archive** y, seguidamente, elimina la original de la tabla **Current**. Por último, si no ha habido errores en los pasos anteriores, el rol de trabajador elimina el mensaje oculto de la cola.  
+Un cliente inicia la operación de almacenamiento de hello colocando un mensaje en una cola de Azure, en este empleado de ejemplo tooarchive #456. Un rol de trabajo sondea la cola de hello si hay mensajes nuevos; Cuando encuentra uno, lee el mensaje de bienvenida y deja una copia oculta en la cola de Hola. rol de trabajo de Hola a continuación recupera una copia de entidad de Hola de hello **actual** de tabla, se inserta una copia en hello **archivo** tabla y, a continuación, elimina Hola original de Hola **actual**tabla. Por último, si no hubiera ningún error de los pasos anteriores de hello, rol de trabajo de hello elimina mensajes de bienvenida del oculto de cola de Hola.  
 
-En este ejemplo, el paso 4 inserta el empleado en la tabla **Archivo** . Puede añadir al empleado a un blob en Blob service o un archivo en un sistema de archivos.  
+En este ejemplo, el paso 4 inserta empleado Hola Hola **archivo** tabla. Podría agregar tooa blob de empleado de Hola Hola servicio Blob o un archivo en un sistema de archivos.  
 
 #### <a name="recovering-from-failures"></a>Recuperación de errores
-Es importante que las operaciones de los pasos **4** y **5** sean *idempotentes*, por si el rol de trabajo necesita reiniciar la operación de archivo. Si va a utilizar Table Service para el paso **4**, debe utilizar una operación de "insertar o reemplazar"; en el paso **5** debe usar una operación de "eliminar si existe" en la biblioteca de cliente que vaya a usar. Si está utilizando otro sistema de almacenamiento, debe utilizar una operación idempotente adecuada.  
+Es importante que las operaciones en los pasos de Hola **4** y **5** debe ser *idempotente* en caso de rol de trabajo de hello necesita operación de almacenamiento de toorestart Hola. Si está utilizando el servicio de tabla de hello, para el paso **4** debe usar una operación "Insertar o reemplazar"; para el paso **5** debe usar un "eliminar si existe" operación en la biblioteca de cliente de Hola que usa. Si está utilizando otro sistema de almacenamiento, debe utilizar una operación idempotente adecuada.  
 
-Si el rol de trabajo no completa el paso **6**, después de un tiempo de expiración el mensaje volverá a aparecer en la cola listo para que el rol de trabajo intente volver a procesarlo. El rol de trabajador puede comprobar cuántas veces se ha leído un mensaje de la cola y, si es necesario, marcarlo como mensaje "dudoso" para investigarlo mediante el envío a una cola independiente. Para obtener más información acerca de cómo leer mensajes de la cola y comprobar el número de eliminaciones de cola, consulte [Obtener mensajes](https://msdn.microsoft.com/library/azure/dd179474.aspx).  
+Si el rol de trabajo de hello nunca completa el paso **6**, a continuación, después vuelve a aparecer un mensaje de saludo de tiempo de espera en cola Hola prepararla para hello trabajo rol tootry tooreprocess. rol de trabajo de Hello puede comprobar cuántas veces se ha leído un mensaje en cola de hello y, si es necesario, marca es un mensaje "dudoso" con fines de investigación enviando tooa separa la cola. Para obtener más información acerca de la lectura de cola de mensajes y la comprobación Hola recuento de eliminación de cola, vea [Get Messages](https://msdn.microsoft.com/library/azure/dd179474.aspx).  
 
-Algunos errores de Table service y Queue service son errores transitorios y la aplicación cliente debe incluir una lógica de reintento adecuada para controlarlos.  
+Algunos errores de los servicios de tabla y cola de hello son errores transitorios y la aplicación cliente debe incluir toohandle de lógica de reintento adecuado ellos.  
 
 #### <a name="issues-and-considerations"></a>Problemas y consideraciones
-Tenga en cuenta los puntos siguientes al decidir cómo implementar este patrón:  
+Considere la posibilidad de hello siguientes puntos cuando decida cómo tooimplement este patrón:  
 
-* Esta solución no permite el aislamiento de las transacciones. Por ejemplo, un cliente pudo leer las tablas **Current** y **Archive** cuando el rol de trabajo estaba entre los pasos **4** y **5**, y tener una vista incoherente de los datos. Tenga en cuenta que los datos serán coherentes con el tiempo.  
-* Debe asegurarse de que los pasos 4 y 5 sean idempotentes para garantizar la coherencia.  
-* Puede escalar la solución mediante el uso de varias colas e instancias de rol de trabajador.  
+* Esta solución no permite el aislamiento de las transacciones. Por ejemplo, un cliente podría leer hello **actual** y **archivo** tablas al rol de trabajo de hello estuvo entre pasos **4** y **5**así como un vista incoherente de los datos de Hola. Tenga en cuenta que los datos de hello será coherentes al final.  
+* Asegúrese de que los pasos 4 y 5 son idempotentes en coherencia definitiva de orden tooensure.  
+* Puede escalar la solución de hello mediante el uso de varias colas e instancias de rol de trabajo.  
 
-#### <a name="when-to-use-this-pattern"></a>Cuándo usar este patrón
-Utilice este patrón cuando desee garantizar la coherencia eventual entre las entidades que existen en diferentes particiones o tablas. Puede extender este patrón para garantizar la coherencia eventual de las operaciones en Table service y Blob service, y otros orígenes de datos de almacenamiento que no sean de Azure, tales como bases de datos o el sistema de archivos.  
+#### <a name="when-toouse-this-pattern"></a>Cuando toouse este patrón
+Utilice este patrón cuando desee tooguarantee coherencia definitiva entre las entidades que existen en las distintas particiones o tablas. Puede extender esta coherencia definitiva tooensure de patrón para las operaciones en el servicio de tabla de Hola y servicio de Blob de Hola y otros orígenes de datos de almacenamiento que no sea de Azure como sistema de archivos de base de datos o hello.  
 
 #### <a name="related-patterns-and-guidance"></a>Orientación y patrones relacionados
-Los patrones y las directrices siguientes también pueden ser importantes a la hora de implementar este patrón:  
+Hello patrones y las directrices siguientes también pueden ser importantes al implementar este patrón:  
 
 * [Transacciones de grupos de entidades](#entity-group-transactions)  
 * [Combinar o reemplazar](#merge-or-replace)  
 
 > [!NOTE]
-> Si el aislamiento de transacciones es importante para su solución, considere la posibilidad de volver a diseñar las tablas para poder utilizar EGT.  
+> Si el aislamiento de transacciones es importante tooyour solución, considere la posibilidad de volver a diseñar la tooenable de tablas le toouse EGTs.  
 > 
 > 
 
 ### <a name="index-entities-pattern"></a>Patrón de entidades de índice
-Mantenga entidades de índice para poder efectuar búsquedas eficaces que devuelvan listas de entidades.  
+Mantener el índice entidades tooenable búsquedas eficaces que devuelven listas de entidades.  
 
 #### <a name="context-and-problem"></a>Contexto y problema
-Table Service indexa automáticamente entidades mediante los valores **PartitionKey** y **RowKey**. Esto permite que una aplicación cliente recupere una entidad eficazmente mediante una consulta de punto. Por ejemplo, si se usa la estructura de tabla que se muestra a continuación, una aplicación cliente puede recuperar de manera eficiente una entidad de empleado individual mediante el uso del nombre del departamento y el identificador de empleado (los valores **PartitionKey** y **RowKey**).  
+Hola servicio tabla indizará automáticamente entidades mediante hello **PartitionKey** y **RowKey** valores. Esto permite un tooretrieve de aplicación cliente una entidad de forma eficaz con una consulta de punto. Por ejemplo, mediante la estructura de tabla de Hola se muestra a continuación, una aplicación cliente puede eficazmente recuperar una entidad empleado individual mediante el nombre del departamento de Hola y el Id. de empleado de hello (hello **PartitionKey** y **RowKey** ).  
 
 ![][13]
 
-Si también desea poder recuperar una lista de las entidades employee en función del valor de otra propiedad no exclusiva, por ejemplo, su apellido, debe utilizar un examen de partición menos eficaz para buscar coincidencias en lugar de utilizar un índice para buscarlas directamente. Esto se debe a que Table service no proporciona índices secundarios.  
+Si también desea toobe tooretrieve capaz de obtener una lista de entidades de empleado según Hola valor de otra propiedad no es único, como su apellido, debe usar una partición menos eficiente examinar toofind coincidencias, en lugar de utilizar un índice toolook ellos una copia de seguridad directamente. Esto es porque el servicio de la tabla de hello no proporciona índices secundarios.  
 
 #### <a name="solution"></a>Solución
-Para habilitar la búsqueda por apellido con la estructura de entidad mostrada anteriormente, debe mantener listas de identificadores de empleado. Si desea recuperar las entidades employee con un apellido determinado, como Jones, debe encontrar primero la lista de identificadores de empleado para los empleados con Jones como su apellido y, a continuación, recuperar las entidades employee. Hay tres opciones principales para almacenar las listas de identificadores de empleado:  
+búsqueda de tooenable por apellido con estructura de la entidad de hello mostrado anteriormente, debe mantener listas de identificadores de empleado. Si desea que las entidades de tooretrieve Hola empleado con un apellido determinado, como Jones, debe encontrar primero lista Hola de identificadores de empleado para los empleados con Jones como su apellido y, a continuación, recuperar las entidades del empleado. Hay tres opciones principales para almacenar listas de Hola de Id. de empleados:  
 
 * Utilice Blob Storage.  
-* Cree entidades de índice en la misma partición que las entidades employee.  
+* Crear entidades de índice en hello igual de partición como entidades de empleado de Hola.  
 * Cree entidades de índice en una tabla o una partición independiente.  
 
-<u>Opción n.º 1: Usar Blob Storage</u>  
+<u>Opción n.º 1: Usar el almacenamiento de blobs</u>  
 
-Para la primera opción, cree un blob para cada apellido único y, en cada almacén de blobs, una lista de valores **PartitionKey** (departamento) y **RowKey** (identificador de empleado) para los empleados que tienen ese apellido. Al agregar o eliminar a un empleado debe asegurarse de que el contenido del blob relevante es coherente con las entidades employee.  
+Para la primera opción hello, crear un blob para cada nombre único de la última y, en cada almacén de blobs una lista de hello **PartitionKey** (departamento) y **RowKey** valores (Id. de empleado) para los empleados que tienen que última nombre. Cuando agrega o elimina a un empleado debe asegurarse de que el contenido de Hola del blob relevantes de Hola es coherente con las entidades de empleado de Hola.  
 
-<u>Opción n.º 2:</u> crear entidades de índice en la misma partición  
+<u>Opción #2:</u> crear entidades de índice en Hola misma partición  
 
-Para la segunda opción, utilice las entidades de índice que almacenan los datos siguientes:  
+Para la segunda opción hello, utilice entidades de índice que almacenan Hola datos siguientes:  
 
 ![][14]
 
-La propiedad **EmployeeIDs** contiene una lista de identificadores de empleado para los empleados cuyo apellido está almacenado en **RowKey**.  
+Hola **EmployeeIDs** propiedad contiene una lista de identificadores de empleado para los empleados con apellidos de hello almacenados en hello **RowKey**.  
 
-Los siguientes pasos describen el proceso que debe seguir al agregar un nuevo empleado si utiliza la segunda opción. En este ejemplo, agregamos a un empleado con Id. 000152 y el apellido Jones en el departamento de ventas:  
+Hello pasos siguientes describen proceso Hola que deben seguir al agregar un nuevo empleado si usas la segunda opción de Hola. En este ejemplo, vamos a agregar a un empleado cuyo Id. de 000152 y un apellido Jones Hola departamento de ventas:  
 
-1. Recupere la entidad de índice con el valor **PartitionKey** "Sales" y el valor **RowKey** "Jones". Guarde el valor ETag de esta entidad para usar en el paso 2.  
-2. Cree una transacción de grupo de entidad (es decir, una operación por lotes) que inserte la nueva entidad del empleado (valor **PartitionKey** "Sales" y valor **RowKey** "000152") y actualice la entidad de índice (valor **PartitionKey** "Sales" y valor **RowKey** "Jones") agregando el nuevo identificador de empleado a la lista del campo EmployeeIDs. Para obtener información sobre EGT, consulte la sección [Transacciones de grupo de entidad (EGT)](#entity-group-transactions).  
-3. Si la transacción de grupo de entidad falla debido a un error de simultaneidad optimista (alguien ha modificado la entidad de índice), necesitará comenzar de nuevo en el paso 1.  
+1. Recuperar Hola índice entidad con un **PartitionKey** valor hello y "Ventas" **RowKey** valor "Jones". Guardar Hola ETag de este toouse de entidad en el paso 2.  
+2. Crear una transacción de grupo de entidad (es decir, una operación por lotes) que inserta la nueva entidad de empleado hello (**PartitionKey** valor "Ventas" y **RowKey** valor "000152"), y las actualizaciones de Hola entidad índice ( **PartitionKey** valor "Ventas" y **RowKey** valor "Jones") mediante la adición de hello nueva employee id toohello lista en el campo de EmployeeIDs Hola. Para obtener información sobre EGT, consulte la sección [Transacciones de grupo de entidad (EGT)](#entity-group-transactions).  
+3. Si se produce un error en la transacción de grupo de entidades de hello debido a un error de simultaneidad optimista (otra persona se acaba de modificar entidad del índice de hello), a continuación, necesitará toostart sobre en el paso 1 nuevo.  
 
-Puede usar un enfoque similar a la eliminación de un empleado si utiliza la segunda opción. Cambiar el apellido de un empleado es ligeramente más complejo porque necesitará ejecutar una transacción de grupo de entidad que actualice tres entidades: la entidad employee, la entidad de índice para el apellido antiguo y la entidad de índice para el nombre nuevo. Debe recuperar cada entidad antes de realizar cambios para recuperar los valores de ETag que puede utilizar para realizar las actualizaciones mediante la simultaneidad optimista.  
+Puede usar un toodeleting enfoque similar un empleado si usas la segunda opción de Hola. Cambiar el apellido de un empleado es ligeramente más complejo, ya que necesitará tooexecute una transacción de grupo de entidades que actualiza tres entidades: Hola entidad employee, la entidad de índice de Hola para apellido anterior hello y la entidad de índice de Hola para apellido nuevo Hola. Se debe recuperar cada entidad antes de realizar cambios en el orden de valores de ETag de hello tooretrieve que, a continuación, puede usar tooperform Hola actualizaciones mediante el uso de simultaneidad optimista.  
 
-Los siguientes pasos describen el proceso que debe llevar a cabo cuando se necesita buscar todos los empleados con un apellido determinado en un departamento si utiliza la segunda opción. En este ejemplo se buscan todos los empleados con el apellido Jones en el departamento de ventas:  
+Hello pasos siguientes describen proceso Hola que deben seguir cuando necesite toolook todos los empleados de hello con un apellido determinado de un departamento si usas la segunda opción de Hola. En este ejemplo, estamos buscando todos los empleados de hello con apellido Jones Hola departamento de ventas:  
 
-1. Recupere la entidad de índice con el valor **PartitionKey** "Sales" y el valor **RowKey** "Jones".  
-2. Analice la lista de identificadores de empleado en el campo EmployeeIDs.  
-3. Si necesita información adicional sobre cada uno de los empleados (por ejemplo, sus direcciones de correo electrónico), recupere cada una de las entidades de empleado mediante los valores **PartitionKey** "Sales" y **RowKey** de la lista de empleados que obtuvo en el paso 2.  
+1. Recuperar Hola índice entidad con un **PartitionKey** valor hello y "Ventas" **RowKey** valor "Jones".  
+2. Analizar la lista de Hola de identificadores de campo de EmployeeIDs Hola de empleado.  
+3. Si necesita información adicional sobre cada uno de estos empleados (por ejemplo, sus direcciones de correo electrónico), recuperar cada una de las entidades de empleado de hello mediante **PartitionKey** valor "Ventas" y **RowKey** los valores de lista de Hola de empleados que obtuvo en el paso 2.  
 
 <u>Opción n.º 3:</u> crear entidades de índice en una tabla o partición independientes  
 
-Para la tercera opción, utilice las entidades de índice que almacenan los datos siguientes:  
+Para la tercera opción hello, utilice entidades de índice que almacenan Hola datos siguientes:  
 
 ![][15]
 
-La propiedad **EmployeeIDs** contiene una lista de identificadores de empleado para los empleados cuyo apellido está almacenado en **RowKey**.  
+Hola **EmployeeIDs** propiedad contiene una lista de identificadores de empleado para los empleados con apellidos de hello almacenados en hello **RowKey**.  
 
-Con la tercera opción, no puede utilizar EGT para mantener la coherencia porque las entidades del índice están en una partición distinta que las entidades employee. Debe asegurarse de que las entidades de índice son coherentes eventualmente con las entidades employee.  
+Con la tercera opción hello, no puede usar EGTs toomaintain coherencia porque entidades de índice de Hola se encuentran en una partición independiente de las entidades de empleado de Hola. Debe asegurarse de que las entidades de índice de hello son coherentes con las entidades de employee Hola.  
 
 #### <a name="issues-and-considerations"></a>Problemas y consideraciones
-Tenga en cuenta los puntos siguientes al decidir cómo implementar este patrón:  
+Considere la posibilidad de hello siguientes puntos cuando decida cómo tooimplement este patrón:  
 
-* Esta solución requiere al menos dos consultas para recuperar las entidades coincidentes: una para consultar las entidades de índice con el fin de obtener la lista de valores **RowKey** y, luego, las consultas para recuperar cada entidad de la lista.  
-* Dado que una entidad individual tiene un tamaño máximo de 1 MB, la opción nº2 y la opción nº3 de la solución dan por hecho que la lista de identificadores de empleado de cualquier apellido determinado nunca es mayor que 1 MB. Si la lista de identificadores de empleado es probable que sea mayor que 1 MB de tamaño, utilice la opción nº 1 y almacene los datos del índice en Blob Storage.  
-* Si utiliza la opción 2 (el uso de EGT para controlar la adición y eliminación de empleados, y el cambio de los apellidos de un empleado), debe evaluar si el volumen de transacciones se aproximará a los límites de escalabilidad de una partición determinada. Si este es el caso, debe considerar una solución coherente (opción nº1 o nº3) que utilice colas para controlar las solicitudes de actualización y le permita almacenar entidades de índice en una partición independiente de las entidades employee.  
-* La opción nº2 en esta solución da por hecho que desea buscar por apellido dentro de un departamento: por ejemplo, desea recuperar una lista de empleados que tienen un apellido Jones del departamento de ventas. Si desea buscar todos los empleados con apellido Jones en toda la organización, utilice opción nº1 o la opción nº3.
-* Puede implementar una solución basada en cola que ofrezca coherencia eventual (consulte [Patrón final coherente de transacciones](#eventually-consistent-transactions-pattern) para más información).  
+* Esta solución requiere entidades de búsqueda de coincidencias de tooretrieve de al menos dos consultas: una tooquery Hola índice tooobtain Hola lista de entidades de **RowKey** valores y, a continuación, consulta tooretrieve cada entidad en la lista de Hola.  
+* Dado que una entidad individual tiene un tamaño máximo de 1 MB, opción #2 y opción #3 en soluciones de hello asumir esa lista Hola de identificadores de empleado para cualquier apellido determinado nunca es mayor que 1 MB. Si lista Hola de Id. de empleados es probable toobe mayor que 1 MB de tamaño, utilice la opción #1 y almacenar datos de índice de hello en almacenamiento de blobs.  
+* Si utiliza la opción #2 (mediante EGTs toohandle agregando y eliminando a los empleados y cambiando el apellido de un empleado), debe evaluar si el volumen de Hola de transacciones aproximan a los límites de escalabilidad de hello en una partición determinada. Si éste es el caso de hello, debería considerar una solución coherente (opción #1 o #3) que utiliza colas toohandle Hola actualización las solicitudes y permite toostore las entidades de índice en una partición independiente de las entidades de empleado de Hola.  
+* Opción #2 en esta solución se da por supuesto que desea toolook por apellido dentro de un departamento: por ejemplo, desea tooretrieve una lista de empleados que tienen un apellido Jones Hola departamento de ventas. Si desea que toobe toolook capaz de seguridad de todos los empleados de hello cuyo apellido Jones en toda organización de hello, use la opción #1 u opción #3.
+* Puede implementar una solución basada en cola que ofrece la coherencia definitiva (vea hello [patrón coherente transacciones](#eventually-consistent-transactions-pattern) para obtener más detalles).  
 
-#### <a name="when-to-use-this-pattern"></a>Cuándo usar este patrón
-Utilice este patrón cuando desee buscar un conjunto de entidades que compartan un valor de propiedad común, como todos los empleados con el apellido Jones.  
+#### <a name="when-toouse-this-pattern"></a>Cuando toouse este patrón
+Utilice este patrón cuando desee toolookup un conjunto de entidades que comparten un valor de propiedad común, como todos los empleados con apellidos Hola Jones.  
 
 #### <a name="related-patterns-and-guidance"></a>Orientación y patrones relacionados
-Los patrones y las directrices siguientes también pueden ser importantes a la hora de implementar este patrón:  
+Hello patrones y las directrices siguientes también pueden ser importantes al implementar este patrón:  
 
 * [Patrón de clave compuesta](#compound-key-pattern)  
 * [Patrón final coherente de transacciones](#eventually-consistent-transactions-pattern)  
@@ -643,230 +643,230 @@ Los patrones y las directrices siguientes también pueden ser importantes a la h
 * [Trabajar con tipos de entidad heterogéneos](#working-with-heterogeneous-entity-types)  
 
 ### <a name="denormalization-pattern"></a>Patrón de desnormalización
-Combine datos relacionados entre sí en una sola entidad para recuperar todos los datos que necesita con una consulta de punto único.  
+Combinar datos relacionados entre sí en una sola entidad tooenable tooretrieve todos los datos que necesita con una consulta de punto único de Hola.  
 
 #### <a name="context-and-problem"></a>Contexto y problema
-En una base de datos relacional, normalmente normaliza datos para eliminar datos duplicados resultantes en las consultas que recuperan datos de varias tablas. Si normaliza los datos de tablas de Azure, debe realizar varias acciones de ida y vuelta desde el cliente al servidor para recuperar los datos relacionados. Por ejemplo, con la estructura de tabla que se muestra a continuación, se necesitan dos ciclos de ida y vuelta para recuperar los detalles de un departamento: uno para capturar la entidad del departamento que incluye el identificador del administrador y, después, otra solicitud para capturar los detalles del administrador de una entidad employee.  
+En una base de datos relacional, normalmente se normalizan desduplicación de datos tooremove resultante en las consultas que recuperan datos de varias tablas. Si normalizar los datos en tablas de Azure, debe realizar varias acciones de ida y vuelta de hello cliente toohello server tooretrieve los datos relacionados. Por ejemplo, con estructura de tabla de Hola se muestra a continuación necesitan dos redondear detalles de hello tooretrieve de viajes de un departamento: entidad de departamento de hello uno toofetch que incluye el identificador del Administrador de hello y, a continuación, otra solicitud toofetch Hola de detalles del Administrador de un empleado entidad.  
 
 ![][16]
 
 #### <a name="solution"></a>Solución
-En lugar de almacenar los datos en dos entidades independientes, desnormalice los datos y conserve una copia de los detalles del administrador en la entidad department. Por ejemplo:  
+En lugar de almacenar datos de hello en dos entidades independientes, reducir la normalización de datos de Hola y conservar una copia de los detalles del Administrador de hello en entidad department de Hola. Por ejemplo:  
 
 ![][17]
 
-Ahora con las entidades de departamento almacenadas con estas propiedades, puede recuperar todos los detalles que necesita acerca de un departamento mediante una consulta de punto.  
+Con las entidades de departamento almacenadas con estas propiedades, ahora puede recuperar todos los detalles de Hola que necesite acerca de un departamento mediante una consulta de punto.  
 
 #### <a name="issues-and-considerations"></a>Problemas y consideraciones
-Tenga en cuenta los puntos siguientes al decidir cómo implementar este patrón:  
+Considere la posibilidad de hello siguientes puntos cuando decida cómo tooimplement este patrón:  
 
-* Hay algunos costes de sobrecarga asociados al almacenamiento de datos dos veces. La ventaja de rendimiento (procedente de menos solicitudes al servicio de almacenamiento) normalmente es más importante que el aumento marginal en los costes de almacenamiento (y este coste se compensa parcialmente con una reducción en el número de transacciones que se requieren para capturar los detalles de un departamento).  
-* Debe mantener la coherencia de las dos entidades que almacenan información acerca de los administradores. Puede controlar el problema de coherencia utilizando EGT para actualizar varias entidades en una única transacción atómica: en este caso, la entidad department y la entidad employee del administrador de departamento se almacenan en la misma partición.  
+* Hay algunos costes de sobrecarga asociados al almacenamiento de datos dos veces. ventajas de rendimiento (resultantes de los servicios de almacenamiento de menos solicitudes toohello) normalmente Hello compensan aumento marginal de hello en los costos de almacenamiento (y parcialmente se compensa este costo por una reducción del número de Hola de transacciones requieren detalles de hello toofetch de un departamento).  
+* Debe mantener la coherencia de Hola de entidades de dos de Hola que almacenan información acerca de los administradores. Puede controlar el problema de coherencia de hello mediante EGTs tooupdate varias entidades en una única transacción atómica: en este caso, se almacenan entidad department de Hola y entidad de empleado de hello para el administrador del departamento de Hola Hola misma partición.  
 
-#### <a name="when-to-use-this-pattern"></a>Cuándo usar este patrón
-Utilice este patrón cuando necesite buscar información relacionada con frecuencia. Este patrón reduce el número de consultas que el cliente debe realizar para recuperar los datos que necesita.  
+#### <a name="when-toouse-this-pattern"></a>Cuando toouse este patrón
+Utilice este patrón cuando sea necesario con frecuencia toolook información relacionada. Este patrón reduce la cantidad de Hola de las consultas que el cliente debe realizar datos de hello tooretrieve requiere.  
 
 #### <a name="related-patterns-and-guidance"></a>Orientación y patrones relacionados
-Los patrones y las directrices siguientes también pueden ser importantes a la hora de implementar este patrón:  
+Hello patrones y las directrices siguientes también pueden ser importantes al implementar este patrón:  
 
 * [Patrón de clave compuesta](#compound-key-pattern)  
 * [Transacciones de grupos de entidades](#entity-group-transactions)  
 * [Trabajar con tipos de entidad heterogéneos](#working-with-heterogeneous-entity-types)
 
 ### <a name="compound-key-pattern"></a>Patrón de clave compuesta
-Utilice valores **RowKey** compuestos para permitir a los clientes buscar datos relacionados con una consulta de punto único.  
+Use compuesta **RowKey** valores tooenable un toolookup de cliente relacionadas con datos con una consulta de punto único.  
 
 #### <a name="context-and-problem"></a>Contexto y problema
-En una base de datos relacional, resulta bastante natural usar combinaciones en las consultas para devolver datos relacionados al cliente en una sola consulta. Por ejemplo, podría utilizar el identificador de empleado para buscar una lista de entidades relacionadas que contengan datos de rendimiento y revisión de ese empleado.  
+En una base de datos relacional, resulta bastante natural toouse combinaciones en las consultas tooreturn relacionadas con elementos de cliente de toohello de datos en una única consulta. Por ejemplo, podría usar toolook de Id. de empleado de hello una lista de entidades relacionadas que contienen el rendimiento y revisar los datos para ese empleado.  
 
-Supongamos que está almacenando entidades employee en Table service utilizando la siguiente estructura:  
+Supongamos que está almacenando las entidades employee en servicio de la tabla de hello utilizando Hola siguiendo la estructura:  
 
 ![][18]
 
-También necesita almacenar datos históricos relacionados con las revisiones y el rendimiento de cada año que el empleado ha trabajado para su organización y necesitará tener acceso a esta información por año. Una opción consiste en crear otra tabla que almacene las entidades con la estructura siguiente:  
+También necesita toostore datos históricos relacionados con tooreviews y rendimiento para cada empleado de hello año ha funcionado para su organización y necesita toobe pueda tooaccess esta información por año. Una opción es toocreate otra tabla que almacena las entidades con hello siguiente estructura:  
 
 ![][19]
 
-Observe que con este enfoque puede decidir duplicar parte de la información (por ejemplo, nombre y apellidos) en la nueva entidad, lo que le permite recuperar los datos con una única solicitud. Sin embargo, no puede mantener la homogeneidad porque no puede utilizar un EGT para actualizar las dos entidades de forma atómica.  
+Tenga en cuenta que con este enfoque, puede decidir tooduplicate cierta información (por ejemplo, nombre y apellidos) en hello nueva entidad tooenable tooretrieve los datos con una sola solicitud. Sin embargo, no se puede mantener la coherencia segura porque no puede usar un dos entidades EGT tooupdate Hola de forma atómica.  
 
 #### <a name="solution"></a>Solución
-Almacene un nuevo tipo de entidad en la tabla original mediante entidades con la estructura siguiente:  
+Almacenar un nuevo tipo de entidad en la tabla original con entidades Hola siguiente estructura:  
 
 ![][20]
 
-Observe que **RowKey** ahora es una clave compuesta formada por el identificador del empleado y el año de los datos de revisión, lo que le permite recuperar el rendimiento del empleado y revisar los datos con una única solicitud para una entidad única.  
+Tenga en cuenta cómo Hola **RowKey** es ahora una clave compuesta formada por Id. de empleado de Hola y Hola año con datos de la revisión de Hola que le permite tooretrieve Hola rendimiento del empleado y revisar los datos con una única solicitud para una sola entidad.  
 
-El ejemplo siguiente describe cómo se pueden recuperar todos los datos de revisión para un empleado concreto (como employee 000123 en el departamento de ventas):  
+Hola de ejemplo siguiente describe cómo se pueden recuperar todos los datos de revisión de Hola para un empleado concreto (por ejemplo, employee 000123 Hola departamento de ventas):  
 
 $filter=(PartitionKey eq 'Ventas') y (RowKey ge 'empid_000123') y (RowKey lt 'empid_000124')&$select=RowKey,Manager Rating,Peer Rating,Comments  
 
 #### <a name="issues-and-considerations"></a>Problemas y consideraciones
-Tenga en cuenta los puntos siguientes al decidir cómo implementar este patrón:  
+Considere la posibilidad de hello siguientes puntos cuando decida cómo tooimplement este patrón:  
 
-* Debe usar un carácter separador adecuado que facilite el análisis del valor **RowKey**: por ejemplo, **000123_2012**.  
-* También almacena esta entidad en la misma partición que otras entidades que contienen datos relacionados correspondientes al mismo empleado, lo que significa que puede usar EGT para mantener una coherencia segura.
-* Debe considerar la frecuencia con la que consultará los datos para determinar si este patrón es adecuado.  Por ejemplo, si tendrá acceso a los datos de revisión con poca frecuencia y a menudo a los datos de empleados principales debe guardarlos como entidades independientes.  
+* Debe usar un carácter de separador adecuado que hace más fácil tooparse hello **RowKey** valor: por ejemplo, **000123_2012**.  
+* También almacena esta entidad en hello igual de partición como otras entidades que contienen datos relacionados para hello mismo empleado, lo que significa que puede usar EGTs toomaintain homogeneidad.
+* Considere la posibilidad de la frecuencia con consultará Hola datos toodetermine si este patrón es adecuado.  Por ejemplo, si se tiene acceso a Hola revisión datos con poca frecuencia y Hola principal datos de los empleados a menudo que debe mantener como entidades independientes.  
 
-#### <a name="when-to-use-this-pattern"></a>Cuándo usar este patrón
-Utilice este patrón cuando necesite almacenar una o más entidades relacionadas que consulte con frecuencia.  
+#### <a name="when-toouse-this-pattern"></a>Cuando toouse este patrón
+Utilice este patrón cuando necesite toostore uno o más entidades relacionadas que se consulta con frecuencia.  
 
 #### <a name="related-patterns-and-guidance"></a>Orientación y patrones relacionados
-Los patrones y las directrices siguientes también pueden ser importantes a la hora de implementar este patrón:  
+Hello patrones y las directrices siguientes también pueden ser importantes al implementar este patrón:  
 
 * [Transacciones de grupos de entidades](#entity-group-transactions)  
 * [Trabajar con tipos de entidad heterogéneos](#working-with-heterogeneous-entity-types)  
 * [Patrón final coherente de transacciones](#eventually-consistent-transactions-pattern)  
 
 ### <a name="log-tail-pattern"></a>Patrón final del registro
-Recupere las entidades *n* agregadas recientemente a una partición utilizando un valor **RowKey** que se ordene en orden de fecha y hora inverso.  
+Recuperar hello  *n*  entidades agregan más recientemente tooa partición mediante el uso de un **RowKey** valor que ordena en fecha inversa y orden cronológico.  
 
 #### <a name="context-and-problem"></a>Contexto y problema
-Un requisito común es ser capaz de recuperar las entidades creadas más recientemente, por ejemplo las últimas diez reclamaciones de gastos enviadas por un empleado. Las consultas de tabla admiten una operación de consulta **$top** para devolver las primeras entidades *n* de un conjunto: no hay ninguna operación de consulta equivalente para devolver las últimas entidades n en un conjunto.  
+Un requisito común es ser capaz de tooretrieve entidades de Hola creado más recientemente, por ejemplo Hola diez más reciente gastos notificaciones enviadas por un empleado. Consulta de tabla de compatibilidad con un **$top** hello tooreturn de operación de consulta primero  *n*  entidades de un conjunto de: no hay ninguna consulta equivalente operación tooreturn Hola últimos n entidades en un conjunto.  
 
 #### <a name="solution"></a>Solución
-Almacene las entidades mediante un valor **RowKey** que ordene naturalmente en orden inverso de fecha y hora de modo que la entrada más reciente sea siempre la primera de la tabla.  
+Almacén Hola entidades mediante un **RowKey** que naturalmente ordena en orden inverso fecha/hora orden mediante el uso de para entrada más reciente de hello siempre es hello primera de ellas en la tabla de Hola.  
 
-Por ejemplo, para poder recuperar las diez reclamaciones de gastos más recientes enviadas por un empleado, puede utilizar un valor de marca inversa derivado de la fecha y hora actuales. El siguiente ejemplo de código de C# muestra una forma de crear un valor de "marcas invertidas" adecuado para un valor **RowKey** que ordene de más reciente a más antiguo:  
+Por ejemplo, toobe puede tooretrieve Hola diez notificaciones más recientes de gastos enviados por un empleado, puede usar un valor de graduación inversa derivan Hola de fecha y hora actuales. Hello siguiente ejemplo de código de C# muestra una manera de toocreate un valor de "invertido tics" adecuado para un **RowKey** que ordena de hello más reciente toohello más antigua:  
 
 `string invertedTicks = string.Format("{0:D19}", DateTime.MaxValue.Ticks - DateTime.UtcNow.Ticks);`  
 
-Puede volver al valor de fecha y hora utilizando el código siguiente:  
+Puede obtener nuevo valor de tiempo de fecha toohello mediante el siguiente código de hello:  
 
 `DateTime dt = new DateTime(DateTime.MaxValue.Ticks - Int64.Parse(invertedTicks));`  
 
-La consulta de la tabla tiene este aspecto:  
+consulta de tabla de Hello tiene el siguiente aspecto:  
 
 `https://myaccount.table.core.windows.net/EmployeeExpense(PartitionKey='empid')?$top=10`  
 
 #### <a name="issues-and-considerations"></a>Problemas y consideraciones
-Tenga en cuenta los puntos siguientes al decidir cómo implementar este patrón:  
+Considere la posibilidad de hello siguientes puntos cuando decida cómo tooimplement este patrón:  
 
-* Debe rellenar el valor de tic inverso con ceros a la izquierda para asegurarse de que el valor de cadena se ordene según lo esperado.  
-* Debe ser consciente de los objetivos de escalabilidad en el nivel de una partición. Tenga cuidado de no crear particiones en la zona activa.  
+* Debe rellenar valor de graduación inversa de hello con ceros iniciales valor de cadena de hello tooensure ordena según lo previsto.  
+* Debe ser consciente de los objetivos de escalabilidad de hello en el nivel de Hola de una partición. Tenga cuidado de no crear particiones en la zona activa.  
 
-#### <a name="when-to-use-this-pattern"></a>Cuándo usar este patrón
-Utilice este patrón cuando necesite tener acceso a entidades en orden inverso de fecha y hora o cuando se necesite tener acceso a las entidades que haya agregado más recientemente.  
+#### <a name="when-toouse-this-pattern"></a>Cuando toouse este patrón
+Utilice este patrón cuando necesite tooaccess entidades en orden inverso de fecha y hora o cuando necesite tooaccess hello más recientemente agregado entidades.  
 
 #### <a name="related-patterns-and-guidance"></a>Orientación y patrones relacionados
-Los patrones y las directrices siguientes también pueden ser importantes a la hora de implementar este patrón:  
+Hello patrones y las directrices siguientes también pueden ser importantes al implementar este patrón:  
 
 * [Anteponer/anexar antipatrón](#prepend-append-anti-pattern)  
 * [Recuperación de entidades](#retrieving-entities)  
 
 ### <a name="high-volume-delete-pattern"></a>Patrón de eliminación de gran volumen
-Habilite la eliminación de un gran volumen de entidades mediante el almacenamiento de todas las entidades para su eliminación simultánea en su propia tabla independiente; elimine las entidades mediante la eliminación de la tabla.  
+Permitir la eliminación de Hola de un gran volumen de entidades mediante el almacenamiento de todas las entidades de Hola para su eliminación simultánea en su propia tabla independiente; eliminar entidades de hello mediante la eliminación de la tabla de Hola.  
 
 #### <a name="context-and-problem"></a>Contexto y problema
-Muchas aplicaciones eliminarán datos antiguos que ya no necesita que estén disponibles para una aplicación cliente o que la aplicación haya archivado en otro medio de almacenamiento. Normalmente se identifican estos datos por una fecha: por ejemplo, tiene un requisito para eliminar registros de todas las solicitudes de inicio de sesión que tengan más de 60 días.  
+Muchas aplicaciones eliminan datos antiguos que ya no necesita la aplicación de cliente de toobe tooa disponibles o esa aplicación Hola archivado tooanother medio de almacenamiento. Normalmente se identifican estos datos en una fecha: por ejemplo, tendrá registros toodelete requisito de todas las solicitudes de inicio de sesión que tienen más de 60 días de antigüedad.  
 
-Un diseño posible es utilizar la fecha y hora de la solicitud de inicio de sesión en el valor **RowKey**:  
+Un diseño posible es toouse Hola fecha y hora en de solicitud de inicio de sesión de Hola Hola **RowKey**:  
 
 ![][21]
 
-Este enfoque evita los problemas de las particiones porque la aplicación puede insertar y eliminar entidades de inicio de sesión para cada usuario en una partición independiente. Sin embargo, este enfoque puede ser costoso y lento si tiene un gran número de entidades porque primero debe realizar un recorrido de tabla para identificar todas las entidades que desea eliminar y, a continuación, debe eliminar cada entidad antigua. Tenga en cuenta que puede reducir el número de viajes de ida y vuelta al servidor necesarios para eliminar las entidades antiguas almacenando por lotes varias solicitudes de eliminación en EGT.  
+Este enfoque evita zonas activas de partición porque la aplicación hello puede insertar y eliminar entidades de inicio de sesión para cada usuario en una partición independiente. Sin embargo, este enfoque puede resultar costoso mucho tiempo si tiene un gran número de entidades porque primero debe tooperform un recorrido de tabla en orden tooidentify todos los toodelete de entidades de hello y, a continuación, debe eliminar cada entidad antiguo. Tenga en cuenta que puede reducir Hola número de viajes de ida y toohello toodelete servidor necesario Hola entidades antiguo por lotes varias solicitudes de eliminación en EGTs.  
 
 #### <a name="solution"></a>Solución
-Utilice una tabla independiente para cada día de intentos de inicio de sesión. Puede usar el diseño de la entidad anterior para evitar problemas cuando se insertan entidades y eliminar entidades anteriores ahora es simplemente una cuestión de eliminar una tabla todos los días (una operación de almacenamiento único) en lugar de buscar y eliminar cientos de miles de entidades de inicio de sesión individuales cada día.  
+Utilice una tabla independiente para cada día de intentos de inicio de sesión. Puede usar el diseño de la entidad de Hola por encima de los puntos de conexión tooavoid cuando se insertan entidades, y eliminar entidades anteriores ahora es simplemente una pregunta de la eliminación de una tabla cada día (una operación de almacenamiento único) en lugar de buscar y eliminar cientos y miles de entidades de inicio de sesión individual cada día.  
 
 #### <a name="issues-and-considerations"></a>Problemas y consideraciones
-Tenga en cuenta los puntos siguientes al decidir cómo implementar este patrón:  
+Considere la posibilidad de hello siguientes puntos cuando decida cómo tooimplement este patrón:  
 
-* ¿Su diseño admite otras formas de uso por parte de su aplicación de los datos como la búsqueda de entidades específicas, vinculación con otros datos o generar información de agregado?  
+* ¿Admite el diseño de otras formas de la aplicación va a utilizar datos de hello como búsqueda de entidades específicas, vincular con otros datos, o generar información de agregado?  
 * ¿Evita el diseño problemas cuando se insertan nuevas entidades?  
-* Espere un retraso si desea reutilizar el mismo nombre de tabla después de eliminarlo. Es mejor utilizar siempre nombres de tabla únicos.  
-* Esperar ciertas limitaciones cuando utilice primero una tabla nueva mientras Table service aprende los patrones de acceso y distribuye las particiones entre los nodos. Debe considerar la frecuencia con la que necesita crear nuevas tablas.  
+* Esperar un retraso si desea tooreuse Hola mismo nombre de la tabla después de eliminarlo. Es mejor tooalways utilizar nombres de tabla única.  
+* Esperar algunos limitación cuando realice primero una nueva tabla mientras Hola servicio tabla aprende los patrones de acceso de Hola y distribuye las particiones de hello entre nodos. Considere la posibilidad de la frecuencia con necesita toocreate nuevas tablas.  
 
-#### <a name="when-to-use-this-pattern"></a>Cuándo usar este patrón
-Utilice este patrón cuando tenga un gran volumen de entidades que deba eliminar al mismo tiempo.  
+#### <a name="when-toouse-this-pattern"></a>Cuando toouse este patrón
+Utilice este patrón cuando tenga un gran volumen de entidades que se deben eliminar en hello mismo tiempo.  
 
 #### <a name="related-patterns-and-guidance"></a>Orientación y patrones relacionados
-Los patrones y las directrices siguientes también pueden ser importantes a la hora de implementar este patrón:  
+Hello patrones y las directrices siguientes también pueden ser importantes al implementar este patrón:  
 
 * [Transacciones de grupos de entidades](#entity-group-transactions)
 * [Modificación de entidades](#modifying-entities)  
 
 ### <a name="data-series-pattern"></a>Patrón de serie de datos
-Almacene una serie de datos completa en una sola entidad para minimizar el número de solicitudes que realice.  
+Serie completa de los datos de almacén única entidad toominimize Hola de varias solicitudes que realice.  
 
 #### <a name="context-and-problem"></a>Contexto y problema
-Un escenario común para una aplicación es almacenar una serie de datos que normalmente necesite recuperar al mismo tiempo. Por ejemplo, la aplicación podría registrar el número de mensajes de MI que envía cada hora cada empleado y, a continuación, utilizar esta información para trazar cuántos mensajes envió cada usuario durante las 24 horas anteriores. Un diseño podría ser almacenar 24 entidades para cada empleado:  
+Un escenario común es para una aplicación toostore una serie de datos que normalmente se necesita tooretrieve a la vez. Por ejemplo, la aplicación podría grabar cuántos mensajes de mensajería instantánea cada empleado envía cada hora y, a continuación, use este tooplot información cuántos mensajes enviado a través de cada usuario Hola 24 horas anteriores. Un diseño puede ser toostore 24 entidades para cada empleado:  
 
 ![][22]
 
-Con este diseño, puede localizar y actualizar fácilmente la entidad que se va a actualizar para cada empleado, siempre que la aplicación necesite actualizar el valor de recuento de mensajes. Sin embargo, para recuperar la información para trazar un gráfico de la actividad durante las 24 horas anteriores, debe recuperar 24 entidades.  
+Con este diseño, fácilmente puede buscar y actualizar Hola entidad tooupdate para cada empleado de cada vez que la aplicación hello necesita el valor de número de mensajes de Hola tooupdate. Sin embargo, tooretrieve Hola información tooplot un gráfico de actividad de hello para hello 24 horas anteriores, debe recuperar 24 entidades.  
 
 #### <a name="solution"></a>Solución
-Utilice el siguiente diseño con una propiedad independiente para almacenar el número de mensajes de cada hora:  
+Usar hello sigue diseño con un número de mensajes de Hola de toostore de propiedades independientes para cada hora:  
 
 ![][23]
 
-Con este diseño, puede utilizar una operación de combinación para actualizar el número de mensajes de un empleado para una hora concreta. Ahora puede recuperar toda la información que necesita para trazar el gráfico mediante una solicitud para una entidad única.  
+Con este diseño, puede usar un número de mensajes de Hola de mezcla operación tooupdate para un empleado de una hora concreta. Ahora, puede recuperar toda la información de hello necesita gráfico de hello tooplot mediante una solicitud para una sola entidad.  
 
 #### <a name="issues-and-considerations"></a>Problemas y consideraciones
-Tenga en cuenta los puntos siguientes al decidir cómo implementar este patrón:  
+Considere la posibilidad de hello siguientes puntos cuando decida cómo tooimplement este patrón:  
 
-* Si la serie de datos completa no cabe en una única entidad (una entidad puede tener hasta 252 propiedades), utilice un almacén de datos alternativo, como un blob.  
-* Si tiene varios clientes actualizando una entidad simultáneamente, deberá utilizar el **ETag** para implementar la simultaneidad optimista. Si tiene muchos clientes, puede experimentar un alto nivel de contención.  
+* Si la serie de datos completa no cabe en una única entidad (una entidad puede tener propiedades too252), use un almacén de datos alternativo, como un blob.  
+* Si tiene varios clientes simultáneamente, la actualización de una entidad, deberá hello toouse **ETag** tooimplement de simultaneidad optimista. Si tiene muchos clientes, puede experimentar un alto nivel de contención.  
 
-#### <a name="when-to-use-this-pattern"></a>Cuándo usar este patrón
-Utilice este patrón cuando necesite actualizar y recuperar una serie de datos asociada con una entidad individual.  
+#### <a name="when-toouse-this-pattern"></a>Cuando toouse este patrón
+Utilice este patrón cuando necesite tooupdate y recuperar una serie de datos asociada a una entidad individual.  
 
 #### <a name="related-patterns-and-guidance"></a>Orientación y patrones relacionados
-Los patrones y las directrices siguientes también pueden ser importantes a la hora de implementar este patrón:  
+Hello patrones y las directrices siguientes también pueden ser importantes al implementar este patrón:  
 
 * [Patrón de entidades de gran tamaño](#large-entities-pattern)  
 * [Combinar o reemplazar](#merge-or-replace)  
-* [Patrón final coherente de transacciones](#eventually-consistent-transactions-pattern) (si va a almacenar la serie de datos en un blob)  
+* [Patrón de transacciones coherente](#eventually-consistent-transactions-pattern) (si está almacenando series de datos de hello en un blob)  
 
 ### <a name="wide-entities-pattern"></a>Patrón de entidades amplio
-Use varias entidades físicas para almacenar entidades lógicas con más de 252 propiedades.  
+Usar varias entidades lógicas toostore de entidades físicas con más de 252 propiedades.  
 
 #### <a name="context-and-problem"></a>Contexto y problema
-Una entidad individual no puede tener más de 252 propiedades (excepto las propiedades del sistema obligatorias) y no puede almacenar más de 1 MB de datos en total. En una base de datos relacional, normalmente se encontrará con límites en el tamaño de una fila de ida y vuelta al agregar una nueva tabla e imponer una relación de 1 a 1 entre ellas.  
+Una entidad individual puede tener no más de 252 propiedades (excepto las propiedades del sistema obligatorio de hello) y no puede almacenar más de 1 MB de datos en total. En una base de datos relacional, normalmente, obtendría los límites de tamaño de Hola de una fila de ida y vuelta al agregar una nueva tabla e imponer una relación de 1 a 1 entre ellos.  
 
 #### <a name="solution"></a>Solución
-Con Table service, puede almacenar varias entidades para representar un objeto único de gran empresa con más de 252 propiedades. Por ejemplo, si desea almacenar un recuento del número de mensajes de mensajería instantánea enviados por cada empleado durante los últimos 365 días, podría utilizar el siguiente diseño que usa dos entidades con distintos esquemas:  
+Con el servicio de la tabla de Hola, puede almacenar varias entidades toorepresent un objeto único de grandes empresas con más de 252 propiedades. Por ejemplo, si desea que toostore un recuento del número de Hola de mensajes de mensajería instantánea enviados por cada empleado para hello últimos 365 días, podría utilizar Hola después de diseño que utiliza dos entidades con distintos esquemas:  
 
 ![][24]
 
-Si necesita realizar un cambio que requiere la actualización de ambas entidades para mantenerlas sincronizadas entre sí puede utilizar un EGT. De lo contrario, puede utilizar una única operación de combinación para actualizar el número de mensajes para un día concreto. Para recuperar todos los datos de un empleado individual debe recuperar ambas entidades, lo que puede hacer con dos solicitudes eficaces que se usan un valor **PartitionKey** y **RowKey**.  
+Si necesita toomake un cambio que es necesario actualizar ambos tookeep entidades ellos sincronizadas entre sí puede utilizar un EGT. En caso contrario, puede usar un número de mensajes de Hola de combinación única operación tooupdate para un día determinado. tooretrieve Hola a todos los datos para un empleado individual que se debe recuperar ambas entidades, lo que puede realizar con dos solicitudes eficaz que se usan un **PartitionKey** y un **RowKey** valor.  
 
 #### <a name="issues-and-considerations"></a>Problemas y consideraciones
-Tenga en cuenta los puntos siguientes al decidir cómo implementar este patrón:  
+Considere la posibilidad de hello siguientes puntos cuando decida cómo tooimplement este patrón:  
 
-* Recuperar una entidad lógica completa implica al menos dos transacciones de almacenamiento: una para recuperar cada entidad física.  
+* Recuperar una entidad lógica completa implica al menos dos de las transacciones de almacenamiento: entidad física de un tooretrieve.  
 
-#### <a name="when-to-use-this-pattern"></a>Cuándo usar este patrón
-Utilice este patrón cuando necesite almacenar entidades cuyo tamaño o número de propiedades supere los límites de una entidad individual en Table service.  
+#### <a name="when-toouse-this-pattern"></a>Cuando toouse este patrón
+Utilice este patrón cuando necesidad toostore entidades cuyo tamaño o número de propiedades superan el límite de Hola de una entidad individual en hello servicio tabla.  
 
 #### <a name="related-patterns-and-guidance"></a>Orientación y patrones relacionados
-Los patrones y las directrices siguientes también pueden ser importantes a la hora de implementar este patrón:  
+Hello patrones y las directrices siguientes también pueden ser importantes al implementar este patrón:  
 
 * [Transacciones de grupos de entidades](#entity-group-transactions)
 * [Combinar o reemplazar](#merge-or-replace)
 
 ### <a name="large-entities-pattern"></a>Patrón de entidades de gran tamaño
-Use Blob Storage para almacenar valores de propiedad de gran tamaño.  
+Usar valores de propiedad grande de toostore de almacenamiento de blobs.  
 
 #### <a name="context-and-problem"></a>Contexto y problema
-Una entidad individual no puede almacenar más de 1 MB de datos en total. Si una o varias de sus propiedades almacenan valores que provocan que el tamaño total de la entidad supere este valor, no puede almacenar toda la entidad en Table service.  
+Una entidad individual no puede almacenar más de 1 MB de datos en total. Si una o varias de las propiedades del almacén de valores que hacen el tamaño total de hello de la entidad tooexceed este valor, no se puede almacenar toda la entidad Hola Hola servicio tabla.  
 
 #### <a name="solution"></a>Solución
-Si la entidad supera 1 MB de tamaño porque una o más propiedades contienen una gran cantidad de datos, puede almacenar datos en Blob service y, a continuación, almacenar la dirección del blob en una propiedad de la entidad. Por ejemplo, puede almacenar la foto de un empleado en Blob Storage y almacenar un vínculo a la foto en la propiedad **Photo** de la entidad employee:  
+Si la entidad supera 1 MB de tamaño porque una o varias propiedades contienen una gran cantidad de datos, puede almacenar datos en hello servicio Blob y, a continuación, almacenar direcciones Hola de blob de hello en una propiedad de entidad de Hola. Por ejemplo, puede almacenar fotos Hola de un empleado en el almacenamiento de blobs y almacenar una foto de toohello vínculo Hola **fotográfica** propiedad de la entidad de empleados:  
 
 ![][25]
 
 #### <a name="issues-and-considerations"></a>Problemas y consideraciones
-Tenga en cuenta los puntos siguientes al decidir cómo implementar este patrón:  
+Considere la posibilidad de hello siguientes puntos cuando decida cómo tooimplement este patrón:  
 
-* Para mantener la coherencia eventual entre la entidad de Table service y los datos de Blob service, utilice el [patrón final coherente de transacciones](#eventually-consistent-transactions-pattern) para mantener las entidades.
-* Recuperar una entidad completa implica al menos dos transacciones de almacenamiento: una para recuperar la entidad y otra para recuperar los datos del blob.  
+* toomaintain coherencia definitiva entre entidad Hola Hola servicio tabla y datos de Hola Hola servicio Blob, use hello [patrón coherente transacciones](#eventually-consistent-transactions-pattern) toomaintain las entidades.
+* Recuperar una entidad completa implica al menos dos de las transacciones de almacenamiento: una entidad de hello tooretrieve y uno tooretrieve Hola de blobs de datos.  
 
-#### <a name="when-to-use-this-pattern"></a>Cuándo usar este patrón
-Utilice este patrón cuando necesite almacenar entidades cuyo tamaño supere los límites para una entidad individual en Table service.  
+#### <a name="when-toouse-this-pattern"></a>Cuando toouse este patrón
+Utilice este patrón cuando sea necesario entidades toostore cuyo tamaño supera el límite de Hola de una entidad individual en el servicio de la tabla de Hola.  
 
 #### <a name="related-patterns-and-guidance"></a>Orientación y patrones relacionados
-Los patrones y las directrices siguientes también pueden ser importantes a la hora de implementar este patrón:  
+Hello patrones y las directrices siguientes también pueden ser importantes al implementar este patrón:  
 
 * [Patrón final coherente de transacciones](#eventually-consistent-transactions-pattern)  
 * [Patrón de entidades amplio](#wide-entities-pattern)
@@ -874,80 +874,80 @@ Los patrones y las directrices siguientes también pueden ser importantes a la h
 <a name="prepend-append-anti-pattern"></a>
 
 ### <a name="prependappend-anti-pattern"></a>Antipatrón de anteponer/anexar
-Aumente la escalabilidad cuando tenga un alto volumen de inserciones al repartir estas en varias particiones.  
+Aumentar la escalabilidad cuando tenga un gran volumen de inserciones extendiendo Hola inserciones en varias particiones.  
 
 #### <a name="context-and-problem"></a>Contexto y problema
-Anteponer o anexar las entidades a las entidades almacenadas normalmente provoca en la aplicación la adición de nuevas entidades a la primera o última partición de una secuencia de particiones. En este caso, todas las inserciones en un momento determinado están teniendo lugar en la misma partición, creando un punto de conflicto que impide que Table service efectúe el equilibrio de cargas en varios nodos, provocando posiblemente que la aplicación alcance los objetivos de escalabilidad de la partición. Por ejemplo, si tiene una aplicación que registra el acceso a la red y a recursos por parte de los empleados, una estructura de entidad como la mostrada a continuación podría provocar que la partición de la hora actual se convierta en un punto de conflicto si el volumen de transacciones alcanza el objetivo de escalabilidad de una partición individual:  
+Antepone o anexar entidades de entidades tooyour almacena normalmente da lugar a aplicación hello agregar nueva toohello entidades primero o último partición de una secuencia de particiones. En este caso, todos de inserciones de hello en un momento dado se tienen lugar en la misma partición, crear una zona activa que impide que el servicio de la tabla de hello equilibrio de carga se inserta en varios nodos de Hola y lo que podría provocar la escalabilidad de la aplicación toohit Hola destinos de partición. Por ejemplo, si tiene una aplicación que tienen acceso recursos y la red de los registros de los empleados, a continuación, podría dar lugar a una estructura de entidad tal y como se muestra a continuación Hola partición de la hora actual se convierta en una zona activa si volumen Hola de transacciones alcanza el objetivo de escalabilidad de Hola para una partición individual:  
 
 ![][26]
 
 #### <a name="solution"></a>Solución
-La siguiente estructura de una entidad alternativa evita puntos de conflicto en una partición determinada a medida que la aplicación registra eventos:  
+Hello estructura de una entidad alternativa siguiente evita una zona activa en cualquier partición determinada como aplicación Hola registra los eventos:  
 
 ![][27]
 
-Observe en este ejemplo que tanto **PartitionKey** como **RowKey** son claves compuestas. **PartitionKey** usa tanto el departamento como el identificador de empleado para distribuir el registro en varias particiones.  
+Tenga en cuenta con este ejemplo cómo ambos Hola **PartitionKey** y **RowKey** son claves compuestas. Hola **PartitionKey** usa el departamento de Hola y el registro de hello de toodistribute de Id. de empleado en varias particiones.  
 
 #### <a name="issues-and-considerations"></a>Problemas y consideraciones
-Tenga en cuenta los puntos siguientes al decidir cómo implementar este patrón:  
+Considere la posibilidad de hello siguientes puntos cuando decida cómo tooimplement este patrón:  
 
-* ¿Admite la estructura de clave alternativa que evita la creación de particiones activas en inserciones eficazmente las consultas que realiza la aplicación cliente?  
-* ¿El volumen de transacciones previstas significa que es probable alcanzar los objetivos de escalabilidad para una partición individual y estar limitada por el servicio de almacenamiento?  
+* ¿Hace que la aplicación cliente hace Hola clave estructura alternativa que evita la creación de particiones activas en inserciones eficazmente las consultas de Hola de soporte técnico?  
+* ¿Significa el volumen previsto de las transacciones que son probable tooreach objetivos de escalabilidad de Hola para una partición individual y limitarán por servicio de almacenamiento de Hola?  
 
-#### <a name="when-to-use-this-pattern"></a>Cuándo usar este patrón
-Evite el antipatrón anteponer/anexar cuando es posible que el volumen de transacciones provoque una limitación por parte del servicio de almacenamiento cuando acceda a una partición activa.  
+#### <a name="when-toouse-this-pattern"></a>Cuando toouse este patrón
+Evite la antipatrón anteponer/anexar de hello cuando el volumen de transacciones es probable que tooresult en limitación por servicio de almacenamiento de hello cuando tiene acceso a una partición activa.  
 
 #### <a name="related-patterns-and-guidance"></a>Orientación y patrones relacionados
-Los patrones y las directrices siguientes también pueden ser importantes a la hora de implementar este patrón:  
+Hello patrones y las directrices siguientes también pueden ser importantes al implementar este patrón:  
 
 * [Patrón de clave compuesta](#compound-key-pattern)  
 * [Patrón de cola de registro](#log-tail-pattern)  
 * [Modificación de entidades](#modifying-entities)  
 
 ### <a name="log-data-anti-pattern"></a>Antipatrón de datos de registro
-Normalmente, debe utilizar Blob service en lugar de Table service para almacenar los datos de registro.  
+Normalmente, debe utilizar Hola servicio Blob en lugar de hello datos de registro de toostore de servicio de tabla.  
 
 #### <a name="context-and-problem"></a>Contexto y problema
-Un caso de uso común para los datos del registro es recuperar una selección de entradas de registro para un intervalo de fecha y hora específico: por ejemplo, desea buscar todos los mensajes de error y críticos que ha registrado la aplicación entre las 15:04 y las 15:06 en una fecha concreta. No desea utilizar la fecha y hora del mensaje del registro para determinar la partición en la que se guardan las entidades del registro: esto da como resultado una partición activa porque en un momento dado, todas las entidades de registro compartirán el mismo valor **PartitionKey** (consulte la sección [Anteponer o anexar antipatrón](#prepend-append-anti-pattern)). Por ejemplo, el siguiente esquema de entidad para un mensaje de registro produce una partición activa debido a que la aplicación escribe todos los mensajes de registro en la partición en la fecha y la hora actuales:  
+Caso de uso común para los datos de registro están tooretrieve una selección de entradas del registro para un intervalo de fecha y hora específicas: por ejemplo, desea toofind todos Hola mensajes de error y críticos que registra la aplicación entre 15:04 y 15:06 en una fecha concreta. No desea toouse Hola fecha y hora de partición Hola registro mensaje toodetermine Hola guardar entidades de registro a: que resultados en una partición activa porque en cualquier momento, todas las entidades de registro de hello compartirán Hola mismo **PartitionKey** valor (vea la sección de hello [antipatrón Prepend/anexar](#prepend-append-anti-pattern)). Por ejemplo, hello después de esquema de la entidad para un mensaje de registro se produce en una partición activa porque aplicación hello escribe todos los mensajes de registro toohello partición para hello actual fecha y hora:  
 
 ![][28]
 
-En este ejemplo, **RowKey** incluye la fecha y hora del mensaje del registro para asegurarse de que los mensajes de registro se almacenan ordenados por fecha y hora e incluye un identificador de mensaje en caso de que varios mensajes de registro compartan la misma fecha y hora.  
+En este ejemplo, Hola **RowKey** incluye Hola fecha y hora de tooensure de mensaje de registro de hello que los mensajes de registro se almacenan en orden de fecha y hora e incluye un identificador de mensaje en caso de varios mensajes de registro compartan Hola igual de fecha y hora.  
 
-Otro enfoque consiste en utilizar un valor **PartitionKey** que garantice que la aplicación escriba los mensajes en un intervalo de particiones. Por ejemplo, si el origen del mensaje de registro proporciona una manera de distribuir los mensajes entre muchas particiones, podría utilizar el siguiente esquema de entidad:  
+Otro enfoque es toouse una **PartitionKey** que garantiza que la aplicación hello escribe mensajes a través de un intervalo de particiones. Por ejemplo, si origen Hola de mensaje de registro de hello proporciona un toodistribute de manera mensajes entre ellas, podría utilizar Hola siguiendo los esquemas de la entidad:  
 
 ![][29]
 
-Sin embargo, el problema con este esquema es que para recuperar todos los mensajes de registro de un intervalo de tiempo específico debe buscar todas las particiones de la tabla.
+Sin embargo, problema de hello con este esquema es que tooretrieve todos Hola mensajes de registro para un intervalo de tiempo específico debe buscar cada partición de tabla de Hola.
 
 #### <a name="solution"></a>Solución
-En la sección anterior se resaltó el problema de intentar utilizar Table service para almacenar las entradas del registro y se sugirieron dos diseños no satisfactorios. Una solución provocó una partición activa con el riesgo de obtener un bajo rendimiento de escritura de mensajes de registro; la otra solución ocasionó un bajo rendimiento de consultas debido a la necesidad de examinar cada partición de la tabla para recuperar los mensajes de registro de un intervalo de tiempo específico. Blob Storage ofrece una mejor solución para este tipo de escenario y así es como almacena Azure Storage Analytics los datos de registro que recopila.  
+problema de hello resaltado de sección anterior de Hola de intentar toouse Hola entradas del registro de toostore de servicio de tabla y sugiere dos, satisfactorios, diseños. Partición activa de una solución que ha provocado tooa con el riesgo de Hola de un mal rendimiento escribir mensajes de registro; Hello otra solución había ocasionado bajo rendimiento de consultas debido a Hola requisito tooscan cada partición en los mensajes de registro de hello tabla tooretrieve para un intervalo de tiempo específico. Almacenamiento de blobs ofrece una mejor solución para este tipo de escenario y se trata cómo Azure análisis de almacenamiento almacena Hola registro los datos recopila.  
 
-En esta sección se describe cómo almacena Storage Analytics los datos de registro en Blob Storage para ilustrar este método de almacenamiento de datos que se suele consultar por intervalo.  
+En esta sección se describe cómo el análisis de almacenamiento almacena los datos de registro en el almacenamiento de blobs para ilustrar estos datos de toostoring de enfoque que se suele consultan por intervalo.  
 
-Storage Analytics almacena los mensajes de registro en un formato delimitado en varios blobs. El formato delimitado facilita a una aplicación cliente analizar los datos del mensaje de registro.  
+Storage Analytics almacena los mensajes de registro en un formato delimitado en varios blobs. el formato delimitado Hola facilita para un cliente datos de aplicación tooparse hello en el mensaje del registro de hello.  
 
-Storage Analytics utiliza una convención de nomenclatura para los blobs que le permite localizar el blob (o blobs) que contienen los mensajes de registro que está buscando. Por ejemplo, un blob denominado "queue/2014/07/31/1800/000001.log" contiene los mensajes de registro relacionados con el servicio de cola con hora de inicio a las 18:00 del 31 de julio de 2014. El "000001" indica que se trata del primer archivo de registro de este período. Storage Analytics también registra las marcas de tiempo del primer y último mensaje de registro almacenados en el archivo como parte de los metadatos del blob. La API de Blob Storage le permite buscar blobs en un contenedor basándose en un prefijo de nombre: para encontrar todos los blobs que contienen datos de registro de cola con hora de inicio a las 18:00, puede usar el prefijo "cola/2014/07/31/1800".  
+Análisis de almacenamiento usa una convención de nomenclatura para los blobs que le permite toolocate Hola blob (o blobs) que contienen mensajes de registro de hello para el que está buscando. Por ejemplo, un blob denominado "queue/2014/07/31/1800/000001.log" contiene mensajes de registro relacionados con el servicio de cola de toohello de la hora de Hola a partir de 18:00 del 31 de julio de 2014. Hola "000001" indica que se trata primer archivo de registro de Hola durante este período. Análisis de almacenamiento también registra las marcas de tiempo de Hola de hello primero y último registro mensajes almacenados en el archivo hello como parte de metadatos del blob de Hola. Hola API para habilita el almacenamiento blob buscar blobs en un contenedor en función de un prefijo de nombre: toolocate todos los blobs de Hola que contienen cola registrar los datos de la hora de Hola a partir de 18:00, puede usar Hola prefijo "cola/2014/07/31/1800."  
 
-Storage Analytics almacena en búfer los mensajes de registro internamente y, a continuación, periódicamente actualiza el blob adecuado o crea uno nuevo con el último lote de entradas de registro. Esto reduce el número de escrituras que se debe realizar en Blob service.  
+Análisis de almacenamiento almacena internamente en búfer de mensajes de registro y, a continuación, actualiza periódicamente blob adecuado de Hola o crea uno nuevo con el lote más reciente de Hola de entradas de registro. Esto reduce el número de Hola de escrituras que debe realizar toohello servicio de blob.  
 
-Si está implementando una solución similar en su propia aplicación, debe considerar cómo administrar el equilibrio entre la fiabilidad (escribir cada entrada de registro en Blob Storage según se van produciendo) y el coste y la escalabilidad (almacenamiento en búfer de las actualizaciones en su aplicación y escribirlos en Blob Storage por lotes).  
+Si está implementando una solución similar en su propia aplicación, debe tener en cuenta cómo toomanage Hola equilibrio entre la confiabilidad (escribir cada almacenamiento de tooblob de entrada de registro en este caso) y el costo y la escalabilidad (en búfer las actualizaciones en la aplicación y escribirlos tooblob almacenamiento por lotes).  
 
 #### <a name="issues-and-considerations"></a>Problemas y consideraciones
-Tenga en cuenta los siguientes puntos cuando decida cómo almacenar los datos del registro:  
+Considere la posibilidad de hello siguiendo los puntos de la hora de decidir cómo toostore registrar los datos:  
 
 * Si crea un diseño de tabla que evite posibles particiones activas, observará que no tiene acceso a los datos del registro de forma eficaz.  
-* Para procesar los datos de registro, un cliente a menudo necesita cargar muchos registros.  
+* tooprocess registrar los datos, un cliente necesita a menudo tooload muchos registros.  
 * Aunque a menudo se estructuran de datos del registro, Blob Storage puede ser una solución mejor.  
 
 ### <a name="implementation-considerations"></a>Consideraciones de implementación
-En esta sección se describen algunas de las consideraciones a tener en cuenta al implementar los modelos descritos en las secciones anteriores. En la mayor parte de esta sección se utilizan ejemplos escritos en C# que utilizan la biblioteca de clientes de Storage (versión 4.3.0 en el momento de escribir).  
+En esta sección se describe algunas de hello toobear de consideraciones en cuenta al implementar patrones de Hola se describen en las secciones anteriores Hola. La mayor parte de esta sección se utilizan ejemplos escritos en C# que usan Hola biblioteca de cliente de almacenamiento (versión 4.3.0 en tiempo de Hola de escritura).  
 
 ### <a name="retrieving-entities"></a>Recuperación de entidades
-Como se describe en la sección [Diseño para consultas](#design-for-querying), la consulta más eficaz es una puntual. Sin embargo, en algunos casos puede que necesite recuperar varias entidades. En esta sección se describen algunos enfoques comunes para recuperar entidades mediante la biblioteca de clientes de Storage.  
+Como se describe en la sección de hello [diseño para consultar](#design-for-querying), hello más eficiente de las consultas es una consulta de punto. Sin embargo, en algunos casos deberá tooretrieve varias entidades. Esta sección describen algunas entidades de tooretrieving enfoques comunes mediante Hola biblioteca cliente de almacenamiento.  
 
-#### <a name="executing-a-point-query-using-the-storage-client-library"></a>Ejecutar una consulta de punto mediante la biblioteca de clientes de Storage 
-La manera más sencilla de ejecutar una consulta puntual es usar la operación de tabla **Retrieve**, como se muestra en el siguiente fragmento de código de C# que recupera una entidad con el valor **PartitionKey** "Sales" y el valor **RowKey** "212":  
+#### <a name="executing-a-point-query-using-hello-storage-client-library"></a>Ejecutar una consulta de punto mediante Hola biblioteca cliente de almacenamiento
+tooexecute de manera más fácil de Hello una consulta de punto es hello de toouse **recuperar** tabla operación tal y como se muestra en hello siguiente fragmento de código de C# que recupera una entidad con un **PartitionKey** de valor "ventas" y un  **RowKey** del valor "212":  
 
 ```csharp
 TableOperation retrieveOperation = TableOperation.Retrieve<EmployeeEntity>("Sales", "212");
@@ -959,10 +959,10 @@ if (retrieveResult.Result != null)
 }  
 ```
 
-Observe cómo este ejemplo espera que la entidad que recupera sea del tipo **EmployeeEntity**.  
+Observe cómo este ejemplo espera que la entidad de hello recupera toobe de tipo **EmployeeEntity**.  
 
 #### <a name="retrieving-multiple-entities-using-linq"></a>Recuperar varias entidades con LINQ
-Puede recuperar varias entidades mediante LINQ con la biblioteca de clientes de Storage y especificar una consulta con una cláusula **where** . Para evitar un examen de tabla, debe incluir siempre el valor **PartitionKey** en la cláusula where y, si es posible, el valor **RowKey** para evitar exámenes de tablas y de particiones. Table service admite un conjunto limitado de operadores de comparación (mayor que, mayor o igual que, menor que, menor o igual que, igual y no igual a) para utilizar en la cláusula where. El siguiente fragmento de código de C# busca todos los empleados cuyo apellido empieza por "B" (suponiendo que **RowKey** almacene el apellido) del departamento de ventas (suponiendo que **PartitionKey** almacene el nombre del departamento):  
+Puede recuperar varias entidades mediante LINQ con la biblioteca de clientes de Storage y especificar una consulta con una cláusula **where** . tooavoid un recorrido de tabla, debe incluir siempre hello **PartitionKey** valor Hola donde cláusula y si es posible Hola **RowKey** valor recorridos de tabla y de la partición de tooavoid. Hello servicio tabla admite un conjunto limitado de toouse de (mayor que, mayor o igual que, menor que, menor que o igual, igual y no es igual a) de los operadores de comparación en Hola donde cláusula. Hello siguiente fragmento de código de C# busca todos los empleados de hello cuyo último nombre empieza por "B" (suponiendo que esa hello **RowKey** almacenes Hola apellido) en el departamento de ventas de hello (suponiendo que hello **PartitionKey** almacena el nombre del departamento de hello):  
 
 ```csharp
 TableQuery<EmployeeEntity> employeeQuery = employeeTable.CreateQuery<EmployeeEntity>();
@@ -974,9 +974,9 @@ var query = (from employee in employeeQuery
 var employees = query.Execute();  
 ```
 
-Observe que la consulta especifica un valor **RowKey** y un valor **PartitionKey** para asegurar un mejor rendimiento.  
+Tenga en cuenta cómo consulta Hola especifica tanto un **RowKey** y un **PartitionKey** tooensure un mejor rendimiento.  
 
-El siguiente ejemplo de código muestra una funcionalidad equivalente mediante la API fluida (para obtener más información acerca de las API fluidas en general, consulte [Procedimientos recomendados para diseñar una API fluida](http://visualstudiomagazine.com/articles/2013/12/01/best-practices-for-designing-a-fluent-api.aspx)):  
+Hello ejemplo de código siguiente muestra una funcionalidad equivalente mediante la API fluida de hello (para obtener más información acerca de la API fluidas en general, vea [prácticas recomendadas para diseñar una API fluida](http://visualstudiomagazine.com/articles/2013/12/01/best-practices-for-designing-a-fluent-api.aspx)):  
 
 ```csharp
 TableQuery<EmployeeEntity> employeeQuery = new TableQuery<EmployeeEntity>().Where(
@@ -996,18 +996,18 @@ var employees = employeeTable.ExecuteQuery(employeeQuery);
 ```
 
 > [!NOTE]
-> El ejemplo anida varios métodos **CombineFilters** para incluir las tres condiciones de filtro.  
+> ejemplo Hello anida varios **CombineFilters** tooinclude métodos Hola tres condiciones de filtro.  
 > 
 > 
 
 #### <a name="retrieving-large-numbers-of-entities-from-a-query"></a>Recuperar una gran cantidad de entidades de una consulta
-Una consulta óptima devuelve una entidad individual basada en un valor **PartitionKey** y un valor **RowKey**. Sin embargo, en algunos escenarios puede tener el requisito de devolver varias entidades de la misma partición o incluso de varias particiones.  
+Una consulta óptima devuelve una entidad individual basada en un valor **PartitionKey** y un valor **RowKey**. Sin embargo, en algunos casos, habrá un requisito tooreturn muchas entidades de hello misma partición o incluso del número de particiones.  
 
-Siempre se debe probar a fondo el rendimiento de la aplicación en estas situaciones.  
+Siempre por completo debe probar el rendimiento de saludo de la aplicación en tales escenarios.  
 
-Una consulta en Table service puede devolver un máximo de 1.000 entidades al mismo tiempo y se puede ejecutar durante un máximo de cinco segundos. Si el conjunto de resultados contiene más de 1.000 entidades, si la consulta no se completa antes de cinco segundos, o si la consulta cruza el límite de partición, Table service devuelve un token de continuación para habilitar la aplicación cliente para solicitar el siguiente conjunto de entidades. Para más información sobre el funcionamiento de los tokens de continuación, consulte [Tiempo de espera de consulta y paginación](http://msdn.microsoft.com/library/azure/dd135718.aspx).  
+Una consulta en el servicio de la tabla de hello puede devolver un máximo de 1.000 entidades al mismo tiempo y se puede ejecutar durante un máximo de cinco segundos. Si el conjunto de resultados hello contiene más de 1.000 entidades, si no se completó la consulta de hello en cinco segundos, o si consulta Hola cruza el límite de la partición de hello, Hola servicio tabla devuelve un tooenable de token de continuación Hola Hola de toorequest de aplicación de cliente siguiente conjunto de entidades. Para más información sobre el funcionamiento de los tokens de continuación, consulte [Tiempo de espera de consulta y paginación](http://msdn.microsoft.com/library/azure/dd135718.aspx).  
 
-Si utiliza la biblioteca de clientes de Storage, puede controlar automáticamente los tokens de continuación cuando devuelve entidades de Table service. El siguiente ejemplo de código de C# que utiliza la biblioteca de clientes de Storage maneja automáticamente tokens de continuación si Table service los devuelve en una respuesta:  
+Si usas Hola biblioteca cliente de almacenamiento, puede controlar automáticamente tokens de continuación para usted que devuelva las entidades de hello servicio tabla. Hello C# ejemplo de código siguiente utiliza Hola biblioteca cliente de almacenamiento automáticamente controla los tokens de continuación si el servicio de la tabla de hello devuelve en una respuesta:  
 
 ```csharp
 string filter = TableQuery.GenerateFilterCondition(
@@ -1022,7 +1022,7 @@ foreach (var emp in employees)
 }  
 ```
 
-El siguiente código C# administra los tokens de continuación explícitamente:  
+Hola siguiente código de C# administra tokens de continuación explícitamente:  
 
 ```csharp
 string filter = TableQuery.GenerateFilterCondition(
@@ -1044,25 +1044,25 @@ do
 } while (continuationToken != null);  
 ```
 
-Mediante el uso de tokens de continuación explícitamente, puede controlar cuando recupera la aplicación el siguiente segmento de datos. Por ejemplo, si la aplicación cliente permite a los usuarios desplazarse por las entidades que se almacenan en una tabla, un usuario puede decidir no desplazarse a través de todas las entidades recuperadas por la consulta, por lo que la aplicación solo usaría un token de continuación para recuperar el siguiente segmento cuando el usuario hubiese terminado la paginación a través de todas las entidades en el segmento actual. Este enfoque tiene varias ventajas:  
+Mediante el uso de tokens de continuación explícitamente, puede controlar cuando la aplicación recupera el siguiente segmento de Hola de datos. Por ejemplo, si la aplicación cliente permite a los usuarios toopage a través de las entidades de hello almacenadas en una tabla, un usuario puede decidir no toopage a través de todas las entidades de hello recuperados por consulta de hello, por lo que la aplicación sólo utilizaría un hello tooretrieve token de continuación a continuación segmento de usuario de hello había finalizado paginación a través de todas las entidades de hello en el segmento actual Hola. Este enfoque tiene varias ventajas:  
 
-* Le permite limitar la cantidad de datos que desea recuperar de Table service y desplazarse a través de la red.  
-* Le permite realizar E/S asincrónicas en. NET.  
-* Le permite serializar el token de continuación en un almacenamiento persistente para que pueda continuar en caso de un bloqueo de la aplicación.  
+* Le permite toolimit cantidad de Hola de tooretrieve de datos de hello servicio tabla y que se mueve sobre red Hola.  
+* Permite tooperform E/S asincrónica en. NET.  
+* Permite el almacenamiento de información de tooserialize Hola continuación toopersistent token para que pueda continuar en caso de hello de bloqueo de una aplicación.  
 
 > [!NOTE]
-> Normalmente, un token de continuación devuelve un segmento que contiene 1.000 entidades, aunque pueden ser menos. Esto también sucede si se limita el número de entradas que devuelve una consulta mediante el uso de **Take** para devolver las n primeras entidades que cumplen los criterios de búsqueda: Table service puede devolver un segmento que contenga menos de n entidades, junto con un token de continuación que permita recuperar las entidades restantes.  
+> Normalmente, un token de continuación devuelve un segmento que contiene 1.000 entidades, aunque pueden ser menos. Este también es el caso de hello si limita Hola número de entradas que se devuelve de una consulta mediante **tomar** tooreturn Hola primer n entidades que coinciden con los criterios de búsqueda: servicio de la tabla de hello puede devolver un segmento que contiene menos de n entidades a lo largo de con un tooenable de token de continuación tooretrieve Hola entidades restantes.  
 > 
 > 
 
-El siguiente código de C# muestra cómo modificar el número de entidades devueltas dentro de un segmento:  
+Hello código C# siguiente muestra cómo toomodify número de Hola de entidades devuelve dentro de un segmento:  
 
 ```csharp
 employeeQuery.TakeCount = 50;  
 ```
 
 #### <a name="server-side-projection"></a>Proyección de servidor
-Una sola entidad puede tener hasta 255 propiedades y ocupar hasta 1 MB. Al consultar la tabla y recuperar las entidades, puede que no necesite todas las propiedades y puede evitar la transferencia de datos innecesariamente (para ayudar a reducir la latencia y el coste). Puede usar proyección de servidor para transferir solo las propiedades que necesita. En el ejemplo siguiente se recupera solo la propiedad **Email** (junto con **PartitionKey**, **RowKey**, **Timestamp** y **ETag**) de las entidades seleccionadas por la consulta.  
+Una sola entidad puede tener propiedades too255 y debe too1 MB de tamaño. Al consultar la tabla de Hola y recuperar entidades, no es necesario todas las propiedades de Hola y puede evitar la transferencia de datos innecesariamente (toohelp reducir la latencia y el costo). Puede usar propiedades de servidor proyección tootransfer Hola solo que necesita. Hello en el ejemplo siguiente se es recupera solo Hola **correo electrónico** propiedad (junto con **PartitionKey**, **RowKey**, **marca de tiempo**y  **ETag**) desde las entidades de hello seleccionadas por consulta Hola.  
 
 ```csharp
 string filter = TableQuery.GenerateFilterCondition(
@@ -1078,30 +1078,30 @@ foreach (var e in entities)
 }  
 ```
 
-Observe que el valor **RowKey** está disponible incluso no se incluyó en la lista de propiedades a recuperar.  
+Tenga en cuenta cómo Hola **RowKey** valor está disponible, aunque no se incluyó en lista de Hola de tooretrieve de propiedades.  
 
 ### <a name="modifying-entities"></a>Modificación de entidades
-La biblioteca de clientes de Storage permite modificar las entidades almacenadas en Table service, insertando, eliminando y actualizando entidades. Puede usar EGT para procesar por lotes varias operaciones de inserción, actualización y eliminación conjuntamente para reducir el número de viajes de ida y vuelta requeridos y mejorar el rendimiento de la solución.  
+Hola biblioteca cliente de almacenamiento permite toomodify las entidades se almacenan en el servicio de la tabla de hello mediante inserción, eliminación y actualización de entidades. Puede usar EGTs toobatch varias operaciones de inserción, actualización y eliminación número de hello tooreduce juntos de ida y vuelta necesarios y mejora el rendimiento de hello de la solución.  
 
-Tenga en cuenta que entre las excepciones que se producen cuando la biblioteca de clientes de Storage ejecuta un EGT normalmente se incluyen el índice de la entidad que ha provocado el error del lote. Esto resulta útil cuando se depura código que usa EGT.  
+Tenga en cuenta que las excepciones producidas cuando Hola biblioteca cliente de almacenamiento se ejecuta un EGT normalmente incluyen el índice de Hola de entidad de Hola que causó Hola lote toofail. Esto resulta útil cuando se depura código que usa EGT.  
 
 También debe considerar cómo afecta su diseño a la forma en que la aplicación cliente trata las operaciones de simultaneidad y actualización.  
 
 #### <a name="managing-concurrency"></a>Administrar la simultaneidad
-De forma predeterminada, Table service implementa comprobaciones de simultaneidad optimista en el nivel de entidades individuales para las operaciones **Insertar**, **Combinar** y **Eliminar**, aunque es posible que un cliente fuerce a Table service a omitir estas comprobaciones. Para más información sobre cómo Table service administra la simultaneidad, consulte [Administración de la simultaneidad en Microsoft Azure Storage](storage-concurrency.md).  
+De forma predeterminada, el servicio de tabla de hello implementa optimista de simultaneidad realiza comprobaciones en nivel de Hola de entidades individuales para **insertar**, **mezcla**, y **eliminar** operaciones, Aunque es posible para un hello tooforce de cliente de servicio toobypass las tablas estas comprobaciones. Para obtener más información acerca de cómo el servicio de la tabla de hello administra simultaneidad, vea [administrar la simultaneidad en el almacenamiento de Azure de Microsoft](storage-concurrency.md).  
 
 #### <a name="merge-or-replace"></a>Combinar o reemplazar
-El método **Replace** de la clase **TableOperation** siempre reemplaza toda la entidad en Table service. Si no incluye una propiedad en la solicitud cuando esa propiedad existe en la entidad almacenada, la solicitud quita esa propiedad de la entidad almacenada. A menos que desee quitar una propiedad de forma explícita de entidad almacenada, debe incluir todas las propiedades en la solicitud.  
+Hola **reemplazar** método de hello **TableOperation** clase siempre reemplaza la entidad completa de Hola Hola servicio tabla. Si no incluye una propiedad en la solicitud de hello cuando existe esa propiedad de entidad de hello almacenado, solicitud de hello quita que la propiedad de hello almacena entidad. A menos que desee tooremove una propiedad explícitamente desde una entidad almacenada, debe incluir todas las propiedades de solicitud de Hola.  
 
-Puede utilizar el método **Merge** de la clase **TableOperation** para reducir la cantidad de datos que envía a Table service si desea actualizar una entidad. El método **Merge** reemplaza cualquier propiedad de la entidad almacenada por valores de propiedad de la entidad que se incluyen en la solicitud, pero deja intactas las propiedades de la entidad almacenada no incluidas en la solicitud. Esto es útil si tiene entidades de gran tamaño y solo tiene que actualizar un pequeño número de propiedades en una solicitud.  
+Puede usar hello **mezcla** método de hello **TableOperation** cantidad de hello tooreduce de clase de datos que se envíe toohello servicio de tabla cuando desee tooupdate una entidad. Hola **mezcla** método reemplaza cualquier propiedad de entidad de hello almacenado con valores de propiedad de entidad de hello incluido en la solicitud de hello, pero deja intacta cualquier propiedad de hello almacena entidad que no se incluyen en la solicitud de saludo. Esto es útil si tiene entidades de gran tamaño y solo necesita tooupdate un pequeño número de propiedades en una solicitud.  
 
 > [!NOTE]
-> Los métodos **Replace** y **Merge** generarán un error si la entidad no existe. Como alternativa, puede usar los métodos **InsertOrReplace** e **InsertOrMerge**, que crean una nueva entidad si todavía no existe.  
+> Hola **reemplazar** y **mezcla** métodos producirá un error si la entidad de hello no existe. Como alternativa, puede usar hello **InsertOrReplace** y **InsertOrMerge** métodos que crean una nueva entidad si no existe.  
 > 
 > 
 
 ### <a name="working-with-heterogeneous-entity-types"></a>Trabajar con tipos de entidad heterogéneos
-Table service es un almacenamiento de tablas *sin esquema*, lo que significa que una sola tabla puede almacenar entidades de varios tipos, lo que proporciona gran flexibilidad en el diseño. En el ejemplo siguiente se muestra una tabla que almacena entidades de empleado y de departamento:  
+Hola servicio tabla es una *sin esquema* almacén de tablas que significa que una sola tabla puede almacenar entidades de varios tipos que proporciona gran flexibilidad en el diseño. Hello en el ejemplo siguiente se muestra una tabla que almacena empleado y entidades de departamento:  
 
 <table>
 <tr>
@@ -1190,10 +1190,10 @@ Table service es un almacenamiento de tablas *sin esquema*, lo que significa que
 </tr>
 </table>
 
-Tenga en cuenta que cada entidad aún debe tener valores **PartitionKey**, **RowKey** y **Timestamp**, pero puede tener cualquier conjunto de propiedades. Además, no hay nada que indique el tipo de una entidad a menos que elija almacenar esa información en algún lugar. Hay dos opciones para identificar el tipo de entidad:  
+Tenga en cuenta que cada entidad aún debe tener valores **PartitionKey**, **RowKey** y **Timestamp**, pero puede tener cualquier conjunto de propiedades. Además, no hay nada tooindicate Hola tipo de una entidad a menos que elija toostore esa información en algún lugar. Hay dos opciones para identificar el tipo de entidad de hello:  
 
-* Anteponer el tipo de entidad al valor **RowKey** (o posiblemente a **PartitionKey**). Por ejemplo, **EMPLOYEE_000123** o **DEPARTMENT_SALES** como valores **RowKey**.  
-* Utilice una propiedad independiente para registrar el tipo de entidad como se muestra en la tabla siguiente.  
+* Anteponer toohello de tipo de entidad de hello **RowKey** (o posiblemente Hola **PartitionKey**). Por ejemplo, **EMPLOYEE_000123** o **DEPARTMENT_SALES** como valores **RowKey**.  
+* Utilice un tipo de entidad de propiedad independiente toorecord Hola tal y como se muestra en la siguiente tabla se Hola.  
 
 <table>
 <tr>
@@ -1290,23 +1290,23 @@ Tenga en cuenta que cada entidad aún debe tener valores **PartitionKey**, **Row
 </tr>
 </table>
 
-La primera opción, anteponer el tipo de entidad a **RowKey**, resulta útil si existe la posibilidad de que dos entidades de tipos diferentes tengan el mismo valor de clave. También agrupa las entidades del mismo tipo juntas en la partición.  
+primera opción Hello, anteponiéndole toohello de tipo de entidad de hello **RowKey**, es útil si hay una posibilidad de que dos entidades de tipos diferentes podrían tener Hola mismo valor de clave. También agrupa las entidades del programa Hola a mismo tipo juntos en la partición de Hola.  
 
-Las técnicas que se describen en esta sección son especialmente relevantes en el tema [Relaciones de herencia](#inheritance-relationships), que ya ha aparecido en esta guía, en la sección [Relaciones de modelos](#modelling-relationships).  
+Hello técnicas descritas en esta sección son especialmente relevante toohello discusión [las relaciones de herencia](#inheritance-relationships) anteriormente en esta guía en la sección de hello [modelización relaciones](#modelling-relationships).  
 
 > [!NOTE]
-> Considere la posibilidad de incluir un número de versión en el valor de tipo de entidad para permitir a las aplicaciones de cliente evolucionar objetos POCO y trabajar con distintas versiones.  
+> Considere la posibilidad de incluir un número de versión en hello entidad tipo valor tooenable aplicaciones tooevolve POCO objetos de cliente y trabajar con versiones diferentes.  
 > 
 > 
 
-En el resto de esta sección se describen algunas de las características de la biblioteca de clientes de Storage que facilitan el trabajo con varios tipos de entidad en la misma tabla.  
+Hello restantes de esta sección describen algunas de las características de Hola Hola biblioteca cliente de almacenamiento que facilitan el trabajo con varios tipos de entidad en hello mismo tabla.  
 
 #### <a name="retrieving-heterogeneous-entity-types"></a>Recuperar tipos de entidad heterogéneos
-Si utiliza la biblioteca de clientes de Storage, tiene tres opciones para trabajar con varios tipos de entidad.  
+Si usas Hola biblioteca cliente de almacenamiento, tiene tres opciones para trabajar con varios tipos de entidad.  
 
-Si conoce el tipo de la entidad que se almacena con un valor concreto **RowKey** y **PartitionKey**, podrá especificar el tipo de entidad al recuperar la entidad, como se muestra en los dos ejemplos anteriores que recuperan entidades de tipo **EmployeeEntity**: [Ejecutar una consulta de punto mediante la biblioteca de clientes de Storage](#executing-a-point-query-using-the-storage-client-library) y [Recuperar varias entidades con LINQ](#retrieving-multiple-entities-using-linq).  
+Si sabe Hola tipo de entidad de hello almacenado con un valor concreto **RowKey** y **PartitionKey** valores, a continuación, puede especificar tipo de entidad de hello al recuperar entidad Hola tal y como se muestra en los ejemplos de hello dos anteriores que recuperan entidades de tipo **EmployeeEntity**: [ejecutar una consulta de punto mediante Hola biblioteca cliente de almacenamiento](#executing-a-point-query-using-the-storage-client-library) y [recuperar varias entidades usando LINQ](#retrieving-multiple-entities-using-linq).  
 
-La segunda opción es usar el tipo **DynamicTableEntity** (un contenedor de propiedades), en lugar de un tipo concreto de entidad POCO (esta opción también puede mejorar el rendimiento, ya que no es preciso serializar y deserializar la entidad de los tipos .NET). Potencialmente, el siguiente código de C# recupera varias entidades de distintos tipos de la tabla, pero devuelve todas las entidades como instancias de **DynamicTableEntity**. A continuación, usa la propiedad **EntityType** para determinar el tipo de cada entidad:  
+Hola segunda opción es hello toouse **DynamicTableEntity** tipo (una bolsa de propiedades) en lugar de un tipo concreto de entidad POCO (esta opción también puede mejorar el rendimiento porque no hay ninguna necesidad de tooserialize y deserializar entidad Hola demasiado. Tipos de red). Hola siguiente código de C# potencialmente recupera varias entidades de distintos tipos de tabla de hello, pero devuelve todas las entidades como **DynamicTableEntity** instancias. A continuación, utiliza hello **EntityType** tipo de propiedad toodetermine Hola de cada entidad:  
 
 ```csharp
 string filter = TableQuery.CombineFilters(
@@ -1339,9 +1339,9 @@ if (e.Properties.TryGetValue("EntityType", out entityTypeProperty))
 }  
 ```
 
-Tenga en cuenta que para recuperar otras propiedades debe utilizar el método **TryGetValue** en la propiedad **Properties** de la clase **DynamicTableEntity**.  
+Tenga en cuenta que tooretrieve otras propiedades que se debe utilizar hello **TryGetValue** método en hello **propiedades** propiedad de hello **DynamicTableEntity** clase.  
 
-Una tercera opción consiste en combinar el tipo **DynamicTableEntity** con una instancia de **EntityResolver**. Esto le permite resolver en varios tipos POCO en la misma consulta. En este ejemplo, el delegado **EntityResolver** usa la propiedad **EntityType** para distinguir entre los dos tipos de entidad que devuelve la consulta. El método **Resolve** usa el delegado **resolver** para resolver instancias de **DynamicTableEntity** en instancias de **TableEntity**.  
+Una tercera opción es toocombine con hello **DynamicTableEntity** tipo y un **EntityResolver** instancia. Esto le permite tooresolve toomultiple POCO tipos Hola misma consulta. En este ejemplo, Hola **EntityResolver** delegado está usando hello **EntityType** toodistinguish de propiedad entre los tipos de hello dos de entidad que Hola consulta devuelve. Hola **resolver** método usa hello **resolución** delegar tooresolve **DynamicTableEntity** instancias demasiado**TableEntity** instancias.  
 
 ```csharp
 EntityResolver<TableEntity> resolver = (pk, rk, ts, props, etag) =>
@@ -1386,7 +1386,7 @@ foreach (var e in entities)
 ```
 
 #### <a name="modifying-heterogeneous-entity-types"></a>Modificar tipos de entidad heterogéneos
-No es necesario conocer el tipo de una entidad para eliminarla, y siempre sabe el tipo de una entidad al insertarla. Sin embargo, puede usar el tipo **DynamicTableEntity** para actualizar una entidad sin conocer su tipo y sin utilizar una clase de entidad POCO. En el código de ejemplo siguiente se recupera una entidad individual y comprueba que la propiedad **EmployeeCount** existe antes de actualizarla.  
+No es necesario tooknow tipo de Hola de una entidad toodelete y conozca tipo hello de una entidad al insertarlo. Sin embargo, puede usar **DynamicTableEntity** escriba tooupdate una entidad sin conocer su tipo y sin utilizar una clase de entidad POCO. Hello ejemplo de código siguiente recupera una entidad única y comprueba hello **EmployeeCount** propiedad existe antes de actualizarlo.  
 
 ```csharp
 TableResult result =
@@ -1405,23 +1405,23 @@ employeeTable.Execute(TableOperation.Merge(department));
 ```
 
 ### <a name="controlling-access-with-shared-access-signatures"></a>Control de acceso con firmas de acceso compartido
-Puede utilizar tokens de firma de acceso compartido (SAS) para permitir a las aplicaciones de cliente modificar (y consultar) entidades de tabla directamente sin necesidad de autenticarse directamente con Table service. Normalmente, hay tres ventajas principales de utilizar SAS en su aplicación:  
+Puede usar toomodify de las aplicaciones de cliente de firma de acceso compartido (SAS) tokens tooenable (y consultar) las entidades de tabla directamente sin Hola necesidad tooauthenticate directamente con el servicio de la tabla de Hola. Normalmente, hay tres ventajas principales toousing SAS en la aplicación:  
 
-* No es necesario distribuir la clave de la cuenta de almacenamiento a una plataforma no segura (por ejemplo, un dispositivo móvil) para permitir que ese dispositivo acceda y modifique entidades en Table service.  
-* Puede descargar parte del trabajo que realizan los roles de web y trabajador en la administración de las entidades en dispositivos cliente como los equipos de usuario final y los dispositivos móviles.  
-* Puede asignar un conjunto de permisos restringido y con limitación de tiempo a un cliente (por ejemplo, para permitir el acceso de solo lectura a recursos específicos).  
+* No es necesario toodistribute su almacenamiento cuenta tooan clave insegura plataforma (por ejemplo, un dispositivo móvil) en orden tooallow tooaccess de ese dispositivo y modificar las entidades de hello servicio tabla.  
+* Puede descargar algunas de las tareas de hello ese sitio web y roles de trabajo realizar para administrar los dispositivos de tooclient de entidades, como los equipos y dispositivos móviles.  
+* Puede asignar un restringida y conjunto de cliente de tooa de permisos (por ejemplo, para permitir el acceso de solo lectura toospecific recursos) limitado de tiempo.  
 
-Para más información sobre el uso de tokens de SAS con Table service, consulte [Uso de Firmas de acceso compartido (SAS)](storage-dotnet-shared-access-signature-part-1.md).  
+Para obtener más información acerca del uso de tokens de SAS con hello servicio tabla, vea [utilizando firmas de acceso compartido (SAS)](storage-dotnet-shared-access-signature-part-1.md).  
 
-Sin embargo, todavía debe generar los tokens SAS que concedan una aplicación cliente a las entidades en Table service: debe hacerlo en un entorno que tenga acceso seguro a las claves de cuenta de almacenamiento. Normalmente, se utiliza un rol web o de trabajador para generar los tokens SAS y entregarlos a las aplicaciones cliente que necesitan tener acceso a las entidades. Dado que todavía hay una sobrecarga implicada en la generación y entrega tokens SAS a los clientes, debería considerar cómo reducir mejor esta sobrecarga, especialmente en escenarios de gran volumen.  
+Sin embargo, todavía debe generar tokens SAS de Hola que conceda a un cliente las entidades de toohello de aplicación de servicio de la tabla de Hola: debería hacerlo en un entorno que se protegen acceso tooyour claves de cuenta de almacenamiento. Normalmente, se utiliza un Hola de toogenerate de rol web o de trabajo SAS tokens y entregarlos toohello las aplicaciones de cliente que necesitan tener acceso a entidades de tooyour. Dado que todavía hay una sobrecarga implicada en la generación y entrega tooclients de tokens SAS, debe considerar la mejor manera de tooreduce esta sobrecarga, especialmente en escenarios de alto volumen.  
 
-Es posible generar un token SAS que conceda acceso a un subconjunto de las entidades de una tabla. De forma predeterminada, se crea un token SAS para toda la tabla, pero también es posible especificar que el token SAS conceda acceso a un intervalo de valores **PartitionKey** o a un intervalo de valores **PartitionKey** y **RowKey**. Puede elegir generar tokens de SAS para usuarios individuales del sistema, de forma que el token de SAS de cada usuario solo les permita acceder a sus propias entidades en Table service.  
+Es posible toogenerate un token SAS que concede acceso tooa subconjunto de entidades de hello en una tabla. De forma predeterminada, se crea un token SAS para una tabla completa, pero también es posible toospecify ese tooeither de acceso de hello SAS token conceder un intervalo de **PartitionKey** valores o un intervalo de **PartitionKey** y  **RowKey** valores. Puede elegir a toogenerate tokens SAS para usuarios individuales del sistema de forma que el token de SAS de cada usuario solo les permite el acceso tootheir propio entidades Hola servicio tabla.  
 
 ### <a name="asynchronous-and-parallel-operations"></a>Operaciones asincrónicas y paralelas
 En caso de que reparta las solicitudes entre varias particiones, puede mejorar el rendimiento y la capacidad de respuesta del cliente mediante consultas asincrónicas o paralelas.
-Por ejemplo, podría tener dos o más instancias de rol de trabajo con acceso a las tablas en paralelo. Podría tiene roles de trabajador individual responsables de determinados conjuntos de particiones, o simplemente tener varias instancias de rol de trabajo, cada una de ellas con acceso a todas las particiones de una tabla.  
+Por ejemplo, podría tener dos o más instancias de rol de trabajo con acceso a las tablas en paralelo. Se puede tener roles de trabajo individuales responsables determinados conjuntos de particiones, o simplemente tiene varias instancias de rol de trabajo, cada tooaccess capaz de todas las particiones en una tabla de Hola.  
 
-Dentro de una instancia de cliente, puede mejorar el rendimiento mediante la ejecución de operaciones de almacenamiento de forma asincrónica. La biblioteca de clientes de Storage facilita la escritura de modificaciones y consultas asíncronas. Por ejemplo, puede comenzar con el método sincrónico que recupera todas las entidades de una partición como se muestra en el siguiente código de C#:  
+Dentro de una instancia de cliente, puede mejorar el rendimiento mediante la ejecución de operaciones de almacenamiento de forma asincrónica. Hola biblioteca cliente de almacenamiento permite modificaciones y consultas asincrónicas de toowrite fácil. Por ejemplo, puede comenzar con el método sincrónico de Hola que recupera todas las entidades de hello en una partición como se muestra en hello siguiente código de C#:  
 
 ```csharp
 private static void ManyEntitiesQuery(CloudTable employeeTable, string department)
@@ -1446,7 +1446,7 @@ private static void ManyEntitiesQuery(CloudTable employeeTable, string departmen
 }  
 ```
 
-Este código puede se modificar fácilmente para que la consulta se ejecute de forma asincrónica del modo siguiente:  
+Puede modificar fácilmente este código para que esa consulta Hola se ejecuta de forma asincrónica como sigue:  
 
 ```csharp
 private static async Task ManyEntitiesQueryAsync(CloudTable employeeTable, string department)
@@ -1470,16 +1470,16 @@ private static async Task ManyEntitiesQueryAsync(CloudTable employeeTable, strin
 }  
 ```
 
-En este ejemplo asincrónico, puede ver los cambios siguientes desde la versión sincrónica:  
+En este ejemplo asincrónica, puede ver la siguiente Hola cambia de la versión sincrónica de hello:  
 
-* La firma del método incluye ahora el modificador **async** y devuelve una instancia de **Tarea**.  
-* En lugar de llamar al método **ExecuteSegmented** para recuperar los resultados, ahora el método llama al método **ExecuteSegmentedAsync** y usa el modificador **await** para recuperar resultados de forma asincrónica.  
+* firma del método Hello ahora incluye hello **async** modificador y devuelve un **tarea** instancia.  
+* En lugar de Hola que realiza la llamada **ExecuteSegmented** resultados del método tooretrieve, Hola método ahora llamadas Hola **ExecuteSegmentedAsync** Hola de método y se utiliza **await** modificador tooretrieve resultados de forma asincrónica.  
 
-La aplicación cliente puede llamar a este método varias veces (con valores diferentes en el parámetro **department** ) y cada consulta se ejecutará en un subproceso independiente.  
+aplicación de cliente de Hello puede llamar a este método varias veces (con valores diferentes para hello **departamento** parámetro), y cada consulta se ejecutará en un subproceso independiente.  
 
-Tenga en cuenta que no hay ninguna versión asincrónica del método **Execute** en la clase **TableQuery** porque la interfaz **IEnumerable** no admite la enumeración asincrónica.  
+Tenga en cuenta que no hay ninguna versión asincrónica de hello **Execute** método Hola **TableQuery** clase porque hello **IEnumerable** interfaz no admite asincrónica enumeración.  
 
-También puede insertar, actualizar y eliminar entidades de forma asincrónica. En el ejemplo de C# siguiente se muestra un método sencillo y sincrónico para insertar o reemplazar una entidad de empleado:  
+También puede insertar, actualizar y eliminar entidades de forma asincrónica. Hola el ejemplo de C# siguiente muestra un método sencillo y sincrónico tooinsert o reemplaza una entidad empleado:  
 
 ```csharp
 private static void SimpleEmployeeUpsert(CloudTable employeeTable,
@@ -1491,7 +1491,7 @@ private static void SimpleEmployeeUpsert(CloudTable employeeTable,
 }  
 ```
 
-Este código se puede modificar fácilmente para que la actualización se ejecute de forma asincrónica del modo siguiente:  
+Puede modificar fácilmente este código para que la actualización de Hola se ejecuta de forma asincrónica como se indica a continuación:  
 
 ```csharp
 private static async Task SimpleEmployeeUpsertAsync(CloudTable employeeTable,
@@ -1503,17 +1503,17 @@ private static async Task SimpleEmployeeUpsertAsync(CloudTable employeeTable,
 }  
 ```
 
-En este ejemplo asincrónico, puede ver los cambios siguientes desde la versión sincrónica:  
+En este ejemplo asincrónica, puede ver la siguiente Hola cambia de la versión sincrónica de hello:  
 
-* La firma del método incluye ahora el modificador **async** y devuelve una instancia de **Tarea**.  
-* En lugar de llamar al método **Execute** para actualizar la entidad, el método llama al método **ExecuteAsync** y usa el modificador **await** para recuperar resultados de forma asincrónica.  
+* firma del método Hello ahora incluye hello **async** modificador y devuelve un **tarea** instancia.  
+* En lugar de Hola que realiza la llamada **Execute** entidad de método tooupdate hello, Hola método ahora llamadas Hola **ExecuteAsync** Hola de método y se utiliza **await** tooretrieve de modificador Si se produce de forma asincrónica.  
 
-La aplicación cliente puede llamar a varios métodos asincrónicos como este, y cada invocación de método se ejecutará en un subproceso independiente.  
+aplicación de cliente de Hello puede llamar a varios métodos asincrónicos como este, y cada invocación del método se ejecutará en un subproceso independiente.  
 
 ### <a name="credits"></a>Créditos
-Nos gustaría dar las gracias a los siguientes miembros del equipo de Azure por sus contribuciones: Dominic Betts, Jason Hogg, Jean Ghanem, Jai Haridas, Jeff Irwin, Vamshidhar Kommineni, Vinay Shah y Serdar Ozler, así como Tom Hollander de Microsoft DX. 
+Nos gustaría hello toothank después de los miembros de equipo de Azure para sus contribuciones hello: Dominic Betts, Jason Hogg, Jean Ghanem, Jai Haridas, Jeff Irwin, Vamshidhar Kommineni, Shah Vinay y Serdar Ozler, así como Tom Hollander de DX de Microsoft. 
 
-También nos gustaría dar las gracias a los siguientes MVP de Microsoft por sus valiosos comentarios durante los ciclos de revisión: Igor Papirov y Edward Bakker.
+También nos gustaría hello toothank sigue MVP de Microsoft para sus valiosos comentarios durante los ciclos de revisión: Igor Papirov y Edward Bakker.
 
 [1]: ./media/storage-table-design-guide/storage-table-design-IMAGE01.png
 [2]: ./media/storage-table-design-guide/storage-table-design-IMAGE02.png

@@ -1,0 +1,5 @@
+## <a name="scenario"></a>Escenario
+Este documento le guiará a través de una implementación que usa varias NIC en máquinas virtuales en un escenario concreto. En este escenario, tiene una carga de trabajo de IaaS de dos niveles hospedada en Azure. Cada nivel se implementa en su propia subred de una red virtual (VNet). nivel de front-end de Hola se compone de varios servidores web, agrupados juntos en un equilibrador de carga establecido para alta disponibilidad. nivel de back-end de Hola se compone de varios servidores de base de datos. Estos servidores de base de datos se implementarán con dos NIC cada, uno para el acceso a la base de datos, Hola otro para la administración. escenario de Hello también incluye grupos de seguridad de red (NSG) toocontrol qué tráfico se permite en la implementación de hello tooeach subred y la NIC. Hola siguiente ilustración muestra la arquitectura básica de Hola de este escenario.  
+
+![Escenario de MultiNIC](./media/virtual-network-deploy-multinic-scenario-include/Figure1.png)
+

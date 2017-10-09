@@ -1,6 +1,6 @@
 ---
-title: "Creación de filtros con .NET SDK de Servicios multimedia de Azure"
-description: "En este tema se describe cómo crear filtros para que su cliente pueda usarlos para el streaming de secciones específicas de una secuencia. Servicios multimedia crea manifiestos dinámicos para lograr este streaming selectivo."
+title: Filtros de aaaCreating con el SDK de .NET de servicios multimedia de Azure
+description: "Este tema describe cómo toocreate filtros para que el cliente pueda usarlas toostream secciones específicas de una secuencia. Servicios multimedia crea manifiestos dinámicos tooachieve este selectivo de transmisión por secuencias."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,11 +14,11 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: juliako;cenkdin
-ms.openlocfilehash: 6c43473b86c14679ace558de478bd95f41d476da
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 16d9497d48ab1d3f841dd97efb0f66016a2435c5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="creating-filters-with-azure-media-services-net-sdk"></a>Creación de filtros con .NET SDK de Servicios multimedia de Azure
 > [!div class="op_single_selector"]
@@ -27,24 +27,24 @@ ms.lasthandoff: 08/29/2017
 > 
 > 
 
-A partir de la versión 2.11, los Servicios multimedia permiten definir filtros para los activos. Estos filtros son reglas del lado servidor que permitirán a los clientes elegir realizar acciones como: reproducir solo una sección de un vídeo (en lugar de reproducir el vídeo completo), o especificar solo un subconjunto de las representaciones de audio y vídeo que el dispositivo de su cliente puede controlar (en lugar de todas las copias asociadas al activo). Este filtrado de sus activos se logra a través de los **manifiestos dinámicos**que se crean tras la solicitud del cliente para transmitir un vídeo en función de los filtros especificados.
+A partir de la versión 2.11, servicios multimedia permite toodefine filtros para los activos. Estos filtros son reglas de lado de servidor que permitirán que los clientes toochoose toodo cosas como: reproducción únicamente una sección de un vídeo (en lugar de reproducir Hola completos de vídeo), o especifique solo un subconjunto de copias de audio y vídeo que los dispositivos de su cliente pueden controlar () en lugar de todas las copias de Hola que están asociadas a Hola activo). Dicho filtrado de los activos se logra a través de **manifiesto dinámica**s que se crean al toostream de solicitud de su cliente un vídeo en función de los filtros especificados.
 
-Para obtener más información detallada relacionada con filtros y manifiesto dinámico, vea [Información general de manifiesto dinámico](media-services-dynamic-manifest-overview.md).
+Para obtener más información consulte toofilters relacionados y el manifiesto dinámico, [dinámicos manifiestos información general sobre](media-services-dynamic-manifest-overview.md).
 
-En este tema se muestra cómo usar el SDK de .NET de Servicios multimedia para crear, actualizar y eliminar filtros. 
+Este tema muestra cómo toouse toocreate del SDK de .NET de servicios multimedia, actualizar y eliminar filtros. 
 
-Tenga en cuenta que si actualiza un filtro, se pueden tardar hasta 2 minutos en que el extremo de streaming actualice las reglas. Si el contenido se proporcionó con este filtro (y se almacenó en caché en los servidores proxy y cachés de CDN), la actualización de este filtro puede generar errores del reproductor. Se recomienda borrar la memoria caché después de actualizar el filtro. Si esta opción no es posible, piense en usar un filtro diferente. 
+Tenga en cuenta que si actualiza un filtro, puede tardar hasta minutos too2 para reglas de hello toorefresh de extremo de transmisión por secuencias. Si el contenido de Hola se sirvió usando este filtro (y almacena en caché en los servidores proxy y CDN memorias caché), actualización de este filtro puede producir errores en el Reproductor. Es recomendable caché de hello tooclear después de actualizar el filtro de Hola. Si esta opción no es posible, piense en usar un filtro diferente. 
 
-## <a name="types-used-to-create-filters"></a>Tipos usados para crear filtros
-Al crear filtros, se usan los siguientes tipos: 
+## <a name="types-used-toocreate-filters"></a>Los tipos utilizan filtros de toocreate
+Hello tipos siguientes se usan al crear filtros: 
 
-* **IStreamingFilter**.  Este tipo está basado en la siguiente API de REST [Filter](https://docs.microsoft.com/rest/api/media/operations/filter)
-* **IStreamingAssetFilter**. Este tipo está basado en la siguiente API de REST [AssetFilter](https://docs.microsoft.com/rest/api/media/operations/assetfilter)
-* **PresentationTimeRange**. Este tipo está basado en la siguiente API de REST [PresentationTimeRange](https://docs.microsoft.com/rest/api/media/operations/presentationtimerange)
-* **FilterTrackSelectStatement** e **IFilterTrackPropertyCondition**. Estos tipos se basan en las siguientes API de REST [FilterTrackSelect y FilterTrackPropertyCondition](https://docs.microsoft.com/rest/api/media/operations/filtertrackselect)
+* **IStreamingFilter**.  Este tipo se basa en hello después de la API de REST [filtro](https://docs.microsoft.com/rest/api/media/operations/filter)
+* **IStreamingAssetFilter**. Este tipo se basa en hello después de la API de REST [AssetFilter](https://docs.microsoft.com/rest/api/media/operations/assetfilter)
+* **PresentationTimeRange**. Este tipo se basa en hello después de la API de REST [PresentationTimeRange](https://docs.microsoft.com/rest/api/media/operations/presentationtimerange)
+* **FilterTrackSelectStatement** e **IFilterTrackPropertyCondition**. Estos tipos se basan en hello después de las API de REST [FilterTrackSelect y FilterTrackPropertyCondition](https://docs.microsoft.com/rest/api/media/operations/filtertrackselect)
 
 ## <a name="createupdatereaddelete-global-filters"></a>Creación/actualización/lectura/eliminación de filtros globales
-El código siguiente muestra cómo usar .NET para crear, actualizar, leer y eliminar filtros de recursos.
+Hello código siguiente muestra cómo toouse .NET toocreate, actualizar, leer y eliminar filtros de activos.
 
     string filterName = "GlobalFilter_" + Guid.NewGuid().ToString();
 
@@ -73,7 +73,7 @@ El código siguiente muestra cómo usar .NET para crear, actualizar, leer y elim
 
 
 ## <a name="createupdatereaddelete-asset-filters"></a>Creación/actualización/lectura/eliminación de filtros de recursos
-El código siguiente muestra cómo usar .NET para crear, actualizar, leer y eliminar filtros de recursos.
+Hello código siguiente muestra cómo toouse .NET toocreate, actualizar, leer y eliminar filtros de activos.
 
     string assetName = "AssetFilter_" + Guid.NewGuid().ToString();
     var asset = _context.Assets.Create(assetName, AssetCreationOptions.None);
@@ -104,9 +104,9 @@ El código siguiente muestra cómo usar .NET para crear, actualizar, leer y elim
 
 
 ## <a name="build-streaming-urls-that-use-filters"></a>Generar direcciones URL de streaming que usan filtros
-Para obtener información sobre cómo publicar y entregar los activos, vea [Información general de entrega de contenido a clientes](media-services-deliver-content-overview.md).
+Para obtener información sobre cómo toopublish y ofrecer sus activos, consulte [información general de entrega de contenido tooCustomers](media-services-deliver-content-overview.md).
 
-En los ejemplos siguientes se muestra cómo agregar filtros a sus URL de streaming.
+Hello en los ejemplos siguientes muestran cómo tooadd filtros tooyour direcciones URL de streaming.
 
 **MPEG DASH** 
 

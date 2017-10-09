@@ -1,6 +1,6 @@
 ---
-title: Apache Sqoop con Hadoop - Azure HDInsight | Microsoft Docs
-description: Aprenda a usar Apache Sqoop para realizar importaciones y exportaciones entre Hadoop en HDInsight y Azure SQL Database.
+title: aaaApache Sqoop con Hadoop - HDInsight de Azure | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toouse tooimport Sqoop de Apache y exportación entre Hadoop en HDInsight y una base de datos de SQL Azure."
 editor: cgronlun
 manager: jhubbard
 services: hdinsight
@@ -17,24 +17,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: larryfr
-ms.openlocfilehash: 35dcbb91e6af1480685c9fd5b829c54277c1c605
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: b256285659bbcf18ff05e220ccdf51c21eb8fbf7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-apache-sqoop-to-import-and-export-data-between-hadoop-on-hdinsight-and-sql-database"></a>Uso de Apache Sqoop para importar y exportar datos entre Hadoop en HDInsight y SQL Database
+# <a name="use-apache-sqoop-tooimport-and-export-data-between-hadoop-on-hdinsight-and-sql-database"></a>Usar Apache Sqoop tooimport y exportar datos entre la base de datos de SQL y Hadoop en HDInsight
 
 [!INCLUDE [sqoop-selector](../../includes/hdinsight-selector-use-sqoop.md)]
 
-Aprenda a usar Apache Sqoop para realizar importaciones y exportaciones entre un clúster de Hadoop en Azure HDInsight y Azure SQL Database o la base de datos de Microsoft SQL Server. En los pasos descritos en este documento se usa el comando `sqoop` directamente desde el nodo principal del clúster de Hadoop. Usaremos SSH para conectarnos al nodo principal y ejecutar los comandos de este documento.
+Obtenga información acerca de cómo agrupar toouse Apache Sqoop tooimport y exportación entre un Hadoop en HDInsight de Azure y base de datos de Microsoft SQL Server o base de datos de SQL Azure. Hola los pasos de este Hola de uso de documento `sqoop` comando directamente desde el nodo principal de hello del clúster de Hadoop de Hola. Utilice el nodo principal de SSH tooconnect toohello y ejecutar comandos de hello en este documento.
 
 > [!IMPORTANT]
-> Los pasos de este documento solo funcionan con clústeres de HDInsight que usan Linux. Linux es el único sistema operativo que se usa en la versión 3.4 de HDInsight, o en las superiores. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Hello pasos descritos en este documento solo funcionan con clústeres de HDInsight que utilizan Linux. Linux es Hola único sistema operativo usado en HDInsight versión 3.4 o superior. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="install-freetds"></a>Instalación de FreeTDS
 
-1. Use SSH para conectarse al clúster de HDInsight. Por ejemplo, el siguiente comando se conecta al nodo primario principal de un clúster denominado `mycluster`:
+1. Use el clúster de HDInsight de toohello tooconnect SSH. Por ejemplo, hello siguiente comando conecta toohello de nodo principal principal de un clúster denominado `mycluster`:
 
     ```bash
     ssh CLUSTERNAME-ssh.azurehdinsight.net
@@ -42,32 +42,32 @@ Aprenda a usar Apache Sqoop para realizar importaciones y exportaciones entre un
 
     Para más información, consulte [Uso SSH con HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. Use el siguiente comando para instalar FreeTDS:
+2. Usar hello siguiendo el uso del comando tooinstall:
 
     ```bash
     sudo apt --assume-yes install freetds-dev freetds-bin
     ```
 
-    FreeTDS se usa en varios pasos para la conexión con la base de datos SQL.
+    Uso se utiliza en varios pasos tooconnect tooSQL base de datos.
 
-## <a name="create-the-table-in-sql-database"></a>Creación de la tabla en la base de datos SQL
+## <a name="create-hello-table-in-sql-database"></a>Crear tabla de hello en la base de datos SQL
 
 > [!IMPORTANT]
-> Si usa el clúster de HDInsight y una instancia de SQL Database creados en [Creación del clúster y la base de datos SQL](hdinsight-use-sqoop.md), omita los pasos de esta sección. La base de datos y la tabla se crearon como parte de los pasos del documento [Creación del clúster y la base de datos SQL](hdinsight-use-sqoop.md).
+> Si usas clúster de HDInsight de Hola y base de datos de SQL se crea en [crear clúster y la base de datos SQL](hdinsight-use-sqoop.md), omita los pasos de hello en esta sección. Hello base de datos y tabla se han creado como parte del programa Hola a los pasos de hello [crear clúster y la base de datos SQL](hdinsight-use-sqoop.md) documento.
 
-1. Desde la sesión de SSH, use el comando siguiente para conectarse al servidor de la base de datos SQL.
+1. Desde la sesión de SSH de hello, usar hello después el servidor de base de datos SQL de comandos tooconnect toohello.
 
         TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -P <adminPassword> -p 1433 -D sqooptest
 
-    Recibirá una salida similar al texto siguiente:
+    Recibir toohello similar de salida siguiente texto:
 
         locale is "en_US.UTF-8"
         locale charset is "UTF-8"
         using default charset "UTF-8"
-        Default database being set to sqooptest
+        Default database being set toosqooptest
         1>
 
-2. En el símbolo del sistema `1>`, escriba la siguiente consulta:
+2. En hello `1>` símbolo del sistema, escriba Hola después de consulta:
 
     ```sql
     CREATE TABLE [dbo].[mobiledata](
@@ -87,51 +87,51 @@ Aprenda a usar Apache Sqoop para realizar importaciones y exportaciones entre un
     GO
     ```
 
-    Cuando se haya especificado la instrucción `GO`, se evaluarán las instrucciones anteriores. En primer lugar, se crea la tabla **mobiledata** y, a continuación, se agrega un índice agrupado a ella (es necesario para la base de datos SQL).
+    Cuando Hola `GO` instrucción se haya especificado, se evalúan en las instrucciones anteriores Hola. En primer lugar, Hola **mobiledata** se crea la tabla, a continuación, se agrega un índice agrupado tooit (requerido por la base de datos SQL).
 
-    Use la siguiente consulta para comprobar que se ha creado la tabla:
+    Hola de uso después de tooverify de consulta que Hola tabla se ha creado:
 
     ```sql
     SELECT * FROM information_schema.tables
     GO
     ```
 
-    Verá un resultado similar al siguiente texto:
+    Vea toohello similar de salida siguiente texto:
 
         TABLE_CATALOG   TABLE_SCHEMA    TABLE_NAME      TABLE_TYPE
         sqooptest       dbo     mobiledata      BASE TABLE
 
-3. Entrar `exit` at the `1>` .
+3. Escriba `exit` en hello `1>` solicitar utilidad de tooexit Hola tsql.
 
 ## <a name="sqoop-export"></a>Exportación de Sqoop
 
-1. Desde la conexión SSH con el clúster, use el siguiente comando para comprobar que Sqoop puede ver la instancia de SQL Database:
+1. Del clúster de toohello de conexión de SSH hello, utilice Hola después tooverify de comando que Sqoop puede ver la base de datos de SQL:
 
     ```bash
     sqoop list-databases --connect jdbc:sqlserver://<serverName>.database.windows.net:1433 --username <adminLogin> -P
     ```
-    Cuando se le solicite, escriba la contraseña para el inicio de sesión de SQL Database.
+    Cuando se le solicite, escriba la contraseña de Hola para inicio de sesión de base de datos SQL de Hola.
 
-    Este comando devuelve una lista de bases de datos, incluida la base de datos **sqooptest** que ha creado anteriormente.
+    Este comando devuelve una lista de bases de datos, incluidos hello **sqooptest** base de datos que creó anteriormente.
 
-2. Use el siguiente comando para exportar los datos desde **hivesampletable** a la tabla **mobiledata**:
+2. datos de tooexport de **hivesampletable** toohello **mobiledata** tablas, utilice el siguiente comando de hello:
 
     ```bash
     sqoop export --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=sqooptest' --username <adminLogin> -P --table 'mobiledata' --export-dir 'wasb:///hive/warehouse/hivesampletable' --fields-terminated-by '\t' -m 1
     ```
 
-    Este comando indica a Sqoop que se conecte a la base de datos **sqooptest**. Luego Sqoop exporta datos de **wasb:///hive/warehouse/hivesampletable** a la tabla **mobiledata**.
+    Este comando indica a Sqoop tooconnect toohello **sqooptest** base de datos. Sqoop, a continuación, exporta los datos de **wasb: / / / hive/almacenamiento/hivesampletable** toohello **mobiledata** tabla.
 
     > [!IMPORTANT]
-    > Use `wasb:///` si el almacenamiento predeterminado del clúster es una cuenta de Azure Storage. Use `adl:///` si es una instancia de Azure Data Lake Store.
+    > Use `wasb:///` si almacenamiento predeterminado de hello para el clúster es una cuenta de almacenamiento de Azure. Use `adl:///` si es una instancia de Azure Data Lake Store.
 
-3. Una vez completado el comando, use el siguiente comando para conectarse a la base de datos mediante TSQL:
+3. Una vez completado el comando de hello, utilice Hola después comandos tooconnect toohello base de datos mediante TSQL:
 
     ```bash
     TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -P -p 1433 -D sqooptest
     ```
 
-    Una vez conectado, utilice las instrucciones siguientes para comprobar que los datos se exportaron a la tabla **mobiledata** :
+    Una vez conectado, Hola de uso después de tooverify instrucciones que Hola datos fue exportado toohello **mobiledata** tabla:
 
     ```sql
     SET ROWCOUNT 50;
@@ -139,19 +139,19 @@ Aprenda a usar Apache Sqoop para realizar importaciones y exportaciones entre un
     GO
     ```
 
-    Debería ver una lista de los datos de la tabla. Escriba `exit` para salir de la utilidad de tsql.
+    Debería ver una lista de datos de tabla de Hola. Tipo `exit` utilidad de tooexit Hola tsql.
 
 ## <a name="sqoop-import"></a>Importación de Sqoop
 
-1. Use el siguiente comando para importar datos de la tabla **mobiledata** de SQL Database al directorio **wasb:///tutorials/usesqoop/importeddata** de HDInsight:
+1. Siguiente Hola de uso del comando tooimport datos de hello **mobiledata** tabla de base de datos de SQL, toohello **wasb: / / / tutoriales/usesqoop/importeddata** directorio HDInsight:
 
     ```bash
     sqoop import --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=sqooptest' --username <adminLogin> --password <adminPassword> --table 'mobiledata' --target-dir 'wasb:///tutorials/usesqoop/importeddata' --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1
     ```
 
-    Los campos de los datos se separan mediante un carácter de tabulación y las líneas terminan con un carácter de nueva línea.
+    campos de Hello en los datos de hello están separados por un carácter de tabulación y líneas de saludo se finalizan con un carácter de nueva línea.
 
-2. Una vez completada la importación, use el siguiente comando para enumerar los datos en el nuevo directorio:
+2. Una vez completada la importación de hello, utilice Hola después a toolist comando datos hello en el nuevo directorio de hello:
 
     ```bash
     hdfs dfs -text /tutorials/usesqoop/importeddata/part-m-00000
@@ -159,21 +159,21 @@ Aprenda a usar Apache Sqoop para realizar importaciones y exportaciones entre un
 
 ## <a name="using-sql-server"></a>Uso de SQL Server
 
-También puede utilizar Sqoop para importar y exportar datos de SQL Server, tanto en el centro de datos como en una máquina Virtual hospedada en Azure. Las diferencias entre el uso de la base de datos SQL y SQL Server son:
+También puede utilizar Sqoop tooimport y exportar datos de SQL Server, ya sea en su centro de datos o en una máquina Virtual hospedada en Azure. Hola diferencias entre el uso de la base de datos SQL y SQL Server son:
 
-* Tanto HDInsight como SQL Server deben estar en la misma red Azure Virtual Network.
+* HDInsight y SQL Server debe estar en Hola misma red Virtual de Azure.
 
-    Para obtener un ejemplo, vea el documento [Conexión de HDInsight a la red local](./connect-on-premises-network.md).
+    Para obtener un ejemplo, vea hello [red local de HDInsight conectar tooyour](./connect-on-premises-network.md) documento.
 
-    Para más información sobre cómo usar HDInsight con redes Azure Virtual Network, vea el documento [Extensión de las funcionalidades de HDInsight con Azure Virtual Network](hdinsight-extend-hadoop-virtual-network.md). Para más información sobre Azure Virtual Network, vea el documento [Información general sobre Virtual Network](../virtual-network/virtual-networks-overview.md).
+    Para obtener más información sobre el uso de HDInsight con una red Virtual de Azure, vea hello [HDInsight ampliar con red Virtual de Azure](hdinsight-extend-hadoop-virtual-network.md) documento. Para obtener más información sobre la red Virtual de Azure, vea hello [información general de red Virtual](../virtual-network/virtual-networks-overview.md) documento.
 
-* SQL Server estar configurado para permitir la autenticación SQL. Para más información, vea el documento [Choose an Authentication Mode (Elegir un modo de autenticación)](https://msdn.microsoft.com/ms144284.aspx).
+* SQL Server debe estar configurado tooallow autenticación de SQL. Para obtener más información, vea hello [elegir un modo de autenticación](https://msdn.microsoft.com/ms144284.aspx) documento.
 
-* Es posible que tenga que configurar SQL Server para aceptar conexiones remotas. Para más información, vea el documento [How to troubleshoot connecting to the SQL Server database engine (Solución de problemas de conexión al motor de base de datos de SQL Server)](http://social.technet.microsoft.com/wiki/contents/articles/2102.how-to-troubleshoot-connecting-to-the-sql-server-database-engine.aspx).
+* Puede que tenga las conexiones remotas de tooconfigure SQL Server tooaccept. Para obtener más información, vea hello [cómo tootroubleshoot conexión toohello SQL Server base de datos motor](http://social.technet.microsoft.com/wiki/contents/articles/2102.how-to-troubleshoot-connecting-to-the-sql-server-database-engine.aspx) documento.
 
-* Cree la base de datos **sqooptest** en SQL Server mediante una utilidad como **SQL Server Management Studio** o **tsql**. Los pasos para usar la CLI de Azure solo funcionan para Azure SQL Database.
+* Crear hello **sqooptest** base de datos de SQL Server mediante una utilidad como **SQL Server Management Studio** o **tsql**. pasos de Hello para el uso de hello Azure CLI sólo funcionan para la base de datos de SQL Azure.
 
-    Use las siguientes instrucciones Transact-SQL para crear la tabla **mobiledata**:
+    Hola de uso después de hello de toocreate de instrucciones de Transact-SQL **mobiledata** tabla:
 
     ```sql
     CREATE TABLE [dbo].[mobiledata](
@@ -190,7 +190,7 @@ También puede utilizar Sqoop para importar y exportar datos de SQL Server, tant
     [sessionpagevieworder] [bigint])
     ```
 
-* Al conectarse a SQL Server desde HDInsight, es posible que tenga que usar la dirección IP de SQL Server. Por ejemplo:
+* Cuando se conecte toohello SQL Server desde HDInsight, puede tener dirección IP de hello toouse del programa Hola a SQL Server. Por ejemplo:
 
     ```bash
     sqoop import --connect 'jdbc:sqlserver://10.0.1.1:1433;database=sqooptest' --username <adminLogin> --password <adminPassword> --table 'mobiledata' --target-dir 'wasb:///tutorials/usesqoop/importeddata' --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1
@@ -198,17 +198,17 @@ También puede utilizar Sqoop para importar y exportar datos de SQL Server, tant
 
 ## <a name="limitations"></a>Limitaciones
 
-* Exportación masiva: con HDInsight basado en Linux, el conector Sqoop que se utiliza para exportar datos a Microsoft SQL Server o Base de datos SQL Azure no es compatible actualmente con las inserciones masivas.
+* La exportación masiva - basados en Linux con HDInsight, Hola Sqoop conector utilizado tooexport datos tooMicrosoft SQL Server o base de datos de SQL Azure no es compatible con las inserciones masivas.
 
-* Procesamiento por lotes: con HDInsight basado en Linux, cuando se usa `-batch` al realizar inserciones, Sqoop realiza varias inserciones en lugar de procesar por lotes las operaciones de inserción.
+* Procesamiento por lotes: con HDInsight basados en Linux, cuando se usa hello `-batch` cambiar cuando se realizan inserciones, Sqoop realiza varias inserciones en lugar de procesamiento por lotes las operaciones de inserción de Hola.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Ahora ya ha aprendido a usar Sqoop. Para obtener más información, consulte:
+Ahora que ha aprendido cómo toouse Sqoop. toolearn más información, vea:
 
-* [Uso de Oozie con HDInsight][hdinsight-use-oozie]: use la acción Sqoop en un flujo de trabajo de Oozie.
-* [Análisis de la información de retraso de vuelos con HDInsight][hdinsight-analyze-flight-data]: use Hive para analizar la información de retraso de los vuelos y luego use Sqoop para exportar los datos a una base de datos SQL de Azure.
-* [Carga de datos en HDInsight][hdinsight-upload-data]: busque otros métodos para cargar datos en HDInsight o Azure Blob Storage.
+* [Uso de Oozie con HDInsight][hdinsight-use-oozie]: use la acción de Sqoop en un flujo de trabajo de Oozie.
+* [Analizar datos de retrasos de vuelos con HDInsight][hdinsight-analyze-flight-data]: usar Hive tooanalyze flight retrasar datos y, a continuación, usar base de datos de Sqoop tooexport datos tooan SQL Azure.
+* [Cargar datos tooHDInsight][hdinsight-upload-data]: dar con otros métodos para cargar el almacenamiento de blobs de datos tooHDInsight o SQL Azure.
 
 [hdinsight-versions]:  hdinsight-component-versioning.md
 [hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md

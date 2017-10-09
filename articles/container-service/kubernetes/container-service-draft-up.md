@@ -1,6 +1,6 @@
 ---
-title: Uso de Draft con Azure Container Service y Azure Container Registry | Microsoft Docs
-description: "Creación de un clúster de ACS Kubernetes y Azure Container Registry para crear la primera aplicación en Azure con Draft."
+title: aaaUse borrador con registro de contenedor de Azure y el servicio de contenedor de Azure | Documentos de Microsoft
+description: "Crear un clúster de ACS Kubernetes y un registro de contenedor de Azure toocreate su primera aplicación en Azure con Borrador."
 services: container-service
 documentationcenter: 
 author: squillace
@@ -16,23 +16,23 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: e7e3ea461145571753a1a6d768b52118dcbfb507
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: f5e21cda01e5e8452bf86a5c8fa458904d89f451
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>Uso de Draft con Azure Container Service y Azure Container Registry para crear e implementar una aplicación en Kubernetes
+# <a name="use-draft-with-azure-container-service-and-azure-container-registry-toobuild-and-deploy-an-application-tookubernetes"></a>Usar borrador con toobuild de servicio de contenedor de Azure y el registro de contenedor de Azure e implementar una aplicación tooKubernetes
 
-[Draft](https://aka.ms/draft) es una nueva herramienta de código abierto que facilita el desarrollo de aplicaciones basadas en contenedores y su implementación en clústeres de Kubernetes sin necesidad de tener un gran conocimiento sobre Docker y Kubernetes, o incluso su instalación. Con herramientas como Draft, usted y su equipo pueden centrarse en la creación de la aplicación con Kubernetes, sin tener que prestar mucha atención a la infraestructura.
+[Borrador](https://aka.ms/draft) es una nueva herramienta de código abierto que hace más fácil toodevelop aplicaciones contenedor e implementarlas tooKubernetes clústeres sin saber mucho sobre Docker y Kubernetes--o incluso su instalación. Con herramientas como borrador permite a su enfoque de los equipos compilación aplicación hello con Kubernetes, no se presta tanta tooinfrastructure atención.
 
-Puede usar Draft con cualquier registro de imágenes de Docker y cualquier clúster de Kubernetes, incluidos los locales. Este tutorial muestra cómo utilizar ACS con Kubernetes, ACR y Azure DNS para crear una canalización de desarrollador de CI/CD en vivo mediante Draft.
+Puede usar Draft con cualquier registro de imágenes de Docker y cualquier clúster de Kubernetes, incluidos los locales. Este tutorial muestra cómo toouse ACS con toocreate Kubernetes, ACR y DNS de Azure, un desarrollador de CI/CD en vivo de canalización con Borrador.
 
 
 ## <a name="create-an-azure-container-registry"></a>Creación de una instancia de Azure Container Registry
-Le resultará muy fácil [crear una nueva instancia de Azure Container Registry](../../container-registry/container-registry-get-started-azure-cli.md) con los pasos siguientes:
+Le resultará muy fácil [crear un nuevo registro de contenedor de Azure](../../container-registry/container-registry-get-started-azure-cli.md), pero Hola pasos son los siguientes:
 
-1. Cree un grupo de recursos de Azure para administrar el registro ACR y el clúster de Kubernetes en ACS.
+1. Crear un toomanage de grupo de recursos de Azure en el clúster de Kubernetes de hello y del registro ACR en ACS.
       ```azurecli
       az group create --name draft --location eastus
       ```
@@ -45,18 +45,18 @@ Le resultará muy fácil [crear una nueva instancia de Azure Container Registry]
 
 ## <a name="create-an-azure-container-service-with-kubernetes"></a>Creación de Azure Container Service mediante Kubernetes
 
-Ya está listo para usar [az acs create](/cli/azure/acs#create) y crear un clúster de ACS utilizando Kubernetes como el valor `--orchestrator-type`.
+Ahora está listo toouse [az acs crear](/cli/azure/acs#create) clúster toocreate un ACS utilizando Kubernetes como hello `--orchestrator-type` valor.
 ```azurecli
 az acs create --resource-group draft --name draft-kube-acs --dns-prefix draft-cluster --orchestrator-type kubernetes
 ```
 
 > [!NOTE]
-> Como Kubernetes no es el tipo de orquestador predeterminado, asegúrese de utilizar el conmutador `--orchestrator-type kubernetes`.
+> Porque Kubernetes no tiene tipos de orchestrator de hello predeterminado, asegúrese de usar hello `--orchestrator-type kubernetes` cambiar.
 
-El resultado, cuando es correcto, es parecido al siguiente.
+salida de Hello cuando se realiza correctamente es similar a continuación toohello.
 
 ```json
-waiting for AAD role to propagate.done
+waiting for AAD role toopropagate.done
 {
   "id": "/subscriptions/<guid>/resourceGroups/draft/providers/Microsoft.Resources/deployments/azurecli14904.93snip09",
   "name": "azurecli1496227204.9323909",
@@ -99,13 +99,13 @@ waiting for AAD role to propagate.done
 }
 ```
 
-Ahora que tiene un clúster, puede importar las credenciales mediante el comando [az acs kubernetes get-credentials](/cli/azure/acs/kubernetes#get-credentials). Ya tiene un archivo de configuración local para el clúster, que es lo que Helm y Draft necesitan para realizar su trabajo.
+Ahora que tiene un clúster, puede importar las credenciales de hello mediante hello [az kubernetes get-credenciales de acs](/cli/azure/acs/kubernetes#get-credentials) comando. Ahora tiene un archivo de configuración local para el clúster, que es qué timón y un borrador necesitan tooget su trabajo.
 
 ## <a name="install-and-configure-draft"></a>Instalación y configuración de Draft
-Las instrucciones de instalación de Draft se encuentran en el [repositorio de Draft](https://github.com/Azure/draft/blob/master/docs/install.md). Son relativamente sencillas pero requieren cierta configuración, ya que dependen de [Helm](https://aka.ms/helm) para crear e implementar un gráfico de Helm en el clúster de Kubernetes.
+instrucciones de instalación de Hola de borrador que se encuentran en hello [repositorio de borrador](https://github.com/Azure/draft/blob/master/docs/install.md). Son relativamente simples, pero requiere cierta configuración, ya que depende de [timón](https://aka.ms/helm) toocreate e implementar un gráfico de timón en clúster de Kubernetes Hola.
 
 1. [Descarga e instalación de Helm](https://aka.ms/helm#install).
-2. Use Helm para buscar e instalar `stable/traefik` y el controlador de entrada para permitir las solicitudes entrantes de las compilaciones.
+2. Utilice toosearch timón para e instale `stable/traefik`y entrada controlador tooenable las solicitudes para las compilaciones de entrada.
     ```bash
     $ helm search traefik
     NAME            VERSION DESCRIPTION
@@ -113,7 +113,7 @@ Las instrucciones de instalación de Draft se encuentran en el [repositorio de D
 
     $ helm install stable/traefik --name ingress
     ```
-    Ahora establezca una inspección en el controlador `ingress` para capturar el valor de IP externo cuando se implemente. Esta dirección IP será la [asignada a su dominio de implementación](#wire-up-deployment-domain) en la sección siguiente.
+    Ahora se establece una inspección en hello `ingress` controlador toocapture Hola IP valor externo cuando se implementa. Esta dirección IP será Hola uno [asignado tooyour implementación dominio](#wire-up-deployment-domain) en la sección siguiente Hola.
 
     ```bash
     kubectl get svc -w
@@ -122,13 +122,13 @@ Las instrucciones de instalación de Draft se encuentran en el [repositorio de D
     kubernetes                    10.0.0.1       <none>          443/TCP                      7h
     ```
 
-    En este caso, la dirección IP externa para el dominio de la implementación es `13.64.108.240`. Ya puede asignar su dominio a esa dirección IP.
+    En este caso, Hola direcciones IP externas de dominio de la implementación de hello es `13.64.108.240`. Ahora puede asignar la IP de toothat de dominio.
 
 ## <a name="wire-up-deployment-domain"></a>Conexión del dominio de implementación
 
-Draft crea una versión para cada gráfico de Helm que crea: cada aplicación en la que esté trabajando. Cada una obtiene un nombre generado que Draft usa como _subdominio_ además del _dominio de implementación_ de raíz que usted controla. (En este ejemplo, utilizamos `squillace.io` como dominio de implementación.) Para habilitar este comportamiento de subdominio, debe crear un registro D para `'*'` en las entradas de DNS para el dominio de implementación, de modo que cada subdominio generado se enrute al controlador de entrada del clúster de Kubernetes.
+Draft crea una versión para cada gráfico de Helm que crea: cada aplicación en la que esté trabajando. Cada uno obtiene un nombre generado que se usa por borrador como un _subdominio_ encima de la raíz de hello _dominio implementación_ que usted controla. (En este ejemplo, utilizamos `squillace.io` como dominio de implementación de hello.) tooenable este comportamiento subdominio, debe crear un registro a para `'*'` las entradas de DNS para el dominio de la implementación, para que cada uno de ellos genere subdominio es enrutado toohello Kubernetes controlador de entrada del clúster.
 
-Su propio proveedor de dominios tiene su propia forma de asignar servidores DNS; para [delegar los servidores de nombres de dominio en Azure DNS](../../dns/dns-delegate-domain-azure-dns.md), siga estos pasos:
+Su propio proveedor de dominio tiene sus propios servidores DNS de manera tooassign; demasiado[delegar su tooAzure de servidores de nombres de dominio DNS](../../dns/dns-delegate-domain-azure-dns.md), tomar Hola pasos:
 
 1. Cree un grupo de recursos para su zona.
     ```azurecli
@@ -146,7 +146,7 @@ Su propio proveedor de dominios tiene su propia forma de asignar servidores DNS;
     ```
 
 2. Cree una zona DNS para su dominio.
-Utilice el comando [az network dns zone create](/cli/azure/network/dns/zone#create) para obtener que los servidores de nombres deleguen el control de DNS en Azure DNS para su dominio.
+Hola de uso [crear zona de dns de red az](/cli/azure/network/dns/zone#create) comando tooobtain Hola servidores de nombres toodelegate DNS controlar tooAzure DNS para su dominio.
     ```azurecli
     az network dns zone create --resource-group squillace.io --name squillace.io
     {
@@ -167,12 +167,12 @@ Utilice el comando [az network dns zone create](/cli/azure/network/dns/zone#crea
       "type": "Microsoft.Network/dnszones"
     }
     ```
-3. Agregue los servidores DNS que se le proporcionen al proveedor de dominios para su dominio de implementación, lo que le permite usar Azure DNS para redirigir el dominio tal como lo desee.
-4. Cree una entrada de conjunto de registros D para la asignación del dominio de implementación para la IP `ingress` en el paso 2 de la sección anterior.
+3. Agregar servidores DNS de hello que tendrá toohello los proveedores de dominio para el dominio de la implementación, lo que permite toorepoint DNS de Azure toouse su dominio como desee.
+4. Crear una entrada de conjunto de registros A para su toohello de asignación de dominio de implementación `ingress` IP del paso 2 de la sección anterior de Hola.
     ```azurecli
     az network dns record-set a add-record --ipv4-address 13.64.108.240 --record-set-name '*' -g squillace.io -z squillace.io
     ```
-El resultado se parece a lo siguiente:
+salida de Hello es similar:
     ```json
     {
       "arecords": [
@@ -190,12 +190,12 @@ El resultado se parece a lo siguiente:
     }
     ```
 
-5. Configure Draft para usar el registro y crear subdominios para cada gráfico de Helm que cree. Para configurar Draft, necesita:
+5. Configurar el registro de borrador toouse y crear subdominios para cada gráfico timón crea. tooconfigure borrador, se necesita:
   - el nombre de Azure Container Registry (en este ejemplo, `draft`)
   - la clave del registro, o la contraseña, de `az acr credential show -n <registry name> --output tsv --query "passwords[0].value"`.
-  - el dominio de implementación de raíz que ha configurado para asignar a la dirección IP externa de entrada de Kubernetes (en este caso, `squillace.io`)
+  - dominio de implementación de Hello raíz que ha configurado la dirección IP externa de toomap toohello Kubernetes entrada (en este caso, `squillace.io`)
 
-  Llame a `draft init`; el proceso de configuración le pide los valores indicados anteriormente. El proceso es algo parecido a lo siguiente la primera vez que lo ejecuta.
+  Llame a `draft init` y proceso de configuración de hello solicita valores de hello indicados anteriormente. proceso de Hello parece algo siguiente Hola Hola primera vez que se ejecuta.
  ```bash
     $ draft init
     Creating pack ruby...
@@ -208,7 +208,7 @@ El resultado se parece a lo siguiente:
     Creating pack golang...
     $DRAFT_HOME has been configured at /Users/ralphsquillace/.draft.
 
-    In order to install Draft, we need a bit more information...
+    In order tooinstall Draft, we need a bit more information...
 
     1. Enter your Docker registry URL (e.g. docker.io, quay.io, myregistry.azurecr.io): draft.azurecr.io
     2. Enter your username: draft
@@ -219,19 +219,19 @@ El resultado se parece a lo siguiente:
     Happy Sailing!
     ```
 
-Ya está listo para implementar una aplicación.
+Ahora está listo toodeploy una aplicación.
 
 
 ## <a name="build-and-deploy-an-application"></a>Compilación e implementación de una aplicación
 
-En el repositorio de Draft, hay [seis aplicaciones sencillas de ejemplo](https://github.com/Azure/draft/tree/master/examples). Clone el repositorio y vamos a usar el [ejemplo de Python](https://github.com/Azure/draft/tree/master/examples/python). Cambie al directorio examples/Python y escriba `draft create` para compilar la aplicación. Debe tener un aspecto similar al ejemplo siguiente.
+En el repositorio de borrador de hello son [seis de las aplicaciones de ejemplo simple](https://github.com/Azure/draft/tree/master/examples). Clonar el repositorio de Hola y vamos a usar hello [ejemplo de Python](https://github.com/Azure/draft/tree/master/examples/python). Cambiar en el directorio de ejemplos/Python hello y escriba `draft create` aplicación de hello toobuild. Debería ser similar el siguiente ejemplo de Hola.
 ```bash
 $ draft create
 --> Python app detected
---> Ready to sail
+--> Ready toosail
 ```
 
-El resultado incluye un archivo Dockerfile y un gráfico de Helm. Para la compilación e implementación, solo tiene que escribir `draft up`. El resultado es exhaustivo pero comienza de forma similar al ejemplo siguiente.
+salida de Hello incluye un archivo Dockerfile y un gráfico de timón. toobuild e implementar, simplemente escriba `draft up`. salida de Hello es extensa, pero se inicia como el siguiente ejemplo de Hola.
 ```bash
 $ draft up
 --> Building Dockerfile
@@ -245,24 +245,24 @@ ea8a37f15161: Pulling fs layer
 <snip>
 ```
 
-y, cuando es correcto, finaliza de modo parecido al ejemplo siguiente.
+y cuando finaliza correctamente con algo similar toohello siguiente ejemplo.
 ```bash
 ab68189731eb: Pushed
 53c0ab0341bee12d01be3d3c192fbd63562af7f1: digest: sha256:bb0450ec37acf67ed461c1512ef21f58a500ff9326ce3ec623ce1e4427df9765 size: 2841
---> Deploying to Kubernetes
+--> Deploying tooKubernetes
 --> Status: DEPLOYED
 --> Notes:
 
-  http://gangly-bronco.squillace.io to access your application
+  http://gangly-bronco.squillace.io tooaccess your application
 
 Watching local files for changes...
 ```
 
-Sea cual sea el nombre de su gráfico, ya puede ejecutar `curl http://gangly-bronco.squillace.io` para recibir la respuesta, `Hello World!`.
+Lo que es el nombre de su gráfico, ahora puede `curl http://gangly-bronco.squillace.io` tooreceive respuesta de hello, `Hello World!`.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Ahora que tiene un clúster de ACS Kubernetes, puede investigar mediante [Azure Container Registry](../../container-registry/container-registry-intro.md) para crear más implementaciones de este escenario y también otras distintas. Por ejemplo, puede crear un conjunto de registros DNS de dominios draft._basedomain.toplevel_ que controle aspectos de un subdominio más profundo para implementaciones de ACS específicas.
+Ahora que tiene un clúster de ACS Kubernetes, puede investigar mediante [registro de contenedor de Azure](../../container-registry/container-registry-intro.md) toocreate más y diferentes implementaciones de este escenario. Por ejemplo, puede crear un conjunto de registros DNS de dominios draft._basedomain.toplevel_ que controle aspectos de un subdominio más profundo para implementaciones de ACS específicas.
 
 
 

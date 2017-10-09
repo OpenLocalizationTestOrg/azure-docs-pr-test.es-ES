@@ -1,6 +1,6 @@
 ---
-title: "Introducción a la captura de paquetes en Azure Network Watcher | Microsoft Docs"
-description: "En esta página se proporciona una información general sobre las funcionalidades de la captura de paquetes de Network Watcher"
+title: captura de tooPacket aaaIntroduction en Monitor de red de Azure | Documentos de Microsoft
+description: "Esta página proporciona una visión general de la capacidad de captura de paquetes de saludo Monitor de red"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,46 +14,46 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-ms.openlocfilehash: 4fdd007c2cfad7b42f26ab2cacfba06d95c8dad3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2ce01b391b9c1a1c19aa29c8620628c55586df03
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="introduction-to-variable-packet-capture-in-azure-network-watcher"></a>Introducción a la captura de paquetes variable en Azure Network Watcher
+# <a name="introduction-toovariable-packet-capture-in-azure-network-watcher"></a>Captura de paquetes toovariable de introducción en el Monitor de red de Azure
 
-La captura variable de paquetes de Network Watcher permite crear sesiones de captura de paquetes para realizar el seguimiento del tráfico de entrada y salida de una máquina virtual. La captura de paquetes ayuda a diagnosticar anomalías de la red, tanto de forma activa como reactiva. Otros usos son la recopilación de estadísticas de red, la obtención de información sobre las intrusiones de red y la depuración de las comunicaciones cliente-servidor, entre otros.
+Captura de paquetes de variable de Monitor de red le permite toocreate paquete captura sesiones tootrack tráfico tooand desde una máquina virtual. Captura de paquetes le ayuda a anomalías red toodiagnose reactivamente y proactivity. Otros usos incluyen la recopilación de estadísticas de red, obtenga información sobre las intrusiones de red, toodebug cliente-servidor las comunicaciones y mucho más.
 
-La captura de paquetes es una extensión de máquina virtual que se inicia de forma remota a través de Network Watcher. Esta funcionalidad reduce la carga de la ejecución manual de una captura de paquetes en el equipo deseado, lo que permite ahorrar tiempo. La captura de paquetes puede realizarse a través del portal, PowerShell, CLI o API de REST. Un ejemplo de cómo se puede activar la captura de paquetes es con las alertas de la máquina virtual. La sesión de captura cuenta con filtros para asegurar la captura del tráfico que se desea supervisar. Los filtros se basan en la información de 5-tupla (protocolo, dirección IP local, dirección IP remota, el puerto local y puerto remoto). Los datos capturados se almacenan en el disco local o en un blob de almacenamiento. Hay un límite de 10 sesiones de captura de paquetes por región y suscripción. Este límite se aplica solo a las sesiones y no a los archivos de captura de paquetes guardados localmente, en la máquina virtual, o en una cuenta de almacenamiento.
+La captura de paquetes es una extensión de máquina virtual que se inicia de forma remota a través de Network Watcher. Esta capacidad facilita la carga de Hola de ejecutar manualmente una captura de paquetes en la máquina virtual de hello deseado, que permite ahorrar tiempo. Captura de paquetes puede realizarse a través del portal de hello, PowerShell, CLI o API de REST. Un ejemplo de cómo se puede activar la captura de paquetes es con las alertas de la máquina virtual. Los filtros son proporcionados para tooensure de sesión de captura de Hola captura el tráfico que desee toomonitor. Los filtros se basan en la información de 5-tupla (protocolo, dirección IP local, dirección IP remota, el puerto local y puerto remoto). Hola capturan datos se almacenan en el disco local de Hola o un blob de almacenamiento. Hay un límite de 10 sesiones de captura de paquetes por región y suscripción. Este límite aplica solo a las sesiones de toohello y no hay ningún toohello archivos de captura de paquetes de guardados localmente en hello VM o en una cuenta de almacenamiento.
 
 > [!IMPORTANT]
-> La captura de paquetes requiere una extensión de máquina virtual `AzureNetworkWatcherExtension`. Para instalar la extensión en una máquina virtual Windows, consulte [Extensión de máquina virtual del agente de Azure Network Watcher para Windows](../virtual-machines/windows/extensions-nwa.md), y en una máquina virtual con Linux, consulte [Extensión de máquina virtual del agente de Azure Network Watcher para Linux](../virtual-machines/linux/extensions-nwa.md).
+> La captura de paquetes requiere una extensión de máquina virtual `AzureNetworkWatcherExtension`. Para instalar la extensión de hello en una máquina virtual de Windows, visite [extensión de máquina virtual de agente de Monitor de red de Azure para Windows](../virtual-machines/windows/extensions-nwa.md) y para la visita de VM de Linux [extensión de máquina virtual de agente de Monitor de red de Azure para Linux](../virtual-machines/linux/extensions-nwa.md).
 
-Para reducir la información que se captura únicamente a la información que desee, las siguientes opciones están disponibles para una sesión de captura de paquetes:
+información de hello tooreduce capturar información de hello tooonly que desee, Hola siguientes opciones está disponible para una sesión de captura de paquetes:
 
 **Configuración de captura**
 
 |Propiedad|Descripción|
 |---|---|
-|**Número máximo de bytes por paquete (bytes)** | El número de bytes de cada paquete que se captura, si se deja en blanco se capturan todos los bytes. El número de bytes de cada paquete que se captura, si se deja en blanco se capturan todos los bytes. Si necesita solo el encabezado de IPv4, indique 34 aquí |
-|**Número máximo de bytes por sesión (bytes)** | Número total de bytes en esa captura, una vez que se alcanza este valor la sesión se finaliza.|
-|**Límite de tiempo (segundos)** | Establece una restricción horaria en la sesión de captura de paquetes. El valor predeterminado es 18000 segundos o 5 horas.|
+|**Número máximo de bytes por paquete (bytes)** | Hola número de bytes de cada paquete que se capturan, se capturan todos los bytes si se deja en blanco. Hola número de bytes de cada paquete que se capturan, se capturan todos los bytes si se deja en blanco. Si tiene un solo encabezado de IPv4 de hello: indicar 34 aquí |
+|**Número máximo de bytes por sesión (bytes)** | Número total de bytes en la se captura, una vez que se alcanza el valor de Hola Hola finaliza la sesión.|
+|**Límite de tiempo (segundos)** | Establece una restricción horaria en el paquete de saludo capturar sesión. valor predeterminado de Hello es 18000 segundos o 5 horas.|
 
 **Filtrado (opcional)**
 
 |Propiedad|Descripción|
 |---|---|
-|**Protocolo** | El protocolo para filtrar la captura de paquetes. Los valores disponibles son TCP, UDP y All (Todos).|
-|**Dirección IP local** | Este valor filtra la captura de paquetes a los paquetes en los que la dirección IP local coincide con este valor de filtro.|
-|**Puerto local** | Este valor filtra la captura de paquetes a los paquetes en los que el puerto local coincide con este valor de filtro.|
-|**Dirección IP remota** | Este valor filtra la captura de paquetes a los paquetes en los que la dirección IP remota coincide con este valor de filtro.|
-|**Puerto remoto** | Este valor filtra la captura de paquetes a los paquetes en los que el puerto remoto coincide con este valor de filtro.|
+|**Protocolo** | captura de Hello toofilter de protocolo para el paquete de saludo. los valores disponibles de Hello son TCP, UDP y todos.|
+|**Dirección IP local** | Este valor filtra toopackets de captura de paquetes de saludo donde la dirección IP local Hola coincide con este valor de filtro.|
+|**Puerto local** | Este paquete de saludo de filtros de valor capturar toopackets donde puerto local Hola coincide con este valor de filtro.|
+|**Dirección IP remota** | Este paquete de saludo de filtros de valor capturar toopackets donde hello remoto IP coincide con este valor de filtro.|
+|**Puerto remoto** | Este paquete de saludo de filtros de valor capturar toopackets donde puerto remoto hello coincide con este valor de filtro.|
 
 ### <a name="next-steps"></a>Pasos siguientes
 
-Aprenda a administrar las capturas de paquetes a través del portal consultando [Administración de capturas de paquetes con Azure Network Watcher mediante Azure Portal](network-watcher-packet-capture-manage-portal.md) o con PowerShell consultando [Administración de capturas de paquetes con Azure Network Watcher mediante PowerShell](network-watcher-packet-capture-manage-powershell.md).
+Obtenga información acerca de cómo administrar las capturas de paquetes a través del portal de hello visitando [administrar captura de paquetes en el portal de Azure hello](network-watcher-packet-capture-manage-portal.md) o con PowerShell visitando [administrar paquetes de captura con PowerShell](network-watcher-packet-capture-manage-powershell.md).
 
-Aprenda a crear capturas de paquetes proactivas basadas en las alertas de máquina virtual en el artículo sobre cómo [crear una captura de paquetes desencadenada por alertas](network-watcher-alert-triggered-packet-capture.md)
+Obtenga información acerca de cómo se captura toocreate automático paquetes basados en alertas de máquina virtual visitando [crear una captura de paquetes desencadenadas alerta](network-watcher-alert-triggered-packet-capture.md)
 
 <!--Image references-->
 [1]: ./media/network-watcher-packet-capture-overview/figure1.png

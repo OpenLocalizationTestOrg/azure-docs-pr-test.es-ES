@@ -1,6 +1,6 @@
 ---
-title: Conectores de la interfaz de usuario de Synchronization Service Manager de Azure AD | Microsoft Docs
-description: "Conozca la pestaña Conectores de Synchronization Service Manager para Azure AD Connect."
+title: aaaConnectors en hello Azure AD Synchronization Service Manager UI | Documentos de Microsoft
+description: Conocer la ficha conectores Hola Hola Synchronization Service Manager para Azure AD Connect.
 services: active-directory
 documentationcenter: 
 author: andkjell
@@ -15,82 +15,82 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c0fae4b1755ca95466eeffb5ce61c1c7855d7381
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: c0969630313178b1e299385b1289360c8f787cb5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Uso de conectores con Sync Service Manager de Azure AD Connect
+# <a name="using-connectors-with-hello-azure-ad-connect-sync-service-manager"></a>Uso de conectores con hello Azure AD Connect Sync Service Manager
 
 ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/connectors.png)
 
-La pestaña Conectores se usa para administrar todos los sistemas a los que está conectado el motor de sincronización.
+ficha de conectores de Hello es usado toomanage motor de sincronización de todos los sistemas Hola está conectado a.
 
 ## <a name="connector-actions"></a>Acciones del conector
 | Acción | Comentario |
 | --- | --- |
-| Crear |No usar. Para conectarse a los bosques de AD adicionales, use el Asistente para instalación. |
+| Crear |No usar. Para conectar los bosques de AD tooadditional, usar a Asistente para la instalación de Hola. |
 | Propiedades |Se usa para el filtrado por dominio y unidad organizativa. |
-| [Eliminar](#delete) |Se usa para eliminar los datos en el espacio del conector o eliminar la conexión a un bosque. |
-| [Configurar perfiles de ejecución](#configure-run-profiles) |A excepción del filtrado de dominio, no es necesario configurar ninguna otra opción. Puede utilizar esta acción para ver los perfiles de ejecución ya configurados. |
-| Ejecute |Se usa para iniciar una ejecución única de un perfil. |
+| [Eliminar](#delete) |Tooeither usado eliminar datos de Hola Hola conector espacio o toodelete conexión tooa bosque. |
+| [Configurar perfiles de ejecución](#configure-run-profiles) |Excepción de filtrado, nada de dominio tooconfigure aquí. Esta acción se puede utilizar perfiles de ejecución de toosee ya configurado. |
+| Ejecute |Usar toostart ejecutar único de un perfil. |
 | Detención |Detiene un conector que esté ejecutando un perfil. |
 | Exportar conector |No usar. |
 | Importar conector |No usar. |
 | Actualizar conector |No usar. |
-| Actualizar esquema |Actualiza el esquema en caché. Es preferible usar la opción en el Asistente para la instalación, ya que también actualizará las reglas de sincronización. |
-| [Espacio del conector de búsqueda](#search-connector-space) |Se usa para buscar objetos y realizar un [seguimiento de un objeto y sus datos a través del sistema](#follow-an-object-and-its-data-through-the-system). |
+| Actualizar esquema |Actualiza el esquema en caché de Hola. Es toouse preferido Hola opción en el Asistente para la instalación de hello en su lugar, desde el que también las actualizaciones de sincronización las reglas. |
+| [Espacio del conector de búsqueda](#search-connector-space) |Usar objetos de toofind y demasiado[siga un objeto y sus datos a través del sistema de hello](#follow-an-object-and-its-data-through-the-system). |
 
 ### <a name="delete"></a>Eliminar
-La acción de eliminación se usa para dos objetivos diferentes.  
+acción de eliminación de Hello sirve para dos cosas distintas.  
 ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/connectordelete.png)
 
-Con la opción **Delete connector space only** (Eliminar solo el espacio del conector) se eliminarán todos los datos, pero se mantendrá la configuración.
+Hola opción **eliminar solo el espacio del conector** quita todos los datos, pero mantener Hola configuración.
 
-Con la opción **Delete Connector and connector space** (Eliminar el conector y el espacio del conector) se eliminarán los datos y la configuración. Esta opción se usa cuando no se desea volver a conectarse a un bosque.
+Hola opción **espacio conector eliminar y el conector** quita los datos de Hola y configuración de Hola. Esta opción se usa cuando no desea tooconnect tooa bosque ya.
 
-Ambas sincronizarán todos los objetos y actualizarán los objetos del metaverso. Se trata de una operación de larga duración.
+Ambas opciones sincronización todos los objetos y actualización los objetos de metaverso de Hola. Se trata de una operación de larga duración.
 
 ### <a name="configure-run-profiles"></a>Configurar perfiles de ejecución
-Esta opción permite ver los perfiles de ejecución configurados para un conector.
+Esta opción permite hello toosee configurados para un conector de perfiles de ejecución.
 
 ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/configurerunprofiles.png)
 
 ### <a name="search-connector-space"></a>Espacio del conector de búsqueda
-La acción del espacio del conector de búsqueda es útil para buscar objetos y solucionar problemas de datos.
+acción de espacio de conector de búsqueda de Hello es útil toofind objetos y solucionar problemas de datos.
 
 ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/cssearch.png)
 
-Empiece seleccionando un **ámbito**. Puede buscar según los datos (RDN, DN, delimitador, subárbol) o el estado del objeto (todas las demás opciones).  
+Empiece seleccionando un **ámbito**. Puede buscar la base de datos (RDN, DN, delimitador, subárbol), o de estado del objeto de hello (todas las demás opciones).  
 ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/cssearchscope.png)  
 Por ejemplo, si hace una búsqueda de un subárbol, obtiene todos los objetos de una unidad organizativa.  
 ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/cssearchsubtree.png)  
-En esta cuadrícula, puede seleccionar un objeto, elegir las **propiedades** y [realizar un seguimiento](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md) desde el espacio del conector de origen, a través del metaverso, y hasta el espacio del conector de destino.
+En esta cuadrícula puede seleccionar un objeto, seleccione **propiedades**, y [seguirlo](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md) de espacio del conector de origen de hello, mediante el metaverso hello y el espacio de conector de destino toohello.
 
-### <a name="changing-the-ad-ds-account-password"></a>Cambio de la contraseña de la cuenta de AD DS
-Si cambia la contraseña de la cuenta, el servicio de sincronización ya no podrá importar o exportar cambios a las instancias locales de AD.   Verá lo siguiente:
+### <a name="changing-hello-ad-ds-account-password"></a>Cambiar la contraseña de la cuenta de hello AD DS
+Si cambia la contraseña de la cuenta de hello, Hola servicio de sincronización ya no será capaz de tooimport y exportación de cambios tooon local AD.   Puede ver la siguiente hello:
 
-- Se produce un error en el paso de importación y exportación para el conector de AD con el error "no-start-credentials".
-- En el Visor de eventos de Windows, el registro de eventos de aplicación contiene un error con el identificador de evento 6000 y mensaje “El agente de administración "contoso.com" no se pudo ejecutar porque las credenciales no eran válidas”.
+- se produce un error en el paso de importación y exportación de Hola para hello conector AD con error de "credenciales de inicio no".
+- En el Visor de eventos de Windows, registro de eventos de aplicación Hola contiene un error con 6000 de Id. de evento y el mensaje "hello toorun de agente"contoso.com"Error de administración porque las credenciales de hello no eran válidas."
 
-Para resolver el problema, actualice la cuenta de usuario de AD DS mediante lo siguiente:
+Hola tooresolve emitir, cuenta de usuario de actualización Hola AD DS con hello siguientes:
 
 
-1. Inicie el Synchronization Service Manager (INICIO → Synchronization Service).
+1. Iniciar Hola Synchronization Service Manager (servicio de sincronización de inicio →).
 </br>![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/startmenu.png)
-2. Vaya a la pestaña **Conectores**.
-3. Seleccione el conector de AD que está configurado para usar la cuenta de AD DS.
+2. Vaya toohello **conectores** ficha.
+3. Seleccione Hola conector de AD que es configurado toouse hello cuenta AD DS.
 4. En Acciones, seleccione **Propiedades**.
-5. En el cuadro de diálogo emergente, seleccione Connect to Active Directory Forest (Conectar con el bosque de Active Directory):
-6. El nombre de bosque indica la instancia local de AD correspondiente.
-7. El nombre de usuario indica la cuenta de AD DS que se usa para la sincronización.
-8. Escriba la nueva contraseña de la cuenta de AD DS en el cuadro de texto Contraseña ![Utilidad de clave de cifrado de Azure AD Connect Sync](media/active-directory-aadconnectsync-encryption-key/key6.png).
-9. Haga clic en Aceptar para guardar la nueva contraseña y reinicie Synchronization Service para quitar la contraseña antigua de la memoria caché.
+5. En el cuadro de diálogo emergente de hello, seleccione Conectar tooActive directorio de bosque:
+6. nombre de bosque de Hello indica Hola correspondiente local AD.
+7. nombre de usuario de Hello indica la cuenta de hello AD DS usada para la sincronización.
+8. Escriba Hola nueva contraseña de cuenta de hello AD DS en el cuadro de texto de contraseña de hello ![Azure AD conectarse sincronización de cifrado de clave de utilidad](media/active-directory-aadconnectsync-encryption-key/key6.png)
+9. Haga clic en Aceptar toosave Hola nueva contraseña y reinicie Hola Synchronization Service tooremove Hola contraseña antigua de la memoria caché.
 
 
 
 ## <a name="next-steps"></a>Pasos siguientes
-Obtenga más información sobre la configuración de la [Sincronización de Azure AD Connect](active-directory-aadconnectsync-whatis.md) .
+Obtener más información sobre hello [sincronización de Azure AD Connect](active-directory-aadconnectsync-whatis.md) configuración.
 
 Obtenga más información sobre la [Integración de las identidades locales con Azure Active Directory](active-directory-aadconnect.md).

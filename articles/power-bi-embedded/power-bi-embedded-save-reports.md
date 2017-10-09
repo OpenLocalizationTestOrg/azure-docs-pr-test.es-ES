@@ -1,6 +1,6 @@
 ---
-title: Guardado de informes en Azure Power BI Embedded | Microsoft Docs
-description: "Aprenda a guardar informes en Power BI Embedded. Para que esta operación funcione correctamente, se requieren los permisos adecuados."
+title: informes de aaaSave en Azure Power BI Embedded | Documentos de Microsoft
+description: "Obtenga información acerca de cómo incrustan informes toosave dentro de Power BI. Esto requiere los permisos adecuados en orden toowork correctamente."
 services: power-bi-embedded
 documentationcenter: 
 author: guyinacube
@@ -15,36 +15,36 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 03/11/2017
 ms.author: asaxton
-ms.openlocfilehash: ad895004cc2972f2ded81566186325a16d401151
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 984537ce1ce1afc787d6c6c9f61ae8d6226d1171
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="save-reports-in-power-bi-embedded"></a>Guardado de informes en Power BI Embedded
 
-Aprenda a guardar informes en Power BI Embedded. Para que esta operación funcione correctamente, se requieren los permisos adecuados.
+Obtenga información acerca de cómo incrustan informes toosave dentro de Power BI. Esto requiere los permisos adecuados en orden toowork correctamente.
 
-En Power BI Embedded, es posible editar los informes existentes y guardarlos. También se puede crear un informe nuevo y guardarlo como un nuevo informe para crear uno.
+En Power BI Embedded, es posible editar los informes existentes y guardarlos. También puede crear un nuevo informe y guardar como un nuevo toocreate de informe uno.
 
-Para guardar un informe, en primer lugar hay que crear un token para el informe concreto con los ámbitos correctos:
+En orden toosave un informe primero debe toocreate un token para el informe específico de hello con ámbitos derecho hello:
 
-* Para habilitar la operación save, se requiere el ámbito Report.ReadWrite
-* Para habilitar la operación save as, se requieren los ámbitos Report.Read y Workspace.Report.Copy
-* Para habilitar las operaciones save y save as, se requieren Report.ReadWrite y Workspace.Report.Copy
+* se requiere tooenable guardar Report.ReadWrite ámbito
+* tooenable Guardar como, ámbitos Report.Read y Workspace.Report.Copy son necesarios
+* tooenable son Guardar y guardar como, Report.ReadWrite y Workspace.Report.Copy requierd
 
-Para habilitar los botones de save o save as, respectivamente, correctos en el menú archivo es preciso proporcionar el permiso adecuado en la configuración de la inserción al insertar el informe:
+Respectivamente en hello tooenable de orden derecho guardar o guardar como botones en el menú archivo necesita tooprovide Hola derecho permiso en la configuración de insertar hello cuando se insertar Hola informe:
 
 * models.Permissions.ReadWrite
 * models.Permissions.Copy
 * models.Permissions.All
 
 > [!NOTE]
-> El token de acceso también necesita los ámbitos adecuados. Para más información, consulte [Scopes](power-bi-embedded-app-token-flow.md#scopes) (Ámbitos).
+> El token de acceso también debe ámbitos adecuados de Hola. Para más información, consulte [Scopes](power-bi-embedded-app-token-flow.md#scopes) (Ámbitos).
 
 ## <a name="embed-report-in-edit-mode"></a>Inserción de informes en modo de edición
 
-Supongamos que desea insertar un informe en modo de edición en la aplicación; para ello, simplemente pase las propiedades correctas en la configuración de la inserción y llame a powerbi.embed(). Tendrá que suministrar permisos y una propiedad viewMode para ver los botones de save y save as en modo de edición. Para más información, consulte [Embed configuration details](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details) (Detalles de configuración de la inserción).
+Vamos a decir que desee tooEmbed un informe en modo de edición dentro de la aplicación, toodo así que puede pasar propiedades de derecho de hello en la configuración de insertar y llamar a powerbi.embed(). Necesitará permisos de toosupply y un viewMode Hola de orden toosee guardar y guardar como botones en el modo de edición. Para más información, consulte [Embed configuration details](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details) (Detalles de configuración de la inserción).
 
 Por ejemplo, en JavaScript:
 
@@ -54,7 +54,7 @@ Por ejemplo, en JavaScript:
     // Get models. Models, it contains enums that can be used.
     var models = window['powerbi-client'].models;
 
-    // Embed configuration used to describe the what and how to embed.
+    // Embed configuration used toodescribe hello what and how tooembed.
     // This object is used when calling powerbi.embed.
     // This also includes settings and options such as filters.
     // You can find more information at https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details.
@@ -71,10 +71,10 @@ Por ejemplo, en JavaScript:
         }
     };
 
-    // Get a reference to the embedded report HTML element
+    // Get a reference toohello embedded report HTML element
     var reportContainer = $('#reportContainer')[0];
 
-    // Embed the report and display it within the div container.
+    // Embed hello report and display it within hello div container.
     var report = powerbi.embed(reportContainer, config);
 ```
 
@@ -82,10 +82,10 @@ Ahora, se insertará un informe en la aplicación en modo de edición.
 
 ## <a name="save-report"></a>Guardar informe
 
-Después de insertar el informe en modo de edición con el token y los permisos adecuados puede guardar el informe desde el menú archivo o desde Javascript:
+Después de que el modo con hello token derechos y permisos de edición de informes de hello Embbeding en puede guardar informe de Hola de menú archivo de Hola o de javascript:
 
 ```
- // Get a reference to the embedded report.
+ // Get a reference toohello embedded report.
     report = powerbi.get(reportContainer);
 
  // Save report
@@ -95,7 +95,7 @@ Después de insertar el informe en modo de edición con el token y los permisos 
 ## <a name="save-as"></a>Guardar como
 
 ```
-// Get a reference to the embedded report.
+// Get a reference toohello embedded report.
     report = powerbi.get(reportContainer);
     
     var saveAsParameters = {
@@ -107,9 +107,9 @@ Después de insertar el informe en modo de edición con el token y los permisos 
 ```
 
 > [!IMPORTANT]
-> Solo después de *save as* se crea un informe nuevo. Después de save, el lienzo sigue mostrando el informe anterior en modo de edición, no el nuevo informe. Necesitará insertar el nuevo informe que se creó. Esto requiere un nuevo token de acceso, ya que se crean por informe.
+> Solo después de *save as* se crea un informe nuevo. Después de guardar hello, lienzo Hola se sigue mostrando informe anterior hello en edición no hello y modo de informe nuevo. Necesitará tooembed Hola nuevo informe que se creó. Esto requiere un nuevo token de acceso, ya que se crean por informe.
 
-Después tendrá que cargar el informe nuevo después de *save as*. Esta operación es similar a la inserción de cualquier informe.
+A continuación, se necesita tooload Hola nuevo informe después de un *Guardar como*. Esto es similar tooembedding cualquier informe.
 
 ```
 <div id="reportContainer"></div>
@@ -120,14 +120,14 @@ var embedConfiguration = {
         reportId: '5dac7a4a-4452-46b3-99f6-a25915e0fe54',
     };
     
-    // Grab the reference to the div HTML element that will host the report
+    // Grab hello reference toohello div HTML element that will host hello report
     var reportContainer = $('#reportContainer')[0];
 
     // Embed report
     var report = powerbi.embed(reportContainer, embedConfiguration);
 ```
 
-## <a name="see-also"></a>Consulte también
+## <a name="see-also"></a>Otras referencias
 
 [Get started with Microsoft Power BI Embedded sample (Introducción a Microsoft Power BI Embedded: ejemplo)](power-bi-embedded-get-started-sample.md)  
 [Embed a report in Power BI Embedded](power-bi-embedded-embed-report.md) (Inserción de un informe en Power BI Embedded)  
@@ -135,5 +135,5 @@ var embedConfiguration = {
 [Autenticación y autorización con Power BI Embedded](power-bi-embedded-app-token-flow.md)  
 [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)  
 [JavaScript Embed Sample](https://microsoft.github.io/PowerBI-JavaScript/demo/) (Ejemplo de inserción de JavaScript)  
-¿Tiene más preguntas? [Pruebe la comunidad de Power BI](http://community.powerbi.com/)
+¿Tiene más preguntas? [Intente Hola Comunidad de Power BI](http://community.powerbi.com/)
 

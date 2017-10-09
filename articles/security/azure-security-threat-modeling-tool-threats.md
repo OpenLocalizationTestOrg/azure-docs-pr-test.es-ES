@@ -1,6 +1,6 @@
 ---
-title: 'Amenazas: Microsoft Threat Modeling Tool (Azure) | Microsoft Docs'
-description: "Página de categorías de amenazas de Microsoft Threat Modeling Tool, que contiene categorías para todas las amenazas generadas expuestas."
+title: aaaThreats - herramienta de modelado de amenazas de Microsoft - Azure | Documentos de Microsoft
+description: "Página de categorías de amenaza de hello herramienta de modelado de amenazas de Microsoft, que contiene categorías para todos los expone genera las amenazas."
 services: security
 documentationcenter: na
 author: RodSan
@@ -14,37 +14,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 704f9995828866d4d2e4969e3aa922ed1e23c4ea
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 0bd51f81370b6385ff1ac9769e34fc089e1dfc9d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="microsoft-threat-modeling-tool-threats"></a>Amenazas de Microsoft Threat Modeling Tool
 
-Threat Modeling Tool es un elemento básico del Ciclo de vida de desarrollo de seguridad (SDL) de Microsoft. Permite a los arquitectos de software identificar y mitigar los posibles problemas de seguridad en una fase temprana, cuando son relativamente sencillos y poco costosos de resolver. En consecuencia, reduce en gran medida el costo total de desarrollo. Además, hemos diseñado la herramienta pensando en expertos no relacionados con la seguridad, lo que facilita el modelado de amenazas para todos los programadores, ya que se proporcionan instrucciones claras sobre cómo crear y analizar los modelos de amenazas.
+Hola herramienta de modelado de amenazas es un elemento básico del saludo del ciclo de vida de desarrollo de seguridad (SDL) de Microsoft. Permite que el software arquitectos tooidentify y mitigar los posibles problemas de seguridad al principio, cuando están tooresolve relativamente sencilla y rentable. Como resultado, reduce en gran medida el costo total de desarrollo de Hola. Además, se han diseñado herramienta Hola con expertos en seguridad no en mente, facilitar el modelado de amenazas para todos los programadores al proporcionar instrucciones claras sobre cómo crear y analizar los modelos de amenazas.
 
-> Visite  **[Threat Modeling Tool](./azure-security-threat-modeling-tool.md)** .
+> Visite hello  **[herramienta de modelado de amenazas](./azure-security-threat-modeling-tool.md)**  tooget comenzar hoy!
 
-La Herramienta de modelado de amenazas le ayuda a dar respuesta a determinadas preguntas como las siguientes:
+Hola herramienta de modelado de amenazas le ayuda a responder a ciertas cuestiones, como Hola los siguientes:
 
-* ¿Cómo puede cambiar un atacante los datos de autenticación?
-* ¿Cuál es el impacto si un atacante puede leer los datos del perfil de usuario?
-* ¿Qué ocurre si se deniega el acceso a la base de datos del perfil de usuario?
+* ¿Cómo un atacante puede cambiar los datos de autenticación de saludo?
+* ¿Cuál es el impacto de hello si un atacante puede leer datos de perfil de usuario de hello?
+* ¿Qué ocurre si se deniega el acceso base de datos de perfil de usuario de toohello?
 
 ## <a name="stride-model"></a>Modelo STRIDE
 
-Para ayudarle a formular mejor los tipos de pregunta planteados, Microsoft utiliza el modelo STRIDE, que clasifica los distintos tipos de amenazas y simplifica las conversaciones de seguridad global.
+Ayuda de toobetter formular estos tipos de preguntas que apunta, modelo STRIDE de Microsoft usa hello, que clasifica los distintos tipos de amenazas y simplifica Hola conversaciones de seguridad global.
 
 | Categoría | Descripción |
 | -------- | ----------- |
 | **Suplantación de identidad** | Implica el acceso y uso ilícitos de la información de autenticación de otro usuario, como el nombre de usuario y la contraseña. |
-| **Alteración de datos** | Implica la modificación malintencionada de los datos. Entre los ejemplos se incluyen los cambios no autorizados realizados en los datos persistentes, como los que se encuentran en una base de datos, y la alteración de datos a medida que fluyen entre dos equipos a través de una red abierta, como Internet. |
-| **Rechazo** | Está asociado a usuarios que deniegan la ejecución de una acción sin que otras partes tengan forma alguna de comprobarlo de otro modo, por ejemplo, un usuario realiza una operación ilegal en un sistema que no tiene la capacidad de realizar el seguimiento de las operaciones prohibidas. El no rechazo hace referencia a la capacidad de un sistema de contrarrestar las amenazas de rechazo. Por ejemplo, es posible que un usuario que adquiera un elemento deba firmar por el elemento al recibirlo. El proveedor puede utilizar el recibo firmado como prueba de que el usuario ha recibido el paquete. |
-| **Divulgación de información** | Implica la exposición de información a personas que no deberían tener acceso a ella, por ejemplo, la capacidad de los usuarios de leer un archivo al que no se les ha concedido acceso o la capacidad de un intruso de leer datos en tránsito entre dos equipos. |
-| **Denegación de servicio** | Los ataques por denegación de servicio (DoS) deniegan el servicio a usuarios válidos, por ejemplo, al hacer que un servidor web esté temporalmente inutilizable o no disponible. Debe protegerse contra determinado tipo de amenazas de denegación de servicio simplemente para mejorar la confiabilidad y disponibilidad del sistema. |
-| **Elevación de privilegios** | Un usuario sin privilegios obtiene acceso con privilegios y, por tanto, tiene acceso suficiente para poner en peligro o destruir todo el sistema. Entre las amenazas de elevación de privilegios se incluyen aquellas situaciones en las que un atacante ha superado de manera eficaz todas las defensas del sistema y se ha convertido en parte del sistema de confianza en sí, una situación verdaderamente peligrosa. |
+| **Alteración de datos** | Implica la modificación malintencionada de Hola de datos. Algunos ejemplos son los cambios no autorizados realizados toopersistent datos, como el que se mantienen en una base de datos y la modificación de datos Hola medida que fluye entre dos equipos a través de una red abierta, como Internet Hola |
+| **Rechazo** | Asociado a los usuarios que denegación la realización de una acción sin otras entidades con cualquier forma tooprove en caso contrario, por ejemplo, un usuario realiza una operación no válida en un sistema que carezca de las operaciones de hello capacidad tootrace Hola prohibida. Sin rechazo refiere toohello capacidad de una amenazas de rechazo de sistema toocounter. Por ejemplo, un usuario que compra un producto podría tener toosign elemento Hola tras la recepción. proveedor de Hello puede, a continuación, use Hola firmado recepción como ese usuario Hola ha recibido paquetes de saludo de prueba |
+| **Divulgación de información** | Implica la exposición de Hola de tooindividuals de información que no deberían toohave acceso tooit: por ejemplo, capacidad de Hola de usuarios tooread un archivo que no tenían acceso a, o hello posibilidad de que un intruso tooread los datos en tránsito entre dos equipos |
+| **Denegación de servicio** | Denegar el servicio (DoS) ataques por denegación de servicio toovalid a los usuarios: por ejemplo, si realiza un servidor Web temporalmente no disponible o inutilizable. Debe proteger contra ciertos tipos de DoS amenazas simplemente tooimprove la disponibilidad del sistema y la confiabilidad |
+| **Elevación de privilegios** | Un usuario sin privilegios obtiene acceso con privilegios y, por tanto, tiene suficientes toocompromise de acceso o destruir Hola todo el sistema. Elevación de amenazas de privilegios incluyen aquellas situaciones en que un atacante eficazmente ha entrado en todas las defensas del sistema y pasan a formar parte del sistema de hello confianza propio, de hecho, una situación peligrosa |
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Continúe con  **[Mitigaciones de Threat Modeling Tool](./azure-security-threat-modeling-tool-mitigations.md)**  para conocer las distintas maneras en que puede mitigar estas amenazas con Azure.
+Continuar demasiado**[reducciones de herramienta de modelado de amenazas](./azure-security-threat-modeling-tool-mitigations.md)**  toolearn Hola maneras puede mitigar estas amenazas con Azure.

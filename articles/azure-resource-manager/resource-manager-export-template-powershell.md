@@ -1,6 +1,6 @@
 ---
-title: "Exportación de plantillas de Resource Manager con Azure PowerShell | Microsoft Docs"
-description: Use Azure Resource Manager y Azure PowerShell para exportar una plantilla desde un grupo de recursos.
+title: plantilla de administrador de recursos de aaaExport con PowerShell de Azure | Documentos de Microsoft
+description: Use el Administrador de recursos de Azure y Azure PowerShell tooexport una plantilla a partir de un grupo de recursos.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -13,26 +13,26 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/01/2017
 ms.author: tomfitz
-ms.openlocfilehash: 7543811eb9448222b6e7c266756e68debc7d54be
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9a239b7bce8209326c0e267a4d3d69f7014bdaed
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="export-azure-resource-manager-templates-with-powershell"></a>Exportación de plantillas de Azure Resource Manager con Azure PowerShell
 
-Resource Manager permite exportar una plantilla de Resource Manager a partir de los recursos existentes en una suscripción. Puede usar esa plantilla generada para aprender sobre la sintaxis de plantillas o para automatizar la nueva implementación de su solución según sea necesario.
+El Administrador de recursos permite tooexport una plantilla de administrador de recursos de los recursos existentes en su suscripción. Puede usar ese toolearn plantilla generada sobre Hola plantilla sintaxis o tooautomate Hola volver a implementar la solución según sea necesario.
 
-Es importante tener en cuenta que hay dos formas diferentes de exportar una plantilla:
+Es importante toonote que hay dos tooexport de distintas formas una plantilla:
 
-* Puede exportar la plantilla que utilizó para una implementación. La plantilla exportada incluye todos los parámetros y variables exactamente como aparecían en la plantilla original. Este enfoque es útil cuando se necesita recuperar una plantilla.
-* Puede exportar una plantilla que representa el estado actual del grupo de recursos. La plantilla exportada no se basa en ninguna plantilla que usara para la implementación. Al contrario, crea una plantilla que es una instantánea del grupo de recursos. La plantilla exportada tiene muchos valores codificados de forma rígida y es probable que no tenga tantos parámetros como normalmente se definirían. Este enfoque resulta útil cuando se ha modificado el grupo de recursos. Ahora, debe capturar el grupo de recursos como plantilla.
+* Puede exportar Hola real de la plantilla que usa para una implementación. plantilla exportada Hola incluye todas las variables y parámetros de hello exactamente tal y como aparecían en la plantilla original Hola. Este enfoque es útil cuando es necesario tooretrieve una plantilla.
+* Puede exportar una plantilla que representa el estado actual de Hola Hola del grupo de recursos. plantilla exportada Hello no se basa en cualquier plantilla que utiliza para la implementación. En su lugar, crea una plantilla que es una instantánea Hola del grupo de recursos. plantilla exportada Hello tiene muchos valores codificados de forma rígida y probablemente no tantos parámetros como normalmente tendría que definir. Este enfoque es útil cuando se ha modificado el grupo de recursos de Hola. Ahora, debe grupo de recursos de hello toocapture como una plantilla.
 
 En este tema se muestran ambos métodos.
 
 ## <a name="deploy-a-solution"></a>Implementación de una solución
 
-Para ilustrar ambos enfoques para exportar una plantilla, empecemos por la implementación de una solución en la suscripción. Si ya tiene un grupo de recursos en la suscripción que desee exportar, no es necesario implementar esta solución. Sin embargo, el resto de este artículo hace referencia a la plantilla para esta solución. El script de ejemplo implementa una cuenta de almacenamiento.
+tooillustrate ambos enfoques para exportar una plantilla, puede empezar mediante la implementación de una suscripción de tooyour de solución. Si ya tiene un grupo de recursos en la suscripción que desea tooexport, no es necesario toodeploy esta solución. Sin embargo, Hola resto de este artículo se hace referencia toohello plantilla para esta solución. script de ejemplo de Hola implementa una cuenta de almacenamiento.
 
 ```powershell
 New-AzureRmResourceGroup -Name ExampleGroup -Location "South Central US"
@@ -43,13 +43,13 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup `
 
 ## <a name="save-template-from-deployment-history"></a>Guardado de una plantilla desde el historial de implementación
 
-Puede recuperar una plantilla desde el historial de implementación mediante el comando [Save-AzureRmResourceGroupDeploymentTemplate](/powershell/module/azurerm.resources/save-azurermresourcegroupdeploymenttemplate). En el ejemplo siguiente se guarda la plantilla implementada previamente:
+Puede recuperar una plantilla desde el historial de implementación mediante hello [AzureRmResourceGroupDeploymentTemplate guardar](/powershell/module/azurerm.resources/save-azurermresourcegroupdeploymenttemplate) comando. Hola siguiendo el ejemplo de plantilla de hello guarda antes de implementar:
 
 ```powershell
 Save-AzureRmResourceGroupDeploymentTemplate -ResourceGroupName ExampleGroup -DeploymentName NewStorage
 ```
 
-Devuelve la ubicación de la plantilla.
+Devuelve la ubicación de Hola de plantilla de Hola.
 
 ```powershell
 Path
@@ -57,17 +57,17 @@ Path
 C:\Users\exampleuser\NewStorage.json
 ```
 
-Abra el archivo y tenga en cuenta que es la misma plantilla que usó para la implementación. Los parámetros y variables coinciden con la plantilla de GitHub. Puede volver a implementar esta plantilla.
+Abra el archivo hello y tenga en cuenta que es Hola plantilla exacto utilizado para la implementación. variables y parámetros de hello coinciden con plantilla de Hola desde GitHub. Puede volver a implementar esta plantilla.
 
 ## <a name="export-resource-group-as-template"></a>Exportación de un grupo de recursos como una plantilla
 
-En lugar de recuperar una plantilla del historial de implementación, puede recuperar una plantilla que represente el estado actual de un grupo de recursos mediante el uso del comando [Export-AzureRmResourceGroup](/powershell/module/azurerm.resources/export-azurermresourcegroup). Utilice este comando si ha realizado muchos cambios en el grupo de recursos y ninguna plantilla existente representa todos los cambios.
+En lugar de recuperar una plantilla de historial de implementación de hello, puede recuperar una plantilla que representa el estado actual de Hola de un grupo de recursos mediante el uso de hello [AzureRmResourceGroup de exportación](/powershell/module/azurerm.resources/export-azurermresourcegroup) comando. Utilice este comando cuando haya realizado muchos cambios tooyour grupo de recursos y ninguna plantilla existente representa todos los cambios de Hola.
 
 ```powershell
 Export-AzureRmResourceGroup -ResourceGroupName ExampleGroup
 ```
 
-Devuelve la ubicación de la plantilla.
+Devuelve la ubicación de Hola de plantilla de Hola.
 
 ```powershell
 Path
@@ -75,7 +75,7 @@ Path
 C:\Users\exampleuser\ExampleGroup.json
 ```
 
-Abra el archivo y tenga en cuenta que es diferente de la plantilla en GitHub. Tiene parámetros diferentes y no hay ninguna variable. La ubicación y las SKU de almacenamiento tienen una codificación de forma rígida en los valores. En el ejemplo siguiente se muestra la plantilla exportada, pero la plantilla tiene un nombre de parámetro ligeramente diferente:
+Abra el archivo hello y tenga en cuenta que es diferente de la plantilla de hello en GitHub. Tiene parámetros diferentes y no hay ninguna variable. almacenamiento de Hello SKU y la ubicación son toovalues codificado de forma rígida. Hello en el ejemplo siguiente se muestra plantilla exportada hello, pero la plantilla tiene un nombre de parámetro ligeramente diferente:
 
 ```json
 {
@@ -107,7 +107,7 @@ Abra el archivo y tenga en cuenta que es diferente de la plantilla en GitHub. Ti
 }
 ```
 
-Puede volver a implementar esta plantilla, pero tendrá que adivinar el nombre único para la cuenta de almacenamiento. El nombre del parámetro es ligeramente diferente.
+Puede volver a esta plantilla, pero requiere adivinar un nombre único para la cuenta de almacenamiento de Hola. nombre de Hola de su parámetro es ligeramente diferente.
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup `
@@ -117,13 +117,13 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup `
 
 ## <a name="customize-exported-template"></a>Personalización de la plantilla exportada
 
-Puede modificar esta plantilla para que sea más flexible y fácil de usar. Para permitir más ubicaciones, cambie la propiedad de ubicación para utilizar la misma ubicación que el grupo de recursos:
+Puede modificar esta plantilla toomake se toouse más fácil y más flexibles. tooallow para obtener más ubicaciones, toouse de propiedad de ubicación de cambio Hola Hola misma ubicación que el grupo de recursos de hello:
 
 ```json
 "location": "[resourceGroup().location]",
 ```
 
-Para evitar tener que adivinar un nombre único para la cuenta de almacenamiento, quite el parámetro para el nombre de cuenta de almacenamiento. Agregue un parámetro para un sufijo de nombre de almacenamiento y una SKU de almacenamiento:
+tooavoid tener tooguess un nombre de UNIQUE para la cuenta de almacenamiento, remove Hola parámetro de nombre de cuenta de almacenamiento de Hola. Agregue un parámetro para un sufijo de nombre de almacenamiento y una SKU de almacenamiento:
 
 ```json
 "parameters": {
@@ -146,7 +146,7 @@ Para evitar tener que adivinar un nombre único para la cuenta de almacenamiento
 },
 ```
 
-Agregue una variable que construya el nombre de cuenta de almacenamiento con la función uniqueString:
+Agregue una variable que se construye el nombre de cuenta de almacenamiento de hello con función de hello uniqueString:
 
 ```json
 "variables": {
@@ -154,13 +154,13 @@ Agregue una variable que construya el nombre de cuenta de almacenamiento con la 
   },
 ```
 
-Establezca el nombre de la cuenta de almacenamiento en la variable:
+Hola nombre de variable de toohello de cuenta de almacenamiento de hello del conjunto:
 
 ```json
 "name": "[variables('storageAccountName')]",
 ```
 
-Establezca la SKU en el parámetro:
+Establecer Hola SKU toohello parámetro:
 
 ```json
 "sku": {
@@ -215,9 +215,9 @@ La plantilla ahora tiene el aspecto siguiente:
 }
 ```
 
-Vuelva a implementar la plantilla modificada.
+Volver a implementar la plantilla modificada Hola.
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Para más información sobre el uso del portal para exportar una plantilla, vea [Exportación de plantillas de Azure Resource Manager desde recursos existentes](resource-manager-export-template.md).
-* Para definir parámetros de plantilla, consulte [Creación de plantillas](resource-group-authoring-templates.md#parameters).
+* Para obtener información acerca del uso de hello portal tooexport una plantilla, consulte [exportar una plantilla de Azure Resource Manager de los recursos existentes](resource-manager-export-template.md).
+* toodefine parámetros de plantilla, vea [crear plantillas](resource-group-authoring-templates.md#parameters).
 * Para obtener sugerencias para resolver los errores de implementación más comunes, consulte [Solución de errores comunes de implementación de Azure con Azure Resource Manager](resource-manager-common-deployment-errors.md).

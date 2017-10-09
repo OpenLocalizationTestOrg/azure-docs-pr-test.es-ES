@@ -1,6 +1,6 @@
 ---
-title: "Paso 4: Entrenamiento y evaluación de los modelos de análisis predictivo | Microsoft Docs"
-description: "Paso 4 del tutorial Desarrollo de una solución predictiva: entrenamiento, puntuación y evaluación de múltiples modelos en Estudio de aprendizaje automático de Azure."
+title: "Paso 4: Entrenar y evaluar modelos de análisis predictivos de hello | Documentos de Microsoft"
+description: "Paso 4 de hello desarrollar un tutorial de solución de predicción: entrenar, puntuarlos y evaluar varios modelos en estudio de aprendizaje automático de Azure."
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,180 +14,180 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: garye
-ms.openlocfilehash: 58d46dd1464ec0a3fc9639f78d4429e0e778c2bf
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d86d7c5ae7524f71fe44d985db67c4618b7965a8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="walkthrough-step-4-train-and-evaluate-the-predictive-analytic-models"></a>Paso 4 del tutorial: Entrenamiento y evaluación de los modelos de análisis predictivo
-Este tema contiene el cuarto paso del tutorial [Desarrollo de una solución de análisis predictivo en Azure Machine Learning](machine-learning-walkthrough-develop-predictive-solution.md)
+# <a name="walkthrough-step-4-train-and-evaluate-hello-predictive-analytic-models"></a>Paso 4 del tutorial: Entrenar y evaluar modelos de análisis predictivos de Hola
+Este tema contiene el cuarto paso del tutorial de hello, de hello [desarrollar una solución de análisis predictivos en aprendizaje automático de Azure](machine-learning-walkthrough-develop-predictive-solution.md)
 
 1. [Creación de un área de trabajo de Aprendizaje automático](machine-learning-walkthrough-1-create-ml-workspace.md)
 2. [Carga de los datos existentes](machine-learning-walkthrough-2-upload-data.md)
 3. [Crear un experimento nuevo](machine-learning-walkthrough-3-create-new-experiment.md)
-4. **Entrenamiento y evaluación de los modelos**
-5. [Implementación del servicio web](machine-learning-walkthrough-5-publish-web-service.md)
-6. [Acceso al servicio web](machine-learning-walkthrough-6-access-web-service.md)
+4. **Entrenar y evaluar modelos de Hola**
+5. [Implementar el servicio Web de Hola](machine-learning-walkthrough-5-publish-web-service.md)
+6. [Acceder al servicio Web Hola](machine-learning-walkthrough-6-access-web-service.md)
 
 - - -
-Una de las ventajas del uso de Azure Machine Learning Studio para crear modelos de aprendizaje automático es la capacidad para probar más de un tipo de modelo a la vez en un solo experimento y comparar los resultados. Este tipo de experimentación ayuda a encontrar la mejor solución al problema.
+Una de las ventajas de hello del uso de estudio de aprendizaje automático de Azure para crear modelos de aprendizaje automático está Hola capacidad tootry más de un tipo de modelo a la vez en un experimento único y comparar resultados de Hola. Este tipo de experimentación le ayuda a encontrar Hola mejor solución para su problema.
 
-En el experimento que vamos a crear en este tutorial, crearemos dos tipos diferentes de modelos y después compararemos los resultados de su puntuación para decidir cuál de ellos utilizaremos en nuestro experimento final.  
+En el experimento de hello desarrollamos en este tutorial, se creará dos tipos diferentes de modelos y, a continuación, comparar su puntuación toodecide resultados qué algoritmo queremos toouse en nuestro experimento final.  
 
-Existen varios modelos entre los que se puede elegir. Para ver cuáles están disponibles, expanda el nodo **Machine Learning** de la paleta de módulos y luego expanda **Initialize Model** (Inicializar modelo) y los nodos que incluye. Teniendo en cuenta el objetivo de este experimento, se seleccionan los módulos [Two-Class Support Vector Machine][two-class-support-vector-machine] (Máquina de vectores de soporte de dos clases, SVM) y [Two-Class Boosted Decision Tree][two-class-boosted-decision-tree] (Árbol de decisión ampliados de dos clases).    
+Existen varios modelos entre los que se puede elegir. modelos de hello toosee disponibles, expanda hello **aprendizaje automático** nodo en la paleta de módulo de hello y, a continuación, expanda **inicializar modelo** y nodos de hello situado debajo de él. Para fines de Hola de este experimento, se seleccionará hello [máquina de vectores de soporte de dos clases] [ two-class-support-vector-machine] (SVM) hello y [árbol de decisión impulsado de dos clases] [ two-class-boosted-decision-tree] módulos.    
 
 > [!TIP]
-> Para obtener ayuda para decidir qué algoritmo de Aprendizaje automático se adapta mejor al problema concreto que trata de solucionar, vea [Cómo elegir algoritmos para Aprendizaje automático de Microsoft Azure](machine-learning-algorithm-choice.md).
+> tooget decidir qué algoritmo de aprendizaje automático mejor se adapte a problema concreto de Hola que está tratando de toosolve, consulte [cómo toochoose algoritmos de aprendizaje automático de Microsoft Azure](machine-learning-algorithm-choice.md).
 > 
 > 
 
-## <a name="train-the-models"></a>Entrenamiento de los modelos
+## <a name="train-hello-models"></a>Entrenar modelos de Hola
 
-Se van a agregar tanto el módulo [Two-Class Boosted Decision Tree][two-class-boosted-decision-tree] (Árbol de decisión ampliados de dos clases) como el módulo [Two-Class Support Vector Machine][two-class-support-vector-machine] (Máquina de vectores de soporte de dos clases) en este experimento.
+Vamos a agregar ambos hello [árbol de decisión impulsado de dos clases] [ two-class-boosted-decision-tree] módulo y [máquina de vectores de soporte de dos clases] [ two-class-support-vector-machine] módulo en este experimentar.
 
 ### <a name="two-class-boosted-decision-tree"></a>Árbol de decisión ampliado de dos clases
 
-En primer lugar, se va a configurar el modelo del árbol de decisión ampliado.
+En primer lugar, vamos a configurar el modelo de árbol de decisión impulsado de Hola.
 
-1. Busque el módulo [Two-Class Boosted Decision Tree][two-class-boosted-decision-tree] (Árbol de decisión ampliados de dos clases) en la paleta de módulos y arrástrelo al lienzo.
+1. Buscar hello [árbol de decisión impulsado de dos clases] [ two-class-boosted-decision-tree] módulo en la paleta de módulo de Hola y lo arrastra al lienzo de Hola.
 
-2. Busque el módulo [Train Model][train-model] (Entrenar modelo), arrástrelo al lienzo y conecte la salida del módulo [Two-Class Boosted Decision Tree][two-class-boosted-decision-tree] (Árbol de decisión ampliados de dos clases) al puerto de entrada izquierdo del módulo [Train Model][train-model] (Entrenar modelo).
+2. Buscar hello [entrenar modelo] [ train-model] módulo, arrástrelo al lienzo de Hola y, a continuación, conecte la salida de hello de hello [árbol de decisión impulsado de dos clases] [ two-class-boosted-decision-tree]toohello módulo deja el puerto de entrada de hello [entrenar modelo] [ train-model] módulo.
    
-   El módulo [Two-Class Boosted Decision Tree][two-class-boosted-decision-tree] (Árbol de decisión ampliados de dos clases) inicializa el modelo genérico, y [Train Model][train-model] (Entrenar modelo) usa los datos de entrenamiento para entrenar el modelo. 
+   Hola [árbol de decisión impulsado de dos clases] [ two-class-boosted-decision-tree] módulo inicializa modelo genérico de hello, y [entrenar modelo] [ train-model] utiliza datos de entrenamiento modelo de hello tootrain. 
 
-3. Conecte la salida izquierda al módulo [Execute R Script][execute-r-script] (Ejecutar script R) al puerto de entrada de la derecha del módulo [Train Model][train-model] (Entrenar modelo); en el [paso 3](machine-learning-walkthrough-3-create-new-experiment.md) de este tutorial se decidió usar los datos procedentes del lado izquierdo del módulo Split Data (Dividir datos) para el entrenamiento.
+3. Conecte Hola salida izquierdo de la izquierda de hello [ejecutar Script de R] [ execute-r-script] puerto de Hola de entrada de módulo toohello derecha [entrenar modelo] [ train-model] módulo (se decidió en [paso 3](machine-learning-walkthrough-3-create-new-experiment.md) de tutorial toouse Hola los datos procedentes de la parte izquierda de módulo de dividir datos de hello para el entrenamiento de hello).
    
    > [!TIP]
-   > No se necesitan dos de las entradas y una de las salidas del módulo [Execute R Script][execute-r-script] (Ejecutar script R) para este experimento, así que se pueden dejar desconectadas. 
+   > No se necesita dos entradas de hello y otro de salidas de Hola de hello [ejecutar Script de R] [ execute-r-script] módulo para este experimento, por lo que podemos o dejarlos adjuntas. 
    > 
    > 
 
-Esta parte del experimento tiene ahora un aspecto similar al siguiente:  
+Esta parte del experimento de hello ahora es algo parecido a esto:  
 
 ![Training a model][1]
 
-Ahora es necesario indicar al módulo [Entrenar modelo][train-model] que se desea que el modelo prediga el valor del riesgo de crédito.
+Ahora necesitamos hello tootell [entrenar modelo] [ train-model] módulo que queremos que cada valor de riesgo de crédito Hola modelo toopredict Hola.
 
-1. Seleccione el módulo [Train Model][train-model] (Entrenar modelo). En el panel **Propiedades**, haga clic en **Launch column selector** (Iniciar el selector de columnas).
+1. Seleccione hello [entrenar modelo] [ train-model] módulo. Hola **propiedades** panel, haga clic en **selector de columna de inicio**.
 
-2. En el cuadro de diálogo **Select a single column** (Seleccionar una sola columna), escriba "riesgo de crédito" en el campo de búsqueda en **Columnas disponibles**, seleccione "Riesgo de crédito" a continuación y haga clic en el botón de la flecha derecha (**>**) para mover "Riesgo de crédito" a **Columnas seleccionadas**. 
+2. Hola **seleccionar una sola columna** cuadro de diálogo, escriba "riesgo de crédito" en el campo de búsqueda de hello en **columnas disponibles**, seleccione "Riesgo de crédito" a continuación y haga clic en el botón de flecha derecha de hello ( **>** ) toomove "Del crédito riesgo" demasiado**columnas seleccionadas**. 
 
-    ![Seleccione la columna de riesgo de crédito para el módulo Entrenar modelo][0]
+    ![Seleccionar columna de riesgo del crédito de hello para el módulo entrenar modelo de Hola][0]
 
-3. Haga clic en la marca de verificación **Aceptar**.
+3. Haga clic en hello **Aceptar** marca de verificación.
 
 ### <a name="two-class-support-vector-machine"></a>Máquina de vectores de soporte de dos clases
 
-A continuación, se debe configurar el modelo SVM.  
+A continuación, configuramos modelo SVM de Hola.  
 
-En primer lugar, una breve explicación sobre SVM. Los árboles de decisión ampliados funcionan bien con características de todo tipo. Sin embargo, dado que el módulo SVM genera un clasificador lineal, el modelo que genera tiene el mejor error de prueba cuando todas las características numéricas tienen la misma escala. Para convertir todas las características numéricas a la misma escala, se utiliza una transformación "Tanh", con el módulo [Normalize Data][normalize-data] (Normalizar datos). Esto transforma los números en el intervalo [0,1]. El módulo SVM convierte las características de cadena en características categóricas y luego a características binarias 0/1. Por lo tanto, no hace falta transformar manualmente las características de cadena. Además, no queremos transformar la columna Riesgo de crédito (columna 21): es numérica, pero es el valor sobre cuya predicción estamos entrenando al modelo; por tanto, es necesario dejarla tal cual.  
+En primer lugar, una breve explicación sobre SVM. Los árboles de decisión ampliados funcionan bien con características de todo tipo. Sin embargo, puesto que el módulo SVM de hello genera un clasificador lineal, modelo de Hola que genera tiene error de prueba recomendado hello cuando todas las características numéricas tienen Hola misma escala. tooconvert numérico todas las características toohello mismo escalar, se usa una transformación de "Tanh" (con hello [Normalizar datos] [ normalize-data] módulo). Esto transforma los números en el intervalo [0,1] Hola. módulo SVM de Hello convierte la cadena características toocategorical características y, a continuación, toobinary 0/1, por lo que no necesita transformar toomanually funciones de cadena. Además, no es aconsejable columna riesgo del crédito de hello tootransform (columna 21): es numérico, pero es valor Hola nos estamos entrenamiento Hola toopredict de modelo, por lo que necesitamos tooleave por su cuenta.  
 
-Para configurar el modelo SVM, realice lo siguiente:
+tooset modelo de SVM de hello, Hola siguientes:
 
-1. Busque el módulo [Two-Class Support Vector Machine][two-class-support-vector-machine] (Máquina de vectores de soporte de dos clases) en la paleta de módulos y arrástrelo al lienzo.
+1. Buscar hello [máquina de vectores de soporte de dos clases] [ two-class-support-vector-machine] módulo en la paleta de módulo de Hola y lo arrastra al lienzo de Hola.
 
-2. Haga clic con el botón derecho en el módulo [Train Model][train-model] (Entrenar modelo), seleccione **Copiar**, haga clic con el botón derecho en el lienzo y seleccione **Pegar**. La copia del módulo [Train Model][train-model] (Entrenar modelo) tiene la misma selección de columnas que el original.
+2. Menú contextual hello [entrenar modelo] [ train-model] módulo, seleccione **copia**y, a continuación, haga clic en el lienzo de Hola y seleccione **pegar**. Hola copia de hello [entrenar modelo] [ train-model] módulo tiene Hola misma selección de columna como Hola original.
 
-3. Conecte la salida del módulo [Máquina de vectores de soporte de dos clases][two-class-support-vector-machine] al puerto de entrada izquierdo del módulo [Entrenar modelo][train-model].
+3. Conecte la salida de hello de hello [máquina de vectores de soporte de dos clases] [ two-class-support-vector-machine] toohello módulo izquierdo puerto de entrada de hello segundo [entrenar modelo] [ train-model] módulo.
 
-4. Busque el módulo [Normalizar datos][normalize-data] y arrástrelo al lienzo.
+4. Buscar hello [Normalizar datos] [ normalize-data] módulo y lo arrastra al lienzo de Hola.
 
-5. Conecte la salida de la izquierda del módulo [Ejecutar script R][execute-r-script] de la izquierda a la entrada de este módulo (tenga en cuenta que el puerto de salida de un módulo puede estar conectado a más de un módulo distinto).
+5. Conecte Hola salida izquierdo de la izquierda de hello [ejecutar Script de R] [ execute-r-script] entrada toohello de módulo de este módulo (Observe que Hola de puerto de salida de un módulo puede ser toomore conectado a un módulo de otro).
 
-6. Conecte el puerto de salida izquierdo del módulo [Normalize Data][normalize-data] (Normalizar datos) al puerto de salida derecho del segundo módulo [Train Model][train-model] (Entrenar modelo).
+6. Conectar Hola dejado el puerto de salida de hello [Normalizar datos] [ normalize-data] módulo toohello derecha de entrada de puerto de hello en segundo lugar [entrenar modelo] [ train-model] módulo.
 
 Esta parte de nuestro experimento debería tener ahora un aspecto similar al siguiente:  
 
-![Training the second model][2]  
+![Modelo de entrenamiento Hola segundo][2]  
 
-Configure ahora el módulo [Normalize Data][normalize-data] (Normalizar datos):
+Configurar ahora hello [Normalizar datos] [ normalize-data] módulo:
 
-1. Haga clic para seleccionar el módulo [Normalize Data][normalize-data] (Normalizar datos). En el panel **Propiedades**, seleccione **Tanh** para el parámetro **Transformation method** (Método de transformación).
+1. Haga clic en hello tooselect [Normalizar datos] [ normalize-data] módulo. Hola **propiedades** panel, seleccione **Tanh** para hello **método de transformación** parámetro.
 
-2. Haga clic en **Launch column selector** (Iniciar el selector de columnas), seleccione "No columns" (Sin columnas) en **Comenzar con**, seleccione **Incluir** en el primer menú desplegable, **Tipo de columna** en el segundo y **Numérica** en el tercero. Esto especifica que todas las columnas numéricas (y solo numéricas) se deben transformar.
+2. Haga clic en **selector de columna de inicio**, seleccione "No hay columnas" para **comenzar con**, seleccione **Include** en la primera lista desplegable de hello, seleccione **el tipo de columna**en Hola segunda lista desplegable y seleccione **numérico** en lista desplegable terceros de Hola. Especifica que todas las columnas numéricas de hello (y numérico único) se transforman.
 
-3. Haga clic en el signo más (+) a la derecha de esta fila (de esta forma, se crea una fila de menús desplegables). Seleccione **Excluir** en la primera lista desplegable y **Nombres de columna** en la segunda, y escriba "Riesgo de crédito" en el campo de texto. Especifica que se debe ignorar la columna Riesgo de crédito (debemos hacerlo porque se trata de una columna numérica y, de lo contrario, se transformaría).
+3. Haga clic en Hola toohello de signo más (+) derecha de esta fila - Esto crea una fila de listas desplegables. Seleccione **excluir** en la primera lista desplegable de hello, seleccione **nombres de columna** en Hola segunda lista desplegable y escriba "Riesgo de crédito" en el campo de texto hello. Esto especifica que se debe omitir esa columna de riesgo de crédito hello (necesitamos toodo esto porque esta columna es numérica y así se transformaría si no excluirla).
 
-4. Haga clic en la marca de verificación **Aceptar**.  
+4. Haga clic en hello **Aceptar** marca de verificación.  
 
-    ![Seleccionar columnas para el módulo Normalize Data (Normalizar datos)][5]
+    ![Seleccione las columnas para el módulo de hello Normalizar datos][5]
 
-El módulo [Normalize Data][normalize-data] (Normalizar datos) está configurado ahora para realizar una transformación Tanh en todas las columnas numéricas excepto en la columna de riesgo de crédito.  
+Hola [Normalizar datos] [ normalize-data] módulo ahora es conjunto tooperform una transformación Tanh en todas las columnas numéricas excepto Hola riesgo de crédito.  
 
-## <a name="score-and-evaluate-the-models"></a>Puntuación y evaluación de modelos
+## <a name="score-and-evaluate-hello-models"></a>Puntuar y evaluar modelos de Hola
 
-Se utilizan los datos de prueba que se separaron mediante el módulo [Split Data][split] (Dividir datos) para puntuar los modelos entrenados. A continuación podremos comparar los resultados de los dos modelos para ver cuál de ellos generó mejores resultados.  
+Usamos Hola comprobación de datos que se distinguiendo entre hello [dividir datos] [ split] tooscore módulo nuestros modelos entrenados. A continuación, se puedan comparar resultados de Hola de hello dos modelos toosee que genera los mejores resultados.  
 
-### <a name="add-the-score-model-modules"></a>Agregar los módulos Score Model (Puntuar modelo)
+### <a name="add-hello-score-model-modules"></a>Agregar módulos de modelo de puntuación de Hola
 
-1. Busque el módulo [Score Model][score-model] (Puntuar modelo) y arrástrelo al lienzo.
+1. Buscar hello [puntuar modelo] [ score-model] módulo y lo arrastra al lienzo de Hola.
 
-2. Conecte el módulo [Train Model][train-model] (Entrenar modelo) que está conectado al módulo [Two-Class Boosted Decision Tree][two-class-boosted-decision-tree] (Árbol de decisión ampliado de dos clases) al puerto de entrada izquierdo del módulo [Score Model][score-model] (Puntuar modelo).
+2. Conectar hello [entrenar modelo] [ train-model] módulo que se ha conectado toohello [árbol de decisión impulsado de dos clases] [ two-class-boosted-decision-tree] entrada izquierda de módulo toohello puerto de hello [puntuar modelo] [ score-model] módulo.
 
-3. Conecte el módulo derecho [Execute R Script][execute-r-script] (Ejecutar script R) (los datos de prueba) al puerto de entrada derecho del módulo [Score Model][score-model] (Puntuar modelo).
+3. Conectar derecha hello [ejecutar Script de R] [ execute-r-script] puerto de Hola de entrada de módulo (nuestros datos de prueba) toohello derecha [puntuar modelo] [ score-model] módulo.
 
     ![Módulo Score Model (Puntuar modelo) conectado][6]
    
-   El módulo [Score Model][score-model] (Puntuar modelo) ahora puede utilizar la información de crédito de los datos de prueba, ejecutarla a través del modelo y comparar las predicciones que el modelo genera con la columna de riesgo de crédito real de los datos de prueba.
+   Hola [puntuar modelo] [ score-model] módulo ahora puede aprovechar la información de crédito de Hola de hello datos, se debe ejecutar utilizando el modelo de hello, de prueba y comparar las predicciones de hello genera el modelo de hello con hello real riesgo de crédito columna de datos de prueba de Hola.
 
-4. Copie y pegue el módulo [Score Model][score-model] (Puntuar modelo) para crear una segunda copia.
+4. Copie y pegue hello [puntuar modelo] [ score-model] toocreate módulo una segunda copia.
 
-5. Conecte la salida del modelo SVM; es decir, el puerto de salida del módulo [Train Model][train-model] (Entrenar modelo) que está conectado al módulo [Two-Class Support Vector Machine][two-class-support-vector-machine] (Máquina de vectores de soporte de dos clases) al puerto de entrada del segundo módulo [Score Model][score-model] (Puntuar modelo).
+5. Conecte la salida de hello de modelo SVM de hello (es decir, el puerto de hello de la salida de hello [entrenar modelo] [ train-model] módulo que se ha conectado toohello [máquina de vectores de soporte de dos clases] [ two-class-support-vector-machine] módulo) toohello de entrada de puerto de hello en segundo lugar [puntuar modelo] [ score-model] módulo.
 
-6. En cuanto al modelo SVM, tenemos que realizar la misma transformación en los datos de prueba que la que realizamos con los datos de entrenamiento. Así pues, copie y pegue el módulo [Normalize Data][normalize-data] (Normalizar datos) para crear una segunda copia y conéctelo al módulo derecho [Execute R Script][execute-r-script] (Ejecutar script R).
+6. Para el modelo de SVM de hello, tenemos toodo Hola los mismos datos de prueba de toohello de transformación igual que hicimos toohello datos de entrenamiento. Por lo tanto, copiar y pegar hello [Normalizar datos] [ normalize-data] toocreate módulo una segunda copia y conéctelo derecha toohello [ejecutar Script de R] [ execute-r-script] módulo.
 
-7. Conecte la salida izquierda del segundo módulo [Normalize Data][normalize-data] (Normalizar datos) al puerto de salida derecho del segundo módulo [Score Model][score-model] (Puntuar modelo).
+7. Conecte la salida de izquierdo de Hola de hello en segundo lugar [Normalizar datos] [ normalize-data] módulo toohello derecha de entrada de puerto de hello en segundo lugar [puntuar modelo] [ score-model] módulo.
 
     ![Ambos módulos Score Model (Puntuar modelo) conectados][7]
 
-### <a name="add-the-evaluate-model-module"></a>Agregar el módulo Evaluate Model (Evaluar modelo)
+### <a name="add-hello-evaluate-model-module"></a>Agregar módulo de hello evaluar modelo
 
-Para evaluar los dos resultados de puntuación y compararlos, se usa un módulo [Evaluate Model][evaluate-model] (Evaluar modelo).  
+tooevaluate Hola dos resultados de puntuación y compararlos, usamos un [evaluar modelo] [ evaluate-model] módulo.  
 
-1. Busque el módulo [Evaluate Model][evaluate-model] (Evaluar modelo) y arrástrelo al lienzo.
+1. Buscar hello [evaluar modelo] [ evaluate-model] módulo y lo arrastra al lienzo de Hola.
 
-2. Conecte el puerto de salida del módulo [Score Model][score-model] (Puntuar modelo) asociado al modelo del árbol de decisión ampliado al puerto de entrada izquierdo del módulo [Evaluate Model][evaluate-model] (Evaluar modelo).
+2. Conecte los puertos de salida de hello de hello [puntuar modelo] [ score-model] módulo asociado Hola impulsado puerto de hello de entrada izquierda toohello de modelo de árbol de decisión [evaluar modelo] [ evaluate-model] módulo.
 
-3. Conecte el otro módulo [Score Model][score-model] (Puntuar modelo) al puerto de entrada derecho.  
+3. Conectar Hola otro [puntuar modelo] [ score-model] puerto de entrada de módulo toohello derecha.  
 
     ![Módulo Evaluate Model (Evaluar modelo) conectado][8]
 
-### <a name="run-the-experiment-and-check-the-results"></a>Ejecutar el experimento y comprobar los resultados
+### <a name="run-hello-experiment-and-check-hello-results"></a>Ejecute el experimento de Hola y comprobar los resultados de Hola
 
-Para ejecutar el experimento, haga clic en el botón **EJECUTAR** bajo el lienzo. Esto puede tardar unos minutos. Aparece un indicador giratorio en cada módulo para indicar que está en ejecución y, cuando el módulo acaba, aparece una marca de verificación de color verde. Cuando todos los módulos tengan una marca de verificación, habrá finalizado la ejecución del experimento.
+toorun Hola experimento, haga clic en hello **ejecutar** botón a continuación lienzo Hola. Esto puede tardar unos minutos. Se muestra un indicador de giro en cada módulo que se está ejecutando y, a continuación, una marca de verificación verde muestra cuando finalice el módulo de Hola. Cuando todos los módulos de hello tienen una marca de verificación, experimento Hola ha terminado de ejecutarse.
 
-El experimento debería tener ahora un aspecto similar al siguiente:  
+el experimento de Hello ahora debería ser similar al siguiente:  
 
 ![Evaluating both models][3]
 
-Para comprobar los resultados, haga clic en el puerto de salida del módulo [Evaluate Model][evaluate-model] (Evaluar modelo) y seleccione **Visualizar**.  
+resultados de hello toocheck, haga clic en puerto de salida de hello de hello [evaluar modelo] [ evaluate-model] módulo y seleccione **visualizar**.  
 
-El módulo [Evaluate Model][evaluate-model] (Evaluar modelo) produce un par de curvas y métricas que permiten comparar los resultados de los dos modelos de puntuación. Puede ver los resultados como curvas de características operativas del receptor (ROC), curvas de precisión/exhaustividad o curvas de elevación. También se muestran otros datos como la matriz de confusión y los valores del área bajo la curva (AUC) acumulados, entre otras métricas. También puede cambiar el valor del umbral moviendo el control deslizante a la izquierda o a la derecha, y comprobar cómo afecta esta acción al conjunto de métricas.  
+Hola [evaluar modelo] [ evaluate-model] módulo genera un par de curvas y las métricas que le permiten resultados de Hola de toocompare de hello dos modelos de puntuación. Puede ver los resultados de hello como característica de operador de receptor (ROC) curvas, curvas de precisión/recuperación o curvas de elevación. Datos adicionales que se muestra incluyen una matriz de confusión, valores acumulativos de área de hello en curva de hello (AUC) y otras métricas. Puede cambiar el valor de umbral de Hola por móvil control deslizante izquierdo o derecho de Hola y ver cómo afecta al conjunto de Hola de métricas.  
 
-A la derecha del gráfico, haga clic en **Scored dataset** (Conjunto de datos puntuados) o en **Scored dataset to compare** (Conjunto de datos puntuados para comparar) con el fin de resaltar la curva asociada y mostrar debajo las métricas asociadas. En la leyenda de las curvas, "Conjunto de datos puntuados" corresponde al puerto de entrada izquierdo del módulo [Evaluate Model][evaluate-model] (Evaluar modelo); en este caso, se trata del modelo del árbol de decisión ampliado. "Conjunto de datos puntuados para comparar" corresponde al puerto de entrada derecho (el modelo SVM en nuestro caso). Al hacer clic en una de estas etiquetas, la curva del modelo correspondiente se resalta y muestra las métricas correspondientes tal y como se muestra en el gráfico siguiente.  
+toohello derecha del gráfico de hello, haga clic en **conjunto de datos puntuado** o **puntúan toocompare de conjunto de datos** toohighlight Hola asociado curva y toodisplay Hola asociados métricas a continuación. En la leyenda de Hola para curvas de hello, "Conjunto de datos puntuado" corresponde toohello dejado el puerto de entrada de hello [evaluar modelo] [ evaluate-model] módulo - en nuestro caso, este es el modelo de árbol de decisión impulsado de Hola. "Toocompare de conjunto de datos de puntuación" corresponde toohello puerto de entrada derecha - modelo SVM de hello en nuestro caso. Al hacer clic en una de estas etiquetas, se resalta la curva de Hola para dicho modelo y se muestran las métricas de hello correspondiente, tal y como se muestra en el siguiente gráfico de Hola.  
 
 ![ROC curves for models][4]
 
-Si examina estos valores, podrá decidir cuál es el modelo que más se acerca a ofrecerle los resultados que busca. Puede volver y repetir el experimento cambiando valores de parámetros en los diferentes modelos. 
+Mediante el examen de estos valores, puede decidir qué modelo es más cercano toogiving que Hola resultados que está buscando. Puede volver atrás y repita el experimento cambiando los valores de parámetro en modelos diferentes de Hola. 
 
-La ciencia y el arte de interpretar estos resultados y de ajustar el rendimiento del modelo están fuera del ámbito de este tutorial. Para obtener ayuda adicional, puede leer los artículos siguientes:
-- [Evaluación del rendimiento de un modelo en Azure Machine Learning](machine-learning-evaluate-model-performance.md)
-- [Cómo elegir parámetros para optimizar los algoritmos de Azure Machine Learning](machine-learning-algorithm-parameters-optimize.md)
+Hola y ciencia de interpretar estos resultados y optimizar el rendimiento del modelo hello es ámbito de hello fuera de este tutorial. Para obtener ayuda adicional, puede leer Hola siguientes artículos:
+- [¿Cómo tooevaluate modelo rendimiento aprendizaje automático de Azure](machine-learning-evaluate-model-performance.md)
+- [Elegir parámetros toooptimize sus algoritmos de aprendizaje automático de Azure](machine-learning-algorithm-parameters-optimize.md)
 - [Cómo interpretar los resultados del modelo de Azure Machine Learning](machine-learning-interpret-model-results.md)
 
 > [!TIP]
-> Cada vez que ejecute el experimento, se guardará un registro de esa iteración en el Historial de ejecuciones. Puede ver estas iteraciones y volver a cualquiera de ellas haciendo clic en **VER HISTORIAL DE EJECUCIÓN** bajo el lienzo. También puede hacer clic en **Prior Run** (Ejecución anterior) en el panel **Propiedades** para volver a la iteración inmediatamente anterior a la que ha abierto.
+> Cada vez que ejecute el experimento de hello un registro de esa iteración se mantiene en hello historial de ejecución. Puede ver estas iteraciones y devolver tooany de ellos, haciendo clic en **ver el historial de ejecución** por debajo del lienzo de Hola. También puede hacer clic en **ejecutar anterior** en hello **propiedades** Hola de iteración de panel tooreturn toohello inmediatamente anterior a uno que tenga abiertos.
 > 
-> Puede hacer una copia de cualquier iteración de su experimento si hace clic en **GUARDAR COMO** bajo el lienzo. 
-> Utilice las propiedades **Resumen** y **Descripción** para mantener un registro de lo que ha tratado de hacer en las iteraciones del experimento.
+> Puede realizar una copia de alguna iteración del experimento, haga clic en **SAVE AS** por debajo del lienzo de Hola. 
+> Usar del experimento de hello **resumen** y **descripción** propiedades tookeep un registro de lo que probó en las iteraciones de experimento.
 > 
 > Consulte [Administración de iteraciones de experimentos en Estudio de aprendizaje automático de Azure](machine-learning-manage-experiment-iterations.md)para obtener más detalles.  
 > 
 > 
 
 - - -
-**Siguiente: [Implementación del servicio web](machine-learning-walkthrough-5-publish-web-service.md)**
+**Siguiente: [implementar el servicio web de Hola](machine-learning-walkthrough-5-publish-web-service.md)**
 
 [0]: ./media/machine-learning-walkthrough-4-train-and-evaluate-models/train-model-select-column.png
 [1]: ./media/machine-learning-walkthrough-4-train-and-evaluate-models/experiment-with-train-model.png

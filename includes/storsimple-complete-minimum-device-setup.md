@@ -1,39 +1,39 @@
 <!--author=alkohli last changed: 9/17/15-->
 
-#### <a name="to-complete-the-minimum-storsimple-device-setup"></a>Para completar la instalación mínima del dispositivo StorSimple
-1. En la página **Dispositivos** , seleccione el dispositivo y haga clic en la flecha situada junto al nombre del dispositivo para ir a la página específica del dispositivo. 
+#### <a name="toocomplete-hello-minimum-storsimple-device-setup"></a>instalación de dispositivo de StorSimple mínima de toocomplete Hola
+1. Hola **dispositivos** página, dispositivo Hola seleccione, haga clic en la flecha de hello en página de hello dispositivo nombre toogo toohello dispositivo específico. 
    
     ![Página de dispositivos con el dispositivo en línea](./media/storsimple-complete-minimum-device-setup/HCS_DevicesPageM-include.png) 
-2. Haga clic en el icono de inicio rápido ![Icono de inicio rápido](./media/storsimple-complete-minimum-device-setup/HCS_QuickStartIcon-include.png) para tener acceso a la página de inicio rápido del dispositivo. Haga clic en **Completar configuración del dispositivo** para iniciar el **Asistente para configurar dispositivos**.
+2. Haga clic en el icono de inicio rápido ![el icono de inicio rápido](./media/storsimple-complete-minimum-device-setup/HCS_QuickStartIcon-include.png) tooaccess Hola página de inicio rápido de dispositivo. Haga clic en **completar el programa de instalación de dispositivo** toostart hello **Configurar dispositivo** asistente.
    
     ![Página de inicio rápido del dispositivo](./media/storsimple-complete-minimum-device-setup/Device_Quick_Start_page_1M.png)
-3. En la página **Configuración básica** haga lo siguiente:
+3. En hello **configuración básica** página, Hola siguientes:
    
-   1. Proporcione un **nombre descriptivo** para el dispositivo. El nombre de dispositivo predeterminado refleja información como el modelo de dispositivo y el número de serie. Puede asignar un nombre descriptivo de hasta 64 caracteres para administrar el dispositivo.
-   2. Establezca la **zona horaria** según la ubicación geográfica en la que se va a implementar el dispositivo. El dispositivo usará esta zona horaria para todas las operaciones programadas.
-   3. En **Configuración DNS**, proporcione una dirección para el **Servidor DNS secundario**. Si usa IPv6, el campo se rellenará en función del prefijo IPv6 proporcionado en la interfaz de Windows PowerShell. 
-      Si el servidor DNS secundario no está configurado, no podrá guardar la configuración del dispositivo.
-   4. En Interfaces habilitadas para iSCSI, habilite al menos una red para iSCSI. Al menos una interfaz de red debe estar habilitada para la nube y una interfaz debe estar habilitada para iSCSI. DATA 0 se habilita para la nube automáticamente.
+   1. Proporcione un **nombre descriptivo** para el dispositivo. nombre de dispositivo predeterminado de Hello refleja información como el modelo de dispositivo de Hola y número de serie. Puede asignar un nombre descriptivo de la too64 caracteres toomanage el dispositivo.
+   2. Conjunto hello **zona horaria** basadas en ubicación geográfica de hello en qué Hola se va a implementar el dispositivo. El dispositivo usará esta zona horaria para todas las operaciones programadas.
+   3. En **Configuración DNS**, proporcione una dirección para el **Servidor DNS secundario**. Si usas IPv6, campo Hola se rellenará según Hola prefijo de IPv6 proporcionado en la interfaz de Windows PowerShell de Hola. 
+      Si no está configurado el servidor DNS secundario de hello, es posible no que permiten toosave la configuración del dispositivo.
+   4. En Interfaces habilitadas para iSCSI, habilite al menos una red para iSCSI. Al menos una interfaz de red necesita toobe habilitada para la nube y una interfaz debe toobe habilitada para iSCSI. DATA 0 se habilita para la nube automáticamente.
       
       ![Configuración básica de la instalación mínima del dispositivo StorSimple](./media/storsimple-complete-minimum-device-setup/HCS_MinDeviceSetupBasicSettings1-include.png)
-4. Haga clic en el icono de flecha. ![Icono de flecha de StorSimple](./media/storsimple-complete-minimum-device-setup/HCS_ArrowIcon-include.png)
-5. En la página de **Interfaces de red** , proporciona las direcciones IP fijas para el Controlador 0 y el Controlador 1. Si la interfaz DATA 0 estaba configurada para IPv4, las direcciones IP fijas deben suministrarse en formato IPv4. Si proporcionó un prefijo para la configuración de IPv6, las direcciones IP fijas se rellenarán automáticamente en estos campos.
+4. Haga clic en el icono de flecha de Hola. ![Icono de flecha de StorSimple](./media/storsimple-complete-minimum-device-setup/HCS_ArrowIcon-include.png)
+5. En hello **Interfaces de red** , proporcione Hola fijo de direcciones IP para el controlador 0 y 1. Si hello DATA 0 interfaz está configurada para IPv4, hello corregido toobe de necesidad de direcciones IP proporcionada en hello formato IPv4. Si ha proporcionado un prefijo para la configuración IPv6, Hola direcciones IP fijas se rellenarán automáticamente en estos campos.
 
     > [!NOTE] 
-    > - Las direcciones IP fijas del controlador deben ser direcciones IP libres dentro de la subred y accesibles mediante la dirección IP del dispositivo.
-    > - Las direcciones IP fijas del controlador se usan para el mantenimiento de las actualizaciones del dispositivo y, por tanto, las direcciones IP fijas deben ser enrutables y poder conectarse a Internet.
+    > - direcciones IP fijas de controlador de Hello necesita el toobe que liberar direcciones IP de subred de hello accesible por dirección IP del dispositivo Hola.
+    > - Hola direcciones IP para el controlador de hello fijas se utilizan para dar servicio a dispositivos de toohello de las actualizaciones de Hola y por consiguiente Hola IP fija debe ser enrutables y deben poder tooconnect toohello Internet.
 
     ![Interfaces de red de la instalación mínima del dispositivo StorSimple](./media/storsimple-complete-minimum-device-setup/HCS_MinDeviceSetupNetworkInterfaces2-include.png)
 
-1. Haga clic en el icono de marca de verificación ![Icono de verificación de StorSimple](./media/storsimple-complete-minimum-device-setup/HCS_CheckIcon-include.png).
-   Volverá a la página **Inicio rápido** del dispositivo.
+1. Haga clic en el icono de verificación de hello ![icono de verificación de StorSimple](./media/storsimple-complete-minimum-device-setup/HCS_CheckIcon-include.png).
+   Se devolverá el dispositivo de toohello **inicio rápido** página.
    
    > [!NOTE]
-   > Puede modificar la configuración restante del dispositivo en cualquier momento accediendo a la página **Configurar** del dispositivo.
+   > Puede modificar la Hola todos los otros ajustes del dispositivo en cualquier momento mediante el acceso a hello **configurar** página.
    > 
    > 
 
-![Vídeo disponible](./media/storsimple-complete-minimum-device-setup/Video_icon.png) **Vídeo disponible**
+![Vídeo disponible](./media/storsimple-complete-minimum-device-setup/Video_icon.png)**Vídeo disponible**
 
-Para ver un vídeo que muestra cómo completar la configuración mínima del dispositivo, haga clic [aquí](https://azure.microsoft.com/documentation/videos/minimum-storsimple-device-setup/).
+toowatch un vídeo que muestra cómo toocomplete Hola configuración mínima del dispositivo, haga clic en [aquí](https://azure.microsoft.com/documentation/videos/minimum-storsimple-device-setup/).
 

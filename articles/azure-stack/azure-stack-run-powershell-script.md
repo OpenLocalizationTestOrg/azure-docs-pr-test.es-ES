@@ -1,6 +1,6 @@
 ---
-title: "Implementación de Azure Stack Development Kit | Microsoft Docs"
-description: Aprenda a preparar Azure Stack Development Kit y a ejecutar el script de PowerShell para implementarlo.
+title: Hola aaaDeploy Kit de desarrollo de pila de Azure | Documentos de Microsoft
+description: "Obtenga información acerca de cómo tooprepare Hola Kit de desarrollo de pila de Azure y ejecución Hola PowerShell script toodeploy."
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -14,52 +14,52 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 7/17/2017
 ms.author: erikje
-ms.openlocfilehash: ce2978d345262b68b177a38a978133a71da2806f
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: a96879fb91000f6b3d3aac3089861e8a573ebead
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="deploy-the-azure-stack-development-kit"></a>Implementación de Azure Stack Development Kit
-Para implementar el kit de desarrollo, debe completar los pasos siguientes:
+# <a name="deploy-hello-azure-stack-development-kit"></a>Implementar Hola Kit de desarrollo de pila de Azure
+kit de desarrollo de hello toodeploy, debe completar Hola pasos:
 
-1. [Descargue el paquete de implementación](https://azure.microsoft.com/overview/azure-stack/try/?v=try) para obtener el archivo Cloudbuilder.vhdx.
-2. [Prepare el archivo cloudbuilder.vhdx](#prepare-the-development-kit-host) mediante la ejecución del script asdk-installer.ps1 para configurar el equipo (el host) en el que desea instalar el kit de desarrollo. Después de este paso, el host del kit de desarrollo arrancará con el archivo Cloudbuilder.vhdx.
-3. [Implemente el kit de desarrollo](#deploy-the-development-kit) en el host de este.
+1. [Descargar el paquete de implementación de hello](https://azure.microsoft.com/overview/azure-stack/try/?v=try) tooget hello Cloudbuilder.vhdx.
+2. [Preparar hello cloudbuilder.vhdx](#prepare-the-development-kit-host) por equipo en ejecución hello asdk installer.ps1 script tooconfigure Hola (host de kit de desarrollo de Hola) en el que desea que el kit de desarrollo de tooinstall. Después de este paso, el host de kit de desarrollo de hello arrancará toohello Cloudbuilder.vhdx.
+3. [Implementar el kit de desarrollo de hello](#deploy-the-development-kit) en host de kit de desarrollo de Hola.
 
 > [!NOTE]
-> Para obtener mejores resultados, incluso si desea usar un entorno desconectado de Azure Stack, es mejor implementar mientras está conectado a Internet. De este modo, se puede activar la versión de evaluación de Windows Server 2016 durante la implementación. Si no se activa la versión de evaluación de Windows Server 2016 en un plazo de 10 días, se cerrará.
+> Para obtener mejores resultados, incluso si desea que toouse un entorno desconectado de la pila de Azure, es mejor toodeploy al toohello conectado internet. De este modo, se puede activar versión de evaluación de Windows Server 2016 de Hola durante la implementación. Si no está activada la versión de evaluación de Windows Server 2016 Hola dentro de 10 días, se apaga.
 > 
 > 
 
-## <a name="download-and-extract-the-development-kit"></a>Descargue y extraiga el kit de desarrollo
-1. Antes de iniciar la descarga, asegúrese de que el equipo cumple con los requisitos previos siguientes:
+## <a name="download-and-extract-hello-development-kit"></a>Descargue y extraiga el kit de desarrollo de Hola
+1. Antes de iniciar la descarga de hello, asegúrese de que el equipo cumple Hola siguiendo los requisitos previos:
 
-   * El equipo debe tener al menos 60 GB de espacio libre en el disco.
+   * equipo de Hello debe tener al menos 60 GB de espacio libre en disco.
    * [.NET framework 4.6 (o una versión posterior)](https://aka.ms/r6mkiy) debe estar instalado.
 
-2. [Vaya a la página de Introducción](https://azure.microsoft.com/overview/azure-stack/try/?v=try), proporcione sus detalles y haga clic en **Enviar**.
-3. En **Descargar el software**, haga clic en **Azure Stack Development Kit**.
-4. Ejecute el archivo AzureStackDownloader.exe descargado.
-5. En la ventana del **descargador de Azure Stack Development Kit**, siga los pasos 1 a 5.
-6. Una vez finalizada la descarga, haga clic en **Ejecutar** para iniciar el archivo MicrosoftAzureStackPOC.exe.
-7. Revise la pantalla del contrato de licencia y la información del asistente de extracción automática y, a continuación, haga clic en **Siguiente**.
-8. Revise la pantalla Declaración de privacidad y la información del asistente de extracción automática y, a continuación, haga clic en **Siguiente**.
-9. Seleccione el destino de los archivos que va a extraer y haga clic en **Siguiente**.
-   * El valor predeterminado es: <drive letter>:\<carpeta actual > \Microsoft Azure Stack
-10. Revise la pantalla de la ubicación de destino y la información del asistente de extracción automática y, después, haga clic en **Extraer** para extraer los archivos CloudBuilder.vhdx (~25 GB) y ThirdPartyLicenses.rtf files. Este proceso puede tardar un tiempo en finalizar.
+2. [Página de introducción de vaya toohello](https://azure.microsoft.com/overview/azure-stack/try/?v=try), proporcione los detalles y haga clic en **enviar**.
+3. En **descargar el software de hello**, haga clic en **Kit de desarrollo de Azure pila**.
+4. Ejecute el archivo de AzureStackDownloader.exe de hello descargado.
+5. Hola **descargador del Kit de desarrollo de Azure pila** ventana, siga los pasos 1 a 5.
+6. Una vez finalizada la descarga de hello, haga clic en **ejecutar** toolaunch hello MicrosoftAzureStackPOC.exe.
+7. Revise la pantalla Contrato de licencia de bienvenida y la información de hello Self-Extractor asistente y, a continuación, haga clic en **siguiente**.
+8. Revise la pantalla de la declaración de privacidad de bienvenida y la información de hello Self-Extractor asistente y, a continuación, haga clic en **siguiente**.
+9. Hola seleccione toobe extraído de los archivos de destino para hello, haga clic en **siguiente**.
+   * valor predeterminado de Hello es: <drive letter>:\<carpeta actual > \Microsoft pila de Azure
+10. Revise la pantalla de ubicación de destino de bienvenida y la información de hello Self-Extractor asistente y, a continuación, haga clic en **extraer** tooextract Hola CloudBuilder.vhdx (~ 25 GB) y archivos de ThirdPartyLicenses.rtf. Este proceso tardará algún tiempo toocomplete.
 
 > [!NOTE]
-> Después de extraer los archivos, puede eliminar los archivos exe y bin para recuperar espacio en la máquina. O bien, puede mover estos archivos a otra ubicación para que si necesita volver a implementarlos, no tenga que descargarlos de nuevo.
+> Después de extraer los archivos de hello, puede eliminar Hola exe y bin archivos toorecover espacio en hello máquina. O bien, puede mover estas ubicación tooanother de archivos, así que si necesita tooredeploy no deberá archivos de hello toodownload nuevo.
 > 
 > 
 
-## <a name="prepare-the-development-kit-host"></a>Preparación del host del kit de desarrollo
-1. Asegúrese de que puede conectarse físicamente al host del kit de desarrollo, o que tiene acceso a la consola física (por ejemplo, KVM). Debe tener ese acceso después de reiniciar el host del kit de desarrollo en el paso 13 que aparece a continuación.
-2. Asegúrese de que el host del kit de desarrollo cumple los [requisitos mínimos](azure-stack-deploy.md). Puede usar el [comprobador de implementaciones de Azure Stack](https://gallery.technet.microsoft.com/Deployment-Checker-for-50e0f51b) para confirmar sus requisitos.
-3. Inicie sesión como administrador local en el host del kit de desarrollo.
-4. Copie o mueva el archivo CloudBuilder.vhdx a la raíz de la unidad C:\ (C:\CloudBuilder.vhdx).
-5. Ejecute el script siguiente para descargar el archivo instalador del kit de desarrollo (asdk-installer.ps1) en la carpeta c:\AzureStack_Installer en el host del kit de desarrollo.
+## <a name="prepare-hello-development-kit-host"></a>Preparar el host de kit de desarrollo de Hola
+1. Asegúrese de que puede físicamente conectar el host de kit de desarrollo de toohello, o que tenga acceso a la consola física (por ejemplo, KVM). Debe tener acceso después de reiniciar el host de kit de desarrollo de hello en el paso 13 siguiente.
+2. Asegúrese de que cumple de host de kit de desarrollo de Hola Hola [requisitos mínimos](azure-stack-deploy.md). Puede usar hello [Comprobador de implementación para la pila de Azure](https://gallery.technet.microsoft.com/Deployment-Checker-for-50e0f51b) tooconfirm sus requisitos.
+3. Inicie sesión como Hola host de kit de desarrollo de tooyour de administrador Local.
+4. Copiar o mover hello CloudBuilder.vhdx archivo toohello raíz Hola unidad C:\ (C:\CloudBuilder.vhdx).
+5. Siguiente ejecución hello toodownload Hola development kit instalador (asdk-installer.ps1) toohello c:\AzureStack_Installer carpeta de archivos en el host del kit de desarrollo de la secuencia de comandos.
     ```powershell
     # Variables
     $Uri = 'https://raw.githubusercontent.com/Azure/AzureStack-Tools/master/Deployment/asdk-installer.ps1'
@@ -71,81 +71,81 @@ Para implementar el kit de desarrollo, debe completar los pasos siguientes:
     # Download file
     Invoke-WebRequest $uri -OutFile ($LocalPath + '\' + 'asdk-installer.ps1')
     ```
-6. Abra una consola de PowerShell con privilegios elevados > ejecute el script C:\AzureStack_Installer\asdk-installer.ps1 > haga clic en **Preparar vhdx**.
-7. En la página **Select Cloudbuilder vhdx** (Seleccionar vhdx de Cloudbuilder) del instalador, busque y seleccione el archivo cloudbuilder.vhdx que ha descargado en los pasos anteriores.
-8. Opcional: active la casilla **Agregar controladores** para especificar una carpeta que contenga los controladores adicionales que desea en el host.
-9. En la página **Configuración opcional**, proporcione la cuenta de administrador local para el host del kit de desarrollo. Si no proporciona estas credenciales, necesitará acceso KVM al host durante el proceso de instalación que aparece a continuación.
-10. También en la página **Configuración opcional**, puede configurar las siguientes opciones:
-    - **Nombre del equipo**: esta opción permite establecer el nombre para el host del kit de desarrollo. El nombre debe cumplir los requisitos de FQDN y debe tener una longitud máxima de 15 caracteres. El valor predeterminado es un nombre de equipo aleatorio generado por Windows.
-    - **Zona horaria**: permite establecer la zona horaria para el host del kit de desarrollo. El valor predeterminado es la hora del Pacífico (EE.UU. y Canadá) (UTC-8:00).
-    - **Configuración de IP estática**: hace que la implementación use una dirección IP estática. En caso contrario, cuando se reinicia el instalador en cloudbuilder.vhx, las interfaces de red se configuran con DHCP.
+6. Abra una consola de PowerShell con privilegios elevados > Ejecutar script de Hola C:\AzureStack_Installer\asdk-installer.ps1 > haga clic en **preparar vhdx**.
+7. En hello **vhdx Cloudbuilder seleccione** página del instalador de hello, examinar tooand Hola seleccione cloudbuilder.vhdx archivo descargado en pasos anteriores Hola.
+8. Opcional: Comprobación de hello **agregar controladores** cuadro toospecify una carpeta que contenga los controladores adicionales que desee en el host de Hola.
+9. En hello **configuración opcional** , proporcione la cuenta de administrador local de hello para el host de kit de desarrollo de Hola. Si no proporciona estas credenciales, necesitará acceso toohello host de KVM durante el proceso de instalación de Hola a continuación.
+10. También en hello **configuración opcional** página, tienes Hola Hola de tooset opción siguientes:
+    - **NombreDeEquipo**: esta opción establece el nombre de Hola para host de kit de desarrollo de Hola. nombre de Hello debe cumplir los requisitos de FQDN y debe tener una longitud máxima de 15 caracteres. valor predeterminado de Hello es un nombre de equipo aleatorio generado por Windows.
+    - **Zona horaria**: Hola de conjuntos de zona horaria para el host de kit de desarrollo de Hola. valor predeterminado de Hello es (UTC-8:00) hora del Pacífico (Estados Unidos y Canadá).
+    - **Configuración de IP estática**: establece una dirección IP estática de su toouse de implementación. En caso contrario, cuando se reinicia el instalador de hello en hello cloudbuilder.vhx, interfaces de red de Hola se configuran con DHCP.
 11. Haga clic en **Siguiente**.
-12. Si ha elegido una configuración de IP estática en el paso anterior, ahora debe:
-    - Seleccionar un adaptador de red. Asegúrese de que puede conectarse al adaptador antes de hacer clic en **Siguiente**.
-    - Comprobar que los valores de **dirección IP**, **puerta de enlace**, y **DNS** valores son correctos y, a continuación, hacer clic en **Siguiente**.
-13. Haga clic en **Siguiente** para iniciar el proceso de preparación.
-14. Cuando la preparación indique **Completado**, haga clic en **Siguiente**.
-15. Haga clic en **Reiniciar ahora** para arrancar en cloudbuilder.vhdx y continúe el proceso de implementación.
+12. Si elige una configuración de IP estática en el paso anterior de hello, ahora debe:
+    - Seleccionar un adaptador de red. Asegúrese de que puede conectar el adaptador de toohello antes de hacer clic **siguiente**.
+    - Asegúrese de que ese hello **dirección IP**, **puerta de enlace**, y **DNS** valores son correctos y, a continuación, haga clic en **siguiente**.
+13. Haga clic en **siguiente** toostart proceso de preparación de Hola.
+14. Cuando se indique preparación hello **completado**, haga clic en **siguiente**.
+15. Haga clic en **reiniciar ahora** tooboot en cloudbuilder.vhdx de Hola y continuar el proceso de implementación de Hola.
 
-## <a name="deploy-the-development-kit"></a>Implementación del kit de desarrollo
-1. Inicie sesión como administrador local en el host del kit de desarrollo. Use las credenciales especificadas en los pasos anteriores.
+## <a name="deploy-hello-development-kit"></a>Implementar el kit de desarrollo de Hola
+1. Inicie sesión como Hola host de kit de desarrollo de toohello de administrador Local. Usar credenciales de hello especificadas en los pasos anteriores de Hola.
 
     > [!IMPORTANT]
-    > Para las implementaciones de Azure Active Directory, Azure Stack necesita acceder a Internet, ya sea directamente o a través de un proxy transparente. La implementación admite exactamente una NIC para redes. Si tiene varias NIC, asegúrese de que solo una está habilitada (y todas las demás deshabilitadas) antes de ejecutar el script de implementación en la sección siguiente.
+    > Para las implementaciones de Azure Active Directory, pila de Azure requiere toohello de acceso a Internet, ya sea directamente o a través de un proxy transparente. implementación de Hello es compatible con exactamente una NIC de redes. Si tiene varios NIC, asegúrese de que sólo uno está habilitado (y todos los demás están deshabilitadas) antes de ejecutar el script de implementación de hello en la sección siguiente de Hola.
     
-2. Abra una consola de PowerShell con privilegios elevados > ejecute el script \AzureStack_Installer\asdk-installer.ps1 (que puede estar en una unidad diferente en Cloudbuilder.vhdx) > haga clic en **Instalar**.
-3. En el cuadro de diálogo **Tipo**, seleccione **Azure Cloud** o **ADFS**.
-    - **Azure Cloud**: Azure Active Directory es el proveedor de identidades. Utilice este parámetro para especificar un directorio concreto en el que la cuenta de AAD tiene permisos de administración globales. Nombre completo de un inquilino de Azure Active Directory con el formato .onmicrosoft.com. 
-    - **ADFS**: el servicio de directorio con la marca predeterminada es el proveedor de identidades, la cuenta predeterminada con la que iniciar sesión es azurestackadmin@azurestack.local y la contraseña que debe utilizar es la que proporcionó como parte de la configuración.
-4. En **Contraseña del administrador local**, en el cuadro **Contraseña**, escriba la contraseña del administrador local (que debe coincidir con la configurada en la actualidad) y, a continuación, haga clic en **Siguiente**.
-5. Seleccione un adaptador de red para usarlo para el kit de desarrollo y, a continuación, haga clic en **Siguiente**.
-6. Seleccione DHCP o la configuración de red estática para la máquina virtual BGPNAT01.
-    - **DHCP** (valor predeterminado): la máquina virtual obtiene la configuración de la red IP del servidor DHCP.
-    - **Estático**: use esta opción solo si el DHCP no puede asignar una dirección IP válida de Azure Stack para acceder a Internet. Se debe especificar una dirección IP estática con la longitud de la máscara de subred (por ejemplo, 10.0.0.5/24).
-7. Opcionalmente, establezca los valores siguientes:
-    - **Id. de VLAN**: permite establecer el identificador de VLAN. Solo puede utilizar esta opción si el host y AzS-BGPNAT01 deben configurar el identificador de VLAN para tener acceso a la red física (e Internet). 
-    - **Reenviador DNS**: se crea un servidor DNS como parte de la implementación de Azure Stack. Para permitir que los equipos dentro de la solución resuelvan nombres fuera de la marca, proporcione el servidor DNS de infraestructura existente. El servidor DNS en la marca reenvía solicitudes de resolución de nombres desconocidos a este servidor.
+2. Abra una consola de PowerShell con privilegios elevados > Ejecutar script de \AzureStack_Installer\asdk-installer.ps1 hello (que puede estar en una unidad diferente en hello Cloudbuilder.vhdx) > haga clic en **instalar**.
+3. Hola **tipo** cuadro, seleccione **en la nube Azure** o **ADFS**.
+    - **Nube de Azure**: Azure Active Directory es el proveedor de identidades de Hola. Utilice este toospecify parámetro un directorio específico que hello AAD cuenta no tiene permisos de administrador global. Nombre completo de un inquilino de directorio de AAD en formato de Hola de. onmicrosoft.com. 
+    - **ADFS**: marca predeterminada de hello servicio de directorio es el proveedor de identidades de hello, Hola predeterminado cuenta toosign con es azurestackadmin@azurestack.local, y toouse de contraseña de hello es hello una proporcionada como parte del programa de instalación de Hola.
+4. En **contraseña de administrador Local**, Hola **contraseña** cuadro, escribir contraseña de administrador local de hello (que debe coincidir con la contraseña de administrador local de hello actual configurado) y, a continuación, haga clic en  **Siguiente**.
+5. Seleccione un toouse de adaptador de red para el kit de desarrollo de hello y, a continuación, haga clic en **siguiente**.
+6. Seleccione configuración de red estático para la máquina virtual de hello BGPNAT01 o DHCP.
+    - **DHCP** (valor predeterminado): Hola virtual machine Obtiene la configuración de red IP de Hola de servidor DHCP de Hola.
+    - **Estática**: use esta opción solo si DHCP no puede asignar una dirección IP válida para Azure pila tooaccess Hola Internet. Debe especificarse una dirección IP estática con longitud de máscara de subred de hello (por ejemplo, 10.0.0.5/24).
+7. Además, puede establecer Hola siguientes valores:
+    - **Id. de VLAN**: conjuntos de Hola ID de VLAN. Use esta opción solo si hello host y AzS BGPNAT01 deben configurar red física de Hola de tooaccess de Id. de VLAN (e Internet). 
+    - **Reenviador DNS**: un servidor DNS se crea como parte del programa Hola a implementación de la pila de Azure. tooallow equipos dentro de hello solución tooresolve nombres fuera de la marca de hello, proporcione el servidor DNS de infraestructura existente. servidor DNS de Hello en marca reenvía el servidor de toothis de las solicitudes de resolución de nombres desconocido.
     - **Servidor horario**: permite establecer un servidor horario específico. 
 8. Haga clic en **Siguiente**. 
-9. En la página **Verifying network interface card properties** (Comprobación de las propiedades de la tarjeta de interfaz de red), verá una barra de progreso. 
-    - Si dice **An update cannot be downloaded** (No se puede descargar una actualización), siga las instrucciones que aparecen en la página.
+9. En hello **comprobar propiedades de tarjeta de interfaz de red** página, verá una barra de progreso. 
+    - Si dice **no se puede descargar una actualización**, siga las instrucciones de hello en página de Hola.
     - Cuando diga **Completado**, haga clic en **Siguiente**.
 10. En la página de **resumen**, haga clic en **Implementar**.
-11. Si va a usar una implementación de Azure Active Directory, se le pedirá que escriba sus credenciales de la cuenta de administrador global de Azure Active Directory.
-12. El proceso de implementación puede tardar unas horas, durante las cuales el sistema se reiniciará automáticamente una vez.
+11. Si usa una implementación de Active Directory de Azure, estará más frecuentes tooenter sus credenciales de cuenta de administrador global de Azure Active Directory.
+12. proceso de implementación de Hello puede tardar unas horas, durante el cual Hola sistema se reinicia automáticamente una vez.
    
    > [!IMPORTANT]
-   > Si desea supervisar el progreso de la implementación, inicie sesión como azurestack\AzureStackAdmin. Si inicia sesión como administrador local después de que la máquina se una al dominio, no podrá ver el progreso de la implementación. No vuelva a ejecutar la implementación, en su lugar, inicie sesión como azurestack\AzureStackAdmin para validar que se está ejecutando.
+   > Si desea que el progreso de la implementación de toomonitor hello, inicie sesión como azurestack\AzureStackAdmin. Si inicias sesión en como un administrador local una vez máquina Hola Unidos a un dominio de toohello, no podrá ver progreso de la implementación de Hola. No vuelva a ejecutar la implementación, en su lugar de inicio de sesión como toovalidate azurestack\AzureStackAdmin que se está ejecutando.
    > 
    > 
    
-    Si la implementación se realiza correctamente, en la consola de PowerShell aparecerá: **COMPLETE: Action ‘Deployment’** (COMPLETADA: Acción "Implementación").
+    Cuando se realiza correctamente la implementación de hello, consola de PowerShell de hello muestra: **COMPLETE: acción 'Implementación'**.
    
-Si se produce un error en la implementación, puede usar el siguiente script de repetición de la ejecución de PowerShell en la misma ventana de PowerShell con privilegios elevados:
+Si se produce un error en la implementación de hello, puede usar Hola siguientes PowerShell vuelva a ejecutar el script de Hola misma ventana de PowerShell con privilegios elevados:
 
 ```powershell
 cd c:\CloudDeployment\Setup
 .\InstallAzureStackPOC.ps1 -Rerun
 ```
 
-Este script reiniciará la implementación desde el último paso que se realizó correctamente.
+Este script reiniciará implementación Hola del paso última de Hola que se realizó correctamente.
 
 O bien, puede [volver a implementar](azure-stack-redeploy.md) desde el principio.
 
 
-## <a name="reset-the-password-expiration-to-180-days"></a>Restablecimiento de la expiración de la contraseña en 180 días
+## <a name="reset-hello-password-expiration-too180-days"></a>Restablecer días para expiración too180 de hello contraseña
 
-Para asegurarse de que la contraseña del host del kit de desarrollo no expire demasiado pronto, siga estos pasos después de realizar la implementación:
+toomake seguro de que esa contraseña Hola de host de kit de desarrollo de hello no expire demasiado pronto, siga estos pasos después de implementar:
 
-1. En el host del kit de desarrollo, abra **Administración de directivas de grupo** y vaya a **Administración de directivas de grupo** – **Bosque: azurestack.local** – **Dominios**: **azurestack.local**.
+1. En el host del kit de desarrollo de hello, abra **Group Policy Management** y navegue demasiado**Group Policy Management** : **bosque: azurestack.local** – **dominios**  : **azurestack.local**.
 2. Haga clic con el botón derecho en **MemberServer** y haga clic en **Editar**.
-3. En el Editor de administración de directivas de grupo, vaya a **Configuración del equipo** – **Directivas** – **Configuración de Windows** – **Configuración de seguridad** – **Directivas de cuenta** – **Directiva de contraseñas**.
-4. En el panel derecho, haga doble clic en **Vigencia máxima de la contraseña**.
-5. En el cuadro de diálogo de **propiedades de Vigencia máxima de la contraseña**, cambie el valor **La contraseña expirará en** a 180 y, a continuación, haga clic en **Aceptar**.
+3. Hola Editor de administración de directivas de grupo, navegue demasiado**configuración del equipo** : **directivas** : **configuración de Windows** : **laconfiguracióndeseguridad**: **Directivas de cuenta** : **directiva de contraseñas**.
+4. En el panel derecho de hello, haga doble clic en **vigencia máxima de la contraseña**.
+5. Hola **vigencia máxima de la contraseña propiedades** cuadro de diálogo, cambio hello **contraseña expirará en** valor too180, a continuación, haga clic en **Aceptar**.
 
 
 ## <a name="next-steps"></a>Pasos siguientes
 [Registro de Azure Stack con una suscripción de Azure](azure-stack-register.md)
 
-[Conexión a Azure Stack](azure-stack-connect-azure-stack.md)
+[Conectar tooAzure pila](azure-stack-connect-azure-stack.md)
 

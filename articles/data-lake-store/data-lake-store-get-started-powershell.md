@@ -1,6 +1,6 @@
 ---
-title: "Uso de PowerShell como introducción a Azure Data Lake Store | Microsoft Docs"
-description: "Uso de Azure PowerShell para crear una cuenta de Almacén de Data Lake y realización de operaciones básicas"
+title: "aaaUse PowerShell tooget a trabajar con el almacén de Azure Data Lake | Documentos de Microsoft"
+description: "Usar PowerShell de Azure toocreate una cuenta de almacén de Data Lake y realizar operaciones básicas"
 services: data-lake-store
 documentationcenter: 
 author: nitinme
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/29/2017
 ms.author: nitinme
-ms.openlocfilehash: 23c9aaa089251bff5132652475f4daadc2c128fe
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9c958bfd63e412ec0b0a4113a149f61aee026bc4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-azure-data-lake-store-using-azure-powershell"></a>Introducción al Almacén de Azure Data Lake mediante Azure PowerShell
 > [!div class="op_single_selector"]
@@ -33,24 +33,24 @@ ms.lasthandoff: 07/11/2017
 >
 >
 
-Aprenda a usar Azure PowerShell para crear una cuenta del Almacén de Azure Data Lake y realizar operaciones básicas como crear carpetas, cargar y descargar archivos de datos, eliminar la cuenta, etc. Para más información acerca de Data Lake Store, consulte [Información general de Data Lake Store](data-lake-store-overview.md).
+Obtenga información acerca de cómo toouse Azure PowerShell toocreate un Azure Data Lake almacenar cuenta y realizar operaciones básicas, como por ejemplo crear carpetas, cargar y descargar archivos de datos, eliminar su cuenta, etcetera. Para más información acerca de Data Lake Store, consulte [Información general de Data Lake Store](data-lake-store-overview.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
-Antes de empezar este tutorial, debe contar con lo siguiente:
+Antes de comenzar este tutorial, debe tener el siguiente hello:
 
 * **Una suscripción de Azure**. Vea [Obtener evaluación gratuita de Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Azure PowerShell 1.0 o versiones posteriores**. Consulte [Instalación y configuración de Azure PowerShell](/powershell/azure/overview).
+* **Azure PowerShell 1.0 o versiones posteriores**. Vea [cómo tooinstall y configurar Azure PowerShell](/powershell/azure/overview).
 
 ## <a name="authentication"></a>Autenticación
-En este artículo se utiliza un enfoque de autenticación más sencillo con Data Lake Store en el que se le solicita que escriba las credenciales de la cuenta de Azure. El nivel de acceso a la cuenta de Data Lake Store y al sistema de archivos está determinado por el nivel de acceso del usuario que ha iniciado sesión. No obstante, existen otros enfoques para realizar la autenticación con Data Lake Store, que son **autenticación de usuario final** o **autenticación de servicio a servicio**. Para obtener instrucciones y más información acerca de cómo realizar la autenticación, consulte [Autenticación de usuario final con Data Lake Store mediante Azure Active Directory](data-lake-store-end-user-authenticate-using-active-directory.md) o [Autenticación entre servicios con Data Lake Store mediante Azure Active Directory](data-lake-store-authenticate-using-active-directory.md).
+En este artículo usa un método de autenticación más sencillo con el almacén de Data Lake que te encuentres tooenter solicitada sus credenciales de cuenta de Azure. Hola acceso nivel tooData Lake almacén cuenta de sistema de archivos y, a continuación, se rige por el nivel de acceso de Hola de hello usuario registrado. Sin embargo, hay otros métodos como tooauthenticate bien con el almacén de Data Lake, que son **autenticación de usuario final** o **autenticación del servicio a servicio**. Para obtener instrucciones y obtener más información acerca de cómo tooauthenticate, consulte [autenticación de usuario final](data-lake-store-end-user-authenticate-using-active-directory.md) o [autenticación del servicio a servicio](data-lake-store-authenticate-using-active-directory.md).
 
 ## <a name="create-an-azure-data-lake-store-account"></a>Creación de una cuenta de Almacén de Azure Data Lake
-1. En el escritorio, abra una nueva ventana de Windows PowerShell y escriba el siguiente fragmento de código para iniciar sesión en su cuenta de Azure, establecer la suscripción y registrar el proveedor de Data Lake Store. Cuando se le solicite iniciar sesión, asegúrese de iniciarla como uno de los administradores o propietario de la suscripción:
+1. Desde el escritorio, abra una nueva ventana de Windows PowerShell, escriba Hola después toolog de fragmento de código en tooyour cuenta de Azure, establecer Hola suscripción y registrar proveedor de almacén de Data Lake Hola. Cuando toolog solicitada, asegúrese de que inicie sesión como una suscripción de hello admininistrators/propietario:
 
-        # Log in to your Azure account
+        # Log in tooyour Azure account
         Login-AzureRmAccount
 
-        # List all the subscriptions associated to your account
+        # List all hello subscriptions associated tooyour account
         Get-AzureRmSubscription
 
         # Select a subscription
@@ -64,138 +64,138 @@ En este artículo se utiliza un enfoque de autenticación más sencillo con Data
         New-AzureRmResourceGroup -Name $resourceGroupName -Location "East US 2"
 
     ![Creación de un grupo de recursos de Azure](./media/data-lake-store-get-started-powershell/ADL.PS.CreateResourceGroup.png "Creación de un grupo de recursos de Azure")
-3. Cree una cuenta del Almacén de Azure Data Lake. El nombre que especifique debe contener solo letras minúsculas y números.
+3. Cree una cuenta de Almacén de Azure Data Lake. nombre de Hola que especifique debe contener solo letras minúsculas y números.
 
         $dataLakeStoreName = "<your new Data Lake Store name>"
         New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStoreName -Location "East US 2"
 
     ![Creación de una cuenta de Azure Data Lake Store](./media/data-lake-store-get-started-powershell/ADL.PS.CreateADLAcc.png "Creación de una cuenta de Azure Data Lake Store")
-4. Compruebe que la cuenta se creó correctamente.
+4. Compruebe que la cuenta de hello se creó correctamente.
 
         Test-AzureRmDataLakeStoreAccount -Name $dataLakeStoreName
 
-    El resultado debe ser **True**.
+    Hola de salida para esto debería ser **True**.
 
 ## <a name="create-directory-structures-in-your-azure-data-lake-store"></a>Creación de estructuras de directorios en el Almacén de Azure Data Lake
-Puede crear directorios bajo su cuenta de Almacén de Azure Data Lake para administrar y almacenar datos.
+Puede crear directorios en su toomanage de cuenta de almacén de Azure Data Lake y almacenar datos.
 
 1. Especifique un directorio raíz.
 
         $myrootdir = "/"
-2. Cree un nuevo directorio denominado **mynewdirectory** en la raíz especificada.
+2. Crear un nuevo directorio denominado **mynewdirectory** en la raíz especificada Hola.
 
         New-AzureRmDataLakeStoreItem -Folder -AccountName $dataLakeStoreName -Path $myrootdir/mynewdirectory
-3. Compruebe que el nuevo directorio se creó correctamente.
+3. Compruebe que ese nuevo directorio Hola se creó correctamente.
 
         Get-AzureRmDataLakeStoreChildItem -AccountName $dataLakeStoreName -Path $myrootdir
 
-    Debe mostrar un resultado parecido al siguiente:
+    Debería mostrarse una salida similar Hola siguiente:
 
     ![Comprobación del directorio](./media/data-lake-store-get-started-powershell/ADL.PS.Verify.Dir.Creation.png "Comprobación del directorio")
 
-## <a name="upload-data-to-your-azure-data-lake-store"></a>Carga de datos en el Almacén de Azure Data Lake
-Puede cargar los datos en el Almacén de Data Lake directamente en el nivel raíz o en un directorio que creó en la cuenta. Los fragmentos de código siguientes muestran cómo cargar datos de ejemplo en el directorio (**mynewdirectory**) que creó en la sección anterior.
+## <a name="upload-data-tooyour-azure-data-lake-store"></a>Cargar el almacén de datos tooyour Azure Data Lake
+Puede cargar el almacén de datos tooData Lake directamente en hello tooa o directorio raíz que ha creado en la cuenta de hello. Hola fragmentos siguientes muestran cómo tooupload algún directorio toohello de datos de ejemplo (**mynewdirectory**) que creó en la sección anterior de Hola.
 
-Si busca datos de ejemplo para cargar, puede obtener la carpeta **Ambulance Data** en el [repositorio Git de Azure Data Lake](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData). Descargue el archivo y almacénelo en un directorio local del equipo, como C:\sampledata\.
+Si desea obtener algunos tooupload de datos de ejemplo, puede obtener hello **ambulancia datos** carpeta de hello [repositorio de Git de Azure datos Lake](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData). Descargar archivo hello y almacenarlo en un directorio local en el equipo, como C:\sampledata\.
 
     Import-AzureRmDataLakeStoreItem -AccountName $dataLakeStoreName -Path "C:\sampledata\vehicle1_09142014.csv" -Destination $myrootdir\mynewdirectory\vehicle1_09142014.csv
 
 
 ## <a name="rename-download-and-delete-data-from-your-data-lake-store"></a>Cambio del nombre, descarga y eliminación de los datos del Almacén de Data Lake
-Para cambiar el nombre de un archivo, use el comando siguiente:
+toorename un archivo, use Hola siguiente comando:
 
     Move-AzureRmDataLakeStoreItem -AccountName $dataLakeStoreName -Path $myrootdir\mynewdirectory\vehicle1_09142014.csv -Destination $myrootdir\mynewdirectory\vehicle1_09142014_Copy.csv
 
-Para descargar un archivo, use el comando siguiente:
+toodownload un archivo, use Hola siguiente comando:
 
     Export-AzureRmDataLakeStoreItem -AccountName $dataLakeStoreName -Path $myrootdir\mynewdirectory\vehicle1_09142014_Copy.csv -Destination "C:\sampledata\vehicle1_09142014_Copy.csv"
 
-Para eliminar un archivo, use el comando siguiente:
+toodelete un archivo, use Hola siguiente comando:
 
     Remove-AzureRmDataLakeStoreItem -AccountName $dataLakeStoreName -Paths $myrootdir\mynewdirectory\vehicle1_09142014_Copy.csv
 
-Cuando se le solicite, escriba **Y** para eliminar el elemento. Si tiene más de un archivo para eliminar, puede proporcionar todas las rutas de acceso separadas por comas.
+Cuando se le solicite, escriba **Y** toodelete elemento de saludo. Si tiene más de un toodelete de archivo, puede proporcionar todas las rutas de acceso de hello separados por coma.
 
     Remove-AzureRmDataLakeStoreItem -AccountName $dataLakeStoreName -Paths $myrootdir\mynewdirectory\vehicle1_09142014.csv, $myrootdir\mynewdirectoryvehicle1_09142014_Copy.csv
 
 ## <a name="delete-your-azure-data-lake-store-account"></a>Eliminación de una cuenta del Almacén de Azure Data Lake
-Use el siguiente comando para eliminar la cuenta del Almacén de Data Lake.
+Use su cuenta de almacén de Data Lake de hello después toodelete de comando.
 
     Remove-AzureRmDataLakeStoreAccount -Name $dataLakeStoreName
 
-Cuando se le solicite, escriba **Y** para eliminar la cuenta.
+Cuando se le solicite, escriba **Y** cuenta de hello toodelete.
 
 ## <a name="performance-guidance-while-using-powershell"></a>Guía de rendimiento al usar PowerShell
 
-A continuación se muestran los valores más importantes que se pueden optimizar para obtener el mejor rendimiento al usar PowerShell para trabajar con Data Lake Store:
+A continuación se muestran Hola configuraciones más importantes que pueden estar atento tooget Hola obtener el mejor rendimiento al usar PowerShell toowork con almacén de Data Lake:
 
 | Propiedad            | Valor predeterminado | Descripción |
 |---------------------|---------|-------------|
-| PerFileThreadCount  | 10      | Este parámetro permite elegir el número de subprocesos paralelos para cargar o descargar cada archivo. Este número representa el número máximo de subprocesos que se pueden asignar por archivo, pero, según el escenario, es posible que obtenga menos subprocesos (por ejemplo, si está cargando un archivo de 1 KB, obtendrá un subproceso, aunque solicite 20).  |
-| ConcurrentFileCount | 10      | Este parámetro es específico para cargar o descargar carpetas. Este parámetro determina el número de archivos simultáneos que se pueden cargar o descargar. Este número representa el número máximo de archivos simultáneos que se pueden cargar o descargar al mismo tiempo, pero, según el escenario, es posible que obtenga una menor simultaneidad (por ejemplo, si está cargando dos archivos, obtendrá dos cargas de archivos simultáneos, aunque solicite 15). |
+| PerFileThreadCount  | 10      | Este parámetro permite a toochoose número de Hola de subprocesos paralelos para cargar o descargar cada archivo. Este número representa Hola número máximo de subprocesos que se pueden asignar por archivo, pero es posible que obtenga menos subprocesos según el escenario (por ejemplo, si está cargando un archivo de 1 KB, obtendrá un subproceso, incluso si se le solicite 20 subprocesos).  |
+| ConcurrentFileCount | 10      | Este parámetro es específico para cargar o descargar carpetas. Este parámetro determina el número de Hola de archivos simultáneos que puede ser cargados o descargados. Este número representa el número máximo de Hola de archivos simultáneos que puede ser cargados o descargados al mismo tiempo, pero es posible que obtenga menos simultaneidad según el escenario (por ejemplo, si va a cargar dos archivos, obtendrá dos cargas de archivos simultáneas, incluso si se le solicite 15). |
 
 **Ejemplo**
 
-Este comando descarga los archivos de Azure Data Lake Store en la unidad local del usuario con 20 subprocesos por archivo y 100 archivos simultáneos.
+Este comando descarga los archivos de la unidad local del usuario de almacén de Azure Data Lake toohello con 20 subprocesos por archivo y 100 archivos simultáneos.
 
     Export-AzureRmDataLakeStoreItem -AccountName <Data Lake Store account name> -PerFileThreadCount 20-ConcurrentFileCount 100 -Path /Powershell/100GB/ -Destination C:\Performance\ -Force -Recurse
 
-### <a name="how-do-i-determine-the-value-to-set-for-these-parameters"></a>¿Cómo puedo determinar qué valor establecer para estos parámetros?
+### <a name="how-do-i-determine-hello-value-tooset-for-these-parameters"></a>¿Cómo determino hello tooset de valor para estos parámetros?
 
 A continuación hay algunas instrucciones que puede usar.
 
-* **Paso 1: Determinación del número total de subprocesos**: debe empezar por calcular el recuento total de subprocesos que se usará. Como norma general, debe usar seis subprocesos por cada núcleo físico.
+* **Paso 1: Determinar el número total de subprocesos de hello** -debe empezar por el cálculo toouse de recuento total de subprocesos de Hola. Como norma general, debe usar seis subprocesos por cada núcleo físico.
 
         Total thread count = total physical cores * 6
 
     **Ejemplo**
 
-    Suponga que está ejecutando los comandos de PowerShell desde una máquina virtual D14 que tiene 16 núcleos.
+    Suponiendo que se está ejecutando Hola PowerShell comandos de una máquina virtual D14 que tiene 16 núcleos
 
         Total thread count = 16 cores * 6 = 96 threads
 
 
-* **Paso 2: Cálculo de PerFileThreadCount**: calculamos nuestro PerFileThreadCount en función del tamaño de los archivos. Para archivos menores de 2,5 GB, no hay ninguna necesidad de cambiar este parámetro, ya que el valor predeterminado (10) es suficiente. Para los archivos mayores de 2,5 GB, debe usar diez subprocesos como base para las primeras 2,5 GB y agregar un subproceso por cada aumento de 256 MB en el tamaño del archivo. Si está copiando una carpeta con muchos tamaños de archivo, considere la posibilidad de agruparlos por tamaños de archivo similares. Tener tamaños de archivo diferentes puede provocar un rendimiento no óptimo. Si no es posible agrupar los archivos con un tamaño similar, debe establecer PerFileThreadCount en función del tamaño de archivo más grande.
+* **Paso 2: Calcular PerFileThreadCount** -calculamos nuestro PerFileThreadCount según Hola tamaño de los archivos de saludo. Para archivos de menos de 2,5 GB, no hay ninguna necesidad de toochange este parámetro porque predeterminado Hola de 10 es suficiente. Para los archivos mayores de GB 2.5, debe usar 10 subprocesos como base Hola Hola primera 2,5 GB y agregar 1 subproceso de cada aumento adicional de 256 MB de tamaño del archivo. Si está copiando una carpeta con muchos tamaños de archivo, considere la posibilidad de agruparlos por tamaños de archivo similares. Tener tamaños de archivo diferentes puede provocar un rendimiento no óptimo. Si no es posible toogroup tamaños de archivo similares, debe establecer PerFileThreadCount según Hola mayor tamaño de archivo.
 
-        PerFileThreadCount = 10 threads for the first 2.5GB + 1 thread for each additional 256MB increase in file size
+        PerFileThreadCount = 10 threads for hello first 2.5GB + 1 thread for each additional 256MB increase in file size
 
     **Ejemplo**
 
-    Suponiendo que tenga 100 archivos que oscilan entre 1 GB y 10 GB, usaremos los 10 GB como el tamaño de archivo más grande para la ecuación, que debería ser similar a la siguiente.
+    Suponiendo que tenga 100 archivos comprendido entre 1GB too10GB, usamos Hola 10GB como Hola de mayor tamaño de ecuación, que se lee como Hola siguiente del archivo.
 
         PerFileThreadCount = 10 + ((10GB - 2.5GB) / 256MB) = 40 threads
 
-* **Paso 3: Cálculo de ConcurrentFilecount**: use el número total de subprocesos y PerFileThreadCount para calcular ConcurrentFileCount basado en la siguiente ecuación.
+* **Paso 3: Calcular ConcurrentFilecount** -recuento de uso total de subprocesos de Hola y PerFileThreadCount toocalculate ConcurrentFileCount basándose en hello después de la ecuación.
 
         Total thread count = PerFileThreadCount * ConcurrentFileCount
 
     **Ejemplo**
 
-    En función de los valores del ejemplo que hemos usado
+    En función de los valores de ejemplo de Hola que se ha utilizado
 
         96 = 40 * ConcurrentFileCount
 
-    Por tanto, **ConcurrentFileCount** es **2,4**, que se puede redondear a **2**.
+    Por lo tanto, **ConcurrentFileCount** es **2.4**, que se puede redondear demasiado**2**.
 
 ### <a name="further-tuning"></a>Ajuste adicional
 
-Es posible que necesite un ajuste adicional porque se va a trabajar con diversos tamaños de archivo. El cálculo anterior funciona bien si todos o la mayoría de los archivos son más grandes y más cercanos a las 10 GB. Por el contrario, si hay muchos tamaños de archivo diferentes, con muchos archivos pequeños, podría reducir PerFileThreadCount. Al reducir PerFileThreadCount, podemos aumentar ConcurrentFileCount. Por lo tanto, si suponemos que la mayoría de nuestros archivos son pequeños, aproximadamente 5 GB, podemos repetir nuestro cálculo:
+Es posible que necesite para la optimización adicional porque no hay un intervalo de toowork de tamaños de archivo con. Hola anteriormente cálculo funciona bien si todos o la mayoría de los archivos de hello es intervalos de 10GB de toohello más grandes y más cercano. Por el contrario, si hay muchos tamaños de archivo diferentes, con muchos archivos pequeños, podría reducir PerFileThreadCount. Reduciendo hello PerFileThreadCount, podemos ampliamos ConcurrentFileCount. Por lo tanto, si suponemos que la mayoría de los archivos es más pequeña en el intervalo de 5GB de hello, se puede volver a realizar nuestro cálculo:
 
     PerFileThreadCount = 10 + ((5GB - 2.5GB) / 256MB) = 20
 
-Por lo tanto, **ConcurrentFileCount** ahora será 96/20, cuyo resultado es 4,8, redondeado a **4**.
+Por lo tanto, **ConcurrentFileCount** se ahora 96/20, que es 4.8, redondeará demasiado**4**.
 
-Puede continuar ajustando esta configuración aumentando o reduciendo **PerFileThreadCount** en función de la distribución de los tamaños de archivo.
+Puede seguir tootune esta configuración cambiando hello **PerFileThreadCount** arriba y abajo según distribución Hola de los tamaños de archivo.
 
 ### <a name="limitation"></a>Limitación
 
-* **El número de archivos es menor que ConcurrentFileCount**: si el número de archivos que va a cargar es menor que el valor de **ConcurrentFileCount** que ha calculado, debería reducir **ConcurrentFileCount** para que sea igual al número de archivos. También puede utilizar los subprocesos restantes para aumentar **PerFileThreadCount**.
+* **Número de archivos es menor que ConcurrentFileCount**: si el número de Hola de archivos que se va a cargar es menor que hello **ConcurrentFileCount** que calcula, a continuación, se debe reducir  **ConcurrentFileCount** toobe toohello igual número de archivos. Puede usar cualquier tooincrease de subprocesos restantes **PerFileThreadCount**.
 
-* **Demasiados subprocesos**: si aumenta demasiado el número de subprocesos sin aumentar el tamaño del clúster, corre el riesgo de degradar el rendimiento. Puede haber problemas de contención al cambiar de contexto en la CPU.
+* **Hay demasiados subprocesos**: si se aumenta el subproceso número demasiada sin aumentar el tamaño del clúster, se corre el riesgo de Hola de reducción del rendimiento. Puede haber problemas de contención al cambio de contexto en hello CPU.
 
-* **Simultaneidad insuficiente**: si la simultaneidad no es suficiente, el clúster puede ser demasiado pequeño. Puede aumentar el número de nodos en el clúster, lo que proporcionará más simultaneidad.
+* **Simultaneidad suficiente**: si no es suficiente la simultaneidad de hello, el clúster puede ser demasiado pequeño. Puede aumentar el número de Hola de nodos en el clúster lo que le proporcionará más simultaneidad.
 
-* **Errores de limitación**: es posible que vea errores de limitación si la simultaneidad es demasiado alta. Si ve errores de limitación, reduzca la simultaneidad o póngase en contacto con nosotros.
+* **Errores de limitación**: es posible que vea errores de limitación si la simultaneidad es demasiado alta. Si ve errores de limitación, debe reducir la simultaneidad de Hola o póngase en contacto con nosotros.
 
 ## <a name="next-steps"></a>Pasos siguientes
 * [Protección de los datos en el Almacén de Data Lake](data-lake-store-secure-data.md)

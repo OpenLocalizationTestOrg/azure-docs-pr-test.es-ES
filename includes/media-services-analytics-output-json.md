@@ -1,21 +1,21 @@
-El trabajo genera un archivo de salida JSON que contiene metadatos de los rostros detectados y de los que se ha realizado seguimiento. Los metadatos incluyen coordenadas que indican tanto la ubicación de los rostros como un número de identificación de rostro, que indica que se realiza un seguimiento de dicha persona. Los números de identificación de cara son propensos a restablecerse en circunstancias en las que la cara de frente se pierde o se superpone en el fotograma, lo que provoca que a algunas personas se les asigne varios identificadores.
+trabajo de Hello genera un archivo de salida JSON que contiene metadatos sobre caras detectadas y de seguimiento. los metadatos de Hello incluyen coordenadas que indica la ubicación de Hola de caras, así como una cara Id. número que indica Hola seguimiento de ese individuo. Números de Id. de cara son propensas a tooreset en circunstancias cuando cara frontal Hola se pierde o superpuesta en el marco de hello, lo que da lugar a algunas personas al asignarse a varios identificadores.
 
-La salida JSON incluye los siguientes atributos:
+Hola de salida que JSON incluye Hola siguientes atributos:
 
 | Elemento | Descripción |
 | --- | --- |
-| version |Esto se refiere a la versión de la API de vídeo. |
-| index | (Se aplica solo a Azure Media Redactor) define el índice del marco del evento actual. |
-| timescale |"Tics" por segundo del vídeo. |
-| Offset |Se trata de la diferencia de tiempo para las marcas de tiempo. En la versión 1.0 de las API de vídeo, será siempre 0. En los escenarios futuros que se admitan, este valor puede cambiar. |
-| framerate |Fotogramas por segundo del vídeo. |
-| fragments |Los metadatos se separan en diferentes segmentos denominados fragmentos. Cada fragmento contiene un inicio, una duración, un número de intervalo y eventos. |
-| start |La hora de inicio del primer evento, en 'tics'. |
-| duration |La longitud del fragmento, en "tics". |
-| interval |El intervalo de cada entrada de evento dentro del fragmento, en "tics". |
-| events |Cada evento contiene las caras detectadas y seguidas dentro de esa duración de tiempo. Es una matriz de matriz de eventos. La matriz externa representa un intervalo de tiempo. La matriz interna consta de 0 o más eventos que ocurrieron en ese momento en el tiempo. Un corchete vacío significa que no se detectaron caras. |
-| id |El identificador de la cara que se sigue. Este número puede cambiar inadvertidamente si una cara deja de detectarse. Una persona determinada debe tener el mismo identificador durante todo el vídeo, pero esto no se puede garantizar debido a las limitaciones en el algoritmo de detección (oclusión, etc.). |
-| x, y |Las coordenadas X e Y de la parte superior izquierda del cuadro de límite en una escala normalizada de 0,0 a 1,0. <br/>-Las coordenadas X e Y son relativas siempre a la posición horizontal, por lo que si tiene un vídeo en vertical (o boca a abajo, en el caso de iOS), tendrá que transponer las coordenadas en consecuencia. |
-| width, height |El ancho y alto del cuadro de límite de la cara en una escala normalizada de 0,0 a 1,0. |
-| facesDetected |Este atributo se encuentra al final de los resultados JSON y resume el número de caras que el algoritmo detectó durante el vídeo. Dado que los identificadores pueden restablecerse inadvertidamente si una cara deja de detectarse (por ejemplo, la cara sale de la pantalla o aparta la vista), este número puede no ser siempre el número real de caras en el vídeo. |
+| versión |Esto refiere toohello versión de hello API de vídeo. |
+| index | (Se aplica tooAzure Redactor de medios) define Hola marco índice del evento actual Hola. |
+| timescale |"Tics" de vídeo de Hola por segundo. |
+| Offset |Se trata de desplazamiento de hora de Hola para las marcas de tiempo. En la versión 1.0 de las API de vídeo, será siempre 0. En los escenarios futuros que se admitan, este valor puede cambiar. |
+| framerate |Fotogramas por segundo de hello vídeo. |
+| fragments |metadatos de Hello está fragmentado seguridad en diferentes segmentos denominados fragmentos. Cada fragmento contiene un inicio, una duración, un número de intervalo y eventos. |
+| start |Hola hora de inicio del primer evento de hello en 'tics'. |
+| duration |longitud de Hola de fragmento de hello, en "tics". |
+| interval |intervalo de saludo de cada entrada de eventos dentro de fragmento de hello, en "tics". |
+| events |Cada evento contiene caras de hello detectado y realizar un seguimiento dentro de ese período de tiempo. Es una matriz de matriz de eventos. matriz de Hello externo representa un intervalo de tiempo. matriz interna de Hello consta de 0 o más eventos que ocurrieron en ese momento en el tiempo. Un corchete vacío significa que no se detectaron caras. |
+| id |Id. de Hola de cara de Hola que realiza el seguimiento. Este número puede cambiar inadvertidamente si una cara deja de detectarse. Una persona determinada debería tener Hola mismo identificador a lo largo de hello general de vídeo, pero esto no se puede garantizar due toolimitations en el algoritmo de detección de hello (oclusión, etcetera). |
+| x, y |parte superior izquierda de Hello X y coordenadas de Hola se enfrentan a cuadro de límite en una escala normalizada de too1.0 0,0. <br/>-X e Y coordenadas relativa toolandscape siempre son, por lo que si tiene un retrato de vídeo (o boca abajo, en caso de hello de iOS), tendrá tootranspose Hola coordenadas en consecuencia. |
+| width, height |Hola ancho y alto de cara de hello rectángulo de selección en una escala normalizada de too1.0 0,0. |
+| facesDetected |Esto se encuentra al final de Hola de resultados JSON de Hola y resume número Hola de caras ese algoritmo Hola detectado durante el saludo de vídeo. Dado que se puede restablecer accidentalmente Hola identificadores si una cara pasa a ser no detectada (p. ej. cara sale fuera de la pantalla, parece ausente), este número puede no siempre igual número real de Hola de caras en vídeo de Hola. |
 

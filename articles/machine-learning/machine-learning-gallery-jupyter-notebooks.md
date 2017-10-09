@@ -1,6 +1,6 @@
 ---
-title: "Jupyter Notebooks de la galería de Cortana Intelligence | Microsoft Docs"
-description: "Descubra los Jupyter Notebooks en la Galería de Cortana Intelligence."
+title: "blocs de notas de inteligencia Galería Jupyter aaaCortana | Documentos de Microsoft"
+description: "Detectar Jupyter blocs de notas en hello Galería de inteligencia de Cortana."
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,59 +14,59 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: roopalik;garye
-ms.openlocfilehash: ff7d5c372500c2cd392ed65a921d8a994b090f23
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 459968ddbcf1da17e6993dd577a90b4dd3847cfa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="discover-jupyter-notebooks-in-the-cortana-intelligence-gallery"></a>Descubra los Jupyter Notebooks en la Galería de Cortana Intelligence
+# <a name="discover-jupyter-notebooks-in-hello-cortana-intelligence-gallery"></a>Detectar Jupyter blocs de notas en hello Galería de inteligencia de Cortana
 [!INCLUDE [machine-learning-gallery-item-selector](../../includes/machine-learning-gallery-item-selector.md)]
 
 ## <a name="jupyter-notebooks"></a>Jupyter Notebooks
 **[Jupyter Notebooks](https://gallery.cortanaintelligence.com/notebooks)**: los cuadernos de Jupyter Notebook incluyen código, visualizaciones de datos y documentación en un único lienzo interactivo.
-Los cuadernos de notas en la Galería proporcionan tutoriales y explicaciones detalladas de las técnicas y las soluciones avanzadas de aprendizaje automático.
+Blocs de notas en hello Galería proporcionan tutoriales y explicaciones detalladas de técnicas y las soluciones de aprendizaje de automático avanzado.
 
 ## <a name="discover"></a>Descubra
-  Para buscar en la Galería de blocs de notas, abra el [galería](http://gallery.cortanaintelligence.com) y haga clic en **blocs de notas** en la parte superior de la página de inicio de la galería.
+  toobrowse para portátiles en hello galería, abra hello [galería](http://gallery.cortanaintelligence.com) y haga clic en **blocs de notas** en parte superior de saludo de la página principal de la Galería de Hola.
 
- El  **[blocs de notas de Jupyter](https://gallery.cortanaintelligence.com/notebooks)**  página muestra una lista de los blocs de notas más populares.
-Haga clic en **Ver todos** para ver todos los blocs de notas.
-Desde esta página, puede examinar todos los cuadernos de la galería. También puede buscar seleccionando criterios de filtrado a la izquierda de la página y escribiendo términos de búsqueda en la parte superior.
+ El  **[blocs de notas de Jupyter](https://gallery.cortanaintelligence.com/notebooks)**  página muestra una lista de equipos portátiles más populares de Hola.
+Haga clic en **ver todas** tooview todos los blocs de notas.
+Desde esta página, puede examinar todos los equipos portátiles en hello Galería. También puede buscar seleccionando criterios de filtro a la izquierda de Hola de página de Hola y Hola a introducir términos de búsqueda superior.
 
- Haga clic en cualquier bloc de notas para abrir la página de detalles del bloc de notas y obtenga más información. En esta página puede comentar, dar opiniones o formular preguntas en la sección de comentarios. Incluso puede compartirlo con amigos o colegas mediante las funcionalidades de uso compartido de LinkedIn o Twitter. También puede enviar por correo electrónico un vínculo al bloc de notas para invitar a otros usuarios a ver la página.
+ Haga clic en cualquier PC de bolsillo tooopen página de detalles del Bloc de notas y leer más información. En esta página que puede convertir en comentario, proporcionar comentarios o realizar preguntas a través de la sección de comentarios de Hola. Incluso puede compartirlo con amigos o compañeros con hello comparten funciones de LinkedIn o Twitter. También puede correo electrónico un tooinvite de Bloc de notas de vínculo toothe otra página de usuarios tooview Hola.
 
 ![Compartir este elemento con amigos](media/machine-learning-gallery-how-to-use-contribute-publish/share-links.png)
 
 ![Agregar sus comentarios](media/machine-learning-gallery-how-to-use-contribute-publish/comments.png)
 
 ## <a name="download"></a>Descargar
-Puede descargar una copia de cualquier bloc de notas de la galería en el área de trabajo de Machine Learning Studio.
+Puede descargar una copia de los PC de bolsillo de hello Galería en el área de trabajo de estudio de aprendizaje automático.
 
-### <a name="download-from-the-gallery"></a>Descargar de la galería
-Para descargar una copia de un bloc de notas de la galería:
+### <a name="download-from-hello-gallery"></a>Descargar desde la Galería de Hola
+toodownload una copia de un bloc de notas de hello Galería:
 
-1. Abrir página de detalles del bloc de notas en la galería
+1. Abrir la página de detalles de hello Bloc de notas en hello Galería
 2. Haga clic en **Abrir en Studio**
-3. Seleccionar la región y el área de trabajo que desea usar
+3. Seleccionar región hello y área de trabajo que desee toouse
    
-    ![Abrir Jupyter notebook desde la Galería](media/machine-learning-gallery-jupyter-notebooks/open-notebook-from-gallery.png)
+    ![Abra el Bloc de notas de Jupyter de hello Galería](media/machine-learning-gallery-jupyter-notebooks/open-notebook-from-gallery.png)
 
-Al hacer clic en **Abrir en Studio**, el bloc de notas se carga en el área de trabajo de Machine Learning Studio y se abre (si es todavía no ha iniciado sesión en Studio, se le pedirá que inicie sesión con su cuenta de Microsoft antes de que el bloc de notas se copie en el área de trabajo). Puede encontrar más adelante el bloc de notas haciendo clic en **Blocs de notas** en el lado izquierdo de la página principal de Studio.
+Al hacer clic en **abierta en Studio**, Bloc de notas de Hola se cargan en el área de trabajo de estudio de aprendizaje automático y abrir (si aún no ha iniciado sesión tooStudio, es posible que toosign solicitada sesión con su cuenta de Microsoft antes de Hola Bloc de notas es el área de trabajo de tooyour copiada). Puede encontrar Bloc de notas de Hola de nuevo más tarde haciendo clic en **blocs de notas** en hello parte izquierda de la página principal de hello Studio.
 
 ### <a name="download-in-machine-learning-studio"></a>Descarga en Machine Learning Studio
-También puede abrir cualquiera de los mismos blocs de notas de la galería mientras trabaja en Machine Learning Studio:
+También puede abrir cualquiera de hello mismo blocs de notas de la Galería mientras está trabajando en estudio de aprendizaje automático:
 
 1. En Machine Learning Studio, haga clic en **+NUEVO**
-2. Seleccione **Bloc de notas**: se muestra una lista de blocs de notas de la galería que puede elegir, o puede encontrar un bloc de notas específico mediante el cuadro de búsqueda
+2. Seleccione **Bloc de notas** -se muestra una lista de equipos portátiles de hello galería que puede elegir entre, o puede buscar un bloc de notas específico mediante el cuadro de búsqueda de Hola
 3. Señale con el mouse en un bloc de notas y seleccione **Abrir bloc de notas**
    
     ![Abrir bloc de notas de la galería desde dentro de Machine Learning Studio](media/machine-learning-gallery-jupyter-notebooks/open-notebook-from-studio.png)
 
-Se descarga una copia del bloc de notas y se abre en el área de trabajo en la sección Jupyter Notebooks de Machine Learning Studio.
-El bloc de notas se mostrará, junto con los otros blocs de notas, en la página **Blocs de notas** de Studio (en la [página principal de Studio](https://studio.azureml.net/), haga clic en **Blocs de notas** a la izquierda).
+Una copia del Bloc de notas de Hola se descargado y se abre en el área de trabajo en la sección Jupyter blocs de notas de estudio de aprendizaje automático de Hola.
+se mostrará el Bloc de notas de Hello, junto con los otros blocs de notas, en hello **blocs de notas** página de Studio (en hello [página principal de Studio](https://studio.azureml.net/), haga clic en **blocs de notas** de hello izquierda).
 
-**[IR A LA GALERÍA >>](http://gallery.cortanaintelligence.com)**
+**[TOMAR ME Galería toohello >>](http://gallery.cortanaintelligence.com)**
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 

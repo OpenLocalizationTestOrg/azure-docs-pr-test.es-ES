@@ -1,6 +1,6 @@
 ---
-title: "MapReduce y conexión de SSH con Hadoop en HDInsight (Azure) | Microsoft Docs"
-description: "Obtenga más información sobre cómo usar SSH para ejecutar trabajos de MapReduce mediante Hadoop en HDInsight."
+title: "aaaMapReduce y conexión de SSH con Hadoop en HDInsight - Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toouse SSH toorun MapReduce trabajos usando Hadoop en HDInsight."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,86 +16,86 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/31/2017
 ms.author: larryfr
-ms.openlocfilehash: eaf6278f97cd5ddd7e049ff4745181f39d7949a0
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 9626577687fc5cc119a39d65a9c45298f57f81c2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-mapreduce-with-hadoop-on-hdinsight-with-ssh"></a>Uso de MapReduce con Hadoop en HDInsight con SSH
 
 [!INCLUDE [mapreduce-selector](../../includes/hdinsight-selector-use-mapreduce.md)]
 
-Aprenda a enviar trabajos de MapReduce desde una conexión Secure Shell (SSH) a HDInsight.
+Obtenga información acerca de cómo toosubmit MapReduce trabajos desde un tooHDInsight de conexión de Secure Shell (SSH).
 
 > [!NOTE]
-> Si ya está familiarizado con el uso de servidores de Hadoop basados en Linux, pero no conoce HDInsight, consulte [Información sobre el uso de HDInsight en Linux](hdinsight-hadoop-linux-information.md).
+> Si ya está familiarizado con el uso de Hadoop basado en Linux, servidores, pero están tooHDInsight nueva, vea [sugerencias de HDInsight basados en Linux](hdinsight-hadoop-linux-information.md).
 
 ## <a id="prereq"></a>Requisitos previos
 
 * Un clúster de HDInsight basado en Linux (Hadoop en HDInsight)
 
   > [!IMPORTANT]
-  > Linux es el único sistema operativo que se usa en la versión 3.4 de HDInsight, o en las superiores. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+  > Linux es Hola único sistema operativo usado en HDInsight versión 3.4 o superior. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * Un cliente SSH. Para más información, consulte [Uso de SSH con HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a id="ssh"></a>Conexión con SSH
 
-Conéctese al clúster con SSH. Por ejemplo, el siguiente comando conecta con un clúster llamado **myhdinsight**:
+Conecte el clúster toohello mediante SSH. Por ejemplo, hello siguiente comando conecta con el nombre de clúster de tooa **myhdinsight**:
 
 ```bash
 ssh admin@myhdinsight-ssh.azurehdinsight.net
 ```
 
-**Si usa una clave de certificado para la autenticación SSH**, puede que deba especificar la ubicación de la clave privada en su sistema cliente, por ejemplo:
+**Si utiliza una clave de certificado para la autenticación de SSH**, deberá toospecify ubicación de Hola de clave privada de hello en el sistema cliente, por ejemplo:
 
 ```bash
 ssh -i ~/mykey.key admin@myhdinsight-ssh.azurehdinsight.net
 ```
 
-**Si usa una contraseña para la autenticación SSH**, deberá proporcionar la contraseña cuando se le solicite.
+**Si utiliza una contraseña para la autenticación de SSH**, necesitará tooprovide Hola contraseña cuando se le solicite.
 
 Para obtener más información sobre cómo utilizar SSH con HDInsight, consulte [Uso de SSH con HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a id="hadoop"></a>Uso de comandos Hadoop
 
-1. Después de conectarse al clúster de HDInsight, use el siguiente comando para iniciar un trabajo de MapReduce:
+1. Después de clúster de HDInsight toohello conectado, use Hola después comando toostart un trabajo de MapReduce:
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/WordCountOutput
     ```
 
-    Este comando inicia la clase `wordcount`, que está contenido en el archivo `hadoop-mapreduce-examples.jar`. Emplea como entrada el documento `/example/data/gutenberg/davinci.txt` y la salida se almacena en `/example/data/WordCountOutput`.
+    Este comando inicia hello `wordcount` (clase), que se encuentra en hello `hadoop-mapreduce-examples.jar` archivo. Usa hello `/example/data/gutenberg/davinci.txt` documento como entrada y salida se almacena en `/example/data/WordCountOutput`.
 
     > [!NOTE]
-    > Para obtener más información sobre este trabajo de MapReduce y los datos de ejemplo, vea [Uso de MapReduce en Hadoop en HDInsight](hdinsight-use-mapreduce.md).
+    > Para obtener más información acerca de estos datos de ejemplo de Hola y de trabajo de MapReduce, consulte [uso MapReduce en Hadoop en HDInsight](hdinsight-use-mapreduce.md).
 
-2. El trabajo emite detalles a medida que se procesa y devuelve información similar al siguiente texto cuando finaliza el trabajo:
+2. trabajo de Hello emite detalles tal y como lo procesa y devuelve información toohello similar después de texto cuando se completa el trabajo de hello:
 
         File Input Format Counters
         Bytes Read=1395666
         File Output Format Counters
         Bytes Written=337623
 
-3. Una vez completado el trabajo, use el siguiente comando para enumerar los archivos de salida:
+3. Cuando se completa el trabajo de hello, utilice Hola siguientes archivos de salida de comando toolist hello:
 
     ```bash
     hdfs dfs -ls /example/data/WordCountOutput
     ```
 
-    Este comando muestra dos archivos, `_SUCCESS` y `part-r-00000`. El archivo `part-r-00000` contiene la salida de este trabajo.
+    Este comando muestra dos archivos, `_SUCCESS` y `part-r-00000`. Hola `part-r-00000` archivo contiene la salida de hello para este trabajo.
 
     > [!NOTE]
-    > Algunos trabajos de MapReduce pueden dividir los resultados entre varios archivos **part-r-####** . Si es así, utilice el sufijo #### para indicar el orden de los archivos.
+    > Pueden que algunos de estos trabajos MapReduce divida resultados Hola entre varios **parte-r-###** archivos. Si es así, usar hello ### tooindicate Hola orden de los archivos de Hola de sufijos.
 
-4. Para ver la salida, use el comando siguiente:
+4. salida de hello tooview, Hola de uso siguiente comando:
 
     ```bash
     hdfs dfs -cat /example/data/WordCountOutput/part-r-00000
     ```
 
-    Este comando muestra una lista de las palabras contenidas en el archivo **wasb://example/data/gutenberg/davinci.txt**, junto con el número de veces que aparecía cada palabra. El texto siguiente es un ejemplo de los datos contenidos en el archivo:
+    Este comando muestra una lista de palabras de Hola que figuran en hello **wasb://example/data/gutenberg/davinci.txt** hello y archivo de número de veces que se produjo cada palabra. Hello texto siguiente es un ejemplo de Hola datos que se encuentra en el archivo hello:
 
         wreathed        3
         wreathing       1
@@ -107,7 +107,7 @@ Para obtener más información sobre cómo utilizar SSH con HDInsight, consulte 
 
 ## <a id="summary"></a>Resumen
 
-Como se puede ver, los comando Hadoop proporcionan una manera fácil de ejecutar trabajos de MapReduce en un clúster de HDInsight y, a continuación, ver la salida del trabajo.
+Como puede ver, comandos de Hadoop constan de una manera sencilla de toorun trabajos MapReduce en un clúster de HDInsight y, a continuación, ver la salida de trabajo Hola.
 
 ## <a id="nextsteps"></a>Pasos siguientes
 

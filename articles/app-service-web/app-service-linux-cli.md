@@ -1,5 +1,5 @@
 ---
-title: "Administración de Aplicación web en Linux mediante la CLI de Azure 2.0 | Microsoft Docs"
+title: "Aplicación Web en Linux con CLI de Azure 2.0 aaaManage | Documentos de Microsoft"
 description: "Administre Aplicación web en Linux mediante la CLI de Azure."
 keywords: azure app service, web app, cli, linux, oss
 services: app-service
@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: aelnably
-ms.openlocfilehash: 04aceecf0cb4cad5c838b7254bf7079a36bbd0d8
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 5e8e0da8a362450c56d2e87e087f77598ec874ac
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-web-app-on-linux-using-azure-cli"></a>Administración de Aplicación web en Linux mediante la CLI de Azure
 
 [!INCLUDE [app-service-linux-preview](../../includes/app-service-linux-preview.md)]
 
-Con los comandos de este artículo, podrá crear y administrar Aplicación web en Linux mediante la CLI de Azure 2.0.
-Puede empezar a usar la nueva versión de la CLI de dos formas:
+Mediante comandos de hello en este artículo son capaz de toocreate y administrar una aplicación Web en Linux con CLI de Azure 2.0.
+Puede comenzar a usar la nueva versión de hello de hello CLI de dos maneras:
 
 * [Instalación de la CLI de Azure 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) en su equipo.
 * Uso de [Azure Cloud Shell (versión preliminar)](../cloud-shell/overview.md)
@@ -34,7 +34,7 @@ Puede empezar a usar la nueva versión de la CLI de dos formas:
 
 ## <a name="create-a-linux-app-service-plan"></a>Creación de un plan de App Service de Linux
 
-Para crear un plan de App Service de Linux, puede usar el siguiente comando:
+toocreate un Plan de servicio de aplicaciones de Linux, puede usar Hola siguiente comando:
 
 ```azurecli-interactive
 az appservice plan create -n appname -g rgname --islinux -l "South Central US" --sku S1 --number-of-workers 1
@@ -42,23 +42,23 @@ az appservice plan create -n appname -g rgname --islinux -l "South Central US" -
 
 ## <a name="create-a-custom-docker-container-web-app"></a>Creación de una aplicación web del contenedor de Docker personalizada
 
-Para crear una aplicación web y configurarla para ejecutar un contenedor de Docker personalizado, puede usar el siguiente comando:
+toocreate una aplicación web y configurarlo toorun contenedor Docker personalizado, puede usar Hola siguiente comando:
 
 ```azurecli-interactive
 az webapp create -n sname -g rgname -p pname -i elnably/dockerimagetest
 ```
  
-## <a name="activate-the-docker-container-logging"></a>Activación del registro del contenedor de Docker
+## <a name="activate-hello-docker-container-logging"></a>Activar el registro de contenedor de Docker de Hola
 
-Para activar el registro del contenedor de Docker, puede usar el comando siguiente:
+tooactivate Hola registro de contenedor de Docker, puede utilizar Hola siguiente comando:
 
 ```azurecli-interactive
 az webapp log config -n sname -g rgname --web-server-logging filesystem
 ```
  
-## <a name="change-the-custom-docker-container-for-an-existing-web-app-on-linux-app"></a>Cambio del contenedor de Docker personalizado por una aplicación web en Linux existente
+## <a name="change-hello-custom-docker-container-for-an-existing-web-app-on-linux-app"></a>Contenedor Docker cambio Hola personalizadas para una aplicación Web existente en Linux App
 
-Para cambiar una aplicación creada anteriormente, de la imagen de Docker actual a una nueva imagen, puede usar el siguiente comando:
+toochange una aplicación creada anteriormente, de hello actual Docker imagen tooa nueva imagen, puede usar Hola siguiente comando:
 
 ```azurecli-interactive
 az webapp config container set -n sname -g rgname -c apurvajo/mariohtml5
@@ -66,7 +66,7 @@ az webapp config container set -n sname -g rgname -c apurvajo/mariohtml5
 
 ## <a name="using-docker-images-from-a-private-registry"></a>Uso de imágenes de Docker de un Registro privado
 
-Puede configurar la aplicación para usar imágenes de un Registro privado. Debe proporcionar la dirección URL de su Registro, nombre de usuario y contraseña. Esto se puede lograr con el siguiente comando:
+Puede configurar imágenes de toouse su aplicación desde un registro privada. Necesitará tooprovide Hola url para el registro, el nombre de usuario y la contraseña. Esto puede lograrse mediante Hola siguiente comando:
 
 ```azurecli-interactive
 az webapp config container set -n sname1 -g rgname -c <container name> -r <server url> -u <username> -p <password>
@@ -74,7 +74,7 @@ az webapp config container set -n sname1 -g rgname -c <container name> -r <serve
 
 ## <a name="enable-continuous-deployments-for-custom-docker-images"></a>Habilitación de implementaciones continuas para imágenes de Docker personalizadas
 
-Con el siguiente comando puede habilitar la funcionalidad de CD y obtener la dirección URL de webhook. Esta dirección URL se puede usar para configurar su repositorio de Azure Container Registry o DockerHub.
+Con el siguiente comando de Hola puede habilitar la funcionalidad del CD de Hola y obtener la dirección url del webhook Hola. Esta dirección url puede ser usado tooconfigure se DockerHub o del registro de contenedor de Azure repositorios.
 
 ```azurecli-interactive
 az webapp deployment container config -n sname -g rgname -e true
@@ -82,7 +82,7 @@ az webapp deployment container config -n sname -g rgname -e true
 
 ## <a name="create-a-web-app-on-linux-app-using-one-of-our-built-in-runtime-frameworks"></a>Creación de una aplicación web en Linux mediante uno de nuestros marcos en tiempo de ejecución integrados
 
-Para crear una aplicación web de PHP 5.6 en Linux, puede usar el siguiente comando.
+toocreate una aplicación PHP 5.6 en App Linux que, se puede usar el siguiente comando de Hola.
 
 ```azurecli-interactive
 az webapp create -n sname -g rgname -p pname -r "php|5.6"
@@ -90,7 +90,7 @@ az webapp create -n sname -g rgname -p pname -r "php|5.6"
 
 ## <a name="change-framework-version-for-an-existing-web-app-on-linux-app"></a>Cambio de la versión de .NET Framework por una aplicación web en Linux existente
 
-Para cambiar una aplicación creada anteriormente, de la versión de .NET Framework actual a Node.js 6.11, puede usar el siguiente comando:
+toochange una aplicación creada anteriormente, de hello actual framework versión tooNode.js 6.11, puede usar Hola siguiente comando:
 
 ```azurecli-interactive
 az webapp config set -n sname -g rgname --linux-fx-version "node|6.11"
@@ -98,7 +98,7 @@ az webapp config set -n sname -g rgname --linux-fx-version "node|6.11"
 
 ## <a name="set-up-git-deployments-for-your-web-app"></a>Configuración de implementaciones Git para su aplicación web
 
-Para configurar implementaciones Git para su aplicación, puede usar el siguiente comando:
+tooset una de las implementaciones de Git para la aplicación, puede usar Hola siguiente comando:
 
 ```azurecli-interactive
 az webapp deployment source config -n sname -g rgname --repo-url <gitrepo url> --branch <branch>

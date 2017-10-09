@@ -1,7 +1,7 @@
 ---
-title: "Ejecución de consultas de análisis ad-hoc entre varias bases de datos de Azure SQL| Microsoft Docs"
-description: "Ejecute consultas de análisis ad hoc en varias bases de datos SQL en la aplicación multiinquilino SaaS de Wingtip."
-keywords: tutorial de base de datos sql
+title: "las consultas de análisis de aaaRun ad-hoc a través de varias bases de datos SQL de Azure | Documentos de Microsoft"
+description: "Ejecute las consultas de análisis ad hoc a través de varias bases de datos SQL en la aplicación de varios inquilinos de hello Wingtip SaaS."
+keywords: tutorial de SQL Database
 services: sql-database
 documentationcenter: 
 author: stevestein
@@ -16,81 +16,81 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: billgib; sstein
-ms.openlocfilehash: c287fe5d6b333c749b0580b5253e7e46ac27232b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 140cd51fdd03b5a548147282b51ceb0ad80c944d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="run-ad-hoc-analytics-queries-across-all-wingtip-saas-tenants"></a>Ejecución de consultas de análisis ad hoc en todos los inquilinos SaaS de Wingtip
 
-En este tutorial, se ejecutan consultas distribuidas en todo el conjunto de bases de datos de inquilino para habilitar el análisis ad hoc. La consulta elástica se usa para habilitar las consultas distribuidas, lo que requiere la implementación de una base de datos de análisis adicional (en el servidor de catálogo). Estas consultas pueden extraer información incluida en los datos operativos diarios de la aplicación SaaS Wingtip.
+En este tutorial, ejecutar consultas distribuidas en todo conjunto de bases de datos de inquilino de hello tooenable "ad-hoc" análisis. Consulta elástico es consultas tooenable usado distribuido, lo que requiere que se implementa una base de datos de análisis adicional (servidor de catálogo toohello). Estas consultas pueden extraer información ocultos en hello cotidianas operacionales de datos de aplicación de SaaS Wingtip hello.
 
 
 En este tutorial, obtendrá información:
 
 > [!div class="checklist"]
 
-> * Acerca de las vistas globales en cada base de datos, que habilitan la realización eficiente de consultas en varios inquilinos
-> * Acerca de la implementación de una base de datos de análisis ad hoc
-> * Acerca de cómo ejecutar consultas distribuidas en todas las bases de datos de inquilinos
+> * Acerca de las vistas globales de hello en cada base de datos, que permiten consultar eficaz entre los inquilinos
+> * ¿Cómo toodeploy una base de datos de análisis ad hoc
+> * ¿Cómo toorun consultas distribuidas en todas las bases de datos de inquilino
 
 
 
-Para completar este tutorial, asegúrese de cumplir los siguientes requisitos previos:
+toocomplete se ha completado este tutorial, asegúrese de hello seguro después de requisitos previos:
 
-* Se implementa la aplicación SaaS de Wingtip. Para implementarla en menos de cinco minutos, consulte el artículo sobre la [implementación y exploración de la aplicación SaaS de Wingtip](sql-database-saas-tutorial.md).
+* se implementa la aplicación de SaaS Wingtip Hello. vea toodeploy en menos de cinco minutos, [implementar y explorar la aplicación de SaaS Wingtip hello](sql-database-saas-tutorial.md)
 * Azure PowerShell está instalado. Para más información, consulte [Introducción a Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
-* SQL Server Management Studio (SSMS) está instalado. Para descargar e instalar SSMS, consulte [Descarga de SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
+* SQL Server Management Studio (SSMS) está instalado. toodownload e instale SSMS, vea [descargar SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
 
 
 ## <a name="ad-hoc-analytics-pattern"></a>Patrón de análisis ad hoc
 
-Una de las grandes oportunidades que ofrecen las aplicaciones SaaS es el uso de la gran cantidad de datos de inquilino almacenados centralmente en la nube. Use estos datos para obtener información sobre la operación y el uso de la aplicación; los inquilinos, sus usuarios, preferencias y comportamientos; etc. Esta información puede guiarle en el desarrollo de características, mejoras de facilidad de uso y otras inversiones en sus aplicaciones y servicios.
+Una de las grandes oportunidades de hello con aplicaciones de SaaS es ingente cantidad de Hola de toouse de datos de inquilino que se almacenan de forma centralizada en la nube de Hola. Utilice esta información sobre toogain los datos en la operación de Hola y el uso de la aplicación, los inquilinos, sus usuarios, las preferencias, comportamientos, etcetera. Esta información puede guiarle en el desarrollo de características, mejoras de facilidad de uso y otras inversiones en sus aplicaciones y servicios.
 
-Es fácil obtener acceso a estos datos en una sola base de datos multiinquilino, pero no es tan fácil cuando se distribuyen a escala en miles de bases de datos. Un enfoque es usar la [consulta elástica](sql-database-elastic-query-overview.md), que permite consultas en un conjunto distribuido de bases de datos con un esquema común. La consulta elástica usa una única base de datos *principal* en la que se definen tablas externas que reflejan tablas o vistas en las bases de datos (de inquilino) distribuidas. Las consultas que se envían a esta base de datos principal se compilan para producir un plan de consulta distribuido, con partes de la consulta aplicadas en las bases de datos de inquilino según sea necesario. La consulta elástica usa el mapa de particiones de la base de datos del catálogo para proporcionar la ubicación de las bases de datos de inquilino. La configuración y la consulta son sencillas y utilizan [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-reference) estándar; además, admiten consultas ad hoc desde herramientas como Power BI y Excel.
+Es fácil obtener acceso a estos datos en una sola base de datos multiinquilino, pero no es tan fácil cuando se distribuyen a escala en miles de bases de datos. Un enfoque es toouse [consulta elástico](sql-database-elastic-query-overview.md), lo que permite realizar consultas a través de un conjunto distribuido de bases de datos con el esquema común. Consulta flexible usa un único *head* base de datos en el que se definen las tablas externas que reflejado tablas o vistas en hello distribuyen las bases de datos (inquilino). Las consultas se envían toothis principal base de datos es tooproduce compilado un plan de consulta distribuida, con algunas partes de la consulta de hello Enviar hacia abajo en las bases de datos del inquilino de toohello según sea necesario. Consulta flexible utiliza mapa de particiones de hello en ubicación hello tooprovide de base de datos de catálogo de Hola de bases de datos de inquilino de Hola. La configuración y la consulta son sencillas y utilizan [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-reference) estándar; además, admiten consultas ad hoc desde herramientas como Power BI y Excel.
 
-Mediante la distribución de las consultas en las bases de datos de inquilino, la consulta elástica proporciona una visión inmediata de los datos de producción activos. Sin embargo, como la consulta elástica puede extraer los datos de muchas bases de datos, la latencia de las consultas a veces puede ser mayor que las consultas equivalentes enviadas a una sola base de datos multiinquilino. Se debe tener cuidado al diseñar las consultas para minimizar los datos que se devuelven. La consulta elástica a menudo resulta más apropiada para consultar pequeñas cantidades de datos en tiempo real, en lugar de generar informes o consultas de análisis complejos o usados con frecuencia. Si las consultas no funcionan correctamente, examine el [plan de ejecución](https://docs.microsoft.com/sql/relational-databases/performance/display-an-actual-execution-plan) para ver qué parte de la consulta se ha transferido a la base de datos remota y cuántos datos se devuelven. Las consultas que requieren un procesamiento analítico complejo en algunos casos pueden ser mejor atendidas si se extraen los datos de inquilino en una base de datos dedicada o un almacenamiento de datos optimizado para las consultas de análisis. Este enfoque se explica en el [tutorial de análisis de inquilino](sql-database-saas-tutorial-tenant-analytics.md). 
+Al distribuir las consultas entre bases de datos de inquilino de hello, elástica consulta proporciona una visión inmediata en los datos de producción en vivo. Sin embargo, cuando consulta elástico extrae datos de potencialmente muchas bases de datos, consultas latencia a veces puede ser superior de las consultas equivalentes envían única la base de datos de varios inquilinos tooa. Se debe tener cuidado al diseñar consultas con datos de hello toominimize que se devuelven. Consulta flexible es a menudo más apropiada para las consultas pequeñas cantidades de datos en tiempo real, como opuesto toobuilding utilizadas con frecuencia o las consultas de análisis complejos o informes. Si las consultas no funcionan correctamente, examine hello [plan de ejecución](https://docs.microsoft.com/sql/relational-databases/performance/display-an-actual-execution-plan) toosee qué parte de la consulta de Hola se ha insertado hacia abajo de la base de datos remota toohello y se devuelve la cantidad de datos. Las consultas que requieren un procesamiento analítico complejo en algunos casos pueden ser mejor atendidas si se extraen los datos de inquilino en una base de datos dedicada o un almacenamiento de datos optimizado para las consultas de análisis. Este patrón se explica en hello [tutorial de análisis de inquilino](sql-database-saas-tutorial-tenant-analytics.md). 
 
-## <a name="get-the-wingtip-application-scripts"></a>Obtener scripts de la aplicación Wingtip
+## <a name="get-hello-wingtip-application-scripts"></a>Obtener scripts de la aplicación hello Wingtip
 
-Los scripts SaaS de Wingtip y el código fuente de la aplicación están disponibles en el repositorio de GitHub [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS). [Pasos para descargar los scripts SaaS de Wingtip](sql-database-wtp-overview.md#download-and-unblock-the-wingtip-saas-scripts).
+Hello Wingtip SaaS scripts y código fuente de aplicación están disponibles en hello [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) repositorio de github. [Pasos de secuencias de comandos de toodownload Hola Wingtip SaaS](sql-database-wtp-overview.md#download-and-unblock-the-wingtip-saas-scripts).
 
 ## <a name="create-ticket-sales-data"></a>Creación de datos de ventas de entradas
 
-Para ejecutar consultas en un conjunto de datos más interesante, ejecute el generador de entradas para crear datos de ventas de entradas.
+toorun consultas en un conjunto de datos más interesante, crear datos de ventas de vale ejecutando Hola vale generador.
 
-1. En *PowerShell ISE*, abra el script ...\\Learning Modules\\Operational Analytics\\Adhoc Analytics\\*Demo-AdhocAnalytics.ps1* y establezca los valores siguientes:
+1. Hola *PowerShell ISE*, abra Hola... \\Módulos de aprendizaje\\análisis operativos\\"ad hoc" análisis\\*AdhocAnalytics.ps1 demostración* de secuencias de comandos y establezca Hola siguientes valores:
    * **$DemoScenario** = 1, **Purchase tickets for events at all venues** (comprar entradas para eventos de todas las ubicaciones).
-2. Presione **F5** para ejecutar el script y generar datos de ventas de entradas. Mientras se ejecuta el script, siga con los pasos de este tutorial. Los datos de entradas se consultan en la sección *Ejecución de consultas distribuidas ad hoc*, de modo que espere a que el generador de entradas finalice, si aún se está ejecutando cuando llegue a ese ejercicio.
+2. Presione **F5** para ejecutar el script de Hola y generar ventas de vale. Mientras se ejecuta el script de Hola, continúe con los pasos de hello en este tutorial. datos de vale de Hola se consultan en hello *ejecutar consultas distribuida ad hoc* sección, por lo que espere Hola vale generador toocomplete, si aún está en ejecución cuando se obtiene toothat ejercicio.
 
-## <a name="explore-the-global-views"></a>Exploración de las vistas globales
+## <a name="explore-hello-global-views"></a>Explorar vistas globales Hola
 
-La aplicación SaaS de Wingtip se compila siguiendo un modelo de inquilino por cada base de datos, por lo que el esquema de base de datos de inquilino se define desde la perspectiva del inquilino único. Existe información específica del inquilino en una tabla, *Venue*, que siempre tiene una sola fila y, además, se ha diseñado como montón, sin clave principal. No es necesario que otras tablas del esquema estén relacionadas con la tabla *Venue*, ya que, en el uso normal, no hay nunca duda de a qué inquilino pertenecen los datos.
+Hola aplicación SaaS de Wingtip se basa en un modelo de inquilinos por base de datos, por lo que se define el esquema de base de datos de inquilino de Hola desde la perspectiva del inquilino único. Existe información específica del inquilino en una tabla, *Venue*, que siempre tiene una sola fila y, además, se ha diseñado como montón, sin clave principal. No es necesario toobe relacionadas con otras tablas en el esquema de hello toohello *lugar* tabla, ya que en el uso normal, nunca hay alguna duda de qué datos de hello inquilino pertenecen.
 
-Sin embargo, al consultar en todas las bases de datos, es importante que la consulta elástica pueda tratar los datos como si formaran parte de una sola base de datos lógica compartida por el inquilino. Para ello, se agrega un conjunto de vistas 'globales' a la base de datos de inquilino que proyectan un identificador de inquilino en cada una de las tablas que se consultan globalmente. Por ejemplo, la vista *VenueEvents* agrega un identificador *VenueId* calculado a las columnas que se proyectan desde la tabla *Events*. Al definir la tabla externa en la base de datos principal con la tabla *VenueEvents* (en lugar de con la tabla subyacente *Events*), la consulta elástica puede transferir las combinaciones basadas en el identificador *VenueId* de modo que se pueden ejecutar en paralelo en cada base de datos remota (en lugar de en la base de datos principal). Así se reduce considerablemente la cantidad de datos que se devuelven, lo que da como resultado un aumento sustancial del rendimiento para muchas consultas. Estas vistas globales se han creado previamente en todas las bases de datos de inquilino (y en *basetenantdb*).
+Sin embargo, al consultar a través de todas las bases de datos, es importante que elástico consulta puede tratar datos de hello como si forma parte de una base de datos lógica particionada por inquilino. tooachieve esto, un conjunto de vistas 'globales' son la base de datos de inquilinos de toohello agregada que proyecte un Id. de inquilino en cada una de las tablas de Hola que se consultan globalmente. Por ejemplo, hello *VenueEvents* vista agrega una calculada *VenueId* toohello columnas proyectan de hello *eventos* tabla. Mediante la definición de tabla externa de hello en la base de datos principal de hello sobre *VenueEvents* (en lugar de hello subyacente *eventos* tabla), consulta flexible es capaz de toopush hacia abajo en función de las combinaciones *VenueId* para que se pueden ejecutar en paralelo en cada base de datos remoto (en lugar de en la base de datos principal de hello). Esto reduce considerablemente Hola cantidad de datos que se devuelven, lo que da como resultado un aumento sustancial del rendimiento para muchas consultas. Estas vistas globales se han creado previamente en todas las bases de datos de inquilino (y en *basetenantdb*).
 
-1. Abra SSMS y [conéctese al servidor tenants1-&lt;USUARIO&gt;](sql-database-wtp-overview.md#explore-database-schema-and-execute-sql-queries-using-ssms).
+1. Abra SSMS y [conectar toohello tenants1 -&lt;usuario&gt; server](sql-database-wtp-overview.md#explore-database-schema-and-execute-sql-queries-using-ssms).
 2. Expanda **Bases de datos**, haga clic con el botón derecho en **contosoconcerthall** y seleccione **Nueva consulta**.
-3. Ejecute las siguientes consultas para explorar la diferencia entre las tablas de inquilino único y las vistas globales:
+3. Ejecute hello después de diferencia de hello tooexplore de consultas entre tablas de único inquilino de Hola y vistas globales hello:
 
    ```T-SQL
-   -- The base Venue table, that has no VenueId associated.
+   -- hello base Venue table, that has no VenueId associated.
    SELECT * FROM Venue
 
-   -- Notice the plural name 'Venues'. This view projects a VenueId column.
+   -- Notice hello plural name 'Venues'. This view projects a VenueId column.
    SELECT * FROM Venues
 
-   -- The base Events table, which has no VenueId column.
+   -- hello base Events table, which has no VenueId column.
    SELECT * FROM Events
 
-   -- This view projects the VenueId retrieved from the Venues table.
+   -- This view projects hello VenueId retrieved from hello Venues table.
    SELECT * FROM VenueEvents
    ```
 
-En estas vistas, el identificador *VenueId* se ha calculado como un valor hash del nombre de Venue, pero se puede usar cualquier estrategia para introducir un valor único. Esta estrategia es similar a cómo se calcula la clave de inquilino para usarse en el catálogo.
+En estas vistas, Hola *VenueId* se calcula como un hash del nombre de la ubicación de hello, pero cualquier enfoque podría ser toointroduce usa un valor único. Este enfoque es similar toohello manera clave de inquilino de Hola se calcula para su uso en el catálogo de Hola.
 
-Para examinar la definición de la vista *Venues*:
+definición de hello tooexamine de hello *recintos* vista:
 
 1. En **Explorador de objetos**, expanda **contosoconcerthall** > **Vistas**:
 
@@ -99,79 +99,79 @@ Para examinar la definición de la vista *Venues*:
 2. Haga clic con el botón derecho en **dbo.Venues**.
 3. Seleccione **Incluir vista como** > **CREATE To** > **Nueva ventana del Editor de consultas**.
 
-Incluya en el script cualquiera de las otras vistas *Venue* para ver cómo agregan el identificador *VenueId*.
+Script cualquiera de hello otro *lugar* vistas toosee cómo agregan hello *VenueId*.
 
-## <a name="deploy-the-database-used-for-ad-hoc-distributed-queries"></a>Implementación de la base de datos usada para las consultas distribuidas ad hoc
+## <a name="deploy-hello-database-used-for-ad-hoc-distributed-queries"></a>Implementar base de datos de hello utilizada para consultas distribuida ad hoc
 
-En este ejercicio se implementa la base de datos *adhocanalytics*. Esta es la base de datos principal que contendrá el esquema utilizado para realizar consultas en todas las bases de datos de inquilino. La base de datos se implementa en el servidor de catálogo existente, que es el utilizado para todas las bases de datos relacionadas con la administración en la aplicación de ejemplo.
+Este ejercicio implementa hello *adhocanalytics* base de datos. Se trata de hello base de datos principal que contendrá el esquema de hello usado para realizar consultas en varias bases de datos de todos los inquilinos. base de datos de Hello es toohello implementada existente de servidor de catálogo, que es el servidor de hello usado para todos los relacionados con la administración de bases de datos de aplicación de ejemplo de Hola.
 
-1. Abra ...\\Learning Modules\\Operational Analytics\\Adhoc Analytics\\*Demo-AdhocAnalytics.ps1* en *PowerShell ISE* y establezca los valores siguientes:
+1. Abra... \\Módulos de aprendizaje\\análisis operativos\\"ad hoc" análisis\\*demostración AdhocAnalytics.ps1* en hello *PowerShell ISE* conjunto hello y valores siguientes:
    * **$DemoScenario** = 2, **Implementar una base de datos de análisis ad hoc**.
 
-2. Presione **F5** para ejecutar el script y crear la base de datos *adhocanalytics*.
+2. Presione **F5** toorun Hola script y crear hello *adhocanalytics* base de datos.
 
-En la siguiente sección, se agrega el esquema a la base de datos de modo que se pueda usar para ejecutar consultas distribuidas.
+En la siguiente sección hello, Agregar base de datos de esquema toohello por lo que puede ser usado toorun distribuida consultas.
 
-## <a name="configure-the-database-for-running-distributed-queries"></a>Configuración de la base de datos para ejecutar consultas distribuidas
+## <a name="configure-hello-database-for-running-distributed-queries"></a>Configurar base de datos de Hola para ejecutar consultas distribuidas
 
-En este ejercicio se agrega el esquema (el origen de datos externo y las definiciones de tabla externas) a la base de datos de análisis ad hoc que permite realizar consultas en todas las bases de datos de inquilino.
+Este ejercicio agrega esquema (origen de datos externo de Hola y definiciones de tabla externa) toohello ad-hoc análisis base de datos que permite realizar consultas en varias bases de datos de todos los inquilinos.
 
-1. Abra SQL Server Management Studio y conéctese a la base de datos de análisis ad hoc que creó en el paso anterior. El nombre de la base de datos será adhocanalytics.
+1. Abra SQL Server Management Studio y conéctese toohello creado en el paso anterior de Hola de base de datos de análisis ad hoc. nombre de Hola de base de datos de hello será adhocanalytics.
 2. Abra ...\Learning Modules\Operational Analytics\Adhoc Analytics\ *Initialize-AdhocAnalyticsDB.sql* en SSMS.
-3. Revise el script SQL y tenga en cuenta lo siguiente:
+3. Revisar la secuencia de comandos SQL de Hola y tenga en cuenta Hola siguiente:
 
-   La consulta elástica usa una credencial de ámbito de base de datos para acceder a cada una de las bases de datos de inquilino. Esta credencial debe estar disponible en todas las bases de datos y normalmente se le deberían conceder los derechos mínimos necesarios para permitir estas consultas ad hoc.
+   Consulta flexible utiliza una credencial de ámbito de base de datos tooaccess cada de bases de datos de inquilino de Hola. Esta credencial debe toobe disponible en todas las bases de datos de Hola y normalmente se debe conceder los derechos mínimos de hello necesitan tooenable estas consultas ad hoc.
 
     ![crear credencial](media/sql-database-saas-tutorial-adhoc-analytics/create-credential.png)
 
-   El origen de datos externo, que se define para usar el mapa de particiones de inquilino en la base de datos de catálogo. Al utilizarlo como origen de datos externo, las consultas se distribuyen a todas las bases de datos registradas en el catálogo cuando se ejecuta la consulta. Dado que los nombres de servidor son diferentes para cada implementación, este script de inicialización obtiene la ubicación de la base de datos de catálogo mediante la recuperación del servidor actual (@@servername) donde se ejecuta el script.
+   Hello origen de datos externo, que está había definido mapa de particiones de toouse Hola inquilino en la base de datos de catálogo de Hola. Al utilizar esto como origen de datos externo de hello, las consultas son bases de datos de tooall distribuida registrados en el catálogo de hello cuando se ejecuta la consulta de Hola. Ya que los nombres de servidor son diferentes para cada implementación, este script de inicialización Obtiene la ubicación de Hola de base de datos de catálogo de hello mediante la recuperación de servidor actual de hello (@@servername) donde se ejecuta el script de Hola.
 
     ![crear origen de datos externos](media/sql-database-saas-tutorial-adhoc-analytics/create-external-data-source.png)
 
-   Las tablas externas que hacen referencia a las vistas globales descritas en la sección anterior y definidas con **DISTRIBUTION = SHARDED(VenueId)**. Dado que cada identificador *VenueId* se asigna a una sola base de datos, así se mejora el rendimiento para muchos escenarios, como se muestra en la sección siguiente.
+   Hola tablas externas que hacen referencia a vistas globales de Hola se describe en la sección anterior de Hola y definido con **distribución = SHARDED(VenueId)**. Dado que cada *VenueId* tooa única base de datos se asigna Esto mejora el rendimiento para muchos escenarios como se muestra en la siguiente sección de Hola.
 
     ![crear tablas externas](media/sql-database-saas-tutorial-adhoc-analytics/external-tables.png)
 
-   La tabla local *VenueTypes* que se crea y rellena. Esta tabla de datos de referencia es común en todas las bases de datos de inquilino, por lo que se puede representar como una tabla local y rellenarse con los datos comunes. En algunas consultas, así se puede reducir la cantidad de datos movidos entre las bases de datos de inquilino y la base de datos *adhocanalytics*.
+   tabla local Hello *VenueTypes* que se crean y rellenan. Esta tabla de datos de referencia es común en todas las bases de datos de inquilino, por lo que se puede representar como una tabla local y rellena con datos comunes de Hola. Para algunas consultas que esto puede reducir Hola cantidad de datos movidos entre las bases de datos del inquilino de Hola y Hola *adhocanalytics* base de datos.
 
     ![crear tabla](media/sql-database-saas-tutorial-adhoc-analytics/create-table.png)
 
-   Si incluye tablas de referencia de esta manera, asegúrese de actualizar el esquema de tabla y los datos cada vez que actualice las bases de datos de inquilino.
+   Si incluye tablas de referencia de esta manera, ser datos y el esquema de tabla de hello tooupdate seguro cada vez que actualice las bases de datos del inquilino de Hola.
 
-4. Presione **F5** para ejecutar el script e inicializar la base de datos *adhocanalytics*. 
+4. Presione **F5** toorun Hola script e inicializar hello *adhocanalytics* base de datos. 
 
 Ahora puede ejecutar consultas distribuidas y recopilar información de todos los inquilinos.
 
 ## <a name="run-ad-hoc-distributed-queries"></a>Ejecución de consultas distribuidas ad hoc
 
-Ahora que la base de datos *adhocanalytics* está configurada, continúe y ejecute algunas consultas distribuidas. Incluya el plan de ejecución para comprender mejor dónde sucede el procesamiento de las consultas. 
+Ahora que hello *adhocanalytics* base de datos está configurado, siga adelante y ejecute algunas consultas distribuidas. Incluir plan de ejecución de Hola para una mejor comprensión de donde sucede el procesamiento de consultas de Hola. 
 
-Al inspeccionar el plan de ejecución, mantenga el mouse sobre los iconos de plan para obtener más información. 
+Al inspeccionar el plan de ejecución de hello, mantenga el mouse sobre los iconos del plan de Hola para obtener más información. 
 
-Es importante tener en cuenta que la configuración **DISTRIBUTION = SHARDED(VenueId)** cuando se define el origen de datos externo, mejora el rendimiento en muchos escenarios. Dado que cada identificador *VenueId* se asigna a una sola base de datos, el filtrado se lleva a cabo fácilmente de forma remota, y devuelve solo los datos que se necesitan.
+Toonote importante, es esa configuración **distribución = SHARDED(VenueId)** cuando se define el origen de datos externo de hello, mejora el rendimiento en muchos escenarios. Dado que cada *VenueId* asigna tooa única base de datos filtrado es datos fácilmente done remotamente, devolver Hola solo es necesario.
 
 1. Abra ...\\Learning Modules\\Operational Analytics\\Adhoc Analytics\\*Demo-AdhocAnalyticsQueries.sql* en SSMS.
-2. Asegúrese de que está conectado a la base de datos **adhocanalytics**.
-3. Seleccione el menú **Consulta** y haga clic en **Incluir plan de ejecución real**.
-4. Resalte la consulta *Which venues are currently registered?* (¿Qué ubicaciones están registradas actualmente?) y presione **F5**.
+2. Asegúrese de que está conectado toohello **adhocanalytics** base de datos.
+3. Seleccione hello **consulta** menú y haga clic en **incluir Plan de ejecución real**
+4. Resaltar hello *qué lugares están registrados actualmente?* consulta y presione **F5**.
 
-   La consulta devuelve la lista de ubicaciones completa e ilustra lo rápido y fácil que es realizar consultas en todos los inquilinos y devolver los datos de cada uno.
+   consulta Hola devuelve la lista de todo lugar de hello, que ilustra cómo rápido y fácil que es tooquery a través de todos los inquilinos y los datos devueltos desde cada inquilino.
 
-   Inspeccione el plan y compruebe que el costo íntegro es la consulta remota porque simplemente vamos a cada base de datos de inquilino y seleccionamos la información de las ubicaciones.
+   Inspeccionar el plan de Hola y que coste íntegro de hello es consultas remotas Hola porque estamos simplemente base de datos de curso tooeach inquilinos y seleccionando información de ubicación de Hola.
 
    ![SELECT * FROM dbo.Venues](media/sql-database-saas-tutorial-adhoc-analytics/query1-plan.png)
 
-5. Seleccione la siguiente consulta y presione **F5**.
+5. Consulta de hello seleccione siguiente y presione **F5**.
 
-   Esta consulta combina datos de las bases de datos de inquilino y de la tabla local *VenueTypes* (local porque es una tabla de la base de datos *adhocanalytics*).
+   Esta consulta combina datos de las bases de datos del inquilino de Hola y Hola local *VenueTypes* tabla (local, ya que es una tabla de hello *adhocanalytics* base de datos).
 
-   Inspeccione el plan y compruebe que la mayor parte del costo es la consulta remota, ya que se consulta la información de ubicación de cada inquilino (dbo.Venues) y, a continuación, se realiza una combinación rápida local con la tabla local *VenueTypes* para mostrar el nombre descriptivo.
+   Inspeccionar el plan de Hola y ver ese Hola mayoría del costo es consultas remotas Hola ya que se consulta la información de ubicación de cada inquilino (dbo. Recintos), y, a continuación, realice una combinación rápida local con hello locales *VenueTypes* nombre descriptivo de tabla toodisplay Hola.
 
    ![Combinación de datos remotos y locales](media/sql-database-saas-tutorial-adhoc-analytics/query2-plan.png)
 
-6. Ahora seleccione la consulta *On which day were the most tickets sold?* (¿Qué día se vendieron más entradas?) y presione **F5**.
+6. Ahora seleccione hello *día en que fueron Hola mayoría vales vendidos?* consulta y presione **F5**.
 
-   Esta consulta hace una combinación y una agregación un poco más complejas. Es importante tener en cuenta que la mayor parte del procesamiento se realiza de forma remota y, una vez más, se devuelven solo las filas que se necesitan, una única fila para el recuento total diario de ventas de entradas de cada ubicación.
+   Esta consulta hace una combinación y una agregación un poco más complejas. ¿Qué es toonote importante es que remotamente realiza la mayor parte del procesamiento de hello y, una vez más, se devolver solo las filas Hola de que necesitemos, devolver una única fila con el número de venta del cada lugar vale agregado por día.
 
    ![query](media/sql-database-saas-tutorial-adhoc-analytics/query3-plan.png)
 
@@ -183,12 +183,12 @@ En este tutorial, ha aprendido cómo:
 > [!div class="checklist"]
 
 > * Ejecutar consultas distribuidas en todas las bases de datos de inquilinos
-> * Implementar una base de datos de análisis ad hoc y agregarle el esquema para ejecutar consultas distribuidas.
+> * Implementar una base de datos de análisis ad hoc y agregar consultas de esquema tooit toorun distribuida.
 
 
-Ahora pruebe el [tutorial de análisis de inquilinos](sql-database-saas-tutorial-tenant-analytics.md) para explorar la extracción de datos en una base de datos de análisis independiente para llevar a cabo un procesamiento de análisis más complejo.
+Ahora, intente hello [tutorial de análisis de inquilino](sql-database-saas-tutorial-tenant-analytics.md) tooexplore tooa independiente análisis de datos para el procesamiento de análisis más complejo de extracción...
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* Otros [tutoriales basados en la aplicación SaaS de Wingtip](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
+* Adicionales [tutoriales que parten Hola aplicación Wingtip SaaS](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
 * [Consulta elástica](sql-database-elastic-query-overview.md)

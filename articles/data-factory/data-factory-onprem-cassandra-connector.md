@@ -1,6 +1,6 @@
 ---
-title: Movimiento de datos de Cassandra mediante Data Factory | Microsoft Docs
-description: Aprenda a mover los datos de una base de datos de Cassandra local con Data Factory de Azure.
+title: datos de aaaMove de Casandra con el generador de datos | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toomove datos de un Casandra local de base de datos con el generador de datos de Azure."
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jingwang
-ms.openlocfilehash: f2b225bdbdf2880d26a6ab5f992301bf0a804b0d
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 0e265d3a8439d0a2cb2a5c32e5ea8348a1617621
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Movimiento de datos desde una base de datos de Cassandra local con Data Factory de Azure
-En este artículo se explica el uso de la actividad de copia en Azure Data Factory para mover datos de una base de datos de Cassandra local. Se basa en la información general ofrecida por el artículo sobre [actividades de movimiento de datos](data-factory-data-movement-activities.md).
+Este artículo explica cómo toouse Hola actividad de copia de datos de toomove Data Factory de Azure desde una base de datos de Casandra local. Se basa en hello [las actividades de movimiento de datos](data-factory-data-movement-activities.md) artículo, que presenta una descripción general de movimiento de datos con la actividad de copia de Hola.
 
-Puede copiar datos de un almacén de datos de Cassandra local a cualquier almacén de datos receptor admitido. Para ver una lista de almacenes de datos admitidos como receptores por la actividad de copia, consulte la tabla de [almacenes de datos compatibles](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Data Factory solo admite actualmente el movimiento de datos desde un almacén de datos de Cassandra hasta otros almacenes de datos, pero no al contrario. 
+Puede copiar datos desde un almacén de datos local Casandra datos almacén tooany admitida receptor. Para obtener una lista de datos admite los almacenes como receptores de actividad de copia de hello, vea hello [admite almacenes de datos](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabla. Factoría de datos admite actualmente solo mover tooother almacenes de datos del almacén de datos desde una datos Casandra, pero no para mover los datos de otro almacén de datos de datos almacenes tooa Casandra. 
 
 ## <a name="supported-versions"></a>Versiones compatibles
-El conector de Cassandra admite la versión 2.X de Cassandra.
+Conector de Hello Casandra admite Hola después de las versiones de Casandra: 2.X.
 
 ## <a name="prerequisites"></a>Requisitos previos
-Para que el servicio de Azure Data Factory pueda conectarse a la base de datos de Cassandra local, se debe instalar Data Management Gateway en la misma máquina que hospeda la base de datos o en una máquina independiente, con el fin de evitar la competencia por los recursos con la base de datos. Data Management Gateway es un componente que conecta orígenes de datos locales a servicios en la nube de forma segura y administrada. Consulte el artículo [Data Management Gateway](data-factory-data-management-gateway.md) para más detalles sobre Data Management Gateway. Consulte el artículo [Movimiento de datos entre orígenes locales y la nube con Data Management Gateway](data-factory-move-data-between-onprem-and-cloud.md) para instrucciones paso a paso sobre cómo configurar la puerta de enlace como canalización de datos para mover datos.
+Para hello Data Factory de Azure servicio toobe tooconnect pueda tooyour local Casandra base de datos, debe instalar una puerta de enlace de administración de datos en hello mismo esa base de datos de Hola de hosts de máquina o en un tooavoid máquina independiente que compiten por los recursos con hello base de datos. Data Management Gateway es un componente que se conecta a servicios de toocloud de orígenes de datos locales de forma segura y administrada. Consulte el artículo [Data Management Gateway](data-factory-data-management-gateway.md) para más detalles sobre Data Management Gateway. Vea [mover datos desde local toocloud](data-factory-move-data-between-onprem-and-cloud.md) artículo para obtener instrucciones paso a paso sobre cómo configurar la puerta de enlace de hello una canalización de datos toomove datos.
 
-Debe usar la puerta de enlace para conectarse a una base de datos de Cassandra incluso si la base de datos está hospedada en la nube, por ejemplo, en una máquina virtual de IaaS de Azure. Puede tener la puerta de enlace en la misma máquina virtual que hospeda la base de datos o en una máquina virtual independiente, siempre que la puerta de enlace se pueda conectar a la base de datos.  
+Debe usar hello tooconnect tooa Casandra la base de datos, incluso si la base de datos de Hola se hospeda en la nube de hello, por ejemplo, en una máquina virtual de IaaS de Azure. Y puede tener puerta de enlace de hello en Hola misma VM esa base de datos de Hola de hosts o en una máquina virtual independiente siempre y cuando la puerta de enlace de Hola se pueden conectar toohello base de datos.  
 
-Cuando instale la puerta de enlace, se instalará automáticamente el controlador ODBC de Microsoft Cassandra que se utiliza para establecer la conexión con la base de datos de Cassandra. Por lo tanto, no es necesario instalar manualmente ningún controlador en la máquina de puerta de enlace cuando se copian datos desde la base de datos de Cassandra. 
+Cuando se instala la puerta de enlace de hello, instala automáticamente una base de datos de Microsoft Casandra ODBC driver utiliza tooconnect tooCassandra. Por lo tanto, no es necesario toomanually instalar ningún controlador en la máquina de puerta de enlace de hello cuando se copian datos de base de datos de hello Casandra. 
 
 > [!NOTE]
 > Consulte [Solución de problemas de la puerta de enlace](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) para obtener sugerencias para solucionar problemas de conexión o puerta de enlace.
@@ -41,62 +41,62 @@ Cuando instale la puerta de enlace, se instalará automáticamente el controlado
 ## <a name="getting-started"></a>Introducción
 Puede crear una canalización con una actividad de copia que mueva los datos desde un almacén de datos Cassandra local mediante el uso de diferentes herramientas o API. 
 
-- La manera más fácil de crear una canalización es usar el **Asistente para copia**. Consulte [Tutorial: crear una canalización con la actividad de copia mediante el Asistente para copia de Data Factory](data-factory-copy-data-wizard-tutorial.md) para ver un tutorial rápido sobre la creación de una canalización mediante el Asistente para copiar datos. 
-- También puede usar las herramientas siguientes para crear una canalización: **Azure Portal**, **Visual Studio**, **Azure PowerShell**, **plantilla de Azure Resource Manager**, **API de .NET** y **API de REST**. Consulte el [tutorial de actividad de copia](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) para obtener instrucciones paso a paso sobre cómo crear una canalización con una actividad de copia. 
+- toocreate de manera más fácil de Hello una canalización es hello de toouse **Asistente para copiar**. Vea [Tutorial: crear una canalización mediante el Asistente para copiar](data-factory-copy-data-wizard-tutorial.md) para ver un tutorial sobre cómo crear una canalización mediante el Asistente para datos de copia de hello rápido. 
+- También puede usar Hola después herramientas toocreate una canalización: **portal de Azure**, **Visual Studio**, **Azure PowerShell**, **plantilla del Administrador de recursos de Azure** , **API de .NET**, y **API de REST**. Vea [tutorial de la actividad de copia](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) para obtener instrucciones paso a paso toocreate una canalización con una actividad de copia. 
 
-Tanto si usa las herramientas como las API, realice los pasos siguientes para crear una canalización que mueva datos de un almacén de datos de origen a un almacén de datos receptor:
+Si usa herramientas de Hola o las API, realizar Hola siguiendo los pasos toocreate una canalización que mueve el almacén de datos del receptor de tooa del almacén de datos desde un origen de datos:
 
-1. Cree **servicios vinculados** para vincular almacenes de datos de entrada y salida a la factoría de datos.
-2. Cree **conjuntos de datos** con el fin de representar los datos de entrada y salida para la operación de copia. 
+1. Crear **servicios vinculados** factoría de datos de tooyour de almacenes de datos de entrada y salida de toolink.
+2. Crear **conjuntos de datos** toorepresent de entrada y salida la operación de copia de datos de Hola. 
 3. Cree una **canalización** con una actividad de copia que tome como entrada un conjunto de datos y un conjunto de datos como salida. 
 
-Cuando se usa el Asistente, se crean automáticamente definiciones de JSON para estas entidades de Data Factory (servicios vinculados, conjuntos de datos y la canalización). Al usar herramientas o API (excepto la API de .NET), se definen estas entidades de Data Factory con el formato JSON.  Para ver un ejemplo con definiciones JSON para entidades de Data Factory que se usan para copiar datos de un almacén de datos de Cassandra local, consulte la sección [Ejemplo: Copia de datos de Cassandra en un blob de Azure](#json-example-copy-data-from-cassandra-to-azure-blob) de este artículo. 
+Cuando se utiliza el Asistente de hello, las definiciones de JSON para estas entidades de la factoría de datos (servicios vinculados, conjuntos de datos y canalización Hola) se crean automáticamente para usted. Al usar herramientas y API (excepto la API. NET), se definen estas entidades de la factoría de datos con formato JSON de Hola.  Para obtener un ejemplo con definiciones de JSON para entidades de la factoría de datos que son datos de uso toocopy desde un almacén de datos local Casandra, consulte [ejemplo de JSON: copiar los datos de Blob del Casandra tooAzure](#json-example-copy-data-from-cassandra-to-azure-blob) sección de este artículo. 
 
-Las secciones siguientes proporcionan detalles sobre las propiedades JSON que se usan para definir entidades de Data Factory específicas de un almacén de datos de Cassandra:
+Hello las secciones siguientes proporciona detalles acerca de las propiedades JSON que son el almacén de datos de uso toodefine factoría de datos entidades tooa específico Casandra:
 
 ## <a name="linked-service-properties"></a>Propiedades del servicio vinculado
-La tabla siguiente incluye una descripción de los elementos JSON específicos para el servicio vinculado de Cassandra.
+Hello en la tabla siguiente proporciona la descripción del servicio JSON elementos específicos tooCassandra vinculado.
 
 | Propiedad | Descripción | Obligatorio |
 | --- | --- | --- |
-| type |La propiedad type debe estar establecida en: **OnPremisesCassandra** |Sí |
-| host |Una o varias direcciones IP o nombres de host de los servidores de Cassandra.<br/><br/>Especifica una lista de direcciones IP o nombres de host separada por comas para conectar con todos los servidores a la vez. |Sí |
-| puerto |Puerto TCP que el servidor de Cassandra utiliza para escuchar las conexiones del cliente. |No. El valor predeterminado es 9042. |
+| type |propiedad de tipo Hello debe establecerse en: **OnPremisesCassandra** |Sí |
+| host |Una o varias direcciones IP o nombres de host de los servidores de Cassandra.<br/><br/>Especifique una lista separada por comas de direcciones IP o servidores de tooall de tooconnect de nombres de host al mismo tiempo. |Sí |
+| puerto |Hola el puerto TCP que Hola server Casandra utiliza toolisten para las conexiones de cliente. |No. El valor predeterminado es 9042. |
 | authenticationType |Básica o anónima |Sí |
-| nombre de usuario |Especifique el nombre de usuario de la cuenta de usuario. |Sí, si el valor de authenticationType es Basic. |
-| contraseña |Especifique la contraseña para la cuenta de usuario. |Sí, si el valor de authenticationType es Basic. |
-| gatewayName |Nombre de la puerta de enlace que se va a utilizar en la conexión con la base de datos de Cassandra local. |Sí |
-| encryptedCredential |Credencial cifrada por la puerta de enlace. |No |
+| nombre de usuario |Especifique el nombre de usuario para la cuenta de usuario de Hola. |Sí, si authenticationType se establece tooBasic. |
+| Contraseña |Especifique la contraseña de cuenta de usuario de Hola. |Sí, si authenticationType se establece tooBasic. |
+| gatewayName |nombre de Hola de puerta de enlace de Hola que es la base de datos de uso tooconnect toohello local Casandra. |Sí |
+| encryptedCredential |Credencial cifrada por la puerta de enlace de Hola. |No |
 
 ## <a name="dataset-properties"></a>Propiedades del conjunto de datos
-Para una lista completa de las secciones y propiedades disponibles para definir conjuntos de datos, vea el artículo [Creación de conjuntos de datos](data-factory-create-datasets.md). Las secciones como structure, availability y policy del código JSON del conjunto de datos son similares para todos los tipos de conjunto de datos (SQL Azure, blob de Azure, tabla de Azure, etc.).
+Para obtener una lista completa de secciones y propiedades disponibles para definir conjuntos de datos, vea hello [crear conjuntos de datos](data-factory-create-datasets.md) artículo. Las secciones como structure, availability y policy del código JSON del conjunto de datos son similares para todos los tipos de conjunto de datos (SQL Azure, blob de Azure, tabla de Azure, etc.).
 
-La sección **typeProperties** es diferente en cada tipo de conjunto de datos y proporciona información acerca de la ubicación de los datos en el almacén de datos. La sección typeProperties de los conjuntos de datos de tipo **CassandraTable** tiene las siguientes propiedades:
+Hola **typeProperties** sección es diferente para cada tipo de conjunto de datos y proporciona información acerca de la ubicación de Hola de hello datos Hola almacén de datos. sección typeProperties Hello para el conjunto de datos de tipo **CassandraTable** tiene Hola propiedades siguientes
 
 | Propiedad | Descripción | Obligatorio |
 | --- | --- | --- |
-| keyspace |Nombre del espacio de claves o esquema de la base de datos de Cassandra. |Sí (si no hay definida ninguna **consulta** para **CassandraSource**). |
-| tableName |Nombre de la tabla de la base de datos de Cassandra. |Sí (si no hay definida ninguna **consulta** para **CassandraSource**). |
+| keyspace |Nombre de keyspace de Hola o esquema de base de datos de Casandra. |Sí (si no hay definida ninguna **consulta** para **CassandraSource**). |
+| tableName |Nombre de tabla de hello en la base de datos de Casandra. |Sí (si no hay definida ninguna **consulta** para **CassandraSource**). |
 
 ## <a name="copy-activity-properties"></a>Propiedades de la actividad de copia
-Para ver una lista completa de las secciones y propiedades disponibles para definir actividades, consulte el artículo [Creación de canalizaciones](data-factory-create-pipelines.md). Las propiedades (como nombre, descripción, tablas de entrada y salida, y directivas) están disponibles para todos los tipos de actividades.
+Para obtener una lista completa de secciones y propiedades disponibles para la definición de actividades, vea hello [crear canalizaciones](data-factory-create-pipelines.md) artículo. Las propiedades (como nombre, descripción, tablas de entrada y salida, y directivas) están disponibles para todos los tipos de actividades.
 
-Por otra parte, las propiedades disponibles en la sección typeProperties de la actividad varían con cada tipo de actividad. Para la actividad de copia, varían en función de los tipos de orígenes y receptores.
+Mientras que las propiedades disponibles en la sección de typeProperties de Hola de actividad hello varían con cada tipo de actividad. Para la actividad de copia, varían en función de los tipos de Hola de orígenes y receptores.
 
-Si el origen es de tipo **CassandraSource**, estarán disponibles las propiedades siguientes en la sección typeProperties:
+Cuando el origen es del tipo **CassandraSource**, Hola propiedades siguientes está disponible en la sección typeProperties:
 
 | Propiedad | Descripción | Valores permitidos | Obligatorio |
 | --- | --- | --- | --- |
-| query |Utilice la consulta personalizada para leer los datos. |Consulta SQL-92 o consulta CQL. Vea la [CQL reference](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html)(referencia de CQL). <br/><br/>Cuando utilice una consulta SQL, especifique **nombre de espacio de claves.nombre de tabla** para representar la tabla que quiere consultar. |No (si tableName y el espacio de claves del conjunto de datos están definidos). |
-| consistencyLevel |El nivel de coherencia establece el número de réplicas que deben responder a una solicitud de lectura antes de que se devuelvan datos a la aplicación cliente. Cassandra comprueba el número de réplicas especificado para que los datos satisfagan la solicitud de lectura. |ONE, TWO, THREE, QUORUM, ALL, LOCAL_QUORUM, EACH_QUORUM, LOCAL_ONE. Para más información, consulte [Configuring data consistency](http://docs.datastax.com/en//cassandra/2.0/cassandra/dml/dml_config_consistency_c.html) (Configuración de la coherencia de datos). |No. El valor predeterminado es ONE. |
+| query |Usar datos de tooread de hello consulta personalizada. |Consulta SQL-92 o consulta CQL. Vea la [CQL reference](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html)(referencia de CQL). <br/><br/>Al usar una consulta SQL, especifique **keyspace name.table nombre** tabla de hello toorepresent desea tooquery. |No (si tableName y el espacio de claves del conjunto de datos están definidos). |
+| consistencyLevel |el nivel de coherencia de Hello especifica cuántas réplicas debe responder tooa solicitud de lectura antes de devolver la aplicación de cliente de toohello de datos. Comprobaciones de Casandra Hola número de réplicas especificado para la solicitud de lectura de hello toosatisfy de datos. |ONE, TWO, THREE, QUORUM, ALL, LOCAL_QUORUM, EACH_QUORUM, LOCAL_ONE. Para más información, consulte [Configuring data consistency](http://docs.datastax.com/en//cassandra/2.0/cassandra/dml/dml_config_consistency_c.html) (Configuración de la coherencia de datos). |No. El valor predeterminado es ONE. |
 
-## <a name="json-example-copy-data-from-cassandra-to-azure-blob"></a>Ejemplo con definiciones de JSON: copia de datos de Cassandra a un blob de Azure
-Este ejemplo proporciona definiciones JSON de ejemplo que puede usar para crear una canalización mediante [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) o [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Muestra cómo copiar datos de una base de datos de Cassandra local a Azure Blob Storage. Sin embargo, los datos se pueden copiar en cualquiera de los receptores indicados [aquí](data-factory-data-movement-activities.md#supported-data-stores-and-formats) mediante la actividad de copia en Data Factory de Azure.
+## <a name="json-example-copy-data-from-cassandra-tooazure-blob"></a>Ejemplo de JSON: copiar los datos de Casandra tooAzure Blob
+Este ejemplo proporciona las definiciones de JSON de ejemplo que puede utilizar toocreate una canalización mediante [portal de Azure](data-factory-copy-activity-tutorial-using-azure-portal.md) o [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) o [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Muestra cómo la base de datos toocopy de un Casandra local datos tooan almacenamiento de blobs de Azure. Sin embargo, los datos pueden ser tooany copiada de receptores de hello indicadas [aquí](data-factory-data-movement-activities.md#supported-data-stores-and-formats) utilizando Hola actividad de copia de factoría de datos de Azure.
 
 > [!IMPORTANT]
-> Este ejemplo proporciona fragmentos JSON. No incluye instrucciones paso a paso para crear la factoría de datos. Las instrucciones paso a paso se encuentran en el artículo sobre cómo [mover datos entre ubicaciones locales y en la nube](data-factory-move-data-between-onprem-and-cloud.md) .
+> Este ejemplo proporciona fragmentos JSON. No incluye instrucciones paso a paso para la creación de factoría de datos de Hola. Las instrucciones paso a paso se encuentran en el artículo sobre cómo [mover datos entre ubicaciones locales y en la nube](data-factory-move-data-between-onprem-and-cloud.md) .
 
-El ejemplo consta de las siguientes entidades de factoría de datos:
+ejemplo de Hola tiene Hola después de entidades de la factoría de datos:
 
 * Un servicio vinculado de tipo [OnPremisesCassandra](#linked-service-properties).
 * Un servicio vinculado de tipo [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)
@@ -106,7 +106,7 @@ El ejemplo consta de las siguientes entidades de factoría de datos:
 
 **Servicio vinculado de Cassandra**
 
-En este ejemplo, se utiliza el servicio vinculado de **Cassandra** . Consulte la sección [Propiedades del servicio vinculado OnPremisesCassandra](#linked-service-properties) para ver las propiedades admitidas por el mismo.  
+Este ejemplo utiliza hello **Casandra** servicio vinculado. Vea [Casandra servicio vinculado](#linked-service-properties) sección de propiedades de hello admitidos por este servicio vinculado.  
 
 ```json
 {
@@ -169,11 +169,11 @@ En este ejemplo, se utiliza el servicio vinculado de **Cassandra** . Consulte la
 }
 ```
 
-Si se establece **external** en **true**, se informa al servicio Data Factory que el conjunto de datos es externo a Data Factory y que no lo genera ninguna actividad de la factoría de datos.
+Establecer **externo** demasiado**true** informa a servicio de factoría de datos de hello ese conjunto de datos de hello es factoría de datos de toohello externo y no se crea una actividad de factoría de datos de Hola.
 
 **Conjunto de datos de salida de blob de Azure:**
 
-Los datos se escriben en un nuevo blob cada hora (frecuencia: hora, intervalo: 1).
+Los datos se escriben tooa nuevo blob cada hora (frecuencia: hora, intervalo: 1).
 
 ```json
 {
@@ -197,9 +197,9 @@ Los datos se escriben en un nuevo blob cada hora (frecuencia: hora, intervalo: 1
 
 **Actividad de copia en una canalización con el origen de Cassandra y el receptor de blob:**
 
-La canalización contiene una actividad de copia que está configurada para usar los conjuntos de datos de entrada y de salida y está programada para ejecutarse cada hora. En la definición de JSON de la canalización, el tipo de **origen** está establecido en **CassandraSource**, mientras que el tipo de **receptor** está establecido en **BlobSink**.
+Hello canalización contiene una actividad de copia que está configurado toouse Hola conjuntos de datos de entrada y salida y está programada toorun cada hora. En la definición de JSON de canalización de hello, Hola **origen** tipo está establecido demasiado**CassandraSource** y **receptor** tipo está establecido demasiado**BlobSink**.
 
-Consulte las [propiedades de tipo RelationalSource](#copy-activity-properties) para obtener la lista de propiedades admitidas por RelationalSource.
+Vea [propiedades de tipo RelationalSource](#copy-activity-properties) para lista de Hola de propiedades admitidas por hello RelationalSource.
 
 ```json
 {  
@@ -211,7 +211,7 @@ Consulte las [propiedades de tipo RelationalSource](#copy-activity-properties) p
         "activities":[  
         {
             "name": "CassandraToAzureBlob",
-            "description": "Copy from Cassandra to an Azure blob",
+            "description": "Copy from Cassandra tooan Azure blob",
             "type": "Copy",
             "inputs": [
             {
@@ -266,45 +266,45 @@ Consulte las [propiedades de tipo RelationalSource](#copy-activity-properties) p
 | TIMEUUID |Guid |
 | UUID |Guid |
 | VARCHAR |String |
-| VARINT |DECIMAL |
+| VARINT |Decimal |
 
 > [!NOTE]
-> Par más información sobre tipos de colecciones (map, set, list, etc.), consulte la sección [Uso de colecciones con tablas virtuales](#work-with-collections-using-virtual-table) .
+> Para la colección de tipos (mapa, conjunto, lista, etc.), consulte demasiado[trabajar con tipos de colección Casandra usando tabla virtual](#work-with-collections-using-virtual-table) sección.
 >
 > No se admiten tipos definidos por el usuario.
 >
-> La longitud de la columna binaria y la columna de cadena no puede ser superior a 4000.
+> longitud de Hola de longitudes de columna binaria y la columna de cadena no puede ser mayor que 4000.
 >
 >
 
 ## <a name="work-with-collections-using-virtual-table"></a>Uso de colecciones con tablas virtuales
-Data Factory de Azure utiliza un controlador ODBC integrado para conectarse a una base de datos de Cassandra y copiar datos de dicha base de datos. En el caso de los tipos de colección (como map, set y list), el controlador volverá a normalizar los datos en las tablas virtuales correspondientes. En concreto, si una tabla contiene columnas de colecciones, el controlador generará las siguientes tablas virtuales:
+Factoría de datos de Azure usa un integrados tooconnect tooand copia datos del controlador ODBC de la base de datos de Casandra. Para los tipos de colección incluida mapa, conjunto y una lista, controlador de hello Normalizar datos hello en tablas virtuales correspondientes. En concreto, si una tabla contiene las columnas de la colección, el controlador de hello genera hello las tablas virtuales siguientes:
 
-* Una **tabla base**, que contiene los mismos datos que la tabla real, salvo las columnas de colecciones. La tabla base utiliza el mismo nombre que la tabla real a la que representa.
-* Una **tabla virtual** para cada columna de la colección, que ampliará los datos anidados. Para asignar un nombre a las tablas virtuales que representan colecciones, se utiliza el nombre de la tabla real, un separador “*vt*” y el nombre de la columna.
+* A **tabla base**, que contiene Hola los mismos datos como tabla real de hello excepto para las columnas del conjunto de Hola. tabla de base de Hello usa Hola mismo nombre como tabla real de Hola que representa.
+* A **tabla virtual** para cada columna de la colección, que expande datos Hola anidado. tablas virtuales Hola que representan las colecciones se le asignó hello nombre de tabla real de hello, un separador de "*vt*" y el nombre de Hola de columna Hola.
 
-Las tablas virtuales hacen referencia a los datos de la tabla real, lo que permite al controlador obtener acceso a los datos no normalizados. Consulte la sección de ejemplo para más información. Para acceder al contenido de las colecciones de Cassandra, puede crear consultas y combinar las tablas virtuales.
+Tablas virtuales hacen referencia datos toohello en la tabla real Hola, habilitación Hola controlador tooaccess Hola datos sin normalizar. Consulte la sección de ejemplo para más información. Puede tener acceso a contenido de Hola de colecciones de Casandra por consultar y combinar tablas virtuales Hola.
 
-Si usa el [Asistente para copia](data-factory-data-movement-activities.md#create-a-pipeline-with-copy-activity), podrá consultar una vista intuitiva de la lista de tablas de la base de datos de Cassandra (incluidas las tablas virtuales) y una vista previa de los datos incluidos. También puede crear una consulta en el Asistente para copia y validarla para ver el resultado.
+Puede usar hello [Asistente para copiar](data-factory-data-movement-activities.md#create-a-pipeline-with-copy-activity) toointuitively vista Hola lista de tablas de base de datos de Casandra incluye tablas virtuales hello y obtener una vista previa de los datos de saludo dentro. También puede crear una consulta en el Asistente para copiar Hola y validar el resultado de hello toosee.
 
 ### <a name="example"></a>Ejemplo
-Por ejemplo, el siguiente “ExampleTable” es una tabla de una base de datos de Cassandra que contiene una columna de clave principal de enteros denominada “pk_int”, una columna de texto denominada “value”, una columna List, una columna Map y una columna Set (denominada “StringSet”).
+Por ejemplo, hello siguiente "ExampleTable" es una tabla de base de datos de Casandra que contiene una columna de clave de entero principal denominada "pk_int", una columna de texto con el nombre de valor, una columna de la lista, una columna de asignación y una columna del conjunto (denominado "StringSet").
 
 | pk_int | Valor | Enumerar | Map | StringSet |
 | --- | --- | --- | --- | --- |
 | 1 |"valor de ejemplo 1" |["1", "2", "3"] |{"S1": "a", "S2": "b"} |{"A", "B", "C"} |
 | 3 |"valor de ejemplo 3" |["100", "101", "102", "105"] |{"S1": "t"} |{"A", "E"} |
 
-El controlador generará varias tablas virtuales que representan a esta tabla. Las columnas de clave externa de las tablas virtuales hacen referencia a las columnas de clave principal de la tabla real e indican qué fila de la tabla real se corresponde con la fila de la tabla virtual.
+controlador de Hello generaría varios toorepresent tablas virtuales esta misma tabla. Hello las columnas de clave externa en las tablas virtuales Hola hacen referencia a columnas de clave principal de hello en la tabla real de hello e indican qué real tabla fila Hola tabla virtual fila corresponde a.
 
-La primera tabla virtual es la tabla base y se denomina “ExampleTable”, tal y como se muestra en la siguiente tabla. La tabla base contiene los mismos datos que la tabla de base de datos original a excepción de las colecciones, que no aparecen en esta tabla, sino que se amplían en otras tablas virtuales.
+la primera tabla virtual de Hello es la tabla de base de hello denominada "ExampleTable" se muestra en hello en la tabla siguiente. tabla de base de Hello contiene Hola mismos datos como tabla de base de datos original de hello excepto para las colecciones de hello, que se omite en esta tabla y se expanden en otras tablas virtuales.
 
 | pk_int | Valor |
 | --- | --- |
 | 1 |"valor de ejemplo 1" |
 | 3 |"valor de ejemplo 3" |
 
-Las tablas siguientes representan las tablas virtuales que normalizan de nuevo los datos de las columnas List, Map y StringSet. Las columnas cuyos nombres terminan en “_index” o “_key” indican la posición de los datos en la columna List o Map original. Las columnas cuyos nombres terminan en “_value” contienen los datos ampliados de la colección.
+Hello en las tablas siguientes muestran tablas virtuales Hola que renormalize datos Hola de las columnas de lista y mapa, StringSet Hola. columnas de Hello con nombres que terminan con "_index" o "_clave" indican la posición de Hola de datos de hello dentro de la lista original de Hola o mapa. columnas de Hello con nombres que terminan con "_value" contienen datos de hello expandido de colección de Hola.
 
 #### <a name="table-exampletablevtlist"></a>Tabla “ExampleTable_vt_List”:
 | pk_int | List_index | List_value |
@@ -333,11 +333,11 @@ Las tablas siguientes representan las tablas virtuales que normalizan de nuevo l
 | 3 |Una  |
 | 3 |E |
 
-## <a name="map-source-to-sink-columns"></a>Asignación de columnas de origen a columnas de receptor
-Para obtener más información sobre la asignación de columnas del conjunto de datos de origen a las del conjunto de datos receptor, consulte [Asignación de columnas de conjunto de datos de Azure Data Factory](data-factory-map-columns.md).
+## <a name="map-source-toosink-columns"></a>Asignar columnas de origen toosink
+toolearn acerca de la asignación de columnas en toocolumns de conjunto de datos de origen en el conjunto de datos del receptor, consulte [asignar columnas de conjunto de datos de Data Factory de Azure](data-factory-map-columns.md).
 
 ## <a name="repeatable-read-from-relational-sources"></a>Lectura repetible de orígenes relacionales
-Cuando se copian datos desde almacenes de datos relacionales, hay que tener presente la repetibilidad para evitar resultados imprevistos. En Azure Data Factory, puede volver a ejecutar un segmento manualmente. También puede configurar la directiva de reintentos para un conjunto de datos con el fin de que un segmento se vuelva a ejecutar cuando se produce un error. Cuando se vuelve a ejecutar un segmento, debe asegurarse de que los mismos datos se lean sin importar el número de ejecuciones. Consulte [Lectura repetible de orígenes relacionales](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
+Al copiar datos de almacenes de datos relacionales, tenga repetibilidad en mente tooavoid resultados imprevistos. En Azure Data Factory, puede volver a ejecutar un segmento manualmente. También puede configurar la directiva de reintentos para un conjunto de datos con el fin de que un segmento se vuelva a ejecutar cuando se produce un error. Cuando se vuelve a ejecutar un segmento de cualquier manera, debe toomake seguro de que Hola los mismos datos no se lee importa cómo se ejecuta muchas veces un segmento. Consulte [Lectura repetible de orígenes relacionales](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
 ## <a name="performance-and-tuning"></a>Rendimiento y optimización
-Consulte [Guía de optimización y rendimiento de la actividad de copia](data-factory-copy-activity-performance.md) para más información sobre los factores clave que afectan al rendimiento del movimiento de datos (actividad de copia) en Azure Data Factory y las diversas formas de optimizarlo.
+Vea [guía para la optimización y rendimiento de la actividad de copia](data-factory-copy-activity-performance.md) toolearn acerca de la clave de factores que afectan al rendimiento de movimiento de datos (actividad de copia) en la factoría de datos de Azure y toooptimize de diversas maneras.

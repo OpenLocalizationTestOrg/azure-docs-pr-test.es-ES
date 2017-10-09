@@ -1,6 +1,6 @@
 ---
-title: "Creación y administración de Azure Application Gateway: PowerShell | Microsoft Docs"
-description: "Esta página proporciona instrucciones para crear, configurar, iniciar y eliminar una Puerta de enlace de aplicaciones de Azure mediante el Administrador de recursos de Azure"
+title: "aaaCreate y administrar una puerta de enlace de la aplicación de Azure - PowerShell | Documentos de Microsoft"
+description: "Esta página proporciona instrucciones toocreate, configurar, iniciar y eliminar una puerta de enlace de la aplicación de Azure mediante el Administrador de recursos de Azure"
 documentationcenter: na
 services: application-gateway
 author: georgewallace
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: gwallace
-ms.openlocfilehash: 5f1713365406764998de505ff62309bab9fa2567
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: ab98d5f9aa0dc309f8353b7f72591359e1121849
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-start-or-delete-an-application-gateway-by-using-azure-resource-manager"></a>Creación, inicio o eliminación de una Puerta de enlace de aplicaciones con el Administrador de recursos de Azure
 
@@ -25,47 +25,47 @@ ms.lasthandoff: 08/03/2017
 > * [Azure Portal](application-gateway-create-gateway-portal.md)
 > * [PowerShell de Azure Resource Manager](application-gateway-create-gateway-arm.md)
 > * [Azure Classic PowerShell](application-gateway-create-gateway.md)
-> * [Plantilla de Azure Resource Manager](application-gateway-create-gateway-arm-template.md)
+> * [Plantilla del Administrador de recursos de Azure](application-gateway-create-gateway-arm-template.md)
 > * [CLI de Azure](application-gateway-create-gateway-cli.md)
 
-Puerta de enlace de aplicaciones de Azure es un equilibrador de carga de nivel 7. Proporciona solicitudes HTTP de enrutamiento del rendimiento y conmutación por error y entre distintos servidores, independientemente de que se encuentren en la nube o en el entorno local. Application Gateway proporciona numerosas características del controlador de entrega de aplicaciones (ADC), entre las que se incluyen el equilibrio de carga HTTP, la afinidad de sesiones basada en cookies, la descarga SSL (Capa de sockets seguros), los sondeos personalizados sobre el estado, la compatibilidad con multisitio, y muchas más. Para encontrar una lista completa de las características admitidas, visite [Introducción a Application Gateway](application-gateway-introduction.md).
+Azure Application Gateway es un equilibrador de carga de nivel 7. Proporciona conmutación por error y enrutamiento de rendimiento de las solicitudes HTTP entre diferentes servidores, independientemente de si están en la nube de Hola o de forma local. Application Gateway proporciona numerosas características del controlador de entrega de aplicaciones (ADC), entre las que se incluyen el equilibrio de carga HTTP, la afinidad de sesiones basada en cookies, la descarga SSL (Capa de sockets seguros), los sondeos personalizados sobre el estado, la compatibilidad con multisitio, y muchas más. toofind una lista completa de las características admitidas, visite [información general de la puerta de enlace de aplicaciones](application-gateway-introduction.md).
 
-Este artículo le guiará por los pasos necesarios para crear, configurar, iniciar y eliminar una Puerta de enlace de aplicaciones.
+Este artículo le guiará a través de hello pasos toocreate, configurar, iniciar y eliminar una puerta de enlace de la aplicación.
 
 > [!IMPORTANT]
-> Antes de trabajar con recursos de Azure, es importante comprender que Azure tiene actualmente dos modelos de implementación: Azure Resource Manager y el clásico. Antes de trabajar con los recursos de Azure asegúrese de que conoce los [modelos de implementación y las herramientas](../azure-classic-rm.md) . Puede ver la documentación de las distintas herramientas haciendo clic en las fichas en la parte superior de este artículo. Este documento describe la creación de una puerta de enlace de aplicaciones con Azure Resource Manager. Para utilizar la versión clásica, vaya a [Creación, inicio o eliminación de una puerta de enlace de aplicaciones](application-gateway-create-gateway.md).
+> Antes de trabajar con recursos de Azure, es importante toounderstand que Azure tiene dos modelos de implementación: el Administrador de recursos y clásico. Antes de trabajar con los recursos de Azure asegúrese de que conoce los [modelos de implementación y las herramientas](../azure-classic-rm.md) . Puede ver documentación de Hola de distintas herramientas, haga clic en las pestañas de hello en parte superior de Hola de este artículo. Este documento describe la creación de una puerta de enlace de aplicaciones con Azure Resource Manager. versión de toouse Hola clásico, vaya demasiado[crear una implementación clásica de puerta de enlace de aplicaciones mediante el uso de PowerShell](application-gateway-create-gateway.md).
 
 ## <a name="before-you-begin"></a>Antes de empezar
 
-1. Instale la versión más reciente de los cmdlets de Azure PowerShell mediante el Instalador de plataforma web. Puede descargar e instalar la versión más reciente desde la sección **Windows PowerShell** de la [página Descargas](https://azure.microsoft.com/downloads/).
-1. Si tiene una red virtual existente, seleccione una subred vacía existente o cree una subred en la red virtual existente, únicamente para uso de la puerta de enlace de aplicaciones. No se puede implementar la puerta de enlace de la aplicación en una red virtual diferente de los recursos que se van a implementar detrás de la puerta de enlace de aplicaciones.
-1. Los servidores que configure para que usen la Puerta de enlace de aplicaciones deben existir, o bien sus puntos de conexión deben haberse creado en la red virtual o tener una dirección IP/VIP pública asignada.
+1. Instalar versión más reciente de Hola de cmdlets de PowerShell de Azure de hello mediante Hola instalador de plataforma Web. Puede descargar e instalar la versión más reciente de Hola de hello **Windows PowerShell** sección de hello [página de descargas](https://azure.microsoft.com/downloads/).
+1. Si tiene una red virtual existente, seleccione una subred vacía existente o crear una subred en la red virtual existente únicamente para su uso por la puerta de enlace de aplicaciones de Hola. No se puede implementar Hola aplicación puerta de enlace tooa red virtual diferente de recursos de hello piensa toodeploy detrás de la puerta de enlace de aplicaciones de Hola.
+1. deben existir servidores Hola configurar la puerta de enlace de aplicaciones de toouse Hola o tener asignados de sus puntos de conexión creados en la red virtual de Hola o con una dirección IP pública/VIP.
 
-## <a name="what-is-required-to-create-an-application-gateway"></a>¿Qué se necesita para crear una Puerta de enlace de aplicaciones?
+## <a name="what-is-required-toocreate-an-application-gateway"></a>¿Qué es necesario toocreate una puerta de enlace de la aplicación?
 
-* **Grupo de servidores back-end**: lista de direcciones IP, FQDN y NIC de los servidores back-end. Si se utilizan direcciones IP, estas deben pertenecer a la subred de la red virtual o ser una IP/VIP pública.
-* **Configuración del grupo de servidores back-end** : cada grupo tiene una configuración como el puerto, el protocolo y la afinidad basada en cookies. Estos valores están vinculados a un grupo y se aplican a todos los servidores del grupo.
-* **Puerto front-end:** este puerto es el puerto público que se abre en la puerta de enlace de aplicaciones. El tráfico llega a este puerto y, a continuación, se redirige a uno de los servidores backend.
-* **Agente de escucha**: tiene un puerto front-end, un protocolo (Http o Https, estos valores distinguen mayúsculas de minúsculas) y el nombre del certificado SSL (si se configura la descarga de SSL).
-* **Regla**: enlaza el agente de escucha y el grupo de servidores back-end, y define a qué grupo de servidores back-end se debe dirigir el tráfico cuando llega a un agente de escucha determinado.
+* **Grupo de servidores de back-end:** lista Hola de NIC de servidores de back-end de hello, FQDN o direcciones IP. Si se utilizan direcciones IP, que deberían pertenecer o subred de red virtual toohello o deben ser una dirección IP pública/VIP.
+* **Configuración del grupo de servidores back-end** : cada grupo tiene una configuración como el puerto, el protocolo y la afinidad basada en cookies. Esta configuración está ligada tooa grupo y son servidores de tooall aplicados en el grupo de Hola.
+* **puerto front-end:** este puerto es Hola pública que se abre en la puerta de enlace de aplicaciones de Hola. Tráfico llega a este puerto y, a continuación, obtiene redirigida tooone de servidores de back-end de Hola.
+* **Agente de escucha:** agente de escucha de hello tiene un puerto de front-end, un protocolo (Http o Https, estos valores distinguen mayúsculas de minúsculas) y el nombre del certificado SSL hello (si se descarga la configuración de SSL).
+* **Regla:** regla Hola enlaza el agente de escucha de hello, grupo de servidores de back-end de Hola y define qué tráfico de hello del grupo de servidor back-end debe ser dirigido toowhen llega a un agente de escucha determinado.
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>Creación de un grupo de recursos para el Administrador de recursos
 
-Asegúrese de que está usando la versión más reciente de Azure PowerShell. Hay más información disponible en [Uso de Windows PowerShell con Resource Manager](../powershell-azure-resource-manager.md).
+Asegúrese de que está utilizando la versión más reciente de Hola de PowerShell de Azure. Hay más información disponible en [Uso de Windows PowerShell con Resource Manager](../powershell-azure-resource-manager.md).
 
-1. Inicie sesión en Azure y escriba sus credenciales.
+1. Inicie sesión en tooAzure y escriba sus credenciales.
 
   ```powershell
   Login-AzureRmAccount
   ```
 
-2. Compruebe las suscripciones para la cuenta.
+2. Compruebe las suscripciones de hello para la cuenta de hello.
 
   ```powershell
   Get-AzureRmSubscription
   ```
 
-3. Elección de la suscripción de Azure que se va a usar.
+3. Elija qué su toouse de las suscripciones de Azure.
 
   ```powershell
   Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
@@ -77,84 +77,84 @@ Asegúrese de que está usando la versión más reciente de Azure PowerShell. Ha
   New-AzureRmResourceGroup -Name ContosoRG -Location "West US"
   ```
 
-El Administrador de recursos de Azure requiere que todos los grupos de recursos especifiquen una ubicación. Esta ubicación se utiliza como ubicación predeterminada para los recursos de ese grupo de recursos. Asegúrese de que todos los comandos para crear una puerta de enlace de aplicaciones usan el mismo grupo de recursos.
+Azure Resource Manager requiere que todos los grupos de recursos especifiquen una ubicación. Esta ubicación se utiliza como ubicación predeterminada de Hola para recursos de ese grupo de recursos. Asegúrese de que todos los toocreate de comandos utiliza una puerta de enlace de la aplicación Hola mismo grupo de recursos.
 
-En el ejemplo anterior, creamos un grupo de recursos denominado **ContosoRG** y la ubicación **Este de EE. UU.**
+En el ejemplo de Hola anterior, hemos creado un grupo de recursos denominado **ContosoRG** y la ubicación **UU**.
 
 > [!NOTE]
-> Si necesita configurar un sondeo personalizado para la puerta de enlace de aplicaciones, consulte [Creación de una puerta de enlace de aplicaciones con sondeos personalizados mediante PowerShell](application-gateway-create-probe-ps.md). Para más información, consulte [Información general sobre la supervisión de estado de la puerta de enlace de aplicaciones](application-gateway-probe-overview.md) .
+> Si necesita tooconfigure un sondeo personalizado para la puerta de enlace de aplicaciones, visite: [crear una puerta de enlace de aplicaciones con sondeos personalizados mediante PowerShell](application-gateway-create-probe-ps.md). Para más información, consulte [Información general sobre la supervisión de estado de la puerta de enlace de aplicaciones](application-gateway-probe-overview.md) .
 
 
-## <a name="create-the-application-gateway-configuration-objects"></a>Creación de objetos de configuración de la puerta de enlace de aplicaciones
+## <a name="create-hello-application-gateway-configuration-objects"></a>Crear objetos de configuración de puerta de enlace de aplicaciones de Hola
 
-Se deben haber definido todos los elementos de configuración antes de crear la puerta de enlace de aplicaciones. En los pasos siguientes, se crean los elementos de configuración necesarios para un recurso de puerta de enlace de aplicaciones.
+Todos los elementos de configuración deben estar configurados antes de crear la puerta de enlace de aplicaciones de Hola. Hello pasos siguientes crean Hola elementos de configuración que son necesarios para un recurso de puerta de enlace de la aplicación.
 
 ```powershell
-# Create a subnet and assign the address space of 10.0.0.0/24
+# Create a subnet and assign hello address space of 10.0.0.0/24
 $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.0.0.0/24
 
-# Create a virtual network with the address space of 10.0.0.0/16 and add the subnet
+# Create a virtual network with hello address space of 10.0.0.0/16 and add hello subnet
 $vnet = New-AzureRmVirtualNetwork -Name ContosoVNET -ResourceGroupName ContosoRG -Location "East US" -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 
-# Retrieve the newly created subnet
+# Retrieve hello newly created subnet
 $subnet=$vnet.Subnets[0]
 
-# Create a public IP address that is used to connect to the application gateway. Application Gateway does not support custom DNS names on public IP addresses.  If a custom name is required for the public endpoint, a CNAME record should be created to point to the automatically generated DNS name for the public IP address.
+# Create a public IP address that is used tooconnect toohello application gateway. Application Gateway does not support custom DNS names on public IP addresses.  If a custom name is required for hello public endpoint, a CNAME record should be created toopoint toohello automatically generated DNS name for hello public IP address.
 $publicip = New-AzureRmPublicIpAddress -ResourceGroupName ContosoRG -name publicIP01 -location "East US" -AllocationMethod Dynamic
 
-# Create a gateway IP configuration. The gateway picks up an IP addressfrom the configured subnet and routes network traffic to the IP addresses in the backend IP pool. Keep in mind that each instance takes one IP address.
+# Create a gateway IP configuration. hello gateway picks up an IP addressfrom hello configured subnet and routes network traffic toohello IP addresses in hello backend IP pool. Keep in mind that each instance takes one IP address.
 $gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet
 
-# Configure a backend pool with the addresses of your web servers. These backend pool members are all validated to be healthy by probes, whether they are basic probes or custom probes.  Traffic is then routed to them when requests come into the application gateway. Backend pools can be used by multiple rules within the application gateway, which means one backend pool could be used for multiple web applications that reside on the same host.
+# Configure a backend pool with hello addresses of your web servers. These backend pool members are all validated toobe healthy by probes, whether they are basic probes or custom probes.  Traffic is then routed toothem when requests come into hello application gateway. Backend pools can be used by multiple rules within hello application gateway, which means one backend pool could be used for multiple web applications that reside on hello same host.
 $pool = New-AzureRmApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 134.170.185.46, 134.170.188.221, 134.170.185.50
 
-# Configure backend http settings to determine the protocol and port that is used when sending traffic to the backend servers. Cookie-based sessions are also determined by the backend HTTP settings.  If enabled, cookie-based session affinity sends traffic to the same backend as previous requests for each packet.
+# Configure backend http settings toodetermine hello protocol and port that is used when sending traffic toohello backend servers. Cookie-based sessions are also determined by hello backend HTTP settings.  If enabled, cookie-based session affinity sends traffic toohello same backend as previous requests for each packet.
 $poolSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name "besetting01" -Port 80 -Protocol Http -CookieBasedAffinity Disabled -RequestTimeout 120
 
-# Configure a frontend port that is used to connect to the application gateway through the public IP address
+# Configure a frontend port that is used tooconnect toohello application gateway through hello public IP address
 $fp = New-AzureRmApplicationGatewayFrontendPort -Name frontendport01  -Port 80
 
-# Configure the frontend IP configuration with the public IP address created earlier.
+# Configure hello frontend IP configuration with hello public IP address created earlier.
 $fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name fipconfig01 -PublicIPAddress $publicip
 
-# Configure the listener.  The listener is a combination of the front end IP configuration, protocol, and port and is used to receive incoming network traffic. 
+# Configure hello listener.  hello listener is a combination of hello front end IP configuration, protocol, and port and is used tooreceive incoming network traffic. 
 $listener = New-AzureRmApplicationGatewayHttpListener -Name listener01 -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp
 
-# Configure a basic rule that is used to route traffic to the backend servers. The backend pool settings, listener, and backend pool created in the previous steps make up the rule. Based on the criteria defined traffic is routed to the appropriate backend.
+# Configure a basic rule that is used tooroute traffic toohello backend servers. hello backend pool settings, listener, and backend pool created in hello previous steps make up hello rule. Based on hello criteria defined traffic is routed toohello appropriate backend.
 $rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name rule01 -RuleType Basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
 
-# Configure the SKU for the application gateway, this determines the size and whether or not WAF is used.
+# Configure hello SKU for hello application gateway, this determines hello size and whether or not WAF is used.
 $sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
 
-# Create the application gateway
+# Create hello application gateway
 $appgw = New-AzureRmApplicationGateway -Name ContosoAppGateway -ResourceGroupName ContosoRG -Location "East US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku
 ```
 
-Cuando finalice, recupere los detalles sobre DNS y VIP de la puerta de enlace de aplicaciones del recurso de IP pública asociado a la puerta de enlace de aplicaciones.
+Cuando haya finalizado, recuperar detalles DNS y la dirección VIP de puerta de enlace de aplicación Hola de hello pública recursos adjunto toohello aplicación puerta de enlace IP.
 
 ```powershell
 Get-AzureRmPublicIpAddress -Name publicIP01 -ResourceGroupName ContosoRG
 ```
 
-## <a name="delete-the-application-gateway"></a>Eliminación de la puerta de enlace de aplicaciones
+## <a name="delete-hello-application-gateway"></a>Eliminar puerta de enlace de aplicación Hola
 
-En el ejemplo siguiente se elimina la puerta de enlace de aplicaciones.
+Hello en el ejemplo siguiente se elimina puerta de enlace de aplicación Hola.
 
 ```powershell
-# Retrieve the application gateway
+# Retrieve hello application gateway
 $gw = Get-AzureRmApplicationGateway -Name ContosoAppGateway -ResourceGroupName ContosoRG
 
-# Stops the application gateway
+# Stops hello application gateway
 Stop-AzureRmApplicationGateway -ApplicationGateway $gw
 
-# Once the application gateway is in a stopped state, use the `Remove-AzureRmApplicationGateway` cmdlet to remove the service.
+# Once hello application gateway is in a stopped state, use hello `Remove-AzureRmApplicationGateway` cmdlet tooremove hello service.
 Remove-AzureRmApplicationGateway -Name ContosoAppGateway -ResourceGroupName ContosoRG -Force
 ```
 
 > [!NOTE]
-> Se puede usar el modificador **-force** para suprimir el mensaje de confirmación de eliminación.
+> Hola **-forzar** conmutador puede ser el mensaje de confirmación de toosuppress usado Hola remove.
 
-Para comprobar que se ha quitado el servicio, puede usar el cmdlet `Get-AzureRmApplicationGateway`. Este paso no es necesario.
+se ha quitado tooverify que Hola servicio, puede usar hello `Get-AzureRmApplicationGateway` cmdlet. Este paso no es necesario.
 
 ```powershell
 Get-AzureRmApplicationGateway -Name ContosoAppGateway -ResourceGroupName ContosoRG
@@ -162,10 +162,10 @@ Get-AzureRmApplicationGateway -Name ContosoAppGateway -ResourceGroupName Contoso
 
 ## <a name="get-application-gateway-dns-name"></a>Obtención del nombre DNS de una puerta de enlace de aplicaciones
 
-Una vez creada la puerta de enlace, el siguiente paso es configurar el front-end para la comunicación. Cuando se utiliza una dirección IP pública, la puerta de enlace de aplicaciones requiere un nombre DNS asignado dinámicamente, que no es descriptivo. Para asegurarse de que los usuarios finales puedan llegar a la Application Gateway, se puede utilizar un registro CNAME para que apunte al punto de conexión público de la Application Gateway. Para ello, recupere los detalles de la puerta de enlace de aplicaciones y su nombre DNS o IP asociados mediante el elemento PublicIPAddress asociado a la puerta de enlace de aplicaciones. Esta operación se puede realizar con Azure DNS u otro proveedor de DNS, mediante la creación de un registro CNAME que apunte a la [dirección IP pública](../dns/dns-custom-domain.md#public-ip-address). No se recomienda el uso de registros A, ya que la VIP puede cambiar al reiniciarse la puerta de enlace de aplicaciones.
+Una vez creada la puerta de enlace de hello, Hola siguiente paso es front-end de Hola de tooconfigure para la comunicación. Cuando se utiliza una dirección IP pública, la puerta de enlace de aplicaciones requiere un nombre DNS asignado dinámicamente, que no es descriptivo. los usuarios finales de tooensure puede llegar a puerta de enlace de aplicaciones de hello, un registro CNAME puede ser usado toopoint toohello extremo público de puerta de enlace de aplicación Hola. toodo, detalles de recuperación de puerta de enlace de aplicaciones de Hola y su nombre IP/DNS asociado con puerta de enlace de hello PublicIPAddress elemento adjunto toohello aplicación. Esto puede hacerse con DNS de Azure u otros proveedores DNS, al crear un registro CNAME que señala toohello [dirección IP pública](../dns/dns-custom-domain.md#public-ip-address). no se recomienda el uso de Hola de registros de un puesto que puede cambiar Hola VIP en el reinicio de puerta de enlace de aplicaciones.
 
 > [!NOTE]
-> Se asigna una dirección IP a la puerta de enlace de aplicaciones cuando se inicia el servicio.
+> Una dirección IP se asigna la puerta de enlace de toohello aplicación cuando se inicia el servicio de Hola.
 
 ```powershell
 Get-AzureRmPublicIpAddress -ResourceGroupName ContosoRG -Name publicIP01
@@ -195,7 +195,7 @@ DnsSettings              : {
 
 ## <a name="delete-all-resources"></a>Eliminación de todos los recursos
 
-Para eliminar todos los recursos creados en este artículo, realice los pasos siguientes:
+toodelete todos los recursos creados en este artículo, Hola completo siguiente paso:
 
 ```powershell
 Remove-AzureRmResourceGroup -Name ContosoRG
@@ -203,9 +203,9 @@ Remove-AzureRmResourceGroup -Name ContosoRG
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Si desea configurar la descarga de SSL, consulte [Configuración de una instancia de Application Gateway para la descarga de SSL](application-gateway-ssl.md).
+Si desea que tooconfigure la descarga de SSL, visite: [configurar una puerta de enlace de la aplicación para la descarga SSL](application-gateway-ssl.md).
 
-Si quiere configurar una instancia de Application Gateway para usarla con un equilibrador de carga interno, consulte [Creación de una instancia de Application Gateway con un equilibrador de carga interno (ILB)](application-gateway-ilb.md).
+Si desea tooconfigure una toouse de puerta de enlace de la aplicación con un equilibrador de carga interno, visite: [crear una puerta de enlace de la aplicación con un equilibrador de carga interno (ILB)](application-gateway-ilb.md).
 
 Si desea más información acerca de las opciones de equilibrio de carga en general, visite:
 

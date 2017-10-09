@@ -1,6 +1,6 @@
 ---
-title: Objetivos de escalabilidad y rendimiento de Azure Storage | Microsoft Docs
-description: "Obtenga información sobre los objetivos de escalabilidad y rendimiento para Almacenamiento de Azure, incluida la capacidad, la velocidad de solicitudes y el ancho de banda entrante y saliente para las cuentas de almacenamiento tanto estándar como premium. Comprenda los objetivos de rendimiento para las particiones en cada uno de los servicios de Almacenamiento de Azure."
+title: aaaAzure objetivos de rendimiento y escalabilidad de almacenamiento | Documentos de Microsoft
+description: "Obtenga información acerca de los destinos de escalabilidad y rendimiento de hello para el almacenamiento de Azure, incluida la capacidad, la tasa de solicitud y ancho de banda entrante y saliente para ambas cuentas de almacenamiento estándar y premium. Comprender los objetivos de rendimiento de las particiones dentro de cada uno de los servicios de almacenamiento de Azure de Hola."
 services: storage
 documentationcenter: na
 author: robinsh
@@ -14,32 +14,32 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 07/12/2017
 ms.author: robinsh
-ms.openlocfilehash: ed90e5d63e4c93f9c5054b02d2b4457b44caf6eb
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 98de116a01b64f3418808a5f626b6c70d8d432e3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-storage-scalability-and-performance-targets"></a>Objetivos de escalabilidad y rendimiento del almacenamiento de Azure
 ## <a name="overview"></a>Información general
-Este tema trata cuestiones de rendimiento y escalabilidad de Almacenamiento de Microsoft Azure. Para ver un resumen de otros límites de Azure, consulte [Suscripción de Azure y límites de servicio, cuotas y restricciones](../azure-subscription-service-limits.md).
+Este tema describe los temas de escalabilidad y rendimiento de hello para el almacenamiento de Azure de Microsoft. Para ver un resumen de otros límites de Azure, consulte [Suscripción de Azure y límites de servicio, cuotas y restricciones](../azure-subscription-service-limits.md).
 
 > [!NOTE]
-> Todas las cuentas de almacenamiento se ejecutan en la nueva topología de red plana y admiten los objetivos de escalabilidad y rendimiento descritos a continuación, independientemente de cuándo se crearon. Para obtener más información acerca de la arquitectura de red plana del almacenamiento de Azure y de la escalabilidad, vea [Almacenamiento de Microsoft Azure: un servicio de almacenamiento en la nube altamente disponible](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).
+> Todas las cuentas de almacenamiento ejecutan en hello nueva topología de red plana y admitan destinos de escalabilidad y rendimiento de hello, que se detallan a continuación, independientemente de cuándo se crearon. Para más información sobre la arquitectura de red plana de almacenamiento de Azure de Hola y acerca de la escalabilidad, vea [almacenamiento de Microsoft Azure: altamente disponible en la nube almacenamiento servicio con coherencia segura](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).
 > 
 > [!IMPORTANT]
-> Los objetivos de escalabilidad y rendimiento que mencionamos aquí son objetivos exigentes, pero se pueden lograr. En todos los casos, la velocidad de solicitudes y el ancho de banda obtenido por la cuenta de almacenamiento depende del tamaño de los objetos almacenados, de los patrones de acceso utilizados y del tipo de carga de trabajo que realiza la aplicación. Asegúrese de probar el servicio para determinar si el rendimiento se ajusta a sus requisitos. Si es posible, evite picos en la tasa de tráfico y asegúrese de que este se distribuya equitativamente entre las particiones.
+> destinos de escalabilidad y rendimiento de Hello enumerados aquí son destinos de tecnología avanzados, pero pueden llevarse a cabo. En todos los casos, la solicitud de hello velocidad y ancho de banda obtenido por su cuenta de almacenamiento depende de tamaño de Hola de los objetos almacenados, los patrones de acceso de hello utilizan y Hola tipo de carga de trabajo que se realiza de la aplicación. Ser seguro tootest su toodetermine de servicio si su rendimiento adecúa a sus requisitos. Si es posible, evite picos repentinos en la tasa de Hola de tráfico y asegúrese de que el tráfico se distribuye equitativamente entre las particiones.
 > 
-> Cuando la aplicación alcanza el límite de lo que puede administrar una partición para la carga de trabajo, Almacenamiento de Azure comenzará a responder con el código de error 503 (servidor ocupado) o el código de error 500 (tiempo de espera de operación). Cuando esto ocurre, la aplicación debe utilizar una directiva de retroceso exponencial para los reintentos. El retroceso exponencial permite que disminuya la carga de la partición y evita los picos de tráfico en esa partición.
+> Cuando la aplicación alcanza el límite de Hola de lo que puede administrar una partición para la carga de trabajo, el almacenamiento de Azure se iniciará tooreturn código de error 503 (servidor ocupado) o código de error 500 respuestas (tiempo de espera de operación). Cuando esto ocurre, aplicación hello debe usar una directiva de retroceso exponencial para reintentos. Hola retroceso exponencial permite carga Hola Hola partición toodecrease y tooease los picos en la partición de toothat de tráfico.
 > 
 > 
 
-Si las necesidades de su aplicación superan los objetivos de escalabilidad de una sola cuenta de almacenamiento, puede compilar la aplicación de forma que use varias cuentas de almacenamiento y divida los datos entre esas cuentas de almacenamiento. Para obtener información sobre los precios por volumen, consulte [Precios de Almacenamiento de Azure](https://azure.microsoft.com/pricing/details/storage/) .
+Si de la aplicación hello debe superar los objetivos de escalabilidad de Hola de una única cuenta de almacenamiento, puede compilar su aplicación toouse varias cuentas de almacenamiento y crear particiones de los objetos de datos a través de las cuentas de almacenamiento. Para obtener información sobre los precios por volumen, consulte [Precios de Almacenamiento de Azure](https://azure.microsoft.com/pricing/details/storage/) .
 
 ## <a name="scalability-targets-for-blobs-queues-tables-and-files"></a>Objetivos de escalabilidad para blobs, colas, tablas y archivos
 [!INCLUDE [azure-storage-limits](../../includes/azure-storage-limits.md)]
 
-<!-- conceptual info about disk limits -- applies to unmanaged and managed -->
+<!-- conceptual info about disk limits -- applies toounmanaged and managed -->
 ## <a name="scalability-targets-for-virtual-machine-disks"></a>Objetivos de escalabilidad para discos de máquinas virtuales
 [!INCLUDE [azure-storage-limits-vm-disks](../../includes/azure-storage-limits-vm-disks.md)]
 
@@ -58,20 +58,20 @@ Consulte el artículo sobre [tamaños de VM de Windows](../virtual-machines/wind
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../../includes/azure-storage-limits-azure-resource-manager.md)]
 
 ## <a name="partitions-in-azure-storage"></a>Particiones de Almacenamiento de Azure
-Cada objeto que contiene datos almacenados en Almacenamiento de Azure (blobs, mensajes, entidades y archivos) pertenece a una partición y se identifica mediante una clave de partición. La partición determina cómo Almacenamiento de Azure equilibra entre servidores la carga de blobs, mensajes, entidades y archivos para satisfacer las necesidades de tráfico de esos objetos. La clave de partición es única y se utiliza para ubicar un blob, un mensaje o una entidad.
+Todos los objetos que contiene los datos que se almacenan en el almacenamiento de Azure (blobs, mensajes, entidades y archivos) pertenece tooa partición y se identifican mediante una clave de partición. partición de Hello determina cómo el almacenamiento de Azure equilibra la carga de blobs, mensajes, entidades y archivos a través de necesidades de tráfico de servidores toomeet Hola de dichos objetos. clave de partición de Hello es único y toolocate usado un blob, mensaje o entidad.
 
-La tabla anterior que aparece en [Objetivos de escalabilidad para las cuentas de almacenamiento estándar](#standard-storage-accounts) muestra los objetivos de rendimiento para una partición única para cada servicio.
+tabla de Hello mostrado anteriormente en [objetivos de escalabilidad de las cuentas de almacenamiento estándar](#standard-storage-accounts) listas Hola objetivos de rendimiento de una sola partición para cada servicio.
 
-Las particiones afectan al equilibrio de carga y la escalabilidad de cada uno de los servicios de almacenamiento de las maneras siguientes:
+Las particiones son determinantes equilibrio de carga y escalabilidad para cada uno de los servicios de almacenamiento de Hola Hola siguientes maneras:
 
-* **Blobs**: la clave de partición de un blob es el nombre de la cuenta, el nombre del contenedor y el nombre del blob. Es decir, cada blob puede tener su propia partición si así lo exige la carga en el blob. Los blobs se pueden distribuir en varios servidores para escalar horizontalmente el acceso a ellos, pero los blobs únicos solo pueden proporcionarse mediante servidores únicos. Aunque los blobs pueden agruparse lógicamente en contenedores de blob, esta agrupación no afecta a las particiones.
-* **Archivos**: la clave de partición para un archivo es nombre de cuenta + nombre de recurso compartido de archivos. Esto significa que todos los archivos de un recurso compartido de archivos también están en una sola partición.
-* **Mensajes**: la clave de partición de un mensaje es el nombre de la cuenta y el de la cola, por lo que todos los mensajes de una cola se agrupan en una sola partición y se proporcionan mediante un solo servidor. Las distintas colas pueden ser procesadas por distintos servidores para equilibrar la carga de todas las colas que tenga una cuenta de almacenamiento.
-* **Entidades**: la clave de partición de una entidad es el nombre de la cuenta, el nombre de la tabla y la clave de partición, donde la clave de partición es el valor de la propiedad obligatoria **PartitionKey** definida por el usuario para la entidad. Todas las entidades con el mismo valor de clave de partición se agrupan en la misma partición y se proporcionan mediante el mismo servidor de particiones. Se trata de un punto importante a tener en cuenta en el diseño de la aplicación. La aplicación debería equilibrar las ventajas de escalabilidad que supone propagar las entidades por varias particiones con las ventajas de acceso que supone agrupar las entidades en una sola partición.  
+* **Blobs**: clave de partición de Hola para un blob es nombre de cuenta, nombre del contenedor + nombre de blob. Esto significa que cada blob puede tener su propia partición si se carga en el blob de hello lo requiera. Blobs se pueden distribuir en varios servidores en orden tooscale out toothem de acceso, pero solo se puede atender un único blob mediante un solo servidor. Aunque los blobs pueden agruparse lógicamente en contenedores de blob, esta agrupación no afecta a las particiones.
+* **Archivos**: clave de partición de Hola para un archivo es nombre + archivo comparte el nombre de cuenta. Esto significa que todos los archivos de un recurso compartido de archivos también están en una sola partición.
+* **Mensajes**: clave de partición de Hola para un mensaje es el nombre de cuenta de hello + nombre de la cola, por lo que todos los mensajes en una cola se agrupan en una sola partición y se sirven mediante un único servidor. Diferentes colas pueden ser procesadas por distintos servidores hello toobalance cargar para sin embargo, muchas de las colas que puede tener una cuenta de almacenamiento.
+* **Entidades**: clave de partición de Hola para una entidad es el nombre de la cuenta + nombre de la tabla + clave de partición, donde clave de partición de hello es valor Hola de hello necesario definidos por el usuario **PartitionKey** propiedad de entidad de Hola. Todas las entidades con hello mismo valor de clave de partición se agrupan en hello misma partición y se atienden Hola con el mismo servidor de partición. Se trata de un toounderstand punto importante en el diseño de la aplicación. La aplicación debería equilibrar ventajas de escalabilidad de hello dispersión de entidades entre varias particiones con hello ventajas de acceso a datos de agrupación de entidades en una sola partición.  
 
-Una ventaja fundamental de la agrupación de un conjunto de entidades de una tabla en una partición única es que permite realizar operaciones por lotes atómicas entre entidades de la misma partición, ya que la partición está en un solo servidor. Por lo tanto, si desea realizar operaciones por lotes en un grupo de entidades, considere la posibilidad de agruparlas con la misma clave de partición. 
+Un toogrouping un conjunto de entidades en una tabla en una sola partición de ventaja clave es que resulta operaciones atómicas por lotes de tooperform posible a través de las entidades de hello misma partición, puesto que existe una partición en un único servidor. Por lo tanto, si desea tooperform operaciones por lotes en un grupo de entidades, considere la posibilidad de agruparlos con hello misma clave de partición. 
 
-Por otra parte, las entidades que se encuentren en la misma tabla y tengan claves de distintas particiones, pueden tener la carga equilibrada entre distintos servidores, lo que permite disfrutar de una mayor escalabilidad.
+En Hola otra parte, las entidades que se encuentran en hello misma tabla pero tienen claves de partición diferente pueden ser la carga equilibrada en diferentes servidores, lo que sea posible toohave mayor escalabilidad.
 
 Puede obtener recomendaciones detalladas sobre el diseño de la estrategia de partición para tablas [aquí](https://msdn.microsoft.com/library/azure/hh508997.aspx).
 

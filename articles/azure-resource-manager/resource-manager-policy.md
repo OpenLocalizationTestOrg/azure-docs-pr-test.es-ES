@@ -1,6 +1,6 @@
 ---
-title: Directivas de recursos de Azure | Microsoft Docs
-description: "Describe cómo usar las directivas de Azure Resource Manager para asegurarse de que se establecen propiedades de recursos coherentes durante la implementación. Las directivas pueden aplicarse a la suscripción o a los grupos de recursos."
+title: las directivas de recursos aaaAzure | Documentos de Microsoft
+description: "Describe cómo se establecen las propiedades de recurso coherente de toouse Azure Resource Manager directivas tooensure durante la implementación. Se pueden aplicar directivas en grupos de suscripción o el recurso de Hola."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,42 +14,42 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/02/2017
 ms.author: tomfitz
-ms.openlocfilehash: 0ee2624f45a1de0c23cae4538a38ae3e302eedd3
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: f1b0bbb5f838f6bb70721e1040ad3eac2d881cea
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="resource-policy-overview"></a>Información general sobre las directivas de recursos
-Las directivas de recursos permiten establecer convenciones para los recursos de una organización. La definición de convenciones permite controlar los costes y administrar los recursos más fácilmente. Por ejemplo, puede especificar que se permitan solo determinados tipos de máquinas virtuales. O puede obligar a que todos los recursos tengan una etiqueta concreta. Todos los recursos secundarios heredan las directivas. De este modo, si una directiva se aplica a un grupo de recursos, será aplicable a todos los recursos de dicho grupo de recursos.
+Las directivas de recursos permiten tooestablish convenciones para los recursos de su organización. La definición de convenciones permite controlar los costes y administrar los recursos más fácilmente. Por ejemplo, puede especificar que se permitan solo determinados tipos de máquinas virtuales. O puede obligar a que todos los recursos tengan una etiqueta concreta. Todos los recursos secundarios heredan las directivas. Por lo tanto, si una directiva aplicada tooa grupo de recursos, es aplicable tooall recursos de hello en ese grupo de recursos.
 
-Hay que comprender dos conceptos acerca de las directivas:
+Hay dos toounderstand conceptos acerca de las directivas:
 
-* definición de la directiva: describe cuándo se aplica la directiva y qué acción realizar
-* asignación de la directiva: la definición de la directiva se aplica a un ámbito (suscripción o grupo de recursos)
+* definición de directiva - describen cuando se aplica la directiva de Hola y qué acción tootake
+* asignación de directiva, aplica ámbito tooa de la definición de la directiva Hola (suscripción o grupo de recursos)
 
-Este tema se centra en la definición de la directiva. Para obtener información acerca de la asignación de directivas, consulte [Use Azure portal to assign and manage resource policies](resource-manager-policy-portal.md) (Uso de Azure Portal para asignar y administrar directivas de recursos) o [Assign and manage policies through script](resource-manager-policy-create-assign.md) (Asignación y administración de directivas a través de scripts).
+Este tema se centra en la definición de la directiva. Para obtener información acerca de la asignación de directiva, vea [tooassign portal de Azure de uso y administrar las directivas de recursos](resource-manager-policy-portal.md) o [asignar y administrar las directivas a través de la secuencia de comandos](resource-manager-policy-create-assign.md).
 
 Las directivas se evalúan al crear y actualizar los recursos (operaciones PUT y PATCH).
 
 > [!NOTE]
-> Actualmente, la directiva no evalúa los tipos de recursos que no se admiten etiquetas, variante y ubicación, como el tipo de recurso Microsoft.Resources/deployments. Esta compatibilidad se agregará en el futuro. Para evitar problemas de compatibilidad con versiones anteriores, debe especificar explícitamente el tipo al crear directivas. Por ejemplo, una directiva de etiqueta que no especifique tipos se aplicará a todos los tipos. En ese caso, una implementación de plantilla puede dar error si hay un recurso anidado que no admite etiquetas y el tipo de recurso de implementación se ha agregado a la evaluación de directivas. 
+> Actualmente, directiva no evalúa los tipos de recursos que no son compatibles con etiquetas, tipo y ubicación, como el tipo de recurso de hello Microsoft.Resources/deployments. Esta compatibilidad se agregará en el futuro. tooavoid problemas de compatibilidad con versiones anteriores, se debe especificar explícitamente tipo al crear directivas. Por ejemplo, una directiva de etiqueta que no especifique tipos se aplicará a todos los tipos. En ese caso, una implementación de plantilla puede producir un error si hay un recurso anidado que no es compatible con etiquetas y tipo de recurso de implementación de Hola se ha agregado toopolicy evaluación. 
 > 
 > 
 
 ## <a name="how-is-it-different-from-rbac"></a>¿En qué se diferencia de RBAC?
-Hay algunas diferencias importantes entre directiva y control de acceso basado en roles (RBAC). RBAC se centra en las acciones del **usuario** en ámbitos diferentes. Por ejemplo, se agrega un usuario al rol de colaborador para un grupo de recursos en el ámbito deseado, para que pueda realizar cambios en ese grupo de recursos. La directiva se centra en las propiedades de los **recursos** durante la implementación. Por ejemplo, a través de directivas, puede controlar los tipos de recursos que se pueden aprovisionar. O puede restringir las ubicaciones en las que se pueden aprovisionar los recursos. A diferencia de RBAC, la directiva es un sistema que permite de manera predeterminada y niega explícitamente. 
+Hay algunas diferencias importantes entre directiva y control de acceso basado en roles (RBAC). RBAC se centra en las acciones del **usuario** en ámbitos diferentes. Por ejemplo, se agregan toohello rol de colaborador para un grupo de recursos en el ámbito de hello deseado, por lo que puede hacer el grupo de recursos de toothat de cambios. La directiva se centra en las propiedades de los **recursos** durante la implementación. Por ejemplo, a través de directivas, puede controlar tipos de Hola de recursos que se pueden aprovisionar. O bien, puede restringir las ubicaciones de hello en el que se pueden aprovisionar recursos Hola. A diferencia de RBAC, la directiva es un sistema que permite de manera predeterminada y niega explícitamente. 
 
-Para usar las directivas, debe autenticarse a través de RBAC. En concreto, la cuenta necesita:
+las directivas de toouse, se debe autenticar a través de RBAC. En concreto, la cuenta necesita:
 
-* El permiso `Microsoft.Authorization/policydefinitions/write` para definir una directiva.
-* El permiso `Microsoft.Authorization/policyassignments/write` para asignar una directiva. 
+* `Microsoft.Authorization/policydefinitions/write`toodefine una directiva de permisos
+* `Microsoft.Authorization/policyassignments/write`tooassign una directiva de permisos 
 
-Estos permisos no se incluyen en el rol **Colaborador**.
+Estos permisos no se incluyen en hello **colaborador** rol.
 
 ## <a name="built-in-policies"></a>Directivas integradas
 
-Azure proporciona algunas definiciones de directiva predefinidas que pueden reducir el número de directivas que tiene que definir. Para continuar con las definiciones de la directiva, debe tener en cuenta si una directiva integrada ya proporciona la definición que necesita. Las definiciones de directiva integrada son:
+Azure proporciona algunas definiciones de directivas integradas que pueden reducir el número de Hola de directivas tiene toodefine. Antes de continuar con las definiciones de directiva, debe considerar si una directiva integrada ya proporciona la definición de hello que necesaria. Hola definiciones de directivas integradas son:
 
 * Ubicaciones permitidas
 * Tipos de recursos permitidos
@@ -61,10 +61,10 @@ Azure proporciona algunas definiciones de directiva predefinidas que pueden redu
 * Requisito de la versión 12.0 de SQL Server
 * Requisito de cifrado de la cuenta de almacenamiento
 
-Puede asignar cualquier de estas directivas a través del [portal](resource-manager-policy-portal.md), [PowerShell](resource-manager-policy-create-assign.md#powershell) o la [CLI de Azure](resource-manager-policy-create-assign.md#azure-cli).
+Puede asignar cualquiera de estas directivas a través de hello [portal](resource-manager-policy-portal.md), [PowerShell](resource-manager-policy-create-assign.md#powershell), o [CLI de Azure](resource-manager-policy-create-assign.md#azure-cli).
 
 ## <a name="policy-definition-structure"></a>Estructura de definición de directiva
-Para crear una definición de directiva se utiliza JSON. La definición de directiva contiene elementos para:
+Usar JSON toocreate una definición de directiva. definición de la directiva de Hello contiene elementos para:
 
 * parameters
 * nombre para mostrar
@@ -73,7 +73,7 @@ Para crear una definición de directiva se utiliza JSON. La definición de direc
   * evaluación lógica
   * efecto
 
-En el ejemplo siguiente se muestra una directiva que limita las ubicaciones donde se implementan los recursos:
+Hola de ejemplo siguiente muestra una directiva que limita donde se implementan los recursos:
 
 ```json
 {
@@ -82,14 +82,14 @@ En el ejemplo siguiente se muestra una directiva que limita las ubicaciones dond
       "allowedLocations": {
         "type": "array",
         "metadata": {
-          "description": "The list of locations that can be specified when deploying resources",
+          "description": "hello list of locations that can be specified when deploying resources",
           "strongType": "location",
           "displayName": "Allowed locations"
         }
       }
     },
     "displayName": "Allowed locations",
-    "description": "This policy enables you to restrict the locations your organization can specify when deploying resources.",
+    "description": "This policy enables you toorestrict hello locations your organization can specify when deploying resources.",
     "policyRule": {
       "if": {
         "not": {
@@ -105,8 +105,8 @@ En el ejemplo siguiente se muestra una directiva que limita las ubicaciones dond
 }
 ```
 
-## <a name="parameters"></a>Parámetros
-Al usar parámetros, podrá simplificar la administración de directivas reduciendo el número de definiciones de directiva. Definimos una directiva para una propiedad de recurso (por ejemplo, para limitar las ubicaciones donde se pueden implementar los recursos) e incluimos parámetros en la definición. A continuación, reutilizamos esa definición de directiva en diferentes escenarios y establecemos valores diferentes (por ejemplo, especificamos un conjunto de ubicaciones para una suscripción) al asignar la directiva.
+## <a name="parameters"></a>parameters
+Usar parámetros ayuda a simplificar la administración de directivas reduciendo el número de Hola de definiciones de directiva. Definir una directiva para una propiedad de recurso (por ejemplo, para limitar las ubicaciones de Hola donde se pueden implementar los recursos) e incluir parámetros en la definición de Hola. A continuación, reutilizar esa definición de directiva para diferentes escenarios pasando valores diferentes (por ejemplo, para especificar un conjunto de ubicaciones para una suscripción) al asignar la directiva de Hola.
 
 Declarará parámetros al crear las definiciones de directiva.
 
@@ -115,16 +115,16 @@ Declarará parámetros al crear las definiciones de directiva.
   "allowedLocations": {
     "type": "array",
     "metadata": {
-      "description": "The list of allowed locations for resources.",
+      "description": "hello list of allowed locations for resources.",
       "displayName": "Allowed locations"
     }
   }
 }
 ```
 
-El tipo de un parámetro puede ser cadena o matriz. La propiedad de metadatos se utiliza para herramientas como Azure Portal para mostrar información intuitiva. 
+puede ser tipo Hello de un parámetro de cadena o matriz. propiedad de metadatos de Hola se utiliza para herramientas como toodisplay portal Azure simplifica la información. 
 
-En la regla de directiva, se hace referencia a los parámetros con la sintaxis siguiente: 
+En la regla de directiva de hello, hace referencia a parámetros con hello según la sintaxis: 
 
 ```json
 { 
@@ -135,11 +135,11 @@ En la regla de directiva, se hace referencia a los parámetros con la sintaxis s
 
 ## <a name="display-name-and-description"></a>Nombre para mostrar y descripción
 
-Use los valores de **displayName** y **description** para identificar la definición de directiva y proporcionar el contexto para su uso.
+Usar hello **displayName** y **descripción** tooidentify Hola definición de directiva y proporcionar un contexto para cuando se utiliza.
 
 ## <a name="policy-rule"></a>Regla de directiva
 
-La regla de directiva se compone de los bloques **If** y **Then**. En el bloque **If**, defina una o varias condiciones que especifican cuándo se aplica la directiva. Puede aplicar operadores lógicos a estas condiciones para definir con precisión el escenario de una directiva. En el bloque **Then**, defina el efecto que se produce cuando se cumplen las condiciones de **If**.
+regla de directivas de Hello consta de **si** y **, a continuación,** bloques. Hola **si** bloque, definir una o varias condiciones que especifican cuando se aplica la directiva de Hola. Puede aplicar las condiciones de operadores lógicos toothese tooprecisely definir escenario de Hola para una directiva. Hola **, a continuación,** bloque, definir el efecto de Hola que tiene lugar cuando hello **si** se cumplen estas condiciones.
 
 ```json
 {
@@ -153,15 +153,15 @@ La regla de directiva se compone de los bloques **If** y **Then**. En el bloque 
 ```
 
 ### <a name="logical-operators"></a>Operadores lógicos
-Los operadores lógicos admitidos son:
+operadores lógicos de Hello admitido son:
 
 * `"not": {condition  or operator}`
 * `"allOf": [{condition or operator},{condition or operator}]`
 * `"anyOf": [{condition or operator},{condition or operator}]`
 
-La sintaxis **not** invierte el resultado de la condición. La sintaxis **allOf** (similar a la operación lógica **And**) requiere que se cumplan todas las condiciones. La sintaxis **anyOf** (similar a la operación lógica **Or**) requiere que se cumplan una o varias condiciones.
+Hola **no** sintaxis invierte el resultado de hello de condición de Hola. Hola **todo** sintaxis (toohello similar lógico **y** operación) requiere true de toobe de todas las condiciones. Hola **anyOf** sintaxis (toohello similar lógico **o** operación) requiere true de toobe uno o más condiciones.
 
-Puede anidar los operadores lógicos. El ejemplo siguiente muestra una operación **not** que está anidada dentro de una operación **allOf**. 
+Puede anidar los operadores lógicos. Hola siguiente ejemplo se muestra un **no** operación que está anidada dentro de un **todo** operación. 
 
 ```json
 "if": {
@@ -181,7 +181,7 @@ Puede anidar los operadores lógicos. El ejemplo siguiente muestra una operació
 ```
 
 ### <a name="conditions"></a>Condiciones
-Una condición evalúa si un **campo** cumple determinados criterios. Estas son las condiciones que se admiten:
+Hola condición se evalúa como si una **campo** cumple determinados criterios. las condiciones de Hello admitido son:
 
 * `"equals": "value"`
 * `"like": "value"`
@@ -191,14 +191,14 @@ Una condición evalúa si un **campo** cumple determinados criterios. Estas son 
 * `"containsKey": "keyName"`
 * `"exists": "bool"`
 
-Cuando se usa la condición **like**, puede incluir un carácter comodín (*) en el valor.
+Cuando se usa hello **como** condición, puede proporcionar un carácter comodín (*) en el valor de Hola.
 
-Cuando se usa la condición **match**, proporcione `#` para representar un dígito, `?` para una letra y cualquier otro carácter para representar ese carácter en sí. Para obtener ejemplos, vea [Aplicación de directivas de recursos para nombres y texto](resource-manager-policy-naming-convention.md).
+Cuando se usa hello **coincide con** condición, proporcione `#` toorepresent un dígito, `?` por una letra y cualquier otro carácter toorepresent ese carácter real. Para obtener ejemplos, vea [Aplicación de directivas de recursos para nombres y texto](resource-manager-policy-naming-convention.md).
 
 ### <a name="fields"></a>Fields
-Para crear condiciones se usan campos. Un campo representa las propiedades de la carga de solicitud de recursos que se usa para describir el estado del recurso.  
+Para crear condiciones se usan campos. Un campo representa las propiedades de carga de solicitud de recursos de Hola que es usado toodescribe Hola estado del recurso de Hola.  
 
-Se admiten los siguientes campos:
+se admite Hola siguientes campos:
 
 * `name`
 * `kind`
@@ -211,154 +211,154 @@ Se admiten los siguientes campos:
 ### <a name="effect"></a>Efecto
 La directiva admite tres tipos de efectos: `deny`, `audit` y `append`. 
 
-* **Deny** genera un evento en el registro de auditoría y se produce un error en la solicitud.
-* **Audit** genera un evento de advertencia en el registro de auditoría pero no producirá un error en la solicitud.
-* **Append** agrega el conjunto de campos definido a la solicitud. 
+* **Denegar** genera un evento en el registro de auditoría de Hola y se produce un error de solicitud de Hola
+* **Auditoría** genera un evento de advertencia en el registro de auditoría, pero no se producen errores solicitud Hola
+* **Anexar** agrega Hola definido por conjunto de campos toohello solicitud 
 
-En el caso de **append**, debe proporcionar los detalles tal y como se muestra a continuación:
+Para **anexar**, debe proporcionar Hola detalles siguientes:
 
 ```json
 "effect": "append",
 "details": [
   {
     "field": "field name",
-    "value": "value of the field"
+    "value": "value of hello field"
   }
 ]
 ```
 
-El valor puede ser una cadena o un objeto con formato JSON. 
+Hola valor puede ser una cadena o un objeto con formato JSON. 
 
 ## <a name="aliases"></a>Alias
 
-Los alias de propiedad se usan para tener acceso a propiedades específicas de un tipo de recurso. Los alias le permiten restringir los valores o condiciones que se permiten para una propiedad en un recurso. Cada alias se asigna a las rutas de acceso en las diferentes versiones de la API para un tipo de recurso determinado. Durante la evaluación de directivas, el motor de directiva obtiene la ruta de acceso de propiedad para esa versión de la API.
+Use alias tooaccess específico de propiedades para un tipo de recurso. Los alias permiten toorestrict qué valores o condiciones que se permiten para una propiedad en un recurso. Todos los alias asigna toopaths en las diferentes versiones de API para un tipo de recurso determinado. Durante la evaluación de directivas, motor de directiva de hello Obtiene la ruta de acceso de propiedad de Hola para esa versión de API.
 
 **Microsoft.Cache/Redis**
 
 | Alias | Descripción |
 | ----- | ----------- |
-| Microsoft.Cache/Redis/enableNonSslPort | Establece si el puerto de servidor Redis que no es SSL (6379) está habilitado. |
-| Microsoft.Cache/Redis/shardCount | Establezca el número de particiones que se va a crear en una caché de clúster premium.  |
-| Microsoft.Cache/Redis/sku.capacity | Establezca el tamaño de la caché de Redis que implementar.  |
-| Microsoft.Cache/Redis/sku.family | Establezca la familia de SKU que utilizar. |
-| Microsoft.Cache/Redis/sku.name | Establezca el tipo de Redis Cache que implementar. |
+| Microsoft.Cache/Redis/enableNonSslPort | Establecer si (6379) de puerto del servidor de Redis de hello ssl no está habilitado. |
+| Microsoft.Cache/Redis/shardCount | Establecer número de Hola de toobe de particiones que se creó en una caché de clúster Premium.  |
+| Microsoft.Cache/Redis/sku.capacity | Establecer tamaño de Hola de toodeploy de caché de Redis Hola.  |
+| Microsoft.Cache/Redis/sku.family | Establecer toouse familia de SKU de Hola. |
+| Microsoft.Cache/Redis/sku.name | Establecer tipo de Hola de caché en Redis toodeploy. |
 
 **Microsoft.Cdn/profiles**
 
 | Alias | Descripción |
 | ----- | ----------- |
-| Microsoft.CDN/profiles/sku.name | Establezca el nombre del plan de tarifa. |
+| Microsoft.CDN/profiles/sku.name | Nombre del conjunto de hello del programa Hola a nivel de precios. |
 
 **Microsoft.Compute/disks**
 
 | Alias | Descripción |
 | ----- | ----------- |
-| Microsoft.Compute/imageOffer | Establezca la oferta de la imagen de plataforma o la imagen de marketplace utilizada para crear la máquina virtual. |
-| Microsoft.Compute/imagePublisher | Establezca el publicador de la imagen de plataforma o la imagen de marketplace utilizada para crear la máquina virtual. |
-| Microsoft.Compute/imageSku | Establezca la SKU de la imagen de plataforma o la imagen de marketplace utilizada para crear la máquina virtual. |
-| Microsoft.Compute/imageVersion | Establezca la versión de la imagen de plataforma o la imagen de marketplace utilizada para crear la máquina virtual. |
+| Microsoft.Compute/imageOffer | Oferta de Hola de conjunto de imagen de la plataforma de Hola o una imagen de marketplace utiliza máquina virtual de toocreate Hola. |
+| Microsoft.Compute/imagePublisher | Publicador de Hola de conjunto de imagen de la plataforma de Hola o una imagen de marketplace usa máquina virtual de toocreate Hola. |
+| Microsoft.Compute/imageSku | Conjunto Hola SKU de imagen de la plataforma de Hola o una imagen de marketplace utiliza máquina virtual de toocreate Hola. |
+| Microsoft.Compute/imageVersion | Establecer la versión de Hola de imagen de la plataforma de Hola o una imagen de marketplace usa toocreate Hola virtual machine. |
 
 
 **Microsoft.Compute/virtualMachines**
 
 | Alias | Descripción |
 | ----- | ----------- |
-| Microsoft.Compute/imageId | Establezca el identificador de la imagen utilizada para crear la máquina virtual. |
-| Microsoft.Compute/imageOffer | Establezca la oferta de la imagen de plataforma o la imagen de marketplace utilizada para crear la máquina virtual. |
-| Microsoft.Compute/imagePublisher | Establezca el publicador de la imagen de plataforma o la imagen de marketplace utilizada para crear la máquina virtual. |
-| Microsoft.Compute/imageSku | Establezca la SKU de la imagen de plataforma o la imagen de marketplace utilizada para crear la máquina virtual. |
-| Microsoft.Compute/imageVersion | Establezca la versión de la imagen de plataforma o la imagen de marketplace utilizada para crear la máquina virtual. |
-| Microsoft.Compute/licenseType | Establezca que la imagen o el disco cuenten con una licencia local. Este valor solo se usa para imágenes que contienen el sistema operativo Windows Server.  |
-| Microsoft.Compute/virtualMachines/imageOffer | Establezca la oferta de la imagen de plataforma o la imagen de marketplace utilizada para crear la máquina virtual. |
-| Microsoft.Compute/virtualMachines/imagePublisher | Establezca el publicador de la imagen de plataforma o la imagen de marketplace utilizada para crear la máquina virtual. |
-| Microsoft.Compute/virtualMachines/imageSku | Establezca la SKU de la imagen de plataforma o la imagen de marketplace utilizada para crear la máquina virtual. |
-| Microsoft.Compute/virtualMachines/imageVersion | Establezca la versión de la imagen de plataforma o la imagen de marketplace utilizada para crear la máquina virtual. |
-| Microsoft.Compute/virtualMachines/osDisk.Uri | Establezca el URI de VHD. |
-| Microsoft.Compute/virtualMachines/sku.name | Establezca el tamaño de la máquina virtual. |
+| Microsoft.Compute/imageId | Identificador de Hola de máquina virtual de hello imagen utilizada toocreate Hola del conjunto. |
+| Microsoft.Compute/imageOffer | Oferta de Hola de conjunto de imagen de la plataforma de Hola o una imagen de marketplace utiliza máquina virtual de toocreate Hola. |
+| Microsoft.Compute/imagePublisher | Publicador de Hola de conjunto de imagen de la plataforma de Hola o una imagen de marketplace usa máquina virtual de toocreate Hola. |
+| Microsoft.Compute/imageSku | Conjunto Hola SKU de imagen de la plataforma de Hola o una imagen de marketplace utiliza máquina virtual de toocreate Hola. |
+| Microsoft.Compute/imageVersion | Establecer la versión de Hola de imagen de la plataforma de Hola o una imagen de marketplace usa toocreate Hola virtual machine. |
+| Microsoft.Compute/licenseType | Establecer esa imagen Hola o disco local con licencia. Este valor solo se usa para imágenes que contienen el sistema operativo de Windows Server de Hola.  |
+| Microsoft.Compute/virtualMachines/imageOffer | Oferta de Hola de conjunto de imagen de la plataforma de Hola o una imagen de marketplace utiliza máquina virtual de toocreate Hola. |
+| Microsoft.Compute/virtualMachines/imagePublisher | Publicador de Hola de conjunto de imagen de la plataforma de Hola o una imagen de marketplace usa máquina virtual de toocreate Hola. |
+| Microsoft.Compute/virtualMachines/imageSku | Conjunto Hola SKU de imagen de la plataforma de Hola o una imagen de marketplace utiliza máquina virtual de toocreate Hola. |
+| Microsoft.Compute/virtualMachines/imageVersion | Establecer la versión de Hola de imagen de la plataforma de Hola o una imagen de marketplace usa toocreate Hola virtual machine. |
+| Microsoft.Compute/virtualMachines/osDisk.Uri | Establecer Hola vhd URI. |
+| Microsoft.Compute/virtualMachines/sku.name | Establecer tamaño de Hola de máquina virtual de Hola. |
 
 **Microsoft.Compute/virtualMachines/extensions**
 
 | Alias | Descripción |
 | ----- | ----------- |
-| Microsoft.Compute/virtualMachines/extensions/publisher | Establezca el nombre del publicador de la extensión. |
-| Microsoft.Compute/virtualMachines/extensions/type | Establezca el tipo de extensión. |
-| Microsoft.Compute/virtualMachines/extensions/typeHandlerVersion | Establezca la versión de la extensión. |
+| Microsoft.Compute/virtualMachines/extensions/publisher | Nombre del conjunto de hello del publicador de la extensión de Hola. |
+| Microsoft.Compute/virtualMachines/extensions/type | Establecer tipo de Hola de extensión. |
+| Microsoft.Compute/virtualMachines/extensions/typeHandlerVersion | Establezca la versión de Hola de extensión de Hola. |
 
 **Microsoft.Compute/virtualMachineScaleSets**
 
 | Alias | Descripción |
 | ----- | ----------- |
-| Microsoft.Compute/imageId | Establezca el identificador de la imagen utilizada para crear la máquina virtual. |
-| Microsoft.Compute/imageOffer | Establezca la oferta de la imagen de plataforma o la imagen de marketplace utilizada para crear la máquina virtual. |
-| Microsoft.Compute/imagePublisher | Establezca el publicador de la imagen de plataforma o la imagen de marketplace utilizada para crear la máquina virtual. |
-| Microsoft.Compute/imageSku | Establezca la SKU de la imagen de plataforma o la imagen de marketplace utilizada para crear la máquina virtual. |
-| Microsoft.Compute/imageVersion | Establezca la versión de la imagen de plataforma o la imagen de marketplace utilizada para crear la máquina virtual. |
-| Microsoft.Compute/licenseType | Establezca que la imagen o el disco cuenten con una licencia local. Este valor solo se usa para imágenes que contienen el sistema operativo Windows Server. |
-| Microsoft.Compute/VirtualMachineScaleSets/computerNamePrefix | Establezca el prefijo del nombre de equipo para todas las máquinas virtuales en el conjunto de escalado. |
-| Microsoft.Compute/VirtualMachineScaleSets/osdisk.imageUrl | Establece el URI del blob para la imagen de usuario. |
-| Microsoft.Compute/VirtualMachineScaleSets/osdisk.vhdContainers | Establezca las direcciones URL de contenedor que se utilizan para almacenar los discos del sistema operativo para el conjunto de escalado. |
-| Microsoft.Compute/VirtualMachineScaleSets/sku.name | Establezca el tamaño de las máquinas virtuales en un conjunto de escalado. |
-| Microsoft.Compute/VirtualMachineScaleSets/sku.tier | Establezca el nivel las máquinas virtuales en un conjunto de escalado. |
+| Microsoft.Compute/imageId | Identificador de Hola de máquina virtual de hello imagen utilizada toocreate Hola del conjunto. |
+| Microsoft.Compute/imageOffer | Oferta de Hola de conjunto de imagen de la plataforma de Hola o una imagen de marketplace utiliza máquina virtual de toocreate Hola. |
+| Microsoft.Compute/imagePublisher | Publicador de Hola de conjunto de imagen de la plataforma de Hola o una imagen de marketplace usa máquina virtual de toocreate Hola. |
+| Microsoft.Compute/imageSku | Conjunto Hola SKU de imagen de la plataforma de Hola o una imagen de marketplace utiliza máquina virtual de toocreate Hola. |
+| Microsoft.Compute/imageVersion | Establecer la versión de Hola de imagen de la plataforma de Hola o una imagen de marketplace usa toocreate Hola virtual machine. |
+| Microsoft.Compute/licenseType | Establecer esa imagen Hola o disco local con licencia. Este valor solo se usa para imágenes que contienen el sistema operativo de Windows Server de Hola. |
+| Microsoft.Compute/VirtualMachineScaleSets/computerNamePrefix | Establezca el prefijo del nombre de equipo de Hola para todas las máquinas virtuales de hello en el conjunto de escalas de Hola. |
+| Microsoft.Compute/VirtualMachineScaleSets/osdisk.imageUrl | Conjunto Hola URI del blob de imagen de usuario. |
+| Microsoft.Compute/VirtualMachineScaleSets/osdisk.vhdContainers | Conjunto de direcciones URL de contenedor de Hola que son discos del sistema operativo toostore usado para el conjunto de escalas de Hola. |
+| Microsoft.Compute/VirtualMachineScaleSets/sku.name | Establecer tamaño de Hola de máquinas virtuales en un conjunto de escala. |
+| Microsoft.Compute/VirtualMachineScaleSets/sku.tier | Establecer nivel de Hola de máquinas virtuales en un conjunto de escala. |
   
 **Microsoft.Network/applicationGateways**
 
 | Alias | Descripción |
 | ----- | ----------- |
-| Microsoft.Network/applicationGateways/sku.name | Establezca el tamaño de la puerta de enlace. |
+| Microsoft.Network/applicationGateways/sku.name | Establecer tamaño de Hola de puerta de enlace de Hola. |
 
 **Microsoft.Network/virtualNetworkGateways**
 
 | Alias | Descripción |
 | ----- | ----------- |
-| Microsoft.Network/virtualNetworkGateways/gatewayType | Establezca el tipo de esta puerta de enlace de red virtual. |
-| Microsoft.Network/virtualNetworkGateways/sku.name | Establezca el nombre de SKU de puerta de enlace. |
+| Microsoft.Network/virtualNetworkGateways/gatewayType | Establecer tipo de Hola de esta puerta de enlace de red virtual. |
+| Microsoft.Network/virtualNetworkGateways/sku.name | Establecer nombre SKU de puerta de enlace de Hola. |
 
 **Microsoft.Sql/servers**
 
 | Alias | Descripción |
 | ----- | ----------- |
-| Microsoft.Sql/servers/version | Establezca la versión del servidor. |
+| Microsoft.Sql/servers/version | Establezca la versión de Hola de servidor hello. |
 
 **Microsoft.Sql/databases**
 
 | Alias | Descripción |
 | ----- | ----------- |
-| Microsoft.Sql/servers/databases/edition | Establezca la edición de la base de datos. |
-| Microsoft.Sql/servers/databases/elasticPoolName | Establezca el nombre del grupo elástico en el que está la base de datos. |
-| Microsoft.Sql/servers/databases/requestedServiceObjectiveId | Establezca el Id. de objetivo de nivel de servicio configurado de la base de datos. |
-| Microsoft.Sql/servers/databases/requestedServiceObjectiveName | Establezca el nombre del objetivo de nivel de servicio configurado de la base de datos.  |
+| Microsoft.Sql/servers/databases/edition | Establecer la edición de Hola de base de datos de Hola. |
+| Microsoft.Sql/servers/databases/elasticPoolName | Nombre del conjunto de Hola de base de datos de hello grupo elástico hello es en. |
+| Microsoft.Sql/servers/databases/requestedServiceObjectiveId | Establecer Hola configurado servicio objetivo Id. de nivel de base de datos de Hola. |
+| Microsoft.Sql/servers/databases/requestedServiceObjectiveName | Nombre del conjunto de Hola de hello configurado objetivo de nivel de servicio de base de datos de Hola.  |
 
 **Microsoft.Sql/elasticpools**
 
 | Alias | Descripción |
 | ----- | ----------- |
-| servers/elasticpools | Microsoft.Sql/servers/elasticPools/dtu | Establezca la DTU compartida total para el grupo elástico de base de datos. |
-| servers/elasticpools | Microsoft.Sql/servers/elasticPools/edition | Establezca la edición del grupo elástico. |
+| servers/elasticpools | Microsoft.Sql/servers/elasticPools/dtu | Conjunto Hola total había compartido DTU de grupo elástico de base de datos de Hola. |
+| servers/elasticpools | Microsoft.Sql/servers/elasticPools/edition | Establecer la edición de Hola de grupo elástico Hola. |
 
 **Microsoft.Storage/storageAccounts**
 
 | Alias | Descripción |
 | ----- | ----------- |
-| Microsoft.Storage/storageAccounts/accessTier | Establezca el nivel de acceso usado para la facturación. |
-| Microsoft.Storage/storageAccounts/accountType | Establezca el nombre de SKU. |
-| Microsoft.Storage/storageAccounts/enableBlobEncryption | Establezca si el servicio cifra los datos como si estuvieran almacenados en el servicio Blob Storage. |
-| Microsoft.Storage/storageAccounts/enableFileEncryption | Establezca si el servicio cifra los datos como si estuvieran almacenados en el servicio File Storage. |
-| Microsoft.Storage/storageAccounts/sku.name | Establezca el nombre de SKU. |
-| Microsoft.Storage/storageAccounts/supportsHttpsTrafficOnly | Establezca permitir solo el tráfico https en el servicio de almacenamiento. |
+| Microsoft.Storage/storageAccounts/accessTier | Nivel de acceso de hello del conjunto utilizado para la facturación. |
+| Microsoft.Storage/storageAccounts/accountType | Establecer el nombre SKU de Hola. |
+| Microsoft.Storage/storageAccounts/enableBlobEncryption | Establecer si el servicio de hello cifra los datos de hello tal y como se almacena en el servicio de almacenamiento de blob de Hola. |
+| Microsoft.Storage/storageAccounts/enableFileEncryption | Establecer si el servicio de hello cifra los datos de hello tal y como se almacena en el servicio de almacenamiento de archivos de Hola. |
+| Microsoft.Storage/storageAccounts/sku.name | Establecer el nombre SKU de Hola. |
+| Microsoft.Storage/storageAccounts/supportsHttpsTrafficOnly | Establecer https solo tooallow servicio toostorage de tráfico. |
 
 
 ## <a name="policy-examples"></a>Ejemplos de directivas
 
-Los siguientes temas contienen ejemplos de directivas:
+Hola temas siguientes contiene ejemplos de directivas:
 
 * Para ver ejemplos de directivas de etiqueta, consulte [Apply resource policies for tags](resource-manager-policy-tags.md) (Aplicación de directivas de recursos para etiquetas).
 * Para obtener ejemplos de patrones de texto y nomenclatura, vea [Aplicación de directivas de recursos para nombres y texto](resource-manager-policy-naming-convention.md).
-* Para ver ejemplos de directivas de almacenamiento, consulte [Aplicación de directivas de recursos a cuentas de almacenamiento](resource-manager-policy-storage.md).
-* Para ver ejemplos de directivas de máquina virtual, consulte [Aplicación de directivas de recursos a máquinas virtuales Linux](../virtual-machines/linux/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json) y [Aplicación de directivas de recursos a máquinas virtuales Windows](../virtual-machines/windows/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json).
+* Para obtener ejemplos de las directivas de almacenamiento, consulte [aplicar las cuentas de recursos directivas toostorage](resource-manager-policy-storage.md).
+* Para obtener ejemplos de directivas de la máquina virtual, consulte [aplicar directivas de recursos tooLinux máquinas virtuales](../virtual-machines/linux/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json) y [aplicar directivas de recursos tooWindows máquinas virtuales](../virtual-machines/windows/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Después de definir una regla de directiva, asígnela a un ámbito. Para asignar directivas a través del portal, consulte [Use Azure portal to assign and manage resource policies](resource-manager-policy-portal.md) (Uso de Azure Portal para asignar y administrar directivas de recursos). Para asignar directivas a través de la API de REST, PowerShell o la CLI de Azure, consulte [Assign and manage policies through script](resource-manager-policy-create-assign.md) (Asignación y administración de directivas a través de scripts).
-* Para obtener instrucciones sobre cómo las empresas pueden utilizar Resource Manager para administrar eficazmente las suscripciones, vea [Scaffold empresarial de Azure: Gobierno de suscripción prescriptivo](resource-manager-subscription-governance.md).
-* El esquema de la directiva está publicado en [http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json](http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json). 
+* Después de definir una regla de directiva, debe asignarlo tooa ámbito. directivas de tooassign a través del portal de hello, vea [tooassign portal de Azure de uso y administrar las directivas de recursos](resource-manager-policy-portal.md). directivas de tooassign a través de la API de REST, PowerShell o CLI de Azure, consulte [asignar y administrar las directivas a través de la secuencia de comandos](resource-manager-policy-create-assign.md).
+* Para obtener instrucciones sobre cómo las empresas pueden usar el Administrador de recursos tooeffectively administrar suscripciones, vea [scaffold Azure enterprise - regulador prescriptiva suscripción](resource-manager-subscription-governance.md).
+* esquema de la directiva de Hola se publica en [http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json](http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json). 
 

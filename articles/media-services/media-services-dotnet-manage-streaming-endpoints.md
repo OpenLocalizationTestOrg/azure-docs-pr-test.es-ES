@@ -1,6 +1,6 @@
 ---
-title: "Administración de los puntos de conexión de streaming con el SDK de .NET | Microsoft Docs"
-description: "En este tema se muestra cómo administrar los puntos de conexión de streaming mediante el Portal de Azure."
+title: "aaaManage puntos de conexión con el SDK de .NET de transmisión por secuencias. | Microsoft Docs"
+description: "Este tema muestra cómo los extremos de streaming con toomanage Hola portal de Azure."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -15,45 +15,45 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: juliako
-ms.openlocfilehash: 2f4f464f8604b6f453d6b50b736c6a3a889a3408
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 30c092a8ebf4e2b2902392f4cf98f46d812ccdbc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-streaming-endpoints-with-net-sdk"></a>Administración de los puntos de conexión de streaming con el SDK de .NET
 
 >[!NOTE]
->No olvide revisar el tema de [Información general](media-services-streaming-endpoints-overview.md). Además, revise [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint).
+>Realizar seguro hello tooreview [Introducción](media-services-streaming-endpoints-overview.md) tema. Además, revise [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint).
 
-El código de este tema muestra cómo realizar las tareas siguientes con el SDK de .NET de Azure Media Services:
+código de Hello en este tema muestra cómo hello toodo siguiente las tareas con hello Azure Media Services .NET SDK:
 
-- Examine el punto de conexión de streaming predeterminado.
+- Examine predeterminado Hola extremo de streaming.
 - Cree/agregue un nuevo punto de conexión de streaming.
 
-    Conviene tener varios puntos de conexión de streaming si planea tener diferentes redes CDN o una red CDN y acceso directo.
+    Es recomendable toohave varios extremos de streaming si tiene previsto toohave CDN diferente o una CDN y el acceso directo.
 
     > [!NOTE]
     > Solo se le cobrará cuando StreamingEndpoint esté en estado en ejecución.
     
-- Actualice el punto de conexión de streaming.
+- Actualizar extremo de streaming de Hola.
     
-    Asegúrese de llamar a la función Update().
+    Asegúrese de que toocall Hola Update(), función.
 
-- Elimine el punto de conexión de streaming.
+- Eliminar Hola extremo de streaming.
 
     >[!NOTE]
-    >No se puede eliminar el punto de conexión de streaming predeterminado.
+    >no se puede eliminar predeterminado Hola extremo de streaming.
 
-Para obtener información sobre cómo escalar el punto de conexión de streaming, consulte [este](media-services-portal-scale-streaming-endpoints.md) tema.
+Para obtener información acerca de cómo tooscale Hola extremo de streaming, vea [esto](media-services-portal-scale-streaming-endpoints.md) tema.
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Creación y configuración de un proyecto de Visual Studio
 
-Configure el entorno de desarrollo y rellene el archivo app.config con la información de la conexión, como se describe en [Desarrollo de Media Services con .NET](media-services-dotnet-how-to-use.md). 
+Configurar el entorno de desarrollo y rellenar el archivo app.config de hello con información de conexión, como se describe en [desarrollo de servicios multimedia con .NET](media-services-dotnet-how-to-use.md). 
 
 ## <a name="add-code-that-manages-streaming-endpoints"></a>Agregue código que administre los puntos de conexión de streaming.
     
-Reemplace el código de Program.cs por el código siguiente:
+Reemplace el código de hello en hello Program.cs con el siguiente código de hello:
 
     using System;
     using System.Configuration;
@@ -65,7 +65,7 @@ Reemplace el código de Program.cs por el código siguiente:
     {
         class Program
         {
-        // Read values from the App.config file.
+        // Read values from hello App.config file.
         private static readonly string _AADTenantDomain =
         ConfigurationManager.AppSettings["AADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =

@@ -1,6 +1,6 @@
 ---
-title: "Extend U-SQL scripts with R in Azure Data Lake Analytics (Extensión de los scripts de U-SQL con R en Azure Data Lake Analytics) | Microsoft Docs"
-description: "Obtenga información sobre cómo ejecutar código R en scripts de U-SQL"
+title: "aaaExtend U-SQL scripts con R en análisis de Data Lake de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toorun R código de secuencias de comandos SQL U"
 services: data-lake-analytics
 documentationcenter: 
 author: saveenr
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/20/2017
 ms.author: saveenr
-ms.openlocfilehash: d479af515566f497d9611e75426f6acb8f8276d9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 24affd4963a08d30a7111b49af388e9c1268430e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-get-started-with-extending-u-sql-with-r"></a>Tutorial: Introducción a la extensión de U-SQL con Python (Tutorial: Introducción a la extensión de U-SQL con R)
 
-En el ejemplo siguiente se muestran los pasos básicos para implementar código R:
-* Uso de la instrucción `REFERENCE ASSEMBLY` para habilitar las extensiones de R para el script de U-SQL.
-* Use la operación ` REDUCE` para la partición de datos de entrada de una clave.
-* Las extensiones de R para U-SQL incluyen un reductor integrado (`Extension.R.Reducer`) que ejecuta código R en cada vértice asignado al reductor. 
-* Uso de tramas de datos con nombre dedicadas llamadas `inputFromUSQL` y `outputToUSQL `, respectivamente, para pasar datos entre U-SQL y R. Los nombres del identificador DataFrame de entrada y salida son fijos (es decir, los usuarios no pueden cambiar estos nombres predefinidos de los identificadores DataFrame de entrada y salida).
+Hola siguiente ejemplo ilustra Hola pasos básicos para implementar código R:
+* Hola de uso `REFERENCE ASSEMBLY` extensiones de tooenable R de instrucción para hello Script U-SQL.
+* Use la` REDUCE` Hola de operación toopartition los datos en una clave de entrada.
+* las extensiones de Hello R para SQL U incluyen un reductor integrado (`Extension.R.Reducer`) que ejecuta código R en cada reductor de toohello vértices asignado. 
+* Uso de dedicado denominado tramas de datos denominadas `inputFromUSQL` y `outputToUSQL `respectivamente toopass datos entre U-SQL y R. entrada y salida se corrigen los nombres de identificador de trama de datos (es decir, los usuarios no pueden cambiar estos nombres predefinidos de entrada y salida trama de datos identificadores).
 
-## <a name="embedding-r-code-in-the-u-sql-script"></a>Incrustación de código R en el script de U-SQL
+## <a name="embedding-r-code-in-hello-u-sql-script"></a>Incrustar código R en hello script U-SQL
 
-Mediante el parámetro de comando `Extension.R.Reducer`, puede insertar el código R de su script U-SQL. Por ejemplo, puede declarar el script de R como una variable de cadena y pasarla como un parámetro al reductor.
+Se puede aplicar en línea hello R código el script U-SQL mediante el uso de parámetros de comando de Hola de hello `Extension.R.Reducer`. Por ejemplo, puede declarar Hola script de R como una variable de cadena y pasarla como un toohello parámetro reductor.
 
 
     REFERENCE ASSEMBLY [ExtR];
@@ -38,7 +38,7 @@ Mediante el parámetro de comando `Extension.R.Reducer`, puede insertar el códi
     DECLARE @myRScript = @"
     inputFromUSQL$Species = as.factor(inputFromUSQL$Species)
     lm.fit=lm(unclass(Species)~.-Par, data=inputFromUSQL)
-    #do not return readonly columns and make sure that the column names are the same in usql and r scripts,
+    #do not return readonly columns and make sure that hello column names are hello same in usql and r scripts,
     outputToUSQL=data.frame(summary(lm.fit)$coefficients)
     colnames(outputToUSQL) <- c(""Estimate"", ""StdError"", ""tValue"", ""Pr"")
     outputToUSQL
@@ -46,16 +46,16 @@ Mediante el parámetro de comando `Extension.R.Reducer`, puede insertar el códi
     
     @RScriptOutput = REDUCE … USING new Extension.R.Reducer(command:@myRScript, rReturnType:"dataframe");
 
-## <a name="keep-the-r-code-in-a-separate-file-and-reference-it--the-u-sql-script"></a>Mantenga el código R en un archivo aparte y haga referencia a él mediante el script U-SQL.
+## <a name="keep-hello-r-code-in-a-separate-file-and-reference-it--hello-u-sql-script"></a>Mantener el código de hello R en un archivo independiente y hacer referencia a él script hello U-SQL
 
-En el ejemplo siguiente se ilustra un uso más complejo. En este caso, el código R se implementa como RESOURCE que es el script de U-SQL.
+Hola siguiente ejemplo muestra un uso más complejo. En este caso, el código de hello R se implementa como un recurso que es hello script U-SQL.
 
 Guarde este código R como un archivo aparte.
 
     load("my_model_LM_Iris.rda")
     outputToUSQL=data.frame(predict(lm.fit, inputFromUSQL, interval="confidence")) 
 
-Use un script U-SQL para implementar ese script R con la instrucción DEPLOY RESOURCE.
+Utilice un toodeploy de script U-SQL ese script de R con hello instrucción implementar recursos.
 
     REFERENCE ASSEMBLY [ExtR];
 
@@ -90,25 +90,25 @@ Use un script U-SQL para implementar ese script R con la instrucción DEPLOY RES
         PRODUCE Par, fit double, lwr double, upr double
         READONLY Par
         USING new Extension.R.Reducer(scriptFile:"RinUSQL_PredictUsingLinearModelasDF.R", rReturnType:"dataframe", stringsAsFactors:false);
-        OUTPUT @RScriptOutput TO @OutputFilePredictions USING Outputters.Tsv();
+        OUTPUT @RScriptOutput too@OutputFilePredictions USING Outputters.Tsv();
 
 ## <a name="how-r-integrates-with-u-sql"></a>Cómo se integra R con U-SQL
 
 ### <a name="datatypes"></a>Tipos de datos
 * Las columnas de cadena y numéricas de U-SQL se convierten tal cual entre R DataFrame y U-SQL [tipos admitidos: `double`, `string`, `bool`, `integer` y `byte`].
-* El tipo de datos `Factor` no se admite en U-SQL.
+* Hola `Factor` no se admite el tipo de datos en SQL U.
 * `byte[]` debe serializarse como `string` codificada en base64.
-* Las cadenas de U-SQL se pueden convertir en factores en el código R, una vez que U-SQL cree una trama de datos de entrada de R o mediante el establecimiento del parámetro reductor `stringsAsFactors: true`.
+* Cadenas de U-SQL pueden ser toofactors convertido en el código de R, una vez U-SQL cree trama de datos de entrada de R o establecer parámetros de hello reductor `stringsAsFactors: true`.
 
 ### <a name="schemas"></a>Esquemas
 * Los conjuntos de datos de U-SQL no pueden tener nombres de columna duplicados.
 * Los nombres de columna de conjuntos de datos de U-SQL deben ser cadenas.
-* Los nombres de columna deben ser los mismos en los scripts de U-SQL y de R.
-* La columna de solo lectura no puede formar parte de la trama de datos de salida, ya que las columnas de solo lectura vuelven a insertarse automáticamente en la tabla de U-SQL si forma parte del esquema de salida de UDO.
+* Nombres de columna debe ser Hola igual en secuencias de comandos U-SQL y R.
+* Columna de solo lectura no puede formar parte de la trama de datos de salida de hello. Dado que las columnas de solo lectura se insertan automáticamente en tabla de U-SQL de hello si forma parte del esquema de salida del UDO.
 
 ### <a name="functional-limitations"></a>Limitaciones funcionales
-* No se puede crear una instancia dos veces del motor de R en el mismo proceso. 
-* En la actualidad, U-SQL no admite UDO de combinación para la predicción mediante modelos particionados generados con UDO de reducción. Los usuarios pueden declarar los modelos particionados como recurso y usarlos en su script de R (consulte el código de ejemplo `ExtR_PredictUsingLMRawStringReducer.usql`)
+* Hello motor de R no pueden crearse instancias dos veces en Hola mismo proceso. 
+* En la actualidad, U-SQL no admite UDO de combinación para la predicción mediante modelos particionados generados con UDO de reducción. Los usuarios pueden declarar modelos Hola particionado como recurso y usarlos en su Script de R (vea el código de ejemplo `ExtR_PredictUsingLMRawStringReducer.usql`)
 
 ### <a name="r-versions"></a>Versiones de R
 Solo se admite R 3.2.2.
@@ -164,14 +164,14 @@ Solo se admite R 3.2.2.
     XML
 
 ### <a name="input-and-output-size-limitations"></a>Limitaciones de tamaño de entrada y salida
-Cada vértice tiene una cantidad limitada de memoria asignada a él. Dado que las tramas de datos de entrada y salida deben existir en memoria en el código R, el tamaño total de la entrada y la salida no puede ser superior a 500 MB.
+Cada vértice tiene una cantidad limitada de memoria asignada tooit. Porque hello deben existir tramas de datos de entrada y salida en la memoria en el código de hello R, tamaño total del Hola Hola entrada y salida no puede superar los 500 MB.
 
 ### <a name="sample-code"></a>Código de ejemplo
-Puede encontrar más código de ejemplo en su cuenta Data Lake Store después de instalar las extensiones U-SQL Advanced Analytics. Ruta de acceso a más código de ejemplo: `<your_account_address>/usqlext/samples/R`. 
+Más código de ejemplo está disponible en su cuenta de almacén de Data Lake después de instalar las extensiones de análisis avanzado de U-SQL Hola. ruta de acceso de Hello para el código de ejemplo más es: `<your_account_address>/usqlext/samples/R`. 
 
 ## <a name="deploying-custom-r-modules-with-u-sql"></a>Implementación de módulos de R personalizados con U-SQL
 
-En primer lugar, cree un módulo personalizado de R, comprímalo y luego cargue este archivo comprimido en su almacén de ADL. En el ejemplo, cargaremos magittr_1.5.zip en la raíz de la cuenta de ADLS predeterminada para la cuenta de ADLA que vamos a usar. Una vez que cargue el módulo en el almacén de ADL, declárelo como que usa DEPLOY RESOURCE para ponerlo a disposición en su script U-SQL y llame a `install.packages` para instalarlo.
+En primer lugar, crea un módulo personalizado de R y código postal y, a continuación, cargar Hola zip almacén de ADL de tooyour de archivos de módulo personalizado de R. En el ejemplo de Hola, se cargará magittr_1.5.zip toohello raíz de hello cuenta predeterminada de ADLS Hola cuenta ADLA que usamos. Una vez que cargue el almacén de hello módulo tooADL, declárelo como utilizar toomake implementar recursos estén disponibles en el script U-SQL y llame a `install.packages` tooinstall lo.
 
     REFERENCE ASSEMBLY [ExtR];
     DEPLOY RESOURCE @"/magrittr_1.5.zip";
@@ -179,13 +179,13 @@ En primer lugar, cree un módulo personalizado de R, comprímalo y luego cargue 
     DECLARE @IrisData string =  @"/usqlext/samples/R/iris.csv";
     DECLARE @OutputFileModelSummary string = @"/R/Output/CustomePackages.txt";
 
-    // R script to run
+    // R script toorun
     DECLARE @myRScript = @"
-    # install the magrittr package,
+    # install hello magrittr package,
     install.packages('magrittr_1.5.zip', repos = NULL),
-    # load the magrittr package,
+    # load hello magrittr package,
     require(magrittr),
-    # demonstrate use of the magrittr package,
+    # demonstrate use of hello magrittr package,
     2 %>% sqrt
     ";
 
@@ -208,7 +208,7 @@ En primer lugar, cree un módulo personalizado de R, comprímalo y luego cargue 
     READONLY Par
     USING new Extension.R.Reducer(command:@myRScript, rReturnType:"charactermatrix");
 
-    OUTPUT @RScriptOutput TO @OutputFileModelSummary USING Outputters.Tsv();
+    OUTPUT @RScriptOutput too@OutputFileModelSummary USING Outputters.Tsv();
 
 ## <a name="next-steps"></a>Pasos siguientes
 * [Información general de Análisis de Microsoft Azure Data Lake](data-lake-analytics-overview.md)

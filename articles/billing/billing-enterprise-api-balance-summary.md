@@ -1,6 +1,6 @@
 ---
-title: "API de facturación de Azure Enterprise - Saldos y resumen| Microsoft Docs"
-description: "Obtenga información sobre las API de RateCard y de uso de facturación de Azure que se usan para proporcionar información sobre el consumo de recursos y tendencias de Azure."
+title: "aaaAzure las API de empresa de facturación: equilibrio y resumen | Documentos de Microsoft"
+description: "Obtenga información acerca del uso de facturación de Azure y RateCard APIs, que son visiones tooprovide usado del consumo de recursos de Azure y tendencias."
 services: 
 documentationcenter: 
 author: aedwin
@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: aedwin
-ms.openlocfilehash: f6b149f0e656d2263705048aa5b644f5bb4a5712
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: b031de2c347e5abeacd11743cc96024434518918
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="reporting-apis-for-enterprise-customers---balance-and-summary"></a>API de informes para clientes de Enterprise: saldos y resumen
 
-La API de saldos y resumen ofrece un resumen mensual de información sobre saldos, nuevas compras, gastos de servicios en Azure Marketplace, ajustes y gastos por de uso por encima del límite.
+Hola saldo y API de resumen le ofrece un resumen de información sobre saldos, nuevas adquisiciones, cargos de servicios de Azure Marketplace, ajustes y cargos por encima del límite mensual.
 
 
 ##<a name="request"></a>Solicitud 
-Las propiedades de encabezado comunes que tienen que agregarse se especifican [aquí](billing-enterprise-api.md). Si no se especifica un período de facturación, se devuelven datos para el período de facturación actual.
+Se especifican las propiedades de encabezado comunes que necesitan toobe agrega [aquí](billing-enterprise-api.md). Si no se especifica un período de facturación, a continuación, datos de facturación actual de Hola período se devuelven.
 
 |Método | URI de solicitud|
 |-|-|
@@ -35,10 +35,10 @@ Las propiedades de encabezado comunes que tienen que agregarse se especifican [a
 |GET| https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/billingPeriods/{billingPeriod}/balancesummary|
 
 > [!Note]
-> Para usar la versión preliminar de la API, reemplace v2 por v1 en la dirección URL anterior.
+> versión de vista previa de hello toouse de API, reemplace v2 con v1 en hello por encima de la dirección URL.
 >
 
-## <a name="response"></a>Respuesta
+## <a name="response"></a>Response
 
         {
             "id": "enrollments/100/billingperiods/201507/balancesummaries",
@@ -77,11 +77,11 @@ Las propiedades de encabezado comunes que tienen que agregarse se especifican [a
 
 |Nombre de propiedad| Tipo| Descripción
 |-|-|-|
-|id|cadena|Identificador único para una inscripción y un período de facturación específicos|
-|billingPeriodId|cadena |Identificador de período de facturación|
-|currencyCode|cadena |Código de divisa|
-|beginningBalance|Decimal| Saldo inicial del período de facturación|
-|endingBalance|Decimal| Saldo final del período de facturación (para períodos abiertos, se actualizará a diario)|
+|id|cadena|Hola Id. único para la inscripción y un período de facturación específico|
+|billingPeriodId|cadena |Hola Id. del período de facturación|
+|currencyCode|cadena |código de divisa de Hola|
+|beginningBalance|Decimal| saldo inicial de Hola Hola período de facturación|
+|endingBalance|Decimal| Hola saldo final de período de facturación de hello (para períodos abiertos se actualizarán cada día)|
 |newPurchases|Decimal| Cantidad total de nuevas compras|
 |adjustments|Decimal| Importe total de ajuste|
 |utilized|Decimal| Uso total de compromiso|

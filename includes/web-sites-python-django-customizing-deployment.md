@@ -1,34 +1,34 @@
 Azure determinará que la aplicación use Python **si se cumplen estas condiciones**:
 
-* la carpeta raíz contiene el archivo requirements.txt
-* la carpeta raíz contiene cualquier archivo .py o hay un runtime.txt que especifique Python.
+* archivo Requirements.txt en la carpeta raíz de Hola
+* cualquier archivo .py en la carpeta raíz de Hola o runtime.txt que especifica python
 
-Cuando ese es el caso, usará un script de implementación específico de Python, que lleva a cabo la sincronización de archivos, así como otras operaciones de Python como:
+Una vez que el caso de hello, usará un script de implementación específica de Python, que lleva a cabo Hola estándar sincronización de archivos, así como operaciones adicionales de Python, como:
 
 * la administración automática del entorno virtual,
 * la instalación de paquetes que aparecen en requirements.txt con pip,
-* la creación del archivo web.config adecuado en función de la versión de Python seleccionada,
+* Creación de hello web.config adecuado en función de hello seleccionado versión de Python.
 * la recopilación de archivos estáticos para aplicaciones Django.
 
-Puede controlar ciertos aspectos de los pasos de implementación predeterminados sin tener que personalizar el script.
+Puede controlar algunos aspectos de pasos de implementación predeterminado de hello sin necesidad de script de Hola toocustomize.
 
-Si desea omitir todos los pasos de implementación específicos de Python, puede crear este archivo vacío:
+Si desea tooskip todos los pasos de implementación específica de Python, puede crear este archivo vacío:
 
     \.skipPythonDeployment
 
-Si desea omitir la recopilación de archivos estáticos de la aplicación Django:
+Si desea tooskip colección de archivos estáticos de la aplicación Django:
 
     \.skipDjango 
 
-Para obtener más control sobre la implementación, puede invalidar el script de implementación predeterminado mediante la creación de los archivos siguientes:
+Para tener más control sobre la implementación, puede invalidar el script de implementación predeterminado de hello mediante la creación de hello siguientes archivos:
 
     \.deployment
     \deploy.cmd
 
-Puede usar el [interfaz de línea de comandos de Azure] [ Azure command-line interface] para crear los archivos.  Use este comando desde la carpeta del proyecto:
+Puede usar hello [interfaz de línea de comandos de Azure] [ Azure command-line interface] toocreate archivos de Hola.  Use este comando desde la carpeta del proyecto:
 
     azure site deploymentscript --python
 
-Cuando estos archivos no existen, Azure crea un script de implementación temporal y lo ejecuta.  Es idéntico al que se crea con el comando anterior.
+Cuando estos archivos no existen, Azure crea un script de implementación temporal y lo ejecuta.  Es idéntico toohello que cree con hello comando anterior.
 
 [Azure command-line interface]: http://azure.microsoft.com/downloads/

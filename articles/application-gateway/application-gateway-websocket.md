@@ -1,6 +1,6 @@
 ---
-title: Compatibilidad de WebSocket en Application Gateway | Microsoft Docs
-description: "En esta página se proporciona información general sobre la compatibilidad de Application Gateway con WebSocket."
+title: compatibilidad con aaaWebSocket en puerta de enlace de aplicaciones de Azure | Documentos de Microsoft
+description: "Esta página proporciona una visión general de hello compatibilidad con websocket para puerta de enlace de aplicaciones."
 documentationcenter: na
 services: application-gateway
 author: amsriva
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2017
 ms.author: amsriva
-ms.openlocfilehash: 75b06ddd02da231b7813c609c848c75e42116da5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3776117803e8559ad243c2d4c3dd661199c1e48a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="overview-of-websocket-support-in-application-gateway"></a>Introducción a la compatibilidad de WebSocket en Application Gateway
 
-Application Gateway proporciona una compatibilidad nativa con WebSocket en todas las puertas de enlace, con independencia de su tamaño. No hay ninguna opción de configuración que permita al usuario habilitar o deshabilitar la compatibilidad con WebSocket. 
+Application Gateway proporciona una compatibilidad nativa con WebSocket en todas las puertas de enlace, con independencia de su tamaño. No hay ningún valor configurable por el usuario tooselectively habilitar o deshabilitar compatibilidad con WebSocket. 
 
-El protocolo WebSocket, estándar en [RFC6455](https://tools.ietf.org/html/rfc6455) , permite una comunicación dúplex completa entre un servidor y un cliente a través de una conexión TCP de larga duración. Esta característica permite una comunicación más interactiva entre el servidor web y el cliente, que puede ser bidireccional sin necesidad de realizar sondeos como en las implementaciones basadas en HTTP. A diferencia de HTTP, WebSocket tiene poca sobrecarga y puede reutilizar la misma conexión TCP para varias solicitudes y respuestas, lo que conlleva un uso más eficaz de los recursos. Los protocolos WebSocket están diseñados para utilizarse a través de los puertos HTTP tradicionales 80 y 443.
+El protocolo WebSocket, estándar en [RFC6455](https://tools.ietf.org/html/rfc6455) , permite una comunicación dúplex completa entre un servidor y un cliente a través de una conexión TCP de larga duración. Esta característica permite una comunicación entre el servidor web de Hola y el cliente de hello, que puede ser bidireccional, sin necesidad de hello para el sondeo como obligatorio en implementaciones basadas en HTTP más interactiva. WebSocket tiene baja sobrecarga a diferencia de HTTP y puede reutilizar Hola mismo conexión TCP de varias solicitudes/respuestas resultante en un uso más eficaz de recursos. Protocolos de WebSocket son toowork diseñada a través de puertos HTTP tradicionales de 80 y 443.
 
-Puede seguir usando una escucha HTTP estándar en los puertos 80 o 443 para recibir tráfico de WebSocket. Después, el tráfico de WebSocket se dirige al servidor back-end con este protocolo habilitado utilizando el grupo back-end adecuado según lo especificado en las reglas de Application Gateway. El servidor back-end debe responder a los sondeos de la puerta de enlace de aplicaciones, que se describen en la sección de [información general sobre el sondeo de estado](application-gateway-probe-overview.md) . Los sondeos del estado de Application Gateway son solo HTTP o HTTPS. Cada servidor de back-end debe responder a los sondeos HTTP de Application Gateway para enrutar el tráfico de WebSocket al servidor.
+Puede seguir utilizando un agente de escucha HTTP estándar en el puerto 80 o 443 tooreceive tráfico de WebSocket. Tráfico de WebSocket es dirigido toohello WebSocket habilita el servidor back-end con grupo de back-end adecuados de Hola tal como se especifica en las reglas de puerta de enlace de aplicaciones. servidor de back-end de Hello debe responder sondeos de puerta de enlace de aplicación toohello, que se describen en hello [información general de sondeo de estado](application-gateway-probe-overview.md) sección. Los sondeos del estado de Application Gateway son solo HTTP o HTTPS. Cada servidor de back-end debe responder sondeos tooHTTP puerta de enlace tooroute WebSocket tráfico toohello para servidor de aplicaciones.
 
 ## <a name="listener-configuration-element"></a>Elemento de configuración de agente de escucha
 
-Una escucha HTTP existente se puede utilizar para admitir tráfico de WebSocket. A continuación, se muestra un fragmento de código de un elemento httpListeners de un archivo de plantilla de ejemplo. Necesitaría los agentes de escucha de HTTP y HTTPS para admitir WebSocket y proteger el tráfico procedente de este protocolo. De forma similar, puede usar el [portal](application-gateway-create-gateway-portal.md) o [PowerShell](application-gateway-create-gateway-arm.md) para crear una puerta de enlace de aplicaciones con agentes de escucha en el puerto 80 o 443, con el fin de permitir el tráfico de WebSocket.
+Un agente de escucha HTTP existente puede ser usado toosupport tráfico de WebSocket. Hola aquí te mostramos un fragmento de código de un elemento de httpListeners desde un archivo de plantilla de ejemplo. ¿Necesita toosupport de agentes de escucha HTTP y HTTPS WebSocket y proteger el tráfico de WebSocket. Del mismo modo puede usar hello [portal](application-gateway-create-gateway-portal.md) o [PowerShell](application-gateway-create-gateway-arm.md) toocreate una puerta de enlace de la aplicación con los agentes de escucha de tráfico en el puerto 80/443 toosupport WebSocket.
 
 ```json
 "httpListeners": [
@@ -66,7 +66,7 @@ Una escucha HTTP existente se puede utilizar para admitir tráfico de WebSocket.
 
 ## <a name="backendaddresspool-backendhttpsetting-and-routing-rule-configuration"></a>Configuración de reglas de enrutamiento, BackendHttpSetting y BackendAddressPool
 
-BackendAddressPool se usa para definir un grupo back-end con servidores con WebSocket habilitado. backendHttpSetting se define con un puerto de back-end 80 y 443. Las propiedades de la afinidad basada en cookies y requestTimeouts no son pertinentes para el tráfico de WebSocket. No se requiere ningún cambio en la regla de enrutamiento, se usa "Básico" para vincular el agente de escucha adecuado al grupo de direcciones back-end correspondiente. 
+Un BackendAddressPool es toodefine utilizado un grupo back-end con servidores de WebSocket habilitado. Hola backendHttpSetting se define con un puerto de back-end 80 y 443. propiedades de Hola para afinidad basado en cookies y requestTimeouts no son relevantes tooWebSocket tráfico. Hay ningún cambio necesario en la regla de enrutamiento de hello, "Básica" es tootie usado Hola agentes de escucha adecuada toohello correspondiente grupo de direcciones de back-end. 
 
 ```json
 "requestRoutingRules": [{
@@ -104,7 +104,7 @@ BackendAddressPool se usa para definir un grupo back-end con servidores con WebS
 
 ## <a name="websocket-enabled-backend"></a>Back-end con WebSocket habilitado
 
-El back-end debe tener un servidor web HTTP o HTTPS que se esté ejecutando en el puerto configurado (normalmente, el 80 o 443) para que WebSocket funcione. Este requisito se debe a que el protocolo WebSocket necesita que el protocolo de enlace inicial sea HTTP con la actualización a protocolo WebSocket como campo de encabezado. A continuación, se muestra un ejemplo de un encabezado:
+El back-end debe tener un servidor de web HTTP/HTTPS con hello configurado el puerto (normalmente 80/443) para toowork de WebSocket. Este requisito es porque requiere de protocolo WebSocket toobe de protocolo de enlace inicial de hello HTTP con el protocolo de actualización tooWebSocket como un campo de encabezado. Hola te mostramos un ejemplo de un encabezado:
 
 ```
     GET /chat HTTP/1.1
@@ -117,9 +117,9 @@ El back-end debe tener un servidor web HTTP o HTTPS que se esté ejecutando en e
     Sec-WebSocket-Version: 13
 ```
 
-Otro de los motivos es que el sondeo del estado del back-end de la puerta de enlace de aplicaciones solo admite los protocolos HTTP y HTTPS. Si el servidor back-end no responde a sondeos HTTP o HTTPS, se saca del grupo de back-end.
+Otro de los motivos es que el sondeo del estado del back-end de la puerta de enlace de aplicaciones solo admite los protocolos HTTP y HTTPS. Si el servidor de back-end de hello no responde tooHTTP o sondeos HTTPS, que se saca del grupo back-end.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Cuando haya terminado de leer la información sobre compatibilidad con WebSocket, vaya al artículo sobre [cómo crear una puerta de enlace de aplicaciones](application-gateway-create-gateway.md) para empezar a trabajar con una aplicación web con WebSocket habilitado.
+Después de aprendizaje sobre la compatibilidad con WebSocket, vaya demasiado[crear una puerta de enlace de la aplicación](application-gateway-create-gateway.md) tooget a trabajar con un WebSocket la aplicación web habilitada.
 

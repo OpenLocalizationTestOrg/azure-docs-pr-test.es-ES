@@ -1,5 +1,5 @@
 ---
-title: "Códigos de error de informes de actividad de inicio de sesión en el portal de Azure Active Directory | Microsoft Docs"
+title: "códigos de error de informe de aaaSign de actividad en el portal de Azure Active Directory Hola | Documentos de Microsoft"
 description: "Referencia sobre los códigos de error de los informes de actividad de inicio de sesión."
 services: active-directory
 documentationcenter: 
@@ -15,25 +15,25 @@ ms.workload: identity
 ms.date: 07/12/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 2a1b7b87df2cd8fa2e98f217480b46f5f6334297
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.openlocfilehash: a0ca5b706bfeb0c7ce669712468a083a394712b4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="sign-in-activity-report-error-codes-in-the-azure-active-directory-portal"></a>Códigos de error de informes de actividad de inicio de sesión en el portal de Azure Active Directory
+# <a name="sign-in-activity-report-error-codes-in-hello-azure-active-directory-portal"></a>Códigos de error de informe de actividad de inicio de sesión en el portal de Azure Active Directory Hola
 
-Con la información proporcionada por el informe de inicio de sesión del usuario, puede encontrar respuestas a preguntas tales como:
+Con información de hello proporcionada por informe de inicios de sesión de usuario de hello, encontrar respuestas tooquestions como:
 
 - ¿Quién ha iniciado sesión mediante Azure Active Directory?
 - ¿En qué aplicaciones se inició sesión?
 - ¿En qué inicios de sesión se produjeron errores y cuál fue la causa?
 
-Este tema muestra los códigos de error y las descripciones relacionadas. 
+Códigos de este error de Hola de listas de tema y Hola descripciones relacionadas. 
 
 ## <a name="how-can-i-display-failed-sign-ins"></a>¿Cómo puedo mostrar los inicios de sesión en los que se produjeron errores? 
 
-El primer punto de entrada a todos los datos de actividades de inicio de sesión es **[Inicios de sesión](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)** en la sección **Actividad** de **Azure Active**.
+Las primera entrada tooall de punto de inicio de sesión en las actividades datos están  **[inicios de sesión](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)**  en hello **actividad** sección de **Azure Active**.
 
 
 ![Actividad de inicio de sesión](./media/active-directory-reporting-activity-sign-ins-errors/61.png "Actividad de inicio de sesión")
@@ -44,60 +44,60 @@ En los informes de inicios de sesión, puede mostrar todos los inicios de sesió
 
 ![Actividad de inicio de sesión](./media/active-directory-reporting-activity-sign-ins-errors/06.png "Actividad de inicio de sesión")
 
-Si hace clic en un elemento de la lista mostrada, se abre la hoja **Detalles de la actividad: Inicios de sesión**. Esta vista le proporciona todos los detalles sobre los inicios de sesión de los que Azure Active Directory realiza el seguimiento incluido el **código de error del inicio de sesión** y un **motivo de error**.
+Haga clic en un elemento de lista de muestra de Hola, abrir hello **detalles de actividad: inicios de sesión** hoja. Esta vista proporciona todos los detalles de Hola que realiza un seguimiento de Azure Active Directory acerca de inicios de sesión, incluidos hello **código de error de inicio de sesión** y un **motivo del error**.
 
 ![Actividad de inicio de sesión](./media/active-directory-reporting-activity-sign-ins-errors/05.png "Actividad de inicio de sesión")
 
 
-Como alternativa al uso de Azure Portal para acceder a los datos de inicios de sesión, también puede utilizar la [API de informes](active-directory-reporting-api-getting-started-azure-portal.md).
+Como un hello toousing alternativo datos de Azure tooaccess portal Hola inicios de sesión, también puede utilizar hello [API de informes](active-directory-reporting-api-getting-started-azure-portal.md).
 
 
-En la siguiente sección se proporciona una información general completa de todos los posibles errores y las descripciones relacionadas. 
+Hello siguiente sección proporciona información general completa de todos los posibles errores y Hola relacionados con las descripciones. 
 
 ## <a name="error-codes"></a>Códigos de error
 
 | Error| Descripción |
 | --- | --- |
-| 50001| No se encontró la entidad de servicio denominada X en el inquilino denominado Y. Esto puede pasar si el administrador del inquilino no es el que ha instalado la aplicación. O bien no se encontró la entidad de servicio del recurso en el directorio o no es válida|
-| 50008| La aserción SAML falta o está mal configurada en el token.|
-| 50011| La dirección de respuesta falta, está mal configurada o no coincide con las direcciones de respuesta configuradas para la aplicación.|
-| 50053| La cuenta está bloqueada porque el usuario intentó iniciar sesión demasiadas veces con un Id. de usuario o contraseña incorrectos.|
+| 50001| entidad de servicio de Hello denominado X no se encontró en el inquilino Hola denominado Y. Esto puede ocurrir si no se instaló aplicación hello que Administrador de hello del inquilino de Hola. O entidad de seguridad de recursos no se encontró en el directorio de Hola o no es válido|
+| 50008| Aserción de SAML faltan o están mal configurados en el token de Hola.|
+| 50011| dirección de respuesta de Hello falta, mal configurada o no coincide con las direcciones de respuesta configuradas para la aplicación hello.|
+| 50053| Cuenta está bloqueada porque el usuario intentó toosign en demasiadas veces con un Id. de usuario incorrecta o la contraseña.|
 | 50054| Se utilizó una contraseña antigua para realizar la autenticación.|
 | 50055| La contraseña no es válida o ha expirado.|
 | 50057| La cuenta de usuario está deshabilitada.|
-| 50058| No se encontró información acerca de la identidad del usuario entre las credenciales proporcionadas, o no se encontró al usuario en el inquilino, o se envió una solicitud de inicio de sesión silenciosa pero ningún usuario inició sesión, o el servicio no pudo autenticar al usuario.|
+| 50058| No hay información acerca de la identidad del usuario se encuentra entre proporcionado por el usuario o las credenciales no se encontró en el inquilino o se envió una solicitud de inicio de sesión en modo silenciosa, pero ningún usuario ha iniciado sesión o servicio era de usuario de Hola de tooauthenticate no se puede.|
 | 50074| Se requiere una autenticación sólida (segundo factor)|
-| 50079| El usuario debe inscribirse para el segundo factor de autenticación|
+| 50079| Usuario necesita tooenroll para autenticación de segundo factor|
 | 50126| Nombre de usuario o contraseña no válidos, o nombre de usuario o contraseña locales no válidos.|
-| 50131| Se usa en varios errores de acceso condicional. Por ejemplo, estado de dispositivo incorrecto de Windows, solicitud bloqueada debido a actividades sospechosas, directivas de acceso y decisiones sobre directivas de seguridad.|
-| 50133| La sesión no es válida debido a que ha expirado o a un cambio reciente de contraseña.|
+| 50131| Se usa en varios errores de acceso condicional. Estado de dispositivo de Windows incorrecta por ejemplo, solicitud bloqueada debido a actividad toosuspicious, la directiva de acceso y la directiva de seguridad de decisiones.|
+| 50133| Sesión no es válida debido tooexpiration o último cambio de contraseña.|
 | 50144| Ha expirado la contraseña de Active Directory del usuario.|
-| 65001| La aplicación X no tiene permiso para acceder a la aplicación Y o este se ha revocado. O bien, el usuario o administrador no ha dado su consentimiento para usar la aplicación con el identificador X. Envíe una solicitud de autorización interactiva para este usuario y recurso. O bien, el usuario o administrador no ha dado su consentimiento para usar la aplicación con el identificador X. Envíe una solicitud de autorización al administrador del inquilino para que actúe en nombre de la aplicación: Y para el recurso: Z.|
-| 65005| La lista de acceso a recursos requeridos de la aplicación no contiene aplicaciones reconocibles por el recurso, o la aplicación cliente ha solicitado el acceso a un recurso que no se especificó en su lista de acceso a recursos requeridos, o el servicio Graph devolvió una solicitud incorrecta o no se encontró el recurso.|
-| 70001| No se encontró la aplicación denominada X en el inquilino denominado Y. Esto puede pasar si el administrador del inquilino no es el que ha instalado la aplicación o no ha recibido el consentimiento de ningún usuario del inquilino. Es posible que haya enviado la solicitud de autenticación al inquilino incorrecto.|
+| 65001| X de la aplicación no tiene la aplicación de tooaccess de permiso Y o se ha revocado el permiso de Hola. O bien, hello usuario o un administrador no ha consentido aplicación de hello toouse con identificador X. Send una solicitud de autorización interactivo de este usuario y recursos. U Hola usuario o un administrador no ha consentido en la aplicación de hello toouse con identificador X. Send un tooact de administrador de inquilinos de autorización solicitud tooyour en nombre de la aplicación hello: Y para el recurso: Z.|
+| 65005| aplicación Hello requiere la lista de acceso de recursos no contiene aplicaciones reconocibles por recurso de Hola o aplicación de cliente de hello solicitó tooresource de acceso que no se especificó en su lista de acceso de recurso necesario o el servicio de Graph devuelve incorrecta solicitud o no se encuentra el recurso.|
+| 70001| aplicación Hello denominado X no se encontró en el inquilino, Hola denominadas Y. Esto puede ocurrir si no se instaló la aplicación hello por Hola Administrador de inquilinos de Hola o tooby con consentimiento cualquier usuario inquilino Hola. Posible que haya enviado al inquilino en la toohello de solicitud de autenticación incorrecto.|
 | 80001| No hay ningún agente de autenticación disponible.|
 | 80002| El tiempo de espera se agotó para la solicitud de validación de contraseña del agente de autenticación.|
 | 80003| El agente de autenticación recibió una respuesta no válida.|
 | 80004| Se usó un nombre principal de usuario (UPN) incorrecto en una solicitud de inicio de sesión.|
 | 80005| Error del agente de autenticación.|
-| 80007| El agente de autenticación no puede conectarse a Active Directory.|
-| 80010| El agente de autenticación no puede descifrar la contraseña.|
+| 80007| Autenticación agente no se puede tooconnect tooActive Directory.|
+| 80010| Contraseña de no se puede toodecrypt de agente de autenticación.|
 | 81001| El vale de Kerberos del usuario es demasiado grande.|
-| 81002| No se ha podido validar el vale de Kerberos del usuario.|
-| 81003| No se ha podido validar el vale de Kerberos del usuario.|
+| 81002| Vale de Kerberos del usuario no se puede toovalidate.|
+| 81003| Vale de Kerberos del usuario no se puede toovalidate.|
 | 81004| Error al intentar la autenticación Kerberos.|
-| 81008| No se ha podido validar el vale de Kerberos del usuario.|
-| 81009| No se ha podido validar el vale de Kerberos del usuario.|
-| 81010| Error de SSO de conexión directa porque el vale de Kerberos del usuario ha expirado o no es válido.|
-| 81011| No se encuentra el objeto de usuario con la información del vale de Kerberos del usuario.|
-| 81012| El usuario que intenta iniciar sesión en Azure AD es distinto del que inició sesión en el dispositivo.|
-| 81013| No se encuentra el objeto de usuario con la información del vale de Kerberos del usuario.|
-| 90014| Se utiliza en varios casos cuando un campo esperado no está presente en la credencial.|
-| 90093| Se devolvió un gráfico con un código de error prohibido para la solicitud.|
+| 81008| Vale de Kerberos del usuario no se puede toovalidate.|
+| 81009| Vale de Kerberos del usuario no se puede toovalidate.|
+| 81010| No se pudo SSO sin problemas porque el vale de Kerberos del usuario de hello ha expirado o no es válido.|
+| 81011| Objeto de usuario de toofind no se puede basado en la información de vale de Kerberos del usuario de Hola.|
+| 81012| usuario de Hello intentar toosign en tooAzure AD es diferente de usuario Hola iniciado sesión en el dispositivo de Hola.|
+| 81013| Objeto de usuario de toofind no se puede basado en la información de vale de Kerberos del usuario de Hola.|
+| 90014| Se utiliza en varios casos cuando un campo esperado no está presente en la credencial de Hola.|
+| 90093| Gráfico devuelto con código de error prohibido de solicitud de saludo.|
 
 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para más información, consulte [Introducción a los informes de actividad de inicio de sesión en el portal de Azure Active Directory](active-directory-reporting-activity-sign-ins.md).
+Para obtener más información, vea hello [informes de actividad de inicio de sesión en el portal de Azure Active Directory hello](active-directory-reporting-activity-sign-ins.md).
 

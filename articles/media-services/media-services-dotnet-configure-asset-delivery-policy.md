@@ -1,6 +1,6 @@
 ---
-title: "Configuración de directivas de entrega de recursos con el SDK de .NET | Microsoft Docs"
-description: "En este tema se muestra cómo configurar distintas directivas de entrega de recursos con .NET SDK de Servicios multimedia de Azure."
+title: directivas de entrega de activos aaaConfigure con .NET SDK | Documentos de Microsoft
+description: "Este tema se muestra cómo tooconfigure las directivas de entrega de activos distintas con el SDK de .NET de servicios multimedia de Azure."
 services: media-services
 documentationcenter: 
 author: Mingfeiy
@@ -14,33 +14,33 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: juliako;mingfeiy
-ms.openlocfilehash: 282fd9e24dc147e31613469926128894d48366f4
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: a6f2644d639cd36d4cdc269b6f01fd4acdf7160b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configure-asset-delivery-policies-with-net-sdk"></a>Configuración de directivas de entrega de recursos con el SDK de .NET
 [!INCLUDE [media-services-selector-asset-delivery-policy](../../includes/media-services-selector-asset-delivery-policy.md)]
 
 ## <a name="overview"></a>Información general
-Si tiene pensado entregar activos cifrados, uno de los pasos del flujo de trabajo de entrega de contenido de Servicios multimedia consiste en configurar directivas de entrega para los activos. La directiva de entrega de recursos indica a los Servicios multimedia cómo desea usted que se entregue el recurso: en qué protocolo de streaming se debe empaquetar de forma dinámica el recurso (por ejemplo, MPEG DASH, HLS, Smooth Streaming o todos) o si desea o no cifrar de forma dinámica el recurso y de qué manera (cifrado de sobre o común).
+Si tiene previsto toodelivery cifrado activos, uno de hello pasos Hola servicios multimedia de contenido de flujo de trabajo de entrega es la configuración de directivas de entrega de activos. Directiva de entrega del activo de Hello indica los servicios multimedia cómo desea para su toobe asset entregado: en el protocolo de transmisión por secuencias que debe su activo dinámicamente empaquetarse (por ejemplo, MPEG DASH, HLS, Smooth Streaming o todos), si no desea toodynamically cifrar un activo y cómo (sobre o cifrado común).
 
-En este tema se explica por qué y cómo crear y configurar directivas de entrega de recursos.
+Este tema se describe cómo y por qué toocreate y configurar directivas de entrega de activos.
 
 >[!NOTE]
->Cuando se crea la cuenta de AMS, se agrega un punto de conexión de streaming **predeterminado** a la cuenta en estado **Stopped** (Detenido). Para iniciar la transmisión del contenido y aprovechar el empaquetado dinámico y el cifrado dinámico, el punto de conexión de streaming desde el que va a transmitir el contenido debe estar en estado **Running** (En ejecución). 
+>Cuando se crea la cuenta de AMS un **predeterminado** extremo de streaming se agrega la cuenta tooyour Hola **detenido** estado. toostart transmisión por secuencias el contenido y beneficiarse del empaquetado dinámico y cifrado dinámico, Hola extremo de streaming desde el que desea el contenido de toostream tiene toobe Hola **ejecutando** estado. 
 >
->Además, para poder usar el empaquetado dinámico y el cifrado dinámico, el recurso debe contener un conjunto de archivos MP4 de velocidad de bits adaptable o archivos Smooth Streaming de velocidad de bits adaptable.
+>Además, puede toouse toobe el empaquetado dinámico y cifrado dinámico su activo debe contener un conjunto de velocidad de bits adaptativa MP4s o archivos de Smooth Streaming de velocidad de bits adaptativa.
 
 
-Puede aplicar diferentes directivas al mismo recurso. Por ejemplo, puede aplicar cifrado PlayReady a Smooth Streaming y cifrado de sobre AES a MPEG DASH y HLS. Se bloqueará la transmisión para todos los protocolos que no estén definidos en una directiva de entrega (por ejemplo, si agrega una sola directiva que solo especifica HLS como el protocolo). La excepción a esta regla se produce en el caso de que no haya definido ninguna directiva de entrega de recursos. En tal caso, todos los protocolos estarán habilitados sin cifrar.
+Podría aplicar distintas directivas toohello mismo activo. Por ejemplo, podría aplicar PlayReady cifrado tooSmooth transmisión por secuencias y AES Envelope cifrado tooMPEG DASH y HLS. Todos los protocolos que no estén definidos en una directiva de entrega (por ejemplo, se agrega una directiva única que solo especifica HLS como protocolo de Hola) se bloqueará de transmisión por secuencias. Hola toothis de excepción es si no tiene definida en absoluto ninguna directiva de entrega de activos. A continuación, todos los protocolos se permitirá en hello clara.
 
-Si desea entregar un recurso de almacenamiento cifrado, debe configurar la directiva de entrega de recursos. Antes de poder transmitir el recurso, el servidor de streaming quita el cifrado de almacenamiento y transmite el contenido usando la directiva de entrega especificada. Por ejemplo, para entregar el recurso cifrado con la clave de cifrado de sobre de Estándar de cifrado avanzado (AES), establezca el tipo de directiva en **DynamicEnvelopeEncryption**. Para quitar el cifrado de almacenamiento y transmitir el recurso sin cifrar, establezca el tipo de directiva en **NoDynamicEncryption**. A continuación se muestran ejemplos de configuración de estos tipos de directiva.
+Si desea toodeliver un recurso cifrado de almacenamiento, debe configurar la directiva de entrega del activo de Hola. Antes de que se puede transmitir su activo, Hola streaming cifrado de almacenamiento de servidor quita hello y secuencias el contenido con hello especifica directiva de entrega. Por ejemplo, toodeliver su activo cifrado con clave de cifrado de sobre estándar de cifrado avanzado (AES), establezca el tipo de directiva de hello demasiado**DynamicEnvelopeEncryption**. cifrado de almacenamiento de tooremove y los activos de hello secuencia de hello claro, establecer tipo de directiva de hello demasiado**NoDynamicEncryption**. Ejemplos que muestran cómo tooconfigure estos tipos de directiva siguen.
 
-Según cómo configure la directiva de entrega de recursos podrá realizar el empaquetamiento de forma dinámica, cifrar de forma dinámica y hacer streaming de los protocolos de streaming siguientes: secuencias Smooth Streaming, HLS y MPEG-DASH.
+Dependiendo de cómo configurar Directiva de entrega del activo de Hola que podría ser capaz de toodynamically paquete, dinámicamente cifrar y transmitir por hello después de protocolos de transmisión por secuencias: secuencias de Smooth Streaming, HLS y MPEG DASH.
 
-En la lista siguiente se muestran los formatos usados para transmitir Smooth Streaming, HLS y DASH.
+Hello lista siguiente muestra los formatos de Hola que usas toostream Smooth, HLS y DASH.
 
 Smooth Streaming:
 
@@ -56,16 +56,16 @@ MPEG DASH
 
 
 ## <a name="considerations"></a>Consideraciones
-* No puede eliminar una entidad AssetDeliveryPolicy asociada a un activo mientras hay un localizador OnDemand (transmisión) para ese activo. Se recomienda quitar la directiva del activo antes de eliminar la directiva.
-* No se puede crear un localizador de transmisión en un activo cifrado de almacenamiento cuando no se establece ninguna directiva de entrega de activos.  Si el activo no está cifrado para almacenamiento, el sistema le permitirá crear un localizador y transmitir el activo sin cifrar, sin una directiva de entrega de activos.
-* Puede tener varias directivas de entrega de activos asociadas a un único activo, pero solo se puede especificar una forma de controlar un AssetDeliveryProtocol determinado,  es decir, si intenta vincular dos directivas de entrega que especifican el protocolo AssetDeliveryProtocol.SmoothStreaming que producirá un error porque el sistema no sabe cuál quiere que aplique cuando un cliente realiza una solicitud de Smooth Streaming.
-* Si tiene un activo con un localizador de transmisión existente, no puede vincular una nueva directiva al activo (puede desvincular una directiva existente del activo o actualizar una directiva de entrega asociada al activo).  Primero debe quitar el localizador de transmisión, ajustar las directivas y volver a crear el localizador de transmisión.  Puede usar el mismo locatorId al volver a crear el localizador de transmisión, pero debe asegurarse de que no causará problemas para los clientes ya que se puede almacenar en caché el contenido por el origen o una red CDN de nivel inferior.
+* No puede eliminar una entidad AssetDeliveryPolicy asociada a un activo mientras hay un localizador OnDemand (transmisión) para ese activo. recomendación de Hello es Directiva de hello tooremove de recurso de hello antes de eliminar la directiva de Hola.
+* No se puede crear un localizador de transmisión en un activo cifrado de almacenamiento cuando no se establece ninguna directiva de entrega de activos.  Si Hola activo no está cifrado de almacenamiento, sistema de hello le permitirán crear un recurso de hello localizador y secuencias en hello claro sin una directiva de entrega del activo.
+* Puede tener varias directivas de entrega de activos asociadas a un único recurso, pero solo se puede especificar una manera de toohandle un AssetDeliveryProtocol determinado.  Lo que significa que si intenta dos directivas de entrega de toolink especificada por el protocolo de AssetDeliveryProtocol.SmoothStreaming Hola que producirá un error porque el sistema de hello no sabe cuál desea tooapply cuando un cliente realiza una solicitud de transmisión por secuencias suave.
+* Si tiene un recurso con un localizador de transmisión por secuencias existente, no se puede vincular un nuevo recurso de toohello directiva (puede desvincular una directiva existente de recurso de hello, o actualizar una directiva de entrega asociada Hola activo).  En primer lugar tiene el localizador de streaming de hello tooremove, ajustar las directivas de hello y, a continuación, volver a crear el localizador de streaming de Hola.  Puede usar Hola mismo locatorId se vuelven a crear Hola streaming localizador pero debe asegurarse de que no causará problemas para los clientes ya que puede almacenarse en caché contenido por origen de Hola o de una CDN siguen en la cadena.
 
 ## <a name="clear-asset-delivery-policy"></a>Directiva de entrega de recursos sin cifrar
 
-El método **ConfigureClearAssetDeliveryPolicy** siguiente especifica que no se aplique el cifrado dinámico y se entregue la transmisión en cualquiera de los siguientes protocolos: MPEG DASH, HLS y Smooth Streaming. Querrá aplicar esta directiva a los activos cifrados de almacenamiento.
+siguiente Hello **ConfigureClearAssetDeliveryPolicy** método especifica toonot aplicar cifrado dinámico y flujo de hello toodeliver en cualquiera de hello siguiendo los protocolos: protocolos MPEG DASH, HLS y Smooth Streaming. Puede ser conveniente tooapply este activos de cifrado de almacenamiento de tooyour de directiva.
 
-Para obtener información sobre los valores que puede especificar al crear una entidad AssetDeliveryPolicy, consulte la sección [Tipos usados al definir AssetDeliveryPolicy](#types) .
+Para obtener información sobre qué valores se puede especificar al crear un AssetDeliveryPolicy, vea hello [tipos que se utilizan al definir AssetDeliveryPolicy](#types) sección.
 
     static public void ConfigureClearAssetDeliveryPolicy(IAsset asset)
     {
@@ -79,9 +79,9 @@ Para obtener información sobre los valores que puede especificar al crear una e
 
 ## <a name="dynamiccommonencryption-asset-delivery-policy"></a>Directiva de entrega de recursos DynamicCommonEncryption
 
-El método siguiente **CreateAssetDeliveryPolicy** crea la entidad **AssetDeliveryPolicy** que se configura para aplicar el cifrado común dinámico (**DynamicCommonEncryption**) a un protocolo de streaming con velocidad de transmisión adaptable (se bloqueará el streaming para otros protocolos). El método toma dos parámetros: **Asset** (el recurso al que desea aplicar la directiva de entrega) e **IContentKey** (la clave de contenido de tipo **CommonEncryption**. Para más información, consulte [Creación de una clave de contenido](media-services-dotnet-create-contentkey.md#common_contentkey)).
+siguiente Hello **CreateAssetDeliveryPolicy** método crea hello **AssetDeliveryPolicy** que es configurado tooapply comunes cifrado dinámico (**DynamicCommonEncryption**) tooa (se bloqueará otros protocolos de transmisión por secuencias) de protocolo de transmisión por secuencias suave. método Hello toma dos parámetros: **Asset** (Hola toowhich asset desea tooapply Hola entrega directiva) y **IContentKey** (clave de contenido de Hola de hello **CommonEncryption**tipo, para obtener más información, consulte: [crear una clave de contenido](media-services-dotnet-create-contentkey.md#common_contentkey)).
 
-Para obtener información sobre los valores que puede especificar al crear una entidad AssetDeliveryPolicy, consulte la sección [Tipos usados al definir AssetDeliveryPolicy](#types) .
+Para obtener información sobre qué valores se puede especificar al crear un AssetDeliveryPolicy, vea hello [tipos que se utilizan al definir AssetDeliveryPolicy](#types) sección.
 
     static public void CreateAssetDeliveryPolicy(IAsset asset, IContentKey key)
     {
@@ -99,7 +99,7 @@ Para obtener información sobre los valores que puede especificar al crear una e
                 AssetDeliveryProtocol.SmoothStreaming,
                 assetDeliveryPolicyConfiguration);
     
-            // Add AssetDelivery Policy to the asset
+            // Add AssetDelivery Policy toohello asset
             asset.DeliveryPolicies.Add(assetDeliveryPolicy);
     
             Console.WriteLine();
@@ -107,20 +107,20 @@ Para obtener información sobre los valores que puede especificar al crear una e
                 assetDeliveryPolicy.AssetDeliveryPolicyType);
      }
 
-Los Servicios multimedia de Azure también permiten agregar el cifrado de Widevine. En el ejemplo siguiente se muestra cómo se agrega tanto PlayReady como Widevine a la directiva de entrega de recursos.
+Servicios multimedia de Azure también permite tooadd Widevine cifrado. Hello en el ejemplo siguiente se muestra cómo PlayReady y Widevine que se agrega la directiva de entrega del activo de toohello.
 
     static public void CreateAssetDeliveryPolicy(IAsset asset, IContentKey key)
     {
-        // Get the PlayReady license service URL.
+        // Get hello PlayReady license service URL.
         Uri acquisitionUrl = key.GetKeyDeliveryUrl(ContentKeyDeliveryType.PlayReadyLicense);
 
 
-        // GetKeyDeliveryUrl for Widevine attaches the KID to the URL.
+        // GetKeyDeliveryUrl for Widevine attaches hello KID toohello URL.
         // For example: https://amsaccount1.keydelivery.mediaservices.windows.net/Widevine/?KID=268a6dcb-18c8-4648-8c95-f46429e4927c.  
-        // The WidevineBaseLicenseAcquisitionUrl (used below) also tells Dynamaic Encryption 
-        // to append /? KID =< keyId > to the end of the url when creating the manifest.
+        // hello WidevineBaseLicenseAcquisitionUrl (used below) also tells Dynamaic Encryption 
+        // tooappend /? KID =< keyId > toohello end of hello url when creating hello manifest.
         // As a result Widevine license acquisition URL will have KID appended twice, 
-        // so we need to remove the KID that in the URL when we call GetKeyDeliveryUrl.
+        // so we need tooremove hello KID that in hello URL when we call GetKeyDeliveryUrl.
 
         Uri widevineUrl = key.GetKeyDeliveryUrl(ContentKeyDeliveryType.Widevine);
         UriBuilder uriBuilder = new UriBuilder(widevineUrl);
@@ -142,38 +142,38 @@ Los Servicios multimedia de Azure también permiten agregar el cifrado de Widevi
             assetDeliveryPolicyConfiguration);
 
 
-        // Add AssetDelivery Policy to the asset
+        // Add AssetDelivery Policy toohello asset
         asset.DeliveryPolicies.Add(assetDeliveryPolicy);
 
     }
 
 > [!NOTE]
-> Al cifrar con Widevine, solo podría entregar con DASH. Asegúrese de especificar DASH en el protocolo de entrega de activos.
+> Cuando se cifra con Widevine, sólo sería capaz de toodeliver con guión. Asegúrese de toospecify seguro guión en el protocolo de entrega de activos de Hola.
 > 
 > 
 
 ## <a name="dynamicenvelopeencryption-asset-delivery-policy"></a>Directiva de entrega de recursos DynamicEnvelopeEncryption
-El método **CreateAssetDeliveryPolicy** siguiente crea la entidad **AssetDeliveryPolicy** que se configura para aplicar el cifrado de sobre dinámico (**DynamicEnvelopeEncryption**) para los protocolos Smooth Streaming, HLS y DASH (si decide no especificar algunos protocolos, se bloqueará el streaming en ellos). El método toma dos parámetros: **Asset** (el recurso al que desea aplicar la directiva de entrega) e **IContentKey** (la clave de contenido de tipo **EnvelopeEncryption**. Para más información, consulte [Creación de una clave de contenido](media-services-dotnet-create-contentkey.md#envelope_contentkey)).
+siguiente Hello **CreateAssetDeliveryPolicy** método crea hello **AssetDeliveryPolicy** que es el cifrado de sobre dinámico configurado tooapply (**DynamicEnvelopeEncryption** ) tooSmooth protocolos de Streaming, HLS y DASH (si decide toonot especificar algunos protocolos, se bloquearán de transmisión por secuencias). método Hello toma dos parámetros: **Asset** (Hola toowhich asset desea tooapply Hola entrega directiva) y **IContentKey** (clave de contenido de Hola de hello **EnvelopeEncryption**tipo, para obtener más información, consulte: [crear una clave de contenido](media-services-dotnet-create-contentkey.md#envelope_contentkey)).
 
-Para obtener información sobre los valores que puede especificar al crear una entidad AssetDeliveryPolicy, consulte la sección [Tipos usados al definir AssetDeliveryPolicy](#types) .   
+Para obtener información sobre qué valores se puede especificar al crear un AssetDeliveryPolicy, vea hello [tipos que se utilizan al definir AssetDeliveryPolicy](#types) sección.   
 
     private static void CreateAssetDeliveryPolicy(IAsset asset, IContentKey key)
     {
 
-        //  Get the Key Delivery Base Url by removing the Query parameter.  The Dynamic Encryption service will
-        //  automatically add the correct key identifier to the url when it generates the Envelope encrypted content
-        //  manifest.  Omitting the IV will also cause the Dynamice Encryption service to generate a deterministic
-        //  IV for the content automatically.  By using the EnvelopeBaseKeyAcquisitionUrl and omitting the IV, this
-        //  allows the AssetDelivery policy to be reused by more than one asset.
+        //  Get hello Key Delivery Base Url by removing hello Query parameter.  hello Dynamic Encryption service will
+        //  automatically add hello correct key identifier toohello url when it generates hello Envelope encrypted content
+        //  manifest.  Omitting hello IV will also cause hello Dynamice Encryption service toogenerate a deterministic
+        //  IV for hello content automatically.  By using hello EnvelopeBaseKeyAcquisitionUrl and omitting hello IV, this
+        //  allows hello AssetDelivery policy toobe reused by more than one asset.
         //
         Uri keyAcquisitionUri = key.GetKeyDeliveryUrl(ContentKeyDeliveryType.BaselineHttp);
         UriBuilder uriBuilder = new UriBuilder(keyAcquisitionUri);
         uriBuilder.Query = String.Empty;
         keyAcquisitionUri = uriBuilder.Uri;
 
-        // The following policy configuration specifies: 
-        //   key url that will have KID=<Guid> appended to the envelope and
-        //   the Initialization Vector (IV) to use for the envelope encryption.
+        // hello following policy configuration specifies: 
+        //   key url that will have KID=<Guid> appended toohello envelope and
+        //   hello Initialization Vector (IV) toouse for hello envelope encryption.
         Dictionary<AssetDeliveryPolicyConfigurationKey, string> assetDeliveryPolicyConfiguration =
             new Dictionary<AssetDeliveryPolicyConfigurationKey, string> 
         {
@@ -187,7 +187,7 @@ Para obtener información sobre los valores que puede especificar al crear una e
                         AssetDeliveryProtocol.SmoothStreaming | AssetDeliveryProtocol.HLS | AssetDeliveryProtocol.Dash,
                         assetDeliveryPolicyConfiguration);
 
-        // Add AssetDelivery Policy to the asset
+        // Add AssetDelivery Policy toohello asset
         asset.DeliveryPolicies.Add(assetDeliveryPolicy);
 
         Console.WriteLine();
@@ -199,7 +199,7 @@ Para obtener información sobre los valores que puede especificar al crear una e
 
 ### <a id="AssetDeliveryProtocol"></a>AssetDeliveryProtocol
 
-La enumeración siguiente describe los valores que puede establecer para el protocolo de entrega de recursos.
+Hello enum siguiente describe valores que puede establecer para el protocolo de entrega de activos de Hola.
 
     [Flags]
     public enum AssetDeliveryProtocol
@@ -234,7 +234,7 @@ La enumeración siguiente describe los valores que puede establecer para el prot
 
 ### <a id="AssetDeliveryPolicyType"></a>AssetDeliveryPolicyType
 
-La enumeración siguiente describe los valores que puede establecer para el tipo de directiva de entrega de recursos.  
+Hello enum siguiente describe valores que puede establecer para el tipo de directiva de entrega de activos de Hola.  
 
     public enum AssetDeliveryPolicyType
     {
@@ -244,12 +244,12 @@ La enumeración siguiente describe los valores que puede establecer para el tipo
         None,
 
         /// <summary>
-        /// The Asset should not be delivered via this AssetDeliveryProtocol. 
+        /// hello Asset should not be delivered via this AssetDeliveryProtocol. 
         /// </summary>
         Blocked, 
 
         /// <summary>
-        /// Do not apply dynamic encryption to the asset.
+        /// Do not apply dynamic encryption toohello asset.
         /// </summary>
         /// 
         NoDynamicEncryption,  
@@ -267,7 +267,7 @@ La enumeración siguiente describe los valores que puede establecer para el tipo
 
 ### <a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
 
-La enumeración siguiente describe los valores que puede utilizar para configurar el método de entrega de la clave de contenido al cliente.
+Hello enum siguiente describe valores que puede utilizar el método de entrega de hello tooconfigure de cliente de hello toohello de clave de contenido.
     
     public enum ContentKeyDeliveryType
     {
@@ -299,7 +299,7 @@ La enumeración siguiente describe los valores que puede utilizar para configura
 
 ### <a id="AssetDeliveryPolicyConfigurationKey"></a>AssetDeliveryPolicyConfigurationKey
 
-La enumeración siguiente describe los valores que puede establecer para configurar las claves usadas para obtener la configuración específica para una directiva de entrega de recursos.
+Hola después de la enumeración describe valores que puede establecer las claves usadas tooconfigure tooget configuración concreta para una directiva de entrega del activo.
 
     public enum AssetDeliveryPolicyConfigurationKey
     {
@@ -319,22 +319,22 @@ La enumeración siguiente describe los valores que puede establecer para configu
         EnvelopeBaseKeyAcquisitionUrl,
 
         /// <summary>
-        /// The initialization vector to use for envelope encryption in Base64 format.
+        /// hello initialization vector toouse for envelope encryption in Base64 format.
         /// </summary>
         EnvelopeEncryptionIVAsBase64,
 
         /// <summary>
-        /// The PlayReady License Acquisition Url to use for common encryption.
+        /// hello PlayReady License Acquisition Url toouse for common encryption.
         /// </summary>
         PlayReadyLicenseAcquisitionUrl,
 
         /// <summary>
-        /// The PlayReady Custom Attributes to add to the PlayReady Content Header
+        /// hello PlayReady Custom Attributes tooadd toohello PlayReady Content Header
         /// </summary>
         PlayReadyCustomAttributes,
 
         /// <summary>
-        /// The initialization vector to use for envelope encryption.
+        /// hello initialization vector toouse for envelope encryption.
         /// </summary>
         EnvelopeEncryptionIV,
 

@@ -1,12 +1,12 @@
 ---
 title: "Dispositivo simulado y puerta de enlace de Azure IoT: Introducción | Microsoft Docs"
-description: Comience con el kit de inicio de puerta de enlace de IoT, cree la instancia de IoT Hub de Azure y conecte la puerta de enlace a la instancia de IoT Hub
+description: "Introducción a la puerta de enlace de IoT Starter Kit, crea el centro de IoT de Azure y conectar el centro de IoT de puerta de enlace toohello"
 services: iot-hub
 documentationcenter: 
 author: shizn
 manager: timtl
 tags: 
-keywords: "iot hub de azure, puerta de enlace de iot, introducción con internet de las cosas, kit de herramientas de iot"
+keywords: "Centro de iot de Azure, puerta de enlace de iot, introducción a Hola internet de las cosas, el Kit de herramientas de iot"
 ROBOTS: NOINDEX
 redirect_url: /azure/iot-hub/iot-hub-gateway-kit-c-lesson1-set-up-nuc
 ms.assetid: 0c110b8b-bee4-4aec-a18a-dfc292aa17a3
@@ -17,11 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 916fa40d9ac857dfa72197b40c232834593d3891
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1a54a5e5f1c1d9b2e657c9e4448274256e2533f2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-iot-gateway-starter-kit-with-a-simulated-device"></a>Introducción con el kit de inicio de puerta de enlace de IoT con un dispositivo simulado
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 07/11/2017
 > * [SensorTag](iot-hub-gateway-kit-c-get-started.md)
 > * [Dispositivo simulado](iot-hub-gateway-kit-c-sim-get-started.md)
 
-En este tutorial, empezará por aprender los conceptos básicos sobre cómo trabajar con el [kit de inicio de puerta de enlace de IoT](https://aka.ms/gateway-kit). Va a trabajar con Intel NUC que ejecuta Wind River Linux. Aprenderá a conectar fácilmente los dispositivos a la nube mediante IoT Hub de Azure.
+En este tutorial, empiece por obtener información sobre fundamentos de hello sobre cómo trabajar con [Starter Kit de puerta de enlace de IoT](https://aka.ms/gateway-kit). Va a trabajar con Intel NUC que ejecuta Wind River Linux. Obtendrá información sobre cómo tooseamleesly conectar la nube de toohello de dispositivos mediante el uso de centro de IoT de Azure.
 
 ***
 **¿Aún no tiene el kit?:** haga clic [aquí](https://aka.ms/gateway-kit).
@@ -38,73 +38,73 @@ En este tutorial, empezará por aprender los conceptos básicos sobre cómo trab
 ## <a name="lesson-1-configure-your-nuc"></a>Lección 1: Configuración de NUC
 ![Diagrama integral de la lección 1](media/iot-hub-gateway-kit-lessons/e2e-sim-Lesson1.png)
 
-En esta lección, se configura Intel NUC (Next Unit of Computing) en el kit como una puerta de enlace de IoT de Azure, se instala el paquete de Azure IoT Edge en NUC y se ejecuta una aplicación de ejemplo para comprobar la funcionalidad de la puerta de enlace.
+En esta lección, configurar NUC de Intel (siguiente unidad de "informática") en hello Kit como una puerta de enlace de IoT de Azure, instalar paquetes de hello borde de IoT de Azure en NUC y ejecutar una funcionalidad de la puerta de enlace de la aplicación tooverify ejemplo Hola.
 
-*Tiempo estimado para completar el tutorial: 15 minutos*
+*Estimado toocomplete de tiempo: 15 minutos*
 
-Vaya a [Configuración de Intel NUC como puerta de enlace de IoT](iot-hub-gateway-kit-c-sim-lesson1-set-up-nuc.md) (Configuración de Intel NUC como una puerta de enlace de IoT).
+Vaya demasiado[configurar Intel NUC como una puerta de enlace de IoT](iot-hub-gateway-kit-c-sim-lesson1-set-up-nuc.md)
 
 ## <a name="lesson-2-create-your-iot-hub"></a>Lección 2: Creación de la instancia de IoT Hub
 ![Diagrama integral de la lección 2](media/iot-hub-gateway-kit-lessons/e2e-sim-Lesson2.png)
 
-En esta lección, se instalan las herramientas y el software en el equipo host. Debe crear una cuenta gratuita de Azure, aprovisionar la instancia de IoT Hub de Azure y crear el primer dispositivo en IoT Hub.
+En esta lección, instale herramientas de Hola y el software en el equipo host. A continuación, crear su cuenta de Azure gratuita, aprovisionar el centro de IoT de Azure y crear su primer dispositivo en el centro de IoT Hola.
 
 Complete la lección 1 antes de iniciar esta.
 
-### <a name="get-the-tools"></a>Obtener las herramientas
-Instale las herramientas y el software en el equipo host.
+### <a name="get-hello-tools"></a>Obtener herramientas de Hola
+Instalar software y herramientas de hello en el equipo host.
 
-*Tiempo estimado para completar el tutorial: 20 minutos*
+*Estimado toocomplete de tiempo: 20 minutos*
 
-Vaya a [Obtener las herramientas](iot-hub-gateway-kit-c-sim-lesson2-get-the-tools-win32.md).
+Vaya demasiado[obtener herramientas Hola](iot-hub-gateway-kit-c-sim-lesson2-get-the-tools-win32.md)
 
 ### <a name="create-an-iot-hub-and-register-your-device"></a>Cree una instancia de IoT Hub y registre el dispositivo
-Cree el grupo de recursos, aprovisione la primera instancia de IoT Hub de Azure y agregue el primer dispositivo a dicha instancia mediante la CLI de Azure.
+Crear el grupo de recursos, aprovisionar el primer centro de IoT de Azure y agregar el primer centro de IoT de toohello de dispositivo mediante Hola CLI de Azure.
 
-*Tiempo estimado para completar el tutorial: 10 minutos*
+*Estimado toocomplete de tiempo: 10 minutos*
 
-Vaya a [Creación de una instancia de IoT Hub y registro del dispositivo](iot-hub-gateway-kit-c-sim-lesson2-register-device.md).
+Vaya demasiado[crear un centro de IoT y registrar el dispositivo](iot-hub-gateway-kit-c-sim-lesson2-register-device.md)
 
-## <a name="lesson-3-receive-messages-from-the-simulated-device-and-read-messages-from-your-iot-hub"></a>Lección 3: Recepción de mensajes del dispositivo simulado y lectura de estos en IoT Hub
-En esta lección, usará scripts para automatizar la configuración y la ejecución de una aplicación de dispositivo simulado en la puerta de enlace. La aplicación de dispositivo simulado genera datos de temperatura de ejemplo y los envía a un módulo de IoT Hub. El módulo de IoT Hub empaqueta los datos recibidos y los envía a su IoT Hub a través del marco de la puerta de enlace proporcionado en Azure IoT Edge.
+## <a name="lesson-3-receive-messages-from-hello-simulated-device-and-read-messages-from-your-iot-hub"></a>Lección 3: Recibir mensajes de dispositivo simulado de Hola y leer los mensajes de su centro de IoT
+En esta lección, usará configuración de las secuencias de comandos tooautomate hello y ejecución de una aplicación de dispositivo simulado en la puerta de enlace. aplicación de dispositivo simulado de Hello genera datos de temperatura de ejemplo y lo envía el módulo de centro de IoT tooan. Hola paquetes de módulo de centro de IoT datos Hola reciben y envía el centro de IoT tooyour a través del marco de puerta de enlace de hello proporcionado en el borde de IoT de Azure.
 
 ![Diagrama integral de la lección 3](media/iot-hub-gateway-kit-lessons/e2e-sim-Lesson3.png)
 
 ### <a name="configure-and-run-a-simulated-device"></a>Configuración y ejecución de un dispositivo simulado
-Prepare los códigos de ejemplo. Luego, configure y ejecute la aplicación de ejemplo del dispositivo simulado.
+Preparar los códigos de ejemplo de Hola. A continuación, configure y ejecute la aplicación de ejemplo de Hola simulada dispositivos.
 
-*Tiempo estimado para completar el tutorial: 15 minutos*
+*Estimado toocomplete de tiempo: 15 minutos*
 
-Vaya a [Configuración y ejecución de un dispositivo simulado](iot-hub-gateway-kit-c-sim-lesson3-configure-simulated-device-app.md)
+Vaya demasiado[configurar y ejecutar un dispositivo simulado](iot-hub-gateway-kit-c-sim-lesson3-configure-simulated-device-app.md)
 
 ### <a name="read-messages-from-your-iot-hub"></a>Lectura de mensajes en IoT Hub
-Ejecute el código de ejemplo en el equipo host para leer los mensajes en IoT Hub.
+Ejecutar código de ejemplo en los mensajes de saludo de tooread de equipo de host desde el centro de IoT.
 
-*Tiempo estimado para completar el tutorial: 15 minutos*
+*Estimado toocomplete de tiempo: 15 minutos*
 
-Vaya a [Lectura de mensajes en IoT Hub](iot-hub-gateway-kit-c-sim-lesson3-read-messages-from-hub.md)
+Vaya demasiado[leer los mensajes de su centro de IoT](iot-hub-gateway-kit-c-sim-lesson3-read-messages-from-hub.md)
 
-## <a name="lesson-4-save-messages-to-azure-table-storage"></a>Lección 4: Almacenamiento de mensajes en Azure Table Storage
-Cree una instancia de Azure Function App que recopile los mensajes entrantes de la instancia de IoT Hub y los escriba en Azure Table Storage.
+## <a name="lesson-4-save-messages-tooazure-table-storage"></a>Lección 4: Guardar mensajes tooAzure el almacenamiento de tabla
+Crear una aplicación de Azure de función que obtiene los mensajes entrantes desde el centro de IoT y los escribe tooAzure el almacenamiento de tabla.
 
 ![Diagrama integral de la lección 4](media/iot-hub-gateway-kit-lessons/e2e-sim-Lesson4.png)
 
 ### <a name="create-an-azure-function-app-and-azure-storage-account"></a>Creación de una cuenta de Azure Storage y una aplicación de Azure Function
-Use una plantilla de Azure Resource Manager para crear una aplicación de Azure Function y una cuenta de Azure Storage.
+Utilice un toocreate de plantilla de Azure Resource Manager, una aplicación de Azure de función y una cuenta de almacenamiento de Azure.
 
-*Tiempo estimado para completar el tutorial: 10 minutos*
+*Estimado toocomplete de tiempo: 10 minutos*
 
-Vaya a [Creación de una instancia de Azure Function App y una cuenta de Azure Storage](iot-hub-gateway-kit-c-sim-lesson4-deploy-resource-manager-template.md).
+Vaya demasiado[crear una cuenta de almacenamiento de Azure y la aplicación de Azure (función)](iot-hub-gateway-kit-c-sim-lesson4-deploy-resource-manager-template.md)
 
 ### <a name="read-messages-persisted-in-azure-table-storage"></a>Lectura de los mensajes que se conservan en Azure Table Storage
-Supervise los mensajes de la puerta de enlace a la nube a medida que se escriben en Azure Table Storage.
+Supervisar mensajes de puerta de enlace a la nube de hello tal y como se escriben tooAzure el almacenamiento de tabla.
 
-*Tiempo estimado para completar el tutorial: 5 minutos*
+*Estimado toocomplete de tiempo: 5 minutos*
 
-Vaya a [Lectura de los mensajes que se conservan en Azure Table Storage](iot-hub-gateway-kit-c-sim-lesson4-read-table-storage.md) (Lectura de los mensajes que se conservan en Azure Table Storage).
+Vaya demasiado[leer los mensajes de guardado en el almacenamiento de Azure Table](iot-hub-gateway-kit-c-sim-lesson4-read-table-storage.md).
 
 ## <a name="troubleshooting"></a>Solución de problemas
-Si tiene algún problema durante las lecciones, puede encontrar soluciones en el artículo [Troubleshooting](iot-hub-gateway-kit-c-sim-troubleshooting.md) (Solución de problemas).
+Si tiene problemas durante las lecciones de hello, buscar soluciones en hello [solución de problemas](iot-hub-gateway-kit-c-sim-troubleshooting.md) artículo.
 
 ## <a name="explore-more"></a>Explorar más
-Visite la [zona de desarrollador del Kit de puerta de enlace de IoT de Intel](https://software.intel.com/en-us/iot/hardware/gateways/dev-kit) para obtener más información.
+Visite hello [zona de desarrollador de Kit de puerta de enlace de IoT de Intel](https://software.intel.com/en-us/iot/hardware/gateways/dev-kit) toolearn más.

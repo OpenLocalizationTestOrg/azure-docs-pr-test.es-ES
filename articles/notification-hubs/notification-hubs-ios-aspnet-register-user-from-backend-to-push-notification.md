@@ -1,6 +1,6 @@
 ---
-title: Registro del usuario actual para notificaciones push mediante una API web | Microsoft Docs
-description: "Obtenga información acerca de cómo solicitar el registro de notificaciones de inserción en una aplicación iOS con los Centros de notificaciones de Azure al realizar el registro por la API web de ASP.NET."
+title: "usuario actual de hello aaaRegister para las notificaciones de inserción a través de Web API | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toorequest Insertar registro de notificaciones en una aplicación de iOS con centros de notificaciones de Azure cuando se realiza registro por la API Web de ASP.NET."
 services: notification-hubs
 documentationcenter: ios
 author: ysxu
@@ -14,25 +14,25 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: fd56bb2dd627b31f00363851a4e76484aa382988
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f859feb436093e703d7e1db38354dd356fff8efe
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="register-the-current-user-for-push-notifications-by-using-aspnet"></a>Registro del usuario actual para las notificaciones de inserción mediante ASP.NET
+# <a name="register-hello-current-user-for-push-notifications-by-using-aspnet"></a>Registrar al usuario actual de hello las notificaciones de inserción mediante ASP.NET
 > [!div class="op_single_selector"]
 > * [iOS](notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification.md)
 > 
 > 
 
 ## <a name="overview"></a>Información general
-En este tema se describe cómo solicitar el registro de las notificaciones de inserción con los Centros de notificaciones de Azure al realizar el registro mediante ASP.NET Web API. Este tema amplía el tutorial [Notificación a los usuarios con los Centros de notificaciones]. Debe haber completado ya los pasos necesarios de ese tutorial para crear el servicio móvil autenticado. Para obtener más información acerca del escenario de notificación a los usuarios, consulte [Notificación a los usuarios con los Centros de notificaciones].
+Este tema muestra cómo toorequest Insertar registro de notificaciones con centros de notificaciones de Azure cuando el registro se realiza por la API Web de ASP.NET. Este tema amplían tutorial Hola [notificar a los usuarios con centros de notificaciones]. Debe haber completado pasos Hola necesario en ese servicio móvil de toocreate tutorial Hola autenticado. Para obtener más información sobre Hola notificar al escenario de los usuarios, consulte [notificar a los usuarios con centros de notificaciones].
 
 ## <a name="update-your-app"></a>Actualización de la aplicación
-1. En su MainStoryboard_iPhone.storyboard, agregue los siguientes componentes desde la biblioteca de objetos:
+1. En su MainStoryboard_iPhone.storyboard, agregue Hola de los componentes siguientes de la biblioteca de objetos de hello:
    
-   * **Etiqueta**: "Push to User with Notification Hubs"
+   * **Etiqueta**: "TooUser con centros de notificaciones de inserción"
    * **Etiqueta**: "InstallationId"
    * **Etiqueta**: "User"
    * **Campo de texto**: "User"
@@ -40,25 +40,25 @@ En este tema se describe cómo solicitar el registro de las notificaciones de in
    * **Campo de texto**: "Password"
    * **Botón**: "Login"
      
-     En este punto, su storyboard debe presentar la siguiente apariencia:
+     En este momento, el guión gráfico Hola siguiente aspecto:
      
       ![][0]
-2. En el editor del asistente, cree salidas para todos los controles cambiados y llámelos, conecte los campos de texto con el controlador de vista (delegado) y cree una **acción** para el botón de **inicio de sesión**.
+2. En el editor de Asistente de hello, crear las salidas de todos los controles de hello cambiado y llamarlos, conectar los campos de texto hello con hello View-Controller (delegado) y crear un **acción** para hello **inicio de sesión** botón.
    
        ![][1]
    
-       Your BreakingNewsViewController.h file should now contain the following code:
+       Your BreakingNewsViewController.h file should now contain hello following code:
    
         @property (weak, nonatomic) IBOutlet UILabel *installationId;
         @property (weak, nonatomic) IBOutlet UITextField *User;
         @property (weak, nonatomic) IBOutlet UITextField *Password;
    
         - (IBAction)login:(id)sender;
-3. Cree una clase llamada **DeviceInfo**y copie el siguiente código en la sección de la interfaz del archivo DeviceInfo.h:
+3. Cree una clase denominada **DeviceInfo**, y Hola copia siguiendo el código en la sección de la interfaz de Hola de archivo hello DeviceInfo.h:
    
         @property (readonly, nonatomic) NSString* installationId;
         @property (nonatomic) NSData* deviceToken;
-4. Copie el siguiente código en la sección de implementación del archivo DeviceInfo.m:
+4. Copie Hola después el código de sección de implementación de Hola de archivo de hello DeviceInfo.m:
    
             @synthesize installationId = _installationId;
    
@@ -73,7 +73,7 @@ En este tema se describe cómo solicitar el registro de las notificaciones de in
                     _installationId = (__bridge_transfer NSString *)CFUUIDCreateString(kCFAllocatorDefault, newUUID);
                     CFRelease(newUUID);
    
-                    //store the install ID so we don't generate a new one next time
+                    //store hello install ID so we don't generate a new one next time
                     [defaults setObject:_installationId forKey:@"PushToUserInstallationId"];
                     [defaults synchronize];
                 }
@@ -89,32 +89,32 @@ En este tema se describe cómo solicitar el registro de las notificaciones de in
                                       ntohl(tokenBytes[6]), ntohl(tokenBytes[7])];
                 return hexToken;
             }
-5. En PushToUserAppDelegate.h, agregue la siguiente propiedad singleton:
+5. En PushToUserAppDelegate.h, agregue Hola después singleton de propiedad:
    
         @property (strong, nonatomic) DeviceInfo* deviceInfo;
-6. En el método **didFinishLaunchingWithOptions** en PushToUserAppDelegate.m, agregue el siguiente código:
+6. Hola **didFinishLaunchingWithOptions** método PushToUserAppDelegate.m, agregar Hola siguiente código:
    
         self.deviceInfo = [[DeviceInfo alloc] init];
    
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
    
-    La primera línea inicializa el singleton **DeviceInfo** . La segunda línea inicia el registro de notificaciones de inserción, que ya existe si ya ha completado el tutorial [Introducción a los Centros de notificaciones] .
-7. En PushToUserAppDelegate.m, implemente el método **didRegisterForRemoteNotificationsWithDeviceToken** en su AppDelegate y agregue el siguiente código:
+    primera línea de Hello inicializa hello **DeviceInfo** singleton. Hola segunda línea inicia Hola registro para las notificaciones de inserción, que ya está presente es ya completados hello [empezar a trabajar con los centros de notificaciones] tutorial.
+7. En PushToUserAppDelegate.m, implemente el método hello **didRegisterForRemoteNotificationsWithDeviceToken** en su AppDelegate y agregue el siguiente código de hello:
    
         self.deviceInfo.deviceToken = deviceToken;
    
-    De este modo se configura el token del dispositivo para la solicitud.
+    Esto establece el token del dispositivo Hola para solicitud de Hola.
    
    > [!NOTE]
-   > En este punto, no debería haber ningún otro código en este método. Si ya tiene una llamada al método **registerNativeWithDeviceToken** que se agregó cuando realizó el tutorial [Introducción a los Centros de notificaciones](/manage/services/notification-hubs/get-started-notification-hubs-ios/) , debe convertir la llamada en comentario o borrarla.
+   > En este punto, no debería haber ningún otro código en este método. Si ya tiene una llamada toohello **registerNativeWithDeviceToken** método que se agregó al completar hello [empezar a trabajar con los centros de notificaciones](/manage/services/notification-hubs/get-started-notification-hubs-ios/) tutorial debe Comente o quite que llamar a.
    > 
    > 
-8. En el archivo PushToUserAppDelegate.m, agregue el siguiente método de controlador:
+8. En archivo de PushToUserAppDelegate.m de hello, agregue Hola siguiendo el método de controlador:
    
    * información de usuario de aplicación (void):(UIApplication *) aplicación didReceiveRemoteNotification:(NSDictionary *) {NSLog (@"% @", información de usuario);   UIAlertView * alerta = [[UIAlertView alloc] initWithTitle:@"Notification" mensaje: [información de usuario objectForKey:@"inAppMessage]" delegado: nil cancelButtonTitle: @ otherButtonTitles:nil "Aceptar", nulo];   [Mostrar alerta]; }
    
-   Este método muestra una alerta en la interfaz de usuario cuando su aplicación recibe notificaciones durante su ejecución.
-9. Abra el archivo PushToUserViewController.m y escriba la siguiente implementación:
+   Este método muestra una alerta en la interfaz de usuario de hello cuando la aplicación recibe notificaciones mientras se está ejecutando.
+9. Abrir archivo de PushToUserViewController.m hello y teclado Hola devuelto en hello después de la implementación:
    
         - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
             if (theTextField == self.User || theTextField == self.Password) {
@@ -122,15 +122,15 @@ En este tema se describe cómo solicitar el registro de las notificaciones de in
             }
             return YES;
         }
-10. En el método **viewDidLoad** del archivo PushToUserViewController.m, inicialice la etiqueta installationId como se muestra a continuación:
+10. Hola **viewDidLoad** método hello PushToUserViewController.m archivo, inicializar etiqueta installationId de hello como sigue:
     
          DeviceInfo* deviceInfo = [(PushToUserAppDelegate*)[[UIApplication sharedApplication]delegate] deviceInfo];
          Self.installationId.text = deviceInfo.installationId;
-11. Agregue las siguientes propiedades en la interfaz en PushToUserViewController.m:
+11. Agregue Hola propiedades de interfaz en PushToUserViewController.m siguientes:
     
         @property (readonly) NSOperationQueue* downloadQueue;
         - (NSString*)base64forData:(NSData*)theData;
-12. Luego, agregue la siguiente implementación:
+12. A continuación, agregue Hola después de la implementación:
     
             - (NSOperationQueue *)downloadQueue {
                 if (!_downloadQueue) {
@@ -173,7 +173,7 @@ En este tema se describe cómo solicitar el registro de las notificaciones de in
     
                 return [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
             }
-13. Copie el siguiente código en el método controlador **login** creado por XCode:
+13. Copia Hola siguiente de código en hello **inicio de sesión** método de controlador creado por XCode:
     
             DeviceInfo* deviceInfo = [(PushToUserAppDelegate*)[[UIApplication sharedApplication]delegate] deviceInfo];
     
@@ -206,9 +206,9 @@ En este tema se describe cómo solicitar el registro de las notificaciones de in
                 }
             }];
     
-    Este método obtiene un ID de instalación y un canal para las notificaciones de inserción y los envía, junto con el tipo de dispositivo, al método de Web API autenticado que crea un registro en los Centros de notificaciones. Esta API web se definió en [Notificación a los usuarios con los Centros de notificaciones].
+    Este método obtiene un identificador de instalación y el canal de notificaciones de inserción y lo envía, junto con el tipo de dispositivo de hello, toohello autentica el método API de Web que crea un registro en los centros de notificaciones. Esta API web se definió en [notificar a los usuarios con centros de notificaciones].
 
-Ahora que la aplicación de cliente se ha actualizado, regrese a [Notificación a los usuarios con los Centros de notificaciones] y actualice el servicio móvil para enviar notificaciones mediante Centros de notificaciones.
+Ahora que hello aplicación cliente se ha actualizado, devolver toohello [notificar a los usuarios con centros de notificaciones] y actualizar notificaciones de toosend de hello servicio móvil con centros de notificaciones.
 
 <!-- Anchors. -->
 
@@ -217,6 +217,6 @@ Ahora que la aplicación de cliente se ha actualizado, regrese a [Notificación 
 [1]: ./media/notification-hubs-ios-aspnet-register-user-push-notifications/notification-hub-user-aspnet-ios2.png
 
 <!-- URLs. -->
-[Notificación a los usuarios con los Centros de notificaciones]: /manage/services/notification-hubs/notify-users-aspnet
+[notificar a los usuarios con centros de notificaciones]: /manage/services/notification-hubs/notify-users-aspnet
 
-[Introducción a los Centros de notificaciones]: /manage/services/notification-hubs/get-started-notification-hubs-ios
+[empezar a trabajar con los centros de notificaciones]: /manage/services/notification-hubs/get-started-notification-hubs-ios

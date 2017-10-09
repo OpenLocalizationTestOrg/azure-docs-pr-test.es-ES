@@ -1,6 +1,6 @@
 ---
-title: Carga de una imagen personalizada en Azure RemoteApp | Microsoft Docs
-description: "Obtenga información sobre cómo cargar una imagen personalizada para RemoteApp de Azure"
+title: aaaUpload una imagen personalizada para Azure RemoteApp | Documentos de Microsoft
+description: "Obtenga información acerca de cómo tooupload personalizado de la imagen de Azure RemoteApp"
 services: remoteapp
 documentationcenter: 
 author: ericorman
@@ -13,44 +13,44 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/23/2016
 ms.author: ericor
-ms.openlocfilehash: 5a235fac88d6e95ea294bda197641108acb4a09f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6ad40fe58795ece37f4c7900be01bc713938da87
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="upload-a-custom-image-for-azure-remoteapp"></a>Carga de una imagen personalizada para RemoteApp de Azure
 > [!IMPORTANT]
-> Azure RemoteApp dejará de estar disponible el 31 de agosto de 2017. Para obtener más información, lea el [anuncio](https://go.microsoft.com/fwlink/?linkid=821148) .
+> Azure RemoteApp dejará de estar disponible el 31 de agosto de 2017. Hola de lectura [anuncio](https://go.microsoft.com/fwlink/?linkid=821148) para obtener más información.
 > 
 > 
 
-Ahora que ha creado la imagen de plantilla personalizada o que la actualizado con cambios, es necesario cargar esa imagen a la biblioteca de imágenes de Azure RemoteApp. Siga estos pasos.
+Ahora que ha creado la imagen de plantilla personalizada o haya actualizado con los cambios, debe tooupload esa biblioteca de imágenes de imagen tooyour Azure RemoteApp. Siga estos pasos.
 
 ## <a name="before-you-start"></a>Antes de comenzar
-1. Compruebe que la imagen personalizada cumple con los [requisitos de imagen](remoteapp-imagereqs.md) y los [requisitos de aplicación](remoteapp-appreqs.md).
-2. Instale el [módulo de Azure PowerShell](/powershell/azure/overview).
+1. Compruebe la imagen personalizada cumple hello [requisitos de la imagen](remoteapp-imagereqs.md) y [requisitos de la aplicación](remoteapp-appreqs.md).
+2. Instalar hello [módulo Azure PowerShell](/powershell/azure/overview).
 
-## <a name="step-by-step-on-how-to-upload-custom-image"></a>Procedimiento paso a paso para cargar una imagen personalizada
-1. Abra el Portal de administración de Azure y navegue a la página RemoteApp.
-2. En la pestaña **Imágenes de plantilla**, haga clic en **Cargar** en la parte inferior de la página.
-3. Escriba un nombre descriptivo para la imagen y especifique la ubicación de la cuenta de almacenamiento. Asegúrese de que la ubicación es la misma que para la colección de RemoteApp o una ubicación donde desea crear una.
-4. Cuando se le solicite, descargue el script a su equipo local.
-5. Copie los parámetros de comando del cuadro de texto en el portapapeles.
+## <a name="step-by-step-on-how-tooupload-custom-image"></a>Paso a paso sobre cómo imagen personalizada tooupload
+1. Abra el Portal de administración de Azure y desplácese toohello página de RemoteApp.
+2. En hello **imágenes de plantilla** , haga clic en **cargar** final Hola de página Hola.
+3. Escriba un nombre descriptivo para la imagen y especifique la ubicación de la cuenta de hello almacenamiento. Asegúrese de ubicación de hello es hello misma ubicación que la colección RemoteApp o una ubicación donde desea toocreate uno.
+4. Cuando se le solicite, descargue Hola script tooyour PC local.
+5. Copiar parámetros del comando hello en el Portapapeles de tooyour de cuadro de texto de Hola.
 6. Abra una ventana de Windows PowerShell con privilegios elevados.
-7. Desde la ventana de Windows PowerShell con privilegios elevados, navegue al mismo directorio al que descargó el script.
-8. Pegue el comando copiado y presione **Entrar**.
+7. De hello elevado de ventana de Windows PowerShell, vaya toohello mismo directorio donde descargó el script de Hola.
+8. Hola pegar copia el comando y presione **ENTRAR**.
    
-   Comenzará el proceso de carga y la duración podría depender de muchos factores, incluida la velocidad de la red y el tamaño de la imagen.
-9. Si la carga no se realiza correctamente debido a una interrupción de la red o algún factor similar, siempre puede reanudar el proceso de carga que comenzó. Para reanudar una carga, ejecute nuevamente el script con la misma línea de comando.
+   se iniciará el proceso de carga de Hola y duración puede depender de muchos factores como la velocidad de la red y el tamaño de imagen de Hola
+9. Si la carga no se realiza correctamente debido a la interrupción de la red o cosas como esta, puede reanudar siempre que se inició el proceso de carga de Hola. tooresume una carga, ejecutar script de Hola utilizando de nuevo Hola misma línea de comandos.
 
 > [!WARNING]
-> No modifique nunca el script de carga. Se han implementado comprobaciones específicas para garantizar que la imagen cumple con los requisitos de imagen y los requisitos de aplicación.
+> No modifique nunca script de carga de Hola. Comprobaciones específicas han sido implementado tooensure que Hola imagen cumple los requisitos de imagen hello y requisitos de la aplicación.
 > 
 > 
 
 ## <a name="common-problems"></a>Problemas comunes
-* Asegúrese de que usa Windows PowerShell y no Azure PowerShell. Debe instalar el módulo Azure PowerShell porque se necesitan ciertos módulos durante el proceso de carga.
-* Nunca modifique el script: las validaciones existen para su comodidad.
-* Si el archivo vhd se bloquea durante la carga, cópielo o muévalo a una nueva ubicación e intente volver a cargarlo. Es posible que algunos procesos de Windows impidan la carga.  
+* Asegúrese de que usa Windows PowerShell y no Azure PowerShell. Necesita módulo de PowerShell de Azure de hello tooinstall porque algunos módulos se necesitan durante el proceso de carga de Hola.
+* Nunca modifican script hello, validaciones existen para su comodidad.
+* Si el archivo de disco duro virtual de hello obtiene bloqueada durante la carga, copie el archivo hello o tooa nueva carga de ubicación e intente volver a moverlo. Es posible que algunos procesos de Windows impidan la carga.  
 

@@ -16,19 +16,19 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: b3fab99ff9fab5bc67fa70113dc5b06fac775b09
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: d04a9efeb3b35421aa605cadb2aa25f656a4d515
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="password-management-frequently-asked-questions"></a>Preguntas más frecuentes sobre la administración de contraseñas
 
-A continuación se indican algunas de las preguntas más frecuentes sobre todos los aspectos relacionados con el restablecimiento de contraseñas.
+Hola siguientes es algunas preguntas frecuentes para todos los aspectos relacionados con toopassword restablecer.
 
-Si tiene alguna pregunta general sobre Azure AD y el autoservicio de restablecimiento de contraseña y no encuentra una respuesta aquí, puede pedir ayuda a la comunidad en los [foros de Azure AD](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WindowsAzureAD). Los miembros de la comunidad están formados por ingenieros, jefes de producto, MVP y profesionales de TI.
+Si tiene alguna pregunta sobre Azure AD general y una contraseña de autoservicio de restablecimiento, que no se trata aquí, puede pedir Comunidad Hola para obtener ayuda en hello [foros de Azure Ad](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WindowsAzureAD). Los miembros de la Comunidad de hello incluyen ingenieros, directores de producto, MVP y colegas profesionales de TI.
 
-Estas preguntas más frecuentes se dividen en las siguientes secciones:
+Estas preguntas más frecuentes se dividen en hello las secciones siguientes:
 
 * [**Preguntas sobre el registro de restablecimiento de contraseña**](#password-reset-registration)
 * [**Preguntas sobre el restablecimiento de contraseña**](#password-reset)
@@ -39,12 +39,12 @@ Estas preguntas más frecuentes se dividen en las siguientes secciones:
 ## <a name="password-reset-registration"></a>Registro de restablecimiento de contraseña
 * **P: ¿Mis usuarios pueden registrar sus propios datos de restablecimiento de contraseña?**
 
-  > **R:** Sí, siempre que el restablecimiento de contraseña esté habilitado y que los usuarios cuenten con licencia, pueden ir al portal de Registro de restablecimiento de contraseña en http://aka.ms/ssprsetup para registrar la información de autenticación. Para registrarse, los usuarios también pueden ir al panel de acceso en http://myapps.microsoft.com, hacer clic en la pestaña de perfil y en la opción Registrarme para restablecer la contraseña.
+  > **R:** Sí, siempre y cuando se habilita el restablecimiento de contraseña y cuenten con licencia, pueden ir toohello portal de registro de restablecimiento de contraseña en http://aka.ms/ssprsetup tooregister su información de autenticación. Los usuarios también pueden registrarse va de panel de acceso de toohello en http://myapps.microsoft.com, haga clic en la ficha perfil de Hola y haga clic en hello registrar para la opción de restablecimiento de contraseña.
   >
   >
 * **P: ¿Puedo definir los datos de restablecimiento de contraseña en nombre de mis usuarios?**
 
-  > **R:** Sí, puede hacerlo en Azure AD Connect, PowerShell, [Azure Portal](https://portal.azure.com) o el Portal de administración de Office. Para más información, vea el artículo [Datos usados en el autoservicio de restablecimiento de contraseña de Azure AD](active-directory-passwords-data.md).
+  > **R:** Sí, puede hacerlo con Azure AD Connect, PowerShell, hello [portal de Azure](https://portal.azure.com), o el portal de administración de Office de Hola. Para obtener más información, vea el artículo de hello [datos usados por Azure AD autoservicio de restablecimiento de contraseña](active-directory-passwords-data.md).
   >
   >
 * **P: ¿Puedo sincronizar localmente los datos de las preguntas de seguridad?**
@@ -54,57 +54,57 @@ Estas preguntas más frecuentes se dividen en las siguientes secciones:
   >
 * **P: ¿Mis usuarios pueden registrar datos de manera tal que otros usuarios no puedan verlos?**
 
-  > **R:** Sí, cuando los usuarios registran datos a través del portal de Registro de restablecimiento de contraseña, se guardan en campos de autenticación privados que solo son visibles para los administradores globales y para el propio usuario.
+  > **R:** Sí, cuando un usuario registra datos mediante Hola se guarda la Portal de registro de restablecimiento de contraseña en los campos privados de autenticación que solo están visibles por los administradores globales y Hola por el usuario.
     >
     > [!NOTE]
-    > Si una **cuenta de administrador de Azure** registra su número de teléfono de autenticación, este también se rellena en el campo de teléfono móvil y está visible.
+    > Si un **cuenta de administrador de Azure** registra el número de teléfono de autenticación que también se rellena en el campo de teléfono móvil de Hola y es visible.
     >
   >
   >
-* **P: ¿Mis usuarios necesitan registrarse antes de poder usar el restablecimiento de contraseña?**
+* **P: ¿Mis usuarios tienen toobe registrado para poder usar el restablecimiento de contraseña?**
 
-  > **R:** No. Si define información de autenticación suficiente en nombre de sus usuarios, estos no tienen que registrarse. El restablecimiento de contraseña funciona siempre que tenga datos con formato correcto almacenados en los campos adecuados del directorio.
+  > **R:** No, si define suficiente información de autenticación en su nombre, los usuarios no tienen tooregister. Restablecimiento de contraseña funciona como correctamente ha aplicado formato a los datos almacenados en los campos correspondientes de hello en el directorio de Hola.
   >
   >
-* **P: ¿Puedo sincronizar o definir los campos Teléfono de autenticación, Correo electrónico de autenticación o Teléfono de autenticación alternativo en nombre de mis usuarios?**
+* **P: ¿puedo sincronizar o establecer los campos de teléfono de autenticación, correo electrónico de autenticación o teléfono de autenticación alternativo de hello en nombre de Mis usuarios?**
 
   > **R.:** No es posible hacerlo actualmente.
   >
   >
-* **P: ¿Cómo sabe el portal de registro cuáles son las opciones que tiene que mostrar a mis usuarios?**
+* **P: ¿cómo portal de registro de hello sabe qué tooshow opciones Mis usuarios?**
 
-  > **R:** En el portal de registro de restablecimiento de contraseña solo se muestran las opciones habilitadas para los usuarios. Estas opciones se encuentran en la sección Políticas para restablecer la contraseña del usuario en la pestaña Configurar del directorio. Por ejemplo, esto significa que, si no habilita las preguntas de seguridad, los usuarios no pueden registrarse para obtener esa opción.
+  > **R:** portal de registro de restablecimiento de contraseña de hello solo muestra Hola opciones que ha habilitado para los usuarios. Estas opciones se encuentran en hello sección Directiva de restablecimiento de contraseña de usuario de la ficha configurar de su directorio. Por ejemplo, esto significa que si no habilita preguntas de seguridad, a continuación, los usuarios no son tooregister capaz de esa opción.
   >
   >
 * **P: ¿Cuándo se considera que un usuario está registrado?**
 
-  > **R:** Se considera que un usuario está registrado en SSPR si ha registrado al menos el **Número de métodos requeridos para el restablecimiento** establecido en [Azure Portal](https://portal.azure.com).
+  > **R:** se considera que un usuario se registra para SSPR cuando se hayan registrado al menos Hola **número de métodos necesarios tooreset** que haya establecido en hello [portal de Azure](https://portal.azure.com).
   >
   >
 ## <a name="password-reset"></a>Restablecimiento de contraseña
-* **P: ¿Cuánto tiempo tengo que esperar para recibir un correo electrónico, un SMS o una llamada telefónica para el restablecimiento de contraseña?**
+* **P: ¿Cuánto debo esperar tooreceive un correo electrónico, SMS o llamada de teléfono de restablecimiento de contraseña?**
 
-  > **R:** Los correos electrónicos, los mensajes SMS y las llamadas telefónicas deberían llegar en un minuto; lo normal sería que tardaran entre 5 y 20 segundos.
-    >Si no recibe la notificación en este período de tiempo:
+  > **R:** correo electrónico, mensajes SMS, y llamadas telefónicas deben llegar en menos de un minuto, con hello habitual es que tarden 5 y 20 segundos.
+    >Si no se reciben una notificación de hello en este período de tiempo:
         > * Compruebe la carpeta de correo no deseado.
-        > * Compruebe que el número o el correo electrónico de contacto son los que espera.
-        > * Compruebe que los datos de autenticación del directorio tienen el formato correcto.
+        > * Compruebe el número de Hola o correo electrónico contactado es hello uno que espera.
+        > * Compruebe los datos de autenticación de hello en el directorio de hello tiene el formato correcto.
                 >     * Ejemplo: "+1 4255551234" o "user@contoso.com"
   >
   >
 * **P: ¿Qué idiomas admite el restablecimiento de contraseña?**
 
-  > **R:** La interfaz de usuario del restablecimiento de contraseña, los mensajes SMS y las llamadas de voz están localizados en los mismos idiomas que admite Office 365.
+  > **R:** Hola de interfaz de usuario de restablecimiento de contraseña, mensajes SMS y voz llamadas están localizadas en hello mismos idiomas que se admiten en Office 365.
   >
   >
-* **P: ¿En qué partes de la experiencia de restablecimiento de contraseña aparece mi marca si defino la personalización de marca de mi organización en la pestaña de configuración del directorio?**
+* **P: ¿qué partes de la experiencia de restablecimiento de contraseña de hello obtengan marca cuando establezco organizativa de personalización de marca en mi directorio de la pestaña de configuración?**
 
-  > **R:** El portal de restablecimiento de contraseña muestra el logotipo de su organización y también le permite configurar el vínculo Póngase en contacto con el administrador para dirigirlo a una dirección URL o a un correo electrónico personalizado. Todo correo electrónico enviado por el proceso de restablecimiento de contraseña incluye el logotipo, los colores y el nombre de su organización en el cuerpo del correo electrónico y se personaliza a partir del nombre.
+  > **R:** portal de restablecimiento de contraseña de hello muestra el logotipo de su organización y le permite tooconfigure Hola póngase en contacto con su administrador vínculo toopoint tooa correo electrónico personalizadas o dirección URL. Cualquier correo electrónico que se envía a través de restablecimiento de contraseña incluye el logotipo de su organización, colores, el nombre de cuerpo de saludo de correo electrónico de Hola y personalizada a partir del nombre.
   >
   >
-* **P: ¿Cómo puedo informar a mis usuarios sobre dónde tienen que ir para restablecer sus contraseñas?**
+* **P: ¿Cómo puedo informar a Mis usuarios sobre dónde toogo tooreset sus contraseñas?**
 
-  > **R:** Puede enviar a los usuarios directamente a https://passwordreset.microsoftonline.com, o bien puede indicarles que hagan clic en el vínculo **¿No puede acceder a su cuenta?** en cualquier página de inicio de sesión educativa o profesional. También puede publicar estos vínculos en un lugar al que los usuarios puedan acceder con facilidad.
+  > **R:** puede enviar su toohttps://passwordreset.microsoftonline.com a los usuarios directamente, o puede indicar hello tooclick **no se puede tener acceso a su vínculo de la cuenta** se encuentra en cualquier página de inicio de sesión de trabajo o centro educativo. También puede publicar estos vínculos en un tooyour fácilmente accesible de contexto a los usuarios.
   >
   >
 * **P: ¿Puedo usar esta página desde un dispositivo móvil?**
@@ -119,7 +119,7 @@ Estas preguntas más frecuentes se dividen en las siguientes secciones:
   >
 * **P: ¿Cómo puedo integrar directamente el restablecimiento de contraseña en la experiencia de inicio de sesión de escritorio de mi usuario?**
 
-  > **R:** Si es cliente de Azure AD Premium, puede instalar Microsoft Identity Manager sin costo adicional e implementar la solución de restablecimiento de contraseña local quera satisfacer este requisito.
+  > **R:** si es un cliente de Azure AD Premium, puede instalar Microsoft Identity Manager sin ningún costo adicional e implementar Hola local contraseña restablecimiento solución toomeet este requisito.
   >
   >
 * **P: ¿Puedo establecer distintas preguntas de seguridad para diferentes configuraciones regionales?**
@@ -127,9 +127,9 @@ Estas preguntas más frecuentes se dividen en las siguientes secciones:
   > **R.:** No es posible hacerlo actualmente.
   >
   >
-* **P: ¿Cuántas preguntas podemos configurar en la opción de autenticación Preguntas de seguridad?**
+* **P: ¿cuántas preguntas se pueden configurar para la opción de autenticación de preguntas de seguridad de hello?**
 
-  > **R:** Puede configurar hasta 20 preguntas de seguridad personalizadas en [Azure Portal](https://portal.azure.com).
+  > **R:** puede configurar las preguntas de seguridad personalizado too20 Hola [portal de Azure](https://portal.azure.com).
   >
   >
 * **P: ¿Qué longitud pueden tener las preguntas de seguridad?**
@@ -137,105 +137,105 @@ Estas preguntas más frecuentes se dividen en las siguientes secciones:
   > **R.:** Las preguntas de seguridad pueden tener entre 3 y 200 caracteres.
   >
   >
-* **P: ¿Qué longitud pueden tener las respuestas a las preguntas de seguridad?**
+* **P: ¿cuánto tiempo puede respuestas toosecurity preguntas?**
 
-  > **R.:** Las respuestas pueden tener entre 3 y 40 caracteres.
+  > **R:** respuestas pueden tener 3 caracteres too40.
   >
   >
-* **P: ¿Se rechazarán las respuestas duplicadas a las preguntas de seguridad?**
+* **P: ¿se rechazan respuestas duplicadas toosecurity preguntas?**
 
-  > **R.:** Sí, rechazaremos las respuestas duplicadas a las preguntas de seguridad.
+  > **R:** Sí, se rechazan respuestas duplicadas toosecurity preguntas.
   >
   >
-* **P: ¿Puede un usuario registrar la misma pregunta de seguridad más de una vez?**
+* **P: ¿puede un registro de usuario Hola misma pregunta de seguridad más de una vez?**
 
   > **R:** No. Una vez que un usuario registra una pregunta específica, no puede registrar esa pregunta por segunda vez.
   >
   >
-* **P: ¿Es posible establecer un límite mínimo de preguntas de seguridad para registro y restablecimiento?**
+* **P: ¿es posible tooset un límite mínimo de preguntas de seguridad de registro y restablecimiento?**
 
   > **R.:** Sí, es posible establecer un límite para el registro y otro para el restablecimiento. Es posible que se requieran entre 3 y 5 preguntas para el registro y entre 3 y 5 para el restablecimiento.
   >
   >
-* **P: Si un usuario ha registrado más del número máximo de preguntas necesarias para el restablecimiento, ¿cómo se seleccionan las preguntas de seguridad durante el proceso de restablecimiento?**
+* **P: si un usuario ha registrado más Hola número máximo de preguntas necesario tooreset, ¿cómo se seleccionan las preguntas de seguridad durante el restablecimiento?**
 
-  > **R:** De manera aleatoria se seleccionan N preguntas de seguridad del número total de preguntas para las cuales se ha registrado un usuario, donde N es el **Número de preguntas necesarias para el restablecimiento**. Por ejemplo, si un usuario tiene registradas 5 preguntas de seguridad, pero solo se requieren 3 para el restablecimiento, 3 de esas 5 se seleccionan de manera aleatoria y se presentan en el momento del restablecimiento. Si el usuario se equivoca al responder las preguntas, el proceso de selección vuelve a ejecutarse para evitar la repetición (hammering) de las preguntas.
+  > **R:** seguridad N preguntas se seleccionan aleatoriamente fuera del número total de Hola de preguntas que un usuario ha registrado, donde N es hello **número de preguntas necesario tooreset**. Por ejemplo, si un usuario tiene 5 preguntas de seguridad registrados, pero sólo 3 son necesario tooreset, 3 de hello 5 se selecciona aleatoriamente y presentadas en el restablecimiento. Si Hola usuario recibe respuestas de hello toohello preguntas incorrecto, el proceso de selección de hello vuelve a suceder tooprevent ataques por repetición.
   >
   >
 * **P: ¿Es posible evitar que los usuarios intenten restablecer la contraseña muchas veces en un período de tiempo breve?**
 
-  > **R:** Sí, existen características de seguridad integradas en el restablecimiento de contraseña a fin de ofrecer protección frente al uso indebido. Los usuarios solo pueden intentar 5 restablecimientos de contraseña en un período de una hora antes de que se les bloquee durante 24 horas. Los usuarios solo pueden intentar validar un número de teléfono 5 veces dentro de una hora antes de que se les bloquee durante 24 horas. Los usuarios solo pueden intentar un método de autenticación 5 veces dentro de una hora antes de que se les bloquee durante 24 horas.
+  > **R:** Sí, hay características de seguridad integradas en tooprotect de restablecimiento de contraseña de uso indebido. Los usuarios solo pueden intentar 5 restablecimientos de contraseña en un período de una hora antes de que se les bloquee durante 24 horas. Los usuarios solo pueden probar toovalidate un número de teléfono 5 veces en una hora antes de que se bloquee durante 24 horas. Los usuarios solo pueden intentar un método de autenticación 5 veces dentro de una hora antes de que se les bloquee durante 24 horas.
   >
   >
-* **P: ¿Durante cuánto tiempo es válido el código de acceso de un solo uso que recibe por correo electrónico o mensaje SMS?**
+* **P: ¿durante cuánto tiempo son código de acceso de un solo uso de SMS y correo electrónico de hello válidos?**
 
-  > **R.:** La duración de la sesión de restablecimiento de contraseña es de 105 minutos. Desde el principio de la operación de restablecimiento de contraseña, el usuario tiene 105 minutos para restablecer la contraseña. El código de acceso de un solo uso que recibe por correo electrónico o mensaje SMS no es válido después de este período de tiempo.
+  > **R:** Hola duración de la sesión para restablecer la contraseña es 105 minutos. Desde principio Hola de hello operación de restablecimiento de contraseña, usuario de hello tiene 105 minutos tooreset su contraseña. Hello código de acceso de un solo uso de SMS y correo electrónico no son válidos después de que expire este período de tiempo.
   >
   >
 
 ## <a name="password-change"></a>Cambio de contraseña
-* **P: ¿Dónde deberían ir los usuarios para cambiar las contraseñas?**
+* **P: ¿dónde deberían Mis usuarios ir toochange sus contraseñas?**
 
-  > **R:** Los usuarios pueden cambiar sus contraseñas en cualquier lugar en que vean su icono o imagen de perfil (como en la esquina superior derecha de las experiencias de [Office 365](https://portal.office.com) o el [Panel de acceso](https://myapps.microsoft.com)). Los usuarios pueden cambiar las contraseñas en la [página de perfil del Panel de acceso](https://account.activedirectory.windowsazure.com/r#/profile). Los usuarios también deben cambiar automáticamente sus contraseñas en la pantalla de inicio de sesión de Azure AD en caso de que hayan expirado. Por último, los usuarios pueden navegar directamente al [portal de cambio de contraseñas de Azure AD](https://account.activedirectory.windowsazure.com/ChangePassword.aspx) si desean cambiar las contraseñas.
+  > **R:** a los usuarios pueden cambiar sus contraseñas en cualquier lugar vean su imagen de perfil o el icono (al igual que en hello superior derecho de sus [Office 365](https://portal.office.com) o [Panel de acceso](https://myapps.microsoft.com) experiencias. Los usuarios pueden cambiar sus contraseñas de hello [página del Panel de acceso de perfil](https://account.activedirectory.windowsazure.com/r#/profile). Los usuarios también pueden ser más frecuentes toochange sus contraseñas automáticamente en la pantalla de inicio de sesión de bienvenida Azure AD si sus contraseñas han caducado. Por último, los usuarios pueden navegar toohello [Portal de cambio de contraseña de Azure AD](https://account.activedirectory.windowsazure.com/ChangePassword.aspx) directamente si lo desean toochange sus contraseñas.
   >
   >
-* **P: ¿Los usuarios pueden recibir una notificación en el Portal de Office cuando expira la contraseña local?**
+* **P: ¿pueden mis usuarios se notificará en hello Portal de Office cuando expira la contraseña local?**
 
-  > **R:** esto es posible actualmente si usa ADFS y sigue estas instrucciones: [Sending Password Policy Claims with ADFS](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configure-ad-fs-to-send-password-expiry-claims?f=255&MSPPError=-2147217396) (Envío de notificaciones de directiva de contraseña con ADFS). Esto no es posible hoy si usa la sincronización de hash de contraseña. Esto se debe a que no sincronizamos las directivas de contraseña en el entorno local, por lo que no es posible publicar notificaciones de expiración en las experiencias en la nube. En cualquier caso, también es posible [notificar a los usuarios cuyas contraseñas están a punto de expirar a través de PowerShell](https://social.technet.microsoft.com/wiki/contents/articles/23313.notify-active-directory-users-about-password-expiry-using-powershell.aspx).
+  > **R:** esto es posible hoy si utilizas AD FS siguiendo las instrucciones de hello aquí: [enviar notificaciones de directiva de contraseña con ADFS](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configure-ad-fs-to-send-password-expiry-claims?f=255&MSPPError=-2147217396). Esto no es posible hoy si usa la sincronización de hash de contraseña. Esto es porque no se sincronizar directivas de contraseña local, por lo que no es posible que nos toocloud de notificaciones de expiración toopost experiencias. En cualquier caso, también es posible demasiado[notificar a los usuarios cuyas contraseñas están sobre tooexpire mediante PowerShell](https://social.technet.microsoft.com/wiki/contents/articles/23313.notify-active-directory-users-about-password-expiry-using-powershell.aspx).
   >
   >
 
 ## <a name="password-management-reports"></a>Informes de administración de contraseñas
-* **P: ¿Cuánto tiempo demoran en aparecer los datos en los informes de la administración de contraseñas?**
+* **P: ¿cuánto tarda para datos tooshow seguridad en informes de administración de contraseñas de hello?**
 
-  > **R.:** Los datos deben aparecer en los informes de la administración de contraseñas en un plazo de entre 5 y 10 minutos. En algunas instancias, es posible que demoren hasta una hora en aparecer.
+  > **R:** los datos aparecerán en informes de administración de contraseñas de hello en entre 5 y 10 minutos. Algunas instancias pueden tardar hasta tooan hora tooappear.
   >
   >
-* **P: ¿Cómo puedo filtrar los informes de administración de contraseñas?**
+* **P: ¿Cómo puedo filtrar los informes de administración de contraseñas de hello?**
 
-  > **R:** Para filtrar los informes de administración de contraseñas, haga clic en la lupa pequeña que aparece en el extremo derecho de las etiquetas de columna, cerca de la parte superior del informe. Si desea realizar un filtrado más completo, puede descargar el informe a Excel y crear una tabla dinámica.
+  > **R:** puede filtrar los informes de administración de contraseñas de hello haciendo clic en hello lupa pequeña toohello derecha de las etiquetas de columna de hello, cerca de parte superior de Hola de informe de Hola. Si desea toodo de filtrado exhaustivo, puede descargar Hola informe tooexcel y crear una tabla dinámica.
   >
   >
-* **P: ¿Cuál es el número máximo de eventos que se almacenan en los informes de administración de contraseñas?**
+* **P: ¿cuál es el número máximo de Hola de eventos se almacenan en los informes de administración de contraseñas de hello?**
 
-  > **R:** Hasta 75 000 eventos de restablecimiento de contraseña o de registro de restablecimiento de contraseña se almacenan en los informes de administración de contraseñas, los que abarcan hasta los últimos 30 días.  Estamos trabajando para ampliar este número e incluir más eventos.
+  > **R:** seguridad too75, 000 contraseña contraseña o restablecimiento del registro los eventos de restablecimiento se almacenan en informes de administración de contraseñas de hello, expansión de copia de seguridad too30 días.  Estamos trabajando tooexpand este número tooinclude más eventos.
   >
   >
-* **P: ¿Hasta cuándo se remontan los informes de administración de contraseñas?**
+* **P: ¿cómo lejos vaya Hola informes de administración de contraseñas?**
 
-  > **R.:** Los informes de administración de contraseñas muestran las operaciones generadas dentro de los últimos 30 días. Por ahora, si desea archivar estos datos, puede descargar periódicamente los informes y guardarlos en una ubicación independiente.
+  > **R:** administración de contraseñas de hello informa de las operaciones de presentación que se producen en hello últimos 30 días. Por ahora, si necesita tooarchive estos datos, puede descargar informes de hello periódicamente y guardarlos en una ubicación diferente.
   >
   >
-* **P: ¿Existe un número máximo de filas que pueden aparecer en los informes de administración de contraseñas?**
+* **P: ¿existe un número máximo de filas que pueden aparecer en informes de administración de contraseñas de hello?**
 
-  > **R.:** Sí, pueden aparecer 75 000 filas como máximo en cualquiera de los informes de administración de contraseñas, tanto si se muestran en la interfaz de usuario o se descargan.
+  > **R:** Sí, un máximo de 75.000 filas puede aparecer en cualquiera de los informes de administración de contraseñas de hello, si se muestran en Hola interfaz de usuario o que se va a descargar.
   >
   >
-* **P: ¿Existe una API para acceder a los datos de informes de registro o de restablecimiento de contraseña?**
+* **P: ¿existe una tooaccess API Hola contraseña restablecimiento o registro de datos de informes?**
 
-  > **R:** Sí, consulte la documentación siguiente para saber cómo puede tener acceso al flujo de datos de informes de restablecimiento de contraseña.  [Obtenga información sobre cómo tener acceso a los eventos de informes de restablecimiento de contraseña mediante programación](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent).
+  > **R:** Sí, vea Hola siguientes documentación toolearn cómo puede tener acceso a contraseñas de hello restablecer flujo de datos de informes.  [Obtenga información acerca de cómo tooaccess de restablecimiento de contraseña eventos de informe mediante programación](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent).
   >
   >
 
 ## <a name="password-writeback"></a>Escritura diferida de contraseñas
-* **P: ¿Cómo funciona la escritura diferida de contraseñas en segundo plano?**
+* **P: ¿cómo funciona la escritura diferida de contraseñas entre bastidores de hello?**
 
-  > **R:** Consulte [Funcionamiento de la escritura diferida de contraseñas](active-directory-passwords-writeback.md) para obtener una explicación de lo que ocurre cuando se habilita la escritura diferida de contraseñas, además de cómo fluyen los datos por el sistema para volver al entorno local.
+  > **R:** vea [cómo funciona la escritura diferida de contraseñas](active-directory-passwords-writeback.md) para obtener una explicación de lo que ocurre cuando se habilita la escritura diferida de contraseñas y cómo fluyen los datos a través del sistema de hello en el entorno local.
   >
   >
-* **P: ¿Cuánto tarda en funcionar la escritura diferida de contraseñas?  ¿Existe un retraso en la sincronización, como ocurre con la sincronización de hash de contraseña?**
+* **P: ¿cuánto tiempo tarda la escritura diferida de contraseñas la toowork?  ¿Existe un retraso en la sincronización, como ocurre con la sincronización de hash de contraseña?**
 
-  > **R.:** La escritura diferida de contraseñas es inmediata. Se trata de una canalización sincrónica que funciona radicalmente distinto a la sincronización de hash de contraseña. La escritura diferida de contraseñas permite que los usuarios obtengan comentarios en tiempo real sobre el éxito de su operación de cambio o restablecimiento de contraseña. El tiempo promedio para la escritura diferida correcta de una contraseña es de menos de 500 ms.
+  > **R.:** La escritura diferida de contraseñas es inmediata. Se trata de una canalización sincrónica que funciona radicalmente distinto a la sincronización de hash de contraseña. Escritura diferida de contraseñas permite a los usuarios tooget comentarios en tiempo real sobre la correcta de Hola de su contraseña restablecer o cambiar la operación. tiempo medio de Hola para una reescritura de una contraseña correcta es inferior a 500 ms..
   >
   >
 * **P: Si mi cuenta local está deshabilitada, ¿en qué afecta a mi acceso y a mi cuenta en la nube?**
 
-  > **R:** Si el identificador local está deshabilitado, el acceso y el identificador de la nube también se deshabilitarán durante el próximo intervalo de sincronización a través de AAD Connect, que tiene lugar cada 30 minutos de forma predeterminada.
+  > **R:** si el identificador local está deshabilitado, la nube de identificador/acceso también se deshabilitará al siguiente intervalo de sincronización Hola a través de la conexión de AAD byt de forma predeterminada se trata cada 30 minutos.
   >
   >
-* **P: Si mi cuenta local está restringida por una directiva de contraseñas de Active Directory local, ¿SSPR se atiene a esta directiva si cambio la contraseña?**
+* **¿P: si mi cuenta local está restringido por una directiva de contraseña de Active Directory local, SSPR obedecen a esta directiva cuando se cambia la contraseña de hello?**
 
-  > **R:** Sí, SSPR se basa y se rige en virtud de la directiva de contraseñas de AD local, incluidas la directiva de contraseñas de dominio típica de AD y cualquier directiva de contraseña muy específica orientada a un usuario determinado.
+  > **R:** Sí, SSPR se basa en y se rige por directiva de contraseñas de AD, incluida la directiva de contraseñas de dominio de AD típica, así como las directivas de contraseña específica definida como destino tooa dado usuario a local de Hola.
   >
   >
 * **P: ¿Para qué tipos de cuentas funciona la escritura diferida de contraseñas?**
@@ -250,21 +250,21 @@ Estas preguntas más frecuentes se dividen en las siguientes secciones:
   >
 * **P: ¿Es segura la escritura diferida de contraseñas?  ¿Cómo puedo estar seguro de no ser víctima del ataque de un hacker?**
 
-  > **R:** Sí, la escritura diferida de contraseñas es segura. Para más información sobre los cuatro niveles de seguridad que implementa el servicio de escritura diferida de contraseñas, consulte la sección [Modelo de seguridad de la escritura diferida de contraseñas](active-directory-passwords-writeback.md#password-writeback-security-model) en Funcionamiento de la escritura diferida de contraseñas.
+  > **R:** Sí, la escritura diferida de contraseñas es segura. tooread más información acerca de las capas de hello cuatro de seguridad implementado por el servicio de escritura diferida de contraseña de hello, desproteger hello [modelo de seguridad de escritura diferida de contraseñas](active-directory-passwords-writeback.md#password-writeback-security-model) sección en cómo funciona la escritura diferida de contraseñas.
   >
   >
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Los vínculos siguientes proporcionan información adicional sobre el restablecimiento de contraseñas con Azure AD:
+Hola siguientes vínculos proporciona más información sobre el uso de Azure AD de restablecimiento de contraseña
 
 * [**Inicio rápido**](active-directory-passwords-getting-started.md): preparativos para el autoservicio de administración de contraseñas de Azure AD 
 * [**Licencias**](active-directory-passwords-licensing.md): configuración de licencias de Azure AD
-* [**Datos**](active-directory-passwords-data.md): información sobre los datos necesarios y cómo se usan para administrar contraseñas
-* [**Implementación**](active-directory-passwords-best-practices.md): planee e implemente SSPR en sus usuarios mediante las instrucciones que se encuentran aquí.
-* [**Personalización**](active-directory-passwords-customize.md): personalización de la experiencia de SSPR para la empresa
+* [**Datos** ](active-directory-passwords-data.md) : comprender los datos de Hola que es necesarios y cómo se utiliza para la administración de contraseñas
+* [**Implementación** ](active-directory-passwords-best-practices.md) -planear e implementar a los usuarios de Autoservicio tooyour usando la orientación de hello encontrar aquí
+* [**Personalizar** ](active-directory-passwords-customize.md) -personalizar Hola apariencia y funcionamiento del programa Hola a la experiencia de Autoservicio de su empresa.
 * [**Informes**](active-directory-passwords-reporting.md): detectan si los usuarios acceden a la funcionalidad de SSPR, cuándo lo hacen y dónde.
 * [**Directiva**](active-directory-passwords-policy.md): información sobre las directivas de contraseñas de Azure AD y cómo establecerlas
 * [**Escritura diferida de contraseñas**](active-directory-passwords-writeback.md): cómo funciona la escritura diferida de contraseñas con el directorio local
-* [**Artículo técnico de profundización**](active-directory-passwords-how-it-works.md): más información para comprender el funcionamiento de la administración de contraseñas
-* [**Solución de problemas**](active-directory-passwords-troubleshoot.md): información para resolver problemas habituales de SSPR
+* [**Profundización técnica** ](active-directory-passwords-how-it-works.md) -ir detrás de hello cortina toounderstand cómo funciona
+* [**Solucionar problemas de** ](active-directory-passwords-troubleshoot.md) -Obtenga información acerca de cómo problemas comunes de tooresolve que vemos con SSPR

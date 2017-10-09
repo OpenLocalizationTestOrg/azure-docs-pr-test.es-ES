@@ -1,6 +1,6 @@
 ---
-title: "Elemento de interfaz de usuario VirtualNetworkCombo de una aplicación administrada de Azure | Microsoft Docs"
-description: Describe el elemento de la interfaz de usuario Microsoft.Network.VirtualNetworkCombo para aplicaciones administradas de Azure
+title: "elemento de interfaz de usuario de VirtualNetworkCombo de aplicación administrado aaaAzure | Documentos de Microsoft"
+description: Describe Hola elemento de interfaz de usuario de Microsoft.Network.VirtualNetworkCombo para administrar aplicaciones de Azure
 services: azure-resource-manager
 documentationcenter: na
 author: tabrezm
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/12/2017
 ms.author: tabrezm;tomfitz
-ms.openlocfilehash: 8bb255b76ac5c3de570fa569a1cfb3ee953f9687
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1b0fa5360d93306f7a814723f77e42540bdaaa9f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="microsoftnetworkvirtualnetworkcombo-ui-element"></a>Elemento de la interfaz de usuario Microsoft.Network.VirtualNetworkCombo
 Un grupo de controles para seleccionar una red virtual nueva o existente. Use este elemento al [crear una aplicación administrada de Azure](managed-application-publishing.md).
@@ -25,8 +25,8 @@ Un grupo de controles para seleccionar una red virtual nueva o existente. Use es
 ## <a name="ui-sample"></a>Ejemplo de interfaz de usuario
 ![Microsoft.Network.VirtualNetworkCombo](./media/managed-application-elements/microsoft.network.virtualnetworkcombo.png)
 
-- En la estructura de alambre superior, el usuario ha seleccionado una nueva red virtual, por lo que puede personalizar el nombre y el prefijo de dirección de cada subred. En este caso, la configuración de subredes es opcional.
-- En la estructura de alambre inferior, el usuario ha seleccionado una red virtual existente, por lo que debe asignar cada subred que requiere la plantilla de implementación a una subred existente. En este caso, la configuración de subredes es obligatoria.
+- En tramas de alambres superior hello, usuario Hola detectado una nueva red virtual, por lo que el usuario de hello puede personalizar el prefijo de nombre y la dirección de cada subred. En este caso, la configuración de subredes es opcional.
+- En tramas de alambres Hola inferior, usuario Hola se ha seleccionado una red virtual existente, por lo que debe asignar el usuario de hello cada plantilla de implementación de subred Hola requiere tooan subred. En este caso, la configuración de subredes es obligatoria.
 
 ## <a name="schema"></a>Esquema
 ```json
@@ -82,15 +82,15 @@ Un grupo de controles para seleccionar una red virtual nueva o existente. Use es
 ```
 
 ## <a name="remarks"></a>Comentarios
-- Si se ha especificado, el primer prefijo de dirección que no se superponga del tamaño `defaultValue.addressPrefixSize` se determina automáticamente en función de las redes virtuales existentes en la suscripción del usuario.
-- El valor predeterminado de `defaultValue.name` y `defaultValue.addressPrefixSize` es **null**.
-- `constraints.minAddressPrefixSize` debe especificarse. Las redes virtuales existentes con un espacio de direcciones menor que el valor especificado no se pueden seleccionar.
+- Si se especifica, Hola primer prefijo de dirección no superpuestos de tamaño `defaultValue.addressPrefixSize` se determina automáticamente según las redes virtuales existentes en la suscripción del usuario de Hola.
+- Hola valor predeterminado de `defaultValue.name` y `defaultValue.addressPrefixSize` es **null**.
+- `constraints.minAddressPrefixSize` debe especificarse. Cualquier red virtual existente con un espacio de direcciones más pequeño que lo hello valor especificado no están disponibles para la selección.
 - `subnets` debe especificarse y `constraints.minAddressPrefixSize` debe especificarse para cada subred.
-- Al crear una nueva red virtual, el prefijo de dirección de cada subred se calcula automáticamente basándose en el prefijo de dirección de la red virtual y en los respectivos `addressPrefixSize`.
+- Al crear una nueva red virtual, prefijo de dirección de cada subred se calcula automáticamente basándose en prefijo de dirección de la red virtual de Hola y los respectivos `addressPrefixSize`.
 - Si se usa una red virtual existente, las subredes menores que la `constraints.minAddressPrefixSize` respectiva no están disponibles para la selección. Además, si se especifica, las subredes que no contienen al menos `minAddressCount` direcciones disponibles no se podrán seleccionar.
-El valor predeterminado es **0**. Para asegurarse de que las direcciones disponibles son contiguas, especifique **true** en `requireContiguousAddresses`. El valor predeterminado es **true**.
+es el valor predeterminado de Hello **0**. tooensure que Hola direcciones disponibles son contiguas, especifique **true** para `requireContiguousAddresses`. es el valor predeterminado de Hello **true**.
 - No se admite la creación de subredes en una red virtual existente.
-- Si el valor de `options.hideExisting` es **true**, el usuario no puede elegir una red virtual existente. El valor predeterminado es **false**.
+- Si `options.hideExisting` es **true**, usuario de hello no puede elegir una red virtual existente. es el valor predeterminado de Hello **false**.
 
 ## <a name="sample-output"></a>Salida de ejemplo
 ```json
@@ -115,6 +115,6 @@ El valor predeterminado es **0**. Para asegurarse de que las direcciones disponi
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Para una introducción a las aplicaciones administradas, consulte la [introducción a las aplicaciones administradas de Azure](managed-application-overview.md).
-* Para ver una introducción sobre la creación de definiciones de interfaz de usuario, consulte [Introducción a CreateUiDefinition](managed-application-createuidefinition-overview.md).
+* Para una aplicación de toomanaged introducción, consulte [Introducción a la aplicación administrada de Azure](managed-application-overview.md).
+* Para obtener definiciones una interfaz de usuario de toocreating de introducción, vea [Introducción a CreateUiDefinition](managed-application-createuidefinition-overview.md).
 * Para ver una descripción de las propiedades comunes de los elementos de interfaz de usuario, consulte [Elementos CreateUiDefinition](managed-application-createuidefinition-elements.md).

@@ -1,12 +1,12 @@
-Con el Administrador de recursos de Azure, se definen los parámetros de los valores que desea especificar al implementar la plantilla. La plantilla incluye una sección denominada Parámetros que contiene todos los valores de los parámetros.
-Debe definir un parámetro para los valores que variarán según el proyecto que vaya a implementar o según el entorno en el que vaya a realizar la implementación. No defina parámetros para valores que vayan a permanecer igual. Cada valor de parámetro se usa en la plantilla para definir los recursos que se implementan. 
+Con el Administrador de recursos de Azure, se definen parámetros para los valores que desee toospecify cuando se implementa Hola plantilla. plantilla de Hello incluye una sección denominada parámetros que contiene todos los valores de parámetro de Hola.
+Debe definir un parámetro para aquellos valores que varían en función de que va a implementar el proyecto de Hola o según va a implementar en el entorno de Hola. No se define parámetros para valores que siempre permanecerá Hola igual. Cada valor del parámetro se utiliza en Hola Hola de toodefine plantilla implementación recursos. 
 
-Al definir parámetros, use el campo **allowedValues** para especificar los valores que un usuario puede proporcionar durante la implementación. Use el campo **defaultValue** para asignar un valor al parámetro, si no se proporciona ningún valor durante la implementación.
+Al definir parámetros, usar hello **allowedValues** toospecify campo los valores de un usuario puede proporcionar durante la implementación. Hola de uso **defaultValue** tooassign campo valor toohello parámetro, si se proporciona ningún valor durante la implementación.
 
-Vamos a describir cada parámetro de la plantilla.
+Vamos a describir cada parámetro de plantilla de Hola.
 
 ### <a name="logicappname"></a>logicAppName
-El nombre de la aplicación lógica que se va a crear.
+nombre de Hola de toocreate de aplicación lógica de Hola.
 
     "logicAppName": {
         "type": "string"

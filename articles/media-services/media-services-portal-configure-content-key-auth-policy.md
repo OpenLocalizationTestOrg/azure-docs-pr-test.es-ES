@@ -1,6 +1,6 @@
 ---
-title: "Configuración de la directiva de autorización de claves de contenido mediante Azure Portal | Microsoft Docs"
-description: "Aprenda a configurar una directiva de autorización para una clave de contenido."
+title: "uso de directivas de autorización de clave de contenido de aaaConfigure Hola portal de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo tooconfigure una directiva de autorización para una clave de contenido."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,60 +14,60 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako
-ms.openlocfilehash: 5a35c7255a1c30a693862589c14f6a22a1900790
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 157fb691b7f71f4889228817e1dc64555e327d48
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configure-content-key-authorization-policy"></a>Configuración de la directiva de autorización de claves de contenido
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../includes/media-services-selector-content-key-auth-policy.md)]
 
 ## <a name="overview"></a>Información general
-Servicios multimedia de Microsoft Azure permute entregar transmisiones MPEG-DASH, Smooth Streaming y HTTP-Live-Streaming (HLS) protegidas con Estándar de cifrado avanzado (AES) (usando claves de cifrado de 128 bits) o [DRM de Microsoft PlayReady](https://www.microsoft.com/playready/overview/). AMS también permite entregar transmisiones DASH cifradas con DRM de Widevine. Tanto PlayReady como Widewine se cifran según la especificación de cifrado común (ISO/IEC 23001-7 CENC).
+Servicios de multimedia de Microsoft Azure le permite toodeliver MPEG-DASH, Smooth Streaming y secuencias de HTTP-Live-Streaming (HLS) protegidas con Advanced Encryption Standard (AES) (con claves de cifrado de 128 bits) o [Microsoft PlayReady DRM](https://www.microsoft.com/playready/overview/). AMS también permite toodeliver guión streams cifrado con Widevine DRM. PlayReady y Widevine se cifran por hello especificación de cifrado común (ISO/IEC 23001-7 CENC).
 
-Servicios multimedia también proporciona un **servicio de entrega de claves/licencias** con el que los clientes pueden obtener claves AES o licencias de PlayReady/Widevine con el fin de reproducir el contenido cifrado.
+Servicios multimedia también ofrecen una **servicio de entrega de clave/licencia** de que los clientes pueden obtener claves de AES o tooplay de licencias de PlayReady/Widevine Hola contenido cifrado.
 
-Este tema muestra cómo usar Azure Portal para configurar la directiva de autorización de claves de contenido. La clave se puede usar posteriormente para cifrar el contenido de forma dinámica. Tenga en cuenta que actualmente puede cifrar los formatos de streaming siguientes: HLS, MPEG DASH y Smooth Streaming. No se pueden cifrar las descargas progresivas.
+Este tema muestra cómo toouse Hola directiva de autorización de clave de contenido de hello tooconfigure de portal de Azure. se pueden utilizar posteriormente clave Hello toodynamically cifrar el contenido. Tenga en cuenta que actualmente se puede cifrar Hola después de formatos de streaming: HLS, MPEG DASH y Smooth Streaming. No se pueden cifrar las descargas progresivas.
 
-Cuando un reproductor solicita una transmisión que se establece para cifrarse de forma dinámica, Servicios multimedia usa la clave configurada para cifrar dinámicamente el contenido mediante cifrado AES o DRM. Para descifrar la secuencia, el reproductor solicitará la clave del servicio de entrega de claves. Para decidir si el usuario está o no autorizado para obtener la clave, el servicio evalúa las directivas de autorización que especificó para la clave.
+Cuando un Reproductor solicita una secuencia que se establece toobe dinámicamente cifrado, servicios multimedia usa Hola configurado clave toodynamically cifrar el contenido con cifrado de AES o DRM. secuencia de hello toodecrypt, Hola Reproductor solicitará clave Hola del servicio de entrega de claves de Hola. toodecide si es usuario de hello autorizado tooget clave de hello, servicio de hello evalúa las directivas de autorización de Hola que especificó para la clave de Hola.
 
-Si planea tener varias claves de contenido o desea especificar una dirección URL del **servicio de entrega de claves/licencias** que no sea el servicio de entrega de claves de Servicios multimedia, use el SDK de Servicios multimedia para .NET o las API de REST.
+Si plan toohave varias claves de contenido o si desea toospecify una **servicio de entrega de clave/licencia** dirección URL distinta a Hola servicio de entrega de claves de servicios multimedia, use Media Services .NET SDK o las API de REST.
 
 [Configuración de la directiva de autorización de claves mediante el SDK de Servicios multimedia para .NET](media-services-dotnet-configure-content-key-auth-policy.md)
 
 [Configuración de la directiva de autorización de claves mediante la API de REST de Servicios multimedia](media-services-rest-configure-content-key-auth-policy.md)
 
 ### <a name="some-considerations-apply"></a>Se aplican algunas consideraciones:
-* Cuando se crea la cuenta de AMS, se agrega un punto de conexión de streaming **predeterminado** a la cuenta en estado **Stopped** (Detenido). Para iniciar la transmisión del contenido y aprovechar el empaquetado dinámico y el cifrado dinámico, el punto de conexión de streaming debe estar en estado **Running** (En ejecución). 
+* Cuando se crea la cuenta de AMS un **predeterminado** extremo de streaming se agrega la cuenta tooyour Hola **detenido** estado. toostart transmisión por secuencias el contenido y beneficiarse del empaquetado dinámico y cifrado dinámico, el extremo de streaming tiene toobe en hello **ejecutando** estado. 
 * El recurso debe contener un conjunto de archivos MP4 de velocidad de bits adaptable o archivos Smooth Streaming de velocidad de bits adaptable. Para obtener más información, consulte [Codificación de un recurso](media-services-encode-asset.md).
-* El servicio de entrega de claves almacena en caché ContentKeyAuthorizationPolicy y sus objetos relacionados (opciones y restricciones de directiva) durante 15 minutos.  Si crea una entidad ContentKeyAuthorizationPolicy y especifica el uso de una restricción "Token", pruébela y, a continuación, actualice la directiva a la restricción "Open"; la directiva tardará aproximadamente 15 minutos antes de cambiar a la versión "Open" de la misma.
+* Hola servicio de entrega de claves almacena en caché ContentKeyAuthorizationPolicy y sus objetos relacionados (opciones de directivas y restricciones) durante 15 minutos.  Si una contentkeyauthorizationpolicy y especificar una restricción de "Token", toouse, a continuación, probarlo y, a continuación, actualizar la directiva de Hola "Abierto" demasiado restricción, se tardará aproximadamente 15 minutos antes de hello conmutadores toohello "Abierta" versión de la directiva de directiva de Hola.
 
-## <a name="how-to-configure-the-key-authorization-policy"></a>Procedimiento: configuración de la directiva de autorización de claves
-Para configurar la directiva de autorización de claves, seleccione la página **PROTECCIÓN DE CONTENIDO** .
+## <a name="how-to-configure-hello-key-authorization-policy"></a>Cómo: configurar la directiva de autorización de claves de Hola
+Directiva de autorización de claves de hello tooconfigure, seleccione hello **protección de contenido** página.
 
-Servicios multimedia admite varias formas de autenticar a los usuarios que realizan solicitudes de clave. La directiva de autorización de claves de contenido puede tener restricciones de autorización **open**, **token** o **IP** (**IP** puede configurarse con REST o el SDK de .NET).
+Servicios multimedia admite varias formas de autenticar a los usuarios que realizan solicitudes de clave. pueden tener directivas de autorización de clave de contenido de Hello **abrir**, **token**, o **IP** restricciones de autorización (**IP** pueden configurarse con SDK de .NET o REST).
 
 ### <a name="open-restriction"></a>Restricción open
-La restricción **open** significa que el sistema entregará la clave a cualquier persona que realice una solicitud de clave. Esta restricción puede ser útil para realizar pruebas.
+Hola **abrir** restricción significa sistema Hola ofrecerá hello tooanyone clave que realiza una solicitud de clave. Esta restricción puede ser útil para realizar pruebas.
 
 ![OpenPolicy][open_policy]
 
 ### <a name="token-restriction"></a>Restricción de token
-Para elegir la directiva de token restringida, presione el botón **TOKEN** .
+Directiva, presione Hola restringida por token de hello toochoose **TOKEN** botón.
 
-La directiva con restricción **token** debe ir acompañada de un token emitido por un **Servicio de tokens seguros** (STS). Media Services admite tokens en formato **Token de web simple** ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) y en formato **JSON Web Token** (JWT). Para obtener información, consulte [Autenticación de token JWT](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/).
+Hola **token** directiva restringida debe ir acompañada de un token emitido por un **servicio de Token seguro** (STS). Servicios multimedia admite tokens en hello **Tokens Web simples** ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) formato y **JSON Web Token** formato (JWT). Para obtener información, consulte [Autenticación de token JWT](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/).
 
-Servicios multimedia no proporciona **Servicios de tokens seguros**. Puede crear un STS personalizado o aprovechar el Servicio de control de acceso (ACS) de Microsoft Azure para emitir tokens. Se debe configurar el STS para crear un token firmado con las notificaciones de clave y emisión que especificó en la configuración de restricción de tokens. El servicio de entrega de claves de los Servicios multimedia devolverá la clave de cifrado al cliente si el token es válido y las notificaciones del token coinciden con las configuradas para la clave de contenido. Para obtener más información, consulte [Uso de Azure ACS para emitir tokens](http://mingfeiy.com/acs-with-key-services).
+Servicios multimedia no proporciona **Servicios de tokens seguros**. Puede crear a un STS personalizado o aprovechar símbolos (tokens) de Microsoft Azure ACS tooissue. Hola STS debe estar configurado toocreate un token firmado con hello especificado clave y emitir notificaciones que especificó en la configuración de restricción de token de Hola. Hello servicio de entrega de claves de servicios multimedia devolverá a cliente de toohello clave de cifrado de hello si Hola token es válido y hello notificaciones de token de hello coinciden con los configurados para la clave de contenido de Hola. Para obtener más información, consulte [tokens de ACS de Azure de uso tooissue](http://mingfeiy.com/acs-with-key-services).
 
-Al configurar la directiva con restricción **TOKEN**, debe establecer los valores de **clave de verificación**, **emisor** y **público**. La clave de comprobación principal contiene la clave con la que se firmó el token y el emisor es el servicio de tokens seguros que emite el token. El público (a veces denominado ámbito) describe la intención del token o del recurso cuyo acceso está autorizado por el token. El servicio de entrega de claves de los Servicios multimedia valida que estos valores del token coincidan con los valores de la plantilla.
+Al configurar hello **TOKEN** directiva restringida, debe establecer valores para **clave de verificación**, **emisor** y **audiencia**. clave de verificación principal Hello contiene Hola clave que Hola token se firmó con, el emisor es Hola servicio de token seguro que emite el token de Hola. audiencia de Hello (a veces denominado ámbito) describe intención de hello del token de Hola u Hola recursos Hola token autoriza acceso. Hola servicio de entrega de claves de servicios multimedia valida que estos valores de símbolo (token) de hello coinciden con los valores de hello en plantilla Hola.
 
 ### <a name="playready"></a>PlayReady
-Al proteger su contenido con **PlayReady**, una de las cosas que debe especificar en la directiva de autorización es una cadena XML que defina la plantilla de licencia de PlayReady. De forma predeterminada, se establece la siguiente directiva:
+Al proteger el contenido con **PlayReady**, uno de cosas Hola que debe toospecify en la directiva de autorización es una cadena XML que define la plantilla de licencia de PlayReady de Hola. De forma predeterminada, se establece Hola después de la directiva:
 
-<PlayReadyLicenseResponseTemplate xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1"> <LicenseTemplates> <PlayReadyLicenseTemplate><AllowTestDevices>true</AllowTestDevices> <ContentKey i:type="ContentEncryptionKeyFromHeader" /> <LicenseType>Nonpersistent</LicenseType> <PlayRight> <AllowPassingVideoContentToUnknownOutput>Permitido</AllowPassingVideoContentToUnknownOutput> </PlayRight> </PlayReadyLicenseTemplate> </LicenseTemplates> </PlayReadyLicenseResponseTemplate>
+<PlayReadyLicenseResponseTemplate xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1"><LicenseTemplates><PlayReadyLicenseTemplate><AllowTestDevices>true</AllowTestDevices><ContentKey i:type="ContentEncryptionKeyFromHeader" /><LicenseType>Nonpersistent</LicenseType><PlayRight><AllowPassingVideoContentToUnknownOutput>Permitido</AllowPassingVideoContentToUnknownOutput></PlayRight></PlayReadyLicenseTemplate></LicenseTemplates></PlayReadyLicenseResponseTemplate>
 
-Puede hacer clic en el botón **Importar directiva xml** y proporcionar un archivo XML diferente que se ajuste al esquema XML definido [aquí](media-services-playready-license-template-overview.md).
+Puede hacer clic en hello **Importar directiva xml** botón y proporcionar un XML diferente que se ajusta toohello esquema XML definido [aquí](media-services-playready-license-template-overview.md).
 
 ## <a name="next-step"></a>Paso siguiente
 Consulte las rutas de aprendizaje de Servicios multimedia.

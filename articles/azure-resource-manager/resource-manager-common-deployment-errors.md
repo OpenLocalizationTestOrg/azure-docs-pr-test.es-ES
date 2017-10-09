@@ -1,13 +1,13 @@
 ---
-title: "Solución de errores comunes de implementación de Azure | Microsoft Docs"
-description: "Describe cómo solucionar errores comunes al implementar recursos en Azure con Azure Resource Manager."
+title: "aaaTroubleshoot los errores comunes de la implementación de Azure | Documentos de Microsoft"
+description: "Describe cómo tooresolve errores comunes al implementar tooAzure de recursos con el Administrador de recursos de Azure."
 services: azure-resource-manager
 documentationcenter: 
 tags: top-support-issue
 author: tfitzmac
 manager: timlt
 editor: tysonn
-keywords: "error de implementación, implementación de Azure, implementar en Azure"
+keywords: "error de implementación, implementación de azure, implementar tooazure"
 ms.assetid: c002a9be-4de5-4963-bd14-b54aa3d8fa59
 ms.service: azure-resource-manager
 ms.devlang: na
@@ -16,16 +16,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/17/2017
 ms.author: tomfitz
-ms.openlocfilehash: 30adc10d01290f14a3e116813b19916fa36ab0bc
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 8571e9941879eb5586e4258a785b6a09247da771
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Solución de errores comunes de implementación de Azure con Azure Resource Manager
 En este tema se describe cómo resolver algunos errores comunes con los que puede encontrarse al realizar una implementación de Azure.
 
-En este tema se describen los códigos de error siguientes:
+Hola siguientes códigos de error se describe en este tema:
 
 * [AccountNameInvalid](#accountnameinvalid)
 * [Error de autorización](#authorization-failed)
@@ -48,29 +48,29 @@ En este tema se describen los códigos de error siguientes:
 
 ## <a name="deploymentfailed"></a>DeploymentFailed
 
-Este código de error indica un error de implementación general, pero no es el código de error que necesita para empezar a solucionar problemas. El código de error que realmente le ayuda a resolver el problema suele estar un nivel por debajo de este error. Por ejemplo, la siguiente imagen muestra el código de error **RequestDisallowedByPolicy** que se encuentra debajo del error de implementación.
+Este código de error indica un error de implementación general, pero no es código de error de Hola que necesita toostart solución de problemas. código de error de Hola que realmente le ayuda a resolver el problema de hello suele ser un nivel por debajo de este error. Por ejemplo, hello siguiente imagen muestra hello **RequestDisallowedByPolicy** código de error que está por debajo del error de implementación de Hola.
 
 ![Visualización del código de error](./media/resource-manager-common-deployment-errors/error-code.png)
 
 ## <a name="skunotavailable"></a>SkuNotAvailable
 
-Al implementar un recurso (normalmente una máquina virtual), puede recibir el siguiente código y mensaje de error:
+Al implementar un recurso (normalmente una máquina virtual), puede recibir Hola mensaje de error y de código de error siguiente:
 
 ```
 Code: SkuNotAvailable
-Message: The requested tier for resource '<resource>' is currently not available in location '<location>' 
-for subscription '<subscriptionID>'. Please try another tier or deploy to a different location.
+Message: hello requested tier for resource '<resource>' is currently not available in location '<location>' 
+for subscription '<subscriptionID>'. Please try another tier or deploy tooa different location.
 ```
 
-Recibirá este error si la SKU del recurso que ha seleccionado (como, por ejemplo, el tamaño de máquina virtual) no está disponible para la ubicación seleccionada. Para resolver este problema, debe determinar qué SKU están disponibles en una región. Puede usar PowerShell, el portal o una operación REST para buscar las SKU disponibles.
+Recibirá este error cuando el recurso de hello SKU que seleccionó (por ejemplo, el tamaño de máquina virtual) no está disponible para la ubicación de Hola que seleccionó. tooresolve este problema, necesita toodetermine que SKU están disponibles en una región. También puede usar PowerShell, portal de Hola o un toofind de operación de resto SKU disponibles.
 
-- Para PowerShell, use [Get-AzureRmComputeResourceSku](/powershell/module/azurerm.compute/get-azurermcomputeresourcesku) y filtre por ubicación. Debe tener la versión más reciente de PowerShell para que funcione este comando.
+- Para PowerShell, use [Get-AzureRmComputeResourceSku](/powershell/module/azurerm.compute/get-azurermcomputeresourcesku) y filtre por ubicación. Debe tener la versión más reciente de Hola de PowerShell para este comando.
 
   ```powershell
   Get-AzureRmComputeResourceSku | where {$_.Locations.Contains("southcentralus")}
   ```
 
-  Los resultados incluyen una lista de SKU para la ubicación y las restricciones de esas SKU.
+  resultados de Hello incluyen una lista de SKU para la ubicación de Hola y las restricciones para esa SKU.
 
   ```powershell
   ResourceType                Name      Locations Restriction                      Capability Value
@@ -82,18 +82,18 @@ Recibirá este error si la SKU del recurso que ha seleccionado (como, por ejempl
   virtualMachines      Standard_A2 southcentralus
   ```
 
-- Para usar el [portal](https://portal.azure.com), inicie sesión en el portal y agregue un recurso mediante la interfaz. A medida que establezca los valores, verá las SKU disponibles para ese recurso. No tiene que completar la implementación.
+- Hola toouse [portal](https://portal.azure.com), inicie sesión en el portal de toohello y agregue un recurso a través de la interfaz de Hola. Cuando se establecen valores de hello, vea Hola SKU disponibles para ese recurso. No es necesario toocomplete implementación de Hola.
 
     ![SKU disponibles](./media/resource-manager-common-deployment-errors/view-sku.png)
 
-- Para usar la API de REST para máquinas virtuales, envíe la solicitud siguiente:
+- Hola toouse API de REST para máquinas virtuales, enviar Hola después de solicitud:
 
   ```HTTP 
   GET
   https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Compute/skus?api-version=2016-03-30
   ```
 
-  Se devuelven las SKU y las regiones disponibles en el formato siguiente:
+  Devuelve disponible SKU y regiones en hello siguiendo el formato:
 
   ```json
   {
@@ -123,37 +123,37 @@ Recibirá este error si la SKU del recurso que ha seleccionado (como, por ejempl
   }    
   ```
 
-Si no puede encontrar una SKU adecuada en esa región ni en ninguna región alternativa que satisfaga las necesidades de su negocio, envíe una [solicitud de SKU](https://aka.ms/skurestriction) al soporte técnico de Azure.
+Si no se puede toofind una SKU adecuada en dicha región o una región alternativa que satisfaga sus necesidades empresariales, enviar un [solicitud SKU](https://aka.ms/skurestriction) tooAzure soporte técnico.
 
 ## <a name="disallowedoperation"></a>DisallowedOperation
 
 ```
 Code: DisallowedOperation
-Message: The current subscription type is not permitted to perform operations on any provider 
+Message: hello current subscription type is not permitted tooperform operations on any provider 
 namespace. Please use a different subscription.
 ```
 
-Si recibe este error es que está usando una suscripción a la que no se le permite acceder a ningún servicio de Azure, excepto a Azure Active Directory. Puede tener este tipo de suscripción si necesita acceder al portal clásico, pero no se le permitirá implementar recursos. Para resolver este problema, debe usar una suscripción que tenga permiso para implementar recursos.  
+Si recibe este error, usa una suscripción que no está permitido tooaccess los servicios de Azure que no sea de Azure Active Directory. Cuando se necesita el portal clásico de hello tooaccess pero no se permiten toodeploy recursos tendrá este tipo de suscripción. tooresolve este problema, debe usar una suscripción que disponga de permisos de los recursos toodeploy.  
 
-Para ver las suscripciones disponibles con PowerShell, use:
+tooview las suscripciones disponibles con PowerShell, use:
 
 ```powershell
 Get-AzureRmSubscription
 ```
 
-Y, para establecer la suscripción actual, use:
+Y suscripción actual tooset hello, use:
 
 ```powershell
 Set-AzureRmContext -SubscriptionName {subscription-name}
 ```
 
-Para ver las suscripciones disponibles con la CLI de Azure 2.0, use:
+tooview las suscripciones disponibles con CLI de Azure 2.0, use:
 
 ```azurecli
 az account list
 ```
 
-Y, para establecer la suscripción actual, use:
+Y suscripción actual tooset hello, use:
 
 ```azurecli
 az account set --subscription {subscription-name}
@@ -164,34 +164,34 @@ Este error puede tener distintos orígenes.
 
 - Error de sintaxis
 
-   Si recibe un mensaje de error que indica que la plantilla no superó la validación, puede que esta tenga un problema de sintaxis.
+   Si recibe un mensaje de error que indica la validación de la plantilla no se pudo de hello, puede tener un problema de sintaxis en la plantilla.
 
   ```
   Code=InvalidTemplate
   Message=Deployment template validation failed
   ```
 
-   Es fácil cometer este error porque las expresiones de plantilla pueden ser complejas. Por ejemplo, la siguiente asignación de nombre de una cuenta de almacenamiento contiene un conjunto de corchetes, tres funciones, tres conjuntos de paréntesis, un conjunto de comillas simples y una propiedad:
+   Este error es fácil toomake porque las expresiones de plantilla pueden ser complejas. Por ejemplo, hello siguiente asignación de nombre de una cuenta de almacenamiento contiene un conjunto de corchetes, tres funciones, tres conjuntos de paréntesis, un conjunto de comillas simples y una propiedad:
 
   ```json
   "name": "[concat('storage', uniqueString(resourceGroup().id))]",
   ```
 
-   Si no proporciona toda la sintaxis de coincidencia, la plantilla generará un valor que será diferente del que esperaba.
+   Si no proporciona la sintaxis de coincidencia de hello, plantilla de hello genera un valor que es diferente de su intención.
 
-   Si recibe este tipo de error, revise cuidadosamente la sintaxis de las expresiones. Considere la posibilidad de utilizar un editor JSON como [Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) o [Visual Studio Code](resource-manager-vs-code.md) que puede avisarlo de los errores de sintaxis.
+   Cuando reciba este tipo de error, revise cuidadosamente la sintaxis de expresiones de Hola. Considere la posibilidad de utilizar un editor JSON como [Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) o [Visual Studio Code](resource-manager-vs-code.md) que puede avisarlo de los errores de sintaxis.
 
 - Longitudes de segmentos incorrectas
 
-   Cuando el nombre del recurso no tiene el formato correcto, se produce otro error de plantilla no válida.
+   Cuando el nombre del recurso de hello no está en formato correcto de hello, se produce otro error de plantilla no válido.
 
   ```
   Code=InvalidTemplate
-  Message=Deployment template validation failed: 'The template resource {resource-name}'
+  Message=Deployment template validation failed: 'hello template resource {resource-name}'
   for type {resource-type} has incorrect segment lengths.
   ```
 
-   Un recurso de nivel de raíz debe tener un segmento menos en el nombre que en el tipo de recurso. Cada segmento se distingue por una barra diagonal. En el ejemplo siguiente, el tipo tiene 2 segmentos y el nombre, 1, por lo que es un **nombre válido**.
+   Un recurso de nivel de raíz debe tener un segmento de menos en nombre de Hola que en el tipo de recurso de Hola. Cada segmento se distingue por una barra diagonal. En el siguiente ejemplo de Hola, tipo de hello tiene dos segmentos y nombre de hello tiene un segmento, por lo que es un **nombre válido**.
 
   ```json
   {
@@ -201,7 +201,7 @@ Este error puede tener distintos orígenes.
   }
   ```
 
-   Pero el ejemplo siguiente **no es un nombre válido** porque el nombre tiene el mismo número de segmentos que el tipo.
+   Pero es el siguiente ejemplo de Hola **no es un nombre válido** porque tiene Hola tantos segmentos como tipo hello.
 
   ```json
   {
@@ -211,7 +211,7 @@ Este error puede tener distintos orígenes.
   }
   ```
 
-   Para los recursos secundarios, el tipo y el nombre deben tener el mismo número de segmentos. Este número de segmentos tiene sentido, ya que el tipo y el nombre completo del elemento secundario incluyen el tipo y el nombre del elemento primario. Por lo tanto, el nombre completo sigue teniendo un segmento menos que el tipo completo.
+   Para obtener recursos secundarios, tipo de Hola y el nombre tienen Hola mismo número de segmentos. Este número de segmentos tiene sentido porque el nombre completo de Hola y el tipo secundario Hola incluye el tipo y el nombre del elemento primario de Hola. Por lo tanto, nombre completo de hello aún tiene un segmento de menos de tipo completo de Hola.
 
   ```json
   "resources": [
@@ -230,7 +230,7 @@ Este error puede tener distintos orígenes.
   ]
   ```
 
-   Obtener los segmentos correctos puede resultar complicado con los tipos de Resource Manager que se aplican en los proveedores de recursos. Por ejemplo, para aplicar un bloqueo de recurso a un sitio web, el tipo debe tener 4 segmentos. Por lo tanto, el nombre tiene 3 segmentos:
+   Al obtener segmentos Hola derecho pueden ser complicadas con tipos de administrador de recursos que se aplican a través de proveedores de recursos. Por ejemplo, aplicar un sitio web de recurso bloqueo tooa requiere un tipo con cuatro segmentos. Por lo tanto, el nombre de hello es tres segmentos:
 
   ```json
   {
@@ -242,35 +242,35 @@ Este error puede tener distintos orígenes.
 
 - Copy index is not expected (Índice de copia no esperado)
 
-   Este error **InvalidTemplate** se produce cuando se ha aplicado el elemento **copy** a una parte de la plantilla que no lo admite. Solo se puede aplicar el elemento copy a un tipo de recurso. No se puede aplicar el elemento copy a una propiedad de un tipo de recurso. Por ejemplo, puede aplicar el elemento copy a una máquina virtual, pero no puede aplicarlo a los discos del sistema operativo de una máquina virtual. En algunos casos, puede convertir un recurso secundario en un recurso primario para crear un bucle del elemento copy. Para más información sobre cómo usar este elemento, consulte [Creación de varias instancias de recursos en Azure Resource Manager](resource-group-create-multiple.md).
+   Esto ocurre **InvalidTemplate** error cuando se haya aplicado hello **copia** tooa parte del elemento de plantilla de Hola que no admite este elemento. Sólo puede aplicar el tipo de recurso de hello copiar elemento tooa. No se puede aplicar copia tooa propiedad dentro de un tipo de recurso. Por ejemplo, aplicar copia tooa virtual machine, pero no se puede aplicar toohello OS discos para una máquina virtual. En algunos casos, puede convertir un recurso de primario de secundarios recursos tooa toocreate un bucle de copia. Para más información sobre cómo usar este elemento, consulte [Creación de varias instancias de recursos en Azure Resource Manager](resource-group-create-multiple.md).
 
 - El parámetro no es válido
 
-   Si la plantilla especifica los valores permitidos de un parámetro y proporciona un valor que no es uno de esos, recibirá un mensaje similar al siguiente error:
+   Si plantilla Hola especifica los valores permitidos para un parámetro y proporciona un valor que no es uno de esos valores, recibirá un toohello similar de mensaje siguiente error:
 
   ```
   Code=InvalidTemplate;
-  Message=Deployment template validation failed: 'The provided value {parameter value}
-  for the template parameter {parameter name} is not valid. The parameter value is not
-  part of the allowed values
+  Message=Deployment template validation failed: 'hello provided value {parameter value}
+  for hello template parameter {parameter name} is not valid. hello parameter value is not
+  part of hello allowed values
   ``` 
 
-   Compruebe los valores permitidos de la plantilla y proporcione uno durante la implementación.
+   Vuelve a revisar Hola valores permitidos en la plantilla de Hola y proporcionar una durante la implementación.
 
 - Se detectó una dependencia circular
 
-   Este error se recibe cuando los recursos dependen unos de otros de una forma que impide que se inicie la implementación. Una combinación de interdependencias hace que dos o más recursos esperen otros recursos que también están esperando. Por ejemplo, resource1 depende de resource3, resource2 depende de resource1 y resource3 depende de resource2. Para resolver este problema, normalmente se eliminan las dependencias innecesarias. 
+   Recibirá este error cuando recursos dependen de ellos de forma que impide la implementación de Hola se inicie. Una combinación de interdependencias hace que dos o más recursos esperen otros recursos que también están esperando. Por ejemplo, resource1 depende de resource3, resource2 depende de resource1 y resource3 depende de resource2. Para resolver este problema, normalmente se eliminan las dependencias innecesarias. 
 
 <a id="notfound" />
 ### <a name="notfound-and-resourcenotfound"></a>NotFound y ResourceNotFound
-Cuando la plantilla incluye el nombre de un recurso que no se puede resolver, recibirá un error similar al siguiente:
+Cuando la plantilla incluye nombre Hola de un recurso que no se puede resolver, recibirá un error similar al:
 
 ```
 Code=NotFound;
 Message=Cannot find ServerFarm with name exampleplan.
 ```
 
-Si está tratando de implementar el recurso que falta en la plantilla, compruebe si tiene que agregar una dependencia. Cuando es posible, Resource Manager optimiza la implementación mediante la creación de recursos en paralelo. Si un recurso se debe implementar después de otro recurso, debe usar el elemento **dependsOn** en la plantilla para crear una dependencia en el otro recurso. Por ejemplo, al implementar una aplicación web, debe existir el plan de Servicio de aplicaciones. Si no ha especificado que la aplicación web dependa del plan de App Service, Resource Manager creará ambos recursos al mismo tiempo. Recibirá un error que indica que no se encuentra el recurso del plan de App Service, porque aún no existe cuando se trata de establecer una propiedad en la aplicación web. Este error se puede evitar estableciendo la dependencia en la aplicación web.
+Si estás intentando hello toodeploy falta el recurso de plantilla de hello, compruebe si tiene una dependencia de tooadd. Cuando es posible, Resource Manager optimiza la implementación mediante la creación de recursos en paralelo. Si un recurso se debe implementar después de otro recurso, necesita hello toouse **dependsOn** Hola de elemento en su toocreate plantilla una dependencia en otro recurso. Por ejemplo, al implementar una aplicación web, debe existir Hola plan de servicio de aplicaciones. Si no ha especificado Hola plan de servicio de aplicaciones depende de dicha aplicación Hola, Administrador de recursos crea los recursos en hello mismo tiempo. Recibirá un error que indica que hello no se encuentra el recurso de plan de servicio de aplicaciones, porque no existe todavía al intentar tooset una propiedad en la aplicación web de Hola. Evitar este error estableciendo la dependencia de hello en hello web app.
 
 ```json
 {
@@ -285,7 +285,7 @@ Si está tratando de implementar el recurso que falta en la plantilla, compruebe
 
 Para obtener sugerencias sobre cómo solucionar los errores de dependencia, consulte [Comprobación de la secuencia de implementación](#check-deployment-sequence).
 
-También verá este error cuando el recurso se encuentra en otro grupo de recursos que donde se está implementando. En ese caso, use la [función resourceId](resource-group-template-functions-resource.md#resourceid) para obtener el nombre completo del recurso.
+También verá este error al recurso de hello existe en otro grupo de recursos que Hola uno está implementando en el. En ese caso, use hello [función resourceId](resource-group-template-functions-resource.md#resourceid) nombre completo de hello tooget del recurso de Hola.
 
 ```json
 "properties": {
@@ -294,26 +294,26 @@ También verá este error cuando el recurso se encuentra en otro grupo de recurs
 }
 ```
 
-Si trata de usar las funciones [reference](resource-group-template-functions-resource.md#reference) o [listKeys](resource-group-template-functions-resource.md#listkeys) con un recurso que no se puede resolver, recibirá el error siguiente:
+Si intentas hello toouse [referencia](resource-group-template-functions-resource.md#reference) o [listKeys](resource-group-template-functions-resource.md#listkeys) funciones con un recurso que no se puede resolver, recibirá Hola siguiente error:
 
 ```
 Code=ResourceNotFound;
-Message=The Resource 'Microsoft.Storage/storageAccounts/{storage name}' under resource
+Message=hello Resource 'Microsoft.Storage/storageAccounts/{storage name}' under resource
 group {resource group name} was not found.
 ```
 
-Busque una expresión que incluya la función **reference**. Compruebe que los valores de parámetro son correctos.
+Busque una expresión que incluya hello **referencia** función. Compruebe que los valores de parámetro hello son correctos.
 
 ## <a name="parentresourcenotfound"></a>ParentResourceNotFound
 
-Cuando un recurso es un elemento primario de otro recurso, el primario debe existir antes de crear el secundario. Si aún no existe, recibirá el error siguiente:
+Cuando un recurso es un recurso de tooanother primario, recurso primario de hello debe existir antes de crear el recurso de hello secundario. Si aún no existe, recibirá Hola siguiente error:
 
 ```
 Code=ParentResourceNotFound;
 Message=Can not perform requested operation on nested resource. Parent resource 'exampleserver' not found."
 ```
 
-El nombre del recurso secundario incluye el nombre primario. Por ejemplo, se podría definir una base de datos SQL como:
+Hola nombre de recurso de hello secundario incluye Hola primario. Por ejemplo, se podría definir una base de datos SQL como:
 
 ```json
 {
@@ -322,7 +322,7 @@ El nombre del recurso secundario incluye el nombre primario. Por ejemplo, se pod
   ...
 ```
 
-Sin embargo, si no especifica una dependencia del recurso primario, el secundario puede implementarse antes del primario. Para resolver este error, incluya una dependencia.
+Sin embargo, si no especifica una dependencia en el recurso primario de hello, pueden obtener implementar recursos secundarios de hello antes que la primaria Hola. tooresolve este error incluyen una dependencia.
 
 ```json
 "dependsOn": [
@@ -333,33 +333,33 @@ Sin embargo, si no especifica una dependencia del recurso primario, el secundari
 <a id="storagenamenotunique" />
 
 ## <a name="storageaccountalreadyexists-and-storageaccountalreadytaken"></a>StorageAccountAlreadyExists y StorageAccountAlreadyTaken
-Para las cuentas de almacenamiento, debe proporcionar un nombre al recurso que sea único en Azure. Si no lo hace, recibirá un error como el siguiente:
+Las cuentas de almacenamiento, debe proporcionar un nombre para el recurso de Hola que es único en Azure. Si no lo hace, recibirá un error como el siguiente:
 
 ```
 Code=StorageAccountAlreadyTaken
-Message=The storage account named mystorage is already taken.
+Message=hello storage account named mystorage is already taken.
 ```
 
-Puede crear un nombre único concatenando la convención de nomenclatura con el resultado de la función [uniqueString](resource-group-template-functions-string.md#uniquestring) .
+Puede crear un nombre único mediante la concatenación de la convención de nomenclatura con el resultado de hello de hello [uniqueString](resource-group-template-functions-string.md#uniquestring) (función).
 
 ```json
 "name": "[concat('storage', uniqueString(resourceGroup().id))]",
 "type": "Microsoft.Storage/storageAccounts",
 ```
 
-Si implementa una cuenta de almacenamiento con el mismo nombre que una que ya hay en la suscripción, pero proporciona una ubicación diferente, recibirá un error que indica que la cuenta de almacenamiento ya se encuentra en otra ubicación. Elimine la cuenta de almacenamiento que ya existe o proporcione la misma ubicación que la de la cuenta de almacenamiento.
+Si implementa una cuenta de almacenamiento con hello el mismo nombre como una cuenta de almacenamiento existente en su suscripción, pero proporciona una ubicación diferente, recibirá un error en la cuenta de almacenamiento de Hola que indica que ya existe en una ubicación diferente. Elimine la cuenta de almacenamiento existente de hello, o proporcione Hola misma ubicación como Hola cuenta de almacenamiento existente.
 
 ## <a name="accountnameinvalid"></a>AccountNameInvalid
-Verá el error **AccountNameInvalid** al tratar de proporcionar a una cuenta de almacenamiento un nombre que incluya caracteres prohibidos. Los nombres de cuentas de almacenamiento deben tener entre 3 y 24 caracteres, y usar solo números y letras minúsculas. La función [uniqueString](resource-group-template-functions-string.md#uniquestring) devuelve 13 caracteres. Si concatena un prefijo con el resultado **uniqueString**, proporcione un prefijo que tenga 11 caracteres o menos.
+Vea hello **AccountNameInvalid** error al intentar toogive un almacenamiento cuenta un nombre que incluya caracteres prohibidos. Los nombres de cuentas de almacenamiento deben tener entre 3 y 24 caracteres, y usar solo números y letras minúsculas. Hola [uniqueString](resource-group-template-functions-string.md#uniquestring) función devuelve 13 caracteres. Si concatenar un prefijo toohello **uniqueString** como resultado, proporcione un prefijo que es de 11 caracteres o menos.
 
 ## <a name="badrequest"></a>BadRequest
 
-Puede encontrar un estado BadRequest al proporcionar un valor no válido para una propiedad. Por ejemplo, si proporciona un valor incorrecto de SKU para una cuenta de almacenamiento, se produce un error en la implementación. Para determinar valores válidos para la propiedad, examine la [API de REST](/rest/api) del tipo de recurso que se va a implementar.
+Puede encontrar un estado BadRequest al proporcionar un valor no válido para una propiedad. Por ejemplo, si proporciona un valor incorrecto de SKU para una cuenta de almacenamiento, se produce un error en implementación Hola. toodetermine los valores válidos para la propiedad, mire hello [API de REST](/rest/api) para tipo de recurso de Hola que va a implementar.
 
 <a id="noregisteredproviderfound" />
 
 ## <a name="noregisteredproviderfound-and-missingsubscriptionregistration"></a>NoRegisteredProviderFound y MissingSubscriptionRegistration
-Al implementar recursos, puede recibir el siguiente código y mensaje de error:
+Al implementar el recurso, puede recibir Hola siguiente código de error y de mensajes:
 
 ```
 Code: NoRegisteredProviderFound
@@ -371,50 +371,50 @@ O bien, puede recibir un mensaje similar que indica:
 
 ```
 Code: MissingSubscriptionRegistration
-Message: The subscription is not registered to use namespace {resource-provider-namespace}
+Message: hello subscription is not registered toouse namespace {resource-provider-namespace}
 ```
 
 Recibirá estos errores por uno de estos tres motivos:
 
-1. El proveedor de recursos no se ha registrado para la suscripción
-2. No se permite esta versión de API para el tipo de recurso
-3. No se permite esta ubicación para el tipo de recurso
+1. no se ha registrado el proveedor de recursos de Hello para la suscripción
+2. Versión de API que no se admite para el tipo de recurso de Hola
+3. No se admite para el tipo de recurso de Hola de ubicación
 
-El mensaje de error debería proporcionarle sugerencias con respecto a las versiones de API y a las ubicaciones admitidas. Puede cambiar la plantilla a uno de los valores sugeridos. La mayoría de los proveedores se registran automáticamente mediante el Portal de Azure o la interfaz de línea de comandos que esté utilizando; pero no ocurre con todos. Si no ha utilizado un proveedor de recursos determinado antes, debe registrar dicho proveedor. Puede obtener más información sobre los proveedores de recursos a través de PowerShell o la CLI de Azure.
+mensaje de error de Hello debe proporcionarle sugerencias para ubicaciones de hello compatible y versiones de API. Puede cambiar su tooone plantilla de hello valores sugeridos. Mayoría de los proveedores se registra automáticamente por hello Azure interfaz de línea de comandos de portal o hello usa, pero no todas. Si no ha utilizado un proveedor de recursos determinado antes, deberá tooregister ese proveedor. Puede obtener más información sobre los proveedores de recursos a través de PowerShell o la CLI de Azure.
 
 **Portal**
 
-Puede ver el estado de registro y registrar un espacio de nombres de proveedor de recursos a través del portal.
+Puede ver el estado de registro de hello y registrar un espacio de nombres de proveedor de recursos a través del portal de Hola.
 
 1. Para la suscripción, seleccione **Proveedores de recursos**.
 
    ![seleccionar proveedores de recursos](./media/resource-manager-common-deployment-errors/select-resource-provider.png)
 
-2. Examine la lista de proveedores de recursos y, si es necesario, seleccione el vínculo **Registrar** para registrar el proveedor de recursos del tipo que está intentando implementar.
+2. Mire Hola lista de proveedores de recursos y, si es necesario, seleccione hello **registrar** proveedor de recursos de vínculo tooregister Hola de tipo hello que estamos toodeploy.
 
    ![Enumeración de proveedores de recursos](./media/resource-manager-common-deployment-errors/list-resource-providers.png)
 
 **PowerShell**
 
-Para ver el estado de su registro, use **Get-AzureRmResourceProvider**.
+toosee el estado de registro, use **AzureRmResourceProvider Get**.
 
 ```powershell
 Get-AzureRmResourceProvider -ListAvailable
 ```
 
-Para registrar un proveedor, use **Register-AzureRmResourceProvider** e indique el nombre del proveedor de recursos que desea registrar.
+tooregister un proveedor, utilice **AzureRmResourceProvider Register** y proporcione el nombre de Hola de proveedor de recursos de hello desea tooregister.
 
 ```powershell
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Cdn
 ```
 
-Para conocer las ubicaciones admitidas para un tipo determinado de recurso, use:
+ubicaciones de hello admite tooget para un determinado tipo de recurso, use:
 
 ```powershell
 ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).Locations
 ```
 
-Para conocer las versiones de API admitidas para un tipo determinado de recurso, use:
+Hola tooget admite versiones de API para un determinado tipo de recurso, use:
 
 ```powershell
 ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).ApiVersions
@@ -422,19 +422,19 @@ Para conocer las versiones de API admitidas para un tipo determinado de recurso,
 
 **CLI de Azure**
 
-Para ver si el proveedor está registrado, utilice el comando `azure provider list` .
+toosee si se registra el proveedor de hello, usar hello `azure provider list` comando.
 
 ```azurecli
 az provider list
 ```
 
-Para registrar un proveedor de recursos, use el comando `azure provider register` y especifique el *espacio de nombres* que desea registrar.
+tooregister un proveedor de recursos, utilice hello `azure provider register` comando y especifique hello *espacio de nombres* tooregister.
 
 ```azurecli
 az provider register --namespace Microsoft.Cdn
 ```
 
-Para ver las ubicaciones y las versiones de API admitidas para un tipo de recursos, use:
+ubicaciones de hello admite toosee y versiones de API para un tipo de recurso, use:
 
 ```azurecli
 az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites'].locations"
@@ -443,10 +443,10 @@ az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites']
 <a id="quotaexceeded" />
 
 ## <a name="quotaexceeded-and-operationnotallowed"></a>QuotaExceeded y OperationNotAllowed
-Podría tener problemas cuando una implementación supera una cuota, lo que podría suceder por grupo de recursos, suscripciones, cuentas y otros ámbitos. Por ejemplo, la suscripción puede configurarse para limitar el número de núcleos para una región. Si trata de implementar una máquina virtual con más núcleos que los permitidos, recibirá un error que indica que se ha superado la cuota.
+Podría tener problemas cuando una implementación supera una cuota, lo que podría suceder por grupo de recursos, suscripciones, cuentas y otros ámbitos. Por ejemplo, puede ser su suscripción configurado toolimit Hola número de núcleos de una región. Si intentas toodeploy una máquina virtual con más núcleos que permiten la cantidad de hello, recibirá un error que se superó la cuota de Hola que indica.
 Para obtener información completa de las cuotas, consulte [Límites, cuotas y restricciones de suscripción y servicios de Microsoft Azure](../azure-subscription-service-limits.md).
 
-Para examinar las cuotas de núcleos de su suscripción, puede usar el comando `azure vm list-usage` en la CLI de Azure. En el siguiente ejemplo se muestra que la cuota de núcleos para una cuenta de evaluación gratuita es 4:
+tooexamine las cuotas de suscripción para núcleos, puede usar hello `azure vm list-usage` comando hello CLI de Azure. Hola de ejemplo siguiente muestra esa cuota de núcleos de Hola para una cuenta de evaluación gratuita es 4:
 
 ```azurecli
 az vm list-usage --location "South Central US"
@@ -468,7 +468,7 @@ Que devuelve:
 ]
 ```
 
-Si implementa una plantilla que crea más de 4 núcleos en la región oeste de EE. UU., obtendrá un error de implementación similar al siguiente:
+Si implementa una plantilla que crea más de cuatro núcleos en la región del oeste de Estados Unidos de hello, obtendrá un error de implementación que el siguiente aspecto:
 
 ```
 Code=OperationNotAllowed
@@ -476,7 +476,7 @@ Message=Operation results in exceeding quota limits of Core.
 Maximum allowed: 4, Current in use: 4, Additional requested: 2.
 ```
 
-O bien en PowerShell, puede emplear el cmdlet **Get-AzureRmVMUsage** .
+O bien en PowerShell, puede usar hello **AzureRmVMUsage Get** cmdlet.
 
 ```powershell
 Get-AzureRmVMUsage
@@ -496,53 +496,53 @@ Unit         : null
 ...
 ```
 
-En estos casos, debe ir al portal y archivar un problema de soporte técnico para aumentar su cuota para la región en la que desea realizar la implementación.
+En estos casos, debe ir toohello portal y archivo un tooraise de problema de soporte técnico de su cuota de región de hello en el que desea toodeploy.
 
 > [!NOTE]
-> Recuerde que para los grupos de recursos, la cuota para cada región individual, no para toda la suscripción. Si necesita implementar 30 núcleos en el oeste de Estados Unidos, debe pedir 30 núcleos de administrador de recursos en el oeste de Estados Unidos. Si necesita implementar 30 núcleos en cualquiera de las regiones para las que tiene acceso, debe pedir 30 núcleos de Resource Manager en todas las regiones.
+> Recuerde que para los grupos de recursos, cuota de hello es para cada región individual, no para la suscripción completa de Hola. Si necesita toodeploy 30 núcleos zona horaria del Pacífico occidental, deberá tooask para 30 núcleos de administrador de recursos zona horaria del Pacífico occidental. Si necesita toodeploy 30 núcleos en cualquiera de hello regiones toowhich tiene acceso, deberá solicitar 30 núcleos de administrador de recursos en todas las regiones.
 >
 >
 
 ## <a name="invalidcontentlink"></a>InvalidContentLink
-Si recibe el mensaje de error:
+Cuando reciba mensajes de bienvenida del error:
 
 ```
 Code=InvalidContentLink
-Message=Unable to download deployment content from ...
+Message=Unable toodownload deployment content from ...
 ```
 
-Probablemente ha tratado de agregar un vínculo a una plantilla anidada que no está disponible. Compruebe el URI proporcionado para la plantilla anidada. Si la plantilla se encuentra en una cuenta de almacenamiento, asegúrese de que puede accederse al URI. Debe transmitir un token SAS. Para más información, consulte [Uso de plantillas vinculadas con el Administrador de recursos de Azure](resource-group-linked-templates.md).
+Probablemente ha intentado toolink tooa plantillas anidadas que no está disponible. Vuelve a revisar hello URI proporcionado para plantillas anidadas Hola. Si existe en la plantilla de hello en una cuenta de almacenamiento, asegúrese de hello URI es accesible. Puede que necesite toopass un token de SAS. Para más información, consulte [Uso de plantillas vinculadas con el Administrador de recursos de Azure](resource-group-linked-templates.md).
 
 ## <a name="requestdisallowedbypolicy"></a>RequestDisallowedByPolicy
-Recibirá este error cuando la suscripción incluye una directiva de recursos que impide una acción que está tratando de realizar durante la implementación. En el mensaje de error, busque el identificador de directiva.
+Recibirá este error cuando la suscripción incluye una directiva de recursos que impide que una acción que está intentando tooperform durante la implementación. En el mensaje de error de hello, busque el identificador de directiva de Hola.
 
 ```
 Policy identifier(s): '/subscriptions/{guid}/providers/Microsoft.Authorization/policyDefinitions/regionPolicyDefinition'
 ```
 
-En **PowerShell**, proporcione ese identificador de directiva como el parámetro **Id** para recuperar los detalles de la directiva que bloqueó la implementación.
+En **PowerShell**, proporcionar ese identificador de directiva como hello **identificador** detalles del parámetro tooretrieve acerca de la directiva de Hola que bloquea la implementación.
 
 ```powershell
 (Get-AzureRmPolicyDefinition -Id "/subscriptions/{guid}/providers/Microsoft.Authorization/policyDefinitions/regionPolicyDefinition").Properties.policyRule | ConvertTo-Json
 ```
 
-En la **CLI de Azure**, proporcione el nombre de la definición de directiva:
+En **Azure CLI**, proporcione Hola nombre de definición de directiva de hello:
 
 ```azurecli
 az policy definition show --name regionPolicyAssignment
 ```
 
-Para más información, consulte los siguientes artículos.
+Para obtener más información, vea Hola siguientes artículos:
 
 - [Error RequestDisallowedByPolicy](resource-manager-policy-requestdisallowedbypolicy-error.md)
-- [Uso de directivas para administrar los recursos y controlar el acceso](resource-manager-policy.md)
+- [Usar Directiva toomanage recursos y controlar el acceso](resource-manager-policy.md).
 
 ## <a name="authorization-failed"></a>Error de autorización
-Puede recibir un error durante la implementación porque la cuenta o la entidad de servicio que intenta implementar los recursos no tiene acceso para realizar esas acciones. Azure Active Directory permite al usuario o al administrador controlar qué identidades pueden acceder a qué recursos con un alto grado de precisión. Por ejemplo, si su cuenta se asigna al rol Lector, no podrá crear recursos. En ese caso, debería ver un mensaje de error que indica que hubo un error de autorización.
+Puede recibir un error durante la implementación porque hello cuenta o intentar recursos de hello toodeploy entidad de servicio no tiene acceso tooperform esas acciones. Azure Active Directory permite a usted o su toocontrol administrador qué identidades pueden tener acceso a los recursos con un alto grado de precisión. Por ejemplo, si su cuenta se asigna el rol de lector toohello, no está toocreate capaz de recursos. En ese caso, debería ver un mensaje de error que indica que hubo un error de autorización.
 
 Para más información sobre el control de acceso basado en roles, consulte [Control de acceso basado en roles de Azure](../active-directory/role-based-access-control-configure.md).
 
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Para más información sobre las acciones de auditoría, consulte [Operaciones de auditoría con Resource Manager](resource-group-audit.md).
-* Si desea conocer más detalles sobre las acciones que permiten determinar los errores durante la implementación, consulte [Visualización de operaciones de implementación con el Portal de Azure](resource-manager-deployment-operations.md).
+* toolearn acerca de la auditoría de acciones, vea [auditoría de las operaciones con el Administrador de recursos](resource-group-audit.md).
+* toolearn acerca de los errores de hello toodetermine de acciones durante la implementación, consulte [ver las operaciones de implementación](resource-manager-deployment-operations.md).

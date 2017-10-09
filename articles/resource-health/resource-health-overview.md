@@ -1,5 +1,5 @@
 ---
-title: "Información general sobre Estado de los recursos de Azure | Microsoft Docs"
+title: "información general sobre el mantenimiento de recursos aaaAzure | Documentos de Microsoft"
 description: "Estado de los recursos de Azure. Información general"
 services: Resource health
 documentationcenter: 
@@ -14,80 +14,80 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 06/01/2016
 ms.author: BernardoAMunoz
-ms.openlocfilehash: d54979995ca97a70ba92c64915b919da09f548ec
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b920241b2f64a0695ba2c32e9ccb0c2c3739986d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-resource-health-overview"></a>Información general sobre Azure Resource Health
  
-Resource Health le ayuda a diagnosticar y obtener soporte técnico cuando un problema de Azure afecta a sus recursos. Le informa acerca del mantenimiento actual y pasado de los recursos y le ayuda a mitigar los problemas. Resource Health le proporciona soporte técnico si necesita ayuda con los problemas de los servicios de Azure.
+Resource Health le ayuda a diagnosticar y obtener soporte técnico cuando un problema de Azure afecta a sus recursos. Le informa sobre el estado de hello actuales y pasadas de los recursos y le ayuda a mitigar los problemas. Resource Health le proporciona soporte técnico si necesita ayuda con los problemas de los servicios de Azure.
 
-Mientras que [Estado de Azure](https://status.azure.com) le informa sobre problemas de servicio que afectan a un amplio conjunto de clientes de Azure, Resource Health le proporciona un panel personalizado del estado de los recursos. Resource Health muestra todas las veces que los recursos no estuvieron disponibles en el pasado debido a problemas de servicio de Azure. Esto facilita comprender si se infringió un Acuerdo de Nivel de Servicio. 
+Mientras que [estado de Azure](https://status.azure.com) le informa sobre los problemas de servicio que afectan a un amplio conjunto de los clientes de Azure, el estado de los recursos, obtendrá un panel personalizado de mantenimiento de Hola de los recursos. Estado de los recursos muestra todos los tiempos de hello los recursos no estaban disponibles en hello vencido tooAzure problemas del servicio. Esto facilita para toounderstand si se infringe un SLA. 
 
 ## <a name="what-is-considered-a-resource-and-how-does-resource-health-decides-if-a-resource-is-healthy-or-not"></a>¿Qué se considera que es un recurso y cómo Resource Health decide si el estado de un recurso es correcto?
 Un recurso es una instancia de un tipo de recurso que un servicio de Azure ofrece a través de Azure Resource Manager, por ejemplo: una máquina virtual, una aplicación web o una base de datos de SQL Database.
 
-Resource Health se basa en las señales que emiten los distintos servicios de Azure para evaluar si el estado de un recurso es correcto o no. Si el estado de un recurso no es correcto, Resource Health analiza información adicional para determinar el origen del problema. También identifica las acciones que lleva a cabo Microsoft para corregir el problema o las acciones que usted puede realizar para solucionar la causa del problema. 
+Estado de los recursos se basa en señales emitidas por hello distintos servicios de Azure tooassess si un recurso es correcto o no. Si un recurso está en mal estado, estado de los recursos analiza información adicional toodetermine Hola origen Hola problema. También se identifican las acciones que Microsoft está llevando a cabo toofix problema de Hola o qué acciones puede llevar a cabo tooaddress Hola causa de problema de Hola. 
 
-Revise la lista completa de tipos de recurso y comprobaciones de estado en [Azure Resource Health](resource-health-checks-resource-types.md) para detalles adicionales sobre cómo se evalúa el estado de mantenimiento.
+Comprueba la lista completa de Hola de revisión de los tipos de recursos y el estado de [estado de los recursos de Azure](resource-health-checks-resource-types.md) para obtener más detalles sobre cómo se evalúa el estado.
 
 ## <a name="health-status-provided-by-resource-health"></a>Estado de mantenimiento proporcionado por Resource Health
-Un recurso tiene uno de los siguientes estados:
+estado de Hola de un recurso es uno de hello siguientes estados:
 
 ### <a name="available"></a>Disponible
-El servicio no ha detectado ningún evento que afecte el estado del recurso. En los casos en que el recurso se recuperó de un tiempo de inactividad no planeado durante las últimas 24 horas, verá la notificación de que se **recuperó recientemente**.
+servicio de Hello no ha detectado los eventos que tienen efecto sobre el estado de Hola de recurso de Hola. En casos donde los recursos de Hola se ha recuperado de tiempo de inactividad imprevisto durante Hola última Hola 24 horas aparecerá **se recuperó recientemente** notificación.
 
 ![Máquina virtual disponible en Resource Health](./media/resource-health-overview/Available.png)
 
 ### <a name="unavailable"></a>No disponible
-El servicio detectó un evento de plataforma o no de plataforma en curso que afecta el estado del recurso.
+Hola servicio ha detectado un evento de plataforma no afectar el estado de Hola de recurso de Hola o de plataforma en curso.
 
 #### <a name="platform-events"></a>Eventos de plataforma
-Estos eventos los desencadenan varios componentes de la infraestructura de Azure e incluyen tanto acciones programadas como mantenimiento planeado o incidentes inesperados, como un reinicio no planeado del host.
+Estos eventos se desencadenan en varios componentes de infraestructura de Azure hello e incluyen tanto acciones programadas como mantenimiento planeado e incidentes inesperados como un reinicio del host no planeada.
 
-Resource Health proporciona detalles adicionales sobre el evento y el proceso de recuperación y le permite ponerse en contacto con el soporte técnico incluso si no tiene ningún contrato de Soporte técnico de Microsoft activo.
+Mantenimiento de recursos proporciona detalles adicionales sobre el evento de hello, proceso de recuperación de Hola y habilita la compatibilidad con de toocontact incluso si no tienes un Microsoft active contrato de soporte técnico.
 
-![Máquina virtual no disponible en Resource Health debido a un evento de plataforma](./media/resource-health-overview/Unavailable.png)
+![Máquina virtual recursos mantenimiento no está disponible debido a eventos tooplatform](./media/resource-health-overview/Unavailable.png)
 
 #### <a name="non-platform-events"></a>Eventos no de plataforma
-Estos eventos los desencadenan las acciones que realizan los usuarios; por ejemplo, detener una máquina virtual o llegar a la cantidad máxima de conexiones a Redis Cache.
+Estos eventos se activan mediante acciones realizadas por los usuarios, por ejemplo, detener una máquina virtual o alcance Hola número máximo de conexiones tooa caché en Redis.
 
-![Máquina virtual no disponible en Resource Health debido a un evento no de plataforma](./media/resource-health-overview/Unavailable_NonPlatform.png)
+![Máquina virtual recursos mantenimiento no está disponible debido a eventos de plataforma toonon](./media/resource-health-overview/Unavailable_NonPlatform.png)
 
 ### <a name="unknown"></a>Desconocido
-Este estado de mantenimiento indica que Resource Health no ha recibido información sobre este recurso durante más de 10 minutos. Si bien este estado no es una indicación definitiva del estado del recurso, es un punto de datos importante en el proceso de solución de problemas:
-* Si el recurso se ejecuta según lo esperado, el estado del recurso cambiará a Disponible después de unos minutos.
-* Si tiene problemas con el recurso, el estado de mantenimiento Desconocido podría sugerir que un evento de la plataforma afecta al recurso.
+Este estado de mantenimiento indica que Resource Health no ha recibido información sobre este recurso durante más de 10 minutos. Aunque este estado no es una indicación definitiva del estado de Hola de recursos de hello, es un punto de datos importantes en el proceso de solución de problemas de hello:
+* Si está ejecutando recursos hello como estado de hello esperado del recurso de hello actualizará tooAvailable después de unos minutos.
+* Si experimenta problemas con el recurso de hello, hello estado desconocido puede sugerir recursos Hola se ve afectado por un evento de plataforma de Hola.
 
 ![Máquina virtual Desconocida de Resource Health](./media/resource-health-overview/Unknown.png)
 
 ## <a name="report-an-incorrect-status"></a>Informe de un estado incorrecto
-Si en algún momento cree que el estado de mantenimiento actual es incorrecto, puede hacérnoslo saber si hace clic en **Informe de estado de mantenimiento incorrecto**. En los casos en que lo afecta un problema de Azure, se recomienda que se ponga en contacto con el soporte técnico desde la hoja Resource Health. 
+Si en cualquier momento considera estado actual de hello es incorrecta, puede hacernos saber haciendo clic en **informan del estado de mantenimiento incorrecto**. En casos donde se ven afectados por un problema de Azure, le recomendamos que toocontact de soporte técnico de hoja de mantenimiento de recursos de Hola. 
 
 ![Informe de estado incorrecto en Resource Health](./media/resource-health-overview/incorrect-status.png)
 
 ## <a name="historical-information"></a>Información histórica
-Puede tener acceso a los datos históricos de mantenimiento de hasta 14 días; para ello, haga clic en **Ver el historial** en la hoja Resource Health. 
+Puede tener acceso a los días de too14 de datos de historial de mantenimiento, haga clic en **ver el historial de** en la hoja de estado de recursos de Hola. 
 
 ![Historial de informes en Resource Health](./media/resource-health-overview/history-blade.png)
 
 ## <a name="getting-started"></a>Introducción
-Para abrir Resource Health para un recurso
-1.  Inicie sesión en Azure Portal.
-2.  Vaya al recurso.
-3.  En el menú de recursos que se encuentra en el lado izquierdo, haga clic en **Resource Health**.
+tooopen estado de recursos para un recurso
+1.  Inicie sesión en hello portal de Azure.
+2.  Navegar tooyour recurso.
+3.  En el menú de recursos de hello ubicado en el lado izquierdo de hello, haga clic en **estado de los recursos**.
 
 ![Apertura de Resource Health desde la hoja Recurso](./media/resource-health-overview/from-resource-blade.png)
 
-También puede tener acceso a Resource Health con un clic en **Más servicios** y escribiendo **Resource Health** en el cuadro de texto de filtro para abrir la hoja **Ayuda y soporte técnico**. Por último, haga clic en [**Resource Health**](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/resourceHealth).
+También puede tener acceso a mantenimiento de recursos, haga clic en **más servicios**y escribiendo **estado de los recursos** Hola de tooopen de cuadro de texto de filtro **ayuda y soporte técnico** hoja. Por último, haga clic en [**Resource Health**](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/resourceHealth).
 
 ![Apertura de Resource Health desde Más servicios](./media/resource-health-overview/FromOtherServices.png)
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Revise estos recursos para más información sobre Resource Health:
+Consulte estos toolearn recursos más información acerca del estado de los recursos:
 -  [Tipos de recurso y comprobaciones de estado en Azure Resource Health](resource-health-checks-resource-types.md)
 -  [Preguntas más frecuentes de Azure Resource Health](resource-health-faq.md)
 

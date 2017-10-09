@@ -1,13 +1,13 @@
 
-1. Inicie sesión en su suscripción de Azure mediante los pasos explicados en [Conexión a Azure desde la CLI de Azure 1.0](../articles/xplat-cli-connect.md).
+1. Inicie sesión en tooyour suscripción de Azure siguiendo los pasos de hello enumerados en [conectar tooAzure de hello Azure CLI 1.0](../articles/xplat-cli-connect.md).
 
-2. Asegúrese de que está en el modo de implementación clásica, como se muestra a continuación:
+2. Asegúrese de que está en el modo de implementación clásica hello como sigue:
 
     ```azurecli
     azure config mode asm
     ```
 
-3. Entre las imágenes de Linux disponibles, elija la que desea cargar como se indica a continuación:
+3. Averiguar imagen de Linux de Hola que desea tooload de imágenes disponibles hello como sigue:
 
    ```azurecli   
     azure vm image list | grep "Linux"
@@ -15,7 +15,7 @@
    
     En una ventana de símbolo del sistema de Windows, use **find** en lugar de grep.
    
-4. Use `azure vm create` para crear una máquina virtual con la imagen de Linux de la lista anterior. En este paso se crea un servicio en la nube y una cuenta de almacenamiento. Esta máquina virtual también se puede conectar a un servicio en la nube existente con una opción `-c`. Cree un punto de conexión SSH para iniciar sesión en la máquina virtual Linux con la opción `-e`. En el ejemplo siguiente se crea una máquina virtual denominada `myVM` mediante la imagen `Ubuntu-14_04_4-LTS` de la ubicación `West US` y se agrega un nombre de usuario `ops`:
+4. Use `azure vm create` toocreate una máquina virtual con la imagen de Linux Hola de lista anterior Hola. En este paso se crea un servicio en la nube y una cuenta de almacenamiento. También puede conectar este servicio en la nube VM tooan existente con un `-c` opción. Crear un toolog de punto de conexión SSH en la máquina virtual de Linux toohello con hello `-e` opción. Hello en el ejemplo siguiente se crea una máquina virtual denominada `myVM` con hello `Ubuntu-14_04_4-LTS` imagen Hola `West US` ubicación y agrega un nombre de usuario `ops`:
    
     ```azurecli
     azure vm create myVM \
@@ -23,7 +23,7 @@
         -g ops -p P@ssw0rd! -z "Small" -e -l "West US"
     ```
 
-    La salida es similar a la del ejemplo siguiente:
+    Hola de salida es similar toohello siguiente ejemplo:
 
     ```azurecli
     info:    Executing command vm create
@@ -37,20 +37,20 @@
     ```
    
    > [!NOTE]
-   > Para una máquina virtual Linux, debe proporcionar la opción `-e` en `vm create`. No es posible habilitar SSH después de que se haya creado la máquina virtual. Para más información sobre SSH, lea [Creación de claves SSH en Linux y Mac para máquinas virtuales de Linux en Azure](../articles/virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+   > Para una máquina virtual de Linux, debe proporcionar hello `-e` opción `vm create`. No es posible tooenable SSH una vez creada la máquina virtual de Hola. Para obtener más detalles sobre SSH, lea [cómo tooUse SSH con Linux en Azure](../articles/virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-5. Los atributos de la máquina virtual se pueden comprobar con el comando `azure vm show`. En el ejemplo siguiente se muestra información de la máquina virtual denominada `myVM`:
+5. Puede comprobar atributos Hola de hello VM mediante hello `azure vm show` comando. Hello en el ejemplo siguiente se muestra información de máquina virtual denominada Hola `myVM`:
 
     ```azurecli   
     azure vm show myVM
     ```
 
-6. Inicie la máquina virtual con el comando `azure vm start` como sigue:
+6. Inicie la máquina virtual con hello `azure vm start` comando como sigue:
 
     ```azurecli
     azure vm start myVM
     ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-Para más información sobre estos comandos de máquina virtual de la CLI 1.0 de Azure, consulte [Uso de la CLI 1.0 de Azure con la API de implementación clásica](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
+Para obtener más información acerca de estos comandos de máquina virtual de Azure CLI 1.0, lea hello [hello mediante Azure CLI 1.0 con API de implementación clásica de hello](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
 

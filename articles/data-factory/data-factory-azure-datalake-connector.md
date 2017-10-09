@@ -1,6 +1,6 @@
 ---
-title: Copia de datos hacia y desde Azure Data Lake Store | Microsoft Docs
-description: Aprenda a copiar datos hacia y desde Data Lake Store mediante Azure Data Factory
+title: "aaaCopy tooand de datos de almacén de Azure Data Lake | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toocopy tooand de datos de almacén de Data Lake mediante el uso de Data Factory de Azure"
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: jingwang
-ms.openlocfilehash: 11629fbc83f0554e2097eb4322701654c0bc2028
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 2e78f75f3821738332dacf70f6bf2c16f0136408
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="copy-data-to-and-from-data-lake-store-by-using-data-factory"></a>Copia de datos hacia y desde Data Lake Store mediante Data Factory
-En este artículo se explica el uso de la actividad de copia en Azure Data Factory para mover datos hacia y desde Azure Data Lake Store. Se basa en el artículo [Movimiento de datos con la actividad de copia](data-factory-data-movement-activities.md), una introducción al movimiento de datos con la actividad de copia.
+# <a name="copy-data-tooand-from-data-lake-store-by-using-data-factory"></a>Copiar datos tooand de almacén de Data Lake con factoría de datos
+Este artículo se explica cómo toouse actividad de copia de Data Factory de Azure toomove datos tooand de almacén de Azure Data Lake. Se basa en hello [las actividades de movimiento de datos](data-factory-data-movement-activities.md) artículo, información general sobre el movimiento de datos con la actividad de copia.
 
 ## <a name="supported-scenarios"></a>Escenarios admitidos
-Puede copiar datos **desde Azure Data Lake Store** hacia los siguientes almacenes de datos:
+Puede copiar datos **de almacén de Azure Data Lake** toohello siguientes almacenes de datos:
 
 [!INCLUDE [data-factory-supported-sinks](../../includes/data-factory-supported-sinks.md)]
 
-Puede copiar datos desde los siguientes almacenes de datos **hacia Azure Data Lake Store**:
+Puede copiar los datos de hello siguientes almacenes de datos **tooAzure almacén de Data Lake**:
 
 [!INCLUDE [data-factory-supported-sources](../../includes/data-factory-supported-sources.md)]
 
@@ -36,57 +36,57 @@ Puede copiar datos desde los siguientes almacenes de datos **hacia Azure Data La
 > Cree una cuenta de Data Lake Store antes de crear una canalización con la actividad de copia. Para más información, consulte [Introducción a Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md).
 
 ## <a name="supported-authentication-types"></a>Tipos de autenticación que se admiten
-El conector de Data Lake Store admite estos tipos de autenticación:
+Conector de almacén de Data Lake Hello es compatible con estos tipos de autenticación:
 * Autenticación de entidad de servicio
 * Autenticación de credenciales de usuario (OAuth) 
 
-Se recomienda que use la autenticación de la entidad de servicio, en especial para una copia de datos programada. Con la autenticación se credenciales de usuario puede darse la situación de que expiren los tokens. Para información sobre los detalles de configuración, consulte la sección [Propiedades del servicio vinculado](#linked-service-properties).
+Se recomienda que use la autenticación de la entidad de servicio, en especial para una copia de datos programada. Con la autenticación se credenciales de usuario puede darse la situación de que expiren los tokens. Para obtener detalles de configuración, vea hello [vinculado propiedades del servicio](#linked-service-properties) sección.
 
-## <a name="get-started"></a>Introducción
+## <a name="get-started"></a>Primeros pasos
 Puede crear una canalización con actividad de copia que mueva los datos hacia Azure Data Lake Store y desde este servicio mediante el uso de diferentes herramientas o API.
 
-La manera más fácil de crear una canalización es usar el **Asistente para copia**. Para ver un tutorial sobre la creación de una canalización mediante el Asistente para copia, consulte [Tutorial: crear una canalización con el Asistente para copia](data-factory-copy-data-wizard-tutorial.md).
+toocreate de manera más fácil de Hello datos toocopy canalización es hello de toouse **Asistente para copiar**. Para obtener un tutorial sobre cómo crear una canalización mediante Hola Asistente para copiar, consulte [Tutorial: crear una canalización mediante el Asistente para copiar](data-factory-copy-data-wizard-tutorial.md).
 
-También puede usar las herramientas siguientes para crear una canalización: **Azure Portal**, **Visual Studio**, **Azure PowerShell**, **plantilla de Azure Resource Manager**, **API de .NET** y **API de REST**. Consulte el [tutorial de actividad de copia](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) para obtener instrucciones paso a paso sobre cómo crear una canalización con una actividad de copia.
+También puede usar Hola después herramientas toocreate una canalización: **portal de Azure**, **Visual Studio**, **Azure PowerShell**, **plantilla del Administrador de recursos de Azure** , **API de .NET**, y **API de REST**. Vea [tutorial de la actividad de copia](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) para obtener instrucciones paso a paso toocreate una canalización con una actividad de copia.
 
-Tanto si usa las herramientas como las API, realice los pasos siguientes para crear una canalización que mueva datos de un almacén de datos de origen a un almacén de datos receptor:
+Si usa herramientas de Hola o las API, realizar Hola siguiendo los pasos toocreate una canalización que mueve el almacén de datos del receptor de tooa del almacén de datos desde un origen de datos:
 
 1. Crear una **factoría de datos**. Una factoría de datos puede contener una o más canalizaciones. 
-2. Cree **servicios vinculados** para vincular almacenes de datos de entrada y salida a la factoría de datos. Por ejemplo, si va a copiar datos desde una instancia de Azure Blob Storage hacia una instancia de Azure Data Lake Store, creará dos servicios vinculados para vincular la cuenta de Azure Storage y la instancia de Azure Data Lake Store a su factoría de datos. Para información sobre las propiedades de los servicios vinculados que son específicas de Azure Data Lake Store, consulte la sección [Propiedades del servicio vinculado](#linked-service-properties). 
-2. Cree **conjuntos de datos** con el fin de representar los datos de entrada y salida para la operación de copia. En el ejemplo mencionado en el último paso, se crea un conjunto de datos para especificar el contenedor de blobs y la carpeta que contiene los datos de entrada. Además, se crea otro conjunto de datos para especificar la ruta de acceso al archivo y la carpeta en Data Lake Store que contiene los datos copiados de Blob Storage. Para información sobre las propiedades del conjunto de datos que son específicas de Azure Data Lake Store, consulte la sección [Propiedades del conjunto de datos](#dataset-properties).
-3. Cree una **canalización** con una actividad de copia que tome como entrada un conjunto de datos y un conjunto de datos como salida. En el ejemplo que se ha mencionado anteriormente, se usa BlobSource como origen y AzureDataLakeStoreSink como receptor para la actividad de copia. De igual forma, si va a copiar desde Azure Data Lake Store hacia Azure Blob Storage, usará AzureDataLakeStoreSource y BlobSink en la actividad de copia. Para información sobre las propiedades de la actividad de copia que son específicas de Azure Data Lake Store, consulte la sección [Propiedades de la actividad de copia](#copy-activity-properties). Para más información sobre cómo usar un almacén de datos como origen o como receptor, haga clic en el vínculo de la sección anterior para el almacén de datos.  
+2. Crear **servicios vinculados** factoría de datos de tooyour de almacenes de datos de entrada y salida de toolink. Por ejemplo, si va a copiar datos desde un tooan de almacenamiento de blobs de Azure almacén de Data Lake de Azure, cree dos toolink servicios vinculados su cuenta de almacenamiento de Azure y la factoría de datos de Azure Data Lake almacén tooyour. Para las propiedades de servicio vinculado que son específico tooAzure almacén de Data Lake, consulte [vinculado propiedades del servicio](#linked-service-properties) sección. 
+2. Crear **conjuntos de datos** toorepresent de entrada y salida la operación de copia de datos de Hola. En el ejemplo de Hola mencionado en el último paso de hello, se crea un contenedor de blobs de hello toospecify de conjunto de datos y la carpeta que contiene los datos de entrada de Hola. Y crear otra conjunto de datos toospecify Hola carpeta y la ruta en el almacén de Data Lake de Hola que contiene datos de hello copiados desde el almacenamiento de blobs de Hola. Para las propiedades del conjunto de datos que son específico tooAzure almacén de Data Lake, consulte [propiedades de conjunto de datos](#dataset-properties) sección.
+3. Cree una **canalización** con una actividad de copia que tome como entrada un conjunto de datos y un conjunto de datos como salida. En el ejemplo de Hola que se ha mencionado anteriormente, use BlobSource como un origen y AzureDataLakeStoreSink como un receptor para la actividad de copia de Hola. De forma similar, si va a copiar desde el almacén de Azure Data Lake tooAzure almacenamiento de blobs, usar AzureDataLakeStoreSource y BlobSink de actividad de copia de Hola. Para copiar propiedades de actividad que son específico tooAzure almacén de Data Lake, consulte [copiar propiedades de la actividad](#copy-activity-properties) sección. Para obtener detalles sobre cómo toouse un almacén de datos como un origen o un receptor, haga clic en el vínculo de hello en la sección anterior de hello para el almacén de datos.  
 
-Cuando se usa el Asistente, se crean automáticamente definiciones de JSON para estas entidades de Data Factory (servicios vinculados, conjuntos de datos y la canalización). Al usar herramientas o API (excepto la API de .NET), se definen estas entidades de Data Factory con el formato JSON.  Para obtener ejemplos con definiciones de JSON para entidades de Data Factory que se utilizan para copiar datos a Azure Data Lake Store y desde este servicio, consulte la sección [Ejemplos de JSON](#json-examples-for-copying-data-to-and-from-data-lake-store) de este artículo.
+Cuando se utiliza el Asistente de hello, las definiciones de JSON para estas entidades de la factoría de datos (servicios vinculados, conjuntos de datos y canalización Hola) se crean automáticamente para usted. Al usar herramientas y API (excepto la API. NET), se definen estas entidades de la factoría de datos con formato JSON de Hola.  Para obtener ejemplos con definiciones de JSON para entidades de factoría de datos que son utilizados toocopy datos hacia y desde un almacén de Data Lake de Azure, vea [ejemplos JSON](#json-examples-for-copying-data-to-and-from-data-lake-store) sección de este artículo.
 
-En las secciones siguientes se proporcionan detalles sobre las propiedades JSON que se usan para definir entidades de Data Factory específicas de Data Lake Store.
+Hello las secciones siguientes proporciona detalles acerca de las propiedades JSON que son utilizado toodefine factoría de datos de entidades específico tooData Lake almacén.
 
 ## <a name="linked-service-properties"></a>Propiedades del servicio vinculado
-Un servicio vinculado vincula un almacén de datos a una factoría de datos. Creará un servicio vinculado de tipo **AzureDataLakeStore** para vincular datos de Data Lake Store a la factoría de datos. En la tabla siguiente se describen los elementos JSON específicos de los servicios vinculados Data Lake Store. Puede elegir entre la autenticación de la entidad de servicio y la autenticación de credenciales de usuario.
+Un servicio vinculado vincula una factoría de datos de tooa de almacén de datos. Crear un servicio vinculado de tipo **AzureDataLakeStore** toolink su factoría de datos de almacén de Data Lake datos tooyour. Hello en la tabla siguiente describe los servicios de tooData Lake almacén vinculado específicos de elementos JSON. Puede elegir entre la autenticación de la entidad de servicio y la autenticación de credenciales de usuario.
 
 | Propiedad | Descripción | Obligatorio |
 |:--- |:--- |:--- |
-| **type** | La propiedad type debe establecerse en: **AzureDataLakeStore**. | Sí |
-| **dataLakeStoreUri** | Información sobre la cuenta de Azure Data Lake Store. Esta información adopta uno de los siguientes formatos: `https://[accountname].azuredatalakestore.net/webhdfs/v1` o `adl://[accountname].azuredatalakestore.net/`. | Sí |
-| **subscriptionId** | Id. de suscripción de Azure al que pertenece la cuenta de Data Lake Store. | Necesario para el receptor |
-| **resourceGroupName** | Nombre del grupo de recursos de Azure al que pertenece la cuenta de Data Lake Store. | Necesario para el receptor |
+| **type** | se debe establecer propiedad de tipo Hello demasiado**AzureDataLakeStore**. | Sí |
+| **dataLakeStoreUri** | Información acerca de la cuenta de almacén de Azure Data Lake Hola. Esta información toma una de hello siguientes formatos: `https://[accountname].azuredatalakestore.net/webhdfs/v1` o `adl://[accountname].azuredatalakestore.net/`. | Sí |
+| **subscriptionId** | Hola de toowhich de Id. de suscripción de Azure cuenta de almacén de Data Lake pertenece. | Necesario para el receptor |
+| **resourceGroupName** | Hola de toowhich de nombre de grupo de recursos de Azure cuenta de almacén de Data Lake pertenece. | Necesario para el receptor |
 
 ### <a name="service-principal-authentication-recommended"></a>Autenticación de la entidad de servicio (recomendada)
-Para usar la autenticación de la entidad de servicio, registre una entidad de aplicación en Azure Active Directory (AAD) y concédale acceso a Data Lake Store. Consulte [Autenticación entre servicios](../data-lake-store/data-lake-store-authenticate-using-active-directory.md) para ver los pasos detallados. Anote los siguientes valores; los usará para definir el servicio vinculado:
+toouse autenticación principal del servicio, registrar una entidad de la aplicación en Azure Active Directory (Azure AD) y conceda a Hola acceso tooData Lake almacén. Consulte [Autenticación entre servicios](../data-lake-store/data-lake-store-authenticate-using-active-directory.md) para ver los pasos detallados. Tome nota de hello después de valores, que se utiliza toodefine Hola servicio vinculado:
 * Identificador de aplicación
 * Clave de la aplicación 
 * Id. de inquilino
 
 > [!IMPORTANT]
-> Si va a usar el Asistente para copia para crear canalizaciones de datos, asegúrese de conceder a la entidad de servicio al menos un rol de **lectura** en el control de acceso (administración de identidades y acceso) para la cuenta de Data Lake Store. Además, conceda a la entidad de servicio al menos un permiso de **lectura y ejecución** para la raíz de Data Lake Store ("/") y sus elementos secundarios. De lo contrario, puede que aparezca el mensaje "Las credenciales proporcionadas no son válidas".<br/><br/>
-Después de crear o actualizar una entidad de servicio en AAD, pueden transcurrir unos minutos hasta que se aplican los cambios. Compruebe las configuraciones de la entidad de servicio y de la lista de control de acceso (ACL) de Data Lake Store. Si el mensaje anteriormente mencionado sigue apareciendo, espere unos instantes e inténtelo de nuevo.
+> Si usas las canalizaciones de datos de hello Asistente para copiar tooauthor, asegúrese de que concedan entidad de servicio de hello al menos un **lector** rol en el control de acceso (administración de identidades y acceso) para la cuenta de almacén de Data Lake Hola. Además, al menos a conceder entidad de servicio de Hola **lectura + Execute** raíz de almacén de Data Lake tooyour de permiso ("/") y sus elementos secundarios. En caso contrario, puede aparecer el mensaje de Hola "hello las credenciales proporcionaron no son válidos".<br/><br/>
+Después de crear o actualizar a una entidad de servicio en Azure AD, puede tardar unos minutos para hello cambios tootake efecto. Compruebe la entidad de servicio de Hola y configuraciones de lista (ACL) de control de acceso de almacén de Data Lake. Si todavía aparece el mensaje de saludo "¡hello las credenciales proporcionaron no son válidos", espere unos instantes e inténtelo de nuevo.
 
-Para usar la autenticación de la entidad de servicio, especifique las siguientes propiedades:
+Utilizar autenticación de entidad de seguridad de servicio mediante la especificación de hello propiedades siguientes:
 
 | Propiedad | Descripción | Obligatorio |
 |:--- |:--- |:--- |
-| **servicePrincipalId** | Especifique el id. de cliente de la aplicación. | Sí |
-| **servicePrincipalKey** | Especifique la clave de la aplicación. | Sí |
-| **tenant** | Especifique la información del inquilino (nombre de dominio o identificador de inquilino) en el que reside la aplicación. Para recuperarlo, mantenga el puntero del mouse en la esquina superior derecha de Azure Portal. | Sí |
+| **servicePrincipalId** | Especifique el identificador de cliente de. la aplicación hello | Sí |
+| **servicePrincipalKey** | Especifique la clave de la aplicación hello. | Sí |
+| **tenant** | Especifique la información de inquilino de hello (inquilino o el nombre de identificador de dominio) en que se encuentra la aplicación. Puede recuperarlo mediante el desplazamiento del mouse de hello en la esquina superior derecha de Hola de hello portal de Azure. | Sí |
 
 **Ejemplo: autenticación de la entidad de servicio**
 ```json
@@ -107,12 +107,12 @@ Para usar la autenticación de la entidad de servicio, especifique las siguiente
 ```
 
 ### <a name="user-credential-authentication"></a>Autenticación de credenciales de usuario
-También puede usar la autenticación de credenciales de usuario para copiar hacia o desde Data Lake Store mediante la especificación de las propiedades siguientes:
+Como alternativa, puede usar toocopy de autenticación de credenciales de usuario de o tooData Lake almacén mediante la especificación de hello propiedades siguientes:
 
 | Propiedad | Descripción | Obligatorio |
 |:--- |:--- |:--- |
-| **authorization** | Haga clic en el botón **Autorizar** de Data Factory Editor y escriba sus credenciales, que asignan la dirección URL de autorización generada automáticamente a esta propiedad. | Sí |
-| **sessionId** | Id. de sesión de OAuth de la sesión de autorización de OAuth. Cada id. de sesión es único y solo se puede usar una vez. Esta configuración se genera automáticamente al usar Data Factory Editor. | Sí |
+| **authorization** | Haga clic en hello **Authorize** botón Hola Editor de generador de datos y escriba sus credenciales que asigna la propiedad de hello autogenerado autorización URL toothis. | Sí |
+| **sessionId** | Identificador de sesión de OAuth de sesión de autorización de OAuth de Hola. Cada id. de sesión es único y solo se puede usar una vez. Esta configuración se genera automáticamente cuando se usa Hola Editor de generador de datos. | Sí |
 
 **Ejemplo: autenticación de credenciales de usuario**
 ```json
@@ -132,21 +132,21 @@ También puede usar la autenticación de credenciales de usuario para copiar hac
 ```
 
 #### <a name="token-expiration"></a>Expiración del token
-El código de autorización que se genera con el botón **Autorizar** expira transcurrido un período de tiempo determinado. El siguiente mensaje significa que expiró el token de autenticación:
+Hola código de autorización que genera mediante el uso de hello **Authorize** botón expira transcurrido un período de tiempo. Hola sigue mensaje significa que ese token de autenticación Hola expiró:
 
-Error de operación de credencial: invalid_grant - AADSTS70002: error al validar las credenciales. AADSTS70008: la concesión de acceso proporcionada expiró o se revocó. Id. de seguimiento: d18629e8-af88-43c5-88e3-d8419eb1fca1 Id. de correlación: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 Marca de tiempo: 2015-12-15 21:09:31Z.
+Error de operación de credencial: invalid_grant - AADSTS70002: error al validar las credenciales. AADSTS70008: Hola proporciona concesión de acceso expiró o se revocó. Id. de seguimiento: d18629e8-af88-43c5-88e3-d8419eb1fca1 Id. de correlación: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 Marca de tiempo: 2015-12-15 21:09:31Z.
 
-En la tabla siguiente se muestran los tiempos de expiración de los distintos tipos de cuentas de usuario:
+Hello tabla siguiente muestran los tiempos de expiración de Hola de diferentes tipos de cuentas de usuario:
 
 
 | Tipo de usuario | Expira después de |
 |:--- |:--- |
 | Cuentas de usuario *no* administradas por Azure Active Directory (por ejemplo, @hotmail.com o @live.com) |12 horas |
-| Cuentas de usuario administradas por Azure Active Directory |14 días después de la ejecución del último segmento. <br/><br/>90 días, si un segmento basado en un servicio vinculado basado en OAuth se ejecuta al menos una vez cada 14 días. |
+| Cuentas de usuario administradas por Azure Active Directory |ejecutar 14 días después de último segmento de Hola <br/><br/>90 días, si un segmento basado en un servicio vinculado basado en OAuth se ejecuta al menos una vez cada 14 días. |
 
-Si cambia la contraseña antes de la hora de expiración del token, el token expira inmediatamente. Verá el mensaje mencionado anteriormente en esta sección.
+Si cambia la contraseña anterior a la hora de expiración del token de hello, símbolo (token) de hello caduca inmediatamente. Verá mensajes de bienvenida se ha mencionado anteriormente en esta sección.
 
-Puede volver a autorizar la cuenta mediante el botón **Autorizar** cuando expire el token para volver a implementar el servicio vinculado. También puede generar valores para las propiedades **sessionId** y **authorization** mediante programación por medio del código siguiente:
+Puede autorizar la cuenta de hello mediante el uso de hello **Authorize** botón cuando caduca de token de Hola Hola tooredeploy servicio vinculado. También pueden generar valores de hello **sessionId** y **autorización** Hola propiedades mediante programación mediante el uso de código siguiente:
 
 
 ```csharp
@@ -173,26 +173,26 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
     }
 }
 ```
-Para más información sobre las clases de Data Factory que se usan en el código, consulte los temas [AzureDataLakeStoreLinkedService Class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), [AzureDataLakeAnalyticsLinkedService Class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx) y [AuthorizationSessionGetResponse Class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx). Agregue una referencia a la versión `2.9.10826.1824` de `Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll` para la clase `WindowsFormsWebAuthenticationDialog` usada en el código.
+Para obtener más información acerca de las clases de factoría de datos de hello usarse en el código de hello, vea hello [azuredatalakestorelinkedservice clase](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), [AzureDataLakeAnalyticsLinkedService clase](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx), y [ Clase AuthorizationSessionGetResponse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx) temas. Agregar una referencia tooversion `2.9.10826.1824` de `Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll` para hello `WindowsFormsWebAuthenticationDialog` clase usada en el código de hello.
 
 ## <a name="dataset-properties"></a>Propiedades del conjunto de datos
-Para especificar un conjunto de datos para representar datos de entrada en Data Lake Store, establezca la propiedad **type** del conjunto de datos en **AzureDataLakeStore**. Establezca la propiedad **linkedServiceName** del conjunto de datos en el nombre del servicio vinculado Data Lake Store. Para ver una lista completa de las secciones y propiedades JSON disponibles para definir conjuntos de datos, consulte el artículo [Creación de conjuntos de datos](data-factory-create-datasets.md). Las secciones de un conjunto de datos de JSON, como **structure**, **availability** y **policy**, son similares para todos los tipos de datos (base de datos SQL de Azure, blob de Azure y tabla de Azure, por ejemplo). La sección **typeProperties** es diferente para cada tipo de conjunto de datos y proporciona información como la ubicación y el formato de los datos del almacén de datos. 
+un conjunto de datos toorepresent datos de entrada en un almacén de Data Lake toospecify, Establece hello **tipo** propiedad del conjunto de datos de hello demasiado**AzureDataLakeStore**. Conjunto hello **linkedServiceName** propiedad del nombre de toohello Hola conjunto de datos de almacén de Data Lake hello servicio vinculado. Para obtener una lista completa de las secciones JSON y propiedades disponibles para definir conjuntos de datos, vea hello [crear conjuntos de datos](data-factory-create-datasets.md) artículo. Las secciones de un conjunto de datos de JSON, como **structure**, **availability** y **policy**, son similares para todos los tipos de datos (base de datos SQL de Azure, blob de Azure y tabla de Azure, por ejemplo). Hola **typeProperties** sección es diferente para cada tipo de conjunto de datos y proporciona información como la ubicación y el formato de datos de hello en el almacén de datos de Hola. 
 
-La sección **typeProperties** de un conjunto de datos de tipo **AzureDataLakeStore** contiene las siguientes propiedades:
+Hola **typeProperties** sección para un conjunto de datos de tipo **AzureDataLakeStore** contiene Hola propiedades siguientes:
 
 | Propiedad | Descripción | Obligatorio |
 |:--- |:--- |:--- |
-| **folderPath** |Ruta de acceso al contenedor y la carpeta de Data Lake Store. |Sí |
-| **fileName** |Nombre del archivo en Azure Data Lake Store. La propiedad **fileName** es opcional y distingue mayúsculas de minúsculas. <br/><br/>Si especifica **fileName**, la actividad (incluida la copia) funciona en el archivo específico.<br/><br/>Cuando no se especifica **fileName**, la copia incluye todos los archivos de **folderPath** en el conjunto de datos de entrada.<br/><br/>Cuando **fileName** no se especifica para un conjunto de datos de salida y **preserveHierarchy** no se especifica en el receptor de actividad, el nombre del archivo generado está en formato de datos._Guid_.txt'. Por ejemplo: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. |No |
-| **partitionedBy** |La propiedad **partitionedBy** es opcional. Puede usarla para especificar una ruta de acceso dinámica y un nombre de archivo para datos de series temporales. Por ejemplo, se puede parametrizar **folderPath** por cada hora de datos. Para más información y ver algunos ejemplos, consulte [La propiedad partitionedBy](#using-partitionedby-property). |No |
-| **format** | Se admiten los siguientes tipos de formato: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat** y **ParquetFormat**. Establezca la propiedad **type** en **format** en uno de los siguientes valores. Para más información, consulte las secciones [Formato de texto](data-factory-supported-file-and-compression-formats.md#text-format), [Formato JSON](data-factory-supported-file-and-compression-formats.md#json-format), [Formato Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [Formato ORC](data-factory-supported-file-and-compression-formats.md#orc-format) y [Formato Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) del artículo [Formatos de compresión de archivos admitidos por Azure Data Factory](data-factory-supported-file-and-compression-formats.md). <br><br> Si desea copiar los archivos tal cual entre los almacenes basados en archivos (copia binaria), omita la sección `format` en las definiciones de los conjuntos de datos de entrada y salida. |No |
-| **compression** | Especifique el tipo y el nivel de compresión de los datos. Los tipos admitidos son **GZip**, **Deflate**, **BZip2** y **ZipDeflate**. Niveles admitidos son **Optimal** y **Fastest**. Para más información, consulte el artículo sobre [Formatos de compresión de archivos admitidos por Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |No |
+| **folderPath** |Contenedor de toohello de ruta de acceso y la carpeta en el almacén de Data Lake. |Sí |
+| **fileName** |Nombre del archivo de hello en el almacén de Azure Data Lake. Hola **fileName** propiedad es opcional y distingue mayúsculas de minúsculas. <br/><br/>Si especifica **fileName**, actividad de hello (incluida la copia) funciona en archivos específicos de Hola.<br/><br/>Cuando **fileName** no se especifica, copia incluye todos los archivos en **folderPath** en el conjunto de datos de entrada de Hola.<br/><br/>Cuando **fileName** no se especifica para un conjunto de datos de salida y **preserveHierarchy** no se especifica en el receptor de actividad, nombre de Hola de archivo hello generado está en formato de hello datos. _GUID_.txt'. Por ejemplo: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. |No |
+| **partitionedBy** |Hola **partitionedBy** propiedad es opcional. Puede usarlo toospecify una ruta de acceso dinámico y el nombre de archivo de datos de serie temporal. Por ejemplo, se puede parametrizar **folderPath** por cada hora de datos. Para obtener más información y ejemplos, vea [Hola propiedad partitionedBy](#using-partitionedby-property). |No |
+| **format** | se admite los siguientes tipos de formato de Hello: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, y  **ParquetFormat**. Conjunto hello **tipo** propiedad bajo **formato** tooone de estos valores. Para obtener más información, vea hello [formato de texto](data-factory-supported-file-and-compression-formats.md#text-format), [formato JSON](data-factory-supported-file-and-compression-formats.md#json-format), [el formato Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [formato ORC](data-factory-supported-file-and-compression-formats.md#orc-format), y [Parquet formato ](data-factory-supported-file-and-compression-formats.md#parquet-format) secciones de hello [compresión de archivos y formatos admitidos por factoría de datos de Azure](data-factory-supported-file-and-compression-formats.md) artículo. <br><br> Si desea que los archivos de toocopy "como-es" entre los almacenes basados en archivos (copia binaria), omitir hello `format` sección en ambas definiciones de conjunto de datos de entrada y salida. |No |
+| **compression** | Especificar tipo de Hola y el nivel de compresión para datos de Hola. Los tipos admitidos son **GZip**, **Deflate**, **BZip2** y **ZipDeflate**. Niveles admitidos son **Optimal** y **Fastest**. Para más información, consulte el artículo sobre [Formatos de compresión de archivos admitidos por Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |No |
 
-### <a name="the-partitionedby-property"></a>La propiedad partitionedBy
-Puede especificar las propiedades dinámicas **folderPath** y **fileName** para los datos de series temporales con la propiedad **partitionedBy**, funciones de Data Factory y variables del sistema. Para más información, consulte el artículo [Azure Data Factory: funciones y variables del sistema](data-factory-functions-variables.md).
+### <a name="hello-partitionedby-property"></a>propiedad de Hello partitionedBy
+Puede especificar dinámica **folderPath** y **fileName** propiedades para los datos de serie temporal con hello **partitionedBy** propiedad, funciones de factoría de datos y sistema variables. Para obtener más información, vea hello [factoría de datos de Azure: funciones y variables del sistema](data-factory-functions-variables.md) artículo.
 
 
-En el ejemplo siguiente, `{Slice}` se reemplaza por el valor de la variable del sistema de Data Factory `SliceStart` en el formato especificado (`yyyyMMddHH`). El nombre `SliceStart` hace referencia a la hora de inicio del segmento. La propiedad `folderPath` es diferente para cada segmento, como en `wikidatagateway/wikisampledataout/2014100103` o `wikidatagateway/wikisampledataout/2014100104`.
+En el siguiente ejemplo, el Hola `{Slice}` se reemplaza con el valor de Hola de variable del sistema Hola factoría de datos `SliceStart` en formato de hello especificado (`yyyyMMddHH`). nombre de Hello `SliceStart` hace referencia toohello hora de inicio del segmento de Hola. Hola `folderPath` propiedad es diferente para cada segmento, como en `wikidatagateway/wikisampledataout/2014100103` o `wikidatagateway/wikisampledataout/2014100104`.
 
 ```JSON
 "folderPath": "wikidatagateway/wikisampledataout/{Slice}",
@@ -202,7 +202,7 @@ En el ejemplo siguiente, `{Slice}` se reemplaza por el valor de la variable del 
 ],
 ```
 
-En el ejemplo siguiente, el año, el mes, el día y la hora de `SliceStart` se extraen en variables independientes que usan las propiedades `folderPath` y `fileName`:
+Hola siguiente ejemplo, año hello, mes, día y hora de `SliceStart` se extraen en variables independientes que usan hello `folderPath` y `fileName` propiedades:
 ```JSON
 "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
 "fileName": "{Hour}.csv",
@@ -214,47 +214,47 @@ En el ejemplo siguiente, el año, el mes, el día y la hora de `SliceStart` se e
     { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } }
 ],
 ```
-Para más información sobre los conjuntos de datos, la programación y los segmentos de serie temporal, consulte [Conjuntos de datos en Azure Data Factory](data-factory-create-datasets.md) y [Programación y ejecución de Data Factory](data-factory-scheduling-and-execution.md). 
+Para obtener más detalles sobre los conjuntos de datos de series temporales, programación y segmentos, vea hello [conjuntos de datos de Data Factory de Azure](data-factory-create-datasets.md) y [programación de la factoría de datos y la ejecución](data-factory-scheduling-and-execution.md) artículos. 
 
 
 ## <a name="copy-activity-properties"></a>Propiedades de la actividad de copia
-Para ver una lista completa de las secciones y propiedades disponibles para definir actividades, consulte el artículo [Creación de canalizaciones](data-factory-create-pipelines.md). Las propiedades (como nombre, descripción, tablas de entrada y salida, y directivas) están disponibles para todos los tipos de actividades.
+Para obtener una lista completa de las secciones y las propiedades disponibles para la definición de actividades, vea hello [crear canalizaciones](data-factory-create-pipelines.md) artículo. Las propiedades (como nombre, descripción, tablas de entrada y salida, y directivas) están disponibles para todos los tipos de actividades.
 
-Las propiedades disponibles en la sección **typeProperties** de una actividad varían con cada tipo de actividad. En una actividad de copia, varían en función de los tipos de orígenes y receptores.
+Hola propiedades disponibles en hello **typeProperties** sección de una actividad varían con cada tipo de actividad. Para una actividad de copia, varían en función de los tipos de Hola de orígenes y receptores.
 
-**AzureDataLakeStoreSource** admite la siguiente propiedad en la sección **typeProperties**:
-
-| Propiedad | Descripción | Valores permitidos | Obligatorio |
-| --- | --- | --- | --- |
-| **recursive** |Indica si los datos se leen de forma recursiva de las subcarpetas o solo de la carpeta especificada. |True (valor predeterminado), False |No |
-
-
-**AzureDataLakeStoreSink** admite las siguientes propiedades en la sección **typeProperties**:
+**AzureDataLakeStoreSource** admite Hola después propiedad Hola **typeProperties** sección:
 
 | Propiedad | Descripción | Valores permitidos | Obligatorio |
 | --- | --- | --- | --- |
-| **copyBehavior** |Especifica el comportamiento de copia. |<b>PreserveHierarchy</b>: conserva la jerarquía de archivos en la carpeta de destino. La ruta de acceso relativa del archivo de origen que apunta a la carpeta de origen es idéntica a la ruta de acceso relativa del archivo de destino que apunta a la carpeta de destino.<br/><br/><b>FlattenHierarchy</b>: todos los archivos de la carpeta de origen se crean en el primer nivel de la carpeta de destino. Los archivos de destino se crean con nombres generados automáticamente.<br/><br/><b>MergeFiles</b>: combina todos los archivos de la carpeta de origen en un archivo. Si se especifica el nombre del blob o del archivo, el nombre de archivo combinado es el nombre especificado. En caso contrario, el nombre de archivo se genera automáticamente. |No |
+| **recursive** |Indica si los datos de Hola es de lectura de forma recursiva de las subcarpetas de Hola o solo de la carpeta especificada de Hola. |True (valor predeterminado), False |No |
+
+
+**AzureDataLakeStoreSink** admite Hola propiedades Hola siguientes **typeProperties** sección:
+
+| Propiedad | Descripción | Valores permitidos | Obligatorio |
+| --- | --- | --- | --- |
+| **copyBehavior** |Especifica el comportamiento de la copia de Hola. |<b>PreserveHierarchy</b>: conserva la jerarquía de archivos de hello en la carpeta de destino de Hola. ruta de acceso relativa de Hola de carpeta de origen del archivo toosource es idéntico toohello ruta de acceso relativa de la carpeta de tootarget de archivo de destino.<br/><br/><b>FlattenHierarchy</b>: todos los archivos de la carpeta de origen Hola se crean en el primer nivel de carpeta de destino de Hola de Hola. archivos de destino de Hola se crean con nombres generados automáticamente.<br/><br/><b>MergeFiles</b>: combina todos los archivos del archivo de tooone de carpeta de origen de hello. Si hello nombre de archivo o blob no se especifica, nombre de archivo combinado de hello es nombre especificado de Hola. En caso contrario, el nombre del archivo de hello es generado automáticamente. |No |
 
 ### <a name="recursive-and-copybehavior-examples"></a>Ejemplos de recursive y copyBehavior
-En esta sección se describe el comportamiento resultante de la operación de copia para diferentes combinaciones de valores recursive y copyBehavior.
+Esta sección describe el comportamiento resultante de Hola de operación de copia de Hola para diferentes combinaciones de valores recursiva y copyBehavior.
 
 | recursive | copyBehavior | Comportamiento resultante |
 | --- | --- | --- |
-| true |preserveHierarchy |Si la carpeta de origen Folder1 tiene esta estructura:  <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>la carpeta de destino Folder1 se crea con la misma estructura que la de origen<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. |
-| true |flattenHierarchy |Si la carpeta de origen Folder1 tiene esta estructura:  <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>la carpeta de destino Folder1 se crea con la estructura siguiente: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Nombre de archivo generado automáticamente para File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Nombre de archivo generado automáticamente para File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Nombre de archivo generado automáticamente para File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;Nombre de archivo generado automáticamente para File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;Nombre de archivo generado automáticamente para File5 |
-| true |mergeFiles |Si la carpeta de origen Folder1 tiene esta estructura:  <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>la carpeta de destino Folder1 se crea con la estructura siguiente: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;El contenido de File1 + File2 + File3 + File4 + File 5 se combina en un archivo con un nombre de archivo generado automáticamente |
-| false |preserveHierarchy |Si la carpeta de origen Folder1 tiene esta estructura:  <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>la carpeta de destino Folder1 se crea con la estructura siguiente<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/><br/><br/>No se selecciona la subcarpeta Subfolder1, que contiene los archivos File3, File4 y File5. |
-| false |flattenHierarchy |Si la carpeta de origen Folder1 tiene esta estructura: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>la carpeta de destino Folder1 se crea con la estructura siguiente<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Nombre de archivo generado automáticamente para File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Nombre de archivo generado automáticamente para File2<br/><br/><br/>No se selecciona la subcarpeta Subfolder1, que contiene los archivos File3, File4 y File5. |
-| false |mergeFiles |Si la carpeta de origen Folder1 tiene esta estructura: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>la carpeta de destino Folder1 se crea con la estructura siguiente<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;El contenido de File1 + File2 se combina en un archivo con un nombre de archivo generado automáticamente. Nombre de archivo generado automáticamente para File1<br/><br/>No se selecciona la subcarpeta Subfolder1, que contiene los archivos File3, File4 y File5. |
+| true |preserveHierarchy |Para una carpeta de origen carpeta1 con hello siguiente estructura: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;File5<br/><br/>se crea la carpeta de destino de Hello carpeta1 con hello misma estructura como origen de Hola<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;File5. |
+| true |flattenHierarchy |Para una carpeta de origen carpeta1 con hello siguiente estructura: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;File5<br/><br/>se crea el destino de Hola carpeta1 con hello siguiente estructura: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Nombre de archivo generado automáticamente para File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Nombre de archivo generado automáticamente para File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Nombre de archivo generado automáticamente para File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;Nombre de archivo generado automáticamente para File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;Nombre de archivo generado automáticamente para File5 |
+| true |mergeFiles |Para una carpeta de origen carpeta1 con hello siguiente estructura: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;File5<br/><br/>se crea el destino de Hola carpeta1 con hello siguiente estructura: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;El contenido de File1 + File2 + File3 + File4 + File 5 se combina en un archivo con un nombre de archivo generado automáticamente |
+| false |preserveHierarchy |Para una carpeta de origen carpeta1 con hello siguiente estructura: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;File5<br/><br/>se crea la carpeta de destino de Hello carpeta1 con hello siguiendo estructura<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/><br/><br/>No se selecciona la subcarpeta Subfolder1, que contiene los archivos File3, File4 y File5. |
+| false |flattenHierarchy |Para una carpeta de origen carpeta1 con hello siguiente estructura:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;File5<br/><br/>se crea la carpeta de destino de Hello carpeta1 con hello siguiendo estructura<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Nombre de archivo generado automáticamente para File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Nombre de archivo generado automáticamente para File2<br/><br/><br/>No se selecciona la subcarpeta Subfolder1, que contiene los archivos File3, File4 y File5. |
+| false |mergeFiles |Para una carpeta de origen carpeta1 con hello siguiente estructura:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;File5<br/><br/>se crea la carpeta de destino de Hello carpeta1 con hello siguiendo estructura<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;El contenido de File1 + File2 se combina en un archivo con un nombre de archivo generado automáticamente. Nombre de archivo generado automáticamente para File1<br/><br/>No se selecciona la subcarpeta Subfolder1, que contiene los archivos File3, File4 y File5. |
 
 ## <a name="supported-file-and-compression-formats"></a>Formatos de archivo y de compresión admitidos
-Para más información, consulte el artículo [Formatos de compresión de archivos admitidos por Azure Data Factory](data-factory-supported-file-and-compression-formats.md).
+Para obtener más información, vea hello [compresión de archivos y formatos de factoría de datos de Azure](data-factory-supported-file-and-compression-formats.md) artículo.
 
-## <a name="json-examples-for-copying-data-to-and-from-data-lake-store"></a>Ejemplos de JSON para copiar datos hacia y desde Data Lake Store
-En los ejemplos siguientes se proporcionan definiciones de JSON de ejemplo. Puede usar estas definiciones de ejemplo para crear una canalización mediante [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) o [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). En los ejemplos se muestra cómo copiar datos entre Azure Data Lake Store y Azure Blob Storage. En cambio, los datos pueden copiarse _directamente_ desde cualquiera de los orígenes a cualquiera de los receptores admitidos. Para más información, consulte la sección "Almacenes de datos y formatos que se admiten" del artículo [Movimiento de datos con la actividad de copia](data-factory-data-movement-activities.md).  
+## <a name="json-examples-for-copying-data-tooand-from-data-lake-store"></a>Ejemplos JSON para copiar datos tooand de almacén de Data Lake
+Hello en los ejemplos siguientes proporciona definiciones de JSON de ejemplo. Puede usar estos toocreate de definiciones de ejemplo una canalización mediante hello [portal de Azure](data-factory-copy-activity-tutorial-using-azure-portal.md), [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), o [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Hola ejemplos se muestra cómo toocopy tooand de datos desde el almacenamiento de blobs de Azure y de almacén de Data Lake. Sin embargo, se pueden copiar datos _directamente_ desde cualquiera de hello orígenes tooany de receptores de hello compatible. Para obtener más información, consulte sección de Hola "almacenes de datos admitidos y formatos" Hola [mover datos mediante la actividad de copia](data-factory-data-movement-activities.md) artículo.  
 
-### <a name="example-copy-data-from-azure-blob-storage-to-azure-data-lake-store"></a>Ejemplo: copia de datos desde Azure Blob Storage hacia Azure Data Lake Store
-El código de ejemplo de esta sección muestra:
+### <a name="example-copy-data-from-azure-blob-storage-tooazure-data-lake-store"></a>Ejemplo: Copiar los datos de almacenamiento de blobs de Azure tooAzure almacén de Data Lake
+Muestra el código de ejemplo de Hola en esta sección:
 
 * Un servicio vinculado de tipo [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)
 * Un servicio vinculado de tipo [AzureDataLakeStore](#linked-service-properties).
@@ -262,7 +262,7 @@ El código de ejemplo de esta sección muestra:
 * Un [conjunto de datos](data-factory-create-datasets.md) de salida de tipo [AzureDataLakeStore](#dataset-properties).
 * Una [canalización](data-factory-create-pipelines.md) con una actividad de copia que usa [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) y [AzureDataLakeStoreSink](#copy-activity-properties).
 
-En los ejemplos se muestra cómo los datos de serie temporal de Azure Blob Storage se copian en Data Lake Store cada hora. 
+Hello ejemplos muestran cómo series temporales datos desde almacenamiento de blobs de Azure están copiar tooData Lake almacén cada hora. 
 
 **Servicio vinculado de Almacenamiento de Azure**
 
@@ -298,12 +298,12 @@ En los ejemplos se muestra cómo los datos de serie temporal de Azure Blob Stora
 ```
 
 > [!NOTE]
-> Para información sobre los detalles de configuración, consulte la sección [Propiedades del servicio vinculado](#linked-service-properties).
+> Para obtener detalles de configuración, vea hello [vinculado propiedades del servicio](#linked-service-properties) sección.
 >
 
 **Conjunto de datos de entrada de blob de Azure:**
 
-En el siguiente ejemplo, los datos se seleccionan de un nuevo blob cada hora (`"frequency": "Hour", "interval": 1`). La ruta de acceso de la carpeta y el nombre de archivo para el blob se evalúan dinámicamente según la hora de inicio del segmento que se está procesando. La ruta de acceso a la carpeta usa la parte de año, mes y día de la hora de inicio. El nombre de archivo usa la parte de hora de la hora de inicio. El valor `"external": true` informa al servicio Data Factory de que la tabla es externa a la factoría de datos y no la produce ninguna actividad de dicha factoría.
+En el siguiente ejemplo de Hola, datos recoge de un blob nuevo cada hora (`"frequency": "Hour", "interval": 1`). Hola ruta de acceso y nombre de la carpeta para el blob de Hola se evalúan dinámicamente en función del tiempo de inicio de Hola de sector de Hola que se está procesando. ruta de acceso de carpeta de Hello usa Hola año, mes y parte de día de la hora de inicio de Hola. nombre de archivo de Hello usa hora Hola parte del programa Hola a la hora de inicio. Hola `"external": true` configuración indica el servicio de factoría de datos de hello esa tabla hello es factoría de datos de toohello externos y no se crea una actividad de factoría de datos de Hola.
 
 ```JSON
 {
@@ -366,7 +366,7 @@ En el siguiente ejemplo, los datos se seleccionan de un nuevo blob cada hora (`"
 
 **Conjunto de datos de salida de Azure Data Lake Store**
 
-En el siguiente ejemplo se copian los datos en Data Lake Store. Los nuevos datos se copian en Data Lake Store cada hora.
+Hola siguiente ejemplo copia datos tooData Lake almacén. Se copian los datos nuevos tooData Lake almacén cada hora.
 
 ```JSON
 {
@@ -388,7 +388,7 @@ En el siguiente ejemplo se copian los datos en Data Lake Store. Los nuevos datos
 
 **Actividad de copia en una canalización con un origen de blob y el receptor de Azure Data Lake Store**
 
-En el ejemplo siguiente, la canalización contiene una actividad de copia que está configurada para usar los conjuntos de datos de entrada y de salida. La actividad de copia está programada para ejecutarse cada hora. En la definición de JSON de la canalización, el tipo `source` está establecido en `BlobSource` y el tipo `sink` está establecido en `AzureDataLakeStoreSink`.
+En el siguiente ejemplo de Hola, canalización de hello contiene una actividad de copia que se configura toouse Hola conjuntos de datos de entrada y salida. actividad de copia de Hello es toorun programada cada hora. En la definición de JSON de canalización de hello, Hola `source` tipo está establecido demasiado`BlobSource`, hello y `sink` tipo está establecido demasiado`AzureDataLakeStoreSink`.
 
 ```json
 {  
@@ -438,8 +438,8 @@ En el ejemplo siguiente, la canalización contiene una actividad de copia que es
 }
 ```
 
-### <a name="example-copy-data-from-azure-data-lake-store-to-an-azure-blob"></a>Ejemplo: copia de datos desde Azure Data Lake Store hacia un blob de Azure
-El código de ejemplo de esta sección muestra:
+### <a name="example-copy-data-from-azure-data-lake-store-tooan-azure-blob"></a>Ejemplo: Copiar los datos de almacén de Azure Data Lake tooan blobs de Azure
+Muestra el código de ejemplo de Hola en esta sección:
 
 * Un servicio vinculado de tipo [AzureDataLakeStore](#linked-service-properties).
 * Un servicio vinculado de tipo [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)
@@ -447,7 +447,7 @@ El código de ejemplo de esta sección muestra:
 * Un [conjunto de datos](data-factory-create-datasets.md) de salida de tipo [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
 * Una [canalización](data-factory-create-pipelines.md) con una actividad de copia que usa [AzureDataLakeStoreSource](#copy-activity-properties) y [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-El código copia los datos de series temporales desde Data Lake Store hacia un blob de Azure cada hora. 
+código de Hello copia datos de serie temporal de almacén de Data Lake tooan blobs de Azure cada hora. 
 
 **Servicio vinculado de Azure Data Lake Store**
 
@@ -467,7 +467,7 @@ El código copia los datos de series temporales desde Data Lake Store hacia un b
 ```
 
 > [!NOTE]
-> Para información sobre los detalles de configuración, consulte la sección [Propiedades del servicio vinculado](#linked-service-properties).
+> Para obtener detalles de configuración, vea hello [vinculado propiedades del servicio](#linked-service-properties) sección.
 >
 
 **Servicio vinculado de Almacenamiento de Azure**
@@ -485,7 +485,7 @@ El código copia los datos de series temporales desde Data Lake Store hacia un b
 ```
 **Conjunto de datos de entrada de Azure Data Lake**
 
-Si se establece `"external"` en `true`, se informa al servicio Data Factory de que la tabla es externa a la factoría de datos y no la produce ninguna actividad de dicha factoría.
+En este ejemplo, si se establece `"external"` demasiado`true` informa a servicio de factoría de datos de hello esa tabla hello es factoría de datos de toohello externo y no se crea una actividad de factoría de datos de Hola.
 
 ```json
 {
@@ -520,7 +520,7 @@ Si se establece `"external"` en `true`, se informa al servicio Data Factory de q
 ```
 **Conjunto de datos de salida de blob de Azure**
 
-En el ejemplo siguiente, los datos se escriben en un nuevo blob cada hora (`"frequency": "Hour", "interval": 1`). La ruta de acceso de la carpeta para el blob se evalúa dinámicamente según la hora de inicio del segmento que se está procesando. La ruta de acceso de la carpeta usa las partes year, month, day y hours de la hora de inicio.
+En el siguiente ejemplo de Hola, se escriben datos tooa nuevo blob cada hora (`"frequency": "Hour", "interval": 1`). ruta de acceso de carpeta de Hola para blob Hola se evalúa dinámicamente según el tiempo de inicio de Hola de sector de Hola que se está procesando. ruta de acceso de carpeta de Hello usa Hola año, mes, día y parte de horas de la hora de inicio de Hola.
 
 ```JSON
 {
@@ -580,7 +580,7 @@ En el ejemplo siguiente, los datos se escriben en un nuevo blob cada hora (`"fre
 
 **Una actividad de copia en una canalización con un origen de Azure Data Lake Store y un receptor de blob**
 
-En el ejemplo siguiente, la canalización contiene una actividad de copia que está configurada para usar los conjuntos de datos de entrada y de salida. La actividad de copia está programada para ejecutarse cada hora. En la definición de JSON de la canalización, el tipo `source` está establecido en `AzureDataLakeStoreSource` y el tipo `sink` está establecido en `BlobSink`.
+En el siguiente ejemplo de Hola, canalización de hello contiene una actividad de copia que se configura toouse Hola conjuntos de datos de entrada y salida. actividad de copia de Hello es toorun programada cada hora. En la definición de JSON de canalización de hello, Hola `source` tipo está establecido demasiado`AzureDataLakeStoreSource`, hello y `sink` tipo está establecido demasiado`BlobSink`.
 
 ```json
 {  
@@ -628,7 +628,7 @@ En el ejemplo siguiente, la canalización contiene una actividad de copia que es
 }
 ```
 
-En la definición de la actividad de copia, también puede asignar columnas del conjunto de datos de origen a columnas del conjunto de datos receptor. Para más información, consulte [Mapping dataset columns in Azure Data Factory](data-factory-map-columns.md) (Asignación de columnas de conjunto de datos de Azure Data Factory).
+En la definición de la actividad de copia de hello, también puede asignar columnas de hello toocolumns de conjunto de datos de origen en el conjunto de datos de hello receptor. Para obtener más información, consulte [Asignación de columnas de conjunto de datos de Azure Data Factory](data-factory-map-columns.md).
 
 ## <a name="performance-and-tuning"></a>Rendimiento y optimización
-Para conocer los factores que afectan al rendimiento de la actividad de copia y cómo optimizarla, consulte el artículo [Guía de optimización y rendimiento de la actividad de copia](data-factory-copy-activity-performance.md).
+toolearn acerca de los factores de Hola que afectan al rendimiento de la actividad de copia y cómo toooptimize, vea hello [actividad de copia Guía de rendimiento y optimización](data-factory-copy-activity-performance.md) artículo.

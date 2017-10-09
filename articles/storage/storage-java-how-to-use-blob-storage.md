@@ -1,6 +1,6 @@
 ---
-title: Uso de Azure Blob Storage (almacenamiento de objetos) en Java | Microsoft Docs
-description: Almacene datos no estructurados en la nube con Almacenamiento de blobs (objetos) de Azure.
+title: aaaHow toouse (almacenamiento de objetos) de almacenamiento de blobs de Azure en Java | Documentos de Microsoft
+description: Almacenar datos no estructurados en la nube de hello con almacenamiento de blobs de Azure (almacenamiento de objetos).
 services: storage
 documentationcenter: java
 author: mmacy
@@ -14,24 +14,24 @@ ms.devlang: java
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: marsma
-ms.openlocfilehash: b8a4eca600b458802a7a23851bb80ea4da2664ef
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6dd6efdf688161c32b9d73a65fa7f3a98f2fad74
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-blob-storage-from-java"></a>Uso del almacenamiento de blobs de Java
+# <a name="how-toouse-blob-storage-from-java"></a>¿Cómo toouse almacenamiento de blobs desde Java
 [!INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)]
 
 [!INCLUDE [storage-check-out-samples-java](../../includes/storage-check-out-samples-java.md)]
 
 ## <a name="overview"></a>Información general
-Almacenamiento de blobs de Azure es un servicio que almacena datos no estructurados en la nube como objetos o blobs. El Almacenamiento de blobs puede almacenar cualquier tipo de datos binarios o texto, como un documento, un archivo multimedia o un instalador de aplicación. El Almacenamiento de blobs a veces se conoce como "almacenamiento de objetos".
+Almacenamiento de blobs de Azure es un servicio que almacena los datos no estructurados en la nube de hello como objetos/blobs. El Almacenamiento de blobs puede almacenar cualquier tipo de datos binarios o texto, como un documento, un archivo multimedia o un instalador de aplicación. Almacenamiento de blobs también es un almacenamiento de objetos de tooas que se hace referencia.
 
-Este artículo le muestra cómo realizar algunas tareas comunes con Almacenamiento de blobs de Microsoft Azure. Los ejemplos están escritos en Java y utilizan el [SDK de Azure Storage para Java][Azure Storage SDK for Java]. Entre los escenarios descritos se incluyen **cargar**, **enumerar**, **descargar**, y **eliminar** blobs. Para obtener más información sobre los blobs, consulte la sección [Pasos siguientes](#Next-Steps) .
+En este artículo le mostrará cómo tooperform escenarios comunes con Hola almacenamiento de blobs de Microsoft Azure. ejemplos de Hello están escritos en Java y usar hello [almacenamiento de Azure SDK para Java][Azure Storage SDK for Java]. Hello escenarios descritos se incluyen **cargar**, **enumerar**, **descargar**, y **eliminar** blobs. Para obtener más información sobre los blobs, vea hello [pasos](#Next-Steps) sección.
 
 > [!NOTE]
-> hay un SDK disponible para los desarrolladores que usen el almacenamiento de Azure en dispositivos Android. Para obtener más información, vea el [SDK de Azure Storage para Android][Azure Storage SDK for Android].
+> hay un SDK disponible para los desarrolladores que usen el almacenamiento de Azure en dispositivos Android. Para obtener más información, vea hello [SDK de almacenamiento de Azure para Android][Azure Storage SDK for Android].
 >
 >
 
@@ -42,29 +42,29 @@ Este artículo le muestra cómo realizar algunas tareas comunes con Almacenamien
 ## <a name="create-a-java-application"></a>Creación de una aplicación Java
 En este artículo usará funciones del almacenamiento que puede ejecutar en una aplicación Java localmente, o bien mediante código a través de un rol web o de un rol de trabajo de Azure.
 
-Para ello, deberá instalar el Kit de desarrollo de Java (JDK) y crear una cuenta de almacenamiento de Azure en su suscripción de Azure. Después, deberá verificar que su sistema de desarrollo satisface los requisitos mínimos y las dependencias que se indican en el repositorio del [SDK de Azure Storage para Java][Azure Storage SDK for Java] en GitHub. Si su sistema cumple esos requisitos, puede seguir las instrucciones para descargar e instalar las bibliotecas de almacenamiento de Azure para Java en su sistema desde ese repositorio. Cuando haya completado esas tareas, podrá crear una aplicación Java que use los ejemplos de este artículo.
+toodo por lo tanto, necesitará tooinstall Hola Java Development Kit (JDK) y crear una cuenta de almacenamiento de Azure en su suscripción de Azure. Una vez que lo ha hecho, necesitará tooverify que el sistema de desarrollo cumple los requisitos mínimos de Hola y dependencias que se enumeran en hello [almacenamiento de Azure SDK para Java] [ Azure Storage SDK for Java] repositorio en GitHub. Si su sistema cumple estos requisitos, puede seguir las instrucciones de Hola para descargar e instalar Hola bibliotecas de almacenamiento de Azure para Java en el sistema de ese repositorio. Una vez haya completado estas tareas, será capaz de toocreate una aplicación Java que utiliza los ejemplos de hello en este artículo.
 
-## <a name="configure-your-application-to-access-blob-storage"></a>Configuración de su aplicación para obtener acceso al almacenamiento de blobs
-Agregue las siguientes instrucciones de importación al principio del archivo Java en el que desea usar las API de Almacenamiento de Azure para obtener acceso a los blobs.
+## <a name="configure-your-application-tooaccess-blob-storage"></a>Configurar el almacenamiento de blobs de aplicación tooaccess
+Agregar Hola después de la parte superior de toohello de instrucciones de importación del archivo de Java de hello en el que desea toouse hello las API de almacenamiento de Azure tooaccess blobs.
 
 ```java
-// Include the following imports to use blob APIs.
+// Include hello following imports toouse blob APIs.
 import com.microsoft.azure.storage.*;
 import com.microsoft.azure.storage.blob.*;
 ```
 
 ## <a name="set-up-an-azure-storage-connection-string"></a>Configuración de una cadena de conexión de Almacenamiento de Azure
-Un cliente de Almacenamiento de Azure usa una cadena de conexión de almacenamiento para almacenar extremos y credenciales con el fin de obtener acceso a los servicios de administración de datos. Al ejecutarse en una aplicación cliente, debe proporcionar la cadena de conexión de almacenamiento en el siguiente formato, usando el nombre de su cuenta de almacenamiento y la clave de acceso principal de la cuenta de almacenamiento que se muestra en [Azure Portal](https://portal.azure.com) para los valores *AccountName* y *AccountKey*. En el ejemplo a continuación se muestra cómo puede declarar un campo estático para mantener la cadena de conexión:
+Un cliente de almacenamiento de Azure usa un extremos de toostore de cadena de conexión de almacenamiento y las credenciales para tener acceso a los servicios de administración de datos. Cuando se ejecuta en una aplicación cliente, debe proporcionar la cadena de conexión de almacenamiento de Hola Hola siguiendo el formato, con nombre de hello de la cuenta de almacenamiento y Hola clave de acceso principal para cuenta de almacenamiento Hola Hola [portal de Azure](https://portal.azure.com)para hello *AccountName* y *AccountKey* valores. Hello en el ejemplo siguiente se muestra cómo se puede declarar una cadena de conexión de campo estático toohold Hola.
 
 ```java
-// Define the connection-string with your values
+// Define hello connection-string with your values
 public static final String storageConnectionString =
     "DefaultEndpointsProtocol=http;" +
     "AccountName=your_storage_account;" +
     "AccountKey=your_storage_account_key";
 ```
 
-En una aplicación que se esté ejecutando en un rol de Microsoft Azure, esta cadena se puede almacenar en el archivo de configuración de servicio, *ServiceConfiguration.cscfg*, y se puede obtener acceso a él con una llamada al método **RoleEnvironment.getConfigurationSettings** . A continuación, se muestra un ejemplo de cómo obtener la cadena de conexión desde un elemento de **configuración** denominado *StorageConnectionString* en el archivo de configuración de servicio.
+En una aplicación en ejecución dentro de un rol en Microsoft Azure, esta cadena puede almacenarse en el archivo de configuración del servicio de hello *ServiceConfiguration.cscfg*y puede tener acceso mediante una llamada a toohello  **RoleEnvironment.getConfigurationSettings** método. Hello en el ejemplo siguiente se obtiene la cadena de conexión Hola un **configuración** elemento denominado *StorageConnectionString* en el archivo de configuración de servicio de Hola.
 
 ```java
 // Retrieve storage account from connection-string.
@@ -72,19 +72,19 @@ String storageConnectionString =
     RoleEnvironment.getConfigurationSettings().get("StorageConnectionString");
 ```
 
-En los ejemplos siguientes se supone que usó uno de estos dos métodos para obtener la cadena de conexión de almacenamiento.
+Hello en los ejemplos siguientes se supone que ha usado uno de estos cadena de conexión de almacenamiento de dos métodos tooget Hola.
 
 ## <a name="create-a-container"></a>Crear un contenedor
-Los objetos **CloudBlobClient** le permiten obtener objetos de referencia para los contenedores y los blobs. El siguiente código crea un objeto **CloudBlobClient** .
+Los objetos **CloudBlobClient** le permiten obtener objetos de referencia para los contenedores y los blobs. Hello código siguiente se crea un **CloudBlobClient** objeto.
 
 > [!NOTE]
-> Existen otras maneras de crear objetos **CloudStorageAccount**. Para más información, consulte **CloudStorageAccount** en la [Referencia del SDK del cliente de Azure Storage].
+> Hay otras formas toocreate **CloudStorageAccount** objetos; para obtener más información, vea **CloudStorageAccount** en hello [referencia de SDK de cliente de almacenamiento de Azure].
 >
 >
 
 [!INCLUDE [storage-container-naming-rules-include](../../includes/storage-container-naming-rules-include.md)]
 
-Utilice el objeto **CloudBlobClient** para obtener una referencia al contenedor que desea utilizar. Puede crear el contenedor si no existe con el método **createIfNotExists** , que devolverá el contenedor existente. De manera predeterminada, el nuevo contenedor es privado, por lo que tiene que especificar su clave de acceso de almacenamiento (como hizo anteriormente) para descargar blobs de él.
+Hola de uso **CloudBlobClient** tooget un contenedor de toohello de referencia que desee toouse del objeto. Puede crear el contenedor de hello si no existe con hello **createIfNotExists** método, que en caso contrario, devolverá el contenedor existente Hola. De forma predeterminada, nuevo contenedor de hello es privado, por lo que debe especificar la clave de acceso de almacenamiento (como hizo anteriormente) blobs toodownload de este contenedor.
 
 ```java
 try
@@ -92,39 +92,39 @@ try
     // Retrieve storage account from connection-string.
     CloudStorageAccount storageAccount = CloudStorageAccount.parse(storageConnectionString);
 
-    // Create the blob client.
+    // Create hello blob client.
     CloudBlobClient blobClient = storageAccount.createCloudBlobClient();
 
-    // Get a reference to a container.
-    // The container name must be lower case
+    // Get a reference tooa container.
+    // hello container name must be lower case
     CloudBlobContainer container = blobClient.getContainerReference("mycontainer");
 
-    // Create the container if it does not exist.
+    // Create hello container if it does not exist.
     container.createIfNotExists();
 }
 catch (Exception e)
 {
-    // Output the stack trace.
+    // Output hello stack trace.
     e.printStackTrace();
 }
 ```
 
 ### <a name="optional-configure-a-container-for-public-access"></a>Opcional: configure un contenedor para acceso público.
-Los permisos de un contenedor están configurados para acceso privado de forma predeterminada, pero puede configurarlos fácilmente para permitir acceso público de solo lectura a todos los usuarios de Internet:
+Permisos del contenedor están configurados para el acceso privado de forma predeterminada, pero puede configurar con facilidad permisos tooallow público, de solo lectura acceso de un contenedor para todos los usuarios en hello Internet:
 
 ```java
 // Create a permissions object.
 BlobContainerPermissions containerPermissions = new BlobContainerPermissions();
 
-// Include public access in the permissions object.
+// Include public access in hello permissions object.
 containerPermissions.setPublicAccess(BlobContainerPublicAccessType.CONTAINER);
 
-// Set the permissions on the container.
+// Set hello permissions on hello container.
 container.uploadPermissions(containerPermissions);
 ```
 
 ## <a name="upload-a-blob-into-a-container"></a>Cargar un blob en un contenedor
-Para cargar un archivo en un blob, obtenga una referencia de contenedor y utilícela para obtener una referencia de blob. Una vez tenga una referencia de blob, puede cargar cualquier flujo mediante una llamada de carga en la referencia del blob. De este modo, se creará el blob si no existe, o bien se sobrescribirá si ya existe. El siguiente ejemplo de código muestra esto y presupone que ya se ha creado el contenedor.
+tooupload un blob de tooa de archivo, obtener una referencia de contenedor y usarlo tooget una referencia de blob. Una vez que tenga una referencia de blob, puede cargar cualquier flujo mediante una llamada a cargar en la referencia de blob de Hola. Esta operación creará blob Hola si no existe, o sobrescribir si existe. Hola siguiendo el ejemplo de código muestra cómo hacerlo y supone que el contenedor de hello ya se ha creado.
 
 ```java
 try
@@ -132,29 +132,29 @@ try
     // Retrieve storage account from connection-string.
     CloudStorageAccount storageAccount = CloudStorageAccount.parse(storageConnectionString);
 
-    // Create the blob client.
+    // Create hello blob client.
     CloudBlobClient blobClient = storageAccount.createCloudBlobClient();
 
-    // Retrieve reference to a previously created container.
+    // Retrieve reference tooa previously created container.
     CloudBlobContainer container = blobClient.getContainerReference("mycontainer");
 
-    // Define the path to a local file.
+    // Define hello path tooa local file.
     final String filePath = "C:\\myimages\\myimage.jpg";
 
-    // Create or overwrite the "myimage.jpg" blob with contents from a local file.
+    // Create or overwrite hello "myimage.jpg" blob with contents from a local file.
     CloudBlockBlob blob = container.getBlockBlobReference("myimage.jpg");
     File source = new File(filePath);
     blob.upload(new FileInputStream(source), source.length());
 }
 catch (Exception e)
 {
-    // Output the stack trace.
+    // Output hello stack trace.
     e.printStackTrace();
 }
 ```
 
-## <a name="list-the-blobs-in-a-container"></a>Enumerar los blobs de un contenedor
-Para enumerar los blobs de un contenedor, obtenga primero una referencia del contenedor del mismo modo que al cargar un blob. Puede usar el método **listBlobs** del contenedor con un bucle **for**. El código siguiente ofrece el Uri de todos los blobs de un contenedor a la consola.
+## <a name="list-hello-blobs-in-a-container"></a>Lista de blobs de hello en un contenedor
+blobs de hello toolist en un contenedor, obtenga primero una referencia de contenedor como hizo tooupload un blob. Puede usar del contenedor de hello **listBlobs** método con un **para** bucle. Hello código siguiente genera Hola Uri de cada blob en una consola de toohello de contenedor.
 
 ```java
 try
@@ -162,32 +162,32 @@ try
     // Retrieve storage account from connection-string.
     CloudStorageAccount storageAccount = CloudStorageAccount.parse(storageConnectionString);
 
-    // Create the blob client.
+    // Create hello blob client.
     CloudBlobClient blobClient = storageAccount.createCloudBlobClient();
 
-    // Retrieve reference to a previously created container.
+    // Retrieve reference tooa previously created container.
     CloudBlobContainer container = blobClient.getContainerReference("mycontainer");
 
-    // Loop over blobs within the container and output the URI to each of them.
+    // Loop over blobs within hello container and output hello URI tooeach of them.
     for (ListBlobItem blobItem : container.listBlobs()) {
         System.out.println(blobItem.getUri());
     }
 }
 catch (Exception e)
 {
-    // Output the stack trace.
+    // Output hello stack trace.
     e.printStackTrace();
 }
 ```
 
-Puede asignar nombre a los blobs incluyendo información de ruta de acceso. De este modo crea una estructura de directorios virtuales que puede organizar y recorrer tal como lo haría en un sistema de archivos tradicional. Tenga en cuenta que la estructura de directorios es solo virtual: los únicos recursos disponibles en el almacenamiento de blobs son contenedores y blobs. Sin embargo, la biblioteca de clientes ofrece un objeto **CloudBlobDirectory** para hacer referencia a un directorio virtual y simplificar el proceso de trabajo con blobs organizados de este modo.
+Puede asignar nombre a los blobs incluyendo información de ruta de acceso. De este modo crea una estructura de directorios virtuales que puede organizar y recorrer tal como lo haría en un sistema de archivos tradicional. Tenga en cuenta que solo es virtual estructura de directorios de hello, hello únicamente los recursos disponibles en el almacenamiento de blobs son contenedores y blobs. Sin embargo, la biblioteca de cliente hello ofrece un **CloudBlobDirectory** objeto de directorio virtual de toorefer tooa y simplificar el proceso Hola de trabajar con los blobs que se organizan de esta manera.
 
-Por ejemplo, puede disponer de un contenedor con el nombre "photos", en el que puede cargar blobs con los nombres "rootphoto1", "2010/photo1", "2010/photo2" y "2011/photo1". De esta forma, se crean los directorios virtuales "2010" y "2011" dentro del contenedor "photos". Al llamar a **listBlobs** en el contenedor "photos", la recopilación devuelta contendrá objetos **CloudBlobDirectory** y **CloudBlob** que representan los directorios y los blobs que existen en el nivel superior. En este caso, se devolverán los directorios "2010" y "2011" y la foto "rootphoto1". Puede utilizar el operador **instanceof** para distinguir estos objetos.
+Por ejemplo, puede disponer de un contenedor con el nombre "photos", en el que puede cargar blobs con los nombres "rootphoto1", "2010/photo1", "2010/photo2" y "2011/photo1". Esto crearía Hola directorios virtuales "2010" y "2011" en el contenedor de "fotos" Hola. Cuando se llama a **listBlobs** en el contenedor de "fotos" Hola, colección Hola devuelta contendrá **CloudBlobDirectory** y **CloudBlob** objetos que representan Hola los directorios y blobs incluidos en el nivel superior de Hola. En este caso, se devolverán los directorios "2010" y "2011" y la foto "rootphoto1". Puede usar hello **instanceof** operador toodistinguish estos objetos.
 
-Opcionalmente, puede pasar parámetros al método **listBlobs** con el parámetro **useFlatBlobListing** establecido en "true". De este modo, se devuelven todos los blobs con independencia del directorio. Para obtener más información, consulte **CloudBlobContainer.listBlobs** en la [Referencia del SDK del cliente de Azure Storage].
+Si lo desea, puede pasar parámetros toohello **listBlobs** método con hello **useFlatBlobListing** parámetro establece tootrue. De este modo, se devuelven todos los blobs con independencia del directorio. Para obtener más información, consulte **CloudBlobContainer.listBlobs** en hello [referencia de SDK de cliente de almacenamiento de Azure].
 
 ## <a name="download-a-blob"></a>Descarga de un blob
-Para descargar blobs, siga los mismos pasos que realizó para cargar un blob con el fin de obtener una referencia de blob. En el ejemplo de carga, llamó a la función upload en el objeto del blob. En el siguiente ejemplo, llame a la función download para transferir los contenidos del blob a un objeto de secuencia como un **FileOutputStream** que puede utilizar para conservar el blob en un archivo local.
+los blobs toodownload, siga Hola mismo pasos tal y como lo hizo para cargar un blob en orden tooget una referencia de blob. En cargar ejemplo Hola se llamó carga en el objeto de blob de Hola. En el siguiente ejemplo de Hola, llame al objeto de flujo de descarga tootransfer Hola blob contenido tooa como un **clase FileOutputStream** que puede usar el archivo local de toopersist hello blob tooa.
 
 ```java
 try
@@ -195,17 +195,17 @@ try
     // Retrieve storage account from connection-string.
     CloudStorageAccount storageAccount = CloudStorageAccount.parse(storageConnectionString);
 
-    // Create the blob client.
+    // Create hello blob client.
     CloudBlobClient blobClient = storageAccount.createCloudBlobClient();
 
-    // Retrieve reference to a previously created container.
+    // Retrieve reference tooa previously created container.
     CloudBlobContainer container = blobClient.getContainerReference("mycontainer");
 
-    // Loop through each blob item in the container.
+    // Loop through each blob item in hello container.
     for (ListBlobItem blobItem : container.listBlobs()) {
-        // If the item is a blob, not a virtual directory.
+        // If hello item is a blob, not a virtual directory.
         if (blobItem instanceof CloudBlob) {
-            // Download the item and save it to a file with the same name.
+            // Download hello item and save it tooa file with hello same name.
             CloudBlob blob = (CloudBlob) blobItem;
             blob.download(new FileOutputStream("C:\\mydownloads\\" + blob.getName()));
         }
@@ -213,13 +213,13 @@ try
 }
 catch (Exception e)
 {
-    // Output the stack trace.
+    // Output hello stack trace.
     e.printStackTrace();
 }
 ```
 
 ## <a name="delete-a-blob"></a>Eliminar un blob
-Para eliminar un blob, obtenga una referencia del blob y llame a la función **deleteIfExists**.
+toodelete un blob, obtener un blob de referencia y llame a **deleteIfExists**.
 
 ```java
 try
@@ -227,27 +227,27 @@ try
     // Retrieve storage account from connection-string.
     CloudStorageAccount storageAccount = CloudStorageAccount.parse(storageConnectionString);
 
-    // Create the blob client.
+    // Create hello blob client.
     CloudBlobClient blobClient = storageAccount.createCloudBlobClient();
 
-    // Retrieve reference to a previously created container.
+    // Retrieve reference tooa previously created container.
     CloudBlobContainer container = blobClient.getContainerReference("mycontainer");
 
-    // Retrieve reference to a blob named "myimage.jpg".
+    // Retrieve reference tooa blob named "myimage.jpg".
     CloudBlockBlob blob = container.getBlockBlobReference("myimage.jpg");
 
-    // Delete the blob.
+    // Delete hello blob.
     blob.deleteIfExists();
 }
 catch (Exception e)
 {
-    // Output the stack trace.
+    // Output hello stack trace.
     e.printStackTrace();
 }
 ```
 
 ## <a name="delete-a-blob-container"></a>un contenedor de blobs
-Por último, para eliminar un contenedor de blobs, obtenga una referencia al contenedor de blobs y llame a la función **deleteIfExists**.
+Por último, toodelete un contenedor de blobs, obtener un blob de referencia de contenedor y llame a **deleteIfExists**.
 
 ```java
 try
@@ -255,35 +255,35 @@ try
     // Retrieve storage account from connection-string.
     CloudStorageAccount storageAccount = CloudStorageAccount.parse(storageConnectionString);
 
-    // Create the blob client.
+    // Create hello blob client.
     CloudBlobClient blobClient = storageAccount.createCloudBlobClient();
 
-    // Retrieve reference to a previously created container.
+    // Retrieve reference tooa previously created container.
     CloudBlobContainer container = blobClient.getContainerReference("mycontainer");
 
-    // Delete the blob container.
+    // Delete hello blob container.
     container.deleteIfExists();
 }
 catch (Exception e)
 {
-    // Output the stack trace.
+    // Output hello stack trace.
     e.printStackTrace();
 }
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-Ahora que está familiarizado con los aspectos básicos del almacenamiento de blobs, use estos vínculos para obtener más información acerca de tareas de almacenamiento más complejas.
+Ahora que ha aprendido conceptos básicos de Hola de almacenamiento de blobs, siga estas toolearn vínculos acerca de las tareas más complejas de almacenamiento.
 
 * [SDK de Azure Storage para Java][Azure Storage SDK for Java]
-* [Referencia del SDK del cliente de Azure Storage][Referencia del SDK del cliente de Azure Storage]
+* [referencia de SDK de cliente de almacenamiento de Azure][referencia de SDK de cliente de almacenamiento de Azure]
 * [API de REST de Azure Storage][Azure Storage REST API]
 * [Blog del equipo de Azure Storage][Azure Storage Team Blog]
 
-Para más información, consulte también el [Centro de desarrolladores de Java](/develop/java/).
+Para obtener más información, vea también hello [Centro para desarrolladores de Java](/develop/java/).
 
 [Azure SDK for Java]: http://go.microsoft.com/fwlink/?LinkID=525671
 [Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
 [Azure Storage SDK for Android]: https://github.com/azure/azure-storage-android
-[Referencia del SDK del cliente de Azure Storage]: http://dl.windowsazure.com/storage/javadoc/
+[referencia de SDK de cliente de almacenamiento de Azure]: http://dl.windowsazure.com/storage/javadoc/
 [Azure Storage REST API]: https://msdn.microsoft.com/library/azure/dd179355.aspx
 [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/

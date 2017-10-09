@@ -1,6 +1,6 @@
 ---
-title: "Creación de modelos de análisis de texto en Azure Machine Learning Studio | Microsoft Docs"
-description: "Cómo crear modelos de análisis de texto en Azure Machine Learning Studio mediante módulos de preprocesamiento de texto, n-gramas o hash de características"
+title: "modelos de análisis de texto aaaCreate en estudio de aprendizaje automático de Azure | Documentos de Microsoft"
+description: "Cómo los modelos de análisis de texto toocreate de estudio de aprendizaje automático de Azure mediante módulos de preprocesamiento de texto, N gramos o hash de características"
 services: machine-learning
 documentationcenter: 
 author: rastala
@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: roastala
-ms.openlocfilehash: 342e81e2497d292ca730bea59e03182d316ffec3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e3799f37ba54bb2ec8815ecf5ed34e145ffb20e9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-text-analytics-models-in-azure-machine-learning-studio"></a>Creación de modelos de análisis de texto en Azure Machine Learning Studio
-Puede usar Azure Machine Learning para generar y aplicar modelos de análisis de texto. Estos modelos pueden ayudarle a resolver, por ejemplo, problemas de clasificación de documentos o de análisis de opinión.
+Puede usar toobuild de aprendizaje automático de Azure y hacer operativos los modelos de análisis de texto. Estos modelos pueden ayudarle a resolver, por ejemplo, problemas de clasificación de documentos o de análisis de opinión.
 
 En un experimento de análisis de texto, normalmente debería:
 
 1. Limpiar y preprocesar el conjunto de datos de texto
 2. Extraer vectores numéricos de características del texto preprocesado
 3. Entrenar un modelo de clasificación o regresión
-4. Puntuar y validar el modelo
-5. Implementar el modelo en producción
+4. Puntuación y validar el modelo de Hola
+5. Implementar Hola modelo tooproduction
 
-En este tutorial, aprenderá estos pasos a medida que se explique un modelo de análisis de opinión mediante el conjunto de datos de Amazon Book Reviews (consulte el trabajo de investigación, “Biographies, Bollywood, Boom-boxes and Blenders: Domain Adaptation for Sentiment Classification” ("Biografías, Bollywoood, equipos de sonido y licuadoras") de John Blitzer, Mark Dredze y Fernando Pereira; Asociación de Lingüística Informática (ACL), 2007. Este conjunto de datos consta de las puntuaciones de revisión (1-2 o 4-5) y un texto de forma libre. El objetivo es predecir la puntuación de revisión: baja (1 - 2) o alta (4-5).
+En este tutorial, aprenderá estos pasos a medida que se explique un modelo de análisis de opinión mediante el conjunto de datos de Amazon Book Reviews (consulte el trabajo de investigación, “Biographies, Bollywood, Boom-boxes and Blenders: Domain Adaptation for Sentiment Classification” ("Biografías, Bollywoood, equipos de sonido y licuadoras") de John Blitzer, Mark Dredze y Fernando Pereira; Asociación de Lingüística Informática (ACL), 2007. Este conjunto de datos consta de las puntuaciones de revisión (1-2 o 4-5) y un texto de forma libre. Hello objetivo es puntuación de revisión de Hola toopredict: baja (1 - 2) o high (4-5).
 
 Puede encontrar los experimentos descritos en este tutorial en la Galería de Cortana Intelligence:
 
@@ -40,49 +40,49 @@ Puede encontrar los experimentos descritos en este tutorial en la Galería de Co
 [Predict Book Reviews - Predictive Experiment](https://gallery.cortanaintelligence.com/Experiment/Predict-Book-Reviews-Predictive-Experiment-1)
 
 ## <a name="step-1-clean-and-preprocess-text-dataset"></a>Paso 1: Limpiar y preprocesar el conjunto de datos de texto
-El experimento comienza dividiendo las puntuaciones de revisión en depósitos con las categorías baja y alta para formular el problema como una clasificación de dos clases. Se utilizarán los módulos [Editar metadatos](https://msdn.microsoft.com/library/azure/dn905986.aspx) y [Agrupar valores categóricos](https://msdn.microsoft.com/library/azure/dn906014.aspx).
+Empezaremos Hola experimento dividiendo las puntuaciones de revisión de hello en categorías depósitos inferior y superior problema de hello tooformulate como clasificación de dos clases. Se utilizarán los módulos [Editar metadatos](https://msdn.microsoft.com/library/azure/dn905986.aspx) y [Agrupar valores categóricos](https://msdn.microsoft.com/library/azure/dn906014.aspx).
 
 ![Crear etiqueta](./media/machine-learning-text-analytics-module-tutorial/create-label.png)
 
-A continuación, se limpia el texto mediante el módulo de [preprocesamiento de texto](https://msdn.microsoft.com/library/azure/mt762915.aspx) . La limpieza reduce el ruido en el conjunto de datos, lo cual le ayuda a encontrar las características más importantes y a mejorar la precisión del modelo final. Se eliminan las palabras irrelevantes: palabras comunes como "el" o "un", y números, caracteres especiales, caracteres duplicados, direcciones de correo electrónico y direcciones URL. También se convierte el texto a minúsculas, se lematizan las palabras y se detectan los límites de las oraciones que después se indican mediante el símbolo "|||" en el texto preprocesado.
+A continuación, se limpia Hola texto mediante [texto de preprocesamiento](https://msdn.microsoft.com/library/azure/mt762915.aspx) módulo. limpieza de Hello reduce el ruido de hello en el conjunto de datos de hello, Hola a ayudan a encontrar Hola características más importantes y mejorar la precisión del modelo final de Hola. Se eliminan las palabras irrelevantes: palabras comunes como "el" o "un", y números, caracteres especiales, caracteres duplicados, direcciones de correo electrónico y direcciones URL. Se también convertir Hola texto toolowercase, lemmatize palabras hello y detectar los límites de oración, a continuación, se indican mediante "|" símbolo de texto preprocesada.
 
 ![preprocesamiento de texto](./media/machine-learning-text-analytics-module-tutorial/preprocess-text.png)
 
-¿Qué ocurre si desea utilizar una lista personalizada de palabras irrelevantes? Puede pasarla como entrada opcional. También puede usar expresiones regulares personalizadas de sintaxis de C# para reemplazar subcadenas y quitar palabras en partes del texto: sustantivos, verbos o adjetivos.
+¿Qué ocurre si desea toouse una lista de palabras irrelevantes personalizada? Puede pasarla como entrada opcional. También puede usar personalizado C# sintaxis de la expresión regular tooreplace subcadenas y quitar palabras por parte de la oración: sustantivos, verbos o adjetivos.
 
-Una vez completado el preprocesamiento, se dividen los datos en conjuntos de entrenamiento y de pruebas.
+Una vez completada la Hola preprocesamiento, se dividir los datos de hello en el entrenamiento y conjuntos de pruebas.
 
 ## <a name="step-2-extract-numeric-feature-vectors-from-pre-processed-text"></a>Paso 2: Extraer vectores numéricos de características del texto preprocesado
-Para crear un modelo de datos de texto, normalmente es necesario convertir texto de forma libre en vectores numéricos de características. En este ejemplo, se utilizará el módulo de [extracción de características de n-grama del texto](https://msdn.microsoft.com/library/azure/mt762916.aspx) para transformar los datos de texto a este formato. Este módulo toma una columna de palabras separadas por espacios en blanco y procesa un diccionario de palabras, o n-gramas de palabras, que aparecerán en el conjunto de datos. A continuación, cuenta cuántas veces aparece cada palabra, o n-grama, en cada registro y crea los vectores de características a partir de los recuentos. En este tutorial, se establece el tamaño de n-grama en 2, por lo que nuestros vectores de características incluirán palabras individuales o combinaciones de dos palabras correlativas.
+toobuild un modelo de datos de texto, normalmente tiene texto de forma libre de tooconvert en vectores de característica numéricos. En este ejemplo, utilizamos [extraer características de N-gramas de texto](https://msdn.microsoft.com/library/azure/mt762916.aspx) formato de toosuch de datos de texto de módulo tootransform Hola. Este módulo toma una columna de palabras separadas por espacios en blanco y procesa un diccionario de palabras, o n-gramas de palabras, que aparecerán en el conjunto de datos. A continuación, cuenta cuántas veces aparece cada palabra, o n-grama, en cada registro y crea los vectores de características a partir de los recuentos. En este tutorial, establecemos too2 de tamaño de n-gramas, por lo que nuestro vectores de característica incluyen palabras o combinaciones de dos o más palabras posteriores.
 
 ![Extraer n-gramas](./media/machine-learning-text-analytics-module-tutorial/extract-ngrams.png)
 
-Se aplica el factor de ponderación TF*IDF (Frecuencia de términos, Frecuencia inversa de documento) a los recuentos de n-gramas. Este método suma la ponderación de las palabras que aparecen frecuentemente en un único registro pero que son poco frecuentes en todo el conjunto de datos. Otras opciones incluyen la ponderación binaria, de TF y de gráfico.
+Se aplica TF * IDF (término frecuencia inversa documento frecuencia) ponderación tooN grama recuentos. Este método agrega el peso de palabras que aparecen frecuentemente en un único registro pero poco frecuentes a través de hello todo el conjunto de datos. Otras opciones incluyen la ponderación binaria, de TF y de gráfico.
 
-A menudo, estas características de texto tienen una alta dimensionalidad. Por ejemplo, si el conjunto tiene 100 000 palabras únicas, el espacio de características tendrá 100 000 dimensiones o incluso más si se usan n-gramas. El módulo de extracción de características de n-grama ofrece un conjunto de opciones para reducir la dimensionalidad. Puede elegir la exclusión de palabras que sean cortas o largas, o que sean demasiado raras o demasiado frecuentes para tener un valor predictivo significativo. En este tutorial, se excluyen los n-gramas que aparecen en menos de 5 registros o en más del 80 % de los registros.
+A menudo, estas características de texto tienen una alta dimensionalidad. Por ejemplo, si el conjunto tiene 100 000 palabras únicas, el espacio de características tendrá 100 000 dimensiones o incluso más si se usan n-gramas. módulo de extraer características de N-gramas Hola proporciona un conjunto de dimensionalidad de hello tooreduce de opciones. Puede elegir tooexclude palabras que son el valor de predicción significativo toohave corto o largo, o demasiado frecuente o demasiado frecuente. En este tutorial, se excluyen los n-gramas que aparecen en menos de 5 registros o en más del 80 % de los registros.
 
-Además, puede utilizar la selección de características para seleccionar solo las características más correlacionadas con el destino de la predicción. Se usa la selección de características chi cuadrado para seleccionar 1000 características. Puede ver el vocabulario de palabras o n-gramas seleccionadas haciendo clic en el resultado apropiado del módulo Extraer n-gramas.
+Además, puede utilizar la característica selección tooselect solo aquellas características que son más Hola correlacionadas con el destino de la predicción. Utilizamos tooselect 1000 características de selección de características chi cuadrado. Puede ver vocabulario Hola de palabras seleccionadas o N gramos haciendo clic en la salida de hello derecho del módulo de extracción N gramos.
 
-Como alternativa al uso del módulo de extracción de características de n-grama, puede usar el módulo de hash de características. Tenga en cuenta que el módulo de [hash de características](https://msdn.microsoft.com/library/azure/dn906018.aspx) no tiene funcionalidades de selección de características de compilación ni ponderación TF*IDF.
+Como un enfoque alternativo se toousing extraer características de N-gramas, puede usar el módulo hash de características. Tenga en cuenta que el módulo de [hash de características](https://msdn.microsoft.com/library/azure/dn906018.aspx) no tiene funcionalidades de selección de características de compilación ni ponderación TF*IDF.
 
 ## <a name="step-3-train-classification-or-regression-model"></a>Paso 3: Entrenar un modelo de clasificación o regresión
-El texto se ha transformado ya en columnas de características numéricas. El conjunto de datos todavía contiene columnas de cadenas de las fases anteriores, por lo que se utilizará la opción Select Columns in Dataset (Seleccionar columnas en el conjunto de datos) para excluirlas.
+Ahora el texto hello ha sido transformado toonumeric columnas de característica. conjunto de datos de Hello todavía contiene columnas de cadena de fases anteriores, por lo que usamos seleccionar columnas de conjunto de datos tooexclude ellos.
 
-A continuación, se utilizará la [regresión logística de dos clases](https://msdn.microsoft.com/library/azure/dn905994.aspx) para predecir el destino: puntuación de revisión alta o baja. En este punto, el problema de análisis de texto se ha convertido en un problema de clasificación normal. Puede utilizar las herramientas disponibles en Azure Machine Learning para mejorar el modelo. Por ejemplo, puede experimentar con diferentes clasificadores para averiguar el grado de precisión de los resultados que proporcionan o usar el ajuste de hiperparámetros para mejorar la precisión.
+A continuación, utilizamos [regresión logística de dos clases](https://msdn.microsoft.com/library/azure/dn905994.aspx) toopredict nuestro objetivo: puntuación de revisión alta o baja. En este momento, problema de análisis de texto hello se ha convertido en un problema de clasificación normales. Puede usar herramientas de hello disponibles en el modelo de aprendizaje automático de Azure tooimprove Hola. Por ejemplo, puede experimentar con distintos clasificadores toofind los resultados de grado de precisión que dé o usar hyperparameter tooimprove precisión de hello para la optimización.
 
 ![Entrenar y puntuar](./media/machine-learning-text-analytics-module-tutorial/scoring-text.png)
 
-## <a name="step-4-score-and-validate-the-model"></a>Paso 4: Puntuar y validar el modelo
-¿Cómo se valida el modelo entrenado? Se puntúa en relación con el conjunto de datos de prueba y se evalúa la precisión. Sin embargo, el modelo aprendió el vocabulario de n-gramas y sus ponderaciones del conjunto de datos de entrenamiento. Por lo tanto, debemos usar ese vocabulario y esas ponderaciones al extraer características de los datos de prueba en lugar de crear el vocabulario de nuevo. Por consiguiente, se agregará el módulo de extracción de características de n-gramas a la rama de puntuación del experimento, se conectará el vocabulario de salida de la rama de entrenamiento y se establecerá el modo de vocabulario en solo lectura. También se deshabilitará el filtrado de n-gramas según la frecuencia estableciendo el mínimo en 1 instancia y el máximo en el 100 % y se desactivará la selección de características.
+## <a name="step-4-score-and-validate-hello-model"></a>Paso 4: Puntuación y validar el modelo de Hola
+¿Cómo se validará entrenado Hola? Hemos puntuar en conjunto de datos de prueba de Hola y evaluar la precisión de Hola. Sin embargo, el modelo de Hola había aprendido vocabulario Hola de n-gramas y sus pesos de conjunto de datos de entrenamiento de Hola. Por lo tanto, debemos usar ese vocabulario y los pesos al extraer las características de datos de prueba, como opone vocabulario de hello toocreating como nueva. Por lo tanto, se agrega extraer características de N-gramas módulo toohello puntuación rama del experimento de hello, conectar vocabulario de salida de hello de bifurcación de entrenamiento y establecer el modo de vocabulario de hello solo tooread. También deshabilitar el filtrado de Hola de n-gramas por frecuencia por configuración de instancia de too1 mínima de Hola y too100 máximo % y desactivar la selección de características de Hola.
 
-Después de que las columnas de texto de los datos de prueba se hayan transformado en columnas de características numéricas, se excluirán las columnas de cadenas de las fases anteriores al igual que en la rama de entrenamiento. A continuación, se usará el módulo de puntuación de modelos para realizar predicciones y el módulo de evaluación de modelos para evaluar la precisión.
+Después de hello columna de texto de la prueba de datos ha sido transformado toonumeric columnas de característica, excluimos cadena hello como columnas de fases anteriores de bifurcación de entrenamiento. A continuación, usamos predicciones de toomake de módulo de modelo de puntuación y la precisión de Hola de evaluar modelo módulo tooevaluate.
 
-## <a name="step-5-deploy-the-model-to-production"></a>Paso 5: Implementar el modelo en producción
-El modelo está casi listo para implementarse en producción. Cuando se implementa como servicio web, toma la cadena de texto de forma libre como entrada y devuelve una predicción de puntuación "alta" o "baja". Utiliza el vocabulario de n-gramas aprendido para transformar el texto en características y el modelo entrenado de regresión logística para realizar una predicción de esas características. 
+## <a name="step-5-deploy-hello-model-tooproduction"></a>Paso 5: Implementar Hola modelo tooproduction
+modelo de Hello está casi listo toobe implementa tooproduction. Cuando se implementa como servicio web, toma la cadena de texto de forma libre como entrada y devuelve una predicción de puntuación "alta" o "baja". Usa Hola aprendido n-gramas vocabulario tootransform Hola texto toofeatures y entrenar el modelo de regresión logística toomake una predicción de esas características. 
 
-Para configurar el experimento predictivo, primero se guarda el vocabulario de n-gramas como conjunto de datos y el modelo entrenado de regresión logística desde la rama de entrenamiento del experimento. A continuación, se guarda el experimento mediante la opción "Guardar como" para crear un gráfico de experimento para el experimento predictivo. Se quita el módulo de división de datos y la rama de entrenamiento del experimento. A continuación, se conectan el vocabulario y el modelo de n-gramas guardados previamente con los módulos de extracción de características de n-grama y de puntuación de modelos respectivamente. También se quita el módulo de evaluación de modelos.
+tooset seguridad experimento predictivo hello, se guarda primero vocabulario de n-gramas hello como conjunto de datos, y Hola entrena el modelo de regresión logística de bifurcación de entrenamiento de hello del experimento de Hola. A continuación, guardamos experimento de hello mediante "Guardar como" toocreate un gráfico de experimento para predicción experimento. Quitamos el módulo de dividir datos de Hola y bifurcación de entrenamiento de Hola de experimento Hola. A continuación, conectamos Hola guardado previamente n-gramas vocabulario y modelo tooExtract N-gramas características y módulos de modelo de puntuación, respectivamente. También Quitamos el módulo de evaluar modelo Hola.
 
-Se inserta el módulo de selección de columnas en el conjunto de datos antes del módulo de preprocesamiento de texto para quitar las columnas de etiquetas y se anula la selección de la opción "Append score column to dataset" (Anexar columna de puntuaciones al conjunto de datos) en el módulo de puntuación. De este modo, el servicio web no solicitará la etiqueta que está intentando predecir y no devolverá las características de entrada como respuesta.
+Se seleccione columnas de inserción en el módulo de conjunto de datos antes de la columna de etiqueta de texto de preprocesamiento módulo tooremove hello y anule la selección de opción de "Toodataset de columna de puntuación de anexar" en el módulo de puntuación. De este modo, servicio web de hello no solicita etiqueta de Hola que está tratando de toopredict y no de eco características de entrada de Hola en respuesta.
 
 ![Experimento predictivo](./media/machine-learning-text-analytics-module-tutorial/predictive-text.png)
 

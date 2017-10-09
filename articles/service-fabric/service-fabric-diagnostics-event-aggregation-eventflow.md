@@ -1,5 +1,5 @@
 ---
-title: "Agregación de eventos de Azure Service Fabric con EventFlow | Microsoft Docs"
+title: "Agregación de eventos de servicio de tejido con EventFlow aaaAzure | Documentos de Microsoft"
 description: "Obtenga información sobre la agregación y la recopilación de eventos con EventFlow para la supervisión y el diagnóstico de clústeres de Azure Service Fabric."
 services: service-fabric
 documentationcenter: .net
@@ -14,37 +14,37 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: dekapur
-ms.openlocfilehash: 90d26a77b749e70de3a7d910f15820653e2ef39b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c0141d3ed72d835139250af3589e298fd22d8f89
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="event-aggregation-and-collection-using-eventflow"></a>Recopilación y agregación de eventos con EventFlow
 
-[Microsoft Diagnostics EventFlow](https://github.com/Azure/diagnostics-eventflow) puede enrutar los eventos de un nodo a uno o varios destinos de supervisión. Dado que se incluye como un paquete de NuGet en el proyecto de servicio, el código y la configuración de EventFlow van con el servicio, por lo que se elimina el problema de la configuración por nodo que se mencionó antes sobre Diagnósticos de Azure. EventFlow se ejecuta dentro del proceso de servicio y se conecta directamente con las salidas configuradas. Gracias a esta conexión directa, EventFlow funciona en implementaciones de servicios de Azure, de contenedor o locales. Tenga cuidado si ejecuta EventFlow en escenarios de alta densidad, como un contenedor, ya que cada canalización EventFlow genera una conexión externa. Por tanto, si hospeda varios procesos, obtendrá varias conexiones salientes. Esto no supone un problema para las aplicaciones de Service Fabric, ya que todas las réplicas de `ServiceType` se ejecutan en el mismo proceso, lo que limita el número de conexiones salientes. EventFlow también proporciona filtrado de eventos, de manera que solo se envían los eventos que coinciden con el filtro especificado.
+[Microsoft Diagnostics EventFlow](https://github.com/Azure/diagnostics-eventflow) puede enrutar los eventos de un nodo tooone o más destinos de supervisión. Dado que se incluye como un paquete de NuGet en el proyecto de servicio, configuración y el código de EventFlow viajan con servicio hello, lo que elimina el problema de configuración por nodo Hola se ha mencionado anteriormente sobre los diagnósticos de Azure. EventFlow se ejecuta dentro de su proceso de servicio y se conecta directamente salidas toohello configurado. Debido a la conexión directa de hello, EventFlow funciona en Azure, el contenedor y las implementaciones de servicio local. Tenga cuidado si ejecuta EventFlow en escenarios de alta densidad, como un contenedor, ya que cada canalización EventFlow genera una conexión externa. Por tanto, si hospeda varios procesos, obtendrá varias conexiones salientes. Esto no es tanto un problema para las aplicaciones de Service Fabric, porque todas las réplicas de un `ServiceType` ejecutar Hola mismo proceso y esto limita el número de Hola de conexiones salientes. EventFlow también proporciona filtrado de eventos, para que se envíen solo los eventos de Hola que coinciden con el filtro especificado Hola.
 
 ## <a name="setting-up-eventflow"></a>Configuración de EventFlow
 
-Los archivos binarios de EventFlow están disponibles como un conjunto de paquetes de NuGet. Para agregar EventFlow a un proyecto de servicio de Service Fabric, en el Explorador de soluciones, haga clic con el botón derecho en el proyecto y elija "Administrar paquetes de NuGet". Cambie a la pestaña "Examinar" y busque "`Diagnostics.EventFlow`":
+Los archivos binarios de EventFlow están disponibles como un conjunto de paquetes de NuGet. tooadd EventFlow tooa proyecto del servicio Service Fabric, haga clic en proyecto de Hola Hola el Explorador de soluciones y elija "Paquetes de NuGet de administrar". Cambiar toohello "Examinar" pestaña y busque "`Diagnostics.EventFlow`":
 
 ![Paquetes de NuGet para EventFlow en la interfaz de usuario del administrador de paquetes de NuGet de Visual Studio](./media/service-fabric-diagnostics-event-aggregation-eventflow/eventflow-nuget.png)
 
-Aparecerá una lista de los diferentes paquetes, marcados con las etiquetas "Entradas" y "Salidas". EventFlow es compatible con varios analizadores y proveedores de registro. El servicio que hospede EventFlow debe incluir los paquetes adecuados según el origen y destino de los registros de aplicaciones. Además del paquete principal de Service Fabric, también necesita tener configurado al menos un paquete de entrada y de salida. Para el ejemplo, puede agregar los siguientes paquetes para enviar eventos de EventSource a Application Insights:
+Aparecerá una lista de los diferentes paquetes, marcados con las etiquetas "Entradas" y "Salidas". EventFlow es compatible con varios analizadores y proveedores de registro. servicio Hola hospedaje EventFlow debe incluir paquetes adecuados según el origen de Hola y de destino para los registros de aplicación Hola. Asimismo paquete ServiceFabric de toohello core, también necesita al menos una entrada y salida configurada. Para el ejemplo, puede agregar Hola después paquetes toosent EventSource eventos tooApplication visión:
 
-* `Microsoft.Diagnostics.EventFlow.Input.EventSource` (para capturar datos de la clase EventSource del servicio y de las clases EventSource estándar como *Microsoft-ServiceFabric-Services* y *Microsoft-ServiceFabric-Actors*)
-* `Microsoft.Diagnostics.EventFlow.Output.ApplicationInsights` (vamos a enviar los registros a un recurso de Azure Application Insights)
-* `Microsoft.Diagnostics.EventFlow.ServiceFabric` (permite inicializar la canalización de EventFlow desde la configuración del servicio de Service Fabric, y notifica los problemas con el envío de datos de diagnóstico como informes de mantenimiento de Service Fabric)
+* `Microsoft.Diagnostics.EventFlow.Input.EventSource`datos de toocapture de EventSource (clase) del servicio de Hola y de EventSources estándar como *servicios de Microsoft ServiceFabric* y *Microsoft-ServiceFabric-actores*)
+* `Microsoft.Diagnostics.EventFlow.Output.ApplicationInsights`(vamos toosend Hola registros tooan Azure Application Insights recursos)
+* `Microsoft.Diagnostics.EventFlow.ServiceFabric`(permite la inicialización de canalización de hello EventFlow de configuración de servicio de Service Fabric y notifica los problemas con el envío de datos de diagnóstico como informes de mantenimiento de Service Fabric)
 
 >[!NOTE]
->El paquete `Microsoft.Diagnostics.EventFlow.Input.EventSource` necesita que proyecto de servicio sea para .NET Framework 4.6 o versiones posteriores. Asegúrese de establecer la plataforma de destino adecuada en las propiedades del proyecto antes de instalar este paquete.
+>`Microsoft.Diagnostics.EventFlow.Input.EventSource`el paquete requiere tootarget de proyecto de servicio de hello .NET Framework 4.6 o posterior. Asegúrese de que establezca .NET framework de destino adecuada de hello en Propiedades del proyecto antes de instalar este paquete.
 
-Una vez instalados todos los paquetes, el siguiente paso es configurar y habilitar EventFlow en el servicio.
+Después de que todos hello paquetes están instalados, Hola siguiente paso es tooconfigure y habilitar EventFlow en el servicio de Hola.
 
 ## <a name="configuring-and-enabling-log-collection"></a>Configuración y habilitación de la recopilación de registros
-La canalización de EventFlow, responsable del envío de los registros, se crea a partir de una especificación almacenada en un archivo de configuración. El paquete `Microsoft.Diagnostics.EventFlow.ServiceFabric` instala un archivo de configuración inicial de EventFlow en la carpeta de la solución `PackageRoot\Config`, llamada `eventFlowConfig.json`. Este archivo de configuración debe modificarse para capturar los datos de la clase `EventSource` del servicio predeterminado y cualquier otra entrada que desee configurar y enviar los datos al servicio Application Insights.
+canalización de EventFlow Hola responsable del envío de registros de Hola se crea a partir de una especificación almacenada en un archivo de configuración. Hola `Microsoft.Diagnostics.EventFlow.ServiceFabric` paquete instala un archivo de configuración inicial de EventFlow en `PackageRoot\Config` carpeta de soluciones, denominado `eventFlowConfig.json`. Este archivo de configuración debe toobe modificar toocapture datos de servicio predeterminado de hello `EventSource` clase y otras entradas que desee tooconfigure y enviar datos toohello el lugar adecuado.
 
-A continuación, se presenta un ejemplo de *eventFlowConfig.json* basado en los paquetes NuGet mencionados anteriormente:
+Este es un ejemplo *eventFlowConfig.json* basándose en los paquetes de NuGet Hola mencionados anteriormente:
 ```json
 {
   "inputs": [
@@ -53,7 +53,7 @@ A continuación, se presenta un ejemplo de *eventFlowConfig.json* basado en los 
       "sources": [
         { "providerName": "Microsoft-ServiceFabric-Services" },
         { "providerName": "Microsoft-ServiceFabric-Actors" },
-        // (replace the following value with your service's ServiceEventSource name)
+        // (replace hello following value with your service's ServiceEventSource name)
         { "providerName": "your-service-EventSource-name" }
       ]
     }
@@ -67,7 +67,7 @@ A continuación, se presenta un ejemplo de *eventFlowConfig.json* basado en los 
   "outputs": [
     {
       "type": "ApplicationInsights",
-      // (replace the following value with your AI resource's instrumentation key)
+      // (replace hello following value with your AI resource's instrumentation key)
       "instrumentationKey": "00000000-0000-0000-0000-000000000000"
     }
   ],
@@ -75,7 +75,7 @@ A continuación, se presenta un ejemplo de *eventFlowConfig.json* basado en los 
 }
 ```
 
-El nombre del origen ServiceEventSource del servicio es el valor de la propiedad Name de `EventSourceAttribute` aplicado a la clase ServiceEventSource. Se especifica todo en el archivo `ServiceEventSource.cs`, que forma parte del código del servicio. Por ejemplo, en el siguiente fragmento de código, el nombre del origen ServiceEventSource es *MyCompany-Application1-Stateless1*:
+nombre de Hola de ServiceEventSource del servicio es valor de Hola de hello propiedad Name de hello `EventSourceAttribute` aplica toohello ServiceEventSource clase. Se especifica en hello `ServiceEventSource.cs` archivo, que forma parte del código de servicio de Hola. Por ejemplo, en hello siguiente nombre de Hola de fragmento de código de hello ServiceEventSource es *MyCompany-Application1-Stateless1*:
 
 ```csharp
 [EventSource(Name = "MyCompany-Application1-Stateless1")]
@@ -85,11 +85,11 @@ internal sealed class ServiceEventSource : EventSource
 }
 ```
 
-Tenga en cuenta que el archivo `eventFlowConfig.json` forma parte del paquete de configuración del servicio. Los cambios en este archivo pueden incluirse en actualizaciones completas o de solo configuración del servicio; están sujetos a las comprobaciones del estado de actualización de Service Fabric y se revierten automáticamente en caso de errores durante la actualización. Para más información, consulte el [tutorial sobre la actualización de aplicaciones de Service Fabric](service-fabric-application-upgrade.md).
+Tenga en cuenta que el archivo `eventFlowConfig.json` forma parte del paquete de configuración del servicio. Archivo de cambios de toothis puede incluirse en completo o configuración-solo las actualizaciones del servicio de hello, asunto tooService tejido actualizar las comprobaciones de mantenimiento y la reversión automática si hay errores durante la actualización. Para más información, consulte el [tutorial sobre la actualización de aplicaciones de Service Fabric](service-fabric-application-upgrade.md).
 
-La sección de *filtros* de la configuración permite personalizar aún más la información que se va a enviar a las salidas a través de la canalización de EventFlow, de tal forma que se puede quitar o incluir información concreta o cambiar la estructura de los datos del evento. Para más información sobre filtrado, vea los [filtros de EventFlow](https://github.com/Azure/diagnostics-eventflow#filters).
+Hola *filtros* sección de configuración de hello permite toofurther personalizar información hello toogo continuo a través de hello EventFlow canalización toohello salidas, permitiéndole toodrop o incluir cierta información Hola estructura de datos de evento de saludo. Para más información sobre filtrado, vea los [filtros de EventFlow](https://github.com/Azure/diagnostics-eventflow#filters).
 
-El último paso consiste en crear una instancia de la canalización de EventFlow en el código de inicio del servicio, ubicado en el archivo `Program.cs`:
+Hola último paso es tooinstantiate EventFlow canalización en el código de inicio del servicio, ubicado en `Program.cs` archivo:
 
 ```csharp
 using System;
@@ -106,7 +106,7 @@ namespace Stateless1
     internal static class Program
     {
         /// <summary>
-        /// This is the entry point of the service host process.
+        /// This is hello entry point of hello service host process.
         /// </summary>
         private static void Main()
         {
@@ -134,21 +134,21 @@ namespace Stateless1
 }
 ```
 
-El nombre que se pasa como parámetro del método `CreatePipeline` de `ServiceFabricDiagnosticsPipelineFactory` es el nombre de la *entidad de estado de mantenimiento* que representa la canalización de recopilación de registros de EventFlow. Este nombre se usa si EventFlow encuentra un error y lo notifica a través del subsistema de estado de mantenimiento de Service Fabric.
+nombre Hello pasado como parámetro de Hola de hello `CreatePipeline` método de hello `ServiceFabricDiagnosticsPipelineFactory` es nombre Hola de hello *entidad estado* que representa la canalización de colección de registro de hello EventFlow. Este nombre se usa si encuentra EventFlow y error y lo notifica a través de hello subsistema de estado de Service Fabric.
 
-### <a name="using-service-fabric-settings-and-application-parameters-to-in-eventflowconfig"></a>Uso de los parámetros de la aplicación y de la configuración de Service Fabric en eventFlowConfig
+### <a name="using-service-fabric-settings-and-application-parameters-tooin-eventflowconfig"></a>Con la configuración de Service Fabric y aplicación parámetros tooin eventFlowConfig
 
-EventFlow permite usar los parámetros de la aplicación y la configuración de Service Fabric para configurar EventFlow. Puede hacer referencia a los parámetros de configuración de Service Fabric mediante la utilización de esta sintaxis especial para los valores:
+EventFlow admite el uso de configuración de Service Fabric y aplicación parámetros tooconfigure EventFlow. Puede hacer referencia a parámetros de configuración de tejido tooService con esta sintaxis especial para los valores:
 
 ```json
 servicefabric:/<section-name>/<setting-name>
 ``` 
 
-`<section-name>` es el nombre de la sección de configuración de Service Fabric, y `<setting-name>` es el conjunto de configuración que proporciona el valor que se usará para configurar una opción de EventFlow. Para leer más información sobre cómo realizar esto, vaya a [Support for Service Fabric settings and application parameters](https://github.com/Azure/diagnostics-eventflow#support-for-service-fabric-settings-and-application-parameters) (Compatibilidad de los parámetros de la aplicación y la configuración de Service Fabric).
+`<section-name>`es Hola nombre de sección de configuración de Service Fabric, hello y `<setting-name>` es valor de configuración de hello proporcionar valor Hola que será usado tooconfigure una configuración de EventFlow. más información acerca de cómo tooread toodo, vaya demasiado[compatibilidad con la configuración de Service Fabric y parámetros de la aplicación](https://github.com/Azure/diagnostics-eventflow#support-for-service-fabric-settings-and-application-parameters).
 
 ## <a name="verification"></a>Comprobación
 
-Inicie el servicio y observe la ventana de resultados de depuración de Visual Studio. Una vez iniciado el servicio, deberá comenzar a ver la evidencia de que el servicio está enviando registros a la salida configurada. Vaya a la plataforma de visualización y análisis de eventos y confirme que los registros han empezado a mostrarse, una operación que puede tardar algunos minutos.
+Iniciar el servicio y observe Hola depuración ventana de resultados de Visual Studio. Una vez iniciado el servicio de hello, deberá comenzar a ver la evidencia de que el servicio envía registra la salida de toohello que ha configurado. Navegar por la plataforma de análisis y la visualización de eventos de tooyour y confirme que los registros han iniciado tooshow arriba (puede tardar unos minutos).
 
 ## <a name="next-steps"></a>Pasos siguientes
 

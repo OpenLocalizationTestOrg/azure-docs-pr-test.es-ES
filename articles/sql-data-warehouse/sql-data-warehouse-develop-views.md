@@ -1,5 +1,5 @@
 ---
-title: Uso de vistas T-SQL en Azure SQL Data Warehouse | Microsoft Docs
+title: "vistas de aaaUsing T-SQL en el almacén de datos de SQL de Azure | Documentos de Microsoft"
 description: Sugerencias para usar las vistas Transact-SQL en el Almacenamiento de datos SQL Azure para desarrollar soluciones.
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,24 +15,24 @@ ms.workload: data-services
 ms.custom: t-sql
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
-ms.openlocfilehash: d2a03be810bd7f792876607ec735eb578b65a3b5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3990b133946621691bdfa4b09523d21867470c74
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="views-in-sql-data-warehouse"></a>Vistas en el Almacenamiento de datos SQL
-Las vistas son especialmente útiles en el Almacenamiento de datos SQL. Se pueden usar de formas diferentes para mejorar la calidad de la solución.  Este artículo resalta algunos ejemplos de cómo enriquecer su solución con vistas, así como las limitaciones que se deben tener en cuenta.
+Las vistas son especialmente útiles en el Almacenamiento de datos SQL. Que se puedan utilizar en un número de maneras diferentes tooimprove Hola de calidad de la solución.  Este artículo resalta algunos ejemplos de cómo tooenrich la solución con vistas, así como las limitaciones de Hola que necesitan toobe considera.
 
 > [!NOTE]
-> En este artículo no se explica la sintaxis de `CREATE VIEW`. Consulte el artículo [CREATE VIEW][CREATE VIEW] de MSDN para esta información de referencia.
+> En este artículo no se explica la sintaxis de `CREATE VIEW`. Consulte toohello [CREATE VIEW] [ CREATE VIEW] artículo de MSDN para obtener esta información de referencia.
 > 
 > 
 
 ## <a name="architectural-abstraction"></a>Abstracción de arquitectura
-Se trata de un patrón de aplicación muy común para volver a crear tablas con la característica CREATE TABLE AS SELECT (CTAS) seguida de un patrón de cambio de nombre de objetos mientras se cargan los datos.
+Un modelo de aplicación muy común es toore-crear tablas mediante Crear tabla AS seleccione (CTAS) seguido por un objeto de cambiar el nombre de modelo durante la carga de datos.
 
-En el ejemplo siguiente se agregan registros de fecha nuevos a una dimensión de fecha. Observe cómo una nueva tabla, DimDate_New, se crea por primera vez y luego cambia de nombre para reemplazar la versión original de la tabla.
+ejemplo de Hola siguiente agrega dimensión de fecha nuevos registros tooa date. Tenga en cuenta cómo un nuevo tabble, DimDate_New, se crea por primera vez y, a continuación, cambiar el nombre de versión original de hello tooreplace de tabla Hola.
 
 ```sql
 CREATE TABLE dbo.DimDate_New
@@ -47,28 +47,28 @@ SELECT *
 FROM   dbo.DimDate_stg AS stg
 ;
 
-RENAME OBJECT DimDate TO DimDate_Old;
-RENAME OBJECT DimDate_New TO DimDate;
+RENAME OBJECT DimDate tooDimDate_Old;
+RENAME OBJECT DimDate_New tooDimDate;
 
 ```
 
-Sin embargo, este enfoque puede provocar que las tablas aparezcan y desaparezcan de la vista del usuario, así como mensajes de error del tipo "la tabla no existe". Las vistas pueden utilizarse para proporcionar una capa de presentación coherente mientras se cambia el nombre de los objetos subyacentes. Proporcionar a los usuarios acceso a los datos mediante vistas significa que los usuarios no necesitan tener visibilidad de las tablas subyacentes. Esto proporciona una experiencia de usuario coherente, al tiempo que garantiza que los diseñadores de almacenamiento de datos puedan desarrollar el modelo de datos y maximizar el rendimiento mediante el uso de CTAS durante el proceso de carga de datos.    
+Sin embargo, este enfoque puede provocar que las tablas aparezcan y desaparezcan de la vista del usuario, así como mensajes de error del tipo "la tabla no existe". Vistas pueden ser usuarios de tooprovide usado con una capa de presentación coherente mientras se cambia el nombre de los objetos subyacentes de Hola. Proporcionando acceso a los usuarios toohello datos a través de una vista, significa que los usuarios no tienen visibilidad toohave de tablas subyacentes de Hola. Esto proporciona una experiencia coherente al usuario y garantizar que los diseñadores de almacenes de datos de hello pueden evolucionar modelo de datos de Hola y maximizar el rendimiento mediante el uso de CTAS durante el proceso de carga de datos de Hola.    
 
 ## <a name="performance-optimization"></a>Optimización del rendimiento
-Las vistas se pueden usar también para aplicar combinaciones de rendimiento optimizado entre tablas. Por ejemplo, una vista puede incorporar una clave de distribución redundante como parte de los criterios de combinación para minimizar el movimiento de datos.  Otra ventaja de una vista podría ser forzar una consulta específica o una sugerencia de combinación. La utilización de vistas de esta manera garantiza que las combinaciones siempre se realizarán de manera óptima, evitando la necesidad de los usuarios de recordar la construcción correcta de sus combinaciones.
+Vistas también pueden ser usadas tooenforce rendimiento optimizado combinaciones entre tablas. Por ejemplo, una vista puede incorporar una clave de distribución redundante como parte del programa Hola a unir el movimiento de datos de toominimize de criterios.  Otra ventaja de una vista podría ser tooforce una consulta específica o una sugerencia de combinación. Mediante vistas de esta manera se garantiza que las combinaciones se realizan siempre de forma óptima, evitando la necesidad de hello for (construcción correcta hello) a los usuarios tooremember para sus combinaciones.
 
 ## <a name="limitations"></a>Limitaciones
-Las vistas en el almacenamiento de datos SQL son solo metadatos.  Por lo tanto, no están disponibles las siguientes opciones:
+Las vistas en el almacenamiento de datos SQL son solo metadatos.  Por consiguiente Hola siguientes opciones no está disponible:
 
 * No hay ninguna opción de enlace de esquema.
-* Las tablas base no se puede actualizar a través de la vista.
+* Tablas base no se puede actualizar a través de la vista de Hola
 * No se pueden crear vistas en tablas temporales.
-* No hay compatibilidad con las sugerencias EXPAND y NOEXPAND
+* No hay compatibilidad para hello expandir / sugerencias NOEXPAND
 * No hay ninguna vista indexada en Almacenamiento de datos SQL.
 
 ## <a name="next-steps"></a>Pasos siguientes
 Para obtener más sugerencias sobre desarrollo, consulte la [información general sobre desarrollo de Almacenamiento de datos SQL][SQL Data Warehouse development overview].
-Para la sintaxis de `CREATE VIEW`, consulte [CREATE VIEW][CREATE VIEW].
+Para `CREATE VIEW` sintaxis consulte demasiado[CREATE VIEW][CREATE VIEW].
 
 <!--Image references-->
 

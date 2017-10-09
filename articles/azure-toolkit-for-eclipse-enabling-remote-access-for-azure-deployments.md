@@ -1,6 +1,6 @@
 ---
-title: "Habilitación del acceso remoto para implementaciones de Azure en Eclipse"
-description: "Obtenga información sobre cómo habilitar el acceso remoto para las implementaciones de Azure mediante el kit de herramientas de Azure para Eclipse."
+title: aaaEnabling acceso remoto para las implementaciones de Azure en Eclipse
+description: "Obtenga información acerca de cómo tener acceso tooenable remoto para las implementaciones de Azure mediante Hola Kit de herramientas de Azure para Eclipse."
 services: 
 documentationcenter: java
 author: rmcmurray
@@ -14,112 +14,112 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: robmcm
-ms.openlocfilehash: 654d511bd5a62341f87569317e97360c94a6f26c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 00c2bf22c1f3ec792098f154f771c87506e87881
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="enabling-remote-access-for-azure-deployments-in-eclipse"></a>Habilitación del acceso remoto para implementaciones de Azure en Eclipse
-Para facilitar la solución de problemas de las implementaciones, puede habilitar y usar el acceso remoto para conectarse a la máquina virtual que hospeda la implementación. La funcionalidad de acceso remoto se basa en el protocolo de Escritorio remoto (RDP). Puede configurar el acceso remoto para la implementación después de publicarlo en Azure, o bien, si usa Eclipse con un sistema operativo Windows, puede configurar el acceso remoto antes de publicar en Azure. Tenga en cuenta que necesitará a un cliente de Escritorio remoto que sea compatible con el sistema operativo para conectarse a la máquina virtual de su implementación en Azure.
+toohelp solucionar problemas de las implementaciones, puede habilitar y usar acceso remoto tooconnect toohello virtual machine hospeda la implementación. Hola funcionalidad de acceso remoto se basa en hello protocolo de escritorio remoto (RDP). Puede configurar el acceso remoto para la implementación después de que haya publicado tooAzure, o si está usando Eclipse con un sistema operativo Windows, puede configurar el acceso remoto antes de publicar tooAzure. Tenga en cuenta que necesitará a un cliente de escritorio remoto que sea compatible con el sistema operativo en la máquina virtual de orden tooconnect tooyour de la implementación de Azure.
 
-## <a name="how-to-enable-remote-access-before-you-deploy-to-azure"></a>Habilitación del acceso remoto antes de implementar en Azure
+## <a name="how-tooenable-remote-access-before-you-deploy-tooazure"></a>Cómo tooenable acceso remoto antes de implementar tooAzure
 > [!NOTE]
-> Para habilitar el acceso remoto antes de implementar la aplicación en Azure, tiene que ejecutarse Eclipse en Windows.
+> tooenable acceso remoto antes de implementar su aplicación tooAzure, deberá toobe ejecutarse Eclipse en Windows.
 > 
 > 
 
-La imagen siguiente muestra el cuadro de diálogo de propiedades **Remote Access** (Acceso remoto) que se usa para habilitar el acceso remoto.
+Hello siguiente imagen muestra hello **acceso remoto** cuadro de diálogo de propiedades utiliza tooenable el acceso remoto.
 
 ![][ic719494]
 
-Hay dos maneras de mostrar el cuadro de diálogo de propiedades **Remote Access** :
+Hay dos Hola de toodisplay maneras **acceso remoto** cuadro de diálogo de propiedades:
 
-* Haga clic en el vínculo **Advanced** (Propiedades avanzadas) en la sección **Remote Access** (Acceso remoto) del cuadro de diálogo **Publish to Azure** (Publicar en Azure).
+* Haga clic en hello **avanzadas** vínculo Hola **acceso remoto** sección de hello **publicar tooAzure** cuadro de diálogo.
 
-* Abra el cuadro de diálogo **Properties** (Propiedades) del proyecto de Azure.
+* Abra hello **propiedades** cuadro de diálogo de su proyecto de Azure.
 
-Cuando cree un proyecto de implementación de Azure, el proyecto no tendrá el acceso remoto habilitado de forma predeterminada. Pero, puede habilitar fácilmente el acceso remoto especificando el nombre de usuario y la contraseña en el cuadro de diálogo **Publish to Azure** . La contraseña de acceso remoto se cifra mediante certificados X.509. Si no especifica su propio certificado, el cifrado se basa en un certificado autofirmado que se suministra con el complemento de Azure para Eclipse. Este certificado autofirmado se encuentra en la carpeta **cert** del proyecto de Azure, almacenado como archivo de certificado público (SampleRemoteAccessPublic.cer) y como archivo de certificado de intercambio de información personal (PFX) (SampleRemoteAccessPrivate.pfx). El segundo contiene la clave privada para el certificado y tiene una contraseña de forma predeterminada, **Password1**. Pero, puesto que esta contraseña es de dominio público, el certificado predeterminado solo debe usarse con fines de aprendizaje, no para una implementación de producción. Así pues, si sus fines no son de aprendizaje, cuando quiera habilitar sesiones remotas para sus implementaciones, debe hacer clic en el vínculo **Advanced** (Propiedades avanzadas) del cuadro de diálogo **Publish to Azure** (Publicar en Azure) para especificar su propio certificado. Tenga en cuenta que tendrá que cargar la versión PFX del certificado en el servicio hospedado dentro del Portal de administración de Azure, para que Azure pueda descifrar la contraseña del usuario.
+Cuando crea un nuevo proyecto de implementación de Azure, el proyecto de hello no tendrá acceso remoto habilitado de forma predeterminada. Sin embargo, puede habilitar fácilmente acceso remoto mediante la especificación de nombre de usuario de hello y una contraseña en hello **publicar tooAzure** cuadro de diálogo. contraseña de acceso remoto de Hola se cifra mediante certificados X.509. Si no usa proporcionar su propio certificado, cifrado de Hola se basa en un certificado autofirmado acompaña Hola complemento de Azure para Eclipse. Este certificado autofirmado está en hello **cert** carpeta de su proyecto de Azure, almacenado como un archivo de certificado público (SampleRemoteAccessPublic.cer) y archivo de certificado como un intercambio de información Personal (PFX) () SampleRemoteAccessPrivate.pfx). Hola esta última contiene la clave privada de hello certificado de Hola y tiene una contraseña predeterminada, **Password1**. Sin embargo, puesto que esta contraseña es de dominio público, certificado predeterminado de hello debe usarse solo para el aprendizaje, no para una implementación de producción. Tan distinto con fines de aprendizaje, cuando desee que las sesiones remotas de tooenabled para las implementaciones, se debe hacer clic en hello **avanzadas** vínculo Hola **publicar tooAzure** diálogo toospecify su propio certificado. Tenga en cuenta que necesitará versión PFX de hello tooupload del servicio de tooyour hospedado de certificado de hello en hello Portal de administración de Azure, por lo que Azure pueda descifrar la contraseña de usuario de Hola.
 
-El resto del tutorial muestra cómo habilitar el acceso remoto para un proyecto de implementación de Azure que se creó inicialmente con el acceso remoto deshabilitado. Para los fines de este tutorial, vamos a crear un certificado autofirmado y su archivo .pfx tendrá una contraseña de su elección. También tiene la opción de usar un certificado emitido por una entidad de certificación.
+resto de Hola de tutorial de hello muestra cómo tener acceso tooenable remoto para un proyecto de implementación de Azure que se creó inicialmente con acceso remoto deshabilitado. Para los fines de este tutorial, vamos a crear un certificado autofirmado y su archivo .pfx tendrá una contraseña de su elección. También tiene opción de hello del uso de un certificado emitido por una entidad de certificación.
 
-## <a name="how-to-enable-remote-access-after-you-have-deployed-to-azure"></a>Habilitación del acceso remoto después de haber implementado en Azure
-Para habilitar el acceso remoto después de haber implementado en Azure, siga estos pasos:
+## <a name="how-tooenable-remote-access-after-you-have-deployed-tooazure"></a>¿Cómo tooenable acceso remoto después de haya implementado tooAzure
+tooenable acceso remoto después de haber implementado tooAzure, Hola uso pasos:
 
-1. Inicie sesión en el Portal de administración de Azure con su cuenta de Azure.
+1. Inicie sesión en el portal de administración de Azure de hello con su cuenta de Azure
 
 2. En la lista de **Servicios en la nube**, seleccione el servicio en la nube que se implementó
 
-3. En la página web del servicio en la nube, haga clic en el vínculo **Configurar** .
+3. En la página web del servicio en la nube hello, haga clic en hello **configurar** vínculo
 
-4. En la parte inferior de la página de configuración, haga clic en el vínculo **Remoto** .
+4. En hello parte inferior de la página de configuración de hello, haga clic en hello **remoto** vínculo
 
-5. Cuando aparezca el cuadro de diálogo emergente:
+5. Cuando aparezca el cuadro de diálogo emergente de hello:
    
-   * Especifique el rol para el que desea habilitar el acceso remoto
+   * Especificar Hola rol, que se desea acceso remoto tooenable
 
-   * Haga clic en la casilla **Habilitar Escritorio remoto** para seleccionarla.
+   * Haga clic en hello tooselect **habilitar Escritorio remoto** casilla de verificación
    
-   * Especifique un nombre de usuario y la contraseña que quiere usar apara el acceso remoto.
+   * Especifique un nombre de usuario y una contraseña que desee toouse para acceso remoto
    
-   * Seleccione el certificado que va a usar.
+   * Seleccione Hola certificado toouse
 
 6. Haga clic en **Aceptar** 
 
-Verá un mensaje que indica que el cambio de configuración está en curso, lo cual puede tardar unos minutos en completarse. Cuando el cambio en la configuración se haya completado, siga los pasos de la sección **Para iniciar sesión de manera remota** más adelante en este artículo.
+Verá un mensaje que indica que el cambio de configuración está en curso, lo que puede tardar unos toocomplete minutos. Cuando haya finalizado el cambio de configuración de hello, siga los pasos de Hola Hola **toolog de forma remota** sección más adelante en este artículo.
 
-## <a name="how-to-enable-remote-access-in-your-package"></a>Habilitación del acceso remoto en el paquete
+## <a name="how-tooenable-remote-access-in-your-package"></a>El proceso tooenable de acceso remoto en el paquete
 1. En el panel del explorador de proyectos de Eclipse, haga clic con el botón derecho en el proyecto y haga clic en **Properties**(Propiedades).
 
-2. En el cuadro de diálogo **Properties** (Propiedades), expanda **Azure** en el panel izquierdo y haga clic en **Remote Access** (Acceso remoto).
+2. Hola **propiedades** cuadro de diálogo, expanda **Azure** en el panel izquierdo de Hola y haga clic en **acceso remoto**.
 
-3. En el cuadro de diálogo **Remote Access** (Acceso remoto), asegúrese de que la opción **Enable all roles to accept Remote Desktop Connections with these login credentials** (Habilitar todos los roles para aceptar las conexiones a Escritorio remoto con estas credenciales de inicio de sesión) está activada.
+3. Hola **acceso remoto** cuadro de diálogo, asegúrese de **habilitar todos los roles tooaccept conexiones a Escritorio remoto con estas credenciales de inicio de sesión** está activada.
 
-4. Especifique un nombre de usuario para la conexión a Escritorio remoto.
+4. Especifique un nombre de usuario para hello conexión a Escritorio remoto.
 
-5. Especifique y confirme la contraseña del usuario. Los valores de nombre de usuario y contraseña de usuario establecidos en este cuadro de diálogo se utilizarán al realizar una conexión a Escritorio remoto. (Tenga en cuenta que se trata de una contraseña independiente de su contraseña PFX).
+5. Especifique y confirme la contraseña de hello para el usuario de Hola. valores de nombre y la contraseña de la usuario de Hello establecidos en este cuadro de diálogo se utilizará al realizar una conexión a Escritorio remoto. (Tenga en cuenta que se trata de una contraseña independiente de su contraseña PFX).
 
-6. Especifique la fecha de caducidad para la cuenta de usuario.
+6. Especifique la fecha de expiración de hello para la cuenta de usuario de Hola.
 
-7. Haga clic en **New** (Nuevo) para crear un certificado autofirmado. (Como alternativa, puede seleccionar un certificado desde el área de trabajo o el sistema de archivos mediante los botones **Workspace** (Área de trabajo) o **FileSystem** (Sistema de archivos), respectivamente, pero para fines de este tutorial vamos a crear un certificado).
+7. Haga clic en **New** toocreate un nuevo certificado autofirmado. (Como alternativa, puede seleccionar un certificado desde el área de trabajo o sistema de archivos a través de hello **área de trabajo** o **FileSystem** botones, respectivamente, pero para los fines de este tutorial vamos a crear un nuevo certificado.)
 
-   * En el cuadro de diálogo **New Certificate** (Nuevo certificado), especifique y confirme la contraseña que utilizará para el archivo PFX.
+   * Hola **nuevo certificado** cuadro de diálogo, especifique y confirme la contraseña de Hola que usará para el archivo PFX.
 
-   * Acepte el valor proporcionado para **Name (CN)**(Nombre (CN)) o use un nombre personalizado.
+   * Acepte el valor Hola proporcionado para **nombre (CN)**, o usar un nombre personalizado.
 
-   * Especifique la ruta de acceso y el nombre de archivo donde se guardará el nuevo certificado en formato .cer. Para este paso y el siguiente, puede usar la carpeta **cert** de su proyecto de Azure, pero tiene la posibilidad de elegir otra ubicación. Para los fines de este tutorial, usaremos **c:\mycert\mycert.cer**. (Cree la carpeta **c:\mycert** antes de continuar, o utilice una carpeta existente si lo desea).
+   * Especifique Hola ruta de acceso y nombre de archivo donde se guardará el nuevo certificado de hello, en formato .cer. En este paso y el paso siguiente de hello, podría utilizar hello **cert** carpeta de su proyecto de Azure, pero está libre toochoose otra ubicación. Para los fines de este tutorial, usaremos **c:\mycert\mycert.cer**. (Crear hello **c:\mycert** tooproceeding anteriores de carpeta, o utilice una carpeta existente si lo desea.)
 
-   * Especifique la ruta de acceso y el nombre de archivo donde se guardará el nuevo certificado y su clave privada en formato .pfx. Para los fines de este tutorial, usaremos **c:\mycert\mycert.pfx**. El cuadro de diálogo **New Certificate** (Nuevo certificado) debe ser similar al siguiente (actualice las rutas de acceso de la carpeta si no utilizó **c:\mycert**):
+   * Especifique Hola ruta de acceso y nombre de archivo donde se guardará un nuevo certificado hello y su clave privada, en formato .pfx. Para los fines de este tutorial, usaremos **c:\mycert\mycert.pfx**. Su **nuevo certificado** diálogo debe tener un aspecto similar siguiente toohello (actualizar las rutas de acceso de carpeta de hello si no usó **c:\mycert**):
      
       ![][ic712275]
 
-   * Haga clic en **OK** (Aceptar) para cerrar el cuadro de diálogo **New Certificate** (Nuevo certificado).
+   * Haga clic en **Aceptar** tooclose hello **nuevo certificado** cuadro de diálogo.
 
-8. El cuadro de diálogo **Remote Access** (Acceso remoto) debería ser similar al siguiente:</p>
+8. Su **acceso remoto** cuadro de diálogo debe tener un aspecto similar siguiente toohello:</p>
    
    ![][ic719495]
 
-9. Haga clic en **OK** (Aceptar) para cerrar el cuadro de diálogo **Remote Access** (Acceso remoto).
+9. Haga clic en **Aceptar** tooclose hello **acceso remoto** cuadro de diálogo.
 
-Recompile la aplicación, con la compilación establecida para su implementación en la nube.
+Recompilar la aplicación, con hello generar el conjunto de toocloud de implementación.
 
-## <a name="to-log-in-remotely"></a>Para iniciar sesión de manera remota
-Cuando la instancia de rol esté lista, podrá iniciar sesión de manera remota en la máquina virtual que hospeda la aplicación.
+## <a name="toolog-in-remotely"></a>toolog de forma remota
+Una vez que la instancia de rol está lista, puede registrar de forma remota en la máquina virtual de toohello que hospeda la aplicación.
 
-* Si usa Eclipse en Windows y ha seleccionado la opción **Start remote desktop on deploy** (Iniciar escritorio remoto al implementar) durante la implementación en Azure, se abrirá una pantalla de inicio de sesión de conexión a Escritorio remoto cuando se inicie la implementación. Cuando se le pida el nombre de usuario y la contraseña, escriba los valores que especificó para el usuario remoto y podrá iniciar sesión.
+* Si está usando Eclipse en Windows y Hola seleccionado se **iniciar escritorio remoto en implementar** opción durante la tooAzure de implementación, aparecerá una pantalla de inicio de sesión de conexión a Escritorio remoto cuando se inicia la implementación. Cuando se le pida Hola nombre de usuario y contraseña, escriba los valores de hello que especificó para el usuario remoto hello y será capaz de toolog en.
 
-* Otra manera de iniciar sesión de manera remota es a través del <a href="http://go.microsoft.com/fwlink/?LinkID=512959">Portal de administración de Azure</a>:
+* Toolog de otra manera de forma remota es a través de hello <a href="http://go.microsoft.com/fwlink/?LinkID=512959">Portal de administración de Azure</a>:
   
-  * Dentro de la vista **Cloud Services** del Portal de administración de Azure, haga clic en el servicio en la nube, en **Instancias**, en una instancia específica y luego en el botón**Conectar**. El botón **Conectar** aparece del modo siguiente en la barra de comandos:
+  * Dentro de hello **servicios en la nube** vista de hello portal de administración de Azure, haga clic en el servicio de nube, haga clic en **instancias**, haga clic en una instancia específica y, a continuación, haga clic en hello **conectar**botón. Hola **conectar** botón se muestra como siguiente de hello en la barra de comandos de hello:
     
       ![][ic659273]
 
-  * Tras hacer clic en el botón **Conectar** , se le pedirá que abra un archivo RDP. Abra el archivo y siga las indicaciones. (También puede guardar este archivo en el equipo local y luego ejecutarlo haciendo doble clic en él para iniciar sesión de manera remota en la máquina virtual sin necesidad de ir primero al Portal de administración).
+  * Tras hacer clic en hello **conectar** botón, podrá tooopen solicitada un archivo RDP. Abra el archivo hello y siga las indicaciones de Hola. (Podría guardar este equipo local tooyour de archivo y, a continuación, ejecutar archivo hello haciendo doble clic en él tooremote registro en tooyour máquina virtual sin necesidad de toofirst vaya portal de administración de Hola.)
 
-  * Cuando se le pida el nombre de usuario y la contraseña, escriba los valores que especificó para el usuario remoto y podrá iniciar sesión.
+  * Cuando se le pida Hola nombre de usuario y contraseña, escriba los valores de hello que especificó para el usuario remoto hello y será capaz de toolog en.
 
 > [!NOTE]
-> Si se encuentra en un sistema operativo distinto de Windows, deberá usar un cliente de Escritorio remoto que sea compatible con el sistema operativo y seguir los pasos para configurar ese cliente con los valores del archivo RDP que descargó.
+> Si se encuentra en un sistema operativo, es necesario toouse un cliente de escritorio remoto que sea compatible con el sistema operativo y siga Hola pasos tooconfigure que el cliente con la configuración de hello en el archivo RDP de Hola que ha descargado.
 > 
 > 
 
@@ -128,9 +128,9 @@ Cuando la instancia de rol esté lista, podrá iniciar sesión de manera remota 
 
 [Creación de una aplicación Hola a todos para Azure en Eclipse][Creating a Hello World Application for Azure in Eclipse]
 
-[Instalación del Kit de herramientas de Azure para Eclipse][Installing the Azure Toolkit for Eclipse] 
+[Instalar hello Azure Toolkit for Eclipse][Installing hello Azure Toolkit for Eclipse] 
 
-Para obtener más información sobre el uso de Azure con Java, vea el [Centro para desarrolladores de Java de Azure][Azure Java Developer Center].
+Para obtener más información acerca del uso de Azure con Java, vea hello [Centro para desarrolladores de Java de Azure][Azure Java Developer Center].
 
 <!-- URL List -->
 
@@ -138,7 +138,7 @@ Para obtener más información sobre el uso de Azure con Java, vea el [Centro pa
 [Azure Management Portal]: http://go.microsoft.com/fwlink/?LinkID=512959
 [Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699529
 [Creating a Hello World Application for Azure in Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699533
-[Installing the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
+[Installing hello Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
 
 <!-- IMG List -->
 

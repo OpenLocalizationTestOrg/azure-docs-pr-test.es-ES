@@ -1,5 +1,5 @@
 ---
-title: "Modelo de datos de Telemetría de Azure Application Insights: telemetría de solicitudes | Microsoft Docs"
+title: "aaaAzure modelo de datos de telemetría de aplicación visión - solicitud de telemetría | Documentos de Microsoft"
 description: "Modelo de datos de Application Insights para la telemetría de solicitudes"
 services: application-insights
 documentationcenter: .net
@@ -12,23 +12,23 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: bwren
-ms.openlocfilehash: 8e782e45b706cadec66e7404dd9abc2e01dea917
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 6042975a35f5e672e5adb5390feecc63d0b284b5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Telemetría de solicitudes: modelo de datos de Application Insights
 
-Un elemento de telemetría de solicitud (en [Application Insights](app-insights-overview.md)) representa la secuencia lógica de ejecución desencadenada por una solicitud externa a la aplicación. Todas las ejecuciones de solicitud se identifican mediante un `ID` y una `url` únicos que contienen todos los parámetros de ejecución. Puede agrupar las solicitudes por `name` lógico y definir el `source` de esta solicitud. La ejecución de código puede ser `success` o `fail`, y tiene una `duration` determinada. Tanto las ejecuciones correctas como las erróneas se pueden seguir agrupando por `resultCode`. La hora de inicio de la telemetría de solicitudes se define en el nivel de sobre.
+Un elemento de telemetría de solicitud (en [Application Insights](app-insights-overview.md)) representa hello secuencia lógica de ejecución desencadenada por una aplicación de tooyour solicitudes externas. Único identifica cada ejecución de la solicitud `ID` y `url` que contiene todos los parámetros de ejecución de Hola. Puede agrupar las solicitudes por lógica `name` y definir hello `source` de esta solicitud. La ejecución de código puede ser `success` o `fail`, y tiene una `duration` determinada. Tanto las ejecuciones correctas como las erróneas se pueden seguir agrupando por `resultCode`. Hora de inicio de telemetría de solicitud de hello definido en el nivel de la envoltura de Hola.
 
-La telemetría de solicitudes admite el modelo de extensibilidad estándar mediante el uso de `properties` y `measurements` personalizadas.
+Solicitud de telemetría es compatible con el modelo de extensibilidad estándar de hello mediante personalizado `properties` y `measurements`.
 
 ## <a name="name"></a>Nombre
 
-El nombre de la solicitud representa la ruta de código seguida para procesar la solicitud. Un valor de cardinalidad bajo permite una mejor agrupación de las solicitudes. En las solicitudes de HTTP, representa el método HTTP y la plantilla de la ruta URL como `GET /values/{id}` sin el valor de `id` real.
+Nombre de solicitud de hello representa la solicitud de Hola de tooprocess de ruta de acceso de código. Valor de cardinalidad baja tooallow mejor agrupación de solicitudes. Para las solicitudes HTTP representa Hola método HTTP y la plantilla de ruta de acceso de dirección URL como `GET /values/{id}` sin Hola real `id` valor.
 
-SDK web de Application Insights envía el nombre de la solicitud tal cual en cuanto a mayúsculas y minúsculas. El agrupamiento de la IU distingue entre mayúsculas y minúsculas, de modo que `GET /Home/Index` se cuenta por separado de `GET /home/INDEX`, incluso aunque a menudo producen la misma ejecución de controlador y acción. El motivo es que las URL suelen [distinguir entre mayúsculas y minúsculas](http://www.w3.org/TR/WD-html40-970708/htmlweb.html). Puede comprobar si todos los errores `404` se produjeron con las URL escritas en mayúsculas. En la [publicación del blog ](http://apmtips.com/blog/2015/02/23/request-name-and-url/) encontrará más información sobre la colección de nombres de solicitud del SDK web de ASP.Net.
+Web de visión de aplicación SDK envía el nombre de la solicitud "tal cual" con lo que respecta tooletter caso. Agrupación de interfaz de usuario distingue mayúsculas de minúsculas para `GET /Home/Index` se cuentan por separado desde `GET /home/INDEX` , aunque a menudo dan lugar a Hola misma ejecución de acción y controlador. Hello motivo de esto es que las direcciones URL en general son [entre mayúsculas y minúsculas](http://www.w3.org/TR/WD-html40-970708/htmlweb.html). Puede que desee toosee si todos los `404` realizado en las direcciones URL de hello escritas en mayúsculas. Puede leer en más solicitud la colección de nombre mediante ASP.Net Web SDK en hello [entrada de blog](http://apmtips.com/blog/2015/02/23/request-name-and-url/).
 
 Longitud máxima: 1024 caracteres
 
@@ -46,13 +46,13 @@ Longitud máxima: 2048 caracteres
 
 ## <a name="source"></a>Origen
 
-Origen de la solicitud. Algunos ejemplos son la clave de instrumentación del autor de la llamada o la dirección IP del autor de la llamada. Para obtener más información, vea la página de [correlación](application-insights-correlation.md).
+Origen de solicitud de saludo. Algunos ejemplos son la clave de instrumentación de hello del autor de llamada de Hola o la dirección de ip de hello del autor de llamada de Hola. Para obtener más información, vea la página de [correlación](application-insights-correlation.md).
 
 Longitud máxima: 1024 caracteres
 
 ## <a name="duration"></a>Duración
 
-Duración de la solicitud en formato: `DD.HH:MM:SS.MMMMMM`. Debe ser positiva y tener menos de `1000` días. Este campo es obligatorio, ya que la telemetría de solicitudes representa la operación con el principio y el final.
+Duración de la solicitud en formato: `DD.HH:MM:SS.MMMMMM`. Debe ser positiva y tener menos de `1000` días. Este campo es obligatorio, como solicitud telemetría representa la operación de hello con hello principio y al final de Hola.
 
 ## <a name="response-code"></a>Response code
 
@@ -62,13 +62,13 @@ Longitud máxima: 1024 caracteres
 
 ## <a name="success"></a>Correcto
 
-Indicación de si la llamada es correcta o no. Este campo es obligatorio. Si no se establece explícitamente en `false`, la solicitud se considera correcta. Establezca este valor en `false` si la operación se ha interrumpido por una excepción o ha devuelto un código de resultado de error.
+Indicación de si la llamada es correcta o no. Este campo es obligatorio. Cuando no se establece explícitamente demasiado`false` -solicitud considera toobe correcto. Establezca este valor demasiado`false` si la operación se ha interrumpido por excepción o devolvió el código de resultado de error.
 
-Para las aplicaciones web, Application Insights define las solicitudes como erróneas cuando el código de respuesta es menor que `400` o igual a `401`. Sin embargo, hay casos en los que esta asignación predeterminada no coincide con la semántica de la aplicación. El código de respuesta `404` puede indicar que "no hay registros", lo cual puede formar parte de un flujo regular. También puede indicar que un vínculo está roto. Para los vínculos rotos, puede incluso implementar lógica más avanzada. Puede marcar vínculos rotos como errores solo cuando estos se encuentren en el mismo sitio mediante el análisis de origen de referencia de URL. También puede marcarlos como errores accediendo desde la aplicación para dispositivos móviles de la empresa. De modo similar, `301` y `302` indican un error al acceder desde el cliente que no admite redireccionamiento.
+Para las aplicaciones web de hello, Application Insights definir solicitudes como erróneo cuando el código de respuesta de hello tiene menos hello `400` o igual a demasiado`401`. Sin embargo, hay casos en esta asignación predeterminada no coincide con la semántica de la aplicación hello Hola. El código de respuesta `404` puede indicar que "no hay registros", lo cual puede formar parte de un flujo regular. También puede indicar que un vínculo está roto. Para hello vínculos rotos, incluso se pueden implementar la lógica más avanzada. Puede marcar vínculos rotos como errores sólo cuando esos vínculos se encuentran en hello mediante el análisis de origen de referencia de dirección url del mismo sitio. O bien, márquelos como errores cuando se tiene acceso desde aplicaciones móviles de la compañía de Hola. De igual forma `301` y `302` indica un error cuando se tiene acceso de cliente de Hola que no admite la redirección.
 
-El contenido aceptado parcialmente `206` puede indicar un error de una solicitud general. Por ejemplo, el punto de conexión de Application Insights recibe un lote de elementos de telemetría como una solicitud única. Devuelve el error `206` cuando algunos elementos del lote no se han procesado correctamente. Un aumento de la frecuencia del error `206` indica la presencia de un problema que es necesario investigar. Se aplica una lógica similar al error con varios estados de `207`, en el cual el estado correcto puede ser el peor de los códigos de respuesta separados.
+El contenido aceptado parcialmente `206` puede indicar un error de una solicitud general. Por ejemplo, el punto de conexión de Application Insights recibe un lote de elementos de telemetría como una solicitud única. Devuelve `206` cuando algunos elementos de lote de hello no se procesaron correctamente. Tasa creciente de `206` indica un problema que necesita toobe investigar. Esta misma lógica se aplica demasiado`207` varios Estados que puede ser correcto de Hola Hola peor de los códigos de respuesta independiente.
 
-Puede leer más sobre el código de resultados de solicitudes y el código de estado en la [publicación del blog](http://apmtips.com/blog/2016/12/03/request-success-and-response-code/).
+Puede leer más resultados de solicitud de código y el código de estado de hello [entrada de blog](http://apmtips.com/blog/2016/12/03/request-success-and-response-code/).
 
 ## <a name="custom-properties"></a>Propiedades personalizadas
 
@@ -81,6 +81,6 @@ Puede leer más sobre el código de resultados de solicitudes y el código de es
 ## <a name="next-steps"></a>Pasos siguientes
 
 - [Escritura de telemetría de solicitud personalizada](app-insights-api-custom-events-metrics.md#trackrequest)
-- Consulte el [modelo de datos](application-insights-data-model.md) para ver los tipos y el modelo de datos de Application Insights.
-- Aprenda a [configurar la aplicación ASP.NET Core](app-insights-asp-net.md) con Application Insights.
+- Consulte [modelo de datos](application-insights-data-model.md) para los tipos y el modelo de datos de Application Insights.
+- Obtenga información acerca de cómo demasiado[configurar ASP.NET Core](app-insights-asp-net.md) aplicación con Application Insights.
 - Consulte las [plataformas](app-insights-platforms.md) compatibles con Application Insights.

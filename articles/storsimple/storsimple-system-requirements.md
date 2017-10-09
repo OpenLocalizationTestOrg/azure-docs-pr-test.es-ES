@@ -1,5 +1,5 @@
 ---
-title: Requisitos del sistema StorSimple | Microsoft Docs
+title: requisitos del sistema aaaStorSimple | Documentos de Microsoft
 description: "Describe los requisitos de software, redes y alta disponibilidad y procedimientos recomendados para una solución Microsoft Azure StorSimple."
 services: storsimple
 documentationcenter: NA
@@ -14,28 +14,28 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/06/2017
 ms.author: alkohli
-ms.openlocfilehash: 9fb4d440fad8e4c5af8030c91e6871c6418ab9be
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ec0bb5ad2f2d4c9901da2d95147dd9daa178f6b6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="storsimple-software-high-availability-and-networking-requirements"></a>Software de StorSimple, alta disponibilidad y requisitos de red
 ## <a name="overview"></a>Información general
-Bienvenido a Microsoft Azure StorSimple. Este artículo describe los requisitos del sistema importantes y las prácticas recomendadas para el dispositivo StorSimple y para los clientes de almacenamiento que acceden al dispositivo. Es recomendable que revise cuidadosamente la siguiente información antes de implementar el sistema StorSimple y que luego la consulte según sea necesario durante la implementación y el funcionamiento posterior.
+Página principal de tooMicrosoft StorSimple de Azure. Este artículo describen los requisitos de sistema importantes y prácticas recomendadas para el dispositivo StorSimple y para los clientes de almacenamiento de hello obtiene acceso a dispositivo de Hola. Se recomienda que revise cuidadosamente información Hola antes de implementar el sistema de StorSimple y, a continuación, hacen referencia tooit según sea necesario durante la implementación y las operaciones subsiguientes.
 
-Los requisitos del sistema incluyen:
+los requisitos de sistema de Hello incluyen:
 
-* **Requisitos de software para clientes de almacenamiento** : describe los sistemas operativos compatibles y cualquier requisito adicional para esos sistemas operativos.
-* **Requisitos de red para el dispositivo StorSimple** : proporciona información acerca de los puertos que deben estar abiertos en el firewall para permitir el tráfico iSCSI, de nube o de administración.
+* **Requisitos de software para los clientes de almacenamiento** -describe Hola admitida los sistemas operativos y los requisitos adicionales para estos sistemas operativos.
+* **Requisitos de red para el dispositivo StorSimple hello** -proporciona información acerca de los puertos de hello ese toobe necesidad abierto en el firewall tooallow para el tráfico de iSCSI, de nube o de administración.
 * **Requisitos de alta disponibilidad para StorSimple** : describe los requisitos de alta disponibilidad y las prácticas recomendadas del equipo host y del dispositivo StorSimple. 
 
 ## <a name="software-requirements-for-storage-clients"></a>Requisitos de software para clientes de almacenamiento
-Los siguientes requisitos de software son para los clientes de almacenamiento que tienen acceso a su dispositivo StorSimple.
+Hola según los requisitos de software es para los clientes de almacenamiento de Hola que tienen acceso a su dispositivo de StorSimple.
 
 | Sistemas operativos compatibles | Versión requerida | Requisitos/notas adicionales |
 | --- | --- | --- |
-| Windows Server |2008R2 SP1, 2012, 2012R2, 2016 |Se admiten volúmenes iSCSI de StorSimple para utilizarlos exclusivamente en los siguientes tipos de discos de Windows:<ul><li>Volumen simple en disco básico</li><li>Volumen simple y reflejado en disco dinámico</li></ul>Solo se admiten los iniciadores iSCSI de software presentes de forma nativa en el sistema operativo. No se admiten los iniciadores iSCSI de hardware.<br></br>El aprovisionamiento fino de Windows Server 2012 y 2016 y las características de ODX se admiten si se usa un volumen iSCSI de StorSimple.<br><br>StorSimple puede crear volúmenes con aprovisionamiento fino y totalmente aprovisionados. No puede crear volúmenes de aprovisionamiento parcial.<br><br>El proceso de volver a formatear un volumen con aprovisionamiento fino puede tardar mucho tiempo en completarse. Se recomienda eliminar el volumen y luego crear uno nuevo en lugar de volverlo a formatear. Sin embargo, si aun así prefiere volver a formatear un volumen:<ul><li>Ejecute el siguiente comando antes de volver a formatear para evitar retrasos por recuperación de espacio: <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>Una vez completada la aplicación de formato, use el siguiente comando para volver a habilitar la recuperación de espacio:<br>`fsutil behavior set disabledeletenotify 0`</br></li><li>Aplique la revisión de Windows Server 2012, como se describe en [KB 2878635 ](https://support.microsoft.com/kb/2870270), al equipo con Windows Server.</li></ul></li></ul></ul> Si va a configurar Snapshot Manager de StorSimple o el Adaptador de StorSimple para SharePoint, vaya a los [requisitos de software para ver los componentes opcionales](#software-requirements-for-optional-components). |
+| Windows Server |2008R2 SP1, 2012, 2012R2, 2016 |Se admiten volúmenes iSCSI de StorSimple para su uso en solo Hola siguientes tipos de disco de Windows:<ul><li>Volumen simple en disco básico</li><li>Volumen simple y reflejado en disco dinámico</li></ul>Se admiten solo Hola iniciadores de software iSCSI está presentes de forma nativa en el sistema operativo de Hola. No se admiten los iniciadores iSCSI de hardware.<br></br>El aprovisionamiento fino de Windows Server 2012 y 2016 y las características de ODX se admiten si se usa un volumen iSCSI de StorSimple.<br><br>StorSimple puede crear volúmenes con aprovisionamiento fino y totalmente aprovisionados. No puede crear volúmenes de aprovisionamiento parcial.<br><br>El proceso de volver a formatear un volumen con aprovisionamiento fino puede tardar mucho tiempo en completarse. Se recomienda eliminar volumen hello y, a continuación, crear uno nuevo en lugar de volver a formatear. Sin embargo, si aún así prefiere tooreformat un volumen:<ul><li>Ejecute hello siguiente comando antes de retrasos de recuperación de espacio de hello formatear tooavoid: <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>Una vez completada la formato hello, siguiente Hola de uso de comandos de toore Habilitar recuperación de espacio:<br>`fsutil behavior set disabledeletenotify 0`</br></li><li>Aplique la revisión de Windows Server 2012 Hola tal y como se describe en [KB 2878635](https://support.microsoft.com/kb/2870270) tooyour equipo con Windows Server.</li></ul></li></ul></ul> Si está configurando StorSimple Snapshot Manager o el adaptador de StorSimple para SharePoint, vaya demasiado[requisitos de Software para los componentes opcionales](#software-requirements-for-optional-components). |
 | VMWare ESX |5.5 y 6.0 |Admitido con VMware vSphere como cliente iSCSI La característica VAAI-block se admite con VMware vSphere en dispositivos de StorSimple. |
 | Linux RHEL/CentOS |5, 6 y 7 |Compatibilidad con clientes iSCSI de Linux con versiones del iniciador Open-iSCSI 5, 6 y 7. |
 | Linux |SUSE Linux 11 | |
@@ -46,7 +46,7 @@ Los siguientes requisitos de software son para los clientes de almacenamiento qu
 > 
 
 ## <a name="software-requirements-for-optional-components"></a>requisitos de software para ver los componentes opcionales
-Los siguientes requisitos de software son para los componentes de StorSimple opcionales (Snapshot Manager de StorSimple y Adaptador de StorSimple para SharePoint).
+Hola según los requisitos de software es para hello StorSimple componentes opcionales (Administrador de instantáneas StorSimple y el adaptador de StorSimple para SharePoint).
 
 | Componente | Plataforma de host | Requisitos/notas adicionales |
 | --- | --- | --- |
@@ -54,37 +54,37 @@ Los siguientes requisitos de software son para los componentes de StorSimple opc
 | Adaptador de StorSimple para SharePoint |Windows Server 2008 R2 SP1, 2012, 2012 R2 |<ul><li>El adaptador de StorSimple para SharePoint solo se admite en SharePoint 2010 y SharePoint 2013.</li><li>RBS requiere SQL Server Enterprise Edition, versión 2008 R2 o 2012.</li></ul> |
 
 ## <a name="networking-requirements-for-your-storsimple-device"></a>Requisitos de red para el dispositivo StorSimple
-El dispositivo StorSimple es un dispositivo bloqueado. Sin embargo, los puertos tienen que abrirse en el firewall para permitir el tráfico de iSCSI, de administración y de nube. En la tabla siguiente se enumeran los puertos que deben estar abiertos en el firewall. En esta tabla, *dentro* o *entrante* hace referencia a la dirección desde la que el cliente entrante solicita acceso al dispositivo. *Fuera* o *saliente* hace referencia a la dirección en la que el dispositivo StorSimple envía datos externamente, más allá de la implementación: por ejemplo, saliente a Internet.
+El dispositivo StorSimple es un dispositivo bloqueado. Sin embargo, hay puertos toobe abierto en su tooallow de firewall para tráfico de administración, en la nube e iSCSI. Hello tabla siguiente enumeran los puertos de Hola que necesitan toobe abierto en el firewall. En esta tabla, *en* o *entrada* hace referencia dirección toohello desde el que las solicitudes de cliente entrantes, tener acceso a su dispositivo. *Out* o *saliente* hace referencia en el que el dispositivo StorSimple envía datos externamente, más allá de la implementación de Hola de dirección de toohello: por ejemplo, saliente toohello de Internet.
 
 | Nº de puerto<sup>1,2</sup> | Dentro o fuera | Ámbito de puerto | Obligatorio | Notas |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP)<sup>3</sup> |Fuera |WAN |No |<ul><li>El puerto de salida se usa para obtener acceso a Internet para así recuperar las actualizaciones.</li><li>El usuario puede configurar el proxy web de salida.</li><li>Para permitir que se actualice el sistema, también debe estar abierto este puerto para las IP fijas del controlador.</li></ul> |
-| TCP 443 (HTTPS)<sup>3</sup> |Fuera |WAN |Sí |<ul><li>El puerto de salida se usa para tener acceso a los datos en la nube.</li><li>El usuario puede configurar el proxy web de salida.</li><li>Para permitir que se actualice el sistema, también debe estar abierto este puerto para las IP fijas del controlador.</li><li>Este puerto también se utiliza en ambos controladores para la recolección de elementos no utilizados.</li></ul> |
+| TCP 80 (HTTP)<sup>3</sup> |Fuera |WAN |No |<ul><li>Puerto de salida se usa para las actualizaciones de tooretrieve de acceso a Internet.</li><li>proxy web de salida de Hello es configurable por el usuario.</li><li>tooallow actualizaciones del sistema, este puerto también debe estar abierto para hello IP fijas del controlador.</li></ul> |
+| TCP 443 (HTTPS)<sup>3</sup> |Fuera |WAN |Sí |<ul><li>Puerto de salida se usa para tener acceso a datos en la nube de Hola.</li><li>proxy web de salida de Hello es configurable por el usuario.</li><li>tooallow actualizaciones del sistema, este puerto también debe estar abierto para hello IP fijas del controlador.</li><li>Este puerto también se utiliza en ambos controladores de hello para la recolección.</li></ul> |
 | UDP 53 (DNS) |Fuera |WAN |En algunos casos; consulte las notas. |Este puerto es necesario solo si está utilizando un servidor DNS basado en Internet. |
 | UDP 123 (NTP) |Fuera |WAN |En algunos casos; consulte las notas. |Este puerto solo es necesario si está utilizando un servidor DNS basado en Internet. |
-| TCP 9354 |Fuera |WAN |Sí |El dispositivo StorSimple usa el puerto de salida para comunicarse con el servicio StorSimple Manager. |
-| 3260 (iSCSI) |En el |LAN |No |Este puerto se utiliza para tener acceso a datos a través de iSCSI. |
-| 5985 |En el |LAN |No |El puerto de entrada se usa en Snapshot Manager de StorSimple para comunicarse con el dispositivo de StorSimple.<br>También se usa cuando se conecta de forma remota a Windows PowerShell para StorSimple a través de HTTP. |
-| 5986 |En el |LAN |No |Este puerto se usa al conectarse de forma remota a Windows PowerShell para StorSimple a través de HTTPS. |
+| TCP 9354 |Fuera |WAN |Sí |puerto de salida de Hello usa hello toocommunicate de dispositivo de StorSimple con hello el servicio StorSimple Manager. |
+| 3260 (iSCSI) |En el |LAN |No |Este puerto es usado tooaccess datos a través de iSCSI. |
+| 5985 |En el |LAN |No |Puerto de entrada se usa por el Administrador de instantáneas StorSimple toocommunicate Hola de dispositivos de StorSimple.<br>Este puerto también se utiliza cuando se conecta remotamente tooWindows PowerShell para StorSimple a través de HTTP. |
+| 5986 |En el |LAN |No |Este puerto se usa cuando se conecta remotamente tooWindows PowerShell para StorSimple a través de HTTPS. |
 
-<sup>1</sup> Ningún puerto de entrada debe estar abierto en la red Internet pública.
+<sup>1</sup> ningún puerto de entrada necesario toobe abierto en Hola Internet pública.
 
-<sup>2</sup> Si varios puertos llevan una configuración de puerta de enlace, el orden del tráfico enrutado saliente se determinará según el orden de enrutamiento del puerto que se describe a continuación en [Métrica de enrutamiento](#routing-metric).
+<sup>2</sup> si varios puertos usan una configuración de puerta de enlace, el orden del tráfico enrutado de salida de hello se determinará según se describe en el orden de hello puerto enrutamiento [enrutamiento del puerto](#routing-metric), más adelante.
 
-<sup>3</sup> Las direcciones IP fijas del controlador del dispositivo de StorSimple deben ser enrutables y deben poder conectarse a Internet directamente o a través de un proxy web configurado. Las direcciones IP fijas se utilizan para el mantenimiento de las actualizaciones del dispositivo. Si los controladores del dispositivo no pueden conectarse a Internet a través de direcciones IP fijas, no podrá actualizar el dispositivo StorSimple.
+<sup>3</sup> controlador Hola IP fijo en el dispositivo de StorSimple debe ser enrutable y pueda tooconnect toohello Internet directamente o a través de hello configura proxy web. direcciones IP de Hello fijada se utilizan para dar servicio a dispositivos de hello actualizaciones toohello. Si los controladores de dispositivo de hello no pueden conectar toohello IP fijas de Internet a través de hello, no será capaz de tooupdate el dispositivo StorSimple.
 
 > [!IMPORTANT]
-> Asegúrese de que el firewall no modifica ni descifra ningún tráfico SSL entre el dispositivo de StorSimple y Azure.
+> Asegúrese de que firewall de hello no modificar o descifrar todo el tráfico SSL entre el dispositivo de StorSimple de Hola y Azure.
 > 
 > 
 
 ### <a name="url-patterns-for-firewall-rules"></a>Patrones de URL para reglas de firewall
-Con frecuencia, los administradores de red pueden configurar reglas avanzadas de firewall de acuerdo con los patrones de URL para filtrar el tráfico saliente y entrante. El dispositivo StorSimple y el servicio de StorSimple Manager dependen de otras aplicaciones de Microsoft, como el Bus de servicio de Microsoft Azure, el Servicio de control de acceso de Microsoft Azure AD, las cuentas de almacenamiento y los servidores de Microsoft Update. Es posible usar los patrones de URL asociados a estas aplicaciones para configurar las reglas de firewall. Es importante entender que los patrones de URL asociados a estas aplicaciones pueden cambiar. Esta realidad, a su vez, requiere que el administrador de red supervise y actualice las reglas de firewall de su StorSimple de forma pertinente y oportuna.
+Los administradores de red a menudo pueden configurar firewall avanzada reglas basadas en Hola Hola de toofilter de patrones de dirección URL de entrada y de Hola el tráfico saliente. El dispositivo de StorSimple y el servicio StorSimple Manager Hola dependen de otras aplicaciones de Microsoft como Service Bus de Azure, Azure Active Directory Access Control, cuentas de almacenamiento y servidores de Microsoft Update. patrones de dirección URL de Hello asociadas a estas aplicaciones pueden ser tooconfigure usa reglas de firewall. Es importante toounderstand que pueden cambiar los patrones de dirección URL de hello asociadas a estas aplicaciones. Esto a su vez necesitarán toomonitor de administrador de red de Hola y actualizar las reglas de firewall para StorSimple como y cuando sea necesario.
 
-Se recomienda que establezca las reglas de firewall para el tráfico saliente, basándose en las direcciones IP fijas de StorSimple, de forma generosa en la mayoría de los casos. Sin embargo, puede utilizar la información siguiente con el objetivo de establecer las reglas avanzadas de firewall que se necesitan para crear entornos seguros.
+Se recomienda que establezca las reglas de firewall para el tráfico saliente, basándose en las direcciones IP fijas de StorSimple, de forma generosa en la mayoría de los casos. Sin embargo, puede utilizar información de hello debajo tooset avanzadas reglas de firewall que son entornos seguros toocreate necesarios.
 
 > [!NOTE]
-> Las direcciones IP del dispositivo (origen) siempre se deben establecer en todas las interfaces de red habilitadas. Las IP de destino, por su parte, se deben establecer en los [intervalos de direcciones IP del centro de datos de Azure](https://www.microsoft.com/en-us/download/confirmation.aspx?id=41653).
+> siempre se debe establecer el dispositivo de Hello (origen) de direcciones IP tooall interfaces de red de hello habilitado. destino de Hello direcciones IP deben establecerse demasiado[intervalos IP del centro de datos Azure](https://www.microsoft.com/en-us/download/confirmation.aspx?id=41653).
 > 
 > 
 
@@ -111,32 +111,32 @@ Se recomienda que establezca las reglas de firewall para el tráfico saliente, b
 | `https://*.partners.extranet.microsoft.com/*` |Paquete de soporte |Interfaces de red habilitadas para la nube |
 
 ### <a name="routing-metric"></a>Métrica de enrutamiento
-Una métrica de enrutamiento se asocia con las interfaces y con la puerta de enlace que enruta los datos a las redes específicas. La métrica de enrutamiento la usa el protocolo de enrutamiento para calcular la mejor ruta a un destino determinado, si aprende que existen varias rutas al mismo destino. Cuanto más bajo sea el valor de la métrica de enrutamiento, mayor será la preferencia.
+Una métrica de enrutamiento está asociada con interfaces de Hola y puerta de enlace de Hola que enrutar Hola datos toohello especificado redes. Métrica de enrutamiento se usa por hello enrutamiento protocolo toocalculate Hola mejor ruta de acceso tooa dado de destino, si aprende varias rutas de acceso existen toohello mismo destino. Hola inferior Hola enrutamiento métrica, Hola Hola preferencia mayor.
 
-En el contexto de StorSimple, si se configuran varias puertas de enlace e interfaces de red para el tráfico del canal, la métrica de enrutamiento entra en juego para determinar el orden relativo en que se usarán las interfaces. El usuario no puede cambiar las métricas de enrutamiento. Sin embargo, puede usar el cmdlet `Get-HcsRoutingTable` para imprimir la tabla de enrutamiento (y las métricas) en el dispositivo de StorSimple. Para más información sobre el cmdlet Get-HcsRoutingTable, consulte [Solución de problemas de implementación de dispositivos de StorSimple](storsimple-troubleshoot-deployment.md).
+Hola contexto de StorSimple, si hay varias interfaces de red y puertas de enlace había configurada toochannel tráfico, métrica de enrutamiento de hello entrará en orden relativo play toodetermine hello en qué Hola obtener utilizará interfaces. no se puede cambiar la métrica de enrutamiento de Hola por usuario de Hola. Sin embargo, puede usar hello `Get-HcsRoutingTable` cmdlet tooprint tabla de enrutamiento de hello (y las métricas) en el dispositivo StorSimple. Para más información sobre el cmdlet Get-HcsRoutingTable, consulte [Solución de problemas de implementación de dispositivos de StorSimple](storsimple-troubleshoot-deployment.md).
 
-Los algoritmos de la métrica de enrutamiento difieren en función de la versión de software que se ejecuta en el dispositivo de StorSimple.
+Hola algoritmos de métrica de enrutamiento es diferente según la versión del software Hola ejecutando en el dispositivo StorSimple.
 
-**Versiones anteriores a Update 1**
+**Las versiones anterior tooUpdate 1**
 
-Esto incluye las versiones de software anteriores a Update 1, como GA, 0.1, 0.2 o 0.3. El orden basado en la métrica de enrutamiento es el siguiente:
+Esto incluye la versión anterior tooUpdate 1 como Hola GA, 0.1, 0.2 o 0.3 de versiones de software. orden de Hello en función de la métrica de enrutamiento es el siguiente:
 
-   *Última interfaz de red de 10 GbE configurada > Otra interfaz de red de 10 GbE > Última interfaz de red de 1 GbE configurada > Otra interfaz de red de 1 GbE*
+   *Última interfaz de red de 10 GbE configurada &gt; Otra interfaz de red de 10 GbE &gt; Última interfaz de red de 1 GbE configurada &gt; Otra interfaz de red de 1 GbE*
 
-**Versiones a partir de Update 1 y anteriores a Update 2**
+**Versiones a partir de actualizaciones 1 y 2 de tooUpdate anterior**
 
-Esto incluye las versiones de software, como 1, 1.1 o 1.2. El orden basado en la métrica de enrutamiento se decide en función de lo siguiente:
+Esto incluye las versiones de software, como 1, 1.1 o 1.2. orden de Hello en función de la métrica de enrutamiento se decide como sigue:
 
-   *DATA 0 > Última interfaz de red de 10 GbE configurada > Otra interfaz de red de 10 GbE > Última interfaz de red de 1 GbE configurada > Otra interfaz de red de 1 GbE*
+   *DATA 0 &gt; Última interfaz de red de 10 GbE configurada &gt; Otra interfaz de red de 10 GbE &gt; Última interfaz de red de 1 GbE configurada &gt; Otra interfaz de red de 1 GbE*
 
-   En Update 1, se establece la métrica de enrutamiento de DATA 0 más baja; por lo tanto, todo el tráfico en la nube se enruta a través de DATA 0. Tome nota de esto si hay más de una interfaz de red habilitada para la nube en el dispositivo de StorSimple.
+   En Update 1, métrica de enrutamiento de Hola de DATA 0 se realiza hello más baja; por lo tanto, todo el tráfico en la nube de la Hola se enruta a través de DATA 0. Tome nota de esto si hay más de una interfaz de red habilitada para la nube en el dispositivo de StorSimple.
 
 **Versiones a partir de Update 2**
 
-Update 2 tiene varias mejoras relacionadas con las redes y las métricas de enrutamiento han cambiado. El comportamiento puede explicarse como sigue.
+Actualización 2 tiene varias mejoras relacionadas con las redes y métrica de enrutamiento de hello ha cambiado. comportamiento de Hello puede explicarse como sigue.
 
-* Un conjunto de valores predeterminados se han asignado a interfaces de red.     
-* Considere una tabla de ejemplo que se muestra a continuación con valores asignados a las diversas interfaces de red si están habilitadas para la nube o deshabilitadas para la nube pero con una puerta de enlace configurada. Tenga en cuenta que los valores asignados en este artículo representan únicamente valores de ejemplo.
+* Un conjunto de valores predeterminados se han asignado toonetwork interfaces.     
+* Considere la posibilidad de una tabla de ejemplo que se muestra a continuación con valores asignados toohello diversas interfaces de red cuando están habilitadas en la nube o deshabilitados en la nube, pero con una puerta de enlace configurada. Nota los valores de hello asignados aquí son solo los valores de ejemplo.
 
     | Interfaz de red | Habilitada para la nube | Deshabilitada para la nube con puerta de enlace |
     |-----|---------------|---------------------------|
@@ -148,105 +148,105 @@ Update 2 tiene varias mejoras relacionadas con las redes y las métricas de enru
     | Data 5  | 6            | 60                       |
 
 
-* El orden en que el tráfico de nube se enrutará a través de las interfaces de red es:
+* orden de Hello en el que el tráfico de hello en la nube se enrutará a través de interfaces de red de hello es:
   
-    *Data 0 > Data 1 > Date 2 > Data 3 > Data 4 > Data 5*
+    *Data 0 &gt; Data 1 &gt; Date 2 &gt; Data 3 &gt; Data 4 &gt; Data 5*
   
-    Esto también puede explicarse mediante el ejemplo siguiente.
+    Esto puede explicarse por el siguiente ejemplo de Hola.
   
-    Consideremos un dispositivo de StorSimple con dos interfaces de red habilitadas para la nube, Data 0 y Data 5. De Data 1 a Data 4 la interfaz estará deshabilitada para la nube pero con una puerta de enlace configurada. El orden en que el tráfico se enrutará para este dispositivo será:
+    Consideremos un dispositivo de StorSimple con dos interfaces de red habilitadas para la nube, Data 0 y Data 5. De Data 1 a Data 4 la interfaz estará deshabilitada para la nube pero con una puerta de enlace configurada. orden de Hello en el que se enrutará el tráfico para este dispositivo puede ser:
   
-    *Data 0 (1) > Data 5 (6) > Data 1 (20) > Data 2 (30) > Data 3 (40) > Data 4 (50)*
+    *Data 0 (1) &gt; Data 5 (6) &gt; Data 1 (20) &gt; Data 2 (30) &gt; Data 3 (40) &gt; Data 4 (50)*
   
-    *donde los números entre paréntesis indican las métricas de enrutamientos respectivas.*
+    *donde los números de hello entre paréntesis indican las métricas de enrutamiento respectivas Hola.*
   
-    Si se produce un error en Data 0, el tráfico de nube se enrutará a través de Data 5. Habida cuenta que se configura una puerta de enlace para todas las demás redes, si se produce algún error en Data 0 y Data 5, el tráfico de nube pasará por Data 1.
-* Si se produce un error en una interfaz de red habilitada para la nube, entonces habrá 3 reintentos con un retraso de 30 segundos para conectarse a la interfaz. Si se produce un error en todos los reintentos, el tráfico se enruta a la siguiente interfaz habilitada para la nube disponible según se determine en la tabla de enrutamiento. Si se producen errores en todas las interfaces de red habilitadas para la nube, se producirá una conmutación por error del dispositivo al otro controlador (sin reinicio en este caso).
-* Si se produce un error de la IP virtual de una interfaz de red habilitada para iSCSI, se producirán 3 reintentos con un retraso de 2 segundos. Este comportamiento ha sido el mismo desde las versiones anteriores. Si se produce un error en todas las interfaces de red iSCSI, se producirá una conmutación por error del controlador (acompañada de un reinicio).
-* También se genera una alerta en el dispositivo de StorSimple cuando hay un error en la IP virtual. Para más información, vaya a la [referencia rápida de alertas](storsimple-manage-alerts.md).
+    Si se produce un error en Data 0, tráfico de nube de hello obtener enrutará a través de Data 5. Dado que una puerta de enlace está configurado en todos los demás red, si se toofail de Data 0 y Data 5, tráfico de la nube de hello pasará a través de datos 1.
+* Si se produce un error en una interfaz de red habilitada para la nube, entonces no será 3 reintentos con un 30 segunda retraso tooconnect toohello interfaz. Si se produce un error en todos los reintentos de hello, tráfico de hello es toohello enrutado siguiente habilitada para la nube interfaz disponible según lo determinado por la tabla de enrutamiento de Hola. Si todos Hola habilitada para la nube producirá un error en interfaces de red, se producirá un error de dispositivo de hello sobre toohello otro controlador (no necesita reiniciar en este caso).
+* Si se produce un error de la IP virtual de una interfaz de red habilitada para iSCSI, se producirán 3 reintentos con un retraso de 2 segundos. Este comportamiento ha permanecido Hola igual de versiones anteriores de Hola. Si se produce un error en todas las interfaces de red de iSCSI de hello, se producirá una conmutación por error de controlador (acompañado por un reinicio).
+* También se genera una alerta en el dispositivo de StorSimple cuando hay un error en la IP virtual. Para obtener más información, consulte demasiado[referencia rápida de alerta](storsimple-manage-alerts.md).
 * En términos de reintentos, iSCSI tendrá prioridad sobre la nube.
   
-    Considere el ejemplo siguiente: un dispositivo de StorSimple tiene dos interfaces de red habilitadas, Data 0 y Data 1. Data 0 está habilitada para la nube mientras que Data 1 está habilitada para la nube y para iSCSI. Ninguna otra interfaz de red de este dispositivo está habilitada para la nube ni para iSCSI.
+    Considere el siguiente ejemplo de Hola: StorSimple un dispositivo tiene dos interfaces de red habilitadas, Data 0 y 1 de datos. Data 0 está habilitada para la nube mientras que Data 1 está habilitada para la nube y para iSCSI. Ninguna otra interfaz de red de este dispositivo está habilitada para la nube ni para iSCSI.
   
-    Si se produce un error de Data 1, dado que es la última interfaz de red de iSCSI, esto produce una conmutación por error del controlador a Data 1 en el otro controlador.
+    Si se produce un error de datos 1, dado es la interfaz de red de iSCSI última hello, esto producirá un tooData de conmutación por error del controlador 1 hello en otro controlador.
 
 ### <a name="networking-best-practices"></a>Prácticas recomendadas de redes
-Además de los requisitos de redes anteriores, para obtener un rendimiento óptimo de la solución StorSimple, cumpla las siguientes prácticas recomendadas:
+Además toohello sobre requisitos de red, para un rendimiento óptimo hello de la solución StorSimple, tenga en cuenta toohello seguir las prácticas recomendadas:
 
-* Asegúrese de que el dispositivo StorSimple tenga un ancho de banda de 40 Mbps (o más) disponible en todo momento. Este ancho de banda no debe compartirse (o debe garantizarse la asignación mediante el uso de las directivas de QoS) con otras aplicaciones.
-* Asegúrese de que la conectividad de red a Internet está disponible en todo momento. Las conexiones a Internet esporádicas o poco confiables de los dispositivos, incluida la falta total de conectividad a Internet, dará como resultado una configuración no admitida.
-* Aísle el tráfico iSCSI y de la nube mediante interfaces de red específicas en el dispositivo para el acceso a iSCSI y a la nube. Para obtener más información, consulte cómo [modificar interfaces de red](storsimple-modify-device-config.md#modify-network-interfaces) en el dispositivo de StorSimple.
+* Asegúrese de que el dispositivo StorSimple tenga un ancho de banda de 40 Mbps (o más) disponible en todo momento. No se debe compartir este ancho de banda (o asignación debe garantizarse mediante el uso de Hola de las directivas de QoS) con otras aplicaciones.
+* Asegúrese de que hay conectividad de red toohello Internet en todo momento. Esporádicos o poco confiables Internet conexiones toohello dispositivos, no incluidos conectividad a Internet sea, dará como resultado una configuración no admitida.
+* Aislar el tráfico de iSCSI y la nube de hello mediante interfaces de red en el dispositivo para el acceso iSCSI y nube dedicadas. Para obtener más información, vea cómo demasiado[modificar interfaces de red](storsimple-modify-device-config.md#modify-network-interfaces) en el dispositivo StorSimple.
 * No utilice una configuración de Protocolo de control de adición de enlaces (LACP) para las interfaces de red. Se trata de una configuración no admitida.
 
 ## <a name="high-availability-requirements-for-storsimple"></a>Requisitos de alta disponibilidad para StorSimple
-La plataforma de hardware que se incluye con la solución de StorSimple tiene características de confiabilidad y disponibilidad que proporcionan la base para una infraestructura de almacenamiento de alta disponibilidad con tolerancia a errores en su centro de datos. Sin embargo, existen requisitos y procedimientos recomendados que debe cumplir para ayudar a garantizar la disponibilidad de la solución StorSimple. Antes de implementar StorSimple, revise cuidadosamente los siguientes requisitos y recomendaciones para el dispositivo StorSimple y los equipos host conectados.
+plataforma de hardware de Hola que se incluye con la solución de StorSimple de hello tiene características de disponibilidad y confiabilidad que proporcionan los cimientos para una infraestructura de almacenamiento de alta disponibilidad, tolerancia en el centro de datos. Sin embargo, deben cumplirse los requisitos y las prácticas recomendadas que deben obedecer toohelp garantizan la disponibilidad de hello de la solución StorSimple. Antes de implementar StorSimple, revise atentamente Hola siguiendo los requisitos y procedimientos recomendados para el dispositivo de StorSimple de Hola y equipos host conectados.
 
-Para obtener más información sobre la supervisión y el mantenimiento de los componentes de hardware del dispositivo StorSimple, vaya a [Uso del servicio StorSimple Manager para supervisar el estado y los componentes de hardware](storsimple-monitor-hardware-status.md) y [Reemplazo de componentes de hardware de StorSimple](storsimple-hardware-component-replacement.md).
+Para obtener más información sobre la supervisión y mantenimiento de componentes de hardware de hello de dispositivo StorSimple, vaya demasiado[utilizar componentes de hardware de toomonitor de servicio de administrador de StorSimple de Hola y estado](storsimple-monitor-hardware-status.md) y [StorSimple sustitución de componentes de hardware](storsimple-hardware-component-replacement.md).
 
 ### <a name="high-availability-requirements-and-procedures-for-your-storsimple-device"></a>Requisitos de alta disponibilidad y procedimientos para el dispositivo StorSimple
-Revise la siguiente información con cuidado para garantizar la alta disponibilidad del dispositivo StorSimple.
+Hola de revisión siguiente información cuidadosamente alta disponibilidad de Hola de tooensure del dispositivo StorSimple.
 
 #### <a name="pcms"></a>PCM
-Los dispositivos de StorSimple incluyen módulos de alimentación y refrigeración (PCM) redundantes intercambiables en caliente. Cada PCM tiene suficiente capacidad para proporcionar un servicio para el chasis completo. Para garantizar una alta disponibilidad, debe instalar ambos PCM.
+Los dispositivos de StorSimple incluyen módulos de alimentación y refrigeración (PCM) redundantes intercambiables en caliente. Cada PCM tiene suficiente servicio tooprovide de capacidad todo chasis de Hola. alta disponibilidad tooensure, ambos PCM debe instalarse.
 
-* Conecte los PCM a diferentes fuentes de alimentación para proporcionar disponibilidad si se produce un error en una fuente de alimentación.
+* Conectar su disponibilidad PCM toodifferent power orígenes tooprovide si se produce un error en una fuente de alimentación.
 * Si se produce un error en un PCM, solicite su sustitución inmediatamente.
-* Retire el PCM que presenta el error unicamente cuando tenga el recambio y esté listo para instalarlo.
-* No quite los PCM simultáneamente. El módulo PCM incluye el módulo de batería de reserva. La eliminación de los PCM dará lugar a un apagado sin protección de la batería y no se guardará el estado del dispositivo. Para obtener más información sobre la batería, vaya a [Mantenimiento del módulo de batería de reserva](storsimple-battery-replacement.md#maintain-the-backup-battery-module).
+* Quite el PCM con error solo cuando tiene reemplazo hello y tooinstall listo.
+* No quite los PCM simultáneamente. módulo PCM en Hello incluye el módulo de batería de reserva de Hola. La eliminación de hello PCM dará como resultado un apagado sin protección de batería y no se guardará el estado del dispositivo Hola. Para obtener más información acerca de la batería de hello, vaya demasiado[módulo de batería de reserva de mantener hello](storsimple-battery-replacement.md#maintain-the-backup-battery-module).
 
 #### <a name="controller-modules"></a>Módulos de controlador
-Los dispositivos StorSimple incluyen módulos de controlador intercambiables en caliente. Los módulos de controlador funcionan de manera activa/pasiva. En un momento dado, un módulo de controlador está activo y proporcionando servicio, mientras que el módulo del controlador permanece pasivo. El módulo de controlador pasivo está encendido y pasa a estar operativo si el módulo del controlador activo falla o es retirado. Cada módulo de controlador dispone de suficiente capacidad para proporcionar un servicio para el chasis completo. Los módulos de controlador deben instalarse para garantizar una alta disponibilidad.
+Los dispositivos StorSimple incluyen módulos de controlador intercambiables en caliente. módulos de controlador de Hello funcionan en modo activo/pasivo. En un momento dado, un módulo de controlador está activo y proporcionando servicio, mientras Hola otro módulo de controlador es pasivo. módulo del controlador pasivo Hola está encendida y empieza a funcionar si el módulo del controlador activo de hello falla o se quitan. Cada módulo de controlador tiene suficiente servicio tooprovide de capacidad todo chasis de Hola. Dos módulos de controlador deben estar instalado tooensure alta disponibilidad.
 
 * Asegúrese de que ambos módulos de controlador estén instalados en todo momento.
 * Si se produce un error en un módulo de controlador, solicite su sustitución inmediatamente.
-* Retire el módulo de controlador que presenta el error unicamente cuando tenga el recambio y esté listo para instalarlo. La extracción de un módulo durante períodos prolongados afectará al flujo de aire y, por tanto, al enfriamiento del sistema.
-* Asegúrese de que las conexiones de red a los módulos de controlador sean idénticas, y que las interfaces de red conectadas tengan una configuración de red idéntica.
-* Si un módulo del controlador falla o necesita ser sustituido, asegúrese de que el otro módulo del controlador esté en estado activo antes de reemplazar el módulo del controlador que presenta el error. Para comprobar que un controlador está activo, vaya a [Identificación del controlador activo en el dispositivo](storsimple-controller-replacement.md#identify-the-active-controller-on-your-device).
-* No quite ambos módulos del controlador al mismo tiempo. Si se está efectuando una conmutación por error en un controlador, no apague el módulo del controlador en modo de espera ni lo retire del chasis.
+* Quitar un módulo de controlador con error solo cuando tenga el recambio de Hola y son tooinstall listo. Si quita un módulo durante períodos prolongados afectará flujo de aire hello y, por tanto, Hola refrigeración del sistema de Hola.
+* Asegúrese de módulos de controlador de tooboth de conexiones de red de hello son idénticos, y hello interfaces de red conectadas tienen una configuración de red idéntica.
+* Si un módulo de controlador falla o necesita sustitución, asegúrese de que ese Hola otro módulo de controlador está en un estado activo antes de reemplazar el módulo de controlador con error de Hola. tooverify que un controlador está activo, vaya demasiado[controlador activo de identificación hello en el dispositivo](storsimple-controller-replacement.md#identify-the-active-controller-on-your-device).
+* No quite los dos módulos de controlador en hello mismo tiempo. Si una conmutación por error de controlador está en curso, no apague el módulo de controlador en espera de Hola o quitarlos del chasis de Hola.
 * Después de una conmutación por error del controlador, espere al menos cinco minutos antes de quitar cualquier módulo del controlador.
 
 #### <a name="network-interfaces"></a>Interfaces de red
 Los módulos del controlador del dispositivo StorSimple tienen cada uno cuatro interfaces de red Ethernet de 1 Gigabit y dos de 10 Gigabits.
 
-* Asegúrese de que las conexiones de red a los módulos de controlador sean idénticas y que las interfaces de red interconectadas por el módulo del controlador estén conectadas para disponer de una configuración de red idéntica.
-* Cuando sea posible, implemente conexiones de red a través de diferentes conmutadores para garantizar la disponibilidad del servicio si se produce un error del dispositivo de red.
-* Antes de desconectar la única o la última interfaz restante compatible con iSCSI (con direcciones IP asignadas), deshabilite la interfaz primero y, a continuación, desconecte los cables. Si la interfaz se desconecta en primer lugar, hará que el controlador activo conmute por error al controlador pasivo. Si el controlador pasivo también tiene sus interfaces correspondientes desconectadas, ambos controladores se reiniciarán varias veces antes de establecerse en un controlador.
-* Conecte al menos dos interfaces de datos a la red desde cada módulo del controlador.
-* Si ha habilitado las dos interfaces de 10 GbE, impleméntelas en distintos conmutadores.
-* Cuando sea posible, use MPIO en servidores para asegurarse de que los servidores pueden tolerar un vínculo, red o errores de interfaz.
+* Asegúrese de que módulos de controlador de tooboth de conexiones de red de hello son idénticos e interfaces de red de Hola que interfaces de módulo de controlador de hello están conectado toohave una configuración de red idéntica.
+* Cuando sea posible, implemente las conexiones de red en disponibilidad del servicio de diferentes conmutadores tooensure en caso de hello de un error de dispositivo de red.
+* Antes de desconectar un solo Hola o restante de la última Hola interfaz habilitada para iSCSI (con direcciones IP asignadas), deshabilitar primero la interfaz de hello y, a continuación, desconecte los cables de Hola. Si interfaz Hola se desconecta en primer lugar, hará que Hola controlador activo toofail sobre toohello el controlador pasivo. Si el controlador pasivo hello tiene también sus interfaces correspondientes desconectadas, ambos controladores Hola se reiniciarán varias veces antes de establecerse en un controlador.
+* Conectar al menos dos redes de toohello de interfaces de datos de cada módulo de controlador.
+* Si ha habilitado la interfaces de hello dos de 10 GbE, impleméntelas en diferentes conmutadores.
+* Cuando sea posible, use MPIO en tooensure de servidores que los servidores de hello pueden tolerar un vínculo, red o errores de interfaz.
 
-Para obtener más información sobre cómo conectar en red su dispositivo para obtener alta disponibilidad y rendimiento, vaya a [Instalación del dispositivo StorSimple 8100](storsimple-8100-hardware-installation.md#cable-your-storsimple-8100-device) o [Instalación del dispositivo StorSimple 8600](storsimple-8600-hardware-installation.md#cable-your-storsimple-8600-device).
+Para obtener más información sobre el dispositivo para alta disponibilidad y rendimiento de la red, vaya demasiado[instalar el dispositivo StorSimple 8100](storsimple-8100-hardware-installation.md#cable-your-storsimple-8100-device) o [instalar su dispositivo 8600 StorSimple](storsimple-8600-hardware-installation.md#cable-your-storsimple-8600-device).
 
 #### <a name="ssds-and-hdds"></a>SSD y unidades de disco duro
-Los dispositivos StorSimple incluyen discos de estado sólido (SSD) y unidades de disco duro (HDD) que están protegidos con espacios reflejados. El uso de espacios reflejados garantiza que el dispositivo sea capaz de tolerar el error de uno o más SSD o unidades de disco duro.
+Los dispositivos StorSimple incluyen discos de estado sólido (SSD) y unidades de disco duro (HDD) que están protegidos con espacios reflejados. Uso de espacios reflejados garantiza que ese dispositivo hello es Error de hello tootolerate capaz de uno o varios SSD o HDD.
 
 * Asegúrese de que estén instalados todos los módulos SSD y de disco duro.
 * Si se produce un error en un PCM o en un disco duro, solicite su sustitución inmediatamente.
-* Si un SSD o una unidad de disco duro falla o requiere su sustitución, asegúrese de retirar solo los SSD o unidades de disco duro que requieran ser reemplazados.
-* No retire más de un SSD o unidad de disco duro del sistema en un determinado momento.
+* Si una SDD o HDD se produce un error o es necesario sustituirla, asegúrese de que quita solo Hola SSD o HDD que requiera la sustitución.
+* No quite más de un SSD o HDD del sistema de Hola en cualquier momento en el tiempo.
   Es posible que un error de 2 o más discos de cierto tipo (disco duro, SSD) o errores consecutivos dentro de un período de tiempo breve provoquen un fallo de funcionamiento en el sistema y una posible pérdida de datos. Si esto ocurre, [póngase en contacto con el servicio de soporte técnico de Microsoft](storsimple-contact-microsoft-support.md) para obtener ayuda.
-* Durante la sustitución, en la página **Mantenimiento**, supervise el **Estado de hardware** de las unidades de SSD y unidades de disco duro. Un estado de verificación verde indica que los discos están en buen estado o correctos, mientras que un signo de exclamación rojo indica un error de SSD o de unidad de disco duro.
-* Se recomienda configurar instantáneas en la nube para todos los volúmenes que deberá proteger en caso de que se produzca un error del sistema.
+* Durante la sustitución, supervise hello **estado del Hardware** en hello **mantenimiento** página para unidades de hello en hello SSD y HDD. Un estado de la marca de verificación verde indica que los discos de Hola correcto o bueno, mientras que una exclamación roja indica un error de SSD o HDD.
+* Se recomienda configurar instantáneas en la nube para todos los volúmenes que necesita tooprotect en el caso de un error del sistema.
 
 #### <a name="ebod-enclosure"></a>Receptáculo EBOD
-El modelo 8600 del dispositivo StorSimple incluye un receptáculo Extended Bunch of Disks (EBOD) además del receptáculo principal. Un EBOD contiene controladores EBOD y unidades de disco duro (HDD) que están protegidas mediante espacios reflejados. El uso de espacios reflejados garantiza que el dispositivo sea capaz de tolerar el error de uno o más unidades de disco duro. El receptáculo EBOD está conectado al receptáculo principal a través de cables SAS redundantes.
+Modelo de dispositivo de StorSimple 8600 incluye un alojamiento extendido grupo de discos (EBOD) en el alojamiento principal de suma toohello. Un EBOD contiene controladores EBOD y unidades de disco duro (HDD) que están protegidas mediante espacios reflejados. Uso de espacios reflejados garantiza que ese dispositivo hello es Error de hello tootolerate capaz de uno o más unidades de disco duro. Hola alojamiento de EBOD está conectado toohello alojamiento principal mediante cables SAS redundantes.
 
-* Asegúrese de que los módulos del controlador del receptáculo EBOD, los cables SAS y todas las unidades de disco duro estén instalado en todo momento.
+* Asegúrese de que los dos módulos de controlador de alojamiento EBOD, cables SAS y todas las unidades de disco duro de Hola se instalan en todo momento.
 * Si se produce un error en un módulo de controlador de receptáculo EBOD, solicite su sustitución inmediatamente.
-* Si se produce un error en un módulo de controlador de receptáculo EBOD, asegúrese de que el módulo del controlador esté activo antes de reemplazar el módulo con error. Para comprobar que un controlador está activo, vaya a [Identificación del controlador activo en el dispositivo](storsimple-controller-replacement.md#identify-the-active-controller-on-your-device).
-* Durante la sustitución de un módulo del controlador EBOD, supervise de manera continua el estado del componente en el servicio StorSimple Manager mediante el acceso a **Mantenimiento** > **Estado del hardware**.
-* Si se produce un error en un cable SAS o requiere ser sustituido (el Soporte de Microsoft deberá estar implicado en la toma de dicha determinación), asegúrese de quitar solamente el cable de SAS que deba sustituirse.
-* No retire simultáneamente ambos cables SAS del sistema en un determinado momento.
+* Si se produce un error en un módulo de controlador de alojamiento EBOD, asegúrese de que ese Hola otro módulo de controlador está activo antes de reemplazar el módulo con error Hola. tooverify que un controlador está activo, vaya demasiado[controlador activo de identificación hello en el dispositivo](storsimple-controller-replacement.md#identify-the-active-controller-on-your-device).
+* Durante una sustitución del módulo de controlador EBOD, supervise continuamente Hola estado del componente de hello en el servicio StorSimple Manager Hola accediendo **mantenimiento** > **estado del Hardware**.
+* Si un cable SAS se produce un error o es necesario sustituirla (Microsoft Support debe estar implicado toomake esta decisión), asegúrese de que elimina solo cable SAS de Hola que requiera la sustitución.
+* No simultáneamente quitar dos cables SAS de sistema de Hola en cualquier momento en el tiempo.
 
 ### <a name="high-availability-recommendations-for-your-host-computers"></a>Recomendaciones de alta disponibilidad para los equipos host
-Revise cuidadosamente estos procedimientos recomendados para garantizar la alta disponibilidad de los hosts conectados al dispositivo de StorSimple.
+Revise cuidadosamente estos mejores prácticas tooensure Hola alta disponibilidad del dispositivo de StorSimple de tooyour conectado de hosts.
 
-* Configure StorSimple con [configuraciones de clúster de servidor de archivos de dos nodos][1]. Mediante la eliminación de puntos individuales de error y el aumento de la redundancia en el lado del host, la solución completa pasará a presentar una alta disponibilidad.
-* Use recursos compatibles de disponibilidad continua (CA) disponibles con Windows Server 2012 (SMB 3.0) para lograr una alta disponibilidad durante la conmutación por error de los controladores de almacenamiento. Para obtener información adicional para configurar los clústeres de servidores de archivos y de recursos compartidos disponibles continuamente con Windows Server 2012, consulte este [vídeo de demostración](http://channel9.msdn.com/Events/IT-Camps/IT-Camps-On-Demand-Windows-Server-2012/DEMO-Continuously-Available-File-Shares).
+* Configure StorSimple con [configuraciones de clúster de servidor de archivos de dos nodos][1]. Mediante la eliminación de puntos únicos de fallo e integrar redundancia en el lado del host de hello, toda la solución Hola se convierte en la alta disponibilidad.
+* Usar disponibles continuamente (CA) recursos compartidos disponibles con Windows Server 2012 (SMB 3.0) para alta disponibilidad durante la conmutación por error de controladores de almacenamiento de Hola. Para obtener información adicional para configurar clústeres de servidores de archivos y recursos compartidos disponibles continuamente con Windows Server 2012, consulte toothis [demostración en vídeo](http://channel9.msdn.com/Events/IT-Camps/IT-Camps-On-Demand-Windows-Server-2012/DEMO-Continuously-Available-File-Shares).
 
 ## <a name="next-steps"></a>Pasos siguientes
 * [Obtenga más información acerca de los límites de StorSimple](storsimple-limits.md).
-* [Obtenga más información sobre cómo implementar la solución StorSimple](storsimple-deployment-walkthrough-u2.md).
+* [Obtenga información acerca de cómo toodeploy su solución de StorSimple](storsimple-deployment-walkthrough-u2.md).
 
 <!--Reference links-->
 [1]: https://technet.microsoft.com/library/cc731844(v=WS.10).aspx

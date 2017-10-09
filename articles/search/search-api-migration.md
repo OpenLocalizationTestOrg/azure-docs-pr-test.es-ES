@@ -1,6 +1,6 @@
 ---
-title: "Actualización de API de REST del servicio Azure Search versión 2016-09-01 | Microsoft Docs"
-description: "Actualización de API de REST del Servicio Azure Search versión 2016-09-01"
+title: "aaaUpgrading toohello API de REST de servicio de búsqueda de Azure versión 01-09-2016 | Documentos de Microsoft"
+description: "Actualizar toohello API de REST de servicio de búsqueda de Azure versión 2016-09-01"
 services: search
 documentationcenter: 
 author: brjohnstmsft
@@ -14,47 +14,47 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 10/27/2016
 ms.author: brjohnst
-ms.openlocfilehash: f6a189c2e314b91c490583a86d8bacca8ec78a0f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d0276b9cc52996a59f9aa726c27e62c6082eb908
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="upgrading-to-the-azure-search-service-rest-api-version-2016-09-01"></a>Actualización de API de REST del Servicio Azure Search versión 2016-09-01
-Si usa la versión 2015-02-28 o 2015-02-28-Preview de [API de REST del servicio Azure Search](https://msdn.microsoft.com/library/azure/dn798935.aspx), este artículo le ayudará a actualizar la aplicación para que use la siguiente versión de API disponible con carácter general, 2016-09-01.
+# <a name="upgrading-toohello-azure-search-service-rest-api-version-2016-09-01"></a>Actualizar toohello API de REST de servicio de búsqueda de Azure versión 2016-09-01
+Si usa la versión 2015-02-28 o 2015-02-28-versión preliminar de hello [API de REST de servicio de búsqueda de Azure](https://msdn.microsoft.com/library/azure/dn798935.aspx), este artículo le ayudará a actualizar la aplicación toouse Hola siguiente disponible con carácter general versión de API, 2016-09-01.
 
-La versión 2016-09-01 de la API de REST contiene algunos cambios con respecto a versiones anteriores. Se trata principalmente de cambios compatibles con versiones anteriores, por lo que cambiar el código apenas debe exigir esfuerzo, según la versión que utilizaba antes. Vea [Pasos para actualizar](#UpgradeSteps), a fin de obtener instrucciones sobre cómo cambiar el código para usar la nueva versión de API.
+Versión 2016-09-01 de API de REST de hello contiene algunos cambios de versiones anteriores. Se trata principalmente de cambios compatibles con versiones anteriores, por lo que cambiar el código apenas debe exigir esfuerzo, según la versión que utilizaba antes. Vea [tooupgrade pasos](#UpgradeSteps) para obtener instrucciones sobre cómo toochange la versión nueva de API de código toouse Hola.
 
 > [!NOTE]
-> La instancia del servicio Azure Search es compatible con varias versiones de API de REST, incluida la más reciente. Puede seguir usando una versión aunque no sea la más reciente, pero es recomendable que migre el código para usar la versión más actualizada.
+> La instancia de servicio de búsqueda de Azure es compatible con varias versiones de API de REST, incluidas hello más reciente. Puede continuar toouse una versión cuando ya no es Hola más reciente, pero se recomienda que migre la versión más reciente de código toouse Hola.
 
 <a name="WhatsNew"></a>
 
 ## <a name="whats-new-in-version-2016-09-01"></a>Novedades de la versión 2016-09-01
-La versión 2016-09-01 es la segunda versión disponible con carácter general de API de REST del servicio Azure Search. Entre las nuevas características de esta versión de API se incluyen:
+Versión 2016-09-01 es Hola segunda versión de disponibilidad general de hello API de REST de servicio de búsqueda de Azure. Entre las nuevas características de esta versión de API se incluyen:
 
-* [Analizadores personalizados](https://aka.ms/customanalyzers), que le permiten tomar el control sobre el proceso de conversión de texto en tokens que se pueden indizar y buscar.
-* Indizadores de [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) y [Azure Table Storage](search-howto-indexing-azure-tables.md), que permiten importar fácilmente datos del almacenamiento de Azure en Azure Search según una programación o a petición.
-* [Asignaciones de campo](search-indexer-field-mappings.md), que permiten personalizar cómo los indizadores importan datos en Azure Search.
-* Etiquetas ETag, que permiten actualizar las definiciones de índices, los indizadores y los orígenes de datos con seguridad de simultaneidad. 
+* [Analizadores personalizados](https://aka.ms/customanalyzers), que permiten un control de tootake sobre el proceso de Hola de convertir texto en tokens indizables y permite realizar búsquedos.
+* [Almacenamiento de blobs de Azure](search-howto-indexing-azure-blob-storage.md) y [almacenamiento de tablas Azure](search-howto-indexing-azure-tables.md) indizadores, que le permiten tooeasily importación datos del almacenamiento de Azure en búsqueda de Azure en una programación o a petición.
+* [Asignaciones de campo](search-indexer-field-mappings.md), que le permiten toocustomize cómo indizadores importación datos de búsqueda de Azure.
+* ETag, que le permiten tooupdate Hola definiciones de índices, los indizadores y orígenes de datos de una manera segura para simultaneidad. 
 
 <a name="UpgradeSteps"></a>
 
-## <a name="steps-to-upgrade"></a>Pasos para actualizar
-Si va a actualizar desde la versión 2015-02-28, probablemente no tenga que realizar cambios en el código, excepto para cambiar el número de versión. Las únicas situaciones en las que puede que tenga que modificar el código ocurren si:
+## <a name="steps-tooupgrade"></a>Tooupgrade de pasos
+Si va a actualizar desde la versión 2015-02-28, probablemente no tendrá toomake ningún código de tooyour de cambios, excepto el número de versión de hello toochange. situaciones solo de Hello en el que podría necesitar toochange código cuando son:
 
 * Se produce un error en el código cuando se devuelven propiedades no reconocidas en una respuesta de la API. De forma predeterminada, la aplicación debe omitir propiedades que no comprende.
-* El código conserva las solicitudes de API e intenta volver a enviarlas a la nueva versión de API. Por ejemplo, esto podría suceder si la aplicación conserva tokens de continuación devueltos por la API de búsqueda (para más información, busque `@search.nextPageParameters` en la [referencia de la API de búsqueda](https://msdn.microsoft.com/library/azure/dn798927.aspx#Anchor_1)).
+* El código conserva las solicitudes de API y trata de tooresend ellos toohello nueva versión de API. Por ejemplo, esto podría suceder si la aplicación continúa tokens de continuación procedentes de la API de búsqueda de hello (para obtener más información, busque `@search.nextPageParameters` en hello [referencia de la API de búsqueda](https://msdn.microsoft.com/library/azure/dn798927.aspx#Anchor_1)).
 
-Si alguna de estas situaciones se le presenta, debe cambiar el código en consecuencia. De lo contrario, no debe ser necesario efectuar ningún cambio a menos que quiera empezar a usar las [nuevas características](#WhatsNew) de la versión 2016-09-01.
+Si cualquiera de estas situaciones aplica tooyou, a continuación, deberá toochange el código en consecuencia. De lo contrario, ningún cambio debería ser necesario a menos que desee toostart con hello [nuevas características](#WhatsNew) de versión 2016-09-01.
 
-Si va a actualizar desde la versión 2015-02-28-Preview, lo anterior también se aplica, pero además debe tener en cuenta que algunas características de vista previa no están disponibles en la versión 2016-09-01:
+Si va a actualizar desde la versión 2015-02-28-versión preliminar, Hola anterior también se aplica, pero también debe tener en cuenta que algunas características de vista previa no están disponibles en la versión 2016-09-01:
 
 * El indizador de Azure Blob Storage admite archivos CSV y blobs que contengan matrices JSON.
 * Sinónimos
 * Consultas de tipo "Más resultados similares"
 
-Si el código usa estas características, no podrá actualizar a 2016-09-01 sin quitar el uso de las mismas.
+Si el código usa estas características, no será capaz de tooupgrade too2016-09-01, sin quitar el uso de ellos.
 
 > [!IMPORTANT]
 > Por favor, recuerde que las versiones preliminares de las API están pensadas para realizar pruebas y evaluar, y no deben usarse en entornos de producción.
@@ -62,9 +62,9 @@ Si el código usa estas características, no podrá actualizar a 2016-09-01 sin 
 > 
 
 ## <a name="conclusion"></a>Conclusión
-Si necesita más información sobre el uso de API de REST del servicio Azure Search, vea la [Referencia de API](https://msdn.microsoft.com/library/azure/dn798935.aspx) recién actualizada en MSDN.
+Si necesita obtener más información sobre el uso de hello API de REST de servicio de búsqueda de Azure, vea Hola actualizado recientemente [referencia de la API](https://msdn.microsoft.com/library/azure/dn798935.aspx) en MSDN.
 
-Agradecemos sus comentarios sobre Azure Search. Si tiene algún problema, no dude en pedirnos ayuda en el [foro de MSDN sobre Azure Search](https://social.msdn.microsoft.com/Forums/azure/home?forum=azuresearch) o [StackOverflow](http://stackoverflow.com/). Si va a hacer una pregunta sobre Azure Search en StackOverflow, asegúrese de etiquetarla con `azure-search`.
+Agradecemos sus comentarios sobre Azure Search. Si tiene problemas, puede tooask libre nos para obtener ayuda sobre hello [foro de MSDN de búsqueda de Azure](https://social.msdn.microsoft.com/Forums/azure/home?forum=azuresearch) o [StackOverflow](http://stackoverflow.com/). Si va a hacer una pregunta sobre Azure buscarlo en StackOverflow, asegúrese de que tootag con `azure-search`.
 
 Gracias por usar Búsqueda de Azure.
 

@@ -1,6 +1,6 @@
 ---
-title: "Introducción al SDK de red CDN de Azure para Node.js | Microsoft Docs"
-description: Aprenda a escribir aplicaciones Node.js para administrar la red CDN de Azure.
+title: "aaaGet partió Hola CDN de Azure SDK para Node.js | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toowrite Node.js aplicaciones toomanage CDN de Azure."
 services: cdn
 documentationcenter: nodejs
 author: zhangmanling
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 46ae8cd9775432d126cbde856c1fb06ea319297e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6c805e5fb8e0b471e8b248cb2f4b29efd6c85940
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Introducción al desarrollo de la red de entrega de contenido (CDN) de Azure
 > [!div class="op_single_selector"]
@@ -27,34 +27,34 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-Puede usar el [SDK de red CDN de Azure para Node.js](https://www.npmjs.com/package/azure-arm-cdn) para automatizar la creación y la administración de puntos de conexión y perfiles de red CDN.  Este tutorial explica paso a paso la creación de una aplicación de consola Node.js sencilla que muestra algunas de las operaciones disponibles.  No se pretende describir todos los aspectos del SDK de red CDN de Azure para Node.js en detalle.
+Puede usar hello [CDN de Azure SDK para Node.js](https://www.npmjs.com/package/azure-arm-cdn) tooautomate creación y administración de perfiles de red CDN y puntos de conexión.  Este tutorial le guía por la creación de hello de una aplicación de consola Node.js simple que muestra algunas de las operaciones disponibles de Hola.  Este tutorial es todos los aspectos de SDK de Azure CDN Hola toodescribe no está diseñado para Node.js en detalle.
 
-Para completar este tutorial, debe tener ya instalado y configurado [Node.js](http://www.nodejs.org) **4.x.x** o superior.  Puede usar cualquier editor de texto que desee para crear la aplicación de Node.js.  Para escribir este tutorial, se ha usado [Visual Studio Code](https://code.visualstudio.com).  
+toocomplete este tutorial, debe tener ya [Node.js](http://www.nodejs.org) **4.x.x** o superior instalado y configurado.  Puede usar cualquier editor de texto que desea toocreate la aplicación de Node.js.  toowrite este tutorial, he usado [código de Visual Studio](https://code.visualstudio.com).  
 
 > [!TIP]
-> El [proyecto completado en este tutorial](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74) está disponible para descargarse en MSDN.
+> Hola [proyecto completado de este tutorial](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74) está disponible para su descarga en MSDN.
 > 
 > 
 
 [!INCLUDE [cdn-app-dev-prep](../../includes/cdn-app-dev-prep.md)]
 
 ## <a name="create-your-project-and-add-npm-dependencies"></a>Creación del proyecto e incorporación de dependencias NPM
-Ahora que hemos creado un grupo de recursos para los perfiles de CDN y concedido permiso a la aplicación de Azure AD para administrar perfiles y puntos de conexión de CDN dentro de ese grupo, podemos comenzar a crear la aplicación.
+Ahora que hemos creado un grupo de recursos para los perfiles de la red CDN y dada nuestra perfiles de red CDN de Azure AD aplicación permiso toomanage y los puntos de conexión dentro de ese grupo, podemos comenzar a crear nuestra aplicación.
 
-Cree una carpeta para almacenar la aplicación.  Desde una consola con las herramientas de Node.js en su ruta de acceso actual, establezca su ubicación actual en esta nueva carpeta e inicialice el proyecto ejecutando:
+Crear una carpeta toostore su aplicación.  Desde una consola con herramientas de Node.js de hello en la ruta de acceso actual, establecer la ubicación toothis nueva carpeta actual e inicializar el proyecto mediante la ejecución:
 
     npm init
 
-A continuación, se le ofrecerán una serie de preguntas para inicializar el proyecto.  Para **punto de entrada**, este tutorial usa *app.js*.  Puede ver las demás opciones en el ejemplo siguiente.
+A continuación, podrá presentan una serie de preguntas tooinitialize el proyecto.  Para **punto de entrada**, este tutorial usa *app.js*.  Puede ver mi otras opciones en el siguiente ejemplo de Hola.
 
 ![Salida de NPM init](./media/cdn-app-dev-node/cdn-npm-init.png)
 
-El proyecto se inicializa ahora con un archivo *packages.json* .  Va a usar algunas bibliotecas de Azure contenidas en paquetes NPM.  Vamos a usar el tiempo de ejecución de cliente de Azure para Node.js (ms-rest-azure) y la biblioteca de cliente de red CDN de Azure para Node.js (azure-arm-cd).  Vamos a agregar estos elementos al proyecto como dependencias.
+El proyecto se inicializa ahora con un archivo *packages.json* .  Nuestro proyecto va toouse algunas bibliotecas de Azure contenidos en paquetes de NPM.  Vamos a usar en tiempo de ejecución del cliente de Azure para Node.js (ms-rest-azure) de Hola y Hola biblioteca de cliente de red CDN de Azure para Node.js (cd de arm de azure).  Vamos a agregar esos proyectos toohello como dependencias.
 
     npm install --save ms-rest-azure
     npm install --save azure-arm-cdn
 
-Una vez que los paquetes se han instalado, el archivo *package.json* debe ser similar a este ejemplo (los números de versión pueden variar):
+Después de hello terminados paquetes de instalación, hello *package.json* archivo debería ser similar toothis ejemplo (versión pueden variar):
 
 ``` json
 {
@@ -74,18 +74,18 @@ Una vez que los paquetes se han instalado, el archivo *package.json* debe ser si
 }
 ```
 
-Por último, con el editor de texto, cree un archivo de texto en blanco y guárdelo en la raíz de la carpeta del proyecto como *app.js*.  Ya está todo preparado para empezar a escribir código.
+Por último, con su editor de texto, cree un archivo de texto en blanco y guárdela en la raíz de saludo de la carpeta del proyecto como *app.js*.  Ahora estamos listo toobegin escribir código.
 
 ## <a name="requires-constants-authentication-and-structure"></a>"Requieres", constantes, autenticación y estructura
-Con *apps.js* abierto en el editor, vamos a escribir la estructura básica del programa.
+Con *app.js* abierto en el editor, vamos a estructura básica de Hola de nuestro programa escrito.
 
-1. En la parte superior agregue los "requiere" para los paquetes NPM con lo siguiente:
+1. Agregue Hola "requiere" para los paquetes de NPM princip Hola con siguiente hello:
    
     ``` javascript
     var msRestAzure = require('ms-rest-azure');
     var cdnManagementClient = require('azure-arm-cdn');
     ```
-2. Necesitamos definir algunas constantes que los métodos van a usar.  Agregue lo siguiente.  Asegúrese de reemplazar los marcadores de posición (incluidos los **&lt;corchetes angulares&gt;**) con sus propios valores según sea necesario.
+2. Necesitamos toodefine algunas constantes que nuestros métodos va a usar.  Agregue Hola siguiente.  Ser seguro tooreplace marcadores de posición de hello, incluidos hello  **&lt;corchetes angulares&gt;**, con sus propios valores según sea necesario.
    
     ``` javascript
     //Tenant app constants
@@ -98,7 +98,7 @@ Con *apps.js* abierto en el editor, vamos a escribir la estructura básica del p
     const resourceGroupName = "CdnConsoleTutorial";
     const resourceLocation = "<YOUR PREFERRED AZURE LOCATION, SUCH AS Central US>";
     ```
-3. A continuación, crearemos una instancia del cliente de administración de la red CDN y le asignaremos nuestras credenciales.
+3. A continuación, se deberá crear una instancia de cliente de administración de red CDN Hola y asígnele nuestras credenciales.
    
     ``` javascript
     var credentials = new msRestAzure.ApplicationTokenCredentials(clientId, tenantId, clientSecret);
@@ -108,7 +108,7 @@ Con *apps.js* abierto en el editor, vamos a escribir la estructura básica del p
     Si utiliza la autenticación de usuario individual, estas dos líneas tendrán un aspecto algo distinto.
    
    > [!IMPORTANT]
-   > Use este ejemplo de código únicamente si opta por la autenticación de usuario individual en lugar de una entidad de servicio.  Asegúrese de guardar las credenciales de usuario individual y de mantenerlas en secreto.
+   > Sólo puede utilizar este ejemplo de código si se elige el toohave autenticación de usuario individuales en lugar de una entidad de servicio.  Ser tooguard cuidado las credenciales de usuario individual y mantener en secreto.
    > 
    > 
    
@@ -118,8 +118,8 @@ Con *apps.js* abierto en el editor, vamos a escribir la estructura básica del p
     var cdnClient = new cdnManagementClient(credentials, subscriptionId);
     ```
    
-    No olvide reemplazar los elementos en **&lt;corchetes angulares&gt;** por la información correcta.  Para `<redirect URI>`, use el URI de redirección que especificó al registrar la aplicación en Azure AD.
-4. Nuestra aplicación de consola Node.js necesita algunos parámetros de línea de comandos.  Vamos a dar por válido que por lo menos un parámetro se pasó.
+    Estar seguro tooreplace compuesta por elementos hello en  **&lt;corchetes angulares&gt;**  con hello corregir la información.  Para `<redirect URI>`, usar redirección Hola URI que especificó al registrar la aplicación hello en Azure AD.
+4. Nuestra aplicación de consola Node.js va tootake algunos parámetros de línea de comandos.  Vamos a dar por válido que por lo menos un parámetro se pasó.
    
    ```javascript
    //Collect command-line parameters
@@ -133,7 +133,7 @@ Con *apps.js* abierto en el editor, vamos a escribir la estructura básica del p
        process.exit(1);
    }
    ```
-5. Con esto llegamos a la parte principal del programa, donde vamos a derivar a otras funciones basadas en los parámetros que se pasaron.
+5. Eso nos lleva toohello parte principal de nuestro programa, donde se separarlos tooother funciones que se basan en los parámetros que se pasaron.
    
     ```javascript
     switch(parms[0].toLowerCase())
@@ -159,7 +159,7 @@ Con *apps.js* abierto en el editor, vamos a escribir la estructura básica del p
             process.exit(1);
     }
     ```
-6. En varios lugares del programa, es necesario asegurarse de que se ha pasado la cantidad correcta de parámetros, si parece que esto no es así, hay que mostrar ayudas.  Vamos a crear funciones para hacerlo.
+6. En varios lugares en nuestro programa, necesitaremos toomake seguro número correcto de Hola de parámetros se pasaron y mostrar ayuda si no tienen un aspecto correctos.  Vamos a crear funciones toodo que.
    
    ```javascript
    function requireParms(parmCount) {
@@ -197,7 +197,7 @@ Con *apps.js* abierto en el editor, vamos a escribir la estructura básica del p
        }
    }
    ```
-7. Por último, las funciones que vamos a usar en el cliente de administración de la red CDN son asincrónicas, por lo que necesitan un método al que llamar cuando hayan terminado.  Vamos a hacer uno que pueda mostrar el resultado desde el cliente de administración de la red CDN (si lo hubiera) y salir del programa sin contratiempos.
+7. Por último, funciones de hello que usaremos en cliente de administración de red CDN Hola son asincrónicas, por lo que necesitan un método toocall cuando haya terminado.  Vamos a hacer que puede mostrar el resultado de hello de cliente de administración de red CDN Hola (si existe) y salir del programa Hola correctamente.
    
     ```javascript
     function callback(err, result, request, response) {
@@ -211,10 +211,10 @@ Con *apps.js* abierto en el editor, vamos a escribir la estructura básica del p
     }
     ```
 
-Ahora que ya hemos escrito la estructura básica del programa, deberíamos crear las funciones a las que se llama en base a los parámetros.
+Ahora que se escribe la estructura básica de Hola de nuestro programa, se deben crear funciones de hello llamadas basándose en nuestro parámetros.
 
 ## <a name="list-cdn-profiles-and-endpoints"></a>Lista de perfiles y puntos de conexión de CDN
-Comencemos con código para enumera los perfiles y puntos de conexión existentes.  Los comentarios de código proporcionan la sintaxis esperada para saber dónde va cada parámetro.
+Comencemos con toolist código nuestros perfiles existentes y los puntos de conexión.  Mis comentarios de código proporcionan sintaxis de hello esperada para saber dónde va cada parámetro.
 
 ```javascript
 // list profiles
@@ -242,7 +242,7 @@ function cdnList(){
 ```
 
 ## <a name="create-cdn-profiles-and-endpoints"></a>Creación de perfiles y puntos de conexión de CDN
-A continuación, escribiremos las funciones para crear perfiles y puntos de conexión.
+A continuación, se escribirá los puntos de conexión y perfiles de hello funciones toocreate.
 
 ```javascript
 function cdnCreate() {
@@ -294,7 +294,7 @@ function cdnCreateEndpoint() {
 ```
 
 ## <a name="purge-an-endpoint"></a>Purga de un punto de conexión
-Suponiendo que se haya creado el punto de conexión, una tarea habitual que podríamos llevar a cabo en el programa es purgar el contenido del punto de conexión.
+Suponiendo que ha creado el extremo de hello, una tarea habitual que tengamos que queremos tooperform en nuestro programa purga de contenido en el punto de conexión.
 
 ```javascript
 // purge <profile name> <endpoint name> <path>
@@ -307,7 +307,7 @@ function cdnPurge() {
 ```
 
 ## <a name="delete-cdn-profiles-and-endpoints"></a>Eliminación de perfiles y puntos de conexión de CDN
-La última función que incluiremos elimina puntos de conexión y perfiles.
+función last Hola que incluiremos elimina los puntos de conexión y perfiles.
 
 ```javascript
 function cdnDelete() {
@@ -335,11 +335,11 @@ function cdnDelete() {
 }
 ```
 
-## <a name="running-the-program"></a>Ejecución del programa
-Ahora ya podemos ejecutar nuestro programa de Node.js usando nuestro depurador preferido o en la consola.
+## <a name="running-hello-program"></a>Programa hello en ejecución
+Ahora podemos ejecutar nuestro programa Node.js con el depurador de favoritos o en la consola de Hola.
 
 > [!TIP]
-> Si usa código de Visual Studio como depurador, tiene que configurar su entorno para pasar los parámetros de línea de comandos.  El código de Visual Studio realiza esta operación en el archivo **lanuch.json** .  Busque una propiedad denominada **args** y agregue una matriz de valores de cadena para los parámetros, de forma que se parezca a esto: `"args": ["list", "profiles"]`.
+> Si está utilizando el código de Visual Studio como el depurador, necesitará tooset seguridad su toopass de entorno en los parámetros de línea de comandos de Hola.  Código de Visual Studio hace esto de hello **lanuch.json** archivo.  Busque una propiedad denominada **args** y agregar una matriz de valores de cadena para los parámetros, por lo que parece similar toothis: `"args": ["list", "profiles"]`.
 > 
 > 
 
@@ -360,11 +360,11 @@ Por último, vamos a eliminar el perfil.
 ![Eliminación de perfil](./media/cdn-app-dev-node/cdn-delete-profile.png)
 
 ## <a name="next-steps"></a>Pasos siguientes
-Para ver el proyecto de este tutorial terminado, [descargue el ejemplo](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74).
+proyecto de toosee Hola completado de este tutorial, [Descargar ejemplo hello](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74).
 
-Para ver la referencia del SDK de red CDN de Azure para Node.js, consulte el documento de [referencia](http://azure.github.io/azure-sdk-for-node/azure-arm-cdn/latest/).
+referencia de hello toosee para hello CDN de Azure SDK para Node.js, Hola vista [referencia](http://azure.github.io/azure-sdk-for-node/azure-arm-cdn/latest/).
 
-Para encontrar más documentación sobre Azure SDK para Node.js, consulte el [material de referencia completo](http://azure.github.io/azure-sdk-for-node/).
+documentación adicional toofind en hello Azure SDK para Node.js, Hola vista [completo referencia](http://azure.github.io/azure-sdk-for-node/).
 
 Administre sus recursos de red CDN con [PowerShell](cdn-manage-powershell.md).
 

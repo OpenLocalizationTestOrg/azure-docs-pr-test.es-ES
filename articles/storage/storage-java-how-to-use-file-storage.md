@@ -1,6 +1,6 @@
 ---
-title: Desarrollo para Azure File Storage con Java | Microsoft Docs
-description: Aprenda a desarrollar aplicaciones y servicios Java que usan Azure File Storage para almacenar datos de archivos.
+title: aaaDevelop para el almacenamiento de archivos de Azure con Java | Documentos de Microsoft
+description: "Obtenga información acerca de cómo las aplicaciones de Java de toodevelop y servicios que usen toostore de almacenamiento de archivos de Azure datos de archivos."
 services: storage
 documentationcenter: java
 author: robinsh
@@ -14,11 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: robinsh
-ms.openlocfilehash: 16924599e49990265e07f7a58613756d93c46942
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: b50703815daf2c829e7e9a9a4196c31a2b8727e9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="develop-for-azure-file-storage-with-java"></a>Desarrollo para Azure File Storage con Java
 [!INCLUDE [storage-selector-file-include](../../includes/storage-selector-file-include.md)]
@@ -26,7 +26,7 @@ ms.lasthandoff: 08/03/2017
 [!INCLUDE [storage-check-out-samples-java](../../includes/storage-check-out-samples-java.md)]
 
 ## <a name="about-this-tutorial"></a>Acerca de este tutorial
-En este tutorial se muestran los aspectos básicos del uso de Java para desarrollar aplicaciones o servicios que usan Azure File Storage para almacenar datos de archivos. En este tutorial, se creará una aplicación de consola simple y se mostrará cómo realizar acciones básicas con Java y Azure File Storage:
+Este tutorial demuestra conceptos básicos de hello del uso de aplicaciones de Java toodevelop o servicios que usan datos de archivos de toostore de almacenamiento de archivos de Azure. En este tutorial, crearemos una aplicación de consola simple y mostrar cómo tooperform acciones básicas con el almacenamiento de Java y archivos de Azure:
 
 * Crear y eliminar recursos compartidos de Azure File
 * Crear y eliminar directorios
@@ -34,25 +34,25 @@ En este tutorial se muestran los aspectos básicos del uso de Java para desarrol
 * Cargar, descargar y eliminar un archivo
 
 > [!Note]  
-> Dado que se puede tener acceso a Azure File Storage a través de SMB, es posible escribir aplicaciones sencillas que tengan acceso al recurso de Azure File mediante las clases estándar de E/S de Java. En este artículo se describe cómo escribir aplicaciones que usan el SDK de Java de Azure Storage, que emplea la [API de REST de Azure File Storage](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) para comunicarse con Azure File Storage.
+> Dado que puede tener acceso al almacenamiento de archivos de Azure a través de SMB, es posible toowrite aplicaciones simples que tienen acceso a recurso compartido de archivos de Azure de hello mediante clases de E/S de Java estándares de Hola. En este artículo se describe cómo las aplicaciones de toowrite que utilizan Hola SDK de Java de almacenamiento de Azure, que usa hello [API de REST de almacenamiento de archivos de Azure](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) tootalk tooAzure almacenamiento de archivos.
 
 ## <a name="create-a-java-application"></a>Creación de una aplicación Java
-Para compilar las muestras, se necesitará el Kit de desarrollo de Java (JDK) y el [SDK de Almacenamiento de Azure para Java][]. También deberá haber creado una cuenta de almacenamiento de Azure.
+ejemplos de hello toobuild, necesitará Hola Java Development Kit (JDK) y [] Hola [SDK de almacenamiento de Azure para Java]. También deberá haber creado una cuenta de almacenamiento de Azure.
 
-## <a name="setup-your-application-to-use-azure-file-storage"></a>Configuración de la aplicación para usar Azure File Storage
-Para utilizar las API de almacenamiento de Azure, agregue la siguiente instrucción al principio del archivo Java desde el que desea acceder al servicio de almacenamiento.
+## <a name="setup-your-application-toouse-azure-file-storage"></a>Configurar el almacenamiento de Azure archivos de aplicación toouse
+Hola toouse API, el almacenamiento de Azure agregar Hola después de la parte superior de toohello de instrucción del archivo de Java de Hola donde piensa tooaccess servicio de almacenamiento de hello en.
 
 ```java
-// Include the following imports to use blob APIs.
+// Include hello following imports toouse blob APIs.
 import com.microsoft.azure.storage.*;
 import com.microsoft.azure.storage.file.*;
 ```
 
 ## <a name="setup-an-azure-storage-connection-string"></a>Configuración de una cadena de conexión de almacenamiento de Azure
-Para usar Azure File Storage, necesita conectarse a la cuenta de almacenamiento de Azure. El primer paso sería configurar una cadena de conexión que se utilizará para establecer la conexión con su cuenta de almacenamiento. Definamos una variable estática para hacerlo.
+toouse almacenamiento de archivos de Azure, debe tooconnect tooyour cuenta de almacenamiento Azure. Hello primer paso sería tooconfigure una cadena de conexión que vamos a usar cuenta de almacenamiento de tooconnect tooyour. Vamos a definir un toodo variable estática que.
 
 ```java
-// Configure the connection-string with your values
+// Configure hello connection-string with your values
 public static final String storageConnectionString =
     "DefaultEndpointsProtocol=http;" +
     "AccountName=your_storage_account_name;" +
@@ -60,40 +60,40 @@ public static final String storageConnectionString =
 ```
 
 > [!NOTE]
-> Reemplace your_storage_account_name y your_storage_account_key por los valores reales de la cuenta de almacenamiento.
+> Reemplace your_storage_account_name y your_storage_account_key con valores reales de hello para la cuenta de almacenamiento.
 > 
 > 
 
-## <a name="connecting-to-an-azure-storage-account"></a>Conexión a una cuenta de almacenamiento de Azure
-Para conectarse a su cuenta de almacenamiento, deberá usar el objeto **CloudStorageAccount**, pasando una cadena de conexión a su método de **análisis**.
+## <a name="connecting-tooan-azure-storage-account"></a>Conexión de cuenta de almacenamiento de Azure tooan
+cuenta de almacenamiento de tooconnect tooyour, necesita hello toouse **CloudStorageAccount** objeto, pasando una tooits de cadena de conexión **analizar** método.
 
 ```java
-// Use the CloudStorageAccount object to connect to your storage account
+// Use hello CloudStorageAccount object tooconnect tooyour storage account
 try {
     CloudStorageAccount storageAccount = CloudStorageAccount.parse(storageConnectionString);
 } catch (InvalidKeyException invalidKey) {
-    // Handle the exception
+    // Handle hello exception
 }
 ```
 
-**CloudStorageAccount.parse** produce una InvalidKeyException, por lo que deberá colocarla dentro de un bloque try/catch.
+**CloudStorageAccount.parse** inicia una InvalidKeyException por lo que necesitará tooput dentro de un bloque try/catch bloquear.
 
 ## <a name="create-an-azure-file-share"></a>Creación de un recurso compartido de Azure File
-Todos los archivos y directorios de Azure File Storage residen en un contenedor denominado **Share**. La cuenta de almacenamiento puede tener tantos recursos compartidos como los que permita la capacidad de su cuenta. Para obtener acceso a un recurso compartido y su contenido, debe usar un cliente de Azure File Storage.
+Todos los archivos y directorios de Azure File Storage residen en un contenedor denominado **Share**. La cuenta de almacenamiento puede tener tantos recursos compartidos como los que permita la capacidad de su cuenta. recurso compartido de tooobtain acceso tooa y su contenido, deberá toouse un cliente de almacenamiento de archivos de Azure.
 
 ```java
-// Create the Azure File storage client.
+// Create hello Azure File storage client.
 CloudFileClient fileClient = storageAccount.createCloudFileClient();
 ```
 
-Con dicho cliente, puede obtener luego una referencia a un recurso compartido.
+Utiliza el cliente de almacenamiento de archivos de Azure de hello, a continuación, puede obtener un recurso compartido tooa de referencia.
 
 ```java
-// Get a reference to the file share
+// Get a reference toohello file share
 CloudFileShare share = fileClient.getShareReference("sampleshare");
 ```
 
-Para crear el recurso compartido, utilice el método **createIfNotExists** del objeto CloudFileShare.
+tooactually crear recurso compartido de hello, use hello **createIfNotExists** método del objeto de CloudFileShare Hola.
 
 ```java
 if (share.createIfNotExists()) {
@@ -101,10 +101,10 @@ if (share.createIfNotExists()) {
 }
 ```
 
-En este punto, **share** contiene una referencia a un recurso compartido denominado **sampleshare**.
+En este momento, **compartir** contiene un recurso compartido de tooa de referencia denominado **sampleshare**.
 
 ## <a name="delete-an-azure-file-share"></a>Eliminación de un recurso compartido de Azure File
-Para eliminar un recurso compartido es necesario efectuar una llamada al método **deleteIfExists** en un objeto CloudFileShare. A continuación se facilita código de ejemplo que lo hace.
+Eliminar un recurso compartido se realiza mediante llamada hello **deleteIfExists** método en un objeto CloudFileShare. A continuación se facilita código de ejemplo que lo hace.
 
 ```java
 try
@@ -112,10 +112,10 @@ try
     // Retrieve storage account from connection-string.
     CloudStorageAccount storageAccount = CloudStorageAccount.parse(storageConnectionString);
 
-    // Create the file client.
+    // Create hello file client.
    CloudFileClient fileClient = storageAccount.createCloudFileClient();
 
-   // Get a reference to the file share
+   // Get a reference toohello file share
    CloudFileShare share = fileClient.getShareReference("sampleshare");
 
    if (share.deleteIfExists()) {
@@ -127,13 +127,13 @@ try
 ```
 
 ## <a name="create-a-directory"></a>Creación de directorios
-También puede organizar el almacenamiento colocando archivos dentro de los subdirectorios en lugar de mantenerlos a todos en el directorio raíz. Azure File Storage le permite crear tantos directorios como permita su cuenta. El código siguiente creará un subdirectorio denominado **sampledir** bajo el directorio raíz.
+También puede organizar el almacenamiento de información colocando archivos dentro de los subdirectorios en lugar de tener todos ellos en el directorio raíz de Hola. Almacenamiento de archivos de Azure le permite toocreate, tal y como hacen mucho directorios como la cuenta. código de Hello siguiente creará un subdirectorio denominado **sampledir** en el directorio raíz de Hola.
 
 ```java
-//Get a reference to the root directory for the share.
+//Get a reference toohello root directory for hello share.
 CloudFileDirectory rootDir = share.getRootDirectoryReference();
 
-//Get a reference to the sampledir directory
+//Get a reference toohello sampledir directory
 CloudFileDirectory sampleDir = rootDir.getDirectoryReference("sampledir");
 
 if (sampleDir.createIfNotExists()) {
@@ -147,23 +147,23 @@ if (sampleDir.createIfNotExists()) {
 Eliminar un directorio es una tarea bastante sencilla, aunque se debe tener en cuenta que no se puede eliminar un directorio que contenga archivos u otros directorios.
 
 ```java
-// Get a reference to the root directory for the share.
+// Get a reference toohello root directory for hello share.
 CloudFileDirectory rootDir = share.getRootDirectoryReference();
 
-// Get a reference to the directory you want to delete
+// Get a reference toohello directory you want toodelete
 CloudFileDirectory containerDir = rootDir.getDirectoryReference("sampledir");
 
-// Delete the directory
+// Delete hello directory
 if ( containerDir.deleteIfExists() ) {
     System.out.println("Directory deleted");
 }
 ```
 
 ## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Enumerar los archivos y directorios de un recurso compartido de Azure File
-Obtener una lista de archivos y directorios dentro de un recurso compartido se realiza fácilmente mediante una llamada a **listFilesAndDirectories** en una referencia de CloudFileDirectory. El método devuelve una lista de objetos ListFileItem en los que puede efectuar la iteración. Por ejemplo, el siguiente código enumerará archivos y directorios dentro del directorio raíz.
+Obtener una lista de archivos y directorios dentro de un recurso compartido se realiza fácilmente mediante una llamada a **listFilesAndDirectories** en una referencia de CloudFileDirectory. método Hello devuelve una lista de objetos de ListFileItem que puede iterar en. Por ejemplo, hello código siguiente mostrará una lista de archivos y directorios dentro del directorio raíz de Hola.
 
 ```java
-//Get a reference to the root directory for the share.
+//Get a reference toohello root directory for hello share.
 CloudFileDirectory rootDir = share.getRootDirectoryReference();
 
 for ( ListFileItem fileItem : rootDir.listFilesAndDirectories() ) {
@@ -172,19 +172,19 @@ for ( ListFileItem fileItem : rootDir.listFilesAndDirectories() ) {
 ```
 
 ## <a name="upload-a-file"></a>Cargar un archivo
-Un recurso compartido de Azure File contiene como mínimo un directorio raíz donde pueden residir los archivos. En esta sección, aprenderá cómo cargar un archivo del almacenamiento local en el directorio raíz de un recurso compartido.
+Un archivo de Azure recurso compartido contiene en hello muy menos, un directorio raíz donde los archivos pueden encontrarse. En esta sección, aprenderá cómo tooupload un archivo de almacenamiento local en hello raíz del directorio de un recurso compartido.
 
-El primer paso para cargar un archivo es obtener una referencia al directorio donde debe residir. Para ello, llame al método **getRootDirectoryReference** del objeto del recurso compartido.
+Hola primer paso para cargar un archivo es tooobtain un directorio de toohello de referencia en el que debe reside. Para ello, que realiza la llamada hello **getRootDirectoryReference** método del objeto de recurso compartido de Hola.
 
 ```java
-//Get a reference to the root directory for the share.
+//Get a reference toohello root directory for hello share.
 CloudFileDirectory rootDir = share.getRootDirectoryReference();
 ```
 
-Ahora que tiene una referencia al directorio raíz del recurso compartido, puede cargar un archivo en él utilizando el código siguiente.
+Ahora que tiene un directorio de raíz de referencia toohello del recurso compartido de hello, puede cargar un archivo en él mediante el siguiente código de hello.
 
 ```java
-        // Define the path to a local file.
+        // Define hello path tooa local file.
         final String filePath = "C:\\temp\\Readme.txt";
     
         CloudFile cloudFile = rootDir.getFileReference("Readme.txt");
@@ -192,30 +192,30 @@ Ahora que tiene una referencia al directorio raíz del recurso compartido, puede
 ```
 
 ## <a name="download-a-file"></a>Descarga de un archivo
-Una de las operaciones más frecuentes que se llevará a cabo en Azure File Storage es la descarga de archivos. En el ejemplo siguiente, el código descarga el archivo SampleFile.txt y muestra su contenido.
+Uno de hello más frecuentan las operaciones que se llevará a cabo en el almacenamiento de archivos de Azure es archivos de toodownload. En el siguiente ejemplo de Hola, código de hello descarga SampleFile.txt y muestra su contenido.
 
 ```java
-//Get a reference to the root directory for the share.
+//Get a reference toohello root directory for hello share.
 CloudFileDirectory rootDir = share.getRootDirectoryReference();
 
-//Get a reference to the directory that contains the file
+//Get a reference toohello directory that contains hello file
 CloudFileDirectory sampleDir = rootDir.getDirectoryReference("sampledir");
 
-//Get a reference to the file you want to download
+//Get a reference toohello file you want toodownload
 CloudFile file = sampleDir.getFileReference("SampleFile.txt");
 
-//Write the contents of the file to the console.
+//Write hello contents of hello file toohello console.
 System.out.println(file.downloadText());
 ```
 
 ## <a name="delete-a-file"></a>Eliminación de un archivo
-Otra operación común de Azure File Storage es la eliminación de archivos. El código siguiente elimina un archivo denominado SampleFile.txt que se almacena en un directorio denominado **sampledir**.
+Otra operación común de Azure File Storage es la eliminación de archivos. Hello código siguiente elimina un archivo denominado SampleFile.txt que se almacenan en un directorio denominado **sampledir**.
 
 ```java
-// Get a reference to the root directory for the share.
+// Get a reference toohello root directory for hello share.
 CloudFileDirectory rootDir = share.getRootDirectoryReference();
 
-// Get a reference to the directory where the file to be deleted is in
+// Get a reference toohello directory where hello file toobe deleted is in
 CloudFileDirectory containerDir = rootDir.getDirectoryReference("sampledir");
 
 String filename = "SampleFile.txt"
@@ -228,7 +228,7 @@ if ( file.deleteIfExists() ) {
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-Si desea obtener más información acerca de otras API de almacenamiento de Azure, siga estos vínculos.
+Si desea que toolearn más información acerca de otra API de almacenamiento de Azure, siga estos vínculos.
 
 * [Centro de desarrolladores de Java](http://azure.microsoft.com/develop/java/)
 * [SDK de almacenamiento de Azure para Java](https://github.com/azure/azure-storage-java)
@@ -236,4 +236,4 @@ Si desea obtener más información acerca de otras API de almacenamiento de Azur
 * [Referencia del SDK del cliente de Azure Storage](http://dl.windowsazure.com/storage/javadoc/)
 * [API de REST de servicios de Azure Storage](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Blog del equipo de almacenamiento de Azure](http://blogs.msdn.com/b/windowsazurestorage/)
-* [Transferencia de datos con la utilidad en línea de comandos AzCopy](storage-use-azcopy.md)
+* [Transferencia de datos con la utilidad de línea de comandos de AzCopy Hola](storage-use-azcopy.md)

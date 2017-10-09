@@ -1,6 +1,6 @@
 ---
-title: "Azure protección de datos personales en reposo con el cifrado | Documentos de Microsoft"
-description: "Este artículo forma parte de una serie que ayudan a usar Azure para proteger los datos personales"
+title: "aaaAzure protección de datos personales en reposo con el cifrado | Documentos de Microsoft"
+description: "Este artículo forma parte de una serie que ayudan a usar datos personales tooprotect de Azure"
 services: security
 documentationcenter: na
 author: Barclayn
@@ -15,24 +15,24 @@ ms.workload: na
 ms.date: 08/22/2017
 ms.author: barclayn
 ms.custom: 
-ms.openlocfilehash: d0ef3ca8d48f5ba11a89c787ff59df39eeaf673b
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 9af182b4897f1d04f5f519e6671f53b85073bae1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-encryption-technologies-protect-personal-data-at-rest-with-encryption"></a>Tecnologías de cifrado de Azure: protección de datos personales en reposo con cifrado
 
-Este artículo le ayudará a entender y usar las tecnologías de cifrado de Azure para proteger datos en reposo.
+En este artículo le ayuda a comprender y usar datos de toosecure de tecnologías de Azure cifrado en reposo.
 
-El cifrado de datos en reposo es un procedimiento recomendado fundamental para proteger datos confidenciales o personales y para cumplir los requisitos de cumplimiento normativo y privacidad de los datos.
-El cifrado en reposo está diseñado para evitar que el atacante obtenga acceso a los datos sin cifrar asegurándose de que los datos se cifran en el disco.
+El cifrado de datos en reposo es esencial como una mejor práctica tooprotect información personal o confidencial de datos y cumplimiento de normas de toomeet y requisitos de privacidad de datos.
+El cifrado en reposo es atacante de hello tooprevent diseñada tengan acceso a datos de hello sin cifrar asegurándose de hello datos se cifran en el disco.
 
 ## <a name="scenario"></a>Escenario 
 
-Una gran empresa de cruceros, con sede en Estados Unidos, se encuentra en proceso de expansión de sus operaciones para ofrecer itinerarios en los mares Mediterráneo y Báltico, así como en las Islas Británicas. Para apoyar esos esfuerzos, ha adquirido varias líneas de cruceros más pequeñas establecidas en Italia, Alemania, Dinamarca y Reino Unido.
+Una empresa cruise grandes, con sede en Estados Unidos, Hola está ampliando sus itinerarios toooffer de operaciones en hello Mediterráneo y Mar Báltico, así como Hola británicas. toosupport los esfuerzos, ha adquirido varias líneas cruise más pequeñas con sede en Italia, Alemania, Dinamarca y Hola inglés del Reino Unido
 
-La empresa usa Microsoft Azure para almacenar datos corporativos en la nube. Esto puede incluir empleado o la información de cliente, como:
+la compañía de Hello utiliza los datos corporativos de Microsoft Azure toostore en la nube de Hola. Esto puede incluir empleado o la información de cliente, como:
 
 - direcciones
 - números de teléfono
@@ -40,67 +40,67 @@ La empresa usa Microsoft Azure para almacenar datos corporativos en la nube. Est
 - Información médica
 - información de tarjeta de crédito
 
-La empresa debe proteger la privacidad de los datos de clientes y empleados al hacer que los datos puede tener acceso a los departamentos que lo necesitan. (por ejemplo, los departamentos de nóminas y reservas).
+empresa Hola debe proteger la privacidad de Hola de datos de clientes y empleados asegurándose de departamentos de toothose accesible de datos que lo necesiten. (por ejemplo, los departamentos de nóminas y reservas).
 
-La línea de cruceros también conserva una gran base de datos de miembros del programa de recompensa y lealtad que incluye información personal para hacer un seguimiento de las relaciones con clientes actuales y antiguos.
+línea de Hello cruise también mantiene una base de datos grande de miembros del programa de recompensa y fidelidad que incluye información personal tootrack relaciones con los clientes actuales y pasados.
 
 ### <a name="problem-statement"></a>Declaración del problema
 
-La empresa debe proteger la privacidad de los datos personales de los empleados y los clientes al mostrar datos accesibles para los departamentos que lo necesitan (por ejemplo, los departamentos de nóminas y reservas). Estos datos personales se almacenan fuera del centro de datos controlado por la corporación y no está bajo el control físico de la compañía.
+empresa Hola debe proteger la privacidad de Hola de datos personales de los empleados y los clientes al hacer que los departamentos de toothose accesible de datos que lo necesitan (por ejemplo, los departamentos de nóminas y reservas). Estos datos personales se almacenan fuera de centro de datos corporativos controlado de hello y no está bajo control físico de la compañía de Hola.
 
 ### <a name="company-goal"></a>Objetivo de la empresa
 
-Como parte de una estrategia de seguridad de defensa en profundidad de varias capas, el objetivo de la empresa es garantizar que todos los orígenes de datos que contienen datos personales están cifrados, incluidos aquellos que se encuentran en el almacenamiento en la nube. Si personas no autorizadas logran acceder a los datos personales, estos deben resultar ilegibles. La aplicación del cifrado debería ser fácil y transparente tanto para los usuarios como para los administradores.
+Como parte de una estrategia de varias capas de defensa en profundidad de seguridad, es un tooensure de objetivo de la empresa que se cifren todos los orígenes de datos que contienen datos personales, los que residen en el almacenamiento en nube incluidos. Si no está autorizado personas ganancia acceso toohello los datos personales, debe ser en un formulario que se representará ilegible. La aplicación del cifrado debería ser fácil y transparente tanto para los usuarios como para los administradores.
 
 ## <a name="solutions"></a>Soluciones
 
-Los servicios de Azure proporcionan varias herramientas y tecnologías para ayudarle a proteger datos personales en reposo mediante el cifrado.
+Los servicios de Azure proporcionan varios toohelp herramientas y tecnologías de proteger los datos personales en reposo cifrándolos.
 
 ### <a name="azure-key-vault"></a>Azure Key Vault
 
-[Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-whatis) ofrece un almacenamiento seguro para las claves utilizadas para cifrar los datos en reposo de los servicios de Azure y es la solución de almacenamiento y administración de claves recomendada. La administración de claves de cifrado es esencial para proteger los datos almacenados.
+[Almacén de claves de Azure](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-whatis) ofrece un almacenamiento seguro para las claves de hello utilizan tooencrypt datos en reposo en los servicios de Azure y se recomienda Hola soluciones de almacenamiento y administración de claves. Administración de claves de cifrado es esencial toosecuring almacena datos.
 
-#### <a name="how-do-i-use-azure-key-vault-to-protect-keys-that-encrypt-personal-data"></a>¿Cómo se puede usar Azure Key Vault para proteger las claves que cifran los datos personales?
+#### <a name="how-do-i-use-azure-key-vault-tooprotect-keys-that-encrypt-personal-data"></a>¿Cómo se puede usar las claves de tooprotect del almacén de claves de Azure que cifran los datos personales?
 
-Para usar Azure Key Vault, necesita una suscripción a una cuenta de Azure. También necesita tener Azure Powershell instalado. Los pasos incluyen el uso de cmdlets de PowerShell para hacer lo siguiente:
+toouse almacén de claves de Azure, necesita una cuenta de Azure tooan de suscripción. También necesita tener Azure Powershell instalado. Los pasos incluyen usando PowerShell cmdlets toodo Hola siguientes:
 
-1. Conectarse a sus suscripciones
+1. Conectar tooyour suscripciones
 
 2. Creación de un Almacén de claves
 
-3. Adición de una clave o un secreto al Almacén de claves
+3. Agregar una clave o un almacén de claves secretas toohello
 
-4. Registrar las aplicaciones que va a usar el almacén de claves con Azure Active Directory
+4. Registrar las aplicaciones que va a usar el almacén de claves Hola con Azure Active Directory
 
-5. Autorizar las aplicaciones que van a usar la clave o el secreto
+5. Autorizar Hola aplicaciones toouse Hola clave o el secreto
 
-Para crear un almacén de claves, use el cmdlet New-AzureRmKeyVault de PowerShell. Asignará un nombre de almacén, un nombre de grupo de recursos y una ubicación geográfica. Deberá usar el nombre de almacén al administrar claves mediante otros cmdlets. Las aplicaciones que usen el almacén a través de la API de REST utilizarán el URI de este.
+toocreate un almacén de claves, use hello CmDlt de PowerShell New-AzureRmKeyVault. Asignará un nombre de almacén, un nombre de grupo de recursos y una ubicación geográfica. Deberá usar el nombre del almacén de hello al administrar claves a través de otros Cmdlets. Las aplicaciones que utilizan el almacén de Hola a través de la API de REST de hello usará el almacén de hello URI.
 
-Azure Key Vault puede proporcionar una clave protegida mediante software o importar una clave ya existente de un archivo .PFX. También puede almacenar secretos (contraseñas) en el almacén.
+Azure Key Vault puede proporcionar una clave protegida mediante software o importar una clave ya existente de un archivo .PFX. También puede almacenar secretos (contraseñas) en el almacén de Hola.
 
-También puede generar una clave en el HSM local y transferirla al HSM del servicio Key Vault, sin que la clave salga del límite del HSM.
+También puede generar una clave de HSM local y transferir tooHSMs Hola servicio de almacén de claves, sin clave Hola dejando límite de HSM Hola.
 
-Para obtener instrucciones detalladas sobre cómo usar Azure Key Vault, siga los pasos descritos en [Introducción a Azure Key Vault.](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-get-started)
+Para obtener instrucciones detalladas sobre cómo usar el almacén de claves de Azure, siga los pasos de hello [empezar a trabajar con el almacén de claves de Azure.](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-get-started)
 
 Para obtener una lista de cmdlets de PowerShell que se usan con Azure Key Vault, consulte [AzureRM.KeyVault](https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/?view=azurermps-4.2.0).
 
 ### <a name="azure-disk-encryption-for-windows"></a>Azure Disk Encryption para Windows
 
-[Azure Disk Encryption para máquinas virtuales de IaaS de Windows y Linux](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption) protege los datos personales en reposo en las máquinas virtuales de Azure y se integra con Azure Key Vault. Azure Disk Encryption usa [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) en Windows y [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) en Linux para cifrar tanto el sistema operativo como los discos de datos. Azure Disk Encryption es compatible con Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2, Windows Server 2016, y con clientes de Windows 8 y Windows 10.
+[Azure Disk Encryption para máquinas virtuales de IaaS de Windows y Linux](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption) protege los datos personales en reposo en las máquinas virtuales de Azure y se integra con Azure Key Vault. Cifrado de disco de Azure usa [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) en Windows y [DM Crypt](https://en.wikipedia.org/wiki/Dm-crypt) en Linux tooencrypt ambos Hola hello y sistema operativo de los discos de datos. Azure Disk Encryption es compatible con Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2, Windows Server 2016, y con clientes de Windows 8 y Windows 10.
 
-#### <a name="how-do-i-use-azure-disk-encryption-to-protect-personal-data"></a>¿Cómo se puede usar Azure Disk Encryption para proteger los datos personales?
+#### <a name="how-do-i-use-azure-disk-encryption-tooprotect-personal-data"></a>¿Cómo se puede usar datos personales de tooprotect de cifrado del disco de Azure?
 
-Para usar Azure Disk Encryption, necesita una suscripción a una cuenta de Azure. Para habilitar Azure Disk Encryption para máquinas virtuales con Windows y Linux, haga lo siguiente:
+toouse cifrado del disco de Azure, necesita una cuenta de Azure tooan de suscripción. Cifrado de disco de Azure tooenable para Windows y las máquinas virtuales de Linux, Hola siguientes:
 
-1. Use la plantilla de Resource Manager de Azure Disk Encryption, PowerShell o la interfaz de la línea de comandos (CLI) para habilitar el cifrado de disco y especificar la configuración del cifrado. 
+1. Use la plantilla del Administrador de recursos de cifrado de disco de Azure hello, PowerShell o cifrado de disco de tooenable de interfaz de línea de comandos (CLI) de Hola y especifique la configuración de cifrado. 
 
-2. Conceda acceso a la plataforma de Azure para leer el material de cifrado desde el almacén de claves.
+2. Conceder acceso toohello material de cifrado de la plataforma Azure tooread Hola desde el almacén de claves.
 
-3. Proporcione una identidad de aplicación de Azure Active Directory (AAD) para escribir el material de clave de cifrado en su almacén de claves.
+3. Proporcione un Azure Active Directory (AAD) aplicación identidad toowrite Hola cifrado tooyour material clave almacén de claves.
 
-Azure actualizará la máquina virtual y la configuración del almacén de claves y configurará la máquina virtual cifrada.
+Azure actualizará Hola VM y la configuración de almacén de claves de Hola y configurar la máquina virtual cifrada.
 
-Al configurar el almacén de claves para que sea compatible con Azure Disk Encryption, puede agregar una clave de cifrado de claves (KEK) para una mayor seguridad y para que admita la copia de seguridad de máquinas virtuales cifradas.
+Al configurar su toosupport de almacén de claves cifrado del disco de Azure, puede agregar una clave de cifrado de claves (KEK) para lograr una mayor seguridad y copia de seguridad de toosupport de máquinas virtuales cifradas.
 
 ![](media/protect-personal-data-at-rest/create-key.png)
 
@@ -108,65 +108,65 @@ En [Azure Disk Encryption para máquinas virtuales IaaS Linux y Windows](https:/
 
 ### <a name="azure-storage-service-encryption"></a>Cifrado del servicio Azure Storage
 
-[Cifrado del servicio Azure Storage (SSE) para datos en reposo](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption) le ayuda a asegurar y proteger sus datos con el fin de cumplir con los compromisos de cumplimiento y seguridad de su organización. Azure Storage cifra automáticamente sus datos mediante cifrado AES de 256-bits antes de continuar al almacenamiento y los descifra antes de la recuperación. Este servicio está disponible para los archivos y blobs de Azure.
+[Cifrado de servicio de almacenamiento de Azure (SSE) para los datos en reposo](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption) le ayuda a proteger y proteger los datos toomeet los compromisos de seguridad y cumplimiento organizativos. Almacenamiento de Azure automáticamente cifra los datos mediante toostorage de toopersisting anteriores de cifrado de AES de 256 bits y los descifra tooretrieval anterior. Este servicio está disponible para los archivos y blobs de Azure.
 
-#### <a name="how-do-i-use-storage-service-encryption-to-protect-personal-data"></a>¿Cómo se puede usar Cifrado del servicio Azure Storage para proteger los datos personales?
+#### <a name="how-do-i-use-storage-service-encryption-tooprotect-personal-data"></a>¿Cómo se puede usar datos personales de cifrado del servicio de almacenamiento tooprotect?
 
-Para habilitar Cifrado del servicio Azure Storage, haga lo siguiente:
+tooenable cifrado del servicio de almacenamiento, Hola siguientes:
 
-1. Inicie sesión en Azure Portal.
+1. Inicie sesión en hello portal de Azure.
 
 2. Seleccione una cuenta de almacenamiento.
 
-3. En Configuración, en la sección Blob service, seleccione Cifrado.
+3. En configuración, en la sección de servicio Blob de hello, seleccione cifrado.
 
-4. En la sección Servicio Archivo, seleccione Cifrado.
+4. En hello sección de servicio de archivos, seleccione el cifrado.
 
-Una vez que haga clic en la configuración de cifrado, puede habilitar o deshabilitar Cifrado del servicio de Almacenamiento.
+Tras hacer clic en configuración de cifrado de hello, puede habilitar o deshabilitar el cifrado del servicio de almacenamiento.
 
 ![](media/protect-personal-data-at-rest/storage-service-encryption.png)
 
 Los datos nuevos se cifrarán. Los datos en los archivos ya existentes de esta cuenta de almacenamiento permanecerán sin cifrar.
 
-Después de habilitar el cifrado, copie datos en la cuenta de almacenamiento mediante uno de los métodos siguientes:
+Después de habilitar el cifrado, copie la cuenta de almacenamiento de datos toohello mediante uno de los siguientes métodos de hello:
 
-1. Copie los blobs o archivos con la [utilidad de línea de comandos AzCopy](https://docs.microsoft.com/en-us/azure/storage/storage-use-azcopy).
+1. Copiar blobs o archivos con hello [utilidad de línea de comandos de AzCopy](https://docs.microsoft.com/en-us/azure/storage/storage-use-azcopy).
 
-2. [Monte un recurso compartido de archivos mediante SMB](https://docs.microsoft.com/en-us/azure/storage/storage-file-how-to-use-files-windows) para que pueda usar una utilidad como Robocopy para copiar archivos.
+2. [Montar un recurso compartido de archivos mediante SMB](https://docs.microsoft.com/en-us/azure/storage/storage-file-how-to-use-files-windows) por lo que puede usar una utilidad como Robocopy toocopy archivos.
 
-3. Copie los datos de blobs o archivos en Blob Storage y desde este, o entre cuentas de almacenamiento mediante las [bibliotecas de cliente de Storage, como .NET](https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-how-to-use-blobs).
+3. Copiar blob o archivo de datos tooand del almacenamiento de blobs o entre cuentas de almacenamiento mediante [bibliotecas de cliente de almacenamiento, como .NET](https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-how-to-use-blobs).
 
-4.  Use un [Explorador de almacenamiento](https://docs.microsoft.com/en-us/azure/storage/storage-explorers) para cargar blobs a su cuenta de almacenamiento con cifrado habilitado.
+4.  Use un [Explorador de almacenamiento](https://docs.microsoft.com/en-us/azure/storage/storage-explorers) tooupload tooyour cuenta de almacenamiento de blobs con el cifrado habilitado.
 
 ### <a name="transparent-data-encryption"></a>Cifrado de datos transparente
 
-Cifrado de datos transparente (TDE) es una característica de SQL Azure mediante la cual puede cifrar los datos en los niveles de la base de datos y el servidor. TDE ahora está habilitado de forma predeterminada en todas las bases de datos recién creadas. TDE realiza el cifrado y descifrado de E/S en tiempo real de los archivos de datos y de registro.
+Cifrado de datos transparente (TDE) es una característica de SQL Azure mediante el cual se puede cifrar los datos en ambos niveles de base de datos y el servidor de Hola. TDE ahora está habilitado de forma predeterminada en todas las bases de datos recién creadas. TDE realiza el cifrado de E/S y descifrado de los archivos de datos y de registro de hello en tiempo real.
 
-#### <a name="how-do-i-use-tde-to-protect-personal-data"></a>¿Cómo se usa TDE para proteger los datos personales?
+#### <a name="how-do-i-use-tde-tooprotect-personal-data"></a>¿Cómo se puede usar datos personales de TDE tooprotect?
 
-Puede configurar TDE a través de Azure Portal, mediante el uso de la API de REST o mediante PowerShell. Para habilitar TDE en una base de datos existente mediante Azure Portal, haga lo siguiente:
+Puede configurar TDE a través de hello portal de Azure, mediante el uso de API de REST de hello, o mediante PowerShell. Hola tooenable TDE en una base de datos existente mediante Hola Portal de Azure, después de:
 
-1. Visite Azure Portal en <https://portal.azure.com> e inicie sesión con su cuenta de administrador o colaborador de Azure.
+1. Visite hello Azure portal en <https://portal.azure.com> e inicie sesión con su cuenta de administrador de Azure o colaborador.
 
-2. En el encabezado de la izquierda, haga clic en EXAMINAR y, a continuación, haga clic en bases de datos SQL.
+2. En el encabezado de la izquierda hello, haga clic en tooBROWSE y, a continuación, haga clic en bases de datos SQL.
 
-3. Con las bases de datos SQL seleccionadas en el panel izquierdo, haga clic en la base de datos de usuario.
+3. Con las bases de datos SQL seleccionadas en el panel izquierdo de hello, haga clic en la base de datos de usuario.
 
-4. En la hoja de la base de datos, haga clic en Toda la configuración.
+4. En la hoja de la base de datos de hello, haga clic en todas las configuraciones.
 
-5. En la hoja de configuración, haga clic en la parte de Cifrado de datos transparente para abrir la hoja correspondiente.
+5. En la hoja de configuración de hello, haga clic en las hoja de cifrado de datos transparente cifrado parte tooopen Hola transparente de los datos.
 
-6. En la hoja de cifrado de datos, mueva el botón de cifrado de datos a On y, a continuación, haga clic en Guardar (en la parte superior de la página) para aplicar la configuración. El estado de cifrado será aproximadamente el mismo que el progreso del cifrado de datos transparente.
+6. En la hoja de cifrado de datos de hello, mover tooOn de botón de cifrado de datos de hello y, a continuación, haga clic en Guardar (al principio de Hola de página de hello) configuración de hello tooapply. estado de cifrado de Hello aproximará el progreso de Hola de cifrado de datos transparente de Hola.
 
 ![Habilitar el cifrado de datos](media/protect-personal-data-at-rest/turn-data-encryption-on.png)
 
-Puede encontrar instrucciones sobre cómo habilitar TDE y obtener información acerca de cómo descifrar las bases de datos protegidas por TDE y mucho más en el artículo [Cifrado de datos transparente con Azure SQL Database.](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database)
+Obtener instrucciones sobre cómo tooenable TDE y obtener información acerca de cómo descifrar las bases de datos protegida por TDE etc. pueden encontrarse en el artículo de Hola [cifrado de datos transparente con base de datos de SQL Azure.](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database)
 
 ## <a name="summary"></a>Resumen
 
-La compañía puede lograr su objetivo de cifrar datos personales almacenados en la nube de Azure. Puede hacerlo mediante Azure Disk Encryption para proteger volúmenes completos. Esto incluye los archivos del sistema operativo y los archivos de datos que contienen información de identificación personal y otros datos confidenciales. Cifrado del servicio Azure Storage puede utilizarse para proteger los datos personales que se almacenan en archivos y blobs. Para los datos que se almacenan en instancias de Azure SQL Database, el cifrado de datos transparente ofrece protección frente a una exposición no autorizada de información personal.
+empresa Hola puede lograr su objetivo de cifrar datos personales guardados en hello nube de Azure. Puede hacerlo mediante el cifrado de disco de Azure demasiado proteger volúmenes completos. Esto puede incluir archivos de sistema operativo de Hola y archivos de datos que contienen información de identificación personal y otros datos confidenciales. Cifrado de servicio de almacenamiento de Azure puede ser usado tooprotect datos personales que se almacenan en archivos y de blobs. Para los datos que se almacenan en instancias de Azure SQL Database, el cifrado de datos transparente ofrece protección frente a una exposición no autorizada de información personal.
 
-Para proteger las claves que se usan para cifrar los datos de Azure, la empresa puede usar Azure Key Vault. Este agiliza el proceso de administración de claves y permite a la empresa mantener el control de claves que obtienen acceso a los datos personales y los cifran.
+tooprotect hello las claves usadas tooencrypt datos en Azure, la empresa de hello puede usar el almacén de claves de Azure. Esto simplifica el proceso de administración de claves de Hola y habilita Hola control toomaintain de empresa de claves que tienen acceso y cifrar los datos personales.
 
 ## <a name="next-steps"></a>Pasos siguientes
 

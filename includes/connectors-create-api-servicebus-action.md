@@ -1,17 +1,17 @@
-Ahora que ha agregado un desencadenador, es hora de hacer algo interesante con los datos que genera. Siga estos pasos para agregar una acción **Service Bus - Send message** (Bus de servicio: enviar mensaje). Esta acción enviará un mensaje al Bus de servicio.  
+Ahora que ha agregado un desencadenador, es algo interesante con datos de hello generadas por el desencadenador de hello toodo de tiempo. Siga estos Hola de tooadd pasos **Bus de servicio - envío de mensaje** acción. Esta acción envía un Bus de mensaje tooService.  
 
-Siga estos pasos para crear la acción envío del mensaje:  
+Siga estos acción de mensaje de envío de pasos toocreate hello:  
 
-1. Seleccione **+ New step** (+ Nuevo paso) para agregar la acción.  
-2. Seleccione **Add an action**(Agregar una acción). Se abrirá el cuadro de búsqueda en el que podrá buscar cualquier acción que quiera realizar. En este ejemplo, nos interesan las acciones del Bus de servicio.    
+1. Seleccione **+ nuevo paso** acción de hello tooadd.  
+2. Seleccione **Add an action**(Agregar una acción). Se abrirá un cuadro de búsqueda, donde puede buscar para cualquier acción que desea que tootake. En este ejemplo, nos interesan las acciones del Bus de servicio.    
    ![Imagen 1 de acción del Bus de servicio](./media/connectors-create-api-servicebus/action-1.png)   
 3. Escriba *Bus de servicio*.  
-4. Seleccione **Service Bus - Send message** (Service Bus: enviar mensaje). Esta es la acción que se realizará.  
+4. Seleccione **Bus de servicio - envío de mensaje** como Hola tootake de acción.  
    ![Imagen 2 de acción del Bus de servicio](./media/connectors-create-api-servicebus/action-2.png)    
-5. Escriba el contenido del mensaje. Este es un paso necesario.  
-6. Escriba el nombre de la cola o del tema a los que se enviará el mensaje. Este paso también es necesario.   
-7. Opcionalmente, puede proporcionar otros detalles sobre el mensaje. Esto es opcional.     
+5. Introducir contenido de hello para el mensaje de bienvenida. Este es un paso necesario.  
+6. Escriba cola de Hola o se enviará el mensaje de saludo de toowhich de nombre de tema. Este paso también es necesario.   
+7. Proporcione otros detalles acerca del mensaje de bienvenida. Esto es opcional.     
    ![Imagen 3 de acción del Bus de servicio](./media/connectors-create-api-servicebus/action-3.png)    
-8. Guarde los cambios en el flujo de trabajo.   
+8. Guardar el flujo de trabajo de hello cambios tooyour.   
    ![Imagen 4 de acción del Bus de servicio](./media/connectors-create-api-servicebus/action-4.png)     
 

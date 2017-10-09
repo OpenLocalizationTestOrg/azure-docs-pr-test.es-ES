@@ -1,6 +1,6 @@
 ---
-title: "Configuración de las preferencias de la versión preliminar de Azure Application Insights | Microsoft Docs"
-description: "El equipo de desarrollo de Azure Application Insights implementa nuevas experiencias. Puede configurar de que nuevas experiencias desea tener una versión preliminar en Azure Portal."
+title: "las preferencias de vista previa de aaaSet de visión de la aplicación de Azure | Documentos de Microsoft"
+description: equipo de desarrollo de Hello Azure Application Insights implementa nuevas experiencias. Puede establecer las nuevas experiencias desea toopreview Hola portal de Azure.
 services: application-insights
 documentationcenter: 
 author: CFreemanwa
@@ -13,23 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/1/2017
 ms.author: bwren
-ms.openlocfilehash: 03b69f68911a79adeab1d29f868d26653d6a7ac0
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 04a1d763bd706a9cc050d72512a8ca405f980dc4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="preview-upcoming-changes-to-azure-application-insights"></a>Versión preliminar de los próximos cambios en Azure Application Insights 
+# <a name="preview-upcoming-changes-tooazure-application-insights"></a>Vista previa de las próximas cambia tooAzure Application Insights 
 
-Application Insights publica con frecuencia nuevas características. Si desea obtener ver las versiones preliminares de estas mejoras, puede registrarse en la hoja Vista previa de Application Insights.  El equipo de desarrollo crea versiones preliminares de las nuevas características disponibles de forma limitada antes de liberarlas para todos los usuarios. 
+Application Insights publica con frecuencia nuevas características. Si desea que las vistas previas de toosee de estas mejoras, puede registrarse en la hoja de vista previa de visión de aplicación Hola.  equipo de desarrollo de Hello hace que las vistas previas de las nuevas características disponibles de forma limitada antes de liberarlos tooall a los usuarios. 
 
-La imagen siguiente muestra cómo establecer las preferencias de versión preliminar.
+Hello imagen siguiente se muestra cómo tooset sus preferencias de vista previa.
 
 ![Hoja Versión preliminar de Application Insights](./media/app-insights-preview/preview.png)
 
 ## <a name="set-preferences"></a>Establecimiento de preferencias
 
-En la hoja Versión preliminar, puede seleccionar una de las siguientes opciones para cuando vea las versiones preliminares.
+En la hoja de la vista previa de hello, puede seleccionar desde las siguientes opciones para cuando obtener vistas previas de Hola.
 
 - Siempre: las experiencias de Versión preliminar se ven en cuanto están disponibles.
 - Auto: las experiencias de Versión preliminar que Microsoft recomienda para su cuenta. 

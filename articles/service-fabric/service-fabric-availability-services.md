@@ -1,5 +1,5 @@
 ---
-title: Disponibilidad de los servicios de Service Fabric | Microsoft Docs
+title: aaaAvailability de servicios de Service Fabric | Documentos de Microsoft
 description: "Describe la detección de errores, la conmutación por error y la recuperación para los servicios"
 services: service-fabric
 documentationcenter: .net
@@ -14,40 +14,40 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 41ff2c3129facb0eea9d896ce75d7343ae2a018e
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: c443aadfe31a1413359b08d34c4b7dd5db4edd16
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="availability-of-service-fabric-services"></a>Disponibilidad de los servicios de Service Fabric
 En este artículo se ofrece una visión general de cómo Service Fabric mantiene la disponibilidad de un servicio.
 
 ## <a name="availability-of-service-fabric-stateless-services"></a>Disponibilidad de los servicios sin estado de Service Fabric
-Los servicios de Service Fabric de Azure pueden ser con o sin estado. Un servicio sin estado es un servicio de aplicación que no tiene un [estado local](service-fabric-concepts-state.md), es decir, no tiene que tener una alta disponibilidad o confiabilidad.
+Los servicios de Service Fabric de Azure pueden ser con o sin estado. Un servicio sin estado es un servicio de aplicación que no tenga ningún [estado local](service-fabric-concepts-state.md) que necesita toobe altamente disponible y confiable.
 
-Para crear un servicio sin estado, es necesario definir `InstanceCount`. El recuento de instancias define el número de instancias de la lógica de la aplicación del servicio sin estado que debe estar ejecutándose en el clúster. El aumento del número de instancias es la manera recomendada de escalar horizontalmente un servicio sin estado.
+Para crear un servicio sin estado, es necesario definir `InstanceCount`. recuento de instancias de Hello define número Hola de instancias del servicio sin estado Hola lógica de aplicación que debe estar ejecutándose en el clúster de Hola. Aumentar el número de Hola de instancias es Hola recomendada la forma de escalar horizontalmente un servicio sin estado.
 
-Cuando una instancia de un servicio con nombre sin estado produce un error, se crea una nueva instancia en algún nodo válido del clúster. Por ejemplo, una instancia de servicio sin estado podría producir error en el Nodo1 y crearse de nuevo en el Nodo5.
+Cuando se produce un error en una instancia de un estado con el nombre de servicio, se crea una nueva instancia en alguno de los nodos en clúster de hello elegible. Por ejemplo, una instancia de servicio sin estado podría producir error en el Nodo1 y crearse de nuevo en el Nodo5.
 
 ## <a name="availability-of-service-fabric-stateful-services"></a>Disponibilidad de los servicios con estado de Service Fabric
-Un servicio con estado tiene algún estado asociado a él. En Service Fabric, un servicio con estado se modela como un conjunto de réplicas. Cada réplica es una instancia en ejecución del código del servicio que también tiene una copia del estado de ese servicio. Las operaciones de lectura y escritura se realizan en una réplica (denominada principal). Los cambios en el estado de operaciones de escritura se *replican* en otras réplicas del conjunto de réplicas (llamadas secundarias activas) y se aplican. 
+Un servicio con estado tiene algún estado asociado a él. En Service Fabric, un servicio con estado se modela como un conjunto de réplicas. Cada réplica es una instancia en ejecución de código de hello del servicio de Hola que también tiene una copia del estado de Hola para ese servicio. Operaciones de lectura y escritura se realizan en una réplica (llamada hello principal). Toostate de cambios de las operaciones de escritura son *replican* toohello otras réplicas del conjunto de réplicas de hello (denominado secundarias activas) y aplicar. 
 
-Solo puede haber una réplica principal, pero puede haber varias réplicas secundarias activas. El número de réplicas secundarias activas es configurable y un mayor número de réplicas puede tolerar un mayor número de errores de hardware y software simultáneos.
+Solo puede haber una réplica principal, pero puede haber varias réplicas secundarias activas. número de Hola de réplicas secundarias activas es configurable y un mayor número de réplicas puede tolerar un mayor número de errores de hardware y software simultáneo.
 
-Si la réplica principal deja de funcionar, Service Fabric convierte una de las réplicas secundarias activas en la nueva réplica principal. Esta réplica secundaria activa ya tiene la versión actualizada del estado (a través de la *replicación*) y puede continuar procesando más operaciones de lectura y escritura.
+Si la réplica principal de hello deja de funcionar, Service Fabric realiza una de hello secundarias activas réplicas Hola nueva réplica principal. Esta réplica secundaria activa ya tiene la versión de Hola actualizado del estado de hello (a través de *replicación*), y se puede continuar con el procesamiento de lectura adicional y las operaciones de escritura.
 
-Este concepto de una réplica como secundaria activa o principal se conoce como el rol de réplica.
+Este concepto, de una réplica es un principal o secundaria activa, se conoce como Hola rol de réplica.
 
 ### <a name="replica-roles"></a>Roles de réplica
-El rol de una réplica se usa para administrar el ciclo de vida del estado que se está administrando por esa réplica. Una réplica cuyo rol sea solicitudes de lectura de servicios principales. El servidor principal también controla todas las solicitudes de escritura mediante la actualización de su estado y la replicación de los cambios. Estos cambios se aplican a las secundarias activas del conjunto de réplicas. El trabajo de una secundaria activa es recibir cambios de estado que la réplica principal ha replicado y actualizar su vista del estado.
+rol de Hola de una réplica es ciclo de vida de hello toomanage usado de estado de hello está administrado por esa réplica. Una réplica cuyo rol sea solicitudes de lectura de servicios principales. Hola principal también controla todas las solicitudes de escritura al actualizar su estado y replicar cambios de Hola. Estos cambios son toohello aplicado secundarias activas en el conjunto de réplicas de Hola. trabajo de Hola de una secundaria activa es cambios de estado de tooreceive que Hola réplica principal se ha replicado y actualizar la vista de estado de Hola.
 
 > [!NOTE]
-> Los modelos de programación de nivel superior, como [Reliable Actors](service-fabric-reliable-actors-introduction.md) y [Reliable Services](service-fabric-reliable-services-introduction.md) ocultan el concepto de rol de réplica del desarrollador. En Actors, la noción de rol es innecesaria, mientras que en Services se simplifica enormemente en la mayoría de los escenarios.
+> Modelos de programación de nivel superior como [Reliable Actors](service-fabric-reliable-actors-introduction.md) y [servicios confiables](service-fabric-reliable-services-introduction.md) ocultar el concepto de Hola de rol de réplica del programador de Hola. En actores, noción de Hola de rol es innecesario, mientras en los servicios se ha simplificado en gran medida para la mayoría de los escenarios.
 >
 
 ## <a name="next-steps"></a>Pasos siguientes
-Para más información sobre los conceptos de Service Fabric, consulte los siguientes artículos:
+Para obtener más información sobre conceptos de Service Fabric, vea Hola siguientes artículos:
 
 - [Escalado de aplicaciones de Service Fabric](service-fabric-concepts-scalability.md)
 - [Creación de particiones de los servicios de Service Fabric](service-fabric-concepts-partitioning.md)

@@ -17,11 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 685a479583f5f11f57bef22dc5881285bb1f70d0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5d2322268aa18f52f60c2833778323773ac4eec3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-your-azure-iot-hub-and-register-your-device"></a>Creación de una instancia de Azure IoT Hub y registro del dispositivo
 
@@ -29,29 +29,29 @@ ms.lasthandoff: 07/11/2017
 
 - Crear un grupo de recursos
 - Crear su primera instancia de IoT Hub
-- Registrar el dispositivo en IoT Hub mediante la CLI de Azure 
+- Registre el dispositivo en el centro de IoT mediante Hola CLI de Azure. 
 
-Al registrar el dispositivo en IoT Hub, el servicio Azure IoT Hub genera una clave para que el dispositivo la use cuando se autentique con el servicio. 
+Al registrar el dispositivo en el centro de IoT, Hola servicio del centro de IoT de Azure genera una clave para su tooauthenticate toouse de dispositivo con el servicio de Hola. 
 
-Si tiene problemas, busque soluciones en la [página de solución de problemas](iot-hub-gateway-kit-c-troubleshooting.md).
+Si tiene problemas, buscar soluciones en hello [página solución de problemas](iot-hub-gateway-kit-c-troubleshooting.md).
 
 ## <a name="what-you-will-learn"></a>Lo qué aprenderá
 
 En esta lección, aprenderá lo siguiente:
 
-- Cómo usar la CLI de Azure para crear una instancia de IoT Hub.
-- Cómo registrar un dispositivo en un IoT Hub.
+- ¿Cómo toouse Hola toocreate de CLI de Azure de un centro de IoT.
+- ¿Cómo tooregister un dispositivo en un centro de IoT.
 
 ## <a name="what-you-need"></a>Lo que necesita
 
 - Una suscripción de Azure activa. Si no tiene ninguna cuenta de Azure, puede crear una [cuenta de evaluación gratuita de Azure](http://azure.microsoft.com/pricing/free-trial/) en solo unos minutos.
-- Debe tener instalada la CLI de Azure.
+- Debe tener Hola que CLI de Azure instalado.
 
 ## <a name="create-an-iot-hub"></a>Crear un centro de IoT
 
-Para crear una instancia de IoT Hub, siga estos pasos:
+toocreate un centro de IoT, siga estos pasos:
 
-1. Inicie sesión en la cuenta de Azure mediante el siguiente comando:
+1. Inicie sesión en tooyour cuenta de Azure ejecutando el siguiente comando de hello:
 
    ```bash
    az login
@@ -59,42 +59,42 @@ Para crear una instancia de IoT Hub, siga estos pasos:
 
    Una vez que se haya iniciado sesión correctamente, se mostrarán todas las suscripciones disponibles.
 
-2. Establezca la suscripción predeterminada de Azure que va a usar ejecutando el comando siguiente:
+2. Establezca el valor predeterminado de hello suscripción de Azure que quiere toouse, ejecute hello siguiente comando:
 
    ```bash
    az account set --subscription {subscription id or name}
    ```
 
-   El valor de `subscription ID or name` puede verse en la salida del comando `az login` o del comando `az account list`.
+   `subscription ID or name`puede encontrarse en la salida de hello de hello `az login` o hello `az account list` comando.
 
-3. Registre el proveedor con el siguiente comando. Los proveedores de recursos son servicios que proporcionan recursos para la aplicación. Debe registrar el proveedor para poder implementar el recurso de Azure que este le ofrece.
+3. Registrar un proveedor Hola ejecutando el siguiente comando de Hola. Los proveedores de recursos son servicios que proporcionan recursos para la aplicación. Debe registrar proveedor de Hola para poder implementar Hola recursos de Azure que Hola ofertas de proveedor.
 
    ```bash
    az provider register -n "Microsoft.Devices"
    ```
 
-4. Cree un grupo de recursos denominado `iot-gateway` en la región oeste de EE. UU. ejecutando el comando siguiente:
+4. Cree un grupo de recursos denominado `iot-gateway` en región del oeste de Estados Unidos de Hola ejecutando el siguiente comando de hello:
 
    ```bash
    az group create --name iot-gateway --location westus
    ```
    
-   `westus` es la ubicación en la que se crea el grupo de recursos. Si desea utilizar otra ubicación, puede ejecutar `az account list-locations -o table` para ver todas las ubicaciones admitidas por Azure.
+   `westus`es la ubicación de hello crear el grupo de recursos. Si desea toouse en otra ubicación, puede ejecutar `az account list-locations -o table` toosee todos Hola ubicaciones de Azure admite.
 
-5. Cree una instancia de IoT Hub en el grupo de recursos `iot-gateway` mediante la ejecución del comando siguiente:
+5. Crear un centro de IoT en hello `iot-gateway` grupo de recursos mediante la ejecución de hello siguiente comando:
 
    ```bash
    az iot hub create --name {my hub name} --resource-group iot-gateway
    ```
 
-De forma predeterminada, la herramienta crea la instancia de IoT Hub con el plan de tarifa Gratis. Para más información, consulte los [precios de Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
+De forma predeterminada, herramienta de hello crea un centro de IoT en el nivel de precios de Hola. Para más información, consulte los [precios de Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
 
 > [!NOTE]
-> El nombre de su instancia de IoT Hub debe única globalmente. Solo puede crear una edición F1 de Azure IoT Hub en su suscripción de Azure.
+> nombre de Hola de su centro de IoT debe ser único globalmente. Solo puede crear una edición F1 de Azure IoT Hub en su suscripción de Azure.
 
 ## <a name="register-your-device-in-your-iot-hub"></a>Registro del dispositivo en IoT Hub
 
-Todos los dispositivos que envían mensajes al centro de IoT Hub y los reciben de este deben estar registrados con un identificador único.
+Cada dispositivo que envía el centro de IoT tooyour de mensajes y recibe mensajes desde el centro de IoT debe estar registrado con un identificador único.
 Registre el dispositivo en IoT Hub ejecutando el comando siguiente:
 
 ```bash
@@ -103,7 +103,7 @@ az iot device create --device-id mydevice --hub-name {my hub name} --resource-gr
 
 ## <a name="summary"></a>Resumen
 
-Ha creado una instancia de IoT Hub y ha registrado en ella el dispositivo local con una identidad de dispositivo. Está listo para aprender a configurar y ejecutar una aplicación de ejemplo de puerta de enlace para enviar datos desde el dispositivo físico a la instancia de IoT Hub en la nube.
+Ha creado una instancia de IoT Hub y ha registrado en ella el dispositivo local con una identidad de dispositivo. Ya está listo toolearn cómo tooconfigure y ejecutar una puerta de enlace ejemplo aplicación toosend de datos desde el centro de IoT de dispositivo físico tooyour Hola en la nube.
 
 ## <a name="next-steps"></a>Pasos siguientes
 [Configuración y ejecución de la aplicación de ejemplo BLE](iot-hub-gateway-kit-c-lesson3-configure-ble-app.md)

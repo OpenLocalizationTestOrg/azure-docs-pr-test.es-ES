@@ -1,6 +1,6 @@
 ---
-title: "Conversión de WordPress en multisitios en Servicio de aplicaciones de Azure"
-description: "Obtenga información acerca de cómo tomar un sitio web de WordPress existente creado en la galería de Azure y convertirlo en multisitio de WordPress"
+title: "aaaConvert tooMultisite de WordPress en el servicio de aplicación de Azure"
+description: "Obtenga información acerca de cómo tootake una aplicación web de WordPress existente se creó mediante la Galería de hello en Azure y convertir tooWordPress la funcionalidad de multisitio"
 services: app-service\web
 documentationcenter: php
 author: rmcmurray
@@ -14,118 +14,118 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-ms.openlocfilehash: 4a15fb5e97d2ca57e5883c07651c372c54021c92
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1153f0a8043de875f081704cd0a124776758878c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="convert-wordpress-to-multisite-in-azure-app-service"></a>Conversión de WordPress en multisitios en Servicio de aplicaciones de Azure
+# <a name="convert-wordpress-toomultisite-in-azure-app-service"></a>Convertir tooMultisite de WordPress en el servicio de aplicación de Azure
 ## <a name="overview"></a>Información general
 *Por [Ben Lobaugh][ben-lobaugh], [Microsoft Open Technologies Inc.][ms-open-tech]*
 
-En este tutorial aprenderá a tomar una aplicación web de WordPress existente creada a través de la galería en Azure y convertirla en una instalación WordPress Multisite. Adicionalmente, aprenderá a asignar un dominio personalizado a cada uno de los subsitios dentro de su instalación.
+En este tutorial, aprenderá cómo tootake una aplicación web de WordPress existente creado a través de la Galería de hello en Azure y convert en la funcionalidad de multisitio WordPress instalar. Además, obtendrá información sobre cómo tooassign una tooeach de dominio personalizado de hello subsitios dentro de la instalación.
 
-Se supone que tiene una instalación existente de WordPress. De lo contrario, siga las instrucciones que se proporcionan en [Creación de un sitio web de WordPress desde la galería de Azure][website-from-gallery].
+Se supone que tiene una instalación existente de WordPress. Si no lo hace, siga instrucciones de hello indicadas en [crear un sitio web de WordPress desde la Galería de hello en Azure][website-from-gallery].
 
-La conversión de la instalación de un único sitio de WordPress existente a multisitio es generalmente bastante simple y muchos de los pasos iniciales que se presentan aquí provienen directamente de la página [Create A Network][wordpress-codex-create-a-network] (Creación de una red) en [WordPress Codex](http://codex.wordpress.org).
+Convertir un WordPress existente tooMultisite de instalación de sitio único suele ser bastante simple y muchas de hello pasos iniciales que se aquí proceden directamente de hello [crear una red] [ wordpress-codex-create-a-network] página en hello [WordPress Codex](http://codex.wordpress.org).
 
 Comencemos.
 
 ## <a name="allow-multisite"></a>Permitir multisitio
-Primero necesita habilitar el multisitio mediante el archivo `wp-config.php` con la constante **WP\_ALLOW\_MULTISITE**. Hay dos métodos para editar los archivos de aplicaciones web: el primero es a través de FTP y el segundo mediante Git. Si no está familiarizado con la configuración de alguno de estos métodos, consulte los siguientes tutoriales:
+Primero debe tooenable multisitio a través de hello `wp-config.php` archivo con hello **WP\_permitir\_MULTISITIO** constante. Hay dos tooedit métodos los archivos de aplicación web: hello en primer lugar es a través de FTP y Hola segundo a través de Git. Si no está familiarizado con cómo toosetup cualquiera de estos métodos, consulte toohello tutoriales:
 
 * [Sitio web PHP con MySQL y FTP][website-w-mysql-and-ftp-ftp-setup]
 * [Sitio web PHP con MySQL y Git][website-w-mysql-and-git-git-setup]
 
-Abra el archivo `wp-config.php` con el editor de su preferencia y agregue el siguiente código encima de la línea `/* That's all, stop editing! Happy blogging. */`.
+Abra hello `wp-config.php` archivo con el editor de Hola de su elección y agregue siguiente de hello anteriormente hello `/* That's all, stop editing! Happy blogging. */` línea.
 
     /* Multisite */
 
     define( 'WP_ALLOW_MULTISITE', true );
 
-¡Asegúrese de guardar el archivo y cargarlo de vuelta al servidor!
+¡Puede que el archivo hello toosave y cargarlo servidor back-toohello!
 
 ## <a name="network-setup"></a>Configuración de la red
-Inicie sesión en el área *wp-admin* de su aplicación web; debería ver un elemento nuevo bajo el menú **Herramientas** llamado **Configuración de red**. Haga clic en **Configuración de red** y complete los detalles de su red.
+Inicie sesión en toohello *wp-admin* área no cliente de la aplicación web y debe aparecer un nuevo elemento en hello **herramientas** menú denominado **el programa de instalación de red**. Haga clic en **el programa de instalación de red** y rellene los detalles de saludo de la red.
 
 ![Pantalla de configuración de la red][wordpress-network-setup]
 
-Este tutorial usa el esquema de sitios de *Subdirectorios* porque siempre funciona, y más adelante vamos a configurar dominios personalizados para cada subsitio. Sin embargo, debería ser posible configurar una instalación de subdominio si asigna un dominio a través del [Portal de Azure](https://portal.azure.com) y configura correctamente un DNS con caracteres comodín.
+Este tutorial usa hello *subdirectorios* sitio esquema porque siempre debe funcionar y se va a configurar dominios personalizados para cada subsitio más adelante en el tutorial Hola. Sin embargo, debe ser posible toosetup un subdominio instalar si asigna un dominio a través de hello [Portal de Azure](https://portal.azure.com) y comodín DNS se configuraron correctamente.
 
-Para más información sobre la configuración de subdominios frente a subdirectorios, consulte el artículo sobre [tipos de red multisitio][wordpress-codex-types-of-networks] en WordPress Codex.
+Para obtener más información sobre el subdominio vs configuraciones subdirectorio vea Hola [tipos de red multisitio] [ wordpress-codex-types-of-networks] artículo en hello WordPress Codex.
 
-## <a name="enable-the-network"></a>Habilitación de la red
-La red está ahora configurada en la base de datos, pero todavía queda un paso para habilitar la funcionalidad de red. Finalice la configuración de `wp-config.php` y asegúrese de que `web.config` redirige correctamente cada sitio.
+## <a name="enable-hello-network"></a>Habilitar Hola red
+red de Hello ya está configurado en la base de datos de hello, pero hay un paso tooenable Hola red funcionalidad restante. Finalizar hello `wp-config.php` configuración y asegúrese de `web.config` correctamente enruta cada sitio.
 
-Después de hacer clic en el botón **Instalar** en la página *Configuración de red*, WordPress intentará actualizar los archivos `wp-config.php` y `web.config`. No obstante, siempre debe comprobar los archivos para asegurarse de que las actualizaciones se realizaron correctamente. De lo contrario, esta pantalla le presentará las actualizaciones necesarias. Edite y guarde los archivos.
+Tras hacer clic en hello **instalar** botón en hello *el programa de instalación de red* página, WordPress intentará hello tooupdate `wp-config.php` y `web.config` archivos. Sin embargo, debe comprobar siempre Hola archivos tooensure Hola actualizaciones fueron correctas. Si no es así, esta pantalla presentará con actualizaciones necesarias de Hola. Editar y guardar archivos de Hola.
 
-Después de realizar las actualizaciones, necesitará cerrar la sesión y volver a iniciarla en el panel de wp-admin.
+Después de hacer que estas actualizaciones debe toolog out y registro nuevamente en panel de administración de wp de Hola.
 
-Debería aparecer ahora un menú adicional en la barra de administración con la etiqueta **Mis sitios**. Este menú le permite controlar su red nueva a través del panel **Administrador de red** .
+Ahora debería haber un menú adicionales en la barra de administración de hello con la etiqueta **Mis sitios**. Este menú permite toocontrol la nueva red a través de hello **Administrador de red** panel.
 
 ## <a name="adding-custom-domains"></a>Incorporación de dominios personalizados
-El complemento [WordPress MU Domain Mapping][wordpress-plugin-wordpress-mu-domain-mapping] facilita enormemente la incorporación de dominios personalizados a cualquier sitio de su red. Para que el complemento funcione correctamente, necesita realizar cierta configuración adicional en el Portal y también en el registrador de su dominio.
+Hola [asignación de dominio de WordPress MU] [ wordpress-plugin-wordpress-mu-domain-mapping] complemento lo convierte en un sitio de tooany facilísima tooadd dominios personalizados en la red. En orden para hello complemento toooperate correctamente, deberá toodo alguna configuración adicional Hola Portal así como en el registrador de dominios.
 
-## <a name="enable-domain-mapping-to-the-web-app"></a>Habilitación de la asignación de dominios a la aplicación web
-El complemento **Gratis** [Servicio de aplicaciones](http://go.microsoft.com/fwlink/?LinkId=529714) no admite la adición de dominios personalizados para Aplicaciones web. Necesitará cambiar al modo **Compartido** o **Estándar**. Para ello, siga estos pasos:
+## <a name="enable-domain-mapping-toohello-web-app"></a>Habilitar aplicación de web de toohello de asignación de dominio
+Hola **libre** [servicio de aplicaciones](http://go.microsoft.com/fwlink/?LinkId=529714) plan de modo no permite agregar dominios personalizados tooWeb aplicaciones. Necesitará tooswitch demasiado**Shared** o **estándar** modo. toodo esto:
 
-* Inicie sesión en el portal de Azure y localice su aplicación web. 
-* Haga clic en la pestaña **Escalar verticalmente** en **Configuración**.
+* Inicie sesión en toohello Portal de Azure y busque la aplicación web. 
+* Haga clic en hello **escalar verticalmente** ficha **configuración**.
 * En **General**, seleccione *COMPARTIDO* o *ESTÁNDAR*
 * Haga clic en **Guardar**
 
-Es posible que reciba un mensaje pidiéndole que verifique el cambio y que confirme que su aplicación web puede incurrir en costos, según el uso y el resto de la configuración que realice.
+Puede recibir un mensaje que le pide que tooverify cambio de Hola y confirmar su aplicación web ahora puede suponer un costo, dependiendo de uso y Hola otra configuración que establezca.
 
-El procesamiento de la nueva configuración tarda unos pocos segundos, de modo que ahora es un buen momento para empezar a configurar su dominio.
+Tarda unos segundos tooprocess Hola nueva configuración, por lo que ahora es un buen momento toostart al configurar el dominio.
 
 ## <a name="verify-your-domain"></a>Verificación de su dominio
-Antes de que Aplicaciones web de Azure permita asignar un dominio al sitio, primero necesita verificar que tiene la autorización para asignar el dominio. Para ello, debe agregar un registro nuevo CNAME a su entrada de DNS.
+Para que aplicaciones Web de Azure le permita toomap un sitio de toohello de dominio, primero debe tooverify tiene dominio de hello autorización toomap Hola. toodo por lo tanto, debe agregar una nueva entrada DNS de tooyour registro CNAME.
 
-* Inicie sesión en el administrador de DNS de su dominio.
+* Inicie sesión en el Administrador de DNS del dominio tooyour
 * Cree un nuevo *awverify*
-* Haga que *awverify* apunte a *awverify.SU_DOMINIO.azurewebsites.net*
+* Punto de *awverify* demasiado*awverify. YOUR_DOMAIN.azurewebsites.NET*
 
-Puede pasar algún tiempo antes de que los cambios de DNS surtan efecto, de modo que si los siguientes pasos no funcionan inmediatamente, prepárese una taza de café y vuelva después para volver a intentarlo.
+Puede tardar algún tiempo para toogo de cambios DNS de Hola a todos los efectos que, por lo que vaya si Hola pasos no funciona inmediatamente, realice una taza de café, a continuación, vuelva e inténtelo de nuevo.
 
-## <a name="add-the-domain-to-the-web-app"></a>Incorporación del dominio a la aplicación web
-Vuelva a la aplicación web a través de Azure Portal, haga clic en **Configuración** y, a continuación, haga clic en **Dominios personalizados y SSL**.
+## <a name="add-hello-domain-toohello-web-app"></a>Agregar la aplicación web de hello dominio toohello
+Aplicación web de tooyour devuelto a través de hello Portal de Azure, haga clic en **configuración**y, a continuación, haga clic en **los dominios personalizados y SSL**.
 
-Cuando aparezca *Configuración de SSL* , verá los campos donde especificará todos los dominios que desea asignar a la aplicación web. Si un dominio no aparece en este lugar, no estará disponible para asignarlo dentro de WordPress, sin considerar la configuración de DNS del dominio.
+Cuando Hola *configuración de SSL* son muestra, verá campos Hola donde escribirá todos los dominios de Hola que deseen tooassign tooyour web app. Si un dominio no aparece aquí, no estará disponible para la asignación dentro de WordPress, independientemente de cómo DNS de dominio de hello es el programa de instalación.
 
 ![Cuadro de diálogo de administración de dominios personalizados][wordpress-manage-domains]
 
-Después de escribir su dominio en el cuadro de texto, Azure verificará el registro CNAME que creó anteriormente. Si el DNS no se ha propagado completamente, aparecerá un indicador rojo. Si fue correcto, verá una marca de verificación verde. 
+Después de escribir su dominio en el cuadro de texto hello, Azure comprobará Hola registro CNAME que creó anteriormente. Si no se ha propagado completamente Hola DNS, se mostrará un indicador rojo. Si fue correcto, verá una marca de verificación verde. 
 
-Tome nota de la dirección IP que aparece en la parte inferior del cuadro de diálogo. La necesitará para configurar el registro A para su dominio.
+Tome nota de hello que muestra la dirección IP final Hola del cuadro de diálogo de Hola. Necesitará esta hello toosetup un registro para el dominio.
 
-## <a name="setup-the-domain-a-record"></a>Configuración del registro A del dominio
-Si los demás pasos fueron correctos, ahora puede asignar el dominio a la aplicación web de Azure mediante un registro A de DNS. 
+## <a name="setup-hello-domain-a-record"></a>Registro de hello dominio A la instalación
+Si hello otros pasos se realizaron correctamente, ahora puede asignar el dominio de aplicación web de Azure hello tooyour a través de un registro A DNS. 
 
-Es importante tener en cuenta aquí que las aplicaciones web de Azure aceptan tanto los registros CNAME como A; sin embargo, *debe* usar un registro A para permitir una asignación correcta del dominio. Un registro CNAME no se puede reenviar a otro CNAME, que es lo que Azure creó con YOUR_DOMAIN.azurewebsites.net.
+Es importante toonote aquí que aplicaciones web de Azure aceptan CNAME y registros, sin embargo, *debe* usar una asignación de dominio adecuado de un registro tooenable. Un CNAME no se reenviarán tooanother CNAME, que es lo que Azure crea automáticamente con YOUR_DOMAIN.azurewebsites.net.
 
-Con la ayuda de la dirección IP del paso anterior, vuelva a su administrador de DNS y configure el registro A para que apunte a dicha dirección IP.
+Utilizando la dirección IP de Hola desde el paso anterior de Hola, devolver tooyour el Administrador de DNS y el programa de instalación Hola una IP estática toothat toopoint registros.
 
-## <a name="install-and-setup-the-plugin"></a>Instalación y configuración del complemento
-WordPress Multisite no dispone actualmente de un método integrado para asignar dominios personalizados. Sin embargo, hay un complemento llamado [WordPress MU Domain Mapping][wordpress-plugin-wordpress-mu-domain-mapping] que agrega la funcionalidad. Inicie sesión en la sección Administrador de red de su sitio e instale el complemento **WordPress MU Domain Mapping** .
+## <a name="install-and-setup-hello-plugin"></a>Instalar y configurar el complemento de Hola
+La funcionalidad de multisitio de WordPress actualmente no tiene un método integrado toomap los dominios personalizados. Sin embargo, hay un complemento llamado [asignación de dominio de WordPress MU] [ wordpress-plugin-wordpress-mu-domain-mapping] que agrega la funcionalidad de Hola para usted. Inicie sesión en la parte del Administrador de red de toohello de su sitio e instale hello **asignación de dominio de WordPress MU** complemento.
 
-Después de instalar y activar el complemento, visite **Configuración** > **Asignación de dominios** para configurarlo. En el primer cuadro de texto, *Dirección IP del servidor*, indique la dirección IP que usó para configurar el registro A para el dominio. Establezca las *Opciones de dominio* que desee (los valores predeterminados suelen ser válidos) y haga clic en **Guardar**.
+Después de instalar y activar el complemento de hello, visite **configuración** > **asignación dominio** tooconfigure Hola complemento. En el cuadro de texto de primer hello, *dirección IP del servidor*, entrada Hola dirección IP utilizada toosetup Hola un registro para el dominio de Hola. Defina cualquiera *opciones del dominio* que desee (valores predeterminados de Hola a menudo son válidos) y haga clic en **guardar**.
 
-## <a name="map-the-domain"></a>Asignación del dominio
-Visite el **Panel** del sitio al que desee asignar el dominio. Haga clic en **Herramientas** > **Asignación de dominios**, escriba el nuevo dominio en el cuadro de texto y haga clic en **Agregar**.
+## <a name="map-hello-domain"></a>Asignar un dominio de Hola
+Visite hello **panel** para el sitio de hello desea toomap dominio Hola. Haga clic en **herramientas** > **asignación dominio** y tipo hello nuevo dominio en el cuadro de texto de Hola y haga clic en **agregar**.
 
-De manera predeterminada, el dominio nuevo se sobrescribirá con el dominio del sitio generado automáticamente. Si desea enviar todo el tráfico al dominio nuevo, marque el cuadro *Dominio principal para este blog* antes de guardar. Puede agregar un número ilimitado de dominios a un sitio, pero solo uno puede ser primario.
+De forma predeterminada, Hola nuevo dominio será toohello ha vuelto a escribir autogenerado sitio. Si desea toohave todo el tráfico enviado toohello nuevo dominio, comprobar hello *dominio principal para este blog* cuadro antes de guardar. Puede agregar un número ilimitado de sitio de tooa de dominios, pero sólo uno puede ser principal.
 
 ## <a name="do-it-again"></a>Vuelva a hacerlo
-Aplicaciones web de Azure permite agregar un número ilimitado de dominios a un sitio web. Para agregar otro dominio, necesitará ejecutar las secciones **Verificación de su dominio** y **Configuración del registro A del dominio** para cada dominio.    
+Las aplicaciones Web de Azure le permiten tooadd un número ilimitado de aplicación web de tooa de dominios. tooadd otro dominio necesitará hello tooexecute **comprobar el dominio** y **configurar registro de dominio A hello** secciones para cada dominio.    
 
 > [!NOTE]
-> Si desea empezar a trabajar con el Servicio de aplicaciones de Azure antes de inscribirse para abrir una cuenta de Azure, vaya a [App Service](https://azure.microsoft.com/try/app-service/), donde podrá crear inmediatamente una aplicación web de inicio de corta duración en el Servicio de aplicaciones. No es necesario proporcionar ninguna tarjeta de crédito ni asumir ningún compromiso.
+> Si desea tooget iniciado con el servicio de aplicación de Azure antes de registrarse para una cuenta de Azure, vaya demasiado[pruebe el servicio de aplicaciones](https://azure.microsoft.com/try/app-service/), donde puede crear inmediatamente una aplicación web de inicio de corta duración en el servicio de aplicaciones. No es necesario proporcionar ninguna tarjeta de crédito ni asumir ningún compromiso.
 > 
 > 
 
 ## <a name="whats-changed"></a>Lo que ha cambiado
-* Para obtener una guía del cambio de Websites a App Service, consulte: [Azure App Service y su impacto en los servicios de Azure existentes](http://go.microsoft.com/fwlink/?LinkId=529714)
+* Para una toohello guía consulte cambio con respecto a sitios Web tooApp servicio: [servicio de aplicaciones de Azure y su impacto en los servicios de Azure existente](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 [ben-lobaugh]: http://ben.lobaugh.net
 [ms-open-tech]: http://msopentech.com

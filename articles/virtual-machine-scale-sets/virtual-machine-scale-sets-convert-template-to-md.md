@@ -1,6 +1,6 @@
 ---
-title: "Conversión de una plantilla de conjunto de escalado de Azure Resource Manager para usar un disco administrado | Microsoft Docs"
-description: "Conversión de una plantilla de conjunto de escalado en una plantilla de conjunto de escalado de un disco administrado."
+title: aaaConvert una escala de Azure Resource Manager establezca disco administrado de plantilla toouse | Documentos de Microsoft
+description: Convertir una plantilla de conjunto de escala conjunto plantilla tooa disco administrado escala.
 keywords: "conjuntos de escalado de máquinas virtuales"
 services: virtual-machine-scale-sets
 documentationcenter: 
@@ -16,19 +16,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/18/2017
 ms.author: negat
-ms.openlocfilehash: 2f5cb85703888c5056611d466f508547ee72e44b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 66c2217647e57ed2cfa39660c0175710ae2e63be
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>Conversión de una plantilla de conjunto de escalado en una plantilla de conjunto de escalado de un disco administrado
+# <a name="convert-a-scale-set-template-tooa-managed-disk-scale-set-template"></a>Convertir una plantilla de conjunto de escala conjunto plantilla tooa disco administrado escala
 
-Los clientes con una plantilla de Resource Manager para crear un conjunto de escalado no sin usar un disco administrado pueden modificarla para usar un disco administrado. En este artículo se muestra cómo hacerlo, para lo que usa como ejemplo una solicitud de incorporación de cambios de las [plantillas de inicio rápido de Azure](https://github.com/Azure/azure-quickstart-templates), un repositorio controlada por la comunidad para las plantillas de Resource Manager de ejemplo. La solicitud de incorporación de cambios completa se puede ver aquí: [https://github.com/Azure/azure-quickstart-templates/pull/2998](https://github.com/Azure/azure-quickstart-templates/pull/2998), y las partes relevantes de la diferencia pueden encontrarse a continuación, junto con una explicación:
+Los clientes con una plantilla de administrador de recursos para crear una escala establecida no utiliza disco administrado recomendable toomodify se toouse administra el disco. Este artículo se muestra cómo toodo, utilizando como ejemplo una solicitud de extracción de hello [plantillas de inicio rápido de Azure](https://github.com/Azure/azure-quickstart-templates), un repositorio controlada por la Comunidad para las plantillas de administrador de recursos de ejemplo. solicitud de extracción completa de Hola se puede ver aquí: [https://github.com/Azure/azure-quickstart-templates/pull/2998](https://github.com/Azure/azure-quickstart-templates/pull/2998), y son partes importantes de Hola de diferencias de Hola a continuación, junto con una explicación:
 
-## <a name="making-the-os-disks-managed"></a>Administración de los discos de sistema operativo
+## <a name="making-hello-os-disks-managed"></a>Hacer que los discos de sistema operativo de hello administrados
 
-En las diferencias siguientes, se puede ver que se han quitado varias variables relacionadas con las propiedades del disco y de la cuenta de almacenamiento. El tipo de cuenta de almacenamiento ya no es necesario (Standard_LRS es el valor predeterminado), pero se puede especificar si se desea. Standard_LRS y Premium_LRS son los únicos valores compatibles con los discos administrados. El sufijo de la nueva cuenta de almacenamiento, la matriz de cadena única y el recuento de sa se utilizaban en la plantilla antigua para generar nombres de cuenta de almacenamiento. Estas variables no son necesarias en la nueva plantilla, ya que el disco administrado crea automáticamente cuentas de almacenamiento en nombre del cliente. De igual forma, el nombre del contenedor de VHD y el nombre del disco de sistema operativo no son necesarios, porque el disco administrado asigna automáticamente nombres a los discos y contenedores de blobs de almacenamiento subyacentes.
+En la comparación de Hola a continuación, podemos ver que lo hemos quitado varias propiedades variables de cuenta y disco toostorage relacionados. Tipo de cuenta de almacenamiento ya no es necesario (Standard_LRS es predeterminado de hello), pero todavía se puede especificar si quisiéramos. Standard_LRS y Premium_LRS son los únicos valores compatibles con los discos administrados. Nuevo sufijo de la cuenta de almacenamiento, la matriz de cadena única y el recuento de sa se utilizaron en los nombres de hello anterior plantilla toogenerate almacenamiento cuenta. Estas variables ya no son necesarias en la nueva plantilla de hello porque disco administrado crea automáticamente las cuentas de almacenamiento en nombre del cliente de Hola. De forma similar, el nombre del contenedor de vhd y el nombre del disco de sistema operativo ya no son necesarios porque disco administrado automáticamente nombres de discos y los contenedores de blobs de almacenamiento subyacente Hola.
 
 ```diff
    "variables": {
@@ -52,7 +52,7 @@ En las diferencias siguientes, se puede ver que se han quitado varias variables 
 ```
 
 
-En las diferencias siguientes, se puede ver que se ha actualizado la versión de la API de proceso a la 2016-04-30-preview, que es la primera versión requerida para el soporte de disco administrado con conjuntos de escalado. Tenga en cuenta que, si se desea, se pueden usar discos no administrados en la nueva versión de la API con la sintaxis anterior. En otras palabras, si se actualiza la versión de la API de proceso, pero no se cambia nada más, no debería haber ningún cambio en el funcionamiento de la plantilla.
+En hello diferencia siguiente, se puede ver que se han actualizado Hola calcular api versión too2016-04-30-versión preliminar, que es Hola primera versión requerida para soporte de disco administrado con conjuntos de escalas de. Tenga en cuenta que todavía podríamos usar discos no administrados en la nueva versión de api Hola con sintaxis antigua Hola si lo desea. En otras palabras, si se actualiza solo hello versión de api de proceso y no cambiar nada más, plantilla Hola debe seguir toowork como antes.
 
 ```diff
 @@ -86,7 +74,7 @@
@@ -66,7 +66,7 @@ En las diferencias siguientes, se puede ver que se ha actualizado la versión de
    },
 ```
 
-En las diferencias siguientes, se puede ver que se quita totalmente el recurso de la cuenta de almacenamiento de la matriz de recursos. Ya no se necesita, ya que el disco administrado lo crea automáticamente en nuestro nombre.
+En diferencias de Hola a continuación, podemos ver que estamos quitando recursos de cuenta de almacenamiento de Hola de matriz de recursos de hello completamente. Ya no se necesita, ya que el disco administrado lo crea automáticamente en nuestro nombre.
 
 ```diff
 @@ -113,19 +101,6 @@
@@ -91,7 +91,7 @@ En las diferencias siguientes, se puede ver que se quita totalmente el recurso d
        "location": "[resourceGroup().location]",
 ```
 
-En las diferencias siguientes, se puede ver que lo que se quita depende de la cláusula a la que se hace referencia desde el conjunto de escalado hasta el bucle que ha creado las cuentas de almacenamiento. En la plantilla antigua, esto garantizaba que las cuentas de almacenamiento se creaban antes de que el conjunto de escalado comenzara la creación, pero esta cláusula no es necesaria con el disco administrado. También se quitan tanto la propiedad de contenedores de VHD como la propiedad de nombre de disco de sistema operativo, ya que estas propiedades las controla automáticamente el disco administrado. Podríamos agregar `"managedDisk": { "storageAccountType": "Premium_LRS" }` en la configuración de "osDisk" si deseáramos discos de sistema operativo Premium. Las únicas máquinas virtuales que pueden usar discos Premium son las que tienen una "s" mayúscula o minúscula en la SKU de la máquina virtual.
+En diferencias de Hola a continuación, se puede vea que estamos quitando Hola depende cláusula para hacer referencia de bucle de toohello de conjunto de escala de Hola que era la creación de cuentas de almacenamiento. En la plantilla antigua de hello, esto se garantiza que las cuentas de almacenamiento de Hola se crearon antes de conjunto de escalas de hello inició la creación, pero esta cláusula no es necesaria con disco administrado. También quitar la propiedad de contenedores de vhd de Hola y Hola propiedad de nombre de disco de SO como estas propiedades se administran automáticamente bajo el paraguas de hello disco administrado. Si quisiéramos, podríamos agregar `"managedDisk": { "storageAccountType": "Premium_LRS" }` en la configuración de "osDisk" hello si deseamos que los discos de sistema operativo de premium. Solo las máquinas virtuales con en mayúscula o de minúscula ' Hola VM sku puede usar discos premium.
 
 ```diff
 @@ -183,7 +158,6 @@
@@ -120,12 +120,12 @@ En las diferencias siguientes, se puede ver que lo que se quita depende de la cl
 
 ```
 
-No hay ninguna propiedad explícita en la configuración del conjunto de escalado relativa al uso de un disco administrado o no administrado. El conjunto de escalado sabe cuál se debe usar gracias a las propiedades del perfil de almacenamiento. Por consiguiente, al modificar la plantilla es importante asegurarse de que el perfil de almacenamiento del conjunto de escalado contiene las propiedades correctas.
+No hay ninguna propiedad explícita en la configuración de conjunto de escala Hola para si toouse administrado o un disco no administrado. conjunto de escalas de Hello sabe qué toouse basándose en Propiedades de Hola que están presentes en el perfil de almacenamiento de Hola. Por lo tanto, es importante cuando se modifica hello tooensure de plantilla que son propiedades de derecho de hello en perfil de almacenamiento de Hola de conjunto de escalas de Hola.
 
 
 ## <a name="data-disks"></a>Discos de datos
 
-Con los cambios anteriores, el conjunto de escalado utiliza discos administrados para el disco del SO, pero ¿y para los discos de datos? Para agregar discos de datos, agregue la propiedad "dataDisks" en "storageProfile" al mismo nivel que "osDisk". El valor de la propiedad es una lista JSON de objetos, cada uno de los cuales tiene propiedades "lun" (que deben ser únicas para cada disco de datos de una máquina virtual), "createOption" ("empty" es actualmente la única opción admitida) y "diskSizeGB" (el tamaño del disco en gigabytes; debe ser mayor que 0 y menor que 1024) como en el ejemplo siguiente: 
+Con cambios de hello anteriores, Hola escala conjunto usa discos administrados para hello SO disco, pero ¿qué sucede con los discos de datos? tooadd los discos de datos, Agregar propiedad de Hola "dataDisks" en "storageProfile" en hello mismo nivel como "osDisk". valor de propiedad de hello Hello es una lista JSON de objetos, cada uno de los cuales tiene propiedades "lun" (que debe ser exclusivo para cada disco de datos en una máquina virtual), "createOption" ("empty" es actualmente Hola solo es una opción admitida) y "diskSizeGB" (Hola a tamaño del disco de hello en gigabytes; debe ser mayor que 0 y menor que 1024) como en el siguiente ejemplo de Hola: 
 
 ```
 "dataDisks": [
@@ -137,13 +137,13 @@ Con los cambios anteriores, el conjunto de escalado utiliza discos administrados
 ]
 ```
 
-Si especifica `n` discos en esta matriz, cada máquina virtual del conjunto de escalado obtiene `n` discos de datos. Sin embargo, tenga en cuenta que estos discos de datos son dispositivos sin formato. Es responsabilidad del cliente conectar los discos, crearles particiones y formatearlos antes de usarlos. Opcionalmente, también se puede especificar `"managedDisk": { "storageAccountType": "Premium_LRS" }` en cada objeto del disco de datos para especificar que debe ser un disco de datos Premium. Las únicas máquinas virtuales que pueden usar discos Premium son las que tienen una "s" mayúscula o minúscula en la SKU de la máquina virtual.
+Si especifica `n` discos de esta matriz, cada máquina virtual en la escala de hello establece Obtiene `n` discos de datos. Sin embargo, tenga en cuenta que estos discos de datos son dispositivos sin formato. Es toohello cliente tooattach, Partition y formato Hola discos antes de usarlos. Si lo desea, podríamos también especificar `"managedDisk": { "storageAccountType": "Premium_LRS" }` en cada toospecify de objeto de disco de datos que debe ser un disco de datos premium. Solo las máquinas virtuales con en mayúscula o de minúscula ' Hola VM sku puede usar discos premium.
 
-Para más información acerca del uso de discos de datos con conjuntos de escalado, consulte [este artículo](./virtual-machine-scale-sets-attached-disks.md).
+toolearn más sobre el uso de discos de datos con los conjuntos de escala, vea [este artículo](./virtual-machine-scale-sets-attached-disks.md).
 
 
 ## <a name="next-steps"></a>Pasos siguientes
-Para las plantillas de Azure Resource Manager de ejemplo que usan conjuntos de escalado, busque "vmss" en el [repositorio de GitHub de plantillas de inicio rápido de Azure](https://github.com/Azure/azure-quickstart-templates).
+Por ejemplo plantillas de administrador de recursos mediante conjuntos de escalas, busque "vmss" Hola [repositorio de github de plantillas de inicio rápido de Azure](https://github.com/Azure/azure-quickstart-templates).
 
-Para obtener información general, consulte la [página de destino principal de los conjuntos de escalado](https://azure.microsoft.com/services/virtual-machine-scale-sets/).
+Para obtener información general, consulte hello [página de aterrizaje principal para conjuntos de escalas de](https://azure.microsoft.com/services/virtual-machine-scale-sets/).
 

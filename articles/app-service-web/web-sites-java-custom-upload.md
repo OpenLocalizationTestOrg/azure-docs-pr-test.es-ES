@@ -1,6 +1,6 @@
 ---
-title: "Carga de una aplicación web de Java personalizada en Azure"
-description: "En este tutorial se muestra cómo cargar una aplicación web de Java personalizada en Aplicaciones web del Servicio de aplicaciones de Azure."
+title: "aaaUpload una aplicación tooAzure personalizada de Java web"
+description: "Este tutorial muestra cómo tooupload personalizadas de Java web tooAzure aplicaciones Web de aplicación de servicio de aplicación."
 services: app-service\web
 documentationcenter: java
 author: rmcmurray
@@ -14,32 +14,32 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-ms.openlocfilehash: 9c8f9ee7780859f7640ac82d6ebce85082170ad7
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 0cb4a682bb25d86ff08bfd03628c89795c58451e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="upload-a-custom-java-web-app-to-azure"></a>Carga de una aplicación web de Java personalizada en Azure
-En este tema se explica cómo cargar una aplicación web de Java personalizada en Aplicaciones web del [Servicio de aplicaciones de Azure] . Se incluye información que se aplica a cualquier aplicación web o sitio web de Java, así como algunos ejemplos de aplicaciones específicas.
+# <a name="upload-a-custom-java-web-app-tooazure"></a>Cargar una aplicación tooAzure personalizada de Java web
+Este tema explica cómo tooupload personalizadas de Java web app demasiado[servicio de aplicaciones de Azure] aplicaciones Web. Incluye información que se aplica también algunos ejemplos de aplicaciones específicas o aplicación web y sitio Web de Java de tooany.
 
-Tenga en cuenta que Azure permite crear aplicaciones web de Java con la interfaz de usuario de configuración del Portal de Azure y Azure Marketplace, tal y como se documenta en [Creación de una aplicación web de Java en Servicio de aplicaciones de Azure](web-sites-java-get-started.md). Este tutorial se destina a escenarios en los que no desea usar la interfaz de usuario de configuración del Portal de Azure ni Azure Marketplace.  
+Tenga en cuenta que Azure proporciona un medio para crear aplicaciones web de Java utilizando la UI de configuración del Portal de Azure de Hola y Hola Azure Marketplace, tal como se documenta en [crear una aplicación web de Java en el servicio de aplicación de Azure](web-sites-java-get-started.md). Este tutorial es para los escenarios en los que no desee UI de configuración del Portal de Azure toouse Hola o hello Azure Marketplace.  
 
 ## <a name="configuration-guidelines"></a>Directrices de configuración
-A continuación se describe la configuración esperada para las aplicaciones web de Java personalizadas en Azure.
+siguiente Hola describe la configuración de hello esperado para aplicaciones de web personalizadas de Java en Azure.
 
-* El puerto HTTP que utiliza el proceso de Java se asigna de manera dinámica.  El proceso debe utilizar el puerto de la variable de entorno `HTTP_PLATFORM_PORT`.
-* Se deben deshabilitar todos los puertos de escucha aparte del agente de escucha simple HTTP.  En Tomcat, ello incluye los puertos de apagado, HTTPS y AJP.
-* El contenedor debe estar configurado solo para el tráfico IPv4.
-* En la configuración se debe establecer el comando **startup** para la aplicación.
-* Las aplicaciones que requieren directorios con permiso de escritura tienen que estar ubicadas en el directorio de contenido de la aplicación web de Azure, que es **D:\home**.  La variable de entorno `HOME` hace referencia a D:\home.  
+* puerto HTTP de Hello usado por hello proceso de Java se asigna dinámicamente.  proceso de Hello debe usar el puerto de Hola de variable de entorno de hello `HTTP_PLATFORM_PORT`.
+* Puertos todos escuchan distinto de escucha HTTP único Hola debe deshabilitarse.  En Tomcat, que incluye Hola apagado, HTTPS y AJP puertos.
+* los contenedores de Hello debe toobe configurado para el tráfico de IPv4 únicamente.
+* Hola **inicio** comando para necesidades de aplicación hello toobe establecidos en configuración de Hola.
+* Las aplicaciones que requieren el permiso de escritura de directorios con necesitan toobe ubicado en el directorio de contenido de la aplicación hello web de Azure, que es **D:\home**.  variable de entorno de Hello `HOME` hace referencia a tooD:\home.  
 
-Puede establecer las variables de entorno como se requiere en el archivo web.config.
+Puede establecer variables de entorno según sea necesario en el archivo web.config de Hola.
 
 ## <a name="webconfig-httpplatform-configuration"></a>Configuración de web.config httpPlatform
-La siguiente información describe el formato **httpPlatform** dentro de web.config.
+Hello siguiente información describe hello **httpplatform en** formato en el archivo web.config.
 
-**arguments** (valor predeterminado=""). Argumentos para el ejecutable o script especificado en la configuración de **processPath** .
+**arguments** (valor predeterminado=""). Argumentos toohello ejecutable o script especificado en hello **processPath** configuración.
 
 Ejemplos (que se muestran con **processPath** incluido):
 
@@ -50,7 +50,7 @@ Ejemplos (que se muestran con **processPath** incluido):
     arguments="-Djava.net.preferIPv4Stack=true -Djetty.port=%HTTP\_PLATFORM\_PORT% -Djetty.base=&quot;%HOME%\site\wwwroot\bin\jetty-distribution-9.1.0.v20131115&quot; -jar &quot;%HOME%\site\wwwroot\bin\jetty-distribution-9.1.0.v20131115\start.jar&quot;"
 
 
-**processPath** : ruta de acceso al ejecutable o script que iniciará un proceso de escucha de las solicitudes HTTP.
+**processPath** -toohello de ruta de acceso ejecutable o script que se iniciará un proceso de escucha las solicitudes HTTP.
 
 Ejemplos:
 
@@ -60,31 +60,31 @@ Ejemplos:
 
     processPath="%HOME%\site\wwwroot\bin\tomcat\bin\catalina.bat"
 
-**rapidFailsPerMinute** (valor predeterminado=10). Número de veces que se permite que el proceso especificado en **processPath** se bloquee por minuto. Si se supera este límite, **HttpPlatformHandler** detendrá el inicio del proceso durante el resto del minuto.
+**rapidFailsPerMinute** (valor predeterminado=10). Número de veces especificado en el proceso de hello **processPath** se permite toocrash por minuto. Si se supera este límite, **HttpPlatformHandler** dejará de iniciar el proceso de hello para el resto de Hola de minuto de Hola.
 
-**requestTimeout** (valor predeterminado="00:02:00"). Tiempo durante el cual **HttpPlatformHandler** esperará una respuesta del proceso de escucha en `%HTTP_PLATFORM_PORT%`.
+**requestTimeout** (valor predeterminado="00:02:00"). Duración para la que **HttpPlatformHandler** va a esperar una respuesta del proceso de hello escuchando en `%HTTP_PLATFORM_PORT%`.
 
-**startupRetryCount** (valor predeterminado=10). Número de veces que **HttpPlatformHandler** intentará iniciar el proceso especificado en **processPath**. Consulte **startupTimeLimit** para obtener más detalles.
+**startupRetryCount** (valor predeterminado=10). Número de veces que **HttpPlatformHandler** tratará de proceso de hello toolaunch especificado en **processPath**. Consulte **startupTimeLimit** para obtener más detalles.
 
-**startupTimeLimit** (valor predeterminado=10 segundos). Tiempo durante el cual **HttpPlatformHandler** esperará a que el ejecutable/script inicie un proceso que escucha en el puerto.  Si se supera este límite de tiempo, **HttpPlatformHandler** cerrará el proceso e intentará volver a iniciarlo **startupRetryCount** veces.
+**startupTimeLimit** (valor predeterminado=10 segundos). Duración para la que **HttpPlatformHandler** esperará Hola ejecutable o script toostart un proceso escuchando en el puerto de Hola.  Si se supera este límite de tiempo, **HttpPlatformHandler** realizarán terminar el proceso de hello e intentarán toolaunch vuelva a **startupRetryCount** veces.
 
-**stdoutLogEnabled** (valor predeterminado="true"). Si el valor es true, **stdout** y **stderr** para el proceso especificado en la configuración **processPath** serán redirigidos al archivo especificado en **stdoutLogFile** (consulte la sección **stdoutLogFile**).
+**stdoutLogEnabled** (valor predeterminado="true"). Si es true, **stdout** y **stderr** proceso de hello especificado en hello **processPath** valor será archivo toohello redirigida especificado en  **stdoutLogFile** (consulte **stdoutLogFile** sección).
 
-**stdoutLogFile** (valor predeterminado="d:\home\LogFiles\httpPlatformStdout.log"). Ruta de acceso absoluta del archivo por el cual se registrarán **stdout** y **stderr** desde el proceso especificado en **processPath**.
+**stdoutLogFile** (valor predeterminado="d:\home\LogFiles\httpPlatformStdout.log"). Ruta de acceso absoluta del archivo para el que **stdout** y **stderr** de proceso de hello especificado en **processPath** se registrarán.
 
 > [!NOTE]
-> `%HTTP_PLATFORM_PORT%` es un marcador de posición especial que se debe especificar como parte de los **argumentos** o como parte de la lista **environmentVariables** de **httpPlatform**. Esto se reemplazará por un puerto generado internamente mediante **HttpPlatformHandler** de modo que el proceso que se especifica en **processPath** pueda escuchar en este puerto.
+> `%HTTP_PLATFORM_PORT%`es un marcador de posición especial que necesita ya sea como parte de toospecified **argumentos** o como parte del programa Hola a **httpplatform en** **environmentVariables** lista. Esto se reemplazará por un puerto generado internamente por **HttpPlatformHandler** para que el proceso de hello especificado por **processPath** puede escuchar en este puerto.
 > 
 > 
 
 ## <a name="deployment"></a>Implementación
-Las aplicaciones web basadas ​​en Java se pueden implementar fácilmente a través de la mayoría de los mismos medios que se utilizan con las aplicaciones web basadas en Internet Information Services (IIS).  FTP, Git y Kudu son todas compatibles como mecanismos de implementación, así como la funcionalidad de SCM integrada para las aplicaciones web. WebDeploy funciona como un protocolo; sin embargo, debido a que Java no está desarrollado en Visual Studio, WebDeploy no se adapta a los casos de uso de la implementación de una aplicación web de Java.
+Las aplicaciones web en función de Java pueden implementarse fácilmente a través de la mayoría de hello que mismo significa que se usa con las aplicaciones web de Internet Information Services (IIS) en función de Hola.  FTP, Git y Kudu se admite como mecanismos de implementación, tal y como se Hola capacidad SCM integrada para las aplicaciones web. WebDeploy funciona como un protocolo; sin embargo, debido a que Java no está desarrollado en Visual Studio, WebDeploy no se adapta a los casos de uso de la implementación de una aplicación web de Java.
 
 ## <a name="application-configuration-examples"></a>Ejemplos de configuración de aplicaciones
-Para las siguientes aplicaciones, se proporciona un archivo web.config y la configuración de la aplicación como ejemplos para mostrar cómo habilitar la aplicación Java en Aplicaciones web del Servicio de aplicaciones.
+Para hello después hello, un archivo web.config y aplicaciones, configuración de la aplicación se proporciona como ejemplos tooshow cómo tooenable la aplicación de Java en las aplicaciones de servicio Web de aplicación.
 
 ### <a name="tomcat"></a>Tomcat
-Si bien hay dos variaciones en Tomcat que se suministran con Aplicaciones web del Servicio de aplicaciones, todavía es posible cargar las instancias específicas de los clientes. A continuación se muestra un ejemplo de una instalación de Tomcat con una máquina virtual Java (JVM) diferente.
+Aunque hay dos variaciones en Tomcat que se proporcionan con la aplicación del servicio de aplicaciones Web, sigue siendo instancias específicas de tooupload bastante posible del cliente. A continuación se muestra un ejemplo de una instalación de Tomcat con una máquina virtual Java (JVM) diferente.
 
     <?xml version="1.0" encoding="UTF-8"?>
     <configuration>
@@ -97,25 +97,25 @@ Si bien hay dos variaciones en Tomcat que se suministran con Aplicaciones web de
           <environmentVariables>
             <environmentVariable name="CATALINA_OPTS" value="-Dport.http=%HTTP_PLATFORM_PORT%" />
             <environmentVariable name="CATALINA_HOME" value="%HOME%\site\wwwroot\bin\tomcat" />
-            <environmentVariable name="JRE_HOME" value="%HOME%\site\wwwroot\bin\java" /> <!-- optional, if not specified, this will default to %programfiles%\Java -->
+            <environmentVariable name="JRE_HOME" value="%HOME%\site\wwwroot\bin\java" /> <!-- optional, if not specified, this will default too%programfiles%\Java -->
             <environmentVariable name="JAVA_OPTS" value="-Djava.net.preferIPv4Stack=true" />
           </environmentVariables>
         </httpPlatform>
       </system.webServer>
     </configuration>
 
-Por el lado de Tomcat, es necesario realizar algunos cambios en la configuración. Se debe editar server.xml para establecer:
+En el lado de Tomcat hello, hay algunos cambios de configuración que necesitan toobe realizado. Hola server.xml necesita tooset toobe editar:
 
 * Puerto de apagado = -1
 * Puerto del conector HTTP = {port.http}
 * Dirección del conector HTTP = "127.0.0.1"
 * Convierta en comentarios los conectores HTTPS y AJP
-* La configuración de IPv4 también se puede configurar en el archivo catalina.properties donde se puede agregar `java.net.preferIPv4Stack=true`
+* configuración de IPv4 de Hello también puede establecerse en el archivo catalina.properties de hello donde puede agregar`java.net.preferIPv4Stack=true`
 
-Las llamadas Direct3D no se admiten en Aplicaciones web del Servicio de aplicaciones. Para deshabilitarlas, agregue la siguiente opción de Java si la aplicación realiza llamadas de ese tipo: `-Dsun.java2d.d3d=false`
+Las llamadas Direct3D no se admiten en Aplicaciones web del Servicio de aplicaciones. toodisable, agregue Hola después de opción de Java debe hacer la aplicación tales llamadas:`-Dsun.java2d.d3d=false`
 
 ### <a name="jetty"></a>Jetty
-Como es el caso de Tomcat, los clientes pueden cargar sus propias instancias de Jetty. En el caso de ejecutar la instalación completa de Jetty, la configuración sería similar a la siguiente:
+Como es el caso de hello de Tomcat, los clientes pueden cargar sus propias instancias de Jetty. En caso de hello de ejecución instalación completa de Hola de Jetty, configuración de hello tendría un aspecto similar al siguiente:
 
     <?xml version="1.0" encoding="UTF-8"?>
     <configuration>
@@ -132,10 +132,10 @@ Como es el caso de Tomcat, los clientes pueden cargar sus propias instancias de 
       </system.webServer>
     </configuration>
 
-La configuración de Jetty necesita cambiarse en el archivo start.ini para establecer `java.net.preferIPv4Stack=true`.
+configuración de Jetty Hello necesita toobe cambiado en hello start.ini tooset `java.net.preferIPv4Stack=true`.
 
 ### <a name="springboot"></a>Springboot
-Para obtener una aplicación Springboot en ejecución necesita cargar el archivo JAR o WAR y agregar el siguiente archivo web.config. El archivo web.config se coloca en la carpeta wwwroot. En el archivo web.config, ajuste los argumentos para apuntar al archivo JAR. En el ejemplo siguiente el archivo JAR también se encuentra en la carpeta wwwroot.  
+En orden tooget una aplicación Springboot ejecutan necesita tooupload el archivo JAR o guerra y agregue Hola siguiente el archivo web.config. archivo web.config de Hello entra en la carpeta wwwroot de Hola. En el archivo web.config de hello ajustar archivo JAR de hello argumentos toopoint tooyour, Hola siguiente el archivo JAR de ejemplo Hola se encuentra en carpeta así de hello wwwroot.  
 
     <?xml version="1.0" encoding="UTF-8"?>
     <configuration>
@@ -151,11 +151,11 @@ Para obtener una aplicación Springboot en ejecución necesita cargar el archivo
 
 
 ### <a name="hudson"></a>Hudson
-Nuestra prueba utilizó war de Hudson 3.1.2 y la instancia predeterminada de Tomcat 7.0.50, pero sin utilizar la interfaz de usuario para realizar la configuración.  Debido a que Hudson es una herramienta de compilación de software, se recomienda instalarla en instancias dedicadas donde la marca **AlwaysOn** se pueda configurar en la aplicación web.
+Nuestras pruebas utiliza Hola war Hudson 3.1.2 y Hola instancia predeterminada de Tomcat 7.0.50 pero sin ocupar cosas de tooset de interfaz de usuario de Hola.  Dado que Hudson es una herramienta de compilación de software, es aconsejable tooinstall en dedicado instancias donde hello **AlwaysOn** indicador puede establecerse en la aplicación web de Hola.
 
 1. En el directorio raíz de la aplicación web, es decir, **d:\home\site\wwwroot**, cree un directorio **webapps** (si todavía no existe) y coloque Hudson.war en **d:\home\site\wwwroot\webapps**.
 2. Descargue apache maven 3.0.5 (compatible con Hudson) y colóquelo en **d:\home\site\wwwroot**.
-3. Cree web.config en **d:\home\site\wwwroot** y pegue el siguiente contenido en él:
+3. Crear el archivo web.config en **d:\home\site\wwwroot** y pegar Hola siguiendo en su contenido:
    
         <?xml version="1.0" encoding="UTF-8"?>
         <configuration>
@@ -177,37 +177,37 @@ Nuestra prueba utilizó war de Hudson 3.1.2 y la instancia predeterminada de Tom
           </system.webServer>
         </configuration>
    
-    En este punto, se puede reiniciar la aplicación web para que los cambios surtan efecto.  Conéctese con http://yourwebapp/hudson para iniciar Hudson.
-4. Cuando Hudson se haya configurado, debería ver la siguiente pantalla:
+    En este momento hello web app puede ser reiniciado tootake Hola cambios.  Conectar toohttp://yourwebapp/hudson toostart Hudson.
+4. Una vez Hudson configura a sí mismo, debería ver Hola después de pantalla:
    
     ![Hudson](./media/web-sites-java-custom-upload/hudson1.png)
-5. Obtenga acceso a la página de configuración de Hudson: haga clic en **Manage Hudson** (Administrar Hudson) y, continuación, en **Configure System** (Configurar sistema).
-6. Configure el JDK como se muestra a continuación:
+5. Hola de acceso a la página de configuración de Hudson: haga clic en **administrar Hudson**y, a continuación, haga clic en **configurar el sistema**.
+6. Configurar Hola JDK tal y como se muestra a continuación:
    
     ![Configuración de Hudson](./media/web-sites-java-custom-upload/hudson2.png)
 7. Configure Maven como se muestra a continuación:
    
     ![Configuración de Maven](./media/web-sites-java-custom-upload/maven.png)
-8. Guarde la configuración Hudson debe estar ahora configurado y listo para su uso.
+8. Guardar la configuración de Hola. Hudson debe estar ahora configurado y listo para su uso.
 
 Para obtener información adicional sobre Hudson, consulte [http://hudson-ci.org](http://hudson-ci.org).
 
 ### <a name="liferay"></a>Liferay
-Liferay es compatible con Aplicaciones web del Servicio de aplicaciones. Debido a que Liferay puede requerir una importante cantidad de memoria, la aplicación web necesita ejecutarse en un trabajo dedicado mediano o grande, que puede proporcionar suficiente memoria. Liferay también tarda varios minutos en iniciarse. Por esa razón, se recomienda que configure el sitio en **Always On**.  
+Liferay es compatible con Aplicaciones web del Servicio de aplicaciones. Puesto que Liferay puede requerir bastante memoria, aplicación web de hello debe toorun en un trabajo dedicado mediano o grande, lo que puede proporcionar suficiente memoria. Liferay también ocupa varias toostart minutos. Por esta razón, se recomienda configurar aplicación web de hello demasiado**siempre en**.  
 
-Con Liferay 6.1.2 Community Edition GA3 incluido con Tomcat, se editaron los siguientes archivos después de descargar Liferay:
+Con Liferay 6.1.2 que Community Edition GA3 agrupadas Tomcat, hello siguientes archivos se modificaron después de descargar Liferay:
 
 **Server.xml**
 
-* Cambie el puerto de apagado a -1.
-* Cambie el conector HTTP a `<Connector port="${port.http}" protocol="HTTP/1.1" connectionTimeout="600000" address="127.0.0.1" URIEncoding="UTF-8" />`
-* Comente el conector AJP.
+* Cambiar apagado puerto demasiado-1.
+* Cambiar también el conector HTTP`<Connector port="${port.http}" protocol="HTTP/1.1" connectionTimeout="600000" address="127.0.0.1" URIEncoding="UTF-8" />`
+* Comente el conector AJP Hola.
 
-En la carpeta **liferay\tomcat-7.0.40\webapps\ROOT\WEB-INF\classes**, cree un archivo llamado **portal-ext.properties**. Este archivo debe contener una línea, como se muestra aquí:
+Hola **liferay\tomcat-7.0.40\webapps\ROOT\WEB-INF\classes** carpeta, cree un archivo denominado **ext.properties portal**. Este archivo debe toocontain una sola línea, como se muestra aquí:
 
     liferay.home=%HOME%/site/wwwroot/liferay
 
-En el mismo nivel de directorio que la carpeta tomcat-7.0.40, cree un archivo llamado **web.config** con el contenido siguiente:
+Hello en el mismo nivel de directorio como carpeta de tomcat 7.0.40 hello, cree un archivo denominado **web.config** con hello siguen contenido:
 
     <?xml version="1.0" encoding="UTF-8"?>
     <configuration>
@@ -231,11 +231,11 @@ En el mismo nivel de directorio que la carpeta tomcat-7.0.40, cree un archivo ll
       </system.webServer>
     </configuration>
 
-En el bloque **httpPlatform**, **requestTimeout** se establece en "00:10:00".  Se puede reducir, pero entonces es probable se vean algunos errores de tiempo de espera mientras Liferay arranca.  Si se cambia este valor, se debe modificar también **connectionTimeout** en el archivo server.xml de tomcat.  
+En hello **httpplatform en** bloquear, hello **requestTimeout** se establece demasiado "00:10:00".  Puede reducirse pero, a continuación, estás toosee es probable que algunos errores de tiempo de espera mientras se arranque Liferay.  Si se cambia este valor, Hola **connectionTimeout** en tomcat hello también se puede modificar server.xml.  
 
-Vale la pena señalar que la variable de entorno JRE_HOME se especifica en web.config anterior para apuntar a la JDK de 64 bits. El valor predeterminado es 32 bits, pero debido a que Liferay puede requerir altos niveles de memoria, se recomienda utilizar el JDK de 64 bits.
+Cabe mencionar que varariable de entorno de hello JRE_HOME se especifica en hello anteriormente web.config toopoint toohello JDK de 64 bits. valor predeterminado de Hello es 32 bits, pero como Liferay puede necesitar niveles altos de memoria, se recomienda toouse Hola JDK de 64 bits.
 
-Después de que realice estos cambios, reinicie la aplicación web que ejecuta Liferay y, a continuación, abra http://yourwebapp. El portal de Liferay está disponible en la raíz de la aplicación web. 
+Después de que realice estos cambios, reinicie la aplicación web que ejecuta Liferay y, a continuación, abra http://yourwebapp. Hola Liferay portal está disponible desde la raíz de aplicación web de Hola. 
 
 ## <a name="next-steps"></a>Pasos siguientes
 Para obtener más información sobre Liferay, consulte [http://www.liferay.com](http://www.liferay.com).
@@ -247,4 +247,4 @@ Para más información sobre Java, visite [Azure para desarrolladores de Java](/
 [!INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
 
 <!-- External Links -->
-[Servicio de aplicaciones de Azure]: http://go.microsoft.com/fwlink/?LinkId=529714
+[servicio de aplicaciones de Azure]: http://go.microsoft.com/fwlink/?LinkId=529714

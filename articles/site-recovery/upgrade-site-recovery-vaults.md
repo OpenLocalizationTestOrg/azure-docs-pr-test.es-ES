@@ -1,6 +1,6 @@
 ---
-title: "Actualización de un almacén de Site Recovery en un almacén de Recovery Services"
-description: "Aprenda a actualizar el almacén de Azure Site Recovery en un almacén de Recovery Services"
+title: "aaaUpgrade un almacén de servicios de recuperación de Azure Site Recovery tooan de almacén"
+description: "Obtenga información acerca de cómo tooupgrade un almacén de Azure Site Recovery tooa servicios de recuperación del almacén"
 documentationcenter: 
 author: rajani-janaki-ram
 manager: rochakm
@@ -13,32 +13,32 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/31/2017
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: fdb33ea0d08353b491f2934fcf885fcb6910b9a2
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: a18a923ee3bad91873e654c9b9b5bf8b83acc123
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="upgrade-a-site-recovery-vault-to-an-azure-resource-manager-based-recovery-services-vault"></a>Actualización de un almacén de Site Recovery en un almacén de Recovery Services basado en Azure Resource Manager
+# <a name="upgrade-a-site-recovery-vault-tooan-azure-resource-manager-based-recovery-services-vault"></a>Actualizar un almacén de servicios de recuperación basados en el Administrador de recursos de Azure Site Recovery tooan de almacén
 
-En este artículo se describe cómo actualizar almacenes de Azure Site Recovery en almacenes de Recovery Service basados en Azure Resource Manager sin que ello influya en la replicación en curso. Para más información sobre las características y las ventajas de Azure Resource Manager, consulte [Información general de Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
+Este artículo describe cómo los almacenes de Azure Site Recovery tooupgrade credenciales tooAzure basado en el Administrador de recursos del servicio de recuperación almacenes sin que ello afecte de replicación en curso. Para más información sobre las características y las ventajas de Azure Resource Manager, consulte [Información general de Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
 
 ## <a name="introduction"></a>Introducción
-El almacén de Recovery Services es un recurso de Azure Resource Manager para administrar las operaciones de copia de seguridad y recuperación ante desastres de forma nativa en la nube. Se trata de un almacén unificado que puede usarse en la nueva versión de Azure Portal, que reemplaza a los almacenes clásicos de Backup y Site Recovery.
+Un almacén de servicios de recuperación es un recurso de Azure Resource Manager para administrar la copia de seguridad y recuperación ante desastres forma nativa en la nube de Hola. Es un almacén unificado que puede usar en el nuevo portal de Azure hello y sustituye a la copia de seguridad clásico de Hola y almacenes de credenciales de Site Recovery.
 
 Los almacenes de Recovery Services ofrecen diversas características, como son:
 
 * Soporte técnico de Azure Resource Manager: puede proteger las máquinas virtuales y las máquinas físicas en la pila de Azure Resource Manager y realizar una conmutación por error de ellas.
 
-* Excluir el disco: si tiene archivos temporales o datos de renovación elevada que no desea que usen todo el ancho de banda, puede excluir volúmenes de la replicación. Esta funcionalidad se ha habilitado actualmente en *VMware a Azure* y en *Hyper-V a Azure*, y pronto se extenderá también a otros escenarios.
+* Excluir el disco: si tiene archivos temporales o datos de renovación de código elevada que no desea toouse todo el ancho de banda para, puede excluir volúmenes de replicación. Esta funcionalidad se ha habilitado actualmente en *VMware tooAzure* y *tooAzure de Hyper-V* y se extiende tooother escenarios así.
 
-* Soporte técnico del almacenamiento con redundancia local (LRS) y Premium Storage: ahora puede proteger los servidores en cuentas de Premium Storage que permiten a los clientes proteger las aplicaciones con más operaciones de E/S por segundo. Esta funcionalidad se ha habilitado actualmente en *VMware a Azure*.
+* Compatibilidad con premium y almacenamiento con redundancia local: ahora puede proteger los servidores en el almacenamiento premium cuentas que permiten que los clientes tooprotect aplicaciones con mayor entrada/salida operaciones por segundo (IOPS). Esta funcionalidad está habilitada actualmente en *tooAzure VMware*.
 
-* Experiencia de iniciación simplificada: la experiencia de iniciación mejorada se ha diseñado para facilitar la configuración de la recuperación ante desastres.
+* Una mejor experiencia de iniciación: Hola mejorado Introducción a experiencia se ha diseñado toomake recuperación ante desastres el programa de instalación sencilla.
 
-* Administración de Backup y Site Recovery desde el mismo almacén: ahora puede proteger los servidores para la recuperación ante desastres o la realización de copias de seguridad desde el mismo almacén, lo que permite reducir significativamente la sobrecarga de administración.
+* Copia de seguridad y administración de la recuperación del sitio de Hola mismo almacén: ahora puede proteger los servidores de recuperación ante desastres o realizar copia de seguridad de hello mismo almacén, que puede reducir la sobrecarga notablemente su administración.
 
-Para más información sobre las características y experiencia actualizadas, consulte el [blog de almacenamiento, copia de seguridad y recuperación](https://azure.microsoft.com/blog/azure-site-recovery-now-available-in-a-new-experience-with-support-for-arm-and-csp/).
+Para obtener más información acerca de la experiencia de hello actualizado y características, vea hello [blog de almacenamiento, copia de seguridad y recuperación](https://azure.microsoft.com/blog/azure-site-recovery-now-available-in-a-new-experience-with-support-for-arm-and-csp/).
 
 ## <a name="salient-features"></a>Características más destacadas
 
@@ -46,142 +46,142 @@ Para más información sobre las características y experiencia actualizadas, co
 
 * Sin costo adicional: obtenga un conjunto completo de funcionalidades actualizadas sin costo adicional alguno.
 
-* Sin pérdida de datos: puesto que este proceso es una actualización y no una migración, la configuración y los puntos de recuperación de la replicación existentes permanecen intactos durante la actualización y después.
+* Sin pérdida de datos: dado que este proceso es una actualización y no una migración, puntos de recuperación existentes de replicación y la configuración permanece intacta durante y después de la actualización de Hola.
 
 
-## <a name="what-happens-during-the-vault-upgrade"></a>¿Qué ocurre durante la actualización del almacén?
+## <a name="what-happens-during-hello-vault-upgrade"></a>¿Qué ocurre durante la actualización del almacén de hello?
 
-Durante la actualización, no puede realizar operaciones tales como registrar un nuevo servidor o habilitar la replicación para una máquina virtual (VM). Las operaciones que conlleven la lectura de datos del almacén o la escritura de datos en él, como la replicación en curso de elementos protegidos en el almacén, continúan sin interrupciones.
+Durante la actualización de hello, no puede realizar operaciones tales como registrar un nuevo servidor o habilitar la replicación para una máquina virtual (VM). Las operaciones que implican datos de lectura o escritura toohello el almacén de datos, como la replicación continua de los elementos protegidos toohello almacén, continúan sin interrupciones.
 
-### <a name="changes-to-automation-and-tooling-after-the-upgrade"></a>Cambios en la automatización y herramientas después de la actualización
-A medida que actualiza el tipo de almacén del modelo de implementación clásica al de Resource Manager, actualice la automatización o las herramientas existentes para asegurarse de que siguen funcionando después de la actualización.
+### <a name="changes-tooautomation-and-tooling-after-hello-upgrade"></a>Tooautomation de cambios y herramientas después de la actualización de Hola
+A medida que actualizar Hola almacén tipo de modelo de implementación de administrador de recursos de toohello modelo de implementación clásica de hello, actualizan automatización existente de Hola o tooensure de herramientas que sigue toowork después de la actualización de Hola.
 
-### <a name="prepare-your-environment-for-the-upgrade"></a>Preparación del entorno para la actualización
+### <a name="prepare-your-environment-for-hello-upgrade"></a>Preparar el entorno para la actualización de Hola
 
-* [Instale PowerShell o actualícelo a la versión 5 o posterior](https://www.microsoft.com/download/details.aspx?id=50395)
-* [Instale la versión más reciente de Azure PowerShell MSI](https://github.com/Azure/azure-powershell/releases)
-* [Descargue el script de actualización del almacén de Recovery Services](https://aka.ms/vaultupgradescript)
+* [Instale PowerShell o actualizarla tooversion 5 o posterior](https://www.microsoft.com/download/details.aspx?id=50395)
+* [Instalar la versión más reciente de Hola de MSI de PowerShell de Azure](https://github.com/Azure/azure-powershell/releases)
+* [Descargar el script de actualización del almacén de servicios de recuperación de Hola](https://aka.ms/vaultupgradescript)
 
 ### <a name="prerequisites"></a>Requisitos previos
-Para actualizar los almacenes de Site Recovery en almacenes de Recovery Services basados en Azure Resource Manager, se deben cumplir los siguientes requisitos previos:
+tooupgrade de Site Recovery tooAzure basado en el Administrador de recursos del servicio de recuperación almacenes de almacenes de credenciales, debe cumplir Hola según los requisitos:
 
-* Versión mínima del agente: la versión del proveedor de Azure Site Recovery instalada en el servidor sea la 5.1.1700.0, o una posterior.
+* Versión mínima de agente: versión de Hola de proveedor de Azure Site Recovery instalado en el servidor debe ser 5.1.1700.0 o posterior.
 
 * Configuración admitida: no se puede configurar el almacén con la red de área de almacenamiento (SAN) o grupos de disponibilidad AlwaysOn de SQL Server. Se admiten todas las demás configuraciones.
 
     >[!NOTE]
-    >Después de la actualización, puede administrar la asignación de almacenamiento solo a través de PowerShell.
+    >Después de la actualización de hello, puede administrar la asignación de almacenamiento sólo a través de PowerShell.
 
-* Escenario de implementación admitido: el almacén no debe estar en el modelo de implementación heredada *VMware a Azure*. Antes de continuar, pase primero al modelo de implementación mejorada.
+* Escenario de implementación compatible: el almacén no debería tener hello *tooAzure VMware* modelo de implementación heredada. Antes de continuar, mueva primero el modelo de implementación mejorada de toohello.
 
-* Ningún trabajo activo iniciado por el usuario que conlleve operaciones de planeamiento de administración: como el acceso al plan de administración está restringido durante la actualización, complete todas las acciones de planeamiento de la administración antes de activar la actualización. Este proceso no incluye la replicación en curso.
+* No hay trabajos activos iniciada por el usuario que implican management plano operaciones: porque plano de administración de toohello de acceso está restringido durante la actualización, complete las acciones de plano de administración antes de desencadenar la actualización Hola. Este proceso no incluye la replicación en curso.
 
 ## <a name="frequently-asked-questions"></a>Preguntas más frecuentes
 
 **¿Esta actualización afecta a la replicación en curso?**
 
-No. La replicación en curso continúa sin interrupciones durante la actualización y después.
+No. La replicación en curso continúa sin interrupciones durante y después de la actualización de Hola.
 
-**¿Qué ocurre con la configuración de red, como la VPN de sitio a sitio o la configuración de la dirección IP?**
+**¿Qué ocurre toonetwork configuración como la configuración de IP y VPN de sitio a sitio?**
 
-La actualización no afecta a la configuración de red. Todas las conexiones de Azure a local permanecen intactas.
+actualización de Hello no afecta a la configuración de red de Hola. Todas las conexiones de Azure a local permanecen intactas.
 
-**¿Qué ocurre con los almacenes si se prevé realizar una actualización próximamente?**
+**Toomy almacenes ¿qué ocurre si no tengo intención de tooupgrade Hola futuro próximo?**
 
-El almacén de Site Recovery en la versión anterior de Azure Portal dejará de ser admitido partir de septiembre de 2017. Se recomienda encarecidamente que use la característica de actualización para migrar al nuevo portal.
+Soporte técnico para el almacén de Site Recovery en el portal de Azure anterior Hola dejará de utilizarse a partir de septiembre de 2017. Se recomienda encarecidamente que utilice toomove toohello nuevo portal de hello característica de actualización.
 
 **¿Qué supone este plan de migración para las herramientas existentes?**  
 
-La actualización de sus herramientas al modelo de implementación de Resource Manager es uno de los cambios más importantes que debe considerar en sus planes de actualización. Los almacenes de Recovery Services se basan en el modelo de implementación de Resource Manager. 
+Actualización del modelo de implementación del Administrador de recursos de toohello de herramientas es uno de los cambios más importantes de Hola que debe tener en cuenta para en los planes de actualización. almacenes de servicios de recuperación de Hola se basan en el modelo de implementación del Administrador de recursos de Hola. 
 
-**¿Cuánto dura el tiempo de inactividad del plan de administración?**
+**¿Durante cuánto tiempo Hola tiempo de inactividad de plano de administración última?**
 
-La actualización normalmente tarda entre 15 y 30 minutos, y puede tardar hasta una hora, como máximo.
+actualización de Hello normalmente tarda unos 15 minutos de too30 y pueden tardar tooa máximo de una hora.
 
 **¿Puedo revertir la actualización?**
 
-No. No se admite la reversión una vez actualizados correctamente los recursos.
+No. No se admite la reversión después de actualizar correctamente los recursos de Hola.
 
-**¿Puedo validar mi suscripción o mis recursos para comprobar si se pueden actualizar?**
+**¿Validar mi suscripción o toosee de recursos si se pueden actualizar?**
 
-Sí. En la opción de actualización compatible con la plataforma, el primer paso para la actualización consiste en validar si los recursos pueden actualizarse. Si la validación no puede realizarse, se recibirán las advertencias o mensajes de error apropiados.
+Sí. En Hola admitida por la plataforma opción de actualización, Hola primer paso en la actualización de hello es toovalidate que los recursos de hello son capaces de realizar una actualización. Si se produce un error en la validación de hello, recibirá mensajes de error adecuado o advertencias.
 
-**¿Cómo informo de un problema con la actualización?**
+**¿Cómo informar de un problema con la actualización de hello?**
 
-Si experimenta errores durante la actualización, anote el identificador de operación que se muestra en el error. El soporte técnico de Microsoft trabajará proactivamente para resolver el problema. También puede ponerse en contacto con el equipo de soporte técnico y proporcionarle el identificador de la suscripción, el nombre del almacén y el identificador de la operación. Se procurará resolver el problema lo antes posible. No vuelva a intentar la operación a menos que Microsoft se lo indique explícitamente.
+Si experimenta errores durante la actualización de hello, tenga en cuenta Hola Id. de operación que se muestra en el error de Hola. Microsoft Support proactivamente funcionará para resolver el problema de Hola. También puede ponerse en contacto con equipo de soporte técnico de hello con su Id. de suscripción, el nombre del almacén y el identificador de operación. Compatibilidad con funcionará problema de hello tooresolve tan pronto como sea posible. No vuelva a intentar la operación de Hola a menos que esté siguiendo las instrucciones explícitamente toodo es así por Microsoft.
 
-## <a name="run-the-script"></a>Ejecute el script
+## <a name="run-hello-script"></a>Ejecutar script de Hola
 
-En PowerShell, ejecute el siguiente comando:
+En PowerShell, ejecute el siguiente comando de hello:
 
     PS > .\RecoveryServicesVaultUpgrade-1.0.0.ps1 -SubscriptionID <subscriptionID>  -VaultName <vaultname> -Location <location> -ResourceType HyperVRecoveryManagerVault -TargetResourceGroupName <rgname>
 
-* SubscriptionId: identificador de la suscripción asociado con el almacén que se va a actualizar.
+* Id. de suscripción: Hola Id. de suscripción que está asociado con el almacén de Hola que va a actualizar.
 
-* VaultName: nombre del almacén que se va a actualizar.
+* Nombre de almacén: el nombre de Hola de almacén de Hola que va a actualizar.
 
-* Location: ubicación del almacén que se va a actualizar.
+* : Hola ubicación de almacén de Hola que va a actualizar.
 
 * ResourceType: valor de HyperVRecoveryManagerVault para los almacenes de Site Recovery.
 
-* TargetResourceGroupName: grupo de recursos en el que se desea colocar el almacén actualizado. El valor de TargetResourceGroupName puede ser un grupo de recursos existente de Azure Resource Manager u otro nuevo. En caso de que el valor de TargetResourceGroupName proporcionado no exista, se crea como parte de la actualización en la misma ubicación que el almacén. Para más información, vea la sección "Grupos de recursos" en [Información general de Azure Resource Manager](../azure-resource-manager/resource-group-overview.md#resource-groups).
+* TargetResourceGroupName: grupo de recursos de hello en la que desea Hola actualizado toobe almacén colocado. El valor de TargetResourceGroupName puede ser un grupo de recursos existente de Azure Resource Manager u otro nuevo. Si hello TargetResourceGroupName proporcionado no existe, se crea como parte de la actualización de hello en hello misma ubicación que el almacén de Hola. Para obtener más información, vea "Grupos de recursos" Hola sección [Introducción a Azure Resource Manager](../azure-resource-manager/resource-group-overview.md#resource-groups).
 
     >[!NOTE]
-    >La denominación de los grupos de recursos está sujeta a determinadas restricciones. Para evitar errores durante la actualización del almacén, asegúrese de seguir la convención de nomenclatura.
+    >Nombres de grupo de recursos es restricciones de toocertain de asunto. almacén de tooprevent actualizar error, seguro hello tooobserve convención de nomenclatura con cuidado.
     >
     >Por ejemplo:
     >
     >.\RecoveryServicesVaultUpgrade-1.0.0.ps1 -SubscriptionId 1234-54123-354354-56416-8645 -VaultName gen2dr -Location "north europe" -ResourceType hypervrecoverymanagervault -TargetResourceGroupName abc
 
-Como alternativa, puede ejecutar el script siguiente. Escriba los valores para los parámetros necesarios.
+Como alternativa, puede ejecutar Hola siguiente secuencia de comandos. Especifique valores de hello para parámetros de hello necesario.
 
     PS > .\RecoveryServicesVaultUpgrade-1.0.0.ps1
     cmdlet RecoveryServicesVaultUpgrade-1.0.0.ps1 at command pipeline position 1
 
-    Supply values for the following parameters:
+    Supply values for hello following parameters:
     SubscriptionId:
     VaultName:
     Location:
     ResourceType:
     TargetResourceGroupName:
 
-1. El script de PowerShell le pide que escriba sus credenciales. Escríbalas dos veces, una para la cuenta del modelo de implementación clásica y otra para la cuenta de Azure Resource Manager.
+1. Hola script de PowerShell le pide tooenter sus credenciales. Escríbalas dos veces, una vez para la cuenta de modelo de implementación clásica de Hola y otra para hello cuenta de administrador de recursos de Azure.
 
-2. Después de especificar las credenciales, el script ejecuta una comprobación para determinar si la instalación de la infraestructura cumple los requisitos mencionados anteriormente.
+2. Después de haber especificado las credenciales, script de Hola ejecuta una comprobación toodetermine si su Hola de cumple el programa de instalación de infraestructura mencionó anteriormente en requisitos.
 
-3. Después de comprobar y confirmar los requisitos previos, se le pide que continúe con la actualización del almacén. En el proceso de actualización se empieza a actualizar el almacén. La actualización completa puede durar entre 15 y 30 minutos.
+3. Después de que se han comprobado y confirmado los requisitos previos de hello, son tooproceed solicitada con actualización del almacén de Hola. inicia el proceso de actualización de Hello actualizar el almacén. actualización completa de Hello puede tardar 15 too30 minutos toocomplete.
 
-4. Cuando la actualización haya finalizado correctamente, puede acceder al almacén actualizado en la nueva versión de Azure Portal.
+4. Después de la actualización de Hola se ha completado correctamente, puede tener acceso a almacén actualizado de hello en el nuevo portal de Azure Hola.
 
 ## <a name="post-upgrade-vault-management"></a>Administración del almacén posterior a la actualización
 
-### <a name="replicate-by-using-azure-site-recovery-in-the-recovery-services-vault"></a>Replicación mediante Azure Site Recovery en el almacén Recovery Services
+### <a name="replicate-by-using-azure-site-recovery-in-hello-recovery-services-vault"></a>Replicar mediante Azure Site Recovery en hello que del almacén de servicios de recuperación
 
-* Ahora puede proteger las máquinas virtuales de Azure de una región a otra. Para más información, consulte [Replicación de máquinas virtuales de Azure entre regiones con Azure Site Recovery](site-recovery-azure-to-azure.md).
+* Ahora puede proteger las máquinas virtuales de Azure desde una región tooanother. Para más información, consulte [Replicación de máquinas virtuales de Azure entre regiones con Azure Site Recovery](site-recovery-azure-to-azure.md).
 
-* Para más información acerca de la replicación de máquinas virtuales VMware en Azure, consulte [Replicación de máquinas virtuales de VMware en Azure con Site Recovery](vmware-walkthrough-overview.md).
+* Para obtener más información acerca de la replicación de máquinas virtuales VMware tooAzure, consulte [tooAzure replicar máquinas virtuales de VMware con Site Recovery](vmware-walkthrough-overview.md).
 
-* Para más información acerca de la replicación de máquinas virtuales de Hyper-V (sin WMM) en Azure, consulte [Replicación de máquinas virtuales de Hyper-V (sin WMM) en Azure](hyper-v-site-walkthrough-overview.md).
+* Para obtener más información acerca de la replicación de máquinas virtuales de Hyper-V (sin WMM) tooAzure, consulte [Hyper-V replicar máquinas virtuales (sin WMM) tooAzure](hyper-v-site-walkthrough-overview.md).
 
-* Para más información acerca de la replicación de máquinas virtuales de Hyper-V (con WMM) en Azure, consulte [Replicación de máquinas virtuales de Hyper-V que están en nubes VMM en Azure mediante Site Recovery en Azure Portal](vmm-to-azure-walkthrough-overview.md).
+* Para obtener más información acerca de la replicación de máquinas virtuales de Hyper-V (con VMM) tooAzure, consulte [Hola de máquinas virtuales de Hyper-V replicar en tooAzure de nubes VMM mediante la recuperación de sitio de portal de Azure](vmm-to-azure-walkthrough-overview.md).
 
-* Para más información acerca de la replicación de máquinas virtuales de Hyper-VM (con WMM) en un sitio secundario, consulte [Replicación de máquinas virtuales de Hyper-V que están en nubes VMM en un sitio VMM secundario mediante Azure Portal](site-recovery-vmm-to-vmm.md).
+* Para obtener más información acerca de la replicación de sitio secundario de tooa Hyper-VMs (con VMM), consulte [máquinas virtuales de Hyper-V replicar en VMM nubes tooa secundaria VMM sitio usando Hola portal de Azure](site-recovery-vmm-to-vmm.md).
 
-* Para más información sobre la replicación de máquinas virtuales de VMware en un sitio secundario, consulte [Replicación de máquinas virtuales locales de VMware o de servidores físicos en un sitio secundario en el Portal de Azure clásico](site-recovery-vmware-to-vmware.md).
+* Para obtener más información acerca de la replicación de sitio secundario de tooa de máquinas virtuales VMware, consulte [Replicate local máquinas virtuales de VMware o un sitio secundario de tooa servidores físicos en el portal de Azure clásico hello](site-recovery-vmware-to-vmware.md).
 
 ### <a name="view-your-replicated-items"></a>Visualización de los elementos replicados
 
-La imagen siguiente muestra la página del panel de información del almacén de Recovery Services con las entidades clave del almacén. Para ver la lista de entidades protegidas en el almacén, haga clic en **Site Recovery** > **Elementos replicados**.
+Hello siguiente imagen muestra página de panel de almacén de servicios de recuperación de Hola que muestra las entidades de clave para el almacén de Hola. Seleccione tooview una lista de las entidades protegidas en el almacén de hello, **Site Recovery** > **replican elementos**.
 
 
 ![Elementos replicados](./media/upgrade-site-recovery-vaults/replicateditems.png)
 
-La siguiente imagen muestra el flujo de trabajo para ver los elementos replicados y el comando **Failover** para iniciar una conmutación por error.
+Hello siguiente imagen muestra el flujo de trabajo de Hola para ver los elementos replicados y hello **conmutación por error** comando para iniciar una conmutación por error.
 
 ![Elementos replicados](./media/upgrade-site-recovery-vaults/failover.png)
 
 ### <a name="view-your-replication-settings"></a>Visualización de la configuración de replicación
 
-En el almacén de Site Recovery, cada grupo de protección se configura con la frecuencia de copia, retención de punto de recuperación, frecuencia de las instantáneas coherentes de la aplicación, y otras opciones de replicación. En el almacén de Recovery Services, estas opciones se configuran como una directiva de replicación. El nombre de la directiva es el del grupo de protección o *primarycloud_Policy*.
+En el almacén de Site Recovery hello, cada grupo de protección se configura con la frecuencia de copia, retención de punto de recuperación, la frecuencia de las instantáneas coherentes de aplicación y otras opciones de replicación. En el almacén de servicios de recuperación de hello, estas opciones se configuran como una directiva de replicación. nombre de Hola de directiva de hello es el nombre de Hola de grupo de protección de Hola o hello *primarycloud_Policy*.
 
-Para más información acerca de la directiva de replicación, consulte [Administración de una directiva de replicación de VMware en Azure](site-recovery-setup-replication-settings-vmware.md).
+Para obtener más información acerca de la directiva de replicación, vea [administrar la directiva de replicación para VMware tooAzure](site-recovery-setup-replication-settings-vmware.md).

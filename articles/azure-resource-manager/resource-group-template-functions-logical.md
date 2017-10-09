@@ -1,6 +1,6 @@
 ---
-title: "Funciones lógicas de la plantilla de Azure Resource Manager | Microsoft Docs"
-description: "Describe las funciones que se pueden usar en una plantilla de Azure Resource Manager para determinar valores lógicos."
+title: "funciones de plantilla de administrador de recursos aaaAzure - lógicas | Documentos de Microsoft"
+description: "Describe hello toouse de funciones en una lógica de valores de toodetermine de plantilla Azure Resource Manager."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2017
 ms.author: tomfitz
-ms.openlocfilehash: 313601ad99cdc12c4b50f5469959d37a9fa70d35
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: aec6341fbde00b4eba3b4539ff9a9aec774333fd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>Funciones lógicas para las plantillas de Azure Resource Manager
 
@@ -39,8 +39,8 @@ Comprueba si los dos valores de parámetro son verdaderos.
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| arg1 |Sí |boolean |Primer valor cuya veracidad se comprueba. |
-| arg2 |Sí |boolean |Segundo valor cuya veracidad se comprueba. |
+| arg1 |Sí |boolean |Hola primera toocheck valor si es true. |
+| arg2 |Sí |boolean |Hola segundo toocheck valor si es true. |
 
 ### <a name="return-value"></a>Valor devuelto
 
@@ -48,7 +48,7 @@ Devuelve **True** si ambos valores son verdaderos; en caso contrario, devuelve *
 
 ### <a name="examples"></a>Ejemplos
 
-En el ejemplo siguiente se muestra cómo usar las funciones lógicas.
+Hola siguiente ejemplo se muestra cómo las funciones lógicas de toouse.
 
 ```json
 {
@@ -72,7 +72,7 @@ En el ejemplo siguiente se muestra cómo usar las funciones lógicas.
 }
 ```
 
-El resultado del ejemplo anterior es:
+resultado Hola Hola anterior ejemplo es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -84,20 +84,20 @@ El resultado del ejemplo anterior es:
 ## <a name="bool"></a>booleano
 `bool(arg1)`
 
-Convierte el parámetro en un booleano.
+Convierte Hola tooa parámetro booleano.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| arg1 |Sí |cadena o entero |El valor para convertir en booleano. |
+| arg1 |Sí |cadena o entero |Hola tooa tooconvert de valor booleano. |
 
 ### <a name="return-value"></a>Valor devuelto
-Valor booleano del valor convertido.
+Un valor booleano de hello valor convertido.
 
 ### <a name="examples"></a>Ejemplos
 
-En el ejemplo siguiente se muestra cómo usar bool con una cadena o un entero.
+Hola siguiente ejemplo se muestra cómo bool toouse con una cadena o un entero.
 
 ```json
 {
@@ -125,7 +125,7 @@ En el ejemplo siguiente se muestra cómo usar bool con una cadena o un entero.
 }
 ```
 
-La salida del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -143,9 +143,9 @@ Devuelve un valor dependiendo de si una condición es verdadera o falsa.
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| condition |Sí |boolean |Valor cuya veracidad se comprueba. |
-| trueValue |Sí | cadena, int, objeto o matriz |Valor que se devuelve cuando la condición es verdadera. |
-| falseValue |Sí | cadena, int, objeto o matriz |Valor que se devuelve cuando la condición es falsa. |
+| condition |Sí |boolean |Hola toocheck valor si es true. |
+| trueValue |Sí | cadena, int, objeto o matriz |Hola valor tooreturn cuando Hola condición sea verdadera. |
+| falseValue |Sí | cadena, int, objeto o matriz |Hola valor tooreturn cuando Hola condición es false. |
 
 ### <a name="return-value"></a>Valor devuelto
 
@@ -153,7 +153,7 @@ Devuelve el segundo parámetro si el primer parámetro es **True**; en caso cont
 
 ### <a name="remarks"></a>Comentarios
 
-Puede usar esta función para establecer una propiedad de recurso de forma condicional. El siguiente ejemplo no es una plantilla completa, pero en él se muestran las partes relevantes para establecer el conjunto de disponibilidad de forma condicional.
+Puede utilizar este conjunto de tooconditionally de función de una propiedad de recurso. Hello en el ejemplo siguiente no se es una plantilla completa, pero muestra las partes relevantes de Hola para establecer condicionalmente el conjunto de disponibilidad de Hola.
 
 ```json
 {
@@ -199,7 +199,7 @@ Puede usar esta función para establecer una propiedad de recurso de forma condi
 
 ### <a name="examples"></a>Ejemplos
 
-En el ejemplo siguiente se muestra cómo usar la función `if`.
+Hola siguiente ejemplo se muestra cómo toouse hello `if` función.
 
 ```json
 {
@@ -220,7 +220,7 @@ En el ejemplo siguiente se muestra cómo usar la función `if`.
 }
 ```
 
-El resultado del ejemplo anterior es:
+resultado Hola Hola anterior ejemplo es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -231,13 +231,13 @@ El resultado del ejemplo anterior es:
 ## <a name="not"></a>not
 `not(arg1)`
 
-Convierte el valor booleano en su valor opuesto.
+Convierte el valor booleano tooits opuesto valor.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| arg1 |Sí |boolean |Valor que se va a convertir. |
+| arg1 |Sí |boolean |Hola tooconvert de valor. |
 
 
 ### <a name="return-value"></a>Valor devuelto
@@ -246,7 +246,7 @@ Devuelve **True** si el parámetro es **False**. Devuelve **False** si el parám
 
 ### <a name="examples"></a>Ejemplos
 
-En el ejemplo siguiente se muestra cómo usar las funciones lógicas.
+Hola siguiente ejemplo se muestra cómo las funciones lógicas de toouse.
 
 ```json
 {
@@ -270,7 +270,7 @@ En el ejemplo siguiente se muestra cómo usar las funciones lógicas.
 }
 ```
 
-El resultado del ejemplo anterior es:
+resultado Hola Hola anterior ejemplo es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -278,7 +278,7 @@ El resultado del ejemplo anterior es:
 | orExampleOutput | Booleano | True |
 | notExampleOutput | Booleano | False |
 
-En el siguiente ejemplo se usa **not** con [equals](resource-group-template-functions-comparison.md#equals).
+Hello siguiente ejemplo se utiliza **no** con [es igual a](resource-group-template-functions-comparison.md#equals).
 
 ```json
 {
@@ -294,7 +294,7 @@ En el siguiente ejemplo se usa **not** con [equals](resource-group-template-func
     }
 ```
 
-El resultado del ejemplo anterior es:
+resultado Hola Hola anterior ejemplo es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -310,8 +310,8 @@ Comprueba si cualquiera de los valores de parámetro es verdadero.
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| arg1 |Sí |boolean |Primer valor cuya veracidad se comprueba. |
-| arg2 |Sí |boolean |Segundo valor cuya veracidad se comprueba. |
+| arg1 |Sí |boolean |Hola primera toocheck valor si es true. |
+| arg2 |Sí |boolean |Hola segundo toocheck valor si es true. |
 
 ### <a name="return-value"></a>Valor devuelto
 
@@ -319,7 +319,7 @@ Devuelve **True** si cualquiera de los valores es verdadero; en caso contrario, 
 
 ### <a name="examples"></a>Ejemplos
 
-En el ejemplo siguiente se muestra cómo usar las funciones lógicas.
+Hola siguiente ejemplo se muestra cómo las funciones lógicas de toouse.
 
 ```json
 {
@@ -343,7 +343,7 @@ En el ejemplo siguiente se muestra cómo usar las funciones lógicas.
 }
 ```
 
-El resultado del ejemplo anterior es:
+resultado Hola Hola anterior ejemplo es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -353,8 +353,8 @@ El resultado del ejemplo anterior es:
 
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Para obtener una descripción de las secciones de una plantilla de Azure Resource Manager, vea [Creación de plantillas de Azure Resource Manager](resource-group-authoring-templates.md).
-* Para combinar varias plantillas, vea [Uso de plantillas vinculadas con Azure Resource Manager](resource-group-linked-templates.md).
-* Para iterar una cantidad de veces específica al crear un tipo de recurso, vea [Creación de varias instancias de recursos en el Administrador de recursos de Azure](resource-group-create-multiple.md).
-* Para saber cómo implementar la plantilla que creó, consulte [Implementación de una aplicación con la plantilla de Azure Resource Manager](resource-group-template-deploy.md).
+* Para obtener una descripción de las secciones de hello en una plantilla de Azure Resource Manager, consulte [plantillas del Administrador de recursos de Azure de creación](resource-group-authoring-templates.md).
+* toomerge varias plantillas, consulte [mediante plantillas vinculadas con el Administrador de recursos de Azure](resource-group-linked-templates.md).
+* tooiterate un número especificado de veces al crear un tipo de recurso, vea [crear varias instancias de recursos en el Administrador de recursos de Azure](resource-group-create-multiple.md).
+* toosee cómo toodeploy plantilla de Hola que haya creado, vea [implementar una aplicación con la plantilla de Azure Resource Manager](resource-group-template-deploy.md).
 

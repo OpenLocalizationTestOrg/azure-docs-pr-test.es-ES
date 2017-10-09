@@ -1,5 +1,5 @@
 ---
-title: "Limitaciones de Azure Cloud Shell (versión preliminar) | Microsoft Docs"
+title: "limitaciones de Shell en la nube (versión preliminar) aaaAzure | Documentos de Microsoft"
 description: "Introducción a las limitaciones de Azure Cloud Shell"
 services: 
 documentationcenter: 
@@ -14,32 +14,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2017
 ms.author: juluk
-ms.openlocfilehash: e42841b126a9df9240bec3f489589d5ce4a6db80
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 8462b0b9850fcde790a386433009439bbab52c0f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Limitaciones de Azure Cloud Shell
-Azure Cloud Shell tiene las limitaciones conocidas siguientes:
+Shell de nube de Azure tiene los siguientes de hello limitaciones conocidas:
 
 ## <a name="system-state-and-persistence"></a>Persistencia y estado del sistema
-La máquina que proporciona la sesión de Cloud Shell es temporal y se recicla después de que la sesión esté inactiva durante 20 minutos. Cloud Shell requiere montar un recurso compartido de archivos. Como resultado, la suscripción debe poder configurar los recursos de almacenamiento para tener acceso a Cloud Shell. Otras consideraciones:
+máquina de Hola que proporciona la sesión de Shell en la nube es temporal y se recicla después de la sesión está inactiva durante 20 minutos. En la nube Shell requiere un toobe del recurso compartido de archivos montado. Como resultado, la suscripción debe ser capaz de tooset una tooaccess de recursos de almacenamiento en la nube Shell. Otras consideraciones:
 * Con el almacenamiento montado, solo se conservan las modificaciones de los directorios `$Home` o `clouddrive`.
 * Solo se pueden montar recursos compartidos de archivos desde la [región asignada](persisting-shell-storage.md#mount-a-new-clouddrive).
 * Azure Files solo admite cuentas de almacenamiento con redundancia local o de almacenamiento con redundancia geográfica.
 
 ## <a name="user-permissions"></a>Permisos de usuario
 Los permisos se establecen como usuarios normales sin acceso a sudo. No se conservará cualquier instalación fuera del directorio `$Home`.
-Aunque algunos comandos del directorio `clouddrive`, como `git clone`, no tienen los permisos adecuados, el directorio `$Home` sí los tiene.
+Aunque ciertos comandos dentro de Hola `clouddrive` directorio, como `git clone`, no tiene los permisos adecuados, su `$Home` directorio tiene permisos.
 
 ## <a name="browser-support"></a>Compatibilidad con exploradores
-Cloud Shell es compatible con las versiones más recientes de Microsoft Edge, Microsoft Internet Explorer, Google Chrome, Mozilla Firefox y Safari de Apple. Safari en modo privado no es compatible.
+Shell de nube es compatible con versiones más recientes de Hola de Microsoft Edge, Microsoft Internet Explorer, Google Chrome, Mozilla Firefox y Safari de Apple. Safari en modo privado no es compatible.
 
 ## <a name="copy-and-paste"></a>Copiar y pegar
-Ctrl+C y Ctrl+V no funcionan como métodos abreviados de teclado para copiar y pegar en equipos Windows, use Ctrl+Insert y Mayús+Insert para copiar y pegar respectivamente.
+CTRL+c y CTRL+v no funcionan como copiar y pegar accesos directos en el Shell de nube en máquinas con Windows, utilice Ctrl + Insert y MAYÚS+INS toocopy y pegue respectivamente.
 
-También se puede hacer clic con el botón derecho para copiar y pegar, pero dependerá del acceso al Portapapeles que tenga cada explorador.
+Opciones de copiar y pegar del menú contextual también están disponibles, pero contextual función acceso de Portapapeles toobrowser específico de asunto.
 
 ## <a name="editing-bashrc"></a>Editar .bashrc
 Tenga cuidado al editar .bashrc, ya que puede producir errores inesperados en Cloud Shell.
@@ -51,7 +51,7 @@ El historial de comandos de Bash puede ser incoherente debido a una interrupció
 Cloud Shell está pensado para casos de uso interactivos. Por tanto, todas las sesiones que no sean de este tipo y que se prolonguen durante mucho tiempo se finalizarán sin previo aviso.
 
 ## <a name="network-connectivity"></a>Conectividad de red
-La latencia de Cloud Shell está sujeta a la conectividad de Internet local, Cloud Shell seguirá tratando de ejecutar las instrucciones enviadas.
+Tiempos de espera en el Shell de nube es conectividad a internet toolocal asunto, Shell de nube continúa tooattempt toocarry espera las instrucciones que se envíen.
 
 ## <a name="next-steps"></a>Pasos siguientes
 [Inicio rápido de Cloud Shell](quickstart.md)

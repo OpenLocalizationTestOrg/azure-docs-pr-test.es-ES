@@ -1,6 +1,6 @@
 ---
-title: "Tipos de nodos de Service Fabric y conjuntos de escalado de máquinas virtuales | Microsoft Docs"
-description: "Describe cómo se relacionan los tipos de nodos de Service Fabric con los conjuntos de escalado de máquinas virtuales y cómo conectarse de forma remota a una instancia de conjunto de escalado de máquinas virtuales o un nodo de clúster."
+title: aaaService tejido tipos de nodos y conjuntos de escalas de VM | Documentos de Microsoft
+description: "Describe cómo los tipos de nodos de Service Fabric se relacionan con los conjuntos de escalas de tooVM y cómo se conectan tooremote tooa instancia de conjunto de escalado de VM o un nodo de clúster."
 services: service-fabric
 documentationcenter: .net
 author: ChackDan
@@ -14,51 +14,51 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/05/2017
 ms.author: chackdan
-ms.openlocfilehash: 3b1a22bb3653abb68fc73645ad2cb623fabc7736
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 830ea2816f5864de146a77483c85de26f91c2425
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="the-relationship-between-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Relación entre los tipos de nodos de Service Fabric y los conjuntos de escalado de máquinas virtuales
-Los conjuntos de escalado de máquinas virtuales son un recurso de proceso de Azure que se puede usar para implementar y administrar una colección de máquinas virtuales de forma conjunta. Cada tipo de nodo que se define en un clúster de Service Fabric está configurado como un conjunto de escalado de VM independiente. Cada tipo de nodo se puede escalar o reducir verticalmente de forma independiente. Cada uno tiene diferentes conjuntos de puertos abiertos y puede tener distintas métricas de capacidad.
+# <a name="hello-relationship-between-service-fabric-node-types-and-virtual-machine-scale-sets"></a>relación de Hello entre tipos de nodos de Service Fabric y conjuntos de escalas de máquina Virtual
+Conjuntos de escalas de máquina virtual son un recurso de proceso de Azure puede usar toodeploy y administrar una colección de máquinas virtuales como un conjunto. Cada tipo de nodo que se define en un clúster de Service Fabric está configurado como un conjunto de escalado de VM independiente. Cada tipo de nodo se puede escalar o reducir verticalmente de forma independiente. Cada uno tiene diferentes conjuntos de puertos abiertos y puede tener distintas métricas de capacidad.
 
-En la siguiente captura de pantalla, se muestra un clúster que tiene dos tipos de nodos: front-end y back-end.  A su vez, cada tipo de nodo tiene cinco nodos.
+Hola siguiente captura de pantalla muestra un clúster que tiene dos tipos de nodo: front-end y back-end.  A su vez, cada tipo de nodo tiene cinco nodos.
 
 ![Captura de pantalla de un clúster que tiene dos tipos de nodos][NodeTypes]
 
-## <a name="mapping-vm-scale-set-instances-to-nodes"></a>Asignación de instancias de conjuntos de escalado de máquinas virtuales a los nodos
-Como se ha indicado anteriormente, las instancias de conjuntos de escalado de máquinas virtuales comienzan por la instancia 0 y van aumentando. La numeración se refleja en los nombres. Por ejemplo, BackEnd_0 es la instancia 0 del conjunto de escalado de máquinas virtuales de back-end. En concreto, este conjunto de escalado de máquinas virtuales tiene cinco instancias, denominadas BackEnd_0, BackEnd_1, BackEnd_2, BackEnd_3 y BackEnd_4.
+## <a name="mapping-vm-scale-set-instances-toonodes"></a>Asignación toonodes de instancias de conjunto de escala de VM.
+Como puede ver anteriormente, Hola conjunto de escalado de máquinas virtuales se inician las instancias de la instancia 0 y, a continuación, aumenta. Hola numeración se refleja en los nombres de Hola. Por ejemplo, BackEnd_0 es instancia 0 de hello conjunto de escalado de la máquina virtual de back-end. En concreto, este conjunto de escalado de máquinas virtuales tiene cinco instancias, denominadas BackEnd_0, BackEnd_1, BackEnd_2, BackEnd_3 y BackEnd_4.
 
-Al escalar verticalmente un conjunto de escalado de máquinas virtuales, se crea una nueva instancia. El nuevo nombre de instancia de conjunto de escalado de máquinas virtuales será normalmente el nombre del conjunto de escalado de máquinas virtuales seguido del número de instancia. En nuestro ejemplo, es BackEnd_5.
+Al escalar verticalmente un conjunto de escalado de máquinas virtuales, se crea una nueva instancia. Hola nuevo conjunto de escalado de VM nombre de instancia normalmente será el nombre de conjunto de escalado de VM de hello + número de instancia siguiente de Hola. En nuestro ejemplo, es BackEnd_5.
 
-## <a name="mapping-vm-scale-set-load-balancers-to-each-node-typevm-scale-set"></a>Asignación de equilibradores de carga de conjunto de escalado de máquinas virtuales a cada tipo de nodo o conjunto de escalado de máquinas virtuales
-Si ha implementado el clúster desde el portal o ha usado la plantilla de Azure Resource Manager que le hemos proporcionado, al mostrar una lista de todos los recursos incluidos en un grupo de recursos, verá los equilibradores de carga para cada conjunto de escalado de VM o tipo de nodo.
+## <a name="mapping-vm-scale-set-load-balancers-tooeach-node-typevm-scale-set"></a>Asignación de máquina virtual conjunto de escalas de carga equilibradores tooeach nodo tipo/VM conjunto de escala
+Si ha implementado el clúster desde el portal de Hola o ha usado la plantilla de administrador de recursos de ejemplo de Hola que se proporciona, a continuación, cuando se obtiene una lista de todos los recursos en un grupo de recursos verá equilibradores de carga de Hola para cada tipo de nodo o conjunto de escalado de máquinas virtuales.
 
-El nombre sería algo parecido a: **LB-&lt;Nombre del tipo de nodo&gt;**. Por ejemplo, LB-sfcluster4doc-0, como se muestra en esta captura de pantalla:
+Hello nombre sería algo parecido a: **LB -&lt;NodeType nombre&gt;**. Por ejemplo, LB-sfcluster4doc-0, como se muestra en esta captura de pantalla:
 
 ![Recursos][Resources]
 
-## <a name="remote-connect-to-a-vm-scale-set-instance-or-a-cluster-node"></a>Conexión remota a una instancia de conjunto de escalado de máquinas virtuales o un nodo de clúster
-Cada tipo de nodo que se define en un clúster está configurado como un conjunto de escalado de VM independiente.  Esto significa que los tipos de nodos se pueden escalar o reducir verticalmente de forma independiente y que pueden estar formados por diferentes SKU de máquina virtual. A diferencia de las máquinas virtuales de instancia única, las instancias de conjunto de escalado de máquinas virtuales no obtienen una dirección IP virtual por sí mismas. Por lo que puede ser un poco complicado si desea obtener una dirección IP y un puerto que pueda usar para conectarse de manera remota a una instancia específica.
+## <a name="remote-connect-tooa-vm-scale-set-instance-or-a-cluster-node"></a>Instancia de conjunto de escalado de VM de tooa o un nodo de clúster de conexión remota
+Cada tipo de nodo que se define en un clúster está configurado como un conjunto de escalado de VM independiente.  Que significa Hola tipos de nodo se puede escalar una copia de seguridad o el detalle de forma independiente y se pueden realizar de diferentes SKU de máquina virtual. A diferencia de las máquinas virtuales de instancia única, instancias de conjunto de escalado de VM de hello no obtiene una dirección IP virtual por sí mismos. Por lo que puede ser un poco complicado cuando se desea obtener una dirección IP dirección y el puerto que se puede usar tooremote conectan instancia específica de tooa.
 
-Estos son los pasos que puede seguir para detectarlos.
+Estos son los pasos de hello puede seguir toodiscover ellos.
 
-### <a name="step-1-find-out-the-virtual-ip-address-for-the-node-type-and-then-inbound-nat-rules-for-rdp"></a>Paso 1: Averiguar la dirección IP virtual para el tipo de nodo y, a continuación, las reglas NAT de entrada para RDP
-Para conseguirlo, debe obtener los valores de las reglas NAT de entrada que se especificaron como parte de la definición de recursos para **Microsoft.Network/loadBalancers**.
+### <a name="step-1-find-out-hello-virtual-ip-address-for-hello-node-type-and-then-inbound-nat-rules-for-rdp"></a>Paso 1: Obtener dirección IP virtual de hello para el tipo de nodo de hello y, a continuación, las reglas de NAT de entrada para RDP
+En tooget orden esto, necesita tooget Hola NAT de entrada de reglas de valores que se definieron como parte de la definición de recursos de Hola para **Microsoft.Network/loadBalancers**.
 
-En el portal, vaya a la hoja del equilibrador de carga y, a continuación, acceda a **Configuración**.
+En el portal de hello, navegar por hoja de equilibrador de carga de toohello y, a continuación, **configuración**.
 
 ![LBBlade][LBBlade]
 
-En **Configuración**, haga clic en **Reglas NAT de entrada**. Aquí verá la dirección IP y el puerto que puede usar para conectarse de forma remota a la primera instancia de conjunto de escalado de máquinas virtuales. En la captura de pantalla siguiente, los valores son **104.42.106.156** y **3389**.
+En **Configuración**, haga clic en **Reglas NAT de entrada**. Ahora Esto proporciona Hola dirección IP y puerto que se puede usar tooremote conectar toohello primera instancia del conjunto de escalado de máquinas virtuales. En la siguiente captura de pantalla de hello, es **104.42.106.156** y **3389**
 
 ![NATRules][NATRules]
 
-### <a name="step-2-find-out-the-port-that-you-can-use-to-remote-connect-to-the-specific-vm-scale-set-instancenode"></a>Paso 2: Buscar el puerto que puede usar para conectarse de forma remota al nodo o a la instancia específica del conjunto de escalado de máquinas virtuales
-Anteriormente en este documento, se describió la forma de asignar instancias de conjunto de escalado de máquinas virtuales a los nodos. Usaremos ese procedimiento para averiguar el puerto exacto.
+### <a name="step-2-find-out-hello-port-that-you-can-use-tooremote-connect-toohello-specific-vm-scale-set-instancenode"></a>Paso 2: Obtenga más información sobre el puerto de Hola que puede usar tooremote conexión toohello conjunto de escalado de VM instancia/nodo específico
+Anteriormente en este documento, describe cómo asignan los nodos toohello en instancias de conjunto de escalado de VM de Hola. Se usará ese toofigure puerto exacto de Hola de salida.
 
-Los puertos se asignan en orden ascendente de la instancia del conjunto de escalado de máquinas virtuales. Así que en mi ejemplo del tipo de nodo de front-end, los puertos de cada una de las cinco instancias son los siguientes: Ahora debe realizar la misma asignación para la instancia del conjunto de escalado de máquinas virtuales.
+puertos de Hola se asignan en orden ascendente de instancia de conjunto de escalado de VM de Hola. por lo que en el ejemplo de Hola tipo de nodo de front-end, puertos de Hola para cada una de las cinco instancias de hello son siguiente Hola. Ahora necesita toodo Hola misma asignación para la instancia del conjunto de escalado de máquinas virtuales.
 
 | **Instancia de conjunto de escalado de VM** | **Puerto** |
 | --- | --- |
@@ -69,46 +69,46 @@ Los puertos se asignan en orden ascendente de la instancia del conjunto de escal
 | FrontEnd_4 |3393 |
 | FrontEnd_5 |3394 |
 
-### <a name="step-3-remote-connect-to-the-specific-vm-scale-set-instance"></a>Paso 3: Conectarse remotamente a la instancia específica del conjunto de escalado de máquinas virtuales
-En la siguiente captura de pantalla, se usa la conexión a escritorio remoto para conectarse a FrontEnd_1:
+### <a name="step-3-remote-connect-toohello-specific-vm-scale-set-instance"></a>Paso 3: Instancia de conjunto de escalado de VM de toohello específica de conexión remota
+En la siguiente captura de pantalla de hello Usar conexión a Escritorio remoto tooconnect toohello FrontEnd_1:
 
 ![RDP][RDP]
 
-## <a name="how-to-change-the-rdp-port-range-values"></a>Cómo cambiar los valores del intervalo de puertos RDP
+## <a name="how-toochange-hello-rdp-port-range-values"></a>Hola toochange puerto RDP cómo los valores de intervalo
 ### <a name="before-cluster-deployment"></a>Antes de la implementación del clúster
-Cuando se configura el clúster mediante una plantilla de Azure Resource Manager, se puede especificar el intervalo en **inboundNatPools**.
+Cuando se configura usando una plantilla de administrador de recursos de clúster de hello, puede especificar el intervalo de Hola Hola **inboundNatPools**.
 
-Acceda a la definición de recursos para **Microsoft.Network/loadBalancers**. Ahí encontrará la descripción de **inboundNatPools**.  Reemplace los valores de *frontendPortRangeStart* y *frontendPortRangeEnd*.
+Ir a definición de recursos de toohello para **Microsoft.Network/loadBalancers**. En la que buscar descripción Hola para **inboundNatPools**.  Reemplace hello *frontendPortRangeStart* y *frontendPortRangeEnd* valores.
 
 ![inboundNatPools][InboundNatPools]
 
 ### <a name="after-cluster-deployment"></a>Después de la implementación del clúster
-Esto es un poco más complicado y puede provocar que las máquinas virtuales se reciclen. Ahora tendrá que establecer nuevos valores usando Azure PowerShell. Asegúrese de que Azure PowerShell 1.0 esté instalado en su equipo (o una versión posterior). Si no lo ha hecho antes, se aconseja encarecidamente que siga los pasos descritos en [Cómo instalar y configurar Azure PowerShell](/powershell/azure/overview)
+Esto es un poco más complicada y podría resultar en máquinas virtuales de Hola que se reciclen. Ahora tienes tooset nuevos valores mediante Azure PowerShell. Asegúrese de que Azure PowerShell 1.0 esté instalado en su equipo (o una versión posterior). Si no ha hecho esto antes, es recomendable que siga los pasos de Hola que se describen en [cómo tooinstall y configurar Azure PowerShell.](/powershell/azure/overview)
 
-Inicie sesión en la cuenta de Azure. Si este comando de PowerShell da error por algún motivo, debe comprobar si tiene instalado correctamente Azure PowerShell.
+Inicie sesión en tooyour cuenta de Azure. Si este comando de PowerShell da error por algún motivo, debe comprobar si tiene instalado correctamente Azure PowerShell.
 
 ```
 Login-AzureRmAccount
 ```
 
-Ejecute lo siguiente para obtener detalles sobre el equilibrador de carga y verá los valores para la descripción de **inboundNatPools**:
+Ejecute hello tooget detalla en el equilibrador de carga y ver valores de hello para la descripción de Hola para **inboundNatPools**:
 
 ```
 Get-AzureRmResource -ResourceGroupName <RGname> -ResourceType Microsoft.Network/loadBalancers -ResourceName <load balancer name>
 ```
 
-Ahora configure *frontendPortRangeEnd* y *frontendPortRangeStart* con los valores que desee.
+Establecer ahora *frontendPortRangeEnd* y *frontendPortRangeStart* toohello los valores que desee.
 
 ```
 $PropertiesObject = @{
     #Property = value;
 }
-Set-AzureRmResource -PropertyObject $PropertiesObject -ResourceGroupName <RG name> -ResourceType Microsoft.Network/loadBalancers -ResourceName <load Balancer name> -ApiVersion <use the API version that get returned> -Force
+Set-AzureRmResource -PropertyObject $PropertiesObject -ResourceGroupName <RG name> -ResourceType Microsoft.Network/loadBalancers -ResourceName <load Balancer name> -ApiVersion <use hello API version that get returned> -Force
 ```
 
 
 ## <a name="next-steps"></a>Pasos siguientes
-* [Descripción general de la característica "Deploy anywhere" y comparación con los clústeres administrados de Azure](service-fabric-deploy-anywhere.md)
+* [Información general sobre la característica de "En cualquier lugar para implementar" hello y hacer una comparación con clústeres administrado de Azure](service-fabric-deploy-anywhere.md)
 * [Seguridad de clúster](service-fabric-cluster-security.md)
 * [ SDK de Service Fabric e introducción](service-fabric-get-started.md)
 

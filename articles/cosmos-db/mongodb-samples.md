@@ -1,6 +1,6 @@
 ---
-title: "Uso de las API de MongoDB para compilar una aplicación de Azure Cosmos DB | Microsoft Docs"
-description: "Tutorial que crea una base de datos en línea mediante las API de Azure Cosmos DB para MongoDB."
+title: "aaaUse MongoDB APIs toobuild una aplicación de base de datos de Azure Cosmos | Documentos de Microsoft"
+description: "Un tutorial que crea una base de datos en línea con las API de base de datos de Azure Cosmos Hola para MongoDB."
 keywords: ejemplos de mongodb
 services: cosmos-db
 author: AndrewHoh
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: anhoh
-ms.openlocfilehash: 433d2e585c884a10e7e923a0b27c179a95410d01
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 09be4362fe3aac02e0163325f958210be9598383
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="build-an-azure-cosmos-db-api-for-mongodb-app-using-nodejs"></a>Creación de una aplicación de Azure Cosmos DB: API para MongoDB con Node.js
 > [!div class="op_single_selector"]
@@ -32,16 +32,16 @@ ms.lasthandoff: 08/03/2017
 >  
 >
 
-En este ejemplo se muestra cómo crear una aplicación de consola de Azure Cosmos DB: API para MongoDB con Node.js.
+Este ejemplo muestra cómo toobuild una base de datos de Azure Cosmos: API de aplicación de consola de MongoDB mediante Node.js.
 
-Para usar este ejemplo, tendrá que:
+toouse en este ejemplo, debe:
 
 * [Cree](create-mongodb-dotnet.md#create-account) una cuenta de Azure Cosmos DB: API para MongoDB.
 * Recuperar información de la [cadena de conexión](connect-mongodb-account.md) de MongoDB.
 
-## <a name="create-the-app"></a>Creación de la aplicación
+## <a name="create-hello-app"></a>Crear aplicación hello
 
-1. Cree un archivo *app.js* y copie y pegue el código siguiente.
+1. Crear un *app.js* de archivos y copie y pegue el siguiente código de hello.
 
     ```nodejs
     var MongoClient = require('mongodb').MongoClient;
@@ -66,7 +66,7 @@ Para usar este ejemplo, tendrá que:
             "address": { "country": "USA", "state": "WA", "city": "Seattle" }
         }, function(err, result) {
         assert.equal(err, null);
-        console.log("Inserted a document into the families collection.");
+        console.log("Inserted a document into hello families collection.");
         callback();
     });
     };
@@ -122,7 +122,7 @@ Para usar este ejemplo, tendrá que:
     });
     ```
 
-2. Modifique las siguientes variables en el archivo *app.js* según la configuración de la cuenta (aprenda a buscar la [cadena de conexión](connect-mongodb-account.md)):
+2. Modificar Hola después de las variables de hello *app.js* archivo por la configuración de la cuenta (más información cómo toofind su [cadena de conexión](connect-mongodb-account.md)):
    
     ```nodejs
     var url = 'mongodb://<endpoint>:<password>@<endpoint>.documents.azure.com:10255/?ssl=true';
@@ -131,4 +131,4 @@ Para usar este ejemplo, tendrá que:
 3. Abra su terminal favorito, ejecute **npm install mongodb --save** y ejecute luego su aplicación con **node app.js**.
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Obtenga información sobre cómo [usar MongoChef](mongodb-mongochef.md) con una cuenta de Azure Cosmos DB: API para MongoDB.
+* Obtenga información acerca de cómo demasiado[usar MongoChef](mongodb-mongochef.md) con la base de datos de Azure Cosmos: API de cuenta de MongoDB.

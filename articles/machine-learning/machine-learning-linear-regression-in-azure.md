@@ -1,5 +1,5 @@
 ---
-title: "Uso de la regresión lineal en Machine Learning | Microsoft Docs"
+title: "Regresión lineal en el aprendizaje automático de aaaUsing | Documentos de Microsoft"
 description: "Una comparación de los modelos de regresión lineal en Excel y en Estudio de aprendizaje automático de Azure"
 metakeywords: 
 services: machine-learning
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: kbaroni;garye
-ms.openlocfilehash: 7feb5d62415850e66f8eb7e22b9ada0d25a7058e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8716040ad296053a72fb06c7c9660a186123ac15
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="using-linear-regression-in-azure-machine-learning"></a>Uso de regresión lineal en Aprendizaje automático de Azure
-> *Kate Baroni* y *Ben Boatman* son arquitectos de soluciones para empresas del Centro de Excelencia de Perspectivas sobre los datos de Microsoft. En este artículo, se describe su experiencia al migrar un conjunto existente de análisis de regresión a una solución basada en la nube mediante Aprendizaje automático (ML) de Azure. 
+> *Kate Baroni* y *Ben Boatman* son arquitectos de soluciones para empresas del Centro de Excelencia de Perspectivas sobre los datos de Microsoft. En este artículo, describe su experiencia de migrar una regresión analysis suite tooa basada en la nube solución existente mediante el aprendizaje automático de Azure. 
 > 
 > 
 
@@ -33,31 +33,31 @@ ms.lasthandoff: 07/11/2017
 ## <a name="goal"></a>Objetivo
 Nuestro proyecto se inició con dos objetivos en mente: 
 
-1. Usar el análisis predictivo para mejorar la exactitud de las proyecciones de ingresos mensuales de la organización. 
-2. Usar Azure Machine Learning para confirmar, optimizar, aumentar la velocidad y escalar los resultados. 
+1. Use la precisión de hello tooimprove de análisis predictivos de proyecciones de ingresos mensual de nuestra organización 
+2. Usar aprendizaje automático de Azure tooconfirm, optimizar, aumentar la velocidad y la escala de los resultados. 
 
-Como muchas empresas, nuestra organización pasa por un proceso de previsión de ingresos mensuales. Nuestro pequeño equipo de analistas de negocios se encarga de usar Azure Machine Learning para respaldar el proceso y mejorar la precisión de la previsión. El equipo dedicó varios meses a recopilar los datos de varios orígenes y ejecutar los atributos de datos a través de análisis estadísticos a fin de identificar los atributos claves relevantes para la previsión de ventas de servicios. El paso siguiente consistía en comenzar el prototipo de los modelos de regresión estadística de los datos en Excel. En unas semanas, tuvimos un modelo de regresión de Excel que superaba los procesos actuales de previsión de finanzas y de campo. Esto se convirtió en el resultado de la predicción de la línea de base. 
+Como muchas empresas, nuestra organización pasa por un proceso de previsión de ingresos mensuales. Nuestro equipo pequeño de los analistas de negocios se ha asignado la tarea con el proceso de aprendizaje automático de Azure toosupport hello y mejora la exactitud de las proyecciones. equipo de Hello empleó varios meses de recopilación de datos de varios orígenes y ejecutada atributos de datos de hello mediante análisis estadísticos identificar atributos clave tooservices relevante ventas previsión. paso siguiente de Hello era modelos de regresión estadística de la creación de prototipos de toobegin en los datos de hello en Excel. Dentro de unas cuantas semanas, ha surgido un modelo de regresión de Excel que se superando campo actual de Hola y previsión procesos de finanzas. Se pasó a ser resultado de predicción de línea de base de Hola. 
 
-A continuación, el siguiente paso consistió en pasar nuestro análisis predictivo a Azure Machine Learning para averiguar cómo se podría mejorar el rendimiento de las predicciones con Machine Learning.
+A continuación, tomamos Hola siguiente paso toomoving nuestro análisis predictivo sobre toofind de aprendizaje automático de tooAzure out cómo podrían mejorar el aprendizaje automático en el rendimiento de predicción.
 
 ## <a name="achieving-predictive-performance-parity"></a>Consecución de la paridad en el rendimiento predictivo
-Nuestra prioridad era lograr la paridad entre los modelos de regresión de Excel y de Machine Learning. Teniendo en cuenta los mismos datos y la misma división de datos de prueba (test) y entrenamiento (train), queríamos conseguir la paridad de rendimiento predictivo entre Excel y Machine Learning. Al principio no lo conseguimos. El modelo de Excel superaba al de Machine Learning. El error se debía a una falta de conocimiento de la configuración de la herramienta base en Machine Learning. Después de una sincronización con el equipo de producto de Machine Learning, se consiguió una mejor comprensión de la configuración base necesaria para nuestros conjuntos de datos, y se logró la paridad entre los dos modelos. 
+Nuestra primera prioridad era tooachieve paridad entre los modelos de regresión de aprendizaje automático y Excel. Dados Hola los mismos datos y Hola mismo dividir para los datos de pruebas y entrenamiento, deseamos paridad de predicción del rendimiento de tooachieve entre Excel y el aprendizaje automático. Al principio no lo conseguimos. modelo de aprendizaje automático de Hola de Hello Excel superó el modelo. Error de Hello fue debido a falta de tooa de conocimiento de la herramienta de base de hello en aprendizaje automático. Después de una sincronización con el equipo de producto de aprendizaje automático de hello, obtener una mejor comprensión de hello base configuración necesaria para nuestros conjuntos de datos y lograr paridad entre dos modelos de Hola. 
 
 ### <a name="create-regression-model-in-excel"></a>Creación de un modelo de regresión en Excel
-La regresión de Excel utilizaba el modelo de regresión lineal estándar de Excel Analysis ToolPak. 
+La regresión de Excel utiliza el modelo de regresión lineal estándar Hola de hello herramientas para análisis de Excel. 
 
-Calculamos el *porcentaje de error medio absoluto* y se utilizó como medida de rendimiento para el modelo. Tardamos 3 meses en conseguir un modelo operativo con Excel. Aplicamos gran parte de lo aprendido al experimento con Machine Learning Studio, lo que, en última instancia, era una ventaja a la hora de conocer los requisitos.
+Hemos calculado *% absoluto medio Error* y lo utilizó como medida de rendimiento de hello para el modelo de Hola. Se tardó tooarrive de 3 meses en un modelo de trabajo con Excel. Se pone mucho de aprendizaje de hello en hello experimentación de estudio de aprendizaje automático que en última instancia era beneficioso en la descripción de los requisitos.
 
 ### <a name="create-comparable-experiment-in-azure-machine-learning"></a>Creación de un experimento comparable en Aprendizaje automático de Azure
-Seguimos estos pasos para crear nuestro experimento en Machine Learning Studio: 
+Seguimos estos pasos toocreate nuestro experimento en estudio de aprendizaje automático: 
 
-1. Cargamos el conjunto de datos como un archivo csv en Machine Learning Studio (archivo muy pequeño).
-2. Hemos creado un nuevo experimento y hemos usado el módulo [Seleccionar columnas de conjunto de datos][select-columns] para seleccionar las mismas características de datos que se usaron en Excel. 
-3. Usamos el módulo [Dividir datos][split] (con el modo *Expresión relativa*) para dividir los datos en los mismos conjuntos de datos de entrenamiento, tal y como se habría realizado en Excel. 
-4. Realizamos experimentos con el módulo [Regresión lineal][linear-regression] (solo opciones predeterminadas), documentamos el proceso y comparamos los resultados con el modelo de regresión de Excel.
+1. Conjunto de datos de hello cargado como un tooMachine de archivo csv estudio de aprendizaje (archivo muy pequeño)
+2. Crea un experimento de nuevo y utilizar hello [seleccionar columnas de conjunto de datos] [ select-columns] tooselect módulo Hola mismas características de datos usados en Excel 
+3. Hola usado [dividir datos] [ split] módulo (con *expresión relativa* modo) datos de hello toodivide en Hola mismos conjuntos de datos de entrenamiento, tal y como hizo en Excel 
+4. Experimentado con hello [regresión lineal] [ linear-regression] módulo (solo opciones predeterminadas), documentada y en comparación con el modelo de regresión de hello resultados tooour Excel
 
 ### <a name="review-initial-results"></a>Revisión de los resultados iniciales
-Al principio, el modelo de Excel superaba claramente al de Machine Learning Studio: 
+En primer lugar, modelo de Excel hello claramente superó a modelo de estudio de aprendizaje automático de hello: 
 
 |  | Excel | Estudio |
 | --- |:---:|:---:|
@@ -67,15 +67,15 @@ Al principio, el modelo de Excel superaba claramente al de Machine Learning Stud
 | Error medio absoluto |9,5 millones de $ |19,4 millones de $ |
 | Error medio absoluto (%) |6,03 % |12,2 % |
 
-Cuando ejecutamos el proceso y los resultados para los desarrolladores y científicos de datos del equipo de Machine Learning, rápidamente nos proporcionaron algunas sugerencias útiles. 
+Cuando ejecutamos nuestro proceso y los resultados por los desarrolladores de Hola y científicos de datos en el equipo de aprendizaje automático de hello, rápidamente proporcionan algunas sugerencias útiles. 
 
-* Cuando se usa el módulo [Regresión lineal][linear-regression] en Machine Learning Studio, se proporcionan dos métodos:
+* Cuando usas hello [regresión lineal] [ linear-regression] módulo en estudio de aprendizaje automático, se proporcionan dos métodos:
   * Descenso de gradiente en línea: pueden resultar más adecuado para los problemas a mayor escala.
-  * Ordinaria de mínimos cuadrados: este es el método en el que se suele pensar cuando se habla de la regresión lineal. Para los conjuntos de datos más pequeños, la regresión ordinaria de mínimos cuadrados puede ser una opción más adecuada.
-* Considere la posibilidad de ajustar el parámetro Peso de regularización L2 para mejorar el rendimiento. Está establecido en 0,001 de forma predeterminada, pero para nuestro pequeño conjunto de datos, lo establecimos en 0,005 para mejorar el rendimiento. 
+  * Mínimos cuadrados ordinarios: Se trata de método hello que considerar mayoría de los usuarios cuando oye regresión lineal. Para los conjuntos de datos más pequeños, la regresión ordinaria de mínimos cuadrados puede ser una opción más adecuada.
+* Considere la posibilidad de aumentar el rendimiento de tooimprove de parámetro de peso de regularización L2 Hola. Too0.001 se establece de forma predeterminada, pero en nuestro conjunto de datos pequeño se establézcalo too0.005 tooimprove rendimiento. 
 
 ### <a name="mystery-solved"></a>¡Misterio resuelto!
-Al aplicar las recomendaciones, logramos el mismo rendimiento de línea de base en Machine Learning Studio que con Excel: 
+Cuando se aplican las recomendaciones de hello, se consigue Hola mismo rendimiento de línea de base en estudio de aprendizaje automático como con Excel: 
 
 |  | Excel | Studio (inicial) | Studio con mínimos cuadrados |
 | --- |:---:|:---:|:---:|
@@ -83,15 +83,15 @@ Al aplicar las recomendaciones, logramos el mismo rendimiento de línea de base 
 | Objetivo del aprendizaje |Excel -> Análisis de datos -> Regresión |Regresión lineal |Regresión lineal |
 | Opciones del objetivo del aprendizaje |N/D |Valores predeterminados |ordinaria de mínimos cuadrados<br />L2 = 0,005 |
 | Conjunto de datos |26 filas, 3 características, 1 etiqueta. Todas numéricas. |same |same |
-| División: aprendizaje |Excel entrenado en las primeras 18 filas; probado en las últimas 8 filas. |same |same |
-| División: prueba |Fórmula de regresión de Excel aplicada a las últimas 8 filas. |same |same |
+| División: aprendizaje |Excel había entrenado en hello primero 18 filas, se comprueba en hello última 8 filas. |same |same |
+| División: prueba |Fórmula de regresión aplicada de Excel toohello última 8 filas |same |same |
 | **Rendimiento** | | | |
 | R cuadrado ajustado |0,96 |N/D | |
 | Coeficiente de determinación |N/D |0,78 |0,952049 |
 | Error medio absoluto |9,5 millones de $ |19,4 millones de $ |9,5 millones de $ |
 | Error medio absoluto (%) |<span style="background-color: 00FF00;"> 6,03 %</span> |12,2 % |<span style="background-color: 00FF00;"> 6,03 %</span> |
 
-Además, los coeficientes de Excel son muy similares a los pesos de la característica en el modelo de entrenamiento de Azure:
+Además, coeficientes de Excel hello también comparan pesos de característica toohello Hola entrenado Azure:
 
 |  | Coeficientes de Excel | Ponderaciones de la característica de Azure |
 | --- |:---:|:---:|
@@ -101,27 +101,27 @@ Además, los coeficientes de Excel son muy similares a los pesos de la caracter�
 | Característica C |25 383 318,09 |25 140 800 |
 
 ## <a name="next-steps"></a>Pasos siguientes
-Queríamos consumir el servicio web Machine Learning en Excel. Nuestros analistas de negocios se basan en Excel y necesitábamos una manera de llamar al servicio web Machine Learning con una fila de datos de Excel y obtener el valor esperado para Excel. 
+Deseamos que el servicio de web de aprendizaje automático de tooconsume hello en Excel. Nuestro los analistas de negocios se basan en Excel y se necesita un Hola de toocall forma aprendizaje automático de servicio con una fila de datos de Excel web y hacer que devuelva Hola predecir tooExcel de valor. 
 
-También queríamos optimizar nuestro modelo utilizando las opciones y los algoritmos disponibles en Machine Learning Studio.
+También deseamos toooptimize nuestro modelo, con opciones de Hola y algoritmos disponibles en estudio de aprendizaje automático.
 
 ### <a name="integration-with-excel"></a>Integración con Excel
-Nuestra solución fue instrumentar nuestro modelo de regresión de Machine Learning mediante la creación de un servicio web desde el modelo entrenado. En unos minutos, se creó el servicio web y pudimos llamarlo directamente desde Excel para obtener el valor de ingresos previstos. 
+Nuestra solución era toooperationalize nuestro regresión de aprendizaje automático de modelo creando un servicio web desde el modelo entrenado Hola. Dentro de unos minutos, se creó el servicio web de Hola y lo podríamos llamamos directamente desde Excel tooreturn un valor de predicción de ingresos. 
 
-La sección *Panel de servicios web* incluye un libro de Excel descargable. El libro contiene información predefinida sobre el esquema y la API de servicio web incrustada. Al hacer clic en *Descargar el libro de Excel*, el libro se abre y puede guardarlo en el equipo local. 
+Hola *panel de servicios Web* sección incluye un libro de Excel que se pueden descargar. libro de Hola incluye hello web servicio API y el esquema de información incrustada con formato previo. Al hacer clic en *descargar el libro de Excel*, Hola libro se abre y puede guardarlo tooyour de equipo local. 
 
 ![][1]
 
-Con el libro abierto, copie los parámetros predefinidos en la sección de parámetros de color azul, como se muestra a continuación. Una vez que se especifican los parámetros, Excel llama al servicio web Machine Learning y las etiquetas puntuadas previstas se mostrarán en la sección de valores de predicción de color verde. El libro continuará creando predicciones para los parámetros basándose en el modelo entrenado para todos los elementos de fila especificados en los parámetros. Para obtener más información sobre cómo usar esta característica, consulte [Consumo de un servicio web de Aprendizaje automático de Azure de Excel](machine-learning-consuming-from-excel.md). 
+Abra el libro de hello, copie los parámetros predefinidos en la sección de parámetros de hello azul tal y como se muestra a continuación. Una vez que se especifican parámetros de hello, Excel llama toohello servicio web de aprendizaje automático y hello etiquetas con puntuación de predicción mostrará de sección de valores de predicción de hello verde. libro de Hello continuará toocreate predicciones para los parámetros en función del modelo entrenado para todos los elementos de fila que se ha indicado en parámetros. Para obtener más información sobre cómo toouse esta característica, consulte [consumir un servicio Web de Azure Machine Learning desde Excel](machine-learning-consuming-from-excel.md). 
 
 ![][2]
 
 ### <a name="optimization-and-further-experiments"></a>Optimización y otros experimentos
-Ahora que teníamos una línea de base con nuestro modelo de Excel, dimos un paso más para optimizar nuestro modelo de regresión lineal de Machine Learning. Usamos el módulo [Selección de características basada en filtros][filter-based-feature-selection] para mejorar nuestra selección de datos iniciales de elementos. Ello nos ayudó a lograr una mejora del rendimiento del 4,6 % en el error medio absoluto. Para proyectos futuros, utilizaremos esta característica que nos permitirá ahorrar semanas de iteración en los atributos de los datos para buscar el conjunto correcto de características que se utilizará para el modelado. 
+Ahora que tuvimos una línea base con nuestro modelo de Excel, se mueve toooptimize anticipada nuestro modelo de regresión lineal del aprendizaje automático. Hemos usado el módulo de hello [selección de características basada en filtros] [ filter-based-feature-selection] tooimprove en nuestra selección de elementos de datos iniciales y nos ayudaron a lograr una mejora del rendimiento de 4.6% significa la desviación. Para proyectos futuros usaremos esta característica lo que nos podría ahorrar semanas iterar a través de atributos toofind Hola derecho conjunto de datos de toouse de características para la modelización. 
 
-A continuación, tenemos previsto incluir algoritmos adicionales como [bayesianos][bayesian-linear-regression] o [árboles de decisiones incrementados][boosted-decision-tree-regression] en nuestro experimento para comparar el rendimiento. 
+A continuación tenemos previsto tooinclude algoritmos adicionales como [bayesiano] [ bayesian-linear-regression] o [árboles de decisión impulsado] [ boosted-decision-tree-regression] en nuestro toocompare de experimento rendimiento. 
 
-Si desea experimentar con regresión, un buen conjunto de datos para probar es el conjunto de datos de ejemplo de Energy Efficiency Regression, que tiene muchos atributos numéricos. El conjunto de datos se proporciona como parte de los conjuntos de datos de muestra en Machine Learning Studio. Puede usar diversos módulos de entrenamiento para predecir la carga de calefacción o refrigeración. En el gráfico siguiente, se muestra una comparación de distintos entrenamientos de regresión efectuados con el conjunto de datos Energy Efficiency para predecir una variable de destino sobre la carga de refrigeración: 
+Si desea que tooexperiment con regresión, un buen conjunto de datos tootry es dataset de ejemplo de regresión de eficacia energética hello, lo que tiene un gran número de atributos numéricos. conjunto de datos de Hola se proporciona como parte de los conjuntos de datos de ejemplo de Hola en estudio de aprendizaje automático. Puede utilizar una variedad de toopredict de módulos de aprendizaje carga calefacción o refrigeración carga. gráfico de Hello siguiente es que una comparación de rendimiento de diferentes de regresión aprende contra Hola eficiencia energética dataset predecir para hello carga variable refrigeración de destino: 
 
 | Modelo | Error medio absoluto | Error cuadrático medio | Error absoluto relativo | Error cuadrático relativo | Coeficiente de determinación |
 | --- | --- | --- | --- | --- | --- |
@@ -131,17 +131,17 @@ Si desea experimentar con regresión, un buen conjunto de datos para probar es e
 | Regresión lineal (ordinaria de mínimos cuadrados) |1,428273 |1,984461 |0,163767 |0,042074 |0,957926 |
 
 ## <a name="key-takeaways"></a>Puntos clave
-Hemos aprendido mucho al ejecutar experimentos de regresión en Excel y en Aprendizaje automático de Azure de forma paralela. El hecho de crear un modelo de línea de base en Excel y compararlo con modelos usando la [regresión lineal][linear-regression] de Machine Learning nos permitió aprender sobre Azure Machine Learning. Además, descubrimos oportunidades para mejorar la selección de datos y el modelo de rendimiento. 
+Hemos aprendido mucho al ejecutar experimentos de regresión en Excel y en Aprendizaje automático de Azure de forma paralela. Crear modelo de línea de base de hello en Excel y lo compara con aprendizaje automático de toomodels [regresión lineal] [ linear-regression] ayudado nos Obtenga información acerca de aprendizaje automático de Azure y encontramos datos tooimprove de oportunidades rendimiento de selección y el modelo. 
 
-También descubrimos que es aconsejable utilizar la [Selección de características basada en filtros][filter-based-feature-selection] para acelerar los proyectos futuros de predicción. Al aplicar la selección de características a los datos, se puede crear un modelo mejorado en Machine Learning con un mejor rendimiento general. 
+También encontramos que resulta aconsejable toouse [selección de características basada en filtros] [ filter-based-feature-selection] tooaccelerate proyectos de predicción futura. Mediante la aplicación de datos de tooyour de selección de características, puede crear un modelo mejorado en el aprendizaje automático con un mejor rendimiento global. 
 
-La capacidad de transferir sistemáticamente la predicción analítica de previsión desde Machine Learning hasta Excel permite aumentar significativamente la capacidad de proporcionar resultados correctos a una extensa audiencia de usuarios empresariales. 
+Hola Hola de tootransfer capacidad predictivo analítica previsión sistémica de aprendizaje automático tooExcel permite un aumento significativo de hello capacidad toosuccessfully proporcionar resultados audiencia de usuarios empresariales amplia tooa. 
 
 ## <a name="resources"></a>Recursos
 A continuación, encontrará algunos recursos que le ayudarán a trabajar con la regresión: 
 
 * Regresión en Excel. Si nunca ha intentado realizar la regresión en Excel, este tutorial le facilitará el trabajo: [http://www.excel-easy.com/examples/regression.html](http://www.excel-easy.com/examples/regression.html)
-* Regresión frente a previsión. Tyler Chessman escribió un artículo de blog que explica cómo realizar una serie de previsiones de tiempo en Excel. [http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts](http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts) 
+* Regresión frente a previsión. Figura de ajedrez Tyler escribió un artículo de blog que explica cómo toodo tiempo pronóstico de series en Excel, que contiene la descripción de una buena para principiantes de regresión lineal. [http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts](http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts) 
 * Regresión lineal ordinaria con mínimos cuadrados: errores, problemas y riesgos. Introducción y análisis sobre la regresión: [http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
 
 [1]: ./media/machine-learning-linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png

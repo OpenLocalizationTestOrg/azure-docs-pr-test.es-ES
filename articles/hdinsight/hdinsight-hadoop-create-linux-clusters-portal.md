@@ -1,6 +1,6 @@
 ---
-title: "Creación de clústeres de Hadoop con un explorador web - Azure HDInsight | Microsoft Docs"
-description: "Aprenda a crear clústeres Hadoop, HBase, Storm o Spark en Linux para HDInsight con un explorador web y el Portal de vista previa de Azure."
+title: "clústeres de Hadoop de aaaCreate mediante un explorador web - HDInsight de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toocreate Hadoop, HBase, tormenta o Spark clusters en Linux para HDInsight mediante un explorador web y Hola portal de vista previa."
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -16,136 +16,136 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/10/2017
 ms.author: nitinme
-ms.openlocfilehash: d002e362cda2f0ca991b2a13d41c01c13929cdba
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 63027e35e2d66dd76218aff3e0c085fc811736ec
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-linux-based-clusters-in-hdinsight-using-the-azure-portal"></a>Crear clústeres basados en Linux en HDInsight con el Portal de Azure
+# <a name="create-linux-based-clusters-in-hdinsight-using-hello-azure-portal"></a>Crear clústeres basados en Linux en HDInsight con hello portal de Azure
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-El Portal de Azure es una herramienta de administración basada en web para servicios y recursos hospedados en la nube de Microsoft Azure. En este artículo aprenderá a crear clústeres de HDInsight basados en Linux mediante el portal.
+Hola portal de Azure es una herramienta de administración basada en web para los servicios y recursos hospedados en la nube de Microsoft Azure Hola. En este artículo, aprenderá cómo toocreate HDInsight basados en Linux clústeres mediante el portal de Hola.
 
 ## <a name="prerequisites"></a>Requisitos previos
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 * **Una suscripción de Azure**. Vea [Obtener evaluación gratuita de Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* **Un explorador web moderno**. Azure Portal usa HTML5 y Javascript, y puede que no funcione correctamente en exploradores web más antiguos.
+* **Un explorador web moderno**. Hola portal de Azure usa HTML5 y Javascript y puede no funcionar correctamente en los exploradores más antiguos.
 
 ## <a name="create-clusters"></a>Creación de clústeres
-El Portal de Azure expone la mayor parte de las propiedades del clúster. Mediante la plantilla de Azure Resource Manager puede ocultar una gran cantidad de detalles. Para más información, consulte [Creación de clústeres de Hadoop basados en Linux en HDInsight con plantillas de Azure Resource Manager](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
+Hola portal de Azure expone la mayor parte de las propiedades de clúster de Hola. Mediante la plantilla de Azure Resource Manager puede ocultar una gran cantidad de detalles. Para más información, consulte [Creación de clústeres de Hadoop basados en Linux en HDInsight con plantillas de Azure Resource Manager](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
 
 
-1. Inicie sesión en [Azure Portal](https://portal.azure.com).
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
 2. Haga clic en **+**, en **Intelligence + analytics** y después en **HDInsight**.
    
-    ![Creación de un nuevo clúster en el portal de Azure](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster.png "Creación de un nuevo clúster en el portal de Azure")
+    ![Crear un nuevo clúster en el portal de Azure hello](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster.png "crear un nuevo clúster en hello portal de Azure")
 
-3. En la hoja **HDInsight**, haga clic en **Custom (size, settings, apps)** [Personalizar (tamaño, configuración y aplicaciones)], haga clic en **Básico** y después escriba la siguiente información.
+3. Hola **HDInsight** hoja, haga clic en **personalizado (tamaño, configuración, aplicaciones)**, haga clic en **Fundamentos**y, a continuación, escriba Hola siguiente información.
 
-    ![Creación de un nuevo clúster en el portal de Azure](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-basics.png "Creación de un nuevo clúster en el portal de Azure")
+    ![Crear un nuevo clúster en el portal de Azure hello](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-basics.png "crear un nuevo clúster en hello portal de Azure")
 
     * Especifique el **nombre del clúster**: dicho nombre debe ser único globalmente.
 
-    * Haga clic en la lista desplegable **Suscripción** para seleccionar la suscripción de Azure que se usará para el clúster.
+    * De hello **suscripción** Hola de lista desplegable, seleccione suscripción de Azure que se usará para el clúster de Hola.
 
     * Haga clic en **Tipo de clúster** y luego seleccione:
    
-        * **Tipo de clúster**: si no sabe qué opción elegir, seleccione **Hadoop**. Es el tipo de clúster más popular.
+        * **Tipo de clúster**: si no sabe qué toochoose, seleccione **Hadoop**. Es del tipo de clúster más popular de Hola.
      
             > [!IMPORTANT]
-            > Los clústeres de HDInsight incluyen diversos tipos, que corresponden a la carga de trabajo o la tecnología para los que el clúster está optimizado. No hay ningún método admitido para crear un solo clúster que combine varios tipos, como Storm y HBase. 
+            > HDInsight clústeres vienen en una variedad de tipos, que corresponden a cargas de trabajo de toohello o tecnología de Hola clúster se optimiza para. No hay ningún toocreate método admitido para un clúster que combina varios tipos, como Storm y HBase en un clúster. 
             > 
             > 
         
         * **Sistema operativo**: seleccione **Linux**.
         
-        * **Versión**: use la versión predeterminada si no sabe qué opción elegir. Para obtener más información, consulte [Versiones de clústeres de HDInsight](hdinsight-component-versioning.md).
-        * **Nivel de clúster**: HDInsight de Azure proporciona las ofertas de macrodatos en la nube en dos categorías: Estándar y Premium. Para más información, consulte [Niveles de clúster](hdinsight-hadoop-provision-linux-clusters.md#cluster-tiers).
+        * **Versión**: usar la versión predeterminada de hello si no sabe qué toochoose. Para obtener más información, consulte [Versiones de clústeres de HDInsight](hdinsight-component-versioning.md).
+        * **Nivel de clúster**: HDInsight de Azure proporciona las ofertas de nube de hello grandes cantidades de datos en dos categorías: nivel estándar y nivel Premium. Para más información, consulte [Niveles de clúster](hdinsight-hadoop-provision-linux-clusters.md#cluster-tiers).
 
-    * Como **Nombre de usuario de inicio de sesión del clúster** y **Contraseña de inicio de sesión de clúster**, escriba el nombre de usuario y la contraseña para el usuario administrador.
+    * Para **nombre de usuario de inicio de sesión de clúster** y **contraseña de inicio de sesión de clúster**, proporcionar Hola nombre de usuario y la contraseña de usuario de administrador de Hola.
 
-    * Escriba un **Nombre de usuario de SSH** y, si desea que la contraseña SSH sea igual que la contraseña de administrador que especificó anteriormente, seleccione la casilla **Utilizar la misma contraseña que en el inicio de sesión del clúster**. De no ser así, especifique una **CONTRASEÑA** o **CLAVE PÚBLICA**, que se usarán para autenticar al usuario de SSH. Es recomendable usar una clave pública. Haga clic en **Seleccionar** en la parte inferior para guardar la configuración de las credenciales.
+    * Escriba un **nombre de usuario SSH** y si desea toohave Hola SSH contraseña igual Hola contraseña de administrador que especificó anteriormente, seleccione hello **usar la misma contraseña como inicio de sesión de clúster** casilla de verificación. Si no es así, proporcionar un **contraseña** o **clave pública**, que va a ser usuario SSH de hello tooauthenticate usado. El uso de una clave pública es Hola enfoque recomendado. Haga clic en **seleccione** en la configuración de credenciales de hello inferior toosave Hola.
    
-        Para obtener más información, consulte [Uso de SSH con HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
+        Para más información, consulte [Uso de SSH con HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-    * Para **Grupo de recursos**, especifique si desea crear un grupo de recursos o utilizar uno existente.
+    * Para **grupo de recursos**, especifique si desea toocreate un nuevo grupo de recursos o utilizar uno existente.
 
-    * Especifique un centro de datos **ubicación** donde se creará el clúster.
+    * Especifique un centro de datos **ubicación** donde se creará el clúster de Hola.
 
     * Haga clic en **Siguiente**.
 
-4. En la hoja **Almacenamiento**, especifique si desea Azure Storage (WASB) o Data Lake Store como almacenamiento predeterminado. Para más información, consulte la tabla siguiente.
+4. En hello **almacenamiento** hoja, especifique si desea que almacenamiento de Azure (WASB) o almacén de Data Lake como el almacenamiento de forma predeterminada. Buscar en la tabla de Hola a continuación para obtener más información.
 
-    ![Creación de un nuevo clúster en el portal de Azure](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-storage.png "Creación de un nuevo clúster en el portal de Azure")
+    ![Crear un nuevo clúster en el portal de Azure hello](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-storage.png "crear un nuevo clúster en hello portal de Azure")
 
-    | Almacenamiento                                      | Descripción |
+    | Storage                                      | Descripción |
     |----------------------------------------------|-------------|
-    | **Blobs de Azure Storage como almacenamiento predeterminado**   | <ul><li>En **Tipo de almacenamiento principal**, seleccione **Azure Storage**. Después de eso, en **Método de selección**, puede elegir **Mis suscripciones** si desea especificar una cuenta de almacenamiento que forma parte de su suscripción de Azure y, a continuación, seleccione la cuenta de almacenamiento. En caso contrario, haga clic en **Clave de acceso** y proporcione la información de la cuenta de almacenamiento que desea elegir fuera de la suscripción de Azure.</li><li>En **Contenedor predeterminado**, puede optar por el nombre de contenedor predeterminado que se sugiere en el portal o especificar uno propio.</li><li>Si usa WASB como almacenamiento predeterminado, puede (opcionalmente) hacer clic en **Cuentas de almacenamiento adicionales** para especificar cuentas de almacenamiento adicionales que se van a asociar con el clúster. En la hoja **Claves de almacenamiento de Azure**, haga clic en **Agregar una clave de almacenamiento** y, a continuación, puede proporcionar una cuenta de almacenamiento de las suscripciones de Azure o de otras suscripciones (proporcionando la clave de acceso de la cuenta de almacenamiento).</li><li>Si usa WASB como almacenamiento predeterminado, puede (opcionalmente) hacer clic en **Acceso a Data Lake Store** para especificar Azure Data Lake Store como almacenamiento adicional. Para más información, vea [Creación de un clúster de HDInsight con Data Lake Store mediante Azure Portal](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).</li></ul> |
-    | **Azure Data Lake Store como almacenamiento predeterminado** | En **Tipo de almacenamiento principal**, seleccione **Data Lake Store** y luego consulte el artículo [Creación de un clúster de HDInsight con Data Lake Store mediante Azure Portal](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md) para obtener instrucciones. |
-    | **Tiendas de metadatos externas**                      | De manera opcional, puede especificar una base de datos SQL para guardar los metadatos de Hive y Oozie asociados con el clúster. En **Seleccionar una base de datos SQL para Hive**, seleccione una base de datos SQL y luego escriba el nombre de usuario y la contraseña de la base de datos. Repita estos pasos para los metadatos de Oozie.<br><br>Algunas consideraciones al usar Azure SQL Database para las tiendas de metadatos. <ul><li>La base de datos SQL de Azure usada para la tienda de metadatos debe permitir la conectividad con otros servicios de Azure, incluido HDInsight de Azure. En el panel de la base de datos SQL de Azure, en el lado derecho, haga clic en el nombre de servidor. Este es el servidor en el que se ejecuta la instancia de base de datos SQL. Cuando se encuentre en la vista de servidor, haga clic en **Configurar** y luego, en **Servicios de Azure**, haga clic en **Sí** y en **Guardar**.</li><li>Al crear una tienda de metadatos, no debe usar un nombre de base de datos que contenga guiones, ya que esto puede producir un error en el proceso de creación del clúster.</li></ul>                                                                                                                                                                       |
+    | **Blobs de Azure Storage como almacenamiento predeterminado**   | <ul><li>En **Tipo de almacenamiento principal**, seleccione **Azure Storage**. Después de eso, para **método de selección**, puede elegir **Mis suscripciones** si desea toospecify una cuenta de almacenamiento que forma parte de su suscripción de Azure y cuenta de almacenamiento, a continuación, seleccione Hola. En caso contrario, haga clic en **clave de acceso** y proporcionar información de Hola Hola cuenta de almacenamiento que desea toochoose desde fuera de su suscripción de Azure.</li><li>Para **contenedor predeterminado**, puede elegir toogo con nombre del contenedor predeterminado Hola sugerido por el portal de Hola o especificar la suya propia.</li><li>Si usas WASB como almacenamiento predeterminado, puede hacer clic (opcionalmente) **cuentas de almacenamiento adicionales** cuentas de almacenamiento adicional de toospecify tooassociate con clúster de Hola. Hola **las claves de almacenamiento de Azure** hoja, haga clic en **agregar una clave de almacenamiento**, y, a continuación, puede proporcionar una cuenta de almacenamiento de las suscripciones de Azure o de otras suscripciones (no proporcionando cuenta de almacenamiento de Hola clave de acceso).</li><li>Si usas WASB como almacenamiento predeterminado, puede hacer clic (opcionalmente) **acceso de almacén de Data Lake** toospecify almacén de Data Lake de Azure como almacenamiento adicional. Para más información, vea [Creación de un clúster de HDInsight con Data Lake Store mediante Azure Portal](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).</li></ul> |
+    | **Azure Data Lake Store como almacenamiento predeterminado** | Para **tipo de almacenamiento principal**, seleccione **almacén de Data Lake** y, a continuación, consulte el artículo de toohello [crear un clúster de HDInsight con el almacén de Data Lake mediante el Portal de Azure](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md) para instrucciones. |
+    | **Tiendas de metadatos externas**                      | Si lo desea, puede especificar una base de datos toosave Hive y Oozie los metadatos de SQL asociados con el clúster de Hola. Para **seleccionar una base de datos SQL para Hive** seleccione una base de datos SQL y, a continuación, proporcionar Hola nombre de usuario/contraseña para la base de datos de Hola. Repita estos pasos para los metadatos de Oozie.<br><br>Algunas consideraciones al usar Azure SQL Database para las tiendas de metadatos. <ul><li>base de datos de SQL Azure de Hello utilizada de metadatos de hello debe permitir tooother de conectividad de servicios de Azure, incluidos HDInsight de Azure. En el panel de base de datos de SQL Azure hello, en el lado derecho de hello, haga clic en el nombre del servidor de Hola. Se trata de un servidor hello en qué Hola SQL se ejecuta la instancia de base de datos. Una vez que se encuentra en la vista de servidor hello, haga clic en **configurar**y, a continuación, para **servicios de Azure**, haga clic en **Sí**y, a continuación, haga clic en **guardar**.</li><li>Al crear una tienda de metadatos, no utilice un nombre de base de datos que contiene guiones o guiones, ya que esto puede provocar toofail de proceso de creación de clúster de Hola.</li></ul>                                                                                                                                                                       |
 
     Haga clic en **Siguiente**. 
 
     > [!WARNING]
-    > No se admite el uso de una cuenta de almacenamiento adicional en una ubicación diferente a la del clúster de HDInsight.
+    > No se admite con una cuenta de almacenamiento adicional en una ubicación diferente que el clúster de HDInsight Hola.
 
-5. De manera opcional, haga clic en **Aplicaciones** para instalar aplicaciones que funcionen con clústeres de HDInsight. Estas aplicaciones puede desarrollarlas Microsoft, fabricantes de software independientes (ISV) o el propio usuario. Para más información, consulte [Instalación de aplicaciones de HDInsight](hdinsight-apps-install-applications.md#install-applications-during-cluster-creation).
+5. Si lo desea, haga clic en **aplicaciones** tooinstall las aplicaciones que funcionan con clústeres de HDInsight. Estas aplicaciones puede desarrollarlas Microsoft, fabricantes de software independientes (ISV) o el propio usuario. Para más información, consulte [Instalación de aplicaciones de HDInsight](hdinsight-apps-install-applications.md#install-applications-during-cluster-creation).
 
 
-6. Haga clic en **Tamaño del clúster** para mostrar información sobre los nodos que se crearán para este clúster. Establezca el número de nodos de trabajo que necesita para el clúster. El costo estimado del clúster se mostrará en la hoja.
+6. Haga clic en **tamaño de clúster** toodisplay información acerca de los nodos de Hola que va a crear para este clúster. Establecer número de Hola de nodos de trabajador que necesite para el clúster de Hola. Hola se calcula el costo de clúster de Hola se mostrará en la hoja de Hola.
    
     ![Hoja de planes de tarifa de nodos](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-nodes.png "Especificación del número de nodos del clúster")
    
    > [!IMPORTANT]
-   > Si planea crear más de 32 nodos de trabajo, en la creación de clústeres o cambiando el tamaño del clúster después de la creación, debe seleccionar un tamaño de nodo principal con al menos 8 núcleos y 14 GB de RAM.
+   > Si tiene previsto en más de 32 nodos de trabajo, en la creación del clúster, o mediante el ajuste de escala en clúster de hello después de su creación, debe seleccionar un tamaño de nodo principal con un mínimo de 8 núcleos y 14GB de ram.
    > 
    > Para obtener más información acerca de los tamaños de nodo y los costos asociados, consulte [Precios de HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
    > 
    > 
    
-   Haga clic en **Siguiente** para guardar la configuración de precios del nodo.
+   Haga clic en **siguiente** nodo de hello toosave configuración de precios.
 
-7. Haga clic en **Configuración avanzada** para configurar otros valores de configuración opcionales, como el uso de **Acciones de script** para personalizar un clúster para instalar componentes personalizados o unirse a una **red virtual**. Para más información, consulte la tabla siguiente.
+7. Haga clic en **configuración avanzada** tooconfigure otros valores de configuración opcionales, como el uso de **acciones de Script** toocustomize tooinstall de un clúster componentes personalizados o unirse a un **deredVirtual**. Buscar en la tabla de Hola a continuación para obtener más información.
 
     ![Hoja de planes de tarifa de nodos](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-advanced.png "Especificación del número de nodos del clúster")
 
     | Opción | Descripción |
     |--------|-------------|
-    | **Acciones de script** | Use esta opción si quiere usar un script personalizado para personalizar un clúster, conforme se crea el clúster. Para obtener más información sobre acciones de script, vea [Personalización de clústeres de HDInsight con una acción de script](hdinsight-hadoop-customize-cluster-linux.md). |
-    | **Virtual Network** | Seleccione una red virtual de Azure y la subred si quiere colocar el clúster en una red virtual. Para más información sobre el uso de HDInsight con una red virtual como, por ejemplo, los requisitos de configuración específicos de la red virtual, consulte [Extensión de las funcionalidades de HDInsight con Azure Virtual Network](hdinsight-extend-hadoop-virtual-network.md). |
+    | **Acciones de script** | Utilice esta opción si desea toouse una toocustomize de secuencia de comandos personalizada un clúster, tal y como se va a crear el clúster de Hola. Para obtener más información sobre acciones de script, vea [Personalización de clústeres de HDInsight con una acción de script](hdinsight-hadoop-customize-cluster-linux.md). |
+    | **Virtual Network** | Seleccione una subred de hello y red virtual Azure si desea que el clúster de hello tooplace en una red virtual. Para obtener información sobre el uso de HDInsight con una red Virtual, incluidos los requisitos de configuración específicos de hello red Virtual, vea [capacidades de HDInsight extender mediante el uso de una red Virtual de Azure](hdinsight-extend-hadoop-virtual-network.md). |
 
     Haga clic en **Siguiente**.
 
-8. En la hoja **Resumen**, verifique la información introducida anteriormente y luego haga clic en **Crear**.
+8. En hello **resumen** hoja, compruebe la información de Hola que escribió anteriormente y, a continuación, haga clic en **crear**.
 
     ![Hoja de planes de tarifa de nodos](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-summary.png "Especificación del número de nodos del clúster")
     
     > [!NOTE]
-    > El clúster tardará algo de tiempo en crearse, normalmente unos 15 minutos. Use el icono del Panel de inicio o la entrada **Notificaciones** en la parte izquierda de la página para comprobar el proceso de aprovisionamiento.
+    > Se tardará algún tiempo Hola clúster toobe creado, normalmente unos 15 minutos. Usar icono hello en el panel de inicio de Hola u Hola **notificaciones** entrada en hello encendidos de hello página toocheck Hola proceso de aprovisionamiento.
     > 
     > 
-12. Cuando termine el proceso de creación, haga clic en el icono del clúster desde el panel de inicio para iniciar la hoja del clúster. La hoja del clúster ofrece la siguiente información.
+12. Una vez completado el proceso de creación de hello, haga clic en icono de Hola de clúster de Hola desde la hoja de clúster de hello panel de inicio toolaunch Hola. hoja de clúster de Hello proporciona Hola siguiente información.
     
     ![Hoja de clúster](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-completed.png "Propiedades del clúster")
     
-    Use las siguientes opciones para comprender los iconos de la parte superior de esta hoja.
+    Usar hello después toounderstand iconos de hello en parte superior de Hola de esta hoja.
     
-    * **Información general**: pestaña que proporciona toda la información esencial sobre el clúster, como el nombre, el grupo de recursos al que pertenece, la ubicación, el sistema operativo, la dirección URL para el panel del clúster, etc.
-    * **Panel**: lo remite al portal de Ambari asociado con el clúster.
-    * **Shell seguro**: información necesaria para acceder al clúster mediante SSH.
-    * **Escalar clúster**: permite aumentar el número de nodos de trabajo asociados con el clúster.
-    * **Eliminar**: elimina el clúster de HDInsight.
+    * **Información general sobre** ficha proporciona toda la información esencial Hola sobre clúster hello como nombre de hello, grupo de recursos de hello pertenece a ubicación hello, sistema operativo de hello, dirección URL de panel de clúster de hello, etcetera.
+    * **Panel** dirige toohello Ambari portal asociado con el clúster de Hola.
+    * **Secure Shell**: información necesaria de clúster de hello tooaccess mediante SSH.
+    * **Clúster de escala** permite aumentar el número Hola de nodos de trabajo asociado con el clúster de Hola.
+    * **Eliminar**: clúster de HDInsight de Hola de eliminaciones.
     
 
 ## <a name="customize-clusters"></a>Personalización de los clústeres
 * Consulte [Personalización de los clústeres de HDInsight con Bootstrap](hdinsight-hadoop-customize-cluster-bootstrap.md).
 * Consulte [Personalización de clústeres de HDInsight mediante la acción de scripts](hdinsight-hadoop-customize-cluster-linux.md).
 
-## <a name="delete-the-cluster"></a>Eliminación del clúster
+## <a name="delete-hello-cluster"></a>Eliminar el clúster de Hola
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 ## <a name="troubleshoot"></a>Solución de problemas
@@ -153,7 +153,7 @@ El Portal de Azure expone la mayor parte de las propiedades del clúster. Median
 Si experimenta problemas con la creación de clústeres de HDInsight, consulte los [requisitos de control de acceso](hdinsight-administer-use-portal-linux.md#create-clusters).
 
 ## <a name="next-steps"></a>Pasos siguientes
-Ahora que ya creó un clúster de HDInsight correctamente, use lo siguiente para aprender a trabajar con el clúster:
+Ahora que ha creado correctamente un clúster de HDInsight, usar hello sigue toolearn cómo toowork con el clúster:
 
 ### <a name="hadoop-clusters"></a>Clústeres Hadoop
 * [Uso de Hive con HDInsight](hdinsight-use-hive.md)
@@ -173,6 +173,6 @@ Ahora que ya creó un clúster de HDInsight correctamente, use lo siguiente para
 * [Crear una aplicación independiente con Scala](hdinsight-apache-spark-create-standalone-application.md)
 * [Ejecutar trabajos de forma remota en un clúster de Spark mediante Livy](hdinsight-apache-spark-livy-rest-interface.md)
 * [Spark with BI: Realizar el análisis de datos interactivos con Spark en HDInsight con las herramientas de BI](hdinsight-apache-spark-use-bi-tools.md)
-* [Spark con aprendizaje automático: uso de Spark en HDInsight para predecir los resultados de la inspección de alimentos](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
+* [Spark con aprendizaje automático: Use Spark en HDInsight toopredict de resultados de la inspección de alimentos](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 * [Streaming con Spark: uso de Spark en HDInsight para compilar aplicaciones de streaming en tiempo real](hdinsight-apache-spark-eventhub-streaming.md)
 

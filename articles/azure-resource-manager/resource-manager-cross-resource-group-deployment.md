@@ -1,6 +1,6 @@
 ---
-title: "Implementación de recursos de Azure en varios grupos de recursos | Microsoft Docs"
-description: "Muestra cómo tener como destino más de un grupo de recursos de Azure durante la implementación."
+title: grupos de recursos de toomultiple aaaDeploy recursos de Azure | Documentos de Microsoft
+description: "Muestra cómo agrupar tootarget más de un recurso de Azure durante la implementación."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: d8b041213b269775175a810e585103d3c538557f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 93a39a26e0ca18dfcb5c6e8de95c38a64186d6de
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="deploy-azure-resources-to-more-than-one-resource-group"></a>Implementación de recursos de Azure en más de un grupo de recursos
+# <a name="deploy-azure-resources-toomore-than-one-resource-group"></a>Implementar toomore de recursos de Azure a un grupo de recursos
 
-Por lo general, todos los recursos de la plantilla se implementan en un único grupo de recursos. Sin embargo, existen escenarios en los que desea implementar un conjunto de recursos juntos pero colocarlos en distintos grupos de recursos. Por ejemplo, puede que desee implementar la máquina virtual de copia de seguridad para Azure Site Recovery en un grupo de recursos y una ubicación independientes. Resource Manager permite usar plantillas anidadas para tener como destino grupos de recursos diferentes al usado para la plantilla principal.
+Normalmente, implementar todos los recursos de hello en el plantilla tooa único grupo de recursos. Sin embargo, hay escenarios donde desea toodeploy un conjunto de recursos entre sí pero colocarlas en distintos grupos de recursos. Por ejemplo, puede que desee máquina toodeploy Hola de copia de seguridad virtual para la ubicación y el grupo de recursos independiente de Azure Site Recovery tooa. El Administrador de recursos permite toouse anidado plantillas tootarget distintos grupos de recursos de grupo de recursos de hello utilizado para la plantilla de elemento primario de Hola.
 
-El grupo de recursos es el contenedor de ciclo de vida para la aplicación y su colección de recursos. Cree el grupo de recursos fuera de la plantilla y especifique el grupo de recursos de destino durante la implementación. Para ver una introducción a los grupos de recursos, consulte [Información general sobre Azure Resource Manager](resource-group-overview.md).
+grupo de recursos de Hello es el contenedor de ciclo de vida de hello para la aplicación hello y su colección de recursos. Crear grupo de recursos de hello fuera de la plantilla de Hola y especificar tootarget de grupo de recursos de Hola durante la implementación. Para un grupos de tooresource introducción, consulte [Introducción a Azure Resource Manager](resource-group-overview.md).
 
 ## <a name="example-template"></a>Plantilla de ejemplo
 
-Para usar como destino un recurso diferente, debe usar una plantilla anidada o vinculada durante la implementación. El tipo de recurso `Microsoft.Resources/deployments` proporciona un parámetro `resourceGroup`, que permite especificar un grupo de recursos distinto para la implementación anidada. Todos los grupos de recursos deben existir antes de que se ejecute la implementación. En el ejemplo siguiente se implementan dos cuentas de almacenamiento: una en el grupo de recursos especificado durante la implementación y otra en un grupo de recursos llamado `crossResourceGroupDeployment`:
+tootarget un recurso diferente, debe usar una plantilla anidada o vinculada durante la implementación. Hola `Microsoft.Resources/deployments` tipo de recurso proporciona un `resourceGroup` parámetro que permite toospecify otro grupo de recursos para hello anidados implementación. Todos los grupos de recursos de hello deben existir antes de ejecutar la implementación de Hola. Hello en el ejemplo siguiente se implementa dos cuentas de almacenamiento: uno en el grupo de recursos de hello especificado durante la implementación y uno en un grupo de recursos denominado `crossResourceGroupDeployment`:
 
 ```json
 {
@@ -83,11 +83,11 @@ Para usar como destino un recurso diferente, debe usar una plantilla anidada o v
 }
 ```
 
-Si establece `resourceGroup` en el nombre de un grupo de recursos que no existe, la implementación generará un error. Si no proporciona ningún valor para `resourceGroup`, Resource Manager usa el grupo de recursos principal.  
+Si establece `resourceGroup` toohello el nombre de un grupo de recursos que no existe, Hola implementación produce un error. Si no proporciona un valor para `resourceGroup`, Administrador de recursos usa el grupo de recursos de hello primario.  
 
-## <a name="deploy-the-template"></a>Implementación de la plantilla
+## <a name="deploy-hello-template"></a>Implementar la plantilla de Hola
 
-Para implementar la plantilla de ejemplo, puede usar el portal, Azure PowerShell o la CLI de Azure. En el caso de Azure PowerShell o la CLI de Azure, debe usar una versión de mayo de 2017 o posterior. En los ejemplos se supone que ha guardado la plantilla localmente como un archivo denominado **crossrgdeployment.json**.
+plantilla de ejemplo de Hola toodeploy, puede usar el portal hello, Azure PowerShell o CLI de Azure. En el caso de Azure PowerShell o la CLI de Azure, debe usar una versión de mayo de 2017 o posterior. Hola ejemplos se supone que ha guardado localmente plantilla Hola como un archivo denominado **crossrgdeployment.json**.
 
 Para PowerShell:
 
@@ -117,9 +117,9 @@ Una vez finalizada la implementación, verá dos grupos de recursos. Cada uno co
 
 ## <a name="use-resourcegroup-function"></a>Usar la función resourceGroup()
 
-En el caso de las implementaciones de grupos de recursos, la [función resourceGroup()](resource-group-template-functions-resource.md#resourcegroup) se resuelve de manera diferente en función de cómo se especifica la plantilla anidada. 
+De entre las implementaciones del grupo de recursos, hello [resouceGroup() función](resource-group-template-functions-resource.md#resourcegroup) resuelve diferente en función de cómo especificar plantilla anidada Hola. 
 
-Si inserta una plantilla dentro de otra, la función resourceGroup() de la plantilla anidada se resuelve en el grupo de recursos principal. Una plantilla insertada usa el formato siguiente:
+Si incrusta una plantilla dentro de otra, resouceGroup() en plantillas anidadas Hola resuelve grupo de recursos de toohello primario. Una plantilla de embedded utiliza Hola siguiendo el formato:
 
 ```json
 "apiVersion": "2017-05-10",
@@ -130,12 +130,12 @@ Si inserta una plantilla dentro de otra, la función resourceGroup() de la plant
     "mode": "Incremental",
     "template": {
         ...
-        resourceGroup() refers to parent resource group
+        resourceGroup() refers tooparent resource group
     }
 }
 ```
 
-Si vincula a una plantilla independiente, la función resourceGroup() de la plantilla vinculada se resuelve en el grupo de recursos anidado. Una plantilla vinculada usa el formato siguiente:
+Si crea un vínculo tooa de plantilla independiente, resouceGroup() en la plantilla vinculada Hola resuelve toohello grupo de recursos anidados. Una plantilla vinculada usa Hola siguiendo el formato:
 
 ```json
 "apiVersion": "2017-05-10",
@@ -146,13 +146,13 @@ Si vincula a una plantilla independiente, la función resourceGroup() de la plan
     "mode": "Incremental",
     "templateLink": {
         ...
-        resourceGroup() in linked template refers to linked resource group
+        resourceGroup() in linked template refers toolinked resource group
     }
 }
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-* Para entender cómo definir parámetros en la plantilla, consulte [Nociones sobre la estructura y la sintaxis de las plantillas de Azure Resource Manager](resource-group-authoring-templates.md).
+* toounderstand toodefine parámetros de la plantilla, vea [comprender la estructura de Hola y la sintaxis de plantillas de Azure Resource Manager](resource-group-authoring-templates.md).
 * Para obtener sugerencias para resolver los errores de implementación más comunes, consulte [Solución de errores comunes de implementación de Azure con Azure Resource Manager](resource-manager-common-deployment-errors.md).
 * Para más información sobre la implementación de una plantilla que requiere un token de SAS, vea [Implementación de una plantilla privada con el token de SAS](resource-manager-powershell-sas-token.md).

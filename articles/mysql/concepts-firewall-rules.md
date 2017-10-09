@@ -1,5 +1,5 @@
 ---
-title: Reglas de firewall del servidor de Azure Database for MySQL | Microsoft Docs
+title: aaaAzure base de datos de reglas de firewall del servidor MySQL | Documentos de Microsoft
 description: Describe las reglas de firewall para el servidor de Azure Database for MySQL.
 services: mysql
 author: v-chenyh
@@ -9,50 +9,50 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
 ms.date: 05/10/2017
-ms.openlocfilehash: 7456cef7a5da665ee3d70df64265b8186a79f9b3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1f85310385da947b6c492aa6aa21c1b885c2a97d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-database-for-mysql-server-firewall-rules"></a>Reglas de firewall del servidor de Azure Database para MySQL
-Los firewalls impiden todo acceso al servidor de bases de datos, excepto a aquellos equipos a los que haya concedido permiso. Asimismo, otorgan acceso al servidor según la dirección IP de origen de cada solicitud.
+Firewalls impedir que todos los servidores de base de datos de access tooyour hasta que especifique qué equipos tienen permiso. firewall de Hello otorga servidor de toohello de acceso basado en hello procedentes de la dirección IP de cada solicitud.
 
-Para configurar su firewall, cree reglas de firewall que especifiquen intervalos de direcciones IP aceptables. Puede crear reglas de firewall a nivel de servidor.
+tooconfigure del firewall, crear reglas de firewall que especifican los intervalos de direcciones IP aceptables. Puede crear reglas de firewall en el nivel de servidor de Hola.
 
-**Reglas de firewall:** estas reglas permiten a los clientes tener acceso a todo el servidor de Azure Database for MySQL; es decir, a todas las bases de datos que se encuentren en el mismo servidor lógico. Las reglas de firewall de nivel de servidor pueden configurarse a través de Azure Portal o los comandos de la CLI de Azure. Para crear reglas de firewall en el nivel del servidor, debe ser propietario o colaborador de la suscripción.
+**Las reglas de Firewall:** estas reglas permiten a los clientes tooaccess la base de datos de Azure completo de MySQL server, es decir, todas las bases de datos de Hola de Hola mismo servidor lógico. Las reglas de firewall de nivel de servidor pueden configurarse mediante Hola portal de Azure o mediante comandos de CLI de Azure. reglas de firewall de nivel de servidor de toocreate, debe ser propietario de la suscripción de Hola o un colaborador de suscripción.
 
 ## <a name="firewall-overview"></a>Información general de firewalls
-Todos los accesos de base de datos al servidor de Azure Database for MySQL se bloquean por el firewall de manera predeterminada. Para comenzar a usar el servidor desde otro equipo, debe especificar una o varias reglas de firewall a nivel de servidor para habilitar el acceso a su servidor. Use las reglas de firewall para especificar los intervalos de direcciones IP de Internet que se permitirán. La acción de las reglas de firewall no repercute sobre el acceso al propio sitio web de Azure Portal.
+Todos los tooyour de acceso de base de datos base de datos de MySQL server está bloqueado por firewall de Hola de forma predeterminada. toobegin con el servidor desde otro equipo, deberá toospecify uno o servidor de nivel de servidor más firewall reglas tooenable acceso tooyour. Utilice toospecify de reglas de firewall de hello dirección IP que va de hello tooallow de Internet. Acceso toohello sitio Web del portal Azure sí no se ve afectado por las reglas de firewall de Hola.
 
-Los intentos de conexión desde Internet y Azure deben atravesar primero el firewall antes de alcanzar la base de datos de Azure Database for MySQL, tal y como se muestra en el siguiente diagrama:
+Hola de intentos de conexión desde Internet y Azure debe atravesar primero firewall Hola antes de poder alcanzar la base de datos de Azure para la base de datos MySQL, como se muestra en hello siguiente diagrama:
 
-![Ejemplo de flujo de cómo funciona el firewall](./media/concepts-firewall-rules/1-firewall-concept.png)
+![Ejemplo de flujo de cómo funciona firewall Hola](./media/concepts-firewall-rules/1-firewall-concept.png)
 
-## <a name="connecting-from-the-internet"></a>Conexión desde Internet
-Las reglas de firewall de nivel de servidor se aplican a todas las bases de datos del servidor de Azure Database for MySQL.
+## <a name="connecting-from-hello-internet"></a>La conexión desde Internet Hola
+Las reglas de firewall de nivel de servidor aplican las bases de datos de tooall en hello base de datos de MySQL server.
 
-Si la dirección IP de la solicitud está comprendida en uno de los intervalos especificados en las reglas de firewall de nivel de servidor, la conexión se concede.
+Si dirección IP de saludo de solicitud de hello es dentro de uno de los intervalos de hello especificados en las reglas de firewall de nivel de servidor de hello, se concede la conexión Hola.
 
-Si la dirección IP de la solicitud no se encuentra dentro de los intervalos especificados en cualquiera de las reglas de firewall de nivel de base de datos o de servidor, la solicitud de conexión genera un error.
+Si dirección IP de saludo de solicitud de hello no está dentro de intervalos de hello especifican en cualquiera de hello nivel de base de datos o reglas de firewall de nivel de servidor, se produce un error en la solicitud de conexión de Hola.
 
 ## <a name="programmatically-managing-firewall-rules"></a>Administración mediante programación de reglas de firewall
-Además de Azure Portal, las reglas de firewall se pueden administrar mediante programación con la CLI de Azure. Consulte también la información sobre la [creación y administración de reglas de firewall de Azure Database for MySQL mediante la CLI de Azure](./howto-manage-firewall-using-cli.md).
+Además toohello portal de Azure, firewall de reglas se pueden administra mediante programación usando CLI de Azure. Consulte también la información sobre la [creación y administración de reglas de firewall de Azure Database for MySQL mediante la CLI de Azure](./howto-manage-firewall-using-cli.md).
 
-## <a name="troubleshooting-the-database-firewall"></a>Solución de problemas del firewall de la base de datos
-Tenga en cuenta los siguientes puntos cuando el acceso al servicio del servidor de Microsoft Azure Database for MySQL no se comporte de la manera prevista:
+## <a name="troubleshooting-hello-database-firewall"></a>Solucionar problemas de firewall de base de datos de Hola
+Considere la posibilidad de hello siguientes puntos cuando toohello de acceso base de datos de Microsoft Azure para el servicio del servidor de MySQL no se comporta tal y como esperaba:
 
-* **Los cambios realizados en la lista de permitidos no han surtido efecto todavía:** puede haber un retraso de hasta cinco minutos hasta que los cambios en la configuración del firewall del servidor de Azure Database for MySQL surtan efecto.
+* **Lista de admisión de toohello de cambios no han surtido efecto todavía:** puede haber tanto como un retraso de cinco minutos para cambia toohello base de datos de Azure para el efecto de tootake de configuración de firewall de servidor MySQL.
 
-* **El inicio de sesión no está autorizado o se ha usado una contraseña incorrecta:** si un inicio de sesión no tiene permisos en el servidor de Azure Database for MySQL o la contraseña usada es incorrecta, se denegará la conexión al servidor de Azure Database for MySQL. La creación de una configuración de firewall solo ofrece a los clientes una oportunidad de intentar conectarse al servidor; cada cliente debe ofrecer las credenciales de seguridad necesarias.
+* **inicio de sesión de Hello no está autorizado o se usó una contraseña incorrecta:** si un inicio de sesión no tiene permisos en hello base de datos de Azure para contraseña de servidor o hello MySQL utilizada es incorrecta, Hola toohello base de datos de conexión para el servidor MySQL se deniega. Crear una configuración de firewall sólo proporciona a los clientes un tooattempt oportunidad conectar el servidor de tooyour; cada cliente debe proporcionar credenciales de seguridad necesarias Hola.
 
-* **Dirección IP dinámica:** si tiene una conexión a Internet con una direccionamiento IP dinámica y tiene problemas al acceder al firewall, podría intentar una de las siguientes soluciones:
+* **Dirección IP dinámica:** si tiene una conexión a Internet con una dirección IP dinámica y tiene problemas para superar el firewall de hello, intente una de hello siguientes soluciones:
 
-* Pida a su proveedor de acceso a Internet (ISP) el intervalo de direcciones IP asignado a los equipos cliente que acceden al servidor de Azure Database for MySQL y agréguelo como regla de firewall.
+* Pregunte a su proveedor de servicios de Internet (ISP) para el intervalo de direcciones IP de hello asignado tooyour los equipos cliente que Hola de acceso base de datos de MySQL server y, a continuación, agregue el intervalo de direcciones IP de hello como una regla de firewall.
 
-* Obtenga el direccionamiento IP estático en su lugar para los equipos cliente y luego agregue las direcciones IP como reglas de firewall.
+* Obtener una dirección IP estática en su lugar para los equipos cliente y, a continuación, agregue las direcciones IP hello como reglas de firewall.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-[Create and manage Azure Database for MySQL firewall rules using the Azure portal](./howto-manage-firewall-using-portal.md) (Creación y administración de reglas de firewall de Azure Database for MySQL mediante Azure Portal)
-[Create and manage Azure Database for MySQL firewall rules using Azure CLI](./howto-manage-firewall-using-cli.md) (Creación y administración de reglas de firewall de Azure Database for MySQL mediante la CLI de Azure)
+[Crear y administrar la base de datos MySQL las reglas de firewall mediante el portal de Azure de hello](./howto-manage-firewall-using-portal.md)
+[crear y administrar la base de datos de Azure con las reglas de firewall de MySQL con CLI de Azure](./howto-manage-firewall-using-cli.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Site Recovery Deployment Planner para VMware en Azure| Microsoft Docs
-description: "Esta es la guía del usuario de Azure Site Recovery Deployment Planner."
+title: "Planificador de implementación de Site Recovery aaaAzure de VMware a Azure | Documentos de Microsoft"
+description: "Se trata de una guía de usuario del programador de implementación de hello Azure Site Recovery."
 services: site-recovery
 documentationcenter: 
 author: nsoneji
@@ -14,158 +14,157 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 08/28/2017
 ms.author: nisoneji
-ms.openlocfilehash: 60b0641076c2fa8ed2feb5c64e7b119519f46cf4
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: a8c13cd47850575769e0186528807bc525bdeec7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-site-recovery-deployment-planner"></a>Azure Site Recovery Deployment Planner
-Este artículo es la guía del usuario de Azure Site Recovery Deployment Planner para implementaciones de producción de VMware en Azure.
+Este artículo es manual de usuario de hello planificador de implementación de recuperación de sitio de Azure para las implementaciones de producción de VMware en Azure.
 
 ## <a name="overview"></a>Información general
 
-Antes de empezar a proteger cualquier máquina virtual (VM) de VMware mediante Site Recovery, asigne suficiente ancho de banda, según la frecuencia diaria de cambio de datos, para cumplir el objetivo de punto de recuperación (RPO) deseado. Asegúrese de implementar localmente el número correcto de servidores de configuración y de proceso.
+Antes de empezar a proteger las máquinas virtuales (VM) de VMware mediante el uso de Site Recovery, asignar suficiente ancho de banda, según su tasa de cambio de datos diaria, toomeet su objetivo de punto de recuperación deseado (RPO). Ser seguro toodeploy Hola derecho número de servidores de configuración y proceso servidores locales.
 
-También es preciso que cree el tipo y número correctos de cuentas de Azure Storage de destino. Cree cuentas de almacenamiento Estándar o Premium, para lo que debe tener en cuenta el crecimiento en los servidores de producción de origen debido al aumento del uso con el paso del tiempo. Elija el tipo de almacenamiento por máquina virtual, en función de las características de la carga de trabajo (por ejemplo, operaciones de E/S por segundo [IOPS] de lectura/escritura o actividad de datos) y de los límites de Site Recovery.
+También necesitará tipo correcto de toocreate Hola y el número de cuentas de almacenamiento de Azure de destino. Cree cuentas de almacenamiento Estándar o Premium, para lo que debe tener en cuenta el crecimiento en los servidores de producción de origen debido al aumento del uso con el paso del tiempo. Elegir tipo de almacenamiento de Hola por máquina virtual, basándose en las características de carga de trabajo (por ejemplo, operaciones de E/S de lectura/escritura por segundo [IOPS] o renovación de datos) y límites de Site Recovery.
 
-La versión preliminar pública de Site Recovery Deployment Planner es una herramienta de línea de comandos que actualmente solo está disponible para el escenario de VMware en Azure. Con esta herramienta es posible generar de forma remota un perfil para las máquinas virtuales de VMware (sin ningún efecto en la producción) para conocer el ancho de banda y los requisitos de Azure Storage necesarios para realizar una correcta replicación y conmutación por error de prueba. La herramienta se puede ejecutar sin que sea preciso instalar localmente ningún componente de Site Recovery. Sin embargo, para obtener unos resultados de rendimiento adecuados, se recomienda ejecutar el organizador en una instancia de Windows Server que cumpla los requisitos mínimos del servidor de configuración de Site Recovery que debería implementarse como uno de los primeros pasos de la implementación en producción.
+Hola Site Recovery implementación planner versión preliminar pública es una herramienta de línea de comandos que esté disponible solo para el escenario de VMware a Azure Hola. Puede generar perfiles de las máquinas virtuales de VMware con este ancho de banda de la herramienta (con ningún impacto en la producción sea) toounderstand hello y los requisitos de almacenamiento de Azure para la replicación correcta y probar la conmutación por error de forma remota. Puede ejecutar la herramienta de Hola sin necesidad de instalar los componentes Site Recovery en local. Sin embargo, tooget preciso conseguir resultados del rendimiento, recomendamos que ejecute planificador de hello en un servidor de Windows que cumple los requisitos de hello mínimos Hola recuperación del sitio del servidor de configuración que finalmente deberá toodeploy como uno de los primeros pasos de Hola en la implementación de producción.
 
-La herramienta proporciona los detalles siguientes:
+herramienta de Hello proporciona Hola detalles siguientes:
 
 **Evaluación de compatibilidad**
 
 * Evaluación de la idoneidad de la máquina virtual en función del número de discos, el tamaño de estos, las IOPS, la actividad de datos y el tipo de arranque (EFI/BIOS)
-* El ancho de banda de red necesario para la replicación diferencial
+* Hola de ancho de banda de red estimado necesario para la replicación de datos
 
 **Necesidad de ancho de banda de red frente a evaluación de RPO**
 
-* El ancho de banda de red necesario para la replicación diferencial
-* El rendimiento que Site Recovery puede obtener del paso de local a Azure
-* El número de máquinas virtuales que se agrupan en lotes, en función del ancho de banda estimado para completar la replicación inicial en un período determinado de tiempo
+* Hola de ancho de banda de red estimado necesario para la replicación de datos
+* rendimiento de Hola que obtienen de Site Recovery tooAzure local
+* número de Hola de toobatch de máquinas virtuales, en función de hello estimado replicación inicial de toocomplete de ancho de banda en un período determinado de tiempo
 
 **Requisitos de infraestructura de Azure**
 
-* El tipo de almacenamiento (cuenta de almacenamiento Estándar o Premium) de cada máquina virtual
-* El número total de cuentas de almacenamiento Estándar y Premium que se van a configurar para la replicación
+* requisito de tipo (cuenta de almacenamiento standard o premium) de almacenamiento de Hola para cada máquina virtual
+* número total de Hola de toobe de cuentas de almacenamiento estándar y premium configurado para replicación
 * Sugerencias de nomenclatura de las cuentas de almacenamiento, según la guía de Azure Storage
-* La posición de las cuentas de almacenamiento de todas las máquinas virtuales
-* El número de núcleos de Azure que se deben configurar antes de realizar una conmutación por error, de prueba o real, en la suscripción
-* El tamaño de máquina virtual de Azure que se recomienda para cada máquina virtual local
+* selección de ubicación de cuenta de almacenamiento de Hola para todas las máquinas virtuales
+* configurar el número de Hola de núcleos Azure toobe antes de la conmutación por error o conmutación por error en la suscripción de Hola
+* Hola tamaño recomendado de máquina virtual de Azure para cada máquina virtual local
 
 **Requisitos de la infraestructura local**
-* El número requerido de servidores de configuración y de proceso que se van a implementar localmente
+* número de servidores de configuración necesarios de Hola y toobe de servidores de proceso implementa local
 
 >[!IMPORTANT]
 >
->Dado que es probable que el uso aumente con el tiempo, al realizar todos los cálculos anteriores de la herramienta se asume un factor de crecimiento de las características de carga de trabajo de un 30 por ciento y se usa un valor del percentil 95 de todas las métricas de la generación de perfiles (IOPS de lectura y escritura, actividad de datos, etc.) Ambos elementos (el cálculo del percentil y el factor de crecimiento) se pueden configurar. Para más información acerca del factor de crecimiento, consulte la sección "Consideraciones acerca del factor de crecimiento". Para más información acerca del valor de percentil, consulte la sección "Valor del percentil usado para el cálculo".
+>Dado que el uso es probable que tooincrease con el tiempo, todos Hola herramienta anterior se realizan cálculos suponiendo un factor de crecimiento del 30 por ciento en las características de carga de trabajo y el uso de un valor del percentil 95 del programa Hola a todos las métricas de generación de perfiles (lectura/escritura de e/s por segundo, renovación de modo que hacia delante). Ambos elementos (el cálculo del percentil y el factor de crecimiento) se pueden configurar. toolearn más información acerca del factor de crecimiento, vea la sección de "Consideraciones de factor de crecimiento" de Hola. toolearn más información sobre el valor de percentil, vea la sección de "Valor de percentil utilizado para el cálculo de Hola" de Hola.
 >
 
 ## <a name="requirements"></a>Requisitos
-La herramienta tiene dos fases principales: la generación de perfiles y la generación de informes. También hay una tercera opción para calcular solo el rendimiento. Los requisitos del servidor desde el que se inician la medición del rendimiento y la generación de perfiles se presentan en la tabla siguiente:
+herramienta de Hello tiene dos fases principales: generación de perfiles y generación de informes. También hay un tercera opción toocalculate exclusivamente al rendimiento. requisitos de Hola para servidor hello desde qué Hola se inicia la medición del rendimiento y generación de perfiles se presentan en hello en la tabla siguiente:
 
 | Requisito del servidor | Descripción|
 |---|---|
-|Generación de perfiles y medición de rendimiento| <ul><li>Sistema operativo: Microsoft Windows Server 2012 R2<br>(lo ideal es que coincida al menos con las [recomendaciones de tamaño del servidor de configuración](https://aka.ms/asr-v2a-on-prem-components)).</li><li>Configuración del equipo: 8 vCPU, 16 GB de RAM y 300 GB de HDD</li><li>[Microsoft .NET 4.5 Framework](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[Microsoft Visual C++ Redistributable para Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>Acceso a través de Internet a Azure desde este servidor</li><li>Cuenta de almacenamiento de Azure</li><li>Acceso de administrador en el servidor</li><li>Mínimo de 100 GB de espacio libre en disco (asumiendo 1000 máquinas virtuales con un promedio de tres discos cada una, con perfil para 30 días)</li><li>La configuración del nivel de las estadísticas de VMware vCenter debe establecerse en 2, o en un nivel superior</li><li>Permitir el puerto 443: ASR Deployment Planner utiliza este puerto para conectarse al servidor de vCenter o host ESXi</ul></ul>|
+|Generación de perfiles y medición de rendimiento| <ul><li>Sistema operativo: Microsoft Windows Server 2012 R2<br>(al menos lo ideal es que la búsqueda de coincidencias Hola [cambiar el tamaño de las recomendaciones para el servidor de configuración de hello](https://aka.ms/asr-v2a-on-prem-components))</li><li>Configuración del equipo: 8 vCPU, 16 GB de RAM y 300 GB de HDD</li><li>[Microsoft .NET 4.5 Framework](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[Microsoft Visual C++ Redistributable para Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>TooAzure de acceso a Internet desde este servidor</li><li>Cuenta de almacenamiento de Azure</li><li>Acceso de administrador en el servidor de Hola</li><li>Mínimo de 100 GB de espacio libre en disco (asumiendo 1000 máquinas virtuales con un promedio de tres discos cada una, con perfil para 30 días)</li><li>Debe establecerse la configuración del nivel de VMware vCenter estadísticas too2 o alto nivel</li><li>Permitir el puerto 443: ASR Deployment Planner utiliza este puerto tooconnect toovCenter server/ESXi host</ul></ul>|
 | Generación de informes | Un PC con Windows o Windows Server con Microsoft Excel 2013, o cualquier versión posterior |
-| Permisos de usuario | El permiso de solo lectura para la cuenta de usuario que se utiliza para acceder al servidor de VMware vCenter o host de VMware vSphere ESXi durante la generación de perfiles |
+| Permisos de usuario | Permiso de solo lectura para cuenta de usuario de Hola que ha utilizado el host de tooaccess Hola VMware vCenter server/VMware vSphere ESXi durante la generación de perfiles |
 
 > [!NOTE]
 >
->La herramienta puede generar perfiles solo de las máquinas virtuales con discos VMDK y RDM. No se pueden generar perfiles de máquinas virtuales con discos iSCSI o NFS. Site Recovery admite discos iSCSI y NFS para los servidores de VMware pero, como Deployment Planner no se encuentra dentro del invitado y solo genera perfiles mediante el uso de 
-contadores de rendimiento de vCenter, la herramienta ve estos tipos de disco.
+>herramienta de Hello puede generar perfiles solo las máquinas virtuales con discos VMDK y RDM. No se pueden generar perfiles de máquinas virtuales con discos iSCSI o NFS. Recuperación de sitio admite iSCSI y discos NFS para servidores de VMware pero, dado que planificador de implementación de hello no está dentro de invitado de Hola y lo perfiles únicamente mediante los contadores de rendimiento de vCenter, herramienta de hello no tiene visibilidad en estos tipos de disco.
 >
 
-## <a name="download-and-extract-the-public-preview"></a>Descarga y extracción de la versión preliminar pública
-1. Descargue la versión más reciente de la [versión preliminar pública de Site Recovery Deployment Planner](https://aka.ms/asr-deployment-planner).  
-La herramienta está empaquetada en una carpeta en formato zip. La versión actual de la herramienta solo admite el escenario de VMware en Azure.
+## <a name="download-and-extract-hello-public-preview"></a>Descargue y extraiga la versión preliminar pública de Hola
+1. Descargar Hola la versión más reciente de hello [versión preliminar pública de Site Recovery implementación planner](https://aka.ms/asr-deployment-planner).  
+herramienta de Hola se empaqueta en una carpeta zip. versión actual de Hola de herramienta Hola admite solo el escenario de VMware a Azure Hola.
 
-2. Copie la carpeta .zip en la instancia de Windows Server desde la que desea ejecutar la herramienta.  
-La herramienta se puede ejecutar desde Windows Server 2012 R2 si el servidor tiene acceso a la red para conectarse al servidor de vCenter/host de vSphere ESXi que contiene las máquinas virtuales cuyo perfil se va a generar. Sin embargo, se recomienda ejecutar la herramienta en un servidor cuya configuración de hardware cumpla las [instrucciones de ajuste de tamaño del servidor de configuración](https://aka.ms/asr-v2a-on-prem-components). Si ya ha implementado los componentes de Site Recovery de forma local, ejecute la herramienta desde el servidor de configuración.
+2. Copia Hola .zip carpeta toohello Windows server del que desea que la herramienta de hello toorun.  
+Puede ejecutar herramienta Hola desde Windows Server 2012 R2 si el servidor de hello tiene acceso tooconnect toohello vCenter server/vSphere ESXi host de red que contiene toobe de máquinas virtuales de hello perfilar. Sin embargo, recomendamos que ejecute la herramienta de hello en un servidor cuya configuración de hardware cumple hello [directriz de ajuste de tamaño del servidor de configuración](https://aka.ms/asr-v2a-on-prem-components). Si ya ha implementado componentes de Site Recovery en local, ejecute la herramienta de Hola desde el servidor de configuración de Hola.
 
- Se recomienda que tenga la misma configuración de hardware sea la misma que el servidor de configuración (que tiene un servidor de procesos incorporado) en el servidor en el que se ejecuta la herramienta. Dicha configuración garantiza que el rendimiento obtenido que indica la herramienta coincide con el rendimiento real que Site Recovery puede lograr durante la replicación. El cálculo del rendimiento depende del ancho de banda de red disponible en el servidor y de la configuración del hardware (CPU, almacenamiento, etc.) del servidor. Si ejecuta la herramienta desde cualquier otro servidor, el rendimiento se calcula desde dicho servidor en Microsoft Azure. Además, dado que la configuración del hardware del servidor puede diferir de la del servidor de configuración, el rendimiento obtenido del que informa la herramienta puede ser imprecisa.
+ Recomendamos que posea Hola misma configuración de hardware como un servidor de configuración de hello (que tiene un servidor de proceso incorporado) en servidor hello donde se ejecuta la herramienta de Hola. Esta configuración garantiza un ese rendimiento Hola lograda que Hola herramienta informes coincidencias Hola real rendimiento que puede lograr la recuperación del sitio durante la replicación. cálculo del rendimiento Hola depende de ancho de banda de red disponible en el servidor de Hola y configuración de hardware (CPU, almacenamiento etc.) del servidor de Hola. Si ejecuta la herramienta Hola de cualquier otro servidor, rendimiento de Hola se calcula a partir de ese tooMicrosoft servidor Azure. Además, porque la configuración de hardware de Hola de servidor hello puede diferir de saludo servidor de configuración, rendimiento de hello lograda que Hola herramienta informes puede ser imprecisa.
 
-3. Extraiga la carpeta .zip.  
-La carpeta contiene varios archivos y subcarpetas. El archivo ejecutable es ASRDeploymentPlanner.exe y está en la carpeta primaria.
+3. Extraiga la carpeta de .zip Hola.  
+carpeta de Hello contiene varios archivos y subcarpetas. archivo ejecutable hello es ASRDeploymentPlanner.exe en la carpeta principal de Hola.
 
     Ejemplo:  
-    Copie el archivo .zip en la unidad E:\ y extráigalo.
+    Copie tooE de archivo .zip de hello: \ unidad y extráigalo.
    E:\ASR Deployment Planner-Preview_v1.2.zip
 
     E:\ASR Deployment Planner-Preview_v1.2\ ASR Deployment Planner-Preview_v1.2\ ASRDeploymentPlanner.exe
 
 ## <a name="capabilities"></a>Capacidades
-La herramienta de línea de comandos (ASRDeploymentPlanner.exe) se puede ejecutar en cualquiera de los tres modos siguientes:
+Puede ejecutar la herramienta de línea de comandos de hello (ASRDeploymentPlanner.exe) en cualquiera de hello después de tres modos:
 
 1. Generación de perfiles  
 2. Generación de informes
 3. Obtención de rendimiento
 
-En primer lugar, ejecute la herramienta en modo de generación de perfiles de modo para recopilar la actividad de datos y las IOPS de la máquina virtual. Después, ejecute la herramienta para generar el informe para ver los requisitos de ancho de banda de red y de almacenamiento.
+Herramienta de hello en primer lugar, la ejecución de generación de perfiles de renovación de datos de máquina virtual de modo toogather e IOPS. A continuación, ejecute informes de hello herramienta toogenerate Hola requisitos de ancho de banda y almacenamiento de la red del hello toofind.
 
 ## <a name="profiling"></a>Generación de perfiles
-En el modo de generación de perfiles, la herramienta Deployment Planner se conecta al servidor vCenter/host de vSphere ESXi para recopilar datos relativos al rendimiento de la máquina virtual.
+En el modo de generación de perfiles, herramienta de planeación de implementación de hello conecta toohello vCenter server/vSphere ESXi datos de rendimiento de toocollect de host de VM de Hola.
 
-* La generación de perfiles no afecta al rendimiento de las máquinas virtuales de producción, porque no se realiza ninguna conexión directa con ellas. Todos los datos de rendimiento se recopilan del servidor vCenter/host de vSphere ESXi.
-* Para asegurarse de que solo haya un efecto insignificante en el servidor debido a la generación de perfiles, la herramienta consulta el servidor vCenter/host vSphere ESXi una vez cada 15 minutos. Este intervalo de consulta no afecta a la precisión de la generación de perfiles, ya que la herramienta almacena los datos de los contadores de rendimiento cada minuto.
+* Generación de perfiles no afecta a rendimiento Hola de producción de hello las máquinas virtuales, porque no hay ninguna conexión directa se realiza toothem. Recopila todos los datos de rendimiento del host de hello vCenter server/vSphere ESXi.
+* tooensure que hay un efecto insignificante en el servidor de Hola a causa de generación de perfiles, Hola herramienta consultas Hola vCenter server/vSphere host ESXi cada 15 minutos. Este intervalo de consulta no poner en peligro la precisión de generación de perfiles, porque la herramienta de hello almacena los datos del contador de rendimiento de cada minuto.
 
-### <a name="create-a-list-of-vms-to-profile"></a>Creación de una lista de máquinas virtuales cuyo perfil se va a generar
-En primer lugar, se necesita una lista de las máquinas virtuales cuyo perfil se va a generar. Para obtener todos los nombres de las máquinas virtuales de un servidor vCenter/host de vSphere ESXi, utilice los comandos de VMware vSphere PowerCLI en el siguiente procedimiento. Como alternativa, puede enumerar en un archivo los nombres descriptivos o las direcciones IP de las máquinas virtuales cuyos perfiles desea generar de forma manual.
+### <a name="create-a-list-of-vms-tooprofile"></a>Crear una lista de las máquinas virtuales tooprofile
+En primer lugar, necesita una lista de toobe de las máquinas virtuales de hello perfilar. Puede obtener todos los nombres de Hola de máquinas virtuales en un host de vCenter server/vSphere ESXi mediante comandos de hello VMware vSphere PowerCLI Hola siguiendo el procedimiento. Como alternativa, puede ver una lista en un archivo hello descriptivo los nombres o direcciones IP de Hola máquinas virtuales que desea tooprofile manualmente.
 
-1. Inicie sesión en la máquina virtual en la que está instalado VMware vSphere PowerCLI.
-2. Abra la consola de VMware vSphere PowerCLI.
-3. Asegúrese de que la directiva de ejecución está deshabilitada en el script. Si está deshabilitada, inicie la consola de VMware vSphere PowerCLI en modo de administrador y habilítela, para lo que debe ejecutar el siguiente comando:
+1. Inicie sesión en toohello VM ese vSphere de VMware PowerCLI se instala en.
+2. Abra la consola de hello VMware vSphere PowerCLI.
+3. Asegúrese de que está habilitada la directiva de ejecución de Hola para script de Hola. Si está deshabilitada, iniciar la consola de hello VMware vSphere PowerCLI en modo de administrador y, a continuación, habilitarlo al ejecutar el siguiente comando de hello:
 
             Set-ExecutionPolicy –ExecutionPolicy AllSigned
 
-4. Opcionalmente, es posible que necesite ejecutar el siguiente comando si no se reconoce al servidor de Connect-VI como nombre del cmdlet.
+4. Es posible necesidad de opción toorun Hola siguiente comando si VIServer Connect no se reconoce como nombre de Hola de cmdlet.
  
             Add-PSSnapin VMware.VimAutomation.Core 
 
-5. Para obtener todos los nombres de las máquinas virtuales en un servidor vCenter/host de vSphere ESXi y almacenar la lista en un archivo .txt, ejecute los dos comandos que se enumeran aquí.
+5. tooget todos los nombres de Hola de máquinas virtuales en un servidor de vCenter/vSphere ESXi hospedan y almacenan la lista de hello en un archivo .txt, dos comandos de ejecución Hola enumerados aquí.
 Reemplace &lsaquo;server name&rsaquo; (nombre del servidor), &lsaquo;user name&rsaquo; (nombre de usuario), &lsaquo;password&rsaquo; (contraseña), &lsaquo;outputfile.txt&rsaquo;; (archivo de salida.txt) por sus entradas.
 
             Connect-VIServer -Server <server name> -User <user name> -Password <password>
 
             Get-VM |  Select Name | Sort-Object -Property Name >  <outputfile.txt>
 
-6. Abra el archivo de salida en el Bloc de notas y, después, copie en otro archivo los nombres de todas las máquinas virtuales cuyo perfil desea generar (por ejemplo, ProfileVMList.txt), un nombre de máquina virtual por línea. Este archivo se usa como entrada para el parámetro *-VMListFile* de la herramienta de línea de comandos.
+6. Abra el archivo de salida de hello en el Bloc de notas y, a continuación, copie nombres Hola de todas las máquinas virtuales que desee tooprofile tooanother archivo (por ejemplo, ProfileVMList.txt), un nombre de máquina virtual por línea. Este archivo se usa como entrada toohello *VMListFile -* parámetro de la herramienta de línea de comandos Hola.
 
-    ![Lista de nombres de máquinas virtuales en Deployment Planner](./media/site-recovery-deployment-planner/profile-vm-list.png)
+    ![Lista de nombres de máquina virtual en planes de implementación de Hola](./media/site-recovery-deployment-planner/profile-vm-list.png)
 
 ### <a name="start-profiling"></a>Inicio de la generación de perfiles
-Una vez que tenga la lista de máquinas virtuales cuyo perfil se va a generar, puede ejecutar la herramienta en modo de generación de perfiles. Esta es la lista de parámetros obligatorios y opcionales de la herramienta para que se ejecute en modo de generación de perfiles.
+Una vez haya lista Hola de toobe de las máquinas virtuales que se generan perfiles, se puede ejecutar la herramienta de hello en el modo de generación de perfiles. Aquí está lista Hola de parámetros obligatorios y opcionales de hello herramienta toorun en modo de generación de perfiles.
 
 ASRDeploymentPlanner.exe -Operation StartProfiling /?
 
 | Nombre de parámetro | Descripción |
 |---|---|
 | -Operation | Inicio de la generación de perfiles |
-| -Server | El nombre de dominio completo o la dirección IP del servidor vCenter/host de vSphere ESXi de cuyas máquinas virtuales se va a generar el perfil.|
-| -User | El nombre de usuario para conectarse al servidor de vCenter/host de vSphere ESXi. El usuario debe tener, como mínimo, acceso de solo lectura.|
-| -VMListFile | El archivo que contiene la lista de máquinas virtuales cuyos perfiles se van a generar. La ruta de acceso del archivo puede ser absoluta o relativa. El archivo debe contener un nombre de máquina virtual o una dirección IP en cada línea. El nombre de la máquina virtual especificado en el archivo debe ser el mismo que el nombre de la máquina virtual del servidor vCenter/host de vSphere ESXi.<br>Por ejemplo, el archivo VMList.txt contiene las siguientes máquinas virtuales:<ul><li>virtual_machine_A</li><li>10.150.29.110</li><li>virtual_machine_B</li><ul> |
-| -NoOfDaysToProfile | El número de días durante el que se va a ejecutar la generación de perfiles. Se recomienda ejecutar la generación de perfiles durante más de 15 días para asegurarse de que el patrón de carga de trabajo en su entorno durante el período especificado se observa y se usa para proporcionar una recomendación adecuada. |
-| -Directory | (Opcional) La convención de nomenclatura universal (UNC) o ruta de acceso del directorio local para almacenar los datos de la generación de perfiles que se han producido durante esta. Si no se especifica un nombre de directorio, se usará "ProfiledData" de la ruta de acceso actual como directorio predeterminado. |
-| -Password | (Opcional) La contraseña que se usa para conectarse al servidor vCenter/host de vSphere ESXi. Si no se especifica ahora, se le pedirá que lo haga cuando se ejecute el comando.|
-| -StorageAccountName | (Opcional) El nombre de la cuenta de almacenamiento que se usa para ver el rendimiento que se puede obtener en la replicación de datos desde una ubicación local a Azure. La herramienta carga los datos de prueba en esta cuenta de almacenamiento para calcular el rendimiento.|
-| -StorageAccountKey | (Opcional) La clave de la cuenta de almacenamiento utilizada para acceder a dicha cuenta. Vaya a Azure Portal > Cuentas de almacenamiento > *nombre de la cuenta de almacenamiento*> > Configuración > Claves de acceso > Key1 (o clave de acceso principal para la cuenta de almacenamiento clásico). |
-| -Environment | (Opcional) Se trata del entorno de la cuenta de Azure Storage de destino. Puede ser uno de estos tres valores: AzureCloud, AzureUSGovernment y AzureChinaCloud. El valor predeterminado es AzureCloud. Use el parámetro si la región de Azure de destino se corresponde con las nubes de Azure Gobierno de EE.UU. o Azure China. |
+| -Server | nombre de dominio completo de Hola o dirección IP del host del servidor/vSphere ESXi de hello vCenter cuyas máquinas virtuales son toobe perfilada.|
+| -User | Hola usuario nombre tooconnect toohello vCenter server/vSphere host ESXi. usuario de Hello necesita acceso de solo lectura toohave, como mínimo.|
+| -VMListFile | archivo de Hola que contiene la lista de Hola de toobe de las máquinas virtuales que se generan perfiles. ruta de acceso de archivo Hello puede ser absoluta o relativa. archivo Hello debe contener una máquina virtual nombre o dirección IP por línea. Nombre de la máquina virtual especificada en el archivo hello debe ser Hola igual que el nombre de la máquina virtual de hello en el host de hello vCenter server/vSphere ESXi.<br>Por ejemplo, el archivo hello VMList.txt contiene Hola después de las máquinas virtuales:<ul><li>virtual_machine_A</li><li>10.150.29.110</li><li>virtual_machine_B</li><ul> |
+| -NoOfDaysToProfile | Hola número de días durante la generación de perfiles está toobe la ejecución. Le recomendamos que ejecute durante más de 15 días tooensure que Hola patrón de carga de trabajo en su entorno a través de hello especificado período se observa y utiliza tooprovide una recomendación precisa de generación de perfiles. |
+| -Directory | Convención de nomenclatura universal (UNC) de hello (opcional) o toostore de ruta de acceso de directorio local generados durante la generación de perfiles de datos de generación de perfiles. Si no se proporciona un nombre de directorio, directory Hola denominado 'ProfiledData' en la ruta de acceso actual de Hola se utilizará como directorio predeterminado de Hola. |
+| -Password | Hola (opcional) contraseña toouse tooconnect toohello vCenter server/vSphere host ESXi. Si no especifica uno ahora, se le pedirá que cuando se ejecuta el comando Hola.|
+| -StorageAccountName | Nombre de la cuenta de almacenamiento de hello (opcional) que es el rendimiento de hello toofind usado factible para replicación de datos de tooAzure en local. Hola herramienta cargas prueba datos toothis cuenta toocalculate rendimiento del almacenamiento.|
+| -StorageAccountKey | Clave de cuenta de almacenamiento de hello (opcional) que ha utilizado la cuenta de almacenamiento de tooaccess Hola. Vaya toohello portal de Azure > cuentas de almacenamiento ><*nombre de la cuenta de almacenamiento*>> Configuración > claves de acceso > Key1 (o clave de acceso principal para la cuenta de almacenamiento clásico). |
+| -Environment | (Opcional) Se trata del entorno de la cuenta de Azure Storage de destino. Puede ser uno de estos tres valores: AzureCloud, AzureUSGovernment y AzureChinaCloud. El valor predeterminado es AzureCloud. Use el parámetro de hello cuando la región de Azure de destino es nubes Azure gobierno de Estados Unidos o en Azure China. |
 
 
-Se recomienda generar perfiles de las máquinas virtuales durante un mínimo de entre 15 y 30 días. Durante el período de generación de perfiles ASRDeploymentPlanner.exe sigue ejecutándose. La herramienta admite la entrada de tiempo de generación de perfiles en días. Si desea generar perfiles solo durante unas pocas horas o minutos para realizar una prueba rápida de la herramienta, en la versión preliminar pública tendrá que convertir el tiempo en la medida equivalente en días. Por ejemplo, para generar perfiles durante 30 minutos, la entrada debe ser 30/(60*24) = 0,021 días. El tiempo mínimo de generación de perfiles permitido es de 30 minutos.
+Se recomienda que se generan perfiles de las máquinas virtuales para al menos 15 días de too30. Durante el período de generación de perfiles de hello, ASRDeploymentPlanner.exe sigue ejecutándose. herramienta de Hello toma la entrada en tiempo de generación de perfiles en días. Si desea tooprofile durante algunas horas o minutos para una prueba rápida de herramienta de hello, en vista previa pública de hello, necesitará tooconvert tiempo de hello en medida equivalente de Hola de días. Por ejemplo, tooprofile durante 30 minutos, la entrada de hello debe ser 30/(60*24) = 0.021 días. Hola mínimo permitido de tiempo de generación de perfiles es de 30 minutos.
 
-Durante la generación de perfiles, también se pueden pasar un nombre y una clave de cuenta de almacenamiento para ver el rendimiento que Site Recovery puede lograr en el momento de la replicación desde el servidor de configuración o de procesos a Azure. Si el nombre y la clave de la cuenta de almacenamiento no se pasan durante la generación de perfiles, la herramienta no calculará el rendimiento que se puede obtener.
+Durante la generación de perfiles, también puede pasar un nombre de cuenta de almacenamiento y el rendimiento de hello toofind clave que puede lograr Site Recovery en tiempo de Hola de replicación desde el servidor de configuración de Hola o tooAzure de servidor de proceso. Si no se pasan clave y el nombre de cuenta de almacenamiento de Hola durante la generación de perfiles, herramienta de hello no calcula capacidad de proceso.
 
-Puede ejecutar varias instancias de la herramienta para varios conjuntos de máquinas virtuales. Asegúrese de que los nombres de máquina virtual no se repiten en ninguno de los conjuntos de generación de perfiles. Por ejemplo, si ha generado el perfil de diez máquinas virtuales (de VM1 a VM10) y unos días después desea generar el de otras cinco (de VM11 a VM15), puede ejecutar la herramienta desde otra consola de línea de comandos para el segundo conjunto de máquinas virtuales (de VM11 a VM15). Asegúrese de que el segundo conjunto de máquinas virtuales no tiene ningún nombre de máquina virtual de la primera instancia de generación de perfiles o utilice un directorio de salida diferente para la segunda ejecución. Si se usan dos instancias de la herramienta para generar los perfiles de las mismas máquinas virtuales y se usa el mismo directorio de salida, el informe generado no será correcto.
+Puede ejecutar varias instancias de la herramienta de Hola para diversos conjuntos de máquinas virtuales. Asegúrese de que no se repiten nombres de máquina virtual de hello en cualquiera de hello conjuntos de generación de perfiles. Por ejemplo, si ha Perfilar diez máquinas virtuales (VM1 a través de VM10) y después de algunos días desea tooprofile otro cinco VM (VM11 a través de VM15), puede ejecutar herramienta Hola desde otra consola de línea de comandos para el segundo conjunto de máquinas virtuales de hello (VM11 a través de VM15). Asegúrese de que segundo conjunto de máquinas virtuales de hello no tiene ningún nombre de máquina virtual desde la primera instancia de generación de perfiles Hola o utilizar un directorio de salida diferente para hello segunda ejecución. Si dos instancias de la herramienta de Hola se usan para la generación de perfiles de hello misma máquinas virtuales y use Hola mismo directorio de salida, informe de hello generado será incorrecta.
 
-Las configuraciones de las máquinas virtuales se capturan una vez al principio de la operación de generación de perfiles y se almacena en un archivo denominado VMDetailList.xml. Esta información se usa cuando se genera el informe. Los cambios en la configuración de una máquina virtual (por ejemplo, un mayor número de núcleos, discos o NIC) que se realizan desde el principio hasta el final de la generación de perfiles no se capturan. Esta es la solución alternativa para obtener la información más reciente de la máquina virtual más reciente al generar un informe en caso de que la configuración de una máquina virtual haya cambiado durante el transcurso de la generación de perfiles en la versión preliminar pública:
+Configuraciones de máquina virtual captura una vez al principio de Hola de hello operación de generación de perfiles y se almacenan en un archivo denominado VMDetailList.xml. Esta información se usa cuando se genera el informe de Hola. No se captura ningún cambio en la configuración de máquina virtual (por ejemplo, un mayor número de núcleos, discos o NIC) de hello principio toohello final de generación de perfiles. Si ha cambiado una configuración de VM perfiles durante el transcurso de Hola de generación de perfiles, en la versión preliminar pública de hello, mostramos detalles más recientes de VM de hello solución tooget al generar el informe de hello:
 
-* Realice una copia de seguridad de VMdetailList.xml y elimine el archivo de su ubicación actual.
-* Pase los argumentos -User y -Password en el momento de la generación de informes.
+* Hacer copia de seguridad VMdetailList.xml y eliminar archivo hello desde su ubicación actual.
+* Pasar - usuario ni - Password argumentos en tiempo de presentación de la generación de informes.
 
-El comando de generación de perfiles genera varios archivos en el directorio de generación de perfiles. No elimine ninguno de los archivos, ya que la generación de informes puede resultar afectada.
+Hola comando de generación de perfiles genera varios archivos en el directorio de generación de perfiles de Hola. No elimine ninguno de los archivos de hello, porque al hacerlo por lo que afecta a la generación de informes.
 
-#### <a name="example-1-profile-vms-for-30-days-and-find-the-throughput-from-on-premises-to-azure"></a>Ejemplo 1: Generar perfiles de máquinas virtuales durante 30 días y ver el rendimiento desde una ubicación local a Azure
+#### <a name="example-1-profile-vms-for-30-days-and-find-hello-throughput-from-on-premises-tooazure"></a>Ejemplo 1: Máquinas virtuales de perfil para 30 días y el rendimiento de Hola de búsqueda de tooAzure local
 ```
 ASRDeploymentPlanner.exe -Operation StartProfiling -Directory “E:\vCenter1_ProfiledData” -Server vCenter1.contoso.com -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  -NoOfDaysToProfile  30  -User vCenterUser1 -StorageAccountName  asrspfarm1 -StorageAccountKey Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
 ```
@@ -176,63 +175,63 @@ ASRDeploymentPlanner.exe -Operation StartProfiling -Directory “E:\vCenter1_Pro
 ASRDeploymentPlanner.exe -Operation StartProfiling -Directory “E:\vCenter1_ProfiledData” -Server vCenter1.contoso.com -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  -NoOfDaysToProfile  15  -User vCenterUser1
 ```
 
-#### <a name="example-3-profile-vms-for-1-hour-for-a-quick-test-of-the-tool"></a>Ejemplo 3: Generación de perfiles de máquinas virtuales durante una hora para realizar una prueba rápida de la herramienta
+#### <a name="example-3-profile-vms-for-1-hour-for-a-quick-test-of-hello-tool"></a>Ejemplo 3: Máquinas virtuales de perfil durante una hora para una prueba rápida de herramienta Hola
 ```
 ASRDeploymentPlanner.exe -Operation StartProfiling -Directory “E:\vCenter1_ProfiledData” -Server vCenter1.contoso.com -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  -NoOfDaysToProfile  0.04  -User vCenterUser1
 ```
 
 >[!NOTE]
 >
->* Si el servidor en el que se ejecuta la herramienta se reinicia o se ha bloqueado, o si cierra la herramienta con Ctrl + C, se conservan los datos de los perfiles generados. Sin embargo, es posible que falten los últimos 15 minutos de los datos de los perfiles generados. En ese caso, vuelva a ejecutar la herramienta en modo de generación de perfiles después de que se reinicie el servidor.
->* Cuando se pasan el nombre y la clave de la cuenta de almacenamiento, la herramienta mide el rendimiento en el último paso de la generación de perfiles. Si la herramienta se cierra antes de que se complete la generación de perfiles, no se calcula el rendimiento. Para hallar el rendimiento antes de generar el informe, puede ejecutar la operación de GetThroughput desde la consola de línea de comandos. Si no lo hace, el informe generado no contendrá la información de rendimiento.
+>* Si servidor de hello esa herramienta Hola está ejecutando en se reinicia o se ha bloqueado, o si cierra Hola herramienta mediante el uso de Ctrl + C, datos de hello perfilada se conserva. Sin embargo, hay una posibilidad de hello falta últimos 15 minutos de datos del perfil. En ese caso, vuelva a ejecutar la herramienta de hello en el modo de generación de perfiles una vez reiniciado el servidor de Hola.
+>* Cuando se pasan Hola nombre de cuenta de almacenamiento y la clave, rendimiento de hello herramienta medidas hello en el último paso de Hola de generación de perfiles. Si se cierra la herramienta de hello antes de que finalice la generación de perfiles, rendimiento de hello no se calcula. Hola de rendimiento de hello toofind antes de generar informes, puede ejecutar hello GetThroughput operación desde la consola de línea de comandos de Hola. En caso contrario, informe de hello generado no contendrá información de rendimiento de Hola.
 
 
 ## <a name="generate-a-report"></a>Generación de un informe
-La herramienta genera un archivo de Microsoft Excel habilitado para macros (archivo XLSM) como la salida del informe, que resume todas las recomendaciones de implementación. El informe se denomina DeploymentPlannerReport_<*identificador numérico único*>.xlsm y se coloca en el directorio especificado.
+herramienta de Hello genera un archivo de Microsoft Excel habilitado para macros (archivo XLSM) como salida del informe hello, que resume todas las recomendaciones de implementación de Hola. informe de Hola se denomina DeploymentPlannerReport_ <*identificador numérico único*> colocados en hello y .xlsm especifican el directorio.
 
-Una vez que se completa la generación de perfiles, se puede ejecutar la herramienta en modo de generación de informes. La siguiente tabla contiene una lista de los parámetros obligatorios y opcionales de la herramienta que se ejecutan en modo de generación de informes.
+Una vez completada la generación de perfiles, puede ejecutar la herramienta hello en el modo de generación de informes. Hello en la tabla siguiente contiene una lista de toorun de parámetros de herramienta obligatorios y opcionales en el modo de generación de informes.
 
 `ASRDeploymentPlanner.exe -Operation GenerateReport /?`
 
 |Nombre de parámetro | Descripción |
 |-|-|
 | -Operation | GenerateReport |
-| -Server |  El nombre de dominio completo o la dirección IP del servidor vCenter o vSphere (use el mismo nombre o dirección IP que utilizó en la generación de perfiles) en el que se encuentran las máquinas virtuales con perfiles cuyo informe va a generar. Tenga en cuenta que si usó un servidor vCenter en el momento de la generación de perfiles, no puede usar un servidor de vSphere para la generación de informes, y viceversa.|
-| -VMListFile | El archivo que contiene la lista de máquinas virtuales con perfiles para las que se va a generar el informe. La ruta de acceso del archivo puede ser absoluta o relativa. El archivo debe contener un nombre de máquina virtual o una dirección IP en cada línea. Los nombres de máquina virtual que se especifican en el archivo deben ser los mismos que los del servidor vCenter/host de vSphere ESXi y coincidir con los que se usaron en la generación de perfiles.|
-| -Directory | (Opcional) El UNC o la ruta de acceso del directorio local en que se almacenan los datos de la generación de perfiles (los archivos que se crean en la generación de perfiles). Estos datos son necesarios para generar el informe. Si no se especifica ningún nombre, se usará el directorio 'ProfiledData'. |
-| -GoalToCompleteIR | (Opcional) El número de horas en que se debe completar la replicación inicial de las máquinas virtuales cuyo perfil se va a generar. El informe generado proporciona el número de máquinas virtuales en las que se puede completar la replicación inicial en el tiempo especificado. El valor predeterminado es 72 horas. |
-| -User | (Opcional) El nombre de usuario que se utiliza para conectarse al servidor vCenter o vSphere. Se utiliza para capturar la información de configuración más reciente de las máquinas virtuales, como el número de discos, de núcleos y de NIC que se usan en el informe. Si no se especifica el nombre, se usa la información de configuración recopilada al principio de la generación de perfiles. |
-| -Password | (Opcional) La contraseña que se usa para conectarse al servidor vCenter/host de vSphere ESXi. Si la contraseña no se especifica como parámetro, se le pedirá más tarde, cuando se ejecute el comando. |
-| -DesiredRPO | (Opcional) El objetivo del punto de recuperación deseado, en minutos. El valor predeterminado es 15 minutos.|
-| -Bandwidth | Ancho de banda en Mbps. El parámetro se usa para calcular el RPO que se puede lograr para el ancho de banda especificado. |
-| -StartDate | (Opcional) La fecha y hora de inicio en DD-MM-AAAA:HH:MM (formato de 24 horas). *StartDate* se debe especificar junto con *EndDate*. Cuando se especifica StartDate, se genera el informe de los datos de generación de perfiles que se recopilan entre StartDate y EndDate. |
-| -EndDate | (Opcional) La fecha y hora de finalización en DD-MM-AAAA:HH:MM (formato de 24 horas). *EndDate* se debe especificar junto con *StartDate*. Cuando se especifica EndDate, se genera el informe para los datos de la generación de perfiles recopilados entre StartDate y EndDate. |
-| -GrowthFactor | (Opcional) El factor de crecimiento, expresado en forma de porcentaje. El valor predeterminado es 30 %. |
-| -UseManagedDisks | (Opcional) UseManagedDisks - Yes/No. El valor predeterminado es Yes. El cálculo del número de máquinas virtuales que se pueden colocar en una única cuenta de almacenamiento se realiza teniendo en cuenta si se ha realizado la conmutación por error o la conmutación por error de prueba en discos administrados y no en discos sin administrar. |
+| -Server |  servidor de vCenter/vSphere Hola completo nombre de dominio o dirección IP (use Hola mismo nombre o dirección IP que utiliza en tiempo de Hola de generación de perfiles) donde hello Perfilar cuyo informe es toobe generado de las máquinas virtuales se encuentran. Tenga en cuenta que si usa un servidor vCenter al tiempo de Hola de generación de perfiles, no puede usar un servidor de vSphere para la generación de informes y viceversa.|
+| -VMListFile | archivo de Hola que contiene la lista de Hola de máquinas virtuales para que informe de Hola es toobe generado para. ruta de acceso de archivo Hello puede ser absoluta o relativa. Hola archivo debe contener un nombre de máquina virtual o la dirección IP por línea. nombres de Hello las VM que se especifican en el archivo hello debe ser Hola igual que los nombres de las VM hello en host ESXi de hello vCenter server/vSphere y coincidencia que se utilizó durante la generación de perfiles.|
+| -Directory | (Opcional) Hola UNC o ruta de acceso del directorio local donde hello Perfilar datos (archivos generados durante la generación de perfiles) se almacena. Estos datos son necesarios para generar informes de Hola. Si no se especifica ningún nombre, se usará el directorio 'ProfiledData'. |
+| -GoalToCompleteIR | Hola (opcional) número de horas en qué Hola la replicación inicial de hello Perfilar máquinas virtuales debe toobe completado. informe de Hello genera proporciona Hola número de máquinas virtuales para los que se puede completar la replicación inicial en hello especificado tiempo. valor predeterminado de Hello es 72 horas. |
+| -User | (Opcional) Hola usuario nombre toouse tooconnect toohello vCenter/servidor de vSphere. Hola se denomina toofetch usado hello más reciente información de configuración de hello las máquinas virtuales, como número de Hola de discos, número de núcleos y número de NIC, toouse en informe de Hola. Si no se proporcionó el nombre de hello, se utiliza la información de configuración de hello recopilada en principio Hola de hello puesta en marcha de generación de perfiles. |
+| -Password | Hola (opcional) contraseña toouse tooconnect toohello vCenter server/vSphere host ESXi. Si no se especifica como un parámetro de contraseña de hello, se le pedirá que más adelante cuando se ejecuta el comando Hola. |
+| -DesiredRPO | Objetivo de punto de recuperación deseado hello (opcional), en minutos. valor predeterminado de Hello es 15 minutos.|
+| -Bandwidth | Ancho de banda en Mbps. toouse toocalculate Hola RPO que se pueden conseguir para Hola de Hello parámetro especifica el ancho de banda. |
+| -StartDate | Fecha y hora de inicio hello (opcional) en MM-DD-YYYY:HH:MM (formato de 24 horas). *StartDate* se debe especificar junto con *EndDate*. Cuando se especifica StartDate, informe de Hola se genera para los datos de hello perfiles que se recopilan entre StartDate y EndDate. |
+| -EndDate | Fecha de finalización de hello (opcional) y la hora en MM-DD-YYYY:HH:MM (formato de 24 horas). *EndDate* se debe especificar junto con *StartDate*. Cuando se especifica EndDate, se generan informes de Hola para datos de hello perfilada que se recopilan entre StartDate y EndDate. |
+| -GrowthFactor | Factor de crecimiento de hello (opcional), expresada como un porcentaje. valor predeterminado de Hello es 30 por ciento. |
+| -UseManagedDisks | (Opcional) UseManagedDisks - Yes/No. El valor predeterminado es Yes. número de Hola de máquinas virtuales que puede colocarse en una única cuenta de almacenamiento se calcula teniendo en cuenta que si se realiza la conmutación por error y conmutación por error de máquinas virtuales en un disco administrado en lugar de disk no administrado. |
 
-#### <a name="example-1-generate-a-report-with-default-values-when-the-profiled-data-is-on-the-local-drive"></a>Ejemplo 1: Generación de un informe con los valores predeterminados cuando los datos de generación de perfiles están en la unidad local
+#### <a name="example-1-generate-a-report-with-default-values-when-hello-profiled-data-is-on-hello-local-drive"></a>Ejemplo 1: Generar un informe con los valores predeterminados si Hola perfilada datos están almacenados en la unidad local Hola
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Server vCenter1.contoso.com -Directory “\\PS1-W2K12R2\vCenter1_ProfiledData” -VMListFile “\\PS1-W2K12R2\vCenter1_ProfiledData\ProfileVMList1.txt”
 ```
 
-#### <a name="example-2-generate-a-report-when-the-profiled-data-is-on-a-remote-server"></a>Ejemplo 2: Generación de un informe cuando los datos de generación de perfiles están en un servidor remoto
-El usuario debe tener acceso de lectura y escritura en el directorio remoto.
+#### <a name="example-2-generate-a-report-when-hello-profiled-data-is-on-a-remote-server"></a>Ejemplo 2: Generar un informe una vez datos Hola generar perfiles en un servidor remoto
+Debe tener acceso de lectura/escritura en el directorio remoto Hola.
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Server vCenter1.contoso.com -Directory “\\PS1-W2K12R2\vCenter1_ProfiledData” -VMListFile “\\PS1-W2K12R2\vCenter1_ProfiledData\ProfileVMList1.txt”
 ```
 
-#### <a name="example-3-generate-a-report-with-a-specific-bandwidth-and-goal-to-complete-ir-within-specified-time"></a>Ejemplo 3: Generación de un informe con un ancho de banda y objetivo específicos para finalizar IR en el tiempo especificado
+#### <a name="example-3-generate-a-report-with-a-specific-bandwidth-and-goal-toocomplete-ir-within-specified-time"></a>Ejemplo 3: Generar un informe con un toocomplete específico de ancho de banda y objetivo IR dentro de tiempo especificado
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt” -Bandwidth 100 -GoalToCompleteIR 24
 ```
 
-#### <a name="example-4-generate-a-report-with-a-5-percent-growth-factor-instead-of-the-default-30-percent"></a>Ejemplo 4: Generación de un informe con un factor de crecimiento del 5 %, en lugar del valor predeterminado del 30 %
+#### <a name="example-4-generate-a-report-with-a-5-percent-growth-factor-instead-of-hello-default-30-percent"></a>Ejemplo 4: Generar un informe con un factor de crecimiento de un 5 por ciento en lugar de hello predeterminado 30 por ciento
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt” -GrowthFactor 5
 ```
 
 #### <a name="example-5-generate-a-report-with-a-subset-of-profiled-data"></a>Ejemplo 5: Generación de un informes con un subconjunto de datos de la generación de perfiles
-Por ejemplo, tiene 30 días de datos de generación de perfiles y desea generar un informe de solo 20 días.
+Por ejemplo, dispone de 30 días de datos del perfil y desea toogenerate un informe de solo 20 días.
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt” -StartDate  01-10-2017:12:30 -EndDate 01-19-2017:12:30
 ```
@@ -242,12 +241,12 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Server vCenter1.contoso.com 
 ASRDeploymentPlanner.exe -Operation GenerateReport -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  -DesiredRPO 5
 ```
 
-## <a name="percentile-value-used-for-the-calculation"></a>Valor del percentil usado para el cálculo
-**¿Qué valor del percentil predeterminado de las métricas de rendimiento recopiladas durante la generación de perfiles utiliza la herramienta al generar informes?**
+## <a name="percentile-value-used-for-hello-calculation"></a>Valor del percentil utilizado para el cálculo de Hola
+**¿Qué valor de percentil predeterminado Hola de métricas de rendimiento recopilados durante la generación de perfiles hace uso de herramienta de hello cuando genera un informe?**
 
-La herramienta usa los valores del percentil 95 como valor predeterminado de las IOPS de lectura/escritura, las IOPS de escritura y la actividad de datos que se recopilan en la generación de perfiles de todas las máquinas virtuales. Esta métrica garantiza que el pico del percentil 100 que las máquinas virtuales pueden ver debido a eventos temporales no se utiliza para determinar los requisitos de ancho de banda del origen y de la cuenta de almacenamiento de destino. Por ejemplo, un evento temporal podría ser un trabajo de copia de seguridad que se ejecuta una vez al día, una actividad periódica de indexación de base de datos o de generación de informes de análisis, u otros eventos similares de corta duración que se producen en un momento dado.
+Hola herramienta toohello 95 percentil valores predeterminados de lectura/escritura de e/s por segundo, escribir IOPS y la renovación de datos que se recopilan durante la generación de perfiles de todas las máquinas virtuales de Hola. Esta métrica asegura de que pico de percentil 100 de hello las máquinas virtuales pueden aparecer debido a eventos temporales es toodetermine no se utiliza en los requisitos de cuenta de almacenamiento y ancho de banda de origen de destino. Por ejemplo, un evento temporal podría ser un trabajo de copia de seguridad que se ejecuta una vez al día, una actividad periódica de indexación de base de datos o de generación de informes de análisis, u otros eventos similares de corta duración que se producen en un momento dado.
 
-El uso de valores del percentil 95 ofrece una imagen real de las verdaderas características de las cargas de trabajo y ofrece el mejor rendimiento cuando dichas cargas se ejecutan en Azure. No se espera que haga falta cambiar este número. Si cambia el valor (por ejemplo, al percentil 90), puede actualizar el archivo de configuración *ASRDeploymentPlanner.exe.config* en la carpeta predeterminada y guardarlo para generar un nuevo informe de los datos de generación de perfiles existentes.
+Con valores de percentil 95 Hola proporciona que una visión verdadera de características de la carga de trabajo real y le ofrece un rendimiento óptimo cuando se ejecutan cargas de trabajo de hello en Azure. No se prevé que necesitaría toochange este número. Si cambia el valor de hello (de toohello percentil 90, por ejemplo), puede actualizar el archivo de configuración de hello *ASRDeploymentPlanner.exe.config* en Hola carpeta predeterminada y guardarlo toogenerate un nuevo informe de hello existente a perfilar datos.
 ```
 <add key="WriteIOPSPercentile" value="95" />      
 <add key="ReadWriteIOPSPercentile" value="95" />      
@@ -257,22 +256,22 @@ El uso de valores del percentil 95 ofrece una imagen real de las verdaderas cara
 ## <a name="growth-factor-considerations"></a>Consideraciones acerca del factor de crecimiento
 **¿Por qué hay que tener en cuenta el factor de crecimiento al planear implementaciones?**
 
-Es fundamental tener en cuenta el crecimiento en las características de la carga de trabajo y suponer que el uso puede aumentar con el tiempo. Una vez instaurada la protección, si las características de la carga de trabajo cambian, no podrá cambiar a otra cuenta de almacenamiento sin tener que deshabilitar y volver a habilitar la protección.
+Es tooaccount crítico para el crecimiento de las características de carga de trabajo, suponiendo que un posible aumento de uso con el tiempo. Después de protección en su lugar, si cambian las características de carga de trabajo, no se puede cambiar tooa cuenta de almacenamiento diferente para la protección sin deshabilitar y volver a habilitar la protección de Hola.
 
-Por ejemplo, supongamos que en la actualidad la máquina virtual se ajusta a una cuenta de replicación de almacenamiento estándar. En los tres próximos meses, es probable que se produzcan varios cambios:
+Por ejemplo, supongamos que en la actualidad la máquina virtual se ajusta a una cuenta de replicación de almacenamiento estándar. Sobre Hola tres próximos meses, varios cambios son toooccur probable:
 
-* Aumentará el número de usuarios de la aplicación que se ejecuta en la máquina virtual.
-* El aumento de actividad resultante en la máquina virtual requerirá que la máquina virtual use Premium Storage para que la replicación de Site Recovery pueda mantener el ritmo.
-* En consecuencia, tendrá que deshabilitar y volver a habilitar la protección en una cuenta de Premium Storage.
+* Hola número de usuarios de aplicación Hola que se ejecuta en hello VM aumentará.
+* renovación de aumento resultante de Hello en hello VM requerirá toogo toopremium almacenamiento de hello VM para que la replicación de Site Recovery puede mantener el ritmo.
+* Por lo tanto, tendrá toodisable y volver a habilitar la cuenta de almacenamiento premium de protección tooa.
 
-Se recomienda encarecidamente que planee el crecimiento durante el planeamiento de la implementación y mientras el valor predeterminado sea el 30 por ciento. El usuario es quien mejor conoce el patrón de uso de sus aplicaciones y las proyecciones de crecimiento, y este número se puede cambiar según sea necesario durante la generación de un informe. Además, puede generar varios informes con distintos factores de crecimiento con los mismos datos de generación de perfiles y determinar qué recomendaciones de ancho de banda de origen y de almacenamiento de destino son las más apropiadas en su caso.
+Se recomienda encarecidamente que tiene previsto para el crecimiento durante la planificación de la implementación y mientras el valor predeterminado de hello es 30 por ciento. Son Hola experto en sus proyecciones patrón y el crecimiento del uso de aplicación, y puede cambiar este número en consecuencia al generar un informe. Además, puede generar varios informes con varios factores de crecimiento con hello mismo generar perfiles de datos y determinar qué recomendaciones de ancho de banda de origen y de almacenamiento de destino funcionan mejor para usted.
 
-El informe de Microsoft Excel generado contiene la siguiente información:
+Hola genera informes de Microsoft Excel contiene Hola siguiente información:
 
 * [Entrada](site-recovery-deployment-planner.md#input)
 * [Recomendaciones](site-recovery-deployment-planner.md#recommendations-with-desired-rpo-as-input)
 * [Recomendaciones: entrada de ancho de banda](site-recovery-deployment-planner.md#recommendations-with-available-bandwidth-as-input)
-* [VM<->Selección de ubicación de almacenamiento](site-recovery-deployment-planner.md#vm-storage-placement)
+* [VM&lt;-&gt;Selección de ubicación de almacenamiento](site-recovery-deployment-planner.md#vm-storage-placement)
 * [VM compatibles](site-recovery-deployment-planner.md#compatible-vms)
 * [VM incompatibles](site-recovery-deployment-planner.md#incompatible-vms)
 
@@ -280,24 +279,24 @@ El informe de Microsoft Excel generado contiene la siguiente información:
 
 ## <a name="get-throughput"></a>Obtención de rendimiento
 
-Para calcular el rendimiento que Site Recovery puede lograr durante la replicación desde una ubicación local a Azure, ejecute la herramienta en modo GetThroughput. La herramienta calcula el rendimiento desde el servidor en el que se ejecuta la herramienta. Idealmente, este servidor se basa en la guía de ajuste de tamaño del servidor de configuración. Si ya ha implementado los componentes de la infraestructura de Site Recovery de forma local, ejecute la herramienta en el servidor de configuración.
+rendimiento de Hola de tooestimate Site Recovery puede lograr de tooAzure local durante la replicación, ejecute la herramienta de hello en modo de GetThroughput. herramienta de Hello calcula el rendimiento de Hola desde el servidor de Hola que Hola herramienta se ejecuta en. Idealmente, este servidor se basa en Guía de tamaño del servidor de configuración de Hola. Si ya ha implementado Site Recovery infraestructura componentes locales, ejecute la herramienta de hello en el servidor de configuración de Hola.
 
-Abra una consola de línea de comandos y vaya a la carpeta de la herramienta de planeamiento de la implementación de Site Recovery. Ejecute ASRDeploymentPlanner.exe con los siguientes parámetros.
+Abra una consola de línea de comandos y vaya toohello carpeta de la herramienta de planeación de la implementación en la recuperación del sitio. Ejecute ASRDeploymentPlanner.exe con los siguientes parámetros.
 
 `ASRDeploymentPlanner.exe -Operation GetThroughput /?`
 
 |Nombre de parámetro | Descripción |
 |-|-|
 | -Operation | GetThroughput |
-| -Directory | (Opcional) El UNC o la ruta de acceso del directorio local en que se almacenan los datos de la generación de perfiles (los archivos que se crean en la generación de perfiles). Estos datos son necesarios para generar el informe. Si no se especifica un nombre de directorio, se utiliza el directorio 'ProfiledData'. |
-| -StorageAccountName | El nombre de la cuenta de almacenamiento que se usa para hallar el ancho de banda consumido durante la replicación de datos desde una ubicación local a Azure. La herramienta carga los datos de prueba en esta cuenta de almacenamiento para calcular el ancho de banda consumido. |
-| -StorageAccountKey | La clave de la cuenta de almacenamiento utilizada para acceder a dicha cuenta. Vaya a Azure Portal > Cuentas de almacenamiento > <*Nombre de cuenta de almacenamiento*> > Configuración > Claves de acceso > Key1 (o una clave de acceso principal para una cuenta de almacenamiento clásico). |
-| -VMListFile | El archivo que contiene la lista de máquinas virtuales de las que se va a generar el perfil para calcular el ancho de banda consumido. La ruta de acceso del archivo puede ser absoluta o relativa. El archivo debe contener un nombre de máquina virtual o una dirección IP en cada línea. Los nombres de máquina virtual especificados en el archivo debe ser los mismo que los nombres de máquina virtual del servidor vCenter/host de vSphere ESXi.<br>Por ejemplo, el archivo VMList.txt contiene las siguientes máquinas virtuales:<ul><li>VM_A</li><li>10.150.29.110</li><li>VM_B</li></ul>|
-| -Environment | (Opcional) Se trata del entorno de la cuenta de Azure Storage de destino. Puede ser uno de estos tres valores: AzureCloud, AzureUSGovernment y AzureChinaCloud. El valor predeterminado es AzureCloud. Use el parámetro si la región de Azure de destino se corresponde con las nubes de Azure Gobierno de EE.UU. o Azure China. |
+| -Directory | (Opcional) Hola UNC o ruta de acceso del directorio local donde hello Perfilar datos (archivos generados durante la generación de perfiles) se almacena. Estos datos son necesarios para generar informes de Hola. Si no se especifica un nombre de directorio, se utiliza el directorio 'ProfiledData'. |
+| -StorageAccountName | nombre de cuenta de almacenamiento de Hola que ha utilizado el ancho de banda toofind Hola consumido para la replicación de datos de tooAzure local. Hola herramienta cargas prueba datos toothis almacenamiento cuenta toofind Hola ancho de banda consumido. |
+| -StorageAccountKey | clave de cuenta de almacenamiento de Hola que ha utilizado la cuenta de almacenamiento de tooaccess Hola. Vaya toohello portal de Azure > cuentas de almacenamiento ><*nombre de la cuenta de almacenamiento*>> Configuración > claves de acceso > Key1 (o una clave de acceso principal para una cuenta de almacenamiento clásico). |
+| -VMListFile | archivo de Hola que contiene la lista de Hola de toobe de máquinas virtuales de generar un perfil para calcular ancho de banda de hello consumido. ruta de acceso de archivo Hello puede ser absoluta o relativa. archivo Hello debe contener una máquina virtual nombre o dirección IP por línea. nombres de las VM Hola especificados en el archivo hello debe ser Hola igual que los nombres de las VM hello en el host de hello vCenter server/vSphere ESXi.<br>Por ejemplo, el archivo hello VMList.txt contiene Hola después de las máquinas virtuales:<ul><li>VM_A</li><li>10.150.29.110</li><li>VM_B</li></ul>|
+| -Environment | (Opcional) Se trata del entorno de la cuenta de Azure Storage de destino. Puede ser uno de estos tres valores: AzureCloud, AzureUSGovernment y AzureChinaCloud. El valor predeterminado es AzureCloud. Use el parámetro de hello cuando la región de Azure de destino es nubes Azure gobierno de Estados Unidos o en Azure China. |
 
-La herramienta crea varios archivos llamados asrvhdfile<#>.vhd de 64 MB (donde "#" es el número de archivos) en el directorio especificado. La herramienta carga los archivos en la cuenta de almacenamiento para hallar el rendimiento. Después de medir el rendimiento, la herramienta elimina todos estos archivos de la cuenta de almacenamiento y del servidor local. Si la herramienta se termina por cualquier motivo mientras calcula el rendimiento, no elimina los archivos del almacenamiento ni del servidor local. Será preciso eliminarlos manualmente.
+herramienta de Hello crea varios 64 MB asrvhdfile <> # .vhd archivos (donde "#" es el número de Hola de archivos) en el directorio especificado Hola. herramienta de Hello carga Hola archivos toohello almacenamiento cuenta toofind Hola el rendimiento. Después de que se mide el rendimiento de hello, herramienta de hello elimina todos los archivos de Hola de cuenta de almacenamiento de Hola y de servidor local de Hola. Si por algún motivo finaliza herramienta Hola mientras está calculando el rendimiento, no elimina archivos de Hola de almacenamiento de Hola o de servidor local de Hola. Tendrá toodelete ellos manualmente.
 
-El rendimiento se mide en un momento especificado y es el rendimiento máximo que Site Recovery puede lograr durante la replicación, siempre que los restantes factores no varíen. Por ejemplo, si alguna aplicación empieza a consumir más ancho de banda en la misma red, el rendimiento real variará durante la replicación. Si se ejecuta el comando GetThroughput desde un servidor de configuración, la herramienta no detecta las máquinas virtuales protegidas ni la replicación en curso. El resultado de rendimiento medido es distinto si la operación de GetThroughput se ejecuta cuando las máquinas virtuales protegidas tienen una actividad de datos alta. Se recomienda ejecutar la herramienta en varios momentos de la generación de perfiles para saber qué niveles de rendimiento se pueden lograr en cada uno de ellos. En el informe, la herramienta muestra el último rendimiento medido.
+Hello el rendimiento se mide en un punto determinado en el tiempo y es el rendimiento máximo Hola que puede lograr la recuperación del sitio durante la replicación, siempre que todos los demás factores son iguales Hola. Por ejemplo, si cualquier aplicación comienza a consumir más ancho de banda en hello varía en la misma red, el rendimiento real de Hola durante la replicación. Si está ejecutando hello GetThroughput comando desde un servidor de configuración, la herramienta de hello es consciente de las máquinas virtuales protegidas y la replicación en curso. Hello resultados de rendimiento medido hello es distinto si hello GetThroughput la operación se ejecutará cuando Hola proteger las máquinas virtuales tiene datos de alta renovación. Se recomienda ejecutar herramienta hello en varios puntos en el tiempo durante la generación de perfiles toounderstand qué rendimiento se pueden alcanzar niveles en momentos diferentes. En el informe de hello, herramienta de hello muestra rendimiento medido último de Hola.
 
 ### <a name="example"></a>Ejemplo
 ```
@@ -306,98 +305,98 @@ ASRDeploymentPlanner.exe -Operation GetThroughput -Directory  E:\vCenter1_Profil
 
 >[!NOTE]
 >
-> Ejecute la herramienta en un servidor que tenga las mismas características de almacenamiento y de CPU que el servidor de configuración.
+> Ejecutar la herramienta de hello en un servidor que tenga Hola mismo almacenamiento y las características de la CPU como servidor de configuración de Hola.
 >
-> En la replicación, establezca el ancho de banda recomendado de forma que cubra el RPO el 100 % del tiempo. Después de establecer el ancho de banda correcto, si no percibe un aumento en el rendimiento obtenido que notifica la herramienta, siga estos pasos:
+> En la replicación, conjunto Hola recomienda Hola de ancho de banda toomeet RPO 100% del tiempo de Hola. Después de establecer el ancho de banda de derecho hello, si no ve aumentar el rendimiento de hello logra notificado por herramienta Hola de, Hola siguientes:
 >
->  1. Realice las comprobaciones necesarias para determinar si hay algún requisito de calidad de servicio (QoS) de la red que limite el rendimiento de Site Recovery.
+>  1. Compruebe toodetermine si no hay ninguna red de calidad de servicio (QoS) que se está limitando el rendimiento de recuperación del sitio.
 >
->  2. Realice las comprobaciones necesarias para determinar si el almacén de Site Recovery está en la región física de Microsoft Azure más cercana admitida para minimizar la latencia de red.
+>  2. Compruebe toodetermine si se encuentra el almacén de Site Recovery en hello más cercano de latencia de red de toominimize de región de Microsoft Azure físicamente admitida.
 >
->  3. Compruebe las características del almacenamiento local para determinar si puede mejorar el hardware (por ejemplo, pasar de HDD a SSD).
+>  3. Compruebe su toodetermine de las características de almacenamiento local si se puede mejorar el hardware de hello (por ejemplo, unidad de disco duro tooSSD).
 >
->  4. Cambie la configuración de Site Recovery en el servidor de procesos para [aumentar la cantidad de ancho de banda de red que se usa para la replicación](./site-recovery-plan-capacity-vmware.md#control-network-bandwidth).
+>  4. Cambiar la configuración de Site Recovery de hello en el servidor de procesos de hello demasiado[aumentar la cantidad de Hola de ancho de banda de red utilizado para la replicación](./site-recovery-plan-capacity-vmware.md#control-network-bandwidth).
 
 ## <a name="recommendations-with-desired-rpo-as-input"></a>Recomendaciones con el RPO deseado como entrada
 
 ### <a name="profiled-data"></a>Datos de generación de perfiles
 
-![La vista de datos de generación de perfiles en Deployment Planner](./media/site-recovery-deployment-planner/profiled-data-period.png)
+![vista de datos de perfiles de Hello en planes de implementación de Hola](./media/site-recovery-deployment-planner/profiled-data-period.png)
 
-**Período de datos de generación de perfiles**: el período durante el que se ejecutó la generación de perfiles. De manera predeterminada, la herramienta incluye todos los datos de generación de perfiles en el cálculo, a menos que genere el informe para un período específico mediante las opciones StartDate y EndDate durante la generación de informes.
+**Período de datos del perfil**: período de Hola durante qué Hola se ejecutó la generación de perfiles. De forma predeterminada, herramienta de hello incluye todos los datos del perfil en el cálculo de hello, a menos que genera informes de Hola durante un período específico mediante opciones StartDate y EndDate durante la generación de informes.
 
-**Nombre del servidor**: el nombre o la dirección IP del servidor VMware vCenter o host de ESXi cuyo informe de máquinas virtuales se genera.
+**Nombre del servidor**: nombre de Hola o dirección IP de hello VMware vCenter o host ESXi se genera el informe cuyo máquinas virtuales.
 
-**RPO deseado**: el objetivo de punto de recuperación para la implementación. De manera predeterminada, se calcula el ancho de banda de red necesario para los valores de RPO de 15, 30 y 60 minutos. En función de la selección, los valores afectados se actualizan en la hoja. Si ha usado el parámetro *DesiredRPOinMin* al generar el informe, ese valor se muestra en el resultado de RPO deseado.
+**Deseado RPO**: objetivo de punto de recuperación de hello para la implementación. De forma predeterminada, Hola requiere ancho de banda de red se calcula para los valores RPO de 15, 30 y 60 minutos. En función de selección de hello, valores de hello afectado se actualizan en la hoja de Hola. Si ha usado hello *DesiredRPOinMin* parámetro durante la generación de informes de hello, que se muestra el valor de resultado deseado RPO de Hola.
 
 ### <a name="profiling-overview"></a>Información general sobre la generación de perfiles
 
-![Resultados de generación de perfiles en Deployment Planner](./media/site-recovery-deployment-planner/profiling-overview.png)
+![Resultados de la generación de perfiles en planes de implementación de Hola](./media/site-recovery-deployment-planner/profiling-overview.png)
 
-**Total de máquinas virtuales de las que se ha generado el perfil**: El número total de las máquinas virtuales cuyos datos de generación de perfiles están disponibles. Si VMListFile contiene los nombres de las máquinas virtuales de las que no se ha generado el perfil, dichas máquinas virtuales no se tienen en cuenta en la generación de informes y se excluyen del número total de máquinas virtuales de las que se ha generado el perfil.
+**Total de máquinas virtuales de perfiles**: Hola número total de máquinas virtuales cuyos datos del perfil están disponibles. Si hello VMListFile tiene los nombres de todas las máquinas virtuales que no se han perfilar, esas máquinas virtuales no se consideran en la generación de informes de Hola y se excluyen de recuento de hello total para las máquinas virtuales.
 
-**Máquinas virtuales compatibles**: el número de máquinas virtuales que se pueden proteger en Azure mediante Site Recovery. Es el número total de máquinas virtuales compatibles para el que se calculan el ancho de banda de red, el número de cuentas de almacenamiento, el número de núcleos de Azure y el número de servidores de configuración y de servidores de proceso adicionales que se requieren. Los detalles de todas las máquinas virtuales compatibles están disponibles en la sección "Máquinas virtuales compatibles".
+**Máquinas virtuales compatibles**: Hola número de máquinas virtuales que pueden ser tooAzure protegido mediante el uso de Site Recovery. Es Hola número total de máquinas virtuales compatibles para qué Hola se calculan el ancho de banda de red requeridos, número de cuentas de almacenamiento, número de núcleos de Azure y número de servidores de configuración y los servidores de procesos adicionales. Hola detalles de cada máquina virtual compatible están disponibles en la sección "Máquinas virtuales compatibles" Hola.
 
-**Máquinas virtuales no compatibles**: el número de máquinas virtuales de las que se ha generado el perfil que no son compatibles para la protección con Site Recovery. Los motivos de dicha incompatibilidad se indican en la sección "Máquinas virtuales no compatibles". Si VMListFile contiene los nombres de las máquinas virtuales cuyo perfil no se ha generado, dichas máquinas se excluyen del número de máquinas virtuales no compatibles. Estas máquinas aparecen como "Datos no encontrados" al final de la sección "Máquinas virtuales no compatibles".
+**Máquinas virtuales incompatible**: Hola número de máquinas virtuales para que no son compatibles con la protección con recuperación de sitio. motivos de Hola para incompatibilidad que se indican en la sección "Máquinas virtuales Incompatible" Hola. Si hello VMListFile tiene nombres de todas las máquinas virtuales no se generan perfiles, esas máquinas virtuales se excluyen de recuento de máquinas virtuales de hello incompatible. Estas máquinas virtuales se muestran como "Datos no encontraron" al final de Hola de sección Hola "VMs Incompatible".
 
-**RPO deseado**: el objetivo del punto de recuperación deseado, en minutos. El informe se genera para tres valores de RPO: 15 (valor predeterminado), 30 y 60 minutos. La recomendación que se hace sobre el ancho de banda en el informe se cambia en función de la selección que se realice en la lista desplegable de Desired RPO (RPO deseado) de la parte superior derecha de la hoja. Si el informe se ha generado mediante el parámetro *-DesiredRPO* con un valor personalizado, dicho valor personalizado se mostrará como valor predeterminado en la lista desplegable Desired RPO (RPO deseado).
+**RPO deseado**: el objetivo del punto de recuperación deseado, en minutos. informe de Hola se genera para los tres valores RPO: 15 (valor predeterminado), 30 y 60 minutos. recomendación de ancho de banda de Hello en el informe de Hola se cambia en función de su selección en la lista Hola desplegable RPO deseado en hello parte superior derecha de la hoja de Hola. Si ha generado el informe de hello mediante el uso de hello *DesiredRPO -* parámetro con un valor personalizado, este valor personalizado se mostrará como valor predeterminado de hello en lista de hello deseado RPO de lista desplegable.
 
 ### <a name="required-network-bandwidth-mbps"></a>Ancho de banda de red requerido (Mbps)
 
-![Ancho de banda de red requerido en Deployment Planner](./media/site-recovery-deployment-planner/required-network-bandwidth.png)
+![Ancho de banda de red necesario en planes de implementación de Hola](./media/site-recovery-deployment-planner/required-network-bandwidth.png)
 
-**Para cubrir el RPO en el 100 % de las ocasiones:** el ancho de banda recomendado, en Mbps, que se debe asignar para cubrir el RPO deseado en todo momento. Esta cantidad de ancho de banda debe estar dedicada a la replicación diferencial de estado estable de todas las máquinas virtuales compatibles para evitar infracciones de RPO.
+**toomeet RPO 100% del tiempo de hello:** Hola recomienda ancho de banda en Mbps toobe asignada toomeet el RPO deseado 100% del tiempo de Hola. Esta cantidad de ancho de banda debe ser dedicado para la replicación de datos de estado estable de todos los tooavoid máquinas virtuales compatible las infracciones de RPO.
 
-**Para cubrir el RPO en el 90 % de las ocasiones**: a causa de los precios del ancho de banda o por cualquier otra razón, si no puede establecer el ancho de banda necesario para cubrir el RPO deseado en todo momento, puede elegir usar un valor de ancho de banda inferior que le permita satisfacer el RPO deseado en el 90 % de las ocasiones. Para conocer las implicaciones de establecer un ancho de banda inferior, el informe proporciona el análisis de hipótesis del número previsible de infracciones de RPO y su duración.
+**toomeet RPO 90 por ciento de tiempo de Hola**: debido a precios de banda ancha o por cualquier otra razón, si no se establece toomeet de ancho de banda necesario Hola el RPO deseado 100% del tiempo de hello, puede elegir toogo con un ancho de banda inferior configuración pueda cumplir su RPO deseado 90 por ciento del tiempo de presentación. implicaciones de hello toounderstand de establecer este ancho de banda inferior, informe de hello proporciona un análisis de escenarios condicionales en número de Hola y la duración de RPO infracciones tooexpect.
 
-**Rendimiento obtenido**: El rendimiento del servidor en el que ha ejecutado el comando GetThroughput para la región de Microsoft Azure en la que se encuentra la cuenta de almacenamiento. Este número de rendimiento indica el nivel estimado que se puede lograr al proteger las máquinas virtuales compatibles mediante Site Recovery, siempre que las características de red y de almacenamiento tanto del servidor de configuración como del servidor de procesos sean las mismas que las del servidor en el que se ha ejecutado la herramienta.
+**El rendimiento obtenido:** rendimiento de Hola desde el servidor de hello en el que ha ejecutado región hello GetThroughput comando toohello Microsoft Azure donde se encuentra la cuenta de almacenamiento de Hola. Este número de rendimiento indica el nivel de hello estimado que se puede lograr si se protege Hola Hola compatible con máquinas virtuales mediante el uso de recuperación del sitio, siempre que el servidor de configuración o características de almacenamiento y de red del servidor de proceso permanecen igual que servidor de Hola desde el que se ha ejecutado la herramienta de Hola.
 
-En la replicación, debe establecer el ancho de banda recomendado de forma que cubra el RPO el 100 % del tiempo. Después de establecer el ancho de banda, si no percibe un aumento en el rendimiento obtenido que notifica la herramienta, siga estos pasos:
+En la replicación, debe establecer hello toomeet Hola recomendada de ancho de banda RPO 100% del tiempo de Hola. Después de establecer el ancho de banda de hello, si no ve algún aumento en el rendimiento de hello logra, devuelto por la herramienta de hello, realice Hola siguientes:
 
-1. Realice las comprobaciones necesarias para ver si hay algún requisito de calidad de servicio (QoS) de la red que limite el rendimiento de Site Recovery.
+1. Compruebe toosee si no hay ninguna red de calidad de servicio (QoS) que se está limitando el rendimiento de recuperación del sitio.
 
-2. Realice las comprobaciones necesarias para ver si el almacén de Site Recovery está en la región física de Microsoft Azure más cercana admitida para minimizar la latencia de red.
+2. Compruebe toosee si se encuentra el almacén de Site Recovery en hello más cercano de latencia de red de toominimize de región de Microsoft Azure físicamente admitida.
 
-3. Compruebe las características del almacenamiento local para determinar si puede mejorar el hardware (por ejemplo, pasar de HDD a SSD).
+3. Compruebe su toodetermine de las características de almacenamiento local si se puede mejorar el hardware de hello (por ejemplo, unidad de disco duro tooSSD).
 
-4. Cambie la configuración de Site Recovery en el servidor de procesos para [aumentar la cantidad de ancho de banda de red que se usa para la replicación](./site-recovery-plan-capacity-vmware.md#control-network-bandwidth).
+4. Cambiar la configuración de Site Recovery de hello en el servidor de procesos de hello demasiado[aumentar usada para la replicación el ancho de banda de red a cantidad de hello](./site-recovery-plan-capacity-vmware.md#control-network-bandwidth).
 
-Si ejecuta la herramienta en un servidor de configuración o de procesos que ya tiene máquinas virtuales protegidas, ejecute la herramienta varias veces. El número de rendimiento logrado cambia en función de la cantidad de activación que se procesa en ese momento.
+Si está ejecutando la herramienta de hello en un servidor de configuración o proceso que ya ha protegido las máquinas virtuales, ejecute herramienta Hola varias veces. Hola conseguido rendimiento número cambia según la cantidad de Hola de renovación está procesando en ese momento en el tiempo de.
 
 Para todas las implementaciones de Site Recovery que se realicen en la empresa, se recomienda usar [ExpressRoute](https://aka.ms/expressroute).
 
 ### <a name="required-storage-accounts"></a>Cuentas de almacenamiento requeridas
-El siguiente gráfico muestra el número total de cuentas de almacenamiento (Estándar y Premium) que se requieren para proteger todas las máquinas virtuales compatibles. Para saber qué cuenta de almacenamiento se debe usar para cada máquina virtual, consulte la sección "selección de ubicación de almacenamiento de máquina virtual".
+Hola siguiente gráfico se muestra las cuentas de número total de Hola de almacenamiento (standard y premium) que son necesario tooprotect todos los Hola máquinas virtuales compatibles. toolearn qué almacenamiento cuenta toouse para cada máquina virtual, vea la sección de "selección de ubicación de almacenamiento de máquina virtual" de Hola.
 
-![Cuentas de almacenamiento requeridas en Deployment Planner](./media/site-recovery-deployment-planner/required-azure-storage-accounts.png)
+![Cuentas de almacenamiento necesaria en planes de implementación de Hola](./media/site-recovery-deployment-planner/required-azure-storage-accounts.png)
 
 ### <a name="required-number-of-azure-cores"></a>Número de núcleos de Azure requeridos
-Este resultado es el número total de núcleos que se deben configurar antes de realizar una conmutación por error real o de prueba de todas las máquinas virtuales compatibles. Si hay muy pocos núcleos en la suscripción, Site Recovery no puede crear las máquinas virtuales en el momento de realizar la conmutación por error real o de prueba.
+Este resultado es número total de Hola de toobe núcleos configurar antes de Hola de conmutación por error de conmutación por error o prueba de todas las máquinas virtuales compatibles. Si muy pocos núcleos disponibles en la suscripción de hello, Site Recovery se produce un error toocreate las máquinas virtuales en tiempo de Hola de conmutación por error o conmutación por error de prueba.
 
-![Número de núcleos de Azure requeridos en Deployment Planner](./media/site-recovery-deployment-planner/required-number-of-azure-cores.png)
+![Número necesario de Azure núcleos en planes de implementación de Hola](./media/site-recovery-deployment-planner/required-number-of-azure-cores.png)
 
 ### <a name="required-on-premises-infrastructure"></a>Infraestructura local requerida
-Esta cifra es el número total de servidores de configuración y servidores de proceso adicionales configurables que serían suficientes para proteger todas las máquinas virtuales compatibles. En función de las [recomendaciones de tamaño para el servidor de configuración](https://aka.ms/asr-v2a-on-prem-components) admitidas, la herramienta puede recomendar más servidores. Las recomendaciones se basan en el valor mayor de los siguientes elementos, la actividad diaria o el número máximo de máquinas virtuales (se supone que cada máquina virtual tiene tres discos), lo que se alcance primero en el servidor de configuración o en el servidor de procesos adicional. La información de la actividad total por día y el número total de discos protegidos se encontrará en la sección "Entrada".
+Esta ilustración es el número total de Hola de servidores de configuración y toobe de servidores de proceso adicionales configurados que sería suficiente tooprotect todos Hola máquinas virtuales compatibles. Función hello admitida [cambiar el tamaño de las recomendaciones para el servidor de configuración de Hola](https://aka.ms/asr-v2a-on-prem-components), herramienta de hello podría recomendar servidores adicionales. Hola recomendación se basa en hello mayor de renovación al día de Hola o número máximo de Hola de máquinas virtuales protegidas (suponiendo un promedio de tres discos por máquina virtual), lo que se alcance primero en el servidor de configuración de Hola o servidor de proceso adicional de Hola. Encontrará detalles de Hola de renovación total por día y el número total de discos protegidos en la sección "Entrada" Hola.
 
-![Infraestructura local requerida en Deployment Planner](./media/site-recovery-deployment-planner/required-on-premises-infrastructure.png)
+![Infraestructura local necesaria en planes de implementación de Hola](./media/site-recovery-deployment-planner/required-on-premises-infrastructure.png)
 
 ### <a name="what-if-analysis"></a>Análisis de hipótesis
-Este análisis indica el número de infracciones que pueden producirse durante el período de generación de perfiles si se establece un ancho de banda menor para cumplir el RPO deseado solo en el 90 % de las ocasiones. Pueden producirse una o varias infracciones de RPO en cualquier día determinado. El gráfico muestra el RPO máximo del día.
-En función de este análisis, puede decidir si el número de infracciones de RPO a lo largo de todos los días y el límite máximo de RPO por día es aceptable para el ancho de banda menor especificado. Si es aceptable, puede asignar el ancho de banda menor para la replicación. En caso contrario, asigne el ancho de banda mayor como se sugirió anteriormente para satisfacer el RPO deseado en el 100 % de las ocasiones.
+Este análisis describen podrían producir infracciones de cuántos durante Hola al establecer el período de generación de perfiles que un bajo ancho de banda para hello deseado RPO toobe cumple sólo el 90 por ciento del tiempo de presentación. Pueden producirse una o varias infracciones de RPO en cualquier día determinado. gráfico de Hello muestra pico Hola RPO del día de Hola.
+En función de este análisis, puede decidir si el número de Hola de infracciones de RPO entre todos los días y una memoria máxima RPO visitas al día es aceptable con hello especificado bajo ancho de banda. Si es aceptable, puede asignar ancho de banda inferior hello para la replicación, else asignar Hola mayor ancho de banda toomeet sugerido Hola había deseado RPO 100% del tiempo de Hola.
 
-![Análisis de hipótesis en Deployment Planner](./media/site-recovery-deployment-planner/what-if-analysis.png)
+![Análisis de escenarios condicionales en planes de implementación de Hola](./media/site-recovery-deployment-planner/what-if-analysis.png)
 
 ### <a name="recommended-vm-batch-size-for-initial-replication"></a>Tamaño de lote de máquinas virtuales recomendado para la replicación inicial
-En esta sección, se recomienda el número de máquinas virtuales que se pueden proteger en paralelo para completar la replicación inicial en 72 horas con el ancho de banda sugerido para satisfacer el RPO deseado el 100 % del tiempo que se establece. Este valor se puede configurar. Para cambiarlo en el momento de generación de informes, use el parámetro *GoalToCompleteIR*.
+En esta sección, se recomienda número Hola de máquinas virtuales que se pueden proteger en la replicación inicial de hello toocomplete paralelas dentro de 72 horas con hello sugiere toomeet de ancho de banda deseado RPO 100% del tiempo de Hola que se va a establecer. Este valor se puede configurar. toochange en tiempo de generación de informes, use hello *GoalToCompleteIR* parámetro.
 
-Este gráfico muestra un intervalo de valores de ancho de banda y un recuento del tamaño del lote de máquinas virtuales que se calcula que son necesarias para completar la replicación inicial en 72 horas, en función del valor medio de tamaño de las máquinas virtuales detectadas entre todas las máquinas virtuales compatibles.
+gráfico aquí Hello muestra un intervalo de valores de ancho de banda y una calculada VM lote tamaño recuento toocomplete la replicación inicial en 72 horas, según promedio de hello detecta VM Hola de tamaño en todas las máquinas virtuales compatibles.
 
-En la versión preliminar pública, el informe no especifica las máquinas virtuales que deben incluirse en un lote. Puede usar el tamaño de disco que se muestra en la sección "Máquinas virtuales compatibles" para hallar el tamaño de cada máquina virtual y seleccionarlas para un lote, o bien puede seleccionarlas en función de características de carga de trabajo conocidas. La hora de finalización de la replicación inicial cambia proporcionalmente en función del tamaño real de los discos de las máquinas virtuales, del espacio de disco usado y del rendimiento de red disponible.
+En la versión preliminar pública de hello, informe de hello no especifica qué máquinas virtuales deben incluirse en un lote. Puede usar el tamaño del disco Hola que se muestra de Hola "compatible con máquinas virtuales" sección toofind tamaño de cada VM y seleccionarlos para un lote, o puede seleccionar máquinas virtuales de hello basadas en las características de carga de trabajo conocidos. hora de finalización de Hola de cambios de la replicación inicial de hello proporcionalmente, según el tamaño de disco de máquina virtual real de hello, utiliza espacio en disco y el rendimiento de red disponible.
 
 ![Tamaño de lote de máquinas virtuales recomendado](./media/site-recovery-deployment-planner/recommended-vm-batch-size.png)
 
 ### <a name="growth-factor-and-percentile-values-used"></a>Factor de crecimiento y valores de percentil utilizados
-Esta sección de la parte inferior de la hoja muestra el valor del percentil que se utiliza en todos los contadores de rendimiento de las máquinas virtuales de las que se ha generado el perfil (el valor predeterminado es el percentil 95) y el factor de crecimiento (el valor predeterminado es el 30 %) que se usa en todos los cálculos.
+En esta sección final Hola de hello hoja se utiliza para todos los contadores de rendimiento de Hola de máquinas virtuales de hello Perfilar (el valor predeterminado es el percentil 95) de valor del percentil de muestra Hola y Hola factor de crecimiento (el valor predeterminado es 30 por ciento) que se utiliza en todos los cálculos de Hola.
 
 ![Factor de crecimiento y valores de percentil utilizados](./media/site-recovery-deployment-planner/max-iops-and-data-churn-setting.png)
 
@@ -405,129 +404,129 @@ Esta sección de la parte inferior de la hoja muestra el valor del percentil que
 
 ![Recomendaciones relacionadas con el ancho de banda disponible como entrada](./media/site-recovery-deployment-planner/profiling-overview-bandwidth-input.png)
 
-Puede darse el caso de que sepa que no puede establecer un ancho de banda de más de x Mbps para la replicación de Site Recovery. La herramienta le permite especificar el ancho de banda disponible (mediante el parámetro -Bandwidth durante la generación de informes) y obtener el RPO factible en minutos. Con este valor de RPO factible, puede decidir si necesita aprovisionar más ancho de banda o si está conforme con tener una solución de recuperación ante desastres con este RPO.
+Puede darse el caso de que sepa que no puede establecer un ancho de banda de más de x Mbps para la replicación de Site Recovery. herramienta de Hello permite tooinput ancho de banda disponible (usando Hola - parámetro de ancho de banda durante la generación de informes) y get Hola factible RPO en minutos. Con este valor RPO factible, puede decidir si necesita tooset el ancho de banda adicional o están bien con tener una solución de recuperación ante desastres con este RPO.
 
 ![RPO factible para un ancho de banda de 500 Mbps](./media/site-recovery-deployment-planner/achievable-rpos.png)
 
 ## <a name="input"></a>Entrada
-La hoja de cálculo Entrada proporciona información general del entorno de VMware en el que se han generado perfiles.
+hoja de cálculo de entrada de Hello proporciona que una visión general de hello Perfilar entorno de VMware.
 
-![Información general del entorno de VMware en el que se han generado perfiles](./media/site-recovery-deployment-planner/Input.png)
+![Información general de hello Perfilar entorno de VMware](./media/site-recovery-deployment-planner/Input.png)
 
-**Fecha de inicio** y **Fecha de finalización**: las fechas de inicio y finalización de los datos de generación de perfiles que se tienen en cuenta para la generación de informes. De forma predeterminada, la fecha de inicio es la fecha en que comienza la generación de perfiles, mientras que la de finalización es la fecha en la que se detiene. Esta se puede especificar mediante los valores "StartDate" y "EndDate" si el informe se genera con estos parámetros.
+**Fecha de inicio** y **fecha de finalización**: Hola fechas de inicio y finalización del programa Hola tienen en cuenta para la generación de informes de datos de generación de perfiles. De forma predeterminada, fecha de inicio de hello es la fecha de hello cuando de generación de perfiles se inicia, y fecha de finalización de hello es fecha hello cuando se detiene la generación de perfiles. Esto puede ser hello 'StartDate' y 'EndDate' valores si se genera el informe de hello con estos parámetros.
 
-**Número total de días de generación de perfiles**: el número total de días de generación de perfiles comprendido entre las fechas de inicio y de finalización para el que se genera el informe.
+**Número total de días de generación de perfiles**: número total de Hola de días de generación de perfiles entre Hola fechas inicial y final para qué Hola se genera el informe.
 
-**Número de máquinas virtuales compatibles**: el número total de máquinas virtuales compatibles para el que se calculan el ancho de banda de red necesario, el número de cuentas de almacenamiento requeridas, los núcleos de Microsoft Azure y los servidores de configuración y los servidores de proceso adicionales.
+**Número de máquinas virtuales compatibles**: número total de Hola de máquinas virtuales compatibles para qué ancho de banda de red de hello necesario, el número necesario de almacenamiento cuentas, núcleos de Microsoft Azure, servidores de configuración y son servidores de procesos adicionales calcula.
 
-**Número total de discos en todas las máquinas virtuales compatibles**: el número que se usa como una de las entradas para decidir el número de servidores de configuración y servidores de proceso adicionales que se usarán en la implementación.
+**Número total de discos a través de todas las máquinas virtuales compatibles**: número de Hola que se usa como uno de hello entradas número de hello toodecide de servidores de configuración y toobe de servidores de proceso adicionales utilizados en la implementación de Hola.
 
-**Número medio de discos por máquina virtual compatible**: el número medio de discos calculado en todas las máquinas virtuales compatibles.
+**Promedio de discos por máquina virtual compatibles**: promedio de Hola de discos se calcula en todas las máquinas virtuales compatibles.
 
-**Tamaño medio de disco (GB)**: el tamaño medio de disco calculado en todas las máquinas virtuales compatibles.
+**Promedio de tamaño de disco (GB)**: calcular el tamaño de disco promedio de hello en todas las máquinas virtuales compatibles.
 
-**RPO deseado (en minutos)**: el objetivo de punto de recuperación predeterminado o el valor pasado para el parámetro "DesiredRPO" en el momento de la generación de informes para calcular el ancho de banda necesario.
+**Deseado RPO (minutos)**: cualquier Hola recuperación punto objetivo o hello pasa valor predeterminado para el parámetro de 'DesiredRPO' hello en tiempo de Hola de tooestimate de generación de informes requerido ancho de banda.
 
-**Ancho de banda deseado (Mbps)**: el valor que ha pasado para el parámetro "Bandwidth" en el momento de la generación de informes para calcular el RPO factible.
+**Deseado de ancho de banda (Mbps)**: Hola valor que ha pasado para el parámetro de 'Ancho de banda' hello en tiempo de Hola de tooestimate de generación de informes RPO factible.
 
-**Actividad de datos normal observada por día (GB)**: el valor medio de la actividad de datos observada en todos los días de generación de perfiles. Este número se utiliza como una de las entradas para decidir el número de servidores de configuración y servidores de procesos adicionales que se usarán en la implementación.
+**Renovación de datos típico observado por día (GB)**: Hola renovación de datos medio se observa en todos los perfiles de días. Este número se utiliza como uno de hello entradas toodecide Hola serie de servidores de configuración y toobe de servidores de proceso adicionales utilizados en la implementación de Hola.
 
 
 ## <a name="vm-storage-placement"></a>Selección de ubicación de almacenamiento de máquina virtual
 
 ![Selección de ubicación de almacenamiento de máquina virtual](./media/site-recovery-deployment-planner/vm-storage-placement.png)
 
-**Tipo de almacenamiento en disco**: cuenta de almacenamiento Estándar o Premium, que se usa para replicar todas las máquinas virtuales correspondientes que se mencionan en la columna **Máquinas virtuales que se colocan**.
+**Tipo de almacenamiento en disco**: una cuenta de almacenamiento standard o premium, que es usado tooreplicate todos Hola correspondientes máquinas virtuales que se mencionó en hello **tooPlace de máquinas virtuales** columna.
 
-**Prefijo sugerido**: el prefijo de tres caracteres sugerido que se puede usar para asignar un nombre a la cuenta de almacenamiento. Puede usar su propio prefijo, pero el que sugiere la herramienta sigue la [convención de nomenclatura de particiones de las cuentas de almacenamiento](https://aka.ms/storage-performance-checklist).
+**Sugiere prefijo**: sugerido prefijo de tres caracteres de Hola que puede usarse para asignar nombres de cuenta de almacenamiento de Hola. Puede usar su propio prefijo, pero las sugerencias de la herramienta de hello sigue hello [convención de nomenclatura para las cuentas de almacenamiento de partición](https://aka.ms/storage-performance-checklist).
 
-**Nombre de cuenta sugerido**: el nombre de la cuenta de almacenamiento después de incluir el prefijo sugerido. Reemplace el nombre entre corchetes angulares (< y >) por una entrada personalizada.
+**Sugiere el nombre de la cuenta**: nombre de la cuenta de almacenamiento de hello después de incluir el prefijo sugerido Hola. Reemplace el nombre de hello dentro de corchetes angulares de hello (< y >) con la entrada personalizada.
 
-**Cuenta de almacenamiento del registro**: todos los registros de la replicación se almacenan en una cuenta de almacenamiento Estándar. En el caso de las máquinas virtuales que se replican en una cuenta de almacenamiento Premium, configure una cuenta de almacenamiento Estándar adicional para el almacenamiento de registros. Varias cuentas de almacenamiento de replicación Premium puede usar una única cuenta de almacenamiento de registros Estándar. Las máquinas virtuales que se replican en las cuentas de almacenamiento Estándar usan la misma cuenta de almacenamiento para los registros.
+**Cuenta de almacenamiento de registro**: todos los registros de replicación de Hola se almacenan en una cuenta de almacenamiento estándar. Para las máquinas virtuales que se replican tooa cuenta de almacenamiento premium, configure una cuenta de almacenamiento estándar adicional para el almacenamiento de registro. Varias cuentas de almacenamiento de replicación Premium puede usar una única cuenta de almacenamiento de registros Estándar. Las máquinas virtuales que son usan cuentas de almacenamiento de toostandard replicada Hola misma cuenta de almacenamiento para los registros.
 
-**Nombre de cuenta de registros sugerido**: el nombre de la cuenta de registros de almacenamiento después de incluir el prefijo sugerido. Reemplace el nombre entre corchetes angulares (< y >) por una entrada personalizada.
+**Sugiere el nombre de la cuenta de registro**: el nombre de cuenta de registro de almacenamiento después de incluir el prefijo sugerido Hola. Reemplace el nombre de hello dentro de corchetes angulares de hello (< y >) con la entrada personalizada.
 
-**Resumen de la selección de ubicación**: un resumen de la carga total de máquinas virtuales en la cuenta de almacenamiento en el momento de la replicación y la conmutación por error real o de prueba. Incluye el número total de máquinas virtuales asignadas a la cuenta de almacenamiento, el total de IOPS de lectura/escritura en todas las máquinas virtuales colocadas en esta cuenta de almacenamiento, el total de IOPS de escritura (replicación), el tamaño total configurado en todos los discos y el número total de discos.
+**Resumen de la selección de ubicación**: un resumen de hello total de carga de máquinas virtuales en la cuenta de almacenamiento de hello en tiempo de presentación de la replicación y probar la conmutación por error o conmutación por error. Incluye el número total de Hola de las máquinas virtuales asignadas toohello cuenta de almacenamiento total de lectura/escritura (replicación) IOPS, tamaño total del programa de instalación en todos los discos y el número total de discos de escritura de e/s por segundo en todas las máquinas virtuales que se colocan en esta cuenta de almacenamiento total.
 
-**Máquinas virtuales que se colocan**: una lista de todas las máquinas virtuales que se deben colocar en la cuenta de almacenamiento especificada para que tanto el rendimiento como el uso sean óptimos.
+**Máquinas virtuales tooPlace**: Hola a una lista de todas las máquinas virtuales que se deben colocar en hello dado cuenta de almacenamiento para un rendimiento óptimo y uso.
 
 ## <a name="compatible-vms"></a>Máquinas virtuales compatibles
 ![Hoja de cálculo de Excel de las máquinas virtuales compatibles](./media/site-recovery-deployment-planner/compatible-vms.png)
 
-**Nombre de máquina virtual**: el nombre o la dirección IP de la máquina virtual que se utilizan en VMListFile cuando se genera un informe. Esta columna también muestra los discos (VMDK) que están conectados a las máquinas virtuales. Para distinguir las máquinas virtuales de vCenter con nombres o direcciones IP, los nombres incluyen el nombre del host de ESXi. El host de ESXi enumerado es en el que se colocó la máquina virtual cuando la herramienta la detecto en el período de generación de perfiles.
+**Nombre de máquina virtual**: Hola nombre de máquina virtual o la dirección IP que se utiliza en hello VMListFile cuando se genera un informe. Esta columna también muestra los discos de hello (VMDK) que están conectados toohello las máquinas virtuales. toodistinguish vCenter máquinas virtuales con nombres duplicados o las direcciones IP, nombres de hello incluir nombre de host ESXi Hola. Hello enumerado host ESXi es hello uno donde hello VM se colocó al herramienta Hola detectados durante el período de generación de perfiles de Hola.
 
-**Compatibilidad de máquina virtual**: los valores son **Sí** y **Sí**\*. **Sí**\* es para las instancias en que la máquina virtual es una opción para [Azure Premium Storage](https://aka.ms/premium-storage-workload). En este caso, la alta actividad de la generación de perfiles o el disco de IOPS se encuadra en las categorías P20 o P30, pero el tamaño del disco hace que se asigne a una categoría P10 o P20. La cuenta de almacenamiento decide a qué tipo de disco de almacenamiento Premium se asigna un disco, en función de su tamaño. Por ejemplo:
+**Compatibilidad de máquina virtual**: los valores son **Sí** y **Sí**\*. **Sí** \* es para instancias de en qué Hola VM es una opción para [almacenamiento de Azure Premium](https://aka.ms/premium-storage-workload). En este caso, Hola Perfilar alta renovación o disco IOPS se ajusta a Hola P20 o categoría de P30, pero tamaño Hola del disco de hello hace que toobe asignado hacia abajo tooa P10 o P20. cuenta de almacenamiento de Hello decide qué disco de almacenamiento premium escriba toomap un disco, en función de su tamaño. Por ejemplo:
 * Menos de 128 GB es P10.
-* De 128 GB a 512 GB es P20.
-* De 512 GB a 1024 GB es P30.
-* De 1025 GB a 2048 GB es P40.
-* De 2049 GB a 4095 GB es P50.
+* 128 GB too512 GB es un P20.
+* 512 GB too1024 GB es un P30.
+* 1025 GB too2048 GB es un P40.
+* GB too4095 GB es un P50 2049.
 
-Si las características de carga de trabajo de un disco lo colocan en la categoría P20 o P30, pero el tamaño lo asigna a un tipo de disco de almacenamiento Premium inferior, la herramienta marca la máquina virtual como **Sí**\*. La herramienta también recomienda que cambie el tamaño del disco de origen para poder encuadrarlo en el tipo de disco de almacenamiento Premium recomendado o que cambie el tipo de disco de destino después de la conmutación por error.
+Si las características de la carga de trabajo de Hola de un disco colocan en Hola P20 o P30 categoría, pero tamaño Hola lo asigna hacia abajo el tipo de disco de almacenamiento de inferior premium de tooa, herramienta de hello marca esa máquina virtual como **Sí**\*. herramienta de Hello también se recomienda cambiar toofit de tamaño de disco de origen de hello en hello recomendada el tipo de disco de almacenamiento premium o cambiar Hola destino disco tipo post-conmutación por error.
 
 **Tipo de almacenamiento**: Estándar o Premium.
 
-**Prefijo sugerido**: el prefijo de tres caracteres de la cuenta de almacenamiento.
+**Sugiere prefijo**: prefijo de la cuenta de almacenamiento de tres caracteres de Hola.
 
-**Cuenta de almacenamiento**: el nombre que utiliza el prefijo sugerido para la cuenta de almacenamiento.
+**Cuenta de almacenamiento**: nombre de Hola que utiliza el prefijo de hello sugerido de cuenta de almacenamiento.
 
-**IOPS de lectura y escritura (con factor de crecimiento)**: el valor máximo de IOPS de lectura/escritura en carga de trabajo en el disco (el percentil 95 es el predeterminado) incluido el factor de crecimiento futuro (el valor predeterminado es el 30 %). Tenga en cuenta que el total de IOPS de lectura y escritura de una máquina virtual no es siempre la suma de las IOPS de lectura y escritura de los discos individuales de la máquina virtual, ya que las IOPS de lectura y escritura máximas de la máquina virtual es el máximo de la suma de las IOPS de lectura y escritura sus discos individuales durante cada minuto del período de generación de perfiles.
+**IOPS de lectura/escritura (con el Factor de crecimiento)**: Hola de máxima carga de trabajo lectura/escritura e/s por segundo en el disco de hello (el valor predeterminado es percentil 95), incluidos el factor de crecimiento futuro de hello (el valor predeterminado es 30 por ciento). Tenga en cuenta que Hola total lectura/escritura de e/s por segundo de una máquina virtual no es siempre suma de Hola de IOPS de lectura/escritura de discos individuales de la máquina virtual de hello, porque Hola pico lectura/escritura IOPS de hello VM es pico de Hola de suma de Hola de sus discos individuales lectura/escritura IOPS durante cada minuto de hello período de generación de perfiles.
 
-**Actividad de datos, en Mbps, (con factor de crecimiento)**: el máximo índice de actividad en el disco (el percentil 95 es el predeterminado), incluido el factor de crecimiento futuro (el valor predeterminado es el 30 %). Tenga en cuenta que el total de actividad de datos de la máquina virtual no siempre es la suma de la actividad de datos de los discos individuales de la máquina virtual, ya que la actividad de datos máxima de la máquina virtual es el máximo de la suma de las actividades de los discos individuales durante cada minuto del período de generación de perfiles.
+**Renovación de datos en Mbps (con el Factor de crecimiento)**: tasa de renovación de pico de hello en el disco de hello (el valor predeterminado es percentil 95), incluidos el factor de crecimiento futuro de hello (el valor predeterminado es 30 por ciento). Tenga en cuenta que Hola renovación total de los datos del programa Hola a máquina virtual no es siempre suma Hola de renovación de datos de discos individuales de la máquina virtual de hello porque renovación de datos máxima de Hola de hello VM es pico de Hola de suma de Hola de renovación de sus discos individuales durante cada minuto de hello período de generación de perfiles.
 
-**Tamaño de la máquina virtual de Azure**: el tamaño ideal de la máquina virtual de Azure Cloud Services asignada para esta máquina virtual local. La asignación basada en la memoria, el número de núcleos de discos/núcleos/NIC y las IOPS de lectura y escritura de la máquina virtual local. La recomendación es usar siempre el menor tamaño de máquina virtual de Azure que cumpla todas las características de la máquina virtual local.
+**Tamaño de la máquina virtual de Azure**: Hola ideal asignado tamaño de máquina virtual de servicios en la nube para este servidor local de máquina virtual. asignación de Hola basada en la memoria de la VM de hello en local, número de núcleos de discos/NIC y lectura/escritura de e/s por segundo. recomendación de Hello es siempre menor tamaño de máquina virtual de Azure de Hola que se ajusta a todas las características de máquina virtual de hello local.
 
-**Número de discos**: el número total de discos (VMDK) de la máquina virtual.
+**Número de discos**: Hola número total de discos de máquina virtual (VMDK) en hello máquina virtual.
 
-**Tamaño de disco (en GB)**: el tamaño total configurado de todos los discos de la máquina virtual. La herramienta también muestra el tamaño de los discos individuales de la máquina virtual.
+**Tamaño (GB) de disco**: Hola tamaño total del programa de instalación de todos los discos del programa Hola a máquina virtual. herramienta Hello también muestra el tamaño del disco Hola de discos individuales de Hola de hello VM.
 
-**Núcleos**: el número de núcleos de CPU de la máquina virtual.
+**Núcleos**: número de Hola de CPU de núcleos en hello VM.
 
-**Memoria (en MB)**: la memoria RAM de la máquina virtual.
+**Memoria (MB)**: Hola RAM en hello máquina virtual.
 
-**NIC**: el número de NIC de la máquina virtual.
+**NIC**: Hola número de tarjetas NIC en hello máquina virtual.
 
-**Tipo de arranque**: se trata del tipo de arranque de la máquina virtual. Puede ser BIOS o EFI. Actualmente, Azure Site Recovery admite solo el tipo de arranque BIOS. Todas las máquinas virtuales del tipo de arranque EFI se muestran en la hoja de cálculo de máquinas virtuales incompatibles.
+**Tipo de arranque**: es de tipo de inicio del programa Hola a máquina virtual. Puede ser BIOS o EFI. Actualmente, Azure Site Recovery admite solo el tipo de arranque BIOS. Todas las máquinas virtuales de Hola de tipo de arranque EFI se muestran en la hoja de cálculo de máquinas virtuales Incompatible.
 
-**Tipo de sistema operativo**: se trata del tipo de sistema operativo de la máquina virtual. Puede ser Windows, Linux u otro.
+**Tipo de sistema operativo**: hello es el tipo de sistema operativo de hello máquina virtual. Puede ser Windows, Linux u otro.
 
 ## <a name="incompatible-vms"></a>Máquinas virtuales no compatibles
 
 ![Hoja de cálculo de Excel de máquinas virtuales no compatibles](./media/site-recovery-deployment-planner/incompatible-vms.png)
 
-**Nombre de máquina virtual**: el nombre o la dirección IP de la máquina virtual que se utilizan en VMListFile cuando se genera un informe. Esta columna también muestra los VMDK que están conectados a las máquinas virtuales. Para distinguir las máquinas virtuales de vCenter con nombres o direcciones IP, los nombres incluyen el nombre del host de ESXi. El host de ESXi enumerado es en el que se colocó la máquina virtual cuando la herramienta la detecto en el período de generación de perfiles.
+**Nombre de máquina virtual**: Hola nombre de máquina virtual o la dirección IP que se utiliza en hello VMListFile cuando se genera un informe. Esta columna también muestra los archivos VMDK Hola que están conectados toohello las máquinas virtuales. toodistinguish vCenter máquinas virtuales con nombres duplicados o las direcciones IP, nombres de hello incluir nombre de host ESXi Hola. Hello enumerado host ESXi es hello uno donde hello VM se colocó al herramienta Hola detectados durante el período de generación de perfiles de Hola.
 
-**Compatibilidad de la máquina virtual**: indica el motivo por el que una máquina virtual dada no es compatible con Site Recovery. Se describen las razones de cada disco incompatible de la máquina virtual, que, en función de los [límites de almacenamiento](https://aka.ms/azure-storage-scalbility-performance) publicados, pueden ser cualesquiera de las siguientes:
+**Compatibilidad de la máquina virtual**: indica por qué Hola dada la máquina virtual no es compatible para su uso con Site Recovery. Hello motivos se describen para cada disco incompatible de hello VM y, según se publican en [límites de almacenamiento](https://aka.ms/azure-storage-scalbility-performance), puede ser cualquiera de los siguientes hello:
 
 * El tamaño del disco es superior a 4095 GB. Azure Storage no admite actualmente discos de datos cuyo tamaño supere 4095 GB.
 * El tamaño del disco de sistema operativo es superior a 2048 GB. Azure Storage no admite actualmente discos de sistema operativo cuyo tamaño supere 2048 GB.
 * El tipo de arranque es EFI. Azure Site Recovery actualmente solo admite máquinas virtuales con tipo de arranque BIOS.
 
-* El tamaño total de la máquina virtual (replicación + TFO) supera el límite de tamaño de la cuenta de almacenamiento que se admite (35 TB). Esta incompatibilidad se produce normalmente cuando uno de los discos de la máquina virtual tiene una característica de rendimiento que supera los límites de almacenamiento estándar de Azure o de Site Recovery. Una instancia de este tipo coloca la máquina virtual en la zona de almacenamiento premium. Sin embargo, el tamaño máximo que se admite de una cuenta de almacenamiento Premium es de 35 TB y una sola máquina virtual protegida no se puede proteger en varias cuentas de almacenamiento. Tenga también en cuenta que si se realiza una conmutación por error de prueba en una máquina virtual protegida, esta se ejecuta en la misma cuenta de almacenamiento en la que se lleva a cabo la replicación. En este caso, configure el doble del tamaño del disco para que la replicación y la conmutación por error de prueba puedan realizarse en paralelo.
+* Tamaño total de VM (replicación + TFO) supera el límite de tamaño de cuenta de almacenamiento de hello admitida (35 TB). Esta incompatibilidad se produce normalmente cuando un solo disco Hola VM tiene una característica de rendimiento que supera hello Azure o recuperación del sitio de los límites máximos admitidos para el almacenamiento estándar. Una instancia de este tipo inserta Hola VM en la zona de almacenamiento premium de Hola. Sin embargo, no se puede proteger Hola máximo tamaño admitido de una cuenta de almacenamiento premium es 35 TB y protegidos de una sola máquina virtual a través de varias cuentas de almacenamiento. Tenga en cuenta también que cuando una conmutación por error de prueba se ejecuta en una máquina virtual protegida, se ejecuta en Hola donde está progresando replicación misma cuenta de almacenamiento. En este caso, configure 2 x tamaño Hola del disco de Hola para replicación tooprogress y probar la conmutación por error toosucceed en paralelo.
 * El valor de IOPS de origen supera el límite que admite el almacenamiento, 5000 por disco.
 * El valor de IOPS de origen supera el límite que admite el almacenamiento, 80 000 por máquina virtual.
-* La actividad de datos media supera el límite que admite Site Recovery, 10 MBps para el tamaño medio de E/S de disco.
-* La actividad de datos total en todos los discos de la máquina virtual supera el límite máximo que admite Site Recovery, 54 MBps por máquina virtual.
-* El valor medio de las IOPS de escritura efectiva supera el límite que admite Site Recovery, 840 por disco.
-* El almacenamiento de instantáneas estimado supera el límite admitido de 10 TB.
+* Renovación de datos medio supera el límite admitido de renovación de datos de Site Recovery de 10 MBps para el tamaño promedio de E/S de disco de Hola.
+* Renovación de datos total en todos los discos en hello VM supera el límite de renovación de datos de Site Recovery de hello máximo compatible de 54 MBps por máquina virtual.
+* IOPS de escritura efectivo medio supera el límite de IOPS de recuperación de sitio de hello compatible de 840 para el disco.
+* Almacenamiento de instantáneas calculado supera el límite de almacenamiento de instantáneas de hello compatible de 10 TB.
 
-**IOPS de lectura y escritura (con factor de crecimiento)**: el valor máximo de IOPS en carga de trabajo en el disco (el percentil 95 es el predeterminado) incluido el factor de crecimiento futuro (el valor predeterminado es el 30 %). Tenga en cuenta que el total de IOPS de lectura y escritura de la máquina virtual no es siempre la suma de las IOPS de lectura y escritura de los discos individuales de la máquina virtual, ya que las IOPS de lectura y escritura máximas de la máquina virtual es el máximo de la suma de las IOPS de lectura y escritura sus discos individuales durante cada minuto del período de generación de perfiles.
+**IOPS de lectura/escritura (con el Factor de crecimiento)**: Hola cargas máximas de trabajo e/s por segundo en el disco de hello (el valor predeterminado es percentil 95), incluidos el factor de crecimiento futuro de hello (el valor predeterminado es 30 por ciento). Tenga en cuenta que Hola total lectura/escritura de e/s por segundo de hello VM no es siempre suma de Hola de IOPS de lectura/escritura de discos individuales de la máquina virtual de hello, porque Hola pico lectura/escritura IOPS de hello VM es pico de Hola de suma de Hola de sus discos individuales lectura/escritura IOPS durante cada minuto de hello período de generación de perfiles.
 
-**Actividad de datos, en Mbps, (con factor de crecimiento)**: el máximo índice de actividad en el disco (el percentil 95 es el predeterminado), incluido el factor de crecimiento futuro (el valor predeterminado es el 30 %). Tenga en cuenta que el total de actividad de datos de la máquina virtual no siempre es la suma de la actividad de datos de los discos individuales de la máquina virtual, ya que la actividad de datos máxima de la máquina virtual es el máximo de la suma de las actividades de los discos individuales durante cada minuto del período de generación de perfiles.
+**Renovación de datos en Mbps (con el Factor de crecimiento)**: tasa de renovación de pico de hello en el disco de hello (percentil 95 predeterminada) incluyendo el factor de crecimiento futuro de hello (valor predeterminado 30 por ciento). Tenga en cuenta que Hola renovación total de los datos del programa Hola a máquina virtual no es siempre suma Hola de renovación de datos de discos individuales de la máquina virtual de hello porque renovación de datos máxima de Hola de hello VM es pico de Hola de suma de Hola de renovación de sus discos individuales durante cada minuto de hello período de generación de perfiles.
 
-**Número de discos**: el número total de VMDK de la máquina virtual.
+**Número de discos**: Hola número total de archivos VMDK en hello máquina virtual.
 
-**Tamaño de disco (en GB)**: el tamaño total configurado de todos los discos de la máquina virtual. La herramienta también muestra el tamaño de los discos individuales de la máquina virtual.
+**Tamaño (GB) de disco**: Hola tamaño total del programa de instalación de todos los discos del programa Hola a máquina virtual. herramienta Hello también muestra el tamaño del disco Hola de discos individuales de Hola de hello VM.
 
-**Núcleos**: el número de núcleos de CPU de la máquina virtual.
+**Núcleos**: número de Hola de CPU de núcleos en hello VM.
 
-**Memoria (en MB)**: la cantidad de memoria RAM de la máquina virtual.
+**Memoria (MB)**: cantidad Hola de memoria RAM Hola máquina virtual.
 
-**NIC**: el número de NIC de la máquina virtual.
+**NIC**: Hola número de tarjetas NIC en hello máquina virtual.
 
-**Tipo de arranque**: se trata del tipo de arranque de la máquina virtual. Puede ser BIOS o EFI. Actualmente, Azure Site Recovery admite solo el tipo de arranque BIOS. Todas las máquinas virtuales del tipo de arranque EFI se muestran en la hoja de cálculo de máquinas virtuales incompatibles.
+**Tipo de arranque**: es de tipo de inicio del programa Hola a máquina virtual. Puede ser BIOS o EFI. Actualmente, Azure Site Recovery admite solo el tipo de arranque BIOS. Todas las máquinas virtuales de Hola de tipo de arranque EFI se muestran en la hoja de cálculo de máquinas virtuales Incompatible.
 
-**Tipo de sistema operativo**: se trata del tipo de sistema operativo de la máquina virtual. Puede ser Windows, Linux u otro.
+**Tipo de sistema operativo**: hello es el tipo de sistema operativo de hello máquina virtual. Puede ser Windows, Linux u otro.
 
 
 ## <a name="site-recovery-limits"></a>Límites de Site Recovery
@@ -541,28 +540,28 @@ Disco P10 Premium | 32 KB, o más | 8 MBps | 672 GB por disco
 Disco Premium P20 o P30 | 8 KB  | 5 MBps | 421 GB por disco
 Disco Premium P20 o P30 | 16 KB, o más |10 MBps | 842 GB por disco
 
-Estos son los números promedio si la superposición de E/S es del 30 %. Site Recovery es capaz de controlar un mayor rendimiento en función de la relación de superposición, tamaños de escritura mayores y el comportamiento real de E/S de la carga de trabajo. Los números anteriores asumen un trabajo pendiente típico de aproximadamente cinco minutos. Es decir, una vez que se cargan los datos, se procesan y se crea un punto de recuperación en menos de cinco minutos.
+Estos son los números promedio si la superposición de E/S es del 30 %. Site Recovery es capaz de controlar un mayor rendimiento en función de la relación de superposición, tamaños de escritura mayores y el comportamiento real de E/S de la carga de trabajo. Hello números anteriores supone un trabajo pendiente típico de aproximadamente cinco minutos. Es decir, una vez que se cargan los datos, se procesan y se crea un punto de recuperación en menos de cinco minutos.
 
-Estos límites se basan en nuestras pruebas, pero no pueden cubrir todas las combinaciones de E/S posibles de la aplicación. Los resultados reales pueden variar en función de la combinación de E/S de la aplicación. Para obtener mejores resultados, incluso después del planeamiento de la implementación, es aconsejable probar siempre la aplicación de forma exhaustiva mediante una conmutación por error de prueba para obtener una imagen real del rendimiento.
+Estos límites se basan en nuestras pruebas, pero no pueden cubrir todas las combinaciones de E/S posibles de la aplicación. Los resultados reales pueden variar en función de la combinación de E/S de la aplicación. Para obtener mejores resultados, incluso después de la planificación de la implementación, siempre recomendamos que realice una amplia aplicación pruebas mediante una imagen de prueba de conmutación por error tooget Hola rendimiento true.
 
-## <a name="updating-the-deployment-planner"></a>Actualización de Deployment Planner
-Para actualizar Deployment Planner, siga estos pasos:
+## <a name="updating-hello-deployment-planner"></a>Planificador de implementación de actualización Hola
+planes de implementación de hello tooupdate, Hola siguientes:
 
-1. Descargue la versión más reciente de [Azure Site Recovery Deployment Planner](https://aka.ms/asr-deployment-planner).
+1. Descargar Hola la versión más reciente de hello [planificador de implementación de Azure Site Recovery](https://aka.ms/asr-deployment-planner).
 
-2. Copie la carpeta .zip al servidor en que desea que se ejecute.
+2. Copia Hola .zip carpeta tooa el servidor que desea que toorun en.
 
-3. Extraiga la carpeta .zip.
+3. Extraiga la carpeta de .zip Hola.
 
-4. Realice cualquiera de las siguientes acciones:
- * Si la versión más reciente no contiene una corrección de la generación de perfiles y la generación de perfiles ya está en curso en la versión actual del programador, continúe con la generación de perfiles.
- * Si la versión más reciente contiene una corrección de la generación de perfiles, se recomienda detener la versión actual de la generación de perfiles y reiniciar la generación de perfiles con la nueva versión.
+4. Realice una de las siguientes de hello:
+ * Si la versión más reciente de hello no contiene una corrección de generación de perfiles y de generación de perfiles ya está en curso en la versión actual del programador de hello, continuar Hola de generación de perfiles.
+ * Si la versión más reciente de hello contienen una corrección de generación de perfiles, se recomienda que detener la generación de perfiles en su versión actual y reinicie Hola de generación de perfiles con la nueva versión de hello.
 
   >[!NOTE]
   >
-  >Al iniciar la generación de perfiles con la nueva versión, pase la misma ruta de acceso del directorio de salida, con el fin de que la herramienta anexe los datos del perfil a los archivos existentes. Para generar el informe, se usará un conjunto completo de datos de la generación de perfiles. Si pasa otro directorio de salida, se crean nuevos archivos y los datos anteriores de generación de perfiles no se usan al generar el informe.
+  >Al iniciar la generación de perfiles con hello nueva versión, pase Hola que misma ruta de acceso del directorio de salida para que hello herramienta anexa datos de perfil en Hola archivos existentes. Será un conjunto completo de datos del perfil usa informes de hello toogenerate. No se usa si pasa un directorio de salida diferente, se crean nuevos archivos y antiguo perfiles de datos de informe de hello toogenerate.
   >
-  >Cada nueva instancia de Deployment Planner es una actualización acumulativa del archivo zip. No es preciso copiar los archivos más recientes en la carpeta anterior. Se puede crear y usar una carpeta nueva.
+  >Cada nuevo programador de implementación es una actualización acumulativa del archivo .zip de Hola. No es necesario toocopy hello más reciente archivos toohello carpeta anterior. Se puede crear y usar una carpeta nueva.
 
 
 ## <a name="version-history"></a>Historial de versiones
@@ -572,7 +571,7 @@ Para actualizar Deployment Planner, siga estos pasos:
 
 Se agrega la siguiente característica nueva:
 
-* Se agregó compatibilidad con discos de gran tamaño (> 1TB) en la generación de informes. Ahora puede usar el programador de implementación para planear la replicación de máquinas virtuales que tengan tamaños de disco superiores a 1 TB (hasta 4095 GB).
+* Se agregó compatibilidad con discos de gran tamaño (> 1TB) en la generación de informes. Ahora puede utilizar la implementación planner tooplan replicación para máquinas virtuales que tengan tamaños de disco superiores a 1 TB (hasta 4095 GB).
 Para más información, consulte [Compatibilidad con discos de gran tamaño en Azure Site Recovery](https://azure.microsoft.com/en-us/blog/azure-site-recovery-large-disks/)
 
 
@@ -581,7 +580,7 @@ Actualización: 9 de mayo de 2017
 
 Se agrega la siguiente característica nueva:
 
-* Se ha agregado la compatibilidad con discos administrados en la generación de informes. El número de máquinas virtuales que se pueden colocar en una cuenta de almacenamiento individual se calcula en función de si el disco administrado está seleccionado para la conmutación por error o la conmutación por error de prueba.        
+* Se ha agregado la compatibilidad con discos administrados en la generación de informes. Hello número de máquinas virtuales se puede colocar tooa único almacenamiento cuenta es calculada en función de si administra el disco está seleccionada para la conmutación por error y conmutación por error.        
 
 
 ### <a name="12"></a>1.2
@@ -589,26 +588,26 @@ Actualización: 7 de abril de 2017
 
 Se han agregado las revisiones siguientes:
 
-* Se ha agregado la comprobación del tipo de arranque (BIOS o EFI) para cada máquina virtual, a fin de determinar si la máquina virtual es compatible o incompatible a efectos de protección.
-* Se ha agregado la información del tipo de sistema operativo para cada máquina virtual en las hojas de cálculo de máquinas virtuales compatibles y máquina virtuales incompatibles.
-* La operación GetThroughput ahora se admite en las regiones de Microsoft Azure US Government y China.
+* Arranque agregado escriba comprobación (BIOS o EFI) para cada máquina virtual toodetermine si la máquina virtual de hello es compatible o incompatible para la protección de Hola.
+* SO agregado escriba información para cada máquina virtual en hello compatibles de las máquinas virtuales y hojas de cálculo de máquinas virtuales Incompatible.
+* Hola GetThroughput operación ahora es compatible con las regiones de gobierno de Estados Unidos y en Microsoft Azure de China Hola.
 * Se han agregado algunas comprobaciones más de requisitos previos para el servidor vCenter y ESXi.
-* Se genera un informe incorrecto cuando la configuración local no está establecida en inglés.
+* Se estén generando informe incorrecto cuando la configuración regional se establece toonon en inglés.
 
 
 ### <a name="11"></a>1.1
 Actualización: 9 de marzo de 2017
 
-Se han corregido los siguientes problemas:
+Hola fijo problemas siguientes:
 
-* La herramienta no puede generar perfiles de máquinas virtuales si vCenter tiene dos, o más, máquinas virtuales con el mismo nombre o dirección IP entre los distintos hosts de ESXi.
-* La copia y búsqueda se deshabilita en las hojas de cálculo Máquinas virtuales compatibles y Máquinas virtuales no compatibles.
+* herramienta de Hello no puede generar perfiles máquinas virtuales si vCenter hello tiene dos o más máquinas virtuales con Hola el mismo nombre o dirección IP a través de varios hosts de ESXi.
+* Copia y la búsqueda está deshabilitada para hojas de cálculo de hello compatibles de las máquinas virtuales y máquinas virtuales Incompatible.
 
 ### <a name="10"></a>1.0
 Actualización: 23 de febrero de 2017
 
-La versión preliminar pública 1.0 de Azure Site Recovery Deployment Planner presenta los siguientes problemas conocidos (que se solucionarán en próximas actualizaciones):
+Azure planificador de implementación de recuperación de sitio public preview de 1.0 tiene siguientes de hello conocidos problemas (toobe tratada en las próximas actualizaciones):
 
-* La herramienta funciona solo en escenarios de VMware a Azure, pero no para las implementaciones de Hyper-V a Azure. En el caso de los escenarios de Hyper-V a Azure, utilice la [herramienta de planeamiento de la capacidad de Hyper-V](./site-recovery-capacity-planning-for-hyper-v-replication.md).
-* La operación GetThroughput no se admite en las regiones de Microsoft Azure de gobierno de EE.UU. y China.
-* La herramienta no puede generar perfiles de máquinas virtuales si el servidor vCenter tiene dos, o más, máquinas virtuales con el mismo nombre o dirección IP entre los distintos hosts de ESXi. En esta versión, la herramienta omite la generación de perfiles de los nombres o direcciones IP de máquinas virtuales duplicados de VMListFile. La solución alternativa consiste en generar perfiles de las máquinas virtuales mediante un host de ESXi, en lugar del servidor vCenter. Debe ejecutar una instancia para cada host de ESXi.
+* herramienta de Hello solo funciona para escenarios de VMware en Azure, no para las implementaciones de Hyper-V en Azure. Para escenarios de Hyper-V en Azure, use hello [herramienta de planificación de capacidad de Hyper-V](./site-recovery-capacity-planning-for-hyper-v-replication.md).
+* Hola GetThroughput operación no se admite en las regiones de gobierno de Estados Unidos y en Microsoft Azure de China Hola.
+* herramienta Hello no puede generar perfiles de las máquinas virtuales si el servidor de vCenter hello tiene dos o más máquinas virtuales con Hola el mismo nombre o dirección IP a través de varios hosts de ESXi. En esta versión, herramienta de hello omite la generación de perfiles para los nombres duplicados de VM o direcciones IP en hello VMListFile. solución de Hello es tooprofile Hola máquinas virtuales mediante el uso de un host ESXi en lugar de servidor de vCenter Hola. Debe ejecutar una instancia para cada host de ESXi.

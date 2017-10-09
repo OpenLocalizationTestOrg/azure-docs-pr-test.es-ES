@@ -1,6 +1,6 @@
 ---
-title: "Poner en correlación eventos con el tiempo con Storm y HBase en HDInsight"
-description: "Aprenda a poner en correlación los eventos que llegan en distintos momentos con Storm y HBase en HDInsight."
+title: eventos de aaaCorrelate con el tiempo con Storm y HBase en HDInsight
+description: "Obtenga información acerca de cómo toocorrelate eventos que llegan en distintos momentos mediante Storm y HBase en HDInsight."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,200 +16,200 @@ ms.workload: big-data
 ms.date: 08/07/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 06630096383601e48e8f69f8553314cee42f5f3e
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: f915eef77bbda5b02bfd02ad0b5a4923ff2f4f26
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="correlate-events-that-arrive-at-different-times-using-storm-and-hbase"></a>Correlación de eventos que llegan a diferentes horas con Storm y HBase
 
-Si utiliza un almacén de datos persistente con Apache Storm, puede poner en correlación entradas de datos que llegan en distintos momentos. Por ejemplo, puede vincular eventos de inicio y cierre de sesión de una sesión de usuario para calcular cuánto tiempo duró la sesión.
+Si utiliza un almacén de datos persistente con Apache Storm, puede poner en correlación entradas de datos que llegan en distintos momentos. Por ejemplo, la vinculación de eventos de inicio de sesión y cierre de sesión de un toocalculate de sesión de usuario cómo sesión de hello tiempo duró.
 
-En este documento, obtendrá información sobre cómo crear una topología básica de Storm de C# que realice un seguimiento de los eventos de inicio y cierre de sesión de las sesiones de usuario y calcule la duración de la sesión. La topología utiliza HBase como un almacén de datos persistente. HBase también permite realizar consultas por lotes en los datos históricos para generar información adicional. Por ejemplo, la cantidad de sesiones de usuario que se iniciaron o terminaron durante un período de tiempo específico.
+En este documento, aprenderá cómo toocreate una topología básica de C# Storm que realiza el seguimiento de eventos de inicio y cierre de sesión para sesiones de usuario y calcula la duración de Hola de sesión de Hola. topología de Hello usa HBase como un almacén de datos persistente. HBase también le permite tooperform de consultas por lotes en la información adicional de hello datos históricos tooproduce. Por ejemplo, la cantidad de sesiones de usuario que se iniciaron o terminaron durante un período de tiempo específico.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-* Visual Studio y las herramientas de HDInsight para Visual Studio. Para más información, vea [Introducción al uso de las herramientas de HDInsight para Visual Studio](hdinsight-hadoop-visual-studio-tools-get-started.md).
+* Visual Studio y hello HDInsight tools para Visual Studio. Para obtener más información, consulte [Introducción al uso de herramientas de HDInsight de Hola para Visual Studio](hdinsight-hadoop-visual-studio-tools-get-started.md).
 
 * Apache Storm en clústeres de HDInsight (Windows)
 
   > [!WARNING]
-  > Aunque se admiten topologías SCP.NET en clústeres de Storm basados en Linux creados después del 28/10/2016, el SDK de HBase para el paquete de .NET disponible a partir del 28/10/2016 no funciona correctamente en HDInsight basado en Linux
+  > Aunque se admiten topologías SCP.NET en clústeres basados en Linux aluvión creados después de 10/28/2016, hello HBase SDK para el paquete de .NET disponible a partir del 28/10/2016 no funciona correctamente en HDInsight basados en Linux
 
 * Apache HBase en un clúster de HDInsight (basado en Linux o Windows).
 
   > [!IMPORTANT]
-  > Linux es el único sistema operativo que se usa en la versión 3.4 de HDInsight, o en las superiores. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+  > Linux es Hola único sistema operativo usado en HDInsight versión 3.4 o superior. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-* [Java](https://java.com) 1.7 o superior en el entorno de desarrollo. Java se utiliza para empaquetar la topología cuando se envía al clúster de HDInsight.
+* [Java](https://java.com) 1.7 o superior en el entorno de desarrollo. Java es toopackage usado Hola topología cuando llega el clúster de HDInsight de toohello enviado.
 
-  * La variable de entorno **JAVA_HOME** debe señalar al directorio que contiene Java.
-  * El directorio **%JAVA_HOME%/bin** debe estar en la ruta de acceso.
+  * Hola **JAVA_HOME** entorno debe variable punto toohello el directorio que contiene Java.
+  * Hola **%JAVA_HOME%/bin** directorio debe estar en la ruta de acceso de Hola
 
 ## <a name="architecture"></a>Arquitectura
 
-![Diagrama del flujo de datos a través de la topología](./media/hdinsight-storm-correlation-topology/correlationtopology.png)
+![Diagrama de flujo de datos de Hola a través de la topología de Hola](./media/hdinsight-storm-correlation-topology/correlationtopology.png)
 
-La correlación de eventos requiere un identificador común para el origen del evento. Por ejemplo, un id. de usuario, un id. de sesión u otra parte de los datos que a) sea única y (b) se incluya en todos los datos enviados a Storm. En este ejemplo se utiliza un valor GUID para representar un identificador de sesión.
+Correlacionar eventos requiere un identificador común para el origen del evento de Hola. Por ejemplo, un identificador de usuario, Id. de sesión u otro dispositivo de datos que sea un) único y b) incluidos en tooStorm de todos los datos enviados. Este ejemplo utiliza un toorepresent de valor GUID un identificador de sesión.
 
 Este ejemplo consta de dos clústeres de HDInsight:
 
 * HBase: almacén de datos persistente para los datos históricos
-* Storm: se utiliza para introducir datos de entrada
+* Storm: utilizar los datos entrantes tooingest
 
-Los datos se generan aleatoriamente mediante la topología de Storm y constan de los siguientes elementos:
+Hello datos generados aleatoriamente por topología aluvión de Hola y consta de hello siguientes elementos:
 
 * Id. de sesión: un GUID que identifica de forma única cada sesión
 * Evento: evento de INICIO o FINALIZACIÓN. En este ejemplo, INICIO siempre tiene lugar antes de la FINALIZACIÓN
-* Hora: hora del evento.
+* : Hola: hora del evento Hola.
 
 Estos datos se procesan y almacenan en HBase.
 
 ### <a name="storm-topology"></a>Topología de Storm
 
-Cuando se inicia una sesión, la topología recibe un evento de **INICIO** y este se registra en HBase. Cuando se recibe el evento de **FIN**, la topología recupera el evento de **INICIO** y calcula el tiempo entre los dos eventos. Después, este valor de **Duración** se almacena en HBase junto con la información del evento de **FIN**.
+Cuando se inicia una sesión, un **iniciar** evento recibe topología hello y registra tooHBase. Cuando un **final** recibe el evento, la topología de hello recupera hello **iniciar** eventos y calcula el tiempo de hello entre eventos de hello dos. Esto **duración** valor, a continuación, se almacena en HBase junto con hello **final** información del evento.
 
 > [!IMPORTANT]
-> Aunque esta topología muestra el patrón básico, una solución de producción debería tener diseño para los escenarios siguientes:
+> Mientras esta topología muestra el patrón básico de hello, una solución de producción necesitaría tootake diseño para hello los escenarios siguientes:
 >
 > * Eventos que llegan sin orden
 > * Eventos duplicados
 > * Eventos quitados
 
-La topología de ejemplo consta de los siguientes componentes:
+topología de ejemplo de Hola se compone de Hola de los componentes siguientes:
 
-* Session.cs: simula una sesión de usuario al crear un identificador de sesión aleatorio, una hora de inicio y una duración de la sesión.
+* Session.cs: simula una sesión de usuario mediante la creación de un identificador de sesión aleatorio, inicio Hola de tiempo y el tiempo de sesión dura.
 
-* Spout.cs: crea 100 sesiones, emite un evento de INICIO, espera el tiempo de espera aleatorio para cada sesión y, después, emite un evento de FINALIZACIÓN. A continuación, recicla las sesiones finalizadas para generar otras nuevas.
+* Spout.cs: crea 100 sesiones, emite un evento de inicio, espera el tiempo de espera aleatorio de Hola para cada sesión y, a continuación, emite un evento de fin. A continuación, recicla finalizó sesiones toogenerate nuevos.
 
-* HBaseLookupBolt.cs: usa el identificador de sesión para buscar información de sesión de HBase. Cuando se procesa un evento de FINALIZACIÓN, busca el evento de INICIO correspondiente y calcula la duración de la sesión.
+* HBaseLookupBolt.cs: usa toolook de Id. de sesión de hello información de sesión de HBase. Cuando se procesa un evento de fin, busca los eventos de inicio correspondiente de Hola y calcula la duración de Hola de sesión de Hola.
 
 * HBaseBolt.cs: almacena información en HBase.
 
-* TypeHelper.cs: ayuda con la conversión de tipos al leer desde HBase o escribir en él.
+* TypeHelper.cs: Ayuda con la conversión de tipos al leer / escribir tooHBase.
 
 ### <a name="hbase-schema"></a>Esquema de HBase
 
-En HBase, los datos se almacenan en una tabla con la configuración y el esquema siguiente:
+En HBase, datos de Hola se almacenan en una tabla con hello después de esquema y configuración:
 
-* Clave de fila: el identificador de sesión se utiliza como clave para las filas de esta tabla.
+* Clave de fila: Hola identificador de sesión es utilizado como clave de Hola para las filas de esta tabla.
 
-* Familia de columnas: el nombre de familia es 'cf'. Las columnas almacenadas en esta familia son:
+* Familia de columna: nombre de familia de hello es 'cf'. Las columnas almacenadas en esta familia son:
 
   * evento: INICIO o FINALIZACIÓN.
 
-  * hora: hora en milisegundos en la que se produjo el evento.
+  * tiempo: tiempo de hello en milisegundos que Hola evento se ha producido.
 
-  * duración: la duración entre los eventos de INICIO y FINALIZACIÓN.
+  * duración: Hola longitud entre eventos de inicio y finalización.
 
-* VERSIONES: la familia "cf" se establece para conservar 5 versiones de cada fila.
+* Las versiones: familia de hello 'cf' se establece tooretain 5 versiones de cada fila.
 
   > [!NOTE]
-  > Las versiones son un registro de los valores anteriores almacenados para una clave de fila específica. De forma predeterminada, HBase solo devuelve el valor de la versión más reciente de una fila. En este caso, se utiliza la misma fila para todos los eventos (INICIO y FINALIZACIÓN). Cada versión de una fila se identifica mediante el valor de marca de tiempo. Las versiones proporcionan una vista histórica de los eventos registrados para un identificador concreto.
+  > Las versiones son un registro de los valores anteriores almacenados para una clave de fila específica. De forma predeterminada, HBase sólo devuelve valor hello para la versión más reciente de Hola de una fila. En este caso, hello misma fila se utiliza para todos los eventos (inicio, fin.) de que cada versión de una fila se identifica mediante el valor de marca de tiempo de Hola. Las versiones proporcionan una vista histórica de los eventos registrados para un identificador concreto.
 
-## <a name="download-the-project"></a>Descarga del proyecto
+## <a name="download-hello-project"></a>Descargar proyecto Hola
 
-Se puede descargar un proyecto de ejemplo en [https://github.com/Azure-Samples/hdinsight-storm-dotnet-event-correlation](https://github.com/Azure-Samples/hdinsight-storm-dotnet-event-correlation).
+proyecto de ejemplo de Hola puede descargarse desde [https://github.com/Azure-Samples/hdinsight-storm-dotnet-event-correlation](https://github.com/Azure-Samples/hdinsight-storm-dotnet-event-correlation).
 
-Esta descarga contiene los proyectos de C# siguientes:
+Esta descarga contiene Hola después de proyectos de C#:
 
 * CorrelationTopology: topología de Storm de C# que emite aleatoriamente eventos de inicio y finalización para las sesiones de usuario. Cada sesión dura entre 1 y 5 minutos.
 
-* SessionInfo: aplicación de consola de C# que crea la tabla de HBase y proporciona consultas de ejemplo para devolver información acerca de los datos de sesión almacenados.
+* SessionInfo: C# aplicación de consola que crea la tabla HBase de Hola y proporciona consultas de ejemplo tooreturn información acerca de los datos de sesión almacenada.
 
-## <a name="create-the-table"></a>Cree la tabla
+## <a name="create-hello-table"></a>Crear tabla de Hola
 
-1. Abra el proyecto **SessionInfo** en Visual Studio.
+1. Abra hello **SessionInfo** proyecto en Visual Studio.
 
-2. En el **Explorador de soluciones**, haga clic con el botón derecho en el proyecto **SessionInfo** y seleccione **Propiedades**.
+2. En **el Explorador de soluciones**, contextual hello **SessionInfo** de proyecto y seleccione **propiedades**.
 
     ![Captura de pantalla del menú con propiedades seleccionadas](./media/hdinsight-storm-correlation-topology/selectproperties.png)
 
-3. Seleccione **Configuración**y, a continuación, establezca los valores siguientes:
+3. Seleccione **configuración**, a continuación, después de hello de conjunto de valores:
 
-   * HBaseClusterURL: la dirección URL del clúster de HBase. Por ejemplo, https://myhbasecluster.azurehdinsight.net.
+   * HBaseClusterURL: clúster de HBase de tooyour de dirección URL Hola. Por ejemplo, https://myhbasecluster.azurehdinsight.net.
 
-   * HBaseClusterUserName: cuenta de usuario de administrador/HTTP para el clúster
+   * HBaseClusterUserName: cuenta de usuario de administrador/HTTP hello para el clúster
 
-   * HBaseClusterPassword: contraseña de la cuenta de usuario de administrador/HTTP
+   * HBaseClusterPassword: contraseña Hola de cuenta de usuario de administrador/HTTP Hola
 
-   * HBaseTableName: nombre de la tabla que se debe utilizar con este ejemplo
+   * HBaseTableName: nombre Hola de hello tabla toouse con este ejemplo
 
-   * HBaseTableColumnFamily: nombre de la familia de columnas
+   * HBaseTableColumnFamily: nombre de familia de columna hello
 
      ![Imagen del cuadro de diálogo de configuración](./media/hdinsight-storm-correlation-topology/settings.png)
 
-4. Ejecute la solución. Cuando se le pida, seleccione la tecla 'c' para crear la tabla en el clúster de HBase.
+4. Ejecutar soluciones de Hola. Cuando se le pida, seleccione tabla de hello 'c' toocreate clave hello en el clúster de HBase.
 
-## <a name="build-and-deploy-the-storm-topology"></a>Compilar e implementar la topología de Storm
+## <a name="build-and-deploy-hello-storm-topology"></a>Compilar e implementar la topología de Storm Hola
 
-1. Abra la solución **CorrelationTopology** en Visual Studio.
+1. Abra hello **CorrelationTopology** solución en Visual Studio.
 
-2. En el **Explorador de soluciones**, haga clic con el botón derecho en el proyecto **CorrelationTopology** y seleccione Propiedades.
+2. En **el Explorador de soluciones**, contextual hello **CorrelationTopology** del proyecto y seleccione Propiedades.
 
-3. En la ventana de propiedades, seleccione **Configuración** y escriba los valores de configuración para este proyecto. Los cinco primeros valores son los mismos usados en el proyecto **SessionInfo**:
+3. En la ventana de propiedades de hello, seleccione **configuración** y escriba los valores de configuración de Hola para este proyecto. Hello 5 primeros son Hola mismos valores usan por hello **SessionInfo** proyecto:
 
-   * HBaseClusterURL: la dirección URL del clúster de HBase. Por ejemplo, https://myhbasecluster.azurehdinsight.net.
+   * HBaseClusterURL: clúster de HBase de tooyour de dirección URL Hola. Por ejemplo, https://myhbasecluster.azurehdinsight.net.
 
-   * HBaseClusterUserName: cuenta de usuario de administrador/HTTP para el clúster.
+   * HBaseClusterUserName: cuenta de usuario Hola admin/HTTP para el clúster.
 
-   * HBaseClusterPassword: contraseña de la cuenta de usuario de administrador/HTTP.
+   * HBaseClusterPassword: la contraseña de Hola de cuenta de usuario de administrador/HTTP Hola.
 
-   * HBaseTableName: nombre de la tabla que se debe utilizar con este ejemplo. Este valor es el mismo nombre de tabla que se usa en el proyecto SessionInfo.
+   * HBaseTableName: nombre de Hola de hello tabla toouse con este ejemplo. Este valor es Hola mismo nombre de la tabla como se utiliza en el proyecto de SessionInfo Hola.
 
-   * HBaseTableColumnFamily: nombre de la familia de columnas. Este valor es el mismo nombre de familia de columnas que se usa en el proyecto SessionInfo.
+   * HBaseTableColumnFamily: nombre de familia Hola columna. Este valor es Hola mismo nombre de familia de la columna tal y como se usan en hello SessionInfo proyecto.
 
    > [!IMPORTANT]
-   > No cambie HBaseTableColumnNames, ya que los valores predeterminados son los nombres que utiliza **SessionInfo** para recuperar los datos.
+   > No cambie hello HBaseTableColumnNames, tal y como valores predeterminados de hello son nombres Hola utilizados por **SessionInfo** tooretrieve datos.
 
-4. Guarde las propiedades y, a continuación, compile el proyecto.
+4. Guardar las propiedades de hello, a continuación, compile el proyecto de Hola.
 
-5. En el **Explorador de soluciones**, haga clic con el botón derecho en el proyecto y seleccione **Submit to Storm on HDInsight** (Enviar a Storm en HDInsight). Si se le solicita, introduzca las credenciales de su suscripción de Azure.
+5. En **el Explorador de soluciones**, haga clic en proyecto de Hola y seleccione **enviar tooStorm en HDInsight**. Si se le pide, escriba credenciales de hello para la suscripción de Azure.
 
-   ![Imagen del envío al elemento de menú de Storm](./media/hdinsight-storm-correlation-topology/submittostorm.png)
+   ![Imagen del programa Hola a enviar el elemento de menú toostorm](./media/hdinsight-storm-correlation-topology/submittostorm.png)
 
-6. En el cuadro de diálogo **Enviar topología** , seleccione el clúster de Storm en el que quiere implementar esta topología.
-
-   > [!NOTE]
-   > La primera vez que envíe una topología, es posible que se tarde unos segundos en recuperar el nombre de los clústeres de HDInsight.
-
-7. Una vez que se haya cargado y enviado la topología al clúster, se abrirá **Vista de topología de Storm** y se mostrará la topología en ejecución. Para actualizar los datos, seleccione **CorrelationTopology** y pulse el botón de actualización de la parte superior derecha de la página.
-
-   ![Imagen de la vista de topología](./media/hdinsight-storm-correlation-topology/topologyview.png)
-
-   Cuando la topología comience a generar datos, el valor de la columna **Emitida** se incrementará.
+6. Hola **topología enviar** cuadro de diálogo, clúster de Storm Hola seleccione desea toodeploy esta topología.
 
    > [!NOTE]
-   > Si la **Vista de topología de Storm** no se abre automáticamente, siga estos pasos para abrirla:
+   > Hello primera vez que envíe una topología, puede tardar unos segundos nombre de hello tooretrieve los clústeres de HDInsight.
+
+7. Una vez topología Hola clúster toohello cargados y enviados, Hola **aluvión de la vista de topología** se abre y muestra hello ejecutando topología. datos de hello toorefresh, seleccione hello **CorrelationTopology** y use el botón de actualización de hello en hello parte superior derecha de la página de Hola.
+
+   ![Imagen de la vista de topología de Hola](./media/hdinsight-storm-correlation-topology/topologyview.png)
+
+   Cuando la topología de hello comienza generar datos, Hola valor Hola **emitida** incrementos de columna.
+
+   > [!NOTE]
+   > Si hello **vista de topología de Storm** no se abre automáticamente, use Hola siguientes tooopen de pasos:
    >
    > 1. Desde el **Explorador de soluciones**, expanda **Azure** y **HDInsight**.
-   > 2. Haga clic con el botón derecho en el clúster de Storm que está ejecutando la topología y, después, seleccione **Ver topologías de Storm**
+   > 2. Clúster de Storm Hola de menú contextual que Hola topología se ejecutan en y, a continuación, seleccione **vista aluvión de topologías**
 
-## <a name="query-the-data"></a>Consultar los datos
+## <a name="query-hello-data"></a>Consultar datos de Hola
 
-Una vez que se han emitido los datos, siga los pasos siguientes para consultar los datos.
+Una vez que se ha emitido los datos, utilice Hola seguir los pasos tooquery Hola datos.
 
-1. Vuelva al proyecto **SessionInfo** . Si no está ejecutando, inicie una nueva instancia de este.
+1. Devolver toohello **SessionInfo** proyecto. Si no está ejecutando, inicie una nueva instancia de este.
 
-2. Cuando se le pida, seleccione **s** para buscar el evento de INICIO. Se le pedirá que escriba una hora de inicio y finalización para definir un intervalo de tiempo. Solo se devolverán los eventos que se encuentren entre estas dos horas.
+2. Cuando se le pida, seleccione **s** toosearch para eventos de inicio. Está tooenter solicitada un inicio y finalización tiempo toodefine un intervalo de tiempo - se devuelven sólo los eventos entre estos dos veces.
 
-    Utilice el siguiente formato al introducir las horas de inicio y finalización: HH: MM y 'am' o 'pm'. Por ejemplo, 11:20 pm.
+    Dar formato al escribir inicio Hola siguiente Hola de uso y de finalización: hh: mm y 'm' o 'CP'. Por ejemplo, 11:20 pm.
 
-    Para devolver los eventos registrados, use una hora de inicio anterior a la implementación de la topología de Storm y una hora de finalización actual. Los datos devueltos contienen entradas similares al siguiente texto:
+    tooreturn registran eventos, use una hora de inicio de antes de hello aluvión de topología implementó y una hora de finalización de ahora. datos de valor devuelto de Hello contienen entradas toohello similar siguiente texto:
 
         Session e6992b3e-79be-4991-afcf-5cb47dd1c81c started at 6/5/2015 6:10:15 PM. Timestamp = 1433527820737
 
-La búsqueda de eventos de FINALIZACIÓN funciona igual que para los eventos de INICIO. Sin embargo, los eventos de FINALIZACIÓN se generan aleatoriamente entre 1 y 5 minutos después del evento de INICIO. Es posible que tenga que probar algunos intervalos de tiempo para encontrar los eventos de FINALIZACIÓN. Los eventos de FINALIZACIÓN también contendrán la duración de la sesión; la diferencia entre la hora de INICIO del evento y la hora de FINALIZACIÓN del evento. Este es un ejemplo de datos de eventos de FINALIZACIÓN:
+Buscando Hola de final eventos funciona igual como eventos de inicio. Sin embargo, los eventos de fin se generan aleatoriamente entre 1 y 5 minutos después de evento de inicio de Hola. Puede que tenga tootry eventos de fin de hello toofind de intervalos de tiempo unos. Eventos de fin también contienen durante Hola Hola sesión - diferencia Hola entre la hora del evento de inicio de Hola y hora de finalización del evento. Este es un ejemplo de datos de eventos de FINALIZACIÓN:
 
     Session fc9fa8e6-6892-4073-93b3-a587040d892e lasted 2 minutes, and ended at 6/5/2015 6:12:15 PM
 
 > [!NOTE]
-> Aunque especifique los valores de tiempo en la hora local, la consulta devolverá las horas en UTC.
+> Aunque son valores de tiempo de Hola que especifica en hora local, hora de hello procedente de la consulta de hello está en UTC.
 
-## <a name="stop-the-topology"></a>Detención de la topología
+## <a name="stop-hello-topology"></a>Detener la topología de Hola
 
-Cuando esté listo para detener la topología, vuelva al proyecto **CorrelationTopology** proyecto en Visual Studio. En la **Storm Topology View** (Vista de topologías de Storm), seleccione la topología y, a continuación, utilice el botón **Kill** (Terminar) situado en la parte superior de la vista de topología.
+Cuando esté listo toostop topología de hello, devolver toohello **CorrelationTopology** proyecto en Visual Studio. Hola **vista de topología de Storm**, seleccione la topología de hello y, a continuación, usar hello **Kill** situado en la parte superior de Hola de vista de topología de Hola.
 
 ## <a name="delete-your-cluster"></a>Eliminación del clúster
 

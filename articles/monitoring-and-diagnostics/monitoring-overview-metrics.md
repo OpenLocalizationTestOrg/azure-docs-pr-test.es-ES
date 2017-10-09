@@ -1,5 +1,5 @@
 ---
-title: "Información general sobre las métricas en Microsoft Azure | Microsoft Docs"
+title: "aaaOverview de métricas en Microsoft Azure | Documentos de Microsoft"
 description: "Información general sobre las métricas y su uso en Microsoft Azure"
 author: johnkemnetz
 manager: orenr
@@ -14,110 +14,110 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/02/2017
 ms.author: johnkem
-ms.openlocfilehash: 3aff83ab2c157a18f4af6200a79bae7e5d6f0ea2
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 2b97f51e0554dae95a929241ae1f0e25e5c215ef
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="overview-of-metrics-in-microsoft-azure"></a>Información general sobre las métricas en Microsoft Azure
-En este artículo se explica qué son las métricas en Microsoft Azure, sus beneficios y cómo comenzar a utilizarlas.  
+Este artículo describe qué son las métricas en Microsoft Azure, sus ventajas y cómo toostart con ellos.  
 
 ## <a name="what-are-metrics"></a>¿Qué son las métricas?
-Azure Monitor permite utilizar telemetría para obtener información sobre el rendimiento y el estado de las cargas de trabajo en Azure. El tipo de telemetría de datos de Azure más importante son las métricas (también denominadas contadores de rendimiento) emitidas por la mayoría de los recursos de Azure. Azure Monitor proporciona varias maneras de configurar y usar estas métricas para supervisar y solucionar problemas.
+Monitor de Azure permite la visibilidad de toogain de telemetría de tooconsume en el rendimiento de Hola y el estado de las cargas de trabajo en Azure. Hola el tipo más importante de los datos de telemetría de Azure es métricas hello (también denominadas contadores de rendimiento) emitidas por Azure más recursos. Monitor de Azure proporciona tooconfigure de varias maneras y consumir estas métricas para la supervisión y solución de problemas.
 
 ## <a name="what-can-you-do-with-metrics"></a>¿Para qué sirven las métricas?
-Las métricas son una valiosa fuente de telemetría y le permiten realizar las siguientes tareas:
+Las métricas son una valiosa fuente de telemetría y habilitar hello toodo siguientes tareas:
 
-* **Realizar un seguimiento del rendimiento** del recurso (por ejemplo, una máquina virtual, un sitio web o una aplicación lógica) mediante el trazado de las métricas en un gráfico de portal y anclando ese gráfico a un panel.
-* **Recibir una notificación de un problema** que afecta al rendimiento del recurso cuando una métrica cruza un umbral determinado.
+* **Un seguimiento del rendimiento de hello** del recurso (por ejemplo, una aplicación de la máquina virtual, sitio Web o lógica) al trazar sus métricas en un gráfico de portal y fijar ese tooa gráfico del panel.
+* **Recibir notificaciones de un problema** que impactos Hola rendimiento de su recurso cuando una métrica supera un umbral determinado.
 * **Configurar acciones automatizadas**, como escalar automáticamente un recurso o activar un runbook cuando una métrica cruza un umbral determinado.
 * **Realizar análisis avanzados** o elaborar informes de tendencias de rendimiento o de uso de los recursos.
-* **Archivar** el historial de rendimiento o estado de los recursos **para fines de cumplimiento y auditoría**.
+* **Archivo** Hola historial de rendimiento o mantenimiento de su recurso **de cumplimiento o auditoría** fines.
 
-## <a name="what-are-the-characteristics-of-metrics"></a>¿Cuáles son las características de las métricas?
-Las métricas presentan las características siguientes:
+## <a name="what-are-hello-characteristics-of-metrics"></a>¿Cuáles son las características de Hola de métricas?
+Las métricas tienen Hola siguientes características:
 
-* Todas las métricas tienen una **frecuencia de 1 minuto**. Recibe un valor de métrica del recurso cada minuto, lo que proporciona visibilidad en tiempo real del estado y la integridad del recurso.
-* Las métricas están **disponibles de forma inmediata**. No tiene que habilitarlas ni configurar diagnósticos adicionales.
-* Puede acceder a **30 días del historial** de cada métrica. Puede buscar rápidamente las tendencias recientes y mensuales en el rendimiento o el estado del recurso.
+* Todas las métricas tienen una **frecuencia de 1 minuto**. Recibirá un valor métrico de cada minuto desde el recurso, lo que le ofrece visibilidad en tiempo real en estado de Hola y el estado de su recurso casi.
+* Las métricas están **disponibles de forma inmediata**. No necesita tooopt en o configurar diagnósticos adicionales.
+* Puede acceder a **30 días del historial** de cada métrica. Puede buscar rápidamente las tendencias de mensual y recientes de hello en el rendimiento de Hola o estado del recurso.
 
 También puede:
 
-* Configurar una **regla de alerta de métrica que envía una notificación o realiza una acción automatizada** cuando la métrica cruza el umbral establecido. El escalado automático es una acción automatizada especial que permite escalar horizontalmente los recursos para satisfacer las solicitudes entrantes o las cargas en el sitio web o los recursos de procesos. Puede definir una regla de configuración de escalado automático para escalar o reducir horizontalmente si una métrica supera un umbral.
+* Configurar una métrica **alerta regla que envía una notificación o toma la acción automatizada** cuando métrica Hola cruza el umbral de Hola que ha configurado. Escalado automático es una acción automatizada especial que permite tooscale espera las solicitudes entrantes de recursos toomeet o carga en su sitio Web o los recursos informáticos. Puede configurar una configuración de regla tooscale o alejar en función de una métrica de traspasar un umbral de escalado automático.
 
-* **Redirigir** todas las métricas a Application Insights o Log Analytics (OMS) para habilitar análisis instantáneos, búsquedas y alertas personalizadas de los datos de métricas de los recursos. También puede transmitir métricas a un centro de eventos, lo que permite redirigirlas a Azure Stream Analytics o a aplicaciones personalizadas para realizar análisis casi en tiempo real. Puede configurar la transmisión del centro de eventos con la configuración de diagnóstico.
+* **Ruta** todas las métricas Application Insights o análisis de registros (OMS) tooenable instantánea analytics, búsqueda y alertas personalizadas a datos de métricas de sus recursos. También puede transmitir métricas tooan concentrador de eventos, lo que le toothen enrutarlas tooAzure análisis de transmisiones o toocustom aplicaciones para el análisis casi en tiempo real. Puede configurar la transmisión del centro de eventos con la configuración de diagnóstico.
 
-* **Archivar métricas en almacenamiento** para una retención más prolongada o para crear informes sin conexión. Puede redirigir las métricas a Azure Blob Storage al configurar opciones de diagnóstico para el recurso.
+* **Archivar métricas toostorage** de retención más largo o usarlos para informes fuera de línea. Es posible distribuir el almacenamiento de blobs de métricas tooAzure al configurar opciones de diagnóstico para el recurso.
 
-* Detectar fácilmente todas las métricas, acceder a ellas y **verlas** en Azure Portal al seleccionar un recurso y trazarlo en un gráfico.
+* Detectar fácilmente, tener acceso a, y **ver todas las métricas** a través del portal de Azure cuando seleccione un recurso y trazar métricas de hello en un gráfico de Hola.
 
-* **Consumir** las métricas a través de las nuevas API de REST de Azure Monitor.
+* **Consumir** a través de las métricas de Hola Hola nuevas API de REST de Monitor de Azure.
 
-* **Consultar** métricas con los cmdlets de PowerShell o la API de REST multiplataforma.
+* **Consulta** métricas mediante el uso de cmdlets de PowerShell de Hola u Hola API de REST de multiplataforma.
 
   ![Enrutamiento de métricas en Azure Monitor](./media/monitoring-overview-metrics/Metrics_Overview_v4.png)
 
-## <a name="access-metrics-via-the-portal"></a>Acceso a métricas a través del portal
-A continuación, mostramos un breve tutorial sobre cómo crear un gráfico de métricas mediante Azure Portal.
+## <a name="access-metrics-via-hello-portal"></a>Métricas de acceso a través del portal de Hola
+Aquí te mostramos una visita guiada rápida de cómo toocreate un gráfico de métrica mediante el uso de Hola portal de Azure.
 
-### <a name="to-view-metrics-after-creating-a-resource"></a>Visualización de métricas después de crear un recurso
-1. Abra Azure Portal.
+### <a name="tooview-metrics-after-creating-a-resource"></a>métricas de tooview después de crear un recurso
+1. Hola abrir portal de Azure.
 2. Cree un sitio web de Azure App Service.
-3. Después de crear un sitio web, vaya a la hoja **Información general** del sitio web.
-4. Puede ver las nuevas métricas como un icono de **Supervisión**. Además, podrá editar el icono y seleccionar más métricas.
+3. Después de crear un sitio Web, vaya a toohello **Introducción** hoja del sitio Web de Hola.
+4. Puede ver las nuevas métricas como un icono de **Supervisión**. A continuación, puede editar mosaico hello y seleccionar métricas más.
 
    ![Métricas de un recurso en Azure Monitor](./media/monitoring-overview-metrics/MetricsOverview1.png)
 
-### <a name="to-access-all-metrics-in-a-single-place"></a>Acceso a todas las métricas en un solo lugar
-1. Abra Azure Portal.
-2. Vaya a la nueva pestaña **Supervisión** y seleccione en ella la opción **Métricas**.
-3. Seleccione la suscripción, el grupo de recursos y el nombre del recurso en la lista desplegable.
-4. Vea la lista de métricas disponibles. Luego, seleccione la métrica que le interesa y trácela.
-5. Puede anclarla al panel haciendo clic en la opción para anclar que se encuentra en la esquina superior derecha.
+### <a name="tooaccess-all-metrics-in-a-single-place"></a>tooaccess todas las métricas en un solo lugar
+1. Hola abrir portal de Azure.
+2. Navegue toohello nueva **Monitor** pestaña y seleccione y, a continuación, Hola **métricas** opción aparecen debajo de él.
+3. Seleccione la suscripción, el grupo de recursos y el nombre de hello del recurso de Hola de lista desplegable de Hola.
+4. Ver la lista de métricas disponibles de Hola. A continuación, seleccione la métrica de hello interesa y trazar.
+5. Puede anclar lo toohello panel haciendo clic en el pin de hello en la esquina superior derecha de Hola.
 
    ![Acceso a todas las métricas en un solo lugar en Azure Monitor](./media/monitoring-overview-metrics/MetricsOverview2.png)
 
 > [!NOTE]
-> Puede acceder a las métricas en el nivel de host de máquinas virtuales (basadas en Azure Resource Manager) y conjuntos de escalas de máquina virtual sin ninguna configuración adicional de diagnóstico. Estas nuevas métricas a nivel de host están disponibles para las instancias de Windows y Linux. Estas métricas no deben confundirse con las de nivel de SO invitado a las que se accede al activar Diagnósticos de Azure en máquinas virtuales o conjuntos de escalas de máquina virtual. Para obtener más información sobre la configuración de Diagnósticos de Azure, vea [¿Qué es Diagnósticos de Microsoft Azure?](../azure-diagnostics.md)
+> Puede acceder a las métricas en el nivel de host de máquinas virtuales (basadas en Azure Resource Manager) y conjuntos de escalas de máquina virtual sin ninguna configuración adicional de diagnóstico. Estas nuevas métricas a nivel de host están disponibles para las instancias de Windows y Linux. Estas métricas no son toobe confundirse con hello las métricas de nivel de sistema operativo invitado que tienen toowhen acceso que activar diagnósticos de Azure en sus máquinas virtuales o conjuntos de escalas de máquina virtual. toolearn más información acerca de la configuración de diagnósticos, vea [¿qué es Microsoft Azure Diagnostics](../azure-diagnostics.md).
 >
 >
 
-## <a name="access-metrics-via-the-rest-api"></a>Acceso a métricas a través de la API de REST
-Se puede acceder a las métricas de Azure a través de las API de Azure Monitor. Hay dos API que facilitan la detección de métricas y el acceso a ellas:
+## <a name="access-metrics-via-hello-rest-api"></a>Métricas de acceso a través de la API de REST de Hola
+Las métricas de Azure son accesibles a través de hello las API de supervisión de Azure. Hay dos API que facilitan la detección de métricas y el acceso a ellas:
 
-* Utilice la [API de REST de definiciones de métricas de Azure Monitor](https://msdn.microsoft.com/library/mt743621.aspx) para acceder a la lista de métricas disponibles para un servicio.
-* Use la [API de REST de métricas de Azure Monitor](https://msdn.microsoft.com/library/mt743622.aspx) para acceder a los datos de métricas reales.
+* Hola de uso [API de REST de definiciones de métrica de supervisión de Azure](https://msdn.microsoft.com/library/mt743621.aspx) tooaccess Hola lista de métricas que están disponibles para un servicio.
+* Hola de uso [API de REST de métricas de supervisión de Azure](https://msdn.microsoft.com/library/mt743622.aspx) tooaccess Hola datos de métricas real.
 
 > [!NOTE]
-> En este artículo se tratan las métricas a través de la [API nueva para las métricas](https://msdn.microsoft.com/library/dn931930.aspx) para recursos de Azure. La versión de API para las nuevas definiciones de métricas es 2016-03-01 y la versión de la API de métricas es 2016-09-01. Se puede acceder a las métricas y definiciones de métricas heredadas con la versión de API 2014-04-01.
+> Este artículo tratan las métricas de Hola a través de hello [nueva API para las métricas de](https://msdn.microsoft.com/library/dn931930.aspx) para recursos de Azure. versión de API de Hola para definiciones de métrica nueva API de hello es 2016-03-01 y versión de Hola para las métricas de API es 2016-09-01. las métricas y las definiciones de métrica heredado de Hola pueden obtenerse con hello API versión 2014-04-01.
 >
 >
 
-Para ver un tutorial más detallado mediante las API de REST de Azure Monitor, vea el [Tutorial sobre la API de REST de Azure Monitor](monitoring-rest-api-walkthrough.md).
+Para ver un tutorial más detallado usando hello las API de REST de Monitor de Azure, consulte [tutorial de API de REST de Azure Monitor](monitoring-rest-api-walkthrough.md).
 
 ## <a name="export-metrics"></a>Exportación de métricas
-Puede ir a la hoja **Configuración de diagnóstico** de la pestaña **Supervisión** y ver las opciones de exportación de métricas. Puede seleccionar las métricas (y los registros de diagnóstico) para redirigirlas a Blob Storage, Event Hubs u OMS para aquellos casos de uso que se han mencionado anteriormente en este artículo.
+Puede ir toohello **configuración de diagnóstico** hoja en hello **Monitor** ficha y ver opciones de exportación de Hola para las métricas. Puede seleccionar las métricas (y registros de diagnóstico) toobe enrutan tooBlob almacenamiento, los concentradores de eventos de tooAzure o tooOMS para casos de uso que se mencionaron anteriormente en este artículo.
 
  ![Opciones de exportación de métricas en Azure Monitor](./media/monitoring-overview-metrics/MetricsOverview3.png)
 
 Puede configurar esto a través de plantillas de Resource Manager, [PowerShell](insights-powershell-samples.md), la [CLI de Azure](insights-cli-samples.md) o las [API de REST](https://msdn.microsoft.com/library/dn931943.aspx).
 
 ## <a name="take-action-on-metrics"></a>Realización de acciones en las métricas
-Para recibir notificaciones o realizar acciones automatizadas en datos métricos, puede configurar reglas de alerta o los ajustes de escalado automático.
+notificaciones de tooreceive o automatizada de realizar acciones en datos de métrica, puede configurar reglas de alerta o configuración de escalado automático.
 
 ### <a name="configure-alert-rules"></a>Configuración de reglas de alerta
-Puede configurar reglas de alerta basadas en las métricas. Estas reglas de alerta pueden comprobar si una métrica ha superado un umbral determinado. Después, pueden enviarle una notificación por correo electrónico o activar un webhook que podrá utilizar para ejecutar un script personalizado. También puede utilizar el webhook para configurar integraciones de productos de terceros.
+Puede configurar reglas de alerta basadas en las métricas. Estas reglas de alerta pueden comprobar si una métrica ha superado un umbral determinado. A continuación, pueden notificar por correo electrónico o activan un webhook que puede ser utilizado toorun cualquier secuencia de comandos personalizada. También puede utilizar las integraciones de hello webhook tooconfigure producto de otro fabricante.
 
  ![Métricas y reglas de alerta en Azure Monitor](./media/monitoring-overview-metrics/MetricsOverview4.png)
 
 ### <a name="autoscale-your-azure-resources"></a>Escalado automático de recursos de Azure
-Algunos recursos de Azure pueden escalar o reducir horizontalmente varias instancias para controlar las cargas de trabajo. El escalado automático se aplica a App Service (Web Apps), conjuntos de escalas de máquina virtual y servicios Cloud Services de Azure clásicos. Puede configurar reglas de escalado automático para escalar o reducir horizontalmente cuando una métrica determinada que afecta a su carga de trabajo supere un umbral especificado. Para obtener más información, vea la [información general sobre la funcionalidad de escalado automático](monitoring-overview-autoscale.md).
+Algunos recursos de Azure admiten Hola escalado o de varios toohandle instancias las cargas de trabajo. Escalado automático aplica tooApp servicio (aplicaciones Web), conjuntos de escalas de máquina virtual y los servicios de nube de Azure clásico. Puede configurar tooscale de reglas de escalado automático o cuando una determinada métrica que afecta a la carga de trabajo supera un umbral que especifique. Para obtener más información, vea la [información general sobre la funcionalidad de escalado automático](monitoring-overview-autoscale.md).
 
  ![Métricas y escalado automático en Azure Monitor](./media/monitoring-overview-metrics/MetricsOverview5.png)
 
 ## <a name="learn-about-supported-services-and-metrics"></a>Más información sobre los servicios y las métricas compatibles
-Azure Monitor es una nueva infraestructura de métricas. Proporciona compatibilidad para los siguientes servicios de Azure en Azure Portal y la nueva versión de la API de Azure Monitor:
+Azure Monitor es una nueva infraestructura de métricas. Admite Hola después de los servicios de Azure en hello Azure hello y portal de nueva versión de hello API de Monitor de Azure:
 
 * Máquinas virtuales (basadas en Azure Resource Manager)
 * Conjuntos de escalado de máquinas virtuales
@@ -134,11 +134,11 @@ Azure Monitor es una nueva infraestructura de métricas. Proporciona compatibili
 * Redes: puertas de enlace de aplicaciones
 * Search
 
-Puede ver una lista detallada de todos los servicios admitidos y sus métricas en [Métricas de Azure Monitor: métricas admitidas por tipo de recurso](monitoring-supported-metrics.md).
+Puede ver una lista detallada de todos los servicios de hello compatibles y sus métricas en [métricas de supervisión de Azure--métricas admitidas por el tipo de recurso](monitoring-supported-metrics.md).
 
 ## <a name="next-steps"></a>Pasos siguientes
-Consulte los vínculos de este artículo. Además, puede obtener información sobre los siguientes temas:  
+Consulte los vínculos de toohello a lo largo de este artículo. Además, puede obtener información sobre los siguientes temas:  
 
 * [Métricas comunes de escalado automático](insights-autoscale-common-metrics.md)
-* [Cómo crear reglas de alertas](insights-alerts-portal.md)
+* [¿Cómo toocreate las reglas de alerta](insights-alerts-portal.md)
 * [Análisis de registros desde Azure Storage con Log Analytics](../log-analytics/log-analytics-azure-storage.md)

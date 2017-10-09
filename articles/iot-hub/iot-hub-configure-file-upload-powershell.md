@@ -1,6 +1,6 @@
 ---
-title: Uso de Azure PowerShell para configurar la carga de archivos | Microsoft Docs
-description: "Cómo usar los cmdlets de Azure PowerShell para configurar su centro de IoT para habilitar cargas de archivos desde dispositivos conectados. Incluye información sobre cómo configurar la cuenta de Azure Storage."
+title: cargar el archivo aaaUse hello Azure PowerShell tooconfigure | Documentos de Microsoft
+description: "Cómo toouse hello Azure PowerShell cmdlets tooconfigure el IoT hub tooenable cargas de archivos desde dispositivos conectados. Incluye información acerca de cómo configurar la cuenta de almacenamiento de Azure de destino de Hola."
 services: iot-hub
 documentationcenter: 
 author: dominicbetts
@@ -14,42 +14,42 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: a72bda794b2da3e044c46249559610d06b1f1843
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 9dcdc41693c09cece411921b30c91d7b3db47395
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configure-iot-hub-file-uploads-using-powershell"></a>Configuración de cargas de archivos de IoT Hub mediante PowerShell
 
 [!INCLUDE [iot-hub-file-upload-selector](../../includes/iot-hub-file-upload-selector.md)]
 
-Para usar la [funcionalidad de carga de archivos en IoT Hub][lnk-upload], primero debe asociar una cuenta de Azure Storage con su centro. Puede usar una cuenta de almacenamiento existente o crear una nueva.
+Hola toouse [funcionalidad de carga de archivos en el centro de IoT][lnk-upload], primero debe asociar una cuenta de almacenamiento de Azure con el centro de IoT. Puede usar una cuenta de almacenamiento existente o crear una nueva.
 
-Para completar este tutorial, necesitará lo siguiente:
+toocomplete este tutorial, necesita Hola siguientes:
 
 * Una cuenta de Azure activa. Si no tiene ninguna, puede crear una [cuenta gratuita][lnk-free-trial] en tan solo unos minutos.
 * [Cmdlets de Azure PowerShell][lnk-powershell-install].
-* Un centro de Azure IoT Hub. Si no dispone de un centro de IoT, puede usar el [cmdlet New-AzureRmIoTHub][lnk-powershell-iothub] para crear uno o usar el portal para [crear un centro de IoT][lnk-portal-hub].
-* Una cuenta de almacenamiento de Azure. Si no tiene una cuenta de almacenamiento de Azure, puede usar los [cmdlets de PowerShell de Azure Storage] [lnk-powershell-storage] para crear una o usar el portal para [crear una cuenta de almacenamiento][lnk-portal-storage].
+* Un centro de Azure IoT. Si no dispone de un centro de IoT, puede usar hello [cmdlet New-AzureRmIoTHub] [ lnk-powershell-iothub] toocreate uno o utilice Hola portal demasiado[crear un centro de IoT] [ lnk-portal-hub].
+* Una cuenta de almacenamiento de Azure. Si no tiene una cuenta de almacenamiento de Azure, puede usar hello [cmdlets de PowerShell de almacenamiento de Azure] [ lnk-powershell-storage] toocreate uno o utilice Hola portal demasiado[crear una cuenta de almacenamiento] [ lnk-portal-storage].
 
 ## <a name="sign-in-and-set-your-azure-account"></a>Inicio de sesión y configuración de la cuenta de Azure
 
-Inicie sesión en su cuenta de Azure y seleccione la suscripción.
+Inicie sesión en tooyour cuenta de Azure y seleccione su suscripción.
 
-1. En el símbolo del sistema de PowerShell, ejecute el cmdlet **Login-AzureRmAccount**:
+1. En el símbolo del sistema de PowerShell hello, ejecute hello **AzureRmAccount de inicio de sesión** cmdlet:
 
     ```powershell
     Login-AzureRmAccount
     ```
 
-1. Si tiene varias suscripciones de Azure, el inicio de sesión en Azure le concede acceso a todas las suscripciones de Azure asociadas a sus credenciales. Use el siguiente comando para mostrar las suscripciones de Azure que están disponibles para su uso:
+1. Si tiene varias suscripciones de Azure, iniciar sesión en tooAzure concede acceso tooall hello Azure suscripciones asociadas con sus credenciales. Usar hello siguiente comando toolist hello Azure suscripciones disponibles para usted toouse:
 
     ```powershell
     Get-AzureRMSubscription
     ```
 
-    Use el siguiente comando para seleccionar la suscripción que desea usar para ejecutar los comandos para administrar su centro de IoT. Puede usar el nombre de la suscripción o el identificador de la salida del comando anterior:
+    Usar hello después de suscripción de tooselect de comando que desea toouse toorun Hola comandos toomanage su centro de IoT. Puede usar el nombre de la suscripción de Hola o Id. de salida de hello del comando anterior hello:
 
     ```powershell
     Select-AzureRMSubscription `
@@ -58,9 +58,9 @@ Inicie sesión en su cuenta de Azure y seleccione la suscripción.
 
 ## <a name="retrieve-your-storage-account-details"></a>Recuperación de los detalles de la cuenta de almacenamiento
 
-En los siguientes pasos se supone que ha creado la cuenta de almacenamiento mediante el modelo de implementación de **Resource Manager**, y no el modelo **clásico**.
+Hello siguientes pasos se supone que creó su cuenta de almacenamiento con hello **el Administrador de recursos** modelo de implementación y no Hola **clásico** modelo de implementación.
 
-Para configurar cargas de archivos desde sus dispositivos, necesitará la cadena de conexión de una cuenta de almacenamiento de Azure. Esta cuenta debe encontrarse en la misma suscripción que IoT Hub. También necesitará el nombre de un contenedor de blobs de la cuenta de almacenamiento. Use el siguiente comando para recuperar las claves de la cuenta de almacenamiento:
+archivo tooconfigure cargas de los dispositivos, deberá cadena de conexión de Hola para una cuenta de almacenamiento de Azure. cuenta de almacenamiento de Hello debe estar en hello misma suscripción que el centro de IoT. También necesita Hola nombre de un contenedor de blob en la cuenta de almacenamiento de Hola. Usar hello después comando tooretrieve las claves de cuenta de almacenamiento:
 
 ```powershell
 Get-AzureRmStorageAccountKey `
@@ -68,11 +68,11 @@ Get-AzureRmStorageAccountKey `
   -ResourceGroupName {your storage account resource group}
 ```
 
-Anote el valor de la clave de almacenamiento **key1**. La necesitará en los pasos siguientes.
+Tome nota de hello **key1** valor de clave de cuenta de almacenamiento. Necesita Hola pasos.
 
 Puede usar un contenedor de blobs existente para sus cargas de archivos o crear uno nuevo:
 
-* Para mostrar los contenedores de blobs existentes en su cuenta de almacenamiento, use los siguientes comandos:
+* contenedores blob toolist Hola existentes en la cuenta de almacenamiento, utilice Hola siguientes comandos:
 
     ```powershell
     $ctx = New-AzureStorageContext `
@@ -81,7 +81,7 @@ Puede usar un contenedor de blobs existente para sus cargas de archivos o crear 
     Get-AzureStorageContainer -Context $ctx
     ```
 
-* Para crear un contenedor de blobs en su cuenta de almacenamiento, use los siguientes comandos:
+* toocreate un contenedor de blobs en la cuenta de almacenamiento, Hola de uso siguientes comandos:
 
     ```powershell
     $ctx = New-AzureStorageContext `
@@ -95,21 +95,21 @@ Puede usar un contenedor de blobs existente para sus cargas de archivos o crear 
 
 ## <a name="configure-your-iot-hub"></a>Configuración del centro de IoT
 
-Ahora puede configurar el centro de IoT para habilitar la [funcionalidad de carga de archivos] [lnk-upload] con los datos de su cuenta de almacenamiento.
+Ahora puede configurar su tooenable de centro de IoT [funcionalidad de carga de archivos] [ lnk-upload] con los detalles de la cuenta de almacenamiento.
 
-La configuración requiere los siguientes valores:
+configuración de Hello requiere Hola siguientes valores:
 
-**Contenedor de almacenamiento:**: un contenedor de blobs en una cuenta de almacenamiento de Azure en la suscripción actual para asociar con su centro de IoT. En la sección anterior, recuperó la información necesaria de la cuenta de almacenamiento. IoT Hub genera automáticamente identificadores URI de SAS con permisos de escritura en este contenedor de blobs para los dispositivos que se utilizarán cuando se carguen archivos.
+**Contenedor de almacenamiento**: un contenedor de blobs en una cuenta de almacenamiento de Azure con su tooassociate de suscripción de Azure actual con el centro de IoT. Recuperar información de cuenta de almacenamiento necesario Hola Hola sección anterior. Centro de IoT genera automáticamente el URI de SAS con el contenedor de blobs de toothis de permisos de escritura para dispositivos toouse cuando cargan archivos.
 
 **Receive notifications for uploaded files** (Recibir notificaciones para archivos cargados): habilite o deshabilite las notificaciones de carga de archivos.
 
-**SAS TTL**(TTL SAS): este valor es el periodo de vida de los URI de SAS que IoT Hub devuelve al dispositivo. De forma predeterminada, está establecido en una hora.
+**SAS TTL**: esta opción es hello time-to-live de hello SAS URI devuelto toohello dispositivo por centro de IoT. Establece la hora de tooone predeterminada.
 
-**File notification settings default TTL**(TTL predeterminado de configuración de notificación de archivos): el periodo de vida de una notificación de carga de archivos antes de que caduque. De forma predeterminada, está establecido en un día.
+**Notificación de configuración de TTL predeterminado de archivos**: Hola tiempo de vida de una notificación de carga de archivo antes de que expire. Establezca tooone día de forma predeterminada.
 
-**File notification maximum delivery count**(Número máximo de entregas de notificaciones de archivo): el número de veces que IoT Hub tratará de entregar una notificación de carga de archivos. De forma predeterminada, está establecido en 10.
+**Número máximo de entregas de notificación de archivos**: número de Hola de tiempo de espera hello toodeliver de intentos de centro de IoT una notificación de carga de archivo. Establecer too10 de forma predeterminada.
 
-Use el siguiente cmdlet de PowerShell para configurar la carga de archivos en su centro de IoT:
+Usar hello después la configuración de carga de archivo de hello tooconfigure de cmdlet de PowerShell en el centro de IoT:
 
 ```powershell
 Set-AzureRmIotHub `
@@ -125,19 +125,19 @@ Set-AzureRmIotHub `
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para más información sobre las funcionalidades de carga de archivos de IoT Hub, consulte [Carga de archivos desde un dispositivo][lnk-upload].
+Para obtener más información acerca de las capacidades de carga de archivo Hola de centro de IoT, consulte [cargar archivos desde un dispositivo][lnk-upload].
 
-Siga estos vínculos para más información sobre la administración de Azure IoT Hub:
+Siga estos toolearn de vínculos más acerca de cómo administrar el centro de IoT de Azure:
 
 * [Administración masiva de dispositivos de IoT][lnk-bulk]
 * [Métricas de IoT Hub][lnk-metrics]
 * [Supervisión de operaciones][lnk-monitor]
 
-Para explorar aún más las funcionalidades de IoT Hub, consulte:
+toofurther explorar las capacidades de Hola de centro de IoT, vea:
 
 * [Guía para desarrolladores de IoT Hub][lnk-devguide]
 * [Simular un dispositivo con IoT Edge][lnk-iotedge]
-* [Protección total de la solución de IoT][lnk-securing]
+* [Proteger la solución de IoT de hello masa][lnk-securing]
 
 [lnk-upload]: iot-hub-devguide-file-upload.md
 

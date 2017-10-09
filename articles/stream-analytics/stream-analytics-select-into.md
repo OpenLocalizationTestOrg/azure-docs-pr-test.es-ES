@@ -1,5 +1,5 @@
 ---
-title: "Depuración de consultas de Azure Stream Analytics mediante SELECT INTO | Microsoft Docs"
+title: "las consultas aaaDebug análisis de transmisiones de Azure mediante el uso de SELECT INTO | Documentos de Microsoft"
 description: Datos de ejemplo de consulta intermedia mediante instrucciones SELECT INTO en Stream Analytics
 keywords: 
 services: stream-analytics
@@ -15,37 +15,37 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
 ms.author: jeffstok
-ms.openlocfilehash: b05222c6d6f4fc2c5b847dd75ff7e29352cd538c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 27e41af1a6ea06b4509d07a3a67087490d0ec1fd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="debug-queries-by-using-select-into-statements"></a>Depuración de consultas mediante instrucciones SELECT INTO
 
-En el procesamiento de datos en tiempo real, puede ser útil conocer qué aspecto tendrán los datos en el medio de la consulta. Como las entradas o pasos de un trabajo de Azure Stream Analytics se pueden leer muchas veces, puede escribir instrucciones SELECT INTO adicionales. Si lo hace, se generan daros intermedios en el almacenamiento y puede inspeccionar la integridad de los datos, igual que hacen las *variables de inspección* cuando se depura un programa.
+En el procesamiento de datos en tiempo real, saber qué datos Hola parece en medio de Hola de hello consulta puede ser útil. Como las entradas o pasos de un trabajo de Azure Stream Analytics se pueden leer muchas veces, puede escribir instrucciones SELECT INTO adicionales. Si lo hace, genera los datos intermedios en el almacenamiento y le permite inspeccionar la exactitud de Hola de datos de hello, al igual que *inspeccionar variables* hace cuando se depura un programa.
 
-## <a name="use-select-into-to-check-the-data-stream"></a>Uso de SELECT INTO para comprobar el flujo de datos
+## <a name="use-select-into-toocheck-hello-data-stream"></a>Use SELECT INTO toocheck Hola flujo de datos
 
-La siguiente consulta de ejemplo en un trabajo de Azure Stream Analytics tiene una entrada de secuencias, dos entradas de datos de referencia y una salida a Azure Table Storage. La consulta combina datos del centro de eventos y dos blobs de referencia para obtener la información de nombre y categoría:
+Hello consulta de ejemplo siguiente en un trabajo de análisis de transmisiones de Azure tiene un flujo entrada, dos entradas de datos de referencia y un almacenamiento de tabla tooAzure de salida. consulta de Hello combina datos de concentrador de eventos de Hola y dos blobs tooget Hola nombre y categoría de información de referencia:
 
 ![Ejemplo de consulta SELECT INTO](./media/stream-analytics-select-into/stream-analytics-select-into-query1.png)
 
-Tenga en cuenta que el trabajo está en ejecución, pero no se genera ningún evento en la salida. En el icono **Supervisión**, que se muestra aquí, puede ver que la entrada genera datos, pero no sabe qué paso de la cláusula **JOIN** ha hecho que se descarten todos los eventos.
+Tenga en cuenta que se ejecuta el trabajo de hello, pero no se genera ningún evento de salida de hello. En hello **supervisión** icono, se muestra a continuación, puede ver que Hola entrada produce datos, pero no sabe qué paso de hello **UNIR** iniciadas todos Hola toobe de eventos que se quita.
 
-![Icono de Supervisión](./media/stream-analytics-select-into/stream-analytics-select-into-monitor.png)
+![icono de supervisión de Hola](./media/stream-analytics-select-into/stream-analytics-select-into-monitor.png)
  
-En esta situación, puede agregar unas cuantas instrucciones SELECT INTO adicionales para "registrar" los resultados intermedios de JOIN y los datos que se leen de la entrada.
+En esta situación, puede agregar algunas instrucciones de SELECT INTO adicionales demasiado "iniciar" hello los resultados intermedios de la combinación y datos de Hola que se leen de la entrada de Hola.
 
 En este ejemplo, hemos agregado dos nuevas "salidas temporales". Estas pueden ser cualquier receptor que desee. Aquí usamos Azure Storage como ejemplo:
 
 ![Adición de instrucciones SELECT INTO adicionales](./media/stream-analytics-select-into/stream-analytics-select-into-outputs.png)
 
-A continuación, puede volver a escribir la consulta del modo siguiente:
+A continuación, puede volver a escribir consultas Hola similar al siguiente:
 
 ![Consulta SELECT INTO reescrita](./media/stream-analytics-select-into/stream-analytics-select-into-query2.png)
 
-Ahora, inicie de nuevo el trabajo y deje que se ejecute durante unos minutos. A continuación, consulte temp1 y temp2 con Visual Studio Cloud Explorer para generar las siguientes tablas:
+Ahora iniciar nuevo trabajo de Hola y permitir su ejecución durante unos minutos. A continuación, consultar temp1 y temp2 con hello tooproduce de Visual Studio en la nube Explorer las tablas siguientes:
 
 **tabla temp1**
 ![SELECT INTO tabla temp1](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-1.png)
@@ -53,21 +53,21 @@ Ahora, inicie de nuevo el trabajo y deje que se ejecute durante unos minutos. A 
 **tabla temp2**
 ![SELECT INTO tabla temp2](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-2.png)
 
-Como puede ver, temp1 y temp2 tienen ambas datos, y la columna de nombre está rellenada correctamente en temp2. Sin embargo, dado que todavía no hay ningún dato en la salida, algo sucede:
+Como puede ver, temp1 y temp2 tienen datos y columna de nombre de Hola se rellena correctamente en temp2. Sin embargo, dado que todavía no hay ningún dato en la salida, algo sucede:
 
 ![Tabla SELECT INTO output1 sin datos](./media/stream-analytics-select-into/stream-analytics-select-into-out-table-1.png)
 
-Mediante el muestreo de los datos, puede estar casi seguro de que el problema está relacionado con la segunda cláusula JOIN. Puede descargar los datos de referencia del blob y echar un vistazo:
+Mediante el muestreo de datos de hello, puede estar casi seguro de que el problema de hello está Hola segundo combinación. Puede descargar los datos de referencia de Hola de blob de Hola y eche un vistazo:
 
 ![Tabla de referencia de SELECT INTO](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-1.png)
 
-Como puede ver, el formato del GUID en los datos de esta referencia es distinto del formato de la columna [from] en temp2. Por eso los datos no llegan a output1 como estaba previsto.
+Como puede ver, formato de Hola de hello GUID en estos datos de referencia es distinto del formato de Hola de hello [columna temp2 from]. Por eso no llegan datos hello en output1 según lo previsto.
 
-Puede corregir el formato de datos, cargarlo para que haga referencia al blob e intentarlo de nuevo:
+Puede corregir el formato de datos de hello, cargar blob tooreference y vuelva a intentarlo:
 
 ![Tabla temporal de SELECT INTO](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-2.png)
 
-Esta vez, los datos en la salida tienen el formato adecuado y se han rellenado según lo previsto.
+En esta ocasión, datos de hello en la salida de hello formatea y rellena según lo previsto.
 
 ![Tabla final de SELECT INTO](./media/stream-analytics-select-into/stream-analytics-select-into-final-table.png)
 
@@ -78,9 +78,9 @@ Para obtener ayuda adicional, pruebe nuestro [foro de Azure Stream Analytics](ht
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-* [Introducción a Azure Stream Analytics](stream-analytics-introduction.md)
+* [Introducción tooAzure análisis de transmisiones](stream-analytics-introduction.md)
 * [Introducción al uso de Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
-* [Escalación de trabajos de Azure Stream Analytics](stream-analytics-scale-jobs.md)
-* [Referencia del lenguaje de consulta de Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Escalación de trabajos de Análisis de transmisiones de Azure](stream-analytics-scale-jobs.md)
+* [Referencia del lenguaje de consulta de Análisis de transmisiones de Azure](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Referencia de API de REST de administración de Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 

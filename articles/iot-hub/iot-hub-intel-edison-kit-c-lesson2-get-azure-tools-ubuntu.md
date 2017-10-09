@@ -1,5 +1,5 @@
 ---
-title: "Conexión de Intel Edison (C) a Azure IoT: Lección 2: Herramientas de Azure (Ubuntu) | Microsoft Docs"
+title: "Connect Intel Edison (C) tooAzure IoT - lección 2: herramientas de Azure (Ubuntu) | Documentos de Microsoft"
 description: "Instale Python y la interfaz de la línea de comandos de Azure (CLI de Azure) en Ubuntu."
 services: iot-hub
 documentationcenter: 
@@ -17,11 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 897ab63af85a1f830ed49084ce7c3e74c84a4cc9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a7691c13d43aa6dfff24adf2b470728d5266713e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-azure-tools-ubuntu-1604"></a>Obtención de las herramientas de Azure (Ubuntu 16.04)
 > [!div class="op_single_selector"]
@@ -30,23 +30,23 @@ ms.lasthandoff: 07/11/2017
 > * [macOS 10.10][macos]
 
 ## <a name="what-you-will-do"></a>Lo que hará
-Instalación de la interfaz de la línea de comandos de Azure (CLI de Azure) Si tiene problemas, busque soluciones en [esta página][troubleshooting].
+Instalar hello Azure interfaz de línea de comandos (CLI de Azure). Si tiene problemas, buscar soluciones en hello [solución de problemas de página][troubleshooting].
 
 ## <a name="what-you-will-learn"></a>Lo qué aprenderá
 En este artículo, aprenderá lo siguiente:
-* Cómo instalar la CLI de Azure.
-* Cómo agregar un subgrupo de IoT de la CLI de Azure.
+* ¿Cómo tooinstall Hola CLI de Azure.
+* ¿Cómo tooadd un subgrupo de IoT de hello CLI de Azure.
 
 ## <a name="what-you-need"></a>Lo que necesita
 * Un equipo con Ubuntu con conexión a Internet.
 * Una suscripción de Azure activa. Si no tiene ninguna, puede crear una [cuenta de evaluación gratuita](http://azure.microsoft.com/pricing/free-trial/) en tan solo unos minutos.
 
-## <a name="install-the-azure-cli"></a>Instalación de la CLI de Azure
-La CLI de Azure proporciona una experiencia de línea de comandos multiplataforma en Azure, lo que le permite trabajar directamente desde la línea de comandos para aprovisionar y administrar los recursos.
+## <a name="install-hello-azure-cli"></a>Instalar Hola CLI de Azure
+Hola CLI de Azure proporciona una experiencia multiplataforma de línea de comandos de Azure, permitiéndole toowork directamente desde la línea de comandos tooprovision y administrar los recursos.
 
-Para instalar la CLI de Azure más recientr, siga estos pasos:
+tooinstall Hola CLI más reciente de Azure, siga estos pasos:
 
-1. Ejecute los siguientes comandos en una ventana de terminal. Este proceso puede tardar cinco minutos en instalar la CLI de Azure.
+1. Ejecute hello siga los comandos en una ventana de terminal. Es posible que tarde cinco minutos tooinstall Hola CLI de Azure.
 
    ```bash
    sudo apt-get update
@@ -57,18 +57,18 @@ Para instalar la CLI de Azure más recientr, siga estos pasos:
    sudo pip install --upgrade azure-cli
    sudo pip install --upgrade azure-cli-iot
    ```
-2. Compruebe la instalación ejecutando el comando siguiente:
+2. Comprobar la instalación de hello ejecutando Hola siguiente comando:
 
    ```bash
    az iot -h
    ```
 
-Si la instalación se realiza correctamente, verá el siguiente resultado.
+Debería ver la siguiente Hola de salida si la instalación de hello es correcta.
 
 ![Resultado que indica una instalación correcta](media/iot-hub-intel-edison-lessons/lesson2/az_iot_help_ubuntu.png)
 
 ## <a name="summary"></a>Resumen
-Ha instalado la CLI de Azure. La siguiente tarea consiste en crear la identidad de Azure IoT Hub y de dispositivos mediante la CLI de Azure.
+Ha instalado Hola CLI de Azure. La siguiente tarea es toocreate su centro de IoT de Azure y la identidad del dispositivo a través Hola CLI de Azure.
 
 ## <a name="next-steps"></a>Pasos siguientes
 [Creación de una instancia de IoT Hub y registro de Intel Edison][create-your-iot-hub-and-register-intel-edison]

@@ -1,5 +1,5 @@
 ---
-title: "Introducción a Azure App Service Environment"
+title: "entornos del servicio de aplicación tooAzure aaaIntroduction"
 description: "Introducción breve de Azure App Service Environment"
 services: app-service
 documentationcenter: na
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: e21c4c3e2c212d86a0dbe2211564c2e3a1acf819
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 9261041333cf59374974a039edf89c4983c45cdd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="introduction-to-app-service-environments"></a>Introducción a Azure App Service Environment #
+# <a name="introduction-tooapp-service-environments"></a>Entornos del servicio tooApp Introducción #
  
 ## <a name="overview"></a>Información general ##
 
@@ -33,20 +33,20 @@ Las instancias de App Service Environment (ASE) son adecuadas para cargas de tra
 
 Los clientes pueden crear varias instancias de ASE en una o en varias regiones de Azure. Esta flexibilidad hace que las instancias de ASE sean perfectas para capas de aplicación sin estado de escalado horizontal que apoyan a cargas de trabajo RPS elevadas.
 
-Las instancias de ASE están aisladas para ejecutar únicamente las aplicaciones de un solo cliente y siempre se implementan en una red virtual. Los clientes tienen un mayor control sobre el tráfico de red entrante y saliente de la aplicación. Las aplicaciones pueden establecer conexiones seguras a alta velocidad por redes virtuales a los recursos corporativos locales.
+ASEs están aislada toorunning sólo las aplicaciones de un único cliente y siempre se implementan en una red virtual. Los clientes tienen un mayor control sobre el tráfico de red entrante y saliente de la aplicación. Las aplicaciones pueden establecer conexiones seguras a alta velocidad sobre los recursos corporativos de las redes privadas virtuales tooon local.
 
-Todos los artículos e instrucciones detalladas sobre las instancias de App Service Environment están disponibles en el archivo [README para App Service Environment][ASEReadme]:
+Todos los artículos y cómo tooinstructions sobre ASEs están disponibles en hello [archivo Léame para los entornos del servicio de aplicación][ASEReadme]:
 
-* Las instancias de ASE habilitan el hospedaje de aplicaciones de gran escala con acceso seguro a la red. Para obtener más información, consulte [Profundización de AzureCon](https://azure.microsoft.com/documentation/videos/azurecon-2015-deploying-highly-scalable-and-secure-web-and-mobile-apps/) en instancias de ASE.
-* Varias instancias de ASE pueden utilizarse para escalar horizontalmente. Para más información, consulte [Configuración de una huella de aplicaciones distribuidas geográficamente](https://azure.microsoft.com/documentation/articles/app-service-app-service-environment-geo-distributed-scale/).
-* Las instancias de ASE pueden utilizarse para configurar la arquitectura de seguridad, como se muestra en Profundización de AzureCon. Para ver cómo se ha configurado la arquitectura de seguridad mostrada en la inmersión en AzureCon, consulte el artículo sobre cómo implementar una [arquitectura de seguridad en capas](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-app-service-environment-layered-security) con entornos de App Service.
+* Las instancias de ASE habilitan el hospedaje de aplicaciones de gran escala con acceso seguro a la red. Para obtener más información, vea hello [AzureCon profundización](https://azure.microsoft.com/documentation/videos/azurecon-2015-deploying-highly-scalable-and-secure-web-and-mobile-apps/) en ASEs.
+* ASEs varias pueden ser utilizado tooscale horizontalmente. Para obtener más información, consulte [cómo tooset de una superficie de aplicaciones distribuidas geográficamente](https://azure.microsoft.com/documentation/articles/app-service-app-service-environment-geo-distributed-scale/).
+* ASEs pueden tooconfigure utilizadas arquitectura de seguridad, como se muestra en hello AzureCon a fondo. toosee cómo se configuró la arquitectura de seguridad de Hola se muestra en hello AzureCon a fondo, vea hello [artículo sobre cómo tooimplement una arquitectura de seguridad por capas](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-app-service-environment-layered-security) con los entornos del servicio de aplicación.
 * Las aplicaciones que se ejecutan en ASE pueden tener su acceso validado por dispositivos de subida como firewalls de aplicación web (WAF). Para obtener más información, consulte [Configuración de WAF para entornos de App Service](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-app-service-environment-web-application-firewall).
 
 ## <a name="dedicated-environment"></a>Entorno dedicado ##
 
-Una instancia de ASE está dedicada exclusivamente a una sola suscripción y puede hospedar 100 instancias. El rango puede abarcar 100 instancias en un único plan de App Service, 100 planes de App Service de una sola instancia o cualquier opción intermedia.
+Es un ASE dedicado exclusivamente tooa sola suscripción y pueden hospedar 100 instancias. intervalo de Hello puede abarcar 100 instancias en un único planes de servicio de aplicaciones de servicio de aplicaciones plan too100 instancia única y todo el rango intermedio.
 
-Una instancia de ASE se compone de front-end y trabajos. Los servidores front-end son responsables de la terminación HTTP/HTTPS y del equilibrio de carga automático de la solicitudes de aplicación en una instancia de ASE. Los servidores front-end se agregan automáticamente ya que los planes de App Service en la instancia de ASE se escalan horizontalmente.
+Una instancia de ASE se compone de front-end y trabajos. Los servidores front-end son responsables de la terminación HTTP/HTTPS y del equilibrio de carga automático de la solicitudes de aplicación en una instancia de ASE. Servidores front-end se agrega automáticamente como Hola planes de servicio de aplicaciones en hello ASE se escalan horizontalmente.
 
 Los trabajos son roles que hospedan las aplicaciones del cliente. Los trabajos están disponibles en tres tamaños fijos:
 
@@ -54,29 +54,29 @@ Los trabajos son roles que hospedan las aplicaciones del cliente. Los trabajos e
 * Dos núcleos, 7 GB de RAM
 * Cuatro núcleos, 14 GB de RAM
 
-Los clientes no necesitan administrar los servidores front-end ni los trabajos. Toda la infraestructura se agrega automáticamente cuando los clientes escalan horizontalmente sus planes de App Service. Cuando se crean o reducen horizontalmente planes de App Service en un ASE, la infraestructura necesaria se agrega o elimina según corresponda.
+Los clientes no necesitan los trabajadores y toomanage servidores front-end. Toda la infraestructura se agrega automáticamente cuando los clientes escalan horizontalmente sus planes de App Service. Como servicio de aplicaciones se crean o se escala en un ASE planes, Hola necesario infraestructura se agrega o quita según corresponda.
 
-Hay una tarifa plana mensual para una instancia de ASE que paga por la infraestructura y no cambia con el tamaño de la instancia de ASE. Además, existe un costo por núcleo de plan de App Service. Todas las aplicaciones hospedadas en una instancia de ASE están en el SKU de precios Aislado. Para más información sobre los precios de una instancia de ASE, consulte la página [Precios de App Service][Pricing] y revise las opciones disponibles para ASE.
+Hay una tarifa mensual plana para un ASE que paga por la infraestructura de hello y no cambia con tamaño de Hola de hello ASE. Además, existe un costo por núcleo de plan de App Service. Todas las aplicaciones hospedadas en un ASE están en hello aislada de precios de SKU. Para obtener información sobre los precios de un ASE, vea hello [de precios de servicio de aplicaciones] [ Pricing] página y revise las opciones disponibles de Hola para ASEs.
 
 ## <a name="virtual-network-support"></a>Compatibilidad con redes virtuales ##
 
-Una instancia de ASE únicamente puede crearse en una red virtual de Azure Resource Manager. Para obtener más información acerca de redes virtuales de Azure, consulte las [Preguntas más frecuentes sobre las redes virtuales de Azure](https://azure.microsoft.com/documentation/articles/virtual-networks-faq/). Una instancia de ASE siempre existe en una red virtual y, más concretamente, dentro de una subred de una red virtual. Puede usar las características de seguridad de las redes virtuales para controlar las comunicaciones de red entrantes y salientes de las aplicaciones.
+Una instancia de ASE únicamente puede crearse en una red virtual de Azure Resource Manager. toolearn más información acerca de redes virtuales de Azure, vea hello [preguntas más frecuentes sobre las redes virtuales de Azure](https://azure.microsoft.com/documentation/articles/virtual-networks-faq/). Una instancia de ASE siempre existe en una red virtual y, más concretamente, dentro de una subred de una red virtual. Puede usar las características de seguridad de redes virtuales toocontrol entrante y saliente hello las comunicaciones para las aplicaciones de red.
 
 Una instancia de ASE puede tener conexión a Internet con una dirección IP pública o tener una conexión interna solo con la dirección de un equilibrador de carga interno (ILB) de Azure.
 
-Los [grupos de seguridad de red][NSGs] restringen las comunicaciones de red entrantes a la subred donde reside una instancia de ASE. Puede usar grupos de seguridad de red para ejecutar aplicaciones tras dispositivos y servicios ascendentes, como WAF y proveedores de SaaS de red.
+[Grupos de seguridad de red] [ NSGs] restringir la subred de toohello las comunicaciones de red de entrada en el que reside un ASE. Puede usar NSG toorun aplicaciones detrás de servicios como WAFs y los proveedores de SaaS de red y dispositivos de nivel superior.
 
-Las aplicaciones, además, suelen requerir acceso a recursos corporativos, como bases de datos internas y servicios web. Si implementa la instancia de ASE en una red virtual que tiene una conexión VPN a la red local, las aplicaciones de la instancia de ASE podrán tener acceso a los recursos locales. La capacidad es cierta independientemente de si la red privada virtual es una VPN de [sitio a sitio](https://azure.microsoft.com/documentation/articles/vpn-gateway-site-to-site-create/) o de [Azure ExpressRoute](http://azure.microsoft.com/services/expressroute/).
+Las aplicaciones también a menudo necesitan tooaccess los recursos corporativos, como servicios web y bases de datos internas. Si implementa ASE de hello en una red virtual que tiene una red VPN local de toohello de conexión, aplicaciones de Hola Hola ASE pueden tener acceso a los recursos locales de Hola. Esta capacidad es cierto independientemente de si hello VPN es un [sitio a sitio](https://azure.microsoft.com/documentation/articles/vpn-gateway-site-to-site-create/) o [ExpressRoute de Azure](http://azure.microsoft.com/services/expressroute/) VPN.
 
 Para más información sobre cómo funciona ASE con redes virtuales y redes locales, consulte [Consideraciones de red de App Service Environment][ASENetwork].
 
 ## <a name="app-service-environment-v1"></a>App Service Environment v1 ##
 
-App Service Environment tiene dos versiones: ASEv1 y ASEv2. La información anterior se basa en ASEv2. En esta sección se muestran las diferencias entre ASEv1 y ASEv2. 
+App Service Environment tiene dos versiones: ASEv1 y ASEv2. Hola información anterior se basa en ASEv2. Esta sección se muestra hello diferencias entre ASEv1 y ASEv2. 
 
-En ASEv1, debe administrar todos los recursos de forma manual. Esto incluye los front-end, los trabajos y las direcciones IP utilizadas para SSL basada en IP. Antes de escalar horizontalmente el plan de App Service, primero debe escalar horizontalmente el grupo de trabajo en el que desea hospedarlo.
+En ASEv1, necesita toomanage todos Hola recursos manualmente. Que incluye servidores front-end de hello, los trabajadores y direcciones IP usadas para SSL basado en IP. Antes de que puede escalar horizontalmente su plan de servicio de aplicaciones, necesita toofirst escalado, grupo de trabajo de hello en el que desea toohost.
 
-ASEv1 utiliza un modelo de precios diferente al de ASEv2. En ASEv1, paga por cada núcleo asignado. Esto incluye los núcleos usados por servidores front-end y trabajos que no hospedan ninguna carga de trabajo. En ASEv1, el tamaño de escala máxima predeterminada de una instancia de ASE es de 55 hosts en total. Esto incluye servidores front-end y trabajos. Una ventaja de ASEv1 es que se puede implementar en una red virtual clásica y en una red virtual de Resource Manager. Para más información sobre ASEv1, consulte [Introducción a App Service Environment v1][ASEv1Intro].
+ASEv1 utiliza un modelo de precios diferente al de ASEv2. En ASEv1, paga por cada núcleo asignado. Esto incluye los núcleos usados por servidores front-end y trabajos que no hospedan ninguna carga de trabajo. En ASEv1, tamaño de escala máximo predeterminado de Hola de un ASE es 55 total de hosts. Esto incluye servidores front-end y trabajos. Una tooASEv1 ventaja es que se puede implementar en una red virtual clásica y una red virtual del Administrador de recursos. toolearn más información sobre ASEv1, consulte [introducción de v1 entono][ASEv1Intro].
 
 <!--Links-->
 [Intro]: ./intro.md

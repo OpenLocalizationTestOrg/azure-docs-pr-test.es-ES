@@ -1,6 +1,6 @@
 ---
-title: 'Supervisar y mejorar el rendimiento: Azure SQL Database | Microsoft Docs'
-description: "Azure SQL Database ofrece herramientas de rendimiento para ayudarle a identificar áreas que pueden mejorar el rendimiento actual de las consultas."
+title: aaaMonitor y mejorar el rendimiento - base de datos de SQL de Azure | Documentos de Microsoft
+description: "Hola que la base de datos SQL Azure proporciona un rendimiento de las herramientas toohelp identificar áreas que pueden mejorar el rendimiento de la consulta actual."
 services: sql-database
 documentationcenter: 
 author: stevestein
@@ -15,63 +15,63 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 07/19/2016
 ms.author: sstein
-ms.openlocfilehash: 522b932ab055978c52f085dbaa36095bb6b77962
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 84b8a1bc62698a29deb49e765f208bd7e14d0870
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="monitor-and-improve-performance"></a>Supervisión y mejora del rendimiento
 Azure SQL Database identifica posibles problemas en la base de datos y recomienda las acciones que pueden mejorar el rendimiento de la carga de trabajo mediante recomendaciones y acciones de optimización inteligentes.
 
-Para revisar el rendimiento de la base de datos, use el icono **Rendimiento** de la página Información general o desplácese hacia abajo hasta la sección "Soporte técnico y solución de problemas":
+tooreview el rendimiento de la base de datos, use hello **rendimiento** de mosaico en la página de información general de Hola o navegar hacia abajo demasiado "Compatibilidad con + solución de problemas" sección:
 
    ![Vista Rendimiento](./media/sql-database-performance/entries.png)
 
-En la sección "Soporte técnico y solución de problemas", puede usar las páginas siguientes:
+En la sección "Compatibilidad con + solución de problemas" de Hola, puede usar Hola siguientes páginas:
 
 
-1. [Información general de rendimiento](#performance-overview) para supervisar el rendimiento de la base de datos. 
-2. [Recomendaciones de rendimiento](#performance-recommendations) para buscar las recomendaciones de rendimiento que pueden mejorar el rendimiento de la carga de trabajo.
-3. [Información de rendimiento de consultas](#query-performance-insight) para buscar las consultas que consumen más recursos.
-4. [Ajuste automático](#automatic-tuning) para permitir que Azure SQL Database optimice automáticamente la base de datos.
+1. [Información general sobre rendimiento](#performance-overview) toomonitor rendimiento de la base de datos. 
+2. [Recomendaciones de rendimiento](#performance-recommendations) toofind recomendaciones de rendimiento que pueden mejorar el rendimiento de la carga de trabajo.
+3. [Consultar información de rendimiento de](#query-performance-insight) toofind las consultas que consumen más de los recursos.
+4. [El ajuste automático](#automatic-tuning) toolet base de datos de SQL Azure optimice automáticamente la base de datos.
 
 ## <a name="performance-overview"></a>Información general de rendimiento
 Esta vista ofrece un resumen del rendimiento de la base de datos y le ayuda con la optimización y solución de problemas de rendimiento. 
 
 ![Rendimiento](./media/sql-database-performance/performance.png)
 
-* El icono de **Recomendaciones** proporciona un desglose de recomendaciones de ajuste para la base de datos (se muestran las tres primeras recomendaciones si hay más). Haga clic en este icono para acceder a **[Recomendaciones de rendimiento](#performance-recommendations)**. 
-* El icono de **Tuning activity** (Actividad de optimización) proporciona un resumen de las acciones de optimización en curso y finalizadas para la base de datos, lo que le brinda una vista rápida del historial de la actividad de optimización. Si hace clic en este icono irá a la vista completa del historial de optimización de la basa de datos.
-* El icono **Ajuste automático** muestra la [configuración de ajuste automático](sql-database-automatic-tuning-enable.md) de la base de datos (las opciones de ajuste que se aplican automáticamente a la base de datos). Al hacer clic en este icono se abre el cuadro de diálogo de configuración de automatización.
-* El icono de **Consultas de bases de datos** muestra el resumen del rendimiento de consultas de la base de datos (uso general de DTU y consultas que consumen más recursos). Haga clic en este icono para acceder a **[Información de rendimiento de consultas](#query-performance-insight)**.
+* Hola **recomendaciones** mosaico proporciona un desglose de recomendaciones para la base de datos de optimización (tres primeras se muestran recomendaciones si hay más). Al hacer clic en este icono le lleva demasiado**[recomendaciones de rendimiento](#performance-recommendations)**. 
+* Hola **para la optimización actividad** mosaico proporciona un resumen de hello en curso y completada las acciones para la base de datos para la optimización, lo que le ofrece una vista rápida de historial de Hola de actividad para la optimización. Al hacer clic en este icono, se le toohello completa para la optimización vista Historial para la base de datos.
+* Hola **ajuste automático** icono muestra hello [ajuste automático de la configuración](sql-database-automatic-tuning-enable.md) para la base de datos (optimización de opciones de base de datos de tooyour automáticamente aplicado). Al hacer clic en este icono abre el cuadro de diálogo de configuración de automatización de Hola.
+* Hola **consultas de base de datos** mosaico muestra Hola resumen del rendimiento de las consultas de hello para la base de datos (general DTU uso y los principales consultas que consumen recursos). Al hacer clic en este icono le lleva demasiado**[Query Performance Insight](#query-performance-insight)**.
 
 ## <a name="performance-recommendations"></a>Recomendaciones de rendimiento
-En esta página se proporcionan [recomendaciones de ajuste](sql-database-advisor.md) inteligentes que pueden mejorar el rendimiento de la base de datos. Los siguientes tipos de recomendaciones se muestran en esta página:
+En esta página se proporcionan [recomendaciones de ajuste](sql-database-advisor.md) inteligentes que pueden mejorar el rendimiento de la base de datos. Hola siguientes tipos de recomendaciones se muestra en esta página:
 
-* Recomendaciones sobre qué índices se deben crear o quitar.
-* Recomendaciones cuando se identifican problemas del esquema en la base de datos.
+* Obtener recomendaciones sobre qué índices toocreate o drop.
+* Recomendaciones cuando se identifiquen problemas del esquema de base de datos de Hola.
 * Recomendaciones en caso de consultas que puedan beneficiarse de consultas parametrizadas.
 
 ![Rendimiento](./media/sql-database-performance/recommendations.png)
 
-También puede encontrar el historial completo de las acciones de ajuste que se aplicaron en el pasado.
+También puede encontrar el historial completo de las acciones que se aplicaron en hello pasado para la optimización.
 
-Obtenga información sobre cómo buscar y aplicar recomendaciones de rendimiento en el artículo [Búsqueda y aplicación de recomendaciones de rendimiento](sql-database-advisor-portal.md).
+Obtenga información acerca de cómo toofind apply recomendaciones de rendimiento en [buscar y aplicar las recomendaciones de rendimiento](sql-database-advisor-portal.md) artículo.
 
 ## <a name="automatic-tuning"></a>Ajuste automático
-Las bases de datos de Azure SQL Database puede optimizar automáticamente el rendimiento de base de datos mediante la aplicación de [recomendaciones de rendimiento](sql-database-advisor.md). Para obtener más información, lea el [artículo Ajuste automático](sql-database-automatic-tuning.md). Para habilitarlo, lea [cómo habilitar el ajuste automático](sql-database-automatic-tuning-enable.md).
+Las bases de datos de Azure SQL Database puede optimizar automáticamente el rendimiento de base de datos mediante la aplicación de [recomendaciones de rendimiento](sql-database-advisor.md). más información, lea toolearn [artículo optimización automática](sql-database-automatic-tuning.md). tooenable, leer [cómo el ajuste automático de tooenable](sql-database-automatic-tuning-enable.md).
 
 ## <a name="query-performance-insight"></a>Información de rendimiento de consultas
-[Información de rendimiento de consultas](sql-database-query-performance.md) permite dedicar menos tiempo a la solución de problemas de rendimiento de bases de datos, ya que proporciona:
+[Consultar información de rendimiento de](sql-database-query-performance.md) permite toospend menos tiempo a la solución de problemas de rendimiento de la base de datos al proporcionar:
 
 * Información más detallada sobre el consumo de recursos (DTU) de las bases de datos. 
-* Las consultas que más CPU consumen, que potencialmente pueden ajustarse para mejorar el rendimiento. 
-* La posibilidad de profundizar en los detalles de una consulta. 
+* Hola que consuman más CPU consultas, que pueden optimizarse para mejorar el rendimiento. 
+* Hola capacidad toodrill hacia abajo en los detalles de Hola de una consulta. 
 
   ![panel de rendimiento](./media/sql-database-query-performance/performance.png)
 
-Obtenga más información sobre esta página en el artículo **[Cómo usar información de rendimiento de consultas](sql-database-query-performance.md)**.
+Obtener más información acerca de esta página en el artículo de hello  **[cómo toouse Query Performance Insight](sql-database-query-performance.md)**.
 
 ## <a name="additional-resources"></a>Recursos adicionales
 * [Guía de rendimiento de Azure SQL Database](sql-database-performance-guidance.md)

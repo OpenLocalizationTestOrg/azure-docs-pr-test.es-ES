@@ -1,6 +1,6 @@
 ---
-title: "Codificación avanzada con el flujo de trabajo de Media Encoder premium | Microsoft Docs"
-description: "Aprenda a codificar con el flujo de trabajo del Codificador multimedia Premium. Los ejemplos de código están escritos en C# y utilizan el SDK de Servicios multimedia para .NET."
+title: "aaaAdvanced codificación con el flujo de trabajo de Media Encoder Premium | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo tooencode con flujo de trabajo de Premium de codificación de medios. Ejemplos de código están escritos en C# y usar hello SDK de servicios multimedia para. NET."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: juliako
-ms.openlocfilehash: 2b03853bf07e05c07fd730d5e8a8563963887921
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 5a1c3d019a5c8fbf9bda2da751a7eff4c4907d97
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>Codificación avanzada con el flujo de trabajo del Codificador multimedia Premium
 > [!NOTE]
@@ -29,47 +29,47 @@ ms.lasthandoff: 08/29/2017
 Si tiene preguntas sobre el codificador premium, envíe un correo a mepd en Microsoft.com.
 
 ## <a name="overview"></a>Información general
-Servicios multimedia de Microsoft Azure presenta el procesador multimedia de **Flujo de trabajo del Codificador multimedia Premium** . Este procesador ofrece funciones de codificación avanzadas para sus flujos de trabajo de Premium a petición.
+Servicios de multimedia de Microsoft Azure está presentando hello **flujo de trabajo de Premium de codificación de medios** procesador multimedia. Este procesador ofrece funciones de codificación avanzadas para sus flujos de trabajo de Premium a petición.
 
-Los siguientes temas describen los detalles relacionados con el **flujo de trabajo premium de Media Encoder**:
+Hello en los temas siguientes describen detalles relacionados con demasiado**flujo de trabajo de Premium de codificación de medios**:
 
-* [Formatos que admite el flujo de trabajo del Codificador multimedia Premium](media-services-premium-workflow-encoder-formats.md) : trata los formatos de archivo y los códecs que admite el **flujo de trabajo del Codificador multimedia Premium**.
-* En [Información general y comparación de codificadores multimedia a petición de Azure](media-services-encode-asset.md) se comparan las funcionalidades de codificación de **Flujo de trabajo del Codificador multimedia** y **Media Encoder Standard**.
+* [Formatos admitidos al Hola flujo de trabajo de Premium de codificación de medios](media-services-premium-workflow-encoder-formats.md) : describe los formatos de archivo de Hola y códecs admitidos por **flujo de trabajo de Premium de codificación de medios**.
+* [Información general y la comparación de Azure en codificadores de medios de petición](media-services-encode-asset.md) compara Hola capacidades de codificación de **flujo de trabajo de Premium de codificación de medios** y **Media Encoder estándar**.
 
-En este tema se muestra cómo codificar con el **flujo de trabajo premium de Media Encoder** con .NET.
+Este tema se muestra cómo tooencode con **flujo de trabajo de Premium de codificación de medios** con. NET.
 
-Las tareas de codificación del **flujo de trabajo del Codificador multimedia Premium** requieren un archivo de configuración independiente, denominado archivo de flujo de trabajo. Estos archivos tienen una extensión .workflow y se crean con la herramienta [Diseñador de flujo de trabajo](media-services-workflow-designer.md) .
+Codificación de tareas para hello **flujo de trabajo de Premium de codificación de medios** requieren un archivo de configuración independiente, denominado archivo de flujo de trabajo. Estos archivos tienen una extensión de longitud y se crean mediante hello [Workflow Designer](media-services-workflow-designer.md) herramienta.
 
-Los archivos de flujo de trabajo predeterminados también se pueden obtener [aquí](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows). La carpeta también contiene la descripción de estos archivos.
+También puede obtener predeterminado de hello archivos de flujo de trabajo [aquí](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows). carpeta de Hello también contiene la descripción de Hola de estos archivos.
 
-Los archivos de flujo de trabajo deben cargarse en su cuenta de Servicios multimedia como un recurso, y el recurso se debe transferir a la tarea de codificación.
+archivos de flujo de trabajo de Hello necesitan la cuenta de servicios multimedia de tooyour toobe cargado como un recurso y se debe pasar este recurso toohello tarea de codificación.
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Creación y configuración de un proyecto de Visual Studio
 
-Configure el entorno de desarrollo y rellene el archivo app.config con la información de la conexión, como se describe en [Desarrollo de Media Services con .NET](media-services-dotnet-how-to-use.md). 
+Configurar el entorno de desarrollo y rellenar el archivo app.config de hello con información de conexión, como se describe en [desarrollo de servicios multimedia con .NET](media-services-dotnet-how-to-use.md). 
 
 ## <a name="encoding-example"></a>Ejemplo de codificación
 
-En el ejemplo siguiente se muestra cómo codificar con el **flujo de trabajo del Codificador multimedia Premium**.
+Hello ejemplo siguiente se muestra cómo tooencode con **flujo de trabajo de Premium de codificación de medios**.
 
-Hay que seguir estos pasos:
+Hola pasos se realiza:
 
 1. Crear un recurso y cargar un archivo de flujo de trabajo.
 2. Crear un recurso y cargar un archivo multimedia de origen.
-3. Obtenga el procesador multimedia "Media Encoder Premium Workflow".
+3. Obtener procesador multimedia de Hola "Flujo de trabajo del Premium de codificación de medios".
 4. Crear un trabajo y una tarea.
 
-    En la mayoría de los casos, la cadena de configuración de la tarea está vacía (como en el ejemplo siguiente). Hay algunos escenarios avanzados (que requieren que establezca propiedades de tiempo de ejecución dinámicamente) en los que debería proporcionar una cadena XML para la tarea de codificación. Ejemplos de estos escenarios son la creación de una superposición, la unión paralela o secuencial multimedia y el subtitulado.
-5. Agregar dos recursos de entrada a la tarea.
+    En la mayoría de los casos, la cadena de configuración de hello para la tarea hello está vacío (como en el siguiente ejemplo de Hola). Hay algunos escenarios avanzados (que requieran tootooset en tiempo de ejecución propiedades dinámicamente) en cuyo caso deberá proporcionar una tarea de codificación de toohello de cadena XML. Ejemplos de estos escenarios son la creación de una superposición, la unión paralela o secuencial multimedia y el subtitulado.
+5. Agregue dos tareas de toohello de activos de entrada.
 
-    1. 1.º: el recurso de flujo de trabajo.
-    2. 2.º: el recurso de vídeo.
+    1. 1 – activos de flujo de trabajo de Hola.
+    2. 2 º – recurso de vídeo de Hola.
 
     >[!NOTE]
-    >El recurso de flujo de trabajo debe agregarse a la tarea antes que el recurso multimedia.
-   La cadena de configuración para esta tarea debe estar vacía.
+    >activos de flujo de trabajo de Hello deben agregarse toohello tarea antes de activo multimedia de Hola.
+   cadena de configuración de Hola para esta tarea debe estar vacío.
    
-6. Envíe el trabajo de codificación.
+6. Enviar el trabajo de codificación de Hola.
 
         using System;
         using System.Linq;
@@ -136,42 +136,42 @@ Hay que seguir estos pasos:
                 {
                     // Declare a new job.
                     IJob job = _context.Jobs.Create("Premium Workflow encoding job");
-                    // Get a media processor reference, and pass to it the name of the
-                    // processor to use for the specific task.
+                    // Get a media processor reference, and pass tooit hello name of the
+                    // processor toouse for hello specific task.
                     IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Premium Workflow");
 
-                    // Create a task with the encoding details, using a string preset.
+                    // Create a task with hello encoding details, using a string preset.
                     ITask task = job.Tasks.AddNew("Premium Workflow encoding task",
                         processor,
                         "",
                         TaskOptions.None);
 
-                    // Specify the input asset to be encoded.
+                    // Specify hello input asset toobe encoded.
                     task.InputAssets.Add(workflow);
                     task.InputAssets.Add(video); // we add one asset
-                                                 // Add an output asset to contain the results of the job.
+                                                 // Add an output asset toocontain hello results of hello job.
                                                  // This output is specified as AssetCreationOptions.None, which
-                                                 // means the output asset is not encrypted.
+                                                 // means hello output asset is not encrypted.
                     task.OutputAssets.AddNew("Output asset",
                         AssetCreationOptions.None);
 
-                    // Use the following event handler to check job progress.  
+                    // Use hello following event handler toocheck job progress.  
                     job.StateChanged += new
                             EventHandler<JobStateChangedEventArgs>(StateChanged);
 
-                    // Launch the job.
+                    // Launch hello job.
                     job.Submit();
 
-                    // Check job execution and wait for job to finish.
+                    // Check job execution and wait for job toofinish.
                     Task progressJobTask = job.GetExecutionProgressTask(CancellationToken.None);
                     progressJobTask.Wait();
 
-                    // If job state is Error the event handling
+                    // If job state is Error hello event handling
                     // method for job progress should log errors.  Here we check
                     // for error state and exit if needed.
                     if (job.State == JobState.Error)
                     {
-                        throw new Exception("\nExiting method due to job error.");
+                        throw new Exception("\nExiting method due toojob error.");
                     }
 
                     return job.OutputMediaAssets[0];

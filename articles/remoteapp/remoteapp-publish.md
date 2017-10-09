@@ -1,6 +1,6 @@
 ---
-title: "Publicación de una aplicación en Azure RemoteApp | Microsoft Docs"
-description: "Obtenga información sobre cómo publicar aplicaciones y recursos de Azure RemoteApp."
+title: "una aplicación en Azure RemoteApp aaaPublish | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toopublish las aplicaciones y recursos de Azure RemoteApp."
 services: remoteapp
 documentationcenter: 
 author: msmbaldwin
@@ -13,33 +13,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: mbaldwin
-ms.openlocfilehash: 4565fa498dbadd0601004c73bfee5171efe1fad1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d7d92187e9ed999ac79554c9bb61f56a8eceeb31
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-publish-an-app-in-remoteapp"></a>Cómo publicar una aplicación en RemoteApp
+# <a name="how-toopublish-an-app-in-remoteapp"></a>¿Cómo toopublish una aplicación de RemoteApp
 > [!IMPORTANT]
-> Azure RemoteApp dejará de estar disponible el 31 de agosto de 2017. Para obtener más información, lea el [anuncio](https://go.microsoft.com/fwlink/?linkid=821148) .
+> Azure RemoteApp dejará de estar disponible el 31 de agosto de 2017. Hola de lectura [anuncio](https://go.microsoft.com/fwlink/?linkid=821148) para obtener más información.
 > 
 > 
 
-Después de crear la colección de RemoteApp, deberá publicar las aplicaciones o los recursos que quiere que estén disponibles para los usuarios. Las imágenes de plantilla proporcionadas con la suscripción solo tienen algunas aplicaciones publicadas de forma predeterminada. Para compartir las otras aplicaciones, debe publicarlas.
-
-> [!NOTE]
-> ¿Necesita actualizar una aplicación? Necesitará [actualizar la imagen](remoteapp-update.md) primero.
-> 
-> 
-
-En la pestaña **Publicación** del portal, haga clic en **Publicar**. Puede agregar una aplicación desde el menú **Inicio** de la imagen de plantilla o proporcionar la ruta de acceso donde está instalada la aplicación en la imagen de plantilla. Si opta por agregar desde el menú **Inicio** , elija en la lista la aplicación que va a publicar. Si elige proporcionar la ruta de acceso a la aplicación, escriba un nombre para la aplicación y la ruta de acceso a la aplicación. Use variables en la ruta de acceso; por ejemplo, %systemdrive% en lugar de c:\".
+Después de crear la colección de RemoteApp, necesitará toopublish Hola aplicaciones o recursos que desee toomake disponible para los usuarios. Hello imágenes de plantilla proporcionadas con la suscripción solo tienen unas pocas aplicaciones publicadas de forma predeterminada, tooshare Hola otras aplicaciones, necesita toopublish ellos.
 
 > [!NOTE]
-> Si quiere agregar la aplicación desde el menú **Inicio**, debe haber *agregado esa aplicación al menú **Inicio** en la imagen de plantilla.* De lo contrario, RemoteApp solo verá lo que *está* en el menú **Inicio** y usted se confundirá. 
+> ¿Necesita tooupdate una aplicación? Necesitará demasiado[actualización Hola imagen](remoteapp-update.md) primero.
 > 
-> Para asegurarse de que la aplicación se encuentra en el menú **Inicio**, coloque un archivo de acceso directo (**.lnk**) dentro de la carpeta %systemdrive%\ProgramData\Microsoft\Windows\Menú Inicio\Programas.
 > 
-> Si olvidó agregar la aplicación al menú **Inicio** al crear la plantilla, tiene la posibilidad de agregar la ruta de acceso a la aplicación. (O volver a crear la imagen de plantilla, pero supone algo más de trabajo).
+
+En hello **publicación** , haga clic en el portal de hello **publicar**. Puede agregar una aplicación de la imagen de plantilla **iniciar** menú o proporcionar aplicación Hola de hello ruta de acceso toowhere está instalado en la imagen de plantilla de Hola. Si elige tooadd de hello **iniciar** menú, elija hello toopublish de aplicación de lista de Hola. Si elige tooprovide Hola ruta de acceso toohello aplicación, escriba un nombre para la aplicación hello y aplicación de toohello de ruta de acceso de hello. Usar variables en la ruta de acceso de hello - por ejemplo, "% systemdrive %" en lugar de "c:\".
+
+> [!NOTE]
+> Si desea que tooadd la aplicación de hello **iniciar** menú, necesita toohave *agrega esa aplicación toohello **iniciar** menú en la imagen de plantilla.* En caso contrario, RemoteApp solo verá qué *es* en hello **iniciar** menú y se confundirse. 
+> 
+> toomake seguro de que la aplicación está en hello **iniciar** menú, coloque un archivo de acceso directo - **.lnk** : dentro de la carpeta de hello %systemdrive%\ProgramData\Microsoft\Windows\Start Menu\Programs.
+> 
+> Si ha olvidado tooadd Hola aplicación toohello **iniciar** menú cuando se creó la plantilla de hello, elija aplicación toohello de tooadd hello ruta de acceso. (O volver a crear la imagen de plantilla, pero supone algo más de trabajo).
 > 
 > 
 

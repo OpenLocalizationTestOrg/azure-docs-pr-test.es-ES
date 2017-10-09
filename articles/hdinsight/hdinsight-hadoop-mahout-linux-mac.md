@@ -1,6 +1,6 @@
 ---
-title: "Generación de recomendaciones mediante Mahout y HDInsight (SSH): Azure| Microsoft Docs"
-description: "Aprenda a usar la biblioteca de aprendizaje automático de Apache Mahout para generar recomendaciones de películas con HDInsight (Hadoop)."
+title: las recomendaciones de aaaGenerate mediante Mahout y HDInsight (SSH) - Azure | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toouse Hola máquina Apache Mahout aprendizaje recomendaciones de película toogenerate de biblioteca con HDInsight (Hadoop)."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,52 +16,52 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: larryfr
-ms.openlocfilehash: 28450d72f19a5467d88bc787d11f6c37c5afbf9a
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: fedac9ceb4268f8421bce4623a5ad271041b8b3d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="generate-movie-recommendations-by-using-apache-mahout-with-linux-based-hadoop-in-hdinsight-ssh"></a>Generación de recomendaciones de películas mediante Apache Mahout con Hadoop en HDInsight basado en Linux
 
 [!INCLUDE [mahout-selector](../../includes/hdinsight-selector-mahout.md)]
 
-Aprenda a usar la biblioteca de aprendizaje automático de [Apache Mahout](http://mahout.apache.org) con HDInsight de Azure para generar recomendaciones de películas con HDInsight.
+Obtenga información acerca de cómo hello toouse [Mahout Apache](http://mahout.apache.org) biblioteca de aprendizaje de máquina con recomendaciones de película toogenerate de HDInsight de Azure.
 
-Mahout es una biblioteca de [aprendizaje automático][ml] para Apache Hadoop. Mahout contiene algoritmos para el procesamiento de datos, como filtrado, clasificación y agrupación en clústeres. En este artículo, se usa un motor de recomendaciones para generar recomendaciones de películas que se basan en películas que sus amigos han visto.
+Mahout es una biblioteca de [aprendizaje automático][ml] para Apache Hadoop. Mahout contiene algoritmos para el procesamiento de datos, como filtrado, clasificación y agrupación en clústeres. En este artículo, use una recomendación motor toogenerate película las recomendaciones que se basan en las películas que han visto sus amigos.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
 * Un clúster de HDInsight basado en Linux Para obtener información sobre cómo crear uno, consulte [Introducción al uso de Hadoop en HDInsight basado en Linux][getstarted].
 
 > [!IMPORTANT]
-> Linux es el único sistema operativo que se usa en la versión 3.4 de HDInsight, o en las superiores. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Linux es Hola único sistema operativo usado en HDInsight versión 3.4 o superior. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-* Un cliente SSH. Para más información, vea el documento [Uso de SSH con HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
+* Un cliente SSH. Para obtener más información, vea hello [utilizar SSH con HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) documento.
 
 ## <a name="mahout-versioning"></a>Control de versiones de Mahout
 
-Para más información sobre la versión de Mahout en HDInsight, consulte [Versiones de HDInsight y componentes de Hadoop](hdinsight-component-versioning.md).
+Para obtener más información acerca de la versión de Hola de Mahout en HDInsight, vea [HDInsight Hadoop componentes y las versiones](hdinsight-component-versioning.md).
 
 ## <a name="recommendations"></a>Descripción de recomendaciones
 
-Una de las funciones que proporciona Mahout es un motor de recomendaciones. Este motor acepta datos en formato de `userID`, `itemId` y `prefValue` (la preferencia por el elemento). Mahout puede realizar entonces análisis de ocurrencias conjuntas para determinar: *los usuarios que tienen predilección por un elemento también la tienen por estos otros elementos*. Mahout determinará los usuarios con preferencias de elementos similares, lo que se puede usar para realizar recomendaciones.
+Una de las funciones hello proporcionada por Mahout es un motor de recomendación. Este motor acepta datos en formato de Hola de `userID`, `itemId`, y `prefValue` (Hola preferencias para el elemento de hello). Mahout, a continuación, puede realizar ocurrencia coadministradores analysis toodetermine: *los usuarios que tienen una preferencia para un elemento también tienen una preferencia para estos otros elementos*. Mahout, a continuación, determina los usuarios con las preferencias de elemento de tipo, que pueden ser usado toomake recomendaciones.
 
-El siguiente flujo de trabajo es un ejemplo simplificado que usa datos de películas:
+Hola siguiente flujo de trabajo es un ejemplo sencillo que usa datos de la película:
 
-* **Ocurrencia conjunta**: a José, Alicia y Roberto les gusta *La Guerra de las galaxias*, *El imperio contraataca* y *El retorno del Jedi*. Mahout determina que a los usuarios que les gusta alguna de estas películas también les gustan las otras dos.
+* **Ocurrencia coadministradores**: Joe, Alice y Bob querido todos los *estrella guerras*, *Hola Empire plenos volver*, y *devolución de hello Jedi*. Mahout determina que los usuarios que como cualquiera de estas películas también como Hola otros dos.
 
-* **Ocurrencia conjunta**: a Roberto y Alicia también les gusta *La amenaza fantasma*, *El ataque de los clones* y *La venganza de los Sith*. Mahout determina que los usuarios a los que les gustan las tres películas anteriores también les gustan estas tres.
+* **Ocurrencia coadministradores**: Roberto y Alicia también gustó *Hola fantasma amenaza*, *ataque de Clones de hello*, y *Revenge de hello Sith*. Mahout determina que los usuarios que gustó películas de tres anterior hello también como estos tres películas.
 
-* **Recomendación basada en similitud**: como a José le gustan las tres primeras películas, Mahout examina películas que a otros usuarios con preferencias similares les han gustado, pero que José no ha visto (gustado/valorado). En este caso, Mahout recomendaría *La amenaza fantasma*, *El ataque de los clones* y *La venganza de los Sith*.
+* **Recomendación de similitud**: Joe porque gustó Hola tres primeros de películas, Mahout examina películas que otros usuarios que tengan preferencias similares gustó, pero no observarán Joe (gustó/clasificación). En este caso, se recomienda Mahout *Hola fantasma amenaza*, *ataque de Clones de hello*, y *Revenge de hello Sith*.
 
-### <a name="understanding-the-data"></a>Descripción de los datos
+### <a name="understanding-hello-data"></a>Descripción de los datos de Hola
 
 Para su comodidad, [GroupLens Research][movielens] proporciona calificaciones de películas en un formato compatible con Mahout. Estos datos están disponibles en el almacenamiento predeterminado del clúster en `/HdiSamples/HdiSamples/MahoutMovieData`.
 
-Hay dos archivos, `moviedb.txt` y `user-ratings.txt`. El archivo user-ratings.txt se usa durante el análisis, mientras el archivo moviedb.txt se usa para proporcionar información de texto descriptiva al mostrar los resultados del análisis.
+Hay dos archivos, `moviedb.txt` y `user-ratings.txt`. archivo de usuario ratings.txt Hello se usa durante el análisis, mientras moviedb.txt es información de texto descriptivo de tooprovide usado al mostrar los resultados de Hola de análisis de Hola.
 
-Los datos del archivo user-ratings.txt tienen una estructura de `userID`, `movieID`, `userRating` y `timestamp`, que nos indica qué valoración le dio cada usuario a una película. A continuación se muestra un ejemplo de los datos:
+datos de usuario ratings.txt Hello tienen una estructura de `userID`, `movieID`, `userRating`, y `timestamp`, que nos dice cómo alta cada usuario calificado una película. Este es un ejemplo de Hola datos:
 
     196    242    3    881250949
     186    302    3    891717742
@@ -69,50 +69,50 @@ Los datos del archivo user-ratings.txt tienen una estructura de `userID`, `movie
     244    51    2    880606923
     166    346    1    886397596
 
-## <a name="run-the-analysis"></a>Ejecutar el análisis
+## <a name="run-hello-analysis"></a>Ejecutar el análisis de Hola
 
-Desde una conexión SSH al clúster, use el siguiente comando para ejecutar el trabajo de recomendación:
+Desde un clúster de toohello de conexión de SSH, use Hola siguiendo el trabajo de comando toorun Hola recomendación:
 
 ```bash
 mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/MahoutMovieData/user-ratings.txt -o /example/data/mahoutout --tempDir /temp/mahouttemp
 ```
 
 > [!NOTE]
-> El trabajo puede tardar varios minutos en completarse y puede ejecutar varios trabajos de MapReduce.
+> Hola trabajo puede tardar varios toocomplete minutos y puede ejecutar varios trabajos de MapReduce.
 
-## <a name="view-the-output"></a>Visualización de la salida
+## <a name="view-hello-output"></a>Ver la salida de hello
 
-1. Cuando finalice el trabajo, use el siguiente comando para ver la salida generada.
+1. Cuando se completa el trabajo de hello, utilice Hola siguiendo la salida del comando tooview Hola generado:
 
     ```bash
     hdfs dfs -text /example/data/mahoutout/part-r-00000
     ```
 
-    La salida tiene el siguiente aspecto:
+    salida de Hello aparece como sigue:
 
         1    [234:5.0,347:5.0,237:5.0,47:5.0,282:5.0,275:5.0,88:5.0,515:5.0,514:5.0,121:5.0]
         2    [282:5.0,210:5.0,237:5.0,234:5.0,347:5.0,121:5.0,258:5.0,515:5.0,462:5.0,79:5.0]
         3    [284:5.0,285:4.828125,508:4.7543354,845:4.75,319:4.705128,124:4.7045455,150:4.6938777,311:4.6769233,248:4.65625,272:4.649266]
         4    [690:5.0,12:5.0,234:5.0,275:5.0,121:5.0,255:5.0,237:5.0,895:5.0,282:5.0,117:5.0]
 
-    La primera columna es `userID`. Los valores contenidos en '[' y ']' son `movieId`:`recommendationScore`.
+    Hola primera columna es hello `userID`. Hola valores contenidos en ' [' y ']' son `movieId`:`recommendationScore`.
 
-2. Puede usar el resultado, junto con el archivo moviedb.txt, para ofrecer más información sobre recomendaciones. En primer lugar, necesitamos copiar los archivos de manera local con los siguientes comandos:
+2. Puede usar salida de hello, junto con moviedb.txt hello, tooprovide obtener más información acerca de las recomendaciones de Hola. En primer lugar, necesitamos archivos de hello toocopy localmente mediante Hola siguientes comandos:
 
     ```bash
     hdfs dfs -get /example/data/mahoutout/part-r-00000 recommendations.txt
     hdfs dfs -get /HdiSamples/HdiSamples/MahoutMovieData/* .
     ```
 
-    Este comando copia los datos de salida a un archivo llamado **recommendations.txt** en el directorio actual, junto con los archivos de datos de la película.
+    Este comando copias Hola archivo de tooa de datos de salida denominado **recommendations.txt** en directorio actual de hello, junto con los archivos de datos de película Hola.
 
-3. Use el siguiente comando para crear un script de Python que busca nombres de película para los datos en la salida de recomendaciones:
+3. Usar hello después comando toocreate un script de Python que busca nombres de película para datos de hello en la salida de hello recomendaciones:
 
     ```bash
     nano show_recommendations.py
     ```
 
-    Cuando se abra el editor, use el siguiente texto como contenido del archivo:
+    Cuando se abre el editor de hello, utilice Hola después de texto como contenido de Hola de archivo hello:
 
    ```python
    #!/usr/bin/env python
@@ -166,43 +166,43 @@ mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/M
    print "------------------------"
    ```
 
-    Presione **Ctrl-X**, **Y** y, finalmente, **Entrar** para guardar los datos.
+    Presione **Ctrl-X**, **Y**y, finalmente, **ENTRAR** toosave datos de saludo.
 
-4. Ejecute el script de Python. El siguiente comando da por hecho que está en el directorio donde se descargaron todos los archivos:
+4. Ejecutar script de Python Hola. Hello siguiente comando presupone que está en directorio de Hola donde se hayan descargado todos los archivos de hello:
 
     ```bash
     python show_recommendations.py 4 user-ratings.txt moviedb.txt recommendations.txt
     ```
 
-    Este comando busca las recomendaciones generadas para el usuario con el identificador 4.
+    Este comando examina las recomendaciones de hello generadas para 4 Id. de usuario.
 
-    * El archivo **user-ratings.txt** se usa para recuperar películas han recibido valoraciones.
+    * Hola **ratings.txt usuario** archivo es utilizado tooretrieve películas que se han clasificado.
 
-    * El archivo **moviedb.txt** se usa para recuperar los nombres de las películas.
+    * Hola **moviedb.txt** archivo es utilizado tooretrieve Hola nombres de películas de Hola.
 
-    * El archivo **recommendations.txt** se usa para recuperar las recomendaciones de películas para este usuario.
+    * Hola **recommendations.txt** es tooretrieve usa las recomendaciones de la película de Hola para este usuario.
 
-     La salida de este comando será similar al siguiente texto:
+     Hola de salida de este comando es similar toohello siguiente texto:
 
-        Seven Years in Tibet (1997), score=5.0   Indiana Jones and the Last Crusade (1989), score=5.0   Jaws (1975), score=5.0   Sense and Sensibility (1995), score=5.0   Independence Day (ID4) (1996), score=5.0   My Best Friend's Wedding (1997), score=5.0   Jerry Maguire (1996), score=5.0   Scream 2 (1997), score=5.0   Time to Kill, A (1996), score=5.0
+        Puntuación de siete años en Tíbet (1997), = 5.0 hello Crusade última (1989) y Indiana Jones puntuación = 5.0 Jaws (1975), puntuación = 5.0 sentido y sensibilidad (1995), puntuación = 5.0 día de la independencia (ID4) (1996), puntuación = 5.0 mi mejor amigo bodas (1997), puntuación = 5.0 Jerry Maguire (1996 ), puntuación = 5.0 Scream 2 (1997), puntuación = 5.0 tiempo tooKill, (1996), puntuación = 5.0
 
 ## <a name="delete-temporary-data"></a>Eliminar datos temporales
 
-Los trabajos de Mahout no eliminan los datos temporales creados durante el procesamiento del trabajo. El parámetro `--tempDir` se especifica en el trabajo de ejemplo para aislar los archivos temporales en una ruta de acceso específica de forma que sea fácil eliminarlos. Para quitar los archivos temporales, use el siguiente comando:
+Trabajos de Mahout no quite los datos temporales que se crean al procesar el trabajo de Hola. Hola `--tempDir` parámetro se especifica en archivos temporales de hello ejemplo trabajo tooisolate hello en una ruta de acceso específica para su eliminación fácil. archivos temporales de tooremove hello, utilice Hola siguiente comando:
 
 ```bash
 hdfs dfs -rm -f -r /temp/mahouttemp
 ```
 
 > [!WARNING]
-> Si desea volver a ejecutar el comando, también debe eliminar el directorio de salida. Use lo siguiente para eliminar este directorio:
+> Si desea volver a comandos de hello toorun, también debe eliminar el directorio de salida de hello. Usar hello después toodelete este directorio:
 >
 > `hdfs dfs -rm -f -r /example/data/mahoutout`
 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Ahora que ha aprendido a usar a Mahout, descubra otras formas de trabajar con datos en HDInsight:
+Ahora que ha aprendido cómo toouse Mahout, descubra otras formas de trabajar con datos en HDInsight:
 
 * [Hive con HDInsight](hdinsight-use-hive.md)
 * [Pig con HDInsight](hdinsight-use-pig.md)

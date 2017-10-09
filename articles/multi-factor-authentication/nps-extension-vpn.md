@@ -1,6 +1,6 @@
 ---
-title: "Integración de la VPN con Azure MFA con la extensión NPS | Microsoft Docs"
-description: "Este artículo describe la integración de la infraestructura de VPN con Azure MFA utilizando la extensión Servidor de directivas de redes (NPS) para Microsoft Azure."
+title: "aaaVPN integración con Azure MFA con la extensión NPS | Documentos de Microsoft"
+description: "Este artículo describe la integración de la infraestructura VPN con Azure MFA con la extensión de servidor de directivas de redes (NPS) de Hola para Microsoft Azure."
 services: active-directory
 keywords: "Azure MFA, integración de VPN, Azure Active Directory, extensión Servidor de directivas de redes"
 documentationcenter: 
@@ -16,58 +16,58 @@ ms.date: 08/15/2017
 ms.author: kgremban
 ms.reviewer: jsnow
 ms.custom: it-pro
-ms.openlocfilehash: 3dfcf25856ede50266336c2ebb057dd3f7b8897e
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 5e120f7633121385d9cc5d7bec97ecaa1ec7cf19
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="integrate-your-vpn-infrastructure-with-azure-multi-factor-authentication-mfa-using-the-network-policy-server-nps-extension-for-azure"></a>Este artículo describe la integración de la infraestructura de VPN con Azure Multi-Factor Authentication (MFA) utilizando la extensión Servidor de directivas de redes (NPS) para Azure
+# <a name="integrate-your-vpn-infrastructure-with-azure-multi-factor-authentication-mfa-using-hello-network-policy-server-nps-extension-for-azure"></a>Integrar la infraestructura VPN con Azure Multi-factor Authentication (MFA) con la extensión de servidor de directivas de redes (NPS) de Hola para Azure
 
 ## <a name="overview"></a>Información general
 
-La extensión Servidor de directivas de redes (NPS) para Azure permite a las organizaciones proteger la autenticación de cliente del Servicio de autenticación remota telefónica de usuario (RADIUS) utilizando la autenticación basada en la nube [Azure Multi-Factor Authentication (MFA)](multi-factor-authentication-get-started-server-rdg.md), que proporciona verificación en dos pasos.
+Hola extensión de servicio de directivas de redes (NPS) de Azure permite a las organizaciones toosafeguard autenticación de cliente de servicio de autenticación remota telefónica de usuario (RADIUS) mediante basada en la nube [Azure la autenticación multifactor (MFA)](multi-factor-authentication-get-started-server-rdg.md), que proporciona una comprobación de dos pasos.
 
-Este artículo proporciona instrucciones para integrar la infraestructura NPS con Azure MFA con la extensión NPS para Azure para habilitar la verificación segura en dos pasos para los usuarios que intentan conectarse a la red mediante una VPN. 
+Este artículo proporciona instrucciones para integrar la infraestructura de hello NPS con Azure MFA con extensión NPS de Hola para Azure tooenable segura verificacion para los usuarios que intenten tooconnect tooyour red mediante una VPN. 
 
-La directiva de red y servicios de acceso (NPS) ofrece a las organizaciones las siguientes posibilidades:
+Hola servicios de acceso (NPS) y directivas de redes proporciona las organizaciones Hola siguientes capacidades:
 
-* Especificar ubicaciones centrales para la administración y el control de las solicitudes de red mediante la especificación de quién puede conectarse, las franjas horarias en las que se permiten conexiones, la duración de las conexiones, el nivel de seguridad que los clientes deben usar para conectarse, etc. En vez de especificar estas directivas en cada VPN o servidor de puerta de enlace de Escritorio remoto (RD), estas directivas se especifican una vez en una ubicación central. El protocolo RADIUS se usa para proporcionar autenticación, autorización y contabilización de cuentas (AAA) centralizadas. 
-* Establecer y aplicar directivas de mantenimiento de cliente de Protección de acceso a redes (NAP) que determinan si los dispositivos tienen acceso restringido o sin restricciones a los recursos de la red.
-* Proporcionar un medio para aplicar la autenticación y autorización para el acceso a puntos de acceso inalámbricos 802.1x y conmutadores Ethernet.    
+* Especificar ubicaciones centrales para la administración de Hola y control de toospecify de las solicitudes de red que se puede conectar, qué horas del día en que se permiten las conexiones, duración de Hola de las conexiones y el nivel de Hola de seguridad que los clientes deben usar tooconnect y así sucesivamente. En vez de especificar estas directivas en cada VPN o servidor de puerta de enlace de Escritorio remoto (RD), estas directivas se especifican una vez en una ubicación central. se utiliza el protocolo RADIUS Hola Hola tooprovide centralizada de autenticación, autorización y contabilidad (AAA). 
+* Establecer y aplicar directivas de mantenimiento de cliente de protección de acceso a redes (NAP) que determinan si los dispositivos se conceden acceso restringido o sin restricción toonetwork recursos.
+* Proporcione un medio tooenforce autenticación y autorización para conmutadores Ethernet y puntos de acceso inalámbricos compatibles con too802.1x de acceso.    
 
 Consulte [Servidor de directivas de redes (NPS)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) para más información. 
 
-Para mejorar la seguridad y proporcionar un nivel elevado de cumplimiento, las organizaciones pueden integrar NPS con Azure MFA para asegurarse de que los usuarios utilizan la verificación en dos pasos para poder conectarse al puerto virtual en el servidor VPN. Para tener acceso, los usuarios deben proporcionar su combinación de nombre de usuario y contraseña junto con información que el usuario tiene bajo su control. Esta información debe ser de confianza y no duplicable fácilmente, como un número de teléfono móvil, el número fijo o una aplicación en un dispositivo móvil, entre otros.
+seguridad de tooenhance y proporcionar alto nivel de cumplimiento, las organizaciones pueden integrar NPS con tooensure de MFA de Azure que los usuarios utilicen verificacion toobe capaz de conectarse toohello puerto virtual en el servidor VPN de Hola. Para los usuarios toobe concedido acceso, deberán proporcionar su combinación de nombre de usuario/contraseña con la información que Hola usuario tiene en su control. Esta información debe ser de confianza y no duplicable fácilmente, como un número de teléfono móvil, el número fijo o una aplicación en un dispositivo móvil, entre otros.
 
-Antes de la disponibilidad de la extensión NPS para Azure, los clientes que querían implementar la verificación en dos pasos para entornos integrados de NPS y Azure MFA tenían que configurar y mantener un servidor independiente de MFA en el entorno local tal como se documenta en Puerta de enlace de Escritorio remoto y Servidor Azure Multi-Factor Authentication con RADIUS.
+Disponibilidad de toohello anteriores de hello extensión NPS para Azure, los clientes que deseaban tooimplement verificacion de integran NPS y los entornos de Azure MFA tenían tooconfigure y mantienen un servidor independiente de MFA en el entorno local de hello como se documentan en la puerta de enlace de escritorio remoto y servidor de Azure Multi-factor Authentication con RADIUS.
 
-La disponibilidad de la extensión NPS para Azure ahora da a las organizaciones la opción de implementar una solución MFA basada en el entorno local o una solución MFA basada en la nube para la autenticación segura de clientes RADIUS.
+disponibilidad de Hola de extensión NPS de Hola para Azure le proporciona las organizaciones Hola elección toodeploy una solución MFA basándose en local o una autenticación de cliente RADIUS de basado en la nube MFA solución toosecure.
  
 ## <a name="authentication-flow"></a>Flujo de autenticación
-Cuando un usuario se conecta a un puerto virtual en un servidor VPN, debe autenticarse primero con una variedad de protocolos, lo que permite el uso de una combinación de nombre de usuario y contraseña y métodos de autenticación basados en certificados. 
+Cuando un usuario conecta tooa puerto virtual en un servidor VPN, deben autenticarse primero con una variedad de protocolos, lo que permite el uso de Hola de una combinación de nombre de usuario/contraseña y métodos de autenticación basada en certificados. 
 
-Además de la autenticación y verificación de identidad, los usuarios deben tener los permisos adecuados de acceso telefónico. En implementaciones sencillas, estos permisos de acceso telefónico que permiten tener acceso se establecen directamente en los objetos de usuario de Active Directory. 
+En suma tooauthenticating y verificación de identidad, los usuarios deben tener Hola los permisos de acceso telefónico adecuados. En implementaciones sencillas, se establecen estos permisos de acceso telefónico que permiten tener acceso directamente en los objetos de usuario de Active Directory de Hola. 
 
  ![Propiedades de usuario](./media/nps-extension-vpn/image1.png)
 
 Para implementaciones sencillas, cada servidor VPN concede o deniega el acceso en función de las directivas definidas en cada servidor VPN local.
 
-En implementaciones más grandes y escalables, las directivas que conceden o deniegan el acceso a la VPN están centralizadas en servidores RADIUS. En este caso, el servidor VPN actúa como un servidor de acceso (cliente RADIUS) que reenvía las solicitudes de conexión y mensajes de la cuenta a un servidor RADIUS. Para conectarse al puerto virtual en el servidor VPN, los usuarios deben autenticarse y cumplir las condiciones definidas de forma centralizada en servidores RADIUS. 
+En las implementaciones más grandes y más escalables, Hola directivas que conceder o denegar el acceso a VPN están centralizados en servidores RADIUS. En este caso, el servidor VPN de Hola actúa como un servidor de acceso (cliente RADIUS) que reenvía las solicitudes de conexión y el servidor RADIUS de cuenta mensajes tooa. tooconnect toohello puerto virtual en el servidor VPN de hello, los usuarios deben autenticarse y cumplen condiciones Hola definidas de forma centralizada en los servidores RADIUS. 
 
-Cuando la extensión NPS para Azure está integrada con el NPS, el flujo de una autenticación correcta es como sigue:
+Cuando Hola extensión NPS para Azure está integrado con hello NPS, flujo de autenticación correcta de hello es el siguiente:
 
-1. El servidor VPN recibe una solicitud de autenticación de un usuario de VPN que incluye el nombre de usuario y contraseña para conectarse a un recurso, como una sesión de escritorio remoto. 
-2. Actuando como un cliente RADIUS, el servidor VPN convierte la solicitud en un mensaje de solicitud de acceso RADIUS y envía el mensaje (la contraseña se cifra) al servidor RADIUS (NPS) donde está instalada la extensión NPS. 
-3. La combinación de nombre de usuario y contraseña se verifica en Active Directory. Si el nombre de usuario y contraseña son incorrectos, el servidor RADIUS envía un mensaje de rechazo de acceso. 
-4. Si se cumplen todas las condiciones especificadas en la solicitud de conexión NPS y las directivas de red (por ejemplo, la hora del día o restricciones por pertenencia a un grupo), la extensión NPS desencadena una solicitud de autenticación secundaria con Azure MFA. 
-5. Azure MFA se comunica con Azure Active Directory, recupera los detalles del usuario y realiza la autenticación secundaria con el método de verificación configurado por el usuario (mensaje de texto, aplicación móvil, etc). 
-6. Cuando se realiza correctamente el desafío de MFA, Azure MFA comunica el resultado a la extensión NPS.
-7. Después de que el intento de conexión se autentica y autoriza, el servidor NPS donde está instalada la extensión envía un mensaje de aceptación de acceso RADIUS al servidor VPN (cliente RADIUS).
-8. Se concede acceso al usuario al puerto virtual en el servidor VPN y se establece un túnel VPN cifrado.
+1. servidor VPN de Hello recibe una solicitud de autenticación de un usuario VPN que incluya Hola username y password tooconnect tooa recurso, como una sesión de escritorio remoto. 
+2. Actúa como cliente RADIUS, servidor VPN convierte el mensaje de solicitud de acceso RADIUS de hello solicitud tooa y envía mensajes de Hola (la contraseña se cifra) servidor RADIUS (NPS) de toohello donde está instalado Hola extensión NPS. 
+3. Hola nombre de usuario y se compruebe la combinación de contraseña en Active Directory. Si Hola nombre de usuario / contraseña es incorrecta, Hola servidor RADIUS envía un mensaje de rechazo de acceso. 
+4. Si todas las condiciones que se especifican en Hola de solicitud de conexión de NPS y se cumplen las directivas de red (por ejemplo, la hora del día o de grupo restricciones de pertenencia), Hola extensión NPS desencadena una solicitud de autenticación secundaria con Azure MFA. 
+5. MFA de Azure se comunica con Azure Active Directory, recupera los detalles de usuario de Hola y realiza la autenticación secundaria de hello mediante método hello configurado por el usuario de hello (mensaje de texto, aplicación móvil etc.). 
+6. Cuando se realiza correctamente de hello desafío MFA, MFA de Azure se comunica extensión de hello resultado toohello NPS.
+7. Después de intento de conexión de Hola se autentica y se autoriza, el servidor NPS de Hola donde se instala la extensión de hello envía un aceptación de acceso RADIUS mensaje toohello servidor VPN (cliente RADIUS).
+8. usuario de Hola se concede acceso toohello puerto virtual en el servidor VPN y establece un túnel VPN cifrado.
 
 ## <a name="prerequisites"></a>Requisitos previos
-En esta sección se detallan los requisitos previos necesarios antes de integrar Azure MFA con la puerta de enlace de Escritorio remoto. Antes de comenzar, debe cumplir los siguientes requisitos previos.
+En esta sección se detalla los requisitos previos de hello necesarios antes de integrar Azure MFA con hello puerta de enlace de escritorio remoto. Antes de comenzar, debe tener Hola siguiendo los requisitos previos en su lugar.
 
 * Infraestructura de VPN
 * Directiva de red y rol de servicios de acceso (NPS)
@@ -78,188 +78,188 @@ En esta sección se detallan los requisitos previos necesarios antes de integrar
 * Identificador de GUID de Azure Active Directory
 
 ### <a name="vpn-infrastructure"></a>Infraestructura de VPN
-En este artículo se da por supuesto que tiene una infraestructura VPN en funcionamiento con Microsoft Windows Server 2016 y que el servidor VPN actualmente no está configurado para reenviar solicitudes de conexión a un servidor RADIUS. En esta guía se va a configurar la infraestructura de VPN para usar un servidor RADIUS central.
+En este artículo se da por supuesto que tiene una infraestructura VPN de trabajo con Microsoft Windows Server 2016 en su lugar y ese servidor VPN de hello no está actualmente configurado tooforward de conexión solicitudes tooa RADIUS del servidor. Hola VPN infraestructura toouse un servidor RADIUS central que va a configurar en esta guía.
 
-Si no tiene una infraestructura en funcionamiento, puede crear rápidamente esta infraestructura siguiendo las instrucciones indicadas en numerosos tutoriales de instalación de VPN que puede encontrar en sitios de terceros y de Microsoft. 
+Si no tiene una infraestructura de trabajo en su lugar, puede crear rápidamente esta infraestructura por la siguiente directriz de hello proporcionado en numerosos tutoriales del programa de instalación VPN que puede encontrar en hello Microsoft y los sitios de terceros. 
 
 ### <a name="network-policy-and-access-services-nps-role"></a>Directiva de red y rol de servicios de acceso (NPS)
 
-El servicio de rol NPS proporciona la funcionalidad de cliente y servidor RADIUS. En este artículo se da por supuesto que ha instalado el rol NPS en un servidor miembro o en un controlador de dominio en su entorno. En esta guía configurará RADIUS para una configuración de VPN. Instalación del rol NPS en un servidor _distinto_ del servidor VPN.
+Hola servicio de rol NPS proporciona funcionalidad de cliente y servidor RADIUS de Hola. En este artículo se da por supuesto que ha instalado rol NPS de hello en un servidor miembro o controlador de dominio en su entorno. En esta guía configurará RADIUS para una configuración de VPN. Instalar el rol NPS de hello en un servidor _otros_ que el servidor VPN.
 
-Para obtener información acerca de cómo instalar el servicio de rol NPS en Windows Server 2012 o posterior, consulte [Instalación de un servidor de directivas de mantenimiento de NAP](https://technet.microsoft.com/library/dd296890.aspx). La directiva de acceso a redes (NAP) está en desuso en Windows Server 2016. Para obtener una descripción de las prácticas recomendadas para NPS, incluida la recomendación de instalar NPS en un controlador de dominio, consulte [Prácticas recomendadas para NPS](https://technet.microsoft.com/library/cc771746).
+Para obtener información acerca de cómo instalar el rol NPS hello, servicio de Windows Server 2012 o posterior, consulte [instalar un servidor de directivas de mantenimiento de NAP](https://technet.microsoft.com/library/dd296890.aspx). La directiva de acceso a redes (NAP) está en desuso en Windows Server 2016. Para obtener una descripción de las prácticas recomendadas para NPS, incluidas Hola recomendación tooinstall NPS en un controlador de dominio, consulte [recomendaciones para NPS](https://technet.microsoft.com/library/cc771746).
 
 ### <a name="licenses"></a>Licencias
 
-Es necesaria una licencia para Azure MFA, que está disponible a través de una suscripción de Azure AD Premium, de Enterprise Mobility + Security (EMS) o de MFA. Para más información, consulte [Cómo obtener Azure Multi-Factor Authentication](multi-factor-authentication-versions-plans.md). Para realizar pruebas, puede usar una suscripción de evaluación.
+Es necesaria una licencia para Azure MFA, que está disponible a través de una suscripción de Azure AD Premium, de Enterprise Mobility + Security (EMS) o de MFA. Para obtener más información, consulte [cómo tooget la autenticación multifactor Azure](multi-factor-authentication-versions-plans.md). Para realizar pruebas, puede usar una suscripción de evaluación.
 
 ### <a name="software"></a>Software
 
-La extensión NPS requiere Windows Server 2008 R2 SP1 o posterior con el servicio de rol NPS instalado. Todos los pasos de esta guía se han realizado con Windows Server 2016.
+Hola extensión NPS requiere Windows Server 2008 R2 SP1 o posterior con el servicio de rol NPS Hola instalado. Todos los pasos de hello en esta guía se han ejecutado con Windows Server 2016.
 
 ### <a name="libraries"></a>Bibliotecas
 
-Se requieren las dos bibliotecas siguientes:
+Hola siguiendo dos bibliotecas es necesario:
 
 * [Paquetes redistribuibles de Visual C++ para Visual Studio 2013 (X64)](https://www.microsoft.com/download/details.aspx?id=40784)
-* _Módulo Microsoft Azure Active Directory para Windows PowerShell versión1.1.166.0_ o posterior. Para la versión más reciente e instrucciones de instalación, consulte [Historial de versiones del Módulo Microsoft Azure Active Directory para PowerShell](https://social.technet.microsoft.com/wiki/contents/articles/28552.microsoft-azure-active-directory-powershell-module-version-release-history.aspx).
+* _Módulo Microsoft Azure Active Directory para Windows PowerShell versión1.1.166.0_ o posterior. Para la versión más reciente de hello e instrucciones de instalación, consulte [Microsoft Azure Active Directory PowerShell módulo versión historial de versiones](https://social.technet.microsoft.com/wiki/contents/articles/28552.microsoft-azure-active-directory-powershell-module-version-release-history.aspx).
 
-Estas bibliotecas no se empaquetan con los archivos de instalación de la extensión NPS (versión 0.9.1.2), a pesar de que en la documentación existente se indique lo contrario. Como mínimo, debe instalar los paquetes redistribuibles de Visual C++ para Visual Studio 2013. El módulo Microsoft Azure Active Directory para Windows PowerShell se instala, si todavía no está presente, a través de un script de configuración que se ejecuta como parte del proceso de instalación. No es necesario instalar este módulo con antelación si aún no está instalado.
+Estas bibliotecas no se empaquetan con hello NPS extensión archivos de instalación (versión 0.9.1.2), a pesar de la documentación existente que se indique lo contrario. Como mínimo, debe instalar los paquetes redistribuibles de hello Visual C++ para Visual Studio 2013. Hola Microsoft Azure módulo Active Directory para Windows PowerShell se instala, si todavía no está presente, a través de un script de configuración que se ejecuta como parte del proceso de instalación de Hola. No hay ninguna necesidad de tooinstall este módulo antelación si aún no está instalado.
 
 ### <a name="azure-active-directory-synched-with-on-premises-active-directory"></a>Azure Active Directory sincronizado con Active Directory local 
 
-Para usar la extensión NPS, los usuarios locales deben estar sincronizados con Azure Active Directory y habilitados para Multi-Factor Authentication. En esta guía se da por supuesto que los usuarios locales están sincronizados con Azure Active Directory mediante AD Connect. A continuación, se proporcionan instrucciones para habilitar a los usuarios para usar MFA.
+Hola toouse extensión NPS, local de usuarios deben estar sincronizados con Azure Active Directory y habilitados para la autenticación multifactor. En esta guía se da por supuesto que los usuarios locales están sincronizados con Azure Active Directory mediante AD Connect. A continuación, se proporcionan instrucciones para habilitar a los usuarios para usar MFA.
 Para obtener información sobre Azure AD Connect, consulte [Integración de los directorios locales con Azure Active Directory](../active-directory/connect/active-directory-aadconnect.md). 
 
 ### <a name="azure-active-directory-guid-id"></a>Identificador de GUID de Azure Active Directory 
-Para instalar NPS, debe conocer el GUID de Azure Active Directory. En la siguiente sección se proporcionan instrucciones para buscar el GUID de Azure Active Directory.
+tooinstall Hola NPS, deberá tooknow Hola GUID de hello Azure Active Directory. Se proporcionan instrucciones para buscar Hola GUID de hello Azure Active Directory en la siguiente sección de Hola.
 
 ## <a name="configure-radius-for-vpn-connections"></a>Configuración de RADIUS para conexiones VPN
 
-Si ha instalado el rol de servidor NPS en un servidor miembro, debe configurarlo para autenticar y autorizar clientes VPN que soliciten conexiones VPN. 
+Si ha instalado el rol de servidor NPS de hello en un servidor miembro, es necesario tooconfigure tooauthenticate y autorizar el cliente VPN que solicite conexiones VPN. 
 
-En esta sección se supone que ha instalado el rol de servidor de directivas de redes pero no lo ha configurado para su uso en su infraestructura.
+Esta sección se supone que ha instalado el rol de servidor de directivas de red de hello pero no lo ha configurado para su uso en su infraestructura.
 
 >[!NOTE]
 >Si ya tiene un servidor VPN en funcionamiento que usa un servidor RADIUS centralizado para la autenticación, puede omitir esta sección.
 >
 
 ### <a name="register-server-in-active-directory"></a>Registro del servidor en Active Directory
-Para que funcione correctamente en este escenario, el servidor NPS debe estar registrado en Active Directory.
+toofunction correctamente en este escenario, el servidor NPS de hello debe toobe registrado en Active Directory.
 
 1. Abra el Administrador del servidor.
 2. En el Administrador del servidor, haga clic en **Herramientas** y, a continuación, haga clic en **Servidor de directivas de redes**. 
-3. En la consola del servidor de directivas de redes, haga clic con el botón derecho en **NPS (Local)** y, a continuación, haga clic en **Registrar el servidor en Active Directory**. Haga clic en **Aceptar** dos veces.
+3. En la consola de servidor de directivas de red de hello, haga clic en **NPS (Local)**y, a continuación, haga clic en **Registrar servidor en Active Directory**. Haga clic en **Aceptar** dos veces.
 
  ![Servidor de directivas de redes](./media/nps-extension-vpn/image2.png)
 
-4. Deje la consola abierta para el siguiente procedimiento.
+4. Deje abierta para el procedimiento siguiente Hola Hola consola.
 
-### <a name="use-wizard-to-configure-radius-server"></a>Utilice el asistente para configurar el servidor RADIUS
-Puede usar la opción de configuración estándar (basada en asistente) o la opción avanzada para configurar el servidor RADIUS. Esta sección supone el uso de la opción de configuración estándar con el asistente.
+### <a name="use-wizard-tooconfigure-radius-server"></a>Usar el servidor RADIUS de asistente tooconfigure
+Puede usar un estándar (basada en Asistente) o el servidor RADIUS de configuración avanzada opción tooconfigure Hola. En esta sección se supone el uso de Hola de opción de configuración estándar con el Asistente de Hola.
 
-1. En la consola del Servidor de directivas de redes, haga clic en **NPS (Local)**.
+1. En la consola de servidor de directivas de red de hello, haga clic en **NPS (Local)**.
 2. En la configuración estándar, seleccione **Servidor RADIUS para conexiones telefónicas o VPN** y, a continuación, haga clic en **Configurar VPN o acceso telefónico**.
 
  ![Configuración de VPN](./media/nps-extension-vpn/image3.png)
 
-3. En la página Seleccione tipo de conexión de acceso telefónico o red privada virtual, seleccione **Conexiones de red privada virtual** y haga clic en **Siguiente**.
+3. En la página Seleccione de acceso telefónico o tipo de conexiones de red privada Virtual de hello, seleccione **las conexiones de red privada Virtual**y haga clic en **siguiente**.
 
  ![Red privada virtual](./media/nps-extension-vpn/image4.png)
 
-4. En la página Especificar servidor de acceso telefónico o VPN, haga clic en **Agregar**.
-5. En el cuadro de diálogo **Nuevo cliente RADIUS**, proporcione un nombre descriptivo, escriba el nombre para resolver o la dirección IP del servidor VPN y escriba una contraseña secreta compartida. Elija una contraseña secreta compartida larga y compleja. Registre esta contraseña, será necesaria para los pasos de la sección siguiente.
+4. En la página de servidor VPN o telefónico especifique hello, haga clic en **agregar**.
+5. Hola **cliente RADIUS nuevo** cuadro de diálogo, proporcione un nombre descriptivo, escriba Hola puede resolver nombre o dirección IP del servidor VPN de hello y escriba una contraseña secreta compartida. Elija una contraseña secreta compartida larga y compleja. Registre esta contraseña, según sea necesario para los pasos de la sección siguiente Hola.
 
  ![Nuevo cliente RADIUS](./media/nps-extension-vpn/image5.png)
 
 6. Haga clic en **Aceptar** y, a continuación, en **Siguiente**.
-7. En la página **Configurar métodos de autenticación**, acepte la selección predeterminada (Microsoft Encrypted Authentication versión 2 [MS-CHAPv2]) o elija otra opción y haga clic en **Siguiente**.
+7. En hello **configurar métodos de autenticación** , acepte la selección predeterminada de hello (autenticación cifrada de Microsoft versión 2 (MS-CHAPv2) o elija otra opción y haga clic en **siguiente**.
 
   >[!NOTE]
   >Si configura el Protocolo de autenticación extensible (EAP), debe usar MS CHAPv2 o PEAP. No se admite ningún otro tipo de EAP.
  
-8. En la página Especificar grupos de usuarios, haga clic en **Agregar** y seleccione un grupo apropiado, si existe alguno. En caso contrario, deje la selección en blanco para conceder acceso a todos los usuarios.
+8. En la página especificar grupos de usuarios de hello, haga clic en **agregar** y seleccione un grupo apropiado, si existe alguno. Lo contrario, deje la selección de hello toogrant en blanco acceso tooall los usuarios.
 
  ![Especificar grupos de usuarios](./media/nps-extension-vpn/image7.png)
 
 9. Haga clic en **Siguiente**.
-10. En la página Especificar filtros IP, haga clic en **Siguiente**.
-11. En la página Especificar la configuración de cifrado, acepte la configuración predeterminada y haga clic en **Siguiente**.
+10. En la página Especificar filtros IP de hello, haga clic en **siguiente**.
+11. En la página Especificar la configuración de cifrado de hello, acepte la configuración predeterminada de Hola y haga clic en **siguiente**.
 
  ![Especificar cifrado](./media/nps-extension-vpn/image8.png)
 
-12. En Especificar un nombre de dominio Kerberos, deje el nombre en blanco, acepte la configuración predeterminada y haga clic en **Siguiente**.
+12. En especificar un nombre de dominio Kerberos de hello, deje el nombre de hello en blanco, acepte la configuración predeterminada de Hola y haga clic en **siguiente**.
 
  ![Especificar un nombre de dominio Kerberos](./media/nps-extension-vpn/image9.png)
 
-13. En la página Finalizando nueva conexión de acceso telefónico o VPN y cliente RADIUS, haga clic en **Finalizar**.
+13. En hello telefónico completar nueva página de clientes RADIUS y de conexiones de red privada Virtual, haga clic en **finalizar**.
 
  ![Conexiones finalizadas](./media/nps-extension-vpn/image10.png)
 
 ### <a name="verify-radius-configuration"></a>Comprobación de la configuración de RADIUS
-En esta sección se detalla la configuración creada con el asistente.
+En esta sección se detalla configuración Hola que había creada con el Asistente de Hola.
 
-1. En el servidor NPS, en la consola NPS (Local), expanda Clientes RADIUS y seleccione **Clientes RADIUS**.
-2. En el panel de detalles, haga clic con el botón derecho en el cliente RADIUS que ha creado con el asistente y haga clic en **Propiedades**. Las propiedades del cliente RADIUS (el servidor VPN) deben ser similares a las que se muestran a continuación.
+1. En el servidor NPS de hello, en la consola NPS (Local) de hello, expanda los clientes RADIUS y seleccione **clientes RADIUS**.
+2. En el panel de detalles de hello, haga clic en el cliente RADIUS de hello creada con el asistente y haga clic en **propiedades**. propiedades de Hello para el cliente RADIUS (servidor VPN de hello) deben ser similar toothose que se muestra a continuación.
 
  ![Propiedades de VPN](./media/nps-extension-vpn/image11.png)
 
 3. Haga clic en **Cancelar**.
-4. En el servidor NPS, en la consola NPS (Local), expanda **Directivas** y seleccione **Directivas de solicitud de conexión**. Debería ver la directiva de conexiones VPN, con un aspecto similar a la imagen siguiente.
+4. En el servidor NPS de hello, en la consola NPS (Local) de hello, expanda **directivas**y seleccione **directivas de solicitud de conexión**. Debería ver directiva de conexiones VPN de Hola que es similar a la imagen de hello siguiente.
 
  ![Solicitudes de conexión](./media/nps-extension-vpn/image12.png)
 
-5. En Directivas, seleccione **Directivas de red**. Debería ver una directiva de conexiones de red privada virtual (VPN), con un aspecto similar a la imagen siguiente.
+5. En Directivas, seleccione **Directivas de red**. Debe una directiva de conexiones de red privada Virtual (VPN) que es similar a la imagen de hello siguiente.
 
  ![Propiedades de red](./media/nps-extension-vpn/image13.png)
 
-## <a name="configure-vpn-server-to-use-radius-authentication"></a>Configuración del servidor VPN para que utilice la autenticación RADIUS
-En esta sección, configurará el servidor VPN para utilizar la autenticación RADIUS. En esta sección se da por supuesto que tiene una configuración de servidor VPN en funcionamiento, pero no se ha configurado el servidor VPN para utilizar la autenticación RADIUS. Después de configurar el servidor VPN, confirme que la configuración funciona según lo previsto.
+## <a name="configure-vpn-server-toouse-radius-authentication"></a>Configurar la autenticación de servidor VPN toouse RADIUS
+En esta sección, configura la autenticación de RADIUS de hello VPN server toouse. En esta sección se da por supuesto que tiene una configuración de servidor VPN, pero no se ha configurado la autenticación de RADIUS de hello VPN server toouse. Después de configurar el servidor VPN de hello, confirme que la configuración funciona según lo previsto.
 
 >[!NOTE]
 >Si ya tiene una configuración de servidor VPN en funcionamiento que usa autenticación RADIUS, puede omitir esta sección.
 >
 
 ### <a name="configure-authentication-provider"></a>Configuración del proveedor de autenticación
-1. En el servidor VPN, abra el Administrador del servidor.
+1. En el servidor VPN de hello, abra Administrador del servidor.
 2. En el Administrador del servidor, haga clic en **Herramientas** y, a continuación, en **Enrutamiento y acceso remoto**.
-3. En la consola de Enrutamiento y acceso remoto, haga clic con el botón derecho en  **\[nombre del servidor\] (local)** y, a continuación, haga clic en **Propiedades**.
+3. En la consola de enrutamiento y acceso remoto de hello, haga clic en  **\[nombre del servidor\] (local)**y, a continuación, haga clic en **propiedades**.
 
  ![Enrutamiento y acceso remoto](./media/nps-extension-vpn/image14.png)
  
-4. En el cuadro de diálogo **Propiedades de [nombre del servidor} (local)**, haga clic en la pestaña **Seguridad**. 
-5. En la pestaña **Seguridad**, en Proveedor de autenticación, haga clic en **Autenticación RADIUS** y, a continuación, en **Configurar**.
+4. Hola **[propiedades de nombre del servidor} (local)** diálogo cuadro, haga clic en hello **seguridad** ficha. 
+5. En hello **seguridad** , haga clic en el proveedor de autenticación, en **autenticación RADIUS**y, a continuación, **configurar**.
 
  ![Autenticación RADIUS](./media/nps-extension-vpn/image15.png)
  
-6. En el cuadro de diálogo Autenticación RADIUS, haga clic en **Agregar**.
-7. En Agregar servidor RADIUS, en nombre del servidor, agregue el nombre o la dirección IP del servidor RADIUS que configuró en la sección anterior.
-8. En Secreto compartido, haga clic en **Cambiar** y agregue la contraseña secreta compartida que creó y anotó anteriormente.
-9. En Tiempo de espera (segundos), cambie el valor a un valor entre **30** y **60**. Esto es necesario para dar tiempo suficiente para completar el segundo factor de autenticación.
+6. En el cuadro de diálogo de autenticación RADIUS de hello, haga clic en **agregar**.
+7. En Hola Agregar servidor RADIUS, en nombre del servidor, agregue Hola nombre u Hola dirección IP del servidor RADIUS de Hola que configuró en la sección anterior de Hola.
+8. En el secreto compartido, haga clic en **cambio** y agregue Hola comparten contraseña secreta que ha creado y registrado anteriormente.
+9. En tiempo de espera (segundos), cambie el valor de tooa de valor de hello entre **30** y **60**. Esto es necesario tooallow suficiente tiempo toocomplete Hola segundo factor de autenticación.
  
  ![Agregar servidor RADIUS](./media/nps-extension-vpn/image16.png)
  
 10. Haga clic en **Aceptar** hasta cerrar todos los cuadros de diálogo.
 
 ### <a name="test-vpn-connectivity"></a>Probar la conectividad VPN
-En esta sección, confirmará que el cliente VPN se autentica y es autorizado por el servidor RADIUS cuando intenta conectarse al puerto virtual de VPN. En esta sección se supone que usa Windows 10 como cliente de VPN. 
+En esta sección, confirme que el cliente VPN hello es autenticado y autorizado por servidor RADIUS de hello cuando intente puerto virtual de tooconnect tooVPN. En esta sección se supone que usa Windows 10 como cliente de VPN. 
 
 >[!NOTE]
->Si ya tiene configurado un cliente VPN para conectarse al servidor VPN y ha guardado la configuración, puede omitir los pasos descritos para configurar y guardar un objeto de conexión VPN.
+>Si ya ha configurado un servidor VPN cliente tooconnect toohello VPN y ha guardado la configuración de hello, puede omitir Hola pasos relacionados tooconfiguring y guardar un objeto de conexión VPN.
 >
 
 1. En el equipo del cliente VPN, haga clic en **Inicio** y, a continuación, en **Configuración** (icono de engranaje).
 2. En configuración de Windows, haga clic en **Red e Internet**.
 3. Haga clic en **VPN**.
 4. Haga clic en **Agregar una conexión VPN**.
-5. En Agregar una conexión VPN, especifique Windows (integrada) como el Proveedor de VPN, a continuación, complete los campos restantes según corresponda y haga clic en **Guardar**. 
+5. En Agregar una conexión VPN, especifique Windows (integrada) como Hola proveedor de VPN y, a continuación, completa Hola restante, según corresponda y haga clic en **guardar**. 
 
  ![Agregar una conexión VPN](./media/nps-extension-vpn/image17.png)
  
-6. Abra el **Centro de redes y recursos compartidos** en el Panel de Control.
+6. Abra hello **centro de redes y recursos compartidos** en el Panel de Control.
 7. Haga clic en **Cambiar configuración del adaptador**.
 
  ![Cambiar configuración del adaptador](./media/nps-extension-vpn/image18.png)
 
-8. Haga clic con el botón derecho en la conexión de red VPN y haga clic en Propiedades. 
+8. Haga clic en conexión de red VPN de Hola y haga clic en Propiedades. 
 
  ![Propiedades de red VPN](./media/nps-extension-vpn/image19.png)
 
-9. En el cuadro de diálogo Propiedades de VPN, haga clic en la pestaña **Seguridad**. 
-10. En la pestaña Seguridad, asegúrese de que solo está seleccionado **Microsoft CHAP versión 2 (MS-CHAP v2)** y haga clic en Aceptar.
+9. En el cuadro de diálogo de propiedades VPN de hello, haga clic en hello **seguridad** ficha. 
+10. En la pestaña de seguridad de hello, asegúrese de que solo **Microsoft CHAP versión 2 (MS-CHAP v2)** está seleccionada y haga clic en Aceptar.
 
  ![Protocolos permitidos](./media/nps-extension-vpn/image20.png)
 
-11. Haga clic con el botón derecho en la conexión VPN y haga clic en **Conectar**.
-12. En la página Configuración, haga clic en **Conectar**.
+11. Haga clic en conexión de VPN de Hola y haga clic en **conectar**.
+12. En la página de configuración de hello, haga clic en **conectar**.
 
-Aparece una conexión correcta en el registro de seguridad en el servidor RADIUS con el identificador de evento 6272, como se muestra a continuación.
+Una conexión correcta aparece en el registro de seguridad de hello en el servidor RADIUS de hello como 6272 de Id. de evento, como se muestra a continuación.
 
  ![Propiedades de evento](./media/nps-extension-vpn/image21.png)
 
 ## <a name="troubleshoot-guide"></a>Guía de solución de problemas
-Se supone que la configuración de VPN funcionaba correctamente antes de configurar el servidor VPN para que utilice un servidor RADIUS centralizado para la autenticación y autorización. En este caso, es probable que el problema pueda deberse a una configuración incorrecta del servidor RADIUS o al uso de un nombre de usuario o contraseña no válidos. Por ejemplo, si usa el sufijo UPN alternativo en el nombre de usuario, el intento de inicio de sesión puede producir un error (debe usar el mismo nombre de cuenta para obtener los mejores resultados). 
+Se supone que la configuración de VPN funcionase correctamente antes de configurar Hola VPN server toouse un servidor RADIUS centralizado para la autenticación y autorización. En este caso, es probable que el problema de hello puede deberse a una configuración incorrecta de hello servidor RADIUS o hello uso de un nombre de usuario no válido o la contraseña. Por ejemplo, si usas sufijo UPN alternativo de hello en nombre de usuario de hello, intento de inicio de sesión de Hola podría fallar (debe usar Hola el mismo nombre de cuenta para obtener los mejores resultados). 
 
-Para solucionar estos problemas, un lugar ideal para comenzar es examinar los registros de eventos de seguridad en el servidor RADIUS. Para ahorrar tiempo buscando eventos, puede utilizar la vista personalizada basada en roles Servidor de directivas de red y acceso en el Visor de eventos, como se muestra a continuación. El identificador de evento 6273 indica eventos en los que el servidor de directivas de redes deniega el acceso a un usuario. 
+tootroubleshoot estos problemas, un toostart lugar ideal es registros de eventos de seguridad de tooexamine hello en Hola servidor RADIUS. búsqueda de tiempo de toosave para los eventos, puede usar Hola basada en roles servidor de acceso y directivas de redes vista personalizada en el Visor de eventos, como se muestra a continuación. Id. de evento 6273 indica donde hello servidor de directivas de red denegado usuario tooa de acceso de eventos. 
 
  ![Visor de eventos](./media/nps-extension-vpn/image22.png)
  
@@ -267,28 +267,28 @@ Para solucionar estos problemas, un lugar ideal para comenzar es examinar los re
 Esta sección proporciona instrucciones para habilitar a los usuarios para MFA y para configurar las cuentas para la verificación en dos pasos. 
 
 ### <a name="enable-multi-factor-authentication"></a>Habilitar Multi-Factor Authentication
-En esta sección, se habilitan cuentas de Azure AD para MFA. Use el **portal clásico** para habilitar a los usuarios para MFA. 
+En esta sección, se habilitan cuentas de Azure AD para MFA. Hola de uso **portal clásico** tooenable a los usuarios para MFA. 
 
-1. Abra un explorador y vaya a [https://manage.windowsazure.com](https://manage.windowsazure.com). 
-2. Inicie sesión como administrador.
-3. En el panel de navegación izquierdo del portal, haga clic en **Active Directory**.
+1. Abra un explorador y navegue demasiado[https://manage.windowsazure.com](https://manage.windowsazure.com). 
+2. Inicie sesión como administrador de Hola.
+3. En el portal de hello, en panel de navegación izquierdo hello, haga clic en **ACTIVE DIRECTORY**.
 
  ![Directorio predeterminado](./media/nps-extension-vpn/image23.png)
 
-4. En la columna nombre, haga clic en **Directorio predeterminado** (o en otro directorio, si procede).
-5. En la página Inicio rápido, haga clic en **Configurar**.
+4. En la columna de nombre de hello, haga clic en **directorio predeterminado** (o en otro directorio, si procede).
+5. En la página de inicio rápido de hello, haga clic en **configurar**.
 
  ![Configurar valor predeterminado](./media/nps-extension-vpn/image24.png)
 
-6. En la página Configurar, desplácese hacia abajo y, en la sección de la autenticación multifactor, haga clic en **Administrar el valor de configuración del servicio**.
+6. En la página de configuración de hello, desplácese hacia abajo y, en la sección de la autenticación multifactor de hello, haga clic en **administrar la configuración del servicio**.
 
  ![Administrar la configuración de MFA](./media/nps-extension-vpn/image25.png)
  
-7. En la página de la autenticación multifactor, revise la configuración predeterminada del servicio y, a continuación, haga clic en **Usuarios**. 
+7. En la página de la autenticación multifactor de hello, revise la configuración predeterminada del servicio de hello y, a continuación, haga clic en **usuarios**. 
 
  ![Usuarios de MFA](./media/nps-extension-vpn/image26.png)
  
-8. En la página Usuarios, seleccione los usuarios que desea habilitar para MFA y, a continuación, haga clic en **Habilitar**.
+8. En la página de usuarios de hello, seleccione los usuarios de Hola que desea tooenable para MFA y, a continuación, haga clic en **habilitar**.
 
  ![Propiedades](./media/nps-extension-vpn/image27.png)
  
@@ -297,28 +297,28 @@ En esta sección, se habilitan cuentas de Azure AD para MFA. Use el **portal cl�
  ![Habilitar MFA](./media/nps-extension-vpn/image28.png)
  
 10. Haga clic en **Cerrar**. 
-11. Actualice la página. Se cambia el estado de MFA a Habilitado.
+11. Actualice la página de Hola. Hola estado de autenticación Multifactor es tooEnabled modificada.
 
-Para información sobre cómo habilitar usuarios para Multi-Factor Authentication, consulte [Introducción a Azure Multi-Factor Authentication en la nube](multi-factor-authentication-get-started-cloud.md). 
+Para obtener información acerca de cómo los usuarios de tooenable para la autenticación multifactor, consulte [Introducción a la autenticación multifactor Azure en la nube de hello](multi-factor-authentication-get-started-cloud.md). 
 
 ### <a name="configure-accounts-for-two-step-verification"></a>Configuración de cuentas para la verificación en dos pasos
-Una vez que una cuenta se ha habilitado para MFA, los usuarios no pueden iniciar sesión en los recursos controlados por la directiva MFA hasta que hayan configurado correctamente un dispositivo de confianza que se utilizará para el segundo factor de autenticación de la verificación en dos pasos.
+Una vez que una cuenta se ha habilitado para MFA, los usuarios no son toosign capaz de tooresources regulado por la directiva de MFA de hello hasta que ha configurado correctamente una toouse de dispositivo de confianza para el segundo factor de autenticación Hola haber utilizado la verificación en dos pasos.
 
-En esta sección, configurará un dispositivo de confianza para su uso con la verificación en dos pasos. Hay varias opciones disponibles para configurar estos elementos, incluidas las siguientes:
+En esta sección, configurará un dispositivo de confianza para su uso con la verificación en dos pasos. Hay varias opciones disponibles para tooconfigure estos elementos, incluidos Hola siguientes:
 
-* **Aplicación móvil**. Instale la aplicación Microsoft Authenticator en un dispositivo Windows Phone, Android o iOS. Según las directivas de su organización, deberá usar la aplicación en uno de estos dos modos: Recibir notificaciones de comprobación (se envía una notificación al dispositivo) o Usar código de comprobación (deberá escribir un código de comprobación que se actualiza cada 30 segundos). 
-* **Llamada de teléfono móvil o mensaje de texto**. Puede recibir un mensaje de texto o una llamada de teléfono automática. En la opción de llamada de teléfono, debe responder a la llamada y presionar el signo # para autenticarse. En la opción de mensaje de texto, puede responder al mensaje o escribir el código de comprobación en la interfaz de inicio de sesión.
-* **Llamada de teléfono de la oficina**. Este proceso es el mismo que se ha descrito para las llamadas de teléfono automatizadas anteriores.
+* **Aplicación móvil**. Instalar la aplicación de Microsoft Authenticator hello en un dispositivo Windows Phone, Android o iOS. Según las directivas de su organización, es necesario toouse Hola aplicación en uno de dos modos: recibir notificaciones para comprobaciones (una notificación se inserta tooyour dispositivo) o usar código de comprobación (es necesario tooenter una comprobación de código que actualiza cada 30 segundos). 
+* **Llamada de teléfono móvil o mensaje de texto**. Puede recibir un mensaje de texto o una llamada de teléfono automática. Con la opción de llamada de teléfono de hello, responder a la llamada de hello y presione tooauthenticate de inicio de sesión de # Hola. Con la opción de texto hello, puede responder a mensajes de texto de toohello o escriba el código de comprobación de hello en interfaz de inicio de sesión de Hola.
+* **Llamada de teléfono de la oficina**. Este proceso es Hola igual a la se ha descrito para las llamadas de teléfono automatizadas anteriores.
 
-Siga estas instrucciones para configurar un dispositivo para usar la aplicación móvil para recibir una notificación push para la comprobación.
+Siga estas instrucciones para configurar una notificación de inserción de dispositivo toouse Hola aplicación móvil tooreceive para la comprobación.
 
-1. Inicie sesión en [https://aka.ms/mfasetup](https://aka.ms/mfasetup) o en cualquier otro sitio, como [https://portal.azure.com](https://portal.azure.com), donde sea necesario autenticarse con sus credenciales basadas en MFA. 
-2. Al iniciar sesión con su nombre de usuario y contraseña, se le presentará una pantalla que le pregunta si desea configurar la cuenta para la comprobación de seguridad adicional.
+1. Inicie sesión demasiado[https://aka.ms/mfasetup](https://aka.ms/mfasetup) o a cualquier sitio, como [https://portal.azure.com](https://portal.azure.com), donde se requiere tooauthenticate con sus credenciales basadas en MFA. 
+2. Al iniciar sesión con su nombre de usuario y la contraseña, se le presentará una pantalla que solicita tooset cuenta de hello para la comprobación de seguridad adicional.
 
  ![Seguridad adicional](./media/nps-extension-vpn/image29.png)
 
 3. Haga clic en **Configurar ahora**.
-4. En la página Comprobación de seguridad adicional, seleccione un tipo de contacto (aplicación móvil, teléfono del trabajo o teléfono de autenticación). A continuación, seleccione un país o región y seleccione un método. El método varía según el tipo de contacto que seleccione. Por ejemplo, si elige Aplicación móvil, puede seleccionar si desea recibir notificaciones de comprobación o usar un código de comprobación. En los pasos siguientes se supone que ha elegido **Aplicación móvil** como el tipo de contacto.
+4. En la página de comprobación de seguridad adicionales de hello, seleccione un tipo de contacto (aplicación móvil, teléfono del trabajo o teléfono de autenticación). A continuación, seleccione un país o región y seleccione un método. método Hello varía según el tipo de contacto que seleccione. Por ejemplo, si elige la aplicación móvil, puede seleccionar si las notificaciones de tooreceive de comprobación o toouse un código de comprobación. Hola que siga da por sentado que elija **aplicación móvil** como hello, póngase en contacto con tipo.
 
  ![Teléfono de autenticación](./media/nps-extension-vpn/image30.png)
 
@@ -326,150 +326,150 @@ Siga estas instrucciones para configurar un dispositivo para usar la aplicación
 
  ![Comprobación con aplicación móvil](./media/nps-extension-vpn/image31.png)
  
-6. Si aún no lo ha hecho, instale la aplicación móvil Authenticator en el dispositivo. 
-7. Siga las instrucciones de la aplicación móvil para examinar el código de barras que se le presenta o escriba manualmente la información y, a continuación, haga clic en **Listo**.
+6. Si aún no lo ha hecho lo ha hecho, instale aplicación móvil de autenticador de hello en el dispositivo. 
+7. Siga las instrucciones de Hola Hola aplicación móvil tooscan Hola presentada el código de barras o escribir información de hello manualmente y, a continuación, haga clic en **realiza**.
 
  ![Configuración de la aplicación móvil](./media/nps-extension-vpn/image32.png)
 
-8. En la página Comprobación de seguridad adicional, haga clic en **Contactarme** y responda a la notificación que se envía al dispositivo.
-9. En la página Comprobación de seguridad adicional, escriba un número de contacto para utilizar en caso de que pierda el acceso a la aplicación móvil y haga clic en **Siguiente**.
+8. En la página de comprobación de seguridad adicionales de hello, haga clic en **contacto me** y respuesta toonotification enviado tooyour dispositivo.
+9. En la página de comprobación de seguridad adicionales de hello, escriba un número de contacto en caso de que pierda la aplicación móvil de acceso toohello y haga clic en **siguiente**.
 
  ![Número de teléfono móvil](./media/nps-extension-vpn/image33.png)
  
-10. En Comprobación de seguridad adicional, haga clic en **Listo**.
+10. En hello comprobación de seguridad adicional, haga clic en **realiza**.
 
-El dispositivo está configurado ahora para proporcionar un segundo método de comprobación. Para obtener información sobre cómo configurar cuentas para la verificación en dos pasos, consulte [Configurar mi cuenta para la verificación en dos pasos](./end-user/multi-factor-authentication-end-user-first-time.md).
+Hola dispositivo ya está configurado tooprovide un segundo método de comprobación. Para obtener información sobre cómo configurar cuentas para la verificación en dos pasos, consulte [Configurar mi cuenta para la verificación en dos pasos](./end-user/multi-factor-authentication-end-user-first-time.md).
 
 ## <a name="install-and-configure-nps-extension"></a>Instalación y configuración de la extensión NPS
 
-Esta sección proporciona instrucciones para configurar la VPN para usar Azure MFA para la autenticación de cliente con el servidor de VPN.
+Esta sección proporciona instrucciones para configurar VPN toouse Azure MFA para la autenticación de cliente con hello servidor VPN.
 
-Una vez que instale y configure la extensión NPS, toda la autenticación de cliente basada en RADIUS procesada por este servidor debe usar Azure MFA. Si todos los usuarios de VPN no están inscritos en Azure MFA, puede configurar otro servidor RADIUS para autenticar a los usuarios que no están configurados para usar MFA. O bien, puede crear una entrada del registro que permite a sus usuarios proporcionar un segundo factor de autenticación solo si están inscritos en MFA. 
+Después de instalar y configurar la extensión NPS hello, toda la autenticación de cliente basada en RADIUS que es procesado por este servidor es necesario toouse MFA de Azure. Si no todos los usuarios VPN se inscriben en Azure MFA, puede configurar otro RADIUS server tooauthenticate a los usuarios que no sean toouse configurado MFA. O bien, puede crear una entrada del registro que permite a los usuarios sus tooprovide un segundo factor de autenticación, solo si están inscritos en MFA. 
 
-Cree un nuevo valor de cadena denominado _REQUIRE_USER_MATCH en HKLM\SOFTWARE\Microsoft\AzureMfa_ y establezca el valor como TRUE o FALSE. 
+Crear un nuevo valor de cadena denominado _REQUIRE_USER_MATCH en HKLM\SOFTWARE\Microsoft\AzureMfa_y establezca Hola valor tooTRUE o FALSE. 
 
  ![Require User Match (Requerir coincidencia de usuario)](./media/nps-extension-vpn/image34.png)
  
-Si el valor se establece en TRUE o no está establecido, todas las solicitudes de autenticación están sujetas a un desafío MFA. Si el valor se establece en FALSE, se emiten desafíos MFA únicamente a los usuarios que están inscritos en MFA. Use solo el valor FALSE en las pruebas o en entornos de producción durante un período de incorporación.
+Si el valor de hello es conjunto tooTRUE o no establecida, todas las solicitudes de autenticación están sujetas desafío tooan MFA. Si el valor de Hola se establece tooFALSE, desafíos MFA se emiten sólo toousers que están inscritos en MFA. Usar solo hello valor FALSE en las pruebas o en entornos de producción durante un período de incorporación.
 
 ### <a name="acquire-azure-active-directory-guid-id"></a>Obtener el identificador de GUID de Azure Active Directory
 
-Como parte de la configuración de la extensión NPS, debe proporcionar las credenciales de administrador y el identificador de Azure Active Directory para el inquilino de Azure AD. Los pasos siguientes muestran cómo obtener el identificador del inquilino.
+Como parte de configuración de Hola de hello extensión NPS, necesita credenciales de administrador de toosupply y Hola identificador Azure Active Directory para el inquilino de Azure AD. Hola pasos siguientes muestran cómo identificador de inquilino de hello tooget.
 
-1. Inicie sesión en Azure Portal en [https://portal.azure.com](https://portal.azure.com) como administrador global del inquilino de Azure.
-2. En la barra de navegación de la izquierda, haga clic en el icono de **Azure Active Directory**.
+1. Inicie sesión en toohello portal de Azure en [https://portal.azure.com](https://portal.azure.com) como administrador global de Hola de hello Azure de inquilinos.
+2. Hola barra de navegación izquierda, haga clic en hello **Azure Active Directory** icono.
 3. Haga clic en **Propiedades**.
-4. Para copiar el identificador de directorio en el Portapapeles, seleccione el icono **Copiar**.
+4. toocopy el Portapapeles de toohello de Id. de directorio, seleccione hello **copia** icono.
  
  ![Identificador de directorio](./media/nps-extension-vpn/image35.png)
 
-### <a name="install-the-nps-extension"></a>Instalación de la extensión de NPS
-La extensión NPS debe instalarse en un servidor que tenga el rol Directiva de red y servicios de acceso (NPS) instalado y que funcione como servidor RADIUS en el diseño. No instale la extensión NPS en el servidor de Escritorio remoto.
+### <a name="install-hello-nps-extension"></a>Instalar extensión NPS Hola
+Hola extensión NPS debe toobe instalado en un servidor que tiene la directiva de red de Hola y rol de servicios de acceso (NPS) instalado y que funcione como servidor RADIUS de hello en el diseño. No instale la extensión NPS de hello en el servidor de escritorio remoto.
 
-1. Puede descargar la extensión NPS de [https://aka.ms/npsmfa](https://aka.ms/npsmfa). 
-2. Copie el archivo ejecutable de instalación (NpsExtnForAzureMfaInstaller.exe) en el servidor NPS.
-3. En el servidor NPS, haga doble clic en **NpsExtnForAzureMfaInstaller.exe**. Cuando se le solicite, haga clic en **Ejecutar**.
-4. En el cuadro de diálogo Extensión NPS para Azure MFA, revise los términos de licencia de software, marque la casilla **Acepto los términos de licencia y condiciones** y haga clic en **Instalar**.
+1. La extensión NPS Hola de descargar [https://aka.ms/npsmfa](https://aka.ms/npsmfa). 
+2. Copie el servidor NPS toohello de hello el programa de instalación (NpsExtnForAzureMfaInstaller.exe) del archivo ejecutable.
+3. En el servidor NPS de hello, haga doble clic en **NpsExtnForAzureMfaInstaller.exe**. Cuando se le solicite, haga clic en **Ejecutar**.
+4. En hello extensión de NPS para el cuadro de diálogo de MFA de Azure, revisar los términos de licencia del software de hello, comprobar **acepto los términos de licencia de toohello y condiciones**y haga clic en **instalar**.
 
  ![Extensión NPS](./media/nps-extension-vpn/image36.png)
  
-5. En el cuadro de diálogo Extensión NPS para Azure MFA, haga clic en **Cerrar**.  
+5. Hola extensión de NPS para el cuadro de diálogo de MFA de Azure, haga clic en **cerrar**.  
 
  ![Instalación correcta](./media/nps-extension-vpn/image37.png) 
  
-### <a name="configure-certificates-for-use-with-the-nps-extension-using-a-powershell-script"></a>Configuración de los certificados para su uso con la extensión NPS mediante un script de PowerShell
-Debe configurar los certificados para su uso por la extensión NPS para garantizar la seguridad de las comunicaciones. Los componentes de NPS incluyen un script de Windows PowerShell que configura un certificado autofirmado para su uso con NPS. 
+### <a name="configure-certificates-for-use-with-hello-nps-extension-using-a-powershell-script"></a>Configurar certificados para su uso con la extensión NPS hello mediante un script de PowerShell
+comunicaciones seguras tooensure y seguridad, deberá tooconfigure certificados para su uso por extensión NPS Hola. los componentes NPS Hola incluyen un script de Windows PowerShell que configure un certificado autofirmado para su uso con NPS. 
 
-Este script realiza las acciones siguientes:
+script de Hola realiza Hola siguientes acciones:
 
 * Crea un certificado autofirmado
-* Asocia la clave pública del certificado a la entidad de servicio en Azure AD
-* Almacena el certificado en el almacén de certificados del equipo local
-* Concede acceso a la clave privada del certificado al usuario de red
+* Asocia la clave pública del certificado tooservice principal en Azure AD
+* Hola a almacenes de certificados en el almacén del equipo local de Hola
+* Concede acceso toohello clave privada del certificado toohello usuario de red
 * Reinicia el servicio Servidor de directivas de redes
 
-Si desea utilizar sus propios certificados, debe asociar la clave pública de su certificado para la entidad de servicio en Azure AD, etc.
-Para usar el script, indique a la extensión sus credenciales de administrador de Azure Active Directory y el identificador del inquilino de Azure Active Directory que copió anteriormente. Ejecute el script en cada servidor NPS donde instaló la extensión NPS.
+Si desea toouse sus propios certificados, necesita tooassociate Hola público de la entidad de seguridad de servicio de certificado toohello en Azure AD y así sucesivamente.
+script de Hola toouse, proporcionar extensión Hola con sus credenciales administrativas de Azure Active Directory y Hola Id. de inquilino de Azure Active Directory que copió anteriormente. Ejecutar script de Hola en cada servidor NPS donde se instala la extensión NPS Hola.
 
 1. Abra un símbolo del sistema administrativo de Windows PowerShell.
-2. En el símbolo del sistema de PowerShell, escriba _cd 'c:\Program Files\Microsoft\AzureMfa\Config'_ y presione **ENTRAR**.
+2. En el símbolo del sistema de PowerShell hello, escriba _cd 'c:\Program Files\Microsoft\AzureMfa\Config'_y presione **ENTRAR**.
 3. Escriba _.\AzureMfsNpsExtnConfigSetup.ps1_ y presione **ENTRAR**. 
- * El script comprueba si está instalado el módulo de PowerShell de Azure Active Directory. Si no está instalado, el script instala el módulo.
+ * script de Hola comprueba toosee si está instalado el módulo de PowerShell de Azure Active Directory de Hola. Si no está instalado, el script de Hola instala módulo Hola.
  
  ![PowerShell](./media/nps-extension-vpn/image38.png)
  
-4. Una vez que el script comprueba la instalación del módulo de PowerShell, muestra el cuadro de diálogo del módulo de PowerShell de Azure Active Directory. En el cuadro de diálogo, escriba sus credenciales de administrador de Azure AD y la contraseña y haga clic en **Iniciar sesión**. 
+4. Después de que el script de Hola comprueba la instalación de Hola Hola del módulo de PowerShell, muestra el cuadro de diálogo de módulo de Azure Active Directory PowerShell Hola. En el cuadro de diálogo de hello, escriba sus credenciales de administrador de Azure AD y la contraseña y haga clic en **iniciar sesión en**. 
  
  ![Inicio de sesión de PowerShell](./media/nps-extension-vpn/image39.png)
  
-5. Cuando se le solicite, pegue el identificador del inquilino que copió al Portapapeles anteriormente y presione **ENTRAR**. 
+5. Cuando se le solicite, pegue el Id. de inquilino de Hola que copió anteriormente toohello Portapapeles y presione **ENTRAR**. 
 
  ![Id. de inquilino](./media/nps-extension-vpn/image40.png)
 
-6. El script crea un certificado autofirmado y realiza otros cambios en la configuración. La salida es similar a la imagen que se muestra a continuación.
+6. script de Hola crea un certificado autofirmado y realiza otros cambios de configuración. salida de Hello es similar a la imagen de Hola se muestra a continuación.
 
  ![Certificado autofirmado](./media/nps-extension-vpn/image41.png)
 
-7. Reinicie el servidor.
+7. Reinicie el servidor de Hola.
  
 ### <a name="verify-configuration"></a>Comprobación de la configuración
-Para comprobar la configuración, debe establecer una conexión VPN nueva con el servidor VPN. Después de escribir correctamente las credenciales para la autenticación principal, la conexión VPN espera a que la autenticación secundaria sea correcta para establecer la conexión, como se muestra a continuación. 
+configuración de hello tooverify, deberá tooestablish una nueva conexión de VPN con el servidor VPN. Cuando se especifica correctamente las credenciales para la autenticación principal, Hola conexión VPN espera Hola autenticación secundaria toosucceed antes de establecer conexión hello, tal y como se muestra a continuación. 
 
  ![Comprobación de la configuración](./media/nps-extension-vpn/image42.png)
 
-Si se autentica correctamente con el método de comprobación secundario que ha configurado previamente en Azure MFA, se conecta al recurso. Sin embargo, si la autenticación secundaria no se realiza correctamente, se deniega el acceso al recurso. 
+Si se autentica correctamente con el método de verificación secundaria hello que configuró previamente en Azure MFA, son recursos toohello conectado. Sin embargo, si la autenticación secundaria hello no es correcta, se le deniega el acceso tooresource. 
 
-En el ejemplo siguiente, la aplicación Authenticator en un dispositivo Windows Phone se utiliza para proporcionar la autenticación secundaria.
+En el ejemplo de Hola siguiente, Hola autenticador aplicación en un dispositivo Windows phone es autenticación secundaria de hello tooprovide usado.
 
  ![Comprobar cuenta](./media/nps-extension-vpn/image43.png)
 
-Una vez que se haya autenticado correctamente con el método secundario, se le concede acceso al puerto virtual en el servidor VPN. Sin embargo, como ha sido necesario usar un método de autenticación secundario con una aplicación móvil en un dispositivo de confianza, el proceso de inicio de sesión es más seguro que utilizando solo una combinación de nombre de usuario y contraseña.
+Una vez que se haya autenticado correctamente utilizando el método secundario hello, se le concede acceso toohello puerto virtual en el servidor VPN de Hola. Sin embargo, puesto que han toouse requiere un método de autenticación secundario con una aplicación móvil en un dispositivo de confianza, registro de hello en proceso es más seguro que sería utilizar solo un nombre de usuario / contraseña.
 
 ### <a name="view-event-viewer-logs-for-successful-logon-events"></a>Ver los registros del Visor de eventos para eventos de inicio de sesión correcto
-Para ver los eventos de inicio de sesión correctos en los registros del Visor de eventos de Windows, puede utilizar el siguiente comando de Windows PowerShell para consultar el registro de seguridad de Windows en el servidor NPS.
+eventos de inicio de sesión correcto de tooview hello en los registros del Visor de eventos de Windows hello, puede emitir Hola siguiendo el registro de seguridad de Windows de Windows PowerShell comando tooquery hello en el servidor NPS de Hola.
 
-Para consultar los eventos de inicio de sesión correcto en los registros del Visor de eventos de seguridad, use el comando siguiente,
+eventos de inicio de sesión correcto de tooquery en registros de Visor de eventos de seguridad de hello, usar hello siguiente comando,
 * _Get-WinEvent -Logname Security_ | where {$_.ID -eq '6272'} | FL 
 
  ![Visor de eventos de seguridad](./media/nps-extension-vpn/image44.png)
  
-También puede ver el registro de seguridad o la vista personalizada de Directivas de red y servicios de acceso, tal y como se muestra a continuación:
+También puede ver el registro de seguridad de Hola u Hola servicios de acceso y directivas de redes vista personalizada, tal y como se muestra a continuación:
 
  ![Acceso a la directiva de red](./media/nps-extension-vpn/image45.png)
 
-En el servidor donde instaló la extensión NPS para Azure MFA, puede encontrar registros de aplicación del Visor de eventos específicos de la extensión en **Application and Services Logs\Microsoft\AzureMfa**. 
+En el servidor de Hola donde instaló la extensión NPS de Hola para MFA de Azure, puede encontrar registros del Visor de eventos de aplicación toohello específico de extensión en **aplicaciones y servicios Logs\Microsoft\AzureMfa**. 
 
 * _Get-WinEvent -Logname Security_ | where {$_.ID -eq '6272'} | FL
 
  ![Número de eventos](./media/nps-extension-vpn/image46.png)
 
 ## <a name="troubleshoot-guide"></a>Guía de solución de problemas
-Si la configuración no funciona según lo esperado, un buen lugar para comenzar es comprobar que el usuario está configurado para usar Azure MFA. Haga que el usuario se conecte a [https://portal.azure.com](https://portal.azure.com). Si a los usuarios se les solicita la autenticación secundaria y se pueden autenticar correctamente, puede descartar una configuración incorrecta de Azure MFA.
+Si la configuración de hello no funciona según lo esperado, un tootroubleshoot de toostart lo ideal es tooverify que Hola usuario toouse configurado Azure MFA. Tener usuario Hola conectarse demasiado[https://portal.azure.com](https://portal.azure.com). Si a los usuarios se les solicita la autenticación secundaria y se pueden autenticar correctamente, puede descartar una configuración incorrecta de Azure MFA.
 
-Si Azure MFA está funcionando para los usuarios, debe revisar los registros de eventos pertinentes. Esto incluye los eventos de seguridad, de operativa de la puerta de enlace y los registros de Azure MFA que se describen en la sección anterior. 
+Si funciona Azure MFA para usuarios de hello, debe revisar los registros de eventos relevantes Hola. Esto incluye registros de eventos de seguridad, operativa de la puerta de enlace y de Azure MFA de Hola que se describen en la sección anterior de Hola. 
 
 A continuación, se muestra un ejemplo de salida del registro de seguridad que muestra un evento de inicio de sesión incorrecto (identificador de evento 6273):
 
  ![Registro de seguridad](./media/nps-extension-vpn/image47.png)
 
-A continuación, se muestra un evento relacionado de los registros de AzureMFA:
+A continuación se muestra un evento relacionado de hello AzureMFA registros:
 
  ![Registros de Azure MFA](./media/nps-extension-vpn/image48.png)
 
-Para realizar opciones avanzadas de solución de problemas, consulte los archivos de registro de formato de la base de datos de NPS donde está instalado el servicio NPS. Estos archivos de registro se crean en la carpeta _%SystemRoot%\System32\Logs_ como archivos de texto delimitado por comas. Para obtener una descripción de estos archivos de registro, consulte [Interpretación de los archivos de registro de formato de la base de datos de NPS](https://technet.microsoft.com/library/cc771748.aspx). 
+tooperform avanzada solucionar problemas de opciones, consulte archivos de registro de la formato de hello NPS base de datos donde está instalado el servicio NPS Hola. Estos archivos de registro se crean en la carpeta _%SystemRoot%\System32\Logs_ como archivos de texto delimitado por comas. Para obtener una descripción de estos archivos de registro, consulte [Interpretación de los archivos de registro de formato de la base de datos de NPS](https://technet.microsoft.com/library/cc771748.aspx). 
 
-Las entradas de estos archivos de registro son difíciles de interpretar sin importarlos en una hoja de cálculo o una base de datos. Puede encontrar varios analizadores de IAS en línea que le ayudarán a interpretar los archivos de registro. A continuación, se muestra la salida de una [aplicación shareware](http://www.deepsoftware.com/iasviewer) que se puede descargar: 
+las entradas de Hello en estos archivos de registro son difíciles de toointerpret sin importarlos en una hoja de cálculo o una base de datos. Puede encontrar un número de IAS analizadores en línea tooassist en interpretar Hola archivos de registro. A continuación se muestra la salida de hello de uno estos descargable [aplicación shareware](http://www.deepsoftware.com/iasviewer): 
 
  ![Aplicación shareware](./media/nps-extension-vpn/image49.png)
 
-Por último, para más opciones de solución de problemas, puede utilizar un analizador de protocolos, como Wireshark o el [Analizador de mensajes de Microsoft](https://technet.microsoft.com/library/jj649776.aspx). La siguiente imagen de Wireshark muestra los mensajes RADIUS entre el servidor VPN y el servidor NPS.
+Por último, para más opciones de solución de problemas, puede utilizar un analizador de protocolos, como Wireshark o el [Analizador de mensajes de Microsoft](https://technet.microsoft.com/library/jj649776.aspx). Hello siguiente imagen desde Wireshark muestra mensajes de Hola RADIUS entre servidor VPN de Hola y Hola NPS.
 
  ![Analizador de mensajes de Microsoft](./media/nps-extension-vpn/image50.png)
 
 Para más información, consulte [Integración de la infraestructura NPS existente con Azure Multi-Factor Authentication](multi-factor-authentication-nps-extension.md).  
 
 ## <a name="next-steps"></a>Pasos siguientes
-[Cómo conseguir Azure Multi-Factor Authentication](multi-factor-authentication-versions-plans.md)
+[¿Cómo tooget la autenticación multifactor Azure](multi-factor-authentication-versions-plans.md)
 
 [Puerta de enlace de Escritorio remoto y Servidor Azure Multi-Factor Authentication con RADIUS](multi-factor-authentication-get-started-server-rdg.md)
 

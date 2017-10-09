@@ -1,6 +1,6 @@
-Aunque el uso de rutas del sistema facilita el tráfico automáticamente para su implementación, hay casos en los que seguramente quiera controlar el enrutamiento de paquetes a través de una aplicación virtual. Puede hacerlo mediante la creación de rutas definidas por el usuario que especifiquen el próximo salto de los paquetes que fluyen a una subred específica para que así vayan a su dispositivo virtual y se habilite el reenvío IP de la máquina virtual que funciona como aplicación virtual.
+Aunque el uso de Hola de rutas del sistema facilita tráfico automáticamente para su implementación, hay casos en que desea toocontrol Hola enrutamiento de paquetes a través de un dispositivo virtual. Puede por lo tanto mediante la creación de rutas definidas por el usuario especificar próximo salto Hola para los paquetes que fluyen tooa dispositivo virtual de subred específica toogo tooyour en su lugar, y habilitar IP Hola el reenvío de máquina virtual que ejecuta como dispositivo virtual Hola.
 
-A continuación se indican algunos de los casos donde se pueden usar aplicaciones virtuales:
+Algunos de los casos de Hola dónde pueden utilizarse aparatos virtuales son:
 
 * Supervisión del tráfico con un sistema de detección de intrusos (IDS)
 * Control del tráfico con un firewall

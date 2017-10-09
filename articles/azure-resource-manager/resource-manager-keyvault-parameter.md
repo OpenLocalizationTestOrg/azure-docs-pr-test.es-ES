@@ -1,6 +1,6 @@
 ---
-title: Secreto de Key Vault con la plantilla de Resource Manager | Microsoft Docs
-description: "Muestra cómo pasar un secreto de un almacén de claves como un parámetro durante la implementación."
+title: "secreto del almacén de aaaKey con plantilla del Administrador de recursos | Documentos de Microsoft"
+description: "Muestra cómo toopass un secreto de una clave del almacén como un parámetro durante la implementación."
 services: azure-resource-manager,key-vault
 documentationcenter: na
 author: tfitzmac
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: tomfitz
-ms.openlocfilehash: 1ca72599e67e79d42a3d430dbb13e89ea7265334
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 0bb7760c95b3b4ef34c9e5cc2e3421be56b5e5e3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Uso de Key Vault para pasar el valor de parámetro seguro durante la implementación
+# <a name="use-key-vault-toopass-secure-parameter-value-during-deployment"></a>Utilizar el valor de parámetro secure toopass de almacén de claves durante la implementación
 
-Cuando tiene que pasar un valor seguro (por ejemplo, una contraseña) como un parámetro durante la implementación, puede recuperar el valor de [Azure Key Vault](../key-vault/key-vault-whatis.md). El valor se recupera haciendo referencia a Key Vault y al secreto del archivo de parámetros. El valor nunca se expone debido a que solo hace referencia a su identificador de almacén de claves. No es necesario especificar manualmente el valor del secreto cada vez que implementan los recursos. Key Vault puede existir en una suscripción diferente en la que está implementando el grupo de recursos. Cuando hace referencia a Key Vault, incluye el identificador de suscripción.
+Cuando necesite toopass un valor seguro (por ejemplo, una contraseña) como un parámetro durante la implementación, se puede recuperar el valor de Hola desde una [el almacén de claves de Azure](../key-vault/key-vault-whatis.md). Recupera el valor de hello haciendo referencia a almacén de claves de Hola y el secreto en el archivo de parámetros. valor de Hello nunca se expone como solo hace referencia a su identificador de almacén de claves. No es necesario toomanually escriba valor Hola de secreto de hello cada vez que implemente recursos Hola. almacén de claves de Hello puede existir en otra suscripción que va a implementar en el grupo de recursos de Hola. Al hacer referencia a almacén de claves de hello, incluir Hola Id. de suscripción.
 
-Al crear el almacén de claves, establezca la propiedad *enabledForTemplateDeployment* en *true*. Al establecer este valor en true, permite el acceso desde las plantillas de Resource Manager durante la implementación.  
+Al crear el almacén de claves de hello, establezca hello *enabledForTemplateDeployment* propiedad demasiado*true*. Al establecer este valor tootrue, permite el acceso desde plantillas de administrador de recursos durante la implementación.  
 
 ## <a name="deploy-a-key-vault-and-secret"></a>Implementación de un almacén de claves y un secreto
 
-Para crear un almacén de claves y un secreto, use la CLI de Azure o PowerShell. Tenga en cuenta que el almacén de claves está habilitado para la implementación de plantillas. 
+toocreate un almacén de claves y el secreto, utilice Azure CLI o PowerShell. Tenga en cuenta que ese almacén de claves de hello está habilitado para la implementación de plantilla. 
 
 Para la CLI de Azure, utilice:
 
@@ -53,14 +53,14 @@ $secretvalue = ConvertTo-SecureString $password -AsPlainText -Force
 Set-AzureKeyVaultSecret -VaultName $vaultname -Name "examplesecret" -SecretValue $secretvalue
 ```
 
-## <a name="enable-access-to-the-secret"></a>Habilitación del acceso al secreto
+## <a name="enable-access-toohello-secret"></a>Habilitar el secreto de toohello de acceso
 
-Si usa un nuevo Key Vault o uno ya existente, asegúrese de que el usuario que implementa la plantilla puede acceder al secreto. El usuario que implementa una plantilla que hace referencia a un secreto debe tener el permiso `Microsoft.KeyVault/vaults/deploy/action` para Key Vault. Los roles [Propietario](../active-directory/role-based-access-built-in-roles.md#owner) y [Colaborador](../active-directory/role-based-access-built-in-roles.md#contributor) conceden este acceso. También puede crear un [rol personalizado](../active-directory/role-based-access-control-custom-roles.md) que concede este permiso y agrega el usuario a ese rol. Para más información sobre cómo agregar un usuario a un rol, vea [Asignación de un usuario a roles de administrador en Azure Active Directory](../active-directory/active-directory-users-assign-role-azure-portal.md).
+Si usas un almacén de claves nuevo o uno ya existente, asegúrese de ese usuario Hola implementar plantilla Hola puede tener acceso secreto Hola. implementación de una plantilla que hace referencia a un secreto de usuario de Hello debe tener hello `Microsoft.KeyVault/vaults/deploy/action` permiso para el almacén de claves de Hola. Hola [propietario](../active-directory/role-based-access-built-in-roles.md#owner) y [colaborador](../active-directory/role-based-access-built-in-roles.md#contributor) roles ambos conceden este acceso. También puede crear un [roles personalizados](../active-directory/role-based-access-control-custom-roles.md) que concede este permiso y agregar rol de hello usuario toothat. Para obtener información acerca de cómo agregar un rol de usuario tooa, consulte [asignar roles de tooadministrator en Azure Active Directory de un usuario](../active-directory/active-directory-users-assign-role-azure-portal.md).
 
 
 ## <a name="reference-a-secret-with-static-id"></a>Referencia a un secreto con identificador estático
 
-La plantilla que recibe un secreto de Key Vault es como cualquier otra plantilla. Esto se debe a que **se hace referencia al almacén de claves del archivo de parámetros, no de la plantilla**. Por ejemplo, la siguiente plantilla implementa una base de datos SQL que incluye una contraseña de administrador. El parámetro de contraseña se establece en una cadena segura. Pero la plantilla no especifica de dónde procede ese valor.
+plantilla de Hola que recibe un secreto de almacén de claves es como cualquier otra plantilla. Esto es así porque **hace referencia a almacén de claves de Hola Hola archivo de parámetros, no la plantilla de Hola.** Por ejemplo, hello sigue template implementa una base de datos SQL que incluye una contraseña de administrador. el parámetro de contraseña Hola se establece la cadena segura tooa. Sin embargo, plantilla hello no especifica dónde procede ese valor.
 
 ```json
 {
@@ -146,7 +146,7 @@ La plantilla que recibe un secreto de Key Vault es como cualquier otra plantilla
 }
 ```
 
-Ahora, cree un archivo de parámetros para la plantilla anterior. En el archivo de parámetros, especifique un parámetro que coincida con el nombre del parámetro de la plantilla. Para el valor del parámetro, haga referencia al secreto del almacén de claves. Se hace referencia al secreto pasando el identificador de recurso de almacén de claves y el nombre del secreto. En este ejemplo, ya debe existir el secreto del almacén de claves y se utiliza un valor estático para el mismo identificador de recurso.
+Ahora, cree un archivo de parámetro para hello anterior plantilla. En el archivo de parámetros de hello, especificar un parámetro que coincida con hello nombre del parámetro de hello en plantilla Hola. Valor de parámetro hello, hacer referencia a Hola secreto del almacén de claves de Hola. Hacer referencia a secreto Hola pasando el identificador de recurso de Hola de almacén de claves de Hola y el nombre de Hola de secreto de Hola. En el siguiente ejemplo de Hola, ya debe existir el secreto del almacén de claves de Hola y proporcionar un valor estático para su identificador de recurso.
 
 ```json
 {
@@ -194,9 +194,9 @@ Ahora, cree un archivo de parámetros para la plantilla anterior. En el archivo 
 
 ## <a name="reference-a-secret-with-dynamic-id"></a>Referencia a un secreto con identificador dinámico
 
-En la sección anterior se mostró cómo pasar un identificador de recurso estático para el secreto del almacén de claves. Sin embargo, en algunos escenarios, debe hacer referencia a un secreto del Almacén de claves que varía en función de la implementación actual. En ese caso, no se puede codificar el identificador de recurso en el archivo de parámetros. Desafortunadamente, no se puede generar dinámicamente el identificador de recurso en el archivo de parámetros, ya que no se permiten expresiones de plantilla en este tipo de archivos.
+sección anterior de Hola se ha explicado cómo toopass un identificador de recurso estático para la clave de hello almacén secreto. Sin embargo, en algunos escenarios, debe tooreference un secreto de almacén de claves que varía en función de la implementación actual de Hola. En ese caso, no se puede codificar Hola Id. de recurso en el archivo de parámetros de hello. Lamentablemente, no se puede generar dinámicamente Id. de recurso de hello en el archivo de parámetros de hello porque no se permiten expresiones de plantilla en el archivo de parámetros de hello.
 
-Para generar dinámicamente el identificador de recurso de un secreto del almacén de claves, debe mover los recursos que necesite el secreto a una plantilla anidada. En la plantilla principal, agregue la plantilla anidada y pase un parámetro que contenga el identificador de recurso generado dinámicamente.
+toodynamically generar Id. de recurso de Hola para un secreto de almacén de claves, debe mover los recursos de Hola que necesita el secreto de hello en una plantilla anidada. En la plantilla principal, puede agregar plantillas anidadas de Hola y pasa un parámetro que contiene el identificador de recurso de hello generada dinámicamente.
 
 ```json
 {

@@ -1,6 +1,6 @@
 ---
-title: "Introducción a Microsoft Azure StorSimple y el programa de soluciones en la nube | Microsoft Docs"
-description: "Introducción a StorSimple y CSP para asociados de StorSimple."
+title: "aaaMicrosoft StorSimple de Azure y visión general del programa de soluciones de nube | Documentos de Microsoft"
+description: "Información general sobre hello StorSimple y CSP para partners de StorSimple."
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,32 +14,32 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 3722fc1198549102bd4fd215b9ede04a3ca1fbf5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ba82b4011934505284c37b0788250c9b5c89a758
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="what-is-storsimple-for-cloud-solutions-providers-program"></a>¿Qué es StorSimple para el programa de proveedores de soluciones en la nube?
 
 
 ## <a name="overview"></a>Información general
 
-Microsoft Azure StorSimple es un enfoque único al almacenamiento empresarial con funcionalidades reales de almacenamiento en la nube híbrida. Permite que los clientes aprovechen las ventajas del almacenamiento económico en la nube para los datos inactivos, mientras mantienen los niveles de rendimiento más altos para los datos locales críticos. 
+Microsoft Azure StorSimple es un enfoque único tooenterprise de almacenamiento con capacidades de almacenamiento de nube híbrida es true. Permite a Hola clientes tootake aprovechar almacenamiento en nube económica para datos inactivos de hello, manteniendo sus datos de misión crítica locales para alcanzar mayores niveles de rendimiento Hola. 
 
-StorSimple Virtual Array para proveedores de soluciones en la nube (CSP) permite que los asociados aprovechen esta oportunidad. Los asociados son propietarios de todo el ciclo de vida de cliente con aprovisionamiento directo, facturación y soporte técnico de los servicios en la nube de Microsoft. En resumen, los asociados ahora pueden realizar transacciones de StorSimple junto con sus servicios a los clientes.
+StorSimple Virtual Array para el proveedor de soluciones de nube (CSP) permite toocapitalize asociados en esta oportunidad. Hola asociados Hola propio cliente to-end ciclo de vida con aprovisionamiento, facturación y soporte técnico de servicios en la nube de Microsoft directa. En resumen, socios de hello ahora pueden transact hello StorSimple junto con sus toocustomers de servicios.
 
-Para más información sobre StorSimple para CSP, visite el [Centro de partners](http://partnercenter.microsoft.com/).
+Para obtener más información acerca de StorSimple para CSP, visite hello [centro de partners de](http://partnercenter.microsoft.com/).
 
-Para más información sobre facturación, precios, incentivos y cómo obtener soporte técnico en CSP, vaya a [StorSimple in CSP: FAQ](storsimple-partner-csp-faq.md) (StorSimple en CSP: preguntas más frecuentes). 
+Para obtener más información sobre la facturación, precios, incentivos y obtener soporte técnico de CSP, vaya demasiado[StorSimple en el CSP: preguntas más frecuentes sobre](storsimple-partner-csp-faq.md). 
 
 ## <a name="deploy-and-manage-storsimple-for-csp"></a>Implementación y administración de StorSimple para CSP
 
-StorSimple para CSP está disponible como un servicio basado en el uso en todos los mercados en los que ya se puede encontrar StorSimple. StorSimple para CSP usa Azure Portal y el servicio StorSimple Device Manager. Un asociado de CSP puede crear una instancia de StorSimple Device Manager para administrar instancias de StorSimple Virtual Array, recursos compartidos, volúmenes y copias de seguridad. Puede administrar todas las matrices virtuales registradas en el servicio StorSimple Device Manager a través de Azure Portal.
+StorSimple para el CSP está disponible como un servicio basado en uso en todos los mercados de Hola donde hello StorSimple está disponible hoy mismo. StorSimple para el CSP utiliza Hola servicio de administrador de dispositivos de StorSimple de hello y portal de Azure. Un socio CSP puede crear un administrador de dispositivos de StorSimple toomanage StorSimple arreglos de discos virtuales, recursos compartidos, volúmenes y copias de seguridad. Todos los Hola arreglos de discos virtuales tooyour registrado el Administrador de dispositivos de StorSimple servicio a través de hello portal de Azure se puede administrar.
 
-Para más información, vaya a [Deploy and manage your StorSimple Virtual Array for CSP](storsimple-partner-csp-deploy.md) (Implementación y administración de StorSimple Virtual Array para CSP).
+Para obtener más información, consulte demasiado[implementar y administrar la matriz Virtual de StorSimple para CSP](storsimple-partner-csp-deploy.md).
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-- Si tiene más preguntas sobre StorSimple en CSP, vaya a [StorSimple for CSP: Frequently asked questions](storsimple-partner-csp-faq.md) (StorSimple para CSP: preguntas más frecuentes).
-- Si está listo para implementar StorSimple, vaya a [Deploy your StorSimple for CSP](storsimple-partner-csp-deploy.md) (Implementación de StorSimple para CSP).
+- Si tiene más preguntas sobre hello StorSimple en CSP, vaya demasiado[StorSimple para el CSP: preguntas más frecuentes](storsimple-partner-csp-faq.md).
+- Si está listo toodeploy StorSimple, vaya demasiado[implementar StorSimple para CSP](storsimple-partner-csp-deploy.md).

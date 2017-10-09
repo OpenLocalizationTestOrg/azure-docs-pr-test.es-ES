@@ -1,6 +1,6 @@
-## <a name="log-in-to-azure"></a>Inicie sesión en Azure.
+## <a name="log-in-tooazure"></a>Inicie sesión en tooAzure
 
-La CLI de Azure se usa para crear los recursos necesarios para hospedar la aplicación en Azure. Si ejecuta comandos de la CLI de Azure en Cloud Shell, significa que ya ha iniciado sesión. Para ejecutar comandos de la CLI de Azure, inicie sesión en la suscripción de Azure con el comando [az login](/cli/azure/#login) y siga las instrucciones de la pantalla.
+Hola CLI de Azure toocreate Hola recursos necesarios toohost deberá usar la aplicación en Azure. Si ejecuta comandos de CLI de Azure en hello Shell en la nube, ya inició sesión. comandos de CLI de Azure toorun localmente, inicie sesión en tooyour suscripción de Azure con hello [inicio de sesión de az](/cli/azure/#login) comando y siga hello en pantalla instrucciones.
 
 ```azurecli
 az login

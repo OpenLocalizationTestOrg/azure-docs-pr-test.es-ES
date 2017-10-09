@@ -1,31 +1,31 @@
 <!--author=alkohli last changed: 01/12/17-->
 
-#### <a name="to-complete-the-minimum-storsimple-device-setup"></a>Para completar la instalación mínima del dispositivo StorSimple
+#### <a name="toocomplete-hello-minimum-storsimple-device-setup"></a>instalación de dispositivo de StorSimple mínima de toocomplete Hola
 
    > [!NOTE]
-   > No se puede cambiar el nombre del dispositivo cuando se haya completado la configuración mínima del dispositivo.
+   > No se puede cambiar el nombre del dispositivo de hello una vez completada la instalación mínima del dispositivo de Hola.
    
-1. En la lista tabular de dispositivos de la hoja **Dispositivos**, seleccione su dispositivo y haga clic en él. El dispositivo está en estado **Listo para configurar**. Se abre la hoja **Configurar dispositivo**.
+1. Desde la lista tabular de Hola de los dispositivos de hello **dispositivos** hoja, seleccione y haga clic en el dispositivo. Hola dispositivo está en un **listo tooset seguridad** estado. Hola **Configurar dispositivo** abrirá la hoja.
 
      ![Interfaces de red de la instalación mínima del dispositivo StorSimple](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig1.png)
 
-2. En la hoja **Configurar dispositivo**:
+2. Hola **Configurar dispositivo** hoja:
    
-   1. Proporcione un **nombre descriptivo** para el dispositivo. El nombre de dispositivo predeterminado refleja información como el modelo de dispositivo y el número de serie. Puede asignar un nombre descriptivo de hasta 64 caracteres para administrar el dispositivo.
-   2. Establezca la **zona horaria** según la ubicación geográfica en la que se va a implementar el dispositivo. El dispositivo usa esta zona horaria para todas las operaciones programadas.
-   3. En la **configuración de DATOS 0**:
+   1. Proporcione un **nombre descriptivo** para el dispositivo. nombre de dispositivo predeterminado de Hello refleja información como el modelo de dispositivo de Hola y número de serie. Puede asignar un nombre descriptivo de la too64 caracteres toomanage el dispositivo.
+   2. Conjunto hello **zona horaria** basadas en ubicación geográfica de hello en qué Hola se va a implementar el dispositivo. El dispositivo usa esta zona horaria para todas las operaciones programadas.
+   3. En hello **DATA 0 configuración**:
 
-       1. La interfaz de red de DATOS 0 se muestra como habilitada con la configuración de red (IP, subred, puerta de enlace) definida mediante el Asistente para instalación. DATOS 0 también se habilita automáticamente para la nube y para iSCSI.
+       1. Los datos de muestra de interfaz de red como habilitado con hello de 0 de red configuradas (IP, subred, puerta de enlace) a través del Asistente para la instalación de Hola. DATOS 0 también se habilita automáticamente para la nube y para iSCSI.
 
-       2. Proporcione las direcciones IP fijas de Controlador 0 y Controlador 1. **Las direcciones IP fijas del controlador deben ser direcciones IP libres dentro de la subred y accesibles mediante la dirección IP del dispositivo.** Si la interfaz DATA 0 estaba configurada para IPv4, las direcciones IP fijas deben suministrarse en formato IPv4. Si proporcionó un prefijo para la configuración de IPv6, las direcciones IP fijas se rellenan automáticamente en estos campos.
+       2. Proporcionan Hola fijos direcciones IP para el controlador 0 y 1. **direcciones IP fijas de controlador de Hello necesita el toobe que liberar direcciones IP de subred de hello accesible por dirección IP del dispositivo Hola.** Si hello DATA 0 interfaz está configurada para IPv4, hello corregido toobe de necesidad de direcciones IP proporcionada en hello formato IPv4. Si ha proporcionado un prefijo para la configuración IPv6, Hola direcciones IP fijas se rellenan automáticamente en estos campos.
 
             ![Interfaces de red de la instalación mínima del dispositivo StorSimple](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig2.png)
 
-            Las direcciones IP fijas del controlador se usan para el mantenimiento de las actualizaciones del dispositivo. Por lo tanto, las direcciones IP fijas deben ser enrutables y disponer de capacidad de conexión a Internet. Para comprobar que sus IP de controlador fijas son enrutables, use el cmdlet [Test-HcsmConnection][Test]. En el ejemplo siguiente se muestra que las direcciones IP fijas del controlador se enrutan a Internet y pueden tener acceso a los servidores de Microsoft Update.
+            Hola direcciones IP para el controlador de hello fijas se usan para atender toohello dispositivo de hello las actualizaciones. Por lo tanto, Hola IP fija debe ser enrutables y deben poder tooconnect toohello Internet. Puede comprobar que el controlador fijo direcciones IP sean enrutables mediante el uso de hello [Test-HcsmConnection] [ Test] cmdlet. Hola siguiente ejemplo muestra fija del controlador direcciones IP es toohello enrutado Internet y puede tener acceso a Hola servidores de Microsoft Update.
 
             ![Test-HcsmConnection que muestra direcciones IP enrutables](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig3.png)
 
-1. Haga clic en **Aceptar**. Se inicia la configuración del dispositivo. Cuando finalice, recibirá una notificación. El estado del dispositivo cambia a **En línea** en la hoja **Dispositivos**.
+1. Haga clic en **Aceptar**. configuración de dispositivo de Hello comienza. Cuando se completa la configuración del dispositivo hello, se le notificará. Hola cambios de estado de dispositivo demasiado**en línea** en hello **dispositivos** hoja.
 
     ![Interfaces de red de la instalación mínima del dispositivo StorSimple](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig4.png)
 

@@ -1,6 +1,6 @@
 ---
-title: "Conexión de Operations Manager con Log Analytics | Microsoft Docs"
-description: "Para mantener su inversión existente en System Center Operations Manager y usar las funcionalidades ampliadas con Log Analytics, puede integrar Operations Manager con el área de trabajo OMS."
+title: "aaaConnect Operations Manager tooLog análisis | Documentos de Microsoft"
+description: "toomaintain la inversión realizada en System Center Operations Manager y usar amplió las capacidades con análisis de registros, puede integrar Operations Manager con el área de trabajo OMS."
 services: log-analytics
 documentationcenter: 
 author: MGoedtel
@@ -14,38 +14,38 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2017
 ms.author: magoedte
-ms.openlocfilehash: bcfffe05dbce2824ea4933997865e8c7e86610b6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b2841c7aa209fec7357dc4c8b1ff4325fdaa37ef
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-operations-manager-to-log-analytics"></a>Conexión de Operations Manager con Log Analytics
-Para mantener su inversión existente en System Center Operations Manager y usar las funcionalidades ampliadas con Log Analytics, puede integrar Operations Manager con el área de trabajo OMS.  Esto le permite aprovechar las oportunidades de OMS mientras sigue utilizando Operations Manager para:
+# <a name="connect-operations-manager-toolog-analytics"></a>Conectar Operations Manager tooLog análisis
+toomaintain la inversión realizada en System Center Operations Manager y usar amplió las capacidades con análisis de registros, puede integrar Operations Manager con el área de trabajo OMS.  Esto permite aprovechar las oportunidades de Hola de OMS mientras continúa toouse Operations Manager para:
 
-* Seguir supervisando el estado de los servicios de TI con Operations Manager
+* Continuar supervisar el estado de saludo de los servicios de TI con Operations Manager
 * Mantener la integración con sus soluciones ITSM compatibles con la administración de incidentes y problemas
-* Administrar el ciclo de vida de los agentes implementados en máquinas virtuales IaaS en una nube pública y en entornos locales supervisados con Operations Manager
+* Administrar el ciclo de vida de Hola de local tooon agentes implementados y máquinas virtuales de nube pública IaaS que se supervisa con Operations Manager
 
-La integración con System Center Operations Manager agrega valor a su estrategia de operaciones de servicio al usar la velocidad y la eficacia de OMS para recopilar, almacenar y analizar datos de Operations Manager.  OMS ayuda a correlacionar y a avanzar para identificar los errores de los problemas y a sacar a la superficie reapariciones para respaldar el proceso de administración de problema existente.   La flexibilidad del motor de búsqueda para examinar el rendimiento, eventos y datos de alertas con abundantes paneles y funcionalidades de informes para exponer estos datos de maneras significativas muestra la solidez que ofrece OMS como complemento de Operations Manager.
+Integración con System Center Operations Manager agrega estrategia de operaciones de servicio de valor tooyour usando Hola velocidad y eficacia de OMS en recopilar, almacenar y analizar datos de Operations Manager.  OMS le ayuda a correlacionar y trabajo hacia la identificación de los errores de Hola de problemas y así como la exposición las repeticiones para admitir el proceso de administración de problema existente.   Hola flexibilidad de hello motor tooexamine rendimiento, eventos y alerta de datos de búsqueda, con paneles muy completos y reporting capacidades tooexpose estos datos de maneras significativas, muestra intensidad Hola OMS aporta en como complemento para Operations Manager.
 
-Los agentes que informan al grupo de administración de Operations Manager recopilan datos de los servidores en función de los orígenes de datos de Log Analytics y de las soluciones habilitadas en su suscripción de OMS.  Dependiendo de la solución habilitada, los datos de estas soluciones se envían directamente desde un servidor de administración de Operations Manager al servicio web de OMS o bien, debido al volumen de los datos recopilados en el sistema administrado por agentes, se envían directamente desde el agente al servicio web de OMS. El servidor de administración reenvía los datos de OMS directamente al servicio web de OMS. No se escriben nunca en la base de datos de Operations Manager u OperationsManagerDW.  Cuando un servidor de administración pierde conectividad con el servicio web de OMS, almacena en caché los datos localmente hasta que la comunicación se restablezca con OMS.  Si el servidor de administración está sin conexión debido a un mantenimiento planeado o a una interrupción imprevista, otro servidor de administración del grupo de administración reanudará la conectividad de OMS.  
+agentes de Hello reporting toohello grupo de administración de Operations Manager recopilan datos de los servidores basados en orígenes de datos de análisis de registros de Hola y soluciones que haya habilitado en su suscripción de OMS.  Según se ha habilitado la solución de hello, datos de estas soluciones son que cualquiera envía directamente desde un servidor de administración de Operations Manager toohello OMS servicio web, o debido a Hola volumen de datos recopilados en el sistema administrado con agente hello, se envían directamente servicio web de hello agente tooOMS. servidor de administración de Hello reenvía los datos de OMS Hola directamente toohello OMS web servicio; nunca se escribe toohello OperationsManager o OperationsManagerDW base de datos.  Cuando un servidor de administración pierde la conexión con el servicio web OMS de hello, almacena en caché datos de hello localmente hasta que la comunicación se restablece con OMS.  Si el servidor de administración de hello está sin conexión debido a mantenimiento tooplanned o una interrupción imprevista, otro servidor de administración en el grupo de administración de hello reanuda la conectividad con OMS.  
 
-El siguiente diagrama muestra la conexión entre los agentes y servidores de administración de un grupo de administración de System Center Operations Manager y OMS, incluidos los puertos y la dirección.   
+Hello siguiente diagrama muestra conexión Hola entre servidores de administración de Hola y los agentes en un grupo de administración de System Center Operations Manager y OMS, incluidos los puertos y la dirección de Hola.   
 
 ![oms-operations-manager-integration-diagram](./media/log-analytics-om-agents/oms-operations-manager-connection.png)
 
-Si las directivas de seguridad de TI no permiten que los equipos de la red se conecten a Internet, se pueden configurar los servidores de administración para que se conecten a OMS Gateway a fin de recibir información de configuración y enviar los datos recopilados según la solución que haya habilitado.  Para ver información adicional y pasos sobre cómo configurar el grupo de administración de Operations Manager para que se comunique a través de una puerta de enlace de OMS con el servicio OMS, vea [Conexión de equipos sin acceso a OMS mediante la puerta de enlace de OMS](log-analytics-oms-gateway.md).  
+Si las directivas de seguridad de TI no permitir que los equipos en su toohello de tooconnect de la red Internet, los servidores de administración pueden ser información de configuración de tooreceive de tooconnect configurado toohello puerta de enlace de OMS y enviar los datos recopilados dependiendo de la solución de Hola que ha habilitado.  Para obtener más información y pasos acerca de cómo tooconfigure su toocommunicate de grupo de administración de Operations Manager a través de un servicio de OMS toohello de puerta de enlace de OMS, consulte [conectar tooOMS de equipos con hello puerta de enlace de OMS](log-analytics-oms-gateway.md).  
 
 ## <a name="system-requirements"></a>Requisitos del sistema
-Antes de comenzar, revise los detalles siguientes para comprobar que cumple los requisitos previos.
+Antes de comenzar, revise Hola después tooverify detalles cumplen los requisitos previos.
 
 * OMS solo admite Operations Manager 2016, Operations Manager 2012 SP1 UR6 y versiones posteriores y Operations Manager 2012 R2 UR2 y versiones posteriores.  Se agregó compatibilidad con proxy en Operations Manager 2012 SP1 UR7 y Operations Manager 2012 R2 UR3.
-* Todos los agentes de Operations Manager deben cumplir los requisitos mínimos de compatibilidad. Asegúrese de que los agentes están actualizados con los requisitos mínimos ya que, de lo contrario, se podría producir un error en el agente de tráfico de Windows y el registro de eventos de Operations Manager se podría llenar con muchos errores.
+* Todos los agentes de Operations Manager deben cumplir los requisitos mínimos de compatibilidad. Asegúrese de que los agentes son actualización mínima Hola, en caso contrario, puede producir un error de tráfico de agente de Windows y muchos errores podrían llenar el registro de sucesos de Operations Manager de Hola.
 * Una suscripción de OMS.  Para más información, consulte [Introducción a Log Analytics](log-analytics-get-started.md).
 
 ### <a name="network"></a>Red
-A continuación se muestra la información de configuración de proxy y firewall requerida para que el agente de Operations Manager, los servidores de administración y la Consola del operador se comuniquen con OMS.  El tráfico de cada componente es de salida (de la red al servicio OMS).     
+información de Hola por debajo de la lista Hola proxy y firewall de información de configuración requerida para el agente de Operations Manager de hello, servidores de administración y toocommunicate de la consola de operaciones con OMS.  El tráfico de cada componente es saliente desde el servicio OMS de toohello de red.     
 
 |Recurso | Número de puerto| Omitir inspección de HTTP|  
 |---------|------|-----------------------|  
@@ -59,7 +59,7 @@ A continuación se muestra la información de configuración de proxy y firewall
 |\*blob.core.windows.net| 443| Sí|  
 |\*.ods.opinsights.azure.com| 443| Sí|  
 |*.azure-automation.net | 443| Sí|  
-|**Consola de Operations Manager a OMS**|||  
+|**TooOMS de consola de Operations Manager**|||  
 |service.systemcenteradvisor.com| 443||  
 |\*.service.opinsights.azure.com| 443||  
 |\*.live.com| 80 y 443||  
@@ -69,133 +69,133 @@ A continuación se muestra la información de configuración de proxy y firewall
 |login.windows.net| 80 y 443||  
 
 
-## <a name="connecting-operations-manager-to-oms"></a>Conexión de Operations Manager con OMS
-Ejecute la siguiente serie de pasos para configurar el grupo de administración de Operations Manager para conectarse a una de las áreas de trabajo de OMS.
+## <a name="connecting-operations-manager-toooms"></a>Conectar tooOMS de Operations Manager
+Realizar Hola según serie de pasos tooconfigure su tooone de tooconnect del grupo de administración de Operations Manager de las áreas de trabajo OMS.
 
-1. En la consola de Operations Manager, seleccione el área de trabajo **Administración** .
-2. Expanda el nodo de Operations Management Suite y haga clic en **Conexión**.
-3. Haga clic en el vínculo **Register to Operations Management Suite** (Registrar en Operations Management Suite).
-4. En la página **Operations Management Suite Onboarding Wizard** (Asistente para incorporación a Operations Management Suite), escriba la dirección de correo electrónico o el número de teléfono y la contraseña de la cuenta de administrador que está asociada a su nueva área de trabajo de OMS y haga clic en **Iniciar sesión**.
-5. Una vez correctamente autenticado, en la página **Operations Management Suite Onboarding Wizard: Select Workspace** (Asistente para incorporación a Operations Management Suite: Seleccionar área de trabajo), se le pedirá que seleccione el área de trabajo de OMS.  Si tiene más de un área de trabajo, seleccione el que desee registrar con el grupo de administración de Operations Manager en la lista desplegable y haga clic en **Siguiente**.
+1. En la consola de Operations Manager de hello, seleccione hello **administración** área de trabajo.
+2. Expanda el nodo de Operations Management Suite hello y haga clic en **conexión**.
+3. Haga clic en hello **registrar tooOperations Management Suite** vínculo.
+4. En hello **Asistente para incorporación a Operations Management Suite: autenticación** página, escriba la dirección de correo electrónico de Hola o el número de teléfono y la contraseña de cuenta de administrador de Hola que está asociado a su suscripción de OMS y haga clic en  **Inicie sesión en**.
+5. Una vez haya autenticado correctamente, en hello **Asistente para incorporación a Operations Management Suite: seleccionar área de trabajo** , es solicita tooselect el área de trabajo OMS.  Si tiene más de un área de trabajo, seleccione Hola área de trabajo que desee tooregister con grupo de administración de Operations Manager Hola de lista desplegable de hello y, a continuación, haga clic en **siguiente**.
    
    > [!NOTE]
-   > Operations Manager solo admite un área de trabajo de OMS a la vez. Se quitan de OMS la conexión y los equipos que se registraron en OMS con el área de trabajo anterior.
+   > Operations Manager solo admite un área de trabajo de OMS a la vez. conexión de Hola y equipos de Hola que eran tooOMS registrados con el área de trabajo anterior Hola se quitan de OMS.
    > 
    > 
-6. En la página **Operations Management Suite Onboarding Wizard: Summary** (Asistente para incorporación a Operations Management Suite: Resumen), confirme la configuración y, si es correcta, haga clic en **Crear**.
-7. En la página **Operations Management Suite Onboarding Wizard: Finish** (Asistente para incorporación a Operations Management Suite: Finalizar), haga clic en **Cerrar**.
+6. En hello **Asistente para incorporación a Operations Management Suite: resumen** página, confirme la configuración predeterminada y si son correctos, haga clic en **crear**.
+7. En hello **Asistente para incorporación a Operations Management Suite: finalizar** página, haga clic en **cerrar**.
 
 ### <a name="add-agent-managed-computers"></a>Adición de equipos administrados por agente
-Después de configurar la integración con el área de trabajo OMS, esto solo establece una conexión con OMS, no se recopilan datos de los agentes que informan al grupo de administración. Esto no será posible hasta que configure qué equipos específicos administrados por agente recopilan los datos para Log Analytics. Puede seleccionar los objetos de equipo individualmente o un grupo que contenga objetos de equipos Windows. No puede seleccionar un grupo que contenga instancias de otra clase, como discos lógicos o bases de datos SQL.
+Después de configurar la integración con el área de trabajo OMS, esto solo establece una conexión con OMS, no se recopilan datos de los agentes de hello tooyour grupo de administración de informes. Esto no será posible hasta que configure qué equipos específicos administrados por agente recopilan los datos para Log Analytics. Puede seleccionar objetos de equipo de hello individualmente o puede seleccionar un grupo que contenga objetos de equipo de Windows. No puede seleccionar un grupo que contenga instancias de otra clase, como discos lógicos o bases de datos SQL.
 
-1. Abra la consola de Operations Manager y seleccione el área de trabajo **Administración** .
-2. Expanda el nodo de Operations Management Suite y haga clic en **Conexión**.
-3. Haga clic en el vínculo **Agregar un equipo/grupo** debajo del título Acciones en el lado derecho del panel.
-4. En el cuadro de diálogo **Búsqueda de equipos**, puede buscar equipos o grupos supervisados por Operations Manager. Seleccione los equipos o grupos que quiera incorporar a OMS, haga clic en **Agregar** y, después, haga clic en **Aceptar**.
+1. Consola de Operations Manager Hola abra y seleccione hello **administración** área de trabajo.
+2. Expanda el nodo de Operations Management Suite hello y haga clic en **conexión**.
+3. Haga clic en hello **agregar un grupo de equipos** vínculo situado bajo Hola acciones encabezado Hola lado derecho del panel de Hola.
+4. Hola **búsqueda de equipos** cuadro de diálogo, puede buscar equipos o grupos supervisados por Operations Manager. Seleccione tooOMS tooonboard equipos o grupos, haga clic en **agregar**y, a continuación, haga clic en **Aceptar**.
 
-Puede ver los equipos y grupos configurados para recopilar datos desde el nodo Equipos administrados de Operations Management Suite en el área de trabajo **Administración** de la consola de Operations.  Desde aquí puede agregar o quitar equipos y grupos según sea necesario.
+Puede ver los equipos y grupos configuran toocollect datos del nodo de equipos administrados de hello en Operations Management Suite en hello **administración** área de trabajo de la consola del operador Hola.  Desde aquí puede agregar o quitar equipos y grupos según sea necesario.
 
-### <a name="configure-oms-proxy-settings-in-the-operations-console"></a>Configuración del proxy de OMS en la consola de Operations
-Realice los pasos siguientes si un servidor proxy interno se encuentra entre el grupo de administración y el servicio web de OMS.  Esta configuración se administra centralmente desde el grupo de administración y se distribuye en sistemas administrados por agente que se incluyen en el ámbito para recopilar datos para OMS.  Esto es beneficioso cuando determinadas soluciones omiten el servidor de administración y envían datos directamente al servicio web de OMS.
+### <a name="configure-oms-proxy-settings-in-hello-operations-console"></a>Configurar el proxy de OMS en la consola del operador Hola
+Realizar Hola siguientes pasos si es un servidor proxy interno entre el grupo de administración de Hola y el servicio web de OMS.  Esta configuración se administra centralmente desde el grupo de administración de Hola y los sistemas distribuidos tooagent administrados se incluyen en los datos de toocollect de ámbito de Hola para OMS.  Esto es beneficioso para cuando determinadas soluciones omisión los datos de envío y de servidor de administración de hello directamente tooOMS servicio web.
 
-1. Abra la consola de Operations Manager y seleccione el área de trabajo **Administración** .
+1. Consola de Operations Manager Hola abra y seleccione hello **administración** área de trabajo.
 2. Expanda Operations Management Suite y haga clic en **Conexiones**.
-3. En la vista Conexión de OMS, haga clic en **Configurar servidor proxy**.
-4. En la página **Operations Management Suite Wizard: Proxy Server** (Asistente para Operations Management Suite: Servidor proxy), seleccione **Use a proxy server to access the Operations Management Suite** (Use un servidor proxy para acceder a Operations Management Suite), escriba la dirección URL con el número de puerto, por ejemplo, http://corpproxy:80 y después haga clic en **Finalizar**.
+3. Hola vista conexión a OMS, haga clic en **configurar servidor Proxy**.
+4. En **Asistente para Operations Management Suite: servidor Proxy** página, seleccione **usar un tooaccess de servidor proxy hello Operations Management Suite**, y a continuación, escriba la dirección URL de hello con número de puerto de hello, por ejemplo, http:// corpproxy:80 y, a continuación, haga clic en **finalizar**.
 
-Si el servidor proxy requiere autenticación, realice los pasos siguientes para configurar las credenciales y las opciones necesarias para realizar la propagación a los equipos administrados que notifican a OMS en el grupo de administración.
+Si el servidor proxy requiere autenticación, lleve a cabo los pasos del siguiente hello tooconfigure credenciales y la configuración que necesitan los equipos de toomanaged toopropagate que informa tooOMS Hola grupo de administración.
 
-1. Abra la consola de Operations Manager y seleccione el área de trabajo **Administración** .
+1. Consola de Operations Manager Hola abra y seleccione hello **administración** área de trabajo.
 2. En **RunAs Configuration**, seleccione **Perfiles**.
-3. Abra el perfil de **proxy del perfil Ejecutar como de System Center Advisor** .
-4. En el Asistente para crear perfiles de ejecución, haga clic en Agregar para usar una cuenta de ejecución. Puede crear una [cuenta de ejecución](https://technet.microsoft.com/library/hh321655.aspx) o usar una existente. Esta cuenta debe contar con los permisos suficientes para pasar a través del servidor proxy.
-5. Para establecer la cuenta que se va a administrar, elija **una clase seleccionada, un grupo o un objeto**, haga clic en **Seleccionar** y, después, en **Agrupar**. Para abrir el cuadro **Búsqueda de grupos**.
-6. Busque y seleccione **Microsoft System Center Advisor Monitoring Server Group**(Grupo de servidores de supervisión de Microsoft System Center Advisor).  Haga clic en **Aceptar** después de seleccionar el grupo para cerrar el cuadro **Búsqueda de grupos**.
-7. Haga clic en **Aceptar** para cerrar el cuadro **Agregar una ejecución como cuenta**.
-8. Haga clic en **Guardar** para completar el asistente y guardar los cambios.
+3. Abra hello **System Center como Proxy del perfil Advisor** perfil.
+4. Hola Ejecutar Asistente para perfiles, haga clic en toouse de agregar una cuenta de ejecución. Puede crear una [cuenta de ejecución](https://technet.microsoft.com/library/hh321655.aspx) o usar una existente. Esta cuenta debe toohave toopass de permisos suficientes a través del servidor de proxy de Hola.
+5. tooset Hola toomanage de cuenta, elija **una clase seleccionada, un grupo o un objeto**, haga clic en **seleccionar...** y, después, en **Agrupar**. Hola tooopen **grupo búsqueda** cuadro.
+6. Busque y seleccione **Microsoft System Center Advisor Monitoring Server Group**(Grupo de servidores de supervisión de Microsoft System Center Advisor).  Haga clic en **Aceptar** después de seleccionar Hola de hello grupo tooclose **grupo búsqueda** cuadro.
+7. Haga clic en **Aceptar** tooclose hello **agregar una cuenta de ejecución** cuadro.
+8. Haga clic en **guardar** toocomplete Hola asistente y guarde los cambios.
 
-Después de crear la conexión y de configurar qué agentes van a recopilar los datos e informar sobre ellos en OMS, se aplica la siguiente configuración en el grupo de administración, no necesariamente en orden:
+Después de que se crea la conexión de Hola y configurar los agentes se recopilar y notificar datos tooOMS, hello siguiente configuración se aplica en el grupo de administración de hello, no necesariamente en orden:
 
-* Se crea la cuenta de ejecución **Microsoft.SystemCenter.Advisor.RunAsAccount.Certificate** .  Está asociada con el perfil de ejecución **Microsoft System Center Advisor Run As Profile Blob** (Blob del perfil de ejecución de Microsoft System Center Advisor) y está dirigida a dos clases: **Servidor de recopilación** y **Grupo de administración de Operations Manager**.
-* Se crean dos conectores.  El primero se denomina **Microsoft.SystemCenter.Advisor.DataConnector** y se configura automáticamente con una suscripción que reenvía todas las alertas generadas desde instancias de todas las clases en el grupo de administración a Log Analytics de OMS. El segundo conector es **Advisor Connector**, que es responsable de comunicarse con el servicio web de OMS y de compartir datos.
-* Se agregan los agentes y los grupos que haya seleccionado para recopilar datos del grupo de administración al **grupo de servidores de supervisión de Microsoft System Center Advisor**.
+* Cuenta de ejecución de Hello **Microsoft.SystemCenter.Advisor.RunAsAccount.Certificate** se crea.  Está asociado con el perfil de identificación de hello **Microsoft System Center Advisor ejecutar como Blob de perfil** y está destinado a dos clases - **servidor de recopilación de** y **el grupo de administración de Operations Manager** .
+* Se crean dos conectores.  en primer lugar se denomina Hello **Microsoft.SystemCenter.Advisor.DataConnector** y se configura automáticamente con una suscripción que reenvíe todas las alertas generadas desde instancias de todas las clases de tooOMS de grupo de administración de hello registro Análisis. es el segundo conector de Hello **Advisor Connector**, que es responsable de comunicarse con el servicio web OMS y uso compartido de datos.
+* Agentes y grupos que seleccionó toocollect datos en el grupo de administración de Hola se agrega toohello **grupo de servidor de supervisión de Microsoft System Center Advisor**.
 
 ## <a name="management-pack-updates"></a>Actualizaciones del módulo de administración
-Después de finalizar la configuración, el grupo de administración de Operations Manager establece una conexión con el servicio de OMS.  El servidor de administración se sincroniza con el servicio web y recibe información de configuración actualizada en forma de módulos de administración para las soluciones que ha habilitado que se integran con Operations Manager.   Operations Manager busca actualizaciones para estos módulos de administración y los descargará e importará automáticamente cuando estén disponibles.  Hay dos reglas en particular que controlan este comportamiento:
+Una vez completada la configuración, grupo de administración de Operations Manager Hola establece una conexión con hello servicio OMS.  servidor de administración de Hola se sincroniza con el servicio web de Hola y recibir información de configuración actualizada en forma de Hola de módulos de administración para soluciones de Hola que haya habilitado que se integran con Operations Manager.   Operations Manager busca actualizaciones para estos módulos de administración y los descargará e importará automáticamente cuando estén disponibles.  Hay dos reglas en particular que controlan este comportamiento:
 
-* **Microsoft.SystemCenter.Advisor.MPUpdate** : Actualiza los módulos de administración base de OMS. Se ejecuta cada 12 horas de forma predeterminada.
+* **Microsoft.SystemCenter.Advisor.MPUpdate** -actualiza los módulos de administración de OMS base Hola. Se ejecuta cada 12 horas de forma predeterminada.
 * **Microsoft.SystemCenter.Advisor.Core.GetIntelligencePacksRule** : Actualiza los módulos de administración de las soluciones habilitados en el área de trabajo. Se ejecuta cada cinco (5) minutos de forma predeterminada.
 
-Puede invalidar estas dos reglas para evitar la descarga automática mediante la deshabilitación o modificación de la frecuencia de sincronización del servidor de administración con OMS para determinar si está disponible un nuevo módulo de administración y si debe descargarse.  Siga los pasos [Cómo reemplazar una regla o monitor](https://technet.microsoft.com/library/hh212869.aspx) para modificar el parámetro **Frequency** con un valor en segundos para cambiar la programación de sincronización o modificar el parámetro **Enabled** para deshabilitar las reglas.  Dirige las invalidaciones para todos los objetos de la clase del grupo de administración de Operations Manager.
+Puede invalidar estas dos reglas tooeither evitar descarga automática mediante la deshabilitación o modificar la frecuencia de hello para la frecuencia con hello servidor de administración se sincroniza con OMS toodetermine si un nuevo módulo de administración está disponible y se debe descargar.  Siga los pasos de hello [cómo tooOverride una regla o Monitor](https://technet.microsoft.com/library/hh212869.aspx) toomodify hello **frecuencia** parámetro con un valor en segundos toochange Hola programación de sincronización o modificar hello **habilitado**  reglas de hello toodisable de parámetros.  Hola de destino reemplaza tooall objetos de clase grupo de administración de Operations Manager.
 
-Si desea seguir el proceso de control de cambios existente para controlar las versiones del módulo de administración en el grupo de administración de producción, puede deshabilitar las reglas y habilitarlas durante determinadas horas cuando se permiten las actualizaciones. Si tiene un desarrollo o un grupo de administración de control de calidad en su entorno y tiene conectividad a Internet, puede configurar ese grupo de administración con un área de trabajo de OMS para admitir este escenario.  Esto le permite revisar y evaluar las versiones iterativas de los módulos de administración de OMS antes de publicarlas en el grupo de administración de producción.
+Si desea toocontinue siguiendo el proceso de control de cambio existente para controlar las versiones del módulo de administración en el grupo de administración de producción, puede deshabilitar las reglas de Hola y habilitarlas durante determinadas horas cuando se permiten las actualizaciones. Si tiene un desarrollo o un grupo de administración de preguntas y respuestas en su entorno y tiene conectividad toohello Internet, puede configurar ese grupo de administración con un toosupport de área de trabajo OMS este escenario.  Esto permite tooreview y evaluar las versiones iterativo Hola Hola OMS de módulos de administración antes de liberarlos al grupo de administración de producción.
 
-## <a name="switch-an-operations-manager-group-to-a-new-oms-workspace"></a>Cambio de un grupo de Operations Manager a una nueva área de trabajo de OMS
-1. Inicie sesión en su suscripción de OMS y cree un área de trabajo en [Microsoft Operations Management Suite](http://oms.microsoft.com/).
-2. Abra la consola de Operations Manager con una cuenta que sea miembro del rol Administradores de Operations Manager y seleccione el área de trabajo **Administración** .
+## <a name="switch-an-operations-manager-group-tooa-new-oms-workspace"></a>Cambiar un tooa de grupo de Operations Manager nueva área de trabajo de OMS
+1. Inicie sesión en la suscripción de OMS tooyour y cree un área de trabajo en [Microsoft Operations Management Suite](http://oms.microsoft.com/).
+2. Consola de Operations Manager Hola abierto con una cuenta que sea miembro del rol de administradores de Operations Manager de Hola y Hola seleccione **administración** área de trabajo.
 3. Expanda Operations Management Suite y seleccione **Conexiones**.
-4. Seleccione el vínculo **Re-configure Operation Management Suite** (Volver a configurar Operation Management Suite) en el centro del panel.
-5. Siga la página **Operations Management Suite Onboarding Wizard** (Asistente para incorporación a Operations Management Suite) y escriba la dirección de correo electrónico o el número de teléfono y la contraseña de la cuenta de administrador que está asociada a su nueva área de trabajo de OMS.
+4. Seleccione hello **volver a configurar la operación Management Suite** vínculo en hello middle-lado del panel de Hola.
+5. Siga hello **Asistente para incorporación a Operations Management Suite** y escriba el número de teléfono o dirección de correo electrónico de Hola y la contraseña de cuenta de administrador de Hola que está asociado a la nueva área de trabajo OMS.
    
    > [!NOTE]
-   > En la página **Operations Management Suite Onboarding Wizard: Select Workspace** (Asistente para incorporación a Operations Management Suite: Seleccionar área de trabajo) se muestra el área de trabajo existente que está en uso.
+   > Hola **Asistente para incorporación a Operations Management Suite: seleccionar área de trabajo** página presenta Hola área de trabajo existente que está en uso.
    > 
    > 
 
 ## <a name="validate-operations-manager-integration-with-oms"></a>Validación de la integración de Operations Manager con OMS
-Hay varias maneras en las que puede comprobar que la integración de OMS con Operations Manager es correcta.
+Hay varias maneras diferentes, puede comprobar que la integración de administrador de OMS tooOperations es correcta.
 
-### <a name="to-confirm-integration-from-the-oms-portal"></a>Para confirmar la integración desde el portal de OMS
-1. En el portal de OMS, haga clic en el icono **Configuración**.
+### <a name="tooconfirm-integration-from-hello-oms-portal"></a>integración de tooconfirm Hola portal de OMS
+1. En el portal de OMS de hello, haga clic en hello **configuración** icono
 2. Seleccione **Connected Sources**(Orígenes conectados).
-3. En la tabla de System Center Operations Manager, verá el nombre del grupo de administración con el número de agentes y el estado de cuando se recibieron los datos por última vez.
+3. En la tabla Hola Hola sección de System Center Operations Manager, debería ver el nombre de Hola Hola del grupo de administración aparecen con el número de Hola de agentes y el estado cuando se recibió por última vez datos.
    
    ![oms-settings-connectedsources](./media/log-analytics-om-agents/oms-settings-connectedsources.png)
-4. Tenga en cuenta el valor de **Id. de área de trabajo** en el lado izquierdo de la página Configuración.  Lo validará con el grupo de administración de Operations Manager a continuación.  
+4. Hola Nota **Id. de área de trabajo** valor bajo Hola izquierda de la página de configuración de Hola.  Lo validará con el grupo de administración de Operations Manager a continuación.  
 
-### <a name="to-confirm-integration-from-the-operations-console"></a>Para confirmar la integración desde la consola de Operations
-1. Abra la consola de Operations Manager y seleccione el área de trabajo **Administración** .
-2. Seleccione **Módulos de administración** y, en el cuadro de texto **Buscar:**, escriba **Advisor** o **Intelligence**.
-3. En función de las soluciones habilitadas, verá el módulo de administración correspondiente en los resultados de búsqueda.  Por ejemplo, si ha habilitado la solución Alert Management, el módulo de administración Alert Management de Microsoft System Center Advisor estará en la lista.
-4. Desde la vista **Supervisión**, desplácese hasta la vista **Operations Management Suite\Estado de mantenimiento**.  Seleccione un servidor de administración en el panel **Management Server State** (Estado del servidor de administración) y, en el panel **Vista de detalle**, confirme que el valor de la propiedad **URI del servicio de autenticación** coincide con el identificador de área de trabajo de OMS.
+### <a name="tooconfirm-integration-from-hello-operations-console"></a>integración de tooconfirm desde la consola del operador Hola
+1. Consola de Operations Manager Hola abra y seleccione hello **administración** área de trabajo.
+2. Seleccione **módulos de administración** y Hola **buscar:** cuadro de texto escriba **Advisor** o **Intelligence**.
+3. Según soluciones de Hola que haya habilitado, verá un módulo de administración correspondiente aparece en los resultados de búsqueda de Hola.  Por ejemplo, si ha habilitado la solución de administración de alertas de hello, el módulo de administración de hello administración de alertas de Microsoft System Center Advisor es en la lista de Hola.
+4. De hello **supervisión** ver, navegar toohello **Suite\Health estado de las operaciones de administración** vista.  Seleccione un servidor de administración con hello **estado del servidor de administración** panel y en hello **vista de detalle** panel confirmar el valor de hello para la propiedad **URI del servicio de autenticación** coincide con el Id. de área de trabajo de OMS Hola.
    
    ![oms-opsmgr-mg-authsvcuri-property-ms](./media/log-analytics-om-agents/oms-opsmgr-mg-authsvcuri-property-ms.png)
 
 ## <a name="remove-integration-with-oms"></a>Eliminación de la integración con OMS
-Cuando ya no necesite la integración entre el grupo de administración de Operations Manager y el área de trabajo de OMS, es necesario realizar varios pasos para quitar correctamente la conexión y la configuración del grupo de administración. El siguiente procedimiento actualiza el área de trabajo de OMS. Para ello, elimina la referencia del grupo de administración, elimina los conectores de OMS y, luego, elimina los módulos de administración que admiten OMS.   
+Cuando ya no se requiere la integración entre el grupo de administración de Operations Manager y el área de trabajo OMS, hay varios pasos necesarios tooproperly remove Hola conexión y configuración de grupo de administración de Hola. Hello procedimiento siguiente tiene actualizar el área de trabajo OMS mediante la eliminación de referencia de Hola de su grupo de administración, elimine los conectores de OMS hello y, a continuación, elimine los módulos de administración compatible con OMS.   
 
-Los módulos de administración para las soluciones que ha habilitado y que se integran con Operations Manager, así como los módulos de administración necesarios para admitir la integración con el servicio OMS, no se pueden eliminar fácilmente del grupo de administración.  Esto es porque algunos de los módulos de administración de OMS tienen dependencias en otros módulos de administración relacionados.  Para eliminar los módulos de administración con una dependencia en otros módulos de administración, descargue el script para [quitar un módulo de administración con dependencias](https://gallery.technet.microsoft.com/scriptcenter/Script-to-remove-a-84f6873e) desde el centro de scripts de TechNet.  
+Módulos de administración de soluciones de Hola que haya habilitado que se integran con Operations Manager y Hola administración módulos toosupport requiere integración con hello servicio OMS no se puede eliminar fácilmente Hola grupo de administración.  Esto es porque algunos de los módulos de administración de OMS Hola tienen dependencias en otros módulos de administración relacionados.  módulos de administración de toodelete si tuviera una dependencia en otros módulos de administración, descargue el script de Hola [quitar un módulo de administración con dependencias](https://gallery.technet.microsoft.com/scriptcenter/Script-to-remove-a-84f6873e) desde el centro de scripts de TechNet.  
 
-1. Abra el shell de comandos de Operations Manager con una cuenta que sea miembro del rol Administradores de Operations Manager.
+1. Abra Hola Shell de comandos de Operations Manager con una cuenta que sea miembro del rol de administradores de Operations Manager Hola.
    
     > [!WARNING]
-    > Compruebe que no tiene ningún módulo de administración personalizado con la palabra Advisor o IntelligencePack en el nombre antes de continuar. De lo contrario, los siguientes pasos los eliminarán del grupo de administración.
+    > Asegúrese de dispone de ningún módulo de administración personalizado con hello word asesor o IntelligencePack en nombre de hello antes de continuar, en caso contrario Hola pasos eliminarlos Hola grupo de administración.
     > 
 
-2. Desde el símbolo del shell de comandos, escriba `Get-SCOMManagementPack -name "*Advisor*" | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
+2. Hola shell desde línea de comandos, escriba`Get-SCOMManagementPack -name "*Advisor*" | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
 3. Después, escriba `Get-SCOMManagementPack -name “*IntelligencePack*” | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
-4. Para quitar los módulos de administración restantes que tienen una dependencia en otros módulos de administración de System Center Advisor, use el script *RecursiveRemove.ps1* que descargó antes desde el centro de scripts de TechNet.  
+4. módulos de los módulos de administración restantes que tienen una dependencia en otra administración de System Center Advisor tooremove, usar script de Hola *RecursiveRemove.ps1* descargó desde Hola centro de scripts de TechNet.  
  
     > [!NOTE]
-    > No elimine los módulos de administración de Microsoft System Center Advisor ni Microsoft System Center Advisor Internal.  
+    > No elimine los módulos de administración de Microsoft System Center Advisor o Microsoft System Center Advisor interno de Hola.  
     >  
 
-5. Abra la consola de operaciones de Operations Manager con una cuenta que sea miembro del rol Administradores de Operations Manager.
-6. Bajo **Administración**, seleccione el nodo **Módulos de administración** y, en el cuadro **Buscar**, escriba **Advisor** y compruebe que los siguientes módulos de administración todavía se importan en el grupo de administración:
+5. Abra la consola de operador de Operations Manager de hello con una cuenta que sea miembro del rol de administradores de Operations Manager Hola.
+6. En **administración**, seleccione hello **módulos de administración** nodo y en hello **buscar:** , escriba **Advisor** y compruebe Hola módulos de administración siguientes se importan de todos modos en el grupo de administración:
    
    * Microsoft System Center Advisor
    * Microsoft System Center Advisor Internal
-7. En el portal de OMS, haga clic en el icono **Configuración**.
+7. En el portal de OMS de hello, haga clic en hello **configuración** icono.
 8. Seleccione **Connected Sources**(Orígenes conectados).
-9. En la tabla de la sección de System Center Operations Manager, verá el nombre del grupo de administración que desea quitar del área de trabajo.  En la columna **Last Data** (Últimos datos), haga clic en **Quitar**.  
+9. En la tabla Hola Hola sección de System Center Operations Manager, verá el nombre de Hola Hola grupo de administración que desee tooremove de área de trabajo de Hola.  En la columna de hello **últimos datos**, haga clic en **quitar**.  
    
     > [!NOTE]
-    > El vínculo **Quitar** no estará disponible hasta después de 14 días si no hay ninguna actividad detectada en el grupo de administración conectado.  
+    > Hola **quitar** vínculo no estará disponible hasta que transcurridos 14 días si no hay ninguna actividad ha detectado en el grupo de administración conectado Hola.  
     > 
 
-10. Aparecerá una ventana que le pide que confirme que desea continuar con la eliminación.  Haga clic en **Sí** para continuar. 
+10. Aparecerá una ventana que le pide que tooconfirm que desea tooproceed con la eliminación de Hola.  Haga clic en **Sí** tooproceed. 
 
-Para eliminar los dos conectores (Microsoft.SystemCenter.Advisor.DataConnector y Advisor Connector), guarde el siguiente script de PowerShell en el equipo y ejecútelo mediante los ejemplos siguientes:
+toodelete Hola dos conectores - Microsoft.SystemCenter.Advisor.DataConnector y el conector de Advisor, Guardar script de PowerShell de hello siguiente tooyour equipo y se ejecutan con hello en los ejemplos siguientes:
 
 ```
     .\OM2012_DeleteConnector.ps1 “Advisor Connector” <ManagementServerName>
@@ -203,7 +203,7 @@ Para eliminar los dos conectores (Microsoft.SystemCenter.Advisor.DataConnector y
 ```
 
 > [!NOTE]
-> El equipo desde el que se ejecuta este script, si no es un servidor de administración, debe tener el shell de comandos de Operations Manager instalado según la versión del grupo de administración.
+> equipo Hola de que ejecutar este script, si no es un servidor de administración, debe tener el shell de comandos de Operations Manager Hola instalado, dependiendo de la versión de Hola de su grupo de administración.
 > 
 > 
 
@@ -215,7 +215,7 @@ Para eliminar los dos conectores (Microsoft.SystemCenter.Advisor.DataConnector y
     $mg = new-object Microsoft.EnterpriseManagement.ManagementGroup $msName
     $admin = $mg.GetConnectorFrameworkAdministration()
     ##########################################################################################
-    # Configures a connector with the specified name.
+    # Configures a connector with hello specified name.
     ##########################################################################################
     function New-Connector([String] $name)
     {
@@ -239,7 +239,7 @@ Para eliminar los dos conectores (Microsoft.SystemCenter.Advisor.DataConnector y
     return $connectorForTest
     }
     ##########################################################################################
-    # Removes a connector with the specified name.
+    # Removes a connector with hello specified name.
     ##########################################################################################
     function Remove-Connector([String] $name)
     {
@@ -293,9 +293,9 @@ Para eliminar los dos conectores (Microsoft.SystemCenter.Advisor.DataConnector y
     Remove-Connector $connectorName
 ```
 
-En el futuro, si pretende volver a conectar el grupo de administración a un área de trabajo de OMS, necesitará volver a importar el archivo de módulo de administración `Microsoft.SystemCenter.Advisor.Resources.\<Language>\.mpb` desde el paquete acumulativo de actualizaciones más reciente aplicado al grupo de administración.  Puede encontrar este archivo en la carpeta `%ProgramFiles%\Microsoft System Center 2012` o `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups`.
+En hello futuras si tiene intención de volver a conectar el grupo tooan OMS área de trabajo administración, debe importar toore hello `Microsoft.SystemCenter.Advisor.Resources.\<Language>\.mpb` archivo de módulo de administración del paquete acumulativo de actualizaciones más reciente de hello aplica tooyour grupo de administración.  Puede encontrar este archivo en hello `%ProgramFiles%\Microsoft System Center 2012` o hello `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups` carpeta.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Para agregar funcionalidad y recopilar información, vea [Incorporación de soluciones de Log Analytics desde la galería de soluciones](log-analytics-add-solutions.md).
+funcionalidad de tooadd y recopilar datos, vea [soluciones de análisis de registro agregar desde la Galería de soluciones de hello](log-analytics-add-solutions.md).
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Suscripción y cuenta para VM de Linux en Azure| Microsoft Docs"
-description: "Obtenga información sobre las instrucciones de implementación y diseño clave para las suscripciones y cuentas de Azure."
+title: "aaaSubscription y de la cuenta para las máquinas virtuales de Linux en Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de hello diseño e implementación de las instrucciones clave para las suscripciones y cuentas en Azure."
 documentationcenter: 
 services: virtual-machines-linux
 author: iainfoulds
@@ -16,50 +16,50 @@ ms.topic: article
 ms.date: 06/26/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 19695a9960d8e8f0dfca4bf0ca10761fe6ae7ff0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9025a40783c008310ebd0f674deb4a9001ae974a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-subscription-and-accounts-guidelines-for-linux-vms"></a>Directrices de suscripción y cuentas de Azure para máquinas virtuales Linux
 
 [!INCLUDE [virtual-machines-linux-infrastructure-guidelines-intro](../../../includes/virtual-machines-linux-infrastructure-guidelines-intro.md)]
 
-Este artículo se centra en conocer cómo enfocar la administración de cuentas y suscripciones a medida que crece su entorno y su base de usuarios.
+En este artículo se centra en describir cómo tooapproach suscripción y administración de cuentas como su entorno y la base de usuarios crece.
 
 ## <a name="implementation-guidelines-for-subscriptions-and-accounts"></a>Instrucciones de implementación de suscripciones y cuentas
 Decisiones:
 
-* ¿Qué conjunto de suscripciones y cuentas necesita para hospedar su infraestructura o carga de trabajo de TI?
-* ¿Cómo sería la jerarquía para adaptarse a su organización?
+* ¿Qué conjunto de suscripciones y cuentas ¿necesita toohost su infraestructura o la carga de trabajo de TI?
+* ¿Cómo toobreak hacia abajo Hola jerarquía toofit su organización?
 
 Tareas:
 
-* Definir la jerarquía de organización lógica que desee administrar desde un nivel de suscripción.
-* Definir las cuentas y las suscripciones necesarias de cada cuenta para que se correspondan con esta jerarquía lógica.
-* Cree el conjunto de suscripciones y cuentas usando su convención de nomenclatura.
+* Definir la jerarquía de organización lógica como le gustaría toomanage desde un nivel de suscripción.
+* toomatch esta jerarquía lógica, definir cuentas Hola necesarias y las suscripciones en cada cuenta.
+* Crear conjunto de Hola de suscripciones y cuentas que utilizan la convención de nomenclatura.
 
 ## <a name="subscriptions-and-accounts"></a>Suscripciones y cuentas 
-Para trabajar con Azure, necesita una o más suscripciones a Azure. Existen recursos como redes o máquinas virtuales en esas suscripciones.
+toowork con Azure, necesita una o varias suscripciones de Azure. Existen recursos como redes o máquinas virtuales en esas suscripciones.
 
-* Los clientes empresariales suelen tener una inscripción Enterprise, que es el recurso de nivel superior en la jerarquía y está asociado a una o varias cuentas.
-* Para los consumidores y clientes que no tienen una inscripción Enterprise, el recurso de nivel superior es la cuenta.
-* Las suscripciones están asociadas a las cuentas y puede haber una o más suscripciones por cuenta. Azure registra la información de facturación por suscripción.
+* Los clientes empresariales suelen tengan una inscripción Enterprise, que es Hola recurso de más arriba en la jerarquía de Hola y está asociado tooone o más cuentas.
+* Para los consumidores y los clientes sin una inscripción Enterprise, recursos de nivel superior de hello es la cuenta de hello.
+* Las suscripciones son tooaccounts asociado, y puede haber una o varias suscripciones por cuenta. Registros de Azure información en el nivel de suscripción de Hola de facturación.
 
-Debido al límite de dos niveles de jerarquía en la relación de cuenta/suscripción, es importante adaptar la convención de nomenclatura de las cuentas y las suscripciones a las necesidades de facturación. Por ejemplo, si una empresa internacional usa Azure, puede optar por tener una cuenta por región y administrar las suscripciones a nivel regional:
+Pagar toohello el límite de niveles de jerarquía de dos de la relación de suscripción o cuenta de hello, es importante tooalign Hola convención de nomenclatura toohello suscripciones y cuentas de facturación necesidades. Por ejemplo, si una empresa global usa Azure, puede elegir cuenta toohave uno por cada región y se administran las suscripciones en Hola nivel región:
 
 ![](media/virtual-machines-common-infrastructure-service-guidelines/sub01.png)
 
-Por ejemplo, podría usar esta estructura:
+Por ejemplo, puede usar Hola siguiente estructura:
 
 ![](media/virtual-machines-common-infrastructure-service-guidelines/sub02.png)
 
-Si una región decide tener más de una suscripción asociada a un grupo determinado, la convención de nomenclatura debe incorporar un método para codificar los datos adicionales del nombre de cuenta o de suscripción. Esta organización permite manipular los datos de facturación para generar los nuevos niveles de jerarquía durante los informes de facturación:
+Si una región decide toohave más de grupo determinado de una suscripción tooa asociado, convención de nomenclatura de hello debe incorporar una tooencode de manera Hola datos adicionales en la cuenta de Hola o nombre de la suscripción de Hola. Esta organización permite corporativos facturación datos toogenerate Hola nuevos niveles de jerarquía durante la facturación de informes:
 
 ![](media/virtual-machines-common-infrastructure-service-guidelines/sub03.png)
 
-La organización podría tener un aspecto similar al del siguiente ejemplo:
+organización de Hello podría verse como el siguiente ejemplo de Hola:
 
 ![](media/virtual-machines-common-infrastructure-service-guidelines/sub04.png)
 

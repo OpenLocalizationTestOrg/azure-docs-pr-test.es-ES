@@ -1,6 +1,6 @@
 ---
-title: "Implementación de una aplicación en un conjunto de escalado de máquinas virtuales de Azure | Microsoft Docs"
-description: "Obtenga información sobre cómo implementar una aplicación de escalado automático simple en un conjunto de escalado de máquinas virtuales mediante una plantilla de Azure Resource Manager."
+title: "aaaDeploy una aplicación en un conjunto de escalas de máquina virtual de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de una aplicación simple de escalado automático en una escala de máquinas virtuales que se establecen a través de una plantilla de Azure Resource Manager toodeploy."
 services: virtual-machine-scale-sets
 documentationcenter: 
 author: rwike77
@@ -15,25 +15,25 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/24/2017
 ms.author: ryanwi
-ms.openlocfilehash: 07883a33382cc660b043c99872312a9e77228253
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 6fccc310312cabfcdddfcbcd2d154fc5cc440417
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deploy-an-autoscaling-app-using-a-template"></a>Implementación de una aplicación de escalado automático con una plantilla
 
-Las [plantillas de Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment) constituyen una excelente manera de implementar grupos de recursos relacionados. Este tutorial se basa en [Implementación de un conjunto de escalado sencillo](virtual-machine-scale-sets-mvss-start.md) y describe cómo implementar una aplicación de escalado automático simple en un conjunto de escalado con una plantilla de Azure Resource Manager.  También puede configurar el escalado automático con PowerShell, la CLI o el portal. Para obtener más información, consulte la [información general sobre el escalado automático](virtual-machine-scale-sets-autoscale-overview.md).
+[Plantillas de administrador de recursos de Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment) es una excelente manera toodeploy grupos de recursos relacionados. Este tutorial se basa en [implementar un conjunto de escala simple](virtual-machine-scale-sets-mvss-start.md) y describe la forma toodeploy una aplicación simple de escalado automático en una escala establece usando una plantilla de Azure Resource Manager.  También puede configurar el escalado automático con PowerShell, CLI o portal Hola. Para obtener más información, consulte la [información general sobre el escalado automático](virtual-machine-scale-sets-autoscale-overview.md).
 
 ## <a name="two-quickstart-templates"></a>Dos plantillas de inicio rápido
-Cuando implementa un conjunto de escalado, puede instalar software nuevo en una imagen de plataforma con una [extensión de VM](../virtual-machines/virtual-machines-windows-extensions-features.md). Una extensión de VM es una aplicación pequeña que realizan tareas de automatización y configuración posteriores a la implementación en máquinas virtuales de Azure, como es la implementación de una aplicación. En [Azure/azure-quickstart-templates](https://github.com/Azure/azure-quickstart-templates) se ofrecen dos plantillas de ejemplo distintas, las que muestran cómo implementar una aplicación de escalado automático en un conjunto de escalado con extensiones de VM.
+Cuando implementa un conjunto de escalado, puede instalar software nuevo en una imagen de plataforma con una [extensión de VM](../virtual-machines/virtual-machines-windows-extensions-features.md). Una extensión de VM es una aplicación pequeña que realizan tareas de automatización y configuración posteriores a la implementación en máquinas virtuales de Azure, como es la implementación de una aplicación. Proporciona dos plantillas de muestra diferente en [Azure/azure-inicio rápido: plantillas](https://github.com/Azure/azure-quickstart-templates) que muestran cómo toodeploy una aplicación de escalado automático en una escala establece utilizando extensiones de máquina virtual.
 
 ### <a name="python-http-server-on-linux"></a>Servidor HTTP de Python en Linux
-La plantilla [Servidor HTTP de Python en Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale) implementa una aplicación de escalado automático sencilla que se ejecuta en un conjunto de escalado de Linux.  [Bottle](http://bottlepy.org/docs/dev/), un marco web de Python y un servidor HTTP sencillo se implementan en cada VM del conjunto de escalado con una extensión de VM de script personalizado. Este conjunto de escalado escala verticalmente cuando el uso de CPU promedio de todas las VM supera el 60% y se reduce verticalmente cuando es menor del 30%.
+Hola [servidor HTTP de Python en Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale) plantilla de ejemplo implementa una aplicación simple de escalado automático que se ejecuta en un conjunto de escalas de Linux.  [Bottle](http://bottlepy.org/docs/dev/), un marco de trabajo de web de Python y un sencillo servidor HTTP se implementan en cada máquina virtual en escala de hello establecida con un script personalizado de extensión de máquina virtual. escala de Hello configura escalas cuando es mayor que 60% de uso promedio de CPU a través de todas las máquinas virtuales y escala hacia abajo cuando el uso promedio de CPU de hello es inferior a 30%.
 
-Además del recurso de conjunto de escalado, la plantilla de ejemplo *azuredeploy.json* también declara la red virtual, la dirección IP pública, el equilibrador de carga y los recursos de configuración de escalado automático.  Para más información sobre cómo crear estos recursos en una plantilla, consulte [Conjunto de escalado de Linux con escalado automático](virtual-machine-scale-sets-linux-autoscale.md).
+Además toohello conjunto de escalado de recursos, hello *azuredeploy.json* plantilla de ejemplo también declara red virtual, la dirección IP pública, equilibrador de carga y recursos de la configuración de escalado automático.  Para más información sobre cómo crear estos recursos en una plantilla, consulte [Conjunto de escalado de Linux con escalado automático](virtual-machine-scale-sets-linux-autoscale.md).
 
-En la plantilla *azuredeploy.json*, la propiedad `extensionProfile` del recurso `Microsoft.Compute/virtualMachineScaleSets` especifica una extensión de script personalizado. `fileUris` especifica la ubicación de los scripts. En este caso, dos archivos: *workserver.py*, que define un servidor HTTP sencillo, e *installserver.sh*, que instala Bottle e inicia el servidor HTTP. `commandToExecute` especifica el comando que se debe ejecutar una vez que se implementa el conjunto de escalado.
+Hola *azuredeploy.json* plantilla, hello `extensionProfile` propiedad de hello `Microsoft.Compute/virtualMachineScaleSets` recurso especifica una extensión de script personalizado. `fileUris`Especifica la ubicación de secuencias de comandos de Hola. En este caso, se restauran dos archivos: *workserver.py*, que define un servidor HTTP sencillo, y *installserver.sh*, que instala Bottle e inicia Hola servidor HTTP. `commandToExecute`Especifica Hola comando toorun una vez implementado el conjunto de escalas de Hola.
 
 ```json
           "extensionProfile": {
@@ -59,11 +59,11 @@ En la plantilla *azuredeploy.json*, la propiedad `extensionProfile` del recurso 
 ```
 
 ### <a name="aspnet-mvc-application-on-windows"></a>Aplicación ASP.NET MVC en Windows
-La plantilla de ejemplo [Aplicación ASP.NET MVC en Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale) implementa una aplicación ASP.NET MVC que se ejecuta en IIS en el conjunto de escalado de Windows.  IIS y la aplicación MVC se implementan con la extensión de VM [Configuración de estado deseado (DSC) de PowerShell](virtual-machine-scale-sets-dsc.md).  El conjunto de escalado escala verticalmente (una instancia de VM a la vez) cuando el uso de la CPU supera el 50% durante 5 minutos. 
+Hola [aplicación de MVC de ASP.NET en Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale) plantilla de ejemplo implementa una aplicación ASP.NET MVC sencilla que se ejecutan en IIS en el conjunto de escalas de Windows.  Hello aplicación MVC y IIS se implementan utilizando hello [(DSC de) la configuración de estado deseado de PowerShell](virtual-machine-scale-sets-dsc.md) extensión de máquina virtual.  escala de Hello configurado escalas (en la instancia de máquina virtual a la vez) cuando el uso de CPU es mayor del 50 por ciento durante 5 minutos. 
 
-Además del recurso de conjunto de escalado, la plantilla de ejemplo *azuredeploy.json* también declara la red virtual, la dirección IP pública, el equilibrador de carga y los recursos de configuración de escalado automático. Esta plantilla también demuestra la actualización de la aplicación.  Para más información sobre cómo crear estos recursos en una plantilla, consulte [Conjunto de escalado de Windows con escalado automático](virtual-machine-scale-sets-windows-autoscale.md).
+Además toohello conjunto de escalado de recursos, hello *azuredeploy.json* plantilla de ejemplo también declara red virtual, la dirección IP pública, equilibrador de carga y recursos de la configuración de escalado automático. Esta plantilla también demuestra la actualización de la aplicación.  Para más información sobre cómo crear estos recursos en una plantilla, consulte [Conjunto de escalado de Windows con escalado automático](virtual-machine-scale-sets-windows-autoscale.md).
 
-En la plantilla *azuredeploy.json*, la propiedad `extensionProfile` del recurso `Microsoft.Compute/virtualMachineScaleSets` especifica una extensión de [configuración de estado deseado (DSC)](virtual-machine-scale-sets-dsc.md) que instala IIS y una aplicación web predeterminada desde el paquete WebDeploy.  El script *IISInstall.ps1* instala IIS en la máquina virtual y se encuentra en la carpeta *DSC*.  La aplicación web MVC está en la carpeta *WebDeploy*.  Las rutas de acceso al script de instalación y la aplicación web se definen en los parámetros `powershelldscZip` y `webDeployPackage` del archivo *azuredeploy.parameters.json*. 
+Hola *azuredeploy.json* plantilla, hello `extensionProfile` propiedad de hello `Microsoft.Compute/virtualMachineScaleSets` recursos Especifica un [configuración de estado deseado (DSC)](virtual-machine-scale-sets-dsc.md) extensión que se instala IIS y su valor predeterminado aplicación Web de un paquete de WebDeploy.  Hola *IISInstall.ps1* script instala IIS en la máquina virtual de Hola y se encuentra en hello *DSC* carpeta.  aplicación web MVC de Hola se encuentra en hello *WebDeploy* carpeta.  script de instalación de toohello de rutas de acceso de Hola y Hola web app se definen en hello `powershelldscZip` y `webDeployPackage` parámetros en hello *azuredeploy.parameters.json* archivo. 
 
 ```json
           "extensionProfile": {
@@ -93,11 +93,11 @@ En la plantilla *azuredeploy.json*, la propiedad `extensionProfile` del recurso 
           }
 ```
 
-## <a name="deploy-the-template"></a>Implementación de la plantilla
-La manera más sencilla de implementar la plantilla [Servidor HTTP de Python en Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale) o [Aplicación ASP.NET MVC en Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale) es usar el botón **Implementar en Azure** que se encuentra en los archivos Léame en GitHub.  También puede usar PowerShell o la CLI de Azure para implementar las plantillas de ejemplo.
+## <a name="deploy-hello-template"></a>Implementar la plantilla de Hola
+Hola de toodeploy de manera más sencilla de Hello [servidor HTTP de Python en Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale) o [aplicación de MVC de ASP.NET en Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale) plantilla es hello toouse **implementar tooAzure** encuentra el botón en hello en los archivos Léame de hello en GitHub.  También puede utilizar plantillas de ejemplo de Hola toodeploy PowerShell o CLI de Azure.
 
 ### <a name="powershell"></a>PowerShell
-Copie los archivos [Servidor HTTP de Python en Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale) o [Aplicación ASP.NET MVC en Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale) desde el repositorio GitHub en una carpeta del equipo local.  Abra el archivo *azuredeploy.parameters.json* y actualice los valores predeterminados de los parámetros `vmssName`, `adminUsername` y `adminPassword`. Guarde el siguiente script de PowerShell en el archivo *deploy.ps1*, en la misma carpeta que la plantilla *azuredeploy.json*. Para implementar la plantilla de ejemplo, ejecute el script *deploy.ps1* desde una ventana de comandos de PowerShell.
+Hola copia [servidor HTTP de Python en Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale) o [aplicación de MVC de ASP.NET en Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale) archivos desde la carpeta de tooa de repositorio de GitHub de hello en el equipo local.  Abra hello *azuredeploy.parameters.json* archivo y actualización Hola valores de hello `vmssName`, `adminUsername`, y `adminPassword` parámetros. Guardar Hola siguiente script de PowerShell demasiado*deploy.ps1* Hola misma carpeta que hello *azuredeploy.json* plantilla. Hola de plantilla ejecutar de ejemplo de Hola toodeploy *deploy.ps1* secuencia de comandos desde una ventana de comandos de PowerShell.
 
 ```powershell
 param(
@@ -163,7 +163,7 @@ if($resourceProviders.length) {
 $resourceGroup = Get-AzureRmResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue
 if(!$resourceGroup)
 {
-    Write-Host "Resource group '$resourceGroupName' does not exist. To create a new resource group, please enter a location.";
+    Write-Host "Resource group '$resourceGroupName' does not exist. toocreate a new resource group, please enter a location.";
     if(!$resourceGroupLocation) {
         $resourceGroupLocation = Read-Host "resourceGroupLocation";
     }
@@ -174,7 +174,7 @@ else{
     Write-Host "Using existing resource group '$resourceGroupName'";
 }
 
-# Start the deployment
+# Start hello deployment
 Write-Host "Starting deployment...";
 if(Test-Path $parametersFilePath) {
     New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile $templateFilePath -TemplateParameterFile $parametersFilePath;
@@ -191,7 +191,7 @@ IFS=$'\n\t'
 
 # -e: immediately exit if any command has a non-zero exit status
 # -o: prevents errors in a pipeline from being masked
-# IFS new value is less likely to cause confusing bugs when looping arrays or arguments (e.g. $@)
+# IFS new value is less likely toocause confusing bugs when looping arrays or arguments (e.g. $@)
 
 usage() { echo "Usage: $0 -i <subscriptionId> -g <resourceGroupName> -n <deploymentName> -l <resourceGroupLocation>" 1>&2; exit 1; }
 
@@ -238,12 +238,12 @@ if [[ -z "$deploymentName" ]]; then
 fi
 
 if [[ -z "$resourceGroupLocation" ]]; then
-    echo "Enter a location below to create a new resource group else skip this"
+    echo "Enter a location below toocreate a new resource group else skip this"
     echo "ResourceGroupLocation:"
     read resourceGroupLocation
 fi
 
-#templateFile Path - template file to be used
+#templateFile Path - template file toobe used
 templateFilePath="template.json"
 
 if [ ! -f "$templateFilePath" ]; then
@@ -264,7 +264,7 @@ if [ -z "$subscriptionId" ] || [ -z "$resourceGroupName" ] || [ -z "$deploymentN
     usage
 fi
 
-#login to azure using your credentials
+#login tooazure using your credentials
 az account show 1> /dev/null
 
 if [ $? != 0 ];
@@ -272,7 +272,7 @@ then
     az login
 fi
 
-#set the default subscription id
+#set hello default subscription id
 az account set --name $subscriptionId
 
 set +e

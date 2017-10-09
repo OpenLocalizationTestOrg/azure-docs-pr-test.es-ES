@@ -1,6 +1,6 @@
 ---
-title: Uso de Azure Application Gateway con el equilibrador de carga interno | Microsoft Docs
-description: "Esta página proporciona instrucciones para configurar una puerta de enlace de aplicaciones de Azure con un extremo de equilibrio de carga interno"
+title: puerta de enlace de aplicaciones de Azure con el equilibrador de carga interno aaaUsing | Documentos de Microsoft
+description: "Esta página proporcionan instrucciones tooconfigure una puerta de enlace de aplicaciones de Azure con un extremo con equilibrio de carga interno"
 documentationcenter: na
 services: application-gateway
 author: georgewallace
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: gwallace
-ms.openlocfilehash: d6f3af61934c8c645be1f2c6b4c056fc7ee2e3aa
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 272ef84a02f92a8521c35aad6f1d9f9bf1675718
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>Creación de una puerta de enlace de aplicaciones con un equilibrador de carga interno (ILB)
 
@@ -26,25 +26,25 @@ ms.lasthandoff: 07/11/2017
 > * [Azure Classic PowerShell](application-gateway-ilb.md)
 > * [PowerShell del Administrador de recursos de Azure](application-gateway-ilb-arm.md)
 
-La Puerta de enlace de aplicaciones se puede configurar con una IP virtual accesible desde Internet o con un punto de conexión interno no expuesto a Internet, lo que se conoce también como punto de conexión de Equilibrador de carga interno (ILB). Configurar la puerta de enlace con un ILB es útil para las aplicaciones de línea de negocio internas que no se exponen en Internet. También es útil para los servicios o niveles dentro de una aplicación de varios niveles que se asientan en un límite de seguridad no expuesto a Internet, pero que siguen necesitando distribución de carga round robin, permanencia de sesión o terminación SSL. Este artículo le guía por los pasos necesarios para configurar una puerta de enlace de aplicaciones con un ILB.
+Puerta de enlace de aplicaciones puede configurarse con un orientado a dirección IP virtual de internet o con un extremo interno no expuesta toohello internet, también conocido como punto de conexión de equilibrador de carga interno (ILB). Configurar puerta de enlace de hello con un ILB es útil para aplicaciones de línea de negocio internas no expuestas toointernet. También es útil para los niveles de servicio/dentro de una aplicación de varios niveles, que se encuentra en un toointernet no expuesto el límite de seguridad, pero aún requieren la distribución de la carga de round robin, adherencia de sesión o terminación SSL. Este artículo le guiará a través de hello pasos tooconfigure una puerta de enlace de la aplicación con un ILB.
 
 ## <a name="before-you-begin"></a>Antes de empezar
 
-1. Instale la versión más reciente de los cmdlets de Azure PowerShell mediante el Instalador de plataforma web. Puede descargar e instalar la versión más reciente desde la sección **Windows PowerShell** de la [Página de descarga](https://azure.microsoft.com/downloads/).
+1. Instale la versión más reciente de los cmdlets de PowerShell de Azure de hello usan Hola instalador de plataforma Web. Puede descargar e instalar la versión más reciente de Hola de hello **Windows PowerShell** sección de hello [página de descarga](https://azure.microsoft.com/downloads/).
 2. Compruebe que tiene una red virtual que funciona con una subred válida.
-3. Compruebe que dispone de servidores backend, ya sea en la red virtual o con una dirección IP virtual o dirección IP pública asignada.
+3. Compruebe que dispone de servidores back-end en la red virtual de hello, o con una dirección IP pública/VIP asignada.
 
-Para crear una puerta de enlace de aplicaciones, realice los pasos siguientes en el orden mostrado. 
+toocreate una puerta de enlace de aplicaciones, realizar Hola pasos en orden de hello indicado. 
 
 1. [Creación de una puerta de enlace de aplicaciones](#create-a-new-application-gateway)
-2. [Configuración de la puerta de enlace](#configure-the-gateway)
-3. [Establecimiento de la configuración de la puerta de enlace](#set-the-gateway-configuration)
-4. [Inicio de la puerta de enlace](#start-the-gateway)
-5. [Comprobación de la puerta de enlace](#verify-the-gateway-status)
+2. [Configurar la puerta de enlace de Hola](#configure-the-gateway)
+3. [Configuración de puerta de enlace de Hola de conjunto](#set-the-gateway-configuration)
+4. [Iniciar la puerta de enlace de Hola](#start-the-gateway)
+5. [Compruebe la puerta de enlace de Hola](#verify-the-gateway-status)
 
 ## <a name="create-an-application-gateway"></a>Creación de una puerta de enlace de aplicaciones:
 
-**Para crear la puerta de enlace**, use el cmdlet `New-AzureApplicationGateway` y reemplace los valores por los suyos. Tenga en cuenta que la facturación de la puerta de enlace no se inicia en este momento. La facturación comienza en un paso posterior, cuando la puerta de enlace se ha iniciado correctamente.
+**puerta de enlace de hello toocreate**, usar hello `New-AzureApplicationGateway` cmdlet, reemplazando los valores de hello por los suyos propios. Tenga en cuenta que la facturación de puerta de enlace de hello no se inicia en este momento. Facturación comienza en un paso posterior, cuando la puerta de enlace de Hola se ha iniciado correctamente.
 
 ```powershell
 New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subnet-1")
@@ -58,9 +58,9 @@ Name       HTTP Status Code     Operation ID                             Error
 Successful OK                   55ef0460-825d-2981-ad20-b9a8af41b399
 ```
 
-**Para validar** la creación de la puerta de enlace, puede usar el cmdlet `Get-AzureApplicationGateway`. 
+**toovalidate** que se creó la puerta de enlace de hello, puede usar hello `Get-AzureApplicationGateway` cmdlet. 
 
-En el ejemplo, *Description*, *InstanceCount* y *GatewaySize* son parámetros opcionales. El valor predeterminado de *InstanceCount* es 2, con un valor máximo de 10. El valor predeterminado de *GatewaySize* es Medium. Small y Large son otros valores disponibles. *Vip* y *DnsName* se muestran en blanco porque todavía no se ha iniciado la puerta de enlace. Se crearán una vez que la puerta de enlace esté en estado de ejecución. 
+En el ejemplo de Hola, *descripción*, *InstanceCount*, y *GatewaySize* son parámetros opcionales. Hola valor predeterminado de *InstanceCount* es 2, con un valor máximo de 10. Hola valor predeterminado de *GatewaySize* es Medium. Small y Large son otros valores disponibles. *VIP* y *DnsName* se muestran como en blanco porque no se inició aún la puerta de enlace de Hola. Estos se crean una vez que la puerta de enlace de hello está en estado de ejecución de Hola. 
 
 ```powershell
 Get-AzureApplicationGateway AppGwTest
@@ -81,25 +81,25 @@ VirtualIPs:
 DnsName:
 ```
 
-## <a name="configure-the-gateway"></a>Configuración de la puerta de enlace
-Una configuración de puerta de enlace de aplicaciones consta de varios valores. Los valores pueden ir juntos para construir la configuración.
+## <a name="configure-hello-gateway"></a>Configurar la puerta de enlace de Hola
+Una configuración de puerta de enlace de aplicaciones consta de varios valores. se pueden acumular los valores de Hello configuración de hello tooconstruct juntos.
 
-Los valores son:
+los valores de Hello son:
 
-* **Grupo de servidores de backend:** lista de direcciones IP de los servidores backend. Las direcciones IP mostradas deben pertenecer a la subred de red virtual o deben ser una dirección IP virtual o dirección IP pública. 
-* **Configuración del grupo de servidores back-end** : cada grupo tiene una configuración como el puerto, el protocolo y la afinidad basada en cookies. Estos valores están vinculados a un grupo y se aplican a todos los servidores del grupo.
-* **Puerto front-end:** este puerto es el puerto público abierto en la puerta de enlace de aplicaciones. El tráfico llega a este puerto y, a continuación, se redirige a uno de los servidores backend.
-* **Agente de escucha** : la escucha tiene un puerto front-end, un protocolo (Http o Https, estos distinguen mayúsculas de minúsculas) y el nombre del certificado SSL (si se configura la descarga de SSL). 
-* **Regla:** enlaza el agente de escucha y el grupo de servidores backend, y define a qué grupo de servidores backend se debe dirigir el tráfico cuando llega a un agente de escucha determinado. Actualmente, solo se admite la regla *básica* . La regla *basic* regla es la distribución de carga round robin.
+* **Grupo de servidores de back-end:** Hola lista de direcciones IP de servidores de back-end de Hola. direcciones IP en Hello lista deben pertenecer o subred de red virtual toohello o deben ser una dirección IP pública/VIP. 
+* **Configuración del grupo de servidores back-end** : cada grupo tiene una configuración como el puerto, el protocolo y la afinidad basada en cookies. Esta configuración está ligada tooa grupo y son servidores de tooall aplicados en el grupo de Hola.
+* **Puerto de front-end:** este puerto es el puerto público Hola abierto en la puerta de enlace de aplicaciones de Hola. Tráfico llega a este puerto y, a continuación, obtiene redirigida tooone de servidores de back-end de Hola.
+* **Agente de escucha:** agente de escucha de hello tiene un puerto de front-end, un protocolo (Http o Https, estos distinguen mayúsculas de minúsculas) y el nombre del certificado SSL hello (si se descarga la configuración de SSL). 
+* **Regla:** regla Hola enlaza el agente de escucha de Hola y de grupo de servidores de back-end de Hola y define qué tráfico de hello del grupo de servidor back-end debe ser dirigido toowhen llega a un agente de escucha determinado. Actualmente, solo Hola *básico* se admite la regla. Hola *básica* regla es la distribución de carga round robin.
 
-Puede llevar a cabo la configuración mediante la creación de un objeto de configuración o usando un archivo XML de configuración. Para llevar a cabo la configuración usando un archivo XML de configuración, use el siguiente ejemplo.
+Puede llevar a cabo la configuración mediante la creación de un objeto de configuración o usando un archivo XML de configuración. tooconstruct la configuración mediante el uso de un archivo XML de configuración, use Hola de ejemplo a continuación.
 
-Tenga en cuenta lo siguiente:
+Tenga en cuenta los siguiente hello:
 
-* El elemento *FrontendIPConfigurations* describe los detalles del ILB relevantes para configurar la Puerta de enlace de aplicaciones con un ILB. 
-* El elemento *Type* de la dirección IP del front-end debe establecerse en 'Private'
-* El elemento *StaticIPAddress* debe establecerse en la dirección IP interna deseada en el que la puerta de enlace recibe el tráfico. Tenga en cuenta que el elemento *StaticIPAddress* es opcional. Si no se establece, se elige una dirección IP interna disponible de la subred implementada. 
-* El valor del elemento *Name* especificado en *FrontendIPConfiguration* se debe usar en el elemento *FrontendIP* de HTTPListener para hacer referencia a FrontendIPConfiguration.
+* Hola *FrontendIPConfigurations* elemento describe hello ILB detalles pertinentes para configurar la puerta de enlace de aplicaciones con un ILB. 
+* IP de front-end Hello *tipo* debe establecerse too'Private'
+* Hola *StaticIPAddress* debe establecerse en qué Hola puerta de enlace recibe el tráfico IP interna toohello deseado. Tenga en cuenta que hello *StaticIPAddress* elemento es opcional. Si no es así conjunto, se elige una IP interna disponible de la subred de hello implementado. 
+* Hola valo hello *nombre* especificado en el elemento *FrontendIPConfiguration* debe usarse en hello HTTPListener *FrontendIP* toohello toorefer de elemento FrontendIPConfiguration.
   
   **Ejemplo XML de configuración**
 ```xml
@@ -156,8 +156,8 @@ Tenga en cuenta lo siguiente:
 ```
 
 
-## <a name="set-the-gateway-configuration"></a>Establecimiento de la configuración de la puerta de enlace
-A continuación, establecerá la puerta de enlace de aplicaciones. Puede usar el cmdlet `Set-AzureApplicationGatewayConfig` con un objeto de configuración o con un archivo XML de configuración. 
+## <a name="set-hello-gateway-configuration"></a>Configuración de puerta de enlace de Hola de conjunto
+A continuación, se establecerá la puerta de enlace de aplicaciones de Hola. Puede usar hello `Set-AzureApplicationGatewayConfig` cmdlet con un objeto de configuración, o con un archivo XML de configuración. 
 
 ```powershell
 Set-AzureApplicationGatewayConfig -Name AppGwTest -ConfigFile D:\config.xml
@@ -171,12 +171,12 @@ Name       HTTP Status Code     Operation ID                             Error
 Successful OK                   9b995a09-66fe-2944-8b67-9bb04fcccb9d
 ```
 
-## <a name="start-the-gateway"></a>Inicio de la puerta de enlace
+## <a name="start-hello-gateway"></a>Iniciar la puerta de enlace de Hola
 
-Una vez configurada la puerta de enlace, use el cmdlet `Start-AzureApplicationGateway` para iniciarla. La facturación de una puerta de enlace de aplicaciones comienza después de que se haya iniciado correctamente. 
+Una vez que se ha configurado la puerta de enlace de hello, usar hello `Start-AzureApplicationGateway` puerta de enlace de cmdlet toostart Hola. La facturación de una puerta de enlace de la aplicación comienza después de puerta de enlace de Hola se ha iniciado correctamente. 
 
 > [!NOTE]
-> La regla `Start-AzureApplicationGateway` puede tardar hasta 15-20 minutos en completarse. 
+> Hola `Start-AzureApplicationGateway` cmdlet podría tardar hasta toocomplete too15-20 minutos. 
 > 
 > 
 
@@ -192,12 +192,12 @@ Name       HTTP Status Code     Operation ID                             Error
 Successful OK                   fc592db8-4c58-2c8e-9a1d-1c97880f0b9b
 ```
 
-## <a name="verify-the-gateway-status"></a>Comprobación del estado de la puerta de enlace
+## <a name="verify-hello-gateway-status"></a>Comprobar el estado de la puerta de enlace de Hola
 
-Use el cmdlet `Get-AzureApplicationGateway` para comprobar el estado de la puerta de enlace. Si el cmdlet `Start-AzureApplicationGateway` se realizó correctamente en el paso anterior, el valor de State debería ser *Running* (En ejecución) y Vip y DnsName deben tener entradas válidas. Este ejemplo muestra el cmdlet en la primera línea, seguido de la salida. En este ejemplo, la puerta de enlace se está ejecutando y está lista para asumir tráfico. 
+Hola de uso `Get-AzureApplicationGateway` estado de cmdlet toocheck Hola de puerta de enlace. Si `Start-AzureApplicationGateway` se realizó correctamente en el paso anterior de hello, estado de hello debería ser *ejecuta*, Hola Vip y DnsName debe tener las entradas válidas. Ejemplo hello cmdlet muestra en la primera línea hello, seguido de salida de hello. En este ejemplo, puerta de enlace de hello está ejecutando y está listo tootake tráfico. 
 
 > [!NOTE]
-> La puerta de enlace de aplicaciones está configurada para aceptar tráfico en el punto de conexión del ILB configurado: 10.0.0.10 en este ejemplo.
+> se configura la puerta de enlace de aplicaciones de Hello tooaccept tráfico en hello configurado extremo ILB de 10.0.0.10 en este ejemplo.
 
 ```powershell
 Get-AzureApplicationGateway AppGwTest 

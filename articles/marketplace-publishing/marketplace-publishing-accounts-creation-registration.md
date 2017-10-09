@@ -1,6 +1,6 @@
 ---
-title: "Creación y registro de la cuenta de publicador | Microsoft Docs"
-description: "Instrucciones para crear una cuenta de desarrollador de Microsoft de manera que, tras su aprobación, se puedan vender varios tipos de productos en Azure Marketplace."
+title: aaaCreating y registrar Hola publicador cuenta | Documentos de Microsoft
+description: "Instrucciones para crear una cuenta de Microsoft Developer, por lo que, tras la aprobación, puede vender varios ofrecen tipos en hello Azure Marketplace."
 services: Azure Marketplace
 documentationcenter: 
 author: HannibalSII
@@ -14,61 +14,61 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2017
 ms.author: hascipio
-ms.openlocfilehash: 642e4a2d11ef5a92f5ab46bc4872414966b04c0d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 27847d5a0e5c7579111cd6f7278f5d74dfea37a3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-microsoft-developer-account"></a>Crear una cuenta de desarrollador de Microsoft
-Este artículo le guía a través del proceso necesario de creación y registro de cuentas para convertirse en un desarrollador de Microsoft aprobado para Azure Marketplace.
+Este artículo le guiará a través de la creación de cuenta necesaria de Hola y proceso de registro toobecome un Microsoft Developer aprobados para hello Azure Marketplace.
 
 ## <a name="1-create-a-microsoft-account"></a>1. Creación de una cuenta Microsoft
-Para finalizar el proceso de publicación, deberá crear una cuenta Microsoft. Esta cuenta se utilizará para registrarse en el **Centro para desarrolladores de Microsoft** y el **Portal de publicación de Azure**. Solo debe tener una cuenta Microsoft para sus ofertas de Azure Marketplace. Esta no debe ser específica para servicios u ofertas.
+proceso de publicación de hello toostart, deberá toocreate una cuenta de Microsoft. Esta cuenta será tooregister usado en hello tooboth **Microsoft Developer Center** y **Portal de publicación de Azure**. Solo debe tener una cuenta Microsoft para sus ofertas de Azure Marketplace. No se debería tooservices específico u ofrece.
 
-La dirección que constituye el nombre de usuario debe estar en su dominio y estar controlada por su equipo de TI. Todas las actividades relacionadas con la publicación deben realizarse a través de esta cuenta.
+dirección de Hola que forma el nombre de usuario de hello debe estar en el dominio y controlado por el equipo de TI. Hola todas las actividades relacionadas con la publicación debe realizarse a través de esta cuenta.
 
 > [!WARNING]
-> No se admiten palabras como "**Azure**" y "**Microsoft**" en el registro de la cuenta Microsoft. Evite el uso de estas palabras para completar el proceso de creación y registro de cuentas.
+> No se admiten palabras como "**Azure**" y "**Microsoft**" en el registro de la cuenta Microsoft. Evite usar estas creación de cuentas de palabras toocomplete Hola y el proceso de registro.
 >
 >
 
 ### <a name="guidelines-for-company-accounts"></a>Instrucciones para las cuentas de empresa
-Cuando cree una cuenta de empresa, siga estas instrucciones si más de una persona necesitará acceso a la cuenta con el inicio de sesión con la cuenta de Microsoft que abrió la cuenta.
+Al crear una cuenta de empresa, siga estas instrucciones si más de una persona necesita tooaccess Hola cuenta mediante el registro de cuenta de Microsoft que abrió Hola cuenta con Hola.
 
 > [!Important]
-> Importante Para permitir que varios usuarios tengan acceso a la cuenta del Centro de desarrollo, se recomienda usar Azure Active Directory para asignar roles a usuarios individuales, que pueden obtener acceso a la cuenta si inician sesión con sus credenciales individuales de Azure AD. Para más información, consulte [Administrar usuarios de cuentas](https://msdn.microsoft.com/en-us/windows/uwp/publish/manage-account-users).
+> Importante tooallow tooaccess varios de los usuarios su cuenta del centro de desarrollo, se recomienda utilizar Azure Active Directory tooassign roles tooindividual los usuarios, que pueden tener acceso a la cuenta de hello iniciando sesión con sus credenciales de Azure AD. Para más información, consulte [Administrar usuarios de cuentas](https://msdn.microsoft.com/en-us/windows/uwp/publish/manage-account-users).
 
-* Cree su cuenta de Microsoft con una dirección de correo electrónico que pertenezca al dominio de la empresa, pero no a un usuario individual; por ejemplo, windowsapps@fabrikam.com.
-* Limite el acceso a esta cuenta de Microsoft a la menor cantidad de desarrolladores posible.
-* Configure una lista de distribución de correo electrónico corporativo que incluya a todos los usuarios que necesiten tener acceso a la cuenta de desarrollador y agregue esta dirección de correo electrónico a la información de seguridad. Esto permite que todos los empleados de la lista reciban códigos de seguridad cuando sea necesario y administren la información de seguridad de la cuenta de Microsoft. Si no es posible configurar una lista de distribución, el propietario de la cuenta de correo electrónico individual deberá permitir el acceso y el uso compartido del código de seguridad cuando se le solicite (por ejemplo, cuando se agregue información de seguridad nueva a la cuenta o cuando se deba obtener acceso a ella desde un dispositivo nuevo).
-* Agregue un número de teléfono de la empresa que no necesite extensión y al que puedan tener acceso miembros clave del equipo.
-* En general, los desarrolladores deben usar dispositivos de confianza para iniciar sesión en la cuenta de desarrollador de la empresa. Todos los miembros clave del equipo deben tener acceso a estos dispositivos de confianza. Esto disminuirá la necesidad de enviar códigos de seguridad cuando se obtiene acceso a la cuenta.
-* Si desea permitir el acceso a la cuenta desde un equipo que no es de confianza, limite el acceso a un máximo de cinco desarrolladores. Idealmente, estos desarrolladores deben obtener acceso a la cuenta desde máquinas que compartan la misma ubicación geográfica y de la red.
-* Revise con frecuencia la información de seguridad de su empresa en [https://account.live.com/proofs/Manage](https://account.live.com/proofs/Manage) para asegurarse de que está actualizada.
+* Crear su cuenta de Microsoft mediante una dirección de correo electrónico que pertenece el dominio de la compañía tooyour, pero no tooa único individuo: por ejemplo, windowsapps@fabrikam.com.
+* Limite el acceso toothis Microsoft cuenta toohello menor número posible de los desarrolladores.
+* Configurar una lista de distribución de correo electrónico corporativo que incluye todos los usuarios que necesiten tooaccess Hola cuenta de desarrollador y agrega esta información de seguridad de tooyour de dirección de correo electrónico. Esto permite que todos toomanage y empleados de hello en códigos de seguridad de tooreceive de hello lista cuando necesita información de seguridad de su cuenta de Microsoft. Si no es posible configurar una lista de distribución, propietario de Hola de cuenta de correo electrónico de hello necesitará toobe disponible tooaccess y recurso compartido de hello seguridad código cuando se le solicite (por ejemplo, cuando la nueva información de seguridad se agrega toohello cuenta o cuando debe tener acceso a ella desde un nuevo dispositivo).
+* Agregar un número de teléfono de la empresa que no requiere una extensión y es accesible tookey los miembros del equipo.
+* En general, es necesario a los desarrolladores usar toolog de dispositivos de confianza en la cuenta de desarrollador de la compañía tooyour. Todos los miembros de clave en el equipo deben tener acceso a dispositivos de toothese de confianza. Esto reducirá la necesidad de Hola de seguridad códigos toobe enviado al obtener acceso a la cuenta de hello.
+* Si necesita toohello cuenta de acceso de tooallow desde un equipo no es de confianza, limite ese máximo de tooa de acceso de los cinco desarrolladores. Idealmente, estos desarrolladores deben tener acceso a cuenta de hello desde equipos que comparten Hola mismo geográfica y la ubicación de red.
+* Revise con frecuencia la información de seguridad de su compañía en [https://account.live.com/proofs/Manage](https://account.live.com/proofs/Manage) toomake que esté todo actual.
 
-Se debe tener acceso a la cuenta de desarrollador principalmente desde equipos de confianza. Esto resulta fundamental porque la cantidad de códigos generados por cuenta a la semana es limitada. También permite lograr la experiencia de inicio de sesión más óptima.
+Se debe tener acceso a la cuenta de desarrollador principalmente desde equipos de confianza. Esto es importante porque no hay un toohello limitar el número de códigos generados por cuenta, por semana. También permite la experiencia de inicio de sesión más sencilla de Hola.
 
 Para más información sobre seguridad e instrucciones adicionales para la cuenta de desarrollador, haga clic [aquí](https://msdn.microsoft.com/en-us/windows/uwp/publish/opening-a-developer-account#additional-guidelines-for-company-accounts).
 
 ### <a name="instructions"></a>Instrucciones
-1. Abra una nueva sesión de exploración de incógnito en Chrome o de InPrivate en Internet Explorer para asegurarse de que no tiene una sesión iniciada en una cuenta existente.
-2. Registre el correo electrónico (según las instrucciones anteriores, por ejemplo windowsapp@fabrikam.com) como una cuenta de Microsoft mediante el vínculo [https://signup.live.com/signup.aspx](https://signup.live.com/signup.aspx). Siga las instrucciones que se describen a continuación.
+1. Abra una nueva Chrome incógnito o Internet Explorer InPrivate exploración tooensure de sesión que no están firmado en tooan de cuenta existente.
+2. Registrar el correo electrónico de hello (por instrucciones de hello anteriores p. ej. windowsapp@fabrikam.com) como una cuenta de Microsoft mediante el vínculo de hello [https://signup.live.com/signup.aspx](https://signup.live.com/signup.aspx). Siga estas instrucciones Hola.
 
-   1. Durante el registro de la cuenta como cuenta de Microsoft, debe proporcionar un número de teléfono válido para que el sistema pueda enviarle un código de comprobación de la cuenta a través de un mensaje de texto o una llamada automatizada.
-   2. También, debe proporcionar un identificador de correo electrónico válido para recibir un correo electrónico automatizado de comprobación de la cuenta.
-3. Compruebe la dirección de correo electrónico enviada a la lista de distribución.
-4. Ahora está listo para usar la nueva cuenta Microsoft en el Centro para desarrolladores de Microsoft.
+   1. Durante el registro de la cuenta como una cuenta de Microsoft, debe tooprovide un número de teléfono válido para hello sistema toosend codifica una verificación de la cuenta como un mensaje de texto o una llamada automatizada.
+   2. Durante el registro de la cuenta como una cuenta de Microsoft, deberá tooprovide un identificador de correo electrónico válida para recibir un correo electrónico automatizado para la comprobación de la cuenta.
+3. Compruebe toohello enviado de dirección de correo electrónico Hola DL.
+4. Ahora está listo toouse Hola nueva cuenta Microsoft en Microsoft Developer Center Hola.
 
 ## <a name="2-register-your-account-in-microsoft-developer-center"></a>2. Registre la cuenta en el Centro para desarrolladores de Microsoft
-El Centro para desarrolladores de Microsoft se usa para registrar la información de la empresa una sola vez. El usuario inscrito debe ser un representante válido de la compañía y debe proporcionar su información personal, como una forma de validar su identidad. La persona que se inscriba debe usar una cuenta Microsoft que se comparta en la compañía, **y esa misma cuenta debe usarse en el Portal de publicación de Azure.** Debe asegurarse de que su compañía no tenga ya una cuenta del Centro para desarrolladores de Microsoft antes de intentar crear una nueva. Durante el proceso, recopilaremos la información de dirección, los datos de la cuenta bancaria y la información fiscal de la compañía. Normalmente, estos datos se pueden obtener de contactos financieros o comerciales.
+Hola Microsoft Developer Center es tooregister usado Hola información de la empresa una vez. persona registrada Hola debe ser un representante de empresa de hello válido y debe proporcionar su información personal como una manera toovalidate su identidad. persona Hola registrar debe utilizar una cuenta de Microsoft que se comparte de empresa de hello, **y Hola debe utilizarse la misma cuenta de hello Portal de publicación de Azure.** Debe comprobar que su empresa no tiene ya una cuenta de Microsoft Developer Center antes de intentar toocreate uno toomake. Durante el proceso de hello, agregaremos recopilar información de dirección de la empresa, información de cuenta bancaria y obtener información de impuestos. Normalmente, estos datos se pueden obtener de contactos financieros o comerciales.
 
 > [!IMPORTANT]
-> Debe completar los siguientes componentes del perfil de desarrollador para avanzar por las distintas fases de la creación e implementación de ofertas.
+> Debe completar Hola después de generar perfiles de componentes de desarrollador en orden tooprogress a través de hello distintas fases de implementación y creación de la oferta.
 >
 >
 
-| Perfil del desarrollador | Para iniciar el borrador | Ensayo | Publicación gratis y plantilla de solución | Publicación de ofertas comerciales |
+| Perfil del desarrollador | toostart borrador | Ensayo | Publicación gratis y plantilla de solución | Publicación de ofertas comerciales |
 | --- | --- | --- | --- | --- |
 | Registro de la compañía |Obligatorio |Obligatorio |Obligatorio |Obligatorio |
 | Identificación de perfil fiscal |Opcional |Opcional |Opcional |Obligatorio |
@@ -80,157 +80,157 @@ El Centro para desarrolladores de Microsoft se usa para registrar la informació
 >
 
 ### <a name="register-your-company-account"></a>Registro de su cuenta de compañía
-1. Abra una nueva sesión de exploración de InPrivate en Internet Explorer o de incógnito en Chrome para asegurarse de que no tiene una sesión iniciada en una cuenta personal.
-2. Vaya a [http://dev.windows.com/registration?accountprogram=azure](http://dev.windows.com/registration?accountprogram=azure) para registrarse como vendedor en el Centro de desarrollo. Lea la siguiente nota importante antes de continuar.
+1. Abra una nueva InPrivate de Internet Explorer o incógnito Chrome exploración tooensure de sesión que no están firmado en tooa de cuenta personal.
+2. Vaya demasiado[http://dev.windows.com/registration?accountprogram=azure](http://dev.windows.com/registration?accountprogram=azure) tooregister usted mismo como vendedor en hello centro de desarrollo. Lea Hola después Nota importante antes de continuar.
 
    > [!IMPORTANT]
-   > Asegúrese de que el identificador de correo electrónico o la DL (se recomienda usar una lista de distribución para no tener que depender de otras personas) que va a utilizar para registrarse en el Centro de desarrollo es una cuenta Microsoft. En caso contrario, regístrela haciendo clic en este [vínculo](https://signup.live.com/signup?uaid=e479342fe2824efeb0c3d92c8f961fd3&lic=1). Además, **no se puede utilizar cualquier identificador de correo electrónico en el dominio de empresa de Microsoft**, es decir, @microsoft.com para registrarse en el Centro de desarrollo.
+   > Asegurarse de esa Hola correo electrónico Id. o lista de distribución (una lista de distribución se recomienda tooremove dependencia personas) que se va a usar para registrar en el centro de desarrollo de hello está en registraron por primera vez como una cuenta de Microsoft. En caso contrario, regístrela haciendo clic en este [vínculo](https://signup.live.com/signup?uaid=e479342fe2824efeb0c3d92c8f961fd3&lic=1). Además, **Hola a cualquier identificador del correo electrónico en el dominio de empresa de Microsoft, es decir, @microsoft.com no se puede usar** para el registro de centro de desarrollo.
    >
    >
 
     ![dibujo][img-signin]
-3. Complete el asistente “Ayúdenos a proteger su cuenta”, que comprobará su identidad por teléfono o por correo electrónico.
+3. Complete el Asistente "Ayúdanos a proteger su cuenta" de hello, que comprueba su identidad a través de número de teléfono, dirección de correo electrónico.
 
     ![dibujo][img-verify]
-4. En la sección de registro e información de la cuenta, seleccione su **país o región** en el menú desplegable.
+4. En la sección "Información de cuenta de registro" Hola, seleccione su **cuenta país/región** desde el menú desplegable de Hola.
 
     ![dibujo](media/marketplace-publishing-accounts-creation-registration/imgRegisterCo_04.png)
 
    > [!WARNING]
-   > **Países de "origen de venta":** para vender sus servicios en Azure Marketplace, la entidad registrada debe proceder de uno de los países de "origen de venta" aprobados que se mencionan arriba. Esta restricción se debe a motivos de pago e impuestos. Trabajamos activamente para ampliar esta lista de países en un futuro próximo, así pues, manténgase atento. Para obtener más información, consulte las [directivas de participación de Marketplace](http://go.microsoft.com/fwlink/?LinkID=526833).
+   > **"Ventas de" países:** en orden toosell los servicios en hello Azure Marketplace, la entidad registrada debe toobe desde uno de hello aprobado "ventas de" países anteriores. Esta restricción se debe a motivos de pago e impuestos. Estamos buscando activamente tooexpand esta lista de países en hello futuro próximo, así que esté atento. Para obtener más información, vea hello [directivas de participación de Marketplace](http://go.microsoft.com/fwlink/?LinkID=526833).
    >
    >
-5. Seleccione **Compañía** como tipo de cuenta y, después, haga clic en el botón **Siguiente**.
+5. Seleccione el tipo de cuenta de"" como **empresa** y, a continuación, haga clic en hello **siguiente** botón.
 
    > [!IMPORTANT]
-   > Para comprender mejor los tipos de cuenta y cuál es la mejor para sus necesidades, consulte la página [Tipos de cuenta, ubicaciones y precios](https://msdn.microsoft.com/library/windows/apps/jj863494.aspx)
+   > toobetter comprender los tipos de cuenta y cuál es mejor para toochoose, visite la página [tipos, las ubicaciones y las cuotas de la cuenta](https://msdn.microsoft.com/library/windows/apps/jj863494.aspx)
    >
    >
 
     ![dibujo](media/marketplace-publishing-accounts-creation-registration/imgRegisterCo_05.png)
-6. Escriba el **nombre para mostrar del publicador**, que suele ser el nombre de su compañía.
+6. Escriba hello **nombre para mostrar publicador**, que suele ser nombre Hola de su empresa.
 
    > [!TIP]
-   > El nombre para mostrar del publicador especificado en el Centro de desarrollo no se muestra en Azure Marketplace cuando la oferta esté activa. Sin embargo, se debe rellenar para completar el proceso de registro.
+   > publicador de Hello Mostrar nombre escrito en hello centro de desarrollo no se muestra en hello Azure Marketplace una vez que su oferta queda enumerada. Pero debe ser rellena el proceso de registro de hello toocomplete.
    >
    >
-7. Escriba la **información de contacto** para que se compruebe la cuenta.
+7. Escriba hello **información de contacto** para la comprobación de la cuenta de hello.
 
    > [!IMPORTANT]
-   > La información proporcionada debe ser precisa ya que se usará en nuestro proceso de comprobación y aprobación de la compañía en el Centro para desarrolladores.
+   > Debe proporcionar información de contacto precisa porque se usará en el proceso de comprobación para la toobe empresa aprobada en hello Centro para desarrolladores.
    >
    >
-8. Escriba la información de contacto del **aprobador de la compañía**. El aprobador de la compañía es la persona que puede comprobar que está autorizado para crear una cuenta en el Centro de desarrollo en nombre de su organización. Cuando haya terminado, haga clic en **Siguiente** para pasar a la **sección de pago**.
+8. Especifique la información de contacto de Hola para hello **empresa aprobador**. Aprobador de la empresa es Hola persona puede comprobar que están autorizado toocreate una cuenta de hello centro de desarrollo de nombre de su organización. Haga clic en **siguiente** toomove toohello **"Sección de pago"** una vez haya terminado.
 
     ![dibujo](media/marketplace-publishing-accounts-creation-registration/imgRegisterCo_08.png)
-9. Escriba la información de pago para pagar su cuenta. Si tiene un código de promoción que cubre el costo de registro, puede indicarlo aquí. De lo contrario, proporcione su información de tarjeta de crédito (o PayPal en mercados admitidos). Cuando haya terminado, haga clic en **Siguiente** para pasar a la **"Pantalla de revisión"**.
+9. Escriba su toopay de información de pago de su cuenta. Si tiene un código de promoción que cubre el costo de Hola de registro, puede especificar aquí. De lo contrario, proporcione su información de tarjeta de crédito (o PayPal en mercados admitidos). Cuando haya terminado, haga clic en **siguiente** toomove en toohello **"Pantalla de revisión"**.
 
     ![dibujo](media/marketplace-publishing-accounts-creation-registration/imgRegisterCo_09.png)
-10. Revise la información de la cuenta y confirme que todo es correcto. A continuación, lea y acepte los términos y condiciones del [Contrato del publicador de Microsoft Azure Marketplace](http://go.microsoft.com/fwlink/?LinkID=699560). Active la casilla para indicar que ha leído y aceptado estos términos.
-11. Haga clic en **Finalizar** para confirmar el registro. Le enviaremos un mensaje de confirmación a su dirección de correo electrónico.
-12. Si solo tiene pensado publicar ofertas gratuitas, haga clic en **Ir al Portal de publicación de Azure Marketplace** y vaya directamente a la sección 3 de este documento, [Registro de la cuenta en el portal de publicación](#3-register-your-account-in-the-publishing-portal).
+10. Revise la información de la cuenta y confirme que todo es correcto. A continuación, lea y acepte Hola términos y condiciones de hello [contrato de publicador de Microsoft Azure Marketplace](http://go.microsoft.com/fwlink/?LinkID=699560). Compruebe Hola cuadro tooindicate ha leído y aceptado estos términos.
+11. Haga clic en **finalizar** tooconfirm el registro. Te enviaremos una dirección de correo electrónico de tooyour de mensaje de confirmación.
+12. Si tiene previsto toopublish solo libre ofertas, haga clic en **vaya tooAzure Portal de publicación de Marketplace** y puede omitir toosection 3 de este documento, [registrar su cuenta en el portal de publicación de hello](#3-register-your-account-in-the-publishing-portal).
 
-Si piensa publicar ofertas comerciales (por ejemplo, ofertas de máquinas virtuales con el modelo de facturación por hora), haga clic en **Actualizar la información de la cuenta** , donde debe completar la información fiscal y bancaria de su cuenta del Centro para desarrolladores.
+Si tiene previsto toopublish comercial ofrece (por ejemplo, ofertas de máquina Virtual con el modelo de facturación por hora) y, a continuación, haga clic en **actualizar la información de su cuenta** donde debe completar impuestos hello y la información en el Centro para desarrolladores de bancaria cuenta.
 
-Si prefiere actualizar la información fiscal y bancaria en otro momento, puede ir a la sección 3 de este documento, [Registro de la cuenta en el portal de publicación](#3-register-your-account-in-the-publishing-portal), y volver más tarde mediante los vínculos del Portal de publicación de Azure.
+Si prefiere tooupdate la información de impuestos y bank más tarde, puede mover toohello la sección siguiente, es decir, la sección 3 de este documento, [registrar su cuenta en el portal de publicación de hello](#3-register-your-account-in-the-publishing-portal)y más tarde mediante vínculos en hello Azure Portal de publicación.
 
 > [!IMPORTANT]
-> En el caso de las ofertas comerciales, no podrá llevarlas a producción sin completar la información fiscal y bancaria.
+> En el caso de ofertas comerciales, no será capaz de toopush su tooproduction ofertas sin completar Hola impuestos y la información de cuenta bancaria.
 >
 >
 
-Si prefiere actualizar la información fiscal y bancaria en otro momento, puede ir a la sección 3, [Registro de la cuenta en el portal de publicación](#3-register-your-account-in-the-publishing-portal), y volver más tarde mediante los vínculos del Portal de publicación de Azure.
+Si prefiere tooupdate la información de impuestos y bank más tarde, pueden ir toosection 3, [registrar su cuenta en el portal de publicación de hello](#3-register-your-account-in-the-publishing-portal)y más tarde mediante vínculos en hello Portal de publicación de Azure.
 
 ### <a name="add-tax-and-banking-information"></a>Adición de información bancaria y fiscal
- Si desea publicar ofertas comerciales de compra, también necesitará agregar información de pago y fiscal y enviarla para su validación en el Centro para desarrolladores. Si solo va a publicar ofertas gratis (u ofertas BYOL), no necesita agregar esta información. Puede agregarla más adelante, pero se tarda algún tiempo en validar la información fiscal. Si sabe que ofrecerá ofertas comerciales de compra, se recomienda que las agregue tan pronto como sea posible.
+ Si desea toopublish comercial se ofrece para compra, también necesita tooadd bancarios e información de impuestos y enviarla para la validación en hello Centro para desarrolladores. Si se publicarán ofertas gratuitas solo (o BYOL ofrece), a continuación, no necesita tooadd esta información. Puede agregar más adelante, pero realiza cierta información de impuestos de tiempo toovalidate Hola. Si sabe que ofrecerá ofertas comerciales de compra, se recomienda que las agregue tan pronto como sea posible.
 
 **Información bancaria**
 
-1. Inicie sesión en el [Cntro para desarrolladores de Microsoft](http://dev.windows.com/registration?accountprogram=azure) con su cuenta Microsoft.
-2. Haga clic en **Cuenta de pago** en el menú de la izquierda y, en **Elegir método de pago**, haga clic en **Cuenta bancaria** o **PayPal**.
+1. Inicie sesión en toohello [Microsoft Developer Center](http://dev.windows.com/registration?accountprogram=azure) con tu cuenta de Microsoft.
+2. Haga clic en **cuenta de pago** Hola deje de menú, en **elegir método de pago** haga clic en **cuenta bancaria** o **PayPal**.
 
    > [!IMPORTANT]
-   > Si tiene ofertas comerciales que compran los clientes en Marketplace, esta es la cuenta donde recibirá el pago para esas compras.
+   > Si tienes ofertas comerciales a las que los clientes compran Hola Marketplace, trata Hola cuenta donde recibirá bancarios para esas compras.
    >
    >
-3. Escriba la información de pago y, cuando esté satisfecho, haga clic en **Guardar** .
+3. Escriba la información de pago de Hola y haga clic en **guardar** cuando haya completado.
 
    > [!IMPORTANT]
-   > Si necesita actualizar o cambiar la cuenta de pago, siga estos mismos pasos, pero sustituya la información actual por la nueva. El hecho de cambiar la cuenta de pago puede dar lugar a retrasos en los pagos de hasta un ciclo completo. Este retraso se produce porque es necesario comprobar el cambio de la cuenta, al igual que hicimos cuando configuró por primera vez la cuenta de pago. Aunque se le seguirá pagando el importe completo después de que se haya comprobado la cuenta, los pagos pendientes del ciclo actual se agregarán al siguiente.
+   > Si necesita tooupdate o cambiar la cuenta de pago, Hola seguir pasos de la misma sección, reemplazando la información actual de hello con nueva información de Hola. Cambiar la cuenta de pago puede retrasar los pagos por el ciclo de pago de tooone. Este retraso se produce porque se necesita el cambio de la cuenta de hello tooverify, al igual que hicimos cuando configura primero una cuenta de pago de Hola. Le sigue recibir el pago por importe total Hola después de que se ha comprobado su cuenta; los pagos de vencimiento de ciclo de pago actual Hola será agregado toohello siguiente.
    >
    >
 4. Haga clic en **Siguiente**.
 
 **Información fiscal**
 
-1. Inicie sesión en el [Centro para desarrolladores de Microsoft](http://dev.windows.com/registration?accountprogram=azure) con su cuenta Microsoft (si es necesario).
-2. Haga clic en **Perfil fiscal** en el menú izquierdo.
-3. En la página **Configure su formulario fiscal** , seleccione el país o la región donde tenga la residencia permanente y después seleccione el país o la región donde tiene la nacionalidad principal. Haga clic en **Siguiente**.
+1. Inicie sesión en toohello [Microsoft Developer Center](http://dev.windows.com/registration?accountprogram=azure) con su cuenta de Microsoft (si es necesario).
+2. Haga clic en **perfil de impuestos** en el menú de la izquierda Hola.
+3. En hello **configurar el formulario de impuestos** , seleccione país de Hola o región donde haya residencia permanente y, a continuación, seleccione el país de Hola o región donde almacenar ciudadanía principal. Haga clic en **Siguiente**.
 4. Escriba la información fiscal y, después, haga clic en **Siguiente**.
 
 > [!WARNING]
-> No podrá llevar a producción las ofertas comerciales sin completar la información fiscal y bancaria de su cuenta del Centro para desarrolladores de Microsoft.
+> No podrá tooproduction toopush capaz de su comercial se ofrece sin completar la información de impuestos y la cuenta bancaria de hello en su cuenta de Microsoft Developer Center.
 >
 >
 
 Si tiene problemas para registrarse en el Centro para desarrolladores, abra una incidencia de soporte técnico tal y como se indica a continuación.
 
-1. Vaya al vínculo de soporte técnico [https://developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support)
-2. En la sección **Ponte en contacto con nosotros**, haga clic en el botón **Enviar un incidente** (tal y como se muestra en la siguiente captura de pantalla).
+1. Vínculo de soporte técnico de vaya toohello [https://developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support)
+2. En **póngase en contacto con nosotros** sección, haga clic en el botón de hello **enviar una incidencia** (como se muestra en la siguiente captura de pantalla de hello)
 
     ![dibujo](media/marketplace-publishing-accounts-creation-registration/imgAddTax_02.png)
-3. Elija Help with Dev Center (Ayuda con el Centro de desarrollo) como **tipo de problema**, y Publish and manage apps (Publicar y administrar aplicaciones) como **categoría**. Después, haga clic en el botón Start email (Iniciar correo electrónico).
+3. Elija Help with Dev Center (Ayuda con el Centro de desarrollo) como **tipo de problema**, y Publish and manage apps (Publicar y administrar aplicaciones) como **categoría**. Después de haga clic en botón Hola "Correo electrónico de inicio".
 
     ![dibujo](media/marketplace-publishing-accounts-creation-registration/imgAddTax_03.png)
 4. Se le redireccionará a una página de inicio de sesión. Utilice cualquier cuenta Microsoft para iniciar sesión. Si no tiene una, puede crearla si hace clic en este [vínculo](https://signup.live.com/signup?uaid=0089f09ccae94043a0f07c2aaf928831&lic=1).
-5. Complete los detalles del problema y envíe la incidencia haciendo clic en el **Enviar** botón.
+5. Rellenar los detalles de Hola de vale de Hola de problema y subit Hola haciendo clic en hello **enviar** botón.
 
     ![dibujo](media/marketplace-publishing-accounts-creation-registration/imgAddTax_05.png)
 
-## <a name="3-register-your-account-in-the-publishing-portal"></a>3. Registro de su cuenta en el portal de publicación
-El [Portal de publicación](http://publish.windowsazure.com) se usa para publicar y administrar ofertas.
+## <a name="3-register-your-account-in-hello-publishing-portal"></a>3. Registrar la cuenta en el portal de publicación de Hola
+Hola [portal de publicación](http://publish.windowsazure.com) es toopublish usado y administrar sus ofertas.
 
-1. Abra una nueva sesión de exploración de incógnito en Chrome o de InPrivate en Internet Explorer para asegurarse de que no tiene una sesión iniciada en una cuenta personal.
-2. Vaya a [http://publish.windowsazure.com](http://publish.windowsazure.com).
-3. Si es un nuevo usuario y va a iniciar sesión por primera vez en el Portal de publicación, tendrá que hacerlo con el mismo identificador de correo electrónico con el que registró la cuenta del Centro de desarrollo. De esta manera, se vincularán entre sí la cuenta del Centro de desarrollo y la del Portal de publicación. Más adelante, podrá agregar como coadministradores en el Portal de publicación al resto de los miembros de la compañía que estén utilizando la aplicación siguiendo estos pasos.
+1. Abra una nueva Chrome incógnito o Internet Explorer InPrivate exploración tooensure de sesión que no están firmado en tooa de cuenta personal.
+2. Vaya demasiado[http://publish.windowsazure.com](http://publish.windowsazure.com).
+3. Si es un usuario nuevo y firma en toohello publicar portal para hello primera vez, a continuación, debe iniciar sesión con hello mismo correo electrónico identificador con el que se registra su cuenta del centro de desarrollo. De esta manera, se vincularán entre sí la cuenta del Centro de desarrollo y la del Portal de publicación. Posteriormente, puede agregar Hola otros miembros de la compañía de hello, que trabajan en la aplicación hello, como Coadministrador en hello portal de publicación sigue Hola pasos aparecen a continuación.
 
-Si a usted se le agregó como coadministrador en el Portal de publicación, podrá iniciar sesión con su cuenta de coadministrador.
+Si se agregan como Coadministrador en hello publicación portal, a continuación, puede iniciar sesión con su cuenta de coadministrador.
 
 > [!TIP]
-> Las directivas de participación se describen en el [sitio web de Azure](https://azure.microsoft.com/support/legal/marketplace/participation-policies/).
+> se describen las directivas de participación de Hello en hello [sitio Web de Azure](https://azure.microsoft.com/support/legal/marketplace/participation-policies/).
 >
 >
 
-## <a name="4-steps-to-add-a-co-admin-in-the-publishing-portal"></a>4. Pasos para agregar coadministradores en el Portal de publicación
-**Si damos por hecho que usted es el administrador** , siga estos pasos para agregar un coadministrador.
+## <a name="4-steps-tooadd-a-co-admin-in-hello-publishing-portal"></a>4. Pasos tooadd Coadministrador Hola portal de publicación
+**Suponiendo que estén Hola, administrador,** indica a continuación es Hola pasos tooadd un administrador co-.
 
 > [!NOTE]
-> **Para los nuevos usuarios,** antes de agregar un coadministrador en el Portal de publicación, asegúrese de que ha creado, al menos, una aplicación en el Portal de publicación. Esto es necesario porque la pestaña **PUBLICADORES** solo se muestra después de crear, como mínimo, una aplicación en el Portal de publicación.
+> **Para los usuarios nuevos de hello,** antes de agregar un Coadministrador en hello publicación portal, asegúrese de que ha creado al menos una aplicación Hola portal de publicación. Esto es necesario como hello **PUBLICADORES** ficha aparece sólo después de crear al menos una aplicación Hola portal de publicación.
 >
 >
 
-1. Asegúrese de que el identificador de correo electrónico de coadministrador sea una cuenta Microsoft (MSA). Si no es así, regístrela como MSA haciendo clic en este [vínculo](https://signup.live.com/signup?uaid=0089f09ccae94043a0f07c2aaf928831&lic=1).
-2. Asegúrese de que hay, al menos, una aplicación en la cuenta de administrador antes de intentar agregar un coadministrador.
-3. Cuando realice los pasos anteriores, inicie sesión en el Portal de publicación con el identificador de correo electrónico de coadministrador y, luego, cierre de sesión.
-4. Ahora, inicie sesión en el Portal de publicación con el identificador de correo electrónico de administrador.
-5. Vaya a Publicadores -> seleccione la cuenta -> Administradores -> Agregar nuevo coadministrador (consulte la captura de pantalla siguiente).
+1. Asegúrese de que el identificador hello Coadministrador correo electrónico no es un account(MSA) de Microsoft. Si no es así, regístrela como MSA haciendo clic en este [vínculo](https://signup.live.com/signup?uaid=0089f09ccae94043a0f07c2aaf928831&lic=1).
+2. Asegúrese de que hay al menos una aplicación bajo la cuenta de administrador de hello antes de intentar tooadd un administrador co-.
+3. Después de hello por encima de los pasos se realizan, toohello de inicio de sesión publicación portal con el Id. de correo electrónico de Coadministrador de hello y, a continuación, cerrar la sesión.
+4. Ahora el inicio de sesión toohello portal con el Id. de correo electrónico de admin Hola de publicación.
+5. Navegue tooPublishers -> Seleccionar -> su cuenta de administradores -> Agregar Hola Coadministrador (captura de pantalla indicado a continuación)
 
    ![dibujo](media/marketplace-publishing-accounts-creation-registration/imgAddAdmin_05.png)
 
-## <a name="5-steps-to-delete-a-co-admin-in-the-publishing-portal"></a>5. Pasos para eliminar a un coadministrador en el portal de publicación
-**Dando por hecho que usted es el administrador** , siga estos pasos para eliminar a un coadministrador.
+## <a name="5-steps-toodelete-a-co-admin-in-hello-publishing-portal"></a>5. Pasos toodelete Coadministrador Hola portal de publicación
+**Suponiendo que estén Hola, administrador,** indica a continuación es Hola pasos toodelete un administrador co-.
 
-1. Inicie sesión en el portal de publicación con el identificador de correo electrónico de administrador.
-2. Vaya a **Publicadores** -> seleccione su cuenta -> **Administradores** -> **Co-Admins** (Coadministradores).
-3. Haga clic en el botón **X** situado junto al coadministrador que desee eliminar (consulte la captura de pantalla siguiente).
+1. Inicio de sesión toohello portal con el Id. de correo electrónico de admin Hola de publicación.
+2. Navegue demasiado**publicadores** -> seleccionar su cuenta -> **administradores** -> **coadministradores**.
+3. Haga clic en hello **X** botón siguiente toohello Coadministrador que desee eliminar tot (captura de pantalla indica a continuación).
 
     ![dibujo](media/marketplace-publishing-accounts-creation-registration/imgDeleteAdmin_03.png)
 
 ## <a name="next-steps"></a>Pasos siguientes
-Ahora que ya se creó y se registró la cuenta, consulte los [requisitos previos no técnicos](marketplace-publishing-pre-requisites.md)para asegurarse de cumplir o satisfacer todos los requisitos previos no técnicos para publicar su oferta.
+Ahora que se crea y registra su cuenta, asegúrese de cumplir o cumplir todos Hola requisitos previos no técnico toopublish su oferta revisando [requisitos previos no técnicos](marketplace-publishing-pre-requisites.md).
 
-## <a name="see-also"></a>Consulte también
-* [Introducción: Publicación de una oferta en Azure Marketplace](marketplace-publishing-getting-started.md)
+## <a name="see-also"></a>Otras referencias
+* [Introducción: cómo toopublish una toohello de oferta de Azure Marketplace](marketplace-publishing-getting-started.md)
 
 [img-msalive]:media/marketplace-publishing-accounts-creation-registration/creating-msa-account-msa-live.jpg
 [img-email]:media/marketplace-publishing-accounts-creation-registration/creating-msa-account-msa-verifyemail.jpg

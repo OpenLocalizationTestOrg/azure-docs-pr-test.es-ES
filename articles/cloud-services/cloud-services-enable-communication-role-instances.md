@@ -1,6 +1,6 @@
 ---
-title: "Comunicación para roles en Cloud Services | Microsoft Docs"
-description: "Las instancias de rol de los servicios en la nube pueden tener definidos puntos de conexión (http, https, tcp y udp) que se comunican con el exterior o entre otras instancias de rol."
+title: aaaCommunication para los Roles de servicios en la nube | Documentos de Microsoft
+description: "Instancias de rol de servicios en la nube pueden tener puntos de conexión (http, https, tcp y udp) definidas para ellos que se comunican con hello fuera o entre otras instancias de rol."
 services: cloud-services
 documentationcenter: 
 author: Thraka
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/14/2016
 ms.author: adegeo
-ms.openlocfilehash: 8e171d56bb67c971337fa383014988074ec828b1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1fb39215ceb8a3f0381ef5e108c1149de115ff8e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="enable-communication-for-role-instances-in-azure"></a>Habilitar la comunicación para instancias de rol en Azure
-Los roles de servicio en la nube se comunican a través de conexiones internas y externas. Las conexiones externas se denominan **puntos de conexión de entrada** mientras que conexiones internas se denominan **puntos de conexión internos**. En este tema se describe cómo modificar la [definición de servicio](cloud-services-model-and-package.md#csdef) para crear puntos de conexión.
+Los roles de servicio en la nube se comunican a través de conexiones internas y externas. Las conexiones externas se denominan **puntos de conexión de entrada** mientras que conexiones internas se denominan **puntos de conexión internos**. Este tema se describe cómo hello toomodify [definición del servicio](cloud-services-model-and-package.md#csdef) toocreate extremos.
 
 ## <a name="input-endpoint"></a>Extremo de entrada
-Los extremos de entrada se usan para exponer un puerto al exterior. Tiene que especificar el tipo de protocolo y el puerto del extremo que se aplicará a los puertos internos y externos del extremo. Si lo desea, puede especificar un puerto interno diferente para el extremo mediante el atributo [localPort](https://msdn.microsoft.com/library/azure/gg557552.aspx#InputEndpoint) .
+extremo de entrada de Hola se utiliza cuando se desea tooexpose un toohello puerto fuera. Especifique el tipo de protocolo de Hola y el puerto de hello del extremo de Hola que, a continuación, se aplica a ambos puertos externos e internos de hello para el punto de conexión de Hola. Si lo desea, puede especificar un puerto interno diferente para el punto de conexión de hello con hello [localPort](https://msdn.microsoft.com/library/azure/gg557552.aspx#InputEndpoint) atributo.
 
-El extremo de entrada puede usar los siguientes protocolos: **http, https, tcp y udp**.
+extremo de entrada de Hello sirve Hola siguientes protocolos: **http, https, tcp y udp**.
 
-Para crear un punto de conexión de entrada, agregue el elemento secundario **InputEndpoint** al elemento **Endpoints** de un rol web o de trabajo.
+toocreate un extremo de entrada, agregar hello **InputEndpoint** toohello de elemento secundarios **extremos** elemento de rol web o de trabajo.
 
 ```xml
 <Endpoints>
@@ -37,11 +37,11 @@ Para crear un punto de conexión de entrada, agregue el elemento secundario **In
 ```
 
 ## <a name="instance-input-endpoint"></a>Extremo de entrada de instancia
-Los extremos de entrada de instancia son similares a los extremos de entrada, pero los primeros permiten asignar puertos específicos de acceso público a cada instancia de rol individual mediante el enrutamiento de puertos en el equilibrador de carga. Puede especificar un único puerto público o un intervalo de puertos.
+Los extremos de entrada de instancia son los puntos de conexión de tooinput similar pero permite asignar puertos orientados al público específicos para cada instancia de rol individuales mediante el reenvío de puerto de equilibrador de carga de Hola. Puede especificar un único puerto público o un intervalo de puertos.
 
-Solo puede utilizar el punto de conexión de entrada de instancia como protocolo **tcp** o **udp**.
+solo puede usar el extremo de entrada de instancia de Hello **tcp** o **udp** como protocolo de Hola.
 
-Para crear un punto de conexión de entrada de instancia, agregue el elemento secundario **InstanceInputEndpoint** al elemento **Endpoints** del rol web o de trabajo.
+toocreate un extremo de entrada de instancia, agregue hello **InstanceInputEndpoint** toohello de elemento secundarios **extremos** elemento de rol web o de trabajo.
 
 ```xml
 <Endpoints>
@@ -54,11 +54,11 @@ Para crear un punto de conexión de entrada de instancia, agregue el elemento se
 ```
 
 ## <a name="internal-endpoint"></a>Extremo interno
-Los extremos internos están disponibles para la comunicación entre instancias. El puerto es opcional y si se omite, se asigna un puerto dinámico al extremo. Además, puede usar un intervalo de puertos. Recuerde que hay un límite de cinco extremos internos por rol.
+Los extremos internos están disponibles para la comunicación entre instancias. puerto de Hello es opcional y si se omite, un puerto dinámico se asigna el punto de conexión de toohello. Además, puede usar un intervalo de puertos. Recuerde que hay un límite de cinco extremos internos por rol.
 
-El extremo interno puede usar los siguientes protocolos: **http, tcp, udp y any**.
+extremo interno de Hello sirve Hola siguientes protocolos: **http, tcp, udp, cualquier**.
 
-Para crear un punto de conexión de entrada interno, agregue el elemento secundario **InternalEndpoint** al elemento **Endpoints** de un rol web o de trabajo.
+toocreate un extremo de entrada interno, agregue hello **InternalEndpoint** toohello de elemento secundarios **extremos** elemento de rol web o de trabajo.
 
 ```xml
 <Endpoints>
@@ -78,39 +78,39 @@ También puede usar un intervalo de puertos.
 
 
 ## <a name="worker-roles-vs-web-roles"></a>Roles de trabajo en comparación con los Roles web
-Hay una pequeña diferencia entre los extremos cuando se trabaja con roles web y de trabajo. El rol web debe tener como mínimo un extremo de entrada que use el protocolo **HTTP** .
+Hay una pequeña diferencia entre los extremos cuando se trabaja con roles web y de trabajo. Hello rol web debe tener como mínimo un solo extremo de entrada con hello **HTTP** protocolo.
 
 ```xml
 <Endpoints>
   <InputEndpoint name="StandardWeb" protocol="http" port="80" localPort="80" />
-  <!-- more endpoints may be declared after the first InputEndPoint -->
+  <!-- more endpoints may be declared after hello first InputEndPoint -->
 </Endpoints>
 ```
 
-## <a name="using-the-net-sdk-to-access-an-endpoint"></a>Uso del SDK de .NET para tener acceso a un extremo
-La Biblioteca administrada de Azure proporciona métodos a las instancias de rol para que puedan comunicarse en tiempo de ejecución. Mediante el código que se ejecuta en una instancia de rol, puede recuperar información sobre la existencia de otras instancias de rol y sus extremos, así como información sobre la instancia de rol actual.
+## <a name="using-hello-net-sdk-tooaccess-an-endpoint"></a>Uso de hello .NET SDK tooaccess un punto de conexión
+Hola biblioteca administrada de Azure proporciona métodos para toocommunicate de instancias de rol en tiempo de ejecución. Desde código que se ejecuta dentro de una instancia de rol, puede recuperar información acerca de la existencia de Hola de otras instancias de rol y sus puntos de conexión, así como información acerca de la instancia de rol actual de Hola.
 
 > [!NOTE]
 > Solo puede recuperar información sobre las instancias de rol que se ejecuten en el servicio en la nube y que definan, al menos, un extremo interno. Asimismo, no puede obtener datos sobre instancias de rol que se ejecuten en un servicio diferente.
 > 
 > 
 
-Puede usar la propiedad [Instances](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.role.instances.aspx) para recuperar las instancias de rol. Primero, use el elemento [CurrentRoleInstance](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.currentroleinstance.aspx) para devolver una referencia a la instancia de rol actual y, a continuación, use la propiedad [Role](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.role.aspx) para devolver una referencia al propio rol.
+Puede usar hello [instancias](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.role.instances.aspx) instancias de tooretrieve las propiedades de un rol. En primer lugar utilice hello [CurrentRoleInstance](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.currentroleinstance.aspx) tooreturn un rol actual de toohello de referencia de instancia y, a continuación, usar hello [rol](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.role.aspx) tooreturn un rol de toohello de referencia de propiedad.
 
-Si se conecta a una instancia de rol mediante programación a través del SDK de .NET, le será relativamente fácil obtener acceso a la información del extremo. Por ejemplo, una vez se haya conectado a un entorno de rol específico, puede obtener el puerto de un extremo en concreto con este código:
+Cuando se conecta tooa instancia de rol mediante programación a través de hello .NET SDK, es información de punto de conexión de hello tooaccess es relativamente fácil. Por ejemplo, después de que ya se ha conectado tooa entorno de rol específico, puede obtener el puerto Hola de un extremo concreto con este código:
 
 ```csharp
 int port = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["StandardWeb"].IPEndpoint.Port;
 ```
 
-La propiedad **Instances** devuelve una colección de objetos **RoleInstance**. Tenga en cuenta que esta colección siempre contiene la instancia actual. Si el rol no define un extremo interno, la colección incluirá la instancia actual, pero no otras instancias. El número de instancias de rol presentes en la colección siempre será 1, si resulta que no se ha definido ningún extremo interno para el rol. Si el rol define un extremo interno, sus instancias serán reconocibles en tiempo de ejecución y el número de instancias de la colección se corresponderá con el número de instancias especificadas para el rol en el archivo de configuración de servicio.
+Hola **instancias** propiedad devuelve una colección de **RoleInstance** objetos. Esta colección siempre contiene la instancia actual de Hola. Si el rol de hello no define un extremo interno, colección de hello incluye instancia actual de hello, pero no otras instancias. número de Hola de instancias de rol de la colección de hello siempre será 1 en caso de hello donde no se define ningún extremo interno para el rol de Hola. Si el rol de hello define un extremo interno, sus instancias son reconocibles en tiempo de ejecución y número de Hola de instancias en la colección de hello corresponderá toohello número de instancias especificadas para el rol de hello en el archivo de configuración de servicio de Hola.
 
 > [!NOTE]
-> La Biblioteca administrada de Azure no le proporciona una manera de determinar el estado de otras instancias de rol, pero siempre puede implementar estas evaluaciones de estado si el servicio necesita esta funcionalidad. Puede usar [Diagnósticos de Azure](cloud-services-dotnet-diagnostics.md) para obtener información acerca de las instancias de rol que se estén ejecutando.
+> Hola biblioteca administrada de Azure no proporciona una manera de determinar el estado de Hola de otras instancias de rol, pero se pueden implementar estas evaluaciones de estado si el servicio necesita esta funcionalidad. Puede usar [diagnósticos de Azure](cloud-services-dotnet-diagnostics.md) tooobtain información sobre la ejecución de instancias de rol.
 > 
 > 
 
-Para determinar el número de puerto de un extremo interno en una instancia de rol, puede usar la propiedad [InstanceEndpoints](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.instanceendpoints.aspx) para devolver un objeto Dictionary que contenga los nombres de extremo y sus direcciones IP y puertos correspondientes. La propiedad [IPEndpoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstanceendpoint.ipendpoint.aspx) devuelve la dirección IP y el puerto de un extremo específico. La propiedad **PublicIPEndpoint** devuelve el puerto de un extremo con equilibrio de carga. La parte de la dirección IP de la propiedad **PublicIPEndpoint** no se usa.
+número de puerto de hello toodetermine para un extremo interno en una instancia de rol, puede usar hello [InstanceEndpoints](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.instanceendpoints.aspx) tooreturn propiedad direcciones de un objeto de diccionario que contiene los nombres de extremo y su correspondiente IP y puertos. Hola [IPEndpoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstanceendpoint.ipendpoint.aspx) propiedad devuelve la dirección IP de Hola y el puerto para un extremo especificado. Hola **PublicIPEndpoint** propiedad devuelve el puerto de Hola para un extremo con equilibrio de carga. parte de la dirección IP Hola de hello **PublicIPEndpoint** no se utiliza la propiedad.
 
 Aquí tiene un ejemplo que itera las instancias de rol.
 
@@ -125,10 +125,10 @@ foreach (RoleInstance roleInst in RoleEnvironment.CurrentRoleInstance.Role.Insta
 }
 ```
 
-Aquí tiene el ejemplo de un rol de trabajo que obtiene el extremo expuesto a través de la definición de servicio, y que inicia la escucha de conexiones.
+Este es un ejemplo de un rol de trabajo que obtiene el punto de conexión de hello expuesto a través de la definición de servicio de Hola y comienza a escuchar las conexiones.
 
 > [!WARNING]
-> Este código solo funcionará en un servicio implementado. Cuando se ejecutan en el Emulador de procesos de Azure, los elementos de configuración de servicio que crean extremos de puerto directo (elementos**InstanceInputEndpoint** ) se ignoran.
+> Este código solo funcionará en un servicio implementado. Cuando se ejecuta en hello emulador de proceso de Azure, los elementos de configuración que crean los puntos de conexión directa de puerto de servicio (**InstanceInputEndpoint** elementos) se omiten.
 > 
 > 
 
@@ -167,7 +167,7 @@ namespace WorkerRole1
         var listener = new Socket(
           myInternalEp.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
 
-        // Bind socket listener to internal endpoint and listen
+        // Bind socket listener toointernal endpoint and listen
         listener.Bind(myInternalEp);
         listener.Listen(10);
         Trace.TraceInformation("Listening on IP:{0},Port: {1}",
@@ -175,7 +175,7 @@ namespace WorkerRole1
 
         while (true)
         {
-          // Block the thread and wait for a client request
+          // Block hello thread and wait for a client request
           Socket handler = listener.Accept();
           Trace.TraceInformation("Client request received.");
 
@@ -205,23 +205,23 @@ namespace WorkerRole1
 
     public override bool OnStart()
     {
-      // Set the maximum number of concurrent connections 
+      // Set hello maximum number of concurrent connections 
       ServicePointManager.DefaultConnectionLimit = 12;
 
       // For information on handling configuration changes
-      // see the MSDN topic at http://go.microsoft.com/fwlink/?LinkId=166357.
+      // see hello MSDN topic at http://go.microsoft.com/fwlink/?LinkId=166357.
       return base.OnStart();
     }
   }
 }
 ```
 
-## <a name="network-traffic-rules-to-control-role-communication"></a>Reglas de tráfico de red para controlar la comunicación entre roles
-Una vez definidos los extremos internos, puede agregar reglas de tráfico de red (basadas en los extremos que haya creado) para controlar el modo en que se comunican las instancias de rol. En el siguiente diagrama verá algunos escenarios comunes para controlar la comunicación entre roles:
+## <a name="network-traffic-rules-toocontrol-role-communication"></a>Comunicación entre roles de toocontrol de reglas de tráfico de red
+Después de definir extremos internos, puede agregar toocontrol de reglas (basadas en los extremos de Hola que ha creado) de tráfico de red cómo instancias de rol pueden comunicarse entre sí. Hello diagrama siguiente muestra algunos escenarios comunes para controlar la comunicación entre roles:
 
 ![Escenarios de reglas de tráfico de red](./media/cloud-services-enable-communication-role-instances/scenarios.png "Escenarios de reglas de tráfico de red")
 
-En el siguiente ejemplo de código verá las definiciones de rol de los roles que se mostraban en el diagrama anterior. Cada definición de rol incluye, al menos, un extremo interno definido:
+Hello ejemplo de código siguiente muestra las definiciones de roles para los roles de Hola que se muestra en el diagrama anterior Hola. Cada definición de rol incluye, al menos, un extremo interno definido:
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -257,10 +257,10 @@ En el siguiente ejemplo de código verá las definiciones de rol de los roles qu
 > 
 > 
 
-De forma predeterminada, una vez definido el extremo interno, la comunicación puede fluir sin restricciones desde cualquier rol hasta el extremo interno de otro rol. Para restringir la comunicación, debe agregar un elemento **NetworkTrafficRules** al elemento **ServiceDefinition** que se encuentra en el archivo de definición de servicio.
+De forma predeterminada, después de define un extremo interno, la comunicación puede iniciarse desde cualquier extremo interno de toohello de rol de un rol sin restricciones. comunicación de toorestrict, debe agregar una **NetworkTrafficRules** elemento toohello **ServiceDefinition** elemento en el archivo de definición de servicio de Hola.
 
 ### <a name="scenario-1"></a>Escenario 1.
-Permitir solo el tráfico de red de **WebRole1** a **WorkerRole1**.
+Sólo permitir el tráfico de red desde **WebRole1** demasiado**WorkerRole1**.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -279,7 +279,7 @@ Permitir solo el tráfico de red de **WebRole1** a **WorkerRole1**.
 ```
 
 ### <a name="scenario-2"></a>Escenario 2.
-Permitir solo el tráfico de red de **WebRole1** a **WorkerRole1** y **WorkerRole2**.
+Solo permite el tráfico de red de **WebRole1** demasiado**WorkerRole1** y **WorkerRole2**.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -298,7 +298,7 @@ Permitir solo el tráfico de red de **WebRole1** a **WorkerRole1** y **WorkerRol
 ```
 
 ### <a name="scenario-3"></a>Escenario 3.
-Permitir solo el tráfico de red de **WebRole1** a **WorkerRole1** y **WorkerRole1** a **WorkerRole2**.
+Solo permite el tráfico de red de **WebRole1** demasiado**WorkerRole1**, y **WorkerRole1** demasiado**WorkerRole2**.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -327,7 +327,7 @@ Permitir solo el tráfico de red de **WebRole1** a **WorkerRole1** y **WorkerRol
 ```
 
 ### <a name="scenario-4"></a>Escenario 4.
-Permitir solo el tráfico de red de **WebRole1** a **WorkerRole1**, **WebRole1** a **WorkerRole2** y **WorkerRole1** a **WorkerRole2**.
+Solo permite el tráfico de red de **WebRole1** demasiado**WorkerRole1**, **WebRole1** demasiado**WorkerRole2**, y  **WorkerRole1** demasiado**WorkerRole2**.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -367,8 +367,8 @@ Permitir solo el tráfico de red de **WebRole1** a **WorkerRole1**, **WebRole1**
 </ServiceDefinition>
 ```
 
-Puede encontrar una referencia del esquema XML de los elementos usados anteriormente [aquí](https://msdn.microsoft.com/library/azure/gg557551.aspx).
+Puede encontrar una referencia de esquema XML para los elementos de hello usado anteriormente [aquí](https://msdn.microsoft.com/library/azure/gg557551.aspx).
 
 ## <a name="next-steps"></a>Pasos siguientes
-Obtenga más información sobre el [modelo](cloud-services-model-and-package.md)del servicio en la nube.
+Más información sobre Hola servicio en la nube [modelo](cloud-services-model-and-package.md).
 

@@ -1,6 +1,6 @@
 ---
-title: "Documentación sobre Azure Data Lake Store: tutoriales y referencia de API | Microsoft Docs"
-description: "Aprenda cómo configurar, administrar y acceder a un repositorio de Data Lake de gran escala, compatible con Hadoop, para analizar datos de cualquier tamaño, tipo y velocidad de ingesta."
+title: "aaaAzure documentación del almacén de datos Lake - tutoriales, referencia de API | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo tooset, administrar y acceder a un repositorio de datos de gran escala, compatible con Hadoop lake para analizar los datos de cualquier velocidad de ingesta, tamaño y tipo."
 services: data-lake-store
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 473cb9709421f853cb78853b54682adb3e48d372
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 8a4730472b7811f022991bffc6dde7bb1be6458e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="data-lake-store-documentation"></a>Documentación de Data Lake Store
 
-Aprenda cómo usar Data Lake Store para crear un repositorio de gran escala compatible con Hadoop para analizar datos de cualquier tamaño, tipo y velocidad de ingesta. Los tutoriales, referencias de API y otra documentación muestran cómo configurar, administrar y acceder a un repositorio de Data Lake para realizar análisis operativos y exploratorios.
+Obtenga información acerca de cómo toocreate de almacén de Data Lake toouse un hiperescala, repositorio de Hadoop compatibles para analizar los datos de cualquier tamaño, el tipo y la ingesta de velocidad. Tutoriales, referencias de API y otra documentación mostrarle cómo tooset, administrar y acceder a un repositorio de lake datos para análisis operativos y exploratorios.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -70,7 +70,7 @@ Aprenda cómo usar Data Lake Store para crear un repositorio de gran escala comp
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Introducción al uso de Azure Portal por parte de Azure Data Lake Store</h3>
+                        <h3>Empezar a trabajar con el almacén de Azure Data Lake con hello portal de Azure</h3>
                     </div>
                 </div>
             </div>
@@ -106,7 +106,7 @@ Aprenda cómo usar Data Lake Store para crear un repositorio de gran escala comp
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Introducción al uso de la CLI de Azure por parte de Azure Data Lake Store</h3>
+                        <h3>Empezar a trabajar con el almacén de Azure Data Lake con hello CLI de Azure</h3>
                     </div>
                 </div>
             </div>

@@ -1,35 +1,35 @@
-## <a name="view-device-telemetry-in-the-dashboard"></a>Ver la telemetría de dispositivo en el panel
-El panel de la solución de supervisión remota permite ver la telemetría que los dispositivos envían a IoT Hub.
+## <a name="view-device-telemetry-in-hello-dashboard"></a>Vista de telemetría de dispositivo en el panel de Hola
+panel de Hola Hola habilita solución telemetría hello tooview tooIoT concentrador de envío de los dispositivos de supervisión remota.
 
-1. En el explorador, vuelva al panel de la solución de supervisión remota, haga clic en **Dispositivos** en el panel izquierdo para navegar hasta la **lista de dispositivos**.
-2. En la **lista de dispositivos**, debería ver que el estado del dispositivo es **En ejecución**. Si no es así, haga clic en **Habilitar dispositivo** en el panel **Detalles del dispositivo**.
+1. En el explorador, el valor devuelto toohello panel de solución supervisión remoto, haga clic en **dispositivos** en hello panel izquierdo toonavigate toohello **lista de dispositivos**.
+2. Hola **lista de dispositivos**, debería ver que Hola estado del dispositivo es **ejecutando**. Si no es así, haga clic en **Habilitar dispositivo** en hello **detalles del dispositivo** panel.
    
     ![Ver el estado del dispositivo][18]
-3. Haga clic en el **Panel** para volver a él, seleccione el dispositivo en la lista desplegable **Device to View** (Dispositivo para ver) para ver su telemetría. La telemetría de la aplicación de ejemplo es 50 unidades para la temperatura interior, 55 unidades para la temperatura exterior y 50 unidades para la humedad.
+3. Haga clic en **panel** tooreturn toohello panel, seleccione el dispositivo en hello **tooView dispositivo** tooview de la lista desplegable la telemetría. Hola la telemetría de aplicación de ejemplo de Hola es 50 unidades de temperatura interna, 55 unidades de temperatura externo y las 50 unidades de humedad.
    
     ![Ver la telemetría de dispositivo][img-telemetry]
 
 ## <a name="invoke-a-method-on-your-device"></a>Invocar un método en el dispositivo
-El panel de la solución de supervisión remota le permite invocar métodos en los dispositivos a través de IoT Hub. Por ejemplo, en la solución de supervisión remota, puede invocar un método para simular que se reinicia un dispositivo.
+panel de Hello en la solución de supervisión remoto hello permite tooinvoke métodos en los dispositivos a través del centro de IoT. Por ejemplo, en hello remoto de solución de supervisión puede invocar un toosimulate método reiniciar un dispositivo.
 
-1. En el panel de la solución de supervisión remota, haga clic en **Devices** (Dispositivos) en el panel izquierdo para navegar a la **lista de dispositivos**.
-2. Haga clic en **Device ID** (Id. de dispositivo) en el dispositivo de la **lista de dispositivos**.
-3. En el panel **Detalles del dispositivo**, haga clic en **Métodos**.
+1. En hello remoto solución panel de supervisión, haga clic en **dispositivos** en hello panel izquierdo toonavigate toohello **lista de dispositivos**.
+2. Haga clic en **Id. de dispositivo** para el dispositivo en hello **lista de dispositivos**.
+3. Hola **detalles del dispositivo** del panel, haga clic en **métodos**.
    
     ![Métodos de dispositivo][13]
-4. En el menú desplegable **Método**, seleccione **InitiateFirmwareUpdate** y, luego, en **FWPACKAGEURI**, escriba una dirección URL ficticia. Haga clic en **Invocar método** para llamar al método en el dispositivo.
+4. Hola **método** lista desplegable, seleccione **InitiateFirmwareUpdate**y, a continuación, en **FWPACKAGEURI** escriba una dirección URL ficticia. Haga clic en **invocar método** toocall método de hello en dispositivo Hola.
    
     ![Invocar un método de dispositivo][14]
    
 
-5. Puede ver un mensaje en la consola donde se ejecuta el código del dispositivo cuando el dispositivo controla el método. Los resultados del método se agregan al historial en el portal de la solución:
+5. Verá un mensaje en la consola de Hola que se ejecute el código de dispositivo cuando el dispositivo de hello controla método hello. resultados de Hello del método hello se agregan toohello historial en el portal de solución de hello:
 
     ![Ver el historial de métodos][img-method-history]
 
 ## <a name="next-steps"></a>Pasos siguientes
-En el artículo [Personalización de soluciones preconfiguradas][lnk-customize] se describen algunas formas de ampliar este ejemplo. Entre las posibles extensiones se incluyen el uso de sensores reales y la implementación de comandos adicionales.
+artículo de Hello [personalizar soluciones preconfiguradas] [ lnk-customize] describe algunas maneras puede extender este ejemplo. Entre las posibles extensiones se incluyen el uso de sensores reales y la implementación de comandos adicionales.
 
-Puede obtener más información sobre los [permisos en el sitio azureiotsuite.com][lnk-permissions].
+Puede aprender más acerca de hello [permisos en el sitio de hello azureiotsuite.com][lnk-permissions].
 
 [13]: ./media/iot-suite-visualize-connecting/suite4.png
 [14]: ./media/iot-suite-visualize-connecting/suite7-1.png

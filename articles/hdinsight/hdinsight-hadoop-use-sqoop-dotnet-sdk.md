@@ -1,6 +1,6 @@
 ---
-title: "Ejecución de trabajos de Sqoop con .NET y HDInsight - Azure | Microsoft Docs"
-description: "Obtenga información sobre cómo utilizar el SDK de .NET de HDInsight para ejecutar trabajos de Sqoop con el fin de llevar a cabo tareas de importación y exportación entre un clúster de Hadoop y una base de datos SQL de Azure."
+title: trabajos de Sqoop aaaRun utiliza .NET y HDInsight - Azure | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toouse HDInsight .NET SDK toorun Sqoop importar y exportar entre un clúster de Hadoop y una base de datos de SQL Azure."
 keywords: trabajo de Sqoop
 editor: cgronlun
 manager: jhubbard
@@ -17,37 +17,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
-ms.openlocfilehash: c95641fc6d20e2911e007d1974b9e2c2398b3133
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: afa0a78ba5e5d89c04ba7be4b58dd24aea4f39ec
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="run-sqoop-jobs-using-net-sdk-for-hadoop-in-hdinsight"></a>Ejecución de trabajos de Sqoop con el SDK de .NET para Hadoop en HDInsight
 [!INCLUDE [sqoop-selector](../../includes/hdinsight-selector-use-sqoop.md)]
 
-Obtenga información sobre cómo utilizar el SDK de .NET de HDInsight en HDInsight para ejecutar trabajos de Sqoop con el fin de llevar a cabo tareas de importación y exportación entre un clúster de HDInsight y una base de datos SQL de Azure o una de SQL Server.
+Obtenga información acerca de cómo trabajos toouse HDInsight .NET SDK toorun Sqoop en HDInsight tooimport y exportar entre el clúster de HDInsight y la base de datos SQL de Azure o la base de datos de SQL Server.
 
 > [!NOTE]
-> Los pasos de este artículo pueden usarse con un clúster de HDInsight basado en Windows o en Linux, aunque solo funcionan desde un cliente Windows. Utilice el selector de pestañas de la parte superior de este artículo para elegir otros métodos.
+> pasos de Hello en este artículo se pueden utilizar con cualquier un clúster basado en Windows o Linux de HDInsight; Sin embargo, estos pasos sólo funcionan desde un cliente de Windows. Utilizar tabulador hello en la parte superior de Hola de este artículo toochoose otros métodos.
 > 
 > 
 
 ### <a name="prerequisites"></a>Requisitos previos
-Antes de empezar este tutorial, debe contar con lo siguiente:
+Antes de comenzar este tutorial, debe tener Hola siguientes elementos:
 
 * **Un clúster de Hadoop en HDInsight**. Consulte el artículo [Creación del clúster y la base de datos SQL](hdinsight-use-sqoop.md#create-cluster-and-sql-database).
 
 ## <a name="use-sqoop-on-hdinsight-clusters-using-net-sdk"></a>Usar Sqoop en clústeres de HDInsight con el SDK. de .NET
-El SDK .NET de HDInsight ofrece bibliotecas de cliente .NET que facilitan el trabajo con los clústeres de HDInsight de .NET. En esta sección se crea una aplicación de consola de C# para exportar hivesampletable a la tabla de base de datos SQL creada anteriormente en este tutorial.
+Hola HDInsight .NET SDK proporciona bibliotecas de cliente. NET, lo que hace más fácil toowork con clústeres de HDInsight desde. NET. En esta sección, creará una tabla C# consola aplicación tooexport hello hivesampletable toohello base de datos SQL que creó anteriormente en este tutorial.
 
 ## <a name="submit-a-sqoop-job"></a>Enviar un trabajo de Sqoop
 
 1. Cree una aplicación de consola en C# mediante Visual Studio.
-2. En la Consola del administrador de paquetes de Visual Studio, ejecute el siguiente comando de Nuget para importar el paquete.
+2. Desde Hola consola de administrador de paquetes de Visual Studio, ejecute hello después el paquete de Nuget command tooimport Hola.
    
         Install-Package Microsoft.Azure.Management.HDInsight.Job
-3. Use el siguiente código en el archivo Program.cs:
+3. Usar hello siguiente código en el archivo Program.cs de hello:
    
         using System.Collections.Generic;
         using Microsoft.Azure.Management.HDInsight.Job;
@@ -67,14 +67,14 @@ El SDK .NET de HDInsight ofrece bibliotecas de cliente .NET que facilitan el tra
    
                 static void Main(string[] args)
                 {
-                    System.Console.WriteLine("The application is running ...");
+                    System.Console.WriteLine("hello application is running ...");
    
                     var clusterCredentials = new BasicAuthenticationCloudCredentials { Username = ExistingClusterUsername, Password = ExistingClusterPassword };
                     _hdiJobManagementClient = new HDInsightJobManagementClient(ExistingClusterUri, clusterCredentials);
    
                     SubmitSqoopJob();
    
-                    System.Console.WriteLine("Press ENTER to continue ...");
+                    System.Console.WriteLine("Press ENTER toocontinue ...");
                     System.Console.ReadLine();
                 }
    
@@ -101,25 +101,25 @@ El SDK .NET de HDInsight ofrece bibliotecas de cliente .NET que facilitan el tra
                         Command = "export --connect " + connectionString + " --table " + tableName + "_mobile --export-dir " + exportDir + "_mobile --fields-terminated-by \\t -m 1"
                     };
    
-                    System.Console.WriteLine("Submitting the Sqoop job to the cluster...");
+                    System.Console.WriteLine("Submitting hello Sqoop job toohello cluster...");
                     var response = _hdiJobManagementClient.JobManagement.SubmitSqoopJob(parameters);
-                    System.Console.WriteLine("Validating that the response is as expected...");
+                    System.Console.WriteLine("Validating that hello response is as expected...");
                     System.Console.WriteLine("Response status code is " + response.StatusCode);
-                    System.Console.WriteLine("Validating the response object...");
+                    System.Console.WriteLine("Validating hello response object...");
                     System.Console.WriteLine("JobId is " + response.JobSubmissionJsonResponse.Id);
                 }
             }
         }
-4. Presione **F5** para ejecutar el programa. 
+4. Presione **F5** programa Hola de toorun. 
 
 ## <a name="limitations"></a>Limitaciones
-* Exportación masiva: con HDInsight basado en Linux, el conector Sqoop que se utiliza para exportar datos a Microsoft SQL Server o Base de datos SQL Azure no es compatible actualmente con las inserciones masivas.
-* Procesamiento por lotes: con HDInsight basado en Linux, cuando se usa `-batch` al realizar inserciones, Sqoop realiza varias inserciones en lugar de procesar por lotes las operaciones de inserción.
+* La exportación masiva - basados en Linux con HDInsight, Hola Sqoop conector utilizado tooexport datos tooMicrosoft SQL Server o base de datos de SQL Azure no es compatible con las inserciones masivas.
+* Procesamiento por lotes: con HDInsight basados en Linux, cuando se usa hello `-batch` cambiar cuando se realizan inserciones, Sqoop varias inserciones en lugar de procesamiento por lotes las operaciones de inserción de Hola.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Ahora ya ha aprendido a usar Sqoop. Para obtener más información, consulte:
+Ahora que ha aprendido cómo toouse Sqoop. toolearn más información, vea:
 
 * [Uso de Oozie con HDInsight](hdinsight-use-oozie.md): use la acción Sqoop en un flujo de trabajo de Oozie.
-* [Análisis de la información de retraso de vuelos con HDInsight](hdinsight-analyze-flight-delay-data.md): use Hive para analizar la información de retraso de los vuelos y luego use Sqoop para exportar los datos a una base de datos SQL de Azure.
-* [Carga de datos en HDInsight](hdinsight-upload-data.md): busque otros métodos para cargar datos en HDInsight o el almacenamiento de blobs de Azure.
+* [Analizar datos de retrasos de vuelos con HDInsight](hdinsight-analyze-flight-delay-data.md): usar Hive tooanalyze flight retrasar datos y, a continuación, usar base de datos de Sqoop tooexport datos tooan SQL Azure.
+* [Cargar datos tooHDInsight](hdinsight-upload-data.md): dar con otros métodos para cargar el almacenamiento de blobs de datos tooHDInsight o SQL Azure.
 

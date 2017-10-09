@@ -1,5 +1,5 @@
 ---
-title: "Introducción a Microsoft Power BI Embedded"
+title: aaaGet a trabajar con Microsoft Power BI Embedded
 description: "Power BI Embedded, agregar informes interactivos de Power BI a la aplicación de inteligencia empresarial"
 services: power-bi-embedded
 documentationcenter: 
@@ -15,50 +15,50 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 03/11/2017
 ms.author: asaxton
-ms.openlocfilehash: 4afa8d2c7f8ec1942521ba5fa131967dfd581c91
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ebb550cb4eba761dde3c23e4dd0314fc885817e2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-microsoft-power-bi-embedded"></a>Introducción a Microsoft Power BI Embedded
 
-**Power BI Embedded** es un servicio de Azure que permite a los desarrolladores de aplicaciones agregar informes de Power BI interactivos a sus propias aplicaciones. **Power BI Embedded** se puede utilizar con las aplicaciones existentes sin necesidad de modificar el diseño ni de cambiar el modo en que los usuarios inician sesión.
+**Power BI Embedded** es un servicio de Azure ese tooadd de los desarrolladores de aplicaciones permite informes interactivos Power BI en sus propias aplicaciones. **Power BI Embedded** funciona con aplicaciones existentes sin necesidad de cambiar el diseño o cambiar los usuarios de manera Hola iniciar sesión.
 
-Los recursos de **Microsoft Power BI Embedded** se aprovisionan mediante las [API de ARM de Azure](https://msdn.microsoft.com/library/mt712306.aspx). En este caso, el recurso que se aprovisiona es una **colección de áreas de trabajo de Power BI**.
+Recursos para **Microsoft Power BI Embedded** se aprovisionan mediante hello [API de Azure ARM](https://msdn.microsoft.com/library/mt712306.aspx). En este caso, es el recurso Hola se aprovisiona un **colección de área de trabajo de Power BI**.
 
 ![](media/power-bi-embedded-get-started/introduction.png)
 
 ## <a name="create-a-workspace-collection"></a>Creación de una colección de áreas de trabajo
 
-Una **colección de áreas de trabajo** es el recurso de Azure de nivel superior, y funciona como un contenedor del contenido que se insertará en la aplicación. Las **colecciones de áreas de trabajo** se pueden crear de dos maneras:
+A **colección de área de trabajo** es el recurso de Azure de nivel superior de Hola y un contenedor para el contenido de Hola que se incrustarán en la aplicación. Las **colecciones de áreas de trabajo** se pueden crear de dos maneras:
 
-* Manualmente mediante el Portal de Azure.
-* Mediante programación con la API de Azure Resource Manager (ARM).
+* Manualmente mediante Hola Portal de Azure
+* Mediante programación con hello las API Manager(ARM) de recursos de Azure
 
-Vamos a ver cuáles son los pasos necesarios para crear una **colección de áreas de trabajo** mediante el Portal de Azure.
+Analicemos Hola pasos toobuild una **colección de área de trabajo** utilizando Hola Portal de Azure.
 
 1. Abra el **Portal de Azure**, [http://portal.azure.com](http://portal.azure.com), e inicie sesión.
-2. En el panel superior, haga clic en **+ Nuevo** .
+2. Haga clic en **+ nuevo** en el panel superior de Hola.
    
    ![](media/power-bi-embedded-get-started/create-workspace-1.png)
 3. En **Datos y análisis**, haga clic en **Power BI Embedded**.
-4. En la **hoja Colección de áreas de trabajo de Power BI**, escriba la información necesaria. En **Precios**, consulte los [precios de Power BI Embedded](http://go.microsoft.com/fwlink/?LinkID=760527).
+4. En hello **hoja de la colección de área de trabajo**, escriba información de hello necesario. En **Precios**, consulte los [precios de Power BI Embedded](http://go.microsoft.com/fwlink/?LinkID=760527).
    
    ![](media/power-bi-embedded-get-started/create-workspace-2.png)
 5. Haga clic en **Crear**.
 
-La **colección de áreas de trabajo** tarda un poco en aprovisionarse. Cuando la operación finalice, accederá automáticamente a la hoja **Colección de áreas de trabajo**.
+Hola **colección de área de trabajo** tardará tooprovision unos instantes. Cuando haya completado, se le dirigirá toohello **hoja de la colección de área de trabajo**.
 
    ![](media/power-bi-embedded-get-started/create-workspace-3.png)
 
-La hoja **Creación** contiene la información que necesita para llamar a las API que crean las áreas de trabajo e implementan contenido en ellas.
+Hola **hoja de creación** contiene información de Hola que necesita toocall Hola API creen áreas de trabajo y que implemente contenido toothem.
 
 <a name="view-access-keys"/>
 
 ## <a name="view-power-bi-api-access-keys"></a>Visualización de las claves de acceso de API de Power BI
 
-Uno de los datos más importantes que se necesitan para llamar a las API de REST de Power BI son las **claves de acceso**. Las claves de acceso se utilizan para generar los **tokens de aplicación** que se emplean para autenticar las solicitudes de API. Para ver las **claves de acceso**, haga clic en **Claves de acceso** en la hoja **Configuración**. Para más información sobre los **tokens de aplicación**, consulte [Autenticación y autorización con Power BI Embedded](power-bi-embedded-app-token-flow.md).
+Uno de hello más importante fragmentos de información necesaria toocall Hola API de REST de Power BI son hello **teclas de acceso**. Se trata de hello toogenerate usado **tokens de aplicación** que son utilizado tooauthenticate las solicitudes de API. tooview su **teclas de acceso**, haga clic en **teclas de acceso** en hello **hoja de configuración**. Para más información sobre los **tokens de aplicación**, consulte [Autenticación y autorización con Power BI Embedded](power-bi-embedded-app-token-flow.md).
 
    ![](media/power-bi-embedded-get-started/access-keys.png)
 
@@ -66,47 +66,47 @@ Verá que tiene dos claves.
 
    ![](media/power-bi-embedded-get-started/access-keys-2.png)
 
-Copie estas claves y almacénelas de forma segura en la aplicación. Es muy importante tratar estas claves igual que una contraseña, ya que proporcionan acceso a todo el contenido de la **colección de áreas de trabajo**.
+Copie estas claves y almacénelas de forma segura en la aplicación. Es muy importante tratar estas claves como lo haría con una contraseña, ya que le proporcionan acceso tooall Hola contenido en su **colección de área de trabajo**.
 
-Aunque se muestran dos claves, solo se necesita una cada vez. La segunda clave se proporciona para que pueda regenerar periódicamente las claves sin interrumpir el acceso al servicio.
+Aunque se muestran dos claves, solo se necesita una cada vez. segunda clave de Hola se proporciona de manera que puede regenerar periódicamente las claves sin interrumpir el servicio de acceso toohello.
 
-Ahora que tiene una instancia de Power BI para la aplicación y las **claves de acceso**, puede importar un informe en la propia aplicación. Antes de aprender a importar un informe, en la sección siguiente se describe la creación de conjuntos de datos e informes de Power BI para insertar en una aplicación.
+Ahora que tiene una instancia de Power BI para la aplicación y las **claves de acceso**, puede importar un informe en la propia aplicación. Antes de aprender a cómo tooimport un informe, la siguiente sección de hello describe tooembed creación de conjuntos de datos e informes de Power BI en una aplicación.
 
 ## <a name="working-with-workspaces"></a>Trabajo con áreas de trabajo
 
-Después de haber creado la colección de áreas de trabajo, debe crear un área de trabajo que hospede los informes y conjuntos de datos. Para crear un área de trabajo, debe usar la [API de REST de Post Workspace](https://msdn.microsoft.com/library/azure/mt711503.aspx).
+Después de haber creado la colección de área de trabajo, deberá toocreate un área de trabajo que hospedará los informes y conjuntos de datos. toocreate un área de trabajo, deberá hello toouse [API de REST de área de trabajo de Post](https://msdn.microsoft.com/library/azure/mt711503.aspx).
 
-## <a name="create-power-bi-datasets-and-reports-to-embed-into-an-app-using-power-bi-desktop"></a>Creación de conjuntos de datos e informes de Power BI para insertar en una aplicación mediante Power BI Desktop
+## <a name="create-power-bi-datasets-and-reports-tooembed-into-an-app-using-power-bi-desktop"></a>Crear tooembed de conjuntos de datos e informes de Power BI en una aplicación con Power BI Desktop
 
-Ahora que ha creado una instancia de Power BI para su aplicación y tiene las **claves de acceso**, deberá crear los conjuntos de datos y los informes de Power BI que quiere insertar. Los conjuntos de datos y los informes se pueden crear con **Power BI Desktop**. Puede descargar [Power BI Desktop gratis](https://go.microsoft.com/fwlink/?LinkId=521662). Por otro lado, si desea empezar a trabajar rápidamente, también puede descargar el [archivo PBIX con un ejemplo de análisis de minoristas](http://go.microsoft.com/fwlink/?LinkID=780547).
+Ahora que ha creado una instancia de Power BI para su aplicación y tiene **teclas de acceso**, necesitará los conjuntos de datos de toocreate Hola Power BI e informes que desea tooembed. Los conjuntos de datos y los informes se pueden crear con **Power BI Desktop**. Puede descargar [Power BI Desktop gratis](https://go.microsoft.com/fwlink/?LinkId=521662). O bien, tooquickly empezar a trabajar, puede descargar hello [PBIX de ejemplo de análisis de minoristas](http://go.microsoft.com/fwlink/?LinkID=780547).
 
 > [!NOTE]
-> Para aprender más acerca de cómo usar **Power BI Desktop**, consulte [Introducción a Power BI Desktop](https://powerbi.microsoft.com/guided-learning/powerbi-learning-0-2-get-started-power-bi-desktop).
+> más información acerca de cómo toolearn toouse **Power BI Desktop**, consulte [Introducción a Power BI Desktop](https://powerbi.microsoft.com/guided-learning/powerbi-learning-0-2-get-started-power-bi-desktop).
 
-Con **Power BI Desktop**, para conectarse al origen de datos, puede importar una copia de los datos en **Power BI Desktop** o conectarse directamente al origen de datos mediante **DirectQuery**.
+Con **Power BI Desktop**, conectar tooyour origen de datos mediante la importación de una copia de datos de hello en **Power BI Desktop** o conectar directamente toohello de datos de origen mediante **DirectQuery**.
 
-Estas son las diferencias entre usar **Importación** y **DirectQuery**.
+Estas son Hola diferencias entre el uso de **importación** y **DirectQuery**.
 
-| Importar | DirectQuery |
+| Importación | DirectQuery |
 | --- | --- |
-| Las tablas, las columnas y los *datos* se importan o se copian en **Power BI Desktop**. Mientras trabaja con visualizaciones, **Power BI Desktop** consulta una copia de los datos. Para ver los cambios que se han producido en los datos subyacentes, debe actualizar o importar de nuevo un conjunto de datos actual completo. |En *Power BI Desktop* , solo se importan o copian **tablas y columnas**. Mientras trabaja con visualizaciones, **Power BI Desktop** consulta el origen de datos subyacente, lo que significa que siempre verá los datos actuales. |
+| Las tablas, las columnas y los *datos* se importan o se copian en **Power BI Desktop**. Cuando se trabaja con visualizaciones, **Power BI Desktop** consulta una copia de datos de Hola. toosee los cambios de datos subyacente toohello se produjo, debe actualizar o importar un completo actual conjunto de datos nuevo. |En *Power BI Desktop* , solo se importan o copian **tablas y columnas**. Cuando se trabaja con visualizaciones, **Power BI Desktop** consultas Hola el origen de datos subyacente, lo que significa que siempre está viendo los datos actuales. |
 
-Para más información acerca de cómo conectarse a un origen de datos, consulte [Conectarse a un origen de datos](power-bi-embedded-connect-datasource.md).
+Para obtener más información sobre el origen de datos de conexión tooa, consulte [Conectar origen de datos de tooa](power-bi-embedded-connect-datasource.md).
 
-Cuando guarde el trabajo en **Power BI Desktop**, se creará un archivo PBIX. Este archivo contiene el informe. Además, si los datos se han importado, el archivo PBIX contendrá el conjunto de datos completo, mientras que, si se ha utilizado **DirectQuery**, el archivo PBIX solamente contendrá un esquema del conjunto de datos. Puede implementar el archivo PBIX mediante programación en su área de trabajo con la [API de importación de Power BI](https://msdn.microsoft.com/library/mt711504.aspx).
+Cuando guarde el trabajo en **Power BI Desktop**, se creará un archivo PBIX. Este archivo contiene el informe. Además, si importa Hola de datos contiene PBIX Hola conjunto de datos completo, o si utiliza **DirectQuery**, hello PBIX contiene solo un esquema de conjunto de datos. Implementar mediante programación hello PBIX en el área de trabajo con hello [API de importación de Power BI](https://msdn.microsoft.com/library/mt711504.aspx).
 
 > [!NOTE]
-> **Power BI Embedded** incluye API adicionales que permiten cambiar el servidor y la base de datos a los que apunta el conjunto de datos y definir una credencial de cuenta de servicio, que será la que use el conjunto de datos para conectarse a la base de datos. Consulte [Post SetAllConnections](https://msdn.microsoft.com/library/mt711505.aspx) y [Patch Gateway Datasource](https://msdn.microsoft.com/library/mt711498.aspx) (Revisión de origen de datos de puerta de enlace).
+> **Power BI Embedded** tiene adicionales API toochange Hola servidor y base de datos que el conjunto de datos está señalando tooand conjunto una credencial de cuenta de servicio que Hola conjunto de datos usará la base de datos de tooconnect tooyour. Consulte [Post SetAllConnections](https://msdn.microsoft.com/library/mt711505.aspx) y [Patch Gateway Datasource](https://msdn.microsoft.com/library/mt711498.aspx) (Revisión de origen de datos de puerta de enlace).
 
 ## <a name="create-power-bi-datasets-and-reports-using-apis"></a>Creación de conjuntos de datos e informes de Power BI con las API
 
 ### <a name="datsets"></a>Conjuntos de datos
 
-Puede crear conjuntos de datos en Power BI Embedded mediante la API de REST. Luego, puede insertar datos en el conjunto de datos. De esta forma puede trabajar con datos sin necesidad de Power BI Desktop. Para más información, consulte [Post Datasets](https://msdn.microsoft.com/library/azure/mt778875.aspx) (Publicación de conjuntos de datos).
+Puede crear conjuntos de datos en Power BI Embedded mediante Hola API de REST. Luego, puede insertar datos en el conjunto de datos. Esto le permite toowork con datos sin necesidad de Hola de Power BI Desktop. Para más información, consulte [Post Datasets](https://msdn.microsoft.com/library/azure/mt778875.aspx) (Publicación de conjuntos de datos).
 
 ### <a name="reports"></a>Informes
 
-Puede crear un informe a partir de un conjunto de datos directamente en la aplicación mediante la API de JavaScript. Para más información, consulte [Create a new report from a dataset in Power BI Embedded](power-bi-embedded-create-report-from-dataset.md) (Creación de un nuevo informe a partir de un conjunto de datos en Power BI Embedded).
+Puede crear un informe desde un conjunto de datos directamente en la aplicación con hello API de JavaScript. Para más información, consulte [Create a new report from a dataset in Power BI Embedded](power-bi-embedded-create-report-from-dataset.md) (Creación de un nuevo informe a partir de un conjunto de datos en Power BI Embedded).
 
 ## <a name="see-also"></a>Otras referencias
 
@@ -117,5 +117,5 @@ Puede crear un informe a partir de un conjunto de datos directamente en la aplic
 [Save reports](power-bi-embedded-save-reports.md) (Guardar informes)  
 [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)  
 [JavaScript Embed Sample](https://microsoft.github.io/PowerBI-JavaScript/demo/) (Ejemplo de inserción de JavaScript)  
-¿Tiene más preguntas? [Pruebe la comunidad de Power BI](http://community.powerbi.com/)
+¿Tiene más preguntas? [Intente Hola Comunidad de Power BI](http://community.powerbi.com/)
 

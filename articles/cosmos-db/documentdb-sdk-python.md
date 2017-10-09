@@ -1,6 +1,6 @@
 ---
-title: API, SDK y recursos de Python para Azure Cosmos DB | Microsoft Docs
-description: "Obtenga toda la información sobre la API y el SDK de Python incluidas la fechas de lanzamiento, fechas de retirada y cambios realizados entre las versiones del SDK de Python para Azure Cosmos DB."
+title: aaaAzure Cosmos DB Python API, SDK y recursos | Documentos de Microsoft
+description: "Infórmese acerca de hello Python API y SDK, incluidas las fechas de lanzamiento y fechas de retirada, los cambios realizados entre cada versión de hello Azure Cosmos DB Python SDK."
 services: cosmos-db
 documentationcenter: python
 author: rnagpal
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/24/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 70d2550f713ff0e9daed235eb8053589b8682633
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 1a164b72d2bd819de87df0229357b82e2177af2f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-cosmos-db-python-sdk-release-notes-and-resources"></a>SDK de Python para Azure Cosmos DB: notas de la versión y recursos
 > [!div class="op_single_selector"]
@@ -43,9 +43,9 @@ ms.lasthandoff: 08/18/2017
 
 <tr><td>**Instrucciones de instalación del SDK**</td><td>[Instrucciones de instalación del SDK de Python](http://azure.github.io/azure-documentdb-python/)</td></tr>
 
-<tr><td>**Contribuya al SDK**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-python)</td></tr>
+<tr><td>**Contribuir tooSDK**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-python)</td></tr>
 
-<tr><td>**Primeros pasos**</td><td>[Introducción al SDK de Python](documentdb-python-application.md)</td></tr>
+<tr><td>**Introducción**</td><td>[Empezar a trabajar con hello SDK de Python](documentdb-python-application.md)</td></tr>
 
 <tr><td>**Plataforma admitida actualmente**</td><td>[Python 2.7](https://www.python.org/downloads/) y [Python 3.5](https://www.python.org/downloads/)</td></tr>
 </table></br>
@@ -58,13 +58,13 @@ ms.lasthandoff: 08/18/2017
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
 * Se agregó compatibilidad con consultas de agregación (COUNT, MIN, MAX, SUM y AVG).
 * Se agregó una opción para deshabilitar la comprobación de SSL cuando se ejecuta en el emulador de Cosmos DB.
-* Se ha quitado la restricción del módulo de solicitudes dependientes para que sea exactamente 2.10.0.
-* Reducción del procesamiento mínimo en las colecciones particionadas de 10 100 RU/s a 2500 RU/s.
+* Quitar restricción de Hola de las solicitudes dependientes módulo toobe 2.10.0 exactamente.
+* Reducir el rendimiento mínimo en las colecciones particionadas de 10,100 RU/s too2500 RU/s.
 * Se ha agregado compatibilidad para habilitar el registro de scripts durante la ejecución de procedimientos almacenados.
-* La versión de API de REST se incrementó a "2017-01-19" con esta versión.
+* Versión de API de REST demasiado incrementará ' 2017-01-19' con esta versión.
 
 ### <a name="a-name201201"></a><a name="2.0.1"/>2.0.1
-* Se realizan los cambios editoriales de los comentarios de documentación.
+* Realiza los cambios editoriales toodocumentation comentarios.
 
 ### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
 * Compatibilidad agregada para Python 3.5.
@@ -73,33 +73,33 @@ ms.lasthandoff: 08/18/2017
 * Compatibilidad agregada para consultas TOP/ORDERBY para colecciones particionadas.
 
 ### <a name="a-name190190"></a><a name="1.9.0"/>1.9.0
-* Se ha agregado compatibilidad de la directiva de reintentos con las solicitudes de limitación. (Las solicitudes limitadas reciben una excepción demasiado grande de la tasa de solicitudes, código de error 429). De manera predeterminada, Azure Cosmos DB realiza nueve reintentos para cada solicitud cuando aparece el código de error 429, respetando el tiempo de retryAfter en el encabezado de respuesta. Ahora puede establecerse un tiempo del intervalo de reintento fijo como parte de la propiedad RetryOptions del objeto ConnectionPolicy si quiere ignorar el tiempo de retryAfter que ha devuelto el servidor entre los reintentos. Azure Cosmos DB espera ahora un máximo de 30 segundos para cada solicitud que se está limitando (independientemente del recuento de reintentos) y devuelve la respuesta con el código de error 429. Este tiempo también puede reemplazarse en la propiedad RetryOptions del objeto ConnectionPolicy.
-* Cosmos DB ahora devuelve x-ms-throttle-retry-count y x-ms-throttle-retry-wait-time-ms como los encabezados de respuesta de cada solicitud para denotar el recuento de reintentos de limitación y el tiempo acumulativo que ha esperado la solicitud entre los reintentos.
-* Se ha quitado la clase RetryPolicy y la propiedad correspondiente (retry_policy) que estaba expuesta en la clase document_client y, en su lugar, se ha introducido una clase RetryOptions que expone la propiedad RetryOptions en la clase ConnectionPolicy que puede usarse para reemplazar algunas de las opciones de reintentos predeterminadas.
+* Se ha agregado compatibilidad de la directiva de reintentos con las solicitudes de limitación. (Las solicitudes limitadas reciben una excepción demasiado grande de la tasa de solicitudes, código de error 429). De forma predeterminada, base de datos de Azure Cosmos reintenta nueve veces para cada solicitud cuando se encuentra el código de error 429, teniendo en cuenta el tiempo de retryAfter de hello en el encabezado de respuesta de Hola. Un tiempo de intervalo de reintento fijo ahora pueden establecer como parte del programa Hola propiedad RetryOptions en hello ConnectionPolicy objeto si desea tooignore hello retryAfter tiempo devuelto por servidor entre los reintentos de Hola. Base de datos de Azure Cosmos ahora espera durante un máximo de 30 segundos para cada solicitud que se está limitando (independientemente del número de reintentos) y devuelve la respuesta de hello con código de error 429. Esta vez también puede ser reemplazada en hello RetryOptions propiedad ConnectionPolicy objeto.
+* COSMOS DB ahora devuelve x-ms-acelerador--número de reintentos y x-ms-throttle-retry-wait-time-ms como encabezados de respuesta de hello en cada Acelerador de saludo de solicitud toodenote tiempo de reintento hello y recuento cummulative Hola solicitar esperado entre reintentos de Hola.
+* Clase de RetryPolicy de hello quitado y la propiedad correspondiente de hello (retry_policy) exponen en clase document_client de hello e introdujeron en su lugar una clase RetryOptions exposición hello RetryOptions propiedad en una clase ConnectionPolicy que puede ser utilizado toooverride Algunos predeterminado Hola opciones de reintento.
 
 ### <a name="a-name180180"></a><a name="1.8.0"/>1.8.0
-* Se ha agregado compatibilidad con cuentas de base de datos de varias regiones.
+* Compatibilidad de hello agregada para cuentas de base de datos de varias regiones.
 
 ### <a name="a-name170170"></a><a name="1.7.0"/>1.7.0
-* Se ha agregado compatibilidad con la característica de período de vida (TTL) para los documentos.
+* Hola agregado compatibilidad con característica de tooLive(TTL) de tiempo para los documentos.
 
 ### <a name="a-name161161"></a><a name="1.6.1"/>1.6.1
-* Correcciones de errores relacionados con la creación de particiones del lado servidor para permitir caracteres especiales en la ruta de acceso de la clave de partición.
+* Correcciones de errores relacionados con lado tooserver particiones tooallow caracteres especiales en la ruta de acceso de partitionkey.
 
 ### <a name="a-name160160"></a><a name="1.6.0"/>1.6.0
 * Se han implementado [colecciones particionadas](partition-data.md) y [niveles de rendimiento definidos por el usuario](performance-levels.md). 
 
 ### <a name="a-name150150"></a><a name="1.5.0"/>1.5.0
-* Se han agregado solucionadores de particiones de hash e intervalo para ayudar con el particionamiento de las aplicaciones entre varias particiones.
+* Agregar Hash & intervalo tooassist de resoluciones de partición con aplicaciones de particionamiento entre varias particiones.
 
 ### <a name="a-name142142"></a><a name="1.4.2"/>1.4.2
-* Implementación de Upsert. Se han agregado nuevos métodos upsertXXX para admitir la característica Upsert.
+* Implementación de Upsert. Nuevos métodos de UpsertXXX agregan toosupport Upsert característica.
 * Se implementa el enrutamiento por identificador. Sin cambios en la API pública, todos los cambios son internos.
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
 * Compatible con índice geoespacial.
 * Valida la propiedad id para todos los recursos. Los identificadores de recursos no pueden contener los caracteres ?, /, #, \, ni terminar con un espacio.
-* Agrega el nuevo encabezado "progreso de transformación de índices" a ResourceResponse.
+* Agrega el nuevo encabezado "curso de transformación de índice" tooResourceResponse.
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
 * Implementación de la directiva de indexación V2.
@@ -111,14 +111,14 @@ ms.lasthandoff: 08/18/2017
 * SDK de GA.
 
 ## <a name="release--retirement-dates"></a>Fechas de lanzamiento y retirada
-Microsoft notificará la retirada de un SDK con al menos **12 meses** de antelación para facilitar la transición a una versión compatible o más reciente.
+Microsoft proporcionará la notificación al menos **12 meses** antes de retirar un SDK en la versión de más reciente admitida de orden toosmooth Hola transición tooa.
 
-Solo se agregan nuevas características, funcionalidad y optimizaciones al SDK actual, por lo que se recomienda actualizar siempre a la última versión del SDK tan pronto como sea posible. 
+Nuevas características y funcionalidad y las optimizaciones se agregan solo toohello actual SDK, por lo tanto, es recomendable que se realice siempre la actualización toohello última versión del SDK tan pronto como sea posible. 
 
-El servicio rechazará cualquier solicitud realizada a Cosmos DB mediante un SDK retirado.
+Servicio de hello rechazará cualquier base de datos con un SDK retirado tooCosmos de solicitud.
 
 > [!WARNING]
-> Todas las versiones del SDK de Azure DocumentDB para Python anteriores a la versión **1.0.0** se retirarán el **29 de febrero de 2016**. 
+> Todas las versiones de hello documentos de Azure SDK para Python anterior tooversion **1.0.0** se retirarán en **29 de febrero de 2016**. 
 > 
 > 
 
@@ -151,6 +151,6 @@ El servicio rechazará cualquier solicitud realizada a Cosmos DB mediante un SDK
 ## <a name="faq"></a>P+F
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>Consulte también
-Para más información sobre Cosmos DB, consulte la página del servicio [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). 
+## <a name="see-also"></a>Otras referencias
+toolearn más información acerca de la base de datos de Cosmos, consulte [base de datos de Microsoft Azure Cosmos](https://azure.microsoft.com/services/cosmos-db/) página de servicio. 
 

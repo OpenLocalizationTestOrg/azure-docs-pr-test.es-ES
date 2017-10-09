@@ -1,8 +1,8 @@
-1. En el [portal](http://portal.azure.com), navegue a la red virtual de Resource Manager para la que desea crear una puerta de enlace de red virtual.
-2. En la sección **Configuración** de la página de redes virtuales, haga clic en **Subredes** para expandir la página **Subredes**.
-3. En la página **Subredes**, haga clic en **+Subred** para abrir la página **Agregar subred**. 
+1. Hola [portal](http://portal.azure.com), navegar por la red virtual del Administrador de recursos toohello que se desea toocreate una puerta de enlace de red virtual.
+2. Hola **configuración** sección de la página de la red virtual, haga clic en **subredes** tooexpand hello **subredes** página.
+3. En hello **subredes** página, haga clic en **+ subred de puerta de enlace** tooopen hello **Agregar subred** página. 
 
-  ![Agregar la subred de la puerta de enlace](./media/vpn-gateway-add-gwsubnet-p2s-rm-portal-include/addgwsubnet.png "Agregar la subred de la puerta de enlace")
-4. El **nombre** de la subred se rellena automáticamente con el valor "GatewaySubnet". Este valor es necesario para que Azure reconozca que se trata de subred de puerta de enlace. Ajuste los valores de **Intervalo de direcciones** que se rellenan automáticamente para que coincidan con sus requisitos de configuración y haga clic en **Aceptar** en la parte inferior de la página para crear la subred.
+  ![Agregar subred de puerta de enlace de hello](./media/vpn-gateway-add-gwsubnet-p2s-rm-portal-include/addgwsubnet.png "Agregar subred de puerta de enlace de Hola")
+4. Hola **nombre** para la subred se rellena automáticamente con hello valor "GatewaySubnet". Este valor es necesario en orden para la subred de Azure toorecognize hello como subred de puerta de enlace de Hola. Ajustar el relleno automático de hello **intervalo de direcciones** valores toomatch los requisitos de configuración, a continuación, haga clic en **Aceptar** final Hola de subred de hello página toocreate Hola.
 
-  ![Agregar la subred](./media/vpn-gateway-add-gwsubnet-p2s-rm-portal-include/p2sgwsub.png "Agregar la subred")
+  ![Agregar subred de hello](./media/vpn-gateway-add-gwsubnet-p2s-rm-portal-include/p2sgwsub.png "agregando la subred de Hola")

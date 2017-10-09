@@ -1,6 +1,6 @@
 ---
-title: "ESP8266 en la nube: conexión de Sparkfun ESP8266 Thing Dev a Azure IoT Hub | Microsoft Docs"
-description: "Con este tutorial aprenderá a configurar y conectar Sparkfun ESP8266 Thing Dev a Azure IoT Hub para que envíe datos a la plataforma en la nube de Azure."
+title: aaaESP8266 toocloud - conectar Sparkfun ESP8266 lo Dev tooAzure centro de IoT | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toosetup y conectarse de plataforma de nube de Azure de toosend datos toohello Sparkfun ESP8266 lo Dev tooAzure centro de IoT para ella en este tutorial."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2017
 ms.author: xshi
-ms.openlocfilehash: 557f0cdf375b345e0dbe0526f5a5bd3c050dec38
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 19b249df23b6df516634853521c6d532f51014da
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-sparkfun-esp8266-thing-dev-to-azure-iot-hub-in-the-cloud"></a>Conexión de Sparkfun ESP8266 Thing Dev a Azure IoT Hub en la nube
+# <a name="connect-sparkfun-esp8266-thing-dev-tooazure-iot-hub-in-hello-cloud"></a>Conectar Sparkfun ESP8266 lo Dev tooAzure centro de IoT en nube Hola
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
@@ -29,36 +29,36 @@ ms.lasthandoff: 08/18/2017
 
 ## <a name="what-you-will-do"></a>Lo que hará
 
-Conectará Sparkfun ESP8266 Thing Dev a un centro de IoT que creará. Luego, ejecutará una aplicación de ejemplo en ESP8266 para recopilar datos de temperatura y humedad desde un sensor DHT22. Por último, enviará los datos del sensor al centro de IoT.
+Conectar el centro de IoT tooan de desarrollo de Sparkfun ESP8266 lo que creará. A continuación, ejecutar una aplicación de ejemplo en los datos de temperatura y humedad toocollect ESP8266 desde un sensor DHT22. Por último, envíe el centro de IoT de hello sensor datos tooyour.
 
 > [!NOTE]
-> Aunque use otras placas ESP8266, puede seguir estos pasos para conectarse a su centro de IoT. Dependiendo de la placa ESP8266 que use, puede que deba volver a configurar el `LED_PIN`. Por ejemplo, si usa ESP8266 de AI-Thinker, puede cambiarlo de `0` a `2`. ¿Aún no tiene el kit?, haga clic [aquí](http://azure.com/iotstarterkits)
+> Si usa otros paneles ESP8266, aún puede seguir estos pasos tooconnect, centro de IoT tooyour. Dependiendo de la placa de hello ESP8266 que está utilizando, puede que necesite tooreconfigure Hola `LED_PIN`. Por ejemplo, si usas ESP8266 desde Pensador AI, puede cambiarlo de `0` demasiado`2`. ¿Aún no tiene el kit?, haga clic [aquí](http://azure.com/iotstarterkits)
 
 ## <a name="what-you-will-learn"></a>Lo qué aprenderá
 
-* Cómo crear un centro de IoT y registrar un dispositivo para Thing Dev.
-* Cómo conectar Thing Dev con el sensor y el equipo.
-* Cómo recopilar datos del sensor mediante la ejecución de una aplicación de ejemplo en Thing Dev.
-* Cómo enviar los datos del sensor al centro de IoT.
+* ¿Cómo toocreate un centro de IoT y registrar un dispositivo para algo de desarrollo
+* ¿Cómo tooconnect lo desarrollo con sensor de Hola y el equipo.
+* ¿Cómo toocollect datos del sensor mediante la ejecución de una aplicación de ejemplo en algo de desarrollo
+* ¿Cómo toosend Hola centro de IoT de tooyour de datos de sensor.
 
 ## <a name="what-you-will-need"></a>Qué necesita
 
-![Elementos necesarios para el tutorial](media/iot-hub-sparkfun-thing-dev-get-started/2_parts-needed-for-the-tutorial.png)
+![Piezas necesarias para el tutorial de Hola](media/iot-hub-sparkfun-thing-dev-get-started/2_parts-needed-for-the-tutorial.png)
 
-Para completar esta operación, necesita las siguientes piezas del kit de inicio de Thing Dev:
+toocomplete esta operación, necesita Hola siguientes partes de los Starter Kit de desarrollo de lo:
 
-* La placa Sparkfun ESP8266 Thing Dev.
-* Un cable micro USB a USB tipo A.
+* Hola Sparkfun ESP8266 lo Dev panel.
+* Un cable USB A Micro USB tooType.
 
-También necesitará lo siguiente para el entorno de desarrollo:
+También necesita Hola siguiente para el entorno de desarrollo:
 
 * Una suscripción de Azure activa. Si no tiene ninguna cuenta de Azure, [cree una cuenta de evaluación gratuita de Azure](https://azure.microsoft.com/free/) en solo unos minutos.
 * Un equipo PC o Mac que ejecute Windows o Ubuntu.
-* Red inalámbrica a la que se pueda conectar Sparkfun ESP8266 Thing Dev.
-* Conexión a Internet para descargar la herramienta de configuración.
-* [Arduino IDE](https://www.arduino.cc/en/main/software) versión 1.6.8 (o posterior), ya que las versiones anteriores no funcionarán con la biblioteca de AzureIoT.
+* Red inalámbrica para tooconnect Sparkfun ESP8266 lo Dev a.
+* Herramienta de configuración de Hola de toodownload de la conexión de Internet.
+* [Arduino IDE](https://www.arduino.cc/en/main/software) versión 1.6.8 (o posterior), las versiones anteriores no funcionarán con la biblioteca de AzureIoT Hola.
 
-Los elementos siguientes son opcionales en caso de que no tenga un sensor. También tiene la opción de usar una simulación de datos del sensor.
+Hello elementos siguientes son opcionales en caso de que no tiene un sensor. También tiene Hola opción consiste en utilizar datos de sensor simulada.
 
 * Un sensor de temperatura y humedad Adafruit DHT22.
 * La placa de pruebas.
@@ -66,15 +66,15 @@ Los elementos siguientes son opcionales en caso de que no tenga un sensor. Tambi
 
 [!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
 
-## <a name="connect-esp8266-thing-dev-with-the-sensor-and-your-computer"></a>Conexión de ESP8266 Thing Dev con el sensor y el equipo
+## <a name="connect-esp8266-thing-dev-with-hello-sensor-and-your-computer"></a>Conectar ESP8266 lo desarrollo con sensor de Hola y el equipo
 
-### <a name="connect-a-dht22-temperature-and-humidity-sensor-to-esp8266-thing-dev"></a>Conexión de un sensor de humedad y temperatura DHT22 a ESP8266 Thing Dev
+### <a name="connect-a-dht22-temperature-and-humidity-sensor-tooesp8266-thing-dev"></a>Conectar un sensor de temperatura y humedad DHT22 tooESP8266 lo desarrollo
 
-Use la placa de pruebas y los cables de puente para realizar la conexión del modo siguiente. Si no dispone de un sensor, omita esta sección porque en su lugar puede usar una simulación de datos del sensor.
+Utilice hello breadboard y puentes cables toomake Hola conexión como se indica a continuación. Si no dispone de un sensor, omita esta sección porque en su lugar puede usar una simulación de datos del sensor.
 
 ![referencia de conexiones](media/iot-hub-sparkfun-thing-dev-get-started/15_connections_on_breadboard.png)
 
-Para las patillas del sensor, usaremos el siguiente cableado:
+Para el PIN de sensor, usaremos Hola después de conectar:
 
 | Inicio (sensor)           | Fin (placa)           | Color de cable   |
 | -----------------------  | ---------------------- | ------------: |
@@ -89,83 +89,83 @@ Ahora su Sparkfun ESP8266 Thing Dev debe estar conectado con un sensor de trabaj
 
 ![conectar dht22 con ESP8266 Thing Dev](media/iot-hub-sparkfun-thing-dev-get-started/8_connect-dht22-thing-dev.png)
 
-### <a name="connect-sparkfun-esp8266-thing-dev-to-your-computer"></a>Conexión de Sparkfun ESP8266 Thing Dev a su equipo
+### <a name="connect-sparkfun-esp8266-thing-dev-tooyour-computer"></a>Conectar el equipo de desarrollo de Sparkfun ESP8266 lo tooyour
 
-Use el cable micro USB a USB tipo A para conectar Sparkfun ESP8266 Thing Dev a su equipo de la manera siguiente.
+Utilice Sparkfun ESP8266 lo Dev tooyour equipo de hello Micro USB tooType A USB cable tooconnect como se indica a continuación.
 
-![conectar feather huzzah a su equipo](media/iot-hub-sparkfun-thing-dev-get-started/9_connect-thing-dev-computer.png)
+![conectar compacto huzzah tooyour equipo](media/iot-hub-sparkfun-thing-dev-get-started/9_connect-thing-dev-computer.png)
 
 ### <a name="add-serial-port-permissions--ubuntu-only"></a>Adición de permisos de puerto (solo Ubuntu)
 
-Si usa Ubuntu, asegúrese de que un usuario normal tenga los permisos para trabajar en el puerto USB de Sparkfun ESP8266 Thing Dev. Para agregar permisos de puerto serie para un usuario normal, siga estos pasos:
+Si usas Ubuntu, asegúrese de que un usuario normal tenga Hola permisos toooperate en hello USB puerto de Sparkfun ESP8266 lo dev. permisos de puerto serie tooadd para un usuario normal, siga estos pasos:
 
-1. Ejecute los siguientes comandos en un terminal:
+1. Ejecute hello siguientes comandos en un terminal:
 
    ```bash
    ls -l /dev/ttyUSB*
    ls -l /dev/ttyACM*
    ```
 
-   Obtendrá una de las siguientes salidas:
+   Obtener una Hola siguientes salidas:
 
    * crw-rw---- 1 root uucp xxxxxxxx
    * crw-rw---- 1 root dialout xxxxxxxx
 
-   En la salida, observe `uucp` o `dialout`, que es el nombre del propietario del grupo del puerto USB.
+   En la salida de hello, tenga en cuenta `uucp` o `dialout` decir Hola grupo nombre del propietario de hello puerto USB.
 
-1. Agregue el usuario al grupo mediante la ejecución del comando siguiente:
+1. Agregar grupo de toohello de hello usuarios ejecutando Hola siguiente comando:
 
    ```bash
    sudo usermod -a -G <group-owner-name> <username>
    ```
 
-   `<group-owner-name>` es el nombre del propietario del grupo que obtuvo en el paso anterior. `<username>` es el nombre de usuario de Ubuntu.
+   `<group-owner-name>`es el nombre de propietario de grupo de Hola que obtuvo en el paso anterior de Hola. `<username>` es el nombre de usuario de Ubuntu.
 
-1. Cierre la sesión en Ubuntu e iníciela de nuevo para que el cambio surta efecto.
+1. Cierre sesión Ubuntu y vuelva a iniciar en ella para cambiar tootake efecto de Hola.
 
-## <a name="collect-sensor-data-and-send-it-to-your-iot-hub"></a>Recopilación de datos del sensor y envío al centro de IoT
+## <a name="collect-sensor-data-and-send-it-tooyour-iot-hub"></a>Recopilar datos del sensor y enviarla tooyour centro de IoT
 
-En esta sección, implementará y ejecutará una aplicación de ejemplo en Sparkfun ESP8266 Thing Dev. La aplicación de ejemplo hace parpadear el LED en Sparkfun ESP8266 Thing Dev y envía los datos de humedad y temperatura recopilados del sensor DHT22 al centro de IoT.
+En esta sección, implementará y ejecutará una aplicación de ejemplo en Sparkfun ESP8266 Thing Dev. aplicación de ejemplo de Hola parpadea Hola LED en Sparkfun ESP8266 lo Dev y envía la temperatura de Hola y recopilan los datos de humedad de hello DHT22 sensor tooyour centro de IoT.
 
-### <a name="get-the-sample-application-from-github"></a>Obtención de la aplicación de ejemplo de Github
+### <a name="get-hello-sample-application-from-github"></a>Obtener la aplicación de ejemplo de Hola desde GitHub
 
-La aplicación de ejemplo se hospeda en GitHub. Clone el repositorio de ejemplos que contiene la aplicación de ejemplo de GitHub. Para clonar el repositorio de ejemplos, siga estos pasos:
+aplicación de ejemplo de Hola se hospeda en GitHub. Clonar el repositorio de ejemplo de Hola que contiene la aplicación de ejemplo de Hola desde GitHub. repositorio de ejemplo de Hola tooclone, siga estos pasos:
 
 1. Abra un símbolo del sistema o una ventana de terminal.
-1. Vaya a la carpeta donde desea almacenar la aplicación de ejemplo.
-1. Ejecute el siguiente comando:
+1. Vaya carpeta tooa donde desea toobe de aplicación de ejemplo de Hola almacenado.
+1. Ejecute el siguiente comando de hello:
 
    ```bash
    git clone https://github.com/Azure-Samples/iot-hub-SparkFun-ThingDev-client-app.git
    ```
 
-Instale el paquete para Sparkfun ESP8266 Thing Dev en Arduino IDE:
+Instalar el paquete de Hola para Sparkfun ESP8266 lo Dev en Arduino IDE:
 
-1. Abra la carpeta donde se almacena la aplicación de ejemplo.
-1. Abra el archivo app.ino en la carpeta de la aplicación en Arduino IDE.
+1. Abra la carpeta de Hola donde se almacena la aplicación de ejemplo de Hola.
+1. Abra el archivo de app.ino de hello en la carpeta de la aplicación hello en Arduino IDE.
 
-   ![abrir la aplicación de ejemplo en arduino ide](media/iot-hub-sparkfun-thing-dev-get-started/10_arduino-ide-open-sample-app.png)
+   ![Abra la aplicación de ejemplo de Hola en arduino ide](media/iot-hub-sparkfun-thing-dev-get-started/10_arduino-ide-open-sample-app.png)
 
-1. En Arduino IDE, haga clic en **File** >  (Archivo) **Preferences** (Preferencias).
-1. En el cuadro de diálogo **Preferences** (Preferencias), haga clic en el icono junto al cuadro de texto **Additional Boards Manager URLs** (URL adicionales del gestor de placas).
-1. En la ventana emergente, escriba la dirección URL siguiente y, a continuación, haga clic en **OK** (Aceptar).
+1. Hola Arduino IDE, haga clic en **archivo** > **preferencias**.
+1. Hola **preferencias** diálogo cuadro, haga clic en hello icono siguiente toohello **más direcciones URL del Administrador de paneles** cuadro de texto.
+1. En la ventana emergente de hello, escriba Hola después de la dirección URL y, a continuación, haga clic en **Aceptar**.
 
    `http://arduino.esp8266.com/stable/package_esp8266com_index.json`
 
-   ![apuntar a una url de paquete en arduino ide](media/iot-hub-sparkfun-thing-dev-get-started/11_arduino-ide-package-url.png)
+   ![dirección url del paquete de punto tooa arduino IDE](media/iot-hub-sparkfun-thing-dev-get-started/11_arduino-ide-package-url.png)
 
-1. En el cuadro de diálogo **Preference** (Preferencias), haga clic en **OK** (Aceptar).
+1. Hola **preferencias** cuadro de diálogo, haga clic en **Aceptar**.
 1. Haga clic en **Tools** (Herramientas)  > **Board** (Placa)  > **Boards Manager** (Administrador de placas) y busque esp8266.
    Se instalará ESP8266 con una versión de 2.2.0 o posterior.
 
-   ![se instala el paquete esp8266](media/iot-hub-sparkfun-thing-dev-get-started/12_arduino-ide-esp8266-installed.png)
+   ![Hola esp8266 paquete está instalado](media/iot-hub-sparkfun-thing-dev-get-started/12_arduino-ide-esp8266-installed.png)
 
 1. Haga clic en **Tools** (Herramientas)  > **Board** (Placa)  > **Sparkfun ESP8266 Thing Dev**.
 
 ### <a name="install-necessary-libraries"></a>Instalación de las bibliotecas necesarias
 
-1. En Arduino IDE, haga clic en **Sketch** >  (Boceto) **Include Library** >  (Incluir biblioteca) **Manage Libraries** (Administrar bibliotecas).
-1. Busque los nombres de biblioteca siguientes uno a uno. Para cada una de las bibliotecas que encuentre, haga clic en **Install** (Instalar).
+1. Hola Arduino IDE, haga clic en **boceto** > **incluyen biblioteca** > **administrar bibliotecas de**.
+1. Busque Hola siguiendo los nombres de las bibliotecas uno por uno. Para cada biblioteca de Hola que encuentre, haga clic en **instalar**.
    * `AzureIoTHub`
    * `AzureIoTUtility`
    * `AzureIoTProtocol_MQTT`
@@ -175,24 +175,24 @@ Instale el paquete para Sparkfun ESP8266 Thing Dev en Arduino IDE:
 
 ### <a name="dont-have-a-real-dht22-sensor"></a>¿No tiene un sensor DHT22 real?
 
-La aplicación de ejemplo puede simular datos de humedad y temperatura en caso de que no disponga de un sensor DHT22 real. Para permitir que la aplicación de ejemplo use datos simulados, siga estos pasos:
+aplicación de ejemplo de Hola puede simular la temperatura y humedad datos en caso de que no tiene un sensor DHT22 real. datos de toouse simulado de la aplicación de ejemplo de tooenable hello, siga estos pasos:
 
-1. Abra el archivo `config.h` de la carpeta `app`.
-1. Busque la siguiente línea de código y cambie el valor de `false` a `true`:
+1. Abra hello `config.h` archivo Hola `app` carpeta.
+1. Busque Hola después de la línea de código y cambie el valor de Hola de `false` demasiado`true`:
    ```c
    define SIMULATED_DATA true
    ```
-   ![configurar la aplicación de ejemplo para usar datos simulados](media/iot-hub-sparkfun-thing-dev-get-started/13_arduino-ide-configure-app-use-simulated-data.png)
+   ![Configurar datos de toouse simulado de aplicación de ejemplo de Hola](media/iot-hub-sparkfun-thing-dev-get-started/13_arduino-ide-configure-app-use-simulated-data.png)
    
 1. Guarde con `Control-s`.
 
-### <a name="deploy-the-sample-application-to-sparkfun-esp8266-thing-dev"></a>Implementación de la aplicación de ejemplo en Sparkfun ESP8266 Thing Dev
+### <a name="deploy-hello-sample-application-toosparkfun-esp8266-thing-dev"></a>Implementar tooSparkfun de aplicación de ejemplo de Hola ESP8266 lo desarrollo
 
-1. En Arduino IDE, haga clic en **Tool** >  (Herramienta) **Port** (Puerto) y haga clic en el puerto serie de Sparkfun ESP8266 Thing Dev.
-1. Haga clic en **Sketch** >  (Boceto) **Upload** (Cargar) para compilar e implementar la aplicación de ejemplo en Sparkfun ESP8266 Thing Dev.
+1. Hola Arduino IDE, haga clic en **herramienta** > **puerto**y, a continuación, haga clic en puerto serie Hola para Sparkfun ESP8266 lo dev
+1. Haga clic en **boceto** > **cargar** toobuild e implementar tooSparkfun de aplicación de ejemplo de Hola ESP8266 lo dev
 
 > [!Note]
-> Si usa macOS, quizá vea los siguientes mensajes durante la carga. `warning: espcomm_sync failed`,`error: espcomm_open failed`. Abra la ventana de terminal y realice las siguientes acciones para resolver este problema.
+> Si usas macOS probablemente percibirá Hola siguientes mensajes durante la carga. `warning: espcomm_sync failed`,`error: espcomm_open failed`. Abra la ventana de ternimal y finalizar por debajo de acciones toosolve este problema.
 > ```bash
 > cd /System/Library/Extensions/IOUSBFamily.kext/Contents/PlugIns
 > sudo mv AppleUSBFTDI.kext AppleUSBFTDI.disabled
@@ -201,28 +201,28 @@ La aplicación de ejemplo puede simular datos de humedad y temperatura en caso d
 
 ### <a name="enter-your-credentials"></a>Escriba sus credenciales.
 
-Cuando la carga finalice correctamente, siga los pasos para escribir sus credenciales:
+Una vez finalizada correctamente la carga de hello, siga Hola pasos tooenter sus credenciales:
 
-1. En Arduino IDE, haga clic en **Tools** >  (Herramientas) **Serial Monitor** (Monitor serie).
-1. En la ventana de monitor serie, observe las dos listas desplegables de la esquina inferior derecha.
-1. Seleccione **No line ending** (Sin final de línea) para la lista desplegable de la izquierda.
-1. Seleccione **115200 baud** (115200 baudios) para la lista desplegable derecha.
-1. En el cuadro de entrada ubicado en la parte superior de la ventana del monitor serie, escriba la siguiente información si se le solicita y luego haga clic en **Send** (Enviar).
+1. Hola Arduino IDE, haga clic en **herramientas** > **Monitor serie**.
+1. En la ventana del monitor de la serie de hello, observe listas desplegables de hello dos en hello esquina inferior derecha.
+1. Seleccione **ningún final de línea** de lista desplegable de la izquierda Hola.
+1. Seleccione **115.200 baudios** para la lista desplegable derecha de Hola.
+1. En cuadro de entrada de hello situado en parte superior de saludo de la ventana del monitor de la serie de hello, escriba Hola siguiente información si se le solicita tooprovide y, a continuación, haga clic en **enviar**.
    * SSID de Wi-Fi
    * Contraseña de Wi-Fi
    * Cadena de conexión de dispositivo
 
 > [!Note]
-> La información de credenciales se almacena en la EEPROM de Sparkfun ESP8266 Thing Dev. Si hace clic en el botón de restablecimiento de la placa Sparkfun ESP8266 Thing Dev, la aplicación de ejemplo le pregunta si desea borrar la información. Escriba `Y` para que se borre la información y se le pida de nuevo.
+> información de credenciales de Hola se almacena en hello EEPROM de Sparkfun ESP8266 lo dev. Si hace clic en botón de restablecimiento de hello en hello Sparkfun ESP8266 lo Dev panel, aplicación de ejemplo de Hola se le preguntará si desea obtener información de hello tooerase. Escriba `Y` toohave Hola información borrado y se le pide información de hello tooprovide nuevo.
 
-### <a name="verify-the-sample-application-is-running-successfully"></a>Compruebe que la aplicación de ejemplo se ejecuta correctamente.
+### <a name="verify-hello-sample-application-is-running-successfully"></a>Compruebe la aplicación de ejemplo de Hola se esté ejecutando correctamente
 
-Si ve la siguiente salida de la ventana del monitor serie y el LED parpadeando en Sparkfun ESP8266 Thing Dev, la aplicación de ejemplo se ejecuta correctamente.
+Si ve siguiente Hola de salida de la ventana del monitor de la serie de Hola y Hola parpadear LED de Sparkfun ESP8266 lo Dev, aplicación de ejemplo de Hola se está ejecutando correctamente.
 
 ![salida final en arduino ide](media/iot-hub-sparkfun-thing-dev-get-started/14_arduino-ide-final-output.png)
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Ha conectado correctamente un dispositivo Sparkfun ESP8266 Thing Dev a su centro de IoT y ha enviado los datos de sensor capturados a su centro de IoT. 
+Está correctamente conectado un centro de IoT tooyour Sparkfun ESP8266 lo Dev y envía el centro de IoT de hello capturan sensor datos tooyour. 
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

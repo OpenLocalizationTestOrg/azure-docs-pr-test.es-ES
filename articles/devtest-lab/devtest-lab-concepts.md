@@ -1,6 +1,6 @@
 ---
-title: Conceptos de DevTest Labs | Microsoft Docs
-description: "Aprenda los conceptos básicos de DevTest Labs y cómo puede facilitar la creación, la administración y la supervisión de máquinas virtuales de Azure"
+title: conceptos de laboratorios de aaaDevTest | Documentos de Microsoft
+description: "Obtenga información acerca de los conceptos básicos de Hola de laboratorios de desarrollo y pruebas y cómo puede que sea fácil toocreate, administrar y supervisar máquinas virtuales de Azure"
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: tomarcher
@@ -14,77 +14,77 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/25/2016
 ms.author: tarcher
-ms.openlocfilehash: 1caea59e71126e934e2e52a1ad7f533ffa7d4b03
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d9f1d948002c4d3121e5bdd4e65eb8b54cd91f9c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="devtest-labs-concepts"></a>Conceptos de DevTest Labs
 ## <a name="overview"></a>Información general
-La lista siguiente contiene las definiciones y los conceptos clave de DevTest Labs:
+Hola lista siguiente contiene las definiciones y conceptos clave de laboratorios de desarrollo y pruebas:
 
 ## <a name="labs"></a>Laboratorios
-Un laboratorio es la infraestructura que abarca un grupo de recursos, como máquinas virtuales (VM), que permite una mejor administración de esos recursos especificando límites y cuotas.
+Un laboratorio es la infraestructura de Hola que abarca el proceso de un grupo de recursos, como máquinas virtuales (VM), que permite una mejor administrar esos recursos especificando los límites y cuotas.
 
 ## <a name="virtual-machine"></a>Máquina virtual
-Una máquina virtual de Azure es uno de los distintos tipos de [recursos informáticos a petición y escalables](https://docs.microsoft.com/azure/app-service-web/choose-web-site-cloud-service-vm) que ofrece Azure. Las máquinas virtuales de Azure proporcionan la flexibilidad de virtualización sin necesidad de comprar y mantener el hardware físico que la ejecuta, aunque todavía es necesario mantener la máquina virtual mediante la realización de ciertas tareas, como configurar, aplicar revisiones e instalar el software que se ejecuta en la máquina virtual.
+Una máquina virtual de Azure es uno de los distintos tipos de [recursos informáticos a petición y escalables](https://docs.microsoft.com/azure/app-service-web/choose-web-site-cloud-service-vm) que ofrece Azure. Dé de máquinas virtuales de Azure Hola flexibilidad de virtualización sin necesidad de toobuy y mantener el hardware físico de Hola que lo ejecuta, aunque todavía necesita toomaintain Hola VM mediante la realización de ciertas tareas, como configurar, aplicar revisiones e instalar software de Hola que se ejecuta en él.
 
 [Información general sobre las máquinas virtuales Windows en Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-overview) proporciona información sobre lo que se debe considerar antes de crear una máquina virtual, cómo crearla y cómo administrarla.
 
 ## <a name="claimable-vm"></a>Creación de máquinas virtuales reclamables
-Una máquina virtual reclamable de Azure Claimable es una que está disponible para que pueda usarla cualquier usuario de laboratorio con permisos. Un administrador de laboratorio puede preparar las máquinas virtuales con los artefactos y las imágenes base específicas, y guardarlas en un grupo compartido. Luego, un usuario de laboratorio puede solicitar una máquina virtual de trabajo del grupo cuando necesite una con esa configuración concreta.
+Una máquina virtual reclamable de Azure Claimable es una que está disponible para que pueda usarla cualquier usuario de laboratorio con permisos. Un administrador de laboratorio puede preparar las máquinas virtuales con los artefactos y las imágenes base específicas y guardarlas grupo tooa compartido. Un usuario de laboratorio, a continuación, puede solicitar una máquina virtual desde el grupo de hello en funcionamiento cuando necesiten uno con esa configuración concreta.
 
-Una máquina virtual reclamable no se asigna inicialmente a ningún usuario concreto, pero se mostrará en la lista de todos los usuarios en "Claimable virtual machines" (Máquinas virtuales reclamables). Después de que un usuario reclame una máquina virtual, se mueve hasta su área "Mis máquinas virtuales" y ya no podrá reclamarla otro usuario.
+Una máquina virtual que está claimable no se asigna inicialmente tooany determinado usuario, pero se mostrará en la lista de todos los usuarios en "Máquinas virtuales Claimable". Después de una máquina virtual es reclamada por un usuario, es posible subir tootheir área de "Mis máquinas virtuales" y ya no está claimable por ningún otro usuario.
 
 ## <a name="environment"></a>Environment
-En DevTest Labs, un entorno hace referencia a una colección de recursos de Azure en un laboratorio. [Esta entrada de blog](https://blogs.msdn.microsoft.com/devtestlab/2016/11/16/connect-2016-news-for-azure-devtest-labs-azure-resource-manager-template-based-environments-vm-auto-shutdown-and-more/) describe cómo crear entornos de varias máquinas virtuales a partir de las plantillas de Azure Resource Manager.
+En los laboratorios de desarrollo y pruebas, un entorno hace referencia tooa colección de recursos de Azure en un laboratorio. [Esta entrada de blog](https://blogs.msdn.microsoft.com/devtestlab/2016/11/16/connect-2016-news-for-azure-devtest-labs-azure-resource-manager-template-based-environments-vm-auto-shutdown-and-more/) explica cómo toocreate entornos de varias VM desde las plantillas de Azure Resource Manager.
 
 ## <a name="base-images"></a>Imágenes base
-Las imágenes base son imágenes de máquina virtual con todas las herramientas y los valores de configuración preinstalados y configurados para crear rápidamente una máquina virtual. Puede aprovisionar una máquina virtual seleccionando una base existente y agregando un artefacto para instalar su agente de prueba. Luego puede guardar la máquina virtual aprovisionada como base para que esta pueda utilizarse sin que sea necesario volver a instalar al agente de prueba para cada aprovisionamiento de la máquina virtual.
+Las imágenes base son imágenes de máquina virtual con todas las herramientas de Hola y configuración preinstalado y configurado tooquickly crear una máquina virtual. Puede aprovisionar una máquina virtual seleccionando una base existente y agregar un artefacto tooinstall el agente de prueba. Puede, a continuación, guardar Hola aprovisionar máquinas virtuales como una base para que hello base se puede utilizar sin necesidad de agente de prueba de hello tooreinstall para cada aprovisionamiento de Hola máquina virtual.
 
 ## <a name="artifacts"></a>Artefactos
-Los artefactos se utilizan para implementar y configurar la aplicación después de aprovisionar una máquina virtual. Los artefactos pueden ser:
+Artefactos son toodeploy usado y configurar la aplicación después de aprovisiona una máquina virtual. Los artefactos pueden ser:
 
-* Herramientas que desea instalar en la máquina virtual, como agentes, Fiddler y Visual Studio.
-* Acciones que desea ejecutar en la máquina virtual, como la clonación de un repositorio.
-* Aplicaciones que desea probar.
+* Herramientas que desea tooinstall en hello VM - como los agentes, Fiddler y Visual Studio.
+* Acciones que desea toorun en hello VM - como la clonación de un repositorio.
+* Aplicaciones que desea tootest.
 
-Los artefactos son archivos JSON basados de [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) que contienen instrucciones para realizar la implementación y aplicar la configuración.
+Los artefactos son [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) archivos JSON que contienen la implementación de tooperform instrucciones y aplican la configuración.
 
 ## <a name="artifact-repositories"></a>Repositorios de artefacto
-Los repositorios de artefactos son repositorios de Git donde se insertan los artefactos. Es posible agregar los repositorios de artefactos a varios laboratorios de la organización a fin de reutilizarlos y compartirlos.
+Los repositorios de artefactos son repositorios de Git donde se insertan los artefactos. Repositorios de artefacto pueden agregarse toomultiple laboratorios de su organización, lo cual permite reutilizar y compartir.
 
 ## <a name="formulas"></a>Fórmulas
-Las fórmulas, además de las imágenes base, proporcionan un mecanismo para el aprovisionamiento rápido de la máquina virtual. Una fórmula en DevTest Labs es una lista de valores de propiedad predeterminados que se usan para crear una máquina virtual de laboratorio.
-Mediante las fórmulas, las máquinas virtuales que tengan el mismo conjunto de propiedades, como la imagen base, el tamaño de máquina virtual, la red virtual y los artefactos, se pueden crear sin necesidad de especificar esas propiedades todas las veces. Al crear una máquina virtual a partir de una fórmula, los valores predeterminados pueden usarse tal como están o modificarlos.
+Las fórmulas en las imágenes de toobase de adición, proporcionan un mecanismo para el aprovisionamiento rápido de máquina virtual. Una fórmula en los laboratorios de desarrollo y pruebas es una lista de toocreate utiliza los valores de propiedad predeterminado un laboratorio virtual.
+Con las fórmulas, las máquinas virtuales con el mismo conjunto de propiedades, como la imagen base, tamaño de máquina virtual, red virtual y artefactos - de Hola se pueden crear sin necesidad de toospecify las propiedades de cada vez. Al crear una máquina virtual de una fórmula, los valores predeterminados de hello pueden usarse como-se o modifica.
 
 ## <a name="policies"></a>Directivas
-Las directivas ayudan a controlar los costos en su laboratorio. Por ejemplo, puede crear una directiva para apagar automáticamente las máquinas virtuales según una programación definida.
+Las directivas ayudan a controlar los costos en su laboratorio. Por ejemplo, puede crear un tooautomatically directiva apagar las máquinas virtuales según una programación definida.
 
 ## <a name="caps"></a>Límites
-Los límites son un mecanismo que sirve para minimizar la pérdida en el laboratorio. Por ejemplo, puede establecer un límite para restringir el número de máquinas virtuales que se pueden crear por usuario o en un laboratorio.
+CAP es un desperdicio de toominimize mecanismo en el laboratorio. Por ejemplo, puede establecer un número de hello toorestrict cap de máquinas virtuales que se pueden crear por usuario, o en un laboratorio.
 
 ## <a name="security-levels"></a>Niveles de seguridad
-La seguridad del acceso viene determinada por el Control de acceso basado en roles (RBAC) de Azure. Para entender cómo funciona el acceso, es importante comprender las diferencias entre un permiso, un rol y un ámbito según se define en RBAC.
+La seguridad del acceso viene determinada por el Control de acceso basado en roles (RBAC) de Azure. toounderstand cómo tener acceso a works, ayuda a las diferencias de hello toounderstand entre un permiso, un rol y un ámbito tal como se define por RBAC.
 
-* Permiso: un permiso es un acceso definido para una acción específica (por ejemplo, acceso de lectura a todas las máquinas virtuales).
-* Rol: un rol es un conjunto de permisos que se pueden agrupar y asignar a un usuario. Por ejemplo, el rol de *propietario de la suscripción* tiene acceso a todos los recursos dentro de una suscripción.
-* Ámbito: un ámbito es un nivel dentro de la jerarquía un recurso de Azure (por ejemplo, un grupo de recursos, un único laboratorio o toda la suscripción).
+* -Un permiso es una acción específica de tooa de acceso definida (máquinas virtuales de acceso de lectura, por ejemplo, tooall).
+* Rol: un rol es un conjunto de permisos que se pueden agrupar y tooa usuario asignado. Por ejemplo, hello *propietario de la suscripción* rol tiene acceso a los recursos de tooall dentro de una suscripción.
+* Ámbito: un ámbito es un nivel dentro de la jerarquía de Hola de un recurso de Azure, como un grupo de recursos, un único laboratorio o suscripción completa Hola.
 
-Dentro del ámbito de DevTest Labs, hay dos tipos de roles para definir los permisos de usuario: usuario de laboratorio y propietario de laboratorio.
+En el ámbito de Hola de laboratorios de desarrollo y pruebas, hay dos tipos de permisos de usuario de roles toodefine: usuario de laboratorio y de propietario de laboratorio.
 
-* Propietario de laboratorio: el propietario de un laboratorio tiene acceso a todos los recursos del laboratorio. Por lo tanto, el propietario de un laboratorio puede modificar las directivas, leer y escribir en todas las máquinas virtuales, cambiar la red virtual, etc.
+* Propietario de laboratorio: el propietario de un laboratorio tiene tooany acceder a los recursos de laboratorio Hola. Por lo tanto, un propietario de laboratorio puede modificar las directivas, leer y escribir todas las máquinas virtuales, cambiar la red virtual de hello y así sucesivamente.
 * Usuario de laboratorio: un usuario de laboratorio puede ver todos los recursos de laboratorio, como máquinas virtuales, directivas y redes virtuales, pero no puede modificar las directivas ni las máquinas virtuales creadas por otros usuarios.
 
-Para ver cómo crear roles personalizados en DevTest Labs, consulte el artículo [Concesión de permisos de usuario a directivas específicas de laboratorio](devtest-lab-grant-user-permissions-to-specific-lab-policies.md).
+toosee cómo toocreate roles personalizados en los laboratorios de desarrollo y pruebas, consulte el artículo toohello, [conceder permisos de usuario en las directivas de laboratorio toospecific](devtest-lab-grant-user-permissions-to-specific-lab-policies.md).
 
-Puesto que los ámbitos son jerárquicos, cuando un usuario tiene permisos en un ámbito determinado, también se le conceden automáticamente en cada ámbito de nivel inferior que engloba. Por ejemplo, si un usuario está asignado al rol de propietario de la suscripción, tiene acceso a todos los recursos de una suscripción, lo que incluye todas las máquinas virtuales, todas las redes virtuales y todos los laboratorios. Por lo tanto, el propietario de una suscripción hereda automáticamente el rol de propietario de laboratorio. Sin embargo, lo contrario no es cierto. El propietario de un laboratorio tiene acceso a un laboratorio, que es un ámbito inferior al del nivel de suscripción. Por lo tanto, el propietario de un laboratorio no podrá ver las máquinas virtuales, las redes virtuales o los recursos que se encuentren fuera del laboratorio.
+Puesto que los ámbitos son jerárquicos, cuando un usuario tiene permisos en un ámbito determinado, también se le conceden automáticamente en cada ámbito de nivel inferior que engloba. Por ejemplo, si se asigna a un usuario toohello rol de propietario de la suscripción, tienen acceso a los recursos del tooall en una suscripción, que incluyen todas las máquinas virtuales, todas las redes virtuales y todas las prácticas. Por lo tanto, un propietario de la suscripción hereda automáticamente el rol Hola del propietario de laboratorio. Sin embargo, no es cierto Hola opuesto. El propietario de un laboratorio tiene laboratorio tooa de acceso, que es un ámbito inferior al nivel de suscripción de Hola. Por lo tanto, el propietario de un laboratorio no será capaz de toosee las máquinas virtuales o redes virtuales o todos los recursos que se encuentran fuera del laboratorio de Hola.
 
-## <a name="azure-resource-manager-templates"></a>Plantillas del Administrador de recursos de Azure
-Todos los conceptos tratados en este artículo pueden configurarse mediante el uso de plantillas de Azure Resource Manager, que permiten definir la configuración y la infraestructura de la solución de Azure e implementarla varias veces en un estado coherente.
+## <a name="azure-resource-manager-templates"></a>Plantillas de Azure Resource Manager
+Todos Hola conceptos descritos en este artículo se pueden configurar mediante el uso de plantillas de Azure Resource Manager, que le permiten definen Hola/configuración de la infraestructura de la solución de Azure y lo implementación varias veces en un estado coherente.
 
-[Nociones sobre la estructura y la sintaxis de las plantillas de Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates#template-format) describe la estructura de una plantilla de Azure Resource Manager y las propiedades que están disponibles en las diferentes secciones de ella.
+[Comprender la estructura de Hola y la sintaxis de plantillas de Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates#template-format) describe Hola estructura de un propiedades de hello y plantilla de Azure Resource Manager que están disponibles en las diferentes secciones de Hola de una plantilla.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

@@ -1,16 +1,16 @@
 Ahora se ofrece en Azure compatibilidad con dos características de depuración, Salida de la consola y Captura de pantalla, para el modelo de implementación de Resource Manager en máquinas virtuales de Azure. 
 
-Cuando lleva su propia imagen a Azure o incluso cuando arranca una de las imágenes de la plataforma, hay muchas razones por las que una máquina virtual puede entrar en un estado que no permita el arranque. Estas características le permiten diagnosticar y recuperar fácilmente las máquinas virtuales de los errores de arranque.
+Al volver a poner su propia imagen tooAzure o incluso arranque uno de imágenes de la plataforma de hello, puede haber muchas razones, ¿por qué se obtiene una máquina Virtual en un estado no sean de arranque. Estos permiten características tooeasily, diagnosticar y recuperarse de las máquinas virtuales de los errores de arranque.
 
-Para las máquinas virtuales Linux, puede ver fácilmente la salida de su registro de consola desde el portal:
+Para máquinas de virtuales de Linux, puede ver fácilmente salida de hello de su registro de la consola de hello Portal:
 
 ![Azure Portal](./media/virtual-machines-common-boot-diagnostics/screenshot1.png)
  
-Sin embargo, para las máquinas virtuales Windows y Linux, Azure también le permite ver una captura de pantalla de la máquina virtual desde el hipervisor:
+Sin embargo, Windows y máquinas virtuales de Linux, Azure también permite toosee una captura de pantalla de hello VM desde el hipervisor de hello:
 
 ![Error](./media/virtual-machines-common-boot-diagnostics/screenshot2.png)
 
-Ambas características son compatibles para las máquinas virtuales de Azure en todas las regiones. Tenga en cuenta que las capturas de pantalla y la salida pueden tardar hasta 10 minutos en aparecer en la cuenta de almacenamiento.
+Ambas características son compatibles para las máquinas virtuales de Azure en todas las regiones. Tenga en cuenta, capturas de pantalla y salida pueden tardar hasta too10 minutos tooappear en su cuenta de almacenamiento.
 
 ## <a name="common-boot-errors"></a>Errores comunes de arranque
 
@@ -29,15 +29,15 @@ Ambas características son compatibles para las máquinas virtuales de Azure en 
 - [Error de arranque o INACCESSIBLE_BOOT_DEVICE](https://support.microsoft.com/help/4010143)
 
 ## <a name="enable-diagnostics-on-a-new-virtual-machine"></a>Habilitación del diagnóstico en una nueva máquina virtual
-1. Cuando cree una máquina virtual desde la versión preliminar del portal, seleccione **Azure Resource Manager** en la lista desplegable de modelo de implementación:
+1. Al crear una nueva máquina Virtual desde el Portal de vista previa de hello, seleccione hello **Azure Resource Manager** de lista desplegable de modelo de implementación de hello:
  
     ![Resource Manager](./media/virtual-machines-common-boot-diagnostics/screenshot3.jpg)
 
-2. Configure la opción Supervisión para seleccionar la cuenta de almacenamiento donde desee colocar estos archivos de diagnóstico.
+2. Configurar Hola cuenta de almacenamiento de hello en tooselect de supervisión opción que desee que tooplace estos archivos de diagnóstico.
  
     ![Creación de una máquina virtual](./media/virtual-machines-common-boot-diagnostics/screenshot4.jpg)
 
-3. Si va a realizar la implementación con una plantilla de Azure Resource Manager, vaya al recurso de máquina virtual y anexe la sección de perfil de diagnóstico. Recuerde usar el encabezado de versión de API "2015-06-15".
+3. Si va a implementar desde una plantilla de Azure Resource Manager, navegue tooyour recurso de máquina Virtual y anexar la sección de perfil de diagnóstico de Hola. Recuerde que el encabezado de la versión de API de "2015-06-15" toouse Hola.
 
     ```json
     {
@@ -46,7 +46,7 @@ Ambas características son compatibles para las máquinas virtuales de Azure en 
           … 
     ```
 
-4. El perfil de diagnóstico le permite seleccionar la cuenta de almacenamiento donde desea colocar estos registros.
+4. perfil de diagnóstico de Hello permite cuenta de almacenamiento de hello tooselect donde desea tooput estos registros.
 
     ```json
             "diagnosticsProfile": {
@@ -59,11 +59,11 @@ Ambas características son compatibles para las máquinas virtuales de Azure en 
         }
     ```
 
-Para implementar una máquina virtual de ejemplo con el diagnóstico de arranque habilitado, visite nuestro repositorio aquí.
+toodeploy una muestra de la máquina Virtual con diagnósticos de arranque habilitada, consulte nuestro repositorio aquí.
 
 ## <a name="update-an-existing-virtual-machine"></a>Actualización de una máquina virtual existente ##
 
-Para habilitar el diagnóstico de arranque a través del portal, también puede actualizar una máquina virtual existente en el portal. Seleccione la opción Diagnósticos de arranque y guarde. Reinicie la máquina virtual para que surta efecto.
+tooenable el diagnóstico de arranque a través de hello Portal, también puede actualizar una máquina Virtual existente a través de hello Portal. Diagnóstico de arranque de hello seleccione opción y guardar. Reinicie el efecto de hello VM tootake.
 
 ![Actualización de una máquina virtual existente](./media/virtual-machines-common-boot-diagnostics/screenshot5.png)
 

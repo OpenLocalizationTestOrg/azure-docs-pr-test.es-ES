@@ -1,5 +1,5 @@
 ---
-title: "Compatibilidad de SQL Data Warehouse con clientes de nivel inferior para la auditoría de datos | Microsoft Docs"
+title: "los clientes de nivel inferior de almacenamiento de datos de aaaSQL soporte para auditoría de datos | Documentos de Microsoft"
 description: "Obtenga información sobre compatibilidad de Almacenamiento de datos SQL con clientes de nivel inferior para auditoría de datos."
 services: sql-data-warehouse
 documentationcenter: 
@@ -15,29 +15,29 @@ ms.topic: article
 ms.custom: security
 ms.date: 10/31/2016
 ms.author: rortloff;barbkess
-ms.openlocfilehash: a7ea6141285a0098339f1e071af2592dd4535c12
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 377488680eb297c3e9b1dc754c003c5b19b47996
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="sql-data-warehouse----downlevel-clients-support-for-auditing-and-dynamic-data-masking"></a>SQL Data Warehouse: compatibilidad con clientes de nivel inferior para enmascaramiento de datos dinámicos y auditoría
 [Auditoría](sql-data-warehouse-auditing-overview.md) funciona con los clientes SQL que admiten el redireccionamiento de TDS.
 
-Cualquier cliente que implementa TDS 7.4 también debe admitir el redireccionamiento. Entre las excepciones a esto se incluyen JDBC 4.0, en el que la función de redireccionamiento no es totalmente compatible y Tedious para Node.JS, en cuya redireccionamiento no se ha implementado.
+Cualquier cliente que implementa TDS 7.4 también debe admitir el redireccionamiento. Excepciones toothis incluyen JDBC 4.0 de qué característica de redirección de hello no es totalmente compatible y tediosas para Node.JS en el que no se implementó la redirección.
 
-Para "clientes de nivel inferior", es decir, los que admiten TDS versión 7.3 e inferiores, debe modificarse el FQDN del servidor en la cadena de conexión:
+Para "Clientes de nivel inferior", es decir, que admite la versión 7.3 TDS y a continuación - Hola FQDN del servidor en la cadena de conexión de hello debe modificarse:
 
-FQDN del servidor original en la cadena de conexión: <*nombre del servidor*>. database.windows.net
+FQDN del servidor original en la cadena de conexión de hello: <*nombre del servidor*>. database.windows.net
 
-FQDN del servidor modificado en la cadena de conexión: <*nombre del servidor*>. database.**secure**.windows.net
+FQDN del servidor modificado en la cadena de conexión de hello: <*nombre del servidor*> base de datos. **seguro**. windows.net
 
 Una lista parcial de "Clientes de nivel inferior" incluye:
 
 * .NET 4.0 y versiones posteriores,
 * ODBC 10.0 y versiones posteriores.
-* JDBC (aunque JDBC admite TDS 7.4, la característica de redireccionamiento de TDS no es totalmente compatible)
+* JDBC (al mismo tiempo JDBC admiten TDS 7.4, Hola característica de redirección de TDS no es totalmente compatible)
 * Tedious (para Node.JS)
 
-**Comentario:** la anterior modificación de FDQN de servidor puede resultar útil también para aplicar una directiva de auditoría de nivel de SQL Server sin necesidad de un paso de configuración en cada base de datos (mitigación temporal).     
+**Comentario:** Hola por encima de la modificación de FQDN de servidor puede ser útil también para aplicar una directiva de auditoría de nivel de SQL Server sin necesidad de una configuración paso a paso en cada base de datos (mitigación temporal).     
 

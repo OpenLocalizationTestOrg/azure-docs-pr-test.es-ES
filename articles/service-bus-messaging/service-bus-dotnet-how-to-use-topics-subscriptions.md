@@ -1,5 +1,5 @@
 ---
-title: "Introducción a los temas y las suscripciones de Azure Service Bus | Microsoft Docs"
+title: aaaGet a trabajar con temas de Service Bus de Azure y las suscripciones | Documentos de Microsoft
 description: "Escriba una aplicación de consola en C# que use los temas y las suscripciones de mensajería de Service Bus."
 services: service-bus-messaging
 documentationcenter: .net
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 06/30/2017
 ms.author: sethm
-ms.openlocfilehash: 9401ada519f600b0d2817f06a396e16607a24129
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 619d602599d97ecff2ded0681a383b19f1a8b7ad
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-service-bus-topics"></a>Introducción a las colas de Service Bus
 
@@ -26,74 +26,74 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="what-will-be-accomplished"></a>Lo que se logrará
 
-En este tutorial se describen los pasos siguientes:
+Este tutorial trata Hola pasos:
 
-1. Creación de un espacio de nombres de Service Bus mediante Azure Portal.
-2. Creación de un tema de Service Bus mediante Azure Portal.
-3. Creación de una suscripción de Service Bus a dicho tema mediante Azure Portal.
-4. Escritura de una aplicación de consola para enviar un mensaje al tema.
-5. Escritura de una aplicación de consola para recibir dicho mensaje de la suscripción.
+1. Crear un espacio de nombres de Bus de servicio, mediante Hola portal de Azure.
+2. Crear un tema de Bus de servicio, mediante Hola portal de Azure.
+3. Crear un tema de toothat de la suscripción de Bus de servicio, mediante Hola portal de Azure.
+4. Escribir una toosend de aplicación de consola en un tema de toohello de mensaje.
+5. Escribir una tooreceive de aplicación de consola que el mensaje de suscripción de Hola.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-1. [Visual Studio 2015 o posterior](http://www.visualstudio.com). En los ejemplos de este tutorial se usa Visual Studio 2017.
+1. [Visual Studio 2015 o posterior](http://www.visualstudio.com). ejemplos de Hello en este tutorial utiliza Visual Studio de 2017.
 2. Una suscripción de Azure.
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## <a name="1-create-a-namespace-using-the-azure-portal"></a>1. Creación de un espacio de nombres mediante Azure Portal
+## <a name="1-create-a-namespace-using-hello-azure-portal"></a>1. Crear un espacio de nombres mediante Hola portal de Azure
 
-Si ya ha creado un espacio de nombres de mensajería de Service Bus, vaya a la sección [Creación de un tema mediante Azure Portal](#2-create-a-topic-using-the-azure-portal).
+Si ya ha creado un espacio de nombres de mensajería de Bus de servicio, consulte el toohello [crear un tema mediante el portal de Azure hello](#2-create-a-topic-using-the-azure-portal) sección.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-## <a name="2-create-a-topic-using-the-azure-portal"></a>2. Creación de un tema mediante Azure Portal
+## <a name="2-create-a-topic-using-hello-azure-portal"></a>2. Crear un tema mediante Hola portal de Azure
 
-1. Inicie sesión en [Azure Portal][azure-portal].
-2. En el panel de navegación izquierdo del portal, haga clic en **Service Bus** (si no ve **Service Bus**, haga clic en **Más servicios**).
-3. Haga clic en el espacio de nombres en el que desea crear el tema. Aparece la hoja de información general del espacio de nombres:
+1. Inicie sesión en toohello [portal de Azure][azure-portal].
+2. En el panel de navegación izquierdo de hello del portal de hello, haga clic en **Service Bus** (si no ve **Service Bus**, haga clic en **más servicios**).
+3. Haga clic en el espacio de nombres de hello en el que le gustaría tema de hello toocreate. aparece la hoja de información general del espacio de nombres de Hello:
    
-    ![Creación de un tema][createtopic1]
-4. En la hoja **Espacio de nombres de Service Bus**, haga clic en **Temas** y, después, en **Agregar tema**.
+    ![de un tema][createtopic1]
+4. Hola **espacio de nombres de Bus de servicio** hoja, haga clic en **temas**, a continuación, haga clic en **Agregar tema**.
    
     ![Seleccionar temas][createtopic2]
-5. Escriba el nombre del tema y desactive la opción **Habilitar particiones**. Deje las restantes opciones con sus valores predeterminados.
+5. Escriba un nombre para el tema de Hola y desactive la opción hello **habilitar las particiones** opción. Deje Hola otras opciones con sus valores predeterminados.
    
     ![Seleccionar Nuevo][createtopic3]
-6. Haga clic en **Crear**en la parte inferior de la hoja.
+6. En la parte inferior de Hola de hoja de hello, haga clic en **crear**.
 
-## <a name="3-create-a-subscription-to-the-topic"></a>3. Creación de una suscripción al tema
+## <a name="3-create-a-subscription-toohello-topic"></a>3. Crear un tema de toohello de suscripción
 
-1. En el panel recursos del portal, haga clic en el espacio de nombres que creó en el paso 1 y, después, en el nombre del tema que creó en el paso 2.
-2. A la parte superior del panel de información general, haga clic en el signo más junto a **Suscripción** para agregar una suscripción a este tema.
+1. En panel de recursos del portal de hello, haga clic en el espacio de nombres de Hola que creó en el paso 1 y luego haga clic en el nombre del tema de Hola que creó en el paso 2.
+2. Un principio Hola del panel de información general de hello, haga clic en hello además de iniciar sesión a continuación demasiado**suscripción** tooadd un tema de toothis de suscripción.
 
     ![Creación de una suscripción][createtopic4]
 
-3. Escriba el nombre de la suscripción. Deje las restantes opciones con sus valores predeterminados.
+3. Escriba un nombre para la suscripción de Hola. Deje Hola otras opciones con sus valores predeterminados.
 
-## <a name="4-send-messages-to-the-topic"></a>4. Envío de mensajes al tema
+## <a name="4-send-messages-toohello-topic"></a>4. Enviar tema toohello de mensajes
 
-Para enviar mensajes al tema, se escribe una aplicación de consola en C# mediante Visual Studio.
+tema de toohello de toosend mensajes, se escribe una aplicación de consola de C# con Visual Studio.
 
 ### <a name="create-a-console-application"></a>Creación de una aplicación de consola
 
 Inicie Visual Studio y cree un nuevo proyecto **Console app (.NET Framework)**.
 
-### <a name="add-the-service-bus-nuget-package"></a>Agregar el paquete NuGet de Service Bus
+### <a name="add-hello-service-bus-nuget-package"></a>Agregar paquete de NuGet de Bus de servicio de Hola
 
-1. Haga clic con el botón derecho en el proyecto recién creado y seleccione **Administrar paquetes NuGet**.
-2. Haga clic en la pestaña **Examinar**, busque **Microsoft Azure Service Bus** y seleccione el elemento **WindowsAzure.ServiceBus**. Haga clic en **Instalar** para completar la instalación y, a continuación, cierre este cuadro de diálogo.
+1. Haga clic en proyecto de hello recién creado y seleccione **administrar paquetes de NuGet**.
+2. Haga clic en hello **examinar** ficha, busque **Microsoft Azure Service Bus**y, a continuación, seleccione hello **WindowsAzure.ServiceBus** elemento. Haga clic en **instalar** toocomplete Hola instalación, a continuación, cierre este cuadro de diálogo.
    
     ![Seleccionar un paquete NuGet][nuget-pkg]
 
-### <a name="write-some-code-to-send-a-message-to-the-topic"></a>Escritura de código para enviar un mensaje al tema
+### <a name="write-some-code-toosend-a-message-toohello-topic"></a>Escriba algún código toosend un tema de toohello de mensaje
 
-1. Agregue la siguiente instrucción `using` al principio del archivo Program.cs.
+1. Agregue los siguiente hello `using` parte superior de toohello de instrucción del archivo Program.cs de Hola.
    
     ```csharp
     using Microsoft.ServiceBus.Messaging;
     ```
-2. Agregue el siguiente código al método `Main`. Establezca la variable `connectionString` en la cadena de conexión que obtuvo al crear el espacio de nombres y establezca `topicName` en el nombre que usó cuando creó el tema.
+2. Agregar Hola después código toohello `Main` método. Conjunto hello `connectionString` cadena de conexión de la variable toohello que se obtuvo al crear el espacio de nombres de Hola y establecer `topicName` toohello nombre que usó al crear tema Hola.
    
     ```csharp
     var connectionString = "<your connection string>";
@@ -107,7 +107,7 @@ Inicie Visual Studio y cree un nuevo proyecto **Console app (.NET Framework)**.
 
     client.Send(message);
 
-    Console.WriteLine("Message successfully sent! Press ENTER to exit program");
+    Console.WriteLine("Message successfully sent! Press ENTER tooexit program");
     Console.ReadLine();
     ```
    
@@ -138,25 +138,25 @@ Inicie Visual Studio y cree un nuevo proyecto **Console app (.NET Framework)**.
 
                 client.Send(message);
 
-                Console.WriteLine("Message successfully sent! Press ENTER to exit program");
+                Console.WriteLine("Message successfully sent! Press ENTER tooexit program");
                 Console.ReadLine();
             }
         }
     }
     ```
-3. Ejecute el programa y compruebe Azure Portal: haga clic en el nombre del tema en la hoja **Introducción** del espacio de nombres. Se muestra la hoja **Essentials** del tema. En las suscripciones que se enumeran cerca de la parte inferior de la hoja, observe que el valor **Número de mensajes** de cada suscripción ahora debe ser 1. Cada vez que se ejecuta la aplicación de remitente sin recuperar los mensajes (como se describe en la siguiente sección), este valor aumenta en 1. Tenga en cuenta también que el tamaño actual del tema aumenta el valor de **Actual** en la hoja **Essentials** cada vez que la aplicación agrega un mensaje al tema o a la suscripción.
+3. Ejecutar programa hello y comprobar Hola portal de Azure: haga clic en nombre de hello del tema en el espacio de nombres de hello **Introducción** hoja. tema de Hello **Essentials** hoja se muestra. En suscripciones de hello cerca de la parte inferior de Hola de hoja de hello, tenga en cuenta que hello **número de mensajes** valor para cada suscripción ahora debe ser 1. Cada vez que se ejecute la aplicación del remitente Hola sin tener que recuperar mensajes de saludo (como se describe en la sección siguiente de hello), este valor se incrementa en 1. Tenga en cuenta también ese tamaño actual de Hola de Hola Hola de incrementos de tema **actual** valor en hello **Essentials** hoja cada vez aplicación hello agrega una mensaje toohello/suscripción al tema.
    
       ![Tamaño del mensaje][topic-message]
 
-## <a name="5-receive-messages-from-the-subscription"></a>5. Recepción de mensajes de la suscripción
+## <a name="5-receive-messages-from-hello-subscription"></a>5. Recibir mensajes de Hola suscripción
 
-1. Para recibir el mensaje, o los mensajes, que acaba de enviar, cree una nueva aplicación de consola y agregue una referencia al paquete NuGet de Service Bus, de forma similar a la aplicación de remitente anterior.
-2. Agregue la siguiente instrucción `using` al principio del archivo Program.cs.
+1. Hola tooreceive o mensajes que acabamos de enviar, cree una nueva aplicación de consola y agregue un paquete de NuGet de Bus de servicio de referencia toohello, aplicación remitente similar de toohello anterior.
+2. Agregue los siguiente hello `using` parte superior de toohello de instrucción del archivo Program.cs de Hola.
    
     ```csharp
     using Microsoft.ServiceBus.Messaging;
     ```
-3. Agregue el siguiente código al método `Main`. Establezca la variable `connectionString` en la cadena de conexión que obtuvo al crear el espacio de nombres y establezca `topicName` en el nombre que usó cuando creó el tema.
+3. Agregar Hola después código toohello `Main` método. Conjunto hello `connectionString` toohello variable conexión cadena que se obtuvo al crear el espacio de nombres de Hola y establecer `topicName` nombre toohello que usó al crear tema Hola.
    
     ```csharp
     var connectionString = "<your connection string>";
@@ -170,7 +170,7 @@ Inicie Visual Studio y cree un nuevo proyecto **Console app (.NET Framework)**.
       Console.WriteLine(String.Format("Message id: {0}", message.MessageId));
     });
    
-    Console.WriteLine("Press ENTER to exit program");
+    Console.WriteLine("Press ENTER tooexit program");
     Console.ReadLine();
     ```
    
@@ -197,13 +197,13 @@ Inicie Visual Studio y cree un nuevo proyecto **Console app (.NET Framework)**.
             Console.WriteLine(String.Format("Message id: {0}", message.MessageId));
           });
 
-          Console.WriteLine("Press ENTER to exit program");   
+          Console.WriteLine("Press ENTER tooexit program");   
           Console.ReadLine();
         }
       }
     }
     ```
-4. Ejecute el programa y vuelva a comprobar el portal. Tenga en cuenta que los valores de **Recuento de mensajes** y **Actual** deben ser ahora 0.
+4. Ejecutar programa hello y visite el portal de Hola de nuevo. Tenga en cuenta que hello **número de mensajes** y **actual** valores ahora son 0.
    
     ![Longitud del tema][topic-message-receive]
 
@@ -211,7 +211,7 @@ Inicie Visual Studio y cree un nuevo proyecto **Console app (.NET Framework)**.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Consulte nuestro [repositorio de GitHub con ejemplos](https://github.com/Azure/azure-service-bus/tree/master/samples), donde se muestran algunas de las características más avanzadas de la mensajería de Service Bus.
+Visite nuestro [repositorio de GitHub con ejemplos](https://github.com/Azure/azure-service-bus/tree/master/samples) que muestran algunas de las características de mensajería de Bus de servicio más avanzadas de Hola.
 
 <!--Image references-->
 

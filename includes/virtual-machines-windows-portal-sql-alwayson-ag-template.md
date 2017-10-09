@@ -1,0 +1,2 @@
+Este tutorial le guía por la creación de soluciones de Hola de hello portal de Azure. Si está interesado en la creación de esta solución desde una plantilla, elija plantilla adecuada de Hola de [plantillas de GitHub de Microsoft Azure](http://github.com/Azure/azure-quickstart-templates). Hola [crear un grupo de disponibilidad con máquinas virtuales de réplica de SQL Server 2014](http://github.com/Azure/azure-quickstart-templates/tree/master/sqlvm-alwayson-cluster) plantilla crea Hola misma solución que este tutorial. 
+

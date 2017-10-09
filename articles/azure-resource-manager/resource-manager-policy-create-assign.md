@@ -1,6 +1,6 @@
 ---
-title: "Asignación y administración de directivas de recursos de Azure | Microsoft Docs"
-description: "Describe cómo aplicar directivas de recursos de Azure a las suscripciones y a los grupos de recursos y cómo ver directivas de recursos."
+title: aaaAssign y administrar las directivas de recursos de Azure | Documentos de Microsoft
+description: "Describe cómo tooapply recursos de Azure directivas toosubscriptions grupos y de recursos y cómo las directivas de recursos de tooview."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,36 +14,36 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2017
 ms.author: tomfitz
-ms.openlocfilehash: b204cffa8fab0ad27a9f78a81c04f0a0225d95f5
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: b6999b43bbcc80d2fde9911352fd4352fa453443
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="assign-and-manage-resource-policies"></a>Asignación y administración de directivas de recursos
 
-Para implementar una directiva, debe realizar estos pasos:
+tooimplement una directiva, debe realizar estos pasos:
 
-1. Compruebe las definiciones de directiva (incluidas las directivas integradas proporcionadas por Azure) para ver si ya existe una en la suscripción que cumpla sus requisitos.
+1. Comprobar directiva definiciones (incluidas las directivas integradas proporcionadas por Azure) toosee si ya existe uno en la suscripción que cumple los requisitos.
 2. Si existe una, obtenga el nombre.
-3. Si no existe, defina la regla de directiva con JSON y agréguela como una definición de directiva en su suscripción. Este paso hace que la directiva esté disponible para la asignación, pero no aplica las reglas a la suscripción.
-4. En cada caso, asigne la directiva a un ámbito (por ejemplo, una suscripción o un grupo de recursos). Ahora se exige el cumplimiento de las reglas de la directiva.
+3. Si no existe, definir la regla de directiva de hello con JSON y agréguela como una definición de directiva en su suscripción. Este paso pone a disposición para la asignación de directiva de hello pero no aplica tooyour suscripción de hello reglas.
+4. Para cualquiera de los casos, asignar al ámbito de hello directiva tooa (por ejemplo, un suscripción o grupo de recursos). Ahora se aplican reglas de Hola de directiva de Hola.
 
-Este artículo se centra en los pasos necesarios para crear una definición de directiva y asignarla a un ámbito mediante la API de REST, PowerShell o la CLI de Azure. Si prefiere usar el portal para asignar directivas, consulte [Use Azure portal to assign and manage resource policies](resource-manager-policy-portal.md) (Uso de Azure Portal para asignar y administrar directivas de recursos). El artículo no se centra en la sintaxis para crear la definición de la directiva. Para información sobre la sintaxis de directivas, consulte [Uso de directivas para administrar los recursos y controlar el acceso](resource-manager-policy.md).
+En este artículo se centra en hello pasos toocreate una definición de directiva y asignar ese ámbito de tooa definición a través de la API de REST, PowerShell o CLI de Azure. Si prefiere que las directivas de toouse hello tooassign portal, consulte [tooassign portal de Azure de uso y administrar las directivas de recursos](resource-manager-policy-portal.md). En este artículo no se centra en la sintaxis de Hola para crear la definición de la directiva de Hola. Para información sobre la sintaxis de directivas, consulte [Uso de directivas para administrar los recursos y controlar el acceso](resource-manager-policy.md).
 
 ## <a name="rest-api"></a>API de REST
 
 ### <a name="create-policy-definition"></a>Creación de definición de directiva
 
-Puede crear una directiva con la [API de REST para definiciones de directiva](/rest/api/resources/policydefinitions). La API de REST permite crear y eliminar definiciones de directiva, así como recuperar información sobre las definiciones existentes.
+Puede crear una directiva con hello [API de REST para las definiciones de directiva](/rest/api/resources/policydefinitions). API de REST de Hello permite toocreate y eliminar definiciones de directiva y obtener información acerca de las definiciones existentes.
 
-Para crear una definición de directiva, ejecute:
+toocreate una definición de directiva, ejecute:
 
 ```HTTP
 PUT https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.authorization/policydefinitions/{policyDefinitionName}?api-version={api-version}
 ```
 
-Incluya un cuerpo de solicitud similar al ejemplo siguiente:
+Incluir un toohello similar de cuerpo de solicitud siguiente ejemplo:
 
 ```json
 {
@@ -52,14 +52,14 @@ Incluya un cuerpo de solicitud similar al ejemplo siguiente:
       "allowedLocations": {
         "type": "array",
         "metadata": {
-          "description": "The list of locations that can be specified when deploying resources",
+          "description": "hello list of locations that can be specified when deploying resources",
           "strongType": "location",
           "displayName": "Allowed locations"
         }
       }
     },
     "displayName": "Allowed locations",
-    "description": "This policy enables you to restrict the locations your organization can specify when deploying resources.",
+    "description": "This policy enables you toorestrict hello locations your organization can specify when deploying resources.",
     "policyRule": {
       "if": {
         "not": {
@@ -77,22 +77,22 @@ Incluya un cuerpo de solicitud similar al ejemplo siguiente:
 
 ### <a name="assign-policy"></a>Asignación de directiva
 
-Puede aplicar la definición de la directiva en el ámbito deseado a través de la [API de REST para asignaciones de directivas](/rest/api/resources/policyassignments). La API de REST permite crear y eliminar asignaciones de directiva, así como recuperar información sobre las asignaciones existentes.
+Puede aplicar la definición de la directiva de hello en el ámbito de hello deseado a través de hello [API de REST para las asignaciones de directivas](/rest/api/resources/policyassignments). Hola REST API permite toocreate y eliminar las asignaciones de directivas y obtener información acerca de las asignaciones existentes.
 
-Para crear una nueva asignación de directiva, ejecute lo siguiente:
+toocreate una asignación de directiva, ejecute:
 
 ```HTTP
 PUT https://management.azure.com /subscriptions/{subscription-id}/providers/Microsoft.authorization/policyassignments/{policyAssignmentName}?api-version={api-version}
 ```
 
-{policy-assignment} es el nombre de la asignación de directiva.
+Hello {asignación de directiva} es el nombre del saludo de asignación de directiva de Hola.
 
-Incluya un cuerpo de solicitud similar al ejemplo siguiente:
+Incluir un toohello similar de cuerpo de solicitud siguiente ejemplo:
 
 ```json
 {
   "properties":{
-    "displayName":"West US only policy assignment on the subscription ",
+    "displayName":"West US only policy assignment on hello subscription ",
     "description":"Resources can only be provisioned in West US regions",
     "parameters": {
       "allowedLocations": { "value": ["northeurope", "westus"] }
@@ -104,16 +104,16 @@ Incluya un cuerpo de solicitud similar al ejemplo siguiente:
 ```
 
 ### <a name="view-policy"></a>Visualización de directiva
-Para obtener una directiva, use la operación [Obtener definición de directiva](https://docs.microsoft.com/rest/api/resources/policydefinitions#PolicyDefinitions_Get).
+tooget una directiva, utilice hello [obtener la definición de directiva](https://docs.microsoft.com/rest/api/resources/policydefinitions#PolicyDefinitions_Get) operación.
 
 ### <a name="get-aliases"></a>Obtención de alias
-Puede recuperar alias a través de la API de REST:
+Puede recuperar alias a través de hello API de REST:
 
 ```HTTP
 GET /subscriptions/{id}/providers?$expand=resourceTypes/aliases&api-version=2015-11-01
 ```
 
-En el ejemplo siguiente se muestra una definición de un alias. Como puede ver, un alias define rutas de acceso en distintas versiones de API, aunque se cambie el nombre de la propiedad. 
+Hola de ejemplo siguiente muestra una definición de un alias. Como puede ver, un alias define rutas de acceso en distintas versiones de API, aunque se cambie el nombre de la propiedad. 
 
 ```json
 "aliases": [
@@ -140,16 +140,16 @@ En el ejemplo siguiente se muestra una definición de un alias. Como puede ver, 
 
 ## <a name="powershell"></a>PowerShell
 
-Antes de continuar con los ejemplos de PowerShell, asegúrese de que tiene [instalada la última versión](/powershell/azure/install-azurerm-ps) de Azure PowerShell. Se agregaron parámetros de directiva en la versión 3.6.0. Si tiene una versión anterior, los ejemplos devuelven un error que indica que no se encuentra el parámetro.
+Antes de continuar con los ejemplos de PowerShell de hello, asegúrese de que tiene [instalada la versión más reciente de hello](/powershell/azure/install-azurerm-ps) de PowerShell de Azure. Se agregaron parámetros de directiva en la versión 3.6.0. Si tiene una versión anterior, los ejemplos de hello obtienen que un parámetro hello de error que indica que no se encuentra.
 
 ### <a name="view-policy-definitions"></a>Visualización de definiciones de directiva
-Para ver todas las definiciones de directiva en su suscripción, utilice el siguiente comando:
+toosee de comandos de todas las definiciones de directiva en su suscripción, Hola de uso siguientes:
 
 ```powershell
 Get-AzureRmPolicyDefinition
 ```
 
-Devuelve todas las definiciones de directiva disponibles, incluidas las directivas integradas. Cada directiva se devuelve con el formato siguiente:
+Devuelve todas las definiciones de directiva disponibles, incluidas las directivas integradas. Cada directiva se devuelve en hello siguiendo el formato:
 
 ```powershell
 Name               : e56962a6-4747-49cd-b67b-bf8b01975c4c
@@ -157,18 +157,18 @@ ResourceId         : /providers/Microsoft.Authorization/policyDefinitions/e56962
 ResourceName       : e56962a6-4747-49cd-b67b-bf8b01975c4c
 ResourceType       : Microsoft.Authorization/policyDefinitions
 Properties         : @{displayName=Allowed locations; policyType=BuiltIn; description=This policy enables you to
-                     restrict the locations your organization can specify when deploying resources. Use to enforce
+                     restrict hello locations your organization can specify when deploying resources. Use tooenforce
                      your geo-compliance requirements.; parameters=; policyRule=}
 PolicyDefinitionId : /providers/Microsoft.Authorization/policyDefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c
 ```
 
-Antes de continuar con la creación de la definición de la directiva, observe las directivas integradas. Si encuentra una directiva integrada que se aplica a los límites que necesita, puede omitir la creación de una definición de directiva. En su lugar, asigne la directiva integrada al ámbito deseado.
+Antes de continuar toocreate una definición de directiva, mire directivas integradas Hola. Si encuentra una directiva integrada que aplica límites de Hola que necesita, puede omitir la creación de una definición de directiva. En su lugar, asignar al ámbito de toohello deseado de hello directiva integrada.
 
 ### <a name="create-policy-definition"></a>Creación de definición de directiva
-Puede crear una definición de directiva con el cmdlet `New-AzureRmPolicyDefinition`.
+Puede crear una definición de directiva mediante hello `New-AzureRmPolicyDefinition` cmdlet.
 
 ```powershell
-$definition = New-AzureRmPolicyDefinition -Name coolAccessTier -Description "Policy to specify access tier." -Policy '{
+$definition = New-AzureRmPolicyDefinition -Name coolAccessTier -Description "Policy toospecify access tier." -Policy '{
   "if": {
     "allOf": [
       {
@@ -193,15 +193,15 @@ $definition = New-AzureRmPolicyDefinition -Name coolAccessTier -Description "Pol
 }'
 ```            
 
-La salida se almacena en un objeto `$definition`, que se usa durante la asignación de directivas. 
+Hola resultado se almacena en un `$definition` objeto, que se usa durante la asignación de directiva. 
 
-En vez de especificar JSON como un parámetro, puede proporcionar la ruta de acceso a un archivo .json que contiene la regla de directiva.
+En vez de especificar Hola JSON como un parámetro, puede proporcionar Hola ruta tooa .json archivo que contiene la regla de directiva de Hola.
 
 ```powershell
-$definition = New-AzureRmPolicyDefinition -Name coolAccessTier -Description "Policy to specify access tier." -Policy "c:\policies\coolAccessTier.json"
+$definition = New-AzureRmPolicyDefinition -Name coolAccessTier -Description "Policy toospecify access tier." -Policy "c:\policies\coolAccessTier.json"
 ```
 
-En el ejemplo siguiente se crea una definición de directiva que incluye parámetros:
+Hello en el ejemplo siguiente se crea una definición de directiva que incluya parámetros:
 
 ```powershell
 $policy = '{
@@ -228,26 +228,26 @@ $parameters = '{
     "allowedLocations": {
         "type": "array",
         "metadata": {
-          "description": "The list of locations that can be specified when deploying storage accounts.",
+          "description": "hello list of locations that can be specified when deploying storage accounts.",
           "strongType": "location",
           "displayName": "Allowed locations"
         }
     }
 }' 
 
-$definition = New-AzureRmPolicyDefinition -Name storageLocations -Description "Policy to specify locations for storage accounts." -Policy $policy -Parameter $parameters 
+$definition = New-AzureRmPolicyDefinition -Name storageLocations -Description "Policy toospecify locations for storage accounts." -Policy $policy -Parameter $parameters 
 ```
 
 ### <a name="assign-policy"></a>Asignación de directiva
 
-Aplique la directiva al ámbito deseado mediante el cmdlet `New-AzureRmPolicyAssignment`. En el ejemplo siguiente se asigna la directiva a un grupo de recursos.
+Aplicar directiva de hello en el ámbito de hello deseado mediante hello `New-AzureRmPolicyAssignment` cmdlet. Hola siguiente ejemplo asigna a grupo de recursos de hello directiva tooa.
 
 ```powershell
 $rg = Get-AzureRmResourceGroup -Name "ExampleGroup"
 New-AzureRMPolicyAssignment -Name accessTierAssignment -Scope $rg.ResourceId -PolicyDefinition $definition
 ```
 
-Para asignar una directiva que requiera parámetros, realice la creación y establezca el objeto con esos valores. En el ejemplo siguiente se recupera una directiva integrada y se pasan los valores de parámetros:
+tooassign una directiva que requiere parámetros, cree y de objeto con esos valores. Hello en el ejemplo siguiente se recupera una directiva integrada y pasa los valores de parámetros:
 
 ```powershell
 $rg = Get-AzureRmResourceGroup -Name "ExampleGroup"
@@ -259,14 +259,14 @@ New-AzureRMPolicyAssignment -Name locationAssignment -Scope $rg.ResourceId -Poli
 
 ### <a name="view-policy-assignment"></a>Visualización de la asignación de directiva
 
-Para obtener una asignación de directiva específica, use:
+tooget una asignación de directiva específica, use:
 
 ```powershell
 $rg = Get-AzureRmResourceGroup -Name "ExampleGroup"
 (Get-AzureRmPolicyAssignment -Name accessTierAssignment -Scope $rg.ResourceId
 ```
 
-Para ver la regla de directiva de una definición de directiva, use:
+regla de directiva de hello tooview para una definición de directiva, use:
 
 ```powershell
 (Get-AzureRmPolicyDefinition -Name coolAccessTier).Properties.policyRule | ConvertTo-Json
@@ -274,7 +274,7 @@ Para ver la regla de directiva de una definición de directiva, use:
 
 ### <a name="remove-policy-assignment"></a>Eliminación de la asignación de directiva 
 
-Para quitar una asignación de directiva, use lo siguiente:
+tooremove una asignación de directiva, use:
 
 ```powershell
 Remove-AzureRmPolicyAssignment -Name regionPolicyAssignment -Scope /subscriptions/{subscription-id}/resourceGroups/{resource-group-name}
@@ -283,17 +283,17 @@ Remove-AzureRmPolicyAssignment -Name regionPolicyAssignment -Scope /subscription
 ## <a name="azure-cli"></a>CLI de Azure
 
 ### <a name="view-policy-definitions"></a>Visualización de definiciones de directiva
-Para ver todas las definiciones de directiva en su suscripción, utilice el siguiente comando:
+toosee de comandos de todas las definiciones de directiva en su suscripción, Hola de uso siguientes:
 
 ```azurecli
 az policy definition list
 ```
 
-Devuelve todas las definiciones de directiva disponibles, incluidas las directivas integradas. Cada directiva se devuelve con el formato siguiente:
+Devuelve todas las definiciones de directiva disponibles, incluidas las directivas integradas. Cada directiva se devuelve en hello siguiendo el formato:
 
 ```azurecli
 {                                                            
-  "description": "This policy enables you to restrict the locations your organization can specify when deploying resources. Use to enforce your geo-compliance requirements.",                      
+  "description": "This policy enables you toorestrict hello locations your organization can specify when deploying resources. Use tooenforce your geo-compliance requirements.",                      
   "displayName": "Allowed locations",
   "id": "/providers/Microsoft.Authorization/policyDefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c",
   "name": "e56962a6-4747-49cd-b67b-bf8b01975c4c",
@@ -312,14 +312,14 @@ Devuelve todas las definiciones de directiva disponibles, incluidas las directiv
 }
 ```
 
-Antes de continuar con la creación de la definición de la directiva, observe las directivas integradas. Si encuentra una directiva integrada que se aplica a los límites que necesita, puede omitir la creación de una definición de directiva. En su lugar, asigne la directiva integrada al ámbito deseado.
+Antes de continuar toocreate una definición de directiva, mire directivas integradas Hola. Si encuentra una directiva integrada que aplica límites de Hola que necesita, puede omitir la creación de una definición de directiva. En su lugar, asignar al ámbito de toohello deseado de hello directiva integrada.
 
 ### <a name="create-policy-definition"></a>Creación de definición de directiva
 
-Puede crear una definición de directiva mediante la CLI de Azure con el comando de definición de directiva.
+Puede crear una definición de directiva mediante la CLI de Azure con el comando de definición de directiva de Hola.
 
 ```azurecli
-az policy definition create --name coolAccessTier --description "Policy to specify access tier." --rules '{
+az policy definition create --name coolAccessTier --description "Policy toospecify access tier." --rules '{
   "if": {
     "allOf": [
       {
@@ -346,7 +346,7 @@ az policy definition create --name coolAccessTier --description "Policy to speci
 
 ### <a name="assign-policy"></a>Asignación de directiva
 
-Puede aplicar la directiva en el ámbito que quiera mediante el comando de asignación de directiva. En el ejemplo siguiente se asigna la directiva a un grupo de recursos.
+Puede aplicar ámbito de hello directiva toohello deseado mediante el uso de comandos de asignación de directiva de Hola. Hola de ejemplo siguiente asigna a un grupo de recursos de tooa de directiva.
 
 ```azurecli
 az policy assignment create --name coolAccessTierAssignment --policy coolAccessTier --scope /subscriptions/{subscription-id}/resourceGroups/{resource-group-name}
@@ -354,7 +354,7 @@ az policy assignment create --name coolAccessTierAssignment --policy coolAccessT
 
 ### <a name="view-policy-assignment"></a>Visualización de la asignación de directiva
 
-Para ver una asignación de directiva, proporcione el nombre de la asignación de directiva y el ámbito:
+tooview una asignación de directiva, proporcione el nombre de asignación de directiva de Hola y el ámbito de hello:
 
 ```azurecli
 az policy assignment show --name coolAccessTierAssignment --scope "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}"
@@ -362,12 +362,12 @@ az policy assignment show --name coolAccessTierAssignment --scope "/subscription
 
 ### <a name="remove-policy-assignment"></a>Eliminación de la asignación de directiva 
 
-Para quitar una asignación de directiva, use lo siguiente:
+tooremove una asignación de directiva, use:
 
 ```azurecli
 az policy assignment delete --name coolAccessTier --scope /subscriptions/{subscription-id}/resourceGroups/{resource-group-name}
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Para obtener instrucciones sobre cómo las empresas pueden utilizar Resource Manager para administrar eficazmente las suscripciones, vea [Scaffold empresarial de Azure: Gobierno de suscripción prescriptivo](resource-manager-subscription-governance.md).
+* Para obtener instrucciones sobre cómo las empresas pueden usar el Administrador de recursos tooeffectively administrar suscripciones, vea [scaffold Azure enterprise - regulador prescriptiva suscripción](resource-manager-subscription-governance.md).
 

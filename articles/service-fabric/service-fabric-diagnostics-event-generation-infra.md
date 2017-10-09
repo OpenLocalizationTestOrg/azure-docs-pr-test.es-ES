@@ -1,6 +1,6 @@
 ---
-title: "Supervisión del nivel de plataforma de Azure Service Fabric | Microsoft Docs"
-description: "Obtenga información sobre los eventos y los registros de nivel de plataforma que se usan para supervisar y diagnosticar los clústeres de Azure Service Fabric."
+title: "aaaAzure supervisión de nivel de servicio Fabric plataforma | Documentos de Microsoft"
+description: "Obtenga información acerca de los eventos de nivel de plataforma y registros usan toomonitor y diagnosticar clústeres Azure Service Fabric."
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -14,50 +14,50 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/24/2017
 ms.author: dekapur
-ms.openlocfilehash: c5857515ae8357b003f0999c4b11bd666c32bbf9
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: f8fb1c8b546e05c517ae12c91906acc04cd6eaa6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="platform-level-event-and-log-generation"></a>Generación de eventos y registros de nivel de plataforma
 
-## <a name="monitoring-the-cluster"></a>Supervisar el clúster
+## <a name="monitoring-hello-cluster"></a>Supervisión de clústeres de Hola
 
-Es importante supervisar en el nivel de infraestructura para determinar si el hardware y el clúster se comportan según lo previsto. Aunque Service Fabric puede mantener las aplicaciones en ejecución durante un error de hardware, es necesario diagnosticar si un error se produce en una aplicación o en la infraestructura subyacente. También debe supervisar los clústeres para planear mejor la capacidad, lo que ayuda a decidir si es necesario agregar o quitar hardware.
+Es importante toomonitor en toodetermine nivel en la plataforma de Hola o no el hardware y el clúster se comportan según lo esperado. Aunque Service Fabric puede mantener aplicaciones que se ejecutan durante un error de hardware, pero necesitará toodiagnose si se produce un error en una aplicación o en la infraestructura subyacente de Hola. También debe supervisar su plan de toobetter clústeres la capacidad, lo que ayuda en las decisiones sobre cómo agregar o quitar hardware.
 
-Service Fabric incluye de forma predeterminada cinco canales de registro que generan los eventos siguientes:
+Service Fabric proporciona cinco registros diferentes canales fuera-de-predeterminada que generan Hola después de eventos:
 
-* Canal operativo: operaciones de alto nivel realizadas por Service Fabric y el clúster, incluidos eventos para un nodo próximo, una nueva aplicación que se implementa o la reversión de una actualización de SF, etc.
+* Canal operativo: las operaciones de alto nivel realizadas por Service Fabric y clúster de hello, incluidos los eventos de un nodo a continuación, una nueva aplicación que se implementa, o un SF actualizar rollback, etcetera.
 * Canal operativo: detallado: informes de estado y decisiones para el equilibrio de carga
-* Canal de datos y mensajería: registros y eventos críticos generados en nuestra ruta de acceso a mensajería (actualmente solo ReverseProxy) y datos (modelos de servicios confiables)
-* Canal de datos y mensajería: detallado: canal detallado que contiene todos los registros no críticos de datos y mensajería del clúster (este canal tiene un volumen de eventos muy alto)   
+* Canal de mensajería & datos: registros críticos y los eventos generados en nuestra mensajería (actualmente solo Hola ReverseProxy) y la ruta de acceso de datos (modelos de servicios de confianza)
+* Canal de datos y mensajería - detallada: canal detallado que contiene todos los registros no críticos Hola de datos y mensajería en clúster de hello (este canal tiene un volumen elevado de eventos)   
 * [Eventos de Reliable Services](service-fabric-reliable-services-diagnostics.md): eventos específicos del modelo de programación
 * [Eventos de Reliable Actors](service-fabric-reliable-actors-diagnostics.md): contadores de rendimiento y eventos específicos del modelo de programación
-* Registros de soporte técnico: registros del sistema que genera Service Fabric únicamente para que los usemos al proporcionar soporte técnico
+* Compatible con registros: generados por Service Fabric toobe solo usado nos al proporcionar compatibilidad con registros del sistema
 
-Estos distintos canales cubren la mayor parte de los registros de nivel de plataforma que se recomiendan. Para mejorar el registro de nivel de plataforma, considere la posibilidad de dedicar tiempo a comprender mejor el modelo de mantenimiento y agregar informes de mantenimiento personalizados, e agregar **contadores de rendimiento** personalizados para comprender en tiempo real de qué manera afectan al clúster los servicios y las aplicaciones.
+Estos canales distintos cubren la mayor parte de hello plataforma registro en el nivel que se recomienda. nivel de la plataforma de tooimprove registro, considere la posibilidad de invertir en una mejor comprensión Hola modelo de estado y agregar informes de estado personalizado y agregar personalizada **contadores de rendimiento** toobuild una comprensión en tiempo real de hello afectar de los servicios y aplicaciones en clúster de Hola.
 
 ### <a name="azure-service-fabric-health-and-load-reporting"></a>Informes de carga y mantenimiento de Azure Service Fabric
 
 Service Fabric tiene su propio modelo de mantenimiento, que se describe en detalle en estos artículos:
-- [Introducción a la supervisión del mantenimiento de Service Fabric](service-fabric-health-introduction.md)
+- [Supervisión de estado del tejido de tooService de introducción](service-fabric-health-introduction.md)
 - [Notificación y comprobación del estado del servicio](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
 - [Incorporación de informes de mantenimiento de Service Fabric personalizados](service-fabric-report-health.md)
 - [Vista de los informes de estado de Service Fabric](service-fabric-view-entities-aggregated-health.md)
 
-La supervisión del mantenimiento es fundamental para diversos aspectos operativos de un servicio. La supervisión del mantenimiento es especialmente importante cuando Service Fabric lleva a cabo una actualización de la aplicación con nombre. Cuando estén actualizados y disponibles para los clientes los dominios del servicio, deben pasar las comprobaciones de mantenimiento para que la implementación pase al siguiente dominio de actualización. Si no se puede alcanzar un mantenimiento correcto, la implementación se revierte y deja la aplicación en un estado correcto conocido. Aunque algunos clientes resultaran afectados antes de que los servicios se pudieran revertir, la mayoría no experimenta ningún problema. Además, la resolución se produce de forma relativamente rápida y sin necesidad de esperar a la acción de un operador humano. Cuantas más comprobaciones de mantenimiento se integren en el código, más resistente será el servicio a los problemas de implementación.
+Supervisión de estado es crítico toomultiple aspectos de la operación de un servicio. La supervisión del mantenimiento es especialmente importante cuando Service Fabric lleva a cabo una actualización de la aplicación con nombre. Después de cada dominio de actualización del servicio de Hola se actualiza y está disponible tooyour clientes, dominio de actualización de hello debe pasar las comprobaciones de mantenimiento antes de que pase de implementación de hello toohello siguiente dominio de actualización. Si no se puede alcanzar el buen estado, implementación de Hola se revierte, para que la aplicación hello está en un estado bueno conocido. Aunque algunos clientes podrían verse afectados antes de que se revierten servicios hello, la mayoría de los clientes no experimentará un problema. Además, se produce una resolución relativamente rápidamente y sin necesidad de toowait para la acción de un operador humano. Hola más comprobaciones de mantenimiento que se integran en el código, hello más resistente que el servicio es toodeployment problemas.
 
-Otro aspecto del estado del servicio es la notificación de métricas desde el servicio. Las métricas son importantes en Service Fabric, porque se usan para equilibrar el uso de los recursos. Además, son un indicador del estado del sistema. Por ejemplo, supongamos que tiene una aplicación con muchos servicios y que cada instancia informa sobre una métrica de solicitudes por segundo (RPS). Si uno de los servicios usa más recursos que otro, Service Fabric mueve instancias de servicio en el clúster para intentar mantener un uso uniforme de los recursos. Para una explicación más detallada sobre cómo funciona el uso de los recursos, consulte [Administración de consumo y carga de recursos en Service Fabric con métricas](service-fabric-cluster-resource-manager-metrics.md).
+Otro aspecto del estado del servicio está informando de las métricas de servicio de Hola. Las métricas son importantes en Service Fabric porque son utilizados toobalance uso de recursos. Además, son un indicador del estado del sistema. Por ejemplo, supongamos que tiene una aplicación con muchos servicios y que cada instancia informa sobre una métrica de solicitudes por segundo (RPS). Si un servicio está usando más recursos que otro servicio, Service Fabric mueve instancias de servicio en clúster de hello, uso de recursos incluso toomaintain tootry. Para una explicación más detallada sobre cómo funciona el uso de los recursos, consulte [Administración de consumo y carga de recursos en Service Fabric con métricas](service-fabric-cluster-resource-manager-metrics.md).
 
-Las métricas también pueden ayudarle con una visión general de rendimiento del servicio. Con el tiempo, las métricas se pueden usar para comprobar que el servicio funciona con los parámetros previstos. Por ejemplo, si las tendencias muestran que a las 9 de la mañana del lunes, el promedio de solicitudes por segundo es de 1000, podría configurar un informe de mantenimiento que emita una alerta si descienden de 500 o aumentan por encima de las 1500. Todo puede estar funcionando correctamente, pero quizá valga la pena echar un vistazo para asegurarse de que los clientes disfrutan de una gran experiencia. El servicio puede definir un conjunto de métricas que se pueden notificar para controlar el mantenimiento, pero que no afecten al equilibrio de los recursos del clúster. Para ello, establezca la ponderación métrica en cero. Se recomienda iniciar todas las métricas con una ponderación de cero y no aumentarla hasta que se sepa con certeza la repercusión que tiene en el equilibrio de los recursos para el clúster.
+Las métricas también pueden ayudarle con una visión general de rendimiento del servicio. Con el tiempo, puede utilizar toocheck de métricas que Hola servicio esté funcionando en parámetros esperados. Por ejemplo, si las tendencias muestran que a las 9 A.M. en hello lunes por la mañana promedio RPS es 1.000, puede configurar un informe de estado que le advierte si hello RPS es inferior a 500 o superior 1.500. Todo lo que podría ser perfectamente correcto, pero podría ser conveniente un toobe vistazo seguro de que los clientes tienen una gran experiencia. El servicio puede definir un conjunto de métricas que se puede notificar para fines de comprobación de mantenimiento, pero que no afectan a Hola equilibrar los recursos de clúster de Hola. toodo, toozero de peso métrico de Hola de conjunto. Se recomienda iniciar todas las métricas con un peso de cero y no aumentar peso Hola hasta que esté seguro de que comprende cómo afecta la ponderación métricas de Hola a recursos para el clúster de equilibrio.
 
 > [!TIP]
-> No use demasiadas métricas ponderadas. Puede ser difícil de entender por qué se mueven instancias de servicio para el equilibrio. Algunas pueden moverse muchísimo.
+> No use demasiadas métricas ponderadas. Puede ser difícil toounderstand ¿por qué instancias de servicio se están moviendo de equilibrio. Algunas pueden moverse muchísimo.
 
-Cualquier información que pueda indicar el estado y el rendimiento de la aplicación es apta para los informes de mantenimiento y métricas. Un contador de rendimiento de la CPU puede indicar cómo se está usando el nodo, pero no indica si un servicio determinado está en buen estado, ya que pueden estar ejecutándose varios servicios en un solo nodo. Pero las métricas como RPS, los elementos procesados y la latencia de solicitud, pueden indicar el estado de un servicio específico.
+Toda la información que puede indicar el estado de Hola y el rendimiento de la aplicación es un candidato para informes de mantenimiento y las métricas. Un contador de rendimiento de la CPU puede indicar cómo se está usando el nodo, pero no indica si un servicio determinado está en buen estado, ya que pueden estar ejecutándose varios servicios en un solo nodo. Pero, métricas como RPS, elementos procesados, y todos los de latencia de solicitudes puede indican el estado de Hola de un servicio específico.
 
-Para notificar el estado, use código similar al siguiente:
+estado de tooreport, use código similar toothis:
 
   ```csharp
     if (!result.HasValue)
@@ -67,7 +67,7 @@ Para notificar el estado, use código similar al siguiente:
     }
   ```
 
-Para notificar una métrica, use código similar al siguiente:
+tooreport una métrica, use código similar toothis:
 
   ```csharp
     this.Partition.ReportLoad(new List<LoadMetric> { new LoadMetric("MemoryInMb", 1234), new LoadMetric("metric1", 42) });
@@ -75,16 +75,16 @@ Para notificar una métrica, use código similar al siguiente:
 
 ### <a name="service-fabric-support-logs"></a>Registros de soporte técnico de Service Fabric
 
-Si tiene que ponerse en contacto con el soporte técnico de Microsoft para que le ayuden con el clúster de Azure Service Fabric, casi siempre necesitará los registros de soporte técnico. Si el clúster se hospeda en Azure, estos registros de soporte técnico se configuran y recopilan automáticamente en el proceso de creación del clúster. Los registros se almacenan en una cuenta de almacenamiento específica del grupo de recursos del clúster. La cuenta de almacenamiento no tiene nombre fijo, pero en ella verá contenedores de blobs y tablas cuyos nombres empiezan por *fabric*. Para obtener información acerca de cómo configurar las colecciones de registros para un clúster independiente, consulte el artículo sobre la [creación y la administración de un clúster independiente de Azure Service Fabric](service-fabric-cluster-creation-for-windows-server.md) y [Opciones de configuración clústeres de Windows independientes](service-fabric-cluster-manifest.md). Para instancias independientes de Service Fabric, los registros se deben enviar a un archivo local compartido. Es **necesario** que tenga estos registros para el soporte técnico, pero no se prevé que los utilice nadie que no pertenezca al equipo de soporte técnico al cliente de Microsoft.
+Si necesita toocontact soporte técnico de Microsoft para obtener ayuda con el clúster de Azure Service Fabric, casi siempre se necesitan registros de soporte técnico. Si el clúster se hospeda en Azure, estos registros de soporte técnico se configuran y recopilan automáticamente en el proceso de creación del clúster. Hola registros se almacenan en una cuenta de almacenamiento dedicado en el grupo de recursos de su clúster. cuenta de almacenamiento de Hello no tiene un nombre fijo, pero en la cuenta de hello, vea contenedores de blobs y tablas con nombres que empiezan por *tejido*. Para obtener información acerca de cómo configurar las colecciones de registros para un clúster independiente, consulte el artículo sobre la [creación y la administración de un clúster independiente de Azure Service Fabric](service-fabric-cluster-creation-for-windows-server.md) y [Opciones de configuración clústeres de Windows independientes](service-fabric-cluster-manifest.md). Para instancias de Service Fabric independientes, se deben enviar a registros de hello recurso compartido de archivos local de tooa. Está **requiere** toohave estos registros para soporte técnico, pero no son toobe previsto utilizable por alguien fuera de equipo de soporte técnico de cliente de Microsoft de Hola.
 
 ## <a name="enabling-diagnostics-for-a-cluster"></a>Habilitar Diagnostics para un clúster
 
-Para sacar provecho de estos registros, se recomienda encarecidamente habilitar Diagnostics durante la creación del clúster. Al activar los diagnósticos, cuando se implementa el clúster, Microsoft Azure Diagnostics puede reconocer los canales operativo, de Reliable Services y de Reliable Actors y almacenar los datos como se explica en [Agregación de eventos con Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md).
+En orden tootake aprovechar estos registros, se recomienda encarecidamente que, durante la creación del clúster, "Diagnostics" está habilitada. Activando el diagnóstico, cuando se implementa el clúster de hello, diagnósticos de Windows Azure es capaz de tooacknowledge Hola Operational, servicios confiables y canales de confianza actores y almacenar datos de hello como se explica más detalladamente en [agregar eventos a Diagnósticos de Azure](service-fabric-diagnostics-event-aggregation-wad.md).
 
-Como ya se ha visto, también hay un campo opcional para agregar una clave de instrumentación de Application Insights (AI). Si decide usar AI para los análisis de eventos (obtenga más información en [Análisis de eventos con Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)), incluya la clave de instrumentación de recursos de AppInsights (GUID).
+Tal como se muestra anteriormente, también hay un tooadd campo opcional una clave de instrumentación de visión de la aplicación (AI). Si elige toouse AI para los análisis de eventos (leer más sobre esto en [análisis de eventos con Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)), incluimos hello AppInsights recursos instrumentationKey (GUID).
 
 
-Si va a implementar contenedores en el clúster, habilite WAD para recopilar estadísticas de Docker. Para ello, agregue lo siguiente a "WadCfg > DiagnosticMonitorConfiguration":
+Si va clúster tooyour de toodeploy contenedores, habilitar toopick WAD de estadísticas de docker mediante la adición de este tooyour "WadCfg > DiagnosticMonitorConfiguration":
 
 ```json
 "DockerSources": {
@@ -98,16 +98,16 @@ Si va a implementar contenedores en el clúster, habilite WAD para recopilar est
 
 ## <a name="measuring-performance"></a>Medir el rendimiento
 
-La medición del rendimiento del clúster le ayudará a entender cómo controla la carga y toma decisiones sobre el escalado del clúster (obtenga más información sobre el escalado de un clúster [en Azure](service-fabric-cluster-scale-up-down.md) o [localmente](service-fabric-cluster-windows-server-add-remove-nodes.md)). Al analizar los registros en el futuro, los datos de rendimiento también son útiles cuando se comparan con las acciones que usted o las aplicaciones han llevado a cabo. 
+Medir el rendimiento de su clúster le ayudará a entender cómo es capaz de toohandle decisiones de carga y la unidad alrededor de ajuste de escala en el clúster (consulte más información acerca de ajuste de escala en un clúster de [en Azure](service-fabric-cluster-scale-up-down.md), o [local](service-fabric-cluster-windows-server-add-remove-nodes.md)). Los datos de rendimiento también están útil cuando compara tooactions usted o sus aplicaciones y servicios podrán haber tardado, al analizar los registros de hello futuras. 
 
-Para obtener una lista de contadores de rendimiento para recopilar datos cuando se usa Service Fabric, vea [Performance Counters in Service Fabric](service-fabric-diagnostics-event-generation-perf.md) (Contadores de rendimiento de Service Fabric).
+Para obtener una lista de toocollect de contadores de rendimiento al usar Service Fabric, vea [contadores de rendimiento de Service Fabric](service-fabric-diagnostics-event-generation-perf.md)
 
 A continuación se indican dos formas habituales de configurar la recopilación de datos de rendimiento del clúster:
 
-* Usar un agente: se trata de la mejor manera de recopilar datos de rendimiento de un equipo, ya que los agentes suelen incluir una lista de las métricas de rendimiento que se pueden recopilar, y el proceso de elegir o cambiar las métricas que se van a recopilar es relativamente sencillo. Lea los artículos dedicados a [cómo configurar OMS para Service Fabric](service-fabric-diagnostics-event-analysis-oms.md) y [cómo configurar el agente de OMS de Windows](../log-analytics/log-analytics-windows-agents.md) para obtener más información sobre el agente de OMS, que es un agente de supervisión que puede recopilar datos de rendimiento de las máquinas virtuales del clúster y los contenedores implementados.
+* Uso de un agente: se trata de manera Hola preferido de recopilación de rendimiento de una máquina, ya que los agentes suelen tienen una lista de las métricas de rendimiento posibles que se pueden recopilar y es una métrica de hello es relativamente fácil de proceso que toochoose desea toocollect o cambiarlos . Obtenga información sobre [cómo tooconfigure Hola OMS para Service Fabric](service-fabric-diagnostics-event-analysis-oms.md) y [configurar agente de OMS Windows hello](../log-analytics/log-analytics-windows-agents.md) artículos toolearn más información acerca del agente de OMS hello, que es un tal agente de supervisión que es capaz de toopick hacia arriba datos de rendimiento para las máquinas virtuales del clúster y los contenedores implementados.
 
-* Configurar los diagnósticos de modo que escriban los contadores de rendimiento en una tabla: en el caso de los clústeres de Azure esto significa cambiar la configuración de Azure Diagnostics, de modo que recopile los contadores de rendimiento correspondientes a las máquinas virtuales del clúster y pueda reunir estadísticas de Docker si va a implementar contenedores. Obtenga más información sobre cómo configurar [contadores de rendimiento de WAD](service-fabric-diagnostics-event-aggregation-wad.md) en Service Fabric para configurar una colección de contadores de rendimiento.
+* Configuración de rendimiento de diagnóstico toowrite contadores tabla tooa: para los clústeres en Azure, esto significa cambiar hello toopick de configuración de diagnósticos de Azure los contadores de rendimiento adecuado de Hola de hello las máquinas virtuales en el clúster y habilitar toopick seguridad estadísticas de docker si va a implementar los contenedores. Leer acerca de cómo configurar [contadores de rendimiento de WAD](service-fabric-diagnostics-event-aggregation-wad.md) en tooset Service Fabric una recopilación de contadores de rendimiento.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Debe agregar primero los registros y los eventos para que se puedan enviar a una plataforma de análisis. Obtenga información sobre [EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md) y [WAD](service-fabric-diagnostics-event-aggregation-wad.md) para entender mejor algunas de las opciones recomendadas.
+Los registros y eventos necesitan toobe agrega antes de que se puede enviar tooany plataforma de análisis. Obtenga información sobre [EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md) y [WAD](service-fabric-diagnostics-event-aggregation-wad.md) toobetter comprender algunas de hello opciones recomendada.

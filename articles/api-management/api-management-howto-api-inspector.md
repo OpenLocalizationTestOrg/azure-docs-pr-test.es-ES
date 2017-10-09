@@ -1,6 +1,6 @@
 ---
-title: 'Seguimiento de llamadas con API Inspector: Azure API Management | Microsoft Docs'
-description: "Obtenga información acerca de cómo realizar un seguimiento de las llamadas con API Inspector en Administración de API de Azure."
+title: "llamadas de aaaTrace con el Inspector de API - Administración de API de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo llamadas tootrace utilizando Hola Inspector de API de administración de API de Azure."
 services: api-management
 documentationcenter: 
 author: steved0x
@@ -14,65 +14,65 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-ms.openlocfilehash: a9d4d3be7f046af975f6dc25670070204848588c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b0c401caa8da1b789f6cfe5edf97a5f118d78f26
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-the-api-inspector-to-trace-calls-in-azure-api-management"></a>Uso del API Inspector para hacer un seguimiento de las llamadas en Administración de API de Azure
-Administración de API ofrece la herramienta API Inspector para ayudarle con la depuración y la solución de problemas de las API. El API Inspector se puede usar mediante programación y también directamente desde el portal para desarrolladores. 
+# <a name="how-toouse-hello-api-inspector-tootrace-calls-in-azure-api-management"></a>Cómo llama a toouse hello tootrace API Inspector de administración de API de Azure
+Administración de API proporciona un API Inspector toohelp de herramienta de depuración y solución de problemas de las API. Hola API Inspector pueden usarse mediante programación y también puede utilizarse directamente desde el portal para desarrolladores de Hola. 
 
-Además de las operaciones de seguimiento, API Inspector también realiza el seguimiento de evaluaciones de [expresiones de directivas](https://msdn.microsoft.com/library/azure/dn910913.aspx) . Para obtener una demostración, consulte [Cloud Cover Episode 177: More API Management Features](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) y avance rápidamente hasta el minuto 21:00.
+Además tootracing operaciones, API Inspector también realiza un seguimiento de [expresión de directiva](https://msdn.microsoft.com/library/azure/dn910913.aspx) evaluaciones. Para ver una demostración, vea [177 episodio abarcan de nube: más características de administración de API](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) y avancemos too21:00.
 
 En esta guía se explica el uso del API Inspector.
 
 > [!NOTE]
-> Los seguimientos de API Inspector solo se generan y están disponibles para las solicitudes que contiene claves de suscripción que pertenecen a la cuenta de [administrador](api-management-howto-create-groups.md) .
+> Seguimientos de API Inspector solo se genera y están disponibles para las solicitudes que contiene las claves de la suscripción que pertenecen toohello [administrador](api-management-howto-create-groups.md) cuenta.
 > 
 > 
 
-## <a name="trace-call"> </a> Uso de API Inspector para realizar el seguimiento de una llamada
-Para usar API Inspector, agregue un encabezado de solicitud **ocp-apim-trace: true** a la llamada a la operación y luego descargue e inspeccione el seguimiento con la URL indicada mediante el encabezado de respuesta **ocp-apim-trace-location**. Esto puede realizarse mediante programación y también directamente desde el portal para desarrolladores.
+## <a name="trace-call"></a> Tootrace una llamada de Inspector de API de uso
+Agregar toouse API Inspector, un **ocp-apim-trace: true** solicitud de llamada de la operación de tooyour de encabezado y, a continuación, descargar e inspeccionar el seguimiento de hello mediante dirección URL de hello indicado por hello **ocp apim seguimiento ubicación** encabezado de respuesta. Esto puede hacerse mediante programación y permite llevar a cabo directamente desde el portal para desarrolladores de Hola.
 
-Este tutorial muestra cómo utilizar el API Inspector para realizar un seguimiento de las operaciones mediante la API de calculadora básica que se configura en el tutorial de introducción [Administrar su primera API](api-management-get-started.md) . Si no ha realizado ese tutorial, solo tardará unos minutos en importar la API de calculadora básica, o puede usar otra API de su elección, como la Echo API. Cada instancia del servicio Administración de API viene previamente configurada con una API Eco que se puede usar para experimentar con Administración de API y aprender de esta. La Echo API devuelve cualquier entrada que se le envíe. Para usarla, se puede invocar cualquier verbo HTTP, y el valor devuelto será simplemente el que se envíe. 
+Este tutorial muestra cómo toouse Hola API Inspector tootrace las operaciones con Hola API calculadora básica que se configura en hello [administrar su primera API](api-management-get-started.md) tutorial de introducción. Si no se han completado este tutorial sólo tarda unos instantes tooimport Hola API calculadora básica, o puede usar otra API de su elección, como la API de eco hello. Cada instancia de servicio de administración de API viene preconfigurado con una API de eco que se pueden tooexperiment usado con y obtener información acerca de la API de administración. API de eco Hello devuelve cualquier entrada se envía tooit. toouse, puede invocar cualquier verbo HTTP y valor devuelto de hello simplemente será lo que envía. 
 
-Para comenzar, haga clic en **Portal para desarrolladores** en Azure Portal para el servicio API Management. Se puede llamar a las operaciones directamente desde el portal para desarrolladores, lo que proporciona una forma cómoda de ver y probar las operaciones de una API.
+tooget iniciado, haga clic en **portal para desarrolladores de** Hola Portal de Azure para el servicio de administración de API. Las operaciones pueden llamarse directamente desde el portal para desarrolladores de Hola que proporciona una manera cómoda de tooview y pruebe las operaciones de Hola de una API.
 
-> Si todavía no ha creado una instancia del servicio API Management, consulte [Creación de una instancia del servicio API Management][Create an API Management service instance] en el tutorial de [introducción a Azure API Management][Get started with Azure API Management].
+> Si aún no ha creado una instancia de servicio de administración de API, consulte [crear una instancia de servicio de administración de API] [ Create an API Management service instance] en hello [Introducción a administración de API de Azure] [ Get started with Azure API Management] tutorial.
 > 
 > 
 
 ![API Management developer portal][api-management-developer-portal-menu]
 
-Haga clic en **API** en el menú superior y después en **Calculadora básica**.
+Haga clic en **API** desde el menú superior de hello y, a continuación, haga clic en **calculadora básica**.
 
 ![API eco][api-management-api]
 
-Haga clic en **Inténtelo** para intentar la operación **Agregar dos enteros**.
+Haga clic en **Pruébelo** tootry hello **agrega dos enteros** operación.
 
 ![Pruébelo][api-management-open-console]
 
-Mantenga los valores predeterminados de los valores de parámetros y seleccione la clave de suscripción para el producto que desee usar desde la lista desplegable **suscription-key** .
+Mantener valores de parámetros predeterminados de Hola y clave de suscripción Hola seleccione producto Hola desea toouse de hello **clave de suscripción** lista desplegable.
 
-En el portal para desarrolladores, el encabezado **Ocp-Apim-Trace** ya está establecido en **true**. Este encabezado configura si se ha generado o no un seguimiento.
+De forma predeterminada en Hola Hola de portal para desarrolladores **Ocp-Apim-Trace** encabezado ya está establecido demasiado**true**. Este encabezado configura si se ha generado o no un seguimiento.
 
-![Enviar][api-management-http-get]
+![Los métodos Send][api-management-http-get]
 
-Haga clic en **Enviar** para invocar la operación.
+Haga clic en **enviar** operación de hello tooinvoke.
 
-![Enviar][api-management-send-results]
+![Los métodos Send][api-management-send-results]
 
-En los encabezados de respuesta habrá una entrada **ocp-apim-trace-location** con un valor similar al que aparece en el ejemplo siguiente.
+En la respuesta de hello encabezados será un **ocp apim seguimiento ubicación** con un toohello similar valor siguiente ejemplo.
 
 ```
 ocp-apim-trace-location : https://contosoltdxw7zagdfsprykd.blob.core.windows.net/apiinspectorcontainer/ZW3e23NsW4wQyS-SHjS0Og2-2?sv=2013-08-15&sr=b&sig=Mgx7cMHsLmVDv%2B%2BSzvg3JR8qGTHoOyIAV7xDsZbF7%2Bk%3D&se=2014-05-04T21%3A00%3A13Z&sp=r&verify_guid=a56a17d83de04fcb8b9766df38514742
 ```
 
-El seguimiento puede descargarse de la ubicación especificada y revisarse, como se demuestra en el paso siguiente. Tenga en cuenta que solo se almacenan las últimas 100 entradas del registro y que las ubicaciones de registro se reutilizan de forma rotativa. Por tanto, si realiza más de 100 llamadas con el seguimiento habilitado, al final comenzará a sobrescribir los primeros seguimientos que haya.
+seguimiento de Hello puede descargarse desde Hola ubicación especificada y revisado como se muestra en el paso siguiente Hola. Tenga en cuenta que solo Hola última 100 entradas del registro se almacenan y se reutilizan ubicaciones del registro de rotación. Por tanto, si realiza más de 100 llamadas con el seguimiento habilitado se iniciarán finalmente seguimientos primera hello en lugar de sobrescribir.
 
-## <a name="inspect-trace"> </a>Inspección del seguimiento
-Para revisar los valores del seguimiento, descargue el archivo de seguimiento de la URL de **ocp-apim-trace-location** . Se trata de un archivo de texto en formato JSON y contiene entradas similares a las que aparecen en el ejemplo siguiente.
+## <a name="inspect-trace"></a>Inspeccionar seguimiento Hola
+valores de hello tooreview en seguimiento de hello, descargue el archivo de seguimiento de Hola de Hola **ocp apim seguimiento ubicación** dirección URL. Es un archivo de texto en formato JSON y contiene entradas toohello similar siguiente ejemplo.
 
 ```json
 {
@@ -144,7 +144,7 @@ Para revisar los valores del seguimiento, descargue el archivo de seguimiento de
                 "timestamp": "2015-06-23T19:51:35.2998610Z",
                 "elapsed": "00:00:00.0727522",
                 "data": {
-                    "message": "Request is being forwarded to the backend service.",
+                    "message": "Request is being forwarded toohello backend service.",
                     "request": {
                         "method": "GET",
                         "url": "http://calcapi.cloudapp.net/api/add?a=51&b=49",
@@ -219,7 +219,7 @@ Para revisar los valores del seguimiento, descargue el archivo de seguimiento de
                 "timestamp": "2015-06-23T19:51:35.4256650Z",
                 "elapsed": "00:00:00.1961112",
                 "data": {
-                    "message": "Response headers have been sent to the caller. Starting to stream the response body."
+                    "message": "Response headers have been sent toohello caller. Starting toostream hello response body."
                 }
             },
             {
@@ -227,7 +227,7 @@ Para revisar los valores del seguimiento, descargue el archivo de seguimiento de
                 "timestamp": "2015-06-23T19:51:35.4256650Z",
                 "elapsed": "00:00:00.1963155",
                 "data": {
-                    "message": "Response body streaming to the caller is complete."
+                    "message": "Response body streaming toohello caller is complete."
                 }
             }
         ]
@@ -235,15 +235,15 @@ Para revisar los valores del seguimiento, descargue el archivo de seguimiento de
 }
 ```
 
-## <a name="next-steps"> </a>Pasos siguientes
-* Vea una demostración del seguimiento de expresiones de directivas en [Cloud Cover Episodio 177: Más características de administración de API](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/). Avance rápidamente hasta el minuto 21:00 para ver la demostración.
+## <a name="next-steps"></a>Pasos siguientes
+* Vea una demostración del seguimiento de expresiones de directivas en [Cloud Cover Episodio 177: Más características de administración de API](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/). Demostración de avance rápido too21:00 toosee Hola.
 
 > [!VIDEO https://channel9.msdn.com/Shows/Cloud+Cover/Episode-177-More-API-Management-Features-with-Vlad-Vinogradsky/player]
 > 
 > 
 
-[Use API Inspector to trace a call]: #trace-call
-[Inspect the trace]: #inspect-trace
+[Use API Inspector tootrace a call]: #trace-call
+[Inspect hello trace]: #inspect-trace
 [Next steps]: #next-steps
 
 [Configure API settings]: api-management-howto-create-apis.md#configure-api-settings

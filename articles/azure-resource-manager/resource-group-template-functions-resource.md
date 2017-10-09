@@ -1,6 +1,6 @@
 ---
-title: 'Funciones de la plantilla de Azure Resource Manager: recursos | Microsoft Docs'
-description: Describe las funciones para usar en una plantilla de Azure Resource Manager para recuperar valores sobre recursos.
+title: funciones de plantilla de administrador de recursos de aaaAzure - recursos | Documentos de Microsoft
+description: Describe hello toouse de funciones en un tooretrieve de valores de la plantilla de Azure Resource Manager acerca de los recursos.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/09/2017
 ms.author: tomfitz
-ms.openlocfilehash: 494ade55f21c19d9c68d5cc52756528401d9bb77
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: c9d524b338b8b7ea6d8c9e0135d48e4fb8f167c0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Funciones de recursos para las plantillas de Azure Resource Manager
 
-El Administrador de recursos ofrece las siguientes funciones para obtener valores de recursos:
+Administrador de recursos proporciona Hola siguientes funciones para obtener valores de recurso:
 
 * [listKeys y list{Value}](#listkeys)
 * [providers](#providers)
@@ -31,7 +31,7 @@ El Administrador de recursos ofrece las siguientes funciones para obtener valore
 * [resourceId](#resourceid)
 * [suscripción](#subscription)
 
-Para obtener valores de parámetro, variables o la implementación actual, consulte [Funciones con valores de implementación](resource-group-template-functions-deployment.md).
+tooget valores de parámetros, variables o la implementación actual de hello, consulte [funciones con valores de implementación](resource-group-template-functions-deployment.md).
 
 <a id="listkeys" />
 <a id="list" />
@@ -41,18 +41,18 @@ Para obtener valores de parámetro, variables o la implementación actual, consu
 
 `list{Value}(resourceName or resourceIdentifier, apiVersion)`
 
-Devuelve los valores para cualquier tipo de recurso que admite la operación list. El uso más común es `listKeys`. 
+Devuelve Hola valores para cualquier tipo de recurso que admite la operación de lista Hola. el uso más común de Hello es `listKeys`. 
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| resourceName o resourceIdentifier |Sí |string |Identificador único para el recurso. |
-| apiVersion |Sí |cadena |Versión de API de estado en tiempo de ejecución de un recurso. Por lo general, en el formato, **aaaa-mm-dd**. |
+| resourceName o resourceIdentifier |Sí |cadena |Identificador único para el recurso de Hola. |
+| apiVersion |Sí |cadena |Versión de API de estado en tiempo de ejecución de un recurso. Por lo general, en formato de hello, **aaaa-mm-dd**. |
 
 ### <a name="return-value"></a>Valor devuelto
 
-El objeto devuelto desde listKeys tiene el formato siguiente:
+Hola devuelve tiene un objeto de listKeys Hola siguiendo el formato:
 
 ```json
 {
@@ -71,32 +71,32 @@ El objeto devuelto desde listKeys tiene el formato siguiente:
 }
 ```
 
-Otras funciones List tienen diferentes formatos de retorno. Para ver el formato de una función, inclúyalo en la sección de resultados tal y como se muestra en la plantilla de ejemplo. 
+Otras funciones List tienen diferentes formatos de retorno. formato de hello toosee de una función, inclúyala en hello salidas sección tal y como se muestra en la plantilla de ejemplo de Hola. 
 
 ### <a name="remarks"></a>Comentarios
 
-Cualquier operación que comienza por **list** se puede usar como función en la plantilla. Entre las operaciones disponibles se incluyen no solo listKeys, sino también operaciones como `list`, `listAdminKeys` y `listStatus`. Sin embargo, no puede usar operaciones **list** que requieren valores en el cuerpo de solicitud. Por ejemplo, la operación [List Account SAS](/rest/api/storagerp/storageaccounts#StorageAccounts_ListAccountSAS) requiere parámetros de cuerpo de solicitud como *signedExpiry*, por lo que no puede usarla dentro de una plantilla.
+Cualquier operación que comienza por **list** se puede usar como función en la plantilla. Hello las operaciones disponibles incluyen no solo listKeys, pero también las operaciones como `list`, `listAdminKeys`, y `listStatus`. Sin embargo, no puede usar **lista** las operaciones que requieren valores de hello cuerpo de la solicitud. Por ejemplo, hello [lista cuenta SAS](/rest/api/storagerp/storageaccounts#StorageAccounts_ListAccountSAS) operación requiere parámetros de cuerpo de solicitud, como *signedExpiry*, por lo que no puede usar dentro de una plantilla.
 
-Para determinar qué tipos de recursos tienen una operación de lista, dispone de las siguientes opciones:
+toodetermine qué tipos de recursos tienen una operación de lista, deberá Hola siguientes opciones:
 
-* Vea las [operaciones de API de REST](/rest/api/) para un proveedor de recursos y busque operaciones List. Por ejemplo, las cuentas de almacenamiento tienen una [operación listKeys](/rest/api/storagerp/storageaccounts#StorageAccounts_ListKeys).
-* Utilice el cmdlet de PowerShell [Get-AzureRmProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation). En el ejemplo siguiente se obtienen todas las operaciones List para cuentas de almacenamiento:
+* Hola de vista [operaciones de API de REST](/rest/api/) para un proveedor de recursos y buscar la lista de operaciones. Por ejemplo, las cuentas de almacenamiento tienen hello [listKeys operación](/rest/api/storagerp/storageaccounts#StorageAccounts_ListKeys).
+* Hola de uso [AzureRmProviderOperation Get](/powershell/module/azurerm.resources/get-azurermprovideroperation) cmdlet de PowerShell. Hello en el ejemplo siguiente se obtiene todas las operaciones de lista para las cuentas de almacenamiento:
 
   ```powershell
   Get-AzureRmProviderOperation -OperationSearchString "Microsoft.Storage/*" | where {$_.Operation -like "*list*"} | FT Operation
   ```
-* Use el siguiente comando de la CLI de Azure para filtrar solo las operaciones de la lista:
+* Usar hello siguiente toofilter Hola sólo la lista de operaciones de comando de CLI de Azure:
 
   ```azurecli
   az provider operation show --namespace Microsoft.Storage --query "resourceTypes[?name=='storageAccounts'].operations[].name | [?contains(@, 'list')]"
   ```
 
-Especifique el recurso utilizando la [función resourceId](#resourceid) o el formato `{providerNamespace}/{resourceType}/{resourceName}`.
+Especificar recursos de hello mediante cualquier hello [función resourceId](#resourceid), formato de Hola o `{providerNamespace}/{resourceType}/{resourceName}`.
 
 
 ### <a name="example"></a>Ejemplo
 
-En el ejemplo siguiente se muestra cómo se devuelven las claves principal y secundaria de una cuenta de almacenamiento en la sección de salidas.
+Hello en el ejemplo siguiente se muestra cómo los claves principal y secundaria de hello tooreturn de una cuenta de almacenamiento de Hola genera sección.
 
 ```json
 {
@@ -122,18 +122,18 @@ En el ejemplo siguiente se muestra cómo se devuelven las claves principal y sec
 ## <a name="providers"></a>providers
 `providers(providerNamespace, [resourceType])`
 
-Devuelve información acerca de un proveedor de recursos y sus tipos de recursos admitidos. Si no proporciona un tipo de recurso, la función devuelve todos los tipos admitidos para el proveedor de recursos.
+Devuelve información acerca de un proveedor de recursos y sus tipos de recursos admitidos. Si no proporciona un tipo de recurso, función hello devuelve todos los tipos de hello admitida Hola proveedor de recursos.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| providerNamespace |Sí |string |Espacio de nombres del proveedor |
-| resourceType |No |cadena |El tipo de recurso en el espacio de nombres especificado. |
+| providerNamespace |Sí |cadena |Namespace del proveedor de Hola |
+| resourceType |No |cadena |tipo de Hola de recurso dentro de hello especifica espacio de nombres. |
 
 ### <a name="return-value"></a>Valor devuelto
 
-Se devuelve cada tipo admitido en el formato siguiente: 
+Cada tipo admitido se devuelve en hello siguiendo el formato: 
 
 ```json
 {
@@ -143,11 +143,11 @@ Se devuelve cada tipo admitido en el formato siguiente:
 }
 ```
 
-No se garantiza el orden de matriz de los valores devueltos.
+Matriz de clasificación de hello devuelto no se garantiza que los valores.
 
 ### <a name="example"></a>Ejemplo
 
-En el ejemplo siguiente se muestra cómo utilizar la función de proveedor:
+Hola de ejemplo siguiente muestra cómo toouse Hola función de proveedor:
 
 ```json
 {
@@ -163,7 +163,7 @@ En el ejemplo siguiente se muestra cómo utilizar la función de proveedor:
 }
 ```
 
-El ejemplo anterior devuelve un objeto en el formato siguiente:
+Hello en el ejemplo anterior se devuelve un objeto de hello siguiendo el formato:
 
 ```json
 {
@@ -197,21 +197,21 @@ Devuelve un objeto que representa el estado de tiempo de ejecución de un recurs
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
 | resourceName o resourceIdentifier |Sí |string |Nombre o identificador único de un recurso. |
-| apiVersion |No |string |Versión de la API del recurso especificado. Incluya este parámetro cuando el recurso no esté aprovisionado en la misma plantilla. Por lo general, en el formato, **aaaa-mm-dd**. |
+| apiVersion |No |cadena |Versión de API de hello recurso específico. Incluya este parámetro cuando no se ha aprovisionado el recurso de hello dentro de la misma plantilla. Por lo general, en formato de hello, **aaaa-mm-dd**. |
 
 ### <a name="return-value"></a>Valor devuelto
 
-Cada tipo de recurso devuelve propiedades diferentes para la función de referencia. La función no devuelve un solo formato predefinido. Para ver las propiedades de un tipo de recurso, devuelva el objeto en la sección de resultados tal como se muestra en el ejemplo.
+Cada tipo de recurso devuelve propiedades distintas para cada función de la referencia de hello. función Hello no devuelve un solo formato predefinido. toosee Hola propiedades para un tipo de recurso, que devuelven objetos Hola Hola genera sección tal y como se muestra en el ejemplo de Hola.
 
 ### <a name="remarks"></a>Comentarios
 
-La función reference deriva su valor desde un estado de tiempo de ejecución y, por tanto, no se puede utilizar en la sección de variables. Se puede utilizar en la sección de salidas de una plantilla. 
+función de la referencia de Hello deriva su valor desde un estado en tiempo de ejecución y, por tanto, no se puede usar en la sección de variables de Hola. Se puede utilizar en la sección de salidas de una plantilla. 
 
-Mediante el uso de la función de referencia, se declara implícitamente que un recurso depende de otro recurso si el recurso al que se hace referencia se aprovisiona en la misma plantilla. No tiene que usar también la propiedad dependsOn. La función no se evalúa hasta que el recurso al que se hace referencia complete la implementación.
+Mediante la función de la referencia de hello, se declara implícitamente que un recurso depende otro recurso si se aprovisionan recursos Hola al que hace referencia dentro de la misma plantilla. No es necesario propiedad dependsOn de tooalso use Hola. Hello función no se ha evalúa hasta hello recursos que se hace referencia han completado la implementación.
 
-Para ver los nombres y los valores de propiedad de un tipo de recurso, cree una plantilla que devuelva el objeto en la sección de salidas. Si tiene un recurso existente de ese tipo, la plantilla devuelve el objeto sin necesidad de implementar los nuevos recursos. 
+nombres de propiedad de hello toosee y valores para un tipo de recurso, cree una plantilla que devuelve el objeto de hello en la sección de salidas de Hola. Si tiene un recurso existente de ese tipo, la plantilla devuelve objeto Hola sin necesidad de implementar los nuevos recursos. 
 
-Normalmente, se usa la función de **referencia** para devolver un valor determinado de un objeto, como el identificador URI del punto de conexión de blob o el nombre de dominio completo.
+Normalmente, se utiliza hello **referencia** función tooreturn un valor determinado de un objeto, como el URI del extremo de blob de Hola o el nombre de dominio completo.
 
 ```json
 "outputs": {
@@ -228,7 +228,7 @@ Normalmente, se usa la función de **referencia** para devolver un valor determi
 
 ### <a name="example"></a>Ejemplo
 
-Para implementar y hacer referencia al recurso en la misma plantilla, use:
+toodeploy y referencia de recurso de Hola Hola misma plantilla, use:
 
 ```json
 {
@@ -263,7 +263,7 @@ Para implementar y hacer referencia al recurso en la misma plantilla, use:
 }
 ``` 
 
-El ejemplo anterior devuelve un objeto en el formato siguiente:
+Hello en el ejemplo anterior se devuelve un objeto de hello siguiendo el formato:
 
 ```json
 {
@@ -281,7 +281,7 @@ El ejemplo anterior devuelve un objeto en el formato siguiente:
 }
 ```
 
-En el ejemplo siguiente se hace referencia a una cuenta de almacenamiento que no se implementa en esta plantilla. La cuenta de almacenamiento ya existe dentro del mismo grupo de recursos.
+Hello en el ejemplo siguiente se hace referencia a una cuenta de almacenamiento que no está implementada en esta plantilla. Hello cuenta de almacenamiento ya existe dentro de hello mismo grupo de recursos.
 
 ```json
 {
@@ -307,11 +307,11 @@ En el ejemplo siguiente se hace referencia a una cuenta de almacenamiento que no
 ## <a name="resourcegroup"></a>resourceGroup
 `resourceGroup()`
 
-Devuelve un objeto que representa el grupo de recursos actual. 
+Devuelve un objeto que representa el grupo de recursos actual de Hola. 
 
 ### <a name="return-value"></a>Valor devuelto
 
-El objeto devuelto está en el formato siguiente:
+Hola devuelve el objeto se encuentra en hello siguiendo el formato:
 
 ```json
 {
@@ -328,7 +328,7 @@ El objeto devuelto está en el formato siguiente:
 
 ### <a name="remarks"></a>Comentarios
 
-Un uso común de la función resourceGroup es crear recursos en la misma ubicación que el grupo de recursos. En el ejemplo siguiente se utiliza la ubicación del grupo de recursos para asignar la ubicación de un sitio web.
+Un uso común de la función de grupo de recursos de hello es toocreate recursos Hola misma ubicación que el grupo de recursos de Hola. Hello en el ejemplo siguiente se usa Hola recursos grupo tooassign Hola ubicación de un sitio web.
 
 ```json
 "resources": [
@@ -344,7 +344,7 @@ Un uso común de la función resourceGroup es crear recursos en la misma ubicaci
 
 ### <a name="example"></a>Ejemplo
 
-La plantilla siguiente devuelve las propiedades del grupo de recursos.
+Hello plantilla siguiente devuelve las propiedades de Hola Hola del grupo de recursos.
 
 ```json
 {
@@ -360,7 +360,7 @@ La plantilla siguiente devuelve las propiedades del grupo de recursos.
 }
 ```
 
-El ejemplo anterior devuelve un objeto en el formato siguiente:
+Hello en el ejemplo anterior se devuelve un objeto de hello siguiendo el formato:
 
 ```json
 {
@@ -378,21 +378,21 @@ El ejemplo anterior devuelve un objeto en el formato siguiente:
 ## <a name="resourceid"></a>resourceId
 `resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2]...)`
 
-Devuelve el identificador único de un recurso. Utilice esta función cuando el nombre del recurso sea ambiguo o no esté aprovisionado dentro de la misma plantilla. 
+Devuelve Hola identificador único de un recurso. Use esta función cuando el nombre del recurso de hello es ambiguo o no se ha aprovisionado en hello misma plantilla. 
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| subscriptionId |No |Cadena (en formato de GUID) |El valor predeterminado es la suscripción actual. Especifique este valor cuando necesite recuperar un recurso en otra suscripción. |
-| resourceGroupName |No |cadena |El valor predeterminado es el grupo de recursos actual. Especifique este valor cuando necesite recuperar un recurso en otro grupo de recursos. |
+| subscriptionId |No |Cadena (en formato de GUID) |Valor predeterminado es la suscripción actual de Hola. Especifique este valor cuando necesite tooretrieve un recurso en otra suscripción. |
+| resourceGroupName |No |cadena |El valor predeterminado es el grupo de recursos actual. Especifique este valor cuando necesite tooretrieve un recurso en otro grupo de recursos. |
 | resourceType |Sí |string |Tipo de recurso, incluido el espacio de nombres del proveedor de recursos. |
 | resourceName1 |Sí |cadena |Nombre del recurso. |
 | resourceName2 |No |string |Siguiente segmento de nombre de recurso si el recurso está anidado. |
 
 ### <a name="return-value"></a>Valor devuelto
 
-El identificador se devuelve con el formato siguiente:
+identificador de Hola se devuelve en hello siguiendo el formato:
 
 ```json
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -400,33 +400,33 @@ El identificador se devuelve con el formato siguiente:
 
 ### <a name="remarks"></a>Comentarios
 
-Los valores de parámetro que especifique dependen de si el recurso está en el mismo grupo de recursos y la misma suscripción que la implementación actual.
+Hello valores de parámetro especificados dependen de si el recurso de hello está en hello mismo grupo de recursos y la suscripción como la implementación actual de Hola.
 
-Para obtener el identificador de recurso para una cuenta de almacenamiento de la misma suscripción y el mismo grupo de recursos, use:
+recursos de hello tooget el Id. de una cuenta de almacenamiento en hello mismo suscripción y el grupo de recursos, use:
 
 ```json
 "[resourceId('Microsoft.Storage/storageAccounts','examplestorage')]"
 ```
 
-Para obtener el identificador de recurso para una cuenta de almacenamiento de la misma suscripción, pero un grupo de recursos diferente, use:
+Id. de recurso de hello tooget para una cuenta de almacenamiento en Hola misma suscripción, pero un grupo de recursos diferente, utilice:
 
 ```json
 "[resourceId('otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]"
 ```
 
-Para obtener el identificador de recurso para una cuenta de almacenamiento de una suscripción y un grupo de recursos diferente, use:
+Id. de recurso de hello tooget para una cuenta de almacenamiento en una suscripción diferente y el grupo de recursos, use:
 
 ```json
 "[resourceId('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', 'otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]"
 ```
 
-Para obtener el identificador de recurso para una base de datos de un grupo de recursos diferente, use:
+Id. de recurso de hello tooget para una base de datos en otro grupo de recursos, use:
 
 ```json
 "[resourceId('otherResourceGroup', 'Microsoft.SQL/servers/databases', parameters('serverName'), parameters('databaseName'))]"
 ```
 
-A menudo, necesitará utilizar esta función cuando se usa una cuenta de almacenamiento o red virtual en un grupo de recursos alternativo. En el ejemplo siguiente se muestra cómo un recurso de un grupo de recursos externos se puede utilizar fácilmente:
+A menudo, necesita toouse esta función si usa una cuenta de almacenamiento o red virtual en un grupo de recursos alternativos. Hello en el ejemplo siguiente se muestra cómo fácilmente se puede utilizar un recurso de un grupo de recursos externos:
 
 ```json
 {
@@ -473,7 +473,7 @@ A menudo, necesitará utilizar esta función cuando se usa una cuenta de almacen
 
 ### <a name="example"></a>Ejemplo
 
-En el ejemplo siguiente se devuelve el identificador de recurso de la cuenta de almacenamiento en el grupo de recursos:
+Hello en el ejemplo siguiente se devuelve Hola Id. de recurso para una cuenta de almacenamiento en grupo de recursos de hello:
 
 ```json
 {
@@ -501,7 +501,7 @@ En el ejemplo siguiente se devuelve el identificador de recurso de la cuenta de 
 }
 ```
 
-La salida del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -515,11 +515,11 @@ La salida del ejemplo anterior con los valores predeterminados es:
 ## <a name="subscription"></a>suscripción
 `subscription()`
 
-Devuelve detalles sobre la suscripción para la implementación actual. 
+Devuelve detalles acerca de la suscripción de hello para la implementación actual de Hola. 
 
 ### <a name="return-value"></a>Valor devuelto
 
-La función devuelve el siguiente formato:
+función Hello devuelve Hola siguiendo el formato:
 
 ```json
 {
@@ -532,7 +532,7 @@ La función devuelve el siguiente formato:
 
 ### <a name="example"></a>Ejemplo
 
-En el ejemplo siguiente se muestra la función de suscripción a la que se llama en la sección de salidas. 
+Hello en el ejemplo siguiente se muestra hello suscripción función llamado en la sección de salidas de Hola. 
 
 ```json
 {
@@ -549,8 +549,8 @@ En el ejemplo siguiente se muestra la función de suscripción a la que se llama
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Para obtener una descripción de las secciones de una plantilla de Azure Resource Manager, vea [Creación de plantillas de Azure Resource Manager](resource-group-authoring-templates.md).
-* Para combinar varias plantillas, vea [Uso de plantillas vinculadas con Azure Resource Manager](resource-group-linked-templates.md).
-* Para iterar una cantidad de veces específica al crear un tipo de recurso, vea [Creación de varias instancias de recursos en el Administrador de recursos de Azure](resource-group-create-multiple.md).
-* Para saber cómo implementar la plantilla que creó, consulte [Implementación de una aplicación con la plantilla de Azure Resource Manager](resource-group-template-deploy.md).
+* Para obtener una descripción de las secciones de hello en una plantilla de Azure Resource Manager, consulte [plantillas del Administrador de recursos de Azure de creación](resource-group-authoring-templates.md).
+* toomerge varias plantillas, consulte [mediante plantillas vinculadas con el Administrador de recursos de Azure](resource-group-linked-templates.md).
+* tooiterate un número especificado de veces al crear un tipo de recurso, vea [crear varias instancias de recursos en el Administrador de recursos de Azure](resource-group-create-multiple.md).
+* toosee cómo toodeploy plantilla de Hola que haya creado, vea [implementar una aplicación con la plantilla de Azure Resource Manager](resource-group-template-deploy.md).
 

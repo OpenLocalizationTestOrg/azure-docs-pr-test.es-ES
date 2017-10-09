@@ -1,6 +1,6 @@
 ---
-title: "Ver registros de diagnóstico de Azure Data Lake Store | Microsoft Docs"
-description: "Sepa cómo configurar registros de diagnóstico y tener acceso a ellos para Azure Data Lake Store  "
+title: "registros de diagnóstico de aaaViewing de almacén de Azure Data Lake | Documentos de Microsoft"
+description: "Comprender cómo toosetup y acceso a registros de diagnóstico de almacén de Azure Data Lake "
 services: data-lake-store
 documentationcenter: 
 author: nitinme
@@ -14,83 +14,83 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/10/2017
 ms.author: nitinme
-ms.openlocfilehash: b7a38ec445ef0ce13f3f1931e8ee246dce6412a5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 11fbf7f517f97abdcaf809c1ebeeb51424ab2c1c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-store"></a>Acceso a los registros de diagnóstico de Azure Data Lake Store
-Sepa cómo habilitar el registro de diagnósticos en su cuenta de Data Lake Store y cómo ver los registros recopilados relativos a su cuenta.
+Obtenga información acerca de cómo se recopila tooenable el registro de diagnóstico para su cuenta de almacén de Data Lake y funcionamiento de los registros tooview Hola para su cuenta.
 
-Las organizaciones pueden habilitar el registro de diagnósticos en sus cuentas de Azure Data Lake Store para recopilar trazas de auditoría de acceso a datos que proporcionan información como, por ejemplo, la lista de usuarios que tienen acceso a los datos, con qué frecuencia se tiene acceso a ellos, qué cantidad de datos se almacena en la cuenta, etc.
+Las organizaciones pueden habilitar el registro de diagnóstico para su almacén de Azure Data Lake cuenta toocollect datos acceso a los seguimientos de auditoría que proporciona información como la lista de usuarios que acceden a datos de hello, con qué frecuencia se tiene acceso a datos de hello, la cantidad de datos se almacena en hello cuenta, etcetera.
 
 ## <a name="prerequisites"></a>Requisitos previos
 * **Una suscripción de Azure**. Vea [Obtener evaluación gratuita de Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Cuenta del Almacén de Azure Data Lake**. Siga las instrucciones que se describen en [Introducción al Almacén de Azure Data Lake mediante el Portal de Azure](data-lake-store-get-started-portal.md).
+* **Cuenta del Almacén de Azure Data Lake**. Siga las instrucciones de hello en [empezar a trabajar con el almacén de Azure Data Lake con hello Azure Portal](data-lake-store-get-started-portal.md).
 
 ## <a name="enable-diagnostic-logging-for-your-data-lake-store-account"></a>Habilitar el registro de diagnósticos en la cuenta de Data Lake Store
-1. Inicie sesión en el nuevo [Portal de Azure](https://portal.azure.com).
+1. Inicio de sesión toohello nueva [Portal de Azure](https://portal.azure.com).
 2. Abra la cuenta de Data Lake Store y, en la hoja de la cuenta de Data Lake Store, haga clic en **Configuración** y en **Registros de diagnóstico**.
-3. En la hoja **Registros de diagnóstico**, haga clic en **Activar diagnósticos**.
+3. Hola **registros de diagnóstico** hoja, haga clic en **Activar diagnósticos**.
 
     ![Habilitar el registro de diagnóstico](./media/data-lake-store-diagnostic-logs/turn-on-diagnostics.png "Habilitar registros de diagnóstico")
 
-3. En la hoja **Diagnóstico** , realice los siguientes cambios para configurar el registro de diagnósticos.
+3. Hola **diagnóstico** hoja, que Hola después de registro de diagnóstico de tooconfigure de cambios.
    
     ![Habilitar el registro de diagnóstico](./media/data-lake-store-diagnostic-logs/enable-diagnostic-logs.png "Habilitar registros de diagnóstico")
    
-   * Establezca el **Estado** en **Activado** para habilitar el registro de diagnóstico.
-   * Puede optar por almacenar o procesar los datos de maneras diferentes.
+   * Establecer **estado** demasiado**en** tooenable el registro de diagnóstico.
+   * Puede elegir datos hello toostore o proceso de maneras diferentes.
      
-        * Seleccione la opción **Archive to a storage account** (Archivar en cuenta de almacenamiento) para almacenar los registros en una cuenta de Azure Storage. Use esta opción si quiere archivar los datos que se procesarán por lotes más adelante. Si selecciona esta opción, debe proporcionar una cuenta de almacenamiento de Azure para guardar los registros.
+        * Seleccione la opción de hello demasiado**tooa cuenta de almacenamiento de archivo** toostore registros tooan cuenta de almacenamiento de Azure. Utilice esta opción si desea que los datos de hello tooarchive que será procesado por lotes en una fecha posterior. Si selecciona esta opción debe proporcionar una cuenta de almacenamiento de Azure toosave registros Hola.
         
-        * Seleccione la opción **Stream to an event hub** (Transmitir a un centro de eventos) para transmitir los datos de registro a una instancia de Azure Event Hubs. Lo más probable es que use esta opción si tiene una canalización de procesamiento de bajada para analizar los registros entrantes en tiempo real. Si selecciona esta opción, debe proporcionar los detalles del Centro de eventos de Azure que quiera usar.
+        * Seleccione la opción de hello demasiado**concentrador de eventos de flujo tooan** tooan de datos de registro de toostream centro de eventos de Azure. Probablemente utilizará esta opción si tiene un procesamiento en dirección descendente tooanalyze registros entrantes en tiempo real de la canalización. Si selecciona esta opción, debe proporcionar detalles de Hola para hello concentrador de eventos de Azure que desee toouse.
 
-        * Seleccione la opción de **Send to Log Analytics** (Enviar a Log Analytics) para usar el servicio Azure Log Analytics para analizar los datos de registro generados. Si selecciona esta opción, debe proporcionar los detalles para el área de trabajo de Operations Management Suite que usaría para realizar análisis de registros.
+        * Seleccione también la opción de hello**enviar tooLog análisis** toouse Hola datos de registro de análisis de registros de Azure servicio tooanalyze Hola generado. Si selecciona esta opción, debe proporcionar Hola detalles para el área de trabajo de hello Operations Management Suite que realizaría Hola usar análisis de registros.
      
-   * Indique si quiere obtener los registros de auditoría, los registros de solicitudes o ambos.
-   * Especifique el número de días durante los que deben conservarse los datos. La retención solo es aplicable si está utilizando la cuenta de Azure Storage para archivar datos de registro.
+   * Especifique si desea que los registros de auditoría tooget, registros de solicitudes o ambos.
+   * Especifique el número de Hola de días para el que se deben conservar los datos de Hola. Retención solo es aplicable si usa datos de registro de tooarchive de cuenta de almacenamiento de Azure.
    * Haga clic en **Guardar**.
 
-Una vez habilitada la configuración de diagnóstico, puede ver los registros en la pestaña **Registros de diagnóstico** .
+Una vez que se ha habilitado la configuración de diagnóstico, puede ver registros de Hola Hola **registros de diagnóstico** ficha.
 
 ## <a name="view-diagnostic-logs-for-your-data-lake-store-account"></a>Ver registros de diagnóstico de la cuenta de Data Lake Store
-Existen dos formas de ver los datos de registro para la cuenta de Data Lake Store.
+Hay dos formas de datos de registro de hello tooview para su cuenta de almacén de Data Lake.
 
-* Desde la vista de configuración de la cuenta de Data Lake Store
-* Desde la cuenta de Almacenamiento de Azure donde se almacenan los datos
+* Desde la cuenta de almacén de Data Lake Hola ver configuración
+* De cuenta de almacenamiento de Azure de Hola donde se almacenan los datos de Hola
 
-### <a name="using-the-data-lake-store-settings-view"></a>Uso de la vista de configuración de Data Lake Store
+### <a name="using-hello-data-lake-store-settings-view"></a>Con hello ver la configuración del almacén de datos Lake
 1. En la hoja **Configuración** de su cuenta de Data Lake Store, haga clic en **Registros de diagnóstico**.
    
     ![Ver registro de diagnóstico](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs.png "Ver registros de diagnóstico") 
-2. En la hoja **Registros de diagnóstico**, debería ver los registros clasificados por **Registros de auditoría** y **Registros de solicitudes**.
+2. Hola **registros de diagnóstico** hoja, debería ver los registros de hello clasificados por **los registros de auditoría** y **los registros de solicitudes**.
    
-   * Los registros de solicitudes capturan todas las solicitudes API realizadas en la cuenta de Data Lake Store.
-   * Los registros de auditoría son parecidos a los de solicitud, pero proporcionan un desglose mucho más detallado de las operaciones que tienen lugar en la cuenta de Data Lake Store. Por ejemplo, una llamada de API de carga única en los registros de solicitud podría producir varias operaciones "Append" en los registros de auditoría.
-3. Haga clic en el vínculo **Descargar** de cada entrada de registro para descargar los registros.
+   * Registros de solicitudes de captura todas las solicitudes API realizadas en hello cuenta de almacén de Data Lake.
+   * Registros de auditoría son registros de toorequest similares pero proporcionan un análisis mucho más detallado de las operaciones de Hola se realiza en la cuenta de almacén de Data Lake Hola. Por ejemplo, podría dar lugar a una llamada de API de carga única en los registros de solicitud en varias operaciones de "Agregar" en los registros de auditoría de Hola.
+3. Haga clic en hello **descargar** registros de hello toodownload de entrada de registro de vínculo en todas.
 
-### <a name="from-the-azure-storage-account-that-contains-log-data"></a>En la cuenta de Almacenamiento de Azure que contiene los datos de registro
-1. Abra la hoja de la cuenta de Almacenamiento de Azure asociada con Data Lake Store para el registro y haga clic en Blobs. La hoja **Servicio Blob** muestra dos contenedores.
+### <a name="from-hello-azure-storage-account-that-contains-log-data"></a>De hello cuenta de almacenamiento de Azure contiene datos del registro
+1. Abra la hoja de cuenta de almacenamiento de Azure Hola asociado con el almacén de Data Lake para el registro y, a continuación, haga clic en Blobs. Hola **servicio Blob** hoja muestra dos contenedores.
    
     ![Ver registro de diagnóstico](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "Ver registros de diagnóstico")
    
-   * El contenedor **insights-logs-audit** contiene los registros de auditoría.
-   * El contenedor **insights-logs-requests** contiene los registros de solicitudes.
-2. Dentro de estos contenedores, los registros se almacenan con la siguiente estructura.
+   * contenedor de Hello **auditoría de registros de visión** contiene registros de auditoría de Hola.
+   * contenedor de Hello **las solicitudes de registros de visión** contiene registros de solicitudes de Hola.
+2. Dentro de estos contenedores, registros de Hola se almacenan en hello siguiendo la estructura.
    
     ![Ver registro de diagnóstico](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account-structure.png "Ver registros de diagnóstico")
    
-    Por ejemplo, la ruta de acceso completa a un registro de auditoría sería `https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestore/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
+    Por ejemplo, podría ser el registro de auditoría de tooan de ruta de acceso completa de Hola`https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestore/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
    
-    De forma similar, la ruta de acceso completa a un registro de solicitudes sería `https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestore/y=2016/m=07/d=18/h=14/m=00/PT1H.json`
+    Registro de solicitudes de tooa de ruta de acceso completa de hello similar, podría ser`https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestore/y=2016/m=07/d=18/h=14/m=00/PT1H.json`
 
-## <a name="understand-the-structure-of-the-log-data"></a>Comprender la estructura de los datos de registro
-Los registros de auditoría y de solicitud tienen un formato JSON. En esta sección, veremos la estructura de JSON de los registros de auditoría y de solicitud.
+## <a name="understand-hello-structure-of-hello-log-data"></a>Comprender la estructura de Hola Hola de datos de registro
+Hello registros de auditoría y solicitud están en un formato JSON. En esta sección, consultamos estructura Hola de JSON para la solicitud y los registros de auditoría.
 
 ### <a name="request-logs"></a>Request Logs
-Este es un ejemplo de una entrada en el registro de solicitud con formato JSON. Cada blob tiene un objeto raíz llamado **registros** que contiene una matriz de objetos de registro.
+Este es un ejemplo de entrada en el registro de solicitudes con formato JSON de Hola. Cada blob tiene un objeto raíz llamado **registros** que contiene una matriz de objetos de registro.
 
     {
     "records": 
@@ -116,28 +116,28 @@ Este es un ejemplo de una entrada en el registro de solicitud con formato JSON. 
 #### <a name="request-log-schema"></a>Esquema de un registro de solicitud
 | Nombre | Tipo | Description |
 | --- | --- | --- |
-| Twitter en tiempo |String |Marca de tiempo (en UTC) del registro. |
-| resourceId |String |Identificador del recurso en el que tuvo lugar la operación. |
-| categoría |String |Categoría del registro. Por ejemplo, **Requests**. |
-| operationName |String |Nombre de la operación que se registra. Por ejemplo, getfilestatus. |
-| resultType |String |Estado de la operación. Por ejemplo, 200. |
-| callerIpAddress |String |Dirección IP del cliente que realiza la solicitud. |
-| correlationId |String |Identificador del registro que se puede usar para agrupar un conjunto de entradas de registro relacionadas. |
-| identidad |Objeto |Identidad que ha generado el registro. |
+| Twitter en tiempo |String |Hola marca de tiempo (en UTC) del registro de hello |
+| resourceId |String |Id. de Hello del recurso de Hola que realizó la operación de colocar en |
+| categoría |String |categoría de registro de Hello. Por ejemplo, **Requests**. |
+| operationName |String |Nombre de operación de Hola que inició sesión. Por ejemplo, getfilestatus. |
+| resultType |String |estado de Hola de operación de hello, por ejemplo, 200. |
+| callerIpAddress |String |dirección IP de Hola de cliente de Hola que realiza la solicitud de Hola |
+| correlationId |String |Id. de Hello del registro de hello que puede usar toogroup conjuntamente un conjunto de entradas de registro relacionadas |
+| identidad |Objeto |identidad de Hola que generó el registro de hello |
 | propiedades |JSON |Vea más abajo para obtener más información. |
 
 #### <a name="request-log-properties-schema"></a>Esquema de propiedades de un registro de solicitud
 | Nombre | Tipo | Description |
 | --- | --- | --- |
-| HttpMethod |String |Método HTTP usado en la operación. Por ejemplo, GET. |
-| Ruta de acceso |String |Ruta de acceso en la que se ha realizado la operación. |
-| RequestContentLength |int |Longitud del contenido de la solicitud HTTP. |
-| ClientRequestId |String |Identificador que distingue de manera única esta solicitud. |
-| StartTime |String |Hora a la que el servidor ha recibido la solicitud. |
-| EndTime |String |Hora a la que el servidor ha enviado una respuesta. |
+| HttpMethod |String |Hello método HTTP utilizado para la operación de Hola. Por ejemplo, GET. |
+| Ruta de acceso |String |se realizó la operación de Hola de ruta de acceso de Hello en |
+| RequestContentLength |int |longitud del contenido Hola de solicitud de hello HTTP |
+| ClientRequestId |String |Hola Id. que identifica esta solicitud |
+| StartTime |String |hora de Hello en qué servidor recibido una petición Hola Hola |
+| EndTime |String |tiempo de Hello en qué Hola servidor envió una respuesta |
 
 ### <a name="audit-logs"></a>Registros de auditoría
-Este es un ejemplo de una entrada en el registro de auditoría con formato JSON. Cada blob tiene un objeto raíz llamado **registros** que contiene una matriz de objetos de registro
+Este es un ejemplo de entrada en el registro de auditoría con formato JSON de Hola. Cada blob tiene un objeto raíz llamado **registros** que contiene una matriz de objetos de registro
 
     {
     "records": 
@@ -162,22 +162,22 @@ Este es un ejemplo de una entrada en el registro de auditoría con formato JSON.
 #### <a name="audit-log-schema"></a>Esquema de un registro de auditoría
 | Nombre | Tipo | Description |
 | --- | --- | --- |
-| Twitter en tiempo |String |Marca de tiempo (en UTC) del registro. |
-| resourceId |String |Identificador del recurso en el que tuvo lugar la operación. |
-| categoría |String |Categoría del registro. Por ejemplo, **Audit**. |
-| operationName |String |Nombre de la operación que se registra. Por ejemplo, getfilestatus. |
-| resultType |String |Estado de la operación. Por ejemplo, 200. |
-| correlationId |String |Identificador del registro que se puede usar para agrupar un conjunto de entradas de registro relacionadas. |
-| identidad |Objeto |Identidad que ha generado el registro. |
+| Twitter en tiempo |String |Hola marca de tiempo (en UTC) del registro de hello |
+| resourceId |String |Id. de Hello del recurso de Hola que realizó la operación de colocar en |
+| categoría |String |categoría de registro de Hello. Por ejemplo, **Audit**. |
+| operationName |String |Nombre de operación de Hola que inició sesión. Por ejemplo, getfilestatus. |
+| resultType |String |estado de Hola de operación de hello, por ejemplo, 200. |
+| correlationId |String |Id. de Hello del registro de hello que puede usar toogroup conjuntamente un conjunto de entradas de registro relacionadas |
+| identidad |Objeto |identidad de Hola que generó el registro de hello |
 | propiedades |JSON |Vea más abajo para obtener más información. |
 
 #### <a name="audit-log-properties-schema"></a>Esquema de propiedades de un registro de auditoría
 | Nombre | Tipo | Description |
 | --- | --- | --- |
-| StreamName |String |Ruta de acceso en la que se ha realizado la operación. |
+| StreamName |String |se realizó la operación de Hola de ruta de acceso de Hello en |
 
-## <a name="samples-to-process-the-log-data"></a>Ejemplos para procesar los datos de registro
-Azure Data Lake Store proporciona un ejemplo de cómo procesar y analizar los datos de registro. Puede encontrar el ejemplo en [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample). 
+## <a name="samples-tooprocess-hello-log-data"></a>Datos de registro de hello ejemplos tooprocess
+Almacén de Data Lake de Azure proporciona un ejemplo sobre cómo tooprocess y analizar los datos de registro de saludo. Puede encontrar el ejemplo hello en [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample). 
 
 ## <a name="see-also"></a>Otras referencias
 * [Información general del Almacén de Azure Data Lake](data-lake-store-overview.md)

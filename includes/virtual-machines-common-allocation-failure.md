@@ -1,71 +1,71 @@
 
-Si su problema con Azure no se trata en este artículo, visite los [foros de Azure en MSDN y Stack Overflow](https://azure.microsoft.com/support/forums/). Puede publicar su problema en ellos o en @AzureSupport en Twitter. También puede presentar una solicitud de soporte técnico de Azure; para ello seleccione **Obtener soporte técnico** en el sitio de [soporte técnico de Azure](https://azure.microsoft.com/support/options/) .
+Si el problema de Azure no se trata en este artículo, visite hello [foros de Azure en MSDN y el desbordamiento de la pila](https://azure.microsoft.com/support/forums/). Puede publicar su problema en estos foros o too@AzureSupport en Twitter. Además, puede registrar una solicitud de soporte técnico de Azure seleccionando **obtener asistencia** en hello [soporte técnico de Azure](https://azure.microsoft.com/support/options/) sitio.
 
 ## <a name="general-troubleshooting-steps"></a>Pasos generales para solucionar problemas
-### <a name="troubleshoot-common-allocation-failures-in-the-classic-deployment-model"></a>Solución de problemas de errores de asignación comunes en el modelo de implementación clásica
+### <a name="troubleshoot-common-allocation-failures-in-hello-classic-deployment-model"></a>Solucionar errores comunes de asignación en el modelo de implementación clásica de Hola
 Estos pasos básicos pueden ayudar a resolver muchos errores de asignación en las máquinas virtuales.
 
-* Cambie el tamaño de la máquina virtual por uno diferente.<br>
-    Haga clic en **examinar todo** > **máquinas virtuales (clásicas)** > la máquina virtual > **configuración** > **tamaño**. Para información detallada, vea [Cambiar el tamaño de la máquina virtual](https://msdn.microsoft.com/library/dn168976.aspx).
-* Elimine todas las máquinas virtuales del servicio en la nube y vuelva a crearlas.<br>
-    Haga clic en **examinar todo** > **máquinas virtuales (clásicas)** > la máquina virtual > **eliminar**. Luego, haga clic en **Nuevo** > **Compute** > [imagen de máquina virtual].
+* Cambiar el tamaño de hello VM tooa otro tamaño de VM.<br>
+    Haga clic en **Examinar todo** > **Máquinas virtuales (clásico)** > su máquina virtual > **Configuración** > **Tamaño**. Para obtener instrucciones detalladas, consulte [cambiar el tamaño de máquina virtual de hello](https://msdn.microsoft.com/library/dn168976.aspx).
+* Elimine todas las máquinas virtuales del servicio de nube de Hola y volver a crear las máquinas virtuales.<br>
+    Haga clic en **Examinar todo** > **Máquinas virtuales (clásico)** > su máquina virtual > **Eliminar**. Luego, haga clic en **Nuevo** > **Compute** > [imagen de máquina virtual].
 
-### <a name="troubleshoot-common-allocation-failures-in-the-azure-resource-manager-deployment-model"></a>Solución de problemas de errores de asignación comunes en el modelo de implementación del Administrador de recursos de Azure
+### <a name="troubleshoot-common-allocation-failures-in-hello-azure-resource-manager-deployment-model"></a>Solucionar errores comunes de asignación en el modelo de implementación de hello Azure Resource Manager
 Estos pasos básicos pueden ayudar a resolver muchos errores de asignación en las máquinas virtuales.
 
-* Detenga (desasigne) todas las máquinas virtuales que estén en el mismo conjunto de disponibilidad y, luego, reinícielas.<br>
-    Para detener: haga clic en **grupos de recursos** > el grupo de recursos > **recursos** > su conjunto de disponibilidad > **máquinas virtuales** > la máquina virtual >  **Detener**.
+* Detener (desasignar) todas las máquinas virtuales en hello mismo disponibilidad establecido, a continuación, reinicie cada uno de ellos.<br>
+    toostop: haga clic en **grupos de recursos** > el grupo de recursos > **recursos** > su conjunto de disponibilidad > **máquinas virtuales** > la máquina virtual >  **Detener**.
   
-    Una vez detenidas todas las máquinas virtuales, seleccione la primera y haga clic en **Iniciar**.
+    Después de detener todas las máquinas virtuales, seleccione Hola primera máquina virtual y haga clic en **iniciar**.
 
 ## <a name="background-information"></a>Información de contexto
 ### <a name="how-allocation-works"></a>Cómo funciona la asignación
-Los servidores de los centros de datos de Azure están particionados en clústeres. Normalmente, se intenta una solicitud de asignación en varios clústeres, pero es posible que determinadas restricciones de la solicitud de asignación obliguen a la plataforma de Azure a intentar la solicitud en solo un clúster. En este artículo, nos referiremos a dicha solicitud como "anclada a un clúster". En el diagrama número 1 que puede ver a continuación, se ilustra el caso de una asignación normal que se intenta en varios clústeres; En el diagrama 2 se ilustra el caso de una asignación que está anclada al clúster 2, porque ahí es donde se hospeda el servicio en la nube CS_1 o el conjunto de disponibilidad.
+servidores de Hello en centros de datos de Azure se dividen en clústeres. Normalmente, se intenta realizar una solicitud de asignación en varios clústeres, pero es posible que determinadas restricciones de solicitud de asignación de hello forzar la solicitud de hello plataforma Windows Azure tooattempt hello en un único clúster. En este artículo, nos referiremos toothis como "anclado tooa clúster". Diagrama 1 a continuación ilustra el caso en Hola de una asignación normal que se puede utilizar en varios clústeres. Diagrama 2 ilustra el caso de hello de una asignación que ha anclado tooCluster 2 ya que ese es donde se hospeda Hola existente CS_1 de servicio de nube o conjunto de disponibilidad.
 ![Diagrama de asignación](./media/virtual-machines-common-allocation-failure/Allocation1.png)
 
 ### <a name="why-allocation-failures-happen"></a>¿Por qué se producen errores de asignación?
-Cuando una solicitud de asignación está anclada a un clúster, existe una posibilidad menor de encontrar recursos libres dado que el grupo de recursos disponible es más pequeño. Además, si la solicitud de asignación está anclada a un clúster pero el tipo de recurso que solicita no se admite en ese clúster, la solicitud dará error aunque el clúster tenga recursos libres. En el diagrama 3 a continuación se ilustra el caso en el que una asignación anclada da error porque el único clúster candidato no tiene recursos libres. En el diagrama 4 se ilustra el caso en el que una asignación anclada da error porque el único clúster candidato no admite el tamaño de VM solicitado, a pesar de que el clúster tiene recursos libres.
+Cuando una solicitud de asignación está anclado tooa clúster, hay una mayor probabilidad de errores toofind liberar recursos, puesto que el grupo de recursos disponibles de hello es menor. Además, si su solicitud de asignación está anclado tooa clúster pero tipo hello de recurso solicitado no es compatible con dicho clúster, se producirá un error en la solicitud incluso si el clúster de hello tiene liberar recursos. Diagrama 3 a continuación ilustra el caso en Hola donde una asignación anclada produce un error porque Hola candidato solo clúster no tiene recursos libres. Diagrama 4 muestra caso Hola donde una asignación anclada produce un error porque no es compatible con clúster candidato solo de Hola Hola solicitado tamaño de máquina virtual, aunque el clúster de hello tiene liberar recursos.
 
 ![Error de asignaciones ancladas](./media/virtual-machines-common-allocation-failure/Allocation2.png)
 
-## <a name="detailed-troubleshoot-steps-specific-allocation-failure-scenarios-in-the-classic-deployment-model"></a>Pasos detallados para solucionar problemas de escenarios de errores de asignación específicos en el modelo de implementación clásica
-A continuación se presentan los escenarios de asignación comunes que ocasionan que una solicitud de asignación quede anclada. Nos dedicaremos a cada escenario más adelante en este artículo.
+## <a name="detailed-troubleshoot-steps-specific-allocation-failure-scenarios-in-hello-classic-deployment-model"></a>Detallada solucionar problemas de escenarios de error de asignación concretos de pasos en el modelo de implementación clásica de Hola
+Estos son los escenarios de asignación comunes que provocan un toobe de solicitud de asignación anclado. Nos dedicaremos a cada escenario más adelante en este artículo.
 
-* Cambio del tamaño de una VM o incorporación de VM o instancias de rol a un servicio en la nube existente.
+* Cambiar el tamaño de una máquina virtual o agregue las máquinas virtuales o servicio de nube existente de tooan de instancias de rol
 * Reinicio de las VM detenidas (desasignadas) parcialmente.
 * Reinicio de las VM detenidas (desasignadas) completamente.
 * Implementaciones de ensayo o producción (solo plataforma como servicio).
 * Grupo de afinidad (proximidad de la VM o el servicio).
 * Red virtual basada en un grupo de afinidad
 
-Cuando reciba un error de asignación, compruebe si alguno de los escenarios descritos se aplica en su caso. Use el error de asignación que devuelve la plataforma de Azure para identificar el escenario correspondiente. Si la solicitud está anclada, quite algunas de las restricciones de anclaje para abrir su solicitud a más clústeres y aumente así la posibilidad de que la asignación se realice correctamente.
+Cuando reciba un error de asignación, consulte si cualquiera de los escenarios de hello descritos tooyour error de aplicación. Errores de asignación de hello devuelto por el escenario correspondiente de hello plataforma Windows Azure tooidentify Hola usan. Si la solicitud está anclada, quite algunos de hello anclado restricciones tooopen los clústeres de toomore de solicitud, con lo que aumenta la posibilidad de Hola de éxito de asignación.
 
-En general, mientras el error no indique que "no se admite el tamaño de VM solicitado", siempre puede volver a intentarlo más adelante, cuando se hayan liberado suficientes recursos en el clúster para dar cabida a la solicitud. Si el problema tiene que ver con que el tamaño de la VM solicitado no se admite, pruebe con una VM diferente. De lo contrario, la única opción es quitar la restricción anclada.
+En general, siempre y cuando Hola error no indica "hello solicitado no se admite el tamaño de máquina virtual", puede siempre Reintentar en un momento posterior, que haya sido suficientes recursos liberado en hello clúster tooaccommodate su solicitud. Si problema Hola que ese Hola solicitado no se admite el tamaño de máquina virtual, pruebe un tamaño de máquina virtual diferente. En caso contrario, Hola única opción es hello tooremove fijar la restricción.
 
-Dos escenarios comunes de error están relacionados con los grupos de afinidad. Antes, un grupo de afinidad se usaba para proporcionar una estrecha proximidad a las VM o a las instancias de servicio, o bien para permitir la creación de redes virtuales. Con la introducción de las redes virtuales regionales, los grupos de afinidad ya no son necesarios para crear una red virtual. Al reducirse la latencia de red en la infraestructura de Azure, ha cambiado la recomendación de usar grupos de afinidad para la proximidad de las VM o servicios.
+Dos escenarios de error comunes son grupos de tooaffinity relacionados. Hola anteriores, un grupo de afinidad era tooprovide usado cerca tooVMs/servicio instancias o estaba tooenable usado Hola creación de una red virtual. Con la introducción de Hola de redes virtuales regionales, grupos de afinidad ya no son necesario toocreate una red virtual. Con la reducción de Hola de latencia de red en la infraestructura de Azure, grupos de afinidad de hello recomendación toouse de proximidad VM/servicio ha cambiado.
 
-En el diagrama 5 a continuación se presenta la taxonomía de los escenarios de asignación (anclados).
+Diagrama de 5 siguiente presenta taxonomía Hola de escenarios de asignación de hello (anclado).
 ![Taxonomía de asignaciones ancladas](./media/virtual-machines-common-allocation-failure/Allocation3.png)
 
 > [!NOTE]
-> El error que se muestra en cada escenario de asignación está en forma abreviada. Para ver las cadenas de error al detalle, consulte [Búsqueda de cadenas de error](#Error string lookup).
+> error de Hello especificado en cada escenario de asignación es una forma abreviada. Consulte toohello [búsqueda de cadena de Error](#Error string lookup) para las cadenas de error detallado.
 > 
 > 
 
-## <a name="allocation-scenario-resize-a-vm-or-add-vms-or-role-instances-to-an-existing-cloud-service"></a>Escenario de asignación: cambio del tamaño de una VM o incorporación de VM o instancias de rol a un servicio en la nube existente.
+## <a name="allocation-scenario-resize-a-vm-or-add-vms-or-role-instances-tooan-existing-cloud-service"></a>Escenario de asignación: cambiar el tamaño de una máquina virtual o agregar rol o máquinas virtuales instancias de servicio en la nube tooan
 **Error**
 
 Upgrade_VMSizeNotSupported o GeneralError
 
 **Causa de anclaje del clúster**
 
-Las solicitudes para cambiar el tamaño de una VM o agregar una VM o una instancia de rol a un servicio en la nube existente se tienen que intentar realizar en el clúster original que hospeda dicho servicio en la nube. La creación de un nuevo servicio en la nube permite que la plataforma de Azure encuentre otro clúster que tenga recursos libres o uno que admita el tamaño de VM solicitado.
+A solicitud tooresize una máquina virtual o agregar una máquina virtual o un servicio de nube existente de rol instancia tooan tiene toobe vuelve a intentar cada clúster original Hola que hospeda el servicio en la nube Hola. Crear un nuevo servicio de nube permite Hola plataforma Windows Azure toofind otro clúster que tiene recursos libres o admite el tamaño de la máquina virtual de Hola que solicitó.
 
 **Solución alternativa**
 
-Si el error es Upgrade_VMSizeNotSupported *, pruebe con otro tamaño de máquina virtual. Si el uso de un tamaño de VM diferente no es una opción, pero es aceptable el uso de una dirección IP virtual (VIP) distinta, cree un nuevo servicio en la nube para hospedar la nueva VM y agréguelo a la red virtual regional donde se ejecutan las VM existentes. Aunque su servicio en la nube no use una red virtual regional, puede crear una nueva para el nuevo servicio en la nube y, después, conectar la [red virtual existente a la nueva red virtual](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/). Consulte más información sobre las [redes virtuales regionales](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/).
+Si el error de hello Upgrade_VMSizeNotSupported *, pruebe un tamaño de máquina virtual diferente. Si usa un tamaño diferente de la máquina virtual no es una opción, pero si es aceptable toouse una dirección IP virtual (VIP), diferentes de crear un nuevo toohost de servicio de nube Hola nueva máquina virtual y agregue Hola nueva nube servicio toohello red virtual regional donde hello las máquinas virtuales existentes se están ejecutando. Si su servicio de nube existente no usa una red virtual regional, puede crear una nueva red virtual para el nuevo servicio de nube hello y, a continuación, conecte su [red virtual toohello nueva red virtual existente](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/). Consulte más información sobre las [redes virtuales regionales](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/).
 
-Si el error es GeneralError*, es probable que el tipo de recurso (por ejemplo, un tamaño determinado de VM) sea compatible con el clúster pero que este no tenga recursos libres en ese momento. De forma parecida a como se ha indicado anteriormente, agregue el recurso de proceso deseado mediante la creación de un nuevo servicio en la nube (tenga en cuenta que el nuevo servicio en la nube tiene que usar otra dirección IP virtual) y use la red virtual regional para conectarse a los servicios en la nube.
+Si el error de hello es GeneralError *, es probable que Hola tipo de recurso (por ejemplo, un determinado tamaño de memoria virtual) es compatible con clúster de hello, pero Hola clúster no tiene recursos libres en el momento de Hola. Toohello similar por encima del escenario, agregar recursos de proceso de hello deseado por la creación de un nuevo servicio de nube (tenga en cuenta que el servicio de nube nuevo de hello tiene toouse una VIP diferente) y usar una red virtual regional tooconnect servicios en la nube.
 
 ## <a name="allocation-scenario-restart-partially-stopped-deallocated-vms"></a>Escenario de asignación: reinicio de las VM detenidas (desasignadas) parcialmente.
 **Error**
@@ -74,14 +74,14 @@ GeneralError*
 
 **Causa de anclaje del clúster**
 
-La desasignación parcial indica que se detuvieron (desasignaron) una o varias VM de un servicio en la nube, pero no todas. Al detener (desasignar) una VM, se liberan los recursos asociados. Por lo tanto, reiniciar esa VM detenida (desasignada) implica una nueva solicitud de asignación. Reiniciar las VM en un servicio en la nube desasignado parcialmente es equivalente a agregarlas a un servicio en la nube existente. Las solicitud de asignación se debe intentar realizar en el clúster original que hospeda el servicio en la nube. La creación de otro servicio en la nube permite a la plataforma de Azure encontrar otro clúster que tenga recursos libres o uno que admita el tamaño de máquina virtual solicitado.
+La desasignación parcial indica que se detuvieron (desasignaron) una o varias VM de un servicio en la nube, pero no todas. Al detener (desasignar) una máquina virtual, Hola asociado se liberan los recursos. Por lo tanto, reiniciar esa VM detenida (desasignada) implica una nueva solicitud de asignación. Reiniciar las máquinas virtuales en un servicio de nube parcialmente desasignada es equivalente tooadding servicio de nube de máquinas virtuales tooan existente. solicitud de asignación de Hello tiene toobe vuelve a intentar cada clúster original Hola que hospeda el servicio en la nube Hola. Crear un servicio de nube diferente permite Hola plataforma Windows Azure toofind otro clúster que tiene el recurso gratuito o admite el tamaño de la máquina virtual de Hola que solicitó.
 
 **Solución alternativa**
 
-Si es aceptable el uso de una dirección IP virtual diferente, elimine las VM detenidas (desasignadas), pero mantenga los discos asociados, y vuelva agregar las VM mediante un servicio en la nube diferente. Use una red virtual regional para conectarse a los servicios en la nube:
+Si es aceptable toouse una VIP diferente, delete Hola detenido (desasignadas) las máquinas virtuales (pero tenga discos de hello asociado) y agregue hello las máquinas virtuales hacia atrás por un servicio de nube diferente. Use una red virtual regional tooconnect servicios en la nube:
 
-* Si el servicio en la nube existente usa una red virtual regional, agregue el nuevo servicio en la nube a la misma red virtual.
-* Si el servicio en la nube no usa una red virtual regional, cree una nueva para el nuevo servicio en la nube y, seguidamente, [conecte la red virtual existente a la nueva red virtual](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/). Consulte más información sobre las [redes virtuales regionales](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/).
+* Si el servicio de nube existente usa una red virtual regional, basta con agregar toohello de servicio de nube nuevo Hola misma red virtual.
+* Si su servicio de nube existente no usa una red virtual regional, crear una nueva red virtual para el nuevo servicio de nube hello y, a continuación, [conectar su red virtual toohello nueva red virtual existente](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/). Consulte más información sobre las [redes virtuales regionales](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/).
 
 ## <a name="allocation-scenario-restart-fully-stopped-deallocated-vms"></a>Escenario de asignación: reinicio de las VM detenidas (desasignadas) completamente.
 **Error**
@@ -90,33 +90,33 @@ GeneralError*
 
 **Causa de anclaje del clúster**
 
-La desasignación completa indica que detuvo (desasignó) todas las VM de un servicio en la nube. Las solicitudes de asignación para reiniciar estas VM se deben intentar realizar en el clúster original que hospeda el servicio en la nube. La creación de un nuevo servicio en la nube permite que la plataforma de Azure encuentre otro clúster que tenga recursos libres o uno que admita el tamaño de VM solicitado.
+La desasignación completa indica que detuvo (desasignó) todas las VM de un servicio en la nube. las solicitudes de asignación de Hello toorestart que estas máquinas virtuales tienen toobe vuelve a intentar cada clúster original Hola que aloja el servicio de nube de Hola. Crear un nuevo servicio de nube permite Hola plataforma Windows Azure toofind otro clúster que tiene recursos libres o admite el tamaño de la máquina virtual de Hola que solicitó.
 
 **Solución alternativa**
 
-Si es aceptable el uso de una dirección IP virtual diferente, elimine las VM originales detenidas (desasignadas), pero mantenga los discos asociados, y elimine el servicio en la nube correspondiente (los recursos de proceso asociados ya se liberaron cuando detuvo [desasignó] las VM). Cree un nuevo servicio en la nube para volver a agregar las VM.
+Si es aceptable toouse una VIP diferente, delete Hola original detenido (desasignadas) las máquinas virtuales (pero tenga discos de hello asociado) y eliminar Hola correspondiente servicio en la nube (proceso Hola asociado ya se liberan los recursos cuando detenida (desasignada) Hola máquinas virtuales). Volver a crear un nuevo Hola de tooadd de servicio de nube máquinas virtuales.
 
 ## <a name="allocation-scenario-stagingproduction-deployments-platform-as-a-service-only"></a>Escenario de asignación: implementaciones de ensayo o producción (solo plataforma como servicio).
 **Error**
 
-New_General * o New_VMSizeNotSupported *
+New_General* o New_VMSizeNotSupported*
 
 **Causa de anclaje del clúster**
 
-Las implementaciones de ensayo y de producción de un servicio en la nube se hospedan en el mismo clúster. Cuando se agrega la segunda implementación, la solicitud de asignación correspondiente se intenta en el mismo clúster que hospeda la primera implementación.
+Hola implementación e implementación de producción de hello de un servicio de nube de almacenamiento provisional se hospeda en hello mismo clúster. Cuando se agrega la segunda implementación de hello, se intentará la solicitud de asignación correspondiente de Hola Hola mismo clúster que hospeda Hola primera implementación.
 
 **Solución alternativa**
 
-Elimine la primera implementación y el servicio en la nube original y vuelva implementar el servicio en la nube. Esta acción puede conseguir la primera implementación en un clúster que tenga suficientes recursos libres para ajustarse a ambas implementaciones, o bien en un clúster que admita los tamaños de VM solicitados.
+Eliminar la primera implementación de Hola y el servicio de nube original de Hola y volver a implementar el servicio en la nube Hola. Esta acción podría llegar primera implementación de hello en un clúster que tenga suficientes recursos libres toofit ambas implementaciones o en un clúster que admita tamaños de máquinas virtuales de Hola que solicitó.
 
 ## <a name="allocation-scenario-affinity-group-vmservice-proximity"></a>Escenario de asignación: grupo de afinidad (proximidad de la VM o el servicio)
 **Error**
 
-New_General * o New_VMSizeNotSupported *
+New_General* o New_VMSizeNotSupported*
 
 **Causa de anclaje del clúster**
 
-Cualquier recurso de proceso asignado a un grupo de afinidad está asociado a un clúster. Las nuevas solicitudes de recursos de proceso de ese grupo de afinidad se intentan llevar a cabo en el mismo clúster en el que están hospedados los recursos existentes. Esto es así con independencia de que los nuevos recursos se creen mediante un servicio en la nube nuevo o existente.
+Cualquier recurso de proceso es el grupo de afinidad asignado tooan enlazado tooone clúster. Nuevas solicitudes de recursos de proceso en ese grupo de afinidad se intentan en hello mismo clúster donde se hospedan los recursos existentes de Hola. Esto es cierto si Hola nuevos recursos se crean a través de un nuevo servicio de nube o un servicio de nube existente.
 
 **Solución alternativa**
 
@@ -125,43 +125,43 @@ Si no es necesario un grupo de afinidad, no lo use, o bien intente agrupar los r
 ## <a name="allocation-scenario-affinity-group-based-virtual-network"></a>Escenario de asignación: red virtual basada en un grupo de afinidad
 **Error**
 
-New_General * o New_VMSizeNotSupported *
+New_General* o New_VMSizeNotSupported*
 
 **Causa de anclaje del clúster**
 
-Antes de que se presentaran las redes virtuales regionales, era necesario asociar una red virtual a un grupo de afinidad. Como consecuencia, los recursos de proceso colocados en un grupo de afinidad se rigen por las mismas restricciones que se han descrito en la sección anterior "Escenario de asignación: grupo de afinidad (proximidad de la VM o el servicio)". Es decir, los recursos de proceso están asociados a un clúster.
+Antes de que se introdujeron redes virtuales regionales, eran tooassociate requiere una red virtual con un grupo de afinidad. Como resultado, los recursos de proceso que se colocan en un grupo de afinidad están enlazados por hello las mismas restricciones tal y como se describe en hello "escenario de asignación: grupo de afinidad (proximidad/servicio de máquinas virtuales)" sección anterior. recursos de proceso de Hello son tooone relacionados con clústeres.
 
 **Solución alternativa**
 
-Si no necesita ningún grupo de afinidad, cree una red virtual regional para los recursos nuevos que vaya a agregar y, luego, [conecte la red virtual existente a la nueva red virtual](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/). Consulte más información sobre las [redes virtuales regionales](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/).
+Si no necesita un grupo de afinidad, cree una nueva red virtual regional para hello nuevos recursos que se va a agregar, y, a continuación, [conectar su red virtual toohello nueva red virtual existente](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/). Consulte más información sobre las [redes virtuales regionales](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/).
 
-También puede [migrar la red virtual basada en un grupo de afinidad a una red virtual regional](https://azure.microsoft.com/blog/2014/11/26/migrating-existing-services-to-regional-scope/)y, después, volver a agregar los recursos deseados.
+Como alternativa, puede [migrar la red virtual de red virtual basado en el grupo de afinidad tooa regional](https://azure.microsoft.com/blog/2014/11/26/migrating-existing-services-to-regional-scope/)y, a continuación, vuelva a agregar recursos de hello deseado.
 
-## <a name="detailed-troubleshooting-steps-specific-allocation-failure-scenarios-in-the-azure-resource-manager-deployment-model"></a>Pasos detallados para solucionar problemas de escenarios de errores de asignación específicos en el modelo de implementación de Azure Resource Manager
-A continuación se presentan los escenarios de asignación comunes que ocasionan que una solicitud de asignación quede anclada. Nos dedicaremos a cada escenario más adelante en este artículo.
+## <a name="detailed-troubleshooting-steps-specific-allocation-failure-scenarios-in-hello-azure-resource-manager-deployment-model"></a>Escenarios de error de asignación concretos de pasos en el modelo de implementación de Azure Resource Manager Hola de solución de problemas detallada
+Estos son los escenarios de asignación comunes que provocan un toobe de solicitud de asignación anclado. Nos dedicaremos a cada escenario más adelante en este artículo.
 
-* Cambio del tamaño de una VM o incorporación de VM o instancias de rol a un servicio en la nube existente.
+* Cambiar el tamaño de una máquina virtual o agregue las máquinas virtuales o servicio de nube existente de tooan de instancias de rol
 * Reinicio de las VM detenidas (desasignadas) parcialmente.
 * Reinicio de las VM detenidas (desasignadas) completamente.
 
-Cuando reciba un error de asignación, compruebe si alguno de los escenarios descritos se aplica en su caso. Use el error de asignación que devuelve la plataforma de Azure para identificar el escenario correspondiente. Si la solicitud está anclada a un clúster existente, quite algunas de las restricciones de anclaje para abrir su solicitud a más clústeres y aumentar así la posibilidad de que la asignación se realice correctamente.
+Cuando reciba un error de asignación, consulte si cualquiera de los escenarios de hello descritos tooyour error de aplicación. Errores de asignación de hello devuelto por el escenario correspondiente de hello plataforma Windows Azure tooidentify Hola usan. Si la solicitud está anclado tooan clúster existente, quite algunos de hello anclado restricciones tooopen los clústeres de toomore de solicitud, con lo que aumenta la posibilidad de Hola de éxito de asignación.
 
-En general, mientras el error no indique que "no se admite el tamaño de VM solicitado", siempre puede volver a intentarlo más adelante, cuando se hayan liberado suficientes recursos en el clúster para dar cabida a la solicitud. Si el problema tiene que ver con que el tamaño de VM solicitado no se admite, consulte las posibles soluciones a continuación.
+En general, siempre y cuando Hola error no indica "hello solicitado no se admite el tamaño de máquina virtual", puede siempre Reintentar en un momento posterior, que haya sido suficientes recursos liberado en hello clúster tooaccommodate su solicitud. Si el problema de Hola que Hola solicitado no se admite el tamaño de máquina virtual, vea a continuación para soluciones alternativas.
 
-## <a name="allocation-scenario-resize-a-vm-or-add-vms-to-an-existing-availability-set"></a>Escenario de asignación: cambio del tamaño de una VM o incorporación de VM o instancias de rol a un conjunto de disponibilidad existente.
+## <a name="allocation-scenario-resize-a-vm-or-add-vms-tooan-existing-availability-set"></a>Escenario de asignación: cambiar el tamaño de una máquina virtual o Agregar conjunto de disponibilidad de las máquinas virtuales tooan existente
 **Error**
 
-Upgrade_VMSizeNotSupported * o GeneralError *
+Upgrade_VMSizeNotSupported* o GeneralError*
 
 **Causa de anclaje del clúster**
 
-La solicitud para cambiar el tamaño de una VM o agregarla a un conjunto de disponibilidad existente se tiene que intentar en el clúster original que hospeda dicho conjunto. La creación de un nuevo conjunto de disponibilidad permite que la plataforma de Azure encuentre otro clúster que tenga recursos libres o uno que admita el tamaño de VM solicitado.
+Una solicitud tooresize una máquina virtual o agregar un tooan VM existente conjunto de disponibilidad tiene toobe vuelve a intentar cada clúster original Hola que hospeda el conjunto de disponibilidad existente Hola. Crear un nuevo conjunto de disponibilidad permite Hola plataforma Windows Azure toofind otro clúster que tiene recursos libres o admite el tamaño de la máquina virtual de Hola que solicitó.
 
 **Solución alternativa**
 
-Si el error es Upgrade_VMSizeNotSupported *, pruebe con otro tamaño de máquina virtual. Si el uso de un tamaño de VM diferente no es una opción, detenga toda las VM del conjunto de disponibilidad. De esta forma podrá cambiar el tamaño de la máquina virtual que se asignará a un clúster que admita el tamaño deseado.
+Si el error de hello Upgrade_VMSizeNotSupported *, pruebe un tamaño de máquina virtual diferente. Si no es una opción con un tamaño distinto de la máquina virtual, detenga todas las máquinas virtuales en el conjunto de disponibilidad de Hola. Entonces, puede cambiar el tamaño de Hola de máquina virtual de Hola que asignará el clúster tooa de hello VM que admita Hola había deseado tamaño de máquina virtual.
 
-Si el error es GeneralError*, es probable que el tipo de recurso (por ejemplo, un tamaño determinado de VM) sea compatible con el clúster pero que este no tenga recursos libres en ese momento. Si la VM puede formar parte de un conjunto de disponibilidad diferente, cree una nueva en otro conjunto de disponibilidad (en la misma región). Esta nueva VM se puede agregar luego a la misma red virtual.  
+Si el error de hello es GeneralError *, es probable que Hola tipo de recurso (por ejemplo, un determinado tamaño de memoria virtual) es compatible con clúster de hello, pero Hola clúster no tiene recursos libres en el momento de Hola. Si Hola VM puede formar parte de un conjunto de disponibilidad diferentes, cree una nueva máquina virtual en un conjunto de disponibilidad diferentes (Hola misma región). Esta nueva máquina virtual, a continuación, se puede agregar toohello misma red virtual.  
 
 ## <a name="allocation-scenario-restart-partially-stopped-deallocated-vms"></a>Escenario de asignación: reinicio de las VM detenidas (desasignadas) parcialmente.
 **Error**
@@ -170,11 +170,11 @@ GeneralError*
 
 **Causa de anclaje del clúster**
 
-La desasignación parcial indica que se detuvieron (desasignaron) una o varias VM de un conjunto de disponibilidad, pero no todas. Al detener (desasignar) una VM, se liberan los recursos asociados. Por lo tanto, reiniciar esa VM detenida (desasignada) implica una nueva solicitud de asignación. Reiniciar las VM en un conjunto de disponibilidad desasignado parcialmente es equivalente a agregarlas a uno conjunto de disponibilidad existente. Las solicitud de asignación se debe intentar realizar en el clúster original que hospeda el conjunto de disponibilidad.
+La desasignación parcial indica que se detuvieron (desasignaron) una o varias VM de un conjunto de disponibilidad, pero no todas. Al detener (desasignar) una máquina virtual, Hola asociado se liberan los recursos. Por lo tanto, reiniciar esa VM detenida (desasignada) implica una nueva solicitud de asignación. Reiniciar las máquinas virtuales en un conjunto de disponibilidad parcialmente desasignada es equivalente tooadding tooan grupo de disponibilidad de las máquinas virtuales Set. solicitud de asignación de Hello tiene toobe vuelve a intentar cada clúster original Hola que hospeda el conjunto de disponibilidad existente Hola.
 
 **Solución alternativa**
 
-Detenga todas las VM del conjunto de disponibilidad antes de reiniciar la primera de ellas. De esta forma se garantiza que hay un nuevo intento de asignación en marcha y que se puede seleccionar un nuevo clúster que tenga capacidad disponible.
+Detener todas las máquinas virtuales en la disponibilidad de hello establecer antes de reiniciar Hola primero. De esta forma se garantiza que hay un nuevo intento de asignación en marcha y que se puede seleccionar un nuevo clúster que tenga capacidad disponible.
 
 ## <a name="allocation-scenario-restart-fully-stopped-deallocated"></a>Escenario de asignación: reinicio de las VM detenidas (desasignadas) completamente
 **Error**
@@ -183,26 +183,26 @@ GeneralError*
 
 **Causa de anclaje del clúster**
 
-La desasignación completa indica que detuvo (desasignó) todas las VM de un conjunto de disponibilidad. La solicitud de asignación para reiniciar estas VM se dirigirá a todos los clústeres que admitan el tamaño deseado.
+La desasignación completa indica que detuvo (desasignó) todas las VM de un conjunto de disponibilidad. solicitud de asignación de Hello toorestart estas máquinas virtuales se aplicará a todos los clústeres que admiten Hola tamaño deseado.
 
 **Solución alternativa**
 
-Seleccione un nuevo tamaño de VM para asignar. Si esto no funciona, vuelva a intentarlo más tarde.
+Seleccione un nuevo tooallocate tamaño de máquina virtual. Si esto no funciona, vuelva a intentarlo más tarde.
 
 ## <a name="error-string-lookup"></a>Búsqueda de cadenas de error
 **New_VMSizeNotSupported***
 
-El tamaño de VM (o la combinación de tamaños de VM) que se necesita en esta implementación no se puede aprovisionar debido a restricciones en las solicitudes de implementación. Si es posible, intente relajar las restricciones como los enlaces de red virtual, intente realizar la implementación en un servicio hospedado que no tenga ninguna otra implementación y en otro grupo de afinidad o sin grupo de afinidad, o bien intente realizar la implementación en otra región.
+"Hola VM tamaño (o combinación de tamaños de máquina virtual) requerida por esta implementación no se puede aprovisionar debido a restricciones de la solicitud de toodeployment. Si es posible, intente reducir las restricciones como los enlaces de red virtual, implementación de servicio tooa hospedado con ninguna otra implementación en ella y tooa de afinidad diferente o un grupo con ningún grupo de afinidad o intente implementar tooa otra región. "
 
 **New_General***
 
-Error en la asignación: no se pudieron satisfacer las restricciones de la solicitud. La nueva implementación del servicio solicitada está enlazada a un grupo de afinidad, su destino es una red virtual o hay una implementación existente bajo este servicio hospedado. Todas estas condiciones restringen la nueva implementación a recursos específicos de Azure. Inténtelo de nuevo más tarde o pruebe a reducir el tamaño de la máquina virtual o el número de instancias de rol. También puede quitar, si es posible, las restricciones mencionadas o intentar realizar la implementación en otra región.
+"Error de asignación; toosatisfy no se puede restricciones en la solicitud. Hello solicitado nueva implementación del servicio es grupo de afinidad tooan enlazado, se destina a una red virtual o hay una implementación existente en este servicio hospedado. Cualquiera de estas condiciones restringe Hola nueva implementación toospecific Azure recursos. Vuelva a intentarlo más tarde o pruebe a reducir el tamaño de la máquina virtual de Hola o el número de instancias de rol. O bien, si es posible, quite restricciones mencionado anteriormente de Hola o intente implementar tooa otra región."
 
 **Upgrade_VMSizeNotSupported***
 
-No se puede actualizar la implementación. Es posible que el tamaño de la máquina virtual solicitada XXX no esté disponible entre los recursos que son compatibles con la implementación existente. Inténtelo más tarde, con otro tamaño de VM o con menos instancias de rol, o bien cree una implementación en un servicio hospedado vacío con un nuevo grupo de afinidad o sin enlazar ningún grupo de afinidad.
+"Implementación de hello tooupgrade no se puede. Hola solicitado XXX de tamaño de máquina virtual no estén disponible en los recursos de hello admitir la implementación existente de Hola. Inténtelo más tarde, con otro tamaño de VM o con menos instancias de rol, o bien cree una implementación en un servicio hospedado vacío con un nuevo grupo de afinidad o sin enlazar ningún grupo de afinidad.
 
 **GeneralError***
 
-"Se produjo un error interno en el servidor. Vuelva a intentar realizar la solicitud" o "Error al producir una asignación para el servicio".
+"el servidor de hello detectó un error interno. Vuelva a intentar la solicitud de hello." O "No se pudo tooproduce una asignación para el servicio de Hola".
 

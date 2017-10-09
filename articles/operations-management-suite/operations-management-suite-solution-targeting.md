@@ -1,6 +1,6 @@
 ---
-title: "Selección de destino de solución en OMS | Microsoft Docs"
-description: "Selección de destino de solución es una característica de Operations Management Suite (OMS) que permite limitar las soluciones de administración a un conjunto específico de agentes.  En este artículo se describe cómo crear una configuración de ámbito y aplicarla a una solución."
+title: aaaSolution como destino de OMS | Documentos de Microsoft
+description: "Destinatarios de la solución es una característica de Operations Management Suite (OMS) que le permite toolimit administración soluciones tooa conjunto específico de agentes.  Este artículo se describe cómo toocreate una configuración de ámbito y aplicarla tooa soluciones."
 services: operations-management-suite
 documentationcenter: 
 author: bwren
@@ -14,64 +14,64 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: bwren
-ms.openlocfilehash: cb73a2d7ae57a5a11869259dbe913ae83ffb2b01
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6f8c8109e0d9e282e18724bf8b673b10de8e498a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-solution-targeting-in-operations-management-suite-oms-to-scope-management-solutions-to-specific-agents-preview"></a>Uso de la selección de destino de solución de Operations Management Suite (OMS) a las soluciones de administración de ámbito para agentes específicos (versión preliminar)
-Cuando se agrega una solución a OMS, se implementa automáticamente de forma predeterminada a todos los agentes de Windows y Linux conectados a su área de trabajo de Log Analytics.  Quizá quiera administrar los costos y limitar la cantidad de datos recopilados para una solución mediante la limitación a un conjunto determinado de agentes.  En este artículo se describe cómo usar **Selección de destino de solución**, que es una característica de OMS que le permite aplicar un ámbito a sus soluciones.
+# <a name="use-solution-targeting-in-operations-management-suite-oms-tooscope-management-solutions-toospecific-agents-preview"></a>Usar soluciones destinos en Operations Management Suite (OMS) agentes de toospecific de soluciones de administración de tooscope (versión preliminar)
+Cuando se agrega un tooOMS de solución, se implementa automáticamente por tooall Windows y Linux agentes conectados tooyour análisis de registros área de trabajo predeterminada.  Puede que desee toomanage la cantidad de hello costos y límite de datos recopilada para una solución limitando tooa conjunto determinado de agentes.  Este artículo se describe cómo toouse **solución destinatarios** que es una característica OMS que le permite tooapply un ámbito tooyour soluciones.
 
-## <a name="how-to-target-a-solution"></a>Cómo seleccionar un destino para una solución
-Hay tres pasos para seleccionar un destino para una solución, tal como se describe en las secciones siguientes.  Tenga en cuenta que necesitará el portal de OMS y Azure Portal para los diferentes pasos.
+## <a name="how-tootarget-a-solution"></a>¿Cómo tootarget una solución
+Hay tres tootargeting pasos una solución como se describe en las secciones siguientes de Hola.  Tenga en cuenta que necesitará portal de OMS de Hola y Hola portal de Azure para otros pasos.
 
 
 ### <a name="1-create-a-computer-group"></a>1. Crear un grupo de equipos
-Especifique los equipos que se van a incluir en un ámbito mediante la creación de un [grupo de equipos](../log-analytics/log-analytics-computer-groups.md) en Log Analytics.  El grupo de equipos puede basarse en una búsqueda de registros o importarse desde otros orígenes, como los grupos de Active Directory o WSUS. Como [se describe a continuación](#solutions-and-agents-that-cant-be-targeted), solo los equipos que están conectados directamente a Log Analytics se incluirán en el ámbito.
+Especificar equipos de Hola que desea tooinclude en un ámbito mediante la creación de un [grupo de equipos](../log-analytics/log-analytics-computer-groups.md) en análisis de registros.  grupo de equipos de Hello puede basarse en una búsqueda de registros o importado desde otros orígenes, como Active Directory o grupos WSUS. Como [se describe a continuación](#solutions-and-agents-that-cant-be-targeted), solo los equipos que están directamente conectados tooLog análisis se incluirán en el ámbito de Hola.
 
-Una vez se haya creado el grupo de equipos en el área de trabajo, deberá incluirlo en una configuración de ámbito que se pueda aplicar a una o varias soluciones.
+Una vez que tenga el grupo de equipos de hello creado en el área de trabajo, deberá incluirlo en una configuración de ámbito que puede ser tooone aplicado o más soluciones.
  
  
  ### <a name="2-create-a-scope-configuration"></a>2. Creación de una configuración de ámbito
- Una **configuración de ámbito** incluye uno o varios grupos de equipos y se puede aplicar a una o varias soluciones. 
+ A **configuración de ámbito** incluye uno o más grupos de equipos y puede tener aplicado tooone o más soluciones. 
  
- Cree una configuración de ámbito mediante el proceso siguiente.  
+ Crear una configuración de ámbito usando Hola siguiendo el proceso.  
 
- 1. En Azure Portal, vaya a **Log Analytics** y seleccione su área de trabajo.
- 2. En las propiedades del área de trabajo en **Orígenes de datos del área de trabajo**, seleccione **Configuraciones de ámbito**.
- 3. Haga clic en **Agregar** para crear una nueva configuración de ámbito.
- 4. Escriba un **nombre** para la configuración de ámbito.
+ 1. En la consulta Hola portal de Azure, navegue demasiado**análisis de registros** y seleccione el área de trabajo.
+ 2. En Propiedades de Hola de área de trabajo de hello en **orígenes de datos del área de trabajo** seleccione **configuraciones de ámbito**.
+ 3. Haga clic en **agregar** toocreate una nueva configuración de ámbito.
+ 4. Escriba un **nombre** para la configuración de ámbito de Hola.
  5. Haga clic en **Seleccionar grupos de equipos**.
- 6. Seleccione el grupo de equipos que ha creado y, opcionalmente, cualquier otro grupo que quiera agregar a la configuración.  Haga clic en **Seleccionar**.  
- 6. Haga clic en **Aceptar** para crear la configuración del ámbito. 
+ 6. Seleccione el grupo de equipos de Hola que creó y, opcionalmente, cualquier otro tooadd toohello configuración de grupos.  Haga clic en **Seleccionar**.  
+ 6. Haga clic en **Aceptar** configuración de ámbito de toocreate Hola. 
 
 
- ### <a name="3-apply-the-scope-configuration-to-a-solution"></a>3. Aplique la configuración de ámbito a una solución.
-Una vez que tenga una configuración de ámbito, puede aplicarla a una o varias soluciones.  Tenga en cuenta que aunque una sola configuración de ámbito se puede utilizar con varias soluciones, cada solución solo puede utilizar una configuración de ámbito.
+ ### <a name="3-apply-hello-scope-configuration-tooa-solution"></a>3. Solución de tooa de configuración de ámbito de Hola se aplican.
+Una vez que tenga una configuración de ámbito, a continuación, puede aplicarla tooone o más soluciones.  Tenga en cuenta que aunque una sola configuración de ámbito se puede utilizar con varias soluciones, cada solución solo puede utilizar una configuración de ámbito.
 
-Aplique una configuración de ámbito mediante el proceso siguiente.  
+Aplicar una configuración de ámbito mediante Hola siguiendo el proceso.  
 
- 1. En Azure Portal, vaya a **Log Analytics** y seleccione su área de trabajo.
- 2. En las propiedades del área de trabajo seleccione **Soluciones**.
- 3. Haga clic en la solución cuyo ámbito desea establecer.
- 4. En las propiedades de la solución en **Orígenes de datos del área de trabajo**, seleccione **Selección de destino de solución**.  Si la opción no está disponible, [no es posible establecer el destino de esta solución](#solutions-and-agents-that-cant-be-targeted).
- 5. Haga clic en **Agregar configuración de ámbito**.  Si ya ha aplicado una configuración a esta solución, esta opción no estará disponible.  Debe quitar la configuración existente antes de agregar otra.
- 6. Haga clic en la configuración de ámbito que ha creado.
- 7. Consulte el **estado** de la configuración para asegurarse de que es **Correcto**.  Si el estado indica un error, haga clic en los puntos suspensivos a la derecha de la configuración y seleccione **Editar configuración de ámbito**.
+ 1. En la consulta Hola portal de Azure, navegue demasiado**análisis de registros** y seleccione el área de trabajo.
+ 2. En Propiedades de hello para el área de trabajo de hello seleccione **soluciones**.
+ 3. Haga clic en la solución de hello desea tooscope.
+ 4. En Propiedades de hello para la solución de hello en **orígenes de datos del área de trabajo** seleccione **como destino de la solución**.  Si no está disponible la opción de hello, a continuación, [esta solución no se puede destinar](#solutions-and-agents-that-cant-be-targeted).
+ 5. Haga clic en **Agregar configuración de ámbito**.  Si ya tiene una solución de toothis de configuración que se aplica esta opción estará disponible.  Debe quitar la configuración existente de hello antes de agregar otro.
+ 6. Haga clic en configuración de ámbito de Hola que ha creado.
+ 7. Hola de inspección **estado** de tooensure de configuración de Hola que muestra **correcto**.  Si el estado de hello indica un error, a continuación, haga clic en hello elipse toohello derecha configuración hello y seleccione **configuración del ámbito de edición** toomake cambios.
 
 ## <a name="solutions-and-agents-that-cant-be-targeted"></a>No se puede establecer el destino de soluciones y agentes.
-A continuación se muestran los criterios para agentes y soluciones que no se pueden utilizar con la selección de destino de solución.
+Siguientes son los criterios de Hola para agentes y las soluciones que no se puede usar con la solución de destino.
 
-- La selección de destino de solución solo se aplica a soluciones que se implementan en agentes.
-- La selección de destino de solución solo se aplica a soluciones proporcionadas por Microsoft.  No se aplica a las soluciones [creadas por usted o sus socios](operations-management-suite-solutions-creating.md).
-- Solo puede filtrar los agentes que se conectan directamente a Log Analytics.  Las soluciones se implementarán automáticamente en los agentes que forman parte de un grupo de administración de Operations Manager conectado o no están incluidos en una configuración de ámbito.
+- Solo se dirige a la solución aplica toosolutions que implementa tooagents.
+- Solo se dirige a la solución aplica toosolutions proporcionado por Microsoft.  No se aplica toosolutions [creado por usted mismo o socios](operations-management-suite-solutions-creating.md).
+- Solo puede filtrar los agentes que se conectan directamente tooLog análisis.  Soluciones implementarán automáticamente agentes tooany que forman parte de un grupo de administración de Operations Manager conectado o no están incluidos en una configuración de ámbito.
 
 ### <a name="exceptions"></a>Excepciones
-La selección de destino de solución no se puede utilizar con las soluciones siguientes, incluso si cumplen con los criterios establecidos.
+No se puede usar como destino de la solución con hello después soluciones aunque se ajustan Hola indique criterios.
 
 - Evaluación de estado del agente
 
 ## <a name="next-steps"></a>Pasos siguientes
-- Obtenga más información sobre las soluciones de administración, incluidas las soluciones que están disponibles para instalar en su entorno, en [Adición de soluciones de administración de Azure Log Analytics al área de trabajo](../log-analytics/log-analytics-add-solutions.md).
+- Obtener más información sobre soluciones de administración incluidos soluciones hello tooinstall disponible en el entorno en [área de trabajo de análisis de registros de Azure de agregar administración soluciones tooyour](../log-analytics/log-analytics-add-solutions.md).
 - Para obtener más información sobre la creación de grupos de equipos, consulte [Grupos de equipos en búsquedas de registros en Log Analytics](../log-analytics/log-analytics-computer-groups.md).

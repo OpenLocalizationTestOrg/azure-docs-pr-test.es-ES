@@ -1,5 +1,5 @@
 ---
-title: "Directrices para la optimización del rendimiento de Hive en Azure Data Lake Store | Microsoft Docs"
+title: "aaaAzure datos Lake almacén Hive rendimiento directrices de ajuste | Documentos de Microsoft"
 description: "Directrices para la optimización del rendimiento de Hive en Azure Data Lake Store"
 services: data-lake-store
 documentationcenter: 
@@ -14,29 +14,29 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: e10bf8f7cbae2b81d22823ff74fe652c6bcb2da3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e44daeb6ad3b64e893c709df63b56444a330729f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-store"></a>Guía para la optimización del rendimiento de Hive en HDInsight y Azure Data Lake Store
 
-La configuración predeterminada se ha establecido para proporcionar un buen rendimiento en muchos casos de uso diferentes.  Para las consultas de uso intensivo de E/S, Hive se puede optimizar para obtener un mejor rendimiento con ADLS.  
+configuración predeterminada de Hola se establecieron tooprovide un buen rendimiento en muchos casos de uso diferentes.  Para las consultas de uso intensivo de E/S, subárbol puede ser un mejor rendimiento de tooget optimizada con ADLS.  
 
 ## <a name="prerequisites"></a>Requisitos previos
 
 * **Una suscripción de Azure**. Vea [Obtener evaluación gratuita de Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Una cuenta de Almacén de Azure Data Lake**. Para obtener instrucciones sobre cómo crear una, consulte la [introducción al Almacén de Azure Data Lake](data-lake-store-get-started-portal.md)
-* **Clúster de HDInsight de Azure** con acceso a una cuenta de Almacén de Data Lake. Consulte [Creación de un clúster de HDInsight con Data Lake Store mediante el Portal de Azure](data-lake-store-hdinsight-hadoop-use-portal.md). Asegúrese de habilitar el Escritorio remoto para el clúster.
-* **Ejecución de Hive en HDInsight**.  Para más información sobre cómo ejecutar trabajos de Hive en HDInsight, consulte [Uso de Hive en HDInsight] (https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-use-hive).
+* **Una cuenta de Almacén de Azure Data Lake**. Para obtener instrucciones sobre cómo toocreate un, consulte [empezar a trabajar con el almacén de Azure Data Lake](data-lake-store-get-started-portal.md)
+* **Clúster de HDInsight de Azure** con acceso tooa cuenta de almacén de Data Lake. Consulte [Creación de un clúster de HDInsight con Data Lake Store mediante el Portal de Azure](data-lake-store-hdinsight-hadoop-use-portal.md). Asegúrese de que habilitar Escritorio remoto para el clúster de Hola.
+* **Ejecución de Hive en HDInsight**.  toolearn acerca de cómo ejecutar trabajos de Hive en HDInsight, vea [uso Hive en HDInsight] (https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-use-hive)
 * **Directrices para la optimización del rendimiento en ADLS**.  Para conocer los conceptos generales de rendimiento, consulte [Guía para la optimización del rendimiento de Azure Data Lake Store](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-performance-tuning-guidance).
 
 ## <a name="parameters"></a>parameters
 
-Estos son los parámetros de configuración más importantes que se deben ajustar para mejorar el rendimiento de ADLS:
+A continuación, incluimos hello tootune más importante de configuración para mejorar el rendimiento de ADLS:
 
-* **hive.tez.container.size**: la cantidad de memoria usada en cada tarea.
+* **Hive.tez.Container.Size** : cantidad de Hola de memoria usada por cada tareas
 
 * **tez.grouping.min-size**: tamaño mínimo de cada asignador.
 
@@ -44,27 +44,27 @@ Estos son los parámetros de configuración más importantes que se deben ajusta
 
 * **hive.exec.reducer.bytes.per.reducer**: tamaño de cada reductor.
 
-**hive.tez.container.size**: el tamaño del contenedor determina cuánta memoria está disponible para cada tarea.  Esta es la entrada principal para controlar la simultaneidad en Hive.  
+**Hive.tez.Container.Size** -tamaño del contenedor de hello determina la cantidad de memoria está disponible para cada tarea.  Se trata de entrada principal de Hola para control de simultaneidad de hello en el subárbol.  
 
-**tez.grouping.min-size**: este parámetro permite establecer el tamaño mínimo de cada asignador.  Si el número de asignadores que Tez elige es inferior al valor de este parámetro, Tez usará el valor establecido aquí.  
+**tamaño de tez.GROUPING.min** : este parámetro permite un tamaño mínimo de hello tooset de cada asignador.  Si el número de Hola de asignadores que Tez elige es menor que el valor de Hola de este parámetro, Tez utilizará valor Hola establecido aquí.  
 
-**tez.grouping.max-size**: el parámetro le permite establecer el tamaño máximo de cada asignador.  Si el número de asignadores que elige Tez es superior al valor de este parámetro, Tez usará entonces el valor establecido aquí.  
+**tamaño de tez.GROUPING.max** : parámetro hello permite un tamaño máximo de hello tooset de cada asignador.  Si el número de Hola de asignadores que elige Tez es mayor que el valor de Hola de este parámetro, Tez utilizará valor Hola establecido aquí.  
 
-**hive.exec.reducer.bytes.per.reducer**: este parámetro establece el tamaño de cada reductor.  De forma predeterminada, cada reductor tiene 256 MB.  
+**Hive.Exec.reducer.bytes.per.reducer** : este parámetro establece el tamaño de Hola de cada reductor.  De forma predeterminada, cada reductor tiene 256 MB.  
 
 ## <a name="guidance"></a>Guía
 
-**Set hive.exec.reducer.bytes.per.reducer**: el valor predeterminado funciona bien cuando los datos están descomprimidos.  En el caso de los datos que están comprimidos, debe reducir el tamaño del reductor.  
+**Establecer hive.exec.reducer.bytes.per.reducer** : valor predeterminado de hello funciona bien cuando los datos de hello están sin comprimir.  Para los datos que se ha comprimido, debe reducir tamaño de hello del reductor Hola.  
 
-**Set hive.tez.container.size**: en cada nodo, la memoria se especifica mediante yarn.nodemanager.resource.memory-mb y se debe establecer correctamente en el clúster de HDI de forma predeterminada.  Para más información sobre la configuración de la memoria adecuada en YARN, consulte esta [entrada](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-hive-out-of-memory-error-oom).
+**Set hive.tez.container.size**: en cada nodo, la memoria se especifica mediante yarn.nodemanager.resource.memory-mb y se debe establecer correctamente en el clúster de HDI de forma predeterminada.  Para obtener información adicional acerca de la configuración de memoria apropiada de hello en hilo, consulte este [registrar](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-hive-out-of-memory-error-oom).
 
-Las cargas de trabajo que hacen un uso intensivo de E/S pueden beneficiarse de un mayor paralelismo disminuyendo el tamaño del contenedor de Tez. Con ello el usuario tiene más contenedores, lo que aumenta la simultaneidad.  Sin embargo, algunas consultas de Hive requieren una cantidad significativa de memoria (p. ej. MapJoin).  Si la tarea no tiene suficiente memoria, obtendrá una excepción de memoria insuficiente durante el tiempo de ejecución.  Si recibe excepciones de memoria insuficiente, debe aumentar la memoria.   
+Cargas de trabajo intensivas de E/S pueden beneficiarse de paralelismo más reduciendo el tamaño del contenedor Tez Hola. Esto proporciona al usuario hello más contenedores que aumenta la simultaneidad.  Sin embargo, algunas consultas de Hive requieren una cantidad significativa de memoria (p. ej. MapJoin).  Si la tarea hello no tiene suficiente memoria, obtendrá un excepción de memoria insuficiente durante el tiempo de ejecución.  Si recibe excepciones por memoria insuficiente, debe aumentar la memoria de Hola.   
 
-El número de tareas simultáneas en ejecución o con paralelismo estará enlazado por la cantidad total de memoria YARN.  El número de contenedores YARN determina cuántas tareas simultáneas se pueden ejecutar.  Para buscar la memoria YARN por nodo, puede ir a Ambari.  Vaya a YARN y examine la pestaña de configuración.  En esta ventana se muestra el tamaño de la memoria de YARN.  
+Hola simultáneas número de tareas en ejecución o paralelismo estarán enlazado por total de memoria YARN Hola.  número de Hola de contenedores YARN determinará cuántas tareas simultáneas puedan ejecutarse.  memoria de hilo de hello toofind por nodo, puede ir tooAmbari.  Navegue tooYARN y ver la ficha de configuraciones de Hola.  Hola memoria YARN se muestra en esta ventana.  
 
         Total YARN memory = nodes * YARN memory per node
         # of YARN containers = Total YARN memory / Tez container size
-La clave para mejorar el rendimiento mediante ADLS es aumentar la simultaneidad tanto como sea posible.  Tez calcula automáticamente el número de tareas que se deben crear por lo que no es necesario establecerlo.   
+rendimiento de clave tooimproving de Hello mediante ADLS es simultaneidad de hello tooincrease tanto como sea posible.  Tez calcula automáticamente el número de Hola de tareas que se debe crear por lo que no es necesario tooset lo.   
 
 ## <a name="example-calculation"></a>Cálculo de ejemplo
 
@@ -77,13 +77,13 @@ Supongamos que tiene un clúster D14 de 8 nodos.
 ## <a name="limitations"></a>Limitaciones
 **Limitación de ADLS** 
 
-Si alcanza los límites de ancho de banda impuestos por ADLS, empezará a ver errores de tareas. Esto puede identificarse observando los errores de limitación en los registros de tarea.  Puede reducir el paralelismo mediante un aumento del tamaño del contenedor de Tez.  Si necesita una mayor simultaneidad para su trabajo, póngase en contacto con nosotros.   
+UIf aciertos Hola los límites de ancho de banda proporcionados por ADLS, tendría que empezar por errores en la tarea toosee. Esto puede identificarse observando los errores de limitación en los registros de tarea.  Puede reducir el paralelismo de Hola al aumentar el tamaño del contenedor Tez.  Si necesita más simultaneidad para su trabajo, póngase en contacto con nosotros.   
 
-Para comprobar si le están aplicando limitaciones, debe habilitar el registro de depuración en el lado del cliente. Así es cómo debe hacerlo:
+toocheck si están obteniendo limitados, deberá tooenable Hola registro de depuración en el lado del cliente de Hola. Así es cómo debe hacerlo:
 
-1. Coloque la siguiente propiedad en las propiedades de log4j en la configuración de Hive. Puede hacerlo desde la vista de Ambari: log4j.logger.com.microsoft.azure.datalake.store=DEBUG. Reinicie todos los nodos/servicios para que la configuración surta efecto.
+1. Hola Put después de propiedad en las propiedades de log4j hello en la configuración de Hive. Esto puede hacerse desde Vista Ambari: log4j.logger.com.microsoft.azure.datalake.store=DEBUG reiniciar todos los nodos/servicio hello para el efecto de hello config tootake.
 
-2. Si se le están aplicando límites, verá el código de error HTTP 429 en el archivo de registro de Hive. El archivo de registro de Hive se encuentra en /tmp/&lt;user&gt;/hive.log
+2. Si están obteniendo limitados, verá el código de error HTTP 429 hello en el archivo de registro de hello hive. archivo de registro del subárbol de Hello está en /tmp/&lt;usuario&gt;/hive.log
 
 ## <a name="further-information-on-hive-tuning"></a>Información adicional sobre la optimización de Hive
 

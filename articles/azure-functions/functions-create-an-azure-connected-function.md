@@ -1,6 +1,6 @@
 ---
-title: "Creación de una función que conecte con los servicios de Azure | Microsoft Docs"
-description: "Use Azure Functions para crear una aplicación sin servidor que se conecta a otros servicios de Azure."
+title: "una función que se conecta a servicios de tooAzure aaaCreate | Documentos de Microsoft"
+description: "Usar funciones de Azure toocreate una aplicación sin servidor que se conecta tooother Azure servicios."
 services: functions
 documentationcenter: dev-center-name
 author: yochay
@@ -17,49 +17,49 @@ ms.workload: na
 ms.date: 03/01/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 65964a322f0adab4f648fb350bedb77b46bf9054
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 9d1f7d3b236f8d2c1a404c76aee410f6d458fb7a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-azure-functions-to-create-a-function-that-connects-to-other-azure-services"></a>Use Azure Functions para crear una aplicación sin servidor que se conecta a otros servicios de Azure
+# <a name="use-azure-functions-toocreate-a-function-that-connects-tooother-azure-services"></a>Usar funciones de Azure toocreate una función que se conecta tooother Azure Servicios
 
-En este tema se muestra cómo crear una función en Azure Functions que escucha los mensajes en una cola de Azure Storage y copia los mensajes en las filas de una tabla de Azure Storage. Se utiliza una función desencadenada del temporizador para cargar mensajes en la cola. Una segunda función lee en la cola y escribe mensajes en la tabla. Tanto la cola como la tabla las crea automáticamente Azure Functions según las definiciones de enlace. 
+Este tema muestra cómo una función en funciones de Azure que escucha toomessages en un Hola de cola y las copias de almacenamiento de Azure toocreate mensajes toorows en una tabla de almacenamiento de Azure. Una función de temporizador desencadenada es tooload usa mensajes en cola de Hola. Una segunda función lee de la cola de Hola y escribe la tabla de toohello de mensajes. Cola de Hola y tabla de Hola se crean automáticamente por funciones de Azure que se basan en definiciones de enlace de Hola. 
 
-Para hacer todo más interesante, se escribe una función en JavaScript y la otra en script de C#. Esto demuestra cómo una aplicación de la función puede tener funciones en distintos lenguajes. 
+toomake cosas más interesantes, se escribe una función de JavaScript y Hola otro se escribe en la secuencia de comandos de C#. Esto demuestra cómo una aplicación de la función puede tener funciones en distintos lenguajes. 
 
 En un [vídeo de Channel 9](https://channel9.msdn.com/Series/Windows-Azure-Web-Sites-Tutorials/Create-an-Azure-Function-which-binds-to-an-Azure-service/player) se puede ver una demostración de este escenario.
 
-## <a name="create-a-function-that-writes-to-the-queue"></a>Creación de una función que escribe en la cola
+## <a name="create-a-function-that-writes-toohello-queue"></a>Crear una función que escribe toohello cola
 
-Para poder conectarse a una cola de almacenamiento, debe crear una función que carga la cola de mensajes. Esta función de JavaScript usa un desencadenador de temporizador que escribe un mensaje en la cola cada 10 segundos. Si ya no tiene una cuenta de Azure, consulte la experiencia [Probar Azure Functions](https://functions.azure.com/try) o [cree su cuenta gratis de Azure](https://azure.microsoft.com/free/).
+Para poder conectarse tooa cola de almacenamiento, deberá toocreate una función que carga la cola de mensajes de Hola. Esta función de JavaScript usa un desencadenador de temporizador que escribe una cola de mensajes toohello cada 10 segundos. Si ya no tiene una cuenta de Azure, visite hello [funciones de Azure intente](https://functions.azure.com/try) experiencia, o [crear su cuenta de Azure gratuita](https://azure.microsoft.com/free/).
 
-1. Vaya a Azure Portal y busque la aplicación de función.
+1. Vaya toohello portal de Azure y busque la aplicación de la función.
 
 2. Haga clic en **Nueva función** > **TimerTrigger-JavaScript**. 
 
-3. Llame a la función **FunctionsBindingsDemo1**, escriba el valor de la expresión cron de `0/10 * * * * *` para **Programación** y, después, haga clic en **Crear**.
+3. Nombre de función hello **FunctionsBindingsDemo1**, escriba el valor de la expresión cron `0/10 * * * * *` para **programación**y, a continuación, haga clic en **crear**.
    
     ![Adición de una función desencadenada por el temporizador](./media/functions-create-an-azure-connected-function/new-trigger-timer-function.png)
 
     Ahora ha creado una función desencadenada por el temporizador que se ejecuta cada 10 segundos.
 
-5. En la pestaña **Desarrollar** haga clic en **Registros** y consulte la actividad en el registro. Verá una entrada de registro escrita cada 10 segundos.
+5. En hello **desarrollar** , haga clic en **registros** y ver la actividad de hello en el registro de hello. Verá una entrada de registro escrita cada 10 segundos.
    
-    ![Compruebe el registro para comprobar que la función funciona.](./media/functions-create-an-azure-connected-function/functionsbindingsdemo1-view-log.png)
+    ![Ver Hola registro tooverify Hola función funciona](./media/functions-create-an-azure-connected-function/functionsbindingsdemo1-view-log.png)
 
 ## <a name="add-a-message-queue-output-binding"></a>Adición de un enlace de salida de la cola de mensajes
 
-1. En la pestaña **Integrar**, elija **Nueva salida** > **Azure Queue Storage** > **Seleccionar**.
+1. En hello **integrar** ficha, elija **nueva salida** > **almacenamiento de cola de Azure** > **seleccione**.
 
     ![Adición de una función de temporizador de desencadenador](./media/functions-create-an-azure-connected-function/functionsbindingsdemo1-integrate-tab.png)
 
-2. Escriba `myQueueItem` para **el nombre del parámetro de mensaje** y `functions-bindings` para el **nombre de la cola**, seleccione una **conexión de la cuenta de almacenamiento** existente o haga clic en **Nueva** para crear una y, después, haga clic en **Guardar**.  
+2. Escriba `myQueueItem` para **nombre de parámetro de mensaje** y `functions-bindings` para **nombre de la cola**, seleccione una existente **conexión de la cuenta de almacenamiento** o haga clic en **nueva** toocreate un almacenamiento de conexión de la cuenta y, a continuación, haga clic en **guardar**.  
 
-    ![Creación del enlace de salida en la cola de almacenamiento](./media/functions-create-an-azure-connected-function/functionsbindingsdemo1-integrate-tab2.png)
+    ![Crear cola de almacenamiento de toohello de enlace de salida de hello](./media/functions-create-an-azure-connected-function/functionsbindingsdemo1-integrate-tab2.png)
 
-1. En la pestaña **Desarrollar**, anexe el código siguiente a la función:
+1. Nuevo en hello **desarrollar** ficha, anexar Hola después de la función de toohello de código:
    
     ```javascript
    
@@ -72,7 +72,7 @@ Para poder conectarse a una cola de almacenamiento, debe crear una función que 
     }
    
     ```
-2. Localice la instrucción *if* alrededor de la línea 9 de la función e introduzca el código siguiente después de la instrucción.
+2. Busque hello *si* instrucción aproximadamente 9 de función de Hola y de línea siguiente de Hola de inserción de código después de esa instrucción.
    
     ```javascript
    
@@ -82,55 +82,55 @@ Para poder conectarse a una cola de almacenamiento, debe crear una función que 
    
     ```  
    
-    Este código crea un elemento **myQueueItem** y establece su propiedad **time** en la marca de tiempo actual. A continuación, agrega el nuevo elemento de cola al enlace de **myQueueItem** del contexto.
+    Este código crea un **myQueueItem** y establece su **tiempo** marca de tiempo actual toohello de propiedad. A continuación, agrega Hola nueva cola elemento toohello del contexto **myQueueItem** enlace.
 
 3. Haga clic en **Guardar y ejecutar**.
 
 ## <a name="view-storage-updates-by-using-storage-explorer"></a>Ver actualizaciones de almacenamiento mediante el Explorador de Storage
-Puede comprobar que la función funciona consultando los mensajes en la cola que ha creado.  Puede conectarse a la cola de almacenamiento mediante el Explorador de nube en Visual Studio. Sin embargo, el portal facilita la conexión a su cuenta de almacenamiento mediante el Explorador de Microsoft Azure Storage.
+Puede comprobar que funciona la función ver los mensajes en cola de Hola que ha creado.  Cola de almacenamiento de tooyour puede conectarse mediante el Explorador de nube en Visual Studio. Sin embargo, portal de Hola resulta fácil tooconnect cuenta de almacenamiento de tooyour mediante el Explorador de almacenamiento de Microsoft Azure.
 
-1. En la pestaña **Integrar**, haga clic en el enlace de salida de la cola > **Documentación**, después muestre la cadena de conexión para la cuenta de almacenamiento y copie el valor. Use este valor para conectarse a su cuenta de almacenamiento.
+1. Hola **integrar** , haga clic en la cola de salida enlace > **documentación**, a continuación, mostrar hello cadena de conexión para la cuenta de almacenamiento y copie el valor de Hola. Utilice esta cuenta de almacenamiento de valor tooconnect tooyour.
 
     ![Descarga del explorador de Azure Storage](./media/functions-create-an-azure-connected-function/functionsbindingsdemo1-integrate-tab3.png)
 
 
 2. Si no lo ha hecho ya, descargue e instale el [Explorador de Microsoft Azure Storage](http://storageexplorer.com). 
  
-3. En el Explorador de Storage, haga clic en el icono de Azure Storage, pegue la cadena de conexión en el campo y complete el asistente.
+3. En el Explorador de almacenamiento, haga clic en hello tooAzure almacenamiento icono Conectar, pegue la cadena de conexión de hello en el campo de Hola y complete el Asistente de Hola.
 
     ![Explorador de Storage agrega una conexión](./media/functions-create-an-azure-connected-function/functionsbindingsdemo1-storage-explorer.png)
 
-4. En **Local y conectado**, expanda **Cuentas de almacenamiento** > su cuenta de almacenamiento > **Colas** > **Enlaces de funciones** y compruebe que los mensajes se escriben en la cola.
+4. En **Local y conectado**, expanda **cuentas de almacenamiento** > su cuenta de almacenamiento > **colas** > **deenlacesdefunciones**y compruebe que los mensajes se escriben toohello cola.
 
-    ![Vista de mensajes en la cola](./media/functions-create-an-azure-connected-function/functionsbindings-azure-storage-explorer.png)
+    ![Vista de mensajes en cola de Hola](./media/functions-create-an-azure-connected-function/functionsbindings-azure-storage-explorer.png)
 
-    Si la cola no existe o está vacía, lo más probable es que haya un problema con el enlace o código de la función.
+    Si la cola de hello no existe o está vacío, más probable es que hay un problema con el enlace de función o el código.
 
-## <a name="create-a-function-that-reads-from-the-queue"></a>Creación de una función que lee en la cola
+## <a name="create-a-function-that-reads-from-hello-queue"></a>Crear una función que se lee de la cola de Hola
 
-Ahora que tiene mensajes que se van a agregar a la cola, puede crear otra función que lee de la cola y escribe los mensajes de forma permanente a una tabla de Azure Storage.
+Ahora que tiene añadidos toohello cola de mensajes, puede crear otra función que se lee de la cola de Hola y Hola escrituras permanentemente mensajes tooan tabla de almacenamiento de Azure.
 
 1. Haga clic en **Nueva función** > **QueueTrigger CSharp**. 
  
-2. Llame a la función `FunctionsBindingsDemo2`, escriba **functions-bindings** en el campo **Nombre de la cola**, seleccione una cuenta de almacenamiento existente o cree una y, después, haga clic en **Crear**.
+2. Nombre de función hello `FunctionsBindingsDemo2`, escriba **enlaces de funciones** en hello **nombre de la cola** campo, seleccione una cuenta de almacenamiento existente o crear uno y, a continuación, haga clic en **crear**.
 
     ![Adición de una función de temporizador de cola de salida](./media/functions-create-an-azure-connected-function/function-demo2-new-function.png) 
 
-3. (Opcional) Puede comprobar que la nueva función funciona mediante la visualización de la nueva cola en el Explorador de Storage como antes. También puede utilizar el Explorador de nube en Visual Studio.  
+3. (Opcional) Puede comprobar que la nueva función de hello funciona viendo la nueva cola de hello en el Explorador de almacenamiento como antes. También puede utilizar el Explorador de nube en Visual Studio.  
 
-4. (Opcional) Actualice la cola **functions-bindings** y observe que los elementos se han quitado de la cola. La eliminación se produce porque la función está enlazada a la cola **functions-bindings** como un desencadenador de entrada y la función lee la cola. 
+4. (Opcional) Actualizar hello **enlaces de funciones** poner en cola y observe que los elementos se han quitado de la cola de Hola. Hello eliminación se produce porque la función hello es toohello enlazado **enlaces de funciones** como una función de hello y desencadenador de entrada lee cola Hola de cola. 
  
 ## <a name="add-a-table-output-binding"></a>Adición de un enlace de salida de tabla
 
 1. En FunctionsBindingsDemo2, haga clic en **Integrar** > **Nueva salida** > **Azure Table Storage** > **Seleccionar**.
 
-    ![Adición de un enlace a una tabla de Azure Storage](./media/functions-create-an-azure-connected-function/functionsbindingsdemo2-integrate-tab.png) 
+    ![Agregar una tabla de almacenamiento de Azure de enlace tooan](./media/functions-create-an-azure-connected-function/functionsbindingsdemo2-integrate-tab.png) 
 
 2. Escriba `functionbindings` para el **nombre de la tabla** y `myTable` para el **nombre de parámetro de la tabla**, elija un **conexión de la cuenta de almacenamiento** o cree una nueva y, después, haga clic en **Guardar**.
 
-    ![Configuración del enlace de la tabla de almacenamiento](./media/functions-create-an-azure-connected-function/functionsbindingsdemo2-integrate-tab2.png)
+    ![Configurar el enlace de tablas de almacenamiento de Hola](./media/functions-create-an-azure-connected-function/functionsbindingsdemo2-integrate-tab2.png)
    
-3. En la pestaña **Desarrollar**, sustituya el código de función existente por el siguiente:
+3. Hola **desarrollar** ficha, reemplace el código existente de la función de hello con siguiente hello:
    
     ```cs
     
@@ -147,7 +147,7 @@ Ahora que tiene mensajes que se van a agregar a la cola, puede crear otra funci�
             OriginalTime = myQueueItem.Time    
         };
         
-        // Add the item to the table binding collection.
+        // Add hello item toohello table binding collection.
         myTable.Add(myItem);
     
         log.Verbose($"C# Queue trigger function processed: {myItem.RowKey} | {myItem.Msg} | {myItem.Time}");
@@ -168,27 +168,27 @@ Ahora que tiene mensajes que se van a agregar a la cola, puede crear otra funci�
         public string Time { get; set;}
     }
     ```
-    La clase **TableItem** representa una fila en la tabla de almacenamiento y hay que agregar el elemento a la colección `myTable` de objetos **TableItem**. Debe establecer las propiedades **PartitionKey** y **RowKey** para poder insertarlas en la tabla.
+    Hola **TableItem** clase representa una fila de tabla de almacenamiento de Hola y agregar Hola elemento toohello `myTable` colección de **TableItem** objetos. Debe establecer hello **PartitionKey** y **RowKey** propiedades toobe puede tooinsert en la tabla de Hola.
 
-4. Haga clic en **Guardar**.  Por último, puede comprobar que la función funciona contemplando la tabla en el Explorador de Storage o el Explorador de nube de Visual Studio.
+4. Haga clic en **Guardar**.  Por último, puede comprobar Hola función funciona mediante la visualización de tabla de hello en el Explorador de almacenamiento o el Explorador de Visual Studio en la nube.
 
-5. (Opcional) En la cuenta de almacenamiento del Explorador de Storage, expanda **Tablas** > **functionsbindings** y compruebe que se agregan filas a la tabla. También puede hacer lo mismo en el Explorador de nube en Visual Studio.
+5. (Opcional) En la cuenta de almacenamiento en el Explorador de almacenamiento, expanda **tablas** > **functionsbindings** y compruebe que se han agregado filas de tabla toohello. Puede hacer igual hello en el Explorador de nube en Visual Studio.
 
-    ![Visualización de las filas de la tabla](./media/functions-create-an-azure-connected-function/functionsbindings-azure-storage-explorer2.png)
+    ![Vista de filas de tabla de Hola](./media/functions-create-an-azure-connected-function/functionsbindings-azure-storage-explorer2.png)
 
-    Si la tabla no existe o está vacía, lo más probable es que haya un problema con el enlace o código de la función. 
+    Si la tabla de hello no existe o está vacío, más probable es que hay un problema con el enlace de función o el código. 
  
 [!INCLUDE [More binding information](../../includes/functions-bindings-next-steps.md)]
 
 ## <a name="next-steps"></a>Pasos siguientes
-Consulte los siguientes temas para más información sobre Azure Functions:
+Para obtener más información acerca de las funciones de Azure, vea Hola temas siguientes:
 
-* [Referencia para desarrolladores de Funciones de Azure](functions-reference.md)  
+* [Azure Functions developer reference](functions-reference.md)  
   contiene las referencias del programador para codificar funciones y definir desencadenadores y enlaces.
 * [Prueba de Azure Functions](functions-test-a-function.md)  
   describe las diversas herramientas y técnicas para probar sus funciones.
-* [How to scale Azure Functions](functions-scale.md)  
-  Trata los planes de servicio disponibles con Azure Functions, incluido el plan de hospedaje de Consumo, y cómo elegir el plan adecuado. 
+* [¿Cómo tooscale las funciones de Azure](functions-scale.md)  
+  Se tratan los planes de servicio disponibles con las funciones de Azure, incluido el plan de hospedaje de consumo de Hola y cómo toochoose Hola plan adecuado. 
 
 [!INCLUDE [Getting help note](../../includes/functions-get-help.md)]
 

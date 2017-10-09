@@ -1,6 +1,6 @@
 ---
-title: "Administración de las aplicaciones en Visual Studio | Microsoft Docs"
-description: Use Visual Studio para crear, desarrollar, empaquetar, implementar y depurar las aplicaciones y servicios de Service Fabric.
+title: aaaManage sus aplicaciones en Visual Studio | Documentos de Microsoft
+description: Usar Visual Studio toocreate, desarrollar, paquete, implementar y depurar los servicios y aplicaciones de Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: mikkelhegn
@@ -14,62 +14,62 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/07/2017
 ms.author: mikkelhegn
-ms.openlocfilehash: 3f6a47a15b74a7ceb6504b2834be62e76ab70bcc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b2d5803d85e4f9645dcbece33a2208bc0955498d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>Uso de Visual Studio para simplificar la escritura y la administración de las aplicaciones de Service Fabric
-Puede administrar los servicios y aplicaciones de Service Fabric de Azure a través de Visual Studio. Cuando haya [configurado su entorno de desarrollo](service-fabric-get-started.md), puede usar Visual Studio para crear aplicaciones de Service Fabric, agregar servicios, o empaquetar, registrar e implementar aplicaciones en el clúster de desarrollo local.
+# <a name="use-visual-studio-toosimplify-writing-and-managing-your-service-fabric-applications"></a>Utilizar la escritura de toosimplify de Visual Studio y administrar las aplicaciones de Service Fabric
+Puede administrar los servicios y aplicaciones de Service Fabric de Azure a través de Visual Studio. Una vez que se haya [configurar el entorno de desarrollo](service-fabric-get-started.md), puede utilizar aplicaciones de Service Fabric toocreate de Visual Studio, agregar servicios, o un paquete, registro e implementar aplicaciones en el clúster de desarrollo local.
 
 ## <a name="deploy-your-service-fabric-application"></a>Implementar la aplicación de Service Fabric
-De forma predeterminada, la implementación de una aplicación combina los pasos siguientes en una operación sencilla:
+De forma predeterminada, implementar una aplicación combina Hola siguiendo los pasos en una operación sencilla:
 
-1. Creación del paquete de aplicación
-2. Carga del paquete de aplicación en el almacén de imágenes
-3. Registro del tipo de aplicación
+1. Crear paquete de aplicación Hola
+2. Almacén de imágenes de toohello de paquete de aplicación de carga Hola
+3. Registrar el tipo de aplicación Hola
 4. Eliminación de cualquier instancia de aplicación en ejecución
 5. Creación de una instancia de aplicación
 
-En Visual Studio, al presionar **F5** se implementará su aplicación y se asociará el depurador a todas las instancias de aplicación. Puede usar **CTRL+F5** para implementar una aplicación sin depurar o bien, publicar en un clúster local o remoto mediante el perfil de publicación. Para obtener más información, consulte [Publicación de una aplicación en un clúster remoto con Visual Studio](service-fabric-publish-app-remote-cluster.md).
+En Visual Studio, al presionar **F5** implementa la aplicación y adjuntar a instancias de la aplicación hello depurador tooall. Puede usar **CTRL+F5** toodeploy una aplicación sin depurar o puede publicar tooa local o remota de clúster mediante el uso de hello perfil de publicación. Para obtener más información, consulte [publicar un clúster remoto tooa de aplicación mediante Visual Studio](service-fabric-publish-app-remote-cluster.md).
 
 ### <a name="application-debug-mode"></a>Application Debug Mode
-Visual Studio proporciona una propiedad llamada **Application Debug Mode**, que controla cómo desea que Visual Studio controle la implementación de la aplicación como parte de la depuración.
+Visual Studio proporciona una propiedad denominada **modo de depuración de la aplicación**, que controla cómo desea que la implementación de aplicaciones de Visual Studio toohandle como parte de la depuración.
 
-#### <a name="to-set-the-application-debug-mode-property"></a>Establecimiento de la propiedad Application Debug Mode
-1. En el menú de acceso directo del proyecto de la aplicación de Service Fabric (*.sfproj), elija **Propiedades** (o presione la tecla **F4**).
-2. En la ventana **Propiedades**, establezca la propiedad **Application Debug Mode** (Modo de depuración de aplicación).
+#### <a name="tooset-hello-application-debug-mode-property"></a>Hola tooset propiedad modo de depuración de la aplicación
+1. En hello Service Fabric aplicación del proyecto (*.sfproj) menú contextual, elija **propiedades** (o presione hello **F4** clave).
+2. Hola **propiedades** (ventana), conjunto hello **modo de depuración de la aplicación** propiedad.
 
 ![Establecer la propiedad Application Debug Mode][debugmodeproperty]
 
 #### <a name="application-debug-modes"></a>Modos de depuración de la aplicación
 
-1. **Actualizar aplicación** Este modo le permite cambiar y depurar su código rápidamente y permite editar archivos web estáticos durante la depuración. Este modo solo funciona si el clúster de desarrollo local está en [modo 1 nodo](/service-fabric-get-started-with-a-local-cluster.md#one-node-and-five-node-cluster-mode).
-2. **Quitar aplicación** : la aplicación se quita cuando finaliza la sesión de depuración.
-3. **Actualización automática** La aplicación continúa ejecutándose cuando finaliza la sesión de depuración. La siguiente sesión de depuración tratará la implementación como una actualización. El proceso de actualización conserva todos los datos especificados en una sesión de depuración anterior.
-4. **Mantener aplicación** La aplicación sigue ejecutándose en el clúster cuando finaliza la sesión de depuración. Al principio de la siguiente sesión de depuración, se eliminará la aplicación.
+1. **Actualizar aplicación** este modo le permite cambiar de tooquickly y depurar su código y permite editar archivos web estáticos durante la depuración. Este modo solo funciona si el clúster de desarrollo local está en [modo 1 nodo](/service-fabric-get-started-with-a-local-cluster.md#one-node-and-five-node-cluster-mode).
+2. **Quitar aplicación** causas Hola toobe de aplicación que se eliminan cuando finaliza la sesión de depuración de Hola.
+3. **Actualizarán automáticamente** aplicación hello continúa toorun cuando finaliza la sesión de depuración de Hola. Hello siguiente sesión de depuración tratará implementación hello como una actualización. proceso de actualización de Hello conserva los datos que insertó en la sesión de depuración anterior.
+4. **Mantener aplicaciones** Hola aplicación mantiene ejecutando en el clúster de hello cuando hello finaliza la sesión de depuración. Hola principio de hello siguiente sesión de depuración, se quitará la aplicación hello.
 
-Se conservan los datos de **Actualización automática** por medio de las funcionalidades de actualización de aplicaciones de Service Fabric. Para obtener más información sobre la actualización de aplicaciones y cómo se realiza una actualización en un entorno real, consulte [Actualización de la aplicación de Service Fabric](service-fabric-application-upgrade.md).
+Para **actualización automática** se conservan los datos mediante la aplicación de capacidades de actualización de aplicación Hola de Service Fabric. Para obtener más información sobre la actualización de aplicaciones y cómo se realiza una actualización en un entorno real, consulte [Actualización de la aplicación de Service Fabric](service-fabric-application-upgrade.md).
 
-## <a name="add-a-service-to-your-service-fabric-application"></a>Agregue un servicio a su aplicación Service Fabric
-Puede agregar nuevos servicios a su aplicación para ampliar su funcionalidad.  Para garantizar que el servicio se incluye en el paquete de aplicación, agregue el servicio a través del elemento de menú **Nuevo servicio del tejido...** .
+## <a name="add-a-service-tooyour-service-fabric-application"></a>Agregar una aplicación de Service Fabric tooyour de servicio
+Puede agregar nuevos servicios tooyour aplicación tooextend su funcionalidad.  tooensure que el servicio de hello está incluido en el paquete de aplicación, agregue el servicio de Hola a través de hello **nuevo servicio de Fabric...**  elemento de menú.
 
 ![Agregar un nuevo servicio de Service Fabric][newservice]
 
-Seleccione un tipo de proyecto de Service Fabric para agregarlo a la aplicación y especifique un nombre para el servicio.  Vea [Elección de un marco para el servicio](service-fabric-choose-framework.md) para ayudarle a decidir qué tipo de servicio quiere usar.
+Seleccione una aplicación de tooyour Service Fabric tooadd de tipo de proyecto y especifique un nombre para el servicio de Hola.  Vea [elegir un marco de trabajo para el servicio](service-fabric-choose-framework.md) toohelp decidir qué servicio escriba toouse.
 
-![Seleccione un tipo de proyecto de servicio de Service Fabric para agregarlo a la aplicación][addserviceproject]
+![Seleccione una aplicación Service Fabric servicio proyecto tipo tooadd tooyour][addserviceproject]
 
-El nuevo servicio se agrega a la solución y al paquete de aplicación existente. Se agregarán al manifiesto de la aplicación las referencias del servicio y una instancia del servicio predeterminada, haciendo que el servicio se cree y se inicie la próxima vez que implemente la aplicación.
+se agrega nuevo servicio de Hello tooyour solución y paquete de aplicación existente. Hola referencias de servicio y una instancia predeterminada del servicio será toohello agregado manifiesto de aplicación, lo que ha provocado Hola servicio toobe crea e inicia Hola vuela a que implementar la aplicación hello.
 
-![Se agrega el nuevo servicio al manifiesto de la aplicación][newserviceapplicationmanifest]
+![nuevo servicio de Hola se agrega el manifiesto de aplicación tooyour][newserviceapplicationmanifest]
 
 ## <a name="package-your-service-fabric-application"></a>Empaquetar la aplicación de Service Fabric
-Para implementar la aplicación y sus servicios en un clúster, debe crear una paquete de aplicación.  El paquete organiza el manifiesto de la aplicación, los manifiestos de servicio y otros archivos necesarios en un diseño específico.  Visual Studio configura y administra el paquete en la carpeta del proyecto de aplicación, en el directorio 'pkg'.  Haga clic en **Paquete** en el menú contextual **Aplicación** para crear o actualizar el paquete de aplicación.
+aplicación de hello toodeploy y su clúster de tooa de servicios, deberá toocreate un paquete de aplicación.  paquete de Hello organiza manifiesto de aplicación Hola, manifiestos de servicio y otros archivos necesarios en un diseño concreto.  Visual Studio configura y administra el paquete de hello en la carpeta del proyecto de aplicación de hello, en el directorio de hello 'pkg'.  Haga clic en **paquete** de hello **aplicación** crea el menú contextual o actualizaciones Hola paquete de aplicación.
 
 ## <a name="remove-applications-and-application-types-using-cloud-explorer"></a>Eliminación de aplicaciones y tipos de aplicación mediante Cloud Explorer
-Puede realizar operaciones básicas de administración de clúster desde Visual Studio mediante Cloud Explorer, que se puede iniciar desde el menú **Vista** . Por ejemplo, puede eliminar aplicaciones y deshacer el aprovisionamiento de tipos de aplicación en clústeres locales o remotos.
+Puede realizar operaciones de administración de clúster básico desde Visual Studio mediante el explorador en la nube, que también se puede iniciar desde hello **vista** menú. Por ejemplo, puede eliminar aplicaciones y deshacer el aprovisionamiento de tipos de aplicación en clústeres locales o remotos.
 
 ![Eliminación de una aplicación][removeapplication]
 
@@ -78,7 +78,7 @@ Puede realizar operaciones básicas de administración de clúster desde Visual 
 >
 >
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
+<!--Every topic should have next steps and links toohello next logical set of content tookeep hello customer engaged-->
 ## <a name="next-steps"></a>Pasos siguientes
 * [Modelo de aplicación de Service Fabric](service-fabric-application-model.md)
 * [Implementación de la aplicación de Service Fabric](service-fabric-deploy-remove-applications.md)

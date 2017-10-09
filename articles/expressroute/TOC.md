@@ -13,19 +13,19 @@
 ## [Flujos de trabajo](expressroute-workflows.md)
 ## [Requisitos de enrutamiento](expressroute-routing.md)
 ## [Requisitos QoS](expressroute-qos.md)
-## [Movimiento de circuitos del portal clásico a Resource Manager](expressroute-move.md)
+## [Acerca de cómo mover circuitos de clásico tooResource Manager](expressroute-move.md)
 
 # Procedimientos
 ## Creación y modificación de un circuito
-### [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
+### [Portal de Azure](expressroute-howto-circuit-portal-resource-manager.md)
 ### [PowerShell](expressroute-howto-circuit-arm.md)
 ### [CLI de Azure](howto-circuit-cli.md)
 ## Creación y modificación de la configuración de emparejamiento
 ### [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
 ### [PowerShell](expressroute-howto-routing-arm.md)
 ### [CLI de Azure](howto-routing-cli.md)
-## Vinculación de una red virtual a un circuito ExpressRoute
-### [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
+## Vincular un circuito de ExpressRoute de tooan de red virtual
+### [Portal de Azure](expressroute-howto-linkvnet-portal-resource-manager.md)
 ### [PowerShell](expressroute-howto-linkvnet-arm.md)
 ### [CLI de Azure](howto-linkvnet-cli.md)
 ## Configuración de una puerta de enlace de red virtual para ExpressRoute
@@ -35,8 +35,8 @@
 ## Configuración de filtros de ruta para el emparejamiento de Microsoft
 ### [Portal de Azure](how-to-routefilter-portal.md)
 ### [PowerShell](how-to-routefilter-powershell.md)
-## [Movimiento de un circuito del portal clásico a Resource Manager](expressroute-howto-move-arm.md)
-## [Migración de redes virtuales asociadas del portal clásico a Resource Manager](expressroute-migration-classic-resource-manager.md)
+## [Mover un circuito de tooResource clásico Manager](expressroute-howto-move-arm.md)
+## [Migrar redes virtuales asociadas de clásico tooResource Manager](expressroute-migration-classic-resource-manager.md)
 ## Configuración de un enrutador para ExpressRoute
 ### [Configuración de un enrutador](expressroute-config-samples-routing.md)
 ### [Ejemplos de configuración de enrutador para NAT](expressroute-config-samples-nat.md)
@@ -75,12 +75,12 @@
 ## [CONTRATO DE NIVEL DE SERVICIO](https://azure.microsoft.com/support/legal/sla/)
 ## [Límites del servicio y la suscripción](../azure-subscription-service-limits.md?toc=%2fazure%2fexpressroute%2ftoc.json)
 ## [Vídeos](https://azure.microsoft.com/documentation/videos/index/?services=expressroute)
-### [Conexión de una puerta de enlace de red virtual a un circuito](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit/)
+### [Conectarse a un circuito de tooa de puerta de enlace de red virtual](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit/)
 ### [Creación de una red virtual para ExpressRoute](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-virtual-network/)
 ### [Creación de una puerta de enlace de red virtual para ExpressRoute](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network/)
 ### [Creación de un circuito ExpressRoute](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit/)
 ### [Desarrollo de la infraestructura de red para la conectividad](https://go.microsoft.com/fwlink/p/?LinkId=615124)
-### [Configuración del emparejamiento privado para el circuito](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit/)
+### [¿Cómo tooset de emparejamiento privado para el circuito](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit/)
 ### [Asociaciones híbridas: habilitación de escenarios locales](https://go.microsoft.com/fwlink/p/?LinkId=615125)
 ### [Configuración del emparejamiento de Microsoft para el circuito](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit/)
 ### [Configuración del emparejamiento público para el circuito](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit/)

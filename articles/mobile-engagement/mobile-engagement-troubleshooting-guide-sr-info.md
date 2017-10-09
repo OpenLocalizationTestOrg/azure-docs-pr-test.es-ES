@@ -1,5 +1,5 @@
 ---
-title: "Guía de solución de problemas de Azure Mobile Engagement - Información de solicitud de servicio"
+title: "aaaAzure Mobile Engagement Troubleshooting Guide - información de solicitud de servicio"
 description: "Información de solicitud de servicio requerido por el equipo de soporte técnico para solucionar problemas de Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: 
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: a4497046df74003a733d80f190e82b5e798d398e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d5ba5d6e451ebd37903beaa7b5b79807874212e5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="service-request-sr-information"></a>Información de la solicitud de servicio (SR)
-Cuando abra una solicitud de servicio de Mobile Engagement, proporcione la siguiente información:
+Proporcionar Hola siguiente información cuando se abre una solicitud de servicio para cualquier servicio de interacción móvil:
 
-## <a name="ids-applicable-identifiers-related-to-your-issue"></a>Id.: identificadores correspondientes relacionados con su problema:
+## <a name="ids-applicable-identifiers-related-tooyour-issue"></a>Id.: Identificadores aplicable tooyour problema relacionado con:
 * Id. de aplicación
 * Id. de campaña
 * Id. de dispositivo
@@ -32,12 +32,12 @@ Cuando abra una solicitud de servicio de Mobile Engagement, proporcione la sigui
 * Etiqueta de información de la aplicación
 
 ## <a name="errors-applicable-error-information"></a>Errores: información de error aplicable
-* Nombre de la API o de la sección de la interfaz de usuario donde se produce el problema
+* Nombre de sección de API o la interfaz de usuario de hello, donde se produce el problema de Hola
 * El texto de cualquier mensaje de error que reciba
-* Los resultados de las pruebas de las [Guías de solución de problemas](http://go.microsoft.com/fwlink/?LinkId=524382)
+* Resultados de las pruebas que ha llevado a cabo de hello [guías de solución de problemas](http://go.microsoft.com/fwlink/?LinkId=524382)
 
 ## <a name="code-applicable-coding-information"></a>Código: información de codificación aplicable
 * Versión del SDK y plataforma de la aplicación (SDK de Android 2.4.1, iOS 1.16.2, etc.)
-* Ubicación de descarga de la aplicación de producción (o los archivos APK/TGZ de la aplicación de desarrollo)
-* "AndroidManifest.xml" o cualquier fragmento de código de la aplicación relacionado con Azure Mobile Engagement (para la solución avanzada de problemas)
+* Ubicación de descarga de la aplicación de producción (u Hola archivos APK/TGZ de la aplicación de desarrollo)
+* "AndroidManifest.xml" y cualquier fragmento de código de la aplicación relacionados con tooAzure Mobile Engagement (para la solución avanzada)
 

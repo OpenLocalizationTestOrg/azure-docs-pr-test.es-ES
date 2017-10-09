@@ -1,7 +1,7 @@
 
-El objetivo de este tema es ayudarlo a empezar a usar los Centros de notificaciones lo más rápido posible. En este tema se presenta un ejemplo de escenario de difusión muy sencillo para que pueda concentrarse en los conceptos básicos de los Centros de notificaciones.
+objetivo de Hola de este tema es toohelp empezar a usar rápidamente como sea posible de los centros de notificaciones. Este tema presenta un ejemplo muy sencillo escenario de difusión en orden tooconcentrate sobre los conceptos básicos de hello centrales de notificaciones.
 
-Si ya está familiarizado con los Centros de notificaciones, puede seleccionar otro tema de la barra de navegación izquierda o consultar los vínculos pertinentes en [Pasos siguientes](#next-steps).
+Si ya está familiarizado con los centros de notificaciones, que podrá tooselect otro tema de navegación izquierda de Hola o consulte los vínculos relevantes de hello en [pasos siguientes](#next-steps).
 
-Nos tomamos muy en serio sus comentarios. Si tiene dificultades para completar este tema o tiene recomendaciones para mejorar este contenido, agradecemos que escriba sus comentarios en la parte inferior de la página.
+Nos tomamos muy en serio sus comentarios. Si tiene dificultades completar este tema o recomendaciones para mejorar el contenido, le agradeceríamos sus comentarios en la parte inferior de Hola de página de Hola.
 

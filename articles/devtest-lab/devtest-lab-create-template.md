@@ -1,6 +1,6 @@
 ---
-title: "Creación de una imagen personalizada de Azure DevTest Labs a partir de un archivo VHD | Microsoft Azure"
-description: Aprenda a crear una imagen personalizada en Azure DevTest Labs a partir de un archivo VHD mediante el portal de Azure.
+title: aaaCreate una imagen personalizada de laboratorios de desarrollo y pruebas de Azure desde un archivo VHD | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toocreate una imagen personalizada en los laboratorios de desarrollo y pruebas de Azure desde un archivo de disco duro virtual mediante Hola portal de Azure"
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: tomarcher
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2017
 ms.author: tarcher
-ms.openlocfilehash: 9983ea9b847f44ed18a6169a4bdb224b63626a64
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 80af8ea1cb72380f868df0a76c4a0dcd92e63cf5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-custom-image-from-a-vhd-file"></a>Crear una imagen personalizada a partir de un archivo VHD
 
@@ -30,41 +30,41 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="step-by-step-instructions"></a>Instrucciones paso a paso
 
-Los siguientes pasos le guían en la creación de una imagen personalizada a partir de un archivo VHD mediante el portal de Azure:
+Hello pasos siguientes le guían por la creación de una imagen personalizada desde un archivo de disco duro virtual mediante Hola portal de Azure:
 
-1. Inicie sesión en el [Portal de Azure](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Inicie sesión en toohello [portal de Azure](http://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Seleccione **Más servicios** y, luego, **DevTest Labs** en la lista.
+1. Seleccione **más servicios**y, a continuación, seleccione **laboratorios de desarrollo y pruebas** de lista de Hola.
 
-1. En la lista de laboratorios, seleccione el laboratorio que desee.  
+1. En lista de Hola de laboratorios, seleccione laboratorio deseado Hola.  
 
-1. En la hoja del laboratorio, seleccione **Configuración**. 
+1. En la hoja del laboratorio de hello, seleccione **configuración**. 
 
-1. En la hoja **Configuración** del laboratorio, seleccione **Custom images (VHDs)** (Imágenes personalizadas [VHD]).
+1. En el laboratorio de hello **configuración** hoja, seleccione **imágenes personalizadas (VHD)**.
 
-1. En la hoja **Custom images** (Imágenes personalizadas), seleccione **+Agregar**.
+1. En hello **imágenes personalizadas** hoja, seleccione **+ agregar**.
 
     ![Adición de imágenes personalizadas](./media/devtest-lab-create-template/add-custom-image.png)
 
-1. Escriba el nombre de la imagen personalizada. Este nombre se muestra en la lista de imágenes base al crear una máquina virtual.
+1. Escriba el nombre de Hola de imagen personalizada de Hola. Este nombre se muestra en la lista de Hola de imágenes de base al crear una máquina virtual.
 
-1. Escriba la descripción de la imagen personalizada. Esta descripción se muestra en la lista de imágenes base al crear una máquina virtual.
+1. Escriba la descripción de Hola de imagen personalizada de Hola. Esta descripción se muestra en la lista de Hola de imágenes de base al crear una máquina virtual.
 
 1. Seleccione **VHD**.
 
-1. En la hoja **VHD**, seleccione el archivo VHD deseado.
+1. De hello **VHD** hoja, archivo de disco duro virtual de hello seleccione deseado.
 
-1. Seleccione **Aceptar** para cerrar la hoja **VHD**.
+1. Seleccione **Aceptar** tooclose hello **VHD** hoja.
 
 1. Seleccione la **configuración del sistema operativo**.
 
-1. En la pestaña **Configuración de SO**, seleccione **Windows** o **Linux**.
+1. En hello **configuración del sistema operativo** ficha, seleccione **Windows** o **Linux**.
 
-1. Si se selecciona **Windows** , especifique mediante la casilla si se ha ejecutado *Sysprep* en la máquina. 
+1. Si **Windows** está seleccionada, especifique a través de la casilla de verificación de hello si *Sysprep* se ha ejecutado en la máquina de Hola. 
 
-1. Seleccione **Aceptar** para cerrar la hoja **Configuración de SO**.
+1. Seleccione **Aceptar** tooclose hello **configuración del sistema operativo** hoja.
 
-1. Seleccione **Aceptar** para crear la imagen personalizada.
+1. Seleccione **Aceptar** imagen personalizada de toocreate Hola.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
@@ -75,4 +75,4 @@ Los siguientes pasos le guían en la creación de una imagen personalizada a par
 
 ##<a name="next-steps"></a>Pasos siguientes
 
-- [Agregar una máquina virtual al laboratorio](./devtest-lab-add-vm-with-artifacts.md)
+- [Agregar un laboratorio de tooyour VM](./devtest-lab-add-vm-with-artifacts.md)

@@ -1,53 +1,53 @@
 <!--author=alkohli last changed: 01/18/17 -->
 
-#### <a name="to-install-updates-via-the-azure-portal"></a>Para instalar actualizaciones mediante Azure Portal
+#### <a name="tooinstall-updates-via-hello-azure-portal"></a>actualizaciones de tooinstall a través de hello portal de Azure
 
-1. Vaya a su Administrador de dispositivos de StorSimple y seleccione **Dispositivos**. En la lista de dispositivos conectados al servicio, seleccione y haga clic en el dispositivo que desea actualizar. 
+1. Vaya tooyour Administrador de dispositivos de StorSimple y seleccione **dispositivos**. Seleccione en la lista Hola de dispositivos conectados tooyour servicio y haga clic en el dispositivo de Hola que desee tooupdate. 
 
     ![actualizar dispositivo](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate1m.png) 
 
-2. En la hoja **Configuración**, haga clic en **Actualizaciones del dispositivo**. 
+2. Hola **configuración** hoja, haga clic en **actualizaciones del dispositivo**. 
 
     ![actualizar dispositivo](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate2m.png)  
 
-3. Verá un mensaje si hay actualizaciones de software disponibles. Para buscar actualizaciones, también puede hacer clic en **Examinar**.
+3. Verá un mensaje si hay actualizaciones de software de Hola. toocheck para las actualizaciones, también puede hacer clic en **examinar**.
 
     ![actualizar dispositivo](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate3m1.png)
 
-    Se le notificará cuando se inicie el examen y se complete correctamente.
+    Se le notificará cuando examen Hola se inicia y se completa correctamente.
 
     ![actualizar dispositivo](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate5m.png)
 
-4. Una vez examinadas las actualizaciones, haga clic en **Descargar actualizaciones**. 
+4. Una vez que se examinan las actualizaciones de hello, haga clic en **descargar actualizaciones**. 
 
     ![actualizar dispositivo](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate6m.png)
 
-5. En la hoja **Nuevas actualizaciones**, revise la información y, una vez descargadas las actualizaciones, debe confirmar la instalación. Haga clic en **Aceptar**.
+5. Hola **nuevas actualizaciones** hoja, revise la información de Hola que, después de descargar actualizaciones de hello, necesita tooconfirm Hola instalación. Haga clic en **Aceptar**.
 
     ![actualizar dispositivo](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate7m.png)
 
-6. Se le notificará cuando se inicie la carga y se complete correctamente.
+6. Se le notificará cuando se carga Hola inicia y finaliza correctamente.
 
      ![actualizar dispositivo](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate8m.png)
 
-5. En la hoja **Actualizaciones del dispositivo**, haga clic en **Instalar**.
+5. Hola **actualizaciones del dispositivo** hoja, haga clic en **instalar**.
 
      ![actualizar dispositivo](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate11m1.png)   
 
-6. En la hoja **Nuevas actualizaciones**, se le advertirá de que la actualización puede ser perjudicial. Puesto que la matriz virtual es un dispositivo de un solo nodo, el dispositivo se reiniciará una vez actualizado. Se interrumpirá cualquier E/S en curso. Haga clic en **Aceptar** para instalar las actualizaciones. 
+6. Hola **nuevas actualizaciones** hoja, se le advertirá que la actualización hello es potencialmente perjudiciales. Matriz virtual que sea un dispositivo de nodo único, dispositivo Hola se reinicia después de que se actualiza. Se interrumpirá cualquier E/S en curso. Haga clic en **Aceptar** tooinstall Hola actualizaciones. 
 
     ![actualizar dispositivo](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate12m.png) 
 
-7. Se le notificará cuando se inicie el trabajo de instalación. 
+7. Se le notificará cuando se inicia el trabajo de instalación de Hola. 
 
     ![actualizar dispositivo](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate13m.png)
 
-8.  Cuando el trabajo de instalación finalice correctamente, haga clic en el vínculo **Ver trabajo**, en la hoja **Actualizaciones del dispositivo**, para supervisar la instalación. 
+8.  Cuando el trabajo de instalación Hola finalice correctamente, haga clic en **ver trabajo** vínculo Hola **actualizaciones del dispositivo** instalación de hoja toomonitor Hola. 
 
     ![actualizar dispositivo](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate15m1.png)
 
-    Esto le lleva a la hoja **Instalar actualizaciones**. Puede ver información detallada sobre el trabajo aquí.
+    Esto le llevará toohello **instalar actualizaciones** hoja. Puede ver información detallada sobre el trabajo de hello aquí.
 
     ![actualizar dispositivo](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate16m1.png)
 
-9. Una vez instaladas correctamente las actualizaciones, verá un mensaje que lo indica en la hoja **Actualizaciones del dispositivo**. 
+9. Después de instalar correctamente actualizaciones de hello, verá un efecto de toothis mensaje Hola **actualizaciones del dispositivo** hoja. 

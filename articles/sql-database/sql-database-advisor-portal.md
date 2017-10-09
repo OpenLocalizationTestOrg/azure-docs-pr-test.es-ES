@@ -1,6 +1,6 @@
 ---
-title: "Aplicación de recomendaciones de rendimiento: Azure SQL Database | Microsoft Docs"
-description: Puede usar Azure Portal para buscar recomendaciones de rendimiento que pueden optimizar el rendimiento de su instancia de Azure SQL Database o corregir un problema identificado en la carga de trabajo.
+title: recomendaciones de rendimiento aaaApply - base de datos de SQL de Azure | Documentos de Microsoft
+description: "Puede utilizar las recomendaciones de rendimiento de Azure toofind portal Hola que pueden optimizar el rendimiento de la base de datos de SQL Azure o toocorrect algún problema identificado en la carga de trabajo."
 services: sql-database
 documentationcenter: 
 author: stevestein
@@ -15,131 +15,131 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 07/05/2017
 ms.author: sstein
-ms.openlocfilehash: 018afaa8b08bd001e55693390e80c8e2c4f33a30
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0b2234840fc3254d235db9e7d18f5bc912851c6d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Búsqueda y aplicación de recomendaciones de rendimiento
 
-Puede usar Azure Portal para buscar recomendaciones de rendimiento que pueden optimizar el rendimiento de su instancia de Azure SQL Database o corregir un problema identificado en la carga de trabajo. La página **Recomendaciones de rendimiento** de Azure Portal permite buscar las principales recomendaciones en función de su impacto potencial. 
+Puede utilizar las recomendaciones de rendimiento de Azure toofind portal Hola que pueden optimizar el rendimiento de la base de datos de SQL Azure o toocorrect algún problema identificado en la carga de trabajo. **Recomendación de rendimiento** página de portal de Azure le permite toofind hello las mejores recomendaciones en función de su impacto potencial. 
 
 ## <a name="viewing-recommendations"></a>Visualización de recomendaciones
 
-Para ver y aplicar recomendaciones de rendimiento, necesita los permisos correctos de [control de acceso basado en rol](../active-directory/role-based-access-control-what-is.md) en Azure. Se requieren permisos de **Lector** y **Colaborador de base de datos SQL** para ver recomendaciones, y permisos de **Propietario** y **Colaborador de base de datos SQL** para ejecutar acciones; por ejemplo, crear o quitar índices y cancelar la creación de índices.
+tooview y aplicar recomendaciones de rendimiento, necesita Hola correcto [el control de acceso basado en roles](../active-directory/role-based-access-control-what-is.md) permisos en Azure. **Lector**, **colaborador de la base de datos de SQL** permisos son necesarios tooview recomendaciones, y **propietario**, **colaborador de la base de datos de SQL** se requieren permisos tooexecute ninguna acción; crear o quitar índices y cancelar la creación del índice.
 
-Use los pasos siguientes para buscar recomendaciones de rendimiento en Azure Portal:
+Usar hello siguiendo las recomendaciones de rendimiento de toofind de pasos en el portal de Azure:
 
-1. Inicie sesión en el [Portal de Azure](https://portal.azure.com/).
-2. Vaya a **Más servicios** > **Bases de datos SQL** y seleccione la base de datos.
-3. Vaya a **Recomendaciones de rendimiento** para ver las recomendaciones disponibles para la base de datos seleccionada.
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com/).
+2. Vaya demasiado**más servicios** > **bases de datos SQL**y seleccione la base de datos.
+3. Navegue demasiado**recomendación de rendimiento** tooview recomendaciones disponibles para la base de datos seleccionada de Hola.
 
-Las recomendaciones de rendimiento se muestran en una tabla similar a la de la siguiente ilustración:
+Recomendaciones de rendimiento son shonw en hello tabla toohello similares que se muestra en hello figura siguiente:
 
 ![Recomendaciones](./media/sql-database-advisor-portal/recommendations.png)
 
-Las recomendaciones se ordenan en las siguientes categorías, según su impacto potencial sobre el rendimiento:
+Las recomendaciones se ordenan por su posible impacto en el rendimiento en hello siguientes categorías:
 
 | Impacto | Descripción |
 |:--- |:--- |
-| Alto |Las recomendaciones de alto impacto debe tener el impacto más importante en el rendimiento. |
+| Alto |Recomendaciones de alto impacto deben proporcionar el impacto de rendimiento más importante de Hola. |
 | Mediano |Las recomendaciones de impacto moderado deben mejorar el rendimiento, pero no de manera significativa. |
 | Bajo |Las recomendaciones de bajo impacto deben proporcionar un mejor rendimiento que el que se produciría sin ellas, pero es posible que las mejoras no sean significativas. |
 
 
 > [!NOTE]
-> Azure SQL Database necesita supervisar actividades durante al menos un día para identificar algunas recomendaciones. Azure SQL Database puede optimizar con patrones de consultas coherentes con más facilidad que en el caso de ráfagas irregulares de actividad. Si no hay recomendaciones correctas disponibles, la página **Recomendaciones de rendimiento** proporciona un mensaje explicativo.
+> La base de datos de SQL Azure debe toomonitor actividades al menos un día en orden tooidentify algunas recomendaciones. Hola base de datos de SQL Azure puede optimizar más fácilmente para patrones de consulta coherente que sea posible para ráfagas irregular aleatorios de actividad. Si las recomendaciones no están disponible corrently, Hola **recomendación de rendimiento** página proporciona un mensaje que explica por qué.
 > 
 
-También puede ver el estado de las operaciones históricas. Seleccione una recomendación o estado para ver sus detalles.
+También puede ver el estado de Hola de operaciones históricas de Hola. Seleccione una recomendación o estado toosee más detalles.
 
-Este es un ejemplo de la recomendación "Crear índice" de Azure Portal.
+Este es un ejemplo de la recomendación "Crear el índice" Hola portal de Azure.
 
 ![Creación de índice](./media/sql-database-advisor-portal/sql-database-performance-recommendation.png)
 
 ## <a name="applying-recommendations"></a>Aplicación de las recomendaciones
-Azure SQL Database le proporciona un control total sobre el modo en que se habilitan las recomendaciones mediante una de las tres opciones siguientes: 
+La base de datos de SQL Azure proporciona control total sobre cómo se recomendaciones habilitado mediante cualquiera de hello tres opciones siguientes: 
 
 * Aplicar recomendaciones individuales una a una.
-* Habilitar el ajuste automático para aplicar automáticamente recomendaciones.
-* Para implementar manualmente una recomendación, ejecute el script T-SQL recomendado en la base de datos.
+* Habilitar hello tooautomatically optimización automática aplicar recomendaciones.
+* tooimplement una recomendación manualmente, ejecute hello recomienda script de T-SQL en la base de datos.
 
-Seleccione cualquier recomendación para ver sus detalles y, luego, haga clic en **Ver script** para revisar los detalles exactos del modo en que se crea la recomendación.
+Seleccione cualquier tooview recomendación sus detalles y, a continuación, haga clic en **Ver script** tooreview Hola detalles exactos de la creación de recomendación de Hola.
 
-La base de datos permanece en línea mientras se aplica la recomendación; cuando se usa la recomendación de rendimiento o el ajuste automático, no se desconecta nunca una base de datos.
+base de datos de Hello permanece en línea mientras se aplica la recomendación de hello: usar recomendación de rendimiento o el ajuste automático de nunca deja sin conexión una base de datos.
 
 ### <a name="apply-an-individual-recommendation"></a>Aplicar una recomendación individual
 Puede revisar y aceptar recomendaciones una a una.
 
-1. En la hoja **Recomendaciones**, seleccione una recomendación.
-2. En la hoja **Detalles**, haga clic en el botón **Aplicar**.
+1. En hello **recomendaciones** hoja, seleccione una recomendación.
+2. En hello **detalles** hoja haga clic en **aplicar** botón.
    
     ![Aplicar recomendaciones](./media/sql-database-advisor-portal/apply.png)
 
-Se aplicará la recomendación seleccionada en la base de datos.
+Recomendación seleccionado se aplicará en la base de datos de Hola.
 
-### <a name="removing-recommendations-from-the-list"></a>Eliminación de recomendaciones de la lista
-Si la lista de recomendaciones contiene elementos que quiere quitar de la lista, puede descartar la recomendación:
+### <a name="removing-recommendations-from-hello-list"></a>Quitar las recomendaciones de la lista de Hola
+Si la lista de recomendaciones contiene elementos que desee tooremove de lista de hello, puede descartar la recomendación de hello:
 
-1. Seleccione una recomendación en la lista **Recomendaciones** para abrir los detalles.
-2. Haga clic en **Descartar** en la hoja **Detalles**.
+1. Seleccione una recomendación en la lista de Hola de **recomendaciones** detalles de hello tooopen.
+2. Haga clic en **descartar** en hello **detalles** hoja.
 
-Si quiere, puede volver a agregar elementos descartados a la lista **Recomendaciones** :
+Si lo desea, puede agregar elementos descartados de atrás toohello **recomendaciones** lista:
 
-1. En la hoja **Recomendaciones**, haga clic en **Ver descartados**.
-2. Seleccione un elemento descartado de la lista para ver los detalles.
-3. También puede hacer clic en **Deshacer Descartar** para volver a agregar el índice a la lista principal de **Recomendaciones**.
+1. En hello **recomendaciones** hoja haga clic en **vista descartada**.
+2. Seleccione un elemento descartado de hello lista tooview sus detalles.
+3. Si lo desea, haga clic en **deshacer descartar** tooadd Hola índice toohello atrás lista principal de **recomendaciones**.
 
 
 ### <a name="enable-automatic-tuning"></a>Habilitación del ajuste automático
-Puede establecer que Azure SQL Database implemente las recomendaciones de forma automática. A medida que las recomendaciones estén disponibles, estas se aplicarán de manera automática. Al igual que con todas las recomendaciones que administra el servicio, si el impacto en el rendimiento es negativo, se revertirá la recomendación.
+Puede establecer las recomendaciones de tooimplement de base de datos de SQL Azure Hola automáticamente. A medida que las recomendaciones estén disponibles, estas se aplicarán de manera automática. Como con todas las recomendaciones administradas por hello servicio si impacto en el rendimiento hello es la recomendación de hello negativo se revertirán.
 
-1. En la hoja **Recomendaciones**, haga clic en **Automatizar**:
+1. En hello **recomendaciones** hoja, haga clic en **automatizar**:
    
     ![Configuración del asesor](./media/sql-database-advisor-portal/settings.png)
-2. Seleccione las acciones que desee automatizar:
+2. Seleccione tooautomate de acciones:
    
     ![Índices recomendados](./media/sql-database-advisor-portal/automation.png)
 
-### <a name="manually-run-the-recommended-t-sql-script"></a>Ejecutar manualmente el script T-SQL recomendado
-Seleccione cualquier recomendación y haga clic en **Ver script**. Ejecute este script en la base de datos para aplicar la recomendación manualmente.
+### <a name="manually-run-hello-recommended-t-sql-script"></a>Ejecutar manualmente Hola recomendada script T-SQL
+Seleccione cualquier recomendación y haga clic en **Ver script**. Ejecute este script en la base de datos toomanually aplique la recomendación de Hola.
 
-*El servicio no supervisa ni valida los índices que se ejecutan de manera manual para conocer el impacto en el rendimiento* , por lo que se recomienda supervisar estos índices después de su creación para comprobar que proporcionen mejoras en el rendimiento y, en caso necesario, ajustarlos o eliminarlos. Si desea conocer detalles sobre la creación de índices, consulte [CREAR ÍNDICE (Transact-SQL)](https://msdn.microsoft.com/library/ms188783.aspx).
+*Índices que se ejecutan manualmente no se supervisan y validados para el impacto de rendimiento servicio hello* por lo que se sugiere que supervisar estos índices después de la creación tooverify proporcionan mejoras de rendimiento y ajustar o eliminarlos si es necesario. Si desea conocer detalles sobre la creación de índices, consulte [CREAR ÍNDICE (Transact-SQL)](https://msdn.microsoft.com/library/ms188783.aspx).
 
 ### <a name="canceling-recommendations"></a>Cancelación de recomendaciones
 Las recomendaciones que se encuentran en estado **Pending**, **Verifying** o **Success** pueden cancelarse. Las recomendaciones con estado **Executing** no se pueden cancelar.
 
-1. Seleccione una recomendación en el área **Historial de ajuste** para abrir la hoja de **detalles de recomendaciones**.
-2. Haga clic en **Cancelar** para anular el proceso de aplicación de la recomendación.
+1. Seleccione una recomendación en hello **historial para la optimización** Hola de área tooopen **detalles recomendaciones** hoja.
+2. Haga clic en **cancelar** tooabort proceso de Hola de aplicando la recomendación de Hola.
 
 ## <a name="monitoring-operations"></a>Supervisión de operaciones
-Puede que una recomendación no se aplique de manera inmediata. El portal proporciona detalles sobre el estado de la recomendación. A continuación se indican los posibles estados en los que un índice puede encontrarse:
+Puede que una recomendación no se aplique de manera inmediata. portal de Hello proporciona detalles sobre el estado de saludo de la recomendación. siguiente Hola es Estados posibles que puede ser un índice en:
 
 | Estado | Descripción |
 |:--- |:--- |
 | Pending |El comando de aplicación de recomendaciones se ha recibido y su ejecución está programada. |
-| Executing |La recomendación está aplicándose. |
-| Comprobando |La recomendación se aplicó correctamente y el servicio está midiendo las ventajas. |
+| Executing |se está aplicando la recomendación de Hola. |
+| Comprobando |Recomendación se aplicó correctamente y servicio Hola está midiendo las ventajas de Hola. |
 | Correcto |La recomendación se aplicó correctamente y se han medido ventajas. |
-| Error |Se produjo un error durante el proceso de aplicación de recomendaciones. Puede tratarse de un problema transitorio, o posiblemente se produjo un cambio de esquema en la tabla y el script ya no es válido. |
-| En reversión |La recomendación se aplicó, pero se ha considerado que no tuvo rendimiento y se está revirtiendo automáticamente. |
-| Reverted |La recomendación se revirtió. |
+| Error |Se produjo un error durante el proceso de Hola de aplicando la recomendación de Hola. Esto puede ser un problema transitorio, o posiblemente una tabla de toohello de cambios de esquema y script de Hola ya no es válido. |
+| En reversión |recomendación de Hola se aplicó, pero consideró no eficiente y se está revirtiendo automáticamente. |
+| Reverted |recomendación de Hola se revirtió. |
 
-Haga clic en una recomendación en proceso de la lista para ver más detalles:
+Haga clic en una recomendación en proceso de hello lista toosee más detalles:
 
 ![Índices recomendados](./media/sql-database-advisor-portal/operations.png)
 
 ### <a name="reverting-a-recommendation"></a>Reversión de una recomendación
-Si usó las recomendaciones de rendimiento para aplicar la recomendación (es decir, no ejecutó manualmente el script T-SQL), se revertirá automáticamente si detecta que afecta de manera negativa al rendimiento. Si tan solo quiere revertir una recomendación, por el motivo que sea, realice los siguientes pasos:
+Si ha usado la recomendación de hello rendimiento recomendaciones tooapply Hola (es decir, que no ejecutó el script de Hola T-SQL manualmente) revertirá automáticamente se si encuentra toobe de impacto de rendimiento de hello negativo. Si por alguna razón, sencillamente, toorevert una recomendación para ello siguiente hello:
 
-1. En el área **Historial de ajuste** , seleccione una recomendación que se haya aplicado correctamente.
-2. Haga clic en **Revertir** en la hoja de **detalles de recomendaciones**.
+1. Seleccione una recomendación aplicada en hello **para la optimización historial** área.
+2. Haga clic en **Revert** en hello **detalles de recomendación** hoja.
 
 ![Índices recomendados](./media/sql-database-advisor-portal/details.png)
 
 ## <a name="monitoring-performance-impact-of-index-recommendations"></a>Supervisión del impacto en el rendimiento de las recomendaciones de índices
-Una vez implementadas correctamente las recomendaciones (actualmente, solo recomendaciones para indizar operaciones y parametrizar consultas), puede hacer clic en **Detalles de la consulta** en la hoja de detalles de recomendaciones para abrir [Información de rendimiento de consultas](sql-database-query-performance.md) y ver el impacto en el rendimiento de las consultas principales.
+Después de que se han implementado correctamente recomendaciones (actualmente, las operaciones de índice y solo las recomendaciones de las consultas se parametrizan) puede hacer clic en **consulta visión** en hello recomendación detalles hoja tooopen [consulta Información del rendimiento](sql-database-query-performance.md) y ver el impacto en el rendimiento de las consultas principales Hola.
 
 ![Supervisar el impacto en el rendimiento](./media/sql-database-advisor-portal/query-insights.png)
 
@@ -147,11 +147,11 @@ Una vez implementadas correctamente las recomendaciones (actualmente, solo recom
 Azure SQL Database ofrece recomendaciones para mejorar el rendimiento de la base de datos SQL. Al proporcionar scripts T-SQL, así como opciones de ejecución individual y completamente automática, consigue ayuda útil para optimizar la base de datos y, en última instancia, para mejorar el rendimiento de las consultas.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Supervise las recomendaciones y siga aplicándolas para refinar el rendimiento. Las cargas de trabajo de bases de datos son dinámicas y cambian con frecuencia. Azure SQL Database seguirá supervisando y ofreciendo recomendaciones que podrían mejorar el rendimiento de la base de datos. 
+Supervisar sus recomendaciones y continuar tooapply les toorefine rendimiento. Las cargas de trabajo de bases de datos son dinámicas y cambian con frecuencia. La base de datos de SQL Azure continuará toomonitor y se proporcionan recomendaciones que pueden mejorar el rendimiento de la base de datos. 
 
-* Consulte [Ajuste automático](sql-database-automatic-tuning.md) para más información sobre el ajuste automático en Azure SQL Database.
+* Vea [el ajuste automático](sql-database-automatic-tuning.md) Hola de toolearn más información sobre el ajuste automático de la base de datos de SQL Azure.
 * Consulte [Recomendaciones de rendimiento](sql-database-advisor.md) para ver información general sobre las recomendaciones de rendimiento de Azure SQL Database.
-* Consulte [Query Performance Insight](sql-database-query-performance.md) para más información sobre el impacto en el rendimiento de las principales consultas.
+* Vea [información de rendimiento de consultas](sql-database-query-performance.md) toolearn acerca de cómo ver el impacto en el rendimiento de las consultas principales Hola.
 
 ## <a name="additional-resources"></a>Recursos adicionales
 * [Almacén de consultas](https://msdn.microsoft.com/library/dn817826.aspx)

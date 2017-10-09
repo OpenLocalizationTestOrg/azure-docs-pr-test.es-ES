@@ -7,15 +7,15 @@
 > 
 
 ## <a name="introduction"></a>Introducción
-El Centro de IoT de Azure es un servicio totalmente administrado que permite la comunicación bidireccional confiable y segura entre millones de dispositivos de Internet de las cosas (IoT) y un back-end de soluciones. Uno de los mayores desafíos que plantean los proyectos de IoT es cómo conectar dispositivos al back-end de la solución de manera segura y confiable. Para abordar este desafío, el Centro de IoT:
+El Centro de IoT de Azure es un servicio totalmente administrado que permite la comunicación bidireccional confiable y segura entre millones de dispositivos de Internet de las cosas (IoT) y un back-end de soluciones. Uno de los mayores desafíos de Hola que IoT proyectos cara es cómo tooreliably y conectarse de forma segura los dispositivos toohello solución back-end. tooaddress este reto, centro de IoT:
 
 * Ofrece una mensajería confiable de gran escala de dispositivo a nube y de nube a dispositivo.
 * Habilita las comunicaciones seguras con las credenciales de seguridad de cada dispositivo y el control de acceso.
-* Incluye bibliotecas de dispositivos para las plataformas y los lenguajes más populares.
+* Incluye bibliotecas de dispositivo para los lenguajes más populares de Hola y plataformas.
 
 En este tutorial se muestra cómo realizar las siguientes acciones:
 
-* Usar el Portal de Azure para crear un Centro de IoT.
+* Usar hello toocreate portal Azure un centro de IoT.
 * Crear una identidad de dispositivo en el Centro de IoT.
-* Cree una aplicación de dispositivo simulado que envía la telemetría al back-end de la solución.
+* Crear una aplicación de dispositivo simulado que envía la telemetría tooyour solución back-end.
 

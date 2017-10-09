@@ -1,10 +1,10 @@
 
-* La conversión requiere reiniciar la máquina virtual, por lo que debe programar la migración de las máquinas virtuales durante una ventana de mantenimiento existente previamente. 
+* conversión de Hello requiere un reinicio de hello VM, por lo que programar migración de Hola de las máquinas virtuales durante un período de mantenimiento existente. 
 
-* La conversión no es reversible. 
+* Hola conversión no es reversible. 
 
-* Asegúrese de probar la conversión. Migre una máquina virtual de prueba antes de realizar la migración en producción.
+* Estar seguro de conversión de hello tootest. Migrar una máquina virtual de prueba antes de realizar la migración de hello en producción.
 
-* Durante la conversión, se desasigna la VM. La VM recibe una nueva dirección IP cuando se inicia después de la conversión. Si es necesario, puede [asignar una dirección IP estática](../articles/virtual-network/virtual-network-ip-addresses-overview-arm.md) a la máquina virtual.
+* Durante la conversión de hello, cancela la asignación Hola máquina virtual. Hola VM recibe una nueva dirección IP cuando se inicia después de la conversión de Hola. Si es necesario, puede [asignar una dirección IP estática](../articles/virtual-network/virtual-network-ip-addresses-overview-arm.md) toohello máquina virtual.
 
-* No se eliminan los discos duros virtuales originales ni la cuenta de almacenamiento usada por la máquina virtual antes de la conversión. Seguirán acumulando cargos. Para evitar que se le facture por estos artefactos, elimine los blobs de los discos duros virtuales originales después de comprobar que la conversión esté completa.
+* Hello VHD originales y cuenta de almacenamiento de hello usada por hello VM antes de la conversión no se eliminan. Se siguen tooincur cargos. tooavoid cobrándole para estos artefactos, eliminar los blobs de disco duro virtual originales de hello después de comprobar que la conversión de hello está completa.

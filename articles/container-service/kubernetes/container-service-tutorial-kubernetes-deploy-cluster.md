@@ -1,5 +1,5 @@
 ---
-title: "Tutorial de Azure Container Service: Implementación de clúster | Microsoft Docs"
+title: "tutorial de servicio de contenedor de aaaAzure - implementar clústeres | Documentos de Microsoft"
 description: "Tutorial de Azure Container Service: Implementación de clúster"
 services: container-service
 documentationcenter: 
@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 08/21/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 472697c1f0c18859087d7b448e1786d85c27aca0
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: c4c8cc95c88d9c2077d0322f57e5d3159e2dd0ea
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deploy-a-kubernetes-cluster-in-azure-container-service"></a>Implementación de un clúster de Kubernetes en Azure Container Service
 
@@ -29,56 +29,56 @@ Kubernetes proporciona una plataforma distribuida para aplicaciones en contenedo
 
 > [!div class="checklist"]
 > * Implementación de un clúster de ACS de Kubernetes
-> * Instalación de la CLI de Kubernetes (kubectl)
+> * Instalación de hello Kubernetes CLI (kubectl)
 > * Configuración de kubectl
 
-En tutoriales posteriores, la aplicación Azure Vote se implementa en el clúster, se escala y se actualiza, y Operations Management Suite se configura para supervisar el clúster de Kubernetes.
+En los tutoriales posteriores, Hola voto de Azure es de aplicación implementado clúster toohello, escalada, actualiza y Operations Management Suite es clúster de Kubernetes hello toomonitor configurado.
 
 ## <a name="before-you-begin"></a>Antes de empezar
 
-En los tutoriales anteriores, se creó una imagen de contenedor y se actualizó en una instancia de Azure Container Registry. Si no ha realizado estos pasos, pero desea continuar, vuelva al tutorial [Create container images to be used with Azure Container Service](./container-service-tutorial-kubernetes-prepare-app.md) (Creación de las imágenes de contenedor que se usan con Azure Container Service).
+En los tutoriales anteriores, una imagen de contenedor se ha creado y cargado tooan instancia de registro de contenedor de Azure. Si aún no ha hecho estos pasos y desearía toofollow a lo largo, devolver demasiado[Tutorial 1: crear imágenes del contenedor](./container-service-tutorial-kubernetes-prepare-app.md).
 
 ## <a name="create-kubernetes-cluster"></a>Creación de un clúster de Kubernetes
 
-En el [tutorial anterior](./container-service-tutorial-kubernetes-prepare-acr.md), se creó un grupo de recursos denominado *myResourceGroup*. Si todavía no lo ha hecho, cree ahora este grupo de recursos.
+Hola [tutorial anterior](./container-service-tutorial-kubernetes-prepare-acr.md), un grupo de recursos denominado *myResourceGroup* se creó. Si todavía no lo ha hecho, cree ahora este grupo de recursos.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westeurope
 ```
 
-Cree un clúster de Kubernetes en Azure Container Service con el comando [az acs create](/cli/azure/acs#create). 
+Crear un clúster de Kubernetes en el servicio de contenedor de Azure con hello [az acs crear](/cli/azure/acs#create) comando. 
 
-En el ejemplo siguiente, se crea un clúster denominado *myK8sCluster* con un nodo maestro de Linux y tres nodos de agente de Linux.
+Hello en el ejemplo siguiente se crea un clúster denominado *myK8sCluster* con un Linux maestro de nodo y tres nodos de agente de Linux.
 
 ```azurecli-interactive 
 az acs create --orchestrator-type=kubernetes --resource-group myResourceGroup --name=myK8SCluster --generate-ssh-keys 
 ```
 
-Después de varios minutos, el comando se completa y devuelve información en formato json sobre la implementación de ACS.
+Después de varios minutos, comando hello completa y, en formato json de devuelve información acerca de la implementación de hello ACS.
 
-## <a name="install-the-kubectl-cli"></a>Instalación de la CLI de kubectl
+## <a name="install-hello-kubectl-cli"></a>Instalar hello kubectl CLI
 
-Para conectarse al clúster de Kubernetes desde el equipo cliente, use [kubectl](https://kubernetes.io/docs/user-guide/kubectl/), el cliente de la línea de comandos de Kubernetes. 
+tooconnect toohello Kubernetes de clúster desde el equipo cliente, use [kubectl](https://kubernetes.io/docs/user-guide/kubectl/), cliente de línea de comandos de Kubernetes Hola. 
 
-Si usa Azure CloudShell, `kubectl` ya está instalado. Si desea instalarlo de forma local, use el comando [az acs kubernetes install-cli](/cli/azure/acs/kubernetes#install-cli).
+Si usa Azure CloudShell, `kubectl` ya está instalado. Si desea que tooinstall forma local, use hello [az acs kubernetes install-cli](/cli/azure/acs/kubernetes#install-cli) comando.
 
-Si está ejecutando en Linux o macOS, debe ejecutar con sudo. En Windows, asegúrese de que el shell se ha ejecutado como administrador.
+Si está ejecutando en Linux o Mac OS, debe toorun con sudo. En Windows, asegúrese de que el shell se ha ejecutado como administrador.
 
 ```azurecli-interactive 
 az acs kubernetes install-cli 
 ```
 
-En Windows, la instalación predeterminada es *c:\program files (x86)\kubectl.exe*. Puede que deba agregar este archivo a la ruta de acceso de Windows. 
+En Windows, es la instalación predeterminada de hello *c:\program files (x86)\kubectl.exe*. Puede que tenga tooadd esta ruta de acceso de archivo toohello Windows. 
 
 ## <a name="connect-with-kubectl"></a>Conexión con kubectl
 
-Para configurar `kubectl` para conectarse al clúster de Kubernetes, ejecute el comando [az acs kubernetes get-credentials](/cli/azure/acs/kubernetes#get-credentials).
+tooconfigure `kubectl` tooconnect tooyour Kubernetes clúster, ejecute hello [az kubernetes get-credenciales de acs](/cli/azure/acs/kubernetes#get-credentials) comando.
 
 ```azurecli-interactive 
 az acs kubernetes get-credentials --resource-group=myResourceGroup --name=myK8SCluster
 ```
 
-Para comprobar la conexión al clúster, ejecute el comando [kubectl get nodes](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get).
+clúster de tooyour de conexión de hello tooverify, ejecute hello [kubectl obtener nodos](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get) comando.
 
 ```azurecli-interactive
 kubectl get nodes
@@ -94,18 +94,18 @@ k8s-agent-98dc3136-2    Ready                      5m        v1.6.2
 k8s-master-98dc3136-0   Ready,SchedulingDisabled   5m        v1.6.2
 ```
 
-Al finalizar el tutorial, tendrá un clúster de ACS de Kubernetes preparado para cargas de trabajo. En los tutoriales posteriores, una aplicación de contenedores múltiples está implementada en este clúster, escalada horizontalmente, actualizada y supervisada.
+Al finalizar el tutorial, tendrá un clúster de ACS de Kubernetes preparado para cargas de trabajo. En los tutoriales posteriores, una aplicación de contenedor múltiples es clúster toothis implementado, escalar horizontalmente, actualizar y supervisar.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-En este tutorial, se implementó un clúster de Kubernetes de Azure Container Service. Se han completado los siguientes pasos:
+En este tutorial, se implementó un clúster de Kubernetes de Azure Container Service. se completaron Hola pasos:
 
 > [!div class="checklist"]
 > * Implementación de un clúster de ACS de Kubernetes
-> * Instalación de la CLI de Kubernetes (kubectl)
+> * Hola instalado Kubernetes CLI (kubectl)
 > * Configuración de kubectl
 
-Avance al siguiente tutorial para aprender a ejecutar la aplicación en el clúster.
+Avanzar toohello toolearn de tutorial siguiente sobre cómo ejecutar la aplicación en clúster de Hola.
 
 > [!div class="nextstepaction"]
 > [Implementación de una aplicación en Kubernetes](./container-service-tutorial-kubernetes-deploy-application.md)

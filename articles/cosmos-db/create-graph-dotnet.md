@@ -1,6 +1,6 @@
 ---
-title: "Compilar una aplicación de .NET de Azure Cosmos DB mediante API Graph | Microsoft Docs"
-description: "En este tema se incluye un ejemplo de código .NET que puede usar para conectarse a Azure Cosmos DB y realizar consultas."
+title: "Hola a aaaBuild una aplicación .NET de base de datos de Azure Cosmos con API Graph | Documentos de Microsoft"
+description: "Presenta un ejemplo de código de .NET puede usar tooconnect tooand consultar la base de datos de Azure Cosmos"
 services: cosmos-db
 documentationcenter: 
 author: dennyglee
@@ -15,21 +15,21 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 07/28/2017
 ms.author: denlee
-ms.openlocfilehash: a973b81ea5b06c5826cc31c399aae9dec43f5b72
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: f28790fcb8c9f57c7bb3d844d8276fa04abcc39c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-cosmos-db-build-a-net-application-using-the-graph-api"></a>Azure Cosmos DB: Compilar una aplicación de .NET mediante API Graph
+# <a name="azure-cosmos-db-build-a-net-application-using-hello-graph-api"></a>Azure Cosmos DB: Crear una aplicación de .NET mediante Hola API Graph
 
-Azure Cosmos DB es un servicio de base de datos con varios modelos y de distribución global de Microsoft. Puede crear rápidamente bases de datos de documentos, clave-valor y grafos y realizar consultas en ellas. Todas las bases de datos se beneficiarán de las funcionalidades de distribución global y escala horizontal en Azure Cosmos DB. 
+Azure Cosmos DB es un servicio de base de datos con varios modelos y de distribución global de Microsoft. Puede crear y consultar documentos, clave/valor y bases de datos de gráfico, todos ellos se benefician de la distribución global de Hola y capacidades de escala horizontal en el núcleo de hello de la base de datos de Azure Cosmos rápidamente. 
 
-En esta guía de inicio rápido se muestra cómo crear una cuenta, una base de datos y un grafo (contenedor) de Azure Cosmos DB mediante Azure Portal. Después, compilará y ejecutará una aplicación de consola compilada en [API Graph](graph-sdk-dotnet.md) (versión preliminar).  
+Este inicio rápido muestra cómo toocreate una cuenta de base de datos de Azure Cosmos, la base de datos y el gráfico (contenedor) utilizando Hola portal de Azure. A continuación, compilar y ejecutar una aplicación de consola compilada en hello [API Graph](graph-sdk-dotnet.md) (versión preliminar).  
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Si aún no tiene Visual Studio de 2017 instalado, puede descargar y usar la versión **gratis** de [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/). Asegúrese de que habilita **Desarrollo de Azure** durante la instalación de Visual Studio.
+Si aún no tiene Visual Studio de 2017 instalado, puede descargar y usar hello **libre** [2017 Community Edition de Visual Studio](https://www.visualstudio.com/downloads/). Asegúrese de que habilitar **desarrollo Azure** durante la instalación de Visual Studio Hola.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -41,25 +41,25 @@ Si aún no tiene Visual Studio de 2017 instalado, puede descargar y usar la vers
 
 [!INCLUDE [cosmos-db-create-graph](../../includes/cosmos-db-create-graph.md)]
 
-## <a name="clone-the-sample-application"></a>Clonación de la aplicación de ejemplo
+## <a name="clone-hello-sample-application"></a>Clonar aplicación de ejemplo de Hola
 
-Ahora vamos a clonar una aplicación de API Graph desde GitHub, establecer la cadena de conexión y ejecutarla. Verá lo fácil que es trabajar con datos mediante programación. 
+Ahora vamos a clonar una API de Graph aplicación de github, establezca la cadena de conexión de Hola y ejecútelo. Podrá ver lo fácil que es toowork con datos mediante programación. 
 
-1. Abra una ventana de terminal de Git, como Git Bash, y `cd` en un directorio de trabajo.  
+1. Abra una ventana de terminal de git, como git bash, y `cd` tooa directorio de trabajo.  
 
-2. Ejecute el comando siguiente para clonar el repositorio de ejemplo. 
+2. Ejecute hello después de repositorio de ejemplo de comando tooclone Hola. 
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-graph-dotnet-getting-started.git
     ```
 
-3. A continuación, abra Visual Studio y el archivo de solución. 
+3. A continuación, abra Visual Studio y el archivo de solución de hello abierto. 
 
-## <a name="review-the-code"></a>Revisar el código
+## <a name="review-hello-code"></a>Revise el código de hello
 
-Vamos a revisar rápidamente lo que sucede en la aplicación. Abra el archivo Program.cs y observe que estas líneas de código crean los recursos de Azure Cosmos DB. 
+Vamos a hacer una revisión rápida de lo que sucede en la aplicación hello. Archivo de hello abra Program.cs y encontrará que estas líneas de código crean Hola recursos de base de datos de Azure Cosmos. 
 
-* Se inicializa DocumentClient. En la versión preliminar, hemos agregado una API de extensión de grafos en el cliente de la base de datos de Azure Cosmos. Estamos trabajando en un cliente de grafos independiente desacoplado del cliente y los recursos de la base de datos de Azure Cosmos.
+* Hola DocumentClient se inicializa. En la vista previa de hello, agregamos una extensión de graph API de cliente de base de datos de Azure Cosmos Hola. Estamos trabajando en un cliente de graph independiente desacoplado de recursos y el cliente de base de datos de Azure Cosmos Hola.
 
     ```csharp
     using (DocumentClient client = new DocumentClient(
@@ -82,10 +82,10 @@ Vamos a revisar rápidamente lo que sucede en la aplicación. Abra el archivo Pr
         new DocumentCollection { Id = "graph" },
         new RequestOptions { OfferThroughput = 1000 });
     ```
-* Se ejecuta una serie de pasos de Gremlin mediante el método `CreateGremlinQuery`.
+* Una serie de pasos de Gremlin se ejecutan utilizando hello `CreateGremlinQuery` método.
 
     ```csharp
-    // The CreateGremlinQuery method extensions allow you to execute Gremlin queries and iterate
+    // hello CreateGremlinQuery method extensions allow you tooexecute Gremlin queries and iterate
     // results asychronously
     IDocumentQuery<dynamic> query = client.CreateGremlinQuery<dynamic>(graph, "g.V().count()");
     while (query.HasMoreResults)
@@ -100,64 +100,64 @@ Vamos a revisar rápidamente lo que sucede en la aplicación. Abra el archivo Pr
 
 ## <a name="update-your-connection-string"></a>Actualizar la cadena de conexión
 
-Ahora vuelva a Azure Portal para obtener la información de la cadena de conexión y cópiela en la aplicación.
+Ahora vuelva atrás toohello tooget portal Azure la información de la cadena de conexión y se copia en la aplicación hello.
 
-1. En Visual Studio 2017, abra el archivo App.config. 
+1. En Visual Studio de 2017, abra el archivo App.config de hello. 
 
-2. En Azure Portal, en la cuenta de Azure Cosmos DB, haga clic en **Claves** en el panel de navegación izquierdo. 
+2. Hola portal de Azure, en la cuenta de base de datos de Azure Cosmos, haga clic en **claves** Hola barra de navegación izquierda. 
 
-    ![Visualización y copia de una clave principal en Azure Portal, en la página Claves](./media/create-graph-dotnet/keys.png)
+    ![Ver y copiar una clave principal en el portal de Azure, en la página de claves de Hola Hola](./media/create-graph-dotnet/keys.png)
 
-3. Copie el valor de **Identificador URI** del portal y conviértalo en el valor de Endpoint key (Clave de punto de conexión) en App.config. Puede usar el botón de copia, tal y como se muestra en la captura de pantalla anterior, para copiar el valor.
+3. Copia la **URI** valor desde el portal de Hola y hacerla Hola valor de clave de punto de conexión de hello en el archivo App.config. Puede usar Hola copia botón tal como se muestra en hello anterior captura de pantalla toocopy valor de Hola.
 
     `<add key="Endpoint" value="https://FILLME.documents.azure.com:443" />`
 
-4. Copie el valor de **CLAVE PRINCIPAL** del portal y conviértalo en el valor de la clave AuthKey en App.config. A continuación, guarde los cambios. 
+4. Copia la **PRIMARY KEY** valor desde el portal de Hola y hacerla Hola valor de clave de SFF hello en el archivo App.config, a continuación, guarde los cambios. 
 
     `<add key="AuthKey" value="FILLME" />`
 
-Ya ha actualizado la aplicación con toda la información que necesita para comunicarse con Azure Cosmos DB. 
+Ahora ha actualizado la aplicación con toda la información de hello debe toocommunicate con base de datos de Azure Cosmos. 
 
-## <a name="run-the-console-app"></a>Ejecutar la aplicación de consola
+## <a name="run-hello-console-app"></a>Ejecutar la aplicación de consola de hello
 
-1. En Visual Studio, haga clic con el botón derecho en el proyecto **GraphGetStarted** en el **Explorador de soluciones** y, después, haga clic en **Administrar paquetes NuGet**. 
+1. En Visual Studio, haga doble clic en hello **GraphGetStarted** proyecto **el Explorador de soluciones** y, a continuación, haga clic en **administrar paquetes de NuGet**. 
 
-2. En el cuadro **Examinar** de NuGet, escriba *Microsoft.Azure.Graphs* y active la casilla **Includes prerelease** (Incluye versión preliminar). 
+2. Hola NuGet **examinar** , escriba *Microsoft.Azure.Graphs* y comprobar hello **incluye versión preliminar** cuadro. 
 
-3. En los resultados, instale la biblioteca **Microsoft.Azure.Graphs**. De este modo se instala el paquete de la biblioteca de extensión de grafos de Azure Cosmos DB y todas las dependencias.
+3. Desde los resultados de hello, instalar hello **Microsoft.Azure.Graphs** biblioteca. Esto instala el paquete de biblioteca de extensión de gráfico de base de datos de Azure Cosmos de Hola y todas las dependencias.
 
-    Si recibe un mensaje sobre cómo revisar los cambios en la solución, haga clic en **Aceptar**. Si recibe un mensaje acerca de la aceptación de licencia, haga clic en **Acepto**.
+    Si recibe un mensaje acerca de la revisión de la solución de toohello de cambios, haga clic en **Aceptar**. Si recibe un mensaje acerca de la aceptación de licencia, haga clic en **Acepto**.
 
-4. Presione Ctrl+F5 para ejecutar la aplicación.
+4. Haga clic en CTRL + F5 aplicación hello de toorun.
 
-   En la ventana de la consola se muestran los vértices y los bordes que se agregan al grafo. Cuando se complete el script, presione ENTRAR dos veces para cerrar la ventana de la consola. 
+   ventana de la consola de Hello muestra vértices hello y bordes añadidos toohello gráfico. Cuando finalice la secuencia de comandos de hello, presione ENTRAR dos veces tooclose Hola ventana de la consola. 
 
-## <a name="browse-using-the-data-explorer"></a>Examinar mediante el Explorador de datos
+## <a name="browse-using-hello-data-explorer"></a>Examinar con hello Explorador de datos
 
-Ahora puede volver al Explorador de datos en Azure Portal para examinar y consultar los datos del nuevo grafo.
+Ahora puede volver atrás tooData Explorer Hola portal de Azure y examinar y consultar los datos de gráfico nuevo.
 
-1. En el Explorador de datos, la nueva base de datos aparece en el panel Grafos. Expanda **graphdb**, **graphcollz** y, después, haga clic en **Grafo**.
+1. En el Explorador de datos, base de datos nueva Hola aparece en panel de gráficos de Hola. Expanda **graphdb**, **graphcollz** y, después, haga clic en **Grafo**.
 
-2. Haga clic en el botón **Aplicar filtro** para usar la consulta predeterminada para ver todos los vértices del grafo. Los datos generados por la aplicación de ejemplo se muestran en el panel grafos.
+2. Haga clic en hello **aplicar filtro** botón predeterminado de hello toouse consultar tooview todos los verticies de hello en el gráfico de Hola. datos de Hello generados por la aplicación de ejemplo de Hola se muestran en el panel de gráficos de Hola.
 
-    Puede acercar o alejar el grafo, expandir el espacio de visualización del grafo, agregar vértices adicionales y mover los vértices sobre la superficie de visualización.
+    Puede acercar la vista dentro y fuera del gráfico de hello, puede ampliar el espacio de presentación de gráfico de hello, agregar verticies adicionales y mover la superficie de presentación de verticies en Hola.
 
-    ![Visualización del grafo en el Explorador de datos en Azure Portal](./media/create-graph-dotnet/graph-explorer.png)
+    ![Ver el gráfico de hello en el Explorador de datos en hello portal de Azure](./media/create-graph-dotnet/graph-explorer.png)
 
-## <a name="review-slas-in-the-azure-portal"></a>Revisar los SLA en Azure Portal
+## <a name="review-slas-in-hello-azure-portal"></a>Revise los SLA de hello portal de Azure
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
 ## <a name="clean-up-resources"></a>Limpieza de recursos
 
-Si no va a seguir usando esta aplicación, siga estos pasos para eliminar todos los recursos creados en esta guía de inicio rápido en Azure Portal: 
+Si no va toocontinue toouse esta aplicación, eliminar todos los recursos creados por este tutorial rápido de hello portal de Azure con hello pasos: 
 
-1. En el menú de la izquierda de Azure Portal, haga clic en **Grupos de recursos** y en el nombre del recurso que creó. 
-2. En la página del grupo de recursos, haga clic en **Eliminar**, escriba en el cuadro de texto el nombre del recurso que quiere eliminar y haga clic en **Eliminar**.
+1. En el menú de la izquierda de Hola Hola portal de Azure, haga clic en **grupos de recursos** y, a continuación, haga clic en nombre de hello del recurso de Hola que creó. 
+2. En la página del grupo de recursos, haga clic en **eliminar**, escriba el nombre de Hola de hello recursos toodelete en el cuadro de texto hello y, a continuación, haga clic en **eliminar**.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-En esta guía de inicio rápido, ha obtenido información sobre cómo crear una cuenta de Azure Cosmos DB, crear un grafo mediante el Explorador de datos y ejecutar una aplicación. Ahora puede crear consultas más complejas e implementar con Gremlin una lógica eficaz de recorrido del grafo. 
+En este tutorial, ha aprendido cómo crear un gráfico utilizando Hola Explorador de datos toocreate una cuenta de base de datos de Azure Cosmos y ejecutar una aplicación. Ahora puede crear consultas más complejas e implementar con Gremlin una lógica eficaz de recorrido del grafo. 
 
 > [!div class="nextstepaction"]
 > [Consulta mediante Gremlin](tutorial-query-graph.md)

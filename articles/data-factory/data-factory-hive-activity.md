@@ -1,6 +1,6 @@
 ---
-title: "Transformación de datos mediante la actividad de Hive - Azure | Microsoft Docs"
-description: "Aprenda cómo puede usar la actividad de Hive en Factoría de datos de Azure para ejecutar consultas de Hive en un clúster de HDInsight suyo propio o a petición."
+title: 'datos de aaaTransform con actividad de Hive: Azure | Documentos de Microsoft'
+description: "Obtenga información acerca de cómo puede utilizar Hola actividad de Hive en un consultas de Hive de toorun de factoría de datos de Azure en un clúster de HDInsight en-petición/su propio."
 services: data-factory
 documentationcenter: 
 author: sharonlo101
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: shlo
-ms.openlocfilehash: a3e9b2d0a8c851939acd228d8086ddfc9f38a4c1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 032400cdb8e8f9873f85b811b4ad7380f4410edf
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Transformación de datos mediante la actividad de Hive en Azure Data Factory 
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -33,10 +33,10 @@ ms.lasthandoff: 07/11/2017
 > * [Actividad U-SQL de Data Lake Analytics](data-factory-usql-activity.md)
 > * [Actividad personalizada de .NET](data-factory-use-custom-activities.md)
 
-La actividad de Hive de HDInsight en una [canalización](data-factory-create-pipelines.md) de Data Factory ejecuta consultas de Hive en [su propio](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) clúster de HDInsight o en uno [a petición](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) basado en Windows/Linux. Este artículo se basa en el artículo sobre [actividades de transformación de datos](data-factory-data-transformation-activities.md) , que presenta información general de la transformación de datos y las actividades de transformación admitidas.
+Hola actividad de HDInsight Hive en una factoría de datos [canalización](data-factory-create-pipelines.md) ejecuta consultas de Hive en [su propio](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) o [a petición](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) clúster de HDInsight basados en Windows/Linux. En este artículo se basa en hello [las actividades de transformación de datos](data-factory-data-transformation-activities.md) artículo, que presenta una descripción general de transformación de datos y las actividades de transformación de hello compatible.
 
 > [!NOTE] 
-> Si no está familiarizado con Azure Data Factory, lea [Introducción a Azure Data Factory](data-factory-introduction.md) y realice el tutorial de [compilación de la primera canalización de datos](data-factory-build-your-first-pipeline.md) antes de leer este artículo. 
+> Si es nuevo tooAzure factoría de datos, lea [tooAzure Introducción factoría de datos](data-factory-introduction.md) y Hola tutorial: [crear la canalización de datos primer](data-factory-build-your-first-pipeline.md) antes de leer este artículo. 
 
 ## <a name="syntax"></a>Sintaxis
 
@@ -72,20 +72,20 @@ La actividad de Hive de HDInsight en una [canalización](data-factory-create-pip
 ## <a name="syntax-details"></a>Detalles de la sintaxis
 | Propiedad | Descripción | Obligatorio |
 | --- | --- | --- |
-| name |Nombre de la actividad |Sí |
-| Descripción |Texto que describe para qué se usa la actividad. |No |
+| name |Nombre de actividad de Hola |Sí |
+| description |Texto que describe qué actividad Hola se usa para |No |
 | type |HDinsightHive |Sí |
-| inputs |Entradas consumidas por la actividad de Hive |No |
-| outputs |Salidas producidas por la actividad de Hive |Sí |
-| linkedServiceName |Referencia al clúster de HDInsight registrado como un servicio vinculado en la factoría de datos |Sí |
-| script |Especifica el script de Hive en línea |No |
-| script path |Almacena el script de Hive en un almacenamiento de blobs de Azure y proporciona la ruta de acceso al archivo. Use la propiedad 'script' o 'scriptPath'. No se pueden usar las dos juntas. El nombre del archivo distingue mayúsculas de minúsculas. |No |
-| define los campos |Especifique parámetros como pares de clave y valor para referencia en el script de Hive con 'hiveconf' |No |
+| inputs |Entradas consumidos por la actividad de Hive hello |No |
+| outputs |Resultados generados por la actividad de Hive hello |Sí |
+| linkedServiceName |Clúster de HDInsight de referencia toohello registrado como un servicio vinculado de factoría de datos |Sí |
+| script |Especifique el script de Hive de hello en línea |No |
+| ruta de acceso de script |Hola de almacén en el almacenamiento de blobs de Azure de script de Hive y proporcionar Hola ruta toohello al archivo. Use la propiedad 'script' o 'scriptPath'. No se pueden usar las dos juntas. nombre de archivo de Hello distingue mayúsculas de minúsculas. |No |
+| define los campos |Especificar parámetros como pares clave/valor para hacer referencia a dentro de script de Hive hello mediante 'hiveconf' |No |
 
 ## <a name="example"></a>Ejemplo
-Veamos un ejemplo de análisis de registros de juegos en el que desea identificar el tiempo dedicado por los usuarios a los juegos de su empresa. 
+Veamos un ejemplo de juego registra análisis donde desea tooidentify Hola tiempo los usuarios jugar iniciadas por su empresa. 
 
-El siguiente registro muestra un registro de juego de ejemplo, que está separado por comas (`,`) y que contiene los siguientes campos: ProfileID, SessionStart, Duration, SrcIPAddress y GameType.
+Hello siguiente es un ejemplo juego registro, que es la coma (`,`) separados y contiene los siguientes campos: identificador de perfil, SessionStart, duración, SrcIPAddress y GameType de Hola.
 
 ```
 1809,2014-05-04 12:04:25.3470000,14,221.117.223.75,CaptureFlag
@@ -95,7 +95,7 @@ El siguiente registro muestra un registro de juego de ejemplo, que está separad
 .....
 ```
 
-El **script de Hive** para procesar estos datos tiene el siguiente aspecto:
+Hola **de script de Hive** tooprocess estos datos:
 
 ```
 DROP TABLE IF EXISTS HiveSampleIn; 
@@ -122,18 +122,18 @@ Select
 FROM HiveSampleIn Group by ProfileID
 ```
 
-Para ejecutar este script de Hive en una canalización de Data Factory, necesita hacer lo siguiente
+tooexecute secuencia de comandos de esta sección en una canalización de factoría de datos, necesita toodo Hola siguiente
 
-1. Crear un servicio vinculado para registrar [su propio clúster de proceso de HDInsight](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) o configurar un [clúster de proceso de HDInsight a petición](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service). Llamaremos a este servicio vinculado "HDInsightLinkedService".
-2. Crear un [servicio vinculado](data-factory-azure-blob-connector.md) para configurar la conexión al almacenamiento de blobs de Azure que hospeda los datos. Llamaremos a este servicio vinculado "StorageLinkedService"
-3. Crear [conjuntos de datos](data-factory-create-datasets.md) que apuntan a los datos de entrada y salida. Llamaremos al conjunto de datos de entrada "HiveSampleIn" y al conjunto de datos de salida "HiveSampleOut"
-4. Copiar la consulta de Hive como un archivo en Azure Blob Storage configurado en el paso 2. Si el almacenamiento para hospedar los datos es diferente al que hospeda este archivo de consulta, crear un servicio vinculado de Azure Storage independiente y hacer referencia a él en la actividad. Use **scriptPath** para especificar la ruta de acceso al archivo de consulta de Hive y **scriptLinkedService** para especificar el almacenamiento de Azure que contiene el archivo de script. 
+1. Crear un servicio vinculado tooregister [su propio HDInsight clústerde](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) o configurar [clúster de cálculo de HDInsight a petición](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service). Llamaremos a este servicio vinculado "HDInsightLinkedService".
+2. Crear un [servicio vinculado](data-factory-azure-blob-connector.md) almacenamiento de blobs de tooAzure en conexión de tooconfigure Hola hospeda los datos de Hola. Llamaremos a este servicio vinculado "StorageLinkedService"
+3. Crear [conjuntos de datos](data-factory-create-datasets.md) que apunta hello y toohello entrada los datos de salida. Vamos a Hola llamada "HiveSampleIn" del conjunto de datos de entrada y Hola "HiveSampleOut" del conjunto de datos de salida
+4. Copiar consulta de Hive Hola como un almacenamiento de blobs configurados en el paso 2 de # tooAzure de archivo. Si almacenamiento Hola para hospedar datos hello es diferente de hello uno aloja este archivo de consulta, cree un servicio vinculado de almacenamiento de Azure independiente y consulte tooit en actividad hello. Use ** scriptPath ** toospecify Hola ruta toohive consulta archivo y **scriptLinkedService** toospecify Hola almacenamiento de Azure que contiene el archivo de script de Hola. 
    
    > [!NOTE]
-   > También puede proporcionar el script de Hive en línea en la definición de actividad mediante la propiedad **script** . No se recomienda este enfoque si todos los caracteres especiales del script del documento JSON tienen que ser caracteres de escape y pueden provocar problemas de depuración. La práctica recomendada es seguir el paso 4.
+   > También puede proporcionar Hola Hive script en línea en la definición de actividad de hello mediante hello **script** propiedad. No se recomienda este enfoque como todos los caracteres especiales en el script de Hola en documento JSON de hello necesita toobe caracteres de escape y la posible causa problemas de depuración. práctica recomendada de Hello es toofollow paso #4.
    > 
    > 
-5. Cree una canalización con la actividad HDInsightHive. La actividad de procesa y transforma los datos.
+5. Crear una canalización con hello HDInsightHive actividad. procesos de actividad Hello/transformaciones datos Hola.
 
     ```JSON   
     {   
@@ -167,15 +167,15 @@ Para ejecutar este script de Hive en una canalización de Data Factory, necesita
         }
     }
     ```
-6. Implemente la canalización. Consulte el artículo [Creación de canalizaciones](data-factory-create-pipelines.md) para obtener más información. 
-7. Supervise la canalización mediante las vistas de supervisión y administración de Factoría de datos. Consulte el artículo [Supervisión y administración de las canalizaciones de Factoría de datos](data-factory-monitor-manage-pipelines.md) para obtener más información. 
+6. Implementar la canalización de Hola. Consulte el artículo [Creación de canalizaciones](data-factory-create-pipelines.md) para obtener más información. 
+7. Supervisar la canalización de hello mediante la supervisión de la factoría de datos de Hola y vistas de administración. Consulte el artículo [Supervisión y administración de las canalizaciones de Factoría de datos](data-factory-monitor-manage-pipelines.md) para obtener más información. 
 
 ## <a name="specifying-parameters-for-a-hive-script"></a>Especificación de parámetros para un script de Hive
-En este ejemplo, los registros de juegos se introducen diariamente en Azure Blob Storage y se almacenan en una carpeta dividida con fecha y hora. Desea parametrizar el script de Hive y pasar la ubicación de la carpeta de entrada dinámicamente en tiempo de ejecución y también generar la salida dividida con fecha y hora.
+En este ejemplo, los registros de juegos se introducen diariamente en Azure Blob Storage y se almacenan en una carpeta dividida con fecha y hora. Desea script de Hive tooparameterize hello y pasar la ubicación de la carpeta de entrada de hello dinámicamente en tiempo de ejecución y también generar salida de hello particionado con la fecha y hora.
 
-Para usar scripts de Hive parametrizados, haga lo siguiente
+toouse parámetros de script de Hive, realice Hola después
 
-* Defina los parámetros en **defines**.
+* Definir los parámetros de hello en **define**.
 
     ```JSON  
     {
@@ -213,7 +213,7 @@ Para usar scripts de Hive parametrizados, haga lo siguiente
       }
     }
     ```
-* En el Script de Hive, consulte el parámetro mediante **${hiveconf:parameterName}**. 
+* Hola Script de Hive, consulte toohello parámetro con **${hiveconf: ParameterName}**. 
   
     ```
     DROP TABLE IF EXISTS HiveSampleIn; 

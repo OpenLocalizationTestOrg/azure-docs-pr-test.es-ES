@@ -1,5 +1,5 @@
 ---
-title: "Creación de una aplicación de chat Node.js con Socket.IO en el Servicio de aplicaciones de Azure"
+title: "aaaCreate una aplicación de chat de Node.js con Socket.IO en el servicio de aplicación de Azure"
 description: "Este tutorial muestra el uso de socket.io en una aplicación web node.js hospedada en Azure."
 services: app-service\web
 documentationcenter: nodejs
@@ -14,29 +14,29 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: tarcher
-ms.openlocfilehash: e1aa539e1134884261ea7464bfda6d14815618d4
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 3bd7867ccc297dc0a21c7a00cc9db06358877f5d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-nodejs-chat-application-with-socketio-in-azure-app-service"></a>Creación de una aplicación de chat Node.js con Socket.IO en el Servicio de aplicaciones de Azure
-Socket.IO proporciona comunicación en tiempo real entre su servidor node.js y los clientes con WebSockets. También es compatible con la reserva a otros transportes (como el sondeo largo) que funcionan con otros exploradores. Este tutorial le guiará por el hospedaje de una aplicación de chat basada en Socket.IO como una aplicación web de Azure, y le mostrará cómo escalar la aplicación con [Caché en Redis de Azure]. Para obtener más información sobre Socket.IO, consulte <http://socket.io/>.
+Socket.IO proporciona comunicación en tiempo real entre su servidor node.js y los clientes con WebSockets. También es compatible con los transportes de reserva tooother (por ejemplo, el sondeo prolongado) que funcionan con los exploradores más antiguos. Este tutorial se le guían a través de aloja una aplicación de chat Socket.IO según como una aplicación web de Azure y le muestran cómo tooscale Hola aplicación usando [Azure Redis Cache]. Para obtener más información sobre Socket.IO, consulte <http://socket.io/>.
 
 > [!NOTE]
-> Los procedimientos de esta tarea se aplican a [App Service Web Apps]; para Cloud Services, consulte [Creación de una aplicación de chat Node.js con Socket.IO en Servicio en la nube de Azure].
+> procedimientos de Hello en esta tarea se aplican demasiado[aplicación del servicio de aplicaciones Web]; para servicios en la nube, consulte [compilar una aplicación de Chat de Node.js con Socket.IO en un servicio de nube de Azure].
 > 
 > 
 
-## <a name="download-the-chat-example"></a>Descarga del ejemplo de chat
-Para este proyecto, usaremos el ejemplo de chat del [repositorio de Socket.IO GitHub](en inglés). Realice los siguientes pasos para descargar el ejemplo y agréguelo al proyecto que creó anteriormente.
+## <a name="download-hello-chat-example"></a>Descargar el ejemplo de Hola chat
+Para este proyecto, usaremos hello (ejemplo) chat de hello [repositorio de Socket.IO GitHub]. Realizar Hola siguiente ejemplo de Hola toodownload de pasos y Agregar proyecto toohello que creó anteriormente.
 
-1. Descargue una [versión archivada ZIP o GZ] del proyecto Socket.IO (la versión 1.3.5 se ha utilizado para este documento).
-2. Extraiga el archivo y copie el directorio **examples\\chat** en una ubicación nueva. Por ejemplo, **\\nodo\\chat**.
+1. Descargar un [ZIP o GZ archivado versión] del proyecto de hello Socket.IO (versión 1.3.5 se utilizó para este documento)
+2. Extraer Hola Hola de archivo y copia **ejemplos\\chat** tooa nueva ubicación de directorio. Por ejemplo, **\\nodo\\chat**.
 
 ## <a name="modify-appjs-and-install-modules"></a>Modificación de app.js e instalación de módulos
-1. Cambie el nombre del archivo **index.js** a **app.js**. Esto permite a Azure detectar que se trata de una aplicación Node.js.
-2. Abra el archivo **app.js** en un editor de texto. Cambie la línea que contiene `var io = require('../..')(server);` como se muestra a continuación:
+1. Cambiar el nombre de hello **index.js** archivo demasiado**app.js**. Esto permite que toodetect de Azure que se trata de una aplicación Node.js.
+2. Abra hello **app.js** archivo en un editor de texto. Que contiene la línea de saludo de cambio `var io = require('../..')(server);` tal y como se muestra a continuación:
    
        var express = require('express');
        var app = express();
@@ -45,69 +45,69 @@ Para este proyecto, usaremos el ejemplo de chat del [repositorio de Socket.IO Gi
        // New:
        var io = require('socket.io')(server);
        var port = process.env.PORT || 3000;
-3. Abra el archivo **package.json** y agregue una referencia a socket.io en `dependencies`, como se muestra a continuación:
+3. Abra hello **package.json** de archivos y agregue un toosocket.io de referencia en `dependencies`, tal y como se muestra a continuación:
    
         "dependencies": {
           "express": "3.4.8",
           "socket.io": "1.3.5"
         }
-4. En la línea de comandos, cambie al directorio **\\node\\chat** y use npm para instalar los módulos necesarios para esta aplicación:
+4. Desde la línea de comandos de hello, cambiar toohello  **\\nodo\\chat** directorio y uso tooinstall Hola módulos npm requeridos por la aplicación:
    
         npm install
    
-    Esto instalará los módulos en una subcarpeta denominada **node_modules**.
+    Este modo se instalará módulos hello en una subcarpeta denominada **node_modules**.
 
 ## <a name="create-an-azure-web-app"></a>Creación de una aplicación web de Azure
-Siga estos pasos para crear una aplicación web de Azure, habilite la publicación Git y, a continuación, habilite la compatibilidad de WebSocket para la aplicación web.
+Siga estos toocreate pasos una aplicación web de Azure, habilitar la publicación de Git y, a continuación, habilitar la compatibilidad de WebSocket para la aplicación web de Hola.
 
 > [!NOTE]
-> Para completar este tutorial, deberá tener una cuenta de Azure. En caso de no tener ninguna, puede crear una cuenta de evaluación gratuita en tan solo unos minutos. Para obtener más información, consulte <a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A7171371E" target="_blank">Evaluación gratuita de Azure</a>.
+> toocomplete este tutorial, necesita una cuenta de Azure. En caso de no tener ninguna, puede crear una cuenta de evaluación gratuita en tan solo unos minutos. Para obtener más información, consulte <a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A7171371E" target="_blank">Evaluación gratuita de Azure</a>.
 > 
 > 
 
-1. Instale la interfaz de la línea de comandos de Azure (CLI de Azure) y conéctese a su suscripción de Azure. Consulte [Instalación y configuración de la interfaz de la CLI de Azure](../cli-install-nodejs.md).
-2. Si esta es la primera vez que configura un repositorio en Azure, tendrá que crear unas credenciales de inicio de sesión. En la CLI de Azure, escriba el siguiente comando:
+1. Instale hello Azure interfaz de línea de comandos (CLI de Azure) y conecte tooyour suscripción de Azure. Vea [instalar y configurar hello Azure CLI](../cli-install-nodejs.md).
+2. Si se trata de la primera configuración de tiempo de un repositorio de Azure, necesita credenciales de inicio de sesión de toocreate. En el saludo CLI de Azure, escriba Hola siguiente comando:
    
         azure site deployment user set [username] [password]
-3. Cambie al directorio **\\node\chat** y use el siguiente comando para crear una nueva aplicación web de Azure y un repositorio de Git local. Este comando también crea un Git remoto llamado "azure".
+3. Cambiar toohello  **\\node\chat** directorio y siguientes de Hola de uso de comandos toocreate una nueva aplicación web de Azure y un repositorio Git local. Este comando también crea un Git remoto llamado "azure".
    
         azure site create mysitename --git
    
     Debe reemplazar "mysitename" por un nombre único para su sitio web.
-4. Confirme los archivos existentes en el repositorio local usando los siguientes comandos:
+4. Confirmar repositorio local de hello existente archivos toohello mediante el uso de hello siguientes comandos:
    
         git add .
         git commit -m "Initial commit"
-5. Inserte los archivos en el repositorio de la aplicación web de Azure con el siguiente comando:
+5. Insertar repositorio de aplicaciones Web de Azure de hello archivos toohello con hello siguiente comando:
    
         git push azure master
    
-    Cuando se le solicite, escriba las credenciales del paso 2. Recibirá mensajes de estado a medida que los módulos se importen en el servidor. Después de que se haya completado este proceso, la aplicación se hospedará en su aplicación web de Azure.
+    Cuando se le solicite, escriba las credenciales del paso 2. Recibirá mensajes de estado de los módulos se importan en el servidor de Hola. Cuando haya completado este proceso, la aplicación hello se hospedará en la aplicación web de Azure.
    
    > [!NOTE]
-   > Durante la instalación de módulos, es posible que aparezcan errores del tipo "No se ha encontrado el proyecto importado...". Se pueden ignorar con seguridad.
+   > Durante la instalación del módulo, es podrán que encuentre errores que ' hello proyecto importado... no se encontró '. Se pueden ignorar con seguridad.
    > 
    > 
-6. Socket.IO usa WebSockets, que no están habilitados de manera predeterminada en Azure. Para habilitar los sockets web, use el siguiente comando:
+6. Socket.IO usa WebSockets, que no están habilitados de manera predeterminada en Azure. tooenable web sockets, Hola de uso siguiente comando:
    
         azure site set -w
    
-    Si se solicita, escriba el nombre de la aplicación web.
+    Si se le pide, escriba el nombre de Hola de aplicación web de hello.
    
    > [!NOTE]
-   > El comando "azure site set -w" solo funcionará con la versión 0.7.4 o superior de la interfaz de la línea de comandos de Azure. También puede habilitar la compatibilidad con WebSocket usando el [Portal de Azure](https://portal.azure.com).
+   > Hola will de comando 'sitio de azure set -w' sólo funcionan con la versión 0.7.4 o posterior del programa Hola a la interfaz de línea de comandos de Azure. También puede habilitar la compatibilidad de WebSocket con hello [Portal de Azure](https://portal.azure.com).
    > 
-   > Para habilitar WebSockets con Azure Portal, haga clic en la aplicación web en la hoja Web Apps, haga clic en **Toda la configuración** > **Configuración de la aplicación**. En **Web Sockets**, haga clic en **Activado**. A continuación, haga clic en **Guardar**.
+   > uso de WebSockets de tooenable Hola Portal de Azure, haga clic en la aplicación web de hello de hoja de aplicaciones Web de hello, haga clic en **toda la configuración de** > **configuración de la aplicación**. En **Web Sockets**, haga clic en **Activado**. A continuación, haga clic en **Guardar**.
    > 
    > 
-7. Para ver la aplicación web en Azure, use el siguiente comando para iniciar su explorador web y desplazarse a la aplicación web hospedada:
+7. tooview hello web aplicación en Azure, use a continuación Hola comando toolaunch el explorador web y navegar por la aplicación web de toohello hospedado:
    
         azure site browse
 
 Su aplicación se está ejecutando ahora en Azure y puede retransmitir los mensajes de chat entre los diferentes clientes que usan Socket.IO.
 
 ## <a name="scale-out"></a>Escalado horizontal
-Las aplicaciones Socket.IO se pueden escalar horizontalmente con un **adaptador** para distribuir mensajes y eventos entre varias instancias de aplicaciones. Aunque hay varios adaptadores disponibles, el adaptador [socket.io-redis] se puede utilizar fácilmente con la característica de Caché en Redis de Azure.
+Aplicaciones de Socket.IO se pueden escalar horizontalmente mediante el uso de un **adaptador** toodistribute mensajes y eventos entre varias instancias de aplicación. Aunque hay varios adaptadores, Hola [socket.io redis] adaptador se puede usar fácilmente con la característica de caché en Redis de Azure de Hola.
 
 > [!NOTE]
 > Un requisito adicional para el escalado horizontal de una solución Socket.IO es la compatibilidad con sesiones persistentes. Las sesiones persistentes se habilitan de manera predeterminada en las aplicaciones web de Azure con el enrutamiento de solicitudes de Azure. Para obtener más información, consulte [Afinidad de instancias en Sitios web de Azure].
@@ -115,23 +115,23 @@ Las aplicaciones Socket.IO se pueden escalar horizontalmente con un **adaptador*
 > 
 
 ### <a name="create-a-redis-cache"></a>Crear una caché de Redis
-Realice los pasos de [Creación de una memoria caché en Caché en Redis de Azure] para crear una caché nueva.
+Realice los pasos de Hola de [crear una memoria caché en Redis de Azure] toocreate una nueva memoria caché.
 
 > [!NOTE]
-> Guarde el **Nombre de host** y la **Clave principal** de la caché, ya que los necesitará en los siguientes pasos.
+> Guardar hello **nombre de Host** y **clave principal** para la memoria caché, como estas se necesitará en Hola pasos siguientes.
 > 
 > 
 
-### <a name="add-the-redis-and-socketio-redis-modules"></a>Agregue los módulos redis y socket.io-redis
-1. En una línea de comandos, cambie al directorio **\\node\\chat** y use el siguiente comando.
+### <a name="add-hello-redis-and-socketio-redis-modules"></a>Agregar redis hello y módulos socket.io redis
+1. Desde una línea de comandos, cambiar toohello  **\\nodo\\chat** Hola de directorio y el uso siguiente comando.
    
         npm install socket.io-redis@0.1.4 redis@0.12.1 --save
    
    > [!NOTE]
-   > Las versiones indicadas en este comando son la sutilizadas al hacer las pruebas de este artículo.
+   > versiones de Hello especificadas en este comando son versiones de hello utilizadas al probar este artículo.
    > 
    > 
-2. Modifique el archivo **app.js** para agregar la siguientes líneas inmediatamente después de `var io = require('socket.io')(server);`.
+2. Modificar hello **app.js** siguientes de Hola de archivo tooadd líneas inmediatamente después de`var io = require('socket.io')(server);`
    
         var pub = require('redis').createClient(6379,'redishostname', {auth_pass: 'rediskey', return_buffers: true});
         var sub = require('redis').createClient(6379,'redishostname', {auth_pass: 'rediskey', return_buffers: true});
@@ -139,83 +139,83 @@ Realice los pasos de [Creación de una memoria caché en Caché en Redis de Azur
         var redis = require('socket.io-redis');
         io.adapter(redis({pubClient: pub, subClient: sub}));
    
-    Reemplace **redishostname** y **rediskey** por el nombre de host y la clave de la caché en Redis.
+    Reemplace **redishostname** y **rediskey** con nombre de host de Hola y la clave de la memoria caché de Redis.
    
-    Esto creará un cliente de publicación y suscripción a la caché de Redis creada anteriormente. Entonces los clientes se utilizarán con el adaptador para configurar Socket.IO y utilizar la caché de Redis para pasar mensajes y eventos entre instancias de la aplicación.
+    Esto creará una publicación y suscripción cliente toohello caché en Redis creado anteriormente. los clientes de Hello, a continuación, se usan con hello adaptador tooconfigure caché en Redis hello Socket.IO toouse para pasar mensajes y eventos entre instancias de la aplicación
    
    > [!NOTE]
-   > Aunque el adaptador **socket.io-redis** se puede comunicar directamente con Redis, la versión actual no es compatible con la autenticación que requiere Azure Redis Cache. Por tanto, la conexión inicial se crea con el módulo **redis**; a continuación, el cliente se pasa al adaptador **socket.io-redis**.
+   > Mientras hello **socket.io redis** adaptador puede comunicarse directamente tooRedis, versión actual de hello no admite la autenticación de hello requerida por la caché en Redis de Azure. Por lo que la conexión inicial Hola se crea utilizando hello **redis** módulo, el cliente de hello, a continuación, se pasa toohello **socket.io redis** adaptador.
    > 
-   > Aunque la caché de Redis de Azure es compatible con las conexiones seguras que utilizan el puerto 6380, los módulos usados en este ejemplo no son compatibles con las conexiones seguras a partir del 14/07/2014. El código anterior utiliza el puerto predeterminado no seguro 6379.
+   > Mientras que caché en Redis de Azure admite conexiones seguras mediante el puerto 6380, módulos de hello usados en este ejemplo no admiten conexiones seguras a partir de 7/14/2014. Hola por encima de código usa Hola de forma predeterminada, el puerto no seguro de 6379.
    > 
    > 
-3. Guarde el archivo **app.js** modificado
+3. Hola guardar modificado **app.js**
 
 ### <a name="commit-changes-and-redeploy"></a>Confirmar cambios y volver a implementar
-En la línea de comandos del directorio **\\node\\chat**, utilice los siguientes comandos para confirmar los cambios y volver a implementar la aplicación.
+Desde la línea de comandos en Hola Hola  **\\nodo\\chat** directorio, use Hola siguientes comandos toocommit cambios y volver a implementar la aplicación hello.
 
     git add .
     git commit -m "implementing scale out"
     git push azure master
 
-Cuando los cambios se hayan enviado al servidor, puede escalar su sitio por varias instancias con el siguiente comando.
+Una vez que se hayan insertado cambios hello toohello server, puede escalar el sitio en varias instancias utilizando el siguiente comando de Hola.
 
     azure site scale instances --instances #
 
-Donde **#** es el número de instancias que se van a crear.
+Donde  **#**  es Hola número de instancias toocreate.
 
-Puede conectarse a la aplicación web desde varios exploradores o equipos para verificar que los mensajes se envían correctamente a todos los clientes.
+Puede conectarse tooyour web app desde varios tooverify exploradores o equipos que los mensajes se envían correctamente los clientes de tooall.
 
 ## <a name="troubleshooting"></a>Solución de problemas
 ### <a name="connection-limits"></a>Límites de conexión
-Aplicaciones web de Azure está disponible en varios SKU, lo que determina los recursos disponibles en su sitio. Esto incluye el número permitido de conexiones WebSocket. Para obtener más información, consulte la [página Precios de aplicaciones web].
+Las aplicaciones Web de Azure está disponible en varias SKU, que determinan el sitio de hello recursos tooyour disponible. Esto incluye Hola número de conexiones permitidas de WebSocket. Para obtener más información, vea hello [página de precios de las aplicaciones Web].
 
 ### <a name="messages-arent-being-sent-using-websockets"></a>No se están enviando los mensajes con WebSockets
-Si los exploradores de los clientes siguen recurriendo al sondeo largo en lugar de utilizar WebSockets, tal vez se deba a uno de estos motivos.
+Si los exploradores de cliente mantengan revirtiendo toolong sondeo en lugar de usar WebSockets, puede ser debido a uno de los siguientes Hola.
 
-* **Intente limitar el transporte a solo WebSockets**
+* **Pruebe a limitar Hola transporte toojust WebSockets**
   
-    Para que Socket.IO utilice WebSockets como transporte de mensajes, tanto el servidor como el cliente deben ser compatibles con WebSockets. Si uno o el otro no lo son, Socket.IO negociará otro transporte, como el sondeo largo. La lista predeterminada de transportes utilizados por Socket.IO es ` websocket, htmlfile, xhr-polling, jsonp-polling`. Puede forzarlo a que solo utilice WebSockets si agrega el siguiente código al archivo **app.js**, después de la línea que contiene `, nicknames = {};`.
+    Para Socket.IO toouse WebSockets como Hola transporte de mensajería, servidor hello y del cliente deben admitir WebSockets. Si uno o hello otro no es así, Socket.IO negociará otro transporte, como el sondeo largo. lista predeterminada de Hola de transportes utilizados por Socket.IO es ` websocket, htmlfile, xhr-polling, jsonp-polling`. Puede forzar la tooonly use WebSockets agregando Hola después código toohello **app.js** archivo, después de la línea que contiene de hello `, nicknames = {};`.
   
         io.configure(function() {
           io.set('transports', ['websocket']);
         });
   
   > [!NOTE]
-  > Tenga en cuenta que los exploradores más antiguos que no son compatibles con WebSockets no podrán conectarse al sitio, aunque el código anterior esté activo, ya que restringe la comunicación solo a WebSockets.
+  > Observe que exploradores más antiguos que no admiten WebSockets no será capaz de tooconnect toohello sitio mientras Hola por encima del código está activa, tal y como se restringe únicamente tooWebSockets de comunicación.
   > 
   > 
 * **Uso de SSL**
   
-    WebSockets depende de algunos encabezados HTTP menos utilizados, como el encabezado **Upgrade** . Algunos dispositivos de red intermedios, como los proxy web, pueden quitar estos encabezados. Para evitar este problema, puede establecer la conexión WebSocket por SSL.
+    WebSockets se basa en algunos encabezados HTTP menor uso, como Hola **actualizar** encabezado. Algunos dispositivos de red intermedios, como los proxy web, pueden quitar estos encabezados. tooavoid este problema, puede establecer la conexión de WebSocket de Hola a través de SSL.
   
-    Una manera sencilla de conseguirlo es configurar Socket.IO en `match origin protocol`. Esto envía instrucciones a Socket.IO para asegurar la comunicación de WebSockets al igual que la solicitud HTTP/HTTPS original para la página web. Si un explorador utiliza una URL HTTPS para visitar su sitio web, las comunicaciones consiguientes de WebSocket a través de Socket.IO se asegurarán con SSL.
+    Una manera sencilla de tooaccomplish es demasiado tooconfigure Socket.IO`match origin protocol`. Esto indica a Hola de comunicación de WebSockets Socket.IO toosecure igual Hola HTTP/HTTPS que se originan de solicitud para la página web de Hola. Si un explorador utiliza una dirección URL HTTPS toovisit su sitio Web, se protegerán posteriores WebSocket las comunicaciones a través Socket.IO a través de SSL.
   
-    Para modificar este ejemplo y habilitar esta configuración, agregue el siguiente código al archivo **app.js**, después de la línea que contiene `, nicknames = {};`.
+    toomodify este tooenable ejemplo esta configuración, agregar Hola después código toohello **app.js** archivo después de la línea que contiene de hello `, nicknames = {};`.
   
         io.configure(function() {
           io.set('match origin protocol', true);
         });
 * **Comprobación de la configuración de web.config**
   
-    Las aplicaciones web de Azure que hospedan aplicaciones Node.js utilizan el archivo **web.config** para enrutar las solicitudes entrantes a la aplicación Node.js. Para que WebSockets funcione correctamente con aplicaciones Node.js, **web.config** debe contener la siguiente entrada.
+    Aplicaciones web de Azure que hospedan aplicaciones Node.js usan hello **web.config** tooroute archivo entrante solicita toohello Node.js aplicación. Para WebSockets toofunction correctamente con aplicaciones Node.js, Hola **web.config** debe contener la siguiente entrada de Hola.
   
         <webSocket enabled="false"/>
   
-    Esto deshabilita el módulo WebSockets de IIS, que incluye su propia implementación de WebSockets y entra en conflicto con módulos de WebSocket específicos de Node.js, como Socket.IO. Si esta línea no está presente o se establece en `true`, puede ser el motivo por el que el transporte de WebSocket no funciona para su aplicación.
+    Esto deshabilita el módulo WebSockets de IIS de hello, que incluye su propia implementación de WebSockets y entra en conflicto con los módulos de WebSocket específicos de Node.js como Socket.IO. Si esta línea no está presente o se establece demasiado`true`, esto puede ser motivo de Hola que transporte de WebSocket de hello no funciona para su aplicación.
   
-    Normalmente, las aplicaciones Node.js no incluyen un archivo **web.config** , por lo que Sitios web Azure generará automáticamente uno para las aplicaciones Node.js cuando se implementan. Como este archivo se genera automáticamente en el servidor, debe utilizar la URL FTP o FTPS en su sitio web para ver este archivo. Puede encontrar las direcciones URL FTP y FTPS para su sitio en el Portal clásico si selecciona la aplicación web y después el vínculo **Panel** . Las URL se muestran en la sección de **vista rápida** .
+    Normalmente, las aplicaciones Node.js no incluyen un archivo **web.config** , por lo que Sitios web Azure generará automáticamente uno para las aplicaciones Node.js cuando se implementan. Puesto que este archivo se genera automáticamente en el servidor de hello, debe usar Hola FTP o FTPS dirección URL para el sitio Web tooview este archivo. Puede encontrar Hola FTP y FTPS direcciones URL para el sitio en el portal clásico de hello seleccionando la aplicación web y Hola, a continuación, **panel** vínculo. Hello las direcciones URL aparecen en hello **vista rápida** sección.
   
   > [!NOTE]
-  > Sitios web de Azure solo genera el archivo **web.config** si la aplicación no lo proporciona. Si proporciona un archivo **web.config** en la raíz de su proyecto de aplicación, Aplicaciones web de Azure lo utilizará.
+  > Hola **web.config** archivo solo se genera por los sitios Web de Azure si la aplicación no proporciona uno. Si proporciona un **web.config** archivo en la raíz de Hola de su proyecto de aplicación, se utilizará por aplicaciones Web de Azure.
   > 
   > 
   
-    Si la entrada no está presente, o si se ha establecido en el valor de `true`, entonces deberá crear un **web.config** en la raíz de su aplicación Node.js y especificar un valor de `false`.  Como referencia, a continuación se muestra el **web.config** predeterminado para una aplicación que usa **app.js** como punto de entrada.
+    Si entrada hello no está presente o se establece el valor de tooa de `true`, a continuación, debe crear un **web.config** en Hola raíz de la aplicación Node.js y especifique un valor de `false`.  Como referencia, Hola siguiente es un valor predeterminado **web.config** para una aplicación que utiliza **app.js** como punto de entrada de Hola.
   
         <?xml version="1.0" encoding="utf-8"?>
         <!--
-             This configuration file is required if iisnode is used to run node processes behind
+             This configuration file is required if iisnode is used toorun node processes behind
              IIS or IIS Express.  For more information, visit:
   
              https://github.com/tjanczuk/iisnode/blob/master/src/samples/configuration/web.config
@@ -226,7 +226,7 @@ Si los exploradores de los clientes siguen recurriendo al sondeo largo en lugar 
             <!-- Visit http://blogs.msdn.com/b/windowsazure/archive/2013/11/14/introduction-to-websockets-on-windows-azure-web-sites.aspx for more information on WebSocket support -->
             <webSocket enabled="false" />
             <handlers>
-              <!-- Indicates that the server.js file is a node.js web app to be handled by the iisnode module -->
+              <!-- Indicates that hello server.js file is a node.js web app toobe handled by hello iisnode module -->
               <add name="iisnode" path="app.js" verb="*" modules="iisnode"/>
             </handlers>
             <rewrite>
@@ -236,12 +236,12 @@ Si los exploradores de los clientes siguen recurriendo al sondeo largo en lugar 
                   <match url="^app.js\/debug[\/]?" />
                 </rule>
   
-                <!-- First we consider whether the incoming URL matches a physical file in the /public folder -->
+                <!-- First we consider whether hello incoming URL matches a physical file in hello /public folder -->
                 <rule name="StaticContent">
                   <action type="Rewrite" url="public{REQUEST_URI}"/>
                 </rule>
   
-                <!-- All other URLs are mapped to the node.js web app entry point -->
+                <!-- All other URLs are mapped toohello node.js web app entry point -->
                 <rule name="DynamicContent">
                   <conditions>
                     <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="True"/>
@@ -251,10 +251,10 @@ Si los exploradores de los clientes siguen recurriendo al sondeo largo en lugar 
               </rules>
             </rewrite>
             <!--
-              You can control how Node is hosted within IIS using the following options:
-                * watchedFiles: semi-colon separated list of files that will be watched for changes to restart the server
-                * node_env: will be propagated to node as NODE_ENV environment variable
-                * debuggingEnabled - controls whether the built-in debugger is enabled
+              You can control how Node is hosted within IIS using hello following options:
+                * watchedFiles: semi-colon separated list of files that will be watched for changes toorestart hello server
+                * node_env: will be propagated toonode as NODE_ENV environment variable
+                * debuggingEnabled - controls whether hello built-in debugger is enabled
   
               See https://github.com/tjanczuk/iisnode/blob/master/src/samples/configuration/web.config for a full list of options
             -->
@@ -262,37 +262,37 @@ Si los exploradores de los clientes siguen recurriendo al sondeo largo en lugar 
           </system.webServer>
         </configuration>
   
-    Si la aplicación usa un punto de entrada distinto de **app.js**, debe reemplazar todas las apariciones de **app.js** con el punto de entrada correcto. Por ejemplo, reemplazando **app.js** por **server.js**.
+    Si la aplicación utiliza un punto de entrada distinto de **app.js**, debe reemplazar todas las apariciones de **app.js** con hello corregir el punto de entrada. Por ejemplo, reemplazando **app.js** por **server.js**.
 
 > [!NOTE]
-> Si desea empezar a trabajar con el Servicio de aplicaciones de Azure antes de inscribirse para abrir una cuenta de Azure, vaya a [App Service], donde podrá crear inmediatamente una aplicación web de inicio de corta duración en el Servicio de aplicaciones. No es necesario proporcionar ninguna tarjeta de crédito ni asumir ningún compromiso.
+> Si desea tooget iniciado con el servicio de aplicación de Azure antes de registrarse para una cuenta de Azure, vaya demasiado[pruebe el servicio de aplicaciones], donde puede crear inmediatamente una aplicación web de inicio de corta duración en el servicio de aplicaciones. No es necesario proporcionar ninguna tarjeta de crédito ni asumir ningún compromiso.
 > 
 > 
 
 ## <a name="next-steps"></a>Pasos siguientes
-En este tutorial aprendió a crear una aplicación de chat hospedada en una aplicación web de Azure. También puede hospedar esta aplicación como un servicio en la nube de Azure. Para conocer los pasos para lograr esto, consulte [Creación de una aplicación de chat Node.js con Socket.IO en Servicio en la nube de Azure].
+En este tutorial ha aprendido cómo toocreate una aplicación de chat hospedada en una aplicación web de Azure. También puede hospedar esta aplicación como un servicio en la nube de Azure. Para conocer los pasos sobre cómo tooaccomplish, vea [compilar una aplicación de Chat de Node.js con Socket.IO en un servicio de nube de Azure].
 
-Para obtener más información, consulte también el [Centro para desarrolladores de Node.js].
+Para obtener más información, vea también hello [Centro para desarrolladores de Node.js].
 
 ## <a name="whats-changed"></a>Lo que ha cambiado
-* Para obtener una guía del cambio de Sitios web a Servicio de aplicaciones, consulte: [Servicio de aplicaciones de Azure y su impacto en los servicios de Azure existentes].
+* Para una toohello guía consulte cambio con respecto a sitios Web tooApp servicio: [servicio de aplicaciones de Azure y su impacto en los servicios de Azure existente].
 
 <!-- URL List -->
 
-[Caché en Redis de Azure]: /documentation/services/redis-cache/
-[App Service Web Apps]: http://go.microsoft.com/fwlink/?LinkId=529714
-[página Precios de aplicaciones web]: http://go.microsoft.com/fwlink/?LinkId=511643
-[Creación de una aplicación de chat Node.js con Socket.IO en Servicio en la nube de Azure]: ../cloud-services/cloud-services-nodejs-chat-app-socketio.md
-[Install and Configure the Azure CLI]: ../cli-install-nodejs.md
-[Servicio de aplicaciones de Azure y su impacto en los servicios de Azure existentes]: http://go.microsoft.com/fwlink/?LinkId=529714
+[Azure Redis Cache]: /documentation/services/redis-cache/
+[aplicación del servicio de aplicaciones Web]: http://go.microsoft.com/fwlink/?LinkId=529714
+[página de precios de las aplicaciones Web]: http://go.microsoft.com/fwlink/?LinkId=511643
+[compilar una aplicación de Chat de Node.js con Socket.IO en un servicio de nube de Azure]: ../cloud-services/cloud-services-nodejs-chat-app-socketio.md
+[Install and Configure hello Azure CLI]: ../cli-install-nodejs.md
+[servicio de aplicaciones de Azure y su impacto en los servicios de Azure existente]: http://go.microsoft.com/fwlink/?LinkId=529714
 [Centro para desarrolladores de Node.js]: /develop/nodejs/
-[App Service]: https://azure.microsoft.com/try/app-service/
+[pruebe el servicio de aplicaciones]: https://azure.microsoft.com/try/app-service/
 [Afinidad de instancias en Sitios web de Azure]: https://azure.microsoft.com/blog/2013/11/18/disabling-arrs-instance-affinity-in-windows-azure-web-sites/
-[Creación de una memoria caché en Caché en Redis de Azure]: ../redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md
+[crear una memoria caché en Redis de Azure]: ../redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md
 
-[socket.io-redis]: https://github.com/socketio/socket.io-redis
+[socket.io redis]: https://github.com/socketio/socket.io-redis
 [repositorio de Socket.IO GitHub]: https://github.com/socketio/socket.io
-[versión archivada ZIP o GZ]: https://github.com/socketio/socket.io/releases
+[ZIP o GZ archivado versión]: https://github.com/socketio/socket.io/releases
 
 <!-- IMG List -->
 

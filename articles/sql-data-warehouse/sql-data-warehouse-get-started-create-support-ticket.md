@@ -1,6 +1,6 @@
 ---
-title: "Creación de una incidencia de soporte técnico para SQL Data Warehouse | Microsoft Docs"
-description: "Creación de una incidencia de soporte técnico en Almacenamiento de datos SQL de Azure."
+title: "aaaHow toocreate una incidencia de soporte técnico para el almacenamiento de datos SQL | Documentos de Microsoft"
+description: "¿Cómo toocreate una compatibilidad con vales en el almacén de datos de SQL Azure."
 services: sql-data-warehouse
 documentationcenter: NA
 author: kevinvngo
@@ -15,70 +15,70 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 10/31/2016
 ms.author: kevin;barbkess
-ms.openlocfilehash: 058ff1229acee5d03db7c0305c5565ae95a85758
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 72f7eac82112fb7f1bfb05abca4ce40aeb3c828c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-create-a-support-ticket-for-sql-data-warehouse"></a>Creación de una incidencia de soporte técnico para Almacenamiento de datos SQL
+# <a name="how-toocreate-a-support-ticket-for-sql-data-warehouse"></a>¿Cómo toocreate compatibilidad vale para almacenamiento de datos SQL
 Si tiene algún problema con su instancia de SQL Data Warehouse, cree una incidencia de soporte técnico para que nuestro equipo de ingenieros pueda ayudarle.
 
 > [!NOTE] 
-> A partir del 20/12/2016, la comprobación de estado de los recursos en Azure Portal no es exacta. Estamos trabajando activamente para solucionar este problema. 
+> A partir de 20/12/2016, comprobación de mantenimiento de recursos de Hola Hola portal de Azure no es exacta. Estamos trabajando activamente toofix este problema. 
 
 
 ## <a name="create-a-support-ticket"></a>Creación de una incidencia de soporte técnico
-1. Abra [Azure Portal][Azure portal].
-2. En la pantalla de inicio, haga clic en el icono **Ayuda y soporte técnico** .
+1. Abra hello [portal de Azure][Azure portal].
+2. En la pantalla de inicio de bienvenida, haga clic en hello **ayuda y soporte técnico** icono.
    
     ![Ayuda y soporte técnico](./media/sql-data-warehouse-get-started-create-support-ticket/help-support.png)
-3. En la hoja Ayuda y soporte técnico, haga clic en **Crear una solicitud de soporte técnico**.
+3. En Hola ayuda + hoja de soporte técnico, haga clic en **crear solicitud de soporte técnico**.
    
     ![Nueva solicitud de soporte](./media/sql-data-warehouse-get-started-create-support-ticket/create-support-request.png)
    
     <a name="request-quota-change"></a> 
-4. Seleccione el **Tipo de solicitud**.
+4. Seleccione hello **tipo de solicitud**.
    
     ![Tipo de solicitud](./media/sql-data-warehouse-get-started-create-support-ticket/request-type.png)
    
    > [!NOTE]
-   > De forma predeterminada, cada servidor SQL (por ejemplo, myserver.database.windows.net) tiene una **Cuota de DTU** de 45.000. Esta cuota es simplemente un límite de seguridad. Puede aumentar la cuota creando una incidencia de soporte técnico y seleccionando *Cuota* como el tipo de solicitud. Para calcular las necesidades de DTU, multiplique 7,5 por el total de [DWU][DWU] necesario. Por ejemplo, desea hospedar dos DW6000s en un servidor SQL, así que debe solicitar una cuota de DTU de 90 000.  Puede ver el consumo de DTU actual en la hoja del servidor SQL en el portal. El recuento de las bases de datos, tanto en pausa como continuo, hacia la cuota de DTU. 
+   > De forma predeterminada, cada servidor SQL (por ejemplo, myserver.database.windows.net) tiene una **Cuota de DTU** de 45.000. Esta cuota es simplemente un límite de seguridad. Puede aumentar la cuota mediante la creación de una incidencia de soporte técnico y seleccionar *cuota* como tipo de solicitud de saludo. toocalculate necesita, multiplique la DTU Hola 7.5 por hello total [DWU] [ DWU] necesarios. Por ejemplo, al igual que toohost dos DW6000s en un servidor SQL server, a continuación, debe solicitar una cuota DTU de 90.000.  Puede ver el consumo de DTU actual de la hoja de hello SQL server en el portal de Hola. Bases de datos en pausa y continuó cuentan para la cuota de DTU Hola. 
    > 
    > 
-5. Seleccione la **suscripción** que hospeda la base de datos con el problema que va a notificar.
+5. Seleccione hello **suscripción** que hosts Hola base de datos con el que se informe de problemas de Hola.
    
-    ![suscripción](./media/sql-data-warehouse-get-started-create-support-ticket/subscription.png)
-6. Seleccione **Almacenamiento de datos SQL** como Recurso.
+    ![La suscripción](./media/sql-data-warehouse-get-started-create-support-ticket/subscription.png)
+6. Seleccione **almacenamiento de datos SQL** como Hola recursos.
    
     ![Recurso](./media/sql-data-warehouse-get-started-create-support-ticket/resource.png)
 7. Seleccione su [Plan de soporte técnico de Azure][Azure support plan].
    
    * **facturación, las cuotas y la administración de suscripciones** .
-   * El soporte técnico para problemas de tipo **Break-fix** se proporciona a través de los niveles [Developer][Developer], [Standard][Standard], [Professional Direct][Professional Direct] o [Premier][Premier]. Los problemas "break-fix" son aquellos que experimentan los clientes mientras usan Azure en los que hay una posibilidad razonable de que hayan sido causados por Microsoft.
-   * El **aprendizaje para desarrolladores** y los **servicios de asesoramiento** están disponibles en los niveles de soporte técnico [Professional Direct][Professional Direct] y [Premier][Premier]. 
+   * El soporte técnico para problemas de tipo **Break-fix** se proporciona a través de los niveles [Developer][Developer], [Standard][Standard], [Professional Direct][Professional Direct] o [Premier][Premier]. Problemas de break-fix en línea son problemas de los clientes que se ha producido durante el uso de Azure donde hay una expectativa razonable ese problema de Hola de Microsoft que se produjo.
+   * **Desarrollador de asesoría** y **servicios de consultoría** están disponibles en hello [Professional Direct] [ Professional Direct] y [principal] [ Premier] niveles de compatibilidad. 
      
-     Si tiene un plan de soporte técnico Premier, también puede informar sobre problemas relacionados con SQL Data Warehouse en el [portal Microsoft Premier Online][Microsoft Premier online portal].  Consulte [Soporte técnico de Azure][Azure support plan] para clientes para más información sobre los diversos planes de soporte técnico, incluyendo detalles como ámbito, tiempos de respuesta, precios, etc.  Si desea ver las preguntas más frecuentes sobre el soporte técnico de Azure, consulte [Preguntas más frecuentes de soporte técnico de Azure][Azure support FAQs].  
+     Si tienes un Premier admitir plan, también puede notificar el almacenamiento de datos de SQL relacionada con problemas en hello [portal en línea de Microsoft Premier][Microsoft Premier online portal].  Vea [planes de soporte técnico de Azure] [ Azure support plan] toolearn más información acerca de saludo diversos admiten planes, incluidos el ámbito, tiempos de respuesta, precios, etcetera.  Si desea ver las preguntas más frecuentes sobre el soporte técnico de Azure, consulte [Preguntas más frecuentes de soporte técnico de Azure][Azure support FAQs].  
      
      ![Plan de soporte técnico](./media/sql-data-warehouse-get-started-create-support-ticket/support-plan.png)
-8. Seleccionar el **tipo de problema** y la **categoría**. En este ejemplo, se ha elegido "Herramientas" como el tipo de problema y "Herramientas de cliente" como la categoría. 
+8. Seleccione hello **tipo de problema** y **categoría**. En este ejemplo, que hemos elegido "Herramientas" como tipo de problema de Hola y "Herramientas de cliente" como categoría de Hola. 
    
     ![Categoría del tipo de problema](./media/sql-data-warehouse-get-started-create-support-ticket/problem-type-category.png)
-9. Describa el problema y elija el nivel de impacto empresarial.
+9. Describa el problema de Hola y elegir Hola nivel de impacto empresarial.
    
     ![Descripción del problema](./media/sql-data-warehouse-get-started-create-support-ticket/problem-description.png)
 10. Su **información de contacto** para esta incidencia de soporte técnico se rellenará automáticamente. Actualice si es necesario.
     
     ![Información de contacto](./media/sql-data-warehouse-get-started-create-support-ticket/contact-info.png)
-11. Haga clic en **Crear** para enviar la solicitud de soporte técnico.
+11. Haga clic en **crear** solicitud de soporte técnico de toosubmit Hola.
 
 ## <a name="monitor-a-support-ticket"></a>Supervisión de una incidencia de soporte técnico
-Una vez que ha enviado la solicitud de asistencia, el equipo de soporte técnico de Azure se pondrá en contacto con usted. Para comprobar el estado de la solicitud y los detalles, haga clic en **Administrar solicitudes de soporte técnico** en el panel.
+Una vez ha enviado la solicitud de soporte técnico de Hola, equipo de soporte técnico de Azure de Hola se comunicará con usted. toocheck el estado de la solicitud y los detalles, haga clic en **administrar solicitudes de soporte técnico** en el panel de Hola.
 
 ![Comprobar estado](./media/sql-data-warehouse-get-started-create-support-ticket/check-status.png)
 
 ## <a name="other-resources"></a>Otros recursos
-Además, puede conectar con la comunidad de SQL Data Warehouse en [Stack Overflow][Stack Overflow] o en el [foro de MSDN de Azure SQL Data Warehouse][Azure SQL Data Warehouse MSDN forum].
+Además, puede conectarse con hello Comunidad de almacenamiento de datos SQL en [desbordamiento de la pila] [ Stack Overflow] o en hello [foro de MSDN de almacenamiento de datos de SQL Azure] [ Azure SQL Data Warehouse MSDN forum].
 
 <!--Image references--> 
 

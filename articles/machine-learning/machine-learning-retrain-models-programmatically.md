@@ -1,6 +1,6 @@
 ---
-title: "Repetición del entrenamiento de los modelos de Machine Learning mediante programación | Microsoft Docs"
-description: "Obtenga información acerca de cómo volver a entrenar un modelo y actualizar el servicio web mediante programación para utilizar el modelo recién entrenado en el Aprendizaje automático de Azure."
+title: "aaaRetrain aprendizaje automático se modela mediante programación | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo tooprogrammatically volver a entrenar un modelo y actualización hello web servicio toouse Hola recién entrenado en aprendizaje automático de Azure."
 services: machine-learning
 documentationcenter: 
 author: raymondlaghaeian
@@ -14,38 +14,38 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: raymondl;garye;v-donglo
-ms.openlocfilehash: cf7a39e14a935d0d0e0df07e66a8f37480ec9687
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: edbb64c08f7d9edf3c76e23e0cc7e14c0125d697
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="retrain-machine-learning-models-programmatically"></a>Volver a entrenar modelos de aprendizaje automático mediante programación
-En este tutorial, aprenderá a entrenar mediante programación un servicio web Azure Machine Learning mediante C# y el servicio de ejecución por lotes de Machine Learning.
+En este tutorial, aprenderá cómo tooprogrammatically volver a entrenar a un servicio de Web de aprendizaje de máquina de Azure con C# y Hola servicio de ejecución de lotes de aprendizaje de máquina.
 
-Cuando haya reentrenado el modelo, los tutoriales siguientes le mostrarán cómo actualizarlo en el servicio web predictivo:
+Una vez que se vuelven a entrenar el modelo de hello, Hola siguientes tutoriales muestra cómo tooupdate Hola modelo en el servicio web de predicción:
 
-* Si implementó un servicio web clásico en el portal Servicios web Machine Learning, consulte [Reentrenamiento de un servicio web clásico](machine-learning-retrain-a-classic-web-service.md). 
-* Si implementó un servicio web nuevo, consulte [Reentrenamiento de un servicio web nuevo mediante los cmdlets de administración de Machine Learning](machine-learning-retrain-new-web-service-using-powershell.md).
+* Si implementa un servicio web de clásico en el portal de servicios Web de aprendizaje de máquina de hello, consulte [entrenar el modelo de servicio web clásico](machine-learning-retrain-a-classic-web-service.md). 
+* Si ha implementado un nuevo servicio web, consulte [volver a entrenar un nuevo servicio web mediante los cmdlets de administración de aprendizaje de máquina de hello](machine-learning-retrain-new-web-service-using-powershell.md).
 
-Para obtener información general sobre el proceso de reentrenamiento, consulte [Retrain a Machine Learning Model](machine-learning-retrain-machine-learning-model.md) (Reentrenamiento de un modelo de Machine Learning).
+Para obtener información general de hello reciclaje de proceso, consulte [volver a entrenar un modelo de aprendizaje automático](machine-learning-retrain-machine-learning-model.md).
 
-Si desea comenzar por el servicio web existente basado en el nuevo Azure Resource Manager, consulte [Retrain an existing Predictive Web service](machine-learning-retrain-existing-resource-manager-based-web-service.md) (Reentrenamiento de un servicio web predictivo existente).
+Si desea que toostart con el contenido existente nuevo administrador de recursos de Azure basada en servicio web, consulte [entrenar el modelo de un servicio web de predicción existente](machine-learning-retrain-existing-resource-manager-based-web-service.md).
 
 ## <a name="create-a-training-experiment"></a>Crear un experimento de entrenamiento
-En este ejemplo, usará "Sample 5: Train, Test, Evaluate for Binary Classification: Adult Dataset" (Ejemplo 5: Entrenar, probar, evaluar para clasificación binaria: Conjunto de datos para adultos) de entre los ejemplos de Aprendizaje automático de Microsoft Azure. 
+En este ejemplo, usará "ejemplo 5: entrenar, prueba, evaluar para clasificación binaria: conjunto de datos Adult" de ejemplos de aprendizaje automático de Microsoft Azure Hola. 
 
-Para crear el experimento:
+experimento de Hola toocreate:
 
-1. Inicie sesión en Estudio de aprendizaje automático de Microsoft Azure. 
-2. En la esquina inferior derecha del panel, haga clic en **Nuevo**.
-3. En los ejemplos de Microsoft, seleccione el ejemplo 5.
-4. Para cambiar el nombre del experimento, en la parte superior del lienzo del experimento, seleccione el nombre del experimento, en este caso "Sample 5: Train, Test, Evaluate for Binary Classification: Adult Dataset".
+1. Inicie sesión en tooMicrosoft estudio de aprendizaje automático de Azure. 
+2. En hello esquina inferior derecha del panel de hello, haga clic en **nuevo**.
+3. En Microsoft Samples hello, seleccione 5 de ejemplo.
+4. experimento de hello toorename, en parte superior de hello del lienzo del experimento de hello, seleccione el nombre de experimento de Hola "ejemplo 5: entrenar, prueba, evaluar para clasificación binaria: conjunto de datos Adult".
 5. Escriba Census Model (Modelo de censo).
-6. En la parte inferior del lienzo del experimento, haga clic en **Ejecutar**.
+6. En la parte inferior de hello del lienzo del experimento de hello, haga clic en **ejecutar**.
 7. Haga clic en **Set Up Web Service** (Configurar servicio web) y seleccione **Retraining Web Service** (Servicio web de reentrenamiento). 
 
-A continuación, se muestra el experimento inicial.
+siguiente Hello muestra experimento inicial Hola.
    
    ![Experimento inicial.][2]
 
@@ -53,91 +53,91 @@ A continuación, se muestra el experimento inicial.
 ## <a name="create-a-predictive-experiment-and-publish-as-a-web-service"></a>Creación de un experimento predictivo y publicación como servicio web
 A continuación creará un experimento predicativo.
 
-1. En la parte inferior del lienzo del experimento, haga clic en **Set Up Web Service** (Configurar servicio web) y seleccione **Predictive web Service** (Servicio web predictivo). Esto permite guardar el modelo como un modelo entrenado y agrega los módulos de entrada y salida de servicio web. 
+1. En la parte inferior de hello del lienzo del experimento de hello, haga clic en **configurar el servicio de Web** y seleccione **predictivo servicio Web**. Esto ahorra modelo Hola como un modelo entrenado y agrega módulos de entrada y salida del servicio web. 
 2. Haga clic en **Ejecutar**. 
-3. Cuando el experimento haya terminado de ejecutarse, haga clic en **Deploy Web Service [Classic]** (Implementar servicio web [clásico]) o en **Deploy Web Service [New]** (Implementar servicio web [nuevo]).
+3. Después de experimento Hola ha terminado de ejecutarse, haga clic en **implementar servicio Web [estándar]** o **implementar [New] servicio Web**.
 
 > [!NOTE] 
-> Para implementar un nuevo servicio web, debe tener permisos suficientes en la suscripción en la que lo implementa. Para obtener más información, consulte [Administración de un servicio web mediante el portal Servicios web Azure Machine Learning](machine-learning-manage-new-webservice.md). 
+> toodeploy un nuevo servicio web debe tener permisos suficientes en hello suscripción toowhich que implementar el servicio web de Hola. Para obtener más información, vea [administrar un servicio Web mediante el portal de servicios Web de Azure Machine Learning hello](machine-learning-manage-new-webservice.md). 
 
-## <a name="deploy-the-training-experiment-as-a-training-web-service"></a>Implementación del experimento de entrenamiento como un servicio web de entrenamiento
-Para reciclar el modelo entrenado, debe implementar el experimento de entrenamiento que creó como un servicio web de reciclaje. Este servicio necesita un módulo de *salida del servicio web* conectado al módulo *[Entrenar modelo][train-model]* para poder generar nuevos modelos entrenados.
+## <a name="deploy-hello-training-experiment-as-a-training-web-service"></a>Implementar Hola experimento de entrenamiento como un servicio web de aprendizaje
+modelo de aprendizaje de hello tooretrain, debe implementar experimento de entrenamiento de Hola que creó como un servicio web de Retraining. Este servicio web necesita un *resultado del servicio Web* módulo conectado toohello  *[entrenar modelo] [ train-model]*  toobe tooproduce capaz de nuevo, el módulo modelos entrenados.
 
-1. Para volver al experimento de entrenamiento, haga clic en el icono Experimentos en el panel izquierdo, y luego haga clic en el experimento denominado Census Model (Modelo de censo).  
-2. En el cuadro de búsqueda Search Experiment Items (Buscar elementos de experimentos), escriba servicio web. 
-3. Arrastre un módulo de *entrada de servicio web* al lienzo de experimentos y conecte la salida al módulo *Clean Missing Data* (Limpiar datos que faltan).  Esto garantiza que los datos de reentrenamiento se procesen del mismo modo que los datos de entrenamiento originales.
-4. Arrastre dos módulos de *salida de servicio web* al lienzo de experimentos. Conecte la salida del módulo *Entrenar modelo* a uno y la salida del módulo *Evaluate Model* (Evaluar modelo), al otro. La salida del servicio web para **Entrenar modelo** nos ofrecerá el nuevo modelo entrenado. La salida conectada a **Evaluate Model** (Evaluar modelo) devuelve los resultados de ese módulo, que son los resultados de rendimiento.
+1. experimento de entrenamiento de tooreturn toohello, haga clic en el icono de experimentos hello en el panel izquierdo de hello, haga clic en el experimento Hola denominado modelo del censo.  
+2. En el cuadro de búsqueda de elementos de experimento de búsqueda de hello, tipo de servicio web. 
+3. Arrastre un *proporcionados por el servicio Web* módulo en hello experimentar lienzo y conectar su salida toohello *limpiar datos que faltan* módulo.  Esto garantiza que se procesan los datos reconversión Hola de igual manera que los datos de entrenamiento original.
+4. Arrastre dos *salida del servicio web* módulos en hello experimentar lienzo. Conecte la salida de hello de hello *entrenar modelo* salida de hello y tooone del módulo de hello *evaluar modelo* módulo toohello otros. Hola resultado del servicio web para **entrenar modelo** nos da entrenado nueva Hola. Hola salida adjunta demasiado**evaluar modelo** devuelve ese módulo de salida de la, que es resultados de rendimiento de Hola.
 5. Haga clic en **Ejecutar**. 
 
-Después, debe implementar el experimento de entrenamiento como un servicio web que genera un modelo entrenado y resultados de evaluación del modelo. Para lograr esto, el siguiente conjunto de acciones depende de si está trabajando con un servicio web clásico o un servicio web nuevo.  
+A continuación debe implementar Hola experimento de entrenamiento como un servicio web que genera un modelo entrenado y resultados de la evaluación de modelo. tooaccomplish esto, el siguiente conjunto de acciones dependen de si está trabajando con un servicio de web estándar o un servicio web nuevo.  
 
 **Servicio web clásico**
 
-En la parte inferior del lienzo del experimento, haga clic en **Set Up Web Service** (Configurar servicio web) y seleccione **Deploy Web Service [Classic]** (Implementar servicio web [clásico]). Aparecerá el **panel** del servicio web con la clave de API y la página de Ayuda de API para la ejecución por lotes. Solo se puede usar el método de ejecución por lotes para crear modelos entrenados.
+En la parte inferior de hello del lienzo del experimento de hello, haga clic en **configurar el servicio de Web** y seleccione **implementar servicio Web [estándar]**. Servicio Web de Hola **panel** se muestra con la página de Ayuda de hello API hello y clave de API para la ejecución por lotes. Hola solo método de ejecución por lotes puede usarse para crear modelos entrenados.
 
 **Servicio web nuevo**
 
-En la parte inferior del lienzo del experimento, haga clic en **Set Up Web Service** (Configurar servicio web) y seleccione **Deploy Web Service [New]** (Implementar servicio web [nuevo]). El portal de servicios web de Azure Machine Learning se abre en la página Deploy Web service (Implementar servicio web). Escriba un nombre para el servicio web y elija un plan de pago y después haga clic en **Implementar**. Solo se puede usar el método de ejecución de lotes para crear modelos entrenados.
+En la parte inferior de hello del lienzo del experimento de hello, haga clic en **configurar el servicio de Web** y seleccione **implementar [New] servicio Web**. portal de servicios Web de aprendizaje de máquina de Azure de Web Service Hola abre toohello implementar página al servicio web. Escriba un nombre para el servicio web y elija un plan de pago y después haga clic en **Implementar**. Hola solo método de ejecución por lotes puede utilizarse para crear modelos entrenados
 
-En cualquier caso, una vez que el experimento ha finalizado su ejecución, el flujo de trabajo resultante debe ser el siguiente:
+En cualquier caso, después de experimento tiene en ejecución completada, flujo de trabajo resultante Hola debe ser como sigue:
 
 ![Flujo de trabajo resultante después de la ejecución.][4]
 
 
 
-## <a name="retrain-the-model-with-new-data-using-bes"></a>Reentrenamiento del modelo con nuevos datos mediante BES
-En este ejemplo, se utiliza C# para crear la aplicación de reentrenamiento. También puede utilizar el código de ejemplo de Python o R para realizar esta tarea.
+## <a name="retrain-hello-model-with-new-data-using-bes"></a>Volver a entrenar el modelo de Hola con datos nuevos mediante BES
+En este ejemplo, está usando C# toocreate Hola reciclaje de aplicación. También sirve Hola Python o R ejemplo código tooaccomplish esta tarea.
 
-Para llamar a las API de reentrenamiento:
+toocall Hola API de reciclaje:
 
 1. Cree una nueva aplicación de consola de C# en Visual Studio: **Nuevo** > **Proyecto** > **Visual C#** > **Escritorio clásico de Windows** > **Aplicación de consola (.NET Framework)**.
-2. Inicie sesión en el portal de servicio web Machine Learning.
+2. Inicie sesión en toohello portal de servicio Web de aprendizaje de máquina.
 3. Si está trabajando con un servicio web clásico, haga clic en **Classic Web Services**(Servicios web clásicos).
-   1. Haga clic en el servicio web con el que está trabajando.
-   2. Haga clic en el punto de conexión predeterminado.
+   1. Haga clic en servicio web de Hola que está trabajando.
+   2. Haga clic en el punto de conexión de hello predeterminado.
    3. Haga clic en **Consume**(Consumo).
-   4. En la parte inferior de la página **Consume** (Consumo), en la sección **Código de ejemplo**, haga clic en **Batch**.
-   5. Vaya al paso 5 de este procedimiento.
+   4. En parte inferior de Hola de hello **Consume** página Hola **código de ejemplo** sección, haga clic en **por lotes**.
+   5. Continuar toostep 5 de este procedimiento.
 4. Si está trabajando con un servicio web nuevo, haga clic en **Servicios web**.
-   1. Haga clic en el servicio web con el que está trabajando.
+   1. Haga clic en servicio web de Hola que está trabajando.
    2. Haga clic en **Consume**(Consumo).
-   3. En la parte inferior de la página Consume (Consumo), en la sección **Código de ejemplo**, haga clic en **Batch**.
-5. Copie el código C# de ejemplo para la ejecución por lotes y péguelo en el archivo Program.cs, asegurándose de que el espacio de nombres permanece intacto.
+   3. En parte inferior de Hola de hello Consume la página hello **código de ejemplo** sección, haga clic en **por lotes**.
+5. Copiar código C# ejemplo de Hola para la ejecución por lotes y péguelo en el archivo Program.cs de hello, asegurándose de que el espacio de nombres de hello permanece intacto.
 
-Agregue el paquete NuGet Microsoft.AspNet.WebApi.Client tal como se especifica en los comentarios. Para agregar la referencia a Microsoft.WindowsAzure.Storage.dll, primero debe instalar la biblioteca de cliente para servicios de Microsoft Azure Storage. Para obtener más información, vea [Servicios de almacenamiento de Windows](https://www.nuget.org/packages/WindowsAzure.Storage).
+Agregar paquete de Nuget hello Microsoft.AspNet.WebApi.Client tal como se especifica en los comentarios de Hola. tooadd Hola referencia tooMicrosoft.WindowsAzure.Storage.dll, primero tendrá que biblioteca de cliente hello tooinstall para servicios de almacenamiento de Microsoft Azure. Para obtener más información, vea [Servicios de almacenamiento de Windows](https://www.nuget.org/packages/WindowsAzure.Storage).
 
-### <a name="update-the-apikey-declaration"></a>Actualización de la declaración de apikey
-Localice la declaración de **apikey** .
+### <a name="update-hello-apikey-declaration"></a>Actualizar la declaración de hello apikey
+Busque hello **apikey** declaración.
 
-    const string apiKey = "abc123"; // Replace this with the API key for the web service
+    const string apiKey = "abc123"; // Replace this with hello API key for hello web service
 
-En la sección **Basic consumption info** (Información básica sobre consumo) de la página **Consume** (Consumo), localice la clave principal y cópiela en la declaración de **apikey**.
+Hola **información básica de consumo** sección de hello **Consume** página, busque la clave principal de Hola y cópielo toohello **apikey** declaración.
 
-### <a name="update-the-azure-storage-information"></a>Actualización de la información de Almacenamiento de Azure
-El código de ejemplo de BES carga un archivo desde una unidad local (por ejemplo "C:\temp\CensusIpnput.csv") en el Almacenamiento de Azure, lo procesa y escribe los resultados de nuevo en el Almacenamiento de Azure.  
+### <a name="update-hello-azure-storage-information"></a>Actualizar la información de almacenamiento de Azure Hola
+código de ejemplo BES Hola carga un archivo desde un almacenamiento de tooAzure de unidad local (por ejemplo "C:\temp\CensusIpnput.csv"), lo procesa y escribe Hola resultados atrás tooAzure almacenamiento.  
 
-Para ello, debe recuperar el nombre, la clave y la información de contenedor de la cuenta de almacenamiento desde el Portal de Azure clásico y actualizar los valores correspondientes del código. 
+tooaccomplish esta tarea, debe recuperar la información de nombre, la clave y el contenedor de la cuenta del almacenamiento hello para la cuenta de almacenamiento del portal de Azure clásico de Hola y actualización de hello correspondientes valores en el código de hello. 
 
-1. Inicie sesión en el Portal de Azure clásico.
-2. En la columna de navegación izquierda, haga clic en **Almacenamiento**.
-3. En la lista de cuentas de almacenamiento, seleccione una para almacenar el modelo reciclado.
-4. En la parte inferior de la página, haga clic en **Administrar claves de acceso**.
-5. Copie y guarde la **clave de acceso principal** y cierre el cuadro de diálogo. 
-6. En la parte superior de la página, haga clic en **Contenedores**.
-7. Seleccione un contenedor existente o cree uno nuevo y guarde el nombre.
+1. Inicie sesión en el portal de Azure clásico toohello.
+2. En la columna de navegación izquierdo de hello, haga clic en **almacenamiento**.
+3. En lista de Hola de cuentas de almacenamiento, seleccione uno toostore Hola volver a entrenar modelo.
+4. En la parte inferior de Hola de página de hello, haga clic en **administrar claves de acceso**.
+5. Copie y guarde hello **clave de acceso principal** y cuadro de diálogo Cerrar Hola. 
+6. En la parte superior de Hola de página de hello, haga clic en **contenedores**.
+7. Seleccione un contenedor existente o cree uno nuevo y guarde el nombre de Hola.
 
-Busque las declaraciones *StorageAccountName*, *StorageAccountKey* y *StorageContainerName* y actualice los valores guardados en Azure Portal.
+Busque hello *StorageAccountName*, *StorageAccountKey*, y *StorageContainerName* Hola a declaraciones y actualizar valores de hello que guardó en el portal de Azure.
 
     const string StorageAccountName = "mystorageacct"; // Replace this with your Azure Storage Account name
     const string StorageAccountKey = "a_storage_account_key"; // Replace this with your Azure Storage Key
     const string StorageContainerName = "mycontainer"; // Replace this with your Azure Storage Container name
 
-También deberá asegurarse de que el archivo de entrada está disponible en la ubicación que especifique en el código. 
+También debe asegurarse de archivo de entrada de hello está disponible en la ubicación de Hola que especifique en el código de hello. 
 
-### <a name="specify-the-output-location"></a>Especifique la ubicación de salida.
-Al especificar la ubicación de salida en la carga útil de solicitud, la extensión del archivo especificado en *RelativeLocation* debe especificarse como ilearner. 
+### <a name="specify-hello-output-location"></a>Especifique la ubicación de salida de hello
+Al especificar la ubicación de salida de hello en hello la carga de solicitudes, Hola extensión del archivo de hello especificado en *RelativeLocation* debe especificarse como ilearner. 
 
-Consulte el ejemplo siguiente:
+Vea el siguiente ejemplo de Hola:
 
     Outputs = new Dictionary<string, AzureBlobDataReference>() {
         {
@@ -145,12 +145,12 @@ Consulte el ejemplo siguiente:
             new AzureBlobDataReference()
             {
                 ConnectionString = storageConnectionString,
-                RelativeLocation = string.Format("{0}/output1results.ilearner", StorageContainerName) /*Replace this with the location you would like to use for your output file, and valid file extension (usually .csv for scoring results, or .ilearner for trained models)*/
+                RelativeLocation = string.Format("{0}/output1results.ilearner", StorageContainerName) /*Replace this with hello location you would like toouse for your output file, and valid file extension (usually .csv for scoring results, or .ilearner for trained models)*/
             }
         },
 
 > [!NOTE]
-> Los nombres de las ubicaciones de salida pueden ser diferentes de aquellos que aparecen en este tutorial que se basa en el orden en que se agregaron los módulos de salida del servicio web. Puesto que ha configurado este experimento de entrenamiento con dos salidas, los resultados incluyen información de ubicación de almacenamiento para ambas.  
+> nombres de Hola de sus ubicaciones de salida pueden ser diferentes de hello los en este tutorial basados en el orden de hello en el que se ha agregado módulos de salida de hello web service. Puesto que se configura este experimento de entrenamiento con dos salidas, resultados de hello incluyen información de ubicación de almacenamiento para ambos.  
 > 
 > 
 
@@ -158,21 +158,21 @@ Consulte el ejemplo siguiente:
 
 Diagrama 4: Salida de entrenamiento.
 
-## <a name="evaluate-the-retraining-results"></a>Evaluación de los resultados de reentrenamiento
-Al ejecutar la aplicación, la salida incluye la dirección URL y el token SAS necesarios para tener acceso a los resultados de evaluación.
+## <a name="evaluate-hello-retraining-results"></a>Evaluar los resultados de reciclaje de Hola
+Cuando se ejecuta la aplicación hello, salida de hello incluye la dirección URL de Hola y tooaccess necesarios de token de SAS Hola resultados de la evaluación.
 
-Podrá ver los resultados de rendimiento del modelo reentrenado combinando *BaseLocation*, *RelativeLocation* y *SasBlobToken* de los resultados de salida de *output2* (como se muestra en la imagen de la salida de reentrenamiento anterior) y copiando y pegando la dirección URL completa en la barra de direcciones del explorador.  
+Puede ver los resultados de rendimiento de Hola de hello volver a entrenar modelo mediante la combinación de hello *BaseLocation*, *RelativeLocation*, y *SasBlobToken* de hello unos resultados para *output2* (como se muestra en hello anterior reciclaje imagen de salida) y pegar la dirección URL completa de hello en la barra de direcciones del explorador de Hola.  
 
-Revise los resultados para determinar si el modelo recientemente entrenado funciona lo suficientemente bien como para reemplazar el existente.
+Examine Hola resultados toodetermine si Hola recién entrenado realiza lo suficientemente bien hello tooreplace uno existente.
 
-Copie *BaseLocation*, *RelativeLocation* y *SasBlobToken* de los resultados de salida, ya que se usarán durante el proceso de reentrenamiento.
+Hola copia *BaseLocation*, *RelativeLocation*, y *SasBlobToken* de resultados de la salida de hello, utilizará durante Hola reciclaje de proceso.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Si implementa el servicio web predictivo haciendo clic en **Deploy Web Service [Classic]** (Implementar servicio web [clásico]), consulte [Reentrenamiento de un servicio web clásico](machine-learning-retrain-a-classic-web-service.md).
+Si ha implementado el servicio web de predicción de hello haciendo clic en **implementar servicio Web [estándar]**, consulte [entrenar el modelo de servicio web clásico](machine-learning-retrain-a-classic-web-service.md).
 
-Si implementó el servicio web predictivo haciendo clic en **Deploy Web Service [Classic]** (Implementar servicio web [clásico]), consulte [Reentrenamiento de un servicio web nuevo mediante los cmdlets de administración de Machine Learning](machine-learning-retrain-new-web-service-using-powershell.md).
+Si ha implementado el servicio web de predicción de hello haciendo clic en **implementar [New] servicio Web**, consulte [volver a entrenar un nuevo servicio web mediante los cmdlets de administración de aprendizaje de máquina de hello](machine-learning-retrain-new-web-service-using-powershell.md).
 
-<!-- Retrain a New web service using the Machine Learning Management REST API -->
+<!-- Retrain a New web service using hello Machine Learning Management REST API -->
 
 
 [1]: ./media/machine-learning-retrain-models-programmatically/machine-learning-retrain-models-programmatically-IMAGE01.png

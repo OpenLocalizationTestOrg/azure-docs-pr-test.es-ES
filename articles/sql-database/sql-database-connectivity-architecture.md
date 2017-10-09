@@ -1,6 +1,6 @@
 ---
-title: Arquitectura de conectividad de Azure SQL Database | Microsoft Docs
-description: En este documento se explica la arquitectura de conectividad de Azure SQLDB, desde dentro o desde fuera de Azure.
+title: arquitectura de conectividad de base de datos de SQL aaaAzure | Documentos de Microsoft
+description: Este documento explica Hola de arquitectura de conectividad SQLDB de Azure desde dentro de Azure o desde fuera de Azure.
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -15,51 +15,51 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 06/05/2017
 ms.author: carlrab
-ms.openlocfilehash: 8a1dd89c9e82483184ceb5d767190a5a5044265d
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 917df6d88a16f1b841b617fb2a53025b4d14d034
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-sql-database-connectivity-architecture"></a>Arquitectura de conectividad de Azure SQL Database 
 
-En este artículo se explica la arquitectura de conectividad de Azure SQL Database y cómo funcionan los distintos componentes para dirigir el tráfico a una instancia de Azure SQL Database. La funcionalidad de estos componentes de la conectividad de Azure SQL Database consiste en dirigir el tráfico de red a la base de datos de Azure con clientes que se conectan desde dentro y desde fuera de Azure. En este artículo también se proporcionan ejemplos de script para cambiar cómo se establece la conectividad y, además, se incluyen consideraciones sobre la modificación de la configuración predeterminada de la conectividad. Si le surge alguna pregunta después de leer este artículo, póngase en contacto con Dhruv en dmalik@microsoft.com. 
+En este artículo se explica la arquitectura de conectividad de base de datos de SQL Azure de Hola y explica el funcionan de los distintos componentes de hello toodirect instancia de tooyour de tráfico de la base de datos de SQL Azure. Estos componentes de conectividad de base de datos de SQL Azure funcionen toohello de tráfico de red de toodirect base de datos de Azure con clientes que se conectan desde dentro de Azure y con clientes que se conectan desde fuera de Azure. En este artículo también proporciona toochange de ejemplos de script cómo se produce la conectividad y consideraciones de hello relacionados con la configuración de conectividad de toochanging Hola predeterminada. Si le surge alguna pregunta después de leer este artículo, póngase en contacto con Dhruv en dmalik@microsoft.com. 
 
 ## <a name="connectivity-architecture"></a>Arquitectura de conectividad
 
-En el siguiente diagrama se proporciona una descripción general de la arquitectura de conectividad de Azure SQL Database. 
+Hola siguiente diagrama proporciona una descripción general de hello arquitectura de conectividad de base de datos de SQL Azure. 
 
 ![Descripción general de la arquitectura](./media/sql-database-connectivity-architecture/architecture-overview.png)
 
 
-En los pasos siguientes se describe cómo se establece una conexión a una base de datos SQL de Azure a través del equilibrador de carga de software (SLB) de Azure SQL Database y de la puerta de enlace de Azure SQL Database.
+Hello pasos siguientes describen cómo es la conexión establecida tooan base de datos SQL de Azure a través de puerta de enlace de base de datos de SQL Azure de Hola y Hola base de datos de SQL Azure software equilibrador de carga (SLB).
 
-- Los clientes, tanto desde dentro como desde fuera de Azure, se conectan a la SLB, que tiene una dirección IP pública y escucha en el puerto 1433.
-- El SLB dirige el tráfico a la puerta de enlace de Azure SQL Database.
-- La puerta de enlace redirige el tráfico al middleware del proxy correcto.
-- El middleware del proxy redirige el tráfico a la base de datos SQL de Azure adecuada.
+- Los clientes dentro de Azure o fuera de Azure conectan toohello SLB, que tiene una dirección IP pública y escucha en el puerto 1433.
+- Hola SLB dirige la puerta de enlace de tráfico toohello base de datos de SQL Azure.
+- puerta de enlace de Hello redirige Hola tráfico toohello correcta del proxy middleware.
+- Hola proxy middleware redirige Hola tráfico toohello SQL Azure base de datos correspondiente.
 
 > [!IMPORTANT]
-> Cada uno de estos componentes integra protección frente a ataques de denegación de servicio distribuido (DDoS) en la red y en el nivel de aplicación.
+> Cada uno de estos componentes distribuye de denegación de protección de servicio (DDoS) integrado en la red de Hola y de capa de aplicación Hola.
 >
 
 ## <a name="connectivity-from-within-azure"></a>Conectividad desde dentro de Azure
 
-Si va a conectarse desde dentro de Azure, las conexiones tienen una directiva de conexión predeterminada basada en el **redireccionamiento**. Una directiva de **redireccionamiento** establece que las conexiones después de la sesión TCP se realicen a la base de datos SQL de Azure; a continuación, la sesión del cliente se redirige al middleware del proxy, pero se cambia la IP virtual de destino de la puerta de enlace de Azure SQL Database por la del middleware del proxy. Por lo tanto, todos los paquetes posteriores fluyen directamente a través del middleware del proxy, de tal forma que omiten la puerta de enlace de Azure SQL Database. En el siguiente diagrama, se ilustra este flujo de tráfico.
+Si va a conectarse desde dentro de Azure, las conexiones tienen una directiva de conexión predeterminada basada en el **redireccionamiento**. Una directiva de **redirigir** significa que las conexiones después de la sesión TCP hello es la base de datos de SQL Azure de toohello establecida, sesión de cliente de hello es, a continuación, redirige toohello middleware de proxy con una cambio toohello destino dirección IP virtual de de hello toothat de puerta de enlace de base de datos de SQL Azure de middleware de proxy de Hola. Por lo tanto, todos los paquetes posteriores fluyen directamente a través de middleware de proxy de hello, omitiendo la puerta de enlace de base de datos de SQL Azure Hola. Hola siguiente diagrama ilustra este flujo de tráfico.
 
 ![Descripción general de la arquitectura](./media/sql-database-connectivity-architecture/connectivity-from-within-azure.png)
 
 ## <a name="connectivity-from-outside-of-azure"></a>Conectividad desde fuera de Azure
 
-Si va a conectarse desde fuera de Azure, las conexiones tienen una directiva de conexión predeterminada basada en el **proxy**. Una directiva de **proxy** establece que la sesión TCP se realice a través de la puerta de enlace de Azure SQL Database y que todos los paquetes posteriores fluyan a través de la puerta de enlace. En el siguiente diagrama, se ilustra este flujo de tráfico.
+Si va a conectarse desde fuera de Azure, las conexiones tienen una directiva de conexión predeterminada basada en el **proxy**. Una directiva de **Proxy** significa que la sesión TCP de Hola se establece a través de puerta de enlace de base de datos de SQL Azure hello y todos los paquetes posteriores fluyen a través de Hola puerta de enlace. Hola siguiente diagrama ilustra este flujo de tráfico.
 
 ![Descripción general de la arquitectura](./media/sql-database-connectivity-architecture/connectivity-from-outside-azure.png)
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>Direcciones IP de la puerta de enlace de Azure SQL Database
 
-Para conectarse a una base de datos SQL de Azure desde recursos locales, debe permitir el tráfico de red saliente a la puerta de enlace de Azure SQL Database en su región de Azure. Las conexiones solo se establecen a través de la puerta de enlace al conectarse en modo de proxy, que es el valor predeterminado para conexiones desde recursos locales.
+tooconnect tooan SQL Azure base de datos de recursos locales, deberá tooallow puerta de enlace de red saliente tráfico toohello base de datos de SQL Azure para su región de Azure. Las conexiones sólo se van a través de puerta de enlace de hello al conectarse en modo de Proxy, que es el predeterminado de hello cuando se conecta desde recursos locales.
 
-En la tabla siguiente se enumeran las direcciones IP principales y secundarias de la puerta de enlace de Azure SQL Database para todas las regiones de datos. En algunas regiones, hay dos direcciones IP. En estas regiones, la dirección IP principal es la dirección IP actual de la puerta de enlace y la dirección IP secundaria es una dirección IP de conmutación por error. La dirección de conmutación por error es la dirección a la que se puede mover el servidor para mantener la alta disponibilidad del servicio. En estas regiones, se recomienda que permita el tráfico saliente a ambas direcciones IP. La dirección IP secundaria es propiedad de Microsoft y no escucha en ningún servicio hasta que Azure SQL Database la activa para aceptar conexiones.
+Hola tabla siguiente se muestran Hola principal y secundaria de direcciones IP de puerta de enlace de base de datos de SQL Azure de Hola para todas las regiones de datos. En algunas regiones, hay dos direcciones IP. En estas regiones, dirección IP principal de hello es Hola dirección IP de puerta de enlace de Hola y Hola segunda dirección IP es una dirección IP de conmutación por error. dirección de conmutación por error de Hello es Hola dirección toowhich tengamos que pasamos la disponibilidad del servicio de servidor tookeep Hola alta. Para estas regiones, se recomienda permitir saliente tooboth direcciones IP de Hola. dirección IP de la segunda Hello es propiedad de Microsoft y no escuchar todos los servicios hasta que se activa por las conexiones de base de datos de SQL Azure tooaccept.
 
 | Nombre de región | Dirección IP principal | Dirección IP secundaria |
 | --- | --- |--- |
@@ -95,18 +95,18 @@ En la tabla siguiente se enumeran las direcciones IP principales y secundarias d
 
 ## <a name="change-azure-sql-database-connection-policy"></a>Cambio de la directiva de conexión de Azure SQL Database
 
-Para cambiar la directiva de conexión de Azure SQL Database de un servidor de Azure SQL Database, use la [API de REST](https://msdn.microsoft.com/library/azure/mt604439.aspx). 
+Hola toochange directiva de conexión de base de datos de SQL Azure para un servidor de base de datos de SQL Azure, use hello [API de REST](https://msdn.microsoft.com/library/azure/mt604439.aspx). 
 
-- Si la directiva de conexión se establece en **Proxy**, todos los paquetes de red fluyen a través de la puerta de enlace de Azure SQL Database. Para esta configuración, debe permitir el tráfico saliente solo a la dirección IP de la puerta de enlace de Azure SQL Database. El uso de la configuración de **proxy** ofrece más latencia que la de **redireccionamiento**. 
-- Si la configuración de la directiva de conexión está basada en el **redireccionamiento**, todos los paquetes de red fluyen directamente al proxy del middleware. Para esta configuración, debe permitir el tráfico saliente a varias direcciones IP. 
+- Si la directiva de conexión se establece demasiado**Proxy**, todo el flujo de paquetes a través de puerta de enlace de base de datos de SQL Azure Hola de red. Para esta configuración, debe IP de puerta de enlace de tooallow tooonly saliente Hola base de datos de SQL Azure. El uso de la configuración de **proxy** ofrece más latencia que la de **redireccionamiento**. 
+- Si está configurando la directiva de conexión **redirigir**, todos los paquetes de red directamente fluyen toohello middleware proxy. Para esta configuración, debe tooallow saliente toomultiple direcciones IP. 
 
-## <a name="script-to-change-connection-settings"></a>Script para cambiar la configuración de la conexión
+## <a name="script-toochange-connection-settings"></a>Configuración de conexión de script toochange
 
 > [!IMPORTANT]
-> Este script requiere el [módulo Azure PowerShell](/powershell/azure/install-azurerm-ps).
+> Este script requiere hello [módulo Azure PowerShell](/powershell/azure/install-azurerm-ps).
 >
 
-El siguiente script de PowerShell muestra cómo cambiar la directiva de conexión.
+Hola siguiente script de PowerShell muestra cómo toochange Hola directiva de conexión.
 
 ```powershell
 import-module azureRm
@@ -130,10 +130,10 @@ $authHeader = @{
 'Authorization'=$result.CreateAuthorizationHeader()
 }
 
-#getting the current connection property
+#getting hello current connection property
 Invoke-RestMethod -Uri "https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Sql/servers/$serverName/connectionPolicies/Default?api-version=2014-04-01-preview" -Method GET -Headers $authHeader
 
-#setting the property to ‘Proxy’
+#setting hello property too‘Proxy’
 $connectionType=”Proxy” <#Redirect / Default are other options#>
 $body = @{properties=@{connectionType=$connectionType}} | ConvertTo-Json
 
@@ -142,6 +142,6 @@ Invoke-RestMethod -Uri "https://management.azure.com/subscriptions/$subscription
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-- Para obtener información sobre cómo cambiar la directiva de conexión de Azure SQL Database de un servidor de Azure SQL Database, vea [Creación o actualización de la directiva de conexión de un servidor mediante la API de REST](https://msdn.microsoft.com/library/azure/mt604439.aspx).
+- Para obtener información sobre cómo toochange Hola directiva de conexión de base de datos de SQL Azure para un servidor de base de datos de SQL Azure, consulte [Create o directiva de conexión del servidor de actualización utilizando Hola API de REST](https://msdn.microsoft.com/library/azure/mt604439.aspx).
 - Para obtener información sobre el comportamiento de conexión de Azure SQL Database para clientes que usan ADO.NET 4.5 o una versión posterior, vea [Puertos más allá de 1433 para ADO.NET 4.5](sql-database-develop-direct-route-ports-adonet-v12.md).
 - Para obtener información general sobre el desarrollo de aplicaciones, vea [Introducción al desarrollo de aplicaciones en SQL Database](sql-database-develop-overview.md).

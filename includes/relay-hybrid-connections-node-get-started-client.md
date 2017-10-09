@@ -2,13 +2,13 @@
 
 Cree un nuevo archivo JavaScript denominado `sender.js`.
 
-### <a name="add-the-relay-npm-package"></a>Adición del paquete Relay NPM
+### <a name="add-hello-relay-npm-package"></a>Agregar paquete de retransmisión NPM Hola
 
 Ejecute `npm install hyco-ws` desde un símbolo del sistema del nodo en la carpeta del proyecto.
 
-### <a name="write-some-code-to-send-messages"></a>Escritura de código para enviar mensajes
+### <a name="write-some-code-toosend-messages"></a>Escribir un cierto código toosend mensajes
 
-1. Agregue lo siguiente `constants` en la parte superior del archivo `sender.js`.
+1. Agregue los siguiente hello `constants` toohello arriba del programa Hola a `sender.js` archivo.
    
     ```js
     const WebSocket = require('hyco-ws');
@@ -18,14 +18,14 @@ Ejecute `npm install hyco-ws` desde un símbolo del sistema del nodo en la carpe
             output: process.stdout
         });;
     ```
-2. Agregue la siguientes constantes al archivo `sender.js` para los detalles de la conexión híbrida. Reemplace los marcadores de posición entre corchetes por los valores que obtuvo al crear la conexión híbrida.
+2. Agregar Hola siguientes constantes toohello `sender.js` en el archivo de conexión híbrida Hola. Reemplace los marcadores de posición de hello corchetes con valores de hello que obtuvo al crear conexión híbrida de Hola.
    
-   1. `const ns`: el espacio de nombres de Relay. Asegúrese de utilizar el nombre de espacio de nombres completo; por ejemplo, `{namespace}.servicebus.windows.net`.
-   2. `const path`: el nombre de la conexión híbrida.
-   3. `const keyrule`: el nombre de la clave SAS.
-   4. `const key`: el valor de la clave SAS.
+   1. `const ns`-Hola espacio de nombres de retransmisión. Ser nombre de espacio de nombres completo de hello toouse seguro; Por ejemplo, `{namespace}.servicebus.windows.net`.
+   2. `const path`-nombre de Hola de conexión híbrida de Hola.
+   3. `const keyrule`-nombre de Hola de clave SAS de Hola.
+   4. `const key`-Hola valor de clave de SAS.
 
-3. Agregue el siguiente código al archivo `sender.js`:
+3. Agregar Hola después código toohello `sender.js` archivo:
    
     ```js
     WebSocket.relayedConnect(

@@ -1,28 +1,28 @@
-Las preguntas más frecuentes sobre red virtual a red virtual se aplican a las conexiones VPN Gateway. Si busca información sobre el emparejamiento de redes virtuales, consulte [Emparejamiento de redes virtuales](../articles/virtual-network/virtual-network-peering-overview.md).
+Hola P+F de red virtual a red virtual aplica a las conexiones de puerta de enlace de tooVPN. Si busca información sobre el emparejamiento de redes virtuales, consulte [Emparejamiento de redes virtuales](../articles/virtual-network/virtual-network-peering-overview.md).
 
 ### <a name="does-azure-charge-for-traffic-between-vnets"></a>¿Cobra Azure por el tráfico entre redes virtuales?
 
-El tráfico entre redes virtuales dentro de la misma región es gratuito en ambas direcciones cuando se usa una conexión de puerta de enlace de VPN. El tráfico de salida de red virtual a red virtual entre regiones se cobra según las tarifas de transferencia de datos de salida entre redes virtuales en función de las regiones de origen. Para más información, consulte la [página de precios de VPN Gateway](https://azure.microsoft.com/pricing/details/vpn-gateway/). Si va a conectar sus redes virtuales mediante emparejamiento de VNet en lugar de VPN Gateway, consulte la [página de precios de Virtual Network](https://azure.microsoft.com/pricing/details/virtual-network/).
+Tráfico de red virtual a red virtual dentro de hello misma región es gratuita para ambas direcciones cuando se usa una conexión de puerta de enlace VPN. Entre la salida de la red virtual a red virtual de región tráfico se cobra con velocidades de transferencia de datos Hola entre redes virtuales saliente basándose en regiones de origen de Hola. Consulte toohello [página de precios de puerta de enlace de VPN](https://azure.microsoft.com/pricing/details/vpn-gateway/) para obtener más información. Si va a conectar sus redes virtuales mediante el intercambio de tráfico de red virtual, en lugar de puerta de enlace de VPN, consulte hello [página de precios de red Virtual](https://azure.microsoft.com/pricing/details/virtual-network/).
 
-### <a name="does-vnet-to-vnet-traffic-travel-across-the-internet"></a>¿Viaja el tráfico entre dos redes virtuales a través de Internet?
+### <a name="does-vnet-to-vnet-traffic-travel-across-hello-internet"></a>¿Tráfico de red virtual a red virtual que se transmiten a través de hello Internet?
 
-No. Viaja por la red troncal de Microsoft Azure, no por Internet.
+No. Tráfico de red virtual a red virtual pasa a través de la red troncal de Microsoft Azure, Internet y no Hola Hola.
 
 ### <a name="is-vnet-to-vnet-traffic-secure"></a>¿Es seguro el tráfico entre dos redes virtuales?
 
 Sí, se protege mediante cifrado IPsec/IKE.
 
-### <a name="do-i-need-a-vpn-device-to-connect-vnets-together"></a>¿Necesito un dispositivo VPN para conectar redes virtuales?
+### <a name="do-i-need-a-vpn-device-tooconnect-vnets-together"></a>¿Es necesario un tooconnect de dispositivo VPN redes virtuales entre sí?
 
 No. La conexión simultánea de varias redes virtuales de Azure no requiere dispositivos VPN, a menos que sea necesaria la conectividad entre locales.
 
-### <a name="do-my-vnets-need-to-be-in-the-same-region"></a>¿Deben estar mis redes virtuales en la misma región?
+### <a name="do-my-vnets-need-toobe-in-hello-same-region"></a>¿Mis redes virtuales necesita toobe Hola misma región?
 
-No. Las redes virtuales pueden estar en la misma región de Azure o en regiones distintas (ubicaciones).
+No. redes virtuales de Hello pueden estar en hello mismo o en distintas regiones Azure (ubicaciones).
 
-### <a name="if-the-vnets-are-not-in-the-same-subscription-do-the-subscriptions-need-to-be-associated-with-the-same-ad-tenant"></a>Si las redes virtuales no están en la misma suscripción, ¿las suscripciones tienen que estar asociadas con el mismo inquilino de AD?
+### <a name="if-hello-vnets-are-not-in-hello-same-subscription-do-hello-subscriptions-need-toobe-associated-with-hello-same-ad-tenant"></a>¿Si no está en redes virtuales Hola Hola mismo suscripciones, las suscripciones de hello necesitan toobe asociado Hola AD mismo inquilino?
 
-Nº
+No.
 
 ### <a name="can-i-use-vnet-to-vnet-along-with-multi-site-connections"></a>¿Puedo usar las conexiones entre dos redes virtuales con conexiones multisitio?
 
@@ -32,7 +32,7 @@ Sí. La conectividad de red virtual se puede usar de forma simultánea con VPN d
 
 Consulte la tabla [Requisitos de la puerta de enlace](../articles/vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#requirements).
 
-### <a name="can-i-use-vnet-to-vnet-to-connect-vms-or-cloud-services-outside-of-a-vnet"></a>¿Puedo usar la conexión entre dos redes virtuales para conectar máquinas virtuales o servicios en la nube fuera de una red virtual?
+### <a name="can-i-use-vnet-to-vnet-tooconnect-vms-or-cloud-services-outside-of-a-vnet"></a>¿Puedo usar red virtual a red virtual tooconnect máquinas virtuales o servicios fuera de una red virtual en la nube?
 
 No. VNet a VNet admite la conexión de redes virtuales. No admite la conexión de máquinas virtuales ni servicios en la nube que no estén en una red virtual.
 
@@ -44,13 +44,13 @@ No. Un servicio en la nube o un punto de conexión de equilibrio de carga no pue
 
 No. Las conexiones entre dos redes virtuales y multisitio requieren puertas de enlace de VPN de Azure con tipos de VPN RouteBased (antes denominado enrutamiento dinámico).
 
-### <a name="can-i-connect-a-vnet-with-a-routebased-vpn-type-to-another-vnet-with-a-policybased-vpn-type"></a>¿Puedo conectar una red virtual con un tipo de VPN RouteBased a otra red virtual con un tipo de VPN PolicyBased?
+### <a name="can-i-connect-a-vnet-with-a-routebased-vpn-type-tooanother-vnet-with-a-policybased-vpn-type"></a>¿Puedo conectar una red virtual con una red virtual de tipo de VPN del tipo routebased tooanother con un tipo de PolicyBased VPN?
 
 No, ambas redes virtuales TIENEN QUE usar VPN basadas en enrutamiento (antes denominado enrutamiento dinámico).
 
 ### <a name="do-vpn-tunnels-share-bandwidth"></a>¿Comparten ancho de banda los túneles de VPN?
 
-Sí. Todos los túneles de VPN de la red virtual comparten el ancho de banda disponible en la puerta de enlace de VPN de Azure y el mismo SLA de tiempo de actividad de puerta de enlace de VPN en Azure.
+Sí. Todos los túneles VPN de red virtual de hello comparten el ancho de banda disponible de hello en puerta de enlace de VPN de Azure de Hola y Hola mismo SLA de tiempo de actividad de puerta de enlace VPN en Azure.
 
 ### <a name="are-redundant-tunnels-supported"></a>¿Se admiten túneles redundantes?
 

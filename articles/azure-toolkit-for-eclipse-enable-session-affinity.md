@@ -1,6 +1,6 @@
 ---
-title: "Habilitar la afinidad de la sesión con el kit de herramientas de Azure para Eclipse"
-description: "Averigüe cómo habilitar la afinidad de sesión con el kit de herramientas de Azure para Eclipse."
+title: "uso de afinidad de la sesión de aaaEnable Hola Kit de herramientas de Azure para Eclipse"
+description: "Obtenga información acerca de cómo tooenable sesión afinidad con hello Azure Toolkit for Eclipse."
 services: 
 documentationcenter: java
 author: rmcmurray
@@ -14,40 +14,40 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: robmcm
-ms.openlocfilehash: ab8623d6f9751ed6d71d9a5b1c0d5e939c442862
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 523e728c58bda95e7af4b242e831694eb6d75cb6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="enable-session-affinity"></a>Habilitar la afinidad de la sesión
-En el Kit de herramientas de Azure para Eclipse, puede habilitar la afinidad de la sesión HTTP o "sesiones permanentes", para sus roles. En la siguiente imagen se muestra el cuadro de diálogo de propiedades **Equilibrio de carga** que se us para habilitar la característica de afinidad de sesión:
+Dentro de hello Azure Toolkit for Eclipse, puede habilitar afinidad de la sesión HTTP, o "sesiones permanentes", para sus roles. Hello siguiente imagen muestra hello **equilibrio de carga** la característica de afinidad de la sesión propiedades diálogo utiliza tooenable hello:
 
 ![][ic719492]
 
-## <a name="to-enable-session-affinity-for-your-role"></a>Para habilitar la afinidad de sesión para su rol
-1. Haga clic con el botón secundario en el rol en el Explorador de proyectos de Eclipse, haga clic en **Azure** y, luego, en **Load Balancing** (Equilibrio de carga).
+## <a name="tooenable-session-affinity-for-your-role"></a>afinidad de la sesión de tooenable para el rol
+1. Haga clic en función de hello en el Explorador de proyectos de Eclipse, haga clic en **Azure**y, a continuación, haga clic en **equilibrio de carga**.
 
-2. En el cuadro de diálogo **Propiedades del equilibrio de carga de WorkerRole1** :
+2. Hola **propiedades de equilibrio de carga de WorkerRole1** cuadro de diálogo:
 
    a. Active **Habilitar afinidad de sesión HTTP (sesiones permanentes) para este rol**
 
-   b. Para **Input endpoint to use** (Punto de conexión de entrada que se va a usar), seleccione un punto de conexión de entrada que se usará, por ejemplo, **http (public:80, private:8080)**. Su aplicación debe usar este punto de conexión como su punto de conexión HTTP. Puede habilitar varios puntos de conexión para su rol, pero solo puede seleccionar uno de ellos para admitir sesiones permanentes.
+   b. Para **toouse de extremo de entrada**, seleccione un extremo de entrada toouse, por ejemplo, **http (público: 80, private: 8080)**. Su aplicación debe usar este punto de conexión como su punto de conexión HTTP. Puede habilitar varios puntos de conexión para el rol, pero puede seleccionar solo una de ellas toosupport sesiones permanentes.
 
    c. Vuelva a compilar la aplicación.
 
-Una vez habilitada, si tiene más de una instancia de rol, las solicitudes HTTP procedentes de un cliente concreto seguirán controlándose por la misma instancia de rol.
+Una vez habilitada, si tiene más de una instancia de rol, las solicitudes HTTP procedentes de un cliente en particular seguirán estando controladas por hello misma instancia de rol.
 
-El Kit de herramientas de Eclipse permite esto al instalar un módulo IIS especial llamado enrutamiento de solicitudes de aplicaciones (ARR) en cada una de sus instancias de rol. ARR vuelve a enrutar las solicitudes HTTP para la instancia de rol adecuada. El kit de herramientas vuelve a configurar automáticamente el punto de conexión seleccionado de manera que el tráfico HTTP entrante se enruta primero al software de ARR. El kit de herramientas también crea un nuevo punto de conexión interno al que está configurado el servidor Java para escuchar. Ese es el punto de conexión usado por ARR para volver a enrutar el tráfico HTTP a la instancia de rol adecuada. De este modo, cada instancia de rol de su implementación de varias instancias actúa como proxy inverso para todas las demás instancias, lo que permite sesiones permanentes.
+Hola Kit de herramientas Eclipse hace esto posible mediante la instalación de un módulo IIS especial llamado enrutamiento de solicitud de aplicaciones (ARR) en cada una de las instancias del rol. ARR vuelve a enrutar instancia de rol correspondiente de toohello de las solicitudes HTTP. Kit de herramientas de Hello vuelve a configurar automáticamente el punto de conexión de hello seleccionado para que el tráfico HTTP entrante hello es el primer software ARR de toohello enrutado. Kit de herramientas de Hello también crea un nuevo extremo interno que se toolisten configurado para el servidor de Java. Que es el punto de conexión de hello utilizado por ARR tooreroute Hola HTTP tráfico toohello rol correspondiente instancia. De esta manera, cada instancia de rol en la implementación de varias instancias actúa como un proxy inverso para todos los Hola otras instancias, lo que permite sesiones permanentes.
 
 ## <a name="notes-about-session-affinity"></a>Notas sobre la afinidad de sesión
-* La afinidad de sesión no funciona en el emulador de proceso. La configuración se puede aplicar en el emulador de proceso sin interferir con su proceso de compilación o ejecución del emulador de proceso, pero la propia característica no funciona en el emulador de proceso.
+* Afinidad de la sesión no funciona en el emulador de proceso de Hola. configuración de Hola se puede aplicar en el emulador de proceso de hello sin interferir con el proceso de compilación o ejecución de emulador de proceso, pero propia característica hello no funciona en el emulador de proceso de Hola.
 
-* Al habilitar la afinidad de sesión aumentará la cantidad del espacio de disco usado por la implementación en Azure, puesto que se descargará software adicional y se instalará en sus instancias de rol cuando se inicie su servicio en la nube de Azure.
+* Al habilitar la afinidad de sesión dará como resultado un aumento en la cantidad de Hola de espacio en disco utilizado por la implementación en Azure, tal y como se descargarse e instalarse en las instancias del rol cuando se inicia el servicio en nube de Azure Hola software adicional.
 
-* El tiempo para inicializar cada rol será superior.
+* Hola tiempo tooinitialize cada rol tardará más tiempo.
 
-* Se agregará un punto de conexión interno para que funcione como enrutador de tráfico, como se ha mencionado anteriormente.
+* Un extremo interno, toofunction como un nuevo tráfico como se mencionó anteriormente, se agregarán.
 
 
 ## <a name="see-also"></a>Otras referencias
@@ -55,17 +55,17 @@ El Kit de herramientas de Eclipse permite esto al instalar un módulo IIS especi
 
 [Creación de una aplicación Hola a todos para Azure en Eclipse][Creating a Hello World Application for Azure in Eclipse]
 
-[Instalación del Kit de herramientas de Azure para Eclipse][Installing the Azure Toolkit for Eclipse] 
+[Instalar hello Azure Toolkit for Eclipse][Installing hello Azure Toolkit for Eclipse] 
 
-Para obtener más información sobre el uso de Azure con Java, vea el [Centro para desarrolladores de Java de Azure][Azure Java Developer Center].
+Para obtener más información acerca del uso de Azure con Java, vea hello [Centro para desarrolladores de Java de Azure][Azure Java Developer Center].
 
 <!-- URL List -->
 
 [Azure Java Developer Center]: http://go.microsoft.com/fwlink/?LinkID=699547
 [Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699529
 [Creating a Hello World Application for Azure in Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699533
-[How to Maintain Session Data with Session Affinity]: http://go.microsoft.com/fwlink/?LinkID=699539
-[Installing the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
+[How tooMaintain Session Data with Session Affinity]: http://go.microsoft.com/fwlink/?LinkID=699539
+[Installing hello Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
 
 <!-- IMG List -->
 

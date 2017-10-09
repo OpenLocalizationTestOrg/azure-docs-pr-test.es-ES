@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric en Linux | Microsoft Docs
-description: "Los clústeres de Service Fabric admiten Linux y Java, lo que significa que podrá implementar y hospedar aplicaciones de Service Fabric escritas en Java y C# para Linux."
+title: aaaAzure Service Fabric en Linux | Documentos de Microsoft
+description: "Los clústeres de Service Fabric admiten Linux y Java, lo que significa que sea capaz de toodeploy y aplicaciones de Service Fabric host escritas en Java y C# en Linux."
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -14,36 +14,36 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: SubramaR
-ms.openlocfilehash: dddc9f698d9776999d406117b46285a0f90d9620
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: ca0e092b00faec560963c0d6cc379593d085f6a8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="service-fabric-on-linux"></a>Service Fabric en Azure
-La versión preliminar de Service Fabric en Linux permite compilar, implementar y administrar aplicaciones de alta disponibilidad y escalabilidad en ese entorno de la misma forma que en Windows. Los marcos de Service Fabric (Reliable Services y Reliable Actors) se encuentran disponibles en Java en Linux, además de en C# (.NET Core).  Puede compilar igualmente [servicios ejecutables invitados](service-fabric-deploy-existing-app.md) con cualquier lenguaje o marco. Además, la vista previa también admite contenedores de Docker de organización. Los contenedores de Docker pueden ejecutar archivos ejecutables invitados o servicios de Service Fabric nativos que utilizan los marcos de Service Fabric.
+vista previa de Hola de Service Fabric en Linux permite toobuild, implementar y administrar las aplicaciones de alta disponibilidad, altamente escalables en Linux tal como haría en Windows. los marcos de trabajo de Service Fabric de Hello (servicios de confianza y actores confiable) están disponibles en Java en Linux en suma tooC # (.NET Core).  Puede compilar igualmente [servicios ejecutables invitados](service-fabric-deploy-existing-app.md) con cualquier lenguaje o marco. Además, vista previa de hello también admite la organización de los contenedores de Docker. Contenedores de docker pueden ejecutar archivos ejecutables de invitado o servicios de Service Fabric nativos, que utilizan los marcos de trabajo de Service Fabric Hola.
 
-Service Fabric en Linux es conceptualmente equivalente a Service Fabric en Windows (excepto las características del sistema operativo y la compatibilidad con lenguajes de programación). Por lo tanto, la mayoría de nuestra [documentación actual](http://aka.ms/servicefabricdocs) tiene como objetivo ayudarlo a familiarizarse con la tecnología.
+Service Fabric en Linux es conceptualmente equivalente tooService Fabric en Windows (excepto para obtener información específica del sistema operativo y la compatibilidad con lenguajes de programación). Por lo tanto, la mayoría de nuestras [documentación existente](http://aka.ms/servicefabricdocs) se aplica en ayudar a familiarizarse con la tecnología de Hola.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Service-Fabric-Linux-Preview/player]
 >
 >
 
 ## <a name="supported-operating-systems-and-programming-languages"></a>Sistemas operativos y lenguajes de programación compatibles
-La versión preliminar limitada admite la creación de clústeres de desarrollo one-box, así como clústeres de varias máquinas en Azure con Ubuntu Server 16.04. La vista previa es compatible con los marcos de Reliable Actors y Reliable Stateless Services en Java y C#, además de los archivos ejecutables invitados y los contenedores de Docker de organización.  
+Hola limitado preview admite Hola la creación de desarrollo de un solo cuadro además clústeres clústeres de máquina toomulti en Azure ejecutando Ubuntu Server 16.04. admite la vista previa Hola Hola Reliable Actors y Hola marcos de trabajo de servicios sin estado confiables en Java y C# en los archivos ejecutables de suma tooguest y orquestar contenedores de Docker.  
 
 > [!NOTE]
-> Reliable Collections aún no es compatible con Linux. No son compatibles tampoco los clústeres independientes: solo se admiten clústeres one box y de varios equipos de Linux de Azure en la vista previa.
+> Reliable Collections aún no es compatible con Linux. No se admiten clústeres solo stand-sólo un cuadro y clústeres de varios equipos de Linux de Azure se admiten en la vista previa de Hola.
 >
 >
 
 
 ## <a name="supported-tooling"></a>Herramientas compatibles
-La versión preliminar admite la interacción con el clúster a través de la CLI de Service Fabric. Para los desarrolladores de Java, se proporciona integración con Eclipse y Yeoman mediante compatibilidad de Eclipse en Linux y OSX. La integración de OSX utiliza una máquina virtual de Linux de forma interna mediante vagrant. Para los desarrolladores de C#, se proporciona integración con Yeoman para generar plantillas de aplicación.
+vista previa de Hello admite la interacción con el clúster de Hola a través de la CLI de tejido de servicio. Para los desarrolladores de Java, se proporciona integración con Eclipse y Yeoman mediante compatibilidad de Eclipse en Linux y OSX. Hola integración OSX utiliza una VM Linux bajo el paraguas de Hola a través de vagrant. Para los desarrolladores de C#, la integración con Yeoman se proporciona plantillas de aplicación toogenerate.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-* Familiarícese con los marcos de programación de [Reliable Actors](service-fabric-reliable-actors-introduction.md) y [Reliable Services](service-fabric-reliable-services-introduction.md)
+* Familiarizarse con hello [Reliable Actors](service-fabric-reliable-actors-introduction.md) y [servicios confiables](service-fabric-reliable-services-introduction.md) marcos de trabajo de programación
 * [Prepare your development environment on Linux](service-fabric-get-started-linux.md)
 * [Prepare your development environment on OSX](service-fabric-get-started-mac.md)
 * [Create your first Service Fabric Java application on Linux](service-fabric-create-your-first-linux-application-with-java.md)

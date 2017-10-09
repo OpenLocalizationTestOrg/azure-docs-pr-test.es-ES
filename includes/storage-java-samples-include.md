@@ -1,6 +1,6 @@
 ## <a name="java-sample-code-repositories"></a>Repositorios de código de ejemplo de Java
 
-Esta es una lista de todos nuestros repositorios de ejemplo para la biblioteca de cliente de Azure Storage para Java.
+Esta es una lista de todos los repositorios de nuestro ejemplo para la biblioteca de cliente de hello Java de almacenamiento de Azure.
 
 * [Getting Started with Storage - Manage Storage Account in Java](https://azure.microsoft.com/resources/samples/storage-java-manage-storage-accounts/) (Introducción a Storage: administración de una cuenta de almacenamiento en Java)
 * [Getting Started with Azure Blob Service in Java](https://azure.microsoft.com/resources/samples/storage-blob-java-getting-started/) (Introducción a Blob service de Azure en Java)

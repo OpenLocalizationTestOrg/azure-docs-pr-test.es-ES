@@ -1,5 +1,5 @@
 ---
-title: Azure Batch Analytics | Microsoft Docs
+title: "aaaAzure análisis por lotes | Documentos de Microsoft"
 description: Referencia de Azure Batch Analytics.
 services: batch
 author: tamram
@@ -12,20 +12,20 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: tamram
-ms.openlocfilehash: 7d634e1bb595a84b8af339e5bc5a483a7849e7f7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 462fbad1ac522b485ae18c1e8891b9d2cabd45e0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="batch-analytics"></a>Análisis por lotes
-Los temas de análisis por lotes contienen información de referencia para los eventos y las alertas disponibles para los recursos del servicio de Batch.
+temas de Hello en el análisis por lotes contienen información de referencia de eventos de Hola y alertas disponibles para los recursos del servicio por lotes.
 
 Vea [Registro de diagnóstico de Azure Batch](https://azure.microsoft.com/documentation/articles/batch-diagnostics/) para obtener más información sobre cómo habilitar y consumir los registros de diagnóstico por lotes.
 
 ## <a name="diagnostic-logs"></a>Registros de diagnóstico
 
-El servicio de Azure Batch genera los siguientes eventos de registro de diagnóstico mientras duren determinados recursos de Batch.
+Hola servicio Azure Batch emite Hola después de los eventos de registro de diagnóstico durante la duración de Hola de determinados recursos de proceso por lotes.
 
 **Eventos del registro del servicio**
 * [Creación del grupo](batch-pool-create-event.md)

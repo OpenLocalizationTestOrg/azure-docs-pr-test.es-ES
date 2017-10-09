@@ -3,15 +3,15 @@
 > * [Dispositivo: Servicio Node.js: C#](../articles/iot-hub/iot-hub-csharp-node-device-management-get-started.md)
 > * [Dispositivo: Servicio de Java: Java](../articles/iot-hub/iot-hub-java-java-device-management-getstarted.md)
 
-Las aplicaciones back-end pueden usar primitivos de Azure IoT Hub, por ejemplo, [dispositivos gemelos][lnk-devtwin] y [métodos directos][lnk-c2dmethod], para iniciar y supervisar de forma remota las acciones de administración de dispositivos en los dispositivos. Este tutorial muestra cómo una aplicación back-end y un dispositivo pueden trabajar juntos para iniciar y supervisar el reinicio remoto de un dispositivo mediante IoT Hub.
+Aplicaciones de back-end pueden usar como tipos primitivos de centro de IoT de Azure, [gemelas dispositivo] [ lnk-devtwin] y [dirigir métodos][lnk-c2dmethod], tooremotely iniciar y supervisar acciones de administración de dispositivos en los dispositivos. Este tutorial muestra cómo una aplicación back-end y una aplicación de dispositivo pueden funcionar en conjunto tooinitiate y supervisar un reinicio del dispositivo remoto con el centro de IoT.
 
-Use un método directo para iniciar acciones de administración de dispositivos (por ejemplo, reinicio, restablecimiento de fábrica y actualización de firmware) desde una aplicación back-end en la nube. El dispositivo es responsable de:
+Utilice una acciones de administración de dispositivos de tooinitiate método directo (por ejemplo, reiniciar, restablecimiento de fábrica y actualización de firmware) desde una aplicación de back-end en la nube de Hola. dispositivo de Hello es responsable de:
 
-* Controlar la solicitud del método enviada desde IoT Hub.
-* Iniciar la acción específica del dispositivo correspondiente en el dispositivo.
-* Proporcionar actualizaciones de estado mediante las *propiedades notificadas* a IoT Hub.
+* Control de solicitud del método hello enviado desde el centro de IoT.
+* Iniciar acción específico del dispositivo correspondiente de hello en dispositivo Hola.
+* Proporcionar actualizaciones de estado a través de *notificado propiedades* tooIoT concentrador.
 
-Puede usar una aplicación de back-end en la nube para ejecutar consultas de dispositivos gemelos para informar sobre el progreso de las acciones de administración de los dispositivos.
+Puede usar una aplicación de back-end en hello en la nube toorun dispositivo gemelas consultas tooreport en curso de Hola de las acciones de administración de dispositivos.
 
 [lnk-devtwin]: ../articles/iot-hub/iot-hub-devguide-device-twins.md
 [lnk-c2dmethod]: ../articles/iot-hub/iot-hub-devguide-direct-methods.md

@@ -1,7 +1,7 @@
 ## <a name="scenario"></a>Escenario
-Para ilustrar mejor cómo configurar una dirección IP estática para una VM, en este documento se utilizará el siguiente escenario.
+toobetter ilustran cómo tooconfigure una dirección IP estática para una máquina virtual, este documento utilizará escenario hello más adelante.
 
 ![Escenario de red virtual](./media/virtual-networks-static-ip-scenario-include/static-ip-scenario.png)
 
-En este escenario creará una VM denominada **DNS01** en la subred **FrontEnd** y la configurará para usar una dirección IP estática de **192.168.1.101**.
+En este escenario creará una máquina virtual denominada **DNS01** en hello **front-end** subred y ha configurado una dirección IP estática de toouse de **192.168.1.101**.
 

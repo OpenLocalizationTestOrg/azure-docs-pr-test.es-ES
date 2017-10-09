@@ -1,6 +1,6 @@
 ---
-title: Uso del coordinador de Oozie de Hadoop basado en tiempo en HDInsight | Microsoft Docs
-description: "Uso del coordinador de Oozie de Hadoop basado en tiempo en HDInsight, un servicio de big data. Aprenda a definir flujos de trabajo y coordinadores de Oozie y envíe trabajos."
+title: Coordinador basado en tiempo de Hadoop Oozie de aaaUse en HDInsight | Documentos de Microsoft
+description: "Uso del coordinador de Oozie de Hadoop basado en tiempo en HDInsight, un servicio de big data. Obtenga información acerca de cómo toodefine Oozie flujos de trabajo y coordinadores de y enviar trabajos."
 services: hdinsight
 documentationcenter: 
 tags: azure-portal
@@ -16,35 +16,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
-ms.openlocfilehash: 600a70c74a16e2601a874f804ac2e8382c8bfa90
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: aecbb5ee94a4234d1a7768bdb6de2a33508b1e4c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-time-based-oozie-coordinator-with-hadoop-in-hdinsight-to-define-workflows-and-coordinate-jobs"></a>Uso del coordinador de Oozie basado en tiempo con Hadoop en HDInsight para definir flujos de trabajo y coordinar trabajos
-En este artículo, obtenga información sobre cómo definir los flujos de trabajo y los coordinadores, así como el modo de desencadenar los trabajos del coordinador basados en el tiempo. Le resultará útil repasar el artículo [Uso de Oozie con HDInsight][hdinsight-use-oozie] antes de leer este artículo. Además de con Oozie, también puede programar trabajos usando Data Factory de Azure. Para obtener información sobre la factoría de datos de Azure, consulte [Uso de Pig y Hive con la factoría de datos](../data-factory/data-factory-data-transformation-activities.md).
+# <a name="use-time-based-oozie-coordinator-with-hadoop-in-hdinsight-toodefine-workflows-and-coordinate-jobs"></a>Usar coordinador basado en tiempo de Oozie con Hadoop en flujos de trabajo de HDInsight toodefine y coordinar los trabajos
+En este artículo, aprenderá cómo toodefine flujos de trabajo y los coordinadores, y cómo tootrigger Hola trabajos de coordinador, según el tiempo. Resulta útil toogo a través de [Oozie de uso con HDInsight] [ hdinsight-use-oozie] antes de leer este artículo. Además tooOozie, también puede programar trabajos mediante Data Factory de Azure. toolearn Data Factory de Azure, consulte [uso de Pig y Hive con factoría de datos](../data-factory/data-factory-data-transformation-activities.md).
 
 > [!NOTE]
-> En este artículo se requiere un clúster de HDInsight basado en Windows. Para obtener información sobre el uso de Oozie, incluidos los trabajos basados en tiempo, en un clúster basado en Linux, consulte [Uso de Oozie con Hadoop para definir y ejecutar un flujo de trabajo en HDInsight basado en Linux](hdinsight-use-oozie-linux-mac.md)
+> En este artículo se requiere un clúster de HDInsight basado en Windows. Para obtener información sobre el uso de Oozie, incluidas las tareas basadas en tiempo, en un clúster basado en Linux, consulte [Oozie de uso con Hadoop toodefine y ejecutar un flujo de trabajo de HDInsight basados en Linux](hdinsight-use-oozie-linux-mac.md)
 
 ## <a name="what-is-oozie"></a>¿Qué es Oozie?
-Oozie de Apache es un sistema de coordinación o flujo de trabajo que administra trabajos de Hadoop. Se integra con la pila de Hadoop y es compatible con los trabajos de Hadoop para MapReduce, Pig, Hive y Sqoop de Apache. También puede usarse para programar trabajos específicos de un sistema, como scripts de shell o programas Java.
+Oozie de Apache es un sistema de coordinación o flujo de trabajo que administra trabajos de Hadoop. Se integra con la pila de Hadoop de Hola y admite trabajos de Hadoop MapReduce Apache, Pig Apache, Apache Hive y Sqoop de Apache. También puede ser tooschedule usado trabajos que el sistema tooa específico, como programas Java o secuencias de comandos de shell.
 
-En la siguiente imagen se muestra el flujo de trabajo que se va a implementar:
+Hello siguiente imagen muestra flujo de trabajo de hello que implementará:
 
 ![Diagrama de flujo de trabajo][img-workflow-diagram]
 
-El flujo de trabajo contiene dos acciones:
+flujo de trabajo de Hello contiene dos acciones:
 
-1. Una acción de Hive ejecuta un script de HiveQL para contar las apariciones de cada tipo de nivel de registro en un archivo de registro log4j. Cada registro log4j consta de una línea de campos que contiene uno llamado [LOG LEVEL] que muestra el tipo y la gravedad, por ejemplo:
+1. Una acción de subárbol ejecuta un hello toocount de script de HiveQL apariciones de cada tipo de nivel de registro en un archivo de registro log4j. Cada registro log4j consta de una línea de campos que contenga una [nivel de registro] campo tooshow Hola hello y tipo de gravedad, por ejemplo:
 
         2012-02-03 18:35:34 SampleClass6 [INFO] everything normal for id 577725851
         2012-02-03 18:35:34 SampleClass4 [FATAL] system problem at id 1991281254
         2012-02-03 18:35:34 SampleClass3 [DEBUG] detail for id 1304807656
         ...
 
-    El resultado del script de Hive será parecido al siguiente:
+    es similar a la salida del script de Hive Hola:
 
         [DEBUG] 434
         [ERROR] 3
@@ -54,86 +54,86 @@ El flujo de trabajo contiene dos acciones:
         [WARN]  4
 
     Para más información sobre Hive, consulte [Uso de Hive con HDInsight][hdinsight-use-hive].
-2. Una acción de Sqoop exporta el resultado de la acción de HiveQL a una tabla en una base de datos SQL de Azure. Para obtener más información sobre Sqoop, consulte [Uso de Sqoop con HDInsight][hdinsight-use-sqoop].
+2. Una acción de Sqoop exporta hello HiveQL acción salida tooa tabla en una base de datos de SQL Azure. Para obtener más información sobre Sqoop, consulte [Uso de Sqoop con HDInsight][hdinsight-use-sqoop].
 
 > [!NOTE]
-> Para ver las versiones de Oozie compatibles en los clústeres de HDInsight, consulte [Novedades en las versiones de clústeres proporcionadas por HDInsight][hdinsight-versions].
+> Para versiones compatibles de Oozie en clústeres de HDInsight, vea [cuáles son las novedades en las versiones de clúster Hola proporcionadas por HDInsight?] [hdinsight-versions].
 >
 >
 
 ## <a name="prerequisites"></a>Requisitos previos
-Antes de empezar este tutorial, debe contar con lo siguiente:
+Antes de comenzar este tutorial, debe tener el siguiente hello:
 
 * **Una estación de trabajo con Azure PowerShell**.
 
     > [!IMPORTANT]
-    > La compatibilidad con Azure PowerShell para administrar recursos de HDInsight mediante Azure Service Manager está **en desuso** y desaparecerá por completo el 1 de enero de 2017. En los pasos descritos en este documento, se usan los nuevos cmdlets de HDInsight que funcionan con Azure Resource Manager.
+    > La compatibilidad con Azure PowerShell para administrar recursos de HDInsight mediante Azure Service Manager está **en desuso** y desaparecerá por completo el 1 de enero de 2017. Hola pasos de este documento use Hola nuevos cmdlets de HDInsight que funcionan con el Administrador de recursos de Azure.
     >
-    > Para instalar la versión más reciente, siga los pasos descritos en [Cómo instalar y configurar Azure PowerShell](/powershell/azureps-cmdlets-docs) . Si tiene scripts que se deben modificar para usar los nuevos cmdlets que funcionan con Azure Resource Manager, consulte [Migrating to Azure Resource Manager-based development tools for HDInsight clusters](hdinsight-hadoop-development-using-azure-resource-manager.md) (Migración a herramientas de desarrollo basadas en Azure Resource Manager para clústeres de HDInsight) para más información.
+    > Siga los pasos de hello en [instalar y configurar Azure PowerShell](/powershell/azureps-cmdlets-docs) versión más reciente de hello tooinstall de PowerShell de Azure. Si tiene scripts de ese toobe necesidad de modifica toouse Hola nuevos cmdlets que funcionan con el Administrador de recursos de Azure, consulte [tooAzure desarrollo basado en el Administrador de recursos de migración de las herramientas de clústeres de HDInsight](hdinsight-hadoop-development-using-azure-resource-manager.md) para obtener más información.
 
-* **Un clúster de HDInsight**. Para obtener más información sobre cómo crear un clúster de HDInsight, consulte [Creación de clústeres de Hadoop basados en Windows en HDInsight][hdinsight-provision] o [Tutorial de Hadoop: Introducción al uso de Hadoop en HDInsight basado en Linux][hdinsight-get-started]. Para completar el tutorial, necesitará los datos siguientes:
+* **Un clúster de HDInsight**. Para obtener más información sobre cómo crear un clúster de HDInsight, consulte [Creación de clústeres de Hadoop basados en Windows en HDInsight][hdinsight-provision] o [Tutorial de Hadoop: Introducción al uso de Hadoop en HDInsight basado en Linux][hdinsight-get-started]. Necesitará Hola después toogo datos tutorial Hola:
 
     <table border = "1">
     <tr><th>Propiedad del clúster</th><th>Nombre de variable de Windows PowerShell</th><th>Valor</th><th>Description</th></tr>
-    <tr><td>Nombre del clúster de HDInsight</td><td>$clusterName</td><td></td><td>El clúster de HDInsight al que aplicará este tutorial.</td></tr>
-    <tr><td>Nombre de usuario del clúster de HDInsight</td><td>$clusterUsername</td><td></td><td>El nombre del usuario del clúster de HDInsight. </td></tr>
-    <tr><td>Contraseña del usuario del clúster de HDInsight </td><td>$clusterPassword</td><td></td><td>La contraseña de usuario del clúster de HDInsight.</td></tr>
-    <tr><td>Nombre de la cuenta de almacenamiento de Azure</td><td>$storageAccountName</td><td></td><td>Cuenta de almacenamiento de Azure disponible para el clúster de HDInsight. Para este tutorial, use la cuenta de almacenamiento predeterminada especificada durante el proceso de aprovisionamiento del clúster.</td></tr>
-    <tr><td>Nombre del contenedor de blobs de Azure</td><td>$containerName</td><td></td><td>Para este ejemplo, use el contenedor de almacenamiento de blobs de Azure que se usa para el sistema de archivos predeterminado del clúster de HDInsight. De manera predeterminada, tiene el mismo nombre que el del clúster de HDInsight.</td></tr>
+    <tr><td>Nombre del clúster de HDInsight</td><td>$clusterName</td><td></td><td>clúster de HDInsight de Hello en el que se ejecutará este tutorial.</td></tr>
+    <tr><td>Nombre de usuario del clúster de HDInsight</td><td>$clusterUsername</td><td></td><td>nombre de usuario de clúster de HDInsight Hola. </td></tr>
+    <tr><td>Contraseña del usuario del clúster de HDInsight </td><td>$clusterPassword</td><td></td><td>contraseña de usuario de clúster de HDInsight Hola.</td></tr>
+    <tr><td>Nombre de la cuenta de almacenamiento de Azure</td><td>$storageAccountName</td><td></td><td>Un clúster de HDInsight toohello disponibles de cuenta de almacenamiento de Azure. Para este tutorial, utilice cuenta de almacenamiento predeterminada de Hola que haya especificado durante el proceso de aprovisionamiento de clúster de Hola.</td></tr>
+    <tr><td>Nombre del contenedor de blobs de Azure</td><td>$containerName</td><td></td><td>En este ejemplo, utilice el contenedor de almacenamiento de blobs de Azure de Hola que se usa para el sistema de archivos de clúster de HDInsight de hello predeterminado. De manera predeterminada, tiene Hola mismo nombre como clúster de HDInsight Hola.</td></tr>
     </table>
-* **Una base de datos SQL de Azure**. Debe configurar una regla de firewall para que el servidor de Base de datos SQL permita el acceso desde la estación de trabajo. Para obtener instrucciones sobre cómo crear una base de datos de Azure SQL y configurar el firewall, consulte [Introducción al uso de Azure SQL Database][sqldatabase-get-started]. En este artículo se proporciona un script de Windows PowerShell para crear la tabla de base de datos SQL de Azure requerida para este tutorial.
+* **Una base de datos SQL de Azure**. Debe configurar una regla de firewall para hello tooallow acceso de base de datos de SQL server desde la estación de trabajo. Para obtener instrucciones sobre cómo crear una base de datos de SQL Azure y cómo configurar firewall de hello, consulte [empezar a usar la base de datos de SQL Azure] [sqldatabase get-iniciado]. En este artículo se proporciona un script de Windows PowerShell para crear la tabla de base de datos de SQL Azure Hola que necesite para este tutorial.
 
     <table border = "1">
     <tr><th>Propiedad de la base de datos SQL</th><th>Nombre de variable de Windows PowerShell</th><th>Valor</th><th>Description</th></tr>
-    <tr><td>Nombre del servidor de base de datos SQL</td><td>$sqlDatabaseServer</td><td></td><td>El servidor de base de datos SQL en el que Sqoop exportará los datos. </td></tr>
+    <tr><td>Nombre del servidor de base de datos SQL</td><td>$sqlDatabaseServer</td><td></td><td>toowhich de servidor de base de datos SQL de Hello Sqoop exportará los datos. </td></tr>
     <tr><td>Nombre de inicio de sesión de la base de datos SQL</td><td>$sqlDatabaseLogin</td><td></td><td>Nombre de inicio de sesión de la base de datos SQL.</td></tr>
     <tr><td>Contraseña de inicio de sesión de la base de datos SQL</td><td>$sqlDatabaseLoginPassword</td><td></td><td>Contraseña de inicio de sesión de la base de datos SQL.</td></tr>
-    <tr><td>Nombre de la base de datos SQL</td><td>$sqlDatabaseName</td><td></td><td>La base de datos SQL de Azure en la que Sqoop exportará los datos. </td></tr>
+    <tr><td>Nombre de la base de datos SQL</td><td>$sqlDatabaseName</td><td></td><td>toowhich de base de datos de SQL Azure Hello Sqoop exportará los datos. </td></tr>
     </table>
 
   > [!NOTE]
-  > De forma predeterminada, una base de datos SQL de Azure permite realizar conexiones desde servicios de Azure, como HDInsight de Azure. Si la configuración del firewall está deshabilitada, debe habilitarla en el portal de Azure. Para obtener instrucciones sobre la creación de una base de datos SQL y la configuración de las reglas de firewall, consulte [Creación y configuración de una base de datos SQL][sqldatabase-get-started].
+  > De forma predeterminada, una base de datos SQL de Azure permite realizar conexiones desde servicios de Azure, como HDInsight de Azure. Si se deshabilita esta configuración de firewall, debe habilitarla de hello Portal de Azure. Para obtener instrucciones sobre la creación de una base de datos SQL y la configuración de las reglas de firewall, consulte [Creación y configuración de una base de datos SQL][sqldatabase-get-started].
 
 > [!NOTE]
-> Rellene los valores de las tablas. Le resultará útil para completar el tutorial.
+> Valores de hello de rellenar en las tablas de Hola. Le resultará útil para completar el tutorial.
 
-## <a name="define-oozie-workflow-and-the-related-hiveql-script"></a>Definición del flujo de trabajo de Oozie y el script de HiveQL relacionado
-Las definiciones de los flujos de trabajo de Oozie se escriben en hPDL (un lenguaje de definición de procesos XML). El nombre de archivo de flujo de trabajo predeterminado es *workflow.xml*.  Guardará el archivo de flujo de trabajo localmente y lo implementará en el clúster de HDInsight con Azure PowerShell posteriormente en este tutorial.
+## <a name="define-oozie-workflow-and-hello-related-hiveql-script"></a>Definir el flujo de trabajo de Oozie y Hola relacionados con script de HiveQL
+Las definiciones de los flujos de trabajo de Oozie se escriben en hPDL (un lenguaje de definición de procesos XML). es el nombre de archivo de flujo de trabajo predeterminado de Hello *workflow.xml*.  Se guardar archivo de flujo de trabajo de hello localmente y, a continuación, implementarlo clúster de HDInsight toohello mediante Azure PowerShell más adelante en este tutorial.
 
-La acción de Hive en el flujo de trabajo llama a un archivo de script de HiveQL. El archivo de script contiene tres instrucciones de HiveQL:
+acción de Hive en el flujo de trabajo de Hola Hola llama a un archivo de script de HiveQL. El archivo de script contiene tres instrucciones de HiveQL:
 
-1. **La instrucción DROP TABLE** elimina la tabla de Hive log4j en caso de que exista.
-2. **La instrucción CREATE TABLE** crea una tabla externa de Hive log4j Hive que apunta a la ubicación del archivo de registro log4j.
-3. **La ubicación del archivo de registro log4j**. El delimitador de campo es ",". El delimitador de línea predeterminado es "\n". Una tabla externa de Hive se usa para evitar que el archivo de datos se quite de la ubicación original, en el caso de que desee ejecutar el flujo de trabajo de Oozie varias veces.
-4. **La instrucción INSERT OVERWRITE** cuenta las apariciones de cada tipo de nivel de registro desde la tabla de Hive log4j y guarda el resultado en una ubicación de almacenamiento de blobs de Azure.
+1. **instrucción DROP TABLE de Hello** eliminaciones Hola log4j Hive tabla si existe.
+2. **instrucción CREATE TABLE de Hello** crea una tabla externa de Hive log4j, que señala toohello ubicación del archivo de registro de hello log4j;
+3. **Hola ubicación del archivo de registro de hello log4j**. delimitador de campo de Hello es ",". delimitador de línea de saludo predeterminado es "\n". Una tabla externa de subárbol es el archivo de datos de Hola de tooavoid utilizado que se va a quitar de la ubicación original de hello, en caso de que desea que el flujo de trabajo de toorun hello Oozie varias veces.
+4. **Hola instrucción INSERT SOBRESCRIBIR** recuentos de apariciones de Hola de cada tipo de nivel de registro de hello log4j tabla de Hive y guarda ubicación de almacenamiento de blobs de Azure de hello salida tooan.
 
 > [!NOTE]
-> Hay un problema conocido de la ruta de acceso de Hive. Se producirá este problema cuando envíe un trabajo de Oozie. Las instrucciones para corregir el problema pueden encontrarse en Wiki de TechNet: [Error de Hive de HDInsight: No se puede cambiar de nombre][technetwiki-hive-error].
+> Hay un problema conocido de la ruta de acceso de Hive. Se producirá este problema cuando envíe un trabajo de Oozie. Hola instrucciones para corregir el problema de hello puede encontrarse en hello Wiki de TechNet: [Hive de HDInsight de error: no se puede toorename][technetwiki-hive-error].
 
-**Para definir el archivo de script de HiveQL para que lo llame el flujo de trabajo**
+**llamado por el flujo de trabajo de hello toodefine hello HiveQL script archivo toobe**
 
-1. Cree un archivo de texto con el siguiente contenido:
+1. Cree un archivo de texto con hello siguiente contenido:
 
         DROP TABLE ${hiveTableName};
         CREATE EXTERNAL TABLE ${hiveTableName}(t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) ROW FORMAT DELIMITED FIELDS TERMINATED BY ' ' STORED AS TEXTFILE LOCATION '${hiveDataFolder}';
         INSERT OVERWRITE DIRECTORY '${hiveOutputFolder}' SELECT t4 AS sev, COUNT(*) AS cnt FROM ${hiveTableName} WHERE t4 LIKE '[%' GROUP BY t4;
 
-    Existen tres variables que se usan en el script:
+    Hay tres variables utilizadas en el script de Hola:
 
    * ${hiveTableName}
    * ${hiveDataFolder}
    * ${hiveOutputFolder}
 
-     El archivo de definición de flujo de trabajo (workflow.xml en este tutorial) pasará estos valores al script de HiveQL en tiempo de ejecución.
-2. Guarde el archivo como **C:\Tutorials\UseOozie\useooziewf.hql** mediante la codificación ANSI (ASCII). (Use el Bloc de notas si el editor de texto no proporciona esta opción.) Este archivo de script se implementará en el clúster de HDInsight más tarde en el tutorial.
+     archivo de definición de flujo de trabajo de Hello (workflow.xml en este tutorial) pasará estos toothis valores script de HiveQL en tiempo de ejecución.
+2. Guardar archivo de hello como **C:\Tutorials\UseOozie\useooziewf.hql** usando la codificación ANSI (ASCII). (Use el Bloc de notas si el editor de texto no proporciona esta opción.) El archivo de script será clúster de HDInsight implementado toohello más adelante en el tutorial Hola.
 
-**Para definir un flujo de trabajo**
+**toodefine un flujo de trabajo**
 
-1. Cree un archivo de texto con el siguiente contenido:
+1. Cree un archivo de texto con hello siguiente contenido:
 
     ```xml
     <workflow-app name="useooziewf" xmlns="uri:oozie:workflow:0.2">
-        <start to = "RunHiveScript"/>
+        <start too= "RunHiveScript"/>
 
         <action name="RunHiveScript">
             <hive xmlns="uri:oozie:hive-action:0.2">
@@ -188,26 +188,26 @@ La acción de Hive en el flujo de trabajo llama a un archivo de script de HiveQL
     </workflow-app>
     ```
 
-    Existen dos acciones definidas en el flujo de trabajo. La acción de inicio es *RunHiveScript*. Si la acción ejecuta *OK*, la acción siguiente es *RunSqoopExport*.
+    Hay dos acciones definidas en el flujo de trabajo de Hola. Hola inicio-tooaction es *RunHiveScript*. Si se ejecuta la acción de hello *Aceptar*, la acción siguiente hello es *RunSqoopExport*.
 
-    RunHiveScript tiene distintas variables. Pasará los valores cuando envíe el trabajo de Oozie desde la estación de trabajo con Azure PowerShell.
+    Hola RunHiveScript tiene varias variables. Valores de hello pasará al enviar trabajo de Oozie Hola desde su estación de trabajo mediante el uso de PowerShell de Azure.
 
     Variables de flujo de trabajo
 
     <table border = "1">
     <tr><th>Variables de flujo de trabajo</th><th>Description</th></tr>
-    <tr><td>${jobTracker}</td><td>Especifique la dirección URL del seguimiento de trabajo de Hadoop. Use <strong>jobtrackerhost:9010</strong> en la versión del clúster de HDInsight 3.0 y 2.0.</td></tr>
-    <tr><td>${nameNode}</td><td>Especifique la dirección URL del nombre de nodo de Hadoop. Use el sistema de archivos predeterminado wasb:// dirección, por ejemplo, <i>wasb://&lt;nombreDelContenedor&gt;@&lt;nombreDeLaCuentaDeAlmacenamiento&gt;.blob.core.windows.net</i>.</td></tr>
-    <tr><td>${queueName}</td><td>Especifica el nombre de cola al que se enviará el trabajo. Use el <strong>valor predeterminado</strong>.</td></tr>
+    <tr><td>${jobTracker}</td><td>Especifique la dirección URL de Hola de seguimiento de trabajo de Hadoop de Hola. Use <strong>jobtrackerhost:9010</strong> en la versión del clúster de HDInsight 3.0 y 2.0.</td></tr>
+    <tr><td>${nameNode}</td><td>Especifique la dirección URL de hello del nodo de nombre de Hadoop de Hola. Usar wasb de sistema de archivos de hello predeterminado: / / dirección, por ejemplo, <i>wasb: / /&lt;containerName&gt;@&lt;storageAccountName&gt;. blob.core.windows.net</i>.</td></tr>
+    <tr><td>${queueName}</td><td>Especifica el nombre de la cola de Hola que Hola trabajo se enviarán a. Use el <strong>valor predeterminado</strong>.</td></tr>
     </table>
 
     Variables de acción de Hive
 
     <table border = "1">
     <tr><th>Variable de acción de Hive</th><th>Description</th></tr>
-    <tr><td>${hiveDataFolder}</td><td>El directorio de origen para el comando Create Table de Hive.</td></tr>
-    <tr><td>${hiveOutputFolder}</td><td>La carpeta de salida para la instrucción INSERT OVERWRITE.</td></tr>
-    <tr><td>${hiveTableName}</td><td>El nombre de la tabla de Hive que hace referencia a los archivos de datos log4j.</td></tr>
+    <tr><td>${hiveDataFolder}</td><td>directorio de origen de Hola de hello comando Hive Create Table.</td></tr>
+    <tr><td>${hiveOutputFolder}</td><td>carpeta de salida de Hello de hello instrucción INSERT SOBRESCRIBIR.</td></tr>
+    <tr><td>${hiveTableName}</td><td>nombre de Hola de tabla de Hive de Hola que hace referencia a archivos de datos de log4j Hola.</td></tr>
     </table>
 
     Variables de acción de Sqoop
@@ -215,17 +215,17 @@ La acción de Hive en el flujo de trabajo llama a un archivo de script de HiveQL
     <table border = "1">
     <tr><th>Variable de acción de Sqoop</th><th>Description</th></tr>
     <tr><td>${sqlDatabaseConnectionString}</td><td>Cadena de conexión de Base de datos SQL.</td></tr>
-    <tr><td>${sqlDatabaseTableName}</td><td>La tabla de base de datos SQL de Azure donde se exportarán los datos.</td></tr>
-    <tr><td>${hiveOutputFolder}</td><td>La carpeta de salida para la instrucción INSERT OVERWRITE de Hive. Se trata de la misma carpeta para la exportación de Sqoop (export-dir).</td></tr>
+    <tr><td>${sqlDatabaseTableName}</td><td>se exportarán Hello Azure base de datos tabla toowhere Hola de datos de SQL.</td></tr>
+    <tr><td>${hiveOutputFolder}</td><td>carpeta de salida de Hello de hello instrucción Hive insertar SOBRESCRIBIR. Se trata de hello misma carpeta para la exportación de Sqoop Hola (export-dir).</td></tr>
     </table>
 
-    Para obtener más información sobre el flujo de trabajo de Oozie y el uso de acciones de flujo de trabajo, consulte la [documentación de Oozie 4.0 de Apache (en inglés)][apache-oozie-400] (para la versión del clúster de HDInsight 3.0) o la documentación de [Oozie 3.3.2 de Apache (en inglés)][apache-oozie-332] (para la versión del clúster de HDInsight 2.1).
+    Para obtener más información sobre el flujo de trabajo de Oozie y el uso de las acciones de flujo de trabajo de hello, consulte [documentación de Apache Oozie 4.0] [ apache-oozie-400] (con la versión de clúster de HDInsight 3.0) o [Apache Oozie 3.3.2 documentación] [ apache-oozie-332] (para la versión 2.1 del clúster de HDInsight).
 
-1. Guarde el archivo como **C:\Tutorials\UseOozie\workflow.xml** mediante la codificación ANSI (ASCII). (Use el Bloc de notas si el editor de texto no proporciona esta opción.)
+1. Guardar archivo de hello como **C:\Tutorials\UseOozie\workflow.xml** usando la codificación ANSI (ASCII). (Use el Bloc de notas si el editor de texto no proporciona esta opción.)
 
-**Para definir el coordinador**
+**toodefine coordinador**
 
-1. Cree un archivo de texto con el siguiente contenido:
+1. Cree un archivo de texto con hello siguiente contenido:
 
     ```xml
     <coordinator-app name="my_coord_app" frequency="${coordFrequency}" start="${coordStart}" end="${coordEnd}" timezone="${coordTimezone}" xmlns="uri:oozie:coordinator:0.4">
@@ -237,77 +237,77 @@ La acción de Hive en el flujo de trabajo llama a un archivo de script de HiveQL
     </coordinator-app>
     ```
 
-    En el archivo de definición se usan cinco variables:
+    Hay cinco variables utilizadas en el archivo de definición de hello:
 
    | Variable | Description |
    | --- | --- |
    | ${coordFrequency} |Hora de pausa del trabajo. La frecuencia se expresa siempre en minutos. |
    | ${coordStart} |Hora de inicio del trabajo. |
    | ${coordEnd} |Hora de finalización del trabajo. |
-   | ${coordTimezone} |Oozie procesa los trabajos del coordinador en una zona horaria fija sin horario de verano (representado normalmente mediante UTC). Esta zona horaria se conoce como la "zona de horaria de procesamiento de Oozie". |
-   | ${wfPath} |La ruta de acceso de workflow.xml.  Si el nombre del archivo del flujo de trabajo no es el del archivo predeterminado (workflow.xml), debe especificarlo. |
-2. Guarde el archivo como **C:\Tutorials\UseOozie\coordinator.xml** mediante la codificación ANSI (ASCII). (Use el Bloc de notas si el editor de texto no proporciona esta opción.)
+   | ${coordTimezone} |Oozie procesa los trabajos del coordinador en una zona horaria fija sin horario de verano (representado normalmente mediante UTC). Esta zona horaria se conoce como Hola "Oozie procesamiento timezone." |
+   | ${wfPath} |ruta de acceso de Hola para workflow.xml Hola.  Si el nombre de archivo de flujo de trabajo de hello no es nombre de archivo predeterminado de hello (workflow.xml), debe especificarlo. |
+2. Guardar archivo de hello como **C:\Tutorials\UseOozie\coordinator.xml** usando la codificación de hello ANSI (ASCII). (Use el Bloc de notas si el editor de texto no proporciona esta opción.)
 
-## <a name="deploy-the-oozie-project-and-prepare-the-tutorial"></a>Implementación del proyecto de Oozie y preparación del tutorial
-Ejecutará el script de Azure PowerShell para realizar las siguientes acciones:
+## <a name="deploy-hello-oozie-project-and-prepare-hello-tutorial"></a>Implementar proyecto de Oozie hello y preparar el tutorial Hola
+Se ejecutará una siguiente de hello Azure PowerShell tooperform de secuencia de comandos:
 
-* Copie el script de HiveQL (useoozie.hql) en Azure Blob Storage, wasb:///tutorials/useoozie/useoozie.hql.
-* Copie workflow.xml en wasb:///tutorials/useoozie/workflow.xml.
-* Copie coordinator.xml en wasb:///tutorials/useoozie/coordinator.xml.
-* Copie el archivo de datos (/example/data/sample.log) en wasb:///tutorials/useoozie/data/sample.log.
-* Cree una tabla de base de datos SQL de Azure para el almacenamiento de datos de exportación de Sqoop. El nombre de la tabla es *log4jLogCount*.
+* Copia Hola almacenamiento de blobs de HiveQL (useoozie.hql) de la secuencia de comandos tooAzure, wasb:///tutorials/useoozie/useoozie.hql.
+* Copie el archivo workflow.xml toowasb:///tutorials/useoozie/workflow.xml.
+* Copie coordinator.xml toowasb:///tutorials/useoozie/coordinator.xml.
+* Archivo de datos de copia hello (/ example/data/sample.log) toowasb:///tutorials/useoozie/data/sample.log.
+* Cree una tabla de base de datos SQL de Azure para el almacenamiento de datos de exportación de Sqoop. es el nombre de la tabla de Hello *log4jLogCount*.
 
 **Descripción del almacenamiento de HDInsight**
 
-HDInsight usa el almacenamiento de blobs de Azure para almacenar datos. wasb:// es la implementación de Microsoft del sistema de archivos distribuido de Hadoop (HDFS) en Azure Blob Storage. Para obtener más información, consulte [Uso de Azure Blob Storage con HDInsight][hdinsight-storage].
+HDInsight usa el almacenamiento de blobs de Azure para almacenar datos. wasb: / / es la implementación de sistema de archivos distribuido de Hadoop Hola (HDFS) en almacenamiento de blobs de Azure de Microsoft. Para obtener más información, consulte [Uso de Azure Blob Storage con HDInsight][hdinsight-storage].
 
-Cuando se aprovisiona un clúster de HDInsight, se designan una cuenta de almacenamiento de blobs de Azure y un contenedor específico de dicha cuenta como el sistema de archivos predeterminado, de la misma forma que en HDFS. Además de esta cuenta de almacenamiento, puede agregar más cuentas de almacenamiento desde la misma suscripción de Azure o desde otras diferentes durante el proceso de aprovisionamiento. Para obtener instrucciones sobre cómo agregar más cuentas de almacenamiento, consulte [Aprovisionamiento de clústeres de HDInsight][hdinsight-provision]. Para simplificar el script de Azure PowerShell que se usa en este tutorial, todos los archivos se almacenan en el contenedor del sistema de archivos predeterminado, que se encuentra en */tutorials/useoozie*. De forma predeterminada, este contenedor tiene el mismo nombre que el del clúster de HDInsight.
-La sintaxis es:
+Cuando se aprovisiona un clúster de HDInsight, una cuenta de almacenamiento de blobs de Azure y un contenedor específico de esa cuenta se designa como sistema de archivos predeterminado de hello, al igual que en HDFS. Además toothis cuenta de almacenamiento, puede agregar cuentas de almacenamiento adicional de hello misma suscripción de Azure o desde diferentes suscripciones de Azure durante el proceso de aprovisionamiento de Hola. Para obtener instrucciones sobre cómo agregar más cuentas de almacenamiento, consulte [Aprovisionamiento de clústeres de HDInsight][hdinsight-provision]. script de PowerShell de Azure de toosimplify Hola usado en este tutorial, todos de hello archivos se almacenan en el contenedor de sistema de archivos de hello predeterminado se encuentran en */tutoriales/useoozie*. De forma predeterminada, este contenedor tiene Hola mismo nombre como nombre de clúster de HDInsight Hola.
+Hola sintaxis es:
 
     wasb[s]://<ContainerName>@<StorageAccountName>.blob.core.windows.net/<path>/<filename>
 
 > [!NOTE]
-> Solo se admite la sintaxis *wasb://* con el clúster de HDInsight, versión 3.0. La antigua sintaxis *asv://* es compatible con los clústeres de HDInsight 2.1 y 1.6, pero no es compatible con los clústeres de HDInsight 3.0.
+> Hola solo *wasb: / /* la sintaxis es compatible con la versión 3.0 del clúster de HDInsight. Hola anterior *asv: / /* se admiten la sintaxis de 1.6 clústeres y 2.1 de HDInsight, pero no se admite en clústeres de HDInsight 3.0.
 >
-> La ruta de acceso wasb:// es una ruta de acceso virtual. Para obtener más información, consulte [Uso de Azure Blob Storage con HDInsight][hdinsight-storage].
+> Hola wasb: / / ruta de acceso es una ruta de acceso virtual. Para obtener más información, consulte [Uso de Azure Blob Storage con HDInsight][hdinsight-storage].
 
-Para acceder a un archivo almacenado en el contenedor del sistema de archivos predeterminado desde HDInsight se puede usar cualquiera de los URI siguientes (uso workflow.xml como ejemplo):
+Un archivo que se almacena en el contenedor de sistema de archivos de hello predeterminado puede tener acceso desde HDInsight mediante cualquiera de hello después a URI (utilizo workflow.xml como ejemplo):
 
     wasb://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie/workflow.xml
     wasb:///tutorials/useoozie/workflow.xml
     /tutorials/useoozie/workflow.xml
 
-Si desea obtener acceso al archivo directamente desde la cuenta de almacenamiento, el nombre de blob del archivo es:
+Si desea tooaccess Hola archivo directamente desde la cuenta de almacenamiento de hello, nombre de blob de hello para el archivo hello es:
 
     tutorials/useoozie/workflow.xml
 
 **Descripción de las tablas internas y externas de Hive**
 
-Existen determinados aspectos que debe conocer en relación con las tablas internas y externas de Hive:
+Hay algunas cosas que debe tooknow acerca de las tablas internas y externas de Hive:
 
-* El comando CREATE TABLE crea una tabla interna, también conocida como tabla administrada. El archivo de datos debe ubicarse en el contenedor predeterminado.
-* El comando CREATE TABLE mueve el archivo de datos a la carpeta /hive/warehouse/<TableName> en el contenedor predeterminado.
-* El comando CREATE EXTERNAL TABLE crea una tabla externa. El archivo de datos puede estar ubicado fuera del contenedor predeterminado.
-* El comando CREATE EXTERNAL TABLE no mueve el archivo de datos.
-* El comando CREATE EXTERNAL TABLE no permite a las subcarpetas en la carpeta especificada en la cláusula LOCATION. Este es el motivo por el que el tutorial hace una copia del archivo sample.log.
+* Hola comando CREATE TABLE crea una tabla interna, también conocido como una tabla administrada. archivo de datos de Hello debe estar ubicado en el contenedor predeterminado de Hola.
+* Hola comando CREATE TABLE mueve datos Hola archivotoohello/hive/almacenamiento/<TableName> carpeta en el contenedor predeterminado de Hola.
+* Hola comando CREATE TABLE externo crea una tabla externa. archivo de datos de Hello puede encontrarse fuera del contenedor predeterminado Hola.
+* Hola comando CREATE TABLE externo no mueve los archivos de datos de Hola.
+* Hola comando CREATE TABLE externo no permite que las subcarpetas de la carpeta de Hola que se especifica en la cláusula de ubicación de Hola. Se trata de motivo Hola ¿por qué tutorial Hola realiza una copia del archivo de hello sample.log.
 
 Para obtener más información, consulte [HDInsight: introducción de tablas internas y externas de Hive][cindygross-hive-tables].
 
-**Para preparar el tutorial**
+**tutorial de hello tooprepare**
 
-1. Abra Windows PowerShell ISE (en la pantalla Inicio de Windows 8, escriba **PowerShell_ISE** y luego haga clic en **Windows PowerShell ISE**. Consulte [Iniciar Windows PowerShell en Windows 8 y Windows][powershell-start] para obtener más información.
-2. En el panel inferior, ejecute el comando siguiente para conectarse a su suscripción de Azure:
+1. Hola abrir Windows PowerShell ISE (en la pantalla de inicio de Windows 8 de bienvenida, escriba **PowerShell_ISE**y, a continuación, haga clic en **Windows PowerShell ISE**. Consulte [Iniciar Windows PowerShell en Windows 8 y Windows][powershell-start] para obtener más información.
+2. En el panel de la parte inferior de hello, ejecute hello después comando tooconnect tooyour suscripción de Azure:
 
     ```powershell
     Add-AzureAccount
     ```
 
-    Se le pedirá que escriba las credenciales de la cuenta de Azure. Este método de agregar una conexión de suscripción expira y, transcurridas 12 horas, tendrá que volver a ejecutar el cmdlet.
+    También será tooenter solicitada sus credenciales de cuenta de Azure. Este método para agregar una conexión a una suscripción expire y después de 12 horas, tendrá toorun Hola cmdlet nuevo.
 
    > [!NOTE]
-   > Si tiene varias suscripciones de Azure y no desea usar la predeterminada, use el cmdlet <strong>Select-AzureSubscription</strong> para seleccionar una suscripción.
+   > Si tiene varias suscripciones de Azure y suscripción predeterminada de hello no es hello uno desea toouse, usar hello <strong>Select-AzureSubscription</strong> tooselect cmdlet una suscripción.
 
-3. Copie el siguiente script en el panel de scripts y, a continuación, establezca las seis primeras variables:
+3. Copie Hola siguiente secuencia de comandos en el panel de scripts de hello y, a continuación, establezca las variables de seis primeros hello:
 
     ```powershell
     # WASB variables
@@ -321,18 +321,18 @@ Para obtener más información, consulte [HDInsight: introducción de tablas int
     $sqlDatabaseName = "<SQLDatabaseName>"
     $sqlDatabaseTableName = "log4jLogsCount"
 
-    # Oozie files for the tutorial
+    # Oozie files for hello tutorial
     $hiveQLScript = "C:\Tutorials\UseOozie\useooziewf.hql"
     $workflowDefinition = "C:\Tutorials\UseOozie\workflow.xml"
     $coordDefinition =  "C:\Tutorials\UseOozie\coordinator.xml"
 
-    # WASB folder for storing the Oozie tutorial files.
-    $destFolder = "tutorials/useoozie"  # Do NOT use the long path here
+    # WASB folder for storing hello Oozie tutorial files.
+    $destFolder = "tutorials/useoozie"  # Do NOT use hello long path here
     ```
 
-    Para ver más descripciones de las variables, consulte la sección [Requisitos previos](#prerequisites) de este tutorial.
+    Para obtener más descripciones de las variables de hello, vea hello [requisitos previos](#prerequisites) sección en este tutorial.
 
-4. Agregue lo siguiente al script en el panel de scripts:
+4. Anexar Hola siguiente secuencia de comandos toohello en el panel de scripts de hello:
 
     ```powershell
     # Create a storage context object
@@ -349,7 +349,7 @@ Para obtener más información, consulte [HDInsight: introducción de tablas int
 
     function prepareHiveDataFile()
     {
-        Write-Host "Make a copy of the sample.log file ... " -ForegroundColor Green
+        Write-Host "Make a copy of hello sample.log file ... " -ForegroundColor Green
         Start-CopyAzureStorageBlob -SrcContainer $containerName -SrcBlob "example/data/sample.log" -Context $destContext -DestContainer $containerName -destBlob "$destFolder/data/sample.log" -DestContext $destContext
     }
 
@@ -365,7 +365,7 @@ Para obtener más información, consulte [HDInsight: introducción de tablas int
             )
             )"
 
-        #Create the log4jLogsCount table
+        #Create hello log4jLogsCount table
         Write-Host "Create Log4jLogsCount table ..." -ForegroundColor Green
         $conn = New-Object System.Data.SqlClient.SqlConnection
         $conn.ConnectionString = "Data Source=$sqlDatabaseServer.database.windows.net;Initial Catalog=$sqlDatabaseName;User ID=$sqlDatabaseLogin;Password=$sqlDatabaseLoginPassword;Encrypt=true;Trusted_Connection=false;"
@@ -381,24 +381,24 @@ Para obtener más información, consulte [HDInsight: introducción de tablas int
     # upload workflow.xml, coordinator.xml, and ooziewf.hql
     uploadOozieFiles;
 
-    # make a copy of example/data/sample.log to example/data/log4j/sample.log
+    # make a copy of example/data/sample.log tooexample/data/log4j/sample.log
     prepareHiveDataFile;
 
     # create log4jlogsCount table on SQL database
     prepareSQLDatabase;
     ```
 
-5. Haga clic en **Ejecutar script** o presione **F5** para ejecutar el script. La salida debe ser similar a:
+5. Haga clic en **ejecutar Script** o presione **F5** secuencia de comandos de toorun Hola. salida de Hello será similar al:
 
     ![Resultado de preparación del tutorial][img-preparation-output]
 
-## <a name="run-the-oozie-project"></a>Ejecución del proyecto de Oozie
-Azure PowerShell no proporciona actualmente cmdlets para la definición de trabajos de Oozie. Puede usar el cmdlet **Invoke-RestMethod** para invocar los servicios web de Oozie. La API de servicios web de Oozie es una API HTTP REST JSON. Para obtener más información sobre la API de servicios web de Oozie, consulte la [documentación de Oozie 4.0 de Apache (en inglés)][apache-oozie-400] (para la versión del clúster de HDInsight 3.0) o la [documentación de Oozie 3.3.2 de Apache (en inglés)][apache-oozie-332] (para la versión del clúster de HDInsight 2.1).
+## <a name="run-hello-oozie-project"></a>Ejecute hello Oozie proyecto
+Azure PowerShell no proporciona actualmente cmdlets para la definición de trabajos de Oozie. Puede usar hello **Invoke-RestMethod** servicios web de cmdlet tooinvoke Oozie. Hola Oozie API para servicios web es una API de JSON de REST de HTTP. Para obtener más información sobre los servicios web de Oozie Hola API, consulte [documentación de Apache Oozie 4.0] [ apache-oozie-400] (con la versión de clúster de HDInsight 3.0) o [documentación de Apache Oozie 3.3.2] [ apache-oozie-332] (para la versión 2.1 del clúster de HDInsight).
 
-**Para enviar un trabajo de Oozie**
+**toosubmit un trabajo de Oozie**
 
-1. Abra Windows PowerShell ISE (en la pantalla Inicio de Windows 8, escriba **PowerShell_ISE** y luego haga clic en **Windows PowerShell ISE**. Consulte [Iniciar Windows PowerShell en Windows 8 y Windows][powershell-start] para obtener más información.
-2. Copie el siguiente script en el panel de scripts y, a continuación, configure las catorce primeras variables (pero omita **$storageUri**).
+1. Hola abrir Windows PowerShell ISE (en la pantalla de inicio de Windows 8, escriba **PowerShell_ISE**y, a continuación, haga clic en **Windows PowerShell ISE**. Consulte [Iniciar Windows PowerShell en Windows 8 y Windows][powershell-start] para obtener más información.
+2. Script siguiente de Hola de copia en el panel de scripts de hello y, a continuación, conjunto Hola variables primero catorce (sin embargo, omitir **$storageUri**).
 
     ```powershell
     #HDInsight cluster variables
@@ -423,7 +423,7 @@ Azure PowerShell no proporciona actualmente cmdlets para la definición de traba
     $coordFrequency = "1440"    # in minutes, 24h x 60m = 1440m
     $coordTimezone = "UTC"    #UTC/GMT
 
-    $oozieWFPath="$storageUri/tutorials/useoozie"  # The default name is workflow.xml. And you don't need to specify the file name.
+    $oozieWFPath="$storageUri/tutorials/useoozie"  # hello default name is workflow.xml. And you don't need toospecify hello file name.
     $waitTimeBetweenOozieJobStatusCheck=10
 
     #Hive action variables
@@ -440,10 +440,10 @@ Azure PowerShell no proporciona actualmente cmdlets para la definición de traba
     $creds = New-Object System.Management.Automation.PSCredential ($clusterUsername, $passwd)
     ```
 
-    Para ver más descripciones de las variables, consulte la sección [Requisitos previos](#prerequisites) de este tutorial.
+    Para obtener más descripciones de las variables de hello, vea hello [requisitos previos](#prerequisites) sección en este tutorial.
 
-    $coordstart y $coordend son las horas de inicio y fin del flujo de trabajo. Para saber la hora UTC y GMT, busque "hora utc" en bing.com. $coordFrequency es la frecuencia minutos con la que desea ejecutar el flujo de trabajo.
-3. Agregue lo siguiente al script. Esta parte define la carga de Oozie:
+    $coordstart y $coordend son de flujo de trabajo a partir de Hola y hora de finalización. toofind hora UTC/GMT de hello, busque "hora utc" en bing.com. Hola $coordFrequency es la frecuencia en minutos que desea que el flujo de trabajo de toorun Hola.
+3. Anexar Hola siguiente secuencia de comandos de toohello. Este elemento define la carga de Oozie Hola:
 
     ```powershell
     #OoziePayload used for Oozie web service submission
@@ -541,9 +541,9 @@ Azure PowerShell no proporciona actualmente cmdlets para la definición de traba
     ```
 
    > [!NOTE]
-   > La principal diferencia que se aprecia al comparar con el archivo de carga de envío de flujos de trabajo es la variable **oozie.coord.application.path**. Al enviar una tarea de flujo de trabajo, se usa **oozie.wf.application.path** .
+   > archivo de carga de envío de flujo de trabajo de diferencia importante en comparación con toohello Hello es variable hello **oozie.coord.application.path**. Al enviar una tarea de flujo de trabajo, se usa **oozie.wf.application.path** .
 
-4. Agregue lo siguiente al script. En esta parte se comprueba el estado del servicio web de Oozie:
+4. Anexar Hola siguiente secuencia de comandos de toohello. Esta parte comprueba el estado del servicio de hello Oozie web:
 
     ```powershell
     function checkOozieServerStatus()
@@ -558,19 +558,19 @@ Azure PowerShell no proporciona actualmente cmdlets para la definición de traba
 
         if($oozieServerSatus -notmatch "NORMAL")
         {
-            Write-Host "Oozie server status is $oozieServerSatus...cannot submit Oozie jobs. Check the server status and re-run the job."
+            Write-Host "Oozie server status is $oozieServerSatus...cannot submit Oozie jobs. Check hello server status and re-run hello job."
             exit 1
         }
     }
     ```
 
-5. Agregue lo siguiente al script. En esta parte se crea un trabajo de Oozie:
+5. Anexar Hola siguiente secuencia de comandos de toohello. En esta parte se crea un trabajo de Oozie:
 
     ```powershell
     function createOozieJob()
     {
         # create Oozie job
-        Write-Host "Sending the following Payload to the cluster:" -ForegroundColor Green
+        Write-Host "Sending hello following Payload toohello cluster:" -ForegroundColor Green
         Write-Host "`n--------`n$OoziePayload`n--------"
         $clusterUriCreateJob = "https://$clusterName.azurehdinsight.net:443/oozie/v2/jobs"
         $response = Invoke-RestMethod -Method Post -Uri $clusterUriCreateJob -Credential $creds -Body $OoziePayload -ContentType "application/xml" -OutVariable $OozieJobName -debug -Verbose
@@ -584,18 +584,18 @@ Azure PowerShell no proporciona actualmente cmdlets para la definición de traba
     ```
 
    > [!NOTE]
-   > Al enviar una tarea del flujo de trabajo, debe realizar otra llamada de servicio web para iniciar la tarea una vez que esta se haya creado. En este caso, el trabajo de coordinador se desencadena por tiempo. El trabajo se iniciará automáticamente.
+   > Cuando se envía un trabajo de flujo de trabajo, debe realizar otro trabajo web servicio llamada toostart Hola después de que se crea el trabajo de Hola. En este caso, el trabajo de coordinador de Hola se desencadena por tiempo. trabajo de Hola se iniciará automáticamente.
 
-6. Agregue lo siguiente al script. En esta parte se comprueba el estado del trabajo de Oozie:
+6. Anexar Hola siguiente secuencia de comandos de toohello. Este elemento comprueba el estado del trabajo de Hola Oozie:
 
     ```powershell
     function checkOozieJobStatus($oozieJobId)
     {
         # get job status
-        Write-Host "Sleeping for $waitTimeBetweenOozieJobStatusCheck seconds until the job metadata is populated in the Oozie metastore..." -ForegroundColor Green
+        Write-Host "Sleeping for $waitTimeBetweenOozieJobStatusCheck seconds until hello job metadata is populated in hello Oozie metastore..." -ForegroundColor Green
         Start-Sleep -Seconds $waitTimeBetweenOozieJobStatusCheck
 
-        Write-Host "Getting job status and waiting for the job to complete..." -ForegroundColor Green
+        Write-Host "Getting job status and waiting for hello job toocomplete..." -ForegroundColor Green
         $clusterUriGetJobStatus = "https://$clusterName.azurehdinsight.net:443/oozie/v2/job/" + $oozieJobId + "?show=info"
         $response = Invoke-RestMethod -Method Get -Uri $clusterUriGetJobStatus -Credential $creds
         $jsonResponse = ConvertFrom-Json (ConvertTo-Json -InputObject $response)
@@ -603,7 +603,7 @@ Azure PowerShell no proporciona actualmente cmdlets para la definición de traba
 
         while($JobStatus -notmatch "SUCCEEDED|KILLED")
         {
-            Write-Host "$(Get-Date -format 'G'): $oozieJobId is in $JobStatus state...waiting $waitTimeBetweenOozieJobStatusCheck seconds for the job to complete..."
+            Write-Host "$(Get-Date -format 'G'): $oozieJobId is in $JobStatus state...waiting $waitTimeBetweenOozieJobStatusCheck seconds for hello job toocomplete..."
             Start-Sleep -Seconds $waitTimeBetweenOozieJobStatusCheck
             $response = Invoke-RestMethod -Method Get -Uri $clusterUriGetJobStatus -Credential $creds
             $jsonResponse = ConvertFrom-Json (ConvertTo-Json -InputObject $response)
@@ -619,7 +619,7 @@ Azure PowerShell no proporciona actualmente cmdlets para la definición de traba
     }
     ```
 
-7. (Opcional) Agregue lo siguiente al script.
+7. (Opcional) Anexar Hola siguiente secuencia de comandos de toohello.
 
     ```powershell
     function listOozieJobs()
@@ -646,13 +646,13 @@ Azure PowerShell no proporciona actualmente cmdlets para la definición de traba
 
     function killOozieJob($oozieJobId)
     {
-        Write-Host "Killing the Oozie job $oozieJobId..." -ForegroundColor Green
-        $clusterUriStartJob = "https://$clusterName.azurehdinsight.net:443/oozie/v2/job/" + $oozieJobId + "?action=kill" #Valid values for the 'action' parameter are 'start', 'suspend', 'resume', 'kill', 'dryrun', 'rerun', and 'change'.
+        Write-Host "Killing hello Oozie job $oozieJobId..." -ForegroundColor Green
+        $clusterUriStartJob = "https://$clusterName.azurehdinsight.net:443/oozie/v2/job/" + $oozieJobId + "?action=kill" #Valid values for hello 'action' parameter are 'start', 'suspend', 'resume', 'kill', 'dryrun', 'rerun', and 'change'.
         $response = Invoke-RestMethod -Method Put -Uri $clusterUriStartJob -Credential $creds | Format-Table -HideTableHeaders -debug
     }
     ```
 
-8. Agregue lo siguiente al script:
+8. Anexar Hola siguiente secuencia de comandos de toohello:
 
     ```powershell
     checkOozieServerStatus
@@ -663,23 +663,23 @@ Azure PowerShell no proporciona actualmente cmdlets para la definición de traba
     # killOozieJob($oozieJobId)
     ```
 
-    Elimine el signo # si desea ejecutar las funciones adicionales.
-9. Si el clúster de HDinsight es la versión 2.1, reemplace "https://$clusterName.azurehdinsight.net:443/oozie/v2/" por "https://$clusterName.azurehdinsight.net:443/oozie/v1/". La versión del clúster de HDInsight 2.1 no es compatible con la versión 2 de los servicios web.
-10. Haga clic en **Ejecutar script** o presione **F5** para ejecutar el script. La salida debe ser similar a:
+    Quitar signos de hello # si desea que las funciones adicionales de toorun Hola.
+9. Si el clúster de HDinsight es la versión 2.1, reemplace "https://$clusterName.azurehdinsight.net:443/oozie/v2/" por "https://$clusterName.azurehdinsight.net:443/oozie/v1/". Versión de clúster de HDInsight 2.1 no no admite la versión 2 de servicios web de Hola.
+10. Haga clic en **ejecutar Script** o presione **F5** secuencia de comandos de toorun Hola. salida de Hello será similar al:
 
      ![Resultado del flujo de trabajo de ejecución del tutorial][img-runworkflow-output]
-11. Conéctese a la Base de datos SQL para ver los datos exportados.
+11. Conectar tooyour hello que exporta datos de base de datos SQL toosee.
 
-**Para comprobar el registro de errores del trabajo**
+**registro de errores de trabajo de hello toocheck**
 
-Para solucionar los problemas de un flujo de trabajo, puede encontrar el archivo de registro de Oozie en C:\apps\dist\oozie-3.3.2.1.3.2.0-05\oozie-win-distro\logs\Oozie.log en el nodo principal del clúster. Para obtener más información sobre RDP, consulte [Administración de clústeres de Hadoop en HDInsight mediante Azure Portal][hdinsight-admin-portal].
+tootroubleshoot un flujo de trabajo, archivo de registro de hello Oozie puede encontrarse en C:\apps\dist\oozie-3.3.2.1.3.2.0-05\oozie-win-distro\logs\Oozie.log desde el nodo principal del clúster de Hola. Para obtener información acerca de RDP, consulte [clústeres de HDInsight de administración con Hola portal de Azure][hdinsight-admin-portal].
 
-**Para volver a ejecutar el tutorial**
+**tutorial de hello toorerun**
 
-Para volver a ejecutar el flujo de trabajo, debe realizar las siguientes tareas:
+flujo de trabajo de toorerun hello, debe realizar Hola siguientes tareas:
 
-* Elimine el archivo de salida del script de Hive.
-* Eliminar los datos de la tabla log4jLogsCount.
+* Elimine el archivo de salida de script de Hive Hola.
+* Eliminar datos de hello en la tabla de log4jLogsCount Hola.
 
 Aquí tiene un script de Windows PowerShell de ejemplo que puede usar:
 
@@ -694,12 +694,12 @@ $sqlDatabaseLoginPassword = "<SQLDatabaseLoginPassword>"
 $sqlDatabaseName = "<SQLDatabaseName>"
 $sqlDatabaseTableName = "log4jLogsCount"
 
-Write-host "Delete the Hive script output file ..." -ForegroundColor Green
+Write-host "Delete hello Hive script output file ..." -ForegroundColor Green
 $storageaccountkey = get-azurestoragekey $storageAccountName | %{$_.Primary}
 $destContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageaccountkey
 Remove-AzureStorageBlob -Context $destContext -Blob "tutorials/useoozie/output/000000_0" -Container $containerName
 
-Write-host "Delete all the records from the log4jLogsCount table ..." -ForegroundColor Green
+Write-host "Delete all hello records from hello log4jLogsCount table ..." -ForegroundColor Green
 $conn = New-Object System.Data.SqlClient.SqlConnection
 $conn.ConnectionString = "Data Source=$sqlDatabaseServer.database.windows.net;Initial Catalog=$sqlDatabaseName;User ID=$sqlDatabaseLogin;Password=$sqlDatabaseLoginPassword;Encrypt=true;Trusted_Connection=false;"
 $conn.open()
@@ -712,12 +712,12 @@ $conn.close()
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-En este tutorial ha aprendido a definir un flujo de trabajo de Oozie y un coordinador de Oozie, y a ejecutar un trabajo de coordinador de Oozie mediante Azure PowerShell. Para obtener más información, consulte los artículos siguientes:
+En este tutorial, se habrá aprendido cómo toodefine un flujo de trabajo de Oozie y un coordinador de Oozie y cómo toorun un coordinador de Oozie de trabajo mediante el uso de PowerShell de Azure. toolearn más información, vea Hola siguientes artículos:
 
 * [Introducción a HDInsight][hdinsight-get-started]
 * [Uso de Azure Blob Storage con HDInsight][hdinsight-storage]
 * [Administración de HDInsight con Azure PowerShell][hdinsight-admin-powershell]
-* [Carga de datos en HDInsight][hdinsight-upload-data]
+* [Cargar datos tooHDInsight][hdinsight-upload-data]
 * [Uso de Sqoop con HDInsight][hdinsight-use-sqoop]
 * [Uso de Hive con HDInsight][hdinsight-use-hive]
 * [Uso de Pig con HDInsight][hdinsight-use-pig]

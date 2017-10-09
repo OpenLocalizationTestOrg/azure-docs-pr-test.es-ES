@@ -1,6 +1,6 @@
 ---
-title: "Creación de programaciones complejas y periodicidad avanzada con Programador de Azure"
-description: "Creación de programaciones complejas y periodicidad avanzada con Programador de Azure"
+title: aaaHow tooBuild programaciones complejos y periodicidad avanzada con el programador de Azure
+description: "Cómo tooBuild complejo programa y periodicidad avanzada con el programador de Azure"
 services: scheduler
 documentationcenter: .NET
 author: derek1ee
@@ -14,29 +14,29 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/18/2016
 ms.author: deli
-ms.openlocfilehash: 20c3e3c1cb85308cad47054c2efa87f61cae0f22
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 02172791978b12be0ccb3078125d057b2efe8523
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-build-complex-schedules-and-advanced-recurrence-with-azure-scheduler"></a>Creación de programaciones complejas y periodicidad avanzada con Programador de Azure
+# <a name="how-toobuild-complex-schedules-and-advanced-recurrence-with-azure-scheduler"></a>Cómo tooBuild complejo programa y periodicidad avanzada con el programador de Azure
 ## <a name="overview"></a>Información general
-En el corazón de un trabajo del Programador de Azure se encuentra la *programación*. La programación determina cuándo y cómo el Programador ejecuta el trabajo.
+En el corazón de Hola de un programador de Azure trabajo es hello *programación*. programación de Hello determina cuándo y cómo Hola programador ejecuta el trabajo de Hola.
 
-Programador de Azure le permite especificar distintas programaciones periódicas y únicas para un trabajo. Las programaciones *únicas* se desencadenan una vez a una hora especificadas; en efecto, son programaciones *periódicas* que se ejecutan solo una vez. Las programaciones recurrentes se activan en una frecuencia predeterminada.
+El programador de Azure permite toospecify diferentes por única vez y recurrentes programaciones para un trabajo. Las programaciones *únicas* se desencadenan una vez a una hora especificadas; en efecto, son programaciones *periódicas* que se ejecutan solo una vez. Las programaciones recurrentes se activan en una frecuencia predeterminada.
 
 Con esta flexibilidad, Programador de Azure le permite admitir una amplia variedad de escenarios empresariales:
 
 * Limpieza de datos periódicos; por ejemplo, todos los días hay que eliminar todos los tweets de más de 3 meses.
-* Archivado; por ejemplo, cada mes hay que insertar el histórico de facturas en el servicio de copia de seguridad.
+* Archivado: por ejemplo, cada mes, inserción factura historial toobackup servicio
 * Solicitudes de datos externos; por ejemplo, cada 15 minutos hay que extraer un nuevo informe meteorológico de esquí de NOAA.
-* Procesamiento de imágenes; por ejemplo, todos los días laborables, fuera de las horas pico, hay que utilizar la informática en la nube para comprimir las imágenes cargadas durante ese día.
+* Procesamiento de imágenes – p. ej. cada día de la semana, durante las horas, use en la nube informático imágenes toocompress cargan ese día
 
-En este artículo se describen ejemplos de trabajos que se pueden crear con Programador de Azure. Se proporcionan los datos JSON que describen cada programación. Si se usa la [API de REST de Scheduler](https://msdn.microsoft.com/library/mt629143.aspx), puede usar este mismo JSON para [crear un trabajo de Azure Scheduler](https://msdn.microsoft.com/library/mt629145.aspx).
+En este artículo se describen ejemplos de trabajos que se pueden crear con Programador de Azure. Se proporcionan datos JSON de Hola que describen cada programación. Si usas hello [API de REST de Scheduler](https://msdn.microsoft.com/library/mt629143.aspx), puede utilizar este mismo JSON para [crear un trabajo de programador de Azure](https://msdn.microsoft.com/library/mt629145.aspx).
 
 ## <a name="supported-scenarios"></a>Escenarios admitidos
-Los numerosos ejemplos de este tema muestran la gran variedad de escenarios que admite Programador de Azure. En general, estos ejemplos muestran cómo crear programaciones para diversos patrones de comportamiento, incluidos los siguientes:
+Hola que muchos ejemplos de este tema muestran amplitud Hola de escenarios que admite el programador de Azure. General, estos ejemplos muestran cómo toocreate programaciones para muchos patrones de comportamiento, incluidas las Hola siguiente:
 
 * Ejecutar una vez en una determinada fecha y hora
 * Ejecutar y repetir un número de veces explícitas
@@ -46,12 +46,12 @@ Los numerosos ejemplos de este tema muestran la gran variedad de escenarios que 
 * Ejecutar y repetir varias veces en un período; por ejemplo, el último viernes y lunes de cada mes, o a las 5:15 a.m. y a las 5:15 p.m. todos los días
 
 ## <a name="dates-and-datetimes"></a>Fechas y fecha/hora
-Las fechas en Programador de Azure siguen la [especificación ISO-8601](http://en.wikipedia.org/wiki/ISO_8601) y solo incluyen la fecha.
+Las fechas en los trabajos del programador de Azure siguen hello [especificación ISO-8601](http://en.wikipedia.org/wiki/ISO_8601) e incluya solo Hola fecha.
 
-Las referencias a fecha/hora en los trabajos de Programador de Azure siguen la [especificación ISO-8601](http://en.wikipedia.org/wiki/ISO_8601) y solo incluyen las partes de fecha y de hora. Una fecha y hora que no especifica un desfase de hora UTC se supone que es una hora UTC.  
+Referencias de fecha y hora en los trabajos del programador de Azure siguen hello [especificación ISO-8601](http://en.wikipedia.org/wiki/ISO_8601) e incluir partes de fecha y hora. Se supone que una fecha y hora que no especifica un desplazamiento de UTC toobe UTC.  
 
 ## <a name="how-to-use-json-and-rest-api-for-creating-schedules"></a>Uso de JSON y API de REST para crear programaciones
-Para crear una programación simple mediante la [API de REST de Azure Scheduler](https://msdn.microsoft.com/library/mt629143), primero [registre su suscripción con un proveedor de recursos](https://msdn.microsoft.com/library/azure/dn790548.aspx) (el nombre del proveedor para Scheduler es *Microsoft.Scheduler*); después, [cree una colección de trabajos](https://msdn.microsoft.com/library/mt629159.aspx) y, finalmente, [cree un trabajo](https://msdn.microsoft.com/library/mt629145.aspx). Cuando se crea un trabajo, puede especificar la programación y periodicidad mediante JSON como en el extracto siguiente:
+Hola toocreate una programación simple utilizando [API de REST de Azure Scheduler](https://msdn.microsoft.com/library/mt629143), primero [registrar la suscripción con un proveedor de recursos](https://msdn.microsoft.com/library/azure/dn790548.aspx) (nombre del proveedor de hello para el programador es  *Microsoft.Scheduler*), a continuación, [crear una colección de trabajos](https://msdn.microsoft.com/library/mt629159.aspx)y, finalmente, [crear un trabajo](https://msdn.microsoft.com/library/mt629145.aspx). Cuando se crea un trabajo, puede especificar la programación y periodicidad mediante JSON como Hola uno ha extraído a continuación:
 
     {
         "startTime": "2012-08-04T00:00Z", // optional
@@ -59,29 +59,29 @@ Para crear una programación simple mediante la [API de REST de Azure Scheduler]
         "recurrence":                     // optional
         {
             "frequency": "week",     // can be "year" "month" "day" "week" "hour" "minute"
-            "interval": 1,                // optional, how often to fire (default to 1)
+            "interval": 1,                // optional, how often toofire (default too1)
             "schedule":                   // optional (advanced scheduling specifics)
             {
                 "weekDays": ["monday", "wednesday", "friday"],
                 "hours": [10, 22]                      
             },
-            "count": 10,                  // optional (default to recur infinitely)
-            "endTime": "2012-11-04",      // optional (default to recur infinitely)
+            "count": 10,                  // optional (default toorecur infinitely)
+            "endTime": "2012-11-04",      // optional (default toorecur infinitely)
         },
         …
     }
 
 ## <a name="overview-job-schema-basics"></a>Información general: conceptos básicos de esquema de trabajo
-En la tabla siguiente se muestra una descripción general de los elementos más importantes relacionados con la periodicidad y la programación de un trabajo:
+Hello en la tabla siguiente proporciona una descripción general de hello elementos principales relacionados toorecurrence y la programación de un trabajo:
 
 | **Nombre JSON** | **Descripción** |
 |:--- |:--- |
-| ***startTime*** |*startTime* es una fecha y hora. En las programaciones simples, *startTime* es la primera repetición y, en las programaciones complejas, el trabajo se iniciará no antes que *startTime*. |
-| ***recurrence*** |El objeto *recurrence* especifica las reglas de periodicidad para el trabajo y la periodicidad con la que se ejecutará el trabajo. El objeto recurrence admite los elementos *frequency, interval, endTime, count,* y *schedule*. Si se define *recurrence*, se requiere *frequency*; los otros elementos de *recurrence* son opcionales. |
-| ***frequency*** |La cadena *frequency* representa la unidad de frecuencia en la que se repite el trabajo. Los valores admitidos son *"minute", "hour", "day", "week",* o *"month".* |
-| ***interval*** |*interval* es un entero positivo e indica el intervalo para el valor de *frequency* que determina la frecuencia con la que se ejecutará el trabajo. Por ejemplo, si *interval* es 3 y *frequency* es "week", el trabajo se repite cada tres semanas. Azure Scheduler admite un valor máximo de *interval* de 18 meses para la frecuencia mensual, 78 semanas para la frecuencia semanal o 548 días para la frecuencia diaria. Para una frecuencia de horas y minutos, el intervalo admitido es 1 < = *interval* < = 1000. |
-| ***endTime*** |La cadena *endTime* especifica la fecha y hora pasadas las cuales el trabajo no se debe ejecutar. No es válido tener un valor de *endTime* en el pasado. Si no hay ningún valor *endTime* o se especifica un valor count, el trabajo se ejecuta indefinidamente. Tanto *endTime* como *count* no se pueden incluir en el mismo trabajo. |
-| ***count*** |<p>El valor de *count* es un entero positivo (mayor que cero) que especifica el número de veces que debe ejecutarse este trabajo antes de finalizar.</p><p>*count* representa el número de veces que se ejecuta el trabajo antes de que se determine que está completado. Por ejemplo, para un trabajo que se ejecuta diariamente con un valor de *count* de 5 y con lunes como fecha de inicio, el trabajo se completa después de la ejecución el viernes. Si la fecha de inicio está en el pasado, se calcula la primera ejecución desde la hora de creación.</p><p>Si no hay ningún valor *endTime* o se especifica un valor *count*, el trabajo se ejecuta indefinidamente. Tanto *endTime* como *count* no se pueden incluir en el mismo trabajo.</p> |
+| ***startTime*** |*startTime* es una fecha y hora. Para las programaciones de simples, *startTime* es la primera aparición de Hola y para las programaciones de complejas, iniciará ningún antes de trabajo de hello *startTime*. |
+| ***recurrence*** |Hola *periodicidad* objeto especifica las reglas de periodicidad para el trabajo de hello como Hola periodicidad Hola se ejecutarán con. objeto de periodicidad de Hello es compatible con elementos de hello *frecuencia, intervalo, hora de finalización, recuento,* y *programación*. Si *periodicidad* se define, *frecuencia* es necesario; Hola otros elementos de *periodicidad* son opcionales. |
+| ***frequency*** |Hola *frecuencia* cadena que representa la unidad de frecuencia de hello en qué Hola se repite el trabajo. Los valores admitidos son *"minute", "hour", "day", "week",* o *"month".* |
+| ***interval*** |Hola *intervalo* es un entero positivo y denota el intervalo de saludo para hello *frecuencia* que determina con qué frecuencia hello trabajo se ejecutará. Por ejemplo, si *intervalo* es 3 y *frecuencia* es "semana", el trabajo de Hola se repite cada 3 semanas. Azure Scheduler admite un valor máximo de *interval* de 18 meses para la frecuencia mensual, 78 semanas para la frecuencia semanal o 548 días para la frecuencia diaria. Por hora y minuto frecuencia, intervalo de hello admitida es de 1 < = *intervalo* < = 1000. |
+| ***endTime*** |Hola *endTime* cadena especifica la fecha y hora de hello más allá de qué hello no debe ejecutar el trabajo. No es válido toohave una *endTime* Hola anteriores. Si no hay ningún *endTime* o recuento se especifica, el trabajo de Hola se ejecutará infinitamente. Ambos *endTime* y *recuento* no se pueden incluir para hello mismo trabajo. |
+| ***count*** |<p>Hola *recuento* es un entero positivo (mayor que cero) que especifica el número de Hola de veces que debe ejecutarse este trabajo antes de completar.</p><p>Hola *recuento* representa Hola número de veces que se ejecuta el trabajo de hello antes de que se determina como completada. Por ejemplo, para un trabajo que se ejecuta diariamente con *recuento* 5 y fecha inicial del lunes, trabajo de hello termina después de la ejecución el viernes. Si se inicia Hola fecha está en hello anterior, primera ejecución de Hola se calcula desde la hora de creación de hello.</p><p>Si no hay ningún *endTime* o *recuento* se especifica, el trabajo de Hola se ejecutará infinitamente. Ambos *endTime* y *recuento* no se pueden incluir para hello mismo trabajo.</p> |
 | ***schedule*** |Un trabajo con una frecuencia especificada modifica su periodicidad según una programación periódica. *schedule* contiene modificaciones basadas en minutos, horas, días de la semana, días del mes y número de semana. |
 
 ## <a name="overview-job-schema-defaults-limits-and-examples"></a>Información general: Valores predeterminados del esquema de trabajo, límites y ejemplos
@@ -92,59 +92,59 @@ Después de esta información general, tratemos cada uno de estos elementos de d
 | ***startTime*** |Cadena |No |None |Fechas-horas ISO-8601 |<code>"startTime" : "2013-01-09T09:30:00-08:00"</code> |
 | ***recurrence*** |Objeto |No |None |Objeto de periodicidad |<code>"recurrence" : { "frequency" : "monthly", "interval" : 1 }</code> |
 | ***frequency*** |Cadena |Sí |None |"minute", "hour", "day", "week", "month" |<code>"frequency" : "hour"</code> |
-| ***interval*** |Number |No |1 |1 a 1000. |<code>"interval":10</code> |
-| ***endTime*** |Cadena |No |None |Valor de fecha y hora que representa un periodo de tiempo en el futuro |<code>"endTime" : "2013-02-09T09:30:00-08:00"</code> |
+| ***interval*** |Number |No |1 |1 too1000. |<code>"interval":10</code> |
+| ***endTime*** |Cadena |No |None |Valor de fecha y hora que representa una hora futura Hola |<code>"endTime" : "2013-02-09T09:30:00-08:00"</code> |
 | ***count*** |Number |No |None |>= 1 |<code>"count": 5</code> |
 | ***schedule*** |Objeto |No |None |Objeto de programación |<code>"schedule" : { "minute" : [30], "hour" : [8,17] }</code> |
 
 ## <a name="deep-dive-starttime"></a>Profundización: *startTime*
-La siguiente tabla captura cómo *startTime* controla el modo en que se ejecuta un trabajo.
+siguiente Hola tabla capturas cómo *startTime* controla cómo se ejecuta un trabajo.
 
 | **Valor de startTime** | **Sin periodicidad** | **Periodicidad. Sin programación** | **Periodicidad con programación** |
 |:--- |:--- |:--- |:--- |
 | **Sin hora de inicio** |Ejecutar inmediatamente una vez |Ejecutar inmediatamente una vez. Realizar las ejecuciones posteriores basándose en el cálculo del último tiempo de ejecución. |<p>Ejecutar inmediatamente una vez</p><p>Realizar las sucesivas ejecuciones según la programación de periodicidad</p> |
-| **Hora de inicio en el pasado** |Ejecutar inmediatamente una vez |<p>Calcular primero la hora de futuras ejecuciones después de la hora de inicio y ejecutarlas a esa hora</p><p>Realizar las sucesivas ejecuciones basándose en el cálculo de la última hora de ejecución</p><p>Consulte el ejemplo que sigue a esta tabla para obtener una explicación más detallada.</p> |<p>El trabajo se inicia *no antes que* la hora de inicio especificada. La primera repetición se basa en la programación que se calcula a partir de la hora de inicio</p><p>Realizar las sucesivas ejecuciones según la programación de periodicidad</p> |
-| **Hora de inicio en el futuro o en el presente** |Ejecutar una vez a la hora de inicio especificada |<p>Ejecutar una vez a la hora de inicio especificada</p><p>Realizar las ejecuciones posteriores basándose en el cálculo del último tiempo de ejecución.</p> |<p>El trabajo se inicia *no antes que* la hora de inicio especificada. La primera repetición se basa en la programación que se calcula a partir de la hora de inicio</p><p>Realizar las sucesivas ejecuciones según la programación de periodicidad</p> |
+| **Hora de inicio en el pasado** |Ejecutar inmediatamente una vez |<p>Calcular primero la hora de futuras ejecuciones después de la hora de inicio y ejecutarlas a esa hora</p><p>Realizar las sucesivas ejecuciones basándose en el cálculo de la última hora de ejecución</p><p>Consulte el ejemplo que sigue a esta tabla para obtener una explicación más detallada.</p> |<p>Trabajo inicia *no antes que* Hola especifica la hora de inicio. primera aparición de Hola se basa en programación de hello calculado a partir de la hora de inicio de Hola</p><p>Realizar las sucesivas ejecuciones según la programación de periodicidad</p> |
+| **Hora de inicio en el futuro o en el presente** |Ejecutar una vez a la hora de inicio especificada |<p>Ejecutar una vez a la hora de inicio especificada</p><p>Realizar las ejecuciones posteriores basándose en el cálculo del último tiempo de ejecución.</p> |<p>Trabajo inicia *no antes que* Hola especifica la hora de inicio. primera aparición de Hola se basa en programación de hello calculado a partir de la hora de inicio de Hola</p><p>Realizar las sucesivas ejecuciones según la programación de periodicidad</p> |
 
-Veamos un ejemplo de lo que sucede cuando *startTime* se encuentra en el pasado, con *recurrence* pero sin *schedule*.  Suponga que la fecha y hora actual es 08-04-2015 13:00, *startTime* es 2015-04-07 14:00 y *recurrence* es de 2 días (definida con *frequency*: día e *interval*: 2.) Tenga en cuenta que *startTime* se encuentra en el pasado y se produce antes de la hora actual.
+Veamos un ejemplo de lo que sucede en *startTime* en hello anterior, con *periodicidad* pero no *programación*.  Suponga que Hola hora actual es 2015-04-08 13:00, *startTime* es 2015-04-07 14:00, y *periodicidad* es cada 2 días (definida con *frecuencia*: día y *intervalo*: 2.) Tenga en cuenta que hello *startTime* es Hola anteriores y se produce antes de hello hora actual
 
-En estas condiciones, el *primera ejecución* será 2015-04-09 a las 14:00\. El motor del Programador calcula las repeticiones de la ejecución desde la hora de inicio.  Se descartan las instancias en el pasado. El motor utiliza la instancia siguiente que tiene lugar en el futuro.  En este caso, *startTime* es 2015-04-07 a las 2:00 p.m., así que la siguiente instancia es 2 días a partir de ese momento, que es el 2015-04-09 a las 2:00 p.m.
+En estas condiciones, Hola *primera ejecución* será 2015-04-09 a las 14:00\. motor de programador de Hello calcula incidencias de ejecución de la hora de inicio de Hola.  Todas las instancias en hello anterior se descartan. motor de Hello usa instancia siguiente de Hola que tiene lugar en hello futuras.  Por lo que en este caso, *startTime* es 2015-04-07 a las 2:00 p.m., por lo que hello siguiente instancia es 2 días a partir de ese momento, que es 2015-04-09 a las 2:00 p.m..
 
-Tenga en cuenta que la primera ejecución debería ser el mismo incluso si el valor de startTime 2015-04-05 14:00 o 14:00\ 2015-04-01. Después de la primera ejecución, las ejecuciones posteriores se calculan con la programación, por lo que se realizarían el 2015-04-11 a 2:00 p.m., a continuación el 2015-04-13 a las 2:00 p.m., después el+ 2015-04-15 a las 2:00 p.m., etc.
+Tenga en cuenta que la primera ejecución de hello sería Hola mismo incluso si Hola startTime 2015-04-05 14:00 o 14:00\ 2015-04-01. Tras la primera ejecución hello, las ejecuciones posteriores se calculan con hello programado: por lo que estaría en 2015-04-11 a las 2:00 p.m., a continuación, 2015-04-13 a las 2:00 p.m., a continuación, 2015-04-15 a las 2:00 p.m., etcetera.
 
-Por último, cuando un trabajo tiene una programación, si no se establecen en la programación las horas y minutos, se asume el valor predeterminado de las horas y minutos de la primera ejecución, respectivamente.
+Por último, cuando un trabajo tiene una programación, si horas o minutos no están establecidos en la programación de hello, que horas de toohello predeterminado y/o los minutos de la primera ejecución hello, respectivamente.
 
 ## <a name="deep-dive-schedule"></a>Profundización: *schedule*
-Por un lado, *schedule* puede *limitar* el número de ejecuciones de trabajos.  Por ejemplo, si un trabajo con una frecuencia de "mes" tiene un valor de *schedule* que se ejecuta solo el día 31, el trabajo se ejecuta solo en los meses que tienen<sup> 31</sup> días.
+Por un lado, un *programación* puede *límite* Hola número de ejecuciones de trabajos.  Por ejemplo, si un trabajo con una frecuencia de "mes" tiene un *programación* que se ejecuta en único día 31, se ejecuta el trabajo de hello en solo esos meses que tengan un 31<sup>st</sup> día.
 
-Por otro lado, una *programación* también puede *ampliar* el número de ejecuciones de trabajos. Por ejemplo, si un trabajo con una frecuencia "mensual" tiene una *programación* que se ejecuta los días 1 y 2 del mes, <sup></sup><sup></sup>el trabajo se ejecuta en los días primero y segundo del mes en lugar de solo una vez al mes.
+Hola en otra parte, un *programación* también puede *expanda* Hola número de ejecuciones de trabajos. Por ejemplo, si un trabajo con una frecuencia de "mes" tiene un *programación* que se ejecuta en los días del mes 1 y 2, el trabajo de Hola se ejecuta en hello 1<sup>st</sup> y 2<sup>nd</sup> días del mes de hello en lugar de una sola vez un mes.
 
-Si se especifican varios elementos de programación, el orden de evaluación es de mayor a menor: número de semana, mes, día, día de la semana, hora y minuto.
+Si se especifican varios elementos de programación, orden de Hola de evaluación es de hello mayor toosmallest: número de semana, mes, día, día de la semana, hora y minuto.
 
-En la siguiente tabla se describen los elementos de *schedule* con detalle:
+Hello tabla siguiente se describen *programación* elementos en detalle.
 
 | **Nombre JSON** | **Descripción** | **Valores válidos** |
 |:--- |:--- |:--- |
-| **minutes** |Minutos de la hora en la que se ejecuta el trabajo |<ul><li>Entero o</li><li>Matriz de enteros</li></ul> |
-| **hours** |Horas del día en las que se ejecuta el trabajo |<ul><li>Entero o</li><li>Matriz de enteros</li></ul> |
-| **weekDays** |Días de la semana en los que se ejecutará el trabajo Solo se puede especificar con una frecuencia semanal. |<ul><li>Lunes, martes, miércoles, jueves, viernes, sábado o domingo</li><li>Matriz de cualquiera de los valores anteriores (tamaño de la matriz máx. 7)</li></ul>*No* distingue mayúsculas de minúsculas |
-| **monthlyOccurrences** |Determina los días del mes en los que se ejecutará el trabajo. Solo se puede especificar con una frecuencia mensual. |<ul><li>Matriz de objetos de monthlyOccurence:</li></ul> <pre>{ "day": *day*,<br />  "occurrence": *occurrence*<br />}</pre><p> *day* es el día de la semana en el que se ejecutará el trabajo; por ejemplo, {Sunday} es cada domingo del mes. Necesario.</p><p>El valor de *occurrence* es la repetición del día durante el mes, por ejemplo, {domingo, -1} es el último domingo del mes. Opcional.</p> |
-| **monthDays** |Día del mes en el que se ejecutará el trabajo. Solo se puede especificar con una frecuencia mensual. |<ul><li>Cualquier valor < = -1 y > = -31.</li><li>Cualquier valor > = 1 y < = 31.</li><li>Una matriz de valores por encima</li></ul> |
+| **minutes** |Minutos de hora de hello en qué Hola se ejecutará el trabajo |<ul><li>Entero o</li><li>Matriz de enteros</li></ul> |
+| **hours** |Horas del día de hello en qué Hola se ejecutará el trabajo |<ul><li>Entero o</li><li>Matriz de enteros</li></ul> |
+| **weekDays** |Días de trabajo de hello semana Hola se ejecutarán. Solo se puede especificar con una frecuencia semanal. |<ul><li>Lunes, martes, miércoles, jueves, viernes, sábado o domingo</li><li>Matriz de cualquiera de Hola por encima de valores (tamaño de la matriz max 7)</li></ul>*No* distingue mayúsculas de minúsculas |
+| **monthlyOccurrences** |Determina los días de trabajo de hello mes Hola se ejecutará. Solo se puede especificar con una frecuencia mensual. |<ul><li>Matriz de objetos de monthlyOccurence:</li></ul> <pre>{ "day": *day*,<br />  "occurrence":*occurrence*<br />}</pre><p> *día* es día Hola de trabajo de hello semana Hola se ejecutará, por ejemplo, {domingo} es los domingos del mes de Hola. Necesario.</p><p>La ocurrencia es *aparición* del día de Hola durante el mes de hello, por ejemplo, {domingo, -1} se Hola último domingo del mes de Hola. Opcional.</p> |
+| **monthDays** |Día de trabajo de hello mes Hola se ejecutará. Solo se puede especificar con una frecuencia mensual. |<ul><li>Cualquier valor < = -1 y > = -31.</li><li>Cualquier valor > = 1 y < = 31.</li><li>Una matriz de valores por encima</li></ul> |
 
 ## <a name="examples-recurrence-schedules"></a>Ejemplos: Programaciones de periodicidad
-A continuación de muestran unos ejemplos de programaciones de periodicidad, centrándose en el objeto de programación y sus subelementos.
+siguiente Hola es numerosos ejemplos de programaciones de periodicidad: centrándose en el objeto de programación de Hola y sus elementos secundarios.
 
-Asume que las programaciones por debajo de todos los *intervalo* está establecido en 1\. Asimismo, uno debe asumir la frecuencia correcta de acuerdo con lo que se encuentra en la *programación* – p. ej., uno no se usan una frecuencia de "day" y tiene una modificación de "días mes para" en la programación. Estas restricciones se han descrito anteriormente.
+Hello programaciones por debajo de todos supone que hello *intervalo* se establece too1\. Asimismo, uno debe asumir frecuencia correcta de hello en acuerdo toowhat está en hello *programación* – p. ej., uno no se usan una frecuencia de "day" y tiene una modificación de "días mes para" en programación de Hola. Estas restricciones se han descrito anteriormente.
 
 | **Ejemplo** | **Descripción** |
 |:--- |:--- |
-| <code>{"hours":[5]}</code> |Se ejecuta a las 5 a.m. cada día. Programador de Azure hace corresponder cada valor en "horas" con cada valor de "minutos", uno por uno, para crear una lista de todas las veces en las que se va a ejecutar el trabajo. |
+| <code>{"hours":[5]}</code> |Se ejecuta a las 5 a.m. cada día. El programador de Azure coincide con cada valor en "horas" con cada valor en "minutes", uno por uno, toocreate una lista de todos los tiempos de hello en qué Hola trabajo es toobe de ejecución. |
 | <code>{"minutes":[15], "hours":[5]}</code> |Se ejecuta a las 5:15 a.m. cada día. |
 | <code>{"minutes":[15], "hours":[5,17]}</code> |Se ejecuta a las 5:15 a.m. y 5:15 p.m. todos los días. |
 | <code>{"minutes":[15,45], "hours":[5,17]}</code> |Se ejecuta a las 5:15 a.m., 5:45 a.m., 5:15 p.m. y a las 5:45 p.m. cada día. |
 | <code>{"minutes":[0,15,30,45]}</code> |Se ejecuta cada 15 minutos. |
-| <code>{hours":[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]}</code> |Se ejecuta cada hora. Este trabajo se ejecuta cada hora. Los minutos se controlan mediante *startTime*, si se especifica una fecha y hora de inicio, o si no se especifica, en el momento de creación. Por ejemplo, si la hora de inicio o la hora de creación (lo que se aplique) es 12:25 p.m., el trabajo se ejecutará a las 00:25, 01:25, 02:25, …, 23:25. La programación equivale a tener un trabajo con un valor de *frequency* de "hour", un valor de *interval* de 1 y ningún valor de *schedule*. La diferencia es que esta programación puede usarse con diferentes valores en *frequency* e *interval* para crear también otros trabajos. Por ejemplo, si el valor de *frequency* fuera "month", la programación se ejecutaría solo una vez al mes en lugar de todos los días si *frequency* fuera "day". |
-| <code>{minutes:[0]}</code> |Se ejecuta cada hora durante la hora. Esta tarea también se ejecuta cada hora, pero a la hora exacta (por ejemplo, 12 a.m., 1 a.m., 2 a.m., etc.) Esto es equivalente a un trabajo con una frecuencia de "hora", una hora de inicio con cero minutos y a ninguna programación si la frecuencia fuera "día", pero si la frecuencia fuera "semana" o "mes", la programación podría ejecutarse solo un día a la semana o un día del mes, respectivamente. |
+| <code>{hours":[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]}</code> |Se ejecuta cada hora. Este trabajo se ejecuta cada hora. minuto de Hola se controla mediante hello *startTime*, si se especifica uno, o si no se especifica ninguno, por hora de creación de hello. Por ejemplo, si Hola hora de inicio u hora de creación (lo que se aplica) es 12:25 P.M., trabajo Hola se ejecutarán a 00:25, 25:01, 02:25,..., 23:25. Hola programación es equivalente toohaving un trabajo con *frecuencia* de "hora", una *intervalo* 1 y n *programación*. Hello diferencia es que esta programación se podía usar con diferentes *frecuencia* y *intervalo* toocreate otro trabajos demasiado. Por ejemplo, si hello *frecuencia* fuera "mes", programación de hello ejecutaría una sola vez en un mes en lugar de todos los días si *frecuencia* estaban "día" |
+| <code>{minutes:[0]}</code> |Ejecute cada hora en hora Hola. Este trabajo también ejecuta cada hora, pero en hora hello (por ejemplo, 12 A.M., 1 A.M., 2 AM, etcetera.) Esto es equivalente tooa trabajo con una frecuencia de "hora", una hora de inicio con cero minutos y ninguna programación frecuencia Hola vería "day", pero si la frecuencia de hello fuera "semana" o "mes", programación de hello ejecutaría solo un día, una semana o un día de un mes, respectivamente. |
 | <code>{"minutes":[15]}</code> |Se ejecuta a «y cuarto» cada hora. Se ejecuta cada hora, comenzando en 00:15 a.m., 1:15 a.m., 2:15 a.m., etc. y terminando en 10:15 p.m. y las 11:15 p.m. |
 | <code>{"hours":[17], "weekDays":["saturday"]}</code> |Se ejecuta a las 5 p.m. los sábados cada semana. |
 | <code>{hours":[17], "weekDays":["monday", "wednesday", "friday"]}</code> |Se ejecuta a las 5 p.m. el lunes, el miércoles y el viernes de cada semana, |
@@ -155,27 +155,27 @@ Asume que las programaciones por debajo de todos los *intervalo* está estableci
 | <code>{"minutes":[0,15,30,45], "hours": [9, 10, 11, 12, 13, 14, 15, 16] "weekDays":["monday", "tuesday", "wednesday", "thursday", "friday"]}</code> |Se ejecuta cada 15 minutos los días laborables entre las 9 a.m. y las 4:45 p.m. |
 | <code>{"weekDays":["sunday"]}</code> |Se ejecuta los domingos a la hora de inicio. |
 | <code>{"weekDays":["tuesday", "thursday"]}</code> |Se ejecuta los martes y los jueves a la hora de inicio. |
-| <code>{"minutes":[0], "hours":[6], "monthDays":[28]}</code> |Se ejecuta a las 6 a.m. del día 28 de cada mes (suponiendo una frecuencia de mes). |
-| <code>{"minutes":[0], "hours":[6], "monthDays":[-1]}</code> |Se ejecuta a las 6 a.m. el último día del mes. Si desea ejecutar un trabajo en el último día del mes, use -1 en lugar de día 28, 29, 30 o 31. |
-| <code>{"minutes":[0], "hours":[6], "monthDays":[1,-1]}</code> |Se ejecuta a las 6 a.m. el primer y último día de cada mes. |
-| <code>{monthDays":[1,-1]}</code> |Se ejecuta el primer y último día de cada mes a la hora de inicio. |
-| <code>{monthDays":[1,14]}</code> |Se ejecuta el primer y decimocuarto día de cada mes a la hora de inicio. |
-| <code>{monthDays":[2]}</code> |Se ejecuta el segundo día del mes en la hora de inicio. |
+| <code>{"minutes":[0], "hours":[6], "monthDays":[28]}</code> |Hola de ejecución a las 6: 00 en 28 días de cada mes (con frecuencia del mes) |
+| <code>{"minutes":[0], "hours":[6], "monthDays":[-1]}</code> |Ejecute a las 6 A.M. en el último día del mes de Hola Hola. Si desea que un trabajo en hello toorun último día del mes, utilice -1 en lugar de día 28, 29, 30 o 31. |
+| <code>{"minutes":[0], "hours":[6], "monthDays":[1,-1]}</code> |Ejecute a las 6 A.M. en hello primero y último día de cada mes |
+| <code>{monthDays":[1,-1]}</code> |Ejecutar en hello primero y último día de cada mes en la hora de inicio |
+| <code>{monthDays":[1,14]}</code> |Ejecutar en hello primero y decimocuarto día de cada mes en la hora de inicio |
+| <code>{monthDays":[2]}</code> |Ejecutar en segundo día del mes a la hora de inicio de Hola Hola |
 | <code>{"minutes":[0], "hours":[5], "monthlyOccurrences":[{"day":"friday", "occurrence":1}]}</code> |Se ejecuta el primer viernes de cada mes a las 5 a.m. |
 | <code>{"monthlyOccurrences":[{"day":"friday", "occurrence":1}]}</code> |: Se ejecuta el primer viernes de cada mes a la hora de inicio. |
 | <code>{"monthlyOccurrences":[{"day":"friday", "occurrence":-3}]}</code> |Se ejecuta el tercer viernes desde el final del mes, cada mes, a la hora de inicio. |
 | <code>{"minutes":[15], "hours":[5], "monthlyOccurrences":[{"day":"friday", "occurrence":1},{"day":"friday", "occurrence":-1}]}</code> |Se ejecuta el primer y último viernes de cada mes a las 5:15 a.m. |
 | <code>{"monthlyOccurrences":[{"day":"friday", "occurrence":1},{"day":"friday", "occurrence":-1}]}</code> |Se ejecuta el primer y último viernes de cada mes a la hora de inicio. |
-| <code>{"monthlyOccurrences":[{"day":"friday", "occurrence":5}]}</code> |Se ejecuta el quinto viernes de cada mes a la hora de inicio. Si no hay ningún quinto viernes en un mes, no se ejecuta ya que se ha programado para ejecutarse solo el quinto viernes. Puede considerar usar -1 en lugar de 5 para la repetición si desea ejecutar el trabajo en el último viernes del mes. |
-| <code>{"minutes":[0,15,30,45], "monthlyOccurrences":[{"day":"friday", "occurrence":-1}]}</code> |Se ejecuta cada 15 minutos el último viernes del mes. |
-| <code>{"minutes":[15,45], "hours":[5,17], "monthlyOccurrences":[{"day":"wednesday", "occurrence":3}]}</code> |Se ejecuta a las 5:15 a.m., 5:45 a.m., 5:15 p., y 5:45 p.m. el tercer miércoles de cada mes |
+| <code>{"monthlyOccurrences":[{"day":"friday", "occurrence":5}]}</code> |Se ejecuta el quinto viernes de cada mes a la hora de inicio. Si no hay ningún viernes quinto en un mes, esta no se ejecuta, ya que es toorun programada en viernes sólo quinto. Podría considerar el uso de -1 en lugar de 5 aparición de Hola si desea que toorun Hola trabajo en hello producen último viernes del mes de Hola. |
+| <code>{"minutes":[0,15,30,45], "monthlyOccurrences":[{"day":"friday", "occurrence":-1}]}</code> |Ejecutar cada 15 minutos en el último viernes del mes de Hola |
+| <code>{"minutes":[15,45], "hours":[5,17], "monthlyOccurrences":[{"day":"wednesday", "occurrence":3}]}</code> |Ejecute a las 5:15 A.M., 5:45 A.M., 5:15 P.M. y las 5:45 PM en Hola 3rd miércoles de cada mes |
 
 ## <a name="see-also"></a>Otras referencias
  [¿Qué es Programador?](scheduler-intro.md)
 
  [Conceptos, terminología y jerarquía de entidades de Programador de Azure](scheduler-concepts-terms.md)
 
- [Introducción al Programador de Azure en el Portal de Azure](scheduler-get-started-portal.md)
+ [Empezar a usar a Scheduler en hello portal de Azure](scheduler-get-started-portal.md)
 
  [Planes y facturación en Programador de Azure](scheduler-plans-billing.md)
 

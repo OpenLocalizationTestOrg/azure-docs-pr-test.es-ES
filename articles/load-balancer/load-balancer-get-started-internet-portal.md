@@ -1,6 +1,6 @@
 ---
-title: "Creación de un equilibrador de carga con conexión a Internet: Azure Portal | Microsoft Docs"
-description: "Obtenga información sobre cómo crear un equilibrador de carga orientado a Internet en Resource Manager con Azure Portal"
+title: "equilibrador de carga de aaaCreate una conexión a Internet: portal de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toocreate una conexión a Internet de equilibrador de carga en el Administrador de recursos en Hola portal de Azure"
 services: load-balancer
 documentationcenter: na
 author: anavinahar
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: annahar
-ms.openlocfilehash: db7c328b2ba7008b9d34275341fa4bad9522b028
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 390ba8ec1474c54cf2c0022c4a3c219d21b1a659
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="creating-an-internet-facing-load-balancer-using-the-azure-portal"></a>Creación de un equilibrador de carga orientado a Internet mediante Azure Portal
+# <a name="creating-an-internet-facing-load-balancer-using-hello-azure-portal"></a>Creación de un equilibrador de carga a través de Internet mediante Hola portal de Azure
 
 > [!div class="op_single_selector"]
 > * [Portal](../load-balancer/load-balancer-get-started-internet-portal.md)
@@ -33,77 +33,77 @@ ms.lasthandoff: 07/11/2017
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-Este artículo trata sobre el modelo de implementación del Administrador de recursos. También puede [obtener información sobre cómo crear un equilibrador de carga orientado a Internet mediante la implementación clásica](load-balancer-get-started-internet-classic-portal.md)
+Este artículo trata el modelo de implementación del Administrador de recursos de Hola. También puede [Obtenga información acerca de cómo el equilibrador mediante la implementación clásica de la carga de toocreate una conexión a Internet](load-balancer-get-started-internet-classic-portal.md)
 
 [!INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
-Aquí se trata la secuencia de tareas individuales que deben realizarse para crear un equilibrador de carga y se explica con detalle qué se hace para lograr el objetivo.
+Esto cubre secuencia Hola de tareas individuales que tienen toocreate toobe realiza un equilibrador de carga y se explica con detalle lo que está realizando el objetivo de hello tooaccomplish.
 
-## <a name="what-is-required-to-create-an-internet-facing-load-balancer"></a>¿Qué se necesita para crear un equilibrador de carga orientado a Internet?
+## <a name="what-is-required-toocreate-an-internet-facing-load-balancer"></a>¿Qué es toocreate requiere un equilibrador de carga a través de Internet?
 
-Para implementar un equilibrador de carga, debe crear y configurar los objetos siguientes.
+Se necesita toocreate y configura Hola después objetos toodeploy un equilibrador de carga.
 
 * Configuración de direcciones IP de front-end: contiene direcciones IP públicas para el tráfico de red entrante.
-* Grupo de direcciones de back-end: contiene interfaces de red (NIC) para que las máquinas virtuales reciban tráfico de red del equilibrador de carga.
-* Reglas de equilibrio de carga: contiene reglas que asignan un puerto público en el equilibrador de carga al del grupo de direcciones de back-end.
-* Reglas NAT de entrada: contiene reglas que asignan un puerto público en el equilibrador de carga a un puerto para una máquina virtual específica en el grupo de direcciones de back-end.
-* Sondeos: contiene los sondeos de estado que se usan para comprobar la disponibilidad de las instancias de las máquinas virtuales del grupo de direcciones de back-end.
+* Grupo de direcciones de back-end - contiene interfaces de red (NIC) de tráfico de red de tooreceive de máquinas virtuales de Hola Hola equilibrador de carga.
+* Reglas de equilibrio de carga - contiene reglas de asignación de un puerto público en tooport de equilibrador de carga de hello en el grupo de direcciones de back-end de Hola.
+* Reglas NAT de entrada: contiene las reglas de asignación de un puerto público en el puerto de tooa de equilibrador de carga de Hola para una máquina virtual específica en el grupo de direcciones de back-end de Hola.
+* Sondea: contiene toocheck disponibilidad de sondeos que se usan de mantenimiento de instancias de máquinas virtuales en el grupo de direcciones de back-end de Hola.
 
 Puede obtener más información sobre los componentes del equilibrador de carga con Azure Resource Manager en [Compatibilidad de Azure Resource Manager con Load Balancer](load-balancer-arm.md).
 
 ## <a name="set-up-a-load-balancer-in-azure-portal"></a>Configuración de un equilibrador de carga en Azure Portal
 
 > [!IMPORTANT]
-> En este ejemplo se supone que tiene una red virtual denominada **myVNet**. Consulte [Creación de una red virtual](../virtual-network/virtual-networks-create-vnet-arm-pportal.md) para hacerlo. También se supone que hay una subred dentro de **myVNet** denominada **LB-Subnet-BE** y dos máquinas virtuales que se llaman **web1** y **web2** respectivamente en el mismo conjunto de disponibilidad llamado **myAvailSet** en **myVNet**. Consulte [este vínculo](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) para crear máquinas virtuales.
+> En este ejemplo se supone que tiene una red virtual denominada **myVNet**. Consulte demasiado[crear red virtual](../virtual-network/virtual-networks-create-vnet-arm-pportal.md) toodo esto. También se supone hay una subred dentro de **myVNet** llama **LB subred ser** y dos máquinas virtuales que se llama **web1** y **web2** respectivamente en Hola mismo conjunto llamado de disponibilidad **myAvailSet** en **myVNet**. Consulte demasiado[este vínculo](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) toocreate máquinas virtuales.
 
-1. Desde un explorador, vaya a Azure Portal: [http://portal.azure.com](http://portal.azure.com) e inicie sesión con su cuenta de Azure.
-2. En la parte superior izquierda de la pantalla, seleccione **Nuevo** > **Redes** > **Equilibrador de carga.**
-3. En la hoja **Crear equilibrador de carga** , escriba un nombre para el equilibrador de carga. En este caso, se llama **myLoadBalancer**.
+1. Desde un explorador, navegue toohello portal de Azure: [http://portal.azure.com](http://portal.azure.com) e inicie sesión con su cuenta de Azure.
+2. En el lado izquierdo superior de Hola de pantalla de bienvenida, seleccione **New** > **red** > **equilibrador de carga.**
+3. Hola **equilibrador de carga de crear** hoja, escriba un nombre para el equilibrador de carga. En este caso, se llama **myLoadBalancer**.
 4. En **Tipo**, seleccione **Público**.
 5. En **Dirección IP pública**, cree una nueva dirección IP pública denominada **myPublicIP**.
-6. En Grupo de recursos, seleccione **myRG**. A continuación, seleccione una **ubicación** adecuada y haga clic en **Aceptar**. El equilibrador de carga empezará entonces a implementarse, y este proceso tardará unos minutos en completarse correctamente.
+6. En Grupo de recursos, seleccione **myRG**. A continuación, seleccione una **ubicación** adecuada y haga clic en **Aceptar**. equilibrador de carga de Hello, a continuación, iniciará toodeploy y tardará unos minutos toosuccessfully de implementación completa.
 
     ![Actualización de grupo de recursos de equilibrador de carga](./media/load-balancer-get-started-internet-portal/1-load-balancer.png)
 
 ## <a name="create-a-back-end-address-pool"></a>Creación del grupo de direcciones de back-end
 
-1. Una vez que se ha implementado correctamente el equilibrador de carga, selecciónelo entre sus recursos. En configuración, seleccione Grupos de back-end. Escriba un nombre para el grupo de back-end. A continuación, haga clic en el botón **Agregar** en la parte superior de la hoja que aparece.
-2. Haga clic en **Agregar máquina virtual** en la hoja **Agregar grupo de back-end**.  Seleccione **Elegir un conjunto de disponibilidad** en **Conjunto de disponibilidad** y seleccione **myAvailSet**. A continuación, seleccione **Elegir las máquinas virtuales** en la sección Virtual Machines de la hoja y haga clic en **web1** y **web2**, las dos máquinas virtuales creadas para el equilibrio de carga. Asegúrese de que las dos tienen marcas de verificación azul a la izquierda, como se muestra en la siguiente imagen. A continuación, haga clic en **Seleccionar** en esa hoja y en Aceptar en la hoja **Elegir las máquinas virtuales**, después, haga clic en **Aceptar** en la hoja **Agregar grupo de back-end**.
+1. Una vez que se ha implementado correctamente el equilibrador de carga, selecciónelo entre sus recursos. En configuración, seleccione Grupos de back-end. Escriba un nombre para el grupo de back-end. A continuación, haga clic en hello **agregar** botón hacia la parte superior de Hola de hoja de Hola que se muestra.
+2. Haga clic en **agrega una máquina virtual** en hello **Agregar grupo back-end** hoja.  Seleccione **Elegir un conjunto de disponibilidad** en **Conjunto de disponibilidad** y seleccione **myAvailSet**. A continuación, seleccione **elegir máquinas virtuales de hello** en Hola sección máquinas virtuales en la hoja de Hola y haga clic en **web1** y **web2**, Hola dos máquinas virtuales que se creó para el equilibrio de carga. Asegúrese de que ambos tienen toohello de marcas de verificación azul deja tal como se muestra en la imagen de hello siguiente. A continuación, haga clic en **seleccione** en esa hoja seguida Aceptar Hola **máquinas virtuales elija** hoja y, a continuación, **Aceptar** en hello **Agregar grupo back-end** hoja.
 
-    ![Incorporación al grupo de direcciones de back-end ](./media/load-balancer-get-started-internet-portal/3-load-balancer-backend-02.png)
+    ![Agregar grupo de direcciones de back-end de toohello- ](./media/load-balancer-get-started-internet-portal/3-load-balancer-backend-02.png)
 
-3. Compruebe que la lista desplegable de notificaciones tiene una actualización respecto a guardar el grupo de back-end del equilibrador de carga además de actualizar la interfaz de red para las máquinas virtuales **web1** y **web2**.
+3. Comprobar toomake seguro de las notificaciones de lista desplegable tiene una actualización con respecto a Guardar grupo de back-end de equilibradores de carga de hello en la interfaz de red de suma tooupdating Hola para ambos Hola máquinas virtuales **web1** y **web2**.
 
 ## <a name="create-a-probe-lb-rule-and-nat-rules"></a>Creación de un sondeo, una regla de equilibrador de carga y reglas NAT
 
 1. Cree un sondeo de estado.
 
-    En la sección Configuración del equilibrador de carga, seleccione Sondeos. A continuación, haga clic en **Agregar** en la parte superior de la hoja.
+    En la sección Configuración del equilibrador de carga, seleccione Sondeos. A continuación, haga clic en **agregar** situado en la parte superior de Hola de hoja de Hola.
 
-    Hay dos formas de configurar un sondeo: HTTP o TCP. En este ejemplo se muestra HTTP, pero TCP puede configurarse de forma similar.
-    Actualice la información necesaria. Como se mencionó, **myLoadBalancer** equilibrará la carga del tráfico en el puerto 80. La ruta de acceso seleccionada es HealthProbe.aspx, el intervalo es 15 segundos y el umbral incorrecto es 2. Una vez terminado, haga clic en **Aceptar** para crear el sondeo.
+    Hay un sondeo a tooconfigure de dos maneras: HTTP o TCP. En este ejemplo se muestra HTTP, pero TCP puede configurarse de forma similar.
+    Actualizar la información necesaria de Hola. Como se mencionó, **myLoadBalancer** equilibrará la carga del tráfico en el puerto 80. ruta de acceso de Hello seleccionado es HealthProbe.aspx, intervalo es de 15 segundos y umbral incorrecto es 2. Cuando termine, haga clic en **Aceptar** sondeo de hello toocreate.
 
-    Mantenga el puntero sobre el icono de "i" para más información acerca de estas configuraciones individuales y cómo se pueden cambiar para satisfacer sus requisitos.
+    Desplace el puntero sobre hello 'i' icono toolearn más información acerca de estas configuraciones individuales y cómo pueden ser modificadas toocater tooyour requisitos.
 
     ![Incorporación de un sondeo](./media/load-balancer-get-started-internet-portal/4-load-balancer-probes.png)
 
 2. Cree una regla de equilibrador de carga.
 
-    Haga clic en Reglas de equilibrio de carga en la sección Configuración del equilibrador de carga. En la nueva hoja, haga clic en **Agregar**. Ponga un nombre a la regla. En este caso, HTTP. Elija los puertos de front-end y de back-end. En este caso, se elige 80 para ambos. Elija **LB-backend** como grupo de back-end y el **HealthProbe** creado previamente como Sondeo. Según sus requisitos, se pueden establecer otras configuraciones. A continuación, haga clic en Aceptar para guardar la regla de equilibrio de carga.
+    Haga clic en reglas de Hola de equilibrio de carga de la sección de configuración de un equilibrador de carga. En la nueva hoja de hello, haga clic en **agregar**. Ponga un nombre a la regla. En este caso, HTTP. Elegir puerto de front-end de Hola y puerto back-end. En este caso, se elige 80 para ambos. Elija **back-end de LB** como su hello creado anteriormente y el grupo back-end **HealthProbe** como Hola sondeo. Otras configuraciones se pueden establecer según los requisitos de tooyour. A continuación, haga clic en regla de equilibrio de carga de hello toosave Aceptar.
 
     ![Incorporación de una regla de equilibrio de carga](./media/load-balancer-get-started-internet-portal/5-load-balancing-rules.png)
 
 3. Creación de reglas NAT de entrada
 
-    Haga clic en Reglas NAT de entrada en la sección Configuración de su equilibrador de carga. En la hoja nueva, haga clic en **Agregar**. Luego ponga un nombre a la regla NAT de entrada. Aquí se llama **inboundNATrule1**. El destino debe ser la dirección IP pública que se creó anteriormente. Seleccione Personalizar en Servicio y seleccione el protocolo que desea utilizar. Aquí se selecciona TCP. Escriba el puerto, 3441, y el puerto de destino, en este caso 3389. A continuación, haga clic en Aceptar para guardar esta regla.
+    Haga clic en reglas de NAT de entrada en la sección de configuración de Hola de un equilibrador de carga. En hello nueva hoja, haga clic en **agregar**. Luego ponga un nombre a la regla NAT de entrada. Aquí se llama **inboundNATrule1**. destino de Hello debe ser Hola que IP pública creado anteriormente. Seleccione personalizado mediante el servicio y le gustaría toouse de protocolo de Hola. Aquí se selecciona TCP. Escriba el puerto de hello, 3441 y Hola 3389 de puerto de destino, en este caso. a continuación, haga clic en Aceptar toosave, esta regla.
 
-    Una vez creada la primera regla, repita este paso para la segunda regla NAT entrante denominada inboundNATrule2 desde el puerto 3442 al puerto de destino 3389.
+    Una vez que se crea la primera regla de hello, repita este paso para hello segunda regla NAT de entrada llamado inboundNATrule2 desde 3442 tooTarget puerto 3389.
 
     ![Incorporación de una regla NAT entrante](./media/load-balancer-get-started-internet-portal/6-load-balancer-inbound-nat-rules.png)
 
 ## <a name="remove-a-load-balancer"></a>Eliminación de un equilibrador de carga
 
-Para eliminar un equilibrador de carga, seleccione el equilibrador de carga que desea quitar. En la hoja *Equilibrador de carga* , haga clic en **Eliminar** en la parte superior de la hoja. A continuación, seleccione **Sí** cuando se le solicite.
+desea tooremove de equilibrador de carga de un equilibrador de carga, seleccione hello toodelete. Hola *equilibrador de carga* hoja, haga clic en **eliminar** situado en la parte superior de Hola de hoja de Hola. A continuación, seleccione **Sí** cuando se le solicite.
 
 ## <a name="next-steps"></a>Pasos siguientes
 

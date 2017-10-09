@@ -1,5 +1,5 @@
 ---
-title: "Mensajes EDIFACT para la integración empresarial B2B: Azure Logic Apps | Microsoft Docs"
+title: "mensajes de aaaEDIFACT para la integración de enterprise B2B - Azure Logic Apps | Documentos de Microsoft"
 description: "Intercambio de mensajes EDIFACT en formato EDI para la integración empresarial B2B con Azure Logic Apps"
 services: logic-apps
 documentationcenter: .net,nodejs,java
@@ -15,86 +15,86 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/26/2016
 ms.author: LADocs; jonfan
-ms.openlocfilehash: fc9a0068de5f9464133eec0b043fbba1dc0fbde7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 496fadcda58de2d36459202b839b0a63c9e5857c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="exchange-edifact-messages-for-enterprise-integration-with-logic-apps"></a>Intercambio de mensajes EDIFACT para la integración empresarial con las aplicaciones lógicas
 
-Para poder intercambiar mensajes EDIFACT para Azure Logic Apps, debe crear un contrato EDIFACT y almacenarlo en la cuenta de integración. Estos son los pasos para crear un contrato EDIFACT.
+Para poder intercambiar mensajes EDIFACT para Azure Logic Apps, debe crear un contrato EDIFACT y almacenarlo en la cuenta de integración. Estos son los pasos de Hola para saber cómo toocreate un acuerdo EDIFACT.
 
 > [!NOTE]
-> En esta página se tratan las características de EDIFACT para Azure Logic Apps. Para obtener más información, consulte [X12](logic-apps-enterprise-integration-x12.md).
+> Esta página incluye características EDIFACT de Hola para las aplicaciones lógicas de Azure. Para obtener más información, consulte [X12](logic-apps-enterprise-integration-x12.md).
 
 ## <a name="before-you-start"></a>Antes de comenzar
 
-Esto es lo que necesita:
+Aquí es elementos de Hola que necesita:
 
 * Una [cuenta de integración](../logic-apps/logic-apps-enterprise-integration-accounts.md) que ya esté definida y asociada a su suscripción de Azure  
 * Al menos dos [asociados](logic-apps-enterprise-integration-partners.md) que ya estén definidos en su cuenta de integración.
 
 > [!NOTE]
-> Al crear un contrato, el contenido de los mensajes que envíe al asociado o reciba de este debe coincidir con el tipo de contrato.
+> Cuando se crean un acuerdo, el contenido de hello en los mensajes de Hola que recibe o envía tooand del socio de hello debe coincidir con el tipo de contrato de Hola.
 
 Cuando haya [creado una cuenta de integración](../logic-apps/logic-apps-enterprise-integration-accounts.md) y [agregado los asociados](logic-apps-enterprise-integration-partners.md), siga estos pasos para generar un contrato EDIFACT.
 
 ## <a name="create-an-edifact-agreement"></a>Creación de un acuerdo EDIFACT 
 
-1.  Inicie sesión en [Azure Portal](http://portal.azure.com "Azure Portal"). En el menú izquierdo, seleccione **Más servicios**.
+1.  Inicie sesión en toohello [portal de Azure](http://portal.azure.com "portal de Azure"). En el menú izquierdo de hello, seleccione **más servicios**.
 
     > [!TIP]
-    > Si no ve **Más servicios**, expanda el menú. En la parte superior del menú contraído, seleccione **Mostrar menú**.
+    > Si no ve **más servicios**, es posible que tenga menú de hello tooexpand en primer lugar. Hola parte superior de hello contraído menú, seleccione **menú de mostrar**.
 
     ![En el menú izquierdo, seleccione "Más servicios"](./media/logic-apps-enterprise-integration-edifact/edifact-0.png)
 
-2. En el cuadro de búsqueda, escriba "integración" como filtro. En la lista de resultados, seleccione **Cuentas de integración**.
+2. En el cuadro de búsqueda de hello, escriba "integración" para el filtro. En la lista de resultados de hello, seleccione **cuentas de integración**.
 
     ![Filtre por "integración", seleccione "Cuentas de integración"](./media/logic-apps-enterprise-integration-edifact/edifact-1-3.png)
 
-3. En la hoja **Cuentas de integración** que se abre, seleccione la cuenta donde se vaya a crear el contrato.
+3. Hola **cuentas de integración** hoja que se abre, cuenta de integración de hello seleccione donde desea que el acuerdo de hello toocreate.
 Si no ve ninguna, [créela](../logic-apps/logic-apps-enterprise-integration-accounts.md "Información completa sobre las cuentas de integración").  
 
-    ![Selección de la cuenta de integración donde desea crear el contrato](./media/logic-apps-enterprise-integration-edifact/edifact-1-4.png)
+    ![Seleccionar cuenta de integración donde toocreate Hola acuerdo](./media/logic-apps-enterprise-integration-edifact/edifact-1-4.png)
 
-4. Seleccione el icono de **contratos**. Si no tiene un icono Acuerdos, agréguelo.   
+4. Elija hello **contratos** icono. Si no tiene un icono de acuerdos, agregar icono hello en primer lugar.   
 
     ![Elección del icono "Acuerdos"](./media/logic-apps-enterprise-integration-edifact/edifact-1-5.png)
 
-5. En la hoja Acuerdos que se abre, seleccione **Agregar**.
+5. En la hoja de contratos de Hola que se abre, elija **agregar**.
 
     ![Elección de "Agregar"](./media/logic-apps-enterprise-integration-edifact/edifact-agreement-2.png)
 
-6. En **Agregar**, escriba un valor en **Nombre** para el contrato. Para el **Tipo de contrato**, seleccione **EDIFACT**. Seleccione valores en **Asociado del host**, **Identidad del host**, **Asociado invitado** e **Identidad del invitado** para el contrato.
+6. En **Agregar**, escriba un valor en **Nombre** para el contrato. Para el **Tipo de contrato**, seleccione **EDIFACT**. Seleccione hello **socio del Host**, **identidad del Host**, **socio invitado**, y **identidad Invitado** para el acuerdo.
 
     ![Especificación de los detalles del contrato](./media/logic-apps-enterprise-integration-edifact/edifact-1.png)
 
     | Propiedad | Descripción |
     | --- | --- |
-    | Nombre |Nombre del contrato |
+    | Nombre |Nombre del contrato de Hola |
     | Tipo de contrato | Debe ser EDIFACT |
-    | Host Partner (Partner anfitrión) |Un contrato tiene asociado un partner anfitrión e invitado. El asociado del host representa la organización que configura el contrato. |
-    | Host Identity (Identidad anfitriona) |Un identificador del asociado del host. |
-    | Guest Partner (Partner invitado) |Un contrato tiene asociado un partner anfitrión e invitado. El partner invitado representa la organización que está haciendo negocios con el partner anfitrión. |
-    | Guest Identity |Un identificador del asociado invitado. |
-    | Receive Settings (Configuración de recepción) |Estas propiedades se aplican a todos los mensajes que recibe un contrato. |
-    | Send Settings (Configuración de envío) |Estas propiedades se aplican a todos los mensajes que envía un contrato. |
+    | Host Partner (Partner anfitrión) |Un contrato tiene asociado un partner anfitrión e invitado. el socio del host de Hello representa la organización de Hola que configura el acuerdo de Hola. |
+    | Host Identity (Identidad anfitriona) |Un identificador para el socio del host de Hola |
+    | Guest Partner (Partner invitado) |Un contrato tiene asociado un partner anfitrión e invitado. Socio invitado de Hello representa la organización de hello encargado de negocio con el socio del host de Hola. |
+    | Guest Identity |Un identificador para el socio invitado de Hola |
+    | Receive Settings (Configuración de recepción) |Estas propiedades aplican tooall los mensajes recibidos por un acuerdo. |
+    | Send Settings (Configuración de envío) |Estas propiedades aplican tooall los mensajes enviados por un acuerdo. |
 
 ## <a name="configure-how-your-agreement-handles-received-messages"></a>Configuración de la forma en que su contrato controla los mensajes recibidos
 
-Ahora que ha establecido las propiedades del contrato, puede configurar cómo este identifica y controla los mensajes entrantes recibidos del asociado a través de este contrato.
+Ahora que ha establecido las propiedades del acuerdo de hello, puede configurar cómo este contrato identifica y controla los mensajes entrantes recibidos del socio a través de este contrato.
 
 1.  En **Agregar**, seleccione **Configuración de recepción**.
-Configure estas propiedades en función del contrato con el asociado con el que intercambia mensajes. Para las descripciones de las propiedades, consulte las tablas de esta sección.
+Configurar estas propiedades basándose en el acuerdo de socio de Hola que intercambia mensajes con usted. Para obtener descripciones de propiedad, vea las tablas de hello en esta sección.
 
     **Configuración de recepción** se divide en las siguientes secciones: Identificadores, Confirmación, Esquemas, Números de control, Validaciones y Configuración interna.
 
     ![Selección de "Configuración de recepción"](./media/logic-apps-enterprise-integration-edifact/edifact-2.png)  
 
-2. Cuando haya terminado, asegúrese de guardar la configuración con **Aceptar**.
+2. Cuando haya terminado, asegúrese de toosave seguro de la configuración eligiendo **Aceptar**.
 
-Ahora el contrato está preparado para controlar los mensajes entrantes que cumplan la configuración seleccionada.
+Ahora, el contrato es listo toohandle entrante los mensajes que cumplen tooyour la configuración seleccionada.
 
 ### <a name="identifiers"></a>Identifiers (Identificadores)
 
@@ -107,67 +107,67 @@ Ahora el contrato está preparado para controlar los mensajes entrantes que cump
 
 | Propiedad | Descripción |
 | --- | --- |
-| Receipt of Message (CONTRL) (Recepción del mensaje [CONTRL]) |Active esta casilla para devolver una confirmación técnica (CONTRL) al remitente del intercambio. Estas confirmaciones se envían al remitente del intercambio según la configuración de envío del acuerdo. |
-| Acknowledgement (CONTRL) (Confirmación [CONTRL]) |Active esta casilla para devolver una confirmación funcional (CONTRL) al remitente del intercambio. La confirmación se envía al remitente del intercambio basándose en la configuración de envío del acuerdo. |
+| Receipt of Message (CONTRL) (Recepción del mensaje [CONTRL]) |Seleccione este tooreturn casilla un remitente de intercambio de toohello de confirmación (CONTRL) técnico. confirmación de Hola se envía el remitente de intercambio de toohello basándose en hello configuración de envío para el acuerdo de Hola. |
+| Acknowledgement (CONTRL) (Confirmación [CONTRL]) |Seleccione este tooreturn casilla (CONTRL) confirmación toohello intercambio remitente Hola confirmación funcional se envía remitente de intercambio de toohello basándose en hello configuración de envío para el acuerdo de Hola. |
 
 ### <a name="schemas"></a>Esquemas
 
 | Propiedad | Descripción |
 | --- | --- |
 | UNH2.1 (TYPE) (UNH2.1 [TIPO]) |Seleccione un tipo de conjunto de transacciones. |
-| UNH2.2 (VERSION) (UNH2.2 [VERSIÓN]) |Escriba el número de versión de mensaje. (Como mínimo un carácter; tres caracteres como máximo). |
-| UNH2.3 (RELEASE) (UNH2.3 [LANZAMIENTO]) |Escriba el número de versión de mensaje. (Como mínimo un carácter; tres caracteres como máximo). |
-| UNH2.5 (ASSOCIATED ASSIGNED CODE) (UNH2.5 [CÓDIGO ASIGNADO ASOCIADO]) |Escriba el código asignado. (Seis caracteres como máximo. Debe ser alfanumérico). |
+| UNH2.2 (VERSION) (UNH2.2 [VERSIÓN]) |Escriba el número de versión de mensaje de Hola. (Como mínimo un carácter; tres caracteres como máximo). |
+| UNH2.3 (RELEASE) (UNH2.3 [LANZAMIENTO]) |Escriba el número de versión de mensaje de Hola. (Como mínimo un carácter; tres caracteres como máximo). |
+| UNH2.5 (ASSOCIATED ASSIGNED CODE) (UNH2.5 [CÓDIGO ASIGNADO ASOCIADO]) |Escriba el código de hello asignado. (Seis caracteres como máximo. Debe ser alfanumérico). |
 | UNG2.1 (APP SENDER ID) (UNG2.1 [ID. DE REMITENTE DE APLICACIÓN]) |Escriba un valor alfanumérico con un carácter como mínimo y 35 como máximo. |
 | UNG2.2 (APP SENDER CODE QUALIFIER) (UNG2.2 [CALIFICADOR DE CÓDIGO DE REMITENTE DE APLICACIÓN]) |Escriba un valor alfanumérico con un máximo de cuatro caracteres. |
-| SCHEMA (ESQUEMA) |Seleccione el esquema cargado anteriormente que desee utilizar desde la cuenta de integración asociada. |
+| Esquema |Seleccione Hola cargado previamente esquema desee toouse desde su cuenta de integración asociado. |
 
 ### <a name="control-numbers"></a>Control Numbers (Números de control)
 | Propiedad | Descripción |
 | --- | --- |
-| Disallow Interchange Control Number duplicates (No permitir duplicados del número de control de intercambio) |Seleccione esta propiedad para bloquear los intercambios duplicados. Si la selecciona, la acción de descodificación de EDIFACT comprueba que el número de control de intercambio (UNB5) del intercambio recibido no coincide con el número de control de intercambio. Si se detecta una coincidencia, el intercambio no se procesa. |
-| Check for duplicate UNB5 every (days) (Comprobar UNB5 duplicados cada [días]) |Si elige no permitir números de control de intercambio duplicados, puede especificar el número de días en que se realizará la comprobación; para ello, indique el valor pertinente para esta configuración. |
-| Disallow Group control number duplicates (No permitir duplicados del número de control de grupo) |Seleccione esta propiedad para bloquear los intercambios con números de control de grupo duplicados (UNG5). |
-| Disallow Transaction set control number duplicates (No permitir duplicados del número de control del conjunto de transacciones) |Seleccione esta propiedad para bloquear los intercambios con números de control de conjuntos de transacciones duplicados (UNH1). |
-| EDIFACT Acknowledgement Control Number (Número de control de confirmación EDIFACT) |Para designar los números de referencia del conjunto de transacciones que se utilizará en las confirmaciones, escriba un valor para el prefijo, un intervalo de números de referencia y un sufijo. |
+| Disallow Interchange Control Number duplicates (No permitir duplicados del número de control de intercambio) |tooblock los intercambios duplicados, se selecciona esta propiedad. Si se selecciona, Hola EDIFACT descodificar acción comprueba que el número de control de intercambio de hello (UNB5) para el intercambio de hello recibido no coincide con un número de control de intercambio de los procesados previamente. Si se detecta una coincidencia, no se procesa el intercambio de Hola. |
+| Check for duplicate UNB5 every (days) (Comprobar UNB5 duplicados cada [días]) |Si ha elegido toodisallow números de control de intercambio duplicado, puede especificar Hola número de días al comprobar tooperform Hola proporcionando el valor adecuado de Hola para esta configuración. |
+| Disallow Group control number duplicates (No permitir duplicados del número de control de grupo) |tooblock intercambios con números de control de grupo duplicados (UNG5), seleccione esta propiedad. |
+| Disallow Transaction set control number duplicates (No permitir duplicados del número de control del conjunto de transacciones) |tooblock intercambios con una transacción duplicada conjunto de números de control (UNH1), seleccione esta propiedad. |
+| EDIFACT Acknowledgement Control Number (Número de control de confirmación EDIFACT) |conjunto de transacciones de Hola de toodesignate a los números de referencia para su uso en una confirmación, escriba un valor para el prefijo de hello, un intervalo de números de referencia y un sufijo. |
 
 ### <a name="validations"></a>Validations (Validaciones)
 
-Cuando haya completado cada fila de validación, se agrega otra automáticamente. Si no se especifica ninguna regla, la validación utiliza la fila "Predeterminado".
+Cuando haya completado cada fila de validación, se agrega otra automáticamente. Si no se especifica ninguna regla, validación usa fila de Hola "Default".
 
 | Propiedad | Descripción |
 | --- | --- |
-| Message Type (Tipo de mensaje) |Seleccione el tipo de mensaje EDI. |
-| EDI Validation (Validación de EDI) |Realiza una validación de EDI en los tipos de datos según lo definido en las propiedades de EDI del esquema, las restricciones de longitud, los elementos de datos vacíos y los separadores finales. |
-| Extended Validation (Validación extendida) |Si el tipo de datos no es EDI, lo que se valida es el requisito de elemento de datos, así como las repeticiones permitidas, las enumeraciones y la validación de la longitud del elemento de datos (mín./máx.). |
+| Message Type (Tipo de mensaje) |Seleccione el tipo de mensaje de Hola EDI. |
+| EDI Validation (Validación de EDI) |Realizar la validación EDI en tipos de datos definidos por el del esquema de hello EDI propiedades, las restricciones de longitud, elementos de datos vacíos y separadores finales. |
+| Extended Validation (Validación extendida) |Si el tipo de datos de hello no es EDI, validación en requisito de elemento de datos de Hola y permite la repetición, enumeraciones y datos de validación de longitud de elemento (mín./máx.). |
 | Allow Leading/Trailing Zeroes (Permitir ceros a la izquierda/finales) |Conserve los caracteres de espacio y cero iniciales o finales adicionales. No los quite. |
 | Recortar ceros iniciales y finales |Quite los caracteres de espacio y cero iniciales o finales. |
-| Trailing Separator Policy (Directiva de separador final) |Genere separadores finales. <p>Seleccione **No permitido** para prohibir los delimitadores y separadores finales en el intercambio recibido. Si el intercambio contiene delimitadores y separadores finales, se declara no válido. <p>Seleccione **Opcional** para aceptar intercambios con o sin delimitadores y separadores finales. <p>Seleccione **Obligatorio** cuando el intercambio deba tener delimitadores y separadores finales. |
+| Trailing Separator Policy (Directiva de separador final) |Genere separadores finales. <p>Seleccione **no permite** tooprohibit los delimitadores finales y separadores en hello recibieron el intercambio. Si el intercambio de hello tiene delimitadores y separadores finales, intercambio de Hola se declara no válido. <p>Seleccione **opcional** tooaccept intercambios con o sin delimitadores y separadores finales. <p>Seleccione **obligatorio** al intercambio de hello recibido debe tener delimitadores y separadores finales. |
 
 ### <a name="internal-settings"></a>Internal Settings (Configuración interna)
 
 | Propiedad | Descripción |
 | --- | --- |
-| Create empty XML tags if trailing separators are allowed (Crear etiquetas XML vacías si se permiten separadores finales) |Seleccione esta casilla para que el remitente del intercambio incluya etiquetas XML vacías para los separadores finales. |
-| Dividir intercambio como conjuntos de transacciones: suspender conjuntos de transacciones en caso de error|Analiza todos los conjuntos de transacciones de un intercambio en un documento XML independiente aplicando el sobre adecuado al conjunto de transacciones. Suspende solo los conjuntos de transacciones que no superen la validación. |
-| Dividir intercambio como conjuntos de transacciones: suspender intercambio en caso de error|Analiza todos los conjuntos de transacciones de un intercambio en un documento XML independiente aplicando el sobre adecuado. Suspende todo el intercambio cuando uno o varios conjuntos de transacciones no superan la validación. | 
-| Conservar intercambio: suspender conjuntos de transacciones en caso de error |Deja intacto el intercambio y crea un documento XML para todo el intercambio por lotes. Suspende solo los conjuntos de transacciones que no superan la validación, sin dejar de procesar el resto. |
-| Conservar intercambio: suspender intercambio en caso de error |Deja intacto el intercambio y crea un documento XML para todo el intercambio por lotes. Suspende todo el intercambio cuando uno o varios conjuntos de transacciones no superan la validación. |
+| Create empty XML tags if trailing separators are allowed (Crear etiquetas XML vacías si se permiten separadores finales) |Seleccione este remitente de intercambio de casilla de verificación toohave Hola incluyen vacía etiquetas XML para los separadores finales. |
+| Dividir intercambio como conjuntos de transacciones: suspender conjuntos de transacciones en caso de error|Analiza cada conjunto de transacciones en un intercambio en un documento XML independiente aplicando el conjunto de transacciones de toohello Hola sobre adecuado. Suspender Hola de solo los conjuntos de transacciones que no superan la validación. |
+| Dividir intercambio como conjuntos de transacciones: suspender intercambio en caso de error|Analiza cada conjunto de transacciones en un intercambio en un documento XML independiente aplicando el sobre adecuado Hola. Suspender el intercambio completo de hello cuando uno o varios conjuntos de transacciones de intercambio de hello no superan la validación. | 
+| Conservar intercambio: suspender conjuntos de transacciones en caso de error |Intercambio de hello permanecen intactos, crea un documento XML para todo el intercambio por lotes Hola. Suspender Hola de solo los conjuntos de transacciones que no superan la validación, mientras continúa tooprocess establece todas las demás transacciones. |
+| Conservar intercambio: suspender intercambio en caso de error |Intercambio de hello permanecen intactos, crea un documento XML para todo el intercambio por lotes Hola. Suspender el intercambio completo de hello cuando uno o varios conjuntos de transacciones de intercambio de hello no superan la validación. |
 
 ## <a name="configure-how-your-agreement-sends-messages"></a>Configuración de la forma en que su contrato envía mensajes
 
-Puede configurar cómo este contrato identifica y administra los mensajes que se envían a los asociados a través de él.
+Puede configurar cómo este contrato identifica y controla los mensajes salientes que envían a tooyour asociados a través de este contrato.
 
 1.  En **Agregar**, seleccione **Send Settings** (Configuración de envío).
-Configure estas propiedades en función del contrato con el asociado con el que intercambia mensajes. Para las descripciones de las propiedades, consulte las tablas de esta sección.
+Configure estas propiedades en función del contrato con el asociado con el que intercambia mensajes. Para obtener descripciones de propiedad, vea las tablas de hello en esta sección.
 
     **Send Settings** (Configuración de envío) se organiza en las siguientes secciones: Identificadores, Confirmación, Esquemas, Sobres, Juegos de caracteres y separadores, Números de control y Validaciones.
 
     !["Send Settings" (Configuración de envío)](./media/logic-apps-enterprise-integration-edifact/edifact-3.png)    
 
-2. Cuando haya terminado, asegúrese de guardar la configuración con **Aceptar**.
+2. Cuando haya terminado, asegúrese de toosave seguro de la configuración eligiendo **Aceptar**.
 
-Ahora el contrato está preparado para controlar los mensajes salientes que cumplan la configuración seleccionada.
+Ahora el contrato es listo toohandle los mensajes que se ajustan tooyour seleccionado configuración salientes.
 
 ### <a name="identifiers"></a>Identifiers (Identificadores)
 
@@ -183,74 +183,74 @@ Ahora el contrato está preparado para controlar los mensajes salientes que cump
 ### <a name="acknowledgment"></a>Acknowledgement (Confirmación)
 | Propiedad | Descripción |
 | --- | --- |
-| Receipt of Message (CONTRL) (Recepción del mensaje [CONTRL]) |Active esta casilla si el asociado del host espera recibir una confirmación técnica (CONTRL). Esta configuración especifica que el asociado hospedado que envía el mensaje solicita una confirmación del asociado invitado. |
-| Acknowledgement (CONTRL) (Confirmación [CONTRL]) |Active esta casilla si el asociado hospedado espera recibir una confirmación funcional (CONTRL). Esta configuración especifica que el asociado hospedado que envía el mensaje solicita una confirmación del asociado invitado. |
-| Generate SG1/SG4 loop for accepted transaction sets (Generar bucle SG1/SG4 en los conjuntos de transacciones aceptadas) |Si elige solicitar una confirmación funcional, active esta casilla para forzar la generación de bucles SG1/SG4 en confirmaciones CONTRL funcionales para conjuntos de transacciones aceptados. |
+| Receipt of Message (CONTRL) (Recepción del mensaje [CONTRL]) |Seleccione esta casilla si el socio comercial de hello hospedado espera tooreceive una confirmación técnica (CONTRL). Esta configuración especifica a dicho socio hospedado de hello, que envía mensajes de bienvenida, solicita una confirmación del socio invitado de Hola. |
+| Acknowledgement (CONTRL) (Confirmación [CONTRL]) |Seleccione esta casilla si el socio comercial de hello hospedado espera tooreceive una confirmación funcional (CONTRL). Esta configuración especifica a dicho socio hospedado de hello, que envía mensajes de bienvenida, solicita una confirmación del socio invitado de Hola. |
+| Generate SG1/SG4 loop for accepted transaction sets (Generar bucle SG1/SG4 en los conjuntos de transacciones aceptadas) |Si ha elegido toorequest una confirmación funcional, seleccione esta casilla de verificación tooforce la generación de bucles SG1/SG4 en confirmaciones CONTRL funcionales para conjuntos de transacciones aceptados. |
 
 ### <a name="schemas"></a>Esquemas
 | Propiedad | Descripción |
 | --- | --- |
 | UNH2.1 (TYPE) (UNH2.1 [TIPO]) |Seleccione un tipo de conjunto de transacciones. |
-| UNH2.2 (VERSION) (UNH2.2 [VERSIÓN]) |Escriba el número de versión de mensaje. |
-| UNH2.3 (RELEASE) (UNH2.3 [LANZAMIENTO]) |Escriba el número de versión de mensaje. |
-| SCHEMA (ESQUEMA) |Seleccione el esquema que se utilizará. Los esquemas se encuentran en la cuenta de integración. Para obtener acceso a los esquemas, antes debe vincular su cuenta de integración con su aplicación lógica. |
+| UNH2.2 (VERSION) (UNH2.2 [VERSIÓN]) |Escriba el número de versión de mensaje de Hola. |
+| UNH2.3 (RELEASE) (UNH2.3 [LANZAMIENTO]) |Escriba el número de versión de mensaje de Hola. |
+| Esquema |Seleccione Hola esquema toouse. Los esquemas se encuentran en la cuenta de integración. tooaccess los esquemas, vincular primero la aplicación de la lógica de la cuenta tooyour integración. |
 
 ### <a name="envelopes"></a>Envelopes (Sobres)
 | Propiedad | Descripción |
 | --- | --- |
 | UNB8 (Processing Priority Code) (UNB8 [Código de prioridad de procesamiento]) |Escriba un valor alfabético con un solo carácter. |
 | UNB10 (Communication Agreement) (UNB10 [Acuerdo de comunicaciones]) |Escriba un valor alfanumérico con un carácter como mínimo y 40 como máximo. |
-| UNB11 (Test Indicator) (UNB11 [Indicador de prueba]) |Active esta casilla para indicar que el intercambio generado son datos de prueba |
-| Aplicar segmento UNA (notificación del servicio) |Active esta casilla para generar un segmento UNA para el intercambio que se va a enviar. |
-| Aplicar segmentos UNG (encabezado de grupo funcional) |Active esta casilla para crear segmentos de agrupación en el encabezado de grupo funcional en los mensajes enviados al asociado invitado. Los siguientes valores se utilizan para crear los segmentos UNG: <p>En el caso de **UNG1**, escriba un valor alfanumérico con un mínimo de un carácter y un máximo de seis caracteres. <p>En el caso de **UNG2.1**, escriba un valor alfanumérico con un mínimo de un carácter y un máximo de 35 caracteres. <p>En el caso de **UNG2.2**, escriba un valor alfanumérico con un máximo de cuatro caracteres. <p>En el caso de **UNG3.1**, escriba un valor alfanumérico con un mínimo de un carácter y un máximo de 35 caracteres. <p>En el caso de **UNG3.2**, escriba un valor alfanumérico con un máximo de cuatro caracteres. <p>En el caso de **UNG6**, escriba un valor alfanumérico con un mínimo de un carácter y un máximo de tres. <p>En el caso de **UNG7.1**, escriba un valor alfanumérico con un mínimo de un carácter y un máximo de tres caracteres. <p>En el caso de **UNG7.2**, escriba un valor alfanumérico con un mínimo de un carácter y un máximo de tres caracteres. <p>En el caso de **UNG7.3**, escriba un valor alfanumérico con un mínimo de un carácter y un máximo de seis caracteres. <p>En el caso de **UNG8**, escriba un valor alfanumérico con un carácter como mínimo y 14 caracteres como máximo. |
+| UNB11 (Test Indicator) (UNB11 [Indicador de prueba]) |Seleccione este tooindicate casilla de verificación que Hola Intercambio generado tenga datos de prueba |
+| Aplicar segmento UNA (notificación del servicio) |Seleccione este toogenerate casilla un segmento UNA para toobe de intercambio de hello enviado. |
+| Aplicar segmentos UNG (encabezado de grupo funcional) |Seleccione este toocreate casilla segmentos de agrupación en el encabezado de grupo funcional de Hola Hola mensajes enviados toohello invitado asociado. Hello valores son toocreate usado hello UNG segmentos: <p>En el caso de **UNG1**, escriba un valor alfanumérico con un mínimo de un carácter y un máximo de seis caracteres. <p>En el caso de **UNG2.1**, escriba un valor alfanumérico con un mínimo de un carácter y un máximo de 35 caracteres. <p>En el caso de **UNG2.2**, escriba un valor alfanumérico con un máximo de cuatro caracteres. <p>En el caso de **UNG3.1**, escriba un valor alfanumérico con un mínimo de un carácter y un máximo de 35 caracteres. <p>En el caso de **UNG3.2**, escriba un valor alfanumérico con un máximo de cuatro caracteres. <p>En el caso de **UNG6**, escriba un valor alfanumérico con un mínimo de un carácter y un máximo de tres. <p>En el caso de **UNG7.1**, escriba un valor alfanumérico con un mínimo de un carácter y un máximo de tres caracteres. <p>En el caso de **UNG7.2**, escriba un valor alfanumérico con un mínimo de un carácter y un máximo de tres caracteres. <p>En el caso de **UNG7.3**, escriba un valor alfanumérico con un mínimo de un carácter y un máximo de seis caracteres. <p>En el caso de **UNG8**, escriba un valor alfanumérico con un carácter como mínimo y 14 caracteres como máximo. |
 
 ### <a name="character-sets-and-separators"></a>Character Sets and Separators (Juegos de caracteres y separadores)
 
-Además del juego de caracteres, puede especificar un conjunto de delimitadores diferente para cada tipo de mensaje. Si no se especifica un juego de caracteres en un esquema de mensaje concreto, se usará el juego de caracteres predeterminado.
+Aparte de juego de caracteres de hello, puede especificar un conjunto diferente de toobe delimitadores utilizado para cada tipo de mensaje. Si no se especifica un juego de caracteres para un esquema de mensaje dado, se utiliza el juego de caracteres predeterminado de Hola.
 
 | Propiedad | Descripción |
 | --- | --- |
-| UNB1.1 (System Identifier) (UNB1.1 [Identificador del sistema]) |Seleccione el conjunto de caracteres EDIFACT que se aplicará al intercambio de salida. |
-| SCHEMA (ESQUEMA) |Seleccione un esquema en la lista desplegable. Después de completar cada fila, se agrega automáticamente una nueva. Para el esquema seleccionado, elija el conjunto de separadores que desee usar, en función de las siguientes descripciones. |
-| Tipo de entrada |Seleccione un tipo de entrada en la lista desplegable. |
-| Separador de componentes |Para separar elementos de datos compuestos, escriba un solo carácter. |
-| Separador de elementos de datos |Para separar elementos de datos simples dentro de elementos de datos compuestos, escriba un solo carácter. |
-| Terminador de segmento |Para indicar el final de un segmento EDI, escriba un solo carácter. |
-| Sufijo |Seleccione el carácter que se usa con el identificador de segmento. Si designa un sufijo, el elemento de datos del terminador de segmento podrá estar vacío. Si se deja vacío el terminador de segmento, deberá designar un sufijo. |
+| UNB1.1 (System Identifier) (UNB1.1 [Identificador del sistema]) |Seleccione Hola de caracteres EDIFACT establece toobe aplicado en hello intercambio de salida. |
+| Esquema |Seleccione un esquema de la lista desplegable de Hola. Después de completar cada fila, se agrega automáticamente una nueva. Para el esquema seleccionado de hello, los separadores de hello seleccione establecen que desea toouse, en función de hello siguientes descripciones de separador. |
+| Tipo de entrada |Seleccione un tipo de entrada de lista desplegable de Hola. |
+| Separador de componentes |elementos de datos compuestos tooseparate, escriba un único carácter. |
+| Separador de elementos de datos |tooseparate elementos de datos simples dentro de los elementos de datos compuesto, escriba un único carácter. |
+| Terminador de segmento |final de hello tooindicate de un segmento EDI, escriba un único carácter. |
+| Sufijo |Seleccione el carácter de Hola que se usa con el identificador de segmento de Hola. Si designa un sufijo, Hola elemento de datos del terminador de segmento puede estar vacío. Si el terminador de segmento de Hola se deja vacío, debe designar un sufijo. |
 
 ### <a name="control-numbers"></a>Control Numbers (Números de control)
 | Propiedad | Descripción |
 | --- | --- |
-| UNB5 (Interchange Control Number) (UNB5 [Número de control de intercambio]) |Escriba un prefijo, un intervalo de valores para el número de control de intercambio y un sufijo. Estos valores se utilizan para generar un intercambio saliente. El prefijo y el sufijo son opcionales; el número de control, obligatorio. El número de control se incrementa para cada nuevo mensaje; el prefijo y el sufijo siguen siendo los mismos. |
-| UNG5 (Group Control Number) (UNG5 [Número de control de grupo]) |Escriba un prefijo, un intervalo de valores para el número de control de intercambio y un sufijo. Estos valores se utilizan para generar el número de control de grupo. El prefijo y el sufijo son opcionales; el número de control, obligatorio. El número de control se incrementa para cada nuevo mensaje hasta que se alcanza el valor máximo; el prefijo y el sufijo siguen siendo los mismos. |
-| UNH1 (Message Header Reference Number) (UNH1 [Número de referencia de encabezado de mensaje]) |Escriba un prefijo, un intervalo de valores para el número de control de intercambio y un sufijo. Estos valores se utilizan para generar el número de referencia de encabezado del mensaje. El prefijo y el sufijo son opcionales; el número de referencia, obligatorio. El número de referencia se incrementa para cada nuevo mensaje; el prefijo y el sufijo siguen siendo los mismos. |
+| UNB5 (Interchange Control Number) (UNB5 [Número de control de intercambio]) |Escriba un prefijo, un intervalo de valores para el número de control de intercambio de Hola y un sufijo. Estos valores son toogenerate usa un intercambio saliente. sufijo y prefijo de hello son opcionales, mientras que el número de control de hello es obligatorio. número de control de Hola se incrementa para cada mensaje nuevo; prefijo de Hola y el sufijo continúan Hola mismo. |
+| UNG5 (Group Control Number) (UNG5 [Número de control de grupo]) |Escriba un prefijo, un intervalo de valores para el número de control de intercambio de Hola y un sufijo. Estos valores se usan número de control de grupo de toogenerate Hola. sufijo y prefijo de hello son opcionales, mientras que el número de control de hello es obligatorio. número de control de Hola se incrementa para cada nuevo mensaje hasta que se alcanza el valor máximo de hello; prefijo de Hola y el sufijo continúan Hola mismo. |
+| UNH1 (Message Header Reference Number) (UNH1 [Número de referencia de encabezado de mensaje]) |Escriba un prefijo, un intervalo de valores para el número de control de intercambio de Hola y un sufijo. Estos valores se usan número de referencia de encabezado de mensaje de Hola de toogenerate. sufijo y prefijo de hello son opcionales, mientras que el número de referencia de hello es obligatorio. número de referencia de Hola se incrementa para cada mensaje nuevo; prefijo de Hola y el sufijo continúan Hola mismo. |
 
 ### <a name="validations"></a>Validations (Validaciones)
 
-Cuando haya completado cada fila de validación, se agrega otra automáticamente. Si no se especifica ninguna regla, la validación utiliza la fila "Predeterminado".
+Cuando haya completado cada fila de validación, se agrega otra automáticamente. Si no se especifica ninguna regla, validación usa fila de Hola "Default".
 
 | Propiedad | Descripción |
 | --- | --- |
-| Message Type (Tipo de mensaje) |Seleccione el tipo de mensaje EDI. |
-| EDI Validation (Validación de EDI) |Realiza una validación de EDI en los tipos de datos según lo definido en las propiedades de EDI del esquema, las restricciones de longitud, los elementos de datos vacíos y los separadores finales. |
-| Extended Validation (Validación extendida) |Si el tipo de datos no es EDI, lo que se valida es el requisito de elemento de datos, así como las repeticiones permitidas, las enumeraciones y la validación de la longitud del elemento de datos (mín./máx.). |
+| Message Type (Tipo de mensaje) |Seleccione el tipo de mensaje de Hola EDI. |
+| EDI Validation (Validación de EDI) |Realizar la validación EDI en tipos de datos tal como se define en las propiedades EDI de hello del esquema de hello, las restricciones de longitud, elementos de datos vacíos y separadores finales. |
+| Extended Validation (Validación extendida) |Si el tipo de datos de hello no es EDI, validación en requisito de elemento de datos de Hola y permite la repetición, enumeraciones y datos de validación de longitud de elemento (mín./máx.). |
 | Allow Leading/Trailing Zeroes (Permitir ceros a la izquierda/finales) |Conserve los caracteres de espacio y cero iniciales o finales adicionales. No los quite. |
 | Recortar ceros iniciales y finales |Quite los ceros iniciales o finales. |
-| Trailing Separator Policy (Directiva de separador final) |Genere separadores finales. <p>Seleccione **No permitido** para prohibir los delimitadores y separadores finales en el intercambio enviado. Si el intercambio contiene delimitadores y separadores finales, se declara no válido. <p>Seleccione **Opcional** para enviar intercambios con o sin delimitadores y separadores finales. <p>Seleccione **Obligatorio** si el intercambio enviado debe contener delimitadores y separadores finales. |
+| Trailing Separator Policy (Directiva de separador final) |Genere separadores finales. <p>Seleccione **no permite** tooprohibit los delimitadores finales y separadores en hello envían el intercambio. Si el intercambio de hello tiene delimitadores y separadores finales, intercambio de Hola se declara no válido. <p>Seleccione **opcional** toosend intercambios con o sin delimitadores y separadores finales. <p>Seleccione **obligatorio** si intercambio Hola enviado debe tener delimitadores y separadores finales. |
 
 ## <a name="find-your-created-agreement"></a>Búsqueda del contrato creado
 
-1.  Cuando termine de establecer las propiedades del contrato, en la hoja **Agregar**, elija **Aceptar** para terminar de crear el contrato y volver a la hoja de la cuenta de integración.
+1.  Cuando termine de establecer las propiedades de acuerdo, en hello **agregar** hoja, elija **Aceptar** toofinish crear acuerdo y hoja de cuenta de la integración de tooyour devuelto.
 
     Ahora el contrato recién agregado aparece en la lista **Acuerdos**.
 
-2.  También puede ver los contratos en la información general de la cuenta de integración. En la hoja de la cuenta de integración, elija **Información general** y seleccione el icono **Acuerdos**. 
+2.  También puede ver los contratos en la información general de la cuenta de integración. En la hoja de la cuenta de integración, elija **Introducción**, a continuación, seleccione hello **contratos** icono. 
 
-    ![Elección del icono "Acuerdos" para ver todos los contratos](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
+    ![Elija "Acuerdos" icono tooview todos los contratos](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
 
 ## <a name="view-swagger-file"></a>Ver el archivo de Swagger
-Para ver los detalles de Swagger para el conector EDIFACT, consulte [EDIFACT](/connectors/edifact/).
+detalles de Swagger de tooview hello para el conector de saludo EDIFACT, vea [EDIFACT](/connectors/edifact/).
 
 ## <a name="learn-more"></a>Más información
-* [Más información sobre Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Información sobre Enterprise Integration Pack")  
+* [Obtener más información sobre Hola paquete de integración empresarial](logic-apps-enterprise-integration-overview.md "Obtenga más información sobre el paquete de integración empresarial")  
 

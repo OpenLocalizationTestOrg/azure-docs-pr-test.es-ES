@@ -1,6 +1,6 @@
 ---
-title: "Guía de optimización y rendimiento de la actividad de copia | Microsoft Docs"
-description: "Conozca los factores más importantes que afectan al rendimiento del movimiento de datos en Data Factory de Azure cuando se usa la actividad de copia."
+title: "aaaCopy actividad Guía de rendimiento y optimización | Documentos de Microsoft"
+description: "Obtenga información acerca de los factores claves que afectan al rendimiento de Hola de movimiento de datos en Data Factory de Azure cuando se usa la actividad de copia."
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: jingwang
-ms.openlocfilehash: 2779655aee3af3a351b30f18b4c9d9918e9f2210
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: b0fb5a76c34752d07e8ddfffbb799a05fb5d6be6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Guía de optimización y rendimiento de la actividad de copia
-Copiar actividad de Azure Data Factory ofrece una solución de carga de datos de alto rendimiento fiable y segura de primera clase. Le permite copiar decenas de terabytes de datos al día en una amplia variedad de almacenes de datos locales y en la nube. Un rendimiento acelerado de la carga de datos es clave para garantizar que puede centrarse en el problema principal de los "macrodatos": crear soluciones de análisis avanzadas y profundizar en todos esos datos.
+Copiar actividad de Azure Data Factory ofrece una solución de carga de datos de alto rendimiento fiable y segura de primera clase. Permite toocopy decenas de terabytes de datos cada día en una gran variedad de nube y almacenes de datos local. Rendimiento de carga de datos de ultrarápido están tooensure clave que pueda centrarse en el problema de "big data" hello principal: compilar soluciones de análisis avanzados y obtener información detallada de todos los datos.
 
-Azure proporciona un conjunto de soluciones de almacén de datos y almacenamiento de datos de clase empresarial, y la actividad de copia ofrece una experiencia de carga de datos enormemente optimizada que es fácil de configurar e instalar. Con solo una actividad de copia, puede conseguir:
+Azure proporciona un conjunto de nivel empresarial soluciones de almacenamiento de datos y el almacenamiento de datos y la actividad de copia ofrece una experiencia que resulta fácil tooconfigure y configurar de carga de datos altamente optimizadas. Con solo una actividad de copia, puede conseguir:
 
 * Cargar datos en **Azure SQL Data Warehouse** a **1,2 GBps**. Para un tutorial con un caso de uso, consulte [Load 1 TB into Azure SQL Data Warehouse under 15 minutes with Azure Data Factory](data-factory-load-sql-data-warehouse.md) (Carga de 1 TB en Azure SQL Data Warehouse en 15 minutos con Azure Data Factory).
 * Cargar datos en **Azure Blob Storage** a **1,0 GBps**
@@ -31,9 +31,9 @@ Azure proporciona un conjunto de soluciones de almacén de datos y almacenamient
 
 En este artículo se describe:
 
-* [Números de referencia de rendimiento](#performance-reference) , para almacenes de datos origen y receptor que le ayudan a planear su proyecto.
-* Características que pueden aumentar el rendimiento de la copia en diferentes escenarios, como [unidades de movimiento de datos de nube](#cloud-data-movement-units), [copia en paralelo](#parallel-copy) y [copia almacenada provisionalmente](#staged-copy);
-* [Directrices de ajuste de rendimiento](#performance-tuning-steps) , acerca de cómo optimizar el rendimiento y los factores clave que pueden afectar al rendimiento de la copia.
+* [Los números de referencia de rendimiento](#performance-reference) compatible toohelp de almacenes de datos de origen y el receptor tiene previsto del proyecto.
+* Hola de características que pueden mejorar el rendimiento de copia en diversos escenarios, incluidos [unidades de movimiento de datos en la nube](#cloud-data-movement-units), [copia en paralelo](#parallel-copy), y [provisionalmente copia](#staged-copy);
+* [Directrices de ajuste de rendimiento](#performance-tuning-steps) en cómo tootune Hola hello y rendimiento claves factores que pueden afectar a copian el rendimiento.
 
 > [!NOTE]
 > Si no está familiarizado con la actividad de copia, consulte [Movimiento de datos con la actividad de copia](data-factory-data-movement-activities.md) antes de leer este artículo.
@@ -41,16 +41,16 @@ En este artículo se describe:
 
 ## <a name="performance-reference"></a>Referencia de rendimiento
 
-Como referencia, la tabla siguiente muestra la cantidad de procesamiento de copias en MBps para los pares origen-receptor especificados en función de pruebas internas. A efectos de comparación, también muestra cómo distintos valores de [unidades de movimiento de datos de nube](#cloud-data-movement-units) o de [escalabilidad de Data Management Gateway](data-factory-data-management-gateway-high-availability-scalability.md) (varios nodos de puerta de enlace) pueden contribuir al rendimiento de copias.
+Como referencia, tabla siguiente se muestra hello copia rendimiento número en MBps para hello tiene pares de origen y el receptor basados en las pruebas internas. A efectos de comparación, también muestra cómo distintos valores de [unidades de movimiento de datos de nube](#cloud-data-movement-units) o de [escalabilidad de Data Management Gateway](data-factory-data-management-gateway-high-availability-scalability.md) (varios nodos de puerta de enlace) pueden contribuir al rendimiento de copias.
 
 ![Matriz de rendimiento](./media/data-factory-copy-activity-performance/CopyPerfRef.png)
 
 
-**Puntos a tener en cuenta:**
-* La capacidad de proceso se calcula con la siguiente fórmula: [tamaño de los datos leídos del origen]/[duración de la ejecución de Copiar actividad].
-* Los números de referencia de rendimiento de la tabla se midieron mediante el conjunto de datos [TPC-H](http://www.tpc.org/tpch/) en una ejecución de una única actividad de copia.
-* En los almacenes de datos de Azure, el origen y el receptor se encuentran en la misma región de Azure.
-* Para la copia híbrida entre almacenes de datos locales y en la nube, cada nodo de puerta de enlace se ejecutaba en un equipo independiente del almacén de datos local con la especificación siguiente. Si se ha ejecutado una única actividad en la puerta de enlace, la operación de copia solo ha consumido una pequeña parte del ancho de banda de red, memoria y CPU de la máquina de prueba. Obtenga más información en [Consideraciones sobre Data Management Gateway](#considerations-for-data-management-gateway).
+**Toonote puntos:**
+* El rendimiento se calcula utilizando Hola siguiente fórmula: [tamaño de los datos leídos del origen] / [duración de la ejecución de actividad de copia].
+* números de referencia de rendimiento de Hello en la tabla de Hola se midieron mediante [TPC-H](http://www.tpc.org/tpch/) conjunto de datos en una actividad de copia individual en ejecución.
+* En los almacenes de datos de Azure, origen de Hola y el receptor son Hola misma región de Azure.
+* Para la copia híbrida entre local y nube almacenes de datos, cada nodo de puerta de enlace se estaba ejecutando en un equipo que estaba independiente Hola local almacén de datos con por debajo de la especificación. Durante la ejecución de una sola actividad de puerta de enlace, operación de copia de hello consume solo una pequeña parte de la máquina de pruebas de hello CPU, memoria o ancho de banda de red. Obtenga más información en [Consideraciones sobre Data Management Gateway](#considerations-for-data-management-gateway).
     <table>
     <tr>
         <td>CPU</td>
@@ -68,27 +68,27 @@ Como referencia, la tabla siguiente muestra la cantidad de procesamiento de copi
 
 
 > [!TIP]
-> Para lograr un mayor rendimiento, use más unidades de movimiento de datos (DMU) que el número máximo de DMU predeterminado, que es 32 para una ejecución de actividad de copia de nube a nube. Por ejemplo, con 100 DMU, puede copiar datos de Azure Blob a Azure Data Lake Store a una velocidad de **1 GBps**. Consulte la sección [Unidades de movimiento de datos en la nube](#cloud-data-movement-units) para más detalles sobre esta característica y el escenario admitido. Póngase en contacto con el [soporte técnico de Azure](https://azure.microsoft.com/support/) para solicitar más DMU.
+> Puede lograr un mayor rendimiento mediante el aprovechamiento de más unidades de movimiento de datos (DMUs) que Hola predeterminado DMUs máximos, que es 32 para una actividad de copia de nube para ejecutar. Por ejemplo, con 100 DMU, puede copiar datos de Azure Blob a Azure Data Lake Store a una velocidad de **1 GBps**. Vea hello [unidades de movimiento de datos en la nube](#cloud-data-movement-units) sección para obtener más información acerca de esta característica y Hola admite el escenario. Póngase en contacto con [soporte técnico de Azure](https://azure.microsoft.com/support/) toorequest DMUs más.
 
 ## <a name="parallel-copy"></a>Copia en paralelo
-Puede leer datos del origen o escribir datos en el destino **en paralelo dentro de una ejecución de actividad de copia**. Esta característica mejora el rendimiento de una operación de copia y reduce el tiempo necesario para mover datos.
+Puede leer el origen de datos de Hola o escribir el destino de datos toohello **en paralelo en una ejecución de la actividad de copia**. Esta característica mejora el rendimiento de Hola de una operación de copia y reduce el tiempo de hello tarda toomove datos.
 
-Esta configuración es diferente de la propiedad **concurrency** de la definición de actividad. La propiedad **concurrency** determina el número de **ejecuciones simultáneas de la actividad de copia** para procesar datos de diferentes ventanas de actividad (de 1 a.m. a 2 a.m., de 2 a.m. a 3 a.m. y de 3 a.m. a 4 a.m., etc.). Esta funcionalidad es útil cuando se realiza una carga histórica. La funcionalidad de copia en paralelo se aplica a la **ejecución de una única actividad**.
+Esta configuración es diferente de hello **simultaneidad** propiedad en la definición de actividad de Hola. Hola **simultaneidad** propiedad determina el número de Hola de **se ejecuta la actividad simultánea de copia** tooprocess datos desde windows actividad diferente (1 too2 A.M. AM, ESTOY 2 too3 AM, ESTOY 3 too4 AM, y así sucesivamente). Esta funcionalidad es útil cuando se realiza una carga histórica. capacidad de copia en paralelo de Hola aplica tooa **única de ejecución de actividad**.
 
-Echemos un vistazo a un escenario de ejemplo. En el ejemplo siguiente, se van a procesar varios sectores del pasado. Data Factory ejecuta una única instancia de actividad de copia (una ejecución de actividad) para cada segmento:
+Echemos un vistazo a un escenario de ejemplo. En el siguiente ejemplo de Hola, varios sectores de hello último necesitan toobe procesado. Data Factory ejecuta una única instancia de actividad de copia (una ejecución de actividad) para cada segmento:
 
-* El segmento de datos de la primera ventana de actividad ( de 1 a.m. a 2 a.m.) == > ejecución de actividad 1
-* El segmento de datos de la segunda ventana de actividad (de 2 a.m. a 3 a.m.) == > ejecución de actividad 2
-* El segmento de datos de la tercera ventana de actividad (de 3 a.m. a 4 a.m.) == > ejecución de actividad 3
+* segmento de datos de Hola desde la primera ventana de actividad hello (1 too2 AM ESTOY) == > actividad ejecuta 1
+* segmento de datos de saludo de la segunda ventana de actividad hello (2 too3 AM ESTOY) == > actividad ejecuta 2
+* segmento de datos de saludo de la segunda ventana de actividad hello (3 too4 AM ESTOY) == > actividad ejecuta 3
 
 y así sucesivamente.
 
-En este ejemplo, cuando el valor de **concurrency** está establecido en 2, la **ejecución de actividad 1** y la **ejecución de actividad 2** copian datos de dos ventanas de actividad **a la vez** para mejorar el rendimiento del movimiento de datos. Sin embargo, si hay varios archivos asociados con la ejecución de actividad 1, el servicio de movimiento de datos copia de uno en uno los archivos del origen al destino.
+En este ejemplo, cuando hello **simultaneidad** se establece el valor too2, **actividad ejecuta 1** y **actividad ejecuta 2** copiar datos desde dos ventanas de la actividad **simultáneamente**  tooimprove rendimiento del movimiento de datos. Sin embargo, si varios archivos están asociados con la actividad de ejecución 1, servicio de movimiento de datos de hello copia archivos desde Hola origen toohello destino archivos a la vez.
 
 ### <a name="cloud-data-movement-units"></a>Unidades de movimiento de datos de nube
-Una **unidad de movimiento de datos (DMU) de nube** es una medida que representa la eficacia (una combinación de CPU, memoria y asignación de recursos de red) de una única unidad en Data Factory. Una DMU podría utilizarse en una operación de copia de una nube a otra, pero no en una copia híbrida.
+A **unidad de movimiento de datos en la nube (DMU)** es una medida que representa la potencia de hello (una combinación de asignación de recursos de red, CPU y memoria) de una sola unidad de factoría de datos. Una DMU podría utilizarse en una operación de copia de una nube a otra, pero no en una copia híbrida.
 
-De forma predeterminada, Data Factory usa una única DMU para realizar una única ejecución de la actividad de copia. Para reemplazar esta configuración predeterminada, especifique un valor para la propiedad **cloudDataMovementUnits** de la manera siguiente. Para más información sobre el nivel de ganancia de rendimiento que puede obtener al configurar más unidades para un origen y un receptor de copia específicos, consulte la [referencia de rendimiento](#performance-reference).
+De forma predeterminada, factoría de datos utiliza un tooperform DMU nube solo una única actividad de copia que se ejecute. toooverride este valor predeterminado, especifique un valor para hello **cloudDataMovementUnits** propiedad tal como se indica a continuación. Para obtener información sobre el nivel de Hola de ganancia de rendimiento podría obtener cuando se configura más unidades para un origen de copia específica y el receptor, vea hello [referencia de rendimiento](#performance-reference).
 
 ```json
 "activities":[  
@@ -110,24 +110,24 @@ De forma predeterminada, Data Factory usa una única DMU para realizar una únic
     }
 ]
 ```
-Los **valores admitidos** para la propiedad **cloudDataMovementUnits** son 1 (predeterminado), 2, 4, 8, 16 y 32. El **número real de DMS de nube** que usa la operación de copia en tiempo de ejecución es igual o inferior al valor configurado, según el patrón de datos.
+Hola **valores permitidos** para hello **cloudDataMovementUnits** propiedad son 1 (valor predeterminado), 2, 4, 8, 16, 32. Hola **número real de nube DMUs** que la operación de copia de Hola se utiliza en tiempo de ejecución es igual tooor menor que valor Hola configurado, dependiendo de su modelo de datos.
 
 > [!NOTE]
-> Si necesita más DMU de nube para aumentar el rendimiento, póngase en contacto con el [servicio técnico de Azure](https://azure.microsoft.com/support/). La configuración de 8 o más solo funciona actualmente cuando se **copian varios archivos de Blob Storage, Data Lake Store, Amazon S3, FTP en la nube o SFTP en la nube a Blob Storage, Data Lake Store o Azure SQL Database**.
+> Si necesita más DMU de nube para aumentar el rendimiento, póngase en contacto con el [servicio técnico de Azure](https://azure.microsoft.com/support/). Configuración de 8 y versiones posteriores actualmente sólo funcionan cuando se **copiar varios archivos de Blob almacenamiento/almacén de Data Lake/Amazon S3/nube FTP/nube SFTP tooBlob almacenamiento o almacén de Data Lake/SQL Azure base de datos SQL**.
 >
 
 ### <a name="parallelcopies"></a>parallelCopies
-Puede usar la propiedad **parallelCopies** para indicar el paralelismo que quiere que use la actividad de copia. Esta propiedad se puede considerar como el número máximo de subprocesos dentro de la actividad de copia que se pueden leer del origen o escribir en los almacenes de datos receptores en paralelo.
+Puede usar hello **parallelCopies** paralelismo de hello tooindicate de propiedad que desea que la actividad de copia toouse. Esta propiedad se puede considerar como número máximo de Hola de subprocesos dentro de la actividad de copia que se puede leer desde el origen o escribir tooyour receptor los almacenes de datos en paralelo.
 
-Para cada ejecución de actividad de copia, Data Factory determina el número de copias en paralelo que se usarán para copiar datos del almacén de datos de origen al almacén de datos de destino. El número predeterminado de copias en paralelo que use dependerá del tipo de origen y receptor que vaya a emplear.  
+Para cada ejecución de actividad de copia, factoría de datos determina el número de Hola de paralelo copia toouse toocopy datos de almacén de datos de origen de Hola y almacén de datos de destino de toohello. número predeterminado de Hola de copias en paralelo que utiliza depende de tipo de Hola de origen y receptor que está usando.  
 
 | Origen y receptor | Recuento predeterminado de copias en paralelo determinado por servicio |
 | --- | --- |
-| Copia de datos entre almacenes basados en archivos (Blob Storage, Data Lake Store, Amazon S3, un sistema de archivos local, un HDFS local) |Entre 1 y 32. Depende del tamaño de los archivos y del número de unidades de movimiento de datos (DMU) de nube usadas para copiar datos entre dos almacenes de datos de nube; o de la configuración física de la máquina de puerta de enlace usada para una copia híbrida (para copiar datos a o desde un almacén de datos local). |
-| Copia de datos desde **cualquier almacén de datos a Almacenamiento de tablas de Azure** |4 |
+| Copia de datos entre almacenes basados en archivos (Blob Storage, Data Lake Store, Amazon S3, un sistema de archivos local, un HDFS local) |Entre 1 y 32. Depende de tamaño de Hola de archivos de Hola y número de Hola de unidades de movimiento de datos en la nube (DMUs) toocopy usa datos entre dos almacenes de datos en la nube o configuración física de Hola de Hola máquina de puerta de enlace que se usa para obtener una copia híbrida (toocopy datos tooor desde un almacén de datos local ). |
+| Copiar los datos de **tooAzure el almacenamiento de tabla de almacén de los datos de origen** |4 |
 | Todos los demás pares de origen y receptor |1 |
 
-Normalmente, el comportamiento predeterminado debe proporcionar el mejor rendimiento. Sin embargo, para controlar la carga en las máquinas que hospedan los almacenes de datos, o para optimizar el rendimiento de la copia, puede optar por reemplazar el valor predeterminado y especificar un valor para la propiedad **parallelCopies** . El valor debe estar entre 1 y 32 (ambos inclusive). En tiempo de ejecución, y para obtener el mejor rendimiento, la actividad de copia usa un valor inferior o igual al valor que ha establecido.
+Por lo general, el comportamiento predeterminado de hello debe darle mejor rendimiento de Hola. Sin embargo, hello toocontrol cargar en equipos que hospedan los almacenes de datos o el rendimiento de la copia de tootune, puede elegir toooverride Hola valor predeterminado y especifique un valor para hello **parallelCopies** propiedad. Hola valor debe ser entre 1 y 32 (ambos inclusive). En tiempo de ejecución para un rendimiento óptimo hello, actividad de copia utiliza un valor que es menor o igual valor toohello que establezca.
 
 ```json
 "activities":[  
@@ -149,55 +149,55 @@ Normalmente, el comportamiento predeterminado debe proporcionar el mejor rendimi
     }
 ]
 ```
-Puntos a tener en cuenta:
+Toonote puntos:
 
-* Cuando copie datos entre almacenes basados en archivos, **parallelCopies** determina el paralelismo en el nivel de archivo. La fragmentación dentro de un único archivo sucedería debajo de forma automática y transparente, y está diseñada para utilizar el tamaño de fragmento más adecuado para un tipo de almacén de datos de origen determinado para cargar datos en paralelo y ortogonales a parallelCopies. El número real de copias en paralelo que usa el servicio de movimiento de datos para la operación de copia en tiempo de ejecución no es superior al número de archivos que tenga. Si el comportamiento de copia es **mergeFile**, la actividad de copia no puede aprovechar las ventajas del paralelismo de nivel de archivo.
-* Cuando especifique un valor para la propiedad **parallelCopies** , tenga en cuenta el aumento de la carga en los almacenes de datos de origen y receptor, y en la puerta de enlace si se trata de una copia híbrida. Esto sucede especialmente si tiene varias actividades o ejecuciones simultáneas de las mismas actividades que se ejecutan en el mismo almacén de datos. Si observa que el almacén de datos o la puerta de enlace están sobrecargados, disminuya el valor de la propiedad **parallelCopies** para aliviar la carga.
-* Cuando se copian datos de almacenes no basados en archivos en almacenes basados en archivos, el servicio de movimiento de datos ignora la propiedad **parallelCopies** . Aunque se especifica el paralelismo, no se aplica en este caso.
+* Para copiar datos entre almacenes basados en archivos, Hola **parallelCopies** determinar paralelismo hello en nivel de archivo Hola. Hola fragmentación dentro de un único archivo sucedería debajo de forma automática y transparente, y está diseñada toouse Hola mejor adecuado tamaño del fragmento de para un almacén de datos de origen dada escriba datos tooload en paralelo y ortogonal tooparallelCopies. número real de Hola de hello datos movimiento servicio utiliza para la operación de copia de hello en tiempo de ejecución no está más de número de Hola de archivos que tiene copias en paralelo. Si es el comportamiento de la copia de hello **mergeFile**, actividad de copia no se puede aprovechar las ventajas de paralelismo de nivel de archivo.
+* Cuando se especifica un valor para hello **parallelCopies** propiedad, considere la posibilidad de aumento de carga de hello en los almacenes de datos de origen y el receptor y toogateway si es una copia híbrida. Esto sucede especialmente cuando haya varias actividades o las ejecuciones simultáneas de hello mismas actividades que se ejecutan contra Hola mismo almacén de datos. Si observa que el almacén de datos de Hola o puerta de enlace se desborda con carga hello, disminuir hello **parallelCopies** carga de valor toorelieve Hola.
+* Al copiar los datos de almacenes que no están toostores basados en archivos que están basados en archivos, servicio de movimiento de datos de hello omite hello **parallelCopies** propiedad. Aunque se especifica el paralelismo, no se aplica en este caso.
 
 > [!NOTE]
-> Debe usar Data Management Gateway versión 1.11 o superior para emplear la característica **parallelCopies** cuando realice una copia híbrida.
+> Debe usar Hola de Data Management Gateway versión 1.11 o posterior toouse **parallelCopies** característica al hacer una copia híbrida.
 >
 >
 
-Para un uso mejor de estas dos propiedades, y para mejorar el rendimiento del movimiento de datos, consulte los [casos de uso de ejemplo](#case-study-use-parallel-copy). No es necesario configurar **parallelCopies** para aprovechar el comportamiento predeterminado. Si configura **parallelCopies** y lo hace en un valor demasiado pequeño, es posible que varias DMU de nube no se utilicen completamente.  
+toobetter estas dos propiedades y tooenhance el rendimiento de movimiento de datos, consulte hello [casos de uso de ejemplo](#case-study-use-parallel-copy). No es necesario tooconfigure **parallelCopies** tootake aprovechar el comportamiento predeterminado de Hola. Si configura **parallelCopies** y lo hace en un valor demasiado pequeño, es posible que varias DMU de nube no se utilicen completamente.  
 
 ### <a name="billing-impact"></a>Impacto en la facturación
-Es **importante** recordar que se cobra en función del tiempo total de la operación de copia. Si un trabajo de copia solía tardar una hora con una unidad de nube y ahora tarda 15 minutos con cuatro unidades de nube, la factura general será casi igual. Por ejemplo, va a utilizar cuatro unidades de nube. La primera gasta 10 minutos, la segunda 10 minutos, la tercera 5 minutos y la cuarta 5 minutos, todas ellas en una única ejecución de actividad de copia. Se le cobra por el tiempo total de copia (movimiento de datos), que es 10 + 10 + 5 + 5 = 30 minutos. El uso de **parallelCopies** no afecta a la facturación.
+Tiene **importante** tooremember que se le cobra según el tiempo total de Hola de operación de copia de Hola. Si un trabajo de copia usa una hora de tootake con una unidad de una nube y ahora se tarda 15 minutos con cuatro unidades en la nube, hello general sigue siendo de factura casi Hola igual. Por ejemplo, va a utilizar cuatro unidades de nube. la primera unidad de la nube de Hello invierte en 10 minutos, Hola una tercera, 5 minutos, hello una segunda, 10 minutos y Hola una cuarta, 5 minutos, todo en una ejecución de actividad de copia. Se le cobra por hora de hello copia total (movimiento de datos), que es de 10 + 10 + 5 + 5 = 30 minutos. El uso de **parallelCopies** no afecta a la facturación.
 
 ## <a name="staged-copy"></a>copia almacenada provisionalmente
-Al copiar datos de un almacén de datos de origen a un almacén de datos receptor, podría elegir usar Almacenamiento de blobs como almacenamiento provisional. El almacenamiento provisional es especialmente útil en los siguientes casos:
+Cuando se copian datos desde un almacén de datos de origen datos almacén tooa receptor, puede elegir el almacenamiento de blobs de toouse como una ubicación de almacenamiento provisional almacenamiento provisional. Almacenamiento provisional es especialmente útil en hello casos siguientes:
 
-1. **Quiere realizar la ingesta de datos de varios almacenes de datos en SQL Data Warehouse mediante PolyBase**. Almacenamiento de datos SQL emplea PolyBase como mecanismo de alto rendimiento para cargar una gran cantidad de datos en Almacenamiento de datos SQL. Sin embargo, los datos de origen deben estar en Almacenamiento de blobs y deben satisfacer criterios adicionales. Al cargar datos desde un almacén de datos distinto de Almacenamiento de blobs, puede activar la copia de datos mediante el Almacenamiento de blobs provisional. En ese caso, Data Factory realiza las transformaciones de datos necesarias para garantizar que se cumplen los requisitos de PolyBase. A continuación, se usa PolyBase para cargar datos en Almacenamiento de datos SQL. Para más información, consulte [Uso de PolyBase para cargar datos en Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse). Para un tutorial con un caso de uso, consulte [Load 1 TB into Azure SQL Data Warehouse under 15 minutes with Azure Data Factory](data-factory-load-sql-data-warehouse.md) (Carga de 1 TB en Azure SQL Data Warehouse en 15 minutos con Azure Data Factory).
-2. **En ocasiones, realizar un movimiento de datos híbridos lleva tiempo (es decir, copiar entre un almacén de datos local y un almacén de datos en la nube) a través de una conexión de red lenta**. Para mejorar el rendimiento, puede comprimir los datos locales de modo que se tarde menos tiempo en mover datos al almacén de datos provisional en la nube. Luego, puede descomprimir los datos en el almacenamiento provisional antes de cargarlos en el almacén de datos de destino.
-3. **No quiere abrir otros puertos que no sean el 80 y el 443 en el firewall, debido a las directivas de TI corporativas**. Por ejemplo, al copiar datos de un almacén de datos local a un receptor de Base de datos SQL de Azure o a un receptor de Almacenamiento de datos SQL de Azure, debe activar la comunicación TCP saliente en el puerto 1433 tanto para el firewall de Windows como para el firewall corporativo. En ese escenario, aproveche la ventaja de la puerta de enlace para copiar primero los datos en una instancia de ensayo de Blob Storage mediante HTTP o HTTPS en el puerto 443. Luego, puede cargar los datos en Base de datos SQL o en Almacenamiento de datos SQL desde el Almacenamiento de blobs provisional. En este flujo, no es necesario habilitar el puerto 1433.
+1. **Desea que los datos de tooingest de varios almacenes de datos en almacenamiento de datos de SQL a través de PolyBase**. Almacenamiento de datos de SQL utiliza PolyBase como un tooload de mecanismo de alto rendimiento una gran cantidad de datos en almacenamiento de datos de SQL. Sin embargo, los datos de origen de hello deben estar en el almacenamiento de blobs y debe cumplir criterios adicionales. Al cargar datos desde un almacén de datos distinto de Almacenamiento de blobs, puede activar la copia de datos mediante el Almacenamiento de blobs provisional. En ese caso, factoría de datos realiza Hola requerido datos transformaciones tooensure que cumpla los requisitos de Hola de PolyBase. A continuación, utiliza datos de PolyBase tooload en almacenamiento de datos de SQL. Para obtener más información, consulte [datos de uso PolyBase tooload en almacenamiento de datos de SQL Azure](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse). Para un tutorial con un caso de uso, consulte [Load 1 TB into Azure SQL Data Warehouse under 15 minutes with Azure Data Factory](data-factory-load-sql-data-warehouse.md) (Carga de 1 TB en Azure SQL Data Warehouse en 15 minutos con Azure Data Factory).
+2. **A veces se tarda un tiempo tooperform un movimiento de datos híbridos (es decir, toocopy entre un almacén de datos local y un almacén de datos en la nube) a través de una conexión de red lenta**. tooimprove rendimiento, puede comprimir Hola datos de forma local para que se tarda menos tiempo de almacén de datos de almacenamiento provisional de toomove datos toohello en la nube de Hola. A continuación, puede descomprimir los datos de Hola Hola almacén de almacenamiento provisional antes de cargarlos en el almacén de datos de destino de Hola.
+3. **No desea tooopen puertos excepto el puerto 80 y el puerto 443 en el firewall, debido a las directivas de TI corporativas**. Por ejemplo, cuando se copian datos desde un receptor de base de datos de SQL Azure local tooan de almacén de datos o un receptor de almacenamiento de datos de SQL Azure, necesita tooactivate de comunicación de TCP saliente en el puerto 1433 para firewall de Windows hello y del firewall corporativo. En este escenario, aprovechar las ventajas de hello puerta de enlace toofirst copia datos tooa Blob almacenamiento provisional instancia sobre HTTP o HTTPS en el puerto 443. A continuación, cargar datos de hello en base de datos SQL o almacenamiento de datos SQL desde el almacenamiento provisional de almacenamiento de blobs. En este flujo, no necesita tooenable el puerto 1433.
 
 ### <a name="how-staged-copy-works"></a>Funcionamiento de las copias almacenadas provisionalmente
-Al activar la característica de almacenamiento provisional, primero se copian los datos desde el almacén de datos de origen al almacén de datos provisional (el suyo propio). A continuación, los datos se copian desde el almacén de datos provisional al almacén de datos receptor. Data Factory administra automáticamente el flujo de las dos fases. Data Factory también limpia los datos temporales del almacenamiento provisional una vez finalizado el movimiento de los datos.
+Al activar la característica de almacenamiento provisional de hello, primero los datos Hola se copian desde el almacén de datos de hello origen toohello almacén de datos de almacenamiento provisional (aportar su propia). A continuación, los datos de Hola se copian desde el almacén de datos de receptor de toohello de almacén de datos de almacenamiento provisional de Hola. Factoría de datos administra automáticamente el flujo de dos fases de Hola para usted. Factoría de datos también limpia los datos temporales de hello ensayo almacenamiento una vez completado el movimiento de datos Hola.
 
-En el escenario de copia en la nube (tanto en almacenes de datos de origen y recepción), no se utiliza la puerta de enlace. El servicio de Data Factory realiza las operaciones de copia.
+En caso de copia de hello en la nube (origen y receptor de datos almacenes están en la nube de hello), no se utiliza la puerta de enlace. Hola servicio factoría de datos realiza las operaciones de copia de Hola.
 
 ![Copias almacenadas provisionalmente: escenario de modelo en la nube](media/data-factory-copy-activity-performance/staged-copy-cloud-scenario.png)
 
-En el escenario de copia híbrida, en el que el origen se encuentra en el entorno local y el receptor está en la nube, la puerta de enlace mueve los datos desde el almacén de datos de origen a un almacén de datos provisional. El servicio de Data Factory también mueve los datos desde el almacén de datos provisional al almacén de datos receptor. Con el flujo invertido también se permite copiar datos de un almacén de datos en la nube a uno local a través del almacenamiento provisional.
+En escenario de copia de hello híbrido (origen es local y receptor está en la nube de hello), puerta de enlace de hello mueve tooa almacén de datos de almacenamiento provisional del almacén de datos de los datos de origen de Hola. Servicio de factoría de datos se mueve el almacén de datos del receptor de toohello del almacén de datos de almacenamiento provisional de datos de Hola. Copiar datos de un tooan de almacén de datos en la nube local de almacén de datos mediante almacenamiento provisional también es compatible con el flujo de hello invertida.
 
 ![Copias almacenadas provisionalmente: escenario de modelo híbrido](media/data-factory-copy-activity-performance/staged-copy-hybrid-scenario.png)
 
-Cuando activa el movimiento de datos mediante un almacenamiento provisional, puede especificar si quiere que los datos se compriman antes de moverlos del almacén de datos de origen al provisional y luego descomprimirlos antes de moverlos desde un almacenamiento de datos provisional a un almacén de datos receptor.
+Al activar el movimiento de datos mediante el uso de un almacén de almacenamiento provisional, puede especificar si desea comprimir antes de mover los datos de origen de Hola y almacén de datos provisionales de tooan o almacén de datos de almacenamiento provisional, a continuación, se descomprimen antes de mover datos desde una versión preliminar de hello datos toobe o almacén de datos del receptor de toohello de almacén de datos de almacenamiento provisionales.
 
-Actualmente, no se pueden copiar datos entre dos almacenes de datos locales mediante almacenamiento provisional. Esperamos que esta opción esté pronto disponible.
+Actualmente, no se pueden copiar datos entre dos almacenes de datos locales mediante almacenamiento provisional. Esperamos que este toobe opción disponible pronto.
 
 ### <a name="configuration"></a>Configuración
-Configure la opción **enableStaging** de la actividad de copia para especificar si quiere que los datos se almacenen provisionalmente en Blob Storage antes de cargarlos en un almacén de datos de destino. Al establecer **enableStaging** en TRUE, especifique las propiedades adicionales enumeradas en la siguiente tabla. Si no tiene un servicio vinculado a la firma de acceso compartido de Almacenamiento o de Almacenamiento de Azure para el almacenamiento provisional, deberá crear uno.
+Configurar hello **enableStaging** configuración de toospecify de actividad de copia si desea Hola datos toobe provisionalmente en almacenamiento de blobs antes de cargarlos en un almacén de datos de destino. Al establecer **enableStaging** tooTRUE, especificar propiedades adicionales de hello enumerados en la tabla siguiente Hola. Si no tiene uno, también deberá toocreate un almacenamiento de Azure o almacenamiento compartido servicio vinculado de firma de acceso para el almacenamiento provisional.
 
 | Propiedad | Description | Valor predeterminado | Obligatorio |
 | --- | --- | --- | --- |
-| **enableStaging** |Especifique si desea copiar los datos a través de un almacén provisional. |False |No |
-| **linkedServiceName** |Especifique el nombre de un servicio vinculado [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) o [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service), que haga referencia a la instancia de Azure Storage que se usa como almacenamiento provisional. <br/><br/> No puede usar Almacenamiento con una firma de acceso compartido para cargar datos en Almacenamiento de datos SQL mediante PolyBase. Puede usarlo en todos los demás casos. |N/D |Sí, cuando el valor de **enableStaging** está establecido en True. |
-| **path** |Especifique la ruta de acceso de Almacenamiento de blobs que quiere que contenga los datos almacenados provisionalmente. Si no se proporciona una ruta de acceso, el servicio creará un contenedor para almacenar los datos temporales. <br/><br/> Especifique una ruta de acceso solo si usa Almacenamiento con una firma de acceso compartido o si necesita que los datos temporales estén en una ubicación específica. |N/D |No |
-| **enableCompression** |Especifica si se deben comprimir los datos antes de copiarlos en el destino. Esta configuración reduce el volumen de datos que se va a transferir. |False |No |
+| **enableStaging** |Especifique si desea que toocopy datos a través de un provisional almacén de almacenamiento provisional. |False |No |
+| **linkedServiceName** |Especificar nombre de Hola de un [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) o [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) servicio, que hace referencia la instancia de toohello de almacenamiento que usan como una ubicación de almacenamiento provisional ensayo vinculado. <br/><br/> No se puede usar almacenamiento con un dato de tooload de firma de acceso compartido en almacenamiento de datos de SQL a través de PolyBase. Puede usarlo en todos los demás casos. |N/D |Sí, cuando **enableStaging** se establece tooTRUE |
+| **path** |Especifique la ruta de almacenamiento de blobs de Hola que desea que los datos de hello provisionalmente toocontain. Si no se proporciona una ruta de acceso, el servicio de hello crea un contenedor toostore los datos temporales. <br/><br/> Especifique una ruta de acceso solo si usar almacenamiento con una firma de acceso compartido, o si necesita toobe de datos temporales en una ubicación específica. |N/D |No |
+| **enableCompression** |Especifica si se deben comprimir los datos antes de que se copian toohello destino. Esta configuración reduce el volumen de Hola de datos que se transfieren. |False |No |
 
-Este es un ejemplo de definición de actividad de copia con las propiedades que se han descrito en la tabla anterior:
+Aquí es una definición de ejemplo de actividad de copia con propiedades de Hola que se describen en la tabla anterior de hello:
 
 ```json
 "activities":[  
@@ -227,20 +227,20 @@ Este es un ejemplo de definición de actividad de copia con las propiedades que 
 ### <a name="billing-impact"></a>Impacto en la facturación
 Los cargos que se le realizan se basan en dos elementos: duración de la copia y tipo de copia.
 
-* Al utilizar almacenamiento provisional durante una copia de nube (copia de datos de un almacén de datos en la nube a otro de este tipo), se le cobrará de la siguiente forma: [suma de la duración de la copia de los pasos 1 y 2] x [precio unitario de la copia de nube].
-* Al utilizar almacenamiento provisional durante una copia híbrida (copia de datos de un almacén de datos local a uno en la nube), se le cobrará de la siguiente forma: [duración de la copia híbrida] x [precio unitario de la copia híbrida] + [duración de la copia de nube] x [precio unitario de la copia de nube].
+* Cuando se usa durante la copia de nube (copiar datos desde un almacén de datos en la nube datos almacén tooanother en la nube), de almacenamiento provisional se cargan Hola [suma de la duración de la copia de los pasos 1 y 2] x [precio de unidad de copia de nube].
+* Cuando se usa almacenamiento provisional durante la copia híbrida (copiar datos desde un almacén de datos local datos almacén tooa en la nube), se le cobra por [duración de la copia híbrida] x [precio por unidad copia híbrida] + [duración de la copia en la nube] x [precio de unidad de copia de nube].
 
 ## <a name="performance-tuning-steps"></a>Pasos de optimización del rendimiento
-Para optimizar el rendimiento del servicio Data Factory con la actividad de copia, sugerimos que realice estos pasos:
+Se recomienda que realice estos pasos rendimiento de hello tootune del servicio en la factoría de datos con la actividad de copia:
 
-1. **Establezca una línea base**. Durante la fase de desarrollo, pruebe la canalización usando la actividad de copia en un ejemplo de datos representativo. Puede usar el [modelo de segmentación](data-factory-scheduling-and-execution.md) de Data Factory para limitar la cantidad de datos con los que trabaja.
+1. **Establezca una línea base**. Durante la fase de desarrollo de hello, probar la canalización mediante el uso de actividad de copia en una muestra representativa de datos. Puede usar hello factoría de datos [segmentación modelo](data-factory-scheduling-and-execution.md) cantidad de hello toolimit de datos, trabajar con.
 
-   Recopile características de tiempo de ejecución y rendimiento mediante la **Aplicación de supervisión y administración**. Elija **Supervisión y administración** en la página de inicio de Data Factory. En la vista de árbol, elija el **conjunto de datos de salida**. En la lista **Activity Windows** (Ventanas de actividad), elija la ejecución de la actividad de copia. **Activity Windows** (Ventanas de actividad) se muestra la duración de la actividad de copia y el tamaño de los datos que se copian. El rendimiento se muestra en **Activity Window Explorer**(Explorador de ventanas de actividad). Para más información sobre la aplicación, consulte [Supervisión y administración de canalizaciones de Data Factory de Azure mediante la nueva Aplicación de supervisión y administración](data-factory-monitor-manage-app.md).
+   Recopilar tiempo de ejecución y características de rendimiento mediante hello **supervisión y administración de aplicaciones**. Elija **Supervisión y administración** en la página de inicio de Data Factory. En la vista de árbol de hello, elija hello **conjunto de datos de salida**. Hola **Windows actividad** elija Hola de ejecución de la actividad de copia. **Ventanas de la actividad** muestra la duración de la actividad de copia de Hola y el tamaño de Hola de datos de Hola que se copian. rendimiento de Hello aparece en **Explorer de la ventana de actividad**. toolearn más información acerca de la aplicación hello, consulte [supervisar y administrar las canalizaciones de factoría de datos de Azure mediante el uso de Hola supervisión y administración de aplicaciones](data-factory-monitor-manage-app.md).
 
    ![Detalles de ejecución de actividad](./media/data-factory-copy-activity-performance/mmapp-activity-run-details.png)
 
-   Más adelante en este artículo, puede comparar el rendimiento y la configuración de su escenario con la [referencia de rendimiento](#performance-reference) de la actividad de copia de nuestras pruebas.
-2. **Diagnostique y optimice el rendimiento**. Si el rendimiento que observa no satisface sus expectativas, deberá identificar los cuellos de botella. A continuación, optimice el rendimiento para eliminar o reducir el efecto de los cuellos de botella. Aunque la descripción completa del diagnóstico de rendimiento escapa del ámbito de este artículo, aquí hay algunos aspectos comunes a tener en cuenta:
+   Más adelante en el artículo de hello, puede comparar el rendimiento de Hola y la configuración del su escenario tooCopy actividad [referencia de rendimiento](#performance-reference) de nuestras pruebas.
+2. **Diagnostique y optimice el rendimiento**. Si observa de rendimiento de hello no cumple sus expectativas, deberá tooidentify cuellos de botella de rendimiento. A continuación, optimizar el rendimiento tooremove o reducir el efecto de Hola de cuellos de botella. Una descripción completa de diagnóstico de rendimiento es más allá del ámbito de Hola de este artículo, pero estas son algunas consideraciones comunes:
 
    * Características de rendimiento:
      * [Copia paralela](#parallel-copy)
@@ -254,70 +254,70 @@ Para optimizar el rendimiento del servicio Data Factory con la actividad de copi
    * [Compresión](#considerations-for-compression)
    * [Asignación de columnas](#considerations-for-column-mapping)
    * [Otras consideraciones](#other-considerations)
-3. **Expanda la configuración a todo el conjunto de datos**. Cuando esté satisfecho con los resultados de la ejecución y el rendimiento, puede expandir la definición y el período activo de canalización para cubrir todo el conjunto de datos.
+3. **Expanda el conjunto de datos completo de hello configuración tooyour**. Cuando esté satisfecho con el rendimiento y resultados de la ejecución de hello, puede expandir la definición de Hola y toocover período activo de canalización de todo el conjunto de datos.
 
 ## <a name="considerations-for-data-management-gateway"></a>Consideraciones sobre Data Management Gateway
-**Configuración de puerta de enlace**: se recomienda usar una máquina dedicada para hospedar Data Management Gateway. Vea [Consideraciones sobre el uso de Data Management Gateway](data-factory-data-management-gateway.md#considerations-for-using-gateway).  
+**El programa de instalación de puerta de enlace**: le recomendamos que use un toohost máquina dedicada Data Management Gateway. Vea [Consideraciones sobre el uso de Data Management Gateway](data-factory-data-management-gateway.md#considerations-for-using-gateway).  
 
-**Supervisión y escalado vertical u horizontal de la puerta de enlace**: una sola puerta de enlace con uno o varios nodos de puerta de enlace puede atender varias ejecuciones de actividad de copia simultáneamente. Para ver una instantánea casi en tiempo real del uso de recursos (CPU, memoria, red [entrada y salida], etc.) en una máquina de puerta de enlace, además del número de trabajos simultáneos en ejecución frente al límite de Azure Portal, vea [Supervisión de la puerta de enlace en el portal](data-factory-data-management-gateway.md#monitor-gateway-in-the-portal). Si depende mucho del movimiento de datos híbridos con un gran número de ejecuciones de actividad de copia simultáneas o con grandes volúmenes de datos que copiar, considere la posibilidad de [escalar vertical u horizontalmente la puerta de enlace](data-factory-data-management-gateway-high-availability-scalability.md#scale-considerations) con el fin de mejorar el uso de recursos o aprovisionar más recursos para ampliar la capacidad de copia. 
+**Supervisión de la puerta de enlace y la escala-vertical u horizontalmente**: una sola puerta de enlace lógica con uno o más nodos de puerta de enlace puede servir varias actividades de copia se ejecuta en hello mismo tiempo al mismo tiempo. Puede ver instantánea casi en tiempo real de la utilización de recursos (CPU, memoria, network(in/out), etc.) en un equipo de puerta de enlace así como ver el número de Hola de trabajos simultáneos frente a Hola portal de Azure, el límite de [puerta de enlace de Monitor en el portal de hello](data-factory-data-management-gateway.md#monitor-gateway-in-the-portal). Si tiene necesidad de mucha en movimiento de datos híbridos con gran número de ejecuciones de actividad de copia simultánea o con gran volumen de datos toocopy, considere la posibilidad de demasiado[escalar en horizontal como puerta de enlace](data-factory-data-management-gateway-high-availability-scalability.md#scale-considerations) así como toobetter utilizar el recurso o copiar de tooprovision más tooempower de recursos. 
 
-## <a name="considerations-for-the-source"></a>Consideraciones sobre el origen
+## <a name="considerations-for-hello-source"></a>Consideraciones para el origen de Hola
 ### <a name="general"></a>General
-Asegúrese de que el almacén de datos subyacente no esté saturado con otras cargas de trabajo que se ejecutan en él o contra él.
+Asegúrese de que Hola subyacente de almacén de datos no se desborda con otras cargas de trabajo que se ejecutan en o en el mismo.
 
-Para almacenes de datos de Microsoft, consulte los [temas sobre supervisión y optimización](#performance-reference) específicos de los almacenes de datos que le ayuden a comprender las características de rendimiento del almacén de datos, a reducir los tiempos de respuesta y a maximizar la capacidad de proceso.
+En los almacenes de datos de Microsoft, consulte [de supervisión y optimización temas](#performance-reference) que son almacenes toodata específico y ayudará a comprender los datos almacenan las características de rendimiento, minimizar los tiempos de respuesta y maximizar el rendimiento.
 
-Si copia los datos de Almacenamiento de blobs a Almacenamiento de datos SQL, considere el uso de **PolyBase** para mejorar el rendimiento. Consulte [Uso de PolyBase para cargar datos en el Almacenamiento de datos SQL](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) para obtener más información. Para un tutorial con un caso de uso, consulte [Load 1 TB into Azure SQL Data Warehouse under 15 minutes with Azure Data Factory](data-factory-load-sql-data-warehouse.md) (Carga de 1 TB en Azure SQL Data Warehouse en 15 minutos con Azure Data Factory).
+Si copia datos de almacenamiento de blobs tooSQL almacenamiento de datos, considere el uso de **PolyBase** tooboost rendimiento. Vea [datos de uso PolyBase tooload en almacenamiento de datos de SQL Azure](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) para obtener más información. Para un tutorial con un caso de uso, consulte [Load 1 TB into Azure SQL Data Warehouse under 15 minutes with Azure Data Factory](data-factory-load-sql-data-warehouse.md) (Carga de 1 TB en Azure SQL Data Warehouse en 15 minutos con Azure Data Factory).
 
 ### <a name="file-based-data-stores"></a>Almacenes de datos basados en archivos
 *(Incluye Blob Storage, Data Lake Store, Amazon S3, sistemas de archivos locales y HDFS local)*
 
-* **Tamaño de archivo medio y número de archivos**: la actividad de copia transfiere datos de archivo en archivo. Siendo la misma cantidad de datos la que se va a mover, el rendimiento general es menor si los datos constan de muchos archivos pequeños en lugar de algunos grandes, debido a la fase de arranque de cada archivo. Por lo tanto, si es posible, combine archivos pequeños en archivos de mayor tamaño para obtener una capacidad de proceso mayor.
-* **Formato de archivo y compresión**: para ver más formas de mejorar el rendimiento, consulte las secciones [Consideraciones sobre serialización y deserialización](#considerations-for-serialization-and-deserialization) y [Consideraciones sobre la compresión](#considerations-for-compression).
-* Para el escenario de **sistema de archivos local**, en el que se necesita **Data Management Gateway**, consulte la sección [Consideraciones sobre Data Management Gateway](#considerations-for-data-management-gateway).
+* **Tamaño de archivo medio y número de archivos**: la actividad de copia transfiere datos de archivo en archivo. Con hello movido de la misma cantidad de datos toobe, hello el rendimiento global es más bajo si datos Hola consisten de muchos archivos pequeños en lugar de unos pocos archivos grandes debido toohello fase de arranque para cada archivo. Por lo tanto, si es posible, combinar archivos pequeños en mayor rendimiento mayor toogain de archivos.
+* **Formato y compresión de archivos**: para más rendimiento tooimprove de formas, vea hello [consideraciones para la serialización y deserialización](#considerations-for-serialization-and-deserialization) y [consideraciones para la compresión](#considerations-for-compression) secciones.
+* Para hello **sistema de archivos local** escenario en el que **Data Management Gateway** es requerido, vea hello [consideraciones para Data Management Gateway](#considerations-for-data-management-gateway) sección.
 
 ### <a name="relational-data-stores"></a>Almacenes de datos relacionales
 *(Incluye SQL Database, SQL Data Warehouse, Amazon Redshift, bases de datos SQL Server y Oracle, MySQL, DB2, Teradata, Sybase y bases de datos PostgreSQL, etc.)*
 
-* **Patrón de datos**: el esquema de tabla afecta al rendimiento de la copia. Un tamaño de fila grande le ofrece un mejor rendimiento que el tamaño de fila pequeño para copiar la misma cantidad de datos. El motivo es que la base de datos puede recuperar más eficazmente menos lotes de datos que contienen menos filas.
-* **Consulta o procedimiento almacenado**: optimice la lógica de la consulta o del procedimiento almacenado que se especifica en el origen de la actividad de copia para que capture los datos de forma más eficiente.
-* Además, para el escenario de **bases de datos relacionales locales**, como SQL Server y Oracle, que requieren el uso de **Data Management Gateway**, consulte la sección [Consideraciones sobre Data Management Gateway](#considerations-on-data-management-gateway).
+* **Patrón de datos**: el esquema de tabla afecta al rendimiento de la copia. Un tamaño de fila grande le ofrece un mejor rendimiento que el tamaño de fila pequeños, toocopy Hola la misma cantidad de datos. motivo de Hello es que esa base de datos de hello puede recuperar más eficazmente menos lotes de datos que contienen menos filas.
+* **Consulta o procedimiento almacenado**: optimizar Hola la lógica de consulta de Hola o procedimiento almacenado que especifique en los datos de toofetch de origen de actividad de copia de hello más eficazmente.
+* Para **bases de datos relacionales local**, como SQL Server y Oracle, que requieren el uso de Hola de **Data Management Gateway**, vea hello [consideraciones para Data Management Gateway](#considerations-on-data-management-gateway) sección.
 
-## <a name="considerations-for-the-sink"></a>Consideraciones sobre el receptor
+## <a name="considerations-for-hello-sink"></a>Consideraciones para el receptor de Hola
 ### <a name="general"></a>General
-Asegúrese de que el almacén de datos subyacente no esté saturado con otras cargas de trabajo que se ejecutan en él o contra él.
+Asegúrese de que Hola subyacente de almacén de datos no se desborda con otras cargas de trabajo que se ejecutan en o en el mismo.
 
-Para información sobre los almacenes de datos de Microsoft, consulte los [temas sobre supervisión y optimización](#performance-reference) que son específicos de los almacenes de datos. Estos temas pueden ayudarle a comprender las características de rendimiento de los almacenes de datos y a saber cómo reducir los tiempos de respuesta y aumentar la capacidad de proceso.
+En los almacenes de datos de Microsoft, consulte demasiado[de supervisión y optimización temas](#performance-reference) que son almacenes de toodata específico. Estos temas pueden ayudarle a entender las características de rendimiento de almacén de datos y cómo el tiempo de respuesta de toominimize y maximizar el rendimiento.
 
-Si va a copiar datos de **Blob Storage** a **SQL Data Warehouse**, considere la posibilidad de usar **PolyBase** para aumentar el rendimiento. Consulte [Uso de PolyBase para cargar datos en el Almacenamiento de datos SQL](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) para obtener más información. Para un tutorial con un caso de uso, consulte [Load 1 TB into Azure SQL Data Warehouse under 15 minutes with Azure Data Factory](data-factory-load-sql-data-warehouse.md) (Carga de 1 TB en Azure SQL Data Warehouse en 15 minutos con Azure Data Factory).
+Si va a copiar datos de **almacenamiento de blobs** demasiado**almacenamiento de datos SQL**, considere el uso de **PolyBase** tooboost rendimiento. Vea [datos de uso PolyBase tooload en almacenamiento de datos de SQL Azure](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) para obtener más información. Para un tutorial con un caso de uso, consulte [Load 1 TB into Azure SQL Data Warehouse under 15 minutes with Azure Data Factory](data-factory-load-sql-data-warehouse.md) (Carga de 1 TB en Azure SQL Data Warehouse en 15 minutos con Azure Data Factory).
 
 ### <a name="file-based-data-stores"></a>Almacenes de datos basados en archivos
 *(Incluye Blob Storage, Data Lake Store, Amazon S3, sistemas de archivos locales y HDFS local)*
 
-* **Comportamiento de copia**: si copia datos de un almacén de datos basado en archivos diferente, la actividad de copia presenta tres opciones mediante la propiedad **copyBehavior**. Conserva la jerarquía, aplana la jerarquía o combina archivos. Conservar o aplanar la jerarquía supone poca o ninguna sobrecarga sobre el rendimiento, mientras que combinar archivos hace que aumente dicha sobrecarga.
-* **Formato de archivo y compresión**: consulte las secciones [Consideraciones sobre serialización y deserialización](#considerations-for-serialization-and-deserialization) y [Consideraciones sobre la compresión](#considerations-for-compression) para conocer más formas de mejorar el rendimiento.
+* **Copiar comportamiento**: si se copian datos desde un almacén de datos basados en archivos diferentes, actividad de copia tiene tres opciones a través de hello **copyBehavior** propiedad. Conserva la jerarquía, aplana la jerarquía o combina archivos. Conservar o eliminar la estructura de jerarquía tiene poca o ninguna sobrecarga de rendimiento, pero combinar archivos hace tooincrease sobrecarga de rendimiento.
+* **Formato y compresión de archivos**: vea hello [consideraciones para la serialización y deserialización](#considerations-for-serialization-and-deserialization) y [consideraciones para la compresión](#considerations-for-compression) secciones para más rendimiento tooimprove de formas .
 * **Almacenamiento de blobs**: actualmente, Almacenamiento de blobs solo admite blobs en bloques para optimizar la transferencia de datos y el rendimiento.
-* En escenarios de **sistemas de archivos locales** que requieran el uso de **Data Management Gateway**, consulte la sección [Consideraciones sobre Data Management Gateway](#considerations-for-data-management-gateway).
+* Para **sistemas de archivos local** escenarios que requieren el uso de Hola de **Data Management Gateway**, vea hello [consideraciones para Data Management Gateway](#considerations-for-data-management-gateway) sección.
 
 ### <a name="relational-data-stores"></a>Almacenes de datos relacionales
 *(Incluye SQL Database, SQL Data Warehouse, bases de datos SQL Server y bases de datos Oracle)*
 
-* **Comportamiento de copia**: según las propiedades que haya establecido para **sqlSink**, la actividad de copia escribe datos en la base de datos de destino de diferentes formas.
-  * De forma predeterminada, el servicio de movimiento de datos usa la API de copia masiva para insertar datos en modo de anexión, lo que proporciona el mejor rendimiento.
-  * Si configura un procedimiento almacenado en el receptor, la base de datos aplica los datos de fila en fila en lugar de como una carga masiva. El rendimiento disminuye considerablemente. Si el conjunto de datos es grande, considere la posibilidad de cambiar al uso de la propiedad **sqlWriterCleanupScript** , cuando sea conveniente.
-  * Si configura la propiedad **sqlWriterCleanupScript** para cada ejecución de la actividad de copia, el servicio desencadena el script y luego el usuario usa la API de copia masiva para insertar los datos. Por ejemplo, para sobrescribir toda la tabla con los datos más recientes, puede especificar un script para eliminar primero todos los registros antes de realizar la carga masiva de los nuevos datos desde el origen.
+* **Copiar comportamiento**: según propiedades de Hola que ha establecido para **sqlSink**, actividad de copia escribe la base de datos de destino de toohello de datos de maneras diferentes.
+  * De forma predeterminada, Hola datos movimiento servicio usa datos de tooinsert Hola API de copia masiva en modo append, que proporciona Hola obtener el mejor rendimiento.
+  * Si configura un procedimiento almacenado en el receptor de hello, base de datos de Hola aplica a una fila de datos de Hola a la vez en lugar de como una carga masiva. El rendimiento disminuye considerablemente. Si el conjunto de datos es grande, cuando sea aplicable, considere la posibilidad de hello toousing **sqlWriterCleanupScript** propiedad.
+  * Si configura hello **sqlWriterCleanupScript** ejecutar propiedad para cada actividad de copia, los desencadenadores de servicio de Hola Hola script y, a continuación, utilizar datos de saludo API de copia masiva tooinsert Hola. Por ejemplo, toooverwrite Hola toda la tabla con datos más recientes de hello, puede especificar un script toofirst eliminar todos los registros antes de nuevos datos de carga masiva Hola de origen de Hola.
 * **Patrón de datos y tamaño de lote**:
-  * El esquema de tabla afecta al rendimiento de la copia. Para copiar la misma cantidad de datos, un tamaño de fila grande proporcionará un mejor rendimiento que un tamaño de fila pequeño porque la base de datos puede confirmar de forma más eficiente menos lotes de datos.
-  * La actividad de copia inserta datos en una serie de lotes. Puede establecer el número de filas en un lote mediante la propiedad **writeBatchSize** . Si los datos tienen filas pequeñas, puede establecer la propiedad **writeBatchSize** con un valor más alto para beneficiarse de una menor sobrecarga de los lotes y un mayor rendimiento. Si el tamaño de fila de los datos es grande, tenga cuidado al aumentar **writeBatchSize**. Un valor alto podría provocar un error de copia provocado por la sobrecarga de la base de datos.
-* Para **bases de datos relacionales locales** como SQL Server y Oracle, que requieren el uso de **Data Management Gateway**, consulte la sección [Consideraciones sobre Data Management Gateway](#considerations-for-data-management-gateway).
+  * El esquema de tabla afecta al rendimiento de la copia. toocopy Hola la misma cantidad de datos, un tamaño de fila grande proporciona mejor rendimiento que un tamaño de fila pequeños porque la base de datos de hello más eficazmente puede confirmar menos lotes de datos.
+  * La actividad de copia inserta datos en una serie de lotes. Puede establecer Hola número de filas en un lote mediante el uso de hello **valor writeBatchSize** propiedad. Si los datos tienen filas pequeño, puede establecer hello **valor writeBatchSize** propiedad con un toobenefit de valor superior de la sobrecarga de lote menor y mayor rendimiento. Si el tamaño de fila de Hola de los datos es grande, tenga cuidado al aumentar **valor writeBatchSize**. Un valor alto podría provocar el error de copia tooa mediante la sobrecarga de la base de datos de Hola.
+* Para **bases de datos relacionales local** , como SQL Server y Oracle, que requieren el uso de Hola de **Data Management Gateway**, vea hello [consideraciones para Data Management Gateway](#considerations-for-data-management-gateway) sección.
 
 ### <a name="nosql-stores"></a>Almacenes NoSQL
 *(Incluye Table Storage y Azure Cosmos DB)*
 
 * Para **Almacenamiento de tablas**:
-  * **Partición**: escribir datos en particiones intercaladas degrada considerablemente el rendimiento. Ordene los datos de origen por la clave de partición para que los datos se inserten de forma eficiente en una partición después de otra o ajuste la lógica para escribir los datos en una sola partición.
+  * **Partición**: escribir particiones de datos toointerleaved drásticamente degrada el rendimiento. Ordenar los datos de origen por la clave de partición para que los datos de Hola se insertan eficazmente en una partición después de otro, o ajustar Hola lógica toowrite Hola datos tooa única partición.
 * Para **Azure Cosmos DB**:
-  * **Tamaño del lote**: la propiedad **writeBatchSize** establece el número de solicitudes en paralelo al servicio Azure Cosmos DB para crear documentos. Puede esperar un rendimiento mejor si aumenta el valor de **writeBatchSize** porque se envían más solicitudes en paralelo a Azure Cosmos DB. Sin embargo, tenga cuidado con las limitaciones cuando escriba en Azure Cosmos DB (el mensaje de error es "La tasa de solicitudes es grande"). Son varios los factores que pueden provocar limitaciones, como el tamaño del documento, el número de términos que contiene y la directiva de indexación de la colección de destino. Para lograr un mayor rendimiento de la actividad de copia, considere la posibilidad de usar una colección mejor (por ejemplo, S3).
+  * **Tamaño del lote**: Hola **valor writeBatchSize** propiedad establece el número de Hola de las solicitudes paralelas documentos de toocreate de servicio de base de datos de Azure Cosmos toohello. Puede esperar un rendimiento mejor al aumentar **valor writeBatchSize** porque más de las solicitudes paralelas se envían tooAzure Cosmos DB. Sin embargo, espere a que la limitación cuando se escribe tooAzure Cosmos DB (mensaje de error de hello es "Solicitud velocidad es grande"). Varios factores pueden provocar una limitación, incluido el tamaño del documento, número de Hola de términos en documentos de hello y Hola directiva de indexación de la colección de destino. tooachieve un mayor rendimiento de copia, considere el uso de una colección mejor, por ejemplo, S3.
 
 ## <a name="considerations-for-serialization-and-deserialization"></a>Consideraciones sobre serialización y deserialización
 La serialización y deserialización pueden tener lugar cuando el conjunto de datos de entrada o el conjunto de datos de salida es un archivo. Consulte [Formatos de archivo y de compresión admitidos](data-factory-supported-file-and-compression-formats.md) con detalles sobre los formatos de archivo que admite la actividad de copia.
@@ -325,84 +325,84 @@ La serialización y deserialización pueden tener lugar cuando el conjunto de da
 **Comportamiento de copia**:
 
 * Al copiar archivos entre almacenes de datos basados en archivos:
-  * Cuando los conjuntos de datos de entrada y salida tienen la misma configuración de formato de archivo o carecen de dicha configuración, el servicio de movimiento de datos ejecuta una copia binaria sin ninguna serialización o deserialización. En este caso, el rendimiento es mayor en comparación con el escenario en el que la configuración del formato de archivo de origen y receptor es diferente.
-  * Cuando los conjuntos de datos de entrada y salida están en formato de texto y solo es diferente el tipo de codificación, el servicio de movimiento de datos solo realiza la conversión de la codificación. No se realiza ninguna serialización y deserialización, lo que provoca cierta sobrecarga en el rendimiento en comparación con una copia binaria.
-  * Cuando los conjuntos de datos de entrada y salida tienen formatos de archivo diferentes o configuraciones diferentes, por ejemplo, los delimitadores, el servicio de movimiento de datos deserializa los datos de origen para transmitirlos, transformarlos y luego serializarlos en el formato de salida indicado. Esta operación da como resultado una sobrecarga mucho mayor sobre el rendimiento en comparación con otros escenarios.
-* Al copiar archivos desde un almacén de datos y hacia un almacén de datos que no se basa en archivos (por ejemplo, desde un almacén basado en archivos hasta un almacén relacional), se requiere el paso de serialización o deserialización. Este paso produce una sobrecarga considerable sobre el rendimiento.
+  * Cuando los conjuntos de datos de entrada y salidos tienen no Hola igual o ninguna configuración de formato de archivo, servicio de movimiento de datos de Hola ejecuta una copia binaria sin necesidad de serialización o deserialización. Verá un escenario de toohello de rendimiento en comparación con mayor, en qué Hola configuración de formato de archivo de origen y el receptor es diferente entre sí.
+  * Cuando la entrada y conjuntos de datos de salida ambos están en formato de texto y la codificación de hello solo tipo es iguales, servicio de movimiento de datos de hello sólo realiza la conversión de codificación. Todavía no hace ninguna serialización y deserialización, lo que produce una sobrecarga del rendimiento en comparación con copia binaria tooa.
+  * Cuando la entrada y salidos conjuntos de datos ambos tienen distintos formatos de archivo o distintas configuraciones, como delimitadores, Hola servicio de movimiento de datos deserializa toostream de datos de origen, transformación y, a continuación, serializarlo en formato de salida de hello indicada. Esta operación produce una sobrecarga de rendimiento mucho más significativo en comparación con los escenarios de tooother.
+* Si copia los archivos a/desde un almacén de datos que no está basado en archivos (por ejemplo, desde un almacén relacional de almacén basado en archivo tooa), el paso de serialización o deserialización de hello es necesario. Este paso produce una sobrecarga considerable sobre el rendimiento.
 
-**Formato de archivo**: el formato de archivo que elija puede afectar al rendimiento de la copia. Por ejemplo, Avro es un formato binario compacto que almacena metadatos con datos. Es ampliamente admitido para el procesamiento y la realización de consultas en el ecosistema de Hadoop. Sin embargo, Avro resulta más caro para serialización y deserialización, lo que da lugar a un menor rendimiento de la copia en comparación con el formato de texto. Elija el formato de archivo para el flujo de procesamiento de forma holística. Para comenzar, piense en qué formato se almacenan los datos, los almacenes de datos de origen o si se extraerán de sistemas externos; el mejor formato para el almacenamiento, el procesamiento analítico y la realización de consultas; y en qué formato se deben exportar los datos a data marts para poder usar herramientas de visualización y generación de informes. A veces, un formato de archivo que no es óptimo desde el punto de vista del rendimiento de lectura y escritura podría ser una buena opción al considerar el proceso analítico en general.
+**Formato de archivo**: formato de archivo de Hola que elija puede afectar al rendimiento de la copia. Por ejemplo, Avro es un formato binario compacto que almacena metadatos con datos. Tiene una amplia compatibilidad con en el ecosistema de Hadoop de hello para el procesamiento y la consulta. Sin embargo, Avro es más cara para la serialización y deserialización, los resultados de menor rendimiento de copia en comparación con formato tootext. Realice su elección del formato de archivo a lo largo de hello flujo de procesamiento completo. Comenzar con los datos de formulario Hola se almacenan en y del origen de almacenes de datos o toobe extraídos de sistemas externos; Hola mejor formato de almacenamiento, procesamiento analítico y consultar; y en qué formato se deben exportar datos de hello en puestos de datos para herramientas de informes y visualización. En ocasiones, un formato de archivo que no es óptimo para leer y escribir el rendimiento podría ser una buena elección cuando considere Hola general analíticos proceso.
 
 ## <a name="considerations-for-compression"></a>Consideraciones sobre la compresión
-Cuando el conjunto de datos de entrada o salida es un archivo, puede configurar la actividad de copia para realizar la compresión y descompresión de los datos a medida que se escriben en el destino. Si elige compresión, está buscando el equilibrio entre entrada/salida (E/S) y CPU. La compresión de los datos supone un costo adicional en recursos de proceso. Pero, a cambio, se reduce la E/S de red y el almacenamiento. Según los datos, puede que observe un aumento en el rendimiento general de la actividad de copia.
+Cuando el conjunto de datos de entrada o de salida es un archivo, puede establecer la actividad de copia tooperform compresión y descompresión tal y como escribe el destino de toohello de datos. Si elige compresión, está buscando el equilibrio entre entrada/salida (E/S) y CPU. La compresión de datos de hello supone un costo adicional en recursos de proceso. Pero, a cambio, se reduce la E/S de red y el almacenamiento. Según los datos, puede que observe un aumento en el rendimiento general de la actividad de copia.
 
-**Códec**: la actividad de copia admite los tipos de compresión gzip, bzip2 y Deflate. HDInsight de Azure puede consumir los tres tipos de procesamiento. Cada códec de compresión tiene sus ventajas. Por ejemplo, bzip2 tiene el rendimiento de copia más bajo, pero obtiene el mejor rendimiento de consulta de Hive porque puede dividirlo para el procesamiento. Gzip es la opción más equilibrada y es la que se usa con mayor frecuencia. Elija el códec que mejor se adapte a su escenario de principio a fin.
+**Códec**: la actividad de copia admite los tipos de compresión gzip, bzip2 y Deflate. HDInsight de Azure puede consumir los tres tipos de procesamiento. Cada códec de compresión tiene sus ventajas. Por ejemplo, bzip2 tiene rendimiento de copia más bajo de hello, pero obtendrá Hola Hive consulta un rendimiento óptimo con bzip2 porque se puede dividir para su procesamiento. Gzip es la opción de hello más equilibrada, y se utiliza con más frecuencia Hola. Elija un códec de Hola que mejor se adapte a su escenario de extremo a extremo.
 
-**Nivel:**para cada códec de compresión, puede elegir entre dos opciones: compresión más rápida y compresión más óptima. La operación de compresión más rápida comprime los datos tan pronto como sea posible, incluso si el archivo resultante no se comprime de forma óptima. La opción de compresión óptima dedica más tiempo a la compresión y produce una cantidad mínima de datos. Puede probar ambas opciones para ver cuál proporciona un mejor rendimiento general en su caso.
+**Nivel:**para cada códec de compresión, puede elegir entre dos opciones: compresión más rápida y compresión más óptima. Hello más rápido comprimido opción comprime datos Hola lo más rápido posible, incluso si el archivo resultante de hello no se comprime un rendimiento óptimo. Hello óptimamente comprimido opción emplea más tiempo en la compresión y da como resultado una cantidad mínima de datos. Puede probar ambas toosee de opciones que proporciona un mejor rendimiento global en su caso.
 
-**Una consideración**: para copiar una gran cantidad de datos entre un almacén local y la nube, considere el uso de Almacenamiento de blobs provisional con compresión. El uso de almacenamiento provisional resulta de utilidad cuando el ancho de banda de la red corporativa y los servicios de Azure son el factor limitador, y si quiere que el conjunto de datos de entrada y el conjunto de datos de salida estén ambos en formato sin comprimir. En concreto, puede dividir una única actividad de copia en dos. La primera copia del origen en un blob de almacenamiento provisional en formato comprimido. La segunda copia los datos comprimidos del almacenamiento provisional y los descomprime mientras se escriben en el receptor.
+**Una consideración**: toocopy una gran cantidad de datos entre un almacén local y la nube de hello, considere el uso de almacenamiento de blobs provisional con la compresión. Uso de almacenamiento provisional es útil cuando ancho de banda de saludo de la red corporativa y los servicios de Azure es el factor de limitación de Hola y desea conjunto de datos de entrada de Hola y datos de salida establecen ambos toobe en formato sin comprimir. En concreto, puede dividir una única actividad de copia en dos. Hola copia actividad copia primero desde provisionales de tooan de origen de Hola o blob de almacenamiento provisional en un formato comprimido. segunda actividad de copia de Hello copia datos de hello comprimido de almacenamiento provisional y, a continuación, descomprime mientras escribe toohello receptor.
 
 ## <a name="considerations-for-column-mapping"></a>Consideraciones sobre la asignación de columnas
-La propiedad **columnMappings** se puede establecer en la actividad de copia para asignar todas las columnas de entrada, o un subconjunto de ellas, a las columnas de salida. Después de que el servicio de movimiento de datos lee los datos del origen, debe realizar la asignación de columnas en los datos antes de escribirlos en el receptor. Este procesamiento adicional reduce la capacidad de proceso de la copia.
+Puede establecer hello **columnMappings** propiedad en todos los toomap de actividad de copia o un subconjunto de hello columnas de salida de toohello de columnas de entrada. Después de que el servicio de movimiento de datos de hello lee datos de Hola de origen de hello, necesita tooperform de asignación de columna en los datos de hello antes de escribir Hola datos toohello receptor. Este procesamiento adicional reduce la capacidad de proceso de la copia.
 
-Si el almacén de datos de origen es consultable, por ejemplo, si es un almacén relacional, como SQL Database o SQL Server, o es un almacén NoSQL como Table Storage o Azure Cosmos DB, considere la posibilidad de insertar la lógica de filtrado y reordenación de columnas en la propiedad **query**, en lugar de usar la asignación de columnas. De esta forma, la proyección se produce mientras el servicio de movimiento de datos lee los datos del almacén de datos de origen, donde es mucho más eficaz.
+Si el almacén de datos de origen es consultable, por ejemplo, si se trata de un almacén relacional como base de datos SQL o SQL Server, o si es un almacén NoSQL como almacenamiento de tabla o base de datos de Azure Cosmos, considere la posibilidad de insertar el filtrado de columnas de Hola y la reordenación de lógica toohello **consulta**  propiedad en lugar de usar la asignación de columna. De esta manera, proyección de Hola se produce mientras el servicio de movimiento de datos de hello lee el almacén de datos de los datos de origen de hello, donde resulta mucho más eficaz.
 
 ## <a name="other-considerations"></a>Otras consideraciones
-Si el tamaño de los datos que quiere copiar es grande, puede ajustar la lógica empresarial para particionar los datos aún más mediante el mecanismo de fragmentación de Data Factory. A continuación, programe la actividad de copia para ejecutarse con mayor frecuencia y así reducir el tamaño de los datos con cada ejecución de actividad de copia.
+Si hello el tamaño de datos que desee toocopy es grande, puede ajustar los datos de hello business lógica toofurther partición mediante Hola mecanismo la segmentación de factoría de datos. A continuación, programar la actividad de copia toorun con más frecuencia ejecutar de tamaño de los datos tooreduce Hola para cada actividad de copia.
 
-Tenga cuidado con el número de conjuntos de datos y actividades de copia que necesitan Data Factory para conectarse al mismo almacén de datos al mismo tiempo. Muchos trabajos de copia simultáneos podrían limitar un almacén de datos y llevar a una degradación en el rendimiento, reintentos internos de trabajos de copia y, en ocasiones, errores de ejecución.
+Tener cuidado al número de Hola de conjuntos de datos y las actividades de copia que requieren la factoría de datos tooconnector toohello mismo almacén de datos en hello mismo tiempo. Muchos de los trabajos de copia concurrente podrían limitar un almacén de datos y provocar toodegraded rendimiento, copie reintentos interno del trabajo y en algunos casos, errores de ejecución.
 
-## <a name="sample-scenario-copy-from-an-on-premises-sql-server-to-blob-storage"></a>Escenario de ejemplo: Copia de una instancia local de SQL Server a Blob Storage
-**Escenario**: se crea una canalización para copiar datos de una instancia de SQL Server local a Almacenamiento de blobs en formato CSV. Para acelerar el trabajo de copia, los archivos CSV se deben comprimir en formato bzip2.
+## <a name="sample-scenario-copy-from-an-on-premises-sql-server-tooblob-storage"></a>Escenario de ejemplo: copia desde un almacenamiento de tooBlob de SQL Server local
+**Escenario**: una canalización se compila toocopy datos desde un almacenamiento de tooBlob de SQL Server local en formato CSV. toomake Hola trabajo de copia con mayor rapidez, se deben comprimir archivos CSV de hello en formato del bzip2.
 
-**Análisis y pruebas**: el rendimiento de la actividad de copia es inferior a 2 MBps, que es mucho más lento que la referencia de rendimiento.
+**Prueba y análisis**: rendimiento de Hola de actividad de copia es inferior a 2 MBps, que es mucho más lenta que las pruebas comparativas de rendimiento de Hola.
 
-**Análisis y ajuste del rendimiento**: para solucionar el problema de rendimiento, primero veremos cómo se procesan y se mueven los datos.
+**Análisis de rendimiento y optimización**: tootroubleshoot Hola problema de rendimiento, echemos un vistazo a cómo se procesa y se mueven datos Hola.
 
-1. **Lectura de datos**: la puerta de enlace abre una conexión a SQL Server y envía la consulta. SQL Server responde enviando el flujo de datos a la puerta de enlace a través de la intranet.
-2. **Serialización y compresión de datos**: la puerta de enlace serializa el flujo de datos en formato CSV y comprime los datos en una secuencia bzip2.
-3. **Escritura de datos**: la puerta de enlace carga la secuencia bzip2 en Almacenamiento de blobs a través de Internet.
+1. **Leer datos**: puerta de enlace abre un tooSQL conexión del servidor y envía Hola consulta. SQL Server responde enviando hello tooGateway de flujo de datos a través de la intranet de Hola.
+2. **Serializar y comprimir los datos**: puerta de enlace serializa el formato de tooCSV de flujo de datos de Hola y comprime Hola flujo de datos tooa bzip2.
+3. **Escribir datos**: puerta de enlace de carga de almacenamiento con tooBlob Hola bzip2 secuencias a través de Internet de Hola.
 
-Como puede ver, los datos se procesan y se mueven en streaming de forma secuencial: SQL Server > LAN > Puerta de enlace > WAN > Almacenamiento de blobs. **El rendimiento general viene determinado por el rendimiento mínimo a través de la canalización**.
+Como puede ver, datos de Hola se va a procesar y mover de forma secuencial streaming: SQL Server > LAN > puerta de enlace > WAN > almacenamiento de blobs. **Hello el rendimiento general está determinado por rendimiento mínimo de Hola a través de la canalización de hello**.
 
 ![flujo de datos](./media/data-factory-copy-activity-performance/case-study-pic-1.png)
 
-Puede que uno o varios de los siguientes factores provoquen el cuello de botella en el rendimiento:
+Uno o varios de hello siguiendo los factores que podrían provocar cuello de botella de rendimiento de Hola.
 
 * **Origen:**el propio SQL Server tiene un rendimiento bajo debido a cargas intensas.
 * **Data Management Gateway**
-  * **LAN**: la puerta de enlace se encuentra lejos de la máquina de SQL Server y tiene una conexión de ancho de banda bajo.
-  * **Puerta de enlace**: la puerta de enlace ha alcanzado sus limitaciones de carga para llevar a cabo las siguientes operaciones:
-    * **Serialización:**la serialización del flujo de datos a formato CSV tiene un rendimiento bajo.
+  * **LAN**: puerta de enlace está muy alejado del equipo de SQL Server de Hola y tiene una conexión de ancho de banda bajo.
+  * **Puerta de enlace**: puerta de enlace ha alcanzado su Hola de tooperform de limitaciones de carga de las siguientes operaciones:
+    * **Serialización**: serializar tooCSV de flujo de datos de hello formato tiene un rendimiento lento.
     * **Compresión**: ha elegido un códec de compresión lenta (por ejemplo, bzip2, a 2,8 MBps con Core i7).
-  * **WAN**: el ancho de banda entre la red corporativa y los servicios de Azure es bajo (por ejemplo, T1 = 1544 kbps. T2 = 6312 kbps).
+  * **WAN**: ancho de banda de hello entre la red corporativa de Hola y los servicios de Azure es baja (por ejemplo, T1 = 1,544 kbps. T2 = 6,312 kbps).
 * **Receptor**: el Almacenamiento de blobs tiene un rendimiento bajo. (Esta situación es improbable porque su SLA garantiza un mínimo de 60 MBps).
 
-En este caso, la compresión de datos bzip2 podría estar ralentizando la canalización entera. El cambio a un códec de compresión gzip podría aliviar este cuello de botella.
+En este caso, compresión de datos del bzip2 podría ralentizar canalización todo Hola. Cambiar el códec de compresión gzip tooa podría facilitar este cuello de botella.
 
 ## <a name="sample-scenarios-use-parallel-copy"></a>Escenarios de ejemplo: uso de la copia en paralelo
-**Escenario I:** se copian 1000 archivos de 1 MB del sistema de archivos local a Almacenamiento de blobs.
+**Escenario I:** copiar 1.000 archivos de 1 MB de almacenamiento de tooBlob del sistema de archivos de hello local.
 
-**Análisis y optimización del rendimiento**: por ejemplo, si ha instalado la puerta de enlace en una máquina de cuatro núcleos, Data Factory usa 16 copias en paralelo para mover los archivos del sistema de archivos a Blob Storage de manera simultánea. Esta ejecución en paralelo debe tener como resultado un alto rendimiento. También puede especificar explícitamente el número de copias en paralelo. Al copiar muchos archivos pequeños, las copias en paralelo ayudan considerablemente al rendimiento al usar los recursos de forma más eficaz.
+**Análisis y ajuste del rendimiento**: por ejemplo, si ha instalado la puerta de enlace en un equipo de cuatro núcleos, factoría de datos utiliza 16 copias en paralelo toomove archivos de almacenamiento de tooBlob de sistema de archivos de hello simultáneamente. Esta ejecución en paralelo debe tener como resultado un alto rendimiento. También puede especificar explícitamente Hola recuento de copias en paralelo. Al copiar muchos archivos pequeños, las copias en paralelo ayudan considerablemente al rendimiento al usar los recursos de forma más eficaz.
 
 ![Escenario 1.](./media/data-factory-copy-activity-performance/scenario-1.png)
 
-**Escenario II**: se copian 20 blobs de 500 MB cada uno de Almacenamiento de blobs a Data Lake Store Analytics y luego se optimiza el rendimiento.
+**Escenario II**: copiar 20 blobs de 500 MB de almacenamiento de blobs tooData Lake almacén análisis y, a continuación, ajustar el rendimiento.
 
-**Análisis y optimización del rendimiento**: en este escenario, Data Factory copia los datos de Blob Storage a Data Lake Store mediante una única copia (**parallelCopies** se establece en 1) y unidades de movimiento de datos de nube única. El rendimiento que observe estará próximo al que se describe en la [sección de referencia de rendimiento](#performance-reference).   
+**Análisis y ajuste del rendimiento**: en este escenario, factoría de datos copia datos de Hola de almacén de lago de tooData de almacenamiento de blobs mediante el uso de solo copia (**parallelCopies** establecer too1) y las unidades de movimiento de datos en la nube único. Hello rendimiento observa will puede cierre toothat descrito en hello [sección de referencia de rendimiento](#performance-reference).   
 
 ![Escenario 2.](./media/data-factory-copy-activity-performance/scenario-2.png)
 
 **Escenario III**: el tamaño de cada archivo es mayor que decenas de MB y el volumen total es grande.
 
-**Análisis y optimización del rendimiento**: el aumento del valor de **parallelCopies** no da lugar a un rendimiento mejor de la copia debido a las limitaciones de recursos de una DMU de nube única. En su lugar, debe especificar más DMU de nube para obtener más recursos de cara a realizar el movimiento de los datos. No especifique un valor para la propiedad **parallelCopies** . Data Factory controla el paralelismo automáticamente. En este caso, si establece **cloudDataMovementUnits** en 4, se produce una capacidad de proceso cuádruple.
+**Análisis y la habilitación de rendimiento**: aumentar **parallelCopies** no genera un mejor rendimiento de copia debido a limitaciones de recursos de hello de una DMU único de la nube. En su lugar, debe especificar en la nube más DMUs tooget más recursos tooperform Hola el movimiento de datos. No especifica un valor para hello **parallelCopies** propiedad. Factoría de datos controla el paralelismo de Hola de. En este caso, si establece **cloudDataMovementUnits** too4, un rendimiento de aproximadamente cuatro veces ocurre.
 
 ![Escenario 3.](./media/data-factory-copy-activity-performance/scenario-3.png)
 
 ## <a name="reference"></a>Referencia
-Estas son algunas referencias para la supervisión y la optimización del rendimiento para algunos de los almacenes de datos admitidos:
+Estos son supervisión del rendimiento y optimización de referencias para algunos de los almacenes de datos de hello admitida:
 
 * Azure Storage (que incluyeBlob Storage y Table Storage): [Objetivos de escalabilidad de Azure Storage](../storage/common/storage-scalability-targets.md) y [Lista de comprobación de rendimiento y escalabilidad de Azure Storage](../storage/common/storage-performance-checklist.md)
-* Base de datos SQL de Azure: puede [supervisar el rendimiento](../sql-database/sql-database-single-database-monitor.md) y comprobar el porcentaje de unidades de transacción de base de datos (DTU).
+* Base de datos SQL Azure: Puede [supervisar el rendimiento de hello](../sql-database/sql-database-single-database-monitor.md) y comprobar el porcentaje de unidad (DTU) de transacciones de base de datos de Hola
 * Almacenamiento de datos SQL de Azure: su capacidad se mide en unidades de almacenamiento de datos (DWU); consulte [Administración de la potencia de proceso en Almacenamiento de datos SQL de Azure (información general)](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
 * Azure Cosmos DB: [Niveles de rendimiento de Azure Cosmos DB](../documentdb/documentdb-performance-levels.md)
 * Instancia de SQL Server local: [Supervisión y optimización del rendimiento](https://msdn.microsoft.com/library/ms189081.aspx)

@@ -1,12 +1,12 @@
 ---
-title: Usar una puerta de enlace de IoT para conectar un dispositivo a Azure IoT Hub | Microsoft Docs
-description: Aprenda a usar Intel NUC como una puerta de enlace de IoT para conectar un SensorTag de TI y enviar datos del sensor a Azure IoT Hub en la nube.
+title: aaaUse un tooconnect de puerta de enlace de IoT un centro de IoT de dispositivo tooAzure | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toouse Intel NUC como un tooconnect de puerta de enlace de IoT un SensorTag de TI y envío sensor datos tooAzure centro de IoT en hello en la nube."
 services: iot-hub
 documentationcenter: 
 author: shizn
 manager: timlt
 tags: 
-keywords: puerta de enlace de IOT conectar dispositivo a la nube
+keywords: puerta de enlace de IOT conectar dispositivo toocloud
 ms.assetid: cb851648-018c-4a7e-860f-b62ed3b493a5
 ms.service: iot-hub
 ms.devlang: c
@@ -15,34 +15,34 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/25/2017
 ms.author: xshi
-ms.openlocfilehash: 4fb77ed0241d15338c2574fd22828507c3e40cb3
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 418af34bf29992d46b76ae59ef548744808664c3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-iot-gateway-to-connect-things-to-the-cloud---sensortag-to-azure-iot-hub"></a>Usar una puerta de enlace de IoT para conectar dispositivos a la nube: SensorTag a Azure IoT Hub
+# <a name="use-iot-gateway-tooconnect-things-toohello-cloud---sensortag-tooazure-iot-hub"></a>Usar IoT puerta de enlace tooconnect cosas toohello cloud - SensorTag tooAzure centro de IoT
 
 > [!NOTE]
-> Antes de empezar este tutorial, asegúrese de haber completado [Set up Intel NUC as an IoT gateway (Configurar Intel NUC como una puerta de enlace de IoT)](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md). En [Set up Intel NUC as an IoT gateway (Configurar Intel NUC como una puerta de enlace de IoT)](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md), se configura el dispositivo Intel NUC como una puerta de enlace de IoT.
+> Antes de empezar este tutorial, asegúrese de haber completado [Set up Intel NUC as an IoT gateway (Configurar Intel NUC como una puerta de enlace de IoT)](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md). En [configurar Intel NUC como una puerta de enlace de IoT](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md), configura Hola Intel NUC dispositivo como una puerta de enlace de IoT.
 
 ## <a name="what-you-will-learn"></a>Lo qué aprenderá
 
-Aprenda a usar una puerta de enlace de IoT para conectar un SensorTag de Texas Instruments (CC2650STK) a Azure IoT Hub. La puerta de enlace de IoT envía datos de temperatura y humedad recopilados del SensorTag a Azure IoT Hub.
+Aprenderá cómo toouse una tooconnect de puerta de enlace de IoT un centro de IoT de tooAzure Texas instrumentos SensorTag (CC2650STK). puerta de enlace de IoT Hola envía temperatura y recopilan los datos de humedad de hello SensorTag tooAzure centro de IoT.
 
 ## <a name="what-you-will-do"></a>Lo que hará
 
 - Cree un Centro de IoT.
-- Registre un dispositivo en IoT Hub para el SensorTag.
-- Habilite la conexión entre la puerta de enlace de IoT y el SensorTag.
-- Ejecute una aplicación de ejemplo BLE para enviar datos del SensorTag a IoT Hub.
+- Registrar un dispositivo en el centro de IoT de Hola para hello SensorTag.
+- Habilitar conexión Hola entre la puerta de enlace de IoT de Hola y Hola SensorTag.
+- Ejecute un centro de IoT Bilitar ejemplo aplicación toosend SensorTag datos tooyour.
 
 ## <a name="what-you-need"></a>Lo que necesita
 
 - Tutorial [Set up Intel NUC as an IoT gateway (Configurar Intel NUC como una puerta de enlace de IoT)](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md) completado en el que haya configurado Intel NUC como una puerta de enlace de IoT.
 - * Una suscripción de Azure activa. Si no tiene ninguna cuenta de Azure, [cree una cuenta de evaluación gratuita de Azure](https://azure.microsoft.com/free/) en solo unos minutos.
 - Un cliente de SSH que se ejecute en el equipo host. En Windows se recomienda PuTTY. Linux y macOS ya vienen con un cliente de SSH.
-- La dirección IP y el nombre de usuario y la contraseña para acceder a la puerta de enlace desde el cliente de SSH.
+- dirección IP de Hola y Hola username y password tooaccess Hola puerta de enlace de cliente de SSH Hola.
 - Una conexión a Internet.
 
 [!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
@@ -50,38 +50,38 @@ Aprenda a usar una puerta de enlace de IoT para conectar un SensorTag de Texas I
 > [!NOTE]
 > Aquí se registra este nuevo dispositivo para el SensorTag
 
-## <a name="enable-the-connection-between-the-iot-gateway-and-the-sensortag"></a>Habilitar la conexión entre la puerta de enlace de IoT y el SensorTag
+## <a name="enable-hello-connection-between-hello-iot-gateway-and-hello-sensortag"></a>Habilitar conexión Hola entre la puerta de enlace de IoT de Hola y Hola SensorTag
 
-En esta sección se realizarán las siguientes tareas:
+En esta sección, realizar Hola siguientes tareas:
 
-- Obtener la dirección MAC del SensorTag para la conexión Bluetooth.
-- Iniciar una conexión Bluetooth desde la puerta de enlace de IoT al SensorTag.
+- Obtener dirección MAC de Hola de hello SensorTag conexión Bluetooth.
+- Iniciar una conexión de Bluetooth de toohello de puerta de enlace de IoT de hello SensorTag.
 
-### <a name="get-the-mac-address-of-the-sensortag-for-bluetooth-connection"></a>Obtener la dirección MAC del SensorTag para la conexión Bluetooth
+### <a name="get-hello-mac-address-of-hello-sensortag-for-bluetooth-connection"></a>Obtener dirección MAC de Hola de hello SensorTag para conexión de Bluetooth
 
-1. En el equipo host, ejecute el cliente de SSH y conéctelo a la puerta de enlace de IoT.
-1. Desbloquee Bluetooth al ejecutar el siguiente comando:
+1. En el equipo de host de hello, ejecutar el cliente de SSH de Hola y conectar la puerta de enlace de IoT toohello.
+1. Desbloquear Bluetooth ejecutando Hola siguiente comando:
 
    ```bash
    sudo rfkill unblock bluetooth
    ```
 
-1. Inicie el servicio Bluetooth en la puerta de enlace de IoT y escriba un shell de Bluetooth para configurar Bluetooth al ejecutar los comandos siguientes:
+1. Iniciar el servicio de Bluetooth de hello en la puerta de enlace de IoT de Hola y escriba un tooconfigure de shell de Bluetooth Bluetooth ejecutando Hola siguientes comandos:
 
    ```bash
    sudo systemctl start bluetooth
    bluetoothctl
    ```
 
-1. Encienda el controlador Bluetooth al ejecutar el siguiente comando en el shell de Bluetooth:
+1. Encendido de controlador de Bluetooth Hola ejecutando Hola siguiente comando en hello Bluetooth shell:
 
    ```bash
    power on
    ```
 
-   ![Encender el controlador Bluetooth en la puerta de enlace de IoT con bluetoothctl](./media/iot-hub-iot-gateway-connect-device-to-cloud/8_power-on-bluetooth-controller-at-bluetooth-shell-bluetoothctl.png)
+   ![encendido de controlador de Bluetooth hello en puerta de enlace de IoT de hello con bluetoothctl](./media/iot-hub-iot-gateway-connect-device-to-cloud/8_power-on-bluetooth-controller-at-bluetooth-shell-bluetoothctl.png)
 
-1. Inicie la detección de dispositivos Bluetooth cercanos al ejecutar el comando siguiente:
+1. Iniciar buscar dispositivos Bluetooth cercanos ejecutando Hola siguiente comando:
 
    ```bash
    scan on
@@ -89,9 +89,9 @@ En esta sección se realizarán las siguientes tareas:
 
    ![Buscar dispositivos Bluetooth cercanos con bluetoothctl](./media/iot-hub-iot-gateway-connect-device-to-cloud/9_start-scan-nearby-bluetooth-devices-at-bluetooth-shell-bluetoothctl.png)
 
-1. Presione el botón de emparejamiento en el SensorTag. El LED verde del SensorTag parpadea.
-1. En el shell de Bluetooth debería ver que se ha encontrado el SensorTag. Anote la dirección MAC del SensorTag. En este ejemplo, la dirección MAC del SensorTag es `24:71:89:C0:7F:82`.
-1. Detenga la detección al ejecutar el comando siguiente:
+1. Presione el botón en hello SensorTag de emparejamiento de Hola. Hola verde LED en hello SensorTag parpadea.
+1. En el shell de Bluetooth hello, debería ver Hola que sensortag se encuentra. Tome nota de hello dirección MAC de hello SensorTag. En este ejemplo, hello dirección MAC de hello SensorTag es `24:71:89:C0:7F:82`.
+1. Desactivar el examen de hello ejecutando el siguiente comando de hello:
 
    ```bash
    scan off
@@ -99,70 +99,70 @@ En esta sección se realizarán las siguientes tareas:
 
    ![Detener la detección de dispositivos Bluetooth cercanos con bluetoothctl](./media/iot-hub-iot-gateway-connect-device-to-cloud/10_stop-scanning-nearby-bluetooth-devices-at-bluetooth-shell-bluetoothctl.png)
 
-### <a name="initiate-a-bluetooth-connection-from-the-iot-gateway-to-the-sensortag"></a>Iniciar una conexión Bluetooth desde la puerta de enlace de IoT al SensorTag
+### <a name="initiate-a-bluetooth-connection-from-hello-iot-gateway-toohello-sensortag"></a>Iniciar una conexión de Bluetooth de toohello de puerta de enlace de IoT de hello SensorTag
 
-1. Conéctese al SensorTag mediante la ejecución del comando siguiente:
+1. Conectarse toohello SensorTag, ejecute el siguiente comando de hello:
 
    ```bash
    connect <MAC address>
    ```
 
-   ![Conectarse al SensorTag con bluetoothctl](./media/iot-hub-iot-gateway-connect-device-to-cloud/11_connect-to-sensortag-at-bluetooth-shell-bluetoothctl.png)
+   ![Conectar toohello SensorTag con bluetoothctl](./media/iot-hub-iot-gateway-connect-device-to-cloud/11_connect-to-sensortag-at-bluetooth-shell-bluetoothctl.png)
 
-1. Desconéctese del SensorTag y salga del shell de Bluetooth al ejecutar los comandos siguientes:
+1. Desconectarse de hello SensorTag y ejecutar salir del shell de Bluetooth Hola Hola siguientes comandos:
 
    ```bash
    disconnect
    exit
    ```
 
-   ![Desconectarse del SensorTag con bluetoothctl](./media/iot-hub-iot-gateway-connect-device-to-cloud/12_disconnect-from-sensortag-at-bluetooth-shell-bluetoothctl.png)
+   ![Desconectarse de hello SensorTag con bluetoothctl](./media/iot-hub-iot-gateway-connect-device-to-cloud/12_disconnect-from-sensortag-at-bluetooth-shell-bluetoothctl.png)
 
-Ha habilitado correctamente la conexión entre la puerta de enlace de IoT y el SensorTag.
+Conexión Hola entre la puerta de enlace de IoT de Hola y Hola SensorTag haya habilitado correctamente.
 
-## <a name="run-a-ble-sample-application-to-send-sensortag-data-to-your-iot-hub"></a>Ejecutar una aplicación de ejemplo BLE para enviar datos del SensorTag a IoT Hub
+## <a name="run-a-ble-sample-application-toosend-sensortag-data-tooyour-iot-hub"></a>Ejecutar un centro de IoT Bilitar ejemplo aplicación toosend SensorTag datos tooyour
 
-Azure IoT Edge proporciona la aplicación de ejemplo Bluetooth Low Energy (BLE). La aplicación de ejemplo recopila datos de la conexión BLE y los envía a IoT Hub. Para ejecutar la aplicación de ejemplo, tiene que:
+Borde de IoT de Azure proporciona Hola aplicación de ejemplo de Bluetooth baja energía (n). aplicación de ejemplo de Hola recopila datos de conexión Bilitar y centro de IoT de hello datos tooyou de envío. aplicación de ejemplo de Hola toorun, debe:
 
-1. Configurar la aplicación de ejemplo.
-1. Ejecutar la aplicación de ejemplo en la puerta de enlace de IoT.
+1. Configurar la aplicación de ejemplo de Hola.
+1. Ejecutar la aplicación de ejemplo de Hola en puerta de enlace de IoT Hola.
 
-### <a name="configure-the-sample-application"></a>Configurar la aplicación de ejemplo
+### <a name="configure-hello-sample-application"></a>Configurar la aplicación de ejemplo de Hola
 
-1. Vaya a la carpeta de la aplicación de ejemplo al ejecutar el comando siguiente:
+1. Vaya toohello carpeta de aplicación de ejemplo de Hola ejecutando Hola siguiente comando:
 
    ```bash
    cd /usr/share/azureiotgatewaysdk/samples/ble_gateway
    ```
 
-1. Abra el archivo de configuración al ejecutar el siguiente comando:
+1. Abra el archivo de configuración de hello ejecutando Hola siguiente comando:
 
    ```bash
    vi ble_gateway.json
    ```
 
-1. En el archivo de configuración, rellene los siguientes valores:
+1. En el archivo de configuración de hello, rellene Hola siguientes valores:
 
-   **IoTHubName**: nombre del IoT Hub.
+   **IoTHubName**: nombre de Hola de su centro de IoT.
 
-   **IoTHubSuffix**: obtenga IoTHubSuffix de la clave principal de la cadena de conexión del dispositivo que ha anotado. Asegúrese de que obtiene la clave principal de la cadena de conexión del dispositivo y no la clave principal de la cadena de conexión de IoT Hub. La clave principal de la cadena de conexión del dispositivo tiene el formato `HostName=IOTHUBNAME.IOTHUBSUFFIX;DeviceId=DEVICEID;SharedAccessKey=SHAREDACCESSKEY`.
+   **IoTHubSuffix**: IoTHubSuffix obtener de la clave principal Hola de cadena de conexión de dispositivo de Hola que anotó hacia abajo. Asegurarse de que obtener la clave principal de Hola de cadena de conexión de dispositivo de hello, no Hola clave principal de la cadena de conexión de base de datos central de IoT. clave principal de Hola de cadena de conexión de dispositivo de hello está en formato de Hola de `HostName=IOTHUBNAME.IOTHUBSUFFIX;DeviceId=DEVICEID;SharedAccessKey=SHAREDACCESSKEY`.
 
-   **Transport**: el valor predeterminada es `amqp`. Este valor muestra el protocolo durante el transporte. Podría ser `http`, `amqp` o `mqtt`.
+   **Transporte**: valor predeterminado de hello es `amqp`. Este valor muestra el protocolo de Hola durante transpotation. Podría ser `http`, `amqp` o `mqtt`.
 
-   **macAddress**: dirección MAC del SensorTag que ha anotado.
+   **macAddress**: Hola dirección MAC de hello SensorTag que anotó hacia abajo.
 
-   **deviceID**: identificador del dispositivo que ha creado en IoT Hub.
+   **Id. de dispositivo**: Id. de dispositivo de Hola que creó en el centro de IoT.
 
-   **deviceKey**: clave principal de la cadena de conexión del dispositivo.
+   **deviceKey**: clave principal de Hola de cadena de conexión de dispositivo de Hola.
 
-   ![Completar el archivo config de la aplicación de ejemplo BLE](./media/iot-hub-iot-gateway-connect-device-to-cloud/13_edit-config-file-of-ble-sample.png)
+   ![Archivo de configuración de hello completa del programa Hola a aplicación de ejemplo BLE](./media/iot-hub-iot-gateway-connect-device-to-cloud/13_edit-config-file-of-ble-sample.png)
 
-1. Presione `ESC` y escriba `:wq` para guardar el archivo.
+1. Presione `ESC` y el tipo de `:wq` archivo de hello toosave.
 
-### <a name="run-the-sample-application"></a>Ejecutar la aplicación de ejemplo
+### <a name="run-hello-sample-application"></a>Ejecutar la aplicación de ejemplo de Hola
 
-1. Asegúrese de que el SensorTag está encendido.
-1. Ejecute el siguiente comando:
+1. Asegúrese de hello seguro que sensortag está encendida.
+1. Ejecute el siguiente comando de hello:
 
    ```bash
    ./ble_gateway ble_gateway.json

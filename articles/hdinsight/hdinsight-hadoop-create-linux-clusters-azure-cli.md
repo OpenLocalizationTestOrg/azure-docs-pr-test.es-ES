@@ -1,6 +1,6 @@
 ---
-title: "Creación de clústeres de Hadoop mediante la línea de comandos - Azure HDInsight | Microsoft Docs"
-description: "Aprenda a crear clústeres de HDInsight con la CLI multiplataforma de Azure 1.0."
+title: "clústeres de Hadoop de aaaCreate mediante la línea de comandos - Hola HDInsight de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo los clústeres de HDInsight de toocreate con Hola multiplataforma Azure CLI 1.0."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,20 +16,20 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/26/2017
 ms.author: larryfr
-ms.openlocfilehash: 8f2fcb46789d000cd66164508f1159338dcae5f9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5295b01054b8c23df0e3b75a3e0e8c933ac48b3c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Creación de clústeres de HDInsight mediante la CLI de Azure
+# <a name="create-hdinsight-clusters-using-hello-azure-cli"></a>Crear clústeres de HDInsight con hello CLI de Azure
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Los pasos de este tutorial describen la creación de un clúster de HDInsight 3.5 mediante la CLI de Azure 1.0.
+Hola pasos de este tutorial de documento creación de un clúster de HDInsight 3.5 con hello 1.0 de CLI de Azure.
 
 > [!IMPORTANT]
-> Linux es el único sistema operativo que se usa en la versión 3.4 de HDInsight, o en las superiores. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Linux es Hola único sistema operativo usado en HDInsight versión 3.4 o superior. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 
 ## <a name="prerequisites"></a>Requisitos previos
@@ -38,90 +38,90 @@ Los pasos de este tutorial describen la creación de un clúster de HDInsight 3.
 
 * **Una suscripción de Azure**. Vea [Obtener evaluación gratuita de Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
-* **CLI de Azure** Los pasos de este documento se probaron por última vez en la versión 0.10.14 de la CLI de Azure.
+* **CLI de Azure** pasos de Hello en este documento se han probado última con CLI de Azure versión 0.10.14.
 
     > [!IMPORTANT]
-    > Los pasos descritos en este documento no funcionan con la CLI de Azure 2.0. La CLI de Azure 2.0 no admite la creación de un clúster de HDInsight.
+    > pasos de Hello en este documento no funcionan con Azure CLI 2.0. La CLI de Azure 2.0 no admite la creación de un clúster de HDInsight.
 
-## <a name="log-in-to-your-azure-subscription"></a>Inicio de sesión en la suscripción de Azure
+## <a name="log-in-tooyour-azure-subscription"></a>Inicie sesión en tooyour suscripción de Azure
 
-Siga los pasos que se documentan en [Conexión a una suscripción de Azure desde la interfaz de la línea de comandos de Azure (CLI de Azure)](../xplat-cli-connect.md) y conéctese a su suscripción con el método **login** .
+Siga los pasos de hello documentados en [conectarse tooan suscripción de Azure desde hello Azure interfaz de línea de comandos (CLI de Azure)](../xplat-cli-connect.md) y conectar suscripción tooyour con hello **inicio de sesión** método.
 
 ## <a name="create-a-cluster"></a>Crear un clúster
 
-Los siguientes pasos deben realizarse desde una línea de comandos como PowerShell o Bash.
+Hola pasos debe realizarse desde una línea de comandos, como PowerShell o Bash.
 
-1. Use el siguiente comando para autenticarse en su suscripción de Azure:
+1. Usar hello después comando tooauthenticate tooyour suscripción de Azure:
 
         azure login
 
-    Se le solicitará que escriba su nombre y contraseña. Si tiene varias suscripciones de Azure, puede usar `azure account set <subscriptionname>` para establecer la suscripción que usarán los comandos de la CLI de Azure.
+    Se está tooprovide solicitada su nombre y contraseña. Si tiene varias suscripciones de Azure, use `azure account set <subscriptionname>` use comandos de suscripción de hello tooset que Hola CLI de Azure.
 
-2. Cambie al modo de Administrador de recursos de Azure con el siguiente comando:
+2. Cambiar el modo de administrador de recursos de tooAzure con hello siguiente comando:
 
         azure config mode arm
 
-3. Cree un grupo de recursos. Este grupo de recursos contiene el clúster de HDInsight y la cuenta de almacenamiento asociada.
+3. Cree un grupo de recursos. Este grupo de recursos contiene el clúster de HDInsight de Hola y asociados de cuenta de almacenamiento.
 
         azure group create groupname location
 
-    * Sustituya `groupname` por un nombre único para el grupo.
+    * Reemplace `groupname` con un nombre único para el grupo de Hola.
 
-    * Sustituya `location` por la región geográfica en la que quiere crear el grupo.
+    * Reemplace `location` con la región geográfica de Hola que desee toocreate hello en.
 
-       Para obtener una lista de ubicaciones válidas, use el comando `azure location list` y luego una de las ubicaciones de la columna `Name`.
+       Para obtener una lista de ubicaciones válidas, usar hello `azure location list` comando y, a continuación, utilice una de las ubicaciones de Hola de hello `Name` columna.
 
-4. Cree una cuenta de almacenamiento. Esta cuenta de almacenamiento se usa como almacenamiento predeterminado del clúster de HDInsight.
+4. Cree una cuenta de almacenamiento. Esta cuenta de almacenamiento se utiliza como almacenamiento predeterminado de hello para el clúster de HDInsight Hola.
 
         azure storage account create -g groupname --sku-name RAGRS -l location --kind Storage storagename
 
-    * Sustituya `groupname` por el nombre del grupo creado en el paso anterior.
+    * Reemplace `groupname` con el nombre de hello del grupo de hello creado en el paso anterior de Hola.
 
-    * Sustituya `location` por la misma ubicación usada en el paso anterior.
+    * Reemplace `location` con la misma ubicación que se utilizó en el paso anterior de Hola de Hola.
 
-    * Sustituya `storagename` por un nombre único para la cuenta de almacenamiento.
+    * Reemplace `storagename` con un nombre único para la cuenta de almacenamiento de Hola.
 
         > [!NOTE]
-        > Si desea obtener más información sobre los parámetros utilizados en este comando, use `azure storage account create -h` para ver la ayuda correspondiente.
+        > Para obtener más información sobre los parámetros de hello utilizados en este comando, use `azure storage account create -h` tooview ayuda para este comando.
 
-5. Recupere la clave utilizada para tener acceso a la cuenta de almacenamiento.
+5. Recuperar la cuenta de almacenamiento de Hola Hola clave tooaccess usado.
 
         azure storage account keys list -g groupname storagename
 
-    * Sustituya `groupname` por el nombre del grupo de recursos.
-    * Sustituya `storagename` por el nombre de la cuenta de almacenamiento.
+    * Reemplace `groupname` con el nombre de grupo de recursos de Hola.
+    * Reemplace `storagename` con el nombre de Hola de cuenta de almacenamiento de Hola.
 
-     En los datos que se devuelven, guarde el valor `key` de `key1`.
+     En datos de Hola que se devuelven, guardar hello `key` valor `key1`.
 
 6. Cree un clúster de HDInsight.
 
         azure hdinsight cluster create -g groupname -l location -y Linux --clusterType Hadoop --defaultStorageAccountName storagename.blob.core.windows.net --defaultStorageAccountKey storagekey --defaultStorageContainer clustername --workerNodeCount 3 --userName admin --password httppassword --sshUserName sshuser --sshPassword sshuserpassword clustername
 
-    * Sustituya `groupname` por el nombre del grupo de recursos.
+    * Reemplace `groupname` con el nombre de grupo de recursos de Hola.
 
-    * Sustituya `Hadoop` por el tipo de clúster que quiere crear. Por ejemplo, `Hadoop`, `HBase`, `Kafka`, `Spark` o `Storm`.
+    * Reemplace `Hadoop` con el tipo de clúster de Hola que desea toocreate. Por ejemplo, `Hadoop`, `HBase`, `Kafka`, `Spark` o `Storm`.
 
      > [!IMPORTANT]
-     > Los clústeres de HDInsight incluyen diversos tipos, que corresponden a la carga de trabajo o la tecnología para los que el clúster está optimizado. No hay ningún método admitido para crear un solo clúster que combine varios tipos, como Storm y HBase.
+     > HDInsight clústeres proceden de diversos tipos, que corresponden a cargas de trabajo de toohello o tecnología de Hola clúster se optimiza para. No hay ningún toocreate método admitido para un clúster que combina varios tipos, como Storm y HBase en un clúster.
 
-    * Sustituya `location` por la misma ubicación usada en pasos anteriores.
+    * Reemplace `location` con hello misma ubicación que se usa en los pasos anteriores.
 
-    * Sustituya `storagename` por el nombre de la cuenta de almacenamiento.
+    * Reemplace `storagename` con el nombre de cuenta de almacenamiento de Hola.
 
-    * Sustituya `storagekey` por la clave obtenida en el paso anterior.
+    * Reemplace `storagekey` con clave de hello obtenido en el paso anterior de Hola.
 
-    * Para el parámetro `--defaultStorageContainer` , use el mismo nombre que utiliza para el clúster.
+    * Para hello `--defaultStorageContainer` parámetro, Hola uso mismo nombre que se utilizan para clúster Hola.
 
-    * Sustituya `admin` y `httppassword` por el nombre y la contraseña que quiere usar en el acceso al clúster mediante HTTPS.
+    * Reemplace `admin` y `httppassword` con hello nombre y la contraseña que se va toouse al tener acceso a los clústeres de Hola a través de HTTPS.
 
-    * Sustituya `sshuser` y `sshuserpassword` por el nombre de usuario y la contraseña que quiere usar en el acceso al clúster mediante SSH
+    * Reemplace `sshuser` y `sshuserpassword` con hello username y password desea toouse al tener acceso a clúster de hello mediante SSH
 
     > [!IMPORTANT]
-    > En este ejemplo se crea un clúster con dos nodos de trabajo. Si quiere cambiar el número de nodos de trabajo después de la creación del clúster, realice operaciones de escalado. Si planea usar más de 32 nodos de trabajo, tiene que seleccionar un tamaño de nodo principal con al menos 8 núcleos y 14 GB de RAM. Durante la creación del clúster, puede establecer el tamaño del nodo principal mediante el parámetro `--headNodeSize`.
+    > En este ejemplo se crea un clúster con dos nodos de trabajo. También puede cambiar número de Hola de nodos de trabajo después de la creación de clúster mediante la realización de operaciones de escala. Si planea usar más de 32 nodos de trabajo, tiene que seleccionar un tamaño de nodo principal con al menos 8 núcleos y 14 GB de RAM. Puede establecer el tamaño del nodo principal de hello mediante hello `--headNodeSize` parámetro durante la creación del clúster.
     >
     > Para obtener más información acerca de los tamaños de nodo y los costos asociados, consulte [Precios de HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-    Pueden pasar varios minutos (por lo general, unos quince) hasta que finalice el proceso de creación del clúster.
+    Puede tardar varios minutos para toofinish de proceso de creación de clúster de Hola. de creación del clúster.
 
 ## <a name="troubleshoot"></a>Solución de problemas
 
@@ -129,7 +129,7 @@ Si experimenta problemas con la creación de clústeres de HDInsight, consulte l
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Una vez creado correctamente un clúster de HDInsight correctamente mediante la CLI de Azure, use los siguientes vínculos para aprender a trabajar con él:
+Ahora que ha creado correctamente un clúster de HDInsight con hello CLI de Azure, use Hola sigue toolearn cómo toowork con el clúster:
 
 ### <a name="hadoop-clusters"></a>Clústeres Hadoop
 

@@ -1,6 +1,6 @@
 ---
 title: "Azure Portal: Creación de una base de datos SQL | Microsoft Docs"
-description: "Aprenda a crear un servidor lógico de SQL Database, una regla de firewall de nivel de servidor y bases de datos en Azure Portal. También aprenderá a consultar de una instancia de Azure SQL Database desde Azure Portal."
+description: "Obtenga información acerca de cómo toocreate un servidor lógico de la base de datos SQL, regla de firewall de nivel de servidor y bases de datos de Hola portal de Azure. Aprenderá también tooquery una base de datos de SQL Azure mediante Hola portal de Azure."
 keywords: "tutorial de sql database, creación de una base de datos sql"
 services: sql-database
 documentationcenter: 
@@ -16,129 +16,129 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 05/30/2017
 ms.author: carlrab
-ms.openlocfilehash: a863cf3ad08040906850f64db6505f30bcfa72eb
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: d30352d834f2007e0b6b3eabfc3c108c61479b22
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-an-azure-sql-database-in-the-azure-portal"></a>Creación de una instancia de Azure SQL Database en Azure Portal
+# <a name="create-an-azure-sql-database-in-hello-azure-portal"></a>Crear una base de datos de SQL Azure en hello portal de Azure
 
-Este tutorial de inicio rápido le guía por el proceso de creación de una instancia de SQL Database en Azure. Azure SQL Database es una oferta de "base de datos como servicio" que permite ejecutar y escalar bases de datos de SQL Server de alta disponibilidad en la nube. En esta guía de inicio rápido se muestra cómo comenzar mediante la creación de una instancia de SQL Database a través de Azure Portal.
+Este tutorial de inicio rápido le guía a través de la base de datos toocreate una instancia de SQL en Azure. La base de datos de SQL Azure es una "base de datos-as-a-Service" oferta que le permite toorun y escala alta disponibilidad SQL Server las bases de datos en la nube de Hola. Este inicio rápido muestra cómo tooget iniciado mediante la creación de una base de datos SQL Hola portal de Azure.
 
 Si no tiene una suscripción a Azure, cree una cuenta [gratuita](https://azure.microsoft.com/free/) antes de empezar.
 
-## <a name="log-in-to-the-azure-portal"></a>Iniciar sesión en Azure Portal
+## <a name="log-in-toohello-azure-portal"></a>Inicie sesión en toohello portal de Azure
 
-Inicie sesión en [Azure Portal](https://portal.azure.com/).
+Inicie sesión en toohello [portal de Azure](https://portal.azure.com/).
 
 ## <a name="create-a-sql-database"></a>Creación de una base de datos SQL
 
-Se crea una base de datos SQL de Azure con un conjunto definido de [recursos de proceso y almacenamiento](sql-database-service-tiers.md). La base de datos se crea dentro de un [grupo de recursos de Azure](../azure-resource-manager/resource-group-overview.md) y en un [servidor lógico de Azure SQL Database](sql-database-features.md). 
+Se crea una instancia de Azure SQL Database con un conjunto definido de [recursos de proceso y almacenamiento](sql-database-service-tiers.md). base de datos de Hola se crea dentro de un [grupo de recursos de Azure](../azure-resource-manager/resource-group-overview.md) y en un [servidor lógico de base de datos de SQL Azure](sql-database-features.md). 
 
-Siga estos pasos para crear una base de datos SQL que contenga los datos de ejemplo de Adventure Works LT. 
+Siga estos pasos toocreate una base de datos SQL que contiene datos de ejemplo de Hola LT de Adventure Works. 
 
-1. Haga clic en el botón **Nuevo** de la esquina superior izquierda de Azure Portal.
+1. Haga clic en hello **New** encontró el botón en la esquina izquierda superior de Hola de hello portal de Azure.
 
-2. En la página **Nuevo**, seleccione **Bases de datos** y, en la página **Bases de datos**, seleccione **SQL Database**.
+2. Seleccione **bases de datos** de hello **New** página y seleccione **base de datos SQL** de hello **bases de datos** página.
 
    ![create database-1](./media/sql-database-get-started-portal/create-database-1.png)
 
-3. Rellene el formulario de SQL Database con la siguiente información, como se muestra en la imagen anterior:   
+3. Rellenar formulario de la base de datos SQL de Hola con hello después de obtener información, tal como se muestra en hello anterior imagen:   
 
    | Configuración       | Valor sugerido | Descripción | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | **Nombre de la base de datos** | mySampleDatabase | Para conocer los nombres de base de datos válidos, consulte [Database Identifiers](https://docs.microsoft.com/en-us/sql/relational-databases/databases/database-identifiers) (Identificadores de base de datos). | 
    | **Suscripción** | Su suscripción  | Para más información acerca de sus suscripciones, consulte [Suscripciones](https://account.windowsazure.com/Subscriptions). |
    | **Grupos de recursos**  | myResourceGroup | Para conocer cuáles son los nombres de grupo de recursos válidos, consulte el artículo [Naming conventions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Convenciones de nomenclatura). |
-   | **Seleccionar origen** | Ejemplo (AdventureWorksLT) | Carga el esquema y los datos de AdventureWorksLT en la base de datos nueva |
+   | **Seleccionar origen** | Ejemplo (AdventureWorksLT) | Carga Hola AdventureWorksLT esquema y los datos en la base de datos |
 
    > [!IMPORTANT]
-   > Debe seleccionar la base de datos de ejemplo de este formulario porque se utiliza en el resto de esta guía de inicio rápido.
+   > Debe seleccionar la base de datos de ejemplo de Hola en este formulario porque se utiliza en el resto de Hola de esta guía de inicio rápido.
    > 
 
-4. En **Servidor**, haga clic en **Configurar los valores obligatorios** y rellene el formulario de SQL Server (servidor lógico) con la siguiente información, como se muestra en la imagen siguiente:   
+4. En **Server**, haga clic en **establecer configuración obligatoria** y rellene Hola formato SQL server (servidor lógico) con hello después de obtener información, tal como se muestra en hello después de imagen:   
 
    | Configuración       | Valor sugerido | Descripción | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | **Nombre del servidor** | Cualquier nombre globalmente único | Para conocer cuáles son los nombres de servidor válidos, consulte el artículo [Naming conventions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Convenciones de nomenclatura). | 
    | **Inicio de sesión del administrador del servidor** | Cualquier nombre válido | Para conocer los nombres de inicio de sesión válidos, consulte [Database Identifiers](https://docs.microsoft.com/en-us/sql/relational-databases/databases/database-identifiers) (Identificadores de base de datos). |
-   | **Password** | Cualquier contraseña válida | La contraseña debe tener un mínimo de 8 caracteres y debe contener caracteres de tres de las siguientes categorías: caracteres en mayúsculas, caracteres en minúsculas, números y caracteres no alfanuméricos. |
+   | **Password** | Cualquier contraseña válida | La contraseña debe tener al menos 8 caracteres y debe contener caracteres de tres de las siguientes categorías de hello: caracteres en mayúsculas, caracteres en minúsculas, números y caracteres no alfanuméricos y guiones. |
    | **Suscripción** | Su suscripción | Para más información acerca de sus suscripciones, consulte [Suscripciones](https://account.windowsazure.com/Subscriptions). |
    | **Grupos de recursos** | myResourceGroup | Para conocer cuáles son los nombres de grupo de recursos válidos, consulte el artículo [Naming conventions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Convenciones de nomenclatura). |
    | **Ubicación** | Cualquier ubicación válida | Para obtener información acerca de las regiones, consulte [Regiones de Azure](https://azure.microsoft.com/regions/). |
 
    > [!IMPORTANT]
-   > Se requiere el inicio de sesión y la contraseña de administrador de servidor que especifique aquí para iniciar sesión en el servidor y a sus bases de datos más adelante en esta guía de inicio rápido. Recuerde o grabe esta información para su uso posterior. 
+   > inicio de sesión de administrador de servidor de Hola y la contraseña que especifique aquí son necesario toolog en toohello server y sus bases de datos más adelante en esta guía de inicio rápido. Recuerde o grabe esta información para su uso posterior. 
    >  
 
    ![create database-server](./media/sql-database-get-started-portal/create-database-server.png)
 
-5. Cuando haya completado el formulario, haga clic en **Seleccionar**.
+5. Cuando se haya completado el formulario de hello, haga clic en **seleccione**.
 
-6. Haga clic en **Plan de tarifa** para especificar el tanto el nivel de rendimiento como el nivel de servicio de la nueva base de datos. Utilice el control deslizante para seleccionar **20 DTU** y **250** GB de almacenamiento. Para más información acerca de las DTU, consulte [¿Qué es una DTU?](sql-database-what-is-a-dtu.md).
+6. Haga clic en **tarifa** toospecify Hola nivel y rendimiento de nivel de servicio para la nueva base de datos. Usar Hola control deslizante tooselect **20 Dtu** y **250** GB de almacenamiento. Para más información acerca de las DTU, consulte [¿Qué es una DTU?](sql-database-what-is-a-dtu.md).
 
    ![create database-s1](./media/sql-database-get-started-portal/create-database-s1.png)
 
-7. Después de seleccionar la cantidad de DTU, haga clic en **Aplicar**.  
+7. Después de la cantidad de hello seleccionado de Dtu, haga clic en **aplicar**.  
 
-8. Una vez completado el formulario de SQL Database, haga clic en **Crear** para aprovisionar la base de datos. El aprovisionamiento tarda unos minutos. 
+8. Ahora que ha completado el formulario de la base de datos SQL de hello, haga clic en **crear** base de datos de tooprovision Hola. El aprovisionamiento tarda unos minutos. 
 
-9. En la barra de herramientas, haga clic en **Notificaciones** para supervisar el proceso de implementación.
+9. En la barra de herramientas de hello, haga clic en **notificaciones** toomonitor proceso de implementación de Hola.
 
    ![notificación](./media/sql-database-get-started-portal/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>Crear una regla de firewall de nivel de servidor
 
-El servicio SQL Database crea un firewall en el nivel de servidor, lo que impide que herramientas y aplicaciones externas se conecten al servidor o a las bases de datos del servidor, a menos que se cree una regla de firewall para abrir el firewall para direcciones IP concretas. Siga estos pasos para crear una [regla de firewall de nivel de servidor de SQL Database](sql-database-firewall-configure.md) para la dirección IP de su cliente y habilite la conectividad externa a través de dicho firewall solo para su dirección IP. 
+Hola servicio de base de datos SQL crea un firewall en hello-nivel de servidor que impide que las aplicaciones externas y las herramientas de conectar toohello server o las bases de datos en el servidor de Hola a menos que se crea una regla de firewall tooopen firewall de Hola para direcciones IP concretas. Siga estos pasos toocreate una [regla de firewall de nivel de servidor de base de datos SQL](sql-database-firewall-configure.md) para direcciones IP de su cliente y habilitar la conectividad externa a través de firewall de base de datos SQL de Hola para sólo la dirección IP. 
 
 > [!NOTE]
-> SQL Database se comunica a través del puerto 1433. Si intenta conectarse desde dentro de una red corporativa, es posible que el firewall de la red no permita el tráfico de salida a través del puerto 1433. En ese caso, no puede conectarse al servidor de Azure SQL Database, salvo que el departamento de TI abra el puerto 1433.
+> SQL Database se comunica a través del puerto 1433. Si está tratando de tooconnect desde dentro de una red corporativa, es posible que firewall de su red no permite el tráfico saliente en el puerto 1433. Si es así, no se puede conectar el servidor de base de datos de SQL Azure tooyour a menos que el departamento de TI abre el puerto 1433.
 >
 
-1. Cuando se haya finalizado la implementación, haga clic en **Bases de datos SQL** en el menú de la izquierda y, después, haga clic en **mySampleDatabase** en la página **Bases de datos SQL**. Se abre la página de información general de la base de datos, que muestra el nombre completo del servidor (por ejemplo, **mynewserver20170313.database.windows.net**) y proporciona opciones para configurarlo aún más. Copie dicho nombre, ya que lo tendrá que usar más adelante,
+1. Una vez finalizada la implementación de hello, haga clic en **bases de datos SQL** del menú izquierdo de hello y, a continuación, haga clic en **mySampleDatabase** en hello **bases de datos SQL** página. página de información general para abrir el base de datos, que muestra que Hola totalmente Hello calificado nombre del servidor (como **mynewserver20170313.database.windows.net**) y proporciona opciones para otra configuración. Copie dicho nombre, ya que lo tendrá que usar más adelante,
 
    > [!IMPORTANT]
-   > lo necesitará para conectarse a su servidor y a sus bases de datos en los inicios rápidos posteriores.
+   > Necesitará este servidor de tooyour de tooconnect de nombre completo del servidor y sus bases de datos en las siguientes guías de inicio rápidos.
    > 
 
    ![nombre del servidor](./media/sql-database-connect-query-dotnet/server-name.png) 
 
-2. Haga clic en **Establecer el firewall del servidor** en la barra de herramientas, como se muestra en la imagen anterior. Se abrirá la página **Configuración del firewall** del servidor de SQL Database. 
+2. Haga clic en **Configurar firewall de servidor** de barra de herramientas de hello tal y como se muestra en la imagen anterior de Hola. Hola **configuración del Firewall** se abre la página servidor de base de datos de SQL de Hola. 
 
    ![regla de firewall del servidor](./media/sql-database-get-started-portal/server-firewall-rule.png) 
 
-3. Haga clic en **Agregar IP de cliente** en la barra de herramientas para agregar la dirección IP actual a la nueva regla de firewall. La regla de firewall puede abrir el puerto 1433 para una única dirección IP o un intervalo de direcciones IP.
+3. Haga clic en **agregar dirección IP del cliente** en tooadd de barra de herramientas de hello tooa nueva regla de firewall de direcciones de la IP actual. La regla de firewall puede abrir el puerto 1433 para una única dirección IP o un intervalo de direcciones IP.
 
-4. Haga clic en **Guardar**. Se crea una regla de firewall de nivel de servidor para el puerto 1433 de la dirección IP actual en el servidor lógico.
+4. Haga clic en **Guardar**. Se crea una regla de firewall de nivel de servidor para la dirección IP actual abrir el puerto 1433 en el servidor lógico Hola.
 
    ![establecer regla de firewall del servidor](./media/sql-database-get-started-portal/server-firewall-rule-set.png) 
 
-4. Haga clic en **Aceptar** y después cierre la página **Configuración de firewall**.
+4. Haga clic en **Aceptar** y, a continuación, cierre hello **configuración del Firewall** página.
 
-Ahora puede conectarse al servidor de SQL Database y a sus bases de datos mediante SQL Server Management Studio o cualquier otra herramienta que elija desde esta dirección IP usando la cuenta de administrador del servidor creada con anterioridad.
+Ahora puede conectarse toohello servidor de base de datos SQL y sus bases de datos mediante SQL Server Management Studio u otra herramienta de su elección de esta dirección IP con cuenta de administrador de servidor hello creado anteriormente.
 
 > [!IMPORTANT]
-> De forma predeterminada, el acceso a través del firewall de SQL Database está habilitado para todos los servicios de Azure. Haga clic en **OFF** en esta página para deshabilitar todos los servicios de Azure.
+> De forma predeterminada, el acceso a través de firewall de base de datos SQL de hello está habilitado para todos los servicios de Azure. Haga clic en **OFF** en este toodisable de página para todos los servicios de Azure.
 >
 
-## <a name="query-the-sql-database"></a>Consulta a SQL Database
+## <a name="query-hello-sql-database"></a>Base de datos SQL de Hola de consulta
 
-Ahora que ha creado una base de datos de ejemplo en Azure, vamos a usar la herramienta de consulta integrada en Azure Portal para confirmar que puede conectarse a la base de datos y consultar los datos. 
+Ahora que ha creado una base de datos de ejemplo en Azure, vamos a usar la herramienta de consulta integrada Hola Hola tooconfirm portal Azure que puede conectarse toohello base de datos y consultar datos de Hola. 
 
-1. En la barra de herramientas de la página SQL Database de la base de datos, haga clic en **Herramientas**. Se abre la página **Herramientas**.
+1. En la página de base de datos SQL de hello para la base de datos, haga clic en **herramientas** en la barra de herramientas de Hola. Hola **herramientas** se abre la página.
 
    ![menú herramientas](./media/sql-database-get-started-portal/tools-menu.png) 
 
-2. Haga clic en **Editor de consultas (versión preliminar)**, en la casilla de verificación **Términos de vista previa** y en **Aceptar**. Se abre la página Editor de consultas.
+2. Haga clic en **editor de consultas (versión preliminar)**, haga clic en hello **obtener una vista previa de los términos** casilla de verificación y, a continuación, haga clic en **Aceptar**. se abre la página del editor de consultas de Hola.
 
-3. Haga clic en **Inicio de sesión** y después, cuando se le solicite, seleccione **Autenticación de servidor SQL Server** y especifique el inicio de sesión y la contraseña de administrador de servidor que creó antes.
+3. Haga clic en **inicio de sesión** y, a continuación, cuando se le pida, seleccione **autenticación de SQL server** y, a continuación, proporcione el inicio de sesión de hello server admin y la contraseña que creó anteriormente.
 
    ![login](./media/sql-database-get-started-portal/login.png) 
 
-4. Haga clic en **Aceptar** para iniciar sesión.
+4. Haga clic en **Aceptar** toolog en.
 
-5. Una vez autenticado, escriba la siguiente consulta en el panel del editor de consultas.
+5. Después de autenticarse, escriba Hola después de consulta en el panel del editor de consultas de Hola.
 
    ```sql
    SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName
@@ -147,19 +147,19 @@ Ahora que ha creado una base de datos de ejemplo en Azure, vamos a usar la herra
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-6. Haga clic en **Ejecución** y revise los resultados de la consulta en el panel **Resultados**.
+6. Haga clic en **ejecutar** y, a continuación, revisar los resultados de la consulta de Hola Hola **resultados** panel.
 
    ![resultados del editor de consultas](./media/sql-database-get-started-portal/query-editor-results.png)
 
-7. Cierre la página **Editor de consultas** y la página **Herramientas**.
+7. Hola cerrar **editor de consultas** hello y página **herramientas** página.
 
 ## <a name="clean-up-resources"></a>Limpieza de recursos
 
-Si no necesita estos recursos para otro inicio rápido o tutorial (consulte [Pasos siguientes](#next-steps)), puede eliminarlos de la siguiente manera:
+Si no necesita estos recursos para otro/tutorial de inicio rápido (vea [pasos siguientes](#next-steps)), puede eliminarlas haciendo Hola siguiente:
 
 
-1. En el menú izquierdo de Azure Portal, haga clic en **Grupos de recursos** y en **myResourceGroup**. 
-2. En la página del grupo de recursos, haga clic en **Eliminar**, escriba **myResourceGroup** en el cuadro de texto y haga clic en **Eliminar**.
+1. En el menú de la izquierda de Hola Hola portal de Azure, haga clic en **grupos de recursos** y, a continuación, haga clic en **myResourceGroup**. 
+2. En la página del grupo de recursos, haga clic en **eliminar**, tipo **myResourceGroup** en Hola cuadro de texto y, a continuación, haga clic en **eliminar**.
 
 ## <a name="next-steps"></a>Pasos siguientes
 

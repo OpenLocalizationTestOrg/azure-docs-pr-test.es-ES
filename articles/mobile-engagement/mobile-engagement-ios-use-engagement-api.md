@@ -1,6 +1,6 @@
 ---
-title: "Cómo usar la API de Engagement en iOS"
-description: "Último SDK de iOS: cómo usar la API de Engagement en iOS"
+title: "aaaHow tooUse Hola API de interacción en iOS"
+description: "IOS más reciente SDK - cómo tooUse Hola API de interacción en iOS"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,48 +14,48 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: a31424da98205e97bdf57010cccfd044360f03dd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7fb9b95ad319cf3b1e2de81b5d6aee5b30266069
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-the-engagement-api-on-ios"></a>Cómo usar la API de Engagement en iOS
-Este documento es un complemento al documento Cómo integrar Engagement en iOS: en él se proporciona información detallada acerca de cómo usar la API de Engagement para informar de las estadísticas de la aplicación.
+# <a name="how-toouse-hello-engagement-api-on-ios"></a>¿Cómo tooUse Hola API de interacción en iOS
+Este documento es un complemento toohello cómo tooIntegrate interacción en iOS: proporciona detalles de profundidad acerca de cómo toouse Hola interacción API tooreport las estadísticas de la aplicación.
 
-Tenga en cuenta que si solo desea que Engagement informe de las sesiones, las actividades, bloqueos e información técnica de la aplicación, a continuación, la manera más sencilla es hacer que todos los objetos `UIViewController` personalizados hereden de la clase `EngagementViewController` correspondiente.
+Tenga en cuenta que si sólo desea interacción tooreport sesiones, actividades, bloqueos y obtener información técnica, de la aplicación hello más sencillo cierto es toomake todos personalizado `UIViewController` objetos heredan de hello correspondiente `EngagementViewController` (clase) .
 
-Si desea hacer más, por ejemplo, si necesita informar de eventos, errores y trabajos específicos de la aplicación, o si debe informar de las actividades de la aplicación de manera diferente de la que se implementa en las clases `EngagementViewController`, deberá usar la API de Engagement.
+Si desea que toodo más, por ejemplo, si necesita eventos específicos de aplicación tooreport, errores y tareas, o si tienes tooreport actividades de la aplicación de forma diferente de Hola uno implementado en hello `EngagementViewController` clases, deberá toouse Hola API de contratación.
 
-La API de Engagement la proporciona la clase `EngagementAgent` . Para recuperar una instancia de esta clase puede llamarse al método estático `[EngagementAgent shared]` (tenga en cuenta que el objeto `EngagementAgent` que se devuelve es un singleton).
+Hello interacción API proporcionada por hello `EngagementAgent` clase. Se puede recuperar una instancia de esta clase que realiza la llamada hello `[EngagementAgent shared]` método estático (tenga en cuenta que hello `EngagementAgent` objeto devuelto es un singleton).
 
-Antes de las llamadas a una API, el objeto `EngagementAgent` debe inicializarse llamando al método `[EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}"];`
+Antes de que las llamadas de API, hello `EngagementAgent` objeto debe inicializarse mediante una llamada a método hello`[EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}"];`
 
 ## <a name="engagement-concepts"></a>Conceptos de Engagement
-En las siguientes secciones se detallan los [conceptos de Mobile Engagement](mobile-engagement-concepts.md) para la plataforma iOS.
+Hello partes siguientes refinar Hola comunes [Mobile Engagement conceptos](mobile-engagement-concepts.md) para la plataforma de iOS de Hola.
 
 ### <a name="session-and-activity"></a>`Session` y `Activity`
-Una *actividad* suele asociarse con una pantalla de la aplicación (es decir, la *actividad* se inicia cuando la pantalla se muestra y se detiene cuando se cierra la pantalla, como cuando se integra el SDK de Engagement con el uso de las clases `EngagementViewController`).
+Un *actividad* suele estar asociado a una pantalla de la aplicación hello, que es hello toosay *actividad* se inicia cuando la pantalla de bienvenida se muestra y se detiene cuando se cierra la pantalla de bienvenida: se trata de hello caso en el que Hello Engagement SDK integrado utilizando hello `EngagementViewController` clases.
 
-Sin embargo, las *actividades* también se pueden controlar manualmente mediante la API de Engagement. Esto permite dividir una pantalla dada en varias subpartes para obtener más detalles sobre el uso de esta pantalla (por ejemplo, para saber con qué frecuencia y durante cuánto tiempo se utilizan los cuadros de diálogo dentro de esta pantalla).
+Pero *actividades* también se puede controlar manualmente mediante el uso de API de interacción de Hola. Esto permite toosplit una pantalla determinada en varios tooget de partes de sub Hola a más detalles sobre el uso de esta pantalla (por ejemplo tooknown con qué frecuencia y cuánto tiempo se utilizan los cuadros de diálogo dentro de esta pantalla).
 
 ## <a name="reporting-activities"></a>Informes sobre actividades
 ### <a name="user-starts-a-new-activity"></a>El usuario inicia una nueva actividad
             [[EngagementAgent shared] startActivity:@"MyUserActivity" extras:nil];
 
-Debe llamar a `startActivity()` cada vez que cambie la actividad de usuario. La primera llamada a esta función inicia una nueva sesión de usuario.
+Necesita toocall `startActivity()` cambia cada actividad de usuario de hello de tiempo. Hola primera llamada toothis función inicia una nueva sesión de usuario.
 
 ### <a name="user-ends-his-current-activity"></a>El usuario finaliza su actividad actual
             [[EngagementAgent shared] endActivity];
 
 > [!WARNING]
-> **NUNCA** realice una llamada a esta función, excepto si quiere dividir un uso de la aplicación en varias sesiones: una llamada a esta función terminaría la sesión actual inmediatamente, pero puede realizar una llamada posterior a `startActivity()` para iniciar una nueva sesión. Esta función es invocada automáticamente por el SDK cuando se cierra la aplicación.
+> Debería **nunca** llame a esta función por sí mismo, excepto si desea toosplit un uso de la aplicación en varias sesiones: una llamada de función toothis finalizaría Hola actual sesión inmediatamente, por lo tanto, una llamada subsiguiente demasiado`startActivity()`podría iniciar una sesión de nuevo. Esta función se invoca automáticamente por hello SDK cuando se cierra la aplicación.
 > 
 > 
 
 ## <a name="reporting-events"></a>Informes de eventos
 ### <a name="session-events"></a>Eventos de sesión
-Los eventos de sesión se suelen usar para notificar las acciones que realiza el usuario durante su sesión.
+Eventos de sesión son acciones de Hola de tooreport utilizadas normalmente realizadas por un usuario durante su sesión.
 
 **Ejemplo sin datos adicionales:**
 
@@ -89,7 +89,7 @@ Los eventos de sesión se suelen usar para notificar las acciones que realiza el
     }
 
 ### <a name="standalone-events"></a>Eventos independientes
-Al contrario de los eventos de sesión, los eventos independientes pueden utilizarse fuera del contexto de una sesión.
+Eventos toosession contrarias, independiente pueden utilizarse fuera de contexto de Hola de una sesión.
 
 **Ejemplo:**
 
@@ -97,16 +97,16 @@ Al contrario de los eventos de sesión, los eventos independientes pueden utiliz
 
 ## <a name="reporting-errors"></a>Informes de errores
 ### <a name="session-errors"></a>Errores de sesión
-Los errores de sesión suelen usarse para notificar los errores que afectan al usuario durante su sesión.
+Sesión errores son normalmente utilizados tooreport Hola impactar al usuario de Hola durante su sesión.
 
 **Ejemplo:**
 
-    /** The user has entered invalid data in a form */
+    /** hello user has entered invalid data in a form */
     @implementation MyViewController {
       [...]
       -(void)onMyFormSubmitted:(MyForm*)form {
         [...]
-        /* The user has entered an invalid email address */
+        /* hello user has entered an invalid email address */
         [[EngagementAgent shared] sendSessionError:@"sign_up_email" extras:nil]
         [...]
       }
@@ -114,7 +114,7 @@ Los errores de sesión suelen usarse para notificar los errores que afectan al u
     }
 
 ### <a name="standalone-errors"></a>Errores independientes
-Al contrario de los errores de la sesión, los errores independientes pueden utilizarse fuera del contexto de una sesión.
+Toosession contrarias errores, errores de independientes se pueden utilizar fuera de contexto de Hola de una sesión.
 
 **Ejemplo:**
 
@@ -123,7 +123,7 @@ Al contrario de los errores de la sesión, los errores independientes pueden uti
 ## <a name="reporting-jobs"></a>Informes de trabajos
 **Ejemplo:**
 
-Supongamos que desea notificar la duración del proceso de inicio de sesión:
+Suponga que desea tooreport Hola que dure el proceso de inicio de sesión:
 
     [...]
     -(void)signIn
@@ -139,11 +139,11 @@ Supongamos que desea notificar la duración del proceso de inicio de sesión:
     [...]
 
 ### <a name="report-errors-during-a-job"></a>Informe de errores durante un trabajo
-Los errores pueden estar relacionados con un trabajo en ejecución en lugar de la sesión del usuario actual.
+Los errores pueden ser tooa relacionado ejecutando el trabajo en lugar de ser relacionados con la sesión del usuario actual toohello.
 
 **Ejemplo:**
 
-Suponga que desea notificar un error durante el proceso de inicio de sesión:
+Suponga que desea tooreport un error durante el proceso de inicio de sesión:
 
     [...]
     -(void)signin
@@ -153,7 +153,7 @@ Suponga que desea notificar un error durante el proceso de inicio de sesión:
 
       BOOL success = NO;
       while (!success) {
-        /* Try to sign in */
+        /* Try toosign in */
         NSError* error = nil;
         [self trySigin:&error];
         success = error == nil;
@@ -176,11 +176,11 @@ Suponga que desea notificar un error durante el proceso de inicio de sesión:
     [...]
 
 ### <a name="events-during-a-job"></a>Eventos durante un trabajo
-Los errores pueden estar relacionados con un trabajo en ejecución en lugar de la sesión del usuario actual.
+Pueden tooa relacionado ejecutando el trabajo en lugar de eventos relacionados con la sesión del usuario actual toohello.
 
 **Ejemplo:**
 
-Supongamos que tenemos una red social y utilizamos un trabajo de informe del tiempo total durante el cual el usuario está conectado al servidor. El usuario puede recibir mensajes de sus amigos, este es un evento de trabajo.
+Supongamos que tenemos una red social, y utilizamos un trabajo tooreport Hola tiempo total durante qué Hola usuario está conectado toohello server. usuario de Hello puede recibir mensajes de sus amigos, se trata de un evento de trabajo.
 
     [...]
     - (void) signin
@@ -203,18 +203,18 @@ Supongamos que tenemos una red social y utilizamos un trabajo de informe del tie
     [...]
 
 ## <a name="extra-parameters"></a>Parámetros adicionales
-Se pueden adjuntar datos arbitrarios en eventos, errores, actividades y trabajos.
+Pueden ser datos arbitrarios tooevents adjunto, errores, las actividades y trabajos.
 
 Estos datos pueden estructurarse, utilizan la clase de NSDictionary de iOS.
 
 Tenga en cuenta que los extras pueden contener `arrays(NSArray, NSMutableArray)`, `numbers(NSNumber class)`, `strings(NSString, NSMutableString)`, `urls(NSURL)`, `data(NSData, NSMutableData)` u otras `NSDictionary` instancias.
 
 > [!NOTE]
-> El parámetro adicional se serializa en JSON. Si desea pasar objetos distintos de los descritos anteriormente, debe implementar el método siguiente en la clase:
+> Hello adicional parámetro se serializa en JSON. Si desea toopass distintos objetos que hello las descritas anteriormente, debe implementar Hola siguiendo el método en la clase:
 > 
 > -(NSString*)JSONRepresentation;
 > 
-> El método debe devolver una representación JSON del objeto.
+> método Hello debe devolver la representación JSON del objeto.
 > 
 > 
 
@@ -226,25 +226,25 @@ Tenga en cuenta que los extras pueden contener `arrays(NSArray, NSMutableArray)`
 
 ### <a name="limits"></a>Límites
 #### <a name="keys"></a>simétricas
-Cada clave de la `NSDictionary` debe coincidir con la siguiente expresión regular:
+Cada clave de hello `NSDictionary` debe coincidir con la siguiente expresión regular de Hola:
 
 `^[a-zA-Z][a-zA-Z_0-9]*`
 
-Esto significa que las claves tienen que empezar como mínimo con una letra, seguida de letras, dígitos o caracteres de subrayado (\_).
+Esto significa que las claves deben empezar con al menos una letra, seguida de letras, dígitos o caracteres de subrayado (\_).
 
 #### <a name="size"></a>Tamaño
-Los extras están limitados a **1024** caracteres por llamada (una vez codificados en JSON por el agente de Engagement).
+Extras se limitan demasiado**1024** caracteres por llamada (una vez codificados en JSON por agente de interacción de hello).
 
-En el ejemplo anterior, el JSON que se envía al servidor tiene una longitud de 58 caracteres:
+Hola ejemplo anterior, Hola JSON enviado toohello server es 58 caracteres:
 
     {"ref_click":"http:\/\/foobar.com\/blog","video_id":"123"}
 
 ## <a name="reporting-application-information"></a>Información de la aplicación de informes
-Puede notificar manualmente la información de seguimiento (o cualquier otro tipo de información específica de la aplicación) mediante la función `sendAppInfo:` .
+Puede crear manualmente informes seguimiento de información (o cualquier otra información específica de aplicación) con hello `sendAppInfo:` función.
 
-Tenga en cuenta que esta información se puede enviar de forma incremental: para un dispositivo dado solo se conservará el último valor de una clave determinada.
+Tenga en cuenta que esta información pueden enviarse de forma incremental: solo Hola valor más reciente de una clave determinada se mantendrán para un dispositivo determinado.
 
-Al igual que los extras de evento, la clase `NSDictionary` se usa para resumir la información de la aplicación. Tenga en cuenta que las matrices o diccionarios secundarios se tratarán como cadenas sin formato (con la serialización de JSON).
+Como extras de eventos, hello `NSDictionary` clase es tooabstract usa información de la aplicación, tenga en cuenta que las matrices o diccionarios secundarios se tratará como cadenas sin formato (con la serialización de JSON).
 
 **Ejemplo:**
 
@@ -255,15 +255,15 @@ Al igual que los extras de evento, la clase `NSDictionary` se usa para resumir l
 
 ### <a name="limits"></a>Límites
 #### <a name="keys"></a>simétricas
-Cada clave de la `NSDictionary` debe coincidir con la siguiente expresión regular:
+Cada clave de hello `NSDictionary` debe coincidir con la siguiente expresión regular de Hola:
 
 `^[a-zA-Z][a-zA-Z_0-9]*`
 
-Esto significa que las claves tienen que empezar como mínimo con una letra, seguida de letras, dígitos o caracteres de subrayado (\_).
+Esto significa que las claves deben empezar con al menos una letra, seguida de letras, dígitos o caracteres de subrayado (\_).
 
 #### <a name="size"></a>Tamaño
-La información de la aplicación está limitada a **1024** caracteres por llamada (una vez codificados en JSON por el agente de Engagement).
+Información de la aplicación se limitan demasiado**1024** caracteres por llamada (una vez codificados en JSON por agente de interacción de hello).
 
-En el ejemplo anterior, el JSON que se envía al servidor tiene una longitud de 44 caracteres:
+Hola ejemplo anterior, Hola JSON enviado toohello server es 44 caracteres:
 
     {"birthdate":"1983-12-07","gender":"female"}

@@ -1,6 +1,6 @@
 ---
-title: Comprar un nombre de dominio personalizado para Azure Web Apps
-description: "Obtenga información sobre cómo comprar un nombre de dominio personalizado con una aplicación web en Azure App Service."
+title: aaaBuy un nombre de dominio personalizado para aplicaciones Web de Azure
+description: "Obtenga información acerca de cómo el nombre de toobuy un dominio personalizado con una aplicación web en el servicio de aplicaciones de Azure."
 services: app-service\web
 documentationcenter: 
 author: cephalin
@@ -14,173 +14,173 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: cephalin
-ms.openlocfilehash: 3cb22b935624041ab51e64028a1b668fd694f9b5
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 2ff61a3f27020516c917fe105ece99eb2a5754b7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="buy-a-custom-domain-name-for-azure-web-apps"></a>Comprar un nombre de dominio personalizado para Azure Web Apps
 
-Los dominios de App Service (versión preliminar) son dominios de nivel superior que se administran directamente en Azure. Facilitan la administración de dominios personalizados para [Azure Web Apps](app-service-web-overview.md). En este tutorial se muestra cómo comprar un dominio de App Service y asignar nombres DNS a Azure Web Apps.
+Los dominios de App Service (versión preliminar) son dominios de nivel superior que se administran directamente en Azure. Hacen que los dominios personalizados fácil toomanage [aplicaciones Web de Azure](app-service-web-overview.md). Este tutorial muestra cómo toobuy un dominio de servicio de aplicaciones y asigne DNS nombres tooAzure las aplicaciones Web.
 
-Este artículo trata sobre Azure App Service (Web Apps, API Apps, Mobile Apps y Logic Apps). Para Azure Virtual Machines o Azure Storage, vea [Assign App Service domain to Azure VM or Azure Storage](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/31/assign-app-service-domain-to-azure-vm-or-azure-storage/) (Asignación del dominio de App Service a Azure Virtual Machines o Azure Storage). Para Cloud Services, vea [Configuración de un nombre de dominio personalizado para un servicio en la nube de Azure](../cloud-services/cloud-services-custom-domain-name-portal.md).
+Este artículo trata sobre Azure App Service (Web Apps, API Apps, Mobile Apps y Logic Apps). Para la máquina virtual de Azure o el almacenamiento de Azure, consulte [tooAzure de dominio de servicio de aplicaciones asignar VM o almacenamiento de Azure](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/31/assign-app-service-domain-to-azure-vm-or-azure-storage/). Para Cloud Services, vea [Configuración de un nombre de dominio personalizado para un servicio en la nube de Azure](../cloud-services/cloud-services-custom-domain-name-portal.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Para completar este tutorial:
+toocomplete este tutorial:
 
 * [Cree una aplicación de App Service](/azure/app-service/) o use alguna aplicación que haya creado para otro tutorial.
 
-## <a name="prepare-the-app"></a>Preparación de la aplicación
+## <a name="prepare-hello-app"></a>Preparar la aplicación hello
 
-Para usar dominios personalizados en Azure Web Apps, el [plan de App Service](https://azure.microsoft.com/pricing/details/app-service/) de la aplicación web debe ser un nivel de pago (**Compartido**, **Básico**, **Estándar** o **Premium**). En este paso, asegúrese de que la aplicación web se encuentra en el plan de tarifa admitido.
+toouse dominios personalizados en aplicaciones Web de Azure, la aplicación web [plan de servicio de aplicaciones](https://azure.microsoft.com/pricing/details/app-service/) debe ser una capa de pagada (**Shared**, **básica**, **estándar**, o **Premium**). En este paso, asegúrese de que dicha aplicación hello es Hola admitido nivel de precios.
 
-### <a name="sign-in-to-azure"></a>Inicio de sesión en Azure
+### <a name="sign-in-tooazure"></a>Inicie sesión en tooAzure
 
-Abra [Azure Portal](https://portal.azure.com) e inicie sesión con su cuenta de Azure.
+Abra hello [portal de Azure](https://portal.azure.com) e inicie sesión con su cuenta de Azure.
 
-### <a name="navigate-to-the-app-in-the-azure-portal"></a>Navegue hasta la aplicación en Azure Portal
+### <a name="navigate-toohello-app-in-hello-azure-portal"></a>Navegue toohello aplicación Hola portal de Azure
 
-En el menú izquierdo, seleccione **App Services** y, después, el nombre de la aplicación.
+En el menú izquierdo de hello, seleccione **servicios de aplicaciones**y, a continuación, seleccione nombre de Hola de aplicación hello.
 
-![Navegación en el portal a la aplicación de Azure](./media/app-service-web-tutorial-custom-domain/select-app.png)
+![Aplicación de navegación del portal tooAzure](./media/app-service-web-tutorial-custom-domain/select-app.png)
 
-Consulte la página de administración de la aplicación de App Service.  
+Verá que la página de administración de Hola de hello aplicación de servicio de aplicaciones.  
 
-### <a name="check-the-pricing-tier"></a>Comprobar el plan de tarifa
+### <a name="check-hello-pricing-tier"></a>Hola de comprobación de nivel de precios
 
-En el panel de navegación izquierdo de la página de la aplicación, desplácese hasta la sección **Configuración** y seleccione **Escalar verticalmente (plan de App Service)**.
+Hola a la izquierda de la página de la aplicación hello, desplácese toohello **configuración** sección y seleccione **escalar verticalmente (plan de servicio de aplicaciones)**.
 
 ![Menú Escalar verticalmente](./media/app-service-web-tutorial-custom-domain/scale-up-menu.png)
 
-El nivel actual de la aplicación aparece resaltado con un cuadro azul. Asegúrese de que la aplicación web no está en el nivel **Gratis**. No se admiten DNS personalizados en el nivel **Gratis**. 
+nivel actual de la aplicación Hello aparece resaltado por un borde azul. Compruebe que dicha aplicación hello no esté en hello toomake **libre** capa. DNS personalizado no se admite en hello **libre** capa. 
 
 ![Comprobar plan de tarifa](./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png)
 
-Si el plan de App Service no es **Gratuito**, cierre la página **Elegir un plan de tarifa** y vaya a [Comprar un dominio](#buy-the-domain).
+Si hello plan de servicio de aplicaciones no es **libre**, cierre hello **elegir el nivel de precios** página y omitir demasiado[dominio Hola de compra](#buy-the-domain).
 
-### <a name="scale-up-the-app-service-plan"></a>Escalado verticalmente del plan de App Service
+### <a name="scale-up-hello-app-service-plan"></a>Escalar verticalmente Hola plan de servicio de aplicaciones
 
-Seleccione alguno de los niveles de pago (**Compartido**, **Básico**, **Estándar** o **Premium**). 
+Seleccione cualquiera de los niveles de hello no disponibles (**Shared**, **básica**, **estándar**, o **Premium**). 
 
 Haga clic en **Seleccionar**.
 
 ![Comprobar plan de tarifa](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
 
-Cuando vea la siguiente notificación, significará que la operación de escalado se habrá completado.
+Cuando vea Hola siguientes a la notificación, la operación de escalado de hello está completa.
 
 ![Confirmación de la operación de escalado](./media/app-service-web-tutorial-custom-domain/scale-notification.png)
 
-## <a name="buy-the-domain"></a>Comprar el dominio
+## <a name="buy-hello-domain"></a>Comprar Hola dominio
 
-### <a name="sign-in-to-azure"></a>Inicio de sesión en Azure
-Abra [Azure Portal](https://portal.azure.com/) e inicie sesión con su cuenta de Azure.
+### <a name="sign-in-tooazure"></a>Inicie sesión en tooAzure
+Abra hello [portal de Azure](https://portal.azure.com/) e inicie sesión con su cuenta de Azure.
 
 ### <a name="launch-buy-domains"></a>Iniciar Comprar dominios
-En la pestaña **Web Apps**, haga clic en el nombre de la aplicación web, seleccione **Configuración** y elija **Dominios personalizados**.
+Hola **aplicaciones Web** , haga clic en nombre de saludo de la aplicación web, seleccione **configuración**y, a continuación, seleccione **los dominios personalizados**
    
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
 
-En la página **Dominios personalizados**, haga clic en **Comprar dominios**.
+Hola **los dominios personalizados** página, haga clic en **comprar dominios**.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-1.png)
 
-### <a name="configure-the-domain-purchase"></a>Configurar la compra del dominio
+### <a name="configure-hello-domain-purchase"></a>Configurar la compra de dominio Hola
 
-En la página **Dominio de App Service**, escriba el nombre de dominio que quiere comprar en el cuadro **Buscar dominio** y escriba `Enter`. Los dominios disponibles sugeridos se muestran justo debajo del cuadro de texto. Seleccione uno o varios dominios que quiera comprar. 
+Hola **dominio de aplicación de servicio** página Hola **Buscar dominio** cuadro, nombre de dominio de tipo hello desea toobuy y el tipo de `Enter`. Hello sugeridos dominios disponibles aparecen justo debajo de cuadro de texto de Hola. Seleccione uno o varios dominios que desee toobuy. 
    
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-2.png)
 
-Haga clic en **Información de contacto** y rellene el formulario de información de contacto del dominio. Cuando termine, haga clic en **Aceptar** para volver a la página Dominio de App Service.
+Haga clic en hello **información de contacto** y rellene el formulario de información de contacto del dominio Hola. Cuando termine, haga clic en **Aceptar** página de dominio de aplicación de servicio de tooreturn toohello.
    
-Es importante que rellene todos los campos obligatorios con la mayor precisión posible. Los datos incorrectos para la información de contacto pueden producir un error al comprar los dominios. 
+Es importante que rellene todos los campos obligatorios con la mayor precisión posible. Dominios de error toopurchase pueden producir datos incorrectos para la información de contacto. 
 
-A continuación, seleccione las opciones que quiera para el dominio. Para obtener explicaciones, vea la tabla siguiente:
+A continuación, seleccione opciones de hello deseado para el dominio. Vea Hola para obtener una explicación en la tabla siguiente:
 
 | Configuración | Valor sugerido | Descripción |
 |-|-|-|
-|Renovación automática | **Habilitación** | Renueva automáticamente el dominio de App Service cada año. En el momento de la renovación se cargará el mismo precio de compra en su tarjeta de crédito. |
-|Protección de la privacidad | Habilitar | Participe en "Protección de la privacidad", que se incluye en el precio de compra _gratuitamente_ (excepto para los dominios de nivel superior cuyo registro no admite la protección de la privacidad, como _.co.in_, _.co.uk_ y así sucesivamente). |
-| Asignar nombres de host predeterminados | **www** y **@** | Seleccione los enlaces de nombre de host deseados, si quiere. Una vez completada la operación de compra de dominio, puede tener acceso a la aplicación web en los nombres de host seleccionados. Si la aplicación web está detrás de [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/), no verá la opción para asignar el dominio raíz (@), ya que Traffic Manager no admite registros A. Puede realizar cambios en las asignaciones de nombre de host una vez completada la compra del dominio. |
+|Renovación automática | **Habilitación** | Renueva automáticamente el dominio de App Service cada año. La tarjeta de crédito se cobra Hola mismo precio de compra en tiempo de Hola de renovación. |
+|Protección de la privacidad | Habilitar | Participar en demasiado "Protección de la privacidad", que se incluye en el precio de compra de hello _gratuitamente_ (excepto para los dominios de nivel superior cuyo registro no admiten la protección de la privacidad, como _. co.in_, _. Co.uk_, y así sucesivamente). |
+| Asignar nombres de host predeterminados | **www** y **@** | Seleccione Hola deseado enlaces de nombre de host, si lo desea. Cuando se completa la operación de compra de dominio de hello, la aplicación web puede tener acceso en los nombres de host de hello seleccionado. Si la aplicación de hello web está detrás de [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/), no ve el dominio raíz Hola de hello opción tooassign (@), ya que el Administrador de tráfico no no registros a soporte técnico. Puede realizar cambios en las asignaciones de nombre de host toohello una vez completada la compra de dominio Hola. |
 
 ### <a name="accept-terms-and-purchase"></a>Aceptar los términos y comprar
 
-Haga clic en **Condiciones legales** para consultar las condiciones y los gastos y, después, haga clic en **Comprar**.
+Haga clic en **condiciones legales** tooreview términos de Hola y cargos de hello, a continuación, haga clic en **comprar**.
 
 > [!NOTE]
-> Los dominios de App Service usan DNS de Azure para hospedar los dominios. Además de la tarifa de registro del dominio, se aplican cargos de uso de DNS de Azure. Para obtener más información, vea [DNS de Azure Precios](https://azure.microsoft.com/pricing/details/dns/).
+> Los dominios de servicio de aplicaciones utilizan dominios de DNS de Azure toohost Hola. Además toohello dominio la inscripción, aplicarán cargos de uso de DNS de Azure. Para obtener más información, vea [DNS de Azure Precios](https://azure.microsoft.com/pricing/details/dns/).
 >
 >
 
-De nuevo en la hoja **Dominio de App Service**, haga clic en **Aceptar**. Mientras la operación está en curso, verá las notificaciones siguientes:
+Nuevo en hello **dominio de aplicación de servicio** página, haga clic en **Aceptar**. Mientras está en curso la operación de hello, vea Hola siguientes notificaciones:
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-validate.png)
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-purchase-success.png)
 
-### <a name="test-the-hostnames"></a>Probar los nombres de host
+### <a name="test-hello-hostnames"></a>Nombres de host de prueba Hola
 
-Si ha asignado nombres de host predeterminados a la aplicación web, también verá una notificación de operación correcta para cada nombre de host seleccionado. 
+Si ha asignado la aplicación web de forma predeterminada los nombres de host tooyour, verá una notificación de éxito para cada nombre de host seleccionado. 
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
 
-También verá los nombres de host seleccionados en la página **Dominios personalizados**, en la sección **Nombres de host**. 
+También verá los nombres de host seleccionado de Hola Hola **los dominios personalizados** página Hola **los nombres de host** sección. 
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
 
-Para probar los nombres de host, vaya a los nombres de host enumerados en el explorador. En el ejemplo de la captura de pantalla anterior, intente navegar a _kontoso.net_ y _www.kontoso.net_.
+nombres de host de hello tootest, navegue toohello muestran los nombres de host en el Explorador de Hola. En el ejemplo de Hola Hola anterior captura de pantalla, intente navegar too_kontoso.net_ y _www.kontoso.net_.
 
-## <a name="assign-hostnames-to-web-app"></a>Asignar nombres de host a la aplicación web
+## <a name="assign-hostnames-tooweb-app"></a>Asignar nombres de host tooweb aplicación
 
-Si decide no asignar uno o varios nombres de host predeterminados a la aplicación web durante el proceso de compra, o si tiene que asignar un nombre de host que no aparece, puede asignar un nombre de host en cualquier momento.
+Si elige no tooassign uno o más de forma predeterminada los nombres de host tooyour web app durante Hola proceso de compra, o si necesita un nombre de host tooassign no aparece, puede asignar un nombre de host en cualquier momento.
 
-También puede asignar nombres de host en el dominio de App Service a cualquier otra aplicación web. Los pasos dependen de si el dominio de App Service y la aplicación web pertenecen a la misma suscripción.
+También puede asignar nombres de host en hello tooany de dominio de aplicación de servicio de otra aplicación web. Hello pasos dependen de si Hola dominio de aplicación de servicio y aplicación web de hello pertenecen toohello misma suscripción.
 
-- Suscripción diferente: asigne los registros DNS personalizados desde el dominio de App Service a la aplicación web como un dominio comprado de forma externa. Para obtener información sobre cómo agregar nombres DNS personalizados a un dominio de App Service, vea [Administrar los registros DNS personalizados](#custom). Para asignar un dominio comprado externo a una aplicación web, vea [Asignar un nombre DNS personalizado a Azure Web Apps](app-service-web-tutorial-custom-domain.md). 
-- La misma suscripción: siga los pasos que hay a continuación.
+- Otra suscripción: asignar los registros DNS personalizados de dominio de aplicación de servicio de aplicación web hello toohello como un dominio externamente adquirido. Para obtener información acerca de DNS personalizado agregar nombres tooan dominio de aplicación de servicio, consulte [administrar registros DNS personalizados](#custom). toomap una aplicación web de tooa dominio adquiridas externo, vea [asignar un tooAzure de nombre DNS personalizado existente aplicaciones Web](app-service-web-tutorial-custom-domain.md). 
+- Misma suscripción: Hola uso pasos.
 
 ### <a name="launch-add-hostname"></a>Iniciar Agregar nombre de host
-En la página **App Services**, seleccione el nombre de la aplicación web a la que quiere asignar los nombres de host, seleccione **Configuración** y después **Dominios personalizados**.
+Hola **servicios de aplicaciones** página, el nombre de hello select de la aplicación web que desee tooassign los nombres de host, seleccione **configuración**y, a continuación, seleccione **los dominios personalizados**.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
 
-Asegúrese de que el dominio comprado aparece en la sección **Dominios de App Service**, pero no lo seleccione. 
+Asegúrese de que su dominio adquirida en hello **dominios del servicio de aplicación** sección, pero no seleccionarlo. 
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
 
 > [!NOTE]
-> Todos los dominios de App Service de la misma suscripción se muestran en la página **Dominios personalizados** de la aplicación web. Si el dominio está en la suscripción de la aplicación web, pero no puede verlo en la página **Dominios personalizados** de la aplicación web, intente volver a abrir la página **Dominios personalizados** o actualice la página web. Compruebe también la campana de notificación situada en la parte superior de Azure Portal para ver el progreso o los errores de creación.
+> Todos los dominios de servicio de aplicación Hola misma suscripción se muestran en la aplicación web de hello **los dominios personalizados** página. Si el dominio está en la suscripción de la aplicación de hello web, pero no puede verlo en la aplicación web de hello **los dominios personalizados** página, intente volver a abrir hello **los dominios personalizados** página o actualice la página Web de Hola. Además, compruebe la campana de notificación Hola princip Hola de hello portal de Azure para errores de progreso o de creación.
 >
 >
 
 Seleccione **Agregar nombre de host**.
 
 ### <a name="configure-hostname"></a>Configurar el nombre de host
-En el cuadro de diálogo **Agregar nombre de host**, escriba el nombre de dominio completo de su dominio de App Service o cualquier subdominio. Por ejemplo:
+Hola **Agregar nombre de host** cuadro de diálogo, escribe el nombre de dominio completo de Hola de su dominio de aplicación de servicio o cualquier subdominio. Por ejemplo:
 
 - kontoso.net
 - www.kontoso.net
 - abc.kontoso.net
 
-Cuando termine, seleccione **Validar**. El tipo de registro de nombre de host se selecciona automáticamente.
+Cuando termine, seleccione **Validar**. tipo de registro de nombre de host de Hola se selecciona automáticamente.
 
 Seleccione **Agregar nombre de host**.
 
-Una vez completada la operación, verá una notificación de operación correcta para el nombre de host asignado.  
+Cuando se completa la operación de hello, verá una notificación de éxito para hello asigna el nombre de host.  
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
 
 ### <a name="close-add-hostname"></a>Cerrar Agregar nombre de host
-En la página **Agregar nombre de host**, asigne otros nombres de host a la aplicación web, según sea necesario. Cuando termine, cierre la página **Agregar nombre de host**.
+Hola **Agregar nombre de host** página, asignar cualquier otro nombre de host tooyour aplicación web, según sea necesario. Cuando haya terminado, cierre hello **Agregar nombre de host** página.
 
-Ahora debería ver el nombre de host recién asignado en la página **Dominios personalizados** de la aplicación.
+Ahora debería ver Hola acaban de asignar hostname(s) en la aplicación **los dominios personalizados** página.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added2.png)
 
-### <a name="test-the-hostnames"></a>Probar los nombres de host
+### <a name="test-hello-hostnames"></a>Nombres de host de prueba Hola
 
-Vaya a los nombres de host enumerados en el explorador. En el ejemplo de la captura de pantalla anterior, intente navegar a _abc.kontoso.net_.
+Navegar por los nombres de host toohello aparece en el Explorador de Hola. En el ejemplo de Hola Hola anterior captura de pantalla, pruebe a navegar por too_abc.kontoso.net_.
 
 <a name="custom" />
 
@@ -190,52 +190,52 @@ En Azure, los registros DNS para un dominio de App Service se administran median
 
 ### <a name="open-app-service-domain"></a>Abrir Dominio de App Service
 
-En Azure Portal, en el menú de la izquierda, seleccione **Más servicios** > **Dominios de App Service**.
+En el portal de Azure, desde el menú de la izquierda, Hola Hola seleccione **más servicios** > **dominios de aplicación de servicio**.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
 
-Seleccione el dominio que se va a administrar. 
+Seleccione Hola dominio toomanage. 
 
 ### <a name="access-dns-zone"></a>Obtener acceso a la zona DNS
 
-En el menú de la izquierda del dominio, seleccione **Zona DNS**.
+En el menú de la izquierda del dominio hello, seleccione **zona DNS**.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-dns-zone.png)
 
-Esta acción abre la página [Zona DNS](../dns/dns-zones-records.md) de su dominio de App Service en DNS de Azure. Para obtener información sobre cómo editar los registros DNS, vea [Administración de zonas DNS en Azure Portal](../dns/dns-operations-dnszones-portal.md).
+Esta acción abre hello [zona DNS](../dns/dns-zones-records.md) página de su dominio de aplicación de servicio en DNS de Azure. Para obtener información acerca de cómo tooedit los registros DNS, consulte [cómo toomanage zonas de DNS en Hola portal de Azure](../dns/dns-operations-dnszones-portal.md).
 
 ## <a name="cancel-purchase-delete-domain"></a>Cancelar la compra (eliminar el dominio)
 
-Después de comprar el dominio de App Service, dispone de cinco días para cancelar la compra para obtener un reembolso completo. Después de cinco días, puede eliminar el dominio de App Service, pero no puede recibir un reembolso.
+Después de adquirir Hola dominio de aplicación de servicio, tendrá cinco días toocancel la compra para obtener un reembolso completo. Después de cinco días, puede eliminar Hola dominio de aplicación de servicio, pero no puede recibir un reembolso.
 
 ### <a name="open-app-service-domain"></a>Abrir Dominio de App Service
 
-En Azure Portal, en el menú de la izquierda, seleccione **Más servicios** > **Dominios de App Service**.
+En el portal de Azure, desde el menú de la izquierda, Hola Hola seleccione **más servicios** > **dominios de aplicación de servicio**.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
 
-Seleccione el dominio que quiera cancelar o eliminar. 
+Hola seleccione dominio tooyou desea toocancel o eliminar. 
 
 ### <a name="delete-hostname-bindings"></a>Eliminación de enlaces de nombre de host
 
-En el menú de la izquierda del dominio, seleccione **Enlaces de nombre de host**. Aquí se enumeran los enlaces de nombre de host de todos los servicios de Azure.
+En el menú de la izquierda del dominio hello, seleccione **enlaces de nombre de host**. aquí se muestran los enlaces de nombre de host de Hola de todos los servicios de Azure.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostname-bindings.png)
 
-No se puede eliminar el dominio de App Service hasta que se eliminen todos los enlaces de nombre de host.
+No se puede eliminar Hola dominio de aplicación de servicio hasta que se eliminen todos los enlaces de nombre de host.
 
-Para eliminar todos los enlaces de nombre de host, seleccione **...** > **Eliminar**. Después de eliminarlos todos, haga clic en **Guardar**.
+Para eliminar todos los enlaces de nombre de host, seleccione **...** > **Eliminar**. Después de eliminarán todos los enlaces de hello, seleccione **guardar**.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-delete-hostname-bindings.png)
 
 ### <a name="cancel-or-delete"></a>Cancelar o eliminar
 
-En el menú de la izquierda del dominio, seleccione **Información general**. 
+En el menú de la izquierda del dominio hello, seleccione **Introducción**. 
 
-Si no ha transcurrido el período de cancelación en el dominio comprado, haga clic en **Cancelar compra**. De lo contrario, en su lugar verá el botón **Eliminar**. Para eliminar el dominio sin un reembolso, haga clic en **Eliminar**.
+Si no ha transcurrido el período de cancelación de hello en el dominio de hello adquirida, seleccione **Cancelar compra**. De lo contrario, en su lugar verá el botón **Eliminar**. dominio de hello toodelete sin un reembolso, seleccione **eliminar**.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-cancel.png)
 
-Haga clic en **Aceptar** para confirmar la operación. Si no quiere continuar, haga clic en cualquier lugar fuera del cuadro de diálogo de confirmación.
+Seleccione **Aceptar** operación de hello tooconfirm. Si no desea tooproceed, haga clic en cualquier lugar fuera del cuadro de diálogo de confirmación de Hola.
 
-Una vez completada la operación, el dominio se libera de la suscripción y vuelve a estar disponible para que otros usuarios lo compren. 
+Una vez completada la operación de hello, dominio hello es publicadas desde su suscripción y están disponibles para todo aquel que toopurchase de nuevo. 

@@ -1,4 +1,4 @@
-La tabla siguiente enumera los requisitos para las puertas de enlace VPN basadas en enrutamientos y directivas. Esta tabla se aplica a los modelos de implementación del Administrador de recursos y clásico. Para el modelo clásico, las puertas de enlace de VPN basadas en directivas son las mismas que las puertas de enlace estáticas y las basadas en enrutamientos son las mismas que las dinámicas.
+Hola según los requisitos de Hola de listas de tabla para puertas de enlace PolicyBased y RouteBased VPN. Esta tabla aplica tooboth Hola Administrador de recursos y modelos de implementación clásica. Para el modelo clásico de hello, puertas de enlace PolicyBased VPN se Hola igual como puertas de enlace estáticas y puertas de enlace de ruta se Hola igual como puertas de enlace dinámicos.
 
 |  | **Puerta de enlace de VPN básica basada en directivas** | **Puerta de enlace de VPN básica basada en enrutamientos** | **Puerta de enlace de VPN estándar basada en enrutamientos** | **Puerta de enlace de VPN de alto rendimiento basada en enrutamientos** |
 | --- | --- | --- | --- | --- |

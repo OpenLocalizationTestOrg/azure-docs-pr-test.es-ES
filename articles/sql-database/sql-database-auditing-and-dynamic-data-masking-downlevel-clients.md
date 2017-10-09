@@ -1,5 +1,5 @@
 ---
-title: "Auditoría de tablas, redireccionamiento de TDS y puntos de conexión de IP para Azure SQL Database| Microsoft Docs"
+title: "aaaTable auditoría, redirección de TDS y los puntos de conexión IP para la base de datos de SQL de Azure | Documentos de Microsoft"
 description: "Obtenga información sobre auditoría, redireccionamiento de TDS y cambios de puntos de conexión IP cuando se implemente la auditoría de tablas en Azure SQL Database."
 services: sql-database
 documentationcenter: 
@@ -15,42 +15,42 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2017
 ms.author: giladm
-ms.openlocfilehash: d4a7e6658ec65a70bd7e07859e2a69acee58b7b5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 966c23f92fab6fa459a515ad841bb2d5f75436aa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-table-auditing"></a>SQL Database: compatibilidad con clientes de nivel inferior y cambios de punto de conexión IP para auditoría de tablas
 
 > [!IMPORTANT]
-> Este documento se aplica solo a la auditoría de tablas, que ha quedado **en desuso**.<br>
-> Use el nuevo métodos de [auditoría de BLOB](sql-database-auditing.md), que **no** requiere modificaciones de cadena de conexión de cliente de nivel inferior. Encontrará información adicional acerca de la auditoría de BLOB en [Introducción a la auditoría de SQL Database](sql-database-auditing.md).
+> Este documento aplica solo auditoría tooTable, que es **en desuso**.<br>
+> Use Hola nuevo [Blob auditoría](sql-database-auditing.md) método, que **no** requieren modificaciones de cadena de conexión de cliente de nivel inferior. Encontrará información adicional acerca de la auditoría de BLOB en [Introducción a la auditoría de SQL Database](sql-database-auditing.md).
 
-[Auditoría de base de datos](sql-database-auditing.md) funciona automáticamente con los clientes SQL que admiten el redireccionamiento de TDS. Tenga en cuenta que el redireccionamiento no se aplica cuando se usa el método de auditoría de blobs.
+[Auditoría de base de datos](sql-database-auditing.md) funciona automáticamente con los clientes SQL que admiten el redireccionamiento de TDS. Tenga en cuenta que redirección no se aplica cuando se usa el método de auditoría de blobs de Hola.
 
 ## <a id="subheading-1"></a>Compatibilidad con clientes de nivel inferior
-Cualquier cliente que implementa TDS 7.4 también debe admitir el redireccionamiento. Entre las excepciones a esto se incluyen JDBC 4.0, en el que la función de redireccionamiento no es totalmente compatible y Tedious para Node.JS, en cuya redireccionamiento no se ha implementado.
+Cualquier cliente que implementa TDS 7.4 también debe admitir el redireccionamiento. Excepciones toothis incluyen JDBC 4.0 de qué característica de redirección de hello no es totalmente compatible y tediosas para Node.JS en el que no se implementó la redirección.
 
-Para "clientes de nivel inferior", es decir, los que admiten TDS versión 7.3 e inferiores, debe modificarse el FQDN del servidor en la cadena de conexión:
+Para "Clientes de nivel inferior", es decir, que admite la versión 7.3 TDS y a continuación - Hola FQDN del servidor en la cadena de conexión de hello debe modificarse:
 
-FQDN del servidor original en la cadena de conexión: <*nombre del servidor*>. database.windows.net
+FQDN del servidor original en la cadena de conexión de hello: <*nombre del servidor*>. database.windows.net
 
-FQDN del servidor modificado en la cadena de conexión: <*nombre del servidor*>. database.**secure**.windows.net
+FQDN del servidor modificado en la cadena de conexión de hello: <*nombre del servidor*> base de datos. **seguro**. windows.net
 
 Una lista parcial de "Clientes de nivel inferior" incluye:
 
 * .NET 4.0 y versiones posteriores,
 * ODBC 10.0 y versiones posteriores.
-* JDBC (aunque JDBC admite TDS 7.4, la característica de redireccionamiento de TDS no es totalmente compatible)
+* JDBC (al mismo tiempo JDBC admiten TDS 7.4, Hola característica de redirección de TDS no es totalmente compatible)
 * Tedious (para Node.JS)
 
-**Comentario:** la anterior modificación de FDQN de servidor puede resultar útil también para aplicar una directiva de auditoría de nivel de SQL Server sin necesidad de un paso de configuración en cada base de datos (mitigación temporal).
+**Comentario:** Hola por encima de la modificación de FQDN de servidor puede ser útil también para aplicar una directiva de auditoría de nivel de SQL Server sin necesidad de una configuración paso a paso en cada base de datos (mitigación temporal).
 
 ## <a id="subheading-2"></a>Cambios de punto de conexión IP al habilitar la auditoría
-Tenga en cuenta que cuando se habilita la auditoría de tablas, cambiará el punto de conexión de IP de la base de datos. Si tiene una configuración de firewall estricta, actualice esas opciones de firewall en consecuencia.
+Tenga en cuenta que cuando se habilita la auditoría de tabla, punto de conexión IP de saludo de la base de datos va a cambiar. Si tiene una configuración de firewall estricta, actualice esas opciones de firewall en consecuencia.
 
-El nuevo punto de conexión de IP de la base de datos dependerá de la región de base de datos:
+punto de conexión IP de base de datos nueva de Hello dependerá de la región de base de datos de hello:
 
 | Región de base de datos | Posibles puntos de conexión de IP |
 | --- | --- |

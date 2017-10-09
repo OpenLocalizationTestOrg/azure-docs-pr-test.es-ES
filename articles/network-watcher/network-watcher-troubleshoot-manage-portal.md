@@ -1,6 +1,6 @@
 ---
-title: "Solución de problemas de conexiones y puerta de enlace de Azure Virtual Network: PowerShell | Microsoft Docs"
-description: "En esta página se explica cómo usar Azure Network Watcher para solucionar problemas con el cmdlet de PowerShell"
+title: aaaTroubleshoot puerta de enlace de red Virtual Azure y conexiones, PowerShell | Documentos de Microsoft
+description: "Esta página explica cómo solucionar problemas de cmdlet de PowerShell hello toouse Monitor de red de Azure"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: gwallace
-ms.openlocfilehash: e135e719d8f267f6a189d0f8a903a49980a5a035
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bd568d34091209390c57d22475559bdb99ad2c59
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-powershell"></a>Solución de problemas de las conexiones y la puerta de enlace de Virtual Network mediante PowerShell de Azure Network Watcher
 
@@ -29,52 +29,52 @@ ms.lasthandoff: 07/11/2017
 > - [CLI 2.0](network-watcher-troubleshoot-manage-cli.md)
 > - [API DE REST](network-watcher-troubleshoot-manage-rest.md)
 
-Network Watcher proporciona numerosas funcionalidades con relación a los recursos de red de Azure. Una de estas funcionalidades es la solución de problemas de recursos. Se puede llamar a la solución de problemas de recursos mediante el portal, PowerShell, la CLI o la API de REST. Cuando se llama a Network Watcher, este inspecciona el estado de una puerta de enlace de Virtual Network o de una conexión y devuelve sus conclusiones.
+Monitor de red proporciona muchas de las capacidades en lo referente a toounderstanding los recursos de red en Azure. Una de estas funcionalidades es la solución de problemas de recursos. Solución de problemas de recursos se puede llamar a través del portal de hello, PowerShell, CLI o API de REST. Cuando se llama, Monitor de red inspecciona el estado de saludo de una puerta de enlace de red Virtual o una conexión y devuelve sus conclusiones.
 
 ## <a name="before-you-begin"></a>Antes de empezar
 
-En este escenario, se da por hecho que ya ha seguido los pasos descritos en [Create an Azure Network Watcher instance](network-watcher-create.md) (Creación de una instancia de Azure Network Watcher) para crear una instancia de Network Watcher.
+Este escenario se supone que ya ha seguido los pasos de hello en [crear un monitor de red](network-watcher-create.md) toocreate un monitor de red.
 
 Para obtener una lista de los tipos de puerta de enlace compatibles, vea el artículo sobre los [tipos de puerta de enlace compatibles](network-watcher-troubleshoot-overview.md#supported-gateway-types).
 
 ## <a name="overview"></a>Información general
 
-La solución de problemas de recursos permite solucionar los problemas que surgen con las puertas de enlace y las conexiones de Virtual Network. Cuando se envía una solicitud para solucionar problemas de recursos, se consultan y se inspeccionan los registros. Una vez finalizada la inspección, se devuelven los resultados. Las solicitudes para solucionar problemas de recursos son de larga ejecución, y podrían tardar varios minutos en devolver un resultado. Los registros de solución de problemas se almacenan en un contenedor en una cuenta de almacenamiento especificada.
+Solución de problemas de recursos de hello permite solucionar los problemas que surgen con puertas de enlace de red Virtual y las conexiones. Cuando se realiza una solicitud de solución de problemas de tooresource, los registros se va a consultar e inspeccionar. Una vez finalizada la inspección, se devuelven resultados de Hola. Solicitudes de recursos para solucionar problemas de las solicitudes son de largos ejecución, este proceso puede tardar varios tooreturn minutos un resultado. registros de Hola de solución de problemas se almacenan en un contenedor en una cuenta de almacenamiento especificado.
 
 ## <a name="troubleshoot-a-gateway-or-connection"></a>Solución de problemas de una puerta de enlace o conexión
 
-1. Navegue hasta [Azure Portal](https://portal.azure.com) y haga clic en **Redes** > **Network Watcher** > **Diagnóstico de VPN**
+1. Navegue toohello [portal de Azure](https://portal.azure.com) y haga clic en **red** > **Monitor de red** > **diagnósticos de VPN**
 2. Seleccione una **suscripción**, un **grupo de recursos** y una **ubicación**.
-3. La solución de problemas de recursos devuelve datos sobre el mantenimiento del recurso. También guarda los registros pertinentes en una cuenta de almacenamiento para su revisión. Haga clic en **Cuenta de Storage** para seleccionar una.
-4. En la hoja **Cuentas de Storage**, seleccione una existente o haga clic en **+ Cuenta de Storage** para crear una nueva.
-5. En la hoja **Contenedores**, elija uno existente o haga clic en **+ Contenedor** para crear uno nuevo. Cuando termine, haga clic en **Seleccionar**
-6. Seleccione los recursos de puerta de enlace y conexión para solucionar problemas y haga clic en **Start Troubleshooting** (Iniciar solución de problemas)
+3. Solución de problemas de recursos devuelve datos sobre el estado de saludo del recurso de Hola. También guarda la cuenta de almacenamiento de registros pertinentes tooa toobe revisado. Haga clic en **cuenta de almacenamiento** tooselect una cuenta de almacenamiento.
+4. En hello **cuentas de almacenamiento** hoja, seleccione una cuenta de almacenamiento existente o haga clic en **+ cuenta de almacenamiento** toocreate uno nuevo.
+5. En hello **contenedores** hoja, elija un contenedor existente o haga clic en **+ contenedor** toocreate un nuevo contenedor. Cuando termine, haga clic en **Seleccionar**
+6. Seleccione tootroubleshoot de recursos de puerta de enlace y conexión hello y haga clic en **iniciar solución de problemas**
 
-Si se seleccionan varios recursos, la solución de problemas se ejecuta de manera simultánea en los recursos de puerta de enlace. No se puede ejecutar en una conexión y su puerta de enlace asociada al mismo tiempo. Se recomienda solucionar primero los problemas de las puertas de enlace, puesto que solucionar problemas de conexión es un proceso más largo. Mientras se ejecuta el diagnóstico de VPN en un recurso, la columna **ESTADO DE SOLUCIÓN DE PROBLEMAS** mostrará un estado **En ejecución**
+Si se seleccionan varios recursos, la solución de problemas se ejecuta de manera simultánea en los recursos de puerta de enlace. No se puede ejecutar en una conexión y está asociada la puerta de enlace en hello mismo tiempo. Se recomienda que las puertas de enlace tootroubleshoot primero como solución de problemas de conexión es un proceso más largo. Mientras se ejecuta Diagnósticos de VPN en un Hola recursos **solución de problemas de estado** columna mostrará un estado de **ejecutando**
 
-Cuando finalice, la columna de estado cambia a **Healthy** (Correcto) **Unhealthy** (Incorrecto).
+Cuando haya finalizado, Hola cambios de columna de estado demasiado**correcto** o **incorrecto**.
 
 ![finalización de la solución de problemas][2]
 
-## <a name="understanding-the-results"></a>Descripción de los resultados
+## <a name="understanding-hello-results"></a>Descripción de los resultados de Hola
 
-En la sección de **detalles** de la ventana, la pestaña **Estado** muestra la última ejecución de solución de problemas en el recurso seleccionado. Los resultados del diagnóstico más reciente se muestran xx minutos después de la última ejecución.
+Hola **detalles** sección de la ventana de hello, Hola **estado** ficha muestra que el estado de Hola de hello última solución de problemas de ejecución en el recurso de hello seleccionado. Resultados de diagnóstico más reciente de hello son se muestra xx minutos después de hello ejecutó por última vez.
 
 |Propiedad  |Descripción  |
 |---------|---------|
-|Recurso     | Un vínculo al recurso.        |
-|Ruta de acceso de almacenamiento     |  Ruta de acceso a la cuenta de almacenamiento y el contenedor que contienen los registros (si durante la ejecución se generó alguno). Esta configuración no se conserva una vez que sale del portal.        |
-|Resumen     | Resumen del mantenimiento de recursos.        |
-|Detalles     | Información detallada sobre el mantenimiento de recursos.        |
-|Última ejecución     | La hora en que se ejecutó por última vez la solución de problemas.        |
+|Recurso     | Un recurso de toohello vínculo.        |
+|Ruta de acceso de almacenamiento     |  Cuenta de almacenamiento de toohello de ruta de acceso y contenedor que contienen registros de hello (si alguno se hayan producido durante Hola ejecutar). Este valor no se conserva después de dejar el portal de Hola.        |
+|Resumen     | Resumen de estado de los recursos Hola.        |
+|Detalles     | Obtener información detallada sobre el estado de los recursos Hola.        |
+|Última ejecución     | Hola Hola de hora de última solución de problemas de tiempo se ejecutó.        |
 
 
-La pestaña **Acción** ofrece una guía general sobre cómo resolver el problema. Si se puede realizar una acción para el problema, se proporciona un vínculo con instrucciones adicionales. Si no hay instrucciones adicionales, la respuesta proporciona la dirección URL para abrir un caso de soporte técnico.  Para más información acerca de las propiedades de la respuesta y lo que incluye, consulte la [introducción a la solución de problemas en Network Watcher](network-watcher-troubleshoot-overview.md)
+Hola **acción** ficha ofrece instrucciones generales sobre cómo tooresolve Hola problema. Si el problema de Hola se pueda realizar una acción, se proporciona un vínculo con instrucciones adicionales. En caso de hello donde no haya ninguna orientación adicional, respuesta de hello proporciona Hola url tooopen un caso de soporte técnico.  Para obtener más información acerca de las propiedades de Hola de respuesta de Hola y qué se incluye, visite [información general de solución de problemas del Monitor de red](network-watcher-troubleshoot-overview.md)
 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Si se cambió la configuración y la conectividad de VPN se ha detenido, consulte [Administración de grupos de seguridad de red](../virtual-network/virtual-network-manage-nsg-arm-portal.md) para realizar un seguimiento de los grupos de seguridad de red y las reglas de seguridad que pueden estar afectados.
+Si se cambiaron las configuraciones que detenga la conectividad de VPN, consulte [administrar grupos de seguridad de red](../virtual-network/virtual-network-manage-nsg-arm-portal.md) tootrack hacia abajo Hola red seguridad y el grupo de reglas de seguridad que pueden estar en cuestión.
 
 
 [2]: ./media/network-watcher-troubleshoot-manage-portal/2.png

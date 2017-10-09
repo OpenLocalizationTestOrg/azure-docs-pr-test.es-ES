@@ -1,6 +1,6 @@
 ---
-title: "Información general sobre el equilibrador de carga interno | Microsoft Docs"
-description: "Información general sobre el equilibrador de carga interno y sus características. Cómo funciona un equilibrador de carga en Azure y posibles escenarios para configurar extremos internos"
+title: "información general del equilibrador de carga aaaInternal | Documentos de Microsoft"
+description: "Información general de equilibrador de carga interno y sus características. Cómo funciona un equilibrador de carga para los extremos de Azure y posibles escenarios tooconfigure internos"
 services: load-balancer
 documentationcenter: na
 author: kumudd
@@ -14,43 +14,43 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/24/2016
 ms.author: kumud
-ms.openlocfilehash: d324aaf8ec2c8766d5cf11452158d14c19cba4d9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9a901aad224d8821c154e130e142699d57282b25
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="internal-load-balancer-overview"></a>Información general sobre el equilibrador de carga interno
 
-A diferencia del equilibrador de carga accesible desde Internet, el equilibrador de carga interno (ILB) solo dirige el tráfico a los recursos dentro del servicio en la nube o mediante VPN para acceder la infraestructura de Azure. La infraestructura restringe el acceso a las direcciones IP virtuales de carga equilibrada de un servicio en la nube o una red virtual para que nunca se expongan directamente a un punto de conexión de Internet. Esto permite que las aplicaciones de línea de negocio (LOB) internas se ejecuten en Azure y se tenga acceso a ellas desde la nube o los recursos locales.
+A diferencia de hello Internet orientados al equilibrador de carga equilibrador de carga interno de hello (ILB) dirige el tráfico tooresources solo dentro de servicio de nube de Hola o mediante VPN tooaccess Hola infraestructura de Azure. infraestructura de Hello restringe el acceso toohello con equilibrio de carga direcciones IP virtual (VIP) de un servicio de nube o una red Virtual para que nunca será el punto de conexión de tooan directamente expuesto Internet. Esto permite una línea interna de toorun de las aplicaciones de negocio (LOB) en Azure y tener acceso desde dentro de la nube de Hola o desde recursos locales.
 
 ## <a name="why-you-may-need-an-internal-load-balancer"></a>Por qué es posible que sea necesario un equilibrador de carga interno
 
-El equilibrio de carga interno (ILB) de Azure proporciona equilibrio de carga entre las máquinas virtuales que residen dentro de un servicio en la nube o en una red virtual con un ámbito regional. Para obtener información sobre el uso y la configuración de redes virtuales con un ámbito regional, consulte [Redes virtuales regionales](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/) en el blog de Azure. Las redes virtuales existentes que se han configurado para un grupo de afinidad no pueden usar ILB.
+El equilibrio de carga interno (ILB) de Azure proporciona equilibrio de carga entre las máquinas virtuales que residen dentro de un servicio en la nube o en una red virtual con un ámbito regional. Para obtener información sobre el uso de Hola y la configuración de redes virtuales con un ámbito regional, consulte [redes virtuales regionales](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/) Hola blog de Azure. Las redes virtuales existentes que se han configurado para un grupo de afinidad no pueden usar ILB.
 
-ILB permite los siguientes tipos de equilibrio de carga:
+ILB habilita Hola siguientes tipos de equilibrio de carga:
 
-* En un servicio en la nube, entre máquinas virtuales y un conjunto de máquinas virtuales que residen en el mismo servicio en la nube (consulte la Ilustración 1).
-* En una red virtual, entre las máquinas virtuales de la red virtual y un conjunto de máquinas virtuales que residen en el mismo servicio en la nube de la red virtual (consulte la Ilustración 2).
-* En una red virtual entre locales, entre los equipos locales y un conjunto de máquinas virtuales que residen en el mismo servicio en la nube de la red virtual (consulte la Ilustración 3).
-* Aplicaciones de niveles múltiples accesibles desde Internet en las que los niveles back-end no son accesibles desde Internet, sino que requieren equilibrio de carga para el tráfico que procede del nivel accesible desde Internet.
-* Equilibrio de carga para las aplicaciones LOB hospedadas en Azure sin requerir hardware ni software adicional de equilibrador de carga. Se incluyen los servidores locales del conjunto de equipos de cuyo tráfico se va a equilibrar la carga.
+* Dentro de un servicio de nube de máquinas virtuales tooa conjunto de máquinas virtuales que residen dentro de hello mismo servicio en la nube (consulte la figura 1).
+* En una red virtual, desde máquinas virtuales en el conjunto de tooa de red virtual de Hola de máquinas virtuales que residen dentro de hello mismo servicio en la nube de hello virtual de red (consulte la figura 2).
+* Para una red virtual entre entornos, de conjunto de tooa de equipos locales de máquinas virtuales que residen dentro de hello mismo servicio en la nube de hello virtual de red (consulte la figura 3).
+* Aplicaciones accesibles desde Internet, de varios niveles en el que los niveles de back-end de hello no son accesibles desde Internet pero requieren equilibrio de carga para tráfico de capa de hello orientado a Internet.
+* Equilibrio de carga para las aplicaciones LOB hospedadas en Azure sin requerir hardware ni software adicional de equilibrador de carga. Incluir servidores locales Hola conjunto de equipos cuyo tráfico tiene una carga equilibrada.
 
 ## <a name="internet-facing-multi-tier-applications"></a>Aplicaciones de niveles múltiples accesibles desde Internet
 
-El nivel web tiene extremos accesibles desde Internet para clientes de Internet y forma parte de un conjunto con equilibrio de carga. El equilibrador de carga distribuye el tráfico que procede de los clientes web en el puerto TCP 443 (HTTPS) a los servidores web.
+nivel de Hello web tiene extremos con conexión a Internet para clientes de Internet y forma parte de un conjunto con equilibrio de carga. equilibrador de carga de Hello distribuye el tráfico entrante de los clientes web para TCP puerto 443 (HTTPS) toohello los servidores web.
 
-Los servidores de base de datos están detrás de un extremo ILB que los servidores web usan para el almacenamiento. Este es el extremo con equilibrio de carga del servicio de base de datos, de cuyo tráfico se va a equilibrar la carga entre los servidores de base de datos del conjunto ILB.
+servidores de base de datos de Hello están detrás de un punto de conexión ILB que usan servidores web de hello para el almacenamiento. Esta carga del servicio de base de datos con equilibrio de punto de conexión, qué tráfico se carga equilibrada entre los servidores de base de datos de hello en hello ILB conjunto.
 
-La imagen siguiente muestra la aplicación de niveles múltiples accesible desde Internet dentro del mismo servicio en la nube.
+siguiente imagen muestra de Hola Hola Internet con conexión a la aplicación de varios niveles dentro de hello mismo servicio en la nube.
 
 ![Equilibrio de carga interno en un solo servicio en la nube](./media/load-balancer-internal-overview/IC736321.png)
 
 Figura 1 - Una aplicación de niveles múltiples accesible desde Internet
 
-Otro uso posible para una aplicación de niveles múltiples es cuando ILB se implementa en un servicio en la nube diferente al que consume el servicio para ILB.
+Otro uso posible para una aplicación de varios nivel es cuando hello ILB implementa el servicio de nube diferente de tooa de Hola a un servicio de consumo de Hola para hello ILB.
 
-Los servicios en la nube que usan la misma red virtual tendrán acceso al extremo ILB. En la imagen siguiente se muestran los servidores web front-end que se encuentran en un servicio en la nube diferente al del back-end de base de datos y que utilizan el punto de conexión ILB dentro de la misma red virtual.
+En la nube con hello tendrá la misma red virtual de servicios tienen acceso a extremo ILB toohello. Hola siguiendo la imagen se muestra en servidores front-end web están en un servicio de nube diferente de la base de datos back-end de Hola y utilizando Hola extremo ILB dentro de hello misma red virtual.
 
 ![Equilibrio de carga interno entre servicios en la nube](./media/load-balancer-internal-overview/IC744147.png)
 
@@ -58,23 +58,23 @@ Figura 2 - Servidores front-end en un servicio en la nube diferente
 
 ## <a name="intranet-line-of-business-applications"></a>Aplicaciones de línea de negocio de Intranet
 
-La carga del tráfico de los clientes de la red local se equilibra entre el conjunto de servidores LOB mediante una conexión VPN a la red de Azure.
+Tráfico de los clientes de red local de hello obtener el equilibrio de carga en conjunto Hola de los servidores LOB con red de tooAzure de conexión VPN.
 
-El equipo cliente tendrá acceso a una dirección IP desde el servicio de VPN de Azure con VPN de sitio a punto. Permite el uso de la aplicación LOB hospedada detrás del punto de conexión ILB.
+equipo de cliente Hello tendrá acceso tooan dirección IP del servicio de VPN de Azure con VPN de punto toosite. Permite Hola uso Hola aplicación LOB hospedada detrás de punto de conexión de hello ILB.
 
-![Equilibrio de carga interno mediante una VPN de punto a sitio](./media/load-balancer-internal-overview/IC744148.png)
+![Con VPN de punto toosite de equilibrio de carga interno](./media/load-balancer-internal-overview/IC744148.png)
 
-Figura 3 - Aplicaciones LOB hospedadas detrás del punto de conexión ILB
+Figura 3: aplicaciones LOB hospedadas detrás de punto de conexión de hello LB
 
-Otro escenario para LOB es tener una VPN de sitio a sitio a la red virtual donde está configurado el punto de conexión ILB. Esto permitirá que el tráfico de red local se enrute al punto de conexión ILB.
+Otro escenario para hello LOB es toohave una red para el toohello virtual de sitio toosite VPN donde se configura el punto de conexión de hello ILB. Esto permite que el punto de conexión de local red tráfico toobe enrutado toohello ILB.
 
-![Equilibrio de carga interno mediante una VPN de sitio a sitio](./media/load-balancer-internal-overview/IC744150.png)
+![Usar toosite VPN de sitio de equilibrio de carga interno](./media/load-balancer-internal-overview/IC744150.png)
 
-Figura 4 - Tráfico de red local enrutado al punto de conexión ILB
+Figura 4 - tráfico de red local enrutada toohello ILB extremo
 
 ## <a name="limitations"></a>Limitaciones
 
-Las configuraciones del equilibrador de carga interno no son compatibles con SNAT. En el contexto de este documento, SNAT se refiere a la traducción de direcciones de red de origen de enmascaramiento de puertos.  Se aplica a escenarios donde una máquina virtual de un grupo de equilibradores de carga tiene que llegar a la dirección IP del servidor front-end del equilibrador de carga interno respectivo. Este escenario no es compatible con el equilibrador de carga interno. Se producirán errores de conexión cuando el flujo sea de carga equilibrada en la máquina virtual que ha originado ese flujo. Debe usar un equilibrador de carga de estilo proxy para estos escenarios.
+Las configuraciones del equilibrador de carga interno no son compatibles con SNAT. En el contexto de Hola de este documento, SNAT hace referencia a traducción de direcciones en la red de origen de tooport enmascarado.  Esto aplica tooscenarios que una máquina virtual en un grupo de equilibradores de carga tiene dirección IP del tooreach Hola respectivos interno equilibrador de carga servidor front-end. Este escenario no es compatible con el equilibrador de carga interno. Errores de conexión se producirán al flujo de hello es toohello de carga equilibrada VM que se originaron flujo Hola. Debe usar un equilibrador de carga de estilo proxy para estos escenarios.
 
 ## <a name="next-steps"></a>Pasos siguientes
 

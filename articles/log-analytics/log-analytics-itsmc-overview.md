@@ -1,6 +1,6 @@
 ---
-title: IT Service Management Connector en OMS | Microsoft Docs
-description: "Use IT Service Manager Connector para supervisar y administrar de manera centralizada los elementos de trabajo ITSM en OMS y solucionar rápidamente cualquier problema."
+title: "Conector de administración de servicio de OMS aaaIT | Documentos de Microsoft"
+description: "Use Hola conector de administración de servicios de TI toocentrally supervisión y administrar elementos de trabajo ITSM hello en OMS, y solucione los problemas rápidamente."
 services: log-analytics
 documentationcenter: 
 author: JYOTHIRMAISURI
@@ -14,51 +14,51 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2017
 ms.author: v-jysur
-ms.openlocfilehash: 54974ef06efdae69ddbfa12b1ba9278b48b113d3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 33ed5d432591b836eb41ba982c66c96f22879444
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="centrally-manage-itsm-work-items-using-it-service-management-connector-preview"></a>Administración centralizada de los elementos de trabajo ITSM con IT Service Management Connector (versión preliminar)
 
 ![Símbolo de IT Service Management Connector](./media/log-analytics-itsmc/itsmc-symbol.png)
 
-Puede usar IT Service Management Connector (ITSMC) en Log Analytics de OMS para supervisar y administrar de manera centralizada elementos de trabajo en todos los productos o servicios de ITSM.
+Puede usar hello conector de administración de servicio de TI (ITSMC) en el monitor de toocentrally de análisis de registros de OMS y administrar elementos de trabajo entre sus productos y servicios ITSM.
 
-IT Service Management Connector integra los productos y servicios existentes de IT Service Management (ITSM) con Log Analytics de OMS.  La solución tiene una integración bidireccional con productos o servicios de ITSM, donde proporciona a los usuarios de OMS una opción para crear incidentes, alertas o eventos en la solución ITSM. El conector también importa datos como incidentes y solicitudes de cambio desde la solución ITSM a Log Analytics de OMS.
+Hola conector de administración de servicios de TI integra los servicios y productos de administración de servicio de TI (ITSM) existente con análisis de registros de OMS.  solución de Hello tiene integración bidireccional con productos o servicios a ITSM, donde proporciona Hola incidentes toocreate opción de los usuarios de OMS, alertas o eventos de solución ITSM. Conector de Hello también importa datos tales como incidentes y solicitudes de cambio de solución ITSM en análisis de registros de OMS.
 
 Con IT Service Management Connector, puede:
 
   - Supervisar y administrar de manera centralizada elementos de trabajo para productos y servicios de ITSM que se usan en toda la organización.
   - Crear elementos de trabajo de ITSM (como alertas, eventos, incidentes) en ITSM desde alertas de OMS y a través de la búsqueda de registros.
   - Leer incidentes y solicitudes de cambio en la solución ITSM y correlacionarlos con los datos de registro correspondientes en el área de trabajo de Log Analytics.
-  - Encontrar eventos inesperados e inusuales y resolverlos, incluso antes de que los usuarios finales llamen al departamento de soporte técnico para informarlos.
+  - Buscar cualquier evento inesperado e inusual y resolverlos, incluso antes de que los usuarios finales de hello llamar y registrarlos toohello departamento de soporte técnico.
   - Importar datos de elementos de trabajo a Log Analytics y crear informes de indicador de rendimiento clave (KPI).  Con estos informes, puede identificar y evaluar varios elementos importantes, como la evaluación de malware, y actuar en consecuencia.
   - Ver paneles protegidos para obtener información más detallada sobre incidentes, solicitudes de cambio y sistemas afectados.
-  - Solucionar problemas más rápidamente a través de la correlación con otras soluciones de administración en el área de trabajo de Log Analytics.
+  - Solucionar problemas con mayor rapidez al correlacionar con otras soluciones de administración en el área de trabajo de análisis de registros de Hola.
 
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Para importar los elementos de trabajo de ITSM a Log Analytics de OMS, la solución requiere una conexión entre IT Service Management Connector en OMS y el producto o servicio de ITSM desde el cual importa los elementos de trabajo.
+elementos de trabajo de tooimport Hola ITSM en análisis de registros de OMS, solución de hello requiere una conexión entre Hola conector de administración de servicios de TI en OMS de Hola y Hola TI SM productos o servicios desde la que importar elementos de trabajo de Hola.
 
 
 ## <a name="configuration"></a>Configuración
 
-Agregue la solución IT Service Management Connector al área de trabajo de OMS a través del proceso descrito en [Incorporación de soluciones de Log Analytics desde la galería de soluciones](log-analytics-add-solutions.md).
+Hola de agregar espacio de trabajo OMS de tooyour de la solución de conector de administración de servicios de TI, mediante el proceso de hello descrito en [soluciones de análisis de registro agregar desde la Galería de soluciones de hello](log-analytics-add-solutions.md).
 
-Icono de IT Service Management Connector como aparece en la galería de soluciones:
+Conector de administración de servicios de TI icono como se ve en la Galería de soluciones de hello:
 
 ![icono de conector](./media/log-analytics-itsmc/itsmc-solutions-tile.png)
 
-Después de agregarlo de manera correcta, podrá ver IT Service Management Connector en **OMS** > **Configuración** > **Orígenes conectados.**
+Tras la adición de correcta, verá Hola conector de administración de servicios de TI en **OMS** > **configuración** > **orígenes conectados.**
 
 ![ITSMC conectado](./media/log-analytics-itsmc/itsmc-overview-solution-in-connected-sources.png)
 
 > [!NOTE]
 
-> De forma predeterminada, IT Service Management Connector actualiza los datos de la conexión una vez cada 24 horas. Para actualizar los datos de la conexión al instante para cualquier modificación o actualizaciones de plantilla que se realicen, haga clic en el botón de actualización que se muestra junto a la conexión.
+> De forma predeterminada, Hola conector de administración de servicios de TI actualiza los datos de la conexión de hello una vez en cada 24 horas. toorefresh datos de la conexión al instante para cualquier plantilla o modificaciones actualizan realizados, haga clic en conexión siguiente tooyour de hello actualización botón que se muestra.
 
  ![Actualización de ITSMC](./media/log-analytics-itsmc/itsmc-connection-refresh.png)
 
@@ -67,7 +67,7 @@ Esta solución no necesita ningún módulo de administración.
 
 ## <a name="connected-sources"></a>Orígenes conectados
 
-IT Service Management Connector admite los siguientes productos o servicios de ITSM:
+Hello siguientes ITSM productos/servicios admite Hola conector de administración de servicios de TI:
 
 - [System Center Service Manager (SCSM)](log-analytics-itsmc-connections.md#connect-system-center-service-manager-to-it-service-management-connector-in-oms)
 
@@ -77,23 +77,23 @@ IT Service Management Connector admite los siguientes productos o servicios de I
 
 - [Cherwell](log-analytics-itsmc-connections.md#connect-cherwell-to-it-service-management-connector-in-oms)
 
-## <a name="using-the-solution"></a>Uso de la solución
+## <a name="using-hello-solution"></a>Uso de solución de Hola
 
-Una vez que conecta IT Service Management Connector de OMS al servicio de ITSM, los servicios de Log Analytics comienzan a recopilar los datos de los productos o servicios de ITSM conectados.
+Una vez Hola conector de administración de servicios de TI de OMS se conecta con el servicio ITSM, servicios de análisis de registros de hello inicia la recopilación de datos de Hola Hola conectado ITSM productos/service.
 
 > [!NOTE]
 > - Los datos que importa la solución IT Service Management Connector aparecen en Log Analytics como eventos denominados **ServiceDesk_CL**.
-- Los eventos contienen un campo llamado **ServiceDeskWorkItemType_s**. que puede tomar su valor como incidente o como solicitud de cambio, según los datos de elemento de trabajo contenidos en el evento **ServiceDesk_CL**.
+- Los eventos contienen un campo llamado **ServiceDeskWorkItemType_s**. que puede tomar su valor como incidentes, o solicitud de cambio, función hello de elemento de trabajo datos contenidos en hello **ServiceDesk_CL** eventos.
 
 ## <a name="input-data"></a>Datos de entrada
-Elementos de trabajo importados desde servicios o productos de ITSM.
+Los elementos de trabajo importan de hello ITSM productos y servicios.
 
-La información siguiente muestra ejemplos de los datos que recopila IT Service Management Connector:
+Hello información siguiente muestra ejemplos de datos recopilados por el conector de administración de servicios de TI de hello:
 
 > [!NOTE]
-> En función del tipo de elemento de trabajo que se importa a Log Analytics, **ServiceDesk_CL** contiene los campos siguientes:
+> Función hello de elemento de trabajo importado en el análisis de registros de tipo **ServiceDesk_CL** contiene Hola siguientes campos:
 
-**Elemento de trabajo:** **incidentes**  
+**Elemento de trabajo:****incidentes**  
 ServiceDeskWorkItemType_s="Incidente"
 
 **Fields**
@@ -120,7 +120,7 @@ ServiceDeskWorkItemType_s="Incidente"
 - Equipo
 
 
-**Elemento de trabajo:** **solicitudes de cambio**
+**Elemento de trabajo:****solicitudes de cambio**
 
 ServiceDeskWorkItemType_s="ChangeRequest"
 
@@ -166,7 +166,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | ResolvedBy_s | Resuelto por|
 | ClosedBy_s  | Cerrado por |
 | Source_s| Tipo de contacto |
-| AssignedTo_s | Asignado a  |
+| AssignedTo_s | Asignado demasiado |
 | Category_s | Categoría |
 | Title_s|  Descripción breve |
 | Description_s|  Notas |
@@ -182,7 +182,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | ServiceDeskId_s| Number |
 | CreatedBy_s | Solicitado por |
 | ClosedBy_s | Cerrado por |
-| AssignedTo_s | Asignado a  |
+| AssignedTo_s | Asignado demasiado |
 | Title_s|  Descripción breve |
 | Type_s|  Tipo |
 | Category_s|  Categoría |
@@ -206,83 +206,83 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 
 ## <a name="it-service-management-connector--integration-with-other-oms-solutions"></a>IT Service Management Connector: integración con otras soluciones de OMS
 
-IT Service Management Connector admite actualmente la integración con la solución Mapa de servicio.
+Conector de administración de servicio de TI, actualmente admite la integración con hello mapa de servicio de la solución.
 
-Mapa de servicio detecta automáticamente los componentes de la aplicación en sistemas Windows y Linux y asigna la comunicación entre servicios. Permite ver los servidores a medida que piensa en ellos, como los sistemas interconectados que ofrecen servicios críticos. Mapa de servicio muestra las conexiones entre servidores, procesos y puertos en cualquier arquitectura conectada TCP sin una configuración necesaria que sea distinta a la instalación de un agente. Más información: [Mapa de servicio](../operations-management-suite/operations-management-suite-service-map.md).
+Mapa de servicio detecta automáticamente Hola componentes de la aplicación en Windows y los mapas y sistemas Linux Hola comunicación entre los servicios. Permite tooview los servidores que pensar en ellos, como sistemas interconectados que ofrecen servicios críticos. Mapa de servicio muestra las conexiones entre servidores, procesos y puertos en cualquier arquitectura conectada TCP sin una configuración necesaria que sea distinta a la instalación de un agente. Más información: [Mapa de servicio](../operations-management-suite/operations-management-suite-service-map.md).
 
-Con esta integración, puede ver los elementos del departamento de servicios creados en la solución ITSM como se muestra en el ejemplo siguiente:
+Con esta integración, puede ver los elementos de departamento de soporte de servicio Hola creados en soluciones ITSM de hello tal y como se muestra en el siguiente ejemplo de Hola:
 
 ![Solución integrada ](./media/log-analytics-itsmc/itsmc-overview-integrated-solutions.png)
 ## <a name="create-itsm-work-items-for-oms-alerts"></a>Creación de elementos de trabajo de ITSM para alertas de OMS
 
-Desde las alertas de OMS, puede crear elementos de trabajo asociados en los orígenes conectados de ITSM.  Para hacerlo, use el procedimiento siguiente:
+Para las alertas OMS de hello, puede crear elementos de trabajo asociados en los orígenes de ITSM Hola conectado.  toodo, Hola de uso siguiente procedimiento:
 
-1. En la ventana **Búsqueda de registros**, ejecute una consulta de búsqueda de registros para ver los datos. Los resultados de la consulta son el origen de los elementos de trabajo.
-2. En **Búsqueda de registros**, haga clic en **Alerta** para abrir la página **Agregar regla de alerta**.
+1. De **Log Search** ventana, ejecute un datos tooview de consulta de búsqueda de registro. Resultados de la consulta son origen de Hola de elementos de trabajo.
+2. En **Log Search**, haga clic en **alerta** tooopen hello **Agregar regla de alerta** página.
 
     ![Pantalla de Log Analytics](./media/log-analytics-itsmc/itsmc-work-items-for-oms-alerts.png)
 
-3. En la ventana **Agregar regla de alerta**, proporcione los detalles necesarios para **Nombre**, **Gravedad**, **Consulta de búsqueda** y **Criterios de alerta** (Ventana de tiempo/unidad métrica).
+3. En hello **Agregar regla de alerta** ventana, proporcione los detalles de hello necesario de **nombre**, **gravedad**, **consulta de búsqueda**, y  **Criterios de alerta** (medida de ventana/métrica de tiempo).
 4. Seleccione **Sí** en **Acciones de ITSM**.
-5. Seleccione la conexión de ITSM en la lista **Conexión seleccionada**.
-6. Proporcione los detalles requeridos.
-7. Para crear un elemento de trabajo independiente para cada entrada de registro de esta alerta, active la casilla **Crear elementos de trabajo individuales para cada entrada de registro**.
+5. Seleccione la conexión de ITSM de hello **Seleccionar conexión** lista.
+6. Proporcione detalles de hello según sea necesario.
+7. un elemento de trabajo independiente para cada entrada de registro de esta alerta, seleccione hello toocreate **crear elementos de trabajo individuales para cada entrada de registro** casilla de verificación.
 
-    o
+    O
 
-    deje desactivada esta casilla para crear solo un elemento de trabajo para cualquier número de entradas de registro en esta alerta.
+    Deje esta casilla de verificación toocreate no seleccionados solo un elemento de trabajo para cualquier número de entradas del registro en esta alerta.
 
 7. Haga clic en **Guardar**.
 
-La alerta de OMS se creará en **Alertas**. Los elementos de trabajo de la conexión de ITSM correspondientes se crean cuando se cumple la condición de la alerta especificada.
+alerta de OMS Hola se creará bajo **alertas**. Hola elementos se crean cuando se cumpla la condición de alerta especificado Hola de trabajo de la conexión ITSM correspondiente.
 
 ## <a name="create-itsm-work-items-from-oms-logs"></a>Creación de elementos de trabajo de ITSM desde registros de OMS
 
-Puede crear elementos de trabajo en los orígenes conectados de ITSM a través de Búsqueda de registros de OMS. Para hacerlo, use el procedimiento siguiente:
+Puede crear elementos de trabajo en los orígenes de ITSM Hola conectado mediante búsqueda de registros de OMS. toodo, Hola de uso siguiente procedimiento:
 
-1. En **Búsqueda de registros**, busque los datos requeridos, seleccione el detalle y haga clic en **Crear elemento de trabajo**.
+1. De **Log Search**, buscar Hola requerido datos, seleccione detalles de Hola y haga clic en **crear elemento de trabajo**.
 
-    Aparecerá la ventana **Creación de elemento de trabajo de ITSM**:
+    Hola **elemento de trabajo de ITSM crear** aparecerá la ventana:
 
     ![Pantalla de Log Analytics](media/log-analytics-itsmc/itsmc-work-items-from-oms-logs.png)
 
-2.   Agregue los detalles siguientes:
+2.   Agregue Hola detalles siguientes:
 
-  - **Título de elemento de trabajo**: el título del elemento de trabajo.
-  - **Descripción de elemento de trabajo**: la descripción del nuevo elemento de trabajo.
-  - **Equipo afectado**: el nombre del equipo en que se encontraron estos datos de registro.
-  - **Conexión seleccionada**: la conexión ITSM en la que desea crear este elemento de trabajo.
+  - **Título de elemento de trabajo**: título de elemento de trabajo de Hola.
+  - **Descripción de elemento de trabajo**: descripción de elemento de trabajo nuevo Hola.
+  - **Afectado equipo**: nombre del equipo de Hola donde se encontraron estos datos de registro.
+  - **Seleccionar conexión**: conexión ITSM del que desee toocreate este elemento de trabajo.
   - **Elemento de trabajo**: tipo de elemento de trabajo.
 
-3. Para usar una plantilla de elemento de trabajo existente para un incidente, haga clic en **Sí** en la opción **Generate work item based on the template** (Generar elemento de trabajo basado en la plantilla) y, luego, haga clic en **Crear**.
+3. toouse una plantilla de elemento de trabajo existente de un incidente, haga clic en **Sí** en **generar elemento de trabajo basado en la plantilla de hello** opción y, a continuación, haga clic en **crear**.
 
     O bien,
 
-    Haga clic en **No** si desea proporcionar valores personalizados.
+    Haga clic en **n** si desea tooprovide los valores personalizados.
 
-4. Proporcione los valores adecuados en los cuadros de texto **Tipo de contacto**, **Impacto**, **Urgencia**, **Categoría** y **Subcategoría** y, luego, haga clic en **Crear**.
+4. Proporcione los valores adecuados de Hola Hola **tipo de contacto**, **impacto**, **urgencia**, **categoría**, y **subcategoría**  cuadros de texto y, a continuación, haga clic en **crear**.
 
-El elemento de trabajo se creará en ITSM, que también puede ver en OMS.
+se creará el elemento de trabajo de Hola Hola ITSM, que también se puede ver en OMS.
 
 ## <a name="troubleshoot-itsm-connections-in-oms"></a>Solución de problemas de conexión de ITSM en OMS
-1.  Si se produce un error en la conexión de la interfaz de usuario del origen conectado y recibe el mensaje **Error al guardar la conexión**, siga estos pasos:
- - En el caso de conexiones de ServiceNow, Cherwell y Provance, asegúrese de que ha introducido correctamente el nombre de usuario y la contraseña, y el Id. y el secreto de cliente de cada una de las conexiones. Si el error persiste, compruebe si dispone de privilegios suficientes en el producto ITSM correspondiente para realizar la conexión.
- - En el caso de Service Manager, asegúrese de que la aplicación web se implementa correctamente y se crea la conexión híbrida. Para comprobar que la conexión se ha establecido correctamente con el equipo de Service Manager local, visite la dirección URL de la aplicación web como se detalla en la documentación para realizar la [conexión híbrida](log-analytics-itsmc-connections.md#configure-the-hybrid-connection).
+1.  Si se produce un error en la conexión de la interfaz de usuario del origen conectado y obtener hello **Error al guardar la conexión** de mensajes, Hola después de:
+ - En el caso de las conexiones de ServiceNow, Cherwell y Provance, asegúrese de secreto de cliente y el Id. de nombre de usuario/contraseña y el cliente hello correctamente especificado para cada una de las conexiones de Hola. Si Hola error persiste, compruebe si dispone de suficientes privilegios en conexión de hello correspondiente ITSM producto toomake Hola.
+ - En el caso de Service Manager, asegúrese de que se implementa correctamente hello Web app y conexión híbrida se crea. conexión de hello tooverify correctamente se establece con equipo de Service Manager local hello, visite URL de la aplicación hello Web tal como se detalla en la documentación de Hola para realizar hello [conexión híbrida](log-analytics-itsmc-connections.md#configure-the-hybrid-connection).
 
-2.  Si los datos de ServiceNow no se sincronizan en OMS, asegúrese de que la instancia de ServiceNow no está suspendida. Es posible que esto ocurra en algún momento en las instancias de ServiceNow Dev, cuando están inactivas. En caso contrario, notifique el problema.
-3.  Si se generan alertas desde OMS pero no se están creando elementos de trabajo en el producto ITSM o bien no se están creando o vinculando elementos de configuración a los elementos de trabajo, o para cualquier información genérica, siga estos pasos:
- -  Se puede usar la solución de IT Service Management Connector en el portal de OMS para obtener un resumen de las conexiones, elementos de trabajo, equipos, etc. Haga clic en el mensaje de error en la hoja de estado, vaya a **Búsqueda de registros** y vea la conexión que tiene el error mediante el uso de los detalles del mensaje de error.
- - Puede ver directamente los errores y la información relacionada en la página **Búsqueda de registros** mediante *Type=ServiceDeskLog_CL*.
+2.  Si no obtener se sincronizan datos de ServiceNow en OMS, asegurarse de que esa instancia de ServiceNow hello no está en espera. En algún momento posible en hello ServiceNow Dev instancias, cuando esté inactivo. Else, problema de Hola de informe.
+3.  Si obtener se activan alertas de OMS, pero no obtener se crean elementos de trabajo en el producto ITSM o elementos de configuración no están recibiendo elementos toowork creado/vinculada o para toda la información genérica, Hola siguientes:
+ -  Solución de conector de administración de servicios de TI en el portal de OMS puede ser usado tooget un resumen de elementos de trabajo/conexiones/equipos etcetera. Haga clic en el mensaje de error de hello en la hoja de estado de hello, navegue demasiado**búsqueda de registros** y ver Hola conexión que tiene el error de hello mediante detalles de hello en el mensaje de error de saludo.
+ - directamente puede ver información de errores/relacionado de Hola Hola **Log Search** página con *tipo = ServiceDeskLog_CL*.
 
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>Solucionar problemas de implementación de aplicaciones web de Service Manager
-1.  En caso de que se produzcan problemas con la implementación de la aplicación web, asegúrese de que tener los permisos suficientes en la suscripción mencionada para crear o implementar recursos.
-2.  Si aparece el mensaje de error **Referencia a objeto no establecida como instancia de un objeto** mientras se ejecuta el [script](log-analytics-itsmc-service-manager-script.md), asegúrese de que especificó valores válidos en la sección **Configuración de usuario**.
-3.  Si no puede crear el espacio de nombres de retransmisión de Service Bus, asegúrese de que el proveedor de recursos necesario está registrado en la suscripción. Si no está registrado, créelo manualmente desde Azure Portal. También puede crearlo mientras [crea la conexión híbrida](log-analytics-itsmc-connections.md#configure-the-hybrid-connection) desde Azure Portal.
+1.  En el caso de los problemas con la implementación de aplicación web, asegúrese de que dispone de suficientes permisos de suscripción de hello mencionado toocreate/implementar recursos.
+2.  Si **no establece la referencia de objeto tooinstance de un objeto** aparece el mensaje de error durante la ejecución hello [script](log-analytics-itsmc-service-manager-script.md) Asegúrese de que ha especificado valores válidos en **configuración de usuario**sección.
+3.  Si se produce un error de espacio de nombres de retransmisión de bus de servicio de toocreate, asegúrese de que hello necesarios de proveedor de recursos está registrado en la suscripción de Hola. Si no está registrado, crear manualmente de hello portal de Azure. También puede crear mientras [crear conexión híbrida de hello](log-analytics-itsmc-connections.md#configure-the-hybrid-connection) de hello portal de Azure.
 
 
 ## <a name="contact-us"></a>Ponerse en contacto con nosotros
 
-Si tiene consultas o comentarios sobre IT Service Management, póngase en contacto con nosotros en [omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com).
+Para cualquier consulta o comentarios en hello conector de administración de servicios de TI, póngase en contacto con nosotros en [ omsitsmfeedback@microsoft.com ](mailto:omsitsmfeedback@microsoft.com).
 
 ## <a name="next-steps"></a>Pasos siguientes
-[Incorporación de productos o servicios de ITSM a IT Service Management Connector](log-analytics-itsmc-connections.md).
+[Agregar tooIT de productos y servicios ITSM Service Management Connector](log-analytics-itsmc-connections.md).

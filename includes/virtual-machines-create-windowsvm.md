@@ -1,45 +1,45 @@
-1. Inicie sesión en el [Portal de Azure](https://portal.azure.com).
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
 
-2. Desde la esquina superior izquierda, haga clic en **Nuevo > Proceso > Windows Server 2016 Datacenter**.
+2. A partir de la parte superior izquierda de hello, haga clic en **nuevo > proceso > Centro de datos de Windows Server 2016**.
 
-    ![Vaya a las imágenes de máquinas virtuales de Azure en el portal](./media/virtual-machines-common-portal-create-fqdn/marketplace-new.png)
+    ![Navegue toohello imágenes de máquina virtual de Azure en el portal de Hola](./media/virtual-machines-common-portal-create-fqdn/marketplace-new.png)
 
-3. En Windows Server 2016 Datacenter, seleccione el modelo de implementación clásico. Haga clic en Crear.
+3. En Windows Server 2016 Datacenter hello, seleccione el modelo de implementación de clásico de Hola. Haga clic en Crear.
 
-    ![Captura de pantalla que muestra las imágenes de las máquinas virtuales de Azure disponibles en el portal](./media/virtual-machines-common-portal-create-fqdn/deployment-classic-model.png)
+    ![Captura de pantalla que muestra las imágenes de máquina virtual de Azure de hello disponibles en el portal de Hola](./media/virtual-machines-common-portal-create-fqdn/deployment-classic-model.png)
 
 ## <a name="1-basics-blade"></a>1. Hoja Básico
 
-La hoja Básico solicita información administrativa para la máquina virtual.
+hoja de conceptos básicos de Hello solicita la información administrativa para la máquina virtual de Hola.
 
-1. Escriba un **nombre** para la máquina virtual. En este ejemplo, _HeroVM_ es el nombre de la máquina virtual. El nombre debe tener de 1 a 15 caracteres de longitud, sin caracteres especiales.
+1. Escriba un **nombre** para la máquina virtual de Hola. En el ejemplo de Hola, _HeroVM_ es Hola nombre de máquina virtual de Hola. nombre de Hello debe ser 1 y 15 caracteres y no puede contener caracteres especiales.
 
-2. Escriba un **nombre de usuario** y una **contraseña** segura que se usarán para crear una cuenta local en la máquina virtual. La cuenta local sirve para iniciar sesión en la máquina virtual y administrarla. En el ejemplo, _azureuser_ es el nombre de usuario.
+2. Escriba un **nombre de usuario** y una gran **contraseña** que están toocreate usa una cuenta local en hello máquina virtual. Hello cuenta local se usa toosign en tooand administrar Hola máquina virtual. En el ejemplo de Hola, _azureuser_ es el nombre de usuario de Hola.
 
- La contraseña debe tener entre 8 y 123 caracteres y reunir, al menos, tres de los cuatro requisitos de complejidad siguientes: contener al menos una minúscula, una mayúscula, un número y un carácter especial. Obtenga más información acerca de los [requisitos de usuario y la contraseña](../articles/virtual-machines/windows/faq.md).
+ Hello contraseña debe tener 8-123 caracteres de longitud y satisfacer tres de hello cuatro requisitos de complejidad: caracteres de una minúscula, una letra mayúscula, un número y un carácter especial. Obtenga más información acerca de los [requisitos de usuario y la contraseña](../articles/virtual-machines/windows/faq.md).
 
-3. La **suscripción** es opcional. Una configuración común es "Pago por uso".
+3. Hola **suscripción** es opcional. Una configuración común es "Pago por uso".
 
-4. Seleccione un valor de **Grupo de recursos** existente o escriba el nombre para crear uno. En el ejemplo, _HeroVMRG_ es el nombre del grupo de recursos.
+4. Seleccione una existente **grupo de recursos** o nombre de tipo hello para uno nuevo. En el ejemplo de Hola, _HeroVMRG_ es nombre Hola Hola del grupo de recursos.
 
-5. Seleccione una **ubicación** del centro de datos de Azure donde desea que se ejecute la máquina virtual. En el ejemplo, la ubicación es **Este de EE. UU**.
+5. Seleccione un centro de datos Azure **ubicación** donde desea Hola VM toorun. En el ejemplo de Hola, **UU** es Hola ubicación.
 
-6. Cuando termine, haga clic en **Siguiente** para continuar a la hoja siguiente.
+6. Cuando haya terminado, haga clic en **siguiente** toocontinue toohello siguiente hoja.
 
-    ![Captura de pantalla que muestra la configuración en la hoja Básico para configurar una máquina virtual de Azure](./media/virtual-machines-common-portal-create-fqdn/basics-blade-classic.png)
+    ![Captura de pantalla que muestra la configuración de hello en la hoja de hello conceptos básicos para configurar una máquina virtual de Azure](./media/virtual-machines-common-portal-create-fqdn/basics-blade-classic.png)
 
 ## <a name="2-size-blade"></a>2. Hoja Tamaño
 
-La hoja Tamaño identifica los detalles de configuración de la máquina virtual y enumera diversas opciones que incluyen SO, el número de procesadores, el tipo de almacenamiento en disco y costos de uso mensuales estimados.  
+hoja de tamaño de Hola identifica los detalles de configuración de Hola de hello VM y enumera las distintas opciones que incluyen el sistema operativo, número de procesadores, el tipo de almacenamiento en disco y costos de uso mensual estimado.  
 
-Elija un tamaño de máquina virtual y, luego, **Seleccionar** para continuar. En este ejemplo, _DS1_\__V2 estándar_ es el tamaño de máquina virtual.
+Elija un tamaño de máquina virtual y, a continuación, haga clic en **seleccione** toocontinue. En este ejemplo, _DS1_\__V2 estándar_ es el tamaño de la máquina virtual de Hola.
 
-  ![Captura de pantalla que muestra la hoja Tamaño con los tamaños de máquina virtual de Azure que puede seleccionar](./media/virtual-machines-common-portal-create-fqdn/vm-size-classic.png)
+  ![Captura de pantalla de hoja de tamaño de Hola que muestra hello tamaños de máquina virtual de Azure que se pueden seleccionar](./media/virtual-machines-common-portal-create-fqdn/vm-size-classic.png)
 
 
 ## <a name="3-settings-blade"></a>3. Hoja Configuración
 
-La hoja Configuración solicita las opciones de almacenamiento y red. Puede aceptar la configuración predeterminada. Azure crea las entradas correspondientes en caso de ser necesario.
+hoja de configuración de Hello solicita opciones de almacenamiento y red. Puede aceptar la configuración predeterminada de Hola. Azure crea las entradas correspondientes en caso de ser necesario.
 
 Si seleccionó un tamaño de máquina virtual que lo admita, puede probar Azure Premium Storage, para lo que debe seleccionar Premium (SSD) en Tipo de disco.
 
@@ -47,10 +47,10 @@ Cuando haya terminado de realizar los cambios, haga clic en **Aceptar**.
 
 ## <a name="4-summary-blade"></a>4. Hoja Resumen
 
-La hoja Resumen enumera la configuración que se especificó en las hojas anteriores. Haga clic en **Aceptar** cuando esté listo para crear la imagen.
+hoja de resumen de Hola enumera los valores de hello especificados en hojas de hello anterior. Haga clic en **Aceptar** cuando esté listo toomake imagen de Hola.
 
- ![Informe de la hoja Resumen que proporciona la configuración especificada de la máquina virtual](./media/virtual-machines-common-portal-create-fqdn/summary-blade-classic.png)
+ ![Informe de resumen de hoja que proporciona los valores especificados de la máquina virtual de Hola](./media/virtual-machines-common-portal-create-fqdn/summary-blade-classic.png)
 
-Una vez creada la máquina virtual, en el portal se muestra la máquina virtual nueva en **Todos los recursos** y muestra un icono de la máquina virtual en el panel. También se crean y muestran el servicio en la nube y la cuenta de almacenamiento correspondientes. La máquina virtual y el servicio en la nube se inician automáticamente, y su estado aparece como **En ejecución**.
+Después de crear la máquina virtual de hello, Hola portal mostrará las Hola nueva máquina virtual en **todos los recursos**y muestra un icono de la máquina virtual de hello en el panel de Hola. cuenta de Hello correspondiente en la nube almacenamiento y el servicio también se crean y muestran. Máquina virtual de Hola y servicio de nube se inician automáticamente y su estado aparece como **ejecutando**.
 
- ![Configure el agente de máquina virtual y los puntos de conexión de la máquina virtual](./media/virtual-machines-common-portal-create-fqdn/portal-with-new-vm.png)
+ ![Configurar puntos de conexión de máquina virtual de Hola de hello y agente de máquina virtual](./media/virtual-machines-common-portal-create-fqdn/portal-with-new-vm.png)

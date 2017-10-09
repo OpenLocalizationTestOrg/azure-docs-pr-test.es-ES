@@ -2,94 +2,94 @@
 <br>
 
 > [!NOTE]
-> Si un administrador le ha asignado un nombre de usuario y una contraseña, hay muchas posibilidades de que ya disponga de un identificador profesional o educativo (también denominado en ocasiones *id. organizativo*). Si es así, puede comenzar inmediatamente a usar su cuenta de Azure para acceder a recursos de Azure que lo requieran. Si descubre que no puede usar esos recursos, puede que necesite volver a este artículo para obtener ayuda. Para más información, consulte [Cuentas que puede utilizar para iniciar sesión](https://msdn.microsoft.com/library/azure/dn629581.aspx#BKMK_SignInAccounts) y [Qué relación tiene Azure con Azure AD](https://msdn.microsoft.com/library/azure/dn629581.aspx#BKMK_SubRelationToDir).
+> Si un administrador le ha asignado un nombre de usuario y una contraseña, hay muchas posibilidades de que ya disponga de un identificador profesional o educativo (también denominado en ocasiones *id. organizativo*). Si es así, puede empezar inmediatamente toouse los recursos de Azure que necesitan una tooaccess de cuenta de Azure. Si encuentra que no puede usar esos recursos, deberá tooreturn toothis artículo para obtener ayuda. Para obtener más información, consulte [cuentas que puede usar para iniciar sesión en](https://msdn.microsoft.com/library/azure/dn629581.aspx#BKMK_SignInAccounts) y [suscripción de Azure cómo está relacionado tooAzure AD](https://msdn.microsoft.com/library/azure/dn629581.aspx#BKMK_SubRelationToDir).
 > 
 > 
 
-Los pasos son sencillos. Necesita encontrar la identidad con la que ha iniciado sesión en el portal de Azure clásico, descubrir su dominio de Azure Active Directory predeterminado y agregarle un nuevo usuario como coadministrador de Azure.
+pasos de Hello es simple. Necesita toolocate su firmado en identidad Hola portal de Azure clásico, detectar el dominio de Active Directory de Azure de forma predeterminada y se agrega un nuevo tooit de usuario como un Coadministrador de Azure.
 
-## <a name="locate-your-default-directory-in-the-azure-classic-portal"></a>Buscar el directorio predeterminado en el Portal de Azure clásico
-Empiece por iniciar sesión en el [Portal de Azure clásico](https://manage.windowsazure.com) con su identidad de la cuenta de Microsoft personal. Cuando haya iniciado sesión, desplácese hacia abajo en el panel azul del lado izquierdo y haga clic en **ACTIVE DIRECTORY**.
+## <a name="locate-your-default-directory-in-hello-azure-classic-portal"></a>Busque el directorio predeterminado en hello portal de Azure clásico
+Iniciar sesión toohello [portal de Azure clásico](https://manage.windowsazure.com) con la identidad de la cuenta de Microsoft personal. Una vez que haya iniciado sesión, desplácese hacia abajo el panel de hello azul en el lado izquierdo de Hola y haga clic en **ACTIVE DIRECTORY**.
 
 ![Azure Active Directory](./media/virtual-machines-common-create-aad-work-id/azureactivedirectorywidget.png)
 
-Empecemos buscando información sobre su identidad en Azure. Debería ver algo parecido a lo siguiente en el panel principal, que muestra que tiene un directorio predeterminado.
+Empecemos buscando información sobre su identidad en Azure. Debería ver algo parecido a Hola siguiente en el panel principal de hello, que muestra que tiene un directorio predeterminado.
 
 ![](./media/virtual-machines-common-create-aad-work-id/defaultaadlisting.png)
 
-Vamos a averiguar más información sobre él. Haga clic en la fila de directorio predeterminada, lo que le lleva a las propiedades de directorio predeterminadas.  
+Vamos a averiguar más información sobre él. Haga clic en la fila de directorio predeterminada hello, que se pone en Propiedades del directorio predeterminado Hola.  
 
 ![](./media/virtual-machines-common-create-aad-work-id/defaultdirectorypage.png)
 
-Para ver el nombre de dominio predeterminado, haga clic en **DOMINIOS**.
+nombre de dominio de tooview Hola predeterminado, haga clic en **dominios**.
 
 ![](./media/virtual-machines-common-create-aad-work-id/domainclicktoseeyourdefaultdomain.png)
 
-Aquí debería ver que cuando se creó la cuenta de Azure, Azure Active Directory creó un dominio predeterminado personal que es un valor de hash (un número generado a partir de una cadena de texto) de su id. personal usado como subdominio de onmicrosoft.com. Ese es el dominio en el que va a agregar ahora un nuevo usuario.
+Aquí debe ser capaz de toosee que cuando se creó Hola cuenta de Azure, Azure Active Directory creado en un dominio personal predeterminado que es un valor de hash (es decir, un número generado a partir de una cadena de texto) de un identificador personal que se utiliza como un subdominio de onmicrosoft.com. Que es Hola dominio toowhich ahora, agregará un nuevo usuario.
 
-## <a name="creating-a-new-user-in-the-default-domain"></a>Creación de un nuevo usuario en el dominio predeterminado
-Haga clic en **USUARIOS** y busque su cuenta personal única. En la columna **CON ORIGEN EN** debería ver que es una **cuenta Microsoft**. Queremos crear un usuario en su dominio .onmicrosoft.com de Azure Active Directory predeterminado.
+## <a name="creating-a-new-user-in-hello-default-domain"></a>Crear un nuevo usuario en el dominio predeterminado de Hola
+Haga clic en **USUARIOS** y busque su cuenta personal única. Debería ver Hola **con origen en** columna que es un **cuenta de Microsoft**. Queremos toocreate un usuario en su valor predeterminado. onmicrosoft.com dominio de Active Directory de Azure.
 
 ![](./media/virtual-machines-common-create-aad-work-id/defaultdirectoryuserslisting.png)
 
-Vamos a seguir [estas instrucciones](https://technet.microsoft.com/library/hh967632.aspx#BKMK_1) en los pasos siguientes, pero con un ejemplo concreto.
+Vamos a toofollow [estas instrucciones](https://technet.microsoft.com/library/hh967632.aspx#BKMK_1) en Hola pasos siguientes, pero usa un ejemplo concreto.
 
-En la parte inferior de la página, haga clic en **+AGREGAR USUARIO**. En la página que aparece, escriba el nuevo nombre de usuario y en **Tipo de usuario** seleccione **Nuevo usuario de la organización**. En este ejemplo, el nuevo nombre de usuario es `ahmet`. Seleccione el dominio predeterminado que detectó anteriormente como el dominio para la dirección de correo electrónico de ahmet. Haga clic en la siguiente flecha cuando haya terminado.
+En la parte inferior de Hola de página de hello, haga clic en **+ Agregar usuario**. En la página de Hola que aparece, escriba el nombre de usuario nuevo de Hola y asegúrese de hello **tipo de usuario** una **nuevo usuario de su organización**. En este ejemplo, es el nombre de usuario nuevo de hello `ahmet`. Seleccione dominio predeterminado de Hola que detectó previamente como dominio de hello para la dirección de correo electrónico del ahmet. Haga clic en la flecha siguiente de hello cuando termine.
 
 ![](./media/virtual-machines-common-create-aad-work-id/addingauserwithdirectorydropdown.png)
 
-Agregue más detalles para Ahmet, pero asegúrese de seleccionar el valor de **ROL** adecuado. Es sencillo usar **Administrador global** para asegurarse de que todo funciona, pero si se puede utilizar un rol menor, se recomienda hacerlo. En este ejemplo se usa el rol **Usuario**. (para más información, consulte [Asignación de roles de administrador en Azure Active Directory](https://msdn.microsoft.com/library/azure/dn468213.aspx#BKMK_1)). No habilite la autenticación multifactor a menos que quiera usar la autenticación multifactor para cada registro de la operación. Haga clic en la siguiente flecha cuando haya terminado.
+Agregar más detalles para Ahmet, pero que sean seguro hello tooselect adecuados **rol** valor. Es fácil toouse **administrador Global** toomake seguro todo funciona, pero si puede usar un rol menor, que es una buena idea. Este ejemplo utiliza hello **usuario** rol. (para más información, consulte [Asignación de roles de administrador en Azure Active Directory](https://msdn.microsoft.com/library/azure/dn468213.aspx#BKMK_1)). No habilite la autenticación multifactor a menos que desee toouse la autenticación multifactor para cada registro en la operación. Cuando haya terminado, haga clic en flecha siguiente Hola.
 
 ![](./media/virtual-machines-common-create-aad-work-id/userprofileuseradmin.png)
 
-Haga clic en el botón **crear** para generar y mostrar una contraseña temporal para Ahmet.
+Haga clic en hello **crear** botón toogenerate y mostrar una contraseña temporal para Ahmet.
 
 ![](./media/virtual-machines-common-create-aad-work-id/gettemporarypasswordforuser.png)
 
-Copie la dirección de correo electrónico del nombre de usuario o use **ENVIAR CONTRASEÑA EN CORREO ELECTRÓNICO**. Necesitará la información para iniciar sesión en breve.
+Copiar dirección de correo electrónico de nombre de usuario de Hola o **enviar el correo de electrónico de contraseña en**. Será necesario Hola información toolog en poco tiempo.
 
 ![](./media/virtual-machines-common-create-aad-work-id/receivedtemporarypassworddialog.png)
 
-Ahora debe ver el nuevo usuario **Ahmet el desarrollador**, con origen en Azure Active Directory. Ha creado la nueva identidad profesional o educativa con Azure Active Directory. Sin embargo, esta identidad no tiene permisos todavía para usar recursos de Azure.
+Ahora debería ver el nuevo usuario hello, **Ahmet Hola Developer**, origen de Azure Active Directory. Ha creado nuevos trabajos de Hola o la identidad de la escuela con Azure Active Directory. Sin embargo, esta identidad todavía no tiene permisos toouse Azure recursos.
 
 ![](./media/virtual-machines-common-create-aad-work-id/defaultdirectoryusersaftercreate.png)
 
-Si usa **ENVIAR CONTRASEÑA EN CORREO ELECTRÓNICO**, se enviará el siguiente tipo de correo electrónico.
+Si usa **enviar el correo de electrónico de contraseña en**, Hola después el tipo de correo electrónico se envía.
 
 ![](./media/virtual-machines-common-create-aad-work-id/emailreceivedfromnewusercreation.png)
 
 ## <a name="adding-azure-co-administrator-rights-for-subscriptions"></a>Agregar derechos de coadministrador de Azure para suscripciones
-Ahora debe agregar el nuevo usuario como coadministrador de su suscripción para que el nuevo usuario pueda iniciar sesión en el Portal de administración. Para ello, en el panel inferior izquierdo, haga clic en **Configuración**.
+Ahora necesita tooadd Hola nuevo usuario como Coadministrador de la suscripción para que usuario nuevo de hello puedan iniciar sesión en toohello Portal de administración. toodo, en el panel de hello inferior izquierda, haga clic en **configuración**.
 
 ![](./media/virtual-machines-common-create-aad-work-id/thesettingswidget.png)
 
-En el área de configuración principal, haga clic en **ADMINISTRADORES** de la parte superior y solo debería ver su identidad de la cuenta Microsoft personal. En la parte inferior de la página, haga clic en **+ AGREGAR** para especificar un coadministrador. Aquí, escriba la dirección de correo electrónico del nuevo usuario que haya creado, incluido el dominio predeterminado. Como se muestra en la siguiente captura de pantalla, aparecerá una marca de verificación verde junto al usuario para el directorio predeterminado. Recuerde seleccionar todas las suscripciones que le gustaría que este usuario pudiera administrar.
+En el área de configuración principal de hello, haga clic en **administradores** en hello parte superior y debería ver sólo su identidad personal de la cuenta Microsoft. En la parte inferior de Hola de página de hello, haga clic en **+ agregar** toospecify un Coadministrador. En este caso, escriba la dirección de correo electrónico de Hola de nuevo usuario de Hola que había creado, incluidos su dominio predeterminado. Tal y como se muestra en la siguiente captura de pantalla de hello, una marca de verificación verde aparece el siguiente usuario toohello directorio predeterminado de Hola. Recuerde tooselect todas las suscripciones de Hola que quiere que esta tooadminister capaz de toobe de usuario.
 
 ![](./media/virtual-machines-common-create-aad-work-id/addingnewuserascoadmin.png)
 
-Cuando haya terminado, debería ahora ver dos usuarios, incluida la nueva identidad de coadministrador. Cierre sesión en el portal.
+Cuando haya terminado, debería ahora ver dos usuarios, incluida la nueva identidad de coadministrador. Cierre sesión en el portal de Hola.
 
 ![](./media/virtual-machines-common-create-aad-work-id/newuseraddedascoadministrator.png)
 
-## <a name="logging-in-and-changing-the-new-users-password"></a>Inicio de sesión y cambio de la contraseña del nuevo usuario
-Inicie sesión como el nuevo usuario que ha creado.
+## <a name="logging-in-and-changing-hello-new-users-password"></a>Inicio de sesión y cambiar la contraseña del usuario nuevo de Hola
+Inicie sesión como usuario nuevo de Hola que ha creado.
 
 ![](./media/virtual-machines-common-create-aad-work-id/signinginwithnewuser.png)
 
-Se le pedirá inmediatamente que cree una nueva contraseña.
+Inmediatamente será solicitada toocreate una nueva contraseña.
 
 ![](./media/virtual-machines-common-create-aad-work-id/mustupdateyourpassword.png)
 
-Al realizarse la operación correctamente, aparecerá algo similar a lo siguiente:
+Aparecerá con éxito similar Hola siguiente.
 
 ![](./media/virtual-machines-common-create-aad-work-id/successtourdialog.png)
 
 ## <a name="next-steps"></a>Pasos siguientes
-Ahora puede usar su nueva identidad de Azure Active Directory para usar [plantillas de grupo de recursos de Azure](../articles/xplat-cli-azure-resource-manager.md).
+Ahora puede usar su nuevo toouse de identidad de Azure Active Directory [plantillas de grupo de recursos de Azure](../articles/xplat-cli-azure-resource-manager.md).
 
     azure login
     info:    Executing command login
-    warn:    Please note that currently you can login only via Microsoft organizational account or service principal. For instructions on how to set them up, please read http://aka.ms/Dhf67j.
+    warn:    Please note that currently you can login only via Microsoft organizational account or service principal. For instructions on how tooset them up, please read http://aka.ms/Dhf67j.
     Username: ahmet@aztrainpassxxxxxoutlook.onmicrosoft.com
     Password: *********
     /info:    Added subscription Azure Pass

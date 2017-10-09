@@ -1,6 +1,6 @@
 ---
 title: Bibliotecas de conexiones de Azure Database for PostgreSQL | Microsoft Docs
-description: "En este artículo se describen varias bibliotecas y controladores que los desarrolladores pueden usar al codificar aplicaciones para conectarse a Azure Database for PostgreSQL y realizar ahí consultas."
+description: "Este artículo describen varias bibliotecas y controladores que los desarrolladores pueden utilizar al codificar aplicaciones tooconnect y consulta de base de datos de Azure para PostgreSQL."
 services: postgresql
 author: SaloniSonpal
 ms.author: salonis
@@ -9,17 +9,17 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 06/15/2017
-ms.openlocfilehash: 1f99ef7fefb1ff9d35f564a1f0ad77c8dd64659e
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 1f7234499d8abe37f8de9008e3158765b1fb0bde
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="connection-libraries-for-azure-database-for-postgresql"></a>Bibliotecas de conexiones de Azure Database for PostgreSQL
-En este tema se enumeran las bibliotecas y los controladores que pueden usar los desarrolladores para programar aplicaciones para conectarse a Azure Database for PostgreSQL y realizar ahí consultas.
+Este tema enumeran las bibliotecas y los controladores para su uso por los desarrolladores para programar aplicaciones tooconnect y consulta de base de datos de Azure para PostgreSQL.
 
 ## <a name="client-interfaces"></a>Interfaces de cliente
-La mayoría de bibliotecas de cliente de lenguajes para conectarse al servidor de PostgreSQL son proyectos externos y se distribuyen de manera independiente. Estas se admiten en plataformas Windows, Linux y Mac. Se enumeran algunos de los controladores cliente más conocidos:
+La mayoría lenguaje bibliotecas tooconnect tooPostgreSQL cliente-servidor son proyectos externos y se distribuyen de forma independiente. Estas se admiten en plataformas Windows, Linux y Mac. Se enumeran algunos de los controladores de cliente popular de hello:
 
 | **Lenguaje** | **Interfaz de cliente** | **Información adicional** | **Descargar** |
 |--------------|----------------------------------------------------------------|-------------------------------------|--------------------------------------------------------------------|
@@ -35,6 +35,6 @@ La mayoría de bibliotecas de cliente de lenguajes para conectarse al servidor d
 | C++ | [libpqxx](http://pqxx.org/) | Interfaz de C++ de nuevo estilo | [Descargar](http://pqxx.org/download/software/) |
 
 ## <a name="next-steps"></a>Pasos siguientes
-Lea estos tutoriales rápidos sobre cómo conectarse a Azure Database for PostgreSQL y realizar consultas ahí mediante el lenguaje de su elección:
+Leer estos tutoriales sobre cómo tooconnect y consulta Azure base de datos PostgreSQL mediante el lenguaje seleccionado:
 
 [Python](./connect-python.md) | [Node.JS](./connect-nodejs.md) | [.NET (C#)](./connect-csharp.md)

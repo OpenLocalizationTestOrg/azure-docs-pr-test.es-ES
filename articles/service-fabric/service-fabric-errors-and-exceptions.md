@@ -1,6 +1,6 @@
 ---
-title: Excepciones de FabricClient frecuentes | Microsoft Docs
-description: "Describe las excepciones y errores frecuentes que pueden producir las API FabricClient al realizar operaciones de administración de aplicaciones y clústeres."
+title: excepciones del FabricClient aaaCommon | Documentos de Microsoft
+description: "Describe las excepciones de common de Hola y errores que se pueden producir por hello FabricClient APIs mientras se realizan operaciones de administración de aplicación y clúster."
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -14,37 +14,37 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/01/2017
 ms.author: ryanwi
-ms.openlocfilehash: f8a4d7573f0d256b562056ba52939ff5e66de15c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 55bb556b25150524ebc28756eb1bd3e91dc37853
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="common-exceptions-and-errors-when-working-with-the-fabricclient-apis"></a>Excepciones y errores frecuentes cuando se trabaja con las API FabricClient
-Las API [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient#System_Fabric_FabricClient) permiten a los administradores de clústeres y aplicaciones realizar tareas administrativas en un clúster, servicio o aplicación de Service Fabric. Por ejemplo, la implementación, actualización o eliminación de aplicaciones, la comprobación del estado de un clúster o la prueba de un servicio. Los desarrolladores de aplicaciones y los administradores de clústeres pueden usar las API FabricClient para desarrollar herramientas para la administración de aplicaciones y clústeres de Service Fabric.
+# <a name="common-exceptions-and-errors-when-working-with-hello-fabricclient-apis"></a>Excepciones y errores cuando se trabaja con hello FabricClient APIs comunes
+Hola [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient#System_Fabric_FabricClient) API permiten clúster y aplicación de los administradores tooperform tareas administrativas en un clúster, servicio o aplicación de Service Fabric. Por ejemplo, implementación de aplicaciones, actualización y eliminación, comprobando el estado de hello un clúster o probar un servicio. Los desarrolladores de aplicaciones y los administradores de clústeres hello FabricClient API toodevelop herramientas sirven para administrar aplicaciones y clúster de Service Fabric Hola.
 
-Hay muchos tipos diferentes de operaciones que pueden realizarse mediante FabricClient.  Cada método puede producir excepciones para errores debido a una entrada incorrecta, errores en tiempo de ejecución o problemas de infraestructura transitorios.  Consulte la documentación de referencia de la API para buscar las excepciones que produce un método específico. Sin embargo, existen algunas excepciones que muchas API [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient#System_Fabric_FabricClient) diferentes pueden producir. En la tabla siguiente se muestran las excepciones que son frecuentes en las API FabricClient.
+Hay muchos tipos diferentes de operaciones que pueden realizarse mediante FabricClient.  Cada método puede producir excepciones para errores debidos tooincorrect entrada, errores en tiempo de ejecución o problemas de infraestructura transitorio.  Consulte toofind de documentación de referencia de hello API qué excepciones se producen por un método específico. Sin embargo, existen algunas excepciones que muchas API [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient#System_Fabric_FabricClient) diferentes pueden producir. Hello tabla siguiente enumeran las excepciones de Hola que son comunes a hello FabricClient APIs.
 
 | Excepción | Se produce cuando |
 | --- |:--- |
-| [System.Fabric.FabricObjectClosedException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricobjectclosedexception#System_Fabric_FabricObjectClosedException) |El objeto [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient#System_Fabric_FabricClient) está en un estado cerrado. Deseche el objeto [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient#System_Fabric_FabricClient) que está usando y cree instancias de un nuevo objeto [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient#System_Fabric_FabricClient). |
-| [System.TimeoutException](https://docs.microsoft.com/dotnet/core/api/system.timeoutexception#System_TimeoutException) |La operación ha agotado el tiempo de espera. [OperationTimedOut](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode#System_Fabric_FabricErrorCode) se devuelve cuando la operación tarda más que MaxOperationTimeout en completarse. |
-| [System.UnauthorizedAccessException](https://docs.microsoft.com/dotnet/core/api/system.unauthorizedaccessexception#System_UnauthorizedAccessException) |Se genera un error de comprobación de acceso de la operación. Se devuelve E_ACCESSDENIED. |
-| [System.Fabric.FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception#System_Fabric_FabricException) |Se generó un error en tiempo de ejecución al realizar la operación. Potencialmente, cualquier método FabricClient puede producir [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception#System_Fabric_FabricException); la propiedad [ErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception#System_Fabric_FabricException_ErrorCode) indica la causa exacta de la excepción. Los códigos de error se definen en la enumeración [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode#System_Fabric_FabricErrorCode) . |
-| [System.Fabric.FabricTransientException](https://docs.microsoft.com/dotnet/api/system.fabric.fabrictransientexception#System_Fabric_FabricTransientException) |Se genera un error en la operación debido a una condición de error transitorio de algún tipo. Por ejemplo, se puede producir un error en la operación porque no se puede obtener acceso temporalmente a un cuórum de réplicas. Las excepciones transitorias corresponden a las operaciones erróneas que se pueden reintentar. |
+| [System.Fabric.FabricObjectClosedException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricobjectclosedexception#System_Fabric_FabricObjectClosedException) |Hola [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient#System_Fabric_FabricClient) objeto se encuentra en un estado cerrado. Deseche hello [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient#System_Fabric_FabricClient) objeto usa y crear instancias de un nuevo [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient#System_Fabric_FabricClient) objeto. |
+| [System.TimeoutException](https://docs.microsoft.com/dotnet/core/api/system.timeoutexception#System_TimeoutException) |operación de Hello agotó el tiempo de espera. [OperationTimedOut](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode#System_Fabric_FabricErrorCode) se devuelve cuando la operación de hello tarda más de toocomplete MaxOperationTimeout. |
+| [System.UnauthorizedAccessException](https://docs.microsoft.com/dotnet/core/api/system.unauthorizedaccessexception#System_UnauthorizedAccessException) |Error de comprobación de acceso de Hello para la operación de Hola. Se devuelve E_ACCESSDENIED. |
+| [System.Fabric.FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception#System_Fabric_FabricException) |Se ha producido un error en tiempo de ejecución al realizar la operación de Hola. Cualquiera de los métodos de hello FabricClient puede producir potencialmente [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception#System_Fabric_FabricException), hello [ErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception#System_Fabric_FabricException_ErrorCode) propiedad indica la causa exacta Hola de excepción de Hola. Códigos de error se definen en hello [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode#System_Fabric_FabricErrorCode) enumeración. |
+| [System.Fabric.FabricTransientException](https://docs.microsoft.com/dotnet/api/system.fabric.fabrictransientexception#System_Fabric_FabricTransientException) |Error en la operación de Hello debido tooa condición de error transitorio de algún tipo. Por ejemplo, se puede producir un error en la operación porque no se puede obtener acceso temporalmente a un cuórum de réplicas. Las excepciones transitorias corresponden a las operaciones de toofailed que se pueden recuperar. |
 
 Algunos errores [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode#System_Fabric_FabricErrorCode) frecuentes que pueden devolverse en [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception#System_Fabric_FabricException):
 
 | Error | Condición |
 | --- |:--- |
-| CommunicationError |Un error de comunicación ha provocado que se produzca un error en la operación; vuelva a intentar la operación. |
-| InvalidCredentialType |El tipo de credencial no es válido. |
-| InvalidX509FindType |X509FindType no es válido. |
-| InvalidX509StoreLocation |La ubicación del almacén X509 no es válida. |
-| InvalidX509StoreName |El nombre del almacén X509 no es válido. |
-| InvalidX509Thumbprint |La cadena de huella digital de certificado X509 no es válida. |
-| InvalidProtectionLevel |El nivel de protección no es válido. |
-| InvalidX509Store |El almacén de certificados X509 no se puede abrir. |
-| InvalidSubjectName |El nombre de sujeto no es válido. |
-| InvalidAllowedCommonNameList |El formato de la cadena de lista de nombres frecuente no es válido. Debe ser una lista separada por comas. |
+| CommunicationError |Un error de comunicación causa Hola operación toofail, operación de reintento de Hola. |
+| InvalidCredentialType |tipo de credencial de Hello no es válido. |
+| InvalidX509FindType |Hola X509FindType no es válido. |
+| InvalidX509StoreLocation |ubicación del almacén de Hello X509 no es válido. |
+| InvalidX509StoreName |nombre de la tienda de Hello X509 no es válido. |
+| InvalidX509Thumbprint |cadena de huella digital de certificado de Hello X509 no es válido. |
+| InvalidProtectionLevel |nivel de protección de Hello no es válido. |
+| InvalidX509Store |no se puede abrir el almacén de certificados de Hello X509. |
+| InvalidSubjectName |nombre de sujeto de Hello no es válido. |
+| InvalidAllowedCommonNameList |Hola formato de cadena de lista de nombre común no es válido. Debe ser una lista separada por comas. |
 

@@ -1,6 +1,6 @@
-### <a name="to-view-local-network-gateways"></a>Para ver las puertas de enlace de la red local
+### <a name="tooview-local-network-gateways"></a>puertas de enlace de red local de tooview
 
-Para ver una lista de las puertas de enlace de red local, use el comando [az network local-gateway list](https://docs.microsoft.com/cli/azure/network/local-gateway#list).
+tooview una lista de puertas de enlace de la red local de hello, use hello [lista de puerta de enlace local de red az](https://docs.microsoft.com/cli/azure/network/local-gateway#list) comando.
 
 ```azurecli
 az network local-gateway list --resource-group TestRG1
@@ -10,16 +10,16 @@ az network local-gateway list --resource-group TestRG1
 
 [!INCLUDE [modify-gateway-IP](vpn-gateway-modify-lng-gateway-ip-cli-include.md)]
 
-### <a name="to-verify-the-shared-key-values"></a>Para comprobar los valores de la clave compartida
+### <a name="tooverify-hello-shared-key-values"></a>Hola tooverify comparten valores de clave
 
-Compruebe que el valor de la clave compartida es el mismo valor que utilizó para la configuración del dispositivo VPN. Si no es así, ejecute de nuevo la conexión con el valor del dispositivo, o actualice el dispositivo con el valor devuelto. Los valores deben coincidir. Para ver la clave compartida, use [az network vpn-connection-list](https://docs.microsoft.com/cli/azure/network/vpn-connection#list).
+Compruebe que el valor de clave de hello compartido es Hola mismo valor que utilizó para la configuración del dispositivo VPN. Si no es así, ejecute conexión Hola utilizando de nuevo valor de hello de dispositivo de Hola o actualizar dispositivo Hola con el valor de Hola de hello devuelto. Hola valores deben coincidir. Hola tooview compartido clave, use hello [lista de conexiones vpn de red az](https://docs.microsoft.com/cli/azure/network/vpn-connection#list).
 
 ```azurecli
 az network vpn-connection shared-key show --connection-name VNet1toSite2 --resource-group TestRG1
 ```
-### <a name="to-view-the-vpn-gateway-public-ip-address"></a>Para ver la dirección IP pública de la puerta de enlace de VPN
+### <a name="tooview-hello-vpn-gateway-public-ip-address"></a>puerta de enlace VPN de hello tooview dirección IP pública
 
-Para buscar la dirección IP pública de la puerta de enlace de red virtual, use el comando [az network public-ip list](https://docs.microsoft.com/cli/azure/network/public-ip#list). Para facilitar la lectura, la salida de este ejemplo tiene el formato preciso para mostrar la lista de direcciones IP públicas en formato de tabla.
+dirección IP toofind Hola pública de la puerta de enlace de red virtual, use hello [lista de ip pública de red az](https://docs.microsoft.com/cli/azure/network/public-ip#list) comando. Para facilitar la lectura, la salida de hello en este ejemplo es la lista de Hola de toodisplay con formato de direcciones IP públicas en formato de tabla.
 
 ```azurecli
 az network public-ip list --resource-group TestRG1 --output table

@@ -1,6 +1,6 @@
 ---
-title: Copia de seguridad de un servidor Exchange en Copia de seguridad de Azure con System Center 2012 R2 DPM | Microsoft Docs
-description: "Obtenga información acerca de cómo realizar una copia de seguridad de un servidor Exchange en Copia de seguridad de Azure con System Center 2012 R2 DPM"
+title: aaaBack seguridad un tooAzure de Exchange server copia de seguridad con System Center 2012 R2 DPM | Documentos de Microsoft
+description: "Obtenga información acerca de cómo tooback seguridad un tooAzure del servidor de Exchange de copia de seguridad con System Center 2012 R2 DPM"
 services: backup
 documentationcenter: 
 author: MaanasSaran
@@ -14,112 +14,112 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2016
 ms.author: masaran;jimpark;delhan;trinadhk;markgal
-ms.openlocfilehash: 2a0e416440e55cfde70cbd20d40c99fb29b4229c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: fa99296d095c180333474b6d419ebc5ec727547a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>Copia de seguridad de un servidor Exchange en Copia de seguridad de Azure con System Center 2012 R2 DPM
-En este artículo se describe cómo configurar un servidor de System Center 2012 R2 Data Protection Manager (DPM) para realizar una copia de seguridad de un servidor Microsoft Exchange en Azure Backup.  
+# <a name="back-up-an-exchange-server-tooazure-backup-with-system-center-2012-r2-dpm"></a>Hacer copia de seguridad de un tooAzure de Exchange server copia de seguridad con System Center 2012 R2 DPM
+Este artículo se describe cómo tooconfigure una tooback de servidor de System Center 2012 R2 Data Protection Manager (DPM) de un servidor de Microsoft Exchange demasiado Azure Backup.  
 
 ## <a name="updates"></a>Actualizaciones
-Para registrar correctamente el servidor DPM con Copia de seguridad de Azure, debe instalar el paquete acumulativo de actualizaciones más reciente de System Center 2012 R2 DPM y la versión más reciente de Azure Backup Agent. Obtenga el último paquete acumulativo de actualizaciones en el [Catálogo de Microsoft Update](http://catalog.update.microsoft.com/v7/site/Search.aspx?q=System%20Center%202012%20R2%20Data%20protection%20manager).
+toosuccessfully el servidor DPM de registro Hola con copia de seguridad de Azure, debe instalar Hola último paquete acumulativo de actualizaciones para System Center 2012 R2 DPM y Hola la versión más reciente de hello Azure Backup Agent. Obtener el paquete acumulativo de actualizaciones más reciente de Hola de hello [catálogo de Microsoft](http://catalog.update.microsoft.com/v7/site/Search.aspx?q=System%20Center%202012%20R2%20Data%20protection%20manager).
 
 > [!NOTE]
-> En los ejemplos de este artículo, se instala la versión 2.0.8719.0 de Azure Backup Agent y el paquete acumulativo de actualizaciones 6 en System Center 2012 R2 DPM.
+> Para obtener ejemplos de hello en este artículo, se instala la versión 2.0.8719.0 de hello Azure Backup Agent y actualización paquete acumulativo de actualizaciones 6 está instalado en System Center 2012 R2 DPM.
 >
 >
 
 ## <a name="prerequisites"></a>Requisitos previos
-Antes de continuar, asegúrese de que se cumplen todos los [requisitos previos](backup-azure-dpm-introduction.md#prerequisites) para usar Copia de seguridad de Microsoft Azure a fin de proteger las cargas de trabajo. Entre estos requisitos previos se incluyen los siguientes:
+Antes de continuar, asegúrese de que todos los Hola [requisitos previos](backup-azure-dpm-introduction.md#prerequisites) para el uso de copia de seguridad de Microsoft Azure se cumplieron las cargas de trabajo tooprotect. Estos requisitos previos Hola siguientes:
 
-* Se ha creado un almacén de Copia de seguridad en el sitio de Azure.
-* En el servidor DPM se han descargado las credenciales del almacén y del agente.
-* El agente está instalado en el servidor DPM.
-* Las credenciales de almacén se utilizaban para registrar el servidor DPM.
-* Si va a proteger Exchange 2016, actualice al paquete acumulativo de actualizaciones 9 de DPM 2012 R2 o posterior.
+* Se ha creado un almacén de copia de seguridad en hello sitio de Azure.
+* Credenciales del almacén y agente han sido toohello descargado el servidor DPM.
+* Hola agente está instalado en el servidor DPM Hola.
+* las credenciales de almacén de Hello eran servidor DPM usa tooregister Hola.
+* Si va a proteger Exchange 2016, actualice tooDPM 2012 R2 UR9 o posterior
 
 ## <a name="dpm-protection-agent"></a>Agente de protección DPM
-Para instalar al agente de protección DPM en el servidor Exchange, siga estos pasos:
+agente de protección de DPM tooinstall hello en el servidor de Exchange de hello, siga estos pasos:
 
-1. Asegúrese de que los firewalls estén configurados correctamente. Consulte [Configuración de excepciones de firewall para el agente](https://technet.microsoft.com/library/Hh758204.aspx).
-2. Instale el agente en el servidor Exchange; para ello, haga clic en **Administración > Agentes > Instalar** en la Consola de administrador DPM. Consulte [Instalación del agente de protección DPM](https://technet.microsoft.com/library/hh758186.aspx?f=255&MSPPError=-2147217396) para ver pasos detallados.
+1. Asegúrese de que los firewalls de hello estén configurados correctamente. Vea [configurar excepciones de firewall para el agente de hello](https://technet.microsoft.com/library/Hh758204.aspx).
+2. Instalar agente de hello en el servidor de Exchange de hello haciendo clic en **Administración > agentes > instalar** en la consola de administrador DPM. Vea [agente de protección DPM Install hello](https://technet.microsoft.com/library/hh758186.aspx?f=255&MSPPError=-2147217396) para obtener pasos detallados.
 
-## <a name="create-a-protection-group-for-the-exchange-server"></a>Creación de un grupo de protección para el servidor Exchange
-1. En la Consola de administrador DPM, haga clic en **Protección** y luego en **Nuevo** en la cinta de herramientas para abrir el asistente **Crear nuevo grupo de protección**.
-2. En la pantalla **Bienvenido** del asistente, haga clic en **Siguiente**.
-3. En la pantalla **Seleccionar tipo de grupo de protección**, seleccione **Servidores** y haga clic en **Siguiente**.
-4. Seleccione la base de datos del servidor Exchange que desea proteger y haga clic en **Siguiente**.
+## <a name="create-a-protection-group-for-hello-exchange-server"></a>Cree un grupo de protección para Exchange server de Hola
+1. Hola consola de administrador DPM, haga clic en **protección**y, a continuación, haga clic en **New** en Hola Hola de tooopen de cinta de opciones de herramienta **crear nuevo grupo de protección** asistente.
+2. En hello **bienvenida** pantalla del asistente, haga clic hello **siguiente**.
+3. En hello **Seleccionar tipo de grupo de protección** pantalla, seleccione **servidores** y haga clic en **siguiente**.
+4. Base de datos de servidor de Exchange de hello SELECT que desee tooprotect y haga clic en **siguiente**.
 
    > [!NOTE]
-   > Si va a proteger Exchange 2013, compruebe en [Requisitos previos de Exchange 2013](https://technet.microsoft.com/library/dn751029.aspx).
+   > Si va a proteger Exchange 2013, compruebe hello [requisitos previos de Exchange 2013](https://technet.microsoft.com/library/dn751029.aspx).
    >
    >
 
-    En el ejemplo siguiente, está seleccionada la base de datos de Exchange 2010.
+    En el siguiente ejemplo de Hola, base de datos de Exchange 2010 Hola está seleccionada.
 
     ![Seleccionar a miembros del grupo](./media/backup-azure-backup-exchange-server/select-group-members.png)
-5. Seleccione el método de protección de datos.
+5. Seleccionar método de protección de datos de Hola.
 
-    Asigne un nombre al grupo de protección y, a continuación, seleccione las dos opciones siguientes:
+    Nombre de grupo de protección de hello y, a continuación, seleccione ambos Hola siguientes opciones:
 
    * Deseo protección a corto plazo mediante disco.
    * Deseo protección en línea.
-6. Haga clic en **Next**.
-7. Seleccione la opción **Ejecutar Eseutil para comprobar la integridad de los datos** si desea comprobar la integridad de las bases de datos de Exchange Server.
+6. Haga clic en **Siguiente**.
+7. Seleccione hello **integridad de los datos toocheck ejecutar Eseutil** opción si desea que la integridad de hello toocheck de bases de datos de Exchange Server de Hola.
 
-    Después de seleccionar esta opción, se ejecutará una comprobación de coherencia de copia de seguridad en el servidor DPM para evitar el tráfico de E/S que se genera al ejecutar el comando **eseutil** en el servidor Exchange.
+    Después de seleccionar esta opción, la comprobación de coherencia de copia de seguridad se ejecutará en hello DPM tooavoid Hola E/S tráfico del servidor que se genera mediante la ejecución de hello **eseutil** comando en el servidor de Exchange de Hola.
 
    > [!NOTE]
-   > Para usar esta opción, debe copiar los archivos Ese.dll y Eseutil.exe en el directorio C:\Archivos de programa\Microsoft System Center 2012 R2\DPM\DPM\bin del servidor DPM. De lo contrario, se desencadena el siguiente error:   
+   > toouse esta opción, debe copiar Hola Ese.dll y Eseutil.exe directorio archivos de toohello C:\Program Files\Microsoft System Center 2012 R2\DPM\DPM\bin servidor DPM de Hola. En caso contrario, se desencadena Hola siguiente error:  
    > ![Error de eseutil](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >
 8. Haga clic en **Siguiente**.
-9. Seleccione la base de datos para **Copia de seguridad de copia**, y luego haga clic en **Siguiente**.
+9. Base de datos seleccione hello **copia de seguridad**y, a continuación, haga clic en **siguiente**.
 
    > [!NOTE]
    > Si no selecciona "Copia de seguridad completa" al menos para una copia de DAG de una base de datos, no se truncarán los registros.
    >
    >
-10. Configure los objetivos de **Copia de seguridad a corto plazo** y haga clic en **Siguiente**.
-11. Revise el espacio en disco disponible y haga clic en **Siguiente**.
-12. Seleccione la hora a la que el servidor DPM creará la replicación inicial y haga clic en **Siguiente**.
-13. Seleccione las opciones de comprobación de coherencia y haga clic en **Siguiente**.
-14. Elija la base de datos de la que desea realizar una copia de seguridad en Azure y haga clic en **Siguiente**. Por ejemplo:
+10. Configure los objetivos de Hola para **copia de seguridad a corto plazo**y, a continuación, haga clic en **siguiente**.
+11. Revise el espacio en disco disponible hello y, a continuación, haga clic en **siguiente**.
+12. Seleccione hora de hello en qué Hola DPM server creará la replicación inicial de hello y, a continuación, haga clic en **siguiente**.
+13. Seleccione las opciones de comprobación de coherencia de hello y, a continuación, haga clic en **siguiente**.
+14. Elija la base de datos de Hola que desee tooback seguridad tooAzure y, a continuación, haga clic en **siguiente**. Por ejemplo:
 
     ![Especificar datos de protección en línea](./media/backup-azure-backup-exchange-server/specify-online-protection-data.png)
-15. Defina la programación de **Copia de seguridad de Azure** y luego haga clic en **Siguiente**. Por ejemplo:
+15. Definir programación Hola para **copia de seguridad de Azure**y, a continuación, haga clic en **siguiente**. Por ejemplo:
 
     ![Especificar programación de copia de seguridad en línea](./media/backup-azure-backup-exchange-server/specify-online-backup-schedule.png)
 
     > [!NOTE]
-    > Los puntos de recuperación de notas en línea están basados en los puntos de recuperación completos rápidos. Por lo tanto, debe programar el punto de recuperación en línea después de la hora especificada para el punto de recuperación completo rápido.
+    > Los puntos de recuperación de notas en línea están basados en los puntos de recuperación completos rápidos. Por lo tanto, debe programar el punto de recuperación en línea hello después del horario de Hola que se especifica para hello express punto de recuperación completa.
     >
     >
-16. Configure la directiva de retención para **Copia de seguridad de Azure** y luego haga clic en **Siguiente**.
+16. Configurar la directiva de retención de Hola para **copia de seguridad de Azure**y, a continuación, haga clic en **siguiente**.
 17. Elija una opción de replicación en línea y haga clic en **Siguiente**.
 
-    Si tiene una base de datos grande, se puede tardar mucho tiempo en crear la copia de seguridad inicial a través de la red. Para evitar este problema, puede crear una copia de seguridad sin conexión.  
+    Si tiene una base de datos grande, puede tardar mucho tiempo para toobe de copia de seguridad inicial de hello creado a través de red de Hola. tooavoid este problema, puede crear una copia de seguridad sin conexión.  
 
     ![Especificar directiva de retención en línea](./media/backup-azure-backup-exchange-server/specify-online-retention-policy.png)
-18. Confirme la configuración y haga clic en **Crear grupo**.
+18. Confirmar configuración de hello y, a continuación, haga clic en **crear grupo**.
 19. Haga clic en **Cerrar**.
 
-## <a name="recover-the-exchange-database"></a>Recuperación de la base de datos de Exchange
-1. Para recuperar una base de datos de Exchange, haga clic en **Recuperación** en la Consola de administrador DPM.
-2. Busque la base de datos de Exchange que desea recuperar.
-3. Seleccione un punto de recuperación en línea en la lista desplegable *Hora de recuperación* .
-4. Haga clic en **Recuperar** para iniciar el **Asistente para recuperación**.
+## <a name="recover-hello-exchange-database"></a>Recuperar base de datos de Exchange de Hola
+1. Haga clic en una base de datos de Exchange, toorecover **recuperación** Hola consola de administrador DPM.
+2. Busque la base de datos de Exchange de Hola que desea toorecover.
+3. Seleccione un punto de recuperación en línea de hello *tiempo de recuperación* lista desplegable.
+4. Haga clic en **recuperar** toostart hello **Asistente para recuperación**.
 
 Para los puntos de recuperación en línea, existen cinco tipos de recuperación:
 
-* **Recuperar en ubicación original de servidor de Exchange :** los datos se recuperarán en el servidor Exchange original.
-* **Recuperar en otra base de datos en un servidor de Exchange:** los datos se recuperarán en otra base de datos de otro servidor Exchange.
-* **Recuperar en una base de datos de recuperación:** los datos se recuperarán en una base de datos de recuperación de Exchange (RDB).
-* **Copiar en una carpeta de red:** los datos se recuperarán en una carpeta de red.
-* **Copiar en cinta:** si tiene una biblioteca de cintas o una unidad de cinta independiente conectada y configurada en el servidor DPM, el punto de recuperación se copiará en una cinta libre.
+* **Recuperar la ubicación del servidor de Exchange de toooriginal:** datos Hola sea servidor de Exchange original toohello recuperada.
+* **Recuperar base de datos de tooanother en un servidor Exchange:** datos Hola será la base de datos de tooanother recuperada en otro servidor de Exchange.
+* **Recuperar la base de datos de recuperación de tooa:** datos Hola será tooan recuperada base de datos de recuperación de Exchange (RDB).
+* **Carpeta de red de copia tooa:** datos Hola será la carpeta de red de tooa recuperada.
+* **Copie tootape:** si dispone de una biblioteca de cintas o una unidad de cinta independiente será Hola adjunta y se ha configurado en servidor DPM, el punto de recuperación de hello copiados tooa de cintas libres.
 
     ![Elegir replicación en línea](./media/backup-azure-backup-exchange-server/choose-online-replication.png)
 

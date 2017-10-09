@@ -1,6 +1,6 @@
 ---
-title: Movimiento de datos de una tabla web mediante Azure Data Factory | Microsoft Docs
-description: "Obtenga información sobre cómo mover datos de una tabla de una página web mediante Azure Data Factory."
+title: aaaMove datos de la tabla de Web mediante Data Factory de Azure | Documentos de Microsoft
+description: "Obtenga información acerca de cómo usar Data Factory de Azure de páginas de datos de toomove de una tabla en un servidor Web."
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -14,43 +14,43 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: jingwang
-ms.openlocfilehash: 9e006bc7289fa0239f1650ac6ad43dd159e3c7e0
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: e52216305583ebbe71ed896522f361bb22f01278
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>Movimiento de datos de un origen de tabla web mediante Factoría de datos de Azure
-En este artículo, se describe el uso de la actividad de copia en Azure Data Factory para mover datos de una tabla de una página web a un almacén de datos receptor compatible. Este artículo se basa en el artículo sobre las [actividades de movimiento de datos](data-factory-data-movement-activities.md), que presenta una introducción general del movimiento de datos con la actividad de copia la lista de almacenes de datos compatibles como orígenes/receptores.
+En este artículo se describe cómo toouse Hola actividad de copia de datos de toomove Data Factory de Azure de una tabla en una página Web tooa admite el almacén de datos del receptor. En este artículo se basa en hello [las actividades de movimiento de datos](data-factory-data-movement-activities.md) artículo que presenta una visión general de movimiento de datos con la lista de hello y actividad de copia de almacenes de datos que se admiten como orígenes y receptores.
 
-Factoría de datos solo admite actualmente el movimiento de datos desde una tabla web a otros almacenes de datos, pero no de otros almacenes de datos a un destino de tabla web.
+Factoría de datos admite actualmente solo almacena la migración de datos de un tooother de datos de la tabla de Web, pero no mover los datos de otros datos almacena el destino de tabla de tooa Web.
 
 > [!IMPORTANT]
-> Actualmente, este conector web solo permite extraer contenido de tablas de una página HTML. Para recuperar datos de un punto de conexión HTTP/s, utilice el [conector HTTP](data-factory-http-connector.md) en su lugar.
+> Actualmente, este conector web solo permite extraer contenido de tablas de una página HTML. tooretrieve de datos desde un punto de conexión HTTP/s, utilizar [conector HTTP](data-factory-http-connector.md) en su lugar.
 
 ## <a name="getting-started"></a>Introducción
 Puede crear una canalización con una actividad de copia que mueva los datos desde un almacén de datos Cassandra local mediante el uso de diferentes herramientas o API. 
 
-- La manera más fácil de crear una canalización es usar el **Asistente para copia**. Consulte [Tutorial: crear una canalización con la actividad de copia mediante el Asistente para copia de Data Factory](data-factory-copy-data-wizard-tutorial.md) para ver un tutorial rápido sobre la creación de una canalización mediante el Asistente para copiar datos. 
-- También puede usar las herramientas siguientes para crear una canalización: **Azure Portal**, **Visual Studio**, **Azure PowerShell**, **plantilla de Azure Resource Manager**, **API de .NET** y **API de REST**. Consulte el [tutorial de actividad de copia](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) para obtener instrucciones paso a paso sobre cómo crear una canalización con una actividad de copia. 
+- toocreate de manera más fácil de Hello una canalización es hello de toouse **Asistente para copiar**. Vea [Tutorial: crear una canalización mediante el Asistente para copiar](data-factory-copy-data-wizard-tutorial.md) para ver un tutorial sobre cómo crear una canalización mediante el Asistente para datos de copia de hello rápido. 
+- También puede usar Hola después herramientas toocreate una canalización: **portal de Azure**, **Visual Studio**, **Azure PowerShell**, **plantilla del Administrador de recursos de Azure** , **API de .NET**, y **API de REST**. Vea [tutorial de la actividad de copia](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) para obtener instrucciones paso a paso toocreate una canalización con una actividad de copia. 
 
-Tanto si usa las herramientas como las API, realice los pasos siguientes para crear una canalización que mueva datos de un almacén de datos de origen a un almacén de datos receptor:
+Si usa herramientas de Hola o las API, realizar Hola siguiendo los pasos toocreate una canalización que mueve el almacén de datos del receptor de tooa del almacén de datos desde un origen de datos:
 
-1. Cree **servicios vinculados** para vincular almacenes de datos de entrada y salida a la factoría de datos.
-2. Cree **conjuntos de datos** con el fin de representar los datos de entrada y salida para la operación de copia. 
+1. Crear **servicios vinculados** factoría de datos de tooyour de almacenes de datos de entrada y salida de toolink.
+2. Crear **conjuntos de datos** toorepresent de entrada y salida la operación de copia de datos de Hola. 
 3. Cree una **canalización** con una actividad de copia que tome como entrada un conjunto de datos y un conjunto de datos como salida. 
 
-Cuando se usa el Asistente, se crean automáticamente definiciones de JSON para estas entidades de Data Factory (servicios vinculados, conjuntos de datos y la canalización). Al usar herramientas o API (excepto la API de .NET), se definen estas entidades de Data Factory con el formato JSON.  Para ver un ejemplo con definiciones de JSON para entidades de Data Factory que se emplean para copiar datos de una tabla web, consulte la sección [Ejemplo con definiciones de JSON: copia de datos de una tabla web a un blob de Azure](#json-example-copy-data-from-web-table-to-azure-blob) de este artículo. 
+Cuando se utiliza el Asistente de hello, las definiciones de JSON para estas entidades de la factoría de datos (servicios vinculados, conjuntos de datos y canalización Hola) se crean automáticamente para usted. Al usar herramientas y API (excepto la API. NET), se definen estas entidades de la factoría de datos con formato JSON de Hola.  Para obtener un ejemplo con definiciones de JSON para entidades de la factoría de datos que son toocopy usa datos de una tabla de web, consulte [ejemplo de JSON: copiar los datos de Web tabla tooAzure Blob](#json-example-copy-data-from-web-table-to-azure-blob) sección de este artículo. 
 
-En las secciones siguientes, se proporcionan detalles sobre las propiedades JSON que se usan para definir entidades de Data Factory específicas de una tabla web:
+Hola las secciones siguientes proporciona detalles acerca de propiedades JSON de tabla de toodefine usado factoría de datos entidades específicas tooa Web:
 
 ## <a name="linked-service-properties"></a>Propiedades del servicio vinculado
-En la tabla siguiente se proporciona la descripción de los elementos JSON específicos del servicio vinculado de Web.
+Hello en la tabla siguiente proporciona la descripción del servicio JSON elementos específicos tooWeb vinculado.
 
 | Propiedad | Descripción | Obligatorio |
 | --- | --- | --- |
-| type |La propiedad type debe establecerse en: **Web** |Sí |
-| URL |Dirección URL para el origen de Web |Sí |
+| type |propiedad de tipo Hello debe establecerse en: **Web** |Sí |
+| URL |Origen de dirección URL toohello Web |Sí |
 | authenticationType |Anonymous. |Sí |
 
 ### <a name="using-anonymous-authentication"></a>Uso de autenticación anónima
@@ -71,15 +71,15 @@ En la tabla siguiente se proporciona la descripción de los elementos JSON espec
 ```
 
 ## <a name="dataset-properties"></a>Propiedades del conjunto de datos
-Para una lista completa de las secciones y propiedades disponibles para definir conjuntos de datos, vea el artículo [Creación de conjuntos de datos](data-factory-create-datasets.md). Las secciones como structure, availability y policy del código JSON del conjunto de datos son similares para todos los tipos de conjunto de datos (SQL Azure, blob de Azure, tabla de Azure, etc.).
+Para obtener una lista completa de secciones y propiedades disponibles para definir conjuntos de datos, vea hello [crear conjuntos de datos](data-factory-create-datasets.md) artículo. Las secciones como structure, availability y policy del código JSON del conjunto de datos son similares para todos los tipos de conjunto de datos (SQL Azure, blob de Azure, tabla de Azure, etc.).
 
-La sección **typeProperties** es diferente en cada tipo de conjunto de datos y proporciona información acerca de la ubicación de los datos en el almacén de datos. La sección typeProperties del conjunto de datos de tipo **WebTable** tiene las propiedades siguientes:
+Hola **typeProperties** sección es diferente para cada tipo de conjunto de datos y proporciona información acerca de la ubicación de Hola de hello datos Hola almacén de datos. sección typeProperties Hello para el conjunto de datos de tipo **WebTable** tiene Hola propiedades siguientes
 
 | Propiedad | Descripción | Obligatorio |
 |:--- |:--- |:--- |
-| type |Tipo del conjunto de datos. Debe establecerse en **WebTable** |Sí |
-| path |Dirección URL relativa al recurso que contiene la tabla. |No. Cuando no se especifica la ruta de acceso, se solo se usa la dirección URL especificada en la definición de servicio vinculado. |
-| index |Índice de la tabla en el recurso. Consulte la sección [Obtención de índice de una tabla en una página HTML](#get-index-of-a-table-in-an-html-page) para saber los pasos necesarios para obtener el índice de una tabla en una página HTML. |Sí |
+| type |Tipo de conjunto de datos de Hola. debe establecerse demasiado**WebTable** |Sí |
+| path |Un recurso de toohello de dirección URL relativo al que contiene la tabla de Hola. |No. Cuando no se especifica la ruta de acceso, se usa solo dirección URL de hello especificada en definición de servicio vinculado de Hola. |
+| index |índice de Hola de tabla de hello en recursos de Hola. Vea [Get índice de una tabla en una página HTML](#get-index-of-a-table-in-an-html-page) sección índice toogetting de pasos de una tabla en una página HTML. |Sí |
 
 **Ejemplo:**
 
@@ -103,15 +103,15 @@ La sección **typeProperties** es diferente en cada tipo de conjunto de datos y 
 ```
 
 ## <a name="copy-activity-properties"></a>Propiedades de la actividad de copia
-Para ver una lista completa de las secciones y propiedades disponibles para definir actividades, consulte el artículo [Creación de canalizaciones](data-factory-create-pipelines.md). Las propiedades (como nombre, descripción, tablas de entrada y salida, y directivas) están disponibles para todos los tipos de actividades.
+Para obtener una lista completa de secciones y propiedades disponibles para la definición de actividades, vea hello [crear canalizaciones](data-factory-create-pipelines.md) artículo. Las propiedades (como nombre, descripción, tablas de entrada y salida, y directivas) están disponibles para todos los tipos de actividades.
 
-Por otra parte, las propiedades disponibles en la sección typeProperties de la actividad varían con cada tipo de actividad. Para la actividad de copia, varían en función de los tipos de orígenes y receptores.
+Mientras que las propiedades disponibles en la sección de typeProperties de Hola de actividad hello varían con cada tipo de actividad. Para la actividad de copia, varían en función de los tipos de Hola de orígenes y receptores.
 
-En este momento, cuando el origen de la actividad de copia es de tipo **WebSource**, no se admite ninguna propiedad adicional.
+Actualmente, al origen de hello en la actividad de copia es de tipo **WebSource**, no se admiten propiedades adicionales.
 
 
-## <a name="json-example-copy-data-from-web-table-to-azure-blob"></a>Ejemplo con definiciones de JSON: copia de datos de una tabla web a un blob de Azure
-El ejemplo siguiente muestra:
+## <a name="json-example-copy-data-from-web-table-tooazure-blob"></a>Ejemplo de JSON: copiar los datos de Web tabla tooAzure Blob
+Hola el siguiente ejemplo se muestra:
 
 1. Un servicio vinculado de tipo [Web](#linked-service-properties).
 2. Un servicio vinculado de tipo [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)
@@ -119,11 +119,11 @@ El ejemplo siguiente muestra:
 4. Un [conjunto de datos](data-factory-create-datasets.md) de salida de tipo [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
 5. Una [canalización](data-factory-create-pipelines.md) con la actividad de copia que usa [WebSource](#copy-activity-properties) y [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-El ejemplo copia los datos de una tabla web a un blob de Azure cada hora. Las propiedades JSON usadas en estos ejemplos se describen en las secciones que aparecen después de los ejemplos.
+ejemplo de Hola copia datos de un tooan de tabla Web blobs de Azure cada hora. propiedades JSON de Hello utilizadas en estos ejemplos se describen en los apartados siguientes a los ejemplos de hello.
 
-En el ejemplo siguiente se muestra cómo copiar datos de una tabla web a un blob de Azure. Sin embargo, los datos se pueden copiar directamente en cualquiera de los receptores indicados en el artículo [Actividades de movimiento de datos](data-factory-data-movement-activities.md) mediante la actividad de copia de Data Factory de Azure.
+Hola siguiente ejemplo muestra cómo toocopy datos desde un tooan de tabla Web Azure blob. Sin embargo, los datos pueden copiarse directamente Hola indicado en los receptores de tooany de hello [las actividades de movimiento de datos](data-factory-data-movement-activities.md) artículo usando Hola actividad de copia de Data Factory de Azure.
 
-**Servicio vinculado de tipo Web** : este ejemplo utiliza el servicio vinculado de tipo Web con la autenticación anónima. Consulte la sección [Propiedades del servicio vinculado de Web](#linked-service-properties) para conocer los diferentes tipos de autenticación que se pueden usar.
+**Servicio vinculado de Web** en este ejemplo usa hello Web vinculado servicio con la autenticación anónima. Consulte la sección [Propiedades del servicio vinculado de Web](#linked-service-properties) para conocer los diferentes tipos de autenticación que se pueden usar.
 
 ```json
 {
@@ -154,10 +154,10 @@ En el ejemplo siguiente se muestra cómo copiar datos de una tabla web a un blob
 }
 ```
 
-**Conjunto de datos de entrada WebTable**: si se establece **external** en **true**, se informa al servicio Data Factory que la tabla es externa a la factoría de datos y no se produce por ninguna actividad de la misma.
+**Conjunto de datos de entrada de WebTable** configuración **externo** demasiado**true** informa a servicio de factoría de datos de Hola ese conjunto de datos de hello es factoría de datos de toohello externo y no se generará una actividad en hello factoría de datos.
 
 > [!NOTE]
-> Consulte la sección [Obtención de índice de una tabla en una página HTML](#get-index-of-a-table-in-an-html-page) para saber los pasos necesarios para obtener el índice de una tabla en una página HTML.  
+> Vea [Get índice de una tabla en una página HTML](#get-index-of-a-table-in-an-html-page) sección índice toogetting de pasos de una tabla en una página HTML.  
 >
 >
 
@@ -183,7 +183,7 @@ En el ejemplo siguiente se muestra cómo copiar datos de una tabla web a un blob
 
 **Conjunto de datos de salida de blob de Azure**
 
-Los datos se escriben en un nuevo blob cada hora (frecuencia: hora, intervalo: 1).
+Los datos se escriben tooa nuevo blob cada hora (frecuencia: hora, intervalo: 1).
 
 ```json
 {
@@ -209,9 +209,9 @@ Los datos se escriben en un nuevo blob cada hora (frecuencia: hora, intervalo: 1
 
 **Canalización con actividad de copia**
 
-La canalización contiene una actividad de copia que está configurada para usar los conjuntos de datos de entrada y de salida y está programada para ejecutarse cada hora. En la definición del JSON de la canalización, el tipo **source** se establece en **WebSource** y el tipo **sink**, en **BlobSink**.
+Hello canalización contiene una actividad de copia que está configurado toouse Hola conjuntos de datos de entrada y salida y está programada toorun cada hora. En la definición de JSON de canalización de hello, Hola **origen** tipo está establecido demasiado**WebSource** y **receptor** tipo está establecido demasiado**BlobSink**.
 
-Consulte [Propiedades de tipo WebSource](#copy-activity-type-properties) para obtener la lista de propiedades que admite WebSource.
+Vea [propiedades de tipo WebSource](#copy-activity-type-properties) para lista de Hola de propiedades admitidas por hello WebSource.
 
 ```json
 {  
@@ -223,7 +223,7 @@ Consulte [Propiedades de tipo WebSource](#copy-activity-type-properties) para ob
     "activities":[  
       {
         "name": "WebTableToAzureBlob",
-        "description": "Copy from a Web table to an Azure blob",
+        "description": "Copy from a Web table tooan Azure blob",
         "type": "Copy",
         "inputs": [
           {
@@ -260,32 +260,32 @@ Consulte [Propiedades de tipo WebSource](#copy-activity-type-properties) para ob
 ```
 
 ## <a name="get-index-of-a-table-in-an-html-page"></a>Obtención de índice de una tabla en una página HTML
-1. Inicie **Excel 2016** y cambie a la pestaña **Datos**.  
-2. Haga clic en **Nueva consulta** en la barra de herramientas, elija **De otros orígenes** y haga clic en **Desde Web**.
+1. Iniciar **Excel 2016** y cambiar toohello **datos** ficha.  
+2. Haga clic en **nueva consulta** en la barra de herramientas de hello, seleccione demasiado**desde otros orígenes** y haga clic en **de Web**.
 
     ![Menú de Power Query](./media/data-factory-web-table-connector/PowerQuery-Menu.png)
-3. En el cuadro de diálogo **Desde Web**, escriba la **dirección URL** que se use en el JSON del servicio vinculado (por ejemplo: https://en.wikipedia.org/wiki/) junto con la ruta de acceso que se especifique para el conjunto de datos (por ejemplo: AFI%27s_100_Years...100_Movies) y haga clic en **Aceptar**.
+3. Hola **desde Web** diálogo cuadro, escriba **URL** que usaría en servicio JSON vinculado (por ejemplo: https://en.wikipedia.org/wiki/) junto con la ruta de acceso que se debe especificar para el conjunto de datos de hello (por ejemplo: AFI % 27s_100_Years... 100_Movies) y haga clic en **Aceptar**.
 
     ![Cuadro de diálogo Desde Web](./media/data-factory-web-table-connector/FromWeb-DialogBox.png)
 
     Dirección URL usada en este ejemplo: https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
-4. Si ve el cuadro de diálogo **Acceso a contenido web**, seleccione la **dirección URL** correcta, la **autenticación** y haga clic en **Conectar**.
+4. Si ve **contenido Web Access** cuadro de diálogo, derecha seleccione hello **URL**, **autenticación**y haga clic en **conectar**.
 
    ![Cuadro de diálogo Acceso a contenido web](./media/data-factory-web-table-connector/AccessWebContentDialog.png)
-5. Haga clic en un elemento de **tabla** en la vista de árbol para ver el contenido de la tabla y después en el botón **Editar** ubicado en la parte inferior.  
+5. Haga clic en un **tabla** elemento de contenido de toosee de Hola árbol de la vista de tabla de hello y, a continuación, haga clic en **editar** situado en la parte inferior de Hola.  
 
    ![Cuadro de diálogo Navegador](./media/data-factory-web-table-connector/Navigator-DialogBox.png)
-6. En la ventana **Editor de consultas**, haga clic en el botón **Editor avanzado** de la barra de herramientas.
+6. Hola **Editor de consultas** ventana, haga clic en **Editor avanzado** botón de barra de herramientas de Hola.
 
     ![Botón Editor avanzado](./media/data-factory-web-table-connector/QueryEditor-AdvancedEditorButton.png)
-7. En el cuadro de diálogo Editor avanzado, el número que aparece junto a "Origen" es el índice.
+7. En el cuadro de diálogo del Editor avanzado de Hola Hola número junto demasiado "Origen" es el índice de Hola.
 
     ![Editor avanzado - Índice](./media/data-factory-web-table-connector/AdvancedEditor-Index.png)
 
-Si usa Excel 2013, use [Microsoft Power Query para Excel](https://www.microsoft.com/download/details.aspx?id=39379) para obtener el índice. Consulte el artículo [Conectarse a una página web](https://support.office.com/article/Connect-to-a-web-page-Power-Query-b2725d67-c9e8-43e6-a590-c0a175bd64d8) para más información. Los pasos son similares si usa [Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/).
+Si usa Excel 2013, use [Microsoft Power Query para Excel](https://www.microsoft.com/download/details.aspx?id=39379) índice de hello tooget. Vea [página web de Connect tooa](https://support.office.com/article/Connect-to-a-web-page-Power-Query-b2725d67-c9e8-43e6-a590-c0a175bd64d8) artículo para obtener más información. Hola pasos son similares si utilizas [Microsoft Power BI para escritorio](https://powerbi.microsoft.com/desktop/).
 
 > [!NOTE]
-> Para asignar columnas del conjunto de datos de origen a las del conjunto de datos receptor, consulte el artículo [Asignación de columnas de conjuntos de datos en Azure Data Factory](data-factory-map-columns.md).
+> columnas de toomap de toocolumns de conjunto de datos de origen del conjunto de datos del receptor, consulte [asignar columnas de conjunto de datos de Data Factory de Azure](data-factory-map-columns.md).
 
 ## <a name="performance-and-tuning"></a>Rendimiento y optimización
-Consulte [Guía de optimización y rendimiento de la actividad de copia](data-factory-copy-activity-performance.md) para más información sobre los factores clave que afectan al rendimiento del movimiento de datos (actividad de copia) en Azure Data Factory y las diversas formas de optimizarlo.
+Vea [guía para la optimización y rendimiento de la actividad de copia](data-factory-copy-activity-performance.md) toolearn acerca de la clave de factores que afectan al rendimiento de movimiento de datos (actividad de copia) en la factoría de datos de Azure y toooptimize de diversas maneras.

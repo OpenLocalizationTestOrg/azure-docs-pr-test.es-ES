@@ -1,6 +1,6 @@
 ---
-title: Uso del conector de Slack en Azure Logic Apps | Microsoft Docs
-description: "Conéctese a Slack en las aplicaciones lógicas"
+title: "Hola aaaUse conector demora en las aplicaciones lógicas de Azure | Documentos de Microsoft"
+description: "Conectar tooSlack en las aplicaciones lógicas"
 services: logic-apps
 documentationcenter: 
 author: MandiOhlinger
@@ -15,48 +15,48 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/18/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: fc5fc128efe01bd0727e3ff30d8938918e89ac3a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6599d7b69d2147425c9fab978c5d0f93e5605f19
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-started-with-the-slack-connector"></a>Introducción al conector de Slack
+# <a name="get-started-with-hello-slack-connector"></a>Empezar a trabajar con conector demora Hola
 Slack es una herramienta de comunicación de equipo, que reúne todas las comunicaciones del equipo en un solo lugar, inmediatamente localizables y disponibles dondequiera que vaya. 
 
 Empiece por crear una aplicación lógica ahora. Para ello, consulte [Creación de una aplicación lógica](../logic-apps/logic-apps-create-a-logic-app.md).
 
-## <a name="create-a-connection-to-slack"></a>Creación de una conexión a Slack
-Para usar el conector de Slack, cree primero una **conexión** y, después, especifique los detalles de las siguientes propiedades: 
+## <a name="create-a-connection-tooslack"></a>Crear una conexión tooSlack
+Conector de demora de hello toouse, cree primero un **conexión** especifique los detalles de Hola de estas propiedades: 
 
 | Propiedad | Obligatorio | Descripción |
 | --- | --- | --- |
 | Se necesita el cifrado de tokens |Sí |Proporcionar credenciales de Slack |
 
-Siga estos pasos para iniciar sesión en Slack y completar la configuración de la **conexión** de Slack en la aplicación lógica:
+Siga estos pasos toosign en Slack y la configuración de hello completa de hello demora **conexión** en la aplicación lógica:
 
 1. Seleccione **Periodicidad**
 2. Seleccione un valor para **Frequency** (Frecuencia) y especifique el correspondiente a **Interval** (Intervalo)
 3. Seleccione **Add an action**(Agregar una acción)  
    ![Configurar Slack][1]  
-4. Escriba Slack en el cuadro de búsqueda y espere a que la búsqueda devuelva todas las entradas que incluyan Slack en el nombre.
+4. Escriba demora en el cuadro de búsqueda de Hola y espere Hola búsqueda tooreturn todas las entradas con demora en nombre de Hola
 5. Seleccione **Slack - exponer mensaje**
-6. Seleccione **Sign in to Slack** (Iniciar sesión en Slack):  
+6. Seleccione **iniciar sesión en tooSlack**:  
    ![Configurar Slack][2]
-7. Especifique sus credenciales de Slack para iniciar sesión y autorizar la aplicación    
+7. Proporcione su toosign credenciales demora en la aplicación de hello tooauthorize    
    ![Configurar Slack][3]  
-8. Se le redirigirá a la página de inicio de sesión de su organización. **Autorice** la interacción de Slack con la aplicación lógica:      
+8. Podrá registro de la organización tooyour redirigida en la página. **Autorizar** toointeract demora con la aplicación lógica:      
    ![Configurar Slack][5] 
-9. Una vez completada la autorización se le redirigirá a la aplicación lógica para terminar mediante la configuración de la sección **Slack - obtener todos los mensajes** . Agregue otros desencadenadores y acciones que necesite.  
+9. Una vez completa la autorización de hello estará tooyour redirigida lógica aplicación toocomplete, mediante la configuración de hello **una demora: obtener todos los mensajes** sección. Agregue otros desencadenadores y acciones que necesite.  
    ![Configurar Slack][6]
-10. Guarde el trabajo seleccionando **Guardar** en la barra de menús superior.
+10. Guarde su trabajo mediante la selección **guardar** en la barra de menús de hello anterior.
 
 ## <a name="connector-specific-details"></a>Detalles específicos del conector
 
-Vea los desencadenadores y las acciones definidos en Swagger y vea también todos los límites en los [detalles del conector](/connectors/slack/).
+Ver los desencadenadores y las acciones definidas en swagger hello y también los límites de hello [detalles del conector](/connectors/slack/).
 
 ## <a name="more-connectors"></a>Más conectores
-Volver a la [lista de API](apis-list.md).
+Volver atrás toohello [lista de las API](apis-list.md).
 
 [1]: ./media/connectors-create-api-slack/connectionconfig1.png
 [2]: ./media/connectors-create-api-slack/connectionconfig2.png 

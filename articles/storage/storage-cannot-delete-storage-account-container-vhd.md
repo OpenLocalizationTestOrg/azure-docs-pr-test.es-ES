@@ -1,5 +1,5 @@
 ---
-title: "Solución de problemas de eliminación de cuentas, contenedores o discos duros virtuales de Azure Storage en una implementación clásica | Microsoft Docs"
+title: "eliminar cuentas de almacenamiento de Azure, los contenedores o los discos duros virtuales en una implementación clásica de aaaTroubleshoot | Documentos de Microsoft"
 description: "Solución de problemas de eliminación de cuentas de almacenamiento de Azure, contenedores o discos duros virtuales"
 services: storage
 documentationcenter: 
@@ -15,114 +15,114 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: genli
-ms.openlocfilehash: 9f3e824414ad6c1a0aba98a3d549ee63ddc7272f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6bbfa032e1968718c623227bb426d553e2951075
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshoot-deleting-azure-storage-accounts-containers-or-vhds-in-a-classic-deployment"></a>Solución de problemas de eliminación de cuentas de almacenamiento de Azure, contenedores o discos duros virtuales
 [!INCLUDE [storage-selector-cannot-delete-storage-account-container-vhd](../../includes/storage-selector-cannot-delete-storage-account-container-vhd.md)]
 
-Es posible que al intentar eliminar la cuenta de almacenamiento de Azure, un contenedor o un disco duro virtual en [Azure Portal](https://portal.azure.com/) o el [Portal de Azure clásico](https://manage.windowsazure.com/) reciba errores. Los problemas pueden deberse a las siguientes circunstancias:
+Puede recibir errores al intentar cuenta de almacenamiento de Azure de hello toodelete, contenedor o VHD en hello [portal de Azure](https://portal.azure.com/) o hello [portal de Azure clásico](https://manage.windowsazure.com/). problemas de Hello pueden deberse a Hola siguientes circunstancias:
 
-* Al eliminar una VM, el disco y el disco duro virtual no se eliminan automáticamente. Este podría ser el motivo del error en la eliminación de la cuenta de almacenamiento. No eliminamos el disco; por tanto, puede usarlo para montar otra máquina virtual.
-* Sigue habiendo una concesión para un disco o el blob asociado a él.
+* Cuando se elimina una máquina virtual, disco de Hola y de disco duro virtual no se eliminan automáticamente. Que puede ser motivo Hola error en eliminación de la cuenta de almacenamiento. No eliminamos disco Hola para que pueda utilizar Hola disco toomount otra máquina virtual.
+* Sigue siendo una concesión en un blob de disco o hello que esté asociada con el disco de Hola.
 * Sigue siendo una imagen de máquina virtual que está usando una cuenta de almacenamiento, un contenedor o un blob.
 
-Si su problema con Azure no se trata en este artículo, visite los foros de Azure en [MSDN y Stack Overflow](https://azure.microsoft.com/support/forums/). Puede publicar su problema en ellos o en @AzureSupport en Twitter. También puede presentar una solicitud de soporte técnico de Azure; para ello seleccione **Obtener soporte técnico** en el sitio de [soporte técnico de Azure](https://azure.microsoft.com/support/options/) .
+Si el problema de Azure no se trata en este artículo, visite Hola foros de Azure en [MSDN y Hola desbordamiento de la pila](https://azure.microsoft.com/support/forums/). Puede publicar su problema en estos foros o too@AzureSupport en Twitter. Además, puede registrar una solicitud de soporte técnico de Azure seleccionando **obtener asistencia** en hello [soporte técnico de Azure](https://azure.microsoft.com/support/options/) sitio.
 
 ## <a name="symptoms"></a>Síntomas
-La sección siguiente muestra los errores comunes que puede recibir al intentar eliminar las cuentas de almacenamiento de Azure, los contenedores o los discos duros virtuales.
+Hola siguiente sección enumera los errores comunes que puede producirse cuando intenta las cuentas de almacenamiento de Azure de hello toodelete, contenedores o discos duros virtuales.
 
-### <a name="scenario-1-unable-to-delete-a-storage-account"></a>Escenario 1: No se puede eliminar una cuenta de almacenamiento
-Cuando se desplaza a la cuenta clásica de almacenamiento en [Azure Portal](https://portal.azure.com/) y selecciona **Eliminar**, puede que vea una lista de objetos que impiden la eliminación de la cuenta de almacenamiento:
+### <a name="scenario-1-unable-toodelete-a-storage-account"></a>Escenario 1: No se puede toodelete una cuenta de almacenamiento
+Cuando se desplaza toohello cuenta de almacenamiento clásicas en hello [portal de Azure](https://portal.azure.com/) y seleccione **eliminar**, puede aparecer con una lista de objetos que impiden la eliminación de cuenta de almacenamiento de hello:
 
-  ![Imagen de error al eliminar la cuenta de Almacenamiento](./media/storage-cannot-delete-storage-account-container-vhd/newerror.png)
+  ![Imagen de error al eliminar la cuenta de almacenamiento de Hola](./media/storage-cannot-delete-storage-account-container-vhd/newerror.png)
 
-Cuando de desplaza a la cuenta de almacenamiento en [Portal de Azure clásico](https://manage.windowsazure.com/) y selecciona **Eliminar**, puede que vea uno de los mensajes de error siguientes:
+Cuando se desplaza la cuenta de almacenamiento de toohello en hello [portal de Azure clásico](https://manage.windowsazure.com/) y seleccione **eliminar**, es posible que vea uno de hello siguientes errores:
 
 - *La cuenta de almacenamiento StorageAccountName contiene imágenes de máquina virtual. Asegúrese de que estas imágenes de máquina virtual se quiten antes de eliminar esta cuenta de almacenamiento*.
 
-- *Error al eliminar la cuenta de almacenamiento <nombre-de-cuenta-de-almacenamiento-de-vm>. No se puede eliminar la cuenta de almacenamiento <nombre-de-cuenta-de-almacenamiento-de-vm>: 'La cuenta de almacenamiento <nombre-de-cuenta-de-almacenamiento-de-vm> tiene algunas imágenes o discos activos. Controle que se quiten las imágenes y los discos antes de eliminar esta cuenta de almacenamiento.'.*
+- *Error de cuenta de almacenamiento toodelete < virtual-storage-account-name >. Cuenta de almacenamiento no se puede toodelete < virtual-storage-account-name >: ' cuenta de almacenamiento < virtual-storage-account-name > tiene algunas imágenes o discos activos. Controle que se quiten las imágenes y los discos antes de eliminar esta cuenta de almacenamiento.'.*
 
-- *La cuenta de almacenamiento <nombre-de-cuenta-de-almacenamiento-de-vm> tiene algunas imágenes o discos activos; por ejemplo, xxxxxxxxx- xxxxxxxxx-O-209490240936090599. Controle que se quiten las imágenes y los discos antes de eliminar esta cuenta de almacenamiento.*
+- *La cuenta de almacenamiento &lt;nombre-de-cuenta-de-almacenamiento-de-vm&gt; tiene algunas imágenes o discos activos; por ejemplo, xxxxxxxxx- xxxxxxxxx-O-209490240936090599. Controle que se quiten las imágenes y los discos antes de eliminar esta cuenta de almacenamiento.*
 
-- *La cuenta de almacenamiento <nombre-de-cuenta-de-almacenamiento> tiene 1 contenedor que tiene artefactos de imagen o disco activos. Compruebe que estos artefactos se quitan del repositorio de imágenes antes de eliminar esta cuenta de almacenamiento*.
+- *La cuenta de almacenamiento &lt;nombre-de-cuenta-de-almacenamiento&gt; tiene 1 contenedor que tiene artefactos de imagen o disco activos. Asegúrese de que estos artefactos se quitan del repositorio de imágenes de hello antes de eliminar esta cuenta de almacenamiento*.
 
-- *Error en el envío. La cuenta de almacenamiento <nombre-de-cuenta-de-almacenamiento-de-vm> tiene 1 contenedor que tiene artefactos de imagen o disco activos. Compruebe que estos artefactos se quitan del repositorio de imágenes antes de eliminar esta cuenta de almacenamiento. Cuando se intenta eliminar una cuenta de almacenamiento y todavía hay discos activos asociados a ella, verá un mensaje que le indica que hay discos activos que deben eliminarse*.
+- *Error en el envío. La cuenta de almacenamiento &lt;nombre-de-cuenta-de-almacenamiento-de-vm&gt; tiene 1 contenedor que tiene artefactos de imagen o disco activos. Asegúrese de que estos artefactos se quitan del repositorio de imágenes de hello antes de eliminar esta cuenta de almacenamiento. Cuando intente toodelete una cuenta de almacenamiento y hay sigue activos discos asociados con él, verá un mensaje que indica hay discos activos que necesitan toobe eliminar*.
 
-### <a name="scenario-2-unable-to-delete-a-container"></a>Escenario 2: No se puede eliminar un contenedor
-Al intentar eliminar el contenedor de almacenamiento, podría ver el error siguiente:
+### <a name="scenario-2-unable-toodelete-a-container"></a>Escenario 2: No se puede toodelete un contenedor
+Al tratar de contenedor de almacenamiento de toodelete hello, podría ver Hola siguiente error:
 
-*No se pudo eliminar el contenedor de almacenamiento <container name>. Error: 'Actualmente hay una concesión en el contenedor y no se especificó ningún identificador de concesión en la solicitud*.
+*Contenedor de almacenamiento de toodelete errores <container name>. Error: ' actualmente hay una concesión en el contenedor de Hola y se especificó ningún identificador de concesión en la solicitud de hello*.
 
-o
+O
 
-*Los siguientes discos de máquina virtual usan blobs en este contenedor, por lo que este no puede eliminarse: VirtualMachineDiskName1, VirtualMachineDiskName2, etc.*
+*Hola siguientes discos de máquina virtual usa blobs en este contenedor y, por lo que no se puede eliminar el contenedor de hello: VirtualMachineDiskName1, VirtualMachineDiskName2,...*
 
-### <a name="scenario-3-unable-to-delete-a-vhd"></a>Escenario 3: No se puede eliminar un VHD
-Después de eliminar una VM e intentar eliminar después los blobs de los discos duros virtuales asociados, podría recibir el mensaje siguiente:
+### <a name="scenario-3-unable-toodelete-a-vhd"></a>Escenario 3: No se puede toodelete un disco duro virtual
+Después de eliminar una máquina virtual y, a continuación, intente toodelete Hola blobs para hello asocian discos duros virtuales, podría recibir el siguiente mensaje de Hola:
 
-*Error al eliminar el blob 'path/XXXXXX-XXXXXX-os-1447379084699.vhd'. Error: 'Actualmente hay una concesión en el blob y no se especificó ningún identificador de concesión en la solicitud.*
+*Blob toodelete error ' ruta de acceso/XXXXXX-XXXXXX-os-1447379084699.vhd'. Error: ' actualmente hay una concesión de blob de Hola y se especificó ningún identificador de concesión en la solicitud de saludo.*
 
-o
+O
 
-*El blob "BlobName.vhd" se está usando como disco de máquina virtual "VirtualMachineDiskName", por lo que no se puede eliminar.*
+*BLOB 'BlobName.vhd' está en uso como disco de máquina virtual 'VirtualMachineDiskName', por lo que no se puede eliminar el blob de Hola.*
 
 ## <a name="solution"></a>Solución
-Para resolver los problemas más comunes, pruebe el siguiente método:
+tooresolve problemas más comunes de hello, intente Hola siguiente método:
 
-### <a name="step-1-delete-any-disks-that-are-preventing-deletion-of-the-storage-account-container-or-vhd"></a>Paso 1: Eliminar los discos que impiden la eliminación de la cuenta de almacenamiento, el contenedor o el VHD
-1. Cambie al [Portal de Azure clásico](https://manage.windowsazure.com/).
+### <a name="step-1-delete-any-disks-that-are-preventing-deletion-of-hello-storage-account-container-or-vhd"></a>Paso 1: Eliminar todos los discos que impiden la eliminación de la cuenta de almacenamiento de hello, el contenedor o el disco duro virtual
+1. Cambiar toohello [portal de Azure clásico](https://manage.windowsazure.com/).
 2. Seleccione **MÁQUINA VIRTUAL** > **DISCOS**.
 
     ![Imagen de discos en máquinas virtuales en el Portal de Azure clásico.](./media/storage-cannot-delete-storage-account-container-vhd/VMUI.png)
-3. Busque los discos asociados a la cuenta de almacenamiento, contenedor o disco duro virtual que quiere eliminar. Cuando compruebe la ubicación del disco, encontrará la cuenta de almacenamiento asociada, el contenedor y el disco duro virtual.
+3. Buscar discos de Hola que están asociados con la cuenta de almacenamiento de hello, contenedor o disco duro virtual que desea toodelete. Al comprobar la ubicación de hello del disco de hello, encontrará Hola asociado de cuenta de almacenamiento, contenedor o disco duro virtual.
 
     ![Imagen que muestra la información de ubicación de los discos en el Portal de Azure clásico](./media/storage-cannot-delete-storage-account-container-vhd/DiskLocation.png)
-4. Elimine los discos mediante uno de los métodos siguientes:
+4. Eliminar discos hello mediante uno de los siguientes métodos de hello:
 
-  - Si no hay ninguna máquina virtual en el campo **Conectado a** del disco y, después, elimine los discos directamente.
+  - Si no hay ninguna máquina virtual aparece en hello **conectado a** campo del disco de hello, puede eliminar disco Hola directamente.
 
-  - Si se trata de un disco de datos, siga estos pasos:
+  - Si hello es un disco de datos, siga estos pasos:
 
-    1. Compruebe el nombre de la máquina virtual al que está conectado el disco.
-    2. Vaya a **Máquinas virtuales** > **Instancias** y, luego, busque la máquina virtual.
-    3. Confirme que no hay ningún recurso usando activamente el disco.
-    4. Seleccione **Desconectar disco** en la parte inferior del portal para desconectar el disco.
-    5. Vaya a **Máquinas virtuales** > **Discos** y espere a que el campo **Conectado a** se quede vacío. Esto indica que el disco se ha desconectado correctamente de la máquina virtual.
-    6. Seleccione **Eliminar** en la parte inferior de **Máquinas virtuales** > **Discos** para eliminar el disco.
+    1. Compruebe el nombre de Hola de hello VM que Hola disco está conectado a.
+    2. Vaya demasiado**máquinas virtuales** > **instancias**y, a continuación, busque Hola máquina virtual.
+    3. Asegúrese de que no esté usando activamente disco Hola.
+    4. Seleccione **ocultar disco** final Hola de disco de hello toodetach portal Hola.
+    5. Vaya demasiado**máquinas virtuales** > **discos**y esperar hello **conectado a** tooturn de campo en blanco. Esto indica disco Hola correctamente se ha desasociado de hello máquina virtual.
+    6. Seleccione **eliminar** final Hola de **máquinas virtuales** > **discos** disco de hello toodelete.
 
-  - Si se trata de un disco del sistema operativo (el campo **Contiene SO** tiene un valor de Windows) y se conecta a una máquina virtual, siga estos pasos para eliminar la máquina virtual. No se puede desconectar el disco del sistema operativo, por lo que hay que eliminar la máquina virtual para liberar la concesión.
+  - Si el disco de hello es un sistema operativo (hello **OS contiene** campo tiene un valor como Windows) y adjunta tooa máquina virtual, siga estos pasos toodelete Hola VM. no se puede desasociar el disco del sistema operativo Hello, así tendremos concesión de toodelete Hola VM toorelease Hola.
 
-    1. Compruebe el nombre de la máquina virtual a la que está conectado el disco de datos.  
-    2. Vaya a **Máquinas virtuales** > **Instancias** y, luego, seleccione la máquina virtual a la que está conectado el disco.
-    3. Asegúrese de que no haya nada usando activamente la máquina virtual y de que ya no la necesite.
-    4. Seleccione la máquina virtual a la que está conectado el disco y, luego, haga clic en **Eliminar** > **Eliminar los discos conectados**.
-    5. Vaya a **Máquinas virtuales** > **Discos** y espere a que el disco desaparezca.  Puede tardar unos minutos y es posible que tenga que actualizar la página.
-    6. Si el disco no desaparece, espere a que el campo **Conectado a** se quede vacío. Esto indica que el disco se ha desconectado correctamente de la máquina virtual.  Después, seleccione el disco y haga clic en la opción **Eliminar** de la parte inferior de la página para eliminar el disco.
+    1. Compruebe el nombre de Hola de Hola Hola de máquina Virtual A que disco de datos está conectado.  
+    2. Vaya demasiado**máquinas virtuales** > **instancias**, y, a continuación, seleccione Hola VM que Hola disco está conectado a.
+    3. Asegúrese de que no esté usando activamente máquina virtual de Hola y que ya no necesita Hola máquina virtual.
+    4. Seleccione Hola VM Hola disco está conectado a, a continuación, seleccione **eliminar** > **Hola de eliminación de discos conectados**.
+    5. Vaya demasiado**máquinas virtuales** > **discos**y esperar Hola disco toodisappear.  Puede tardar unos minutos para este toooccur y puede que necesite toorefresh página de Hola.
+    6. Si el disco de hello no desaparece, espere hello **conectado a** tooturn de campo en blanco. Esto indica disco Hola totalmente se ha desasociado de hello máquina virtual.  A continuación, seleccione el disco de Hola y seleccione **eliminar** final Hola de hello páginas toodelete Hola disco.
 
 
    > [!NOTE]
-   > Si un disco está conectado a una VM, no podrá eliminarlo. Los discos se desconectan de una máquina virtual eliminada de forma asincrónica. Este campo puede tardar unos minutos en borrarse después de eliminar la VM.
+   > Si un disco está conectado tooa VM, no será capaz de toodelete lo. Los discos se desconectan de una máquina virtual eliminada de forma asincrónica. Pueden tardar unos minutos después de elimina Hola VM para este tooclear campo seguridad.
    >
    >
 
 
-### <a name="step-2-delete-any-vm-images-that-are-preventing-deletion-of-the-storage-account-or-container"></a>Paso 2: Eliminación de las imágenes de máquina virtual que impiden la eliminación de la cuenta de almacenamiento o el contenedor
-1. Cambie al [Portal de Azure clásico](https://manage.windowsazure.com/).
-2. Seleccione **MÁQUINA VIRTUAL** > **IMÁGENES** y luego elimine las imágenes asociadas con la cuenta de almacenamiento, el contenedor o el disco duro virtual.
+### <a name="step-2-delete-any-vm-images-that-are-preventing-deletion-of-hello-storage-account-or-container"></a>Paso 2: Elimine las imágenes de máquina virtual que impiden la eliminación de cuenta de almacenamiento de Hola o contenedor
+1. Cambiar toohello [portal de Azure clásico](https://manage.windowsazure.com/).
+2. Seleccione **máquina VIRTUAL** > **imágenes**y, a continuación, eliminar imágenes de Hola que están asociadas a la cuenta de almacenamiento de hello, el contenedor o el disco duro virtual.
 
-    Después, trate de eliminar otra vez la cuenta de almacenamiento, contenedor o disco duro virtual.
+    Después de eso, cuenta de almacenamiento de toodelete hello, contenedor o VHD vuelva a intentarlo.
 
 > [!WARNING]
-> Asegúrese de hacer una copia de seguridad de cualquier contenido que desee guardar antes de eliminar la cuenta. La eliminación de un VHD, blob, tabla, cola o archivo tiene carácter permanente una vez realizada. Asegúrese de que el recurso no está en uso.
+> Prepararse nada tooback seguro de que desea toosave antes de eliminar la cuenta de hello. La eliminación de un VHD, blob, tabla, cola o archivo tiene carácter permanente una vez realizada. Asegúrese de que el recurso de hello no está en uso.
 >
 >
 
-## <a name="about-the-stopped-deallocated-status"></a>Acerca del estado Detenido (desasignado)
-Las VM que se crearon en el modelo de implementación clásica y que se han conservado tendrán el estado **Detenido (desasignado)** tanto en [Azure Portal](https://portal.azure.com/) como en el [Portal de Azure clásico](https://manage.windowsazure.com/).
+## <a name="about-hello-stopped-deallocated-status"></a>Acerca de hello estado detenido (desasignado)
+Las máquinas virtuales que se crearon en el modelo de implementación clásica de Hola y que se han conservado tendrá hello **detenido (desasignado)** estado en cualquier hello [portal de Azure](https://portal.azure.com/) o [portal de Azure clásico ](https://manage.windowsazure.com/).
 
 **Portal de Azure clásico**:
 
@@ -132,7 +132,7 @@ Las VM que se crearon en el modelo de implementación clásica y que se han cons
 
 ![Estado Detenido (desasignado) de VM en el Portal de Azure clásico.](./media/storage-cannot-delete-storage-account-container-vhd/moreinfo1.png)
 
-Un estado "Detenido (desasignado)" libera los recursos del equipo, como la CPU, la memoria y la red. Sin embargo, los discos se siguen conservando para que el usuario pueda volver a crear rápidamente la máquina virtual si fuera necesario. Estos discos se crean encima de los discos duros virtuales que están respaldados por Almacenamiento de Azure. La cuenta de almacenamiento tiene estos discos duros virtuales y los discos tienen concesiones sobre esos discos duros virtuales.
+Un estado "Detenido (desasignado)" libera los recursos de equipo de hello, como Hola CPU, memoria y red. Sin embargo, los discos de Hello, todavía se conservan para que se puede volver a crear rápidamente Hola VM si es necesario. Estos discos se crean encima de los discos duros virtuales que están respaldados por Almacenamiento de Azure. cuenta de almacenamiento de Hello tiene estos discos duros virtuales y discos de hello tienen concesiones en los discos duros virtuales.
 
 ## <a name="next-steps"></a>Pasos siguientes
 * [Eliminar una cuenta de almacenamiento](storage-create-storage-account.md#delete-a-storage-account)

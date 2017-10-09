@@ -1,6 +1,6 @@
 ---
-title: "Concesión de permisos para que muchas aplicaciones tengan acceso a un almacén de Azure Key Vault | Microsoft Docs"
-description: "Obtenga información sobre cómo conceder permisos para que muchas aplicaciones tengan acceso a almacén de claves."
+title: "aaaGrant permiso toomany aplicaciones tooaccess un almacén de claves de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toogrant permiso toomany aplicaciones tooaccess una clave de almacén"
 services: key-vault
 documentationcenter: 
 author: amitbapat
@@ -14,46 +14,46 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2016
 ms.author: ambapat
-ms.openlocfilehash: f58b633de2e4b5702ff2df9b3722662b09510200
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5258149f939856f91b3848fc50399e58e5894f0d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="grant-permission-to-many-applications-to-access-a-key-vault"></a>Concesión de permisos para que muchas aplicaciones tengan acceso a almacén de claves
+# <a name="grant-permission-toomany-applications-tooaccess-a-key-vault"></a>Conceder permiso toomany aplicaciones tooaccess un almacén de claves
 
-## <a name="q-i-have-several-over-16-applications-that-need-to-access-a-key-vault-since-key-vault-only-allows-16-access-control-entries-how-can-i-achieve-that"></a>P.: Tengo varias aplicaciones (más de 16) que necesitan tener acceso a un almacén de claves. Puesto que Key Vault solo acepta 16 entradas de control de acceso, ¿cómo puedo conseguirlo?
+## <a name="q-i-have-several-over-16-applications-that-need-tooaccess-a-key-vault-since-key-vault-only-allows-16-access-control-entries-how-can-i-achieve-that"></a>P: ¿puedo tener varios (más de 16) aplicaciones que necesitan tooaccess un almacén de claves. Puesto que Key Vault solo acepta 16 entradas de control de acceso, ¿cómo puedo conseguirlo?
 
-La directiva de control de acceso de Key Vault solo admite 16 entradas. Sin embargo, puede crear un grupo de seguridad de Azure Active Directory. Agregue todas las entidades de servicio asociadas a este grupo de seguridad y, luego, conceda acceso a este grupo de seguridad a Key Vault.
+La directiva de control de acceso de Key Vault solo admite 16 entradas. Sin embargo, puede crear un grupo de seguridad de Azure Active Directory. Agregue todos los hello asociado el grupo de seguridad de toothis de entidades de seguridad de servicio y, a continuación, concede acceso toothis seguridad grupo tooKey almacén.
 
-Instalación de los requisitos previos:
+Estos son los requisitos previos de hello:
 * [Instale el módulo PowerShell de Azure Active Directory V2](https://www.powershellgallery.com/packages/AzureAD/2.0.0.30).
 * [Instale Azure PowerShell](/powershell/azure/overview).
-* Para ejecutar los siguientes comandos, necesita permisos para crear y editar grupos en el inquilino de Azure Active Directory. Si no tiene permisos, debe ponerse en contacto con el administrador de Azure Active Directory.
+* los comandos siguientes de hello toorun, necesita permisos toocreate/editar grupos de inquilino de Azure Active Directory de Hola. Si no tiene permisos, deberá toocontact el Administrador de Azure Active Directory.
 
-Ejecute los siguientes comandos en PowerShell.
+Ahora ejecute hello siga los comandos de PowerShell.
 
 ```powershell
-# Connect to Azure AD 
+# Connect tooAzure AD 
 Connect-AzureAD 
  
 # Create Azure Active Directory Security Group 
 $aadGroup = New-AzureADGroup -Description "Contoso App Group" -DisplayName "ContosoAppGroup" -MailEnabled 0 -MailNickName none -SecurityEnabled 1 
  
-# Find and add your applications (ServicePrincipal ObjectID) as members to this group 
+# Find and add your applications (ServicePrincipal ObjectID) as members toothis group 
 $spn = Get-AzureADServicePrincipal –SearchString "ContosoApp1" 
 Add-AzureADGroupMember –ObjectId $aadGroup.ObjectId -RefObjectId $spn.ObjectId 
  
-# You can add several members to this group, in this fashion. 
+# You can add several members toothis group, in this fashion. 
  
-# Set the Key Vault ACLs 
+# Set hello Key Vault ACLs 
 Set-AzureRmKeyVaultAccessPolicy –VaultName ContosoVault –ObjectId $aadGroup.ObjectId -PermissionToKeys all –PermissionToSecrets all –PermissionToCertificates all 
  
-# Of course you can adjust the permissions as required 
+# Of course you can adjust hello permissions as required 
 ```
 
-Si tiene que conceder un conjunto de permisos diferente para un grupo de aplicaciones, cree un grupo de seguridad de Azure Active Directory independiente para dichas aplicaciones.
+Si necesita toogrant un conjunto diferente de grupo de permisos tooa de aplicaciones, cree un grupo de seguridad de Azure Active Directory independiente para dichas aplicaciones.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Más información sobre cómo [proteger el almacén de claves](key-vault-secure-your-key-vault.md).
+Más información acerca de cómo demasiado[proteger el almacén de claves](key-vault-secure-your-key-vault.md).

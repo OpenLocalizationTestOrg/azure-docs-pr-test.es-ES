@@ -1,6 +1,6 @@
 ---
-title: "Implementación de una máquina virtual con una contraseña almacenada de forma segura en Azure Stack | Microsoft Docs"
-description: "Aprenda a implementar una máquina virtual usando una contraseña almacenada en el almacén de claves de Azure Stack"
+title: "aaaDeploy una máquina virtual con contraseñas almacenadas de manera segura en la pila de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toodeploy una máquina virtual mediante una contraseña almacenada en el almacén de claves de pila de Azure"
 services: azure-stack
 documentationcenter: 
 author: SnehaGunda
@@ -14,34 +14,34 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/08/2017
 ms.author: sngun
-ms.openlocfilehash: a1137ffefbc3fafbd7e9492819058f6a72537e22
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 368addc1dfc5b7adadd2151fbd6d354f7892eea5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-virtual-machine-by-retrieving-the-password-stored-in-a-key-vault"></a>Creación de una máquina virtual mediante la recuperación de la contraseña almacenada en un almacén de claves
+# <a name="create-a-virtual-machine-by-retrieving-hello-password-stored-in-a-key-vault"></a>Crear una máquina virtual mediante la recuperación de contraseña de hello almacenada en un almacén de claves
 
-Si necesita pasar un valor seguro, como una contraseña, durante la implementación, puede almacenar ese valor como un secreto en un almacén de claves de Azure Stack y hacer referencia al secreto en las plantillas de Azure Resource Manager. No tiene que escribir manualmente el secreto cada vez que implemente los recursos, solo tiene que especificar qué usuarios o entidades de servicio pueden tener acceso al secreto. 
+Cuando necesite toopass un valor como una contraseña seguro durante la implementación, puede almacenar ese valor como un secreto en un almacén de claves de la pila de Azure y hacer referencia a él en las plantillas de Azure Resource Manager Hola. No es necesario toomanually escriba secreto Hola cada vez que implemente recursos hello, también puede especificar qué usuarios o entidades de servicio pueden tener acceso a secreto Hola. 
 
-En este artículo, se le guiará por los pasos necesarios para implementar una máquina virtual Windows en Azure Stack mediante la recuperación de la contraseña que está guardada en un almacén de claves. Por lo tanto, la contraseña nunca se coloca en texto sin formato en el archivo de parámetros de plantilla. Puede seguir los pasos descritos aquí ya sea desde Azure Stack Development Kit o desde un cliente externo, si se conecta a través de VPN.
+En este artículo, le guiaremos por hello pasos necesarios toodeploy una máquina virtual de Windows en la pila de Azure mediante la recuperación de contraseña de Hola que se almacena en un almacén de claves. Por lo tanto, contraseña de hello nunca se coloca en texto sin formato en el archivo de parámetros de plantilla de Hola. Puede usar estos pasos desde Hola Kit de desarrollo de pila de Azure, o desde un cliente externo si está conectado a través de VPN.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-* Los administradores de nube de Azure Stack tienen que haber [creado una oferta](azure-stack-create-offer.md) que incluya el servicio Azure Key Vault.  
-* Los usuarios tienen que [suscribirse a una oferta](azure-stack-subscribe-plan-provision-vm.md) que incluya el servicio Key Vault.  
-* [Instalación de PowerShell para Azure Stack.](azure-stack-powershell-install.md)  
-* [Configuración del entorno de PowerShell del usuario de Azure Stack.](azure-stack-powershell-configure-user.md)
+* Deben tener los administradores de la nube de Azure pila [crea una oferta](azure-stack-create-offer.md) que incluye el servicio de almacén de claves de Azure de Hola.  
+* Los usuarios deben [suscribirse tooan oferta](azure-stack-subscribe-plan-provision-vm.md) que incluye el servicio de almacén de claves de Hola.  
+* [Instale PowerShell para Azure Stack.](azure-stack-powershell-install.md)  
+* [Configurar el entorno de PowerShell del usuario de hello Azure pila.](azure-stack-powershell-configure-user.md)
 
-Los pasos siguientes describen el proceso necesario para crear una máquina virtual mediante la recuperación de la contraseña almacenada en un almacén de claves:
+Hello siguientes pasos describen Hola proceso necesario toocreate una máquina virtual mediante la recuperación de contraseña de hello almacenada en un almacén de claves:
 
 1. Cree un secreto de almacén de claves.
-2. Actualice el archivo azuredeploy.parameters.json.
-3. Implemente la plantilla.
+2. Actualizar archivo de hello azuredeploy.parameters.json.
+3. Implementar la plantilla de Hola.
 
 ## <a name="create-a-key-vault-secret"></a>Creación de un secreto de almacén de claves
 
-El script siguiente crea un almacén de claves y almacena en él una contraseña como un secreto. Use el parámetro `-EnabledForDeployment` al crear el almacén de claves. Este parámetro se asegura de que se puede hacer referencia al almacén de claves desde las plantillas de Azure Resource Manager.
+Hello secuencia de comandos siguiente crea un almacén de claves y almacena una contraseña en el almacén de claves de Hola como un secreto. Hola de uso `-EnabledForDeployment` parámetro al crear el almacén de claves Hola. Este parámetro se asegura de ese almacén de claves de hello puede hacer referencia a partir de plantillas de Azure Resource Manager.
 
 ```powershell
 
@@ -69,13 +69,13 @@ Set-AzureKeyVaultSecret `
 
 ```
 
-Cuando se ejecuta el script anterior, la salida incluye el identificador URI del secreto. Anote este URI. Tendrá que hacer referencia a él durante la [implementación de máquina virtual Windows con contraseña en la plantilla de almacén de claves](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-secure-password). Descargue la carpeta [101-vm-secure-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-secure-password) en el equipo de desarrollo. Esta carpeta contiene los archivos `azuredeploy.json` y `azuredeploy.parameters.json` que necesitará en los pasos siguientes.
+Cuando se ejecuta el script anterior hello, salida de hello incluye secreto Hola URI. Anote este URI. Tendrá que tooreference en hello [máquina virtual de implementar Windows con contraseña en la plantilla de almacén de claves](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-secure-password). Descargar hello [101-vm-proteger-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-secure-password) carpeta en el equipo de desarrollo. Esta carpeta contiene Hola `azuredeploy.json` y `azuredeploy.parameters.json` archivos, lo que necesitará en pasos de Hola.
 
-Modificar el archivo `azuredeploy.parameters.json` según los valores del entorno. Los parámetros de especial interés son el nombre del almacén, el grupo de recursos del almacén y el identificador URI del secreto (que se generó en el script anterior). El archivo siguiente es un ejemplo de un archivo de parámetros:
+Modificar hello `azuredeploy.parameters.json` archivo según tooyour valores de entorno. parámetros de Hola de especial interés son el nombre del almacén de hello, grupo de recursos de almacén de Hola y Hola secreto URI (como las generadas por script anterior Hola). Hola el archivo siguiente es un ejemplo de un archivo de parámetros:
 
-## <a name="update-the-azuredeployparametersjson-file"></a>Actualice el archivo azuredeploy.parameters.json
+## <a name="update-hello-azuredeployparametersjson-file"></a>Archivo de actualización hello azuredeploy.parameters.json
 
-Actualice el archivo azuredeploy.parameters.json con los valores de KeyVault URI, secretName y adminUsername de la máquina virtual correspondientes a su entorno. El siguiente archivo JSON muestra un ejemplo del archivo de parámetros de plantilla: 
+Actualizar archivo de hello azuredeploy.parameters.json con hello KeyVault URI, secretName, adminUsername de valores de la máquina virtual de hello según su entorno. Hello archivo JSON siguiente muestra un ejemplo de archivo de parámetros de plantilla de hello: 
 
 ```json
 {
@@ -106,16 +106,16 @@ Actualice el archivo azuredeploy.parameters.json con los valores de KeyVault URI
 
 ## <a name="template-deployment"></a>Implementación de plantilla
 
-Ahora implemente la plantilla con el siguiente script de PowerShell:
+Ahora puede implementar plantilla hello mediante Hola siguiente script de PowerShell:
 
 ```powershell
 New-AzureRmResourceGroupDeployment `
   -Name KVPwdDeployment `
   -ResourceGroupName $resourceGroup `
-  -TemplateFile "<Fully qualified path to the azuredeploy.json file>" `
-  -TemplateParameterFile "<Fully qualified path to the azuredeploy.parameters.json file>"
+  -TemplateFile "<Fully qualified path toohello azuredeploy.json file>" `
+  -TemplateParameterFile "<Fully qualified path toohello azuredeploy.parameters.json file>"
 ```
-Cuando la plantilla se ha implementado correctamente, se producen en la siguiente salida:
+Cuando se implementa correctamente la plantilla de hello, resulta en hello después de salida:
 
 ![Salida de la implementación](media\azure-stack-kv-deploy-vm-with-secret/deployment-output.png)
 

@@ -1,4 +1,4 @@
-Data Factory es un servicio multiinquilino que tiene los siguientes límites predeterminados para asegurarse de que las suscripciones de cliente están protegidas frente a las cargas de trabajo de los demás. Se pueden aumentar muchos de los límites para su suscripción fácilmente hasta el límite máximo; para ello, póngase en contacto con el soporte técnico.
+Factoría de datos es un servicio de varios inquilinos que ha Hola siguiendo los límites predeterminados del lugar toomake seguro de las suscripciones de cliente están protegidas frente a cargas de trabajo entre ellos. Muchos de los límites de hello pueden generar fácilmente para su suscripción de límite máximo de toohello póngase en contacto con soporte técnico.
 
 | **Recurso** | **Límite predeterminado** | **Límite máximo** |
 | --- | --- | --- |
@@ -12,11 +12,11 @@ Data Factory es un servicio multiinquilino que tiene los siguientes límites pre
 | Unidades de movimiento de datos de nube<sup>3</sup> |32 |[Ponerse en contacto con soporte técnico](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Número de reintentos de ejecuciones de la actividad Canalización |1000 |MaxInt (32 bits) |
 
-<sup>1</sup> Los objetos de canalización, de conjunto de datos y de servicio vinculado representan una agrupación lógica de la carga de trabajo. Los límites de estos objetos no se corresponden relacionados con la cantidad de datos que se pueden mover y procesar con el servicio Factoría de datos de Azure. Factoría de datos está diseñado para poder escalarse para manejar petabytes de datos.
+<sup>1</sup> Los objetos de canalización, de conjunto de datos y de servicio vinculado representan una agrupación lógica de la carga de trabajo. Límites de estos objetos no se relacionan con tooamount de datos, puede mover y procesar con el servicio de factoría de datos de Azure Hola. Factoría de datos está diseñada tooscale toohandle petabytes de datos.
 
-<sup>2</sup>Los núcleos de HDInsight a petición se asignan fuera de la suscripción que contiene Data Factory. En consecuencia, el límite superior es el límite de núcleos aplicados de Data Factory para los núcleos de HDInsight a petición y es diferente del límite de núcleos asociado a su suscripción de Azure.
+<sup>2</sup> núcleos de HDInsight a petición se asignan fuera de la suscripción de Hola que contiene la factoría de datos de Hola. Como resultado, Hola por encima del límite es hello factoría de datos aplica el límite de núcleos de núcleos de HDInsight a petición y es diferente de límite de núcleos de hello asociada a su suscripción de Azure.
 
-<sup>3</sup> La unidad de movimiento de datos de nube (DMU) se usa en una operación de copia de la nube a la nube. Es una medida que representa la eficacia (una combinación de CPU, memoria y asignación de recursos de red) de una única unidad en Data Factory. Poder usar más DMU en algunos escenarios permite lograr una mayor capacidad de procesamiento de copia. Consulte la sección [Unidades de movimiento de datos en la nube](../articles/data-factory/data-factory-copy-activity-performance.md#cloud-data-movement-units) para más información.
+<sup>3</sup> La unidad de movimiento de datos de nube (DMU) se usa en una operación de copia de la nube a la nube. Es una medida que representa la potencia de hello (una combinación de asignación de recursos de red, CPU y memoria) de una sola unidad de factoría de datos. Poder usar más DMU en algunos escenarios permite lograr una mayor capacidad de procesamiento de copia. Consulte demasiado[unidades de movimiento de datos en la nube](../articles/data-factory/data-factory-copy-activity-performance.md#cloud-data-movement-units) sección de detalles.
 
 | **Recurso** | **Límite inferior predeterminado** | **Límite mínimo** |
 | --- | --- | --- |
@@ -25,4 +25,4 @@ Data Factory es un servicio multiinquilino que tiene los siguientes límites pre
 | Valor de tiempo de espera de reintento |1 segundo |1 segundo |
 
 ### <a name="web-service-call-limits"></a>Límites de llamadas de servicio web
-Azure Resource Manager tiene límites para las llamadas de API. Se pueden realizar llamadas API a un ritmo que esté dentro de los [límites de la API del Administrador de recursos de Azure](../articles/azure-subscription-service-limits.md#resource-group-limits).
+Azure Resource Manager tiene límites para las llamadas de API. Puede realizar llamadas de API a una velocidad de hello [API del Administrador de recursos de Azure limita](../articles/azure-subscription-service-limits.md#resource-group-limits).

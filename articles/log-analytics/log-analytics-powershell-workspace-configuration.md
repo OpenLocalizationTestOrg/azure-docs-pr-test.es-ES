@@ -1,5 +1,5 @@
 ---
-title: "Uso de PowerShell para crear y configurar un área de trabajo de Log Analytics | Microsoft Docs"
+title: "aaaUse PowerShell tooCreate y configurar un área de trabajo de análisis de registro | Documentos de Microsoft"
 description: "Log Analytics usa datos de los servidores de la infraestructura local o de nube. Puede recopilar datos de equipo del almacenamiento de Azure cuando son generados por Diagnósticos de Azure."
 services: log-analytics
 documentationcenter: 
@@ -14,64 +14,64 @@ ms.devlang: powershell
 ms.topic: article
 ms.date: 11/21/2016
 ms.author: richrund
-ms.openlocfilehash: 6807ab67e3593da82c147669b29bfdae3b6c967c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: a6d66194204cc58de6aafb687a19fe9611e0c58e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-log-analytics-using-powershell"></a>Administración de Log Analytics mediante PowerShell
-Puede usar los [cmdlets de PowerShell de Log Analytics](https://msdn.microsoft.com/library/mt188224\(v=azure.300\).aspx) para realizar una serie de funciones en Log Analytics desde una línea de comandos o como parte de un script.  A continuación se indican algunos ejemplos de las tareas que puede realizar con PowerShell:
+Puede usar hello [cmdlets de PowerShell de análisis de registro](https://msdn.microsoft.com/library/mt188224\(v=azure.300\).aspx) tooperform varias funciones de análisis de registros desde una línea de comandos o como parte de una secuencia de comandos.  Ejemplos de tareas de Hola que puede realizar con PowerShell:
 
 * Crear un área de trabajo
 * Agregar o quitar una solución
 * Importar y exportar búsquedas guardadas
 * Crear un grupo de equipos
-* Habilitar la recopilación de registros de IIS en equipos con el agente de Windows instalado
+* Habilitar la recopilación de registros de IIS desde equipos que tengan instalado el agente de Windows hello
 * Recopilar contadores de rendimiento en equipos Linux y Windows
 * Recopilar eventos de Syslog en equipos Linux 
 * Recopilar eventos de registros de eventos de Windows
 * Recopilar registros de eventos personalizados
-* Agregar al agente de Log Analytics a una máquina virtual de Azure
-* Configurar Log Analytics para indizar los datos recopilados mediante Diagnósticos de Azure
+* Agregar tooan de agente de análisis de registro de hello máquina virtual de Azure
+* Configurar datos de tooindex de análisis de registro recopilados con diagnósticos de Azure
 
-Este artículo proporciona dos ejemplos de código que muestran algunas de las funciones que puede realizar desde PowerShell.  Puede consultar la [referencia de cmdlets de PowerShell de Log Analytics](https://msdn.microsoft.com/library/mt188224\(v=azure.300\).aspx) para otras funciones.
+Este artículo proporciona dos ejemplos de código que muestran algunas de las funciones de Hola que puede realizar desde PowerShell.  Puede hacer referencia a toohello [referencia de cmdlets de PowerShell de análisis de registro](https://msdn.microsoft.com/library/mt188224\(v=azure.300\).aspx) para otras funciones.
 
 > [!NOTE]
-> Log Analytics se llamaba anteriormente Operational Insights, razón por la cual se utiliza este nombre en los cmdlets.
+> Análisis de registros se llamaba anteriormente visión operativa, motivo por el cual es nombre de hello usado en los cmdlets de Hola.
 > 
 > 
 
 ## <a name="prerequisites"></a>Requisitos previos
-Estos ejemplos funcionan con la versión 2.3.0 o posteriores del módulo AzureRm.OperationalInsights.
+Estos ejemplos de trabajo con la versión 2.3.0 o posterior del módulo de AzureRm.OperationalInsights Hola.
 
 
 ## <a name="create-and-configure-a-log-analytics-workspace"></a>Creación y configuración de un área de trabajo de Log Analytics
-El siguiente ejemplo de script muestra cómo:
+Hello ejemplo de secuencia de comandos siguiente se muestra cómo:
 
 1. Crear un área de trabajo
-2. Enumerar las soluciones disponibles
-3. Agregar soluciones al área de trabajo
+2. Soluciones de lista Hola disponibles
+3. Agregar área de trabajo de soluciones toohello
 4. Importar búsquedas guardadas
 5. Exportar búsquedas guardadas
 6. Crear un grupo de equipos
-7. Habilitar la recopilación de registros de IIS en equipos con el agente de Windows instalado
+7. Habilitar la recopilación de registros de IIS desde equipos que tengan instalado el agente de Windows hello
 8. Recopilar contadores de rendimiento de discos lógicos de equipos Linux (% de inodos usados; megabytes libres; % de espacio usado; transferencias de disco/seg.; lecturas de disco/seg.; escrituras de disco/seg.)
 9. Recopilar eventos de Syslog de equipos Linux
-10. Recopilar eventos de error y advertencia del registro de eventos de aplicación de los equipos de Windows
+10. Recopilar eventos de Error y advertencia de hello registro de eventos de aplicación de los equipos de Windows
 11. Recopilar contadores de rendimiento de MB disponibles de equipos Windows
 12. Recopilar registros personalizados 
 
 ```
 
 $ResourceGroup = "oms-example"
-$WorkspaceName = "log-analytics-" + (Get-Random -Maximum 99999) # workspace names need to be unique - Get-Random helps with this for the example code
+$WorkspaceName = "log-analytics-" + (Get-Random -Maximum 99999) # workspace names need toobe unique - Get-Random helps with this for hello example code
 $Location = "westeurope"
 
-# List of solutions to enable
+# List of solutions tooenable
 $Solutions = "Security", "Updates", "SQLAssessment"
 
-# Saved Searches to import
+# Saved Searches tooimport
 $ExportedSearches = @"
 [
     {
@@ -89,7 +89,7 @@ $ExportedSearches = @"
 ]
 "@ | ConvertFrom-Json
 
-# Custom Log to collect
+# Custom Log toocollect
 $CustomLog = @"
 {
     "customLogName": "sampleCustomLog1", 
@@ -127,14 +127,14 @@ $CustomLog = @"
     }
 "@
 
-# Create the resource group if needed
+# Create hello resource group if needed
 try {
     Get-AzureRmResourceGroup -Name $ResourceGroup -ErrorAction Stop
 } catch {
     New-AzureRmResourceGroup -Name $ResourceGroup -Location $Location
 }
 
-# Create the workspace
+# Create hello workspace
 New-AzureRmOperationalInsightsWorkspace -Location $Location -Name $WorkspaceName -Sku Standard -ResourceGroupName $ResourceGroup
 
 # List all solutions and their installation status
@@ -160,7 +160,7 @@ foreach ($search in $ExportedSearches) {
 # Create Computer Group based on a query
 New-AzureRmOperationalInsightsComputerGroup -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -SavedSearchId "My Web Servers" -DisplayName "Web Servers" -Category "My Saved Searches" -Query "Computer=""web*"" | distinct Computer" -Version 1
 
-# Create a computer group based on names (up to 5000)
+# Create a computer group based on names (up too5000)
 $computerGroup = """servername1.contoso.com"",""servername2.contoso.com"",""servername3.contoso.com"",""servername4.contoso.com"""
 New-AzureRmOperationalInsightsComputerGroup -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -SavedSearchId "My Named Servers" -DisplayName "Named Servers" -Category "My Saved Searches" -Query $computerGroup -Version 1
 
@@ -186,8 +186,8 @@ New-AzureRmOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGr
 
 ```
 
-## <a name="configuring-log-analytics-to-index-azure-diagnostics"></a>Configuración de Log Analytics para indizar Diagnósticos de Azure
-Para la supervisión de recursos de Azure sin agente, los recursos necesitan tener Diagnósticos de Azure habilitado y configurado para escribir en un área de trabajo de Log Analytics. Este método envía los datos directamente a Log Analytics y no requiere que los datos se escriban en una cuenta de almacenamiento. Los recursos admitidos son los siguientes:
+## <a name="configuring-log-analytics-tooindex-azure-diagnostics"></a>Configuración de análisis de registros tooindex diagnósticos de Azure
+Para la supervisión de recursos de Azure, recursos de hello deben toohave área de trabajo de diagnóstico de Azure habilitado y configurado toowrite tooa análisis de registros. Este método envía datos directamente tooLog análisis y no requiere toobe de datos escrito tooa cuenta de almacenamiento. Los recursos admitidos son los siguientes:
 
 | Tipo de recurso | Registros | Métricas |
 | --- | --- | --- |
@@ -208,11 +208,11 @@ Para la supervisión de recursos de Azure sin agente, los recursos necesitan ten
 | Espacio de nombres de Bus de servicio   |     | Sí |
 | SQL (v12)               |     | Sí |
 | Sitios web               |     | yes |
-| Granjas de servidores web        |     | yes |
+| Granjas de servidores web        |     | Sí |
 
-Para obtener información detallada sobre las métricas disponibles, consulte las [métricas admitidas con Azure Monitor](../monitoring-and-diagnostics/monitoring-supported-metrics.md).
+Para obtener detalles de Hola de métricas disponibles hello, consulte demasiado[métricas con el Monitor de Azure admitidas](../monitoring-and-diagnostics/monitoring-supported-metrics.md).
 
-Para obtener información detallada sobre los registros disponibles, consulte los [servicios admitidos y el esquema de los registros de diagnóstico](../monitoring-and-diagnostics/monitoring-diagnostic-logs-schema.md).
+Para obtener detalles de Hola de registros disponibles de hello, consulte demasiado[admite servicios y el esquema para los registros de diagnóstico](../monitoring-and-diagnostics/monitoring-diagnostic-logs-schema.md).
 
 ```
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
@@ -222,27 +222,27 @@ $resourceId = "/SUBSCRIPTIONS/ec11ca60-1234-491e-5678-0ea07feae25c/RESOURCEGROUP
 Set-AzureRmDiagnosticSetting -ResourceId $resourceId -WorkspaceId $workspaceId -Enabled $true
 ```
 
-También puede usar el cmdlet anterior para recopilar registros de recursos que se encuentran en distintas suscripciones. El cmdlet funciona en suscripciones distintas porque se proporciona tanto el identificador del recurso que crea los registros y como el del área de trabajo al que se envían los registros.
+También puede utilizar Hola anterior cmdlet toocollect registros de recursos que se encuentran en distintas suscripciones. cmdlet de Hello es toowork capaz de a través de suscripciones desde que se envían los registros de Hola de área de trabajo de Hola y va a proporcionar el Id. de Hola de ambos recursos Hola crear registros.
 
 
-## <a name="configuring-log-analytics-to-index-azure-diagnostics-from-storage"></a>Configuración de Log Analytics para indizar diagnósticos de Azure desde el almacenamiento
-Para recopilar datos de registro desde una instancia en ejecución de un servicio en la nube clásico o un clúster de Service Fabric, tiene que escribir primero los datos en Azure Storage. Después, Log Analytics se puede configurar para recopilar los registros de la cuenta de almacenamiento. Los recursos admitidos son los siguientes:
+## <a name="configuring-log-analytics-tooindex-azure-diagnostics-from-storage"></a>Configuración de diagnósticos de Azure desde el almacenamiento del análisis de registros tooindex
+datos del registro toocollect desde dentro de una instancia en ejecución de un servicio de nube clásico o un clúster de service fabric, necesita almacenamiento de tooAzure de toofirst escritura Hola datos. Análisis de registros es, a continuación, configurar registros de hello toocollect de cuenta de almacenamiento de Hola. Los recursos admitidos son los siguientes:
 
 * Servicios en la nube clásicos (roles web y de trabajo)
 * Clústeres de Service Fabric
 
-El ejemplo siguiente muestra cómo:
+Hola siguiente ejemplo se muestra cómo para:
 
-1. Enumerar las cuentas de almacenamiento existentes y las ubicaciones desde las que Log Analytics indizará datos
-2. Crear una configuración para leer desde una cuenta de almacenamiento
-3. Actualizar la configuración recién creada para indizar datos desde ubicaciones adicionales
-4. Eliminar la configuración recién creada
+1. Lista de cuentas de almacenamiento existentes de Hola y ubicaciones de análisis de registros se indizarán los datos de
+2. Crear un tooread de configuración de una cuenta de almacenamiento
+3. Hola actualización que acaba de crear datos de configuración tooindex desde ubicaciones adicionales
+4. Eliminar la configuración de hello recién creado
 
 ```
 # validTables = "WADWindowsEventLogsTable", "LinuxsyslogVer2v0", "WADServiceFabric*EventTable", "WADETWEventTable" 
 $workspace = (Get-AzureRmOperationalInsightsWorkspace).Where({$_.Name -eq "your workspace name"})
 
-# Update these two lines with the storage account resource ID and the storage account key for the storage account you want to Log Analytics to  
+# Update these two lines with hello storage account resource ID and hello storage account key for hello storage account you want tooLog Analytics too 
 $storageId = "/subscriptions/ec11ca60-1234-491e-5678-0ea07feae25c/resourceGroups/demo/providers/Microsoft.Storage/storageAccounts/wadv2storage"
 $key = "abcd=="
 
@@ -255,12 +255,12 @@ New-AzureRmOperationalInsightsStorageInsight -ResourceGroupName $workspace.Resou
 # Update existing insight
 Set-AzureRmOperationalInsightsStorageInsight -ResourceGroupName $workspace.ResourceGroupName -WorkspaceName $workspace.Name -Name "newinsight" -Tables @("WADWindowsEventLogsTable", "WADETWEventTable") -Containers @("wad-iis-logfiles")
 
-# Remove the insight
+# Remove hello insight
 Remove-AzureRmOperationalInsightsStorageInsight -ResourceGroupName $workspace.ResourceGroupName -WorkspaceName $workspace.Name -Name "newinsight" 
 
 ```
 
-También puede usar el script anterior para recopilar registros de cuentas de almacenamiento que se encuentran en distintas suscripciones. El script funciona en suscripciones distintas porque se proporciona tanto el identificador del recurso de cuenta de almacenamiento como la clave de acceso correspondiente. Cuando se cambia la clave de acceso, hay que actualizar los datos del almacenamiento para que tenga la nueva clave.
+También puede utilizar Hola anterior registros toocollect de secuencia de comandos de las cuentas de almacenamiento en distintas suscripciones. script de Hola es capaz de toowork en suscripciones puesto que va a proporcionar el identificador de recurso de cuenta de almacenamiento de Hola y su correspondiente clave de acceso. Cuando se cambia la clave de acceso de hello, debe tooupdate Hola almacenamiento insight toohave Hola nueva clave.
 
 
 ## <a name="next-steps"></a>Pasos siguientes

@@ -1,6 +1,6 @@
 ---
-title: "Ampliación de la simultaneidad en servicios web de Azure Machine Learning | Microsoft Docs"
-description: "Aprenda a ampliar la simultaneidad en los servicios web de Azure Machine Learning incorporando puntos de conexión adicionales."
+title: "aaaHow tooincrease simultaneidad de un servicio web de aprendizaje automático de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo tooincrease simultaneidad de un aprendizaje automático de Azure de servicio web mediante la adición de puntos de conexión adicionales."
 services: machine-learning
 documentationcenter: 
 author: neerajkh
@@ -15,29 +15,29 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: neerajkh
-ms.openlocfilehash: 013354515d841003c912ac0338690dd975a79ef7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e2ad16ec766820a64f36c31232f6a33a79196af4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="scaling-an-azure-machine-learning-web-service-by-adding-additional-endpoints"></a>Escalado de un servicio web de Azure Machine Learning mediante la incorporación de puntos de conexión adicionales
 > [!NOTE]
-> En este tema se describen técnicas que se aplican a un servicio web Machine Learning **clásico**. 
+> En este tema se describe técnicas aplicables tooa **clásico** servicio Web de aprendizaje de máquina. 
 > 
 > 
 
-De manera predeterminada, cada servicio web publicado está configurado para admitir 20 solicitudes simultáneas y 200 solicitudes simultáneas como máximo. Aunque el Portal de Azure clásico ofrece una manera de establecer este valor, Azure Machine Learning optimiza automáticamente este valor con el fin de brindar el mejor rendimiento para el servicio web, por lo que se omite el valor del portal. 
+De forma predeterminada, cada servicio Web publicado es 20 solicitudes simultáneas de toosupport configurado y puede ser tan alto como 200 solicitudes simultáneas. Aunque Hola portal de Azure clásico proporciona una manera tooset este valor, aprendizaje automático de Azure optimiza automáticamente Hola configuración tooprovide Hola obtener el mejor rendimiento para el servicio web y se omite el valor de portal de Hola. 
 
-Si tiene previsto llamar a la API con una carga mayor que un máximo de 200 llamadas simultáneas, debe crear varios puntos de conexión en el mismo servicio web. Acto seguido, podrá distribuir aleatoriamente la carga entre todos ellos.
+Si tiene previsto toocall Hola API con una carga más elevada de será compatible con un valor de número máximo de llamadas simultáneas de 200, debe crear varios puntos de conexión en hello mismo servicio Web. Acto seguido, podrá distribuir aleatoriamente la carga entre todos ellos.
 
-El escalado de un servicio web es una tarea común. Algunos de los motivos para ello son admitir más de 200 solicitudes simultáneas, aumentar la disponibilidad a través de varios puntos de conexión u ofrecer puntos de conexión independientes para el servicio web. Puede aumentar la escala agregando más puntos de conexión para el mismo servicio web a través del [Portal de Azure clásico](https://manage.windowsazure.com/) o del portal [Servicio web Azure Machine Learning](https://services.azureml.net/).
+Hola ajuste de escala de un servicio Web es una tarea común. Algunas razones tooscale son toosupport más de 200 solicitudes simultáneas, aumentar la disponibilidad a través de varios puntos de conexión o proporcionar puntos de conexión independientes para el servicio web de Hola. Puede aumentar escala Hola agregando extremos adicionales en hello mismo servicio Web a través de [portal de Azure clásico](https://manage.windowsazure.com/) o hello [servicio Web de Azure Machine Learning](https://services.azureml.net/) portal.
 
 Para obtener más información sobre la incorporación de puntos de conexión nuevos, consulte [Creación de puntos de conexión](machine-learning-create-endpoint.md).
 
-Tenga en cuenta que usar un recuento de simultaneidad alto puede ser perjudicial si no se llama a la API con una tasa elevada en consecuencia. Puede que vea tiempos de espera esporádicos o picos de latencia si pone una carga relativamente baja en una API configurada para una carga elevada.
+Tenga en cuenta que con un recuento de alta simultaneidad puede ser perjudicial si no se está llamando a Hola API con una tasa alta según corresponda. Podría ver los tiempos de espera esporádicas o picos de latencia de hello si coloca una carga relativamente baja en una API configurada para una carga elevada.
 
-Las API sincrónicas se usan normalmente en situaciones en las que se desea una latencia baja. Latencia aquí implica el tiempo que tarda la API en completar una solicitud, sin contar los retrasos de red. Supongamos que tiene una API con una latencia de 50 ms. Para utilizar totalmente la capacidad disponible con nivel de limitación alto y un número máximo de llamadas simultáneas de 20, debe llamar a esta API 20 * 1000/50 = 400 veces por segundo. Al ampliar esto aún más, un número máximo de llamadas simultáneas de 200 le permitirá llamar a la API 4000 veces por segundo, si presuponemos que la latencia es de 50 ms.
+Hola que API sincrónicas se utilizan habitualmente en situaciones donde se desea una baja latencia. Latencia aquí implica tiempo Hola toma para una solicitud de API de hello toocomplete y no en cuenta los retrasos de red. Supongamos que tiene una API con una latencia de 50 ms. toofully consumir capacidad disponible de hello con nivel de limitación de alto y el número máximo de llamadas simultáneas = 20, necesita toocall esta API 20 * 1000 / 400 = 50 veces por segundo. Extender aún más, un número máximo de llamadas simultáneas de 200 permite toocall Hola API 4000 veces por segundo, suponiendo un 50-ms de latencia.
 
 <!--Image references-->
 [1]: ./media/machine-learning-scaling-webservice/machlearn-1.png

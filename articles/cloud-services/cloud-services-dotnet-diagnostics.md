@@ -1,6 +1,6 @@
 ---
-title: "Cómo usar Diagnósticos de Azure (.NET) con Cloud Services | Microsoft Docs"
-description: "Use Diagnósticos de Azure para recopilar datos de los Servicios en la nube de Azure para realizar tareas de depuración, medición de rendimiento, supervisión, análisis de tráfico y más."
+title: "aaaHow toouse diagnósticos de Azure (. NET) con servicios en la nube | Documentos de Microsoft"
+description: "Mediante Diagnósticos de Azure toogather datos de Azure servicios en la nube para la depuración, medir el rendimiento, supervisión, análisis del tráfico y mucho más."
 services: cloud-services
 documentationcenter: .net
 author: rboucher
@@ -14,31 +14,31 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: robb
-ms.openlocfilehash: 333d2f26ce043a167fb84858c8327cb39e868ffa
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1525eac1e85955d8f05aa21a9805e0a80d0e4bca
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Habilitación de diagnósticos de Azure en servicios en la nube de Azure
 Consulte [Introducción a Diagnósticos de Azure](../azure-diagnostics.md) para obtener información sobre Diagnósticos de Azure.
 
-## <a name="how-to-enable-diagnostics-in-a-worker-role"></a>Habilitación de Diagnósticos en un rol de trabajo
-En este tutorial se describe cómo implementar un rol de trabajo de Azure que emite datos de telemetría mediante la clase EventSource de .NET. Diagnósticos de Azure se usa para recopilar datos de telemetría y almacenarla en una cuenta de almacenamiento de Azure. Al crear un rol de trabajo, Visual Studio habilita automáticamente Diagnósticos 1.0 como parte de la solución en los SDK de Azure para .NET 2.4, y las versiones anteriores. En las instrucciones siguientes se describe el proceso para crear el rol de trabajo, deshabilitar Diagnósticos 1.0 de la solución e implementar Diagnósticos 1.2 o 1.3 en el rol de trabajo.
+## <a name="how-tooenable-diagnostics-in-a-worker-role"></a>¿Cómo tooEnable diagnósticos en un rol de trabajo
+Este tutorial describe cómo tooimplement un rol de trabajador de Azure que emite los datos de telemetría mediante Hola .NET EventSource (clase). Diagnósticos de Azure son toocollect usa los datos de telemetría hello y almacenan en una cuenta de almacenamiento de Azure. Al crear un rol de trabajo, Visual Studio permite automáticamente Diagnostics 1.0 como parte de la solución de hello en Azure SDK para .NET 2.4 y versiones anteriores. Hello las instrucciones siguientes describen Hola proceso para crear el rol de trabajo de hello, deshabilitar Diagnostics 1.0 de solución de Hola y la implementación de diagnóstico 1.2 o rol de trabajo tooyour 1.3.
 
 ### <a name="prerequisites"></a>Requisitos previos
-En este artículo se supone que tiene una suscripción a Azure y usa Visual Studio con Azure SDK. Si no tiene una suscripción de Azure, puede registrarse para obtener una [prueba gratuita][Free Trial]. Asegúrese de [instalar y configurar Azure PowerShell versión 0.8.7 o posterior][Install and configure Azure PowerShell version 0.8.7 or later].
+En este artículo se supone que tiene una suscripción de Azure y está utilizando Visual Studio con hello Azure SDK. Si no tiene una suscripción de Azure, puede registrarse para hello [gratuita][Free Trial]. Asegúrese de que demasiado[instalar y configurar Azure PowerShell versión 0.8.7 o posterior][Install and configure Azure PowerShell version 0.8.7 or later].
 
 ### <a name="step-1-create-a-worker-role"></a>Paso 1: crear roles de trabajo
 1. Inicie **Visual Studio**.
-2. Cree un proyecto en **Azure Cloud Services** desde la plantilla **Nube** cuyo destino sea .NET Framework 4.5.  Asigne al proyecto el nombre "WadExample" y haga clic en Aceptar.
-3. Seleccione **Rol de trabajo** y haga clic en Aceptar. Se creará el proyecto.
-4. En el **Explorador de soluciones**, haga doble clic en el archivo de propiedades **WorkerRole1**.
-5. En la pestaña **Configuración**, desactive la opción **Habilitar Diagnostics** para deshabilitar Diagnostics 1.0 (SDK de Azure 2.4 y las versiones anteriores).
-6. Compile la solución para comprobar que no hay errores.
+2. Crear un **servicio de nube de Azure** proyecto a partir de hello **nube** plantilla cuyo destino es .NET Framework 4.5.  Denomine el proyecto de Hola "WadExample" y haga clic en Aceptar.
+3. Seleccione **Rol de trabajo** y haga clic en Aceptar. se creará el proyecto de Hola.
+4. En **el Explorador de soluciones**, haga doble clic en hello **WorkerRole1** archivo de propiedades.
+5. Hola **configuración** ficha desactive **habilitar diagnósticos** toodisable Diagnostics 1.0 (Azure SDK 2.4 y anterior).
+6. Compilar la solución tooverify que no aparece ningún error.
 
 ### <a name="step-2-instrument-your-code"></a>Paso 2: instrumentar el código
-Reemplace el contenido de WorkerRole.cs por el código siguiente. La clase SampleEventSourceWriter, heredada de la [clase EventSource][EventSource Class], implementa cuatro métodos de registro: **SendEnums**, **MessageMethod**, **SetOther** y **HighFreq**. El primer parámetro del método **WriteEvent** define el identificador para el evento correspondiente. El método Run implementa un bucle infinito que llama a cada uno de los métodos de registro implementados en la clase **SampleEventSourceWriter** cada 10 segundos.
+Reemplace el contenido de Hola de WorkerRole.cs con el siguiente código de hello. Hola clase SampleEventSourceWriter, que se hereda de hello [EventSource (clase)][EventSource Class], implementa los cuatro métodos de registro: **SendEnums**, **MessageMethod** , **SetOther** y **HighFreq**. Hola primera toohello parámetro **WriteEvent** método define el identificador hello para el evento correspondiente de Hola. Hola método Run implementa un bucle infinito que llama a cada uno de hello registro en los métodos implementados en hello **SampleEventSourceWriter** clase cada 10 segundos.
 
 ```csharp
 using Microsoft.WindowsAzure.ServiceRuntime;
@@ -53,7 +53,7 @@ namespace WorkerRole1
     sealed class SampleEventSourceWriter : EventSource
     {
         public static SampleEventSourceWriter Log = new SampleEventSourceWriter();
-        public void SendEnums(MyColor color, MyFlags flags) { if (IsEnabled())  WriteEvent(1, (int)color, (int)flags); }// Cast enums to int for efficient logging.
+        public void SendEnums(MyColor color, MyFlags flags) { if (IsEnabled())  WriteEvent(1, (int)color, (int)flags); }// Cast enums tooint for efficient logging.
         public void MessageMethod(string Message) { if (IsEnabled())  WriteEvent(2, Message); }
         public void SetOther(bool flag, int myInt) { if (IsEnabled())  WriteEvent(3, flag, myInt); }
         public void HighFreq(int value) { if (IsEnabled()) WriteEvent(4, value); }
@@ -89,7 +89,7 @@ namespace WorkerRole1
                 Thread.Sleep(10000);
                 Trace.TraceInformation("Working");
 
-                // Emit several events every time we go through the loop
+                // Emit several events every time we go through hello loop
                 for (int i = 0; i < 6; i++)
                 {
                     SampleEventSourceWriter.Log.SendEnums(MyColor.Blue, MyFlags.Flag2 | MyFlags.Flag3);
@@ -108,11 +108,11 @@ namespace WorkerRole1
 
         public override bool OnStart()
         {
-            // Set the maximum number of concurrent connections
+            // Set hello maximum number of concurrent connections
             ServicePointManager.DefaultConnectionLimit = 12;
 
             // For information on handling configuration changes
-            // see the MSDN topic at http://go.microsoft.com/fwlink/?LinkId=166357.
+            // see hello MSDN topic at http://go.microsoft.com/fwlink/?LinkId=166357.
 
             return base.OnStart();
         }
@@ -125,26 +125,26 @@ namespace WorkerRole1
 
 [!INCLUDE [cloud-services-wad-warning](../../includes/cloud-services-wad-warning.md)]
 
-1. Implemente su rol de trabajo en Azure desde Visual Studio seleccionando el proyecto **WadExample** en el Explorador de soluciones y luego **Publicar** en el menú **Compilar**.
+1. Implementar el rol de trabajo tooAzure desde dentro de Visual Studio seleccionando hello **WadExample** proyecto Hola, a continuación, el Explorador de soluciones **publicar** de hello **generar** menú.
 2. Elija su suscripción.
-3. En el cuadro de diálogo **Configuración de publicación de Microsoft Azure**, seleccione **Crear nuevo…**.
-4. En el cuadro de diálogo **Crear servicio en la nube y cuenta de almacenamiento**, escriba un **nombre** (por ejemplo, "WadExample") y seleccione una región o un grupo de afinidad.
-5. Establezca el **Entorno** en **Ensayo**.
+3. Hola **configuración de publicación de Microsoft Azure** cuadro de diálogo, seleccione **crear nuevo...** .
+4. Hola **crear servicio en la nube y cuenta de almacenamiento** cuadro de diálogo, escriba un **nombre** (por ejemplo, "WadExample") y seleccione una región o un grupo de afinidad.
+5. Conjunto hello **entorno** demasiado**ensayo**.
 6. Modifique cualquier otro parámetro de **Configuración** según sea necesario y haga clic en **Publicar**.
-7. Una vez finalizada la implementación, compruebe en Azure Portal que el servicio en la nube está en estado **En ejecución**.
+7. Una vez finalizada la implementación, compruebe en hello portal de Azure que el servicio de nube está en un **ejecutando** estado.
 
-### <a name="step-4-create-your-diagnostics-configuration-file-and-install-the-extension"></a>Paso 4: crear el archivo de configuración de Diagnósticos e instalar la extensión
-1. Descargue la definición del esquema del archivo de configuración público ejecutando el comando de PowerShell siguiente:
+### <a name="step-4-create-your-diagnostics-configuration-file-and-install-hello-extension"></a>Paso 4: Crear el archivo de configuración de diagnóstico e instalar extensión de Hola
+1. Descargar definición de esquema de archivo de configuración pública de hello ejecutando el siguiente comando de PowerShell de hello:
 
     ```powershell
     (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File -Encoding utf8 -FilePath 'WadConfig.xsd'
     ```
-2. Agregue un archivo XML para su **WorkerRole1** proyecto con el botón secundario en el **WorkerRole1** de proyecto y seleccione **agregar** -> **nuevo elemento...** -> **Elementos de Visual C#** -> **Datos** -> **Archivo XML**. Asigne al archivo el nombre "WadExample.xml".
+2. Agregar una tooyour de archivo XML **WorkerRole1** proyecto con el botón secundario en hello **WorkerRole1** de proyecto y seleccione **agregar** -> **nuevo elemento...** -> **Elementos de Visual C#** -> **Datos** -> **Archivo XML**. Nombre de archivo hello "WadExample.xml".
 
    ![CloudServices_diag_add_xml](./media/cloud-services-dotnet-diagnostics/AddXmlFile.png)
-3. Asocie WadConfig.xsd al archivo de configuración. Asegúrese de que la ventana del editor de WadExample es la ventana activa. Presione **F4** para abrir la ventana **Propiedades**. Haga clic en la propiedad **Esquemas** de la ventana **Propiedades**. Haga clic en **…** in the **Esquemas** . Haga clic en **Agregar…** y vaya a la ubicación en la que ha guardado el archivo XSD y seleccione el archivo WadConfig.xsd. Haga clic en **Aceptar**.
+3. Asociar el archivo de configuración de Hola Hola WadConfig.xsd. Asegúrese de que la ventana del editor de hello WadExample.xml es la ventana activa de Hola. Presione **F4** tooopen hello **propiedades** ventana. Haga clic en hello **esquemas** propiedad Hola **propiedades** ventana. Haga clic en hello **...** Hola **esquemas** propiedad. Haga clic en hello **agregar...** botón y navegar por la ubicación de toohello donde guardó archivo XSD de Hola y Hola Seleccione archivo WadConfig.xsd. Haga clic en **Aceptar**.
 
-4. Reemplace el contenido del archivo de configuración WadExample.xml por el siguiente archivo XM y guarde el archivo. Este archivo de configuración define un par de contadores de rendimiento para recopilar: uno para la utilización de la CPU y el otro para la utilización de memoria. A continuación, la configuración define los cuatro eventos correspondientes a los métodos de la clase SampleEventSourceWriter.
+4. Reemplace el contenido de Hola Hola WadExample.xml del archivo de configuración con hello continuación de XML y guarde el archivo hello. Este archivo de configuración define un par toocollect de contadores de rendimiento: uno para el uso de CPU y otro para el uso de memoria. A continuación, la configuración de hello define cuatro eventos de hello correspondientes métodos toohello Hola SampleEventSourceWriter clase.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -170,10 +170,10 @@ namespace WorkerRole1
 ```
 
 ### <a name="step-5-install-diagnostics-on-your-worker-role"></a>Paso 5: instalar Diagnósticos en roles de trabajo
-Los cmdlets de PowerShell para administrar Diagnósticos en un rol web o de trabajo son: Set-AzureServiceDiagnosticsExtension, Get-AzureServiceDiagnosticsExtension y Remove-AzureServiceDiagnosticsExtension.
+Hello cmdlets de PowerShell para administrar los diagnósticos en un rol web o de trabajo son: AzureServiceDiagnosticsExtension Set y Get-AzureServiceDiagnosticsExtension, Remove-AzureServiceDiagnosticsExtension.
 
 1. Abra Azure PowerShell.
-2. Ejecute el script para instalar Diagnostics en su rol de trabajo (reemplace *StorageAccountKey* por la clave de cuenta de almacenamiento para la clave de almacenamiento wadexample) y *config_path* por la ruta al archivo *WadExample.xml*:
+2. Hola script tooinstall diagnóstico se ejecuta en el rol de trabajo (reemplace *StorageAccountKey* con clave de cuenta de almacenamiento de hello para la cuenta de almacenamiento de wadexample y *config_path* con ruta de acceso de Hola toohello *WadExample.xml* archivo):
 
 ```powershell
 $storage_name = "wadexample"
@@ -185,18 +185,18 @@ Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -Diagnostic
 ```
 
 ### <a name="step-6-look-at-your-telemetry-data"></a>Paso 6: consultar los datos de telemetría
-En el **Explorador de servidores** de Visual Studio, navegue hasta la cuenta de almacenamiento wadexample. Cuando el servicio en la nube lleve en ejecución unos cinco (5) minutos, debería ver las tablas **WADEnumsTable**, **WADHighFreqTable**, **WADMessageTable**, **WADPerformanceCountersTable** y **WADSetOtherTable**. Haga doble clic en cualquiera de ellas para ver la telemetría que se ha recopilado.
+En Visual Studio hello **Explorador de servidores**, navegar por la cuenta de almacenamiento de toohello wadexample. Después de servicio en la nube Hola se ha estado ejecutando unos minutos cinco (5), debería ver las tablas de hello **WADEnumsTable**, **WADHighFreqTable**, **WADMessageTable**, **WADPerformanceCountersTable** y **WADSetOtherTable**. Haga doble clic en uno de telemetría de Hola de tooview de tablas de Hola que se han recopilado.
 
 ![CloudServices_diag_tables](./media/cloud-services-dotnet-diagnostics/WadExampleTables.png)
 
 ## <a name="configuration-file-schema"></a>Esquema del archivo de configuración
-El archivo de configuración de Diagnósticos define valores que se usan para inicializar la configuración de diagnóstico al iniciar el agente de diagnósticos. Consulte en la [referencia de esquema más reciente](https://msdn.microsoft.com/library/azure/mt634524.aspx) los valores válidos y ejemplos.
+archivo de configuración de diagnósticos de Hello define valores que son valores de configuración de diagnóstico de tooinitialize usado cuando se inicia el agente de diagnóstico de Hola. Vea hello [referencia de esquema más reciente](https://msdn.microsoft.com/library/azure/mt634524.aspx) para los valores válidos y ejemplos.
 
 ## <a name="troubleshooting"></a>Solución de problemas
 Si tiene problemas, consulte [Solución de problemas de Diagnósticos de Azure](../azure-diagnostics-troubleshooting.md) para obtener ayuda relacionada con problemas comunes.
 
 ## <a name="next-steps"></a>Pasos siguientes
-[Vea una lista de artículos relacionados con el diagnóstico de máquinas virtuales de Azure](../monitoring-and-diagnostics/azure-diagnostics.md#cloud-services-using-azure-diagnostics) para cambiar los datos que se recopilan, solucionar problemas u obtener más información acerca de los diagnósticos en general.
+[Ver una lista de relacionados artículos de diagnóstico de máquina virtual Azure](../monitoring-and-diagnostics/azure-diagnostics.md#cloud-services-using-azure-diagnostics) datos de hello toochange va a recopilar, solucionar problemas o para obtener más información sobre diagnósticos en general.
 
 [EventSource Class]: http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx
 

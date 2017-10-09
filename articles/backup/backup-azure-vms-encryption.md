@@ -1,6 +1,6 @@
 ---
-title: "Copia de seguridad y restauración de máquinas virtuales cifradas mediante Azure Backup"
-description: "Este artículo trata sobre la experiencia de copia de seguridad y restauración de máquinas virtuales cifradas mediante Azure Disk Encryption."
+title: "aaaBackup y restauración cifrados máquinas virtuales mediante copia de seguridad de Azure"
+description: "En este artículo se habla sobre la copia de seguridad de Hola y experiencia de restauración para las máquinas virtuales se cifra mediante el cifrado de disco de Azure."
 services: backup
 documentationcenter: 
 author: JPallavi
@@ -15,83 +15,83 @@ ms.workload: storage-backup-recovery
 ms.date: 07/27/2017
 ms.author: pajosh;markgal;trinadhk
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 89492cda8eff23509bee7693bb5f7e6ab5eb10d1
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: c19ef6f58e3259949535dab32a55aaf7a8c658fd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-back-up-and-restore-encrypted-virtual-machines-with-azure-backup"></a>Procedimiento de realización de copias de seguridad y restauración de máquinas virtuales cifradas con Azure Backup
-Este artículo trata sobre los pasos para realizar la copia de seguridad y restauración de máquinas virtuales mediante Azure Backup. También proporciona detalles acerca de los escenarios admitidos, requisitos previos y pasos para solucionar problemas en los casos de error.
+# <a name="how-tooback-up-and-restore-encrypted-virtual-machines-with-azure-backup"></a>Cómo tooback seguridad y restauración cifran las máquinas virtuales con copia de seguridad de Azure
+En este artículo se habla sobre pasos toobackup y restauración de máquinas virtuales mediante copia de seguridad de Azure. También proporciona detalles acerca de los escenarios admitidos, requisitos previos y pasos para solucionar problemas en los casos de error.
 
 ## <a name="supported-scenarios"></a>Escenarios admitidos
 > [!NOTE]
 > * La copia de seguridad y restauración de máquinas virtuales cifradas solo se admite para máquinas virtuales implementadas con el modelo de Resource Manager. No se admite para máquinas virtuales implementadas con el modelo clásico. <br>
-> * Se puede usar en máquinas virtuales con Windows y Linux mediante Azure Disk Encryption, que, para proporcionar el cifrado de discos, utiliza la característica BitLocker estándar en el caso de Windows y la característica DM-Crypt en el caso de Linux. <br>
+> * Se admite para Windows y Linux máquinas virtuales mediante el cifrado de disco de Azure, que aprovecha la característica BitLocker Hola sector estándar de Windows y la característica de DM Crypt de Linux tooprovide cifrado de discos. <br>
 > * Solo se admite para máquinas virtuales cifradas mediante la clave de cifrado de BitLocker y la clave de cifrado de clave. No se admite para máquinas virtuales cifradas solo mediante la clave de cifrado de BitLocker. <br>
 >
 >
 
 ## <a name="prerequisites"></a>Requisitos previos
 1. Máquina virtual cifrada mediante [Azure Disk Encryption](../security/azure-security-disk-encryption.md). Se deben cifrar las máquinas virtuales mediante la clave de cifrado de BitLocker y la clave de cifrado de clave (ambas).
-2. Se ha creado el almacén de Recovery Services y se ha establecido la replicación de almacenamiento mediante los pasos mencionados en el artículo [Preparación del entorno para la copia de seguridad de máquinas virtuales implementadas según el modelo de Resource Manager](backup-azure-arm-vms-prepare.md).
-3. A Azure Backup se le han otorgado [permisos para acceder al almacén de claves](#provide-permissions-to-azure-backup) que contiene claves y secretos para VM cifradas.
+2. Se ha creado el almacén de servicios de recuperación y replicación de almacenamiento que se establecen a través de los pasos mencionados en el artículo hello [preparar su entorno para copia de seguridad](backup-azure-arm-vms-prepare.md).
+3. Copia de seguridad de Azure se le han otorgado [almacén de claves de permisos tooaccess](#provide-permissions-to-azure-backup) que contiene las claves, cifran de secretos para máquinas virtuales.
 
 ## <a name="backup-encrypted-vm"></a>Copia de seguridad cifrada de máquina virtual
-Utilice los pasos siguientes para establecer el objetivo de copia de seguridad, definir directivas, configurar elementos y desencadenar la copia de seguridad.
+Usar Hola siguiente objetivo de copia de seguridad de pasos tooset, definir directivas, configurar elementos y copia de seguridad de desencadenador.
 
 ### <a name="configure-backup"></a>Configuración de la copia de seguridad
-1. Si ya tiene abierto un almacén de Recovery Services, vaya al siguiente paso. Si no tiene abierto un almacén de Recovery Services, pero está en Azure Portal, en el menú del concentrador, haga clic en **Examinar**.
+1. Si ya tiene un almacén de servicios de recuperación abierto, continúe toonext paso. Si no tiene un abierto de almacén de servicios de recuperación, pero están en hello portal de Azure, en el menú del concentrador hello, haga clic en **examinar**.
 
-   * En la lista de recursos, escriba **Recovery Services**.
-   * Cuando comience a escribir, la lista se filtrará en función de la entrada. Haga clic en **Almacenes de Recovery Services**cuando lo vea.
+   * En la lista de Hola de recursos, escriba **servicios de recuperación**.
+   * Cuando empiece a escribir, Hola filtros de la lista con los datos especificados. Haga clic en **Almacenes de Recovery Services**cuando lo vea.
 
-      ![Creación del almacén de Recovery Services, paso 1](./media/backup-azure-vms-encryption/browse-to-rs-vaults.png) <br/>
+      ![Creación del almacén de Servicios de recuperación, paso 1](./media/backup-azure-vms-encryption/browse-to-rs-vaults.png) <br/>
 
-     Aparece la lista de almacenes de Recovery Services. En la lista de almacenes de Recovery Services, seleccione un almacén.
+     aparece en la lista de Hola de almacenes de servicios de recuperación. En lista de Hola de almacenes de servicios de recuperación, seleccione un almacén.
 
-     Se abre el panel del almacén seleccionado.
-2. En la lista de elementos que aparece en el almacén, haga clic en **Backup** para abrir la hoja Backup.
+     de este modo se abrirá el panel de Hello almacén seleccionado.
+2. En la lista de Hola de elementos que aparece en el almacén, haga clic en **copia de seguridad** hoja de copia de seguridad de tooopen Hola.
 
       ![Hoja Backup abierta](./media/backup-azure-vms-encryption/select-backup.png)
-3. En la hoja Backup, haga clic en **Objetivo de Backup** para abrir la hoja del mismo nombre.
+3. En la hoja de copia de seguridad de hello, haga clic en **objetivo de copia de seguridad** hoja de tooopen Hola objetivo de copia de seguridad.
 
       ![Hoja Escenario abierta](./media/backup-azure-vms-encryption/select-backup-goal-one.png)
-4. En la hoja Objetivo de Backup, establezca **¿Dónde se ejecuta su carga de trabajo?** en Azure y **What do you want to backup** (¿De qué desea realizar copias de seguridad?) en Máquina virtual. A continuación, haga clic en **Aceptar**.
+4. En la hoja de objetivo de copia de seguridad de hello, establezca **donde se está ejecutando la carga de trabajo** tooAzure y **especifique qué desea toobackup** tooVirtual automático, a continuación, haga clic en **Aceptar**.
 
-   La hoja Objetivo de Backup se cierra y se abre la hoja Directiva de Backup.
+   hoja de objetivo de copia de seguridad de Hola se cierra y se abre la hoja de directiva de copia de seguridad de Hola.
 
    ![Hoja Escenario abierta](./media/backup-azure-vms-encryption/select-backup-goal-two.png)
-5. En la hoja Directiva de Backup, seleccione la que quiera aplicar al almacén y haga clic en **Aceptar**.
+5. En la hoja de la directiva de copia de seguridad de hello, seleccione la directiva de copia de seguridad de Hola que desee tooapply toohello almacén y haga clic en **Aceptar**.
 
       ![Seleccionar directiva de copia de seguridad](./media/backup-azure-vms-encryption/setting-rs-backup-policy-new.png)
 
-    En los detalles se muestran los datos de la directiva predeterminada. Si desea crear una directiva, seleccione **Crear nuevo** en el menú desplegable. Al hacer clic en **Aceptar**, la directiva de copia de seguridad se asocia con el almacén.
+    se muestran detalles de Hello de la directiva predeterminada de hello en los detalles de Hola. Si desea toocreate una directiva, seleccione **crear nuevo** desde el menú desplegable de Hola. Una vez que pulses **Aceptar**, directiva de copia de seguridad de hello está asociado con el almacén de Hola.
 
-    A continuación, elija las máquinas virtuales que se asociarán con el almacén.
-6. Elija las máquinas virtuales cifradas que se asociarán con la directiva especificada y haga clic en **Aceptar**.
+    A continuación, elija hello tooassociate de máquinas virtuales con el almacén de Hola.
+6. Elija Hola cifra máquinas virtuales tooassociate con hello especifica la directiva y haga clic en **Aceptar**.
 
       ![Selección de las máquinas virtuales cifradas](./media/backup-azure-vms-encryption/selected-encrypted-vms.png)
-7. Esta página muestra un mensaje sobre el almacén de claves asociado a las máquinas virtuales cifradas seleccionadas. El servicio de Backup requiere acceso de solo lectura a las claves y secretos del almacén de claves. Este utiliza estos permisos para la copia de seguridad de la clave y el secreto, junto con la de las máquinas virtuales asociadas. **Debe conceder permisos al servicio de copia de seguridad para acceder al almacén de claves para que las copias de seguridad funcionen**. Puede proporcionar estos permisos siguiendo los [pasos mencionados en la siguiente sección](#provide-permissions-to-azure-backup).
+7. Esta página muestra un mensaje sobre el almacén de claves seleccionadas asociado toohello cifrado las máquinas virtuales. Servicio de copia de seguridad requiere claves de acceso de solo lectura toohello y secretos en el almacén de claves de Hola. Usa estas claves de toobackup de permisos y secreto, junto con hello asociados a las máquinas virtuales. **Debe conceder permisos toobackup servicio tooaccess el almacén de claves para las copias de seguridad toowork**. Puede proporcionar estos permisos con [pasos enumerados en la siguiente sección de hello](#provide-permissions-to-azure-backup).
 
       ![Mensaje de máquinas virtuales cifradas](./media/backup-azure-vms-encryption/encrypted-vm-warning-message.png)
 
-      Ahora que ha definido toda la configuración del almacén, en la hoja Backup, haga clic en Habilitar Backup en la parte inferior de la página. Habilitar Backup permite implementar la directiva en el almacén y en las máquinas virtuales.
-8. La siguiente fase de la preparación es instalar el agente de máquina virtual o comprobar que esté instalado. Para ello, utilice los pasos mencionados en el artículo [Preparación del entorno para la copia de seguridad de máquinas virtuales implementadas según el modelo de Resource Manager](backup-azure-arm-vms-prepare.md).
+      Ahora que ha definido toda la configuración de almacén de hello, en la hoja de copia de seguridad de hello, haga clic en habilitar la copia de seguridad final Hola de página Hola. Habilitar la copia de seguridad implementa el almacén de toohello de directiva de Hola y Hola las máquinas virtuales.
+8. Hello siguiente fase de preparación está instalando Agente de máquina virtual de Hola o realizar Hola seguro de agente de máquina virtual está instalado. toodo Hola mismo, siga los pasos de hello mencionados en el artículo hello [preparar su entorno para copia de seguridad](backup-azure-arm-vms-prepare.md).
 
 ### <a name="triggering-backup-job"></a>Desencadenamiento del trabajo de copia de seguridad
-Utilice los pasos mencionados en el artículo [Copia de seguridad de máquinas virtuales de Azure en un almacén de Recovery Services](backup-azure-arm-vms.md) para desencadenar el trabajo de copia de seguridad.
+Siga los pasos de hello mencionados en el artículo hello [almacén de servicios de máquinas virtuales de Azure copia de seguridad toorecovery](backup-azure-arm-vms.md) trabajo de copia de seguridad de tootrigger.
 
 ### <a name="continue-backups-of-already-backed-up-vms-with-encryption-enabled"></a>Continuar copias de seguridad de máquinas virtuales ya copiadas con el cifrado habilitado  
-Si tiene máquinas virtuales cuya copia de seguridad ya se ha realizado en el almacén de Recovery Services y en las que se ha habilitado el cifrado en un momento posterior, debe conceder permisos al servicio de copia de seguridad para acceder al almacén de claves para que las copias de seguridad continúen. Puede proporcionar estos permisos siguiendo los [pasos de la siguiente sección](#provide-permissions-to-azure-backup) o mediante los pasos de PowerShell que se indican en la sección sobre cómo **habilitar Backup** de la [documentación de PowerShell](backup-azure-vms-automation.md). 
+Si tiene máquinas virtuales ya que se va a copia de seguridad en el almacén de servicios de recuperación y se han habilitado para el cifrado en un momento posterior, debe dar permisos toobackup servicio tooaccess el almacén de claves para las copias de seguridad toocontinue. Puede proporcionar estos permisos con [los pasos de la siguiente sección de hello](#provide-permissions-to-azure-backup) o mediante PowerShell pasos mencionados en **habilitar la copia de seguridad** sección de [documentación de PowerShell](backup-azure-vms-automation.md). 
 
-## <a name="provide-permissions-to-azure-backup"></a>Otorgamiento de permisos a Azure Backup
-Utilice los pasos siguientes para proporcionar los permisos pertinentes a Azure Backup para acceder al almacén de claves y realizar copias de seguridad de VM cifradas:
+## <a name="provide-permissions-tooazure-backup"></a>Proporcionar permisos tooAzure copia de seguridad
+Usar hello siguiendo los pasos tooprovide los permisos relevantes tooAzure copia de seguridad tooaccess el almacén de claves y realizar copia de seguridad de máquinas virtuales cifradas:
 1. Seleccione **Más servicios** y busque **Key Vaults**.
 
     ![Búsqueda del almacén de claves](./media/backup-azure-vms-encryption/search-key-vault.png)
     
-2. En la lista de almacenes de claves, seleccione el almacén de claves asociado a la VM cifrada de la que es necesario hacer una copia de seguridad.
+2. En lista de Hola de almacenes de clave, seleccione el almacén de claves de hello asociado a VM cifrada, que debe toobe copia de seguridad.
 
      ![Selección de almacén de claves](./media/backup-azure-vms-encryption/select-key-vault.png)
      
@@ -99,7 +99,7 @@ Utilice los pasos siguientes para proporcionar los permisos pertinentes a Azure 
 
     ![Agregar directiva de acceso](./media/backup-azure-vms-encryption/select-key-vault-access-policy.png)
     
-4. Haga clic en **Seleccionar la entidad de seguridad** y escriba **servicio de administración de copias de seguridad** en la barra de búsqueda. 
+4. Haga clic en **principal seleccione** y tipo **servicio de administración de copias de seguridad** en la barra de búsqueda de Hola. 
 
     ![Búsqueda del servicio de copia de seguridad](./media/backup-azure-vms-encryption/search-backup-service.png)
     
@@ -107,7 +107,7 @@ Utilice los pasos siguientes para proporcionar los permisos pertinentes a Azure 
 
     ![Selección del servicio de copia de seguridad](./media/backup-azure-vms-encryption/select-backup-service.png)
     
-6. Seleccione **Azure Backup** en el cuadro desplegable Configurar a partir de una plantilla. Rellena previamente los permisos necesarios en los cuadros desplegables Permisos clave y Permisos de secretos. 
+6. Seleccione **Azure Backup** en el cuadro desplegable Configurar a partir de una plantilla. Rellenan previamente permisos Hola necesario en permisos de clave y secretos permisos de lista desplegable. 
 
     ![Selección de Azure Backup](./media/backup-azure-vms-encryption/select-backup-template.png)
     
@@ -115,22 +115,22 @@ Utilice los pasos siguientes para proporcionar los permisos pertinentes a Azure 
 
     ![Directiva de acceso del servicio Backup](./media/backup-azure-vms-encryption/backup-service-access-policy.png)
     
-8. Haga clic en **Guardar**. Esto le proporcionará los permisos necesarios para Azure Backup.
+8. Haga clic en **Guardar**. Esto le dará Hola requerido permisos tooAzure copia de seguridad.
 
     ![Directiva de acceso del servicio Backup](./media/backup-azure-vms-encryption/save-access-policy.png)
 
 Una vez que los permisos se han proporcionado correctamente, puede continuar con la habilitación de la copia de seguridad para VM cifradas.
 
 ## <a name="restore-encrypted-vm"></a>Restauración de máquinas virtuales cifradas
-Para restaurar una máquina virtual cifrada, en primer lugar es preciso restaurar los discos, para lo que hay que seguir los pasos que se indican en la sección **Restauración de discos de copia de seguridad** de [Elección de una configuración de restauración para una máquina virtual](backup-azure-arm-restore-vms.md#choosing-a-vm-restore-configuration). Después de eso, puede usar una de las siguientes opciones:
-* Use los pasos de PowerShell que se indican en [Creación de una máquina virtual a partir de discos restaurados](backup-azure-vms-automation.md#create-a-vm-from-restored-disks) para crear una máquina virtual completa a partir de discos restaurados.
-* O bien, [usar una plantilla generada como parte de los discos de restauración](backup-azure-arm-restore-vms.md#use-templates-to-customize-restore-vm) para crear máquinas virtuales a partir de discos restaurados. Las plantillas pueden usarse únicamente para los puntos de recuperación creados después del 26 de abril de 2017.
+toorestore cifrado VM, usar discos de restaurar primero los pasos mencionados en sección **restaurar copia de seguridad discos** en [configuración de restauración de VM elegir](backup-azure-arm-restore-vms.md#choosing-a-vm-restore-configuration). Después de eso, puede usar uno de hello siguientes opciones:
+* Usar pasos de PowerShell de hello mencionados en [crear una máquina virtual a partir de discos restaurados](backup-azure-vms-automation.md#create-a-vm-from-restored-disks) toocreate completa VM desde discos restaurados.
+* OR, [utilizar una plantilla generada como parte de los discos restaurar](backup-azure-arm-restore-vms.md#use-templates-to-customize-restore-vm) toocreate máquinas virtuales desde los discos restaurados. Las plantillas pueden usarse únicamente para los puntos de recuperación creados después del 26 de abril de 2017.
 
 ## <a name="troubleshooting-errors"></a>Solución de errores
 | Operación | Detalles del error | Resolución |
 | --- | --- | --- |
-| Backup |La validación produjo un error debido a que la máquina virtual se ha cifrado solo con BEK. Las copias de seguridad se pueden habilitar únicamente para las máquinas virtuales cifradas con BEK y KEK. |Las máquinas virtuales deben cifrarse mediante BEK y KEK. En primer lugar, descifre la VM y cífrela mediante BEK y KEK. Habilite la copia de seguridad una vez que la VM esté cifrada mediante BEK y KEK. Conozca más sobre cómo [descifrar y cifrar la VM](../security/azure-security-disk-encryption.md).  |
-| Restauración |No se puede restaurar esta máquina virtual cifrada porque no existe el almacén de claves asociado con esta máquina virtual. |Cree el almacén de claves mediante los pasos descritos en [Introducción a Azure Key Vault](../key-vault/key-vault-get-started.md). Consulte el artículo [Restore key vault key and secret using Azure Backup](backup-azure-restore-key-secret.md) (Restauración de la clave y secreto del almacén de claves mediante Azure Backup) para restaurar la clave y el secreto si estos no existen. |
-| Restauración |No se puede restaurar esta máquina virtual cifrada porque no existe la clave y el secreto asociados con esta máquina virtual. |Consulte el artículo [Restore key vault key and secret using Azure Backup](backup-azure-restore-key-secret.md) (Restauración de la clave y secreto del almacén de claves mediante Azure Backup) para restaurar la clave y el secreto si estos no existen. |
-| Restauración |El servicio Backup no tiene autorización para acceder a los recursos de su suscripción. |Como ya se ha indicado, en primer lugar es preciso restaurar los discos, para lo que hay que seguir los pasos especificados en la sección **Restauración de discos de copia de seguridad** de [Elección de una configuración de restauración para una máquina virtual](backup-azure-arm-restore-vms.md#choosing-a-vm-restore-configuration). Después, debe usar PowerShell para [crear una máquina virtual a partir de discos restaurados](backup-azure-vms-automation.md#create-a-vm-from-restored-disks). |
-|Copia de seguridad | El servicio Azure Backup no tiene los permisos suficientes en Key Vault para realizar copias de seguridad de máquinas virtuales cifradas | La máquina virtual debe cifrarse con la clave de cifrado BitLocker y la clave de cifrado de claves. Después de eso, debe habilitarse la copia de seguridad.  Se deben proporcionar estos permisos al servicio Backup mediante los [pasos mencionados en la sección anterior](#provide-permissions-to-azure-backup) o mediante los pasos de PowerShell que se indican en la sección **Habilitar protección** de la documentación de PowerShell en [Uso de los cmdlets AzureRM.RecoveryServices.Backup para realizar copias de seguridad de máquinas virtuales](backup-azure-vms-automation.md#back-up-azure-vms). |  
+| Backup |La validación produjo un error debido a que la máquina virtual se ha cifrado solo con BEK. Las copias de seguridad se pueden habilitar únicamente para las máquinas virtuales cifradas con BEK y KEK. |Las máquinas virtuales deben cifrarse mediante BEK y KEK. En primer lugar Hola VM de descifrar y cifrar mediante BEK y KEK. Habilite la copia de seguridad una vez que la VM esté cifrada mediante BEK y KEK. Obtener más información acerca de cómo puede [descifrar y cifrar Hola VM](../security/azure-security-disk-encryption.md)  |
+| Restauración |No se puede restaurar esta máquina virtual cifrada porque no existe el almacén de claves asociado con esta máquina virtual. |Cree el almacén de claves mediante los pasos descritos en [Introducción a Azure Key Vault](../key-vault/key-vault-get-started.md). Consulte el artículo de hello [restaurar clave de almacén de claves y el secreto mediante copia de seguridad de Azure](backup-azure-restore-key-secret.md) toorestore clave y el secreto si son no está presente. |
+| Restauración |No se puede restaurar esta máquina virtual cifrada porque no existe la clave y el secreto asociados con esta máquina virtual. |Consulte el artículo de hello [restaurar clave de almacén de claves y el secreto mediante copia de seguridad de Azure](backup-azure-restore-key-secret.md) toorestore clave y el secreto si son no está presente. |
+| Restauración |Servicio de copia de seguridad no tiene recursos tooaccess de autorización en su suscripción. |Como ya se ha indicado, en primer lugar es preciso restaurar los discos, para lo que hay que seguir los pasos especificados en la sección **Restauración de discos de copia de seguridad** de [Elección de una configuración de restauración para una máquina virtual](backup-azure-arm-restore-vms.md#choosing-a-vm-restore-configuration). Después de que éste, usuario PowerShell demasiado[crear una máquina virtual a partir de discos restaurados](backup-azure-vms-automation.md#create-a-vm-from-restored-disks). |
+|Backup | Servicio de copia de seguridad de Azure no tiene suficientes permisos tooKey el almacén de copia de seguridad de cifrado las máquinas virtuales | La máquina virtual debe cifrarse con la clave de cifrado BitLocker y la clave de cifrado de claves. Después de eso, debe habilitarse la copia de seguridad.  Servicio de copia de seguridad le proporcionará estos permisos con [pasos enumerados en la sección de hello anterior](#provide-permissions-to-azure-backup) o mediante los pasos de PowerShell mencionados en hello **habilitar la protección** sección de hello PowerShell documentación en [tooback de cmdlets de uso AzureRM.RecoveryServices.Backup las máquinas virtuales](backup-azure-vms-automation.md#back-up-azure-vms). |  

@@ -1,6 +1,6 @@
 ---
-title: "Cómo usar la API de Engagement en Windows Phone Silverlight"
-description: "Cómo usar la API de Engagement en Windows Phone Silverlight"
+title: "aaaHow tooUse Hola API de interacción de Windows Phone Silverlight"
+description: "¿Cómo tooUse Hola API de interacción de Windows Phone Silverlight"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,40 +14,40 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: ec8b6c13ea052c8063dfde4321cdd286ab6cb817
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1e84be95cc910be7f1227b4ae60eb483a1939284
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-the-engagement-api-on-windows-phone-silverlight"></a>Cómo usar la API de Engagement en Windows Phone Silverlight
-Este documento es un complemento al documento [Cómo integrar Mobile Engagement en su aplicación de Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md). En él se proporciona información detallada acerca de cómo usar la API de Engagement para informar de las estadísticas de la aplicación.
+# <a name="how-toouse-hello-engagement-api-on-windows-phone-silverlight"></a>¿Cómo tooUse Hola API de interacción de Windows Phone Silverlight
+Este documento es un complemento toohello [cómo toointegrate Mobile Engagement en la aplicación de Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md). Proporciona detalles de profundidad acerca de cómo toouse Hola interacción API tooreport las estadísticas de la aplicación.
 
-Si solo desea que Engagement informe sobre las sesiones, las actividades, los bloqueos y la información técnica de la aplicación, la manera más sencilla consiste en hacer que las subclases `PhoneApplicationPage` hereden de la clase `EngagementPage`.
+Si sólo desea interacción tooreport sesiones, actividades, bloqueos e información técnica de la aplicación, hello más sencillo cierto es toomake todos los su `PhoneApplicationPage` subclases heredan de hello `EngagementPage` clase.
 
-Si desea hacer más, por ejemplo, si necesita informar de eventos, errores y trabajos específicos de la aplicación, o si debe informar de las actividades de la aplicación de manera diferente de la que se implementa en las clases `EngagementPage`, deberá usar la API de Engagement.
+Si desea que toodo más, por ejemplo, si necesita eventos específicos de aplicación tooreport, errores y tareas, o si tienes tooreport actividades de la aplicación de forma diferente de Hola uno implementado en hello `EngagementPage` clases, deberá toouse Hola API de contratación.
 
-La API de Engagement la proporciona la clase `EngagementAgent` . Puede acceder a esos métodos a través de `EngagementAgent.Instance`.
+Hello interacción API proporcionada por hello `EngagementAgent` clase. Puede tener acceso a los métodos de toothose a través de `EngagementAgent.Instance`.
 
-Incluso si no se ha inicializado el módulo de agente, las llamadas a la API se aplazan y se ejecutará de nuevo cuando el agente está disponible.
+Incluso si no se ha inicializado el módulo de agente de hello, cada API toohello de llamada se pospone y se ejecutará de nuevo cuando el agente Hola está disponible.
 
 ## <a name="engagement-concepts"></a>Conceptos de Engagement
-En las siguientes secciones se detallan los conceptos de Mobile Engagement para la plataforma Windows Phone.
+Hola siguientes piezas refinar Hola Mobile Engagement conceptos para la plataforma de Windows Phone Hola.
 
 ### <a name="session-and-activity"></a>`Session` y `Activity`
-Una *actividad* suele estar asociada con una página de la aplicación. Es decir, la *actividad* se inicia cuando la página se muestra y se detiene cuando se cierra la página. Este es el caso cuando la integración del SDK de Engagement se realiza mediante la clase `EngagementPage`.
+Un *actividad* suele estar asociado a una página de aplicación hello, que es hello toosay *actividad* se inicia cuando la página de Hola se muestra y se detiene cuando se cierra la página de Hola: se trata de los casos de hello cuando hello Engagement SDK se integra mediante hello `EngagementPage` clase.
 
-Sin embargo, las *actividades* también se pueden controlar manualmente mediante la API de Engagement. Esto permite dividir una página determinada en varias subpartes para obtener más detalles sobre el uso de esta página (por ejemplo, la frecuencia y la duración con las que se usan los cuadros de diálogo en esta página).
+Pero *actividades* también se puede controlar manualmente mediante el uso de API de interacción de Hola. Esto permite toosplit una página determinada en varios tooget de partes de sub Hola a más detalles sobre el uso de esta página (por ejemplo tooknown con qué frecuencia y cuánto tiempo se utilizan los cuadros de diálogo dentro de esta página).
 
 ## <a name="reporting-activities"></a>Informes sobre actividades
 ### <a name="user-starts-a-new-activity"></a>El usuario inicia una nueva actividad
 #### <a name="reference"></a>Referencia
             void StartActivity(string name, Dictionary<object, object> extras = null)
 
-Debe llamar a `StartActivity()` cada vez que cambie la actividad de usuario. La primera llamada a esta función inicia una nueva sesión de usuario.
+Necesita toocall `StartActivity()` cambia cada actividad de usuario de hello de tiempo. Hola primera llamada toothis función inicia una nueva sesión de usuario.
 
 > [!IMPORTANT]
-> El SDK llaman automáticamente al método EndActivity cuando se cierra la aplicación. Por lo tanto, es MUY recomendable llamar al método StartActivity cada vez que cambie la actividad del usuario y NUNCA llamar al método EndActivity, ya que esto obliga la finalización de la sesión actual.
+> Hola SDK automáticamente llame al método EndActivity de hello cuando se cierra la aplicación hello. Por lo tanto, se recomienda encarecidamente método de toocall hello StartActivity cada vez que ha finalizado la actividad de hello del cambio de usuario de Hola y llamada tooNEVER Hola método EndActivity, desde una llamada a este método obliga a toobe de la sesión actual de Hola.
 > 
 > 
 
@@ -58,7 +58,7 @@ Debe llamar a `StartActivity()` cada vez que cambie la actividad de usuario. La 
 #### <a name="reference"></a>Referencia
             void EndActivity()
 
-Cuando el usuario finaliza su última actividad, se debe llamar a `EndActivity()` al menos una vez. De esta manera se informa al SDK de Engagement de que el usuario está inactivo y que la sesión del usuario se debe cerrar cuando expire el tiempo de espera de la misma (si se llama a `StartActivity()` antes de que expire dicho tiempo de espera, la sesión simplemente continúa).
+Necesita toocall `EndActivity()` al menos una vez cuando el usuario de hello finaliza su última actividad. Este modo, informa Hola expirará Engagement SDK que usuario Hola está inactivo y que la sesión de usuario de hello necesario toobe una vez cerrado Hola tiempo de espera de sesión (si se llama a `StartActivity()` antes de que expire el tiempo de espera de sesión de hello, simplemente continúa sesión hello).
 
 #### <a name="example"></a>Ejemplo
             EngagementAgent.Instance.EndActivity();
@@ -68,12 +68,12 @@ Cuando el usuario finaliza su última actividad, se debe llamar a `EndActivity()
 #### <a name="reference"></a>Referencia
             void StartJob(string name, Dictionary<object, object> extras = null)
 
-Puede usar el trabajo para hace un seguimiento de tareas determinadas durante un período de tiempo.
+Puede utilizar tareas de hello trabajo tootrack ciertos durante un período de tiempo.
 
 #### <a name="example"></a>Ejemplo
             // An upload begins...
 
-            // Set the extras
+            // Set hello extras
             var extras = new Dictionary<object, object>();
             extras.Add("title", "avatar");
             extras.Add("type", "image");
@@ -84,11 +84,11 @@ Puede usar el trabajo para hace un seguimiento de tareas determinadas durante un
 #### <a name="reference"></a>Referencia
             void EndJob(string name)
 
-Cuando haya finalizado una tarea de la que un trabajo realiza el seguimiento, se debe llamar al método EndJob para este trabajo al proporcionar su nombre.
+Tan pronto como se ha terminado una tarea que realiza el seguimiento de un trabajo, se debería llamar a hello EndJob método para este trabajo, proporcionando el nombre del trabajo de Hola.
 
 #### <a name="example"></a>Ejemplo
-            // In the previous section, we started an upload tracking with a job
-            // Then, the upload ends
+            // In hello previous section, we started an upload tracking with a job
+            // Then, hello upload ends
 
             EngagementAgent.Instance.EndJob("uploadData");
 
@@ -103,7 +103,7 @@ Hay tres tipos de eventos:
 #### <a name="reference"></a>Referencia
             void SendEvent(string name, Dictionary<object, object> extras = null)
 
-Los eventos independientes se pueden producir fuera del contexto de una sesión.
+Pueden producirse eventos de independiente fuera de contexto de Hola de una sesión.
 
 #### <a name="example"></a>Ejemplo
             EngagementAgent.Instance.SendEvent("event", extra);
@@ -112,7 +112,7 @@ Los eventos independientes se pueden producir fuera del contexto de una sesión.
 #### <a name="reference"></a>Referencia
             void SendSessionEvent(string name, Dictionary<object, object> extras = null)
 
-Los eventos de sesión se suelen usar para notificar las acciones que realiza el usuario durante su sesión.
+Eventos de sesión son acciones de Hola de tooreport utilizadas normalmente realizadas por un usuario durante su sesión.
 
 #### <a name="example"></a>Ejemplo
 **Sin datos:**
@@ -133,7 +133,7 @@ Los eventos de sesión se suelen usar para notificar las acciones que realiza el
 #### <a name="reference"></a>Referencia
             void SendJobEvent(string eventName, string jobName, Dictionary<object, object> extras = null)
 
-Los eventos de trabajo se suelen usar para notificar las acciones que realiza un usuario durante un trabajo.
+Eventos de trabajo son acciones de Hola de tooreport utilizadas normalmente realizadas por un usuario durante un trabajo.
 
 #### <a name="example"></a>Ejemplo
             EngagementAgent.Instance.SendJobEvent("eventName", "jobName", extras);
@@ -149,7 +149,7 @@ Hay tres tipos de errores:
 #### <a name="reference"></a>Referencia
             void SendError(string name, Dictionary<object, object> extras = null)
 
-Al contrario de los errores de sesión, los errores independientes se pueden producir fuera del contexto de una sesión.
+Errores de toosession contrarias, pueden producirse errores de independiente fuera de contexto de Hola de una sesión.
 
 #### <a name="example"></a>Ejemplo
             EngagementAgent.Instance.SendError("errorName", extras);
@@ -158,7 +158,7 @@ Al contrario de los errores de sesión, los errores independientes se pueden pro
 #### <a name="reference"></a>Referencia
             void SendSessionError(string name, Dictionary<object, object> extras = null)
 
-Los errores de sesión suelen usarse para notificar los errores que afectan al usuario durante su sesión.
+Sesión errores son normalmente utilizados tooreport Hola impactar al usuario de Hola durante su sesión.
 
 #### <a name="example"></a>Ejemplo
             EngagementAgent.Instance.SendSessionError("errorName", extra);
@@ -167,13 +167,13 @@ Los errores de sesión suelen usarse para notificar los errores que afectan al u
 #### <a name="reference"></a>Referencia
             void SendJobError(string errorName, string jobName, Dictionary<object, object> extras = null)
 
-Los errores pueden estar relacionados con un trabajo en ejecución en lugar de la sesión del usuario actual.
+Los errores pueden ser tooa relacionado ejecutando el trabajo en lugar de ser relacionados con la sesión del usuario actual toohello.
 
 #### <a name="example"></a>Ejemplo
             EngagementAgent.Instance.SendJobError("errorName", "jobname", extra);
 
 ## <a name="reporting-crashes"></a>Informes de bloqueos
-El agente proporciona dos métodos para tratar los bloqueos.
+agente de Hello proporciona dos toodeal métodos con los bloqueos.
 
 ### <a name="send-an-exception"></a>Enviar una excepción
 #### <a name="reference"></a>Referencia
@@ -184,26 +184,26 @@ Puede enviar una excepción en cualquier momento al llamar a:
 
             EngagementAgent.Instance.SendCrash(aCatchedException);
 
-También puede usar un parámetro opcional para finalizar la sesión de Engagement al mismo tiempo que se envía el bloqueo. Para ello, llame a:
+También puede utilizar una sesión de interacción de parámetro opcional tooterminate hello en hello mismo tiempo que el envío de bloqueo de Hola. por lo tanto, llame la toodo:
 
             EngagementAgent.Instance.SendCrash(new Exception("example"), terminateSession: true);
 
-Si lo hace, la sesión y los trabajos se cerrarán después de enviar el bloqueo.
+Si lo hace, trabajos y sesión Hola se cerrará inmediatamente después de enviar el bloqueo de Hola.
 
 ### <a name="send-an-unhandled-exception"></a>Enviar una excepción no controlada
 #### <a name="reference"></a>Referencia
             void SendCrash(ApplicationUnhandledExceptionEventArgs e)
 
-Engagement también proporciona un método para enviar excepciones no controladas. Esto es especialmente útil cuando se usa dentro del controlador de eventos UnhandledException de Silverlight.
+Interacción también proporciona un excepciones de toosend no controlada por el método. Esto es especialmente útil cuando se usa dentro del controlador de eventos de hello silverlight UnhandledException.
 
-Este método **SIEMPRE** finalizará la sesión y los trabajos de Engagement después de su invocación.
+Este método le **siempre** finalizar sesión de interacción de Hola y trabajos tras la llamada.
 
 #### <a name="example"></a>Ejemplo
-Puede usarlo para implementar su propio controlador UnhandledException (especialmente si deshabilitó la característica de informes de errores automáticos de Engagement). Por ejemplo, en el método `Application_UnhandledException` del archivo `App.xaml.cs`:
+Puede usar tooimplement su propio controlador UnhandledException (especialmente si ha deshabilitado la característica de interacción de informes de bloqueo automática hello). Por ejemplo, en hello `Application_UnhandledException` método de hello `App.xaml.cs` archivo:
 
             // In your App.xaml.cs file
 
-            // Code to execute on Unhandled Exceptions
+            // Code tooexecute on Unhandled Exceptions
             private void Application_UnhandledException(object sender, ApplicationUnhandledExceptionEventArgs e)
             {
               // your own code
@@ -215,15 +215,15 @@ Puede usarlo para implementar su propio controlador UnhandledException (especial
 ### <a name="reference"></a>Referencia
             void OnActivated(ActivatedEventArgs e)
 
-Cuando el usuario se desplaza hacia delante, alejándose de una aplicación, después de que se genere el evento Desactivado, el sistema operativo intentará poner la aplicación en un estado inactivo. A continuación, la aplicación se encuentra en un estado conocido como "extinción". En este proceso, la aplicación se finaliza, pero se conservan algunos datos sobre su estado, así como las páginas individuales dentro de la aplicación.
+Al usuario Hola se desplaza hacia delante, fuera de una aplicación, después de que se genera el evento de hello desactivado, sistema operativo de hello tratará de aplicación de hello tooput en estado inactivo. A continuación, la aplicación hello es extinción. En este proceso se termina una aplicación, pero se conservan algunos datos sobre el estado de Hola de hello páginas de aplicación y Hola individuales dentro de la aplicación hello.
 
-Tiene que insertar `EngagementAgent.Instance.OnActivated(e)` en el método `Application_Activated` desde el archivo App.xaml.cs para restablecer el agente de Engagement cuando la aplicación se haya puesto en estado de extinción.
+Tiene tooinsert `EngagementAgent.Instance.OnActivated(e)` en hello `Application_Activated` método de Hola de tooreset de archivo hello App.xaml.cs interacción agente cuando aplicación hello se ha desechado.
 
 ### <a name="example"></a>Ejemplo
             // Inside your App.xaml.cs file
 
-            // Code to execute when the application is activated (brought to foreground)
-            // This code will not execute when the application is first launched
+            // Code tooexecute when hello application is activated (brought tooforeground)
+            // This code will not execute when hello application is first launched
             private void Application_Activated(object sender, ActivatedEventArgs e)
             {
               EngagementAgent.Instance.OnActivated(e);
@@ -232,12 +232,12 @@ Tiene que insertar `EngagementAgent.Instance.OnActivated(e)` en el método `Appl
 ## <a name="device-id"></a>Identificador de dispositivo
             String GetDeviceId()
 
-Puede obtener el identificador del dispositivo de Engagement mediante una llamada a este método.
+Puede obtener Id. de dispositivo de interacción de hello mediante una llamada a este método.
 
 ## <a name="extras-parameters"></a>Parámetros adicionales
-Es posible adjuntar datos arbitrarios a un evento, un error, una actividad o un trabajo. Estos datos se pueden estructurar mediante un diccionario. Las claves y los valores pueden ser de cualquier tipo.
+Evento tooan adjunto, un error, una actividad o un trabajo, pueden ser datos arbitrarios. Estos datos se pueden estructurar mediante un diccionario. Las claves y los valores pueden ser de cualquier tipo.
 
-Los datos adicionales se serializan, de modo que si desea insertar su propio tipo de datos adicionales, tendrá que agregar un contrato de datos para este tipo.
+Por lo que si desea tooinsert su propio tipo de extras tener tooadd un contrato de datos para este tipo, se serializan datos adicionales.
 
 ### <a name="example"></a>Ejemplo
 Creamos una nueva clase "Person".
@@ -273,7 +273,7 @@ Creamos una nueva clase "Person".
               }
             }
 
-A continuación, agregaremos una instancia de `Person` a un dato adicional.
+A continuación, agregaremos un `Person` tooan de instancia adicional.
 
             Person person = new Person("Engagement Haddock", 51);
             var extras = new Dictionary<object, object>();
@@ -282,28 +282,28 @@ A continuación, agregaremos una instancia de `Person` a un dato adicional.
             EngagementAgent.Instance.SendEvent("Event", extras);
 
 > [!WARNING]
-> Si coloca otros tipos de objetos, asegúrese de que el método ToString() se implementa para devolver una cadena legible.
+> Si coloca otros tipos de objetos, asegúrese de que su método ToString() es tooreturn implementada una cadena legible.
 > 
 > 
 
-### <a name="limits"></a>Límites
+### <a name="limits"></a>límites
 #### <a name="keys"></a>simétricas
-Cada clave del objeto debe coincidir con la siguiente expresión regular:
+Cada clave Hola objeto debe coincidir Hola siguiente expresión regular:
 
 `^[a-zA-Z][a-zA-Z_0-9]*$`
 
 Esto significa que las claves deben empezar con al menos una letra, seguida de letras, dígitos o caracteres de subrayado (\_).
 
 #### <a name="size"></a>Tamaño
-Los datos adicionales están limitados a **1024** caracteres por llamada.
+Extras se limitan demasiado**1024** caracteres por llamada.
 
 ## <a name="reporting-application-information"></a>Información de la aplicación de informes
 ### <a name="reference"></a>Referencia
             void SendAppInfo(Dictionary<object, object> appInfos)
 
-Puede notificar manualmente la información de seguimiento (o cualquier otro tipo de información específica de la aplicación) mediante la función SendAppInfo().
+Puede crear informes manualmente información (o cualquier otra información específica de aplicación) con hello SendAppInfo() función de seguimiento.
 
-Tenga en cuenta que esta información se puede enviar de forma incremental: para un dispositivo dado solo se conservará el último valor de una clave determinada. Al igual que los datos adicionales de evento, use un elemento de Dictionary \<object, object\> para adjuntar información.
+Tenga en cuenta que esta información pueden enviarse de forma incremental: solo Hola valor más reciente de una clave determinada se mantendrán para un dispositivo determinado. Como eventos adicionales, utilice un diccionario\<(objeto), objeto\> tooattach informaciones.
 
 ### <a name="example"></a>Ejemplo
             Dictionary<object, object> appInfo = new Dictionary<object, object>()
@@ -316,23 +316,23 @@ Tenga en cuenta que esta información se puede enviar de forma incremental: para
 
 ### <a name="limits"></a>Límites
 #### <a name="keys"></a>simétricas
-Cada clave del objeto debe coincidir con la siguiente expresión regular:
+Cada clave Hola objeto debe coincidir Hola siguiente expresión regular:
 
 `^[a-zA-Z][a-zA-Z_0-9]*$`
 
 Esto significa que las claves deben empezar con al menos una letra, seguida de letras, dígitos o caracteres de subrayado (\_).
 
 #### <a name="size"></a>Tamaño
-La información de la aplicación está limitada a **1024** caracteres por llamada.
+Información de la aplicación se limitan demasiado**1024** caracteres por llamada.
 
-En el ejemplo anterior, el JSON que se envía al servidor tiene una longitud de 44 caracteres:
+Hola ejemplo anterior, Hola JSON enviado toohello server es 44 caracteres:
 
             {"subscription":"2013-12-07","premium":"true"}
 
 ## <a name="logging"></a>Registro
 ### <a name="enable-logging"></a>Habilitación del registro
-El SDK puede configurarse para generar registros de prueba en la consola del IDE.
-Estos registros no están activados de forma predeterminada. Para personalizar esto, actualice la propiedad `EngagementAgent.Instance.TestLogEnabled` a uno de los valores disponibles en la enumeración `EngagementTestLogLevel`, por ejemplo:
+Hola SDK puede ser tooproduce configurado los registros de pruebas en la consola de hello IDE.
+Estos registros no están activados de forma predeterminada. toocustomize, propiedad de hello actualización `EngagementAgent.Instance.TestLogEnabled` tooone del valor de hello disponible de hello `EngagementTestLogLevel` enumeración, por ejemplo:
 
             EngagementAgent.Instance.TestLogLevel = EngagementTestLogLevel.Verbose;
             EngagementAgent.Instance.Init();

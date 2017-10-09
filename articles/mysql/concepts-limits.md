@@ -1,5 +1,5 @@
 ---
-title: Limitaciones en Azure Database for MySQL | Microsoft Docs
+title: aaaLimitations en la base de datos de Azure para MySQL | Documentos de Microsoft
 description: "Describe las limitaciones de la versión preliminar en Azure Database for MySQL."
 services: mysql
 author: jasonh
@@ -9,19 +9,19 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
 ms.date: 05/10/2017
-ms.openlocfilehash: c61d70897b66c2ffee819ac98c38ab75000db907
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9c877c592bf640f62182d8761c9c51363882d706
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="limitations-in-azure-database-for-mysql-preview"></a>Limitaciones en Azure Database for MySQL (versión preliminar)
-El servicio Azure Database for MySQL se encuentra en versión preliminar pública. En las secciones siguientes se describen los límites de capacidad y funcionales en el servicio de base de datos.
+Hola base de datos de Azure para el servicio MySQL está en vista previa pública. Hello siguientes secciones describen los límites funcionales en el servicio de base de datos de Hola y capacidad.
 
 ## <a name="service-tier-maximums"></a>Máximos de nivel de servicio
 Azure Database for MySQL tiene varios niveles de servicio entre los que puede elegir al crear un servidor. Para obtener más información, consulte la [descripción sobre los elementos disponibles en cada nivel de servicio](concepts-service-tiers.md).  
 
-Hay un número máximo de conexiones, unidades de proceso y almacenamiento en cada nivel de servicio mientras el servicio esté en versión preliminar, y son los siguientes: 
+Hay un número máximo de conexiones, unidades de proceso y almacenamiento en cada nivel de servicio durante la vista previa del servicio de hello, como se indica a continuación: 
 
 |                            |                   |
 | :------------------------- | :---------------- |
@@ -39,7 +39,7 @@ Hay un número máximo de conexiones, unidades de proceso y almacenamiento en ca
 | Nivel de servicio Básico         | 1 TB              |
 | Nivel de servicio Estándar      | 1 TB              |
 
-Cuando se alcanzan demasiadas conexiones, puede recibir el error siguiente:
+Cuando se alcanzan demasiadas conexiones, recibirá Hola siguiente error:
 > ERROR 1040 (08004): Too many connections
 
 ## <a name="preview-functional-limitations"></a>Limitaciones funcionales de versión preliminar:
@@ -55,7 +55,7 @@ Cuando se alcanzan demasiadas conexiones, puede recibir el error siguiente:
 - El movimiento dinámico de servidores creados previamente entre grupo de suscripciones y recursos no se admite en este momento.
 
 ### <a name="point-in-time-restore"></a>Restauración a un momento dado:
-1.  La restauración a un nivel de servicio o unidades de proceso y tamaño de almacenamiento diferente no se admite.
+1.  No se admite la restauración de nivel de servicio de toodifferent o tamaño de unidades de proceso y almacenamiento.
 2.  La restauración a un servidor que se ha quitado no se admite en este momento.
 
 ## <a name="next-steps"></a>Pasos siguientes:

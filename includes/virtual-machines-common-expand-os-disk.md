@@ -1,18 +1,18 @@
 ## <a name="overview"></a>Información general
-Cuando cree una nueva máquina virtual (VM) en un grupo de recursos mediante la implementación de una imagen desde [Azure Marketplace](https://azure.microsoft.com/marketplace/), la unidad del sistema operativo predeterminada es de 127 GB. Aunque es posible agregar discos de datos a la máquina virtual (la cantidad depende de la SKU que haya elegido) y, además, se recomienda instalar aplicaciones y cargas de trabajo intensivas de CPU en estos discos de anexo, a menudo los clientes necesitan expandir la unidad del sistema operativo para admitir determinados escenarios, como los siguientes:
+Cuando se crea una nueva máquina virtual (VM) en un grupo de recursos mediante la implementación de una imagen de [Azure Marketplace](https://azure.microsoft.com/marketplace/), unidad de sistema operativo de hello predeterminada es 127 GB. Aunque es posible tooadd datos discos toohello VM (según cuántos Hola SKU que ha elegido) y además es tooinstall recomendada aplicaciones y cargas de trabajo intensivas de CPU en estos discos anexo, a menudo los clientes necesitan tooexpand Hola SO unidad toosupport determinados escenarios como la siguiente:
 
 1. Compatibilidad con aplicaciones heredadas que instalan componentes en la unidad del sistema operativo.
 2. Migración de una máquina virtual o un equipo físico desde local con una unidad del sistema operativo más grande.
 
 > [!IMPORTANT]
-> Azure tiene dos modelos de implementación diferentes para crear y trabajar con recursos: Resource Manager y el clásico. Este artículo trata sobre el uso del modelo de Resource Manager. Microsoft recomienda que las implementaciones más recientes usen el modelo del Administrador de recursos.
+> Azure tiene dos modelos de implementación diferentes para crear y trabajar con recursos: Resource Manager y el clásico. Este artículo incluye el uso de modelo del Administrador de recursos de Hola. Microsoft recomienda que más nuevas implementaciones de usar el modelo del Administrador de recursos de Hola.
 > 
 > 
 
-## <a name="resize-the-os-drive"></a>Cambio del tamaño de la unidad del sistema operativo
-En este artículo se va a realizar la tarea de cambiar el tamaño de la unidad del sistema operativo con módulos de Resource Manager de [Azure Powershell](/powershell/azureps-cmdlets-docs). Abra la ventana de Powershell o Powershell ISE en el modo administrativo y siga estos pasos:
+## <a name="resize-hello-os-drive"></a>Cambiar el tamaño de unidad de hello SO
+En este artículo se podrá llevar a cabo la tarea hello de cambiar el tamaño de unidad de hello SO mediante módulos de administrador de recursos de [Azure Powershell](/powershell/azureps-cmdlets-docs). Abra el ISE de Powershell o la ventana de Powershell en modo de administrador y siga Hola pasos siguientes:
 
-1. Inicie sesión en su cuenta de Microsoft Azure en el modo de administración de recursos y seleccione su suscripción de la siguiente manera:
+1. Inicio de sesión tooyour Microsoft Azure en modo de administración de recursos de la cuenta y seleccione su suscripción como se indica a continuación:
    
    ```Powershell
    Login-AzureRmAccount
@@ -24,17 +24,17 @@ En este artículo se va a realizar la tarea de cambiar el tamaño de la unidad d
    $rgName = 'my-resource-group-name'
    $vmName = 'my-vm-name'
    ```
-3. Obtenga una referencia a la máquina virtual de la siguiente manera:
+3. Obtener un tooyour referencia VM como se indica a continuación:
    
    ```Powershell
    $vm = Get-AzureRmVM -ResourceGroupName $rgName -Name $vmName
    ```
-4. Detenga la máquina virtual antes de cambiar el tamaño del disco de la siguiente forma:
+4. Detener Hola VM antes de cambiar el tamaño de disco de hello como se indica a continuación:
    
     ```Powershell
     Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName
     ```
-5. Este es el momento que hemos estado esperando. Configure el tamaño del disco del sistema operativo en el valor deseado y actualice la máquina virtual de la siguiente manera:
+5. Y aquí viene momento Hola que nos hemos estado esperando. Establecer tamaño de Hola de valor de hello SO discos toohello deseado y actualizar Hola VM como se indica a continuación:
    
    ```Powershell
    $vm.StorageProfile.OSDisk.DiskSizeGB = 1023
@@ -42,19 +42,19 @@ En este artículo se va a realizar la tarea de cambiar el tamaño de la unidad d
    ```
    
    > [!WARNING]
-   > El nuevo tamaño debe ser mayor que el tamaño de disco existente. El máximo permitido es de 1023 GB.
+   > Hola nuevo tamaño debe ser mayor que el tamaño del disco de hello existente. Hola máximo permitido es de 1023 GB.
    > 
    > 
-6. La actualización de la máquina virtual puede tardar unos segundos. Una vez que el comando acabe de ejecutarse, reinicie la máquina virtual de la siguiente forma:
+6. Hola actualizando máquina virtual puede tardar unos segundos. Una vez que el comando hello termina de ejecutarse, reinicie Hola VM como se indica a continuación:
    
    ```Powershell
    Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
    ```
 
-Eso es todo. Ahora RDP en la máquina virtual, abra Administración de equipos (o Administración de discos) y expanda la unidad utilizando el espacio recién asignado.
+Eso es todo. Ahora RDP en Hola de máquina virtual, abra Administración de equipos (o administración de discos) y expanda la unidad de hello mediante Hola espacio recién asignado.
 
 ## <a name="summary"></a>Resumen
-En este artículo, hemos usado los módulos de Azure Resource Manager de Powershell para expandir la unidad del sistema operativo de una máquina virtual de IaaS. El script completo se muestra a continuación para su referencia:
+En este artículo, se usan Azure Resource Manager módulos de Powershell tooexpand hello unidad de sistema operativo de una máquina virtual de IaaS. Reproducir a continuación es el script completo de Hola para su referencia:
 
 ```Powershell
 Login-AzureRmAccount
@@ -69,16 +69,16 @@ Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-Aunque en este artículo nos centramos principalmente en expandir el disco del sistema operativo de la máquina virtual, también puede utilizarse el script desarrollado para expandir los discos de datos conectados a la máquina virtual mediante el cambio de una sola línea de código. Por ejemplo, para expandir el primer disco de datos conectado a la máquina virtual, reemplace el objeto ```OSDisk``` de ```StorageProfile``` por la matriz ```DataDisks``` y utilice un índice numérico para obtener una referencia al primer disco de datos conectado, como se muestra a continuación:
+Aunque en este artículo, nos centramos principalmente en disco Hola SO de hello VM de expansión, hello desarrollado script también se puede usar para cambiar una sola línea de código de expansión Hola datos discos conectados toohello VM. Por ejemplo, tooexpand Hola primero los datos toohello adjunto VM de disco, reemplace hello ```OSDisk``` objeto de ```StorageProfile``` con ```DataDisks``` de matriz y usar un tooobtain índice numérico un disco de datos adjuntos de toofirst de referencia, tal y como se muestra a continuación:
 
 ```Powershell
 $vm.StorageProfile.DataDisks[0].DiskSizeGB = 1023
 ```
-Del mismo modo, puede hacer referencia a otros discos de datos conectados a la máquina virtual, ya sea mediante un índice, como se muestra arriba o con la propiedad del disco ```Name``` , como se muestra a continuación:
+Del mismo modo puede hacer referencia a otro discos de datos adjunto toohello virtual, ya sea mediante un índice, como se muestra arriba u Hola ```Name``` propiedad del disco de hello tal como se muestra a continuación:
 
 ```Powershell
 ($vm.StorageProfile.DataDisks | Where {$_.Name -eq 'my-second-data-disk'})[0].DiskSizeGB = 1023
 ```
 
-Si desea averiguar cómo conectar discos a una máquina virtual de Azure Resource Manager, consulte este [artículo](../articles/virtual-machines/windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Active esta casilla si desea toofind out cómo tooattach discos tooan VM de Azure Resource Manager, [artículo](../articles/virtual-machines/windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

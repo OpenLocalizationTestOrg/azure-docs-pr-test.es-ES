@@ -1,24 +1,24 @@
-## <a name="specify-the-behavior-of-the-iot-device"></a>Especificación del comportamiento del dispositivo IoT
+## <a name="specify-hello-behavior-of-hello-iot-device"></a>Especificar el comportamiento de Hola de dispositivos de IoT Hola
 
-La biblioteca de cliente del serializador de IoT Hub usa un modelo para especificar el formato de los mensajes que el dispositivo intercambia con IoT Hub.
+Hola biblioteca de cliente de centro de IoT serializador utiliza un formato de Hola de toospecify de modelo de intercambios de dispositivo de hello mensajes hello con centro de IoT.
 
-1. Agregue las siguientes declaraciones de variable después de las instrucciones `#include` . Sustituya los valores de marcador de posición [Device Id] y [Device Key] por los valores que anotó para el dispositivo en el panel de la solución de supervisión remota. Use el nombre de host de IoT Hub en el panel de la solución para sustituir [IoTHub Name]. Por ejemplo, si el nombre de host de IoT Hub es **contoso.azure-devices.net**, sustituya [IoTHub Name] por **contoso**:
+1. Agregar Hola siguiendo las declaraciones de variable después de hello `#include` instrucciones. Reemplace los valores de marcador de posición de hello [Id. de dispositivo] y [clave de dispositivo] con los valores indicados para el dispositivo en el panel de solución de supervisión remota de Hola. Usar hello Hostname del centro de IoT de hello solución panel tooreplace [el centro de IOT Name]. Por ejemplo, si el nombre de host de IoT Hub es **contoso.azure-devices.net**, sustituya [IoTHub Name] por **contoso**:
    
     ```c
     static const char* deviceId = "[Device Id]";
     static const char* connectionString = "HostName=[IoTHub Name].azure-devices.net;DeviceId=[Device Id];SharedAccessKey=[Device Key]";
     ```
 
-1. Agregue el código siguiente para definir el modelo que permite que el dispositivo se comunique con el Centro de IoT. Este modelo especifica que el dispositivo:
+1. Agregar Hola siguiendo el modelo de hello toodefine de código que permite hello toocommunicate de dispositivo con el centro de IoT. Este modelo especifica ese dispositivo hello:
 
    - Puede enviar datos de temperatura, temperatura externa, humedad y un id. de dispositivo como telemetría.
-   - Puede enviar datos sobre el dispositivo a IoT Hub. El dispositivo envía metadatos básicos en un objeto **DeviceInfo** en el inicio.
-   - Puede enviar propiedades notificadas al dispositivo gemelo en IoT Hub. Estas propiedades notificadas se agrupan en propiedades de configuración, dispositivo y sistema.
-   - Puede recibir las propiedades deseadas establecidas en el dispositivo gemelo en IoT Hub y actuar en función de ellas.
-   - Puede responder a los métodos directos **Reboot** y **InitiateFirmwareUpdate** mediante el portal de la solución. El dispositivo envía información sobre los métodos directos que admite mediante las propiedades notificadas.
+   - Puede enviar metadatos sobre Hola dispositivo tooIoT concentrador. dispositivo de Hello envía metadatos básicos una **DeviceInfo** objeto en el inicio.
+   - Puede enviar propiedades notificadas, toohello gemelas de dispositivo en el centro de IoT. Estas propiedades notificadas se agrupan en propiedades de configuración, dispositivo y sistema.
+   - Puede recibir y actuar en propiedades que desee establecidas en gemelas de dispositivo de hello en el centro de IoT.
+   - Puede responder toohello **reiniciar** y **InitiateFirmwareUpdate** dirigir los métodos llamados mediante el portal de solución de Hola. dispositivo de Hello envía información sobre métodos directos de Hola admite el uso de propiedades del informes.
    
     ```c
-    // Define the Model
+    // Define hello Model
     BEGIN_NAMESPACE(Contoso);
 
     /* Reported properties */
@@ -74,7 +74,7 @@ La biblioteca de cliente del serializador de IoT Hub usa un modelo para especifi
       WITH_DESIRED_PROPERTY(double, TemperatureMeanValue, onDesiredTemperatureMeanValue),
       WITH_DESIRED_PROPERTY(uint8_t, TelemetryInterval, onDesiredTelemetryInterval),
 
-      /* Direct methods implemented by the device */
+      /* Direct methods implemented by hello device */
       WITH_METHOD(Reboot),
       WITH_METHOD(InitiateFirmwareUpdate, ascii_char_ptr, FwPackageURI),
 
@@ -85,15 +85,15 @@ La biblioteca de cliente del serializador de IoT Hub usa un modelo para especifi
     END_NAMESPACE(Contoso);
     ```
 
-## <a name="implement-the-behavior-of-the-device"></a>Implementación del comportamiento del dispositivo
-Ahora, agregue código que implemente el comportamiento definido en el modelo.
+## <a name="implement-hello-behavior-of-hello-device"></a>Implementar el comportamiento de hello de dispositivo de Hola
+Ahora agregue el código que implementa el comportamiento de hello definido en el modelo de Hola.
 
-1. Agregue las siguientes funciones que controlan las propiedades deseadas establecidas en el panel de la solución. Estas propiedades deseadas se definen en el modelo:
+1. Agregar Hola después de funciones que controlen las propiedades de hello deseado establecidas en el panel de la solución de Hola. Estas propiedades deseadas se definen en el modelo de hello:
 
     ```c
     void onDesiredTemperatureMeanValue(void* argument)
     {
-      /* By convention 'argument' is of the type of the MODEL */
+      /* By convention 'argument' is of hello type of hello MODEL */
       Thermostat* thermostat = argument;
       printf("Received a new desired_TemperatureMeanValue = %f\r\n", thermostat->TemperatureMeanValue);
 
@@ -101,13 +101,13 @@ Ahora, agregue código que implemente el comportamiento definido en el modelo.
 
     void onDesiredTelemetryInterval(void* argument)
     {
-      /* By convention 'argument' is of the type of the MODEL */
+      /* By convention 'argument' is of hello type of hello MODEL */
       Thermostat* thermostat = argument;
       printf("Received a new desired_TelemetryInterval = %d\r\n", thermostat->TelemetryInterval);
     }
     ```
 
-1. Agregue las funciones siguientes que controlan los métodos directos que se invocan a través de IoT Hub. Estos métodos directos se definen en el modelo:
+1. Agregar Hola después de funciones que controlen métodos directos Hola invocados a través del centro de IoT Hola. Estos métodos directos se definen en el modelo de hello:
 
     ```c
     /* Handlers for direct methods */
@@ -130,26 +130,26 @@ Ahora, agregue código que implemente el comportamiento definido en el modelo.
     }
     ```
 
-1. Agregue la función siguiente que envía un mensaje a la solución preconfigurada:
+1. Agregue Hola después de la función que envía una solución de toohello preconfigurado de mensaje:
    
     ```c
-    /* Send data to IoT Hub */
+    /* Send data tooIoT Hub */
     static void sendMessage(IOTHUB_CLIENT_HANDLE iotHubClientHandle, const unsigned char* buffer, size_t size)
     {
       IOTHUB_MESSAGE_HANDLE messageHandle = IoTHubMessage_CreateFromByteArray(buffer, size);
       if (messageHandle == NULL)
       {
-        printf("unable to create a new IoTHubMessage\r\n");
+        printf("unable toocreate a new IoTHubMessage\r\n");
       }
       else
       {
         if (IoTHubClient_SendEventAsync(iotHubClientHandle, messageHandle, NULL, NULL) != IOTHUB_CLIENT_OK)
         {
-          printf("failed to hand over the message to IoTHubClient");
+          printf("failed toohand over hello message tooIoTHubClient");
         }
         else
         {
-          printf("IoTHubClient accepted the message for delivery\r\n");
+          printf("IoTHubClient accepted hello message for delivery\r\n");
         }
 
         IoTHubMessage_Destroy(messageHandle);
@@ -158,7 +158,7 @@ Ahora, agregue código que implemente el comportamiento definido en el modelo.
     }
     ```
 
-1. Agregue el siguiente controlador de devolución de llamadas que se ejecuta cuando el dispositivo ha enviado nuevos valores de propiedades notificadas a la solución preconfigurada:
+1. Agregue Hola siguiente controlador de devolución de llamada que se ejecuta cuando el dispositivo Hola envió nuevos valores de propiedad notificado solución toohello preconfigurado:
 
     ```c
     /* Callback after sending reported properties */
@@ -169,15 +169,15 @@ Ahora, agregue código que implemente el comportamiento definido en el modelo.
     }
     ```
 
-1. Agregue la función siguiente para conectar el dispositivo a la solución preconfiguradas en la nube e intercambiar datos. Esta función lleva a cabo los pasos siguientes:
+1. Agregar siguiente Hola función tooconnect la solución de toohello preconfigurado de dispositivos en la nube de hello e intercambiar datos. Esta función realiza Hola pasos:
 
-    - Inicializa la plataforma.
-    - Registra el espacio de nombres Contoso con la biblioteca de serialización.
-    - Inicializa el cliente con la cadena de conexión del dispositivo.
-    - Crea una instancia del modelo del **termostato**.
+    - Inicializa la plataforma de Hola.
+    - Registra el espacio de nombres de hello Contoso con biblioteca de serialización de Hola.
+    - Inicializa a Hola cliente con la cadena de conexión de dispositivo de Hola.
+    - Cree una instancia de hello **termostato** modelo.
     - Crea y envía valores de propiedades notificadas.
     - Envía un objeto **DeviceInfo**.
-    - Crea un bucle para enviar telemetría a cada segundo.
+    - Crea una telemetría de toosend bucle cada segundo.
     - Desinicializa todos los recursos.
 
       ```c
@@ -185,13 +185,13 @@ Ahora, agregue código que implemente el comportamiento definido en el modelo.
       {
         if (platform_init() != 0)
         {
-          printf("Failed to initialize the platform.\n");
+          printf("Failed tooinitialize hello platform.\n");
         }
         else
         {
           if (SERIALIZER_REGISTER_NAMESPACE(Contoso) == NULL)
           {
-            printf("Unable to SERIALIZER_REGISTER_NAMESPACE\n");
+            printf("Unable tooSERIALIZER_REGISTER_NAMESPACE\n");
           }
           else
           {
@@ -203,10 +203,10 @@ Ahora, agregue código que implemente el comportamiento definido en el modelo.
             else
             {
       #ifdef MBED_BUILD_TIMESTAMP
-              // For mbed add the certificate information
+              // For mbed add hello certificate information
               if (IoTHubClient_SetOption(iotHubClientHandle, "TrustedCerts", certificates) != IOTHUB_CLIENT_OK)
               {
-                  printf("Failed to set option \"TrustedCerts\"\n");
+                  printf("Failed tooset option \"TrustedCerts\"\n");
               }
       #endif // MBED_BUILD_TIMESTAMP
               Thermostat* thermostat = IoTHubDeviceTwin_CreateThermostat(iotHubClientHandle);
@@ -229,17 +229,17 @@ Ahora, agregue código que implemente el comportamiento definido en el modelo.
                 thermostat->System.Platform = "Plat 9.75";
                 thermostat->System.Processor = "i3-7";
                 thermostat->System.SerialNumber = "SER21";
-                /* Specify the signatures of the supported direct methods */
-                thermostat->SupportedMethods = "{\"Reboot\": \"Reboot the device\", \"InitiateFirmwareUpdate--FwPackageURI-string\": \"Updates device Firmware. Use parameter FwPackageURI to specifiy the URI of the firmware file\"}";
+                /* Specify hello signatures of hello supported direct methods */
+                thermostat->SupportedMethods = "{\"Reboot\": \"Reboot hello device\", \"InitiateFirmwareUpdate--FwPackageURI-string\": \"Updates device Firmware. Use parameter FwPackageURI toospecifiy hello URI of hello firmware file\"}";
 
-                /* Send reported properties to IoT Hub */
+                /* Send reported properties tooIoT Hub */
                 if (IoTHubDeviceTwin_SendReportedStateThermostat(thermostat, deviceTwinCallback, NULL) != IOTHUB_CLIENT_OK)
                 {
                   printf("Failed sending serialized reported state\n");
                 }
                 else
                 {
-                  printf("Send DeviceInfo object to IoT Hub at startup\n");
+                  printf("Send DeviceInfo object tooIoT Hub at startup\n");
       
                   thermostat->ObjectType = "DeviceInfo";
                   thermostat->IsSimulatedDevice = 0;
@@ -296,7 +296,7 @@ Ahora, agregue código que implemente el comportamiento definido en el modelo.
       }
     ```
    
-    Como referencia, este es un mensaje de **telemetría** de ejemplo enviado a la solución preconfigurado:
+    Como referencia, este es un ejemplo **telemetría** toohello mensaje enviado preconfigurado soluciones:
    
     ```
     {"DeviceId":"mydevice01", "Temperature":50, "Humidity":50, "ExternalTemperature":55}

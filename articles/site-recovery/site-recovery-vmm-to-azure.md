@@ -1,6 +1,6 @@
 ---
-title: "Replicación de máquinas virtuales de Hyper-V de nubes de VMM en Azure | Microsoft Docs"
-description: "Organice la replicación, la conmutación por error y la recuperación, en Azure, de máquinas virtuales de Hyper-V que están en nubes de System Center VMM"
+title: "nubes de máquinas virtuales de Hyper-V en VMM aaaReplicate tooAzure | Documentos de Microsoft"
+description: "Orquestar la replicación, la conmutación por error y la recuperación de máquinas virtuales de Hyper-V administrados en tooAzure de nubes de System Center VMM"
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -14,41 +14,41 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 06/14/2017
 ms.author: raynew
-ms.openlocfilehash: 958b61f5de732a882e0a2682b8dd4e18504a6ae7
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 84182fe4b63862ac7643208a22f236a7515a25a6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-azure-using-site-recovery-in-the-azure-portal"></a>Replicación de máquinas virtuales de Hyper-V que están en nubes VMM en Azure mediante Site Recovery en Azure Portal
+# <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-tooazure-using-site-recovery-in-hello-azure-portal"></a>Replicar máquinas virtuales de Hyper-V en tooAzure de nubes VMM con Site Recovery en hello portal de Azure
 > [!div class="op_single_selector"]
-> * [Azure Portal](site-recovery-vmm-to-azure.md)
+> * [Portal de Azure](site-recovery-vmm-to-azure.md)
 > * [Azure clásico](site-recovery-vmm-to-azure-classic.md)
 > * [PowerShell Resource Manager](site-recovery-vmm-to-azure-powershell-resource-manager.md)
 > * [PowerShell clásico](site-recovery-deploy-with-powershell.md)
 
 
-Este artículo describe cómo replicar máquinas virtuales locales de Hyper-V, administradas en nubes de System Center VMM, en Azure mediante el servicio [Azure Site Recovery](site-recovery-overview.md) en Azure Portal.
+Este artículo describe cómo tooreplicate local máquinas virtuales de Hyper-V administrados en tooAzure de nubes de System Center VMM, con hello [Azure Site Recovery](site-recovery-overview.md) servicio Hola portal de Azure.
 
-Publique cualquier comentario que tenga en la parte inferior de este artículo, o bien en el [foro de Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+Después de leer este artículo, registrar cualquier comentario final hello, o en hello [foro de servicios de recuperación de Azure](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
-Si desea migrar equipos a Azure (sin conmutación por recuperación), puede obtener más información al respecto en [este artículo](site-recovery-migrate-to-azure.md).
+Si desea toomigrate máquinas tooAzure (sin conmutación por recuperación), obtenga más información en [este artículo](site-recovery-migrate-to-azure.md).
 
 
 ## <a name="deployment-steps"></a>Pasos de implementación
 
-Siga el artículo para completar estos pasos de implementación:
+Siga estos pasos de implementación de hello artículo toocomplete:
 
 
-1. [Obtenga más información](site-recovery-components.md) sobre la arquitectura de esta implementación. Además, [conozca](site-recovery-hyper-v-azure-architecture.md) cómo funciona la replicación de Hyper-V en Site Recovery.
+1. [Obtener más información](site-recovery-components.md) acerca de la arquitectura de Hola para esta implementación. Además, [conozca](site-recovery-hyper-v-azure-architecture.md) cómo funciona la replicación de Hyper-V en Site Recovery.
 2. Compruebe los requisitos previos y las limitaciones.
 3. Configure las cuentas de red y almacenamiento de Azure.
-4. Prepare el servidor VMM local y los hosts de Hyper-V.
-5. Cree un almacén de Recovery Services. El almacén contiene valores de configuración y organiza la replicación.
-6. Especifique la configuración de origen. Registre los servidores VMM en el almacén. Instale el proveedor de Azure Site Recovery en el servidor VMM y el agente de Recovery Services en los hosts de Hyper-V.
+4. Preparar el servidor VMM local de Hola y hosts de Hyper-V.
+5. Cree un almacén de Recovery Services. Hola almacén contiene valores de configuración y organiza la replicación.
+6. Especifique la configuración de origen. Registrar servidor VMM de hello en el almacén de Hola. Instale hello Azure Site Recovery Provider en el agente de servicios de recuperación de Microsoft de hello instalar servidor VMM hello en hosts de Hyper-V.
 7. Especifique la configuración de destino y replicación.
-8. Habilite la replicación para las máquinas virtuales.
-9. Ejecute una conmutación por error de prueba para asegurarse de que todo funcione de la forma esperada.
+8. Habilitar la replicación de hello las máquinas virtuales.
+9. Ejecutar un toomake de conmutación por error de prueba que todo funciona según lo previsto.
 
 
 
@@ -58,156 +58,156 @@ Siga el artículo para completar estos pasos de implementación:
 **Requisito de compatibilidad** | **Detalles**
 --- | ---
 **Las tablas de Azure** | Obtenga información sobre los [requisitos de Azure](site-recovery-prereq.md#azure-requirements)
-**Servidores locales** | [Obtenga más información](site-recovery-prereq.md#disaster-recovery-of-hyper-v-vms-in-vmm-clouds-to-azure) sobre los requisitos del servidor VMM local y los hosts de Hyper-V.
-**Máquinas virtuales de Hyper-V locales** | Las máquinas virtuales que desee replicar deben ejecutar un [sistema operativo compatible](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions) y cumplir los [requisitos previos de Azure](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements).
-**Direcciones URL de Azure** | El servidor VMM también necesita acceder a estas direcciones URL:<br/><br/> [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]<br/><br/> Si tiene reglas de firewall basadas en direcciones IP, asegúrese de que permitan la comunicación con Azure.<br/></br> Permita los [intervalos IP del centro de datos de Azure](https://www.microsoft.com/download/confirmation.aspx?id=41653) y el puerto HTTPS (443).<br/></br> Permita los intervalos de direcciones IP correspondientes a la región de Azure de su suscripción y del oeste de EE. UU. (se usan para Access Control y para Identity Management).
+**Servidores locales** | [Obtener más información](site-recovery-prereq.md#disaster-recovery-of-hyper-v-vms-in-vmm-clouds-to-azure) sobre los requisitos para el servidor VMM local de Hola y hosts de Hyper-V.
+**Máquinas virtuales de Hyper-V locales** | Las máquinas virtuales que desee tooreplicate debe estar en ejecución una [sistema operativo compatible](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)y cumplir con [requisitos previos de Azure](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements).
+**Direcciones URL de Azure** | servidor VMM Hola necesita tener acceso a direcciones URL toothese:<br/><br/> [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]<br/><br/> Si tiene reglas de firewall basado en la dirección IP, asegúrate de que permiten tooAzure de comunicación.<br/></br> Permitir hello [intervalos de IP del centro de datos de Azure](https://www.microsoft.com/download/confirmation.aspx?id=41653)y Hola puerto HTTPS (443).<br/></br> Permitir que los intervalos de direcciones IP para hello región de Azure de su suscripción y oeste de Estados Unidos (utilizado para el Control de acceso y administración de identidades).
 
 
 ## <a name="prepare-for-deployment"></a>Preparación de la implementación
-Para preparar la implementación debe:
+tooprepare para la implementación, debe:
 
 1. [Configurar una red de Azure](#set-up-an-azure-network) en la que se coloquen las máquinas virtuales de Azure después de la conmutación por error.
-2. [Configurar una cuenta de Azure Storage](#set-up-an-azure-storage-account) para datos replicados.
-3. [Preparar el servidor VMM](#prepare-the-vmm-server) para la implementación de Site Recovery.
+2. [Configurar una cuenta de almacenamiento de Azure](#set-up-an-azure-storage-account) para datos replicados.
+3. [Preparar el servidor VMM hello](#prepare-the-vmm-server) para la implementación de Site Recovery.
 4. Preparar la asignación de red. Configurar redes para que pueda configurar la asignación de red durante la implementación de Site Recovery.
 
 ### <a name="set-up-an-azure-network"></a>Configurar una red de Azure
-Se necesita una red de Azure para que las máquinas virtuales de Azure creadas después de la conmutación por error se conecten.
+Es necesario un toowhich de red de Azure VM de Azure creadas después de que se conectará la conmutación por error.
 
-* La red debe estar en la misma región que el almacén de Recovery Services.
-* Según el modelo de recursos que desee usar para las máquinas virtuales de Azure conmutadas por error, va a configurar la red de Azure en [modo Resource Manager](../virtual-network/virtual-networks-create-vnet-arm-pportal.md) o en [modo clásico](../virtual-network/virtual-networks-create-vnet-classic-pportal.md).
-* Es recomendable configurar una red antes de empezar. Si no lo hace, deberá hacerlo durante la implementación de Site Recovery.
-Las redes de Azure usadas en Site Recovery no se pueden [mover](../azure-resource-manager/resource-group-move-resources.md) dentro de la misma suscripción o entre suscripciones diferentes.
+* red de Hello debe formar parte de hello misma región que hello del almacén de servicios de recuperación.
+* Según el modelo de recursos de Hola que desee toouse para conmutado por error máquinas virtuales de Azure, configurar el Hola con la red de Azure en [modo de administrador de recursos](../virtual-network/virtual-networks-create-vnet-arm-pportal.md) o [modo clásico](../virtual-network/virtual-networks-create-vnet-classic-pportal.md).
+* Es recomendable configurar una red antes de empezar. Si no lo hace, deberá toodo durante la implementación de Site Recovery.
+Las redes de Azure que usa recuperación del sitio no pueden ser [movido](../azure-resource-manager/resource-group-move-resources.md) dentro de hello mismo, o entre distintas, suscripciones.
 
-### <a name="set-up-an-azure-storage-account"></a>Configurar una cuenta de Azure Storage
-* Necesita una cuenta Estándar o Premium de Azure Storage para albergar los datos replicados en Azure. [Premium Storage](../storage/common/storage-premium-storage.md) se usa para las máquinas virtuales que necesitan un alto rendimiento constante de E/S y latencia baja para hospedar cargas de trabajo intensivas de E/S. Si desea utilizar una cuenta Premium para almacenar los datos replicados, también necesita una cuenta de almacenamiento Estándar para almacenar los registros de replicación que capturan los cambios continuos de los datos locales. La cuenta debe estar en la misma región que el almacén de Recovery Services.
-* Según el modelo de recursos que desee usar para las máquinas virtuales de Azure conmutadas por error, va a configurar una cuenta en [modo Resource Manager](../storage/common/storage-create-storage-account.md) o en [modo clásico](../storage/common/storage-create-storage-account.md).
-* Es recomendable configurar una cuenta antes de empezar. Si no lo hace, deberá hacerlo durante la implementación de Site Recovery.
-- Tenga en cuenta que las cuentas de almacenamiento usadas en Site Recovery no se pueden [mover](../azure-resource-manager/resource-group-move-resources.md) dentro de la misma suscripción o entre suscripciones diferentes.
+### <a name="set-up-an-azure-storage-account"></a>Configurar una cuenta de almacenamiento de Azure
+* Necesita una cuenta de almacenamiento de Azure toohold datos replican tooAzure estándar o premium. [Almacenamiento premium](../storage/common/storage-premium-storage.md) se usa para las máquinas virtuales que necesitan un rendimiento de E/S alto y cargas de trabajo intensivas de baja latencia toohost E/S. Si desea que toouse un toostore de cuenta premium los datos replicados, también necesita un registros de replicación toostore de la cuenta de almacenamiento estándar que captura continua cambia datos tooon locales. cuenta de Hello debe estar en hello misma región que hello del almacén de servicios de recuperación.
+* Según el modelo de recursos de Hola que desee toouse para conmutado por error máquinas virtuales de Azure, configure una cuenta en [modo de administrador de recursos](../storage/common/storage-create-storage-account.md) o [modo clásico](../storage/common/storage-create-storage-account.md).
+* Es recomendable configurar una cuenta antes de empezar. Si no lo hace, deberá toodo durante la implementación de Site Recovery.
+- Tenga en cuenta que las cuentas de almacenamiento utilizadas por recuperación del sitio no pueden ser [movido](../azure-resource-manager/resource-group-move-resources.md) dentro de hello mismo, o entre distintas, suscripciones.
 
-### <a name="prepare-the-vmm-server"></a>Preparar el servidor VMM
-* Asegúrese de que el servidor VMM cumpla con los [requisitos previos](#prerequisites).
-* Durante la implementación de Site Recovery puede especificar que todas las nubes de un servidor VMM deben estar disponibles en Azure Portal. Si solo desea que aparezcan nubes concretas en el portal, puede habilitar este valor en la nube en la consola de administrador de VMM.
+### <a name="prepare-hello-vmm-server"></a>Preparar el servidor VMM Hola
+* Asegúrese de que ese servidor VMM Hola cumple con hello [requisitos previos](#prerequisites).
+* Durante la implementación de recuperación del sitio, puede especificar que todas las nubes en un servidor VMM deben estar disponibles en hello portal de Azure. Si solo desea tooappear de nubes específicas en el portal de hello, puede habilitar a esa configuración en la nube de hello en la consola de administración VMM Hola.
 
 ### <a name="prepare-for-network-mapping"></a>Preparar la asignación de red
-Debe configurar la asignación de red durante la implementación de Site Recovery. La asignación de red se produce entre redes de máquinas virtuales de VMM de origen y redes de Azure de destino para permitir lo siguiente:
+Debe configurar la asignación de red durante la implementación de Site Recovery. Asignación de red asigna entre redes de VM de VMM de origen y destino redes de Azure, hello tooenable siguientes:
 
-* Las máquinas que se conmuten por error en la misma red pueden conectarse entre sí, aunque no estén conmutadas de la misma manera o en el mismo plan de recuperación.
-* Si se configura una puerta de enlace de red en la red Azure de destino, las máquinas virtuales de Azure se podrán conectar a máquinas virtuales locales.
-* Para configurar una asignación de red, esto es lo que necesita:
+* Máquinas que conmutan en hello misma red pueden conectarse tooeach otro, incluso si no está conmutación por error en Hola de igual manera u Hola mismo plan de recuperación.
+* Si se configura una puerta de enlace de red en red Azure de destino de hello, máquinas virtuales de Azure puede conectarse a máquinas virtuales locales tooon.
+* tooset la asignación de red, esto es lo necesita:
 
-  * Asegúrese de que las máquinas virtuales del servidor host de Hyper-V de origen estén conectadas a una red de máquinas virtuales de VMM. Esa red debe estar vinculada a una red lógica asociada con la nube.
+  * Asegúrese de que las máquinas virtuales en el origen de hello servidor host Hyper-V están conectado tooa red de VM de VMM. Esta red debe ser tooa vinculado red lógica que está asociado a la nube de Hola.
   * Una red de Azure como la descrita [anteriormente](#set-up-an-azure-network)
 
 ## <a name="create-a-recovery-services-vault"></a>Creación de un almacén de Recovery Services
-1. Inicie sesión en el [Portal de Azure](https://portal.azure.com).
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
 2. Haga clic en **Nuevo** > **Supervisión y administración** > **Backup y Site Recovery (OMS)**.
 
     ![Almacén nuevo](./media/site-recovery-vmm-to-azure/new-vault3.png)
-3. En **Nombre**, especifique un nombre descriptivo para identificar el almacén. Si tiene más de una suscripción, seleccione una de ellas.
-4. [Cree un grupo de recursos](../azure-resource-manager/resource-group-template-deploy-portal.md)o seleccione uno existente. Especifique una región de Azure. Las máquinas se replicarán en esta región. Para comprobar las regiones admitidas, consulte Disponibilidad geográfica en [Detalles de precios de Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/)
-5. Si quiere acceder rápidamente al almacén desde el panel, haga clic en **Anclar al panel** > **Crear almacén**.
+3. En **nombre**, especificar un almacén de hello tooidentify nombre descriptivo. Si tiene más de una suscripción, seleccione una de ellas.
+4. [Cree un grupo de recursos](../azure-resource-manager/resource-group-template-deploy-portal.md)o seleccione uno existente. Especifique una región de Azure. Las máquinas estén región toothis replicada. toocheck admite regiones, consulte disponibilidad geográfica en [detalles de precios de Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/)
+5. Si desea que tooquickly acceso Hola almacén de hello panel, haga clic en **Pin toodashboard** > **crear almacén**.
 
     ![Almacén nuevo](./media/site-recovery-vmm-to-azure/new-vault.png)
 
-El nuevo almacén aparecerá en **Panel** > **Todos los recursos** y en la hoja principal de **Almacenes de Recovery Services**.
+nuevo almacén de Hello aparece en hello **panel** > **todos los recursos**y en hello principal **servicios de recuperación de los almacenes de credenciales** hoja.
 
 
-## <a name="select-the-protection-goal"></a>Selección del objetivo de protección
+## <a name="select-hello-protection-goal"></a>Seleccione el objetivo de protección de Hola
 
-Seleccione aquello que desea replicar y la ubicación donde se va a realizar la replicación.
+Seleccione la acción que realizará tooreplicate, y donde quiera tooreplicate a.
 
-1. En **Almacenes de Recovery Services**, seleccione el almacén.
+1. En **servicios de recuperación de los almacenes de credenciales**, seleccione el almacén de Hola.
 2. En **Introducción**, haga clic en **Site Recovery** > **Preparar infraestructura** > **Objetivo de protección**.
 
     ![Elegir objetivos](./media/site-recovery-vmm-to-azure/choose-goals.png)
-3. En **Objetivo de protección** seleccione **En Azure**, y seleccione **Sí, con Hyper-V**. Seleccione **Sí** para confirmar que usa VMM para administrar los hosts de Hyper-V y el sitio de recuperación. A continuación, haga clic en **Aceptar**.
+3. En **objetivo de protección** seleccione **tooAzure**y seleccione **Sí, con Hyper-V**. Seleccione **Sí** tooconfirm usa toomanage Hyper-V hosts VMM y el sitio de recuperación de Hola. y, a continuación, haga clic en **Aceptar**.
 
-## <a name="set-up-the-source-environment"></a>Configuración del entorno de origen
+## <a name="set-up-hello-source-environment"></a>Configurar el entorno de origen Hola
 
-Instale el Proveedor de Azure Site Recovery en el servidor VMM y registre el servidor en el almacén. Instale el agente de Azure Recovery Services en servidores host de Hyper-V.
+Instale hello Azure Site Recovery Provider en servidor VMM de Hola y registrar servidor hello en el almacén de Hola. Instalar a agente de servicios de recuperación de Azure de hello en hosts de Hyper-V.
 
 1. Haga clic en **Preparar infraestructura** > **Origen**.
 
     ![Configurar origen](./media/site-recovery-vmm-to-azure/set-source1.png)
 
-2. En **Preparar origen**, haga clic en **+ VMM** para agregar un servidor VMM.
+2. En **preparar origen**, haga clic en **+ VMM** tooadd un servidor VMM.
 
     ![Configurar origen](./media/site-recovery-vmm-to-azure/set-source2.png)
 
-3. En **Agregar servidor**, compruebe que aparece el **servidor de System Center VMM** en **Tipo de servidor** y que este cumple los [requisitos previos y los requisitos de direcciones URL](#prerequisites).
-4. Descargue el archivo de instalación del proveedor de Azure Site Recovery.
-5. Descargue la clave de registro. Se le solicitará cuando ejecute el programa de instalación. La clave será válida durante cinco días a partir del momento en que se genera.
+3. En **Agregar servidor**, compruebe que **servidor de System Center VMM** aparece en **tipo de servidor** y ese servidor VMM Hola cumple hello [requisitos previos y la dirección URL requisitos de](#prerequisites).
+4. Descargar archivo de instalación del proveedor de Azure Site Recovery de Hola.
+5. Descargue la clave de registro de hello. Se le solicitará cuando ejecute el programa de instalación. clave de Hello es válida durante cinco días después de generarlo.
 
     ![Configurar origen](./media/site-recovery-vmm-to-azure/set-source3.png)
 
 
-## <a name="install-the-provider-on-the-vmm-server"></a>Instalación del proveedor en el servidor VMM
+## <a name="install-hello-provider-on-hello-vmm-server"></a>Instalar Hola proveedor en el servidor VMM Hola
 
-1. Ejecute el archivo de instalación del proveedor en el servidor VMM.
+1. Ejecute el archivo de configuración de proveedor de hello en el servidor VMM Hola.
 2. En **Microsoft Update** puede optar por recibir actualizaciones para que las actualizaciones del proveedor se realicen según las directivas de Microsoft Update.
-3. En **Instalación** acepte o modifique la ubicación predeterminada de instalación del proveedor y haga clic en **Instalar**.
+3. En **instalación**, acepte o modifique la ubicación de instalación de proveedor de hello predeterminada y haga clic en **instalar**.
 
     ![Ubicación de instalación](./media/site-recovery-vmm-to-azure/provider2.png)
-4. Una vez finalizada la instalación, haga clic en **Registrar** para registrar el servidor VMM en el almacén.
-5. En la página **Configuración de almacén**, haga clic en **Examinar** para seleccionar el archivo de clave del almacén. Especifique la suscripción de Azure Site Recovery y el nombre del almacén.
+4. Cuando finalice la instalación, haga clic en **registrar** tooregister servidor VMM hello en el almacén de Hola.
+5. Hola **configuración del almacén** página, haga clic en **examinar** archivo clave del almacén de hello tooselect. Especifique la suscripción de Azure Site Recovery de Hola y el nombre del almacén de Hola.
 
     ![Registro de servidor](./media/site-recovery-vmm-to-azure/provider10.PNG)
-6. En **Conexión a Internet**, especifique cómo se conecta a Site Recovery el proveedor que se ejecuta en el servidor VMM mediante Internet.
+6. En **conexión a Internet**, especifique cómo Hola proveedor se ejecuta en el servidor VMM Hola conectará tooSite recuperación sobre Hola internet.
 
-   * Si quiere que el proveedor se conecte directamente, seleccione **Conectar directamente con Azure Site Recovery sin un servidor proxy**.
-   * Si el proxy existente requiere autenticación, o si quiere utilizar un proxy personalizado, seleccione **Conectar con Azure Site Recovery con un servidor proxy**.
-   * Si utiliza un proxy personalizado, especifique la dirección, el puerto y las credenciales.
-   * Si utiliza un servidor proxy, se deberían haber permitido ya las direcciones URL descritas en los [requisitos previos](#on-premises-prerequisites).
-   * Si utiliza un proxy personalizado, se creará una cuenta de ejecución de VMM (DRAProxyAccount) mediante el uso automático de las credenciales de proxy especificadas. Configure el servidor proxy para que esta cuenta pueda autenticarse correctamente. La configuración de la cuenta de ejecución de VMM puede modificarse en la consola VMM. En **Configuración**, expanda **Seguridad** > **Cuentas de ejecución** y, luego, modifique la contraseña de DRAProxyAccount. Deberá reiniciar el servicio VMM para que esta configuración surta efecto.
+   * Si desea Hola proveedor tooconnect directamente, seleccione **conectarse directamente tooAzure Site Recovery sin un proxy**.
+   * Si el proxy existente requiere autenticación, o si desea toouse un proxy personalizado, seleccione **conectar tooAzure Site Recovery con un servidor proxy**.
+   * Si usa a un proxy personalizado, especifique las credenciales, el puerto y dirección de Hola.
+   * Si usa un proxy, se deben haber ya Hola direcciones URL permitidas se describe en [requisitos previos](#on-premises-prerequisites).
+   * Si usa un proxy personalizado, una cuenta de ejecución de VMM (DRAProxyAccount) se creará automáticamente con hello especificada las credenciales del proxy. Configurar servidor proxy de Hola para que esta cuenta se pueda autenticar correctamente. configuración de la cuenta de Hello RunAs de VMM puede modificarse en la consola VMM Hola. En **configuración**, expanda **seguridad** > **cuentas de ejecución**y, a continuación, modificar contraseña Hola de DRAProxyAccount. Necesitará el servicio VMM hello toorestart para que esta configuración surta efecto.
 
      ![Internet](./media/site-recovery-vmm-to-azure/provider13.PNG)
-7. Puede especificar o modificar la ubicación de un certificado SSL que se genera automáticamente para el cifrado de datos. Este certificado se usa si habilita el cifrado de datos para una nube protegida por Azure en el portal de Azure Site Recovery. Mantenga el certificado en un lugar seguro. Cuando ejecute una conmutación por error en Azure lo necesitará para descifrar si está habilitado el cifrado de datos.
+7. Acepte o modifique la ubicación de Hola de un certificado SSL que se genera automáticamente para el cifrado de datos. Este certificado se usa si habilita el cifrado de datos para una nube protegida por Azure en el portal de Azure Site Recovery Hola. Mantenga el certificado en un lugar seguro. Al ejecutar una conmutación por error tooAzure necesitará toodecrypt, si está habilitado el cifrado de datos.
 
     > [!NOTE]
-    > Se recomienda utilizar la funcionalidad de cifrado proporcionada por Azure para cifrar los datos en reposo, en lugar de usar la opción de cifrado de datos proporcionada por Azure Site Recovery. La funcionalidad de cifrado proporcionada por Azure puede activarse para una cuenta de almacenamiento, y ayuda a mejorar el rendimiento porque Azure Storage administra el cifrado y descifrado.
+    > Se recomienda la capacidad de cifrado de hello toouse proporcionada por Azure para cifrar datos en reposo, en lugar de usar la opción de cifrado de datos de hello proporcionada por Azure Site Recovery. capacidad de cifrado de Hello proporcionada por Azure puede activarse para un almacenamiento > de la cuenta y le ayuda a lograr un mejor rendimiento como Hola cifrado/descifrado es controlado por el almacenamiento de Azure.
     > [Más información acerca del cifrado del servicio Storage desde Azure](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption).
     
-8. En **Nombre del servidor**, especifique un nombre descriptivo para identificar el servidor VMM en el almacén. En una configuración de clúster, especifique el nombre del rol de clúster VMM.
-9. Habilite la **sincronización de metadatos de la nube** si quiere sincronizar los metadatos de todas las nubes del servidor VMM con el almacén. Esta acción solo se debe ejecutar una vez en cada servidor. Si no desea sincronizar todas las nubes, puede dejar este parámetro sin marcar y sincronizar cada nube individualmente en las propiedades de la nube de la consola de VMM. Haga clic en **Register** para finalizar el proceso.
+8. En **nombre del servidor**, especifique un servidor VMM Nombre_descriptivo tooidentify hello en el almacén de Hola. En una configuración de clúster, especifique el nombre de rol de clúster VMM Hola.
+9. Habilitar **metadatos de sincronización en la nube**, si desea toosynchronize metadatos para todas las nubes en el servidor VMM de hello con almacén de Hola. Esta acción solo debe toohappen una vez en cada servidor. Si no desea toosynchronize todas las nubes, puede dejar esta configuración desactivada y sincronizar cada nube individualmente en las propiedades de la nube de hello en la consola VMM Hola. Haga clic en **registrar** toocomplete proceso de Hola.
 
     ![Registro de servidor](./media/site-recovery-vmm-to-azure/provider16.PNG)
-10. Con ello, se iniciará el registro. Después de finalizar el registro, el servidor aparece en **Infraestructura de Site Recovery** > **Servidores VMM**.
+10. Con ello, se iniciará el registro. Después de que finalice el registro, el servidor de Hola se muestra en **infraestructura del sitio de recuperación** > **servidores VMM**.
 
 
-## <a name="install-the-azure-recovery-services-agent-on-hyper-v-hosts"></a>Instale el agente de Azure Recovery Services en servidores host de Hyper-V
+## <a name="install-hello-azure-recovery-services-agent-on-hyper-v-hosts"></a>Instalar a agente de servicios de recuperación de Azure de hello en hosts de Hyper-V
 
-1. Después de configurar el proveedor, debe descargar el archivo de instalación del agente de Azure Recovery Services. Ejecute el programa de instalación en cada servidor de Hyper-V en la nube de VMM.
+1. Una vez hayas configurado Hola proveedor, debe archivo de instalación de toodownload hello para el agente de servicios de recuperación de Azure de Hola. Ejecute el programa de instalación en cada servidor de Hyper-V en hello nube de VMM.
 
     ![Sitios de Hyper-V](./media/site-recovery-vmm-to-azure/hyperv-agent1.png)
 2. En **Comprobación de requisitos previos**, haga clic en **Siguiente**. Todos los requisitos previos que falten se instalarán automáticamente.
 
     ![Requisitos previos del agente de Recovery Services](./media/site-recovery-vmm-to-azure/hyperv-agent2.png)
-3. En **Configuración de la instalación**, acepte o modifique la ubicación de instalación y la ubicación de la memoria caché. Puede configurar la memoria caché en una unidad que tenga al menos 5 GB de almacenamiento disponible, pero se recomienda usar una unidad de caché con 600 GB o más de espacio libre. Luego haga clic en **Instalar**.
-4. Una vez completada la instalación, haga clic en **Cerrar** para terminar.
+3. En **configuración de la instalación**, acepte o modifique la ubicación de instalación de Hola y ubicación de la caché de Hola. Hola caché se puede configurar en una unidad que tenga al menos 5 GB de almacenamiento disponible, pero se recomienda una unidad de caché con 600 GB o más de espacio libre. Luego haga clic en **Instalar**.
+4. Una vez completada la instalación, haga clic en **cerrar** toofinish.
 
     ![Registro del agente MARS](./media/site-recovery-vmm-to-azure/hyperv-agent3.png)
 
 ### <a name="command-line-installation"></a>Instalación de la línea de comandos
-Puede instalar el agente de Microsoft Azure Recovery Services desde la línea de comandos mediante el comando siguiente:
+Hola agente de servicios de recuperación de Microsoft Azure se puede instalar desde la línea de comandos mediante el siguiente comando de hello:
 
      marsagentinstaller.exe /q /nu
 
-### <a name="set-up-internet-proxy-access-to-site-recovery-from-hyper-v-hosts"></a>Configuración del acceso de proxy a Internet para Site Recovery desde hosts de Hyper-V
+### <a name="set-up-internet-proxy-access-toosite-recovery-from-hyper-v-hosts"></a>Configurar tooSite de acceso de proxy de internet recuperación hosts de Hyper-V
 
-El agente de Recovery Services que se ejecuta en los hosts de Hyper-V necesita acceso a Internet para conectarse a Azure para la replicación de máquinas virtuales. Si va a acceder a Internet a través de un proxy, configúrelo como sigue:
+agente de servicios de recuperación de Hello ejecutan en hosts de Hyper-V necesita tooAzure de acceso a internet para la replicación de máquina virtual. Si va a acceder a Hola a internet a través de un proxy, se configura como se indica a continuación:
 
-1. Abra el complemento Microsoft Azure Backup de MMC en el host de Hyper-V. De manera predeterminada, hay disponible un acceso directo para Microsoft Azure Backup en el escritorio o en la siguiente ruta de acceso: C:\Program Files\Microsoft Azure Recovery Services Agent\bin\wabadmin.
-2. En el complemento, haga clic en **Cambiar propiedades**.
-3. En la pestaña **Configuración de proxy** especifique la información del servidor proxy.
+1. Abra Hola MMC de copia de seguridad de Microsoft Azure complemento en el host de Hyper-V de Hola. De forma predeterminada, un acceso directo para copia de seguridad de Microsoft Azure está disponible en el escritorio de Hola o en Agent\bin\wabadmin de servicios de recuperación de C:\Program Files\Microsoft Azure.
+2. En el complemento de hello, haga clic en **cambiar las propiedades de**.
+3. En hello **configuración de Proxy** ficha, especifique la información del servidor proxy.
 
     ![Registro del agente MARS](./media/site-recovery-vmm-to-azure/mars-proxy.png)
-4. Compruebe que el agente puede llegar a las direcciones URL descritas en los [requisitos previos](#on-premises-prerequisites).
+4. Compruebe que el agente Hola puede llegar a las direcciones URL de hello descritas en hello [requisitos previos](#on-premises-prerequisites).
 
-## <a name="set-up-the-target-environment"></a>Configuración del entorno de destino
-Especifique la cuenta de Azure Storage que se utilizará para la replicación y la red de Azure a la que se conectarán las máquinas virtuales de Azure después de la conmutación por error.
+## <a name="set-up-hello-target-environment"></a>Configurar el entorno de destino de Hola
+Especificar toobe de cuenta de almacenamiento de Azure Hola usada para la replicación y hello toowhich de red de Azure máquinas virtuales de Azure se conectará tras la conmutación por error.
 
-1. Haga clic en **Preparar infraestructura** > **Destino** y seleccione la suscripción y el grupo de recursos donde desee crear las máquinas virtuales conmutadas por error. Elija el modelo de implementación que desee usar en Azure (clásico o de Resource Manager) para las máquinas virtuales conmutadas por error.
+1. Haga clic en **preparar infraestructura** > **destino**, seleccione la suscripción de Hola y Hola donde desea hello toocreate conmutado por error máquinas virtuales de grupo de recursos. Elija el modelo de implementación de Hola que desee toouse en Azure (classic o recurso management) para hello conmutado por error máquinas virtuales.
 
     ![Storage](./media/site-recovery-vmm-to-azure/enablerep3.png)
 
@@ -215,60 +215,60 @@ Especifique la cuenta de Azure Storage que se utilizará para la replicación y 
 
     ![Storage](./media/site-recovery-vmm-to-azure/compatible-storage.png)
 
-3. Si no ha creado una cuenta de almacenamiento y desea crear una con Resource Manager, haga clic en **+Cuenta de almacenamiento** para hacerlo directamente.  En la hoja **Crear cuenta de almacenamiento**, especifique el nombre, el tipo, la suscripción y la ubicación de la cuenta. La cuenta debe estar en la misma ubicación que el almacén de Recovery Services.
+3. Si no ha creado una cuenta de almacenamiento, y desea toocreate uno mediante el Administrador de recursos, haga clic en **+ cuenta de almacenamiento** toodo en esa línea.  En hello **crear cuenta de almacenamiento** hoja especificar un nombre de cuenta, el tipo, la suscripción y la ubicación. cuenta de Hello debe tener Hola misma ubicación que hello del almacén de servicios de recuperación.
 
    ![Storage](./media/site-recovery-vmm-to-azure/gs-createstorage.png)
 
 
-   * Si desea crear una cuenta de almacenamiento mediante el modelo clásico, lo hará en Azure Portal. [Más información](../storage/common/storage-create-storage-account.md)
-   * Si utiliza una cuenta de almacenamiento Premium para los datos replicados, configure una cuenta de almacenamiento Estándar adicional para los registros de replicación del almacén que capturan los cambios continuos de los datos locales.
-5. Si no ha creado una red de Azure y desea crear una con Resource Manager, haga clic en **+Red** para hacerlo directamente. En la hoja **Crear red virtual**, especifique el nombre, el intervalo de direcciones, los detalles de subred, la suscripción y la ubicación de la red. La red debe estar en la misma ubicación que el almacén de Recovery Services.
+   * Si desea toocreate una cuenta de almacenamiento con el modelo clásico de hello, hacer esto en hello portal de Azure. [Más información](../storage/common/storage-create-storage-account.md)
+   * Si está usando una cuenta de almacenamiento premium para los datos replicados, configurar una cuenta de almacenamiento estándar adicional, registros de replicación de toostore que capturen datos tooon local de los cambios en curso.
+5. Si no ha creado una red de Azure y desea toocreate uno mediante el Administrador de recursos, haga clic en **+ red** toodo en esa línea. En hello **crear red virtual** hoja especificar un nombre de red, intervalo de direcciones, detalles de subred, suscripción y ubicación. red de Hello debe formar parte de hello misma ubicación que hello del almacén de servicios de recuperación.
 
    ![Red](./media/site-recovery-vmm-to-azure/gs-createnetwork.png)
 
-   Si desea crear una red mediante el modelo clásico, lo hará en Azure Portal. [Más información](../virtual-network/virtual-networks-create-vnet-classic-pportal.md).
+   Si desea que una red con el modelo clásico de hello toocreate, hacer esto en hello portal de Azure. [Más información](../virtual-network/virtual-networks-create-vnet-classic-pportal.md).
 
 ### <a name="configure-network-mapping"></a>Configurar asignación de red
 
 * [Lea](#prepare-for-network-mapping) una rápida introducción de lo que puede hacer la asignación de redes.
-* Compruebe que las máquinas virtuales del servidor VMM están conectadas a una red de máquinas virtuales y que ha creado al menos una red virtual de Azure. Se pueden asignar varias redes de VM a una sola red de Azure.
+* Compruebe que máquinas virtuales en el servidor VMM Hola son redes VM de tooa conectado y que ha creado al menos una red virtual de Azure. Varias redes de VM pueden ser asignado tooa sola red de Azure.
 
 Configure la asignación como sigue:
 
-1. En **Infraestructura de Site Recovery** > **Asignaciones de red** > **Asignación de red**, haga clic en el icono de **+Asignación de red**.
+1. En **infraestructura del sitio de recuperación** > **asignaciones de red** > **asignación de red**, haga clic en hello **+ la asignación de red**  icono.
 
     ![Asignación de red](./media/site-recovery-vmm-to-azure/network-mapping1.png)
-2. En **Agregar asignación de red**, seleccione el servidor VMM de origen y **Azure** como destino.
-3. Compruebe la suscripción y el modelo de implementación después de la conmutación por error.
-4. En **Red de origen**, seleccione la red de máquinas virtuales de origen local que desea asignar en la lista asociada con el servidor VMM.
-5. En **Red de destino**seleccione la red de Azure en la que se ubicarán las máquinas virtuales de Azure replicadas cuando estas se creen. A continuación, haga clic en **Aceptar**.
+2. En **Agregar asignación de red**, seleccione servidor VMM de origen de hello, y **Azure** como destino de Hola.
+3. Comprobar la suscripción de Hola y el modelo de implementación de hello después de la conmutación por error.
+4. En **red de origen**, seleccione red VM de hello origen local que desee toomap de lista de hello asociado con el servidor VMM Hola.
+5. En **red de destino**, seleccione Hola red de Azure en qué réplica de máquinas virtuales de Azure se ubicarán cuando se crean. y, a continuación, haga clic en **Aceptar**.
 
     ![Asignación de red](./media/site-recovery-vmm-to-azure/network-mapping2.png)
 
 Esto es lo que sucede cuando comienza la asignación de red:
 
-* Las máquinas virtuales existentes en la red de máquinas virtuales de origen se conectan a la red de destino cuando comienza la asignación. Las nuevas máquinas virtuales conectadas a la red de VM de origen se conectarán a la red de Azure asignada cuando se produzca la replicación.
-* Si modifica una asignación de red existente, las máquinas virtuales de réplica se conectarán con la nueva configuración.
-* Si la red de destino tiene varias subredes y una de estas subredes tiene el mismo nombre que la subred en la que se encuentra la máquina virtual de origen, la máquina virtual de réplica se conectará a esa subred de destino después de la conmutación por error.
-* Si no hay ninguna subred de destino con un nombre coincidente, la máquina virtual se conectará a la primera subred de la red.
+* Las máquinas virtuales existentes en la red de VM de origen Hola son redes de destino de toohello conectado cuando comience la asignación. Nueva red de VM de origen de toohello conectadas las máquinas virtuales conectadas toohello asigna red de Azure cuando se produce la replicación.
+* Si modifica una asignación de red existente, máquinas virtuales de réplica conectarse con la nueva configuración de Hola.
+* Si la red de destino de hello tiene varias subredes y una de estas subredes se Hola mismo nombre que la subred en la máquina virtual de origen de Hola se encuentra, máquina virtual de réplica de hello conecta toothat subred de destino después de la conmutación por error.
+* Si no hay ninguna subred de destino con un nombre coincidente, máquina virtual de hello conecta toohello primera subred de red de Hola.
 
 ## <a name="configure-replication-settings"></a>Configuración de las opciones de replicación
-1. Para crear una nueva directiva de replicación, haga clic en **Preparar infraestructura** > **Configuración de la replicación** > **+Crear y asociar**.
+1. toocreate una nueva directiva de replicación, haga clic en **preparar infraestructura** > **configuración de replicación** > **+ crear y asociar**.
 
     ![Red](./media/site-recovery-vmm-to-azure/gs-replication.png)
 2. En **Crear y asociar directiva**, especifique un nombre de directiva.
-3. En **Frecuencia de copia**, especifique la frecuencia con la que desea replicar diferencias de datos después de la replicación inicial (cada 30 segundos, 5 o 15 minutos).
+3. En **copiar frecuencia**, especifique la frecuencia con desea tooreplicate diferencias de datos después de la replicación inicial de hello (cada 30 segundos, 5 o 15 minutos).
 
     > [!NOTE]
-    >  Cuando la replicación se realiza en Premium Storage, no se admite una frecuencia de 30 segundos. La limitación viene determinada por el número de instantáneas por blob (100) que admite Premium Storage. [Más información](../storage/common/storage-premium-storage.md#snapshots-and-copy-blob)
+    >  No se admite una frecuencia de segundo 30 al replicar toopremium almacenamiento. limitación de Hello viene determinado por el número de Hola de instantáneas por blob (100) compatible con almacenamiento premium. [Más información](../storage/common/storage-premium-storage.md#snapshots-and-copy-blob)
 
-4. En **Retención de punto de recuperación**, especifique, en horas, el tiempo que estará disponible el período de retención para cada punto de recuperación. Los equipos protegidos se pueden recuperar en cualquier punto dentro de un período.
-5. En **Frecuencia de instantánea coherente con la aplicación**especifique la frecuencia (entre 1 y 12 horas) con la que se crearán los puntos de recuperación que contengan las instantáneas coherentes con la aplicación. Hyper-V usa dos tipos de instantáneas, una instantánea estándar que proporciona una instantánea incremental de toda la máquina virtual y una instantánea coherente con la aplicación que toma una instantánea en un momento concreto de los datos de la aplicación dentro de la máquina virtual. Las instantáneas coherentes con la aplicación utilizan el Servicio de instantáneas de volumen (VSS) para asegurarse de que las aplicaciones se encuentren en un estado coherente cuando se captura la instantánea. Tenga en cuenta que si habilita las instantáneas coherentes con la aplicación, se verá afectado el rendimiento de aplicaciones que se ejecutan en las máquinas virtuales de origen. Asegúrese de que el valor establecido es menor que el número de puntos de recuperación adicionales configurados.
-6. En **Hora de inicio de la replicación inicial**, indique cuándo debe comenzar la replicación inicial. La replicación se produce utilizando el ancho de banda de Internet, así que puede que deba programarla fuera del horario de trabajo.
-7. En **Cifrar datos almacenados en Azure**especifique si desea cifrar los datos en reposo en Azure Storage. A continuación, haga clic en **Aceptar**.
+4. En **retención de punto de recuperación**, especifique en horas cuánto va un período de retención Hola para cada punto de recuperación. Equipos protegidos pueden ser recuperado tooany punto dentro de una ventana.
+5. En **Frecuencia de instantánea coherente con la aplicación**especifique la frecuencia (entre 1 y 12 horas) con la que se crearán los puntos de recuperación que contengan las instantáneas coherentes con la aplicación. Hyper-V usa dos tipos de instantáneas, una instantánea estándar que proporciona una instantánea incremental de la máquina virtual completa de hello y una instantánea coherente con la aplicación que toma una instantánea de tiempo de punto de datos de la aplicación hello dentro de la máquina virtual de Hola. Las instantáneas coherentes con la aplicación usan tooensure de servicio de instantáneas de volumen (VSS) que las aplicaciones están en un estado coherente cuando se tomó la instantánea de Hola. Tenga en cuenta que si habilita las instantáneas coherentes con la aplicación, afectará Hola rendimiento de aplicaciones que se ejecutan en máquinas virtuales de origen. Asegúrese de que el valor de hello especificado es menor que el número de Hola de puntos de recuperación adicionales que configure.
+6. En **hora de inicio de la replicación inicial**, indicar al toostart Hola la replicación inicial. se produce la replicación de Hello sobre el ancho de banda de internet por lo que conviene tooschedule que fuera de su horario ocupado.
+7. En **cifrar los datos almacenados en Azure**, especifique si tooencrypt datos de rest de almacenamiento de Azure. y, a continuación, haga clic en **Aceptar**.
 
     ![Directiva de replicación](./media/site-recovery-vmm-to-azure/gs-replication2.png)
-8. Cuando se crea una nueva directiva se asocia automáticamente con la nube de VMM. Haga clic en **Aceptar**. Puede asociar más nubes VMM (y las máquinas virtuales que contienen) a esta directiva de replicación en **Replicación** > nombre de directiva > **Associate VMM Cloud** (Asociar nube VMM).
+8. Cuando se crea una nueva directiva automáticamente tiene asociadas con hello nube de VMM. Haga clic en **Aceptar**. Puede asociar más nubes de VMM (hello y máquinas virtuales en ellos) con esta directiva de replicación en **replicación** > nombre de directiva > **asociar la nube de VMM**.
 
     ![Directiva de replicación](./media/site-recovery-vmm-to-azure/policy-associate.png)
 
@@ -276,13 +276,13 @@ Esto es lo que sucede cuando comienza la asignación de red:
 
 Ahora que tiene la infraestructura básica configurada, planee la capacidad y averigüe si necesitará recursos adicionales.
 
-Site Recovery proporciona una herramienta de planeación de capacidad para ayudarle a asignar los recursos adecuados para el entorno de origen, los componentes de Site Recovery, las redes y el almacenamiento. Puede ejecutar la herramienta de planeación en modo rápido para obtener resultados basados en un promedio de máquinas virtuales, discos y almacenamiento o en el modo detallado en el que podrá especificar las cifras en el nivel de carga de trabajo. Antes de comenzar:
+Recuperación de sitio proporciona un toohelp planificador de capacidad, asignar recursos adecuados de Hola para su entorno de origen, componentes de Site Recovery, redes y almacenamiento. Puede ejecutar programador de hello en el modo rápido para realizar cálculos en función de un promedio de las máquinas virtuales, discos y almacenamiento, o en el modo detallado en el que había entrada figuras en nivel de carga de trabajo de Hola. Antes de comenzar:
 
 * Recopilar información sobre su entorno de replicación, incluidas las máquinas virtuales, discos por máquina virtual y almacenamiento por disco.
-* Calcular la tasa de cambio (renovación) diaria para los datos replicados. Para ayudarle a ello, puede usar la [herramienta de planeamiento de capacidad para réplicas de Hyper-V](https://www.microsoft.com/download/details.aspx?id=39057) .
+* Tasa de cambio (renovación) diaria de estimación Hola tendrá de los datos replicados. Puede usar hello [planificador de capacidad de réplica de Hyper-V](https://www.microsoft.com/download/details.aspx?id=39057) toohelp para ello.
 
-1. Haga clic en **Descargar** para descargar la herramienta y, luego, ejecútela. [Lea el artículo](site-recovery-capacity-planner.md) que acompaña a la herramienta.
-2. Una vez que haya terminado, seleccione **Yes** (Sí) en **Have you run the Capacity Planner**? (¿Ha ejecutado la herramienta Capacity Planner?)
+1. Haga clic en **descargar**, toodownload Hola herramienta y, a continuación, ejecútelo. [Leer el artículo de hello](site-recovery-capacity-planner.md) que acompaña a la herramienta de Hola.
+2. ¿Cuando haya terminado, seleccione **Sí** en **han ejecutado Hola Capacity Planner**?
 
    ![Planificación de capacidad](./media/site-recovery-vmm-to-azure/gs-capacity-planning.png)
 
@@ -293,168 +293,168 @@ Site Recovery proporciona una herramienta de planeación de capacidad para ayuda
 
 ## <a name="enable-replication"></a>Habilitar replicación
 
-Antes de empezar, asegúrese de que la cuenta de usuario de Azure tiene los [permisos](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines) necesarios para habilitar la replicación de una nueva máquina virtual en Azure.
+Antes de empezar, asegúrese de que la cuenta de usuario de Azure tiene Hola necesario [permisos](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines) tooenable la replicación de una nueva tooAzure de máquina virtual.
 
 Ahora habilite la replicación como sigue:
 
-1. Haga clic en **Paso 2: Replicar la aplicación** > **Origen**. Después de habilitar la replicación por primera vez, haga clic en **+Replicar** en el almacén para habilitar la replicación de más máquinas.
+1. Haga clic en **Paso 2: Replicar la aplicación** > **Origen**. Después de habilitar la replicación para hello la primera vez, haga clic en **+ replicar** en la replicación de tooenable de almacén de Hola para máquinas adicionales.
 
     ![Habilitar replicación](./media/site-recovery-vmm-to-azure/enable-replication1.png)
-2. En la hoja **Origen**, seleccione el servidor VMM y la nube en la que se encuentran los hosts de Hyper-V. A continuación, haga clic en **Aceptar**.
+2. Hola **origen** hoja, seleccione Hola servidor VMM y en la nube hello en qué Hola Hyper-V están ubicados los hosts. y, a continuación, haga clic en **Aceptar**.
 
     ![Habilitar replicación](./media/site-recovery-vmm-to-azure/enable-replication-source.png)
-3. En **Destino** seleccione la suscripción, el modelo de implementación posterior a la conmutación por error y la cuenta de almacenamiento que va a usar para los datos replicados.
+3. En **destino**, seleccione la suscripción de hello, modelo de implementación de conmutación por error de post, y Hola cuenta de almacenamiento que está usando para los datos replicados.
 
     ![Habilitar replicación](./media/site-recovery-vmm-to-azure/enable-replication-target.png)
-4. Seleccione la cuenta de almacenamiento que desea usar. Si desea utilizar una cuenta de almacenamiento diferente de las que tiene, puede [crear una](#set-up-an-azure-storage-account). Si utiliza una cuenta de almacenamiento Premium para los datos replicados, será preciso que seleccione una cuenta de almacenamiento Estándar adicional para almacenar los registros de replicación que capturan los cambios continuos de los datos locales. Para crear una cuenta de almacenamiento mediante el modelo de Resource Manager, haga clic en **Crear nueva**. Si desea crear una cuenta de almacenamiento mediante el modelo clásico, lo hará [en Azure Portal](../storage/common/storage-create-storage-account.md). A continuación, haga clic en **Aceptar**.
-5. Seleccione la red y la subred de Azure a la que se conectarán las máquinas virtuales de Azure cuando se creen después de la conmutación por error. Seleccione la opción **Configurar ahora para las máquinas seleccionadas** con el fin de aplicar la configuración de red a todas las máquinas que seleccione para su protección. Seleccione **Configurar más tarde** para seleccionar la red de Azure por máquina. Si desea utilizar una red diferente de las que tiene, puede [crear una](#set-up-an-azure-network). Para crear una red mediante el modelo de Resource Manager, haga clic en **Crear nueva**. Si desea crear una red mediante el modelo clásico, lo hará [en Azure Portal](../virtual-network/virtual-networks-create-vnet-classic-pportal.md). Seleccione una subred si es posible. A continuación, haga clic en **Aceptar**.
-6. En **Máquinas virtuales** > **Seleccionar máquinas virtuales**, haga clic en cada máquina que desea replicar y selecciónela. Solo puede seleccionar aquellas máquinas en las que se pueda habilitar la replicación. A continuación, haga clic en **Aceptar**.
+4. Seleccione la cuenta de almacenamiento de Hola que desee toouse. Si desea toouse una cuenta de almacenamiento diferentes que los tiene, puede [crear uno](#set-up-an-azure-storage-account). Si usa una cuenta de almacenamiento premium para los datos replicados, necesita tooselect un registros de replicación de toostore de cuenta de almacenamiento estándar adicional que capturan los cambios continuos tooon local data.toocreate una cuenta de almacenamiento mediante el modelo de administrador de recursos de Hola Haga clic en **crear nuevo**. Si desea toocreate una cuenta de almacenamiento con el modelo clásico de hello, hacerlo [Hola portal de Azure](../storage/common/storage-create-storage-account.md). y, a continuación, haga clic en **Aceptar**.
+5. Seleccione hello Azure toowhich de red y subred de máquinas virtuales de Azure se conectará, cuando se crean después de la conmutación por error. Seleccione **configurar ahora para las máquinas seleccionadas**, tooapply Hola red configuración tooall máquinas que seleccione para la protección. Seleccione **configurar más adelante**, tooselect hello Azure red por máquina. Si desea toouse de las que tiene una red distinta, puede [crear uno](#set-up-an-azure-network). Haga clic en el modelo de administrador de recursos de Hola de toocreate una red con **crear nuevo**. Si desea toocreate una red con el modelo clásico de hello, hacerlo [Hola portal de Azure](../virtual-network/virtual-networks-create-vnet-classic-pportal.md). Seleccione una subred si es posible. y, a continuación, haga clic en **Aceptar**.
+6. En **máquinas virtuales** > **seleccionar las máquinas virtuales**, haga clic en y seleccione cada máquina tooreplicate. Solo puede seleccionar aquellas máquinas en las que se pueda habilitar la replicación. A continuación, haga clic en **Aceptar**.
 
     ![Habilitar replicación](./media/site-recovery-vmm-to-azure/enable-replication5.png)
 
-7. En **Propiedades** > **Configurar propiedades**, seleccione el sistema operativo para las máquinas virtuales seleccionadas y el disco del sistema operativo.
+7. En **propiedades** > **configurar las propiedades**, seleccione sistema de operativo Hola Hola selecciona las máquinas virtuales y Hola disco del sistema operativo.
 
-    - Compruebe que el nombre de la máquina virtual de Azure (nombre de destino) cumple los [requisitos de las máquinas virtuales de Azure](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements).   
-    - De forma predeterminada, se seleccionan todos los discos de la máquina virtual para la replicación, pero se pueden borrar todos aquellos que se deseen excluir.
+    - Comprueba cumple ese nombre de máquina virtual de Azure (nombre de destino) de hello [requisitos de la máquina virtual de Azure](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements).   
+    - De forma predeterminada se seleccionan todos los discos de Hola de hello VM para la replicación, pero puede borrar discos tooexclude ellos.
 
-        - A veces se excluyen discos para reducir el ancho de banda de replicación. Por ejemplo, es posible que no desee replicar discos con datos temporales o datos que se actualizan cada vez que se reinicia un equipo o una aplicación (como pagefile.sys o tempdb de Microsoft SQL Server). Para excluir el disco de la replicación, deselecciónelo.
+        - Puede ser conveniente tooexclude discos tooreduce del ancho de banda. Por ejemplo, puede no ser conveniente tooreplicate discos con los datos temporales o datos que se actualizan cada vez que un equipo o en las aplicaciones se reinicia (por ejemplo, pagefile.sys o tempdb de Microsoft SQL Server). Puede excluir disco Hola de replicación por disco de hello anule su selección.
         - Solo se pueden excluir los discos básicos. Los discos del sistema operativo no se pueden excluir.
-        - Se recomienda no excluir discos dinámicos. Site Recovery no se puede identificar si un disco duro virtual de una máquina virtual invitada es básico o dinámico. Si no se excluyen todos los discos de volumen dinámico dependientes, el disco dinámico protegido se mostrará como uno fallido cuando la máquina virtual se conmute por error, y no se podrá acceder a los datos de dicho disco.
-        - Una vez habilitada la replicación, no puede agregar ni quitar discos para la replicación. Si desea agregar o excluir un disco, deshabilite la protección de la máquina virtual y vuelva a habilitarla.
-        - No se produce una conmutación por recuperación de los discos que se crean manualmente en Azure. Por ejemplo, si realiza la conmutación por error de tres discos y crea dos directamente en una máquina virtual de Azure, solo tres discos que se conmutaron por error se conmutarán por recuperación desde Azure hasta Hyper-V. No puede incluir los discos creados manualmente en la conmutación por recuperación o en la replicación inversa de Hyper-V a Azure.
-        - Si excluye un disco necesario para que una aplicación funcione, después de la conmutación por error a Azure, debe crearlo manualmente en Azure para poder ejecutar la aplicación replicada. También puede integrar Azure Automation en un plan de recuperación para crear el disco durante la conmutación por error de la máquina.
+        - Se recomienda no excluir discos dinámicos. Site Recovery no se puede identificar si un disco duro virtual de una máquina virtual invitada es básico o dinámico. Si no se excluyen todos los discos de los volúmenes dinámicos dependientes, disco dinámico protegido de Hola se mostrará como un disco con errores cuando hello máquina virtual conmuta por error y datos de hello en ese disco no será accesibles.
+        - Una vez habilitada la replicación, no puede agregar ni quitar discos para la replicación. Si desea que tooadd o excluir un disco, necesita protección toodisable Hola VM y, a continuación, volver a habilitarla.
+        - No se produce una conmutación por recuperación de los discos que se crean manualmente en Azure. Por ejemplo, si se producirá un error en más de tres discos y cree dos directamente en la máquina virtual de Azure, solo Hola tres discos que se han conmutado por error desde Azure tooHyper-V. No se incluyen discos creados manualmente en la conmutación por recuperación, o en la replicación inversa de Hyper-V tooAzure.
+        - Si excluye un disco que se necesita para una aplicación toooperate, después de la conmutación por error tooAzure debe toocreate puede ejecutarse manualmente en Azure, por lo que ese saludo replica aplicación. Como alternativa, puede integrar automatización de Azure en un plan de recuperación, disco de hello toocreate durante la conmutación por error de la máquina de Hola.
 
-    Haga clic en **Aceptar** para guardar los cambios. Puede establecer propiedades adicionales más adelante.
+    Haga clic en **Aceptar** toosave cambios. Puede establecer propiedades adicionales más adelante.
 
     ![Habilitar replicación](./media/site-recovery-vmm-to-azure/enable-replication6-with-exclude-disk.png)
 
-8. En **Configuración de replicación** > **Establecer configuración de replicación**, seleccione la directiva de replicación que desea aplicar para las máquinas virtuales protegidas. A continuación, haga clic en **Aceptar**. Puede modificar la directiva de replicación en **Directivas de replicación** > nombre de directiva > **Editar configuración**. Los cambios que aplique se utilizarán tanto para las máquinas que ya se estén replicando como para otras nuevas.
+8. En **configuración de replicación** > **establecer configuración de replicación**, seleccione Directiva de replicación de Hola que desee tooapply para hello protegido máquinas virtuales. y, a continuación, haga clic en **Aceptar**. Puede modificar la directiva de replicación de hello en **directivas de replicación** > nombre de directiva > **modificar configuración**. Los cambios que aplique se utilizarán tanto para las máquinas que ya se estén replicando como para otras nuevas.
 
    ![Habilitar replicación](./media/site-recovery-vmm-to-azure/enable-replication7.png)
 
-Puede hacer un seguimiento del progreso del trabajo **Habilitar protección** en **Trabajos** > **Trabajos de Site Recovery**. La máquina estará preparada para la conmutación por error después de que finalice el trabajo **Finalizar la protección**.
+Puede seguir el progreso del programa Hola a **Habilitar protección** de trabajo en **trabajos** > **trabajos de recuperación del sitio**. Después de hello **finalización de protección** se ejecuta el trabajo, Hola máquina está lista para conmutación por error.
 
 ### <a name="view-and-manage-vm-properties"></a>Visualización y administración de las propiedades de la máquina virtual
 
-Es recomendable que compruebe las propiedades de la máquina de origen. Recuerde que el nombre de la máquina virtual de Azure debe cumplir los [requisitos para las máquinas virtuales de Azure](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements).
+Se recomienda que compruebe las propiedades de Hola de máquina de origen de Hola. Recuerde que ese nombre de máquina virtual de Azure Hola debe cumplir con los [requisitos de la máquina virtual de Azure](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements).
 
-1. En **Elementos protegidos**, haga clic en **Elementos replicados** y seleccione la máquina para ver sus detalles.
+1. En **elementos protegidos**, haga clic en **replican elementos**, y seleccione Hola máquina toosee sus detalles.
 
     ![Habilitar replicación](./media/site-recovery-vmm-to-azure/vm-essentials.png)
-2. En **Propiedades** puede ver la información de replicación y conmutación por error de la máquina virtual.
+2. En **propiedades**, puede ver la replicación y Hola de información de conmutación por error de máquina virtual.
 
     ![Habilitar replicación](./media/site-recovery-vmm-to-azure/test-failover2.png)
-3. En **Proceso y red** > **Propiedades de proceso**, puede especificar el nombre y el tamaño de destino de la máquina virtual de Azure. Modifique el nombre para que cumpla con los [requisitos de Azure](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements) si es necesario. También puede ver y modificar la información acerca de la red, la subred y la dirección IP de destino que se asignarán a la máquina virtual de Azure.
+3. En **de proceso y de red** > **propiedades de proceso**, puede especificar el tamaño de nombre y de destino de la máquina virtual de Azure de Hola. Modificar Hola nombre toocomply con [requisitos de Azure](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements) si necesita. También puede ver y modificar la información acerca de la red de destino de hello, subred y dirección IP de Hola que asigna toohello máquina virtual de Azure.
 Observe lo siguiente:
 
-   * Puede establecer la dirección IP de destino. Si no proporciona una dirección, la máquina conmutada por error usará DHCP. Si establece una dirección que no está disponible en el momento de la conmutación por error, se producirá un error. Se puede utilizar la misma dirección IP de destino para la conmutación por error de prueba si la dirección está disponible en la red.
-   * El número de adaptadores de red viene determinado por el tamaño que especifique para la máquina virtual de destino, de la siguiente manera:
+   * Puede establecer la dirección IP de destino de Hola. Si no proporciona una dirección, Hola conmutado por error equipo usará DHCP. Si establece una dirección que no está disponible en la conmutación por error, se producirá un error en la conmutación por error de Hola. Hola la misma dirección IP de destino puede usarse para la conmutación por error si está disponible en la red de conmutación por error de prueba de Hola Hola dirección.
+   * número de Hola de adaptadores de red es dictados por tamaño de Hola que especifique para la máquina virtual de destino de hello, del siguiente modo:
 
-     * Si el número de adaptadores de red en el equipo de origen es menor o igual al número de adaptadores permitido para el tamaño de la máquina de destino, el destino tendrá el mismo número de adaptadores que el origen.
-     * Si el número de adaptadores para la máquina virtual de origen supera el número permitido para el tamaño de destino, entonces se utilizará el tamaño máximo de destino.
-     * Por ejemplo, si una máquina de origen tiene dos adaptadores de red y el tamaño de la máquina de destino es compatible con cuatro, el equipo de destino tendrá dos adaptadores. Si el equipo de origen tiene dos adaptadores pero el tamaño de destino compatible solo admite uno, el equipo de destino tendrá solo un adaptador.     
-     * Si la máquina virtual tiene varios adaptadores de red, todos ellos se conectarán a la misma red.
+     * Si el número de Hola de adaptadores de red en la máquina de origen de hello es menor o igual toohello de adaptadores permitidas para el tamaño de máquina de destino de hello, a continuación, tendrá destino Hola Hola el mismo número de adaptadores como origen de Hola.
+     * Si se supera el número de Hola de adaptadores para la máquina virtual de origen de Hola Hola permitidas para el tamaño de destino de hello, a continuación, se utiliza el tamaño máximo de hello destino.
+     * Por ejemplo, si una máquina de origen tiene dos adaptadores de red y tamaño de máquina de destino de hello es compatible con cuatro, el equipo de destino Hola tendrá dos adaptadores. Si la máquina de origen hello tiene dos adaptadores de pero hello tamaño de destino admitida solo admite un, equipo de destino de Hola tendrá solo un adaptador.     
+     * Si Hola máquina virtual tiene varios adaptadores de red, se conectarán todos toohello misma red.
 
      ![Habilitar replicación](./media/site-recovery-vmm-to-azure/test-failover4.png)
 
-4. En **Discos** puede ver los discos de datos y del sistema operativo en la máquina virtual que se va a replicar.
+4. En **discos** puede ver los discos de datos y sistema operativo de hello en hello máquina virtual que se replicarán.
 
 #### <a name="managed-disks"></a>Discos administrados
 
-En **Proceso y red** > **Propiedades de proceso**, puede establecer la opción "Usar discos administrados" en "Sí" para la máquina virtual si desea conectar discos administrados a la máquina durante la migración a Azure. Los discos administrados simplifican la administración de discos para las máquinas virtuales de Azure IaaS, ya que administra las cuentas de almacenamiento asociadas a los discos de la máquina virtual. [Más información sobre discos administrados](https://docs.microsoft.com/en-us/azure/storage/storage-managed-disks-overview).
+En **de proceso y de red** > **propiedades de proceso**, puede establecer "Discos administrados por usar" configuración demasiado "Sí" para hello VM si desea que tooattach discos administrados tooyour máquina en tooAzure de migración. Discos administrados simplifica la administración de discos para máquinas virtuales de IaaS de Azure debido a que administra las cuentas de almacenamiento de hello asociadas con discos de máquina virtual de Hola. [Más información sobre discos administrados](https://docs.microsoft.com/en-us/azure/storage/storage-managed-disks-overview).
 
-   - Los discos administrados se crean y conectan a la máquina virtual solo en una conmutación por error de Azure. Al habilitar la protección, los datos de las máquinas locales continuarán la replicación en las cuentas de almacenamiento.
-   Los discos administrados solo se pueden crear para máquinas virtuales implementadas con el modelo de implementación de Resource Manager.  
-
-  > [!NOTE]
-  > La conmutación por recuperación desde Azure al entorno local de Hyper-V no se admite actualmente en máquinas con discos administrados. Establezca "Usar discos administrados" en "Sí" únicamente si piensa migrar esta máquina a Azure.
-
-   - Cuando se establece "Usar discos administrados" en "Sí", solo los conjuntos de disponibilidad del grupo de recursos con "Usar discos administrados" establecido en "Sí" estarán disponibles para la selección. Esto ocurre porque las máquinas virtuales con discos administrados solo pueden formar parte de conjuntos de disponibilidad con la propiedad "Usar discos administrados" establecida en "Sí". Asegúrese de crear conjuntos de disponibilidad con la propiedad "Usar discos administrados" establecida en función de su intención de usar discos administrados en la conmutación por error.  Del mismo modo, cuando se establece "Usar discos administrados" en "No", solo los conjuntos de disponibilidad del grupo de recursos con la propiedad "Usar discos administrados" establecida en "No" estarán disponibles para la selección. [Más información sobre discos administrados y conjuntos de disponibilidad](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/manage-availability#use-managed-disks-for-vms-in-an-availability-set).
+   - Discos administrados son toohello creado y adjunta máquina virtual sólo una tooAzure de conmutación por error. Al habilitar la protección, datos de máquinas locales seguirán tooreplicate toostorage cuentas.
+   Discos administrados pueden crearse únicamente para máquinas virtuales implementadas mediante el modelo de implementación de administrador de recursos de Hola.  
 
   > [!NOTE]
-  > Si la cuenta de almacenamiento utilizada para la replicación ha sido cifrada con el Cifrado del servicio de Storage en algún momento, se producirá un error en la creación de discos administrados durante la conmutación por error. Puede establecer "Usar discos administrados" en "No" y volver a intentar la conmutación por error o deshabilitar la protección de la máquina virtual y protegerla en una cuenta de almacenamiento que no haya tenido habilitado el Cifrado del servicio de Storage en ningún momento.
+  > Conmutación por recuperación del entorno de Hyper-V de Azure tooon local no se admite actualmente para equipos con discos administrados. Establezca "Discos administrados por uso" demasiado "Sí" Si piensa toomigrate esta máquina a Azure.
+
+   - Cuando se establece "Discos administrados por uso" demasiado "Sí", solo conjuntos de disponibilidad de grupo de recursos de hello con "Discos administrados por uso" conjunto demasiado "Sí" estaría disponibles para la selección. Esto es porque las máquinas virtuales con discos administrados sólo puede ser parte de los conjuntos de disponibilidad con el conjunto de propiedades de "Use administrado discos" demasiado "Sí". Asegúrese de crear conjuntos de disponibilidad con el conjunto de propiedades de "Use administrado discos" en función de los discos de intención toouse administrado en la conmutación por error.  Del mismo modo, cuando se establece "Discos administrados por uso" demasiado "No", solo conjuntos de disponibilidad de grupo de recursos de hello con "Discos administrados por uso" propiedad establecida demasiado "No" estaría disponibles para la selección. [Más información sobre discos administrados y conjuntos de disponibilidad](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/manage-availability#use-managed-disks-for-vms-in-an-availability-set).
+
+  > [!NOTE]
+  > Si la cuenta de almacenamiento de hello usada para la replicación se cifró con cifrado de servicio de almacenamiento en cualquier momento en el tiempo, se producirá un error en la creación de discos administrados durante la conmutación por error. Se puede establecer "Discos administrados por uso" demasiado "No" y vuelva a intentar la conmutación por error o deshabilite la protección de máquina virtual de Hola y proteger tooa cuenta de almacenamiento que no tenía el cifrado del servicio de almacenamiento habilitado en cualquier momento en el tiempo.
   > [Más información sobre el Cifrado del servicio de Storage y los discos administrados](https://docs.microsoft.com/en-us/azure/storage/storage-managed-disks-overview#managed-disks-and-encryption).
 
 
-## <a name="test-the-deployment"></a>Prueba de la implementación
+## <a name="test-hello-deployment"></a>Implementación de prueba de Hola
 
-Para probar la implementación, puede ejecutar una conmutación por error de prueba para una sola máquina virtual o un plan de recuperación que contenga una o varias máquinas virtuales.
+implementación de Hola de tootest, puede ejecutar una prueba de conmutación por error para una sola máquina virtual o un plan de recuperación que contiene una o más máquinas virtuales.
 
 ### <a name="before-you-start"></a>Antes de comenzar
 
- - Si desea conectarse a máquinas virtuales de Azure mediante RDP después de la conmutación por error, obtenga más información acerca de [cómo prepararse para conectar](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
- - Para realizar una comprobación completa, es preciso que realice una copia de Active Directory y DNS de su entorno de prueba. [Más información](site-recovery-active-directory.md#test-failover-considerations).
+ - Si desea que tooconnect tooAzure máquinas virtuales mediante RDP después de la conmutación por error, obtenga información acerca de [preparar tooconnect](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
+ - prueba de toofully necesita toocopy de Active Directory y DNS en el entorno de prueba. [Más información](site-recovery-active-directory.md#test-failover-considerations).
 
 ### <a name="run-a-test-failover"></a>Ejecución de una conmutación por error de prueba
 
-1. Para conmutar por error una sola máquina virtual, en **Elementos replicados**, haga clic en la máquina virtual > **+Conmutación por error de prueba**.
-2. Para conmutar por error un plan de recuperación, en **Planes de recuperación**, haga clic con el botón derecho en el plan > **Probar conmutación por error**. Para crear un plan de recuperación, [siga estas instrucciones](site-recovery-create-recovery-plans.md).
-3. En **Probar conmutación por error**, seleccione la red de Azure a la que se conectarán las máquinas virtuales de Azure después de la conmutación por error.
-4. Haga clic en **Aceptar** para iniciar la conmutación por error. Puede hacer un seguimiento del progreso haciendo clic en la máquina virtual para abrir sus propiedades o en el trabajo de **Conmutación por error de prueba** en **Trabajos de Site Recovery**.
-5. Cuando se complete la conmutación por error, debería ver la máquina de réplica de Azure en Azure Portal > **Virtual Machines**. Debe asegurarse de que la máquina virtual tiene el tamaño adecuado, que se ha conectado a la red correspondiente y que se está ejecutando.
-6. Si se preparó para las conexiones después de la conmutación por error, debe ser capaz de conectarse a la máquina virtual de Azure.
-7. Una vez que haya terminado, haga clic en **Cleanup test failover** (Limpieza de conmutación por error de prueba) en el plan de recuperación. En **Notas** , registre y guarde las observaciones asociadas a la conmutación por error de prueba. Así se eliminarán las máquinas virtuales que se crearon durante la conmutación por error de prueba.
+1. toofail a través de una sola máquina virtual, en **replican elementos**, haga clic en hello VM > **+ conmutación por error de prueba**.
+2. toofail a través de una recuperación del plan, en **planes de recuperación**, plan de hello contextual > **conmutación por error de prueba**. un plan de recuperación, toocreate [, siga estas instrucciones](site-recovery-create-recovery-plans.md).
+3. En **conmutación por error de prueba**, seleccione hello toowhich de red de Azure máquinas virtuales de Azure conectarse después de producirse la conmutación por error.
+4. Haga clic en **Aceptar** conmutación por error de toobegin Hola. Puede seguir el progreso haciendo clic en hello VM tooopen sus propiedades o en hello **conmutación por error de prueba** de trabajo en **trabajos de recuperación del sitio**.
+5. Una vez completada la conmutación por error de hello, también debe poder réplica de hello toosee máquina Azure aparecen en hello portal de Azure > **máquinas virtuales**. Debe asegurarse de que esa máquina virtual de hello es tamaño adecuado de hello, que ha conectado toohello de red adecuada y se está ejecutando.
+6. Si preparado para las conexiones después de la conmutación por error, debe ser capaz de tooconnect toohello máquina virtual de Azure.
+7. Una vez que haya terminado, haga clic en **conmutación por error de prueba de limpieza** Hola plan de recuperación. En **notas** registrar y guardar las observaciones asociadas con conmutación por error de prueba de Hola. Esto eliminará máquinas virtuales de Hola que se crearon durante la conmutación por error de prueba.
 
-Para más información, consulte el artículo [Conmutación por error de prueba a Azure en Site Recovery](site-recovery-test-failover-to-azure.md).
+Para obtener más información, lea hello [tooAzure de conmutación por error de prueba](site-recovery-test-failover-to-azure.md) artículo.
 
-## <a name="monitor-the-deployment"></a>Supervisión de la implementación
+## <a name="monitor-hello-deployment"></a>Implementación de Hola de Monitor
 
-Le mostramos cómo puede supervisar la configuración y el estado de la implementación de Site Recovery:
+Le mostramos cómo puede supervisar los valores de configuración, estado y el estado de implementación de Site Recovery hello:
 
-1. Haga clic en el nombre del almacén para acceder al panel **Essentials** . En este panel puede ver los trabajos de Site Recovery, el estado de la replicación, los planes de recuperación, y el estado y los eventos del servidor.  Puede personalizar **Essentials** para mostrar los iconos y los diseños que sean más útiles para usted, incluido el estado de otros almacenes de Backup y Site Recovery.
+1. Haga clic en Hola de tooaccess de nombre de almacén de hello **Essentials** panel. En este panel puede ver los trabajos de Site Recovery, el estado de la replicación, los planes de recuperación, y el estado y los eventos del servidor.  Puede personalizar **Essentials** tooshow Hola iconos y las distribuciones que están tooyou más útil, incluido el estado de Hola de otros almacenes de copia de seguridad y recuperación del sitio.
 
     ![Essentials](./media/site-recovery-vmm-to-azure/essentials.png)
-2. En **Estado**, puede supervisar problemas en los servidores locales (servidores VMM o de configuración) y los eventos que Site Recovery generó en las últimas 24 horas.
-3. Puede administrar y supervisar la replicación en los iconos de **Elementos replicados**, **Planes de recuperación** y **Trabajos de Site Recovery**. Puede ver más detalles de los trabajos en **Trabajos** > **Trabajos de Site Recovery**.
+2. En **estado**, puede supervisar problemas en local (el servidor VMM o configuración) y Hola eventos que ocurran Site Recovery en hello últimas 24 horas.
+3. Hola **replican elementos**, **planes de recuperación**, y **trabajos de recuperación de sitio** iconos puede administrar y supervisar la replicación. Puede ver más detalles de los trabajos en **Trabajos** > **Trabajos de Site Recovery**.
 
-## <a name="command-line-installation-for-the-azure-site-recovery-provider"></a>Instalación mediante la línea de comandos del proveedor de Azure Site Recovery
+## <a name="command-line-installation-for-hello-azure-site-recovery-provider"></a>Instalación de línea de comandos para hello Azure Site Recovery Provider
 
-El proveedor de Azure Site Recovery puede instalarse desde la línea de comandos. Este método se puede usar para instalar el proveedor en un Server Core para Windows Server 2012 R2.
+Hola proveedor de Azure Site Recovery puede instalarse desde Hola de línea de comandos. Este método puede ser utilizado tooinstall Hola proveedor en Server Core de Windows Server 2012 R2.
 
-1. Descargue el archivo de instalación del proveedor y la clave de registro en una carpeta. Por ejemplo, C:\ASR.
-2. Desde un símbolo del sistema con privilegios elevados, ejecute estos comandos para extraer el instalador del proveedor.
+1. Hola proveedor carpeta de instalación de archivos y registro tooa clave de descarga. Por ejemplo, C:\ASR.
+2. Desde un símbolo del sistema con privilegios elevados, ejecute a estas instalador de proveedor de comandos tooextract hello:
 
             C:\Windows\System32> CD C:\ASR
             C:\ASR> AzureSiteRecoveryProvider.exe /x:. /q
-3. Ejecute este comando para instalar los componentes:
+3. Ejecute este comando tooinstall componentes hello:
 
             C:\ASR> setupdr.exe /i
-4. Ejecute estos comandos para registrar el servidor en el almacén:
+4. A continuación, ejecute estos comandos, el servidor de hello tooregister en el almacén de hello:
 
         CD C:\Program Files\Microsoft System Center 2012 R2\Virtual Machine Manager\bin
-        C:\Program Files\Microsoft System Center 2012 R2\Virtual Machine Manager\bin\> DRConfigurator.exe /r  /Friendlyname <friendly name of the server> /Credentials <path of the credentials file> /EncryptionEnabled <full file name to save the encryption certificate>       
+        C:\Program Files\Microsoft System Center 2012 R2\Virtual Machine Manager\bin\> DRConfigurator.exe /r  /Friendlyname <friendly name of hello server> /Credentials <path of hello credentials file> /EncryptionEnabled <full file name toosave hello encryption certificate>       
 
 Donde:
 
-* **/Credentials**: parámetro obligatorio que especifica la ubicación donde se encuentra el archivo de clave de registro.  
-* **/FriendlyName**: parámetro obligatorio para el nombre del servidor host Hyper-V que aparece en el portal de Azure Site Recovery.
-* * **/EncryptionEnabled**: parámetro opcional que solo se usa cuando se están replicando máquinas virtuales de Hyper-V en nubes de VMM en Azure. Especifique si desea cifrar máquinas virtuales en Azure (en cifrado en reposo). Asegúrese de que el nombre del archivo tiene la extensión **.pfx** . El cifrado está desactivado de forma predeterminada.
+* **/ Credenciales de**: parámetro obligatorio que especifica donde se encuentra archivo de clave de registro de hello.  
+* **/ FriendlyName**: parámetro obligatorio Nombre hello del servidor de host de Hyper-V de Hola que aparece en el portal de Azure Site Recovery Hola.
+* * **/ EncryptionEnabled**: tooAzure de nubes de parámetro opcional al replicar máquinas virtuales de Hyper-V en VMM. Especifique si desea que tooencrypt las máquinas virtuales en Azure (en el cifrado de rest). Asegúrese de que Hola nombre de archivo hello tiene un **.pfx** extensión. El cifrado está desactivado de forma predeterminada.
 
     > [!NOTE]
-    > Se recomienda utilizar la funcionalidad de cifrado proporcionada por Azure para cifrar los datos en reposo, en lugar de usar la opción de cifrado (opción EncryptionEnabled) proporcionada por Azure Site Recovery. La funcionalidad de cifrado proporcionada por Azure puede activarse para una cuenta de almacenamiento, y ayuda a mejorar el rendimiento porque Azure administra el cifrado y descifrado  
+    > Se recomienda la capacidad de cifrado de hello toouse proporcionada por Azure para cifrar datos en reposo, en lugar de usar la opción de cifrado de hello (opción de EncryptionEnabled) proporcionada por Azure Site Recovery. capacidad de cifrado de Hello proporcionada por Azure puede activarse para una cuenta de almacenamiento y ayuda a lograr un mejor rendimiento como Hola cifrado/descifrado se realiza por Azure  
     > .
     > [Más información acerca del cifrado del servicio Storage en Azure](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption).
     
-* **/proxyAddress**: parámetro opcional que especifica la dirección del servidor proxy.
-* **/proxyport**: parámetro opcional que especifica el puerto del servidor proxy.
-* **/proxyUsername**: parámetro opcional que especifica el nombre de usuario de proxy (si el proxy requiere autenticación).
-* **/proxyPassword**: parámetro opcional que especifica la contraseña para autenticarse con el servidor proxy (si el proxy requiere autenticación).
+* **/proxyAddress**: parámetro opcional que especifica la dirección de saludo del servidor de proxy de Hola.
+* **/proxyPort**: parámetro opcional que especifica el puerto de saludo del servidor de proxy de Hola.
+* **/ proxyusername**: parámetro opcional que especifica el nombre de usuario de proxy de hello (si el servidor proxy requiere autenticación).
+* **/ proxypassword**: parámetro opcional que especifica Hola contraseña tooauthenticate con el servidor proxy (si el proxy de hello requiere autenticación).
 
 
 ### <a name="network-bandwidth-considerations"></a>Consideraciones sobre el ancho de banda de red
-Puede utilizar la herramienta de planeación de capacidad para calcular el ancho de banda necesario para la replicación (replicación inicial y, a continuación, la diferencial). Para controlar el uso de ancho de banda de la replicación tiene algunas opciones:
+Puede usar Hola capacidad planner herramienta toocalculate Hola ancho de banda que necesario para la replicación (la replicación inicial y, a continuación, delta). cantidad de hello toocontrol de uso de ancho de banda para la replicación, tiene algunas opciones:
 
-* **Limitar el ancho de banda**: el tráfico de Hyper-V que se replica en un sitio secundario pasa a través de un host de Hyper-V específico. Puede limitar el ancho de banda en el servidor host.
-* **Retocar el ancho de banda**: puede influir en el ancho de banda utilizado para la replicación mediante un par de claves del Registro.
+* **Limitar ancho de banda**: tráfico de Hyper-V que se replica el sitio secundario tooa pasa a través de un host de Hyper-V específico. También puede limitar el ancho de banda en el servidor de host de Hola.
+* **Ajustar el ancho de banda**: puede influir en el ancho de banda de hello utilizado para la replicación con un par de claves del registro.
 
 #### <a name="throttle-bandwidth"></a>Limitar el ancho de banda
-1. Abra el complemento Microsoft Azure Backup de MMC en el servidor host de Hyper-V. De manera predeterminada, hay disponible un acceso directo para Microsoft Azure Backup en el escritorio o en la siguiente ruta de acceso: C:\Program Files\Microsoft Azure Recovery Services Agent\bin\wabadmin.
-2. En el complemento, haga clic en **Cambiar propiedades**.
-3. En la pestaña **Limitación**, seleccione **Habilitar límite de uso del ancho de banda de Internet para las operaciones de copia de seguridad** y defina los límites durante las horas de trabajo y fuera de las horas de trabajo. Los intervalos válidos van de 512 Kbps a 102 Mbps por segundo.
+1. Abra Hola MMC de copia de seguridad de Microsoft Azure complemento en el servidor de host de Hyper-V de Hola. De forma predeterminada, un acceso directo para copia de seguridad de Microsoft Azure está disponible en el escritorio de Hola o en Agent\bin\wabadmin de servicios de recuperación de C:\Program Files\Microsoft Azure.
+2. En el complemento de hello, haga clic en **cambiar las propiedades de**.
+3. En hello **limitación** ficha, seleccione **Habilitar límite para las operaciones de copia de seguridad de uso de ancho de banda de internet**y establecer los límites de hello para el trabajo y no laborables horas. Intervalo válido es de 512 Kbps too102 Mbps por segundo.
 
     ![Limitar el ancho de banda](./media/site-recovery-vmm-to-azure/throttle2.png)
 
-También puede utilizar el cmdlet [Set-OBMachineSetting](https://technet.microsoft.com/library/hh770409.aspx) para establecer la limitación. Aquí tiene un ejemplo:
+También puede usar hello [Set-OBMachineSetting](https://technet.microsoft.com/library/hh770409.aspx) cmdlet tooset limitación. Aquí tiene un ejemplo:
 
     $mon = [System.DayOfWeek]::Monday
     $tue = [System.DayOfWeek]::Tuesday
@@ -463,14 +463,14 @@ También puede utilizar el cmdlet [Set-OBMachineSetting](https://technet.microso
 **Set-OBMachineSetting -NoThrottle** indica que no se requiere ninguna limitación.
 
 #### <a name="influence-network-bandwidth"></a>Control del uso de ancho de banda de red
-El valor de registro **UploadThreadsPerVM** controla el número de subprocesos que se utilizan para la transferencia de datos (replicación inicial o diferencial) de un disco. Un valor mayor aumenta el ancho de banda de red utilizado para la replicación. El valor de registro **DownloadThreadsPerVM** especifica el número de subprocesos usados para la transferencia de datos durante la conmutación por recuperación.
+Hola **UploadThreadsPerVM** controles de valor del registro Hola número de subprocesos que se usan para la transferencia de datos (la replicación inicial o delta) de un disco. Un valor mayor aumenta el ancho de banda de red de hello usada para la replicación. Hola **DownloadThreadsPerVM** el valor del registro especifica el número de Hola de subprocesos usados para la transferencia de datos durante la conmutación por recuperación.
 
-1. En el Registro, vaya a **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication**.
+1. En el registro de hello, vaya demasiado**Backup\Replication de Azure HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows**.
 
-   * Modifique el valor **UploadThreadsPerVM** (o cree la clave, si no existe) para controlar los subprocesos utilizados para la replicación de disco.
-   * Modifique el valor **DownloadThreadsPerVM** (o cree la clave, si no existe) para controlar los subprocesos utilizados para el tráfico de conmutación por recuperación desde Azure.
-2. El valor predeterminado es 4. En una red "sobreaprovisionada", se deben cambiar los valores predeterminados de estas claves de registro. El valor máximo es 32. Supervise el tráfico para optimizar el valor.
+   * Modificar valor de hello **UploadThreadsPerVM** (o crear clave de hello si no existe) toocontrol subprocesos que se utilizan para la replicación de disco.
+   * Modificar valor de hello **DownloadThreadsPerVM** (o crear clave de hello si no existe) toocontrol subprocesos que se utilizan para el tráfico de la conmutación por recuperación de Azure.
+2. valor predeterminado de Hello es 4. En una red de "sobreaprovisionada", estas claves del registro deben cambiarse de valores predeterminados de Hola. Hola máximo es 32. Supervisar el tráfico toooptimize Hola valor.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Cuando se haya completado la replicación inicial y haya probado la implementación, puede invocar las conmutaciones por error a medida que las necesite. [Obtenga más información](site-recovery-failover.md) sobre los diferentes tipos de conmutación por error y cómo ejecutarlos.
+Después de la replicación inicial se ha completado y ha probado la implementación de hello, puede invocar las conmutaciones por error según sea necesario Hola. [Obtener más información](site-recovery-failover.md) acerca de los diferentes tipos de conmutaciones por error y cómo toorun ellos.

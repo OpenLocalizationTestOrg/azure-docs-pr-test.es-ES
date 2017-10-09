@@ -1,6 +1,6 @@
 ---
-title: "Integración de Azure DNS con los recursos de Azure | Microsoft Docs"
-description: Aprenda a usar Azure DNS para proporcionar DNS a los recursos de Azure.
+title: aaaIntegrate DNS de Azure con los recursos de Azure | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toouse DNS de Azure a lo largo de tooprovide DNS para los recursos de Azure."
 services: dns
 documentationcenter: na
 author: georgewallace
@@ -12,183 +12,183 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: gwallace
-ms.openlocfilehash: e0e7144c38c36f1583e0bcb7dfffba26e9a8bdad
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: b9b6f829513f0ad9da510190c75bc60dc7431545
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Usar Azure DNS para proporcionar la configuración de un dominio personalizado para un servicio de Azure
+# <a name="use-azure-dns-tooprovide-custom-domain-settings-for-an-azure-service"></a>Usar la configuración de dominio personalizado de tooprovide de DNS de Azure para un servicio de Azure
 
-Azure DNS proporciona DNS para un dominio personalizado de cualquiera de los recursos de Azure que admiten dominios personalizados o que tienen un nombre de dominio completo (FQDN). Por ejemplo, va a crear una aplicación web de Azure y desea que los usuarios obtengan acceso a ella a través de contoso.com o www.contoso.com como FQDN. Este artículo le guiará a través de la configuración del servicio de Azure con Azure DNS para usar dominios personalizados.
+Azure DNS proporciona DNS para un dominio personalizado de cualquiera de los recursos de Azure que admiten dominios personalizados o que tienen un nombre de dominio completo (FQDN). Un ejemplo es tiene una aplicación web de Azure y desea que los usuarios tooaccess; para ello ya sea mediante contoso.com o www.contoso.com como un FQDN. Este artículo le guiará a través de la configuración del servicio de Azure con Azure DNS para usar dominios personalizados.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Para poder usar Azure DNS con su dominio personalizado, primero debe delegarlo a Azure DNS. Visite [Delegación de un dominio en Azure DNS](./dns-delegate-domain-azure-dns.md) para obtener instrucciones sobre cómo configurar los servidores de nombres para su delegación. Una vez que el dominio se ha delegado a la zona de Azure DNS, es posible configurar los registros DNS necesarios.
+En orden toouse DNS de Azure para su dominio personalizado, se debe delegar su tooAzure de dominio DNS. Visite [delegar un tooAzure de dominio DNS](./dns-delegate-domain-azure-dns.md) para obtener instrucciones sobre cómo tooconfigure sus servidores de nombres para la delegación. Una vez que el dominio es delegado tooyour zona de DNS de Azure, son registros de DNS de hello tooconfigure pueda necesarios.
 
 Puede configurar un dominio personal o personalizado para [aplicaciones de función de Azure](#azure-function-app), [IoT de Azure](#azure-iot), [direcciones IP públicas](#public-ip-address), [App Service (Web Apps)](#app-service-web-apps), [Blob Storage](#blob-storage) y [Azure CDN](#azure-cdn).
 
 ## <a name="azure-function-app"></a>Aplicación de función de Azure
 
-Para configurar un dominio personalizado para las aplicaciones de función de Azure, se crea un registro CNAME, así como una configuración en la propia aplicación de función.
+tooconfigure un dominio personalizado para las aplicaciones de Azure de función, se crea un registro CNAME, así como la configuración en la propia aplicación de función hello.
  
-Vaya a **Otros** > **Aplicación de función** y seleccione la aplicación de función. Haga clic en **Características de la plataforma** y en **REDES** haga clic en **Dominios personalizados**.
+Navegue demasiado**otros** > **aplicación de la función** y seleccione la aplicación de la función. Haga clic en **Características de la plataforma** y en **REDES** haga clic en **Dominios personalizados**.
 
 ![hoja de aplicación de función](./media/dns-custom-domain/functionapp.png)
 
-Observe la dirección URL actual de la hoja **Dominios personalizados**. Esta dirección se utiliza como alias para el registro DNS que se creó.
+Observe la dirección url actual de hello en hello **los dominios personalizados** hoja, esta dirección se utiliza como alias de Hola para registro DNS de hello creado.
 
 ![Hoja Dominios personalizados](./media/dns-custom-domain/functionshostname.png)
 
-Vaya a la zona DNS y haga clic en **+ Conjunto de registros**. Rellene la información siguiente en la hoja **Agregar conjunto de registros** y haga clic en **Aceptar** para crearlo.
+Navegar por la zona de DNS de tooyour y haga clic en **+ grabar conjunto**. Rellene Hola siguiente información en hello **Agregar conjunto de registros** hoja y haga clic en **Aceptar** toocreate lo.
 
 |Propiedad  |Valor  |Descripción  |
 |---------|---------|---------|
-|Nombre     | myfunctionapp        | Este valor junto con la etiqueta de nombre de dominio es el FQDN del nombre de dominio personalizado.        |
+|Nombre     | myfunctionapp        | Este valor junto con la etiqueta de nombre de dominio de hello es hello FQDN para el nombre de dominio personalizado de Hola.        |
 |Tipo     | CNAME        | Use un registro CNAME que use un alias.        |
 |TTL     | 1        | 1 se usa para 1 hora        |
-|Unidad de TTL     | Horas        | Las horas se utilizan como medida de tiempo         |
-|Alias     | adatumfunction.azurewebsites.net        | El nombre DNS para el que va a crear el alias, en este ejemplo es el nombre DNS adatumfunction.azurewebsites.net proporcionado de forma predeterminada para la aplicación de función.        |
+|Unidad de TTL     | Horas        | Horas se usan como medida del tiempo de Hola         |
+|Alias     | adatumfunction.azurewebsites.net        | nombre DNS de Hello va a crear alias de hello, en este ejemplo es el nombre DNS de hello adatumfunction.azurewebsites.net proporcionada por la aplicación de función de toohello predeterminado.        |
 
-Regrese a la aplicación de función, haga clic en **Características de la plataforma** y, en **REDES**, haga clic en **Dominios personalizados**; a continuación, en **Nombres de host**, haga clic en **+ Agregar nombre de host**.
+Desplácese atrás tooyour función aplicación, haga clic en **características de la plataforma**y, en **red** haga clic en **dominios personalizados**, a continuación, en **losnombresdehost**haga clic en **+ Agregar nombre de host**.
 
-En la hoja **Agregar nombre de host**, escriba el registro CNAME en el campo de texto **Nombre de host** y haga clic en **Validar**. Si se pudo encontrar el registro, aparece el botón **Agregar nombre de host**. Haga clic en **Agregar nombre de host** para agregar el alias.
+En hello **Agregar nombre de host** hoja, escriba el registro CNAME de Hola Hola **hostname** campo de texto y haga clic en **validar**. Si el registro de hello era toobe capaz de encontrar, Hola **Agregar nombre de host** aparece el botón. Haga clic en **Agregar nombre de host** alias de hello tooadd.
 
 ![hoja agregar nombre de host de aplicaciones de función](./media/dns-custom-domain/functionaddhostname.png)
 
 ## <a name="azure-iot"></a>Azure IoT
 
-Azure IoT no dispone de las personalizaciones necesarias en el propio servicio. Para usar un dominio personalizado con IoT Hub solo se necesita un registro CNAME que señale hacia los recursos.
+IoT de Azure no tiene cualquier personalización que es necesarias en el propio servicio Hola. se necesita toouse un dominio personalizado con un centro de IoT solo un registro CNAME que señala toohello recursos.
 
-Vaya a **Internet de las cosas** > **IoT Hub** y seleccione su instancia de IoT Hub. En la hoja **Introducción**, observe el FQDN de la instancia de IoT Hub.
+Navegue demasiado**Internet de las cosas** > **centro de IoT** y seleccione el centro de IoT. En hello **Introducción** hoja, Hola Nota FQDN del centro de IoT Hola.
 
 ![Hoja del Centro de IoT](./media/dns-custom-domain/iot.png)
 
-A continuación, vaya a la zona DNS y haga clic en **+ Conjunto de registros**. Rellene la información siguiente en la hoja **Agregar conjunto de registros** y haga clic en **Aceptar** para crearlo.
+A continuación, navegue tooyour zona de DNS y haga clic en **+ grabar conjunto**. Rellene Hola siguiente información en hello **Agregar conjunto de registros** hoja y haga clic en **Aceptar** toocreate lo.
 
 
 |Propiedad  |Valor  |Descripción  |
 |---------|---------|---------|
-|Nombre     | myiothub        | Este valor junto con la etiqueta de nombre de dominio es el FQDN del nombre de la instancia de IoT Hub.        |
+|Nombre     | myiothub        | Este valor junto con la etiqueta de nombre de dominio de hello es hello FQDN para el centro de IoT de Hola.        |
 |Tipo     | CNAME        | Use un registro CNAME que use un alias.
 |TTL     | 1        | 1 se usa para 1 hora        |
-|Unidad de TTL     | Horas        | Las horas se utilizan como medida de tiempo         |
-|Alias     | adatumIOT.azure-devices.net        | El nombre DNS para el que va a crear el alias. En este ejemplo es el nombre de host adatumIOT.azure-devices.net proporcionado por la instancia de IoT Hub.
+|Unidad de TTL     | Horas        | Horas se usan como medida del tiempo de Hola         |
+|Alias     | adatumIOT.azure-devices.net        | nombre DNS de Hello va a crear alias de hello, en este ejemplo es el nombre de host de hello adatumIOT.azure devices.net proporcionado por el centro de IoT Hola.
 
-Una vez que se crea el registro, pruebe la resolución de nombre con el registro CNAME mediante `nslookup`
+Una vez que se crea el registro de hello, probar la resolución de nombres con el uso de registro CNAME de Hola`nslookup`
 
 ## <a name="public-ip-address"></a>Dirección IP pública
 
-Para configurar un dominio personalizado para servicios que usan una dirección IP pública como, por ejemplo, Application Gateway, Load Balancer, Cloud Service, máquinas virtuales de Resource Manager o máquinas virtuales clásicas, se usa un registro CNAME.
+tooconfigure un dominio personalizado para los servicios que utilizan una IP pública redirigir recursos como puerta de enlace de aplicaciones, el equilibrador de carga, servicio de nube, máquinas virtuales del Administrador de recursos, y, utilizan las máquinas virtuales clásico, un registro CNAME.
 
-Vaya a **Redes** > **Dirección IP pública**, seleccione el recurso de dirección IP pública y haga clic en **Configuración**. Anote la dirección IP.
+Navegue demasiado**red** > **dirección IP pública**, seleccione el recurso de dirección IP pública de Hola y haga clic en **configuración**. Anote la dirección IP de hello mostrada.
 
 ![hoja ip pública](./media/dns-custom-domain/publicip.png)
 
-Vaya a la zona DNS y haga clic en **+ Conjunto de registros**. Rellene la información siguiente en la hoja **Agregar conjunto de registros** y haga clic en **Aceptar** para crearlo.
+Navegar por la zona de DNS de tooyour y haga clic en **+ grabar conjunto**. Rellene Hola siguiente información en hello **Agregar conjunto de registros** hoja y haga clic en **Aceptar** toocreate lo.
 
 
 |Propiedad  |Valor  |Descripción  |
 |---------|---------|---------|
-|Nombre     | mywebserver        | Este valor junto con la etiqueta de nombre de dominio es el FQDN del nombre de dominio personalizado.        |
-|Tipo     | Una         | Use un registro A como recurso en una dirección IP.        |
+|Nombre     | mywebserver        | Este valor junto con la etiqueta de nombre de dominio de hello es hello FQDN para el nombre de dominio personalizado de Hola.        |
+|Tipo     | Una         | Use un registro como recurso de hello es una dirección IP.        |
 |TTL     | 1        | 1 se usa para 1 hora        |
-|Unidad de TTL     | Horas        | Las horas se utilizan como medida de tiempo         |
-|Dirección IP     | <your ip address>       | La dirección IP pública.|
+|Unidad de TTL     | Horas        | Horas se usan como medida del tiempo de Hola         |
+|Dirección IP     | <your ip address>       | dirección IP pública de Hola.|
 
 ![creación de un registro A](./media/dns-custom-domain/arecord.png)
 
-Una vez creado el registro A, ejecute `nslookup` para comprobar que el registro se resuelve.
+Una vez que se crea el registro de hello A, ejecute `nslookup` toovalidate Hola resuelve.
 
 ![búsqueda de dns de dirección ip pública](./media/dns-custom-domain/publicipnslookup.png)
 
 ## <a name="app-service-web-apps"></a>App Service (Web Apps)
 
-Los pasos siguientes le guiarán en el proceso de configuración de un dominio personalizado para una instancia de App Service Web Apps.
+Hello siguientes pasos le guiarán configurar un dominio personalizado para una aplicación de servicio de aplicaciones web.
 
-Vaya a **Web y móvil** > **App Service** y seleccione el recurso para el que está configurando un nombre de dominio personalizado y haga clic en **Dominios personalizados**.
+Navegue demasiado**Web y móviles** > **servicio de aplicaciones** y seleccione el recurso de Hola que va a configurar un nombre de dominio personalizado y haga clic en **los dominios personalizados**.
 
-Observe la dirección URL actual de la hoja **Dominios personalizados**. Esta dirección se utiliza como alias para el registro DNS que se creó.
+Observe la dirección url actual de hello en hello **los dominios personalizados** hoja, esta dirección se utiliza como alias de Hola para registro DNS de hello creado.
 
 ![hoja dominios personalizados](./media/dns-custom-domain/url.png)
 
-Vaya a la zona DNS y haga clic en **+ Conjunto de registros**. Rellene la información siguiente en la hoja **Agregar conjunto de registros** y haga clic en **Aceptar** para crearlo.
+Navegar por la zona de DNS de tooyour y haga clic en **+ grabar conjunto**. Rellene Hola siguiente información en hello **Agregar conjunto de registros** hoja y haga clic en **Aceptar** toocreate lo.
 
 
 |Propiedad  |Valor  |Descripción  |
 |---------|---------|---------|
-|Nombre     | mywebserver        | Este valor junto con la etiqueta de nombre de dominio es el FQDN del nombre de dominio personalizado.        |
-|Tipo     | CNAME        | Use un registro CNAME que use un alias. Si el recurso usa una dirección IP, se usará un registro A.        |
+|Nombre     | mywebserver        | Este valor junto con la etiqueta de nombre de dominio de hello es hello FQDN para el nombre de dominio personalizado de Hola.        |
+|Tipo     | CNAME        | Use un registro CNAME que use un alias. Si el recurso de hello usa una dirección IP, se usaría un registro.        |
 |TTL     | 1        | 1 se usa para 1 hora        |
-|Unidad de TTL     | Horas        | Las horas se utilizan como medida de tiempo         |
-|Alias     | webserver.azurewebsites.net        | El nombre DNS para el que va a crear el alias. En este ejemplo es el nombre DNS webserver.azurewebsites.net proporcionado de forma predeterminada para la aplicación web.        |
+|Unidad de TTL     | Horas        | Horas se usan como medida del tiempo de Hola         |
+|Alias     | webserver.azurewebsites.net        | nombre DNS de Hello va a crear alias de hello, en este ejemplo es el nombre DNS de hello webserver.azurewebsites.net proporcionada por la aplicación web de toohello de forma predeterminada.        |
 
 
 ![Crear un registro CNAME](./media/dns-custom-domain/createcnamerecord.png)
 
-Vuelva al servicio de aplicaciones configurado para el nombre de dominio personalizado. Haga clic en **Dominios personalizados** y, a continuación, en **Nombres de host**. Para agregar el registro CNAME que ha creado, haga clic en **+ Agregar nombre de host**.
+Navegue toohello back-servicio de aplicaciones que está configurado para el nombre de dominio personalizado de Hola. Haga clic en **Dominios personalizados** y, a continuación, en **Nombres de host**. registro CNAME de hello tooadd que ha creado, haga clic en **+ Agregar nombre de host**.
 
 ![Figura 1](./media/dns-custom-domain/figure1.png)
 
-Una vez completado el proceso, ejecute **nslookup** para comprobar que la resolución de nombres funciona.
+Una vez completado el proceso de hello, ejecute **nslookup** toovalidate resolución de nombres funciona.
 
 ![Figura 1](./media/dns-custom-domain/finalnslookup.png)
 
-Para más información acerca de cómo asignar un dominio personalizado a App Service, visite [Asignar un nombre DNS personalizado a Azure Web Apps](../app-service-web/app-service-web-tutorial-custom-domain.md?toc=%dns%2ftoc.json).
+visite toolearn más información acerca de la asignación de un servicio, de dominio personalizado tooApp [asignar un tooAzure de nombre DNS personalizado existente aplicaciones Web](../app-service-web/app-service-web-tutorial-custom-domain.md?toc=%dns%2ftoc.json).
 
-Si necesita adquirir un dominio personalizado, visite [Comprar un nombre de dominio personalizado para Azure Web Apps](../app-service-web/custom-dns-web-site-buydomains-web-app.md) para más información sobre dominios de App Service.
+Si necesita toopurchase un dominio personalizado, visite [comprar un nombre de dominio personalizado para aplicaciones Web de Azure](../app-service-web/custom-dns-web-site-buydomains-web-app.md) toolearn más acerca de los dominios de servicio de aplicaciones.
 
 ## <a name="blob-storage"></a>Almacenamiento de blobs
 
-Los siguientes pasos le guiarán en el proceso de configuración de un registro CNAME para una cuenta de Blob Storage mediante el método asverify. Este método garantiza que no hay ningún tiempo de inactividad.
+Hello siguientes pasos le guiarán configurar un registro CNAME para una cuenta de almacenamiento blob mediante el método de hello asverify. Este método garantiza que no hay ningún tiempo de inactividad.
 
-Vaya a **Storage** > **Cuentas de almacenamiento**, seleccione la cuenta de almacenamiento y haga clic en **Dominio personalizado**. Anote el FQDN en el paso 2, este valor se utiliza para crear el primer registro CNAME
+Navegue demasiado**almacenamiento** > **cuentas de almacenamiento**, seleccione la cuenta de almacenamiento y haga clic en **dominio personalizado**. Indicar la existencia de hello FQDN en el paso 2, este valor se utiliza toocreate Hola primer registro CNAME
 
 ![dominio personalizado de blob storage](./media/dns-custom-domain/blobcustomdomain.png)
 
-Vaya a la zona DNS y haga clic en **+ Conjunto de registros**. Rellene la información siguiente en la hoja **Agregar conjunto de registros** y haga clic en **Aceptar** para crearlo.
+Navegar por la zona de DNS de tooyour y haga clic en **+ grabar conjunto**. Rellene Hola siguiente información en hello **Agregar conjunto de registros** hoja y haga clic en **Aceptar** toocreate lo.
 
 
 |Propiedad  |Valor  |Descripción  |
 |---------|---------|---------|
-|Nombre     | asverify.mystorageaccount        | Este valor junto con la etiqueta de nombre de dominio es el FQDN del nombre de dominio personalizado.        |
+|Nombre     | asverify.mystorageaccount        | Este valor junto con la etiqueta de nombre de dominio de hello es hello FQDN para el nombre de dominio personalizado de Hola.        |
 |Tipo     | CNAME        | Use un registro CNAME que use un alias.        |
 |TTL     | 1        | 1 se usa para 1 hora        |
-|Unidad de TTL     | Horas        | Las horas se utilizan como medida de tiempo         |
-|Alias     | asverify.adatumfunctiona9ed.blob.core.windows.net        | El nombre DNS para el que va a crear el alias. En este ejemplo es el nombre DNS asverify.adatumfunctiona9ed.blob.core.windows.net proporcionado de forma predeterminada para la cuenta de almacenamiento.        |
+|Unidad de TTL     | Horas        | Horas se usan como medida del tiempo de Hola         |
+|Alias     | asverify.adatumfunctiona9ed.blob.core.windows.net        | nombre DNS de Hello va a crear alias de hello, en este ejemplo es el nombre DNS de hello asverify.adatumfunctiona9ed.blob.core.windows.net proporcionada por cuenta de almacenamiento de toohello de forma predeterminada.        |
 
-Vuelva a la cuenta de almacenamiento haciendo clic en **Storage** > **Cuentas de almacenamiento**. Una vez allí, seleccione la cuenta de almacenamiento y haga clic en **Dominio personalizado**. Escriba el alias que ha creado sin el prefijo asverify en el cuadro de texto, active la casilla **Usar validación CNAME indirecta y haga clic en **Guardar**. Una vez completado este paso, vuelva a la zona DNS y cree un registro CNAME sin el prefijo asverify.  Después de ese momento, ya es seguro eliminar el registro CNAME con el prefijo cdnverify.
+Navegar por la cuenta de almacenamiento back-tooyour haciendo clic en **almacenamiento** > **cuentas de almacenamiento**, seleccione la cuenta de almacenamiento y haga clic en **dominio personalizado**. Tipo Hola alias que ha creado sin prefijo de asverify de hello en cuadro de texto hello comprobación ** usar validación CNAME indirecta y haga clic en **guardar**. Una vez completado este paso, devolver tooyour zona DNS y cree un registro CNAME sin prefijo de hello asverify.  Después de ese punto, es seguro toodelete Hola registro CNAME con prefijo de cdnverify Hola.
 
 ![dominio personalizado de blob storage](./media/dns-custom-domain/indirectvalidate.png)
 
 Valide la resolución de DNS mediante la ejecución de `nslookup`
 
-Para más información acerca de la asignación de un dominio personalizado a un punto de conexión de Blob Storage visite [Configurar un nombre de dominio personalizado para el punto de conexión de Blob Storage](../storage/blobs/storage-custom-domain-name.md?toc=%dns%2ftoc.json)
+toolearn más acerca de cómo asignar un punto de conexión de almacenamiento de blobs de dominio personalizado tooa, visite [configurar un nombre de dominio personalizado para el extremo de almacenamiento Blob](../storage/blobs/storage-custom-domain-name.md?toc=%dns%2ftoc.json)
 
 ## <a name="azure-cdn"></a>Red CDN de Azure
 
-Los siguientes pasos le guiarán en el proceso de configuración de un registro CNAME para un punto de conexión de CDN mediante el método cdnverify. Este método garantiza que no hay ningún tiempo de inactividad.
+Hello siguientes pasos le guiarán configurar un registro CNAME para un punto de conexión de red CDN mediante el método de hello cdnverify. Este método garantiza que no hay ningún tiempo de inactividad.
 
-Vaya a **Redes** > **Perfiles de CDN**, seleccione el perfil de CDN y haga clic en **Puntos de conexión** en **General**.
+Navegue demasiado**red** > **perfiles de red CDN**, seleccione el perfil de CDN y haga clic en **extremos** en **General**.
 
-Seleccione el punto de conexión con el que está trabajando y haga clic en **+ Dominio personalizado**. Observe el **nombre de host del punto de conexión** ya que este valor es el registro al que señala el registro CNAME.
+Seleccionar punto de conexión de hello trabaja con y haga clic en **+ dominio personalizado**. Hola Nota **nombre de host del punto de conexión** que este valor sea el registro de hello ese registro CNAME Hola apunta a.
 
 ![Dominio personalizado de CDN](./media/dns-custom-domain/endpointcustomdomain.png)
 
-Vaya a la zona DNS y haga clic en **+ Conjunto de registros**. Rellene la información siguiente en la hoja **Agregar conjunto de registros** y haga clic en **Aceptar** para crearlo.
+Navegar por la zona de DNS de tooyour y haga clic en **+ grabar conjunto**. Rellene Hola siguiente información en hello **Agregar conjunto de registros** hoja y haga clic en **Aceptar** toocreate lo.
 
 |Propiedad  |Valor  |Descripción  |
 |---------|---------|---------|
-|Nombre     | cdnverify.mycdnendpoint        | Este valor junto con la etiqueta de nombre de dominio es el FQDN del nombre de dominio personalizado.        |
+|Nombre     | cdnverify.mycdnendpoint        | Este valor junto con la etiqueta de nombre de dominio de hello es hello FQDN para el nombre de dominio personalizado de Hola.        |
 |Tipo     | CNAME        | Use un registro CNAME que use un alias.        |
 |TTL     | 1        | 1 se usa para 1 hora        |
-|Unidad de TTL     | Horas        | Las horas se utilizan como medida de tiempo         |
-|Alias     | cdnverify.adatumcdnendpoint.azureedge.net        | El nombre DNS para el que va a crear el alias. En este ejemplo es el nombre DNS cdnverify.adatumcdnendpoint.azureedge.net proporcionado de forma predeterminada para la cuenta de almacenamiento.        |
+|Unidad de TTL     | Horas        | Horas se usan como medida del tiempo de Hola         |
+|Alias     | cdnverify.adatumcdnendpoint.azureedge.net        | nombre DNS de Hello va a crear alias de hello, en este ejemplo es el nombre DNS de hello cdnverify.adatumcdnendpoint.azureedge.net proporcionada por cuenta de almacenamiento de toohello de forma predeterminada.        |
 
-Vuelva al punto de conexión de CDN haciendo clic en **Redes** > **Perfiles de CDN** y, una vez allí, seleccione el perfil de CDN. Haga clic en **+ Dominio personalizado** y escriba el alias del registro CNAME sin el prefijo cdnverify y haga clic en **Agregar**.
+Navegar por extremo de red CDN tooyour atrás haciendo clic en **red** > **perfiles de red CDN**y seleccione el perfil de CDN. Haga clic en **+ dominio personalizado** y escriba el alias de registro CNAME sin prefijo de cdnverify hello y haga clic en **agregar**.
 
-Una vez completado este paso, vuelva a la zona DNS y cree un registro CNAME sin el prefijo cdnverify.  Después de ese momento, ya es seguro eliminar el registro CNAME con el prefijo cdnverify. Para más información sobre CDN y los procedimientos para configurar un dominio personalizado sin el paso de registro intermedio, visite [Asignación del contenido de la red CDN de Azure a un dominio personalizado](../cdn/cdn-map-content-to-custom-domain.md?toc=%dns%2ftoc.json).
+Una vez completado este paso, devolver tooyour zona DNS y cree un registro CNAME sin prefijo de cdnverify Hola.  Después de ese punto, es seguro toodelete Hola registro CNAME con prefijo de cdnverify Hola. Para obtener más información sobre la red CDN y cómo tooconfigure un dominio personalizado sin paso de registro intermedio de hello visite [dominio personalizado de CDN de Azure de mapa tooa contenido](../cdn/cdn-map-content-to-custom-domain.md?toc=%dns%2ftoc.json).
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Aprenda a [configurar búsquedas inversas de DNS para servicios hospedados en Azure](dns-reverse-dns-for-azure-services.md).
+Obtenga información acerca de cómo demasiado[configurar DNS inverso para los servicios hospedados en Azure](dns-reverse-dns-for-azure-services.md).

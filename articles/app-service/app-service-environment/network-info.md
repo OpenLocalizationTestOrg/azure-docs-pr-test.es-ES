@@ -1,6 +1,6 @@
 ---
-title: Consideraciones de red con una instancia de Azure App Service Environment
-description: "Explica el tráfico de red de ASE y cómo establecer los NSG y las UDR con el ASE"
+title: Consideraciones de aaaNetworking con un entorno de servicio de aplicaciones de Azure
+description: "Explica el tráfico de red Hola ASE y cómo tooset NSG y UDRs con su ASE"
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2017
 ms.author: ccompy
-ms.openlocfilehash: 3be0d7a202ff53f5532fd7169a50a04cfaf88832
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: d4d3000f4d4d75814b1e6d47079d967334eb1a3b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Consideraciones de red para una instancia de App Service Environment #
 
@@ -25,16 +25,16 @@ ms.lasthandoff: 08/29/2017
 
  [Azure App Service Environment][Intro] es una implementación de Azure App Service en una subred de Azure Virtual Network (VNet). Hay dos tipos de implementación de una instancia de App Service Environment (ASE):
 
-- **ASE externo**: expone las aplicaciones hospedadas en ASE en una dirección IP accesible a través de Internet. Para más información, consulte [Creación de una instancia externa de App Service Environment][MakeExternalASE].
-- **ASE de ILB**: expone las aplicaciones hospedadas en ASE en una dirección IP dentro de su instancia de VNet. El punto de conexión interno es un equilibrador de carga interno (ILB), y esta es la razón por la que se denomina ASE de ILB. Para más información, consulte [Creación y uso de un ASE de ILB][MakeILBASE].
+- **ASE externo**: expone Hola aplicaciones ASE hospedado en una dirección IP accesible desde internet. Para más información, consulte [Creación de una instancia externa de App Service Environment][MakeExternalASE].
+- **ILB ASE**: expone Hola aplicaciones ASE hospedado en una dirección IP dentro de la red virtual. extremo interno de Hello es un equilibrador de carga interno (ILB), que es la razón por la que se denomina una ASE de ILB. Para más información, consulte [Creación y uso de un ASE de ILB][MakeILBASE].
 
-Ahora hay dos versiones de App Service Environment: ASEv1 y ASEv2. Para información sobre ASEv1, consulte [Introducción a App Service Environment v1][ASEv1Intro]. Una instancia de ASEv1 se puede implementar en una red virtual clásica o en una de Resource Manager. En el caso de ASEv2, la implementación solo se puede realizar en una red virtual de Resource Manager.
+Ahora hay dos versiones de App Service Environment: ASEv1 y ASEv2. Para obtener información sobre ASEv1, consulte [Introducción tooApp v1 de entorno del servicio][ASEv1Intro]. Una instancia de ASEv1 se puede implementar en una red virtual clásica o en una de Resource Manager. En el caso de ASEv2, la implementación solo se puede realizar en una red virtual de Resource Manager.
 
-Todas las llamadas que vayan a Internet desde una instancia de ASE salen de la red virtual a través de una IP virtual asignada para el ASE. La dirección IP pública de esta IP virtual es la dirección IP de origen para todas las llamadas desde el ASE que vayan a Internet. Si las aplicaciones en la instancia de ASE realizan llamadas a los recursos de la red virtual o a través de una VPN, la IP de origen es una de las de la subred usada por su ASE. Dado que el ASE está dentro de la red virtual, también puede tener acceso a los recursos dentro de la red virtual sin ninguna configuración adicional. Si la red virtual está conectada a la red local, las aplicaciones en su ASE también tienen acceso a los recursos allí. No es necesario seguir configurando el ASE ni la aplicación.
+Todas las llamadas desde una ASE que vaya toohello internet deje Hola red virtual a través de una VIP asignada para hello ASE. Hola IP pública de esta dirección VIP es, a continuación, IP de origen de Hola para todas las llamadas de hello ASE que vaya toohello internet. Si Hola aplicaciones en su ASE realiza llamadas tooresources en la red virtual o a través de una VPN, IP de origen de hello es uno de Hola direcciones IP de subred Hola utilizado por su ASE. Porque hello ASE es dentro de la red virtual de hello, también puede tener acceso a los recursos dentro de hello red virtual sin ninguna configuración adicional. Si hello red virtual es la red local de tooyour conectado, aplicaciones en su ASE también tienen acceso tooresources no existe. No es necesario tooconfigure Hola ASE o la aplicación cualquier aún más.
 
 ![ASE externo][1] 
 
-Si tiene un ASE externo, la VIP pública es también el punto de conexión que las aplicaciones ASE usan para:
+Si tienes un ASE externo, VIP pública hello también es que las aplicaciones de ASE resuelvan toofor de punto de conexión de hello:
 
 * HTTP/S. 
 * FTP/S. 
@@ -43,40 +43,40 @@ Si tiene un ASE externo, la VIP pública es también el punto de conexión que l
 
 ![ASE de ILB][2]
 
-Si tiene un ASE de ILB, la dirección IP del ILB es el punto de conexión para HTTP/S, FTP/S, implementación web y depuración remota.
+Si tiene una ASE de ILB, dirección IP de Hola de hello ILB es el punto de conexión de Hola para HTTP/S, FTP/S, implementación web y depuración remota.
 
-Los puertos de acceso de aplicación normales son:
+puertos de acceso de aplicación normal de Hello son:
 
-| Uso | De | Para |
+| Uso | De | demasiado|
 |----------|---------|-------------|
 |  HTTP/HTTPS  | Configurable por el usuario |  80, 443 |
 |  FTP/FTPS    | Configurable por el usuario |  21, 990, 10001-10020 |
 |  Depuración remota en Visual Studio  |  Configurable por el usuario |  4016, 4018, 4020, 4022 |
 
-Es así tanto si está en un ASE externo como en un ASE de ILB. Si se encuentra en un ASE externo, llega a esos puertos en la VIP pública. Si se encuentra en un ASE de ILB, llega a esos puertos en el ILB. Si bloquea el puerto 443, puede afectar a algunas características que se exponen en el portal. Para más información, consulte [Dependencias del portal](#portaldep).
+Es así tanto si está en un ASE externo como en un ASE de ILB. Si se encuentra en un ASE externo, se alcanza los puertos de VIP pública Hola. Si se encuentra en un ASE ILB, alcanza los puertos de hello ILB. Si bloquea el puerto 443, puede haber un efecto sobre algunas características que se exponen en el portal de Hola. Para más información, consulte [Dependencias del portal](#portaldep).
 
 ## <a name="ase-dependencies"></a>Dependencias de ASE ##
 
 Un dependencia de acceso de entrada de ASE es:
 
-| Uso | De | Para |
+| Uso | De | demasiado|
 |-----|------|----|
 | Administración | Direcciones de administración de App Service | Subred de ASE: 454, 455 |
 |  Comunicación interna ASE | Subred de ASE: todos los puertos | Subred de ASE: todos los puertos
 |  Permitir entrada de Azure Load Balancer | Azure Load Balancer | Subred de ASE: todos los puertos
 |  Direcciones IP asignadas a las aplicaciones | Direcciones asignadas a las aplicaciones | Subred de ASE: todos los puertos
 
-El tráfico entrante proporciona el comando y control del ASE además de supervisión del sistema. Las direcciones IP de origen para este tráfico se incluyen en el documento [Direcciones de administración de App Service Environment][ASEManagement]. La configuración de seguridad de red tiene que permitir el acceso desde todas las direcciones IP en los puertos 454 y 455.
+Hello tráfico entrante proporciona comando y control de ASE de hello en la supervisión de toosystem de adición. direcciones IP de origen de Hola para este tráfico se enumeran en hello [ASE administración direcciones] [ ASEManagement] documento. configuración de seguridad de red de Hello necesita acceso de tooallow de todas las direcciones IP en los puertos 454 y 455.
 
-Dentro de la subred de ASE hay muchos puertos usados para la comunicación de componentes interna y pueden cambiar.  Esto requiere que todos los puertos de la subred de ASE sean accesibles desde la subred de ASE. 
+Dentro de la subred de hello ASE hay muchos puertos utilizan para la comunicación de componente interno y puede cambiar.  Para ello, todos los puertos de hello en hello ASE subred toobe accesible desde la subred de ASE Hola. 
 
-Para la comunicación entre el equilibrador de carga de Azure y la subred de ASE, los puertos mínimos que deben abrirse son 454, 455 y 16001. El puerto 16001 se usa para mantener activo el tráfico entre el equilibrador de carga y el ASE. Si usa un ASE de ILB, puede bloquear el tráfico solo en los puertos 454, 455 y 16001.  Si usa un ASE externo, debe tener en cuenta los puertos de acceso a las aplicaciones normales.  Si usa direcciones asignadas a las aplicaciones, debe abrirlo en todos los puertos.  Cuando se asigna una dirección a una aplicación específica, el equilibrador de carga usará puertos no conocidos de antemano para enviar tráfico HTTP y HTTPS al ASE.
+Para la comunicación de hello entre equilibrador de carga de Azure de Hola y puertos mínimos de hello ASE subred Hola ese toobe necesidad de abrir son 454 y 455, 16001. puerto 16001 Hola se utiliza para mantener activa tráfico entre equilibrador de carga de Hola y Hola ASE. Si utilizas una ASE de ILB, a continuación, se puede bloquear el tráfico hacia abajo toojust Hola 454, 455, 16001 puertos.  Si usas un ASE externo debe tootake en puertos de acceso de cuenta Hola aplicación normal.  Si se utilizan direcciones de la aplicación asignada necesita tooopen se tooall puertos.  Cuando se asigna una dirección tooa de aplicación específica, equilibrador de carga de hello usará los puertos que no se conocen de antemano toosend HTTP y HTTPS tráfico toohello ASE.
 
-Si usa direcciones IP asignadas a las aplicaciones, debe permitir el tráfico de las direcciones IP asignadas a sus aplicaciones en la subred de ASE.
+Si se utilizan direcciones IP de aplicación asignada debe tooallow tráfico de direcciones IP asignan subred de tooyour aplicaciones toohello ASE de Hola.
 
-Para el acceso de salida, un ASE depende de varios sistemas externos. Esas dependencias del sistema se definen con nombres DNS y no se asignan a un conjunto fijo de direcciones IP. Por tanto, el ASE requiere acceso de salida desde la subred de ASE a todas las direcciones IP externas en diversos puertos. Un ASE presenta las siguientes dependencias de salida:
+Para el acceso de salida, un ASE depende de varios sistemas externos. Esas dependencias del sistema se definen con nombres DNS y no asignan tooa un conjunto fijo de direcciones IP. Por lo tanto, Hola ASE necesita acceso de salida de hello ASE subred tooall direcciones IP externas en una variedad de puertos. Un ASE tiene Hola siguiendo las dependencias salientes:
 
-| Uso | De | Para |
+| Uso | De | demasiado|
 |-----|------|----|
 | Azure Storage | Subred de ASE | table.core.windows.net, blob.core.windows.net, queue.core.windows.net, file.core.windows.net: 80, 443, 445 (445 se necesita solo para ASEv1). |
 | Azure SQL Database | Subred de ASE | database.windows.net: 1433, 11000-11999, 14000-14999 (Para más información, consulte [Uso de los puertos de SQL Database V12](../../sql-database/sql-database-develop-direct-route-ports-adonet-v12.md)).|
@@ -87,19 +87,19 @@ Para el acceso de salida, un ASE depende de varios sistemas externos. Esas depen
 | DNS de Azure                     | Subred de ASE            |  Internet: 53
 | Comunicación interna ASE    | Subred de ASE: todos los puertos |  Subred de ASE: todos los puertos
 
-Si el ASE pierde el acceso a estas dependencias, deja de funcionar. Cuando esto ocurre durante un tiempo suficientemente prolongado, el ASE se suspende.
+Si Hola ASE pierde el acceso a las dependencias de toothese, deja de funcionar. Cuando esto ocurre tiempo suficiente, Hola ASE se suspende.
 
 ### <a name="customer-dns"></a>DNS del cliente ###
 
-Si la red virtual se configura con un servidor DNS definido por el cliente, las cargas de trabajo del inquilino lo utilizan. El ASE todavía tiene que comunicarse con Azure DNS para fines de administración. 
+Si hello red virtual esté configurada con un servidor DNS definido por el cliente, las cargas de trabajo de inquilino de hello utilizan. Hola ASE sigue necesitando toocommunicate con DNS de Azure para fines de administración. 
 
-Si la red virtual se configura con un cliente DNS en el otro lado de una VPN, el servidor DNS tiene que ser accesible desde la subred que contiene el ASE.
+Si hello red virtual está configurado con un cliente DNS en Hola otro lado de una VPN, servidor DNS de hello debe ser accesible desde la subred de Hola que contiene ASE Hola.
 
 <a name="portaldep"></a>
 
 ## <a name="portal-dependencies"></a>Dependencias del portal ##
 
-Además de las dependencias funcionales de un ASE, hay algunos elementos adicionales relacionados con la experiencia del portal. Algunas de las funcionalidades en Azure Portal dependen de un acceso directo al _sitio SCM_. Para cada aplicación en Azure App Service, hay dos direcciones URL. La primera dirección URL es para acceder a la aplicación. La segunda dirección URL es para el acceso al sitio SCM, que también se denomina el _consola Kudu_. Algunas de las características que usan el sitio SCM incluyen:
+En dependencias funcionales toohello ASE de adición, hay algunos elementos adicionales relacionados toohello portal experiencia. Algunas de las capacidades de Hola Hola portal de Azure dependen de acceso directo too_SCM site_. Para cada aplicación en Azure App Service, hay dos direcciones URL. la primera dirección URL de Hello es tooaccess la aplicación. dirección URL del segundo Hello es sitio SCM hello tooaccess, que también se denomina hello _consola Kudu_. Características que usan el sitio SCM Hola incluyen:
 
 -   Trabajos web
 -   Functions
@@ -109,62 +109,62 @@ Además de las dependencias funcionales de un ASE, hay algunos elementos adicion
 -   Explorador de procesos
 -   Consola
 
-Cuando se usa una ASE de ILB, el sitio SCM no está accesible en Internet desde fuera de la red virtual. Cuando la aplicación se hospeda en un ASE de ILB, algunas funcionalidades no se podrán usar desde el portal.  
+Cuando se usa una ASE de ILB, sitio SCM de hello no es accesible desde fuera de hello red virtual de internet. Cuando la aplicación se hospeda en un ASE ILB, algunas funciones no funcionará desde el portal de Hola.  
 
-Muchas de estas funcionalidades que dependen del sitio SCM también están disponibles directamente en la consola Kudu. Puede conectarse directamente, en lugar de utilizar el portal. Si la aplicación se hospeda en un ASE de ILB, use las credenciales de publicación para iniciar sesión. La dirección URL para acceder al sitio SCM de una aplicación hospedada en un ASE de ILB tiene el formato siguiente: 
+Muchas de estas capacidades que dependen de sitio SCM hello también están disponibles directamente en la consola de Kudu Hola. Puede conectarse tooit directamente en lugar de usar el portal de Hola. Si la aplicación se hospeda en un ASE ILB, use la publicación toosign de credenciales en. Hola URL tooaccess Hola SCM sitio de una aplicación hospedada en un ASE ILB tiene Hola siguiendo el formato: 
 
 ```
-<appname>.scm.<domain name the ILB ASE was created with> 
+<appname>.scm.<domain name hello ILB ASE was created with> 
 ```
 
-Si su ASE ILB es el nombre de dominio *contoso.net* y el nombre de la aplicación es *aplicacionprueba*, la aplicación está accesible en *aplicacionprueba.contoso.net*. El sitio SCM que lo acompaña está accesible en *aplicacionprueba.scm.contoso.net*.
+Si su ASE ILB es el nombre de dominio de hello *contoso.net* y el nombre de la aplicación es *testapp*, aplicación hello se alcanza a *testapp.contoso.net*. sitio SCM Hola que lo acompaña se alcanza a *testapp.scm.contoso.net*.
 
 ### <a name="functions-and-web-jobs"></a>Trabajos web y de funciones ###
 
-Tanto los trabajos de funciones como los trabajos web dependen del sitio de SCM, pero se pueden usar en el portal, incluso si las aplicaciones se encuentran en un ASE de ILB, siempre y cuando el explorador pueda llegar al sitio de SCM.  Si usa un certificado autofirmado con su ASE de ILB, debe habilitar el explorador para que confíe en ese certificado.  En el caso de IE y Edge, esto significa que el certificado debe estar en el almacén de confianza del equipo.  Si usa Chrome, esto significa que aceptó el certificado en el explorador anteriormente al pulsar directamente en el sitio de SCM.  La mejor solución es usar un certificado comercial que se encuentre en la cadena de confianza del explorador.  
+Funciones y Web trabajos dependen de sitio SCM Hola pero se admiten para su uso en el portal de hello, incluso si las aplicaciones en un ASE ILB, siempre y cuando el explorador puede llegar a sitio de hello SCM.  Si está utilizando un certificado autofirmado con su ASE ILB, será necesario tooenable su tootrust de explorador de certificados.  Para Internet Explorer y borde que significa que el certificado de hello tiene toobe de confianza del equipo de hello almacenar.  Si usas Chrome, a continuación, significa que acepta certificados de hello en el Explorador de hello anteriormente pulsando supuestamente sitio scm de hello directamente.  Hola mejor solución es toouse un certificado comercial que se encuentra en la cadena del explorador de Hola de confianza.  
 
 ## <a name="ase-ip-addresses"></a>Direcciones IP de ASE ##
 
-Un ASE tiene algunas direcciones IP que es necesario tener en cuenta. Son las siguientes:
+Un ASE tiene unos toobe de direcciones IP que tenga en cuenta. Son las siguientes:
 
 - **Dirección IP pública de entrada**: se usa para el tráfico de la aplicación en un ASE externo y para el tráfico de administración tanto en un ASE externo como en un ASE de ILB.
-- **Dirección IP pública de salida**: se usa como dirección IP "desde" para las conexiones de salida desde el ASE que dejan la red virtual y que no se enrutan hacia una VPN.
+- **IP pública saliente**: usar como Hola "de" IP para las conexiones salientes de hello ASE ese Hola deje de red virtual, que no se enruta hacia abajo una VPN.
 - **Dirección IP del ILB:**: si usa una ASE de ILB.
 - **Direcciones SSL basadas en IP asignadas a la aplicación**: solo son posibles con un ASE externo y cuando hay configurada una SSL basada en IP.
 
-Todas estas direcciones IP son fácilmente visibles en un ASEv2 en Azure Portal desde la interfaz de usuario de ASE. Si tiene un ASE de ILB, aparece la dirección IP para el ILB.
+Todas estas direcciones IP son fácilmente visibles en un ASEv2 Hola portal de Azure de hello ASE interfaz de usuario. Si tiene una ASE de ILB, se muestra hello IP para hello ILB.
 
 ![Direcciones IP][3]
 
 ### <a name="app-assigned-ip-addresses"></a>Direcciones IP asignadas a la aplicación ###
 
-Con un ASE externo, puede asignar direcciones IP a las aplicaciones individuales. No puede hacer eso con un ASE de ILB. Para más información acerca de cómo configurar la aplicación para que tenga su propia dirección IP, consulte [Enlace de un certificado SSL personalizado a Azure Web Apps](../../app-service-web/app-service-web-tutorial-custom-ssl.md).
+Con un ASE externo, puede asignar direcciones IP tooindividual aplicaciones. No puede hacer eso con un ASE de ILB. Para obtener más información acerca de cómo tooconfigure su aplicación toohave su propia dirección IP, consulte [enlazar una existente personalizado SSL certificado tooAzure aplicaciones web](../../app-service-web/app-service-web-tutorial-custom-ssl.md).
 
-Cuando una aplicación tiene su propia dirección SSL basada en IP, el ASE reserva dos puertos para asignar a esa dirección IP. Un puerto es para el tráfico HTTP y el otro es para HTTPS. Estos puertos se muestran en la interfaz de usuario de ASE en la sección de direcciones IP. El tráfico tiene que poder conectar con esos puertos desde la dirección IP virtual o las aplicaciones no serán accesibles. Es importante recordar este requisito al configurar grupos de seguridad de red (NSG).
+Cuando una aplicación tiene su propia dirección SSL basado en IP, Hola ASE reserva de dirección IP toothat de dos puertos toomap. Un puerto es para el tráfico HTTP y hello otro puerto es para HTTPS. Estos puertos se enumeran en hello ASE interfaz de usuario en la sección de direcciones IP de Hola. Tráfico debe ser capaz de tooreach esos puertos de VIP de Hola o aplicaciones de hello son inaccesibles. Este requisito es importante tooremember al configurar grupos de seguridad de red (NSG).
 
 ## <a name="network-security-groups"></a>Grupos de seguridad de red ##
 
-Los [grupos de seguridad de red][NSGs] permiten controlar el acceso a la red dentro de una red virtual. Cuando usa el portal, hay una regla de denegación implícita con la prioridad más baja que deniega todo. Lo que crea son las reglas de permiso.
+[Grupos de seguridad de red] [ NSGs] proporcionan acceso de red de hello capacidad toocontrol dentro de una red virtual. Si se usa el portal de hello, hay un modo implícito deny de regla en hello menor prioridad toodeny todo. Lo que crea son las reglas de permiso.
 
-En un ASE, no tiene acceso a las máquinas virtuales que se utilizan para hospedar el propio ASE. Están en una suscripción administrada por Microsoft. Si desea limitar el acceso a las aplicaciones en el ASE, tiene que establecer los NSG en la subred de ASE. Al hacerlo, tiene que prestar mucha atención a las dependencias de ASE. Si se bloquea alguna de las dependencias, el ASE deja de funcionar.
+En un ASE, no tienes acceso toohello máquinas virtuales que usan toohost Hola ASE propio. Están en una suscripción administrada por Microsoft. Si desea que toorestrict acceso toohello aplicaciones en hello ASE, establezca los NSG de subred de ASE Hola. Si lo hace, preste atención cuidado las dependencias de ASE toohello. Si se bloquea todas las dependencias, Hola ASE deja de funcionar.
 
-Los NSG pueden configurarse mediante Azure Portal o a través de PowerShell. Esta información muestra Azure Portal. Puede crear y administrar los NSG en el portal como un recurso de nivel superior en **Redes**.
+Los NSG pueden configurarse a través del portal de Azure de Hola o a través de PowerShell. información de Hello aquí muestra hello portal de Azure. Puede crear y administrar los NSG en el portal de Hola como un recurso de nivel superior bajo **red**.
 
-Cuando los requisitos de entrada y salida se tienen en cuenta, los NSG deben ser similares a lo que se muestra en este ejemplo. El intervalo de direcciones de red virtual es _192.168.250.0/16_ y la subred a la que pertenece el ASE es _192.168.251.128/25_.
+Cuando hello se tienen requisitos de entrada y salidos en la cuenta, hello NSG debe tener un aspecto similar NSG toohello se muestra en este ejemplo. es el intervalo de direcciones de red virtual de Hello _192.168.250.0/16_, y es Hola subred ASE hello en _192.168.251.128/25_.
 
-Los dos primeros requisitos de entrada para que el ASE funcione están en la parte superior de la lista en este ejemplo. Estos habilitan la administración del ASE y permiten que el ASE se comunique consigo mismo. Las demás entradas son todas configurables por inquilino y pueden controlar el acceso por red a las aplicaciones hospedadas en el ASE. 
+se muestran los requisitos de entrada primero dos de Hola para hello ASE toofunction princip Hola de lista de hello en este ejemplo. Permiten la administración ASE y permitir Hola ASE toocommunicate consigo misma. Hello las demás entradas son todos los inquilinos configurable y pueden administrar aplicaciones de toohello hospedadas en ASE de acceso de red. 
 
 ![Reglas de seguridad de entrada][4]
 
-Una regla predeterminada permite que las direcciones IP en la red virtual se comuniquen con la subred de ASE. Otra regla predeterminada permite que el equilibrador de carga, también conocido como VIP pública, se comunique con el ASE. Para ver las reglas predeterminadas, seleccione **Reglas predeterminadas** junto al icono **Agregar**. Si coloca una regla para denegar todo lo demás después de las reglas de NSG que se muestran, evita el tráfico entre la IP virtual y el ASE. Para impedir el tráfico procedente de dentro de la red virtual, agregue su propia regla para permitir la entrada. Use un origen igual que AzureLoadBalancer con **cualquier** destino y un intervalo de puertos  **\*** . Puesto que la regla NSG se aplica a la subred de ASE, no es necesario que sea específico en el destino.
+Una regla predeterminada permite Hola direcciones IP de subred de hello red virtual tootalk toohello ASE. Otra regla predeterminada permite equilibrador de carga de hello, también conocido como VIP pública hello, toocommunicate con hello ASE. Seleccione las reglas predeterminadas de Hola de toosee, **reglas predeterminadas** toohello siguiente **agregar** icono. Si coloca una instrucción deny de todo lo demás regla después de hello NSG reglas se muestra, se evita que el tráfico entre la VIP de Hola y Hola ASE. tooprevent el tráfico que llegue desde dentro de Hola de red virtual, agregue su propios tooallow regla entrante. Usar un tooAzureLoadBalancer igual de origen con un destino de **cualquier** y un intervalo de puertos de  **\*** . Como regla NSG hello es toohello aplicado ASE subred, no es necesario toobe específica en el destino de Hola.
 
-Si ha asignado una dirección IP a la aplicación, asegúrese de mantener los puertos abiertos. Para ver los puertos, seleccione **App Service Environment** > **Direcciones IP**.  
+Si asigna una aplicación de tooyour de dirección IP, asegúrese de que mantener Hola puertos abiertos. seleccionar puertos de hello toosee, **entono** > **direcciones IP**.  
 
-Se necesitan todos los elementos que se muestran en las siguientes reglas de salida, excepto el último. Estos elementos habilitan el acceso de red a las dependencias de ASE que se han indicado anteriormente en este artículo. Si bloquea alguna de ellas, el ASE deja de funcionar. El último elemento de la lista habilita al ASE para que se comunique con otros recursos de la red virtual.
+Se necesitan todos los elementos de Hola se muestra en hello siguiendo las reglas de salida, excepto el último elemento de saludo. Le permiten dependencias ASE de toohello de acceso de red que se indicaron anteriormente en este artículo. Si bloquea alguna de ellas, el ASE deja de funcionar. último elemento de lista de Hola de Hello permite su toocommunicate ASE con otros recursos de la red virtual.
 
 ![Reglas de seguridad de entrada][5]
 
-Una vez que haya definido los NSG, asígnelos a la subred en la que se encuentra el ASE. Si no recuerda la red virtual o la subred de ASE, puede verlo desde el portal de administración de ASE. Para asignar el NSG a la subred, vaya a la interfaz de usuario de la subred y seleccione el NSG.
+Una vez definidos sus NSG, asignarlos subred toohello que su ASE está activado. Si no recuerdas Hola ASE VNet o subred, puede ver desde el portal de administración de hello ASE. tooassign Hola subred tooyour NSG, vaya toohello subred interfaz de usuario y seleccione hello NSG.
 
 ## <a name="routes"></a>Rutas ##
 
@@ -176,51 +176,51 @@ Las rutas presentan problemas sobre todo cuando la red virtual se configura con 
 
 Las rutas BGP reemplazan a las rutas del sistema. Las UDR reemplazan a las rutas BGP. Para más información acerca de las rutas en las redes virtuales de Azure, consulte la [Introducción a las rutas definidas por el usuario][UDRs].
 
-La base de datos SQL de Azure que ASE utiliza para administrar el sistema tiene un firewall. Necesita una comunicación que se origine desde la VIP pública del ASE. Las conexiones con la base de datos SQL desde el ASE se denegarán si se envían a través de la conexión ExpressRoute y fuera de otra dirección IP.
+base de datos de SQL Azure de Hola Hola ASE utilizado por sistema de hello toomanage tiene un firewall. Requiere comunicación toooriginate de hello VIP pública ASE. Si se envían hacia abajo Hola conexión ExpressRoute y otra dirección IP, se denegarán las conexiones toohello base de datos SQL ASE Hola.
 
-Si las respuestas a solicitudes entrantes de administración se envían a través de ExpressRoute, la dirección de respuesta es distinta del destino original. Esta falta de coincidencia interrumpe la comunicación TCP.
+Si se envían las solicitudes de administración de respuestas tooincoming hacia abajo hello ExpressRoute, dirección de respuesta de hello es diferente de destino original Hola. Esta falta de coincidencia interrumpe la comunicación TCP Hola.
 
-Para que el ASE funcione cuando la red virtual se configure con ExpressRoute, lo más fácil es:
+Para su toowork ASE mientras la red virtual se configura con una ExpressRoute toodo lo más fácil de hello es:
 
--   Configurar ExpressRoute para anunciar _0.0.0.0/0_. De forma predeterminada, obliga a dirigir todo el tráfico saliente tráfico local.
--   Crear un UDR. Aplicarlo a la subred que contiene el ASE, con un prefijo de dirección de _0.0.0.0/0_ y un tipo de próximo salto de _Internet_.
+-   Configurar ExpressRoute tooadvertise _0.0.0.0/0_. De forma predeterminada, obliga a dirigir todo el tráfico saliente tráfico local.
+-   Crear un UDR. Aplicar toohello subred que contiene Hola ASE con un prefijo de dirección de _0.0.0.0/0_ y tipo de un próximo salto _Internet_.
 
-Si realiza estos dos cambios, el tráfico destinado a Internet, que se origina en la subred ASE, no se forzará hacia ExpressRoute y el ASE funciona. 
+Si realiza estos dos cambios, tráfico destinado de internet que se origina en la subred de ASE hello no forzado inactivo ExpressRoute de Hola y Hola ASE funciona. 
 
 > [!IMPORTANT]
-> Las rutas definidas en una UDR tienen que ser lo suficientemente específicas para que tengan prioridad sobre cualquier otra ruta anunciada por la configuración de ExpressRoute. En el ejemplo anterior se utiliza el intervalo de direcciones amplio 0.0.0.0/0. Puede reemplazarse accidentalmente por los anuncios de ruta con intervalos de direcciones más específicos.
+> rutas de Hello definidas en un UDR deben ser lo suficientemente específica como tootake prioridad sobre las rutas anunciadas por la configuración de ExpressRoute de Hola. Hello en el ejemplo anterior se usa el intervalo de direcciones de hello amplia 0.0.0.0/0. Puede reemplazarse accidentalmente por los anuncios de ruta con intervalos de direcciones más específicos.
 >
-> Las instancias de ASE no son compatibles con las configuraciones de ExpressRoute que anuncian rutas entre la ruta de acceso de emparejamiento público y la ruta de acceso de emparejamiento privado. Las configuraciones de ExpressRoute con el emparejamiento público configurado reciben anuncios de ruta de Microsoft. Los anuncios contienen un gran conjunto de intervalos de direcciones IP de Microsoft Azure. Si estos intervalos de direcciones se anuncian en la ruta de acceso de emparejamiento privado, la tunelización de todos los paquetes de red salientes se debe realizar desde la subred de ASE a la infraestructura de red local de un cliente. Actualmente, este flujo de red no es compatible con las instancias de ASE. Una solución a este problema es dejar de anunciar las rutas entre la ruta de acceso de emparejamiento público y la de emparejamiento privado.
+> ASEs no son compatibles con las configuraciones de ExpressRoute que entre-anuncian rutas de hello emparejamiento público toohello emparejamiento privado ruta de acceso. Las configuraciones de ExpressRoute con el emparejamiento público configurado reciben anuncios de ruta de Microsoft. los anuncios de Hola contienen un gran conjunto de intervalos de direcciones IP de Microsoft Azure. Si los intervalos de direcciones de hello entre anunciados en ruta de acceso privada emparejamiento hello, todos los paquetes de red saliente de la subred de Hola de ASE son infraestructura de red local del cliente de túnel tooa force. Actualmente, este flujo de red no es compatible con las instancias de ASE. Un problema de toothis de solución es rutas de toostop entre anuncios de Hola emparejamiento público toohello emparejamiento privado ruta de acceso.
 
-Para crear un UDR, siga estos pasos:
+toocreate un UDR, siga estos pasos:
 
-1. Vaya a Azure Portal. Seleccione **Redes** > **Tablas de rutas**.
+1. Vaya toohello portal de Azure. Seleccione **Redes** > **Tablas de rutas**.
 
-2. Cree una nueva tabla de rutas en la misma región que la red virtual.
+2. Crear una nueva tabla de rutas en hello misma región que la red virtual.
 
 3. En la interfaz de usuario de la tabla de rutas, seleccione **Rutas** > **Agregar**.
 
-4. Establezca **Tipo del próximo salto** en **Internet** y **Prefijo de dirección** en **0.0.0.0/0**. Seleccione **Guardar**.
+4. Conjunto hello **tipo de salto siguiente** demasiado**Internet** hello y **prefijo de dirección** demasiado**0.0.0.0/0**. Seleccione **Guardar**.
 
-    Verá algo parecido a lo siguiente:
+    A continuación, verá algo parecido a Hola siguiente:
 
     ![Rutas funcionales][6]
 
-5. Después de crear la nueva tabla de rutas, vaya a la subred que contiene el ASE. Seleccione la tabla de rutas de la lista en el portal. Después de guardar el cambio, debería ver los NSG y las rutas anotadas con la subred.
+5. Después de crear la nueva tabla de rutas hello, vaya toohello subred que contiene su ASE. Seleccione la tabla de rutas de lista de hello en el portal de Hola. Después de guardar los cambios de hello, a continuación, debería ver Hola NSG y rutas que se anotan con la subred.
 
     ![NSG y rutas][7]
 
 ### <a name="deploy-into-existing-azure-virtual-networks-that-are-integrated-with-expressroute"></a>Implementación en redes virtuales de Azure existentes que están integradas con ExpressRoute ###
 
-Para implementar su ASE en una red virtual que se integra con ExpressRoute, preconfigure la subred en la que desea que el ASE se implemente. Después, use una plantilla de Resource Manager para implementarlo. Para crear un ASE en una red virtual que ya tiene configurado ExpressRoute:
+toodeploy su ASE en una red virtual que se integra con ExpressRoute, preconfigurar subred Hola donde desea ASE Hola implementado. A continuación, utilice un toodeploy de plantilla de administrador de recursos se. toocreate un ASE en una red virtual que ya tiene configurado de ExpressRoute:
 
-- Cree una subred para hospedar el ASE.
+- Crear un Hola de toohost ASE de subred.
 
     > [!NOTE]
-    > Puede no haber nada más en la subred excepto el ASE. Asegúrese de elegir un espacio de direcciones que pueda crecer en el futuro. No puede cambiar esta configuración posteriormente. Se recomienda un tamaño de `/25` con 128 direcciones.
+    > Nada más puede estar en la subred Hola pero ASE Hola. Ser toochoose seguro de un espacio de direcciones que permite el crecimiento futuro. No puede cambiar esta configuración posteriormente. Se recomienda un tamaño de `/25` con ciento veintiocho direcciones.
 
-- Cree las UDR (por ejemplo, las tablas de rutas) tal y como se ha descrito anteriormente y establezca eso en la subred.
-- Cree el ASE mediante una plantilla de Resource Manager como se describe en el artículo [Creación de un ASE mediante una plantilla de Azure Resource Manager][MakeASEfromTemplate].
+- Cree UDRs (por ejemplo, tablas de rutas) como se describió anteriormente y establezca en la subred de Hola.
+- Crear Hola ASE mediante una plantilla de administrador de recursos, como se describe en [crear un ASE mediante una plantilla de administrador de recursos][MakeASEfromTemplate].
 
 <!--Image references-->
 [1]: ./media/network_considerations_with_an_app_service_environment/networkase-overflow.png

@@ -1,12 +1,12 @@
 <!--author=SharS last changed: 12/01/15-->
 
-#### <a name="to-enter-maintenance-mode"></a>Para acceder al modo de mantenimiento
-1. En el menú de la consola serie, seleccione la opción 1, **Iniciar sesión con acceso completo**.
-2. Escriba la contraseña. La contraseña predeterminada es **Password1**.
-3. En el símbolo del sistema, escriba
+#### <a name="tooenter-maintenance-mode"></a>modo de mantenimiento de tooenter
+1. En el menú de consola serie de hello, elija la opción 1, **iniciar sesión con acceso completo**.
+2. Escriba la contraseña de Hola. es la contraseña predeterminada de Hello **Password1**.
+3. En hello símbolo del sistema, escriba
    
      `Enter-HcsMaintenanceMode`
-4. Verá un mensaje de advertencia que indica que el modo de mantenimiento interrumpe todas las solicitudes de E/S y detiene la conexión al Portal de Azure clásico. También se le solicitará la confirmación. Escriba **Y** para acceder al modo de mantenimiento.
+4. Verá un mensaje de advertencia que le indica también que el modo mantenimiento interrumpirá todas las solicitudes de E/S y Hola conexión toohello portal de Azure clásico, y se le pedirá confirmación. Tipo de **Y** tooenter modo de mantenimiento.
    
-    Ambos controladores se reiniciarán. Una vez completado el reinicio, aparecerá otro mensaje que indica que el dispositivo está en modo de mantenimiento.
+    Ambos controladores se reiniciarán. Una vez completado el reinicio de hello, aparecerá otro mensaje que indica que el dispositivo Hola está en modo de mantenimiento.
 

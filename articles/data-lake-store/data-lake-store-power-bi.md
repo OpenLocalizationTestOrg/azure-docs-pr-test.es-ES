@@ -1,6 +1,6 @@
 ---
-title: "Análisis de datos en Data Lake Store con Power BI | Microsoft Docs"
-description: "Uso de Power BI para analizar datos almacenados en el Almacén de Azure Data Lake"
+title: "datos de aaaAnalyze en el almacén de Data Lake mediante Power BI | Documentos de Microsoft"
+description: "Usar Power BI tooanalyze datos almacenados en el almacén de Azure Data Lake"
 services: data-lake-store
 documentationcenter: 
 author: nitinme
@@ -14,88 +14,88 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/10/2017
 ms.author: nitinme
-ms.openlocfilehash: 0cf7e385ef2edd650479e120f52469bc6632f2eb
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6a1bfa80fd1b0dda59b7eaaae9ca1585ba42783e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="analyze-data-in-data-lake-store-by-using-power-bi"></a>Análisis de datos en Almacén de Data Lake mediante Power BI
-En este artículo aprenderá a usar Power BI Desktop para analizar y visualizar los datos almacenados en el Almacén de Azure Data Lake.
+En este artículo, aprenderá cómo toouse Power BI Desktop tooanalyze y visualizar los datos almacenados en el almacén de Azure Data Lake.
 
 ## <a name="prerequisites"></a>Requisitos previos
-Antes de empezar este tutorial, debe contar con lo siguiente:
+Antes de comenzar este tutorial, debe tener el siguiente hello:
 
 * **Una suscripción de Azure**. Vea [Obtener evaluación gratuita de Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Cuenta del Almacén de Azure Data Lake**. Siga las instrucciones que se describen en [Introducción al Almacén de Azure Data Lake mediante el Portal de Azure](data-lake-store-get-started-portal.md). En este artículo se supone que ya creó una cuenta de Data Lake Store denominada **mybidatalakestore** y le cargó un archivo de datos de ejemplo (**Drivers.txt**). Este archivo de ejemplo está disponible para su descarga en [Azure Data Lake Git Repository](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)(Repositorio Git de Azure Data Lake).
+* **Cuenta del Almacén de Azure Data Lake**. Siga las instrucciones de hello en [empezar a trabajar con el almacén de Azure Data Lake con hello Azure Portal](data-lake-store-get-started-portal.md). En este artículo se da por supuesto que ya ha creado una cuenta de almacén de Data Lake, denominada **mybidatalakestore**y cargar un archivo de datos de ejemplo (**Drivers.txt**) tooit. Este archivo de ejemplo está disponible para su descarga en [Azure Data Lake Git Repository](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)(Repositorio Git de Azure Data Lake).
 * **Power BI Desktop**. Puede descargarla del [Centro de descarga de Microsoft](https://www.microsoft.com/en-us/download/details.aspx?id=45331). 
 
 ## <a name="create-a-report-in-power-bi-desktop"></a>Creación de un informe en Power BI Desktop
 1. Inicie Power BI Desktop en el equipo.
-2. En la cinta **Inicio**, haga clic en **Obtener datos** y luego en Más. En el cuadro de diálogo **Obtener datos**, haga clic en **Azure**, en **Azure Data Lake Store** y luego en **Conectar**.
+2. De hello **inicio** la cinta de opciones, haga clic en **obtener datos**y, a continuación, haga clic en más. Hola **obtener datos** cuadro de diálogo, haga clic en **Azure**, haga clic en **almacén de Azure Data Lake**y, a continuación, haga clic en **conectar**.
    
-    ![Conectar a Data Lake Store](./media/data-lake-store-power-bi/get-data-lake-store-account.png "Conectar a Data Lake Store")
-3. Si ve un cuadro de diálogo que indica que el conector está en fase de desarrollo, opte por continuar.
-4. En el cuadro de diálogo **Microsoft Azure Data Lake Store**, indique la dirección URL a su cuenta de Data Lake Store y haga clic en **Aceptar**.
+    ![Conecte el almacén de Lake tooData](./media/data-lake-store-power-bi/get-data-lake-store-account.png "conectar tooData Lake almacén")
+3. Si ve un cuadro de diálogo acerca de conector de hello en una fase de desarrollo, optar por toocontinue.
+4. Hola **Store de Microsoft Azure Data Lake** cuadro de diálogo, proporcione Hola URL tooyour almacén de Data Lake cuenta y, a continuación, haga clic en **Aceptar**.
    
     ![Dirección URL de Data Lake Store](./media/data-lake-store-power-bi/get-data-lake-store-account-url.png "Dirección URL de Data Lake Store")
-5. En el siguiente cuadro de diálogo, haga clic en **Iniciar sesión** para iniciar sesión en la cuenta del Almacén de Data Lake. Se le redirigirá a la página de inicio de sesión de su organización. Siga las indicaciones para iniciar sesión en la cuenta.
+5. En el siguiente cuadro de diálogo hello, haga clic en **iniciar sesión en** toosign en cuenta de almacén de Data Lake. Será redirigido el inicio de sesión de la organización de tooyour en la página. Siga toosign de mensajes de Hola en cuenta Hola.
    
     ![Iniciar sesión en Data Lake Store](./media/data-lake-store-power-bi/get-data-lake-store-account-signin.png "Iniciar sesión en Data Lake Store")
 6. Cuando haya iniciado sesión correctamente, haga clic en **Conectar**.
    
-    ![Conectar a Data Lake Store](./media/data-lake-store-power-bi/get-data-lake-store-account-connect.png "Conectar a Data Lake Store")
-7. El siguiente cuadro de diálogo muestra el archivo que cargó a su cuenta del Almacén de Data Lake. Compruebe la información y haga clic en **Cargar**.
+    ![Conecte el almacén de Lake tooData](./media/data-lake-store-power-bi/get-data-lake-store-account-connect.png "conectar tooData Lake almacén")
+7. cuadro de diálogo siguiente Hello muestra archivo hello que cargan tooyour cuenta de almacén de Data Lake. Compruebe la información de hello y, a continuación, haga clic en **carga**.
    
     ![Cargar datos desde Data Lake Store](./media/data-lake-store-power-bi/get-data-lake-store-account-load.png "Cargar datos desde Data Lake Store")
-8. Después de cargar correctamente los datos en Power BI, verá los siguientes campos en la pestaña **Campos** .
+8. Después de haberse cargados correctamente datos de hello en Power BI, verá Hola después de campos de hello **campos** ficha.
    
     ![Campos importados](./media/data-lake-store-power-bi/imported-fields.png "Campos importados")
    
-    Pero, para visualizar y analizar los datos, es preferible que estos estén disponibles por los campos siguientes.
+    Sin embargo, toovisualize y analizar datos de hello, se prefiere Hola datos toobe disponible por hello después de campos
    
     ![Campos deseados](./media/data-lake-store-power-bi/desired-fields.png "Campos deseados")
    
-    En los pasos siguientes, se actualizará la consulta para convertir los datos importados al formato deseado.
-9. En la cinta **Inicio**, haga clic en **Editar consultas**.
+    En pasos de hello, actualizaremos Hola consultar tooconvert Hola importado los datos en formato deseado Hola.
+9. De hello **inicio** la cinta de opciones, haga clic en **editar consultas**.
    
     ![Editar consultas](./media/data-lake-store-power-bi/edit-queries.png "Editar consultas")
-10. En el Editor de consultas, en la columna **Contenido**, haga clic en **Binario**.
+10. Hola, el Editor de consultas en hello **contenido** columna, haga clic en **binario**.
     
     ![Editar consultas](./media/data-lake-store-power-bi/convert-query1.png "Editar consultas")
-11. Verá un icono de archivo, que representa el archivo **Drivers.txt** que cargó. Haga clic en el archivo y luego en **CSV**.    
+11. Verá un icono de archivo, que representa hello **Drivers.txt** archivo que ha cargado. Haga clic en el archivo de Hola y haga clic en **CSV**.    
     
     ![Editar consultas](./media/data-lake-store-power-bi/convert-query2.png "Editar consultas")
-12. Debería ver una salida como la siguiente. Los datos están ahora disponibles en un formato que puede usar para crear visualizaciones.
+12. Debería ver una salida como la siguiente. Los datos ahora están disponibles en un formato que se pueden usar toocreate visualizaciones.
     
     ![Editar consultas](./media/data-lake-store-power-bi/convert-query3.png "Editar consultas")
-13. En la cinta **Inicio**, haga clic en **Cerrar y aplicar** y luego en **Cerrar y aplicar**.
+13. De hello **inicio** la cinta de opciones, haga clic en **cerrar y aplicar**y, a continuación, haga clic en **cerrar y aplicar**.
     
     ![Editar consultas](./media/data-lake-store-power-bi/load-edited-query.png "Editar consultas")
-14. Después de actualizar la consulta, la pestaña **Campos** mostrará los nuevos campos disponibles para su visualización.
+14. Una vez que se actualiza la consulta de hello, Hola **campos** ficha mostrará Hola nuevos campos disponibles para la visualización.
     
     ![Campos actualizados](./media/data-lake-store-power-bi/updated-query-fields.png "Campos actualizados")
-15. Vamos a crear un gráfico circular para representar los conductores de cada ciudad de un país determinado. Para ello, realice las selecciones siguientes.
+15. Permítanos crear un gráfico circular toorepresent controladores hello en cada ciudad de un país determinado. toodo por lo tanto, asegúrese de hello las selecciones siguientes.
     
-    1. En la pestaña Visualizaciones, haga clic en el símbolo de un gráfico circular.
+    1. Desde la pestaña de visualizaciones de hello, haga clic en el símbolo de Hola para un gráfico circular.
        
         ![Crear gráfico circular](./media/data-lake-store-power-bi/create-pie-chart.png "Crear gráfico circular")
-    2. Las columnas que se van a usar son **Columna 4** (nombre de la ciudad) y **Columna 7** (nombre del país). Arrastre estas columnas de la pestaña **Campos** a la pestaña **Visualizaciones**, tal y como se muestra a continuación.
+    2. columnas de Hola que vamos a toouse son **columna 4** (nombre de ciudad de Hola) y **7 de la columna** (nombre del país Hola). Arrastre estas columnas de **campos** pestaña demasiado**visualizaciones** pestaña tal y como se muestra a continuación.
        
         ![Creación de visualizaciones](./media/data-lake-store-power-bi/create-visualizations.png "Creación de visualizaciones")
-    3. El gráfico circular ahora debe ser similar al que se muestra a continuación.
+    3. gráfico circular de Hello debería parecerse como Hola se muestra a continuación.
        
         ![Gráfico circular](./media/data-lake-store-power-bi/pie-chart.png "Crear visualizaciones")
-16. Si selecciona un país específico en los filtros de nivel de página, ahora puede ver el número de conductores de cada ciudad del país seleccionado. Por ejemplo, en la pestaña **Visualizaciones**, en **Filtros de nivel de página**, seleccione **Brasil**.
+16. Seleccionando un país específico de los filtros de nivel de página hello, ahora puede ver número Hola de controladores en cada ciudad de país de hello seleccionado. Por ejemplo, en hello **visualizaciones** ficha **página filtros de nivel de**, seleccione **Brasil**.
     
     ![Seleccionar un país](./media/data-lake-store-power-bi/select-country.png "Seleccionar un país")
-17. El gráfico circular se actualiza automáticamente para mostrar los conductores de las ciudades de Brasil.
+17. gráfico circular de Hello es toodisplay actualizan automáticamente controladores de hello en ciudades Hola de Brasil.
     
     ![Controladores en un país](./media/data-lake-store-power-bi/driver-per-country.png "Controladores por país")
-18. En el menú **Archivo**, haga clic en **Guardar** para guardar la visualización como archivo de Power BI Desktop.
+18. De hello **archivo** menú, haga clic en **guardar** visualización de hello toosave como un archivo de Power BI Desktop.
 
-## <a name="publish-report-to-power-bi-service"></a>Publicación del informe en el servicio Power BI
-Después de crear las visualizaciones en Power BI Desktop, puede compartirlas con otros usuarios publicándolas en el servicio Power BI. Para obtener instrucciones sobre cómo hacerlo, consulte [Publicar desde Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-upload-desktop-files/).
+## <a name="publish-report-toopower-bi-service"></a>Publicar el servicio de informes de BI tooPower
+Una vez haya creado las visualizaciones de hello en Power BI Desktop, puede compartir con otros usuarios mediante la publicación de servicio de Power BI toohello. Para obtener instrucciones sobre cómo toodo que vea [publicar desde Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-upload-desktop-files/).
 
 ## <a name="see-also"></a>Otras referencias
 * [Análisis de datos en el Almacén de Data Lake con Análisis de Data Lake](../data-lake-analytics/data-lake-analytics-get-started-portal.md)

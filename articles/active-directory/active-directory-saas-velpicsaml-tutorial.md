@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Integración de Azure Active Directory con Velpic SAML | Microsoft Docs"
-description: "Aprenda a configurar el inicio de sesión único entre Azure Active Directory y Velpic SAML."
+description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y Velpic SAML."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,111 +13,111 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 5325f3cca00167e6b7b687509ce43435447ad2f4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 613947d8fe95113382a2cdc0f79ce9eda85a0127
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-velpic-saml"></a>Tutorial: Integración de Azure Active Directory con Velpic SAML
 
-En este tutorial, aprenderá a integrar Velpic SAML con Azure Active Directory (Azure AD).
+En este tutorial, aprenderá cómo toointegrate Velpic SAML con Azure Active Directory (Azure AD).
 
-La integración de Velpic SAML con Azure AD le proporciona las siguientes ventajas:
+Integración Velpic SAML con Azure AD proporciona Hola siguientes ventajas:
 
-- En Azure AD se puede controlar quién tiene acceso a Velpic SAML.
-- Puede permitir que los usuarios inicien sesión automáticamente en Velpic SAML (inicio de sesión único) con sus cuentas de Azure AD.
-- Puede administrar sus cuentas en una ubicación central: el Portal de administración de Azure.
+- Puede controlar en Azure AD que tenga acceso tooVelpic SAML
+- Puede habilitar los usuarios tooautomatically get ha iniciado sesión tooVelpic SAML (Single Sign-On) con sus cuentas de Azure AD
+- Puede administrar las cuentas en una ubicación central: portal de administración de Azure de Hola
 
-Si desea obtener más información sobre la integración de aplicaciones SaaS con Azure AD, vea [Qué es el acceso a las aplicaciones y el inicio de sesión único en Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Si desea obtener más información acerca de la integración de aplicaciones de SaaS con Azure AD tooknow, consulte [¿qué es acceso a la aplicación y el inicio de sesión único con Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Para configurar la integración de Azure AD con Velpic SAML, necesita lo siguiente:
+tooconfigure integración de Azure AD con Velpic SAML, necesita Hola siguientes elementos:
 
 - Una suscripción de Azure AD
 - Una suscripción habilitada para el inicio de sesión único en Velpic SAML
 
 > [!NOTE]
-> Para probar los pasos de este tutorial, no se recomienda el uso de un entorno de producción.
+> Hola tootest los pasos de este tutorial, no se recomienda usar un entorno de producción.
 
-Para probar los pasos de este tutorial, debe seguir estas recomendaciones:
+pasos de hello tootest en este tutorial, debe seguir estas recomendaciones:
 
 - No debe usar el entorno de producción, a menos que sea necesario.
 - Si no dispone de un entorno de prueba de Azure AD, puede obtener una versión de prueba de un mes [aquí](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Descripción del escenario
-En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. La situación descrita en este tutorial consta de dos bloques de creación principales:
+En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. escenario de Hello descrito en este tutorial consta de dos bloques principales:
 
-1. Agregar Velpic SAML desde la galería
+1. Agregar Velpic SAML desde la Galería de Hola
 2. Configuración y comprobación del inicio de sesión único de Azure AD
 
-## <a name="adding-velpic-saml-from-the-gallery"></a>Agregar Velpic SAML desde la galería
-Para configurar la integración de Velpic SAML en Azure AD, es preciso agregar Velpic SAML desde la galería a la lista de aplicaciones SaaS administradas.
+## <a name="adding-velpic-saml-from-hello-gallery"></a>Agregar Velpic SAML desde la Galería de Hola
+integración de hello tooconfigure de Velpic SAML en Azure AD, deberá tooadd Velpic SAML en lista de tooyour Hola Galería de aplicaciones administradas de SaaS.
 
-**Para agregar Velpic SAML desde la galería, realice los pasos siguientes:**
+**tooadd Velpic SAML de galería de hello, lleve a cabo Hola pasos:**
 
-1. En el panel de navegación izquierdo del **[Portal de administración de Azure](https://portal.azure.com)**, haga clic en el icono de **Azure Active Directory**. 
+1. Hola  **[Portal de administración de Azure](https://portal.azure.com)**, en el panel de navegación izquierdo de Hola, haga clic en **Azure Active Directory** icono. 
 
     ![Active Directory][1]
 
-2. Vaya a **Aplicaciones empresariales**. A continuación, vaya a **Todas las aplicaciones**.
+2. Navegue demasiado**aplicaciones empresariales**. A continuación, vaya demasiado**todas las aplicaciones**.
 
     ![Aplicaciones][2]
     
-3. Haga clic en el botón **Agregar** situado en la parte superior del cuadro de diálogo.
+3. Haga clic en **agregar** botón en la parte superior de saludo del cuadro de diálogo de Hola.
 
     ![Aplicaciones][3]
 
-4. En el cuadro de búsqueda, escriba **Velpic SAML**.
+4. En el cuadro de búsqueda de hello, escriba **Velpic SAML**.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-velpicsaml-tutorial/tutorial_velpicsaml_search.png)
 
-5. En el panel de resultados, seleccione **Velpic SAML** y haga clic en el botón **Agregar** para agregar la aplicación.
+5. En el panel de resultados de hello, seleccione **Velpic SAML**y, a continuación, haga clic en **agregar** botón aplicación hello de tooadd.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-velpicsaml-tutorial/tutorial_velpicsaml_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuración y comprobación del inicio de sesión único de Azure AD
 En esta sección, configurará y probará el inicio de sesión único de Azure AD con Velpic SAML utilizando un usuario de prueba llamado "Britta Simon".
 
-Para que el inicio de sesión único funcione, Azure AD debe saber cuál es el usuario homólogo de Velpic SAML para un usuario de Azure AD. Es decir, es necesario establecer una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de Velpic SAML.
+Para toowork de inicio de sesión único, Azure AD necesita tooknow qué usuario equivalente de hello en Velpic SAML es tooa usuario en Azure AD. En otras palabras, una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de hello en Velpic SAML debe toobe establecido.
 
-Esta relación de vínculo se establece mediante la asignación del valor de **nombre de usuario** en Azure AD como valor de **Username** (Nombre de usuario) en Velpic SAML.
+Esta relación de vínculo se establece mediante la asignación de valor de Hola de hello **nombre de usuario** en Azure AD como valor de Hola de hello **nombre de usuario** en Velpic SAML.
 
-Para configurar y probar el inicio de sesión único de Azure AD con Velpic SAML, es preciso completar los siguientes bloques de creación:
+tooconfigure y prueba de inicio de sesión único en Azure AD con Velpic SAML, deberá hello toocomplete después de bloques de creación:
 
-1. **[Configuración del inicio de sesión único de Azure AD](#configuring-azure-ad-single-sign-on)** : para permitir a los usuarios usar esta característica.
-2. **[Creación de un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)** : para probar el inicio de sesión único de Azure AD con Britta Simon.
-3. **[Creación de un usuario de prueba de Velpic SAML](#creating-a-velpic-saml-test-user)**: para tener un homólogo de Britta Simon en Velpic SAML que esté vinculado a su representación en Azure AD.
-4. **[Asignación del usuario de prueba de Azure AD](#assigning-the-azure-ad-test-user)** : para permitir que Britta Simon use el inicio de sesión único de Azure AD.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** : para comprobar si funciona la configuración.
+1. **[Configuración de Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable la toouse usuarios esta característica.
+2. **[Crear un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)**  -inicio de sesión único en Azure AD tootest con Britta Simon.
+3. **[Crear un usuario de prueba Velpic SAML](#creating-a-velpic-saml-test-user)**  -toohave un equivalente de Britta Simon en Velpic SAML que está vinculado toohello Azure AD representación de ella.
+4. **[Asignar usuario de prueba de hello Azure AD](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD inicio de sesión único.
+5. **[Pruebas de Single Sign-On](#testing-single-sign-on)**  -tooverify Hola si funciona la configuración.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Configuración del inicio de sesión único de Azure AD
 
-En esta sección, habilitará el inicio de sesión único de Azure AD en el Portal de administración de Azure y configurará el inicio de sesión único en la aplicación Velpic SAML.
+En esta sección, habilitar inicio de sesión único en Azure AD en el portal de administración de Azure de Hola y configurar el inicio de sesión único en la aplicación Velpic SAML.
 
-**Para configurar el inicio de sesión único de Azure AD con Velpic SAML, realice los pasos siguientes:**
+**inicio de sesión único en Azure AD tooconfigure con Velpic SAML, siga Hola pasos:**
 
-1. En el Portal de administración de Azure, en la página de integración de aplicaciones de **Velpic SAML**, haga clic en **Inicio de sesión único**.
+1. En el portal de administración de Azure de hello, en hello **Velpic SAML** página de integración de aplicaciones, haga clic en **inicio de sesión único**.
 
     ![Configurar inicio de sesión único][4]
 
-2. En el cuadro de diálogo **Inicio de sesión único**, en **Modo**, seleccione **Inicio de sesión basado en SAML** para habilitar el inicio de sesión único.
+2. En hello **inicio de sesión único** cuadro de diálogo, como **modo** seleccione **sesión basado en SAML** tooenable inicio de sesión único.
  
     ![Configurar inicio de sesión único](./media/active-directory-saas-velpicsaml-tutorial/tutorial_velpicsaml_samlbase.png)
 
-3. Escriba los datos en la sección **Dominio y direcciones URL de Velpic SAML**:
+3. Escriba los detalles de Hola Hola **Velpic SAML dominio y las direcciones URL** sección:
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-velpicsaml-tutorial/tutorial_velpicsaml_url.png)
 
-    a. En el cuadro de texto **URL de inicio de sesión**, escriba el valor como: `https://<sub-domain>.velpicsaml.net`
+    a. Hola **dirección URL de inicio de sesión** cuadro de texto, valor de tipo hello como:`https://<sub-domain>.velpicsaml.net`
 
-    b. En el cuadro de texto **Identificador**, pegue el valor de **"Single sign on URL"** (URL de inicio de sesión único), `https://auth.velpic.com/saml/v2/<entity-id>/login`
+    b. Hola **identificador** cuadro de texto, pegue hello **'Solo la dirección URL de inicio de sesión'** valor`https://auth.velpic.com/saml/v2/<entity-id>/login`
     
     > [!NOTE]
-    > Tenga en cuenta que la URL de inicio de sesión se la proporcionará el equipo de Velpic SAML y el valor del identificador estará disponible cuando configure el complemento de SSO en Velpic SAML. Tiene que copiar ese valor de la página de la aplicación Velpic SAML y pegarlo aquí.
+    > Tenga en cuenta que Hola equipo Velpic SAML proporcionarán Hola dirección URL de inicio de sesión y el valor de identificador estarán disponible al configurar Hola complemento SSO en el lado de Velpic SAML. Debe toocopy que valor de página de la aplicación Velpic SAML y péguelo aquí.
 
-4. En la sección **Certificado de firma de SAML**, haga clic en **XML de metadatos** y luego guarde el archivo XML en el equipo.
+4. En hello **el certificado de firma de SAML** sección, haga clic en **Metadata XML** y, a continuación, guarde el archivo XML de hello en el equipo.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-velpicsaml-tutorial/tutorial_velpicsaml_certificate.png) 
 
@@ -125,116 +125,116 @@ En esta sección, habilitará el inicio de sesión único de Azure AD en el Port
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-velpicsaml-tutorial/tutorial_general_400.png)
 
-6. En la sección Configuración de Velpic SAML, haga clic en Configurar Velpic SAML para abrir la ventana Configurar inicio de sesión. Copie el Id. de entidad de SAML de la sección Referencia rápida.
+6. En la sección de configuración de SAML Velpic hello, haga clic en configurar Velpic SAML tooopen configurar inicio de sesión en la ventana. Copie Hola Id. de entidad de SAML de hello sección de referencia rápida.
 
 7. En otra ventana del explorador web, inicie sesión como administrador en su sitio de la compañía de Velpic SAML.
 
-8. Haga clic en la pestaña **Manage** (Administrar) y vaya a la sección **Integration** (Integración), donde tiene que hacer clic en el botón **Plugins** (Complementos) para crear el complemento Sign-In (Inicio de sesión).
+8. Haga clic en **administrar** pestaña e ir demasiado**integración** sección donde se necesitan tooclick en **complementos** botón toocreate nuevo complemento para el inicio de sesión.
 
     ![Complemento](./media/active-directory-saas-velpicsaml-tutorial/velpic_1.png)
 
-9. Haga clic en el botón **"Add plugin"** (Agregar complemento).
+9. Haga clic en hello **'Agregar complemento'** botón.
     
     ![Complemento](./media/active-directory-saas-velpicsaml-tutorial/velpic_2.png)
 
-10. Haga clic en el icono **SAML** de la página Add Plugin (Agregar complemento).
+10. Haga clic en hello **SAML** disponer en mosaico en la página Agregar complemento de Hola.
     
     ![Complemento](./media/active-directory-saas-velpicsaml-tutorial/velpic_3.png)
 
-11. Escriba el nombre del nuevo complemento SAML y haga clic en el botón **"Add"** (Agregar).
+11. Escriba nombre Hola de nuevo complemento SAML hello y haga clic en hello **'Add'** botón.
 
     ![Complemento](./media/active-directory-saas-velpicsaml-tutorial/velpic_4.png)
 
-12. Especifique los detalles de la manera siguiente:
+12. Escriba los detalles de hello como se indica a continuación:
 
     ![Complemento](./media/active-directory-saas-velpicsaml-tutorial/velpic_5.png)
 
-    a. En el cuadro de texto **Name** (Nombre), escriba el nombre del complemento SAML.
+    a. Hola **nombre** cuadro de texto, nombre de tipo hello de complemento SAML.
 
-    b. En el cuadro de texto **Issuer URL** (URL del emisor), pegue el **Id. de entidad de SAML** que copió de la ventana **Configurar inicio de sesión** de Azure Portal.
+    b. Hola **dirección URL del emisor** cuadro de texto, pegue hello **Id. de entidad SAML** que copió de hello **configurar inicio de sesión** ventana de hello portal de Azure.
 
-    c. En **Provider Metadata Config** (Config. de metadatos del proveedor), cargue el archivo XML de metadatos que descargó de Azure Portal.
+    c. Hola **configuración de metadatos del proveedor** cargar Hola archivo Metadata XML que descargó desde el portal de Azure.
 
-    d. También puede habilitar aprovisionamiento Just-In-Time de SAML activando la casilla **"Auto create new users"** (Crear nuevos usuarios automáticamente). Si no existe ningún usuario de Velpic y no se habilita esta marca, el inicio desde Azure no se producirá. Si se habilita la marca, el usuario se aprovisionará automáticamente en Velpic en el momento de inicio de sesión. 
+    d. También puede elegir tooenable SAML aprovisionamiento justo a tiempo habilitando hello **'Creación automática de nuevos usuarios'** casilla de verificación. Si un usuario no existe en Velpic y esta marca no está habilitada, se producirá un error de inicio de sesión de Hola de Azure. Si marca Hola estará habilitado Hola usuario automáticamente aprovisionar en Velpic en tiempo de Hola de inicio de sesión. 
 
-    e. Copie la **Single sign on URL** (URL de inicio de sesión) en el cuadro de texto y péguela en Azure Portal.
+    e. Hola copia **en dirección URL de inicio de sesión único** de cuadro de texto de Hola y lo pega en Hola portal de Azure.
     
     f. Haga clic en **Guardar**.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Creación de un usuario de prueba de Azure AD
-El objetivo de esta sección es crear un usuario de prueba en el Portal de administración de Azure llamado Britta Simon.
+objetivo de Hola de esta sección es un usuario de prueba en el portal de administración de Azure de hello llamado a Britta Simon toocreate.
 
 ![Creación de un usuario de Azure AD][100]
 
-**Siga estos pasos para crear un usuario de prueba en Azure AD:**
+**toocreate un usuario de prueba en Azure AD, lleve a cabo Hola pasos:**
 
-1. En el panel de navegación izquierdo del **Portal de administración de Azure**, haga clic en el icono de **Azure Active Directory**.
+1. Hola **portal de administración de Azure**, en Hola panel de navegación izquierdo, haga clic en **Azure Active Directory** icono.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-velpicsaml-tutorial/create_aaduser_01.png) 
 
-2. Vaya a **Usuarios y grupos** y haga clic en **Todos los usuarios** para mostrar la lista de usuarios.
+2. Vaya demasiado**usuarios y grupos** y haga clic en **todos los usuarios** toodisplay lista de Hola de usuarios.
     
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-velpicsaml-tutorial/create_aaduser_02.png) 
 
-3. En la parte superior del diálogo, haga clic en **Agregar** para abrir el diálogo **Usuario**.
+3. En la parte superior de saludo del cuadro de diálogo de hello haga clic en **agregar** tooopen hello **usuario** cuadro de diálogo.
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-velpicsaml-tutorial/create_aaduser_03.png) 
 
-4. En la página de diálogo **Usuario**, realice los siguientes pasos:
+4. En hello **usuario** cuadro de diálogo, siga los pasos de hello:
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-velpicsaml-tutorial/create_aaduser_04.png) 
 
-    a. En el cuadro de texto **Nombre**, escriba **BrittaSimon**.
+    a. Hola **nombre** cuadro de texto, tipo **BrittaSimon**.
 
-    b. En el cuadro de texto **Nombre de usuario**, escriba la **dirección de correo electrónico** de Britta Simon.
+    b. Hola **nombre de usuario** cuadro de texto, hello tipo **dirección de correo electrónico** de BrittaSimon.
 
-    c. Seleccione **Mostrar contraseña** y anote el valor del cuadro **Contraseña**.
+    c. Seleccione **Mostrar contraseña** y anote el valor de Hola de hello **contraseña**.
 
     d. Haga clic en **Crear**.
  
 ### <a name="creating-a-velpic-saml-test-user"></a>Creación de un usuario de prueba de Velpic SAML
 
-Este paso no suele ser necesario porque la aplicación admite aprovisionamiento de usuarios Just-In-Time. Si el aprovisionamiento automático de usuarios no se habilita, puede llevarse a cabo la creación manual de usuarios tal y como se describe a continuación.
+Normalmente este paso no es necesario que sea compatible con aplicación hello justo a tiempo el aprovisionamiento de usuarios. Si no está habilitado el aprovisionamiento automático de usuarios de hello creación manual del usuario puede realizarse tal y como se describe a continuación.
 
 Inicie sesión como administrador en su sitio de la compañía de Velpic SAML y realice los pasos siguientes:
     
-1. Haga clic en la pestaña Manage (Administrar), vaya a la sección Users (Usuarios) y haga clic en el botón New (Nuevo) para agregar usuarios.
+1. Haga clic en la ficha administrar y vaya sección tooUsers, a continuación, haga clic en nuevo botón tooadd usuarios.
 
     ![agregar usuario](./media/active-directory-saas-velpicsaml-tutorial/velpic_7.png)
 
-2. En el cuadro de diálogo **"Create New User"** (Crear nuevo usuario), realice los pasos siguientes.
+2. En hello **"Crear nuevo usuario"** cuadro de diálogo, siga los pasos de Hola.
 
     ![user](./media/active-directory-saas-velpicsaml-tutorial/velpic_8.png)
     
-    a. En el cuadro de texto **First Name** (Nombre), escriba el nombre de Britta Simon.
+    a. Hola **nombre** cuadro de texto Nombre tipo hello de Britta Simon.
 
-    b. En el cuadro de texto **Last Name** (Apellido), escriba el apellido de Britta Simon.
+    b. Hola **Last Name** cuadro de texto, escriba Hola apellidos de Britta Simon.
 
-    c. En el cuadro de texto **User Name** (Nombre de usuario), escriba el nombre del usuario de Britta Simon.
+    c. Hola **nombre de usuario** cuadro de texto, escriba el nombre de usuario de Hola de Britta Simon.
 
-    d. En el cuadro de texto **Correo electrónico**, escriba la dirección de correo electrónico de la cuenta de Britta Simon.
+    d. Hola **correo electrónico** cuadro de texto, dirección de correo electrónico de Hola de tipo de cuenta de Britta Simon.
 
-    e. El resto de la información es opcional, puede rellenarla si es necesario.
+    e. Resto de información de hello es opcional, que puede rellenar si es necesario.
     
     f. Haga clic en **GUARDAR**.  
 
-### <a name="assigning-the-azure-ad-test-user"></a>Asignación del usuario de prueba de Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Asignación de usuario de prueba de hello Azure AD
 
-En esta sección, habilitará a Britta Simon para que use el inicio de sesión único de Azure concediéndole acceso a Velpic SAML.
+En esta sección, se habilita Britta Simon toouse Azure inicio de sesión único mediante la concesión de su tooVelpic acceso SAML.
 
 ![Asignar usuario][200] 
 
-**Para asignar a Britta Simon a Velpic SAML, siga estos pasos:**
+**tooassign Britta Simon tooVelpic SAML, lleve a cabo Hola pasos:**
 
-1. En el Portal de administración de Azure, abra la vista de aplicaciones, vaya a la vista de directorio y vaya a **Aplicaciones empresariales**. A continuación, haga clic en **All applications** (Todas las aplicaciones).
+1. En el portal de administración de Azure de hello, abrir vista de aplicaciones de hello y, a continuación, navegue a vista de directorio toohello y vaya demasiado**aplicaciones empresariales** , a continuación, haga clic en **todas las aplicaciones**.
 
     ![Asignar usuario][201] 
 
-2. En la lista de aplicaciones, seleccione **Velpic SAML**.
+2. En la lista de aplicaciones de hello, seleccione **Velpic SAML**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-velpicsaml-tutorial/tutorial_velpicsaml_app.png) 
 
-3. En el menú de la izquierda, haga clic en **Usuarios y grupos**.
+3. En el menú de Hola Hola izquierda, haga clic en **usuarios y grupos**.
 
     ![Asignar usuario][202] 
 
@@ -242,7 +242,7 @@ En esta sección, habilitará a Britta Simon para que use el inicio de sesión �
 
     ![Asignar usuario][203]
 
-5. En el cuadro de diálogo **Usuarios y grupos**, seleccione **Britta Simon** en la lista de usuarios.
+5. En **usuarios y grupos** cuadro de diálogo, seleccione **Britta Simon** en la lista de usuarios de Hola.
 
 6. Haga clic en el botón **Seleccionar** del cuadro de diálogo **Usuarios y grupos**.
 
@@ -250,18 +250,18 @@ En esta sección, habilitará a Britta Simon para que use el inicio de sesión �
     
 ### <a name="testing-single-sign-on"></a>Prueba del inicio de sesión único 
 
-En esta sección, probará la configuración de inicio de sesión único de Azure AD mediante el Panel de acceso.
+En esta sección, comprobará su único inicio de sesión en configuración de Azure AD con hello Panel de acceso.
 
-1. Al hacer clic en el icono de Velpic SAML del panel de acceso, debería entrar en la página de inicio de sesión de la aplicación Velpic SAML. Debe ver el botón **"Log In With Azure AD"** (Iniciar sesión con Azure AD) en la página de inicio de sesión.
+1. Al hacer clic en hello Velpic SAML disponer en mosaico en hello Panel de acceso, deberá obtener la página de inicio de sesión de aplicación Velpic SAML. Debería ver Hola **'Iniciar sesión con Azure AD'** botón de inicio de sesión de hello en la página.
 
     ![Complemento](./media/active-directory-saas-velpicsaml-tutorial/velpic_6.png)
 
-2. Haga clic en el botón **"Log In With Azure AD"** (Iniciar sesión con Azure AD) para iniciar sesión en Velpic con su cuenta de Azure AD.
+2. Haga clic en hello **'Iniciar sesión con Azure AD'** toolog de botón en tooVelpic con su cuenta de Azure AD.
 
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* [Lista de tutoriales sobre cómo integrar aplicaciones SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista de tutoriales sobre cómo tooIntegrate aplicaciones de SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

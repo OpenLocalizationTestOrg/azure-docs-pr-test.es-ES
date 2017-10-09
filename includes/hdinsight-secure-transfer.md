@@ -1,0 +1,2 @@
+> [!NOTE]
+> Hola [proteger la transferencia se necesitan](../articles/storage/common/storage-require-secure-transfer.md) característica aplica todas las solicitudes tooyour cuenta a través de una conexión segura. Esta característica solo es compatible con la versión de clúster de HDInsight 3.6 o posterior. Para más información, consulte [Creación de un clúster de Hadoop con cuentas de almacenamiento de transferencia segura en Azure HDInsight](../articles/hdinsight/hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md).

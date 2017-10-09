@@ -1,6 +1,6 @@
 ---
-title: "Implementación de un área de trabajo de Machine Learning mediante Azure Resource Manager | Microsoft Docs"
-description: "Cómo implementar un área de trabajo de Machine Learning de Azure mediante la plantilla de Azure Resource Manager"
+title: "aaaDeploy un área de trabajo de aprendizaje automático con el Administrador de recursos de Azure | Documentos de Microsoft"
+description: "¿Cómo toodeploy un área de trabajo para el aprendizaje automático de Azure mediante la plantilla del Administrador de recursos de Azure"
 services: machine-learning
 documentationcenter: 
 author: ahgyger
@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/15/2017
 ms.author: ahgyger
-ms.openlocfilehash: 9e37780428b0867da63987ec4f7f843a8abeb907
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 308959825bcbd670f6ce9b6dc381be767f172357
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deploy-machine-learning-workspace-using-azure-resource-manager"></a>Implementación del área de trabajo de Machine Learning mediante Azure Resource Manager
 ## <a name="introduction"></a>Introducción
-El uso de una plantilla de implementación de Azure Resource Manager le permite ahorrar tiempo proporcionándole una manera escalable de implementar componentes interconectados con un mecanismo de validación y reintento. Para configurar áreas de trabajo de Azure Machine Learning, por ejemplo, debe configurar primero una cuenta de Almacenamiento de Azure y, a continuación, implementar el área de trabajo. Imagine que tiene que hacer esto manualmente para cientos de áreas de trabajo. Una alternativa más sencilla es utilizar una plantilla de Azure Resource Manager para implementar un área de trabajo de Azure Machine Learning y todas sus dependencias. Este artículo le guiará por este proceso paso a paso. Para ver una introducción excelente sobre Azure Resource Manager, consulte [Información general de Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
+Mediante una plantilla de implementación guarda en Azure Resource Manager tiempo proporcionando un toodeploy escalable interconectados componentes mediante un mecanismo de validación y vuelva a intentarlo. tooset de áreas de trabajo de aprendizaje de automático de Azure, por ejemplo, necesita toofirst configure una cuenta de almacenamiento de Azure y, a continuación, implementar el área de trabajo. Imagine que tiene que hacer esto manualmente para cientos de áreas de trabajo. Una alternativa más sencilla es toouse un toodeploy de plantilla de Azure Resource Manager un área de trabajo de aprendizaje de automático de Azure y todas sus dependencias. Este artículo le guiará por este proceso paso a paso. Para ver una introducción excelente sobre Azure Resource Manager, consulte [Información general de Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
 
 ## <a name="step-by-step-create-a-machine-learning-workspace"></a>Paso a paso: Creación de un área de trabajo de Machine Learning
-Crearemos un grupo de recursos de Azure e implementaremos una nueva cuenta de Almacenamiento de Azure y una nueva área de trabajo de Azure Machine Learning mediante una plantilla de Resource Manager. Una vez completada la implementación, se imprimirá información importante acerca de las áreas de trabajo que se crearon (la clave principal, el identificador y la dirección URL del área de trabajo).
+Crearemos un grupo de recursos de Azure e implementaremos una nueva cuenta de Almacenamiento de Azure y una nueva área de trabajo de Azure Machine Learning mediante una plantilla de Resource Manager. Una vez completada la implementación de hello, se imprimirá información importante acerca de las áreas de trabajo de hello creados (Hola primary key, workspaceID Hola y el área de trabajo de hello URL toohello).
 
 ### <a name="create-an-azure-resource-manager-template"></a>Creación de una plantilla de Azure Resource Manager
-Un área de trabajo de Machine Learning requiere una cuenta de almacenamiento de Azure para almacenar el conjunto de datos vinculado a ella.
-La siguiente plantilla usa el nombre del grupo de recursos para generar el nombre de la cuenta de almacenamiento y el nombre del área de trabajo.  También utiliza el nombre de la cuenta de almacenamiento como una propiedad al crear el área de trabajo.
+Un área de trabajo de aprendizaje automático requiere un tooit de conjunto de datos vinculado de almacenamiento de Azure cuenta toostore Hola.
+Hello siguiente plantilla utiliza nombre Hola de nombre de cuenta de almacenamiento de Hola de hello recursos grupo toogenerate y el nombre del área de trabajo de Hola.  También utiliza nombre de cuenta de almacenamiento de hello como una propiedad al crear el área de trabajo de Hola.
 
 ```
 {
@@ -78,31 +78,31 @@ La siguiente plantilla usa el nombre del grupo de recursos para generar el nombr
 ```
 Guarde esta plantilla como archivo mlworkspace.json en c:\temp.
 
-### <a name="deploy-the-resource-group-based-on-the-template"></a>Implementación del grupo de recursos basado en la plantilla
+### <a name="deploy-hello-resource-group-based-on-hello-template"></a>Implementar grupo de recursos de hello, en función de plantilla de Hola
 * Abra PowerShell
 * Instale los módulos de Azure Resource Manager y Azure Service Management  
 
 ```
-# Install the Azure Resource Manager modules from the PowerShell Gallery (press “A”)
+# Install hello Azure Resource Manager modules from hello PowerShell Gallery (press “A”)
 Install-Module AzureRM -Scope CurrentUser
 
-# Install the Azure Service Management modules from the PowerShell Gallery (press “A”)
+# Install hello Azure Service Management modules from hello PowerShell Gallery (press “A”)
 Install-Module Azure -Scope CurrentUser
 ```
 
-   Estos pasos permiten descargar e instalar los módulos necesarios para completar los pasos restantes. Esto solo debe realizarse una vez en el entorno donde se ejecutan los comandos de PowerShell.   
+   Estos pasos descargar e instalación pasos restantes del Hola Hola módulos toocomplete necesarios. Solo es necesario toobe efectuar una vez en entorno de Hola donde se ejecutan los comandos de PowerShell de Hola.   
 
-* Autentíquese en Azure  
+* Autenticar tooAzure  
 
 ```
-# Authenticate (enter your credentials in the pop-up window)
+# Authenticate (enter your credentials in hello pop-up window)
 Add-AzureRmAccount
 ```
-Este paso debe repetirse para cada sesión. Una vez autenticado, aparecerá la información de la suscripción.
+Este paso es necesario toobe repite para cada sesión. Una vez autenticado, aparecerá la información de la suscripción.
 
 ![Cuenta de Azure][1]
 
-Ahora que tenemos acceso a Azure, podemos crear el grupo de recursos.
+Ahora que tenemos acceso tooAzure, podemos crear grupo de recursos de Hola.
 
 * Crear un grupo de recursos
 
@@ -111,36 +111,36 @@ $rg = New-AzureRmResourceGroup -Name "uniquenamerequired523" -Location "South Ce
 $rg
 ```
 
-Compruebe que se ha aprovisionado correctamente el grupo de recursos. **ProvisioningState** debe ser "Succeeded" (Correcto).
-La plantilla utiliza el nombre del grupo de recursos para generar el nombre de la cuenta de almacenamiento. El nombre de la cuenta de almacenamiento debe tener entre 3 y 24 caracteres, y usar solo números y letras minúsculas.
+Compruebe que ese grupo de recursos de Hola se aprovisionó correctamente. **ProvisioningState** debe ser "Succeeded" (Correcto).
+nombre de grupo de recursos de Hola se usa por nombre de cuenta de almacenamiento de hello plantilla toogenerate Hola. nombre de cuenta de almacenamiento de Hello debe tener entre 3 y 24 caracteres de longitud y usar números y letras en minúsculas solo.
 
-![El grupos de recursos][2]
+![Grupo de recursos][2]
 
-* Mediante la implementación del grupo de recursos, implemente una nueva área de trabajo de Machine Learning.
+* Con la implementación del grupo de recursos de hello, implemente una nueva área de trabajo de aprendizaje de máquina.
 
 ```
-# Create a Resource Group, TemplateFile is the location of the JSON template.
+# Create a Resource Group, TemplateFile is hello location of hello JSON template.
 $rgd = New-AzureRmResourceGroupDeployment -Name "demo" -TemplateFile "C:\temp\mlworkspace.json" -ResourceGroupName $rg.ResourceGroupName
 ```
 
-Una vez completada la implementación, resulta sencillo tener acceso a las propiedades del área de trabajo que implementó. Por ejemplo, puede tener acceso al token de clave principal.
+Una vez completada la implementación de hello, resulta sencillo tooaccess propiedades del área de trabajo de Hola que implementó. Por ejemplo, puede tener acceso a Hola el Token de clave principal.
 
 ```
 # Access Azure ML Workspace Token after its deployment.
 $rgd.Outputs.mlWorkspaceToken.Value
 ```
 
-Otra manera de recuperar los tokens del área de trabajo existente es usar el comando Invoke-AzureRmResourceAction. Por ejemplo, puede enumerar los tokens principales y secundarios de todas las áreas de trabajo.
+Otra manera tooretrieve símbolos (tokens) de área de trabajo existente es toouse Hola comando Invoke-AzureRmResourceAction. Por ejemplo, puede enumerar Hola principal y secundaria símbolos (tokens) de todas las áreas de trabajo.
 
 ```  
-# List the primary and secondary tokens of all workspaces
+# List hello primary and secondary tokens of all workspaces
 Get-AzureRmResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |% { Invoke-AzureRmResourceAction -ResourceId $_.ResourceId -Action listworkspacekeys -Force}  
 ```
-Una vez aprovisionada el área de trabajo, también puede automatizar muchas tareas de Estudio de aprendizaje automático de Microsoft Azure mediante el [módulo de PowerShell para Aprendizaje automático de Azure](http://aka.ms/amlps).
+Después de aprovisiona el área de trabajo de hello, también puede automatizar muchas tareas de estudio de aprendizaje automático de Azure con hello [módulo de PowerShell para el aprendizaje automático de Azure](http://aka.ms/amlps).
 
 ## <a name="next-steps"></a>Pasos siguientes
 * Obtenga más información sobre la [creación de plantillas de Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md). 
-* Eche un vistazo al [repositorio de plantillas de inicio rápido de Azure](https://github.com/Azure/azure-quickstart-templates). 
+* Eche un vistazo a hello [repositorio de plantillas de inicio rápido de Azure](https://github.com/Azure/azure-quickstart-templates). 
 * Vea este vídeo acerca de [Azure Resource Manager](https://channel9.msdn.com/Events/Ignite/2015/C9-39). 
 
 <!--Image references-->

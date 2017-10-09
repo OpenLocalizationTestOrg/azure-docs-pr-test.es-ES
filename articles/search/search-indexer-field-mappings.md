@@ -1,6 +1,6 @@
 ---
-title: Asignaciones de campos en los indexadores de Azure Search
-description: "Configurar asignaciones de campos de indexador de Búsqueda de Azure para tener en cuenta las diferencias en los nombres de campo y las representaciones de datos"
+title: "asignaciones de aaaField en los indizadores de búsqueda de Azure"
+description: "Configurar asignaciones de campo de búsqueda de Azure indizador tooaccount las diferencias en las representaciones de datos y nombres de campo"
 services: search
 documentationcenter: 
 author: chaosrealm
@@ -14,31 +14,31 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 10/27/2016
 ms.author: eugenesh
-ms.openlocfilehash: 57e91f070d9a42882a56e708f12b1ce238ed9191
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 009d5dbc12cb9e8d9cfd3e8042e907ca88399ad7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="field-mappings-in-azure-search-indexers"></a>Asignaciones de campos en los indexadores de Azure Search
-Al usar los indexadores de Búsqueda de Azure, habrá ocasiones en que pueda encontrarse en situaciones donde sus datos de entrada no coincidan demasiado con el esquema de su índice de destino. En esos casos, puede usar **asignaciones de campos** para transformar sus datos en la forma deseada.
+Al utilizar indizadores de búsqueda de Azure, en ocasiones puede encontrar usted mismo en situaciones donde los datos de entrada no coincide bastante con esquema Hola de su índice de destino. En esos casos, puede usar **campo asignaciones** tootransform los datos en hello deseado forma.
 
 Algunas situaciones donde las asignaciones de campos son útiles:
 
-* Su origen de datos tiene un campo `_id`, pero Búsqueda de Azure no permite los nombres de campo que empiezan por un carácter de subrayado. Una asignación de campos permite "cambiar el nombre" a un campo.
-* Desea rellenar varios campos en el índice con los mismos datos de origen de datos, por ejemplo, porque desea aplicar diferentes analizadores a esos campos. Las asignaciones de campos permiten "bifurcar" un campo de origen de datos.
-* Necesita codificar o descodificar sus datos con Base64. Las asignaciones de campos admiten varias **funciones de asignación**, incluidas las funciones de codificación y descodificación Base64.   
+* Su origen de datos tiene un campo `_id`, pero Búsqueda de Azure no permite los nombres de campo que empiezan por un carácter de subrayado. Permite que una asignación de campo demasiado "cambia el nombre de" un campo.
+* Desea toopopulate varios campos en hello indizarán con hello mismos datos del origen de datos, por ejemplo porque desea tooapply diferentes analizadores toothose campos. Las asignaciones de campos permiten "bifurcar" un campo de origen de datos.
+* Necesita tooBase64 codificar o descodificar los datos. Las asignaciones de campos admiten varias **funciones de asignación**, incluidas las funciones de codificación y descodificación Base64.   
 
 ## <a name="setting-up-field-mappings"></a>Configuración de asignaciones de campos
-Puede agregar asignaciones de campos al crear un nuevo indexador con la API de [creación de indexador](https://msdn.microsoft.com/library/azure/dn946899.aspx) . Puede administrar asignaciones de campos en un indexador de indización con la API de [actualización de indexador](https://msdn.microsoft.com/library/azure/dn946892.aspx) .
+Puede agregar las asignaciones de campos al crear un nuevo indizador mediante hello [crear indizador](https://msdn.microsoft.com/library/azure/dn946899.aspx) API. Puede administrar las asignaciones de campos en un indizador de indización mediante hello [actualización indizador](https://msdn.microsoft.com/library/azure/dn946892.aspx) API.
 
 Una asignación de campos consta de 3 partes:
 
 1. `sourceFieldName`, que representa un campo de su origen de datos. Esta propiedad es obligatoria.
-2. `targetFieldName`opcional, que representa un campo de su índice de búsqueda. Si se omite, se usa el mismo nombre que en el origen de datos.
-3. `mappingFunction`opcional, que puede transformar sus datos con una de las diversas funciones predefinidas. La lista completa de funciones se encuentra [a continuación](#mappingFunctions).
+2. `targetFieldName`opcional, que representa un campo de su índice de búsqueda. Si se omite, Hola el mismo nombre que en Hola se utiliza el origen de datos.
+3. `mappingFunction`opcional, que puede transformar sus datos con una de las diversas funciones predefinidas. Hola lista completa de funciones es [a continuación](#mappingFunctions).
 
-Las asignaciones de campos se agregan a la matriz `fieldMappings` de la definición del indexador.
+Asignaciones de campos se agregan toohello `fieldMappings` matriz en la definición de indizador de Hola.
 
 Por ejemplo, así es como puede adaptarse a las diferencias existentes en los nombres de campo:
 
@@ -65,7 +65,7 @@ Un indexador puede tener varias asignaciones de campos. Por ejemplo, así es com
 ```
 
 > [!NOTE]
-> Búsqueda de Azure usa una comparación que no distingue mayúsculas de minúsculas para resolver los nombres de campo y función de las asignaciones de campos. Esto es práctico (no es necesario que el uso de mayúsculas y minúsculas sea correcto en todo momento), pero se traduce en que su índice u origen de datos no puede tener campos que difieran únicamente en mayúsculas y minúsculas.  
+> Búsqueda de Azure usa nombres de campo y la función de la Hola del tooresolve comparación entre mayúsculas y minúsculas en las asignaciones de campos. Esto resulta útil (no es necesario tooget todas Hola mayúsculas y minúsculas derecha), pero significa que el origen de datos o un índice no puede tener campos que se diferencian sólo por mayúsculas o minúsculas.  
 >
 >
 
@@ -82,10 +82,10 @@ Actualmente se admiten estas funciones:
 <a name="base64EncodeFunction"></a>
 
 ### <a name="base64encode"></a>base64Encode
-Realiza una codificación Base64 *segura para direcciones URL* de la cadena de entrada. Asume que la entrada presenta una codificación UTF-8.
+Realiza *seguridad de direcciones URL* codificación Base64 del programa Hola a la cadena de entrada. Supone que Hola entrada con codificación UTF-8.
 
 #### <a name="sample-use-case"></a>Caso de uso de ejemplo
-Solo pueden aparecer caracteres seguros para direcciones URL en una clave de documento de Búsqueda de Azure (porque los clientes deben poder enviar el documento con la API de búsqueda, por ejemplo). Si sus datos contienen caracteres no seguros para direcciones URL y desea usarlos para rellenar un campo clave de su índice de búsqueda, utilice esta función.   
+Solo pueden aparecer caracteres de seguridad de direcciones URL en una clave de documento de búsqueda de Azure (dado que los clientes deben ser tooaddress capaz de documento de hello mediante Hola API de búsqueda, por ejemplo). Si los datos contienen caracteres no seguros la dirección URL y se desea toouse toopopulate un campo de clave en el índice de búsqueda, use esta función.   
 
 #### <a name="example"></a>Ejemplo
 ```JSON
@@ -101,10 +101,10 @@ Solo pueden aparecer caracteres seguros para direcciones URL en una clave de doc
 <a name="base64DecodeFunction"></a>
 
 ### <a name="base64decode"></a>base64Decode
-Realiza una descodificación Base64 de la cadena de entrada. La entrada se asume para una cadena con codificación Base64 *segura para direcciones URL* .
+Realiza descodificación en Base64 de la cadena de entrada de Hola. Hello entrada se supone tooa *seguridad de direcciones URL* cadena codificada en Base64.
 
 #### <a name="sample-use-case"></a>Caso de uso de ejemplo
-Los valores de metadatos personalizados del blob deben tener codificación ASCII. Puede usar la codificación Base64 para representar cadenas Unicode arbitrarias en metadatos personalizados del blob. Sin embargo, para que la búsqueda sea significativa, puede usar esta función para volver a convertir los datos codificados en cadenas "normales" al rellenar su índice de búsqueda.  
+Los valores de metadatos personalizados del blob deben tener codificación ASCII. Puede usar Base64 codificación toorepresent arbitrario las cadenas Unicode en los metadatos personalizados de blob. Sin embargo, toomake búsqueda significativo, se puede usar esta función tooturn Hola codificado datos en las cadenas "normales" al rellenar el índice de búsqueda.  
 
 #### <a name="example"></a>Ejemplo
 ```JSON
@@ -120,16 +120,16 @@ Los valores de metadatos personalizados del blob deben tener codificación ASCII
 <a name="extractTokenAtPositionFunction"></a>
 
 ### <a name="extracttokenatposition"></a>extractTokenAtPosition
-Divide un campo de cadena con el delimitador especificado y elige el token en la posición especificada de la división resultante.
+Divide un campo de cadena con hello especifica delimitador y recoge Hola símbolo (token) en Hola posición especificada de la división de hello resultante.
 
-Por ejemplo, si la entrada es `Jane Doe`, `delimiter` es `" "`(espacio) y `position` es 0, el resultado es `Jane`; si `position` es 1, el resultado es `Doe`. Si la posición hace referencia a un token que no existe, se devolverá un error.
+Por ejemplo, si hello entrada es `Jane Doe`, hello `delimiter` es `" "`(espacio) hello y `position` es 0, el resultado de hello es `Jane`; si hello `position` es 1, el resultado de hello es `Doe`. Si la posición de hello hace referencia token tooa que no existe, se devolverá un error.
 
 #### <a name="sample-use-case"></a>Caso de uso de ejemplo
-Su origen de datos contiene un campo `PersonName` y desea indexarlo como dos campos `FirstName` y `LastName` independientes. Puede usar esta función para dividir la entrada con el carácter de espacio como delimitador.
+El origen de datos contiene un `PersonName` campo y desea que tooindex como dos `FirstName` y `LastName` campos. Puede usar este hello toosplit de función mediante el carácter de espacio de hello como Hola delimitador de entrada.
 
-#### <a name="parameters"></a>Parámetros
-* `delimiter`: una cadena para su uso como separador al dividir la cadena de entrada.
-* `position`: una posición de base cero entera del token que se va a elegir tras dividirse la cadena de entrada.    
+#### <a name="parameters"></a>parameters
+* `delimiter`: una toouse de cadena como separador de hello cuando dividir Hola la cadena de entrada.
+* `position`: se divide una posición de base cero de entero de hello token toopick después de hello la cadena de entrada.    
 
 #### <a name="example"></a>Ejemplo
 ```JSON
@@ -150,12 +150,12 @@ Su origen de datos contiene un campo `PersonName` y desea indexarlo como dos cam
 <a name="jsonArrayToStringCollectionFunction"></a>
 
 ### <a name="jsonarraytostringcollection"></a>jsonArrayToStringCollection
-Transforma una cadena con formato de una matriz JSON de cadenas en una matriz de cadenas que puede usarse para rellenar un campo `Collection(Edm.String)` del índice.
+Transformaciones de cadena con formato como una matriz JSON de cadenas en una matriz de cadenas que puede ser utilizado toopopulate un `Collection(Edm.String)` campo índice Hola.
 
-Por ejemplo, si la cadena de entrada es `["red", "white", "blue"]`, el campo de destino de tipo `Collection(Edm.String)` se rellenará con los tres valores `red`, `white` y `blue`. En el caso de los valores de entrada que no pueden analizarse como matrices de cadenas JSON, se devolverá un error.
+Por ejemplo, si la cadena de entrada de hello es `["red", "white", "blue"]`, Hola de campo de destino de tipo `Collection(Edm.String)` se rellenará con valores de hello tres `red`, `white` y `blue`. En el caso de los valores de entrada que no pueden analizarse como matrices de cadenas JSON, se devolverá un error.
 
 #### <a name="sample-use-case"></a>Caso de uso de ejemplo
-La base de datos SQL de Azure no tiene un tipo de datos integrado que se asigne de forma natural a los campos `Collection(Edm.String)` de Búsqueda de Azure. Para rellenar campos de colección de cadenas, aplique a sus datos de origen formato de una matriz de cadenas JSON y use esta función.
+La base de datos SQL Azure no tiene un tipo de datos integrado que naturalmente se asigna demasiado`Collection(Edm.String)` campos de búsqueda de Azure. toopopulate campos de la colección de cadenas, dar formato a los datos de origen como una matriz de cadena JSON y usar esta función.
 
 #### <a name="example"></a>Ejemplo
 ```JSON
@@ -166,4 +166,4 @@ La base de datos SQL de Azure no tiene un tipo de datos integrado que se asigne 
 ```
 
 ## <a name="help-us-make-azure-search-better"></a>Ayúdenos a mejorar Búsqueda de Azure
-Si tiene solicitudes o ideas para mejorar las características, póngase en contacto con nosotros en nuestro [sitio UserVoice](https://feedback.azure.com/forums/263029-azure-search/).
+Si dispone de las solicitudes de características o ideas para mejoras, póngase en contacto toous en nuestra [sitio UserVoice](https://feedback.azure.com/forums/263029-azure-search/).

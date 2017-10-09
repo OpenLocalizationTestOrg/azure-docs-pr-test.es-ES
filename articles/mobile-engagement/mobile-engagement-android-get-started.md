@@ -1,6 +1,6 @@
 ---
-title: "Introducción a las aplicaciones Android de Azure Mobile Engagement"
-description: "Aprenda a usar Azure Mobile Engagement con los análisis y las notificaciones de inserción para aplicaciones Android."
+title: "aaaGet partió Android aplicaciones de Azure Mobile Engagement"
+description: "Obtenga información acerca de cómo toouse Azure Mobile Engagement con las notificaciones de inserción y de análisis para aplicaciones Android."
 services: mobile-engagement
 documentationcenter: android
 author: piyushjo
@@ -14,44 +14,44 @@ ms.devlang: Java
 ms.topic: hero-article
 ms.date: 08/10/2016
 ms.author: piyushjo;ricksal
-ms.openlocfilehash: dc255a930bf71e6ef6d964bc5e3472a38ce4e467
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e8c92607691104750cdf1c4f7639a041d8a7bcd5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-android-apps"></a>Introducción a Azure Mobile Engagement para aplicaciones Android
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
-En este tema se muestra cómo usar Azure Mobile Engagement para comprender el uso de su aplicación y cómo enviar notificaciones push a los usuarios segmentados de una aplicación de Android.
-En este tutorial se demuestra el escenario de difusión sencillo con Mobile Engagement. En él, creará una aplicación en blanco de Android que recopila datos básicos y recibe notificaciones de inserción con el Servicio de mensajería en la nube de Google (GCM).
+Este tema muestra cómo toouse Azure Mobile Engagement toounderstand el uso de la aplicación y cómo toosend insertar los usuarios de toosegmented de notificaciones de una aplicación Android.
+Este tutorial muestra el escenario de difusión simple hello con Mobile Engagement. En él, creará una aplicación en blanco de Android que recopila datos básicos y recibe notificaciones de inserción con el Servicio de mensajería en la nube de Google (GCM).
 
 ## <a name="prerequisites"></a>Requisitos previos
-Para completar este tutorial se requieren la [Herramientas para desarrolladores de Android](https://developer.android.com/sdk/index.html), que incluyen el entorno de desarrollo integrado de Android Studio y la última plataforma de Android.
+Completar este tutorial requiere hello [Android Developer Tools](https://developer.android.com/sdk/index.html), que incluye el entorno de desarrollo integrado de Android Studio hello y plataforma de Android más reciente de Hola.
 
-Descargue el [SDK de Android para Mobile Engagement](https://aka.ms/vq9mfn).
+También requiere hello [Android SDK de Mobile Engagement](https://aka.ms/vq9mfn).
 
 > [!IMPORTANT]
-> Para completar este tutorial, deberá tener una cuenta activa de Azure. En caso de no tener ninguna, puede crear una cuenta de evaluación gratuita en tan solo unos minutos. Para obtener más información, consulte [Evaluación gratuita de Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-android-get-started).
+> toocomplete este tutorial, necesita una cuenta activa de Azure. En caso de no tener ninguna, puede crear una cuenta de evaluación gratuita en tan solo unos minutos. Para obtener más información, consulte [Evaluación gratuita de Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-android-get-started).
 >
 >
 
 ## <a name="set-up-mobile-engagement-for-your-android-app"></a>Configuración de Mobile Engagement para una aplicación Android
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-## <a name="connect-your-app-to-the-mobile-engagement-backend"></a>Conectar la aplicación al backend de Mobile Engagement
-En este tutorial se presenta una "integración básica", que es el conjunto mínimo necesario para recopilar los datos y enviar una notificación de inserción. Va a crear una aplicación básica con Android Studio para demostrar la integración.
+## <a name="connect-your-app-toohello-mobile-engagement-backend"></a>Conectar el back-end de aplicación toohello Mobile Engagement
+Este tutorial presenta una "la integración básica", que es Hola mínimo establecido toocollect requiere datos y enviar una notificación de inserción. Crear una aplicación básica con la integración de Android Studio toodemonstrate Hola.
 
-La documentación de integración completa se puede encontrar en la [integración del SDK de Android para Mobile Engagement](mobile-engagement-android-sdk-overview.md).
+Encontrará documentación de integración completa de Hola Hola [integración con el SDK de Mobile Engagement Android](mobile-engagement-android-sdk-overview.md).
 
 ### <a name="create-an-android-project"></a>Creación de un proyecto de Android
-1. Inicie **Android Studio** y, en el menú emergente, seleccione **Start a new Android Studio project** (Iniciar un nuevo proyecto de Android Studio).
+1. Iniciar **Android Studio**y en el menú emergente de hello, seleccione **iniciar un nuevo proyecto de Android Studio**.
 
     ![][1]
 2. Especifique el nombre de la aplicación y el dominio de la compañía. Tome nota de los datos que especifique pues los necesitará más adelante. Haga clic en **Siguiente**.
 
     ![][2]
-3. Seleccione el factor de forma de destino y el nivel de la AP, y haga clic en **Siguiente**.
+3. Seleccione el factor de forma de destino de Hola y el nivel de API y haga clic en **siguiente**.
 
    > [!NOTE]
    > Compromiso de Mobile requiere el nivel de API mínimo de 10 (2.3.3 Android).
@@ -59,47 +59,47 @@ La documentación de integración completa se puede encontrar en la [integració
    >
 
     ![][3]
-4. Seleccione **Blank Activity** (Actividad en blanco) aquí, que es la única pantalla para esta aplicación, y haga clic en **Siguiente**.
+4. Seleccione **actividad en blanco** aquí, que es la única pantalla de bienvenida para esta aplicación y haga clic en **siguiente**.
 
     ![][4]
-5. Por último, deje el valor predeterminado como está y haga clic en **Finalizar**.
+5. Por último, deje los valores predeterminados de hello tal y como está y haga clic en **finalizar**.
 
     ![][5]
 
-Ahora Android Studio crea la aplicación de demostración en la que integraremos Mobile Engagement.
+Android Studio ahora crea la aplicación de demostración de hello en el que se integran Mobile Engagement.
 
-### <a name="include-the-sdk-library-in-your-project"></a>Incluir la biblioteca de SDK en el proyecto
-1. Descargue el [SDK de Android para Mobile Engagement](https://aka.ms/vq9mfn).
-2. Extraiga el archivo a una carpeta en el equipo.
-3. Identifique la biblioteca .jar para la versión actual de este SDK y cópiela en el Portapapeles.
+### <a name="include-hello-sdk-library-in-your-project"></a>Incluir biblioteca del SDK de hello en el proyecto
+1. Descargar hello [Android SDK de Mobile Engagement](https://aka.ms/vq9mfn).
+2. Extraer carpeta tooa archivos para archivar faxes hello en el equipo.
+3. Identificar Hola .jar biblioteca para la versión actual de Hola de este SDK y cópielo toohello Portapapeles.
 
       ![][6]
-4. Vaya a la sección **Proyecto** (1) y pegue el .jar en la carpeta libs (2).
+4. Navegue toohello **proyecto** sección (1) y pegue .jar hello en la carpeta de bibliotecas de hello (2).
 
       ![][7]
-5. Para cargar la biblioteca, sincronice el proyecto.
+5. biblioteca de hello tooload, proyecto de Hola la sincronización.
 
       ![][8]
 
-### <a name="connect-your-app-to-mobile-engagement-backend-with-the-connection-string"></a>Conectar la aplicación al back-end de Mobile Engagement mediante la cadena de conexión
-1. Copie las siguientes líneas de código en la creación de la actividad (debe realizarse solo en un lugar de la aplicación, normalmente la actividad principal). Para esta aplicación de ejemplo, abra MainActivity en la carpeta src -> main -> java y agregue lo siguiente:
+### <a name="connect-your-app-toomobile-engagement-backend-with-hello-connection-string"></a>Conectar el back-end de aplicación tooMobile interacción con hello cadena de conexión
+1. Copie Hola siguientes líneas de código en la creación de la actividad de hello (debe realizarse solo en un lugar de la aplicación, normalmente actividad principal de hello). Para esta aplicación de ejemplo, abra hello MainActivity en src -> main -> carpeta de java y agregue Hola siguientes:
 
         EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
         engagementConfiguration.setConnectionString("Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}");
         EngagementAgent.getInstance(this).init(engagementConfiguration);
-2. Resuelva las referencias pulsando Alt + Intro o agregando las siguientes instrucciones de importación:
+2. Resolver las referencias de hello presionando Alt + ENTRAR o agregando Hola siguiendo las instrucciones de importación:
 
         import com.microsoft.azure.engagement.EngagementAgent;
         import com.microsoft.azure.engagement.EngagementConfiguration;
-3. Vuelva al Portal de Azure clásico en la página **Información de conexión** de la aplicación y copie el valor de **Cadena de conexión**.
+3. Volver atrás toohello Portal de Azure clásico en la aplicación **información de conexión** Hola de página y copiar **cadena de conexión**.
 
       ![][9]
-4. Péguelo en el parámetro `setConnectionString`, reemplazando la cadena completa que se muestra en el código siguiente:
+4. Pegue en hello `setConnectionString` parámetro, reemplazando la cadena completa de Hola se muestra en el siguiente código de hello:
 
         engagementConfiguration.setConnectionString("Endpoint=my-company-name.device.mobileengagement.windows.net;SdkKey=********************;AppId=*********");
 
 ### <a name="add-permissions-and-a-service-declaration"></a>Agregar permisos y una declaración de servicio
-1. Agregue estos permisos al archivo Manifest.xml del proyecto inmediatamente anterior a la etiqueta `<application>`:
+1. Agregar estos toohello permisos Manifest.xml del proyecto inmediatamente antes o después de hello `<application>` etiqueta:
 
         <uses-permission android:name="android.permission.INTERNET"/>
         <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -107,45 +107,45 @@ Ahora Android Studio crea la aplicación de demostración en la que integraremos
         <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
         <uses-permission android:name="android.permission.VIBRATE" />
         <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION"/>
-2. Agregue este código entre las etiquetas `<application>` y `</application>` para declarar el servicio del agente:
+2. toodeclare Hola servicio del agente, agregue este código entre hello `<application>` y `</application>` etiquetas:
 
         <service
              android:name="com.microsoft.azure.engagement.service.EngagementService"
              android:exported="false"
              android:label="<Your application name>"
              android:process=":Engagement"/>
-3. En el código que pegó, reemplace `"<Your application name>"` en la etiqueta que aparece en el menú **Configuración** donde puede ver los servicios que se ejecutan en el dispositivo. Puede agregar la palabra "Servicio" a la etiqueta, por ejemplo.
+3. En el código de hello que pegó, reemplace `"<Your application name>"` en etiqueta de hello, que se muestra en hello **configuración** menú donde puede ver los servicios que se ejecutan en el dispositivo de Hola. Por ejemplo puede agregar palabra Hola "Servicio" en esa etiqueta.
 
-### <a name="send-a-screen-to-mobile-engagement"></a>Enviar una pantalla a Mobile Engagement
-Para comenzar a enviar datos y asegurarse de que los usuarios estén activos, debe enviar al menos una pantalla (Actividad) al back-end de Mobile Engagement.
+### <a name="send-a-screen-toomobile-engagement"></a>Enviar una interacción de pantalla tooMobile
+toostart enviar datos y asegurarse de que los usuarios de hello están activos, debe enviar al menos un backend de interacción móvil toohello de pantalla (actividad).
 
-Vaya a **MainActivity.java** y agregue la siguiente línea para reemplazar la clase base de **MainActivity** en **EngagementActivity**:
+Vaya demasiado**MainActivity.java** y agregue Hola después de la clase base de hello tooreplace de **MainActivity** demasiado**EngagementActivity**:
 
     public class MainActivity extends EngagementActivity {
 
 > [!NOTE]
-> Si la clase base no es *Activity*, consulte [Reporting Options with Engagement on Android](mobile-engagement-android-advanced-reporting.md) (Opciones de informes con Engagement en Android) sobre cómo heredar de clases diferentes.
+> Si la clase base no es *actividad*, consulte [avanzada Reporting Android](mobile-engagement-android-advanced-reporting.md) para saber cómo tooinherit partir de clases diferentes.
 >
 >
 
-Convierta en comentario la línea siguiente para este escenario de ejemplo simple:
+Comente Hola después de línea para este escenario de ejemplo simple:
 
     // setSupportActionBar(toolbar);
 
-Si desea mantener `ActionBar` en la aplicación, consulte [Opciones de informes con Engagement en Android](mobile-engagement-android-advanced-reporting.md).
+Si desea que hello tookeep `ActionBar` en la aplicación, consulte [avanzada Reporting Android](mobile-engagement-android-advanced-reporting.md).
 
 ## <a name="connect-app-with-real-time-monitoring"></a>Conectar la aplicación con la supervisión en tiempo real
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
 ## <a name="enable-push-notifications-and-in-app-messaging"></a>Habilitación de las notificaciones push y la mensajería en aplicación
-Durante una campaña, Mobile Engagement permite interactuar y llegar por REACH a los usuarios mediante notificaciones push y mensajería en la aplicación. Este módulo se denomina REACH en el portal de Mobile Engagement.
-En la sección siguiente se instala la aplicación para recibirlos.
+Durante una campaña, Mobile Engagement permite interactuar y llegar por REACH a los usuarios mediante notificaciones push y mensajería en la aplicación. Este módulo se denomina alcance en el portal de interacción móvil Hola.
+Hola pasos de la sección configura su aplicación tooreceive ellos.
 
 ### <a name="copy-sdk-resources-in-your-project"></a>Copia de recursos SDK en el proyecto
-1. Vuelva al contenido de descarga del SDK y copie la carpeta **res** .
+1. Navegue Hola de contenido y copia de la descarga SDK tooyour back- **res** carpeta.
 
     ![][10]
-2. Vuelva a Android Studio, seleccione el directorio **main** de los archivos de proyecto y luego péguelo para agregar los recursos al proyecto.
+2. Volver atrás tooAndroid Studio, seleccione hello **principal** directorio de los archivos de proyecto y, a continuación, péguelo recursos tooyour project de tooadd Hola.
 
     ![][11]
 
@@ -156,7 +156,7 @@ En la sección siguiente se instala la aplicación para recibirlos.
 [!INCLUDE [Send notification from portal](../../includes/mobile-engagement-android-send-push-from-portal.md)]
 
 ## <a name="next-steps"></a>Pasos siguientes
-Vaya a [SDK de Android](mobile-engagement-android-sdk-overview.md) para obtener información detallada sobre la integración de SDK.
+Vaya demasiado[SDK de Android](mobile-engagement-android-sdk-overview.md) tooget un conocimiento acerca de la integración con el SDK de hello detallado.
 
 <!-- Images. -->
 [1]: ./media/mobile-engagement-android-get-started/android-studio-new-project.png

@@ -1,5 +1,5 @@
 ---
-title: "Creación de una aplicación de función e implementación de código de función desde GitHub | Microsoft Docs"
+title: "una aplicación de la función aaaCreate e implementar código de la función desde GitHub | Documentos de Microsoft"
 description: "Ejemplo de script de la CLI de Azure: creación de una instancia de Function App e implementación de código de función desde GitHub"
 services: functions
 keywords: 
@@ -9,33 +9,33 @@ ms.date: 04/27/2017
 ms.topic: sample
 ms.service: functions
 ms.custom: mvc
-ms.openlocfilehash: d67e85f91c80efe464fceb1105243bedfba83a0f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 026886f11909149db695d9a52d0aa37f109f64e4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-function-app-and-deploy-function-code-from-github"></a>Creación de una aplicación de función e implementación de código de función desde GitHub
 
-Este script de ejemplo crea una aplicación de función usando el [plan de consumo](../functions-scale.md#consumption-plan) con sus recursos relacionados e implementa el código de la función desde un repositorio público de GitHub (sin implementación continua). Para la entrega continua del código de la función desde GitHub, lea [Creación de una instancia de Function App e implementación de código de función desde GitHub](functions-cli-create-function-app-github-continuous.md).
+Este script de ejemplo crea una aplicación de función mediante hello [plan de consumo](../functions-scale.md#consumption-plan) con sus recursos relacionados e implementa el código de la función desde un repositorio de GitHub público (sin una implementación continua). Para la entrega continua del código de la función desde GitHub, lea [Creación de una instancia de Function App e implementación de código de función desde GitHub](functions-cli-create-function-app-github-continuous.md).
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Si decide instalar y usar la CLI localmente, para este tema es preciso que ejecute la CLI de Azure versión 2.0 o posterior. Ejecute `az --version` para encontrar la versión. Si necesita instalarla o actualizarla, consulte [Instalación de la CLI de Azure 2.0]( /cli/azure/install-azure-cli). 
+Si elige tooinstall y usar hello CLI localmente, en este tema requiere que se ejecuten hello Azure CLI versión 2.0 o posterior. Ejecutar `az --version` toofind versión de Hola. Si necesita tooinstall o una actualización, consulte [instalar Azure CLI 2.0]( /cli/azure/install-azure-cli). 
 
 ## <a name="sample-script"></a>Script de ejemplo
 
 Este ejemplo crea una instancia de Azure Function App e implementa código de la función desde GitHub.
 
-[!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/deploy-function-app-with-function-github/deploy-function-app-with-function-github.sh?highlight=3 "Creación de una aplicación de función con implementación desde GitHub")]
+[!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/deploy-function-app-with-function-github/deploy-function-app-with-function-github.sh?highlight=3 "Create a function app with deployment from GitHub")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
 ## <a name="script-explanation"></a>Explicación del script
 
-Cada comando de la tabla crea un vínculo a documentación específica del comando. Este script usa los siguientes comandos:
+Cada comando de documentación específica de hello tabla vínculos toocommand. Este script utiliza Hola siguientes comandos:
 
 | Comando | Notas |
 |---|---|
@@ -46,6 +46,6 @@ Cada comando de la tabla crea un vínculo a documentación específica del coman
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para más información sobre la CLI de Azure, consulte la [documentación de la CLI de Azure](https://docs.microsoft.com/cli/azure/overview).
+Para obtener más información sobre Hola CLI de Azure, consulte [documentación de Azure CLI](https://docs.microsoft.com/cli/azure/overview).
 
-Encontrará más ejemplos de scripts de CLI para Azure Functions en la [documentación de Azure Functions](../functions-cli-samples.md).
+Encontrará más ejemplos de secuencias de comandos de CLI de funciones de Azure en hello [documentación sobre las funciones de Azure](../functions-cli-samples.md).

@@ -1,5 +1,5 @@
 ---
-title: "Azure Media Services: Preguntas más frecuentes (P+F) | Microsoft Docs"
+title: "aaaAzure servicios multimedia de preguntas más frecuentes | Documentos de Microsoft"
 description: "Preguntas más frecuentes (P+F)"
 services: media-services
 documentationcenter: 
@@ -14,52 +14,52 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: juliako
-ms.openlocfilehash: 48f3924d44a084d61c1d38002cd5098094001acb
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 6d48a5c1291f3c2559d8445921d571718d0a0a6d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="frequently-asked-questions"></a>Preguntas más frecuentes
 
-En este artículo tratan las preguntas más frecuentes planteadas por la comunidad de usuarios de Azure Media Services (AMS).
+Este artículo tratan las preguntas más frecuentes generadas por la Comunidad de usuarios de servicios de multimedia de Azure (AMS) Hola.
 
 ## <a name="general-ams-faqs"></a>Preguntas más frecuentes generales sobre AMS
 P: ¿Cómo se escala la indización?
 
-R: las unidades reservadas son las mismas para las tareas de codificación y de indización. Siga las instrucciones de [Escalado de unidades reservadas de codificación](media-services-scale-media-processing-overview.md). **Tenga en cuenta** que el rendimiento del indexador no se ve afectado por el tipo de unidad reservada.
+R: unidades de hello reservado se Hola mismo para la codificación y tareas de indización. Siga las instrucciones de [cómo unidades reservadas de codificación tooScale](media-services-scale-media-processing-overview.md). **Tenga en cuenta** que el rendimiento del indexador no se ve afectado por el tipo de unidad reservada.
 
-P: He cargado, codificado y publicado un vídeo. ¿Cuál es el motivo por el que el vídeo no se reproduce cuando intento transmitirlo?
+P: He cargado, codificado y publicado un vídeo. ¿Lo que sería un vídeo de Hola de hello motivo no se reproduce cuando intento toostream él?
 
-R: Uno de los motivos más habituales es que no tiene el punto de conexión de streaming desde el que está intentando reproducir en estado **Running** (en ejecución).  
+R: uno de hello más comunes motivos por los que es no tener Hola origen desde el que está tratando de tooplayback Hola **ejecutando** estado.  
 
 P: ¿Puedo realizar una composición en una secuencia en directo?
 
-R: no se ofrece actualmente la composición en secuencias en vivo en Servicios multimedia de Azure, por lo que tendrá que realizar una composición previa en el equipo.
+R: la composición en secuencias en directo no proporciona actualmente en los servicios de multimedia de Azure, lo que deberá toopre-crear en el equipo.
 
 P: ¿Puedo usar CDN de Azure con secuencia en directo?
 
-R: servicios multimedia admite la integración con CDN de Azure (para obtener más información, consulte [Administración de extremos de streaming en una cuenta de Servicios multimedia](media-services-portal-manage-streaming-endpoints.md)).  Puede usar el streaming en vivo con CDN. Servicios multimedia de Azure proporciona salidas de Smooth Streaming, HLS y MPEG-DASH. Todos estos formatos usan HTTP para transferir datos y obtener beneficios del almacenamiento en caché de HTTP. En la transmisión en vivo, los datos de audio/vídeo reales se dividen en fragmentos y los fragmentos individuales se almacenan en caché en CDN. Solo tienen que actualizarse los datos de manifiesto. CDN actualiza periódicamente los datos de manifiesto.
+R: servicios multimedia de admite la integración con la red CDN de Azure (para obtener más información, consulte [cómo tooManage los extremos de Streaming en una cuenta de servicios multimedia](media-services-portal-manage-streaming-endpoints.md)).  Puede usar el streaming en vivo con CDN. Servicios multimedia de Azure proporciona salidas de Smooth Streaming, HLS y MPEG-DASH. Todos estos formatos usan HTTP para transferir datos y obtener beneficios del almacenamiento en caché de HTTP. En directo de datos reales de audio/vídeo de transmisión por secuencias es toofragments dividido y se almacene en caché este fragmentos individuales en la red CDN. Solo los toobe de necesidades datos actualizados es datos de manifiesto de saludo. CDN actualiza periódicamente los datos de manifiesto.
 
 P: ¿Los servicios multimedia de Azure admiten el almacenamiento de imágenes?
 
-R: si solo busca almacenar las imágenes JPEG o PNG, debe mantenerlas en Almacenamiento de blobs de Azure. No supone una ventaja si se colocan en la cuenta de Servicios multimedia a menos que desee mantenerlas asociadas a los recursos de vídeo o audio. O bien, si puede tener la necesidad de usar las imágenes como superposiciones en el codificador de vídeo, el Estándar de codificador multimedia admite la superposición de las imágenes encima de los vídeos, por eso muestra JPEG y PNG como formatos de entrada admitidos. Para obtener más información, consulte [Creación de superposiciones](media-services-advanced-encoding-with-mes.md#overlay).
+R: si solo desea toostore JPEG o imágenes PNG, debe mantenerlos de almacenamiento de blobs de Azure. No hay ningún tooputting de beneficio en los servicios multimedia de la cuenta a menos que desee tookeep que ellos asociados con el vídeo o Audio activos. O bien, si es posible que tenga una necesidad toouse hello las imágenes como superposiciones de codificador de vídeo de Hola. Media Encoder estándar es compatible con imágenes de capas en la parte superior vídeos, y que es lo que muestra JPEG y PNG como admiten formatos de entrada. Para obtener más información, consulte [Creación de superposiciones](media-services-advanced-encoding-with-mes.md#overlay).
 
-P: ¿Cómo puedo copiar recursos de una cuenta de Servicios multimedia a otra?
+P: ¿Cómo puedo copiar activos de una tooanother de cuenta de servicios multimedia.
 
-R: Para copiar recursos de una cuenta de Media Services a otra mediante .NET, use el método de extensión [IAsset.Copy](https://github.com/Azure/azure-sdk-for-media-services-extensions/blob/dev/MediaServices.Client.Extensions/IAssetExtensions.cs#L354) disponible en el repositorio de [extensiones del SDK de .NET para Azure Media Services](https://github.com/Azure/azure-sdk-for-media-services-extensions/). Para obtener más información, consulte [esta](https://social.msdn.microsoft.com/Forums/azure/28912d5d-6733-41c1-b27d-5d5dff2695ca/migrate-media-services-across-subscription?forum=MediaServices) conversación del foro.
+R: toocopy activos de una tooanother de cuenta de servicios multimedia con. NET, use [IAsset.Copy](https://github.com/Azure/azure-sdk-for-media-services-extensions/blob/dev/MediaServices.Client.Extensions/IAssetExtensions.cs#L354) método de extensión disponible en hello [Azure Media Services .NET SDK Extensions](https://github.com/Azure/azure-sdk-for-media-services-extensions/) repositorio. Para obtener más información, consulte [esta](https://social.msdn.microsoft.com/Forums/azure/28912d5d-6733-41c1-b27d-5d5dff2695ca/migrate-media-services-across-subscription?forum=MediaServices) conversación del foro.
 
-P: ¿Cuáles son los caracteres admitidos para nombrar los archivos cuando se trabaja con AMS?
+P: ¿Cuáles son Hola admite caracteres para asignar nombres a archivos cuando se trabaja con AMS?
 
-R: Media Services usa el valor de la propiedad IAssetFile.Name al generar direcciones URL para el contenido de streaming (por ejemplo, http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters). Por esta razón, no se permite la codificación porcentual. El valor de la propiedad **Name**no puede tener ninguno de los siguientes [caracteres reservados para la codificación porcentual](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):!*'();:@&=+$,/?%#[]"  Además, solo puede haber un "." Además, solo puede haber un '.' para la extensión del nombre de archivo.
+R: servicios multimedia de usa el valor de Hola de hello IAssetFile.Name propiedad al generar direcciones URL para hello transmisión por secuencias contenido (por ejemplo, http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) Por esta razón, no se permite la codificación porcentual. Hola valo hello **nombre** propiedad no puede tener cualquiera de los siguientes hello [por ciento reservados a la codificación de caracteres](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? % # [] ". Además, solo puede haber un "." para la extensión de nombre de archivo de Hola.
 
-P: ¿Cómo se realiza la conexión con REST?
+P: ¿cómo uso tooconnect REST?
 
-R: Para más información sobre cómo conectarse a la API de Azure Media Services, vea [Acceso a Azure Media Services API con la autenticación de Azure AD](media-services-use-aad-auth-to-access-ams-api.md). Después de conectarse correctamente a https://media.windows.net, recibirá una redirección 301 que especifica otro URI de Servicios multimedia. Debe realizar las llamadas posteriores al nuevo URI. 
+R: para obtener información sobre cómo tooconnect toohello AMS API, consulte [Hola acceso API de servicios multimedia de Azure con autenticación de Azure AD](media-services-use-aad-auth-to-access-ams-api.md). Después de conectarse correctamente toohttps://media.windows.net, recibirá una redirección 301 especificando otra URI de servicios multimedia. Debe realizar las llamadas subsiguientes toohello nuevo URI. 
 
-P: ¿Cómo puedo girar un vídeo durante el proceso de codificación?
+P: ¿¿Cómo puedo girar un vídeo durante el proceso de codificación de Hola.
 
-R: [Media Encoder Estándar](media-services-dotnet-encode-with-media-encoder-standard.md) admite ángulos de rotación de 90, 180 o 270. El comportamiento predeterminado es "Auto", en el que se intentan detectar los metadatos de rotación del archivo MP4 o MOV entrante y la compensación. Incluya el siguiente elemento **Sources** en uno de los valores preestablecidos JSON definidos [aquí](media-services-mes-presets-overview.md):
+R: Hola [Media Encoder estándar](media-services-dotnet-encode-with-media-encoder-standard.md) admite la rotación de ángulos de 90, 180 y 270. comportamiento predeterminado de Hello es "Auto", donde intenta toodetect Hola rotación metadatos en el archivo MP4/.mov entrante de Hola y compensar para él. Hola siguientes **orígenes** tooone de elemento de valores preestablecidos de json de hello definido [aquí](media-services-mes-presets-overview.md):
 
     "Version": 1.0,
     "Sources": [

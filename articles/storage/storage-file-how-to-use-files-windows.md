@@ -1,6 +1,6 @@
 ---
-title: Montaje de un recurso compartido de archivos de Azure y acceso al recurso compartido en Windows | Microsoft Docs
-description: Montaje de un recurso compartido de archivos de Azure y acceso al recurso compartido en Windows.
+title: aaaMount un recurso compartido de archivos de Azure y Hola de acceso que se comparten en Windows | Documentos de Microsoft
+description: Montar un recurso compartido de archivos de Azure y el recurso compartido de Hola de acceso en Windows.
 services: storage
 documentationcenter: na
 author: RenaShahMSFT
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/27/2017
 ms.author: renash
-ms.openlocfilehash: e911e787cd1e29b2bbeaa648869c50245f2dd9ba
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.openlocfilehash: 15ac468d9d7b8e0a195b024926ed4dd9790360d1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="mount-an-azure-file-share-and-access-the-share-in-windows"></a>Montaje de un recurso compartido de archivos de Azure y acceso al recurso compartido en Windows
-[Azure File Storage](storage-dotnet-how-to-use-files.md) es el sistema de archivos en la nube de Microsoft fácil de usar. Los recursos compartidos de archivos de Azure se pueden montar en Windows y Windows Server. En este artículo se muestran tres maneras diferentes para montar un recurso compartido de archivos de Azure en Windows: con la interfaz del explorador de archivos, a través de PowerShell y mediante el símbolo del sistema. 
+# <a name="mount-an-azure-file-share-and-access-hello-share-in-windows"></a>Montar un recurso compartido de archivos de Azure y el recurso compartido de Hola de acceso en Windows
+[Almacenamiento de Azure archivo](storage-dotnet-how-to-use-files.md) es sistema de archivos de nube de Microsoft toouse fácil. Los recursos compartidos de archivos de Azure se pueden montar en Windows y Windows Server. Este artículo muestra un recurso compartido de archivos de Azure de tres toomount de distintas maneras en Windows: con hello IU del explorador de archivos, a través de PowerShell y Hola símbolo del sistema. 
 
-Para montar un recurso compartido de archivos de Azure fuera de la región de Azure en la que se hospeda, bien sea en local o en una región distinta de Azure, el sistema operativo debe admitir SMB 3.0. 
+En orden toomount de un archivo de Azure compartir fuera de hello región de Azure se hospeda en, por ejemplo, local o en una región distinta de Azure, Hola sistema operativo debe admitir SMB 3.0. 
 
-Un recurso compartido de archivos de Azure se puede montar en un equipo Windows tanto en local como en una máquina virtual de Azure en función de la versión del sistema operativo. La tabla siguiente lo describe 
+Un recurso compartido de archivos de Azure se puede montar en un equipo Windows tanto en local como en una máquina virtual de Azure en función de la versión del sistema operativo. Tabla a continuación muestra hello 
 
 | Versión de Windows        | Versión de SMB |Se puede montar en una máquina virtual de Azure|Se puede montar en un entorno local|
 |------------------------|-------------|---------------------|---------------------|
@@ -37,45 +37,45 @@ Un recurso compartido de archivos de Azure se puede montar en un equipo Windows 
 | Windows 10             | SMB 3.0     | Sí                 | Sí                 |
 
 > [!Note]  
-> Siempre se recomienda disponer de la KB más reciente para su versión de Windows.
+> Siempre se recomienda tomar Hola KB más reciente para su versión de Windows.
 
 ## <a name="aprerequisites-for-mounting-azure-file-share-with-windows"></a></a>Requisitos previos para el montaje de un recurso compartido de archivos de Azure en Windows 
-* **Nombre de la cuenta de almacenamiento**: para montar un recurso compartido de archivos de Azure, necesitará el nombre de la cuenta de almacenamiento.
+* **Nombre de la cuenta de almacenamiento**: toomount compartir de un archivo de Azure, se necesita Hola nombre de cuenta de almacenamiento de Hola.
 
-* **Clave de la cuenta de almacenamiento**: para montar un recurso compartido de archivos de Azure, necesitará la clave principal (o secundaria) de la cuenta de almacenamiento. Actualmente no se admiten claves SAS para el montaje.
+* **Clave de la cuenta de almacenamiento**: toomount compartir de un archivo de Azure, se necesita Hola clave de almacenamiento principal (o secundario). Actualmente no se admiten claves SAS para el montaje.
 
-* **Asegúrese de que el puerto 445 está abierto**: Azure File Storage usa el protocolo SMB. SMB se comunica a través del puerto TCP 445: compruebe que el firewall no bloquea el puerto TCP 445 en el equipo cliente.
+* **Asegúrese de que el puerto 445 está abierto**: Azure File Storage usa el protocolo SMB. SMB se comunica a través del puerto TCP 445 - Compruebe toosee si el firewall no bloquea los puertos TCP 445 en el equipo cliente.
 
-## <a name="mount-the-azure-file-share-with-file-explorer"></a>Montaje del recurso compartido de archivos de Azure con el explorador de archivos
+## <a name="mount-hello-azure-file-share-with-file-explorer"></a>Montar el recurso compartido de archivos de Azure de hello con el Explorador de archivos
 > [!Note]  
-> Tenga en cuenta que las instrucciones siguientes se muestran en Windows 10 y pueden variar ligeramente en las versiones anteriores. 
+> Tenga en cuenta que Hola siguiendo las instrucciones se muestran en Windows 10 y puede variar ligeramente en las versiones anteriores. 
 
-1. **Abra el Explorador de archivos**: esto puede hacerse desde el menú Inicio o bien presionando las teclas Win + E.
+1. **Abra el Explorador de archivos**: Esto puede hacerse mediante la apertura de hello menú Inicio, o bien presionando contextual Win + E.
 
-2. **Desplácese hasta el elemento "Este PC" en el lado izquierdo de la ventana. Esta operación cambiará los menús disponibles en la barra de herramientas. En el menú Equipo, seleccione "Conectar a unidad de red"**.
+2. **Navegue toohello el elemento de "Este PC" en el lado izquierdo de Hola de ventana hello. Esta operación cambiará menús Hola disponibles en la cinta de opciones de Hola. En el menú de equipo de hello, seleccione "Conectar a unidad de red"**.
     
-    ![Captura de pantalla del menú desplegable "Conectar a unidad de red"](media/storage-file-how-to-use-files-windows/1_MountOnWindows10.png)
+    ![Menú desplegable de una captura de pantalla de hello "Conectar a unidad de red"](media/storage-file-how-to-use-files-windows/1_MountOnWindows10.png)
 
-3. **Copie la ruta de acceso UNC desde el panel "Conectar" de Azure Portal**: una descripción detallada de cómo buscar esta información puede encontrarse [aquí](storage-file-how-to-use-files-portal.md#connect-to-file-share).
+3. **Copiar ruta de acceso UNC de hello en panel de "Conectar" Hola Hola portal de Azure**: una descripción detallada de cómo toofind esta información puede encontrarse [aquí](storage-file-how-to-use-files-portal.md#connect-to-file-share).
 
-    ![Ruta de acceso UNC en el panel Conectar de Azure File Storage](media/storage-file-how-to-use-files-windows/portal_netuse_connect.png)
+    ![ruta de acceso UNC de Hola desde el panel de conexión de almacenamiento de archivo de Azure de Hola](media/storage-file-how-to-use-files-windows/portal_netuse_connect.png)
 
-4. **Seleccione la letra de unidad y escriba la ruta de acceso UNC.** 
+4. **Seleccione la letra de unidad de Hola y escriba la ruta de acceso UNC Hola.** 
     
-    ![Captura de pantalla del cuadro de diálogo "Conectar a unidad de red"](media/storage-file-how-to-use-files-windows/2_MountOnWindows10.png)
+    ![Una captura de pantalla del cuadro de diálogo "Conectar a unidad de red" hello](media/storage-file-how-to-use-files-windows/2_MountOnWindows10.png)
 
-5. **Utilice el nombre de la cuenta de almacenamiento prefijada con `Azure\` como el nombre de usuario y la clave de la cuenta de almacenamiento como contraseña.**
+5. **Hola de uso con el nombre de cuenta de almacenamiento `Azure\` como nombre de usuario de hello y una clave de cuenta de almacenamiento como contraseña de Hola.**
     
-    ![Captura de pantalla del cuadro de diálogo credenciales de red](media/storage-file-how-to-use-files-windows/3_MountOnWindows10.png)
+    ![Una captura de pantalla del cuadro de diálogo de credenciales de red de Hola](media/storage-file-how-to-use-files-windows/3_MountOnWindows10.png)
 
 6. **Uso del recurso compartido de archivos de Azure**.
     
     ![El recurso compartido de archivos de Azure ahora está montado](media/storage-file-how-to-use-files-windows/4_MountOnWindows10.png)
 
-7. **Cuando esté listo para desmontar (o desconectar) el recurso compartido de archivos de Azure, puede hacerlo haciendo clic en la entrada para el recurso compartido en "Ubicaciones de red" en el explorador de archivos y seleccionando "Desconectar"**.
+7. **Cuando se toodismount listo (o desconectarse) recurso compartido de archivos de Azure de hello, puede hacerlo haciendo clic en la entrada de hello para el recurso compartido de hello en hello "ubicaciones de red" en el Explorador de archivos y seleccionando "Desconectar"**.
 
-## <a name="mount-the-azure-file-share-with-powershell"></a>Montaje del recurso compartido de archivos de Azure con PowerShell
-1. **Use el siguiente comando para montar el recurso compartido de archivos de Azure**: no olvide reemplazar `<storage-account-name>`, `<share-name>`, `<storage-account-key>` y `<desired-drive-letter>` con la información correcta.
+## <a name="mount-hello-azure-file-share-with-powershell"></a>Montar el recurso compartido de archivos de Azure de hello con PowerShell
+1. **Recurso compartido de archivos de Azure de Hola de toomount de comandos siguiente Hola de uso**: Recuerde tooreplace `<storage-account-name>`, `<share-name>`, `<storage-account-key>`, `<desired-drive-letter>` con la información adecuada Hola.
 
     ```PowerShell
     $acctKey = ConvertTo-SecureString -String "<storage-account-key>" -AsPlainText -Force
@@ -83,34 +83,34 @@ Un recurso compartido de archivos de Azure se puede montar en un equipo Windows 
     New-PSDrive -Name <desired-drive-letter> -PSProvider FileSystem -Root "\\<storage-account-name>.file.core.windows.net\<share-name>" -Credential $credential
     ```
 
-2. **Uso del recurso compartido de archivos de Azure**.
+2. **Recurso compartido de archivos de Azure de Hola de uso según sea necesario**.
 
-3. **Cuando haya terminado, puede desmontar el recurso compartido de archivos de Azure mediante el siguiente comando**.
+3. **Cuando haya terminado, desmonte el recurso compartido de archivos de Azure de hello mediante el siguiente comando de hello**.
 
     ```PowerShell
     Remove-PSDrive -Name <desired-drive-letter>
     ```
 
 > [!Note]  
-> Puede usar el parámetro `-Persist` en `New-PSDrive` para hacer visible el recurso compartido de archivos de Azure para el resto del sistema operativo durante el montaje.
+> Puede usar hello `-Persist` parámetro en `New-PSDrive` toomake Hola rest de toohello visible de recurso compartido de archivos de Azure de hello SO mientras montado.
 
-## <a name="mount-the-azure-file-share-with-command-prompt"></a>Montaje del recurso compartido de archivos de Azure desde el símbolo del sistema
-1. **Use el siguiente comando para montar el recurso compartido de archivos de Azure**: no olvide reemplazar `<storage-account-name>`, `<share-name>`, `<storage-account-key>` y `<desired-drive-letter>` con la información correcta.
+## <a name="mount-hello-azure-file-share-with-command-prompt"></a>Montar el recurso compartido de archivos de Azure de hello con símbolo del sistema
+1. **Recurso compartido de archivos de Azure de Hola de toomount de comandos siguiente Hola de uso**: Recuerde tooreplace `<storage-account-name>`, `<share-name>`, `<storage-account-key>`, `<desired-drive-letter>` con la información adecuada Hola.
 
     ```
     net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
     ```
 
-2. **Uso del recurso compartido de archivos de Azure**.
+2. **Recurso compartido de archivos de Azure de Hola de uso según sea necesario**.
 
-3. **Cuando haya terminado, puede desmontar el recurso compartido de archivos de Azure mediante el siguiente comando**.
+3. **Cuando haya terminado, desmonte el recurso compartido de archivos de Azure de hello mediante el siguiente comando de hello**.
 
     ```
     net use <desired-drive-letter>: /delete
     ```
 
 > [!Note]  
-> Puede configurar el recurso compartido de archivos de Azure para conectar automáticamente al reiniciar haciendo conservar las credenciales de Windows. El siguiente comando conservará las credenciales:
+> Puede configurar Hola reconexión tooautomatically del recurso compartido de archivo de Azure al reiniciar por conservar las credenciales de hello en Windows. Hola siguiente comando conservará las credenciales de hello:
 >   ```
 >   cmdkey /add:<storage-account-name>.file.core.windows.net /user:AZURE\<storage-account-name> /pass:<storage-account-key>
 >   ```
@@ -123,19 +123,19 @@ Consulte los vínculos siguientes para obtener más información acerca de Almac
 
 ### <a name="conceptual-articles-and-videos"></a>Artículos y vídeos conceptuales
 * [Azure File Storage: un sistema de archivos SMB en la nube sin dificultades para Windows y Linux](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
-* [Uso de Azure File Storage con Linux](storage-how-to-use-files-linux.md)
+* [¿Cómo toouse almacenamiento de archivos de Azure con Linux](storage-how-to-use-files-linux.md)
 
 ### <a name="tooling-support-for-azure-file-storage"></a>Compatibilidad de herramientas con Azure File Storage
 * [Usar Azure PowerShell con Almacenamiento de Azure](storage-powershell-guide-full.md)
-* [Uso de AzCopy con Almacenamiento de Microsoft Azure](storage-use-azcopy.md)
-* [Uso de la CLI de Azure con Almacenamiento de Azure](storage-azure-cli.md#create-and-manage-file-shares)
+* [Cómo toouse AzCopy con almacenamiento de Microsoft Azure](storage-use-azcopy.md)
+* [Uso de hello CLI de Azure con el almacenamiento de Azure](storage-azure-cli.md#create-and-manage-file-shares)
 * [Solución de problemas de Azure File Storage](https://docs.microsoft.com/azure/storage/storage-troubleshoot-file-connection-problems)
 
 ### <a name="blog-posts"></a>Publicaciones de blog
 * [El almacenamiento de archivos de Azure ya está disponible de manera general](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
 * [En el interior de Azure File Storage](https://azure.microsoft.com/blog/inside-azure-file-storage/)
 * [Introducing Microsoft Azure File Service (Introducción al servicio de archivos de Microsoft Azure)](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
-* [Migración de datos a Azure Files](https://azure.microsoft.com/blog/migrating-data-to-microsoft-azure-files/)
+* [Migración de datos tooAzure archivo](https://azure.microsoft.com/blog/migrating-data-to-microsoft-azure-files/)
 
 ### <a name="reference"></a>Referencia
 * [Referencia de la biblioteca de clientes de almacenamiento para .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx)

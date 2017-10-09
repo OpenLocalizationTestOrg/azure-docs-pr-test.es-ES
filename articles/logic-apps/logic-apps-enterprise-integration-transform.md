@@ -1,6 +1,6 @@
 ---
-title: "Conversión de datos XML con transformaciones: Azure Logic Apps | Microsoft Docs"
-description: "Crear transformaciones o mapas para convertir datos XML de un formato a otro en las aplicaciones lógicas mediante el SDK de Enterprise Integration"
+title: datos XML de aaaConvert con transformaciones - Azure Logic Apps | Documentos de Microsoft
+description: "Crear transformaciones o mapps tooconvert datos XML entre los formatos de las aplicaciones lógicas mediante el uso de hello SDK de integración de Enterprise"
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: msftman
@@ -14,61 +14,61 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: fb6027769377b3527b11f7831dab3bb8d7061c84
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b56ec1072c5058d3aefc7f88ac9b2748ebe56456
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="enterprise-integration-with-xml-transforms"></a>Integración de empresas con transformaciones XML
 ## <a name="overview"></a>Información general
-El conector de transformación de integración de empresas convierte los datos de un formato a otro. Por ejemplo, puede darse el caso de que tenga un mensaje entrante en el que la fecha actual tenga el formato añoMesDía. Puede utilizar una transformación para cambiar el formato de la fecha a mesDíaAño.
+Conector de transformación de integración de Enterprise Hola convierte los datos de un formato de tooanother de formato. Por ejemplo, puede tener un mensaje entrante que contiene la fecha actual en formato de YearMonthDay Hola de Hola. Puede usar un toobe de transformación tooreformat Hola fecha en formato de MonthDayYear Hola.
 
 ## <a name="what-does-a-transform-do"></a>¿Para qué sirve una transformación?
-Una Transformación, que se conoce también como asignación, está formada por un esquema XML de origen (la entrada) y un esquema XML de destino (la salida). Puede utilizar las diferentes funciones integradas para administrar o controlar los datos, incluidos aspectos como las manipulaciones de cadenas, las asignaciones condicionales, las expresiones aritméticas, los formateadores de tiempo y fecha e, incluso, las construcciones en bucle.
+Una transformación, que es también se denomina un mapa, consta de un esquema XML de origen (Hola de entrada) y un esquema XML de destino (salida de hello). Puede utilizar diferentes funciones integradas toohelp manipular o controlar datos de hello, tales como manipulaciones de cadena, las asignaciones de condicionales, expresiones aritméticas, formateadores en tiempo de fecha y construcciones en bucle incluso.
 
-## <a name="how-to-create-a-transform"></a>¿Cómo se crea una transformación?
-Puede crear una asignación o una transformación mediante el [SDK de integración de empresas](https://aka.ms/vsmapsandschemas)de Visual Studio. Cuando haya terminado de crear y probar la transformación, cargue la transformación en la cuenta de integración. 
+## <a name="how-toocreate-a-transform"></a>¿Cómo toocreate una transformación?
+Puede crear una asignación de transformación mediante Visual Studio hello [SDK de integración de Enterprise](https://aka.ms/vsmapsandschemas). Cuando haya terminado de crear y probar la transformación de hello, cargar transformación hello en su cuenta de integración. 
 
-## <a name="how-to-use-a-transform"></a>Procedimiento para utilizar una transformación
-Cuando cargue la transformación o la asignación en la cuenta de integración, podrá emplearla para crear una aplicación lógica. Esta ejecuta las transformaciones siempre que se desencadena la aplicación lógica (y que haya contenido de entrada que deba transformarse).
+## <a name="how-toouse-a-transform"></a>¿Cómo toouse una transformación
+Después de cargar Hola/asignación de transformación en la cuenta de integración, puede usarlo toocreate una aplicación lógica. aplicación de lógica de Hello ejecuta las transformaciones siempre que se desencadena la aplicación de la lógica de hello (y no hay contenido de entrada que necesita toobe transformarse).
 
-**Estos son los pasos para utilizar una transformación**:
+**Estos es Hola pasos toouse una transformación**:
 
 ### <a name="prerequisites"></a>Requisitos previos
 
-* Crear una cuenta de integración y agregarle una asignación.  
+* Crear una cuenta de integración y agregar un mapa tooit  
 
-Ahora que ha tenido en cuenta los requisitos previos, tendrá que crear la Aplicación lógica:  
+Ahora que ha tenido en cuenta los requisitos previos de hello, es el tiempo toocreate la aplicación lógica:  
 
-1. Cree una aplicación lógica y [vincúlela a la cuenta de integración](../logic-apps/logic-apps-enterprise-integration-accounts.md "Aprenda a vincular una cuenta de integración a una aplicación lógica") que contenga la asignación.
-2. Agregue un desencadenador de tipo **Solicitud** a su aplicación lógica.  
+1. Crear una aplicación de la lógica y [vincular cuentas de integración de tooyour](../logic-apps/logic-apps-enterprise-integration-accounts.md "Obtenga información acerca de una aplicación de la lógica de la cuenta tooa integración toolink") que contiene el mapa de Hola.
+2. Agregar un **solicitar** aplicación lógica de desencadenador tooyour  
    ![](./media/logic-apps-enterprise-integration-transforms/transform-1.png)    
-3. Agregue la acción **Transform XML** (Transformar XML), pero seleccione antes **Agregar una acción**   
+3. Agregar hello **transformar XML** acción seleccionando primero **agregar una acción**   
    ![](./media/logic-apps-enterprise-integration-transforms/transform-2.png)   
-4. Escriba la palabra *transform* en el cuadro de búsqueda para filtrar todas las acciones por la que desee usar.  
+4. Escriba la palabra Hola *transformar* en toofilter de cuadro de búsqueda de hello todos Hola toohello acciones uno que desea toouse  
    ![](./media/logic-apps-enterprise-integration-transforms/transform-3.png)  
-5. Seleccione la acción **Transform XML** (Transformar XML)   
-6. Agregue el **CONTENIDO** XML que vaya a transformar. Puede usar cualquier dato XML que reciba en la solicitud HTTP como valor de **CONTENIDO**. En este ejemplo, seleccione el cuerpo de la solicitud HTTP que desencadenó la Aplicación lógica.
-7. Seleccione el nombre de la **ASIGNACIÓN** que quiera usar para realizar la transformación. La asignación ya debe estar en la cuenta de integración. En el paso anterior, ya concedió a la Aplicación lógica acceso a la cuenta de integración que contiene la asignación.      
+5. Seleccione hello **transformar XML** acción   
+6. Agregar Hola XML **contenido** que transforman. Puede usar cualquier dato XML recibirá en solicitud de hello HTTP como hello **contenido**. En este ejemplo, seleccione el cuerpo de saludo de solicitud HTTP de Hola que desencadenó la aplicación de la lógica de hello.
+7. Nombre seleccione Hola de hello **mapa** que desea que la transformación de toouse tooperform Hola. mapa de Hello ya debe estar en su cuenta de integración. En un paso anterior, ya que dio su cuenta de integración del tooyour de acceso de aplicación lógica que contiene la asignación.      
    ![](./media/logic-apps-enterprise-integration-transforms/transform-4.png) 
 8. Guarde el trabajo  
     ![](./media/logic-apps-enterprise-integration-transforms/transform-5.png) 
 
-En este momento, ya ha terminado de configurar su asignación. En una aplicación real, puede almacenar los datos transformados en una aplicación LOB como SalesForce. Puede agregar fácilmente una acción para enviar el resultado de la transformación a Salesforce. 
+En este momento, ya ha terminado de configurar su asignación. En una aplicación real, puede que desee toostore datos de hello transformado en una aplicación de LOB, como SalesForce. Puede transformar fácilmente como una salida de hello toosend de acción de hello tooSalesforce. 
 
-Ahora puede probar la transformación realizando una solicitud al punto de conexión HTTP.  
+Ahora puede probar su transformación mediante la realización de un punto de conexión HTTP de solicitud toohello.  
 
 ## <a name="features-and-use-cases"></a>Características y casos de uso
-* La transformación creada en una asignación puede ser simple, como copiar un nombre y una dirección de un documento a otro. O bien puede crear transformaciones más complejas mediante las operaciones de asignación integradas.  
+* transformación Hola creado en un mapa puede ser simple, como copiar un nombre y una dirección de tooanother de un documento. O bien, puede crear transformaciones más complejas con operaciones de asignación del cuadro de Hola.  
 * Hay varias operaciones de asignación o funciones a las que se puede acceder fácilmente, por ejemplo, cadenas, funciones de fecha hora, etc.  
-* Puede realizar una copia de datos directa entre los esquemas. En el Asignador que incluye el SDK, es tan sencillo como dibujar una línea que conecte los elementos del esquema de origen con sus equivalentes en el de destino.  
-* Al crear una asignación, verá una representación gráfica de esta, que muestra todos los vínculos y relaciones que cree.
-* Utilice la característica Comprobar asignación para agregar un mensaje XML de ejemplo. Con un solo clic, puede probar la asignación creada y ver el resultado generado.  
+* Para hacer una copia de datos directas entre esquemas de Hola. Hola que asignador incluido en hello SDK, esto es tan sencillo como dibujar una línea que conecta elementos Hola Hola esquema de origen con sus homólogos en el esquema de destino de Hola.  
+* Al crear un mapa, ver una representación gráfica de mapa de hello, que muestra todas las relaciones de Hola y vínculos que cree.
+* Use la característica tooadd un mensaje XML de ejemplo de Hola comprobar asignación. Con un solo clic, puede probar mapa de Hola que creó y ve un resultado de hello generado.  
 * Cargue asignaciones que ya existan.  
-* Es compatible con el formato XML.
+* Incluye compatibilidad con formato XML de Hola.
 
 ## <a name="learn-more"></a>Más información
-* [Más información sobre Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Información sobre Enterprise Integration Pack")  
+* [Obtener más información sobre Hola paquete de integración empresarial](../logic-apps/logic-apps-enterprise-integration-overview.md "Obtenga más información sobre el paquete de integración empresarial")  
 * [Más información sobre las asignaciones](../logic-apps/logic-apps-enterprise-integration-maps.md "Información sobre las asignaciones de Enterprise Integration")  
 

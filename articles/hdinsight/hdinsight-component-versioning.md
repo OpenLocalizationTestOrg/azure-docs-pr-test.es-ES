@@ -1,7 +1,7 @@
 ---
-title: 'Componentes y versiones de Hadoop: Azure HDInsight | Microsoft Docs'
-description: "Conozca los componentes y las versiones de Hadoop en HDInsight y los niveles de servicio disponibles en esta distribución de nube de Hortonworks Data Platform."
-keywords: "versiones de Hadoop, componentes del ecosistema de Hadoop, componentes de Hadoop, cómo comprobar la versión de Hadoop"
+title: aaaHadoop componentes y las versiones - HDInsight de Azure | Documentos de Microsoft
+description: "Obtenga información acerca de componentes de Hadoop de Hola y versiones de hello y HDInsight niveles de servicio disponibles en esta distribución de nube de Hortonworks Data Platform."
+keywords: "versiones de hadoop, componentes del ecosistema de hadoop, componentes de hadoop, la versión de hadoop de toocheck"
 services: hdinsight
 editor: cgronlun
 manager: asadk
@@ -17,25 +17,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: bprakash
-ms.openlocfilehash: 26512049dba3d4dde575c5a67ba884fb56374236
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: b661d901b0113458c3501ec06454fc8841189672
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>¿Cuáles son los componentes y versiones de Hadoop disponibles con HDInsight?
+# <a name="what-are-hello-hadoop-components-and-versions-available-with-hdinsight"></a>¿Cuáles son los componentes de Hadoop de Hola y de versiones disponibles con HDInsight?
 
-Aprenda sobre los niveles de servicio Estándar y Premium, así como sobre los componentes del ecosistema Apache Hadoop y las versiones incluidas en Microsoft Azure HDInsight. Además, obtenga información sobre cómo comprobar las versiones de componentes de Hadoop en HDInsight. 
+Obtenga información acerca de los componentes de hello Apache Hadoop ecosistema y versiones de Microsoft Azure HDInsight, así como Hola niveles de servicio estándar y Premium. Además, obtenga información acerca de cómo toocheck versiones de componentes de Hadoop en HDInsight. 
 
 Cada versión de HDInsight es una distribución de nube de una versión de Hortonworks Data Platform (HDP).
 
 ## <a name="hadoop-components-available-with-different-hdinsight-versions"></a>Componentes de Hadoop disponibles con las distintas versiones de HDInsight
-HDInsight de Azure es compatible con varias versiones de clústeres de Hadoop que se pueden implementar en cualquier momento. Cada versión crea una versión específica de la distribución HDP y un conjunto de componentes que están incluidos en esa distribución. A partir del 17 de febrero de 2017, la versión de clúster predeterminada que usa Azure HDInsight actualmente es la 3.5 y se basa en HDP 2.5.
+HDInsight de Azure es compatible con varias versiones de clústeres de Hadoop que se pueden implementar en cualquier momento. Cada opción de versión crea una versión específica de la distribución de HDP hello y un conjunto de componentes que están dentro de la distribución. A partir de 17 de febrero de 2017, versión de clúster de hello predeterminada utilizada por HDInsight de Azure es 3.5 y se basa en HDP 2.5.
 
-En la tabla siguiente se enumeran las versiones de componente asociadas a las versiones de clúster de HDInsight. 
+en hello en la tabla siguiente se enumeran las versiones del componente Hola asociadas con las versiones del clúster de HDInsight. 
 
 > [!NOTE]
-> La versión predeterminada del servicio HDInsight puede cambiar sin previo aviso. Si tiene una dependencia de la versión, especifique la versión de HDInsight al crear clústeres con el SDK de .NET con Azure PowerShell y la CLI de Azure.
+> versión predeterminada de Hola para hello servicio HDInsight puede cambiar sin previo aviso. Si tiene una dependencia de la versión, especificar versión de HDInsight de hello al crear los clústeres con hello SDK para .NET con Azure PowerShell y la CLI de Azure.
 
 | Componente | HDInsight 3.6 (predeterminado) | HDInsight 3.5 | HDInsight 3.4 | HDInsight 3.3 | HDInsight 3.2 | HDInsight 3.1 | HDInsight 3.0 |
 | --- | --- | --- | --- | --- | --- | --- |--- |
@@ -62,26 +62,26 @@ En la tabla siguiente se enumeran las versiones de componente asociadas a las ve
 
 ## <a name="check-for-current-hadoop-component-version-information"></a>Comprobación de la información de la versión de los componentes actuales de Hadoop
 
-Las versiones de los componentes del ecosistema de Hadoop asociados a las versiones de los clústeres de HDInsight pueden cambiar en futuras actualizaciones de HDInsight. Para comprobar los componentes de Hadoop disponibles y comprobar las versiones que se están usando para un clúster, use la API REST de Ambari. El comando **GetComponentInformation** recupera información sobre componentes de servicio. Para obtener más información, consulte la [documentación de Ambari][ambari-docs].
+versiones de componentes del ecosistema de Hadoop de Hello asociadas con las versiones del clúster de HDInsight pueden cambiar con actualizaciones tooHDInsight. componentes de Hadoop de toocheck hello y tooverify qué versiones se utilizan para un clúster, use Hola API de REST de Ambari. Hola **GetComponentInformation** comando recupera información acerca de los componentes de servicio. Para obtener más información, vea hello [Ambari documentación][ambari-docs].
 
-Para los clústeres de Windows, otra forma de obtener las versiones de los componentes es iniciar sesión en un clúster mediante el Escritorio remoto y examinar directamente el contenido del directorio C:\apps\dist\.
+Para los clústeres de Windows, versión del componente de Hola de toocheck de otra manera es toolog tooa clúster mediante Escritorio remoto y examinar hello del directorio de hello C:\apps\dist\.
 
 > [!IMPORTANT]
-> Linux es el único sistema operativo que se usa en la versión 3.4 de HDInsight, o en las versiones posteriores. Para más información, vea [Windows retirement on HDInsight](#hdinsight-windows-retirement) (Retirada de Windows en HDInsight).
+> Linux es Hola único sistema operativo usado en HDInsight versión 3.4 o una versión posterior. Para más información, vea [Windows retirement on HDInsight](#hdinsight-windows-retirement) (Retirada de Windows en HDInsight).
 
 ### <a name="release-notes"></a>Notas de la versión
 
-Consulte [Notas de la versión de HDInsight](hdinsight-release-notes.md) para conocer otras notas de las últimas versiones de HDInsight.
+Vea [notas de la versión de HDInsight](hdinsight-release-notes.md) de notas de la versión adicionales en las versiones más recientes de Hola de HDInsight.
 
 ## <a name="supported-hdinsight-versions"></a>Versiones compatibles de HDInsight
-En la tabla siguiente se enumeran las versiones de HDInsight que están actualmente disponibles en Azure Portal. Las versiones de HDP que corresponden a cada versión de HDInsight se muestran junto con las fechas de lanzamiento del producto. Si se conocen, también se proporcionan las fechas de expiración y retirada.
+Hello siguiente tabla enumera las versiones de Hola de HDInsight que están actualmente disponibles en hello portal de Azure. versiones HDP Hola correspondientes de la versión de HDInsight de tooeach se muestran junto con las fechas de lanzamiento de producto de Hola. También se proporcionan fechas de expiración y la retirada de soporte técnico de Hello, al que se conocen.
 
 > [!NOTE]
-> Cuando expira la compatibilidad de una versión, puede dejar de estar disponible en el Portal de Microsoft Azure clásico. Sin embargo, las versiones de clúster seguirán estando disponibles con el parámetro `Version` en el comando [New-AzureRmHDInsightCluster](https://msdn.microsoft.com/library/mt619331.aspx) de Windows PowerShell y en el SDK de .NET hasta la fecha de retirada de la versión.
+> Después de soporte técnico para una versión ha caducado, no estén disponible a través del portal clásico de hello Microsoft Azure. Sin embargo, las versiones de clúster siguen toobe disponible con hello `Version` parámetro en Windows PowerShell hello [AzureRmHDInsightCluster New](https://msdn.microsoft.com/library/mt619331.aspx) comando y Hola .NET SDK hasta que la versión de Hola fecha de retirada.
 > 
 > Los clústeres de alta disponibilidad con dos nodos principales se implementan de forma predeterminada para los clústeres de HDInsight 2.1 y versiones posteriores. No están disponibles para los clústeres de HDInsight 1.6.
 
-| Versión de HDInsight | Versión de HDP | SISTEMA OPERATIVO DE LA MÁQUINA VIRTUAL | Alta disponibilidad | Fecha de lanzamiento | Disponibilidad en Azure Portal | Fecha de expiración del soporte técnico | Fecha de retirada |
+| Versión de HDInsight | Versión de HDP | SISTEMA OPERATIVO DE LA MÁQUINA VIRTUAL | Alta disponibilidad | Fecha de lanzamiento | Disponibilidad en hello portal de Azure | Fecha de expiración del soporte técnico | Fecha de retirada |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 3.6 |HDP 2.6 |Ubuntu 16 |Sí |4 de abril de 2017 |Sí | | |
 | HDInsight 3.5 |HDP 2.5 |Ubuntu 16 |Sí |30 de septiembre de 2016 |Sí |5 de septiembre de 2017 |31 de mayo de 2018 |
@@ -95,68 +95,68 @@ En la tabla siguiente se enumeran las versiones de HDInsight que están actualme
 | HDInsight 1.6 |HDP 1.1 | |No |28 de octubre de 2013 |No |26 de abril de 2014 |31 de mayo de 2015 |
 
 ## <a name="hdinsight-windows-retirement"></a>Retirada de Windows de HDInsight
-Microsoft Azure HDInsight 3.3 fue la última versión de HDInsight en Windows. La fecha de retirada de HDInsight en Windows es el 31 de julio de 2018. Si tiene clústeres de HDInsight en Windows 3.3 o en alguna versión anterior, debe migrar a HDInsight en Linux (HDInsight 3.5 o posterior) antes del 31 de julio de 2018. La migración al sistema operativo Linux permite conservar la capacidad de crear clústeres de HDInsight o de cambiar su tamaño. La compatibilidad con HDInsight 3.3 en Windows expiró el 27 de junio de 2016.
+Microsoft Azure HDInsight versión 3.3 fue Hola última versión de HDInsight en Windows. Hola fecha de retirada de HDInsight en Windows es el 31 de julio de 2018. Si dispone de los clústeres de HDInsight en 3.3 de Windows o una versión anterior, debe migrar tooHDInsight en Linux (HDInsight versión 3.5 o posterior) antes del 31 de julio de 2018. Migración de toohello sistema operativo Linux permite tooretain Hola capacidad toocreate o cambiar el tamaño de los clústeres de HDInsight. La compatibilidad con HDInsight 3.3 en Windows expiró el 27 de junio de 2016.
 
-A partir de HDInsight versión 3.4, Microsoft ha lanzado HDInsight únicamente en el sistema operativo Linux. Como resultado, algunos de los componentes de HDInsight solo están disponibles para Linux. Entre ellos se incluyen Apache Ranger, Kafka, Interactive Hive, Spark, aplicaciones de HDInsight y Azure Data Lake Store como el sistema de archivos principal. Las versiones futuras de HDInsight solo estarán disponibles en el sistema operativo Linux. No habrá ninguna versión futura de HDInsight en Windows. 
+A partir de HDInsight versiones 3.4, Microsoft ha lanzado HDInsight solo en hello sistema operativo Linux. Como resultado, algunos de los componentes de hello dentro de HDInsight sólo están disponibles para Linux. Estos incluyen Apache Cazador, Kafka, Hive interactivo, Spark, las aplicaciones de HDInsight y el almacén de Azure Data Lake como sistema de archivos principal de Hola. Las versiones futuras de HDInsight sólo están disponibles en hello sistema operativo Linux. No habrá ninguna versión futura de HDInsight en Windows. 
 
 ## <a name="faqs"></a>Preguntas más frecuentes
 
-### <a name="what-is-the-timeline-for-retiring-hdinsight-on-windows"></a>¿Cuál es la escala de tiempo para la retirada de HDInsight en Windows?
-El 31 de julio de 2018 es la fecha de retirada de HDInsight en Windows. Si la fecha de retirada planeada para su región es diferente, se le notificará de forma individual. 
+### <a name="what-is-hello-timeline-for-retiring-hdinsight-on-windows"></a>¿Cuál es la escala de tiempo de Hola para retirar HDInsight en Windows?
+31 de julio de 2018 es hello fecha de retirada de HDInsight en Windows. Si ha planeado Hola fecha de retirada es diferente de su región, se le notificará por separado. 
 
-### <a name="what-is-the-impact-of-retiring-hdinsight-on-windows-for-existing-customers"></a>¿Cuál es el impacto de la retirada de HDInsight en Windows para los clientes existentes?
-Después de retirar HDInsight en Windows, no puede crear ningún clúster de HDInsight en Windows ni cambiar el tamaño de un clúster existente de este tipo. La compatibilidad con HDInsight 3.3 expiró el 27 de junio de 2016. Por lo tanto, no hay soporte técnico ni correcciones de errores para HDInsight 3.3 o versiones anteriores. Las versiones futuras de HDInsight solo estarán disponibles en el sistema operativo Linux. No habrá ninguna versión futura de HDInsight en Windows.
+### <a name="what-is-hello-impact-of-retiring-hdinsight-on-windows-for-existing-customers"></a>¿Cuál es el impacto de Hola de retirada de HDInsight en Windows para los clientes existentes?
+Después de retirar HDInsight en Windows, no puede crear ningún clúster de HDInsight en Windows ni cambiar el tamaño de un clúster existente de este tipo. La compatibilidad con HDInsight 3.3 expiró el 27 de junio de 2016. Por lo tanto, no hay soporte técnico ni correcciones de errores para HDInsight 3.3 o versiones anteriores. Las versiones futuras de HDInsight sólo están disponibles en hello sistema operativo Linux. No habrá ninguna versión futura de HDInsight en Windows.
  
 ### <a name="which-versions-of-hdinsight-on-windows-are-affected"></a>¿Qué versiones de HDInsight en Windows se ven afectadas?
-Azure HDInsight 3.3 es la última versión de HDInsight para Windows. Antes de la retirada de HDInsight en Windows, todos los clústeres de HDInsight 3.3 en Windows o de versiones anteriores se deben migrar a HDInsight 3.5 o posterior en Linux. La migración de los clústeres a HDInsight en Linux permite conservar la capacidad de crear clústeres o cambiar el tamaño de los clústeres existentes. 
+HDInsight de Azure versión 3.3 es Hola última versión de HDInsight para Windows. Antes de que se ha retirado HDInsight en Windows, todas las ventanas de HDInsight clústeres 3.3 o versiones anteriores deben ser migrado tooHDInsight en Linux versión 3.5 o posterior. Migrar su tooHDInsight de clústeres en Linux permite nuevos clústeres de tooretain Hola capacidad toocreate o cambiar el tamaño de los clústeres existentes. 
 
-### <a name="what-do-i-need-to-do"></a>¿Qué tengo que hacer?
-Migre los clústeres de HDInsight en Windows a un clúster de HDInsight en Linux compatible antes del 31 de julio de 2018. Obtenga más información en el [documento de migración de HDInsight](https://docs.microsoft.com/en-gb/azure/hdinsight/hdinsight-migrate-from-windows-to-linux). Para obtener información detallada sobre las versiones de Azure HDInsight, consulte la lista de [versiones compatibles](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-component-versioning#supported-hdinsight-versions). 
+### <a name="what-do-i-need-toodo"></a>¿Qué necesito toodo?
+Migrar un clúster de HDInsight Linux de tooa compatible de clústeres de HDInsight Windows antes del 31 de julio de 2018. Obtenga más información en hello [documento de migración de HDInsight](https://docs.microsoft.com/en-gb/azure/hdinsight/hdinsight-migrate-from-windows-to-linux). Para obtener más información acerca de las versiones de HDInsight de Azure, consulte la lista Hola de [versiones compatibles](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-component-versioning#supported-hdinsight-versions). 
 
-### <a name="where-do-i-find-the-cluster-os-type"></a>¿Dónde se encuentra el tipo de sistema operativo del clúster?
-En Azure Portal, vaya a la página de información general de Clústeres de HDInsight y busque **Tipo de clúster** en **Información esencial**. Los tipos de sistema operativo de clúster se enumeran en esa página. 
+### <a name="where-do-i-find-hello-cluster-os-type"></a>¿Dónde se encuentra Hola clúster SO tipo?
+Hola portal de Azure, vaya toohello página de información general del clúster de HDInsight y busque **clúster tipo** en **Essentials**. tipos de sistema operativo de Hello clúster se enumeran en la página. 
 
-### <a name="i-cant-migrate-to-an-hdinsight-linux-cluster-by-july-31-2018-what-is-the-impact-to-my-hdinsight-windows-cluster"></a>No se puede migrar a un clúster de HDInsight en Linux antes del 31 de julio de 2018. ¿Cuál es el impacto en el clúster de HDInsight en Windows?
-El clúster de HDInsight en Windows se ejecuta con normalidad, pero no puede crear ningún clúster de HDInsight en Windows ni cambiar el tamaño de un clúster existente de este tipo. 
+### <a name="i-cant-migrate-tooan-hdinsight-linux-cluster-by-july-31-2018-what-is-hello-impact-toomy-hdinsight-windows-cluster"></a>No se puede migrar tooan clúster de HDInsight Linux por el 31 de julio de 2018. ¿Qué es hello toomy de impacto en el clúster de HDInsight Windows?
+Hello clúster de HDInsight Windows se ejecuta como-es, pero no puede crear un nuevo clúster de HDInsight Windows, o cambiar el tamaño de un clúster de HDInsight Windows existente. 
 
 ### <a name="my-cluster-has-a-net-dependency-how-do-i-resolve-this-dependency-on-linux"></a>El clúster tiene una dependencia de .NET. ¿Cómo se resuelve esta dependencia en Linux?
-Puede resolver la dependencia de clústeres de Linux mediante el [proyecto de Mono](http://www.mono-project.com/). Esta implementación de código abierto de .NET está disponible para los clústeres de HDInsight en Linux. Obtenga más información en el [documento de migración de HDInsight](https://docs.microsoft.com/en-gb/azure/hdinsight/hdinsight-migrate-from-windows-to-linux). 
+Puede resolver la dependencia de clústeres de Linux mediante hello [proyecto Mono](http://www.mono-project.com/). Esta implementación de código abierto de .NET está disponible para los clústeres de HDInsight en Linux. Obtenga más información en hello [documento de migración de HDInsight](https://docs.microsoft.com/en-gb/azure/hdinsight/hdinsight-migrate-from-windows-to-linux). 
 
 ### <a name="im-a-new-customer-for-hdinsight-on-windows-how-can-i-create-an-hdinsight-windows-cluster"></a>Soy un nuevo cliente de HDInsight en Windows. ¿Cómo se puede crear un clúster de HDInsight en Windows?
-A partir del 3 de julio de 2017, solo los clientes existentes de HDInsight en Windows pueden crear clústeres de HDInsight en Windows. Los nuevos clientes no pueden crear un clúster de HDInsight en Windows en Azure Portal con PowerShell o el SDK. Se recomienda que los nuevos clientes creen un clúster de HDInsight en Linux. Los clientes existentes pueden crear clústeres de HDInsight en Windows hasta la fecha de retirada de esta característica. 
+A partir del 3 de julio de 2017, solo los clientes existentes de HDInsight en Windows pueden crear clústeres de HDInsight en Windows. Nuevos clientes no pueden crear un clúster de HDInsight Windows Hola portal de Azure con PowerShell u Hola SDK. Se recomienda que los nuevos clientes creen un clúster de HDInsight en Linux. Los clientes existentes pueden crear nuevas ventanas de HDInsight clústeres hasta hello HDInsight en Windows fecha de retirada. 
 
-### <a name="is-there-a-pricing-impact-associated-with-moving-from-hdinsight-on-windows-to-hdinsight-on-linux"></a>¿La migración de HDInsight en Windows a HDInsight en Linux afecta en algo al precio?
-No, el precio es el mismo para HDInsight en cualquier sistema operativo. 
+### <a name="is-there-a-pricing-impact-associated-with-moving-from-hdinsight-on-windows-toohdinsight-on-linux"></a>¿Hay afectará al precio asociada con el traslado de HDInsight en Windows tooHDInsight en Linux?
+No, precios hello es Hola mismo para HDInsight en cualquier sistema operativo. 
 
-### <a name="what-are-the-customer-advantages-associated-with-the-move-to-only-using-hdinsight-on-linux"></a>¿Cuáles son las ventajas para el cliente asociadas con la migración a HDInsight solo en Linux?
-* Un tiempo de comercialización más rápido para tecnologías de macrodatos de código abierto a través del servicio HDInsight
+### <a name="what-are-hello-customer-advantages-associated-with-hello-move-tooonly-using-hdinsight-on-linux"></a>¿Qué ventajas para el cliente hello asociadas Hola mover tooonly con HDInsight en Linux?
+* Tiempo de comercialización más rápido para las tecnologías de grandes cantidades de datos de código abierto a través de hello servicio HDInsight
 * Una gran comunidad y ecosistema de soporte técnico
-* Posibilidad de aprovechar el desarrollo activo mediante la comunidad de código abierto para Hadoop y otras tecnologías de macrodatos
+* Comunidad de código abierto de desarrollo activo de capacidad tooexercise por hello Hadoop y otras tecnologías de grandes cantidades de datos
 
 ### <a name="does-hdinsight-on-linux-provide-additional-functionality-beyond-what-is-available-in-hdinsight-on-windows"></a>¿HDInsight en Linux proporciona funcionalidad adicional más allá de la disponible en HDInsight en Windows?
-A partir de HDInsight versión 3.4, Microsoft ha lanzado HDInsight únicamente en el sistema operativo Linux. Como resultado, algunos de los componentes de HDInsight solo están disponibles para Linux. Entre ellos se incluyen Apache Ranger, Kafka, Interactive Hive, Spark, aplicaciones de HDInsight y Azure Data Lake Store como el sistema de archivos principal. 
+A partir de HDInsight versiones 3.4, Microsoft ha lanzado HDInsight solo en hello sistema operativo Linux. Como resultado, algunos de los componentes de hello dentro de HDInsight sólo están disponibles para Linux. Estos incluyen Apache Cazador, Kafka, Hive interactivo, Spark, las aplicaciones de HDInsight y el almacén de Azure Data Lake como sistema de archivos principal de Hola. 
 
 ## <a name="service-level-agreement-for-hdinsight-cluster-versions"></a>Contrato de nivel de servicio para las versiones de clúster de HDInsight
-El contrato de nivel de servicio (SLA) de define en términos de _plazo de soporte técnico_. Un plazo de soporte técnico se refiere al período durante el cual la versión del clúster de HDInsight puede recibir soporte técnico por parte del Soporte técnico y el servicio al cliente de Microsoft. Si la versión tiene una _fecha de expiración de soporte técnico_ que ya ha pasado, el clúster de HDInsight está fuera del servicio de soporte técnico. Para más información sobre las versiones compatibles, vea la lista de [versiones compatibles de clústeres de HDInsight](https://docs.microsoft.com/en-gb/azure/hdinsight/hdinsight-migrate-from-windows-to-linux). La fecha de expiración del soporte técnico de una versión determinada X de HDInsight (una vez que hay disponible una versión más reciente X+1) se calcula como la fecha más tardía de las dos siguientes:  
+contrato de nivel de servicio (SLA) de Hola se define en términos de un _ventana de soporte técnico_. ventana de soporte técnico de Hello es Hola periodo de tiempo que una versión de clúster de HDInsight es compatible con el soporte técnico y el servicio de cliente de Microsoft. Si tiene la versión de Hola un _compatible con fecha de expiración_ que ha pasado, clúster de HDInsight de hello está fuera de la ventana de soporte técnico de hello. Para obtener más información sobre las versiones compatibles, consulte la lista Hola de [admite versiones del clúster de HDInsight](https://docs.microsoft.com/en-gb/azure/hdinsight/hdinsight-migrate-from-windows-to-linux). fecha de expiración de soporte técnico de Hola para una versión X (después de que hay disponible una nueva versión de X + 1) de HDInsight especificado se calcula como Hola posterior de:  
 
-* Fórmula 1: agregue ciento ochenta días a la fecha en la que se lanzó la versión X del clúster de HDInsight.
-* Fórmula 2: agregue noventa días a la fecha en la que la versión del clúster de HDInsight x+1 se encuentra disponible en Azure Portal.
+* La fórmula 1: Agregar fecha toohello de 180 días cuando se publicó la versión de clúster de HDInsight de hello X.
+* Fórmula 2: Agregar fecha toohello de 90 días cuando X + 1 de la versión de clúster de HDInsight de Hola se publica en el portal de Azure.
 
-La _fecha de retirada_ es la fecha tras la cual no se puede crear la versión del clúster en HDInsight. A partir del 31 de julio de 2017, no se puede cambiar el tamaño de un clúster de HDInsight después de su fecha de retirada. 
+Hola _fecha de retirada_ es fecha Hola después del cual no se puede crear la versión de clúster hello en HDInsight. A partir del 31 de julio de 2017, no se puede cambiar el tamaño de un clúster de HDInsight después de su fecha de retirada. 
 
 > [!NOTE]
-> Los clústeres de HDInsight en Windows (incluidas las versiones 2.1, 3.0, 3.1, 3.2 y 3.3) se ejecutan en el SO invitado de Azure Familia 4 que usa la versión de 64 bits de Windows Server 2012 R2. El SO invitado de Azure Familia 4 es compatible con las versiones .NET Framework 4.0, 4.5, 4.5.1 y 4.5.2.
+> Clústeres de HDInsight Windows (incluidas versiones 2.1, 3.0, 3.1, 3.2 y 3.3) se ejecutan en la familia de SO invitado de Azure versión 4, que usa la versión de 64 bits de Hola de Windows Server 2012 R2. Familia del SO invitado Azure versión 4 es compatible con las versiones de .NET Framework de hello 4.0, 4.5, 4.5.1 y 4.5.2.
 
 ## <a name="hortonworks-release-notes-associated-with-hdinsight-versions"></a>Notas de la versión de HortonWorks asociadas con las versiones de HDInsight
 
-En la sección se proporcionan vínculos a las notas de la versión para las distribuciones de Hortonworks Data Platform y los componentes de Apache usados con HDInsight.
+sección de Hello proporciona vínculos toorelease notas para los componentes de Apache que se usan con HDInsight y distribuciones de Hortonworks Data Platform Hola.
 * La versión 3.6 del clúster de HDInsight utiliza una distribución de Hadoop basada en [Hortonworks Data Platform 2.6](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.0/bk_release-notes/content/ch_relnotes.html).
-* La versión 3.5 del clúster de HDInsight utiliza una distribución de Hadoop basada en [Hortonworks Data Platform 2.5](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.5.0/bk_release-notes/content/ch_relnotes_v250.html). El clúster de HDInsight 3.5 es el clúster de Hadoop _predeterminado_ que se crea en Azure Portal.
+* La versión 3.5 del clúster de HDInsight utiliza una distribución de Hadoop basada en [Hortonworks Data Platform 2.5](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.5.0/bk_release-notes/content/ch_relnotes_v250.html). Versión de clúster de HDInsight 3.5 es hello _predeterminado_ clúster de Hadoop que se crea en Hola portal de Azure.
 * La versión 3.4 del clúster de HDInsight utiliza una distribución de Hadoop basada en [Hortonworks Data Platform 2.4](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.4.0/bk_HDP_RelNotes/content/ch_relnotes_v240.html).
 * La versión 3.3 del clúster de HDInsight utiliza una distribución de Hadoop basada en [Hortonworks Data Platform 2.3](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.3.0/bk_HDP_RelNotes/content/ch_relnotes_v230.html).
 
-  * Las [notas de la versión de Apache Storm](https://storm.apache.org/2015/11/05/storm0100-released.html) están disponibles en el sitio web de Apache.
-  * Las [notas de la versión de Apache Hive](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12332384&styleName=Text&projectId=12310843) están disponibles en el sitio web de Apache.
+  * [Notas de la versión de Apache Storm](https://storm.apache.org/2015/11/05/storm0100-released.html) están disponibles en el sitio Web de Apache Hola.
+  * [Notas de la versión de Apache Hive](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12332384&styleName=Text&projectId=12310843) están disponibles en el sitio Web de Apache Hola.
 * La versión 3.2 del clúster de HDInsight utiliza una distribución de Hadoop basada en [Hortonworks Data Platform 2.2][hdp-2-2].
 
   * Las notas de la versión de los componentes específicos de Apache se encuentran disponibles como sigue: [Hive 0.14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310843&version=12326450), [Pig 0.14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310730&version=12326954), [HBase 0.98.4](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310753&version=12326810), [Phoenix 4.2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12315120&version=12327581), [M/R 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310941&version=12327180), [HDFS 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310942&version=12327181), [YARN 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12313722&version=12327197), [Common](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310240&version=12327179), [Tez 0.5.2](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314426&version=12328742), [Ambari 2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12312020&version=12327486), [Storm 0.9.3](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314820&version=12327112) y [Oozie 4.1.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12324960&projectId=12311620).
@@ -167,17 +167,17 @@ En la sección se proporcionan vínculos a las notas de la versión para las dis
 
 ## <a name="hdinsight-standard-and-hdinsight-premium"></a>HDInsight Standard y HDInsight Premium
 
-Azure HDInsight proporciona las ofertas de macrodatos en la nube en dos categorías: _Estándar_ y _Premium_. En esta tabla se enumeran las características disponibles _solo_ en HDInsight Premium. Las características que no se describen explícitamente en la tabla están disponibles en HDInsight Standard y Premium.
+HDInsight de Azure proporciona las ofertas de nube de hello grandes cantidades de datos en dos categorías: _estándar_ y _Premium_. Hello tabla siguiente enumeran las características que están disponibles _sólo_ de HDInsight Premium. Características que no se describen explícitamente en la tabla de hello están disponibles en HDInsight Standard y Premium.
 
 > [!NOTE]
-> Actualmente, la oferta HDInsight Premium se encuentra en versión preliminar y solo está disponible para los clústeres de Linux.
+> Hello HDInsight Premium oferta está actualmente en versión preliminar y está disponible sólo para los clústeres de Linux.
 
 | Característica de HDInsight Premium | Description |
 | --- | --- |
-| Usuarios de clústeres de HDInsight unidos a dominio |Una clústeres de HDInsight a dominios de Azure Active Directory (Azure AD) para obtener una seguridad de nivel empresarial. En HDInsight Premium, puede configurar una lista de empleados de su empresa que pueden autenticarse a través de Azure AD para iniciar sesión en un clúster de HDInsight. El administrador de la empresa puede configurar el control de acceso basado en roles para la seguridad de Hive con [Apache Ranger](http://hortonworks.com/apache/ranger/) y restringir el acceso a datos para usar solo los que sean necesarios. Finalmente, el administrador puede auditar el acceso a los datos por parte de los empleados, y los cambios realizados en las directivas de Access Control, con lo que se consigue un alto grado de control de los recursos corporativos. Para obtener más información, consulte [Configure domain-joined HDInsight clusters](hdinsight-domain-joined-configure.md) (Configuración de clústeres de HDInsight unidos a dominio). |
+| Usuarios de clústeres de HDInsight unidos a dominio |Unirse a dominios de Active Directory (Azure AD) de tooAzure de clústeres de HDInsight para la seguridad de nivel de empresa. En HDInsight Premium, puede configurar una lista de empleados de la empresa que se pueda autenticar a través de Azure AD toolog en clúster de HDInsight tooan. Hola, Administrador de empresa puede configurar el control de acceso basado en roles de seguridad de subárbol mediante [Apache Cazador](http://hortonworks.com/apache/ranger/) y restringir toouse de acceso de datos solo lo necesita. Por último, Hola, administrador puede auditar el acceso a los empleados de datos y cambios tooaccess controlar las directivas, y, por tanto, para lograr un alto grado de regulación de los recursos corporativos. Para obtener más información, consulte [Configure domain-joined HDInsight clusters](hdinsight-domain-joined-configure.md) (Configuración de clústeres de HDInsight unidos a dominio). |
 
 ### <a name="cluster-types-supported-in-hdinsight-premium"></a>Tipos de clúster compatibles con HDInsight Premium
-En la tabla siguiente se enumeran los tipos de clúster que se admiten en HDInsight Premium.
+Hello tabla siguiente enumera los tipos de clúster de Hola que son compatibles con HDInsight Premium.
 
 | Tipo de clúster | Estándar | Premium (vista previa) |
 | --- | --- | --- |
@@ -197,7 +197,7 @@ Los clústeres de HDInsight Premium no admiten el uso de Azure Data Lake Store c
 Para obtener información sobre los precios y el contrato de nivel de servicio de HDInsight Premium, consulte [Precios de HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 
 ## <a name="default-node-configuration-and-virtual-machine-sizes-for-clusters"></a>Configuración de nodo predeterminada y tamaños de máquina virtual para clústeres
-En las tablas siguientes se indican los tamaños de máquina virtual predeterminados para clústeres de HDInsight.
+Hola siguientes tamaños de máquina virtual (VM) de tablas lista Hola predeterminados para los clústeres de HDInsight.
 
 > [!IMPORTANT]
 > Si necesita más de 32 nodos de trabajo en un clúster, tiene que seleccionar un tamaño de nodo principal con al menos 8 núcleos y 14 GB de RAM.
@@ -230,9 +230,9 @@ En las tablas siguientes se indican los tamaños de máquina virtual predetermin
   | Perimetral: tamaños de máquina virtual recomendados | | | | |Windows: D12, D13 y D14; Linux: D4, D12, D13 y D14 |
 
 > [!NOTE]
-> - Nota: Principal se conoce como *Nimbus* para el tipo de clúster de Storm.
-> - El trabajo se conoce como *Supervisor* para el tipo de clúster de Storm.
-> - El trabajo se conoce como *Región* para el tipo de clúster de HBase.
+> - Head se conoce como *Nimbus* para hello aluvión de tipo de clúster.
+> - Se denomina trabajo *Supervisor* para hello aluvión de tipo de clúster.
+> - Se denomina trabajo *región* para hello HBase ipo de clúster.
 
 ## <a name="next-steps"></a>Pasos siguientes
 - [Configuración de clúster para Hadoop, Spark, etc. en HDInsight](hdinsight-hadoop-provision-linux-clusters.md)

@@ -1,6 +1,6 @@
 ---
-title: Funciones para crear definiciones de interfaz de usuario para aplicaciones administradas de Azure | Microsoft Docs
-description: "Describe las funciones que se usarán al crear definiciones de interfaz de usuario para aplicaciones administradas de Azure"
+title: "aaaAzure aplicación administrada crear funciones de definición de interfaz de usuario | Documentos de Microsoft"
+description: Describe Hola funciones toouse al construir las definiciones de interfaz de usuario para las aplicaciones administradas de Azure
 services: azure-resource-manager
 documentationcenter: na
 author: tabrezm
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/12/2017
 ms.author: tabrezm;tomfitz
-ms.openlocfilehash: 635e44a7ec6f9244f5fe75eb5ad947cdd8ae59a4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a34c6202372168cda769c471b1c9fdd539dd0f1b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="createuidefinition-elements"></a>Elementos CreateUiDefinition
-En este artículo se describen el esquema y las propiedades de todos los elementos compatibles de CreateUiDefinition. Use estos elementos al [crear una aplicación administrada de Azure](managed-application-publishing.md). El esquema de la mayoría de los elementos es el siguiente:
+Este artículo describe el esquema de Hola y las propiedades de todos los elementos compatibles de un CreateUiDefinition. Use estos elementos al [crear una aplicación administrada de Azure](managed-application-publishing.md). esquema de Hello para la mayoría de los elementos es como sigue:
 
 ```json
 {
@@ -28,7 +28,7 @@ En este artículo se describen el esquema y las propiedades de todos los element
   "type": "Microsoft.Common.TextBox",
   "label": "Some text box",
   "defaultValue": "foobar",
-  "toolTip": "Keep calm and visit the [Azure Portal](portal.azure.com).",
+  "toolTip": "Keep calm and visit hello [Azure Portal](portal.azure.com).",
   "constraints": {},
   "options": {},
   "visible": true
@@ -36,18 +36,18 @@ En este artículo se describen el esquema y las propiedades de todos los element
 ```
 | Propiedad | Obligatorio | Description |
 | -------- | -------- | ----------- |
-| name | Sí | Un identificador interno para hacer referencia a una instancia específica de un elemento. El uso más común del nombre del elemento es en `outputs`, donde se asignan los valores de salida de los elementos especificados a los parámetros de la plantilla. También se puede usar para enlazar el valor de salida de un elemento a `defaultValue` de otro elemento. |
-| type | Sí | El control de interfaz de usuario que se representa para el elemento. Para ver una lista de los tipos admitidos, consulte [Elementos](#elements). |
-| label | Sí | Texto para mostrar del elemento. Algunos tipos de elementos contienen varias etiquetas, por lo que el valor podría ser un objeto que contiene varias cadenas. |
-| defaultValue | No | Valor predeterminado de la propiedad. Algunos tipos de elemento admiten valores predeterminados complejos, por lo que el valor podría ser un objeto. |
-| toolTip | No | El texto que se muestra en la información sobre herramientas del elemento. Similar a `label`, algunos elementos admiten varias cadenas de información sobre herramientas. Se pueden insertar vínculos en línea con la sintaxis de Markdown.
-| constraints | No | Una o varias propiedades que se utilizan para personalizar el comportamiento de validación del elemento. Las propiedades que se admiten para las restricciones varían según el tipo de elemento. Algunos tipos de elemento no permiten personalizar el comportamiento de validación y, por tanto, no tienen ninguna propiedad constraints. |
-| options | No | Propiedades adicionales que personalizan el comportamiento del elemento. De forma similar a `constraints`, las propiedades que se admiten varían según el tipo de elemento. |
-| visible | No | Indica si se muestra el elemento. Si `true`, se muestran el elemento y los elementos secundarios aplicables. El valor predeterminado es `true`. Use [funciones lógicas](managed-application-createuidefinition-functions.md#logical-functions) para controlar dinámicamente el valor de esta propiedad.
+| name | Sí | Un tooreference de identificador interno de una instancia concreta de un elemento. Hola uso más común del nombre de elemento de hello es en `outputs`, donde los valores de salida de hello de hello especifican elementos son asignadas toohello parámetros de plantilla de Hola. También se puede usar valor de salida de hello toobind de un elemento toohello `defaultValue` de otro elemento. |
+| type | Sí | Hola toorender de control de interfaz de usuario para el elemento de saludo. Para ver una lista de los tipos admitidos, consulte [Elementos](#elements). |
+| label | Sí | Hola muestran el texto del elemento de saludo. Algunos tipos de elementos contienen varias etiquetas, por lo que el valor de hello podría ser un objeto que contiene varias cadenas. |
+| defaultValue | No | valor predeterminado de Hola de elemento de saludo. Algunos tipos de elemento admiten valores predeterminados compleja, por lo que el valor de hello podría ser un objeto. |
+| toolTip | No | Hola toodisplay de texto de información sobre herramientas de Hola de elemento de saludo. Similar demasiado`label`, algunos elementos de compatibilidad con varias cadenas de información sobre herramientas. Se pueden insertar vínculos en línea con la sintaxis de Markdown.
+| constraints | No | Una o varias propiedades que son utilizados toocustomize Hola el comportamiento de la validación del elemento de Hola. propiedades de Hello admitida para las restricciones varían según el tipo de elemento. Algunos tipos de elemento no admite la personalización del comportamiento de la validación de hello y, por tanto, no tienen ninguna propiedad de restricciones. |
+| options | No | Propiedades adicionales que personalizan el comportamiento de Hola de elemento de Hola. Similar demasiado`constraints`, propiedades de hello compatibles varían según el tipo de elemento. |
+| visible | No | Indica si se muestra el elemento de saludo. Si `true`, elemento de Hola y los elementos secundarios correspondientes se muestran. valor predeterminado de Hello es `true`. Use [funciones lógicas](managed-application-createuidefinition-functions.md#logical-functions) toodynamically controlar el valor de esta propiedad.
 
 ## <a name="elements"></a>Elementos
 
-La documentación de cada elemento contiene un ejemplo de interfaz de usuario, un esquema, comentarios sobre el comportamiento del elemento (normalmente sobre la validación y personalización compatibles) y una salida de ejemplo.
+Hola documentación para cada elemento contiene un ejemplo de interfaz de usuario, esquema, comentarios en el comportamiento de Hola de elemento de hello (normalmente sobre la validación y personalización compatibles) y salida de ejemplo.
 
 - [Microsoft.Common.DropDown](managed-application-microsoft-common-dropdown.md)
 - [Microsoft.Common.FileUpload](managed-application-microsoft-common-fileupload.md)
@@ -64,5 +64,5 @@ La documentación de cada elemento contiene un ejemplo de interfaz de usuario, u
 - [Microsoft.Storage.StorageAccountSelector](managed-application-microsoft-storage-storageaccountselector.md)
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Para una introducción a las aplicaciones administradas, consulte la [introducción a las aplicaciones administradas de Azure](managed-application-overview.md).
-* Para ver una introducción sobre la creación de definiciones de interfaz de usuario, consulte [Introducción a CreateUiDefinition](managed-application-createuidefinition-overview.md).
+* Para una aplicación de toomanaged introducción, consulte [Introducción a la aplicación administrada de Azure](managed-application-overview.md).
+* Para obtener definiciones una interfaz de usuario de toocreating de introducción, vea [Introducción a CreateUiDefinition](managed-application-createuidefinition-overview.md).

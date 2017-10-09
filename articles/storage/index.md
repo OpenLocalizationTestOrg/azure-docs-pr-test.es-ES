@@ -1,6 +1,6 @@
 ---
-title: "Documentación sobre Azure Storage: tutoriales y referencia de API | Microsoft Docs"
-description: "Aprenda a usar Azure Storage: Blob Storage, Table Storage, Queue Storage, File Storage y almacenamiento de disco de máquina virtual en la nube. Tutoriales, referencias de API y otra documentación."
+title: "aaaAzure documentación de almacenamiento - tutoriales, referencia de API | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toouse almacenamiento de Azure - almacenamiento de Blob, tabla, cola, archivo y disco de máquina Virtual en la nube de Hola. Tutoriales, referencias de API y otra documentación."
 services: storage
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: af6bc7cc4245208d2dc92a9b248aa4686cf42272
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7155feb190c8c769eb9c8f8712cca939708d57b9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="storage-documentation"></a>Documentación de Storage
 
-Aprenda a usar Azure Storage, un servicio de almacenamiento en nube que ofrece durabilidad, disponibilidad y escalabilidad. En los tutoriales, las referencias de API y otra documentación, se muestra cómo configurar y administrar Blob Storage, Table Storage, Queue Storage, File Storage y el almacenamiento de disco de máquina virtual.
+Obtenga información acerca de cómo toouse almacenamiento de Azure, un almacenamiento en nube de servicio que es duradero, disponibilidad y escalabilidad. Tutoriales, referencias de API y otra documentación mostrarle cómo tooset una copia de seguridad y administrar el almacenamiento de Blob, tabla, cola, archivo y disco de máquina Virtual.
 
 <ul class="panelContent cardsFTitle">
     <li>

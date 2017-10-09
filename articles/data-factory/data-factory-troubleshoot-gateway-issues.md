@@ -1,6 +1,6 @@
 ---
-title: "Solución de problemas de Data Management Gateway | Microsoft Docs"
-description: "Ofrece sugerencias para solucionar problemas relacionados con la puerta de enlace de administración de datos."
+title: problemas de Data Management Gateway aaaTroubleshoot | Documentos de Microsoft
+description: Proporciona sugerencias tootroubleshoot problemas relacionados tooData Management Gateway.
 services: data-factory
 author: nabhishek
 manager: jhubbard
@@ -14,275 +14,275 @@ ms.topic: article
 ms.date: 07/27/2017
 ms.author: abnarain
 published: True
-ms.openlocfilehash: b8e50a4e3c0b9c535ccc2344ff22261a356d5acc
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 85dacc8a1e8d574d6e7d5b556c995cebdc148fde
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Solución de problemas con Data Management Gateway
 En este artículo se ofrece información sobre la solución de problemas con Data Management Gateway.
 
 > [!NOTE]
-> Para más información sobre la puerta de enlace, vea el artículo [Puerta de enlace de administración de datos](data-factory-data-management-gateway.md). En el artículo [Mover datos entre implementaciones locales y la nube](data-factory-move-data-between-onprem-and-cloud.md) puede ver un tutorial sobre cómo mover datos entre una base de datos de SQL Server local a Microsoft Azure Blob Storage con la puerta de enlace.
+> Vea hello [Data Management Gateway](data-factory-data-management-gateway.md) artículo para obtener información detallada acerca de la puerta de enlace de Hola. Vea hello [mover datos entre local y nube](data-factory-move-data-between-onprem-and-cloud.md) artículo para ver un tutorial de mover datos desde una base de datos de SQL Server local tooMicrosoft almacenamiento de blobs de Azure mediante el uso de la puerta de enlace de Hola.
 >
 >
 
-## <a name="failed-to-install-or-register-gateway"></a>Error al instalar o registrar la puerta de enlace
+## <a name="failed-tooinstall-or-register-gateway"></a>Puerta de enlace tooinstall o registrar errores
 ### <a name="1-problem"></a>1. Problema
-Se muestra este mensaje de error al instalar y registrar una puerta de enlace (en concreto, al descargar el archivo de instalación de la puerta de enlace).
+Verá este mensaje de error al instalar y registrar una puerta de enlace, en concreto, al descargar el archivo de instalación de puerta de enlace de Hola.
 
-`Unable to connect to the remote server". Please check your local settings (Error Code: 10003).`
+`Unable tooconnect toohello remote server". Please check your local settings (Error Code: 10003).`
 
 #### <a name="cause"></a>Causa
-La máquina donde intenta instalar la puerta de enlace no puede descargar la versión más reciente del archivo de instalación de la puerta de enlace del Centro de descarga debido a un problema de red.
+máquina de Hello en el que está tratando de puerta de enlace de hello tooinstall error en archivo de instalación puerta de enlace más reciente de toodownload de hello desde centro de descarga de hello debido tooa problema de red.
 
 #### <a name="resolution"></a>Resolución
-Compruebe si la configuración del firewall o del servidor proxy bloquea la conexión de red desde el equipo al [Centro de descarga](https://download.microsoft.com/) y actualice la configuración según corresponda.
+Compruebe su toosee de configuración del servidor de proxy de firewall si configuración de hello bloquea la conexión de red de Hola de hello equipo toohello [centro de descarga de](https://download.microsoft.com/)y actualizar la configuración de hello en consecuencia.
 
-Como alternativa, puede descargar el archivo de instalación para la puerta de enlace más reciente desde el [centro de descarga](https://www.microsoft.com/download/details.aspx?id=39717) en otros equipos que pueden tener acceso al centro de descarga. A continuación, puede copiar el archivo del instalador en el equipo de host de puerta de enlace y ejecutarlo manualmente para instalar y actualizar la puerta de enlace.
+Como alternativa, puede descargar archivo de instalación de hello para puerta de enlace más reciente de Hola de hello [centro de descarga de](https://www.microsoft.com/download/details.aspx?id=39717) en otros equipos que pueden tener acceso a centro de descarga de Hola. También puede, a continuación, puerta de enlace de copia Hola instalador archivo toohello equipo host y ejecutarlo manualmente puerta de enlace de hello tooinstall y actualización.
 
 ### <a name="2-problem"></a>2. Problema
-Se muestra este error al hacer clic en **Instalar directamente en este equipo** en Azure Portal para intentar instalar una puerta de enlace.
+Verá este error al tratar de tooinstall una puerta de enlace, haga clic en **instalar directamente en este equipo** Hola portal de Azure.
 
 `Error:  Abort installing a new gateway on this computer because this computer has an existing installed gateway and a computer without any installed gateway is required for installing a new gateway.`  
 
 #### <a name="cause"></a>Causa
-Ya hay instalada una puerta de enlace en la máquina.
+Una puerta de enlace ya está instalado en el equipo de Hola.
 
 #### <a name="resolution"></a>Resolución
-Desinstale la puerta de enlace existente en la máquina y vuelva a hacer clic en el vínculo **Instalar directamente en este equipo**.
+Desinstalar Hola puerta de enlace existente en la máquina de Hola y haga clic en hello **instalar directamente en este equipo** volver a vincular.
 
 ### <a name="3-problem"></a>3. Problema
 Puede que vea este error al registrar una nueva puerta de enlace.
 
-`Error: The gateway has encountered an error during registration.`
+`Error: hello gateway has encountered an error during registration.`
 
 #### <a name="cause"></a>Causa
-Puede que vea este mensaje por uno de los motivos siguientes:
+Podría aparecer este mensaje para uno de hello siguientes motivos:
 
-* El formato de la clave de la puerta de enlace no es válido.
-* Se ha invalidado la clave de la puerta de enlace.
-* Se ha vuelto a generar la clave de la puerta de enlace desde el portal.  
+* Hola formato de clave de puerta de enlace de hello no es válido.
+* se ha invalidado la clave de puerta de enlace de Hola.
+* se ha vuelto generar clave de puerta de enlace de Hola desde el portal de Hola.  
 
 #### <a name="resolution"></a>Resolución
-Compruebe si usa la clave de la puerta de enlace correcta en el portal. Si es necesario, vuelva a generar una clave y úsela para registrar la puerta de enlace.
+Compruebe si está utilizando la clave de puerta de enlace correcto de Hola desde el portal de Hola. Si es necesario, volver a generar una clave y usar puerta de enlace de hello tooregister clave Hola.
 
 ### <a name="4-problem"></a>4. Problema
-Puede que vea el siguiente mensaje de error al volver a registrar una puerta de enlace.
+Es posible que vea Hola siguiente mensaje de error cuando se está registrando una puerta de enlace.
 
-`Error: The content or format of the gateway key "{gatewayKey}" is invalid, please go to azure portal to create one new gateway or regenerate the gateway key.`
+`Error: hello content or format of hello gateway key "{gatewayKey}" is invalid, please go tooazure portal toocreate one new gateway or regenerate hello gateway key.`
 
 
 
 ![Contenido o formato de la clave no son válidos](media/data-factory-troubleshoot-gateway-issues/invalid-format-gateway-key.png)
 
 #### <a name="cause"></a>Causa
-El contenido o el formato de la clave de la puerta de enlace de entrada no son correctos. Uno de los motivos puede ser que haya copiado solo una parte de la clave desde el portal o que esté usando una clave no válida.
+Hello contenido o el formato de clave de puerta de enlace de entrada de hello es incorrecto. Uno de los motivos de hello puede ser que solo una parte de la clave de Hola que copió desde el portal de Hola o si está usando una clave no válida.
 
 #### <a name="resolution"></a>Resolución
-Genere una clave de puerta de enlace en el portal y use el botón Copiar para copiar la clave completa. A continuación, péguela en esta ventana para registrar la puerta de enlace.
+Generar una clave de puerta de enlace en el portal de Hola y usar Hola copia toocopy botón Hola clave todo. A continuación, péguelo en esta puerta de enlace de ventana tooregister Hola.
 
 ### <a name="5-problem"></a>5. Problema
-Puede que vea el siguiente mensaje de error al volver a registrar una puerta de enlace.
+Es posible que vea Hola siguiente mensaje de error cuando se está registrando una puerta de enlace.
 
-`Error: The gateway key is invalid or empty. Specify a valid gateway key from the portal.`
+`Error: hello gateway key is invalid or empty. Specify a valid gateway key from hello portal.`
 
 ![La clave de la puerta de enlace no es válida o está vacía](media/data-factory-troubleshoot-gateway-issues/gateway-key-is-invalid-or-empty.png)
 
 #### <a name="cause"></a>Causa
-La clave de la puerta de enlace se ha vuelto a generar o la puerta de enlace se ha eliminado en Azure Portal. También puede ocurrir que el programa de instalación de Data Management Gateway no sea el más reciente.
+se ha vuelto generar clave de puerta de enlace de Hola o se ha eliminado la puerta de enlace de Hola Hola portal de Azure. También puede ocurrir si el programa de instalación de Data Management Gateway de hello no es más reciente.
 
 #### <a name="resolution"></a>Resolución
-Compruebe si el programa de instalación de Data Management Gateway es la versión más reciente. Puede encontrar la versión más reciente en el [Centro de descarga de Microsoft](https://go.microsoft.com/fwlink/p/?LinkId=271260).
+Compruebe si el programa de instalación de Data Management Gateway de hello es la versión más reciente de hello, puede encontrar la versión más reciente de Hola en hello Microsoft [centro de descarga de](https://go.microsoft.com/fwlink/p/?LinkId=271260).
 
-Si se trata de la versión más reciente o la actual y existe una puerta de enlace en el Portal, vuelva a generar una clave de la puerta de enlace en Azure Portal, use el botón Copiar para copiar la clave entera y, después, péguela en esta ventana para registrar la puerta de enlace. En caso contrario, vuelva a crear la puerta de enlace y empiece de nuevo.
+Si el programa de instalación es actual / más reciente y puerta de enlace sigue existiendo en el Portal, regenerar la clave de puerta de enlace de Hola Hola portal de Azure y usar Hola copia toocopy botón Hola clave completa y, a continuación, péguelo en esta puerta de enlace de ventana tooregister Hola. En caso contrario, vuelva a crear la puerta de enlace de Hola y empezar de nuevo.
 
 ### <a name="6-problem"></a>6. Problema
-Puede que vea el siguiente mensaje de error al volver a registrar una puerta de enlace.
+Es posible que vea Hola siguiente mensaje de error cuando se está registrando una puerta de enlace.
 
-`Error: Gateway has been online for a while, then shows “Gateway is not registered” with the status “Gateway key is invalid”`
+`Error: Gateway has been online for a while, then shows “Gateway is not registered” with hello status “Gateway key is invalid”`
 
 ![La clave de la puerta de enlace no es válida o está vacía](media/data-factory-troubleshoot-gateway-issues/gateway-not-registered-key-invalid.png)
 
 #### <a name="cause"></a>Causa
-Este error puede producirse porque se ha eliminado la puerta de enlace o porque se ha vuelto generar la clave de la puerta de enlace asociada.
+Este error puede ocurrir porque se ha eliminado la puerta de enlace de Hola o se ha vuelto generar clave de puerta de enlace asociada Hola.
 
 #### <a name="resolution"></a>Resolución
-Si se ha eliminado la puerta de enlace, vuelva a crear la puerta de enlace desde el portal, haga clic en **Registrar**, copie la clave desde el portal, péguela y, después, intente registrar la puerta de enlace.
+Si se ha eliminado la puerta de enlace de hello, volver a crear la puerta de enlace de Hola desde el portal de hello, haga clic en **registrar**, copie la clave de Hola desde el portal de hello, péguelo e intente puerta de enlace de tooregister Hola.
 
-Si la puerta de enlace aún existe, pero su clave se ha vuelto a generar, use la nueva clave para registrar la puerta de enlace. Si no tiene la clave, vuelva a generar la clave desde el portal.
+Si la puerta de enlace de hello sigue existiendo, pero se ha vuelto generar su clave, utilice Hola nueva clave tooregister Hola puerta de enlace. Si no tiene clave hello, Regenerar clave de hello nuevo desde el portal de Hola.
 
 ### <a name="7-problem"></a>7. Problema
-Al registrar una puerta de enlace, es posible que tenga que especificar la ruta de acceso y la contraseña de un certificado.
+Cuando se está registrando una puerta de enlace, podría necesitar tooenter ruta de acceso y una contraseña para un certificado.
 
 ![Especificar certificado](media/data-factory-troubleshoot-gateway-issues/specify-certificate.png)
 
 #### <a name="cause"></a>Causa
-La puerta de enlace se ha registrado en otras máquinas anteriormente. Durante el registro inicial de una puerta de enlace se ha asociado un certificado de cifrado con la puerta de enlace. El certificado puede ser generado automáticamente por la puerta de enlace o puede proporcionarlo el usuario.  Este certificado se usa para cifrar las credenciales del almacén de datos (servicio vinculado).  
+se ha registrado la puerta de enlace de Hello en otras máquinas antes. Durante el registro inicial de Hola de una puerta de enlace, un certificado de cifrado se ha asociado con la puerta de enlace de Hola. certificado de Hello puede generado automáticamente por puerta de enlace de Hola o proporcionado por el usuario de Hola.  Este certificado es tooencrypt usa credenciales Hola del almacén de datos (servicio vinculado).  
 
 ![Exportación de certificado](media/data-factory-troubleshoot-gateway-issues/export-certificate.png)
 
-Al restaurar la puerta de enlace en un equipo host distinto, el asistente para registro pide este certificado para descifrar las credenciales que se han cifrado anteriormente con este certificado.  Sin este certificado, las credenciales no se pueden descifrar con la nueva puerta de enlace y las ejecuciones de actividades de copia posteriores asociadas con esta nueva puerta de enlace producirán errores.  
+Al restaurar puerta de enlace de hello en otra máquina, solicita el Asistente para registro de hello para este certificado toodecrypt credenciales previamente cifrado con este certificado.  Sin este certificado, no puede descifrar las credenciales de hello nueva puerta de enlace de Hola y se producirá un error en las ejecuciones de actividad de copia posteriores asociadas a esta nueva puerta de enlace.  
 
 #### <a name="resolution"></a>Resolución
-Si ha exportado el certificado de credenciales desde la máquina de la puerta de enlace original con el botón e **Exportar** de la pestaña **Configuración** del administrador de configuración de la puerta de enlace de administración de datos, use el certificado aquí.
+Si ha exportado certificado de credencial de Hola de máquina de puerta de enlace de hello original mediante el uso de hello **exportar** botón en hello **configuración** del Administrador de configuración de Data Management Gateway, utilice Hola certificado aquí.
 
-No puede omitir esta fase al recuperar una puerta de enlace. Si falta el certificado, necesitará eliminar la puerta de enlace del portal y volver a crear una puerta de enlace.  Además, actualice todos los servicios vinculados relacionados con la puerta de enlace volviendo a escribir sus credenciales.
+No puede omitir esta fase al recuperar una puerta de enlace. Si falta el certificado de hello, puerta de enlace de toodelete Hola desde el portal de hello es necesario y volver a crear una nueva puerta de enlace.  Además, actualice todos los servicios vinculados que están relacionados toohello puerta de enlace, volver a escribir sus credenciales.
 
 ### <a name="8-problem"></a>8. Problema
-Puede aparecer el siguiente mensaje de error.
+Es posible que vea Hola siguiente mensaje de error.
 
-`Error: The remote server returned an error: (407) Proxy Authentication Required.`
+`Error: hello remote server returned an error: (407) Proxy Authentication Required.`
 
 #### <a name="cause"></a>Causa
-Este error se produce cuando la puerta de enlace se encuentra en un entorno que necesita un proxy HTTP para acceder a recursos de Internet, o bien cuando se cambia la contraseña de autenticación del proxy, pero no se actualiza en la puerta de enlace.
+Este error se produce cuando la puerta de enlace está en un entorno que requiere una tooaccess de proxy HTTP recursos de Internet, o se cambia la contraseña de autenticación del servidor de proxy pero no se actualiza en consecuencia en la puerta de enlace.
 
 #### <a name="resolution"></a>Resolución
-Siga las instrucciones de la sección [Consideraciones sobre el servidor proxy](#proxy-server-considerations) en este artículo y establezca la configuración del proxy con el administrador de configuración de la puerta de enlace de administración de datos.
+Siga las instrucciones de Hola Hola [consideraciones acerca del servidor Proxy](#proxy-server-considerations) sección de este artículo y configurar el proxy del Administrador de configuración con Data Management Gateway.
 
 ## <a name="gateway-is-online-with-limited-functionality"></a>La puerta de enlace está en línea con funcionalidad limitada
 ### <a name="1-problem"></a>1. Problema
-El estado de la puerta de enlace es en línea con funciones limitadas.
+Ver estado de Hola de puerta de enlace de hello como en línea con una funcionalidad limitada.
 
 #### <a name="cause"></a>Causa
-El estado de la puerta de enlace es "en línea con funciones limitadas" por uno de los motivos siguientes:
+Ver estado de Hola de puerta de enlace de hello en línea con una funcionalidad limitada para uno de hello siguientes motivos:
 
-* La puerta de enlace no se puede conectar al servicio en la nube mediante Azure Service Bus.
-* El servicio en la nube no se puede conectar a la puerta de enlace mediante Service Bus.
+* Puerta de enlace no puede conectar toocloud servicio a través de Service Bus de Azure.
+* Servicio de nube no puede conectar toogateway a través del Bus de servicio.
 
-Cuando la puerta de enlace está en línea con funcionalidad limitada, no podrá usar el Asistente para copia de Data Factory para crear canalizaciones de datos entre almacenes de datos locales. Como alternativa, puede usar Data Factory Editor en el portal, Visual Studio o Azure PowerShell.
+Cuando la puerta de enlace de hello está en línea con una funcionalidad limitada, no es posible que toouse pueda Hola Asistente para copiar de factoría de datos toocreate las canalizaciones de datos para copiar datos tooor de almacenes de datos local. Como alternativa, puede usar el Editor de generador de datos en el portal de hello, Visual Studio o PowerShell de Azure.
 
 #### <a name="resolution"></a>Resolución
-La solución a este problema (en línea con funciones limitadas) depende de si la puerta de enlace se puede conectar al servicio en la nube o viceversa. En las secciones siguientes se describen estas soluciones.
+Resolución de este problema (en línea con una funcionalidad limitada) se basa en que no se puede conectar el servicio de nube toohello u Hola otra forma de puerta de enlace de Hola. Hola las secciones siguientes proporciona estas soluciones.
 
 ### <a name="2-problem"></a>2. Problema
-Verá este error.
+Vea Hola siguiente error.
 
-`Error: Gateway cannot connect to cloud service through service bus`
+`Error: Gateway cannot connect toocloud service through service bus`
 
-![La puerta de enlace no se puede conectar al servicio en la nube](media/data-factory-troubleshoot-gateway-issues/gateway-cannot-connect-to-cloud-service.png)
+![Puerta de enlace no puede conectar el servicio de toocloud](media/data-factory-troubleshoot-gateway-issues/gateway-cannot-connect-to-cloud-service.png)
 
 #### <a name="cause"></a>Causa
-La puerta de enlace no se puede conectar al servicio en la nube mediante Service Bus.
+Puerta de enlace no puede conectar el servicio en la nube toohello a través del Bus de servicio.
 
 #### <a name="resolution"></a>Resolución
-Siga estos pasos para poner en línea la puerta de enlace:
+Siga estos pasos tooget Hola puerta de enlace en línea:
 
-1. Permita reglas de salida de direcciones IP en la máquina de la puerta de enlace y en el firewall corporativo. Encontrará las direcciones IP en el Registro de eventos de Windows (id. == 401): intento de acceso a un socket no permitido por sus permisos de acceso XX.XX.XX.XX:9350.
-* Configure los valores de proxy en la puerta de enlace. Consulte la sección [Consideraciones sobre el servidor proxy](#proxy-server-considerations) para más información.
-* Habilite los puertos de salida 5671 y 9350-9354 en el Firewall de Windows de la máquina de la puerta de enlace y en el firewall corporativo. Consulte la sección [Puertos y firewall](#ports-and-firewall) para más información. Este paso es opcional, pero se recomienda por motivos de rendimiento.
+1. Permitir que las reglas de salida en la máquina de puerta de enlace de Hola y el firewall corporativo de Hola de dirección IP. Puede encontrar direcciones IP de registro de eventos de Windows hello (Id. de == 401): fue un intento realizado tooaccess un socket de una manera prohibida por los permisos de acceso XX. XX. XX. XX:9350.
+* Configurar el proxy de puerta de enlace de Hola. Vea hello [consideraciones acerca del servidor Proxy](#proxy-server-considerations) sección para obtener más información.
+* Habilitar los puertos de salida 5671 y 9350-9354 en ambos Hola Firewall de Windows en la máquina de puerta de enlace de Hola y el firewall corporativo de Hola. Vea hello [puertos y firewall](#ports-and-firewall) sección para obtener más información. Este paso es opcional, pero se recomienda por motivos de rendimiento.
 
 ### <a name="3-problem"></a>3. Problema
-Verá este error.
+Vea Hola siguiente error.
 
-`Error: Cloud service cannot connect to gateway through service bus.`
+`Error: Cloud service cannot connect toogateway through service bus.`
 
 #### <a name="cause"></a>Causa
 Un error transitorio en la conectividad de red.
 
 #### <a name="resolution"></a>Resolución
-Siga estos pasos para poner en línea la puerta de enlace:
+Siga estos pasos tooget Hola puerta de enlace en línea:
 
-1. Espere un par de minutos; la conectividad se recuperará automáticamente cuando desaparezca el error.
-* Si el error persiste, reinicie el servicio de puerta de enlace.
+1. Espere unos minutos, conectividad de Hola se podrán recuperar automáticamente al error de hello ha desaparecido.
+* Si Hola error persiste, reinicie el servicio de puerta de enlace de Hola.
 
-## <a name="failed-to-author-linked-service"></a>Error al crear el servicio vinculado
+## <a name="failed-tooauthor-linked-service"></a>Servicio de tooauthor errores vinculado
 ### <a name="problem"></a>Problema
-Puede que vea este error al intentar usar el Administrador de credenciales en el portal para especificar las credenciales de un nuevo servicio vinculado o para actualizar las credenciales de un servicio vinculado existente.
+Puede ver este error cuando intente toouse Administrador de credenciales en credenciales de hello tooinput portal para un nuevo servicio vinculado, o actualizar las credenciales para un servicio vinculado existente.
 
-`Error: The data store '<Server>/<Database>' cannot be reached. Check connection settings for the data source.`
+`Error: hello data store '<Server>/<Database>' cannot be reached. Check connection settings for hello data source.`
 
-Cuando aparece este error, la página de configuración del Administrador de configuración de Puerta de enlace de administración de datos tiene un aspecto similar al de la siguiente captura de pantalla.
+Cuando aparece este error, página de configuración de hello del Administrador de configuración de Data Management Gateway sería Hola siguiente captura de pantalla.
 
 ![No se puede establecer conexión con la base de datos](media/data-factory-troubleshoot-gateway-issues/database-cannot-be-reached.png)
 
 #### <a name="cause"></a>Causa
-Es posible que se haya perdido el certificado SSL en la máquina de la puerta de enlace. El equipo de la puerta de enlace no puede cargar certificado usado actualmente para el cifrado SSL. También puede ver un mensaje de error en el registro de eventos que es similar al siguiente mensaje.
+certificado SSL de Hola se podría haber perdido en la máquina de puerta de enlace de Hola. equipo de puerta de enlace de Hello no puede cargar el certificado de hello actualmente que se usa para el cifrado SSL. También puede ver un mensaje de error en registro de eventos de hello es similar toohello siguiente mensaje.
 
- `Unable to get the gateway settings from cloud service. Check the gateway key and the network connection. (Certificate with thumbprint cannot be loaded.)`
+ `Unable tooget hello gateway settings from cloud service. Check hello gateway key and hello network connection. (Certificate with thumbprint cannot be loaded.)`
 
 #### <a name="resolution"></a>Resolución
-Siga estos pasos para solucionar el problema:
+Siga estos pasos toosolve problema de hello:
 
 1. Inicie el Administrador de configuración de la puerta de enlace de administración de datos.
-2. Cambie a la pestaña **Configuración** .  
-3. Haga clic en el botón **Cambiar** para cambiar el certificado SSL.
+2. Cambiar toohello **configuración** ficha.  
+3. Haga clic en hello **cambio** certificado SSL de botón toochange Hola.
 
    ![Botón Cambiar certificado](media/data-factory-troubleshoot-gateway-issues/change-button-ssl-certificate.png)
-4. Seleccione un nuevo certificado como certificado SSL. Puede usar cualquier certificado SSL que haya generado por su cuenta o que haya generado una organización.
+4. Seleccione un nuevo certificado como certificado SSL de Hola. Puede usar cualquier certificado SSL que haya generado por su cuenta o que haya generado una organización.
 
    ![Especificar certificado](media/data-factory-troubleshoot-gateway-issues/specify-http-end-point.png)
 
 ## <a name="copy-activity-fails"></a>Error en la actividad de copia
 ### <a name="problem"></a>Problema
-Puede que vea el error "UserErrorFailedToConnectToSqlserver" después de configurar una canalización en el portal.
+Quizás haya notado Hola después de un error "UserErrorFailedToConnectToSqlserver" después de configurar una canalización en el portal de Hola.
 
-`Error: Copy activity encountered a user error: ErrorCode=UserErrorFailedToConnectToSqlServer,'Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=Cannot connect to SQL Server`
+`Error: Copy activity encountered a user error: ErrorCode=UserErrorFailedToConnectToSqlServer,'Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=Cannot connect tooSQL Server`
 
 #### <a name="cause"></a>Causa
 Esto puede ocurrir por diferentes motivos y la mitigación varía según la causa.
 
 #### <a name="resolution"></a>Resolución
-Permita las conexiones TCP de salida a través del puerto TCP/1433 en el lado cliente de Puerta de enlace de administración de datos antes de conectar a una SQL Database.
+Permitir las conexiones TCP salientes en el puerto TCP/1433 en hello cliente de Data Management Gateway antes de conectar la base de datos SQL tooan.
 
-Si la base de datos de destino es una Azure SQL Database, compruebe también la configuración del firewall de SQL Server para Azure.
+Si la base de datos de destino de hello es una base de datos de SQL Azure, comprobar SQL Server configuración de firewall de Azure también.
 
-Vea la sección siguiente para realizar una prueba de conexión en el almacén de datos local.
+Vea Hola después de almacén de datos local de sección tootest Hola conexión toohello.
 
 ## <a name="data-store-connection-or-driver-related-errors"></a>Errores relacionados con la conexión al almacén de datos o con los controladores
-Si ve errores relacionados con los controladores o la conexión al almacén de datos, complete los siguientes pasos:
+Si ve datos almacenar conexión o errores relacionados con el controlador, complete Hola pasos:
 
-1. Inicie el Administrador de configuración de la puerta de enlace de administración de datos en la máquina de la puerta de enlace.
-2. Cambie a la pestaña **Diagnósticos** .
-3. En **Probar conexión**, agregue los valores de grupo de puerta de enlace.
-4. Haga clic en **Probar** para ver si puede conectarse al origen de datos local desde la máquina de la puerta de enlace utilizando las credenciales y la información de conexión. Si la conexión de prueba sigue sin funcionar después de instalar un controlador, reinicie la puerta de enlace para recoger los cambios más recientes.
+1. Inicie el Administrador de configuración de Data Management Gateway en la máquina de puerta de enlace de Hola.
+2. Cambiar toohello **diagnósticos** ficha.
+3. En **Probar conexión**, agregar valores de grupo de puerta de enlace de Hola.
+4. Haga clic en **prueba** toosee si se puede conectar toohello local origen de datos de la máquina de puerta de enlace de hello usando información de conexión de Hola y credenciales. Si la conexión de prueba de hello sigue sin funciona después de instalar un controlador, reinicio Hola puerta de enlace para el mismo toopick cambio más reciente de Hola.
 
 ![Prueba de conexión en la pestaña Diagnósticos](media/data-factory-troubleshoot-gateway-issues/test-connection-in-diagnostics-tab.png)
 
 ## <a name="gateway-logs"></a>Registros de puerta de enlace
-### <a name="send-gateway-logs-to-microsoft"></a>Enviar registros de puerta de enlace a Microsoft
-Cuando se ponga en contacto con el equipo de soporte técnico de Microsoft para solucionar problemas de la puerta de enlace, es posible que se le pida que comparta los registros de la puerta de enlace. Con la versión de la puerta de enlace, puede compartir registros de puerta de enlace necesarios con dos clics de botón en el Administrador de configuración de la puerta de enlace de administración de datos.    
+### <a name="send-gateway-logs-toomicrosoft"></a>Enviar tooMicrosoft de registros de puerta de enlace
+Cuando se comunique con Microsoft Support tooget ayuda para solucionar problemas de la puerta de enlace, que se le pida tooshare los registros de puerta de enlace. Con la versión de Hola de puerta de enlace de hello, puede compartir los registros de puerta de enlace necesaria con dos clics del botón del Administrador de configuración de Data Management Gateway.    
 
-1. Cambie a la pestaña **Diagnóstico** del Administrador de configuración de la puerta de enlace de administración de datos.
+1. Cambiar toohello **diagnósticos** ficha del Administrador de configuración de Data Management Gateway.
 
     ![Pestaña Diagnóstico de la puerta de enlace de administración de datos](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-diagnostics-tab.png)
-2. Haga clic en **Enviar registros** para ver el siguiente cuadro de diálogo.
+2. Haga clic en **enviar registros** hello toosee después el cuadro de diálogo.
 
     ![Puerta de enlace de administración de datos: Enviar registros](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-dialog.png)
-3. (Opcional) Haga clic en **Ver registros** para revisar los registros en el Visor de eventos.
-4. (Opcional) Haga clic en **Privacidad** para revisar la declaración de privacidad de servicios web de Microsoft.
-5. Una vez que esté satisfecho con lo que va a cargar, haga clic en **Enviar registros** para enviar realmente los registros de los últimos siete días a Microsoft para solucionar problemas. Debería ver el estado de la operación de envío de registros tal y como aparece en la siguiente captura.
+3. (Opcional) Haga clic en **ver registros** tooreview inicia sesión en el Visor de eventos de Hola.
+4. (Opcional) Haga clic en **privacidad** declaración de privacidad de los servicios web de Microsoft tooreview.
+5. Cuando esté satisfecho con lo que está a punto de tooupload, haga clic en **enviar registros** tooactually enviar registros de Hola desde Hola últimos siete días tooMicrosoft para solucionar el problema. Debería ver estado de Hola de operación de registros de envío de hello tal y como se muestra en la siguiente captura de pantalla de Hola.
 
     ![Puerta de enlace de administración de datos: Estado del envío de registros](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-status.png)
-6. Una vez que finalice la operación, verá un cuadro de diálogo como el que se muestra en la siguiente captura de pantalla.
+6. Una vez completada la operación de hello, verá un cuadro de diálogo como se muestra en la siguiente captura de pantalla de Hola.
 
     ![Puerta de enlace de administración de datos: Estado del envío de registros](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-result.png)
-7. Guarde el **identificador de informe** y envíelo al equipo de soporte técnico de Microsoft. El identificador de informe sirve para encontrar los registros de la puerta de enlace que ha cargado para solucionar problemas.  Este identificador del informe también se guarda en el Visor de eventos.  Lo encontrará si examina el identificador de evento “25” y comprueba la fecha y la hora.
+7. Guardar hello **ID informe** y compartirlo con Microsoft Support. Id. de informe de Hello es registros de puerta de enlace de hello toolocate usado que ha cargado para solucionar el problema.  Id. de informe de Hello también se guarda en el Visor de eventos de Hola.  Puede buscar examinando Hola de Id. de evento "25" y comprobar Hola fecha y hora.
 
     ![Puerta de enlace de administración de datos: Identificador de informe del envío de registros](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-report-id.png)    
 
 ### <a name="archive-gateway-logs-on-gateway-host-machine"></a>Archivar registros de puerta de enlace en el equipo host de puerta de enlace
 Hay veces en las que existen problemas con la puerta de enlace y no es posible compartir los registros de puerta de enlace de forma directa:
 
-* Cuando se instala y registra manualmente la puerta de enlace.
-* Cuando se trata de registrar la puerta de enlace con una clave regenerada en el Administrador de configuración de la puerta de enlace de administración de datos.
-* Cuando se trata de enviar registros, pero el servicio host de la puerta de enlace de administración de datos no se puede conectar.
+* Instalar puerta de enlace de Hola y registrar la puerta de enlace de hello manualmente.
+* Intente puerta de enlace de hello tooregister con una nueva clave del Administrador de configuración de Data Management Gateway.
+* Intente toosend registros y no se puede conectar el servicio de host de puerta de enlace de Hola.
 
-Para estos escenarios, puede guardar los registros de puerta de enlace como un archivo ZIP y compartirlo cuando pueda ponerse en contacto con el equipo de soporte técnico de Microsoft. Por ejemplo, si recibe el siguiente error al registrar la puerta de enlace tal y como se muestra en la siguiente captura de pantalla.   
+Para estos escenarios, puede guardar los registros de puerta de enlace como un archivo ZIP y compartirlo cuando pueda ponerse en contacto con el equipo de soporte técnico de Microsoft. Por ejemplo, si recibe un error al registrar la puerta de enlace de hello como se muestra en la siguiente captura de pantalla de Hola.   
 
 ![Puerta de enlace de administración de datos: Error de registro](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-registration-error.png)
 
-Haga clic en el vínculo **Archivar registros de puerta de enlace** para archivar y guardar los registros y, luego, comparta el archivo ZIP con el equipo de soporte técnico de Microsoft.
+Haga clic en hello **almacene los registros de puerta de enlace** vinculan tooarchive y guardar los registros y, a continuación, compartir el archivo zip de hello con soporte técnico de Microsoft.
 
 ![Puerta de enlace de administración de datos: Archivar registros](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-archive-logs.png)
 
 ### <a name="locate-gateway-logs"></a>Buscar registros de puerta de enlace
-Puede obtener información detallada de los registros de la puerta de enlace en los registros de eventos de Windows.
+Puede encontrar información de registro de puerta de enlace detallada en registros de eventos de Windows hello.
 
 1. Inicie el **Visor de eventos** de Windows.
-2. Busque los registros en la carpeta **Registros de aplicaciones y servicios** > **Puerta de enlace de administración de datos**.
+2. Buscar registros en hello **registros de aplicaciones y servicios** > **Data Management Gateway** carpeta.
 
- Al solucionar problemas relacionados con la puerta de enlace, busque eventos de error en el Visor de eventos.
+ Cuando esté solucionando problemas relacionados con la puerta de enlace, busque eventos de nivel de error en el Visor de eventos de Hola.
 
 ![Puerta de enlace de administración de datos: Registros en el Visor de eventos](media/data-factory-troubleshoot-gateway-issues/gateway-logs-event-viewer.png)

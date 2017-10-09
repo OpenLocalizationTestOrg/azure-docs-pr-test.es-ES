@@ -1,6 +1,6 @@
 ---
-title: "Formulación de una pregunta que respondan los datos (problemas de la ciencia de datos) - Azure Machine Learning | Microsoft Docs"
-description: "Aprenda a formular una buena pregunta de ciencia de datos en Ciencia de datos para principiantes, vídeo 3. Incluye una comparación de preguntas de clasificación y regresión."
+title: "aaaAsk pueden responder a los datos de una pregunta - problemas de ciencia de datos: aprendizaje automático de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo tooformulate una ciencia de datos agudo pregunta de ciencia de datos para principiantes de vídeo 3. Incluye una comparación de preguntas de clasificación y regresión."
 keywords: "problemas de ciencia de datos,preguntas de ciencias de datos,formular pregunta,preguntas de regresión,preguntas de clasificación,pregunta directa"
 services: machine-learning
 documentationcenter: na
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/13/2017
 ms.author: cgronlun
-ms.openlocfilehash: 0495dbab72024e504ae33d35f16a212a2084bc10
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 00c328f51e6d9ff6654b5966eb97d6762582f7e5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>Realización de preguntas que pueden responderse con datos
 ## <a name="video-3-data-science-for-beginners-series"></a>Vídeo 3: Ciencia de datos para principiantes
-Aprenda a formular una pregunta de ciencia de datos en Ciencia de datos para principiantes, vídeo 3. Este vídeo incluye una comparación de preguntas para algoritmos de clasificación y regresión.
+Obtenga información acerca de cómo tooformulate un problema de ciencia de datos en una pregunta en la ciencia de datos para principiantes vídeo 3. Este vídeo incluye una comparación de preguntas para algoritmos de clasificación y regresión.
 
-Para obtener el máximo partido de la serie, véalos en orden. [Vaya a la lista de vídeos](#other-videos-in-this-series)
+Hola tooget máximo partido de la serie de hello, ver todas ellas. [Vaya toohello lista de vídeos](#other-videos-in-this-series)
 <br>
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Data-science-for-beginners-Ask-a-question-you-can-answer-with-data/player]
@@ -33,68 +33,68 @@ Para obtener el máximo partido de la serie, véalos en orden. [Vaya a la lista 
 >
 
 ## <a name="other-videos-in-this-series"></a>Otros vídeos de la serie
-*Ciencia de datos para principiantes* es una introducción rápida a la ciencia de datos en cinco vídeos de corta duración.
+*Ciencia de datos para principiantes* es una ciencia de toodata introducción rápida en cinco vídeos breves.
 
-* Vídeo 1: [Las cinco preguntas a las que responde la ciencia de datos](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 minutos y 14 segundos)*
+* Vídeo 1: [Hola 5 preguntas respuestas de ciencia de datos](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 min s 14)*
 * Vídeo 2: [¿Están sus datos preparados para la ciencia de datos?](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 minutos y 56 segundos)*
 * Vídeo 3: Realización de preguntas que pueden responderse con datos
 * Vídeo 4: [Predicción de respuestas con un modelo sencillo](machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 minutos y 42 segundos)*
-* Vídeo 5: [Copia del trabajo de otras personas para realizar ciencia de datos](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 minutos y 18 segundos)*
+* Vídeo 5: [copiar ciencia de datos de otras personas trabajo toodo](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 18 min.)*
 
 ## <a name="transcript-ask-a-question-you-can-answer-with-data"></a>Transcripción: Realización de preguntas que pueden responderse con datos
-Este es el tercer vídeo de la serie "Ciencia de datos para principiantes".  
+Página principal toohello tercer vídeo en serie de Hola "Ciencia de datos para principiantes".  
 
 En este vídeo, recibirá algunas sugerencias para formular una pregunta que se pueda responder con datos.
 
-Para aprovechar mejor este vídeo, vea antes los dos primeros de esta serie: "Las cinco preguntas a las que responde la ciencia de datos"y "Is your data is ready for data science?" (¿Están sus datos preparados para la ciencia de datos?)
+Podría aprovecha al máximo este vídeo, si observa primero dos vídeos anteriores Hola de esta serie: "ciencia de datos de hello 5 preguntas puede responder" y "Son los datos están listos para la ciencia de datos?"
 
 ## <a name="ask-a-sharp-question"></a>Formulación de una pregunta directa
-Hemos hablado de que la ciencia de datos es el proceso de usar nombres (llamados también categorías o etiquetas) y números para predecir una respuesta a una pregunta. Pero no sirve cualquier pregunta; debe ser una *pregunta directa.*
+Hemos hablado de la ciencia de datos es proceso Hola del uso de nombres (también denominados categorías o etiquetas) y números toopredict una pregunta de tooa de respuesta. Pero no puede ser cualquier pregunta; tiene toobe un *agudo pregunta.*
 
-Una pregunta vaga no se tiene que responder con un nombre o un número. Una pregunta directa sí.
+Una pregunta imprecisa no tiene toobe respondido con un nombre o un número. Una pregunta directa sí.
 
-Imagine que encuentra una lámpara mágica con un genio que responde de forma veraz a cualquier pregunta que formule. Pero este genio es travieso, e intentará responder de forma tan vaga y confusa mientras pueda salirse con la suya. Quiere precisar una pregunta de forma tan irrefutable que a la fuerza le diga lo que quiere saber.
+Imagine que encuentra una lámpara mágica con un genio que responde de forma veraz a cualquier pregunta que formule. Pero es un genie perjudiciales, e intentaremos toomake su respuesta como vaga y poco confuso como que pueda empezar inmediatamente. Desea toopin le hacia abajo junto a una pregunta tan hermética que no se puede ayudar a pero saber lo que desea tooknow.
 
-Si formulara una pregunta vaga como "¿Qué va a pasar con mis acciones?", el genio podría responder: "El precio cambiará". Es una respuesta veraz, pero no sirve de mucha ayuda.
+Si estaba tooask una pregunta imprecisa, como "Lo que está ocurriendo toohappen con mi existencias?", puede responder genie hello, "cambiará el precio de Hola". Es una respuesta veraz, pero no sirve de mucha ayuda.
 
-Pero si tuviera que formular una pregunta directa, como "¿Cuál será el precio de venta de mis acciones la próxima semana?", el genio no podrá evitar darle una respuesta específica y predecir un precio de venta.
+Pero si tuviera tooask una pregunta aguda, como "¿qué precio de venta de la mi acción será semanas siguientes?", hello genie no puede ayudar a pero proporcionarle un determinado responda y predecir un precio de venta.
 
 ## <a name="examples-of-your-answer-target-data"></a>Ejemplos de respuesta: datos de destino
-Después de formular la pregunta, compruebe si tiene ejemplos de la respuesta en sus datos.
+Una vez que formular su pregunta, compruebe toosee tanto si tienen algunos ejemplos de respuesta de hello en los datos.
 
-Si la pregunta es "¿A qué precio de venta estarán mis acciones la semana próxima?", tenemos para asegurarnos de que nuestros datos incluyan el historial de precios de cotización.
+Si la pregunta es "¿A qué precio de venta estarán mis acciones la semana próxima?", a continuación, tenemos toomake seguro de que nuestros datos incluyen el historial de precios de cotización de Hola.
 
-Si la pregunta es "¿Qué automóvil de mi flota va a caer primero?", tenemos que asegurarnos de que nuestros datos incluyan información de los errores anteriores.
+Si la pregunta es "qué automóvil en mi flota es continuo toofail primero?" a continuación, tenemos toomake seguro de que nuestros datos incluyen información acerca de los errores anteriores.
 
 ![Datos de destino: ejemplos de la respuesta. Formular una pregunta de ciencia de datos.](./media/machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data/target-data.png)
 
-Estos ejemplos de respuestas se denominan destino. Un destino es lo que intentamos predecir sobre los puntos de datos futuros, ya sea una categoría o un número.
+Estos ejemplos de respuestas se denominan destino. Un destino es lo que se está intentando toopredict acerca de los puntos de datos en el futuro, ya sea una categoría o un número.
 
-Si no tiene los datos de destino, deberá obtener algunos. Sin ellos, no podrá responder a su pregunta.
+Si no tiene los datos de destino, necesitará algunas tooget. No será capaz de tooanswer su pregunta sin él.
 
 ## <a name="reformulate-your-question"></a>Reformulación de la pregunta
-A veces, puede formular la pregunta con otras palabras a fin de obtener una respuesta más útil.
+En ocasiones, puede cambiar el texto de su tooget pregunta una respuesta más útil.
 
-La pregunta "¿Es este punto de datos A o B?" predice la categoría (o nombre o etiqueta) de algo. Para responderla, usamos un *algoritmo de clasificación*.
+Hola pregunta "es este punto de datos A o B?" predice la categoría de hello (o nombre o etiqueta) de algo. tooanswer, usamos un *algoritmo de clasificación*.
 
-La pregunta "¿Cuánto?" o "¿Cuántos?" predice una cantidad. Para responderla, usamos un *algoritmo de regresión*.
+Hola pregunta "¿cuánto?" o "¿Cuántos?" predice una cantidad. tooanswer utilizamos una *algoritmo de regresión*.
 
-Para ver cómo podemos transformarlas, examinemos la pregunta: "¿Qué reportaje de noticias es el más interesante para este lector?" Se pregunta por una predicción de una sola opción entre muchas posibilidades, es decir: ¿Es A, B, C o D?, y se usaría un algoritmo de clasificación.
+toosee cómo se pueden transformar estos elementos, echemos un vistazo a pregunta de hello, "¿qué noticia es lector toothis más interesante de hello?" Se pregunta por una predicción de una sola opción entre muchas posibilidades, es decir: ¿Es A, B, C o D?, y se usaría un algoritmo de clasificación.
 
-Pero esta pregunta puede ser más fácil de responder si la formula de esta forma: "¿Cuánto interés tiene cada reportaje de la lista para este lector?" Ahora puede dar a cada artículo una puntuación numérica, de esta forma será fácil identificar el artículo con la puntuación más alta. Se trata de reformular la pregunta de clasificación como una de regresión o ¿cuánto?
+Pero esta pregunta puede ser más fácil tooanswer si cambiar el texto como "lo interesante es cada caso en este sistema de lectura de lista toothis?" Ahora puede asignar a cada artículo una puntuación numérica y, a continuación, es fácil tooidentify Hola puntuación más alta artículo. ¿Se trata de un Rehacer de la pregunta de clasificación de hello en una pregunta de regresión o cuánto?
 
 ![Reformular la pregunta. Pregunta de clasificación frente a pregunta de regresión.](./media/machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data/classification-question-vs-regression-question.png)
 
-El modo de formular una pregunta es una pista de qué algoritmo puede darle una respuesta.
+¿Cómo pide que una pregunta es un algoritmo de toowhich pista puede proporcionar una respuesta.
 
-Encontrará que ciertas familias de algoritmos, como los de nuestro ejemplo de reportajes de noticias, están estrechamente relacionadas. Puede reformular la pregunta para usar el algoritmo que le proporcione la respuesta más útil.
+Encontrará que ciertas familias de algoritmos - como Hola que en nuestro ejemplo de caso de noticias - están estrechamente relacionados. Error puede volver a formular en el algoritmo de Hola de toouse pregunta que le ofrece Hola respuesta más útil.
 
-Y más importante aún, formule esa pregunta directa, la pregunta que se pueda responder con datos. Y asegúrese de tener los datos adecuados para responderla.
+Pero, más importante aún, hacer esa pregunta aguda - pregunta Hola que puede solucionar con datos. Y compruebe que hay tooanswer de datos adecuado de Hola.
 
 Hemos hablado de algunos principios básicos para formular una pregunta que se pueda responder con datos.
 
-Asegúrese de ver los otros cuatro vídeos de "Ciencia de datos para principiantes" en Aprendizaje automático de Microsoft Azure.
+Ser seguro toocheck out Hola otros vídeos en "Datos ciencia para principiantes" de aprendizaje automático de Microsoft Azure.
 
 ## <a name="next-steps"></a>Pasos siguientes
 * [Prueba de su primer experimento de ciencia de datos con Machine Learning Studio](machine-learning-create-experiment.md)
-* [Introducción a Aprendizaje automático en Microsoft Azure](machine-learning-what-is-machine-learning.md)
+* [Obtener una introducción tooMachine aprendizaje en Microsoft Azure](machine-learning-what-is-machine-learning.md)

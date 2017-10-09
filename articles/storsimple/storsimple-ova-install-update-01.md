@@ -1,6 +1,6 @@
 ---
-title: "Instalación de actualizaciones en la matriz virtual de StorSimple | Microsoft Docs"
-description: "Se describe cómo usar la interfaz de usuario web de la matriz virtual de StorSimple para aplicar actualizaciones mediante el portal y el método de revisiones."
+title: Actualizaciones de aaaInstall en una matriz Virtual de StorSimple | Documentos de Microsoft
+description: "Describe cómo toouse hello StorSimple Virtual Array web UI tooapply actualiza usando el método de portal y la revisión de hello"
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,80 +14,80 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/07/2016
 ms.author: alkohli
-ms.openlocfilehash: bccb0d49c1959a690d513961c32d946763385a87
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 10af0f52abb75a5b41562704194157f0d35710bc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="install-updates-on-your-storsimple-virtual-array"></a>Instalación de actualizaciones en la matriz virtual de StorSimple
 ## <a name="overview"></a>Información general
-En este artículo se describen los pasos necesarios para instalar actualizaciones en la matriz virtual de StorSimple mediante la interfaz de usuario web local y el Portal de Azure clásico. Deberá aplicar alguna actualización o revisión de software para mantener actualizada la matriz virtual de StorSimple. 
+Este artículo describe Hola pasos tooinstall requiere actualizaciones en la matriz Virtual de StorSimple a través de la interfaz de usuario de web local de Hola y Hola portal de Azure clásico. Debe tookeep de revisiones o actualizaciones de software de tooapply la matriz Virtual de StorSimple actualizado. 
 
-Tenga en cuenta que al instalar una actualización o revisión, se reiniciará el dispositivo. Dado que la matriz virtual de StorSimple es un dispositivo de nodo único, se interrumpirá cualquier operación de E/S que esté en curso y el dispositivo permanecerá un rato inactivo. 
+Tenga en cuenta que al instalar una actualización o revisión, se reiniciará el dispositivo. Dado que hello StorSimple Virtual Array es un dispositivo de nodo único, se interrumpe cualquier E/S en curso y el dispositivo produce un tiempo de inactividad. 
 
-Antes de aplicar una actualización, se recomienda que desconecte primero los volúmenes o recursos compartidos en el host y, luego, el dispositivo. Esto minimizará la posibilidad de daños en los datos.
+Antes de aplicar una actualización, se recomienda que permitirán que los volúmenes de Hola o recursos compartidos sin conexión en hello hospedan en primer lugar y, a continuación, Hola dispositivo. Esto minimizará la posibilidad de daños en los datos.
 
 > [!IMPORTANT]
-> Si está ejecutando Update 0.1 o versiones de software de GA, debe utilizar el método de revisión a través de la interfaz de usuario web local para instalar Update 0.3. Si ejecuta Update 0.2, recomendamos que instale las actualizaciones a través del Portal de Azure clásico.
+> Si está ejecutando Update 0,1 o versiones de software de disponibilidad general, debe usar el método de revisión de hello a través de la interfaz de usuario tooinstall update 0.3 de hello web local. Si está ejecutando Update 0.2, se recomienda que instale actualizaciones de Hola a través de hello portal de Azure clásico.
 > 
 > 
 
-## <a name="use-the-local-web-ui"></a>Uso de la interfaz de usuario web local
-Se pueden seguir dos pasos con la interfaz de usuario web local:
+## <a name="use-hello-local-web-ui"></a>Usar la interfaz de usuario de web local Hola
+Cuando se usa la interfaz de usuario de web local de hello, hay dos pasos:
 
-* Descargar la actualización o la revisión
-* Instalar la actualización o la revisión
+* Descargar la actualización de Hola o una revisión de Hola
+* Instalar la actualización de Hola o revisión de Hola
 
-### <a name="download-the-update-or-the-hotfix"></a>Descargar la actualización o la revisión
-Realice los pasos siguientes para descargar la actualización de software desde el catálogo de Microsoft Update.
+### <a name="download-hello-update-or-hello-hotfix"></a>Descargar la actualización de Hola o una revisión de Hola
+Realizar Hola tras la actualización de software de pasos toodownload Hola de Hola catálogo de Microsoft Update.
 
-#### <a name="to-download-the-update-or-the-hotfix"></a>Para descargar la actualización o la revisión
-1. Inicie Internet Explorer y vaya a [http://catalog.update.microsoft.com](http://catalog.update.microsoft.com).
-2. Si esta es la primera vez que utiliza el Catálogo de Microsoft Update en este equipo, haga clic en **Instalar** cuando se le solicite que instale el complemento del Catálogo de Microsoft Update.
-3. En el cuadro de búsqueda del Catálogo de Microsoft Update, escriba el número de Knowledge Base correspondiente a la revisión que quiera descargar. Escriba **3182061** para Update 0.3 y luego haga clic en **Buscar**.
+#### <a name="toodownload-hello-update-or-hello-hotfix"></a>revisión de actualización u Hola Hola toodownload
+1. Inicie Internet Explorer y vaya demasiado[http://catalog.update.microsoft.com](http://catalog.update.microsoft.com).
+2. Si se trata de la primera vez mediante Hola catálogo de Microsoft Update en este equipo, haga clic en **instalar** cuando tooinstall solicitada Hola complemento del catálogo de Microsoft Update.
+3. En el cuadro de búsqueda de Hola de hello catálogo de Microsoft Update, escriba el número de Knowledge Base (KB) de Hola de revisión de hello desea toodownload. Escriba **3182061** para Update 0.3 y luego haga clic en **Buscar**.
    
-    Aparece la lista de revisiones, por ejemplo, **StorSimple Virtual Array Update 0.3**.
+    Hello revisión aparece listado, por ejemplo, **StorSimple Virtual Array Update 0.3**.
    
     ![Búsqueda de catálogo](./media/storsimple-ova-install-update-01/download1.png)
-4. Haga clic en **Agregar**. La actualización se agrega a la cesta.
+4. Haga clic en **Agregar**. actualización de Hola se agrega toohello cesta.
 5. Haga clic en **Ver cesta**.
-6. Haga clic en **Descargar**. Especifique o **busque** una ubicación local en la que quiera que aparezcan las descargas. Las actualizaciones se descargan en la ubicación especificada y se colocan en una subcarpeta con el mismo nombre que la actualización. La carpeta también se puede copiar en un recurso compartido de red que sea accesible desde el dispositivo.
-7. Abra la carpeta copiada, debería ver un archivo de paquete independiente de Microsoft Update `WindowsTH-KB3011067-x64`. Este archivo se utiliza para instalar la actualización o revisión.
+6. Haga clic en **Descargar**. Especifique o **examinar** tooa ubicación local donde desee Hola descarga tooappear. Hello las actualizaciones se descargan toohello ubicación especificada y se coloca en una subcarpeta con el mismo nombre como actualización de Hola de Hola. carpeta de Hello también puede ser copiado tooa recurso compartido de red que sea accesible desde el dispositivo de Hola.
+7. Abra Hola copiado la carpeta, debería ver un archivo de paquete independiente de Microsoft Update `WindowsTH-KB3011067-x64`. Este archivo es utilizado tooinstall Hola actualización o revisión.
 
-### <a name="install-the-update-or-the-hotfix"></a>Instalar la actualización o la revisión
-Antes de instalar la actualización o la revisión, asegúrese de que tiene la actualización o la revisión descargada de forma local en el host o que puede acceder a ella a través de un recurso compartido de red. 
+### <a name="install-hello-update-or-hello-hotfix"></a>Instalar la actualización de Hola o revisión de Hola
+Instalación de actualización o revisión de toohello anteriores, asegúrese de que tiene Hola actualización o revisión Hola descargado localmente en el host o accesible a través de un recurso compartido de red. 
 
-Utilice este método para instalar actualizaciones en un dispositivo que ejecute las versiones de software Update 0.1 o GA. Este procedimiento tarda menos de 2 minutos en completarse. Realice los pasos siguientes para instalar la actualización o revisión.
+Usar este método tooinstall actualiza en un dispositivo que ejecuta GA o actualizar 0.1 versiones de software. Este procedimiento toma inferior toocomplete de 2 minutos. Realizar Hola siguientes pasos tooinstall Hola actualización o revisión.
 
-#### <a name="to-install-the-update-or-the-hotfix"></a>Instalar la actualización o la revisión
-1. En la interfaz de usuario web local, vaya a **Mantenimiento** > **Actualización de software**.
+#### <a name="tooinstall-hello-update-or-hello-hotfix"></a>revisión de actualización u Hola Hola tooinstall
+1. En la interfaz de usuario web local de hello, vaya demasiado**mantenimiento** > **actualización de Software**.
    
     ![actualizar dispositivo](./media/storsimple-ova-install-update-01/update1m.png)
-2. En **Update file path**(Ruta de acceso del archivo de actualización), escriba el nombre del archivo de actualización o de revisión. Asimismo, también puede acceder al archivo de instalación de la actualización o de la revisión si está en un recurso compartido de red. Haga clic en **Aplicar**.
+2. En **ruta de acceso de archivo de actualización**, escriba el nombre de archivo de hello para la actualización de Hola u Hola revisión. También puede examinar los archivos de instalación de actualización o revisión de toohello si se coloca en un recurso compartido de red. Haga clic en **Apply**.
    
     ![actualizar dispositivo](./media/storsimple-ova-install-update-01/update2m.png)
-3. Se mostrará una advertencia. Dado que se trata de un dispositivo de nodo único, una vez aplicada la actualización, se reiniciará el dispositivo y habrá un tiempo de inactividad. Haga clic en el icono de marca de verificación.
+3. Se mostrará una advertencia. Debido a esto es un dispositivo de nodo único, después de que se aplica la actualización de hello, Hola dispositivo se reinicia y no hay tiempo de inactividad. Haga clic en el icono de verificación de Hola.
    
    ![actualizar dispositivo](./media/storsimple-ova-install-update-01/update3m.png)
-4. Se inicia la actualización. Una vez que el dispositivo se actualice correctamente, este se reiniciará. La interfaz de usuario local no será accesible durante este tiempo.
+4. inicia la actualización de Hola. Después de que el dispositivo de Hola se actualizó correctamente, éste se reinicia. Hello interfaz de usuario local no es accesible durante este proceso.
    
     ![actualizar dispositivo](./media/storsimple-ova-install-update-01/update5m.png)
-5. Una vez completado el reinicio, se le llevará a la página de **inicio de sesión** . Para comprobar que el software del dispositivo se ha actualizado, en la interfaz de usuario de web local, vaya a **Mantenimiento** > **Actualización de software**. La versión de software mostrada debe ser **10.0.0.0.0.10288.0** para Update 0.3.
+5. Una vez completado el reinicio de hello, se toman toohello **iniciar sesión en** página. tooverify que ha actualizado el software de dispositivo de hello, en web local de hello interfaz de usuario, vaya demasiado**mantenimiento** > **actualización de Software**. Hello muestra la versión de software debe tener **10.0.0.0.0.10288.0** para actualización 0.3.
    
    > [!NOTE]
-   > Las versiones de software se muestran de forma ligeramente distinta en la interfaz de usuario web local y el Portal de Azure clásico. Por ejemplo, la misma versión aparece como **10.0.0.0.0.10288** en la interfaz de usuario web local y como **10.0.10288.0** en el Portal de Azure clásico. 
+   > Se informan de versiones de software de Hola de forma ligeramente diferente en la interfaz de usuario de web local de Hola y Hola portal de Azure clásico. Por ejemplo, Hola informes de interfaz de usuario web local **10.0.0.0.0.10288** y Hola informes portal de Azure clásicos **10.0.10288.0** para hello misma versión. 
    > 
    > 
    
     ![actualizar dispositivo](./media/storsimple-ova-install-update-01/update6m.png)
 
-## <a name="use-the-azure-classic-portal"></a>Uso del Portal de Azure clásico
-Si se ejecuta Update 0.2, recomendamos que instale las actualizaciones a través del Portal de Azure clásico. El procedimiento del Portal requiere que el usuario examine, descargue e instale las actualizaciones. Este procedimiento tarda aproximadamente 7 minutos en completarse. Realice los pasos siguientes para instalar la actualización o revisión.
+## <a name="use-hello-azure-classic-portal"></a>Usar hello portal de Azure clásico
+Si ejecuta Update 0.2, se recomienda que instale las actualizaciones a través de hello portal de Azure clásico. procedimiento portal Hola requiere Hola usuario tooscan, descargue e instale las actualizaciones de Hola. Este procedimiento toma toocomplete unos 7 minutos. Realizar Hola siguientes pasos tooinstall Hola actualización o revisión.
 
 [!INCLUDE [storsimple-ova-install-update-via-portal](../../includes/storsimple-ova-install-update-via-portal.md)]
 
-Una vez que la instalación esté completa (podrá comprobarlo cuando el estado del trabajo esté al 100 %), vaya a **Dispositivos > Mantenimiento > Actualizaciones de software**. La versión de software que aparece debe ser 10.0.10288.0.
+Después de hello instalación está completa (tal y como se indica con el estado del trabajo al 100%), ir demasiado**dispositivos > Mantenimiento > actualizaciones de Software**. versión de software de muestra de Hola debe ser 10.0.10288.0.
 
 ![actualizar dispositivo](./media/storsimple-ova-install-update-01/azupdate12m.png)
 

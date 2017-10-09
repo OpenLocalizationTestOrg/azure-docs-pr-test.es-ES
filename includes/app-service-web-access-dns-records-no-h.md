@@ -1,14 +1,14 @@
-Inicie sesión en el sitio web de su proveedor de dominios.
+Inicie sesión en el sitio Web de toohello de su proveedor de dominio.
 
-Busque la página de administración de registros DNS. Cada proveedor de dominios tiene su propia interfaz de registros DNS, así que consulte la documentación del proveedor. Busque áreas del sitio etiquetadas como **Nombre de dominio**, **DNS** o **Administración del servidor del nombres**. 
+Encontrar Hola página para administrar los registros DNS. Cada proveedor de dominio tiene su propia interfaz de registros DNS, por lo que consulte la documentación del proveedor de Hola. Busque las áreas del sitio de hello con la etiqueta **nombre de dominio**, **DNS**, o **gestión de nombre de servidor**. 
 
-A menudo, se puede encontrar la página de registros DNS al ver la información de la cuenta y al buscar un vínculo, como **Mis dominios**. Vaya a dicha página y, después, busque un vínculo que se llame algo así como **Zone file**, **DNS Records** o **Advanced configuration**.
+A menudo, encontrará la página de registros DNS de hello ver información de su cuenta y, a continuación, buscando un vínculo como **Mis dominios**. Ir a página toothat y, a continuación, busque un vínculo que se denomina algo parecido a **archivo de zona**, **registros DNS**, o **configuración avanzada**.
 
-La captura de pantalla siguiente es un ejemplo de página de registros DNS:
+Hello captura de pantalla siguiente es un ejemplo de una página de registros DNS:
 
 ![Página de registros DNS de ejemplo](./media/app-service-web-access-dns-records-no-h/example-record-ui.png)
 
-En la captura de pantalla de ejemplo, seleccione **Agregar** para crear un registro. Algunos proveedores tienen diferentes vínculos para agregar diferentes tipos de registros. De nuevo, consulte la documentación del proveedor.
+En la captura de pantalla de ejemplo de Hola, seleccione **agregar** toocreate un registro. Algunos proveedores tienen diferentes enlaces tooadd diferentes tipos de registros. Una vez más, consulte la documentación del proveedor de Hola.
 
 > [!NOTE]
-> En el caso de ciertos proveedores, como GoDaddy, los cambios en los registros DNS no entran en vigor hasta que se selecciona un vínculo **Guardar cambios** independiente. 
+> Para determinados proveedores, como GoDaddy, registros de tooDNS de cambios no serán efectivos hasta que seleccione otro **guardar cambios** vínculo. 

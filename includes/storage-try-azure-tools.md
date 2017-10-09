@@ -1,8 +1,8 @@
 > [!TIP]
 > 
-> **Probar el Explorador de almacenamiento de Microsoft Azure**
+> **Pruebe Microsoft Azure Storage Explorer Hola**
 > 
-> El [Explorador de Microsoft Azure Storage](../articles/vs-azure-tools-storage-manage-with-storage-explorer.md) es una aplicación independiente y gratuita de Microsoft que permite trabajar visualmente con los datos de Azure Storage en Windows, macOS y Linux.
+> [Microsoft Azure Storage Explorer](../articles/vs-azure-tools-storage-manage-with-storage-explorer.md) es una aplicación independiente disponible, de Microsoft que le permite toowork visualmente con datos del almacenamiento de Azure en Windows, Mac OS y Linux.
 > 
 > 
 

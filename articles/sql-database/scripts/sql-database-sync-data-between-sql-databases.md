@@ -1,6 +1,6 @@
 ---
-title: "Ejemplo de PowerShell: sincronización entre varias bases de datos Azure SQL | Microsoft Docs"
-description: Script de ejemplo de Azure PowerShell para sincronizar entre varias bases de datos Azure SQL
+title: "Sincronización de ejemplo de aaaPowerShell entre varias bases de datos de SQL Azure | Documentos de Microsoft"
+description: Toosync de secuencia de comandos de ejemplo de PowerShell Azure entre varias bases de datos de SQL Azure
 services: sql-database
 documentationcenter: sql-database
 author: jognanay
@@ -16,28 +16,28 @@ ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.date: 07/31/2017
 ms.author: douglasl
-ms.openlocfilehash: 8bed2a8aa087d1114d4f8d22f451577f062a6ab2
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 5bf92da25051bd53db536b295959b6f9af9625a7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-powershell-to-sync-between-multiple-azure-sql-databases"></a>Uso de PowerShell para sincronizar entre varias bases de datos SQL de Azure
+# <a name="use-powershell-toosync-between-multiple-azure-sql-databases"></a>Usar PowerShell toosync entre varias bases de datos de SQL Azure
  
-En este ejemplo de Azure PowerShell se configura la sincronización de datos para realizar la sincronización entre varias bases de datos SQL de Azure.
+En este ejemplo de PowerShell configura toosync de sincronización de datos entre varias bases de datos de SQL Azure.
 
-En este ejemplo se requiere la versión 4.2 del módulo de Azure PowerShell, o cualquier versión posterior. Ejecute `Get-Module -ListAvailable AzureRM` para buscar la versión instalada. Si necesita instalarla o actualizarla, consulte [Install and configure Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps) (Instalación y configuración de Azure PowerShell).
+Este ejemplo requiere hello Azure PowerShell versión 4.2 o posterior del módulo. Ejecutar `Get-Module -ListAvailable AzureRM` toofind versión de Hola instalado. Si necesita tooinstall o una actualización, consulte [módulo instalar Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps).
  
-Ejecute `Login-AzureRmAccount` para crear una conexión con Azure. 
+Ejecutar `Login-AzureRmAccount` toocreate una conexión con Azure. 
 
 ## <a name="sample-script"></a>Script de ejemplo
 
 ```powershell
 # prerequisites: 
 # 1. Create an Azure Database from AdventureWorksLT sample database as hub database
-# 2. Create an Azure Database in the same region as sync database
+# 2. Create an Azure Database in hello same region as sync database
 # 3. Create an Azure Database as member database
-# 4. Update the parameters below before running the sample
+# 4. Update hello parameters below before running hello sample
 #
 using namespace Microsoft.Azure.Commands.Sql.DataSync.Model
 using namespace System.Collections.Generic
@@ -81,7 +81,7 @@ $MemberDatabaseType = "AzureSqlDatabase"
 $SyncDirection = "Bidirectional"
 
 # Other info
-# Temp file to save the sync schema
+# Temp file toosave hello sync schema
 $TempFile = $env:TEMP+"\syncSchema.json"
 
 # List of included columns and tables in quoted name
@@ -96,8 +96,8 @@ $MetadataList = [System.Collections.ArrayList]::new($IncludedColumnsAndTables)
 add-azurermaccount 
 select-azurermsubscription -SubscriptionId $SubscriptionId
 
-# Use this section if it is safe to show password in the script.
-# Otherwise, use the PromptForCredential
+# Use this section if it is safe tooshow password in hello script.
+# Otherwise, use hello PromptForCredential
 # $User = "username"
 # $PWord = ConvertTo-SecureString -String "Password" -AsPlainText -Force
 # $Credential = New-Object -TypeName "System.Management.Automation.PSCredential" -ArgumentList $User, $PWord
@@ -119,7 +119,7 @@ New-AzureRmSqlSyncGroup   -ResourceGroupName $ResourceGroupName `
                             -ConflictResolutionPolicy $ConflictResolutionPolicy `
                             -DatabaseCredential $Credential
 
-# Use this section if it is safe to show password in the script.
+# Use this section if it is safe tooshow password in hello script.
 #$User = "username"
 #$Password = ConvertTo-SecureString -String "password" -AsPlainText -Force
 #$Credential = New-Object -TypeName "System.Management.Automation.PSCredential" -ArgumentList $User, $Password
@@ -130,7 +130,7 @@ $Credential = $Host.ui.PromptForCredential("Need credential",
               "")
 
 # Add a new sync member
-Write-Host "Adding member"$SyncMemberName" to the sync group"
+Write-Host "Adding member"$SyncMemberName" toohello sync group"
 New-AzureRmSqlSyncMember   -ResourceGroupName $ResourceGroupName `
                             -ServerName $ServerName `
                             -DatabaseName $DatabaseName `
@@ -143,7 +143,7 @@ New-AzureRmSqlSyncMember   -ResourceGroupName $ResourceGroupName `
                             -SyncDirection $SyncDirection
 
 # Refresh database schema from hub database
-# Specify the -SyncMemberName parameter if you want to refresh schema from the member database
+# Specify hello -SyncMemberName parameter if you want toorefresh schema from hello member database
 Write-Host "Refreshing database schema from hub database"
 $StartTime= Get-Date
 Update-AzureRmSqlSyncSchema   -ResourceGroupName $ResourceGroupName `
@@ -157,7 +157,7 @@ Update-AzureRmSqlSyncSchema   -ResourceGroupName $ResourceGroupName `
 $StartTime=$StartTime.ToUniversalTime()
 $timer=0
 $timeout=90
-# Check the log and see if refresh has gone through
+# Check hello log and see if refresh has gone through
 Write-Host "Check for successful refresh"
 $IsSucceeded = $false
 While ($IsSucceeded -eq $false)
@@ -179,8 +179,8 @@ While ($IsSucceeded -eq $false)
 
 
 
-# Get the database schema 
-Write-Host "Adding tables and columns to the sync schema"
+# Get hello database schema 
+Write-Host "Adding tables and columns toohello sync schema"
 $databaseSchema = Get-AzureRmSqlSyncSchema   -ResourceGroupName $ResourceGroupName `
                                              -ServerName $ServerName `
                                              -DatabaseName $DatabaseName `
@@ -190,7 +190,7 @@ $databaseSchema | ConvertTo-Json -depth 5 -Compress | Out-File "c:\tmp\databaseS
 $newSchema = [AzureSqlSyncGroupSchemaModel]::new()
 $newSchema.Tables = [List[AzureSqlSyncGroupSchemaTableModel]]::new();
 
-# Add columns and tables to the sync schema
+# Add columns and tables toohello sync schema
 foreach ($tableSchema in $databaseSchema.Tables)
 {
     $newTableSchema = [AzureSqlSyncGroupSchemaTableModel]::new()
@@ -202,7 +202,7 @@ foreach ($tableSchema in $databaseSchema.Tables)
         if ($tableSchema.HasError)
         {
             $fullTableName = $tableSchema.QuotedName
-            Write-Host "Can't add table $fullTableName to the sync schema" -foregroundcolor "Red"
+            Write-Host "Can't add table $fullTableName toohello sync schema" -foregroundcolor "Red"
             Write-Host $tableSchema.ErrorId -foregroundcolor "Red"
             continue;
         }
@@ -218,16 +218,16 @@ foreach ($tableSchema in $databaseSchema.Tables)
         {
             if ((-not $addAllColumns) -and $tableSchema.HasError)
             {
-                Write-Host "Can't add column $fullColumnName to the sync schema" -foregroundcolor "Red"
+                Write-Host "Can't add column $fullColumnName toohello sync schema" -foregroundcolor "Red"
                 Write-Host $tableSchema.ErrorId -foregroundcolor "Red"c            }
             elseif ((-not $addAllColumns) -and $columnSchema.HasError)
             {
-                Write-Host "Can't add column $fullColumnName to the sync schema" -foregroundcolor "Red"
+                Write-Host "Can't add column $fullColumnName toohello sync schema" -foregroundcolor "Red"
                 Write-Host $columnSchema.ErrorId -foregroundcolor "Red"
             }
             else
             {
-                Write-Host "Adding"$fullColumnName" to the sync schema"
+                Write-Host "Adding"$fullColumnName" toohello sync schema"
                 $newColumnSchema = [AzureSqlSyncGroupSchemaColumnModel]::new()
                 $newColumnSchema.QuotedName = $columnSchema.QuotedName
                 $newColumnSchema.DataSize = $columnSchema.DataSize
@@ -242,17 +242,17 @@ foreach ($tableSchema in $databaseSchema.Tables)
     }
 }
 
-# Convert sync schema to Json format
+# Convert sync schema tooJson format
 $schemaString = $newSchema | ConvertTo-Json -depth 5 -Compress
 
 # workaround a powershell bug
 $schemaString = $schemaString.Replace('"Tables"', '"tables"').Replace('"Columns"', '"columns"').Replace('"QuotedName"', '"quotedName"').Replace('"MasterSyncMemberName"','"masterSyncMemberName"')
 
-# Save the sync schema to a temp file
+# Save hello sync schema tooa temp file
 $schemaString | Out-File $TempFile
 
 # Update sync schema
-Write-Host "Updating the sync schema"
+Write-Host "Updating hello sync schema"
 Update-AzureRmSqlSyncGroup  -ResourceGroupName $ResourceGroupName `
                             -ServerName $ServerName `
                             -DatabaseName $DatabaseName `
@@ -268,8 +268,8 @@ Start-AzureRmSqlSyncGroupSync  -ResourceGroupName $ResourceGroupName `
                                -DatabaseName $DatabaseName `
                                -SyncGroupName $SyncGroupName
 
-# Check the sync log and wait until the first sync succeeded
-Write-Host "Check the sync log"
+# Check hello sync log and wait until hello first sync succeeded
+Write-Host "Check hello sync log"
 $IsSucceeded = $false
 For ($i = 0; ($i -lt 300) -and (-not $IsSucceeded); $i = $i + 10)
 {
@@ -297,7 +297,7 @@ For ($i = 0; ($i -lt 300) -and (-not $IsSucceeded); $i = $i + 10)
 if ($IsSucceeded)
 {
     # Enable scheduled sync
-    Write-Host "Enable the scheduled sync with 300 seconds interval"
+    Write-Host "Enable hello scheduled sync with 300 seconds interval"
     Update-AzureRmSqlSyncGroup  -ResourceGroupName $ResourceGroupName `
                                 -ServerName $ServerName `
                                 -DatabaseName $DatabaseName `
@@ -326,7 +326,7 @@ else
 
 ## <a name="clean-up-deployment"></a>Limpieza de la implementación
 
-Después de ejecutar el script de ejemplo, puede ejecutar el comando siguiente para quitar el grupo de recursos y todos los recursos asociados a él.
+Después de ejecutar script de ejemplo de Hola, puede ejecutar Hola después el grupo de recursos de comando tooremove hello y todos los recursos asociados con él.
 
 ```powershell
 Remove-AzureRmResourceGroup -ResourceGroupName "myResourceGroup"
@@ -334,19 +334,19 @@ Remove-AzureRmResourceGroup -ResourceGroupName "myResourceGroup"
 
 ## <a name="script-explanation"></a>Explicación del script
 
-Este script usa los siguientes comandos. Cada comando de la tabla crea un vínculo a documentación específica del comando.
+Este script utiliza Hola siga los comandos. Cada comando de la tabla de hello vincula documentación específica del toocommand.
 
 | Comando | Notas |
 |---|---|
 | [New-AzureRmSqlSyncAgent](/powershell/module/azurerm.sql/New-AzureRmSqlSyncAgent) |  Crea un agente de sincronización |
-| [New-AzureRmSqlSyncAgentKey](/powershell/module/azurerm.sql/New-AzureRmSqlSyncAgentKey) |  Genera la clave del agente asociada al agente de sincronización |
-| [Get-AzureRmSqlSyncAgentLinkedDatabase](/powershell/module/azurerm.sql/Get-AzureRmSqlSyncAgentLinkedDatabase) |  Permite obtener toda la información del agente de sincronización |
-| [New-AzureRmSqlSyncMember](/powershell/module/azurerm.sql/New-AzureRmSqlSyncMember) |  Agrega un nuevo miembro al grupo de sincronización |
-| [Update-AzureRmSqlSyncSchema](/powershell/module/azurerm.sql/Update-AzureRmSqlSyncSchema) |  Actualiza la información de esquema de la base de datos |
-| [Get-AzureRmSqlSyncSchema](/powershell/module/azurerm.sql/Get-AzureRmSqlSyncSchem) |  Obtiene la información de esquema de la base de datos |
-| [Update-AzureRmSqlSyncGroup](/powershell/module/azurerm.sql/Update-AzureRmSqlSyncGroup) |  Actualiza el grupo de sincronización |
+| [New-AzureRmSqlSyncAgentKey](/powershell/module/azurerm.sql/New-AzureRmSqlSyncAgentKey) |  Genera la clave del agente Hola asociado con el agente de sincronización de Hola |
+| [Get-AzureRmSqlSyncAgentLinkedDatabase](/powershell/module/azurerm.sql/Get-AzureRmSqlSyncAgentLinkedDatabase) |  Obtener toda la información de Hola de hello agente de sincronización |
+| [New-AzureRmSqlSyncMember](/powershell/module/azurerm.sql/New-AzureRmSqlSyncMember) |  Agregar un toohello miembro nuevo grupo de sincronización |
+| [Update-AzureRmSqlSyncSchema](/powershell/module/azurerm.sql/Update-AzureRmSqlSyncSchema) |  Actualiza la información de esquema de base de datos de Hola |
+| [Get-AzureRmSqlSyncSchema](/powershell/module/azurerm.sql/Get-AzureRmSqlSyncSchem) |  Obtener información de esquema de base de datos de Hola |
+| [Update-AzureRmSqlSyncGroup](/powershell/module/azurerm.sql/Update-AzureRmSqlSyncGroup) |  Las actualizaciones de Hola grupo de sincronización |
 | [Start-AzureRmSqlSyncGroupSync](/powershell/module/azurerm.sql/Start-AzureRmSqlSyncGroupSync) | Desencadena una sincronización |
-| [Get-AzureRmSqlSyncGroupLog](/powershell/module/azurerm.sql/Get-AzureRmSqlSyncGroupLog) |  Comprueba el registro de sincronización |
+| [Get-AzureRmSqlSyncGroupLog](/powershell/module/azurerm.sql/Get-AzureRmSqlSyncGroupLog) |  Hola de comprobaciones de registro de sincronización |
 |||
 
 ## <a name="next-steps"></a>Pasos siguientes

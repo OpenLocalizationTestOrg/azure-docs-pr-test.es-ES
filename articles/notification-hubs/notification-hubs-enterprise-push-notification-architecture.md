@@ -1,5 +1,5 @@
 ---
-title: "Centros de notificaciones: arquitectura de inserción empresarial"
+title: "aaaNotification concentradores - arquitectura de inserción de Enterprise"
 description: Instrucciones de uso de los Centros de notificaciones de Azure en un entorno de empresa
 services: notification-hubs
 documentationcenter: 
@@ -14,26 +14,26 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: ae7c1c9644ecfe7fe4ad6e332cc0683a3b5df22f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c3afb83de1ba0882bf99e10f38cca40cb42d07a5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="enterprise-push-architectural-guidance"></a>Instrucciones sobre arquitectura de inserción empresarial
-En la actualidad, las empresas están pasando cada vez más hacia la creación de aplicaciones móviles para sus usuarios finales (externos) o para los empleados (internos). Disponen de sistemas back-end como grandes sistemas (mainframes) o algunas aplicaciones de línea de negocio (LoB) que deben estar integradas en la arquitectura de aplicaciones móviles. En esta guía hablaremos acerca de la mejor manera de realizar esta integración y recomendaremos soluciones posibles a escenarios comunes.
+Hoy en día, las empresas están gradualmente empezando a crear aplicaciones móviles para cualquiera de sus usuarios finales (externo) o para los empleados de hello (internos). Tienen los sistemas back-end existentes en su lugar puede grandes sistemas o algunas aplicaciones de LoB que deben estar integrados en Hola arquitectura de aplicaciones móviles. Esta guía que trataremos más toodo la mejor manera de esta integración recomendar soluciones posibles escenarios de toocommon.
 
-Un requisito frecuente es el envío de notificaciones de inserción a los usuarios a través de su aplicación móvil cuando se produce un evento de interés en los sistemas back-end. Por ejemplo, el cliente de un banco que tiene la aplicación del banco en su iPhone desea recibir una notificación cuando se efectúe un cargo por encima de un importe determinado desde su cuenta, o un escenario de intranet en el que un empleado del departamento financiero que tiene una aplicación de aprobación de presupuestos en su Windows Phone desea recibir una notificación cuando obtenga una solicitud de aprobación.
+Un requisito frecuente es para el envío de los usuarios de toohello de notificación a través de sus aplicaciones móviles de inserción cuando se produce un evento de interés en sistemas de back-end de Hola. Por ejemplo, un cliente de un banco con aplicación de banca del banco de hello en su iPhone desea toobe una notificación cuando se realiza un débito por encima de una determinada cantidad de su cuenta de usuario o un escenario de intranet donde desea que un empleado del departamento de finanzas que tiene una aplicación de aprobación de presupuesto en su Windows Phone toobe una notificación cuando recibe una solicitud de aprobación.
 
-El procesamiento de la cuenta bancaria o de la solicitud de aprobación se realiza probablemente en algún sistema back-end que debe iniciar una inserción al usuario. Podría haber muchos sistemas back-end de este tipo que deben crear todos el mismo tipo de lógica para implementar la inserción cuando un evento desencadena una notificación. Aquí la complejidad reside en la integración de varios back-ends juntos con un único sistema de inserción donde los usuarios finales podrían haberse suscrito a diferentes notificaciones e incluso podría haber varias aplicaciones móviles, por ejemplo, en el caso de aplicaciones móviles de intranet donde una aplicación móvil puede querer recibir notificaciones de varios de estos sistemas back-end. Los sistemas back-end no conocen o no necesitan conocer la semántica/tecnología de inserción, de modo que una solución común aquí ha sido tradicionalmente introducir un componente que sondea los sistemas back-end en busca de eventos de interés y que es responsable de enviar los mensajes de inserción al cliente.
-Aquí hablaremos de una solución mejor incluso usando el modelo de temas y suscripciones del Bus de servicio de Azure, que reducirá la complejidad y hará que la solución sea escalable.
+cuenta bancaria de Hola o procesamiento de aprobación es probable toobe realizado en algún sistema de back-end que debe iniciarse ni un usuario de toohello de inserción. Puede haber varios tal back-end sistemas que deben generar todos Hola mismo tipo de inserción de lógica tooimplement cuando un evento desencadena una notificación. complejidad de Hello aquí radica en integrar varios sistemas de back-end junto con un sistema de inserción única donde hello a los usuarios finales pueden ha suscrito toodifferent notificaciones y puede incluso tener varias aplicaciones móviles, por ejemplo, en caso de hello de aplicaciones móviles de intranet en una aplicación móvil puede tooreceive notificaciones desde varios tales sistemas back-end. sistemas de back-end de Hello no conoce o no necesita tooknow de semántica y la tecnología de inserción para que una solución habitual aquí ha sido tradicionalmente toointroduce un componente que sondea los sistemas de back-end de Hola para todos los eventos de interés y es responsable de enviar mensajes de inserción de Hola cliente toohello.
+A continuación hablaremos sobre una solución aún mejor con Bus de servicio de Azure - modelo de tema/suscripción que reducirá la complejidad de hello al realizar la solución de hello escalable.
 
-Esta es la arquitectura general de la solución (generalizada con varias aplicaciones móviles pero igualmente aplicable cuando solo hay una aplicación móvil).
+Aquí es arquitectura general de Hola de solución de hello (generalizado con varias aplicaciones móviles aunque aplicarse cuando hay solo una aplicación móvil)
 
 ## <a name="architecture"></a>Arquitectura
 ![][1]
 
-La pieza clave en este diagrama arquitectónico es el Bus de servicio de Azure que proporciona un modelo de programación de temas y suscripciones (se puede obtener más información al respecto en [Programación Pub/Sub de Service Bus]). El receptor, en este caso el back-end móvil (normalmente el [servicio móvil de Azure], que iniciarán una inserción en las aplicaciones móviles) no recibe los mensajes directamente de los sistemas back-end si no que nosotros disponemos de una capa de abstracción intermedia que proporciona [Azure Service Bus] que permite que el back-end móvil reciba mensajes de uno o varios sistemas back-end. Se debe crear un tema de Bus de servicio para cada uno de los sistemas back-end, por ejemplo, Cuentas, RR.HH., Finanzas, que son básicamente "temas" de interés que iniciarán mensajes para enviarse como notificaciones de inserción. Los sistemas back-end enviarán mensajes a estos temas. Un back-end móvil puede suscribirse a uno o varios de estos temas mediante la creación de una suscripción al Bus de servicio. Esto permitirá al back-end móvil recibir una notificación del sistema back-end correspondiente. El back-end móvil sigue escuchando mensajes en sus suscripciones y, en cuanto llega uno, da la vuelta y lo envía como notificación a su centro de notificaciones. Los centros de notificaciones entregan finalmente el mensaje a la aplicación móvil. Así que, resumiendo, tenemos los siguientes componentes clave:
+Hola clave en este diagrama de arquitectura es Service Bus de Azure que proporciona un modelo de programación de temas/suscripciones (más información sobre la en [programación de Bus de servicio Pub/Sub]). receptor de Hello, lo que en este caso, es back-end de hello móvil (normalmente [servicios móviles de Azure], que iniciará una inserción toohello las aplicaciones móviles) no recibe mensajes directamente desde sistemas de back-end de hello pero en su lugar, tenemos un capa de abstracción intermedio proporcionada por [Service Bus de Azure] que permite que los mensajes de tooreceive móvil de back-end de uno o varios sistemas de back-end. Un tema de Bus de servicio debe toobe creado para cada uno de los sistemas de back-end de hello p. ej., cuenta, recursos humanos, finanzas que básicamente son "temas" de interés que se iniciará la toobe de mensajes enviado como notificación de inserción. sistemas de back-end de Hello enviará mensajes temas toothese. Un móvil de back-end puede suscribirse tooone o más temas mediante la creación de una suscripción de Bus de servicio. Esto le da derecho Hola móvil de back-end tooreceive una notificación de sistema de back-end de hello correspondiente. Móvil back-end continúa toolisten para los mensajes en sus suscripciones y tan pronto como llega un mensaje, vuelve atrás y lo envía como centro de notificaciones de tooits de notificación. Centros de notificaciones, a continuación, entrega finalmente toohello de mensaje Hola aplicación móvil. Componentes clave de toosummarize hello, tenemos:
 
 1. Sistema back-end (sistema LoB o heredado)
    * Crea el tema del Bus de servicio
@@ -41,47 +41,47 @@ La pieza clave en este diagrama arquitectónico es el Bus de servicio de Azure q
 2. Back-end móvil
    * Crea la suscripción al servicio
    * Recibe el mensaje (del sistema back-end)
-   * Envía una notificación a los clientes (a través del Centro de notificaciones de Azure)
+   * Envía notificación tooclients (a través del centro de notificaciones de Azure)
 3. Aplicación móvil
    * Recibe y muestra notificaciones
 
 ### <a name="benefits"></a>Ventajas:
-1. La separación entre el receptor (aplicación/servicio móvil a través del Centro de notificaciones) y el emisor (sistemas back-end) permite la integración de sistemas back-end adicionales con cambios mínimos.
-2. Esto hace también que en el escenario de varias aplicaciones móviles, sea posible recibir eventos de uno o varios sistemas back-end.  
+1. Hola desasociación entre Hola receptor (aplicación/Servicio móvil a través del centro de notificaciones) y el emisor (sistemas back-end) permite que los sistemas adicionales de back-end se integra con cambios mínimos.
+2. Esto hará que el escenario Hola de varias aplicaciones móviles que se va a tooreceive capaz de eventos de uno o varios sistemas de back-end.  
 
 ## <a name="sample"></a>Sample:
 ### <a name="prerequisites"></a>Requisitos previos
-Para familiarizarse con los conceptos, así como con los pasos comunes de creación y configuración, debe realizar los siguientes tutoriales:
+Debe completar Hola después toofamiliarize tutoriales con conceptos de hello, así como pasos comunes de creación y configuración:
 
-1. [Programación Pub/Sub de Service Bus]: en él se explican los detalles de trabajar con temas y suscripciones de Service Bus, cómo crear un espacio de nombres que contenga temas o suscripciones y cómo enviar y recibir mensajes de ellos.
-2. [tutorial sobre Centros de notificaciones: Windows Universal] : en este tutorial se explica cómo configurar una aplicación de la Tienda Windows y usar los Centros de notificaciones para registrar y, después, recibir notificaciones.
+1. [programación de Bus de servicio Pub/Sub] -esto detalles Hola de trabajar con temas de Bus de servicio/suscripciones, explica cómo toocreate un espacio de nombres toocontain temas/suscripciones, cómo toosend & recibir mensajes de ellos.
+2. [Centros de notificaciones - tutorial universales de Windows] -explica cómo tooset una copia de seguridad una aplicación de la tienda de Windows y usar tooregister centros de notificaciones y, a continuación, recibir notificaciones.
 
 ### <a name="sample-code"></a>Código de ejemplo
-El código de ejemplo completo está disponible en [Ejemplos de centro de notificaciones]. Se divide en tres componentes:
+está disponible en el código de ejemplo completo de Hello [ejemplos de concentrador de notificación]. Se divide en tres componentes:
 
 1. **EnterprisePushBackendSystem**
    
-    a. Este proyecto usa el paquete de NuGet *WindowsAzure.ServiceBus* y se basa en la [Programación Pub/Sub de Service Bus].
+    a. Este proyecto usa hello *WindowsAzure.ServiceBus* paquete de Nuget y se basa en [programación de Bus de servicio Pub/Sub].
    
-    b. Se trata de una aplicación de consola C# sencilla para simular un sistema LoB que inicia el mensaje que se entrega a la aplicación móvil.
+    b. Se trata de una simple C# consola aplicación toosimulate un sistema de LoB que inicia toobe de mensaje de Hola entregado toohello de aplicaciones móviles.
    
         static void Main(string[] args)
         {
             string connectionString =
                 CloudConfigurationManager.GetSetting("Microsoft.ServiceBus.ConnectionString");
    
-            // Create the topic where we will send notifications
+            // Create hello topic where we will send notifications
             CreateTopic(connectionString);
    
             // Send message
             SendMessage(connectionString);
         }
    
-    c. `CreateTopic` se usa para crear el tema del Bus de servicio al que se enviarán los mensajes.
+    c. `CreateTopic`es tema de Bus de servicio de hello toocreate utilizado que se enviará mensajes.
    
         public static void CreateTopic(string connectionString)
         {
-            // Create the topic if it does not exist already
+            // Create hello topic if it does not exist already
    
             var namespaceManager =
                 NamespaceManager.CreateFromConnectionString(connectionString);
@@ -92,19 +92,19 @@ El código de ejemplo completo está disponible en [Ejemplos de centro de notifi
             }
         }
    
-    d. `SendMessage` se usa para enviar los mensajes a este tema del Bus de servicio. En este ejemplo, simplemente enviaremos un conjunto de mensajes aleatorios al tema de manera periódica. Normalmente, habrá un sistema back-end que enviará los mensajes cuando se produzca un evento.
+    d. `SendMessage`es utilizado toosend Hola mensajes toothis tema de Bus de servicio. Aquí se simplemente envía un conjunto de tema de toohello mensajes aleatorios periódicamente con el fin de Hola de ejemplo de Hola. Normalmente, habrá un sistema back-end que enviará los mensajes cuando se produzca un evento.
    
         public static void SendMessage(string connectionString)
         {
             TopicClient client =
                 TopicClient.CreateFromConnectionString(connectionString, sampleTopic);
    
-            // Sends random messages every 10 seconds to the topic
+            // Sends random messages every 10 seconds toohello topic
             string[] messages =
             {
                 "Employee Id '{0}' has joined.",
                 "Employee Id '{0}' has left.",
-                "Employee Id '{0}' has switched to a different team."
+                "Employee Id '{0}' has switched tooa different team."
             };
    
             while (true)
@@ -124,27 +124,27 @@ El código de ejemplo completo está disponible en [Ejemplos de centro de notifi
         }
 2. **ReceiveAndSendNotification**
    
-    a. Este proyecto usa los paquetes de NuGet *WindowsAzure.ServiceBus* y *Microsoft.Web.WebJobs.Publish* y se basa en la [Programación Pub/Sub de Service Bus].
+    a. Este proyecto usa hello *WindowsAzure.ServiceBus* y *Microsoft.Web.WebJobs.Publish* Nuget empaqueta y se basa en [programación de Bus de servicio Pub/Sub].
    
-    b. Se trata de otra consola de aplicación C# que ejecutaremos como un [trabajo web de Azure] dado que se tiene que ejecutar continuamente para escuchar mensajes de los sistemas LoB/back-end. Formará parte de su back-end móvil.
+    b. Se trata de otra consola aplicación de C# que se ejecutarán como un [WebJob de Azure] porque tiene toorun continuamente toolisten para los mensajes procedentes de sistemas de LoB/back-end de Hola. Formará parte de su back-end móvil.
    
         static void Main(string[] args)
         {
             string connectionString =
                      CloudConfigurationManager.GetSetting("Microsoft.ServiceBus.ConnectionString");
    
-            // Create the subscription which will receive messages
+            // Create hello subscription which will receive messages
             CreateSubscription(connectionString);
    
             // Receive message
             ReceiveMessageAndSendNotification(connectionString);
         }
    
-    c. `CreateSubscription` se usa para crear una suscripción de Service Bus para el tema donde el sistema back-end enviará mensajes. Según el escenario empresarial, este componente creará una o varias suscripciones a temas correspondientes (por ejemplo, puede que algunos reciban mensajes del sistema de RR. PP., otros del sistema de Finanzas, etc.)
+    c. `CreateSubscription`es toocreate usa una suscripción de Bus de servicio para el tema de Hola donde el sistema de back-end de hello enviará mensajes. Según el escenario de negocio de hello, este componente creará una o varias suscripciones temas toocorresponding (por ejemplo, algunos pueden estar recibiendo mensajes de sistema de recursos humanos, algunas del sistema de finanzas y así sucesivamente)
    
         static void CreateSubscription(string connectionString)
         {
-            // Create the subscription if it does not exist already
+            // Create hello subscription if it does not exist already
             var namespaceManager =
                 NamespaceManager.CreateFromConnectionString(connectionString);
    
@@ -154,11 +154,11 @@ El código de ejemplo completo está disponible en [Ejemplos de centro de notifi
             }
         }
    
-    d. ReceiveMessageAndSendNotification se usa para leer el mensaje del tema mediante su suscripción y, si la lectura se realiza correctamente, entonces se crea una notificación (en el escenario de ejemplo, una notificación del sistema nativa de Windows) para su envío a la aplicación móvil mediante los Centros de notificaciones de Azure.
+    d. ReceiveMessageAndSendNotification es tooread usa el mensaje de saludo de tema de hello mediante su suscripción y si Hola de lectura se realiza correctamente, a continuación, elaborar un móvil de toohello de toobe enviado notificación (en el escenario de muestra de Hola una notificación del sistema nativo de Windows) aplicación que utiliza los centros de notificaciones de Azure.
    
         static void ReceiveMessageAndSendNotification(string connectionString)
         {
-            // Initialize the Notification Hub
+            // Initialize hello Notification Hub
             string hubConnectionString = CloudConfigurationManager.GetSetting
                     ("Microsoft.NotificationHub.ConnectionString");
             hub = NotificationHubClient.CreateClientFromConnectionString
@@ -170,7 +170,7 @@ El código de ejemplo completo está disponible en [Ejemplos de centro de notifi
    
             Client.Receive();
    
-            // Continuously process messages received from the subscription
+            // Continuously process messages received from hello subscription
             while (true)
             {
                 BrokeredMessage message = Client.Receive();
@@ -204,24 +204,24 @@ El código de ejemplo completo está disponible en [Ejemplos de centro de notifi
             await hub.SendWindowsNativeNotificationAsync(message);
         }
    
-    e. Para publicar esto como un **trabajo web**, haga clic con el botón derecho en la solución en Visual Studio y seleccione **Publicar como trabajo web**.
+    e. Para publicar este elemento como un **WebJob**, haga clic con el botón secundario en la solución de hello en Visual Studio y seleccione **publicar como trabajos Web**
    
     ![][2]
    
-    f. Seleccione su perfil de publicación y cree un nuevo sitio web de Azure, si aún no existe, que hospede este trabajo web. Cuando tenga el sitio web, haga clic en **Publicar**.
+    f. Seleccione el perfil de publicación y cree un nuevo sitio Web de Azure si no existe ya que va a hospedar este trabajo Web y una vez que tenga, a continuación, sitio Web de hello **publicar**.
    
     ![][3]
    
-    g. Configure el trabajo como "Ejecutar continuamente", de modo que cuando inicie sesión en el [Portal de Azure clásico] vea algo parecido a esto:
+    g. Configurar hello toobe de trabajo "Ejecutar continuamente" de modo que cuando inicia una sesión toohello [Portal clásico de Azure] debería ver algo parecido a Hola siguiente:
    
     ![][4]
 3. **EnterprisePushMobileApp**
    
-    a. Se trata de una aplicación de la Tienda Windows que recibirá notificaciones del sistema del trabajo web que se ejecuta como parte de su back-end móvil y las mostrará. Se basa en el [tutorial sobre Centros de notificaciones: Windows Universal].  
+    a. Se trata de una aplicación de Windows Store que recibirá las notificaciones de la ejecución de trabajo Web de hello como parte de su back-end móvil y mostrarla. Se basa en el [Centros de notificaciones - tutorial universales de Windows].  
    
-    b. Asegúrese de que su aplicación está habilitada para recibir notificaciones del sistema.
+    b. Asegúrese de que la aplicación está habilitado tooreceive recibir notificaciones del sistema.
    
-    c. Asegúrese de que se llama al siguiente código de registro de los Centros de notificaciones al inicio de la aplicación (después de sustituir los valores de *HubName* y *DefaultListenSharedAccessSignature*:
+    c. Asegúrese de que se llama a ese Hola después el código de registro de los centros de notificaciones en hello Iniciar aplicación (después de reemplazar hello *HubName* y *DefaultListenSharedAccessSignature*:
    
         private async void InitNotificationsAsync()
         {
@@ -230,7 +230,7 @@ El código de ejemplo completo está disponible en [Ejemplos de centro de notifi
             var hub = new NotificationHub("[HubName]", "[DefaultListenSharedAccessSignature]");
             var result = await hub.RegisterNativeAsync(channel.Uri);
    
-            // Displays the registration ID so you know it was successful
+            // Displays hello registration ID so you know it was successful
             if (result.RegistrationId != null)
             {
                 var dialog = new MessageDialog("Registration successful: " + result.RegistrationId);
@@ -240,12 +240,12 @@ El código de ejemplo completo está disponible en [Ejemplos de centro de notifi
         }
 
 ### <a name="running-sample"></a>Ejecución del ejemplo:
-1. Asegúrese de que su trabajo web se ejecuta correctamente y está programado como "Ejecutar continuamente".
-2. Ejecute **EnterprisePushMobileApp** , que iniciará la aplicación de la Tienda Windows.
-3. Ejecute la aplicación de consola **EnterprisePushBackendSystem** , que simulará el back-end LoB e iniciará el envío de mensajes, de modo que verá que aparecen notificaciones del sistema como las siguientes:
+1. Asegúrese de que su trabajo Web se esté ejecutando correctamente y programa demasiado "Ejecutar continuamente".
+2. Ejecute hello **EnterprisePushMobileApp** que iniciará la aplicación de la tienda de Windows hello.
+3. Ejecute hello **EnterprisePushBackendSystem** aplicación de consola que simulará back-end de hello LoB y se iniciará el envío de mensajes y debería ver las notificaciones que aparecen como Hola siguiente:
    
     ![][5]
-4. Los mensajes se enviaron originalmente a temas del Bus de servicio, los cuales son supervisadas por las suscripciones del Bus de servicio en el trabajo web. Cuando se recibe un mensaje, se crea una notificación y se envía a la aplicación móvil. Puede examinar los registros del trabajo web para confirmar el procesamiento en el vínculo Registros en el [Portal de Azure clásico] correspondiente a su trabajo web:
+4. mensajes de saludo enviados originalmente tooService temas de Bus que se está supervisando por suscripciones del Bus de servicio en el trabajo Web. Una vez que se recibió un mensaje, se crea una notificación y se envía toohello de aplicaciones móviles. Puede buscar a través de hello WebJob registros tooconfirm Hola procesamiento cuando vaya toohello vinculan registros en [Portal clásico de Azure] para su trabajo Web:
    
     ![][6]
 
@@ -258,10 +258,10 @@ El código de ejemplo completo está disponible en [Ejemplos de centro de notifi
 [6]: ./media/notification-hubs-enterprise-push-architecture/WebJobsLog.png
 
 <!-- Links -->
-[Ejemplos de centro de notificaciones]: https://github.com/Azure/azure-notificationhubs-samples
-[servicio móvil de Azure]: http://azure.microsoft.com/documentation/services/mobile-services/
-[Azure Service Bus]: http://azure.microsoft.com/documentation/articles/fundamentals-service-bus-hybrid-solutions/
-[Programación Pub/Sub de Service Bus]: http://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
-[trabajo web de Azure]: http://azure.microsoft.com/documentation/articles/web-sites-create-web-jobs/
-[tutorial sobre Centros de notificaciones: Windows Universal]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
-[Portal de Azure clásico]: https://manage.windowsazure.com/
+[ejemplos de concentrador de notificación]: https://github.com/Azure/azure-notificationhubs-samples
+[servicios móviles de Azure]: http://azure.microsoft.com/documentation/services/mobile-services/
+[Service Bus de Azure]: http://azure.microsoft.com/documentation/articles/fundamentals-service-bus-hybrid-solutions/
+[programación de Bus de servicio Pub/Sub]: http://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
+[WebJob de Azure]: http://azure.microsoft.com/documentation/articles/web-sites-create-web-jobs/
+[Centros de notificaciones - tutorial universales de Windows]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
+[Portal clásico de Azure]: https://manage.windowsazure.com/

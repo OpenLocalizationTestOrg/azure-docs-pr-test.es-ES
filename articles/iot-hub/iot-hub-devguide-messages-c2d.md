@@ -1,6 +1,6 @@
 ---
-title: "Información sobre la mensajería de nube a dispositivo de Azure IoT Hub | Microsoft Docs"
-description: "Guía del desarrollador: cómo utilizar la mensajería de nube a dispositivo con IoT Hub. Incluye información sobre el ciclo de vida de los mensajes y las opciones de configuración."
+title: "mensajería aaaUnderstand centro de IoT de Azure en la nube al dispositivo | Documentos de Microsoft"
+description: "Guía del desarrollador - cómo toouse en la nube al dispositivo con el centro de IoT de mensajería. Incluye información acerca del ciclo de vida del mensaje de Hola y opciones de configuración."
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
@@ -13,85 +13,85 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: dobett
-ms.openlocfilehash: 04ac46498c912b0503036f70b7f3d0e28e5a82b8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5c747b50163873d823556a8baa769c4b8f7f8c44
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="send-cloud-to-device-messages-from-iot-hub"></a>Envío de mensajes de nube a dispositivo desde IoT Hub
 
-Para enviar notificaciones unidireccionales a la aplicación para dispositivo desde el back-end de la solución, envíe mensajes de nube a dispositivo desde su centro de IoT al dispositivo. Para obtener una explicación de otras opciones de nube a dispositivos compatibles con IoT Hub, consulte [Guía de comunicación de nube a dispositivo][lnk-c2d-guidance].
+toosend notificaciones unidireccional toohello del dispositivo desde el back-end de soluciones, enviar mensajes de nube para dispositivos de su dispositivo de tooyour IoT hub. Para obtener una explicación de otras opciones de nube a dispositivos compatibles con IoT Hub, consulte [Guía de comunicación de nube a dispositivo][lnk-c2d-guidance].
 
-Se envían mensajes de la nube al dispositivo mediante un punto de conexión orientado al servicio (**/messages/devicebound**). Luego, un dispositivo recibe los mensajes mediante un punto de conexión específico del dispositivo (**/devices/{IdDeDispositivo}/messages/devicebound**).
+Se envían mensajes de la nube al dispositivo mediante un punto de conexión orientado al servicio (**/messages/devicebound**). Un dispositivo, a continuación, recibe mensajes de Hola a través de un extremo específico del dispositivo (**/devices/ {deviceId} / mensajes/devicebound**).
 
-Cada mensaje de la nube al dispositivo se dirige a un único dispositivo al establecer la propiedad **to** en **/devices/{IdDeDispositivo}/messages/devicebound**.
+Cada mensaje en la nube al dispositivo destinada a un único dispositivo; establecer hello **a** propiedad demasiado**/devices/ {deviceId} / mensajes/devicebound**.
 
-La cola de cada dispositivo puede contener como máximo 50 mensajes de la nube al dispositivo. Si se intenta enviar más mensajes al mismo dispositivo, se producirá un error.
+La cola de cada dispositivo puede contener como máximo 50 mensajes de la nube al dispositivo. Intentar toosend más toohello mensajes mismo dispositivo genera un error.
 
-## <a name="the-cloud-to-device-message-lifecycle"></a>El ciclo de vida de los mensajes de nube a dispositivo
+## <a name="hello-cloud-to-device-message-lifecycle"></a>Hola del ciclo de vida del mensaje en la nube a dispositivo
 
-Para garantizar la entrega de mensajes al menos una vez, IoT Hub conserva los mensajes de nube a dispositivo en colas para cada dispositivo. Los dispositivos tienen que confirmar explícitamente la *finalización* para que el Centro de IoT los quite de la cola. Esto garantiza la resistencia frente a errores de dispositivo y de conectividad.
+entrega del mensaje de al menos-una vez tooguarantee, centro de IoT conserva los mensajes de la nube al dispositivo en las colas por dispositivo. Dispositivos deben confirmar explícitamente *finalización* para tooremove centro de IoT de Hola cola. Esto garantiza la resistencia frente a errores de dispositivo y de conectividad.
 
-En el diagrama siguiente se detalla el gráfico de estado del ciclo de vida de un mensaje de nube a dispositivo en IoT Hub.
+Hello siguiente diagrama muestra gráfico de estado de ciclo de vida de Hola para un mensaje en la nube al dispositivo en el centro de IoT.
 
 ![Ciclo de vida de los mensajes de nube a dispositivo][img-lifecycle]
 
-Cuando el servicio IoT Hub envía un mensaje a un dispositivo, el servicio establece el estado del mensaje en **En cola**. Cuando un dispositivo quiere *recibir* un mensaje, IoT Hub *bloquea* dicho mensaje (estableciendo el estado en **Invisible**), lo que permite que otros subprocesos del dispositivo empiecen a recibir otros mensajes. Cuando el subproceso de un dispositivo termina de procesar un mensaje, informa al Centro de IoT *finalizando* dicho mensaje. Luego, IoT Hub establece el estado en **Completado**.
+Cuando Hola servicio del centro de IoT envía un dispositivo de tooa de mensaje, el servicio de hello establece el estado del mensaje Hola demasiado**en cola**. Cuando un dispositivo desea demasiado*recibir* un mensaje, el centro de IoT *bloqueos* mensaje de bienvenida (estableciendo el estado de hello demasiado**Invisible**), que permite que otros subprocesos en hello dispositivo toostart recibir otros mensajes. Cuando un subproceso de dispositivo finaliza el procesamiento de Hola de un mensaje, notifica al centro de IoT por *completar* mensaje de saludo. Centro de IoT, a continuación, Establece el estado de hello demasiado**completado**.
 
 Un dispositivo también puede hacer lo siguiente:
 
-* *Rechazar* el mensaje, lo que hace que el Centro de IoT lo establezca en estado **Deadlettered** (Procesado como devuelto). Los dispositivos que se conectan mediante el protocolo MQTT no pueden rechazar mensajes de nube a dispositivo.
-* *Abandonar* el mensaje, lo que hace que el Centro de IoT vuelva a ponerlo en la cola con el estado **Enqueued**(En cola).
+* *Rechazar* mensaje Hola, lo que hace el centro de IoT tooset que lo toohello **fallidos** estado. Dispositivos que se conectan a través de hello protocolo MQTT no pueden rechazar mensajes en la nube al dispositivo.
+* *Abandonar* mensaje hello, que hace que centro de IoT tooput mensajes de bienvenida en cola de hello, con estado de hello establecido demasiado**en cola**.
 
-Podría producirse un error en el subproceso al procesar un mensaje sin notificar a Centro de IoT. En este caso, los mensajes pasan automáticamente del estado **Invisible** al estado **Enqueued** (En cola) después de un *tiempo de espera de visibilidad (o bloqueo)*. El valor predeterminado de este tiempo de espera es un minuto.
+Un subproceso podría producir errores tooprocess un mensaje sin notificárselo al centro de IoT. En este caso, automáticamente mensajes de transición de Hola **Invisible** estado atrás toohello **en cola** estado después de un *tiempo de espera de visibilidad (o bloqueo)*. valor predeterminado de Hola de este tiempo de espera es un minuto.
 
-Un mensaje puede cambiar entre los estados **Enqueued** (En cola) e **Invisible**, como mucho, el número de veces especificado en la propiedad **Número máximo de entregas** en IoT Hub. Después de ese número de transiciones, el Centro de IoT establece el estado del mensaje en **Deadlettered**(Procesado como devuelto). De igual forma, IoT Hub establece el estado de un mensaje en **Deadlettered** (Procesado como devuelto) después de su fecha de caducidad [consulte [Expiración de mensajes (periodo de vida)][lnk-ttl]].
+Puede pasar un mensaje de Hola **en cola** y **Invisible** Estados, Hola a lo sumo, número de veces especificado en hello **máximo de entregas** propiedad en el centro de IoT. Después de ese número de transiciones, centro de IoT establece estado Hola de mensaje de saludo demasiado**fallidos**. De forma similar, centro de IoT establece estado Hola de un mensaje demasiado**fallidos** después de la fecha de expiración (consulte [tiempo toolive][lnk-ttl]).
 
-El tutorial [Envío de mensajes desde la nube al dispositivo con IoT Hub][lnk-c2d-tutorial] muestra cómo enviar mensajes de nube a dispositivo y cómo recibir estos mensajes en un dispositivo.
+Hola [cómo mensajes toosend en la nube al dispositivo con el centro de IoT] [ lnk-c2d-tutorial] se muestra cómo toosend los mensajes en la nube al dispositivo de hello en la nube y reciban en un dispositivo.
 
-Normalmente, un dispositivo completa un mensaje de nube a dispositivo cuando la pérdida del mensaje no afecta a la lógica de aplicación; por ejemplo, cuando el dispositivo conserva el contenido del mensaje localmente o ha ejecutado correctamente una operación. El mensaje también puede llevar información transitoria, cuya pérdida no afectaría a la funcionalidad de la aplicación. A veces, para tareas de larga duración, puede completar el mensaje de nube a dispositivo después de guardar la descripción de la tarea en el almacenamiento local. A continuación, se puede notificar al back-end de solución con uno o más mensajes de dispositivo a nube en distintas fases de progreso de la tarea.
+Normalmente, un dispositivo completa un mensaje en la nube al dispositivo cuando Hola pérdida de mensaje de bienvenida no afecta la lógica de la aplicación hello. Por ejemplo, cuando Hola dispositivo conserva el contenido del mensaje Hola localmente o se ha ejecutado correctamente una operación. mensajes de bienvenida también podrían llevar información transitoria, cuyo pérdida no afecta a la funcionalidad de Hola de aplicación hello. A veces, para las tareas de ejecución prolongada, puede completar el mensaje de saludo en la nube al dispositivo después de guardar Hola descripción de la tarea en el almacenamiento local. A continuación, puede notificar a back-end de soluciones de hello con uno o más mensajes de dispositivo para la nube en diferentes fases de progreso de la tarea hello.
 
-## <a name="message-expiration-time-to-live"></a>Expiración de mensajes (período de vida)
+## <a name="message-expiration-time-toolive"></a>Caducidad del mensaje (tiempo toolive)
 
-Cada mensaje de nube a dispositivo tiene una fecha de expiración. La puede establecer el servicio (en la propiedad **ExpiryTimeUtc**), o bien IoT Hub mediante el *período de vida* predeterminado especificado como propiedad de IoT Hub. Consulte [Opciones de configuración de la nube al dispositivo][lnk-c2d-configuration].
+Cada mensaje de nube a dispositivo tiene una fecha de expiración. Esta hora se establece mediante el servicio de hello (Hola **ExpiryTimeUtc** propiedad), o por centro de IoT con hello predeterminada *tiempo toolive* especificada como una propiedad de centro de IoT. Consulte [Opciones de configuración de la nube al dispositivo][lnk-c2d-configuration].
 
-Una forma habitual de aprovechar la expiración de los mensajes y evitar enviarlos a dispositivos desconectados consiste en establecer valores cortos de período de vida. Así se consigue el mismo resultado que al mantener el estado de la conexión de los dispositivos, con la diferencia de que la primera opción resulta más eficiente. Cuando solicita confirmaciones de mensajes, IoT Hub le notificará qué dispositivos pueden recibir mensajes y qué dispositivos no están conectados o presentan errores.
+Una ventaja de tootake forma común de expiración del mensaje y evitar el envío de mensajes toodisconnected dispositivos, es tooset toolive valores de hora corta. Este enfoque consigue Hola el mismo resultado que mantiene el estado de conexión de dispositivo de hello, pero más eficaz. Cuando se solicitan los reconocimientos de mensajes, centro de IoT notifica a los dispositivos tooreceive capaz de mensajes, y los dispositivos que no están en línea o se han producido un error.
 
 ## <a name="message-feedback"></a>Comentarios de mensajes
 
-Cuando envía un mensaje de nube a dispositivo, el servicio puede solicitar la entrega de los comentarios de cada mensaje en relación con el estado final de ese mensaje.
+Cuando se envía un mensaje en la nube al dispositivo, servicio de hello puede solicitar la entrega de Hola de comentarios de cada mensaje con respecto a Hola estado final de ese mensaje.
 
 | Propiedad Ack | Comportamiento |
 | ------------ | -------- |
-| **positive** | IoT Hub genera un mensaje de comentarios únicamente si el mensaje de nube a dispositivo alcanza el estado **Completado**. |
-| **negative** | IoT Hub genera un mensaje de comentarios únicamente si el mensaje de nube a dispositivo alcanza el estado **Deadlettered** (Procesado como devuelto). |
+| **positive** | Centro de IoT genera un mensaje de comentarios si y solo si, mensaje de saludo en la nube al dispositivo alcanza hello **completado** estado. |
+| **negative** | Centro de IoT genera un mensaje de comentarios, si y solo si, mensaje de saludo en la nube al dispositivo alcanza hello **fallidos** estado. |
 | **full**     | IoT Hub genera un mensaje de comentarios en cualquiera de los casos. |
 
-Si **Ack** es **full** y no recibe un mensaje de comentarios, significa que este ha expirado. El servicio no puede saber qué ha ocurrido con el mensaje original. En la práctica, un servicio debe asegurarse de que puede procesar el comentario antes de que expire. El tiempo de expiración máximo es de dos días, lo que permite tener tiempo suficiente para poner de nuevo en funcionamiento el servicio en caso de error.
+Si **confirmación** es **completa**y no recibirá un mensaje de comentarios, significa que ese mensaje de comentarios de Hola expirado. Hola servicio no puede saber qué mensaje original toohello problema. En la práctica, un servicio debe asegurarse de que puede procesar los comentarios de Hola antes de que expire. hora de expiración máximo de Hello es dos días, lo que permite una gran cantidad de tiempo tooget Hola servicio ejecutar de nuevo si se produce un error.
 
-Como se explica en [Puntos de conexión][lnk-endpoints], IoT Hub envía los comentarios a través de un punto de conexión accesible desde el servicio (**/messages/servicebound/feedback**) en forma de mensajes. La semántica de recepción de los comentarios es la misma que para los mensajes de la nube al dispositivo; además, tienen el mismo [ciclo de vida de los mensajes][lnk-lifecycle]. Siempre que sea posible, los comentarios de mensajes se agrupan en un único mensaje, con el formato siguiente:
+Como se explica en [Puntos de conexión][lnk-endpoints], IoT Hub envía los comentarios a través de un punto de conexión accesible desde el servicio (**/messages/servicebound/feedback**) en forma de mensajes. Hello semántica para recibir comentarios de Hola igual que para los mensajes en la nube al dispositivo y ha Hola mismo [Message Lifecycle-español][lnk-lifecycle]. Siempre que sea posible, comentarios de mensaje se realizan por lotes en un único mensaje, con hello siguiendo el formato:
 
 | Propiedad     | Description |
 | ------------ | ----------- |
-| EnqueuedTime | Marca de tiempo que indica cuándo se creó el mensaje. |
+| EnqueuedTime | Marca de tiempo que indica cuándo se creó el mensaje de bienvenida. |
 | UserId       | `{iot hub name}` |
 | ContentType  | `application/vnd.microsoft.iothub.feedback.json` |
 
-El cuerpo es una matriz serializada de JSON de registros, cada uno con las siguientes propiedades:
+cuerpo de Hello es una matriz JSON serializado de registros, cada uno con hello propiedades siguientes:
 
 | Propiedad           | Description |
 | ------------------ | ----------- |
-| EnqueuedTimeUtc    | Marca de tiempo que indica cuándo se produjo el resultado del mensaje. Por ejemplo, el dispositivo completado o el mensaje expirado. |
-| OriginalMessageId  | **MessageId** del mensaje de nube a dispositivo con el que está relacionada esta información de comentarios. |
+| EnqueuedTimeUtc    | Marca de tiempo que indica cuándo se produjeron resultado de hello de mensaje de bienvenida. Por ejemplo, Hola dispositivo completada o mensaje Hola expirado. |
+| OriginalMessageId  | **MessageId** de hello en la nube al dispositivo mensaje toowhich está relacionada con esta información de comentarios. |
 | StatusCode         | Cadena necesaria. Se utiliza en los mensajes de comentarios generados por el Centro de IoT. <br/> "Success" <br/> "Expired" <br/> 'DeliveryCountExceeded' <br/> "Rejected" <br/> 'Purged' |
 | Descripción        | Valores de cadena para **StatusCode**. |
-| deviceId           | **DeviceId** del dispositivo de destino del mensaje de nube a dispositivo con el que está relacionado este elemento de comentarios. |
-| DeviceGenerationId | **DeviceGenerationId** del dispositivo de destino del mensaje de nube a dispositivo con el que está relacionado este elemento de comentarios. |
+| deviceId           | **Id. de dispositivo** hello dispositivo de destino de hello en la nube al dispositivo mensaje toowhich está relacionado con este elemento de comentarios. |
+| DeviceGenerationId | **DeviceGenerationId** hello dispositivo de destino de hello en la nube al dispositivo mensaje toowhich está relacionado con este elemento de comentarios. |
 
-El servicio tiene que especificar un valor de **MessageId** para el mensaje de nube a dispositivo para poder correlacionar sus comentarios con el mensaje original.
+debe especificar el servicio de Hello un **MessageId** para hello en la nube al dispositivo de mensajes toobe pueda toocorrelate sus comentarios con mensajes de bienvenida del original.
 
-En el ejemplo siguiente se muestra el cuerpo de un mensaje de comentarios.
+Hello en el ejemplo siguiente se muestra hello cuerpo de un mensaje de comentarios.
 
 ```json
 [
@@ -112,22 +112,22 @@ En el ejemplo siguiente se muestra el cuerpo de un mensaje de comentarios.
 
 ## <a name="cloud-to-device-configuration-options"></a>Opciones de configuración de la nube al dispositivo
 
-Cada centro de IoT expone las siguientes opciones de configuración para la mensajería de nube a dispositivo:
+Cada centro de IoT expone Hola siguientes opciones de configuración para la mensajería de nube al dispositivo:
 
 | Propiedad                  | Description | Intervalo y valor predeterminado |
 | ------------------------- | ----------- | ----------------- |
-| defaultTtlAsIso8601       | TTL predeterminado para los mensajes de nube a dispositivo. | Intervalo de ISO_8601 hasta 2D (1 minuto como mínimo). Valor predeterminado: 1 hora. |
-| maxDeliveryCount          | Número máximo de entregas para las colas de nube a dispositivo por dispositivo. | De 1 a 100. Valor predeterminado: 10 |
-| feedback.ttlAsIso8601     | Retención de mensajes de comentarios del límite de servicio. | Intervalo de ISO_8601 hasta 2D (1 minuto como mínimo). Valor predeterminado: 1 hora. |
-| feedback.maxDeliveryCount |Número máximo de entregas para la cola de comentarios. | De 1 a 100. Valor predeterminado: 100. |
+| defaultTtlAsIso8601       | TTL predeterminado para los mensajes de nube a dispositivo. | Intervalo de ISO_8601 una too2D (1 minuto como mínimo). Valor predeterminado: 1 hora. |
+| maxDeliveryCount          | Número máximo de entregas para las colas de nube a dispositivo por dispositivo. | 1 too100. Valor predeterminado: 10 |
+| feedback.ttlAsIso8601     | Retención de mensajes de comentarios del límite de servicio. | Intervalo de ISO_8601 una too2D (1 minuto como mínimo). Valor predeterminado: 1 hora. |
+| feedback.maxDeliveryCount |Número máximo de entregas para la cola de comentarios. | 1 too100. Valor predeterminado: 100. |
 
-Para obtener más información sobre cómo establecer estas opciones de configuración, consulte [Crear instancias de IoT Hub][lnk-portal].
+Para obtener más información acerca de cómo tooset estas opciones de configuración, consulte [centros de IoT crear][lnk-portal].
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para obtener información sobre los SDK que puede utilizar para recibir mensajes de nube a dispositivo, consulte [SDK de Azure IoT][lnk-sdks].
+Para obtener información sobre SDK de hello puede utilizar mensajes de tooreceive en la nube al dispositivo, consulte [SDK de Azure IoT][lnk-sdks].
 
-Para probar la recepción de mensajes de nube a dispositivo, consulte el tutorial [Envío de mensajes desde la nube al dispositivo][lnk-c2d-tutorial].
+tootry espera recibir mensajes en la nube al dispositivo, consulte hello [enviar en la nube al dispositivo] [ lnk-c2d-tutorial] tutorial.
 
 [img-lifecycle]: ./media/iot-hub-devguide-messages-c2d/lifecycle.png
 

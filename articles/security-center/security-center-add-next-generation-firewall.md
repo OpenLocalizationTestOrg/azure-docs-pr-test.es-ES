@@ -1,6 +1,6 @@
 ---
-title: "Adición de un firewall de próxima generación en Azure Security Center | Microsoft Docs"
-description: "En este documento se muestra cómo implementar la recomendación de Azure Security Center de agregar un firewall de próxima generación y enrutar el tráfico solo a través de NGFW."
+title: "aaaAdd un firewall de generación siguiente en el centro de seguridad de Azure | Documentos de Microsoft"
+description: "Este documento muestra cómo tooimplement Hola recomendaciones de Azure Security Center ** agregar un Firewall de generación siguiente ** y ** tráfico de ruta a través de NGFW solo **."
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -14,59 +14,59 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
-ms.openlocfilehash: 30589d0a943517c03394a3aae7c03c8094e78c1f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9a80f12571ba08eadf3361728c6321388c863235
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="add-a-next-generation-firewall-in-azure-security-center"></a>Adición de un firewall de próxima generación en Azure Security Center
-Azure Security Center puede recomendarle agregar un firewall de próxima generación (NGFW) de un asociado de Microsoft para aumentar la protección. Este documento le ofrece un ejemplo de cómo hacerlo:
+Centro de seguridad de Azure puede recomienda agregar un servidor de seguridad de la generación siguiente (NGFW) desde un tooincrease de partner de Microsoft la protección de la seguridad. Este documento le guía a través de un ejemplo de cómo toodo esto.
 
 > [!NOTE]
-> En este documento se presenta el servicio mediante una implementación de ejemplo.  No se trata de una guía paso a paso.
+> Este documento presentan servicio hello mediante el uso de una implementación de ejemplo.  No se trata de una guía paso a paso.
 >
 >
 
-## <a name="implement-the-recommendation"></a>Implementación de la recomendación
-1. En la hoja **Recomendaciones**, seleccione **Agregar un firewall de última generación**.
-   ![Add a Next Generation Firewall][1]
-2. En la hoja **Add a Next Generation Firewall** (Agregar un firewall de próxima generación), seleccione un punto de conexión.
+## <a name="implement-hello-recommendation"></a>Implementar la recomendación de Hola
+1. Hola **recomendaciones** hoja, seleccione **agregar un Firewall de generación siguiente**.
+   ![Agregar un firewall de próxima generación][1]
+2. Hola **agregar un Firewall de generación siguiente** hoja, seleccione un punto de conexión.
    ![Selección de un punto de conexión][2]
-3. Se abrirá una segunda hoja **Add a Next Generation Firewall** (Agregar un firewall de próxima generación). Puede elegir usar una solución existente, si está disponible, o puede crear una nueva. En este ejemplo no hay ninguna solución existente disponible, por lo que vamos a crear un NGFW.
+3. Se abrirá una segunda hoja **Add a Next Generation Firewall** (Agregar un firewall de próxima generación). Puede elegir a toouse una solución existente si está disponible o puede crear uno nuevo. En este ejemplo no hay ninguna solución existente disponible, por lo que vamos a crear un NGFW.
    ![Creación de un firewall de próxima generación][3]
-4. Para crear un NGFW, seleccione una solución de la lista de asociados integrados. En este ejemplo se selecciona **Punto de comprobación**.
+4. toocreate un NGFW, seleccione una solución de lista de Hola de socios integrados. En este ejemplo se selecciona **Punto de comprobación**.
    ![Selección de una solución de firewall de próxima generación][4]
-5. Se abrirá la hoja **Punto de comprobación** , que le proporcionará información sobre la solución del asociado. Seleccione **Crear** en la hoja de información.
+5. Hola **punto de comprobación** hoja abre, proporciona información sobre solución de socios de Hola. Seleccione **crear** en la hoja de información de Hola.
    ![Hoja de información del firewall][5]
-6. Se abrirá la hoja **Crear máquina virtual** . Aquí puede escribir la información que se requiere para poner en marcha una máquina virtual que ejecuta el NGFW. Siga los pasos y proporcione la información de NGFW que sea necesaria. Seleccione Aceptar para que se aplique.
-   ![Creación de una máquina virtual para ejecutar un NGFW][6]
+6. Hola **crear máquina virtual** abre la hoja. Aquí puede introducir información toospin requiere una máquina virtual (VM) que se ejecuta Hola NGFW. Siga los pasos de Hola y proporcionar hello NGFW información necesaria. Seleccione Aceptar tooapply.
+   ![Crear la máquina virtual toorun NGFW][6]
 
 ## <a name="route-traffic-through-ngfw-only"></a>Enrutar el tráfico solo a través de NGFW
-Vuelva a la hoja **Recomendaciones** . Después de agregar un NGFW a través de Security Center, se genera una nueva entrada llamada **Enrutar el tráfico solo a través de un firewall de nueva generación**. Esta recomendación solo se crea si ha instalado el NGFW a través de Security Center. Si tiene puntos de conexión accesibles desde Internet, Security Center recomienda configurar reglas de grupos de seguridad de red que fuercen a que el tráfico entrante pase a la máquina virtual a través del NGFW.
+Devolver toohello **recomendaciones** hoja. Después de agregar un NGFW a través de Security Center, se genera una nueva entrada llamada **Enrutar el tráfico solo a través de un firewall de nueva generación**. Esta recomendación solo se crea si ha instalado el NGFW a través de Security Center. Si tiene extremos de conexión a Internet, el centro de seguridad recomienda configurar las reglas de grupo de seguridad de red que fuerce el tráfico entrante tooyour máquina virtual a través de su NGFW.
 
-1. En la hoja **Recomendaciones**, seleccione **Enrutar el tráfico solo a través de NGFW**.
+1. Hola **hoja de recomendaciones**, seleccione **enrutar el tráfico a través de NGFW solo**.
    ![Enrutar el tráfico solo a través de NGFW][7]
-2. Se abrirá la hoja **Enrutar el tráfico solo a través de un firewall de nueva generación** que enumera las máquinas virtuales a las que puede enrutar el tráfico. Seleccione una máquina virtual de la lista.
+2. Esto abre una hoja de hello **enrutar el tráfico a través de NGFW solo**, que muestra las máquinas virtuales que se puede redirigir el tráfico a. Seleccione una máquina virtual de hello lista.
    ![Seleccionar una máquina virtual][8]
-3. Se abre una hoja de la máquina virtual seleccionada, que muestra las reglas de entrada relacionadas. Una descripción proporciona más información sobre los posibles pasos posteriores. Seleccione **Editar reglas de entrada** para continuar con la edición de una regla de entrada. Se espera que el **Origen** no esté establecido en **Cualquiera** para los puntos de conexión accesibles desde Internet vinculados al NGFW. Para obtener más información sobre las propiedades de la regla de entrada, consulte [Reglas de grupo de seguridad de red](../virtual-network/virtual-networks-nsg.md#nsg-rules).
-   ![Configuración de reglas para limitar el acceso][9]
+3. Una hoja de hello seleccionado se abre VM y muestra las reglas de entrada relacionadas. Una descripción proporciona más información sobre los posibles pasos posteriores. Seleccione **editar reglas de entrada** tooproceed con la edición de una regla de entrada. Hola expectativa es que **origen** no está establecido demasiado**cualquier** para los extremos de conexión a Internet de hello vinculado con Hola NGFW. toolearn más información sobre propiedades de Hola de regla de entrada de hello, consulte [reglas del NSG](../virtual-network/virtual-networks-nsg.md#nsg-rules).
+   ![Configurar el acceso de las reglas toolimit][9]
    ![Editar regla de entrada][10]
 
-## <a name="see-also"></a>Consulte también
-En este documento se muestra cómo implementar la recomendación de Azure Security Center de agregar un firewall de próxima generación. Para obtener más información sobre los NGF y las soluciones de punto de comprobación de asociados, consulte los siguientes recursos:
+## <a name="see-also"></a>Otras referencias
+Este documento se ha explicado cómo tooimplement Hola recomendación de centro de seguridad "Agregar un Firewall de generación siguiente." toolearn más información sobre NGFWs y Hola solución de socios de punto de comprobación, vea Hola recursos siguientes:
 
 * [Firewall de próxima generación](https://en.wikipedia.org/wiki/Next-Generation_Firewall)
 * [Check Point vSEC](https://azure.microsoft.com/marketplace/partners/checkpoint/check-point-r77-10/)
 
-Para más información sobre el Centro de seguridad, consulte los siguientes recursos:
+toolearn más información acerca del centro de seguridad, vea Hola recursos siguientes:
 
-* [Establecimiento de directivas de seguridad en Azure Security Center](security-center-policies.md) : aprenda a configurar directivas de seguridad.
+* [Configuración de directivas de seguridad en el centro de seguridad de Azure](security-center-policies.md) : Obtenga información acerca de cómo las directivas de seguridad de tooconfigure.
 * [Administración de recomendaciones de seguridad en Azure Security Center](security-center-recommendations.md) : recomendaciones que le ayudan a proteger los recursos de Azure.
-* [Supervisión del estado de seguridad en Azure Security Center](security-center-monitoring.md): obtenga información sobre cómo supervisar el mantenimiento de los recursos de Azure.
-* [Administración y respuesta a las alertas de seguridad en Azure Security Center](security-center-managing-and-responding-alerts.md): obtenga información sobre cómo administrar y responder a alertas de seguridad.
-* [Supervisión de las soluciones de asociados con Azure Security Center](security-center-partner-solutions.md): aprenda a supervisar el estado de mantenimiento de las soluciones de asociados.
-* [Preguntas más frecuentes sobre Azure Security Center](security-center-faq.md) : busque las preguntas más frecuentes sobre cómo usar el servicio.
+* [Supervisión de estado de seguridad de Azure Security Center](security-center-monitoring.md) : Obtenga información acerca de cómo toomonitor Hola estado de los recursos de Azure.
+* [Toosecurity de administración y de que responda las alertas en el centro de seguridad de Azure](security-center-managing-and-responding-alerts.md) : Obtenga información acerca de cómo las alertas de toosecurity toomanage y que responden.
+* [Supervisión de soluciones de socios comerciales con Azure Security Center](security-center-partner-solutions.md) : Obtenga información acerca de cómo toomonitor Hola estado de mantenimiento de las soluciones de socios comerciales.
+* [Preguntas más frecuentes de Azure Security Center](security-center-faq.md) --buscar preguntas más frecuentes sobre el uso de servicio de Hola.
 * [Blog de seguridad de Azure](http://blogs.msdn.com/b/azuresecurity/) : encuentre publicaciones de blog sobre el cumplimiento y la seguridad de Azure.
 
 <!--Image references-->

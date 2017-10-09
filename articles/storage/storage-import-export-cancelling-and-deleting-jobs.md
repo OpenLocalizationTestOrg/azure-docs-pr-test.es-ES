@@ -1,6 +1,6 @@
 ---
-title: "Cancelación y eliminación de un trabajo de Azure Import/Export | Microsoft Docs"
-description: "Descubra cómo cancelar y eliminar trabajos del servicio Microsoft Azure Import/Export."
+title: "aaaCancel y eliminar un trabajo de importación y exportación de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toocancel y eliminar trabajos para hello servicio de importación y exportación de Microsoft Azure."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: e0a7ff391e5a03ed563912dea54c7cfe73111bcf
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5d2aba510dafd0ca9a10f5643f721e7059a6a8f1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="canceling-and-deleting-azure-importexport-jobs"></a>Cancelación y eliminación de trabajos de Azure Import/Export
 
-Puede solicitar la cancelación de un trabajo antes de que adquiera el estado `Packaging` llamando a la operación de [Update Job Properties](/rest/api/storageimportexport/jobs#Jobs_Update) (Actualizar propiedades del trabajo) y establecer el elemento `CancelRequested` en `true`. El cancelará el trabajo en función de la mejor opción. Si las unidades están transfiriendo datos, es posible que estos sigan transmitiéndose incluso después de haber solicitado la cancelación.
+Puede solicitar que se cancele un trabajo antes de que se encuentra en hello `Packaging` estado Hola llamada [actualizar propiedades del trabajo](/rest/api/storageimportexport/jobs#Jobs_Update) Hola de operación y configuración `CancelRequested` elemento demasiado`true`. trabajo de Hola se cancelarán de forma óptima. Si las unidades están en proceso de Hola de transferencia de datos, datos pueden seguir toobe transferido incluso después de que ha solicitado la cancelación.
 
- Un trabajo cancelado adquirirá el estado `Completed` y se conservará durante 90 días; transcurrido ese plazo, se eliminará.
+ Un trabajo cancelado pasará toohello `Completed` de estado y se mantendrá durante 90 días, momento en que se eliminarán.
 
- Para eliminar un trabajo, llame a la operación [Eliminar trabajo](/rest/api/storageimportexport/jobs#Jobs_Delete) antes de que este se haya procesado (*es decir*, mientras el trabajo muestre el estado `Creating`). También puede eliminar un trabajo cuando se encuentra en el estado `Completed`. Una vez eliminado un trabajo, ya no se podrá acceder a su información y estado mediante la API de REST o Azure Portal.
+ toodelete un trabajo, llamada hello [Eliminar trabajo](/rest/api/storageimportexport/jobs#Jobs_Delete) operación antes de que se envía el trabajo de hello (*, es decir,*, mientras que el trabajo de Hola Hola `Creating` estado). También puede eliminar un trabajo cuando se encuentra en hello `Completed` estado. Una vez eliminado un trabajo, su información y estado ya no son accesibles a través de la API de REST de Hola u Hola portal de Azure.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-* [Uso de la API de REST del servicio Azure Import/Export](storage-import-export-using-the-rest-api.md)
+* [Usar servicio de importación y exportación de hello API de REST](storage-import-export-using-the-rest-api.md)

@@ -1,5 +1,5 @@
 ---
-title: "Mantenimiento y actualización de máquinas virtuales Linux en Azure | Microsoft Docs"
+title: "aaaMaintenance y actualizaciones para máquinas virtuales de Linux en Azure | Documentos de Microsoft"
 description: "Información general sobre el mantenimiento y las actualizaciones de las máquinas virtuales Linux que se ejecutan en Azure."
 services: virtual-machines-linux
 documentationcenter: 
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2017
 ms.author: zivr
-ms.openlocfilehash: 6ead5f0b6a065710a70f1e44d9672c6d8cc4c1e2
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: b5fcf0211971a56ca04f4327a322dfc2e2c0941a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="planned-maintenance-for-linux-virtual-machines"></a>Mantenimiento planeado de máquinas virtuales Linux 
 
@@ -27,5 +27,5 @@ ms.lasthandoff: 08/18/2017
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-[Azure Metadata Service](instance-metadata-service.md) le permite descubrir información sobre una máquina virtual hospedada en Azure. 
+Hola [el servicio de metadatos de Azure](instance-metadata-service.md) permite toodiscover información acerca de la máquina Virtual hospedada en Azure. 
 

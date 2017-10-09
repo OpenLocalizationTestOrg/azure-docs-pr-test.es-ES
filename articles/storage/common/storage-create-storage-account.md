@@ -1,6 +1,6 @@
 ---
-title: "Creación, administración o eliminación de una cuenta de almacenamiento en Azure Portal | Microsoft Docs"
-description: "Cree una nueva cuenta de almacenamiento, administre las claves de acceso de dicha cuenta o elimínela en Azure Portal. Obtenga información acerca de las cuentas de almacenamiento estándar y premium."
+title: aaaHow toocreate, administrar o eliminar una cuenta de almacenamiento en hello portal de Azure | Documentos de Microsoft
+description: "Crear una nueva cuenta de almacenamiento, administrar las claves de acceso de cuenta o eliminar una cuenta de almacenamiento en hello portal de Azure. Obtenga información acerca de las cuentas de almacenamiento estándar y premium."
 services: storage
 documentationcenter: 
 author: robinsh
@@ -15,11 +15,11 @@ ms.topic: get-started-article
 f1_keywords: sql13.swb.windowsazurestorage.connect.f1
 ms.date: 01/23/2017
 ms.author: robinsh
-ms.openlocfilehash: 848f6b07e51b58b00b81dd42ca1d478fdba20d06
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 3a2a07c4131fbe594c7007f59950bf94339809fd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="about-azure-storage-accounts"></a>Acerca de las cuentas de almacenamiento de Azure
 [!INCLUDE [storage-selector-portal-create-storage-account](../../../includes/storage-selector-portal-create-storage-account.md)]
@@ -27,7 +27,7 @@ ms.lasthandoff: 08/29/2017
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-tip-include.md)]
 
 ## <a name="overview"></a>Información general
-Una cuenta de almacenamiento de Azure proporciona un espacio de nombres único para almacenar y tener acceso a los objetos de datos de Almacenamiento de Azure. Todos los objetos de una cuenta de almacenamiento se facturan juntos como un grupo. De forma predeterminada, los datos de su cuenta están disponibles solo para usted, el propietario de la cuenta.
+Una cuenta de almacenamiento de Azure proporciona un toostore de espacio de nombres único y obtener acceso a los objetos de datos de almacenamiento de Azure. Todos los objetos de una cuenta de almacenamiento se facturan juntos como un grupo. De forma predeterminada, datos de hello en su cuenta de están disponible solo tooyou, propietario de la cuenta de hello.
 
 [!INCLUDE [storage-account-types-include](../../../includes/storage-account-types-include.md)]
 
@@ -35,14 +35,14 @@ Una cuenta de almacenamiento de Azure proporciona un espacio de nombres único p
 [!INCLUDE [storage-account-billing-include](../../../includes/storage-account-billing-include.md)]
 
 > [!NOTE]
-> Al crear una máquina virtual de Azure, se crea automáticamente una cuenta de almacenamiento en la ubicación de implementación si todavía no tiene una cuenta de almacenamiento en esa ubicación. Por tanto, no es necesario aplicar los pasos descritos a continuación para crear una cuenta de almacenamiento para los discos de máquinas virtuales. El nombre de la cuenta de almacenamiento se basará en el nombre de la máquina virtual. Consulte la [documentación de máquinas virtuales de Azure](https://azure.microsoft.com/documentation/services/virtual-machines/) para obtener más detalles.
+> Cuando se crea una máquina virtual de Azure, una cuenta de almacenamiento se crea automáticamente en la ubicación de implementación de hello si ya no tiene una cuenta de almacenamiento en esa ubicación. Por lo que no es necesario toofollow Hola estos pasos toocreate una cuenta de almacenamiento para los discos de máquina virtual. nombre de cuenta de almacenamiento de Hola se basará en el nombre de la máquina virtual de Hola. Vea hello [documentación de máquinas virtuales de Azure](https://azure.microsoft.com/documentation/services/virtual-machines/) para obtener más detalles.
 > 
 > 
 
 ## <a name="storage-account-endpoints"></a>Extremos de la cuenta de almacenamiento
-Cada objeto que se almacena en el Almacenamiento de Azure tiene una dirección URL única. El nombre de la cuenta de almacenamiento forma el subdominio de esa dirección. La combinación de nombre de subdominio y dominio, específica de cada servicio, forma un *punto de conexión* para la cuenta de almacenamiento.
+Cada objeto que se almacena en el Almacenamiento de Azure tiene una dirección URL única. formatos de nombres de cuenta de almacenamiento de Hola Hola subdominio de esa dirección. Hello combinación de nombre de subdominio y de dominio, que es el servicio de tooeach específico, forma un *extremo* para su cuenta de almacenamiento.
 
-Por ejemplo, si la cuenta de almacenamiento se llama *mystorageaccount*, los extremos predeterminados para la cuenta de almacenamiento son:
+Por ejemplo, si la cuenta de almacenamiento se denomina *mystorageaccount*, puntos de conexión de hello predeterminados para la cuenta de almacenamiento son:
 
 * Blob service: http://*mystorageaccount*.blob.core.windows.net
 * Table service: http://*mystorageaccount*.table.core.windows.net
@@ -50,101 +50,101 @@ Por ejemplo, si la cuenta de almacenamiento se llama *mystorageaccount*, los ext
 * Servicio de archivos: http://*mystorageaccount*.file.core.windows.net
 
 > [!NOTE]
-> Una cuenta de Almacenamiento de blobs solo expone el punto de conexión del BLOB.
+> Una cuenta de almacenamiento Blob solo expone el extremo de servicio de Blob de Hola.
 > 
 > 
 
-La dirección URL para el acceso a un objeto en una cuenta de almacenamiento se crea anexando la ubicación del objeto en la cuenta de almacenamiento al extremo. Por ejemplo, una dirección de blob podría tener este formato: http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob*.
+dirección URL de Hello para tener acceso a un objeto en una cuenta de almacenamiento se crea mediante la anexión de ubicación del objeto de hello en el punto de conexión de hello almacenamiento cuenta toohello. Por ejemplo, una dirección de blob podría tener este formato: http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob*.
 
-También puede configurar un nombre de dominio personalizado para usarlo con la cuenta de almacenamiento. Para más información, consulte [Configuración de un nombre de dominio personalizado para el punto de conexión de Blob Storage](../blobs/storage-custom-domain-name.md). También puede configurarlo con PowerShell. Para más información, consulte el cmdlet [Set-AzureRmStorageAccount](/powershell/module/azurerm.storage/set-azurermstorageaccount) .  
+También puede configurar un toouse de nombre de dominio personalizado con su cuenta de almacenamiento. Para más información, consulte [Configuración de un nombre de dominio personalizado para el punto de conexión de Blob Storage](../blobs/storage-custom-domain-name.md). También puede configurarlo con PowerShell. Para obtener más información, vea hello [AzureRmStorageAccount conjunto](/powershell/module/azurerm.storage/set-azurermstorageaccount) cmdlet.  
 
 
 ## <a name="create-a-storage-account"></a>Crear una cuenta de almacenamiento
-1. Inicie sesión en el [Portal de Azure](https://portal.azure.com).
-2. En el menú central, seleccione **Nuevo** -> **Almacenamiento** -> **Cuenta de almacenamiento**.
-3. Escriba un nombre para la cuenta de almacenamiento. Consulte [Puntos de conexión de cuenta de almacenamiento](#storage-account-endpoints) para más información sobre la forma en que se usará el nombre de la cuenta de almacenamiento para dirigir los objetos en Almacenamiento de Azure.
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
+2. En el menú del concentrador hello, seleccione **New** -> **almacenamiento** -> **cuenta de almacenamiento**.
+3. Escriba un nombre para la cuenta de almacenamiento. Vea [puntos de conexión de cuenta de almacenamiento](#storage-account-endpoints) para obtener información detallada acerca de cómo nombre de cuenta de almacenamiento de hello será tooaddress usa los objetos de almacenamiento de Azure.
    
    > [!NOTE]
    > Los nombres de cuentas de almacenamiento deben tener entre 3 y 24 caracteres, y solo pueden contener números y letras minúsculas.
    > 
-   > El nombre de la cuenta de almacenamiento debe ser único dentro de Azure. El Portal de Azure indicará si el nombre de la cuenta de almacenamiento que seleccione ya está en uso.
+   > El nombre de la cuenta de almacenamiento debe ser único dentro de Azure. Hola portal de Azure se indicará si el nombre de la cuenta de almacenamiento Hola que selecciona ya está en uso.
    > 
    > 
-4. Especifique el modelo de implementación que se va a usar: **Resource Manager** o **Clásico**. **Administrador de recursos** es el modelo de implementación recomendado. Para obtener más información, vea [Descripción de la implementación del Administrador de recursos y la implementación clásica](../../azure-resource-manager/resource-manager-deployment-model.md).
+4. Especificar toobe de modelo de implementación de hello usa: **el Administrador de recursos** o **clásico**. **El Administrador de recursos** recomienda Hola modelo de implementación. Para obtener más información, vea [Descripción de la implementación del Administrador de recursos y la implementación clásica](../../azure-resource-manager/resource-manager-deployment-model.md).
    
    > [!NOTE]
-   > Las cuentas de Almacenamiento de blobs solo pueden crearse mediante el modelo de implementación de Resource Manager.
+   > Las cuentas de almacenamiento de BLOB solo pueden crearse mediante el modelo de implementación del Administrador de recursos de Hola.
 
-5. Seleccione el tipo de cuenta de almacenamiento: **Uso general** o **Blob Storage**. **Uso general** es el tipo predeterminado.
+5. Seleccionar tipo de saludo de la cuenta de almacenamiento: **de propósito General** o **almacenamiento de blobs**. **Propósito general** es Hola predeterminado.
    
-    Si se ha seleccionado **Uso general**, especifique el nivel de rendimiento: **Estándar** o **Premium**. El valor predeterminado es **Estándar**. Para más información sobre las cuentas de almacenamiento estándar y Premium Storage, consulte [Introducción a Microsoft Azure Storage](storage-introduction.md) y [Premium Storage: almacenamiento de alto rendimiento para cargas de trabajo de máquina virtual de Azure](storage-premium-storage.md).
+    Si **de propósito General** se ha seleccionado, a continuación, especifique el nivel de rendimiento de hello: **estándar** o **Premium**. valor predeterminado de Hello es **estándar**. Para obtener más detalles sobre las cuentas de almacenamiento estándar y premium, consulte [Introducción tooMicrosoft almacenamiento de Azure](storage-introduction.md) y [almacenamiento Premium: almacenamiento de alto rendimiento para cargas de trabajo de máquina Virtual de Azure](storage-premium-storage.md).
    
-    Si se ha seleccionado **Blob Storage**, especifique el nivel de acceso: **Frecuente** o **Esporádico**. El valor predeterminado es **Frecuente**. Consulte [Almacenamiento de blobs de Azure: niveles de acceso Esporádico y Frecuente](../blobs/storage-blob-storage-tiers.md) para más información.
-6. Seleccione la opción de replicación de la cuenta de almacenamiento: **LRS**, **GRS**, **RA-GRS** o **ZRS**. El valor predeterminado es **RA-GRS**. Para obtener más información sobre las opciones de replicación del Almacenamiento de Azure, consulte [Replicación de Almacenamiento de Azure](storage-redundancy.md).
-7. Seleccione la suscripción en la que desea crear la nueva cuenta de almacenamiento.
+    Si **almacenamiento de blobs** se ha seleccionado, a continuación, especifique el nivel de acceso de hello: **activa** o **frío**. valor predeterminado de Hello es **activa**. Consulte [Almacenamiento de blobs de Azure: niveles de acceso Esporádico y Frecuente](../blobs/storage-blob-storage-tiers.md) para más información.
+6. Seleccione opción de replicación de Hola Hola cuenta de almacenamiento: **LRS**, **GRS**, **RA-GRS**, o **ZRS**. valor predeterminado de Hello es **RA-GRS**. Para obtener más información sobre las opciones de replicación del Almacenamiento de Azure, consulte [Replicación de Almacenamiento de Azure](storage-redundancy.md).
+7. Seleccione la suscripción de hello en que desea que la nueva cuenta de almacenamiento de toocreate Hola.
 8. Especifique un nuevo grupo de recursos o seleccione un grupo de recursos existente. Para más información sobre los grupos de recursos, consulte [Información general de Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
-9. Seleccione la ubicación geográfica para la cuenta de almacenamiento. Consulte [Regiones de Azure](https://azure.microsoft.com/regions/#services) para más información acerca de qué servicios están disponibles en cada región.
-10. Haga clic en **Crear** para crear la cuenta de almacenamiento.
+9. Seleccione la ubicación geográfica de hello para la cuenta de almacenamiento. Consulte [Regiones de Azure](https://azure.microsoft.com/regions/#services) para más información acerca de qué servicios están disponibles en cada región.
+10. Haga clic en **crear** cuenta de almacenamiento de toocreate Hola.
 
 ## <a name="manage-your-storage-account"></a>Administración de la cuenta de almacenamiento
 ### <a name="change-your-account-configuration"></a>Cambio de la configuración de cuenta
-Después de crear la cuenta de almacenamiento, puede modificar su configuración, por ejemplo, cambiar la opción de replicación usada para la cuenta o cambiar el nivel de acceso de una cuenta de Almacenamiento de blobs. En [Azure Portal](https://portal.azure.com), navegue hasta su cuenta de almacenamiento y haga clic en **Configuración** en **CONFIGURACIÓN** para ver o cambiar la configuración de la cuenta.
+Después de crear la cuenta de almacenamiento, puede modificar su configuración, como el cambio de opción de replicación de hello utilizado para la cuenta de Hola o cambiar nivel de acceso de Hola para una cuenta de almacenamiento de blobs. Hola [portal de Azure](https://portal.azure.com), navegar por la cuenta de almacenamiento de tooyour, busque y haga clic en **configuración** en **configuración** tooview o cambio de configuración de la cuenta de hello.
 
 > [!NOTE]
-> Según el nivel de rendimiento que eligió al crear la cuenta de almacenamiento, es posible que algunas opciones de replicación no estén disponibles.
+> Según el nivel de rendimiento de Hola que eligió al crear la cuenta de almacenamiento de hello, algunas opciones de replicación no pueden estar disponibles.
 > 
 > 
 
-Si se cambia la opción de replicación, cambiarán los precios. Consulte [Precios de Almacenamiento de Azure](https://azure.microsoft.com/pricing/details/storage/) para más información.
+Cambiar la opción de replicación de hello, cambiará el precio del servicio. Consulte [Precios de Almacenamiento de Azure](https://azure.microsoft.com/pricing/details/storage/) para más información.
 
-Para las cuentas de Almacenamiento de blobs, cambiar el nivel de acceso puede generar cargos por el cambio, además de cambios en el precio. Consulte [Cuentas de Almacenamiento de blobs: precios y facturación](../blobs/storage-blob-storage-tiers.md#pricing-and-billing) para más información.
+Para Blob cuentas de almacenamiento, cambiar el nivel de acceso de hello pueden incurrir en cargos de hello cambiar además toochanging el precio del servicio. Vea hello [cuentas de almacenamiento - precios y facturación de Blob](../blobs/storage-blob-storage-tiers.md#pricing-and-billing) para obtener más detalles.
 
 ### <a name="manage-your-storage-access-keys"></a>Administración de las claves de acceso de almacenamiento
-Al crear una cuenta de almacenamiento, Azure genera dos claves de acceso de almacenamiento de 512 bits que se usan para autenticación cuando se obtiene acceso a la cuenta de almacenamiento. Al brindar dos claves de acceso de almacenamiento, Azure le permite volver a generar las claves sin interrupción en su servicio de almacenamiento, o bien, tener acceso a ese servicio.
+Cuando se crea una cuenta de almacenamiento, Azure genera dos claves de acceso de almacenamiento de 512 bits, que se usan para la autenticación cuando se tiene acceso a la cuenta de almacenamiento de Hola. Proporcionando dos claves de acceso de almacenamiento de Azure permite las claves de hello tooregenerate con ningún servicio de almacenamiento de tooyour de interrupción o un servicio de toothat de acceso.
 
 > [!NOTE]
-> Se recomienda no compartir con nadie las claves de acceso de almacenamiento. Para permitir el acceso a los recursos de almacenamiento sin proporcionar sus claves de acceso, puede usar una *firma de acceso compartido*. Una firma de acceso compartido proporciona acceso a un recurso de su cuenta durante un intervalo que defina y con los permisos que especifique. Consulte [Uso de firmas de acceso compartido (SAS)](storage-dotnet-shared-access-signature-part-1.md) para más información.
+> Se recomienda no compartir con nadie las claves de acceso de almacenamiento. toopermit acceder a los recursos de toostorage sin dar las claves de acceso, puede usar un *firma de acceso compartido*. Una firma de acceso compartido proporciona acceso tooa recursos en su cuenta para un intervalo que define y con permisos de Hola que especifique. Consulte [Uso de firmas de acceso compartido (SAS)](storage-dotnet-shared-access-signature-part-1.md) para más información.
 > 
 > 
 <a id="view-and-copy-storage-access-keys"/></a>
 #### <a name="view-and-copy-storage-access-keys"></a>Visualización y copia de las claves de acceso de almacenamiento
-En [Azure Portal](https://portal.azure.com), vaya a su cuenta de almacenamiento, haga clic en **All settings** (Toda la configuración) y luego en **Claves de acceso** para ver, copiar y volver a generar las claves de acceso de la cuenta. La hoja de **claves de acceso** también incluye cadenas de conexión configuradas previamente que usan claves principales y secundarias que puede copiar para usarlas en las aplicaciones.
+Hola [portal de Azure](https://portal.azure.com), navegue tooyour cuenta de almacenamiento, haga clic en **toda la configuración de** y, a continuación, haga clic en **las claves de acceso** tooview, copiar y regenerar las claves de acceso de cuenta. Hola **teclas de acceso** hoja también incluye las cadenas de conexión configuradas previamente con las claves principales y secundarias que se pueden copiar toouse en sus aplicaciones.
 
 #### <a name="regenerate-storage-access-keys"></a>Nueva generación de las claves de acceso de almacenamiento
-Recomendamos que cambie las claves de acceso de su cuenta de almacenamiento periódicamente para ayudar a mantener seguras las conexiones de almacenamiento. Se asignan dos claves de acceso para que pueda mantener las conexiones con la cuenta de almacenamiento usando una clave de acceso mientras genera de nuevo la otra clave de acceso.
+Le recomendamos que cambie las teclas de acceso de hello tooyour cuenta de almacenamiento, periódicamente toohelp proteger las conexiones de almacenamiento. Se asignan dos claves de acceso para que pueda mantener cuenta de almacenamiento de las conexiones toohello mediante una clave de acceso mientras se regenera Hola otra clave de acceso.
 
 > [!WARNING]
-> La regeneración de las claves de acceso puede afectar a servicios de Azure, así como a sus propias aplicaciones que dependen de la cuenta de almacenamiento. Todos los clientes que usan la clave de acceso para acceder a la cuenta de almacenamiento deben estar actualizados para usar la nueva clave.
+> Volver a generar las claves de acceso puede afectar a los servicios en Azure, así como sus propias aplicaciones que dependen de la cuenta de almacenamiento de Hola. Todos los clientes que usan cuenta de almacenamiento de hello acceso tooaccess clave Hola deben ser clave nueva de hello toouse actualizada.
 > 
 > 
 
-**Servicios multimedia** : si tiene servicios multimedia que dependen de su cuenta de almacenamiento, debe volver a sincronizar las claves de acceso con los servicios multimedia después de regenerar las claves.
+**Servicios multimedia** -si tiene servicios de multimedia que dependen de la cuenta de almacenamiento, deben volver a sincronizar las claves de acceso de hello con su servicio multimedia después de regenerar claves de Hola.
 
-**Aplicaciones** : si tiene aplicaciones web o servicios en la nube que usan la cuenta de almacenamiento, perderá las conexiones si regenera las claves, a menos que las convierta.
+**Aplicaciones** : si tiene aplicaciones web o servicios en la nube esa cuenta de almacenamiento de uso hello, perderá las conexiones de hello si vuelve a generar las claves, a menos que poner las claves.
 
-**Exploradores de almacenamiento** : si usa alguna [aplicación exploradora de almacenamiento](storage-explorers.md), es probable que tenga que actualizar la clave de almacenamiento que usan dichas aplicaciones.
+**Exploradores de almacenamiento** : Si usas cualquiera [las aplicaciones de explorador de almacenamiento](storage-explorers.md), seguramente necesitará la clave de almacenamiento de hello tooupdate dichas aplicaciones usan.
 
-Este es el proceso de rotación de las claves de acceso de almacenamiento:
+Este es el proceso de Hola para rotar las claves de acceso de almacenamiento:
 
-1. Actualice las cadenas de conexión en el código de su aplicación para hacer referencia a la clave de acceso secundaria de la cuenta de almacenamiento.
-2. Vuelva a generar la clave de acceso primaria para su cuenta de almacenamiento. En la hoja **Claves de acceso**, haga clic en **Regenerar clave1** y luego haga clic en **Sí** para confirmar que desea generar una nueva clave.
-3. Actualice las cadenas de conexión en su código para hacer referencia a la nueva clave de acceso primaria.
-4. Vuelva a generar la clave de acceso secundaria de la misma forma.
+1. Actualizar las cadenas de conexión de hello en su clave de acceso secundaria de hello tooreference aplicación de código de cuenta de almacenamiento de Hola.
+2. Regenerar clave de acceso principal de hello para la cuenta de almacenamiento. En hello **teclas de acceso** hoja, haga clic en **regenerar Key1**y, a continuación, haga clic en **Sí** tooconfirm que desea toogenerate una nueva clave.
+3. Actualizar las cadenas de conexión de hello en su clave de acceso principal nueva de código tooreference Hola.
+4. Clave de acceso secundaria de regenerar Hola Hola igual manera.
 
 ## <a name="delete-a-storage-account"></a>Eliminar una cuenta de almacenamiento
-Para quitar una cuenta de almacenamiento que ha dejado de usarse, navegue a la cuenta de almacenamiento en el [Portal de Azure](https://portal.azure.com)y haga clic en **Eliminar**. Si se elimina la cuenta de almacenamiento, se elimina toda la cuenta, incluidos todos los datos de la cuenta.
+tooremove una cuenta de almacenamiento que ya no se está usando, navegar por la cuenta de almacenamiento de toohello en hello [portal de Azure](https://portal.azure.com)y haga clic en **eliminar**. Al eliminar una cuenta de almacenamiento, eliminan toda cuenta hello, incluidos todos los datos de cuenta de hello.
 
 > [!WARNING]
-> No es posible restaurar una cuenta de almacenamiento eliminada ni recuperar el contenido que contenía antes de la eliminación. Asegúrese de hacer una copia de seguridad de cualquier contenido que desee guardar antes de eliminar la cuenta. Esto también es verdad para los recursos de la cuenta: cuando se elimina un blob, tabla, cola o archivo, este se eliminará definitivamente.
+> Es imposible toorestore una cuenta de almacenamiento se eliminó o recuperar contenido de Hola que contenía antes de la eliminación. Prepararse nada tooback seguro de que desea toosave antes de eliminar la cuenta de hello. Esto también es válido para todos los recursos en la cuenta de hello: al eliminar un blob, tabla, cola o archivo, éste se eliminará permanentemente.
 > 
 
-Si intenta eliminar una cuenta de almacenamiento asociada a una máquina virtual de Azure, puede obtener un error sobre que la cuenta de almacenamiento aún está usándose. Para obtener ayuda para solucionar este error, consulte [Solución de errores al eliminar las cuentas de almacenamiento](../common/storage-resource-manager-cannot-delete-storage-account-container-vhd.md).
+Si intentas toodelete una cuenta de almacenamiento asociada a una máquina virtual de Azure, obtendrá un error acerca de la cuenta de almacenamiento de hello aún está en uso. Para obtener ayuda para solucionar este error, consulte [Solución de errores al eliminar las cuentas de almacenamiento](../common/storage-resource-manager-cannot-delete-storage-account-container-vhd.md).
 
 ## <a name="next-steps"></a>Pasos siguientes
-* El [Explorador de Microsoft Azure Storage](../../vs-azure-tools-storage-manage-with-storage-explorer.md) es una aplicación independiente y gratuita de Microsoft que permite trabajar visualmente con los datos de Azure Storage en Windows, macOS y Linux.
+* [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) es una aplicación independiente disponible, de Microsoft que le permite toowork visualmente con datos del almacenamiento de Azure en Windows, Mac OS y Linux.
 * [Almacenamiento de blobs de Azure: niveles de acceso Esporádico y Frecuente](../blobs/storage-blob-storage-tiers.md)
 * [Replicación de almacenamiento de Azure](storage-redundancy.md)
 * [Configuración de las cadenas de conexión de Almacenamiento de Azure](../storage-configure-connection-string.md)
-* [Transferencia de datos con la utilidad en línea de comandos AzCopy](storage-use-azcopy.md)
-* Visite el [Blog del equipo de almacenamiento de Azure](http://blogs.msdn.com/b/windowsazurestorage/).
+* [Transferencia de datos con la utilidad de línea de comandos de AzCopy Hola](storage-use-azcopy.md)
+* Visite hello [Blog del equipo de almacenamiento de Azure](http://blogs.msdn.com/b/windowsazurestorage/).
 

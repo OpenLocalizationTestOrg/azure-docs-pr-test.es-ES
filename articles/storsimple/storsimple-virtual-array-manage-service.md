@@ -1,6 +1,6 @@
 ---
-title: "Implementación del servicio StorSimple Device Manager | Microsoft Docs"
-description: "Aquí encontrará información acerca de cómo crear y eliminar el servicio StorSimple Device Manager en Azure Portal, así como una descripción acerca de cómo administrar la clave de registro del servicio."
+title: aaaDeploy servicio de administrador de dispositivos de StorSimple | Documentos de Microsoft
+description: "Explica cómo toocreate y delete Hola servicio Administrador de dispositivos de StorSimple en hello portal de Azure y se describe cómo toomanage Hola clave de registro del servicio."
 services: storsimple
 documentationcenter: 
 author: alkohli
@@ -14,102 +14,102 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/29/2016
 ms.author: alkohli
-ms.openlocfilehash: 1881a0625b107ae1a90e5b772f5296a4d728973d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9064053addc7b3dfcce08b47e81b38c2e0e1b559
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>Implementación del servicio StorSimple Device Manager en una instancia de StorSimple Virtual Array
+# <a name="deploy-hello-storsimple-device-manager-service-for-storsimple-virtual-array"></a>Implementar el servicio de administrador de dispositivos de StorSimple de Hola para StorSimple Virtual Array
 ## <a name="overview"></a>Información general
 
-El servicio StorSimple Device Manager se ejecuta en Microsoft Azure y se conecta a varios dispositivos de StorSimple. Después de crear el servicio, puede usarlo para administrar los dispositivos desde el Portal de Microsoft Azure, ejecutándolo en un explorador. Esto permite supervisar todos los dispositivos que están conectados al servicio StorSimple Device Manager desde una única ubicación central, reduciendo la carga administrativa.
+Hola servicio Administrador de dispositivos de StorSimple se ejecuta en Microsoft Azure y conecta a los dispositivos de StorSimple toomultiple. Después de crear el servicio de hello, se pueden usar dispositivos de hello toomanage desde Hola Microsoft Azure portal se ejecuta en un explorador. Esto le permite toomonitor todos los dispositivos de hello toohello conectado el Administrador de dispositivos de StorSimple el servicio desde una única ubicación central, con lo que se minimiza el trabajo administrativo.
 
-Las tareas comunes relacionadas con un servicio StorSimple Device Manager son:
+Hola comunes tareas relacionadas tooa servicio de administrador de dispositivos de StorSimple son:
 
 * Crear un servicio
 * Eliminar un servicio
-* Obtener la clave de registro del servicio
-* Volver a generar la clave de registro de servicio
+* Obtener clave de registro del servicio de Hola
+* Regenerar la clave de registro del servicio de Hola
 
-Este tutorial describe cómo realizar cada una de las tareas anteriores. La información contenida en este artículo se aplica solo a las matrices virtuales de StorSimple. Para más información acerca de la serie 8000 de StorSimple, vaya a [Implementar el servicio StorSimple Manager](storsimple-manage-service.md).
+Este tutorial describe cómo tooperform de Hola tareas anteriores. información de Hello contenida en este artículo es aplicable únicamente tooStorSimple Virtual las matrices. Para obtener más información acerca de la serie StorSimple 8000, vaya demasiado[implementar un servicio de StorSimple Manager](storsimple-manage-service.md).
 
 ## <a name="create-a-service"></a>Crear un servicio
 
-Para crear un servicio, debe tener:
+toocreate un servicio, necesita toohave:
 
 * Una suscripción con un contrato Enterprise
 * Una cuenta de Almacenamiento de Microsoft Azure activa.
-* La información de facturación que se usa para la administración de acceso
+* Hola información de facturación que se usa para la administración de acceso
 
-También puede generar una cuenta de almacenamiento al crear el servicio.
+También puede elegir toogenerate en una cuenta de almacenamiento al crear el servicio de Hola.
 
-Un único servicio puede administrar varios dispositivos. Sin embargo, un dispositivo no puede abarcar varios servicios. Una gran empresa puede tener varias instancias de servicio para trabajar con distintas suscripciones, organizaciones o incluso las ubicaciones de implementación.
+Un único servicio puede administrar varios dispositivos. Sin embargo, un dispositivo no puede abarcar varios servicios. Una gran empresa puede tener varios toowork de instancias de servicio con distintas suscripciones, organizaciones o incluso regiones de implementación.
 
 > [!NOTE]
-> Necesita instancias separadas del servicio StorSimple Device Manager para administrar instancias de StorSimple Virtual Array y dispositivos de StorSimple de la serie 8000.
+> Necesita instancias independientes de los dispositivos serie 8000 de StorSimple toomanage del servicio de administrador de dispositivos de StorSimple y arreglos de discos virtuales de StorSimple.
 
 
-Realice los siguientes pasos para crear un servicio.
+Realizar Hola siguiendo los pasos toocreate un servicio.
 
 [!INCLUDE [storsimple-virtual-array-create-new-service](../../includes/storsimple-virtual-array-create-new-service.md)]
 
 ## <a name="delete-a-service"></a>Eliminar un servicio
 
-Antes de eliminar un servicio, asegúrese de que no lo esté utilizando ningún dispositivo conectado. Si se está utilizando el servicio, desactive los dispositivos conectados. La operación de desactivación eliminará la conexión entre el dispositivo y el servicio, pero conservará los datos del dispositivo en la nube.
+Antes de eliminar un servicio, asegúrese de que no lo esté utilizando ningún dispositivo conectado. Si el servicio de hello está en uso, desactive los dispositivos de hello conectado. Hola desactivar la operación se Hola conexión entre el dispositivo de Hola y el servicio de hello, pero conserva los datos del dispositivo hello en la nube de Hola.
 
 > [!IMPORTANT]
-> Después de eliminar un servicio, no se puede revertir la operación. Cualquier dispositivo que estaba utilizando el servicio deberá restablecerse a los valores de fábrica para que pueda ser usado con otro servicio. En este escenario, se perderán los datos locales del dispositivo, así como la configuración.
+> Después de elimina un servicio, no se puede revertir la operación de Hola. Cualquier dispositivo que estaba utilizando el servicio de hello deberá toobe antes de que se puede utilizar con otro servicio de restablecimiento de fábrica. En este escenario, los datos locales de hello en dispositivo hello, así como la configuración de hello, se perderán.
  
 
-Realice los siguientes pasos para eliminar un servicio.
+Realizar Hola siguiendo los pasos toodelete un servicio.
 
-#### <a name="to-delete-a-service"></a>Para eliminar un servicio
+#### <a name="toodelete-a-service"></a>toodelete un servicio
 
-1. Vaya a **Todos los recursos**. Busque el servicio StorSimple Device Manager. Seleccione el servicio que desea eliminar.
+1. Vaya demasiado**todos los recursos**. Busque el servicio StorSimple Device Manager. Seleccione servicio de Hola que desea toodelete.
    
-    ![Selección del servicio que se eliminará](./media/storsimple-virtual-array-manage-service/deleteservice2.png)
-2. Vaya al panel de servicio para asegurarse de que no hay ningún dispositivo conectado al servicio. Si no hay ningún dispositivo registrado en este servicio, también verá un mensaje en un banner que lo indica. Hacer clic en **Eliminar**.
+    ![Seleccione toodelete de servicio](./media/storsimple-virtual-array-manage-service/deleteservice2.png)
+2. Vaya tooyour servicio panel tooensure no hay ningún dispositivo conectado toohello servicio. Si no hay ningún dispositivo registrado con este servicio, también verá un efecto de toohello de mensaje de pancarta. Hacer clic en **Eliminar**.
    
     ![Eliminar servicio](./media/storsimple-virtual-array-manage-service/deleteservice3.png)
 
-3. Cuando se le solicite confirmación, haga clic en **Sí** en la notificación de confirmación. 
+3. Cuando se le solicite confirmación, haga clic en **Sí** en la notificación de confirmación de Hola. 
    
     ![Confirmación de la eliminación del servicio](./media/storsimple-virtual-array-manage-service/deleteservice4.png)
-4. Es posible que el servicio tarde unos minutos en eliminarse. Recibirá una notificación apropiada cuando el servicio se elimine correctamente.
+4. Puede tardar unos minutos para hello servicio toobe eliminado. Después de hello servicio se elimina correctamente, se le notificará.
    
     ![Eliminación del servicio correcta](./media/storsimple-virtual-array-manage-service/deleteservice6.png)
 
-Se actualizará la lista de servicios.
+se actualizará la lista de Hello de servicios.
 
  ![Lista de servicios actualizada](./media/storsimple-virtual-array-manage-service/deleteservice7.png)
 
-## <a name="get-the-service-registration-key"></a>Obtener la clave de registro del servicio
-Después de haber creado correctamente un servicio, deberá registrar el dispositivo StorSimple con el servicio. Para registrar el primer dispositivo StorSimple, necesitará la clave de registro del servicio. Para registrar dispositivos adicionales con un servicio existente StorSimple, necesitará la clave de registro y la clave de cifrado de datos de servicio (que se genera en el primer dispositivo durante el registro). Para obtener más información acerca de la clave de cifrado de datos de servicio, consulte [Seguridad de StorSimple](storsimple-security.md). Para obtener la clave de registro, acceda a la hoja **Claves** para el servicio.
+## <a name="get-hello-service-registration-key"></a>Obtener clave de registro del servicio de Hola
+Después de haber creado correctamente un servicio, deberá tooregister el dispositivo StorSimple con el servicio de Hola. tooregister el primer dispositivo de StorSimple, se necesita Hola clave de registro del servicio. tooregister dispositivos adicionales con un servicio existente de StorSimple, necesitará la clave de registro de hello y clave de cifrado de datos de servicio de hello (que se genera en el primer dispositivo de Hola durante el registro). Para obtener más información acerca de la clave de cifrado de datos del servicio de hello, consulte [seguridad de StorSimple](storsimple-security.md). Puede obtener clave de registro de hello accediendo hello **claves** hoja para el servicio.
 
-Realice los pasos siguientes para obtener la clave de registro del servicio.
+Realizar Hola después de la clave de registro del servicio de pasos tooget Hola.
 
-#### <a name="to-get-the-service-registration-key"></a>Para obtener la clave de registro del servicio
-1. En la hoja **StorSimple Device Manager**, vaya a **Administración &gt;** **Claves**.
+#### <a name="tooget-hello-service-registration-key"></a>clave de registro del servicio de tooget Hola
+1. Hola **el Administrador de dispositivos de StorSimple** hoja, vaya demasiado**administración &gt;**  **claves**.
    
    ![Hoja de claves](./media/storsimple-virtual-array-manage-service/getregkey2.png)
-2. En la hoja **Claves** se muestra una clave de registro del servicio. Copie la clave de registro mediante el icono de copia. 
+2. Hola **claves** blade, se muestra una clave de registro del servicio. Copie la clave de registro de hello mediante el icono de copiar Hola. 
 
-Mantenga la clave de registro del servicio en una ubicación segura. Necesitará esta clave, así como la clave de cifrado de datos de servicio para registrar dispositivos adicionales con este servicio. Después de obtener la clave de registro del servicio, deberá configurar el dispositivo a través de la interfaz de Windows PowerShell para StorSimple.
+Mantenga la clave de registro del servicio de hello en una ubicación segura. Necesitará esta clave, así como clave de cifrado de datos del servicio de hello, tooregister dispositivos adicionales con este servicio. Después de obtener la clave de registro del servicio de hello, necesitará tooconfigure el dispositivo a través de hello Windows PowerShell para StorSimple interfaz.
 
-## <a name="regenerate-the-service-registration-key"></a>Volver a generar la clave de registro de servicio
-Será necesario volver a generar una clave de registro del servicio si es necesario para realizar la rotación de claves o si ha cambiado la lista de administradores de servicios. Cuando se regenera la clave, la nueva clave se utiliza solo para registrar dispositivos posteriores. Los dispositivos que ya se han registrado no se ven afectados por este proceso.
+## <a name="regenerate-hello-service-registration-key"></a>Regenerar la clave de registro del servicio de Hola
+Necesitará una clave de registro del servicio de tooregenerate si es necesario tooperform rotación de claves o si ha cambiado la lista de Hola de administradores de servicios. Cuando vuelva a generar clave de hello, nueva clave de Hola se usa solo para registrar dispositivos subsiguientes. dispositivos de Hola que ya estaban registrados no se ven afectados por este proceso.
 
-Realice los pasos siguientes para volver a generar una clave de registro de servicio.
+Realizar Hola siguiendo los pasos tooregenerate una clave de registro del servicio.
 
-#### <a name="to-regenerate-the-service-registration-key"></a>Para volver a generar la clave de registro de servicio
-1. En la hoja **StorSimple Device Manager**, vaya a **Administración &gt;** **Claves**.
+#### <a name="tooregenerate-hello-service-registration-key"></a>clave de registro del servicio de tooregenerate Hola
+1. Hola **el Administrador de dispositivos de StorSimple** hoja, vaya demasiado**administración &gt;**  **claves**.
    
    ![Hoja de claves](./media/storsimple-virtual-array-manage-service/getregkey2.png)
-2. En la hoja **Claves**, haga clic en **Regenerar**.
+2. Hola **claves** hoja, haga clic en **regenerar**.
    
    ![Haga clic en Regenerar](./media/storsimple-virtual-array-manage-service/getregkey5.png)
-3. En la hoja **Regenerar clave de registro del servicio**, revise la acción necesaria cuando se regeneren las claves. Todos los dispositivos posteriores que están registrados en este servicio usará la nueva clave del registro. Haga clic en **Regenerar** para confirmarlo. Se le notificará una vez completado el registro.
+3. Hola **Regenerar clave de registro** hoja, revisión Hola requiere una acción cuando hello se vuelven a generar las claves. Todos los dispositivos subsiguientes Hola que están registrados con este servicio usará la nueva clave de registro de hello. Haga clic en **regenerar** tooconfirm. Se le notificará una vez completado el registro de hello.
    
    ![Confirmación de la clave regenerada](./media/storsimple-virtual-array-manage-service/getregkey3.png)
 4. Aparecerá una nueva clave de registro de servicio.
@@ -119,6 +119,6 @@ Realice los pasos siguientes para volver a generar una clave de registro de serv
    Copie esta clave y guárdela para registrar los dispositivos nuevos con este servicio.
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Lea una [introducción](storsimple-virtual-array-deploy1-portal-prep.md) a StorSimple Virtual Array.
-* Obtenga información sobre cómo [administrar el dispositivo StorSimple](storsimple-ova-web-ui-admin.md).
+* Obtenga información acerca de cómo demasiado[Introducción](storsimple-virtual-array-deploy1-portal-prep.md) con una matriz Virtual de StorSimple.
+* Obtenga información acerca de cómo demasiado[administrar el dispositivo StorSimple](storsimple-ova-web-ui-admin.md).
 

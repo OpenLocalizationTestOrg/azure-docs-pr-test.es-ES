@@ -1,6 +1,6 @@
 ---
-title: "Implementación de recursos con la plantilla y la CLI de Azure | Microsoft Docs"
-description: Use Azure Resource Manager y la CLI de Azure para implementar recursos en Azure. Los recursos se definen en una plantilla de Resource Manager.
+title: recursos de aaaDeploy con CLI de Azure y plantilla | Documentos de Microsoft
+description: Use el Administrador de recursos de Azure y Azure CLI toodeploy un tooAzure de recursos. recursos de Hola se definen en una plantilla de administrador de recursos.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,33 +14,33 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: tomfitz
-ms.openlocfilehash: 4f1d5f4cc48470f8906edb28628006dd1996bd3a
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 9f8bb9a8720399390a407030d2d32bcd97d32f13
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Implementación de recursos con plantillas de Resource Manager y la CLI de Azure
 
-En este tema se explica cómo usar la CLI de Azure 2.0 con plantillas de Resource Manager para implementar recursos en Azure. Si no está familiarizado con los conceptos asociados a la implementación y administración de sus soluciones de Azure, consulte [Introducción a Azure Resource Manager](resource-group-overview.md).  
+Este tema se explica cómo toouse 2.0 de CLI de Azure con el Administrador de recursos plantillas toodeploy su tooAzure de recursos. Si no está familiarizado con conceptos de Hola de implementar y administrar sus soluciones de Azure, consulte [Introducción a Azure Resource Manager](resource-group-overview.md).  
 
-La plantilla de Resource Manager que ha implementado puede ser un archivo local en su equipo, o un archivo externo ubicado en un repositorio como GitHub. La plantilla que se implementa en este artículo está disponible en la sección [Plantilla de ejemplo](#sample-template), o como [plantilla de la cuenta de almacenamiento en GitHub](https://github.com/Azure/azure-quickstart-templates/blob/master/101-storage-account-create/azuredeploy.json).
+plantilla de administrador de recursos de Hello que implementar puede ser un archivo local en su equipo, o un archivo externo que se encuentra en un repositorio como GitHub. plantilla de Hola se implementan en este artículo está disponible en hello [plantilla de ejemplo](#sample-template) sección, o como un [plantilla de la cuenta de almacenamiento en GitHub](https://github.com/Azure/azure-quickstart-templates/blob/master/101-storage-account-create/azuredeploy.json).
 
 [!INCLUDE [sample-cli-install](../../includes/sample-cli-install.md)]
 
-Si no tiene instalada la CLI de Azure, puede usar [Cloud Shell](#deploy-template-from-cloud-shell).
+Si no tiene instalado de CLI de Azure, puede usar hello [Shell en la nube](#deploy-template-from-cloud-shell).
 
 ## <a name="deploy-local-template"></a>Implementar una plantilla local
 
-Al implementar recursos en Azure, siga estos pasos:
+Al implementar tooAzure de recursos,:
 
-1. Inicie sesión en la cuenta de Azure.
-2. Cree un grupo de recursos que actúe como contenedor para los recursos implementados. El nombre del grupo de recursos solo puede incluir caracteres alfanuméricos, puntos, guiones bajos, guiones y paréntesis. Puede tener hasta 90 caracteres. No puede terminar en punto.
-3. Implemente en el grupo de recursos la plantilla que define los recursos que se van a crear.
+1. Inicie sesión en tooyour cuenta de Azure
+2. Crear un grupo de recursos que actúa como contenedor de Hola de recursos de hello implementado. nombre de Hola Hola del grupo de recursos solo puede incluir caracteres alfanuméricos, puntos, caracteres de subrayado, guiones y paréntesis. Puede ser una too90 caracteres. No puede terminar en punto.
+3. Implementar la plantilla de Hola de grupo de recursos de toohello que define Hola recursos toocreate
 
-Una plantilla puede incluir parámetros que le permiten personalizar la implementación. Por ejemplo, puede proporcionar valores que están diseñados para un entorno concreto (como desarrollo, prueba y producción). La plantilla de ejemplo define un parámetro para la SKU de la cuenta de almacenamiento. 
+Una plantilla puede incluir parámetros que permiten la implementación de hello toocustomize. Por ejemplo, puede proporcionar valores que están diseñados para un entorno concreto (como desarrollo, prueba y producción). plantilla de ejemplo de Hola define un parámetro para la cuenta de almacenamiento de hello SKU. 
 
-En el ejemplo siguiente se crea un grupo de recursos y se implementa una plantilla desde la máquina local:
+Hola de ejemplo siguiente crea un grupo de recursos e implementa una plantilla desde el equipo local:
 
 ```azurecli
 az login
@@ -53,7 +53,7 @@ az group deployment create \
     --parameters storageAccountType=Standard_GRS
 ```
 
-La implementación puede demorar unos minutos en completarse. Cuando termine, verá un mensaje que incluye el resultado:
+implementación de Hello puede tardar unos toocomplete minutos. Cuando termine, verá un mensaje que incluye el resultado de hello:
 
 ```azurecli
 "provisioningState": "Succeeded",
@@ -61,9 +61,9 @@ La implementación puede demorar unos minutos en completarse. Cuando termine, ve
 
 ## <a name="deploy-external-template"></a>Implementar una plantilla externa
 
-En lugar de almacenar las plantillas de Resource Manager en el equipo local, quizás prefiera almacenarlas en una ubicación externa. Puede almacenar plantillas en un repositorio de control de código fuente (por ejemplo, GitHub). O bien, puede almacenarlas en una cuenta de Azure Storage para el acceso compartido en su organización.
+En lugar de almacenar las plantillas de administrador de recursos en el equipo local, es posible que prefiera toostore ellas en una ubicación externa. Puede almacenar plantillas en un repositorio de control de código fuente (por ejemplo, GitHub). O bien, puede almacenarlas en una cuenta de Azure Storage para el acceso compartido en su organización.
 
-Para implementar una plantilla externa, use el parámetro **template-uri**. Use el identificador URI en el ejemplo para implementar la plantilla de ejemplo de GitHub.
+toodeploy una plantilla externa, use hello **plantilla uri** parámetro. Usar hello URI en la plantilla de ejemplo de Hola ejemplo toodeploy Hola desde GitHub.
    
 ```azurecli
 az login
@@ -76,19 +76,19 @@ az group deployment create \
     --parameters storageAccountType=Standard_GRS
 ```
 
-En el ejemplo anterior, se requiere un identificador URI accesible públicamente para la plantilla, que funciona con la mayoría de los escenarios porque la plantilla no debe incluir datos confidenciales. Si tiene que especificar datos confidenciales (por ejemplo, una contraseña de administrador), pase ese valor como un parámetro seguro. Sin embargo, si no desea que la plantilla sea accesible públicamente, puede protegerla mediante el almacenamiento en un contenedor de almacenamiento privado. Para más información sobre la implementación de una plantilla que requiere un token de Firma de acceso compartido (SAS), consulte [Implementación de una plantilla privada con el token de SAS](resource-manager-cli-sas-token.md).
+Hello en el ejemplo anterior se requiere un URI accesible públicamente para plantilla de hello, que funciona con la mayoría de los escenarios, porque la plantilla no debe incluir datos confidenciales. Si necesita toospecify datos confidenciales (por ejemplo, una contraseña de administrador), pase ese valor como un parámetro seguro. Sin embargo, si no desea que la plantilla toobe accesible públicamente, puede proteger mediante el almacenamiento en un contenedor de almacenamiento privado. Para más información sobre la implementación de una plantilla que requiere un token de Firma de acceso compartido (SAS), consulte [Implementación de una plantilla privada con el token de SAS](resource-manager-cli-sas-token.md).
 
-## <a name="deploy-template-from-cloud-shell"></a>Implementación de plantilla desde Cloud Shell
+## <a name="deploy-template-from-cloud-shell"></a>Implementación de una plantilla desde Cloud Shell
 
-Puede usar [Cloud Shell](../cloud-shell/overview.md) para ejecutar los comandos de la CLI de Azure para implementar la plantilla. Pero primero debe cargar la plantilla en el recurso compartido de archivos de Cloud Shell. Si no ha usado Cloud Shell, vea [Introducción a Azure Cloud Shell](../cloud-shell/overview.md) para más información sobre su configuración.
+Puede usar [Shell en la nube](../cloud-shell/overview.md) toorun hello Azure CLI comandos para la implementación de la plantilla. Sin embargo, primero debe cargar la plantilla en el recurso compartido de archivos de hello del shell en la nube. Si no ha usado Cloud Shell, vea [Introducción a Azure Cloud Shell](../cloud-shell/overview.md) para más información sobre su configuración.
 
-1. Inicie sesión en el [Portal de Azure](https://portal.azure.com).   
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).   
 
-2. Seleccione el grupo de recursos de Cloud Shell. El patrón de nombre es `cloud-shell-storage-<region>`.
+2. Seleccione el grupo de recursos de Cloud Shell. patrón de nombre de Hello es `cloud-shell-storage-<region>`.
 
    ![Selección de un grupo de recursos](./media/resource-group-template-deploy-cli/select-cs-resource-group.png)
 
-3. Seleccione la cuenta de almacenamiento de Cloud Shell.
+3. Seleccione la cuenta de almacenamiento de hello del shell en la nube.
 
    ![Selección de la cuenta de almacenamiento](./media/resource-group-template-deploy-cli/select-storage.png)
 
@@ -96,7 +96,7 @@ Puede usar [Cloud Shell](../cloud-shell/overview.md) para ejecutar los comandos 
 
    ![Seleccionar archivos](./media/resource-group-template-deploy-cli/select-files.png)
 
-5. Seleccione el recurso compartido de archivos de Cloud Shell. El patrón de nombre es `cs-<user>-<domain>-com-<uniqueGuid>`.
+5. Seleccione el recurso compartido de archivos de Hola de Shell en la nube. patrón de nombre de Hello es `cs-<user>-<domain>-com-<uniqueGuid>`.
 
    ![Selección de recurso compartido de archivos](./media/resource-group-template-deploy-cli/select-file-share.png)
 
@@ -120,11 +120,11 @@ Puede usar [Cloud Shell](../cloud-shell/overview.md) para ejecutar los comandos 
 
    ![Carga de archivo](./media/resource-group-template-deploy-cli/upload-files.png)
 
-11. Abra el símbolo del sistema.
+11. Mensaje de Hola abierto.
 
    ![Apertura de Cloud Shell](./media/resource-group-template-deploy-cli/start-cloud-shell.png)
 
-12. En Cloud Shell, escriba los comandos siguientes:
+12. Escriba Hola siguientes comandos de hello Shell en la nube:
 
    ```azurecli
    az group create --name examplegroup --location "South Central US"
@@ -133,7 +133,7 @@ Puede usar [Cloud Shell](../cloud-shell/overview.md) para ejecutar los comandos 
 
 ## <a name="parameter-files"></a>Archivos de parámetros
 
-En lugar de pasar parámetros como valores en línea en el script, quizá le resulte más fácil usar un archivo JSON que contiene los valores de parámetro. El archivo de parámetros debe estar en el siguiente formato:
+En lugar de pasar parámetros como valores en línea en la secuencia de comandos, quizá le resulte más fácil toouse un archivo JSON que contiene los valores de parámetro de Hola. archivo de parámetros de Hello debe Hola siguiendo el formato:
 
 ```json
 {
@@ -147,11 +147,11 @@ En lugar de pasar parámetros como valores en línea en el script, quizá le res
 }
 ```
 
-Tenga en cuenta que la sección de parámetros incluye un nombre de parámetro que coincide con el parámetro definido en la plantilla (storageAccountType). El archivo de parámetros contiene un valor para el parámetro. Este valor se pasa automáticamente a la plantilla durante la implementación. Puede crear varios archivos de parámetros para diferentes escenarios de implementación y, después, pasar el archivo de parámetros adecuado. 
+Tenga en cuenta que la sección de parámetros de hello incluye un nombre de parámetro que coincida con el parámetro hello definido en la plantilla (storageAccountType). archivo de parámetros de Hello contiene un valor para el parámetro hello. Este valor se pasa automáticamente toohello plantilla durante la implementación. Puede crear varios archivos de parámetros para diferentes escenarios de implementación y, a continuación, pase Hola parámetro apropiado archivo. 
 
-Copie el ejemplo anterior y guárdelo como un archivo denominado `storage.parameters.json`.
+Copie el anterior ejemplo de Hola y guárdelo como un archivo denominado `storage.parameters.json`.
 
-Para pasar un archivo de parámetros local, use `@` para especificar un archivo local denominado storage.parameters.json.
+toopass un archivo de parámetros local, use `@` toospecify un archivo local denominado storage.parameters.json.
 
 ```azurecli
 az group deployment create \
@@ -163,7 +163,7 @@ az group deployment create \
 
 ## <a name="test-a-template-deployment"></a>Prueba de una implementación de plantilla
 
-Para probar los valores de parámetro y de plantilla sin implementar realmente ningún recurso, use [az group deployment validate](/cli/azure/group/deployment#validate). 
+tootest los valores de parámetro y de plantilla sin implementar realmente los recursos, utilice [validar la implementación del grupo az](/cli/azure/group/deployment#validate). 
 
 ```azurecli
 az group deployment validate \
@@ -172,7 +172,7 @@ az group deployment validate \
     --parameters @storage.parameters.json
 ```
 
-Si no se detectan errores, el comando devuelve información sobre la implementación de prueba. En concreto, tenga en cuenta que el valor **error** es null.
+Si no se detectan errores, el comando de hello devuelve información acerca de la implementación de prueba de Hola. En concreto, tenga en cuenta que hello **error** valor es null.
 
 ```azurecli
 {
@@ -181,15 +181,15 @@ Si no se detectan errores, el comando devuelve información sobre la implementac
       ...
 ```
 
-Si se detecta un error, el comando devuelve un mensaje de error. Por ejemplo, si se intenta pasar un valor incorrecto a la SKU de la cuenta de almacenamiento, se devuelve el error siguiente:
+Si se detecta un error, el comando de hello devuelve un mensaje de error. Por ejemplo, al intentar toopass un valor incorrecto para la cuenta de almacenamiento de hello SKU, se devuelve Hola siguiente error:
 
 ```azurecli
 {
   "error": {
     "code": "InvalidTemplate",
     "details": null,
-    "message": "Deployment template validation failed: 'The provided value 'badSKU' for the template parameter 
-      'storageAccountType' at line '13' and column '20' is not valid. The parameter value is not part of the allowed 
+    "message": "Deployment template validation failed: 'hello provided value 'badSKU' for hello template parameter 
+      'storageAccountType' at line '13' and column '20' is not valid. hello parameter value is not part of hello allowed 
       value(s): 'Standard_LRS,Standard_ZRS,Standard_GRS,Standard_RAGRS,Premium_LRS'.'.",
     "target": null
   },
@@ -197,7 +197,7 @@ Si se detecta un error, el comando devuelve un mensaje de error. Por ejemplo, si
 }
 ```
 
-Si la plantilla tiene un error de sintaxis, el comando devuelve un error que indica que no se pudo analizar la plantilla. El mensaje indica el número de línea y la posición del error de análisis.
+Si la plantilla tiene un error de sintaxis, comando hello devuelve un error que indica que no pudo analizar plantilla Hola. mensajes de bienvenida indica el número de línea de Hola y posición del error de análisis de Hola.
 
 ```azurecli
 {
@@ -214,7 +214,7 @@ Si la plantilla tiene un error de sintaxis, el comando devuelve un error que ind
 
 [!INCLUDE [resource-manager-deployments](../../includes/resource-manager-deployments.md)]
 
-Para usar el modo completo, emplee el parámetro `mode`:
+modo de toouse completa, use hello `mode` parámetro:
 
 ```azurecli
 az group deployment create \
@@ -227,7 +227,7 @@ az group deployment create \
 
 ## <a name="sample-template"></a>Plantilla de ejemplo
 
-La plantilla siguiente se usa para los ejemplos de este tema. Cópiela y guárdela como un archivo denominado storage.json. Para comprender cómo crear esta plantilla, consulte [Creación de la primera plantilla de Azure Resource Manager](resource-manager-create-first-template.md).  
+Hello siguiente plantilla se usa para obtener ejemplos de hello en este tema. Cópiela y guárdela como un archivo denominado storage.json. toounderstand cómo toocreate esta plantilla, consulte [crear la primera plantilla de Azure Resource Manager](resource-manager-create-first-template.md).  
 
 ```json
 {
@@ -275,9 +275,9 @@ La plantilla siguiente se usa para los ejemplos de este tema. Cópiela y guárde
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Los ejemplos de este artículo implementan recursos en un grupo de recursos de su suscripción predeterminada. Para usar una suscripción diferente, consulte [Administración de varias suscripciones de Azure](/cli/azure/manage-azure-subscriptions-azure-cli).
+* ejemplos de Hello en este artículo implementación grupo de recursos de tooa de recursos en su suscripción de manera predeterminada. toouse otra suscripción, vea [administrar varias suscripciones de Azure](/cli/azure/manage-azure-subscriptions-azure-cli).
 * Para obtener un script de ejemplo completo que implementa una plantilla, vea [Resource Manager template deployment script](resource-manager-samples-cli-deploy.md) (Script de implementación de plantilla de Resource Manager).
-* Para entender cómo definir parámetros en la plantilla, consulte [Nociones sobre la estructura y la sintaxis de las plantillas de Azure Resource Manager](resource-group-authoring-templates.md).
+* toounderstand toodefine parámetros de la plantilla, vea [comprender la estructura de Hola y la sintaxis de plantillas de Azure Resource Manager](resource-group-authoring-templates.md).
 * Para obtener sugerencias para resolver los errores de implementación más comunes, consulte [Solución de errores comunes de implementación de Azure con Azure Resource Manager](resource-manager-common-deployment-errors.md).
 * Para más información sobre la implementación de una plantilla que requiere un token de SAS, vea [Implementación de una plantilla privada con el token de SAS](resource-manager-cli-sas-token.md).
-* Para obtener instrucciones sobre cómo las empresas pueden utilizar Resource Manager para administrar eficazmente las suscripciones, vea [Scaffold empresarial de Azure: Gobierno de suscripción prescriptivo](resource-manager-subscription-governance.md).
+* Para obtener instrucciones sobre cómo las empresas pueden usar el Administrador de recursos tooeffectively administrar suscripciones, vea [scaffold Azure enterprise - regulador prescriptiva suscripción](resource-manager-subscription-governance.md).

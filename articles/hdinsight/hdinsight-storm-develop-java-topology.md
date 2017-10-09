@@ -1,6 +1,6 @@
 ---
-title: "Ejemplo de topología de Apache Storm en Java - Azure HDInsight | Microsoft Docs"
-description: "Aprenda a crear topologías de Apache Storm en Java al crear una topología de recuento de palabras de ejemplo."
+title: "aaaApache Storm topología de ejemplo Java - HDInsight de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo las topologías de Apache Storm toocreate mediante la creación de una palabra de ejemplo en Java contar topología."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -17,23 +17,23 @@ ms.workload: big-data
 ms.date: 07/07/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 36285fbaf1da3c566d338bd5612eebad327eaf50
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 54fa9dc3c93ddad83ac861f3101f50f80117d804
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Crear una topología de Apache Storm en Java
 
-Aprenda a crear una topología de Apache Storm basada en Java. Vamos a crear una topología de Storm que implemente una aplicación de recuento de palabras. Para compilar y empaquetar el proyecto, usaremos Maven. Después, aprende a definir la topología con el marco de trabajo Flux.
+Obtenga información acerca de cómo toocreate una topología basada en Java para Apache Storm. Vamos a crear una topología de Storm que implemente una aplicación de recuento de palabras. Utilice Maven toobuild y paquete hello en el proyecto. A continuación, aprenderá cómo toodefine Hola topología utilizando Hola framework de un flujo.
 
 > [!NOTE]
-> El marco de trabajo Flux está disponible en Storm 0.10.0 o versiones posteriores. Storm 0.10.0 está disponible con HDInsight 3.3 y 3.4.
+> marco de trabajo de un flujo de Hello está disponible en Storm 0.10.0 o posterior. Storm 0.10.0 está disponible con HDInsight 3.3 y 3.4.
 
-Después de completar los pasos descritos en este documento, puede implementar la topología en Apache Storm en HDInsight.
+Después de completar los pasos de hello en este documento, puede implementar Hola topología tooApache Storm en HDInsight.
 
 > [!NOTE]
-> En [https://github.com/Azure-Samples/hdinsight-java-storm-wordcount](https://github.com/Azure-Samples/hdinsight-java-storm-wordcount) encontrará una versión completa de los ejemplos de topologías de Storm creadas en este documento.
+> Una versión completa de ejemplos de topología de Storm Hola creado en este documento está disponible en [https://github.com/Azure-Samples/hdinsight-java-storm-wordcount](https://github.com/Azure-Samples/hdinsight-java-storm-wordcount).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
@@ -45,21 +45,21 @@ Después de completar los pasos descritos en este documento, puede implementar l
 
 ## <a name="configure-environment-variables"></a>Configuración de las variables de entorno
 
-Pueden establecer las siguientes variables de entorno al instalar Java y el JDK. Sin embargo, debe comprobar que existen y que contienen los valores correctos para su sistema.
+Hello siguientes variables de entorno pueden establecerse al instalar hello JDK y Java. Sin embargo, debe comprobar que existan y que contienen valores correctos de hello para el sistema.
 
-* **JAVA_HOME**: debe apuntar al directorio donde está instalado Java Runtime Environment (JRE). Por ejemplo, en una distribución de Unix o Linux, debe tener un valor similar a `/usr/lib/jvm/java-7-oracle`. En Windows, tendría un valor similar a `c:\Program Files (x86)\Java\jre1.7`
+* **JAVA_HOME** -debe apuntar el directorio toohello donde está instalado Hola de Java runtime environment (JRE). Por ejemplo, en una distribución de Unix o Linux, debe tener un valor similar demasiado`/usr/lib/jvm/java-7-oracle`. En Windows, tendría un valor similar demasiado`c:\Program Files (x86)\Java\jre1.7`
 
-* **PATH** : debe contener las rutas de acceso siguientes:
+* **Ruta de acceso** -debe contener Hola siguiendo las rutas de acceso:
 
-  * **JAVA_HOME** (o la ruta de acceso equivalente).
+  * **JAVA_HOME** (o ruta de acceso equivalente hello)
 
-  * **JAVA_HOME\bin** (o la ruta de acceso equivalente).
+  * **JAVA_HOME\bin** (o ruta de acceso equivalente hello)
 
-  * El directorio donde está instalado Maven
+  * directorio de Hola donde está instalado Maven
 
 ## <a name="create-a-maven-project"></a>Creación de un proyecto de Maven
 
-En la línea de comandos, use el siguiente comando para crear un proyecto de Maven llamado **WordCount**:
+Desde la línea de comandos de hello, use Hola siguiente comando toocreate un proyecto de Maven **WordCount**:
 
 ```bash
 mvn archetype:generate -DarchetypeArtifactId=maven-archetype-quickstart -DgroupId=com.microsoft.example -DartifactId=WordCount -DinteractiveMode=false
@@ -70,22 +70,22 @@ mvn archetype:generate -DarchetypeArtifactId=maven-archetype-quickstart -DgroupI
 >
 > `mvn archetype:generate "-DarchetypeArtifactId=maven-archetype-quickstart" "-DgroupId=com.microsoft.example" "-DartifactId=WordCount" "-DinteractiveMode=false"`
 
-Este comando crea un directorio denominado `WordCount` en la ubicación actual, que contiene un proyecto de Maven básico. El directorio `WordCount` contiene los siguientes elementos:
+Este comando crea un directorio denominado `WordCount` en la ubicación actual de hello, que contiene un proyecto básico de Maven. Hola `WordCount` directorio contiene Hola siguientes elementos:
 
-* `pom.xml`: Contiene la configuración del proyecto de Maven.
+* `pom.xml`: Contiene la configuración para proyectos de Maven Hola.
 * `src\main\java\com\microsoft\example`: Contiene el código de la aplicación.
 * `src\test\java\com\microsoft\example`: Contiene pruebas para la aplicación. 
 
-### <a name="remove-the-generated-example-code"></a>Eliminar el código de ejemplo generado
+### <a name="remove-hello-generated-example-code"></a>Quitar el código de ejemplo de Hola generado
 
-Elimine la prueba generada y los archivos de aplicación:
+Eliminar pruebas Hola generado y archivos de la aplicación hello:
 
 * **src\test\java\com\microsoft\example\AppTest.java**
 * **src\main\java\com\microsoft\example\App.java**
 
 ## <a name="add-maven-repositories"></a>Agregar repositorios de Maven
 
-HDInsight se basa en Hortonworks Data Platform (HDP), por lo que se recomienda usar el repositorio de Hortonworks para descargar las dependencias correspondientes a los proyectos de Apache Storm. En el archivo __pom.xml__, agregue el siguiente texto XML después de la línea `<url>http://maven.apache.org</url>`:
+HDInsight se basa en hello Hortonworks Data Platform (HDP), por lo que se recomienda utilizar las dependencias de hello Hortonworks repositorio toodownload para los proyectos de Apache Storm. Hola __pom.xml__ , agregue Hola continuación de XML después de hello `<url>http://maven.apache.org</url>` línea:
 
 ```xml
 <repositories>
@@ -126,42 +126,42 @@ HDInsight se basa en Hortonworks Data Platform (HDP), por lo que se recomienda u
 
 ## <a name="add-properties"></a>Agregar propiedades
 
-Maven permite definir los valores de nivel de proyecto llamados propiedades. En __pom.xml__, agregue el siguiente texto después de la línea `</repositories>`:
+Maven permite valores de nivel de proyecto de toodefine denominados propiedades. Hola __pom.xml__, agregar Hola después texto después de hello `</repositories>` línea:
 
 ```xml
 <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <!--
-    This is a version of Storm from the Hortonworks repository that is compatible with HDInsight.
+    This is a version of Storm from hello Hortonworks repository that is compatible with HDInsight.
     -->
     <storm.version>1.0.1.2.5.3.0-37</storm.version>
 </properties>
 ```
 
-Ahora puede usar este valor en otras secciones de `pom.xml`. Por ejemplo, al especificar la versión de los componentes de Storm, puede usar `${storm.version}` en lugar de codificar un valor de forma rígida.
+Ahora puede usar este valor en otras secciones de hello `pom.xml`. Por ejemplo, al especificar la versión de Hola de componentes de Storm, puede utilizar `${storm.version}` en lugar de codificar de forma rígida un valor.
 
 ## <a name="add-dependencies"></a>Adición de dependencias
 
-Agregue una dependencia para componentes de Storm. Abra el archivo `pom.xml` y agregue el código siguiente en la sección `<dependencies>`:
+Agregue una dependencia para componentes de Storm. Abra hello `pom.xml` de archivos y agregar Hola después el código de hello `<dependencies>` sección:
 
 ```xml
 <dependency>
     <groupId>org.apache.storm</groupId>
     <artifactId>storm-core</artifactId>
     <version>${storm.version}</version>
-    <!-- keep storm out of the jar-with-dependencies -->
+    <!-- keep storm out of hello jar-with-dependencies -->
     <scope>provided</scope>
 </dependency>
 ```
 
-En tiempo de compilación, Maven usa esta información para buscar `storm-core` en el repositorio de Maven. Busca primero en el repositorio del equipo local. Si los archivos no están allí, Maven los descarga desde el repositorio de Maven público y los almacena en el repositorio local.
+En tiempo de compilación, Maven Utilice esta información toolook `storm-core` en el repositorio de Maven Hola. Primero busca en el repositorio de hello en el equipo local. Si archivos hello no existe, experto en descarga de repositorio público de Maven de Hola y almacenarlos en el repositorio local de Hola.
 
 > [!NOTE]
-> Observe la línea `<scope>provided</scope>` en esta sección. Esta opción indica a Maven que excluya **storm-core** de los archivos JAR creados, ya que el sistema lo proporciona.
+> Hola aviso `<scope>provided</scope>` línea en esta sección. Esta configuración le comunica Maven tooexclude **aluvión de núcleo** de ningún archivo JAR que se crea, dado que se proporciona al sistema de Hola.
 
 ## <a name="build-configuration"></a>Configuración de compilación
 
-Los complementos de Maven permiten personalizar las fases de compilación del proyecto, por ejemplo, cómo se compila el proyecto o cómo este se empaqueta en un archivo JAR. Abra el archivo `pom.xml` y agregue el código siguiente directamente encima de la línea `</project>`.
+Complementos de maven le permiten fases de compilación de hello toocustomize del proyecto de Hola. Por ejemplo, cómo se compila el proyecto de Hola o cómo toopackage en un archivo JAR. Abra hello `pom.xml` de archivos y agregar Hola después el código directamente encima de hello `</project>` línea.
 
 ```xml
 <build>
@@ -172,11 +172,11 @@ Los complementos de Maven permiten personalizar las fases de compilación del pr
 </build>
 ```
 
-Esta sección se usa para agregar complementos, recursos y otras opciones de configuración de compilación. Para obtener una referencia completa del archivo **pom.xml**, consulte [http://maven.apache.org/pom.html](http://maven.apache.org/pom.html).
+Esta sección es tooadd usa complementos, los recursos y otras opciones de configuración de compilación. Para obtener una referencia completa de hello **pom.xml** de archivos, consulte [http://maven.apache.org/pom.html](http://maven.apache.org/pom.html).
 
 ### <a name="add-plug-ins"></a>Agregar complementos
 
-En el caso de las topologías de Apache Storm implementadas en Java, el [Complemento Exec Maven](http://www.mojohaus.org/exec-maven-plugin/) es útil porque le permite ejecutar fácilmente la topología de manera local en su entorno de desarrollo. Agregue lo siguiente a la sección `<plugins>` del archivo `pom.xml` para incluir el complemento Exec Maven:
+Para las topologías de Apache Storm implementadas en Java, Hola [Exec Maven complemento](http://www.mojohaus.org/exec-maven-plugin/) es útil porque permite tooeasily ejecuta topología Hola localmente en el entorno de desarrollo. Agregar Hola después toohello `<plugins>` sección de hello `pom.xml` archivo tooinclude Hola Exec Maven complemento:
 
 ```xml
 <plugin>
@@ -201,13 +201,13 @@ En el caso de las topologías de Apache Storm implementadas en Java, el [Complem
 </plugin>
 ```
 
-Otro complemento útil es el [Complemento Apache Maven Compiler](http://maven.apache.org/plugins/maven-compiler-plugin/), que se usa para cambiar las opciones de compilación. Se cambia la versión de Java que usa Maven para el origen y destino de la aplicación.
+Otro útil es complemento hello [Apache Maven compilador complemento](http://maven.apache.org/plugins/maven-compiler-plugin/), que es usado toochange opciones de compilación. cambios de Hola Hola versión de Java que Maven se usa para el origen de Hola y de destino para la aplicación.
 
-* Para HDInsight __3.4 o una versión anterior__, establezca la versión de origen y destino de Java en __1.7__.
+* Para HDInsight __3.4 o una versión anterior__, establezca Hola origen y destino too__1.7__ de versión de Java.
 
-* Para HDInsight __3.5__, establezca la versión de origen y destino de Java en __1.8__.
+* Para HDInsight __3.5__, establezca Hola origen y destino too__1.8__ de versión de Java.
 
-Agregue el siguiente texto en la sección `<plugins>` del archivo `pom.xml` para incluir el complemento Apache Maven Compiler. Este ejemplo especifica 1.8, por lo que la versión de HDInsight de destino es 3.5.
+Agregar Hola después texto Hola `<plugins>` sección de hello `pom.xml` tooinclude Hola Apache Maven compilador complemento de archivos. Este ejemplo especifica 1.8, por lo que la versión de HDInsight de destino de hello es 3.5.
 
 ```xml
 <plugin>
@@ -223,7 +223,7 @@ Agregue el siguiente texto en la sección `<plugins>` del archivo `pom.xml` para
 
 ### <a name="configure-resources"></a>Configure resources
 
-Gracias a la sección de recursos, podrá incluir recursos no basados en códigos, como los archivos de configuración que necesitan los componentes de la topología. En este ejemplo, agregue el texto siguiente en la sección `<resources>` del archivo pom.xml.
+sección de recursos de Hello permite tooinclude recursos de código como archivos de configuración necesarios para componentes de topología de Hola. En este ejemplo, agregar Hola después texto Hola `<resources>` sección de hello ' archivo pom.xml.
 
 ```xml
 <resource>
@@ -235,29 +235,29 @@ Gracias a la sección de recursos, podrá incluir recursos no basados en código
 </resource>
 ```
 
-Este ejemplo agrega el directorio de recursos en la raíz del proyecto (`${basedir}`) como una ubicación que contiene recursos e incluye el archivo denominado `log4j2.xml`. Este archivo se utiliza para configurar la información que registra la topología.
+En este ejemplo agrega el directorio de recursos de hello en raíz de Hola de proyecto de hello (`${basedir}`) como una ubicación que contiene recursos e incluye el archivo hello denominado `log4j2.xml`. Este archivo es tooconfigure usado topología Hola registra la información.
 
-## <a name="create-the-topology"></a>Creación de la topología
+## <a name="create-hello-topology"></a>Crear topología de Hola
 
 Una topología de Apache Storm basada en Java consta de tres componentes que debe crear (o hacer referencia) como una dependencia.
 
-* **Spouts**: lee datos de orígenes externos y emite flujos de datos a la topología.
+* **Spouts**: lee los orígenes de datos desde externo y emite flujos de datos en la topología de Hola.
 
 * **Bolts**: realiza el procesamiento en flujos que emite spouts u otros bolts, y emite uno o varios flujos.
 
-* **Topology**: define cómo se organizan los spouts y bolts, y proporciona el punto de entrada de la topología.
+* **Topología**: define el modo spouts hello y tornillos se organizan y proporciona el punto de entrada de hello para la topología de Hola.
 
-### <a name="create-the-spout"></a>Creación del spout
+### <a name="create-hello-spout"></a>Crear pitorro Hola
 
-Para reducir los requisitos de la configuración de los orígenes de datos externos, el spout siguiente simplemente emite frases aleatorias. Se trata de una versión modificada de un spout que se proporciona con los [ejemplos de Storm-Starter](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter).
+requisitos de tooreduce para configurar orígenes de datos externos, Hola siguiendo pitorro simplemente emite frases aleatorias. Es una versión modificada de un pitorro que se proporciona con hello [ejemplos de Storm Starter](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter).
 
 > [!NOTE]
-> Para ver un ejemplo de un spout que lee desde un origen de datos externos, consulte uno de los siguientes ejemplos:
+> Para obtener un ejemplo de un pitorro que lee de un origen de datos externo, consulte uno de hello en los ejemplos siguientes:
 >
 > * [TwitterSampleSpout](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter/spout/TwitterSampleSpout.java): un spout de ejemplo que lee desde Twitter.
 > * [Storm Kafka](https://github.com/apache/storm/tree/0.10.x-branch/external/storm-kafka): un spout que lee desde Kafka.
 
-Para spout, cree un archivo llamado `RandomSentenceSpout.java` en el directorio `src\main\java\com\microsoft\example` y use el siguiente código Java como contenido:
+Para pitorro hello, cree un archivo denominado `RandomSentenceSpout.java` en hello `src\main\java\com\microsoft\example` Hola directorio y use después el código Java como contenido de hello:
 
 ```java
 package com.microsoft.example;
@@ -275,31 +275,31 @@ import java.util.Random;
 
 //This spout randomly emits sentences
 public class RandomSentenceSpout extends BaseRichSpout {
-  //Collector used to emit output
+  //Collector used tooemit output
   SpoutOutputCollector _collector;
-  //Used to generate a random number
+  //Used toogenerate a random number
   Random _rand;
 
-  //Open is called when an instance of the class is created
+  //Open is called when an instance of hello class is created
   @Override
   public void open(Map conf, TopologyContext context, SpoutOutputCollector collector) {
-  //Set the instance collector to the one passed in
+  //Set hello instance collector toohello one passed in
     _collector = collector;
     //For randomness
     _rand = new Random();
   }
 
-  //Emit data to the stream
+  //Emit data toohello stream
   @Override
   public void nextTuple() {
   //Sleep for a bit
     Utils.sleep(100);
-    //The sentences that are randomly emitted
-    String[] sentences = new String[]{ "the cow jumped over the moon", "an apple a day keeps the doctor away",
-        "four score and seven years ago", "snow white and the seven dwarfs", "i am at two with nature" };
+    //hello sentences that are randomly emitted
+    String[] sentences = new String[]{ "hello cow jumped over hello moon", "an apple a day keeps hello doctor away",
+        "four score and seven years ago", "snow white and hello seven dwarfs", "i am at two with nature" };
     //Randomly pick a sentence
     String sentence = sentences[_rand.nextInt(sentences.length)];
-    //Emit the sentence
+    //Emit hello sentence
     _collector.emit(new Values(sentence));
   }
 
@@ -313,7 +313,7 @@ public class RandomSentenceSpout extends BaseRichSpout {
   public void fail(Object id) {
   }
 
-  //Declare the output fields. In this case, an sentence
+  //Declare hello output fields. In this case, an sentence
   @Override
   public void declareOutputFields(OutputFieldsDeclarer declarer) {
     declarer.declare(new Fields("sentence"));
@@ -322,20 +322,20 @@ public class RandomSentenceSpout extends BaseRichSpout {
 ```
 
 > [!NOTE]
-> Aunque esta topología solo usa un spout, otras pueden tener varios que alimenten datos desde orígenes distintos en la topología.
+> Aunque esta topología usa sola pitorro, otros usuarios pueden tener varios que introducir datos de orígenes diferentes en la topología de Hola.
 
-### <a name="create-the-bolts"></a>Creación de los bolts
+### <a name="create-hello-bolts"></a>Crear Hola tornillos
 
-Los bolts controlan el procesamiento de datos. Esta topología utiliza dos bolts:
+Tornillos controlen el procesamiento de datos de Hola. Esta topología utiliza dos bolts:
 
-* **SplitSentence**: divide las frases que emite **RandomSentenceSpout** en palabras individuales.
+* **SplitSentence**: divide las frases de hello emitidas por **RandomSentenceSpout** en palabras individuales.
 
 * **WordCount**: cuenta cuántas veces se ha repetido cada palabra.
 
 > [!NOTE]
-> Los bolts pueden hacer cualquier cosa; por ejemplo, cálculo, persistencia o hablar con componentes externos.
+> Tornillos pueden hacer cualquier cosa, por ejemplo, cálculo, persistencia o hablar tooexternal componentes.
 
-Cree dos nuevos archivos, `SplitSentence.java` y `WordCount.java` en el directorio `src\main\java\com\microsoft\example`. Use el siguiente texto como contenido para los archivos:
+Cree dos nuevos archivos, `SplitSentence.java` y `WordCount.java` en hello `src\main\java\com\microsoft\example` directory. Usar hello después de texto como contenido de Hola para archivos de hello:
 
 #### <a name="splitsentence"></a>SplitSentence
 
@@ -354,20 +354,20 @@ import org.apache.storm.tuple.Values;
 //There are a variety of bolt types. In this case, use BaseBasicBolt
 public class SplitSentence extends BaseBasicBolt {
 
-  //Execute is called to process tuples
+  //Execute is called tooprocess tuples
   @Override
   public void execute(Tuple tuple, BasicOutputCollector collector) {
-    //Get the sentence content from the tuple
+    //Get hello sentence content from hello tuple
     String sentence = tuple.getString(0);
-    //An iterator to get each word
+    //An iterator tooget each word
     BreakIterator boundary=BreakIterator.getWordInstance();
-    //Give the iterator the sentence
+    //Give hello iterator hello sentence
     boundary.setText(sentence);
-    //Find the beginning first word
+    //Find hello beginning first word
     int start=boundary.first();
-    //Iterate over each word and emit it to the output stream
+    //Iterate over each word and emit it toohello output stream
     for (int end=boundary.next(); end != BreakIterator.DONE; start=end, end=boundary.next()) {
-      //get the word
+      //get hello word
       String word=sentence.substring(start,end);
       //If a word is whitespace characters, replace it with empty
       word=word.replaceAll("\\s+","");
@@ -414,12 +414,12 @@ public class WordCount extends BaseBasicBolt {
   private static final Logger logger = LogManager.getLogger(WordCount.class);
   //For holding words and counts
   Map<String, Integer> counts = new HashMap<String, Integer>();
-  //How often to emit a count of words
+  //How often tooemit a count of words
   private Integer emitFrequency;
 
   // Default constructor
   public WordCount() {
-      emitFrequency=5; // Default to 60 seconds
+      emitFrequency=5; // Default too60 seconds
   }
 
   // Constructor that sets emit frequency
@@ -429,7 +429,7 @@ public class WordCount extends BaseBasicBolt {
 
   //Configure frequency of tick tuples for this bolt
   //This delivers a 'tick' tuple on a specific interval,
-  //which is used to trigger certain actions
+  //which is used tootrigger certain actions
   @Override
   public Map<String, Object> getComponentConfiguration() {
       Config conf = new Config();
@@ -437,7 +437,7 @@ public class WordCount extends BaseBasicBolt {
       return conf;
   }
 
-  //execute is called to process tuples
+  //execute is called tooprocess tuples
   @Override
   public void execute(Tuple tuple, BasicOutputCollector collector) {
     //If it's a tick tuple, emit all words and counts
@@ -449,13 +449,13 @@ public class WordCount extends BaseBasicBolt {
         logger.info("Emitting a count of " + count + " for word " + word);
       }
     } else {
-      //Get the word contents from the tuple
+      //Get hello word contents from hello tuple
       String word = tuple.getString(0);
       //Have we counted any already?
       Integer count = counts.get(word);
       if (count == null)
         count = 0;
-      //Increment the count and store it
+      //Increment hello count and store it
       count++;
       counts.put(word, count);
     }
@@ -469,15 +469,15 @@ public class WordCount extends BaseBasicBolt {
 }
 ```
 
-### <a name="define-the-topology"></a>Definición de la topología
+### <a name="define-hello-topology"></a>Definir la topología de Hola
 
-La topología vincula los spouts y los bolts juntos en un gráfico, que define cómo fluyen los datos entre los componentes. También proporciona sugerencias de paralelismos que utiliza Storm al crear instancias de los componentes dentro del clúster.
+topología de Hello une spouts hello y los tornillos juntos en un gráfico, que define cómo fluyen los datos entre los componentes de Hola. También proporciona sugerencias de paralelismo que Storm utiliza al crear instancias de componentes de hello en clúster de Hola.
 
-La siguiente imagen es un diagrama básico del gráfico de componentes para esta topología.
+Hello imagen siguiente es un diagrama básico de gráfico de Hola de componentes para esta topología.
 
-![diagrama que muestra la disposición de los spouts y bolts](./media/hdinsight-storm-develop-java-topology/wordcount-topology.png)
+![Hola de diagrama que muestra spouts y los tornillos de organización](./media/hdinsight-storm-develop-java-topology/wordcount-topology.png)
 
-Para implementar la topología, cree un archivo llamado `WordCountTopology.java` en el directorio `src\main\java\com\microsoft\example`. Use el siguiente código Java como contenido del archivo:
+tooimplement Hola topología, cree un archivo denominado `WordCountTopology.java` en hello `src\main\java\com\microsoft\example` directory. Usar hello después el código Java como contenido de Hola de archivo hello:
 
 ```java
 package com.microsoft.example;
@@ -492,49 +492,49 @@ import com.microsoft.example.RandomSentenceSpout;
 
 public class WordCountTopology {
 
-  //Entry point for the topology
+  //Entry point for hello topology
   public static void main(String[] args) throws Exception {
-  //Used to build the topology
+  //Used toobuild hello topology
     TopologyBuilder builder = new TopologyBuilder();
-    //Add the spout, with a name of 'spout'
+    //Add hello spout, with a name of 'spout'
     //and parallelism hint of 5 executors
     builder.setSpout("spout", new RandomSentenceSpout(), 5);
-    //Add the SplitSentence bolt, with a name of 'split'
+    //Add hello SplitSentence bolt, with a name of 'split'
     //and parallelism hint of 8 executors
-    //shufflegrouping subscribes to the spout, and equally distributes
-    //tuples (sentences) across instances of the SplitSentence bolt
+    //shufflegrouping subscribes toohello spout, and equally distributes
+    //tuples (sentences) across instances of hello SplitSentence bolt
     builder.setBolt("split", new SplitSentence(), 8).shuffleGrouping("spout");
-    //Add the counter, with a name of 'count'
+    //Add hello counter, with a name of 'count'
     //and parallelism hint of 12 executors
-    //fieldsgrouping subscribes to the split bolt, and
-    //ensures that the same word is sent to the same instance (group by field 'word')
+    //fieldsgrouping subscribes toohello split bolt, and
+    //ensures that hello same word is sent toohello same instance (group by field 'word')
     builder.setBolt("count", new WordCount(), 12).fieldsGrouping("split", new Fields("word"));
 
     //new configuration
     Config conf = new Config();
-    //Set to false to disable debug information when
+    //Set toofalse toodisable debug information when
     // running in production on a cluster
     conf.setDebug(false);
 
     //If there are arguments, we are running on a cluster
     if (args != null && args.length > 0) {
-      //parallelism hint to set the number of workers
+      //parallelism hint tooset hello number of workers
       conf.setNumWorkers(3);
-      //submit the topology
+      //submit hello topology
       StormSubmitter.submitTopology(args[0], conf, builder.createTopology());
     }
     //Otherwise, we are running locally
     else {
-      //Cap the maximum number of executors that can be spawned
-      //for a component to 3
+      //Cap hello maximum number of executors that can be spawned
+      //for a component too3
       conf.setMaxTaskParallelism(3);
-      //LocalCluster is used to run locally
+      //LocalCluster is used toorun locally
       LocalCluster cluster = new LocalCluster();
-      //submit the topology
+      //submit hello topology
       cluster.submitTopology("word-count", conf, builder.createTopology());
       //sleep
       Thread.sleep(10000);
-      //shut down the cluster
+      //shut down hello cluster
       cluster.shutdown();
     }
   }
@@ -543,7 +543,7 @@ public class WordCountTopology {
 
 ### <a name="configure-logging"></a>registro
 
-Storm utiliza Apache Log4j para registrar información. Si no configura el registro, la topología emite información de diagnóstico. Para controlar lo que se registra, cree un archivo denominado `log4j2.xml` en el directorio `resources`. Use el siguiente XML como contenido del archivo.
+Storm utiliza Apache Log4j toolog información. Si no configura el registro, la topología de hello emite información de diagnóstico. toocontrol lo que se registra, cree un archivo denominado `log4j2.xml` en hello `resources` directory. Usar hello continuación de XML como contenido de Hola de archivo hello.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -564,24 +564,24 @@ Storm utiliza Apache Log4j para registrar información. Si no configura el regis
 </Configuration>
 ```
 
-Este XML configura un nuevo registrador para la clase `com.microsoft.example`, que incluye los componentes de esta topología de ejemplo. El nivel está establecido para realizar un seguimiento de este registrador, que captura cualquier información de registro que generen los componentes de esta topología.
+Este código XML configura un nuevo registrador para hello `com.microsoft.example` (clase), que incluye componentes de hello en esta topología de ejemplo. nivel de Hola se establece tootrace para este registrador, que captura la información de registro de emitidos por componentes en esta topología.
 
-La sección `<Root level="error">` configura el nivel de registro raíz (todo lo que no esté en `com.microsoft.example`) para registrar solo la información de los errores.
+Hola `<Root level="error">` sección configura el nivel de raíz de Hola de registro (todo lo que no está en `com.microsoft.example`) tooonly información de error de registro.
 
 Para obtener más información sobre la configuración de registro de Log4j, consulte [http://logging.apache.org/log4j/2.x/manual/configuration.html](http://logging.apache.org/log4j/2.x/manual/configuration.html).
 
 > [!NOTE]
-> La versión 0.10.0 y superiores de Storm utilizan Log4j 2.x. Las versiones anteriores de Storm usaban Log4j 1.x, que empleaba otro formato de configuración del registro. Para obtener información sobre la configuración anterior, consulte [http://wiki.apache.org/logging-log4j/Log4jXmlFormat](http://wiki.apache.org/logging-log4j/Log4jXmlFormat).
+> La versión 0.10.0 y superiores de Storm utilizan Log4j 2.x. Las versiones anteriores de Storm usaban Log4j 1.x, que empleaba otro formato de configuración del registro. Para obtener información sobre la configuración anterior de hello, consulte [http://wiki.apache.org/logging-log4j/Log4jXmlFormat](http://wiki.apache.org/logging-log4j/Log4jXmlFormat).
 
-## <a name="test-the-topology-locally"></a>Prueba de la topología de manera local
+## <a name="test-hello-topology-locally"></a>Topología de hello pruebas localmente
 
-Después de guardar los archivos, use el comando siguiente para probar localmente la topología.
+Después de guardar los archivos de hello, utilice Hola después topología localmente de comando tootest Hola.
 
 ```bash
 mvn compile exec:java -Dstorm.topology=com.microsoft.example.WordCountTopology
 ```
 
-Mientras se ejecuta, la topología muestra información de inicio. El siguiente texto es un ejemplo de la salida del recuento de palabras:
+Mientras se ejecuta, topología hello muestra información de inicio. Hello texto siguiente es un ejemplo de salida de recuento de hello word:
 
     17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 56 for word snow
     17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 56 for word white
@@ -591,29 +591,29 @@ Mientras se ejecuta, la topología muestra información de inicio. El siguiente 
     17:33:27 [Thread-30-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word dwarfs
     17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word snow
 
-Este registro de ejemplo indica que la palabra «and» se ha emitido 113 veces. El recuento continúa aumentando mientras se ejecute la topología porque el spout emite continuamente las mismas frases.
+Este registro de ejemplo indica esa palabra Hola ' y ' se emitió 113 veces. Hello recuento continúa toogo hasta como topología Hola se ejecuta porque pitorro Hola continuamente emite Hola mismas frases.
 
-Hay un intervalo de 5 segundos entre la emisión de las palabras y los recuentos. El componente **WordCount** está configurado para emitir la información solo cuando llegue una tupla de marca. Solicita que esas tuplas se entreguen solo cada cinco segundos.
+Hay un intervalo de 5 segundos entre la emisión de las palabras y los recuentos. Hola **WordCount** componente está configurado tooonly emitir información cuando llega una tupla de graduación. Solicita que esas tuplas se entreguen solo cada cinco segundos.
 
-## <a name="convert-the-topology-to-flux"></a>Conversión de la topología a Flux
+## <a name="convert-hello-topology-tooflux"></a>Convertir Hola topología tooFlux
 
-Flux es un nuevo marco de trabajo disponible con Storm 0.10.0 y versiones superiores que permite separar la configuración de la implementación. Los componentes se siguen definiendo en Java, pero la topología se define con un archivo YAML. Puede empaquetar una definición de topología predeterminada con el proyecto, o bien usar un archivo independiente al enviar la topología. Al enviar la topología a Storm, puede usar variables de entorno o archivos de configuración para rellenar los valores de la definición de la topología de YAML.
+Un flujo es un nuevo marco disponible con Storm 0.10.0 y versiones posterior, lo que permite tooseparate configuración de implementación. Los componentes aún están definidos en Java, pero topología Hola se define utilizando un archivo YAML. Puede empaquetar una definición de topología de manera predeterminada con el proyecto, o usar un archivo independiente al enviar la topología de Hola. Al enviar Hola topología tooStorm, puede utilizar variables de entorno o valores de toopopulate de archivos de configuración en la definición de la topología YAML Hola.
 
-El archivo YAML define los componentes que se usarán para la topología y el flujo de datos entre ellos. Puede incluir un archivo YAML como parte del archivo jar o puede usar un archivo YAML externo.
+archivo de Hello YAML define Hola componentes toouse de topología de Hola y Hola de flujo de datos entre ellos. Puede incluir un archivo YAML como parte del archivo jar de Hola o puede usar un archivo YAML externo.
 
 Para más información sobre Flux, vea este documento sobre el [marco de trabajo de Flux (https://storm.apache.org/releases/0.10.0/flux.html)](https://storm.apache.org/releases/0.10.0/flux.html).
 
 > [!WARNING]
-> Debido a un [error (https://issues.apache.org/jira/browse/STORM-2055)](https://issues.apache.org/jira/browse/STORM-2055) con Storm 1.0.1, es posible que deba instalar un [entorno de desarrollo de Storm](https://storm.apache.org/releases/1.0.1/Setting-up-development-environment.html) para ejecutar topologías de un flujo de forma local.
+> Due tooa [error (https://issues.apache.org/jira/browse/STORM-2055)](https://issues.apache.org/jira/browse/STORM-2055) con Storm 1.0.1, puede que necesite tooinstall una [entorno de desarrollo de Storm](https://storm.apache.org/releases/1.0.1/Setting-up-development-environment.html) localmente las topologías de un flujo de toorun.
 
-1. Saque el archivo `WordCountTopology.java` del proyecto. Anteriormente, este archivo definía la topología, pero no es necesario con Flux.
+1. Mover hello `WordCountTopology.java` archivo fuera del proyecto de Hola. Anteriormente, este archivo define la topología de hello, pero no es necesario con un flujo.
 
-2. En el directorio `resources`, cree un archivo denominado `topology.yaml`. Use el siguiente texto como contenido de este archivo.
+2. Hola `resources` directorio, cree un archivo denominado `topology.yaml`. Usar hello después de texto como contenido de Hola de este archivo.
 
-        name: "wordcount"       # friendly name for the topology
+        name: "wordcount"       # friendly name for hello topology
         
         config:                 # Topology configuration
-        topology.workers: 1     # Hint for the number of workers to create
+        topology.workers: 1     # Hint for hello number of workers toocreate
         
         spouts:                 # Spout definitions
         - id: "sentence-spout"
@@ -633,8 +633,8 @@ Para más información sobre Flux, vea este documento sobre el [marco de trabajo
         
         streams:                # Stream definitions
             - name: "Spout --> Splitter" # name isn't used (placeholder for logging, UI, etc.)
-            from: "sentence-spout"       # The stream emitter
-            to: "splitter-bolt"          # The stream consumer
+            from: "sentence-spout"       # hello stream emitter
+            to: "splitter-bolt"          # hello stream consumer
             grouping:                    # Grouping type
                 type: SHUFFLE
           
@@ -643,21 +643,21 @@ Para más información sobre Flux, vea este documento sobre el [marco de trabajo
             to: "counter-bolt"
             grouping:
             type: FIELDS
-                args: ["word"]           # field(s) to group on
+                args: ["word"]           # field(s) toogroup on
 
-3. Realice los siguientes cambios en el archivo `pom.xml`.
+3. Realizar Hola después cambios toohello `pom.xml` archivo.
    
-   * Agregue la siguiente dependencia nueva en la sección `<dependencies>` :
+   * Agregar Hola después nuevas dependencias en hello `<dependencies>` sección:
      
         ```xml
-        <!-- Add a dependency on the Flux framework -->
+        <!-- Add a dependency on hello Flux framework -->
         <dependency>
             <groupId>org.apache.storm</groupId>
             <artifactId>flux-core</artifactId>
             <version>${storm.version}</version>
         </dependency>
         ```
-   * Agregue el complemento siguiente a la sección `<plugins>` . Este complemento administra la creación de un paquete (archivo jar) para el proyecto y aplica algunas transformaciones específicas a Flux cuando se crea el paquete.
+   * Agregar Hola después complemento toohello `<plugins>` sección. Este complemento controla la creación de hello de un paquete (archivo jar) para el proyecto de Hola y aplica algunos tooFlux específico de transformaciones al crear paquetes de saludo.
      
         ```xml
         <!-- build an uber jar -->
@@ -670,7 +670,7 @@ Para más información sobre Flux, vea este documento sobre el [marco de trabajo
                     <!-- Keep us from getting a "can't overwrite file error" -->
                     <transformer implementation="org.apache.maven.plugins.shade.resource.ApacheLicenseResourceTransformer" />
                     <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
-                    <!-- We're using Flux, so refer to it as main -->
+                    <!-- We're using Flux, so refer tooit as main -->
                     <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                         <mainClass>org.apache.storm.flux.Flux</mainClass>
                     </transformer>
@@ -698,41 +698,41 @@ Para más información sobre Flux, vea este documento sobre el [marco de trabajo
         </plugin>
         ```
 
-   * En la sección **exec-maven-plugin**`<configuration>`, cambie el valor de `<mainClass>` por `org.apache.storm.flux.Flux`. Esta opción permite a Flux controlar la ejecución de la topología localmente en el entorno de desarrollo.
+   * Hola **exec-maven-plugin** `<configuration>` sección, cambie el valor de Hola para `<mainClass>` demasiado`org.apache.storm.flux.Flux`. Esta configuración permite toohandle flujo ejecuta topología Hola localmente en el desarrollo.
 
-   * En la sección `<resources>`, agregue lo siguiente a `<includes>`. Este XML incluye el archivo YAML que define la topología como parte del proyecto.
+   * Hola `<resources>` sección, agregue Hola después toohello `<includes>`. Este código XML incluye el archivo hello YAML que define la topología de hello como parte del proyecto de Hola.
 
         ```xml
         <include>topology.yaml</include>
         ```
 
-## <a name="test-the-flux-topology-locally"></a>Prueba local de la topología
+## <a name="test-hello-flux-topology-locally"></a>Topología de un flujo de Hola de prueba localmente
 
-1. Use lo siguiente para compilar y ejecutar la topología de Flux con Maven:
+1. Use Hola después toocompile y ejecute la topología de un flujo de hello mediante Maven:
 
     ```bash
     mvn compile exec:java -Dexec.args="--local -R /topology.yaml"
     ```
 
-    Si usa PowerShell, utilice el comando siguiente:
+    Si usa PowerShell, use Hola siguiente comando:
 
     ```bash
     mvn compile exec:java "-Dexec.args=--local -R /topology.yaml"
     ```
 
     > [!WARNING]
-    > Este comando produce un error si la topología usa bits de Storm 1.0.1. Este error se debe a [https://issues.apache.org/jira/browse/STORM-2055](https://issues.apache.org/jira/browse/STORM-2055). En su lugar, [instale Storm en su entorno de desarrollo](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html) y emplee la siguiente información.
+    > Este comando produce un error si la topología usa bits de Storm 1.0.1. Este error se debe a [https://issues.apache.org/jira/browse/STORM-2055](https://issues.apache.org/jira/browse/STORM-2055). En su lugar, [instalar Storm en su entorno de desarrollo](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html) y use Hola siguiendo la información.
 
-    Si tiene [instalado Storm en el entorno de desarrollo](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html), puede usar en su lugar los siguientes comandos:
+    Si tiene [instalado Storm en el entorno de desarrollo](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html), puede usar Hola siguientes comandos en su lugar:
 
     ```bash
     mvn compile package
     storm jar target/WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --local -R /topology.yaml
     ```
 
-    El parámetro `--local` ejecuta la topología en modo local en el entorno de desarrollo. El parámetro `-R /topology.yaml` usa el recurso de archivo `topology.yaml` del archivo jar para definir la topología.
+    Hola `--local` parámetro topología Hola ejecuta en modo local en el entorno de desarrollo. Hola `-R /topology.yaml` parámetro utiliza hello `topology.yaml` recursos de archivos de topología de hello jar archivo toodefine Hola.
 
-    Mientras se ejecuta, la topología muestra información de inicio. El siguiente texto es un ejemplo de la salida:
+    Mientras se ejecuta, topología hello muestra información de inicio. Hola después de texto es un ejemplo de salida de hello:
 
         17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 56 for word snow
         17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 56 for word white
@@ -743,7 +743,7 @@ Para más información sobre Flux, vea este documento sobre el [marco de trabajo
 
     Hay un retraso de 10 segundos entre los distintos lotes de la información registrada.
 
-2. Realice una copia del archivo `topology.yaml` del proyecto. Asigne el nombre `newtopology.yaml` al archivo nuevo. En el archivo `newtopology.yaml`, busque la siguiente sección y cambie el valor de `10` por `5`. Esta modificación altera el intervalo entre la emisión de lotes de recuentos de palabras de 10 segundos a 5.
+2. Realizar una copia de hello `topology.yaml` archivo de proyecto de Hola. Nuevo archivo de nombre hello `newtopology.yaml`. Hola `newtopology.yaml` de archivos, busque la siguiente Hola sección y cambie el valor Hola de `10` demasiado`5`. Este intervalo de saludo de modificación cambios entre la emisión de lotes de word cuenta de too5 de 10 segundos.
 
     ```yaml
     - id: "counter-bolt"
@@ -753,7 +753,7 @@ Para más información sobre Flux, vea este documento sobre el [marco de trabajo
     parallelism: 1
     ```yaml
 
-3. To run the topology, use the following command:
+3. toorun hello topology, use hello following command:
 
     ```bash
     mvn exec:java -Dexec.args="--local /path/to/newtopology.yaml"
@@ -765,25 +765,25 @@ Para más información sobre Flux, vea este documento sobre el [marco de trabajo
     storm jar target/WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --local /path/to/newtopology.yaml
     ```
 
-    Cambie `/path/to/newtopology.yaml` por la ruta de acceso al archivo newtopology.yaml que creó en el paso anterior. Este comando usa newtopology.yaml como definición de la topología. Puesto que no se incluyó el parámetro `compile`, Maven usa la versión del proyecto compilada en los pasos anteriores.
+    Hola de cambio `/path/to/newtopology.yaml` toohello ruta toohello newtopology.yaml archivo creado en el paso anterior de Hola. Este comando usa hello newtopology.yaml como definición de topología de Hola. Puesto que no incluimos hello `compile` parámetro, Maven utiliza Hola versión de Hola proyecto creado en los pasos anteriores.
 
-    Una vez iniciada la topología, observará que el tiempo entre los lotes emitidos ha cambiado y ahora refleja el valor de newtopology.yaml. Esto demuestra que puede cambiar la configuración a través de un archivo YAML sin tener que volver a compilar la topología.
+    Una vez Hola topología se inicia, debe tener en cuenta que tiempo Hola entre los distintos lotes emitidos ha cambiado el valor de Hola de tooreflect en newtopology.yaml. Para que pueda ver que puede cambiar la configuración a través de un archivo YAML sin necesidad de topología de hello toorecompile.
 
-Para más información sobre estas y otras características del marco de trabajo Flux, consulte [Flux (https://storm.apache.org/releases/0.10.0/flux.html)](https://storm.apache.org/releases/0.10.0/flux.html).
+Para obtener más información sobre estas y otras características del marco de trabajo de un flujo de hello, consulte [flujo (https://storm.apache.org/releases/0.10.0/flux.html)](https://storm.apache.org/releases/0.10.0/flux.html).
 
 ## <a name="trident"></a>Trident
 
-Trident es una abstracción de alto nivel que ofrece Storm. Admite el procesamiento con estado. La principal ventaja de Trident es que puede garantizar que todos los mensajes que entran en la topología se procesan una sola vez. Si no se usa Trident, la topología solo puede garantizar que los mensajes se procesan al menos una vez. También hay otras diferencias, como los componentes integrados que se pueden usar en lugar de crear bolts. De hecho, los bolts se reemplazan por componentes menos genéricos, como filtros, proyecciones y funciones.
+Trident es una abstracción de alto nivel que ofrece Storm. Admite el procesamiento con estado. Hola principal ventaja de Trident es que puede garantizar que cada mensaje que entra en la topología de Hola se procesa solo una vez. Si no se usa Trident, la topología solo puede garantizar que los mensajes se procesan al menos una vez. También hay otras diferencias, como los componentes integrados que se pueden usar en lugar de crear bolts. De hecho, los bolts se reemplazan por componentes menos genéricos, como filtros, proyecciones y funciones.
 
-Las aplicaciones de Trident se pueden crear mediante proyectos de Maven. Siga los mismos pasos básicos que se mostraron anteriormente en este artículo; lo único diferente es el código. Actualmente, tampoco puede usarse Trident con el marco de trabajo Flux.
+Las aplicaciones de Trident se pueden crear mediante proyectos de Maven. Usar hello basic mismo pasos tal como se presenta anteriormente en este artículo, solo el código de hello es diferente. Trident también no (actualmente) puede utilizarse con marco de trabajo de un flujo de Hola.
 
-Para obtener más información sobre Trident, consulte [Información general sobre la API de Trident](http://storm.apache.org/documentation/Trident-API-Overview.html).
+Para obtener más información acerca de Trident, vea hello [Introducción a la API Trident](http://storm.apache.org/documentation/Trident-API-Overview.html).
 
 Para ver un ejemplo de una aplicación de Trident, consulte [Tendencias de Twitter con Apache Storm en HDInsight](hdinsight-storm-twitter-trending.md).
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Ha aprendido a crear una topología de Storm con Java. Ahora obtenga información sobre:
+Ha aprendido cómo toocreate una topología Storm con Java. Ahora obtenga información sobre:
 
 * [Implementación y administración de topologías de Apache Storm en HDInsight](hdinsight-storm-deploy-monitor-topology.md)
 

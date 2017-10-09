@@ -1,6 +1,6 @@
 ---
-title: "Documentación de la API de recomendaciones de Machine Learning | Microsoft Docs"
-description: "Documentación de la API de recomendaciones de Aprendizaje automático de Azure para un motor de recomendaciones disponible en Microsoft Azure Marketplace."
+title: "Documentación de la API de aprendizaje recomendaciones aaaMachine | Documentos de Microsoft"
+description: "Documentación de API de recomendaciones de aprendizaje de máquina de Azure para un motor de recomendaciones disponible en Microsoft Azure Marketplace de Hola."
 services: machine-learning
 documentationcenter: 
 author: LuisCabrer
@@ -16,17 +16,17 @@ ms.date: 03/31/2017
 ms.author: LuisCa
 ROBOTS: NOINDEX
 redirect_url: machine-learning-datamarket-deprecation
-redirect_document_id: TRUE
-ms.openlocfilehash: 1fba64d78d779344e2895b0d54419186b7584865
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+redirect_document_id: True
+ms.openlocfilehash: d1cec228bf23870c05c8ab8df2779b0c3c65b06d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-machine-learning-recommendations-api-documentation"></a>Documentación de la API de recomendación de Aprendizaje automático de Azure
 > [!NOTE]
-> Debe empezar a utilizar el servicio Cognitive Services de la API de Recomendaciones en lugar de esta versión. El servicio Cognitive Services de Recomendaciones va a sustituir a este servicio y todas las características nuevas se desarrollarán en esta nueva versión. Tiene nuevas funcionalidades como compatibilidad con procesamientos por lotes, un explorador de API más eficaz, una interfaz de API más limpia, una experiencia de facturación y suscripción más coherente, etc.
-> Obtenga más información sobre cómo [migrar al nuevo servicio Cognitive Services](http://aka.ms/recomigrate)
+> Debería empezar a usar Hola recomendaciones API cognitivos servicio en lugar de esta versión. Hola recomendaciones cognitivos servicio va a sustituir este servicio y todas las características nuevas de Hola se van a desarrollar no existe. Tiene nuevas funcionalidades como compatibilidad con procesamientos por lotes, un explorador de API más eficaz, una interfaz de API más limpia, una experiencia de facturación y suscripción más coherente, etc.
+> Obtenga más información sobre [migrar toohello nuevo servicio cognitivos](http://aka.ms/recomigrate)
 > 
 > 
 
@@ -35,58 +35,58 @@ Este documento describe las API de recomendaciones de Aprendizaje automático de
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 ## <a name="1-general-overview"></a>1. Información general
-Este documento es una referencia de API. Debe empezar con el documento "Recomendación de Aprendizaje automático de Azure: Inicio rápido".
+Este documento es una referencia de API. Debe empezar con el documento de "Azure máquina recomendación – inicio rápido de aprendizaje" Hola.
 
-La API de recomendaciones de Aprendizaje automático de Azure se puede dividir en los grupos lógicos siguientes:
+Hola API de recomendaciones de aprendizaje de máquina de Azure puede dividirse en hello siguientes grupos lógicos:
 
 * <ins>Limitaciones</ins>: Limitaciones de la API de recomendaciones.
 * <ins>Información general</ins>: Información sobre la autenticación, el identificador URI de servicio y el control de versiones.
-* <ins>Modelo básico</ins>: las API que le permiten realizar las operaciones básicas en el modelo (por ejemplo, crear, actualizar y eliminar un modelo).
-* <ins>Modelo avanzado</ins>: las API que le permiten obtener información avanzada de datos en el modelo.
-* <ins>Reglas de negocio de modelo</ins>: las API que le permiten administrar reglas de negocio en los resultados de recomendación de modelo.
-* <ins>Catálogo</ins>: las API que le permiten realizar operaciones básicas en un catálogo de modelo. Un catálogo contiene información de metadatos sobre los elementos de los datos de uso.
-* <ins>Característica</ins>: Las API que permiten obtener información sobre el elemento del catálogo y cómo usar esta información para crear mejores recomendaciones.
-* <ins>Datos de uso</ins>: las API que le permiten realizar operaciones básicas en los datos de uso del modelo. Los datos de uso de la forma básica constan de filas que incluyen pares de &#60;userId&#62;,&#60;itemId&#62;.
-* <ins>Compilación</ins>: las API que le permiten desencadenar una compilación de modelo y realizar operaciones básicas relacionadas con esta compilación. Puede desencadenar una compilación de modelo una vez que tenga datos de uso valiosos.
-* <ins>Recomendación</ins>: las API que le permiten usar recomendaciones una vez que la compilación de un modelo finaliza.
-* <ins>Datos de usuario</ins>las API que le permiten capturar información sobre los datos de uso del usuario.
-* <ins>Notificaciones</ins>: las API que le permiten recibir notificaciones acerca de los problemas relacionados con las operaciones de API. (Por ejemplo, notifica el uso de los datos a través de la adquisición de datos y la mayor parte del procesamiento de eventos está dando errores. Se generará una notificación de error).
+* <ins>Modelo Basic</ins> -API que permiten operaciones básicas de hello toodo en modelo (por ejemplo, crear, actualizar y eliminar un modelo).
+* <ins>Opciones avanzadas del modelo</ins> -API que permiten la información sobre los datos en el modelo de hello tooget avanzada.
+* <ins>Modelo de reglas de negocios</ins> -API que permiten toomanage las reglas de negocios en resultados de recomendación del modelo de Hola.
+* <ins>Catálogo</ins> -API que permiten operaciones básicas de toodo en un catálogo de modelos. Un catálogo contiene información de metadatos en los elementos de Hola Hola de datos de uso.
+* <ins>Característica</ins> -API que permiten la visión de tooget en el elemento en el catálogo de Hola y cómo toouse este recomendaciones mejor toobuild de información.
+* <ins>Datos de uso</ins> -API que permiten toodo operaciones básicas en los datos de uso del modelo de Hola. Datos de uso de forma básica hello consisten de filas que incluyen pares de &#60; userId &#62; &#60; itemId &#62;.
+* <ins>Compilación</ins> : las API que permiten tootrigger un modelo de compilación y realizar operaciones básicas que están relacionados toothis la compilación. Puede desencadenar una compilación de modelo una vez que tenga datos de uso valiosos.
+* <ins>Recomendación</ins> -API que permiten recomendaciones tooconsume una vez que finaliza la compilación de Hola de un modelo.
+* <ins>Datos de usuario</ins> -API que permiten toofetch información sobre los datos de uso de usuario de Hola.
+* <ins>Las notificaciones</ins> -operaciones de tooyour API relacionadas con la API que permiten que las notificaciones de tooreceive en problemas. (Por ejemplo, está informando de datos de uso a través de la adquisición de datos y la mayoría de los eventos de Hola se producen errores en el procesamiento. Se generará una notificación de error).
 
 ## <a name="2-limitations"></a>2. Limitaciones
-* El número máximo de modelos por suscripción es 10.
-* El número máximo de compilaciones por modelo es 20.
-* El número máximo de elementos que puede contener un catálogo es 100 000.
-* El número máximo de puntos de uso que se mantienen es ~ 5 000 000. Se eliminarán los más antiguos si se cargan o notifican unos nuevos.
-* El tamaño máximo de datos que puede enviarse en POST (por ejemplo, importar datos de catálogo, importar datos de uso) es de 200 MB
-* El número máximo de elementos que se pueden solicitar al obtener recomendaciones es 150.
+* número máximo de Hola de modelos por suscripción es 10.
+* Hola número máximo de compilaciones por modelo es 20.
+* número máximo de Hola de elementos que puede contener un catálogo es 100.000.
+* número máximo de Hola de puntos de uso que se mantienen es ~ 5 000 000. Hola más antigua se eliminará si nuevos se cargan o se notificarán.
+* tamaño máximo de Hola de datos que se pueden enviar en POST (por ejemplo, importar datos del catálogo, importar datos de uso) es 200MB.
+* número máximo de Hola de elementos que se pueden hacer al obtener recomendaciones es 150.
 
 ## <a name="3-apis---general-information"></a>3. API: información general
 ### <a name="31-authentication"></a>3.1. Autenticación
-Siga las directrices de Microsoft Azure Marketplace con respecto a la autenticación. Marketplace admite métodos de autenticación Básica o OAuth.
+Siga las instrucciones de Microsoft Azure Marketplace de hello relativos a la autenticación. marketplace de Hello es compatible con cualquier método de autenticación básica o OAuth de Hola.
 
 ### <a name="32-service-uri"></a>3.2. URI de servicio
-El URI raíz de servicio para cada una de las API de recomendaciones de Aprendizaje automático de Azure se encuentra [aquí](https://api.datamarket.azure.com/amla/recommendations/v3/)
+Hola URI raíz del servicio para las API de Azure Machine Learning recomendaciones hello es [aquí.](https://api.datamarket.azure.com/amla/recommendations/v3/)
 
-El URI de servicio completo se expresa mediante elementos de la especificación de OData.  
+URI del servicio completo Hola se expresa mediante elementos de especificación de OData de Hola.  
 
 ### <a name="33-api-version"></a>3.3. Versión de API
-Cada llamada a la API tendrá al final el parámetro de consulta denominado apiVersion que debe estar establecido en 1.0
+Al final de hello, cada llamada a la API tendrá un parámetro de consulta denominado valor apiVersion que se debe establecer too1.0.
 
 ### <a name="34-ids-are-case-sensitive"></a>3.4. Los Id. distinguen mayúsculas de minúsculas
-Los Id., devueltos por cualquiera de las API, distinguen mayúsculas de minúsculas y deben usarse como tales cuando se pasan como parámetros en las sucesivas llamadas a API. Por ejemplo, los Id. de modelo y de catálogo distinguen mayúsculas de minúsculas.
+Identificadores, devueltos por cualquiera de hello API, distinguen mayúsculas de minúsculas y deben usarse como tales cuando se pasan como parámetros en llamadas posteriores a la API. Por ejemplo, los Id. de modelo y de catálogo distinguen mayúsculas de minúsculas.
 
 ## <a name="4-recommendations-quality-and-cold-items"></a>4. Calidad de recomendaciones y elementos fríos
 ### <a name="41-recommendation-quality"></a>4.1. Calidad de recomendación
-La creación de un modelo de recomendación suele ser suficiente para permitir que el sistema proporcione recomendaciones. No obstante, la calidad de recomendación varía según el uso procesado y la cobertura del catálogo. Por ejemplo si tiene muchos elementos fríos (sin uso significativo), el sistema tendrá dificultades para proporcionar una recomendación para un elemento de este tipo o para usar un elemento de este tipo como recomendado. Para solucionar el problema con los elementos fríos, el sistema permite el uso de metadatos de los elementos para mejorar las recomendaciones. Estos metadatos se conocen como características. Características típicas son el autor de un libro o el actor de una película. Las características se proporcionan mediante el catálogo en forma de cadenas de clave y valor. Para obtener el formato completo del archivo de catálogo, consulte la [sección sobre la importación del catálogo](#81-import-catalog-data). 
+Crear un modelo de recomendación suele ser suficiente recomendaciones de tooprovide del sistema de tooallow Hola. No obstante, calidad de las recomendaciones varía según el uso de hello procesado y Hola cobertura del catálogo de Hola. Por ejemplo si tiene una gran cantidad de elementos fríos (elementos sin uso significativo), sistema de hello tendrá dificultades para proporcionar una recomendación para un elemento de este tipo o utilizando un elemento de este tipo como recomendada. Problema de elemento inactivos de orden tooovercome hello, sistema de Hola permite el uso de Hola de metadatos de las recomendaciones de hello elementos tooenhance Hola. Estos metadatos son características de tooas que se hace referencia. Características típicas son el autor de un libro o el actor de una película. Características son proporcionadas a través del catálogo de hello en forma de Hola de cadenas de clave/valor. Formato completo de Hola Hola del archivo de catálogo, consulte toohello [importar sección catálogo](#81-import-catalog-data). 
 
 ### <a name="42-rank-build"></a>4.2. Compilación de rango
-Las características pueden mejorar el modelo de recomendación, pero para ello se requiere el uso de características significativas. Con este fin se introdujo una nueva compilación, una compilación de rango. Esta compilación clasifica la utilidad de las características. Una característica significativa es una característica con una puntuación de rango de 2 para arriba.
-Una vez que conozca cuáles de las características son significativas, desencadene una compilación de recomendación con la lista (o sublista) de características significativas. Es posible utilizar estas características para la mejora de los elementos fríos y calientes. Para poder usarlas con los elementos calientes, se debe configurar el parámetro de compilación `UseFeatureInModel` . Para poder usarlas con los elementos fríos, se debe configurar el parámetro de compilación `AllowColdItemPlacement` .
-Nota: no es posible habilitar `AllowColdItemPlacement` sin habilitar `UseFeatureInModel`.
+Características pueden mejorar el modelo de recomendación de hello, pero toodo por lo que requiere el uso de Hola de características significativos. Con este fin se introdujo una nueva compilación, una compilación de rango. Esta compilación clasificará utilidad Hola de características. Una característica significativa es una característica con una puntuación de rango de 2 para arriba.
+Una vez que conozca cuál de las características de hello son significativos, desencadenar una compilación de recomendación con lista de hello (o sublista) de características significativos. Es posible toouse que estas características de mejora de Hola de los elementos fríos y elementos de estado. En orden toouse para elementos semiactivos, Hola `UseFeatureInModel` se deben configurar los parámetros de compilación. En las características de toouse de orden para los elementos fríos, Hola `AllowColdItemPlacement` debe habilitarse el parámetro de compilación.
+Nota: No es posible tooenable `AllowColdItemPlacement` sin habilitar `UseFeatureInModel`.
 
 ### <a name="43-recommendation-reasoning"></a>4.3. Razonamiento de recomendación
-El razonamiento de la recomendación es otro aspecto del uso de características. De hecho, el motor de recomendaciones de Azure Machine Learning puede utilizar funciones para proporcionar explicaciones de recomendación (también conocidas como razonamientos), lo que conduce a una mayor confianza en el elemento recomendado del consumidor de la recomendación.
-Para habilitar el razonamiento, los parámetros `AllowFeatureCorrelation` y `ReasoningFeatureList` deben configurarse antes de solicitar una compilación de recomendación.
+El razonamiento de la recomendación es otro aspecto del uso de características. De hecho, motor de recomendaciones de aprendizaje de máquina de Azure Hola puede utilizar la explicaciones de recomendación de características tooprovide (conocido como) Razonamiento), iniciales toomore confianza Hola recomienda elemento de consumidor de la recomendación de Hola.
+tooenable razonamiento, hello `AllowFeatureCorrelation` y `ReasoningFeatureList` parámetros deben ser el programa de instalación anterior toorequesting una compilación de recomendación.
 
 ## <a name="5-model-basic"></a>5. Modelo básico
 ### <a name="51-create-model"></a>5.1. Crear modelo
@@ -107,7 +107,7 @@ Crea una solicitud "crear modelo".
 
 código de estado HTTP: 200
 
-* `feed/entry/content/properties/id`: contiene el id. de modelo.
+* `feed/entry/content/properties/id`-Contiene el identificador del modelo Hola.
   **Nota**: el Id. de modelo distingue mayúsculas de minúsculas.
 
 OData XML
@@ -149,7 +149,7 @@ Crea una solicitud "obtener modelo".
 
 | Nombre de parámetro | Valores válidos |
 |:--- |:--- |
-| id |El identificador único del modelo  (distingue mayúsculas de minúsculas) |
+| id |Identificador único del modelo de hello (con distinción entre mayúsculas y minúsculas) |
 | apiVersion |1.0 |
 |  | |
 | Cuerpo de la solicitud |NINGUNA |
@@ -158,15 +158,15 @@ Crea una solicitud "obtener modelo".
 
 código de estado HTTP: 200
 
-Los datos del modelo pueden encontrarse en los siguientes elementos:
+datos del modelo Hola pueden encontrarse en hello siguientes elementos:
 
 * `feed/entry/content/properties/Id`: id. único de modelo.
 * `feed/entry/content/properties/Name`: nombre del modelo.
 * `feed/entry/content/properties/Date` : fecha de creación del modelo.
-* `feed/entry/content/properties/Status` : estado del modelo. Uno de los siguientes:
+* `feed/entry/content/properties/Status` : estado del modelo. Uno de hello siguientes:
   * Created: el modelo se crea y no contiene Catálogo ni Uso.
   * ReadyForBuild: el modelo se crea y contiene Catálogo y Uso.
-* `feed/entry/content/properties/HasActiveBuild`: indica si el modelo se creó correctamente.
+* `feed/entry/content/properties/HasActiveBuild`: Indica si el modelo de Hola se creó correctamente.
 * `feed/entry/content/properties/BuildId` : id. de compilación activa del modelo.
 * `feed/entry/content/properties/Mpr`: clasificación percentil de promedio del modelo (MPR, consulte ModelInsight para obtener más información).
 * `feed/entry/content/properties/UserName` : nombre de usuario interno del modelo.
@@ -205,7 +205,7 @@ OData XML
     </feed>
 
 ### <a name="53----get-all-models"></a>5.3.    Obtener todos los modelos
-Recupera todos los modelos del usuario actual.
+Recupera todos los modelos del usuario actual de Hola.
 
 | Método HTTP | URI |
 |:--- |:--- |
@@ -224,10 +224,10 @@ código de estado HTTP: 200
 * `feed/entry/content/properties/Id`: id. único de modelo.
 * `feed/entry/content/properties/Name`: nombre del modelo.
 * `feed/entry/content/properties/Date` : fecha de creación del modelo.
-* `feed/entry/content/properties/Status` : estado del modelo. Uno de los siguientes:
+* `feed/entry/content/properties/Status` : estado del modelo. Uno de hello siguientes:
   * Created: el modelo se crea y no contiene Catálogo ni Uso.
   * ReadyForBuild: el modelo se crea y contiene Catálogo y Uso.
-* `feed/entry/content/properties/HasActiveBuild`: indica si el modelo se creó correctamente.
+* `feed/entry/content/properties/HasActiveBuild`: Indica si el modelo de Hola se creó correctamente.
 * `feed/entry/content/properties/BuildId` : id. de compilación activa del modelo.
 * `feed/entry/content/properties/Mpr`: MPR del modelo (consulte ModelInsight para obtener más información).
 * `feed/entry/content/properties/UserName` : nombre de usuario interno del modelo.
@@ -270,9 +270,9 @@ OData XML
     </feed>
 
 ### <a name="54----update-model"></a>5.4.    Actualizar modelo
-Puede actualizar la descripción del modelo o el identificador de compilación activa.<br>
-<ins>Id. de compilación activa</ins>: cada compilación para cada modelo tiene un identificador de compilación. El Id. de compilación activa es la primera compilación correcta de cada nuevo modelo. Una vez que tiene un Id. de compilación activa y realiza compilaciones adicionales para el mismo modelo, necesitará establecerlo explícitamente como el Id. de compilación predeterminado si lo desea. Cuando se usan las recomendaciones, si no especifica el identificador de compilación que desea usar, se utilizará automáticamente el valor predeterminado.<br>
-Este mecanismo le permite tener un modelo de recomendación en producción para compilar nuevos modelos y probarlos antes de promoverlos a producción.
+Puede actualizar la descripción del modelo de Hola u Hola Id. de compilación activa.<br>
+<ins>Id. de compilación activa</ins>: cada compilación para cada modelo tiene un identificador de compilación. Id. de compilación activa de Hello es primera compilación correcta Hola de cada nuevo modelo. Una vez que tiene un identificador de compilación activa y hace que las compilaciones adicionales de Hola mismo modelo, deberá tooexplicitly establézcala como hello predeterminado Id. de compilación si desea. Cuando utilizas recomendaciones, si no especifica el Id. de generación de Hola que desee toouse, predeterminado Hola uno se usará automáticamente.<br>
+Este mecanismo le permite - una vez que tiene un modelo de recomendación en producción - toobuild nuevos modelos y probarlas antes de promover ellos tooproduction.
 
 | Método HTTP | URI |
 |:--- |:--- |
@@ -280,10 +280,10 @@ Este mecanismo le permite tener un modelo de recomendación en producción para 
 
 | Nombre de parámetro | Valores válidos |
 |:--- |:--- |
-| id |El identificador único del modelo  (distingue mayúsculas de minúsculas) |
+| id |Identificador único del modelo de hello (con distinción entre mayúsculas y minúsculas) |
 | apiVersion |1.0 |
 |  | |
-| Cuerpo de la solicitud |`<ModelUpdateParams xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">`<br>`<Description>New Description</Description>`<br>`<ActiveBuildId>-1</ActiveBuildId>`<br>` </ModelUpdateParams>`<br><br>Tenga en cuenta que las etiquetas XML Description y ActiveBuildId son opcionales. Si no desea establecer Description o ActiveBuildId, elimine la etiqueta entera. |
+| Cuerpo de la solicitud |`<ModelUpdateParams xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">`<br>`<Description>New Description</Description>`<br>`<ActiveBuildId>-1</ActiveBuildId>`<br>` </ModelUpdateParams>`<br><br>Tenga en cuenta que Hola XML etiquetas descripción y ActiveBuildId son opcionales. Si no desea tooset descripción o ActiveBuildId, quite la etiqueta completa Hola. |
 
 **Respuesta**:
 
@@ -298,7 +298,7 @@ Elimina un modelo existente por el Id.
 
 | Nombre de parámetro | Valores válidos |
 |:--- |:--- |
-| id |El identificador único del modelo  (distingue mayúsculas de minúsculas) |
+| id |Identificador único del modelo de hello (con distinción entre mayúsculas y minúsculas) |
 | apiVersion |1.0 |
 |  | |
 | Cuerpo de la solicitud |NINGUNA |
@@ -331,7 +331,7 @@ OData XML
 
 ## <a name="6-model-advanced"></a>6. Modelo avanzado
 ### <a name="61----model-data-insight"></a>6.1.    Modelo de detalles de datos
-Devuelve datos estadísticos sobre los datos de uso con los que se compiló este modelo.
+Devuelve datos estadísticos sobre los datos de uso de Hola que este modelo se generó con.
 
 Disponible solo para la compilación de recomendación.
 
@@ -341,7 +341,7 @@ Disponible solo para la compilación de recomendación.
 
 | Nombre de parámetro | Valores válidos |
 |:--- |:--- |
-| modelId |Identificador único del modelo |
+| modelId |Identificador único del modelo de Hola |
 | apiVersion |1.0 |
 |  | |
 | Cuerpo de la solicitud |NINGUNA |
@@ -350,12 +350,12 @@ Disponible solo para la compilación de recomendación.
 
 código de estado HTTP: 200
 
-Los datos se devuelven como una colección de propiedades.
+Hola datos se devuelven como una colección de propiedades.
 
-* `feed/entry/id/content/properties/key` : contiene el nombre de propiedad.
-* `feed/entry/id/content/properties/value` : contiene el valor de propiedad.
+* `feed/entry/id/content/properties/key`-Contiene el nombre de la propiedad de Hola.
+* `feed/entry/id/content/properties/value`-Contiene el valor de la propiedad de Hola.
 
-En la tabla siguiente se muestra el valor que representa cada clave.
+a continuación de la tabla de Hello muestra valor Hola que representa cada clave.
 
 | Clave | Description |
 |:--- |:--- |
@@ -364,11 +364,11 @@ En la tabla siguiente se muestra el valor que representa cada clave.
 | DensificationNumberOfItems |Número de elementos después de eliminar elementos que no se pueden modelar. |
 | DensificationNumberOfUsers |Número de puntos de uso después de eliminar usuarios y elementos que no se pueden modelar. |
 | DensificationNumberOfRecords |Número de puntos de uso después de eliminar usuarios y elementos que no se pueden modelar. |
-| MaxItemLength |Número de usuarios distintos para el elemento más popular. |
+| MaxItemLength |Número de usuarios distintivos para elemento de hello más popular. |
 | MaxUserLength |Número máximo de elementos distintos para un usuario. |
 | MinItemLength |Número máximo de usuarios distintos para un elemento. |
 | MinUserLength |Número mínimo de elementos distintos para un usuario. |
-| RawNumberOfItems |Número de elementos en los archivos de uso. |
+| RawNumberOfItems |Número de elementos de archivos de uso de Hola. |
 | RawNumberOfUsers |Número de puntos de uso antes de cualquier eliminación. |
 | RawNumberOfRecords |Número de puntos de uso antes de cualquier eliminación. |
 | SamplingNumberOfItems |N/D |
@@ -567,7 +567,7 @@ OData XML
     </feed>
 
 ### <a name="62----model-insight"></a>6.2.    Perspectiva de modelo
-Devuelve información del modelo sobre la compilación activa o (si se indica) sobre una compilación concreta.
+Devuelve una visión general de modelo en la compilación active Hola o (si se proporciona) en una compilación concreta.
 
 Disponible solo para la compilación de recomendación.
 
@@ -577,7 +577,7 @@ Disponible solo para la compilación de recomendación.
 
 | Nombre de parámetro | Valores válidos |
 |:--- |:--- |
-| modelId |Identificador único del modelo |
+| modelId |Identificador único del modelo de Hola |
 | buildId |Opcional: número que identifica una compilación correcta. |
 | apiVersion |1.0 |
 |  | |
@@ -587,18 +587,18 @@ Disponible solo para la compilación de recomendación.
 
 código de estado HTTP: 200
 
-Los datos se devuelven como una colección de propiedades.
+Hola datos se devuelven como una colección de propiedades.
 
 * `feed/entry/id/content/properties/key`
 * `feed/entry/id/content/properties/value`
 
-En la tabla siguiente se muestra el valor que representa cada clave.
+a continuación de la tabla de Hello muestra valor Hola que representa cada clave.
 
 | Clave | Description |
 |:--- |:--- |
-| CatalogCoverage |¿Qué parte del catálogo puede modelarse con patrones de uso? El resto de los elementos necesitará características basadas en el contenido. |
-| Mpr |Clasificación de percentil de promedio del modelo. Un valor bajo es mejor. |
-| NumberOfDimensions |Número de dimensiones usadas por el algoritmo de descomposición en factores de la matriz. |
+| CatalogCoverage |¿Qué parte del catálogo de Hola puede modelarse con patrones de uso. resto de Hola de elementos de hello deberá características basadas en contenido. |
+| Mpr |Clasificación de percentil medio del modelo de Hola. Un valor bajo es mejor. |
+| NumberOfDimensions |Número de dimensiones utilizado por el algoritmo de descomposición en factores de matriz de Hola. |
 
 OData XML
 
@@ -648,7 +648,7 @@ OData XML
     </feed>
 
 ### <a name="63----get-model-sample"></a>6.3.    Obtener el ejemplo de modelo
-Obtiene un ejemplo del modelo de recomendación.
+Obtiene una muestra de modelo de recomendación de Hola.
 
 | Método HTTP | URI |
 |:--- |:--- |
@@ -656,7 +656,7 @@ Obtiene un ejemplo del modelo de recomendación.
 
 | Nombre de parámetro | Valores válidos |
 |:--- |:--- |
-| modelId |Identificador único del modelo |
+| modelId |Identificador único del modelo de Hola |
 | apiVersion |1.0 |
 |  | |
 | Cuerpo de la solicitud |NINGUNA |
@@ -684,115 +684,115 @@ Level 1
     fb8cf7a6-8719-46ee-97d4-92f931d77a3a, Smoke and Mirrors: Short Fictions and Illusions Rating: 0.5188
     8f5fe006-79e4-4679-816b-950989d1db4b, A Place I've Never Been (Contemporary American Fiction) Rating: 0.5156
     d8db4583-cc0f-49ce-bc95-b7fa3491623f, Happiness: A Novel Rating: 0.5156
-50471eec-9aeb-4900-84d7-21567ab18546, If the Buddha Dated: A Handbook for Finding Love on a Spiritual Path
-    cfe922a1-7ca0-4f8d-ad9d-b7cc87bfe0ef, Divine Secrets of the Ya-Ya Sisterhood: A Novel Rating: 0.5266
-    ff91a483-1ce5-4b37-a6fd-5ffcf21f8745, The Poisonwood Bible: A Novel Rating: 0.5252
+50471eec-9aeb-4900-84d7-21567ab18546, If hello Buddha Dated: A Handbook for Finding Love on a Spiritual Path
+    cfe922a1-7ca0-4f8d-ad9d-b7cc87bfe0ef, Divine Secrets of hello Ya-Ya Sisterhood: A Novel Rating: 0.5266
+    ff91a483-1ce5-4b37-a6fd-5ffcf21f8745, hello Poisonwood Bible: A Novel Rating: 0.5252
     973f8cbd-0846-4f6b-9d28-4dd0d7dc3a19, Pigs in Heaven Rating: 0.5244
     e2cbf7ad-0636-4117-8b30-298da6df7077, Animal Dreams Rating: 0.5227
     6c818fd3-5a09-417d-9ab4-7ffe090f0fef, Confessions of an Ugly Stepsister: A Novel Rating: 0.5222
-5e97148f-defb-4d74-af2d-80f4763bf531, The Deep End of the Ocean (Oprah's Book Club)
-    5e97148f-defb-4d74-af2d-80f4763bf531, The Deep End of the Ocean (Oprah's Book Club) Rating: 0.537
+5e97148f-defb-4d74-af2d-80f4763bf531, hello Deep End of hello Ocean (Oprah's Book Club)
+    5e97148f-defb-4d74-af2d-80f4763bf531, hello Deep End of hello Ocean (Oprah's Book Club) Rating: 0.537
     5dcbac37-2946-4f2a-a0b3-bbe710f9409a, Up Island: A Novel Rating: 0.5277
     bc5b69db-733b-4346-adde-3927544258f7, Downtown Rating: 0.5275
     31fe5c63-3e5a-48d0-802b-d3b0f989a634, Have a Nice Day: A Tale of Blood and Sweatsocks Rating: 0.5252
-    0adf981a-b65b-4c11-b36b-78aca2f948a2, The Perfect Storm: A True Story of Men Against the Sea Rating: 0.5238
-68f97068-ae1a-4163-9e94-396b800b743d, Modoc: The True Story of the Greatest Elephant That Ever Lived
-    68f97068-ae1a-4163-9e94-396b800b743d, Modoc: The True Story of the Greatest Elephant That Ever Lived Rating: 0.5379
-    6724862e-e4e7-4022-9614-1468d8b902ff, Little House on the Prairie Rating: 0.5345
-    cdedb837-1620-496d-94c4-6ccfed888320, Little House in the Big Woods Rating: 0.5325
-    382164ba-406b-4187-b726-d7a54b9d790d, The Tao of Pooh Rating: 0.5309
-    6a068d6a-bb74-4ba3-b3f2-a956c4f9d1b5, On the Banks of Plum Creek Rating: 0.5285
+    0adf981a-b65b-4c11-b36b-78aca2f948a2, hello Perfect Storm: A True Story of Men Against hello Sea Rating: 0.5238
+68f97068-ae1a-4163-9e94-396b800b743d, Modoc: hello True Story of hello Greatest Elephant That Ever Lived
+    68f97068-ae1a-4163-9e94-396b800b743d, Modoc: hello True Story of hello Greatest Elephant That Ever Lived Rating: 0.5379
+    6724862e-e4e7-4022-9614-1468d8b902ff, Little House on hello Prairie Rating: 0.5345
+    cdedb837-1620-496d-94c4-6ccfed888320, Little House in hello Big Woods Rating: 0.5325
+    382164ba-406b-4187-b726-d7a54b9d790d, hello Tao of Pooh Rating: 0.5309
+    6a068d6a-bb74-4ba3-b3f2-a956c4f9d1b5, On hello Banks of Plum Creek Rating: 0.5285
 37ef8e74-e348-44e5-aabc-1d7f9efcb25b, Men Are from Mars Women Are from Venus: A Practical Guide for Improving Communication and Getting What You Want in Your Relationships
     37ef8e74-e348-44e5-aabc-1d7f9efcb25b, Men Are from Mars, Women Are from Venus: A Practical Guide for Improving Communication and Getting What You Want in Your Relationships Rating: 0.5397
     f2be16d4-5faf-4d32-ab83-7ba74d29261e, Politically Correct Bedtime Stories: Modern Tales for Our Life and Times Rating: 0.5207
     ef732c5c-334b-4d6b-ab82-7255eb7286d0, Honor Among Thieves Rating: 0.5195
-    0b209b8c-7cdd-47fd-b940-05c7ff7c60fc, The Giving Tree Rating: 0.5194
-    883b360f-8b42-407f-b977-2f44ad840877, Scary Stories to Tell in the Dark: Collected from American Folklore (Scary Stories) Rating: 0.5184
-ff51b67e-fa8e-4c5e-8f4d-02a928de735d, Men at Work: The Craft of Baseball
-    d008dae9-c73a-40a1-9a9b-96d5cf546f36, The Gulag Archipelago 1918-1956: An Experiment in Literary Investigation I-II Rating: 0.5416
-    ff51b67e-fa8e-4c5e-8f4d-02a928de735d, Men at Work: The Craft of Baseball Rating: 0.5403
+    0b209b8c-7cdd-47fd-b940-05c7ff7c60fc, hello Giving Tree Rating: 0.5194
+    883b360f-8b42-407f-b977-2f44ad840877, Scary Stories tooTell in hello Dark: Collected from American Folklore (Scary Stories) Rating: 0.5184
+ff51b67e-fa8e-4c5e-8f4d-02a928de735d, Men at Work: hello Craft of Baseball
+    d008dae9-c73a-40a1-9a9b-96d5cf546f36, hello Gulag Archipelago 1918-1956: An Experiment in Literary Investigation I-II Rating: 0.5416
+    ff51b67e-fa8e-4c5e-8f4d-02a928de735d, Men at Work: hello Craft of Baseball Rating: 0.5403
     49dec30e-0adb-411a-b186-48eaabf6f8bc, Fatherland Rating: 0.5394
-    cc7964fd-d30f-478e-a425-93ddbdf094ed, Magic the Gathering: Arena Vol. 1 Rating: 0.5379
-    8a1e9f36-97af-4614-bed9-24e3940a05f3, More Sniglets: Any Word That Doesn't Appear in the Dictionary but Should Rating: 0.5377
+    cc7964fd-d30f-478e-a425-93ddbdf094ed, Magic hello Gathering: Arena Vol. 1 Rating: 0.5379
+    8a1e9f36-97af-4614-bed9-24e3940a05f3, More Sniglets: Any Word That Doesn't Appear in hello Dictionary but Should Rating: 0.5377
 12a6d988-be21-4a09-8143-9d5f4261ba16, A Dream of Eagles
     07b10e28-9e7c-4032-90b7-10acab7f2460, Cryptonomicon Rating: 0.5417
     e4cc5e69-3567-43ab-b00f-f0d8d0506870, Hit List Rating: 0.5416
-    1f1a34c4-9781-49f5-a3cc-acec3ae3c71d, The Family Rating: 0.5371
+    1f1a34c4-9781-49f5-a3cc-acec3ae3c71d, hello Family Rating: 0.5371
     56daeffe-7d48-43cd-8ef8-7dffd0c103d3, Kilo Class Rating: 0.5366
     b2fe511e-5cb9-4a56-b823-2801e63e6a96, Legal Tender Rating: 0.5366
 df87525b-e435-4bd6-8701-4e60ad344e28, Finding Fish
-    56d33036-dfda-46b9-8e2a-76cb03921bb0, The X-Files: Ground Zero Rating: 0.5417
+    56d33036-dfda-46b9-8e2a-76cb03921bb0, hello X-Files: Ground Zero Rating: 0.5417
     0780cde8-6529-4e1d-b6c6-082c1b80e596, Twelve Red Herrings Rating: 0.5416
     df87525b-e435-4bd6-8701-4e60ad344e28, Finding Fish Rating: 0.5408
-    400fe331-2c35-490c-adbc-b28b4b73d56c, Shall We Tell the President? Rating: 0.5383
+    400fe331-2c35-490c-adbc-b28b4b73d56c, Shall We Tell hello President? Rating: 0.5383
     f86ad7d0-5c03-42b3-aebf-13d44aec8b30, Shades of Grace Rating: 0.5358
-de1f62a4-89e6-44d2-aaee-992a4bf093f1, The Map That Changed the World: William Smith and the Birth of Modern Geology
-    de1f62a4-89e6-44d2-aaee-992a4bf093f1, The Map That Changed the World: William Smith and the Birth of Modern Geology Rating: 0.5422
+de1f62a4-89e6-44d2-aaee-992a4bf093f1, hello Map That Changed hello World: William Smith and hello Birth of Modern Geology
+    de1f62a4-89e6-44d2-aaee-992a4bf093f1, hello Map That Changed hello World: William Smith and hello Birth of Modern Geology Rating: 0.5422
     b303538f-e2c6-4a2c-b425-8d21e684fc3e, My Uncle Oswald Rating: 0.5385
-    34b84627-48af-4a4c-96c4-b26fb3863f56, Midnight In the Garden of Good and Evil Rating: 0.5379
-    306cbaa7-b1a8-4142-9d55-e11b5018a7a8, The Street Lawyer Rating: 0.5376
+    34b84627-48af-4a4c-96c4-b26fb3863f56, Midnight In hello Garden of Good and Evil Rating: 0.5379
+    306cbaa7-b1a8-4142-9d55-e11b5018a7a8, hello Street Lawyer Rating: 0.5376
     e53b4baa-8c09-45c4-95c0-b6a26b98770b, Miss Smillas Feeling for Snow Rating: 0.5367
 
 Level 2
 ---------------
-352aaea1-6b12-454d-a3d5-46379d9e4eb2, The Sinister Pig (Hillerman Tony)
-    352aaea1-6b12-454d-a3d5-46379d9e4eb2, The Sinister Pig (Hillerman Tony) Rating: 0.5425
-    74c49398-bc10-4af5-a658-a996a1201254, Children of the Storm (Peters Elizabeth) Rating: 0.5387
-    9ba80080-196e-43fd-8025-391d963f77e7, The Floating Girl Rating: 0.5372
+352aaea1-6b12-454d-a3d5-46379d9e4eb2, hello Sinister Pig (Hillerman Tony)
+    352aaea1-6b12-454d-a3d5-46379d9e4eb2, hello Sinister Pig (Hillerman Tony) Rating: 0.5425
+    74c49398-bc10-4af5-a658-a996a1201254, Children of hello Storm (Peters Elizabeth) Rating: 0.5387
+    9ba80080-196e-43fd-8025-391d963f77e7, hello Floating Girl Rating: 0.5372
     e68f81d5-7745-4cc7-b943-fedb8fcc2ced, Killer Smile (Scottoline Lisa) Rating: 0.5353
     b2fe511e-5cb9-4a56-b823-2801e63e6a96, Legal Tender Rating: 0.5332
 c65c3995-abf7-4c7b-bb3c-8eb5aa9be7a5, Lake Wobegon days
-    0adf981a-b65b-4c11-b36b-78aca2f948a2, The Perfect Storm: A True Story of Men Against the Sea Rating: 0.5433
+    0adf981a-b65b-4c11-b36b-78aca2f948a2, hello Perfect Storm: A True Story of Men Against hello Sea Rating: 0.5433
     c65c3995-abf7-4c7b-bb3c-8eb5aa9be7a5, Lake Wobegon days Rating: 0.543
-    a00ae6ad-4a7f-4211-9836-75ce8834eb11, Sniglets (Snig'lit: Any Word That Doesn't Appear in the Dictionary But Should) Rating: 0.5327
+    a00ae6ad-4a7f-4211-9836-75ce8834eb11, Sniglets (Snig'lit: Any Word That Doesn't Appear in hello Dictionary But Should) Rating: 0.5327
     6f6e192e-0d64-49ca-9b63-f09413ea1ee6, Politically Correct Holiday Stories: For an Enlightened Yuletide Season Rating: 0.5307
     798051a8-147d-4d46-b0dc-e836325029e6, AGE OF INNOCENCE (MOVIE TIE-IN) Rating: 0.5301
 73f3e25a-e996-4162-9ed8-ff3d34075650, O Pioneers! (Penguin Twentieth-Century Classics)
-    cba8163f-6536-436b-8130-47b4a43c827f, Trust No One (The Official Guide to the X-Files Vol. 2) Rating: 0.5434
+    cba8163f-6536-436b-8130-47b4a43c827f, Trust No One (hello Official Guide toohello X-Files Vol. 2) Rating: 0.5434
     5708e4cb-2492-49c0-94a8-cc413eec5d89, Small Gods (Discworld Novels (Paperback)) Rating: 0.5406
     73f3e25a-e996-4162-9ed8-ff3d34075650, O Pioneers! (Penguin Twentieth-Century Classics) Rating: 0.5403
-    d885b0bd-ae4b-452d-bdf2-faa90197dbc9, The Color of Magic Rating: 0.539
-    b133a9c4-4784-4db3-b100-d0d6dffb94d2, The Truth Is Out There (The Official Guide to the X-Files Vol. 1) Rating: 0.5367
-271700a5-854a-4d5a-8409-6b57a5ee4de4, Fluke: Or I Know Why the Winged Whale Sings
-    271700a5-854a-4d5a-8409-6b57a5ee4de4, Fluke: Or I Know Why the Winged Whale Sings Rating: 0.5445
-    2de1c354-90ff-47c5-a0db-1bad7d88ef94, The Salaryman's Wife (Children of Violence Series) Rating: 0.5329
+    d885b0bd-ae4b-452d-bdf2-faa90197dbc9, hello Color of Magic Rating: 0.539
+    b133a9c4-4784-4db3-b100-d0d6dffb94d2, hello Truth Is Out There (hello Official Guide toohello X-Files Vol. 1) Rating: 0.5367
+271700a5-854a-4d5a-8409-6b57a5ee4de4, Fluke: Or I Know Why hello Winged Whale Sings
+    271700a5-854a-4d5a-8409-6b57a5ee4de4, Fluke: Or I Know Why hello Winged Whale Sings Rating: 0.5445
+    2de1c354-90ff-47c5-a0db-1bad7d88ef94, hello Salaryman's Wife (Children of Violence Series) Rating: 0.5329
     d279416e-19c0-43f8-9ec9-a585947879ca, Zen Attitude Rating: 0.5316
-    c8f854d7-3de3-4b23-8217-f4f851670fd4, Revenge of the Cootie Girls: A Robin Hudson Mystery (Robin Hudson Mysteries (Paperback)) Rating: 0.5305
-    8ef4751c-7074-409e-a3ac-d49b222fc864, Where the Wild Things Are Rating: 0.5289
+    c8f854d7-3de3-4b23-8217-f4f851670fd4, Revenge of hello Cootie Girls: A Robin Hudson Mystery (Robin Hudson Mysteries (Paperback)) Rating: 0.5305
+    8ef4751c-7074-409e-a3ac-d49b222fc864, Where hello Wild Things Are Rating: 0.5289
 9ad1b620-0a7b-4543-8673-66d4c3bcb2f1, Their Eyes Were Watching God
     9ad1b620-0a7b-4543-8673-66d4c3bcb2f1, Their Eyes Were Watching God Rating: 0.5446
-    da45c4d5-aba1-413b-a9bd-50df98b1e1d2, The Bean Trees Rating: 0.5389
-    65ecbdd1-131c-40c3-a3d6-d86ca281377a, The God of Small Things Rating: 0.5387
-    c78743bf-7947-4a0c-8db7-8a3bfe69ba70, The Stone Diaries Rating: 0.5355
+    da45c4d5-aba1-413b-a9bd-50df98b1e1d2, hello Bean Trees Rating: 0.5389
+    65ecbdd1-131c-40c3-a3d6-d86ca281377a, hello God of Small Things Rating: 0.5387
+    c78743bf-7947-4a0c-8db7-8a3bfe69ba70, hello Stone Diaries Rating: 0.5355
     973f8cbd-0846-4f6b-9d28-4dd0d7dc3a19, Pigs in Heaven Rating: 0.5344
-5f17d90a-2604-4fe8-8977-1a280b9098b1, One for the Money (Stephanie Plum Novels (Paperback))
-    5f17d90a-2604-4fe8-8977-1a280b9098b1, One for the Money (Stephanie Plum Novels (Paperback)) Rating: 0.5446
+5f17d90a-2604-4fe8-8977-1a280b9098b1, One for hello Money (Stephanie Plum Novels (Paperback))
+    5f17d90a-2604-4fe8-8977-1a280b9098b1, One for hello Money (Stephanie Plum Novels (Paperback)) Rating: 0.5446
     57169b2b-9a8a-486b-9aac-1ed98ce57168, Final Appeal Rating: 0.5332
     efcb1bc4-7278-4a8f-b491-befde02070d6, Moment of Truth Rating: 0.5329
     1efa91a2-993b-4c43-9f5c-3454fc12612d, Burn Factor Rating: 0.5309
-    24c59962-458a-4ec8-b95d-d694e861919c, At Home in Mitford (The Mitford Years) Rating: 0.5303
-4fd48c46-1a20-4c57-bc7f-a02ef123dc52, As Nature Made Him: The Boy Who Was Raised As a Girl
-    4fd48c46-1a20-4c57-bc7f-a02ef123dc52, As Nature Made Him: The Boy Who Was Raised As a Girl Rating: 0.5449
+    24c59962-458a-4ec8-b95d-d694e861919c, At Home in Mitford (hello Mitford Years) Rating: 0.5303
+4fd48c46-1a20-4c57-bc7f-a02ef123dc52, As Nature Made Him: hello Boy Who Was Raised As a Girl
+    4fd48c46-1a20-4c57-bc7f-a02ef123dc52, As Nature Made Him: hello Boy Who Was Raised As a Girl Rating: 0.5449
     cd5f2c03-20cb-43be-a1fb-3b4233e63222, Pigs in Heaven Rating: 0.5329
-    19985fdb-d07a-4a25-ae4a-97b9cb61e5d1, Love in the Time of Cholera (Penguin Great Books of the 20th Century) Rating: 0.5267
+    19985fdb-d07a-4a25-ae4a-97b9cb61e5d1, Love in hello Time of Cholera (Penguin Great Books of hello 20th Century) Rating: 0.5267
     15689d09-c711-4844-84d8-130a90237b26, Bel Canto Rating: 0.5245
-    ff91a483-1ce5-4b37-a6fd-5ffcf21f8745, The Poisonwood Bible: A Novel Rating: 0.5235
+    ff91a483-1ce5-4b37-a6fd-5ffcf21f8745, hello Poisonwood Bible: A Novel Rating: 0.5235
 98df28ec-41e7-4fca-b77f-8b0d3109085d, Star Trek Memories
-    f874b5a3-5d40-4436-94ff-0fa1c090ddf5, The Sun Also Rises (A Scribner classic) Rating: 0.5451
+    f874b5a3-5d40-4436-94ff-0fa1c090ddf5, hello Sun Also Rises (A Scribner classic) Rating: 0.5451
     98df28ec-41e7-4fca-b77f-8b0d3109085d, Star Trek Memories Rating: 0.5442
     0ce0014a-9a48-4013-a08a-7f2c11877930, H.M.S. Unseen Rating: 0.5421
-    15316ca6-1e38-425f-893d-691944a47000, More Scary Stories To Tell In The Dark Rating: 0.5409
-    329d5682-3dc3-4206-8aa2-eef4b1032258, Letters from the Earth Rating: 0.54
+    15316ca6-1e38-425f-893d-691944a47000, More Scary Stories tooTell In hello Dark Rating: 0.5409
+    329d5682-3dc3-4206-8aa2-eef4b1032258, Letters from hello Earth Rating: 0.54
 5b9445d5-c072-419c-8d49-6f669bb1b0a9, Daughter of Fortune: A Novel (Oprah's Book Club (Hardcover))
     5b9445d5-c072-419c-8d49-6f669bb1b0a9, Daughter of Fortune: A Novel (Oprah's Book Club (Hardcover)) Rating: 0.5462
-    ff91a483-1ce5-4b37-a6fd-5ffcf21f8745, The Poisonwood Bible: A Novel Rating: 0.5372
+    ff91a483-1ce5-4b37-a6fd-5ffcf21f8745, hello Poisonwood Bible: A Novel Rating: 0.5372
     604eb3bd-6026-4f51-bffd-9fb54f180400, Family Pictures: A Novel Rating: 0.5341
     8d06d01d-31cd-4678-b6b1-140a67987ce9, Songs in Ordinary Time (Oprah's Book Club (Paperback)) Rating: 0.5334
-    da45c4d5-aba1-413b-a9bd-50df98b1e1d2, The Bean Trees Rating: 0.5319
+    da45c4d5-aba1-413b-a9bd-50df98b1e1d2, hello Bean Trees Rating: 0.5319
 d5358189-d70f-4e35-8add-34b83b4942b3, Pigs in Heaven
     d5358189-d70f-4e35-8add-34b83b4942b3, Pigs in Heaven Rating: 0.5491
-    ff91a483-1ce5-4b37-a6fd-5ffcf21f8745, The Poisonwood Bible: A Novel Rating: 0.5401
-    c78743bf-7947-4a0c-8db7-8a3bfe69ba70, The Stone Diaries Rating: 0.5393
+    ff91a483-1ce5-4b37-a6fd-5ffcf21f8745, hello Poisonwood Bible: A Novel Rating: 0.5401
+    c78743bf-7947-4a0c-8db7-8a3bfe69ba70, hello Stone Diaries Rating: 0.5393
     8d06d01d-31cd-4678-b6b1-140a67987ce9, Songs in Ordinary Time (Oprah's Book Club (Paperback)) Rating: 0.5382
     973f8cbd-0846-4f6b-9d28-4dd0d7dc3a19, Pigs in Heaven Rating: 0.5367
 
@@ -800,17 +800,17 @@ d5358189-d70f-4e35-8add-34b83b4942b3, Pigs in Heaven
 
 
 ## <a name="7-model-business-rules"></a>7. Reglas de negocio de modelo
-Estos son los tipos de reglas admitidas:
+Éstos son tipos de Hola de reglas admitidas:
 
-* <strong>BlockList</strong>: le permite proporcionar una lista de elementos que no quiera que se devuelvan en los resultados de la recomendación. 
-* <strong>FeatureBlockList</strong>: le permite bloquear los elementos en función de los valores de sus características.
+* <strong>Lista de bloqueadas</strong> -lista de bloqueadas permite tooprovide una lista de elementos que no desea tooreturn en los resultados de la recomendación de Hola. 
+* <strong>FeatureBlockList</strong> -lista de bloqueadas de característica permite tooblock elementos basados en valores de hello de sus características.
 
-*No envíe más de 1000 elementos en una sola regla de lista de bloqueo. Si lo hace, es posible que se agote el tiempo de espera de la llamada. Si necesita bloquear más de 1000 elementos, puede hacer varias llamadas de listas de bloqueo.*
+*No envíe más de 1000 elementos en una sola regla de lista de bloqueo. Si lo hace, es posible que se agote el tiempo de espera de la llamada. Si necesita más de 1000 elementos tooblock, puede realizar varias llamadas de lista de bloqueo.*
 
-* <strong>Upsale</strong>: le permite exigir los elementos que se devolverán en los resultados de la recomendación.
-* <strong>WhiteList</strong>: le permite solo sugerir recomendaciones a partir de una lista de elementos.
-* <strong>FeatureWhiteList</strong>: le permite recomendar solo los elementos que tienen valores de característica específicos.
-* <strong>PerSeedBlockList</strong>; le permite proporcionar por elemento una lista de elementos que no se pueden devolver como resultados de recomendación.
+* <strong>Upsale</strong> -Upsale permite tooenforce elementos tooreturn en los resultados de la recomendación de Hola.
+* <strong>Lista blanca de direcciones</strong> -habilita la lista blanca se tooonly sugerir recomendaciones de una lista de elementos.
+* <strong>FeatureWhiteList</strong> -lista blanca de característica le permite tooonly. se recomienda elementos que tienen valores de las características específicas.
+* <strong>PerSeedBlockList</strong> : por habilita la lista de bloques de inicialización tooprovide por cada elemento de una lista de elementos que no se puede devolver como resultado de la recomendación.
 
 ### <a name="71----get-model-rules"></a>7.1.    Obtener reglas de modelo
 | Método HTTP | URI |
@@ -819,7 +819,7 @@ Estos son los tipos de reglas admitidas:
 
 | Nombre de parámetro | Valores válidos |
 |:--- |:--- |
-| modelId |Identificador único del modelo |
+| modelId |Identificador único del modelo de Hola |
 | apiVersion |1.0 |
 |  | |
 | Cuerpo de la solicitud |NINGUNA |
@@ -829,7 +829,7 @@ Estos son los tipos de reglas admitidas:
 código de estado HTTP: 200
 
 * `feed/entry/content/properties/Id` : el identificador único de esta regla.
-* `feed/entry/content/properties/Type` : el tipo de la regla.
+* `feed/entry/content/properties/Type`-Tipo de regla de Hola.
 * `feed/entry/content/properties/Parameter` : el parámetro de regla.
 
 OData XML
@@ -881,25 +881,25 @@ OData XML
 |  | |
 | Cuerpo de la solicitud | |
 
-<ins>Cada vez que se proporcionen identificadores de elemento para reglas de negocio, asegúrese de usar el Id. externo del elemento (el mismo Id. que usó en el archivo de catálogo)</ins><br>
-<ins>Para agregar una regla BlockList:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>BlockList</Type><Value>{"ItemsToExclude":["2406E770-769C-4189-89DE-1C9283F93A96","3906E110-769C-4189-89DE-1C9283F98888"]}</Value></ApiFilter>`<br><br><ins>
-<ins>Para agregar una regla FeatureBlockList:</ins><br>
+<ins>Cada vez que proporcionar los identificadores de elementos de reglas de negocios, que seguro Hola de toouse identificador externo del elemento de hello (Hola el mismo identificador que usó en el archivo de catálogo de hello)</ins><br>
+<ins>tooadd una regla de lista de bloqueo:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>BlockList</Type><Value>{"ItemsToExclude":["2406E770-769C-4189-89DE-1C9283F93A96","3906E110-769C-4189-89DE-1C9283F98888"]}</Value></ApiFilter>`<br><br><ins>
+<ins>una regla de FeatureBlockList tooadd:</ins><br>
 <br>
-`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureBlockList</Type><Value>{"Name":"Movie_category","Values":["Adult","Drama"]}</Value></ApiFilter>`<br><br><ins> Para agregar una regla Upsale:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>Upsale</Type><Value>{"ItemsToUpsale":["2406E770-769C-4189-89DE-1C9283F93A96"],"NumberOfItemsToUpsale":5}</Value></ApiFilter>`<br><br>
-<ins>Para agregar una WhiteList:</ins><br>
+`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureBlockList</Type><Value>{"Name":"Movie_category","Values":["Adult","Drama"]}</Value></ApiFilter>`<br><br><ins>una regla de Upsale tooadd:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>Upsale</Type><Value>{"ItemsToUpsale":["2406E770-769C-4189-89DE-1C9283F93A96"],"NumberOfItemsToUpsale":5}</Value></ApiFilter>`<br><br>
+<ins>tooadd una regla de lista blanca de direcciones:</ins><br>
 `<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>WhiteList</Type><Value>{"ItemsToInclude":["2406E770-769C-4189-89DE-1C9283F93A96","1116E770-769C-4189-89DE-1C9283F88888"]}</Value></ApiFilter>`<br><br><ins>
-<ins>Para agregar una FeatureWhiteList:</ins><br>
+<ins>una regla de FeatureWhiteList tooadd:</ins><br>
 <br>
-`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureWhiteList</Type><Value>{"Name":"Movie_rating","Values":["PG13"]}</Value></ApiFilter>`<br><br><ins> Para agregar una regla PerSeedBlockList:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>PerSeedBlockList</Type><Value>{"SeedItems":["9949"],"ItemsToExclude":["9862","8158","8244"]}</Value></ApiFilter>`|
+`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureWhiteList</Type><Value>{"Name":"Movie_rating","Values":["PG13"]}</Value></ApiFilter>`<br><br><ins>una regla de PerSeedBlockList tooadd:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>PerSeedBlockList</Type><Value>{"SeedItems":["9949"],"ItemsToExclude":["9862","8158","8244"]}</Value></ApiFilter>`|
 
 **Respuesta**:
 
 código de estado HTTP: 200
 
-La API devuelve la regla recién creada con sus detalles. La propiedad de las reglas se puede recuperar por los siguientes medios:
+Hola API devuelve Hola recién creado reglas con sus detalles. propiedades de reglas de Hello pueden obtenerse de hello siguiendo las rutas de acceso:
 
 * `feed/entry/content/properties/Id` : el identificador único de esta regla.
-* `feed/entry/content/properties/Type` : el tipo de regla, BlockList o Upsale.
+* `feed/entry/content/properties/Type`-Tipo de regla de hello: lista de bloqueadas o Upsale.
 * `feed/entry/content/properties/Parameter` : el parámetro de regla.
 
 OData XML
@@ -933,8 +933,8 @@ OData XML
 
 | Nombre de parámetro | Valores válidos |
 |:--- |:--- |
-| modelId |Identificador único del modelo |
-| filterId |Identificador único del filtro |
+| modelId |Identificador único del modelo de Hola |
+| filterId |Identificador único del filtro de Hola |
 | apiVersion |1.0 |
 |  | |
 | Cuerpo de la solicitud |NINGUNA |
@@ -950,7 +950,7 @@ código de estado HTTP: 200
 
 | Nombre de parámetro | Valores válidos |
 |:--- |:--- |
-| modelId |Identificador único del modelo |
+| modelId |Identificador único del modelo de Hola |
 | apiVersion |1.0 |
 |  | |
 | Cuerpo de la solicitud |NINGUNA |
@@ -961,14 +961,14 @@ código de estado HTTP: 200
 
 ## <a name="8-catalog"></a>8. Catálogo
 ### <a name="81----import-catalog-data"></a>8.1.    Importar datos de catálogo
-Si carga varios archivos de catálogo para el mismo modelo con varias llamadas, solo insertaremos los nuevos elementos de catálogo. Los elementos existentes permanecerán con los valores originales. Los datos del catálogo no se pueden actualizar con este método.
+Si va a cargar varias catálogo archivos toohello mismo modelo con varias llamadas, insertamos solo Hola nuevos elementos de catálogo. Los elementos existentes permanecerán con valores originales de Hola. Los datos del catálogo no se pueden actualizar con este método.
 
-Los datos del catálogo deben seguir el siguiente formato:
+datos del catálogo de Hello deben seguir Hola siguiendo el formato:
 
 * Sin características: `<Item Id>,<Item Name>,<Item Category>[,<Description>]`
 * Con características: `<Item Id>,<Item Name>,<Item Category>,[<Description>],<Features list>`
 
-Nota: el tamaño máximo de archivo es de 200 MB.
+Nota: el tamaño máximo del archivo de hello es 200MB.
 
 ** Detalles de formato **
 
@@ -976,9 +976,9 @@ Nota: el tamaño máximo de archivo es de 200 MB.
 |:--- |:--- |:--- |:--- |
 | Id. de elemento |Sí |[A-z], [a-z], [0-9], [_] &#40;Carácter de subrayado&#41;, [-] &#40;Guion&#41;<br> Longitud máxima: 50 |Identificador único de un elemento. |
 | Nombre del elemento |Sí |Cualquier carácter alfanumérico<br> Longitud máxima: 255 |Nombre del elemento. |
-| Categoría del elemento |Sí |Cualquier carácter alfanumérico <br> Longitud máxima: 255 |La categoría a la que pertenece este elemento (por ejemplo, Libros de cocina, Drama...); puede estar vacía. |
-| Description |No, a menos que haya características (pero puede estar vacía) |Cualquier carácter alfanumérico <br> Longitud máxima: 4000 |Descripción de este elemento. |
-| Lista de características |No |Cualquier carácter alfanumérico <br> Longitud máxima: 4000; número máximo de características: 20 |Lista de nombres de característica = valores de característica separados por coma que se pueden usar para mejorar la recomendación del modelo; consulte la sección [Temas avanzados](#2-advanced-topics) . |
+| Categoría del elemento |Sí |Cualquier carácter alfanumérico <br> Longitud máxima: 255 |Categoría toowhich este elemento pertenece (por ejemplo, cocina libros, series...); puede estar vacío. |
+| Descripción |No, a menos que haya características (pero puede estar vacía) |Cualquier carácter alfanumérico <br> Longitud máxima: 4000 |Descripción de este elemento. |
+| Lista de características |No |Cualquier carácter alfanumérico <br> Longitud máxima: 4000; número máximo de características: 20 |Lista separada por comas de nombre de la característica = valor de la característica que puede ser utilizados tooenhance recomendación del modelo; vea [temas avanzados](#2-advanced-topics) sección. |
 
 | Método HTTP | URI |
 |:--- |:--- |
@@ -987,20 +987,20 @@ Nota: el tamaño máximo de archivo es de 200 MB.
 
 | Nombre de parámetro | Valores válidos |
 |:--- |:--- |
-| modelId |Identificador único del modelo |
-| filename |Identificador textual del catálogo.<br>Solo se permiten letras (A-Z, a-z), números (0-9), guiones (-) y caracteres de subrayado (_).<br>Longitud máxima: 50 |
+| modelId |Identificador único del modelo de Hola |
+| filename |Identificador textual del catálogo de Hola.<br>Solo se permiten letras (A-Z, a-z), números (0-9), guiones (-) y caracteres de subrayado (_).<br>Longitud máxima: 50 |
 | apiVersion |1.0 |
 |  | |
-| Cuerpo de la solicitud |Ejemplo (con características):<br/>2406e770-769c-4189-89de-1c9283f93a96,Clara Callan,Book,the book  description,author=Richard Wright,publisher=Harper Flamingo Canada,year=2001<br>21bf8088-b6c0-4509-870c-e1c7ac78304a,The Forgetting Room: A Fiction (Byzantium Book),Book,,author=Nick Bantock,publisher=Harpercollins,year=1997<br>3bb5cb44-d143-4bdd-a55c-443964bf4b23,Spadework,Book,,author=Timothy Findley, publisher=HarperFlamingo Canada, year=2001<br>552a1940-21e4-4399-82bb-594b46d7ed54,Restraint of Beasts,Book,the book description,author=Magnus Mills, publisher=Arcade Publishing, year=1998</pre> |
+| Cuerpo de la solicitud |Ejemplo (con características):<br/>2406e770-769c-4189-89de-1c9283f93a96, Clara Callan, libro, descripción del libro hello, crear = Richard Wright, publisher = Harper Flamingo Canadá, año = 2001<br>Hola 21bf8088-b6c0-4509-870c-e1c7ac78304a, Forgetting sala: A ficción (Byzantium Book), libro, crear = Nick Bantock, publisher = Harpercollins, año = 1997<br>3bb5cb44-d143-4bdd-a55c-443964bf4b23,Spadework,Book,,author=Timothy Findley, publisher=HarperFlamingo Canada, year=2001<br>552a1940-21e4-4399-82bb-594b46d7ed54, retención de Animals, libro, descripción del libro hello, crear = Magnus Mills, publisher = publicación de juegos, año = 1998</pre> |
 
 **Respuesta**:
 
 código de estado HTTP: 200
 
-La API devuelve un informe de la importación.
+Hola API devuelve un informe de importación de Hola.
 
 * `feed\entry\content\properties\LineCount` : número de líneas aceptadas.
-* `feed\entry\content\properties\ErrorCount` : número de líneas que no se insertaron debido a un error.
+* `feed\entry\content\properties\ErrorCount`-Número de líneas que no se insertaron debido a error de tooan.
 
 OData XML
 
@@ -1027,7 +1027,7 @@ OData XML
 
 ### <a name="82----get-catalog"></a>8.2.    Obtener catálogo
 Recupera todos los elementos del catálogo.
-El catálogo se recuperará de página en página. Si desea obtener elementos en un índice determinado, puede utilizar el parámetro de OData $skip. Por ejemplo, si desea obtener elementos a partir de la posición 100, agregue el parámetro $skip=100 a la solicitud.
+catálogo de Hello será recuperar una página a la vez. Si desea tooget elementos en un índice determinado, puede usar el parámetro de hello $skip odata. Por ejemplo si desea que los elementos de tooget a partir de posición 100, Agregar parámetro hello $skip = 100 solicitud toohello.
 
 | Método HTTP | URI |
 |:--- |:--- |
@@ -1035,7 +1035,7 @@ El catálogo se recuperará de página en página. Si desea obtener elementos en
 
 | Nombre de parámetro | Valores válidos |
 |:--- |:--- |
-| modelId |Identificador único del modelo |
+| modelId |Identificador único del modelo de Hola |
 | apiVersion |1.0 |
 |  | |
 | Cuerpo de la solicitud |NINGUNA |
@@ -1044,10 +1044,10 @@ El catálogo se recuperará de página en página. Si desea obtener elementos en
 
 código de estado HTTP: 200
 
-La respuesta incluye una entrada por cada elemento de catálogo. Cada entrada tiene los siguientes datos:
+respuesta de Hello incluye una entrada por cada elemento de catálogo. Cada entrada tiene Hola datos siguientes:
 
-* `feed/entry/content/properties/ExternalId` : identificador externo de elemento de catálogo, proporcionado por el cliente.
-* `feed/entry/content/properties/InternalId` : identificador interno de elemento de catálogo, que ha generado las Recomendaciones de Aprendizaje automático de Azure.
+* `feed/entry/content/properties/ExternalId`-Identificador externo del elemento del catálogo, Hola uno proporcionado por el cliente de Hola.
+* `feed/entry/content/properties/InternalId`-Catálogo Id. interno del elemento, Hola uno generadas por las recomendaciones de aprendizaje de máquina de Azure.
 * `feed/entry/content/properties/Name` : nombre de elemento de catálogo.
 * `feed/entry/content/properties/Category` : categoría de elemento de catálogo.
 * `feed/entry/content/properties/Description` : descripción de elemento de catálogo.
@@ -1119,7 +1119,7 @@ OData XML
             <m:properties>
                 <d:ExternalId m:type="Edm.String">21BF8088-B6C0-4509-870C-E1C7AC78304A</d:ExternalId>
                 <d:InternalId m:type="Edm.String">ea65e4fa-768c-40b4-92c3-69d3e8178691</d:InternalId>
-                <d:Name m:type="Edm.String">The Forgetting Room: A Fiction (Byzantium Book)</d:Name>
+                <d:Name m:type="Edm.String">hello Forgetting Room: A Fiction (Byzantium Book)</d:Name>
                 <d:Category m:type="Edm.String">Book</d:Category>
                 <d:Description m:type="Edm.String"></d:Description>
                 <d:Metadata m:type="Edm.String"></d:Metadata>
@@ -1135,8 +1135,8 @@ OData XML
 
 | Nombre de parámetro | Valores válidos |
 |:--- |:--- |
-| modelId |Identificador único del modelo |
-| token |Token del nombre de elemento de catálogo. Debe contener al menos 3 caracteres. |
+| modelId |Identificador único del modelo de Hola |
+| token |Símbolo (token) de nombre del elemento del catálogo de Hola. Debe contener al menos 3 caracteres. |
 | apiVersion |1.0 |
 |  | |
 | Cuerpo de la solicitud |NINGUNA |
@@ -1145,9 +1145,9 @@ OData XML
 
 código de estado HTTP: 200
 
-La respuesta incluye una entrada por cada elemento de catálogo. Cada entrada tiene los siguientes datos:
+respuesta de Hello incluye una entrada por cada elemento de catálogo. Cada entrada tiene Hola datos siguientes:
 
-* `feed/entry/content/properties/InternalId` : identificador interno de elemento de catálogo, que ha generado las Recomendaciones de Aprendizaje automático de Azure.
+* `feed/entry/content/properties/InternalId`-Catálogo Id. interno del elemento, Hola uno generadas por las recomendaciones de aprendizaje de máquina de Azure.
 * `feed/entry/content/properties/Name` : nombre de elemento de catálogo.
 * `feed/entry/content/properties/Rating`: (para un uso futuro)
 * `feed/entry/content/properties/Reasoning`: (para un uso futuro)
@@ -1184,7 +1184,7 @@ OData XML
 ## <a name="9-usage-data"></a>9. Datos de uso
 ### <a name="91----import-usage-data"></a>9.1.    Importar datos de uso
 #### <a name="911-uploading-file"></a>9.1.1. Carga de archivos
-En esta sección se muestra cómo cargar datos de uso mediante un archivo. Puede llamar a esta API varias veces con datos de uso. Todos los datos de uso se guardarán para todas las llamadas.
+Esta sección se muestra cómo los datos de uso de tooupload mediante un archivo. Puede llamar a esta API varias veces con datos de uso. Todos los datos de uso se guardarán para todas las llamadas.
 
 | Método HTTP | URI |
 |:--- |:--- |
@@ -1192,18 +1192,18 @@ En esta sección se muestra cómo cargar datos de uso mediante un archivo. Puede
 
 | Nombre de parámetro | Valores válidos |
 |:--- |:--- |
-| modelId |Identificador único del modelo |
-| filename |Identificador textual del catálogo.<br>Solo se permiten letras (A-Z, a-z), números (0-9), guiones (-) y caracteres de subrayado (_).<br>Longitud máxima: 50 |
+| modelId |Identificador único del modelo de Hola |
+| filename |Identificador textual del catálogo de Hola.<br>Solo se permiten letras (A-Z, a-z), números (0-9), guiones (-) y caracteres de subrayado (_).<br>Longitud máxima: 50 |
 | apiVersion |1.0 |
 |  | |
-| Cuerpo de la solicitud |Datos de uso. Formato:<br>`<User Id>,<Item Id>[,<Time>,<Event>]`<br><br><table><tr><th>Nombre</th><th>Obligatorio</th><th>Tipo</th><th>Description</th></tr><tr><td>Id. de usuario</td><td>Sí</td><td>[A-z], [a-z], [0-9], [_] &#40;Carácter de subrayado&#41;, [-] &#40;Guion&#41;<br> Longitud máxima: 255 </td><td>Identificador único de un usuario.</td></tr><tr><td>Id. de elemento</td><td>Sí</td><td>[A-z], [a-z], [0-9], [&#95;] &#40;Carácter de subrayado&#41;, [-] &#40;Guion&#41;<br> Longitud máxima: 50</td><td>Identificador único de un elemento.</td></tr><tr><td>Hora</td><td>No</td><td>La fecha en este formato: AAAA/MM/DDTHH:MM:SS (por ejemplo, 2013/06/20T10:00:00)</td><td>Hora de los datos.</td></tr><tr><td>Evento</td><td>No, si se suministra también se debe colocar la fecha</td><td>Uno de los siguientes:<br>• Click<br>• RecommendationClick<br>•    AddShopCart<br>• RemoveShopCart<br>• compra</td><td></td></tr></table><br>Tamaño de archivo máximo: 200 MB<br><br>Ejemplo:<br><pre>149452,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>6360,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>50321,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>71285,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>224450,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>236645,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>107951,1b3d95e2-84e4-414c-bb38-be9cf461c347</pre> |
+| Cuerpo de la solicitud |Datos de uso. Formato:<br>`<User Id>,<Item Id>[,<Time>,<Event>]`<br><br><table><tr><th>Nombre</th><th>Obligatorio</th><th>Tipo</th><th>Description</th></tr><tr><td>Id. de usuario</td><td>Sí</td><td>[A-z], [a-z], [0-9], [_] &#40;Carácter de subrayado&#41;, [-] &#40;Guion&#41;<br> Longitud máxima: 255 </td><td>Identificador único de un usuario.</td></tr><tr><td>Id. de elemento</td><td>Sí</td><td>[A-z], [a-z], [0-9], [&#95;] &#40;Carácter de subrayado&#41;, [-] &#40;Guion&#41;<br> Longitud máxima: 50</td><td>Identificador único de un elemento.</td></tr><tr><td>Hora</td><td>No</td><td>La fecha en este formato: AAAA/MM/DDTHH:MM:SS (por ejemplo, 2013/06/20T10:00:00)</td><td>Hora de los datos.</td></tr><tr><td>Evento</td><td>No, si se suministra también se debe colocar la fecha</td><td>Uno de hello siguientes:<br>• Click<br>• RecommendationClick<br>•    AddShopCart<br>• RemoveShopCart<br>• compra</td><td></td></tr></table><br>Tamaño de archivo máximo: 200 MB<br><br>Ejemplo:<br><pre>149452,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>6360,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>50321,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>71285,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>224450,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>236645,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>107951,1b3d95e2-84e4-414c-bb38-be9cf461c347</pre> |
 
 **Respuesta**:
 
 código de estado HTTP: 200
 
 * `Feed\entry\content\properties\LineCount` : número de líneas aceptadas.
-* `Feed\entry\content\properties\ErrorCount` : número de líneas que no se insertaron debido a un error.
+* `Feed\entry\content\properties\ErrorCount`-Número de líneas que no se insertaron debido a error de tooan.
 * `Feed\entry\content\properties\FileId` : identificador de archivo.
 
 OData XML
@@ -1232,7 +1232,7 @@ OData XML
 
 
 #### <a name="912-using-data-acquisition"></a>9.1.2. Uso de la adquisición de datos
-En esta sección se muestra cómo enviar eventos en tiempo real a las recomendaciones de Aprendizaje automático de Azure, normalmente desde su sitio web.
+Esta sección muestra cómo toosend eventos real hora de recomendaciones de aprendizaje de máquina tooAzure, normalmente desde su sitio Web.
 
 | Método HTTP | URI |
 |:--- |:--- |
@@ -1242,7 +1242,7 @@ En esta sección se muestra cómo enviar eventos en tiempo real a las recomendac
 | Nombre de parámetro | Valores válidos |
 |:--- |:--- |
 | apiVersion |1.0 |
-| Request body |Entrada de datos de eventos para cada evento que va a enviar. Debe enviar para la misma sesión de usuario o explorador el mismo identificador en el campo SessionId. (Vea el ejemplo del cuerpo de evento aparece a continuación). |
+| Request body |Entrada de datos de evento para cada evento que desee toosend. Debe enviar para la misma sesión de usuario o el Examinador de Hola Hola mismo identificador en el campo de SessionId Hola. (Vea el ejemplo del cuerpo de evento aparece a continuación). |
 
 * Ejemplo para evento 'Click':
   
@@ -1337,7 +1337,7 @@ En esta sección se muestra cómo enviar eventos en tiempo real a las recomendac
 
 ### <a name="92----list-model-usage-files"></a>9.2.    Mostrar archivos de uso de modelo
 Recupera los metadatos de todos los archivos de uso de modelo.
-Los archivos de uso se recuperarán de página en página. Cada página contiene 100 elementos. Si desea obtener elementos en un índice determinado, puede utilizar el parámetro de OData $skip. Por ejemplo, si desea obtener elementos a partir de la posición 100, agregue el parámetro $skip=100 a la solicitud.
+Hello uso de archivos que recupera una página a la vez. Cada página contiene 100 elementos. Si desea tooget elementos en un índice determinado, puede usar el parámetro de hello $skip odata. Por ejemplo si desea que los elementos de tooget a partir de posición 100, Agregar parámetro hello $skip = 100 solicitud toohello.
 
 | Método HTTP | URI |
 |:--- |:--- |
@@ -1345,7 +1345,7 @@ Los archivos de uso se recuperarán de página en página. Cada página contiene
 
 | Nombre de parámetro | Valores válidos |
 |:--- |:--- |
-| forModelId |Identificador único del modelo |
+| forModelId |Identificador único del modelo de Hola |
 | apiVersion |1.0 |
 |  | |
 | Cuerpo de la solicitud |NINGUNA |
@@ -1354,12 +1354,12 @@ Los archivos de uso se recuperarán de página en página. Cada página contiene
 
 código de estado HTTP: 200
 
-La respuesta incluye una entrada por archivo de uso. Cada entrada tiene los siguientes datos:
+respuesta de Hello incluye una entrada por cada archivo de uso. Cada entrada tiene Hola datos siguientes:
 
 * `feed\entry\content\properties\Id`: id. de archivo de uso.
-* `feed\entry\content\properties\Length`: longitud del archivo uso en MB.
-* `feed\entry\content\properties\DateModified` : fecha en que se creó el archivo de uso.
-* `feed\entry\content\properties\UseInModel` : si el archivo de uso se emplea en el modelo.
+* `feed\entry\content\properties\Length` : longitud del archivo uso en MB.
+* `feed\entry\content\properties\DateModified`-Fecha cuando se creó el archivo de uso de hello.
+* `feed\entry\content\properties\UseInModel`-Si se usan archivos de uso de hello en el modelo de Hola.
 
 OData XML
 
@@ -1409,10 +1409,10 @@ Obtiene estadísticas de uso.
 
 | Nombre de parámetro | Valores válidos |
 |:--- |:--- |
-| modelId |Identificador único del modelo |
+| modelId |Identificador único del modelo de Hola |
 | startDate |Fecha de inicio. Formato: aaaa/MM/ddTHH:mm:ss |
 | endDate |Fecha de fin. Formato: aaaa/MM/ddTHH:mm:ss |
-| eventTypes |Cadena de tipos de eventos separados por coma o null para obtener todos los eventos. |
+| eventTypes |Cadena separada por comas de evento tipos o null tooget todos los eventos |
 | apiVersion |1.0 |
 |  | |
 | Cuerpo de la solicitud |NINGUNA |
@@ -1421,9 +1421,9 @@ Obtiene estadísticas de uso.
 
 código de estado HTTP: 200
 
-Una colección de elementos de clave y valor. Cada uno contiene la suma de eventos para un tipo de evento concreto, agrupados por hora.
+Una colección de elementos de clave y valor. Cada uno de ellos contiene la suma de Hola de eventos para un tipo de evento concreto agrupadas por hora.
 
-* `feed\entry[i]\content\properties\Key` : contiene el tiempo (agrupado por hora) y el tipo de evento.
+* `feed\entry[i]\content\properties\Key`-Contiene la hora de hello (agrupado por hora) y el tipo de evento de Hola.
 * `feed\entry[i]\content\properties\Value` : recuento total de eventos.
 
 OData XML
@@ -1486,7 +1486,7 @@ OData XML
     </feed>
 
 ### <a name="94----get-usage-file-sample"></a>9.4.    Obtener ejemplo de archivo de uso
-Recupera los primeros 2 KB de contenido de archivos de uso.
+Recupera Hola 2KB primer uso de contenido del archivo.
 
 | Método HTTP | URI |
 |:--- |:--- |
@@ -1494,8 +1494,8 @@ Recupera los primeros 2 KB de contenido de archivos de uso.
 
 | Nombre de parámetro | Valores válidos |
 |:--- |:--- |
-| modelId |Identificador único del modelo |
-| fileId |Identificador único del archivo de uso de modelo |
+| modelId |Identificador único del modelo de Hola |
+| fileId |Identificador único del archivo de uso del modelo de Hola |
 | apiVersion |1.0 |
 |  | |
 | Cuerpo de la solicitud |NINGUNA |
@@ -1526,7 +1526,7 @@ Se devuelve una respuesta en formato de texto sin formato:
 
 
 ### <a name="95----get-model-usage-file"></a>9.5.    Obtener el archivo de uso de modelo
-Recupera el contenido completo del archivo de uso.
+Recupera todo el contenido del archivo de uso de Hola Hola.
 
 | Método HTTP | URI |
 |:--- |:--- |
@@ -1534,8 +1534,8 @@ Recupera el contenido completo del archivo de uso.
 
 | Nombre de parámetro | Valores válidos |
 |:--- |:--- |
-| mId |Identificador único del modelo |
-| fid |Identificador único del archivo de uso de modelo |
+| mId |Identificador único del modelo de Hola |
+| fid |Identificador único del archivo de uso del modelo de Hola |
 | descargar |1 |
 | apiVersion |1.0 |
 |  | |
@@ -1584,7 +1584,7 @@ Se devuelve una respuesta en formato de texto sin formato:
 </pre>
 
 ### <a name="96----delete-usage-file"></a>9.6.    Eliminar archivo de uso
-Elimina el archivo de uso del modelo especificado.
+Elimina el archivo de uso de hello modelo especificado.
 
 | Método HTTP | URI |
 |:--- |:--- |
@@ -1592,8 +1592,8 @@ Elimina el archivo de uso del modelo especificado.
 
 | Nombre de parámetro | Valores válidos |
 |:--- |:--- |
-| modelId |Identificador único del modelo |
-| fileId |Identificador único del archivo que se va a eliminar |
+| modelId |Identificador único del modelo de Hola |
+| fileId |Identificador único de hello archivo toobe eliminado |
 | apiVersion |1.0 |
 |  | |
 | Cuerpo de la solicitud |NINGUNA |
@@ -1611,7 +1611,7 @@ Elimina todos los archivos de uso del modelo.
 
 | Nombre de parámetro | Valores válidos |
 |:--- |:--- |
-| modelId |Identificador único del modelo |
+| modelId |Identificador único del modelo de Hola |
 | apiVersion |1.0 |
 |  | |
 | Cuerpo de la solicitud |NINGUNA |
@@ -1621,12 +1621,12 @@ Elimina todos los archivos de uso del modelo.
 código de estado HTTP: 200
 
 ## <a name="10-features"></a>10. Características
-En esta sección se muestra cómo recuperar información de características, como las funciones importadas y sus valores, su rango, y cuándo se ha asignado este rango. Las características se importan como parte de los datos del catálogo y luego su rango se asocia cuando se realiza una compilación de rango.
-El rango de las características puede cambiar según el patrón de los datos de uso y el tipo de elementos. Pero para que el uso y los elementos sean coherentes, el rango debe tener solo pequeñas fluctuaciones.
-El rango de características es un número no negativo. El número 0 significa que la característica no fue clasificada (sucede si se invoca esta API antes de completar la primera compilación de rango). La fecha en que se atribuye el rango se conoce como la actualización de la puntuación.
+Esta sección muestra cómo tooretrieve característica información, como características de hello importado y sus valores, su clasificación, y cuando se ha asignado este rango. Características se importan como parte de datos del catálogo de hello y, a continuación, su rango está asociado cuando se realiza una compilación de rango.
+Rango en la característica puede cambiar correspondiente patrón toohello de datos de uso y el tipo de elementos. Pero para los elementos/uso coherente, rango de Hola que debería tener sólo pequeñas fluctuaciones.
+rango de Hola de características es un número no negativo. Hello número 0 significa que no se clasifican esa característica hello (ocurre si se invoca esta finalización toohello anteriores de API de la primera compilación rank de hello). fecha de Hello en el que se atribuye rango Hola se denomina actualización de puntuación de Hola.
 
 ### <a name="101-get-features-info-for-last-rank-build"></a>10.1. Obtener información de características (para la última compilación de rango)
-Recupera la información de características, incluida la clasificación de la última compilación correcta de rango.
+Recupera información de la función hello, incluida la clasificación de hello última rank compilación correcta.
 
 | Método HTTP | URI |
 |:--- |:--- |
@@ -1634,8 +1634,8 @@ Recupera la información de características, incluida la clasificación de la �
 
 | Nombre de parámetro | Valores válidos |
 |:--- |:--- |
-| modelId |Identificador único del modelo |
-| samplingSize |Número de valores que se incluirán para cada característica de acuerdo con los datos presentes en el catálogo. <br/>Los valores posibles son:<br> -1 - Todas las muestras. <br>0: sin muestreo. <br>N: se devuelven N muestras para cada nombre de característica. |
+| modelId |Identificador único del modelo de Hola |
+| samplingSize |Número de valores tooinclude para cada característica según toohello datos presentes en el catálogo de Hola. <br/>Los valores posibles son:<br> -1 - Todas las muestras. <br>0: sin muestreo. <br>N: se devuelven N muestras para cada nombre de característica. |
 | apiVersion |1.0 |
 |  | |
 | Cuerpo de la solicitud |NINGUNA |
@@ -1644,18 +1644,18 @@ Recupera la información de características, incluida la clasificación de la �
 
 código de estado HTTP: 200
 
-La respuesta contiene una lista de entradas de información de características. Cada entrada contiene:
+respuesta de Hello contiene una lista de entradas de información de característica. Cada entrada contiene:
 
 * `feed/entry/content/m:properties/d:Name` : nombre de la característica.
-* `feed/entry/content/m:properties/d:RankUpdateDate`:-fecha en la que se asignó el rango a esta característica, también conocida como característica de actualización de puntuación. Una fecha histórica ('0001-01-01T00:00:00') significa que no se ha realizado ninguna compilación de rango.
+* `feed/entry/content/m:properties/d:RankUpdateDate`-Fecha de en qué Hola rango en la característica de toothis asignado, conocido como característica de actualización de puntuación. Una fecha histórica ('0001-01-01T00:00:00') significa que no se ha realizado ninguna compilación de rango.
 * `feed/entry/content/m:properties/d:Rank`: rango de característica (flotante). Un rango de 2.0 para arriba se considera una buena característica.
-* `feed/entry/content/m:properties/d:SampleValues` : lista de valores separados por coma hasta el tamaño de muestreo solicitado.
+* `feed/entry/content/m:properties/d:SampleValues`-Lista separados por comas de valores de tamaño de muestreo toohello solicitado.
 
 OData XML
 
     <feed xmlns:base="https://api.datamarket.azure.com/amla/recommendations/v3/GetModelFeatures" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://www.w3.org/2005/Atom">
     <title type="text" />
-    <subtitle type="text">Get the features of a model</subtitle>
+    <subtitle type="text">Get hello features of a model</subtitle>
     <id>https://api.datamarket.azure.com/amla/recommendations/v3/GetModelFeatures?modelId='f13ab2e8-b530-4aa1-86f7-2f4a24714765'&amp;samplingSize='10'&amp;apiVersion='1.0'</id>
     <rights type="text" />
     <updated>2015-01-08T13:15:02Z</updated>
@@ -1705,7 +1705,7 @@ OData XML
 </feed>
 
 ### <a name="102-get-features-info-for-specific-rank-build"></a>10.2. Obtener información de características (para una compilación de rango específica)
-Recupera la información de características, incluida la clasificación de una compilación de rango específica.
+Recupera información de característica de hello, incluidos Hola de categoría para una compilación de rango específica.
 
 | Método HTTP | URI |
 |:--- |:--- |
@@ -1713,9 +1713,9 @@ Recupera la información de características, incluida la clasificación de una 
 
 | Nombre de parámetro | Valores válidos |
 |:--- |:--- |
-| modelId |Identificador único del modelo |
-| samplingSize |Número de valores que se incluirán para cada característica de acuerdo con los datos presentes en el catálogo.<br/> Los valores posibles son:<br> -1 - Todas las muestras. <br>0: sin muestreo. <br>N: se devuelven N muestras para cada nombre de característica. |
-| rankBuildId |Identificador único de la compilación de rango o -1 para la última compilación de rango |
+| modelId |Identificador único del modelo de Hola |
+| samplingSize |Número de valores tooinclude para cada característica según toohello datos presentes en el catálogo de Hola.<br/> Los valores posibles son:<br> -1 - Todas las muestras. <br>0: sin muestreo. <br>N: se devuelven N muestras para cada nombre de característica. |
+| rankBuildId |Identificador único de compilación de rango de Hola o -1 para la última compilación de rango Hola |
 | apiVersion |1.0 |
 |  | |
 | Cuerpo de la solicitud |NINGUNA |
@@ -1724,18 +1724,18 @@ Recupera la información de características, incluida la clasificación de una 
 
 código de estado HTTP: 200
 
-La respuesta contiene una lista de entradas de información de características. Cada entrada contiene:
+respuesta de Hello contiene una lista de entradas de información de característica. Cada entrada contiene:
 
 * `feed/entry/content/m:properties/d:Name` : nombre de la característica.
-* `feed/entry/content/m:properties/d:RankUpdateDate`:-fecha en la que se asignó el rango a esta característica, también conocida como característica de actualización de puntuación. Una fecha histórica ('0001-01-01T00:00:00') significa que no se ha realizado ninguna compilación de rango.
+* `feed/entry/content/m:properties/d:RankUpdateDate`-Fecha de en qué Hola rango en la característica de toothis asignado, conocido como característica de actualización de puntuación. Una fecha histórica ('0001-01-01T00:00:00') significa que no se ha realizado ninguna compilación de rango.
 * `feed/entry/content/m:properties/d:Rank`: rango de característica (flotante). Un rango de 2.0 para arriba se considera una buena característica.
-* `feed/entry/content/m:properties/d:SampleValues` : lista de valores separados por coma hasta el tamaño de muestreo solicitado.
+* `feed/entry/content/m:properties/d:SampleValues`-Lista separados por comas de valores de tamaño de muestreo toohello solicitado.
 
 OData
 
     <feed xmlns:base="https://api.datamarket.azure.com/amla/recommendations/v3/GetModelFeatures" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://www.w3.org/2005/Atom">
         <title type="text" />
-        <subtitle type="text">Get the features of a model</subtitle>
+        <subtitle type="text">Get hello features of a model</subtitle>
         <id>https://api.datamarket.azure.com/amla/recommendations/v3/GetModelFeatures?modelId='f13ab2e8-b530-4aa1-86f7-2f4a24714765'&amp;samplingSize='10'&amp;rankBuildId=1000653&amp;apiVersion='1.0'</id>
         <rights type="text" />
         <updated>2015-01-08T13:54:22Z</updated>
@@ -1786,82 +1786,82 @@ OData
 
 
 ## <a name="11-build"></a>11. Compilación
-  En esta sección se explican las diferentes API relacionadas con compilaciones. Hay tres tipos de compilación: una compilación de recomendación, una compilación de rango y una compilación FBT (artículos que con frecuencia se compran juntos).
+  Esta sección explica Hola distintas API relacionadas con toobuilds. Hay tres tipos de compilación: una compilación de recomendación, una compilación de rango y una compilación FBT (artículos que con frecuencia se compran juntos).
 
-El objetivo de la compilación de recomendación es generar un modelo de recomendación que se usa en las predicciones. Las predicciones (para este tipo de compilación) se presentan en dos modos:
+propósito de la compilación de Hello recomendación es toogenerate usa un modelo de recomendación para realizar predicciones. Las predicciones (para este tipo de compilación) se presentan en dos modos:
 
-* I2I - también conocida como Recomendaciones de elemento a elemento: dado un elemento o una lista de elementos, esta opción predirá una lista de elementos que pueden ser de gran interés.
-* U2I - también conocida como de usuario (y opcionalmente una lista de elementos), esta opción predecirá una lista de elementos que pueden ser de gran interés para el usuario especificado (y su selección de elementos adicional). Las recomendaciones de U2I se basan en el historial de elementos que eran de interés para el usuario hasta el momento en que se creó el modelo.
+* I2I - también conocida como Elemento recomendaciones tooItem: un elemento o una lista de elementos de esta opción predecirá una lista de elementos que son probable toobe de gran interés.
+* U2I - también conocida como Recomendaciones de usuario tooItem - dadas un identificador de usuario (y, opcionalmente, una lista de elementos) esta opción predecirá una lista de elementos que son probable toobe interesa hello tiene el usuario (y sus opciones adicionales de elementos). recomendaciones de Hello U2I se basan en el historial de Hola de elementos que eran de interés para el usuario de hello tiempo toohello Hola modelo se generó.
 
-Una compilación de rango es una compilación técnica que le permite aprender acerca de la utilidad de sus características. Normalmente, para obtener el mejor resultado para un modelo de recomendación que implique características, debe seguir estos pasos:
+Un rango es una técnica generación que le permite toolearn acerca de la utilidad de Hola de sus características. Por lo general, en orden tooget Hola mejores resultados para un modelo de recomendación que implican características, debe tener Hola pasos:
 
-* Desencadenar una compilación de rango (a menos que la puntuación de sus características sea estable) y esperar hasta que se obtenga la puntuación de la característica.
-* Recuperar el rango de las características mediante una llamada a la API [Get Features Info](#101-get-features-info-for-last-rank-build) .
-* Configurar una compilación de recomendación con los parámetros siguientes:
-  * `useFeatureInModel` : se establece en true.
-  * `ModelingFeatureList` : se establece en una lista de características separadas por coma con una puntuación de 2,0 o más (de acuerdo con los rangos que recuperó en el paso anterior).
-  * `AllowColdItemPlacement`: se establece en True.
-  * Opcionalmente, puede establecer `EnableFeatureCorrelation` en True y `ReasoningFeatureList` en la lista de características que quiere utilizar para obtener una explicación (normalmente la misma lista de características usada en el modelado o una sublista).
-* Desencadene la compilación de recomendación con los parámetros configurados.
+* Desencadenar una compilación rank (a menos que la puntuación de Hola de características es estable) y espere a que se obtendrá la puntuación de la característica de Hola.
+* Recuperar rango Hola de las funciones de llamada hello [obtener información de características](#101-get-features-info-for-last-rank-build) API.
+* Configurar una compilación de recomendación con hello parámetros siguientes:
+  * `useFeatureInModel`-Establecer tooTrue.
+  * `ModelingFeatureList`-Set tooa-lista separados por comas de características con una puntuación de 2.0 o más (según la rangos toohello recuperado en el paso anterior de hello).
+  * `AllowColdItemPlacement`-Establecer tooTrue.
+  * Opcionalmente, puede establecer `EnableFeatureCorrelation` tooTrue y `ReasoningFeatureList` toohello lista de características que desea toouse para obtener una explicación (normalmente Hola misma lista de características se usa en una sublista o modelización).
+* Compilación de recomendación de Hola de desencadenador con hello configurado los parámetros.
 
-Nota: si no configura ningún parámetro (por ejemplo, invoca la compilación de recomendación sin parámetros) o no deshabilita explícitamente el uso de características (por ejemplo, `UseFeatureInModel` se establece en False), el sistema configurará los parámetros relacionados con características para los valores explicados anteriormente en caso de que exista una compilación de rango.
+Nota: Si no configura los parámetros (p. ej. de invocación de compilación de la recomendación de hello sin parámetros) o deshabilitar explícitamente de uso de Hola de características (p. ej. `UseFeatureInModel` establecer tooFalse), sistema Hola configurará parámetros relacionados con la característica de Hola toohello explica los valores anteriores en caso de que existe una compilación de rango.
 
-No hay ninguna restricción sobre la ejecución de una compilación de rango y una compilación de recomendación al mismo tiempo para el mismo modelo. No obstante, no puede ejecutar dos compilaciones del mismo tipo en el mismo modelo en paralelo.
+No hay restricciones acerca de cómo ejecutar una compilación de rango y una recomendación generar de forma simultánea para hello mismo modelo. No obstante, no se puede ejecutar dos compilaciones de hello mismo tipo en hello mismo modelo en paralelo.
 
 Una compilación FBT (con frecuencia se compra junto) es otro algoritmo de recomendación denominado a veces recomendador "conservador", que resulta conveniente para catálogos que no sean de naturaleza homogénea (homogéneo: libros, películas, algunos alimentos, moda; no homogéneo: equipos y dispositivos, entre dominios, gran diversidad).
 
-Nota: si los archivos de uso que ha cargado contienen el campo opcional "tipo de evento", para el modelado FBT solo se usarán eventos "Purchase". Si no se proporciona ningún tipo de evento, todos los eventos se considerarán de compra.
+Nota: si los archivos de uso que haya cargado hello contienen campo opcional Hola "tipo de evento", para FBT modelización sólo los eventos "Compra" se utilizará. Si no se proporciona ningún tipo de evento, todos los eventos se considerarán de compra.
 
 #### <a name="111-build-parameters"></a>11.1 Parámetros de compilación
-Cada tipo de compilación puede configurarse a través de un conjunto de parámetros (se muestra a continuación). Si no configura los parámetros, el sistema atribuirá automáticamente valores a los parámetros según la información presente en el momento de desencadenar una compilación.
+Cada tipo de compilación puede configurarse a través de un conjunto de parámetros (se muestra a continuación). Si no configura los parámetros de hello, sistema de hello automáticamente de atributo valores toohello parámetros según la información de toohello presente en el momento de hello desencadenar una compilación.
 
 ##### <a name="1111-usage-condenser"></a>11.1.1. Condensador de uso
-Los usuarios o elementos con pocos puntos de uso podrían contener más ruido de información. El sistema intenta predecir el número mínimo de puntos de uso por usuario o elemento que se usarán en un modelo. Este número estará dentro del intervalo definido por los parámetros ItemCutoffLowerBound y ItemCutoffUpperBound para elementos, y el intervalo definido por los parámetros UserCutOffLowerBound y UserCutoffUpperBound para usuarios. El efecto del condensador sobre los elementos o usuarios se puede reducir mediante el establecimiento de al menos uno de los límites correspondientes en cero.
+Los usuarios o elementos con pocos puntos de uso podrían contener más ruido de información. sistema de Hello intente toopredict Hola un número mínimo de puntos de uso por toobe/elemento de usuario usadas en un modelo. Este número será dentro de intervalo de hello definido hello ItemCutoffLowerBound y los parámetros de ItemCutoffUpperBound elementos e intervalo de hello definida por hello UserCutOffLowerBound y parámetros de UserCutoffUpperBound para los usuarios de. efecto de condensador Hello en elementos o los usuarios puede reducirse mediante la configuración de al menos uno de hello correspondiente límites toozero.
 
 ##### <a name="1112-rank-build-parameters"></a>11.1.2. Parámetros de compilación de rango
-En la tabla siguiente se describen los parámetros de compilación para una compilación de rango.
+a continuación de la tabla de Hello muestra los parámetros de compilación de Hola para una compilación de rango.
 
 | Clave | Description | Tipo | Valor válido |
 |:--- |:--- |:--- |:--- |
-| NumberOfModelIterations |El número de iteraciones que realiza el modelo se refleja en el tiempo de proceso total y la precisión del modelo. Cuanto mayor sea el número, más precisión se obtendrá, pero el tiempo de proceso tardará más. |Entero |10-50 |
-| NumberOfModelDimensions |El número de dimensiones se relaciona con el número de 'características' que el modelo intentará buscar dentro de los datos. Aumentar el número de dimensiones le permitirá ajustar mejor los resultados en clústeres más pequeños. Sin embargo, demasiadas dimensiones impiden que el modelo encuentre correlaciones entre los elementos. |Entero |10-40 |
-| ItemCutOffLowerBound |Define el límite inferior de elemento del condensador. Consulte el condensador de uso anteriormente. |Entero |2 o más (0 deshabilita el condensador) |
-| ItemCutOffUpperBound |Define el límite superior de elemento para el condensador. Consulte el condensador de uso anteriormente. |Entero |2 o más (0 deshabilita el condensador) |
-| UserCutOffLowerBound |Define el límite inferior de usuario para el condensador. Consulte el condensador de uso anteriormente. |Entero |2 o más (0 deshabilita el condensador) |
-| UserCutOffUpperBound |Define el límite superior de usuario para el condensador. Consulte el condensador de uso anteriormente. |Entero |2 o más (0 deshabilita el condensador) |
+| NumberOfModelIterations |número de Hola de iteraciones que realiza el modelo de Hola se refleja en hello hello y tiempo de precisión del modelo de proceso general. número mayor de Hola de Hello, obtendrá de conseguir una mayor precisión de hello, pero Hola proceso tardará más tiempo. |Entero |10-50 |
+| NumberOfModelDimensions |número de Hola de dimensiones se relaciona toohello número de modelo de hello 'features' intentará toofind dentro de los datos. Aumentar el número de Hola de dimensiones le permitirá optimizar mejor de los resultados de hello en clústeres más pequeños. Sin embargo, hay demasiadas dimensiones impedirá modelo Hola buscar las correlaciones entre los elementos. |Entero |10-40 |
+| ItemCutOffLowerBound |Define el límite de hello elemento inferior para condensador Hola. Consulte el condensador de uso anteriormente. |Entero |2 o más (0 deshabilita el condensador) |
+| ItemCutOffUpperBound |Define el límite de hello elemento superior para condensador Hola. Consulte el condensador de uso anteriormente. |Entero |2 o más (0 deshabilita el condensador) |
+| UserCutOffLowerBound |Define el límite de hello usuario inferior para condensador Hola. Consulte el condensador de uso anteriormente. |Entero |2 o más (0 deshabilita el condensador) |
+| UserCutOffUpperBound |Define el límite de hello usuario superior para condensador Hola. Consulte el condensador de uso anteriormente. |Entero |2 o más (0 deshabilita el condensador) |
 
 ##### <a name="1113-recommendation-build-parameters"></a>11.1.3. Parámetros de compilación de recomendación
-En la siguiente tabla se describen los parámetros de compilación para una compilación de recomendación.
+tabla de Hello siguiente describe los parámetros de compilación de Hola para compilación de recomendación.
 
 | Clave | Description | Tipo | Valor válido |
 |:--- |:--- |:--- |:--- |
-| NumberOfModelIterations |El número de iteraciones que realiza el modelo se refleja en el tiempo de proceso total y la precisión del modelo. Cuanto mayor sea el número, más precisión se obtendrá, pero el tiempo de proceso tardará más. |Entero |10-50 |
-| NumberOfModelDimensions |El número de dimensiones se relaciona con el número de 'características' que el modelo intentará buscar dentro de los datos. Aumentar el número de dimensiones le permitirá ajustar mejor los resultados en clústeres más pequeños. Sin embargo, demasiadas dimensiones impiden que el modelo encuentre correlaciones entre los elementos. |Entero |10-40 |
-| ItemCutOffLowerBound |Define el límite inferior de elemento del condensador. Consulte el condensador de uso anteriormente. |Entero |2 o más (0 deshabilita el condensador) |
-| ItemCutOffUpperBound |Define el límite superior de elemento para el condensador. Consulte el condensador de uso anteriormente. |Entero |2 o más (0 deshabilita el condensador) |
-| UserCutOffLowerBound |Define el límite inferior de usuario para el condensador. Consulte el condensador de uso anteriormente. |Entero |2 o más (0 deshabilita el condensador) |
-| UserCutOffUpperBound |Define el límite superior de usuario para el condensador. Consulte el condensador de uso anteriormente. |Entero |2 o más (0 deshabilita el condensador) |
+| NumberOfModelIterations |número de Hola de iteraciones que realiza el modelo de Hola se refleja en hello hello y tiempo de precisión del modelo de proceso general. número mayor de Hola de Hello, obtendrá de conseguir una mayor precisión de hello, pero Hola proceso tardará más tiempo. |Entero |10-50 |
+| NumberOfModelDimensions |número de Hola de dimensiones se relaciona toohello número de modelo de hello 'features' intentará toofind dentro de los datos. Aumentar el número de Hola de dimensiones le permitirá optimizar mejor de los resultados de hello en clústeres más pequeños. Sin embargo, hay demasiadas dimensiones impedirá modelo Hola buscar las correlaciones entre los elementos. |Entero |10-40 |
+| ItemCutOffLowerBound |Define el límite de hello elemento inferior para condensador Hola. Consulte el condensador de uso anteriormente. |Entero |2 o más (0 deshabilita el condensador) |
+| ItemCutOffUpperBound |Define el límite de hello elemento superior para condensador Hola. Consulte el condensador de uso anteriormente. |Entero |2 o más (0 deshabilita el condensador) |
+| UserCutOffLowerBound |Define el límite de hello usuario inferior para condensador Hola. Consulte el condensador de uso anteriormente. |Entero |2 o más (0 deshabilita el condensador) |
+| UserCutOffUpperBound |Define el límite de hello usuario superior para condensador Hola. Consulte el condensador de uso anteriormente. |Entero |2 o más (0 deshabilita el condensador) |
 | Description |Descripción de la compilación. |String |Cualquier texto, máximo 512 caracteres |
-| EnableModelingInsights |Permite calcular métricas en el modelo de recomendación. |Booleano |True/False |
-| UseFeaturesInModel |Indica si se pueden utilizar características para mejorar el modelo de recomendación. |Booleano |True/False |
-| ModelingFeatureList |Lista de nombres de características separados por coma que se usará en la compilación de recomendación para mejorar la recomendación. |String |Nombres de características, hasta 512 caracteres |
-| AllowColdItemPlacement |Indica si la recomendación también debería insertar elementos fríos a través de la similitud de características. |Booleano |True/False |
+| EnableModelingInsights |Le permite toocompute métricas en el modelo de recomendación de Hola. |Booleano |True/False |
+| UseFeaturesInModel |Indica si se pueden utilizar características en el modelo de recomendación de orden tooenhance Hola. |Booleano |True/False |
+| ModelingFeatureList |Lista separada por comas de toobe de nombres de característica utilizado en la compilación de recomendación de hello, en la recomendación de orden tooenhance Hola. |String |Nombres de las características, los caracteres de too512 |
+| AllowColdItemPlacement |Indica si la recomendación de hello también debería insertar elementos fríos a través de la similitud de características. |Booleano |True/False |
 | EnableFeatureCorrelation |Indica si se pueden utilizar características en el razonamiento. |Booleano |True/False |
-| ReasoningFeatureList |Lista separada por comas de nombres de características que se utilizará para el razonamiento de las oraciones (por ejemplo, explicaciones de recomendación). |String |Nombres de características, hasta 512 caracteres |
-| EnableU2I |Permite la recomendación personalizada también llamada U2I (recomendaciones de usuario a elemento). |Booleano |True/False (true de forma predeterminada) |
+| ReasoningFeatureList |Lista separada por comas de toobe de nombres de función permiten razonamiento frases (por ejemplo, explicaciones de recomendación). |String |Nombres de las características, los caracteres de too512 |
+| EnableU2I |Permitir conocido como recomendación de hello personalizada U2I (recomendaciones de tooitem de usuario). |Booleano |True/False (true de forma predeterminada) |
 
 ##### <a name="1114-fbt-build-parameters"></a>11.1.4. Parámetros de compilación FBT
-En la siguiente tabla se describen los parámetros de compilación para una compilación de recomendación.
+tabla de Hello siguiente describe los parámetros de compilación de Hola para compilación de recomendación.
 
 | Clave | Description | Tipo | Valor válido (predeterminado) |
 |:--- |:--- |:--- |:--- |
-| FbtSupportThreshold |Cómo es el modelo conservador. Número de concurrencias de elementos que deben tenerse en cuenta para el modelado. |Entero |3-50 (6) |
-| FbtMaxItemSetSize |Limita el número de elementos en un conjunto frecuente. |Entero |2-3 (2) |
-| FbtMinimalScore |Puntuación mínima que debe tener un conjunto frecuente para incluirlo en los resultados devueltos. Cuanto mayor sea mejor. |Doble |0 y superior (0) |
-| FbtSimilarityFunction |Define la función de similitud que usará la compilación. Lift favorece la serendipia, Co-occurrence favorece la previsibilidad y Jaccard es un estupendo compromiso que comparten. |String |cooccurrence, lift, jaccard (lift) |
+| FbtSupportThreshold |Cómo es el modelo conservador Hola. Número de repeticiones coadministradores de toobe de elementos que se consideran para el modelado. |Entero |3-50 (6) |
+| FbtMaxItemSetSize |Límites Hola número de elementos de un conjunto frecuente. |Entero |2-3 (2) |
+| FbtMinimalScore |Puntuación mínima que frecuentes devuelve un conjunto debe haber en toobe orden incluido en hello da como resultado. Hola superior Hola mejor. |Double |0 y superior (0) |
+| FbtSimilarityFunction |Define Hola similitud función toobe utilizado por compilación Hola. Elevación favorece serendipity, aparición coadministradores favorece previsibilidad y Jaccard es un compromiso entre dos Hola "nice". |String |cooccurrence, lift, jaccard (lift) |
 
 ### <a name="112-trigger-a-recommendation-build"></a>11.2. Desencadenar una compilación de recomendación
-  De forma predeterminada, esta API desencadenará una compilación de modelo de recomendación. Para desencadenar una compilación de rango (a fin de puntuar características), debe usarse la variante de API de compilación con el parámetro de tipo de compilación.
+  De forma predeterminada, esta API desencadenará una compilación de modelo de recomendación. tootrigger un rango de compilación (en las características de tooscore de pedido), debe usarse la variante de API de generación de hello con el parámetro de tipo de compilación.
 
 | Método HTTP | URI |
 |:--- |:--- |
@@ -1870,19 +1870,19 @@ En la siguiente tabla se describen los parámetros de compilación para una comp
 
 | Nombre de parámetro | Valores válidos |
 |:--- |:--- |
-| modelId |Identificador único del modelo |
-| userDescription |Identificador textual del catálogo. Tenga en cuenta que si usa espacios debe codificarlo en su lugar con un 20 %. Vea el ejemplo anterior.<br>Longitud máxima: 50 |
+| modelId |Identificador único del modelo de Hola |
+| userDescription |Identificador textual del catálogo de Hola. Tenga en cuenta que si usa espacios debe codificarlo en su lugar con un 20 %. Vea el ejemplo anterior.<br>Longitud máxima: 50 |
 | apiVersion |1.0 |
 |  | |
-| Cuerpo de la solicitud |Si se deja vacío, la compilación se ejecuta con los parámetros predeterminados.<br><br>Si quiere establecer los parámetros de compilación, envíelos como XML en el cuerpo, como en el ejemplo siguiente. (Consulte la sección "Parámetros de compilación" para obtener una explicación de los parámetros).`<NumberOfModelIterations>40</NumberOfModelIterations><NumberOfModelDimensions>20</NumberOfModelDimensions><MinItemAppearance>5</MinItemAppearance><MinUserAppearance>5</MinUserAppearance><EnableModelingInsights>true</EnableModelingInsights><UseFeaturesInModel>false</UseFeaturesInModel><ModelingFeatureList>feature_name_1,feature_name_2,...</ModelingFeatureList><AllowColdItemPlacement>false</AllowColdItemPlacement><EnableFeatureCorrelation>false</EnableFeatureCorrelation><ReasoningFeatureList>feature_name_a,feature_name_b,...</ReasoningFeatureList></BuildParametersList>` |
+| Cuerpo de la solicitud |Si se deja vacío, a continuación, compilación Hola se ejecutarán con parámetros de compilación de hello predeterminados.<br><br>Si desea que los parámetros de compilación de hello tooset, enviar parámetros de hello como XML en el cuerpo de hello como en el siguiente ejemplo de Hola. (Consulte la sección de Hola "parámetros de compilación" para obtener una explicación de los parámetros de Hola.)`<NumberOfModelIterations>40</NumberOfModelIterations><NumberOfModelDimensions>20</NumberOfModelDimensions><MinItemAppearance>5</MinItemAppearance><MinUserAppearance>5</MinUserAppearance><EnableModelingInsights>true</EnableModelingInsights><UseFeaturesInModel>false</UseFeaturesInModel><ModelingFeatureList>feature_name_1,feature_name_2,...</ModelingFeatureList><AllowColdItemPlacement>false</AllowColdItemPlacement><EnableFeatureCorrelation>false</EnableFeatureCorrelation><ReasoningFeatureList>feature_name_a,feature_name_b,...</ReasoningFeatureList></BuildParametersList>` |
 
 **Respuesta**:
 
 código de estado HTTP: 200
 
-Se trata de una API asincrónica. Obtendrá un Id. de compilación como respuesta. Para saber cuándo ha finalizado la compilación, debe llamar a la API "Obtener estados de compilaciones de un modelo" y buscar este Id. de compilación en la respuesta. Tenga en cuenta que una compilación puede tardar desde unos minutos hasta varias horas según el tamaño de los datos.
+Se trata de una API asincrónica. Obtendrá un Id. de compilación como respuesta. tooknow cuando ha finalizado la generación de hello, debe llamar a la API de "Obtener compilaciones estado de un modelo de" hello y busque este Id. de compilación en la respuesta de Hola. Tenga en cuenta que una compilación puede tardar desde toohours minutos según el tamaño de Hola de datos de Hola.
 
-No puede usar recomendaciones hasta que no finalice la compilación.
+No se puede consumir recomendaciones hasta Hola crear extremos.
 
 Estado de compilación válido:
 
@@ -1892,9 +1892,9 @@ Estado de compilación válido:
 * Correcto: la compilación finalizó correctamente.
 * Error: la compilación finalizó con un error.
 * Cancelada: se canceló la compilación.
-* Cancelando: se ha enviado una solicitud de cancelación de la compilación.
+* Cancelar: se ha enviado una solicitud de cancelación para compilación de Hola.
 
-Tenga en cuenta que el Id. de compilación se puede encontrar en la ruta siguiente: `Feed\entry\content\properties\Id`
+Tenga en cuenta esa compilación Hola que identificador puede encontrarse en hello siguiendo la ruta de acceso:`Feed\entry\content\properties\Id`
 
 OData XML
 
@@ -1943,20 +1943,20 @@ OData XML
 
 | Nombre de parámetro | Valores válidos |
 |:--- |:--- |
-| modelId |Identificador único del modelo |
-| userDescription |Identificador textual del catálogo. Tenga en cuenta que si usa espacios debe codificarlo en su lugar con un 20 %. Vea el ejemplo anterior.<br>Longitud máxima: 50 |
-| buildType |Tipo de la compilación que se invocará:  <br/> "Recomendación" para compilación de recomendación <br> -"Categoría" para una compilación de rango <br/> - 'Fbt' para compilación FBT |
+| modelId |Identificador único del modelo de Hola |
+| userDescription |Identificador textual del catálogo de Hola. Tenga en cuenta que si usa espacios debe codificarlo en su lugar con un 20 %. Vea el ejemplo anterior.<br>Longitud máxima: 50 |
+| buildType |Tipo de hello compilación tooinvoke: <br/> "Recomendación" para compilación de recomendación <br> -"Categoría" para una compilación de rango <br/> - 'Fbt' para compilación FBT |
 | apiVersion |1.0 |
 |  | |
-| Cuerpo de la solicitud |Si se deja vacío, la compilación se ejecuta con los parámetros predeterminados.<br><br>Si quiere establecer los parámetros de compilación, envíelos como XML en el cuerpo del mismo modo que en el ejemplo siguiente. (Consulte la sección "Parámetros de compilación" para obtener una explicación y una lista completa de los mismos).`<BuildParametersList><NumberOfModelIterations>40</NumberOfModelIterations><NumberOfModelDimensions>20</NumberOfModelDimensions><MinItemAppearance>5</MinItemAppearance><MinUserAppearance>5</MinUserAppearance></BuildParametersList>` |
+| Cuerpo de la solicitud |Si se deja vacío, a continuación, compilación Hola se ejecutarán con parámetros de compilación de hello predeterminados.<br><br>Si desea que los parámetros de compilación tooset, enviarlos como XML en el cuerpo de hello como en el siguiente ejemplo de Hola. (Consulte la sección de "parámetros de compilación" hello para una explicación y una lista completa de parámetros de Hola.)`<BuildParametersList><NumberOfModelIterations>40</NumberOfModelIterations><NumberOfModelDimensions>20</NumberOfModelDimensions><MinItemAppearance>5</MinItemAppearance><MinUserAppearance>5</MinUserAppearance></BuildParametersList>` |
 
 **Respuesta**:
 
 código de estado HTTP: 200
 
-Se trata de una API asincrónica. Obtendrá un Id. de compilación como respuesta. Para saber cuándo ha finalizado la compilación, debe llamar a la API "Obtener estados de compilaciones de un modelo" y buscar este Id. de compilación en la respuesta. Tenga en cuenta que una compilación puede tardar desde unos minutos hasta varias horas según el tamaño de los datos.
+Se trata de una API asincrónica. Obtendrá un Id. de compilación como respuesta. tooknow cuando ha finalizado la generación de hello, debe llamar a la API de "Obtener compilaciones estado de un modelo de" hello y busque este Id. de compilación en la respuesta de Hola. Tenga en cuenta que una compilación puede tardar desde toohours minutos según el tamaño de Hola de datos de Hola.
 
-No puede usar recomendaciones hasta que no finalice la compilación.
+No se puede consumir recomendaciones hasta Hola crear extremos.
 
 Estado de compilación válido:
 
@@ -1968,7 +1968,7 @@ Estado de compilación válido:
 * Cancelada: se canceló la compilación.
 * Cancelando: la compilación se está cancelando.
 
-Tenga en cuenta que el Id. de compilación se puede encontrar en la ruta siguiente: `Feed\entry\content\properties\Id`
+Tenga en cuenta esa compilación Hola que identificador puede encontrarse en hello siguiendo la ruta de acceso:`Feed\entry\content\properties\Id`
 
 OData XML
 
@@ -2021,29 +2021,29 @@ Recupera las compilaciones y su estado para un modelo especificado.
 
 | Nombre de parámetro | Valores válidos |
 |:--- |:--- |
-| modelId |Identificador único del modelo |
-| onlyLastBuild |Indica si se devolverá todo el historial de compilaciones del modelo o solo el estado de la compilación más reciente. |
+| modelId |Identificador único del modelo de Hola |
+| onlyLastBuild |Indica si tooreturn Hola a todos crear historial de modelo de Hola o solo de estado de Hola de compilación más reciente de Hola |
 | apiVersion |1.0 |
 
 **Respuesta**:
 
 código de estado HTTP: 200
 
-La respuesta incluye una entrada por compilación. Cada entrada tiene los siguientes datos:
+respuesta de Hello incluye una entrada por cada compilación. Cada entrada tiene Hola datos siguientes:
 
-* `feed/entry/content/properties/UserName` : nombre del usuario.
-* `feed/entry/content/properties/ModelName` : nombre del modelo.
+* `feed/entry/content/properties/UserName`-Nombre de usuario de Hola.
+* `feed/entry/content/properties/ModelName`-Nombre del modelo de Hola.
 * `feed/entry/content/properties/ModelId` : identificador único de modelo.
-* `feed/entry/content/properties/IsDeployed`: si se implementa la compilación (también conocida como compilación activa).
+* `feed/entry/content/properties/IsDeployed`-Si se implementa compilación hello (conocido como) compilación activa).
 * `feed/entry/content/properties/BuildId` : identificador único de compilación.
-* `feed/entry/content/properties/BuildType` : tipo de la compilación.
-* `feed/entry/content/properties/Status` : estado de la compilación. Puede ser uno de los siguientes: Error, Building, Queued, Cancelling, Cancelled o Success.
-* `feed/entry/content/properties/StatusMessage` : mensaje de estado detallado (se aplica solo a estados concretos).
+* `feed/entry/content/properties/BuildType`-Tipo de compilación de Hola.
+* `feed/entry/content/properties/Status` : estado de la compilación. Puede ser uno de los siguientes de hello: Error, creación, en cola, cancelando, cancelado, correcto.
+* `feed/entry/content/properties/StatusMessage`-Mensaje de estado detallado (se aplica solo toospecific estados).
 * `feed/entry/content/properties/Progress` : progreso de la compilación (%).
 * `feed/entry/content/properties/StartTime` : hora de inicio de la compilación.
 * `feed/entry/content/properties/EndTime` : hora de finalización de la compilación.
 * `feed/entry/content/properties/ExecutionTime` : duración de la compilación.
-* `feed/entry/content/properties/ProgressStep` : detalles sobre la fase actual de una compilación en curso.
+* `feed/entry/content/properties/ProgressStep`-Los detalles acerca de la fase actual de Hola de una compilación en curso.
 
 Estado de compilación válido:
 
@@ -2105,28 +2105,28 @@ Recupera los estados de compilación de todos los modelos de un usuario
 
 | Nombre de parámetro | Valores válidos |
 |:--- |:--- |
-| onlyLastBuild |Indica si se devolverá todo el historial de compilaciones del modelo o solo el estado de la compilación más reciente. |
+| onlyLastBuild |Indica si tooreturn Hola a todos crear historial de modelo de Hola o solo de estado de Hola de compilación más reciente de Hola. |
 | apiVersion |1.0 |
 
 **Respuesta**:
 
 código de estado HTTP: 200
 
-La respuesta incluye una entrada por compilación. Cada entrada tiene los siguientes datos:
+respuesta de Hello incluye una entrada por cada compilación. Cada entrada tiene Hola datos siguientes:
 
-* `feed/entry/content/properties/UserName` : nombre del usuario.
-* `feed/entry/content/properties/ModelName` : nombre del modelo.
+* `feed/entry/content/properties/UserName`-Nombre de usuario de Hola.
+* `feed/entry/content/properties/ModelName`-Nombre del modelo de Hola.
 * `feed/entry/content/properties/ModelId` : identificador único de modelo.
-* `feed/entry/content/properties/IsDeployed` : si se implementa la compilación.
+* `feed/entry/content/properties/IsDeployed`-Si está implementada la compilación de Hola.
 * `feed/entry/content/properties/BuildId` : identificador único de compilación.
-* `feed/entry/content/properties/BuildType` : tipo de la compilación.
-* `feed/entry/content/properties/Status` : estado de la compilación. Puede ser uno de los siguientes: Error, Building, Queued, Cancelled, Cancelling o Success.
-* `feed/entry/content/properties/StatusMessage` : mensaje de estado detallado (se aplica solo a estados concretos).
+* `feed/entry/content/properties/BuildType`-Tipo de compilación de Hola.
+* `feed/entry/content/properties/Status` : estado de la compilación. Puede ser uno de los siguientes de hello: Error, creación, en cola, cancelado, cancelando, correcto.
+* `feed/entry/content/properties/StatusMessage`-Mensaje de estado detallado (se aplica solo toospecific estados).
 * `feed/entry/content/properties/Progress` : progreso de la compilación (%).
 * `feed/entry/content/properties/StartTime` : hora de inicio de la compilación.
 * `feed/entry/content/properties/EndTime` : hora de finalización de la compilación.
 * `feed/entry/content/properties/ExecutionTime` : duración de la compilación.
-* `feed/entry/content/properties/ProgressStep` : detalles sobre la fase actual de una compilación en curso.
+* `feed/entry/content/properties/ProgressStep`-Los detalles acerca de la fase actual de Hola de una compilación en curso.
 
 Estado de compilación válido:
 
@@ -2182,7 +2182,7 @@ OData XML
 ### <a name="116-delete-build"></a>11.6. Eliminar compilación
 Elimina una compilación.
 
-NOTA:  <br>no se puede eliminar una compilación activa. El modelo se debe actualizar a una compilación activa diferente antes de eliminarlo.<br>No puede eliminar una compilación en curso. La compilación se debe cancelar primero llamando <strong>Cancelar compilación</strong>.
+NOTA:  <br>no se puede eliminar una compilación activa. Hola modelo debe estar actualizado tooa diferentes active compilación antes de eliminarlo.<br>No puede eliminar una compilación en curso. Debe cancelar compilación hello en primer lugar mediante una llamada a <strong>Cancelar compilación</strong>.
 
 | Método HTTP | URI |
 |:--- |:--- |
@@ -2190,7 +2190,7 @@ NOTA:  <br>no se puede eliminar una compilación activa. El modelo se debe actua
 
 | Nombre de parámetro | Valores válidos |
 |:--- |:--- |
-| buildId |Identificador único de la compilación. |
+| buildId |Identificador único de la compilación de Hola. |
 | apiVersion |1.0 |
 
 **Respuesta:**
@@ -2206,7 +2206,7 @@ Cancela una compilación que se encuentra en estado Building.
 
 | Nombre de parámetro | Valores válidos |
 |:--- |:--- |
-| buildId |Identificador único de la compilación. |
+| buildId |Identificador único de la compilación de Hola. |
 | apiVersion |1.0 |
 
 **Respuesta:**
@@ -2222,7 +2222,7 @@ Recupera parámetros de compilación.
 
 | Nombre de parámetro | Valores válidos |
 |:--- |:--- |
-| buildId |Identificador único de la compilación. |
+| buildId |Identificador único de la compilación de Hola. |
 | apiVersion |1.0 |
 
 **Respuesta:**
@@ -2234,23 +2234,23 @@ Esta API devuelve una colección de elementos de clave y valor. Cada elemento re
 * `feed/entry/content/properties/Key` : nombre del parámetro de compilación.
 * `feed/entry/content/properties/Value` : valor del parámetro de compilación.
 
-En la tabla siguiente se muestra el valor que representa cada clave.
+a continuación de la tabla de Hello muestra valor Hola que representa cada clave.
 
 | Clave | Description | Tipo | Valor válido |
 |:--- |:--- |:--- |:--- |
-| NumberOfModelIterations |El número de iteraciones que realiza el modelo se refleja en el tiempo de proceso total y la precisión del modelo. Cuanto mayor sea el número, más precisión se obtendrá, pero el tiempo de proceso tardará más. |Entero |10-50 |
-| NumberOfModelDimensions |El número de dimensiones se relaciona con el número de 'características' que el modelo intentará buscar dentro de los datos. Aumentar el número de dimensiones le permitirá ajustar mejor los resultados en clústeres más pequeños. Sin embargo, demasiadas dimensiones impiden que el modelo encuentre correlaciones entre los elementos. |Entero |10-40 |
-| ItemCutOffLowerBound |Define el límite inferior de elemento del condensador. Consulte el condensador de uso anteriormente. |Entero |2 o más (0 deshabilita el condensador) |
-| ItemCutOffUpperBound |Define el límite superior de elemento para el condensador. Consulte el condensador de uso anteriormente. |Entero |2 o más (0 deshabilita el condensador) |
-| UserCutOffLowerBound |Define el límite inferior de usuario para el condensador. Consulte el condensador de uso anteriormente. |Entero |2 o más (0 deshabilita el condensador) |
-| UserCutOffUpperBound |Define el límite superior de usuario para el condensador. Consulte el condensador de uso anteriormente. |Entero |2 o más (0 deshabilita el condensador) |
+| NumberOfModelIterations |número de Hola de iteraciones que realiza el modelo de Hola se refleja en hello hello y tiempo de precisión del modelo de proceso general. número mayor de Hola de Hello, obtendrá de conseguir una mayor precisión de hello, pero Hola proceso tardará más tiempo. |Entero |10-50 |
+| NumberOfModelDimensions |número de Hola de dimensiones se relaciona toohello número de modelo de hello 'features' intentará toofind dentro de los datos. Aumentar el número de Hola de dimensiones le permitirá optimizar mejor de los resultados de hello en clústeres más pequeños. Sin embargo, hay demasiadas dimensiones impedirá modelo Hola buscar las correlaciones entre los elementos. |Entero |10-40 |
+| ItemCutOffLowerBound |Define el límite de hello elemento inferior para condensador Hola. Consulte el condensador de uso anteriormente. |Entero |2 o más (0 deshabilita el condensador) |
+| ItemCutOffUpperBound |Define el límite de hello elemento superior para condensador Hola. Consulte el condensador de uso anteriormente. |Entero |2 o más (0 deshabilita el condensador) |
+| UserCutOffLowerBound |Define el límite de hello usuario inferior para condensador Hola. Consulte el condensador de uso anteriormente. |Entero |2 o más (0 deshabilita el condensador) |
+| UserCutOffUpperBound |Define el límite de hello usuario superior para condensador Hola. Consulte el condensador de uso anteriormente. |Entero |2 o más (0 deshabilita el condensador) |
 | Description |Descripción de la compilación. |String |Cualquier texto, máximo 512 caracteres |
-| EnableModelingInsights |Permite calcular métricas en el modelo de recomendación. |Booleano |True/False |
-| UseFeaturesInModel |Indica si se pueden utilizar características para mejorar el modelo de recomendación. |Booleano |True/False |
-| ModelingFeatureList |Lista de nombres de características separados por coma que se usará en la compilación de recomendación para mejorar la recomendación. |String |Nombres de características, hasta 512 caracteres |
-| AllowColdItemPlacement |Indica si la recomendación también debería insertar elementos fríos a través de la similitud de características. |Booleano |True/False |
+| EnableModelingInsights |Le permite toocompute métricas en el modelo de recomendación de Hola. |Booleano |True/False |
+| UseFeaturesInModel |Indica si se pueden utilizar características en el modelo de recomendación de orden tooenhance Hola. |Booleano |True/False |
+| ModelingFeatureList |Lista separada por comas de toobe de nombres de característica utilizado en la compilación de recomendación de hello, en la recomendación de orden tooenhance Hola. |String |Nombres de las características, los caracteres de too512 |
+| AllowColdItemPlacement |Indica si la recomendación de hello también debería insertar elementos fríos a través de la similitud de características. |Booleano |True/False |
 | EnableFeatureCorrelation |Indica si se pueden utilizar características en el razonamiento. |Booleano |True/False |
-| ReasoningFeatureList |Lista separada por comas de nombres de características que se utilizará para el razonamiento de las oraciones (por ejemplo, explicaciones de recomendación). |String |Nombres de características, hasta 512 caracteres |
+| ReasoningFeatureList |Lista separada por comas de toobe de nombres de función permiten razonamiento frases (por ejemplo, explicaciones de recomendación). |String |Nombres de las características, los caracteres de too512 |
 
 OData XML
 
@@ -2421,7 +2421,7 @@ OData XML
 
 ## <a name="12-recommendation"></a>12. Recomendación
 ### <a name="121-get-item-recommendations-for-active-build"></a>12.1. Obtención de recomendaciones de elemento (para la compilación activa)
-Obtenga recomendaciones de la compilación activa de tipo "Recommendation" o "Fbt" basadas en las lista de inicializaciones (entrada).
+Obtener recomendaciones de compilación activa de Hola de tipo "Recomendación" o "Fbt" basado en una lista de elementos de valores de inicialización (entrada).
 
 | Método HTTP | URI |
 |:--- |:--- |
@@ -2429,8 +2429,8 @@ Obtenga recomendaciones de la compilación activa de tipo "Recommendation" o "Fb
 
 | Nombre de parámetro | Valores válidos |
 |:--- |:--- |
-| modelId |Identificador único del modelo |
-| itemIds |Lista de elementos para recomendar separados por coma. <br>Si la compilación activa es de tipo FBT, entonces solo puede enviar un elemento. <br>Longitud máxima: 1024 |
+| modelId |Identificador único del modelo de Hola |
+| itemIds |Lista separada por comas de hello elementos toorecommend para. <br>Si compilación activa hello es de tipo FBT, a continuación, puede enviar un único elemento. <br>Longitud máxima: 1024 |
 | numberOfResults |Número de resultados obligatorios  <br> Máx.: 150 |
 | includeMetatadata |Uso futuro, siempre es false |
 | apiVersion |1.0 |
@@ -2439,14 +2439,14 @@ Obtenga recomendaciones de la compilación activa de tipo "Recommendation" o "Fb
 
 código de estado HTTP: 200
 
-La respuesta incluye una entrada por cada elemento recomendado. Cada entrada tiene los siguientes datos:
+respuesta de Hello incluye una entrada por cada elemento recomendado. Cada entrada tiene Hola datos siguientes:
 
 * `Feed\entry\content\properties\Id`: id. de elemento recomendado.
-* `Feed\entry\content\properties\Name`: nombre del elemento.
-* `Feed\entry\content\properties\Rating` : clasificación de la recomendación; un número alto significa mayor confianza.
+* `Feed\entry\content\properties\Name`-Nombre del elemento de saludo.
+* `Feed\entry\content\properties\Rating`-Calificación de recomendación de hello; número mayor significa mayor confianza.
 * `Feed\entry\content\properties\Reasoning` : razonamiento de la recomendación (por ejemplo, explicaciones de recomendación).
 
-En la respuesta de ejemplo a continuación se incluyen 10 elementos recomendados.
+respuesta de ejemplo de Hola siguiente incluye 10 elementos recomendados.
 
 OData XML
 
@@ -2608,28 +2608,28 @@ Obtiene recomendaciones de una compilación concreta de tipo "Recomendación" o 
 
 | Nombre de parámetro | Valores válidos |
 |:--- |:--- |
-| modelId |Identificador único del modelo |
-| itemIds |Lista de elementos para recomendar separados por coma. <br>Si la compilación activa es de tipo FBT, entonces solo puede enviar un elemento. <br>Longitud máxima: 1024 |
+| modelId |Identificador único del modelo de Hola |
+| itemIds |Lista separada por comas de hello elementos toorecommend para. <br>Si compilación activa hello es de tipo FBT, a continuación, puede enviar un único elemento. <br>Longitud máxima: 1024 |
 | numberOfResults |Número de resultados obligatorios  <br> Máx.: 150 |
 | includeMetatadata |Uso futuro, siempre es false |
-| buildId |el id. de compilación que se utilizará en esta solicitud de recomendación |
+| buildId |Hola compilar toouse de identificador para esta solicitud de recomendación |
 | apiVersion |1.0 |
 
 **Respuesta:**
 
 código de estado HTTP: 200
 
-La respuesta incluye una entrada por cada elemento recomendado. Cada entrada tiene los siguientes datos:
+respuesta de Hello incluye una entrada por cada elemento recomendado. Cada entrada tiene Hola datos siguientes:
 
 * `Feed\entry\content\properties\Id`: id. de elemento recomendado.
-* `Feed\entry\content\properties\Name`: nombre del elemento.
-* `Feed\entry\content\properties\Rating` : clasificación de la recomendación; un número alto significa mayor confianza.
+* `Feed\entry\content\properties\Name`-Nombre del elemento de saludo.
+* `Feed\entry\content\properties\Rating`-Calificación de recomendación de hello; número mayor significa mayor confianza.
 * `Feed\entry\content\properties\Reasoning` : razonamiento de la recomendación (por ejemplo, explicaciones de recomendación).
 
 Vea un ejemplo de respuesta en 12.1
 
 ### <a name="123-get-fbt-recommendations-for-active-build"></a>12.3. Obtención de recomendaciones de FBT (para la compilación activa)
-Obtenga recomendaciones de la compilación activa de tipo o "Fbt" basadas en las lista de inicializaciones (entrada).
+Obtenga recomendaciones de compilación activa de Hola de tipo "Fbt" basada en un elemento de valor de inicialización (entrada).
 
 | Método HTTP | URI |
 |:--- |:--- |
@@ -2637,10 +2637,10 @@ Obtenga recomendaciones de la compilación activa de tipo o "Fbt" basadas en las
 
 | Nombre de parámetro | Valores válidos |
 |:--- |:--- |
-| modelId |Identificador único del modelo |
-| itemId |Elemento para el que se recomienda. <br>Longitud máxima: 1024 |
+| modelId |Identificador único del modelo de Hola |
+| itemId |Elemento toorecommend para. <br>Longitud máxima: 1024 |
 | numberOfResults |Número de resultados obligatorios  <br>Máx.: 150 |
-| minimalScore |Puntuación mínima que debe tener un conjunto frecuente para incluirlo en los resultados devueltos. |
+| minimalScore |Resultados de puntuación mínima que frecuentes devuelve un conjunto debe haber en toobe orden incluido en hello |
 | includeMetatadata |Uso futuro, siempre es false |
 | apiVersion |1.0 |
 
@@ -2648,16 +2648,16 @@ Obtenga recomendaciones de la compilación activa de tipo o "Fbt" basadas en las
 
 código de estado HTTP: 200
 
-La respuesta incluye una entrada por cada elemento recomendado (un conjunto de elementos que normalmente se compran junto con el elemento de entrada/inicialización). Cada entrada tiene los siguientes datos:
+respuesta de Hello incluye una entrada por cada conjunto de elementos recomendados (un conjunto de elementos que normalmente se compró junto con el producto de Hola/datos proporcionados por el valor de inicialización). Cada entrada tiene Hola datos siguientes:
 
 * `Feed\entry\content\properties\Id1`: id. de elemento recomendado.
-* `Feed\entry\content\properties\Name1`: nombre del elemento.
+* `Feed\entry\content\properties\Name1`-Nombre del elemento de saludo.
 * `Feed\entry\content\properties\Id2`: id. del 2º elemento recomendado (opcional).
-* `Feed\entry\content\properties\Name2`: nombre del 2º elemento (opcional).
-* `Feed\entry\content\properties\Rating` : clasificación de la recomendación; un número alto significa mayor confianza.
+* `Feed\entry\content\properties\Name2`-Nombre del elemento 2 de hello (opcional).
+* `Feed\entry\content\properties\Rating`-Calificación de recomendación de hello; número mayor significa mayor confianza.
 * `Feed\entry\content\properties\Reasoning` : razonamiento de la recomendación (por ejemplo, explicaciones de recomendación).
 
-En la respuesta de ejemplo siguiente se incluyen 3 elementos recomendados.
+respuesta de ejemplo de Hola siguiente incluye 3 conjuntos de elementos recomendados.
 
 OData XML
 
@@ -2727,25 +2727,25 @@ Obtenga recomendaciones de una compilación concreta de tipo "Fbt".
 
 | Nombre de parámetro | Valores válidos |
 |:--- |:--- |
-| modelId |Identificador único del modelo |
-| itemId |Elemento para el que se recomienda. <br>Longitud máxima: 1024 |
+| modelId |Identificador único del modelo de Hola |
+| itemId |Elemento toorecommend para. <br>Longitud máxima: 1024 |
 | numberOfResults |Número de resultados obligatorios  <br>Máx.: 150 |
-| minimalScore |Puntuación mínima que debe tener un conjunto frecuente para incluirlo en los resultados devueltos. |
+| minimalScore |Resultados de puntuación mínima que frecuentes devuelve un conjunto debe haber en toobe orden incluido en hello |
 | includeMetatadata |Uso futuro, siempre es false |
-| buildId |el id. de compilación que se utilizará en esta solicitud de recomendación |
+| buildId |Hola compilar toouse de identificador para esta solicitud de recomendación |
 | apiVersion |1.0 |
 
 **Respuesta:**
 
 código de estado HTTP: 200
 
-La respuesta incluye una entrada por cada elemento recomendado (un conjunto de elementos que normalmente se compran junto con el elemento de entrada/inicialización). Cada entrada tiene los siguientes datos:
+respuesta de Hello incluye una entrada por cada conjunto de elementos recomendados (un conjunto de elementos que normalmente se compró junto con el producto de Hola/datos proporcionados por el valor de inicialización). Cada entrada tiene Hola datos siguientes:
 
 * `Feed\entry\content\properties\Id1`: id. de elemento recomendado.
-* `Feed\entry\content\properties\Name1`: nombre del elemento.
+* `Feed\entry\content\properties\Name1`-Nombre del elemento de saludo.
 * `Feed\entry\content\properties\Id2`: id. del 2º elemento recomendado (opcional).
-* `Feed\entry\content\properties\Name2`: nombre del 2º elemento (opcional).
-* `Feed\entry\content\properties\Rating` : clasificación de la recomendación; un número alto significa mayor confianza.
+* `Feed\entry\content\properties\Name2`-Nombre del elemento 2 de hello (opcional).
+* `Feed\entry\content\properties\Rating`-Calificación de recomendación de hello; número mayor significa mayor confianza.
 * `Feed\entry\content\properties\Reasoning` : razonamiento de la recomendación (por ejemplo, explicaciones de recomendación).
 
 Vea un ejemplo de respuesta en 12.3
@@ -2753,12 +2753,12 @@ Vea un ejemplo de respuesta en 12.3
 ### <a name="125-get-user-recommendations-for-active-build"></a>12.5. Obtención de recomendaciones de usuario (para la compilación activa)
 Obtenga recomendaciones de la compilación activa de tipo "Recommendation" marcada como compilación activa.
 
-La API devolverá una lista de elementos predichos según el historial de uso del usuario.
+Hola API devolverá una lista de elemento de predicción según el historial de uso de toohello del usuario de Hola.
 
 Notas: 
 
 1. No hay ninguna recomendación de usuario para la generación de FBT.
-2. Si la compilación activa es FBT, este método devuelve un error.
+2. Si crear Hola active es FBT este método le devuelve un error.
 
 | Método HTTP | URI |
 |:--- |:--- |
@@ -2766,8 +2766,8 @@ Notas:
 
 | Nombre de parámetro | Valores válidos |
 |:--- |:--- |
-| modelId |Identificador único del modelo |
-| userId |Identificador único del usuario |
+| modelId |Identificador único del modelo de Hola |
+| userId |Identificador único del usuario de Hola |
 | numberOfResults |Número de resultados requeridos |
 | includeMetatadata |Uso futuro, siempre es false |
 | apiVersion |1.0 |
@@ -2776,11 +2776,11 @@ Notas:
 
 código de estado HTTP: 200
 
-La respuesta incluye una entrada por cada elemento recomendado. Cada entrada tiene los siguientes datos:
+respuesta de Hello incluye una entrada por cada elemento recomendado. Cada entrada tiene Hola datos siguientes:
 
 * `Feed\entry\content\properties\Id`: id. de elemento recomendado.
-* `Feed\entry\content\properties\Name`: nombre del elemento.
-* `Feed\entry\content\properties\Rating` : clasificación de la recomendación; un número alto significa mayor confianza.
+* `Feed\entry\content\properties\Name`-Nombre del elemento de saludo.
+* `Feed\entry\content\properties\Rating`-Calificación de recomendación de hello; número mayor significa mayor confianza.
 * `Feed\entry\content\properties\Reasoning` : razonamiento de la recomendación (por ejemplo, explicaciones de recomendación).
 
 Vea un ejemplo de respuesta en 12.1
@@ -2788,12 +2788,12 @@ Vea un ejemplo de respuesta en 12.1
 ### <a name="126-get-user-recommendations-with-item-list-for-active-build"></a>12.6. Obtención de recomendaciones de usuario con lista de elementos (para la compilación activa)
 Obtenga recomendaciones de la compilación activa de tipo "Recommendation" marcada como compilación activa con una lista de elementos adicional
 
-La API devolverá una lista de elementos predichos según el historial de uso del usuario y los elementos suministrados adicionales.
+Hola API devolverá una lista de elemento de predicción según el historial de uso de toohello del usuario de Hola y elementos de hello adicionales proporcionados.
 
 Notas: 
 
 1. No hay ninguna recomendación de usuario para la generación de FBT.
-2. Si la compilación activa es FBT, este método devuelve un error.
+2. Si crear Hola active es FBT este método le devuelve un error.
 
 | Método HTTP | URI |
 |:--- |:--- |
@@ -2801,9 +2801,9 @@ Notas:
 
 | Nombre de parámetro | Valores válidos |
 |:--- |:--- |
-| modelId |Identificador único del modelo |
-| userId |Identificador único del usuario |
-| itemsIds |Lista de elementos para recomendar separados por coma. Longitud máxima: 1024 |
+| modelId |Identificador único del modelo de Hola |
+| userId |Identificador único del usuario de Hola |
+| itemsIds |Lista separada por comas de hello elementos toorecommend para. Longitud máxima: 1024 |
 | numberOfResults |Número de resultados requeridos |
 | includeMetatadata |Uso futuro, siempre es false |
 | apiVersion |1.0 |
@@ -2812,11 +2812,11 @@ Notas:
 
 código de estado HTTP: 200
 
-La respuesta incluye una entrada por cada elemento recomendado. Cada entrada tiene los siguientes datos:
+respuesta de Hello incluye una entrada por cada elemento recomendado. Cada entrada tiene Hola datos siguientes:
 
 * `Feed\entry\content\properties\Id`: id. de elemento recomendado.
-* `Feed\entry\content\properties\Name`: nombre del elemento.
-* `Feed\entry\content\properties\Rating` : clasificación de la recomendación; un número alto significa mayor confianza.
+* `Feed\entry\content\properties\Name`-Nombre del elemento de saludo.
+* `Feed\entry\content\properties\Rating`-Calificación de recomendación de hello; número mayor significa mayor confianza.
 * `Feed\entry\content\properties\Reasoning` : razonamiento de la recomendación (por ejemplo, explicaciones de recomendación).
 
 Vea un ejemplo de respuesta en 12.1
@@ -2824,7 +2824,7 @@ Vea un ejemplo de respuesta en 12.1
 ### <a name="127-get-user-recommendations--of-a-specific-build"></a>12.7. Obtención de recomendaciones del usuario (de una compilación concreta)
 Obtenga recomendaciones de una compilación concreta de tipo "Recomendación" o "Fbt".
 
-La API devolverá una lista de elementos predichos según el historial de uso del usuario (usados en la compilación específica).
+Hola API devolverá una lista de elemento de predicción según el historial de uso de toohello del usuario de hello (que se usa en la compilación concreta hello).
 
 Nota: no hay ninguna recomendación de usuario para la generación de FBT.
 
@@ -2834,30 +2834,30 @@ Nota: no hay ninguna recomendación de usuario para la generación de FBT.
 
 | Nombre de parámetro | Valores válidos |
 |:--- |:--- |
-| modelId |Identificador único del modelo |
-| userId |Identificador único del usuario |
+| modelId |Identificador único del modelo de Hola |
+| userId |Identificador único del usuario de Hola |
 | numberOfResults |Número de resultados requeridos |
 | includeMetatadata |Uso futuro, siempre es false |
-| buildId |el id. de compilación que se utilizará en esta solicitud de recomendación |
+| buildId |Hola compilar toouse de identificador para esta solicitud de recomendación |
 | apiVersion |1.0 |
 
 **Respuesta:**
 
 código de estado HTTP: 200
 
-La respuesta incluye una entrada por cada elemento recomendado. Cada entrada tiene los siguientes datos:
+respuesta de Hello incluye una entrada por cada elemento recomendado. Cada entrada tiene Hola datos siguientes:
 
 * `Feed\entry\content\properties\Id`: id. de elemento recomendado.
-* `Feed\entry\content\properties\Name`: nombre del elemento.
-* `Feed\entry\content\properties\Rating` : clasificación de la recomendación; un número alto significa mayor confianza.
+* `Feed\entry\content\properties\Name`-Nombre del elemento de saludo.
+* `Feed\entry\content\properties\Rating`-Calificación de recomendación de hello; número mayor significa mayor confianza.
 * `Feed\entry\content\properties\Reasoning` : razonamiento de la recomendación (por ejemplo, explicaciones de recomendación).
 
 Vea un ejemplo de respuesta en 12.1
 
 ### <a name="128-get-user-recommendations-with-item-list-of-a-specific-build"></a>12.8. Obtención de recomendaciones de usuario con lista de elementos (de una compilación concreta)
-Obtenga recomendaciones de una compilación concreta de tipo "Recommendation" y la lista de elementos adicionales.
+Obtener recomendaciones de usuario de una compilación concreta del tipo "Recomendación" y lista de Hola de elementos adicionales.
 
-La API devolverá una lista de elementos predichos según el historial de uso del usuario y la lista de elementos adicionales.
+Hola API devolverá una lista de elemento de predicción según el historial de uso de toohello del usuario de Hola y lista adicional de Hola de elementos.
 
 Nota: no hay ninguna recomendación de usuario para la generación de FBT.
 
@@ -2867,55 +2867,55 @@ Nota: no hay ninguna recomendación de usuario para la generación de FBT.
 
 | Nombre de parámetro | Valores válidos |
 |:--- |:--- |
-| modelId |Identificador único del modelo |
-| userId |Identificador único del usuario |
-| itemIds |Lista separada por comas de los elementos para recomendar. Longitud máxima: 1024 |
+| modelId |Identificador único del modelo de Hola |
+| userId |Identificador único del usuario de Hola |
+| itemIds |Lista separada por comas de hello elementos toorecommend para. Longitud máxima: 1024 |
 | numberOfResults |Número de resultados requeridos |
 | includeMetatadata |Uso futuro, siempre es false |
-| buildId |el id. de compilación que se utilizará en esta solicitud de recomendación |
+| buildId |Hola compilar toouse de identificador para esta solicitud de recomendación |
 | apiVersion |1.0 |
 
 **Respuesta:**
 
 código de estado HTTP: 200
 
-La respuesta incluye una entrada por cada elemento recomendado. Cada entrada tiene los siguientes datos:
+respuesta de Hello incluye una entrada por cada elemento recomendado. Cada entrada tiene Hola datos siguientes:
 
 * `Feed\entry\content\properties\Id`: id. de elemento recomendado.
-* `Feed\entry\content\properties\Name`: nombre del elemento.
-* `Feed\entry\content\properties\Rating` : clasificación de la recomendación; un número alto significa mayor confianza.
+* `Feed\entry\content\properties\Name`-Nombre del elemento de saludo.
+* `Feed\entry\content\properties\Rating`-Calificación de recomendación de hello; número mayor significa mayor confianza.
 * `Feed\entry\content\properties\Reasoning` : razonamiento de la recomendación (por ejemplo, explicaciones de recomendación).
 
 Vea un ejemplo de respuesta en 12.1
 
 ## <a name="13-user-usage-history"></a>13. Historial de uso del usuario
-Una vez creado un modelo de recomendación, el sistema le permite recuperar el historial del usuario (los elementos asociados a un usuario específico) usado para la compilación.
-La API permite recuperar el historial del usuario
+Una vez que se creó un modelo de recomendación sistema Hola permitirá tooretrieve historial de usuarios de hello (usuario específico de elementos asociados tooa) utilizado para la compilación de Hola.
+Esta API permitir que el historial de usuario de hello tooretrieve
 
-Nota: el historial del usuario actualmente solo está disponible para compilaciones de recomendación.
+Nota: historial de usuarios de hello actualmente solo está disponible para compilaciones de recomendación.
 
 ### <a name="131-retrieve-user-history"></a>13.1 Recuperación del historial del usuario
-Recupere la lista de elementos usados en la compilación activa o en la compilación especificada para el identificador de usuario determinado.
+Recupera la lista de Hola de elemento utilizado en hello active generar u Hola especifica compilar para hello tiene el Id. de usuario.
 
 | Método HTTP | URI |
 |:--- |:--- |
-| GET |Obtenga el historial de usuarios para la compilación activa.<br/>`<rootURI>/GetUserHistory?modelId=%27<model_id>%27&userId=%27<userId>%27&apiVersion=%271.0%27`<br/><br/>Obtenga el historial de usuarios para la compilación dada `<rootURI>/GetUserHistory?modelId=%27<model_id>%27&userId=%27<userId>%27&buildId=<int>&apiVersion=%271.0%27`<br/><br/>Ejemplo:`<rootURI>/GetUserHistory?modelId=%2727967136e8-f868-4258-9331-10d567f87fae%27&&userId=%27u_1013%27&apiVersion=%271.0%277` |
+| GET |Obtener el historial de usuario de Hola de compilación activa Hola.<br/>`<rootURI>/GetUserHistory?modelId=%27<model_id>%27&userId=%27<userId>%27&apiVersion=%271.0%27`<br/><br/>Obtener historial de usuarios de Hola Hola proporcionado compilación`<rootURI>/GetUserHistory?modelId=%27<model_id>%27&userId=%27<userId>%27&buildId=<int>&apiVersion=%271.0%27`<br/><br/>Ejemplo:`<rootURI>/GetUserHistory?modelId=%2727967136e8-f868-4258-9331-10d567f87fae%27&&userId=%27u_1013%27&apiVersion=%271.0%277` |
 
 | Nombre de parámetro | Valores válidos |
 |:--- |:--- |
-| modelId |identificador único del modelo. |
-| userId |identificador único del usuario. |
-| buildId |Parámetro opcional, permite indicar de qué compilación se debe obtener el historial del usuario |
+| modelId |Identificador único de Hello del modelo de Hola. |
+| userId |Hola identificador único del usuario de Hola. |
+| buildId |parámetro opcional, permitir tooindicate desde la compilación de historial de usuarios de hello debe ser fetch |
 | apiVersion |1.0 |
 
 **Respuesta:**
 
 código de estado HTTP: 200
 
-La respuesta incluye una entrada por cada elemento recomendado. Cada entrada tiene los siguientes datos:
+respuesta de Hello incluye una entrada por cada elemento recomendado. Cada entrada tiene Hola datos siguientes:
 
 * `Feed\entry\content\properties\Id`: id. de elemento recomendado.
-* `Feed\entry\content\properties\Name`: nombre del elemento.
+* `Feed\entry\content\properties\Name`-Nombre del elemento de saludo.
 * `Feed\entry\content\properties\Rating` : N/D.
 * `Feed\entry\content\properties\Reasoning` : N/D.
 
@@ -2947,14 +2947,14 @@ OData XML
 </feed>
 
 ## <a name="14-notifications"></a>14. Notificaciones
-Las recomendaciones de Aprendizaje automático de Azure crean notificaciones cuando se producen errores persistentes en el sistema. Hay 3 tipos de notificaciones:
+Recomendaciones de aprendizaje de máquina Azure crea notificaciones cuando se producen los errores persistentes en el sistema de Hola. Hay 3 tipos de notificaciones:
 
 1. Error de compilación: esta notificación se desencadena con cada error de compilación.
-2. Error de procesamiento de adquisición de datos: esta notificación se desencadena cuando tenemos más de 100 errores en los últimos 5 minutos en el procesamiento de eventos de uso por modelo.
-3. Error de consumo de recomendación: esta notificación se desencadena cuando tenemos más de 100 errores en los últimos 5 minutos en el procesamiento de solicitudes de recomendación por modelo.
+2. Error - esta notificación de procesamiento de adquisición de datos se desencadena cuando se tienen más de 100 errores en hello últimos 5 minutos en el procesamiento de Hola de eventos de uso por el modelo.
+3. Error de consumo de recomendación: esta notificación se desencadena cuando se tienen más de 100 errores en hello últimos 5 minutos en el procesamiento de Hola de solicitudes de recomendación por modelo.
 
 ### <a name="141-get-notifications"></a>14.1. Obtener notificaciones
-Recupera todas las notificaciones para todos los modelos o para un solo modelo.
+Recupera todas las notificaciones de Hola para todos los modelos o para un único modelo.
 
 | Método HTTP | URI |
 |:--- |:--- |
@@ -2962,7 +2962,7 @@ Recupera todas las notificaciones para todos los modelos o para un solo modelo.
 
 | Nombre de parámetro | Valores válidos |
 |:--- |:--- |
-| modelId |Parámetro opcional. Cuando se omite, obtendrá todas las notificaciones para todos los modelos. <br>Valor válido: identificador único del modelo. |
+| modelId |Parámetro opcional. Cuando se omite, obtendrá todas las notificaciones para todos los modelos. <br>Valor válido: identificador único del modelo de Hola. |
 | apiVersion |1.0 |
 |  | |
 | Cuerpo de la solicitud |NINGUNA |
@@ -2973,7 +2973,7 @@ código de estado HTTP: 200
 
 OData XML
 
-    The response includes one entry per notification. Each entry has the following data:
+    hello response includes one entry per notification. Each entry has hello following data:
         * feed\entry\content\properties\UserName - Internal user name identification.
         * feed\entry\content\properties\ModelId - Model ID.
         * feed\entry\content\properties\Message - Notification message.
@@ -3013,7 +3013,7 @@ Elimina todas las notificaciones de lectura para un modelo.
 
 | Nombre de parámetro | Valores válidos |
 |:--- |:--- |
-| modelId |Identificador único del modelo |
+| modelId |Identificador único del modelo de Hola |
 | apiVersion |1.0 |
 |  | |
 | Cuerpo de la solicitud |NINGUNA |
@@ -3042,6 +3042,6 @@ código de estado HTTP: 200
 ## <a name="15-legal"></a>15. Información legal
 Este documento se proporciona "como está". La información y las opiniones expresadas en este documento, como las direcciones URL y otras referencias a sitios web de Internet, pueden cambiar sin previo aviso.<br><br>
 Algunos ejemplos mencionados se proporcionan únicamente con fines ilustrativos y son ficticios. No se pretende ninguna asociación o conexión real ni debe deducirse.<br><br>
-Este documento no proporciona ningún derecho legal a la propiedad intelectual de ningún producto de Microsoft. Puede copiar y usar este documento con fines internos y de referencia.<br><br>
+Este documento no proporcionan ningún derecho legal tooany la propiedad intelectual de ningún producto de Microsoft. Puede copiar y usar este documento con fines internos y de referencia.<br><br>
 © 2015 Microsoft. Todos los derechos reservados.
 

@@ -1,5 +1,5 @@
 ---
-title: "Ejemplo de script de CLI de Azure: creación de Azure Redis Cache premium con agrupación en clústeres | Microsoft Docs"
+title: "Ejemplo de secuencia de comandos de CLI - aaaAzure crear una caché en Redis de Azure Premium con los clústeres de | Documentos de Microsoft"
 description: "Ejemplo de script de CLI de Azure: Creación de Azure Redis Cache de nivel premium con agrupación en clústeres"
 services: redis-cache
 documentationcenter: 
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 04/14/2017
 ms.author: sdanie
-ms.openlocfilehash: 87d0fe4c3eaa8f7b75343a36a069ecdac8241d74
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ca34d40059b282cb2abc7e3e2b8771226029744c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-premium-azure-redis-cache-with-clustering"></a>Creación de una caché en Azure Redis Cache premium con agrupación en clústeres
 
-En este escenario, aprenderá cómo crear Azure Redis Cache de nivel Premium de 6 GB con la agrupación en clústeres habilitada y dos particiones.
+En este escenario, aprenderá cómo toocreate un nivel Premium de 6 GB caché en Redis de Azure con los clústeres habilitado y dos particiones.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -35,7 +35,7 @@ En este escenario, aprenderá cómo crear Azure Redis Cache de nivel Premium de 
 
 ## <a name="script-explanation"></a>Explicación del script
 
-Este script usa los siguientes comandos para crear un grupo de recursos y una caché en Redis de nivel premium con la habilitación de agrupación en clústeres. Cada comando de la tabla crea un vínculo a documentación específica del comando.
+Este script utiliza Hola después comandos toocreate un grupo de recursos y una caché en redis nivel Premium con agrupación en clústeres habilitar. Cada comando de documentación específica de hello tabla vínculos toocommand.
 
 | Comando | Notas |
 |---|---|
@@ -45,6 +45,6 @@ Este script usa los siguientes comandos para crear un grupo de recursos y una ca
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para más información sobre la CLI de Azure, consulte la [documentación de la CLI de Azure](https://docs.microsoft.com/cli/azure/overview).
+Para obtener más información sobre Hola CLI de Azure, consulte [documentación de Azure CLI](https://docs.microsoft.com/cli/azure/overview).
 
-Encontrará más ejemplos de scripts de CLI de Azure Redis Cache en la [documentación de Azure Redis Cache](../cli-samples.md).
+Encontrará más ejemplos de secuencias de comandos de CLI de caché de Redis de Azure en hello [documentación de Azure Redis Cache](../cli-samples.md).

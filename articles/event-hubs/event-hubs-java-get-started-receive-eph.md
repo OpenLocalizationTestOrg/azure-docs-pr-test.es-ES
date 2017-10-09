@@ -1,5 +1,5 @@
 ---
-title: "Recepción de eventos desde Azure Event Hubs mediante Java | Microsoft Docs"
+title: aaaReceive eventos desde los centros de eventos de Azure con Java | Documentos de Microsoft
 description: "Introducción a la recepción de eventos desde Event Hubs mediante Java"
 services: event-hubs
 documentationcenter: 
@@ -14,49 +14,49 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: sethm
-ms.openlocfilehash: 3c1b455e6298367dc50f0943b58f6cf1e7f1c5fd
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 05414a22e6616296752c678bb0af887d6f070c12
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="receive-events-from-azure-event-hubs-using-java"></a>Recepción de eventos desde Azure Event Hubs mediante Java
 
 
 ## <a name="introduction"></a>Introducción
-Event Hubs es un sistema de recopilación de alta escalabilidad que puede recibir millones de eventos por segundo, habilitando una aplicación para procesar y analizar las grandes cantidades de datos generados por las aplicaciones y los dispositivos conectados. Una vez recopilados en los Centros de eventos, puede transformar y almacenar los datos usando cualquier proveedor de análisis en tiempo real o clúster de almacenamiento.
+Los concentradores de eventos es un sistema de recopilación altamente escalable que puede introducir millones de eventos por segundo, lo que permite una tooprocess de aplicación y analizar grandes cantidades de datos generados por los dispositivos conectados y las aplicaciones de Hola. Una vez recopilados en los Centros de eventos, puede transformar y almacenar los datos usando cualquier proveedor de análisis en tiempo real o clúster de almacenamiento.
 
-Para más información, consulte [Información general de Event Hubs][Event Hubs overview].
+Para obtener más información, vea hello [información general de los centros de eventos][Event Hubs overview].
 
-Este tutorial muestra cómo recibir eventos en un centro de eventos mediante una aplicación de consola escrita en Java.
+Este tutorial se muestra cómo tooreceive eventos en un centro de eventos con una aplicación de consola escrita en Java.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Para completar este tutorial, debe cumplir los siguientes requisitos previos:
+En orden toocomplete este tutorial, necesitará Hola siguiendo los requisitos previos:
 
 * Un entorno de desarrollo de Java. En este tutorial, se da por hecho que se va a trabajar con [Eclipse](https://www.eclipse.org/).
 * Una cuenta de Azure activa. <br/>En caso de no tener ninguna, puede crear una cuenta gratuita en tan solo unos minutos. Para obtener más información, consulte <a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Evaluación gratuita de Azure</a>.
 
 ## <a name="receive-messages-with-eventprocessorhost-in-java"></a>Recepción de mensajes con EventProcessorHost en Java
 
-**EventProcessorHost** es una clase de Java que simplifica la recepción de eventos desde Event Hubs mediante la administración de puntos de control persistentes y recepciones paralelas desde tales Centros de eventos. Con EventProcessorHost, puede dividir eventos entre varios destinatarios, incluso cuando están hospedados en distintos nodos. Este ejemplo muestra cómo usar EventProcessorHost para un solo destinatario.
+**EventProcessorHost** es una clase de Java que simplifica la recepción de eventos desde Event Hubs mediante la administración de puntos de control persistentes y recepciones paralelas desde tales Centros de eventos. Con EventProcessorHost, puede dividir eventos entre varios destinatarios, incluso cuando están hospedados en distintos nodos. Este ejemplo se muestra cómo toouse EventProcessorHost para un único receptor.
 
 ### <a name="create-a-storage-account"></a>Crear una cuenta de almacenamiento
-Para usar EventProcessorHost, debe tener una [cuenta de Azure Storage][Azure Storage account]:
+toouse EventProcessorHost, debe tener un [cuenta de almacenamiento de Azure][Azure Storage account]:
 
-1. Inicie sesión en [Azure Portal][Azure portal] y haga clic en **+ Nuevo** en la parte izquierda de la pantalla.
-2. Haga clic en **Storage** y luego en **Cuenta de Storage**. En la hoja **Crear cuenta de almacenamiento** , escriba un nombre para la cuenta de almacenamiento. Complete el resto de los campos, seleccione la región que desee y, finalmente, haga clic en **Crear**.
+1. Inicie sesión en toohello [portal de Azure][Azure portal]y haga clic en **+ nuevo** en el lado izquierdo de Hola de pantalla de bienvenida.
+2. Haga clic en **Storage** y luego en **Cuenta de Storage**. Hola **crear cuenta de almacenamiento** hoja, escriba un nombre para la cuenta de almacenamiento de Hola. Complete el resto de Hola de campos de hello, seleccione su región deseada y, a continuación, haga clic en **crear**.
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage2.png)
 
-3. Haga clic en la cuenta de almacenamiento recién creada y, a continuación, en **Administrar claves de acceso**:
+3. Haga clic en la cuenta de almacenamiento de hello recién creado y, a continuación, haga clic en **administrar claves de acceso**:
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage3.png)
 
-    Copie la clave de acceso primaria en una ubicación temporal para utilizarla más adelante en este tutorial.
+    Copiar ubicación temporal de clave tooa de hello acceso principal, toouse más adelante en este tutorial.
 
-### <a name="create-a-java-project-using-the-eventprocessor-host"></a>Creación de un proyecto de Java mediante EventProcessorHost
-La biblioteca de cliente de Java para Event Hubs está disponible para su uso en proyectos de Maven en el [repositorio central de Maven][Maven Package], y se puede hacer referencia a ella mediante la siguiente declaración de dependencia en el archivo de proyecto de Maven:    
+### <a name="create-a-java-project-using-hello-eventprocessor-host"></a>Crear un proyecto de Java con hello EventProcessor Host
+Hello biblioteca de cliente de Java para los concentradores de eventos está disponible para su uso en proyectos de Maven de hello [repositorio Central de Maven][Maven Package]y se puede hacer referencia mediante Hola después de la declaración de dependencia dentro de su Archivo de proyecto de maven:    
 
 ```xml
 <dependency>
@@ -76,9 +76,9 @@ La biblioteca de cliente de Java para Event Hubs está disponible para su uso en
 </dependency>
 ```
 
-Para distintos tipos de entornos de compilación, puede obtener explícitamente los últimos archivos JAR publicados en el [repositorio central de Maven][Maven Package] o en [el punto de distribución de versiones en GitHub](https://github.com/Azure/azure-event-hubs/releases).  
+Para diferentes tipos de entornos de compilación, puede obtener explícitamente archivos JAR de hello liberado más reciente de hello [repositorio Central de Maven] [ Maven Package] o de [Hola punto de distribución de la versión en GitHub](https://github.com/Azure/azure-event-hubs/releases).  
 
-1. Para el ejemplo siguiente, primero cree un nuevo proyecto de Maven para una aplicación de consola o shell en su entorno de desarrollo de Java favorito. La clase se denomina `ErrorNotificationHandler`.     
+1. Para el siguiente ejemplo de Hola, primero cree un proyecto de Maven nuevo para una aplicación de consola/shell en el entorno de desarrollo de Java favoritos. clase de Hola se denomina `ErrorNotificationHandler`.     
    
     ```java
     import java.util.function.Consumer;
@@ -93,7 +93,7 @@ Para distintos tipos de entornos de compilación, puede obtener explícitamente 
         }
     }
     ```
-2. Cree una clase nueva denominada `EventProcessor`con el código siguiente.
+2. Siguiente de Hola de uso de código toocreate una nueva clase denominada `EventProcessor`.
    
     ```java
     import com.microsoft.azure.eventhubs.EventData;
@@ -146,7 +146,7 @@ Para distintos tipos de entornos de compilación, puede obtener explícitamente 
         }
     }
     ```
-3. Cree una clase final más llamada `EventProcessorSample`, con el código siguiente.
+3. Cree una clase más denominada `EventProcessorSample`, mediante Hola código siguiente.
    
     ```java
     import com.microsoft.azure.eventprocessorhost.*;
@@ -192,7 +192,7 @@ Para distintos tipos de entornos de compilación, puede obtener explícitamente 
                 }
             }
    
-            System.out.println("Press enter to stop");
+            System.out.println("Press enter toostop");
             try
             {
                 System.in.read();
@@ -211,7 +211,7 @@ Para distintos tipos de entornos de compilación, puede obtener explícitamente 
         }
     }
     ```
-4. Reemplace los siguientes campos por los valores que usó al crear el centro de eventos y la cuenta de almacenamiento.
+4. Reemplace Hola siguientes campos con valores de hello utilizados cuando creó la cuenta de almacenamiento y concentrador de eventos de Hola.
    
     ```java
     final String namespaceName = "----ServiceBusNamespaceName-----";
@@ -225,12 +225,12 @@ Para distintos tipos de entornos de compilación, puede obtener explícitamente 
     ```
 
 > [!NOTE]
-> Este tutorial usa una sola instancia de EventProcessorHost. Para aumentar la capacidad de procesamiento, se recomienda ejecutar varias instancias de EventProcessorHost, preferiblemente en máquinas independientes.  Esto proporciona redundancia también. En esos casos, las diferentes instancias se coordinan automáticamente entre sí con el fin de equilibrar la carga de los eventos recibidos. Si desea que varios destinatarios procesen *todos* los eventos, debe usar el concepto **ConsumerGroup** . Cuando se reciben eventos de distintos equipos, puede ser útil especificar nombres para las instancias de EventProcessorHost según los equipos (o roles) en que se implementan.
+> Este tutorial usa una sola instancia de EventProcessorHost. tooincrease rendimiento, se recomienda ejecutar varias instancias de EventProcessorHost, preferiblemente en equipos diferentes.  Esto proporciona redundancia también. En esos casos, Hola que diversas instancias coordinan automáticamente entre sí de Hola de saldo de orden tooload reciba eventos. Si desea que el proceso de varios receptores tooeach *todos los* Hola eventos, debe usar hello **ConsumerGroup** concepto. Cuando se reciben eventos de equipos diferentes, podría ser útil toospecify nombres para instancias de EventProcessorHost basadas en máquinas de hello (o roles) en que se implementan.
 > 
 > 
 
 ## <a name="next-steps"></a>Pasos siguientes
-Para más información acerca de Event Hubs, visite los vínculos siguientes:
+Para obtener más información acerca de los centros de eventos información visitando Hola siguientes vínculos:
 
 * [Información general de Event Hubs](event-hubs-what-is-event-hubs.md)
 * [Creación de un centro de eventos](event-hubs-create.md)

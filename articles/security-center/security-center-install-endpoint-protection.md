@@ -1,6 +1,6 @@
 ---
-title: "Instalación de Endpoint Protection en Azure Security Center | Microsoft Docs"
-description: "En este documento, mostramos cómo implementar la recomendación de instalar Endpoint Protection de Azure Security Center."
+title: aaaInstall Endpoint Protection en el centro de seguridad de Azure | Documentos de Microsoft
+description: "Este documento muestra cómo tooimplement Hola recomendación de Azure Security Center ** instalar Endpoint Protection **."
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -14,52 +14,52 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/16/2017
 ms.author: terrylan
-ms.openlocfilehash: efb86a0ae362c30a6772c391a499154b7ae2a697
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: fea891810e042e4d4f6e55094c0cd4de013ba68a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="install-endpoint-protection-in-azure-security-center"></a>Instalación de Endpoint Protection en Azure Security Center
-Azure Security Center recomienda instalar Endpoint Protection en las máquinas virtuales de Azure si aún no se ha habilitado esta solución. Esta recomendación se aplica únicamente a las máquinas virtuales de Windows.
+Azure Security Center recomienda instalar Endpoint Protection en las máquinas virtuales de Azure si aún no se ha habilitado esta solución. Esta recomendación aplica tooWindows máquinas virtuales.
 
 > [!NOTE]
 > En esta implementación de ejemplo se utiliza Microsoft Antimalware. Consulte [Integración de asociados en Azure Security Center](security-center-partner-integration.md#partners-that-integrate-with-security-center) para ver una lista de asociados integrados con Security Center.  
 >
 >
 
-## <a name="implement-the-recommendation"></a>Implementación de la recomendación
+## <a name="implement-hello-recommendation"></a>Implementar la recomendación de Hola
 
 > [!NOTE]
-> En este documento se presenta el servicio mediante una implementación de ejemplo.  Este documento no es una guía paso a paso.
+> Este documento presentan servicio hello mediante el uso de una implementación de ejemplo.  Este documento no es una guía paso a paso.
 >
 >
 
-1. En la hoja **Recomendaciones**, seleccione **Instalar Endpoint Protection**.
+1. Hola **recomendaciones** hoja, seleccione **instalar Endpoint Protection**.
    ![Selección de instalar Endpoint Protection][1]
-2. Se abre la hoja **Instalar Endpoint Protection** con una lista de máquinas virtuales sin Endpoint Protection. Seleccione en la lista las máquinas virtuales en las que quiere instalar Endpoint Protection y haga clic en **Install on VMs** (Instalar en máquinas virtuales).
-   ![Selección de máquinas virtuales en las que instalar Endpoint Protection][2]
-3. Se abre la hoja **Seleccionar Endpoint Protection**, que permite seleccionar la solución Endpoint Protection que quiere usar. En este ejemplo, vamos a seleccionar **Microsoft Antimalware**.
+2. Hola **instalar Endpoint Protection** hoja abrirá mostrando una lista de las máquinas virtuales sin protección de extremo. Seleccione uno de Hola Hola de lista máquinas virtuales que desea que tooinstall endpoint protection en y haga clic en **instalar en máquinas virtuales**.
+   ![Seleccione las máquinas virtuales tooinstall Endpoint Protection en][2]
+3. Hola **seleccione Endpoint Protection** hoja abre tooallow se tooselect Hola extremo solución de protección que desee toouse. En este ejemplo, vamos a seleccionar **Microsoft Antimalware**.
    ![Select Endpoint Protection][3]
-4. Aparece información adicional sobre la solución Endpoint Protection. Seleccione **Crear**.
+4. Se muestra información adicional sobre solución de protección de extremo de Hola. Seleccione **Crear**.
    ![Creación de solución antimalware][4]
-5. Escriba las opciones de configuración requeridas en la hoja **Agregar extensión** y seleccione **Aceptar**. Para obtener más información acerca de las opciones de configuración, consulte [Configuración predeterminada y personalizada de Antimalware](../security/azure-security-antimalware.md#default-and-custom-antimalware-configuration).
+5. Escriba valores de configuración de hello necesario en hello **Agregar extensión** hoja y, a continuación, seleccione **Aceptar**. toolearn más información acerca de los valores de configuración de hello, consulte [predeterminadas y configuración de Antimalware personalizada](../security/azure-security-antimalware.md#default-and-custom-antimalware-configuration).
 
-[Microsoft Antimalware](../security/azure-security-antimalware.md) ahora está activo en las máquinas virtuales seleccionadas.
+[Microsoft Antimalware](../security/azure-security-antimalware.md) está activo en hello selecciona las máquinas virtuales.
 
 ## <a name="see-also"></a>Otras referencias
-En este documento, mostramos cómo implementar la recomendación "Instalar Endpoint Protection" de Security Center. Para obtener más información sobre cómo habilitar Microsoft Antimalware en Azure, consulte el siguiente documento:
+En este artículo se ha explicado cómo tooimplement Hola recomendación de centro de seguridad "Instalar Endpoint Protection". toolearn más acerca de cómo habilitar Microsoft Antimalware en Azure, vea Hola siguiente documento:
 
-* [Microsoft Antimalware para Azure Cloud Services y Virtual Machines](../security/azure-security-antimalware.md): aprenda a implementar Microsoft Antimalware.
+* [Microsoft Antimalware para servicios en la nube y máquinas virtuales](../security/azure-security-antimalware.md) : Obtenga información acerca de cómo toodeploy Microsoft Antimalware.
 
-Para obtener más información sobre Security Center, consulte los siguientes documentos:
+toolearn más información acerca del centro de seguridad, vea Hola siguientes documentos:
 
-* [Establecimiento de directivas de seguridad en Azure Security Center](security-center-policies.md) : aprenda a configurar directivas de seguridad.
+* [Configuración de directivas de seguridad en el centro de seguridad de Azure](security-center-policies.md) : Obtenga información acerca de cómo las directivas de seguridad de tooconfigure.
 * [Administración de recomendaciones de seguridad en Azure Security Center](security-center-recommendations.md) : recomendaciones que le ayudan a proteger los recursos de Azure.
-* [Supervisión del estado de seguridad en Azure Security Center](security-center-monitoring.md): obtenga información sobre cómo supervisar el mantenimiento de los recursos de Azure.
-* [Administración y respuesta a las alertas de seguridad en Azure Security Center](security-center-managing-and-responding-alerts.md): obtenga información sobre cómo administrar y responder a alertas de seguridad.
-* [Supervisión de las soluciones de asociados con Azure Security Center](security-center-partner-solutions.md): aprenda a supervisar el estado de mantenimiento de las soluciones de asociados.
-* [Preguntas más frecuentes sobre Azure Security Center](security-center-faq.md) : busque las preguntas más frecuentes sobre cómo usar el servicio.
+* [Supervisión de estado de seguridad de Azure Security Center](security-center-monitoring.md) : Obtenga información acerca de cómo toomonitor Hola estado de los recursos de Azure.
+* [Toosecurity de administración y de que responda las alertas en el centro de seguridad de Azure](security-center-managing-and-responding-alerts.md) : Obtenga información acerca de cómo las alertas de toosecurity toomanage y que responden.
+* [Supervisión de soluciones de socios comerciales con Azure Security Center](security-center-partner-solutions.md) : Obtenga información acerca de cómo toomonitor Hola estado de mantenimiento de las soluciones de socios comerciales.
+* [Preguntas más frecuentes de Azure Security Center](security-center-faq.md) --buscar preguntas más frecuentes sobre el uso de servicio de Hola.
 * [Blog de seguridad de Azure](http://blogs.msdn.com/b/azuresecurity/) : encuentre publicaciones de blog sobre el cumplimiento y la seguridad de Azure.
 
 <!--Image references-->

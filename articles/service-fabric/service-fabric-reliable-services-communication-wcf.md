@@ -1,6 +1,6 @@
 ---
-title: "Pila comunicación de WCF de Reliable Services | Microsoft Docs"
-description: "La pila de comunicación de WCF integrada en Service Fabric ofrece comunicación de WCF del servicio de cliente para Reliable Services."
+title: "pila de comunicación de servicios WCF aaaReliable | Documentos de Microsoft"
+description: "pila de comunicación de WCF integrado de Hello en Service Fabric proporciona comunicación del servicio de cliente de WCF para servicios de confianza."
 services: service-fabric
 documentationcenter: .net
 author: BharatNarasimman
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 06/07/2017
 ms.author: bharatn
-ms.openlocfilehash: 7037620ebdc26a9f18531064bf45d058f5060e39
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7feebef4d46a6ae66d05129f47f9b5911e82aec9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="wcf-based-communication-stack-for-reliable-services"></a>Pila de comunicación basada en WCF de Reliable Services
-El marco de Reliable Services permite a los autores de servicio elegir la pila de comunicación que desean usar para su servicio. Pueden conectar la pila de comunicaciones que deseen mediante la clase **ICommunicationListener** devuelta desde los métodos [CreateServiceReplicaListeners o CreateServiceInstanceListeners](service-fabric-reliable-services-communication.md) . El marco proporciona una implementación de la pila de comunicación basada en Windows Communication Foundation (WCF) para los autores de servicio que desean usar la comunicación basada en WCF.
+Hola servicios confiables marco de trabajo permite servicio pila de comunicación de los autores toochoose Hola que deseen toouse para su servicio. Puede conectar en la pila de comunicación de Hola de su elección a través de hello **ICommunicationListener** procedentes de hello [CreateServiceReplicaListeners o CreateServiceInstanceListeners](service-fabric-reliable-services-communication.md) métodos. marco de trabajo de Hello proporciona una implementación de pila de comunicaciones de hello en función de hello Windows Communication Foundation (WCF) para los autores de servicio que desee toouse comunicación basada en WCF.
 
 ## <a name="wcf-communication-listener"></a>Agente de escucha de comunicación WCF
-La implementación específica de WCF de **ICommunicationListener** la proporciona la clase **Microsoft.ServiceFabric.Services.Communication.Wcf.Runtime.WcfCommunicationListener**.
+implementación de Hello específicas de WCF de **ICommunicationListener** proporciona hello **Microsoft.ServiceFabric.Services.Communication.Wcf.Runtime.WcfCommunicationListener** clase.
 
 Pongamos que tenemos un contrato de servicio del tipo `ICalculator`
 
@@ -37,7 +37,7 @@ public interface ICalculator
 }
 ```
 
-Podemos crear un agente de escucha de comunicación de WCF en el servicio de la siguiente manera.
+Podemos crear un agente de escucha de comunicación de WCF Hola Hola de servicio después de la forma.
 
 ```csharp
 
@@ -48,13 +48,13 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
             wcfServiceObject:this,
             serviceContext:context,
             //
-            // The name of the endpoint configured in the ServiceManifest under the Endpoints section
-            // that identifies the endpoint that the WCF ServiceHost should listen on.
+            // hello name of hello endpoint configured in hello ServiceManifest under hello Endpoints section
+            // that identifies hello endpoint that hello WCF ServiceHost should listen on.
             //
             endpointResourceName: "WcfServiceEndpoint",
 
             //
-            // Populate the binding information that you want the service to use.
+            // Populate hello binding information that you want hello service toouse.
             //
             listenerBinding: WcfUtility.CreateTcpListenerBinding()
         )
@@ -63,8 +63,8 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
 ```
 
-## <a name="writing-clients-for-the-wcf-communication-stack"></a>Escritura de clientes para la pila de comunicación de WCF
-Para que los clientes de escritura se comuniquen con los servicios mediante WCF, el marco proporciona la clase **WcfClientCommunicationFactory**, que es la implementación específica de WCF de la clase [ClientCommunicationFactoryBase](service-fabric-reliable-services-communication.md).
+## <a name="writing-clients-for-hello-wcf-communication-stack"></a>Escribir clientes de pila de comunicación de WCF de Hola
+Para escribir clientes proporciona toocommunicate con los servicios mediante WCF, framework hello **WcfClientCommunicationFactory**, que es la implementación de hello específicas de WCF de [ClientCommunicationFactoryBase](service-fabric-reliable-services-communication.md).
 
 ```csharp
 
@@ -76,7 +76,7 @@ public WcfCommunicationClientFactory(
     object callback = null);
 ```
 
-Se puede acceder al canal de comunicación de WCF desde la clase **WcfCommunicationClient** creada por la clase **WcfCommunicationClientFactory**.
+canal de comunicación de WCF de Hello puede tener acceso desde hello **WcfCommunicationClient** creado por hello **WcfCommunicationClientFactory**.
 
 ```csharp
 
@@ -90,7 +90,7 @@ public class WcfCommunicationClient : ServicePartitionClient<WcfCommunicationCli
 
 ```
 
-El código de cliente puede usar la clase **WcfCommunicationClientFactor** y junto con **WcfCommunicationClient** que implementa **ServicePartitionClient** para determinar el punto de conexión de servicio y comunicarse con el servicio.
+Código de cliente puede usar hello **WcfCommunicationClientFactory** junto con hello **WcfCommunicationClient** que implementa **ServicePartitionClient** toodetermine Hola extremo de servicio y comunicarse con el servicio de Hola.
 
 ```csharp
 // Create binding
@@ -102,7 +102,7 @@ var wcfClientFactory = new WcfCommunicationClientFactory<ICalculator>
     (clientBinding: binding, servicePartitionResolver: partitionResolver);
 
 //
-// Create a client for communicating with the ICalculator service that has been created with the
+// Create a client for communicating with hello ICalculator service that has been created with the
 // Singleton partition scheme.
 //
 var calculatorServiceCommunicationClient =  new WcfCommunicationClient(
@@ -111,14 +111,14 @@ var calculatorServiceCommunicationClient =  new WcfCommunicationClient(
                 ServicePartitionKey.Singleton);
 
 //
-// Call the service to perform the operation.
+// Call hello service tooperform hello operation.
 //
 var result = calculatorServiceCommunicationClient.InvokeWithRetryAsync(
                 client => client.Channel.Add(2, 3)).Result;
 
 ```
 > [!NOTE]
-> ServicePartitionResolver asume que el cliente se ejecuta en el mismo clúster que el servicio. Si no es así, cree un objeto ServicePartitionResolver y transfiera los puntos de conexión del clúster.
+> Hola ServicePartitionResolver, se supone que cliente Hola se está ejecutando en el mismo clúster que el servicio de Hola. Si es no Hola así, cree un objeto ServicePartitionResolver y pasar en los extremos de conexión del clúster de Hola.
 > 
 > 
 

@@ -1,6 +1,6 @@
 ---
-title: "Especificaciones técnicas de StorSimple | Microsoft Docs"
-description: "Describe las especificaciones técnicas y la información sobre el cumplimiento de estándares reglamentarios para los componentes de hardware de StorSimple."
+title: "especificaciones técnicas de aaaStorSimple | Documentos de Microsoft"
+description: "Describe las especificaciones técnicas de hello e información de compatibilidad de estándares de regulación de componentes de hardware de StorSimple de Hola."
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.openlocfilehash: d7cd31dcb2278284ada6e7ac1d8beab9e1b5b1df
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 98fa3307e2a929551c74e8b3179bb0fb61c0ab53
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>Especificaciones técnicas y cumplimiento normativo para el dispositivo StorSimple
+# <a name="technical-specifications-and-compliance-for-hello-storsimple-device"></a>Especificaciones técnicas y cumplimiento de normas para el dispositivo StorSimple Hola
 
 ## <a name="overview"></a>Información general
 
-Los componentes de hardware del dispositivo StorSimple de Microsoft Azure se adhieren a las especificaciones técnicas y los estándares reglamentarios descritos en este artículo. Las especificaciones técnicas describen los módulos de alimentación y refrigeración (PCM), las unidades de disco, la capacidad de almacenamiento y los revestimientos. La información de cumplimiento normativo trata aspectos tales como las normas internacionales, la seguridad, las emisiones y el cableado.
+componentes de hardware de Hello de dispositivo de Microsoft Azure StorSimple cumplen las especificaciones técnicas de toohello y estándares de regulación que se describen en este artículo. especificaciones técnicas de Hola describen los alojamientos y capacidad de almacenamiento de información de módulos de alimentación y refrigeración (PCM), las unidades de disco, Hola. información de compatibilidad de Hola trata aspectos tales como las normas internacionales, la seguridad y las emisiones y cableado.
 
 ## <a name="power-and-cooling-module-specifications"></a>Especificaciones del módulo de alimentación y refrigeración
 
-El dispositivo StorSimple tiene dos módulos de alimentación y refrigeración (PCM) compatibles con SBB con ventilador dual de 100-240 V. Esto proporciona una configuración de alimentación redundante. Si se produce un error en un PCM, el dispositivo sigue funcionando con normalidad en el otro PCM hasta que se reemplaza el módulo con error.
+dispositivo de StorSimple de Hello tiene dos 100-240 V módulos ventilador doble, conformes a SBB alimentación y refrigeración (PCM). Esto proporciona una configuración de alimentación redundante. Si se produce un error en un PCM, dispositivo Hola continúa toooperate con normalidad en hello otro PCM hasta que hello no pudo módulo se reemplaza.
 
-El revestimiento de EBOD usa un PCM de 580 W, y el revestimiento principal usa un PCM de 764 W. En las tablas siguientes se enumeran las especificaciones técnicas asociadas a los PCM.
+Hola alojamiento de EBOD usa un PCM de 580 W y alojamiento principal usa un PCM de 764 W. Hello las tablas siguientes se especificaciones técnicas de lista Hola asociadas Hola PCM.
 
 | Especificación | PCM de 580 W (EBOD) | PCM de 764 W (principal) |
 | --- | --- | --- |
@@ -49,7 +49,7 @@ El revestimiento de EBOD usa un PCM de 580 W, y el revestimiento principal usa 
 
 ## <a name="power-consumption-statistics"></a>Estadísticas de consumo de energía
 
-En la siguiente tabla se enumeran los datos de consumo de energía típicos (puede que estos valores no coincidan con los publicados) de los distintos modelos del dispositivo StorSimple.
+Hello en la tabla siguiente enumera datos de consumo de energía típico Hola (los valores reales pueden variar de hello publicado) de hello varios modelos de dispositivo de StorSimple.
 
 | Condiciones | 240 V CA | 240 V CA | 240 V CA | 110 V CA | 110 V CA | 110 V CA |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -62,11 +62,11 @@ En la siguiente tabla se enumeran los datos de consumo de energía típicos (pue
 
 ## <a name="disk-drive-specifications"></a>Especificaciones de la unidad de disco
 
-El dispositivo StorSimple admite hasta 12 unidades de disco SCSI conectadas en serie (SAS) con factor de forma de 3,5 pulgadas. Las unidades reales pueden ser una combinación de unidades de estado sólido (SSD) o unidades de disco duro (HDD), en función de la configuración del producto. Las 12 ranuras de la unidad de disco se encuentran en una configuración de 3 por 4 delante del revestimiento. El revestimiento de EBOD permite el almacenamiento adicional de otras 12 unidades de disco. Estas son siempre unidades de disco duro.
+El dispositivo StorSimple admite hasta unidades de disco de too12 formato de 3,5 pulgadas factor Serial Attached SCSI (SAS). unidades reales de Hello pueden ser una combinación de unidades de estado sólido (SSD) o unidades de disco duro (HDD), dependiendo de la configuración del producto Hola. las ranuras de unidad de disco 12 Hola se encuentran en una configuración de 3 por 4 delante de alojamiento de Hola. Hola alojamiento de EBOD permite almacenamiento adicional para otro 12 unidades de disco. Estas son siempre unidades de disco duro.
 
 ## <a name="storage-specifications"></a>Especificaciones de almacenamiento
 
-Los dispositivos StorSimple tienen una combinación de unidades de disco duro y unidades de estado sólido en los modelos 8100 y 8600. La capacidad total utilizable de los modelos 8100 y 8600 es de unos 15 TB y 38 TB, respectivamente. La tabla siguiente proporciona información detallada acerca de las SSD, las HDD y la capacidad de nube en el contexto de la capacidad de una solución StorSimple.
+dispositivos de StorSimple de Hello tengan una combinación de unidades de disco duro y unidades de estado sólido para ambos hello 8100 y 8600. capacidad utilizable total de Hola para hello 8100 y 8600 son aproximadamente 15 TB y 38 TB respectivamente. Hello en la tabla siguiente documenta los detalles de Hola de SSD y HDD, capacidad de nube en el contexto de Hola de hello capacidad de la solución de StorSimple.
 
 | Modelo de dispositivo/capacidad | 8100 | 8600 |
 | --- | --- | --- |
@@ -80,37 +80,37 @@ Los dispositivos StorSimple tienen una combinación de unidades de disco duro y 
 | Capacidad total utilizable* |~ 15 TB |~ 38 TB |
 | Capacidad máxima de la solución (incluida la nube) |200 TB |500 TB |
 
-<sup>* </sup>- *La capacidad total utilizable incluye la capacidad disponible para datos, metadatos y búferes.*
+<sup>* </sup>- *capacidad total utilizable de Hello incluye capacidad Hola disponible para los datos y metadatos, búferes.*
 
 ## <a name="enclosure-dimensions-and-weight-specifications"></a>Especificaciones de dimensiones y peso del revestimiento
 
-En las tablas siguientes se enumeran las diferentes especificaciones de dimensiones y peso del revestimiento.
+Hola después de la lista de tablas Hola especificaciones del alojamiento para dimensiones y peso.
 
 ### <a name="enclosure-dimensions"></a>Dimensiones del revestimiento
 
-En la tabla siguiente se enumeran las dimensiones del revestimiento en milímetros y pulgadas.
+Hello tabla siguiente enumeran las dimensiones de hello del alojamiento de hello en milímetros y pulgadas.
 
 | Revestimiento | Milímetros | Pulgadas |
 | --- | --- | --- |
 | Alto |87,9 |3,46 |
 | Ancho en brida de montaje |483 |19,02 |
 | Ancho en el cuerpo del revestimiento |443 |17,44 |
-| Profundidad desde la brida de montaje frontal hasta el extremo del cuerpo del revestimiento |577 |22,72 |
-| Profundidad desde el panel de operaciones hasta el extremo más alejado del revestimiento |630,5 |24,82 |
-| Profundidad desde la brida de montaje hasta el extremo más alejado del revestimiento |603 |23,74 |
+| Profundidad de tooextremity de brida de montaje frontal del cuerpo del alojamiento |577 |22,72 |
+| Profundidad de las operaciones de extremo lejano toofurthest del alojamiento del panel |630,5 |24,82 |
+| Profundidad de extremo lejano de toofurthest bridas del alojamiento de montaje |603 |23,74 |
 
 ### <a name="enclosure-weight"></a>Peso del revestimiento
 
-Según la configuración, un revestimiento principal completamente cargado puede pesar de 21 a 33 kg y requiere dos personas para manipularlo.
+Según la configuración de hello, un alojamiento principal completamente cargado puede pesar entre 21 kg too33 y requiere dos toohandle de las personas.
 
 | Revestimiento | Peso |
 | --- | --- |
-| Peso máximo (depende de la configuración) |30 kg - 33 kg |
+| Peso máximo (depende de la configuración de hello) |30 kg - 33 kg |
 | Vacío (sin unidades instaladas) |21 kg - 23 kg |
 
 ## <a name="enclosure-environment-specifications"></a>Especificaciones medioambientales del revestimiento
 
-En esta sección se enumeran las especificaciones relacionadas con el entorno del revestimiento. En esta categoría se incluyen la temperatura, la humedad, la altitud, los golpes, las vibraciones, la orientación, la seguridad y la compatibilidad electromagnética (CEM).
+Esta sección muestra el entorno de alojamiento de hello especificaciones toohello relacionados. temperatura de Hello, humedad, altitud, choque, vibración, orientación, seguridad y compatibilidad electromagnética (CEM) se incluyen en esta categoría.
 
 ### <a name="temperature-and-humidity"></a>Temperatura y humedad
 
@@ -123,56 +123,56 @@ En esta sección se enumeran las especificaciones relacionadas con el entorno de
 
 | Revestimiento | Especificaciones operativas |
 | --- | --- |
-| Flujo de aire |El flujo de aire del sistema va de delante atrás. El sistema debe funcionar con una instalación de baja presión y escape trasero. La contrapresión creada por puertas del revestimiento y los obstáculos no debe superar los 5 pascales (medidor de agua de 0,5 mm). |
-| Altitud (operativo) |De -30 metros a 3.045 metros (de -100 pies a 10.000 pies) con la temperatura máxima de funcionamiento reducida en 5 °C por encima de los 7.000 pies. |
-| Altitud (no operativo) |De -305 metros a 12.192 metros (de -1.000 pies a 40.000 pies) |
+| Flujo de aire |Flujo de aire del sistema es toorear frontal. El sistema debe funcionar con una instalación de baja presión y escape trasero. La contrapresión creada por puertas del revestimiento y los obstáculos no debe superar los 5 pascales (medidor de agua de 0,5 mm). |
+| Altitud (operativo) |-30 metros too3045 metros (de-100 pies too10, 000 pies) con la temperatura de funcionamiento máxima reducida en 5 ° C por encima de los 7000 pies. |
+| Altitud (no operativo) |too12 305 metros, 192 metros (too40 – 1.000 pies, 000 pies) |
 | Golpes (operativo) |5 g 10 ms ½ seno |
 | Golpes (no operativo) |30 g 10 ms ½ seno |
 | Vibraciones (operativo) |0,21 g RMS 5-500 Hz aleatorio |
 | Vibraciones (no operativo) |1,04 g RMS 2-200 Hz aleatorio |
 | Vibraciones (reubicación) |3 g 2-200 Hz seno |
 | Orientación y montaje |Montaje en bastidor de 19 pulgadas (2 unidades EIA) |
-| Guías del bastidor |Para ajustarse a bastidores con una profundidad mínima de 700 mm (31,50 pulgadas) compatibles con CEI 297 |
+| Guías del bastidor |toofit soportes de profundidad mínima de 700 mm (31,50 pulgadas) conformes a IEC 297 |
 | Seguridad y homologaciones |CE y UL EN 61000-3, CEI 61000-3, UL 61000-3 |
 | CEM |EN 55022 (CISPR - A), FCC A |
 
 ## <a name="international-standards-compliance"></a>Cumplimiento de normas internacionales
 
-El dispositivo de Microsoft Azure StorSimple cumple los estándares internacionales siguientes:  
+El dispositivo de StorSimple de Microsoft Azure cumple con hello siguiendo estándares internacionales:  
 
 * CE - EN 60950-1
-* Informe de CB para CEI 60950-1
-* UL y cUL para UL 60950-1
+* TooIEC de informe CB 60950-1
+* UL y cUL tooUL 60950-1
 
 ## <a name="safety-compliance"></a>Cumplimiento de seguridad
 
-El dispositivo de Microsoft Azure StorSimple cumple las clasificaciones de seguridad siguientes:
+El dispositivo de StorSimple de Microsoft Azure cumple Hola siguientes calificaciones de seguridad:
 
 * Homologación del tipo de producto de sistema: UL, cUL, CE
 * Cumplimiento de seguridad: UL 60950, CEI 60950, EN 60950
 
 ## <a name="emc-compliance"></a>Cumplimiento de normas de CEM
 
-El dispositivo de Microsoft Azure StorSimple cumple las siguientes clasificaciones de CEM.
+El dispositivo de StorSimple de Microsoft Azure cumple Hola siguiendo las clasificaciones de EMC.
 
 ### <a name="emissions"></a>Emisiones
 
-El dispositivo es compatible con las exigencias de CEM para los niveles de emisiones radiadas y conducidas.
+dispositivo de Hello es compatible con EMC para los niveles de emisiones radiadas y conducidas.
 
 * Niveles límite de emisiones conducidas: CFR 47 parte 15B clase A, EN 55022 clase A, CISPR clase A
 * Niveles límite de emisiones radiadas: CFR 47 parte 15B clase A, EN 55022 clase A, CISPR clase A
 
 ### <a name="harmonics-and-flicker"></a>Armónicos y parpadeo
 
-El dispositivo cumple con la norma EN 61000-3-2/3.
+dispositivo de Hello cumple con EN61000-3-2/3.
 
 ### <a name="immunity-limit-levels"></a>Niveles límite de inmunidad
 
-El dispositivo cumple con la norma EN 55024.
+dispositivo de Hello cumple con EN55024.
 
 ## <a name="ac-power-cord-compliance"></a>Cumplimiento de cable de alimentación de CA
 
-El enchufe y el conjunto completo del cable de alimentación deben cumplir los estándares apropiados del país en el que se usa el dispositivo, y deben contar con las homologaciones de seguridad aceptables en dicho país. Las tablas siguientes enumeran los estándares de los Estados Unidos y Europa.
+enchufe de Hola y Hola completa cable de alimentación debe cumplir los estándares de hello apropiados para el país de hello en qué Hola se está utilizando el dispositivo, y deben tener las aprobaciones de seguridad que son aceptables en ese país. Hola las tablas siguientes se estándares de lista de Estados Unidos de Hola y Europa.
 
 ### <a name="ac-power-cords---usa-must-be-nrtl-listed"></a>Cables de alimentación de CA - Estados Unidos (debe estar contemplado por NRTL)
 
@@ -191,9 +191,9 @@ El enchufe y el conjunto completo del cable de alimentación deben cumplir los e
 
 ## <a name="supported-network-cables"></a>Cables de red admitidos
 
-Para las interfaces de red de 10 GbE, DATA 2 y DATA 3, consulte la [lista de cables de red y módulos compatibles](storsimple-supported-hardware-for-10-gbe-network-interfaces.md).
+Para las interfaces de red de hello 10 GbE, DATA 2 y 3 de datos, consulte toohello [lista de cables de red admitidos y los módulos](storsimple-supported-hardware-for-10-gbe-network-interfaces.md).
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Ya está listo para implementar un dispositivo StorSimple en su centro de datos. Para más información, vea [Implementar un dispositivo local](storsimple-8000-deployment-walkthrough-u2.md).
+Ya estás listo toodeploy un dispositivo StorSimple en su centro de datos. Para más información, vea [Implementar un dispositivo local](storsimple-8000-deployment-walkthrough-u2.md).
 

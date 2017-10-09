@@ -1,5 +1,5 @@
 ---
-title: Estados de usuario de Microsoft Azure Multi-Factor Authentication
+title: "aaaMicrosoft Estados de usuario de autenticación multifactor de Azure"
 description: "Obtenga información sobre los estados de usuario en Azure MFA."
 services: multi-factor-authentication
 documentationcenter: 
@@ -15,78 +15,78 @@ ms.date: 06/26/2017
 ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: it-pro
-ms.openlocfilehash: 1869b7a4ef42536a3cd909ba2983ae0fe97185a9
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: cf5b977b09d09330b7b3bc668abd79e602d62015
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-require-two-step-verification-for-a-user-or-group"></a>Exigencia de verificación en dos pasos para un usuario o grupo
+# <a name="how-toorequire-two-step-verification-for-a-user-or-group"></a>¿Cómo toorequire verificacion de un usuario o grupo
 
-Existen dos enfoques para exigir la verificación en dos pasos. La primera opción consiste en habilitar a cada usuario individual para Azure Multi-factor Authentication (MFA). Cuando los usuarios se habilitan de forma individual, siempre realizan la verificación en dos pasos (con algunas excepciones, como cuando inician sesión desde direcciones IP de confianza o si se activa la característica recordar dispositivos). La segunda opción consiste en configurar una directiva de acceso condicional que requiere la verificación en dos pasos en determinadas condiciones.
+Existen dos enfoques para exigir la verificación en dos pasos. Hola primera opción es tooenable cada usuario individual para Azure Multi-factor Authentication (MFA). Cuando los usuarios se habilitan de forma individual, siempre realizan la verificación en dos pasos (con algunas excepciones, como cuando inician sesión desde direcciones IP de confianza o si se recuerda Hola característica de dispositivos está activado). Hola segunda opción es tooset una directiva de acceso condicional que requiere la verificación en dos pasos en determinadas condiciones.
 
 >[!TIP] 
->Elija uno de estos métodos para requerir la verificación en dos pasos, no ambos. La habilitación de un usuario para Azure MFA invalida las directivas de acceso condicional.
+>Elija uno de estos métodos toorequire verificacion, no ambos. La habilitación de un usuario para Azure MFA invalida las directivas de acceso condicional.
 
 ## <a name="which-option-is-right-for-you"></a>Cuál es la opción adecuada para usted
 
-**Habilitar Azure MFA mediante el cambio de estado del usuario** es el enfoque tradicional para exigir la verificación en dos pasos. Funciona tanto en Azure MFA en la nube como en el servidor de Azure MFA. Todos los usuarios que habilite tienen la misma experiencia, que consiste en realizar la verificación en dos pasos cada vez que inicien sesión. La habilitación de un usuario invalida las directivas de acceso condicional que pudieran afectar a dicho usuario. 
+**Habilitar MFA de Azure mediante el cambio de estado de usuario** es Hola enfoque tradicional para exigir la verificación en dos pasos. Funciona para ambos MFA de Azure en la nube de Hola y el servidor de MFA de Azure. Todos los usuarios de Hola que permiten tener Hola misma experiencia, que es tooperform verificacion cada vez que inicien sesión. La habilitación de un usuario invalida las directivas de acceso condicional que pudieran afectar a dicho usuario. 
 
-**Habilitar Azure MFA con una directiva de acceso condicional** es un enfoque más flexible para exigir la verificación en dos pasos. Sin embargo, solo funciona para Azure MFA en la nube y el acceso condicional es una [característica de pago de Azure Active Directory](https://www.microsoft.com/cloud-platform/azure-active-directory-features). Puede crear directivas de acceso condicional que se aplican a grupos, así como a usuarios individuales. Los grupos de alto riesgo pueden recibir más restricciones que los grupos de bajo riesgo o bien la verificación en dos pasos puede ser necesaria solo para aplicaciones de alto riesgo en la nube y omitida para las de bajo riesgo. 
+**Habilitar Azure MFA con una directiva de acceso condicional** es un enfoque más flexible para exigir la verificación en dos pasos. Solo funciona para Azure MFA en la nube de hello, sin embargo, y el acceso condicional es un [característica de Azure Active Directory de pago](https://www.microsoft.com/cloud-platform/azure-active-directory-features). Puede crear directivas de acceso condicional que se aplican toogroups, así como los usuarios individuales. Los grupos de alto riesgo pueden recibir más restricciones que los grupos de bajo riesgo o bien la verificación en dos pasos puede ser necesaria solo para aplicaciones de alto riesgo en la nube y omitida para las de bajo riesgo. 
 
-Estas dos opciones solicitan a los usuarios registrarse en Azure Multi-Factor Authentication la primera vez que inicien sesión después de activar los requisitos. Ambas opciones también funcionan con la [configuración de Azure Multi-Factor Authentication](multi-factor-authentication-whats-next.md)
+Estas dos opciones solicitar tooregister de los usuarios para saludo de la autenticación multifactor Azure primera vez que inicien sesión después de activar los requisitos de Hola. Ambas opciones también funcionan con hello configurable [configuración de autenticación multifactor de Azure](multi-factor-authentication-whats-next.md)
 
 ## <a name="enable-azure-mfa-by-changing-user-status"></a>Habilitar Azure MFA mediante el cambio de estado del usuario
 
-Las cuentas de usuario de Azure Multi-Factor Authentication tienen los siguientes tres estados:
+Cuentas de usuario de la autenticación multifactor Azure tienen Hola después de tres estados distintos:
 
 | Estado | Descripción | Aplicaciones que no son de explorador afectadas |
 |:---:|:---:|:---:|
-| Disabled |Estado predeterminado de un nuevo usuario no inscrito en Azure Multi-Factor Authentication (MFA). |No |
-| Enabled |El usuario se ha inscrito en Azure MFA, pero no se ha registrado. Se le pedirá a dicho usuario que se registre la próxima vez que inicie sesión. |No.  Continúa funcionando hasta que se complete el proceso de registro. |
-| Aplicado |El usuario se ha inscrito y ha completado el proceso de registro de Azure MFA. |Sí.  Las aplicaciones requieren contraseñas de aplicación. |
+| Disabled |estado de Hello predeterminado para un usuario nuevo no inscrito Azure la autenticación multifactor (MFA). |No |
+| habilitado |usuario de Hola se ha inscrito en Azure MFA, pero no se ha registrado. Estarán Hola solicitadas tooregister próxima vez que inicie sesión. |No.  Se siguen toowork hasta que se complete el proceso de registro de hello. |
+| Aplicado |usuario de Hola se ha inscrito y ha completado el proceso de registro de hello para Azure MFA. |Sí.  Las aplicaciones requieren contraseñas de aplicación. |
 
-El estado de un usuario refleja si un administrador lo ha inscrito en Azure MFA, y si ha completado el proceso de registro.
+Estado de un usuario refleja si un administrador ha inscrito ellos en Azure MFA, y si ha completado el proceso de registro de hello.
 
-Todos los usuarios comienzan con el estado *Deshabilitado*. Cuando inscribe usuarios en Azure MFA, cambia a *Habilitado*. Cuando los usuarios habilitados inician sesión y completan el proceso de registro, el estado cambia a *Aplicado*.  
+Todos los usuarios comienzan con el estado *Deshabilitado*. Cuando inscribe usuarios en Azure MFA, cambia a *Habilitado*. Cuando los usuarios habilitados iniciar sesión y completar el proceso de registro de hello, su estado cambia demasiado*aplica*.  
 
-### <a name="view-the-status-for-a-user"></a>Ver el estado de un usuario
+### <a name="view-hello-status-for-a-user"></a>Ver el estado de Hola para un usuario
 
-Para acceder a la página donde puede ver y administrar los estados de usuario, siga estos pasos:
+Hola de uso después de pasos tooaccess Hola página donde puede ver y administrar los Estados de usuario:
 
-1. Inicie sesión en [Azure Portal](https://portal.azure.com) como administrador.
-2. Vaya a **Azure Active Directory** > **Usuarios y grupos** > **Todos los usuarios**.
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com) como administrador.
+2. Vaya demasiado**Azure Active Directory** > **usuarios y grupos** > **todos los usuarios**.
 3. Seleccione **Multi-Factor Authentication**.
    Seleccione ![Multi-Factor Authentication](./media/multi-factor-authentication-get-started-user-states/selectmfa.png)
-4. Se abre una nueva página que muestra los estados de usuario.
+4. Se abre una nueva página, que muestra los Estados de usuario de hello.
    ![Estado de usuario de Multi-Factor Authentication (captura de pantalla)](./media/multi-factor-authentication-get-started-user-states/userstate1.png)
 
-### <a name="change-the-status-for-a-user"></a>Cambiar el estado de un usuario
+### <a name="change-hello-status-for-a-user"></a>Cambiar estado de Hola para un usuario
 
-1. Use los pasos anteriores para acceder a la página de usuarios de Multi-Factor Authentication.
-2. Busque el usuario que desea habilitar para Azure MFA. Puede que necesite cambiar la vista en la parte superior. 
+1. Usar hello delante de la página de usuarios de la autenticación multifactor de pasos tooget toohello.
+2. Buscar usuario de Hola que quiere tooenable de MFA de Azure. Puede que necesite toochange Hola vista en la parte superior de Hola. 
    ![Búsqueda de usuario (captura de pantalla)](./media/multi-factor-authentication-get-started-cloud/enable1.png)
-3. Active la casilla situada junto a su nombre.
-4. En el lado derecho, bajo pasos rápidos, elija **Habilitar** o **Deshabilitar**.
+3. Compruebe el nombre de tootheir de hello cuadro siguiente.
+4. En hello derecha, bajo pasos rápidos, elija **habilitar** o **deshabilitar**.
    ![Habilitación del usuario seleccionado (captura de pantalla)](./media/multi-factor-authentication-get-started-cloud/user1.png)
 
    >[!TIP]
-   >*Habilitado* significa que los usuarios cambian automáticamente a *aplicado* cuando se registren en Azure MFA. No debe cambiar manualmente el estado de usuario a aplicado. 
+   >*Habilitado* a los usuarios cambian automáticamente demasiado*aplica* cuando registre para Azure MFA. No debe cambiar manualmente tooenforced de estado de usuario de Hola. 
 
-5. Confirme la selección en la ventana emergente que se abre. 
+5. Confirme la selección en la ventana emergente de Hola que se abre. 
 
-Después de habilitar los usuarios, debe notificarlos por correo electrónico. Debe indicarles que se les pedirá que se registren la próxima vez que inicien sesión. Además, si su organización utiliza aplicaciones sin explorador que no son compatibles con la autenticación moderna, deben crear contraseñas de aplicación. También puede incluir un vínculo a nuestra [Guía del usuario final de Azure MFA](./end-user/multi-factor-authentication-end-user.md), que les ayudará a empezar a trabajar.
+Después de habilitar los usuarios, debe notificarlos por correo electrónico. Indicar que se le pedirá hello tooregister próxima vez que inicie sesión. Además, si su organización utiliza aplicaciones sin explorador que no son compatibles con la autenticación moderna, deberán toocreate contraseñas de aplicación. También puede incluir un vínculo tooour [Guía del usuario final de Azure MFA](./end-user/multi-factor-authentication-end-user.md) toohelp a empezar a trabajar.
 
 ### <a name="use-powershell"></a>Uso de PowerShell
-Para cambiar el estado de un usuario mediante [PowerShell de Azure AD](/powershell/azure/overview), debe cambiar `$st.State`. Hay tres estados posibles:
+toochange Hola usuario estado estado utilizando [PowerShell de Azure AD](/powershell/azure/overview), cambiar `$st.State`. Hay tres estados posibles:
 
 * habilitado
 * Aplicado
 * Disabled  
 
-No mueva a los usuarios directamente a estado *Aplicado*. Las aplicaciones que no son de explorador dejarán de funcionar porque el usuario no ha pasado a través del proceso de registro de MFA y obtenido una [contraseña de aplicación](multi-factor-authentication-whats-next.md#app-passwords). 
+No se mueven a los usuarios directamente toohello *forzado* estado. Aplicaciones basadas en el explorador no dejará de funcionar porque el usuario hello no ha pasado a través del registro MFA y obtenido una [contraseña de aplicación](multi-factor-authentication-whats-next.md#app-passwords). 
 
-El uso de PowerShell es una buena opción cuando necesite habilitar usuarios de forma masiva. Cree un script de PowerShell que recorre en iteración una lista de usuarios y los habilita:
+Uso de PowerShell es una buena opción si necesita toobulk permitiendo a los usuarios. Cree un script de PowerShell que recorre en iteración una lista de usuarios y los habilita:
 
         $st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
         $st.RelyingParty = "*"
@@ -108,20 +108,20 @@ Aquí tiene un ejemplo:
 
 ## <a name="enable-azure-mfa-with-a-conditional-access-policy"></a>Habilitar Azure MFA con una directiva de acceso condicional
 
-El acceso condicional es una característica de pago de Azure Active Directory, con muchas opciones de configuración posibles. Estos pasos describen cómo crear una directiva. Para más información, consulte [Acceso condicional en Azure Active Directory](../active-directory/active-directory-conditional-access-azure-portal.md).
+El acceso condicional es una característica de pago de Azure Active Directory, con muchas opciones de configuración posibles. Estos pasos describe una manera de toocreate una directiva. Para más información, consulte [Acceso condicional en Azure Active Directory](../active-directory/active-directory-conditional-access-azure-portal.md).
 
-1. Inicie sesión en [Azure Portal](https://portal.azure.com) como administrador.
-2. Vaya a **Azure Active Directory** > **Acceso condicional**.
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com) como administrador.
+2. Vaya demasiado**Azure Active Directory** > **acceso condicional**.
 3. Seleccione **Nueva directiva**.
-4. En **Asignaciones**, seleccione **Usuarios y grupos**. Use las pestañas **Incluir** y **Excluir** para especificar qué usuarios y grupos se administrarán con la directiva.
-5. En **Asignaciones**, seleccione **Aplicaciones en la nube**. Elija incluir **Todas las aplicaciones en la nube**.
+4. En **Asignaciones**, seleccione **Usuarios y grupos**. Hola de uso **Include** y **excluir** pestañas toospecify qué usuarios y grupos serán administrada por directiva Hola.
+5. En **Asignaciones**, seleccione **Aplicaciones en la nube**. Elija tooinclude **todas las aplicaciones de la nube**.
 6. En **Controles de acceso**, seleccione **Conceder**. Seleccione **Requerir autenticación multifactor**.
-7. Cambie **Habilitar directiva** a **Activar** y, a continuación, seleccione **Guardar**.
+7. Activar **habilitar Directiva de** demasiado**en** y, a continuación, seleccione **guardar**.
 
-Las demás opciones de la directiva de acceso condicional permiten especificar exactamente cuándo debe exigirse la verificación en dos pasos. Por ejemplo, podría crear una directiva que indique: cuando los contratistas intenten acceder a nuestra aplicación de compras desde redes en las que no se confía en dispositivos que no están unidos a un dominio, requerir la verificación en dos pasos. 
+Hello otras opciones de directiva de acceso condicional de hello permiten toospecify exactamente cuándo debe exigirse la verificación en dos pasos. Por ejemplo, podría realizar una directiva que indica: cuando contratistas intentan tooaccess nuestra aplicación de compras desde las redes que no se confía en los dispositivos que no están unidos a un dominio, requieren verificación en dos pasos. 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-- Obtener sugerencias sobre las [Prácticas recomendadas para el acceso condicional](../active-directory/active-directory-conditional-access-best-practices.md)
+- Obtenga sugerencias sobre hello [las prácticas recomendadas para el acceso condicional](../active-directory/active-directory-conditional-access-best-practices.md)
 
 - Administrar la configuración de Multi-Factor Authentication de [los usuarios y sus dispositivos](multi-factor-authentication-manage-users-and-devices.md)

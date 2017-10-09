@@ -1,6 +1,6 @@
 ---
-title: Respuesta a los incidentes de seguridad con Azure Security Center | Microsoft Docs
-description: "En este documento se explica cómo usar Azure Security Center en un escenario de respuesta a incidentes."
+title: aaaRespond toosecurity incidentes con el centro de seguridad de Azure | Documentos de Microsoft
+description: "Este documento explica cómo toouse Azure Security Center para un escenario de respuesta a incidentes."
 services: security-center
 documentationcenter: na
 author: YuriDio
@@ -14,89 +14,89 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/30/2017
 ms.author: yurid
-ms.openlocfilehash: 6cd6c822eb255893feac2536d7bae034380094b2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: aaf50c0c7e774d03d517c3fd11686dbae48dd29b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="using-azure-security-center-for-an-incident-response"></a>Uso de Azure Security Center para dar respuesta a incidentes
-Muchas organizaciones aprenden a responder a incidentes de seguridad solo después de sufrir un ataque. Para reducir los costos y los daños, es importante tener un plan de respuesta a incidentes implantado antes de que se produzca un ataque. Azure Security Center puede usarse en distintas fases de una respuesta a incidentes.
+Obtenga información acerca de muchas organizaciones cómo toorespond toosecurity incidentes únicamente después de sufrir un ataque. tooreduce costos y los daños, es importante toohave una respuesta a incidentes previsto en su lugar antes de que realiza un ataque. Azure Security Center puede usarse en distintas fases de una respuesta a incidentes.
 
 ## <a name="incident-response-planning"></a>Planeamiento de respuesta a incidentes
-Un plan eficaz depende de tres funcionalidades básicas: proteger, detectar y responder a las amenazas. La protección consiste en prevenir incidentes, la detección consiste en identificar las amenazas pronto y la respuesta consiste en expulsar el atacante y restaurar los sistemas para mitigar los efectos de una infracción.
+Un plan eficaz depende de tres funciones principales: ser capaz de tooprotect, detectar y responder toothreats. Protección es acerca de cómo evitar incidentes, detección se acerca de cómo identificar amenazas al principio y respuesta implica expulsar atacante hello e impactos de hello toomitigate de sistemas de una infracción de la restauración.
 
-Este artículo usará las fases de la respuesta a incidentes de seguridad del artículo [Microsoft Azure Security Response in the Cloud](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678) (Respuesta de seguridad de Microsoft Azure en la nube), tal como se muestra en el diagrama siguiente:
+Este artículo utiliza fases de respuesta a incidentes de seguridad de Hola de hello [respuestas de seguridad de Microsoft Azure en hello en la nube](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678) artículo, como se muestra en hello siguiente diagrama:
 
 ![Ciclo de vida de respuesta a incidentes](./media/security-center-incident-response/security-center-incident-response-fig1.png)
 
-Puede usar Security Center durante las fases de detección, evaluación y diagnóstico. A continuación se proporcionan ejemplos de cómo Security Center puede ser útil durante las tres fases iniciales de respuesta a incidentes:
+Puede usar el centro de seguridad durante las fases de detectar, evaluar y diagnosticar de Hola. Estos son ejemplos de cómo el centro de seguridad pueden ser útil durante tres fases de respuesta a incidentes inicial hello:
 
-* **Detectar**: revisión de la primera indicación de una investigación de eventos.
-  * Por ejemplo, revisar la comprobación inicial de que se ha generado una alerta de seguridad de alta prioridad en el panel de Security Center.
-* **Evaluar**: realice la evaluación inicial para más información acerca de la actividad sospechosa.
-  * Por ejemplo, obtener más información acerca de la alerta de seguridad.
+* **Detectar**: Revise el primer indicio de Hola de una investigación de eventos.
+  * Ejemplo: revisión Hola inicial comprobación que se generó una alerta de seguridad de alta prioridad en el panel del centro de seguridad de Hola.
+* **Evaluar**: realizar Hola evaluación inicial tooobtain obtener más información sobre la actividad sospechosa Hola.
+  * Ejemplo: obtener más información acerca de la alerta de seguridad de Hola.
 * **Diagnosticar**: realizar una investigación técnica e identificar las estrategias de contención, mitigación y solución.
-  * Ejemplo: siga los pasos de corrección descritos por Security Center para esa alerta de seguridad.
+  * Ejemplo: siga los pasos de corrección de hello descritos por el centro de seguridad en esa alerta de seguridad determinada.
 
-El siguiente escenario muestra cómo aprovechar Security Center durante las fases de detección, evaluación y diagnóstico/respuesta ante un incidente de seguridad. En Security Center, un [incidente de seguridad](security-center-incident.md) es la suma de todas las alertas de un recurso que se alinean con patrones de [cadenas de eliminación](https://blogs.technet.microsoft.com/office365security/addressing-your-cxos-top-five-cloud-security-concerns/). Los incidentes aparecen en el icono y en la hoja [Alertas de seguridad](security-center-managing-and-responding-alerts.md). El incidente muestra la lista de alertas relacionadas, lo que permite obtener más información sobre cada repetición. Security Center también presenta alertas de seguridad independientes que pueden utilizarse para realizar un seguimiento de una actividad sospechosa.
+escenario de Hola que se indica a continuación se muestra cómo tooleverage centro de seguridad durante Hola detectar, evaluar y diagnosticar/responden fases de un incidente de seguridad. En Security Center, un [incidente de seguridad](security-center-incident.md) es la suma de todas las alertas de un recurso que se alinean con patrones de [cadenas de eliminación](https://blogs.technet.microsoft.com/office365security/addressing-your-cxos-top-five-cloud-security-concerns/). Incidentes aparecen en hello [alertas de seguridad](security-center-managing-and-responding-alerts.md) mosaico y hoja. Un incidente revela lista Hola de alertas relacionadas, lo que permite tooobtain obtener más información sobre cada repetición. Centro de seguridad también presenta independiente alertas de seguridad que también pueden ser utilizado tootrack hacia abajo una actividad sospechosa.
 
 ## <a name="scenario"></a>Escenario
-Contoso migró recientemente algunos de sus recursos locales a Azure, incluidas algunas cargas de trabajo empresariales basadas en máquinas virtuales y bases de datos SQL. Actualmente el equipo de respuesta a incidentes de seguridad informática central de Contoso (CSIRT) tiene un problema para investigar asuntos de seguridad, debido a la falta de inteligencia de seguridad integrada en sus herramientas actuales de respuesta a incidentes. Esta falta de integración presenta un problema durante las fases de detección (demasiados falsos positivos), evaluación y diagnóstico. Como parte de esta migración, decidió participar en Security Center para ayudar a solucionar el problema.
+Contoso había migrado recientemente algunos de su tooAzure de recursos locales, incluidas algunas cargas de trabajo de línea de negocio basadas en máquinas virtuales y bases de datos SQL. Actualmente el equipo de respuesta a incidentes de seguridad informática central de Contoso (CSIRT) tiene un problema para investigar asuntos de seguridad, debido a la falta de inteligencia de seguridad integrada en sus herramientas actuales de respuesta a incidentes. Esta falta de integración presenta un problema durante el saludo detectar fase (demasiados falsos positivos), así como durante la evaluación de Hola y fases de diagnosticar. Como parte de esta migración, decidió tooopt en para el centro de seguridad toohelp a resolver este problema.
 
-La primera fase de migración terminó después de incorporar todos los recursos y abordar todas las recomendaciones de seguridad de Security Center. El equipo CSIRT de Contoso es crucial para tratar los incidentes de seguridad informática. El equipo está formado por un grupo de personas encargadas de manejar los incidentes de seguridad. Los miembros del equipo tienen tareas claramente definidas para asegurarse de que no quede sin cubrir ninguna área de respuesta.
+Hola primera fase de esta migración terminada después de que esté incorporado todos los recursos a cabo todas las recomendaciones de seguridad de hello del centro de seguridad. Contoso CSIRT es Hola focal para tratar los incidentes de seguridad del equipo. equipo de Hello consta de un grupo de personas encargadas de tratar con los incidentes de seguridad. los miembros del equipo de Hello tener claramente definidos tooensure de tareas que no se deja área de respuesta detectado.
 
-En este escenario, nos vamos a centrar en los roles de las siguientes personas que forman parte del equipo CSIRT de Contoso:
+A fin de Hola de este escenario, vamos toofocus en roles de Hola de hello siguiendo los roles que forman parte de Contoso CSIRT:
 
 ![Ciclo de vida de respuesta a incidentes](./media/security-center-incident-response/security-center-incident-response-fig2.png)
 
 Judy se encarga de las operaciones de seguridad. Entre sus responsabilidades están:
 
-* Supervisar y responder a amenazas de seguridad durante las 24 horas.
-* Remitirlas al propietario de la carga de trabajo en la nube o al analista de seguridad, según sea necesario.
+* Supervisar y responder toosecurity amenazas alrededor de reloj de Hola.
+* Concentrar propietario de carga de trabajo de toohello en la nube o el analista de seguridad según sea necesario.
 
 Sam es un analista de seguridad y sus responsabilidades incluyen:
 
 * Investigar los ataques.
 * Solucionar las alertas.
-* Trabajar con los propietarios de la carga de trabajo para determinar y aplicar mitigaciones.
+* Trabajar con toodetermine de propietarios de cargas de trabajo y las mitigaciones se aplican.
 
-Como puede ver, Judy y Sam tienen responsabilidades diferentes, y deben trabajar juntos para compartir la información de Security Center.
+Como puede ver, Cristina y Sam también tienen responsabilidades diferentes, y deben trabajar conjuntamente tooshare información de centro de seguridad.
 
 ## <a name="recommended-solution"></a>Solución recomendada
-Puesto que Judy y Sam tienen diferentes roles, usarán diferentes áreas de Security Center para obtener la información pertinente para sus actividades diarias. Judy usará las **alertas de seguridad** como parte de su supervisión diaria.
+Puesto que Cristina y Sam tienen distintos roles, usará áreas diferentes de información relevante de centro de seguridad tooobtain para sus actividades diarias. Judy usará las **alertas de seguridad** como parte de su supervisión diaria.
 
 ![Alertas de seguridad](./media/security-center-incident-response/security-center-incident-response-fig3.png)
 
-Judy usará las alertas de seguridad durante las fases de evaluación y detección. Una vez que Judy finalice la evaluación inicial, puede remitir el problema a Sam si requiere una investigación adicional. En este punto, Sam usará la información proporcionada por Security Center, a veces junto con otros orígenes de datos, para pasar a la fase de diagnóstico.
+Cristina utiliza alertas de seguridad durante su Hola detectar y las fases de evaluación. Al finalizar Cristina evaluación inicial de hello, puede escalar Hola problema tooSam si se requiere una investigación adicional. En este momento, Sam usará información de hello proporcionado por el centro de seguridad, en ocasiones, junto con otros orígenes de datos, toomove toohello diagnosticar fase.
 
-## <a name="how-to-implement-this-solution"></a>Implemento de esta solución
-Para ver cómo se utilizaría Azure Security Center en un escenario de respuesta a incidentes, seguiremos los pasos de Judy en las fases de detección y evaluación y, a continuación, veremos lo que hace Sam para diagnosticar el problema.
+## <a name="how-tooimplement-this-solution"></a>¿Cómo tooimplement esta solución
+toosee Cómo usaría el centro de seguridad de Azure en un escenario de respuesta a incidentes, se le siga los pasos de Cristina en fases de detectar y evaluación de hello y, a continuación, consulte ¿Qué Sam problema de hello toodiagnose.
 
 ### <a name="detect-and-assess-incident-response-stages"></a>Etapas de detección y evaluación de respuesta a incidentes
-Judy ha iniciado sesión en Azure Portal y está trabajando en la consola de Security Center. Como parte de sus actividades de supervisión diarias comienza a revisar las alertas de seguridad con alta prioridad mediante los pasos siguientes:
+Cristina firmado en toohello portal de Azure y se trabaja en la consola de centro de seguridad de Hola. Como parte de su actividades de supervisión de diario, iniciado revisión de seguridad de alta prioridad Hola de alertas mediante la realización de pasos:
 
-1. Hace clic en el icono **Alertas de seguridad** y accede a la hoja **Alertas de seguridad**.
+1. Haga clic en hello **alertas de seguridad** Hola mosaico y acceso **alertas de seguridad** hoja.
     ![Hoja Alertas de seguridad](./media/security-center-incident-response/security-center-incident-response-fig4.png)
 
    > [!NOTE]
-   > En este escenario, Judy va a realizar una evaluación de la alerta de actividad SQL malintencionada, como se muestra en la ilustración anterior.
+   > A fin de Hola de este escenario, Cristina es continuo tooperform una valoración de alerta de actividad de hello SQL malintencionado, tal como se muestra en hello anterior figura.
    >
    >
-2. Haga clic en el **actividad SQL malintencionado** de alerta y revise los recursos atacados en el **actividad SQL malintencionado** hoja: ![detalles de incidentes](./media/security-center-incident-response/security-center-incident-response-fig5.png)
+2. Haga clic en hello **actividad SQL malintencionado** de alerta y revise los recursos de un ataque de Hola Hola **actividad SQL malintencionado** hoja: ![detalles de incidentes](./media/security-center-incident-response/security-center-incident-response-fig5.png)
 
-    En esta hoja, Judy puede tomar notas relativas a los recursos atacados, cuántas veces ocurrió este ataque y cuándo se detectó.
-3. Hace clic en el **recurso atacado** para más información acerca de este ataque.
+    En esta hoja, Cristina puede tomar notas con respecto a los recursos de un ataque de hello, cómo muchas veces este ataque se produjo y, cuando se ha detectado.
+3. Haga clic en hello **atacadas recursos** tooobtain obtener más información acerca de este ataque.
 
-Después de leer la descripción, Judy está convencida de que no es un falso positivo y que debe remitir este caso a Sam.
+Después de leer la descripción de hello, Cristina está convencida de que esto no es un falso positivo que ella debe y remitirlo a este tooSam mayúscula.
 
 ### <a name="diagnose-incident-response-stage"></a>Fases de diagnóstico de la respuesta a incidentes
-Sam recibe el caso de Judy y empieza a revisar los pasos de corrección sugeridos por Security Center.
+SAM recibe el caso de hello de Cristina y revisar los pasos de corrección de Hola que sugiere el centro de seguridad inicia.
 
 ![Ciclo de vida de respuesta a incidentes](./media/security-center-incident-response/security-center-incident-response-fig6.png)
 
 ### <a name="additional-resources"></a>Recursos adicionales
-El equipo de respuesta a incidentes también puede aprovechar la funcionalidad [Power BI de Security Center](security-center-powerbi.md) para ver distintos tipos de informes. Estos informes pueden ayudarle durante la investigación posterior para visualizar, analizar y filtrar recomendaciones y alertas de seguridad. Las empresas que usan su solución de información de seguridad y administración de eventos (SIEM) durante el proceso de investigación, también pueden [integrar Security Center en su solución](security-center-integrating-alerts-with-log-integration.md). También se pueden integrar los registros de auditoría de Azure y los eventos de seguridad de máquina virtual (VM) mediante la [herramienta de integración de registros de Azure](https://blogs.msdn.microsoft.com/azuresecurity/2016/07/21/microsoft-azure-log-integration-preview/). Para investigar un ataque, puede usar esta información junto con la información que proporciona Security Center.
+equipo de respuesta a incidentes de Hello también puede sacar partido de hello [seguridad Centro de Power BI](security-center-powerbi.md) toosee distintos tipos de funcionalidad de informes. Estos informes pueden ayudarles a durante más toovisualize de investigación, analizar y filtrar las alertas de seguridad y recomendaciones. Para las empresas que usan su información de seguridad y la solución de administración (SIEM) de eventos durante el proceso de investigación de hello, también pueden [integrar centro de seguridad con la solución](security-center-integrating-alerts-with-log-integration.md). También se puede integrar los registros de auditoría de Azure y eventos de seguridad de máquina virtual (VM) mediante el uso de hello [herramienta de integración de Azure registros](https://blogs.msdn.microsoft.com/azuresecurity/2016/07/21/microsoft-azure-log-integration-preview/). tooinvestigate un ataque, puede usar esta información junto con información de Hola que proporciona el centro de seguridad.
 
 ## <a name="conclusion"></a>Conclusión
-Es muy importante que su organización forme un equipo antes de que se produzca un incidente, ya que influirá positivamente en cómo se manejan los incidentes. Tener las herramientas adecuadas para supervisar los recursos puede ayudar a este equipo a adoptar los pasos exactos para solucionar un incidente de seguridad. Las [funcionalidades de detección](security-center-detection-capabilities.md) de Security Center pueden ayudar a TI a responder a los incidentes de seguridad y corregir los problemas de seguridad rápidamente.
+Reunir un equipo antes de que se produzca un incidente es muy importante tooyour organización e influirá positivamente cómo se administran los incidentes. Hola herramientas adecuadas toomonitor recursos pueden ayudar a este tooremediate de pasos precisos de tootake un incidente de seguridad de equipo. Centro de seguridad [las capacidades de detección](security-center-detection-capabilities.md) puede ayudar a incidentes de TI tooquickly responden toosecurity y corregir los problemas de seguridad.

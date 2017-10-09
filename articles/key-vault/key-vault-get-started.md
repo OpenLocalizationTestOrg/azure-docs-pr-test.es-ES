@@ -1,6 +1,6 @@
 ---
-title: "Introducción a Azure Key Vault | Microsoft Docs"
-description: "Use este tutorial para empezar a trabajar con el Almacén de claves de Azure para crear un contenedor reforzado en Azure en el que almacenar y administrar las claves criptográficas y los secretos en Azure."
+title: "aaaGet a trabajar con el almacén de claves de Azure | Documentos de Microsoft"
+description: "Use este tutorial toohelp obtendrá a trabajar con el almacén de claves de Azure toocreate un contenedor reforzado en Azure, toostore y administrar las claves criptográficas y secretos en Azure."
 services: key-vault
 documentationcenter: 
 author: cabailey
@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 07/19/2017
 ms.author: cabailey
-ms.openlocfilehash: 0299d931c5bf21775b68069afaa106279270226a
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 865853b778dec5fca5c7db0d060627554c0a9cb3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-azure-key-vault"></a>Introducción al Almacén de claves de Azure
-Almacén de claves de Azure está disponible en la mayoría de las regiones. Para obtener más información, consulte la [página de precios del Almacén de claves](https://azure.microsoft.com/pricing/details/key-vault/).
+Almacén de claves de Azure está disponible en la mayoría de las regiones. Para obtener más información, vea hello [almacén de claves de página de precios](https://azure.microsoft.com/pricing/details/key-vault/).
 
 ## <a name="introduction"></a>Introducción
-Use este tutorial para empezar a trabajar con el Almacén de claves de Azure para crear un contenedor (un almacén) reforzado en Azure en el que almacenar y administrar las claves criptográficas y los secretos en Azure. Describe cómo usar Azure PowerShell para crear un almacén que contiene una clave o una contraseña que se puede usar con una aplicación de Azure. A continuación, se explica cómo usa una aplicación esa clave o contraseña.
+Use este tutorial toohelp obtendrá a trabajar con el almacén de claves de Azure toocreate un contenedor reforzado (un almacén) en Azure, toostore y administrar las claves criptográficas y secretos en Azure. Le guiará por proceso de Hola de uso de PowerShell de Azure toocreate un almacén que contiene una clave o contraseña que puede utilizar con una aplicación de Azure. A continuación, se explica cómo usa una aplicación esa clave o contraseña.
 
-**Tiempo estimado para completar el tutorial:** 20 minutos
+**Estimado toocomplete de tiempo:** 20 minutos
 
 > [!NOTE]
-> Este tutorial no incluye instrucciones sobre cómo escribir la aplicación de Azure incluida en uno de los pasos, concretamente cómo autorizar a una aplicación para que use una clave o un secreto de Key Vault.
+> Este tutorial no incluye instrucciones de cómo toowrite Hola aplicación de Azure que incluye uno de los pasos de hello, a saber cómo tooauthorize una toouse una clave de aplicación o un secreto en clave Hola almacén.
 >
 > En este tutorial se usa Azure PowerShell. Para obtener instrucciones acerca de la interfaz de la línea de comandos para todas las plataformas, consulte [este tutorial equivalente](key-vault-manage-with-cli2.md).
 >
@@ -38,45 +38,45 @@ Use este tutorial para empezar a trabajar con el Almacén de claves de Azure par
 Para obtener información general sobre el Almacén de claves de Azure, consulte [¿Qué es el Almacén de clave de Azure?](key-vault-whatis.md)
 
 ## <a name="prerequisites"></a>Requisitos previos
-Para realizar este tutorial, necesitará lo siguiente:
+toocomplete este tutorial, debe tener Hola siguientes:
 
-* Una suscripción a Microsoft Azure. Si no tiene, puede registrarse para obtener una [cuenta gratis](https://azure.microsoft.com/pricing/free-trial/).
-* Azure PowerShell, **versión mínima: 1.1.0**. Para instalar Azure PowerShell y asociarlo con una suscripción de Azure, consulte [Instalación y configuración de Azure PowerShell](/powershell/azure/overview). Si ya instaló Azure PowerShell y no sabe la versión, en la consola de Azure PowerShell, escriba `(Get-Module azure -ListAvailable).Version`. Si tiene Azure PowerShell versiones 0.9.1 a 0.9.8 instalado, también puede usar este tutorial con algunos cambios menores. Por ejemplo, debe usar el comando `Switch-AzureMode AzureResourceManager` y algunos de los comandos de Almacén de claves de Azure que cambiaron. Para ver una lista de los cmdlets de Key Vault para las versiones 0.9.1 a 0.9.8, consulte [Azure Key Vault Cmdlets](/powershell/module/azurerm.keyvault/#key_vault) (Cmdlets de Azure Key Vault).
-* Una aplicación que se configurará para utilizar la clave o contraseña creada en este tutorial. Hay una aplicación de ejemplo disponible en el [Centro de descarga de Microsoft](http://www.microsoft.com/en-us/download/details.aspx?id=45343). Para obtener instrucciones, consulte el archivo Léame adjunto.
+* Un tooMicrosoft de suscripción de Azure. Si no tiene, puede registrarse para obtener una [cuenta gratuita](https://azure.microsoft.com/pricing/free-trial/).
+* Azure PowerShell, **versión mínima: 1.1.0**. tooinstall PowerShell de Azure y asociarlo con su suscripción de Azure, consulte [cómo tooinstall y configurar Azure PowerShell](/powershell/azure/overview). Si ya ha instalado Azure PowerShell y no conoce la versión de hello, desde la consola de PowerShell de Azure de hello, escriba `(Get-Module azure -ListAvailable).Version`. Si tiene Azure PowerShell versiones 0.9.1 a 0.9.8 instalado, también puede usar este tutorial con algunos cambios menores. Por ejemplo, debe usar hello `Switch-AzureMode AzureResourceManager` comando y algunos comandos de almacén de claves de Azure Hola han cambiado. Para obtener una lista de cmdlets de almacén de claves para las versiones 0.9.1 a través de 0.9.8 hello, consulte [Cmdlets del almacén de claves de Azure](/powershell/module/azurerm.keyvault/#key_vault).
+* Una aplicación para que esté configurado toouse clave de Hola o la contraseña que creará en este tutorial. Una aplicación de ejemplo está disponible en hello [Microsoft Download Center](http://www.microsoft.com/en-us/download/details.aspx?id=45343). Para obtener instrucciones, consulte Hola que acompaña a archivo Léame.
 
-Este tutorial está diseñado para usuarios principiantes de Azure PowerShell, pero se presupone que conocen conceptos básicos tales como módulos, cmdlets y sesiones. Para obtener más información, consulte [Introducción a Windows PowerShell](https://technet.microsoft.com/library/hh857337.aspx).
+Este tutorial está diseñado para principiantes de PowerShell de Azure, pero da por supuesto que comprende los conceptos básicos de hello, como módulos, cmdlets y las sesiones. Para obtener más información, consulte [Introducción a Windows PowerShell](https://technet.microsoft.com/library/hh857337.aspx).
 
-Para obtener ayuda detallada con cualquier cmdlet que aparezca en este tutorial, use el cmdlet **Get-Help** .
+tooget ayuda detallada de cualquier cmdlet que se ve en este tutorial, use hello **Get-Help** cmdlet.
 
     Get-Help <cmdlet-name> -Detailed
 
-Por ejemplo, para obtener ayuda para el cmdlet **Add-AzureRmAccount** , escriba:
+Por ejemplo, tooget ayuda para hello **AzureRmAccount de inicio de sesión** cmdlet, escriba:
 
     Get-Help Login-AzureRmAccount -Detailed
 
-Lea también los siguientes tutoriales para familiarizarse con el Administrador de recursos de Azure en Azure PowerShell:
+También puede leer Hola después tutoriales tooget familiarizado con Azure Resource Manager de Azure PowerShell:
 
-* [Instalación y configuración de Azure PowerShell](/powershell/azure/overview)
+* [¿Cómo tooinstall y configurar Azure PowerShell](/powershell/azure/overview)
 * [Uso de Azure PowerShell con el Administrador de recursos](../powershell-azure-resource-manager.md)
 
-## <a id="connect"></a>Conexión a las suscripciones
-Inicie una sesión de PowerShell de Azure e inicie sesión en su cuenta de Azure con el siguiente comando:  
+## <a id="connect"></a>Conectar tooyour suscripciones
+Inicie una sesión de PowerShell de Azure e inicie sesión en tooyour cuenta de Azure con hello siguiente comando:  
 
     Login-AzureRmAccount
 
-Tenga en cuenta que si usa una instancia específica de Azure, por ejemplo, Azure Government, use el parámetro -Environment con este comando. Por ejemplo: `Login-AzureRmAccount –Environment (Get-AzureRmEnvironment –Name AzureUSGovernment)`
+Tenga en cuenta que si usa una instancia específica de Azure, por ejemplo, el gobierno de Azure, use Hola - parámetro de entorno con este comando. Por ejemplo: `Login-AzureRmAccount –Environment (Get-AzureRmEnvironment –Name AzureUSGovernment)`
 
-En la ventana emergente del explorador, escriba el nombre de usuario y la contraseña de su cuenta de Azure. Azure PowerShell obtiene todas las suscripciones asociadas a esta cuenta y, de forma predeterminada, usa la primera.
+En la ventana emergente del explorador de hello, escriba el nombre de usuario de cuenta de Azure y la contraseña. PowerShell de Azure Obtiene todas las suscripciones de Hola que están asociadas a esta cuenta y de forma predeterminada, usa Hola primero.
 
-Si hay varias suscripciones y desea especificar que una en concreto se use para Azure Key Vault, escriba lo siguiente para ver las suscripciones de la cuenta:
+Si tiene varias suscripciones y desea toospecify un uno toouse específico para el almacén de claves de Azure, escriba Hola siguiendo las suscripciones de hello toosee para su cuenta:
 
     Get-AzureRmSubscription
 
-A continuación, para especificar la suscripción que se va a usar, escriba:
+A continuación, toospecify Hola suscripción toouse, tipo:
 
     Set-AzureRmContext -SubscriptionId <subscription ID>
 
-Para obtener más información sobre cómo configurar PowerShell de Azure, consulte [Instalación y configuración de PowerShell de Azure](/powershell/azure/overview).
+Para obtener más información acerca de cómo configurar Azure PowerShell, consulte [cómo tooinstall y configurar Azure PowerShell](/powershell/azure/overview).
 
 ## <a id="resource"></a>Creación de un nuevo grupo de recursos
 Cuando se utiliza el Administrador de recursos de Azure, todos los recursos relacionados se crean dentro de un grupo de recursos. Crearemos un nuevo grupo de recursos denominado **ContosoResourceGroup** para este tutorial:
@@ -85,133 +85,133 @@ Cuando se utiliza el Administrador de recursos de Azure, todos los recursos rela
 
 
 ## <a id="vault"></a>Creación de un Almacén de claves
-Use el cmdlet [New-AzureRmKeyVault](/powershell/module/azurerm.keyvault/new-azurermkeyvault) para crear una instancia de Key Vault. Este cmdlet tiene tres parámetros obligatorios: el **nombre del grupo de recursos**, el **nombre del Almacén de claves** y la **ubicación geográfica**.
+Hola de uso [AzureRmKeyVault New](/powershell/module/azurerm.keyvault/new-azurermkeyvault) cmdlet toocreate un almacén de claves. Este cmdlet tiene tres parámetros obligatorios: un **nombre del grupo de recursos**, **nombre de almacén de claves**, hello y **ubicación geográfica**.
 
-Por ejemplo, si utiliza el nombre de almacén **ContosoKeyVault**, el nombre de grupo de recursos **ContosoResourceGroup** y la ubicación **Asia Oriental**, escriba:
+Por ejemplo, si utiliza el nombre de almacén de Hola de **ContosoKeyVault**, nombre de grupo de recursos de Hola de **ContosoResourceGroup**y la ubicación de Hola de **Asia oriental**, tipo:
 
     New-AzureRmKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia'
 
-El resultado de este cmdlet muestra las propiedades del Almacén de claves que acaba de crear. Las dos propiedades más importantes son:
+salida de Hello de este cmdlet muestra propiedades del almacén de claves de Hola que acaba de crear. propiedades de Hello dos más importantes son:
 
-* **Nombre de almacén**: en este ejemplo es **ContosoKeyVault**. Utilizará este nombre para otros cmdlets del Almacén de claves.
-* **Identificador URI de almacén**: en este ejemplo es https://contosokeyvault.vault.azure.net/. Las aplicaciones que utilizan el almacén a través de su API de REST deben usar este identificador URI.
+* **El nombre del almacén**: en el ejemplo de Hola, esto es **ContosoKeyVault**. Utilizará este nombre para otros cmdlets del Almacén de claves.
+* **URI de almacén**: en el ejemplo de Hola, es https://contosokeyvault.vault.azure.net/. Las aplicaciones que utilizan el almacén a través de su API de REST deben usar este identificador URI.
 
-Su cuenta de Azure ahora está autorizada para realizar operaciones en este Almacén de claves. Hasta el momento, nadie más lo está.
+Su cuenta de Azure es ahora tooperform autorizado cualquier operación en esta clave de seguridad del almacén. Hasta el momento, nadie más lo está.
 
 > [!NOTE]
-> Si ve el error **La suscripción no está registrada para usar el espacio de nombres 'Microsoft.KeyVault'** al intentar crear una instancia nueva de Key Vault, ejecute `Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.KeyVault"` y después vuelva a ejecutar el comando New-AzureRmKeyVault. Para más información, consulte [Register-AzureRmResourceProvider](/powershell/module/azurerm.resources/register-azurermresourceprovider).
+> Si ve el error de hello **Hola suscripción no está registrado toouse de espacio de nombres 'Microsoft.KeyVault'** cuando intente toocreate el almacén de claves nuevo, ejecute `Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.KeyVault"` y, a continuación, vuelva a ejecutar el comando New-AzureRmKeyVault. Para más información, consulte [Register-AzureRmResourceProvider](/powershell/module/azurerm.resources/register-azurermresourceprovider).
 >
 >
 
-## <a id="add"></a>Adición de una clave o un secreto al Almacén de claves
-Si desea que Azure Key Vault cree automáticamente una clave protegida mediante software, utilice el cmdlet [Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-azurekeyvaultkey) y escriba lo siguiente:
+## <a id="add"></a>Agregar una clave o un almacén de claves secretas toohello
+Si desea que el almacén de claves de Azure toocreate una clave protegida por software automáticamente, use hello [Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-azurekeyvaultkey) cmdlet y escriba Hola siguiente:
 
     $key = Add-AzureKeyVaultKey -VaultName 'ContosoKeyVault' -Name 'ContosoFirstKey' -Destination 'Software'
 
-Sin embargo, si ya tiene una clave protegida mediante software en un archivo .PFX guardada en la unidad C:\ en un archivo denominado softkey.pfx que desea cargar en Azure Key Vault, escriba lo siguiente para establecer la variable **securepfxpwd** para una contraseña de **123** para el archivo .PFX:
+Sin embargo, si tiene una clave protegida por software existente en una. Unidad tooyour de guardar el archivo PFX C:\ en un archivo denominado softkey.pfx que desea tooupload tooAzure el almacén de claves, Hola tipo después de variable de hello tooset **securepfxpwd** para una contraseña de **123** para saludo. Archivo PFX:
 
     $securepfxpwd = ConvertTo-SecureString –String '123' –AsPlainText –Force
 
-A continuación, escriba lo siguiente para importar la clave desde el archivo .PFX, que protege la clave mediante software en el servicio de almacén de claves:
+A continuación, escriba Hola siguientes clave de hello tooimport de Hola. Archivo PFX, que protege la clave de hello mediante software en hello servicio Almacén de claves:
 
     $key = Add-AzureKeyVaultKey -VaultName 'ContosoKeyVault' -Name 'ContosoFirstKey' -KeyFilePath 'c:\softkey.pfx' -KeyFilePassword $securepfxpwd
 
 
-Ahora puede utilizar el URI para hacer referencia a esta clave que creó o cargó en el Almacén de claves de Azure. Utilice **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** para obtener siempre la versión actual y **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87** para obtener esta versión concreta.  
+Ahora puede hacer referencia a esta clave que se creó o cargó tooAzure el almacén de claves, utilizando su URI. Usar **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** tooalways obtener la versión actual de Hola y usar **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/ cgacf4f763ar42ffb0a1gca546aygd87** tooget esta versión específica.  
 
-Para mostrar el URI para esta clave, escriba:
+toodisplay hello URI para esta clave, tipo:
 
     $Key.key.kid
 
-Para agregar un secreto, que es una contraseña denominada SQLPassword con el valor Pa$$w0rd, al Almacén de claves de Azure, convierta primero el valor Pa$$w0rd en una cadena segura escribiendo lo siguiente:
+tooadd un almacén toohello secreta, que es una contraseña denominada SQLPassword y tiene el valor Hola de Pa$ $w0rd tooAzure el almacén de claves, convierta primero el valor de Hola de cadena segura de Pa$ $w0rd tooa escribiendo Hola siguiente:
 
     $secretvalue = ConvertTo-SecureString 'Pa$$w0rd' -AsPlainText -Force
 
-A continuación, escriba lo siguiente:
+A continuación, escriba lo siguiente hello:
 
     $secret = Set-AzureKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'SQLPassword' -SecretValue $secretvalue
 
-Ahora puede hacer referencia a esta clave que agregó al Almacén de claves de Azure utilizando su URI. Utilice **https://ContosoVault.vault.azure.net/secrets/SQLPassword** para obtener siempre la versión actual y **https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d** para obtener esta versión concreta.
+Ahora puede hacer referencia a esta contraseña que agregó tooAzure el almacén de claves, mediante el uso de su URI. Usar **https://ContosoVault.vault.azure.net/secrets/SQLPassword** tooalways obtener la versión actual de Hola y usar **https://ContosoVault.vault.azure.net/secrets/SQLPassword/ 90018dbb96a84117a0d2847ef8e7189d** tooget esta versión específica.
 
-Para mostrar el URI para este secreto, escriba:
+toodisplay hello URI para este secreto, tipo:
 
     $secret.Id
 
-Veamos la clave o el secreto que acaba de crear:
+Vamos a ver clave de Hola o el secreto que acaba de crear:
 
-* Para ver la clave, escriba: `Get-AzureKeyVaultKey –VaultName 'ContosoKeyVault'`
-* Para ver el secreto, escriba: `Get-AzureKeyVaultSecret –VaultName 'ContosoKeyVault'`
+* tooview el tipo de clave,:`Get-AzureKeyVaultKey –VaultName 'ContosoKeyVault'`
+* tooview el secreto, tipo:`Get-AzureKeyVaultSecret –VaultName 'ContosoKeyVault'`
 
-Ahora, el Almacén de claves y la clave o el secreto están listos para que los usen las aplicaciones. Las aplicaciones deben contar con autorización para poder usarlos.  
+Ahora, el almacén de claves y la clave o el secreto está lista para toouse de aplicaciones. Debe autorizar aplicaciones toouse ellos.  
 
 ## <a id="register"></a>Registro de una aplicación con Azure Active Directory
-Este paso lo haría normalmente un programador en un equipo independiente. No es específico del Almacén de claves de Azure, pero se incluye aquí a fin de que la información ofrecida sea lo más completa posible.
+Este paso lo haría normalmente un programador en un equipo independiente. No es específico tooAzure el almacén de claves, pero se incluye aquí para integridad.
 
 > [!IMPORTANT]
-> Para finalizar el tutorial, la cuenta, el almacén y la aplicación que vaya a registrar en este paso deben estar en el mismo directorio de Azure.
+> tutorial de hello toocomplete, tu cuenta, el almacén de Hola y aplicación hello que se registren en este paso deben ser Hola mismo directorio de Azure.
 >
 >
 
-Las aplicaciones que utilizan un Almacén de claves deben autenticarse utilizando un token de Azure Active Directory. Para ello, el propietario de la aplicación debe registrarla primero en su Azure Active Directory. Al final del registro, el propietario de la aplicación obtiene los valores siguientes:
+Las aplicaciones que utilizan un Almacén de claves deben autenticarse utilizando un token de Azure Active Directory. toodo, Hola propietario de la aplicación hello en primer lugar debe registrar la aplicación hello en su Azure Active Directory. Al final de Hola de registro, propietario de la aplicación hello obtiene Hola siguientes valores:
 
-* Un **identificador de la aplicación** (también conocido como un identificador de cliente) y una **clave de autenticación** (también conocida como secreto compartido). Para obtener un token, la aplicación debe presentar estos dos valores a Azure Active Directory. La forma en que se configura la aplicación para ello depende de la aplicación. Para la aplicación de ejemplo del Almacén de claves, el propietario de la aplicación establece estos valores en el archivo app.config.
+* Un **Id. de aplicación** (también conocido como un Id. de cliente) y **clave de autenticación** (también conocido como Hola secreto compartido). aplicación Hello debe presentar un token de ambos estos valores tooAzure Active Directory, tooget. Forma de la aplicación hello configurado toodo que esto depende de la aplicación hello. Para la aplicación de ejemplo de almacén de claves de hello, propietario de la aplicación hello establece estos valores en el archivo app.config de hello.
 
-Para registrar la aplicación en Azure Active Directory:
+aplicación de hello tooregister en Azure Active Directory:
 
-1. Inicie sesión en el portal clásico de Azure.
-2. A la izquierda, haga clic en **Active Directory** y, después, seleccione el directorio en el que va a registrar la aplicación. <br> <br> **Nota:** debe seleccionar el directorio que contenga la suscripción de Azure con la que creó la instancia de Key Vault. Si no sabe qué directorio es, haga clic en **Configuración**, identifique la suscripción con la que creó la instancia de Key Vault y anote el nombre del directorio que se muestra en la última columna.
-3. Haga clic en **Aplicaciones**. Si no se han agregado aplicaciones a su directorio, esta página muestra solo el vínculo **Agregar una aplicación** . Haga clic en el vínculo, o como alternativa, puede hacer clic en **AGREGAR** en la barra de comandos.
-4. En el Asistente para **agregar aplicaciones**, en la página **¿Qué desea hacer?**, haga clic en **Agregar una aplicación que mi organización está desarrollando**.
-5. En la página **Proporcione información sobre su aplicación**, especifique un nombre para la aplicación y, después, elija **APLICACIÓN WEB Y/O API WEB** (valor predeterminado). Haga clic en el icono **Siguiente** .
-6. En la página **Agregar propiedades**, especifique los valores de **URL de inicio de sesión** y **URI de id. de aplicación** para la aplicación web. Si la aplicación no tiene estos valores, puede inventárselos en este paso (por ejemplo, puede especificar http://test1.contoso.com en ambos cuadros). No importa si los sitios existen. Lo importante es que el URI del identificador de la aplicación de cada aplicación sea diferente en cada una de las aplicaciones del directorio. El directorio utiliza esta cadena para identificar la aplicación.
-7. Haga clic en el icono **Completar** para guardar los cambios en el Asistente.
-8. En la página **Inicio rápido**, haga clic en **Configurar**.
-9. Desplácese hasta la sección de **claves**, seleccione la duración y haga clic en **Guardar**. La página se actualiza y muestra ahora un valor de clave. Debe configurar la aplicación con este valor de clave y el valor del **identificador del cliente** . (las instrucciones para realizar esta configuración son específicas para la aplicación).
-10. Copie el valor del identificador del cliente en esta página. Lo utilizará en el paso siguiente para definir los permisos del almacén.
+1. Inicie sesión en toohello portal de Azure clásico.
+2. Hola izquierda, haga clic en **Active Directory**y, a continuación, seleccione directorio de hello en el que se vaya a registrar la aplicación. <br> <br> **Nota:** debe seleccionar Hola mismo directorio que contiene Hola suscripción de Azure con la que se creó el almacén de claves. Si no sabe qué directorio esto es, haga clic en **configuración**, identificar suscripción Hola con la que se creó el almacén de claves y muestra el nombre de Hola de nota del directorio de hello en la última columna de Hola.
+3. Haga clic en **Aplicaciones**. Si no hay aplicaciones se han agregado tooyour directorio, esta página muestra solo hello **agregar una aplicación** vínculo. Haga clic en el vínculo de Hola o, como alternativa, puede hacer clic en **agregar** en la barra de comandos de Hola.
+4. Hola **Agregar aplicación** asistente, en hello **especifique qué desea toodo?** página, haga clic en **agregar una aplicación que mi organización está desarrollando**.
+5. En hello **envíenos comentarios acerca de la aplicación** página, especifique un nombre para la aplicación y, a continuación, seleccione **aplicación WEB Y/O API de WEB** (Hola de forma predeterminada). Haga clic en hello **siguiente** icono.
+6. En hello **propiedades de la aplicación** página, especifique hello **dirección URL de inicio de sesión** y **APP ID URI** para la aplicación web. Si la aplicación no tiene estos valores, puede inventárselos en este paso (por ejemplo, puede especificar http://test1.contoso.com en ambos cuadros). No importa si los sitios existen. Lo importante es que esa aplicación hello identificador URI para cada aplicación es diferente para cada aplicación en el directorio. directorio de Hello usa este tooidentify de cadena de la aplicación.
+7. Haga clic en hello **completar** icono toosave los cambios en el Asistente de Hola.
+8. En hello **inicio rápido** página, haga clic en **configurar**.
+9. Desplácese toohello **claves** sección, seleccione la duración de hello y, a continuación, haga clic en **guardar**. página de Hello actualiza y muestra ahora un valor de clave. Debe configurar la aplicación con este valor de clave y hello **Id. de cliente** valor. (las instrucciones para realizar esta configuración son específicas para la aplicación).
+10. Copie el valor de identificador de cliente de Hola desde esta página, que se usará en el siguiente paso tooset permisos de hello en el almacén.
 
-## <a id="authorize"></a>Autorización de la aplicación para que use la clave o el secreto
-Para autorizar a la aplicación a acceder a la clave o al secreto del almacén, use el cmdlet [Set-AzureRmKeyVaultAccessPolicy](/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy).
+## <a id="authorize"></a>Autorizar Hola aplicación toouse Hola clave o el secreto
+tooauthorize Hola aplicación tooaccess Hola clave o el secreto en el almacén de hello, use la [Set-AzureRmKeyVaultAccessPolicy](/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy) cmdlet.
 
-Por ejemplo, si el nombre del almacén es **ContosoKeyVault** y la aplicación que desea autorizar tiene el identificador de cliente 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed y desea que la aplicación tenga autorización para descifrar y firmar con claves en el almacén, ejecute lo siguiente:
+Por ejemplo, si el nombre del almacén es **ContosoKeyVault** y aplicación hello desea tooauthorize tiene un identificador de cliente de 8f8c4bbd 485b 45fd 98f7 ec6300b7b4ed y desea tooauthorize Hola aplicación toodecrypt e inicie sesión con claves en el almacén, ejecute hello siguiente:
 
     Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalName 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed -PermissionsToKeys decrypt,sign
 
-Si desea autorizar a esa misma aplicación para leer los secretos en el almacén, ejecute lo siguiente:
+Si desea tooauthorize ese mismo secretos tooread de aplicación en el almacén, ejecute hello siguiente:
 
     Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalName 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed -PermissionsToSecrets Get
 
-## <a id="HSM"></a>Si desea utilizar un módulo de seguridad de hardware (HSM)
-Para obtener seguridad adicional, puede importar o generar claves en módulos de seguridad de hardware (HSM) que no se salen nunca del límite de los HSM. Los HSM tienen la validación FIPS 140-2 de nivel 2. Si este requisito no es relevante para usted, omita esta sección y vaya al paso [Eliminación del Almacén de claves junto con las claves y secretos asociados](#delete).
+## <a id="HSM"></a>Si desea que toouse un módulo de seguridad de hardware (HSM)
+Para mayor seguridad, puede importar o generar claves en módulos de seguridad de hardware (HSM) que no dejan nunca el límite de HSM Hola. Hola HSM son FIPS 140-2 nivel 2 validado. Si este requisito no aplica tooyou, omita esta sección y vaya demasiado[eliminar el almacén de claves de Hola y las claves asociadas y secretos](#delete).
 
-Para crear estas claves protegidas con HSM, debe utilizar el [nivel de servicio Premium de Azure Key Vault para admitir claves protegidas con HSM](https://azure.microsoft.com/pricing/free-trial/). Además, tenga en cuenta que esta funcionalidad no está disponible para Azure China.
+toocreate estas claves protegidas con HSM, debe usar hello [claves protegidas con HSM de toosupport de nivel de servicio Premium de almacén de Azure clave](https://azure.microsoft.com/pricing/free-trial/). Además, tenga en cuenta que esta funcionalidad no está disponible para Azure China.
 
-Cuando cree Key Vault, agregue el parámetro **-SKU**:
+Cuando se crea el almacén de claves de hello, agregar hello **- SKU** parámetro:
 
     New-AzureRmKeyVault -VaultName 'ContosoKeyVaultHSM' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia' -SKU 'Premium'
 
 
 
-Puede agregar claves protegidas mediante software (como se ha mostrado anteriormente) y claves protegidas con HSM a Key Vault. Para crear una clave protegida con HSM, establezca el parámetro **-Destination** en 'HSM':
+Puede agregar las claves protegidas por software (como se muestra anteriormente) y el almacén de claves toothis claves protegidas con HSM. toocreate una clave protegida por HSM, conjunto hello **-destino** too'HSM de parámetro ':
 
     $key = Add-AzureKeyVaultKey -VaultName 'ContosoKeyVaultHSM' -Name 'ContosoFirstHSMKey' -Destination 'HSM'
 
-Puede utilizar el siguiente comando para importar una clave desde un archivo .PFX a su equipo. Este comando importa la clave a HSM en el servicio de Almacén de claves:
+Puede usar una clave de Hola después tooimport comando una. Archivo PFX en el equipo. Este comando importa una clave hello en HSM Hola servicio Almacén de claves:
 
     $key = Add-AzureKeyVaultKey -VaultName 'ContosoKeyVaultHSM' -Name 'ContosoFirstHSMKey' -KeyFilePath 'c:\softkey.pfx' -KeyFilePassword $securepfxpwd -Destination 'HSM'
 
 
-El comando siguiente importa un paquete BYOK ("traiga su propia clave"). Este escenario le permite generar la clave en el HSM local y transferirla a los HSM del servicio Key Vault, sin que la clave salga del límite del HSM:
+comando siguiente de Hello importa una opción "traiga su propia clave" paquete (BYOK). Este escenario le permite generar su clave de HSM local y se transfiere tooHSMs Hola servicio de almacén de claves, sin clave Hola dejando límite de HSM hello:
 
     $key = Add-AzureKeyVaultKey -VaultName 'ContosoKeyVaultHSM' -Name 'ContosoFirstHSMKey' -KeyFilePath 'c:\ITByok.byok' -Destination 'HSM'
 
-Para obtener instrucciones detalladas sobre cómo generar el paquete BYOK, consulte [Generación y transferencia de claves protegidas con HSM para el Almacén de claves de Azure](key-vault-hsm-protected-keys.md).
+Para obtener más instrucciones sobre cómo toogenerate este paquete BYOK, vea [cómo toogenerate y transferencia de claves protegidas con HSM para el almacén de claves de Azure](key-vault-hsm-protected-keys.md).
 
-## <a id="delete"></a>Eliminación del Almacén de claves junto con las claves y secretos asociados
-Si ya no necesita la instancia de Key Vault, ni la clave y el secreto que contiene, puede eliminarlo mediante el cmdlet [Remove-AzureRmKeyVault](/powershell/module/azurerm.keyvault/remove-azurermkeyvault):
+## <a id="delete"></a>Eliminar el almacén de claves de Hola y las claves asociadas y secretos
+Si ya no necesita el almacén de claves hello y clave de Hola o al secreto que contiene, puede eliminar el almacén de claves hello mediante hello [Remove-AzureRmKeyVault](/powershell/module/azurerm.keyvault/remove-azurermkeyvault) cmdlet:
 
     Remove-AzureRmKeyVault -VaultName 'ContosoKeyVault'
 
-O bien puede eliminar un grupo de recursos de Azure completo, que incluye el Almacén de claves y otros recursos incluidos en dicho grupo:
+O bien, puede eliminar un grupo de recursos de Azure completo, que incluye el almacén de claves de Hola y otros recursos que incluyen en ese grupo:
 
     Remove-AzureRmResourceGroup -ResourceGroupName 'ContosoResourceGroup'
 
@@ -220,16 +220,16 @@ O bien puede eliminar un grupo de recursos de Azure completo, que incluye el Alm
 Estos son otros comandos que pueden resultar útiles para administrar el Almacén de claves de Azure.
 
 * `$Keys = Get-AzureKeyVaultKey -VaultName 'ContosoKeyVault'`: este comando ofrece una presentación tabular de todas las claves y las propiedades seleccionadas.
-* `$Keys[0]`: este comando muestra una lista completa de propiedades para la clave especificada.
+* `$Keys[0]`: Este comando muestra una lista completa de propiedades de clave especificado Hola
 * `Get-AzureKeyVaultSecret`: este comando muestra una presentación tabular de todos nombres de secretos y las propiedades que se elijan.
-* `Remove-AzureKeyVaultKey -VaultName 'ContosoKeyVault' -Name 'ContosoFirstKey'`: ejemplo de cómo eliminar una clave específica.
-* `Remove-AzureKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'SQLPassword'`: ejemplo de cómo eliminar un secreto específico.
+* `Remove-AzureKeyVaultKey -VaultName 'ContosoKeyVault' -Name 'ContosoFirstKey'`: Ejemplo cómo tooremove una clave específica.
+* `Remove-AzureKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'SQLPassword'`: Ejemplo cómo tooremove un secreto específico.
 
 ## <a id="next"></a>Pasos siguientes
 Para obtener un tutorial de seguimiento que usa el Almacén de claves de Azure en una aplicación web, consulte [Uso del Almacén de claves de Azure desde una aplicación web](key-vault-use-from-web-application.md).
 
-Para ver cómo se usa el almacén de claves, consulte [Registro del Almacén de claves de Azure](key-vault-logging.md).
+toosee cómo se utiliza el almacén de claves, consulte [registro de almacén de claves de Azure](key-vault-logging.md).
 
-Para obtener una lista de los cmdlets de Azure PowerShell más recientes para Azure Key Vault, consulte [Azure Key Vault Cmdlets](/powershell/module/azurerm.keyvault/#key_vault) (Cmdlets de Azure Key Vault).
+Para obtener una lista de cmdlets de PowerShell de Azure más recientes de hello para el almacén de claves de Azure, consulte [Cmdlets del almacén de claves de Azure](/powershell/module/azurerm.keyvault/#key_vault).
 
-Para conocer las referencias de programación, consulte la [Guía del desarrollador del Almacén de claves de Azure](key-vault-developers-guide.md).
+Para las referencias de programación, vea [Hola Guía del desarrollador de almacén de claves de Azure](key-vault-developers-guide.md).

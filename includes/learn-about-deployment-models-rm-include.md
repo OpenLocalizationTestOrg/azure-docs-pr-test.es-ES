@@ -1,0 +1,2 @@
+> [!NOTE]
+> Azure tiene dos modelos de implementación diferentes para crear recursos y trabajar con ellos: [Resource Manager y el clásico](../articles/azure-resource-manager/resource-manager-deployment-model.md).  Este artículo incluye el uso de modelo de implementación de administrador de recursos de hello, que Microsoft recomienda para nuevas implementaciones en lugar del modelo de implementación clásica de Hola.

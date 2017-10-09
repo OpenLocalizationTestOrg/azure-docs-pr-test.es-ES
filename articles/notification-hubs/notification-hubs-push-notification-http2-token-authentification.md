@@ -1,6 +1,6 @@
 ---
-title: "Autenticación basada en token (HTTP/2) para APNs en Azure Notification Hubs | Microsoft Docs"
-description: "En este tema se explica cómo aprovechar la nueva autenticación de token para APNs."
+title: "aaaToken (HTTP/2) la autenticación de APNS en centros de notificaciones de Azure | Documentos de Microsoft"
+description: "Este tema explica cómo tooleverage Hola nueva autenticación de token para APNS"
 services: notification-hubs
 documentationcenter: .net
 author: kpiteira
@@ -13,67 +13,67 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/17/2017
 ms.author: kapiteir
-ms.openlocfilehash: 5a21bcd9f12fc3f96b17a556ba15526c35ababe2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3353d7f16033ce0b68edec9ee9aeb98f47faa1fa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="token-based-http2-authentication-for-apns"></a>Autenticación basada en token (HTTP/2) para APNs
 ## <a name="overview"></a>Información general
-En este artículo se detalla cómo usar el nuevo protocolo HTTP/2 de APNs con la autenticación basada en token.
+Este artículo detalla cómo toouse Hola nuevo APN HTTP/2 protocolo con el token de la autenticación basada en.
 
-Entre las ventajas principales de usar el nuevo protocolo destacan las siguientes:
--   La generación de tokens es relativamente fácil (comparada con los certificados).
+Hola ventajas principales de usar el nuevo protocolo de hello incluyen:
+-   Generación de tokens es relativamente complicaciones libre (comparados toocertificates)
 -   Ya no hay fechas de expiración: es usted quien controla los tokens de autenticación y su revocación.
--   Ahora las cargas pueden ser de hasta 4 KB.
+-   Ahora pueden estar cargas too4 KB
 - Los comentarios son sincrónicos.
--   Está en el protocolo más reciente de Apple: los certificados siguen usando el protocolo binario, que está marcado como en desuso.
+-   Está en el protocolo más reciente de Apple: certificados seguir usan el protocolo binario de hello, que es marcadas como obsoletas
 
 Para usar este mecanismo nuevo, basta con que realice dos pasos que le llevarán un par de minutos:
-1.  Obtenga la información necesaria en el portal de la cuenta de desarrollador de Apple.
-2.  Configure el centro de notificaciones con la nueva información.
+1.  Obtener la información necesaria de Hola desde el portal de cuenta de desarrollador de Apple Hola
+2.  Configurar el centro de notificaciones con nueva información de Hola
 
-Ahora, todos los Notification Hubs están configurados para usar el nuevo sistema de autenticación con APNs. 
+Los centros de notificaciones es ahora todos los conjunto toouse Hola nueva autenticación sistema con APNS. 
 
 Tenga en cuenta que si antes usaba credenciales de certificado para APNs y ha realizado la migración:
-- las propiedades de token sobrescriben su certificado en nuestro sistema,
-- pero la aplicación sigue recibiendo notificaciones sin problemas.
+- propiedades de símbolo (token) de Hello sobrescriben el certificado en el sistema
+- pero la aplicación continúa tooreceive notificaciones sin problemas.
 
 ## <a name="obtaining-authentication-information-from-apple"></a>Obtener información de autenticación de Apple
-Para habilitar la autenticación basada en token, necesita las siguientes propiedades de la cuenta de desarrollador de Apple:
+autenticación basada en token tooenable, necesita Hola siguientes propiedades de la cuenta de desarrollador de Apple:
 ### <a name="key-identifier"></a>Identificador de clave
-Puede obtener el identificador de clave en la página "Claves" de la cuenta de desarrollador de Apple.
+identificador de clave de Hello puede obtenerse de la página de "Claves" hello en la cuenta de desarrollador de Apple
 
 ![](./media/notification-hubs-push-notification-http2-token-authentification/obtaining-auth-information-from-apple.png)
 
 ### <a name="application-identifier--application-name"></a>Identificador y nombre de la aplicación
-El nombre de la aplicación está disponible a través de la página de identificadores de aplicaciones en la cuenta de desarrollador. 
+nombre de la aplicación Hello está disponible a través de la página de identificadores de aplicación Hola Hola cuenta de desarrollador. 
 ![](./media/notification-hubs-push-notification-http2-token-authentification/app-name.png)
 
-El identificador de la aplicación está disponible a través de la página de detalles de la pertenencia en la cuenta de desarrollador.
+identificador de la aplicación Hello está disponible a través de la página de detalles de pertenencia de Hola Hola cuenta de desarrollador.
 ![](./media/notification-hubs-push-notification-http2-token-authentification/app-id.png)
 
 
 ### <a name="authentication-token"></a>Token de autenticación
-Puede descargar el token de autenticación después de generar un token para la aplicación. Para obtener más información sobre cómo generar este token, vea la [documentación para desarrolladores de Apple](http://help.apple.com/xcode/mac/current/#/dev11b059073?sub=dev1eb5dfe65).
+token de autenticación de Hola se puede descargar después de generar un token para la aplicación. Para obtener más información sobre cómo toogenerate este símbolo (token), consulte demasiado[la documentación para desarrolladores de Apple](http://help.apple.com/xcode/mac/current/#/dev11b059073?sub=dev1eb5dfe65).
 
-## <a name="configuring-your-notification-hub-to-use-token-based-authentication"></a>Configurar el centro de notificaciones para usar la autenticación basada en token
-### <a name="configure-via-the-azure-portal"></a>Configurar mediante Azure Portal
-Para habilitar la autenticación basada en token en el portal, inicie sesión en Azure Portal y vaya al Centro de notificaciones > Servicios de notificación > Panel APNs. 
+## <a name="configuring-your-notification-hub-toouse-token-based-authentication"></a>Configurar la autenticación basada en autorización token de notificación concentrador toouse
+### <a name="configure-via-hello-azure-portal"></a>Configurar a través de hello portal de Azure
+símbolo (token) de tooenable en función de la autenticación en el portal de hello, inicio de sesión toohello portal de Azure y vaya tooyour centro de notificaciones > Servicios de notificación de > panel APNS. 
 
-Hay una nueva propiedad: *Modo de autenticación*. La selección de tokens le permite actualizar el centro con todas las propiedades de token pertinentes.
+Hay una nueva propiedad: *Modo de autenticación*. Si selecciona el símbolo (token), podrá tooupdate el concentrador con todas las propiedades token pertinentes de Hola.
 
 ![](./media/notification-hubs-push-notification-http2-token-authentification/azure-portal-apns-settings.png)
 
-- Escriba las propiedades que ha recuperado de la cuenta de desarrollador de Apple. 
+- Especifique las propiedades de hello que recupera de la cuenta de desarrollador de Apple 
 - Elija el modo de aplicación (producción o espacio aislado). 
-- Haga clic en Guardar para actualizar las credenciales de APNs. 
+- Haga clic en Guardar tooupdate sus credenciales APNS. 
 
 ### <a name="configure-via-management-api-rest"></a>Configurar mediante la API de administración (REST)
 
-Puede usar nuestras [API de administración](https://msdn.microsoft.com/library/azure/dn495827.aspx) para actualizar el centro de notificaciones de modo que use la autenticación basada en token.
-Use uno de los puntos de conexión correspondientes, en función de si la aplicación que está configurando es una aplicación de espacio aislado o de producción (según se especifique en la cuenta de desarrollador de Apple):
+Puede usar nuestro [API de administración de](https://msdn.microsoft.com/library/azure/dn495827.aspx) tooupdate la autenticación basada en autorización token de notificación concentrador toouse.
+Dependiendo de si la aplicación hello que está configurando es una aplicación de producción o de espacio aislado (especificada en la cuenta de desarrollador de Apple), utilice uno de los puntos de conexión correspondiente de hello:
 
 - Punto de conexión de espacio aislado: [https://api.development.push.apple.com:443/3/device](https://api.development.push.apple.com:443/3/device)
 - Punto de conexión de producción: [https://api.push.apple.com:443/3/device](https://api.push.apple.com:443/3/device)
@@ -83,7 +83,7 @@ Use uno de los puntos de conexión correspondientes, en función de si la aplica
 > 
 > 
 
-A continuación se muestra un ejemplo de una solicitud PUT para actualizar un centro con autenticación basada en token:
+Este es un ejemplo de un tooupdate de solicitud PUT un concentrador con autenticación basada en token:
 
 
         PUT https://{namespace}.servicebus.windows.net/{Notification Hub}?api-version=2017-04
@@ -100,10 +100,10 @@ A continuación se muestra un ejemplo de una solicitud PUT para actualizar un ce
           }
         
 
-### <a name="configure-via-the-net-sdk"></a>Configurar mediante el SDK de .NET
-Puede configurar el centro para que use la autenticación basada en token mediante nuestro [SDK de cliente más reciente](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/1.0.8). 
+### <a name="configure-via-hello-net-sdk"></a>Configurar a través de hello SDK para .NET
+Puede configurar la autenticación basada en tokens de toouse concentrador mediante nuestro [SDK más reciente del cliente](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/1.0.8). 
 
-A continuación se muestra un ejemplo de código que ilustra el uso correcto:
+Este es un ejemplo de código que ilustra el uso correcto de hello:
 
 
         NamespaceManager nm = NamespaceManager.CreateFromConnectionString(_endpoint);
@@ -111,10 +111,10 @@ A continuación se muestra un ejemplo de código que ilustra el uso correcto:
         string keyId = "YOUR KEY ID HERE";
         string appName = "YOUR APP NAME HERE";
         string appId = "YOUR APP ID HERE";
-        NotificationHubDescription desc = new NotificationHubDescription("PATH TO YOUR HUB");
+        NotificationHubDescription desc = new NotificationHubDescription("PATH tooYOUR HUB");
         desc.ApnsCredential = new ApnsCredential(token, keyId, appId, appName);
         desc.ApnsCredential.Endpoint = @"https://api.development.push.apple.com:443/3/device";
         nm.UpdateNotificationHubAsync(desc);
 
-## <a name="reverting-to-using-certificate-based-authentication"></a>Volver a usar la autenticación basada en certificados
-Puede volver a usar en cualquier momento la autenticación basada en certificados. Para ello, use cualquiera de los métodos anteriores y pase las propiedades del certificado en lugar de las propiedades del token. Esta acción sobrescribe las credenciales almacenadas previamente.
+## <a name="reverting-toousing-certificate-based-authentication"></a>Autenticación basada en certificados toousing reversión
+Puede recuperar en cualquier autenticación basada en certificados toousing mediante cualquier certificado de Hola de método y pasar anterior en lugar de propiedades de símbolo (token) de Hola. Que acción sobrescribe hello las credenciales almacenadas previamente.

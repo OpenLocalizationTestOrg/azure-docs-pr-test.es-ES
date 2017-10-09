@@ -1,5 +1,5 @@
 ---
-title: "Solución de problemas de Azure Disk Encryption | Microsoft Docs"
+title: "aaaAzure la solución de problemas de cifrado de disco | Documentos de Microsoft"
 description: "En este artículo se ofrecen sugerencias para solucionar problemas de Microsoft Azure Disk Encryption para máquinas virtuales IaaS con Windows y Linux."
 services: security
 documentationcenter: na
@@ -14,35 +14,35 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2017
 ms.author: devtiw
-ms.openlocfilehash: 5f482a92b8fcd71a1b767fcc5741bc57605997ea
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 2ecb8df1fb869e3bf8f3be4be4494e6485e75695
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Guía de solución de problemas de Azure Disk Encryption
 
-Esta guía está destinada a profesionales de tecnologías de la información (TI), analistas de seguridad de la información y administradores de la nube cuyas organizaciones utilizan Azure Disk Encryption y necesitan orientación para solucionar problemas relacionados con el cifrado de discos.
+Esta guía está dirigida a profesionales de tecnologías de información, información los analistas de seguridad y problemas relacionados con los administradores de nube cuyas organizaciones usan el cifrado de disco de Azure y necesitan instrucciones tootroubleshoot cifrado de disco.
 
 ## <a name="troubleshooting-linux-os-disk-encryption"></a>Solución de problemas del cifrado de discos con el SO Linux
 
-El cifrado de discos con el sistema operativo Linux debe desmontar la unidad del sistema operativo antes de pasar por el proceso de cifrado de disco completo.   Si no es posible, es probable que el mensaje de error "no se pudo desmontar después de..." aparezca.
+Cifrado del disco de sistema operativo Linux debe desmontar Hola SO unidad anterior toorunning a través del proceso de cifrado de disco completo Hola.   Si no es posible, un mensaje de error "no se pudo toounmount después..." mensaje de error es probable que toooccur.
 
-Suele ocurrir cuando se intenta el cifrado del disco del sistema operativo en un entorno de máquina virtual de destino que se ha modificado o cambiado desde su imagen de la galería admitida.  Estos son algunos ejemplos de desviaciones de la imagen admitida, que pueden interferir con la capacidad de la extensión de desmontar la unidad del sistema operativo:
+Suele ocurrir cuando se intenta el cifrado del disco del sistema operativo en un entorno de máquina virtual de destino que se ha modificado o cambiado desde su imagen de la galería admitida.  Ejemplos de desviaciones de la imagen de hello admitida, lo que puede interferir con la unidad de la extensión de hello capacidad toounmount Hola OS:
 - Imágenes personalizadas que ya no coinciden con un sistema de archivos o esquema de partición compatibles.
-- Imágenes personalizadas con aplicaciones como un antivirus, Docker, SAP, MongoDB o Apache Cassandra ejecutándose en el sistema operativo antes del cifrado.  Estas aplicaciones son difíciles de terminar y, cuando conservan los identificadores de archivos abiertos en la unidad del sistema operativo, esta no se puede desmontar, lo que provoca un error.
-- Los scripts personalizados que se ejecutan cerca del paso de cifrado pueden interferir y provocar este error. Esto puede ocurrir cuando una plantilla de Resource Manager define varias extensiones para ejecutarse al mismo tiempo o cuando una extensión de script personalizada u otra acción se ejecutan simultáneamente que el cifrado del disco.   La serialización y el aislamiento de estos pasos pueden resolver el problema.
-- Cuando no se ha deshabilitado SELinux antes de habilitar el cifrado, se produce un error en el paso de desmontaje.  SELinux puede habilitarse de nuevo después de completarse el cifrado.
-- Cuando el disco del sistema operativo usa un esquema de LVM (aunque hay compatibilidad limitada con los discos de datos LVM, no se admite el disco del sistema operativo LVM)
+- Imágenes personalizadas con aplicaciones como antivirus, Docker, SAP, MongoDB o Casandra de Apache que se ejecutan en tooencryption anterior del sistema operativo de Hola.  Estas aplicaciones son difíciles de tooterminate y cuando mantienen unidad de toohello SO de identificadores de archivos abiertos, unidad de hello no se puede desmontar, provocando el error.
+- Scripts personalizados que se ejecutan en cierran tiempo paso de cifrado de proximidad toohello puede interferir y hacer que este error. Esto puede ocurrir cuando una plantilla de administrador de recursos define varios tooexecute extensiones al mismo tiempo, o cuando una extensión de la secuencia de comandos personalizada o a otra acción se ejecuta simultáneamente toodisk cifrado.   Serialización y el aislamiento de estos pasos para resolver el problema de Hola.
+- Cuando SELinux no se ha cifrado deshabilitado tooenabling anterior, Hola desmonte paso produce un error.  SELinux puede habilitarse de nuevo después de completarse el cifrado.
+- Cuando el disco de SO de Hola usa un esquema de LVM (aunque hay compatibilidad limitada de disco de datos LVM, disco del sistema operativo LVM no es)
 - Cuando no se cumplen los requisitos mínimos de memoria (se recomiendan 7GB para el cifrado del disco de sistema operativo)
 - Cuando las unidades de datos se han montado recursivamente en el directorio /mnt/ o entre sí (por ejemplo, /mnt/datos1, /mnt/datos2, /datos3 + /datos3/datos4, etc.)
 - Cuando no se cumplen otros [requisitos previos](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption) de Azure Disk Encryption para Linux
 
-## <a name="unable-to-encrypt"></a>No se puede cifrar
+## <a name="unable-tooencrypt"></a>No se puede tooencrypt
 
-En algunos casos, parece que el cifrado del disco de Linux se atasca en el mensaje que indica que se inició el cifrado de disco del sistema operativo, y SSH se deshabilita. En una imagen de la galería en existencias, este proceso puede tardar entre 3 y 16 horas en completarse.  Si se agregan discos de datos de varios TB, el proceso puede tardar días. La secuencia de cifrado del disco del sistema operativo Linux desmonta temporalmente la unidad de sistema operativo y realiza el cifrado bloque a bloque de todo el disco antes de volver a montarlo cifrado.   A diferencia de Azure Disk Encryption en Windows, el cifrado del disco de Linux no permite el uso simultáneo de la máquina virtual mientras el cifrado está en curso.  Las características de rendimiento de la máquina virtual, incluido el tamaño del disco y si la cuenta de almacenamiento está respaldada por el almacenamiento Standard o Premium (SSD), pueden influir en gran medida en el tiempo necesario para completar el cifrado.
+En algunos casos, cifrado de disco Linux Hola aparece toobe atascada en "Se inició el cifrado de disco de SO" y SSH está deshabilitada. Este proceso puede tardar entre toocomplete 3-16 horas en una imagen de la Galería estándar.  Si se agregan discos de datos de tamaño de múltiples TB, el proceso de hello puede tardar días. Hello secuencia de cifrado del disco de sistema operativo Linux desmonta la unidad de hello SO temporalmente y realiza el cifrado de bloque a bloque de disco del sistema operativo completo hello, antes de volver a montar en su estado cifrado.   A diferencia del cifrado de disco de Azure en Windows, Linux cifrado del disco no permite uso simultáneo de hello VM durante el cifrado de hello en curso.  características de rendimiento de Hola de hello máquina virtual, incluido el tamaño de Hola de disco de Hola y si cuenta de almacenamiento de hello está respaldado por el sistema de almacenamiento (SSD) standard o premium, pueden influir en gran medida Hola tiempo necesario toocomplete cifrado.
 
-Para comprobar el estado, puede sondearse el campo ProgressMessage devuelto por el comando [Get-AzureRmVmDiskEncryptionStatus](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmdiskencryptionstatus).   Mientras se cifra la unidad del sistema operativo, la máquina virtual entra en estado de mantenimiento y SSH también se deshabilita para evitar cualquier interrupción en el proceso en curso.  Durante el cifrado, la mayoría de las veces se mostrará el mensaje EncryptionInProgress, seguido, varias horas después, del mensaje VMRestartPending que pregunta si se reinicia la máquina virtual.  Por ejemplo:
+toocheck estado, los campos de ProgressMessage Hola devueltos desde hello [AzureRmVmDiskEncryptionStatus Get](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmdiskencryptionstatus) puede sondearse comando.   Cuando se cifra la unidad de hello SO, Hola VM entra en estado de mantenimiento y SSH también es tooprevent deshabilitado ningún proceso continuo de toohello de interrupción.  EncryptionInProgress se mostrarán para la mayoría de hello del tiempo de Hola durante el cifrado en curso, seguido de más tarde varias horas con un mensaje de confirmación toorestart Hola VM del VMRestartPending.  Por ejemplo:
 
 
 ```
@@ -56,30 +56,30 @@ PS > Get-AzureRmVMDiskEncryptionStatus -ResourceGroupName $resourceGroupName -VM
 OsVolumeEncrypted          : VMRestartPending
 DataVolumesEncrypted       : Encrypted
 OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
-ProgressMessage            : OS disk successfully encrypted, please reboot the VM
+ProgressMessage            : OS disk successfully encrypted, please reboot hello VM
 ```
 
-Una vez que se le pida que reinicie la máquina virtual, tras reiniciarla y transcurridos entonces de dos a tres minutos para el reinicio y para los pasos finales en el destino, el mensaje de estado indicará que el cifrado se ha completado finalmente.   Cuando este mensaje esté disponible, es de esperar que la unidad de sistema operativo cifrada y la máquina virtual se puedan utilizar de nuevo.
+Una vez se le pida tooreboot Hola VM y, después de reiniciar Hola VM y conceder a 2 a 3 minutos para el reinicio de Hola y toobe pasos finales realizada en el destino de hello, mensaje de bienvenida de estado indicará que el cifrado finalmente ha completado.   Cuando este mensaje está disponible, unidad del SO Hola cifrada es esperado toobe listo para su uso y para hello toobe de máquina virtual puede usar de nuevo.
 
-Si no se ha seguido esta secuencia o si se muestran otros mensajes de progreso o información de inicio o bien indicadores de error que informan de que el cifrado del sistema operativo ha fracasado en mitad de este proceso (por ejemplo, si ve el error "no se pudo desmontar" descrito en esta guía), se recomienda restaurar la máquina virtual a la instantánea o con la copia de seguridad realizadas inmediatamente antes del cifrado.  Antes de volver a intentarlo, se recomienda volver a evaluar las características de la máquina virtual y asegurarse de que se cumplan todos los requisitos previos.
+En casos donde no se ha visto esta secuencia, o si otros indicadores de error, mensaje de progreso o información de inicio de informe que no se ha cifrado del sistema operativo en medio de Hola de este proceso (por ejemplo, si ve el error de "error toounmount" hello descrito en esta guía), se recomienda instantánea toohello atrás de toorestore Hola VM o copia de seguridad realizada tooencryption inmediatamente anterior.  Toohello anterior siguiente intento, es toore sugerido: evaluar las características de Hola de hello VM y asegúrese de que se cumplen todos los requisitos previos.
 
 ## <a name="troubleshooting-azure-disk-encryption-behind-a-firewall"></a>Solución de problemas de Azure Disk Encryption detrás de un firewall
-Cuando la conectividad está limitada por un firewall, la configuración del grupo de seguridad de red (NSG) o el requisito de proxy, puede que se pierda la capacidad de la extensión para realizar las tareas necesarias.   Esto puede dar lugar a mensajes de estado similares a "El estado de extensión no está disponible en la máquina virtual" y podría ocurrir que el proceso no se pueda concluir.  En las secciones siguientes se enumeran algunos problemas comunes del firewall que puede investigar.
+Cuando conectividad está restringida por una capacidad Hola firewall, el requisito de proxy o la configuración de grupo (NSG) de seguridad de red, Hola extensión tooperform necesitan puede interrumpir las tareas.   Esto puede dar lugar a mensajes de estado como "Estado de extensión no está disponible en hello VM" y en los escenarios esperados por error toofinish.  secciones de Hola que van a continuación tiene algunos problemas comunes de firewall que puede investigar.
 
 ### <a name="network-security-groups"></a>Grupos de seguridad de red
-Parte de la configuración del grupo de seguridad de red aplicada debe permitir todavía que el punto de conexión cumpla con los [requisitos previos](https://docs.microsoft.com/azure/security/azure-security-disk-encryption#prerequisites) documentados de la configuración de red para el cifrado del disco.
+Aplicada ninguna configuración de grupo de seguridad de red todavía debe permitir la configuración de red de hello documentado de hello extremo toomeet [requisitos previos](https://docs.microsoft.com/azure/security/azure-security-disk-encryption#prerequisites) para el cifrado de disco.
 
 ### <a name="azure-keyvault-behind-firewall"></a>Azure Key Vault detrás del firewall
-La máquina virtual debe poder tener acceso al almacén de claves. Consulte la documentación sobre el acceso al almacén de claves detrás de un firewall mantenido por el equipo de [Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-access-behind-firewall).
+Hola VM debe ser capaz de tooaccess el almacén de claves. Consulte tooguidance en errores de acceso tookey detrás de un firewall que se mantiene por hello [el almacén de claves](https://docs.microsoft.com/azure/key-vault/key-vault-access-behind-firewall) equipo.
 
 ### <a name="linux-package-management-behind-firewall"></a>Administración de paquetes de Linux detrás del firewall
-En tiempo de ejecución, Azure Disk Encryption para Linux se basa en el sistema de administración de paquetes de la distribución de destino para instalar los componentes de requisitos previos necesarios antes de habilitar el cifrado.  Si la configuración de firewall impide que la máquina virtual pueda descargar e instalar estos componentes, es previsible que produzcan errores.    Los pasos para configurar esta opción pueden variar la distribución.  En Red Hat, cuando se requiere un proxy, es vital asegurarse de que el administrador de la suscripción y yum están configurados correctamente.  Consulte [este artículo](https://access.redhat.com/solutions/189533) de soporte técnico de Red Hat sobre este tema.  
+En tiempo de ejecución, cifrado de disco de Azure para Linux se basa en paquete administración tooinstall necesitado componentes de requisitos previos anteriores tooenabling el cifrado del sistema la distribución de destino de hello.  Si la configuración de firewall impiden Hola VM pueda toodownload e instala estos componentes, a continuación, se esperan que produzcan errores posteriores.    pasos de Hello tooconfigure que esto puede variar en función de distribución.  En Red Hat, cuando se requiere un proxy, es vital asegurarse de que el administrador de la suscripción y yum están configurados correctamente.  Consulte [este artículo](https://access.redhat.com/solutions/189533) de soporte técnico de Red Hat sobre este tema.  
 
 ## <a name="troubleshooting-windows-server-2016-server-core"></a>Solución de problemas de Windows Server 2016 Server Core
 
-En Windows Server 2016 Server Core, el componente bdehdcfg no está disponible de forma predeterminada. y Azure Disk Encryption necesita dicho componente.
+En Server Core de Windows Server 2016, componente de hello bdehdcfg no está disponible de forma predeterminada. y Azure Disk Encryption necesita dicho componente.
 
-Para solucionar este problema, copie los cuatro archivos siguientes de una máquina virtual del centro de datos de Windows Server 2016 a la carpeta c:\windows\system32 de la imagen de Server Core:
+tooworkaround este problema, Hola copia siguientes 4 archivos de una carpeta de VM de centro de datos de Windows Server 2016 toohello c:\windows\system32 de imagen de Server Core de hello:
 
 ```
 bdehdcfg.exe
@@ -88,13 +88,13 @@ bdehdcfglib.dll.mui
 bdehdcfg.exe.mui
 ```
 
-Luego, ejecute el siguiente comando:
+A continuación, ejecute el siguiente comando de hello:
 
 ```
 bdehdcfg.exe -target default
 ```
 
-Se creará una partición de sistema de 550 MB y, después, tras un reinicio, se puede usar Diskpart para comprobar los volúmenes y continuar.  
+Esto creará una partición de sistema de 550MB y, a continuación, tras un reinicio, puede usar Diskpart toocheck Hola volúmenes y continuar.  
 
 Por ejemplo:
 
@@ -108,7 +108,7 @@ DISKPART> list vol
   Volume 2     D   Temporary S  NTFS   Partition     13 GB  Healthy    Pagefile
 ```
 ## <a name="see-also"></a>Otras referencias
-En este documento, aprendió más acerca de algunos problemas comunes de Azure Disk Encryption y cómo solucionarlos. Para más información acerca de este servicio y su funcionalidad, lea:
+En este documento, ha aprendido más información acerca de algunos problemas comunes en el cifrado de disco de Azure y cómo tootroubleshoot. Para más información acerca de este servicio y su funcionalidad, lea:
 
 - [Aplicación de cifrado de discos en Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-apply-disk-encryption)
 - [Cifrado de una máquina virtual de Azure](https://docs.microsoft.com/azure/security-center/security-center-disk-encryption)

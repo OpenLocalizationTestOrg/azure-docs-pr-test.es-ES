@@ -1,6 +1,6 @@
 ---
-title: "Prueba gratuita de 30 días de Azure RemoteApp | Microsoft Docs"
-description: "Revise la prueba gratuita de 30 días de Azure RemoteApp."
+title: "versión de prueba de 30 días de aaaFree de RemoteApp de Azure | Documentos de Microsoft"
+description: "Extraer del repositorio Hola 30 días de prueba gratuita de Azure RemoteApp."
 services: remoteapp
 documentationcenter: 
 author: msmbaldwin
@@ -13,28 +13,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: mbaldwin
-ms.openlocfilehash: 1df0ba7204570d9687713ca11ce864ddf4e301c8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 03b881abeba3f00fc8bf79932060a75d47f2e0fa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="free-30-day-trial-of-azure-remoteapp"></a>Prueba gratuita de 30 días de Azure RemoteApp
 > [!IMPORTANT]
-> Azure RemoteApp dejará de estar disponible el 31 de agosto de 2017. Para obtener más información, lea el [anuncio](https://go.microsoft.com/fwlink/?linkid=821148) .
+> Azure RemoteApp dejará de estar disponible el 31 de agosto de 2017. Hola de lectura [anuncio](https://go.microsoft.com/fwlink/?linkid=821148) para obtener más información.
 > 
 > 
 
-Si tiene una suscripción de Azure, puede probar [Azure RemoteApp gratis durante 30 días](https://www.remoteapp.windowsazure.com/en/tour.aspx). Para comenzar, simplemente inicie sesión en el Portal de administración de Azure, navegue al nodo Azure RemoteApp y, a continuación, cree una colección. Esta es una excelente manera de probar la experiencia administrativa completa antes de convertirse a una suscripción de pago de Azure RemoteApp.  
+Si tiene una suscripción de Azure, puede probar [Azure RemoteApp gratis durante 30 días](https://www.remoteapp.windowsazure.com/en/tour.aspx). toostart, simplemente inicie sesión en el Portal de administración de Azure toohello, desplazarse por nodos de Azure RemoteApp toohello y, a continuación, crear una colección. Se trata de una excelente manera tootest unidad Hola administrativos completos experiencia antes de convertir tooa suscripción de RemoteApp de Azure de pago.  
 
-Mientras se encuentra en el modo de prueba, puede crear dos colecciones con un límite de 10 usuarios por colección. No existen otras limitaciones. Puede convertir la versión de prueba en una suscripción de pago en cualquier momento. Después de 30 días, las colecciones se deshabilitarán si no convierte la versión de prueba en una suscripción de pago.
+Mientras se encuentra en el modo de prueba, puede crear dos colecciones con un límite de 10 usuarios por colección. No existen otras limitaciones. Puede convertir su prueba tooa suscripción en cualquier momento de pago. Después de 30 días, las colecciones pasará al estado deshabilitado si no convertir toopaid suscripción.
 
 > [!NOTE]
-> El SLA de Azure no se aplica a las colecciones creadas en el modo de prueba.  
+> Hola SLA de Azure no aplica toocollections creado en modo de prueba.  
 > 
 > 
 
-¿No puede esperar? Vea un breve vídeo sobre cómo [crear una implementación en la nube](https://azure.microsoft.com/documentation/videos/azure-remoteapp-cloud-deployment-overview/).
+¿No puede esperar? Vea un vídeo rápido sobre cómo demasiado[crear una implementación de nube](https://azure.microsoft.com/documentation/videos/azure-remoteapp-cloud-deployment-overview/).
 
-¿Tiene comentarios? Publique sus preguntas en los [foros de discusión](https://feedback.azure.com/forums/247748-azure-remoteapp/). Si tiene un [plan de soporte técnico de Azure](https://azure.microsoft.com/support/plans/), puede enviar una incidencia. Todos pueden enviar comentarios en nuestro [foro de comentarios](https://feedback.azure.com/forums/247748-azure-remoteapp/).  
+¿Tiene comentarios? POST preguntas demasiado[Hola foros de discusión](https://feedback.azure.com/forums/247748-azure-remoteapp/). Si tiene un [plan de soporte técnico de Azure](https://azure.microsoft.com/support/plans/), puede enviar una incidencia. Todos pueden enviar comentarios en nuestro [foro de comentarios](https://feedback.azure.com/forums/247748-azure-remoteapp/).  
 

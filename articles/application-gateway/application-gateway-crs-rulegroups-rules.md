@@ -1,5 +1,5 @@
 ---
-title: Reglas y grupos de reglas de CRS de firewall de aplicaciones web de Azure Application Gateway | Microsoft Docs
+title: "reglas y grupos de reglas de firewall de aplicación web de aaaAzure Application Gateway CRS | Documentos de Microsoft"
 description: "Esta página proporciona información sobre las reglas y grupos de reglas de CRS de firewall de aplicaciones web."
 documentationcenter: na
 services: application-gateway
@@ -15,17 +15,17 @@ ms.custom:
 ms.workload: infrastructure-services
 ms.date: 03/28/2017
 ms.author: gwallace
-ms.openlocfilehash: 9f4445b7ceb5b39c7907b1ca4c7bf0ad52ba8212
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6be139847392baeb235bc48b079335c1e0d8287b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="list-of-web-application-firewall-crs-rule-groups-and-rules-offered"></a>Lista de reglas y grupos de reglas de CRS de firewall de aplicaciones web que se ofrecen
 
-El firewall de aplicaciones web de Application Gateway protege las aplicaciones web de las vulnerabilidades más habituales. Esto se realiza a través de reglas que se definen basándose en las versiones 2.2.9 o 3.0 de OWASP Core Rule Set. Estas reglas se pueden deshabilitar individualmente. En este artículo se incluyen las reglas y los conjuntos de reglas actuales que se ofrecen.
+El firewall de aplicaciones web de Application Gateway protege las aplicaciones web de las vulnerabilidades más habituales. Esto se realiza a través de las reglas que se definen en función de los conjuntos de reglas de núcleo de hello OWASP 2.2.9 o 3.0. Estas reglas se pueden deshabilitar individualmente. Este artículo contiene las reglas actuales de Hola y conjuntos de reglas que ofrece.
 
-Las tablas siguientes son los grupos de reglas y las reglas que están disponibles al utilizar Application Gateway con el firewall de aplicaciones web.  Cada tabla representa las reglas incluidas en un grupo de reglas para una versión específica de CRS.
+Hola las tablas siguientes es reglas que están disponibles al utilizar la puerta de enlace de aplicación con el servidor de aplicaciones web y los grupos de reglas de Hola.  Cada tabla representa reglas de Hola se encuentran en un grupo de reglas para una versión específica de CRS.
 
 ##<a name="owasp30"></a> OWASP_3.0
 
@@ -110,7 +110,7 @@ Las tablas siguientes son los grupos de reglas y las reglas que están disponibl
 |920011|Regla 920011|
 |920012|Regla 920012|
 |920100|Línea de solicitud HTTP no válida|
-|920130|Error al analizar el cuerpo de la solicitud|
+|920130|No se pudo tooparse cuerpo de la solicitud.|
 |920140|El cuerpo de la solicitud de varias partes no superó la validación estricta =     PE %@{REQBODY_PROCESSOR_ERROR}     BQ %@{MULTIPART_BOUNDARY_QUOTED}     BW %@{MULTIPART_BOUNDARY_WHITESPACE}     DB %@{MULTIPART_DATA_BEFORE}     DA %@{MULTIPART_DATA_AFTER}     HF %@{MULTIPART_HEADER_FOLDING}     LF %@{MULTIPART_LF_LINE}     SM %@{MULTIPART_SEMICOLON_MISSING}     IQ %@{MULTIPART_INVALID_QUOTING}     IH %@{MULTIPART_INVALID_HEADER_FOLDING}     FLE %@{MULTIPART_FILE_LIMIT_EXCEEDED}|
 |920160|El encabezado Content-Length HTTP no es numérico.|
 |920170|Solicitud GET o HEAD con contenido del cuerpo|
@@ -342,7 +342,7 @@ Las tablas siguientes son los grupos de reglas y las reglas que están disponibl
 |---|---|
 |960911|Línea de solicitud HTTP no válida|
 |981227|Error de Apache = URI no válido en la solicitud|
-|960912|Error al analizar el cuerpo de la solicitud|
+|960912|No se pudo tooparse cuerpo de la solicitud.|
 |960914|El cuerpo de la solicitud de varias partes no superó la validación estricta =     PE %@{REQBODY_PROCESSOR_ERROR}     BQ %@{MULTIPART_BOUNDARY_QUOTED}     BW %@{MULTIPART_BOUNDARY_WHITESPACE}     DB %@{MULTIPART_DATA_BEFORE}     DA %@{MULTIPART_DATA_AFTER}     HF %@{MULTIPART_HEADER_FOLDING}     LF %@{MULTIPART_LF_LINE}     SM %@{MULTIPART_SEMICOLON_MISSING}     IQ %@{MULTIPART_INVALID_QUOTING}     IH %@{MULTIPART_INVALID_HEADER_FOLDING}     FLE %@{MULTIPART_FILE_LIMIT_EXCEEDED}|
 |960915|El analizador de varias partes ha detectado un posible límite no coincidente.|
 |960016|El encabezado Content-Length HTTP no es numérico.|
@@ -400,9 +400,9 @@ Las tablas siguientes son los grupos de reglas y las reglas que están disponibl
 
 |Identificador de regla|Descripción|
 |---|---|
-|990002|La solicitud indica que un examen de seguridad ha analizado el sitio|
-|990901|La solicitud indica que un examen de seguridad ha analizado el sitio|
-|990902|La solicitud indica que un examen de seguridad ha analizado el sitio|
+|990002|Solicitud indica un Hola digitalizada de seguridad del sitio|
+|990901|Solicitud indica un Hola digitalizada de seguridad del sitio|
+|990902|Solicitud indica un Hola digitalizada de seguridad del sitio|
 |990012|Agente de búsqueda de sitios web malintencionados|
 
 ### <a name="crs40"></a>crs_40_generic_attacks
@@ -592,6 +592,6 @@ Las tablas siguientes son los grupos de reglas y las reglas que están disponibl
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para más información acerca de cómo deshabilitar reglas de WAF, consulte: [Personalización de reglas de WAF](application-gateway-customize-waf-rules-portal.md).
+Obtenga información acerca de cómo las reglas de toodisable WAFS visitando: [reglas WAFS personalizar](application-gateway-customize-waf-rules-portal.md)
 
 [1]: ./media/application-gateway-integration-security-center/figure1.png

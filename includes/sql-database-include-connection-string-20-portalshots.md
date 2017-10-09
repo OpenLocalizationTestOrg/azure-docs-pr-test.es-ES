@@ -8,22 +8,22 @@ Latest Freshness check:  2015-09-02 , GeneMi.
 -->
 
 
-### <a name="obtain-the-connection-string-from-the-azure-portal"></a>Obtenga la cadena de conexión del portal de Azure
-Utilice el [Portal de Azure](https://portal.azure.com/) para obtener la cadena de conexión necesaria para que su programa cliente interactúe con Base de datos SQL de Azure: 
+### <a name="obtain-hello-connection-string-from-hello-azure-portal"></a>Obtener la cadena de conexión de Hola de hello portal de Azure
+Hola de uso [portal de Azure](https://portal.azure.com/) cadena de conexión de hello tooobtain necesario para su toointeract de programa del cliente con la base de datos de SQL Azure: 
 
 1. Haga clic en **EXAMINAR** > **Bases de datos SQL**.
-2. Escriba el nombre de la base de datos en el cuadro de texto de filtro situado en la esquina superior izquierda de la hoja **Bases de datos SQL** .
-3. Haga clic en la fila correspondiente a la base de datos.
-4. Cuando aparezca la hoja de su base de datos, para una mayor comodidad visual puede hacer clic en los controles estándar para minimizar para contraer las hojas que utilizó para examinar y filtrar la base de datos. 
+2. Escriba el nombre de saludo de la base de datos en cuadro de texto del filtro Hola cerca Hola superior izquierda de hello **bases de datos SQL** hoja.
+3. Haga clic en la fila de hello para la base de datos.
+4. Después de que aparezca hoja hello para la base de datos, para mayor facilidad visual, puede hacer clic en hello estándar minimizar hojas Hola controles toocollapse que usa para examinar y filtrar de la base de datos. 
    
-    ![Aplique un filtro para aislar la base de datos][10-FilterDatabase]
-5. En la hoja de la base de datos, haga clic en **Mostrar cadenas de conexión de la base de datos**.
-6. Si piensa utilizar la biblioteca de conexiones de ADO.NET, copie la cadena etiquetada con **ADO**. 
+    ![Filtrar tooisolate la base de datos][10-FilterDatabase]
+5. En la hoja de hello para la base de datos, haga clic en **mostrar cadenas de conexión de base de datos**.
+6. Si piensa que la biblioteca de conexiones de ADO.NET toouse hello, copiar con la etiqueta de cadena de hello **ADO**. 
    
-    ![Copie la cadena de conexión ADO correspondiente a la base de datos][20-CopyAdoConnectionString]
-7. En un formato u otro, pegue la información de la cadena de conexión en el código del programa cliente.
+    ![Copie la cadena de conexión ADO de hello para la base de datos][20-CopyAdoConnectionString]
+7. En un formato u otro, pegue información de cadena de conexión de hello en el código del programa cliente.
 
-Para obtener más información, consulte <br/>[Cadenas de conexión y archivos de configuración](http://msdn.microsoft.com/library/ms254494.aspx).
+Para más información, consulte:<br/>[Cadenas de conexión y archivos de configuración](http://msdn.microsoft.com/library/ms254494.aspx).
 
 <!-- Image references. -->
 

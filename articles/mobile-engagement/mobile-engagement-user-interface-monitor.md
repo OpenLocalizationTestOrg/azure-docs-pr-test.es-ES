@@ -1,6 +1,6 @@
 ---
-title: "Interfaz de usuario de Azure Mobile Engagement: supervisión"
-description: "Obtenga información acerca de cómo supervisar datos en tiempo real acerca de la aplicación mediante Azure Mobile Engagement."
+title: Interfaz de usuario de Mobile Engagement - aaaAzure de Monitor
+description: "Obtenga información acerca de cómo toomonitor datos en tiempo real acerca de su aplicación con Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
@@ -14,45 +14,45 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 5f8a02e35db93585e0fe46d77b3ad18b94c99597
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3a581e4166bc88e6ee7aa784d4047c94533685b5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-monitor-real-time-data-about-your-application"></a>Supervisión de datos en tiempo real sobre la aplicación
-Este artículo describe la pestaña **SUPERVISIÓN** del portal de **Mobile Engagement**. Utilice el portal **Mobile Engagement** para supervisar y administrar sus aplicaciones móviles. Tenga en cuenta que, para comenzar a usar el portal, debe crear en primer lugar una cuenta de **Azure Mobile Engagement** . 
+# <a name="how-toomonitor-real-time-data-about-your-application"></a>¿Cómo toomonitor datos en tiempo real acerca de la aplicación
+Este artículo describe hello **MONITOR** ficha de hello **Mobile Engagement** portal. Usar hello **Mobile Engagement** toomonitor portal y administrar aplicaciones móviles. Tenga en cuenta que toostart mediante portal Hola primero debe toocreate una **Azure Mobile Engagement** cuenta. 
 
-La sección de supervisión de la interfaz de usuario proporciona información de análisis en tiempo real y le permite establecer alertas cuando se alcanzan los umbrales de la mayor parte de la misma información que está disponible históricamente en la sección [ANÁLISIS](mobile-engagement-user-interface-analytics.md) de la interfaz de usuario. Vea la sección **Glosario** en el tema [Conceptos](http://go.microsoft.com/fwlink/?LinkId=525555) para las definiciones de términos y abreviaturas en análisis y supervisión (como las siguientes: usuario activo, nuevo usuario, usuario retenido, sesión, gráfico de ruta de acceso de usuario, asignación de usuarios, direcciones URL de seguimiento, tendencias, actividad, evento, trabajo, error, información adicional, bloqueo e información de aplicación).
+Hola sección Monitor de hello interfaz de usuario proporciona información de análisis en tiempo real y le permite tooset alertas cuando se alcanzan los umbrales para la mayoría de hello mismo información que está disponible históricamente en hello [análisis](mobile-engagement-user-interface-analytics.md) sección de Hola de interfaz de usuario. Vea hello **glosario** sección Hola [conceptos](http://go.microsoft.com/fwlink/?LinkId=525555) tema para obtener definiciones de términos y abreviaturas de análisis y supervisión (como siguiente hello: usuario activo, nuevo usuario, usuario retenido, sesión, Gráfico de ruta de acceso de usuario, asignación de usuarios, direcciones URL de seguimiento, tendencias, actividad, eventos, trabajo, Error, información adicional, bloqueo y App-info).
 
 > [!NOTE]
-> Muchas de las secciones de la interfaz de usuario del portal de **Mobile Engagement** contienen el botón **MOSTRAR AYUDA**. Pulse este botón para obtener más información contextual sobre una sección.
+> Muchas de las secciones de hello **Mobile Engagement** portal de interfaz de usuario contienen hello **ayuda para mostrar** botón. Presione este botón tooget más información contextual sobre una sección.
 > 
 > 
 
 ## <a name="monitor---sessions-jobs-events-errors-and-crashes"></a>Supervisión - Sesiones, trabajos, eventos, errores y bloqueos
-Puede ver cuántos usuarios están actualmente en sesión y en pantallas específicas o realizando acciones específicas. Puede ver la actividad de los usuarios dividida en sesiones, trabajos, eventos, errores y bloqueos. Puede ver la información actual y mostrar la información de la última hora, día o semana. Puede ver toda la información de cada categoría u ordenar por sesión, trabajo, evento, error y bloqueo específico.  La supervisión activa es útil para utilizar durante eventos como una campaña de inserción para ver si hay un repunte en la acción justo después de enviar la notificación de inserción.
+Puede ver cuántos usuarios están actualmente en sesión y en pantallas específicas o realizando acciones específicas. Puede ver la actividad de los usuarios dividida en sesiones, trabajos, eventos, errores y bloqueos. Puede ver información actual de Hola y mostrar la información de Hola desde Hola última hora, día o semana. Puede ver toda información de hello en cada categoría u ordenar por hello específico Session, trabajo, eventos, errores y bloqueos.  Supervisión en vivo es toouse útil durante los eventos como un toosee de campaña de inserción si no hay un repunte en acción derecha después de enviar la notificación de inserción.
 
 ![Monitor1][14]  
 
 ## <a name="troubleshooting-with-monitor---events---details"></a>Solución de problemas con Supervisión - Eventos - Detalles
-Generar un evento en la aplicación desde el dispositivo de prueba y encontrarlo en Supervisión - Eventos - Detalles es una de las maneras más fáciles de encontrar el identificador del dispositivo para el dispositivo de prueba y confirmar que la integración de Azure Mobile Engagement de Análisis, Segmentos y Supervisión está ejecutándose desde su aplicación. Una vez que dispone del identificador de dispositivo del dispositivo de prueba, puede agregarlo a sus dispositivos de prueba en "Mi cuenta – Dispositivos". Si no se puede generar un evento, asegúrese de que Azure Mobile Engagement está integrado correctamente en la aplicación Android/iOS/Web/Windows/Windows Phone con el SDK.
+Genera un evento en la aplicación desde el dispositivo de prueba y buscar en Monitor - eventos - detalles son uno de hello más fácil formas toofind Id. de dispositivo para el dispositivo de prueba y tooconfirm que la integración de Azure Mobile Engagement de análisis, supervisión, y Segmentos está trabajando desde su aplicación. Una vez que tenga Hola Id. de dispositivo del dispositivo de prueba, puede agregarlo tooyour dispositivos de prueba en "Mi cuenta – dispositivos". Si no se puede generar un evento, asegúrese de que Azure Mobile Engagement se integra correctamente en su aplicación Android/iOS/Web/Windows/Windows Phone con hello SDK.
 
 Para obtener más información, consulte [Documentación de SDK][Link 5].
 
 ![Monitor2][15]  
 
 ## <a name="troubleshooting-with-monitor---crashes---details"></a>Solución de problemas con Supervisión - Bloqueos - Detalles
-Puede revisar la información de bloqueos sobre la aplicación desde Supervisión - Bloqueos - Detalles para ayudar a determinar por qué se bloquea la aplicación. También debería buscar problemas conocidos relacionados con cada versión del SDK en las notas de la versión para cada versión del SDK de Android/iOS/Web/Windows/Windows Phone.
+Puede revisar información de los bloqueos sobre la aplicación de detalles del Monitor - bloqueos - toohelp determinar por qué se bloquea la aplicación. También debe buscar problemas conocidos relacionados con cada versión de Hola SDK en notas de la versión de Hola para cada versión de Hola SDK para Android/iOS/Web/Windows/Windows Phone.
 
 Para obtener más información, consulte [Documentación de SDK - notas de la versión][Link 5]
 
 ![Monitor3][16]
 
 ## <a name="monitor---alerts"></a>Supervisión - Alertas
-También puede especificar condiciones para las alertas que se le enviarán automáticamente por correo electrónico o mensajes instantáneos. (Los servicios compatibles con XMPP como GTalk de Google o iChat de Apple son compatibles). Las alertas se basan en un umbral de detección predefinido mayor que (>) o menor que (<) un número específico de sesiones, trabajos, eventos, errores o bloqueos por hora, minuto o segundo. Las alertas pueden supervisar todas las actividades de un tipo determinado o supervisar un trabajo, evento o actividad de error específico. 
+También puede especificar condiciones para las alertas que se enviará automáticamente tooyou a través de correo electrónico o mensajes instantáneos. (Los servicios compatibles con XMPP como GTalk de Google o iChat de Apple son compatibles). Las alertas se basan en un umbral de detección predefinido mayor que (>) o menor que (<) un número específico de sesiones, trabajos, eventos, errores o bloqueos por hora, minuto o segundo. Las alertas pueden supervisar todas las actividades de un tipo determinado o supervisar un trabajo, evento o actividad de error específico. 
 
-También puede especificar una tasa de detección mínima, que es la cantidad mínima de minutos que separa dos notificaciones para la misma alerta para asegurarse de que cuando se desencadene la alerta, nunca recibirá más de una notificación cada intervalo especificado.
+También puede especificar una tasa de detección mínima, que es la cantidad mínima de Hola de minutos que separará dos notificaciones de hello mismo alerta toomake seguro de que cuando se desencadene la alerta, no recibirá más de 1 notificación por el intervalo especificado.
 
 ![Monitor4][17]
 

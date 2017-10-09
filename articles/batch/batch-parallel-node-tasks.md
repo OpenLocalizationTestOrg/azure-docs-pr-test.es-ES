@@ -1,5 +1,5 @@
 ---
-title: "Ejecución de tareas en paralelo para usar recursos de procesos con eficacia - Azure Batch | Microsoft Docs"
+title: aaaRun tareas en paralelo toouse recursos de proceso eficazmente - Azure Batch | Documentos de Microsoft
 description: "Aumente la eficiencia y reduzca los costos usando menos nodos de proceso y ejecutando tareas simultáneas en cada nodo de un grupo de Lote de Azure"
 services: batch
 documentationcenter: .net
@@ -15,47 +15,47 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6903552d907a1ddb21d3b678e2d224b4b5e35b77
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 05df4b7d8e0bc595168a97faa231b7c90fe81980
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>Ejecución simultánea de tareas para maximizar el uso de los nodos de proceso de Batch 
+# <a name="run-tasks-concurrently-toomaximize-usage-of-batch-compute-nodes"></a>Ejecutar tareas simultáneamente toomaximize uso de nodos de proceso por lotes 
 
-A través de la ejecución simultánea de más de una tarea en cada nodo de proceso dentro del grupo de Lote de Azure, puede maximizar el uso de recursos en un menor número de nodos en el grupo. Para algunas cargas de trabajo, esto puede reducir los costos y el tiempo dedicado al trabajo.
+Al ejecutar más de una tarea simultáneamente en cada nodo de proceso en el grupo de lote de Azure, puede maximizar el uso de recursos en un menor número de nodos de grupo de Hola. Para algunas cargas de trabajo, esto puede reducir los costos y el tiempo dedicado al trabajo.
 
-Aunque en algunos casos puede resultar beneficioso que todos los recursos de un nodo estén dedicados a una sola tarea, en otras situaciones será conveniente permitir que varias tareas compartan esos recursos:
+Si bien algunos escenarios beneficiarán de dedicar todo de tarea única del tooa de recursos de un nodo, varias situaciones beneficiarán de lo que permite varias tooshare tareas esos recursos:
 
-* **Minimizar la transferencia de datos** cuando las tareas son capaces de compartir datos. En este escenario, puede reducir considerablemente los gastos de transferencia de datos copiando datos compartidos en un número menor de nodos y ejecutando tareas en paralelo en cada nodo. Esto es válido especialmente si los datos que se copian en cada nodo deben transferirse entre regiones geográficas.
-* **Maximizar el uso de memoria** cuando las tareas requieren una gran cantidad de memoria, pero solo durante períodos breves y en momentos variables durante la ejecución. Puede emplear menos nodos de ejecución, pero de mayor tamaño y con más memoria, para controlar de forma eficaz dichos aumentos. Estos nodos tendrían varias tareas ejecutándose en paralelo en cada nodo, pero cada tarea aprovecharía la abundante memoria de los nodos en distintos momentos.
-* **Mitigar los límites de número de nodos** cuando se requiere la comunicación entre nodos dentro de un grupo. Actualmente, los grupos configurados para la comunicación entre nodos están limitados a 50 nodos de ejecución. Si cada uno de los nodos de este tipo de grupo es capaz de ejecutar tareas en paralelo, el número de tareas que se podrán ejecutar simultáneamente será mayor.
-* **Replicar en un clúster de proceso local**, como cuando mueve por primera vez un entorno de procesos a Azure. Si la solución local existente ejecuta varias tareas en cada nodo de proceso, puede aumentar el número máximo de tareas de nodo para que refleje con mayor fidelidad esa configuración.
+* **Minimizar la transferencia de datos** cuando las tareas son tooshare capaz de datos. En este escenario, puede reducir drásticamente los gastos de transferencia de datos mediante la copia de datos compartido tooa menor número de nodos y la ejecución de tareas en paralelo en cada nodo. Esto se aplica especialmente si Hola data toobe tooeach copiada de nodo debe transferirse entre las regiones geográficas.
+* **Maximizar el uso de memoria** cuando las tareas requieren una gran cantidad de memoria, pero solo durante períodos breves y en momentos variables durante la ejecución. Puede emplear menos, pero más grandes, nodos con más de memoria de tooefficiently atender los picos de este tipo de proceso. Estos nodos tendría varias tareas que se ejecutan en paralelo en cada nodo, pero cada tarea podría sacar provecho de memoria abundantes los nodos hello en momentos diferentes.
+* **Mitigar los límites de número de nodos** cuando se requiere la comunicación entre nodos dentro de un grupo. Actualmente, los grupos configurados para la comunicación entre nodos son nodos de proceso too50 limitado. Si cada nodo en un grupo de este tipo es capaz de tooexecute tareas en paralelo, un mayor número de tareas se pueden ejecutar simultáneamente.
+* **Replicación de un clúster de cálculo local**, por ejemplo, cuando se mueve un tooAzure de entorno de proceso. Si su solución local actual ejecuta varias tareas por nodo de proceso, puede aumentar el número máximo de Hola de tareas de nodo toomore reflejan fielmente esa configuración.
 
 ## <a name="example-scenario"></a>Escenario de ejemplo
-Para ilustrar las ventajas de la ejecución de tareas en paralelo, imaginemos que la aplicación de la tarea tiene unos requisitos de CPU y memoria que hacen que el tamaño de nodo [Standard\_StandardD1](../cloud-services/cloud-services-sizes-specs.md) sea suficiente. Pero, para ejecutar el trabajo en el tiempo requerido, se necesitan 1.000 nodos de ese tipo.
+Como un tooillustrate de ejemplo Hola ventajas de la ejecución de tareas paralelas, supongamos que la aplicación de la tarea tiene requisitos de CPU y memoria que [estándar\_D1](../cloud-services/cloud-services-sizes-specs.md) nodos son suficientes. Sin embargo, en orden toofinish Hola trabajo en el tiempo necesario de hello 1.000 de estos nodos son necesarias.
 
-En lugar de utilizar nodos Standard\_D1 con un núcleo de CPU, podría utilizar nodos [Standard\_D14](../cloud-services/cloud-services-sizes-specs.md) con 16 núcleos en cada nodo y habilitar la ejecución de tareas en paralelo. En este caso, se podría usar un *número de nodos 16 veces menor* ; es decir, en lugar de 1000 nodos, solo serían necesarios 63. Además, si para cada nodo son necesarios datos de referencia o archivos de aplicación de gran tamaño, la eficiencia y la duración del trabajo también se mejoran, ya que los datos se copian en solo 16 nodos.
+En lugar de utilizar nodos Standard\_D1 con un núcleo de CPU, podría utilizar nodos [Standard\_D14](../cloud-services/cloud-services-sizes-specs.md) con 16 núcleos en cada nodo y habilitar la ejecución de tareas en paralelo. En este caso, se podría usar un *número de nodos 16 veces menor* ; es decir, en lugar de 1000 nodos, solo serían necesarios 63. Además, si los archivos de aplicación de gran tamaño o datos de referencia son necesarios para cada nodo, eficacia y la duración del trabajo se ve nuevamente mejorados puesto que los datos de hello tooonly copiada de 16 nodos.
 
 ## <a name="enable-parallel-task-execution"></a>Habilitación de la ejecución en paralelo de tareas
-Los nodos de proceso para la ejecución en paralelo de tareas se configuran a nivel de grupo. Con la biblioteca de .NET para Batch, establezca la propiedad [CloudPool.MaxTasksPerComputeNode][maxtasks_net] al crear un grupo. Si usa la API de REST de Batch, establezca el elemento [maxTasksPerNode][rest_addpool] en el cuerpo de la solicitud durante la creación del grupo.
+Configurar nodos de proceso para la ejecución de tareas paralelas en el nivel del grupo de Hola. Con la biblioteca de .NET de lotes de hello, establecer hello [CloudPool.MaxTasksPerComputeNode] [ maxtasks_net] propiedad cuando se crea un grupo. Si utilizas Hola API de REST de proceso por lotes, establezca hello [maxTasksPerNode] [ rest_addpool] elemento de cuerpo de la solicitud de Hola durante la creación del grupo.
 
-Lote de Azure permite una configuración máxima de tareas por nodo que casi cuadriplica el número de núcleos de nodo. Por ejemplo, si el grupo está configurado con nodos de tamaño "Grande" (cuatro núcleos), `maxTasksPerNode` se puede establecer en 16. Para más información sobre el número de núcleos de cada uno de los tamaños de nodo, consulte [Tamaños de los servicios en la nube](../cloud-services/cloud-services-sizes-specs.md). Para más información sobre los límites del servicio, consulte [Cuotas y límites del servicio de Lote de Azure](batch-quota-limit.md).
+Lote de Azure permite tooset tareas máximas por nodo toofour veces (4 x) Hola número de núcleos de nodo. Por ejemplo, si hello grupo está configurado con nodos de tamaño "Grande" (cuatro núcleos), a continuación, `maxTasksPerNode` se puede establecer too16. Para obtener detalles sobre el número de Hola de núcleos para cada uno de los tamaños de nodo de hello, consulte [tamaños para servicios en la nube](../cloud-services/cloud-services-sizes-specs.md). Para obtener más información acerca de los límites de servicio, consulte [las cuotas y límites de hello servicio Azure Batch](batch-quota-limit.md).
 
 > [!TIP]
-> Asegúrese de tener en cuenta el valor `maxTasksPerNode` al construir una [fórmula de escalado automático][enable_autoscaling] para el grupo. Por ejemplo, una fórmula que evalúe `$RunningTasks` podría verse afectada considerablemente por un aumento en las tareas por nodo. Consulte [Escalación automática de los nodos de ejecución en un grupo de Lote de Azure](batch-automatic-scaling.md) para obtener más información.
+> Ser seguro tootake en hello cuenta `maxTasksPerNode` valor cuando se crea un [fórmula de Autoescala] [ enable_autoscaling] para el grupo. Por ejemplo, una fórmula que evalúe `$RunningTasks` podría verse afectada considerablemente por un aumento en las tareas por nodo. Consulte [Escalación automática de los nodos de ejecución en un grupo de Lote de Azure](batch-automatic-scaling.md) para obtener más información.
 >
 >
 
 ## <a name="distribution-of-tasks"></a>Distribución de tareas
-Cuando los nodos de proceso dentro de un grupo pueden ejecutar tareas de forma simultánea, es importante especificar cómo desea que se distribuyan las tareas entre los nodos del grupo.
+Cuando los nodos de proceso de hello en un grupo pueden ejecutar tareas simultáneamente, es importante toospecify cómo desea Hola tareas toobe distribuyen por los nodos de hello en el grupo de Hola.
 
-Mediante la propiedad [CloudPool.TaskSchedulingPolicy][task_schedule], puede especificar que las tareas se deberían asignar de manera uniforme entre todos los nodos del grupo ("propagación"). O bien, puede especificar que se deberían asignar todas las tareas posibles a cada nodo antes de asignarlas a otro nodo del grupo ("empaquetado").
+Mediante el uso de hello [CloudPool.TaskSchedulingPolicy] [ task_schedule] propiedad, puede especificar que las tareas deben asignarse de manera uniforme en todos los nodos de grupo de hello ("propagación"). O bien, puede especificar que todas las tareas como sea posible deben asignarse tooeach nodo antes de que se asignan tareas tooanother nodo grupo de hello ("empaquetado").
 
-Como ejemplo de por qué esta característica es importante, considere el grupo de nodos [Standard\_D14](../cloud-services/cloud-services-sizes-specs.md) (en el ejemplo anterior) configurado con un valor [CloudPool.MaxTasksPerComputeNode][maxtasks_net] de 16. Si [CloudPool.TaskSchedulingPolicy][task_schedule] se configura con un [ComputeNodeFillType][fill_type] de *Pack*, se podría maximizar el uso de los 16 núcleos de cada nodo y permitir que un [grupo con escalado automático](batch-automatic-scaling.md) elimine los nodos sin usar del grupo (nodos sin tareas asignadas). Esto minimiza el uso de recursos y permite ahorrar dinero.
+Como ejemplo de cómo esta característica es útil, considere la posibilidad de grupo de Hola de [estándar\_D14](../cloud-services/cloud-services-sizes-specs.md) nodos (en el ejemplo de Hola anterior) que se configura con un [CloudPool.MaxTasksPerComputeNode] [ maxtasks_net] valor de 16. Si hello [CloudPool.TaskSchedulingPolicy] [ task_schedule] está configurado con un [ComputeNodeFillType] [ fill_type] de *Pack*, usaría maximizar el uso de todos los 16 núcleos de cada nodo y permitir una [grupo de escalado automático](batch-automatic-scaling.md) tooprune los nodos de grupo de hello (nodos que no tienen tareas asignadas). Esto minimiza el uso de recursos y permite ahorrar dinero.
 
 ## <a name="batch-net-example"></a>Ejemplo de .NET Lote
-En este fragmento código de la API de [.NET para Batch][api_net], se muestra una solicitud para crear un grupo que contiene cuatro nodos de gran tamaño con un máximo de cuatro tareas por nodo. Se especifica una directiva de programación de tareas que llenará cada nodo de tareas antes de asignarlas a otro nodo del grupo. Para obtener más información sobre cómo agregar grupos mediante la API de .NET para Batch, consulte [BatchClient.PoolOperations.CreatePool][poolcreate_net].
+Esto [.NET de lotes] [ api_net] fragmento de código de API muestra una solicitud toocreate un grupo que contiene cuatro nodos grandes con un máximo de cuatro tareas por nodo. Especifica una directiva que va a rellenar cada nodo con tareas anteriores tooassigning tareas tooanother nodo grupo de Hola de programación de tareas. Para obtener más información sobre cómo agregar grupos mediante el uso de hello API de .NET de lote, consulte [BatchClient.PoolOperations.CreatePool][poolcreate_net].
 
 ```csharp
 CloudPool pool =
@@ -71,7 +71,7 @@ pool.Commit();
 ```
 
 ## <a name="batch-rest-example"></a>Ejemplo de REST Lote
-En este fragmento de la API de [REST de Batch][api_rest], se muestra una solicitud para crear un grupo que contiene dos nodos de gran tamaño con un máximo de cuatro tareas por nodo. Para obtener más información sobre cómo agregar grupos mediante la API de REST, consulte [Agregar un grupo a una cuenta][rest_addpool].
+Esto [REST de lote] [ api_rest] API fragmento muestra una solicitud toocreate un grupo que contiene dos nodos de gran tamaño con un máximo de cuatro tareas por nodo. Para obtener más información sobre cómo agregar grupos mediante el uso de API de REST de hello, consulte [agregar una cuenta del grupo de tooan][rest_addpool].
 
 ```json
 {
@@ -89,14 +89,14 @@ En este fragmento de la API de [REST de Batch][api_rest], se muestra una solicit
 ```
 
 > [!NOTE]
-> Solo puede establecer el elemento `maxTasksPerNode` y la propiedad [MaxTasksPerComputeNode][maxtasks_net] en el momento de crear el grupo. No se pueden modificar después de haberlos creado.
+> Puede establecer hello `maxTasksPerNode` elemento y [MaxTasksPerComputeNode] [ maxtasks_net] propiedad solo en el momento de creación de grupo. No se pueden modificar después de haberlos creado.
 >
 >
 
 ## <a name="code-sample"></a>Código de ejemplo
-El proyecto [ParallelNodeTasks][parallel_tasks_sample] en GitHub muestra el uso de la propiedad [CloudPool.MaxTasksPerComputeNode][maxtasks_net].
+Hola [ParallelNodeTasks] [ parallel_tasks_sample] proyecto en GitHub muestra el uso de Hola de hello [CloudPool.MaxTasksPerComputeNode] [ maxtasks_net] propiedad.
 
-Esta aplicación de consola de C# utiliza la biblioteca de [.NET para Batch][api_net] para crear un grupo con uno o más nodos de proceso. Ejecuta un número configurable de tareas en esos nodos para simular una carga variable. Los resultados de la aplicación especifican qué nodos han ejecutado cada tarea. La aplicación también proporciona un resumen de los parámetros de trabajo y la duración. Abajo se muestra la parte de resumen de los resultados de dos ejecuciones diferentes de la aplicación de ejemplo.
+Esta aplicación de consola de C# utiliza hello [.NET de lotes] [ api_net] toocreate biblioteca un grupo con uno o varios nodos de proceso. Un número configurable de tareas ejecuta en esas carga variable toosimulate de nodos. Resultado de la aplicación hello especifica qué nodos ejecutan cada tarea. aplicación Hello también proporciona un resumen de los parámetros de trabajo de Hola y duración. parte de resumen de Hola de salida de hello de dos ejecuciones diferentes de la aplicación de ejemplo de Hola aparece debajo.
 
 ```
 Nodes: 1
@@ -106,7 +106,7 @@ Tasks: 32
 Duration: 00:30:01.4638023
 ```
 
-La primera ejecución de la aplicación de ejemplo muestra que, con un solo nodo en el grupo y la configuración predeterminada de una tarea por nodo, la duración del trabajo es superior a 30 minutos.
+primera ejecución de la aplicación de ejemplo de Hola de Hello muestra que con un solo nodo en el grupo de Hola y Hola predeterminada de una tarea por cada nodo, duración del trabajo de hello es en 30 minutos.
 
 ```
 Nodes: 1
@@ -116,16 +116,16 @@ Tasks: 32
 Duration: 00:08:48.2423500
 ```
 
-La segunda ejecución del ejemplo muestra una disminución notable en la duración del trabajo. Esto se debe a que el grupo se configuró con cuatro tareas por nodo, lo que permite la ejecución en paralelo de tareas de forma que el trabajo se completa en casi una cuarta parte del tiempo.
+Hola segunda ejecución de programas de ejemplo de Hola una importante disminución de la duración del trabajo. Esto es porque el grupo de Hola se configuró con cuatro tareas por nodo, lo que permite a casi una cuarta parte de hora de Hola para trabajo de tareas paralelas a la ejecución toocomplete Hola.
 
 > [!NOTE]
-> La duración del trabajo en los resúmenes anteriores no incluye el tiempo de creación del grupo. Cada uno de los trabajos anteriores se envió a grupos ya creados cuyos nodos de proceso se encontraban en el estado *inactivo* en el momento del envío.
+> las duraciones de trabajo de Hello en resúmenes de hello anteriores no incluyen el tiempo de creación de grupo. Cada uno de los trabajos de hello anteriores era grupos toopreviously enviado creado cuyos nodos de proceso que se encontraban en hello *inactivo* estado en tiempo de envío.
 >
 >
 
 ## <a name="next-steps"></a>Pasos siguientes
 ### <a name="batch-explorer-heat-map"></a>Mapa térmico de Batch Explorer
-El [Azure Batch Explorer][batch_explorer], una de las aplicaciones de ejemplo de [Azure Batch][github_samples], contiene una característica denominada *Mapa térmico* que proporciona una vista de la ejecución de tareas. Cuando ejecuta la aplicación de ejemplo [ParallelTasks][parallel_tasks_sample], puede usar la característica Mapa térmico para ver fácilmente la ejecución de tareas paralelas en cada nodo.
+Hola [Explorador de lote de Azure][batch_explorer], uno de hello Azure Batch [aplicaciones de ejemplo][github_samples], contiene un *mapa térmico* característica que permite la visualización de la ejecución de la tarea. Cuando se está ejecutando el Hola [ParallelTasks] [ parallel_tasks_sample] aplicación de ejemplo, puede usar Hola mapa térmico característica tooeasily visualizar ejecución Hola de tareas en paralelo en cada nodo.
 
 ![Mapa térmico de Batch Explorer][1]
 

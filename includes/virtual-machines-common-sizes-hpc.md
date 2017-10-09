@@ -1,10 +1,10 @@
 <!-- A-series - compute-intensive instances, H-series -->
 
-Los tamaños A8-A11 los de la serie H también se conocen como *instancias de proceso intensivo*. El hardware que ejecuta estos tamaños está diseñado y optimizado para aplicaciones de proceso intensivo que consumen muchos recursos de red, incluidas las aplicaciones de clúster de proceso de alto rendimiento (HPC), el modelado y las simulaciones. La serie A8-A11 utiliza Intel Xeon E5-2670 a 2,6 GHz y la serie H, Intel Xeon E5-2667 v3 a 3,2 GHz. 
+Hello tamaños A8 A11 y H-series son también se denomina *instancias de proceso intensivo*. hardware de Hola que ejecuta estos tamaños está diseñado y optimizado para el proceso intensivo y aplicaciones, modelado y simulaciones de clúster de aplicaciones de red intensiva, incluido informática de alto rendimiento (HPC). Hola A8 A11 serie utiliza Intel Xeon E5-2670 a 2,6 GHZ y Hola H-series utiliza Intel Xeon E5-2667 v3 @ 3,2 GHz. 
 
-Las máquinas virtuales de la serie H son las de próxima generación informática de alto rendimiento que abordan las necesidades informáticas de gama alta, como el modelado molecular y la dinámica de fluidos computacional. Estas máquinas virtuales de 8 y 16 vCPU se basan en la tecnología de procesador Intel Haswell E5-2667 V3 con memoria DDR4 y almacenamiento temporal basado en SSD. 
+Máquinas virtuales de Azure H-series son Hola siguiente generación informática de alto rendimiento que las máquinas virtuales dirigidas a las necesidades de cálculo de high-end, como modelado molecular y dinámica de fluidos computacional. Estas 8 y 16 vCPU máquinas virtuales se compilan en la tecnología de procesador de hello Intel 2667 Haswell E5 V3 que incluye DDR4 memoria y almacenamiento temporal basada en SSD. 
 
-Además de una potencia de CPU notable, la serie H ofrece varias opciones para las redes RDMA de baja latencia con FDR InfiniBand y varias configuraciones de memoria para admitir requisitos computacionales de uso intensivo de la memoria.
+Además toohello gran potencia de la CPU, Hola H-series ofrece diversas opciones para las redes de RDMA de latencia baja mediante FDR InfiniBand y varias configuraciones toosupport memoria intensivas cálculo requisitos de memoria.
 
 
 

@@ -1,17 +1,17 @@
-## <a name="use-the-azure-portal"></a>Uso del Portal de Azure
-1. Seleccione la máquina virtual que quiera volver a implementar y el botón *Volver a implementar* en la hoja *Configuración*. Es posible que deba bajar para ver la sección **Soporte y solución de problemas** que contiene el botón Volver a implementar, como en el ejemplo siguiente:
+## <a name="use-hello-azure-portal"></a>Usar hello portal de Azure
+1. Seleccione Hola VM que desea tooredeploy y luego seleccione hello *volver a implementar* botón en hello *configuración* hoja. Puede que necesite tooscroll hacia abajo toosee hello **soporte técnico y solución de problemas** sección que contiene el botón de hello 'Implementar' como en el siguiente ejemplo de Hola:
    
     ![Hoja Máquina virtual de Azure](./media/virtual-machines-common-redeploy-to-new-node/vmoverview.png)
-2. Para confirmar la operación, haga clic en el botón *Volver a implementar*:
+2. operación de hello tooconfirm, seleccione hello *volver a implementar* botón:
    
     ![Hoja Volver a implementar una máquina virtual](./media/virtual-machines-common-redeploy-to-new-node/redeployvm.png)
-3. El valor de **Estado** de la máquina virtual cambia a *Actualizando*, puesto que la máquina virtual se prepara para implementarse de nuevo, como se muestra en el siguiente ejemplo:
+3. Hola **estado** de hello VM cambia demasiado*actualizar* como Hola VM prepara tooredeploy, como se muestra en el siguiente ejemplo de Hola:
    
     ![Máquina virtual actualizando](./media/virtual-machines-common-redeploy-to-new-node/vmupdating.png)
-4. El valor de **Estado** pasa luego a *Iniciando* cuando la máquina virtual se inicia en un nuevo host de Azure, como se muestra en el ejemplo siguiente:
+4. Hola **estado** , a continuación, cambia demasiado*iniciando* como Hola VM se inicia en un nuevo host de Azure, como se muestra en el siguiente ejemplo de Hola:
    
     ![Máquina virtual iniciando](./media/virtual-machines-common-redeploy-to-new-node/vmstarting.png)
-5. Cuando la máquina virtual finaliza el proceso de arranque, el **estado** vuelve a *En ejecución*, lo que indica que la máquina virtual se ha vuelto a implementar correctamente:
+5. Hola Hola VM Finalizar proceso de arranque de hello, **estado** , a continuación, devuelve demasiado*ejecuta*, que indica Hola VM ha sido volvió a implementar correctamente:
    
     ![Máquina virtual en ejecución](./media/virtual-machines-common-redeploy-to-new-node/vmrunning.png)
 

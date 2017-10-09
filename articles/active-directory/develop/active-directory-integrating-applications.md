@@ -1,6 +1,6 @@
 ---
-title: "Integración de aplicaciones con Azure Active Directory | Microsoft Docs"
-description: "Información detallada sobre cómo agregar, actualizar o quitar una aplicación en Azure Active Directory (Azure AD)."
+title: aaaIntegrating aplicaciones con Azure Active Directory | Documentos de Microsoft
+description: "Información detallada sobre cómo tooadd, actualizar o quitar una aplicación en Azure Active Directory (Azure AD)."
 services: active-directory
 documentationcenter: 
 author: lnalepa
@@ -16,245 +16,245 @@ ms.date: 07/20/2017
 ms.author: lenalepa
 ms.custom: aaddev
 ms.reviewer: luleon
-ms.openlocfilehash: 3be341bcb897a1481f145825429a1a94dfaae3b0
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: c6bf1123bb3a4d78b55c1c55558e684fb844e687
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="integrating-applications-with-azure-active-directory"></a>Integración de aplicaciones con Azure Active Directory
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
-Los desarrolladores de la empresa y los proveedores de software como servicio (SaaS) pueden desarrollar aplicaciones de línea de negocio o servicios comerciales en la nube que se pueden integrar con Azure Active Directory (Azure AD) para ofrecer inicio de sesión seguro y autorización en sus servicios. Para integrar una aplicación o un servicio con Azure AD, un desarrollador debe registrar primero los detalles de la aplicación con Azure AD mediante el Portal de Azure clásico.
+Los desarrolladores empresariales y proveedores de software como-servicio (SaaS) pueden desarrollar servicios comerciales en la nube o la línea de aplicaciones de negocio que se puede integrar con Azure Active Directory (Azure AD) tooprovide seguro iniciar sesión y la autorización para su servicios. toointegrate una aplicación o servicio con Azure AD, un desarrollador debe registrar primero detalles Hola de su aplicación con Azure AD a través de hello portal de Azure clásico.
 
-En este artículo se muestra cómo agregar, actualizar o quitar una aplicación en Azure AD. Aprenderá sobre los diferentes tipos de aplicaciones que se pueden integrar con Azure AD, cómo configurar las aplicaciones para que tengan acceso a otros recursos como las API web y mucho más.
+Este artículo muestra cómo tooadd, actualizar o quitar una aplicación en Azure AD. Obtendrá información sobre los diferentes tipos de aplicaciones que se pueden integrar con Azure AD, cómo de hello tooconfigure su tooaccess aplicaciones otros recursos como las API web y mucho más.
 
-Para más información sobre los dos objetos de Azure AD que representan una aplicación registrada y la relación entre ellos, consulte [Application Objects and Service Principal Objects](active-directory-application-objects.md) (Objetos de aplicación y de entidad de servicio). Para más información sobre las directrices de personalización de marca que debe usar al desarrollar aplicaciones con Azure Active Directory, consulte [Directrices de personalización de marca para aplicaciones integradas](active-directory-branding-guidelines.md).
+vea toolearn más información acerca de los dos objetos de Azure AD de Hola que representan una relación de hello entre ellos, y la aplicación registrada [objetos de entidad de servicio y aplicación](active-directory-application-objects.md); toolearn más información acerca de las directrices de personalización de marca de Hola debe usar al desarrollar aplicaciones con Azure Active Directory, vea [directrices de personalización de marca para aplicaciones integradas](active-directory-branding-guidelines.md).
 
 ## <a name="adding-an-application"></a>Agregar una aplicación
-Cualquier aplicación que quiera usar las funciones de Azure AD debe registrarse primero en un inquilino de Azure AD. Este proceso de registro implica proporcionar los detalles de Azure AD sobre la aplicación, como la dirección URL donde se encuentra, la dirección URL para enviar respuestas cuando un usuario está autenticado, el URI que identifica la aplicación y así sucesivamente.
+Cualquier aplicación que desea que las capacidades de hello toouse de Azure AD debe registrarse primero en un inquilino de Azure AD. Este proceso de registro implica proporcionar a Azure AD detalles acerca de la aplicación, como la dirección URL de Hola donde se encuentra, Hola URL toosend respuestas después de que un usuario se autentica, Hola URI que identifica la aplicación hello y así sucesivamente.
 
-Si está creando una aplicación web que solo necesita admitir el inicio de sesión para usuarios en Azure AD, basta con que siga las instrucciones a continuación. Si la aplicación necesita credenciales o permisos para acceder a una API web o debe permitir el acceso a usuarios de otros inquilinos de Azure AD, consulte la sección [Actualización de una aplicación](#updating-an-application) para seguir configurando la aplicación.
+Si va a compilar una aplicación web que solo se necesita inicio de sesión en toosupport para los usuarios en Azure AD, simplemente puede seguir estas instrucciones Hola. Si la aplicación necesita las credenciales o permisos API web de tooaccess tooa o tooallow a los usuarios de otras es necesario Azure AD a los inquilinos tooaccess, consulte [actualizar una aplicación](#updating-an-application) toocontinue de la sección Configuración de la aplicación.
 
-### <a name="to-register-a-new-application-in-the-azure-portal"></a>Para registrar una aplicación nueva en Azure Portal
-1. Inicie sesión en el [Portal de Azure](https://portal.azure.com).
-2. Para elegir el inquilino de Azure AD, seleccione una cuenta en la esquina superior derecha de la página.
-3. En el panel de navegación izquierdo, elija **Más servicios**, haga clic en **Registros de aplicaciones**y, luego, en **Agregar**.
-4. Siga las indicaciones y cree una nueva aplicación. Si desea ejemplos específicos de aplicaciones web o aplicaciones nativa, visite nuestras [guías de inicio rápido](active-directory-developers-guide.md).
-  * En el caso de las aplicaciones web, especifique la **URL de inicio de sesión**, que es la dirección URL base de la aplicación, donde los usuarios pueden iniciar sesión; por ejemplo, `http://localhost:12345`.
-<!--TODO: add once App ID URI is configurable: The **App ID URI** is a unique identifier for your application. The convention is to use `https://<tenant-domain>/<app-name>`, e.g. `https://contoso.onmicrosoft.com/my-first-aad-app`-->
-  * En el caso de las aplicaciones nativas, especifique un **URI de redireccionamiento**, que utilizará Azure AD para devolver las respuestas de token. Escriba un valor específico para la aplicación, por ejemplo, `http://MyFirstAADApp`
-5. Una vez que haya completado el registro, Azure AD asigna a la aplicación un identificador de cliente único, el identificador de aplicación. La aplicación se agrega y le llevará a la página Inicio rápido de la aplicación. En función de que se trate de una aplicación web o nativa, verá opciones diferentes para agregar otras opciones a la aplicación. Una vez agregada la aplicación, puede empezar a actualizarla para permitir que los usuarios inicien sesión, tengan acceso a las API web de otras aplicaciones o configuren una aplicación multiempresa (que permite que otras organizaciones tengan acceso a la aplicación).
+### <a name="tooregister-a-new-application-in-hello-azure-portal"></a>tooregister una nueva aplicación Hola portal de Azure
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
+2. Elija al inquilino de Azure AD seleccionando su cuenta en hello superior derecho de la página de Hola.
+3. En el panel de navegación izquierdo de hello, elija **más servicios**, haga clic en **registros de aplicaciones**y haga clic en **agregar**.
+4. Siga las indicaciones de Hola y cree una nueva aplicación. Si desea ejemplos específicos de aplicaciones web o aplicaciones nativa, visite nuestras [guías de inicio rápido](active-directory-developers-guide.md).
+  * Para aplicaciones Web, proporcione hello **dirección URL de inicio de sesión**, que es Hola dirección URL base de la aplicación, donde los usuarios pueden iniciar sesión en, por ejemplo, `http://localhost:12345`.
+<!--TODO: add once App ID URI is configurable: hello **App ID URI** is a unique identifier for your application. hello convention is toouse `https://<tenant-domain>/<app-name>`, e.g. `https://contoso.onmicrosoft.com/my-first-aad-app`-->
+  * Para aplicaciones nativas, proporcionar un **URI de redireccionamiento**, que Azure AD usa tooreturn token respuestas. Escriba una aplicación de tooyour específico de valor,. por ejemplo`http://MyFirstAADApp`
+5. Una vez completado el registro, Azure AD le asigna la aplicación un identificador de cliente único, hello identificador de aplicación. Se ha agregado la aplicación y se le llevará toohello página de inicio rápido de la aplicación. Dependiendo de si la aplicación es una aplicación web o nativa, verá opciones diferentes acerca de cómo aplicación tooyour de tooadd funcionalidades adicionales. Una vez agregada la aplicación, puede empezar a actualizar su toosign de los usuarios de aplicación tooenable en las API web de acceso en otras aplicaciones o configuren la aplicación multiempresa (que permite a otras organizaciones tooaccess la aplicación).
 
 > [!NOTE]
-> De forma predeterminada, el registro de aplicaciones recién creadas está configurado para permitir que los usuarios del directorio inicien sesión en la aplicación.
+> De forma predeterminada, el registro de aplicaciones de hello recién creado es tooallow configurado a los usuarios de su toosign de directorio de aplicación de tooyour.
 > 
 > 
 
 ## <a name="updating-an-application"></a>Actualización de una aplicación
-Una vez registrada la aplicación con Azure AD, es posible que tenga que actualizarse para proporcionar acceso a las API web, ponerla a disposición de otras organizaciones y mucho más. En esta sección se describen distintas formas en que puede que tenga que realizar configuraciones adicionales en la aplicación. Primero comenzaremos con información general sobre el marco de consentimiento, que es importante comprender si va a crear aplicaciones de recursos o de API que van a consumir las aplicaciones cliente creadas por desarrolladores de su organización o de otra organización.
+Una vez que la aplicación se ha registrado con Azure AD, puede que necesite toobe actualiza tooprovide obtener acceso a las API tooweb, pondrá a disposición de otras organizaciones y mucho más. Esta sección describen distintas formas en que puede ser necesario tooconfigure aún más la aplicación. En primer lugar se iniciará una visión general de hello marco de consentimiento, que es toounderstand importante si va a compilar aplicaciones de API de recursos/que usarán las aplicaciones de cliente generadas por los desarrolladores de su organización o de otra organización.
 
-Para obtener más información sobre la forma en que la autenticación funciona en Azure AD, vea [Escenarios de autenticación para Azure AD](active-directory-authentication-scenarios.md).
+Para obtener más información sobre Hola autenticación forma funciona en Azure AD, consulte [escenarios de autenticación para Azure AD](active-directory-authentication-scenarios.md).
 
-### <a name="overview-of-the-consent-framework"></a>Información general sobre el marco de consentimiento
-El marco de consentimiento de Azure AD facilita el desarrollo de aplicaciones cliente web y nativas multiinquilino que requieren acceso a API web protegidas por un inquilino de Azure AD diferente de aquel donde está registrada la aplicación cliente. Estas API web incluyen la API Graph de Microsoft (para acceder a Azure Active Directory, Intune y los servicios de Office 365) y otras API de servicios de Microsoft, además de sus propias API web. El marco se basa en que un usuario o un administrador da consentimiento a una aplicación que solicita el registro en su directorio, lo cual puede implicar el acceso a los datos de directorio.
+### <a name="overview-of-hello-consent-framework"></a>Información general del marco de consentimiento de Hola
+Marco de consentimiento de Azure AD le resultará fácil toodevelop web para varios inquilinos y las aplicaciones cliente nativas que necesitan tooaccess web API protegidas por un inquilino de Azure AD, diferente de hello uno donde se registra la aplicación de cliente de Hola. Estas API web incluyen hello Microsoft Graph API (tooaccess Azure Active Directory, Intune y servicios de Office 365) y otras API de servicios de Microsoft, además tooyour posee las API web. marco de Hola se basa en un usuario o un administrador que da su consentimiento tooan aplicación que solicita toobe registradas en el directorio, que puede implicar el acceso a datos de directorio.
 
-Por ejemplo, si una aplicación cliente web debe leer información del calendario sobre el usuario desde Office 365, se pedirá a ese usuario que de su consentimiento a la aplicación cliente. Después de dar su consentimiento, la aplicación cliente podrá llamar a la API Graph de Microsoft en nombre del usuario y usar la información de calendario según sea necesario. La [API Graph de Microsoft](https://graph.microsoft.io) proporciona acceso a datos de Office 365 (como calendarios y mensajes de Exchange, sitios y listas de SharePoint, documentos de OneDrive, blocs de notas de OneNote, tareas de Planner, libros de trabajo de Excel, etc.), así como a usuarios y grupos de Azure AD y otros objetos de datos de más servicios en la nube de Microsoft. 
+Por ejemplo, si una aplicación cliente web necesita información del calendario tooread acerca del usuario de Hola de Office 365, dicho usuario será necesario tooconsent toohello cliente aplicación. Después de dar su consentimiento, aplicación de cliente de hello ser capaz de toocall Hola API Graph de Microsoft en nombre de usuario de Hola y usar la información del calendario Hola según sea necesario. Hola [Microsoft Graph API](https://graph.microsoft.io) proporciona acceso toodata en Office 365 (por ejemplo, calendarios y mensajes de Exchange, sitios y listas de SharePoint, los documentos de OneDrive, blocs de notas de OneNote, las tareas de programador, los libros de Excel, etc.), así como a los usuarios y grupos de Azure AD y otros objetos de datos de varios servicios de nube de Microsoft. 
 
-El marco de consentimiento se basa en OAuth 2.0 y sus distintos flujos, como la concesión de credenciales de cliente y la concesión de código de autorización, mediante clientes públicos o confidenciales. Mediante el uso de OAuth 2.0, Azure AD permite crear muchos tipos diferentes de aplicaciones cliente, como en un teléfono, tableta, servidor o una aplicación web, y obtener acceso a los recursos necesarios.
+marco de consentimiento de Hola se basa en OAuth 2.0 y sus distintos flujos, como el código de autorización concesión credenciales de cliente y grant, mediante clientes públicos o confidenciales. Mediante el uso de OAuth 2.0, Azure AD facilita toobuild posibles muchos tipos diferentes de aplicaciones de cliente, como en un teléfono, tableta, servidor o una aplicación web y obtener acceso a recursos toohello necesario.
 
-Para más información sobre el marco de consentimiento, consulte [OAuth 2.0 en Azure AD](https://msdn.microsoft.com/library/azure/dn645545.aspx) y [Escenarios de autenticación para Azure AD](active-directory-authentication-scenarios.md); y para más información sobre cómo obtener acceso autorizado a Office 365 mediante Microsoft Graph, consulte [App authentication with Microsoft Graph](https://graph.microsoft.io/docs/authorization/auth_overview) (Autenticación de aplicaciones con Microsoft Graph).
+Para obtener más información sobre el marco de consentimiento de hello, consulte [OAuth 2.0 en Azure AD](https://msdn.microsoft.com/library/azure/dn645545.aspx), [escenarios de autenticación para Azure AD](active-directory-authentication-scenarios.md)y para obtener información sobre cómo obtener acceso no autorizado tooOffice 365 a través de Microsoft Graph, consulte [autenticación de la aplicación con Microsoft Graph](https://graph.microsoft.io/docs/authorization/auth_overview).
 
-#### <a name="example-of-the-consent-experience"></a>Ejemplo de la experiencia de consentimiento
-Los siguientes pasos le mostrarán cómo funciona la experiencia de consentimiento para el desarrollador de la aplicación y el usuario.
+#### <a name="example-of-hello-consent-experience"></a>Ejemplo de Hola experiencia de consentimiento
+Hello siguientes pasos le mostrarán cómo funciona la experiencia de consentimiento de hello para el desarrollador de la aplicación hello y usuario.
 
-1. En la página de configuración de la aplicación cliente web en Azure Portal, establezca los permisos que requiere la aplicación mediante los menús de la sección Permisos necesarios.
+1. En la página de configuración de la aplicación de cliente web en hello portal de Azure, establezca permisos de Hola que requiere que la aplicación mediante los menús de Hola Hola sección permisos necesarios.
    
-    ![Permisos para otras aplicaciones](./media/active-directory-integrating-applications/requiredpermissions.png)
-2. Plantéese la posibilidad de que los permisos de la aplicación estén actualizados, la aplicación se ejecute y un usuario esté a punto de usarla por primera vez. Si la aplicación todavía no adquirió un token de acceso o de actualización, tiene que ir al extremo de autorización de Azure AD para obtener un código de autorización que sirve para adquirir un nuevo token de acceso y de actualización.
-3. Si el usuario no está ya autenticado, se le pedirá que inicie sesión en Azure AD.
+    ![Permisos tooother aplicaciones](./media/active-directory-integrating-applications/requiredpermissions.png)
+2. Tenga en cuenta que se actualizaron los permisos de su aplicación, se ejecuta la aplicación hello, y un usuario es sobre toouse para hello primera vez. Si la aplicación hello no ha adquirido una aplicación Hola símbolo (token), de acceso o una actualización debe tooobtain de extremo de autorización toogo tooAzure de AD un código de autorización que puede ser utilizado tooacquire un nuevo acceso y token de actualización.
+3. Si el usuario de hello ya no está autenticado, le pedirá toosign en tooAzure AD.
    
-    ![Inicio de sesión de usuario o administrador en Azure AD](./media/active-directory-integrating-applications/usersignin.png)
-4. Cuando el usuario inicie sesión, Azure AD determinará si se debe mostrar una página de consentimiento al usuario. Esta determinación se basa en que el usuario (o el administrador de la organización) ya concediese el consentimiento de la aplicación. Si todavía no se concedió el consentimiento, Azure AD se lo pedirá al usuario y mostrará los permisos necesarios para que funcione. El conjunto de permisos que aparecen en el cuadro de diálogo de consentimiento son los mismos que se seleccionaron en Permisos delegados en Azure Portal.
+    ![Inicio de sesión de usuario o un administrador en tooAzure AD](./media/active-directory-integrating-applications/usersignin.png)
+4. Después de hello usuario haya iniciado sesión, Azure AD determinará si es usuario de Hola necesario toobe que se muestra una página de consentimiento. Esta determinación se basa en si el usuario de hello (o el Administrador de su organización) haya concedido ya consentimiento de aplicación Hola. Si no se ha concedido ya consentimiento, Azure AD le solicitará el consentimiento del usuario hello y mostrará los permisos de hello necesario que necesita toofunction. conjunto de Hola de permisos que se muestra en el cuadro de diálogo de consentimiento de Hola se Hola igual que lo que se ha seleccionado en permisos delegados de Hola Hola portal de Azure.
    
     ![Experiencia de consentimiento de usuario](./media/active-directory-integrating-applications/consent.png)
-5. Después de que el usuario concede el consentimiento, se devuelve un código de autorización para la aplicación, que se puede canjear para adquirir un token de acceso y un token de actualización. Para más información sobre este flujo, consulte la [sección Aplicación web a API web](active-directory-authentication-scenarios.md#web-application-to-web-api) en [Escenarios de autenticación para Azure AD](active-directory-authentication-scenarios.md).
+5. Después de usuario de hello concede el consentimiento, se devuelve un código de autorización aplicación tooyour, que puede ser recuperada tooacquire un token de acceso y token de actualización. Para obtener más información acerca de este flujo, vea hello [web de la sección aplicación tooweb API](active-directory-authentication-scenarios.md#web-application-to-web-api) sección [escenarios de autenticación para Azure AD](active-directory-authentication-scenarios.md).
 
-6. Como administrador, también puede dar su consentimiento para permisos delegados de una aplicación en nombre de todos los usuarios del inquilino. Esto impedirá que el cuadro de diálogo de consentimiento aparezca para cada usuario del inquilino. Puede hacer esto desde [Azure Portal](https://portal.azure.com) mediante la página de la aplicación. En la hoja **Configuración** de la aplicación, haga clic en **Permisos necesarios** y haga clic en el botón **Conceder permisos**. 
+6. Como administrador, también puede consentir permisos delegados de la aplicación tooan en nombre de todos los usuarios de hello en el inquilino. Esto impedirá que aparecen para todos los usuarios del inquilino de hello cuadro de diálogo de consentimiento de Hola. Puede hacerlo desde hello [portal de Azure](https://portal.azure.com) desde la página de aplicación. De hello **configuración** hoja para la aplicación, haga clic en **permisos necesarios** y haga clic en hello **conceder permisos** botón. 
 
     ![Concesión de permisos para el consentimiento explícito del administrador](./media/active-directory-integrating-applications/grantpermissions.png)
     
 > [!NOTE]
-> Actualmente, es necesario conceder consentimiento explícito mediante el botón **Conceder permisos** para aplicaciones de una sola página (SPA) que usan ADAL.js, ya que el token de acceso se solicita sin un mensaje de consentimiento, lo que dará lugar a un error si no está ya concedido.   
+> Concesión de consentimiento explícito con hello **conceder permisos** botón actualmente se requiere para aplicaciones de una página (SPA) mediante ADAL.js, tal y como se solicita el token de acceso de hello sin preguntar al usuario su consentimiento, que se producirá un error si no se encuentra su consentimiento ya se ha concedido.   
 
-### <a name="configuring-a-client-application-to-access-web-apis"></a>Configuración de una aplicación cliente para acceder a las API web
-Para que una aplicación cliente web o confidencial pueda participar en un flujo de concesión de autorización que requiera autenticación (y obtener un token de acceso), debe establecer credenciales seguras. El método de autenticación predeterminado compatible con Azure Portal es un id. de cliente + una clave simétrica. En esta sección, se describen los pasos de configuración necesarios para proporcionar la clave secreta para las credenciales de cliente.
+### <a name="configuring-a-client-application-tooaccess-web-apis"></a>Configurar una aplicación de cliente tooaccess web API
+Para una tooparticipate de capaz de web/confidencial cliente aplicación toobe en un flujo de concesión de autorización que requiere autenticación (y obtener un token de acceso), debe establecer credenciales seguras. método de autenticación predeterminado de Hello admitido Hola portal de Azure es el Id. de cliente + clave simétrica. En esta sección se tratará clave secreta de hello configuración pasos necesarios tooprovide hello las credenciales de su cliente.
 
-Además, para que un cliente pueda acceder a una API web expuesta por una aplicación de recursos (es decir, la API Graph de Microsoft), el marco de consentimiento garantizará que el cliente obtenga la concesión de los permisos necesarios en función de los solicitados. De forma predeterminada, todas las aplicaciones pueden elegir permisos de Azure Active Directory (API Graph) y de API de administración de servicios de Azure, con el permiso "Habilitar inicio de sesión y leer perfiles de usuario" de Azure AD ya seleccionado de forma predeterminada. Si la aplicación cliente está registrada en un inquilino de Azure AD de Office 365, las API web y los permisos de SharePoint y Exchange Online también estarán disponibles para seleccionarse. Puede seleccionar entre [dos tipos de permisos](active-directory-dev-glossary.md#permissions) en los menús desplegables situados junto a la API web que desee:
+Además, antes de un cliente puede acceso a una API web expuestas por una aplicación de recursos (es decir: API Graph de Microsoft), marco de consentimiento de Hola se asegurará de cliente hello obtiene Hola permiso concedido permisos de hello necesarios, en función de solicitado. De forma predeterminada, todas las aplicaciones pueden elegir permisos de Azure Active Directory (API de Graph) y API de administración de servicios de Azure, con permiso de "Habilitar inicio de sesión y perfil de usuario de lectura" hello Azure AD ya seleccionado de forma predeterminada. Si la aplicación cliente está registrada en un inquilino de Azure AD de Office 365, las API web y los permisos de SharePoint y Exchange Online también estarán disponibles para seleccionarse. Puede seleccionar entre [dos tipos de permisos](active-directory-dev-glossary.md#permissions) Hola menús desplegables toohello siguiente deseado web API:
 
-* Permisos de la aplicación: la aplicación cliente necesita acceso directo a la API web como sí misma (sin contexto de usuario). Este tipo de permiso requiere el consentimiento del administrador y no está disponible para aplicaciones cliente nativas.
-* Permisos delegados: la aplicación cliente necesita acceso a la API web como el usuario que inició sesión, pero con acceso limitado por el permiso seleccionado. Este tipo de permiso lo puede conceder un usuario a menos que el permiso esté configurado como que requiere el consentimiento del administrador. 
+* Permisos de la aplicación: La aplicación cliente debe tooaccess hello web API directamente por sí misma (sin contexto de usuario). Este tipo de permiso requiere el consentimiento del administrador y no está disponible para aplicaciones cliente nativas.
+* Permisos delegados: La aplicación cliente debe tooaccess hello web API como usuario con sesión iniciada hello, pero con acceso limitado por el permiso de hello seleccionado. Este tipo de permiso se puede conceder a un usuario a menos que el permiso de hello está configurada como la necesidad de consentimiento del administrador. 
 
 > [!NOTE]
-> La incorporación de un permiso delegado a una aplicación no concede consentimiento automáticamente a los usuarios del inquilino, tal y como se hacía en el Portal de Azure clásico. Los usuarios todavía deben consentir manualmente los permisos delegados agregados en tiempo de ejecución, a menos que el administrador haga clic en el botón **Conceder permisos** en la sección **Permisos necesarios** de la página de aplicación en Azure Portal. 
+> Agregar una aplicación de tooan de permiso delegado no concede automáticamente consentimiento toohello usuarios dentro de inquilino de hello, tal y como se hacía en hello Portal clásico de Azure. Hello usuarios deben manualmente dar su consentimiento para hello agregado delega permisos en tiempo de ejecución, a menos que el Administrador de hello hace clic en hello **conceder permisos** botón de hello **permisos necesarios** sección de página de aplicación Hola Hola portal de Azure. 
 
-#### <a name="to-add-credentials-or-permissions-to-access-web-apis"></a>Para agregar credenciales o permisos para acceder a las API web
-1. Inicie sesión en el [Portal de Azure](https://portal.azure.com).
-2. Para elegir el inquilino de Azure AD, seleccione una cuenta en la esquina superior derecha de la página.
-3. En el menú superior, elija **Azure Active Directory**, haga clic en **Registros de aplicaciones** y luego haga clic en la aplicación que desee configurar. Esto le llevará a la página de inicio rápido de la aplicación y se abrirá la hoja Configuración de dicha aplicación.
-4. Para agregar una clave secreta para las credenciales de la aplicación web, haga clic en la sección "Claves" en la hoja Configuración.  
+#### <a name="tooadd-credentials-or-permissions-tooaccess-web-apis"></a>credenciales de tooadd o tooaccess permisos web API
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
+2. Elija al inquilino de Azure AD seleccionando su cuenta en hello superior derecho de la página de Hola.
+3. En el menú superior de hello, elija **Azure Active Directory**, haga clic en **registros de aplicación**y, a continuación, haga clic en aplicación hello desea tooconfigure. Esto se dirigirá la página de inicio rápido de la aplicación toohello, así como abrir la hoja de configuración de hello para la aplicación hello.
+4. tooadd una clave secreta para las credenciales de la aplicación web, haga clic en la sección "Claves" de Hola de hoja de configuración de Hola.  
    
    * Agregue una descripción para la clave y seleccione 1 o 2 años de duración. 
-   * La columna situada más a la derecha contendrá el valor de clave después de que guarde los cambios de configuración. Asegúrese de volver a esta sección y copiarla después de presionar Guardar, para poder usarla en la aplicación cliente durante la autenticación en tiempo de ejecución.
-5. Para agregar permisos para acceder a las API de recursos desde el cliente, haga clic en "Permisos necesarios" en la hoja Configuración. 
+   * columna del extremo derecho Hola contendrá clave-valor hello, después de guardar los cambios de configuración de Hola. Toocome seguro volver toothis sección y copiar después de llegar a ahorrar, por lo que tendrá para utilizan en la aplicación de cliente durante la autenticación en tiempo de ejecución.
+5. tooadd permisos tooaccess API de recursos desde el cliente, haga clic en "Permisos necesarios" hello sección hoja de configuración de Hola. 
    
-   * Primero, haga clic en el botón "Agregar".
-   * Haga clic en "Seleccionar una API" para seleccionar el tipo de recursos entre los que desea elegir.
-   * Examine la lista de las API disponibles o use el cuadro de búsqueda para seleccionar entre las aplicaciones de recursos disponibles del directorio que exponen una API web. Haga clic en el recurso que le interese y luego en **Seleccionar**.
-   * Una vez seleccionado, puede moverse al menú **Seleccionar permisos**, donde puede seleccionar el "Permisos de la aplicación" y "Permisos delegados" para la aplicación.
+   * En primer lugar, haga clic en el botón de "Agregar" hello.
+   * Haga clic en "Seleccionar una API" tooselect Hola de recursos que desee toopick desde.
+   * Examine la lista de Hola de las API disponibles o use tooselect de cuadro de búsqueda de Hola desde aplicaciones de recursos disponibles de hello en el directorio que exponen una API web. Haga clic en recurso de Hola que está interesado en, a continuación, haga clic en **seleccione**.
+   * Una vez seleccionado, puede mover toohello **permisos Select** menú, donde puede seleccionar Hola "permisos de la aplicación" y "Permisos delegados" para la aplicación.
    
-6. Cuando termine, haga clic en el botón **Listo**.
+6. Cuando termine, haga clic en hello **realiza** botón.
 
 > [!NOTE]
-> Al hacer clic en el botón **Listo** también se establecen automáticamente los permisos para la aplicación en el directorio en función de los permisos para otras aplicaciones que configuró.  Puede ver estos permisos de la aplicación examinando la hoja **Configuración** de la aplicación.
+> Si hace clic en hello **realiza** botón establece automáticamente permisos de hello para la aplicación en el directorio de aplicaciones basadas en permisos de hello tooother que ha configurado.  Puede ver estos permisos de aplicación mirando la aplicación hello **configuración** hoja.
 > 
 > 
 
-### <a name="configuring-a-resource-application-to-expose-web-apis"></a>Configuración de una aplicación de recursos para exponer las API web
-Puede desarrollar una API web y ponerla a disposición de las aplicaciones cliente si expone los [ámbitos](active-directory-dev-glossary.md#scopes) y los [roles](active-directory-dev-glossary.md#roles) de acceso. Una API web configurada correctamente se pone a disposición de otras aplicaciones del mismo modo que otras API web de Microsoft, incluidas la API Graph y las API de Office 365. Los ámbitos y los roles de acceso se exponen a través del [manifiesto de la aplicación](active-directory-dev-glossary.md#application-manifest), que es un archivo JSON que representa la configuración de identidad de la aplicación.  
+### <a name="configuring-a-resource-application-tooexpose-web-apis"></a>Configuración de una aplicación de recursos tooexpose web API
+Puede desarrollar una API web y hacerla disponible tooclient aplicaciones mediante la exposición de acceso [ámbitos](active-directory-dev-glossary.md#scopes) y [roles](active-directory-dev-glossary.md#roles). Una API web configurada correctamente debe ponerse a disposición como Hola otras API, incluidos Hola API Graph de web de Microsoft y Hola API de Office 365. Los ámbitos y los roles de acceso se exponen a través del [manifiesto de la aplicación](active-directory-dev-glossary.md#application-manifest), que es un archivo JSON que representa la configuración de identidad de la aplicación.  
 
-En la siguiente sección, se mostrará cómo exponer ámbitos de acceso modificando el manifiesto de la aplicación de recursos.
+Hola siguiente sección le mostrará cómo tooexpose acceso ámbitos, mediante la modificación de manifiesto de la aplicación de recursos de Hola.
 
-#### <a name="adding-access-scopes-to-your-resource-application"></a>Agregar ámbitos de acceso a la aplicación de recursos
-1. Inicie sesión en el [Portal de Azure](https://portal.azure.com).
-2. Para elegir el inquilino de Azure AD, seleccione una cuenta en la esquina superior derecha de la página.
-3. En el menú superior, elija **Azure Active Directory**, haga clic en **Registros de aplicaciones** y luego haga clic en la aplicación que desee configurar. Esto le llevará a la página de inicio rápido de la aplicación y se abrirá la hoja Configuración de dicha aplicación.
-4. Haga clic en **Manifiesto** en la página de la aplicación para abrir el editor de manifiestos en línea. 
-5. Reemplace el nodo "oauth2Permissions" por el siguiente fragmento de código JSON. Este fragmento de código es un ejemplo de cómo exponer un ámbito conocido como "suplantación de usuario", que permite que un propietario de recursos proporcione a una aplicación cliente un tipo de acceso delegado a un recurso. Asegúrese de cambiar el texto y los valores para su propia aplicación:
+#### <a name="adding-access-scopes-tooyour-resource-application"></a>Agregar aplicación de recursos de tooyour de ámbitos de acceso
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
+2. Elija al inquilino de Azure AD seleccionando su cuenta en hello superior derecho de la página de Hola.
+3. En el menú superior de hello, elija **Azure Active Directory**, haga clic en **registros de aplicación**y, a continuación, haga clic en aplicación hello desea tooconfigure. Esto se dirigirá la página de inicio rápido de la aplicación toohello, así como abrir la hoja de configuración de hello para la aplicación hello.
+4. Haga clic en **manifiesto** de hello aplicación página tooopen Hola alineado editor de manifiestos. 
+5. Reemplace "oauth2Permissions" nodo con hello siguiente fragmento de JSON. Este fragmento de código es un ejemplo de cómo tooexpose un ámbito que se denomina "suplantación de usuario", lo que permite un toogive de propietario de recursos en una aplicación cliente de un tipo de delegado acceso tooa recursos. Asegúrese de cambiar texto hello y valores para su propia aplicación:
    
         "oauth2Permissions": [
         {
-            "adminConsentDescription": "Allow the application full access to the Todo List service on behalf of the signed-in     user",
-            "adminConsentDisplayName": "Have full access to the Todo List service",
+            "adminConsentDescription": "Allow hello application full access toohello Todo List service on behalf of hello signed-in     user",
+            "adminConsentDisplayName": "Have full access toohello Todo List service",
             "id": "b69ee3c9-c40d-4f2a-ac80-961cd1534e40",
             "isEnabled": true,
             "type": "User",
-            "userConsentDescription": "Allow the application full access to the todo service on your behalf",
-            "userConsentDisplayName": "Have full access to the todo service",
+            "userConsentDescription": "Allow hello application full access toohello todo service on your behalf",
+            "userConsentDisplayName": "Have full access toohello todo service",
             "value": "user_impersonation"
             }
         ],
    
-    El valor del identificador debe ser un nuevo GUID generado que cree mediante una [herramienta de generación de GUID](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx) o por medio de programación. Representa un identificador único para el permiso que se expone mediante la API web. Una vez que el cliente está configurado correctamente para solicitar el acceso a la API web y llama a la API web, presentará un token JWT de OAuth 2.0 que tiene la notificación de ámbito (scp) establecida en el valor anterior que, en este caso, es user_impersonation.
+    valor de identificador Hello debe ser un GUID generado nuevo que se crea mediante un [herramienta de generación de GUID](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx) o mediante programación. Representa un identificador único para el permiso de Hola que se expone mediante la API web de Hola. Una vez que el cliente está configurado correctamente tooyour web API de toorequest acceso y las llamadas API web de Hola, presentará un token de JWT de OAuth 2.0 que tiene Hola ámbito (scp) notificación conjunto toohello valor anterior, que en este caso es user_impersonation.
    
    > [!NOTE]
-   > Puede exponer ámbitos adicionales posteriormente si es necesario. Tenga en cuenta que la API web podría exponer varios ámbitos asociados a diversas funciones diferentes. Ahora puede controlar el acceso a la API web mediante la notificación de ámbito (scp) del token JWT de OAuth 2.0 recibido.
+   > Puede exponer ámbitos adicionales posteriormente si es necesario. Tenga en cuenta que la API web podría exponer varios ámbitos asociados a diversas funciones diferentes. Ahora puede controlar la notificación de API web mediante el uso de ámbito (scp) de hello toohello de acceso en el token de JWT de OAuth 2.0 Hola recibido.
    > 
    > 
-6. Haga clic en **Guardar** para guardar el manifiesto. La API web ya está configurada para que la usen otras aplicaciones del directorio.
+6. Haga clic en **guardar** toosave manifiesto de Hola. La web que API está ahora configurado toobe usado por otras aplicaciones en el directorio.
 
-#### <a name="to-verify-the-web-api-is-exposed-to-other-applications-in-your-directory"></a>Para comprobar que la web API se expone a otras aplicaciones en el directorio
-1. En el menú superior, haga clic en **Aplicaciones de registros**, seleccione la aplicación cliente cuyo acceso a la API web quiera configurar y navegue hasta la hoja Configuración.
-2. En la sección **Permisos necesarios**, seleccione la API web para la que acaba de exponer un permiso. En el menú desplegable Permisos delegados, seleccione el nuevo permiso.
+#### <a name="tooverify-hello-web-api-is-exposed-tooother-applications-in-your-directory"></a>API de web de hello tooverify es tooother expuesto aplicaciones del directorio
+1. En el menú superior de hello, haga clic en **registros de aplicación**, seleccione Hola deseado de aplicación de cliente que desee tooconfigure acceso toohello web API y navegar por hoja de configuración de toohello.
+2. De hello **permisos necesarios** sección, seleccione hello web API que acaba de exponer un permiso. Desde el menú desplegable de hello permisos delegados, seleccione Nuevo permiso de Hola.
 
 ![Se muestran los permisos de la lista de tareas](./media/active-directory-integrating-applications/todolistpermissions.png)
 
-#### <a name="more-on-the-application-manifest"></a>Más sobre el manifiesto de aplicación
-El manifiesto de aplicación realmente actúa como un mecanismo para actualizar la entidad de aplicación, que define todos los atributos de configuración de identidad de una aplicación de Azure AD, incluidos los ámbitos de acceso de API que analizamos. Para más información sobre la entidad de aplicación, consulte la [documentación sobre la entidad de aplicación de API Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity). Ahí encontrará completa información de referencia sobre los miembros de la entidad de aplicación utilizados para especificar los permisos para la API:  
+#### <a name="more-on-hello-application-manifest"></a>Obtener más información sobre el manifiesto de aplicación Hola
+manifiesto de aplicación Hola realmente actúa como un mecanismo para actualizar la entidad de aplicación hello, que define todos los atributos de configuración de identidad de una aplicación de Azure AD, incluidos los ámbitos de acceso de API de hello analizamos. Para obtener más información sobre Hola entidad de aplicación, vea hello [documentación de entidad de aplicación de API de Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity). En él, encontrará información de referencia completa en hello aplicación entidad miembros utilizados toospecify permisos de la API:  
 
-* el miembro appRoles, que es una colección de entidades [AppRole](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#approle-type) que pueden usarse para definir los **permisos de aplicación** para una API web;  
-* el miembro oauth2Permissions, que es una colección de entidades [OAuth2Permission](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#oauth2permission-type) que pueden usarse para definir los **permisos delegados** para una API web.
+* miembro de appRoles Hello, que es una colección de [AppRole](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#approle-type) entidades que pueden ser utilizados toodefine hello **permisos de aplicación** para una API web  
+* miembro de oauth2Permissions Hello, que es una colección de [OAuth2Permission](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#oauth2permission-type) entidades que pueden ser utilizados toodefine hello **permisos delegados** para una API web
 
-Para más información sobre los conceptos del manifiesto de aplicación en general, consulte [Descripción del manifiesto de aplicación de Azure Active Directory](active-directory-application-manifest.md).
+Para obtener más información sobre la aplicación de conceptos de manifiesto en general, consulte demasiado[manifiesto de aplicación en Azure Active Directory descripción hello](active-directory-application-manifest.md).
 
-### <a name="accessing-the-azure-ad-graph-and-office-365-via-microsoft-graph-apis"></a>Acceso a Azure AD Graph y Office 365 mediante las API Graph de Microsoft  
-Como se mencionó anteriormente, además de exponer y tener acceso a API en sus propias aplicaciones de recursos, también puede actualizar la aplicación cliente para tener acceso a las API expuestas por los recursos de Microsoft.  La API Graph de Microsoft, que se denomina "Microsoft Graph" en la lista de permisos para otras aplicaciones, está disponible para todas las aplicaciones que están registradas en Azure AD. Si va a registrar la aplicación cliente en un inquilino de Azure AD que se ha aprovisionado por Office 365, puede tener acceso todos los permisos expuestos por las API Graph de Microsoft a varios recursos de Office 365.
+### <a name="accessing-hello-azure-ad-graph-and-office-365-via-microsoft-graph-apis"></a>Hola acceso a Azure AD Graph y Office 365 a través de la API de gráficos de Microsoft  
+Como los mencionados anteriormente, además tooexposing/obtener acceso a las API en sus propias aplicaciones de recursos, también puede actualizar su tooaccess de aplicación de cliente API expuestas por los recursos de Microsoft.  Hola API de Graph de Microsoft, que se denomina "Microsoft Graph" en la lista de Hola de aplicaciones de tooother de permisos, está disponible o en todas las aplicaciones que se registran con Azure AD. Si va a registrar la aplicación cliente en un inquilino de Azure AD que se haya proporcionado por Office 365, puede tener acceso todos los permisos de hello expuestos por hello Microsoft Graph API toovarious recursos de Office 365.
 
-Para ver una descripción completa sobre los ámbitos de acceso expuestos por la API Graph de Microsoft, consulte el artículo [Permission scopes | Microsoft Graph API concepts](https://graph.microsoft.io/docs/authorization/permission_scopes) (Ámbitos de permisos | Conceptos sobre la API Graph de Microsoft).
+Para una descripción completa de los ámbitos de acceso expuesto por la API de Microsoft Graph, vea hello [ámbitos de permiso | Conceptos de API de Microsoft Graph](https://graph.microsoft.io/docs/authorization/permission_scopes) artículo.
 
 > [!NOTE]
-> Debido a una limitación actual, las aplicaciones cliente nativas solo pueden llamar a la API Graph de Azure AD si usan el permiso "Acceso al directorio de la organización".  Esta restricción no se aplica a las aplicaciones web.
+> Debido a las limitaciones actuales tooa, las aplicaciones cliente nativas solo pueden llamar a hello Azure AD Graph API si usan el permiso de "Acceso al directorio de su organización" Hola.  Esta restricción no se aplica a las aplicaciones web.
 > 
 > 
 
 ### <a name="configuring-multi-tenant-applications"></a>Configuración de aplicaciones multiempresa
-Al agregar una aplicación a Azure AD, tal vez quiera que solo tengan acceso a la aplicación los usuarios de la organización. Como alternativa, tal vez quiera que los usuarios de organizaciones externas tengan acceso a la aplicación. Estos dos tipos de aplicaciones se denominan aplicaciones multiempresa y aplicaciones de un solo inquilino. Puede modificar la configuración de una aplicación de un solo inquilino para convertirla en una aplicación multiempresa, lo que se trata a continuación en esta sección.
+Cuando se agrega un tooAzure de aplicación AD, puede que desee su toobe de aplicación solo accedan los usuarios de su organización. Como alternativa, puede que desee su toobe aplicación accedan los usuarios de organizaciones externas. Estos dos tipos de aplicaciones se denominan aplicaciones multiempresa y aplicaciones de un solo inquilino. Puede modificar configuración de Hola de un toomake de aplicación de un solo inquilino, una aplicación de varios inquilinos, que en esta sección se describe a continuación.
 
-Es importante tener en cuenta las diferencias entre una aplicación de un solo inquilino y otra multiinquilino:  
+Es importante toonote diferencias de hello entre un solo inquilino y una aplicación de varios inquilinos:  
 
-* La finalidad de una aplicación de un solo inquilino es su uso en una sola organización. Suele tratarse de aplicaciones de línea de negocio (LOB) escritas por un desarrollador de la empresa. A una aplicación de un solo inquilino solo obtienen acceso usuarios de un solo directorio y, por tanto, solo es necesario aprovisionarla en un directorio.
-* La finalidad de una aplicación multiempresa es su uso en muchas organizaciones. Se trata de aplicaciones web de software como servicio (SaaS) que suelen ser creadas por un proveedor de software independiente (ISV). Las aplicaciones multiinquilino se deben aprovisionar en cada uno de los directorios en los que se usarán, lo que requiere el consentimiento del usuario o del administrador para registrarlas, que se transmite a través del marco del consentimiento de Azure AD. Tenga en cuenta que todas las aplicaciones cliente nativas son multiinquilino de forma predeterminada porque están instaladas en el dispositivo del propietario del recurso. Consulte la sección Información general sobre el marco de consentimiento presentada anteriormente para obtener más detalles en el marco de consentimiento.
+* La finalidad de una aplicación de un solo inquilino es su uso en una sola organización. Suele tratarse de aplicaciones de línea de negocio (LOB) escritas por un desarrollador de la empresa. Una aplicación de un solo inquilino solo necesita toobe tienen acceso los usuarios en un directorio y, como resultado, solo necesita toobe aprovisiona en un directorio.
+* La finalidad de una aplicación multiempresa es su uso en muchas organizaciones. Se trata de aplicaciones web de software como servicio (SaaS) que suelen ser creadas por un proveedor de software independiente (ISV). Las aplicaciones de varios inquilinos necesitan toobe aprovisionado en cada directorio donde se van a utilizar, lo que requiere tooregister de consentimiento de usuario o el administrador les admite a través del marco de consentimiento de hello Azure AD. Tenga en cuenta que todas las aplicaciones de cliente nativo multiempresa de forma predeterminada tal y como están instalados en el dispositivo del propietario del recurso de Hola. Vea Hola información general de hello sección del marco de consentimiento anterior para obtener más detalles en el marco de consentimiento de Hola.
 
-#### <a name="enabling-external-users-to-grant-your-application-access-to-their-resources"></a>Concesión de acceso a los usuarios externos a la aplicación
-Si está escribiendo una aplicación que quiere poner a disposición de sus clientes o asociados externos a la organización, tendrá que actualizar la definición de la aplicación en Azure Portal.
+#### <a name="enabling-external-users-toogrant-your-application-access-tootheir-resources"></a>Habilitar usuarios externos toogrant los recursos de tootheir de acceso de aplicación
+Si está escribiendo una aplicación que desea toomake tooyour disponibles clientes o socios fuera de su organización, deberá tooupdate definición de la aplicación Hola Hola portal de Azure.
 
 > [!NOTE]
-> Al habilitar el tipo multiinquilino, debe asegurarse de que el URI del identificador de la aplicación pertenece a un dominio comprobado. Además, la Dirección URL de retorno debe comenzar por https://. Para obtener más información, vea [Objetos de aplicación y objetos de entidad de servicio](active-directory-application-objects.md).
+> Al habilitar el tipo multiinquilino, debe asegurarse de que el URI del identificador de la aplicación pertenece a un dominio comprobado. Además, la dirección URL de retorno de Hola debe comenzar con https://. Para obtener más información, vea [Objetos de aplicación y objetos de entidad de servicio](active-directory-application-objects.md).
 > 
 > 
 
-Para permitir que los usuarios externos accedan a la aplicación: 
+tooenable acceso tooyour aplicación para usuarios externos: 
 
-1. Inicie sesión en el [Portal de Azure](https://portal.azure.com).
-2. Para elegir el inquilino de Azure AD, seleccione una cuenta en la esquina superior derecha de la página.
-3. En el menú superior, elija **Azure Active Directory**, haga clic en **Registros de aplicaciones** y luego haga clic en la aplicación que desee configurar. Esto le llevará a la página de inicio rápido de la aplicación y se abrirá la hoja Configuración de dicha aplicación.
-4. En la hoja Configuración, haga clic en **Propiedades** y coloque el conmutador **Multiinquilino** en la posición **Sí**.
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
+2. Elija al inquilino de Azure AD seleccionando su cuenta en hello superior derecho de la página de Hola.
+3. En el menú superior de hello, elija **Azure Active Directory**, haga clic en **registros de aplicación**y, a continuación, haga clic en aplicación hello desea tooconfigure. Esto se dirigirá la página de inicio rápido de la aplicación toohello, así como abrir la hoja de configuración de hello para la aplicación hello.
+4. En la hoja de configuración de hello, haga clic en **propiedades** hello voltear y **con inquilinos múltiples** cambiar demasiado**Sí**.
 
-Una vez realizado el cambio anterior, los usuarios y administradores de otras organizaciones podrán conceder acceso de la aplicación a sus directorios y otros datos.
+Una vez haya realizado Hola cambiar anteriormente, los usuarios y administradores de otras organizaciones será capaz de toogrant su directorio de tootheir de acceso de aplicación y otros datos.
 
-#### <a name="triggering-the-azure-ad-consent-framework-at-runtime"></a>Desencadenamiento del marco de consentimiento de Azure AD en tiempo de ejecución
-Para utilizar el marco de consentimiento, las aplicaciones cliente multiinquilino deben solicitar autorización mediante OAuth 2.0. Hay [ejemplos de código](https://azure.microsoft.com/documentation/samples/?service=active-directory&term=multi-tenant) disponibles que muestran cómo una aplicación web, una aplicación nativa o una aplicación de demonio o de servidor solicita códigos de autorización y tokens de acceso para llamar a las API web.
+#### <a name="triggering-hello-azure-ad-consent-framework-at-runtime"></a>Desencadenar el marco de consentimiento de hello Azure AD en tiempo de ejecución
+marco de consentimiento de hello toouse, las aplicaciones cliente de varios inquilinos deben solicitar autorización mediante OAuth 2.0. [Ejemplos de código](https://azure.microsoft.com/documentation/samples/?service=active-directory&term=multi-tenant) están disponible tooshow cómo una aplicación web, la aplicación nativa o la autorización de las solicitudes de aplicación de demonio/servidor códigos y tener acceso a los tokens de toocall las API web.
 
-Es posible que la aplicación web ofrezca también una experiencia de suscripción para los usuarios. Si realmente ofrece una experiencia de suscripción, se espera que el usuario haga clic en un botón de suscripción que redirigirá el explorador al punto de conexión de autorización de OAuth2.0 para Azure AD o a un punto de conexión de información del usuario de OpenID Connect. Estos extremos permiten que la aplicación obtenga información sobre el nuevo usuario inspeccionando el id_token. Después de la fase de inicio de sesión, se presentará al usuario una petición de consentimiento similar a la que se mostró anteriormente en la sección Información general sobre el marco de consentimiento.
+Es posible que la aplicación web ofrezca también una experiencia de suscripción para los usuarios. Si ofrece una experiencia de inicio de sesión, se espera que ese usuario Hola hará clic en un botón de suscripción que redirección Hola explorador toohello OAuth2.0 de Azure AD autorizará extremo o un punto de conexión OpenID Connect de la información de usuario. Estos extremos permiten Hola aplicación tooget saber nuevo usuario de hello inspeccionando id_token Hola. Después de la fase de inicio de sesión de hello usuario Hola aparecerá con un toohello similar prompt de consentimiento se muestra anteriormente en hello información general de hello sección del marco de consentimiento.
 
-Como alternativa, también es posible que la aplicación web ofrezca una experiencia que permite a los administradores "suscribir mi compañía". Esta experiencia también redirigiría al usuario al extremo de autorización de OAuth 2.0 para Azure AD. Sin embargo, en este caso se pasa un parámetro prompt=admin_consent al punto de conexión de la autorización para forzar la experiencia de consentimiento del administrador, donde el administrador concederá consentimiento en nombre de su organización. Solo un usuario que se autentique con una cuenta que pertenezca al rol Administrador global puede proporcionar el consentimiento; otros usuarios recibirán un error. Tras el consentimiento correcto, la respuesta contendrá admin_consent=true. Al canjear un token de acceso, también recibirá un id_token que proporcionará información sobre la organización y el administrador que se suscribió en la aplicación.
+Como alternativa, la aplicación web también puede ofrecer una experiencia que permite a los administradores demasiado "suscribir mi compañía". Esta experiencia también podría redireccionar Hola usuario toohello Azure AD OAuth 2.0 extremo authorize. En este caso, sin embargo, pasar un símbolo del sistema = admin_consent toohello parámetro autorizar extremo tooforce Hola administrador experiencia de consentimiento, donde el Administrador de hello concederá consentimiento en nombre de su organización. Solo un usuario que se autentica con una cuenta que pertenezca el rol de administrador Global de toohello puede dar su consentimiento; otros usuarios recibirán un error. En el consentimiento correcto, respuesta de hello contendrá admin_consent = true. Al canjear un token de acceso, también recibirá un id_token que proporcionará información sobre la organización de Hola y el Administrador de Hola que registró para la aplicación.
 
 ### <a name="enabling-oauth-20-implicit-grant-for-single-page-applications"></a>Habilitación de la concesión implícita de OAuth 2.0 para aplicaciones de una sola página
-Las aplicaciones de una sola página (SPA) normalmente tienen una estructura con un front-end de JavaScript que se ejecuta en el explorador, que llama al back-end de la API web de la aplicación para llevar a cabo su lógica empresarial. Para las SPA hospedadas en Azure AD, se usa la concesión implícita de OAuth 2.0 para autenticar al usuario en Azure AD y obtener un token que puede usar para proteger las llamadas desde el cliente JavaScript de la aplicación hasta su API web de back-end. Después de que el usuario haya dado su consentimiento, este mismo protocolo de autenticación se puede usar para obtener tokens para proteger las llamadas entre el cliente y otros recursos de API web configurados para la aplicación. Para conocer más sobre la concesión de autorización implícita y ayudarle a decidir si es adecuada para el escenario de su aplicación, consulte [Descripción del flujo de concesión implícita de OAuth2 de Azure Active Directory (AD) ](active-directory-dev-understanding-oauth2-implicit-grant.md).
+Normalmente están estructurada única página de la aplicación (SPAs) con un front-end pesado de JavaScript que se ejecuta en el Explorador de hello, que llama tooperform de back-end de API web de la aplicación hello su lógica de negocios. Para SPAs hospedados en Azure AD, que usar usuario de concesión implícita OAuth 2.0 tooauthenticate Hola con Azure AD y obtener un token que puede usar toosecure devuelve la llamada de tooits de cliente de JavaScript de la aplicación hello final web API. Después de usuario de hello concedió consentimiento, este mismo protocolo de autenticación puede ser usado tooobtain tokens toosecure llamadas entre el cliente de Hola y otros recursos de API web configurados para la aplicación hello. toolearn más información sobre concesión de autorización implícita de Hola y ayudarle a decidir si es adecuado para su escenario de aplicaciones, consulte [Hola descripción OAuth2 implícita conceder flujo en Azure Active Directory ](active-directory-dev-understanding-oauth2-implicit-grant.md).
 
-De forma predeterminada, la concesión implícita de OAuth 2.0 está deshabilitada para las aplicaciones. Puede habilitarla para su aplicación si configura el valor `oauth2AllowImplicitFlow` en su [manifiesto de aplicación](active-directory-application-manifest.md), que es un archivo JSON que representa la configuración de identidad de la aplicación.
+De forma predeterminada, la concesión implícita de OAuth 2.0 está deshabilitada para las aplicaciones. Puede habilitar la concesión implícita OAuth 2.0 para la aplicación por establecer hello `oauth2AllowImplicitFlow` valor en su [manifiesto de aplicación](active-directory-application-manifest.md), que es un archivo JSON que representa la configuración de la identidad de la aplicación.
 
-#### <a name="to-enable-oauth-20-implicit-grant"></a>Para habilitar la concesión implícita de OAuth 2.0
-1. Inicie sesión en el [Portal de Azure](https://portal.azure.com).
-2. Para elegir el inquilino de Azure AD, seleccione una cuenta en la esquina superior derecha de la página.
-3. En el menú superior, elija **Azure Active Directory**, haga clic en **Registros de aplicaciones** y luego haga clic en la aplicación que desee configurar. Esto le llevará a la página de inicio rápido de la aplicación y se abrirá la hoja Configuración de dicha aplicación.
-4. En la página de la aplicación, haga clic en **Manifiesto** para abrir el editor de manifiestos en línea.
-   Busque y establezca el valor de "oauth2AllowImplicitFlow" en “true”. De forma predeterminada, es "false".
+#### <a name="tooenable-oauth-20-implicit-grant"></a>concesión implícita OAuth 2.0 tooenable
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
+2. Elija al inquilino de Azure AD seleccionando su cuenta en hello superior derecho de la página de Hola.
+3. En el menú superior de hello, elija **Azure Active Directory**, haga clic en **registros de aplicación**y, a continuación, haga clic en aplicación hello desea tooconfigure. Esto se dirigirá la página de inicio rápido de la aplicación toohello, así como abrir la hoja de configuración de hello para la aplicación hello.
+4. En la página de aplicación Hola, haga clic en **manifiesto** editor de manifiestos de tooopen hello en línea.
+   Busque y establezca el valor de "oauth2AllowImplicitFlow" hello demasiado "true". De forma predeterminada, es "false".
    
     `"oauth2AllowImplicitFlow": true,`
-5. Guarde el manifiesto actualizado. Una vez guardado, la API web estará ahora configurada para usar la concesión implícita de OAuth 2.0 para autenticar a los usuarios.
+5. Guarde el manifiesto de hello actualizado. Una vez guardado, web que API está configurado ahora los usuarios tooauthenticate de concesión implícita OAuth 2.0 toouse.
 
 
 ## <a name="removing-an-application"></a>Eliminación de una aplicación
-En esta sección se describe cómo quitar una aplicación del inquilino de Azure AD.
+Esta sección describe cómo tooremove una aplicación de Azure AD de inquilinos.
 
 ### <a name="removing-an-application-authored-by-your-organization"></a>Eliminación de una aplicación creada por su organización
-Estas son las aplicaciones que se muestran con el filtro "Aplicaciones que tiene mi compañía" en la página principal de "Aplicaciones" para el inquilino de Azure AD. En términos técnicos, se trata de aplicaciones que se han registrado manualmente mediante el Portal de Azure clásico o mediante programación a través de PowerShell o la API Graph. Más específicamente, se representan mediante un objeto Application y ServicePrincipal en el inquilino. Para más información, consulte [Objetos Application y objetos ServicePrincipal](active-directory-application-objects.md) .
+Estas son aplicaciones de Hola que se muestran en filtro de "Las aplicaciones que tiene mi compañía" hello en página principal de "Aplicaciones" de hello para el inquilino de Azure AD. En términos técnicos, estas aplicaciones registradas manualmente a través del portal de Azure clásico hello, o mediante programación a través de PowerShell u Hola API Graph. Más específicamente, se representan mediante un objeto Application y ServicePrincipal en el inquilino. Para más información, consulte [Objetos Application y objetos ServicePrincipal](active-directory-application-objects.md) .
 
-#### <a name="to-remove-a-single-tenant-application-from-your-directory"></a>Para quitar una aplicación de un solo inquilino del directorio
-1. Inicie sesión en el [Portal de Azure](https://portal.azure.com).
-2. Para elegir el inquilino de Azure AD, seleccione una cuenta en la esquina superior derecha de la página.
-3. En el menú superior, elija **Azure Active Directory**, haga clic en **Registros de aplicaciones** y luego haga clic en la aplicación que desee configurar. Esto le llevará a la página de inicio rápido de la aplicación y se abrirá la hoja Configuración de dicha aplicación.
-4. En la página de la aplicación, haga clic en **Eliminar**.
-5. Haga clic en **Sí** en el mensaje de confirmación.
+#### <a name="tooremove-a-single-tenant-application-from-your-directory"></a>tooremove una aplicación de un solo inquilino de su directorio
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
+2. Elija al inquilino de Azure AD seleccionando su cuenta en hello superior derecho de la página de Hola.
+3. En el menú superior de hello, elija **Azure Active Directory**, haga clic en **registros de aplicación**y, a continuación, haga clic en aplicación hello desea tooconfigure. Esto se dirigirá la página de inicio rápido de la aplicación toohello, así como abrir la hoja de configuración de hello para la aplicación hello.
+4. En la página de aplicación Hola, haga clic en **eliminar**.
+5. Haga clic en **Sí** en el mensaje de confirmación de saludo.
 
-#### <a name="to-remove-a-multi-tenant-application-from-your-directory"></a>Para quitar una aplicación multiempresa de su directorio
-1. Inicie sesión en el [Portal de Azure](https://portal.azure.com).
-2. Para elegir el inquilino de Azure AD, seleccione una cuenta en la esquina superior derecha de la página.
-3. En el menú superior, elija **Azure Active Directory**, haga clic en **Registros de aplicaciones** y luego haga clic en la aplicación que desee configurar. Esto le llevará a la página de inicio rápido de la aplicación y se abrirá la hoja Configuración de dicha aplicación.
-4. En la hoja Configuración, elija **Propiedades** y coloque el conmutador **Multiinquilino** en la posición **No**. Esto hace que la aplicación sea de un solo inquilino, pero la aplicación seguirá estando en la organización que ya le dio su consentimiento.
-5. Haga clic en el botón **Eliminar** desde la página de la aplicación.
-6. Haga clic en **Sí** en el mensaje de confirmación.
+#### <a name="tooremove-a-multi-tenant-application-from-your-directory"></a>tooremove una aplicación multiempresa de su directorio
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
+2. Elija al inquilino de Azure AD seleccionando su cuenta en hello superior derecho de la página de Hola.
+3. En el menú superior de hello, elija **Azure Active Directory**, haga clic en **registros de aplicación**y, a continuación, haga clic en aplicación hello desea tooconfigure. Esto se dirigirá la página de inicio rápido de la aplicación toohello, así como abrir la hoja de configuración de hello para la aplicación hello.
+4. En la hoja de configuración de hello, elija **propiedades** hello voltear y **con inquilinos múltiples** cambiar demasiado**No**. Esto convierte a su aplicación toobe un solo inquilino, pero la aplicación hello seguirá estando en una organización que ya se ha dado su consentimiento tooit.
+5. Haga clic en hello **eliminar** botón desde la página de aplicación Hola.
+6. Haga clic en **Sí** en el mensaje de confirmación de saludo.
 
 ### <a name="removing-a-multi-tenant-application-authorized-by-another-organization"></a>Eliminación de una aplicación multiinquilino autorizada por otra organización
-Este es un subconjunto de las aplicaciones que se muestran con el filtro "Aplicaciones que usa mi compañía" en la página principal de "Aplicaciones" para el inquilino de Azure AD, en concreto los que no aparecen en la lista "Aplicaciones que tiene mi compañía". En términos técnicos, son aplicaciones multiinquilino registradas durante el proceso de consentimiento. Más específicamente, se representan solo mediante un objeto ServicePrincipal en su inquilino. Para más información, consulte [Objetos Application y objetos ServicePrincipal](active-directory-application-objects.md) .
+Se trata de un subconjunto de las aplicaciones de Hola que se muestran en hello "Aplicaciones que usa mi compañía" filtro en la página de principal "Applications" hello para el inquilino de Azure AD, Hola específicamente los que no aparecen en la lista de "Aplicaciones que tiene mi compañía" Hola. En términos técnicos, estas son aplicaciones de varios inquilinos registradas durante el proceso de consentimiento de Hola. Más específicamente, se representan solo mediante un objeto ServicePrincipal en su inquilino. Para más información, consulte [Objetos Application y objetos ServicePrincipal](active-directory-application-objects.md) .
 
-A fin de quitar el acceso de una aplicación multiinquilino a su directorio (después de concederle consentimiento), el administrador de la compañía debe tener una suscripción de Azure para quitar el acceso a través de Azure Portal. El administrador de la empresa también puede usar los [Cmdlets de Azure AD PowerShell](http://go.microsoft.com/fwlink/?LinkId=294151) para quitar el acceso.
+En orden tooremove directorio de la aplicación de varios inquilinos acceso tooyour (después de haber concedido el consentimiento), Administrador de la compañía de hello debe tener un acceso de tooremove de suscripción de Azure a través de hello portal de Azure. Como alternativa, el Administrador de empresa de hello puede usar hello [Cmdlets de PowerShell de Azure AD](http://go.microsoft.com/fwlink/?LinkId=294151) tooremove acceso.
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Consulte [Directrices de personalización de marca para aplicaciones integradas](active-directory-branding-guidelines.md) para ver sugerencias de orientación visual para la aplicación.
-* Para más detalles sobre la relación entre los objetos de aplicación y de entidad de servicio para una aplicación, consulte [Application Objects and Service Principal Objects](active-directory-application-objects.md) (Objetos de aplicación y de entidad de servicio).
-* Para más información sobre el rol que desempeña el manifiesto de la aplicación, consulte [Descripción del manifiesto de aplicación de Azure Active Directory](active-directory-application-manifest.md).
-* Consulte el [glosario del desarrollador de Azure Active Directory](active-directory-dev-glossary.md) para ver definiciones de algunos de los conceptos fundamentales para el desarrollador de Azure Active Directory (AD).
-* Visite la [guía del desarrollador de Active Directory](active-directory-developers-guide.md) para ver información general sobre todo el contenido de interés para los desarrolladores.
+* Vea hello [directrices de personalización de marca para aplicaciones integradas](active-directory-branding-guidelines.md) para obtener sugerencias sobre guía visual para la aplicación.
+* Para obtener más detalles sobre la relación de hello entre objetos de aplicación y entidad de servicio de una aplicación, consulte [objetos de entidad de servicio y aplicación](active-directory-application-objects.md).
+* toolearn más información acerca de Hola Hola aplicación manifiesto juegos de roles, consulte [manifiesto de aplicación en Azure Active Directory descripción Hola](active-directory-application-manifest.md)
+* Vea hello [Glosario de Azure AD para desarrolladores](active-directory-dev-glossary.md) para obtener definiciones de algunos de los conceptos de desarrollador de hello principales Azure Active Directory (AD).
+* Visite hello [Guía del desarrollador de Active Directory](active-directory-developers-guide.md) para obtener información general de todos los desarrolladores de contenido relacionado.
 

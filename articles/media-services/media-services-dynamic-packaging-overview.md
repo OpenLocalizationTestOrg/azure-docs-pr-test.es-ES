@@ -1,6 +1,6 @@
 ---
-title: "Introducción al empaquetado dinámico de Azure Media Services | Microsoft Docs"
-description: "El tema proporciona información general sobre el empaquetado dinámico."
+title: "información general sobre el empaquetado dinámico de servicios multimedia aaaAzure | Documentos de Microsoft"
+description: "Hola tema proporciona y visión general de los paquetes dinámicos."
 author: Juliako
 manager: cfowler
 editor: 
@@ -14,42 +14,42 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: juliako
-ms.openlocfilehash: 2d212599302fced3f60085ab30cdeaefc1ee2e6a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 970e24eba800e098774172c87f56629430b227a9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="dynamic-packaging"></a>Empaquetado dinámico
 ## <a name="overview"></a>Información general
-Servicios multimedia de Microsoft Azure puede usarse para proporcionar varios formatos de archivo de origen multimedia, formatos de streaming multimedia y formatos de protección de contenido a diversas tecnologías cliente (por ejemplo, iOS, XBOX, Silverlight y Windows 8). Estos clientes entienden distintos protocolos. Por ejemplo, iOS requiere un formato HTTP Live Streaming (HLS) V4, y Silverlight y Xbox requieren Smooth Streaming. Si tiene un conjunto de archivos MP4 (ISO Base Media 14496-12) de velocidad de bits adaptable (varias velocidades de bits) o un conjunto de archivos Smooth Streaming de velocidad de bits adaptable que desea ofrecer a los clientes que entienden MPEG DASH, HLS o Smooth Streaming, puede aprovechar el empaquetado dinámico de Servicios multimedia.
+Servicios de multimedia de Microsoft Azure puede ser usado toodeliver origen multimedia muchos formatos de archivo, formatos de transmisión por secuencias de multimedia y formatos de protección de contenido tooa gran variedad de tecnologías de cliente (por ejemplo, iOS, XBOX, Silverlight, Windows 8). Estos clientes entienden distintos protocolos. Por ejemplo, iOS requiere un formato HTTP Live Streaming (HLS) V4, y Silverlight y Xbox requieren Smooth Streaming. Si tiene un conjunto de velocidad de bits adaptativa (velocidades de bits) MP4 archivos (ISO Base Media 14496-12) o un conjunto de archivos de Smooth Streaming de velocidad de bits adaptativa que desea tooclients tooserve que entienden MPEG DASH, HLS o Smooth Streaming, le conviene aprovechar de medios Servicios de empaquetado dinámico.
 
-Con el empaquetado dinámico, lo único que debe hacer es crear un recurso que contenga un conjunto de archivos MP4 de velocidad de bits adaptable o archivos Smooth Streaming de velocidad de bits adaptable. Luego, según el formato especificado en la solicitud de manifiesto o fragmento, el servidor de streaming a petición se asegurará de que reciba la secuencia en el protocolo elegido. Como resultado, solo tendrá que almacenar y pagar los archivos en formato de almacenamiento único y Servicios multimedia creará y proporcionará la respuesta adecuada en función de las solicitudes de un cliente.
+Con el empaquetado dinámico todo lo que necesita es toocreate un activo que contiene un conjunto de archivos MP4 de velocidad de bits adaptativa o archivos de Smooth Streaming de velocidad de bits adaptativa. A continuación, según Hola formato especificado en el manifiesto de Hola o fragmentar la solicitud, Hola servidor se asegurará de que recibe Hola transmisión por secuencias de protocolo de Hola que ha elegido el Streaming a petición. Como resultado, solo tendrá toostore y pago para los archivos de hello en formato de almacenamiento único y el servicio de servicios multimedia creará y proporcionará la respuesta adecuada Hola según las solicitudes de un cliente.
 
-El diagrama siguiente muestra el flujo de trabajo de codificación y empaquetado estático tradicionales.
+Hello siguiente diagrama muestra la codificación tradicional de Hola y flujo de trabajo de empaquetado estático.
 
 ![Codificación estática](./media/media-services-dynamic-packaging-overview/media-services-static-packaging.png)
 
-El diagrama siguiente muestra el flujo de trabajo de empaquetado dinámico.
+Hello siguiente diagrama muestra el flujo de trabajo de hello empaquetado dinámico.
 
 ![Codificación dinámica](./media/media-services-dynamic-packaging-overview/media-services-dynamic-packaging.png)
 
 
 ## <a name="common-scenario"></a>Escenario común
-1. Cargar un archivo de entrada (llamado archivo intermedio). Por ejemplo, H.264, MP4 o WMV (para obtener la lista de formatos compatibles, vea [Formatos de Media Encoder Standard](media-services-media-encoder-standard-formats.md)).
-2. Codificar el archivo intermedio en conjuntos MP4 de velocidad de bits adaptable H.264.
-3. Publicar el recurso que contiene el conjunto MP4 de velocidad de bits adaptable mediante la creación del localizador a petición.
-4. Compilar las direcciones URL de streaming para obtener acceso al contenido y hacer streaming de este.
+1. Cargar un archivo de entrada (llamado archivo intermedio). Por ejemplo, H.264, MP4 o WMV (consulte lista de Hola de formatos admitidos [formatos compatibles con hello Media Encoder estándar](media-services-media-encoder-standard-formats.md).
+2. Codificar los conjuntos de velocidad de bits adaptativa mezzanine tooH.264 MP4 de archivo.
+3. Publicar el recurso de Hola que contiene Hola velocidad de bits adaptativa MP4 establecido mediante la creación de hello localizador a petición.
+4. Compile hello tooaccess de direcciones URL de streaming y transmitir el contenido.
 
 ## <a name="preparing-assets-for-dynamic-streaming"></a>Preparación de recursos para el streaming dinámico
-Si desea preparar el recurso para el streaming dinámico, tiene dos opciones:
+tooprepare su activo para dinámicas de transmisión por secuencias se tiene dos opciones:
 
 1. [Cargar un archivo maestro](media-services-dotnet-upload-files.md).
-2. [Usar el codificador Media Encoder Standard para producir conjuntos MP4 de velocidad de bits adaptable H.264](media-services-dotnet-encode-with-media-encoder-standard.md).
+2. [Usar conjuntos de velocidad de bits adaptativa de codificador Media Encoder estándar de hello tooproduce MP4 H.264](media-services-dotnet-encode-with-media-encoder-standard.md).
 3. [Transmita el contenido](media-services-deliver-content-overview.md).
 
 ## <a id="unsupported_formats"></a>Formatos no compatibles con el empaquetado dinámico
-El empaquetado dinámico no admite los siguientes formatos de archivo de origen:
+Hello siguientes formatos de archivo de origen no se admiten con el empaquetado dinámico.
 
 * Archivos MP4 Dolby Digital.
 * Archivos MP4 Dolby Digital Smooth.

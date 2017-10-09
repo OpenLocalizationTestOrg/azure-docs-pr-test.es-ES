@@ -1,6 +1,6 @@
-Si posee una dirección URL de firma de acceso compartido (SAS) que le concede acceso a los recursos de una cuenta de almacenamiento, puede utilizar la SAS en una cadena de conexión. Dado que SAS incluye la información necesaria para autenticar la solicitud, una cadena de conexión con un SAS proporciona el protocolo, el punto de conexión de servicio y las credenciales necesarias para acceder al recurso.
+Si posee una dirección URL de firma (SAS) de acceso compartido que concede que acceso tooresources en una cuenta de almacenamiento, puede usar Hola SAS en una cadena de conexión. Dado que Hola SAS contiene solicitud de hello información tooauthenticate necesario hello, una cadena de conexión con una SAS proporciona protocolo hello, extremo de servicio de Hola y recursos de hello tooaccess de hello credenciales necesarias.
 
-Para crear una cadena de conexión que incluya una firma de acceso compartido, especifique la cadena con el siguiente formato:
+toocreate una cadena de conexión que incluya una firma de acceso compartido, especificar la cadena de Hola Hola siguiendo el formato:
 
 ```
 BlobEndpoint=myBlobEndpoint;
@@ -10,12 +10,12 @@ FileEndpoint=myFileEndpoint;
 SharedAccessSignature=sasToken
 ```
 
-Cada punto de conexión de servicio es opcional, aunque la cadena de conexión debe contener al menos uno.
+Cada extremo de servicio es opcional, aunque la cadena de conexión de hello debe contener al menos uno.
 
 > [!NOTE]
 > Se recomienda usar HTTPS con SAS.
 >
-> Si está especificando SAS en una cadena de conexión en un archivo de configuración, debe codificar caracteres especiales en la dirección URL.
+> Si está especificando una SAS en una cadena de conexión en un archivo de configuración, debe tooencode caracteres especiales en la dirección URL de Hola.
 >
 >
 
@@ -27,7 +27,7 @@ BlobEndpoint=https://storagesample.blob.core.windows.net;
 SharedAccessSignature=sv=2015-04-05&sr=b&si=tutorial-policy-635959936145100803&sig=9aCzs76n0E7y5BpEi2GvsSv433BZa22leDOZXX%2BXXIU%3D
 ```
 
-Aquí se muestra un ejemplo de la misma cadena de conexión con codificación de caracteres especiales:
+A continuación se muestra un ejemplo de Hola misma cadena de conexión con la codificación de caracteres especiales:
 
 ```
 BlobEndpoint=https://storagesample.blob.core.windows.net;
@@ -43,7 +43,7 @@ FileEndpoint=https://storagesample.file.core.windows.net;
 SharedAccessSignature=sv=2015-07-08&sig=iCvQmdZngZNW%2F4vw43j6%2BVz6fndHF5LI639QJba4r8o%3D&spr=https&st=2016-04-12T03%3A24%3A31Z&se=2016-04-13T03%3A29%3A31Z&srt=s&ss=bf&sp=rwl
 ```
 
-Aquí se muestra un ejemplo de la misma cadena de conexión con codificación de dirección URL:
+A continuación se muestra un ejemplo de Hola misma cadena de conexión con la codificación de direcciones URL:
 
 ```
 BlobEndpoint=https://storagesample.blob.core.windows.net;

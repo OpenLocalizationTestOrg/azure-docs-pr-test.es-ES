@@ -1,7 +1,7 @@
 ---
 featureFlags: usabilla
-title: "Conexión de Raspberry Pi (Node) a Azure IoT: Lección 1: Implementación de la aplicación | Microsoft Docs"
-description: "Clone la aplicación Node.js de ejemplo de GitHub y use Gulp para implementar esta aplicación en la placa de Raspberry Pi 3. Esta aplicación de ejemplo hace parpadear el LED conectado a la placa cada dos segundos."
+title: "Conectar frambuesa Pi (nodo) tooAzure IoT - lección 1: implementar la aplicación | Documentos de Microsoft"
+description: "Clonar Node.js aplicación de ejemplo de Hola desde GitHub y gulp toodeploy este panel de tooyour frambuesa Pi 3 de la aplicación. Esta aplicación de ejemplo parpadea Hola LED conectado toohello panel cada dos segundos."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -18,54 +18,54 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 8b73000c166950172c07b8e188025dc9da5bc011
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9732df3009b8342d4872fe2318a975a6251e772b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-and-deploy-the-blink-application"></a>Creación e implementación de la aplicación de intermitencia
+# <a name="create-and-deploy-hello-blink-application"></a>Crear e implementar la aplicación de hello parpadeo
 ## <a name="what-you-will-do"></a>Lo que hará
-Clone la aplicación de Node.js de ejemplo de GitHub y use la herramienta Gulp para implementar la aplicación de ejemplo en Raspberry Pi 3. La aplicación de ejemplo hace parpadear el LED conectado a la placa cada dos segundos. Si tiene problemas, busque soluciones en la [página de solución de problemas](iot-hub-raspberry-pi-kit-node-troubleshooting.md).
+Clonar Node.js aplicación de ejemplo de Hola desde GitHub y use hello gulp herramienta toodeploy Hola ejemplo aplicación tooyour frambuesa Pi 3. aplicación de ejemplo de Hola parpadea Hola LED conectado toohello panel cada dos segundos. Si tiene problemas, buscar soluciones en hello [página solución de problemas](iot-hub-raspberry-pi-kit-node-troubleshooting.md).
 
 ## <a name="what-you-will-learn"></a>Lo qué aprenderá
 En este artículo, aprenderá lo siguiente:
 
-* Cómo utilizar la herramienta `device-discover-cli` para recuperar la información de red de Pi
-* Cómo implementar y ejecutar la aplicación de ejemplo en Pi
-* Cómo implementar y depurar aplicaciones que se ejecutan de forma remota en Pi
+* ¿Cómo toouse hello `device-discover-cli` tooretrieve de herramienta de la red sobre Pi.
+* La ejecución hello y toodeploy aplicación sobre Pi de ejemplo.
+* ¿Cómo toodeploy y depurar las aplicaciones ejecutando de forma remota en Pi.
 
 ## <a name="what-you-need"></a>Lo que necesita
-Debe haber completado correctamente las siguientes operaciones:
+Debe haber completado correctamente hello las siguientes operaciones:
 
 * [Configuración del dispositivo](iot-hub-raspberry-pi-kit-node-lesson1-configure-your-device.md)
-* [Obtener las herramientas](iot-hub-raspberry-pi-kit-node-lesson1-get-the-tools-win32.md)
+* [Obtener herramientas de Hola](iot-hub-raspberry-pi-kit-node-lesson1-get-the-tools-win32.md)
 
-## <a name="obtain-the-ip-address-and-host-name-of-pi"></a>Obtención de la dirección IP y el nombre de host de Pi
-Abra un símbolo del sistema en Windows o una ventana de terminal de Mac OS o Ubuntu y, después, ejecute el siguiente comando:
+## <a name="obtain-hello-ip-address-and-host-name-of-pi"></a>Obtener nombre de host y dirección IP de Hola de Pi
+Abra un símbolo del sistema en Windows o un terminal de Mac OS o Ubuntu y, a continuación, ejecute el siguiente comando de hello:
 
 ```bash
 devdisco list --eth
 ```
 
-Debería ver una salida similar a la siguiente:
+Debería ver un resultado similar siguiente toohello:
 
 ![Detección de dispositivos](media/iot-hub-raspberry-pi-lessons/lesson1/device_discovery.png)
 
-Tome nota de los valores de `IP address` y `hostname` de Pi. Necesitará esta información posteriormente en este artículo.
+Tome nota de hello `IP address` y `hostname` de Pi. Necesitará esta información posteriormente en este artículo.
 
 > [!NOTE]
-> Asegúrese de que la Pi se conecta a la misma red que el equipo. Por ejemplo, si el equipo está conectado a una red inalámbrica mientras Pi está conectada a una red cableada, es posible que no vea la dirección IP en la salida de devdisco.
+> Asegúrese de que ese Pi está conectado toohello misma red que el equipo. Por ejemplo, si el equipo está conectado tooa red inalámbrica mientras Pi es tooa conectado por cable de red, no verá Hola IP dirección en la salida de hello devdisco.
 
-## <a name="clone-the-sample-application"></a>Clonación de la aplicación de ejemplo
-Para ejecutar el código de ejemplo, siga estos pasos:
+## <a name="clone-hello-sample-application"></a>Clonar aplicación de ejemplo de Hola
+Hola tooopen código de ejemplo, siga estos pasos:
 
-1. Clone el repositorio de ejemplo de GitHub ejecutando el comando siguiente:
+1. Clonar el repositorio de ejemplo de Hola desde GitHub ejecutando Hola siguiente comando:
    
    ```bash
    git clone https://github.com/Azure-Samples/iot-hub-node-raspberrypi-getting-started.git
    ```
-2. Abra la aplicación de ejemplo en Visual Studio Code ejecutando los comandos siguientes:
+2. Abra la aplicación de ejemplo de Hola en código de Visual Studio mediante la ejecución de hello siguientes comandos:
    
    ```bash
    cd iot-hub-node-raspberrypi-getting-started
@@ -75,27 +75,27 @@ Para ejecutar el código de ejemplo, siga estos pasos:
 
 ![Estructura del repositorio](media/iot-hub-raspberry-pi-lessons/lesson1/vscode-blink-mac.png)
 
-El archivo `app.js` de la subcarpeta `app` es el archivo de origen de la clave que contiene el código para controlar el LED.
+Hola `app.js` archivo Hola `app` subcarpeta es el archivo de origen de la clave de Hola que contiene Hola código toocontrol Hola LED.
 
 ### <a name="install-application-dependencies"></a>Instalación de las dependencias de aplicaciones
-Instale las bibliotecas y otros módulos que necesite para la aplicación de ejemplo ejecutando el comando siguiente:
+Instalar bibliotecas de Hola y otros módulos que necesita para la aplicación de ejemplo de Hola ejecutando el siguiente comando de hello:
 
 ```bash
 npm install
 ```
 
-## <a name="configure-the-device-connection"></a>Configuración de la conexión de dispositivos
-Para configurar la conexión de dispositivos, siga estos pasos:
+## <a name="configure-hello-device-connection"></a>Configurar conexión de dispositivo de Hola
+tooconfigure Hola conexión del dispositivo, siga estos pasos:
 
-1. Genere el archivo de configuración de dispositivos mediante la ejecución del comando siguiente:
+1. Generar archivo de configuración de dispositivo de hello ejecutando Hola siguiente comando:
    
    ```bash
    gulp init
    ```
    
-   El archivo de configuración `config-raspberrypi.json` contiene las credenciales de usuario que use para iniciar sesión en Pi. Para evitar la pérdida de las credenciales de usuario, se genera el archivo de configuración en la subcarpeta `.iot-hub-getting-started` de la carpeta principal del equipo.
+   archivo de configuración de Hello `config-raspberrypi.json` contiene las credenciales de usuario de hello usar toolog en tooPi. pérdida de hello tooavoid de credenciales de usuario, se genera el archivo de configuración de hello en subcarpeta hello `.iot-hub-getting-started` de la carpeta particular de hello en el equipo.
 
-2. Abra el archivo de configuración de dispositivos en Visual Studio Code ejecutando el comando siguiente:
+2. Abra el archivo de configuración de dispositivo de hello en código de Visual Studio mediante la ejecución de hello siguiente comando:
    
    ```bash
    # For Windows command prompt
@@ -105,18 +105,18 @@ Para configurar la conexión de dispositivos, siga estos pasos:
    code ~/.iot-hub-getting-started/config-raspberrypi.json
    ```
    
-3. Reemplace el marcador de posición `[device hostname or IP address]` con la dirección IP o el nombre de host que obtuvo anteriormente en "Obtención de la dirección IP y el nombre de host de Pi".
+3. Reemplace el marcador de posición de hello `[device hostname or IP address]` con dirección IP de Hola o nombre de host de hello obtenido anteriormente en "Obtener Hola IP dirección y nombre de host de Pi."
    
    ![Config.json](media/iot-hub-raspberry-pi-lessons/lesson1/vscode-config-mac.png)
 
 > [!NOTE]
-> Puede usar la clave SSH en lugar del nombre de usuario y la contraseña al conectarse a Raspberry Pi. Para ello se deben generar la clave mediante **ssh-keygen** y **ssh-copy-Id. pi @\<dirección del dispositivo\>**.
+> Puede usar la clave SSH en lugar del nombre de usuario y contraseña al conectar tooRaspberry Pi. En Ordenar toodo esto tendrá toogenerate Hola clave utilizando **ssh-keygen** y **ssh-copy-Id. pi @\<dirección del dispositivo\>**.
 >
 > En Windows, estos comandos están disponibles en **Git Bash**.
 >
-> En Mac OS, debe ejecutar **brew install ssh-copy-id**.
+> En Mac OS necesita toorun **cerveza instalar ssh-copy-id**.
 >
-> Después de cargar correctamente la clave en Raspberry Pi, reemplace **device_password** por la propiedad **device_key_path** en **config-raspberrypi.json**.
+> Después de cargar correctamente Hola clave toohello frambuesa Pi, reemplace **device_password** con **device_key_path** propiedad en **raspberrypi.json config**.
 >
 > Las líneas actualizadas deben presentar el siguiente aspecto:
 > ```javascript
@@ -124,32 +124,32 @@ Para configurar la conexión de dispositivos, siga estos pasos:
 > "device_key_path": "id_rsa",
 > ```
 
-¡Enhorabuena! Ha creado correctamente la primera aplicación de ejemplo para Pi.
+¡Enhorabuena! Ha creado correctamente la primera aplicación de ejemplo hello de Pi.
 
-## <a name="deploy-and-run-the-sample-application"></a>Implementación y ejecución de la aplicación de ejemplo
+## <a name="deploy-and-run-hello-sample-application"></a>Implementar y ejecutar la aplicación de ejemplo de Hola
 ### <a name="install-nodejs-and-npm-on-pi"></a>Instalación de Node.js y NPM en Pi
-Instale Node.js y NPM en Pi ejecutando el comando siguiente:
+Instalar Node.js y NPM en Pi ejecutando Hola siguiente comando:
 
 ```bash
 gulp install-tools
 ```
 
-Esta tarea podría tardar 10 minutos en completarse la primera vez que la ejecute.
+Esta tarea puede tomar hello toocomplete de 10 minutos por primera vez que se ejecuta.
 
-### <a name="deploy-and-run-the-sample-app"></a>Implementación y ejecución de la aplicación de ejemplo
-Implemente y ejecute la aplicación de ejemplo usando el comando siguiente:
+### <a name="deploy-and-run-hello-sample-app"></a>Implementar y ejecutar la aplicación de ejemplo de Hola
+Implementar y ejecutar la aplicación de ejemplo de Hola ejecutando Hola siguiente comando:
 
 ```bash
 gulp deploy && gulp run
 ```
 
-### <a name="verify-the-app-works"></a>Comprobación del funcionamiento de la aplicación
-Ahora debería ver que el LED de Pi parpadea cada dos segundos.  En caso contrario, consulte la [guía de solución de problemas](iot-hub-raspberry-pi-kit-node-troubleshooting.md) para ver soluciones a problemas comunes.
+### <a name="verify-hello-app-works"></a>Compruebe que funciona de la aplicación de Hola
+Ahora debería ver Hola LED en Pi parpadea cada dos segundos.  Si no ve Hola LED parpadea, vea hello [Guía de solución de problemas](iot-hub-raspberry-pi-kit-node-troubleshooting.md) para soluciones toocommon problemas.
 ![Intermitencia del LED](media/iot-hub-raspberry-pi-lessons/lesson1/led_blinking.jpg)
 
 ## <a name="summary"></a>Resumen
-Ha instalado las herramientas necesarias para usar Pi e implementado una aplicación de ejemplo para que Pi haga parpadear el LED. Ahora puede crear, implementar y ejecutar otra aplicación de ejemplo que conecte Pi a Azure IoT Hub para enviar y recibir mensajes.
+Ha instalado Hola requerido herramientas toowork con Pi e implementado un Hola de tooblink tooPi de aplicación de ejemplo LED. Ahora puede crear, implementar y ejecutar otra aplicación de ejemplo que se conecta Pi tooAzure toosend centro de IoT y recibir mensajes.
 
 ## <a name="next-steps"></a>Pasos siguientes
-[Obtención de las herramientas de Azure](iot-hub-raspberry-pi-kit-node-lesson2-get-azure-tools-win32.md)
+[Obtener hello Azure tools](iot-hub-raspberry-pi-kit-node-lesson2-get-azure-tools-win32.md)
 

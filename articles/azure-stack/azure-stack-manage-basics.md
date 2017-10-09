@@ -1,6 +1,6 @@
 ---
-title: "Aspectos básicos de administración de Azure Stack | Microsoft Docs"
-description: Aprenda lo necesario para administrar Azure Stack.
+title: "conceptos básicos de administración de pila aaaAzure | Documentos de Microsoft"
+description: "Obtenga información acerca de lo que necesita tooknow tooadminister pila de Azure."
 services: azure-stack
 documentationcenter: 
 author: twooley
@@ -14,101 +14,101 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2017
 ms.author: twooley
-ms.openlocfilehash: 73f2c739a792825ccccda39ca76abef2dd490808
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: cdf2818e9fc819b448508ca52bbdbec259890265
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-stack-administration-basics"></a>Aspectos básicos de administración de Azure Stack
 
-Hay varias cosas que debe saber si no está familiarizado con la administración de Azure Stack. Esta guía proporciona información general sobre el rol como operador de nube, y lo que debe decir a los usuarios para que aumenten su productividad rápidamente.
+Hay varias cosas que debe tooknow Soy nuevo tooAzure administración de la pila. Esta guía proporciona información general de la función como un operador en la nube y lo que necesita tootell a los usuarios les toobecome productivo rápidamente.
 
 ## <a name="understand-development-kit-builds"></a>Comprender las compilaciones del kit de desarrollo
 
-Revise el artículo [What is Azure Stack?](azure-stack-poc.md) (¿Qué es Azure Stack?) para asegurarse de comprender el propósito de Azure Stack Development Kit y sus limitaciones. Debe usar el kit de desarrollo como un “espacio aislado” donde puede evaluar Azure Stack, y desarrollar y probar sus aplicaciones en un entorno que no es de producción. Para obtener información de implementación, consulte [Azure Stack Development Kit deployment quickstart](azure-stack-deploy-overview.md) (Guía de inicio rápido de implementación de Azure Stack Development Kit).
+Hola de revisión [¿qué es Azure pila?](azure-stack-poc.md) toomake artículo debe comprender el propósito de Hola de hello Kit de desarrollo de pila de Azure y sus limitaciones. Debe usar el kit de desarrollo de Hola como un "recinto", donde puede evaluar la pila de Azure y desarrollar y probar sus aplicaciones en un entorno no productivo. (Para obtener información de implementación, vea hello [implementación del Kit de desarrollo de Azure pila](azure-stack-deploy-overview.md) inicio rápido.)
 
-Como Azure, innovamos con rapidez. Publicaremos nuevas compilaciones con asiduidad. Cuando quiera pasar a la compilación más reciente, debe [volver a implementar Azure Stack](azure-stack-redeploy.md). Este proceso lleva tiempo, pero la ventaja es que puede probar las características más recientes. La documentación de nuestro sitio web hace referencia a la versión de compilación más reciente.
+Como Azure, innovamos con rapidez. Publicaremos nuevas compilaciones con asiduidad. Cuando quiera toomove toohello última compilación, debe [volver a implementar Azure pila](azure-stack-redeploy.md). Este proceso lleva tiempo, pero ventaja de hello es que puede probar características más recientes de Hola. documentación de Hello en nuestro sitio Web refleja la compilación de versión más reciente de Hola.
 
 ## <a name="learn-about-available-services"></a>Información sobre los servicios disponibles
 
-Deberá saber qué servicios puede poner a disposición de los usuarios. Azure Stack admite un subconjunto de servicios de Azure. La lista de servicios admitidos continuará evolucionando.
+Necesitará un reconocimiento de los servicios que puede hacer que los usuarios de tooyour disponible. Azure Stack admite un subconjunto de servicios de Azure. lista de Hello de servicios compatibles seguirán tooevolve.
 
 **Servicios fundamentales**
 
-De forma predeterminada, Azure Stack incluye los siguientes “servicios fundamentales” cuando se implementa Azure Stack:
+De forma predeterminada, la pila de Azure incluye Hola después de "servicios fundamentales" cuando se implementa la pila de Azure:
 
 - Proceso
 - Storage
 - Redes
 - Key Vault
 
-Con estos servicios fundamentales, puede ofrecer la infraestructura como servicio (IaaS) a los usuarios con una configuración mínima.
+Con estos servicios fundamentales, puede ofrecer a los usuarios de infraestructura como-servicio (IaaS) tooyour con una configuración mínima.
 
 **Servicios adicionales**
 
-Actualmente, se admiten los siguientes servicios de plataforma como servicio (PaaS) adicionales:
+Actualmente, se admite Hola después de los servicios de plataforma como-servicio (PaaS) adicionales:
 
 - App Service
 - Funciones de Azure
 - Bases de datos SQL y MySQL
 
-Estos servicios requieren una configuración adicional para que pueda ponerlos a disposición de los usuarios. Para obtener más información, consulte las secciones “Tutoriales” y “Guías de procedimientos\Oferta de servicios” de la documentación.
+Estos servicios requieren configuración adicional para poder realizar los usuarios de tooyour disponible. Para obtener más información, consulte las secciones de "cómo tooguides\Offer servicios" de Hola de nuestra documentación y tutoriales"Hola".
 
 **Mapa de ruta de los servicios**
 
-Azure Stack continuará agregando compatibilidad con los servicios de Azure. Para obtener el mapa de ruta previsto, consulte las notas del producto [Hybrid Application Innovation with Azure and Azure Stack](https://go.microsoft.com/fwlink/?LinkId=842846&clcid=0x409) (Innovación de aplicaciones híbridas con Azure y Azure Stack). También puede supervisar las [publicaciones de blog de Azure Stack](https://azure.microsoft.com/blog/tag/azure-stack-technical-preview) para conocer los nuevos anuncios.
+Pila Azure seguirá tooadd compatibilidad con los servicios de Azure. Para esquema de hello proyectado, vea hello [innovación de aplicaciones híbridas con Azure y Azure pila](https://go.microsoft.com/fwlink/?LinkId=842846&clcid=0x409) notas del producto. También puede supervisar hello [entradas de blog de Azure pila](https://azure.microsoft.com/blog/tag/azure-stack-technical-preview) para anuncios de nuevo.
 
-## <a name="what-tools-do-i-use-to-manage"></a>¿Qué herramientas debo usar para la administración?
+## <a name="what-tools-do-i-use-toomanage"></a>¿Qué herramientas usar toomanage?
  
-Puede usar el [portal de administración](azure-stack-manage-portals.md) o PowerShell para administrar Azure Stack. La manera más fácil de aprender los conceptos básicos es a través del portal. Si quiere usar PowerShell, existen algunos pasos preparatorios. Debe [instalar](azure-stack-powershell-install.md) PowerShell, [descargar](azure-stack-powershell-download.md) módulos adicionales y [configurar](azure-stack-powershell-configure-admin.md) PowerShell.
+Puede usar hello [portal del administrador](azure-stack-manage-portals.md) o PowerShell toomanage pila de Azure. conceptos básicos de Hello más fáciles manera toolearn hello es a través del portal de Hola. Si desea toouse PowerShell, hay pasos de preparación. Debe [instalar](azure-stack-powershell-install.md) PowerShell, [descargar](azure-stack-powershell-download.md) módulos adicionales y [configurar](azure-stack-powershell-configure-admin.md) PowerShell.
 
-Azure Stack usa Azure Resource Manager como mecanismo subyacente de implementación, administración y organización. Si va a administrar Azure Stack y ayudar en el soporte técnico a los usuarios, debe obtener información sobre Resource Manager. Consulte las notas del producto [Getting Started with Azure Resource Manager](http://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf) (Introducción a Azure Resource Manager).
+Azure Stack usa Azure Resource Manager como mecanismo subyacente de implementación, administración y organización. Si se va a toomanage pila de Azure y ayudan a los usuarios de soporte técnico, debe obtener información sobre el Administrador de recursos. Vea hello [introducción con el Administrador de recursos de Azure](http://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf) notas del producto.
 
 ## <a name="your-typical-responsibilities"></a>Sus responsabilidades típicas
 
-Los usuarios quieren usar los servicios. Desde la perspectiva de estos, su rol principal es poner estos servicios a su disposición. Debe decidir qué servicios se deben ofrecer y poner dichos servicios a su disposición mediante la creación de [cuotas](azure-stack-setting-quotas.md), [planes](azure-stack-create-plan.md) y [ofertas](azure-stack-create-offer.md). 
+Los usuarios desean toouse servicios. Desde su perspectiva, su función principal es toomake estos servicios toothem disponible. Debe decidir qué toooffer de servicios y hacer que dichos servicios disponibles mediante la creación de [cuotas](azure-stack-setting-quotas.md), [planes](azure-stack-create-plan.md), y [ofrece](azure-stack-create-offer.md). 
 
-También deberá agregar elementos al Marketplace, como imágenes de máquinas virtuales. La manera más fácil es [descargar elementos de Marketplace de Azure a Azure Stack](azure-stack-download-azure-marketplace-item.md).
+También necesitará tooadd elementos toohello marketplace, como las imágenes de máquina virtual. Hello más sencillo es demasiado[descargar elementos de marketplace de Azure tooAzure pila](azure-stack-download-azure-marketplace-item.md).
 
 > [!NOTE]
-> Si quiere probar los planes, las ofertas y los servicios, debe utilizar el [portal de usuarios](azure-stack-manage-portals.md), no el portal de administración.
+> Si desea tootest los planes, ofertas y servicios, debe usar hello [portal de usuarios](azure-stack-manage-portals.md); no portal del Administrador de Hola.
 
-Además de ofrecer servicios, debe realizar todas las tareas habituales de un operador de nube para mantener Azure Stack en funcionamiento. Estas tareas incluyen las siguientes:
+En los servicios de tooproviding adición, debe realizar todas las tareas normales de Hola de un tookeep de operador en la nube Azure pila activados y ejecutándose. Estas tareas Hola siguientes:
 
 - Agregar cuentas de usuario (para la implementación de [Azure Active Directory](azure-stack-add-new-user-aad.md) o de [Servicios de federación de Active Directory](azure-stack-add-users-adfs.md))
-- [Asignar roles de control de acceso basado en roles (RBAC)](azure-stack-manage-permissions.md) (esto no se restringe a los administradores).
+- [Asignar roles (RBAC) de control de acceso basado en roles](azure-stack-manage-permissions.md) (Esto no está restringido tooadministrators.)
 - [Supervisar el estado de la infraestructura](azure-stack-monitor-health.md)
 - Administrar los recursos de [red](azure-stack-viewing-public-ip-address-consumption.md) y [almacenamiento](azure-stack-manage-storage-accounts.md)
 - Reemplazar el hardware defectuoso
 
-## <a name="what-to-tell-your-users"></a>Qué decirles a los usuarios
+## <a name="what-tootell-your-users"></a>¿Qué tootell los usuarios
 
-Deberá informar a los usuarios cómo trabajar con los servicios en Azure Stack, cómo conectarse con el entorno del kit de desarrollo y cómo suscribirse a las ofertas.
+Necesitará toolet que los usuarios sepan cómo toowork con servicios en la pila de Azure, entorno del kit de desarrollo de toohello tooconnect y cómo toosubscribe toooffers.
 
-**Información sobre cómo trabajar con servicios en Azure Stack**
+**Comprender cómo toowork con servicios en la pila de Azure**
 
-Hay información que los usuarios deben comprender antes de usar los servicios y compilar aplicaciones en Azure Stack. Por ejemplo, existen requisitos específicos para las versiones de PowerShell y API. Además, existen algunas diferencias de características entre un servicio en Azure y el servicio equivalente en Azure Stack. Asegúrese de que los usuarios consulten los siguientes artículos:
+Hay información que los usuarios deben comprender antes de usar los servicios y compilar aplicaciones en Azure Stack. Por ejemplo, existen requisitos específicos para las versiones de PowerShell y API. Además, existen algunas diferencias de características entre un servicio de Azure y el servicio equivalente de hello en la pila de Azure. Asegúrese de que los usuarios revisión Hola siguientes artículos:
 
 - [Key considerations: Using services or building apps for Azure Stack](azure-stack-considerations.md) (Consideraciones clave: uso de servicios o compilación de aplicaciones para Azure Stack)
 - [Consideraciones sobre máquinas virtuales en Azure Stack](azure-stack-vm-considerations.md)
 - [Storage: differences and considerations](azure-stack-acs-differences-tp2.md) (Storage: diferencias y consideraciones)
 
-La información de estos artículos resume las diferencias entre un servicio en Azure y Azure Stack. Complementa la información disponible para un servicio de Azure en la documentación global de Azure. 
+información de Hello en estos artículos resume las diferencias de hello entre un servicio en Azure y la pila de Azure. Complementa la información de Hola que está disponible para un servicio de Azure en la documentación de Azure global Hola. 
 
-**Conexión a Azure Stack como usuario**
+**Conectar tooAzure pila como un usuario**
 
-En un entorno del kit de desarrollo, si un usuario no tiene acceso del Escritorio remoto al host del kit de desarrollo, debe configurar una conexión de red privada virtual (VPN) para poder obtener acceso a Azure Stack. Consulte [Conexión a Azure Stack](azure-stack-connect-azure-stack.md). 
+En un entorno de kit de desarrollo, si un usuario no tiene el host del kit de desarrollo de escritorio remoto acceso toohello, debe configurar una conexión de red privada virtual (VPN) antes de que puede obtener acceso a la pila de Azure. Vea [conectar tooAzure pila](azure-stack-connect-azure-stack.md). 
 
-Los usuarios querrán saber cómo [acceder al portal de usuarios](azure-stack-manage-portals.md) o cómo conectarse a través de PowerShell. Si usa PowerShell, puede que los usuarios deban registrar proveedores de recursos para poder usar los servicios. (Un proveedor de recursos administra un servicio. Por ejemplo, el proveedor de recursos de red administra recursos, como redes virtuales, interfaces de red y equilibradores de carga). Debe [instalar](azure-stack-powershell-install.md) PowerShell, [descargar](azure-stack-powershell-download.md) módulos adicionales y [configurar](azure-stack-powershell-configure-user.md) PowerShell (que incluye el registro de proveedores de recursos).
+Los usuarios desearán tooknow cómo demasiado[portal de usuarios de acceso hello ](azure-stack-manage-portals.md) o cómo tooconnect a través de PowerShell. Si usa PowerShell, los usuarios pueden tener tooregister proveedores de recursos para poder usar los servicios. (Un proveedor de recursos administra un servicio. Por ejemplo, hello proveedor de recursos de red administra los recursos tales como redes virtuales, interfaces de red y los equilibradores de carga.) Debe [instalar](azure-stack-powershell-install.md) PowerShell, [descargar](azure-stack-powershell-download.md) módulos adicionales y [configurar](azure-stack-powershell-configure-user.md) PowerShell (que incluye el registro de proveedores de recursos).
 
-**Suscripción a una oferta**
+**Suscribirse tooan oferta**
 
-Para que un usuario puede tener acceso a los servicios, debe [suscribirse a una oferta](azure-stack-subscribe-plan-provision-vm.md) que usted haya creado como operador de nube.
+Antes de que un usuario puede tener acceso a servicios, pero deben [suscribirse tooan oferta](azure-stack-subscribe-plan-provision-vm.md) que ha creado como un operador en la nube.
 
-## <a name="where-to-get-support"></a>Dónde obtener soporte técnico
+## <a name="where-tooget-support"></a>Donde se admite tooget
 
-Para Azure Stack Development Kit, puede dirigir las preguntas relacionadas con el soporte técnico a los [foros de Microsoft](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). Si hace clic el icono de ayuda y soporte técnico (signo de interrogación) en la esquina superior derecha del portal de administración y, a continuación, hace clic en **Nueva solicitud de soporte técnico**, se abrirá el sitio de foros directamente. Estos foros se supervisan periódicamente. Dado que el kit de desarrollo es un entorno de evaluación, no se ofrece ningún soporte técnico oficial a través de los servicios de soporte técnico al cliente (CSS) de Microsoft.
+Para hello Kit de desarrollo de pila de Azure, puede hacer preguntas relacionadas con el soporte de hello [foros de Microsoft](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). Si hace clic Hola ayuda y soporte técnico de icono (signo de interrogación) en la esquina superior derecha de hello del portal de administrador de hello y, a continuación, haga clic en **nueva solicitud de soporte técnico**, esto abre el sitio de foros de hello directamente. Estos foros se supervisan periódicamente. Dado que el kit de desarrollo de hello es un entorno de evaluación, no hay ningún oficial de soporte técnico que ofrecen a través de servicios de admitir de cliente de Microsoft (CSS).
 
 ## <a name="next-steps"></a>Pasos siguientes
 

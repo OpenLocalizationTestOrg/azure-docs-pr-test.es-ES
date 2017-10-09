@@ -1,5 +1,5 @@
 ---
-title: "Preguntas más frecuentes sobre Web App on Linux de Azure App Service | Microsoft Docs"
+title: "aaaAzure aplicación servicio de aplicaciones Web de preguntas más frecuentes de Linux | Documentos de Microsoft"
 description: "Este artículo trata sobre las preguntas más frecuentes sobre Web App on Linux de Azure App Service."
 keywords: "azure app service, web app, preguntas más frecuentes, linux, oss"
 services: app-service
@@ -15,57 +15,57 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: aelnably;wesmc
-ms.openlocfilehash: 6122f28b35d143ec26a379ae9aa8aee9bdaaff9e
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: c7798d9144d936eecdc0e191fc870b0ee0b220c8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-app-service-web-app-on-linux-faq"></a>Preguntas más frecuentes sobre Web App on Linux de Azure App Service
 
 [!INCLUDE [app-service-linux-preview](../../includes/app-service-linux-preview.md)]
 
 
-Con el lanzamiento de Web App en Linux, estamos trabajando en incorporar características y realizar mejoras en nuestra plataforma. A continuación encontrará una serie de preguntas más frecuentes que nuestros clientes nos han formulado durante los últimos meses.
-Si tiene alguna pregunta, comente el artículo y le responderemos en cuanto sea posible.
+Con la versión de Hola de aplicación Web en Linux, estamos trabajando para agregar características y realizar la plataforma de tooour de mejoras. Aquí son algunas preguntas frecuentes (P+F) que nuestros clientes han estado solicitando a nosotros a través de Hola últimos meses.
+Si tiene alguna pregunta, el comentario de artículo de hello y, responderemos tan pronto como sea posible.
 
 ## <a name="built-in-images"></a>Imágenes integradas
 
-**P:** Quiero bifurcar los contenedores de Docker integrados que ofrece la plataforma. ¿Dónde puedo encontrar esos archivos?
+**P: ¿** quiero toofork hello Docker contenedores integrados que Hola plataforma proporciona. ¿Dónde puedo encontrar esos archivos?
 
 **R.:** Encontrará todos los archivos de Docker en [GitHub](https://github.com/azure-app-service). Puede encontrar todos los contenedores de Docker en [Docker Hub](https://hub.docker.com/u/appsvc/).
 
-**P.:** ¿Cuál es el valor previsible para la sección del archivo de inicio cuando se configura la pila en tiempo de ejecución?
+**P: ¿** ¿cuáles son valores esperados de Hola para hello sección del archivo de inicio al configurar la pila de tiempo de ejecución de Hola?
 
-**R.:** Para Node.Js, puede especificar el archivo de configuración de PM2 o el archivo de script. Para .Net Core, debe especificar el nombre del archivo DLL compilado. Para Ruby, puede especificar un script de Ruby con el que quiera inicializar la aplicación.
+**R:** para Node.Js, especifique el archivo de configuración de hello PM2 o el archivo de script. Para .Net Core, debe especificar el nombre del archivo DLL compilado. Para Ruby, puede especificar Hola Ruby script que quiere que tooinitialize su aplicación con.
 
 ## <a name="management"></a>Administración
 
-**P.**: ¿Qué ocurre al hacer clic en botón de reinicio de Azure Portal?
+**P: ¿** ¿qué ocurre cuando presione el botón de reinicio de Hola Hola portal de Azure?
 
-**R.**: Es el equivalente del reinicio de Docker.
+**R:** esto es Hola equivalente del reinicio de Docker.
 
-**P.:** ¿Puedo usar Secure Shell (SSH) para conectarme a la máquina virtual de contenedor de la aplicación?
+**P: ¿** ¿se puede usar la máquina virtual (VM) del contenedor de aplicación de toohello Shell seguro (SSH), tooconnect?
 
-**R.**: Sí, puede hacerlo a través del sitio SCM. Consulte el artículo siguiente para obtener más información: [Compatibilidad con SSH para Web App en Linux](./app-service-linux-ssh-support.md)
+**R:** Sí, puede hacer que a través del sitio SCM hello, artículo comprobación Hola siguiente para obtener más información [compatibilidad SSH para la aplicación Web en Linux](./app-service-linux-ssh-support.md)
 
-**P:** Deseo crear un plano de Linux App Service mediante SDK o una plantilla de ARM, ¿cómo puedo hacerlo?
+**P: ¿** quiero toocreate un plano Linux App Service enviada mediante SDK o una plantilla de ARM, ¿cómo puedo lograr esto?
 
-**R:** Debe establecer el campo `reserved` del servicio de aplicaciones en `true`.
+**R:** necesita hello tooset `reserved` campo de la aplicación hello servicio demasiado`true`.
 
 ## <a name="continuous-integrationdeployment"></a>Integración e implementación continuas
 
-**P:** ¿Mi aplicación web sigue usando una imagen de contenedor de Docker antigua después de actualizar la imagen en DockerHub? ¿Se admite la integración e implementación continuas de contenedores personalizados?
+**P: ¿** mi aplicación web sigue usando una imagen de contenedor de Docker antigua después de actualizar la imagen de hello en Docker Hub. ¿Se admite la integración e implementación continuas de contenedores personalizados?
 
-**R.**: Para configurar la integración e implementación continua de las imágenes de Azure Container Registry o Docker Hub consulte el siguiente artículo: [Implementación continua con Azure Web App en Linux](./app-service-linux-ci-cd.md). Para registros privados, puede actualizar el contenedor deteniendo y, luego, iniciando la aplicación web. También puede cambiar o agregar una configuración de aplicación ficticia para forzar una actualización del contenedor.
+**R:** tooset la implementación/integración continua para las imágenes del registro de contenedor de Azure o DockerHub por Hola de verificación artículo siguiente [implementación continua con la aplicación Web de Azure en Linux](./app-service-linux-ci-cd.md). Para registros privados, puede actualizar el contenedor de hello deteniendo y, a continuación, iniciar la aplicación web. O bien, puede cambiar o agregar una aplicación ficticia establecer tooforce una actualización del contenedor.
 
 **P.**: ¿Los entornos de ensayo son compatibles?
 
 **R:** Sí.
 
-**P:** ¿Puedo usar **Web Deploy** para implementar mi aplicación web?
+**P: ¿** puedo usar **WebDeploy** toodeploy mi aplicación web?
 
-**R:** Sí, tiene que establecer una configuración de aplicación denominada `WEBSITE_WEBDEPLOY_USE_SCM` en `false`.
+**R:** Sí, necesita una aplicación llamada tooset `WEBSITE_WEBDEPLOY_USE_SCM` demasiado`false`.
 
 ## <a name="language-support"></a>Compatibilidad con idiomas
 
@@ -75,31 +75,31 @@ Si tiene alguna pregunta, comente el artículo y le responderemos en cuanto sea 
 
 **P.:** ¿Admite un compositor como un administrador de dependencias para aplicaciones PHP?
 
-**R:** Sí. Durante una implementación de Git, Kudu debe detectar que va a implementar una aplicación PHP (gracias a la presencia de un archivo composer.json) y que se va a desencadenar una instalación de compositor automáticamente.
+**R:** Sí. Durante una implementación de Git, Kudu debería detectar que va a implementar una aplicación PHP (gracias toohello presencia de un archivo composer.json) y desencadenará una instalación de compositor automáticamente.
 
 ## <a name="custom-containers"></a>Contenedores personalizados
 
-**P.:** Utilizo mi propio contenedor personalizado. Mi aplicación reside en el directorio `\home\`, pero no puedo encontrar mis archivos al examinar el contenido mediante el [sitio SCM](https://github.com/projectkudu/kudu) o un cliente FTP. ¿Dónde están mis archivos?
+**P.:** Utilizo mi propio contenedor personalizado. Mi aplicación reside en hello `\home\` directorio, pero no podemos encontrar Mis archivos al examinar el contenido de hello mediante el uso de hello [sitio SCM](https://github.com/projectkudu/kudu) o un cliente FTP. ¿Dónde están mis archivos?
 
-**R.**: Montamos un recurso compartido SMB en el directorio `\home\`. Esto invalida cualquier contenido de dicho directorio.
+**R:** montamos un toohello del recurso compartido SMB `\home\` directory. Esto invalida cualquier contenido de dicho directorio.
 
-**P.:** Utilizo mi propio contenedor personalizado. No deseo que la plataforma monte un recurso compartido de SMB en `\home\`.
+**P.:** Utilizo mi propio contenedor personalizado. No deseo Hola plataforma toomount un toohello de recurso compartido SMB `\home\`.
 
-**R:** Puede hacerlo estableciendo la configuración `WEBSITES_ENABLE_APP_SERVICE_STORAGE` de la aplicación en `false`.
+**R:** para hacer que debe establecer hello `WEBSITES_ENABLE_APP_SERVICE_STORAGE` aplicación establecer demasiado`false`.
 
-**P:** Mi contenedor personalizado tarda mucho tiempo en iniciarse y la plataforma reinicia el contenedor antes de que finalice el inicio.
+**P: ¿** mi contenedor personalizado toma un toostart mucho tiempo y finalice de contenedor de Hola de reinicio de hello plataforma antes de que iniciarse.
 
-**R:** Puede configurar el tiempo que va a esperar la plataforma antes de reiniciar el contenedor. Puede hacerlo estableciendo la configuración `WEBSITES_CONTAINER_START_TIME_LIMIT` de la aplicación en el valor en segundos que desee. El valor predeterminado es de 230 segundos y el valor máximo es de 600 segundos.
+**R:** puede configurar tiempo de hello plataforma Hola esperará antes de reiniciar el contenedor. Esto puede hacerse por establecer hello `WEBSITES_CONTAINER_START_TIME_LIMIT` toohello de configuración de aplicación el valor deseado en segundos. valor predeterminado de Hello es 230 segundos y Hola max es 600 segundos.
 
-**P:** ¿Cuál es el formato de la dirección URL del servidor del Registro privado?
+**P: ¿** ¿qué es el formato de hello para la dirección url del servidor de registro privada?
 
-**R.**: Tiene que escribir la dirección URL completa del registro, incluidos `http://` o `https://`.
+**R:** que debe tooprovide Hola completo registro dirección url como `http://` o `https://`.
 
-**P:** ¿Cuál es el formato del nombre de la imagen en la opción del Registro privado?
+**P: ¿** ¿qué es el formato de hello para el nombre de la imagen de hello en la opción de registro privada?
 
-**R:** Debe agregar el nombre completo de la imagen, incluida la dirección URL del Registro privado (p. ej. myacr.azurecr.io/dotnet:latest)
+**R:** necesita nombre de la imagen completa de hello tooadd incluida (p. ej dirección url de registro privada de Hola. myacr.azurecr.io/dotnet:latest)
 
-**P:** Quiero exponer más de un puerto en mi imagen de contenedor personalizado. ¿Es posible?
+**P: ¿** deseo tooexpose más de un puerto en mi imagen de contenedor personalizadas. ¿Es posible?
 
 **R.:** Actualmente no se admite.
 
@@ -107,33 +107,33 @@ Si tiene alguna pregunta, comente el artículo y le responderemos en cuanto sea 
 
 **R.:** Actualmente no se admite.
 
-**P:** No puedo examinar el sistema de archivos de mi contenedor personalizado o ejecutar procesos desde el sitio SCM. ¿Por qué ocurre esto?
+**P: ¿** no se puede examinar los procesos de sistema o de ejecución de archivos de mi contenedor personalizado desde el sitio SCM Hola. ¿Por qué ocurre esto?
 
-**R.:** El sitio SCM se ejecuta en un contenedor independiente; no puede comprobar el sistema de archivos o los procesos en ejecución del contenedor de la aplicación.
+**R:** sitio SCM Hola se ejecuta en un contenedor independiente. No se pueden comprobar sistema de archivos de Hola o procesos de contenedor de la aplicación hello en ejecución.
 
-**P.:** Mi contenedor personalizado escucha a un puerto distinto al puerto 80. ¿Cómo puedo configurar mi aplicación para enrutar las solicitudes hacia ese puerto?
+**P: ¿** mi contenedor personalizado escucha tooa puerto distinto al puerto 80. ¿Cómo puedo configurar mi puerto aplicación tooroute Hola solicitudes toothat?
 
-**R.**: Ofrecemos detección de puertos automática, pero también puede especificar un parámetro de la aplicación llamado **WEBSITES_PORT** y asignarle el valor del número de puerto esperado. Anteriormente la plataforma utilizaba el parámetro de la aplicación `PORT`. Tenemos previsto dejar de usar este parámetro de la aplicación y usar `WEBSITES_PORT` exclusivamente.
+**R:** contamos con detección automática del puerto, también puede especificar una aplicación llamada **WEBSITES_PORT**y asígnele el valor de Hola Hola esperada número de puerto. Anteriormente utilizaba plataforma hello `PORT` aplicación establecer, se está planeando toodeprecate Hola use esta configuración de aplicación y mover toousing `WEBSITES_PORT` exclusivamente.
 
-**P:** ¿Es necesario implementar HTTPS en mi contenedor personalizado?
+**P: ¿** es necesario tooimplement HTTPS en mi contenedor personalizadas.
 
-**R:** No, la plataforma controla la terminación HTTPS en los front-end compartidos.
+**R:** No, plataforma Hola controla la terminación HTTPS en hello compartido front-ends.
 
 ## <a name="pricing-and-sla"></a>Precios y contrato de nivel de servicio
 
-**P.:** ¿Qué precios tiene usar la versión preliminar pública?
+**P: ¿** ¿qué es Hola precios mientras utiliza la versión preliminar pública de hello?
 
-**R.**: Se le cobrará la mitad del número de horas que se ejecute la aplicación, con los precios normales de Azure App Service. Esto significa que hay un descuento del 50 por ciento en los precios normales de Azure App Service.
+**R:** se le cobrará la mitad el número de Hola de horas que se ejecuta la aplicación, con hello precios normal del servicio de aplicación de Azure. Esto significa que hay un descuento del 50 por ciento en los precios normales de Azure App Service.
 
 ## <a name="other"></a>Otros
 
-**P:** ¿Cuáles son los caracteres admitidos en los nombres de configuración de aplicación?
+**P: ¿** ¿qué son Hola admitida caracteres en nombres de configuración de aplicación?
 
-**R.:** Solo puede utilizar A-z, a-z, 0-9 y caracteres de subrayado para la configuración de la aplicación.
+**R:** solo puede usar A-z, a-z, 0-9 y Hola guión bajo Configuración de la aplicación.
 
-**P:** ¿Dónde puedo solicitar nuevas características?
+**P:**  ¿Dónde puedo solicitar nuevas características?
 
-**R.:** Puede enviar su idea en el [foro de comentarios de Web Apps](https://aka.ms/webapps-uservoice). Agregue [Linux] en el título de la idea.
+**R:** puede enviar su idea en hello [foro de comentarios de las aplicaciones Web](https://aka.ms/webapps-uservoice). Agregar un título de toohello "[Linux]" de su idea.
 
 ## <a name="next-steps"></a>Pasos siguientes
 * [¿Qué es Web App on Linux de Azure?](app-service-linux-intro.md)

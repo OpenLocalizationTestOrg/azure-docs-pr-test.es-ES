@@ -1,6 +1,6 @@
 ---
-title: "Habilitar las métricas de almacenamiento en el Azure Portal | Microsoft Docs"
-description: "Cómo habilitar las métricas de almacenamiento para los servicios BLOB, Cola, Tabla y Archivo"
+title: "las métricas de almacenamiento de aaaEnabling Hola portal de Azure | Documentos de Microsoft"
+description: "¿Cómo tooenable las métricas de almacenamiento para Hola servicios Blob, cola, tabla y archivo"
 services: storage
 documentationcenter: 
 author: robinsh
@@ -14,68 +14,68 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/03/2017
 ms.author: robinsh
-ms.openlocfilehash: 4d6065597a41372ea6d320ab318b0c71d6a48b2a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4c990371e08a6586d935b0535149eabd4960cfaa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="enabling-storage-metrics-and-viewing-metrics-data"></a>Habilitar las Métricas de almacenamiento y las Métricas de visualización
 [!INCLUDE [storage-selector-portal-enable-and-view-metrics](../../includes/storage-selector-portal-enable-and-view-metrics.md)]
 
 ## <a name="overview"></a>Información general
-Las métricas de almacenamiento se habilitan de forma predeterminada al crear una nueva cuenta de almacenamiento. Puede configurar la supervisión mediante el [Portal de Azure clásico](https://manage.windowsazure.com), Windows PowerShell o mediante programación a través de una API de almacenamiento.
+Las métricas de almacenamiento se habilitan de forma predeterminada al crear una nueva cuenta de almacenamiento. Puede configurar la supervisión mediante cualquier hello [Portal clásico de Azure](https://manage.windowsazure.com), Windows PowerShell, o mediante programación a través de una API de almacenamiento.
 
-Al habilitar las Métricas de almacenamiento, debe elegir un período de retención de datos: este período determina el tiempo que el servicio de almacenamiento mantiene las métricas y cobra por el espacio necesario para almacenarlas. Generalmente, usará un período de retención más corto para la métrica por minuto que para la métrica por hora debido al considerable espacio adicional requerido para la métrica por minuto. Debe elegir un período de retención durante el cual tenga suficiente tiempo para analizar los datos y descargar todas las métricas que quiera mantener para los informes o el análisis sin conexión. Recuerde que también se le facturará por la descarga de los datos de métricas desde su cuenta de almacenamiento.
+Al habilitar las métricas de almacenamiento, debe elegir un período de retención de datos de hello: este período determina cuánto almacenamiento Hola servicio mantiene las métricas de Hola y cargos de hello espacio necesario toostore ellos. Por lo general, debe usar un período de retención más corto para métricas por minuto de métricas por hora debido a Hola considerable espacio adicional requerido para las métricas de minuto. Debe elegir un período de retención de forma que tiene suficiente tiempo tooanalyze Hola datos y descargar todas las métricas que se va tookeep para análisis sin conexión o de elaboración de informes. Recuerde que también se le facturará por la descarga de los datos de métricas desde su cuenta de almacenamiento.
 
-## <a name="how-to-enable-storage-metrics-using-the-azure-classic-portal"></a>Cómo habilitar las Métricas de almacenamiento mediante el Portal de Azure clásico
-En el [Portal de Azure clásico](https://manage.windowsazure.com), puede usar la página Configurar de una cuenta de almacenamiento para así controlar las Métricas de almacenamiento. Para supervisarlas, puede establecer un nivel y un período de retención cuantificado en días para cada blob, tabla y cola. En cada caso, el nivel es uno de los siguientes:
+## <a name="how-tooenable-storage-metrics-using-hello-azure-classic-portal"></a>¿Cómo tooenable las métricas de almacenamiento con Hola Portal clásico de Azure
+Hola [Portal clásico de Azure](https://manage.windowsazure.com), usar la página de configuración de Hola para un toocontrol de cuenta de almacenamiento las métricas de almacenamiento. Para supervisarlas, puede establecer un nivel y un período de retención cuantificado en días para cada blob, tabla y cola. En cada caso, el nivel de hello es uno de los siguientes de hello:
 
 * Desactivada: significa que no se recopilan métricas.
-* Mínima: las Métricas de almacenamiento recopilan un conjunto de métricas básicas como entrada/salida, disponibilidad, latencia y porcentajes de éxito, que se agregan para los servicios BLOB, tabla y cola.
-* Detallada: las Métricas de almacenamiento recopilan un conjunto completo de métricas que incluye las mismas métricas para cada operación de API de almacenamiento, además de las métricas de nivel de servicio. Las métricas detalladas facilitan el análisis preciso de los problemas que se producen durante las operaciones de las aplicaciones.
+* Mínimo: Las métricas de almacenamiento recopila un conjunto básico de métricas como entrada/salida, disponibilidad, latencia y porcentajes de éxito, que se agregan para servicios de Blob, tabla y cola de Hola.
+* Detallado: Recopila métricas de almacenamiento que un conjunto completo de métricas que incluyen Hola mismas métricas para cada operación de API de almacenamiento, además toohello nivel de servicio métricas. Las métricas detalladas facilitan el análisis preciso de los problemas que se producen durante las operaciones de las aplicaciones.
 
-Tenga en cuenta que el Portal de Azure clásico no permite actualmente configurar métricas por minuto en su cuenta de almacenamiento; debe habilitar las métricas por minuto con PowerShell o mediante programación.
+Tenga en cuenta que Hola Portal clásico de Azure no permite actualmente se tooconfigure métricas por minuto en su cuenta de almacenamiento; debe habilitar las métricas de minuto con PowerShell o mediante programación.
 
-## <a name="how-to-enable-storage-metrics-using-powershell"></a>Cómo habilitar las Métricas de almacenamiento con PowerShell
-Puede usar PowerShell en el equipo local para configurar las Métricas de almacenamiento en su cuenta de almacenamiento con el cmdlet Get-AzureStorageServiceMetricsProperty de Azure PowerShell para recuperar la configuración actual y el cmdlet Set-AzureStorageServiceMetricsProperty para cambiar la configuración actual.
+## <a name="how-tooenable-storage-metrics-using-powershell"></a>¿Cómo tooenable las métricas de almacenamiento con PowerShell
+Puede usar PowerShell en su tooconfigure de máquina local las métricas de almacenamiento en su cuenta de almacenamiento mediante la configuración actual de hello Azure PowerShell cmdlet Get-AzureStorageServiceMetricsProperty tooretrieve Hola y Hola cmdlet Configuración actual de Set-AzureStorageServiceMetricsProperty toochange Hola.
 
-Los cmdlets que controlan las Métricas de almacenamiento usan los siguientes parámetros:
+cmdlets de Hola que controlan las métricas de almacenamiento usan Hola parámetros siguientes:
 
 * Los valores posibles de MetricsType son Hour y Minute.
 * Los valores posibles de ServiceType son Blob, Queue y Table.
-* Los valores posibles de MetricsLevel son None (equivalente a Desactivado en el Portal de Azure clásico), Service (equivalente a Mínimo en el Portal de Azure clásico) y ServiceAndApi (equivalente a Detallado en el Portal de Azure clásico).
+* MetricsLevel los valores posibles son None (tooOff equivalente en hello Portal clásico de Azure), el servicio (equivalente tooMinimal Hola Portal clásico de Azure) y ServiceAndApi (tooVerbose equivalente en hello Portal clásico de Azure).
 
-Por ejemplo, el siguiente comando activa las métricas por minuto para el servicio BLOB en su cuenta de almacenamiento predeterminada con el período de retención establecido en cinco días:
+Por ejemplo, hello comando siguiente activa el minuto las métricas para servicio de blob de hello en su cuenta de almacenamiento predeterminada con el período de retención de hello definir los días de toofive:
 
 ```powershell
 Set-AzureStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5
 ```
-El comando siguiente recupera el nivel de métricas por hora actual y los días de retención para el servicio BLOB en su cuenta de almacenamiento predeterminada:
+Hello comando siguiente recupera Hola actual por hora métricas nivel y retención de los días para servicio de blob de hello en su cuenta de almacenamiento predeterminada:
 
 ```powershell
 Get-AzureStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob
 ```
-Para obtener información sobre cómo configurar los cmdlets de Azure PowerShell para que funcionen con su suscripción de Azure y cómo seleccionar la cuenta de almacenamiento predeterminada que quiere usar, vea: [Cómo instalar y configurar Azure PowerShell](/powershell/azure/overview).
+Para obtener información acerca de cómo tooconfigure hello Azure PowerShell cmdlets toowork con su suscripción de Azure y cómo tooselect Hola almacenamiento predeterminado cuenta toouse, consulte: [cómo tooinstall y configurar Azure PowerShell](/powershell/azure/overview).
 
-## <a name="how-to-enable-storage-metrics-programmatically"></a>Cómo habilitar las Métricas de almacenamiento mediante programación
-El siguiente fragmento de C# muestra cómo habilitar el registro y las métricas para el servicio BLOB mediante la biblioteca del cliente de almacenamiento de .NET:
+## <a name="how-tooenable-storage-metrics-programmatically"></a>¿Cómo tooenable las métricas de almacenamiento mediante programación
+Hola siguiente fragmento de código C# muestra cómo tooenable métricas y registro para el uso de servicio de Blob de Hola Hola biblioteca cliente de almacenamiento para. NET:
 
 ```csharp
-//Parse the connection string for the storage account.
+//Parse hello connection string for hello storage account.
 const string ConnectionString = "DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key";
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConnectionString);
 
-// Create service client for credentialed access to the Blob service.
+// Create service client for credentialed access toohello Blob service.
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-// Enable Storage Analytics logging and set retention policy to 10 days. 
+// Enable Storage Analytics logging and set retention policy too10 days. 
 ServiceProperties properties = new ServiceProperties();
 properties.Logging.LoggingOperations = LoggingOperations.All;
 properties.Logging.RetentionDays = 10;
 properties.Logging.Version = "1.0";
 
-// Configure service properties for metrics. Both metrics and logging must be set at the same time.
+// Configure service properties for metrics. Both metrics and logging must be set at hello same time.
 properties.HourMetrics.MetricsLevel = MetricsLevel.ServiceAndApi;
 properties.HourMetrics.RetentionDays = 10;
 properties.HourMetrics.Version = "1.0";
@@ -84,22 +84,22 @@ properties.MinuteMetrics.MetricsLevel = MetricsLevel.ServiceAndApi;
 properties.MinuteMetrics.RetentionDays = 10;
 properties.MinuteMetrics.Version = "1.0";
 
-// Set the default service version to be used for anonymous requests.
+// Set hello default service version toobe used for anonymous requests.
 properties.DefaultServiceVersion = "2015-04-05";
 
-// Set the service properties.
+// Set hello service properties.
 blobClient.SetServiceProperties(properties);
 ```
 
 ## <a name="viewing-storage-metrics"></a>Mostrar Métricas de almacenamiento
-Cuando haya configurado las Métricas de almacenamiento para supervisar su cuenta de almacenamiento, registra las métricas en un conjunto de tablas conocidas en su cuenta de almacenamiento. Puede usar la página Supervisar de su cuenta de almacenamiento en el Portal de Azure clásico para ver las métricas por hora a medida que están disponibles en un gráfico. En esta página del Portal de Azure clásico, puede:
+Cuando haya configurado las métricas de almacenamiento toomonitor su cuenta de almacenamiento, registra las métricas de hello en un conjunto de tablas conocidas en su cuenta de almacenamiento. Puede usar página del Monitor de Hola para su cuenta de almacenamiento en hello métricas por hora de Portal de Azure clásico tooview hello cuando estén disponibles en un gráfico. En esta página Hola Portal clásico de Azure, hacer lo siguiente:
 
-* Seleccionar qué métricas quiere trazar en el gráfico (la variedad de métricas disponibles dependerá de si ha elegido la supervisión detallada o mínima para el servicio en la página Configurar).
-* Seleccionar el intervalo de tiempo para las métricas mostradas en el gráfico.
-* Elegir el uso de una escala absoluta o relativa para trazar las métricas.
-* Configurar alertas por correo electrónico que le notifiquen cuándo una métrica específica alcanza un valor determinado.
+* Seleccione qué tooplot métricas en el gráfico de hello (opción de Hola de métricas disponibles dependerá de si ha elegido la supervisión detallada o mínima para servicio de hello en la página de configuración de hello).
+* Seleccionar intervalo de tiempo de Hola para las métricas de hello mostradas en el gráfico de Hola.
+* Elija toouse una métrica de hello tooplot escala absoluta o relativa.
+* Configurar toonotify de alertas de correo electrónico cuando una métrica específica alcanza un determinado valor.
 
-Si quiere descargar las métricas para su almacenamiento de larga duración o para analizarlas localmente, deberá usar una herramienta o escribir código para leer las tablas. Debe descargar las métricas por minuto para el análisis. Las tablas no aparecen si lista todas las tablas en su cuenta de almacenamiento, pero puede acceder a ellas directamente por su nombre. Muchas herramientas de exploración de almacenamiento de terceros tienen en cuenta estas tablas y permiten que las vea directamente (vea la publicación en el blog [Información general sobre los exploradores del almacenamiento de Microsoft Azure](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx) para ver una lista de herramientas disponibles).
+Si desea que las métricas de hello toodownload para almacenamiento a largo plazo o tooanalyze les localmente, se necesita toouse una herramienta o escribir un cierto código tablas de hello tooread. Debe descargar las métricas de minuto de hello para el análisis. Hola tablas no aparecen si lista todas las tablas de hello en su cuenta de almacenamiento, pero puede tener acceso a ellos directamente por su nombre. Muchas herramientas de exploración de almacenamiento de terceros son conscientes de estas tablas y habilitar tooview ellos directamente (consulte el blog de hello [exploradores de almacenamiento de Microsoft Azure](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx) para obtener una lista de herramientas disponibles).
 
 ### <a name="hourly-metrics"></a>Métricas por hora
 * $MetricsHourPrimaryTransactionsBlob
@@ -114,7 +114,7 @@ Si quiere descargar las métricas para su almacenamiento de larga duración o pa
 ### <a name="capacity"></a>Capacity
 * $MetricsCapacityBlob
 
-Puede encontrar detalles completos de los esquemas para estas tablas en [Esquema de las tablas de métricas del análisis de almacenamiento](https://msdn.microsoft.com/library/azure/hh343264.aspx). Las filas de ejemplo que tiene a continuación muestran solo un subconjunto de columnas disponibles, pero ilustran algunas características importantes acerca de la manera en que las Métricas de almacenamiento guardan estas métricas:
+Puede encontrar detalles completos de los esquemas de Hola para estas tablas en [esquema de tabla de métricas de análisis de almacenamiento](https://msdn.microsoft.com/library/azure/hh343264.aspx). filas de ejemplo de Hola a continuación muestran solo un subconjunto de columnas de hello disponibles, pero ilustran algunas características importantes de manera hello que las métricas de almacenamiento guardan estas métricas:
 
 | PartitionKey | RowKey | Timestamp | TotalRequests | TotalBillableRequests | TotalIngress | TotalEgress | Disponibilidad | AverageE2ELatency | AverageServerLatency | PercentSuccess |
 | --- |:---:| ---:| --- | --- | --- | --- | --- | --- | --- | --- |
@@ -123,41 +123,41 @@ Puede encontrar detalles completos de los esquemas para estas tablas en [Esquema
 | 20140522T1100 |user;QueryEntity |2014-05-22T11:01:16.7650250Z |1 |1 |538 |633 |100 |3 |3 |100 |
 | 20140522T1100 |user;UpdateEntity |2014-05-22T11:01:16.7650250Z |1 |1 |771 |217 |100 |9 |6 |100 |
 
-En este ejemplo de datos de métricas por minuto, la clave de partición usa el tiempo en la resolución de minutos. La clave de fila identifica el tipo de información que se almacena en la fila y se compone de dos fragmentos de información, el tipo de acceso y el tipo de solicitud:
+En estos datos de métricas por minuto de ejemplo, clave de partición de hello usa tiempo de hello en la resolución de minutos. clave de fila de Hello identifica el tipo de Hola de información que se almacena en la fila de Hola y se compone de dos partes de información, el tipo de acceso de Hola y el tipo de solicitud de hello:
 
-* El tipo de acceso es user o system, donde user hace referencia a todas las solicitudes de usuario al servicio de almacenamiento y system hace referencia a las solicitudes realizadas por el Análisis de almacenamiento.
-* El tipo de solicitud es all en cuyo caso es una línea de resumen, o identifica una API específica como QueryEntity o UpdateEntity.
+* tipo de acceso de Hello es el usuario o del sistema, donde usuario refiere a servicio de almacenamiento de toohello de las solicitudes de usuario de tooall y sistema toorequests realizadas por el análisis de almacenamiento.
+* tipo de solicitud de Hello es todo, en cuyo caso es una línea de resumen, o identifica Hola API específica como QueryEntity o UpdateEntity.
 
-Los datos de ejemplo anteriores muestran todos los registros para un único minuto (que empieza el a las 11:00 AM), por lo que el número de solicitudes QueryEntities más el número de solicitudes QueryEntity más el número de solicitudes UpdateEntity suman siete, que es el total que se muestra en la fila user:All. De forma similar, puede derivar la latencia promedio de un extremo a otro 104,4286 en la fila user:All con el cálculo ((143,8 * 5) + 3 + 9)/7.
+datos de ejemplo de Hola anterior muestra que Hola a todos los registra para un solo minuto (empezando a las 11:00 A.M.), por lo que Hola número de solicitudes de QueryEntities más hello número de solicitudes de QueryEntity junto con hello número de solicitudes de UpdateEntity suma tooseven, que es Hola total se muestra en fila de Hello user: All. De forma similar, puede derivar Hola promedio-to-end de latencia 104,4286 en fila de user: All Hola calculando ((143.8 * 5) + 3 + 9) / 7.
 
-Debe considerar la posibilidad de configurar alertas en la página “Supervisar” del Portal de Azure clásico, para que las Métricas de almacenamiento puedan notificarle automáticamente cualquier cambio importante en el comportamiento de sus servicios de almacenamiento. Si usa una herramienta de exploración de almacenamiento para descargar estos datos de métricas en un formato delimitado, puede usar Microsoft Excel para analizar los datos. Consulte la publicación sobre los [Exploradores de Microsoft Azure Storage](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx) que encontrará en el blog para conseguir una lista de herramientas de exploradores de almacenamiento disponibles.
+Debe considerar cómo configurar alertas en hello Portal clásico de Azure en la página de Monitor de Hola para que las métricas de almacenamiento puedan notificarle automáticamente de los cambios importantes en el comportamiento de Hola de los servicios de almacenamiento. Si usas un toodownload de herramienta del explorador de almacenamiento estos datos de métricas en un formato delimitado, puede usar datos de Microsoft Excel tooanalyze Hola. Consulte el blog de hello [exploradores de almacenamiento de Microsoft Azure](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx) para obtener una lista de herramientas del explorador de almacenamiento disponible.
 
 ## <a name="accessing-metrics-data-programmatically"></a>Acceso a los datos de métricas mediante programación
-El listado siguiente muestra código C# de ejemplo que accede a las métricas por minuto para un intervalo de minutos y muestra los resultados en una ventana de la consola. Usa Azure Storage Library versión 4 que incluye la clase CloudAnalyticsClient que simplifica el acceso a las tablas de métricas en almacenamiento.
+Hello listado siguiente muestra código C# muestra que tiene acceso a las métricas de minuto de Hola para un intervalo de minutos y muestra los resultados de hello en una ventana de consola. Usa hello Azure Storage Library versión 4 que incluye Hola clase CloudAnalyticsClient que simplifica el acceso a tablas de métricas de hello en el almacenamiento.
 
 ```csharp
 private static void PrintMinuteMetrics(CloudAnalyticsClient analyticsClient, DateTimeOffset startDateTime, DateTimeOffset endDateTime)
 {
-    // Convert the dates to the format used in the PartitionKey
+    // Convert hello dates toohello format used in hello PartitionKey
     var start = startDateTime.ToUniversalTime().ToString("yyyyMMdd'T'HHmm");
     var end = endDateTime.ToUniversalTime().ToString("yyyyMMdd'T'HHmm");
 
     var services = Enum.GetValues(typeof(StorageService));
     foreach (StorageService service in services)
     {
-        Console.WriteLine("Minute Metrics for Service {0} from {1} to {2} UTC", service, start, end);
+        Console.WriteLine("Minute Metrics for Service {0} from {1} too{2} UTC", service, start, end);
         var metricsQuery = analyticsClient.CreateMinuteMetricsQuery(service, StorageLocation.Primary);
         var t = analyticsClient.GetMinuteMetricsTable(service);
         var opContext = new OperationContext();
         var query =
           from entity in metricsQuery
-          // Note, you can't filter using the entity properties Time, AccessType, or TransactionType
-          // because they are calculated fields in the MetricsEntity class.
-          // The PartitionKey identifies the DataTime of the metrics.
+          // Note, you can't filter using hello entity properties Time, AccessType, or TransactionType
+          // because they are calculated fields in hello MetricsEntity class.
+          // hello PartitionKey identifies hello DataTime of hello metrics.
           where entity.PartitionKey.CompareTo(start) >= 0 && entity.PartitionKey.CompareTo(end) <= 0 
         select entity;
 
-        // Filter on "user" transactions after fetching the metrics from Table Storage.
+        // Filter on "user" transactions after fetching hello metrics from Table Storage.
         // (StartsWith is not supported using LINQ with Azure table storage)
         var results = query.ToList().Where(m => m.RowKey.StartsWith("user"));
         var resultString = results.Aggregate(new StringBuilder(), (builder, metrics) => builder.AppendLine(MetricsString(metrics, opContext))).ToString();
@@ -178,15 +178,15 @@ private static string MetricsString(MetricsEntity entity, OperationContext opCon
 ```
 
 ## <a name="what-charges-do-you-incur-when-you-enable-storage-metrics"></a>¿Qué se le facturará cuando habilite las métricas de almacenamiento?
-Las solicitudes por escrito para crear entidades de tabla para métricas se cobran con las tarifas estándar aplicables a todas las operaciones de Almacenamiento de Azure.
+Escribir solicitudes toocreate entidades de tabla para las métricas se cobran con operaciones de almacenamiento de Azure de hello las tarifas estándar tooall aplicables.
 
-La lectura y eliminación de solicitudes por un cliente para datos de métricas también se facturan con las tarifas estándar. Si ha configurado una directiva de retención de datos, no se le cobrará cuando Almacenamiento de Azure elimine datos de métricas antiguos. Sin embargo, si elimina datos de análisis, se cobrará a su cuenta las operaciones de eliminación.
+Las solicitudes de lectura y eliminación por una toometrics de datos de cliente son facturables con las tarifas estándares. Si ha configurado una directiva de retención de datos, no se le cobrará cuando Almacenamiento de Azure elimine datos de métricas antiguos. Sin embargo, si elimina datos de análisis, la cuenta se cobra por las operaciones de eliminación de Hola.
 
-La capacidad de las tablas de métricas también es facturable: puede usar las opciones siguientes para calcular la cantidad de capacidad usada para almacenar datos de métricas:
+capacidad de Hello usado por las tablas de métricas de hello también es facturable: puede usar Hola después de la cantidad de hello tooestimate de capacidad se utiliza para almacenar datos de métricas:
 
-* Si cada hora un servicio utiliza todas las API en todos los servicios, se almacenan aproximadamente 148 KB de datos cada hora en las tablas de transacciones de métricas si se ha habilitado tanto el resumen de nivel servicio como de nivel de API.
-* Si cada hora un servicio utiliza todas las API en todos los servicios, se almacenan aproximadamente 12 KB de datos cada hora en las tablas de transacciones de métricas si ha habilitado solo el resumen de nivel de servicio.
-* Se agregan dos filas cada día a la tabla de capacidad para blobs (siempre que el usuario haya optado por los registros): esto implica que todos los días el tamaño de la tabla aumenta en unos 300 bytes, aproximadamente.
+* Si cada hora un servicio utiliza todas las API en todos los servicios, aproximadamente 148KB de datos se almacena cada hora en tablas de transacciones de métricas de hello si ha habilitado el servicio y el resumen de nivel de API.
+* Si cada hora un servicio utiliza todas las API en todos los servicios, aproximadamente 12KB de datos se almacena cada hora en tablas de transacciones de métricas de hello si ha habilitado el nivel de servicio simplemente resumen.
+* tabla de capacidad para los blobs Hello tiene dos filas agregadas al día (proporcionado por el usuario haya optado por los registros): Esto implica que cada día Hola tamaño de esta tabla aumenta en una tooapproximately 300 bytes.
 
 ## <a name="next-steps"></a>Pasos siguientes:
 [Habilitar el registro del Análisis de almacenamiento y acceder a los datos del mismo](https://msdn.microsoft.com/library/dn782840.aspx)

@@ -1,5 +1,5 @@
 ---
-title: "Introducción al servidor web de ASP.NET de Azure AD v2: primeros pasos | Microsoft Docs"
+title: "aaaAzure AD v2 ASP.NET Web Server Introducción - introducción | Documentos de Microsoft"
 description: "Implementación de inicio de sesión de Microsoft en una solución ASP.NET con una aplicación basada en un explorador web tradicional mediante el estándar OpenID Connect"
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,17 +15,17 @@ ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 8062923b6270ec6253dc231a3db4333cf4666b42
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d6449926af2bdad24cbc8e91f74885a08f909103
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Adición de inicio de sesión con Microsoft a una aplicación web ASP.NET
+# <a name="add-sign-in-with-microsoft-tooan-aspnet-web-app"></a>Agregar inicie sesión con la aplicación web ASP.NET Microsoft tooan
 
-Esta guía muestra cómo implementar el inicio de sesión con Microsoft mediante una solución MVC de ASP.NET con una aplicación basada en explorador web tradicional mediante OpenID Connect. 
+Esta guía demuestra cómo tooimplement inicie sesión con Microsoft mediante una solución de MVC de ASP.NET con una aplicación basada en Explorador de web tradicional con OpenID Connect. 
 
-Al final de esta guía, la aplicación podrá aceptar inicios de sesión de cuentas personales (como outlook.com, live.com y otras), así como cuentas profesionales y educativas de cualquier empresa u organización que se haya integrado con Azure Active Directory. 
+Al final de Hola de esta guía, la aplicación de ser capaz de tooaccept de inicio de sesión inicios de personal cuentas (incluidos outlook.com, live.com u otros datos) así como de trabajo y cuentas de cualquier empresa u organización que se integra con Azure Active Directory educativas. 
 
 > Esta guía requiere Visual Studio 2015 Update 3 o Visual Studio 2017.  ¿No lo tiene?  [Descargue Visual Studio 2017 de manera gratuita](https://www.visualstudio.com/downloads/)
 
@@ -33,15 +33,15 @@ Al final de esta guía, la aplicación podrá aceptar inicios de sesión de cuen
 
 ![Funcionamiento de esta guía](media/active-directory-serversidewebapp-aspnetwebappowin-intro/aspnetbrowsergeneral.png)
 
-Esta guía se basa en un escenario en el que un explorador tiene acceso a un sitio web de ASP.NET y solicita a un usuario que se autentique a través de un botón de inicio de sesión. En esa situación, la mayoría del trabajo para representar la página web se produce en el servidor.
+Esta guía se basa en el escenario de Hola donde un explorador tiene acceso a un sitio web ASP.NET, que solicita un tooauthenticate de usuario a través de un botón de inicio de sesión. En este escenario, la mayor parte de la página web de hello trabajo toorender Hola se produce en el lado del servidor de Hola.
 
 ## <a name="libraries"></a>Bibliotecas
 
-Esta guía utiliza las siguientes bibliotecas:
+Esta guía usa Hola después de bibliotecas:
 
 |Biblioteca|Descripción|
 |---|---|
-|[Microsoft.Owin.Security.OpenIdConnect](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect/)|Middleware que permite a una aplicación que use OpenIDConnect para la autenticación|
-|[Microsoft.Owin.Security.Cookies](https://www.nuget.org/packages/Microsoft.Owin.Security.Cookies)|Middleware que permite a una aplicación que mantenga la sesión del usuario mediante cookies|
-|[Microsoft.Owin.Host.SystemWeb](https://www.nuget.org/packages/Microsoft.Owin.Host.SystemWeb)|Permite que aplicaciones basadas en OWIN se ejecuten en IIS mediante la canalización de solicitudes ASP.NET|
+|[Microsoft.Owin.Security.OpenIdConnect](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect/)|Software intermedio que permite que una aplicación toouse OpenIdConnect para la autenticación|
+|[Microsoft.Owin.Security.Cookies](https://www.nuget.org/packages/Microsoft.Owin.Security.Cookies)|Middleware que permite una sesión de usuario de aplicación toomaintain uso de cookies|
+|[Microsoft.Owin.Host.SystemWeb](https://www.nuget.org/packages/Microsoft.Owin.Host.SystemWeb)|Permite que las aplicaciones basadas en OWIN toorun en IIS mediante la canalización de solicitudes ASP.NET de Hola|
 

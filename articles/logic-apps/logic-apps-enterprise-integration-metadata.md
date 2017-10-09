@@ -1,5 +1,5 @@
 ---
-title: "Administración de metadatos de artefactos de la cuenta de integración: Azure Logic Apps | Microsoft Docs"
+title: "integración de aaaManage cuenta artefacto de metadatos: las aplicaciones lógicas de Azure | Documentos de Microsoft"
 description: "Agregue o recupere metadatos de artefactos de cuentas de integración para Azure Logic Apps"
 author: padmavc
 manager: anneta
@@ -15,23 +15,23 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 11/21/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 28bb8296ddd820ec5aa9793dc0928b4b1e67bf6f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8de71bffa9f9975d5409716b2208fa6c3a9545d8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-artifact-metadata-in-integration-accounts-for-logic-apps"></a>Administración de metadatos de artefactos en cuentas de integración para aplicaciones lógicas
 
-Puede definir metadatos personalizados para artefactos en cuentas de integración y recuperar metadatos durante el tiempo de ejecución para su aplicación lógica. Por ejemplo, puede especificar metadatos para artefactos como asociados, acuerdos, esquemas y asignaciones: todos almacenan metadatos usando pares de clave-valor. Actualmente, los artefactos no pueden crear metadatos a través de la interfaz de usuario, pero puede usar API de REST para crear metadatos. Para agregar metadatos al crear o seleccionar un asociado, acuerdo o esquema en Azure Portal, elija **Editar como JSON**. Para recuperar metadatos de artefactos en aplicaciones lógicas, puede usar la característica	 Búsqueda de artefactos de la cuenta de integración.
+Puede definir metadatos personalizados para artefactos en cuentas de integración y recuperar metadatos durante el tiempo de ejecución para su aplicación lógica. Por ejemplo, puede especificar metadatos para artefactos como asociados, acuerdos, esquemas y asignaciones: todos almacenan metadatos usando pares de clave-valor. Actualmente, los artefactos no pueden crear metadatos a través de la interfaz de usuario, pero puede usar las API de REST toocreate metadatos. metadatos de tooadd al crear o seleccionar un partner, contrato o esquema Hola portal de Azure, elija **editar como JSON**. tooretrieve artefacto metadatos en aplicaciones lógicas, puede usar características de búsqueda de artefactos de cuenta de integración de Hola.
 
-## <a name="add-metadata-to-artifacts-in-integration-accounts"></a>Adición de metadatos a artefactos en cuentas de integración
+## <a name="add-metadata-tooartifacts-in-integration-accounts"></a>Agregar metadatos tooartifacts en cuentas de integración
 
 1. Cree una [cuenta de integración](logic-apps-enterprise-integration-create-integration-account.md).
 
-2. Agregue un artefacto a su cuenta de integración, por ejemplo, un [asociado](logic-apps-enterprise-integration-partners.md#how-to-create-a-partner), un [acuerdo](logic-apps-enterprise-integration-agreements.md#how-to-create-agreements) o un [esquema](logic-apps-enterprise-integration-schemas.md).
+2. Agregar una cuenta de integración de tooyour de artefacto, por ejemplo, un [asociado](logic-apps-enterprise-integration-partners.md#how-to-create-a-partner), [acuerdo](logic-apps-enterprise-integration-agreements.md#how-to-create-agreements), o [esquema](logic-apps-enterprise-integration-schemas.md).
 
-3.  Seleccione el artefacto, elija **Editar como JSON** y escriba los detalles de los metadatos.
+3.  Seleccione el artefacto de hello, elija **editar como JSON**y escriba los detalles de los metadatos.
 
     ![Introducción de los metadatos](media/logic-apps-enterprise-integration-metadata/image1.png)
 
@@ -39,15 +39,15 @@ Puede definir metadatos personalizados para artefactos en cuentas de integració
 
 1. Cree una [aplicación lógica](logic-apps-create-a-logic-app.md).
 
-2. Cree un [vínculo desde su aplicación lógica a su cuenta de integración](logic-apps-enterprise-integration-create-integration-account.md#link-an-integration-account-to-a-logic-app). 
+2. Crear un [vínculo desde su cuenta de lógica de aplicación tooyour integración](logic-apps-enterprise-integration-create-integration-account.md#link-an-integration-account-to-a-logic-app). 
 
-3. En Diseñador de aplicación lógica, agregue un desencadenador como *Solicitud* o *HTTP* a su aplicación lógica.
+3. En el Diseñador de la lógica de aplicaciones, agregar un desencadenador como *solicitar* o *HTTP* tooyour aplicación de lógica.
 
 4.  Elija **Paso siguiente** > **Agregar una acción**. Busque una *integración* para poder encontrar y seleccionar **Búsqueda de artefactos de la cuenta de integración**.
 
     ![Seleccione Búsqueda de artefactos de la cuenta de integración.](media/logic-apps-enterprise-integration-metadata/image2.png)
 
-5. Seleccione **Tipo de artefacto** y proporcione el **nombre del artefacto**.
+5. Seleccione hello **tipo de artefacto**y proporcionar hello **nombre del artefacto**.
 
     ![Seleccione el tipo de artefacto y proporcione el nombre del artefacto.](media/logic-apps-enterprise-integration-metadata/image3.png)
 
@@ -59,9 +59,9 @@ Los metadatos del asociado tienen estos detalles de `routingUrl`:
 
 1. En su aplicación lógica, agregue su desencadenador, una acción **Cuenta de integración: Búsqueda de artefactos de la cuenta de integración** para su asociado y un **HTTP**.
 
-    ![Adición de un desencadenador, una búsqueda de artefactos y un "HTTP" a su aplicación lógica](media/logic-apps-enterprise-integration-metadata/image4.png)
+    ![Agregar el desencadenador, la búsqueda de artefactos y la aplicación de lógica de "HTTP" tooyour](media/logic-apps-enterprise-integration-metadata/image4.png)
 
-2. Para recuperar el identificador URI, vaya a la vista de código de la aplicación lógica. La definición de su aplicación lógica debería ser similar a la de este ejemplo:
+2. Hola tooretrieve URI, vaya tooCode vista para la aplicación lógica. La definición de su aplicación lógica debería ser similar a la de este ejemplo:
 
     ![Buscar lookup](media/logic-apps-enterprise-integration-metadata/image5.png)
 

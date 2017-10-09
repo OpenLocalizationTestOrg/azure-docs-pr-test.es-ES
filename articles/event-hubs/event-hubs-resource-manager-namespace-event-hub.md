@@ -1,5 +1,5 @@
 ---
-title: "Creación de un espacio de nombres y un grupo de consumidores de Azure Event Hubs mediante una plantilla | Microsoft Docs"
+title: un grupo de espacio de nombres y el consumidor de centros de eventos de Azure mediante una plantilla de aaaCreate | Documentos de Microsoft
 description: "Creación de un espacio de nombres de Event Hubs con un centro de eventos y un grupo de consumidores mediante plantillas de Azure Resource Manager"
 services: event-hubs
 documentationcenter: .net
@@ -14,41 +14,41 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 06/12/2017
 ms.author: sethm;shvija
-ms.openlocfilehash: eb9a80eec0326aaa605cb8b21aecbaeec94ff212
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 74b0d6b3fbe848705e2c20e628aa4e5269b53edb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-an-event-hubs-namespace-with-event-hub-and-consumer-group-using-an-azure-resource-manager-template"></a>Creación de un espacio de nombres de Event Hubs con un centro de eventos y un grupo de consumidores mediante una plantilla de Azure Resource Manager
 
-En este artículo se muestra cómo usar una plantilla de Azure Resource Manager, que crea un espacio de nombres de tipo Event Hubs, con un centro de eventos y un grupo de consumidores. El artículo muestra cómo definir los recursos que se implementan y los parámetros que se especifican cuando se ejecuta la implementación. Puede usar esta plantilla para sus propias implementaciones o personalizarla para satisfacer sus necesidades.
+Este artículo muestra cómo toouse una plantilla de administrador de recursos de Azure crea un espacio de nombres de tipo de los centros de eventos con el concentrador de un evento y un grupo de consumidores. Hola artículo se muestra cómo toodefine qué recursos se implementan y cómo toodefine parámetros que especifican cuando se ejecuta la implementación de Hola. Puede usar esta plantilla para sus propias implementaciones o personalizarlo toomeet los requisitos
 
 Para más información sobre la creación de plantillas, consulte [Authoring Azure Resource Manager templates][Authoring Azure Resource Manager templates] (Creación de plantillas de Azure Resource Manager).
 
-Para ver la plantilla completa, consulte la [plantilla de grupos de consumidores y un centro de eventos][Event Hub and consumer group template] en GitHub.
+Para la plantilla completa de hello, vea hello [plantilla de grupo de concentrador y consumidor de eventos] [ Event Hub and consumer group template] en GitHub.
 
 > [!NOTE]
-> Para buscar las plantillas más recientes, visite la galería de [Plantillas de inicio rápido de Azure][Azure Quickstart Templates] y busque Event Hubs.
+> toocheck para las plantillas de hello más recientes, visite hello [plantillas de inicio rápido de Azure] [ Azure Quickstart Templates] galería y busque los centros de eventos.
 > 
 > 
 
 ## <a name="what-will-you-deploy"></a>¿Qué va a implementar?
 Con esta plantilla, implementará un espacio de nombres de Event Hubs con un grupo de consumidores y un centro de eventos.
 
-[Centros de eventos](event-hubs-what-is-event-hubs.md) es un servicio de procesamiento de eventos que se usa para ofrecer la entrada de telemetría y eventos en Azure a escala masiva, con una latencia baja y una alta confiabilidad.
+[Los concentradores de eventos](event-hubs-what-is-event-hubs.md) es un evento de procesamiento tooprovide de servicio que se utiliza a eventos y telemetría de la tooAzure de entrada con el a escala masiva, con baja latencia y alta fiabilidad.
 
-Para ejecutar automáticamente la implementación, haga clic en el botón siguiente:
+toorun Hola implementación automáticamente, haga clic en hello después de botón:
 
-[![Implementación en Azure](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
+[![Implementar tooAzure](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
 
-## <a name="parameters"></a>Parámetros
-Con el Administrador de recursos de Azure, se definen los parámetros de los valores que desea especificar al implementar la plantilla. La plantilla incluye una sección denominada `Parameters` que contiene todos los valores de los parámetros. Debe definir un parámetro para estos valores que variarán según el proyecto que vaya a implementar o según el entorno en el que vaya a realizar la implementación. No defina parámetros para valores que siempre permanezcan igual. Cada valor de parámetro de la plantilla define los recursos que se implementan.
+## <a name="parameters"></a>parameters
+Con el Administrador de recursos de Azure, se definen parámetros para los valores que desee toospecify cuando se implementa Hola plantilla. plantilla de Hello incluye una sección denominada `Parameters` que contiene todos los valores de parámetro de Hola. Debe definir un parámetro para aquellos valores que puede variar, basada en la que va a implementar el proyecto de Hola o en hello entorno toowhich que va a implementar. No se define parámetros para valores que permanezcan siempre Hola igual. Cada valor de parámetro de plantilla de hello define recursos de Hola que se implementan.
 
-La plantilla define los parámetros siguientes:
+plantilla de Hello define Hola parámetros siguientes:
 
 ### <a name="eventhubnamespacename"></a>eventHubNamespaceName
-El nombre del espacio de nombres de Centros de eventos que se creará.
+nombre de Hola de toocreate de espacio de nombres de los centros de eventos de Hola.
 
 ```json
 "eventHubNamespaceName": {
@@ -57,7 +57,7 @@ El nombre del espacio de nombres de Centros de eventos que se creará.
 ```
 
 ### <a name="eventhubname"></a>eventHubName
-El nombre del centro de eventos creado en el espacio de nombres de Event Hubs.
+nombre de Hello del concentrador de eventos de hello creado en el espacio de nombres de hello centros de eventos.
 
 ```json
 "eventHubName": {
@@ -66,7 +66,7 @@ El nombre del centro de eventos creado en el espacio de nombres de Event Hubs.
 ```
 
 ### <a name="eventhubconsumergroupname"></a>eventHubConsumerGroupName
-El nombre del grupo de consumidores creado para el centro de eventos.
+nombre de Hello del grupo de consumidores de hello creado para el concentrador de eventos de Hola.
 
 ```json
 "eventHubConsumerGroupName": {
@@ -75,7 +75,7 @@ El nombre del grupo de consumidores creado para el centro de eventos.
 ```
 
 ### <a name="apiversion"></a>apiVersion
-La versión de API de la plantilla.
+versión de API de Hola de plantilla de Hola.
 
 ```json
 "apiVersion": {
@@ -83,7 +83,7 @@ La versión de API de la plantilla.
 }
 ```
 
-## <a name="resources-to-deploy"></a>Recursos para implementar
+## <a name="resources-toodeploy"></a>Toodeploy de recursos
 Crea un espacio de nombres de tipo **Event Hubs** con un centro de eventos y un grupo de consumidores.
 
 ```json
@@ -127,7 +127,7 @@ Crea un espacio de nombres de tipo **Event Hubs** con un centro de eventos y un 
    ],
 ```
 
-## <a name="commands-to-run-deployment"></a>Comandos para ejecutar la implementación
+## <a name="commands-toorun-deployment"></a>Implementación de toorun de comandos
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ## <a name="powershell"></a>PowerShell
@@ -143,7 +143,7 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-Para más información acerca de Event Hubs, visite los vínculos siguientes:
+Para obtener más información acerca de los centros de eventos información visitando Hola siguientes vínculos:
 
 * [Información general de Event Hubs](event-hubs-what-is-event-hubs.md)
 * [Creación de un centro de eventos](event-hubs-create.md)
@@ -152,5 +152,5 @@ Para más información acerca de Event Hubs, visite los vínculos siguientes:
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
 [Azure Quickstart Templates]:  https://azure.microsoft.com/documentation/templates/?term=event+hubs
 [Using Azure PowerShell with Azure Resource Manager]: ../powershell-azure-resource-manager.md
-[Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../xplat-cli-azure-resource-manager.md
+[Using hello Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../xplat-cli-azure-resource-manager.md
 [Event hub and consumer group template]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-event-hubs-create-event-hub-and-consumer-group/

@@ -1,6 +1,6 @@
 ---
-title: "Búsqueda del próximo salto con Next Hop de Azure Network Watcher: CLI de Azure 2.0 | Microsoft Docs"
-description: "En este artículo se describe cómo encontrar el tipo del próximo salto y la dirección IP mediante la funcionalidad Next Hop con la CLI de Azure."
+title: "aaaFind próximo salto con Monitor Azure red próximo salto - 2.0 de CLI de Azure | Documentos de Microsoft"
+description: "En este artículo se describe cómo puede encontrar qué Hola siguiente tipo de salto es y uso de dirección ip del próximo salto de mediante la CLI de Azure."
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-ms.openlocfilehash: d1ee6870ba0188ff2c473e4cca12a5bdc1f97d3d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 77c2bde51274bd5c64e7a2467f95139af620ca30
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="find-out-what-the-next-hop-type-is-using-the-next-hop-capability-in-azure-network-watcher-using-azure-cli-20"></a>Obtenga más información sobre el tipo del próximo salto con la funcionalidad Next Hop de Azure Network Watcher mediante la CLI de Azure 2.0
+# <a name="find-out-what-hello-next-hop-type-is-using-hello-next-hop-capability-in-azure-network-watcher-using-azure-cli-20"></a>Averiguar qué tipo de hello próximo salto es con capacidad de próximo salto de hello en Monitor de red de Azure mediante Azure CLI 2.0
 
 > [!div class="op_single_selector"]
 > - [Portal de Azure](network-watcher-check-next-hop-portal.md)
@@ -29,28 +29,28 @@ ms.lasthandoff: 07/11/2017
 > - [CLI 2.0](network-watcher-check-next-hop-cli.md)
 > - [API de REST de Azure](network-watcher-check-next-hop-rest.md)
 
-Próximo salto es una característica de Network Watcher que permite obtener el tipo del próximo salto y la dirección IP para una máquina virtual especificada. Esta característica es útil para determinar si el tráfico que sale de una máquina virtual atraviesa una puerta de enlace, Internet o redes virtuales para llegar a su destino.
+Próximo salto es una característica del Monitor de red que proporciona la capacidad de hello obtener tipo hello de próximo salto y la dirección IP basándose en una máquina virtual especificada. Esta característica es útil para determinar si el tráfico que sale de una máquina virtual recorre una puerta de enlace, internet o redes virtuales tooget tooits destino.
 
-En este artículo se usa la CLI de próxima generación para el modelo de implementación de Resource Manager, la CLI de Azure 2.0, que está disponible para Windows, Mac y Linux.
+En este artículo usa la CLI de próxima generación para el modelo de implementación de administración de recursos hello, CLI de Azure 2.0, que está disponible para Windows, Mac y Linux.
 
-Para seguir los pasos de este artículo, es preciso [instalar la interfaz de la línea de comandos de Azure para Mac, Linux y Windows (CLI de Azure)](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2).
+Hola tooperform los pasos de este artículo, deberá demasiado[instalar Hola interfaz de línea de comandos de Azure para Mac, Linux y Windows (CLI de Azure)](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2).
 
 ## <a name="before-you-begin"></a>Antes de empezar
 
-En este escenario, se usa la CLI de Azure para averiguar el tipo de próximo salto y la dirección IP.
+En este escenario, utilizará Hola tipo de próximo salto de CLI de Azure toofind hello y la dirección IP.
 
-En este escenario, se da por hecho que ya ha seguido los pasos descritos en [Creación de una instancia de Network Watcher](network-watcher-create.md) para crear un monitor de red. En este escenario también se da por hecho que existe un grupo de recursos con una máquina virtual válida.
+Este escenario se supone que ya ha seguido los pasos de hello en [crear un monitor de red](network-watcher-create.md) toocreate un monitor de red. escenario de Hello también supone que un grupo de recursos con una máquina virtual válida existe toobe usa.
 
 ## <a name="scenario"></a>Escenario
 
-El escenario descrito en este artículo usa Next Hop, una característica de Network Watcher, para averiguar el tipo de próximo salto y la dirección IP de un recurso. Para más información acerca de Next Hop, consulte la [introducción a Next Hop](network-watcher-next-hop-overview.md).
+escenario de Hello descrito en este artículo usa próximo salto, una característica de Monitor de red que se determina el tipo de próximo salto hello y dirección IP para un recurso. toolearn más información acerca de próximo salto, visite [información general sobre salto siguiente](network-watcher-next-hop-overview.md).
 
 
 ## <a name="get-next-hop"></a>Obtención del próximo salto
 
-Para obtener el próximo salto, llamamos al cmdlet `az network watcher show-next-hop`. Pasamos al cmdlet el grupo de recursos de Network Watcher, NetworkWatcher, el identificador de la máquina virtual, la dirección IP de origen y dirección IP de destino. En este ejemplo, la dirección IP de destino es una máquina virtual en otra red virtual. Hay una puerta de enlace de red virtual entre las dos redes virtuales.
+llamamos a Hola de próximo salto tooget hello `az network watcher show-next-hop` cmdlet. Pasamos grupo de recursos de Monitor de red de hello cmdlet hello, hello NetworkWatcher, máquina virtual de Id., dirección IP de origen y dirección IP de destino. En este ejemplo, la dirección IP de destino de Hola es tooa máquina virtual en otra red virtual. Hay una puerta de enlace de red virtual entre las dos redes virtuales de Hola.
 
-Si todavía no lo ha hecho, instale y configure la última versión de la [CLI de Azure 2.0](/cli/azure/install-az-cli2) e inicie sesión en una cuenta de Azure con [az login](/cli/azure/#login). Luego, ejecute el siguiente comando:
+Si aún no lo ha aún, instalar y configurar hello más reciente [CLI de Azure 2.0](/cli/azure/install-az-cli2) e inicie sesión con cuenta de Azure de tooan [inicio de sesión de az](/cli/azure/#login). A continuación, ejecute hello siguiente comando:
 
 ```azurecli
 az network watcher show-next-hop --resource-group <resourcegroupName> --vm <vmNameorID> --source-ip <source-ip> --dest-ip <destination-ip>
@@ -58,11 +58,11 @@ az network watcher show-next-hop --resource-group <resourcegroupName> --vm <vmNa
 ```
 
 > [!NOTE]
-Si la máquina virtual tiene varias NIC y el reenvío de IP está habilitado en cualquiera de ellas, debe especificarse el parámetro de NIC (-i nic-id). De lo contrario, es opcional.
+Si Hola máquina virtual tiene varios NIC y reenvío IP está habilitado en ninguno de hello NIC, a continuación, Hola parámetro NIC (-Id. de nic) debe especificarse. De lo contrario, es opcional.
 
 ## <a name="review-results"></a>Revisión de los resultados
 
-Una vez finalizado, se proporcionan los resultados. Se devuelve la dirección IP del próximo salto y el tipo de recurso que es.
+Cuando haya finalizado, se proporcionan los resultados de Hola. se devuelve la dirección IP del próximo salto Hello, así como de tipo hello del recurso es.
 
 ```azurecli
 {
@@ -72,7 +72,7 @@ Una vez finalizado, se proporcionan los resultados. Se devuelve la dirección IP
 }
 ```
 
-La lista siguiente muestra los valores de NextHopType disponibles actualmente:
+Hello lista siguiente muestra valores de hello disponibles actualmente NextHopType:
 
 **Tipo de próximo salto**
 
@@ -86,4 +86,4 @@ La lista siguiente muestra los valores de NextHopType disponibles actualmente:
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Aprenda cómo revisar la configuración del grupo de seguridad de red mediante programación en [NSG Auditing with Network Watcher](network-watcher-nsg-auditing-powershell.md) (Auditoría de NSG con Network Watcher).
+Obtenga información acerca de cómo tooreview la configuración del grupo de seguridad de red mediante programación si visita [NSG auditoría con Monitor de red](network-watcher-nsg-auditing-powershell.md)

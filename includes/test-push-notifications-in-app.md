@@ -1,5 +1,5 @@
 
-* En Xcode, presione **Ejecutar** e inicie la aplicación en un dispositivo iOS (tenga en cuenta que las notificaciones push no funcionan en los simuladores). Haga clic en **Aceptar** para aceptar notificaciones push; esta solicitud se produce la primera vez que se ejecuta la aplicación.
-* En la aplicación, agregue un nuevo elemento y haga clic en **+**.
-* Compruebe que se ha recibido la notificación y, a continuación, haga clic en **Aceptar** para descartarla. Ya ha completado correctamente este tutorial.
+* En Xcode, presione **ejecutar** e iniciar la aplicación hello en un dispositivo de iOS (tenga en cuenta que la inserción no funcionará en simuladores). Haga clic en **Aceptar** tooaccept notificaciones de inserción; esta solicitud produce Hola primera vez que se ejecuta la aplicación hello.
+* En la aplicación hello, agregar un nuevo elemento y haga clic en  **+** .
+* Compruebe que se recibe una notificación, y haga clic en **Aceptar** toodismiss Hola notificación. Ya ha completado correctamente este tutorial.
 

@@ -1,6 +1,6 @@
 ---
-title: Copia repetible en Azure Data Factory| Microsoft Docs
-description: "Aprenda a evitar duplicados aunque un segmento que copia datos se ejecute más de una vez."
+title: "copia de aaaRepeatable de factoría de datos de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo tooavoid duplicados aunque un segmento que copia los datos se ejecute más de una vez."
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: jingwang
-ms.openlocfilehash: 5b88a235915bf35fec701eee4a5f80beb4a67632
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 79a3fde2b700bf0a0e167479d6a86c5bee1bf7ec
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="repeatable-copy-in-azure-data-factory"></a>Copia repetible en Azure Data Factory
 
 ## <a name="repeatable-read-from-relational-sources"></a>Lectura repetible de orígenes relacionales
-Cuando se copian datos desde almacenes de datos relacionales, hay que tener presente la repetibilidad para evitar resultados imprevistos. En Azure Data Factory, puede volver a ejecutar un segmento manualmente. También puede configurar la directiva de reintentos para un conjunto de datos con el fin de que un segmento se vuelva a ejecutar cuando se produce un error. Cuando se vuelve a ejecutar un segmento, debe asegurarse de que los mismos datos se leen sin importar cuántas veces se ejecuta un segmento.  
+Al copiar datos de almacenes de datos relacionales, tenga repetibilidad en mente tooavoid resultados imprevistos. En Azure Data Factory, puede volver a ejecutar un segmento manualmente. También puede configurar la directiva de reintentos para un conjunto de datos con el fin de que un segmento se vuelva a ejecutar cuando se produce un error. Cuando se vuelve a ejecutar un segmento de cualquier manera, debe toomake seguro de que Hola los mismos datos no se lee importa cómo se ejecuta muchas veces un segmento.  
  
 > [!NOTE]
-> Los ejemplos siguientes son para SQL Azure, pero son aplicables a cualquier almacén de datos que admita conjuntos de datos rectangulares. Puede que deba ajustar el **tipo** de origen y la propiedad de la **consulta** (por ejemplo, consulta en lugar de sqlReaderQuery) del almacén de datos.   
+> Hello en los ejemplos siguientes son para SQL Azure pero tooany aplicables almacén de datos que admite conjuntos de datos rectangular. Es posible que tenga hello tooadjust **tipo** de hello y origen **consulta** propiedad (por ejemplo: consulta en lugar de sqlReaderQuery) para los datos de hello almacenar.   
 
-Normalmente, al leer desde almacenes relacionales, lo que quiere es leer únicamente los datos correspondientes a ese segmento. Una manera de hacerlo sería usar las variables WindowStart y WindowEnd disponibles en Azure Data Factory. Lea sobre las variables y funciones de Azure Data Factory aquí en el artículo [Azure Data Factory: funciones y variables del sistema](data-factory-functions-variables.md) . Ejemplo: 
+Por lo general, al leer de almacenes relacionales, desea solo datos de hello tooread correspondiente toothat segmento. Un toodo de manera por lo que sería mediante el uso de hello WindowStart y WindowEnd variables del sistema disponibles en Data Factory de Azure. Leer sobre las variables de Hola y funciones de factoría de datos de Azure aquí en hello [factoría de datos de Azure: funciones y Variables del sistema](data-factory-functions-variables.md) artículo. Ejemplo: 
 
 ```json
 "source": {
@@ -35,9 +35,9 @@ Normalmente, al leer desde almacenes relacionales, lo que quiere es leer únicam
     "sqlReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= \\'{0:yyyy-MM-dd HH:mm\\' AND timestampcolumn < \\'{1:yyyy-MM-dd HH:mm\\'', WindowStart, WindowEnd)"
 },
 ```
-Esta consulta lee los datos que se encuentran en el intervalo de duración del segmento (WindowStart-> WindowEnd) de la tabla MyTable. Una segunda ejecución de este segmento también garantizará que se leen los mismos datos. 
+Esta consulta lee los datos que se encuentra en el intervalo de duración del segmento hello (WindowStart -> WindowEnd) de la tabla MyTable de Hola. Vuelva a ejecutar de este segmento aseguraría también siempre que Hola se leen los mismos datos. 
 
-En otros casos, puede que desee leer toda la tabla y puede definir el valor de sqlReaderQuery de la manera siguiente:
+En otros casos, puede que quieran tooread Hola toda la tabla y puede definir hello sqlReaderQuery como se indica a continuación:
 
 ```json
 "source": 
@@ -47,10 +47,10 @@ En otros casos, puede que desee leer toda la tabla y puede definir el valor de s
 },
 ```
 
-## <a name="repeatable-write-to-sqlsink"></a>Escritura repetible en SqlSink
-Cuando se copian datos en **Azure SQL o SQL Server desde** otros orígenes de datos, es necesario tener en mente la repetibilidad para evitar resultados imprevistos. 
+## <a name="repeatable-write-toosqlsink"></a>Escritura repetible tooSqlSink
+Cuando se copian datos demasiado**Azure SQL o SQL Server** desde otros almacenes de datos, necesita tookeep repetibilidad en mente tooavoid resultados imprevistos. 
 
-Cuando se copien datos en Azure SQL o SQL Server Database, la actividad de copia anexa datos a la tabla del receptor de forma predeterminada. Supongamos que va a copiar datos de un archivo CSV (valores separados por comas) que contiene dos registros en la siguiente tabla en una instancia de Azure SQL o SQL Server Database. Cuando se ejecuta un segmento, se copian los dos registros en la tabla SQL. 
+Cuando se copian datos tooAzure base de datos SQL o SQL Server, actividad de copia de hello anexa la tabla de datos toohello receptor de forma predeterminada. Supongamos, se copian datos desde un CSV (valores separados por comas) archivo que contiene dos registros toohello en una base de datos de Azure SQL o SQL Server en la tabla siguiente. Cuando se ejecuta un segmento, Hola dos registros son copiados toohello table de SQL. 
 
 ```
 ID    Product        Quantity    ModifiedDate
@@ -59,7 +59,7 @@ ID    Product        Quantity    ModifiedDate
 7     Down Tube    2            2015-05-01 00:00:00
 ```
 
-Supongamos que encontró errores en el archivo de origen y actualizó la cantidad de Down Tube de 2 a 4. Si vuelve a ejecutar el segmento de datos durante ese período, encontrará dos nuevos registros anexados a Azure SQL o SQL Server Database. En este ejemplo se asume que ninguna de las columnas de la tabla tiene la restricción de clave principal.
+Suponga que encuentra errores en el archivo de código fuente y actualiza la cantidad de Hola de Tube hacia abajo de too4 2. Si se vuelve a ejecutar el segmento de datos de Hola durante ese período manualmente, encontrará dos nuevos registros anexan tooAzure base de datos SQL o SQL Server. En este ejemplo se da por supuesto que ninguna de las columnas de hello en la tabla de hello tiene restricción de clave principal de Hola.
 
 ```
 ID    Product        Quantity    ModifiedDate
@@ -70,10 +70,10 @@ ID    Product        Quantity    ModifiedDate
 7     Down Tube    4            2015-05-01 00:00:00
 ```
 
-Para evitar este comportamiento, debe especificar una semántica UPSERT mediante uno de los dos mecanismos siguientes:
+tooavoid este comportamiento, necesita una semántica UPSERT toospecify mediante uno de hello siguiendo dos mecanismos:
 
 ### <a name="mechanism-1-using-sqlwritercleanupscript"></a>Mecanismo 1: Uso de sqlWriterCleanupScript
-Puede usar la propiedad **sqlWriterCleanupScript** para limpiar los datos de la tabla del receptor antes de insertar los datos cuando se ejecuta un segmento. 
+Puede usar hello **sqlWriterCleanupScript** propiedad tooclean los datos de tabla de receptor de hello antes de insertar datos de hello cuando se ejecuta un segmento. 
 
 ```json
 "sink":  
@@ -83,7 +83,7 @@ Puede usar la propiedad **sqlWriterCleanupScript** para limpiar los datos de la 
 }
 ```
 
-Cuando se ejecuta un segmento, el script de limpieza se ejecuta primero para eliminar los datos que corresponden al segmento de la tabla de SQL. La actividad de copia inserta entonces datos en la tabla de SQL. Si se vuelve a ejecutar el segmento, la cantidad se actualiza según de la forma deseada.
+Cuando se ejecuta un segmento, script de limpieza de Hola se ejecuta primero los datos toodelete correspondiente segmento toohello de tabla SQL Hola. actividad de copia de Hello, a continuación, inserta datos en hello Table de SQL. Si se vuelve a ejecutar el segmento de hello, se actualiza la cantidad de hello según lo deseado.
 
 ```
 ID    Product        Quantity    ModifiedDate
@@ -92,7 +92,7 @@ ID    Product        Quantity    ModifiedDate
 7     Down Tube    4            2015-05-01 00:00:00
 ```
 
-Supongamos que se quita el registro Flat Washer desde el archivo csv original. Después, si vuelve a ejecutar el segmento, se producirá el siguiente resultado: 
+Imagine Hola registro arandela sin formato se quita de hello original csv. A continuación, volver a ejecutar el segmento de Hola generaría Hola siguiente resultado: 
 
 ```
 ID    Product        Quantity    ModifiedDate
@@ -100,17 +100,17 @@ ID    Product        Quantity    ModifiedDate
 7     Down Tube    4            2015-05-01 00:00:00
 ```
 
-La actividad de copia ejecutó el script de limpieza para eliminar los datos correspondientes para ese segmento. Luego leyó la entrada del archivo csv (que entonces solo contenía un registro) y la insertó en la tabla. 
+actividad de copia de Hello ejecutó Hola limpieza script toodelete Hola datos correspondientes para dicho sector. A continuación, debe leer Hola entrada desde archivo csv de hello (que, a continuación, se incluye un único registro) y se inserta en hello tabla. 
 
 ### <a name="mechanism-2-using-sliceidentifiercolumnname"></a>Mecanismo 2: Uso de sliceIdentifierColumnName
 > [!IMPORTANT]
 > sliceIdentifierColumnName no se admite en este momento para Azure SQL Data Warehouse. 
 
-El segundo mecanismo para lograr la repetibilidad es tener una columna dedicada (sliceIdentifierColumnName) en la tabla de destino. Esta columna debe usarla Factoría de datos de Azure para asegurarse de que el origen y el destino estén sincronizados. Este enfoque funciona cuando hay flexibilidad para cambiar o definir el esquema de la tabla SQL de destino. 
+repetibilidad de Hello segundo mecanismo tooachieve es tener una columna dedicada (sliceIdentifierColumnName) en el destino de hello tabla. Esta columna se usaría por factoría de datos de Azure tooensure Hola origen y destino permanecen sincronizadas. Este enfoque funciona cuando se produce la flexibilidad de cambiar o definir el esquema de tabla SQL de destino de Hola. 
 
-Azure Data Factory usa esta columna con fines de repetibilidad y, en el proceso, Azure Data Factory no realiza ningún cambio de esquema en la tabla. Forma de usar este enfoque:
+Esta columna se utiliza por factoría de datos de Azure para fines de capacidad de repetición y, en el proceso de hello Data Factory de Azure no cualquier esquema cambia toohello tabla. Forma toouse este enfoque:
 
-1. Defina una columna de tipo **binario (32)** en la tabla DE SQL de destino. No debería haber ninguna restricción en esta columna. En este ejemplo, llamaremos a esta columna AdfSliceIdentifier.
+1. Definir una columna de tipo **binario (32)** en el destino de hello Table de SQL. No debería haber ninguna restricción en esta columna. En este ejemplo, llamaremos a esta columna AdfSliceIdentifier.
 
 
     Tabla de origen:
@@ -132,7 +132,7 @@ Azure Data Factory usa esta columna con fines de repetibilidad y, en el proceso,
     )
     ```
 
-2. Úselo en la actividad de copia de la forma siguiente:
+2. Usarlo en la actividad de copia de hello como sigue:
    
     ```json
     "sink":  
@@ -143,12 +143,12 @@ Azure Data Factory usa esta columna con fines de repetibilidad y, en el proceso,
     }
     ```
 
-Azure Data Factory rellena esta columna según sus necesidades para asegurarse de que el origen y el destino permanecen sincronizados. Los valores de esta columna no deben usarse fuera de este contexto. 
+Factoría de datos de Azure rellena esta columna según su necesidad tooensure Hola origen y destino están sincronizadas. valores de Hello de esta columna no deben utilizarse fuera de este contexto. 
 
-Similar al mecanismo de 1, la actividad de copia limpia automáticamente los datos del segmento especificado de la tabla de SQL de destino. Luego, inserta datos del origen en la tabla de destino. 
+Toomechanism similar 1, actividad de copia limpia automáticamente los datos de Hola para hello proporcionada segmento desde el destino de hello Table de SQL. A continuación, inserta datos de origen en la tabla de destino de toohello. 
 
 ## <a name="next-steps"></a>Pasos siguientes
-Revise los siguientes artículos de conectores para ver ejemplos completos de JSON: 
+Revisar los siguientes artículos de conector que para JSON ejemplos completos de Hola: 
 
 - [Azure SQL Database](data-factory-azure-sql-connector.md)
 - [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md)

@@ -1,6 +1,6 @@
 ---
-title: Movimiento de datos de DB2 mediante Azure Data Factory | Microsoft Docs
-description: "Obtenga información sobre cómo mover los datos desde una base de datos DB2 local mediante la actividad de copia de Azure Data Factory"
+title: aaaMove datos de DB2 mediante el uso de Data Factory de Azure | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toomove datos desde un DB2 local de base de datos mediante el uso de la actividad de copia de factoría de datos de Azure"
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -14,30 +14,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jingwang
-ms.openlocfilehash: 6a89cc44724dbb5b46a9e89d6da24d9b35ddbbef
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 696ac059be644cb3901c37d2fc746e0682c65a1f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Movimiento de datos de DB2 mediante la actividad de copia de Azure Data Factory
-En este artículo se describe cómo se puede usar la actividad de copia en Azure Data Factory para copiar datos desde una base de datos DB2 local a un almacén de datos. Puede copiar los datos a cualquier almacén que aparezca como un receptor compatible en el artículo sobre [actividades de movimiento de datos de Data Factory](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Este tema se basa en el artículo sobre Data Factory, que presenta información general sobre el movimiento de datos mediante la actividad de copia y enumera las combinaciones de almacenes de datos compatibles. 
+Este artículo describe cómo puede usar actividad de copia de datos de Data Factory de Azure toocopy desde un almacén de datos local tooa de base de datos de DB2. Puede copiar el almacén de datos de tooany que aparece como un receptor admitido en hello [las actividades de movimiento de datos de Data Factory](data-factory-data-movement-activities.md#supported-data-stores-and-formats) artículo. En este tema se basa en el artículo de factoría de datos de hello, que presenta una visión general de movimiento de datos mediante la actividad de copia y se incluyen combinaciones de almacén de datos de Hola admitida. 
 
-Data Factory actualmente solo admite mover datos desde una base de datos DB2 a un [almacén de datos de receptor compatible](data-factory-data-movement-activities.md#supported-data-stores-and-formats). No se admite el movimiento de datos desde otros almacenes de datos a una base de datos DB2.
+Factoría de datos admite actualmente solo mover datos desde un tooa de base de datos de DB2 [almacén de datos del receptor compatibles](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Mover los datos de otros datos almacena tooa DB2 no se admite la base de datos.
 
 ## <a name="prerequisites"></a>Requisitos previos
-Data Factory admite la conexión a una base de datos DB2 local mediante la [puerta de enlace de administración de datos](data-factory-data-management-gateway.md). Para instrucciones paso a paso sobre cómo configurar la canalización de datos de la puerta de enlace para mover los datos, consulte el artículo [Movimiento de datos entre orígenes locales y la nube](data-factory-move-data-between-onprem-and-cloud.md).
+Factoría de datos admite la base de datos DB2 de conexión tooan local mediante hello [puerta de enlace de administración de datos](data-factory-data-management-gateway.md). Para instrucciones paso a paso tooset los datos de la puerta de enlace de hello canalización toomove los datos, consulte hello [mover datos desde local toocloud](data-factory-move-data-between-onprem-and-cloud.md) artículo.
 
-Se requiere una puerta de enlace incluso si DB2 está hospedada en una máquina virtual de IaaS de Azure. Puede instalarla en la misma máquina virtual de IaaS en la que está el almacén de datos. Si la puerta de enlace se puede conectar a la base de datos, es posible instalar la puerta de enlace en otra máquina virtual.
+Una puerta de enlace es necesaria incluso aunque hello DB2 alojada en VM de IaaS de Azure. Puede instalar la puerta de enlace de hello en hello mismo IaaS VM como almacén de datos de Hola. Si la puerta de enlace de hello puede conectarse toohello base de datos, puede instalar puerta de enlace de hello en una máquina virtual diferente.
 
-La puerta de enlace de administración de datos proporciona un controlador de DB2 integrado, por lo que no es necesario instalar manualmente un controlador para copiar datos desde DB2.
+puerta de enlace de administración de datos de Hello proporciona un controlador DB2 integrado, por lo que no necesita toomanually instalar una datos toocopy del controlador de DB2.
 
 > [!NOTE]
-> Para sugerencias sobre cómo solucionar problemas con la conexión y la puerta de enlace, consulte el artículo [Solución de problemas de la puerta de enlace](data-factory-data-management-gateway.md#troubleshooting-gateway-issues).
+> Para obtener sugerencias sobre cómo solucionar problemas de la puerta de enlace y de conexión, vea hello [solucionar problemas de la puerta de enlace](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) artículo.
 
 
 ## <a name="supported-versions"></a>Versiones compatibles
-Este conector de DB2 de Data Factory admite las plataformas y versiones de IBM DB2 siguientes con las versiones 9, 10 y 11 de SQL Access Manager (SQLAM) de la arquitectura distribuida de bases de datos relacionales (DRDA):
+Conector de Hello DB2 de factoría de datos admite Hola siguientes plataformas IBM DB2 y las versiones con el Administrador de acceso de SQL de arquitectura de base de datos relacionales (DRDA) distribuidas versiones 9, 10 y 11:
 
 * IBM DB2 para z/OS versión 11.1
 * IBM DB2 para z/OS versión 10.1
@@ -48,79 +48,79 @@ Este conector de DB2 de Data Factory admite las plataformas y versiones de IBM D
 * IBM DB2 para LUW versión 10.1
 
 > [!TIP]
-> Si recibe el mensaje de error "No se encontró el paquete correspondiente a una solicitud de ejecución de la instrucción SQL. SQLSTATE=51002 SQLCODE=-805", es porque no se creó un paquete necesario para el usuario normal en el SO. Para resolver el problema, siga estas instrucciones según el tipo de servidor de DB2:
-> - DB2 para i (AS400): permita que un usuario avanzado cree la colección del usuario normal antes de ejecutar la actividad de copia. Para crear la colección, use el comando: `create collection <username>`
-> - DB2 para z/OS o LUW: use una cuenta con privilegios elevados (usuario avanzado o administrador con entidades de paquete y permisos BIND, BINDADD, GRANT EXECUTE TO PUBLIC) para ejecutar una vez la copia. El paquete necesario se creará de forma automáticamente durante la copia. A continuación, puede cambiar al usuario normal para las ejecuciones de copia posteriores.
+> Si recibe el mensaje de error de saludo "hello paquete correspondiente tooan SQL instrucción solicitud de ejecución no se encontró. SQLSTATE = 51002 SQLCODE =-805, "motivo de hello no es se crea un paquete es necesario para el usuario normal de hello en hello SO. tooresolve este problema, siga estas instrucciones para el tipo de servidor DB2:
+> - DB2 para i (AS400): permiten a un usuario avanzado Crear colección de hello para el usuario normal de hello antes de ejecutar la actividad de copia. colección de hello toocreate, use Hola comando:`create collection <username>`
+> - DB2 para z/OS o LUW: utilice una cuenta con privilegios elevados: un usuario avanzado o administrador que tenga entidades de paquete y se ENLAZA, BINDADD, conceda permisos de tooPUBLIC EXECUTE: copia de hello toorun una vez. paquete necesario Hola se crea automáticamente durante la copia de Hola. A continuación, puede cambiar usuario normal toohello atrás para las ejecuciones de copia posteriores.
 
 ## <a name="getting-started"></a>Introducción
-Puede crear una canalización con actividad de copia para mover datos desde un almacén de datos DB2 local mediante el uso de distintas herramientas o API: 
+Puede crear una canalización con datos de toomove de actividad de copia de un almacén de datos de DB2 local mediante distintas herramientas y API: 
 
-- La manera más fácil de crear una canalización es usar el Asistente para copia de Azure Data Factory. Para un tutorial rápido sobre cómo crear una canalización con el Asistente para copia, consulte [Tutorial: Creación de una canalización mediante el Asistente para copia](data-factory-copy-data-wizard-tutorial.md). 
-- También puede usar herramientas para crear una canalización, como Azure Portal, Visual Studio, Azure PowerShell, una plantilla de Azure Resource Manager, la API de .NET y la API de REST. Para instrucciones paso a paso sobre cómo crear una canalización con una actividad de copia, consulte el [tutorial de la actividad de copia](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
+- toocreate de manera más fácil de Hello una canalización es toouse Hola Asistente para copiar de factoría de datos de Azure. Para ver un tutorial rápido sobre cómo crear una canalización mediante Hola Asistente para copiar, vea hello [Tutorial: crear una canalización mediante Hola Asistente para copiar](data-factory-copy-data-wizard-tutorial.md). 
+- También puede usar herramientas toocreate una canalización, incluidos Hola portal de Azure, Visual Studio, Azure PowerShell, una plantilla de Azure Resource Manager, Hola API de .NET y Hola API de REST. Para obtener instrucciones paso a paso toocreate una canalización con una actividad de copia, consulte hello [tutorial de actividad de copia](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
 
-Tanto si usa las herramientas como las API, realice los pasos siguientes para crear una canalización que mueva datos de un almacén de datos de origen a un almacén de datos receptor:
+Si usa herramientas de Hola o las API, realizar Hola siguiendo los pasos toocreate una canalización que mueve el almacén de datos del receptor de tooa del almacén de datos desde un origen de datos:
 
-1. Cree servicios vinculados para vincular almacenes de datos de entrada y salida a la factoría de datos.
-2. Cree conjuntos de datos con el fin de representar los datos de entrada y salida para la operación de copia. 
+1. Crear la factoría de datos de tooyour de almacenes de datos de entrada y salida de toolink de servicios vinculados.
+2. Creación de conjuntos de datos toorepresent entrada y salida de datos para la operación de copia de Hola. 
 3. Cree una canalización con una actividad de copia que tome como entrada un conjunto de datos y un conjunto de datos como salida. 
 
-Cuando se usa el Asistente para copia, se crean automáticamente definiciones de JSON para las entidades de canalizaciones, los conjuntos de datos y los servicios vinculados de Data Factory. Al usar herramientas o API (excepto la API de .NET), se definen las entidades de Data Factory con el formato JSON. El [ejemplo de JSON: Copiar datos de DB2 a Azure Blob Storage](#json-example-copy-data-from-db2-to-azure-blob) muestra las definiciones de JSON para las entidades de Data Factory que se usan para copiar datos de un almacén de datos DB2 local.
+Cuando usas Hola Asistente para copiar, definiciones de JSON para los servicios de la factoría de datos vinculado de Hola, conjuntos de datos y entidades de canalización se crean automáticamente para usted. Cuando usa herramientas o las API (excepto Hola API. NET), defina las entidades de hello factoría de datos con formato JSON de Hola. Hola [ejemplo de JSON: copiar los datos de DB2 tooAzure almacenamiento de blobs](#json-example-copy-data-from-db2-to-azure-blob) muestra las definiciones de JSON de Hola para hello las entidades de la factoría de datos que son toocopy usa datos de un almacén de datos de DB2 local.
 
-Las secciones siguientes proporcionan detalles sobre las propiedades JSON que se usan para definir entidades de Data Factory específicas de un almacén de datos de DB2.
+Hola las secciones siguientes proporciona detalles sobre Hola propiedades JSON que son utilizados toodefine Hola factoría de datos entidades que son el almacén de datos específico tooa DB2.
 
 ## <a name="db2-linked-service-properties"></a>Propiedades del servicio vinculado de DB2
-En la tabla siguiente se enumeran las propiedades JSON que son específicas de un servicio vinculado de DB2.
+Hello en la tabla siguiente enumera propiedades JSON de Hola que son tooa específico del servicio vinculado DB2.
 
 | Propiedad | Descripción | Obligatorio |
 | --- | --- | --- |
-| **type** |Esta propiedad se debe establecer en **OnPremisesDB2**. |Sí |
-| **server** |Nombre del servidor DB2. |Sí |
-| **database** |Nombre de la base de datos DB2. |Sí |
-| **schema** |Nombre del esquema de la base de datos DB2. Esta propiedad distingue mayúsculas de minúsculas. |No |
-| **authenticationType** |Tipo de autenticación que se usa para conectarse a la base de datos DB2. Los valores posibles son: Anonymous, Basic y Windows. |Sí |
-| **username** |Nombre de la cuenta de usuario si se usa autenticación Basic o Windows. |No |
-| **password** |Contraseña para la cuenta de usuario. |No |
-| **gatewayName** |Nombre de la puerta de enlace que debe usar el servicio Factoría de datos para conectarse a la base de datos DB2 local. |Sí |
+| **type** |Esta propiedad debe establecerse demasiado**OnPremisesDB2**. |Sí |
+| **server** |nombre de saludo del servidor de hello DB2. |Sí |
+| **database** |nombre de Hola de base de datos de DB2 Hola. |Sí |
+| **schema** |nombre de Hello del esquema de hello en la base de datos de DB2 Hola. Esta propiedad distingue mayúsculas de minúsculas. |No |
+| **authenticationType** |tipo de Hola de autenticación que es la base de datos de uso tooconnect toohello DB2. Hola los valores posibles son: anónima, básica y Windows. |Sí |
+| **username** |nombre de Hello para la cuenta de usuario de hello si utiliza la autenticación básica o de Windows. |No |
+| **password** |contraseña de Hello para la cuenta de usuario de Hola. |No |
+| **gatewayName** |nombre de Hola de puerta de enlace de Hola Hola servicio Data Factory debe usar base de datos de DB2 de tooconnect toohello local. |Sí |
 
 ## <a name="dataset-properties"></a>Propiedades del conjunto de datos
-Para una lista de las secciones y propiedades disponibles para definir conjuntos de datos, consulte el artículo sobre [creación de conjuntos de datos](data-factory-create-datasets.md) . Las secciones como **structure**, **availability** y **policy** del código JSON del conjunto de datos son similares para todos los tipos de conjunto de datos (Azure SQL, Azure Blob Storage, Azure Table Storage, etc.).
+Para obtener una lista de secciones de Hola y propiedades que están disponibles para definir conjuntos de datos, vea hello [crear conjuntos de datos](data-factory-create-datasets.md) artículo. Las secciones, como **estructura**, **disponibilidad**, hello y **directiva** para un conjunto de datos JSON son similares para todos los tipos de conjunto de datos (SQL Azure, almacenamiento de blobs de Azure, tabla de Azure almacenamiento y así sucesivamente).
 
-La sección **typeProperties** es diferente en cada tipo de conjunto de datos y proporciona información acerca de la ubicación de los datos en el almacén de datos. La sección **typeProperties** del conjunto de datos de tipo **RelationalTable**, que incluye el conjunto de datos de DB2, tiene la propiedad siguiente:
+Hola **typeProperties** sección es diferente para cada tipo de conjunto de datos y proporciona información acerca de la ubicación de Hola de hello datos Hola almacén de datos. Hola **typeProperties** sección para un conjunto de datos de tipo **RelationalTable**, que incluye el conjunto de datos de DB2 hello, tiene Hola después de propiedad:
 
 | Propiedad | Descripción | Obligatorio |
 | --- | --- | --- |
-| **tableName** |Nombre de la tabla en la instancia de base de datos DB2 a la que hace referencia el servicio vinculado. Esta propiedad distingue mayúsculas de minúsculas. |No (si se especifica la propiedad **query** de una actividad de copia de tipo **RelationalSource**) |
+| **tableName** |Hola nombre de tabla de hello en la instancia de base de datos de DB2 de Hola que Hola servicio vinculado hace referencia a. Esta propiedad distingue mayúsculas de minúsculas. |No (si hello **consulta** propiedad de una actividad de copia de tipo **RelationalSource** se especifica) |
 
 ## <a name="copy-activity-properties"></a>Propiedades de la actividad de copia
-Para una lista de las secciones y propiedades disponibles para definir actividades de copia, consulte el artículo sobre [creación de canalizaciones](data-factory-create-pipelines.md). Las propiedades de la actividad de copia, como **nombre**, **descripción**, tabla de **entradas**, tabla de **salidas** y **directiva**, están disponibles para todos los tipos de actividades. Las propiedades que están disponibles en la sección **typeProperties** de la actividad de cada tipo de actividad. Para la actividad de copia, las propiedades varían en función de los tipos de orígenes y receptores de datos.
+Para obtener una lista de secciones de Hola y propiedades que están disponibles para la definición de actividades de copia, consulte hello [crear canalizaciones](data-factory-create-pipelines.md) artículo. Las propiedades de la actividad de copia, como **nombre**, **descripción**, tabla de **entradas**, tabla de **salidas** y **directiva**, están disponibles para todos los tipos de actividades. Hola propiedades que están disponibles en hello **typeProperties** sección de la actividad de Hola para cada tipo de actividad. Para la actividad de copia, propiedades de hello varían en función de tipos de hello receptores y orígenes de datos.
 
-En el caso de la actividad de copia, si el origen es de tipo **RelationalSource** (que incluye DB2), las propiedades siguientes están disponibles en la sección **typeProperties**:
+Para la actividad de copia, cuando el origen de hello es de tipo **RelationalSource** (que incluye DB2), Hola propiedades siguientes está disponible en hello **typeProperties** sección:
 
 | Propiedad | Descripción | Valores permitidos | Obligatorio |
 | --- | --- | --- | --- |
-| **consulta** |Use la consulta personalizada para leer los datos. |Cadena de consulta SQL. Por ejemplo: `"query": "select * from "MySchema"."MyTable""` |No (si se especifica la propiedad **tableName** de un conjunto de datos) |
+| **consulta** |Usar datos de hello consulta personalizada tooread Hola. |Cadena de consulta SQL. Por ejemplo: `"query": "select * from "MySchema"."MyTable""` |No (si hello **tableName** se especifica la propiedad de un conjunto de datos) |
 
 > [!NOTE]
-> Los nombres de esquema y tabla distinguen mayúsculas de minúsculas. En la instrucción de consulta, escriba los nombres de propiedades entre "" (comillas dobles). Por ejemplo:
+> Los nombres de esquema y tabla distinguen mayúsculas de minúsculas. En la instrucción de consulta de hello, incluya los nombres de propiedad mediante el uso de "" (comillas dobles). Por ejemplo:
 >
 > ```sql
 > "query": "select * from "DB2ADMIN"."Customers""
 > ```
 
-## <a name="json-example-copy-data-from-db2-to-azure-blob-storage"></a>Ejemplo de JSON: Copiar datos de DB2 a Azure Blob Storage
-Este ejemplo proporciona definiciones JSON de ejemplo que puede usar para crear una canalización mediante [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) o [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). En el ejemplo se muestra cómo copiar datos desde una base de datos DB2 a Blob Storage. Sin embargo, es posible copiar los datos a [cualquier tipo de receptor de almacén de datos compatible](data-factory-data-movement-activities.md#supported-data-stores-and-formats) mediante la actividad de copia de Azure Data Factory.
+## <a name="json-example-copy-data-from-db2-tooazure-blob-storage"></a>Ejemplo de JSON: copiar los datos de DB2 tooAzure almacenamiento de blobs
+Este ejemplo proporciona las definiciones de JSON de ejemplo que puede utilizar toocreate una canalización mediante hello [portal de Azure](data-factory-copy-activity-tutorial-using-azure-portal.md), [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), o [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). ejemplo de Hola muestra cómo la base de datos de toocopy de DB2 datos tooBlob almacenamiento. Sin embargo, se pueden copiar datos demasiado[todos los datos admitidos almacenan el tipo de receptor](data-factory-data-movement-activities.md#supported-data-stores-and-formats) mediante el uso de la actividad de copia de factoría de datos de Azure.
 
-El ejemplo consta de las siguientes entidades de Data Factory:
+ejemplo de Hola tiene Hola siguiendo las entidades de la factoría de datos:
 
 - Un servicio vinculado DB2 de tipo [OnPremisesDb2](data-factory-onprem-db2-connector.md#linked-service-properties).
 - Un servicio vinculado de Azure Blob Storage de tipo [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
 - Un [conjunto de datos](data-factory-create-datasets.md) de entrada de tipo [RelationalTable](data-factory-onprem-db2-connector.md#dataset-properties).
 - Un [conjunto de datos](data-factory-create-datasets.md) de salida de tipo [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-- Una [canalización](data-factory-create-pipelines.md) con una actividad de copia que usa las propiedades [RelationalSource](data-factory-onprem-db2-connector.md#copy-activity-properties) y [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
+- A [canalización](data-factory-create-pipelines.md) con una actividad de copia que utiliza hello [RelationalSource](data-factory-onprem-db2-connector.md#copy-activity-properties) y [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) propiedades
 
-En el ejemplo se copian datos cada hora de un resultado de consulta de una base de datos DB2 en un blob de Azure. Las propiedades JSON que se usan en el ejemplo se describen en las secciones que aparecen después de las definiciones de entidad.
+ejemplo Hello copia datos de un resultado de consulta en un tooan de base de datos DB2 blob de Azure cada hora. propiedades JSON de Hola que se usan en el ejemplo de Hola se describen en las secciones de Hola que siguen a las definiciones de entidad de Hola.
 
-Como primer paso, instale y configure una puerta de enlace de datos. Las instrucciones se encuentran en el artículo sobre cómo [mover datos entre ubicaciones locales y en la nube](data-factory-move-data-between-onprem-and-cloud.md).
+Como primer paso, instale y configure una puerta de enlace de datos. Las instrucciones están en hello [mover datos entre ubicaciones locales y en la nube](data-factory-move-data-between-onprem-and-cloud.md) artículo.
 
 **Servicio vinculado DB2**
 
@@ -158,9 +158,9 @@ Como primer paso, instale y configure una puerta de enlace de datos. Las instruc
 
 **Conjunto de datos de entrada de DB2**
 
-En el ejemplo se supone que creó una tabla en DB2 llamada "MyTable" que tiene una columna etiquetada "timestamp" para los datos de serie temporal.
+ejemplo de Hola se da por supuesto que ha creado una tabla de DB2 con el nombre "MyTable" que tiene una columna denominada "timestamp" para los datos de serie temporal de Hola.
 
-La propiedad **external** está establecida en "true." Este valor informa al servicio Data Factory de que el conjunto de datos es externo a la factoría de datos y no la produce ninguna actividad de dicha factoría. Tenga en cuenta que la propiedad **type** se establece en **RelationalTable**.
+Hola **externo** propiedad se establece demasiado "true". Esta configuración indica el servicio de factoría de datos de Hola que este conjunto de datos es externo toohello factoría de datos y no se crea una actividad de factoría de datos de Hola. Tenga en cuenta que hello **tipo** propiedad se establece demasiado**RelationalTable**.
 
 
 ```json
@@ -188,7 +188,7 @@ La propiedad **external** está establecida en "true." Este valor informa al ser
 
 **Conjunto de datos de salida de blob de Azure**
 
-Para escribir los datos en un blob nuevo cada hora, la propiedad **frequency** se establece en "Hora" y la propiedad **interval**, en 1. La propiedad **folderPath** del blob se evalúa dinámicamente según la hora de inicio del segmento que se está procesando. La ruta de acceso de la carpeta usa las partes year, month, day y hours de la hora de inicio.
+Los datos se escriben cada hora de tooa nuevo blob mediante configuración hello **frecuencia** propiedad demasiado hello y "Hora" **intervalo** too1 de propiedad. Hola **folderPath** propiedad de blob de Hola se evalúa dinámicamente según el tiempo de inicio de Hola de sector de Hola que se está procesando. ruta de acceso de carpeta Hola utiliza elementos de año, mes, día y hora de Hola Hola hora de inicio.
 
 ```json
 {
@@ -246,15 +246,15 @@ Para escribir los datos en un blob nuevo cada hora, la propiedad **frequency** s
 }
 ```
 
-**Canalización de la actividad de copia**
+**Canalización para la actividad de copia de hello**
 
-La canalización contiene una actividad de copia que está configurada para usar conjuntos de datos de entrada y de salida especificados y que está programada para ejecutarse cada hora. En la definición JSON de la canalización, el tipo **source** se establece en **RelationalSource** y el tipo **sink** se establece en **BlobSink**. La consulta SQL especificada para la propiedad **query** selecciona los datos de la tabla "Orders".
+canalización de Hello contiene una actividad de copia que se configura toouse especifica los conjuntos de datos de entrada y salida y que es toorun programada cada hora. Hola definición JSON de la canalización de hello, Hola **origen** tipo está establecido demasiado**RelationalSource** hello y **receptor** tipo está establecido demasiado**BlobSink**. consulta SQL Hola especificada para hello **consulta** propiedad selecciona datos de Hola de tabla de Hola "Orders".
 
 ```json
 {
     "name": "CopyDb2ToBlob",
     "properties": {
-        "description": "pipeline for the copy activity",
+        "description": "pipeline for hello copy activity",
         "activities": [
             {
                 "type": "Copy",
@@ -295,12 +295,12 @@ La canalización contiene una actividad de copia que está configurada para usar
 ```
 
 ## <a name="type-mapping-for-db2"></a>Asignación de tipos para DB2
-Como se mencionó en el artículo sobre [actividades del movimiento de datos](data-factory-data-movement-activities.md), la actividad de copia realiza conversiones automáticas del tipo de origen al tipo de receptor con el enfoque de dos pasos siguiente:
+Como se mencionó en hello [las actividades de movimiento de datos](data-factory-data-movement-activities.md) artículo, actividad de copia realiza conversiones de tipos automática del tipo de toosink de tipo de origen mediante Hola enfoque de dos pasos:
 
-1. Conversión de un tipo de origen nativo a un tipo .NET
-2. Conversión de un tipo .NET a un tipo de receptor nativo
+1. Convertir de un tipo de origen nativo tipo tooa .NET
+2. Convertir de un tipo de receptor nativo de tooa de tipo .NET
 
-Las asignaciones siguientes se usan cuando la actividad de copia convierte los datos de un tipo DB2 a un tipo .NET:
+Hello asignaciones siguientes se utilizan cuando copia actividad convierte datos de Hola de un tipo de .NET de DB2 tipo tooa:
 
 | Tipo de base de datos DB2 | Tipo .NET Framework |
 | --- | --- |
@@ -343,13 +343,13 @@ Las asignaciones siguientes se usan cuando la actividad de copia convierte los d
 | Hora |TimeSpan |
 | Timestamp |Datetime |
 | xml |Byte[] |
-| Char |string |
+| Char |String |
 
-## <a name="map-source-to-sink-columns"></a>Asignación de columnas de origen a columnas de receptor
-Para información sobre cómo asignar columnas en el conjunto de datos de origen a columnas en el conjunto de datos de receptor, consulte [Asignación de columnas de conjunto de datos en Azure Data Factory](data-factory-map-columns.md).
+## <a name="map-source-toosink-columns"></a>Asignar columnas de origen toosink
+toolearn toomap columnas en hello toocolumns de conjunto de datos de origen en el conjunto de datos de receptor de hello, vea [asignar columnas de conjunto de datos de Data Factory de Azure](data-factory-map-columns.md).
 
 ## <a name="repeatable-reads-from-relational-sources"></a>Lecturas repetibles desde orígenes relacionales
-Cuando se copian datos desde un almacén de datos relacionales, se debe tener presente la repetibilidad para evitar resultados imprevistos. En Azure Data Factory, puede volver a ejecutar un segmento manualmente. También puede configurar la propiedad **policy** de reintentos para un conjunto de datos a fin de que se vuelva a ejecutar un segmento cuando se produce un error. Asegúrese de que se lean los mismos datos, sin importar cuántas veces se vuelve a ejecutar el segmento e independientemente de cómo se haga. Para más información, consulte [Lecturas repetibles desde orígenes relacionales](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
+Al copiar datos desde un almacén de datos relacionales, tenga repetibilidad en mente tooavoid resultados imprevistos. En Azure Data Factory, puede volver a ejecutar un segmento manualmente. También puede configurar reintento hello **directiva** propiedad para un toorerun un segmento cuando se produce un error de conjunto de datos. Asegúrese de que Hola mismo no se leen los datos importar cómo segmento de hello muchas veces se vuelva a ejecutar y, a continuación, independientemente de cómo volver a ejecutar el segmento de Hola. Para más información, consulte [Lecturas repetibles desde orígenes relacionales](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
 ## <a name="performance-and-tuning"></a>Rendimiento y optimización
-Obtenga información sobre los factores clave que afectan el rendimiento de la actividad de copia y las formas de optimizar el rendimiento en la [Guía de optimización y rendimiento de la actividad de copia](data-factory-copy-activity-performance.md).
+Obtenga información acerca de los factores claves que afectan al rendimiento de Hola de actividad de copia y maneras de rendimiento toooptimize en hello [copia actividad Guía de rendimiento y optimización](data-factory-copy-activity-performance.md).

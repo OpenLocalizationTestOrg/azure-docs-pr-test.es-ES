@@ -1,7 +1,7 @@
-La plantilla del proyecto de Azure Functions de Visual Studio crea un proyecto que se puede publicar en una aplicación de función en Azure. Una Function App permite agrupar funciones como una unidad lógica para facilitar la administración, la implementación y el uso compartido de recursos.   
+plantilla de proyecto de Hello las funciones de Azure en Visual Studio crea un proyecto que puede ser publicado tooa función aplicación en Azure. Una Function App permite agrupar funciones como una unidad lógica para facilitar la administración, la implementación y el uso compartido de recursos.   
 
-1. Haga clic con el botón derecho del ratón en el nodo del proyecto en el **Explorador de soluciones** y, después, elija **Agregar** > **Nuevo elemento**. Elija **Función de Azure** en el cuadro de diálogo.
+1. Haga clic derecho del ratón en el nodo del proyecto hello en **el Explorador de soluciones**, a continuación, elija **agregar** > **nuevo elemento**. Elija **Azure función** desde el cuadro de diálogo de Hola.
 
-2. En el cuadro de diálogo **Nuevo proyecto**, expanda el nodo **Visual C#** > **Nube**, seleccione **Azure Functions**, escriba el **nombre** del proyecto y haga clic en **Aceptar**. El nombre de la aplicación de función debe ser válido como espacio de nombres de C#, por lo que no debe usar guiones bajos, guiones u otros caracteres no alfanuméricos. 
+2. Hola **nuevo proyecto** cuadro de diálogo, expanda **Visual C#** > **nube** nodo, seleccione **funciones de Azure**, escriba un **Nombre** para el proyecto y haga clic en **Aceptar**. nombre de la función aplicación Hola debe ser válido, como un espacio de nombres de C#, por lo que no use caracteres de subrayado, guiones o caracteres no alfanuméricos. 
 
-    ![Cuadro de diálogo Nuevo proyecto para crear una función en Visual Studio](./media/functions-vstools-create/functions-vstools-add-new-project.png)
+    ![Toocreate de cuadro de diálogo nuevo proyecto una función en Visual Studio](./media/functions-vstools-create/functions-vstools-add-new-project.png)

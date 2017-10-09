@@ -1,6 +1,6 @@
 ---
-title: "Desarrollo y ejecución de funciones de Azure de forma local | Microsoft Docs"
-description: "Aprenda a codificar y probar funciones de Azure en la máquina local antes de ejecutarlas en Azure Functions."
+title: "aaaDevelop y ejecución de Azure funciona localmente | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toocode y prueba de Azure funciona en el equipo local antes de ejecutar en las funciones de Azure."
 services: functions
 documentationcenter: na
 author: lindydonna
@@ -14,45 +14,45 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: glenga
-ms.openlocfilehash: bbe03973dbd7c70463caa6d1a45efae2ec722c05
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 342ed4d6df41a2d2df9067948e19e347bb52c844
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Codificación y comprobación de las funciones de Azure en un entorno local
 
-A pesar de que [Azure Portal] proporciona un conjunto completo de herramientas para desarrollar y probar Azure Functions, muchos desarrolladores prefieren desarrollar productos localmente. Azure Functions facilita el uso de su editor de código favorito y de las herramientas de desarrollo locales para desarrollar y probar sus funciones en un equipo local. Las funciones pueden desencadenarse a partir de eventos de Azure, y puede depurar sus funciones en C# y JavaScript en el equipo local. 
+Mientras hello [portal de Azure] proporciona un completo conjunto de herramientas para el desarrollo y prueba de las funciones de Azure, muchos desarrolladores prefieren una experiencia de desarrollo local. Las funciones de Azure hace fácil toouse favoritos toodevelop de herramientas de desarrollo local de editor de código y probar las funciones en el equipo local. Las funciones pueden desencadenarse a partir de eventos de Azure, y puede depurar sus funciones en C# y JavaScript en el equipo local. 
 
 Si es un desarrollador de C# de Visual Studio, Azure Functions también [permite la integración con Visual Studio 2017](functions-develop-vs.md).
 
-## <a name="install-the-azure-functions-core-tools"></a>Instalación de Azure Functions Core Tools
+## <a name="install-hello-azure-functions-core-tools"></a>Instalar las herramientas de hello Azure funciones principales
 
-Azure Functions Core Tools es una versión local del entorno de ejecución de Azure Functions que puede ejecutar en el equipo Windows local. No se trata de un emulador o simulador. Se trata del mismo entorno de ejecución que se usa en Functions en Azure.
+Herramientas de Azure funciones principales es una versión local de en tiempo de ejecución de funciones de Azure de Hola que se pueden ejecutar en el equipo local de Windows. No se trata de un emulador o simulador. Ha Hola mismo en tiempo de ejecución que proporciona funciones de Azure.
 
-[Azure Functions Core Tools] se proporciona como un paquete npm. Primero debe [instalar NodeJS](https://docs.npmjs.com/getting-started/installing-node), que incluye npm.  
+Hola [herramientas básicas de las funciones de Azure] se proporciona como un paquete de npm. Primero debe [instalar NodeJS](https://docs.npmjs.com/getting-started/installing-node), que incluye npm.  
 
 >[!NOTE]
->En este momento el paquete Azure Functions Core Tools solo se puede instalar en equipos Windows. Esta restricción se debe a una limitación temporal del host de Functions.
+>En este momento, el paquete de herramientas de Azure funciones principales de hello solo puede instalarse en equipos con Windows. Esta restricción es debido a limitación temporal de tooa en host de las funciones de Hola.
 
-[Azure Functions Core Tools] agrega los siguientes alias de comando:
+[herramientas básicas de las funciones de Azure] agrega Hola siguiendo los alias de comandos:
 * **func**
 * **azfun**
 * **azurefunctions**
 
-Es posible utilizar cualquier de estos alias en lugar del alias `func` de este tema.
+Todos estos alias pueden utilizarse en lugar de `func` se muestra en los ejemplos de hello en este tema.
 
 ## <a name="create-a-local-functions-project"></a>Creación de un proyecto local de Functions
 
-Cuando se ejecuta localmente, un proyecto de Functions es un directorio que tiene los archivos host.json y local.settings.json. Este directorio es el equivalente a una aplicación de función en Azure. Para obtener más información sobre la estructura de carpetas de Azure Functions, vea la [Guía para desarrolladores de Azure Functions](functions-reference.md#folder-structure).
+Cuando se ejecuta localmente, un proyecto de funciones es un directorio que tiene local.settings.json y Hola archivos host.json. Este directorio es Hola equivalente de una aplicación de la función en Azure. toolearn más información acerca de hello estructura de carpetas de las funciones de Azure, vea hello [Guía de desarrolladores de Azure funciones](functions-reference.md#folder-structure).
 
-En el símbolo del sistema, ejecute el siguiente comando:
+En un símbolo del sistema, ejecute hello siguiente comando:
 
 ```
 func init MyFunctionProj
 ```
 
-La salida tendrá un aspecto similar al siguiente:
+salida de Hello es similar a Hola siguiente ejemplo:
 
 ```
 Writing .gitignore
@@ -62,13 +62,13 @@ Created launch.json
 Initialized empty Git repository in D:/Code/Playground/MyFunctionProj/.git/
 ```
 
-Para no participar en la creación de un repositorio Git, use la opción `--no-source-control [-n]`.
+tooopt fuera de la creación de un repositorio Git, el uso de la opción hello `--no-source-control [-n]`.
 
 <a name="local-settings"></a>
 
 ## <a name="local-settings-file"></a>Archivo de configuración local
 
-El archivo local.settings.json almacena la configuración de la aplicación, las cadenas de conexión y la configuración de Azure Functions Core Tools. Tiene la siguiente estructura:
+Hola archivo local.settings.json almacena la configuración de la aplicación, las cadenas de conexión y configuración de herramientas básicas de las funciones de Azure. Tiene Hola siguiente estructura:
 
 ```json
 {
@@ -88,32 +88,32 @@ El archivo local.settings.json almacena la configuración de la aplicación, las
 ```
 | Configuración      | Descripción                            |
 | ------------ | -------------------------------------- |
-| **IsEncrypted** | Cuando se establece en **true**, todos los valores se cifran con una clave de máquina local. Se usa con los comandos `func settings`. El valor predeterminado es **false**. |
-| **Valores** | Colección de opciones de configuración de la aplicación que se usa en la ejecución local. Agregue la configuración de la aplicación a este objeto.  |
-| **AzureWebJobsStorage** | Establece la cadena de conexión para la cuenta de Azure Storage que el entorno de ejecución de Azure Functions usa internamente. La cuenta de almacenamiento admite los desencadenadores de su función. Esta configuración de conexión de la cuenta de almacenamiento es necesaria para todas las funciones, salvo en el caso de las funciones desencadenadas de HTTP.  |
-| **AzureWebJobsDashboard** | Establece la cadena de conexión a la cuenta de Azure Storage que se usa para almacenar los registros de funciones. Este valor opcional hace que se pueda acceder a los registros en el portal.|
-| **Host** | La configuración que se muestra esta sección permite personalizar el proceso de host de Functions cuando se ejecuta localmente. | 
-| **LocalHttpPort** | Establece el puerto predeterminado que se usa cuando al ejecutar el host de Functions local (`func host start` y `func run`). La opción de línea de comandos `--port` tiene prioridad sobre este valor. |
-| **CORS** | Define los orígenes permitidos para el [uso compartido de recursos entre orígenes (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). Los orígenes se proporcionan en una lista de valores separados por comas y sin espacios. Se admite el valor comodín (**\***), lo que permite realizar solicitudes desde cualquier origen. |
-| **ConnectionStrings** | Contiene las cadenas de conexión de la base de datos para las funciones. Las cadenas de conexión de este objeto se agregan al entorno con el tipo de proveedor de **System.Data.SqlClient**.  | 
+| **IsEncrypted** | Cuando se establece demasiado**true**, todos los valores se cifran mediante una clave del equipo local. Se usa con los comandos `func settings`. El valor predeterminado es **false**. |
+| **Valores** | Colección de opciones de configuración de la aplicación que se usa en la ejecución local. Agregue su objeto de toothis de configuración de aplicación.  |
+| **AzureWebJobsStorage** | Conjuntos de Hola toohello de cadena de conexión cuenta de almacenamiento de Azure que se usa internamente en tiempo de ejecución de funciones de Azure de Hola. cuenta de almacenamiento de Hello es compatible con los desencadenadores de la función. Esta configuración de conexión de la cuenta de almacenamiento es necesaria para todas las funciones, salvo en el caso de las funciones desencadenadas de HTTP.  |
+| **AzureWebJobsDashboard** | Establece Hola cadena toohello almacenamiento de Azure cuenta de conexión que es usado toostore Hola función registros. Este valor opcional hace Hola registros esté accesible en el portal de Hola.|
+| **Host** | Configuración de esta sección Personalizar el proceso de host de las funciones hello cuando se ejecuta localmente. | 
+| **LocalHttpPort** | Conjuntos de Hola puerto predeterminado utilizado cuando se ejecuta el host local de las funciones de hello (`func host start` y `func run`). Hola `--port` opción de línea de comandos tiene prioridad sobre este valor. |
+| **CORS** | Define los orígenes de hello permitidos para [recursos entre orígenes (CORS) de uso compartido](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). Los orígenes se proporcionan en una lista de valores separados por comas y sin espacios. Hola valor de carácter comodín (**\***) es compatible, que permite que las solicitudes desde cualquier origen. |
+| **ConnectionStrings** | Contiene las cadenas de conexión de base de datos de Hola para sus funciones. Cadenas de conexión en este objeto se agregan toohello entorno con el tipo de proveedor de Hola de **System.Data.SqlClient**.  | 
 
-La mayoría de los desencadenadores y los enlaces tienen una propiedad **Connection** que se asigna al nombre de una variable de entorno o a una configuración de aplicación. Por cada propiedad de conexión debe haber una configuración de aplicación definida en el archivo local.settings.json. 
+La mayoría de los desencadenadores y los enlaces tienen un **conexión** propiedad que se asigna el nombre de toohello de una configuración de aplicación o la variable de entorno. Por cada propiedad de conexión debe haber una configuración de aplicación definida en el archivo local.settings.json. 
 
-Esta configuración también se puede leer en el código como variables de entorno. En C#, use [System.Environment.GetEnvironmentVariable](https://msdn.microsoft.com/library/system.environment.getenvironmentvariable(v=vs.110).aspx) o [ConfigurationManager.AppSettings](https://msdn.microsoft.com/library/system.configuration.configurationmanager.appsettings%28v=vs.110%29.aspx). En JavaScript, use `process.env`. Las opciones de configuración especificadas como variable de entorno del sistema tienen prioridad sobre otros valores del archivo local.settings.json. 
+Esta configuración también se puede leer en el código como variables de entorno. En C#, use [System.Environment.GetEnvironmentVariable](https://msdn.microsoft.com/library/system.environment.getenvironmentvariable(v=vs.110).aspx) o [ConfigurationManager.AppSettings](https://msdn.microsoft.com/library/system.configuration.configurationmanager.appsettings%28v=vs.110%29.aspx). En JavaScript, use `process.env`. Configuración especificada como una variable de entorno del sistema tiene prioridad sobre los valores en el archivo de hello local.settings.json. 
 
-Las herramientas de Functions solo usan las opciones de configuración de dicho archivo cuando las herramientas se ejecutan localmente. De manera predeterminada, estas opciones de configuración no se migran automáticamente cuando el proyecto se publica en Azure. Use el conmutador `--publish-local-settings` [al publicarlo](#publish) para asegurarse de que la configuración se agregue a la aplicación de función en Azure.
+Configuración de archivo de hello local.settings.json solo se usa con herramientas de funciones cuando se ejecuta localmente. De forma predeterminada, esta configuración no se migra automáticamente cuando el proyecto de hello tooAzure publicado. Hola de uso `--publish-local-settings` cambiar [al publicar](#publish) toomake seguro de estos valores se agregan toohello función aplicación en Azure.
 
-Cuando no se establece ninguna cadena de conexión de almacenamiento válida para **AzureWebJobsStorage**, se muestra el siguiente mensaje de error:  
+Cuando no se establece ninguna cadena de conexión de almacenamiento válida para **AzureWebJobsStorage**, se muestra el siguiente mensaje de error de hello:  
 
 >Missing value for AzureWebJobsStorage in local.settings.json. This is required for all triggers other than HTTP. You can run 'func azure functionary fetch-app-settings <functionAppName>' or specify a connection string in local.settings.json. (Falta un valor para AzureWebJobsStorage en local.settings.json. Este valor es necesario para todos los desencadenadores que no sean HTTP. Puede ejecutar "func azure functionary fetch-app-settings " o especificar una cadena de conexión en local.settings.json).
   
-[!INCLUDE [Note to not use local storage](../../includes/functions-local-settings-note.md)]
+[!INCLUDE [Note toonot use local storage](../../includes/functions-local-settings-note.md)]
 
 ### <a name="configure-app-settings"></a>Configuración de aplicaciones
 
-Para establecer un valor para las cadenas de conexión, puede realizar alguna de las siguientes acciones:
-* Indique la cadena de conexión desde el [Explorador de Azure Storage](http://storageexplorer.com/).
-* Use uno de los siguientes comandos:
+tooset un valor para las cadenas de conexión, siga uno de hello siguientes:
+* Escriba la cadena de conexión de Hola desde [Azure Storage Explorer](http://storageexplorer.com/).
+* Use uno de hello siguientes comandos:
 
     ```
     func azure functionapp fetch-app-settings <FunctionAppName>
@@ -121,30 +121,30 @@ Para establecer un valor para las cadenas de conexión, puede realizar alguna de
     ```
     func azure functionapp storage fetch-connection-string <StorageAccountName>
     ```
-    Ambos comandos requieren que primero inicie sesión en Azure.
+    Ambos comandos requieren toofirst inicio de sesión tooAzure.
 
 ## <a name="create-a-function"></a>Creación de una función
 
-Para crear una función, ejecute el siguiente comando:
+toocreate una función, ejecute el siguiente comando de hello:
 
 ```
 func new
 ``` 
-`func new` admite los siguientes argumentos opcionales:
+`func new`admite Hola argumentos opcionales siguientes:
 
 | Argumento     | Descripción                            |
 | ------------ | -------------------------------------- |
-| **`--language -l`** | Lenguaje de programación de la plantilla, como C#, F# o JavaScript. |
-| **`--template -t`** | Nombre de la plantilla. |
-| **`--name -n`** | Nombre de la función. |
+| **`--language -l`** | plantilla de Hello programación lenguaje, como C#, F # o JavaScript. |
+| **`--template -t`** | nombre de la plantilla de Hola. |
+| **`--name -n`** | nombre de la función de Hola. |
 
-Por ejemplo, para crear un desencadenador HTTP de JavaScript, ejecute:
+Por ejemplo, toocreate un desencadenador de HTTP de JavaScript, ejecute:
 
 ```
 func new --language JavaScript --template HttpTrigger --name MyHttpTrigger
 ```
 
-Para crear una función desencadenada por la cola, ejecute:
+toocreate una función activa a la cola, ejecute:
 
 ```
 func new --language JavaScript --template QueueTrigger --name QueueTriggerJS
@@ -152,29 +152,29 @@ func new --language JavaScript --template QueueTrigger --name QueueTriggerJS
 
 ## <a name="run-functions-locally"></a>Ejecución local de funciones
 
-Para ejecutar un proyecto de Functions, ejecute el host de Functions. El host habilita desencadenadores para todas las funciones del proyecto:
+toorun un proyecto de funciones, ejecute hello funciones host. host de Hello permite desencadenadores para todas las funciones de proyecto hello:
 
 ```
 func host start
 ```
 
-`func host start` admite las siguientes opciones:
+`func host start`admite Hola siguientes opciones:
 
 | Opción     | Descripción                            |
 | ------------ | -------------------------------------- |
-|**`--port -p`** | Puerto local en el que se escucha. Valor predeterminado: 7071. |
-| **`--debug <type>`** | Las opciones son `VSCode` y `VS`. |
+|**`--port -p`** | Hola toolisten de puerto local en. Valor predeterminado: 7071. |
+| **`--debug <type>`** | Opciones de Hello son `VSCode` y `VS`. |
 | **`--cors`** | Lista separada por comas de orígenes CORS, sin espacios en blanco. |
-| **`--nodeDebugPort -n`** | Puerto del depurador de nodo que se va a usar. Valor predeterminado: un valor de launch.json o 5858. |
-| **`--debugLevel -d`** | Nivel de seguimiento de la consola (desactivado, detallado, información, advertencia o error). Valor predeterminado: información.|
-| **`--timeout -t`** | Tiempo de espera en segundos para iniciar el host de Functions. Valor predeterminado: 20 segundos.|
-| **`--useHttps`** | Se enlaza a https://localhost:{port} en lugar de a http://localhost:{port}. De forma predeterminada, esta opción crea un certificado de confianza en el equipo.|
-| **`--pause-on-error`** | Se pone en pausa en espera de entrada adicional antes de salir del proceso. Resulta útil cuando se inicia Azure Functions Core Tools desde un entorno de desarrollo integrado (IDE).|
+| **`--nodeDebugPort -n`** | puerto de Hola para hello nodo depurador toouse. Valor predeterminado: un valor de launch.json o 5858. |
+| **`--debugLevel -d`** | nivel de seguimiento de la consola de Hello (desactivado, verbose, info, warning o error). Valor predeterminado: información.|
+| **`--timeout -t`** | Hola a tiempo de espera de inicio de hello funciones host t o, en segundos. Valor predeterminado: 20 segundos.|
+| **`--useHttps`** | Enlazar toohttps://localhost: {puerto} en lugar de toohttp://localhost: {port}. De forma predeterminada, esta opción crea un certificado de confianza en el equipo.|
+| **`--pause-on-error`** | Pausa de una entrada adicional antes de salir del proceso de Hola. Resulta útil cuando se inicia Azure Functions Core Tools desde un entorno de desarrollo integrado (IDE).|
 
-Cuando se inicia el host de Functions, devuelve la dirección URL de las funciones desencadenadas por HTTP:
+Cuando se inicia el host de las funciones hello, genera funciones de hello desencadenados por dirección URL de HTTP:
 
 ```
-Found the following functions:
+Found hello following functions:
 Host.Functions.MyHttpTrigger
 
 ob host started
@@ -183,63 +183,63 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 
 ### <a name="debug-in-vs-code-or-visual-studio"></a>Depuración en VS Code o Visual Studio
 
-Para asociar un depurador, pase el argumento `--debug`. Para depurar funciones de JavaScript, use Visual Studio Code. Para funciones de C#, use Visual Studio.
+tooattach un depurador, pasar hello `--debug` argumento. funciones de JavaScript de toodebug, utilice el código de Visual Studio. Para funciones de C#, use Visual Studio.
 
-Para depurar funciones de C#, use `--debug vs`. También puede usar [Azure Functions Visual Studio 2017 Tools](https://blogs.msdn.microsoft.com/webdev/2017/05/10/azure-function-tools-for-visual-studio-2017/). 
+toodebug C#, utilice `--debug vs`. También puede usar [Azure Functions Visual Studio 2017 Tools](https://blogs.msdn.microsoft.com/webdev/2017/05/10/azure-function-tools-for-visual-studio-2017/). 
 
-Para iniciar el host y configurar la depuración de JavaScript, ejecute:
+host de hello toolaunch y establezca la depuración de JavaScript, ejecute:
 
 ```
 func host start --debug vscode
 ```
 
-Luego, en la vista de **depuración** de Visual Studio Code, seleccione **Attach to Azure Functions** (Asociar a Azure Functions). Puede asociar puntos de interrupción, inspeccionar variables y recorrer el código.
+A continuación, en el código de Visual Studio, en hello **depurar** visualizarla, seleccione **adjuntar funciones tooAzure**. Puede asociar puntos de interrupción, inspeccionar variables y recorrer el código.
 
 ![Depuración de JavaScript con Visual Studio Code](./media/functions-run-local/vscode-javascript-debugging.png)
 
-### <a name="passing-test-data-to-a-function"></a>Paso de datos de prueba a una función
+### <a name="passing-test-data-tooa-function"></a>Función de paso de prueba datos tooa
 
-También puede invocar una función directamente con `func run <FunctionName>` y proporcionar datos de entrada para la función. Este comando es similar a la ejecución de una función con la pestaña **Prueba** de Azure Portal. Este comando inicia el host de Functions completo.
+También puede invocar una función directamente mediante `func run <FunctionName>` y proporcionar datos de entrada para la función hello. Este comando es similar toorunning una función mediante hello **prueba** ficha Hola portal de Azure. Este comando inicia el host de las funciones todo Hola.
 
-`func run` admite las siguientes opciones:
+`func run`admite Hola siguientes opciones:
 
 | Opción     | Descripción                            |
 | ------------ | -------------------------------------- |
 | **`--content -c`** | Contenido alineado. |
-| **`--debug -d`** | Se asocia un depurador al proceso de host antes de ejecutar la función.|
-| **`--timeout -t`** | Tiempo de espera (en segundos) hasta que el host local de Functions está listo.|
-| **`--file -f`** | Nombre del archivo que se usa como contenido.|
+| **`--debug -d`** | Asociar un proceso de host de depuración toohello antes de ejecutar la función hello.|
+| **`--timeout -t`** | Toowait de tiempo (en segundos) hasta que el host local de las funciones de hello está listo.|
+| **`--file -f`** | Hola toouse de nombre de archivo como contenido.|
 | **`--no-interactive`** | No pide entrada. Resulta útil en escenarios de automatización.|
 
-Por ejemplo, para llamar a una función desencadenada por HTTP y pasar cuerpo del contenido, ejecute el siguiente comando:
+Por ejemplo, toocall una función activa de HTTP y cuerpo de contenido de paso, ejecute el siguiente comando de hello:
 
 ```
 func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 ```
 
-## <a name="publish"></a>Publicación en Azure
+## <a name="publish"></a>Publicar tooAzure
 
-Para publicar un proyecto de Functions en una aplicación de función en Azure, use el comando `publish`:
+una aplicación de función de las funciones proyecto tooa en Azure, use hello toopublish `publish` comando:
 
 ```
 func azure functionapp publish <FunctionAppName>
 ```
 
-Puede usar las siguientes opciones:
+Puede usar Hola siguientes opciones:
 
 | Opción     | Descripción                            |
 | ------------ | -------------------------------------- |
-| **`--publish-local-settings -i`** |  Se publica la configuración de local.settings.json en Azure, se pide que se sobrescriba si la configuración ya existe.|
+| **`--publish-local-settings -i`** |  Configuración de publicación en local.settings.json tooAzure, preguntar toooverwrite si Hola configuración ya existe.|
 | **`--overwrite-settings -y`** | Debe usarse con `-i`. Sobrescribe AppSettings en Azure con el valor local si es distinto. El valor predeterminado es Preguntar.|
 
-El comando `publish` carga el contenido del directorio del proyecto de Functions. Si elimina archivos localmente, el comando `publish` no los eliminará de Azure. Puede eliminar archivos de Azure con la [herramienta Kudu](functions-how-to-use-azure-function-app-settings.md#kudu) de [Azure Portal].
+Hola `publish` comando carga contenido hello del directorio de proyecto de funciones de Hola. Si elimina archivos localmente, Hola `publish` comando no los elimina de Azure. Puede eliminar archivos en Azure mediante hello [herramienta Kudu](functions-how-to-use-azure-function-app-settings.md#kudu) en hello [portal de Azure].
 
 ## <a name="next-steps"></a>Pasos siguientes
 
 Azure Functions Core Tools es [código abierto que se hospeda en GitHub](https://github.com/azure/azure-functions-cli).  
-Para notificar un error o realizar una solicitud de característica, [abra un problema de GitHub](https://github.com/azure/azure-functions-cli/issues). 
+una solicitud de error o una característica, toofile [abrir un problema de GitHub](https://github.com/azure/azure-functions-cli/issues). 
 
 <!-- LINKS -->
 
-[Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
-[Azure Portal]: https://portal.azure.com 
+[herramientas básicas de las funciones de Azure]: https://www.npmjs.com/package/azure-functions-core-tools
+[portal de Azure]: https://portal.azure.com 

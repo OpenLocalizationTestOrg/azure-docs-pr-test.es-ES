@@ -1,12 +1,12 @@
 ---
-title: "Conexión de Arduino a Azure IoT: Lección 2: Registro del dispositivo | Microsoft Docs"
-description: Cree un grupo de recursos, una instancia de IoT Hub de Azure y registre Adafruit Feather M0 WiFi en IoT Hub de Azure mediante la CLI de Azure.
+title: "Conectar Arduino tooAzure IoT - lección 2: registrar el dispositivo | Documentos de Microsoft"
+description: Crear un grupo de recursos, crear un centro de IoT de Azure y registrar Adafruit compacto M0 Wi-Fi en el centro de IoT de Azure de hello mediante Hola CLI de Azure.
 services: iot-hub
 documentationcenter: 
 author: shizn
 manager: timtl
 tags: 
-keywords: "conexión de Arduino a la nube, IoT Hub de Azure, nube de Internet de las cosas, creación de dispositivos en IoT Hub de Azure, nube de Arduino"
+keywords: "conexión arduino toocloud, centro de iot de azure, internet de nube de cosas, centro de iot de azure crear un dispositivo, arduino en la nube"
 ROBOTS: NOINDEX
 redirect_url: /azure/iot-hub/iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started
 ms.assetid: 5edc690b-7a1d-4ebc-b011-ff27bfffe6e8
@@ -17,34 +17,34 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: c5ad5e900671c7cedd3cdad2c2aa345315de223b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ca362f9c143dd3a98bf47a66b63a9725a0ffc2d8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-your-iot-hub-and-register-your-adafruit-feather-m0-wifi-arduino-board"></a>Creación de una instancia de IoT Hub de Azure y registro de Adafruit Feather M0 WiFi
 
 ## <a name="what-you-will-do"></a>Lo que hará
 * Cree un grupo de recursos.
-* Cree una instancia de IoT Hub de Azure en el grupo de recursos.
-* Agregue la placa de Arduino al centro de IoT Hub de Azure mediante la interfaz de la línea de comandos de Azure (CLI de Azure).
+* Crear el centro de IoT de Azure en el grupo de recursos de Hola.
+* Agregar el centro de IoT de Azure de Arduino panel toohello mediante hello Azure interfaz de línea de comandos (CLI de Azure).
 
-Cuando utiliza la CLI de Azure para agregar la placa de Arduino a IoT Hub, el servicio genera una clave para que la placa de Arduino se autentique con el servicio. Si tiene problemas, busque soluciones en [esta página][troubleshoot].
+Cuando usas hello Azure CLI tooadd su centro de IoT Arduino panel tooyour, servicio de hello genera una clave para su tooauthenticate de panel Arduino con el servicio de Hola. Si tiene problemas, buscar soluciones en hello [solución de problemas de página][troubleshoot].
 
 ## <a name="what-you-will-learn"></a>Lo qué aprenderá
 En este artículo, aprenderá lo siguiente:
-* Cómo usar la CLI de Azure para crear un centro de IoT Hub
-* Cómo crear una identidad de dispositivos para la placa de Arduino en el centro de IoT Hub
+* ¿Cómo toouse Hola toocreate de CLI de Azure de un centro de IoT.
+* ¿Cómo toocreate una identidad de dispositivo para su Arduino del panel en el centro de IoT.
 
 ## <a name="what-you-need"></a>Lo que necesita
 * Una cuenta de Azure
-* Un equipo con la CLI de Azure instalada
+* Un equipo con hello CLI de Azure instalado
 
 ## <a name="create-your-iot-hub"></a>Creación de un centro de IoT Hub
-IoT Hub de Azure ayuda a conectar, supervisar y administrar millones de activos de IoT. Para crear el centro de IoT Hub, siga estos pasos:
+IoT Hub de Azure ayuda a conectar, supervisar y administrar millones de activos de IoT. toocreate su centro de IoT, siga estos pasos:
 
-1. Inicie sesión en la cuenta de Azure mediante el siguiente comando:
+1. Inicie sesión en tooyour cuenta de Azure ejecutando el siguiente comando de hello:
 
    ```bash
    az login
@@ -52,41 +52,41 @@ IoT Hub de Azure ayuda a conectar, supervisar y administrar millones de activos 
 
    Una vez que la sesión se ha iniciado correctamente, aparecen todas las suscripciones disponibles.
 
-2. Establezca la suscripción predeterminada que desea usar mediante el siguiente comando:
+2. Establecer suscripción predeterminada de Hola que desea toouse ejecutando el siguiente comando de hello:
 
    ```bash
    az account set --subscription {subscription id or name}
    ```
 
-   El valor de `subscription ID or name` puede verse en la salida del comando `az login` o del comando `az account list`.
+   `subscription ID or name`puede encontrarse en la salida de hello de hello `az login` o hello `az account list` comando.
 
-3. Registre el proveedor con el siguiente comando. Los proveedores de recursos son servicios que proporcionan recursos para la aplicación. Debe registrar el proveedor para poder implementar el recurso de Azure que este le ofrece.
+3. Registrar un proveedor Hola ejecutando el siguiente comando de Hola. Los proveedores de recursos son servicios que proporcionan recursos para la aplicación. Debe registrar proveedor de Hola para poder implementar Hola recursos de Azure que Hola ofertas de proveedor.
 
    ```bash
    az provider register -n "Microsoft.Devices"
    ```
-4. Cree un grupo de recursos denominado "iot-sample" en la región oeste de EE. UU. ejecutando el comando siguiente:
+4. Crear un grupo de recursos denominado ejemplo iot en región del oeste de Estados Unidos de hello ejecutando Hola siguiente comando:
 
    ```bash
    az group create --name iot-sample --location westus
    ```
 
-   `westus` es la ubicación en la que se crea el grupo de recursos. Si desea utilizar otra ubicación, puede ejecutar `az account list-locations -o table` para ver todas las ubicaciones admitidas por Azure.
+   `westus`es la ubicación de hello crear el grupo de recursos. Si desea toouse en otra ubicación, puede ejecutar `az account list-locations -o table` toosee todos Hola ubicaciones de Azure admite.
 
-5. Cree una instancia de IoT Hub en el grupo de recursos iot-sample ejecutando el comando siguiente:
+5. Crear un centro de IoT en grupo de recursos de ejemplo de iot de hello ejecutando Hola siguiente comando:
 
    ```bash
    az iot hub create --name {my hub name} --resource-group iot-sample
    ```
 
-De forma predeterminada, la herramienta crea la instancia de IoT Hub con el plan de tarifa Gratis. Para más información, consulte los [precios de Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
+De forma predeterminada, herramienta de hello crea un centro de IoT en el nivel de precios de Hola. Para más información, consulte los [precios de Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
 
 > [!NOTE]
-> El nombre de su instancia de IoT Hub debe única globalmente.
+> nombre de Hola de su centro de IoT debe ser único globalmente.
 > Solamente puede crear una edición F1 de Azure IoT Hub en la suscripción de Azure.
 
 ## <a name="register-your-arduino-board-in-your-iot-hub"></a>Registro de la placa de Arduino en el centro de IoT Hub
-Todos los dispositivos que envían mensajes al centro de IoT Hub y los reciben de este deben estar registrados con un identificador único.
+Cada dispositivo que envía el centro de IoT tooyour de mensajes y recibe mensajes desde el centro de IoT debe estar registrado con un identificador único.
 
 Registre la placa de Arduino en su instancia de IoT Hub ejecutando el comando siguiente:
 
@@ -95,10 +95,10 @@ az iot device create --device-id mym0wifi --hub-name {my hub name}
 ```
 
 ## <a name="summary"></a>Resumen
-Ha creado un centro de IoT Hub y ha registrado la placa de Arduino con una identidad de dispositivo en este centro de IoT Hub. Ya está preparado para aprender a enviar mensajes desde la placa de Arduino a IoT Hub.
+Ha creado un centro de IoT Hub y ha registrado la placa de Arduino con una identidad de dispositivo en este centro de IoT Hub. Ya está listo toolearn cómo toosend mensajes desde el centro de IoT Arduino tooyour de panel.
 
 ## <a name="next-steps"></a>Pasos siguientes
-[Creación de una instancia de Azure Function App y una cuenta de Azure Storage para procesar y almacenar mensajes de IoT Hub][process-and-store-iot-hub-messages]
+[Crear una aplicación de Azure de función y un centro de IoT de almacenamiento de Azure cuenta tooprocess y el almacén de mensajes][process-and-store-iot-hub-messages].
 
 
 <!-- Images and links -->

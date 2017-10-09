@@ -1,6 +1,6 @@
 ---
-title: Uso de reproductores existentes para reproducir el contenido - Azure | Microsoft Docs
-description: En este tema se enumeran los reproductores existentes que puede usar para reproducir el contenido.
+title: aaaUse existente reproductores tooplayback su contenido, Azure | Documentos de Microsoft
+description: Este tema enumeran los reproductores existentes que puede usar tooplayback su contenido.
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,28 +14,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: juliako
-ms.openlocfilehash: 48f373b013b1192c353352b801876d706d91dd28
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 54817345a19a9d3b18f1e7b352c3342043a569b2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="playing-your-content-with-existing-players"></a>Reproducción de contenido con existentes
-Servicios multimedia de Azure admite muchos formatos de streaming populares como Smooth Streaming, HTTP Live Streaming y MPEG-Dash. Este tema remite a reproductores existentes que puede usar para probar sus transmisiones.
+Servicios multimedia de Azure admite muchos formatos de streaming populares como Smooth Streaming, HTTP Live Streaming y MPEG-Dash. Este tema remite reproductores tooexisting que se pueden usar tootest sus secuencias.
 
-### <a name="the-azure-portal-media-services-content-player"></a>Reproductor del contenido de Media Services de Azure Portal
-**Azure Portal** proporciona un reproductor de contenido que puede usar para probar el vídeo.
+### <a name="hello-azure-portal-media-services-content-player"></a>Reproductor de contenido de Hello Azure portal de servicios multimedia
+Hola **Azure** portal proporciona un Reproductor de contenido que se puede usar tootest el vídeo.
 
-Haga clic en el vídeo deseado (asegúrese de que se ha [publicado](media-services-portal-publish.md)) y haga clic en el botón **Reproducir** situado en la parte inferior del portal.
+Haga clic en hello deseado vídeo (asegúrese de que era [publicado](media-services-portal-publish.md)) y haga clic en hello **reproducir** situado en parte inferior de hello del portal de Hola.
 
 Se aplican algunas consideraciones:
 
-* El **REPRODUCTOR DE CONTENIDO DE SERVICIOS MULTIMEDIA** reproduce desde el extremo de streaming predeterminado. Si desea reproducir desde un extremo de streaming que no esté predeterminado, use otro reproductor. Por ejemplo, [Reproductor multimedia de Azure](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
+* Hola **Reproductor de contenido de servicios multimedia** reproduce desde predeterminado Hola extremo de streaming. Si desea tooplay desde un extremo de streaming no predeterminado, utilice otro reproductor. Por ejemplo, [Reproductor multimedia de Azure](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
 
 ![AMSPlayer][AMSPlayer]
 
 ### <a name="azure-media-player"></a>Reproductor multimedia de Azure
-Use el [Reproductor multimedia de Azure](http://amsplayer.azurewebsites.net/azuremediaplayer.html) para reproducir el contenido (libre o protegido) en cualquiera de los siguientes formatos:
+Use [Reproductor multimedia de Azure](http://amsplayer.azurewebsites.net/azuremediaplayer.html) tooplayback su contenido (protegido o desactive) en cualquiera de hello siguientes formatos:
 
 * Smooth Streaming
 * MPEG DASH
@@ -59,13 +59,13 @@ Use el [Reproductor multimedia de Azure](http://amsplayer.azurewebsites.net/azur
 [http://dashif.org](http://dashif.org)
 
 ### <a name="other"></a>Otros
-Para probar las direcciones URL de HLS también puede utilizar:
+tootest HLS, las direcciones URL también puede usar:
 
 * **Safari** en un dispositivo iOS o
 * **3ivx HLS Player** en Windows.
 
 ## <a name="developing-video-players"></a>Desarrollo de reproductores de vídeo
-Para obtener información sobre cómo desarrollar sus propios reproductores, consulte [Desarrollo de reproductores de vídeo](media-services-develop-video-players.md)
+Para obtener información sobre cómo toodevelop sus propios reproductores, vea [desarrollar reproductores de vídeo](media-services-develop-video-players.md)
 
 ## <a name="media-services-learning-paths"></a>Rutas de aprendizaje de Servicios multimedia
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

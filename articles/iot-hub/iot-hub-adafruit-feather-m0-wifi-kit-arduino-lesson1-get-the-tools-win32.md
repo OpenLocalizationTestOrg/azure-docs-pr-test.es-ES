@@ -1,6 +1,6 @@
 ---
-title: "Conexión de Arduino a Azure IoT: Lección 1: Obtención de herramientas (Windows) | Microsoft Docs"
-description: "Descargue e instale las herramientas y el software necesarios para la primera aplicación de ejemplo de Adafruit Feather M0 WiFi en Windows 7 y versiones posteriores."
+title: "Conectar Arduino tooAzure IoT - lección 1: obtener herramientas (Windows) | Documentos de Microsoft"
+description: "Descargue e instale las herramientas que necesitan Hola y el software para la primera aplicación de ejemplo Hola para Adafruit compacto M0 Wi-Fi en Windows 7 y versiones posteriores."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -17,13 +17,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 5d27c016c4a74e31455e676b3c3070a8e262b21f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4dd946da6c84293987e166fd1d17fac117e94e4c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-the-tools-windows-7-or-later"></a>Obtención de las herramientas (Windows 7 o posterior)
+# <a name="get-hello-tools-windows-7-or-later"></a>Obtener herramientas de hello (Windows 7 o posterior)
 
 > [!div class="op_single_selector"]
 > * [Windows 7 o posterior][windows]
@@ -32,60 +32,60 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="what-you-will-do"></a>Lo que hará
 
-Descargue las herramientas de desarrollo y el software para la primera aplicación de ejemplo de Adafruit Feather M0 WiFi Arduino.
+Descargar herramientas de desarrollo de Hola y el software de hello para la primera aplicación de ejemplo hello para el panel de Adafruit compacto M0 Wi-Fi Arduino.
 
-Si tiene problemas, busque soluciones en [esta página][troubleshooting].
+Si tiene problemas, buscar soluciones en hello [solución de problemas de página][troubleshooting].
 
 > [!NOTE]
-> Aunque el lenguaje de programación de la lógica principal es Arduino, las herramientas de Node.js se usan en las lecciones para compilar e implementar aplicaciones de ejemplo.
+> Aunque hello programming language de la lógica principal de hello es Arduino, Node.js tools se utilizan en hello lecciones toobuild e implementación aplicaciones de ejemplo.
 
 ## <a name="what-you-will-learn"></a>Lo qué aprenderá
 En este artículo, aprenderá lo siguiente:
 
-* Cómo instalar Git y Node.js
-  * [Git](https://git-scm.com) es un sistema de control de versiones distribuido de código. La aplicación de ejemplo de este artículo se almacena en Git.
+* ¿Cómo tooinstall Git y Node.js.
+  * [Git](https://git-scm.com) es un sistema de control de versiones distribuido de código. aplicación de ejemplo de Hola para este artículo se almacena en Git.
   * [Node.js](https://nodejs.org/en/) es un entorno de tiempo de ejecución de JavaScript con un amplio ecosistema de paquetes.
-* Cómo usar NPM para instalar las herramientas de desarrollo de Node.js adicionales.
-  * La versión mínima necesaria de Node.js es 4.5 LTS.
-  * [NPM](https://www.npmjs.com) es uno de los administradores de paquetes para Node.js.
+* ¿Cómo toouse NPM tooinstall adicionales Node.js las herramientas de desarrollo.
+  * requisito de versión mínima de Hola de Node.js es 4.5 LTS.
+  * [NPM](https://www.npmjs.com) es uno de hello administradores de paquetes para Node.js.
 
 ## <a name="what-you-need"></a>Lo que necesita
 
-Para completar esta operación, necesitará:
+toocomplete esta operación, debe:
 
-* Una conexión a Internet para descargar el software y las herramientas de desarrollo necesarias
+* Un toodownload de conexión de Internet Hola herramientas de desarrollo y Hola software.
 * Un equipo que ejecute Windows
 
 ## <a name="install-git-and-nodejs"></a>Instalación de Git y Node.js
 
-Haga clic en los vínculos siguientes para descargar e instalar Git y Node.js LTS para Windows.
+Haga clic en vínculos de hello toodownload e instale Git y LTS de Node.js para Windows.
 
 * [Obtención de Git para Windows](https://git-scm.com/download/win/)
 * [Obtención de Node.js LTS para Windows](https://nodejs.org/en/)
 
 ## <a name="install-additional-nodejs-development-tools"></a>Instalación de herramientas de desarrollo de Node.js adicionales
 
-Utilice [gulp.js](http://gulpjs.com) para automatizar la implementación de la aplicación de ejemplo en la placa de Arduino.
+Use [gulp.js](http://gulpjs.com) implementación de hello tooautomate de tooyour de aplicación de ejemplo de Hola Arduino panel.
 
-Inicie un símbolo del sistema como administrador. Instale `gulp` y `device-discovery-cli` ejecutando el comando siguiente en la ventana de terminal:
+Inicie un símbolo del sistema como administrador. Instalar `gulp`, `device-discovery-cli` ejecutando Hola siguiente comando en terminal hello:
 
 ```bash
 npm install -g gulp device-discovery-cli
 ```
 
-Si experimenta problemas al instalar Node.js y estas herramientas de desarrollo adicionales de Node.js en el equipo, consulte la [Guía de solución de problemas][troubleshooting] para ver soluciones a problemas comunes.
+Si experimenta problemas de instalación de Node.js y estas otras herramientas de desarrollo de Node.js en el equipo, vea hello [Guía de solución de problemas] [ troubleshooting] para soluciones toocommon problemas.
 
 ## <a name="install-visual-studio-code"></a>Instalación de Visual Studio Code
 
-[Descargue](https://code.visualstudio.com/docs/setup/windows) e instale Visual Studio Code. Visual Studio Code es un editor de código fuente ligero pero eficaz para Windows, Linux y Mac OS. Use este editor más adelante en el tutorial para editar el código de ejemplo.
+[Descargue](https://code.visualstudio.com/docs/setup/windows) e instale Visual Studio Code. Visual Studio Code es un editor de código fuente ligero pero eficaz para Windows, Linux y Mac OS. Utilice este editor más adelante en el código de ejemplo de Hola tooedit tutorial Hola.
 
 ## <a name="summary"></a>Resumen
 
-Ha instalado las herramientas de desarrollo y el software necesarios para la primera aplicación de ejemplo. En la siguiente tarea, creará, implementará y ejecutará la aplicación de ejemplo en la placa de Arduino.
+Ha instalado herramientas de desarrollo de hello necesario y software para la primera aplicación de ejemplo Hola. Hola siguiente tarea es toocreate, implementar y ejecutar la aplicación de ejemplo de Hola en el panel de Arduino.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-[Creación e implementación de la aplicación de intermitencia de ejemplo][create-and-deploy-the-blink-sample-application]
+[Crear e implementar la aplicación de ejemplo de Hola parpadeo][create-and-deploy-the-blink-sample-application]
 <!-- Images and links -->
 
 [windows]: iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson1-get-the-tools-win32.md

@@ -1,5 +1,5 @@
 ---
-title: "Application Insights para aplicaciones web de Java que ya están activas"
+title: "aaaApplication aplicaciones que ya están en vivo de web de visión para Java"
 description: "Inicio de la supervisión de una aplicación web que se ya se está ejecutando en el servidor"
 services: application-insights
 documentationcenter: java
@@ -13,46 +13,46 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/10/2016
 ms.author: bwren
-ms.openlocfilehash: a2731e3e44f8f3d104d8abc7dbe71fe3a4c3a690
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 2b01cd61657522ccf1d2d97b2a29cdeb08ec9a18
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="application-insights-for-java-web-apps-that-are-already-live"></a>Application Insights para aplicaciones web de Java que ya están activas
 
 
-Si tiene una aplicación web que se está ejecutando en el servidor de J2EE, puede iniciar la supervisión con [Application Insights](app-insights-overview.md) sin necesidad de realizar cambios de código ni volver a compilar el proyecto. Con esta opción, obtendrá información acerca de las solicitudes HTTP enviadas al servidor, las excepciones no controladas y contadores de rendimiento.
+Si tiene una aplicación web que ya se está ejecutando en el servidor J2EE, puede iniciar la supervisión con [Application Insights](app-insights-overview.md) sin Hola necesita toomake cambios en el código o volver a compilar el proyecto. Con esta opción, obtendrá información sobre las solicitudes HTTP enviadas tooyour server, las excepciones no controladas y contadores de rendimiento.
 
-Necesitará una suscripción a [Microsoft Azure](https://azure.com).
+Necesitará una suscripción demasiado[Microsoft Azure](https://azure.com).
 
 > [!NOTE]
-> El procedimiento en esta página agrega el SDK a la aplicación web en tiempo de ejecución. Esta instrumentación en tiempo de ejecución es útil si no desea actualizar o volver a generar el código fuente. Pero si es posible, se recomienda [agregar el SDK al código fuente](app-insights-java-get-started.md) en su lugar. Que proporciona más opciones, como la escritura de código para realizar el seguimiento de actividad del usuario.
+> procedimiento de Hello en esta página agrega la aplicación web de hello SDK tooyour en tiempo de ejecución. Este tiempo de ejecución instrumentación es útil si no desea tooupdate o volver a generar el código fuente. Pero si es posible, le recomendamos que [agregar código fuente de hello SDK toohello](app-insights-java-get-started.md) en su lugar. Que proporciona más opciones, como la escritura de actividad de usuario de tootrack de código.
 > 
 > 
 
 ## <a name="1-get-an-application-insights-instrumentation-key"></a>1. Obtención de una clave de instrumentación de Application Insights
-1. Inicie sesión en el [Portal de Microsoft Azure](https://portal.azure.com)
-2. Cree un nuevo recurso de Application Insights y establezca el tipo de aplicación en aplicación web de Java.
+1. Inicie sesión en toohello [portal de Microsoft Azure](https://portal.azure.com)
+2. Crear un nuevo recurso de Application Insights y establecer la aplicación web de hello aplicación tipo tooJava.
    
     ![Rellene un nombre, elija la aplicación web de Java y haga clic en Crear.](./media/app-insights-java-live/02-create.png)
 
-    El recurso se crea en unos segundos.
+    se crea el recurso de Hello en unos segundos.
 
-4. Abra el nuevo recurso y obtenga su clave de instrumentación. Pronto tendrá que pegarla en el proyecto de código.
+4. Abra el nuevo recurso de Hola y obtener su clave de instrumentación. Necesitará toopaste esta clave en el proyecto de código en breve.
    
-    ![En la información general de nuevos recursos, haga clic en Propiedades y copie la clave de instrumentación.](./media/app-insights-java-live/03-key.png)
+    ![En hello nueva información general de recursos, haga clic en propiedades y copiar Hola clave de instrumentación](./media/app-insights-java-live/03-key.png)
 
-## <a name="2-download-the-sdk"></a>2. Descarga del SDK
-1. Descargue el [SDK de Application Insights para Java](https://aka.ms/aijavasdk). 
-2. En el servidor, extraiga el contenido del SDK en el directorio desde el que se cargan los archivos binarios de proyecto. Si usa Tomcat, este directorio se encontrará normalmente en `webapps/<your_app_name>/WEB-INF/lib`.
+## <a name="2-download-hello-sdk"></a>2. Descargar Hola SDK
+1. Descargar hello [Application Insights SDK para Java](https://aka.ms/aijavasdk). 
+2. En el servidor, extraiga el directorio de toohello del contenido SDK de Hola desde el que se cargan los archivos binarios de proyecto. Si usa Tomcat, este directorio se encontrará normalmente en `webapps/<your_app_name>/WEB-INF/lib`.
 
-Tenga en cuenta que necesitará repetir este procedimiento en cada instancia de servidor y en cada aplicación.
+Tenga en cuenta que necesita toorepeat esto en cada instancia del servidor y para cada aplicación.
 
 ## <a name="3-add-an-application-insights-xml-file"></a>3. Adición de un archivo xml de Application Insights
-Cree ApplicationInsights.xml en la carpeta en la que se ha agregado el SDK. Ponga el archivo en el siguiente XML.
+Crear ApplicationInsights.xml en carpeta de hello en el que se agrega Hola SDK. Coloque en él Hola después de XML.
 
-Sustituya la clave de instrumentación que obtuvo en el portal de Azure.
+Sustituya la clave de instrumentación de Hola que obtuvo en hello portal de Azure.
 
 ```XML
 
@@ -60,7 +60,7 @@ Sustituya la clave de instrumentación que obtuvo en el portal de Azure.
     <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
 
 
-      <!-- The key from the portal: -->
+      <!-- hello key from hello portal: -->
 
       <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
 
@@ -74,7 +74,7 @@ Sustituya la clave de instrumentación que obtuvo en el portal de Azure.
       </TelemetryModules>
 
       <!-- Events correlation (not required for bare API) -->
-      <!-- These initializers add context data to each event -->
+      <!-- These initializers add context data tooeach event -->
 
       <TelemetryInitializers>
         <Add   type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationIdTelemetryInitializer"/>
@@ -87,14 +87,14 @@ Sustituya la clave de instrumentación que obtuvo en el portal de Azure.
     </ApplicationInsights>
 ```
 
-* La clave de instrumentación se envía junto con todos los elementos de telemetría e indica a Application Insights que se muestre en el recurso.
-* El componente de la solicitud HTTP es opcional. Envía automáticamente telemetría sobre las solicitudes y tiempos de respuesta en el portal.
-* La correlación de eventos es un complemento del componente de la solicitud HTTP. Asigna un identificador a cada solicitud recibida por el servidor y agrega este identificador como propiedad a todos los elementos de telemetría como la propiedad 'Operation.Id'. Le permite correlacionar la telemetría asociada a cada solicitud estableciendo un filtro en la [búsqueda de diagnóstico](app-insights-diagnostic-search.md).
+* clave de instrumentación de Hola se envía junto con todos los elementos de telemetría e indica toodisplay Application Insights en el recurso.
+* Hola componente de la solicitud HTTP es opcional. Envía automáticamente telemetría sobre las solicitudes y portal de toohello de tiempos de respuesta.
+* Correlación de eventos es un componente de solicitud de incorporación toohello HTTP. Asigna una identificador tooeach las solicitudes recibidas por server hello y agrega este identificador como un elemento de propiedad tooevery de telemetría como propiedad de hello 'Operation.Id'. Le permite la telemetría de hello toocorrelate asociado con cada solicitud estableciendo un filtro [búsqueda diagnóstico](app-insights-diagnostic-search.md).
 
 ## <a name="4-add-an-http-filter"></a>4. Adición de un filtro HTTP
-Busque y abra el archivo web.xml en el proyecto y combine el siguiente fragmento de código bajo el nodo web-app, donde se han configurado los filtros de aplicación.
+Busque y abra el archivo web.xml de hello en el proyecto y Hola de mezcla después de fragmento de código bajo el nodo de la aplicación web de hello, donde se configuran los filtros de aplicación.
 
-Para obtener los resultados más precisos, el filtro debe asignarse antes de todos los demás filtros.
+resultados más precisos tooget hello, filtro de hello deben asignarse antes de todos los demás filtros.
 
 ```XML
 
@@ -111,29 +111,29 @@ Para obtener los resultados más precisos, el filtro debe asignarse antes de tod
 ```
 
 ## <a name="5-check-firewall-exceptions"></a>5. Comprobación de las excepciones del firewall
-Es posible que deba [establecer excepciones para enviar los datos salientes](app-insights-ip-addresses.md).
+Es posible que tenga demasiado[establecer excepciones datos salientes toosend](app-insights-ip-addresses.md).
 
 ## <a name="6-restart-your-web-app"></a>6. Reinicio de la aplicación web
 ## <a name="7-view-your-telemetry-in-application-insights"></a>7. Visualización de la telemetría en Application Insights
-Vuelva al recurso de Application Insights en el [Portal de Microsoft Azure](https://portal.azure.com).
+Devolver recurso de Application Insights tooyour en [portal de Microsoft Azure](https://portal.azure.com).
 
-Se mostrará telemetría sobre las solicitudes HTTP en la hoja de información general. (Si todavía no está ahí, espere unos segundos y, a continuación, haga clic en Actualizar).
+Telemetría sobre solicitudes HTTP que aparece en la hoja de información general de Hola. (Si todavía no está ahí, espere unos segundos y, a continuación, haga clic en Actualizar).
 
 ![datos de ejemplo](./media/app-insights-java-live/5-results.png)
 
-Haga clic en cualquier gráfico para ver métricas más detalladas. 
+Haga clic en a través de cualquier toosee gráfico métricas más detalladas. 
 
 ![](./media/app-insights-java-live/6-barchart.png)
 
-Y cuando vea las propiedades de una solicitud, podrá ver los eventos de telemetría asociados, como solicitudes y excepciones.
+Y, al ver las propiedades de Hola de una solicitud, puede ver eventos de telemetría de hello asociados con él, como las solicitudes y las excepciones.
 
 ![](./media/app-insights-java-live/7-instance.png)
 
 [Más información acerca de las métricas.](app-insights-metrics-explorer.md)
 
 ## <a name="next-steps"></a>Pasos siguientes
-* [Agregue telemetría a las páginas web](app-insights-javascript.md) para supervisar las vistas de páginas y las métricas de usuario.
-* [Configure las pruebas web](app-insights-monitor-web-app-availability.md) para comprobar que la aplicación efectivamente está activa y responde adecuadamente.
+* [Agregar páginas web de telemetría tooyour](app-insights-javascript.md) toomonitor página vistas y las métricas de usuario.
+* [Configurar las pruebas web](app-insights-monitor-web-app-availability.md) toomake seguro de la aplicación permanece en vivo y capacidad de respuesta.
 * [Captura de seguimiento de registros](app-insights-java-trace-logs.md)
-* [Busque eventos y registros](app-insights-diagnostic-search.md) para ayudar a diagnosticar problemas.
+* [Buscar eventos y registros](app-insights-diagnostic-search.md) toohelp diagnosticar problemas.
 

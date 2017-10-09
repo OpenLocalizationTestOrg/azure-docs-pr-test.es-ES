@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial de ASP.NET MVC para Azure Cosmos DB: desarrollo de aplicaciones web | Microsoft Docs'
-description: "Tutorial de ASP.NET MVC para crear una aplicación web MVC con Azure Cosmos DB. Almacenará el código JSON y accederá a los datos desde una aplicación ToDo hospedada en Sitios web de Azure. Tutorial de ASP NET MVC paso a paso."
+description: "ASP.NET MVC tutorial toocreate una aplicación web MVC con base de datos de Azure Cosmos. Almacenará el código JSON y accederá a los datos desde una aplicación ToDo hospedada en Sitios web de Azure. Tutorial de ASP NET MVC paso a paso."
 keywords: "tutorial de asp.net mvc, desarrollo de aplicaciones web, aplicación web de mvc, tutorial de asp net mvc paso a paso"
 services: cosmos-db
 documentationcenter: .net
@@ -15,11 +15,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/03/2017
 ms.author: mimig
-ms.openlocfilehash: 3f2950fe25feb8f3ee81cc0a79bf624f0ee33bd5
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: dac2a9599b395524533e6fe14983789ff095331f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="_Toc395809351"></a>Tutorial de ASP.NET MVC: desarrollo de aplicaciones web con Azure Cosmos DB
 > [!div class="op_single_selector"]
@@ -30,100 +30,100 @@ ms.lasthandoff: 08/18/2017
 > 
 > 
 
-Para resaltar cómo puede aprovechar eficazmente Azure Cosmos DB para almacenar y consultar documentos JSON, este artículo proporciona un tutorial completo que muestra cómo crear una aplicación ToDo con Azure Cosmos DB. En Azure Cosmos DB, las tareas se almacenarán como documentos JSON.
+toohighlight cómo puede aprovechar la base de datos de Azure Cosmos toostore y consultar documentos JSON eficazmente, este artículo proporciona un ejemplo paso a paso to-end que se muestra cómo una aplicación de lista de tareas con la base de datos de Azure Cosmos toobuild. tareas de Hola se almacenará como documentos JSON en la base de datos de Azure Cosmos.
 
-![Captura de pantalla de la aplicación web MVC de lista ToDo creada por este tutorial: tutorial ASP NET MVC paso a paso](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-image01.png)
+![Captura de pantalla de lista de tareas de hello aplicación web MVC creado por este tutorial: tutorial paso a paso de ASP NET MVC](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-image01.png)
 
-Este tutorial muestra cómo utilizar el servicio Azure Cosmos DB para almacenar y acceder a datos desde una aplicación web MVC de ASP.NET hospedada en Azure. Si busca un tutorial que se centre solo en Azure Cosmos DB, no en los componentes de ASP.NET MVC, consulte el artículo sobre la [Creación de una aplicación de consola de C# con Azure Cosmos DB](documentdb-get-started.md).
+Este tutorial muestra cómo toouse Hola base de datos de Azure Cosmos servicio toostore y acceso a los datos desde una aplicación web de MVC de ASP.NET hospedado en Azure. Si desea obtener un tutorial que se centra en la base de datos de Azure Cosmos y no hello componentes de MVC de ASP.NET, vea [compilar una aplicación de consola de C# de Azure Cosmos DB](documentdb-get-started.md).
 
 > [!TIP]
-> En este tutorial se supone que tiene experiencia previa con ASP.NET MVC y Sitios web Azure. Si no está familiarizado con ASP.NET o con las [herramientas de requisitos previos](#_Toc395637760), le recomendamos que descargue el proyecto de ejemplo completo de [GitHub][GitHub] y siga las instrucciones de este ejemplo. Una vez compilado, puede revisar este artículo para obtener información sobre el código en el contexto del proyecto.
+> En este tutorial se supone que tiene experiencia previa con ASP.NET MVC y Sitios web Azure. Si es nuevo tooASP.NET o hello [herramientas requisitos previos](#_Toc395637760), le recomendamos que descargue el proyecto de ejemplo completo de Hola de [GitHub] [ GitHub] y siga las instrucciones de hello en en este ejemplo. Una vez que se generan, puede revisar esta información de toogain de artículo en el código de hello en contexto de Hola de proyecto de Hola.
 > 
 > 
 
 ## <a name="_Toc395637760"></a>Requisitos previos del tutorial de base de datos
-Antes de seguir las instrucciones del presente artículo, debe asegurarse de tener lo siguiente:
+Antes de seguir las instrucciones de hello en este artículo, debe asegurarse de que tiene Hola siguientes:
 
 * Una cuenta de Azure activa. En caso de no tener ninguna, puede crear una cuenta de evaluación gratuita en tan solo unos minutos. Para obtener más información, consulte [Evaluación gratuita de Azure](https://azure.microsoft.com/pricing/free-trial/). 
 
     OR
 
-    Una instalación local del [Emulador de Azure Cosmos DB](local-emulator.md).
+    Una instalación local de hello [emulador de base de datos de Azure Cosmos](local-emulator.md).
 * [Visual Studio 2017](http://www.visualstudio.com/).  
-* Microsoft Azure SDK para .NET de Visual Studio 2017, disponible a través del instalador de Visual Studio.
+* Microsoft Azure SDK para .NET de Visual Studio de 2017 disponible a través de hello instalador de Visual Studio.
 
-Se han realizado todas las capturas de pantalla de este artículo mediante Microsoft Visual Studio Community 2017. Si el sistema está configurado con una versión diferente, es probable que las pantallas y las opciones no coincidan completamente, pero si cumple los requisitos previos mencionados, esta solución debe funcionar.
+Se han realizado todas las capturas de pantalla de hello en este artículo mediante Microsoft Visual Studio Comunidad 2017. Si el sistema está configurado con una versión diferente, es posible que los filtros y opciones no coincidirán completamente, pero si Hola por encima de los requisitos previos se cumplen esta solución debería funcionar.
 
 ## <a name="_Toc395637761"></a>Paso 1: Creación de una cuenta de base de datos de Azure Cosmos DB
-Para comenzar, creemos una cuenta de Azure Cosmos DB. Si ya tiene una cuenta de SQL (DocumentDB) para Azure Cosmos DB o si usa el emulador de Azure Cosmos DB para este tutorial, puede ir directamente a [Creación de una nueva aplicación MVC de ASP.NET](#_Toc395637762).
+Para comenzar, creemos una cuenta de Azure Cosmos DB. Si ya tiene una cuenta SQL (documentos) de la base de datos de Azure Cosmos o si usas Hola emulador de base de datos de Azure Cosmos para este tutorial, puede omitir demasiado[crear una nueva aplicación MVC de ASP.NET](#_Toc395637762).
 
 [!INCLUDE [create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
 [!INCLUDE [keys](../../includes/cosmos-db-keys.md)]
 
 <br/>
-Ahora veremos cómo crear una aplicación ASP.NET MVC nueva desde el principio. 
+Se le indicará cómo toocreate una nueva aplicación de MVC de ASP.NET de hello principio a fin. 
 
 ## <a name="_Toc395637762"></a>Paso 2: Creación de una aplicación ASP.NET MVC nueva
 
-1. En Visual Studio, en el menú **Archivo**, seleccione **Nuevo** y luego haga clic en **Proyecto**. Aparecerá el cuadro de diálogo **Nuevo proyecto** .
+1. En Visual Studio, en hello **archivo** menú, seleccione demasiado**New**y, a continuación, haga clic en **proyecto**. Hola **nuevo proyecto** aparece el cuadro de diálogo.
 
-2. En el panel **Tipos de proyecto**, expanda **Plantillas**, **Visual C#**, **Web** y, a continuación, seleccione **Aplicación web ASP.NET**.
+2. Hola **tipos de proyecto** panel, expanda **plantillas**, **Visual C#**, **Web**y, a continuación, seleccione **aplicación Web ASP.NET** .
 
-      ![Captura de pantalla del cuadro de diálogo Nuevo proyecto con el tipo de proyecto Aplicación web ASP.NET resaltado](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-new-project-dialog.png)
+      ![Captura de pantalla del cuadro de diálogo nuevo proyecto de hello con el tipo de proyecto de aplicación Web ASP.NET de hello resaltado](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-new-project-dialog.png)
 
-3. En el cuadro **Nombre** , escriba el nombre del proyecto. Este tutorial utiliza el nombre "todo". Si decide usar otro nombre distinto, siempre que en el tutorial se hable del espacio de nombres todo, deberá adaptar los ejemplos de código proporcionados para usar el nombre que haya dado a la aplicación. 
-4. Haga clic en **Examinar** para navegar hasta la carpeta donde desea crear el proyecto y, a continuación, haga clic en **Aceptar**.
+3. Hola **nombre** cuadro, escriba un nombre hello del proyecto de Hola. Este tutorial usa Hola nombre "todo". Si elige un valor distinto de esto toouse, siempre que este tutorial se habla de espacio de nombres de tareas de hello, deberá toouse de ejemplos de código de hello proporciona tooadjust lo que se denomina la aplicación. 
+4. Haga clic en **examinar** toonavigate toohello carpeta donde como proyecto de hello toocreate y, a continuación, haga clic en **Aceptar**.
    
-      Aparece el cuadro de diálogo **Nueva aplicación web ASP.NET**.
+      Hola **nueva aplicación Web ASP.NET** aparece el cuadro de diálogo.
    
-    ![Captura de pantalla del cuadro de diálogo Nueva aplicación web ASP.NET con la plantilla de aplicación MVC resaltada](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-MVC.png)
-5. En el panel Plantillas, seleccione **MVC**.
+    ![Captura de pantalla del cuadro de diálogo nueva aplicación Web ASP.NET de Hola a plantilla de aplicación de MVC Hola resaltado](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-MVC.png)
+5. En el panel de plantillas de hello, seleccione **MVC**.
 
-6. Haga clic en **Aceptar** y deje que Visual Studio realice la tarea de scaffolding de la plantilla ASP.NET MVC vacía. 
+6. Haga clic en **Aceptar** y dejar que Visual Studio lo alrededor de la plantilla vacía de ASP.NET MVC de scaffolding Hola. 
 
           
-7. Después de que Visual Studio haya terminado de crear la aplicación MVC reutilizable, tiene una aplicación ASP.NET vacía que puede ejecutar de manera local.
+7. Una vez que Visual Studio ha terminado de crear la aplicación de MVC reutilizable de hello tiene una aplicación de ASP.NET vacía que se puede ejecutar localmente.
    
-    Omitiremos la ejecución del proyecto localmente, ya que estoy seguro de que todos hemos visto la aplicación "Hola a todos" de ASP.NET. Vayamos directamente a agregar Azure Cosmos DB a este proyecto y a compilar la aplicación.
+    Se podrá omitir ejecución proyecto Hola localmente porque estoy seguro de que hemos Hola visto todos los ASP.NET "¡Hello World" aplicación. Vamos a tooadding recta base de datos de Azure Cosmos toothis proyecto y compilar la aplicación.
 
-## <a name="_Toc395637767"></a>Paso 3: Incorporación de Azure Cosmos DB al proyecto de aplicación web MVC
-Ahora que ya tenemos la mayoría de los mecanismos de ASP.NET MVC que necesitamos para esta solución, vayamos al objetivo real de este tutorial, la incorporación de Azure Cosmos DB a nuestra aplicación web MVC.
+## <a name="_Toc395637767"></a>Paso 3: Agregar proyecto de aplicación web de base de datos de Azure Cosmos tooyour MVC
+Ahora que tenemos la mayoría de establecimiento de ASP.NET MVC Hola que necesitamos para esta solución, vamos a obtener toohello real propósito de este tutorial, para agregar la aplicación web de base de datos de Azure Cosmos tooour MVC.
 
-1. El SDK de .NET para Azure Cosmos DB se empaquete y distribuye como un paquete de NuGet. Para obtener el paquete de NuGet en Visual Studio, utilice el Administrador de paquetes de NuGet en Visual Studio haciendo clic con el botón derecho en el proyecto en el **Explorador de soluciones** y, a continuación, haciendo clic en **Administrar paquetes de NuGet**.
+1. Hello Azure Cosmos DB .NET SDK se empaqueta y distribuye como un paquete de NuGet. tooget Hola paquete de NuGet en Visual Studio, use el Administrador de paquetes de NuGet hello en Visual Studio con el botón secundario en el proyecto de hello en **el Explorador de soluciones** y, a continuación, haga clic en **administrar paquetes de NuGet**.
    
-    ![Captura de pantalla de las opciones del botón secundario para el proyecto de aplicación web en el Explorador de soluciones, con Administrar paquetes NuGet resaltado.](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-manage-nuget.png)
+    ![Captura de pantalla de hello haga clic en Opciones de proyecto de aplicación web de hello en el Explorador de soluciones, con administrar paquetes de NuGet resaltado.](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-manage-nuget.png)
    
-    Aparecerá el cuadro de diálogo **Administrar paquetes de NuGet** .
-2. En el cuadro **Browse** (Examinar) de NuGet, escriba ***Azure DocumentDB***. (El nombre del paquete no se ha actualizado a Azure Cosmos DB.)
+    Hola **administrar paquetes de NuGet** aparece el cuadro de diálogo.
+2. Hola NuGet **examinar** , escriba ***Azure DocumentDB***. (nombre del paquete hello no ha sido actualizada tooAzure Cosmos DB.)
    
-    En los resultados, instale el paquete **Microsoft.Azure.DocumentDB de Microsoft**. De esta manera se descarga e instala el paquete de Azure Cosmos DB además de todas las dependencias, como Newtonsoft.Json. Haga clic en **OK** (Aceptar) en el ventana **Preview** (Vista previa) y **I Accept** (Acepto) en la ventana **License Acceptance** (Aceptación de licencia) para completar la instalación.
+    Desde los resultados de hello, instalar hello **Microsoft.Azure.DocumentDB Microsoft** paquete. Esto descargará e instalará el paquete de la base de datos de Azure Cosmos de hello, así como todas las dependencias, como Newtonsoft.Json. Haga clic en **Aceptar** en hello **vista previa** ventana, y **acepto** en hello **la aceptación de licencia** ventana toocomplete Hola install.
    
-    ![Captura de pantalla de la ventana Administrar paquetes de NuGet, con la biblioteca de cliente de Microsoft Azure DocumentDB resaltada](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-install-nuget.png)
+    ![Captura de pantalla de la ventana Administrar paquetes de NuGet de hello, con hello resaltado de la biblioteca del cliente de documentos de Microsoft Azure](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-install-nuget.png)
    
-      También puede usar la Consola del Administrador de paquetes para instalar el paquete. Para ello, en el menú **Herramientas**, haga clic en **Administrador de paquetes NuGet** y, a continuación, haga clic en **Consola del Administrador de paquetes**. En el símbolo del sistema, escriba lo siguiente:
+      O bien puede usar Hola paquete de hello tooinstall Package Manager Console. toodo así, sucesivamente hello **herramientas** menú, haga clic en **Administrador de paquetes de NuGet**y, a continuación, haga clic en **Package Manager Console**. En el símbolo del sistema de hello, escriba Hola siguiente.
    
         Install-Package Microsoft.Azure.DocumentDB
         
-3. Una vez instalado el paquete, la solución de Visual Studio debe ser similar a lo siguiente con dos nuevas referencias agregadas, Microsoft.Azure.Documents.Client y Newtonsoft.Json.
+3. Una vez instalado el paquete de hello, la solución de Visual Studio debe parecerse al siguiente de hello con dos nuevas referencias de agregado, Microsoft.Azure.Documents.Client y Newtonsoft.Json.
    
-    ![Captura de pantalla de las dos referencias agregadas al proyecto de datos JSON en el Explorador de soluciones](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-added-references.png)
+    ![Captura de pantalla de dos referencias de hello agrega proyecto de datos JSON de toohello en el Explorador de soluciones](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-added-references.png)
 
-## <a name="_Toc395637763"></a>Paso 4: Configuración de la aplicación ASP.NET MVC
-Ahora vamos a agregar a esta aplicación de MVC modelos, vistas y controladores:
+## <a name="_Toc395637763"></a>Paso 4: Configurar Hola aplicación ASP.NET MVC
+Ahora vamos a Agregar aplicación de MVC de toothis de modelos, vistas y controladores de hello:
 
 * [Adición de un modelo](#_Toc395637764).
 * [Adición de un controlador](#_Toc395637765).
 * [Adición de vistas](#_Toc395637766).
 
 ### <a name="_Toc395637764"></a>Adición de un modelo de datos JSON
-Comencemos creando la **M** en MVC, el modelo. 
+Empecemos creando hello **M** en MVC, Hola modelo. 
 
-1. En el **Explorador de soluciones**, haga clic con el botón derecho en la carpeta **Modelos**, haga clic en **Agregar** y después en **Clase**.
+1. En **el Explorador de soluciones**, contextual hello **modelos** carpeta, haga clic en **agregar**y, a continuación, haga clic en **clase**.
    
-      Aparecerá el cuadro de diálogo **Agregar nuevo elemento** .
+      Hola **Agregar nuevo elemento** aparece el cuadro de diálogo.
 2. Ponga a la nueva clase el nombre **Item.cs** y haga clic en **Agregar**. 
-3. En este nuevo archivo **Item.cs** , agregue lo siguiente después de la última *instrucción using*.
+3. En este nuevo **Item.cs** , agregue el siguiente Hola después Hola última *mediante la instrucción*.
    
         using Newtonsoft.Json;
 4. Ahora, reemplace este código 
@@ -132,7 +132,7 @@ Comencemos creando la **M** en MVC, el modelo.
         {
         }
    
-    por el siguiente.
+    con hello al siguiente código.
    
         public class Item
         {
@@ -149,90 +149,90 @@ Comencemos creando la **M** en MVC, el modelo.
             public bool Completed { get; set; }
         }
    
-    Todos los datos de Azure Cosmos DB se transmiten mediante la conexión y se almacenan como JSON. Para controlar la forma en la que JSON.NET serializa y deserializa los objetos, puede usar el atributo **JsonProperty** como se mostró en la clase de **elemento** que acabamos de crear. No **tiene** que hacer esto pero quería asegurarme de que mis propiedades siguen las convenciones de nomenclatura de mezcla de mayúsculas y minúsculas de JSON. 
+    Todos los datos de la base de datos de Azure Cosmos se pasan a través de conexión de Hola y almacenar como JSON. manera de Hola de toocontrol los objetos se serializan/deserializar JSON.NET puede usar hello **JsonProperty** atributo como se muestra en hello **elemento** clase que acabamos de crear. No se cuentan **tienen** toodo esto pero desea tooensure que mi propiedades sigan convenciones de nomenclatura de hello JSON camelCase. 
    
-    No solo puede controlar el formato del nombre de propiedad cuando va en JSON, sino que puede cambiar el nombre por completo de las propiedades de .NET como hice con la propiedad **Description** . 
+    No solo puede controlar formato Hola Hola del nombre de propiedad cuando entra en JSON, pero puede cambiar completamente las propiedades de .NET como hizo con hello **descripción** propiedad. 
 
 ### <a name="_Toc395637765"></a>Adición de un controlador
-Esto se encarga de **M**. Creemos ahora la **C** de MVC, una clase de controlador.
+Que se encarga de hello **M**, ahora vamos a crear hello **C** en MVC, una clase de controlador.
 
-1. En el **Explorador de soluciones**, haga clic con el botón derecho en la carpeta **Controladores** y, a continuación, haga clic en **Agregar** y, por último, en **Controlador**.
+1. En **el Explorador de soluciones**, contextual hello **controladores** carpeta, haga clic en **agregar**y, a continuación, haga clic en **controlador**.
    
-    Aparecerá el cuadro de diálogo **Agregar scaffold** .
+    Hola **agregar scaffolding** aparece el cuadro de diálogo.
 2. Seleccione **Controlador MVC 5 - Vacío** y, a continuación, haga clic en **Agregar**.
    
-    ![Captura de pantalla del cuadro de diálogo Agregar scaffold con la opción Controlador MVC 5 - Vacío resaltada](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-controller-add-scaffold.png)
+    ![Captura de pantalla del cuadro de diálogo Agregar scaffolding Hola con hello controlador de MVC 5 - opción vacía resaltada](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-controller-add-scaffold.png)
 3. Asigne un nombre al nuevo controlador, **ItemController.**
    
-    ![Captura de pantalla del cuadro de diálogo Agregar controlador](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-add-controller.png)
+    ![Captura de pantalla del cuadro de diálogo Agregar controlador Hola](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-add-controller.png)
    
-    Una vez creado el archivo, la solución de Visual Studio debe ser similar a lo siguiente con el nuevo archivo ItemController.cs en el **Explorador de soluciones**. También se muestra el nuevo archivo Item.cs creado anteriormente.
+    Una vez que se crea el archivo hello, debe ser similar a la solución de Visual Studio siguiente Hola con nuevo archivo de ItemController.cs hello en **el Explorador de soluciones**. También se muestra el nuevo archivo de Item.cs Hola creado anteriormente.
    
-    ![Captura de pantalla de la solución de Visual Studio - Explorador de soluciones con los nuevos archivos ItemController.cs e Item.cs resaltados](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-new-item-solution-explorer.png)
+    ![Captura de pantalla de hello solución de Visual Studio - Explorador de soluciones con el archivo ItemController.cs nuevo de Hola y Item.cs resaltado](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-new-item-solution-explorer.png)
    
-    Puede cerrar ItemController.cs, volveremos a él más tarde. 
+    Puede cerrar ItemController.cs, volveremos tooit más tarde. 
 
 ### <a name="_Toc395637766"></a>Adición de vistas
-Por último, vamos a crear la **V** de MVC, las vistas.
+Ahora, vamos a crear hello **V** en MVC, Hola vistas:
 
 * [Adición de una vista de índice de elementos](#AddItemIndexView).
 * [Adición de una vista de elementos nuevos](#AddNewIndexView).
 * [Adición de una vista de edición de elementos](#_Toc395888515).
 
 #### <a name="AddItemIndexView"></a>Adición de una vista de índice de elementos
-1. En el **Explorador de soluciones**, expanda la carpeta **Vistas**, haga clic con el botón derecho en la carpeta **Elemento** vacía que ha creado Visual Studio para usted cuando agregó **ItemController** anteriormente, haga clic en **Agregar** y, a continuación, haga clic en **Vista**.
+1. En **el Explorador de soluciones**, expanda hello **vistas** carpeta, contextual Hola vacía **elemento** carpeta que Visual Studio crea automáticamente cuando se agrega hello  **ItemController** anterior, haga clic en **agregar**y, a continuación, haga clic en **vista**.
    
-    ![Captura de pantalla del Explorador de soluciones que muestra la carpeta Elemento con los comandos Agregar vista resaltados](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-add-view.png)
-2. En el cuadro de diálogo **Agregar vista** , realice lo siguiente:
+    ![Captura de pantalla del explorador de soluciones con la carpeta de elementos de hello creados por Visual Studio con comandos de agregar vista Hola resaltados](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-add-view.png)
+2. Hola **agregar vista** diálogo cuadro, Hola siguientes:
    
-   * En el cuadro **Nombre de vista**, escriba ***Índice***.
-   * En el cuadro **Plantilla**, seleccione ***Lista***.
-   * En el cuadro **Clase de modelo**, seleccione ***Elemento (todo.Models)***.
-   * En el cuadro de página de diseño, escriba ***~/Views/Shared/_Layout.cshtml***.
+   * Hola **nombre de la vista** , escriba ***índice***.
+   * Hola **plantilla** cuadro, seleccione ***lista***.
+   * Hola **clase modelo** cuadro, seleccione ***elemento (lista de tareas. Modelos)***.
+   * En el cuadro de página de diseño de hello, escriba ***~/Views/Shared/_Layout.cshtml***.
      
-   ![Captura de pantalla que muestra el cuadro de diálogo Agregar vista](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-add-view-dialog.png)
-3. Después de que se hayan establecido todos estos valores, haga clic en **Agregar** y permita que Visual Studio cree una nueva vista de plantilla. Después de esto, se abrirá el archivo cshtml que se creó. Podemos cerrar este archivo en Visual Studio, ya que volveremos a él más tarde.
+   ![Cuadro de diálogo Agregar vista de captura de pantalla que muestra hello](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-add-view-dialog.png)
+3. Después de que se hayan establecido todos estos valores, haga clic en **Agregar** y permita que Visual Studio cree una nueva vista de plantilla. Una vez que se hace esto, se abrirá el archivo cshtml hello que se creó. Podemos cerrar ese archivo en Visual Studio como se volverá tooit más tarde.
 
 #### <a name="AddNewIndexView"></a>Adición de una vista de elementos nuevos
-De forma parecida a cómo se crea una vista de **índice de elementos**, crearemos ahora una nueva vista para crear nuevos **elementos**.
+Toohow similar que hemos creado un **índice del elemento** vista, ahora crearemos una nueva vista para crear nuevas **elementos**.
 
-1. En el **Explorador de soluciones**, vuelva a hacer clic con el botón derecho en la carpeta **Elemento**, haga clic en **Agregar** y después en **Vista**.
-2. En el cuadro de diálogo **Agregar vista** , realice lo siguiente:
+1. En **el Explorador de soluciones**, contextual hello **elemento** de nuevo, haga clic en la carpeta **agregar**y, a continuación, haga clic en **vista**.
+2. Hola **agregar vista** diálogo cuadro, Hola siguientes:
    
-   * En el cuadro **Nombre de vista**, escriba ***Crear***.
-   * En el cuadro **Plantilla**, seleccione ***Crear***.
-   * En el cuadro **Clase de modelo**, seleccione ***Elemento (todo.Models)***.
-   * En el cuadro de página de diseño, escriba ***~/Views/Shared/_Layout.cshtml***.
+   * Hola **nombre de la vista** , escriba ***crear***.
+   * Hola **plantilla** cuadro, seleccione ***crear***.
+   * Hola **clase modelo** cuadro, seleccione ***elemento (lista de tareas. Modelos)***.
+   * En el cuadro de página de diseño de hello, escriba ***~/Views/Shared/_Layout.cshtml***.
    * Haga clic en **Agregar**.
    
 #### <a name="_Toc395888515"></a>Adición de una vista de edición de elementos
-Finalmente, agregue una última vista para editar un **elemento** como se hizo anteriormente.
+Por último, agregue una última vista para editar un **elemento** Hola igual que antes.
 
-1. En el **Explorador de soluciones**, vuelva a hacer clic con el botón derecho en la carpeta **Elemento**, haga clic en **Agregar** y después en **Vista**.
-2. En el cuadro de diálogo **Agregar vista** , realice lo siguiente:
+1. En **el Explorador de soluciones**, contextual hello **elemento** de nuevo, haga clic en la carpeta **agregar**y, a continuación, haga clic en **vista**.
+2. Hola **agregar vista** diálogo cuadro, Hola siguientes:
    
-   * En el cuadro **Nombre de vista**, escriba ***Editar***.
-   * En el cuadro **Plantilla**, seleccione ***Editar***.
-   * En el cuadro **Clase de modelo**, seleccione ***Elemento (todo.Models)***.
-   * En el cuadro de página de diseño, escriba ***~/Views/Shared/_Layout.cshtml***.
+   * Hola **nombre de la vista** , escriba ***editar***.
+   * Hola **plantilla** cuadro, seleccione ***editar***.
+   * Hola **clase modelo** cuadro, seleccione ***elemento (lista de tareas. Modelos)***.
+   * En el cuadro de página de diseño de hello, escriba ***~/Views/Shared/_Layout.cshtml***.
    * Haga clic en **Agregar**.
 
-Una vez hecho esto, cierre todos los documentos cshtml en Visual Studio, ya que volveremos a estas vistas más tarde.
+Una vez hecho esto, cierre todos los documentos de cshtml de hello en Visual Studio como se devolverán vistas toothese más tarde.
 
 ## <a name="_Toc395637769"></a>Paso 5: Conexión de Azure Cosmos DB
-Ahora que ya nos hemos ocupado de los elementos estándar de MVC, agreguemos el código para Azure Cosmos DB. 
+Ahora que se prepara material MVC estándar hello, vamos a activar el código de hello tooadding para la base de datos de Azure Cosmos. 
 
-En esta sección, agregaremos código para controlar lo siguiente:
+En esta sección, se agregará código que sigue Hola toohandle:
 
 * [Lista de elementos incompletos](#_Toc395637770).
 * [Adición de elementos](#_Toc395637771).
 * [Edición de elementos](#_Toc395637772).
 
 ### <a name="_Toc395637770"></a>Lista de elementos incompletos en la aplicación web MVC
-Lo primero que debe hacerse es agregar una clase que contenga toda la lógica para conectarse a Azure Cosmos DB y utilizarlo. Para este tutorial, encapsularemos toda esta lógica en una clase de repositorio denominada DocumentDBRepository. 
+Hello primer toodo de lo aquí es agregar una clase que contiene todos los tooconnect tooand usar base de datos de Azure Cosmos lógica de Hola. En este tutorial se a encapsular toda esta lógica en la clase de repositorio de tooa denominada DocumentDBRepository. 
 
-1. En el **Explorador de soluciones**, haga clic con el botón derecho en el proyecto, haga clic en **Agregar** y después en **Clase**. Ponga a la nueva clase el nombre **DocumentDBRepository** y haga clic en **Agregar**.
-2. En la recién creada **DocumentDBRepository**, clasifique y agregue las *instrucciones using* siguientes sobre la declaración *namespace*
+1. En **el Explorador de soluciones**, haga doble clic en el proyecto de hello, haga clic en **agregar**y, a continuación, haga clic en **clase**. Hola nueva clase el nombre **DocumentDBRepository** y haga clic en **agregar**.
+2. Hola recién creado **DocumentDBRepository** clase y agregue Hola siguiente *mediante instrucciones* anteriormente hello *espacio de nombres* declaración
    
         using Microsoft.Azure.Documents; 
         using Microsoft.Azure.Documents.Client; 
@@ -248,7 +248,7 @@ Lo primero que debe hacerse es agregar una clase que contenga toda la lógica pa
         {
         }
    
-    por el siguiente.
+    con hello al siguiente código.
    
         public static class DocumentDBRepository<T> where T : class
         {
@@ -306,17 +306,17 @@ Lo primero que debe hacerse es agregar una clase que contenga toda la lógica pa
         }
    
     
-3. Estamos leyendo algunos valores de la configuración; por tanto, abra el archivo **Web.config** de su aplicación y agregue las siguientes líneas debajo de la sección `<AppSettings>`.
+3. Le estamos leer algunos valores de configuración, abra hello **Web.config** archivo de la aplicación y agregue Hola después de líneas que aparecen bajo hello `<AppSettings>` sección.
    
-        <add key="endpoint" value="enter the URI from the Keys blade of the Azure Portal"/>
-        <add key="authKey" value="enter the PRIMARY KEY, or the SECONDARY KEY, from the Keys blade of the Azure  Portal"/>
+        <add key="endpoint" value="enter hello URI from hello Keys blade of hello Azure Portal"/>
+        <add key="authKey" value="enter hello PRIMARY KEY, or hello SECONDARY KEY, from hello Keys blade of hello Azure  Portal"/>
         <add key="database" value="ToDoList"/>
         <add key="collection" value="Items"/>
-4. Ahora, actualice los valores de *endpoint* y *authKey* mediante la hoja Claves de Azure Portal. Utilice el **URI** de la hoja Claves como el valor de la configuración de endpoint y utilice **CLAVE PRINCIPAL** o **CLAVE SECUNDARIA** de la hoja Claves como el valor de la configuración de authKey.
+4. Ahora, actualice los valores de hello de *extremo* y *SFF* mediante la hoja de claves de Hola de hello Portal de Azure. Usar hello **URI** de hoja de claves de hello como valor de Hola de configuración de punto de conexión de Hola y Hola de uso **PRIMARY KEY**, o **clave secundaria** de hoja de claves de hello como valor de Hola Hola configuración de SFF.
 
-    Se encarga del cableado del repositorio de Azure Cosmos DB; agreguemos ahora la lógica de aplicación.
+    Que se encarga de cableado de repositorio de base de datos de Azure Cosmos hello, ahora vamos a agrega la lógica de la aplicación.
 
-1. Lo primero que queremos poder hacer con una aplicación de lista todo es mostrar los elementos incompletos.  Copie y pegue el siguiente fragmento de código en cualquier parte dentro de la clase **DocumentDBRepository** .
+1. Hello lo primero que queremos toobe puede toodo con una aplicación de lista de tareas es elementos incompleta de toodisplay Hola.  Copie y pegue Hola siguiente fragmento de código en cualquier lugar de hello **DocumentDBRepository** clase.
    
         public static async Task<IEnumerable<T>> GetItemsAsync(Expression<Func<T, bool>> predicate)
         {
@@ -333,13 +333,13 @@ Lo primero que debe hacerse es agregar una clase que contenga toda la lógica pa
    
             return results;
         }
-2. Abra **ItemController** que agregamos anteriormente y agregue las *instrucciones using* siguientes sobre la declaración namespace.
+2. Abra hello **ItemController** se agregó anteriormente y agregue los siguientes hello *mediante instrucciones* por encima de la declaración de espacio de nombres de Hola.
    
         using System.Net;
         using System.Threading.Tasks;
         using todo.Models;
    
-    Si el proyecto no se denomina "todo", deberá actualizar con "todo. Models"; para reflejar el nombre del proyecto.
+    Si el proyecto no se denomina "todo", a continuación, necesita tooupdate con "lista de tareas. Modelos"; nombre de hello tooreflect del proyecto.
    
     Ahora, reemplace este código
    
@@ -349,7 +349,7 @@ Lo primero que debe hacerse es agregar una clase que contenga toda la lógica pa
             return View();
         }
    
-    por el siguiente.
+    con hello al siguiente código.
    
         [ActionName("Index")]
         public async Task<ActionResult> IndexAsync()
@@ -357,40 +357,40 @@ Lo primero que debe hacerse es agregar una clase que contenga toda la lógica pa
             var items = await DocumentDBRepository<Item>.GetItemsAsync(d => !d.Completed);
             return View(items);
         }
-3. Abra **Global.asax.cs** y agregue la siguiente línea al método **Application_Start** 
+3. Abra **Global.asax.cs** y agregue Hola después línea toohello **Application_Start** (método) 
    
         DocumentDBRepository<todo.Models.Item>.Initialize();
 
-En este punto, la solución debe ser capaz de compilar sin errores.
+En este momento la solución debe ser capaz de toobuild sin errores.
 
-Si ejecuta la aplicación ahora, irá a **HomeController** y a la vista de **índice** de ese controlador. Este es el comportamiento predeterminado para el proyecto de plantillas MVC que seleccionamos al comienzo, pero no queremos eso. Cambiemos el enrutamiento en esta aplicación MVC para modificar este comportamiento.
+Si ha ejecutado ahora la aplicación hello, quedarían toohello **HomeController** hello y **índice** vista de ese controlador. Se trata de comportamiento predeterminado de Hola para proyecto de plantilla MVC Hola que elegimos al principio de hello pero no queremos! Vamos a cambiar Hola enrutamiento en este tooalter de aplicación de MVC este comportamiento.
 
-Abra ***App\_Start\RouteConfig.cs***, busque la línea que empieza con "defaults:" y cámbiela para que se parezca a lo siguiente.
+Abra ***aplicación\_Start\RouteConfig.cs*** y busque la línea hello a partir de "valores predeterminados:" y cámbielo hello tooresemble después.
 
         defaults: new { controller = "Item", action = "Index", id = UrlParameter.Optional }
 
-Esto indica ahora a ASP.NET MVC que si no ha especificado un valor en la dirección URL para controlar el comportamiento de enrutamiento que, en lugar de **Inicio**, usa **Elemento** como controlador e **Índice** de usuario como vista.
+Ahora Esto indica a ASP.NET MVC que si no ha especificado un valor en toocontrol de dirección URL de Hola Hola comportamiento de enrutamiento que, en lugar de **inicio**, use **elemento** como controlador de Hola y usuario **índice** como vista de Hola.
 
-Si ejecuta la aplicación, llamará a su **ItemController**, que llamará a la clase de repositorio y usará el método GetItems para devolver todos los elementos incompletos a la vista **Vistas**\\**Elemento**\\**Índice**. 
+Ahora si ejecuta la aplicación hello, llamará a su **ItemController** que se llame en clase de repositorio toohello y use Hola GetItems método tooreturn todos Hola elementos incompletos toohello **vistas** \\ **Elemento**\\**índice** vista. 
 
 Si crea y ejecuta este proyecto ahora, deberá ver algo parecido a esto.    
 
-![Captura de pantalla de la aplicación web de lista de tareas pendientes creada con este tutorial](./media/documentdb-dotnet-application/build-and-run-the-project-now.png)
+![Captura de pantalla de creados por este tutorial de base de datos de aplicación del web de lista de tareas Hola](./media/documentdb-dotnet-application/build-and-run-the-project-now.png)
 
 ### <a name="_Toc395637771"></a>Adición de elementos
-Pongamos algunos elementos en nuestra base de datos de modo que tengamos algo más que una cuadrícula vacía que ver.
+Pongamos algunos elementos en nuestra base de datos, así tendremos algo más que un toolook cuadrícula vacía en.
 
-Agreguemos algo de código a Azure Cosmos DBRepository e ItemController para mantener el registro en Azure cosmos DB.
+Agreguemos algún código de registro de hello toopersist Azure Cosmos DBRepository y ItemController en la base de datos de Azure Cosmos.
 
-1. Agregue el siguiente método a su clase **DocumentDBRepository** .
+1. Agregar Hola siguiendo el método tooyour **DocumentDBRepository** clase.
    
        public static async Task<Document> CreateItemAsync(T item)
        {
            return await client.CreateDocumentAsync(UriFactory.CreateDocumentCollectionUri(DatabaseId, CollectionId), item);
        }
    
-   Este método simplemente toma un objeto que se le haya pasado y lo mantiene en Azure Cosmos DB.
-2. Abra el archivo ItemController.cs y agregue el siguiente fragmento de código en la clase. Así es cómo ASP.NET MVC sabe qué hacer para la acción **Crear** . En este caso basta con presentar la vista Create.cshtml asociada creada anteriormente.
+   Este método simplemente toma un objeto pasado tooit y lo almacena en la base de datos de Azure Cosmos.
+2. Abra el archivo de ItemController.cs hello y agregue Hola siguiente fragmento de código dentro de la clase hello. Se trata cómo ASP.NET MVC sabe qué toodo para hello **crear** acción. En este caso simplemente representación Hola asociado vista Create.cshtml que creó anteriormente.
    
         [ActionName("Create")]
         public async Task<ActionResult> CreateAsync()
@@ -398,8 +398,8 @@ Agreguemos algo de código a Azure Cosmos DBRepository e ItemController para man
             return View();
         }
    
-    Ahora necesitamos un poco más de código en este controlador que aceptará el envío desde la vista **Crear** .
-3. Agregue el siguiente bloque de código a la clase ItemController.cs que le indica a ASP.NET MVC lo que debe hacer con un formulario POST para este controlador.
+    Ahora necesitamos algunos más código de este controlador que acepte el envío de Hola Hola **crear** vista.
+3. Agregar Hola siguiente bloque de código toohello clase ItemController.cs que indica qué toodo con un formulario POST para este controlador de MVC de ASP.NET.
    
         [HttpPost]
         [ActionName("Create")]
@@ -415,18 +415,18 @@ Agreguemos algo de código a Azure Cosmos DBRepository e ItemController para man
             return View(item);
         }
    
-    Este código llama a DocumentDBRepository y usa el método CreateItemAsync para conservar el nuevo elemento todo en la base de datos. 
+    Este código llama en toohello DocumentDBRepository y utiliza hello CreateItemAsync método toopersist Hola todo elemento toohello base de datos nueva. 
    
-    **Nota de seguridad**: El atributo **ValidateAntiForgeryToken** se usa aquí para ayudarle a proteger esta aplicación contra ataques de falsificación de solicitud entre sitios. Es más que solo agregar este atributo, sus vistas también necesitan trabajar con este token antifalsificación. Para más información acerca del tema, así como ejemplos de cómo implementarlo correctamente, consulte el artículo sobre la [prevención de la falsificación de solicitud entre sitios][Preventing Cross-Site Request Forgery]. El código fuente proporcionado en [GitHub][GitHub] tiene la implementación completa.
+    **Nota de seguridad**: Hola **ValidateAntiForgeryToken** atributo se utiliza aquí toohelp proteger esta aplicación frente a ataques de falsificación de solicitud entre sitios. Hay más tooit que limitarse a agregar este atributo, las vistas necesitan toowork con este token antifalsificación así. Para obtener más información sobre el sujeto de Hola y ejemplos de cómo tooimplement esto correctamente, vea [evitar falsificación de solicitud entre sitios][Preventing Cross-Site Request Forgery]. Hola código fuente ofrecido en [GitHub] [ GitHub] tiene implementación completa de hello en su lugar.
    
-    **Nota de seguridad**: También usamos el atributo **Bind** en el parámetro de método para ayudar a proteger contra ataques de publicación en exceso. Para más información, consulte el artículo sobre [operaciones CRUD básicas en ASP.NET MVC][Basic CRUD Operations in ASP.NET MVC].
+    **Nota de seguridad**: También utilizamos hello **enlazar** atributo toohelp de parámetro de método hello protegerse exceso contabilización ataques. Para más información, consulte el artículo sobre [operaciones CRUD básicas en ASP.NET MVC][Basic CRUD Operations in ASP.NET MVC].
 
-Esto finaliza el código necesario para agregar elementos nuevos en nuestra base de datos.
+Esto concluye Hola código necesario tooadd nueva elementos tooour base de datos.
 
 ### <a name="_Toc395637772"></a>Edición de elementos
-Hay una última cosa que tenemos que hacer, que es agregar la capacidad de editar **elementos** en la base de datos y marcarlos como completados. La vista de edición ya se ha agregado al proyecto, por lo que necesitamos agregar código a nuestro controlador y a la clase **DocumentDBRepository** de nuevo.
+Hay una última cosa que nos toodo, y que es tooadd Hola capacidad tooedit **elementos** en la base de datos de Hola y toomark como completa. Hello vista de edición ya se ha agregado toohello proyecto, por lo que debemos tooadd algunos código controlador tooour y toohello **DocumentDBRepository** clase de nuevo.
 
-1. Agregue lo siguiente a la clase **DocumentDBRepository** .
+1. Agregar Hola después toohello **DocumentDBRepository** clase.
    
         public static async Task<Document> UpdateItemAsync(string id, T item)
         {
@@ -453,10 +453,10 @@ Hay una última cosa que tenemos que hacer, que es agregar la capacidad de edita
             }
         }
    
-    El primero de estos métodos, **GetItem** captura un elemento de Azure cosmos DB que se devuelve a **ItemController** y luego continúa hasta la vista de **edición**.
+    Hola primero de estos métodos, **GetItem** captura un elemento de la base de datos de Cosmos de Azure que se pasa toohello Atrás **ItemController** y, a continuación, en toohello **editar** vista.
    
-    El segundo de los métodos que acabamos de agregar reemplaza el **documento** de Azure cosmos DB con la versión del **documento** que se transmitió desde **ItemController**.
-2. Agregue lo siguiente a la clase **ItemController** .
+    Hola segundo de los métodos de Hola que acabamos de agregar reemplaza hello **documento** en la base de datos de Azure Cosmos con la versión de Hola de hello **documento** pasados desde hello **ItemController**.
+2. Agregar Hola después toohello **ItemController** clase.
    
         [HttpPost]
         [ActionName("Edit")]
@@ -489,52 +489,52 @@ Hay una última cosa que tenemos que hacer, que es agregar la capacidad de edita
             return View(item);
         }
    
-    El primer método controla el Http GET que ocurrirá cuando el usuario haga clic en el vínculo de **edición** en la vista de **índice**. Este método captura un [**documento**](http://msdn.microsoft.com/library/azure/microsoft.azure.documents.document.aspx) de Azure cosmos DB y lo transmite a la vista de **edición**.
+    Hello primer método controla Hola Http GET que se produce cuando hace clic en usuario de hello en hello **editar** vínculo de hello **índice** vista. Este método captura un [ **documento** ](http://msdn.microsoft.com/library/azure/microsoft.azure.documents.document.aspx) de base de datos de Azure Cosmos y pasa toohello **editar** vista.
    
-    La vista de **edición** realizará un Http POST en **IndexController**. 
+    Hola **editar** vista, a continuación, realizará un Http POST toohello **IndexController**. 
    
-    El segundo método que agregamos controla la transmisión del objeto actualizado a Azure cosmos DB para que se conserve en la base de datos.
+    segundo método de Hello agregamos identificadores pasar Hola actualizar objeto tooAzure Cosmos DB toobe se conserva en la base de datos de Hola.
 
-Esto es todo lo que necesitamos para ejecutar la aplicación, enumerar **elementos** incompletos, agregar nuevos **elementos** y editar **elementos**.
+¡Eso es todo, que es todo lo necesario toorun nuestra aplicación, se muestran incompletos **elementos**, agregar nuevas **elementos**y editar **elementos**.
 
-## <a name="_Toc395637773"></a>Paso 6: Ejecución de la aplicación de forma local
-Lleve a cabo los siguientes pasos para probar la aplicación en su máquina local:
+## <a name="_Toc395637773"></a>Paso 6: Ejecutar aplicación hello localmente
+aplicación de hello tootest en el equipo local, Hola siguientes:
 
-1. Presione F5 en Visual Studio para compilar la aplicación en modo de depuración. De esa forma, se debe compilar la aplicación e iniciar un explorador con la página de cuadrícula vacía que vimos anteriormente:
+1. Presione F5 en la aplicación de Visual Studio toobuild hello en modo de depuración. Debe compilar la aplicación hello e iniciar un explorador con la página de cuadrícula vacía Hola que hemos visto antes:
    
-    ![Captura de pantalla de la aplicación web de lista de tareas pendientes creada con este tutorial](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-create-an-item-a.png)
+    ![Captura de pantalla de creados por este tutorial de base de datos de aplicación del web de lista de tareas Hola](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-create-an-item-a.png)
    
      
-2. Haga clic en el vínculo **Crear nuevo** y agregue valores a los campos **Nombre** y **Descripción**. Deje la casilla **Completado** sin seleccionar; de lo contrario, el **elemento** nuevo se agregará en estado completado y no aparecerá en la lista inicial.
+2. Haga clic en hello **crear nuevo** vincular y agregar valores toohello **nombre** y **descripción** campos. Deje hello **completado** casilla de verificación no está seleccionada en caso contrario Hola de nuevo **elemento** se agregarán en un estado completado y no aparecerán en la lista inicial de Hola.
    
-    ![Captura de pantalla de la vista Crear](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-create-new-item.png)
-3. Haga clic en **Crear**, se le redirigirá a la vista de **índice** y aparecerá el **elemento** en la lista.
+    ![Captura de pantalla de hello Crear vista](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-create-new-item.png)
+3. Haga clic en **crear** y es redirigido toohello Atrás **índice** vista y su **elemento** aparece en la lista de Hola.
    
-    ![Captura de pantalla de la vista de índice](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-create-an-item.png)
+    ![Captura de pantalla de hello vista de índice](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-create-an-item.png)
    
-    Puede agregar algunos **elementos** más en su lista todo.
+    Sentirse tooadd libre más unos **elementos** tooyour lista de tareas.
     
-4. Haga clic en **Editar** junto a un **elemento** de la lista y llegará a la vista de **edición**, donde puede actualizar cualquier propiedad de su objeto, incluida la marca **Completado**. Si selecciona la marca **Completado** y hace clic en **Guardar**, el **elemento** se quita de la lista de tareas incompletas.
+4. Haga clic en **editar** tooan siguiente **elemento** en la lista de Hola y se toman toohello **editar** vista en la que puede actualizar cualquier propiedad de su objeto, incluidos hello  **Completado** marca. Si marca hello **completar** marca y haga clic en **guardar**, hello **elemento** se quita de la lista de Hola de tareas incompletas.
    
-    ![Captura de pantalla de la vista de índice con el cuadro Completado activado](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-completed-item.png)
-5. Una vez que haya probado la aplicación, presione Ctrl+F5 para detener la depuración de la aplicación. Está listo para la implementación.
+    ![Captura de pantalla de hello vista de índice con hello completado casilla activada](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-completed-item.png)
+5. Una vez que ha probado la aplicación hello, presione toostop Ctrl + F5 para depurar aplicación Hola. Está listo toodeploy.
 
-## <a name="_Toc395637774"></a>Paso 7: Implementación de la aplicación en Azure App Service 
-Ahora que toda la aplicación funciona correctamente con Azure Cosmos DB, vamos a implementar esta aplicación web en Azure App Service.  
+## <a name="_Toc395637774"></a>Paso 7: Implementar Hola aplicación tooAzure servicio de aplicaciones 
+Ahora que tiene la aplicación completa de hello funciona correctamente con la base de datos de Azure Cosmos vamos toodeploy esta tooAzure de aplicación web servicio de aplicaciones.  
 
-1. Para publicar esta aplicación, todo lo que necesita hacer es hacer clic con el botón derecho en el proyecto en el **Explorador de soluciones** y hacer clic en **Publicar**.
+1. Esta aplicación todos los necesita toodo no toopublish es haga doble clic en el proyecto de hello en **el Explorador de soluciones** y haga clic en **publicar**.
    
-    ![Captura de pantalla de la opción Publicar en el Explorador de soluciones](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-publish.png)
+    ![Captura de pantalla de hello opción Publicar en el Explorador de soluciones](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-publish.png)
 
-2. En el cuadro de diálogo **Publicar**, haga clic en **Microsoft Azure App Service** y, a continuación, seleccione **Crear nuevo** para crear un perfil de App Service o haga clic en **Seleccione existente** para utilizar un perfil existente.
+2. Hola **publicar** cuadro de diálogo, haga clic en **servicio de aplicaciones de Microsoft Azure**, a continuación, seleccione **crear nuevo** toocreate un servicio de aplicaciones de perfil, o haga clic en **seleccionar Existente** toouse un perfil existente.
 
     ![Cuadro de diálogo Publicar en Visual Studio](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-publish-to-existing.png)
 
-3. Si tiene un perfil de Azure App Service existente, escriba el nombre de la suscripción. Use el filtro **Vista** para ordenar por tipo de recurso o grupo de recursos y, a continuación, seleccione la instancia de Azure App Service. 
+3. Si tiene un perfil de Azure App Service existente, escriba el nombre de la suscripción. Hola de uso **vista** filtrar toosort por tipo de recurso o grupo de recursos, a continuación, seleccione el servicio de aplicaciones de Azure. 
    
     ![Cuadro de diálogo App Service en Visual Studio](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-app-service.png)
 
-4. Para crear un nuevo perfil de Azure App Service, haga clic en **Crear nuevo** en el cuadro de diálogo **Publicar**. En el cuadro de diálogo **Crear App Service**, escriba el nombre de la aplicación web, la suscripción adecuada, el grupo de recursos, el plan de App Service y, a continuación, haga clic en **Crear**.
+4. toocreate un nuevo perfil de servicio de aplicaciones de Azure, haga clic en **crear nuevo** en hello **publicar** cuadro de diálogo. Hola **crear servicio en la aplicación** cuadro de diálogo, escriba el nombre de la aplicación Web y la suscripción adecuada, el grupo de recursos y el plan de servicio de aplicaciones, a continuación, haga clic en **crear**.
 
     ![Cuadro de diálogo Crear App Service en Visual Studio](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-create-app-service.png)
 
@@ -543,9 +543,9 @@ En pocos segundos, Visual Studio terminará de publicar la aplicación web y eje
 
 
 ## <a name="_Toc395637775"></a>Pasos siguientes
-¡Enhorabuena! Acaba de compilar su primera aplicación web MVC de ASP.NET con Azure Cosmos DB y la ha publicado en Azure. El código fuente de la aplicación completa, incluida la funcionalidad de detalle y eliminación, que no se incluyeron en este tutorial, se puede descargar o clonar desde [GitHub][GitHub]. Por lo tanto, si está interesado en agregarlo a la aplicación, seleccione el código y agréguelo a esta aplicación.
+¡Enhorabuena! Simplemente había creado su primer ASP.NET MVC de aplicación web mediante la base de datos de Azure Cosmos y haberlo publicado tooAzure. Hola código fuente de la aplicación completa de hello, incluidos los detalles de Hola y eliminar funciones que no se incluyeron en este tutorial se puede descargar o clonado a partir de [GitHub][GitHub]. Por lo que si está interesado en Agregar aplicación tooyour, agarre el código de hello y Agregar aplicación toothis.
 
-Para agregar funcionalidad adicional a la aplicación, revise las API disponibles en la [biblioteca de .NET para Microsoft Azure Cosmos DB](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet) y haga sus aportaciones libremente a la biblioteca de .NET para Azure Cosmos DB en [GitHub][GitHub]. 
+aplicación de tooyour tooadd funcionalidad adicional, revisión Hola API disponibles en hello [biblioteca de .NET de base de datos de Azure Cosmos](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet) y Siéntase libre toocontribute toohello Azure Cosmos DB .NET Library en [GitHub] [GitHub]. 
 
 [\*]: https://microsoft.sharepoint.com/teams/DocDB/Shared%20Documents/Documentation/Docs.LatestVersions/PicExportError
 [Visual Studio Express]: http://www.visualstudio.com/products/visual-studio-express-vs.aspx

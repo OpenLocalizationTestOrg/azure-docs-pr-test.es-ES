@@ -1,13 +1,13 @@
 ---
-title: Desencadenador de temporizador de Azure Functions | Microsoft Docs
-description: "Descubra cómo utilizar desencadenadores de temporizador en funciones de Azure."
+title: desencadenador de temporizador de funciones aaaAzure | Documentos de Microsoft
+description: "Comprender cómo toouse temporizador desencadena en funciones de Azure."
 services: functions
 documentationcenter: na
 author: christopheranderson
 manager: erikre
 editor: 
 tags: 
-keywords: "funciones de azure, funciones, procesamiento de eventos, proceso dinámico, arquitectura sin servidor"
+keywords: "azure functions, funciones, procesamiento de eventos, proceso dinámico, arquitectura sin servidor"
 ms.assetid: d2f013d1-f458-42ae-baf8-1810138118ac
 ms.service: functions
 ms.devlang: multiple
@@ -17,26 +17,26 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: glenga
 ms.custom: 
-ms.openlocfilehash: 6a97ab8508f889b77d064a5da70e3c726d62900c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 17fca22372dbc55d4684c8c099cc97923a7d3cf3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-functions-timer-trigger"></a>Desencadenador de temporizador de funciones de Azure
 
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-En este artículo se explica cómo configurar y codificar desencadenadores de temporizador en Azure Functions. Azure Functions incluye un enlace a un desencadenador de temporizador que le permite ejecutar su código de función según una programación definida. 
+Este artículo explica cómo temporizador tooconfigure y el código de desencadenadores en las funciones de Azure. Azure Functions incluye un enlace a un desencadenador de temporizador que le permite ejecutar su código de función según una programación definida. 
 
-El desencadenador de temporizador admite varias instancias de escalado horizontal. Una sola instancia de una función de temporizador determinada se ejecuta en todas las instancias.
+desencadenador de temporizador de Hello es compatible con varias instancias de escalado horizontal. Una sola instancia de una función de temporizador determinada se ejecuta en todas las instancias.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 <a id="trigger"></a>
 
 ## <a name="timer-trigger"></a>Desencadenador de temporizador
-El desencadenador de temporizador de una función usa el siguiente objeto JSON en la matriz `bindings` de function.json:
+función de tooa de desencadenador de temporizador Hello usa Hola siguiente objeto JSON en hello `bindings` matriz de function.json:
 
 ```json
 {
@@ -47,22 +47,22 @@ El desencadenador de temporizador de una función usa el siguiente objeto JSON e
 }
 ```
 
-El valor de `schedule` es una [expresión CRON](http://en.wikipedia.org/wiki/Cron#CRON_expression) que incluye estos seis campos: 
+Hola valo `schedule` es un [expresión CRON](http://en.wikipedia.org/wiki/Cron#CRON_expression) que incluya estos seis campos: 
 
     {second} {minute} {hour} {day} {month} {day-of-week}
 &nbsp;
 >[!NOTE]   
->En muchas de las expresiones CRON que se encuentran en Internet se omite el campo `{second}`. Si copia alguna de ellas, deberá ajustarla para el campo `{second}` adicional. Para obtener ejemplos específicos, vea [Programación de ejemplos](#examples) a continuación.
+>Muchas de las expresiones de cron Hola pueda encontrar en Internet omiten hello `{second}` campo. Si copia desde uno de ellos, necesita tooadjust para hello adicional `{second}` campo. Para obtener ejemplos específicos, vea [Programación de ejemplos](#examples) a continuación.
 
-La zona horaria predeterminada que se usa con las expresiones CRON es la Hora universal coordinada (UTC). Para que la expresión CRON se base en otra zona horaria, cree una nueva configuración de aplicación para la aplicación de función denominada `WEBSITE_TIME_ZONE`. Establezca el valor en el nombre de la zona horaria deseada como se muestra en [Microsoft Time Zone Index](https://msdn.microsoft.com/library/ms912391.aspx) (Índice de zona horaria de Microsoft). 
+zona horaria Hola predeterminada que usa con expresiones de CRON hello es la hora Universal coordinada (UTC). toohave la expresión CRON basada en otra zona horaria, crear una nueva configuración de aplicación para la aplicación de la función denominada `WEBSITE_TIME_ZONE`. Conjunto Hola valor toohello nombre de hello deseado zona horaria como se muestra en hello [índice de zona horaria de Microsoft](https://msdn.microsoft.com/library/ms912391.aspx). 
 
-Por ejemplo, la *Hora estándar del Este* (EST) es UTC-05:00. Para que el desencadenador de temporizador se dispare a las 10 a.m. (Hora estándar), use la siguiente expresión CRON que representa la zona horaria UTC:
+Por ejemplo, la *Hora estándar del Este* (EST) es UTC-05:00. toohave el temporizador desencadenar activan a las 10:00 AM EST todos los días, Hola de uso siguiente expresión CRON que las cuentas para la zona horaria UTC:
 
 ```json
 "schedule": "0 0 15 * * *",
 ``` 
 
-Si lo prefiere, puede agregar una nueva configuración de aplicación para la aplicación de función denominada `WEBSITE_TIME_ZONE` y establecer el valor en **Hora estándar del Este**.  A continuación, se podría usar la siguiente expresión CRON para las 10:00 EST: 
+Como alternativa, puede agregar una nueva configuración de aplicación para la aplicación de la función denominada `WEBSITE_TIME_ZONE` y establezca el valor de hello demasiado**hora estándar**.  A continuación, Hola siguiente expresión CRON podría utilizarse para 10:00 AM EST: 
 
 ```json
 "schedule": "0 0 10 * * *",
@@ -72,39 +72,39 @@ Si lo prefiere, puede agregar una nueva configuración de aplicación para la ap
 <a name="examples"></a>
 
 ## <a name="schedule-examples"></a>Ejemplos de programación
-Estos son algunos ejemplos de expresiones CRON que puede utilizar para la propiedad `schedule`. 
+Estos son algunos ejemplos de expresiones de CRON que puede utilizar para hello `schedule` propiedad. 
 
-Para que se desencadene una vez cada cinco minutos:
+tootrigger una vez cada cinco minutos:
 
 ```json
 "schedule": "0 */5 * * * *"
 ```
 
-Para desencadenar una vez al principio de cada hora:
+tootrigger una vez a la parte superior de Hola de cada hora:
 
 ```json
 "schedule": "0 0 * * * *",
 ```
 
-Para desencadenar una vez cada dos horas:
+tootrigger una vez cada dos horas:
 
 ```json
 "schedule": "0 0 */2 * * *",
 ```
 
-Para desencadenar una vez cada hora de las 9:00 a las 17:00:
+una vez cada hora de 9 AM too5 tootrigger PM:
 
 ```json
 "schedule": "0 0 9-17 * * *",
 ```
 
-Para desencadenar a las 9:30 cada día:
+tootrigger a las 9:30 A.M. todos los días:
 
 ```json
 "schedule": "0 30 9 * * *",
 ```
 
-Para desencadenar a 9:30 cada día comprendido entre lunes y viernes:
+tootrigger a las 9:30 A.M. cada día de la semana:
 
 ```json
 "schedule": "0 30 9 * * 1-5",
@@ -113,7 +113,7 @@ Para desencadenar a 9:30 cada día comprendido entre lunes y viernes:
 <a name="usage"></a>
 
 ## <a name="trigger-usage"></a>Uso del desencadenador
-Cuando se invoca una función de desencadenador de temporizador, se pasa a esta el [objeto de temporizador](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs). La siguiente función JSON es un ejemplo que representa el objeto de temporizador. 
+Cuando se invoca una función de desencadenador de temporizador, Hola [objeto de temporizador](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) se pasa a la función hello. Hello JSON siguiente es una representación de ejemplo Hola objeto de temporizador. 
 
 ```json
 {
@@ -130,7 +130,7 @@ Cuando se invoca una función de desencadenador de temporizador, se pasa a esta 
 <a name="sample"></a>
 
 ## <a name="trigger-sample"></a>Ejemplo de desencadenador
-Supongamos que el siguiente desencadenador de temporizador se encuentra en la matriz `bindings` de function.json:
+Suponga que tiene Hola después de desencadenador de temporizador en hello `bindings` matriz de function.json:
 
 ```json
 {
@@ -141,7 +141,7 @@ Supongamos que el siguiente desencadenador de temporizador se encuentra en la ma
 }
 ```
 
-Vea el ejemplo específico del lenguaje que lee el objeto de temporizador para comprobar si se retrasa.
+Vea el ejemplo específico del idioma de Hola que lee al temporizador de hello toosee de objeto si se está ejecutando en tiempo de ejecución.
 
 * [C#](#triggercsharp)
 * [F#](#triggerfsharp)

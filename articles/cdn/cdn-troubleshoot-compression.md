@@ -1,5 +1,5 @@
 ---
-title: "Solución de problemas de compresión de archivos en la red CDN de Azure | Microsoft Docs"
+title: "compresión de archivo aaaTroubleshooting en la red CDN de Azure | Documentos de Microsoft"
 description: "Solucione los problemas con la compresión de archivos de la red CDN de Azure."
 services: cdn
 documentationcenter: 
@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 5ef8a8262eb40aa827161764f03a63d031e43273
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f00b98beaf6b3b3cd30108ece65a8191edc06ff5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>Solución de problemas de compresión de archivos de red CDN
 Este artículo le ayudará a solucionar los problemas con la [compresión de archivos de red CDN](cdn-improve-performance.md).
 
-Si necesita más ayuda en cualquier punto de este artículo, puede ponerse en contacto con los expertos de Azure en [los foros de MSDN Azure o de desbordamiento de pila](https://azure.microsoft.com/support/forums/). Como alternativa, también puede registrar un incidente de soporte técnico de Azure. Vaya al [sitio de soporte técnico de Azure](https://azure.microsoft.com/support/options/) y haga clic en **Obtener soporte**.
+Si necesita más ayuda en cualquier momento en este artículo, puede ponerse en contacto con hello Azure expertos en [hello Azure de MSDN y Hola foros de desbordamiento de la pila](https://azure.microsoft.com/support/forums/). Como alternativa, también puede registrar un incidente de soporte técnico de Azure. Vaya toohello [sitio de soporte técnico de Azure](https://azure.microsoft.com/support/options/) y haga clic en **Get Support**.
 
 ## <a name="symptom"></a>Síntoma
 Está habilitada la compresión para el punto de conexión, pero se devuelven archivos sin comprimir.
 
 > [!TIP]
-> Para comprobar si los archivos se devuelven comprimidos, debe usar una herramienta como [Fiddler](http://www.telerik.com/fiddler) o las [herramientas de desarrollo](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/) del explorador.  Compruebe los encabezados de respuesta HTTP que se devuelven con el contenido CDN en caché.  Si hay un encabezado denominado `Content-Encoding` con un valor de **gzip**, **bzip2**, o **deflate**, el contenido se comprime.
+> toocheck si se devuelven los archivos comprimidos, necesita toouse una herramienta como [Fiddler](http://www.telerik.com/fiddler) o el explorador [herramientas de desarrollo](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/).  Encabezados de respuesta de comprobación Hola HTTP devuelvan con la red CDN en caché contenidos.  Si hay un encabezado denominado `Content-Encoding` con un valor de **gzip**, **bzip2**, o **deflate**, el contenido se comprime.
 > 
 > ![Encabezado content-encoding](./media/cdn-troubleshoot-compression/cdn-content-header.png)
 > 
@@ -38,21 +38,21 @@ Está habilitada la compresión para el punto de conexión, pero se devuelven ar
 ## <a name="cause"></a>Causa
 Hay varias causas posibles, por nombrar algunas:
 
-* El contenido solicitado no es apto para la compresión.
-* La compresión no está habilitada para el tipo de archivo solicitado.
-* La solicitud HTTP no incluía un encabezado que solicitara un tipo de compresión válido.
+* Hola solicitado no es elegible para la compresión de contenido.
+* La compresión no está habilitada para hello solicita el tipo de archivo.
+* solicitud HTTP de Hello no incluía un encabezado que solicita un tipo de compresión válidos.
 
 ## <a name="troubleshooting-steps"></a>Pasos para solucionar problemas
 > [!TIP]
-> Al igual que lo que ocurre cuando se implementan puntos de conexión nuevos, los cambios en la configuración de la red CDN demoran un tiempo en propagarse por la red.  Normalmente, los cambios se aplican en un plazo de 90 minutos.  Si esta es la primera vez que configura la compresión para su punto de conexión de la red CDN, debe considerar una espera de 1 o 2 horas para asegurarse de que la configuración de la compresión se propagó a los POP. 
+> Al igual que con la implementación de nuevos puntos de conexión, los cambios de configuración de red CDN tienen algunos toopropagate tiempo a través de la red de Hola.  Normalmente, los cambios se aplican en un plazo de 90 minutos.  Si se trata de hello primera vez que se ha establecido la compresión para el punto de conexión, considere la posibilidad de 1 y 2 horas toobe seguro de los valores de compresión de hello propagaron toohello POP en espera. 
 > 
 > 
 
-### <a name="verify-the-request"></a>Comprobar la solicitud
-En primer lugar, se debe hacer una comprobación rápida en la solicitud.  Puede usar las [herramientas de desarrollo](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/) del explorador para ver las solicitudes que se realizan.
+### <a name="verify-hello-request"></a>Comprobar la solicitud Hola
+En primer lugar, debemos hacer una comprobación rápida en la solicitud de saludo.  Puede usar el explorador [herramientas de desarrollo](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/) tooview hello las solicitudes realizadas.
 
-* Compruebe que la solicitud se envía a la dirección URL del punto de conexión, `<endpointname>.azureedge.net`, y no a su origen.
-* Compruebe que la solicitud contenga un encabezado **Accept-Encoding** y que el valor para el encabezado contenga **gzip**, **deflate** o **bzip2**.
+* Compruebe la solicitud de saludo se enviaran a dirección URL del extremo de tooyour, `<endpointname>.azureedge.net`y no su origen.
+* Compruebe la solicitud de hello contiene un **Accept-Encoding** hello y encabezado el valor de ese encabezado contiene **gzip**, **deflate**, o **bzip2** .
 
 > [!NOTE]
 > Los perfiles de la **red CDN de Azure de Akamai** solo admiten la codificación **gzip**.
@@ -67,10 +67,10 @@ En primer lugar, se debe hacer una comprobación rápida en la solicitud.  Puede
 > 
 > 
 
-Desplácese hasta el punto de conexión en [Azure Portal](https://portal.azure.com) y haga clic en el botón **Configurar** .
+Navegar por el extremo de tooyour en hello [portal de Azure](https://portal.azure.com) y haga clic en hello **configurar** botón.
 
 * Compruebe que la compresión está habilitada.
-* Compruebe que el tipo MIME del contenido que se va a comprimir se incluya en la lista de formatos comprimidos.
+* Compruebe el tipo MIME que Hola Hola contenido toobe comprimido está incluido en lista de Hola de formatos comprimidos.
 
 ![Configuración de compresión de red CDN](./media/cdn-troubleshoot-compression/cdn-compression-settings.png)
 
@@ -80,41 +80,41 @@ Desplácese hasta el punto de conexión en [Azure Portal](https://portal.azure.c
 > 
 > 
 
-Desplácese hasta el punto de conexión en [Azure Portal](https://portal.azure.com) y haga clic en el botón **Administrar** .  Se abrirá el portal complementario.  Desplace el mouse sobre la pestaña **HTTP grande** y luego mantenga el mouse sobre el control flotante **Configuración de caché**.  Haga clic en **Compresión**. 
+Navegar por el extremo de tooyour en hello [portal de Azure](https://portal.azure.com) y haga clic en hello **administrar** botón.  se abrirá el portal complementario de Hola.  Mantenga el mouse sobre hello **HTTP grandes** ficha y, a continuación, mantenga el mouse sobre hello **configuración de la caché** ventana flotante.  Haga clic en **Compresión**. 
 
 * Compruebe que la compresión está habilitada.
-* Compruebe que la lista de **Tipos de archivo** contiene una lista de tipos MIME separados por coma (sin espacios).
-* Compruebe que el tipo MIME del contenido que se va a comprimir se incluya en la lista de formatos comprimidos.
+* Comprobar hello **tipos de archivo** lista contiene una lista separada por comas (sin espacios) de los tipos MIME.
+* Compruebe el tipo MIME que Hola Hola contenido toobe comprimido está incluido en lista de Hola de formatos comprimidos.
 
 ![Configuración de compresión de red CDN Premium](./media/cdn-troubleshoot-compression/cdn-compression-settings-premium.png)
 
-### <a name="verify-the-content-is-cached"></a>Comprobar que el contenido se almacena en caché
+### <a name="verify-hello-content-is-cached"></a>Compruebe que se almacena en caché el contenido de Hola
 > [!NOTE]
 > Este paso solo se aplica si el perfil de red CDN es un perfil de **red CDN de Verizon** (Estándar o Premium).
 > 
 > 
 
-Con las herramientas para desarrolladores de su explorador, compruebe los encabezados de respuesta para asegurarse de que el archivo se almacena en caché en la región donde se solicita.
+Con herramientas de desarrollo de su explorador, compruebe el archivo hello tooensure encabezados de respuesta de Hola se almacena en caché en la región de Hola donde se solicita.
 
-* Compruebe el encabezado de respuesta **Server** .  El encabezado debe tener el formato **Plataforma (POP/id. de servidor)**, tal como se muestra en el ejemplo siguiente.
-* Compruebe el encabezado de respuesta **X-Cache** .  Debe poner **HIT**.  
+* Comprobar hello **Server** encabezado de respuesta.  encabezado de Hello debe tener formato de hello **plataforma (Id. de servidor/POP)**, tal como se muestra en el siguiente ejemplo de Hola.
+* Comprobar hello **X caché** encabezado de respuesta.  debe leer el encabezado de Hello **ACIERTOS**.  
 
 ![Encabezados de respuesta de red CDN](./media/cdn-troubleshoot-compression/cdn-response-headers.png)
 
-### <a name="verify-the-file-meets-the-size-requirements"></a>Comprobar que el archivo cumple los requisitos de tamaño
+### <a name="verify-hello-file-meets-hello-size-requirements"></a>Compruebe el archivo hello cumple los requisitos de tamaño de Hola
 > [!NOTE]
 > Este paso solo se aplica si el perfil de red CDN es un perfil de **red CDN de Verizon** (Estándar o Premium).
 > 
 > 
 
-Para que un archivo sea apto para la compresión, debe cumplir los siguientes requisitos de tamaño:
+toobe apta para la compresión, un archivo debe cumplir Hola según los requisitos de tamaño:
 
 * Mayor que 128 bytes.
 * Menor que 1 MB.
 
-### <a name="check-the-request-at-the-origin-server-for-a-via-header"></a>Compruebe la solicitud en el servidor de origen para un encabezado **Mediante**
-El encabezado **Mediante** HTTP indica al servidor web que un servidor proxy pasará la solicitud.  De forma predeterminada, los servidores web de Microsoft IIS no comprimen las respuestas si la solicitud contiene un encabezado **Mediante** .  Para anular este comportamiento, haga lo siguiente:
+### <a name="check-hello-request-at-hello-origin-server-for-a-via-header"></a>Compruebe la solicitud de hello en el servidor de origen de hello para un **a través de** encabezado
+Hola **a través de** encabezado HTTP indica el servidor de web toohello que Hola solicitud se pasa por un servidor proxy.  Servidores web de Microsoft IIS de forma predeterminada no comprimen las respuestas cuando la solicitud de hello contiene un **a través de** encabezado.  toooverride este comportamiento, realizar Hola siguientes:
 
-* **IIS 6**: [Establezca HcNoCompressionForProxies = "FALSE" en las propiedades de la metabase de IIS](https://msdn.microsoft.com/library/ms525390.aspx)
-* **IIS 7 y posteriores**: [Establezca **noCompressionForHttp10** y **noCompressionForProxies** en False en la configuración del servidor](http://www.iis.net/configreference/system.webserver/httpcompression).
+* **IIS 6**: [establecer HcNoCompressionForProxies = "FALSE" en Propiedades de la Metabase de IIS de Hola](https://msdn.microsoft.com/library/ms525390.aspx)
+* **IIS 7 y hasta**: [establecer **noCompressionForHttp10** y **noCompressionForProxies** tooFalse en configuración del servidor hello](http://www.iis.net/configreference/system.webserver/httpcompression)
 

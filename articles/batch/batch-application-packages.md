@@ -1,6 +1,6 @@
 ---
-title: "Instalación de paquetes de aplicaciones en nodos de proceso - Azure Batch | Microsoft Docs"
-description: "Utilice la característica paquetes de aplicación de Lote de Azure para administrar fácilmente varias aplicaciones y versiones para la instalación en nodos de proceso de Lote."
+title: paquetes de aplicaciones de aaaInstall en nodos de proceso - Azure Batch | Documentos de Microsoft
+description: "Característica de paquetes de aplicación de uso Hola de Azure Batch tooeasily administrar varias aplicaciones y nodos de ejecución de versiones para la instalación en lote."
 services: batch
 documentationcenter: .net
 author: tamram
@@ -15,197 +15,197 @@ ms.workload: big-compute
 ms.date: 07/20/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: afcc04c80ec15872a22de5d5969a7ef6a583562f
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 683be7b7f1bd5db7835332016f6dccb72f45c3b5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Implementación de aplicaciones en nodos de proceso con paquetes de aplicaciones de Batch
+# <a name="deploy-applications-toocompute-nodes-with-batch-application-packages"></a>Implementar aplicaciones toocompute nodos con paquetes de aplicaciones de lote
 
-La característica de paquetes de aplicación de Lote de Azure permite administrar e implementar fácilmente aplicaciones de tareas en los nodos de proceso de un grupo. Con paquetes de aplicación, puede cargar y administrar fácilmente varias versiones de las aplicaciones que las tareas ejecutan, incluidos los archivos auxiliares. A continuación, se pueden implementar automáticamente una o varias de estas aplicaciones en los nodos de proceso del grupo.
+característica de paquetes de aplicación Hola de lote de Azure proporciona una administración sencilla de aplicaciones de la tarea y su toohello implementación nodos de cálculo en el grupo. Con paquetes de aplicaciones, puede cargar y administrar varias versiones de aplicaciones de hello que ejecutarán sus tareas, incluidas sus archivos auxiliares. Se puede, a continuación, implementar automáticamente una o varias de estas aplicaciones toohello nodos de cálculo en el grupo.
 
-En este artículo, aprenderá cómo cargar y administrar paquetes de aplicación en el Portal de Azure. A continuación, aprenderá a instalarlos en nodos de proceso de un grupo mediante la biblioteca de [.NET para Batch][api_net].
+En este artículo, aprenderá cómo tooupload y administrar paquetes de aplicación Hola portal de Azure. A continuación, aprenderá cómo tooinstall en un grupo de proceso nodos con hello [.NET de lotes] [ api_net] biblioteca.
 
 > [!NOTE]
 > 
-> Los paquetes de aplicaciones se admiten en todos los grupos de Batch creados después del 5 de julio de 2017. Se admiten en los grupos de Batch creados entre el 10 de marzo de 2016 y el 5 de julio de 2017 únicamente si el grupo se creó mediante una configuración de Cloud Services. Los grupos de Batch creados antes del 10 de marzo de 2016 no admiten los paquetes de aplicaciones.
+> Los paquetes de aplicaciones se admiten en todos los grupos de Batch creados después del 5 de julio de 2017. Ahora se admiten en los grupos de lote creados entre el 10 de marzo de 2016 y 5 de julio de 2017 solo si se creó el grupo de hello mediante una configuración del servicio de nube. Los grupos de lote creados too10 anteriores de marzo de 2016 son compatibles con los paquetes de aplicaciones.
 >
-> Las API para crear y administrar paquetes de aplicaciones forman parte de la biblioteca [.NET de administración de lotes] [[api_net_mgmt]]. Las API para la instalación de paquetes de aplicaciones en un nodo de proceso forman parte de la biblioteca [.NET de lotes][api_net].  
+> las API para crear y administrar paquetes de aplicación Hello forman parte de hello [.NET de administración de lotes] [[api_net_mgmt]] biblioteca. las API para la instalación de paquetes de aplicaciones en un nodo de proceso Hello forman parte del programa Hola a [.NET de lotes] [ api_net] biblioteca.  
 >
-> La característica de paquetes de aplicaciones que se describe aquí reemplaza a la característica de aplicaciones de Lote disponible en versiones anteriores del servicio.
+> característica de paquetes de aplicación Hola aquí descrito reemplaza a la característica de aplicaciones de lote de hello disponible en versiones anteriores del servicio de Hola.
 > 
 > 
 
 ## <a name="application-package-requirements"></a>Requisitos de los paquetes de aplicación
-Para utilizar paquetes de aplicación, primero se debe [vincular una cuenta de Azure Storage](#link-a-storage-account) a su cuenta de Batch.
+paquetes de aplicaciones de toouse, necesita demasiado[vincular una cuenta de almacenamiento de Azure](#link-a-storage-account) tooyour cuenta de lote.
 
-Esta característica se introdujo en la [API de REST de Batch][api_rest] versión 2015-12-01.2.2, y la correspondiente biblioteca de [.NET para Batch][api_net], versión 3.1.0. Si se trabaja con Lote, se recomienda utilizar siempre la versión más reciente de la API.
+Esta característica se introdujo en [API de REST de lote] [ api_rest] versión 2015-12-01.2.2 y Hola correspondiente [.NET de lotes] [ api_net] versión de la biblioteca 3.1.0. Se recomienda usar siempre la última versión de la API de hello cuando se trabaja con el lote.
 
 > [!NOTE]
-> Los paquetes de aplicaciones se admiten en todos los grupos de Batch creados después del 5 de julio de 2017. Se admiten en los grupos de Batch creados entre el 10 de marzo de 2016 y el 5 de julio de 2017 únicamente si el grupo se creó mediante una configuración de Cloud Services. Los grupos de Batch creados antes del 10 de marzo de 2016 no admiten los paquetes de aplicaciones.
+> Los paquetes de aplicaciones se admiten en todos los grupos de Batch creados después del 5 de julio de 2017. Ahora se admiten en los grupos de lote creados entre el 10 de marzo de 2016 y 5 de julio de 2017 solo si se creó el grupo de hello mediante una configuración del servicio de nube. Los grupos de lote creados too10 anteriores de marzo de 2016 son compatibles con los paquetes de aplicaciones.
 >
 >
 
 ## <a name="about-applications-and-application-packages"></a>Acerca de las aplicaciones y los paquetes de aplicación
-En Lote de Azure, una *aplicación* hace referencia a un conjunto de archivos binarios con versiones que se pueden descargar automáticamente en los nodos de proceso del grupo. Un *paquete de aplicación* hace referencia a un *conjunto específico* de dichos archivos binarios y representa una *versión* determinada de la aplicación.
+En el lote de Azure, un *aplicación* hace referencia tooa conjunto de archivos binarios con control de versiones que pueden ser nodos de proceso toohello automáticamente descargado en el grupo. Un *paquete de aplicación* hace referencia tooa *conjunto específico* de los archivos binarios y representa un determinado *versión* de aplicación hello.
 
 ![Diagrama de alto nivel de aplicaciones y paquetes de aplicación][1]
 
 ### <a name="applications"></a>Aplicaciones
-Una aplicación en Lote contiene uno o más paquetes de aplicación y especifica las opciones de configuración de la aplicación. Por ejemplo, una aplicación puede especificar la versión predeterminada del paquete de aplicación que se instala en los nodos de proceso y si sus paquetes se pueden actualizar o eliminar.
+Una aplicación en el lote contiene una o más aplicaciones, paquetes y especifica las opciones de configuración para la aplicación hello. Por ejemplo, una aplicación puede especificar Hola predeterminado aplicación paquete versión tooinstall en nodos de proceso y si se pueden actualizar o eliminar sus paquetes.
 
 ### <a name="application-packages"></a>paquetes de aplicación
-Un paquete de aplicación es un archivo .zip que contiene los archivos binarios de la aplicación y los archivos auxiliares que se requieren para que las tareas ejecuten la aplicación. Cada paquete de aplicación representa una versión específica de la aplicación.
+Un paquete de aplicación es un archivo .zip que contiene los archivos binarios de aplicación de Hola y archivos auxiliares necesarios para la aplicación de hello toorun de tareas. Cada paquete de aplicación representa una versión específica de la aplicación hello.
 
-Los paquetes de aplicaciones se pueden especificar a niveles de grupo y de tarea. Puede especificar uno o varios de estos paquetes y (opcionalmente) una versión cuando crea un grupo o tarea.
+Puede especificar los paquetes de aplicación en los niveles de grupo y tarea de Hola. Puede especificar uno o varios de estos paquetes y (opcionalmente) una versión cuando crea un grupo o tarea.
 
-* **paquetes de aplicación del grupo** se implementan en *cada* nodo del grupo. Las aplicaciones se implementan cuando un nodo se une a un grupo y cuando se reinicia o se restablece la imagen inicial.
+* **Grupo de paquetes de aplicaciones** se implementan demasiado*cada* nodo de grupo de Hola. Las aplicaciones se implementan cuando un nodo se une a un grupo y cuando se reinicia o se restablece la imagen inicial.
   
-    Los paquetes de aplicación de grupo son adecuados cuando todos los nodos de un grupo ejecutan las tareas de un trabajo. Puede especificar uno o más paquetes de aplicación cuando se crea un grupo y puede agregar o actualizar los paquetes de un grupo ya existente. Si actualiza los paquetes de aplicaciones de un grupo existente, debe reiniciar los nodos para instalar el nuevo paquete.
-* **paquetes de aplicación de tareas** solo se implementan en un nodo de proceso programado para ejecutar una tarea, justo antes de ejecutar la línea de comandos de la tarea. Si el paquete de aplicación y la versión especificados ya están en el nodo, este no se volverá a implementar y se utilizará el paquete existente.
+    Los paquetes de aplicación de grupo son adecuados cuando todos los nodos de un grupo ejecutan las tareas de un trabajo. Puede especificar uno o más paquetes de aplicación cuando se crea un grupo y puede agregar o actualizar los paquetes de un grupo ya existente. Si actualiza los paquetes de aplicación de un grupo existente, debe reiniciar el nuevo paquete de nodos tooinstall Hola.
+* **Paquetes de aplicación de tareas** se implementan solo de nodos de proceso tooa toorun una tarea programada, justo antes de ejecutar línea de comandos de la tarea hello. Si especifica Hola versión y el paquete de aplicación ya está en el nodo de hello, no se vuelve a implementar y se utiliza el paquete existente de Hola.
   
-    Los paquetes de aplicaciones de tareas son útiles en entornos de grupo compartido, donde los distintos trabajos se ejecutan en un grupo que no se elimina cuando se completa un trabajo. Si el trabajo tiene menos tareas que nodos en el grupo, los paquetes de aplicación de las tareas pueden minimizar la transferencia de datos, ya que la aplicación se implementa solo en los nodos que ejecutan tareas.
+    Paquetes de aplicación de tareas son útiles en entornos de grupo compartido, donde distintos trabajos que se ejecutan en un grupo y no se elimina el grupo de hello cuando se completa un trabajo. Si el trabajo tiene menos tareas que los nodos de grupo de hello, paquetes de aplicaciones de la tarea pueden minimizar la transferencia de datos ya que la aplicación está implementada toohello solo nodos que se ejecutan las tareas.
   
-    Otros escenarios que pueden beneficiarse de los paquetes de aplicación de tareas son los trabajos que ejecutan una aplicación grande, pero solo para unas pocas tareas. Por ejemplo, en una fase previa al procesamiento o una tarea de combinación, donde la aplicación de procesamiento previo o combinación es pesada, puede ser útil usar paquetes de aplicación de tareas.
+    Otros escenarios que pueden beneficiarse de los paquetes de aplicación de tareas son los trabajos que ejecutan una aplicación grande, pero solo para unas pocas tareas. Por ejemplo, una fase previa al procesamiento o una tarea de mezcla, donde la aplicación de procesamiento previo o combinación de hello es pesado, puede beneficiarse del uso de paquetes de aplicaciones de la tarea.
 
 > [!IMPORTANT]
-> Hay restricciones en el número de aplicaciones y paquetes de aplicación que puede haber en una cuenta de Batch, así como en el tamaño máximo del paquete de aplicación. Para más información sobre estos límites, consulte [Cuotas y límites del servicio de Lote de Azure](batch-quota-limit.md) .
+> Hay restricciones en número de Hola de aplicaciones y paquetes de aplicaciones dentro de una cuenta de lote y en el tamaño de paquete de hello máxima de la aplicación. Vea [las cuotas y límites de hello servicio Azure Batch](batch-quota-limit.md) para obtener más información acerca de estos límites.
 > 
 > 
 
 ### <a name="benefits-of-application-packages"></a>Ventajas de los paquetes de aplicación
-Los paquetes de aplicación pueden simplificar el código de su solución de Lote y reducir la sobrecarga requerida para administrar las aplicaciones que ejecutan las tareas.
+Paquetes de aplicaciones pueden simplificar código de hello en la solución de lote y el inferior Hola sobrecarga toomanage necesario hello las aplicaciones que se ejecutan las tareas.
 
-Con los paquetes de aplicación, la tarea de inicio del grupo no tiene que especificar una larga lista de archivos de recursos individuales que se deben instalar en los nodos. No es preciso administrar manualmente varias versiones de los archivos de la aplicación en Almacenamiento de Azure ni en los nodos. Y tampoco es preciso preocuparse de generar [direcciones URL de SAS](../storage/common/storage-dotnet-shared-access-signature-part-1.md) para proporcionar acceso a los archivos de su cuenta de Almacenamiento. Lote funciona en segundo plano con el Almacenamiento de Azure para almacenar paquetes de aplicación e implementarlos en los nodos de proceso.
+Con paquetes de aplicaciones, tarea de inicio de la agrupación no tiene toospecify una lista larga de tooinstall de archivos de recursos individuales en nodos de Hola. No es necesario toomanually administrar varias versiones de los archivos de aplicación en el almacenamiento de Azure, o en los nodos. Y no necesita tooworry acerca de cómo generar [direcciones URL de SAS](../storage/common/storage-dotnet-shared-access-signature-part-1.md) tooprovide acceder a los archivos de toohello en su cuenta de almacenamiento. Procesar por lotes funciona en segundo plano de hello con paquetes de aplicaciones de almacenamiento de Azure toostore e implementarlas toocompute nodos.
 
 > [!NOTE] 
-> El tamaño total de una tarea de inicio debe ser menor o igual a 32 768 caracteres, incluidos los archivos de recursos y las variables de entorno. Si la tarea de inicio supera este límite, en este caso usar paquetes de aplicación es otra opción. Puede crear también un archivo comprimido que contiene los archivos de recursos, cargarlo como un blob en Azure Storage y. después, descomprímalo en línea de comandos de la tarea de inicio. 
+> Hello tamaño total de una tarea de inicio debe ser menor o igual too32768 caracteres, incluidos los archivos de recursos y las variables de entorno. Si la tarea de inicio supera este límite, en este caso usar paquetes de aplicación es otra opción. Puede crear un archivo comprimido que contiene los archivos de recursos, cargarlo como un almacenamiento de blob tooAzure y, a continuación, descomprímalo desde línea de comandos de saludo de la tarea de inicio. 
 >
 >
 
 ## <a name="upload-and-manage-applications"></a>Carga y administración de aplicaciones
-Puede usar el [Azure Portal][portal] o la biblioteca de [Batch Management .NET](batch-management-dotnet.md) para administrar los paquetes de aplicaciones en la cuenta de Batch. En las siguientes secciones, primero se muestra cómo vinculará primero una cuenta de Storage y, después, se analizará la incorporación de paquetes y aplicaciones y su administración con el portal.
+Puede usar hello [portal de Azure] [ portal] o hello [.NET de administración de lotes](batch-management-dotnet.md) paquetes de aplicación de biblioteca toomanage hello en su cuenta de lote. En a continuación Hola secciones, se muestra primero cómo toolink una cuenta de almacenamiento, a continuación, analice agregando aplicaciones y paquetes y administrarlos con Hola portal.
 
 ### <a name="link-a-storage-account"></a>Vínculo a una cuenta de Almacenamiento
-Para utilizar paquetes de aplicación, primero se debe vincular una cuenta de Almacenamiento de Azure a su cuenta de Lote. Si aún no ha configurado ninguna cuenta de almacenamiento, Azure Portal muestra una advertencia la primera vez que haga clic en el icono **Aplicaciones** en la hoja **Cuenta de Batch**.
+paquetes de aplicaciones de toouse, primero debe vincular un tooyour de cuenta cuenta de lote de almacenamiento de Azure. Si aún no ha configurado una cuenta de almacenamiento, hello portal de Azure muestra una advertencia hello primera vez que haga clic en hello **aplicaciones** el icono Servicios hello **cuenta de lote** hoja.
 
 > [!IMPORTANT]
-> Actualmente, Batch *solo* admite el tipo de cuenta de almacenamiento **de uso general**, tal y como se describe en el paso 5 de la sección [Crear una cuenta de almacenamiento](../storage/common/storage-create-storage-account.md#create-a-storage-account) del artículo [Acerca de las cuentas de almacenamiento de Azure](../storage/common/storage-create-storage-account.md). Cuando vincula una cuenta de Azure Storage a su cuenta de Batch, *solo* se vincula una cuenta de almacenamiento de **Uso general**.
+> Procesar por lotes admite actualmente *sólo* hello **general** tipo de cuenta de almacenamiento tal como se describe en el paso 5, [crear una cuenta de almacenamiento](../storage/common/storage-create-storage-account.md#create-a-storage-account), en [acerca de Azure las cuentas de almacenamiento](../storage/common/storage-create-storage-account.md). Al vincular un tooyour de cuenta de almacenamiento de Azure cuenta de lote, se vinculan *sólo* una **general** cuenta de almacenamiento.
 > 
 > 
 
 ![Advertencia de que no hay cuentas de almacenamiento configuradas en Azure Portal][9]
 
-El servicio Batch utiliza la cuenta de Storage asociada para almacenar los paquetes de aplicación. Una vez que haya vinculado las dos cuentas, Lote puede implementar automáticamente los paquetes almacenados en la cuenta de Almacenamiento vinculada en los nodos de proceso. Para vincular una cuenta de Storage a su cuenta de Batch, haga clic en **Configuración de cuenta de almacenamiento** en la hoja **Advertencia**; después, en **Cuenta de almacenamiento** en la hoja **Cuenta de almacenamiento**.
+Hola Hola de usos de servicio de lote había asociado toostore de cuenta de almacenamiento los paquetes de aplicaciones. Una vez haya vinculado dos cuentas de hello, lote automáticamente puede implementar paquetes de saludo almacenados en nodos de proceso de tooyour de cuenta de almacenamiento de hello vinculado. toolink un tooyour de cuenta de almacenamiento cuenta de lote, haga clic en **configuración de la cuenta de almacenamiento** en hello **advertencia** hoja y, a continuación, haga clic en **cuenta de almacenamiento** en hello **Cuenta de almacenamiento** hoja.
 
 ![Hoja Elegir de cuenta de almacenamiento en Azure Portal][10]
 
-Se recomienda crear una cuenta de Storage *específicamente* para su uso con la cuenta de Batch y seleccionarla aquí. Para más información sobre cómo crear una cuenta de almacenamiento, consulte la sección "Crear una cuenta de almacenamiento" en [Acerca de las cuentas de almacenamiento de Azure](../storage/common/storage-create-storage-account.md). Una vez que haya creado una cuenta de Almacenamiento, puede vincularla a su cuenta de Lote mediante la hoja **Cuenta de almacenamiento** .
+Se recomienda crear una cuenta de Storage *específicamente* para su uso con la cuenta de Batch y seleccionarla aquí. Para obtener más información acerca de cómo toocreate una cuenta de almacenamiento, vea "Crear una cuenta de almacenamiento" en [cuentas de almacenamiento de Azure sobre](../storage/common/storage-create-storage-account.md). Después de crear una cuenta de almacenamiento, puede, a continuación, vincúlelo tooyour cuenta de lote mediante el uso de hello **cuenta de almacenamiento** hoja.
 
 > [!WARNING]
-> El servicio Batch utiliza Azure Storage para almacenar los paquetes de aplicación como blobs en bloques. Se le [cobrará de la forma habitual][storage_pricing] por los datos de los blobs en bloques. Asegúrese de considerar el tamaño y número de los paquetes de aplicación y elimine periódicamente los paquetes en desuso para minimizar los costos.
+> Hola servicio por lotes utiliza el almacenamiento de Azure toostore los paquetes de aplicaciones como blobs en bloques. Está [carga como normal] [ storage_pricing] para datos de blob de bloque de saludo. Estar seguro de tamaño de hello tooconsider y el número de los paquetes de aplicaciones y quitan periódicamente los costos de toominimize de los paquetes en desuso.
 > 
 > 
 
 ### <a name="view-current-applications"></a>Visualización de las aplicaciones actuales
-Para ver las aplicaciones en la cuenta de Batch, haga clic en el elemento de menú **Aplicaciones** situado en el menú de la izquierda de la hoja **Cuenta de Batch**.
+las aplicaciones de hello tooview en su cuenta de lote, haga clic en hello **aplicaciones** elemento de menú en el menú de la izquierda Hola durante la visualización de hello **cuenta de lote** hoja.
 
 ![Icono Aplicaciones][2]
 
-Al seleccionar esta opción de menú, se abre la hoja **Aplicaciones**:
+Al seleccionar esta opción de menú abre hello **aplicaciones** hoja:
 
 ![Lista de aplicaciones][3]
 
-La hoja **Aplicaciones** muestra el identificador de cada aplicación de su cuenta y las siguientes propiedades:
+Hola **aplicaciones** hoja muestra Hola Id. de cada aplicación en su cuenta y Hola propiedades siguientes:
 
-* **Paquetes**: el número de versiones asociadas a la aplicación.
-* **Versión predeterminada**: la versión de la aplicación que se instala si no indica ninguna versión al especificar la aplicación para un grupo. Esta configuración es opcional.
-* **Permitir actualizaciones**: el valor que especifica si se permiten actualizaciones, eliminaciones y adiciones en el paquete. Si se establece en **No**, las actualizaciones y eliminaciones se deshabilitan para la aplicación. Solo se pueden agregar versiones nuevas del paquete de aplicación. El valor predeterminado es **Sí**.
+* **Paquetes**: Hola número de versiones asociadas a esta aplicación.
+* **Versión predeterminada**: versión de la aplicación hello instalado si no indica una versión cuando se especifica la aplicación hello para un grupo. Esta configuración es opcional.
+* **Permitir actualizaciones**: valor de Hola que especifica si las actualizaciones de paquete, eliminaciones y las adiciones se permiten. Si se establece demasiado**n**, paquete actualizaciones y eliminaciones se deshabilitan para la aplicación hello. Solo se pueden agregar versiones nuevas del paquete de aplicación. valor predeterminado de Hello es **Sí**.
 
 ### <a name="view-application-details"></a>Visualización de los detalles de una aplicación
-Para abrir la hoja que incluye los detalles de la aplicación, seleccione la aplicación en la hoja **Aplicaciones**.
+hoja de hello tooopen que incluye detalles de Hola para una aplicación de la aplicación, seleccione Hola Hola **aplicaciones** hoja.
 
 ![Detalles de la aplicación][4]
 
-En la hoja de detalles de la aplicación, puede configurar los siguientes valores de la aplicación.
+En la hoja de detalles de la aplicación de hello, puede configurar Hola siguientes opciones para la aplicación.
 
 * **Permitir actualizaciones**: especifica si se pueden actualizar o eliminar sus paquetes de aplicación. Consulte "Actualización o eliminación de un paquete de aplicación" más adelante en este artículo.
-* **Versión predeterminada**: especifique el paquete de aplicación predeterminado que se implementa en los nodos de proceso.
-* **Nombre para mostrar**: especifica un nombre "descriptivo" que la solución de Batch puede usar al mostrar información de la aplicación, por ejemplo, en la interfaz de usuario de un servicio que proporciona a los clientes a través de Batch.
+* **Versión predeterminada**: especificar un nodos de toocompute predeterminados toodeploy de paquete de aplicación.
+* **Nombre para mostrar**: especificar descriptivo nombre que el lote de solución puede utilizar cuando se muestra información acerca de la aplicación hello, por ejemplo, en hello interfaz de usuario de un servicio que proporciona a los clientes de tooyour a través de lote.
 
 ### <a name="add-a-new-application"></a>Adición de una nueva aplicación
-Para crear una aplicación, agregue un paquete de aplicación y especifique un identificador de aplicación nuevo y exclusivo. El primer paquete de aplicación que agregue con el nuevo identificador de aplicación también crea la nueva aplicación.
+toocreate una nueva aplicación, agregue un paquete de aplicación y especifique un identificador de aplicación nueva y única. Hola primer paquete de la aplicación que se agrega con el nuevo identificador de aplicación Hola también crea Hola nueva aplicación.
 
-Haga clic en **Agregar** en la hoja **Aplicaciones** para abrir la hoja **Nueva aplicación**.
+Haga clic en **agregar** en hello **aplicaciones** Hola de hoja tooopen **nueva aplicación** hoja.
 
 ![Hoja Nueva aplicación en Azure Portal][5]
 
-La hoja **Nueva aplicación** proporciona los siguientes campos para especificar la configuración de la nueva aplicación y del paquete de aplicación.
+Hola **nueva aplicación** hoja proporciona la configuración de Hola de toospecify de la nueva aplicación y el paquete de aplicación de los campos siguientes de Hola.
 
 **Id. de la aplicación**
 
-Este campo especifica el identificador de la nueva aplicación, que está sujeto a las reglas de validación estándar de identificadores de Azure Batch. Las reglas para proporcionar un identificador de aplicación son las siguientes:
+Este campo especifica el Id. de saludo de la nueva aplicación, que es de reglas de validación de Id. de lote de Azure estándares de asunto toohello. reglas de Hola para proporcionar un identificador de aplicación son los siguientes:
 
-* En los nodos de Windows, el identificador puede contener cualquier combinación de caracteres alfanuméricos, guiones y caracteres de subrayado. En los nodos de Linux, solo se permiten caracteres alfanuméricos y caracteres de subrayado.
+* En los nodos de Windows, el identificador de hello puede contener cualquier combinación de caracteres alfanuméricos, guiones y caracteres de subrayado. En los nodos de Linux, solo se permiten caracteres alfanuméricos y caracteres de subrayado.
 * No pueden contener más de 64 caracteres.
-* Deben ser único en la cuenta de Lote.
+* Debe ser único dentro de hello cuenta de lote.
 * Conserva las mayúsculas y minúsculas, aunque no las distingue.
 
 **Versión**
 
-Este campo especifica la versión del paquete de aplicación que se carga. Las cadenas de la versión están sujetas a las siguientes reglas de validación:
+Este campo especifica la versión de Hola Hola del paquete de aplicación que va a cargar. Cadenas de versión son toohello asunto siguiendo las reglas de validación:
 
-* En los nodos de Windows, la cadena de versión puede contener cualquier combinación de caracteres alfanuméricos, guiones, caracteres de subrayado y puntos. En los nodos de Linux, la cadena de versión solo puede contener caracteres alfanuméricos y de subred.
+* En los nodos de Windows, la cadena de versión de Hola puede contener cualquier combinación de caracteres alfanuméricos, guiones, caracteres de subrayado y puntos. En los nodos de Linux, la cadena de versión de Hola puede contener solo caracteres alfanuméricos y caracteres de subrayado.
 * No pueden contener más de 64 caracteres.
-* Deben ser únicas en la aplicación.
+* Debe ser único dentro de la aplicación hello.
 * Conservan las mayúsculas y minúsculas, aunque no las distinguen.
 
 **Paquete de aplicación**
 
-Este campo especifica el archivo .zip que contiene los archivos binarios y los archivos auxiliares necesarios para ejecutar la aplicación. Haga clic en el cuadro **Seleccionar un archivo** o en el icono de la carpeta a la que desee desplazarse y seleccione un archivo .zip que contenga los archivos de la aplicación.
+Este campo especifica el archivo .zip de Hola que contiene los archivos binarios de aplicación de Hola y archivos auxiliares que son de la aplicación hello tooexecute necesarios. Haga clic en hello **seleccionar un archivo** cuadro o hello tooand de toobrowse del icono de carpeta seleccione un archivo .zip que contiene archivos de la aplicación.
 
-Una vez que haya seleccionado un archivo, haga clic en **Aceptar** para iniciar la carga en Almacenamiento de Azure. Una vez completada la operación de carga, el portal muestra una notificación y cierra la hoja. En función del tamaño del archivo que se va a cargar y de la velocidad de la conexión de red, esta operación puede tardar un tiempo.
+Después de seleccionar un archivo, haga clic en **Aceptar** toobegin Hola carga tooAzure almacenamiento. Una vez completada la operación de carga de hello, portal de hello muestra una notificación y cierra la hoja de Hola. Función tamaño Hola de archivo hello que son hello y carga de velocidad de la conexión de red, esta operación puede tardar algún tiempo.
 
 > [!WARNING]
-> No cierre la hoja **Nueva aplicación** antes de que se complete la operación de carga. Si lo hace, se detendrá el proceso de carga.
+> No cierre hello **nueva aplicación** hoja antes de que finalice la operación de carga de Hola. Si lo hace, se detendrá el proceso de carga de Hola.
 > 
 > 
 
 ### <a name="add-a-new-application-package"></a>Adición de un nuevo paquete de aplicación
-Para agregar una nueva versión del paquete de aplicación para una aplicación existente, seleccione una aplicación en la hoja **Aplicaciones**, haga clic en **Paquetes** y en **Agregar** para abrir la hoja **Agregar paquete**.
+tooadd una nueva versión del paquete de aplicación para una aplicación existente, seleccione una aplicación Hola **aplicaciones** hoja, haga clic en **paquetes**, a continuación, haga clic en **agregar** tooopen Hola **Agregar paquete** hoja.
 
 ![Hoja Agregar paquete de aplicación en Azure Portal][8]
 
-Como puede ver, los campos coinciden con los de la hoja **Nueva aplicación**, excepto el cuadro de texto **Id. de aplicación**, que está deshabilitado. Como hizo para la nueva aplicación, especifique la **Versión** del paquete nuevo, vaya al archivo .zip de su **Paquete de aplicación** y haga clic en **Aceptar** para cargar el paquete.
+Como puede ver, los campos de hello coinciden con los de hello **nueva aplicación** hoja, pero hello **Id. de aplicación** casilla está deshabilitada. Tal y como lo hizo para aplicación Hola, especifique hello **versión** para el nuevo paquete, examinar tooyour **paquete de aplicación** .zip de archivos, a continuación, haga clic en **Aceptar** hello tooupload paquete.
 
 ### <a name="update-or-delete-an-application-package"></a>Actualización o eliminación de un paquete de aplicación
-Para actualizar o eliminar un paquete de aplicación existente, abra la hoja de detalles de la aplicación, haga clic en **Paquetes** para abrir la hoja **Paquetes** y en los **puntos suspensivos** de la fila del paquete de aplicación que desee modificar, y seleccione la acción que desee realizar.
+tooupdate o eliminar un paquete de aplicación existente, hoja de detalles de hello abierto para la aplicación hello, haga clic en **paquetes** tooopen hello **paquetes** hoja, haga clic en hello **puntos suspensivos**de fila Hola Hola del paquete de aplicación que desee toomodify y seleccionar acción de Hola que desea tooperform.
 
 ![Actualizar o eliminar paquete en Azure Portal][7]
 
-**Actualización**
+**Actualizar**
 
-Al hacer clic en **Actualizar**, se muestra la hoja *Actualizar paquete*. Esta hoja es similar a la hoja *New application package* (Nuevo paquete de aplicación). Sin embargo, solo está habilitado el campo de selección de paquete, lo que permite especificar un nuevo archivo ZIP para cargarlo.
+Al hacer clic en **actualización**, hello *paquete de actualización* hoja se muestra. Esta hoja es similar toohello *nuevo paquete de aplicación* hoja, el campo de selección del paquete de hello sin embargo, solo está habilitado, lo que le toospecify un nuevo tooupload del archivo ZIP.
 
 ![Hoja Actualizar paquete en Azure Portal][11]
 
 **Eliminar**
 
-Al hacer clic en **Eliminar**, se le pedirá que confirme la eliminación de la versión del paquete y Lote eliminará el paquete de Almacenamiento de Azure. Si elimina la versión predeterminada de una aplicación, la configuración de la **Versión predeterminada** se quita de la aplicación.
+Al hacer clic en **eliminar**, se le pedirá la eliminación de hello tooconfirm de versión del paquete de Hola y paquete Hola de eliminaciones por lotes de almacenamiento de Azure. Si elimina la versión de Hola predeterminada de una aplicación, Hola **versión predeterminada** configuración se quita de la aplicación hello.
 
 ![Eliminar aplicación][12]
 
 ## <a name="install-applications-on-compute-nodes"></a>Instalación de aplicaciones en nodos de proceso
-Ahora que ha aprendido cómo administrar paquetes de aplicación con Azure Portal, podemos analizar cómo implementarlos en los nodos de proceso y ejecutarlos con las tareas de Batch.
+Ahora que ha aprendido cómo paquetes de la aplicación toomanage con hello portal de Azure, veremos cómo toodeploy les toocompute nodos y ejecutarlos con las tareas por lotes.
 
 ### <a name="install-pool-application-packages"></a>Instalación de paquetes de aplicación de grupos
-Para instalar un paquete de aplicación en todos los nodos de proceso de un grupo, especifique una o varias *referencias* de paquetes de aplicación para el grupo. Los paquetes de aplicación que especifique para un grupo se instalan en cada nodo de proceso cuando este se una al grupo, además de cuando se reinicie o se restablezca la imagen inicial.
+tooinstall un paquete de aplicación en todos los nodos de cálculo en un grupo, especifique uno o más paquetes de aplicación *referencias* para el grupo de Hola. paquetes de aplicación Hola que especifique para un grupo se instalan en cada nodo de ejecución cuando une a ese nodo grupo de Hola y al nodo de Hola se reinicia o se restablece la imagen inicial.
 
-En el entorno de .NET para Batch, especifique una o varias [CloudPool][net_cloudpool].[ApplicationPackageReferences][net_cloudpool_pkgref] al crear el grupo o para un grupo existente. La clase [ApplicationPackageReference][net_pkgref] especifica una versión y un identificador de la aplicación que se va a instalar en los nodos de proceso de un grupo.
+En el entorno de .NET para Batch, especifique una o varias [CloudPool][net_cloudpool].[ApplicationPackageReferences][net_cloudpool_pkgref] al crear el grupo o para un grupo existente. Hola [ApplicationPackageReference] [ net_pkgref] clase especifica un identificador de la aplicación y la versión tooinstall en un grupo de nodos de proceso.
 
 ```csharp
-// Create the unbound CloudPool
+// Create hello unbound CloudPool
 CloudPool myCloudPool =
     batchClient.PoolOperations.CreatePool(
         poolId: "myPool",
@@ -213,7 +213,7 @@ CloudPool myCloudPool =
         virtualMachineSize: "small",
         cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "4"));
 
-// Specify the application and version to install on the compute nodes
+// Specify hello application and version tooinstall on hello compute nodes
 myCloudPool.ApplicationPackageReferences = new List<ApplicationPackageReference>
 {
     new ApplicationPackageReference {
@@ -221,20 +221,20 @@ myCloudPool.ApplicationPackageReferences = new List<ApplicationPackageReference>
         Version = "1.1001.2b" }
 };
 
-// Commit the pool so that it's created in the Batch service. As the nodes join
-// the pool, the specified application package is installed on each.
+// Commit hello pool so that it's created in hello Batch service. As hello nodes join
+// hello pool, hello specified application package is installed on each.
 await myCloudPool.CommitAsync();
 ```
 
 > [!IMPORTANT]
-> Si, por cualquier motivo, se produce un error en una implementación del paquete de aplicación, el servicio Batch marca el nodo como [inutilizable][net_nodestate] y no se programarán tareas de ejecución en ese nodo. En este caso, debería **reiniciar** el nodo para reiniciar la implementación del paquete. Al reiniciar el nodo, también se vuelve a habilitar la programación de tareas en el nodo.
+> Si se produce un error en una implementación de paquete de aplicación por algún motivo, marcas de servicio de lote de Hola Hola nodo [inutilizable][net_nodestate], y no las tareas se programan para su ejecución en ese nodo. En este caso, debería **reiniciar** Hola implementación de paquetes de nodo tooreinitiate Hola. Reiniciar nodo hello también permite la programación de tareas de nuevo en el nodo de Hola.
 > 
 > 
 
 ### <a name="install-task-application-packages"></a>Instalación de paquetes de aplicación de tareas
-De forma similar a un grupo, puede especificar las *referencias* de un paquete de aplicación para una tarea. Cuando una tarea está programada para ejecutarse en un nodo, el paquete se descarga y extrae justo antes de ejecutar la línea de comandos de la tarea. Si el paquete y versión especificados ya están instalados en el nodo, el paquete no se descarga y se utiliza el paquete existente.
+Grupo tooa similares, especifique el paquete de aplicación *referencias* para una tarea. Cuando una tarea está programada toorun en un nodo, paquete de hello es descargado y extraído justo antes de que se ejecuta la línea de comandos de la tarea hello. Si una versión y el paquete especificado ya está instalado en el nodo de hello, no se descarga el paquete de Hola y se usa el paquete existente de Hola.
 
-Para instalar un paquete de aplicación de tareas, configure la propiedad [CloudTask][net_cloudtask].[ApplicationPackageReferences][net_cloudtask_pkgref]:
+tooinstall un paquete de aplicación de la tarea, configure la tarea hello [CloudTask][net_cloudtask].[ ApplicationPackageReferences] [ net_cloudtask_pkgref] propiedad:
 
 ```csharp
 CloudTask task =
@@ -252,44 +252,44 @@ task.ApplicationPackageReferences = new List<ApplicationPackageReference>
 };
 ```
 
-## <a name="execute-the-installed-applications"></a>Ejecución de las aplicaciones instaladas
-Los paquetes que ha especificado para un grupo o tarea se descargan y extraen en un directorio con nombre dentro del nodo `AZ_BATCH_ROOT_DIR` . Lote también permite crear una variable de entorno que contiene la ruta de acceso al directorio con nombre. Las líneas de comando de la tarea usan esta variable de entorno al hacer referencia a la aplicación en el nodo. 
+## <a name="execute-hello-installed-applications"></a>Ejecutar aplicaciones de hello instalado
+Hello paquetes que ha especificado para un grupo o una tarea se descargan y ha extraído tooa con el nombre de directorio en hello `AZ_BATCH_ROOT_DIR` del nodo de Hola. Proceso por lotes también crea una variable de entorno que contiene hello toohello de ruta de acceso con el nombre de directorio. Las líneas de comando de la tarea use esta variable de entorno cuando se hace referencia a la aplicación hello en el nodo de Hola. 
 
-En los nodos de Windows, la variable está en el formato siguiente:
+En los nodos de Windows, variable de hello es Hola siguiendo el formato:
 
 ```
 Windows:
 AZ_BATCH_APP_PACKAGE_APPLICATIONID#version
 ```
 
-En los nodos de Linux, el formato es ligeramente diferente. Los puntos (.), guiones (-) y signos de número (##) se convierten en caracteres de subrayado en la variable de entorno. Por ejemplo:
+En los nodos de Linux, el formato de hello es ligeramente diferente. Puntos (.), guiones (-) y signos de número (##) son toounderscores planas en la variable de entorno de Hola. Por ejemplo:
 
 ```
 Linux:
 AZ_BATCH_APP_PACKAGE_APPLICATIONID_version
 ```
 
-`APPLICATIONID` y `version` son los valores que corresponden a la versión de la aplicación y del paquete que ha especificado para la implementación. Por ejemplo, si especificó que se debía instalar la versión 2.7 de la aplicación *blender* en los nodos de Windows, las líneas de comando de la tarea usarán esta variable de entorno para tener acceso a sus archivos:
+`APPLICATIONID`y `version` son valores que corresponden a toohello aplicación y versión del paquete que haya especificado para la implementación. Por ejemplo, si especifica que la versión 2.7 de aplicación *blender* debe estar instalado en los nodos de Windows, las líneas de comando de la tarea se utilice este tooaccess de variable de entorno sus archivos:
 
 ```
 Windows:
 AZ_BATCH_APP_PACKAGE_BLENDER#2.7
 ```
 
-En los nodos de Linux, especifique la variable de entorno con este formato:
+En los nodos de Linux, especifique la variable de entorno de Hola en este formato:
 
 ```
 Linux:
 AZ_BATCH_APP_PACKAGE_BLENDER_2_7
 ``` 
 
-Cuando carga un paquete de aplicación, puede especificar una versión predeterminada que implementar en los nodos de proceso. Si ha especificado una versión predeterminada para una aplicación, puede omitir el sufijo de versión al hacer referencia a ella. Puede especificar la versión predeterminada de la aplicación en Azure Portal, en la hoja Aplicaciones, como se muestra en [Carga y administración de aplicaciones](#upload-and-manage-applications).
+Cuando se carga un paquete de aplicación, puede especificar nodos de ejecución de un tooyour de toodeploy de versión de manera predeterminada. Si ha especificado una versión predeterminada para una aplicación, puede omitir el sufijo de la versión de hello cuando se hace referencia la aplicación hello. Puede especificar versión de la aplicación predeterminada Hola Hola portal de Azure, en la hoja de aplicaciones de hello, tal y como se muestra en [cargar y administrar aplicaciones](#upload-and-manage-applications).
 
-Por ejemplo, si especifica la versión "2.7" como la versión predeterminada de la aplicación *blender*, las tareas pueden hacer referencia a la siguiente variable de entorno y, después, los nodos de Windows ejecutarán la versión 2.7:
+Por ejemplo, si establece "2.7" como versión predeterminada de Hola para aplicación *blender*y hacer referencia a las tareas de hello después de variable de entorno, a continuación, los nodos de Windows ejecutarán la versión 2.7:
 
 `AZ_BATCH_APP_PACKAGE_BLENDER`
 
-El siguiente fragmento de código muestra una línea de comandos de una tarea de ejemplo que inicia la versión predeterminada de la aplicación *blender* :
+Hello fragmento de código siguiente muestra un ejemplo de línea de comando de tarea que se inicia la versión predeterminada de Hola de hello *blender* aplicación:
 
 ```csharp
 string taskId = "blendertask01";
@@ -299,18 +299,18 @@ CloudTask blenderTask = new CloudTask(taskId, commandLine);
 ```
 
 > [!TIP]
-> Para más información sobre la configuración del entorno del nodo de proceso, consulte el apartado [Configuración del entorno para las tareas](batch-api-basics.md#environment-settings-for-tasks) de [Información general de las características de Batch](batch-api-basics.md).
+> Vea [configuración del entorno para tareas](batch-api-basics.md#environment-settings-for-tasks) en hello [Introducción a la característica por lotes](batch-api-basics.md) para obtener más información acerca de la configuración de entorno del nodo de proceso.
 > 
 > 
 
 ## <a name="update-a-pools-application-packages"></a>Actualización de los paquetes de aplicación de un grupo
-Si un grupo existente ya se ha configurado con un paquete de aplicación, se puede especificar un paquete nuevo para el grupo. Si especifica una nueva referencia de paquete para un grupo, se aplica lo siguiente:
+Si ya ha configurado un grupo existente con un paquete de aplicación, puede especificar un nuevo paquete para el grupo de Hola. Si especifica una nueva referencia de paquete para un grupo, Hola después de aplicar:
 
-* El servicio Batch instala el paquete recién especificado en todos los nodos nuevos que se unen al grupo y en cualquier nodo existente que se reinicie o cuya imagen inicial se restablezca.
-* Los nodos de proceso que ya estén en el grupo cuando se actualicen las referencias del paquete no instalan automáticamente el paquete de aplicación nuevo. Estos nodos de proceso deben reiniciarse o se debe restablecer su imagen inicial para recibir el nuevo paquete.
-* Cuando se implementa un nuevo paquete, las variables de entorno creadas reflejan las nuevas referencias del paquete de aplicación.
+* Hola servicio por lotes instala el paquete recién especificado de hello en todos los nodos nuevos que unirse a grupo de Hola y en cualquier nodo existente que se reinicia o se restablece la imagen inicial.
+* Proceso de nodos que ya están en el grupo de hello al actualizar las referencias del paquete hello no instalan automáticamente el nuevo paquete de aplicación Hola. Estos nodos deben reiniciarse o proceso tooreceive con imagen inicial restablecida Hola nuevo paquete.
+* Cuando se implementa un paquete nuevo, Hola creado variables de entorno refleja nuevas referencias de paquete de aplicación Hola.
 
-En este ejemplo, el grupo existente tiene la versión 2.7 de la aplicación *blender* configurada como una de sus propiedades [CloudPool][net_cloudpool].[ApplicationPackageReferences][net_cloudpool_pkgref]. Para actualizar los nodos del grupo con la versión 2.76b, especifique una nueva clase [ApplicationPackageReference][net_pkgref] con la nueva versión y confirme el cambio.
+En este ejemplo, grupo existente de hello tiene la versión 2.7 de hello *blender* aplicación configurada como uno de sus [CloudPool][net_cloudpool].[ ApplicationPackageReferences][net_cloudpool_pkgref]. nodos del grupo de tooupdate Hola con versión 2.76b, especificar un nuevo [ApplicationPackageReference] [ net_pkgref] con la nueva versión de hello y cambio de Hola de confirmación.
 
 ```csharp
 string newVersion = "2.76b";
@@ -324,13 +324,13 @@ boundPool.ApplicationPackageReferences = new List<ApplicationPackageReference>
 await boundPool.CommitAsync();
 ```
 
-Ahora que se ha configurado la nueva versión, el servicio Batch instala la versión 2.76b en todos los nodos *nuevos* que se unan al grupo. Para instalar la versión 2.76b en los nodos que *ya* están en el grupo, reinícielos o restablezca su imagen inicial. Tenga en cuenta que los nodos reiniciados conservan los archivos de las anteriores implementaciones del paquete.
+Ahora que hello nueva versión se ha configurado, Hola servicio por lotes instala versión 2.76b tooany *nueva* nodo que se une a grupo Hola. tooinstall 2.76b en nodos de Hola que sean *ya* en el grupo de hello, reiniciar o Restablecer imagen inicial de ellos. Tenga en cuenta que nodos reiniciados conservan archivos Hola desde implementaciones anteriores de paquetes.
 
-## <a name="list-the-applications-in-a-batch-account"></a>Enumeración de las aplicaciones en una cuenta de Lote
-Puede enumerar las aplicaciones y sus paquetes en una cuenta de Batch mediante el método [ApplicationOperations][net_appops].[ListApplicationSummaries][net_appops_listappsummaries].
+## <a name="list-hello-applications-in-a-batch-account"></a>Enumerar las aplicaciones de hello en una cuenta de lote
+Puede enumerar las aplicaciones de Hola y sus paquetes en una cuenta de lote mediante hello [ApplicationOperations][net_appops].[ ListApplicationSummaries] [ net_appops_listappsummaries] método.
 
 ```csharp
-// List the applications and their application packages in the Batch account.
+// List hello applications and their application packages in hello Batch account.
 List<ApplicationSummary> applications = await batchClient.ApplicationOperations.ListApplicationSummaries().ToListAsync();
 foreach (ApplicationSummary app in applications)
 {
@@ -344,11 +344,11 @@ foreach (ApplicationSummary app in applications)
 ```
 
 ## <a name="wrap-up"></a>Encapsulado
-Con los paquetes de aplicación puede ayudar a los clientes a seleccionar las aplicaciones para sus trabajos y especificar la versión exacta que deben usar al procesar los trabajos con su servicio con Lote habilitado. También puede proporcionar a los clientes la capacidad de cargar y hacer un seguimiento de sus propias aplicaciones en su servicio.
+Con paquetes de aplicaciones, puede ayudar a sus clientes seleccione aplicaciones de Hola para sus tareas y especificar Hola versión exacta toouse al procesar los trabajos con el servicio de lote activado. También podría proporcionan capacidad de hello para el tooupload de los clientes y realizar un seguimiento de sus propias aplicaciones en su servicio.
 
 ## <a name="next-steps"></a>Pasos siguientes
-* La [API de REST de Batch][api_rest] también proporciona compatibilidad para trabajar con paquetes de aplicación. Por ejemplo, consulte el elemento [applicationPackageReferences][rest_add_pool_with_packages] de [Agregar un grupo a una cuenta][rest_add_pool] para especificar los paquetes que se instalan mediante la API de REST. Para ver detalles sobre cómo obtener información de la aplicación mediante la API de REST de Batch, consulte [Aplicaciones][rest_applications].
-* Aprenda a [administrar mediante programación cuentas y cuotas de Lote de Azure con .NET de administración de lotes](batch-management-dotnet.md). La biblioteca [.NET de administración de Batch][api_net_mgmt] puede habilitar las características de creación y eliminación de cuentas de una aplicación o servicio de Batch.
+* Hola [API de REST de lote] [ api_rest] también proporciona compatibilidad con toowork con paquetes de aplicaciones. Por ejemplo, vea hello [applicationPackageReferences] [ rest_add_pool_with_packages] elemento [agregar una cuenta del grupo de tooan] [ rest_add_pool] para obtener información acerca de cómo toospecify tooinstall de paquetes mediante el uso de hello API de REST. Vea [aplicaciones] [ rest_applications] para obtener más información acerca de cómo tooobtain información de la aplicación mediante el uso de Hola API de REST de lote.
+* Obtenga información acerca de cómo tooprogrammatically [administrar cuentas de lote de Azure y las cuotas con .NET de administración de lotes](batch-management-dotnet.md). Hola [.NET de administración de lotes][api_net_mgmt] biblioteca puede habilitar características de creación y eliminación de cuenta para la aplicación de proceso por lotes o el servicio.
 
 [api_net]: https://docs.microsoft.com/dotnet/api/overview/azure/batch/client?view=azure-dotnet
 [api_net_mgmt]: https://docs.microsoft.com/dotnet/api/overview/azure/batch/management?view=azure-dotnet

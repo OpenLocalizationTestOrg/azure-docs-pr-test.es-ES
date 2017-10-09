@@ -1,5 +1,5 @@
 
-El código para todas las funciones de una aplicación de función dada se encuentra en una carpeta raíz que contiene un archivo de configuración de host y una o varias subcarpetas, cada una con el código de una función diferente, como se indica en el ejemplo siguiente:
+código de Hello para todas las funciones de hello en una aplicación de la función especificada se encuentra en una carpeta raíz que contiene un archivo de configuración de host y las subcarpetas de uno o más, cada uno de los cuales contiene código de hello para una función diferente, como en el siguiente ejemplo de Hola:
 
 ```
 wwwroot
@@ -15,7 +15,7 @@ wwwroot
  | | - run.csx
 ```
 
-El archivo *host.json* contiene alguna configuración específica del tiempo de ejecución y se coloca en la carpeta principal de la aplicación de función. Para obtener información sobre las opciones que están disponibles, consulte [host.json](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json) en la wiki de repositorio de WebJobs.Script.
+Hola *host.json* archivo contiene alguna configuración específica del tiempo de ejecución y se ubica en la carpeta raíz de Hola de aplicación de la función de hello. Para obtener información sobre la configuración que están disponibles, vea [host.json](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json) en hello WebJobs.Script repositorio wiki.
 
-Cada función tiene una carpeta que contiene uno o varios archivos de código, la configuración de function.json y otras dependencias.
+Cada función tiene una carpeta que contiene uno o varios archivos de código, configuración de function.json de Hola y otras dependencias.
 

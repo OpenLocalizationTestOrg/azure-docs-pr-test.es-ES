@@ -1,6 +1,6 @@
 ---
 title: "Infografía: Conceptos básicos de aprendizaje automático - Ejemplos de algoritmos | Microsoft Docs"
-description: "Una introducción fácil de comprender de principios básicos de aprendizaje automático incluye ejemplos de algoritmos. La infografía descargable trata la mayoría de las preguntas sobre aprendizaje automático."
+description: "Una introducción fácil de comprender de principios básicos de aprendizaje automático incluye ejemplos de algoritmos. Hola descargable infografía cubre mayoría preguntas de aprendizaje de automático."
 keywords: "conceptos básicos de aprendizaje automático,ejemplos de algoritmo, aprendizaje automático para principiantes,preguntas sobre aprendizaje automático,algoritmos populares,infografía de algoritmos"
 services: machine-learning
 documentationcenter: 
@@ -15,29 +15,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: garye
-ms.openlocfilehash: 03d5b53f63fddb95f369e2673f4c3430d50d6614
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a703021454fde76f770b2f6c8420b9ba2488d768
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>Infografía descargable: Conceptos básicos de aprendizaje automático con ejemplos de algoritmos
-Descargue esta introducción infográfica de comprender sobre conceptos básicos de aprendizaje automático para aprender sobre populares utilizados para responder a preguntas comunes sobre el aprendizaje automático. Los ejemplos de algoritmos ayudan a los que empiezan a usar el aprendizaje automático a comprender qué algoritmos usar y para qué.
+Descargar esta información general de fácil de entender infografía de toolearn de conceptos básicos sobre populares algoritmos usados tooanswer aprendizaje automático de las preguntas más comunes de aprendizaje automático. Ejemplos de algoritmo para comprender para principiantes de aprendizaje de máquina de hello qué toouse algoritmos y para qué utilizan.
 
 ## <a name="popular-algorithms-in-machine-learning-studio"></a>Algoritmos populares en Estudio de aprendizaje automático
-[Estudio de aprendizaje automático de Azure](https://studio.azureml.net/) incluye un gran biblioteca de algoritmos para el análisis predictivo. La infografía identifica cuatro populares familias de algoritmos (regresión, detección de anomalías, agrupación en clústeres y clasificación) y proporciona vínculos a ejemplos de trabajo en la [Galería de Cortana Intelligence](https://gallery.cortanaintelligence.com/). La galería contiene tutoriales y experimentos de ejemplo que muestran cómo se pueden aplicar estos algoritmos en muchas soluciones del mundo real.
+[Estudio de aprendizaje automático de Azure](https://studio.azureml.net/) incluye un gran biblioteca de algoritmos para el análisis predictivo. identifica cuatro familias populares de algoritmos de regresión, detección de anomalías, agrupación en clústeres y clasificación - Hello infografía y vínculos se proporcionan ejemplos de tooworking en el [Cortana Intelligence galería](https://gallery.cortanaintelligence.com/). Hola galería contiene experimentos de ejemplo y tutoriales que muestran cómo se pueden aplicar estos algoritmos en muchas soluciones del mundo real.
 
-## <a name="download-the-infographic-with-algorithm-examples"></a>Descargue la infografía con ejemplos de algoritmos
-**[Descarga: Infografía de conceptos básicos del aprendizaje automático con vínculos a ejemplos de algoritmos (PDF)](http://download.microsoft.com/download/0/5/A/05AE6B94-E688-403E-90A5-6035DBE9EEC5/machine-learning-basics-infographic-with-algorithm-examples.pdf)**
+## <a name="download-hello-infographic-with-algorithm-examples"></a>Descargar infografía de hello con ejemplos de algoritmo
+**[Descarga: Infografía de aspectos básicos de aprendizaje de máquina con ejemplos de tooalgorithm de vínculos (PDF)](http://download.microsoft.com/download/0/5/A/05AE6B94-E688-403E-90A5-6035DBE9EEC5/machine-learning-basics-infographic-with-algorithm-examples.pdf)**
 
 ![Infografía: Conceptos básicos de aprendizaje automático con ejemplos de algoritmos. Algoritmos populares. Aprendizaje automático para principiantes.](./media/machine-learning-basics-infographic-with-algorithm-examples/machine-learning-basics-infographic-with-algorithm-examples.png)
 
 ## <a name="more-help-with-algorithms-for-beginners-and-advanced-users"></a>Más ayuda con los algoritmos para principiantes y usuarios avanzados
-* Para obtener más información sobre los distintos tipos de algoritmos de aprendizaje automático, cómo se usan y cómo elegir el correcto para su solución, consulte [Cómo elegir algoritmos para Aprendizaje automático de Microsoft Azure](machine-learning-algorithm-choice.md).
-* Para ver una lista por categoría de todos los algoritmos disponibles de aprendizaje automático en Machine Learning Studio, consulte [Inicializar modelo][initialize-model] en la Ayuda de módulos y algoritmos de Machine Learning Studio.
+* Para obtener una explicación más detallada de tipos diferentes de hello de algoritmos de aprendizaje automático, cómo se utilizan y cómo toochoose Hola uno adecuado para su solución, vea [cómo toochoose algoritmos de aprendizaje automático de Microsoft Azure](machine-learning-algorithm-choice.md).
+* Para obtener una lista por categoría de todos los algoritmos de aprendizaje Hola automático disponibles en estudio de aprendizaje automático, consulte [inicializar modelo] [ initialize-model] en hello Studio algoritmo de aprendizaje de máquina y la Ayuda del módulo.
 * Para ver una lista completa de todos los algoritmos de Machine Learning Studio, consulte [Lista de la A a la Z de módulos de Machine Learning Studio][a-z-list] (Lista de la A a la Z de módulos de Machine Learning Studio) en la Ayuda de módulos y algoritmos de Machine Learning Studio.
-* Para descargar e imprimir un diagrama con información general de las funcionalidades de Estudio de aprendizaje automático, consulte [Diagrama de información general de las funcionalidades de Estudio de aprendizaje automático de Azure](machine-learning-studio-overview-diagram.md).
-* Para obtener información general de la Galería de Cortana Intelligence y los numerosos recursos generados por la comunidad que allí se encuentran, vea [Uso compartido y descubrimiento de recursos en la Galería de Cortana Intelligence](machine-learning-gallery-how-to-use-contribute-publish.md).
+* toodownload e imprimir un diagrama que ofrezca una visión general de las capacidades de Hola de estudio de aprendizaje automático, consulte [diagrama de información general de las capacidades de estudio de aprendizaje automático de Azure](machine-learning-studio-overview-diagram.md).
+* Para obtener información general de Hola hello y Galería de inteligencia de Cortana muchos recursos de disponibles generado por la Comunidad allí, consulte [compartir y detectar los recursos Hola Galería de inteligencia de Cortana](machine-learning-gallery-how-to-use-contribute-publish.md).
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 

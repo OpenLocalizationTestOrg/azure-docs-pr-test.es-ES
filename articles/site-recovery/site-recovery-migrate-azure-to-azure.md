@@ -1,6 +1,6 @@
 ---
-title: "Migración de máquinas virtuales de IaaS de Azure entre regiones de Azure | Microsoft Docs"
-description: "Use Azure Site Recovery para migrar máquinas virtuales de IaaS de Azure de una región de Azure a otra."
+title: "aaaMigrate las máquinas virtuales de IaaS de Azure entre regiones de Azure | Documentos de Microsoft"
+description: "Use máquinas de virtuales de Azure Site Recovery toomigrate IaaS de Azure de tooanother de una región de Azure."
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -14,32 +14,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: raynew
-ms.openlocfilehash: ef2972c077a2b1dd2b2fd6ce53cc6560520ea870
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: c84dc77716b8d19969eab60707ed1332ca39b893
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="migrate-azure-iaas-virtual-machines-between-azure-regions-with-azure-site-recovery"></a>Migración de máquinas virtuales de IaaS de Azure entre regiones de Azure con Azure Site Recovery
 ## <a name="overview"></a>Información general
-Bienvenido a Azure Site Recovery. Utilice este artículo si quiere migrar máquinas virtuales de Azure de una región de Azure a otra. Antes de comenzar, tenga en cuenta lo siguiente:
+Bienvenido tooAzure Site Recovery. Use este artículo si desea toomigrate máquinas virtuales de Azure entre regiones de Azure. Antes de comenzar, tenga en cuenta lo siguiente:
 
-* Azure tiene dos modelos de implementación diferentes para crear y utilizar recursos: Azure Resource Manager y el portal clásico. Azure también tiene dos portales: el Portal de Azure clásico que admite el modelo de implementación clásico y el Portal de Azure que es compatible con ambos modelos de implementación. Los pasos básicos para la migración son los mismos, con independencia de que vaya a configurar Site Recovery en Resource Manager o en el portal clásico. Sin embargo, las instrucciones de la interfaz de usuario y las capturas de pantalla del artículo son pertinentes para el Portal de Azure.
-* **Actualmente, solo puede efectuar la migración de una región a otra. Puede conmutar por error las máquinas virtuales de una región de Azure a otra, pero no podrá volver a realizar este proceso con estas máquinas más adelante.**
+* Azure tiene dos modelos de implementación diferentes para crear y utilizar recursos: Azure Resource Manager y el portal clásico. Azure también tiene dos portales: Hola portal de Azure clásico que admite el modelo de implementación clásica de Hola y Hola portal de Azure con compatibilidad para dos modelos de implementación. pasos básicos de Hello para la migración son Hola mismo si va a configurar la recuperación del sitio en el Administrador de recursos o en clásico. Sin embargo Hola instrucciones de la interfaz de usuario y capturas de pantalla en este artículo son relevantes para hello portal de Azure.
+* **Actualmente sólo se pueden migrar desde una región tooanother. Puede conmutar las máquinas virtuales de tooanother de una región de Azure, pero no puede realizar conmutación por recuperación ellos nuevo.**
 
-Publique cualquier comentario o pregunta que tenga en la parte inferior de este artículo, o bien en el [foro de Servicios de recuperación de Azure](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+Enviar comentarios o preguntas en parte inferior de este artículo, o en Hola de hello [foro de servicios de recuperación de Azure](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
 ## <a name="prerequisites"></a>Requisitos previos
 Requisitos para realizar esta implementación:
 
-* **Máquinas virtuales IaaS**: las máquinas virtuales que desea migrar. Migrará estas máquinas virtuales tratándolas como máquinas físicas.
+* **Máquinas virtuales de IaaS**: Hola máquinas virtuales que desee toomigrate. Migrará estas máquinas virtuales tratándolas como máquinas físicas.
 
 ## <a name="deployment-steps"></a>Pasos de implementación
-En esta sección se describen los pasos de implementación en el nuevo Portal de Azure.
+Esta sección describen los pasos de implementación de hello en el nuevo portal de Azure Hola.
 
 1. [Cree un almacén](site-recovery-vmware-to-azure.md).
-2. [Habilite la replicación](site-recovery-vmware-to-azure.md). Habilite la replicación en las máquinas virtuales que quiera migrar y elija Azure como origen. 
-3. [ Ejecute una conmutación por error no planeada](site-recovery-failover.md). Una vez completada la replicación inicial, puede ejecutar una conmutación por error no planeada desde una región de Azure a otra. Si lo desea, puede crear un plan de recuperación y una conmutación por error no planeada para migrar varias máquinas virtuales entre las regiones. [Obtenga más información](site-recovery-create-recovery-plans.md) sobre los planes de recuperación.
+2. [Habilite la replicación](site-recovery-vmware-to-azure.md). Habilitar la replicación de hello las máquinas virtuales que desee toomigrate y elija Azure como origen. 
+3. [ Ejecute una conmutación por error no planeada](site-recovery-failover.md). Una vez completada la replicación inicial, puede ejecutar una conmutación por error no planeada desde tooanother de una región de Azure. Si lo desea, puede crear un plan de recuperación y ejecutar varias máquinas virtuales de un error no planeadas, toomigrate entre regiones. [Obtenga más información](site-recovery-create-recovery-plans.md) sobre los planes de recuperación.
 
 ## <a name="next-steps"></a>Pasos siguientes
 Obtenga más información sobre otros escenarios de replicación en [¿Qué es Site Recovery?](site-recovery-overview.md)

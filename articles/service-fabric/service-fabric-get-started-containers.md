@@ -1,6 +1,6 @@
 ---
-title: "Creación de una aplicación contenedora en Azure Service Fabric | Microsoft Docs"
-description: "Cree la primera aplicación contenedora en Windows en Azure Service Fabric.  Cree una imagen de Docker con una aplicación en Python, inserte la imagen en un registro de contenedores y compile e implemente una aplicación contenedora en Service Fabric."
+title: "una aplicación de contenedor de Azure Service Fabric aaaCreate | Documentos de Microsoft"
+description: "Cree la primera aplicación contenedora en Windows en Azure Service Fabric.  Crear una imagen de Docker con una aplicación de Python, registro de hello imagen tooa contenedor de inserción, compilar e implementar una aplicación de contenedor de Service Fabric."
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -14,68 +14,68 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/18/2017
 ms.author: ryanwi
-ms.openlocfilehash: 025bde02b3f342ec3399d51819d1fa8a91f11374
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: b79d3a41eb2da5f7791266588fe9ea7becb0e58f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Cree la primera aplicación contenedora en Service Fabric en Windows
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-get-started-containers.md)
 > * [Linux](service-fabric-get-started-containers-linux.md)
 
-Para ejecutar una aplicación que existe en un contenedor de Windows en un clúster de Service Fabric no hay que hacer ningún cambio en la aplicación. Este artículo le guiará por la creación de una imagen de Docker que contiene una aplicación web [Flask](http://flask.pocoo.org/) en Python y su implementación en un clúster de Service Fabric.  También compartirá la aplicación en el contenedor mediante [Azure Container Registry](/azure/container-registry/).  Este artículo supone que el usuario tiene un conocimiento básico de Docker. Para obtener información acerca de Docker, lea la [introducción a Docker](https://docs.docker.com/engine/understanding-docker/).
+Ejecutar una aplicación existente en un contenedor de Windows en un clúster de Service Fabric no requiere ninguna aplicación de tooyour de cambios. Este artículo le guiará por la creación de una imagen de Docker que contiene un Python [matraz](http://flask.pocoo.org/) implementación de clúster de Service Fabric tooa y aplicaciones web.  También compartirá la aplicación en el contenedor mediante [Azure Container Registry](/azure/container-registry/).  Este artículo supone que el usuario tiene un conocimiento básico de Docker. Puede obtener información sobre Docker leer hello [Introducción a Docker](https://docs.docker.com/engine/understanding-docker/).
 
 ## <a name="prerequisites"></a>Requisitos previos
 Un equipo de desarrollo en el que se ejecute:
 * Visual Studio 2015 o Visual Studio 2017.
 * [SDK y herramientas de Service Fabric](service-fabric-get-started.md).
-*  Docker para Windows.  [Obtener Docker CE para Windows (estable)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). Después de instalar e iniciar Docker, haga clic con el botón derecho en el icono de la bandeja y seleccione **Switch to Windows containers** (Conmutar a contenedores de Windows), algo que es necesario para ejecutar imágenes de Docker basadas en Windows.
+*  Docker para Windows.  [Obtener Docker CE para Windows (estable)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). Después de instalar e iniciar Docker, haga doble clic en el icono de bandeja de Hola y seleccione **cambiar contenedores tooWindows**. Se trata de imágenes de Docker de toorun requiere basadas en Windows.
 
 Un clúster de Windows con tres, o más, nodos que se ejecute en Windows Server 2016 con contenedores: [Creación del primer clúster de Service Fabric en Azure](service-fabric-cluster-creation-via-portal.md) o [Prueba gratis de Service Fabric](https://aka.ms/tryservicefabric).
 
 Un registro de Azure Container Registry: [cree un registro de contenedor](../container-registry/container-registry-get-started-portal.md) en la suscripción de Azure.
 
-## <a name="define-the-docker-container"></a>Definición del contenedor de Docker
-Compile una imagen basada en la [imagen de Python](https://hub.docker.com/_/python/) ubicada en Docker Hub.
+## <a name="define-hello-docker-container"></a>Definir el contenedor de Docker Hola
+Crear una imagen basada en hello [imagen de Python](https://hub.docker.com/_/python/) ubicado en Docker Hub.
 
-Defina el contenedor de Docker en un archivo Dockerfile. El archivo Dockerfile contiene instrucciones para la configuración del entorno dentro del contenedor, la carga de la aplicación que desea ejecutar y la asignación de puertos. El Dockerfile es la entrada para el comando `docker build`, que crea la imagen.
+Defina el contenedor de Docker en un archivo Dockerfile. Hola Dockerfile contiene instrucciones para configurar el entorno de hello dentro de su contenedor, cargar aplicación hello desea toorun y asignación de puertos. Hola Dockerfile es Hola entrada toohello `docker build` comando, que crea la imagen de Hola.
 
-Cree un directorio vacío y cree el archivo *Dockerfile* (sin extensión de archivo). Agregue lo siguiente al archivo *Dockerfile* y guarde los cambios:
+Cree un directorio vacío y cree el archivo hello *Dockerfile* (con ninguna extensión de archivo). Agregue la Hola siguiente demasiado*Dockerfile* y guarde los cambios:
 
 ```
 # Use an official Python runtime as a base image
 FROM python:2.7-windowsservercore
 
-# Set the working directory to /app
+# Set hello working directory too/app
 WORKDIR /app
 
-# Copy the current directory contents into the container at /app
+# Copy hello current directory contents into hello container at /app
 ADD . /app
 
 # Install any needed packages specified in requirements.txt
 RUN pip install -r requirements.txt
 
-# Make port 80 available to the world outside this container
+# Make port 80 available toohello world outside this container
 EXPOSE 80
 
 # Define environment variable
 ENV NAME World
 
-# Run app.py when the container launches
+# Run app.py when hello container launches
 CMD ["python", "app.py"]
 ```
 
-Para más información, lea la [referencia de Dockerfile](https://docs.docker.com/engine/reference/builder/).
+Hola de lectura [referencia sobre Dockerfile](https://docs.docker.com/engine/reference/builder/) para obtener más información.
 
 ## <a name="create-a-simple-web-application"></a>Creación de una aplicación web simple
-Cree una aplicación web de Flask que escucha en el puerto 80 y devuelve "Hola mundo".  En el mismo directorio, cree el archivo *requirements.txt*.  Agregue lo siguiente y guarde los cambios:
+Cree una aplicación web de Flask que escucha en el puerto 80 y devuelve "Hola mundo".  En el mismo directorio de Hola, crear archivo hello *requirements.txt*.  Agregue los siguiente hello y guarde los cambios:
 ```
 Flask
 ```
 
-Cree también el archivo *app.py* y agregue lo siguiente:
+Crear hello *app.py* de archivos y agregue Hola siguiente:
 
 ```python
 from flask import Flask
@@ -92,16 +92,16 @@ if __name__ == "__main__":
 ```
 
 <a id="Build-Containers"></a>
-## <a name="build-the-image"></a>Compilación de la imagen
-Ejecute el comando `docker build` para crear la imagen que ejecuta la aplicación web. Abra una ventana de PowerShell y navegue hasta el directorio que contiene el archivo Dockerfile. Ejecute el siguiente comando:
+## <a name="build-hello-image"></a>Crear imagen de Hola
+Ejecute hello `docker build` imagen de hello toocreate de comando que se ejecuta la aplicación web. Abra una ventana de PowerShell y navegue directory toohello que contiene hello Dockerfile. Ejecute el siguiente comando de hello:
 
 ```
 docker build -t helloworldapp .
 ```
 
-Este comando crea la imagen nueva con las instrucciones del Dockerfile y asígnele el nombre (etiqueta -t) "helloworldapp" a la imagen. La creación de una imagen extrae la imagen base de Docker Hub y crea una nueva imagen que agrega la aplicación sobre la imagen base.  
+Este comando compilaciones Hola nueva imagen siguiendo las instrucciones de hello en el Dockerfile, nomenclatura (-t etiquetado) imagen Hola "helloworldapp". Creación de una imagen extrae la imagen base Hola hacia abajo de Docker Hub y crea una nueva imagen que agrega la aplicación encima de la imagen base Hola.  
 
-Una vez que se complete el comando de compilación, ejecute el comando `docker images` para ver información sobre la nueva imagen:
+Una vez completado el comando de compilación de hello, ejecute hello `docker images` toosee información en la nueva imagen de Hola de comandos:
 
 ```
 $ docker images
@@ -110,71 +110,71 @@ REPOSITORY                    TAG                 IMAGE ID            CREATED   
 helloworldapp                 latest              8ce25f5d6a79        2 minutes ago       10.4 GB
 ```
 
-## <a name="run-the-application-locally"></a>Ejecución de la aplicación de forma local
-Compruebe la imagen localmente antes de insertarla en el registro de contenedor.  
+## <a name="run-hello-application-locally"></a>Ejecutar la aplicación hello localmente
+Compruebe la imagen localmente antes de Insertar registro de contenedor de Hola.  
 
-Ejecute la aplicación:
+Ejecute la aplicación hello:
 
 ```
 docker run -d --name my-web-site helloworldapp
 ```
 
-*name* asigna un nombre al contenedor en ejecución (en lugar del identificador del contenedor).
+*nombre* ofrece un toohello de nombre ejecutando contenedor (en lugar de Id. de contenedor de hello).
 
-Una vez que el contenedor se inicia, busque su dirección IP para que pueda conectarse a su contenedor en ejecución desde un explorador:
+Una vez que se inicia el contenedor de hello, encontrar su dirección IP para que puedan conectarse tooyour ejecutando el contenedor desde un explorador:
 ```
 docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" my-web-site
 ```
 
-Conéctese al contenedor en ejecución.  Abra un explorador web que apunte a la dirección IP devuelta; por ejemplo, "http://172.31.194.61". Debería ver que el título "¡Hola mundo!" se muestra en el explorador.
+Conectar toohello ejecutando el contenedor.  Abra un explorador web que apunte toohello dirección IP que devuelve, por ejemplo "http://172.31.194.61". Debería ver Hola encabezado "¡Hello World!" mostrar en Explorador de Hola.
 
-Para detener el contenedor, ejecute:
+toostop su contenedor, ejecute:
 
 ```
 docker stop my-web-site
 ```
 
-Elimine el contenedor del equipo de desarrollo:
+Eliminar el contenedor de Hola desde el equipo de desarrollo:
 
 ```
 docker rm my-web-site
 ```
 
 <a id="Push-Containers"></a>
-## <a name="push-the-image-to-the-container-registry"></a>Inserción de la imagen en el registro de contenedor
-Después de comprobar que el contenedor se ejecuta en el equipo de desarrollo, inserte la imagen en el registro de Azure Container Registry.
+## <a name="push-hello-image-toohello-container-registry"></a>Registro de contenedor de inserción Hola imagen toohello
+Después de comprobar que el contenedor de Hola se ejecuta en el equipo de desarrollo, Insertar registro de hello imágenes tooyour en el registro de contenedor de Azure.
 
-Ejecute ``docker login`` para iniciar sesión en el registro de contenedor con sus [credenciales de registro](../container-registry/container-registry-authentication.md).
+Ejecutar ``docker login`` toolog en tooyour del registro de contenedor con su [las credenciales del registro](../container-registry/container-registry-authentication.md).
 
-En el ejemplo siguiente se pasa el identificador y la contraseña de una [entidad de servicio](../active-directory/active-directory-application-objects.md) de Azure Active Directory. Por ejemplo, puede que haya asignado una entidad de servicio al registro para ver un escenario de automatización. O bien, puede iniciar sesión con su nombre de usuario y contraseña del registro.
+Hello en el ejemplo siguiente se pasa Hola ID y la contraseña de Azure Active Directory [entidad de servicio](../active-directory/active-directory-application-objects.md). Por ejemplo, que puede que haya asignado un registro de tooyour principal de servicio para un escenario de automatización. O bien, puede iniciar sesión con su nombre de usuario y contraseña del registro.
 
 ```
 docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
 ```
 
-El siguiente comando crea una etiqueta, o alias, de la imagen, con una ruta de acceso completa al registro. Este ejemplo coloca la imagen en el espacio de nombres ```samples``` para evitar el desorden en la raíz del registro.
+Hello comando siguiente crea una etiqueta o un alias de imagen de hello, con un registro de tooyour de ruta de acceso completa. En este ejemplo lugares Hola imagen Hola ```samples``` desorden de tooavoid de espacio de nombres en la raíz de hello del registro de hello.
 
 ```
 docker tag helloworldapp myregistry.azurecr.io/samples/helloworldapp
 ```
 
-Inserte la imagen en el registro de contenedor:
+Registro de contenedor de inserción Hola imagen tooyour:
 
 ```
 docker push myregistry.azurecr.io/samples/helloworldapp
 ```
 
-## <a name="create-the-containerized-service-in-visual-studio"></a>Creación del servicio en contenedor en Visual Studio
-Las herramientas y el SDK de Service Fabric proporcionan una plantilla de servicio que le ayuda a crear una aplicación en contenedor.
+## <a name="create-hello-containerized-service-in-visual-studio"></a>Crear servicio de hello en contenedores en Visual Studio
+Hello SDK del servicio de Fabric y herramientas proporcionan una toohelp de plantilla de servicio se crea una aplicación en contenedores.
 
 1. Inicie Visual Studio.  Seleccione **Archivo** > **Nuevo** > **Proyecto**.
 2. Seleccione **Aplicación de Service Fabric**, asígnele el nombre "MyFirstContainer" y haga clic en **Aceptar**.
-3. Seleccione **Contenedor de invitado**  en la lista de **plantillas del servicio**.
-4. En **Nombre de la imagen** escriba "myregistry.azurecr.io/samples/helloworldapp", la imagen que insertó en el repositorio de contenedor.
+3. Seleccione **invitado contenedor** de lista de Hola de **plantillas de servicio**.
+4. En **nombre de la imagen** escriba "myregistry.azurecr.io/samples/helloworldapp", imagen Hola inserta tooyour repositorio de contenedor.
 5. Asigne un nombre a su servicio y haga clic en **Aceptar**.
 
 ## <a name="configure-communication"></a>Configuración de la comunicación
-El servicio en contenedor necesita un punto de conexión para la comunicación. Agregar un elemento `Endpoint` con el protocolo, el puerto y el tipo en el archivo ServiceManifest.xml. Para este artículo, el servicio en contenedor realiza escuchas en el puerto 8081.  En este ejemplo, se usa un puerto fijo 8081.  Si no se especifica ningún puerto, se elige un puerto aleatorio dentro del intervalo de puertos de la aplicación.  
+servicio de Hello en contenedores, necesita un punto de conexión para la comunicación. Agregar un `Endpoint` elemento con protocolo de hello, el puerto y el archivo de tipo toohello ServiceManifest.xml. En este artículo, el servicio de hello en contenedores escucha en el puerto 8081.  En este ejemplo, se usa un puerto fijo 8081.  Si no se especifica ningún puerto, se elige un puerto aleatorio del intervalo de puertos de aplicación Hola.  
 
 ```xml
 <Resources>
@@ -184,12 +184,12 @@ El servicio en contenedor necesita un punto de conexión para la comunicación. 
 </Resources>
 ```
 
-Al definir un punto de conexión, Service Fabric publica el punto de conexión en el servicio de nomenclatura.  Otros servicios que se ejecuten en el clúster pueden resolver este contenedor.  También puede realizar la comunicación de contenedor a contenedor utilizando el [proxy inverso](service-fabric-reverseproxy.md).  La comunicación se establece al proporcionar el puerto de escucha HTTP del proxy inverso y el nombre de los servicios con los que desea comunicarse como variables de entorno.
+Al definir un punto de conexión, Service Fabric publica Hola extremo toohello servicio de nombres.  Otros servicios que se ejecutan en el clúster de hello pueden resolver este contenedor.  También puede realizar la comunicación de contenedor a otro mediante hello [proxy inverso](service-fabric-reverseproxy.md).  La comunicación se realiza proporcionando el puerto de escucha de proxy inverso HTTP de Hola y el nombre de hello de servicios de Hola que desee toocommunicate con como variables de entorno.
 
 ## <a name="configure-and-set-environment-variables"></a>Configuración y establecimiento de variables de entorno
-En el manifiesto de servicio, las variables de entorno se pueden especificar para cada paquete de código. Esta característica está disponible para todos los servicios, con independencia de si se implementan como contenedores, procesos o archivos ejecutables de invitado. Estos valores de variable de entorno se invalidan en el manifiesto de aplicación o se especifican durante la implementación como parámetros de la aplicación.
+Las variables de entorno se pueden especificar para cada paquete de código en el manifiesto del servicio Hola. Esta característica está disponible para todos los servicios, con independencia de si se implementan como contenedores, procesos o archivos ejecutables de invitado. Puede invalidar la variable de entorno valores de la aplicación hello manifiesto o especifican durante la implementación como parámetros de la aplicación.
 
-El siguiente fragmento de código XML del manifiesto de servicio muestra un ejemplo de cómo especificar variables de entorno para un paquete de código:
+Hello fragmento XML de manifiesto de servicio siguiente muestra un ejemplo de cómo toospecify las variables de entorno para un paquete de código:
 ```xml
 <CodePackage Name="Code" Version="1.0.0">
   ...
@@ -199,7 +199,7 @@ El siguiente fragmento de código XML del manifiesto de servicio muestra un ejem
 </CodePackage>
 ```
 
-Estas variables de entorno se pueden invalidar en el manifiesto de aplicación:
+Estas variables de entorno se pueden invalidar en el manifiesto de aplicación Hola:
 
 ```xml
 <ServiceManifestImport>
@@ -211,7 +211,7 @@ Estas variables de entorno se pueden invalidar en el manifiesto de aplicación:
 ```
 
 ## <a name="configure-container-port-to-host-port-mapping-and-container-to-container-discovery"></a>Configurar la asignación de puerto de puerto a host del contenedor y la detección de contenedor a contenedor
-Configurar un puerto de host que se utiliza para comunicarse con el contenedor. El enlace de puerto asigna el puerto en el que el servicio está escuchando dentro del contenedor a un puerto en el host. Agregar un elemento `PortBinding` en el elemento `ContainerHostPolicies` del archivo ApplicationManifest.xml.  Para este artículo, `ContainerPort` es 80 (el contenedor expone el puerto 80, como se especifica en el Dockerfile) y `EndpointRef` es "Guest1TypeEndpoint" (el punto de conexión definido previamente en el manifiesto de servicio).  Las solicitudes entrantes para el servicio en el puerto 8081 se asignan al puerto 80 del contenedor.
+Configurar una toocommunicate de puerto que se utiliza de host con el contenedor de Hola. enlace de puerto de Hello asigna el puerto de hello en qué Hola servicio está escuchando en hello contenedor tooa puerto en el host de Hola. Agregar un `PortBinding` elemento `ContainerHostPolicies` elemento del archivo de ApplicationManifest.xml Hola.  En este artículo, `ContainerPort` es 80 (contenedor de hello expone el puerto 80, como Hola especificado en Dockerfile) y `EndpointRef` es "Guest1TypeEndpoint" (Hola extremo previamente definido en el manifiesto del servicio de Hola).  Las solicitudes entrantes que el servicio en el puerto 8081 toohello están asignan tooport 80 en el contenedor de Hola.
 
 ```xml
 <Policies>
@@ -222,7 +222,7 @@ Configurar un puerto de host que se utiliza para comunicarse con el contenedor. 
 ```
 
 ## <a name="configure-container-registry-authentication"></a>Configurar la autenticación de Container Registry
-Configure la autenticación de Container Registry mediante la adición de `RepositoryCredentials` a `ContainerHostPolicies` en el archivo ApplicationManifest.xml. Agregue la cuenta y contraseña para el registro de contenedores myregistry.azurecr.io, que permite al servicio descargar la imagen de contenedor del repositorio.
+Configurar la autenticación de registro del contenedor mediante la adición de `RepositoryCredentials` demasiado`ContainerHostPolicies` del archivo de ApplicationManifest.xml Hola. Agregar cuenta de hello y una contraseña para el registro de hello myregistry.azurecr.io contenedor, lo que permite la imagen del contenedor de Hola Hola servicio toodownload del repositorio de Hola.
 
 ```xml
 <Policies>
@@ -233,9 +233,9 @@ Configure la autenticación de Container Registry mediante la adición de `Repos
 </Policies>
 ```
 
-Se recomienda cifrar la contraseña del repositorio con un certificado de cifrado que se implementa en todos los nodos del clúster. Cuando Service Fabric implementa el paquete de servicio en el clúster, el certificado de cifrado se utiliza para descifrar el texto cifrado.  El cmdlet Invoke-ServiceFabricEncryptText se usa para crear el texto cifrado para la contraseña, que se agrega al archivo ApplicationManifest.xml.
+Se recomienda que cifrar contraseñas de repositorio de hello mediante un certificado de cifrado que ha implementado tooall nodos de clúster de Hola. Cuando Service Fabric implementa el clúster de toohello de paquete de servicio de hello, certificado de cifrado de hello es texto de cifrado usado toodecrypt Hola.  cmdlet Invoke-ServiceFabricEncryptText de Hello es texto de cifrado de hello toocreate usado para contraseña de hello, que se agrega el archivo de ApplicationManifest.xml toohello.
 
-El script siguiente crea un nuevo certificado autofirmado y lo exporta a un archivo PFX.  El certificado se importa en un almacén de claves existente y, a continuación, se implementa en el clúster de Service Fabric.
+Hello script siguiente crea un nuevo certificado autofirmado y exporta el archivo PFX de tooa.  certificado de Hola se importa en un almacén de claves existente y, a continuación, implementa el clúster de Service Fabric toohello.
 
 ```powershell
 # Variables.
@@ -253,26 +253,26 @@ Login-AzureRmAccount
 
 Select-AzureRmSubscription -SubscriptionId $subscriptionId
 
-# Create a self signed cert, export to PFX file.
+# Create a self signed cert, export tooPFX file.
 New-SelfSignedCertificate -Type DocumentEncryptionCert -KeyUsage DataEncipherment -Subject $subjectname -Provider 'Microsoft Enhanced Cryptographic Provider v1.0' `
 | Export-PfxCertificate -FilePath $filepath -Password $certpwd
 
-# Import the certificate to an existing key vault.  The key vault must be enabled for deployment.
+# Import hello certificate tooan existing key vault.  hello key vault must be enabled for deployment.
 $cer = Import-AzureKeyVaultCertificate -VaultName $vaultName -Name $certificateName -FilePath $filepath -Password $certpwd
 
 Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $groupname -EnabledForDeployment
 
-# Add the certificate to all the VMs in the cluster.
+# Add hello certificate tooall hello VMs in hello cluster.
 Add-AzureRmServiceFabricApplicationCertificate -ResourceGroupName $groupname -Name $clustername -SecretIdentifier $cer.SecretId
 ```
-Cifre la contraseña mediante el cmdlet [Invoke-ServiceFabricEncryptText](/powershell/module/servicefabric/Invoke-ServiceFabricEncryptText?view=azureservicefabricps).
+Cifrar la contraseña de hello mediante hello [ServiceFabricEncryptText Invoke](/powershell/module/servicefabric/Invoke-ServiceFabricEncryptText?view=azureservicefabricps) cmdlet.
 
 ```powershell
 $text = "=P==/==/=8=/=+u4lyOB=+=nWzEeRfF="
 Invoke-ServiceFabricEncryptText -CertStore -CertThumbprint $cer.Thumbprint -Text $text -StoreLocation Local -StoreName My
 ```
 
-Reemplace la contraseña con el texto cifrado devuelto por el cmdlet [Invoke-ServiceFabricEncryptText](/powershell/module/servicefabric/Invoke-ServiceFabricEncryptText?view=azureservicefabricps) y establezca `PasswordEncrypted` en "true".
+Reemplace contraseña Hola con texto de cifrado de hello devolviendo hello [Invoke-ServiceFabricEncryptText](/powershell/module/servicefabric/Invoke-ServiceFabricEncryptText?view=azureservicefabricps) cmdlet y establecer `PasswordEncrypted` demasiado "true".
 
 ```xml
 <Policies>
@@ -288,14 +288,14 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 ```
 
 ## <a name="configure-isolation-mode"></a>Configuración del modo de aislamiento
-Windows admite dos modos de aislamiento para contenedores: de proceso y de Hyper-V. Con el modo de aislamiento de proceso, todos los contenedores que se ejecutan en la misma máquina host comparten el kernel con el host. Con el modo de aislamiento de Hyper-V, los kernels se aíslan entre los contenedores de Hyper-V y el host del contenedor. El modo de aislamiento se especifica en el elemento `ContainerHostPolicies` del archivo de manifiesto de aplicación. Los modos de aislamiento que se pueden especificar son `process`, `hyperv` y `default`. El modo de aislamiento predeterminado es `process` en hosts con Windows Server e `hyperv` en hosts con Windows 10. El siguiente fragmento de código muestra cómo el modo de aislamiento se especifica en el archivo de manifiesto de aplicación.
+Windows admite dos modos de aislamiento para contenedores: de proceso y de Hyper-V. Con el modo de aislamiento de procesos de hello, con todos los contenedores de Hola Hola mismo host máquina recurso compartido Hola kernel con el host de Hola. Con el modo de aislamiento de hello Hyper-V, los kernels de hello están aislados entre cada contenedor de Hyper-V y host de contenedor de Hola. se especifica el modo de aislamiento de Hola Hola `ContainerHostPolicies` elemento en el archivo de manifiesto de aplicación Hola. modos de aislamiento de Hola que pueden especificarse son `process`, `hyperv`, y `default`. modo de aislamiento predeterminado de Hello, valor predeterminado es demasiado`process` en Windows Server hospeda y el valor predeterminado es demasiado`hyperv` en hosts de Windows 10. Hello fragmento de código siguiente muestra cómo se especifica el modo de aislamiento de hello en el archivo de manifiesto de aplicación Hola.
 
 ```xml
 <ContainerHostPolicies CodePackageRef="Code" Isolation="hyperv">
 ```
 
 ## <a name="configure-resource-governance"></a>Configuración de la regulación de recursos
-La [regulación de recursos](service-fabric-resource-governance.md) restringe los recursos que el contenedor puede usar en el host. El elemento `ResourceGovernancePolicy`, especificado en el manifiesto de la aplicación, se utiliza para declarar los límites de recursos para un paquete de código de servicio. Se pueden establecer límites de recursos para los siguientes recursos: memoria, MemorySwap, CpuShares (peso relativo de CPU), MemoryReservationInMB, BlkioWeight (peso relativo de BlockIO).  En este ejemplo, el paquete de servicio Guest1Pkg obtiene un núcleo en los nodos del clúster en los que es situado.  Los límites de memoria son absolutos, por lo que el paquete de código está limitado a 1024 MB de memoria (con una reserva de garantía flexible de dicha capacidad). Los paquetes de código (contenedores o procesos) no pueden asignar más memoria de la que establece este límite; si se intenta, el resultado es una excepción de memoria insuficiente. Para que la aplicación del límite de recursos funcione, es necesario haber definido límites de memoria en todos los paquetes de código de un paquete de servicio.
+[La regulación de recursos](service-fabric-resource-governance.md) restringe Hola recursos Hola contenedor pueden usar en el host de Hola. Hola `ResourceGovernancePolicy` elemento, que se especifica en el manifiesto de aplicación Hola, es los límites de recursos toodeclare usado para un paquete de código de servicio. Se pueden establecer límites de recursos para hello recursos siguientes: memoria, MemorySwap, CpuShares (peso relativo de CPU), MemoryReservationInMB, BlkioWeight (peso relativo de BlockIO).  En este ejemplo, el paquete de servicio Guest1Pkg Obtiene un núcleo en nodos de clúster de Hola donde se coloca.  Límites de memoria son absolutos, por lo que el paquete de código de hello es limitado too1024 MB de memoria (y una reserva de garantía de software del mismo Hola). Paquetes de código (contenedores o procesos) no son tooallocate capaz de más memoria que este límite e intentar toodo que se producirá una excepción de memoria insuficiente. Para toowork de cumplimiento del límite de recursos, todos los paquetes de código dentro de un paquete de servicio deben tener límites de memoria especificados.
 
 ```xml
 <ServiceManifestImport>
@@ -307,23 +307,23 @@ La [regulación de recursos](service-fabric-resource-governance.md) restringe lo
 </ServiceManifestImport>
 ```
 
-## <a name="deploy-the-container-application"></a>Implementación de la aplicación contenedora
-Guarde todos los cambios y compile la aplicación. Para publicar la aplicación, haga clic con el botón derecho en **MyFirstContainer** en el Explorador de soluciones y seleccione **Publicar**.
+## <a name="deploy-hello-container-application"></a>Implementar la aplicación de contenedor de hello
+Guarde todos los cambios y genere la aplicación hello. toopublish la aplicación, el botón secundario en **MyFirstContainer** en el Explorador de soluciones y seleccione **publicar**.
 
-En **Punto de conexión de la conexión**, escriba el punto de conexión de administración del clúster.  Por ejemplo, "containercluster.westus2.cloudapp.azure.com:19000". El punto de conexión del cliente se puede encontrar en la hoja de información general del clúster en [Azure Portal](https://portal.azure.com).
+En **extremo de la conexión**, escriba el extremo de administración de Hola para clúster Hola.  Por ejemplo, "containercluster.westus2.cloudapp.azure.com:19000". Puede encontrar la conexión de cliente de hello extremo en la hoja de información general de hello para el clúster en hello [portal de Azure](https://portal.azure.com).
 
 Haga clic en **Publicar**.
 
-[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) es una herramienta web para inspeccionar y administrar aplicaciones y nodos en un clúster de Service Fabric. Abra un explorador, navegue hasta http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/ y siga la implementación de la aplicación.  La aplicación se implementa, pero está en estado de error hasta que la imagen se descarga en los nodos del clúster (lo que pueden tardar un tiempo, según el tamaño de imagen): ![Error][1]
+[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) es una herramienta web para inspeccionar y administrar aplicaciones y nodos en un clúster de Service Fabric. Abra un explorador y navegue toohttp://containercluster.westus2.cloudapp.azure.com:19080/explorador/y siga la implementación de la aplicación hello.  aplicación Hello implementa pero está en un estado de error hasta que se descarga la imagen de hello en nodos de clúster de hello (que pueden tardar algún tiempo, según el tamaño de la imagen de hello): ![Error][1]
 
-La aplicación está lista cuando está en el estado ```Ready```: ![Ready][2]
+aplicación Hello está listo cuando se encuentra en ```Ready``` estado: ![listo][2]
 
-Abra un explorador y navegue hasta http://containercluster.westus2.cloudapp.azure.com:8081. Debería ver que el título "¡Hola mundo!" se muestra en el explorador.
+Abra un explorador y navegue toohttp://containercluster.westus2.cloudapp.azure.com:8081. Debería ver Hola encabezado "¡Hello World!" mostrar en Explorador de Hola.
 
 ## <a name="clean-up"></a>Limpieza
-Mientras el clúster esté en ejecución seguirá generando cargos, así que debería considerar la posibilidad de [eliminar el clúster](service-fabric-get-started-azure-cluster.md#remove-the-cluster).  Los [clústeres de la entidad](http://tryazureservicefabric.westus.cloudapp.azure.com/) se eliminan automáticamente a las pocas horas.
+Continuar tooincur cargos mientras se está ejecutando el clúster de hello, considere la posibilidad de [eliminar el clúster](service-fabric-get-started-azure-cluster.md#remove-the-cluster).  Los [clústeres de la entidad](http://tryazureservicefabric.westus.cloudapp.azure.com/) se eliminan automáticamente a las pocas horas.
 
-Después de insertar la imagen en el registro de contenedor puede eliminar la imagen local del equipo de desarrollo:
+Después de insertar el registro de contenedor de hello imagen toohello puede eliminar imagen local Hola desde el equipo de desarrollo:
 
 ```
 docker rmi helloworldapp
@@ -331,7 +331,7 @@ docker rmi myregistry.azurecr.io/samples/helloworldapp
 ```
 
 ## <a name="complete-example-service-fabric-application-and-service-manifests"></a>Manifiestos de servicio y de aplicación de Service Fabric de ejemplo completos
-Estos son los manifiestos de servicio y de aplicación completos que se usan en este artículo.
+Estas son servicio completo de Hola y manifiestos de aplicación que se usan en este artículo.
 
 ### <a name="servicemanifestxml"></a>ServiceManifest.xml
 ```xml
@@ -342,20 +342,20 @@ Estos son los manifiestos de servicio y de aplicación completos que se usan en 
                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <ServiceTypes>
-    <!-- This is the name of your ServiceType.
-         The UseImplicitHost attribute indicates this is a guest service. -->
+    <!-- This is hello name of your ServiceType.
+         hello UseImplicitHost attribute indicates this is a guest service. -->
     <StatelessServiceType ServiceTypeName="Guest1Type" UseImplicitHost="true" />
   </ServiceTypes>
 
   <!-- Code package is your service executable. -->
   <CodePackage Name="Code" Version="1.0.0">
     <EntryPoint>
-      <!-- Follow this link for more information about deploying Windows containers to Service Fabric: https://aka.ms/sfguestcontainers -->
+      <!-- Follow this link for more information about deploying Windows containers tooService Fabric: https://aka.ms/sfguestcontainers -->
       <ContainerHost>
         <ImageName>myregistry.azurecr.io/samples/helloworldapp</ImageName>
       </ContainerHost>
     </EntryPoint>
-    <!-- Pass environment variables to your container: -->    
+    <!-- Pass environment variables tooyour container: -->    
     <EnvironmentVariables>
       <EnvironmentVariable Name="HttpGatewayPort" Value=""/>
       <EnvironmentVariable Name="BackendServiceName" Value=""/>
@@ -363,13 +363,13 @@ Estos son los manifiestos de servicio y de aplicación completos que se usan en 
 
   </CodePackage>
 
-  <!-- Config package is the contents of the Config directoy under PackageRoot that contains an
+  <!-- Config package is hello contents of hello Config directoy under PackageRoot that contains an
        independently-updateable and versioned set of custom configuration settings for your service. -->
   <ConfigPackage Name="Config" Version="1.0.0" />
 
   <Resources>
     <Endpoints>
-      <!-- This endpoint is used by the communication listener to obtain the port on which to
+      <!-- This endpoint is used by hello communication listener tooobtain hello port on which to
            listen. Please note that if your service is partitioned, this port is shared with
            replicas of different partitions that are placed in your code. -->
       <Endpoint Name="Guest1TypeEndpoint" UriScheme="http" Port="8081" Protocol="http"/>
@@ -388,8 +388,8 @@ Estos son los manifiestos de servicio y de aplicación completos que se usan en 
   <Parameters>
     <Parameter Name="Guest1_InstanceCount" DefaultValue="-1" />
   </Parameters>
-  <!-- Import the ServiceManifest from the ServicePackage. The ServiceManifestName and ServiceManifestVersion
-       should match the Name and Version attributes of the ServiceManifest element defined in the
+  <!-- Import hello ServiceManifest from hello ServicePackage. hello ServiceManifestName and ServiceManifestVersion
+       should match hello Name and Version attributes of hello ServiceManifest element defined in the
        ServiceManifest.xml file. -->
   <ServiceManifestImport>
     <ServiceManifestRef ServiceManifestName="Guest1Pkg" ServiceManifestVersion="1.0.0" />
@@ -411,11 +411,11 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
     </Policies>
   </ServiceManifestImport>
   <DefaultServices>
-    <!-- The section below creates instances of service types, when an instance of this
+    <!-- hello section below creates instances of service types, when an instance of this
          application type is created. You can also create one or more instances of service type using the
          ServiceFabric PowerShell module.
 
-         The attribute ServiceTypeName below must match the name defined in the imported ServiceManifest.xml file. -->
+         hello attribute ServiceTypeName below must match hello name defined in hello imported ServiceManifest.xml file. -->
     <Service Name="Guest1">
       <StatelessService ServiceTypeName="Guest1Type" InstanceCount="[Guest1_InstanceCount]">
         <SingletonPartition />
@@ -427,7 +427,7 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 
 ## <a name="configure-time-interval-before-container-is-force-terminated"></a>Configuración del intervalo de tiempo antes de hacer que se termine el contenedor
 
-Puede configurar un intervalo de tiempo para que el entorno de ejecución espere antes de que el contenedor se quite una vez que la eliminación del servicio (o el movimiento a otro nodo) se haya iniciado. Si se configura el intervalo de tiempo, se envía el comando `docker stop <time in seconds>` al contenedor.   Para más detalles, consulte [docker stop](https://docs.docker.com/engine/reference/commandline/stop/). El intervalo de tiempo de espera se especifica en la sección `Hosting`. El siguiente fragmento de manifiesto de clúster muestra cómo establecer el intervalo de espera:
+Puede configurar un intervalo de tiempo para hello en tiempo de ejecución toowait antes de quita el contenedor de hello después hello eliminación de servicio (o un nodo de tooanother de movimiento) se haya iniciado. Intervalo de tiempo de configuración Hola envía hello `docker stop <time in seconds>` contenedor toohello de comando.   Para más detalles, consulte [docker stop](https://docs.docker.com/engine/reference/commandline/stop/). toowait de intervalo de tiempo de Hola se especifica en hello `Hosting` sección. Hola siguiente fragmento de manifiesto de clúster muestra cómo hello tooset el intervalo de espera:
 
 ```xml
 {
@@ -440,12 +440,12 @@ Puede configurar un intervalo de tiempo para que el entorno de ejecución espere
         ]
 }
 ```
-El intervalo de tiempo predeterminado se establece en diez segundos. Puesto que esta configuración es dinámica, una actualización de solo configuración en el clúster actualiza el tiempo de espera. 
+Hello intervalo de tiempo predeterminado se establece too10 segundos. Puesto que esta configuración es dinámica, una configuración solo actualizar en tiempo de espera de hello clúster actualizaciones Hola. 
 
 
-## <a name="configure-the-runtime-to-remove-unused-container-images"></a>Configuración del entorno de ejecución para quitar imágenes de contenedor sin usar
+## <a name="configure-hello-runtime-tooremove-unused-container-images"></a>Configurar hello en tiempo de ejecución tooremove imágenes del contenedor sin usar
 
-Puede configurar el clúster de Service Fabric para quitar del nodo las imágenes de contenedor sin usar. Esta configuración permite recuperar el espacio en disco si hay demasiadas imágenes de contenedor en el nodo.  Para habilitar esta característica, actualice la sección `Hosting` en el manifiesto de clúster, tal como se muestra en el fragmento siguiente: 
+Puede configurar tooremove de clúster de Service Fabric Hola imágenes del contenedor sin usar del nodo de Hola. Esta configuración permite toobe de espacio en disco recuperado si están presentes en el nodo de hello demasiadas imágenes del contenedor.  tooenable esta función, la actualización hello `Hosting` sección manifiesto de clúster de hello tal y como se muestra en el siguiente fragmento de código de hello: 
 
 
 ```xml
@@ -461,15 +461,15 @@ Puede configurar el clúster de Service Fabric para quitar del nodo las imágene
 } 
 ```
 
-Puede especificar las imágenes que no se deben eliminar en el parámetro `ContainerImagesToSkip`. 
+Para las imágenes que no se deben eliminar, puede especificar en hello `ContainerImagesToSkip` parámetro. 
 
 
 
 ## <a name="next-steps"></a>Pasos siguientes
 * Más información acerca de cómo ejecutar [contenedores en Service Fabric](service-fabric-containers-overview.md).
-* Consulte el tutorial [Implementación de una aplicación .NET en un contenedor](service-fabric-host-app-in-a-container.md).
-* Más información acerca del [ciclo de vida de aplicaciones](service-fabric-application-lifecycle.md) de Service Fabric.
-* Consulte [los ejemplos de código de contenedor de Service Fabric](https://github.com/Azure-Samples/service-fabric-dotnet-containers) en GitHub.
+* Hola de lectura [implementar una aplicación de .NET en un contenedor](service-fabric-host-app-in-a-container.md) tutorial.
+* Obtenga información acerca de Service Fabric hello [ciclo de vida de la aplicación](service-fabric-application-lifecycle.md).
+* Hola de desprotección [ejemplos de código de contenedor de Service Fabric](https://github.com/Azure-Samples/service-fabric-dotnet-containers) en GitHub.
 
 [1]: ./media/service-fabric-get-started-containers/MyFirstContainerError.png
 [2]: ./media/service-fabric-get-started-containers/MyFirstContainerReady.png

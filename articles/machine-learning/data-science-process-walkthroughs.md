@@ -1,6 +1,6 @@
 ---
-title: Tutoriales para ejecutar el proceso de ciencia de datos en equipo en Azure | Microsoft Docs
-description: "Cómo combinar servicios y herramientas en la nube y locales en un flujo de trabajo o una canalización con el fin de crear una aplicación inteligente."
+title: aaaWalkthroughs ejecutar Hola proceso de ciencia de datos de equipo en Azure | Documentos de Microsoft
+description: "Funcionamiento de cloud toocombine y herramientas de local y servicios en un flujo de trabajo o canalización toocreate una aplicación inteligente."
 services: machine-learning
 documentationcenter: 
 author: bradsev
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: bradsev
-ms.openlocfilehash: 1d6ac28355752d979490b1790ad45748f56e5c84
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 521da35dec605782fa0f4549044acbb2b84bfef5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="walkthroughs-executing-the-team-data-science-process"></a>Tutoriales para ejecutar el proceso de ciencia de datos en equipo en Azure
+# <a name="walkthroughs-executing-hello-team-data-science-process"></a>Tutoriales ejecutando Hola proceso de ciencia de datos de equipo
 
-Estos **tutoriales completos** demuestran los pasos del proceso de ciencia de datos en equipo para escenarios específicos. Se ilustra cómo combinar servicios y herramientas en la nube y locales en un flujo de trabajo o una canalización con el fin de crear una **aplicación inteligente**. Los tutoriales se agrupan por la **plataforma** que usan: El menú siguiente se vincula a estos ejemplos:
+Estos **-to-end tutoriales** muestran pasos Hola Hola proceso de ciencia de datos de equipo para escenarios concretos. Ilustran cómo toocombine en la nube, herramientas de local y servicios en un flujo de trabajo o canalización toocreate una **aplicación inteligente**. tutoriales de Hola se agrupan por **plataforma** que utilizan. Hola después menú vínculos ejemplos toothese:
 
 [!INCLUDE [tdsp-walkthroughs-by-platform](../../includes/tdsp-walkthroughs-by-platform.md)]
 
@@ -31,19 +31,19 @@ Estos **tutoriales completos** demuestran los pasos del proceso de ciencia de da
 
 Las siguientes son descripciones breves de lo que proporcionan estos ejemplos de tutorial en sus respectivas plataformas:
 
-- [Tutoriales para HDInsight Spark mediante PySpark y Scala](data-science-process-walkthroughs-spark.md) Estos tutoriales usan PySpark y Scala en un clúster de Azure Spark para realizar análisis predictivos. 
-- [Tutoriales para HDInsight Hadoop mediante Hive](data-science-process-walkthroughs-hdinsight-hadoop.md) Estos tutoriales utilizan Hive con un clúster de HDInsight Hadoop para realizar análisis predictivos.
-- [Tutoriales para Azure Data Lake mediante U-SQL](data-science-process-walkthroughs-azure-data-lake.md) Estos tutoriales utilizan U-SQL con Azure Data Lake para realizar análisis predictivos.
-- [SQL Server](data-science-process-walkthroughs-sql-server.md) Estos tutoriales usan SQL Server, SQL Server R Services y servicios de Python de SQL Server para realizar análisis predictivos.
-- [SQL Data Warehouse](data-science-process-walkthroughs-sql-data-warehouse.md) Estos tutoriales usan SQL Data Warehouse para realizar análisis predictivos. 
+- [Tutoriales para HDInsight Spark PySpark y Scala](data-science-process-walkthroughs-spark.md) estos tutoriales usan PySpark y Scala en un Azure Spark análisis predictivos de toodo de clúster. 
+- [Tutoriales para Hadoop de HDInsight Hive](data-science-process-walkthroughs-hdinsight-hadoop.md) estos tutoriales usan subárbol con un análisis predictivos de Hadoop de HDInsight clúster toodo.
+- [Tutoriales para Azure Data Lake U-SQL](data-science-process-walkthroughs-azure-data-lake.md) estos tutoriales utiliza SQL U con análisis predictivos de Azure Data Lake toodo.
+- [SQL Server](data-science-process-walkthroughs-sql-server.md) estos tutoriales utiliza SQL Server, SQL Server R Services y SQL Server Python Services toodo realizar análisis predictivos.
+- [Almacenamiento de datos SQL](data-science-process-walkthroughs-sql-data-warehouse.md) estos tutoriales usan análisis predictivos de toodo de almacenamiento de datos SQL. 
 
 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para obtener una explicación de los componentes clave que conforman el proceso de ciencia de datos en equipo, consulte [Información general del proceso de ciencia de datos en equipo](data-science-process-overview.md).
+Para obtener una explicación de los componentes clave de Hola que componen Hola proceso de ciencia de datos de equipo, consulte [información general del proceso de ciencia de datos de equipo](data-science-process-overview.md).
 
-Para obtener una explicación del ciclo de vida del proceso de ciencia de datos en equipo que puede usar para estructurar los proyectos de ciencia de datos, consulte [Team Data Science Process lifecycle](data-science-process-lifecycle.md) (Ciclo de vida del proceso de ciencia de datos en equipo). El ciclo de vida describe el proceso, de principio a fin, que suelen seguir los proyectos al ejecutarlos. 
+Para obtener una descripción que se puede usar toostructure el ciclo de vida del proceso de ciencia de datos de equipo Hola de los proyectos de ciencia de datos, vea [ciclo de vida del proceso de ciencia de datos de equipo](data-science-process-lifecycle.md). ciclo de vida de Hello describe los pasos de hello, de toofinish de inicio, que los proyectos suelen seguir cuando se ejecutan. 
 
-Para ver una introducción a los temas que lo guiarán por las tareas que componen el proceso de ciencia de datos en Azure, consulte [Proceso de ciencia de los datos en equipos (TDSP)](http://aka.ms/datascienceprocess). 
+Para obtener información general de temas que le guiarán por tareas de Hola que componen el proceso de ciencia de datos de hello en Azure, consulte [proceso de ciencia de datos](http://aka.ms/datascienceprocess). 
 

@@ -1,6 +1,6 @@
 ---
-title: "Copia de experimentos de ejemplo de aprendizaje automático (Azure) | Microsoft Docs"
-description: "Aprenda a usar experimentos de ejemplo de aprendizaje automático para crear nuevos experimentos con la Galería de Cortana Intelligence y Microsoft Azure Machine Learning."
+title: "máquina aaaCopy aprendizaje experimentos de ejemplo - Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo el aprendizaje automático de ejemplo de toouse experimentos toocreate nuevos experimentos con Cortana Intelligence galería y aprendizaje automático de Microsoft Azure."
 keywords: "ejemplos de aprendizaje automático, ejemplo de experimento, ejemplo de aprendizaje automático"
 services: machine-learning
 documentationcenter: 
@@ -15,56 +15,56 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/28/2017
 ms.author: cgronlun
-ms.openlocfilehash: 55f9bd2ed0d555a14d31bf3d262707d65bd70244
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 555f05cf9af2040d1703707f7583396d5da9f156
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="copy-example-experiments-to-create-new-machine-learning-experiments"></a>Copia de experimentos de ejemplo para crear nuevos experimentos de aprendizaje automático
-Aprenda cómo comenzar con experimentos de ejemplo desde la [Galería de Cortana Intelligence](https://gallery.cortanaintelligence.com/) en lugar de crear experimentos de aprendizaje automático desde cero. Puede usar los ejemplos para crear su propia solución de aprendizaje automático.
+# <a name="copy-example-experiments-toocreate-new-machine-learning-experiments"></a>Copie el ejemplo experimentos toocreate nuevos experimentos de aprendizaje automático
+Obtenga información acerca de cómo toostart con ejemplo experimentos de [Cortana Intelligence galería](https://gallery.cortanaintelligence.com/) en lugar de crear experimentos de aprendizaje automático desde el principio. Puede usar Hola ejemplos toobuild su propia solución de aprendizaje automático.
 
-En la galería hay experimentos de ejemplo creados por el equipo Microsoft Azure Machine Learning, así como ejemplos compartidos por la comunidad de Machine Learning. También puede plantear preguntas o publicar comentarios acerca de experimentos.
+Galería de Hello tiene experimentos de ejemplo por equipo de aprendizaje automático de Microsoft Azure hello, así como ejemplos compartidos Hola Comunidad de aprendizaje automático. También puede plantear preguntas o publicar comentarios acerca de experimentos.
 
-Para ver cómo usar la galería, vea el vídeo de 3 minutos [Copia del trabajo de otras personas para realizar ciencia de datos](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) de la serie [Ciencia de datos para principiantes](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md).
+toosee cómo toouse Hola galería, vea vídeo de 3 minutos de hello [copiar ciencia de datos de otras personas trabajo toodo](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) de serie de hello [ciencia de datos para principiantes](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md).
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-## <a name="find-an-experiment-to-copy-in-cortana-intelligence-gallery"></a>Busque un experimento para copiar en la Galería de Cortana Intelligence
-Para ver qué experimentos hay disponibles, vaya a la [galería](https://gallery.cortanaintelligence.com/) y haga clic en **Experiments** (Experimentos) en la parte superior de la página.
+## <a name="find-an-experiment-toocopy-in-cortana-intelligence-gallery"></a>Buscar un toocopy experimento en Galería de inteligencia de Cortana
+toosee los experimentos están disponible, visite toohello [galería](https://gallery.cortanaintelligence.com/) y haga clic en **experimentos** al principio de Hola de página de Hola.
 
-### <a name="find-the-newest-or-most-popular-experiments"></a>Busque los experimentos más recientes o más populares
-En esta página puede ver experimentos **agregados recientemente** (Recently added), desplazarse hacia abajo para averiguar **qué es popular** (What's popular) o consultar los **experimentos populares de Microsoft** (Popular Microsoft experiments) más recientes.
+### <a name="find-hello-newest-or-most-popular-experiments"></a>Buscar Hola experimentos más recientes o más populares
+En esta página, puede ver **agregado recientemente** experimentos o desplácese hacia abajo en toolook en **¿qué es popular** o hello más reciente **Microsoft populares experimentos**.
 
 ### <a name="look-for-an-experiment-that-meets-specific-requirements"></a>Busque un experimento que cumpla los requisitos específicos
-Para examinar todos los experimentos:
+toobrowse todos los experimentos:
 
-1. Haga clic en **Browse all** (Examinar todo) en la parte superior de la página.
-2. En el lado izquierdo, en **Refine by** (Refinar por) de la sección **Categories** (Categorías), seleccione **Experiment** (Experimento) para ver los experimentos de la galería.
+1. Haga clic en **examinar todo** al principio de Hola de página de Hola.
+2. En el lado izquierdo de hello, en **para refinar** en hello **categorías** sección, seleccione **experimento** toosee todos Hola experimentos en Hola Galería.
 3. Puede encontrar los experimentos que cumplan con sus requisitos de las siguientes maneras:
-   * **Seleccione los filtros de la izquierda.** Por ejemplo, para examinar experimentos que usan un algoritmo de detección de anomalías basada en PCA, haciendo seleccionado **Experiment** (Experimento) en **Categories** (Categorías), haga clic en **Show all** (Mostrar todo). A continuación, en **Algorithms Used** (Algoritmos usados), elija **PCA-Based Anomaly Detection** (Detección de anomalías basada en PCA). <br></br>
+   * **Seleccione filtros de hello izquierda.** Por ejemplo, los experimentos de toobrowse que usan un algoritmo de detección de anomalías basado en PCA: con **experimento** seleccionadas bajo **categorías**, haga clic en **mostrar todo**. A continuación, en **Algorithms Used** (Algoritmos usados), elija **PCA-Based Anomaly Detection** (Detección de anomalías basada en PCA). <br></br>
      ![Filtros de selección](./media/machine-learning-sample-experiments/refine-the-view.png)
-   * **Utilice el cuadro de búsqueda.** Por ejemplo, para buscar experimentos aportados por Microsoft relacionados con el reconocimiento de dígitos que usen un algoritmo de máquina de vectores de soporte de dos clases, escriba "digit recognition" (reconocimiento de dígitos) en el cuadro de búsqueda. A continuación, seleccione los filtros **Experiment** (Experimento), **Microsoft content only** (Solo contenido de Microsoft) y **Two-Class Support Vector Machine** (Máquina de vectores de soporte de dos clases):<br></br>
-     ![Utilice el cuadro de búsqueda](./media/machine-learning-sample-experiments/search-for-experiments.png)
-4. Haga clic en un experimento para obtener más información.
-5. Para ejecutar o modificar el experimento, haga clic en **Open in Studio** (Abrir en Estudio) en la página del experimento. <br></br>
+   * **Utilice el cuadro de búsqueda de Hola.** Por ejemplo, toofind experimentos aportación por Microsoft relacionadas con el reconocimiento de toodigit que usan un algoritmo de máquina de vectores de soporte de dos clases, escriba "reconocimiento de dígitos" en el cuadro de búsqueda de Hola. A continuación, seleccione Hola filtros **experimento**, **sólo el contenido de Microsoft**, y **máquina de vectores de soporte de dos clases**:<br></br>
+     ![Utilice el cuadro de búsqueda de Hola](./media/machine-learning-sample-experiments/search-for-experiments.png)
+4. Haga clic en un toolearn de experimento más sobre él.
+5. toorun o modificar experimento hello, haga clic en **abierta en Studio** en la página del experimento de Hola. <br></br>
 
     ![Experimento de ejemplo](./media/machine-learning-sample-experiments/example-experiment.png)
 
     > [!NOTE]
-    > Cuando abra un experimento en Machine Learning Studio por primera vez, puede probarlo de forma gratuita o comprar una suscripción a Azure. [Vea información sobre la diferencia entre la prueba gratuita de Machine Learning Studio y el servicio de pago](https://azure.microsoft.com/pricing/details/machine-learning/)
+    > Al abrir un experimento en estudio de aprendizaje automático de hello primera vez, puede probarlo de forma gratuita o comprar una suscripción de Azure. [Obtenga información acerca de hello gratuita de estudio de aprendizaje automático frente a servicio de pago](https://azure.microsoft.com/pricing/details/machine-learning/)
     >
     >
 
 ## <a name="create-a-new-experiment-using-an-example-as-a-template"></a>Creación de un nuevo experimento usando un ejemplo como plantilla
 También puede crear un nuevo experimento en Machine Learning Studio tomando un ejemplo de la galería como plantilla.
 
-1. Inicie sesión con las credenciales de su cuenta de Microsoft en [Studio](https://studio.azureml.net) y haga clic en **Nuevo** para crear un experimento.
-2. Examine el contenido de ejemplo y haga clic en uno.
+1. Inicie sesión con su toohello de credenciales de cuenta de Microsoft [Studio](https://studio.azureml.net)y, a continuación, haga clic en **New** toocreate un experimento.
+2. Examine el contenido de ejemplo de Hola y haga clic en uno.
 
-Se crea un nuevo experimento en su área de trabajo de Machine Learning Studio tomando como plantilla el experimento de ejemplo.
+Un experimento nueva se crea en el área de trabajo de estudio de aprendizaje automático mediante experimento de ejemplo de Hola como una plantilla.
 
 ## <a name="next-steps"></a>Pasos siguientes
 * [Importación de datos desde varios orígenes](machine-learning-data-science-import-data.md)
-* [Tutorial rápido para el lenguaje R en Machine Learning](machine-learning-r-quickstart.md)
+* [Tutorial de inicio rápido para el idioma de hello R en aprendizaje automático](machine-learning-r-quickstart.md)
 * [Implementación de un servicio web Machine Learning](machine-learning-publish-a-machine-learning-web-service.md)

@@ -1,6 +1,6 @@
 ---
-title: Utilizar bibliotecas de clases de .NET con Azure Functions | Microsoft Docs
-description: "Obtenga información acerca de cómo crear bibliotecas de clases de .NET para su uso con Azure Functions"
+title: aaaUsing .NET clase bibliotecas con funciones de Azure | Documentos de Microsoft
+description: "Obtenga información acerca de cómo tooauthor bibliotecas de clases de .NET para usar con funciones de Azure"
 services: functions
 documentationcenter: na
 author: lindydonna
@@ -16,42 +16,42 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 06/09/2017
 ms.author: donnam
-ms.openlocfilehash: 0613bb96d3afb85ff7e684246b128e4eef518d23
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 4e0fd954b554006ba1d8ecc47403a9fb1c67c3b1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="using-net-class-libraries-with-azure-functions"></a>Utilizar bibliotecas de clases de .NET con Azure Functions
 
-Además de los archivos de script, Azure Functions admite la publicación de una biblioteca de clases como la implementación para una o más funciones. Se recomienda utilizar [Azure Functions Visual Studio 2017 Tools](https://blogs.msdn.microsoft.com/webdev/2017/05/10/azure-function-tools-for-visual-studio-2017/).
+Además tooscript archivos, las funciones de Azure es compatible con la publicación de una biblioteca de clases como implementación de Hola para una o más funciones. Le recomendamos que use hello [Azure funciones de Visual Studio de 2017 Tools](https://blogs.msdn.microsoft.com/webdev/2017/05/10/azure-function-tools-for-visual-studio-2017/).
 
 ## <a name="prerequisites"></a>Requisitos previos 
 
-Este artículo tiene los siguientes requisitos previos:
+Este artículo tiene Hola siguiendo los requisitos previos:
 
-- [Versión preliminar de Visual Studio 2017 15.3](https://www.visualstudio.com/vs/preview/). Instalación de las cargas de trabajo **ASP.NET y desarrollo web** y **Desarrollo de Azure**.
+- [Versión preliminar de Visual Studio 2017 15.3](https://www.visualstudio.com/vs/preview/). Instalar las cargas de trabajo de hello **ASP.NET y desarrollo web** y **desarrollo Azure**.
 - [Herramientas de Azure Functions para Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=AndrewBHall-MSFT.AzureFunctionToolsforVisualStudio2017)
 
 ## <a name="functions-class-library-project"></a>Proyecto de biblioteca de clases de Functions
 
-En Visual Studio, cree un nuevo proyecto de Azure Functions. La nueva plantilla de proyecto crea los archivos *host.json* y *local.settings.json*. Puede [personalizar la configuración en tiempo de ejecución de Azure Functions en host.json](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json). 
+En Visual Studio, cree un nuevo proyecto de Azure Functions. nueva plantilla de proyecto Hola crea archivos de hello *host.json* y *local.settings.json*. Puede [personalizar la configuración en tiempo de ejecución de Azure Functions en host.json](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json). 
 
-El archivo *local.settings.json* almacena la configuración de la aplicación, las cadenas de conexión y la configuración de Azure Functions Core Tools. Para más información acerca de su estructura, consulte [Codificar y probar Azure Functions localmente](functions-run-local.md#local-settings).
+archivo hello *local.settings.json* almacena la configuración de aplicación, las cadenas de conexión y configuración de herramientas básicas de las funciones de Azure. toolearn más información acerca de su estructura, vea [código y probar las funciones de Azure localmente](functions-run-local.md#local-settings).
 
 ### <a name="functionname-attribute"></a>Atributo FunctionName
 
-El atributo [ `FunctionNameAttribute` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/FunctionNameAttribute.cs) marca un método como punto de entrada de una función. Se debe utilizar exactamente con un desencadenador y 0 o más enlaces de entrada y salida.
+atributo de Hello [ `FunctionNameAttribute` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/FunctionNameAttribute.cs) marca un método como un punto de entrada de función. Se debe utilizar exactamente con un desencadenador y 0 o más enlaces de entrada y salida.
 
-### <a name="conversion-to-functionjson"></a>Conversión a function.json
+### <a name="conversion-toofunctionjson"></a>Conversión toofunction.json
 
-Cuando se compila un proyecto de Azure Functions, se genera un archivo `function.json` en el directorio, que coincide con el nombre de función definido por `[FunctionName]`. Especifica los desencadenadores y los enlaces y puntos en el archivo de ensamblado del proyecto.
+Cuando se compila un proyecto de las funciones de Azure, genera un archivo `function.json` en el directorio de hello con el mismo nombre de función hello definido por `[FunctionName]`. Especifica los desencadenadores y los enlaces y puntos toohello el archivo de ensamblado de proyecto.
 
-Esta conversión la realiza el paquete de NuGet [Microsoft\.NET\.Sdk\.Functions](http://www.nuget.org/packages/Microsoft.NET.Sdk.Functions). El código fuente está disponible en el repositorio de GitHub [azure\-functions\-vs\-build\-sdk](https://github.com/Azure/azure-functions-vs-build-sdk).
+Esta conversión se realiza por paquete de NuGet hello [Microsoft\.NET\.Sdk\.funciones](http://www.nuget.org/packages/Microsoft.NET.Sdk.Functions). Hola origen está disponible en el repositorio de GitHub de hello [azure\-funciones\-frente a\-generar\-sdk](https://github.com/Azure/azure-functions-vs-build-sdk).
 
 ## <a name="triggers-and-bindings"></a>Desencadenadores y enlaces
 
-En la tabla siguiente se enumeran los desencadenadores y los enlaces que están disponibles en un proyecto de biblioteca de clases de Azure Functions. Todos los atributos están en el espacio de nombres `Microsoft.Azure.WebJobs`.
+Hello tabla siguiente enumeran los desencadenadores de Hola y enlaces que están disponibles en un proyecto de biblioteca de clases de las funciones de Azure. Todos los atributos no están en el espacio de nombres de hello `Microsoft.Azure.WebJobs`.
 
 | Enlace | Atributo | Paquete de NuGet |
 |------   | ------    | ------        |
@@ -75,7 +75,7 @@ En la tabla siguiente se enumeran los desencadenadores y los enlaces que están 
 
 Azure Functions admite desencadenador y enlaces de entrada y salida para Azure Blob Storage. Para más información sobre las expresiones de enlace y los metadatos, consulte [Enlaces de Blob Storage de Azure Functions](functions-bindings-storage-blob.md).
 
-Un desencadenador de blob se define con el atributo `[BlobTrigger]`. Puede utilizar el atributo `[StorageAccount]` para definir la cuenta de almacenamiento que se usa en una función completa o clase.
+Se define un desencadenador de blob con hello `[BlobTrigger]` atributo. Puede usar el atributo de hello `[StorageAccount]` cuenta de almacenamiento de hello toodefine utilizado por una función completa o clase.
 
 ```csharp
 [StorageAccount("AzureWebJobsStorage")]
@@ -86,7 +86,7 @@ public static void Run([BlobTrigger("samples-workitems/{name}")] Stream myBlob, 
 }
 ```
 
-La entrada y salida de blob se definen utilizando el atributo `[Blob]` junto con un parámetro `FileAccess` que indica lectura o escritura. En el ejemplo siguiente se usa un desencadenador de blob y un enlace de salida.
+BLOB de entrada y salida se definen mediante hello `[Blob]` atributo, junto con un `FileAccess` que indica el parámetro de lectura o escritura. Hola siguiente ejemplo se usa un desencadenador de blob y enlace de salida de blobs.
 
 ```csharp
 [FunctionName("ResizeImage")]
@@ -122,9 +122,9 @@ private static Dictionary<ImageSize, (int, int)> imageDimensionsTable = new Dict
 
 ### <a name="cosmos-db-input-and-output-bindings"></a>Enlaces de entrada y salida de Cosmos DB
 
-Azure Functions admite enlaces de entrada y salida para Cosmos DB. Para más información sobre las características del enlace de Cosmos DB, consulte [Enlaces de Cosmos DB de Azure Functions](functions-bindings-documentdb.md).
+Azure Functions admite enlaces de entrada y salida para Cosmos DB. vea toolearn más información acerca de características de Hola de enlace, la base de datos de Cosmos hello [enlaces de base de datos de Azure funciones Cosmos](functions-bindings-documentdb.md).
 
-Para enlazar a un documento de Cosmos DB, use el atributo `[DocumentDB]` en el paquete de NuGet [Microsoft.Azure.WebJobs.Extensions.DocumentDB]. El siguiente ejemplo tiene un desencadenador de cola y un enlace de salida de la API de DocumentDB:
+toobind tooa documento de Cosmos DB, utilice el atributo de hello `[DocumentDB]` en paquete de NuGet hello [Microsoft.Azure.WebJobs.Extensions.DocumentDB]. Hola siguiente ejemplo tiene un desencadenador de cola y una API de documentos que el enlace de salida:
 
 ```csharp
 [FunctionName("QueueToDocDB")]        
@@ -143,9 +143,9 @@ public static void Run(
 
 Azure Functions admite enlaces de desencadenador y salida para Event Hubs. Para más información, consulte [Enlaces de Event Hub de Azure Functions](functions-bindings-event-hubs.md).
 
-Los tipos `[Microsoft.Azure.WebJobs.ServiceBus.EventHubTriggerAttribute]` y `[Microsoft.Azure.WebJobs.ServiceBus.EventHubAttribute]` se definen en el paquete de NuGet [Microsoft.Azure.WebJobs.ServiceBus]. 
+Hola tipos `[Microsoft.Azure.WebJobs.ServiceBus.EventHubTriggerAttribute]` y `[Microsoft.Azure.WebJobs.ServiceBus.EventHubAttribute]` se definen en el paquete de NuGet hello [Microsoft.Azure.WebJobs.ServiceBus]. 
 
-En el ejemplo siguiente se usa un desencadenador de Event Hub:
+Hello en el ejemplo siguiente se usa un desencadenador de concentrador de eventos:
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
@@ -155,7 +155,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 }
 ```
 
-El siguiente ejemplo tiene una salida de Event Hub, utilizando el valor devuelto por el método como salida:
+Hello en el ejemplo siguiente se tiene un concentrador de eventos de salida, utilizando el valor devuelto del método hello como salida de hello:
 
 ```csharp
 [FunctionName("EventHubOutput")]
@@ -171,9 +171,9 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, Trac
 
 ### <a name="external-file-input-and-output"></a>Entrada y salida de archivo externo
 
-Azure Functions admite enlaces de desencadenador, entrada y salida para archivos externos, como Google Drive, Dropbox y OneDrive. Para más información, consulte [Enlaces de archivos externos de Azure Functions](functions-bindings-external-file.md). Los atributos `[ExternalFileTrigger]` y `[ExternalFile]` se definen en el paquete de NuGet [Microsoft.Azure.WebJobs.Extensions.ApiHub].
+Azure Functions admite enlaces de desencadenador, entrada y salida para archivos externos, como Google Drive, Dropbox y OneDrive. más información, consulte toolearn [enlaces del archivo externo de las funciones de Azure](functions-bindings-external-file.md). Hola atributos `[ExternalFileTrigger]` y `[ExternalFile]` se definen en el paquete de NuGet hello [Microsoft.Azure.WebJobs.Extensions.ApiHub].
 
-En el ejemplo de C# siguiente se muestran enlaces de archivo externo de entrada y salida. El código copia el archivo de entrada en el archivo de salida.
+Hola el ejemplo de C# siguiente se muestra un archivo externo de entrada y salida de enlace. copias de código de Hello Hola archivo de salida de toohello de archivo de entrada.
 
 ```csharp
 [StorageAccount("MyStorageConnection")]
@@ -192,7 +192,7 @@ public static string Run([QueueTrigger("myqueue-items")] string myQueueItem,
 
 ### <a name="http-and-webhooks"></a>HTTP y webhooks
 
-Use el atributo `HttpTrigger` para definir un desencadenador HTTP o un webhook. Este atributo se define en el paquete de NuGet [Microsoft.Azure.WebJobs.Extensions.Http]. Puede personalizar el nivel de autorización, el tipo de webhook, la ruta y los métodos. En el ejemplo siguiente se define un desencadenador HTTP con autenticación anónima y tipo de webhook _genericJson_.
+Hola de uso `HttpTrigger` webhook o el desencadenador de toodefine HTTP de atributo. Este atributo se define en el paquete de NuGet hello [Microsoft.Azure.WebJobs.Extensions.Http]. Puede personalizar el nivel de autorización de hello, tipo de webhook, ruta y métodos. Hello en el ejemplo siguiente se define un desencadenador HTTP con la autenticación anónima y _genericJson_ webhook tipo.
 
 ```csharp
 [FunctionName("HttpTriggerCSharp")]
@@ -206,9 +206,9 @@ public static HttpResponseMessage Run([HttpTrigger(AuthorizationLevel.Anonymous,
 
 ### <a name="mobile-apps-input-and-output"></a>Entrada y salida de Mobile Apps
 
-Azure Functions admite enlaces de entrada y salida para Mobile Apps. Para más información, consulte [Enlaces de Mobile Apps de Azure Functions](functions-bindings-mobile-apps.md). El atributo `[MobileTable]` se define en el paquete de NuGet [Microsoft.Azure.WebJobs.Extensions.MobileApps].
+Azure Functions admite enlaces de entrada y salida para Mobile Apps. más información, consulte toolearn [enlaces de aplicaciones móviles de Azure funciones](functions-bindings-mobile-apps.md). atributo de Hello `[MobileTable]` se define en el paquete de NuGet hello [Microsoft.Azure.WebJobs.Extensions.MobileApps].
 
-En el siguiente ejemplo se muestra un enlace de salida de Mobile Apps:
+Hello en el ejemplo siguiente se muestra un aplicaciones móviles de enlace de salida:
 
 ```csharp
 [FunctionName("MobileAppsOutput")]        
@@ -223,7 +223,7 @@ public static object Run([QueueTrigger("myqueue-items", Connection = "AzureWebJo
 
 ### <a name="notification-hubs-output"></a>Salida de Notification Hubs
 
-Azure Functions admite un enlace de salida para Notification Hubs. Para más información, consulte [Enlace de salida de Notification Hub de Azure Functions](functions-bindings-notification-hubs.md). El atributo `[NotificationHub]` se define en el paquete de NuGet [Microsoft.Azure.WebJobs.Extensions.NotificationHubs].
+Azure Functions admite un enlace de salida para Notification Hubs. más información, consulte toolearn [enlace de salida del centro de notificaciones de las funciones de Azure](functions-bindings-notification-hubs.md). atributo de Hello `[NotificationHub]` se define en el paquete de NuGet hello [Microsoft.Azure.WebJobs.Extensions.NotificationHubs].
 
 <a name="queue"></a>
 
@@ -231,7 +231,7 @@ Azure Functions admite un enlace de salida para Notification Hubs. Para más inf
 
 Azure Functions admite desencadenador y enlaces de salida para Azure Queues. Para más información, consulte [Enlaces de Queue Storage de Azure Functions](functions-bindings-storage-queue.md).
 
-En el ejemplo siguiente se muestra cómo usar el tipo de valor devuelto por la función con un enlace de salida de cola, usando el atributo `[Queue]`. Para definir un desencadenador de cola, utilice el atributo `[QueueTrigger]`.
+Hello en el ejemplo siguiente se muestra la función de hello toouse tipo de valor devuelto con una salida de cola de enlace, el uso de hello `[Queue]` atributo. toodefine un desencadenador de cola, usar hello `[QueueTrigger]` atributo.
 
 ```csharp
 [StorageAccount("AzureWebJobsStorage")]
@@ -261,11 +261,11 @@ public static class QueueFunctions
 
 ### <a name="sendgrid-output"></a>Salida de SendGrid
 
-Azure Functions admite un enlace de salida de SendGrid para el envío de correo electrónico mediante programación. Para más información, consulte [Enlaces de SendGrid de Azure Functions](functions-bindings-sendgrid.md).
+Azure Functions admite un enlace de salida de SendGrid para el envío de correo electrónico mediante programación. más información, consulte toolearn [SendGrid de funciones de Azure enlaces](functions-bindings-sendgrid.md).
 
-El atributo `[SendGrid]` se define en el paquete de NuGet [Microsoft.Azure.WebJobs.Extensions.SendGrid].
+atributo de Hello `[SendGrid]` se define en el paquete de NuGet hello [Microsoft.Azure.WebJobs.Extensions.SendGrid].
 
-El siguiente es un ejemplo del uso de un desencadenador de cola de Service Bus y un enlace de salida de SendGrid mediante `SendGridMessage`:
+Hello siguiente es un ejemplo del uso de un desencadenador de cola de Bus de servicio y un enlace de salida de SendGrid mediante `SendGridMessage`:
 
 ```csharp
 [FunctionName("SendEmail")]
@@ -282,7 +282,7 @@ public static void Run(
 
 public class OutgoingEmail
 {
-    public string To { get; set; }
+    public string too{ get; set; }
     public string From { get; set; }
     public string Subject { get; set; }
     public string Body { get; set; }
@@ -295,9 +295,9 @@ public class OutgoingEmail
 
 Azure Functions admite enlaces de desencadenador y salida para colas y temas de Service Bus. Para más información sobre la configuración de enlaces, consulte [Enlaces de Service Bus de Azure Functions](functions-bindings-service-bus.md).
 
-Los atributos `[ServiceBusTrigger]` y `[ServiceBus]` se definen en el paquete de NuGet [Microsoft.Azure.WebJobs.ServiceBus]. 
+Hola atributos `[ServiceBusTrigger]` y `[ServiceBus]` se definen en el paquete de NuGet hello [Microsoft.Azure.WebJobs.ServiceBus]. 
 
-A continuación se muestra un ejemplo de un desencadenador de cola de Service Bus:
+Hola te mostramos un ejemplo de un desencadenador de cola de Bus de servicio:
 
 ```csharp
 [FunctionName("ServiceBusQueueTriggerCSharp")]                    
@@ -307,7 +307,7 @@ public static void Run([ServiceBusTrigger("myqueue", AccessRights.Manage, Connec
 }
 ```
 
-El siguiente es un ejemplo de un enlace de salida de Service Bus, utilizando el tipo de valor devuelto por el método como salida:
+Hola te mostramos un ejemplo de una salida de Bus de servicio de enlace, utilizando el tipo de valor devuelto de método hello como salida de hello:
 
 ```csharp
 [FunctionName("ServiceBusOutput")]
@@ -323,9 +323,9 @@ public static string ServiceBusOutput([HttpTrigger] dynamic input, TraceWriter l
 
 ### <a name="table-storage-input-and-output"></a>Entrada y salida de Table Storage
 
-Azure Functions admite enlaces de entrada y salida para Table Storage de Azure. Para más información, consulte [Enlaces de Table Storage de Azure Functions](functions-bindings-storage-table.md).
+Azure Functions admite enlaces de entrada y salida para Table Storage de Azure. más información, consulte toolearn [enlaces de almacenamiento de tabla de funciones de Azure](functions-bindings-storage-table.md).
 
-El siguiente ejemplo es una clase con dos funciones, mostrando los enlaces de entrada y salida de Table Storage. 
+Hello siguiente ejemplo es una clase con dos funciones, que muestra la salida de almacenamiento de tabla y los enlaces de entrada. 
 
 ```csharp
 [StorageAccount("AzureWebJobsStorage")]
@@ -346,7 +346,7 @@ public class TableStorage
         return new MyPoco { PartitionKey = "Http", RowKey = Guid.NewGuid().ToString(), Text = input.Text };
     }
 
-    // use the metadata parameter "queueTrigger" to bind the queue payload
+    // use hello metadata parameter "queueTrigger" toobind hello queue payload
     [FunctionName("TableInput")]
     public static void TableInput([QueueTrigger("table-items")] string input, [Table("MyTable", "Http", "{queueTrigger}")] MyPoco poco, TraceWriter log)
     {
@@ -360,11 +360,11 @@ public class TableStorage
 
 ### <a name="timer-trigger"></a>Desencadenador de temporizador
 
-Azure Functions incluye un enlace a un desencadenador de temporizador que le permite ejecutar su código de función según una programación definida. Para más información sobre las características del enlace, consulte [Programar la ejecución de código con Azure Functions](functions-bindings-timer.md).
+Azure Functions incluye un enlace a un desencadenador de temporizador que le permite ejecutar su código de función según una programación definida. toolearn más información acerca de características de hello del enlace de hello, consulte [programar la ejecución del código con las funciones de Azure](functions-bindings-timer.md).
 
-En el plan de Consumo, puede definir programaciones con una [expresión CRON](http://en.wikipedia.org/wiki/Cron#CRON_expression). Si utiliza un plan de App Service, también puede usar una cadena TimeSpan. 
+Plan de consumo de hello, puede definir programaciones con un [expresión CRON](http://en.wikipedia.org/wiki/Cron#CRON_expression). Si utiliza un plan de App Service, también puede usar una cadena TimeSpan. 
 
-En el ejemplo siguiente se define un desencadenador de temporizador que se ejecuta cada 5 minutos:
+Hola de ejemplo siguiente define un desencadenador de temporizador que se ejecuta cada 5 minutos:
 
 ```csharp
 [FunctionName("TimerTriggerCSharp")]
@@ -378,11 +378,11 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, TraceWr
 
 ### <a name="twilio-output"></a>Salida de Twilio
 
-Azure Functions admite enlaces de salida de Twilio para permitir a sus funciones enviar mensajes de texto SMS. Para más información, consulte [Envío de mensajes SMS desde Azure Functions mediante el enlace de salida de Twilio](functions-bindings-twilio.md). 
+Azure funciones es compatible con Twilio habían salida enlaces tooenable los mensajes de texto SMS de toosend de funciones. más información, consulte toolearn [enlace de salida de SMS enviar mensajes desde las funciones de Azure mediante Twilio hello](functions-bindings-twilio.md). 
 
-El atributo `[TwilioSms]` se define en el paquete [Microsoft.Azure.WebJobs.Extensions.Twilio].
+atributo de Hello `[TwilioSms]` se define en el paquete de hello [Microsoft.Azure.WebJobs.Extensions.Twilio].
 
-En el ejemplo de C# siguiente se utiliza un desencadenador de cola y un enlace de salida de Twilio:
+Hello ejemplo C# siguiente utiliza una cola de desencadenador y un Twilio el enlace de salida:
 
 ```csharp
 [FunctionName("QueueTwilio")]
@@ -394,7 +394,7 @@ public static SMSMessage Run([QueueTrigger("myqueue-items", Connection = "AzureW
     var message = new SMSMessage()
     {
         Body = $"Hello {order["name"]}, thanks for your order!",
-        To = order["mobileNumber"].ToString()
+        too= order["mobileNumber"].ToString()
     };
 
     return message;
@@ -423,7 +423,7 @@ Para más información sobre el uso de Azure Functions en C# de scripting, consu
 [Microsoft.Azure.WebJobs.Extensions]: http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions/2.1.0-beta1
 
 
-<!-- Links to source --> 
+<!-- Links toosource --> 
 [DocumentDBAttribute]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.DocumentDB/DocumentDBAttribute.cs
 [EventHubAttribute]: https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs
 [EventHubTriggerAttribute]: https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubTriggerAttribute.cs

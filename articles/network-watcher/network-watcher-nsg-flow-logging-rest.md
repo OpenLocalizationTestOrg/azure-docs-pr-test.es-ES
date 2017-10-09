@@ -1,6 +1,6 @@
 ---
-title: "Administración de registros de flujo de grupos de seguridad de red en Azure Network Watcher: API de REST| Microsoft Docs"
-description: "Esta página explica cómo administrar registros de flujo de grupos de seguridad de red en Azure Network Watcher con la API de REST"
+title: 'registros de aaaManage flujo de grupo de seguridad de red con Monitor de red de Azure: API de REST | Documentos de Microsoft'
+description: "Esta página explica cómo toomanage flujo de grupo de seguridad de red se registra en el Monitor de red de Azure con API de REST"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-ms.openlocfilehash: c89a2ab4c39978771c940a819493b4e2283d5f9f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: be81e35f4d01c67efef99773e9b4e2ae4b8e209e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>Configuración de registros de flujo de grupos de seguridad de red mediante la API de REST
 
@@ -29,20 +29,20 @@ ms.lasthandoff: 07/11/2017
 > - [CLI 2.0](network-watcher-nsg-flow-logging-cli.md)
 > - [API DE REST](network-watcher-nsg-flow-logging-rest.md)
 
-Los registros de flujo de grupos de seguridad de red son una característica de Network Watcher que permite ver información acerca del tráfico IP de entrada y de salida en un grupo de seguridad de red. Estos registros de flujo se escriben en formato JSON y muestran los flujos de entrada y salida en función de cada regla, la NIC a la que se aplica el flujo, información de 5-tupla sobre el flujo (IP de origen/destino, puerto de origen/destino, protocolo), y si se permitió o denegó el tráfico.
+Registros de flujo de grupo de seguridad de red son una característica del Monitor de red que permite tooview información sobre el tráfico IP de entrada y de salida a través de un grupo de seguridad de red. Estos registros de flujo se escriben en formato json y mostrar salidos y flujos de entrada en cada regla, Hola flujo Hola NIC que se aplica, tupla de 5 información acerca del flujo de hello (protocolo IP de origen/destino, puerto de origen/destino,) y si hello se permita el tráfico o denegado.
 
 ## <a name="before-you-begin"></a>Antes de empezar
 
-ARMclient se usa para llamar a la API de REST con PowerShell. ARMClient se encuentra en Chocolatey en [ARMClient en Chocolatey](https://chocolatey.org/packages/ARMClient)
+ARMclient es la API de REST de hello toocall utilizados mediante PowerShell. ARMClient se encuentra en Chocolatey en [ARMClient en Chocolatey](https://chocolatey.org/packages/ARMClient)
 
-En este escenario, se da por hecho que ya ha seguido los pasos descritos en [Create an Azure Network Watcher instance](network-watcher-create.md) (Creación de una instancia de Azure Network Watcher) para crear una instancia de Network Watcher.
+Este escenario se supone que ya ha seguido los pasos de hello en [crear un monitor de red](network-watcher-create.md) toocreate un monitor de red.
 
 > [!Important]
-> En las llamadas a la API de REST de Network Watcher, el nombre del grupo de recursos en el identificador URI de la solicitud es el grupo de recursos que contiene Network Watcher, y no los recursos sobre los que realiza las acciones de diagnóstico.
+> Para la API de REST de Monitor de red llamadas Hola nombre de grupo de recursos en solicitud de hello que URI es el grupo de recursos de Hola que contiene Hola Monitor de red, no se está realizando acciones de diagnóstico de hello en recursos de Hola.
 
 ## <a name="scenario"></a>Escenario
 
-El escenario descrito en este artículo muestra cómo habilitar, deshabilitar y realizar consultas de los registros de flujo con la API de REST. Para más información sobre registros de flujos de grupo de seguridad de red, consulte la [introducción al registro de flujos de grupo de seguridad de red](network-watcher-nsg-flow-logging-overview.md).
+escenario de Hello descrito en este artículo muestra cómo tooenable, deshabilitar y consulta fluyen registros con hello API de REST. toolearn más información acerca de loggings de flujo de grupo de seguridad de red, visite [registro de flujo del grupo de seguridad de red: información general sobre](network-watcher-nsg-flow-logging-overview.md).
 
 En este escenario va a:
 
@@ -52,7 +52,7 @@ En este escenario va a:
 
 ## <a name="log-in-with-armclient"></a>Inicio de sesión con ARMClient
 
-Inicie sesión en armclient con las credenciales de Azure.
+Inicie sesión en tooarmclient con sus credenciales de Azure.
 
 ```PowerShell
 armclient login
@@ -60,7 +60,7 @@ armclient login
 
 ## <a name="register-insights-provider"></a>Registro del proveedor de Insights
 
-Para que el registro del flujo de trabajo funcione correctamente, es necesario registrar el proveedor **Microsoft.Insights**. Si no está seguro de si el proveedor **Microsoft.Insights**está registrado, ejecute el siguiente script.
+En orden para el flujo de registro toowork correctamente, Hola **Microsoft.Insights** proveedor debe estar registrado. Si no está seguro de si hello **Microsoft.Insights** proveedor está registrado, hello ejecución siguiente secuencia de comandos.
 
 ```powershell
 $subscriptionId = "00000000-0000-0000-0000-000000000000"
@@ -69,7 +69,7 @@ armclient post "https://management.azure.com//subscriptions/${subscriptionId}/pr
 
 ## <a name="enable-network-security-group-flow-logs"></a>Habilitación de los registros de flujo de grupos de seguridad de red
 
-El ejemplo siguiente muestra el comando para habilitar los registros de flujo:
+Hola comando tooenable flujo registros se muestra en el siguiente ejemplo de Hola:
 
 ```powershell
 $subscriptionId = "00000000-0000-0000-0000-000000000000"
@@ -94,7 +94,7 @@ $requestBody = @"
 armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/configureFlowLog?api-version=2016-12-01" $requestBody
 ```
 
-La respuesta devuelta por el ejemplo anterior es la siguiente:
+Hola devolvió una respuesta Hola anterior es el ejemplo siguiente:
 
 ```json
 {
@@ -112,7 +112,7 @@ La respuesta devuelta por el ejemplo anterior es la siguiente:
 
 ## <a name="disable-network-security-group-flow-logs"></a>Deshabilitación de los registros de flujo de grupos de seguridad de red
 
-Use el ejemplo siguiente para deshabilitar los registros de flujo. La llamada es la misma que para habilitar los registros de flujo, excepto que la propiedad activada está establecida en **false**.
+Hola de uso después de registros de flujo de toodisable de ejemplo. Hola llamada es Hola igual que habilitar los registros de flujo, excepto **false** está establecido para la propiedad de hello habilitado.
 
 ```powershell
 $subscriptionId = "00000000-0000-0000-0000-000000000000"
@@ -137,7 +137,7 @@ $requestBody = @"
 armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/configureFlowLog?api-version=2016-12-01" $requestBody
 ```
 
-La respuesta devuelta por el ejemplo anterior es la siguiente:
+Hola devolvió una respuesta Hola anterior es el ejemplo siguiente:
 
 ```json
 {
@@ -155,7 +155,7 @@ La respuesta devuelta por el ejemplo anterior es la siguiente:
 
 ## <a name="query-flow-logs"></a>Consulta del estado de los registros de flujo
 
-La siguiente llamada de REST consulta el estado del flujo de registros en un grupo de seguridad de red.
+Hola sigue a llamada REST consultas Hola estado del flujo de registros en un grupo de seguridad de red.
 
 ```powershell
 $subscriptionId = "00000000-0000-0000-0000-000000000000"
@@ -171,7 +171,7 @@ $requestBody = @"
 armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/queryFlowLogStatus?api-version=2016-12-01" $requestBody
 ```
 
-El siguiente es un ejemplo de la respuesta devuelta:
+Hola te mostramos un ejemplo de respuesta de hello devuelta:
 
 ```json
 {
@@ -189,9 +189,9 @@ El siguiente es un ejemplo de la respuesta devuelta:
 
 ## <a name="download-a-flow-log"></a>Descarga de un registro de flujo
 
-La ubicación de almacenamiento de un registro de flujo se define en el momento de la creación. Una herramienta práctica para acceder a estos registros de flujo guardados en una cuenta de almacenamiento es el Explorador de Microsoft Azure Storage, que puede descargarse aquí: http://storageexplorer.com/
+ubicación de almacenamiento de Hola de un registro de flujo se define en la creación. Un tooaccess herramienta adecuada estas cuentas de almacenamiento de tooa de guardar registros de flujo es Microsoft Azure Storage Explorer, que puede descargarse aquí: http://storageexplorer.com/
 
-Si se especifica una cuenta de almacenamiento, los archivos de captura de paquetes se guardan en una cuenta de almacenamiento en la siguiente ubicación:
+Si se especifica una cuenta de almacenamiento, archivos de captura de paquetes se guardan tooa cuenta de almacenamiento en hello ubicación siguiente:
 
 ```
 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId%3D/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.network/networksecuritygroups/{nsgName}/{year}/{month}/{day}/PT1H.json
@@ -199,6 +199,6 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Aprenda a [visualizar los registros de flujo de NSG con Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
+Obtenga información acerca de cómo demasiado[visualizar los registros de flujo NSG con Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 
-Aprenda a [visualizar los registros de flujo de NSG con herramientas de código abierto](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
+Obtenga información acerca de cómo demasiado[visualizar los registros de flujo NSG con herramientas de código abierto](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)

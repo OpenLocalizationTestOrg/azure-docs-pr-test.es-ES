@@ -1,5 +1,5 @@
 ---
-title: "API de REST del servicio Azure Search versión 2015-02-28-Preview | Microsoft Docs"
+title: "aaaAzure búsqueda servicio REST API versión 2015-02-28-vista previa | Documentos de Microsoft"
 description: "La API de REST del Servicio Búsqueda de Azure versión 2015-02-28-Preview incluye funciones experimentales como analizadores de lenguaje Natural y búsquedas moreLikeThis."
 services: search
 documentationcenter: na
@@ -14,26 +14,26 @@ ms.tgt_pltfrm: na
 ms.workload: search
 ms.date: 05/01/2017
 ms.author: brjohnst
-ms.openlocfilehash: e6ad5c964bfa8421be2706cb4015980e01a271b7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 63cb30b7f43a42552c6744ea087afea947857224
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-search-service-rest-api-version-2015-02-28-preview"></a>API de REST del Servicio Búsqueda de Azure versión 2015-02-28-Preview
-Este artículo es la documentación de referencia de `api-version=2015-02-28-Preview`. Esta vista previa amplía la versión disponible generalmente actual, [api-version=2015-02-28](https://msdn.microsoft.com/library/dn798935.aspx), proporcionando las siguientes funciones experimentales:
+Este artículo es la documentación de referencia de Hola para `api-version=2015-02-28-Preview`. Esta vista previa extiende versión disponible con carácter general actual hello, [api-version = 2015-02-28](https://msdn.microsoft.com/library/dn798935.aspx), proporcionando Hola siguiendo las características experimentales:
 
-* `moreLikeThis` parámetro de consulta en la API de [Buscar documentos](#SearchDocs) . Busca otros documentos que sean relevantes para otro documento específico.
+* `moreLikeThis`parámetro Hola consulta [buscar documentos](#SearchDocs) API. Busca otros documentos que son relevantes tooanother documento específico.
 
-Algunas partes adicionales de la API de REST `2015-02-28-Preview` se documentan por separado. Entre ellos se incluyen los siguientes:
+Algunas partes adicionales de hello `2015-02-28-Preview` API de REST se documentan por separado. Entre ellos se incluyen los siguientes:
 
 * [Perfiles de puntuación](search-api-scoring-profiles-2015-02-28-preview.md)
 * [Indexadores](search-api-indexers-2015-02-28-preview.md)
 
-El servicio de Búsqueda de Azure está disponible en varias versiones. Consulte [Versiones del servicio de búsqueda](http://msdn.microsoft.com/library/azure/dn864560.aspx) para obtener más información.
+El servicio de Búsqueda de Azure está disponible en varias versiones. Consulte demasiado[versiones del servicio de búsqueda](http://msdn.microsoft.com/library/azure/dn864560.aspx) para obtener más información.
 
 ## <a name="apis-in-this-document"></a>API incluidas en este documento
-La API del servicio Búsqueda de Azure admite dos sintaxis de URL para operaciones de API: simple y OData (consulte [Compatibilidad con OData (API de Búsqueda de Azure)](http://msdn.microsoft.com/library/azure/dn798932.aspx) para obtener más información). La lista siguiente muestra la sintaxis simple.
+La API del servicio Búsqueda de Azure admite dos sintaxis de URL para operaciones de API: simple y OData (consulte [Compatibilidad con OData (API de Búsqueda de Azure)](http://msdn.microsoft.com/library/azure/dn798932.aspx) para obtener más información). Hello lista siguiente muestra una sintaxis sencilla Hola.
 
 [Crear índice](#CreateIndex)
 
@@ -89,9 +89,9 @@ La API del servicio Búsqueda de Azure admite dos sintaxis de URL para operacion
 <a name="IndexOps"></a>
 
 ## <a name="index-operations"></a>Operaciones de índice
-Puede crear y administrar índices en el servicio de Búsqueda de Azure a través de solicitudes HTTP sencillas (POST, GET, PUT, DELETE) en un recurso de índice determinado. Para crear un índice, primero debe PUBLICAR un documento JSON que describa el esquema de índice. El esquema define los campos de índice, sus tipos de datos y cómo pueden utilizarse (por ejemplo, en las búsquedas de texto completo, filtros, ordenación o faceting). También define los perfiles de puntuación, los proveedores de sugerencias y otros atributos para configurar el comportamiento del índice.
+Puede crear y administrar índices en el servicio de Búsqueda de Azure a través de solicitudes HTTP sencillas (POST, GET, PUT, DELETE) en un recurso de índice determinado. toocreate un índice, REGISTRE primero un documento JSON que describe el esquema de índice Hola. esquema de Hello define los campos de Hola de índice de hello, sus tipos de datos y cómo se puede usar (por ejemplo, en las búsquedas de texto completo, filtros, ordenación o facetas). También define los perfiles de puntuación, proveedores de sugerencias y otros comportamientos de hello tooconfigure de atributos de índice de Hola.
 
-En el ejemplo siguiente se proporciona una ilustración de un esquema que se utiliza para buscar información sobre hoteles con el campo de descripción definido en dos idiomas. Observe de qué modo controlan los atributos cómo se utiliza el campo. Por ejemplo, el `hotelId` se utiliza como clave de documento (`"key": true`) y se excluye de búsquedas de texto completo (`"searchable": false`).
+Hello en el ejemplo siguiente se proporciona una ilustración de un esquema utilizado para buscar información sobre hoteles con campo de descripción de hello definido en dos idiomas. Observe cómo los atributos controlan cómo se utiliza el campo de Hola. Por ejemplo Hola `hotelId` se utiliza como clave de documento de hello (`"key": true`) y se excluye de búsquedas de texto completo (`"searchable": false`).
 
     {
     "name": "hotels",  
@@ -118,67 +118,67 @@ En el ejemplo siguiente se proporciona una ilustración de un esquema que se uti
      ]
     }
 
-Una vez creado el índice, podrá cargar documentos que rellenen el índice. Consulte [Agregar o actualizar documentos](#AddOrUpdateDocuments) para este siguiente paso.
+Después de crea el índice de hello, podrá cargar documentos que rellenan índice Hola. Consulte [Agregar o actualizar documentos](#AddOrUpdateDocuments) para este siguiente paso.
 
-Para obtener una introducción de vídeo sobre la indexación en Búsqueda de Azure, consulte el [episodio de portada de nube del canal 9 en Búsqueda de Azure](http://go.microsoft.com/fwlink/p/?LinkId=511509).
+Para tooindexing de vídeo de introducción en búsqueda de Azure, vea hello [episodio de Cloud Cover de Channel 9 sobre búsqueda de Azure](http://go.microsoft.com/fwlink/p/?LinkId=511509).
 
 <a name="CreateIndex"></a>
 
 ## <a name="create-index"></a>Crear índice
-Un índice es el medio principal para organizar y buscar documentos en la Búsqueda de Azure, de modo similar a cómo organiza los registros en una base de datos una tabla. Cada índice tiene una colección de documentos que cumplen el esquema de índice (nombres de campo, tipos de datos y propiedades), pero los índices también especifican construcciones adicionales (proveedores de sugerencias, opciones de CORS y perfiles de puntuación) que definen otros comportamientos de búsqueda.
+Un índice es el medio principal de Hola de organizar y buscar documentos en búsqueda de Azure, toohow similar una tabla organiza los registros en una base de datos. Cada índice tiene una colección de documentos que conformes toohello esquema de índice (nombres de campo, tipos de datos y propiedades), pero los índices también especifican construcciones adicionales (proveedores de sugerencias, perfiles de puntuación y opciones de CORS) que definen otros comportamientos de búsqueda.
 
-Puede crear un índice nuevo dentro de un servicio de Búsqueda de Azure mediante una solicitud HTTP POST o PUT. El cuerpo de la solicitud es un esquema JSON que especifica la información de índice y configuración.
+Puede crear un índice nuevo dentro de un servicio de Búsqueda de Azure mediante una solicitud HTTP POST o PUT. cuerpo de saludo de solicitud de hello es un esquema JSON que especifica la información de índice y la configuración de Hola.
 
     POST https://[service name].search.windows.net/indexes?api-version=[api-version]
     Content-Type: application/json
     api-key: [admin key]
 
-Como alternativa, puede usar PUT y especificar el nombre del índice en el URI. Si el índice no existe, se creará.
+Como alternativa, puede usar PUT y especificar el nombre del índice de hello en hello URI. Si el índice de hello no existe, se creará.
 
     PUT https://[search service url]/indexes/[index name]?api-version=[api-version]
 
-Crear un índice determina la estructura de los documentos almacenados y usados en operaciones de búsqueda. Rellenar el índice es una operación independiente. En este paso, puede usar un [indexador](https://msdn.microsoft.com/library/azure/mt183328.aspx) (disponible para orígenes de datos admitidos) o una operación [Agregar, actualizar o eliminar documentos](https://msdn.microsoft.com/library/azure/dn798930.aspx). El índice invertido se genera cuando se publican los documentos.
+Crear un índice determina la estructura de Hola de hello documentos almacenados y utilizados en operaciones de búsqueda. Rellenar índice hello es una operación independiente. En este paso, puede usar un [indexador](https://msdn.microsoft.com/library/azure/mt183328.aspx) (disponible para orígenes de datos admitidos) o una operación [Agregar, actualizar o eliminar documentos](https://msdn.microsoft.com/library/azure/dn798930.aspx). índice Hola invertido se genera cuando se publican los documentos de Hola.
 
-**Nota**: El número máximo de índices permitido varía según el nivel de precios. El servicio gratuito permite hasta tres índices. El servicio estándar permite 50 índices por servicio de búsqueda. Consulte [Límites y restricciones](http://msdn.microsoft.com/library/azure/dn798934.aspx) para obtener detalles.
+**Tenga en cuenta**: Hola número máximo de índices permitidos varía según el nivel de precios. servicio gratuito de Hello permite que los índices de too3. El servicio estándar permite 50 índices por servicio de búsqueda. Consulte [Límites y restricciones](http://msdn.microsoft.com/library/azure/dn798934.aspx) para obtener detalles.
 
 **Solicitud**
 
-HTTPS es necesario para todas las solicitudes de servicio. La solicitud **Crear índice** se puede construir con un método POST o PUT. Al usar POST, debe proporcionar un nombre de índice en el cuerpo de la solicitud junto con la definición de esquema de índice. Con PUT, el nombre del índice es parte de la dirección URL. Si el índice no existe, se crea. Si ya existe, se actualiza a la nueva definición.
+HTTPS es necesario para todas las solicitudes de servicio. Hola **Create Index** solicitud puede crearse mediante un método POST o PUT. Al usar POST, debe proporcionar un nombre de índice en el cuerpo de la solicitud junto con la definición de esquema de índice de Hola Hola. Con PUT, el nombre del índice de hello es parte de la dirección URL de Hola. Si el índice de hello no existe, se crea. Si ya existe, está actualizada toohello nueva definición.
 
-El nombre del índice debe estar en minúsculas, comenzar por una letra o un número, no tener ninguna barra o punto y tener menos de 128 caracteres. Después de iniciar el nombre del índice por una letra o un número, el resto del nombre puede incluir cualquier letra, número y guiones, siempre que los guiones no aparezcan de manera consecutiva.
+nombre del índice Hola debe estar en minúsculas, empezar por una letra o un número, no tener barras o puntos y tener menos de 128 caracteres. Después de iniciar el nombre del índice de hello con una letra o un número, rest Hola de nombre de hello puede incluir cualquier letra, número y guiones, como Hola guiones no sean consecutivos.
 
-`api-version` es obligatorio. Consulte [Versiones del servicio de búsqueda](http://msdn.microsoft.com/library/azure/dn864560.aspx) para obtener una lista de las versiones disponibles.
+Hola `api-version` es necesario. Consulte [Versiones del servicio de búsqueda](http://msdn.microsoft.com/library/azure/dn864560.aspx) para obtener una lista de las versiones disponibles.
 
 **Encabezados de solicitud**
 
-En la lista siguiente se describen los encabezados de solicitud obligatorios y opcionales.
+Hola lista siguiente describe Hola necesarios y los encabezados de solicitud opcionales.
 
-* `Content-Type`: obligatorio. Establézcalo en `application/json`
-* `api-key`: obligatorio. El `api-key` se usa para
-* autenticar la solicitud al servicio de búsqueda. Es un valor de cadena único para el servicio. La solicitud **Crear índice** debe incluir un encabezado `api-key` establecido en su clave de administración (en lugar de una clave de consulta).
+* `Content-Type`: obligatorio. Establezca esta propiedad demasiado`application/json`
+* `api-key`: obligatorio. Hola `api-key` se usa para
+* autenticar el servicio de búsqueda de hello solicitud tooyour. Es un valor de cadena, el servicio de tooyour único. Hola **Create Index** solicitud debe incluir un `api-key` encabezado establece clave de administrador de tooyour (como clave de consulta tooa lugar).
 
-También necesitará el nombre del servicio para construir la dirección URL de la solicitud. Puede obtener el nombre de servicio y `api-key` desde el panel de servicio en el Portal de Azure. Consulte [Crear un servicio de Búsqueda de Azure en el portal](search-create-service-portal.md) para obtener ayuda sobre la navegación en páginas.
+También necesitará Hola nombre tooconstruct Hola solicitud dirección URL del servicio. Se puede obtener el nombre de servicio hello y `api-key` desde el panel de servicio en hello Portal de Azure. Vea [crear un servicio de búsqueda de Azure en el portal de hello](search-create-service-portal.md) para obtener ayuda de navegación de página.
 
 <a name="RequestData"></a>
 **Sintaxis del cuerpo de la solicitud**
 
-El cuerpo de la solicitud contiene una definición de esquema, que incluye la lista de campos de datos de los documentos que se introducirán en este índice, tipos de datos, atributos, así como una lista opcional de perfiles de puntuación que se utilizan para puntuar documentos de coincidencias de puntuación en el momento de las consultas.
+Hola el cuerpo de solicitud de hello contiene una definición de esquema, que incluye Hola lista de campos de datos dentro de los documentos que se introducirán en este índice, tipos de datos, atributos, así como una lista opcional de los perfiles de puntuación es utilizado tooscore coincidencia de documentos en tiempo de consulta.
 
-Tenga en cuenta que para una solicitud POST, debe especificar el nombre del índice en el cuerpo de la solicitud.
+Tenga en cuenta que para una solicitud POST, debe especificar el nombre del índice de Hola Hola del cuerpo de solicitud.
 
-Solo puede haber un campo de clave en el índice. Debe ser un campo de cadena. Este campo representa el identificador único de cada documento almacenado en el índice.
+Solo puede haber un campo de clave de índice de Hola. Tiene un campo de cadena toobe. Este campo representa el identificador único de Hola para cada documento almacenado en el índice de Hola.
 
-Las partes principales de un índice son las siguientes:
+partes principales de Hola de un índice Hola siguientes:
 
 * `name`
 * `fields` que se introducirán en este índice, incluido el nombre, tipo de datos y propiedades que definen las acciones permitidas en ese campo.
 * `suggesters` se usa para autocompletar o anticipar la escritura de las consultas.
 * `scoringProfiles` se usa para la clasificación de la puntuación de la búsqueda personalizada. Consulte [Agregar perfiles de puntuación](https://msdn.microsoft.com/library/azure/dn798928.aspx) para obtener más información.
-* `analyzers`, `charFilters`, `tokenizers`, `tokenFilters` se usa para definir cómo se descomponen los documentos y las consultas en tokens con capacidad de consulta y búsqueda. Consulte [Análisis en Búsqueda de Azure](https://aka.ms//azsanalysis) para más detalles.
-* `defaultScoringProfile` se usa para sobrescribir los comportamientos de puntuación predeterminados.
-* `corsOptions` para permitir las consultas de origen cruzado en el índice.
+* `analyzers`, `charFilters`, `tokenizers`, `tokenFilters` utiliza toodefine cómo las documentos y consultas se dividen en tokens indizable/permite realizar búsquedas. Consulte [Análisis en Búsqueda de Azure](https://aka.ms//azsanalysis) para más detalles.
+* `defaultScoringProfile`Usar valor predeterminado de hello toooverwrite comportamientos de puntuación.
+* `corsOptions`consultas entre orígenes de tooallow sobre el índice.
 
-La sintaxis para estructurar la carga de la solicitud es la siguiente. En este tema se proporciona una solicitud de ejemplo.
+sintaxis de Hola para estructurar la carga de la solicitud de hello es como sigue. En este tema se proporciona una solicitud de ejemplo.
 
     {
       "name": (optional on PUT; required on POST) "name_of_index",
@@ -192,22 +192,22 @@ La sintaxis para estructurar la carga de la solicitud es la siguiente. En este t
           "facetable": true (default where applicable) | false (Edm.GeographyPoint fields cannot be facetable),
           "key": true | false (default, only Edm.String fields can be keys),
           "retrievable": true (default) | false,              
-          "analyzer": "name of the analyzer used for search and indexing", (only if 'searchAnalyzer' and 'indexAnalyzer' are not set)
-          "searchAnalyzer": "name of the search analyzer", (only if 'indexAnalyzer' is set and 'analyzer' is not set)
-          "indexAnalyzer": "name of the indexing analyzer" (only if 'searchAnalyzer' is set and 'analyzer' is not set)
+          "analyzer": "name of hello analyzer used for search and indexing", (only if 'searchAnalyzer' and 'indexAnalyzer' are not set)
+          "searchAnalyzer": "name of hello search analyzer", (only if 'indexAnalyzer' is set and 'analyzer' is not set)
+          "indexAnalyzer": "name of hello indexing analyzer" (only if 'searchAnalyzer' is set and 'analyzer' is not set)
         }
       ],
       "suggesters": [
         {
           "name": "name of suggester",
-          "searchMode": "analyzingInfixMatching" (other modes may be added in the future),
+          "searchMode": "analyzingInfixMatching" (other modes may be added in hello future),
           "sourceFields": ["field1", "field2", ...]
         }
       ],
       "scoringProfiles": [
         {
           "name": "name of scoring profile",
-          "text": (optional, only applies to searchable fields) {
+          "text": (optional, only applies toosearchable fields) {
             "weights": {
               "searchable_field_name": relative_weight_value (positive numbers),
               ...
@@ -225,14 +225,14 @@ La sintaxis para estructurar la carga de la solicitud es la siguiente. En este t
                 "constantBoostBeyondRange": true | false (default)
               },
               "freshness": {
-                "boostingDuration": "..." (value representing timespan leading to now over which boosting occurs)
+                "boostingDuration": "..." (value representing timespan leading toonow over which boosting occurs)
               },
               "distance": {
-                "referencePointParameter": "...", (parameter to be passed in queries to use as reference location, see "scoringParameter" for syntax details)
-                "boostingDistance": # (the distance in kilometers from the reference location where the boosting range ends)
+                "referencePointParameter": "...", (parameter toobe passed in queries toouse as reference location, see "scoringParameter" for syntax details)
+                "boostingDistance": # (hello distance in kilometers from hello reference location where hello boosting range ends)
               },
               "tag": {
-                "tagsParameter": "..." (parameter to be passed in queries to specify list of tags to compare against target field, see "scoringParameter" for syntax details)
+                "tagsParameter": "..." (parameter toobe passed in queries toospecify list of tags toocompare against target field, see "scoringParameter" for syntax details)
               }
             }
           ],
@@ -253,72 +253,72 @@ La sintaxis para estructurar la carga de la solicitud es la siguiente. En este t
 
 **Atributos de índice**
 
-Es posible establecer los siguientes atributos para crear un índice. Para obtener más información sobre la puntuación y los perfiles de puntuación, consulte [Agregar perfiles de puntuación](https://msdn.microsoft.com/library/azure/dn798928.aspx).
+Hello atributos siguientes pueden establecerse al crear un índice. Para obtener más información sobre la puntuación y los perfiles de puntuación, consulte [Agregar perfiles de puntuación](https://msdn.microsoft.com/library/azure/dn798928.aspx).
 
-`name` : establece el nombre del campo.
+`name`-Conjuntos Hola nombre del campo de Hola.
 
-`type` : establece el tipo de datos del campo.
+`type`-Conjuntos Hola tipo de datos de campo de Hola.
 
-`searchable` : marca el campo como de búsqueda de texto completo. Esto significa que se someterá a análisis como la separación de palabras durante la indexación. Si establece un campo `searchable` en un valor como "día soleado", internamente, se dividirá en los tokens individuales "soleado" y "día". Esto permite realizar búsquedas de texto completo de estos términos. Los campos de tipo `Edm.String` o `Collection(Edm.String)` son `searchable` de manera predeterminada. Los campos de otros tipos no pueden ser `searchable`.
+`searchable`-Marca Hola campo como texto completo capacitado para búsquedas. Esto significa que se someterá a análisis como la separación de palabras durante la indexación. Si establece un `searchable` valor del campo tooa como "sunny day", internamente será dividir en tokens individuales Hola "sunny" y "día". Esto permite realizar búsquedas de texto completo de estos términos. Los campos de tipo `Edm.String` o `Collection(Edm.String)` son `searchable` de manera predeterminada. Los campos de otros tipos no pueden ser `searchable`.
 
-* **Nota**: `searchable`los campos consumen espacio adicional en el índice, ya que Azure Search almacenará una versión con tokens adicional del valor del campo para las búsquedas de texto completo. Si desea ahorrar espacio en el índice y no necesita incluir un campo en las búsquedas, establezca `searchable` en `false`.
+* **Tenga en cuenta**: `searchable` campos consumen espacio adicional en el índice, ya que la búsqueda de Azure almacenará una versión con tokens adicional del valor de campo de Hola para búsquedas de texto completo. Si desea toosave espacio en el índice y no es necesario un toobe de campo que se incluyen en las búsquedas, establezca `searchable` demasiado`false`.
 
-`filterable`: permite que se haga referencia al campo en las consultas `$filter`. `filterable` difiere de `searchable` en el modo en que se gestionan las cadenas. Los campos de tipo `Edm.String` o `Collection(Edm.String)` que son `filterable` no sufren separación de palabras, por lo que las comparaciones son solo para las coincidencias exactas. Por ejemplo, si establece este campo `f` en "día soleado", `$filter=f eq 'sunny'` no encontrará ninguna coincidencia, pero `$filter=f eq 'sunny day'` sí. Todos los campos son `filterable` de forma predeterminada.
+`filterable`: Permite hello toobe de campo al que hace referencia en `$filter` las consultas. `filterable` difiere de `searchable` en el modo en que se gestionan las cadenas. Los campos de tipo `Edm.String` o `Collection(Edm.String)` que son `filterable` no sufren separación de palabras, por lo que las comparaciones son solo para las coincidencias exactas. Por ejemplo, si establece este tipo de campo `f` demasiado "sunny day", `$filter=f eq 'sunny'` encontrará ninguna coincidencia, pero `$filter=f eq 'sunny day'` le. Todos los campos son `filterable` de forma predeterminada.
 
-`sortable` : de forma predeterminada el sistema ordena los resultados por calificación, pero en muchas experiencias los usuarios desearán ordenar por los campos de los documentos. Los campos de tipo `Collection(Edm.String)` no pueden ser `sortable`. El resto de campos son `sortable` de forma predeterminada.
+`sortable`-Predeterminada Hola sistema ordena los resultados por puntuación, pero en muchas ocasiones los usuarios desearán toosort por campos de documentos de Hola. Los campos de tipo `Collection(Edm.String)` no pueden ser `sortable`. El resto de campos son `sortable` de forma predeterminada.
 
 `facetable`: suele utilizarse en una presentación de resultados de búsqueda que incluya el número de resultados por categoría (por ejemplo, busque cámaras digitales y consulte los resultados divididos por marca, por megapíxeles, por precio, etc.). Esta opción no puede utilizarse con campos de tipo `Edm.GeographyPoint`. El resto de campos son `facetable` de forma predeterminada.
 
-* **Nota**: los campos de tipo `Edm.String` que son `filterable`, `sortable` o `facetable` solo pueden ocupar una longitud de 32 KB como máximo. Esto se debe a que esos campos se tratan como un término de búsqueda único y la longitud máxima de un término de Búsqueda de Azure es de 32 KB. Si necesita almacenar más texto que este en un campo de cadena único, deberá establecer explícitamente `filterable`, `sortable` y `facetable` en `false` en la definición del índice.
-* **Nota**: si un campo no tiene ninguno de los atributos anteriores establecidos en `true` (`searchable`, `filterable`, `sortable` o `facetable`) el campo se excluirá eficazmente del índice invertido. Esta opción es útil para los campos que no se utilizan en las consultas, pero que son necesarios en los resultados de la búsqueda. La exclusión de esos campos del índice mejora el rendimiento.
+* **Nota**: los campos de tipo `Edm.String` que son `filterable`, `sortable` o `facetable` solo pueden ocupar una longitud de 32 KB como máximo. Esto es porque esos campos se tratan como un término de búsqueda sencillo, y la longitud máxima de Hola de un término de búsqueda de Azure es 32KB. Si necesita toostore texto más que la especificada en un campo de cadena único, deberá tooexplicitly establecer `filterable`, `sortable`, y `facetable` demasiado`false` en la definición del índice.
+* **Tenga en cuenta**: si un campo no tiene ninguno de hello anterior atributos se establecen demasiado`true` (`searchable`, `filterable`, `sortable`, o`facetable`) campo Hola se excluye eficazmente del índice de hello invertido. Esta opción es útil para los campos que no se utilizan en las consultas, pero que son necesarios en los resultados de la búsqueda. Exclusión de esos campos del índice de hello mejora el rendimiento.
 
-`key` : marca el campo como que contiene identificadores únicos para los documentos del índice. Es necesario elegir exactamente un campo como campo `key` y debe ser de tipo `Edm.String`. Los campos de clave pueden usarse para buscar documentos directamente a través de la [API de búsqueda](#LookupAPI).
+`key`-Marcas Hola campo como que contiene identificadores únicos para los documentos en el índice de Hola. Se debe elegir exactamente un campo como hello `key` campo y debe ser de tipo `Edm.String`. Campos clave pueden ser utilizado toolook documentos directamente a través de hello [API de búsqueda](#LookupAPI).
 
-`retrievable` : establece si el campo se puede devolver un resultado de búsqueda.  Esto resulta útil cuando desea usar un campo (por ejemplo, margen) como filtro, ordenación o mecanismo de puntuación, pero no desea que el campo sea visible para el usuario final. Este atributo debe ser `true` for `key` .
+`retrievable`-Establece si el campo de Hola se puede devolver resultados de la búsqueda.  Esto es útil cuando se desea toouse un campo (por ejemplo, margen) como un filtro, ordenación o puntuación mecanismo pero no desea que el usuario final toohello visible de hello campo toobe. Este atributo debe ser `true` for `key` .
 
-`analyzer` : establece el nombre del analizador que se usa para el campo en el momento de la búsqueda y la indexación. Para conocer el conjunto de valores permitido, consulte [Analizadores](https://msdn.microsoft.com/library/mt605304.aspx). Esta opción puede utilizarse solo con campos `searchable` y no se puede establecer junto con `searchAnalyzer` o `indexAnalyzer`.  Una vez que se elige el analizador, no se podrá cambiar para el campo.
+`analyzer`-Conjuntos Hola nombre de hello analizador toouse campo hello en tiempo de búsqueda y el momento de la indización. Encontrará Hola conjunto de valores permitido [analizadores](https://msdn.microsoft.com/library/mt605304.aspx). Esta opción puede utilizarse solo con campos `searchable` y no se puede establecer junto con `searchAnalyzer` o `indexAnalyzer`.  Una vez que se elige el analizador de hello, no se puede cambiar para el campo de Hola.
 
-`searchAnalyzer` : establece el nombre del analizador que se usa en el momento de búsqueda para el campo. Para conocer el conjunto de valores permitido, consulte [Analizadores](https://msdn.microsoft.com/library/mt605304.aspx). Esta opción solo puede utilizarse con campos `searchable` . Se debe establecer junto con `indexAnalyzer` y no se puede establecer junto con la opción `analyzer`. Este analizador se puede actualizar en un campo existente.
+`searchAnalyzer`-Conjuntos Hola nombre del analizador de Hola que se usa en tiempo de búsqueda para el campo de Hola. Encontrará Hola conjunto de valores permitido [analizadores](https://msdn.microsoft.com/library/mt605304.aspx). Esta opción solo puede utilizarse con campos `searchable` . Debe establecerse junto con `indexAnalyzer` y no se puede establecer junto con hello `analyzer` opción. Este analizador se puede actualizar en un campo existente.
 
-`indexAnalyzer` : establece el nombre del analizador que se usa en el momento de la indexación para el campo. Para conocer el conjunto de valores permitido, consulte [Analizadores](https://msdn.microsoft.com/library/mt605304.aspx). Esta opción solo puede utilizarse con campos `searchable` . Se debe establecer junto con `searchAnalyzer` y no se puede establecer junto con la opción `analyzer`. Una vez que se elige el analizador, no se podrá cambiar para el campo.
+`indexAnalyzer`-Conjuntos Hola nombre del analizador de hello usada en tiempo de indización para el campo de Hola. Encontrará Hola conjunto de valores permitido [analizadores](https://msdn.microsoft.com/library/mt605304.aspx). Esta opción solo puede utilizarse con campos `searchable` . Debe establecerse junto con `searchAnalyzer` y no se puede establecer junto con hello `analyzer` opción. Una vez que se elige el analizador de hello, no se puede cambiar para el campo de Hola.
 
-`suggesters` : establece el modo de búsqueda y los campos que son el origen del contenido para obtener sugerencias. Consulte [Proveedores de sugerencias](#Suggesters) para obtener más información.
+`suggesters`-Conjuntos Hola a modo de búsqueda y campos que son origen de Hola de contenido de Hola para obtener sugerencias. Consulte [Proveedores de sugerencias](#Suggesters) para obtener más información.
 
-`scoringProfiles` : define comportamientos de puntuación personalizados que permiten influir en los elementos que aparecen más arriba en los resultados de la búsqueda. Los perfiles de puntuación se componen de ponderaciones de campos y de funciones. Consulte [Agregar perfiles de puntuación](https://msdn.microsoft.com/library/azure/dn798928.aspx) para obtener más información acerca de los atributos usados en un perfil de puntuación.
+`scoringProfiles` : define comportamientos de puntuación personalizados que permiten influir en los elementos que aparecen más arriba en los resultados de la búsqueda. Los perfiles de puntuación se componen de ponderaciones de campos y de funciones. Vea [agregar perfiles de puntuación](https://msdn.microsoft.com/library/azure/dn798928.aspx) para obtener más información sobre atributos de hello usados en un perfil de puntuación.
 
 <!-- This is a standalone topic in MSDN -->
 <a name="LanguageSupport"></a>
 **Compatibilidad con idioma**
 
-Los campos localizables se someten a análisis que con frecuencia implican la separación de palabras, la normalización de texto y el filtrado de términos. De forma predeterminada, los campos localizables de Azure Search se analizan con el [analizador estándar de Apache Lucene](http://lucene.apache.org/core/4_9_0/analyzers-common/index.html) que divide el texto en elementos siguiendo las reglas de ["Segmentación de texto Unicode"](http://unicode.org/reports/tr29/). Además, el analizador estándar convierte todos los caracteres en minúsculas. Los documentos indexados y lo términos de búsqueda son sometidos a análisis durante la indexación y el procesamiento de consultas.
+Los campos localizables se someten a análisis que con frecuencia implican la separación de palabras, la normalización de texto y el filtrado de términos. De forma predeterminada, los campos de búsqueda en búsqueda de Azure se analizan con hello [analizador estándar Lucene de Apache](http://lucene.apache.org/core/4_9_0/analyzers-common/index.html) que divide el texto en los elementos que siguen la["Segmentación de texto Unicode"](http://unicode.org/reports/tr29/) reglas. Además, analizador estándar Hola convierte formato en todos los caracteres tootheir minúsculas. Los documentos indizados y términos de búsqueda van a través del análisis de Hola durante la indización y procesamiento de consultas.
 
 Búsqueda de Azure admite una variedad de lenguajes. Cada uno de esos idiomas requiere un analizador de texto no estándar que representa las características de un idioma determinado. Búsqueda de Azure ofrece dos tipos de analizadores:
 
 * 35 analizadores respaldados por Lucene.
 * 50 analizadores respaldados por la tecnología de procesamiento de lenguaje natural de Microsoft usada en Office y Bing.
 
-Es posible que algunos desarrolladores prefieran la solución más familiar, simple y de código abierto de Lucene. Los analizadores de Lucene son más rápidos, pero los analizadores de Microsoft disponen de capacidades avanzadas, como la lematización, la descomposición de palabras (en idiomas como el alemán, danés, neerlandés, sueco, noruego, estonio, finés, húngaro, eslovaco) y el reconocimiento de entidades (direcciones URL, correos electrónicos, fechas y números). Si es posible, debe ejecutar las comparaciones de los analizadores de Microsoft y Lucene para decidir cuál es la que se ajusta mejor.
+Algunos desarrolladores de software podría ser preferible Hola solución mucho más familiar, simple, código abierto de Lucene. Analizadores de Lucene son más rápidos, pero analizadores de Microsoft hello tienen capacidades, como la lematización avanzadas, decompounding (en idiomas como el alemán, danés, neerlandés, sueco, noruego, estonio, finalizar, húngaro, eslovaco) y reconocimiento de entidades (las direcciones URL de word mensajes de correo electrónico, fechas, números). Si es posible, debe ejecutar las comparaciones de ambos toodecide Hola Microsoft y Lucene analizadores cuál es mejor.
 
 ***Cómo se comparan***
 
-El analizador de Lucene para inglés amplía el analizador estándar. Elimina los posesivos (los ’s finales) de las palabras, aplica la lematización conforme al [Algoritmo de lematización Porter](http://tartarus.org/~martin/PorterStemmer/) y elimina las [palabras no significativas](http://en.wikipedia.org/wiki/Stop_words) del inglés.
+Analizador de Lucene de Hola para inglés amplía el analizador estándar Hola. Elimina los posesivos (los ’s finales) de las palabras, aplica la lematización conforme al [Algoritmo de lematización Porter](http://tartarus.org/~martin/PorterStemmer/) y elimina las [palabras no significativas](http://en.wikipedia.org/wiki/Stop_words) del inglés.
 
-En comparación, el analizador de Microsoft realiza la lematización en lugar del stemming. Significa que puede controlar mucho mejor formas de palabras derivadas e irregulares, lo que da como resultado unos resultados de búsqueda más pertinentes (consulte el módulo 7 de [presentación MVA de Búsqueda de Azure](http://www.microsoftvirtualacademy.com/training-courses/adding-microsoft-azure-search-to-your-websites-and-apps) para obtener más detalles).
+En comparación, analizador de Microsoft hello realiza lematización en lugar de lematización. Significa que puede controlar mucho mejor formas de palabras derivadas e irregulares, lo que da como resultado unos resultados de búsqueda más pertinentes (consulte el módulo 7 de [presentación MVA de Búsqueda de Azure](http://www.microsoftvirtualacademy.com/training-courses/adding-microsoft-azure-search-to-your-websites-and-apps) para obtener más detalles).
 
-La indexación con analizadores de Microsoft es entre dos y tres veces más lenta de media que sus equivalentes de Lucene en función del idioma. El rendimiento de la búsqueda no debería verse afectado significativamente en las consultas de tamaño medio.
+La indización con analizadores de Microsoft por término medio es dos veces toothree más lentos que sus equivalentes de Lucene, según el lenguaje de Hola. El rendimiento de la búsqueda no debería verse afectado significativamente en las consultas de tamaño medio.
 
 ***Configuración***
 
-Para cada campo de la definición del índice, puede establecer la propiedad `analyzer` en un nombre de analizador que especifica el idioma y el proveedor. Se aplicará el mismo analizador durante la búsqueda e indización de ese campo.
-Por ejemplo, puede tener campos separados para descripciones de hoteles en inglés, francés y español que existen en paralelo dentro del mismo índice. Use el [parámetro de consulta "searchFields"](#SearchQueryParameters) para especificar qué campo concreto del lenguaje buscar en las consultas. Puede revisar ejemplos de consultas que incluyan la propiedad `analyzer` en [Buscar documentos](#SearchDocs). 
+Para cada campo en la definición del índice hello, puede establecer hello `analyzer` nombre del analizador de tooan propiedad que especifica qué idioma y el proveedor. Hola mismo analizador se aplicarán cuando la indización y búsqueda para ese campo.
+Por ejemplo, puede tener campos separados para descripciones de hoteles inglés, francés y español que existen en paralelo en hello mismo índice. Hola de uso ['searchFields' parámetro de consulta](#SearchQueryParameters) toospecify qué toosearch de campo específico del idioma en las consultas. Puede revisar los ejemplos de consultas que incluyen hello `analyzer` propiedad en [buscar documentos](#SearchDocs). 
 
 ***Lista de analizadores***
 
-A continuación se muestra la lista de idiomas admitidos y los nombres de analizadores Lucene y Microsoft.
+A continuación se muestra la lista de Hola de idiomas admitidos junto con los nombres de analizador de Lucene y Microsoft.
 
 <table style="font-size:12">
     <tr>
-        <th>Idioma</th>
+        <th>language</th>
         <th>Nombre del analizador de Microsoft</th>
         <th>Nombre del analizador de Lucene</th>
     </tr>
@@ -611,33 +611,33 @@ A continuación se muestra la lista de idiomas admitidos y los nombres de analiz
         <td>
         <ul>
             <li>Segmentación de texto Unicode (Tokenizer estándar)</li>
-            <li>Filtro de plegamiento de ASCII: convierte los caracteres Unicode que no pertenecen al conjunto de los primeros 127 caracteres ASCII en sus valores equivalentes ASCII. Esto es útil para quitar los signos diacríticos.</li>
+            <li>Filtro de conversión de ASCII - convierte los caracteres Unicode que no pertenecen toohello conjunto de los primeros 127 caracteres ASCII en sus valores ASCII equivalentes. Esto es útil para quitar los signos diacríticos.</li>
         </ul>
         </td>
     </tr>
 </table>
 
-Todos los analizadores con nombres anotados con <i>lucene</i> disponen de tecnología de [analizadores de idioma de Apache Lucene](http://lucene.apache.org/core/4_9_0/analyzers-common/overview-summary.html). Puede encontrar más información sobre el filtro de plegamiento de ASCII [aquí](http://lucene.apache.org/core/4_9_0/analyzers-common/org/apache/lucene/analysis/miscellaneous/ASCIIFoldingFilter.html).
+Todos los analizadores con nombres anotados con <i>lucene</i> disponen de tecnología de [analizadores de idioma de Apache Lucene](http://lucene.apache.org/core/4_9_0/analyzers-common/overview-summary.html). Puede encontrar más información sobre el filtro de conversión de ASCII de hello [aquí](http://lucene.apache.org/core/4_9_0/analyzers-common/org/apache/lucene/analysis/miscellaneous/ASCIIFoldingFilter.html).
 
 **Proveedores de sugerencias**
 
-Un `suggester` define qué campos de un índice se utilizan para admitir Autocompletar en las búsquedas. Normalmente las cadenas de búsqueda parcial se envían a las [API de sugerencias](#Suggestions) mientras el usuario está escribiendo una consulta de búsqueda y la API devuelve un conjunto de frases sugeridas. El proveedor de sugerencias que defina en el índice determina qué campos se utilizan para generar los términos de búsqueda de escritura anticipada. Consulte [Proveedores de sugerencias](#Suggesters) para obtener más detalles sobre la configuración.
+Un `suggester` define qué campos en un índice son utilizado toosupport Autocompletar en las búsquedas. Normalmente, las cadenas de búsqueda parcial se envían toohello [API sugerencias](#Suggestions) mientras el usuario de hello está escribiendo una consulta de búsqueda y Hola API devuelve un conjunto de frases sugeridas. Un proveedor de sugerencias que defina en el índice de hello determina qué campos son los términos de búsqueda anticipada de hello toobuild usado. Consulte [Proveedores de sugerencias](#Suggesters) para obtener más detalles sobre la configuración.
 
 **Perfiles de puntuación**
 
-Un `scoringProfile` define comportamientos de puntuación personalizados que permiten influir en los elementos que aparecen más arriba en los resultados de la búsqueda. Los perfiles de puntuación se componen de ponderaciones de campos y de funciones. Para poder utilizarlos, especifique un perfil por nombre en la cadena de consulta.
+Un `scoringProfile` define los comportamientos de puntuación personalizados que pueden influir en los elementos que aparecen más arriba en resultados de búsqueda de Hola. Los perfiles de puntuación se componen de ponderaciones de campos y de funciones. toouse usarlas, se especifica un perfil por nombre en la cadena de consulta de Hola.
 
-El perfil de puntuación predeterminada funciona en segundo plano para calcular un resultado de búsqueda para todos los elementos de un conjunto de resultados. Puede usar un perfil de puntuación interno y sin nombre. Como alternativa, establezca `defaultScoringProfile` para usar un perfil personalizado como valor predeterminado, al que se invoca cuando no se especifica un perfil personalizado en la cadena de consulta.
+Un perfil de puntuación predeterminado funciona en segundo Hola plano toocompute una puntuación de búsqueda para todos los elementos de un conjunto de resultados. Puede usar Hola interno, sin nombre perfil de puntuación. Por otra parte, defina `defaultScoringProfile` toouse un perfil personalizado como Hola de forma predeterminada, se invoca cuando un perfil personalizado no se especifica en la cadena de consulta de Hola.
 
-Consulte [Adición de perfiles de puntuación a un índice de búsqueda (API de REST de servicio Búsqueda de Azure)](search-api-scoring-profiles-2015-02-28-preview.md) para obtener más información.
+Vea [puntuación agregar perfiles de índice de búsqueda tooa (API de REST de servicio de búsqueda de Azure)](search-api-scoring-profiles-2015-02-28-preview.md) para obtener más información.
 
 **Opciones de CORS**
 
-Javascript del lado cliente no puede llamar a las API de forma predeterminada debido a que el explorador evitará todas las solicitudes entre orígenes. Habilite CORS (uso compartido recursos entre orígenes) estableciendo el atributo `corsOptions` para que permita consultas de origen cruzado en su índice. Tenga en cuenta que solamente las API de consulta admiten CORS por motivos de seguridad. Se pueden establecer las opciones siguientes para CORS:
+Javascript del lado cliente no puede llamar a las API de forma predeterminada, ya que el Explorador de hello impedirá todas las solicitudes entre orígenes. Habilitar CORS (uso compartido recursos entre orígenes) por establecer hello `corsOptions` índice tooyour de atributo tooallow consultas entre orígenes. Tenga en cuenta que solamente las API de consulta admiten CORS por motivos de seguridad. Hola siguientes opciones se pueden establecer para CORS:
 
-* `allowedOrigins` (obligatorio): se trata de una lista de orígenes a los que se le concederá acceso a su índice. Esto significa que cualquier código Javascript que se suministre desde esos orígenes podrá consultar el índice (suponiendo que proporcione la clave de API correcta). Cada origen suele ser de formato `protocol://fully-qualified-domain-name:port` , aunque a menudo se omite el puerto. Consulte [este artículo](http://go.microsoft.com/fwlink/?LinkId=330822) para obtener más detalles.
-  * Si desea permitir el acceso a todos los orígenes, incluya `*` como elemento único en la matriz `allowedOrigins`. Tenga en cuenta que **esta no es una práctica recomendada para los servicios de búsqueda de producción.** Sin embargo, puede ser útil para el desarrollo o con fines de depuración.
-* `maxAgeInSeconds` (opcional): los exploradores usan este valor para determinar la duración (en segundos) para almacenar en la memoria caché las respuestas preparatorias de CORS. Esto debe ser un entero no negativo. Cuanto mayor sea este valor es, mejor será el rendimiento, pero más tiempo tardarán en surtir efecto los cambios en la directiva CORS. Si no se establece, se usará una duración predeterminada de 5 minutos.
+* `allowedOrigins`(obligatorio): se trata de una lista de orígenes que se le concederá el índice de tooyour de acceso. Esto significa que cualquier código de Javascript que se sirva desde esos orígenes permite tooquery su índice (suponiendo proporciona la clave de API correcta de hello). Cada origen suele del formulario de hello `protocol://fully-qualified-domain-name:port` aunque a menudo se omite el puerto de Hola. Consulte [este artículo](http://go.microsoft.com/fwlink/?LinkId=330822) para obtener más detalles.
+  * Si desea que los orígenes de tooall de acceso tooallow, incluya `*` como un único elemento de hello `allowedOrigins` matriz. Tenga en cuenta que **esta no es una práctica recomendada para los servicios de búsqueda de producción.** Sin embargo, puede ser útil para el desarrollo o con fines de depuración.
+* `maxAgeInSeconds`(opcional): los exploradores utilizan este las respuestas preparatorias de CORS toocache de valor toodetermine Hola duración (en segundos). Esto debe ser un entero no negativo. Hola mayor que es este valor, será un mejor rendimiento de hello, pero hello más tiempo que tardará CORS directiva cambios tootake efecto. Si no se establece, se usará una duración predeterminada de 5 minutos.
 
 <a name="CreateUpdateIndexExample"></a>
 **Ejemplo de cuerpo de solicitud**
@@ -671,35 +671,35 @@ Javascript del lado cliente no puede llamar a las API de forma predeterminada de
 
 Para obtener una solicitud correcta: "201 Creado".
 
-De forma predeterminada, el cuerpo de la respuesta contendrá el JSON de la definición del índice que se creó. Si se establece el encabezado de la solicitud `Prefer` en `return=minimal`, el cuerpo de respuesta quedará vacío y el código de estado correcto será "204 Sin contenido" en lugar de "201 creado". Esto es cierto independientemente de si se utiliza PUT o POST para crear el índice.
+De forma predeterminada cuerpo de respuesta de hello contendrá hello JSON para la definición de índice de Hola que se creó. Si hello `Prefer` encabezado de solicitud se establece demasiado`return=minimal`, cuerpo de respuesta de hello estará vacío y código de estado de hello correcto será "204 Sin contenido" en lugar de "201 Created". Esto es cierto independientemente de si PUT o POST estaba índice de hello toocreate usado.
 
 **Comentarios**
 
-Actualmente, hay compatibilidad limitada para las actualizaciones del esquema de índice. Actualmente no se admiten las actualizaciones del esquema que requieran volver a indexar, como el cambio de tipos de campo. Aunque los campos existentes no se pueden modificar ni eliminar, los campos nuevos pueden agregarse a un índice existente en cualquier momento. Al agregar un nuevo campo, todos los documentos existentes del índice tendrán un valor null para ese campo automáticamente. No se consumirá espacio de almacenamiento adicional hasta que se agreguen nuevos documentos al índice.
+Actualmente, hay compatibilidad limitada para las actualizaciones del esquema de índice. Actualmente no se admiten las actualizaciones del esquema que requieran volver a indexar, como el cambio de tipos de campo. Aunque no se puede cambiar los campos existentes o eliminado los campos nuevos se pueden agregar índice existente tooan en cualquier momento. Cuando se agrega un nuevo campo, todos los documentos existentes en el índice de hello automáticamente tendrá un valor null para ese campo. No hay espacio de almacenamiento adicional se consumirán hasta que se agreguen nuevos documentos toohello índice.
 
 <a name="Suggesters"></a>
 
 ## <a name="suggesters"></a>Proveedores de sugerencias
-La característica de sugerencias de Búsqueda de Azure es una capacidad de consulta de escritura anticipada o autocompletar, que proporciona una lista de posibles términos de búsqueda en respuesta a las entradas de cadenas parciales especificadas en un cuadro de búsqueda. Probablemente haya observado sugerencias de consulta al utilizar los motores de búsqueda web comerciales: si se escribe ".NET" en Bing, se genera una lista de términos para ".NET 4.5", ".NET Framework 3.5", y así sucesivamente. Cuando se utiliza la API de REST del servicio Búsqueda, la implementación de sugerencias en una aplicación de Búsqueda de Azure personalizada requiere lo siguiente:
+característica de sugerencias de Hello en búsqueda de Azure es una capacidad de consulta anticipada o Autocompletar, que proporciona una lista de posibles términos de búsqueda en respuesta toopartial las entradas de cadena especificadas en un cuadro de búsqueda. Probablemente haya observado sugerencias de consulta al utilizar los motores de búsqueda web comerciales: si se escribe ".NET" en Bing, se genera una lista de términos para ".NET 4.5", ".NET Framework 3.5", y así sucesivamente. Cuando se usa el servicio de búsqueda de hello API de REST, implementación de sugerencias en una aplicación de búsqueda de Azure personalizada requiere siguiente hello:
 
-* Habilite las sugerencias agregando una construcción de **proveedor de sugerencias** en el índice, lo que proporciona el nombre, el modo de búsqueda y una lista de campos para los que se requiere la escritura anticipada. Por ejemplo, si especifica "nombreCiudad" como un campo de origen, al escribir la cadena de búsqueda parcial de "Sea", dará como resultado "Seattle", "Seaside" y "Seatac" (las tres son nombres de ciudades reales) ofrecidos como sugerencias de consulta para el usuario.
-* Invoque sugerencias llamando a la [API de sugerencias](#Suggestions) en el código de aplicación. Normalmente las cadenas de búsqueda parcial se envían al servicio mientras el usuario está escribiendo una consulta de búsqueda y la API devuelve un conjunto de frases sugeridas.
+* Habilite sugerencias agregando una **proveedor de sugerencias** construcción en el índice, se ha dado nombre hello, modo de búsqueda y una lista de campos para que anticipada se invoca. Por ejemplo, si especifica "cityName" como un campo de origen, escriba una cadena de búsqueda parcial del "Mar" dará como resultado "Seattle", "Seaside" y "Seatac" (las tres son nombres de ciudades reales) presenten como usuario de toohello de sugerencias de consulta.
+* Invocar sugerencias que realiza la llamada hello [API sugerencias](#Suggestions) en el código de aplicación. Normalmente las cadenas de búsqueda parcial se envían toohello servicio mientras Hola usuario escribe una consulta de búsqueda, y esta API devuelve un conjunto de frases sugeridas.
 
-Este artículo explica cómo configurar un **proveedor de sugerencias**. También debe revisar la [API de sugerencias](#Suggestions) para obtener más información sobre cómo se utiliza un proveedor de sugerencias.
+Este artículo se explica cómo tooconfigure una **proveedor de sugerencias**. También debe revisar hello [API sugerencias](#Suggestions) para obtener más información sobre cómo se utiliza un proveedor de sugerencias.
 
 **Uso**
 
-`Suggesters` se crean en el índice y funcionan mejor cuando se usan para sugerir documentos específicos en lugar de términos o frases flexibles. Los campos de mejores candidatos son títulos, nombres y demás frases relativamente cortas que pueden identificar un elemento. Los campos repetitivos son menos efectivos, por ejemplo, las categorías y etiquetas, o campos muy largos como campos de descripciones o comentarios.
+`Suggesters`se crean en el índice de Hola y funcionan mejor cuando se usa toosuggest específicos se documentan en lugar de términos o frases sueltos. campos de Hello más recomendados son títulos, nombres y demás frases relativamente cortas que puedan identificar un elemento. Los campos repetitivos son menos efectivos, por ejemplo, las categorías y etiquetas, o campos muy largos como campos de descripciones o comentarios.
 
-Como parte de la definición del índice puede agregar un único proveedor de sugerencias a la colección `suggesters` . Las propiedades que definen a un proveedor de sugerencias se incluyen las siguientes:
+Como parte de la definición del índice hello, puede agregar un único proveedor de sugerencias toohello `suggesters` colección. Propiedades que definen un proveedor de sugerencias Hola siguientes:
 
-* `name`: el nombre del proveedor de sugerencias. Use el nombre del proveedor de sugerencias para llamar a la API de `suggest` .
-* `searchMode`: la estrategia que se usa para buscar las frases candidatas. El único modo que se admite actualmente es `analyzingInfixMatching`, que establece una correspondencia flexible de frases al principio o en medio de las oraciones.
-* `sourceFields`: lista de uno o más campos que son el origen del contenido para obtener sugerencias. Solo los campos de tipo `Edm.String` y `Collection(Edm.String)` pueden ser orígenes para obtener sugerencias. Solo se pueden usar los campos que no tienen un analizador de lenguaje personalizado establecido.
+* `name`: nombre de hello del proveedor de sugerencias de Hola. Usar nombre de hello del proveedor de sugerencias de hello al llamar a hello `suggest` API.
+* `searchMode`: Hola toosearch estrategia que se usa para frases candidatas. Hola único modo que admite actualmente es `analyzingInfixMatching`, que realiza una coincidencia flexible de frases al principio de Hola o en medio de Hola de oraciones.
+* `sourceFields`: Una lista de uno o más campos que son origen de hello del contenido de Hola para obtener sugerencias. Solo los campos de tipo `Edm.String` y `Collection(Edm.String)` pueden ser orígenes para obtener sugerencias. Solo se pueden usar los campos que no tienen un analizador de lenguaje personalizado establecido.
 
 **Ejemplo de proveedor de sugerencias**
 
-Un proveedor de sugerencias forma parte del índice. Solo un proveedor de sugerencias puede existir en la colección `suggesters` en la versión actual, junto con la colección de campos y `scoringProfiles`.
+Un proveedor de sugerencias es parte del índice de Hola. Puede haber solo un proveedor de sugerencias en hello `suggesters` colección de campos de la colección en la versión actual de hello, junto con hello y `scoringProfiles`.
 
         {
           "name": "hotels",
@@ -719,45 +719,45 @@ Un proveedor de sugerencias forma parte del índice. Solo un proveedor de sugere
         }
 
 > [!NOTE]
-> Si ha usado la versión de vista previa pública de Búsqueda de Azure, `suggesters` sustituirá a una propiedad booleana anterior (`"suggestions": false`) que solo admitía sugerencias de prefijos para cadenas cortas (3-25 caracteres). Su reemplazo, `suggesters`, admite la detección de coincidencias de infijos que encuentra términos coincidentes al principio o en medio del contenido del campo, con una mejor tolerancia a errores en las cadenas de búsqueda. A partir de la versión disponible con carácter general, esta es ahora la única implementación de la API de sugerencias. La propiedad `suggestions` anterior que se introdujo en `api-version=2014-07-31-Preview` continúa funcionando en esa versión, pero no está operativa en la versión `2015-02-28` o posteriores de Búsqueda de Azure.
+> Si ha usado la versión de vista previa pública de Hola de búsqueda de Azure, `suggesters` reemplaza una propiedad booleana más antigua (`"suggestions": false`) que solo admitía sugerencias de prefijo para cadenas cortas (3-25 caracteres). Su reemplazo, `suggesters`, admite coincidencias de infijo que encuentra términos coincidentes al principio de Hola o en medio de Hola de contenido de este campo, con una mejor tolerancia a errores en las cadenas de búsqueda. A partir de la versión de disponibilidad general de hello, ahora es única implementación de sugerencias de hello API de Hola. Hola anterior `suggestions` propiedad que se introdujo en `api-version=2014-07-31-Preview` continúa toowork en esa versión, pero no está operativa en hello `2015-02-28` o versiones posteriores de búsqueda de Azure.
 > 
 > 
 
 <a name="UpdateIndex"></a>
 
 ## <a name="update-index"></a>Actualizar índice
-Puede actualizar un índice existente en Búsqueda de Azure mediante una solicitud HTTP PUT. Las actualizaciones pueden incluir agregar nuevos campos al esquema existente, modificar las opciones de CORS y modificar perfiles de puntuación. Consulte [Agregar perfiles de puntuación](https://msdn.microsoft.com/library/azure/dn798928.aspx) para obtener más información. Especifique el nombre del índice que se va a actualizar en el URI de solicitud:
+Puede actualizar un índice existente en Búsqueda de Azure mediante una solicitud HTTP PUT. Las actualizaciones pueden incluir agregar nuevos campos toohello esquema existente, modificar las opciones de CORS y modificar perfiles de puntuación. Consulte [Agregar perfiles de puntuación](https://msdn.microsoft.com/library/azure/dn798928.aspx) para obtener más información. Especificar nombre de Hola de hello índice tooupdate en URI de solicitud de hello:
 
     PUT https://[search service url]/indexes/[index name]?api-version=[api-version]
     Content-Type: application/json
     api-key: [admin key]
 
-**Importante:** la compatibilidad con las actualizaciones del esquema de índice se limita a las operaciones que no requieren volver a generar el índice de búsqueda. Actualmente no se admiten las actualizaciones del esquema que requieran volver a indexar, como el cambio de tipos de campo. Pueden agregarse nuevos campos en cualquier momento, aunque no se pueden modificar ni eliminar los campos existentes. Lo mismo se aplica a `suggesters`. Es posible agregar nuevos campos a un proveedor de sugerencias en el momento en que se agregan los campos, pero no se puede quitar campos de `suggesters` y no se pueden agregar campos existentes a `suggesters`.
+**Importante:** compatibilidad con las actualizaciones de esquema de índice es toooperations limitada que no requieren volver a generar índice de búsqueda de Hola. Actualmente no se admiten las actualizaciones del esquema que requieran volver a indexar, como el cambio de tipos de campo. Pueden agregarse nuevos campos en cualquier momento, aunque no se pueden modificar ni eliminar los campos existentes. Hello Esto mismo se aplica demasiado`suggesters`. Pueden agregarse nuevos campos se agregan tooa proveedor de sugerencias en campos de Hola Hola hora, pero no se puede quitar campos `suggesters` y no se puede agregar campos existentes demasiado`suggesters`.
 
-Al agregar un nuevo campo a un índice, todos los documentos existentes en el índice tendrá un valor null para ese campo automáticamente. No se consumirá espacio de almacenamiento adicional hasta que se agreguen nuevos documentos al índice.
+Al agregar un nuevo índice tooan de campo, todos los documentos existentes en el índice de hello automáticamente tendrá un valor null para ese campo. No hay espacio de almacenamiento adicional se consumirán hasta que se agreguen nuevos documentos toohello índice.
 
 **Solicitud**
 
-HTTPS es necesario para todas las solicitudes de servicio. La solicitud **Actualizar índice** se construye utilizando HTTP PUT. Con PUT, el nombre del índice es parte de la dirección URL. Si el índice no existe, se crea. Si ya existe el índice, se actualiza a la nueva definición.
+HTTPS es necesario para todas las solicitudes de servicio. Hola **Actualizar índice** solicitud se construye utilizando PUT de HTTP. Con PUT, el nombre del índice de hello es parte de la dirección URL de Hola. Si el índice de hello no existe, se crea. Si ya existe un índice de hello, es toohello actualizada nueva definición.
 
-El nombre del índice debe estar en minúsculas, comenzar por una letra o un número, no tener ninguna barra o punto y tener menos de 128 caracteres. Después de iniciar el nombre del índice por una letra o un número, el resto del nombre puede incluir cualquier letra, número y guiones, siempre que los guiones no aparezcan de manera consecutiva.
+nombre del índice Hola debe estar en minúsculas, empezar por una letra o un número, no tener barras o puntos y tener menos de 128 caracteres. Después de iniciar el nombre del índice de hello con una letra o un número, rest Hola de nombre de hello puede incluir cualquier letra, número y guiones, como Hola guiones no sean consecutivos.
 
-`api-version=[string]` (obligatorio). La versión de vista previa es `api-version=2015-02-28-Preview`. Consulte [Versiones del servicio de búsqueda](http://msdn.microsoft.com/library/azure/dn864560.aspx) para obtener más información y versiones alternativas.
+`api-version=[string]` (obligatorio). versión de vista previa de Hello es `api-version=2015-02-28-Preview`. Consulte [Versiones del servicio de búsqueda](http://msdn.microsoft.com/library/azure/dn864560.aspx) para obtener más información y versiones alternativas.
 
 **Encabezados de solicitud**
 
-En la lista siguiente se describen los encabezados de solicitud obligatorios y opcionales.
+Hola lista siguiente describe Hola necesarios y los encabezados de solicitud opcionales.
 
-* `Content-Type`: obligatorio. Establézcalo en `application/json`
-* `api-key`: obligatorio. `api-key` se usa para autenticar la solicitud en su servicio de búsqueda. Es un valor de cadena único para el servicio. La solicitud **Actualizar índice** debe incluir un encabezado `api-key` establecido en su clave de administración (en lugar de una clave de consulta).
+* `Content-Type`: obligatorio. Establezca esta propiedad demasiado`application/json`
+* `api-key`: obligatorio. Hola `api-key` es tooauthenticate usado Hola solicitud tooyour servicio de búsqueda. Es un valor de cadena, el servicio de tooyour único. Hola **Actualizar índice** solicitud debe incluir un `api-key` encabezado establece clave de administrador de tooyour (como clave de consulta tooa lugar).
 
-También necesitará el nombre del servicio para construir la dirección URL de la solicitud. Puede obtener el nombre de servicio y `api-key` desde el panel de servicio en el Portal de Azure. Consulte [Crear un servicio de Búsqueda de Azure en el portal](search-create-service-portal.md) para obtener ayuda sobre la navegación en páginas.
+También necesitará Hola nombre tooconstruct Hola solicitud dirección URL del servicio. Puede obtener el nombre del servicio de Hola y `api-key` desde el panel de servicio en hello Portal de Azure. Vea [crear un servicio de búsqueda de Azure en el portal de hello](search-create-service-portal.md) para obtener ayuda de navegación de página.
 
 **Sintaxis del cuerpo de la solicitud**
 
-Al actualizar un índice existente, el cuerpo debe incluir la definición de esquema original, además de los nuevos campos que se van a agregar, así como los perfiles de puntuación modificados, los proveedores de sugerencias y las opciones de CORS, si existen. Si no va a modificar los perfiles de puntuación y las opciones de CORS, deberá incluir los originales de cuando se creó el índice. En general, el mejor patrón que se puede utilizar para las actualizaciones consiste en recuperar la definición del índice con un comando GET, modificarlo y luego actualizarlo con PUT.
+Al actualizar un índice existente, el cuerpo de hello debe incluir la definición de esquema original de hello, además de nuevos campos de Hola que va a agregar, así como Hola modifica perfiles de puntuación, proveedores de sugerencias y las opciones de CORS, si existe. Si no va a modificar perfiles de puntuación de Hola y opciones de CORS, debe incluir los originales Hola de cuándo se creó el índice de Hola. Por lo general Hola mejor patrón toouse actualizaciones es definición del índice de hello tooretrieve con una operación GET, modificarlo, actualizarlo con PUT.
 
-A continuación se reproduce la sintaxis del esquema usada para crear un índice por motivos de comodidad. Consulte [Crear índice](#CreateIndex) para obtener más detalles.
+sintaxis de esquema de Hello utilizan toocreate que un índice se reproduce aquí por comodidad. Consulte [Crear índice](#CreateIndex) para obtener más detalles.
 
     {
       "name": (optional) "name_of_index",
@@ -771,22 +771,22 @@ A continuación se reproduce la sintaxis del esquema usada para crear un índice
           "facetable": true (default where applicable) | false (Edm.GeographyPoint fields cannot be facetable),
           "key": true | false (default, only Edm.String fields can be keys),
           "retrievable": true (default) | false, 
-          "analyzer": "name of the analyzer used for search and indexing", (only if 'searchAnalyzer' and 'indexAnalyzer' are not set)
-          "searchAnalyzer": "name of the search analyzer", (only if 'indexAnalyzer' is set and 'analyzer' is not set)
-          "indexAnalyzer": "name of the indexing analyzer" (only if 'searchAnalyzer' is set and 'analyzer' is not set)
+          "analyzer": "name of hello analyzer used for search and indexing", (only if 'searchAnalyzer' and 'indexAnalyzer' are not set)
+          "searchAnalyzer": "name of hello search analyzer", (only if 'indexAnalyzer' is set and 'analyzer' is not set)
+          "indexAnalyzer": "name of hello indexing analyzer" (only if 'searchAnalyzer' is set and 'analyzer' is not set)
         }
       ],
       "suggesters": [
         {
           "name": "name of suggester",
-          "searchMode": "analyzingInfixMatching" (other modes may be added in the future),
+          "searchMode": "analyzingInfixMatching" (other modes may be added in hello future),
           "sourceFields": ["field1", "field2", ...]
         }
       ],
       "scoringProfiles": [
         {
           "name": "name of scoring profile",
-          "text": (optional, only applies to searchable fields) {
+          "text": (optional, only applies toosearchable fields) {
             "weights": {
               "searchable_field_name": relative_weight_value (positive numbers),
               ...
@@ -804,14 +804,14 @@ A continuación se reproduce la sintaxis del esquema usada para crear un índice
                 "constantBoostBeyondRange": true | false (default)
               },
               "freshness": {
-                "boostingDuration": "..." (value representing timespan leading to now over which boosting occurs)
+                "boostingDuration": "..." (value representing timespan leading toonow over which boosting occurs)
               },
               "distance": {
-                "referencePointParameter": "...", (parameter to be passed in queries to use as reference location, see "scoringParameter" for syntax details)
-                "boostingDistance": # (the distance in kilometers from the reference location where the boosting range ends)
+                "referencePointParameter": "...", (parameter toobe passed in queries toouse as reference location, see "scoringParameter" for syntax details)
+                "boostingDistance": # (hello distance in kilometers from hello reference location where hello boosting range ends)
               },
               "tag": {
-                "tagsParameter": "..." (parameter to be passed in queries to specify list of tags to compare against target field, see "scoringParameter" for syntax details)
+                "tagsParameter": "..." (parameter toobe passed in queries toospecify list of tags toocompare against target field, see "scoringParameter" for syntax details)
               }
             }
           ],
@@ -835,37 +835,37 @@ A continuación se reproduce la sintaxis del esquema usada para crear un índice
 
 Para obtener una solicitud correcta: "204 Sin contenido".
 
-De forma predeterminada, el cuerpo de respuesta estará vacío. No obstante, si el encabezado de la solicitud `Prefer` está establecido en `return=representation`, el cuerpo de la respuesta contendrá el JSON de la definición del índice que se actualizó. En este caso, el código de estado correcto será "200 Correcto".
+De forma predeterminada el cuerpo de la respuesta de hello estará vacío. Sin embargo, si hello `Prefer` encabezado de solicitud se establece demasiado`return=representation`, cuerpo de respuesta de hello contendrá hello JSON para la definición del índice Hola que se ha actualizado. En este caso, código de estado de hello correcto será "200 Aceptar".
 
 **Actualización de definiciones de índices con analizadores personalizados**
 
-Una vez definido un analizador, un tokenizador o un filtro de caracteres, no se puede modificar. Se pueden agregar unos nuevos a un índice existente solo si la marca de `allowIndexDowntime` está establecida en true en la solicitud de actualización del índice: 
+Una vez definido un analizador, un tokenizador o un filtro de caracteres, no se puede modificar. Nuevos pueden agregarse índice existente tooan solo si hello `allowIndexDowntime` tootrue se establece una marca en la solicitud de actualización de índice de hello: 
 
 `PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=[api-version]&allowIndexDowntime=true`
 
-Tenga en cuenta que esta operación hará que el índice pase a estar sin conexión durante al menos unos segundos, de modo que las solicitudes de indexación y consulta darán error. El rendimiento y la disponibilidad de escritura del índice pueden ser desiguales durante varios minutos después de que se actualice el índice, o durante más tiempo en el caso de índices muy grandes.
+Tenga en cuenta que esta operación, se colocará el índice sin conexión al menos unos segundos, haciendo que la indización y consulta solicita toofail. Disponibilidad de rendimiento y la escritura del índice de hello puede ser afectado durante varios minutos después de haber actualizado el índice de Hola o más índices muy grandes.
 
 <a name="ListIndexes"></a>
 
 ## <a name="list-indexes"></a>Índices de la lista
-La operación **Índices de la lista** devuelve una lista de los índices que se encuentran actualmente en el servicio de Búsqueda de Azure.
+Hola **índices de la lista** operación devuelve una lista de índices de hello actualmente en el servicio de búsqueda de Azure.
 
     GET https://[service name].search.windows.net/indexes?api-version=[api-version]
     api-key: [admin key]
 
 **Solicitud**
 
-HTTPS es necesario para todas las solicitudes de servicio. La solicitud **Índices de la lista** puede crearse mediante el método GET.
+HTTPS es necesario para todas las solicitudes de servicio. Hola **índices de la lista** solicitud puede crearse mediante el método GET de Hola.
 
-`api-version=[string]` (obligatorio). La versión de vista previa es `api-version=2015-02-28-Preview`. Consulte [Versiones del servicio de búsqueda](http://msdn.microsoft.com/library/azure/dn864560.aspx) para obtener más información y versiones alternativas.
+`api-version=[string]` (obligatorio). versión de vista previa de Hello es `api-version=2015-02-28-Preview`. Consulte [Versiones del servicio de búsqueda](http://msdn.microsoft.com/library/azure/dn864560.aspx) para obtener más información y versiones alternativas.
 
 **Encabezados de solicitud**
 
-En la lista siguiente se describen los encabezados de solicitud obligatorios y opcionales.
+Hola lista siguiente describe Hola necesarios y los encabezados de solicitud opcionales.
 
-* `api-key`: obligatorio. `api-key` se usa para autenticar la solicitud en su servicio de búsqueda. Es un valor de cadena único para el servicio. La solicitud **Índices de la lista** debe incluir un `api-key` establecido en una clave de administración (en lugar de una clave de consulta).
+* `api-key`: obligatorio. Hola `api-key` es tooauthenticate usado Hola solicitud tooyour servicio de búsqueda. Es un valor de cadena, el servicio de tooyour único. Hola **índices de la lista** solicitud debe incluir un `api-key` conjunto tooan clave de administración (como clave de consulta tooa lugar).
 
-También necesitará el nombre del servicio para construir la dirección URL de la solicitud. Puede obtener el nombre de servicio y `api-key` desde el panel de servicio en el Portal de Azure. Consulte [Crear un servicio de Búsqueda de Azure en el portal](search-create-service-portal.md) para obtener ayuda sobre la navegación en páginas.
+También necesitará Hola nombre tooconstruct Hola solicitud dirección URL del servicio. Puede obtener el nombre del servicio de Hola y `api-key` desde el panel de servicio en hello Portal de Azure. Vea [crear un servicio de búsqueda de Azure en el portal de hello](search-create-service-portal.md) para obtener ayuda de navegación de página.
 
 **Cuerpo de la solicitud**
 
@@ -894,11 +894,11 @@ A continuación se proporciona un cuerpo de respuesta de ejemplo:
       ]
     }
 
-Tenga en cuenta que puede filtrar la respuesta a solo las propiedades que le interesan. Por ejemplo, si solamente desea una lista de los nombres de índices, use la opción de consulta OData `$select` :
+Tenga en cuenta que puede filtrar Hola respuesta hacia abajo de propiedades de hello toojust que le interesa. Por ejemplo, si desea que solo una lista de nombres de índice, use Hola OData `$select` opción de consulta:
 
     GET /indexes?api-version=2015-02-28-Preview&$select=name
 
-En este caso, la respuesta del ejemplo anterior podría aparecer como sigue:
+En este caso, respuesta Hola Hola ejemplo anterior podría aparecer como sigue:
 
     {
       "value": [
@@ -908,31 +908,31 @@ En este caso, la respuesta del ejemplo anterior podría aparecer como sigue:
       ]
     }
 
-Se trata de una técnica útil para ahorrar ancho de banda, si tiene una gran cantidad de índices en el servicio de búsqueda.
+Se trata de un ancho de banda de toosave técnica útil si tiene una gran cantidad de índices en el servicio de búsqueda.
 
 <a name="GetIndex"></a>
 
 ## <a name="get-index"></a>Obtener índice
-La operación **Obtener índice** obtiene la definición del índice de Búsqueda de Azure.
+Hola **obtener índice** operación obtiene la definición del índice Hola de búsqueda de Azure.
 
     GET https://[service name].search.windows.net/indexes/[index name]?api-version=[api-version]
     api-key: [admin key]
 
 **Solicitud**
 
-HTTPS es necesario para las solicitudes de servicio. La solicitud **Obtener índices** puede crearse mediante el método GET.
+HTTPS es necesario para las solicitudes de servicio. Hola **obtener índice** solicitud puede crearse mediante el método GET de Hola.
 
-El [nombre de índice] del URI de la solicitud especifica qué índice se va a obtener de la colección de índices.
+Hola [nombre del índice] Hola URI de la solicitud especifica qué tooreturn de índice de la colección de índices de Hola.
 
-`api-version=[string]` (obligatorio). La versión de vista previa es `api-version=2015-02-28-Preview`. Consulte [Versiones del servicio de búsqueda](http://msdn.microsoft.com/library/azure/dn864560.aspx) para obtener más información y versiones alternativas.
+`api-version=[string]` (obligatorio). versión de vista previa de Hello es `api-version=2015-02-28-Preview`. Consulte [Versiones del servicio de búsqueda](http://msdn.microsoft.com/library/azure/dn864560.aspx) para obtener más información y versiones alternativas.
 
 **Encabezados de solicitud**
 
-En la lista siguiente se describen los encabezados de solicitud obligatorios y opcionales.
+Hola lista siguiente describe Hola necesarios y los encabezados de solicitud opcionales.
 
-* `api-key`: `api-key` se usa para autenticar la solicitud en su servicio de búsqueda. Es un valor de cadena único para el servicio. La solicitud **Obtener índice** debe incluir un `api-key` establecido en una clave de administración (en lugar de una clave de consulta).
+* `api-key`: Hola `api-key` es tooauthenticate usado Hola solicitud tooyour servicio de búsqueda. Es un valor de cadena, el servicio de tooyour único. Hola **obtener índice** solicitud debe incluir un `api-key` conjunto tooan clave de administración (como clave de consulta tooa lugar).
 
-También necesitará el nombre del servicio para construir la dirección URL de la solicitud. Puede obtener el nombre de servicio y `api-key` desde el panel de servicio en el Portal de Azure. Consulte [Crear un servicio de Búsqueda de Azure en el portal](search-create-service-portal.md) para obtener ayuda sobre la navegación en páginas.
+También necesitará Hola nombre tooconstruct Hola solicitud dirección URL del servicio. Puede obtener el nombre del servicio de Hola y `api-key` desde el panel de servicio en hello Portal de Azure. Vea [crear un servicio de búsqueda de Azure en el portal de hello](search-create-service-portal.md) para obtener ayuda de navegación de página.
 
 **Cuerpo de la solicitud**
 
@@ -942,31 +942,31 @@ Ninguno.
 
 Código de estado: al obtener una respuesta correcta, se visualiza 200 Correcto.
 
-Consulte el JSON de ejemplo en [creación y actualización de un índice](#CreateUpdateIndexExample) para obtener un ejemplo de la carga de respuesta.
+Vea el ejemplo de Hola JSON en [creación y actualización de un índice](#CreateUpdateIndexExample) para obtener un ejemplo de carga de respuesta de Hola.
 
 <a name="DeleteIndex"></a>
 
 ## <a name="delete-index"></a>Eliminar índice
-La operación **Eliminar índice** quita un índice y los documentos asociados del servicio de Búsqueda de Azure. Puede obtener el nombre del índice del panel de servicio en el Portal de Azure o de la API. Consulte [Índices de la lista](#ListIndexes) para obtener más información.
+Hola **Eliminar índice** operación quita un índice y los documentos asociados desde el servicio de búsqueda de Azure. Puede obtener el nombre del índice de Hola desde el panel de servicio de hello en hello portal de Azure o desde Hola API. Consulte [Índices de la lista](#ListIndexes) para obtener más información.
 
     DELETE https://[service name].search.windows.net/indexes/[index name]?api-version=[api-version]
     api-key: [admin key]
 
 **Solicitud**
 
-HTTPS es necesario para las solicitudes de servicio. La solicitud **Eliminar índice** puede crearse mediante el método DELETE.
+HTTPS es necesario para las solicitudes de servicio. Hola **Eliminar índice** solicitud puede crearse mediante el método de eliminación de Hola.
 
-El [nombre de índice] del URI de la solicitud especifica qué índice se va a eliminar de la colección de índices.
+Hola [nombre del índice] Hola URI de la solicitud especifica qué toodelete de índice de la colección de índices de Hola.
 
-`api-version=[string]` (obligatorio). La versión de vista previa es `api-version=2015-02-28-Preview`. Consulte [Versiones del servicio de búsqueda](http://msdn.microsoft.com/library/azure/dn864560.aspx) para obtener más información y versiones alternativas.
+`api-version=[string]` (obligatorio). versión de vista previa de Hello es `api-version=2015-02-28-Preview`. Consulte [Versiones del servicio de búsqueda](http://msdn.microsoft.com/library/azure/dn864560.aspx) para obtener más información y versiones alternativas.
 
 **Encabezados de solicitud**
 
-En la lista siguiente se describen los encabezados de solicitud obligatorios y opcionales.
+Hola lista siguiente describe Hola necesarios y los encabezados de solicitud opcionales.
 
-* `api-key`: obligatorio. `api-key` se usa para autenticar la solicitud en su servicio de búsqueda. Es un valor de cadena, único en su URL de servicio. La solicitud **Eliminar índice** debe incluir un encabezado `api-key` establecido en su clave de administración (en lugar de una clave de consulta).
+* `api-key`: obligatorio. Hola `api-key` es tooauthenticate usado Hola solicitud tooyour servicio de búsqueda. Es un valor de cadena único tooyour dirección URL del servicio. Hola **Eliminar índice** solicitud debe incluir un `api-key` encabezado establece clave de administrador de tooyour (como clave de consulta tooa lugar).
 
-También necesitará el nombre del servicio para construir la dirección URL de la solicitud. Puede obtener el nombre de servicio y `api-key` desde el panel de servicio en el Portal de Azure. Consulte [Crear un servicio de Búsqueda de Azure en el portal](search-create-service-portal.md) para obtener ayuda sobre la navegación en páginas.
+También necesitará Hola nombre tooconstruct Hola solicitud dirección URL del servicio. Puede obtener el nombre del servicio de Hola y `api-key` desde el panel de servicio en hello Portal de Azure. Vea [crear un servicio de búsqueda de Azure en el portal de hello](search-create-service-portal.md) para obtener ayuda de navegación de página.
 
 **Cuerpo de la solicitud**
 
@@ -979,31 +979,31 @@ Código de estado: al obtener una respuesta correcta, se visualiza 204 Sin conte
 <a name="GetIndexStats"></a>
 
 ## <a name="get-index-statistics"></a>Obtención de estadísticas de índice
-La operación **Obtener estadísticas de índice** obtiene de Búsqueda de Azure un recuento de documentos para el índice actual, más el uso del almacenamiento.
+Hola **obtener estadísticas de índice** operación devuelve de búsqueda de Azure, un número de documento para el índice actual de hello, además de uso de almacenamiento.
 
     GET https://[service name].search.windows.net/indexes/[index name]/stats?api-version=[api-version]
     api-key: [admin key]
 
 > [!NOTE]
-> Se recopilan estadísticas del tamaño de almacenamiento y el número de documento cada pocos minutos; es decir, no se hace en tiempo real. Por lo tanto, es posible que las estadísticas que devuelve esta API no reflejen los cambios causados por operaciones de indexación recientes.
+> Se recopilan estadísticas del tamaño de almacenamiento y el número de documento cada pocos minutos; es decir, no se hace en tiempo real. Por lo tanto, las estadísticas de hello devueltas por esta API pueden no reflejar cambios causado por operaciones de indización recientes.
 > 
 > 
 
 **Solicitud**
 
-HTTPS es necesario para todas las solicitudes de servicio. La solicitud **Obtener estadísticas de índices** puede crearse mediante el método GET.
+HTTPS es necesario para todas las solicitudes de servicio. Hola **obtener estadísticas de índice** solicitud puede crearse mediante el método GET de Hola.
 
-El [nombre de índice] del URI de la solicitud indica al servicio que devuelva estadísticas de índice para el índice especificado.
+Hola [nombre del índice] en el URI de solicitud de hello indica estadísticas de índice tooreturn Hola de servicio para el índice especificado de Hola.
 
-`api-version=[string]` (obligatorio). La versión de vista previa es `api-version=2015-02-28-Preview`. Consulte [Versiones del servicio de búsqueda](http://msdn.microsoft.com/library/azure/dn864560.aspx) para obtener más información y versiones alternativas.
+`api-version=[string]` (obligatorio). versión de vista previa de Hello es `api-version=2015-02-28-Preview`. Consulte [Versiones del servicio de búsqueda](http://msdn.microsoft.com/library/azure/dn864560.aspx) para obtener más información y versiones alternativas.
 
 **Encabezados de solicitud**
 
-En la lista siguiente se describen los encabezados de solicitud obligatorios y opcionales.
+Hola lista siguiente describe Hola necesarios y los encabezados de solicitud opcionales.
 
-* `api-key`: `api-key` se usa para autenticar la solicitud en su servicio de búsqueda. Es un valor de cadena único para el servicio. La solicitud **Obtener estadísticas de índice** debe incluir un encabezado `api-key` establecido en una clave de administración (en lugar de una clave de consulta).
+* `api-key`: Hola `api-key` es tooauthenticate usado Hola solicitud tooyour servicio de búsqueda. Es un valor de cadena, el servicio de tooyour único. Hola **obtener estadísticas de índice** solicitud debe incluir un `api-key` conjunto tooan clave de administración (como clave de consulta tooa lugar).
 
-También necesitará el nombre del servicio para construir la dirección URL de la solicitud. Puede obtener el nombre de servicio y `api-key` desde el panel de servicio en el Portal de Azure. Consulte [Crear un servicio de Búsqueda de Azure en el portal](search-create-service-portal.md) para obtener ayuda sobre la navegación en páginas.
+También necesitará Hola nombre tooconstruct Hola solicitud dirección URL del servicio. Puede obtener el nombre del servicio de Hola y `api-key` desde el panel de servicio en hello Portal de Azure. Vea [crear un servicio de búsqueda de Azure en el portal de hello](search-create-service-portal.md) para obtener ayuda de navegación de página.
 
 **Cuerpo de la solicitud**
 
@@ -1013,17 +1013,17 @@ Ninguno.
 
 Código de estado: al obtener una respuesta correcta, se visualiza 200 Correcto.
 
-El cuerpo de la respuesta está en el formato siguiente:
+cuerpo de respuesta de Hello es Hola siguiendo el formato:
 
     {
       "documentCount": number,
-      "storageSize": number (size of the index in bytes)
+      "storageSize": number (size of hello index in bytes)
     }
 
 <a name="TestAnalyzer"></a>
 
 ## <a name="test-analyzer"></a>Analizador de prueba
-La **API de análisis** muestra cómo un analizador descompone el texto en tokens.
+Hola **API analizar** muestra cómo un analizador divide el texto en tokens.
 
     POST https://[service name].search.windows.net/indexes/[index name]/analyze?api-version=[api-version]
     Content-Type: application/json
@@ -1031,49 +1031,49 @@ La **API de análisis** muestra cómo un analizador descompone el texto en token
 
 **Solicitud**
 
-HTTPS es necesario para todas las solicitudes de servicio. La solicitud de la **API de análisis** se puede crear mediante el método POST.
+HTTPS es necesario para todas las solicitudes de servicio. Hola **API analizar** solicitud puede crearse mediante el método POST de Hola.
 
-`api-version=[string]` (obligatorio). La versión de vista previa es `api-version=2015-02-28-Preview`. Consulte [Versiones del servicio de búsqueda](http://msdn.microsoft.com/library/azure/dn864560.aspx) para obtener más información y versiones alternativas.
+`api-version=[string]` (obligatorio). versión de vista previa de Hello es `api-version=2015-02-28-Preview`. Consulte [Versiones del servicio de búsqueda](http://msdn.microsoft.com/library/azure/dn864560.aspx) para obtener más información y versiones alternativas.
 
 **Encabezados de solicitud**
 
-En la lista siguiente se describen los encabezados de solicitud obligatorios y opcionales.
+Hola lista siguiente describe Hola necesarios y los encabezados de solicitud opcionales.
 
-* `api-key`: `api-key` se usa para autenticar la solicitud en su servicio de búsqueda. Es un valor de cadena único para el servicio. La solicitud de **API de análisis** debe incluir un valor de `api-key` establecido en una clave de administración (en lugar de una clave de consulta).
+* `api-key`: Hola `api-key` es tooauthenticate usado Hola solicitud tooyour servicio de búsqueda. Es un valor de cadena, el servicio de tooyour único. Hola **API analizar** solicitud debe incluir un `api-key` conjunto tooan clave de administración (como clave de consulta tooa lugar).
 
-También necesitará el nombre del índice y el nombre del servicio para construir la dirección URL de la solicitud. Puede obtener el nombre de servicio y `api-key` desde el panel de servicio en el Portal de Azure. Consulte [Crear un servicio de Búsqueda de Azure en el portal](search-create-service-portal.md) para obtener ayuda sobre la navegación en páginas.
+También necesitará el nombre del índice de Hola y Hola nombre tooconstruct Hola solicitud dirección URL del servicio. Puede obtener el nombre del servicio de Hola y `api-key` desde el panel de servicio en hello Portal de Azure. Vea [crear un servicio de búsqueda de Azure en el portal de hello](search-create-service-portal.md) para obtener ayuda de navegación de página.
 
 **Cuerpo de la solicitud**
 
     {
-      "text": "Text to analyze",
+      "text": "Text tooanalyze",
       "analyzer": "analyzer_name"
     }
 
 o
 
     {
-      "text": "Text to analyze",
+      "text": "Text tooanalyze",
       "tokenizer": "tokenizer_name",
       "tokenFilters": (optional) [ "token_filter_name" ],
       "charFilters": (optional) [ "char_filter_name" ]
     }
 
-`analyzer_name`, `tokenizer_name`, `token_filter_name` y `char_filter_name` deben ser nombres válidos de analizadores, tokenizadores, filtros de token y filtros de caracteres predefinidos o personalizados para el índice. Para obtener más información sobre el proceso de análisis léxico, consulte [Análisis en Búsqueda de Azure](https://aka.ms/azsanalysis).
+Hola `analyzer_name`, `tokenizer_name`, `token_filter_name` y `char_filter_name` necesita toobe nombres válidos de analizadores predefinidos o personalizados, Tokenizer, token filtros y filtros de char para índice de Hola. toolearn más información sobre el proceso de Hola de análisis léxico vea [análisis en búsqueda de Azure](https://aka.ms/azsanalysis).
 
 **Respuesta**
 
 Código de estado: al obtener una respuesta correcta, se visualiza 200 Correcto.
 
-El cuerpo de la respuesta está en el formato siguiente:
+cuerpo de respuesta de Hello es Hola siguiendo el formato:
 
     {
       "tokens": [
         {
           "token": string (token),
-          "startOffset": number (index of the first character of the token),
-          "endOffset": number (index of the last character of the token),
-          "position": number (position of the token in the input text)
+          "startOffset": number (index of hello first character of hello token),
+          "endOffset": number (index of hello last character of hello token),
+          "position": number (position of hello token in hello input text)
         },
         ...
       ]
@@ -1084,7 +1084,7 @@ El cuerpo de la respuesta está en el formato siguiente:
 **Solicitud**
 
     {
-      "text": "Text to analyze",
+      "text": "Text tooanalyze",
       "analyzer": "standard"
     }
 
@@ -1117,20 +1117,20 @@ El cuerpo de la respuesta está en el formato siguiente:
 <a name="DocOps"></a>
 
 ## <a name="document-operations"></a>Operaciones del documento
-En Búsqueda de Azure, se almacena un índice en la nube y se rellena con documentos JSON que se cargan en el servicio. Todos los documentos que se cargan comprenden el corpus de los datos de búsqueda. Los documentos contienen campos, algunos de los cuales se acortan en términos de búsqueda cuando se cargan. El segmento de URL `/docs` de la API de Búsqueda de Azure representa la colección de documentos en un índice. Todas las operaciones realizadas en la colección, como cargar, combinar, eliminar o consultar documentos se producen en el contexto de un índice único, por lo que las direcciones URL de estas operaciones siempre se iniciarán mediante `/indexes/[index name]/docs` para un nombre de índice especificado.
+En búsqueda de Azure, un índice se almacena en la nube de Hola y rellena con los documentos JSON que cargar toohello servicio. Todos los documentos de Hola que se cargan comprenden corpus de Hola de los datos de búsqueda. Los documentos contienen campos, algunos de los cuales se acortan en términos de búsqueda cuando se cargan. Hola `/docs` segmento de dirección URL en hello API de búsqueda de Azure representa la colección de Hola de documentos en un índice. Todas las operaciones realizadas en la colección de hello como cargar, combinar, eliminar o consultar documentos que tienen lugar en el contexto de Hola de un índice único, por lo que las direcciones de URL de Hola para estas operaciones siempre empezarán por `/indexes/[index name]/docs` para un nombre de índice especificado.
 
-El código de aplicación debe generar documentos JSON para cargarlos en Azure Search o se puede usar un [indexador](https://msdn.microsoft.com/library/dn946891.aspx) para cargar documentos si el origen de datos es Azure SQL Database o Azure Cosmos DB. Normalmente, los índices se rellenan desde un único conjunto de datos que suministre.
+El código de aplicación debe generar JSON documentos tooupload tooAzure búsqueda o puede usar un [indizador](https://msdn.microsoft.com/library/dn946891.aspx) tooload documentos si el origen de datos de hello es la base de datos de SQL Azure o base de datos de Azure Cosmos. Normalmente, los índices se rellenan desde un único conjunto de datos que suministre.
 
-Debe planear disponer de un documento para cada elemento que desee buscar. Una aplicación de alquiler de películas puede disponer de un documento por película, una aplicación de escaparate podría tener un documento por SKU, una aplicación de software con fines pedagógicos en línea podría tener un documento por curso, una empresa de investigación podría tener un documento para cada documento académico de su repositorio, y así sucesivamente.
+Debe contar con un documento para cada elemento que desee toosearch. Una aplicación de alquiler de películas puede disponer de un documento por película, una aplicación de escaparate podría tener un documento por SKU, una aplicación de software con fines pedagógicos en línea podría tener un documento por curso, una empresa de investigación podría tener un documento para cada documento académico de su repositorio, y así sucesivamente.
 
-Los documentos constan de uno o varios campos. Los campos pueden contener texto acortado por Búsqueda de Azure a términos de búsqueda, así como los valores no acortados o que no sean de texto que pueden utilizarse en filtros o perfiles de puntuación. Los nombres, tipos de datos y funciones de búsqueda admitidos para cada campo están determinados por el esquema de índice. Uno de los campos de cada esquema de índice debe designarse como identificador, y cada documento debe tener un valor para el campo de identificador que identifica ese documento de manera única en el índice. Todos los demás campos de documento son opcionales y se establecerán de manera predeterminada en un valor null si no se especifican. Tenga en cuenta que los valores null no ocupan espacio en el índice de búsqueda.
+Los documentos constan de uno o varios campos. Los campos pueden contener texto acortado por Búsqueda de Azure a términos de búsqueda, así como los valores no acortados o que no sean de texto que pueden utilizarse en filtros o perfiles de puntuación. Hello nombres, tipos de datos y características de búsqueda admitidas para cada campo se determinan por el esquema de índice Hola. Uno de los campos de hello en cada esquema de índice debe designarse como identificador, y cada documento debe tener un valor para el campo de Id. de Hola que identifica ese documento en el índice de Hola. Todos los demás campos de documento son opcionales y serán tooa de valor null si no se especifican. Tenga en cuenta que los valores null no ocupan espacio en el índice de búsqueda de Hola.
 
-Para poder cargar documentos, debe haber creado el índice en el servicio. Consulte [Crear índice](#CreateIndex) para obtener más información acerca de este primer paso.
+Antes de poder cargar documentos, debe ya ha creado el índice de hello en el servicio de Hola. Consulte [Crear índice](#CreateIndex) para obtener más información acerca de este primer paso.
 
 <a name="AddOrUpdateDocuments"></a>
 
 ## <a name="add-update-or-delete-documents"></a>Agregar, actualizar o eliminar documentos
-Puede cargar, combinar, combinar o cargar o eliminar documentos en un índice especificado mediante HTTP POST. Para números elevados de actualizaciones, se recomienda efectuar el procesamiento por lotes de documentos (hasta 1.000 documentos por lote o aproximadamente 16 MB por lote).
+Puede cargar, combinar, combinar o cargar o eliminar documentos en un índice especificado mediante HTTP POST. Para un gran número de actualizaciones, se recomienda el procesamiento por lotes de documentos (too1000 documentos por lote) o aproximadamente 16 MB por lote.
 
     POST https://[service name].search.windows.net/indexes/[index name]/docs/index?api-version=[api-version]
     Content-Type: application/json
@@ -1140,22 +1140,22 @@ Puede cargar, combinar, combinar o cargar o eliminar documentos en un índice es
 
 HTTPS es necesario para todas las solicitudes de servicio. Puede cargar, combinar, combinar o cargar o eliminar documentos en un índice especificado mediante HTTP POST.
 
-El URI de solicitud incluye eI [nombre de índice], y especifica en qué índice publicar los documentos. Solo se pueden publicar documentos en un índice de cada vez.
+Hola URI de solicitud incluye [nombre del índice], especificar qué documentos de toopost de índice. Índice de tooone documentos sólo se puede registrar a la vez.
 
-`api-version=[string]` (obligatorio). La versión de vista previa es `api-version=2015-02-28-Preview`. Consulte [Versiones del servicio de búsqueda](http://msdn.microsoft.com/library/azure/dn864560.aspx) para obtener más información y versiones alternativas.
+`api-version=[string]` (obligatorio). versión de vista previa de Hello es `api-version=2015-02-28-Preview`. Consulte [Versiones del servicio de búsqueda](http://msdn.microsoft.com/library/azure/dn864560.aspx) para obtener más información y versiones alternativas.
 
 **Encabezados de solicitud**
 
-En la lista siguiente se describen los encabezados de solicitud obligatorios y opcionales.
+Hola lista siguiente describe Hola necesarios y los encabezados de solicitud opcionales.
 
-* `Content-Type`: obligatorio. Establézcalo en `application/json`
-* `api-key`: obligatorio. `api-key` se usa para autenticar la solicitud en su servicio de búsqueda. Es un valor de cadena único para el servicio. La solicitud **Agregar documentos** debe incluir un encabezado `api-key` establecido en su clave de administración (en lugar de una clave de consulta).
+* `Content-Type`: obligatorio. Establezca esta propiedad demasiado`application/json`
+* `api-key`: obligatorio. Hola `api-key` es tooauthenticate usado Hola solicitud tooyour servicio de búsqueda. Es un valor de cadena, el servicio de tooyour único. Hola **agregar documentos** solicitud debe incluir un `api-key` encabezado establece clave de administrador de tooyour (como clave de consulta tooa lugar).
 
-También necesitará el nombre del servicio para construir la dirección URL de la solicitud. Puede obtener el nombre de servicio y `api-key` desde el panel de servicio en el Portal de Azure. Consulte [Crear un servicio de Búsqueda de Azure en el portal](search-create-service-portal.md) para obtener ayuda sobre la navegación en páginas.
+También necesitará Hola nombre tooconstruct Hola solicitud dirección URL del servicio. Puede obtener el nombre del servicio de Hola y `api-key` desde el panel de servicio en hello Portal de Azure. Vea [crear un servicio de búsqueda de Azure en el portal de hello](search-create-service-portal.md) para obtener ayuda de navegación de página.
 
 **Cuerpo de la solicitud**
 
-El cuerpo de la solicitud contiene uno o más documentos para indexar. Los documentos se identifican mediante una clave única. Cada documento está asociado a una acción: carga, combinación, combinación o carga o eliminación. Las solicitudes de carga deben incluir los datos del documento como un conjunto de pares de clave/valor.
+cuerpo de saludo de solicitud de hello contiene uno o más toobe documentos indizados. Los documentos se identifican mediante una clave única. Cada documento está asociado a una acción: carga, combinación, combinación o carga o eliminación. Carga las solicitudes deben incluir los datos del documento Hola como un conjunto de pares clave/valor.
 
     {
       "value": [
@@ -1176,14 +1176,14 @@ El cuerpo de la solicitud contiene uno o más documentos para indexar. Los docum
 
 **Acciones de documentos**
 
-* `upload`: una acción de carga es similar a un "upsert" donde se insertará el documento si es nuevo y se actualizará/reemplazará si existe. Tenga en cuenta que se reemplazarán todos los campos en el caso de la actualización.
-* `merge`: la combinación actualiza un documento existente con los campos especificados. Si el documento no existe, se producirá un error en la combinación. Cualquier campo que se especifica en una combinación reemplazará al campo existente en el documento. Aquí se incluyen los campos de tipo `Collection(Edm.String)`. Por ejemplo, si el documento contiene un campo "etiquetas" con el valor `["budget"]` y ejecuta una combinación con el valor `["economy", "pool"]` para "etiquetas", el valor final del campo "etiquetas" será `["economy", "pool"]`. **No** será `["budget", "economy", "pool"]`.
-* `mergeOrUpload`: se comporta como `merge` si ya existe un documento con la clave especificada en el índice. Si el documento no existe, se comporta como `upload` con un nuevo documento.
-* `delete`: la eliminación quita el documento especificado del índice. Tenga en cuenta que los campos que especifique en una operación `delete` , que no sean el campo de clave, se omitirán. Si desea quitar un campo individual de un documento, use `merge` en su lugar y simplemente establezca el campo explícitamente en `null`.
+* `upload`: Una acción de carga es similar tooan "upsert" donde se insertan si es nuevo y actualiza/reemplaza si existe el documento de Hola. Tenga en cuenta que todos los campos se reemplazan en caso de actualización de Hola.
+* `merge`: Merge actualiza una existente de documentos con hello especifica campos. Si no existe el documento de hello, se producirá un error en la combinación de Hola. Cualquier campo que se especifica en una combinación reemplazará el campo existente de hello en el documento de Hola. Aquí se incluyen los campos de tipo `Collection(Edm.String)`. Por ejemplo, si hello documento contiene un campo "tags" con el valor `["budget"]` y ejecutar una combinación con el valor `["economy", "pool"]` para "etiquetas", valor final de Hola de campo Hola "tags" será `["economy", "pool"]`. **No** será `["budget", "economy", "pool"]`.
+* `mergeOrUpload`: se comporta como `merge` si un documento con hello clave dada ya existe en el índice de Hola. Si el documento de hello no existe, ésta se comporta como `upload` con un nuevo documento.
+* `delete`: La eliminación quita documento especificado Hola Hola índice. Tenga en cuenta que los campos especifique en una `delete` operación distinta de campo de clave de Hola se pasará por alto. Si desea tooremove un campo individual de un documento, use `merge` en su lugar y simplemente defina el campo de hello explícitamente demasiado`null`.
 
 **Respuesta**
 
-Código de estado: se obtendrá 200 Correcto con una respuesta correcta, lo que significa que todos los elementos se han indexado correctamente. Esto se indica mediante el `status` establecimiento de la propiedad en true para todos los elementos, así como el establecimiento de la propiedad `statusCode` en 201 (para documentos recién cargados) o en 200 (para documentos combinados o eliminados):
+Código de estado: se obtendrá 200 Correcto con una respuesta correcta, lo que significa que todos los elementos se han indexado correctamente. Esto se indica mediante hello `status` propiedad se ha establecido tootrue para todos los elementos, así como hello `statusCode` propiedad se ha establecido tooeither 201 (para los documentos recién cargados) o 200 (para los documentos combinados o eliminados):
 
     {
       "value": [
@@ -1208,14 +1208,14 @@ Código de estado: se obtendrá 200 Correcto con una respuesta correcta, lo que 
       ]
     }  
 
-Se devolverá un código de estado 207 (varios estados) solo con que un elemento no se indexe correctamente. Los elementos que no se indexaron tienen el campo `status` establecido en false. Las propiedades `errorMessage` y `statusCode` indicarán el motivo del error de indexación:
+Se devolverá un código de estado 207 (varios estados) solo con que un elemento no se indexe correctamente. Elementos que no se han indizado tienen hello `status` toofalse de conjunto de campos. Hola `errorMessage` y `statusCode` propiedades indicará el motivo Hola Hola indización de error:
 
     {
       "value": [
         {
           "key": "unique_key_of_document_1",
           "status": false,
-          "errorMessage": "The search service is too busy to process this document. Please try again later.",
+          "errorMessage": "hello search service is too busy tooprocess this document. Please try again later.",
           "statusCode": 503
         },
         {
@@ -1227,13 +1227,13 @@ Se devolverá un código de estado 207 (varios estados) solo con que un elemento
         {
           "key": "unique_key_of_document_3",
           "status": false,
-          "errorMessage": "Index is temporarily unavailable because it was updated with the 'allowIndexDowntime' flag set to 'true'. Please try again later.",
+          "errorMessage": "Index is temporarily unavailable because it was updated with hello 'allowIndexDowntime' flag set too'true'. Please try again later.",
           "statusCode": 422
         }
       ]
     }  
 
-La tabla siguiente explica los distintos códigos de estado por documento que se pueden devolver en la respuesta. Tenga en cuenta que algunos indican problemas con la solicitud, mientras que otros indican condiciones de error temporales. En este último caso debe volver a intentarlo después de un tiempo.
+Hello en la tabla siguiente explica Hola distintos cada documento códigos de estado que se pueden devolver en la respuesta de Hola. Tenga en cuenta que algunos indican problemas con la solicitud de hello, mientras que otros usuarios indican condiciones de error temporal. Hola este último que debe reintentar después de un retraso.
 
 <table style="font-size:12">
     <tr>
@@ -1246,7 +1246,7 @@ La tabla siguiente explica los distintos códigos de estado por documento que se
         <td>200</td>
         <td>Documento correctamente modificado o eliminado.</td>
         <td>N/D</td>
-        <td>Las operaciones de eliminación son <a href="https://en.wikipedia.org/wiki/Idempotence">idempotentes</a>. Es decir, incluso si no existe una clave de documento en el índice, intentar una operación de eliminación con esa clave producirá un código de estado 200.</td>
+        <td>Las operaciones de eliminación son <a href="https://en.wikipedia.org/wiki/Idempotence">idempotentes</a>. Es decir, incluso si una clave de documento no existe en el índice de hello, intentar una operación de eliminación con esa clave se producirá en un código de 200 estado.</td>
     </tr>
     <tr>
         <td>201</td>
@@ -1256,39 +1256,39 @@ La tabla siguiente explica los distintos códigos de estado por documento que se
     </tr>
     <tr>
         <td>400</td>
-        <td>Se produjo un error en el documento que ha impedido que se indexe.</td>
+        <td>Se produjo un error en el documento de Hola que impidió que se está indizando.</td>
         <td>No</td>
-        <td>El mensaje de error en la respuesta indica cuál es el problema con el documento.</td>
+        <td>mensaje de error de Hola en respuesta Hola indicará cuál es el problema con el documento de Hola.</td>
     </tr>
     <tr>
         <td>404</td>
-        <td>No se pudo combinar el documento porque no existe la clave especificada en el índice.</td>
+        <td>no se pudieron combinar documento Hola porque Hola clave dada no existe en el índice de Hola.</td>
         <td>No</td>
         <td>Este error no se produce durante las cargas ya que estas crean nuevos documentos y no se producen durante las eliminaciones porque son <a href="https://en.wikipedia.org/wiki/Idempotence">idempotentes</a>.</td>
     </tr>
     <tr>
         <td>409</td>
-        <td>Se detectó un conflicto de versión al intentar indexar un documento.</td>
+        <td>Se detectó un conflicto de versión al tratar de tooindex un documento.</td>
         <td>Sí</td>
-        <td>Esto puede ocurrir si intenta indexar el mismo documento más de una vez al mismo tiempo.</td>
+        <td>Esto puede ocurrir al que está tratando de hello tooindex mismo documento más de una vez al mismo tiempo.</td>
     </tr>
     <tr>
         <td>422</td>
-        <td>El índice no está disponible temporalmente porque se ha actualizado con el indicador 'allowIndexDowntime' establecido en 'true'.</td>
+        <td>índice de Hello no está disponible temporalmente porque se actualizó con allowIndexDowntime' hello' marca conjunto too'true'.</td>
         <td>Sí</td>
         <td></td>
     </tr>
     <tr>
         <td>503</td>
-        <td>El servicio de búsqueda no está disponible temporalmente, posiblemente debido a una carga elevada.</td>
+        <td>El servicio de búsqueda no está disponible temporalmente, posiblemente debido a carga tooheavy.</td>
         <td>Sí</td>
-        <td>En este caso, el código debe esperar antes de reintentar ya que, de lo contrario, se arriesga a prolongar la no disponibilidad del servicio.</td>
+        <td>El código debe esperar antes de reintentar en este caso, o se arriesga a prolongar la no disponibilidad del servicio de Hola.</td>
     </tr>
 </table> 
 
-**Nota**: Si el código de cliente encuentra con frecuencia una respuesta 207, una razón posible es que el sistema está bajo carga. Puede confirmar esto comprobando la propiedad `statusCode` para 503. En tal caso, es recomendable ***limitar las solicitudes de indexación***. De lo contrario, si el tráfico de indexación de tráfico no se reduce, es posible que el sistema comience a rechazar todas las solicitudes mediante errores 503.
+**Tenga en cuenta**: si el código de cliente encuentra con frecuencia una respuesta 207, una razón posible es que sistema Hola está bajo carga. Puede confirmarlo comprobando hello `statusCode` propiedad 503. Si éste es el caso de hello, se recomienda ***la limitación de peticiones de indización***. En caso contrario, si el tráfico de indización no remite, el sistema de hello podría empezar a rechazar todas las solicitudes con 503 errores.
 
-El código de estado 429 indica que se ha superado la cuota del número de documentos por índice. Debe crear un nuevo índice o actualizar para obtener límites de capacidad superiores.
+Código de estado 429 indica que se ha superado la cuota Hola número de documentos por índice. Debe crear un nuevo índice o actualizar para obtener límites de capacidad superiores.
 
 **Ejemplo:**
 
@@ -1341,7 +1341,7 @@ El código de estado 429 indica que se ha superado la cuota del número de docum
 <a name="SearchDocs"></a>
 
 ## <a name="search-documents"></a>Buscar documentos
-La operación de **búsqueda** se emite como una solicitud GET o POST y especifica parámetros que ofrecen los criterios necesarios para seleccionar los documentos coincidentes.
+A **búsqueda** operación se emite como una solicitud GET o POST y especifica los parámetros que proporcionen a los criterios de Hola para seleccionar documentos asociados.
 
     GET https://[service name].search.windows.net/indexes/[index name]/docs?[query parameters]
     api-key: [admin or query key]
@@ -1350,22 +1350,22 @@ La operación de **búsqueda** se emite como una solicitud GET o POST y especifi
     Content-Type: application/json
     api-key: [admin or query key]
 
-**Cuándo usar POST en lugar de GET**
+**Cuando este tipo de toouse en lugar de obtener**
 
-Cuando use HTTP GET para llamar a la API de **búsqueda** , deberá tener en cuenta que la longitud de la URL de la solicitud no puede superar los 8 KB. Esto suele ser suficiente para la mayoría de las aplicaciones. Sin embargo, algunas aplicaciones generan consultas muy extensas o expresiones de filtro OData. Para estas aplicaciones, el uso de HTTP POST es una opción mejor porque permite filtros y consultas mayores que GET. Con POST, el número de términos o cláusulas en una consulta es el factor limitador, no el tamaño de la consulta básica, ya que el límite de tamaño de la solicitud POST es de 16 MB aproximadamente.
+Cuando se utiliza HTTP GET toocall hello **búsqueda** API, deberá toobe tenga en cuenta que longitud Hola de dirección URL de solicitud de hello no puede superar los 8 KB. Esto suele ser suficiente para la mayoría de las aplicaciones. Sin embargo, algunas aplicaciones generan consultas muy extensas o expresiones de filtro OData. Para estas aplicaciones, el uso de HTTP POST es una opción mejor porque permite filtros y consultas mayores que GET. Con POST, número de Hola de términos o cláusulas en una consulta está limitando Hola factor, no el tamaño de Hola de consulta sin procesar de hello como límite de tamaño de hello solicitud de POST es aproximadamente 16 MB.
 
 > [!NOTE]
-> Aunque el límite de tamaño de la solicitud POST es muy grande, las consultas y las expresiones de filtro de búsqueda no pueden ser arbitrariamente complejas. Consulte la [sintaxis de consulta de Lucene](https://msdn.microsoft.com/library/mt589323.aspx) y la [sintaxis de expresiones de OData](https://msdn.microsoft.com/library/dn798921.aspx) para más información sobre las limitaciones de complejidad de consultas y filtros de búsqueda.
+> Aunque el límite de tamaño de solicitud POST hello es muy grande, las consultas de búsqueda y las expresiones de filtro no pueden ser arbitrariamente complejas. Consulte la [sintaxis de consulta de Lucene](https://msdn.microsoft.com/library/mt589323.aspx) y la [sintaxis de expresiones de OData](https://msdn.microsoft.com/library/dn798921.aspx) para más información sobre las limitaciones de complejidad de consultas y filtros de búsqueda.
 > 
 > 
 
 **Solicitud**
 
-HTTPS es necesario para las solicitudes de servicio. La solicitud **Búsqueda** puede crearse mediante los método GET o POST.
+HTTPS es necesario para las solicitudes de servicio. Hola **búsqueda** solicitud puede crearse mediante Hola GET o métodos POST.
 
-El URI de solicitud especifica qué índice se va a consultar para todos los documentos que coinciden con los parámetros de consulta. Los parámetros se especifican en la cadena de consulta en el caso de solicitudes GET y en el cuerpo de la solicitud en el caso de las solicitudes POST.
+URI de solicitud de Hello especifica qué tooquery de índice, para todos los documentos que coinciden con los parámetros de Hola. Se especifican en la cadena de consulta de hello en caso de hello de solicitudes GET, y en la solicitud de Hola solicita cuerpo en caso de hello de publicación.
 
-Como práctica recomendada al crear solicitudes GET, recuerde [codificar con URL](https://msdn.microsoft.com/library/system.uri.escapedatastring.aspx) los parámetros de consulta específicos al llamar a la API de REST directamente. Para las operaciones de **Búsqueda** , esto incluye:
+Como práctica recomendada al crear las solicitudes GET, recuerde demasiado[codifica como URL](https://msdn.microsoft.com/library/system.uri.escapedatastring.aspx) consulta específica parámetros cuando se llama a Hola API de REST directamente. Para las operaciones de **Búsqueda** , esto incluye:
 
 * `$filter`
 * `facet`
@@ -1374,85 +1374,85 @@ Como práctica recomendada al crear solicitudes GET, recuerde [codificar con URL
 * `search`
 * `moreLikeThis`
 
-Solo se recomienda la codificación de direcciones URL en los parámetros de consulta anterior. Si codifica con URL involuntariamente la cadena de consulta completa (todo lo situado después de la?), las solicitudes se dividirán.
+Solo se recomienda la codificación de direcciones URL en hello por encima de los parámetros de consulta. Si se codifica como URL accidentalmente hello cadena de consulta completa (todos los elementos después de hello?), se interrumpirán las solicitudes.
 
-Además, la codificación con URL solo es necesaria cuando se llama directamente a la API de REST directamente con GET. No se requiere ninguna codificación de URL cuando se llama a la **Búsqueda** mediante POST o cuando se usa la [biblioteca de cliente .NET](https://msdn.microsoft.com/library/dn951165.aspx)que controla la codificación de direcciones URL en su lugar.
+Además, la codificación de direcciones URL solo es necesaria cuando se llama a Hola obtener API de REST directamente mediante. Codificación de dirección URL no es necesaria cuando se llama a **búsqueda** mediante POST, o al usar hello [biblioteca de cliente .NET](https://msdn.microsoft.com/library/dn951165.aspx), que controla la codificación de direcciones URL para usted.
 
 <a name="SearchQueryParameters"></a>
 **Parámetros de consulta**
 
-**búsqueda** acepta varios parámetros que ofrecen criterios de consulta y que también especifican el comportamiento de búsqueda. Ofrece estos parámetros en la cadena de consulta URL al llamar a la **búsqueda** mediante GET y como propiedades JSON en el cuerpo de solicitud al llamar a la **búsqueda** mediante POST. La sintaxis de algunos parámetros es algo diferente entre GET y POST. Estas diferencias se indican como aplicables a continuación:
+**búsqueda** acepta varios parámetros que ofrecen criterios de consulta y que también especifican el comportamiento de búsqueda. Proporcionar la cadena de consulta de estos parámetros en la dirección URL de hello al llamar a **búsqueda** a través de GET y como propiedades JSON en el cuerpo de la solicitud de hello al llamar a **búsqueda** a través de POST. sintaxis de Hola para algunos parámetros difiere ligeramente entre GET y POST. Estas diferencias se indican como aplicables a continuación:
 
-`search=[string]` (opcional): el texto que se debe buscar. Se busca en los campos `searchable` de forma predeterminada a menos que se especifique `searchFields`. Al realizar búsquedas en campos `searchable`, se limita el propio texto de la búsqueda, por lo que los distintos términos pueden separarse mediante un espacio en blanco (por ejemplo: `search=hello world`). Para encontrar un término, use `*` (esto puede ser útil para las consultas de filtro booleano). Omitir este parámetro tiene el mismo efecto que establecerlo en `*`. Para obtener información específica sobre la sintaxis de búsqueda, consulte [Sintaxis de consulta simple](https://msdn.microsoft.com/library/dn798920.aspx) .
+`search=[string]`(opcional): Hola toosearch de texto para. Se busca en los campos `searchable` de forma predeterminada a menos que se especifique `searchFields`. Al buscar `searchable` se acorta campos, Hola texto de búsqueda, por lo que se pueden separar varios términos con espacios en blanco (por ejemplo: `search=hello world`). usar de cualquier término, toomatch `*` (puede ser útil para las consultas de filtro booleano). Si se omite este parámetro tiene el mismo efecto que si se establece demasiado de hello`*`. Vea [sintaxis de consulta Simple](https://msdn.microsoft.com/library/dn798920.aspx) para obtener información específica acerca de la sintaxis de búsqueda de Hola.
 
-* **Nota**: los resultados a veces pueden ser sorprendentes al consultar sobre campos `searchable`. El tokenizer incluye una lógica para controlar los casos comunes en texto en inglés como apóstrofos, comas en números, etc. Por ejemplo, `search=123,456` hallará el único término 123,456 en lugar de los términos individuales 123 y 456, ya que en los números grandes en inglés se usan comas como separadores de miles. Por este motivo, se recomienda usar espacios en blanco en lugar de signos de puntuación para separar los términos en el parámetro `search`.
+* **Tenga en cuenta**: resultados de Hola a veces pueden ser sorprendentes cuando se consulta sobre `searchable` campos. tokenizer Hola incluye lógica toohandle casos comunes tooEnglish texto como apóstrofo, comas en números, etcetera. Por ejemplo, `search=123,456` coincidirá con un término 123,456 en lugar de términos individuales de hello 123 y 456, dado que se utilizan comas como separadores de miles para números grandes en inglés. Por este motivo, se recomienda utilizar el espacio en blanco en lugar de términos de puntuación tooseparate Hola `search` parámetro.
 
-`searchMode=any|all` (opcional, tiene como valor predeterminado `any`): si alguno o todos los términos de búsqueda deben coincidir con el fin de contar el documento como una coincidencia.
+`searchMode=any|all`(opcional, valor predeterminado es demasiado`any`): indica si alguno o todos los términos de búsqueda de hello deben coincidir en el documento de pedido toocount hello como una coincidencia.
 
-`searchFields=[string]` (opcional): la lista separada por comas de nombres de campo para buscar el texto especificado. Los campos de destino deben estar marcados como `searchable`.
+`searchFields=[string]`(opcional): lista de Hola de toosearch de nombres de campo separados por comas para hello el texto especificado. Los campos de destino deben estar marcados como `searchable`.
 
-`queryType=simple|full` (opcional, tiene como valor predeterminado `simple`): cuando se establece en "simple", el texto de búsqueda se interpreta mediante un lenguaje de consulta simple que permite símbolos como +, * y "". Las consultas se evalúan en todos los campos de búsqueda (o campos indicados en `searchFields`) en cada documento de manera predeterminada. Cuando se establece el tipo de consulta en `full` , el texto de búsqueda se interpreta mediante el lenguaje de consulta de Lucene que permite realizar búsquedas específicas de campos y ponderadas. Para obtener información específica sobre las sintaxis de búsqueda, consulte [Sintaxis de consulta simple](https://msdn.microsoft.com/library/dn798920.aspx) y [Sintaxis de consulta de Lucene](https://msdn.microsoft.com/library/mt589323.aspx). 
+`queryType=simple|full`(opcional, valor predeterminado es demasiado`simple`): cuando set demasiado "simple" Buscar texto se interpreta usando un lenguaje de consulta simple que permite símbolos como +, * y "". Las consultas se evalúan en todos los campos de búsqueda (o campos indicados en `searchFields`) en cada documento de manera predeterminada. Cuando se establece demasiado el tipo de consulta de hello`full` texto de búsqueda se interpreta con lenguaje de consulta de Lucene de Hola que permite realizar búsquedas específicas de los campos y ponderadas. Vea [sintaxis de consulta Simple](https://msdn.microsoft.com/library/dn798920.aspx) y [sintaxis de consulta de Lucene](https://msdn.microsoft.com/library/mt589323.aspx) para obtener información específica sobre la sintaxis de búsqueda de Hola. 
 
 > [!NOTE]
-> No está admitido el intervalo de búsqueda en el lenguaje de consulta de Lucene, es preferible usar $filter que ofrece una funcionalidad similar.
+> Intervalo de búsqueda en hello Lucene no se admite el lenguaje de consulta en favor de $filter que ofrece una funcionalidad similar.
 > 
 > 
 
-`moreLikeThis=[key]` (opcional) **Importante:** esta característica solo está disponible en `2015-02-28-Preview`. Esta opción no se puede usar en una consulta que contiene el parámetro de búsqueda de texto, `search=[string]`. El parámetro `moreLikeThis` busca documentos que son similares al documento especificado por la clave del documento. Cuando se realiza una solicitud de búsqueda con `moreLikeThis`, se genera una lista de términos de búsqueda en función de la frecuencia y la rareza de los términos en el documento de origen. Estos términos se usan a continuación para realizar la solicitud. De forma predeterminada, se considera el contenido de todos los campos `searchable` a menos que se use `searchFields` para restringir los campos que se buscan.  
+`moreLikeThis=[key]` (opcional) **Importante:**  esta característica solo está disponible en `2015-02-28-Preview`. Esta opción no se puede usar en una consulta que contiene el parámetro de búsqueda de texto hello, `search=[string]`. Hola `moreLikeThis` parámetro busca documentos que son similares documento toohello especificado por clave de documento de Hola. Cuando se realiza una solicitud de búsqueda con `moreLikeThis`, se genera una lista de términos de búsqueda en función de la frecuencia de Hola y escasez de términos en el documento de origen de Hola. Estos términos son utilizado toomake Hola solicitud. De forma predeterminada, Hola contenido de todos los `searchable` campos se consideran a menos que `searchFields` es toorestrict usa los campos que se buscan.  
 
-`$skip=#` (opcional): el número de resultados de búsqueda que se omiten; no puede ser superior a 100.000. Si necesita examinar documentos en secuencia pero no puede usar `$skip` debido a esta limitación, utilice `$orderby` en una clave totalmente ordenada y `$filter` con una consulta por rango en su lugar.
+`$skip=#`(opcional): número de Hola de búsqueda de resultados tooskip; No puede ser superior a 100 000. Si necesita tooscan documentos en secuencia pero no se puede usar `$skip` debido a la limitación toothis, considere el uso de `$orderby` en una clave totalmente ordenada y `$filter` con un intervalo de consulta en su lugar.
 
 > [!NOTE]
 > Al llamar a la **búsqueda** mediante POST, este parámetro se denomina `skip` en lugar de `$skip`.
 > 
 > 
 
-`$top=#` (opcional): número de resultados de búsqueda para recuperar. Se puede usar junto con `$skip` para implementar la paginación del lado del cliente de los resultados de la búsqueda.
+`$top=#`(opcional): número de Hola de búsqueda resultados tooretrieve. Esto puede utilizarse junto con `$skip` tooimplement paginación por parte del cliente de resultados de la búsqueda.
 
 > [!NOTE]
 > Al llamar a la **búsqueda** mediante POST, este parámetro se denomina `top` en lugar de `$top`.
 > 
 > 
 
-`$count=true|false` (opcional, tiene como valor predeterminado `false`): especifica si se va a obtener el número total de resultados. Este es el recuento de todos los documentos que coinciden con los parámetros `search` y `$filter`, omitiendo `$top` y `$skip`. Establecer este valor en `true` puede afectar al rendimiento. Tenga en cuenta que el número devuelto será una aproximación.
+`$count=true|false`(opcional, valor predeterminado es demasiado`false`)-especifica si toofetch Hola número total de resultados. Es Hola recuento de todos los documentos que coinciden con hello `search` y `$filter` parámetros, se omitirá `$top` y `$skip`. Este valor demasiado`true` puede afectar al rendimiento. Tenga en cuenta que devuelve el recuento de hello es una aproximación.
 
 > [!NOTE]
 > Al llamar a la **búsqueda** mediante POST, este parámetro se denomina `count` en lugar de `$count`.
 > 
 > 
 
-`$orderby=[string]` (opcional): lista de expresiones separadas por comas por la que ordenar los resultados. Cada expresión puede ser un nombre de campo o una llamada a la función `geo.distance()` . Cada expresión puede ir seguida de `asc` para indicar el orden ascendente y de `desc` para indicar el orden descendente. El valor predeterminado es ascendente. Los empates se resolverán por la puntuación de coincidencia de los documentos. Si no se especifica ningún `$orderby` , el orden predeterminado será descendente por puntuación de coincidencia del documento. Hay un límite de 32 cláusulas para `$orderby`.
+`$orderby=[string]`(opcional): una lista de expresiones separadas por comas toosort Hola resultados por. Cada expresión puede ser un nombre de campo o una llamada toohello `geo.distance()` función. Cada expresión puede ir seguida de `asc` tooindicated ascendente, y `desc` tooindicate descendente. valor predeterminado de Hello es ascendente. El empate se rompe por las puntuaciones de coincidencia de Hola de documentos. Si no hay ningún `$orderby` se especifica, criterio de ordenación predeterminado de hello es descendente según la puntuación de coincidencia de documento. Hay un límite de 32 cláusulas para `$orderby`.
 
 > [!NOTE]
 > Al llamar a la **búsqueda** mediante POST, este parámetro se denomina `orderby` en lugar de `$orderby`.
 > 
 > 
 
-`$select=[string]` (opcional): lista de campos separados por comas para recuperar. Si no se especifica nada, se incluirán todos los campos marcados como recuperables en el esquema. También se pueden solicitar explícitamente todos los campos estableciendo este parámetro en `*`.
+`$select=[string]`(opcional): una lista de campos separados por comas tooretrieve. Si no se especifica, se incluyen todos los campos marcados como recuperables en el esquema de Hola. Puede solicitar explícitamente todos los campos, establezca este parámetro demasiado`*`.
 
 > [!NOTE]
 > Al llamar a la **búsqueda** mediante POST, este parámetro se denomina `select` en lugar de `$select`.
 > 
 > 
 
-`facet=[string]` (cero o más): un campo por el que establecer facetas. Es posible que la cadena contenga parámetros para personalizar la faceta expresada como pares `name:value` separados por comas. Los parámetros válidos son:
+`facet=[string]`(cero o más) - un toofacet campo por. Opcionalmente, Hola de cadena puede contener facetas de parámetros toocustomize Hola expresado como separada por comas `name:value` pares. Los parámetros válidos son:
 
-* `count` (número máximo de términos de faceta; el valor predeterminado es 10). No hay ningún máximo, pero los valores más altos incurren en una penalización de rendimiento correspondiente, especialmente si el campo con facetas contiene un gran número de términos únicos.
-  * Por ejemplo: `facet=category,count:5` obtiene las cinco categorías principales en los resultados de la faceta.  
-  * **Nota:** Si el parámetro `count` es menor que el número de términos únicos, es posible que los resultados no sean precisos. Esto es debido a la manera en que se distribuyen las consultas de facetas entre las particiones. Aumentar `count` generalmente aumenta la precisión de los recuentos de términos, pero ello afecta al rendimiento.
-* `sort` (uno de `count` para ordenar de manera *descendente* por número, `-count` para ordenar de manera *ascendente* por número, `value` para ordenar de manera *ascendente* por valor o `-value` para ordenar de manera *descendente* por valor)
-  * Por ejemplo: `facet=category,count:3,sort:count` obtiene las tres categorías principales en los resultados de la faceta en orden descendente por el número de documentos con el nombre de cada ciudad. Por ejemplo, si las tres categorías principales son Presupuesto, Motel y Lujo, y Presupuesto tiene 5 resultados, Motel tiene 6 y Lujo tiene 4, a continuación, los depósitos se colocarán en el orden siguiente: Motel, Presupuesto, Lujo.
-  * Por ejemplo: `facet=rating,sort:-value` genera depósitos para todas las clasificaciones posibles en orden descendente por valor. Por ejemplo, si las clasificaciones son de 1 a 5, los depósitos se ordenarán como 5, 4, 3, 2, 1 independientemente de cuántos documentos coincidan con cada clasificación.
+* `count` (número máximo de términos de faceta; el valor predeterminado es 10). No hay ningún máximo, pero los valores más altos incurren en una disminución correspondiente del rendimiento, especialmente si el campo por facetas hello contiene un gran número de términos únicos.
+  * Por ejemplo: `facet=category,count:5` obtiene Hola cinco categorías principales en los resultados de la faceta.  
+  * **Tenga en cuenta**: si hello `count` parámetro es menor que el número de Hola de términos únicos, resultados de hello pueden no ser exacto. Esto es debido a las consultas de facetas se distribuyen entre las particiones de forma de toohello. Aumentar `count` generalmente aumenta Hola precisión de recuentos de término de hello, pero con un costo de rendimiento.
+* `sort`(una de `count` toosort *descendente* por número, `-count` toosort *ascendente* por número, `value` toosort *ascendente* por valor, o `-value` toosort *descendente* por valor)
+  * Por ejemplo: `facet=category,count:3,sort:count` obtiene Hola tres categorías principales en los resultados de la faceta en orden descendente por número de Hola de documentos con cada nombre de ciudad. Por ejemplo, si tres categorías principales Hola son presupuesto, Motel y lujo y presupuesto tiene 5 resultados, Motel tiene 6 y lujo tiene 4, a continuación, hello depósitos será en orden de hello Motel, presupuesto, lujo.
+  * Por ejemplo: `facet=rating,sort:-value` genera depósitos para todas las clasificaciones posibles en orden descendente por valor. Por ejemplo, si las clasificaciones de hello son de 1 too5, Hola cubos se ordenarán 5, 4, 3, 2, 1, independientemente de cuántos documentos coinciden con cada clasificación.
 * `values` (valores numéricos delimitados por canalización o `Edm.DateTimeOffset` que especifican un conjunto dinámico de valores de entrada de faceta)
-  * Por ejemplo: `facet=baseRate,values:10|20` genera tres depósitos: uno para la tarifa base 0 hasta, pero sin incluir la tarifa 10, uno para 10 hasta pero sin incluir 20 y uno para 20 o superiores.
+  * Por ejemplo: `facet=baseRate,values:10|20` genera tres cubos: uno para la tarifa base 0 seguridad toobut sin incluir 10, uno para 10 arriba toobut sin incluir 20 y uno para 20 o superior.
   * Por ejemplo: `facet=lastRenovationDate,values:2010-02-01T00:00:00Z` genera dos depósitos: uno para hoteles reformados antes de febrero de 2010 y otro para hoteles reformados desde el 1 de febrero de 2010 en adelante.
 * `interval` (intervalo de número entero mayor que 0 para números, o `minute`, `hour`, `day`, `week`, `month`, `quarter`, `year` para los valores de fecha y hora)
   * Por ejemplo: `facet=baseRate,interval:100` genera depósitos basados en intervalos de tarifas base de tamaño de 100. Por ejemplo, si las tarifas base se encuentran entre 60 y 600 dólares, habrá depósitos para 0-100, 100-200, 300 200, 300-400, 400-500 y 500-600.
   * Por ejemplo: `facet=lastRenovationDate,interval:year` genera un depósito para cada año en que se han reformado los hoteles.
-* `timeoffset` ([+-] hh: mm, [+-] hhmm, o [+-] hh) `timeoffset` es opcional. Solo se puede combinar con la opción `interval` y solo cuando se aplica a un campo de tipo `Edm.DateTimeOffset`. El valor especifica la diferencia horaria UTC para explicar la configuración de los límites de tiempo.
-  * Por ejemplo: `facet=lastRenovationDate,interval:day,timeoffset:-01:00` usa el límite de día que comienza a la 01:00:00 UTC (medianoche en la zona horaria de destino)
-* **Nota**:`count` y `sort` se pueden combinar en la misma especificación de faceta, pero no se pueden combinar con `interval` o `values`, y `interval` y `values` no se pueden combinar entre sí.
-* **Nota**: Las facetas de intervalo de fecha y hora se calculan en función de la hora UTC si `timeoffset` no se ha especificado. Por ejemplo, para `facet=lastRenovationDate,interval:day`, el límite de día comienza a las 00:00:00 UTC. 
+* `timeoffset` ([+-] hh: mm, [+-] hhmm, o [+-] hh) `timeoffset` es opcional. Solo puede combinarse con hello `interval` opción y sólo cuando aplica tooa campo de tipo `Edm.DateTimeOffset`. valor de Hello especifica tooaccount desplazamiento de hora UTC hello para establecer los límites de tiempo.
+  * Por ejemplo: `facet=lastRenovationDate,interval:day,timeoffset:-01:00` usa Hola límites de día que empieza en 01:00:00 UTC (medianoche en la zona horaria de destino de hello)
+* **Tenga en cuenta**: `count` y `sort` se pueden combinar en hello misma especificación de faceta, pero no se puede combinar con `interval` o `values`, y `interval` y `values` no se pueden combinar entre sí.
+* **Nota**: Las facetas de intervalo de fecha y hora se calculan en función de la hora UTC si `timeoffset` no se ha especificado. Por ejemplo: para `facet=lastRenovationDate,interval:day`, límites de día de hello comienza en 00:00:00 UTC. 
 
 > [!NOTE]
 > Al llamar a la **búsqueda** mediante POST, este parámetro se denomina `facets` en lugar de `facet`. Además, lo especifica como una matriz JSON de cadenas, donde cada cadena es una expresión de faceta independiente.
@@ -1468,51 +1468,51 @@ Además, la codificación con URL solo es necesaria cuando se llama directamente
 
 `highlight=[string]` (opcional): conjunto de nombres de campos delimitado por comas usado para los resaltados de referencias. Solo se pueden usar `searchable` campos para resaltar las referencias.
 
-`highlightPreTag=[string]` (opcional, se establece de forma predeterminada en `<em>`): una etiqueta de cadena que se antepone al resaltado de referencias. Debe establecerse con `highlightPostTag`.
+`highlightPreTag=[string]`(opcional, valor predeterminado es demasiado`<em>`): una cadena de etiqueta que se antepone toohit resaltados. Debe establecerse con `highlightPostTag`.
 
 > [!NOTE]
-> Al llamar a la **búsqueda** mediante GET, los caracteres reservados en la dirección URL deben estar codificados con porcentaje (por ejemplo, %23 en vez de #).
+> Al llamar a **búsqueda** con GET, caracteres reservados en la dirección URL de hello deben estar codificados en porcentaje (por ejemplo, % 23 en lugar de #).
 > 
 > 
 
-`highlightPostTag=[string]` (opcional, se establece de forma predeterminada en `</em>`): una etiqueta de cadena que se antepone al resaltado de referencias. Debe establecerse con `highlightPreTag`.
+`highlightPostTag=[string]`(opcional, valor predeterminado es demasiado`</em>`)-una etiqueta de cadena que se anexa información destacada de toohit. Debe establecerse con `highlightPreTag`.
 
 > [!NOTE]
-> Al llamar a la **búsqueda** mediante GET, los caracteres reservados en la dirección URL deben estar codificados con porcentaje (por ejemplo, %23 en vez de #).
+> Al llamar a **búsqueda** con GET, caracteres reservados en la dirección URL de hello deben estar codificados en porcentaje (por ejemplo, % 23 en lugar de #).
 > 
 > 
 
-`scoringProfile=[string]` (opcional): nombre de un perfil de puntuación para evaluar puntuaciones de coincidencias de documentos coincidentes con el fin de ordenar los resultados.
+`scoringProfile=[string]`(opcional): nombre Hola de una puntuación tooevaluate perfil puntuaciones de coincidencia para documentos coincidentes en los resultados de orden toosort Hola.
 
-`scoringParameter=[string]` (cero o más): indica los valores para cada parámetro definido en una función de puntuación (por ejemplo, `referencePointParameter`) con el formato `name-value1,value2,...`.
+`scoringParameter=[string]`(cero o más): indican los valores de hello para cada parámetro definido en una función de puntuación (por ejemplo, `referencePointParameter`) con formato de hello `name-value1,value2,...`.
 
-* Por ejemplo, si el perfil de puntuación define una función con un parámetro denominado "mylocation", la opción de cadena de consulta sería `&scoringParameter=mylocation--122.2,44.8`. El primer guión separa el nombre de la lista de valores, mientras que el segundo guión es parte del primer valor (longitud en este ejemplo).
-* Para los parámetros de puntuación así como para el aprovechamiento de etiquetas que contienen comas, es posible separar tales valores de la lista mediante el uso de comillas simples. Si los propios valores contienen comillas simples, puede separarlos duplicando la comilla simple.
-  * Por ejemplo, si tiene un parámetro de aprovechamiento de etiqueta llamado mytag y desea aprovechar los valores de la etiqueta Hello, O' Brien y Smith, la opción de la cadena de consulta sería `&scoringParameter=mytag-'Hello, O''Brien',Smith`. Tenga en cuenta que las comillas solo son necesarias para los valores que contienen comas.
+* Por ejemplo, si Hola perfil de puntuación define una función con un parámetro llamado "mylocation" opción de la cadena de consulta de hello sería `&scoringParameter=mylocation--122.2,44.8`. guión primera Hola separa el nombre de Hola de lista de valores de hello, mientras guión segundo Hola forma parte del primer valor de hello (longitud en este ejemplo).
+* Para los parámetros de puntuación como etiqueta de impulso puede contener comas, puede omitir cualquier tales valores de lista de hello con comillas simples. Si los propios valores de hello contengan comillas simples, se puede omitir duplicando.
+  * Por ejemplo, si tiene una etiqueta impulso parámetro denominado "mytag" y desea tooboost en etiqueta Hola valores "¡Hello, o ' Brien" y "Smith", consulta Hola cadena opción sería `&scoringParameter=mytag-'Hello, O''Brien',Smith`. Tenga en cuenta que las comillas solo son necesarias para los valores que contienen comas.
 
 > [!NOTE]
 > Al llamar a la **búsqueda** mediante POST, este parámetro se denomina `scoringParameters` en lugar de `scoringParameter`. Además, lo especifica como una matriz JSON de cadenas, donde cada cadena es un par `name-values` independiente.
 > 
 > 
 
-`minimumCoverage` (opcional, el valor predeterminado es 100): un número entre 0 y 100 que indica el porcentaje del índice que debe estar cubierto por una consulta de búsqueda para que la consulta se realice correctamente. De forma predeterminada, todo el índice debe estar disponible o `Search` se devolverá el código de estado HTTP 503. Si establece `minimumCoverage` y `Search` se realiza correctamente, devolverá HTTP 200 e incluye un valor `@search.coverage` en la respuesta que indica el porcentaje del índice que se incluyó en la consulta.
+`minimumCoverage`(opcional, tiene como valor predeterminado too100) - un número entre 0 y 100 que indica el porcentaje de Hola de índice de Hola que debe ser abarcado por una consulta de búsqueda en orden para hello consulta toobe notificarse como tales. De forma predeterminada, todo índice de hello debe estar disponible o `Search` se devolverá el código de estado HTTP 503. Si establece `minimumCoverage` y `Search` se realiza correctamente, devolverá HTTP 200 e incluyen una `@search.coverage` valor de respuesta de Hola que indica el porcentaje de Hola de índice de Hola que se incluyó en la consulta de Hola.
 
 > [!NOTE]
-> Establecer este parámetro en un valor inferior a 100 puede ser útil para garantizar la disponibilidad de la búsqueda incluso para servicios con una única réplica. Sin embargo, no se garantiza que todos los documentos coincidentes existan en los resultados de búsqueda. Si la recuperación de búsqueda es más importante para la aplicación que la disponibilidad, es mejor dejar `minimumCoverage` en su valor predeterminado de 100.
+> Establecer este valor de parámetro tooa menor que 100 puede ser útil para garantizar la disponibilidad de búsqueda incluso para servicios con una única réplica. Sin embargo, no todos los documentos coincidentes se garantiza que toobe presente en los resultados de búsqueda de Hola. Si la recuperación de búsqueda es más importante aplicación tooyour de disponibilidad, es mejor tooleave `minimumCoverage` en su valor predeterminado de 100.
 > 
 > 
 
-`api-version=[string]` (obligatorio). La versión de vista previa es `api-version=2015-02-28-Preview`. Consulte [Versiones del servicio de búsqueda](http://msdn.microsoft.com/library/azure/dn864560.aspx) para obtener más información y versiones alternativas.
+`api-version=[string]` (obligatorio). versión de vista previa de Hello es `api-version=2015-02-28-Preview`. Consulte [Versiones del servicio de búsqueda](http://msdn.microsoft.com/library/azure/dn864560.aspx) para obtener más información y versiones alternativas.
 
-Nota: Para esta operación, `api-version` se especifica como un parámetro de consulta en la dirección URL sin tener en cuenta si se llama a la **Búsqueda** con GET o POST.
+Nota: Para realizar esta operación, Hola `api-version` se especifica como un parámetro de consulta de dirección URL de hello independientemente de si se llama a **búsqueda** con GET o POST.
 
 **Encabezados de solicitud**
 
-En la lista siguiente se describen los encabezados de solicitud obligatorios y opcionales.
+Hola lista siguiente describe Hola necesarios y los encabezados de solicitud opcionales.
 
-* `api-key`: `api-key` se usa para autenticar la solicitud en su servicio de búsqueda. Es un valor de cadena, único en su URL de servicio. La solicitud de **búsqueda** puede especificar una clave de administración o una clave de consulta para `api-key`.
+* `api-key`: Hola `api-key` es tooauthenticate usado Hola solicitud tooyour servicio de búsqueda. Es un valor de cadena único tooyour dirección URL del servicio. Hola **búsqueda** solicitud puede especificar una clave de administración o la clave de consulta para `api-key`.
 
-También necesitará el nombre del servicio para construir la dirección URL de la solicitud. Puede obtener el nombre de servicio y `api-key` desde el panel de servicio en el Portal de Azure. Consulte [Crear un servicio de Búsqueda de Azure en el portal](search-create-service-portal.md) para obtener ayuda sobre la navegación en páginas.
+También necesitará Hola nombre tooconstruct Hola solicitud dirección URL del servicio. Puede obtener el nombre del servicio de Hola y `api-key` desde el panel de servicio en hello Portal de Azure. Vea [crear un servicio de búsqueda de Azure en el portal de hello](search-create-service-portal.md) para obtener ayuda de navegación de página.
 
 **Cuerpo de la solicitud**
 
@@ -1527,7 +1527,7 @@ Para POST:
       "highlight": "highlight_field_1, highlight_field_2, ...",
       "highlightPreTag": "pre_tag",
       "highlightPostTag": "post_tag",
-      "minimumCoverage": # (% of index that must be covered to declare query successful; default 100),
+      "minimumCoverage": # (% of index that must be covered toodeclare query successful; default 100),
       "moreLikeThis": "document_key" (mutually exclusive with "search" parameter),
       "orderby": "orderby_expression",
       "scoringParameters": [ "scoring_parameter_1", "scoring_parameter_2", ... ],
@@ -1542,9 +1542,9 @@ Para POST:
 
 **Continuación de las respuestas de búsqueda parciales**
 
-A veces, Búsqueda de Azure no puede devolver todos los resultados solicitados en una sola respuesta de Búsqueda. Esto puede ocurrir por diferentes motivos; por ejemplo, cuando la consulta solicita demasiados documentos al no especificar `$top` o especificar un valor para `$top` que es demasiado grande. En tales casos, Búsqueda de Azure incluirá la anotación `@odata.nextLink` en el cuerpo de respuesta, y también `@search.nextPageParameters` si era una solicitud POST. Puede usar los valores de estas anotaciones para formular otra solicitud de Búsqueda a fin de obtener la siguiente parte de la respuesta de búsqueda. Esto se denomina ***continuación*** de la solicitud de búsqueda original, y las anotaciones se suelen llamar ***tokens de continuación***. Consulte [el ejemplo siguiente](#SearchResponse) para obtener más información sobre la sintaxis de estas anotaciones y el lugar en que aparecen en el cuerpo de respuesta. 
+A veces, búsqueda de Azure no puede devolver que todos los Hola resultados solicitados en una única respuesta de búsqueda. Esto puede ocurrir por diferentes motivos, como consultas de hello las solicitudes de demasiados documentos especificando no `$top` o especificar un valor para `$top` que es demasiado grande. En tales casos, búsqueda de Azure incluirá hello `@odata.nextLink` anotación en el cuerpo de la respuesta de hello y también `@search.nextPageParameters` si era una solicitud POST. Puede usar valores de hello de estas anotaciones tooformulate otra búsqueda solicitud tooget Hola siguiente parte de la respuesta de la búsqueda de Hola. Esto se denomina una ***continuación*** de solicitud de búsqueda original de Hola y Hola generalmente se denominan anotaciones ***tokens de continuación***. Vea [ejemplo Hola siguiente](#SearchResponse) para obtener más información acerca de la sintaxis de Hola de estas anotaciones y que aparecen en el cuerpo de la respuesta de Hola. 
 
-Los motivos por los que Búsqueda de Azure podría devolver tokens de continuación son específicos de la implementación y están sujetos a cambio. Los clientes sólidos deben estar siempre preparados para controlar los casos en que se devuelven menos documentos de lo esperado y se incluye un token de continuación para seguir recuperando documentos. Tenga en cuenta también que debe usar el mismo método HTTP como solicitud original para poder continuar. Por ejemplo, si envía una solicitud GET, las solicitudes de continuación que envíe también deben utilizar GET (y lo mismo para POST).
+¿Por qué la búsqueda de Azure podría devolver tokens de continuación de razones de Hello son toochange específico de la implementación y está sujeto. Los clientes sólidos siempre deben ser toohandle listo casos donde se devuelven documentos menos de lo esperado y un token de continuación es toocontinue incluye la recuperación de documentos. También tenga en cuenta que debe usar Hola mismo método HTTP como solicitud original de hello en orden toocontinue. Por ejemplo, si envía una solicitud GET, las solicitudes de continuación que envíe también deben utilizar GET (y lo mismo para POST).
 
 <a name="SearchResponse"></a>
 **Respuesta**
@@ -1552,9 +1552,9 @@ Los motivos por los que Búsqueda de Azure podría devolver tokens de continuaci
 Código de estado: al obtener una respuesta correcta, se visualiza 200 Correcto.
 
     {
-      "@odata.count": # (if $count=true was provided in the query),
-      "@search.coverage": # (if minimumCoverage was provided in the query),
-      "@search.facets": { (if faceting was specified in the query)
+      "@odata.count": # (if $count=true was provided in hello query),
+      "@search.coverage": # (if minimumCoverage was provided in hello query),
+      "@search.facets": { (if faceting was specified in hello query)
         "facet_field": [
           {
             "value": facet_entry_value (for non-range facets),
@@ -1565,7 +1565,7 @@ Código de estado: al obtener una respuesta correcta, se visualiza 200 Correcto.
         ],
         ...
       },
-      "@search.nextPageParameters": { (request body to fetch the next page of results if not all results could be returned in this response and Search was called with POST)
+      "@search.nextPageParameters": { (request body toofetch hello next page of results if not all results could be returned in this response and Search was called with POST)
         "count": ... (value from request body if present),
         "facets": ... (value from request body if present),
         "filter": ... (value from request body if present),
@@ -1597,58 +1597,58 @@ Código de estado: al obtener una respuesta correcta, se visualiza 200 Correcto.
         },
         ...
       ],
-      "@odata.nextLink": (URL to fetch the next page of results if not all results could be returned in this response; Applies to both GET and POST)
+      "@odata.nextLink": (URL toofetch hello next page of results if not all results could be returned in this response; Applies tooboth GET and POST)
     }
 
 **Ejemplos:**
 
-Puede encontrar ejemplos adicionales en la página [Sintaxis de expresiones de OData para la Búsqueda de Azure](https://msdn.microsoft.com/library/azure/dn798921.aspx) .
+Puede encontrar ejemplos adicionales en hello [sintaxis de expresiones de OData para búsqueda de Azure](https://msdn.microsoft.com/library/azure/dn798921.aspx) página.
 
-1)    Busque en el índice por fecha en orden descendente.
+1)    Hola de búsqueda índice descendente por fecha.
 
     GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2015-02-28-Preview
 
     POST /indexes/hotels/docs/search?api-version=2015-02-28-Preview { "search": "*", "orderby": "lastRenovationDate desc" }
 
-2)    En una búsqueda con facetas, busque en el índice y recupere las facetas de categorías, clasificación, etiquetas, así como elementos con baseRate en intervalos específicos:
+2)    En una búsqueda por facetas, busque en el índice de Hola y recupere facetas para categorías, clasificación, etiquetas, así como elementos con baseRate en intervalos específicos:
 
     GET /indexes/hotels/docs?search=test&facet=category&facet=rating&facet=tags&facet=baseRate,values:80|150|220&api-version=2015-02-28-Preview
 
     POST /indexes/hotels/docs/search?api-version=2015-02-28-Preview { "search": "test", "facets": [ "category", "rating", "tags", "baseRate,values:80|150|220" ] }
 
-3)    Mediante un filtro, restrinja los resultados de la consulta con facetas anterior después de que el usuario haga clic en la tarifa 3 y en la categoría "Motel":
+3)    Mediante un filtro, restringir los resultados de consulta por facetas anterior Hola después Hola usuario hace clic en clasificación 3 y la categoría "Motel":
 
     GET /indexes/hotels/docs?search=test&facet=tags&facet=baseRate,values:80|150|220&$filter=rating eq 3 and category eq 'Motel'&api-version=2015-02-28-Preview
 
     POST /indexes/hotels/docs/search?api-version=2015-02-28-Preview { "search": "test", "facets": [ "tags", "baseRate,values:80|150|220" ], "filter": "rating eq 3 and category eq 'Motel'" }
 
-4) En una búsqueda con facetas, establezca un límite superior en términos únicos devueltos en una consulta. El valor predeterminado es 10, pero se puede aumentar o disminuir este valor utilizando el parámetro `count` en el atributo `facet`:
+4) En una búsqueda con facetas, establezca un límite superior en términos únicos devueltos en una consulta. valor predeterminado de Hello es 10, pero puede aumentar o disminuir este valor mediante hello `count` parámetro en hello `facet` atributo:
 
     GET /indexes/hotels/docs?search=test&facet=city,count:5&api-version=2015-02-28-Preview
 
     POST /indexes/hotels/docs/search?api-version=2015-02-28-Preview  {    "search": "test",    "facets": [ "city,count:5" ]  }
 
-5)    Busque en el índice en campos específicos; por ejemplo, un campo específico del idioma:
+5)    Hola índice de búsqueda en campos específicos; Por ejemplo, un campo específico del idioma:
 
     GET /indexes/hotels/docs?search=hôtel&searchFields=description_fr&api-version=2015-02-28-Preview
 
     POST /indexes/hotels/docs/search?api-version=2015-02-28-Preview { "search": "hôtel", "searchFields": "description_fr" }
 
-6) Busque en el índice en varios campos. Por ejemplo, puede almacenar y consultar los campos de búsqueda en varios idiomas, todo ello en el mismo índice.  Si las descripciones de inglés y francés coexisten en el mismo documento, puede devolver cualquiera en los resultados de la consulta:
+6) Buscar Hola índice en varios campos. Por ejemplo, puede almacenar y campos de consulta de búsqueda en varios idiomas, todo dentro de Hola mismo índice.  Si las descripciones de inglés y francés coexisten en hello mismo documento, puede devolver hello en uno o todos los resultados de la consulta:
 
     GET /indexes/hotels/docs?search=hotel&searchFields=description,description_fr&api-version=2015-02-28-Preview
 
     POST /indexes/hotels/docs/search?api-version=2015-02-28-Preview  {    "search": "hotel",    "searchFields": "description, description_fr"  }
 
-Tenga en cuenta que solo puede consultar un índice de cada vez. No cree varios índices para cada idioma a menos que planee consultar una de cada vez.
+Tenga en cuenta que solo puede consultar un índice de cada vez. No cree varios índices para cada idioma a menos que piense tooquery uno a la vez.
 
-7)    Paginación: obtenga la primera página de los elementos (el tamaño de la página es 10):
+7)    Paginación: página 1 de Get hello de elementos (el tamaño de página es 10):
 
     GET /indexes/hotels/docs?search=*&$skip=0&$top=10&api-version=2015-02-28-Preview
 
     POST /indexes/hotels/docs/search?api-version=2015-02-28-Preview { "search": "*", "skip": 0, "top": 10 }
 
-8)    Paginación: obtenga la segunda página de los elementos (el tamaño de la página es 10):
+8)    Paginación: página 2 º de Get hello de elementos (el tamaño de página es 10):
 
     GET /indexes/hotels/docs?search=*&$skip=10&$top=10&api-version=2015-02-28-Preview
 
@@ -1666,33 +1666,33 @@ Tenga en cuenta que solo puede consultar un índice de cada vez. No cree varios 
 
     POST /indexes/hotels/docs/search?api-version=2015-02-28-Preview {  "filter": "(baseRate ge 60 and baseRate lt 300) or hotelName eq 'Fancy Stay'" }
 
-11) Busque en el índice y obtenga fragmentos con resaltado de referencias.
+11) Busque en el índice de Hola y devolver fragmentos con resultados destacados
 
     GET /indexes/hotels/docs?search=something&highlight=description&api-version=2015-02-28-Preview
 
     POST /indexes/hotels/docs/search?api-version=2015-02-28-Preview {   "search": "something",   "highlight": "description" }
 
-12) Busque en el índice y obtenga documentos ordenados de más próximos a más alejados de una ubicación de referencia.
+12) Busque en el índice de Hola y devuelva documentos ordenados desde más de cerca toofarther fuera de una ubicación de referencia
 
     GET /indexes/hotels/docs?search=something&$orderby=geo.distance(location, geography'POINT(-122.12315 47.88121)')&api-version=2015-02-28-Preview
 
     POST /indexes/hotels/docs/search?api-version=2015-02-28-Preview {   "search": "something",   "orderby": "geo.distance(location, geography'POINT(-122.12315 47.88121)')" }
 
-13) Busque en el índice suponiendo que haya un perfil de puntuaciones denominado "geográfico" con dos funciones de puntuación de distancia, una para definir un parámetro llamado "currentLocation" y otra para definir un parámetro llamado "lastLocation".
+13) Búsqueda Hola índice suponiendo que existe es un perfil de puntuación llamado "geo" con dos funciones de puntuación de distancia, uno define un parámetro llamado "currentLocation" y otro que define un parámetro llamado "lastLocation"
 
     GET /indexes/hotels/docs?search=something&scoringProfile=geo&scoringParameter=currentLocation--122.123,44.77233&scoringParameter=lastLocation--121.499,44.2113&api-version=2015-02-28-Preview
 
     POST /indexes/hotels/docs/search?api-version=2015-02-28-Preview {   "search": "something",   "scoringProfile": "geo",   "scoringParameters": [ "currentLocation--122.123,44.77233", "lastLocation--121.499,44.2113" ] }
 
-14) Busque documentos en el índice utilizando la [sintaxis de consulta simple](https://msdn.microsoft.com/library/dn798920.aspx). Esta consulta devuelve los hoteles, en los que los campos de búsqueda contienen los términos "comodidad" y "ubicación", pero no "motel":
+14) Buscar documentos en hello índice utilizando [sintaxis de consulta simple](https://msdn.microsoft.com/library/dn798920.aspx). Esta consulta devuelve hoteles donde los campos que permiten búsqueda contienen Hola términos "comodidad" y "ubicación" pero no "motel":
 
     GET /indexes/hotels/docs?search=comfort +location -motel&searchMode=all&api-version=2015-02-28-Preview
 
     POST /indexes/hotels/docs/search?api-version=2015-02-28-Preview {   "search": "comfort +location -motel",   "searchMode": "all" }
 
-Tenga en cuenta el uso de `searchMode=all` anteriormente. Incluyendo este parámetro se invalida el valor predeterminado de `searchMode=any`, lo que asegura que `-motel` significa "Y NO" en lugar de "O NO". Sin `searchMode=all`, obtendrá "O NO", que expandirá en lugar de restringir los resultados de la búsqueda, lo cual puede resultar contradictorio para algunos usuarios.
+Tenga en cuenta uso Hola de `searchMode=all` anteriormente. Incluir este parámetro invalida el valor predeterminado de Hola de `searchMode=any`, lo que asegura que `-motel` significa "AND NOT" en lugar de "OR NOT". Sin `searchMode=all`, obtendrá "OR NOT" que se expande en lugar de restringe los resultados de búsqueda, y puede ser contraproducente toosome a los usuarios.
 
-15) Busque documentos en el índice usando la [sintaxis de consulta de Lucene](https://msdn.microsoft.com/library/mt589323.aspx). Esta consulta devuelve los hoteles en los que el campo de categoría contiene el término "budget" y todos los campos de búsqueda que incluyen la expresión "recently renovated". Los documentos que contienen la expresión "recently renovated" tienen una clasificación más alta como resultado del valor de aumento del término (3)
+15) Buscar documentos en hello índice utilizando [sintaxis de consulta de lucene](https://msdn.microsoft.com/library/mt589323.aspx). Esta consulta devuelve hoteles donde el campo de categoría hello contiene Hola término "budget" y puede buscar todos los campos que contengan la frase Hola "renovada recientemente". Documentos que contengan la frase Hola "recientemente reformada" con un rango superior como resultado del valor de aumento de término de hello (3)
 
     GET /indexes/hotels/docs?search=category:budget AND \"recently renovated\"^3&searchMode=all&api-version=2015-02-28-Preview&querytype=full
 
@@ -1701,38 +1701,38 @@ Tenga en cuenta el uso de `searchMode=all` anteriormente. Incluyendo este parám
 <a name="LookupAPI"></a>
 
 ## <a name="lookup-document"></a>Buscar documento
-La operación **Buscar documento** permite recuperar un documento de Búsqueda de Azure. Esto resulta útil cuando un usuario hace clic en un resultado de búsqueda específico y desea buscar detalles específicos acerca de ese documento.
+Hola **búsqueda de documento** operación recupera un documento de búsqueda de Azure. Esto es útil cuando un usuario hace clic en un resultado de búsqueda específico y desea toolook detalles concretos de ese documento.
 
     GET https://[service name].search.windows.net/indexes/[index name]/docs/[key]?[query parameters]
     api-key: [admin or query key]
 
 **Solicitud**
 
-HTTPS es necesario para las solicitudes de servicio. La solicitud **Buscar documento** se puede generar del modo indicado a continuación.
+HTTPS es necesario para las solicitudes de servicio. Hola **búsqueda de documento** solicitud se puede generar como sigue.
 
     GET /indexes/[index name]/docs/key?[query parameters]
 
-También puede usar la sintaxis de OData tradicional para la búsqueda de claves:
+Como alternativa, puede usar la sintaxis de OData tradicional de Hola para búsqueda de claves:
 
     GET /indexes('[index name]')/docs('[key]')?[query parameters]
 
-El URI de solicitud incluye un [nombre de índice] y una [clave], que especifica qué documento para recuperar del índice correspondiente. Solamente se puede obtener un documento de cada vez. Utilice **Búsqueda** para obtener varios documentos en una única solicitud.
+Hola URI de solicitud incluye un [nombre de índice] y [key], especificar qué tooretrieve documento desde qué índice. Solamente se puede obtener un documento de cada vez. Use **búsqueda** tooget varios documentos en una sola solicitud.
 
 **Parámetros de consulta**
 
-`$select=[string]` (opcional): lista de campos separados por comas para recuperar. Si no se especifica nada o se establece en `*`, se incluirán en la proyección todos los campos marcados como recuperables en el esquema.
+`$select=[string]`(opcional): una lista de campos separados por comas tooretrieve. Si no se especifica o se establece demasiado`*`, se incluyen todos los campos marcados como recuperables en el esquema de hello en proyección Hola.
 
-`api-version=[string]` (obligatorio). La versión de vista previa es `api-version=2015-02-28-Preview`. Consulte [Versiones del servicio de búsqueda](http://msdn.microsoft.com/library/azure/dn864560.aspx) para obtener más información y versiones alternativas.
+`api-version=[string]` (obligatorio). versión de vista previa de Hello es `api-version=2015-02-28-Preview`. Consulte [Versiones del servicio de búsqueda](http://msdn.microsoft.com/library/azure/dn864560.aspx) para obtener más información y versiones alternativas.
 
-Nota: Para esta operación, `api-version` se especifica como parámetro de consulta.
+Nota: Para realizar esta operación, Hola `api-version` se especifica como un parámetro de consulta.
 
 **Encabezados de solicitud**
 
-En la lista siguiente se describen los encabezados de solicitud obligatorios y opcionales.
+Hola lista siguiente describe Hola necesarios y los encabezados de solicitud opcionales.
 
-* `api-key`: `api-key` se usa para autenticar la solicitud en su servicio de búsqueda. Es un valor de cadena, único en su URL de servicio. La solicitud **Buscar documento** puede especificar una clave de administración o una clave de consulta para `api-key`.
+* `api-key`: Hola `api-key` es tooauthenticate usado Hola solicitud tooyour servicio de búsqueda. Es un valor de cadena único tooyour dirección URL del servicio. Hola **búsqueda de documento** solicitud puede especificar una clave de administración o la clave de consulta para `api-key`.
 
-También necesitará el nombre del servicio para construir la dirección URL de la solicitud. Puede obtener el nombre de servicio y `api-key` desde el panel de servicio en el Portal de Azure. Consulte [Crear un servicio de Búsqueda de Azure en el portal](search-create-service-portal.md) para obtener ayuda sobre la navegación en páginas.
+También necesitará Hola nombre tooconstruct Hola solicitud dirección URL del servicio. Puede obtener el nombre del servicio de Hola y `api-key` desde el panel de servicio en hello Portal de Azure. Vea [crear un servicio de búsqueda de Azure en el portal de hello](search-create-service-portal.md) para obtener ayuda de navegación de página.
 
 **Cuerpo de la solicitud**
 
@@ -1743,23 +1743,23 @@ Ninguno.
 Código de estado: al obtener una respuesta correcta, se visualiza 200 Correcto.
 
     {
-      field_name: field_value (fields matching the default or specified projection)
+      field_name: field_value (fields matching hello default or specified projection)
     }
 
 **Ejemplo**
 
-Busque el documento que tiene la clave "2"
+Documento de Hola de búsqueda que tiene la clave '2'
 
     GET /indexes/hotels/docs/2?api-version=2015-02-28-Preview
 
-Busque el documento que tiene la clave "3" con la sintaxis de OData:
+Documento de Hola de búsqueda que tiene la clave "3" utilizando la sintaxis de OData:
 
     GET /indexes('hotels')/docs('3')?api-version=2015-02-28-Preview
 
 <a name="CountDocs"></a>
 
 ## <a name="count-documents"></a>Documentos de recuento
-La operación **Documentos de recuento** recupera un recuento del número de documentos en un índice de búsqueda. La sintaxis `$count` forma parte del protocolo OData.
+Hola **número de documentos** operación recupera un recuento del número de Hola de documentos en un índice de búsqueda. Hola `$count` sintaxis forma parte del programa Hola Protocolo OData.
 
     GET https://[service name].search.windows.net/indexes/[index name]/docs/$count?api-version=[api-version]
     Accept: text/plain
@@ -1767,20 +1767,20 @@ La operación **Documentos de recuento** recupera un recuento del número de doc
 
 **Solicitud**
 
-HTTPS es necesario para las solicitudes de servicio. La solicitud **Documentos de recuento** puede crearse mediante el método GET.
+HTTPS es necesario para las solicitudes de servicio. Hola **número de documentos** solicitud puede crearse mediante el método GET de Hola.
 
-El [nombre de índice] del URI de la solicitud indica al servicio que devuelva un recuento de todos los elementos de la colección de documentos del índice especificado.
+Hola [nombre del índice] en el URI de solicitud de hello indica Hola servicio tooreturn un recuento de todos los elementos de colección de documentos de Hola de índice especificado de Hola.
 
-`api-version=[string]` (obligatorio). La versión de vista previa es `api-version=2015-02-28-Preview`. Consulte [Versiones del servicio de búsqueda](http://msdn.microsoft.com/library/azure/dn864560.aspx) para obtener más información y versiones alternativas.
+`api-version=[string]` (obligatorio). versión de vista previa de Hello es `api-version=2015-02-28-Preview`. Consulte [Versiones del servicio de búsqueda](http://msdn.microsoft.com/library/azure/dn864560.aspx) para obtener más información y versiones alternativas.
 
 **Encabezados de solicitud**
 
-En la lista siguiente se describen los encabezados de solicitud obligatorios y opcionales.
+Hola lista siguiente describe Hola necesarios y los encabezados de solicitud opcionales.
 
-* `Accept`: este valor debe establecerse en `text/plain`.
-* `api-key`: `api-key` se usa para autenticar la solicitud en su servicio de búsqueda. Es un valor de cadena, único en su URL de servicio. La solicitud **Documentos de recuento** puede especificar una clave de administración o una clave de consulta para `api-key`.
+* `Accept`: Este valor debe estar establecido demasiado`text/plain`.
+* `api-key`: Hola `api-key` es tooauthenticate usado Hola solicitud tooyour servicio de búsqueda. Es un valor de cadena único tooyour dirección URL del servicio. Hola **número de documentos** solicitud puede especificar una clave de administración o la clave de consulta para `api-key`.
 
-También necesitará el nombre del servicio para construir la dirección URL de la solicitud. Puede obtener el nombre de servicio y `api-key` desde el panel de servicio en el Portal de Azure. Consulte [Crear un servicio de Búsqueda de Azure en el portal](search-create-service-portal.md) para obtener ayuda sobre la navegación en páginas.
+También necesitará Hola nombre tooconstruct Hola solicitud dirección URL del servicio. Puede obtener el nombre del servicio de Hola y `api-key` desde el panel de servicio en hello Portal de Azure. Vea [crear un servicio de búsqueda de Azure en el portal de hello](search-create-service-portal.md) para obtener ayuda de navegación de página.
 
 **Cuerpo de la solicitud**
 
@@ -1790,14 +1790,14 @@ Ninguno.
 
 Código de estado: al obtener una respuesta correcta, se visualiza 200 Correcto.
 
-El cuerpo de la respuesta contiene el valor de recuento como un entero con formato de texto sin formato.
+cuerpo de respuesta de Hello contiene el valor del recuento de Hola como un entero con formato de texto sin formato.
 
 <a name="Suggestions"></a>
 
 ## <a name="suggestions"></a>Sugerencias
-La operación **Sugerencias** recupera sugerencias basadas en la entrada de búsqueda parcial. Se suele usar en los cuadros de búsqueda para proporcionar sugerencias anticipadas cuando los usuarios están introduciendo términos de búsqueda.
+Hola **sugerencias** operación recupera sugerencias basadas en la entrada de búsqueda parcial. Normalmente se utiliza en cuadros tooprovide anticipada sugerencias como los usuarios están escribiendo términos de búsqueda.
 
-Las solicitudes de sugerencias están destinadas a sugerir documentos de destino, por lo que el texto sugerido puede repetirse si varios documentos candidatos coinciden con la misma entrada de búsqueda. Puede usar `$select` para recuperar otros campos del documento (incluida la clave del documento) para que pueda indicar qué documento es el origen para cada sugerencia.
+Solicitudes de sugerencias tienen como fin sugerir documentos de destino, para que hello sugiere texto puede repetirse si varios documentos candidatos coinciden Hola mismo Buscar entrada. Puede usar `$select` tooretrieve otro documento campos (incluida la clave de documento de hello) por lo que puede indicarle qué documento es el origen de Hola para cada sugerencia.
 
 Una operación **Sugerencias** se emite como una solicitud GET o POST.
 
@@ -1808,104 +1808,104 @@ Una operación **Sugerencias** se emite como una solicitud GET o POST.
     Content-Type: application/json
     api-key: [admin or query key]
 
-**Cuándo usar POST en lugar de GET**
+**Cuando este tipo de toouse en lugar de obtener**
 
-Cuando use HTTP GET para llamar a la API de **Sugerencias** , deberá tener en cuenta que la longitud de la URL de la solicitud no puede superar los 8 KB. Esto suele ser suficiente para la mayoría de las aplicaciones. Sin embargo, algunas aplicaciones generan consultas muy extensas, en concreto, expresiones de filtro de OData. Para estas aplicaciones, el uso de HTTP POST es una opción mejor porque permite filtros mayores que GET. Con POST, el número de cláusulas en un filtro es el factor limitador, no el tamaño de la cadena del filtro, ya que el límite de tamaño de la solicitud POST es de 16 MB aproximadamente.
+Cuando se utiliza HTTP GET toocall hello **sugerencias** API, deberá toobe tenga en cuenta que longitud Hola de dirección URL de solicitud de hello no puede superar los 8 KB. Esto suele ser suficiente para la mayoría de las aplicaciones. Sin embargo, algunas aplicaciones generan consultas muy extensas, en concreto, expresiones de filtro de OData. Para estas aplicaciones, el uso de HTTP POST es una opción mejor porque permite filtros mayores que GET. Utiliza el método POST, número Hola de cláusulas de un filtro es el factor de limitación de hello, no Hola tamaño de la cadena de filtro sin procesar de hello como límite de tamaño de hello solicitud de POST es aproximadamente 16 MB.
 
 > [!NOTE]
-> Aunque el límite de tamaño de la solicitud POST es muy grande, las expresiones de filtro no pueden ser arbitrariamente complejas. Consulte [Sintaxis de expresiones de OData para Búsqueda de Azure](https://msdn.microsoft.com/library/dn798921.aspx) para obtener más información sobre las limitaciones de complejidad de filtros.
+> Aunque el límite de tamaño de solicitud POST hello es muy grande, las expresiones de filtro no pueden ser arbitrariamente complejas. Consulte [Sintaxis de expresiones de OData para Búsqueda de Azure](https://msdn.microsoft.com/library/dn798921.aspx) para obtener más información sobre las limitaciones de complejidad de filtros.
 > 
 > 
 
 **Solicitud**
 
-HTTPS es necesario para las solicitudes de servicio. La solicitud de **Sugerencias** puede crearse mediante los métodos GET o POST.
+HTTPS es necesario para las solicitudes de servicio. Hola **sugerencias** solicitud puede crearse mediante Hola GET o métodos POST.
 
-El URI de la solicitud especifica el nombre del índice que se consulta. Los parámetros, como el término de búsqueda de entrada parcial, se especifican en la cadena de consulta en el caso de solicitudes GET y en el cuerpo de la solicitud en el caso de las solicitudes POST.
+URI de solicitud de Hello especifica nombre de Hola de hello tooquery de índice. Se especifican parámetros, como término de búsqueda escrito parcialmente de hello, en la cadena de consulta de hello en caso de hello de solicitudes GET y, en la solicitud de hello solicita cuerpo en caso de hello de publicación.
 
-Como práctica recomendada al crear solicitudes GET, recuerde [codificar con URL](https://msdn.microsoft.com/library/system.uri.escapedatastring.aspx) los parámetros de consulta específicos al llamar a la API de REST directamente. Para las operaciones **Sugerencias** , se incluye lo siguiente:
+Como práctica recomendada al crear las solicitudes GET, recuerde demasiado[codifica como URL](https://msdn.microsoft.com/library/system.uri.escapedatastring.aspx) consulta específica parámetros cuando se llama a Hola API de REST directamente. Para las operaciones **Sugerencias** , se incluye lo siguiente:
 
 * `$filter`
 * `highlightPreTag`
 * `highlightPostTag`
 * `search`
 
-Solo se recomienda la codificación de direcciones URL en los parámetros de consulta anterior. Si codifica con URL involuntariamente la cadena de consulta completa (todo lo situado después de la?), las solicitudes se dividirán.
+Solo se recomienda la codificación de direcciones URL en hello por encima de los parámetros de consulta. Si se codifica como URL accidentalmente hello cadena de consulta completa (todos los elementos después de hello?), se interrumpirán las solicitudes.
 
-Además, la codificación con URL solo es necesaria cuando se llama directamente a la API de REST directamente con GET. No se necesita ninguna codificación de URL para llamar a las **Sugerencias** mediante POST o cuando se usa la [biblioteca de cliente .NET](https://msdn.microsoft.com/library/dn951165.aspx), que controla la codificación de direcciones URL en su lugar.
+Además, la codificación de direcciones URL solo es necesaria cuando se llama a Hola obtener API de REST directamente mediante. Codificación de dirección URL no es necesaria cuando se llama a **sugerencias** mediante POST, o al usar hello [biblioteca de cliente .NET](https://msdn.microsoft.com/library/dn951165.aspx), que controla la codificación de direcciones URL para usted.
 
 **Parámetros de consulta**
 
-**Sugerencias** acepta varios parámetros que ofrecen criterios de consulta y que también especifican el comportamiento de búsqueda. Estos parámetros se especifican en la cadena de consulta URL al llamar a las **Sugerencias** mediante GET y como propiedades JSON en el cuerpo de solicitud al llamar a las **Sugerencias** mediante POST. La sintaxis de algunos parámetros es algo diferente entre GET y POST. Estas diferencias se indican como aplicables a continuación:
+**Sugerencias** acepta varios parámetros que ofrecen criterios de consulta y que también especifican el comportamiento de búsqueda. Proporcionar la cadena de consulta de estos parámetros en la dirección URL de hello al llamar a **sugerencias** a través de GET y como propiedades JSON en el cuerpo de la solicitud de hello al llamar a **sugerencias** a través de POST. sintaxis de Hola para algunos parámetros difiere ligeramente entre GET y POST. Estas diferencias se indican como aplicables a continuación:
 
-`search=[string]` : texto de búsqueda que se utiliza para sugerir las consultas. Debe tener 1 carácter como mínimo y no más de 100 caracteres.
+`search=[string]`-Hola toouse toosuggest consultas de búsqueda de texto. Debe tener 1 carácter como mínimo y no más de 100 caracteres.
 
-`highlightPreTag=[string]` (opcional): una etiqueta de cadena que se antepone a resultados de búsquedas. Debe establecerse con `highlightPostTag`.
-
-> [!NOTE]
-> Al llamar a las **Sugerencias** mediante GET, los caracteres reservados en la dirección URL deben estar codificados con porcentaje (por ejemplo, %23 en vez de #).
-> 
-> 
-
-`highlightPostTag=[string]` (opcional): una etiqueta de cadena que se adjunta a resultados de búsquedas. Debe establecerse con `highlightPreTag`.
+`highlightPreTag=[string]`(opcional): una etiqueta de cadena que se antepone toosearch aciertos. Debe establecerse con `highlightPostTag`.
 
 > [!NOTE]
-> Al llamar a las **Sugerencias** mediante GET, los caracteres reservados en la dirección URL deben estar codificados con porcentaje (por ejemplo, %23 en vez de #).
+> Al llamar a **sugerencias** con GET, caracteres reservados en la dirección URL de hello deben estar codificados en porcentaje (por ejemplo, % 23 en lugar de #).
 > 
 > 
 
-`suggesterName=[string]`: el nombre del proveedor de sugerencias tal y como se especifica en la colección `suggesters` que forma parte de la definición del índice. Un `suggester` determina qué campos se analizan para encontrar términos de consulta sugeridos. Consulte [Proveedores de sugerencias](#Suggesters) para obtener más información.
+`highlightPostTag=[string]`(opcional): una etiqueta de cadena que se anexa toosearch aciertos. Debe establecerse con `highlightPreTag`.
 
-`fuzzy=[boolean]` (opcional, valor predeterminado = false): si se establece en true esta API encontrará sugerencias incluso si hay un carácter sustituido o no encontrado en el texto de búsqueda. Si bien esto proporciona una mejor experiencia en algunos escenarios, ello afecta al rendimiento, ya que las búsquedas de sugerencias aproximadas son más lentas y consumen más recursos.
+> [!NOTE]
+> Al llamar a **sugerencias** con GET, caracteres reservados en la dirección URL de hello deben estar codificados en porcentaje (por ejemplo, % 23 en lugar de #).
+> 
+> 
 
-`searchFields=[string]` (opcional): lista separada por comas de nombres de campo para buscar el texto de búsqueda especificado. Los campos de destino deben estar habilitados para obtener sugerencias.
+`suggesterName=[string]`-nombre de hello del proveedor de sugerencias de hello como Hola especificado en `suggesters` colección que forma parte de la definición del índice Hola. Un `suggester` determina qué campos se analizan para encontrar términos de consulta sugeridos. Consulte [Proveedores de sugerencias](#Suggesters) para obtener más información.
 
-`$top=#` (opcional, valor predeterminado = 5): número de sugerencias para recuperar. Debe ser un número entre 1 y 100.
+`fuzzy=[boolean]`(opcional, el valor predeterminado = false)-tootrue cuando se establece esta API encontrará sugerencias incluso si hay un carácter sustituye o falta en el texto de búsqueda de Hola. Si bien esto proporciona una mejor experiencia en algunos escenarios, ello afecta al rendimiento, ya que las búsquedas de sugerencias aproximadas son más lentas y consumen más recursos.
+
+`searchFields=[string]`(opcional): lista de Hola de toosearch de nombres de campo separados por comas para hello especifica el texto de búsqueda. Los campos de destino deben estar habilitados para obtener sugerencias.
+
+`$top=#`(opcional, el valor predeterminado = 5)-número de sugerencias tooretrieve de Hola. Debe ser un número entre 1 y 100.
 
 > [!NOTE]
 > Al llamar a las **sugerencias** mediante POST, este parámetro se denomina `top` en lugar de `$top`.
 > 
 > 
 
-`$filter=[string]` (opcional): expresión que filtra los documentos que se consideran para obtener sugerencias.
+`$filter=[string]`(opcional): una expresión que filtra los documentos de hello considerados para obtener sugerencias.
 
 > [!NOTE]
 > Al llamar a las **sugerencias** mediante POST, este parámetro se denomina `filter` en lugar de `$filter`.
 > 
 > 
 
-`$orderby=[string]` (opcional): lista de expresiones separadas por comas por la que ordenar los resultados. Cada expresión puede ser un nombre de campo o una llamada a la función `geo.distance()` . Cada expresión puede ir seguida de `asc` para indicar el orden ascendente y de `desc` para indicar el orden descendente. El valor predeterminado es ascendente. Hay un límite de 32 cláusulas para `$orderby`.
+`$orderby=[string]`(opcional): una lista de expresiones separadas por comas toosort Hola resultados por. Cada expresión puede ser un nombre de campo o una llamada toohello `geo.distance()` función. Cada expresión puede ir seguida de `asc` tooindicated ascendente, y `desc` tooindicate descendente. valor predeterminado de Hello es ascendente. Hay un límite de 32 cláusulas para `$orderby`.
 
 > [!NOTE]
 > Al llamar a las **sugerencias** mediante POST, este parámetro se denomina `orderby` en lugar de `$orderby`.
 > 
 > 
 
-`$select=[string]` (opcional): lista de campos separados por comas para recuperar. Si no se especifica, solo se devolverá la clave del documento y el texto de la sugerencia. Se pueden solicitar explícitamente todos los campos estableciendo este parámetro en `*`.
+`$select=[string]`(opcional): una lista de campos separados por comas tooretrieve. Si no se especifica, solo Hola clave de documento y se devuelve el texto de sugerencia. Puede solicitar explícitamente todos los campos, establezca este parámetro demasiado`*`.
 
 > [!NOTE]
 > Al llamar a las **sugerencias** mediante POST, este parámetro se denomina `select` en lugar de `$select`.
 > 
 > 
 
-`minimumCoverage` (opcional, el valor predeterminado es 80): un número entre 0 y 100 que indica el porcentaje del índice que debe estar cubierto por una consulta de búsqueda para que la consulta se realice correctamente. De forma predeterminada, al menos el 80% del índice debe estar disponible o `Suggest` devolverá el código de estado HTTP 503. Si establece `minimumCoverage` y `Suggest` se realiza correctamente, devolverá HTTP 200 e incluye un valor `@search.coverage` en la respuesta que indica el porcentaje del índice que se incluyó en la consulta.
+`minimumCoverage`(opcional, tiene como valor predeterminado too80) - un número entre 0 y 100 que indica el porcentaje Hola de índice de Hola que debe ser abarcado por una consulta de sugerencias en orden para hello consulta toobe notificarse como tales. De forma predeterminada, debe estar disponible al menos el 80% del índice de Hola o `Suggest` se devolverá el código de estado HTTP 503. Si establece `minimumCoverage` y `Suggest` se realiza correctamente, devolverá HTTP 200 e incluyen una `@search.coverage` valor de respuesta de Hola que indica el porcentaje de Hola de índice de Hola que se incluyó en la consulta de Hola.
 
 > [!NOTE]
-> Establecer este parámetro en un valor inferior a 100 puede ser útil para garantizar la disponibilidad de la búsqueda incluso para servicios con una única réplica. Sin embargo, no se garantiza que todos los documentos coincidentes existan en los resultados. Si la recuperación es más importante para la aplicación que la disponibilidad, es mejor dejar `minimumCoverage` por debajo de su valor predeterminado de 80.
+> Establecer este valor de parámetro tooa menor que 100 puede ser útil para garantizar la disponibilidad de búsqueda incluso para servicios con una única réplica. Sin embargo, no todas las sugerencias de búsqueda de coincidencias se garantiza que toobe presente en los resultados de Hola. Si la recuperación es más importante aplicación de tooyour de disponibilidad, entonces es mejor no toolower `minimumCoverage` por debajo de su valor predeterminado de 80.
 > 
 > 
 
-`api-version=[string]` (obligatorio). La versión de vista previa es `api-version=2015-02-28-Preview`. Consulte [Versiones del servicio de búsqueda](http://msdn.microsoft.com/library/azure/dn864560.aspx) para obtener más información y versiones alternativas.
+`api-version=[string]` (obligatorio). versión de vista previa de Hello es `api-version=2015-02-28-Preview`. Consulte [Versiones del servicio de búsqueda](http://msdn.microsoft.com/library/azure/dn864560.aspx) para obtener más información y versiones alternativas.
 
-Nota: Para esta operación, `api-version` se especifica como un parámetro de consulta en la dirección URL sin tener en cuenta si se llama a las **Sugerencias** con GET o POST.
+Nota: Para realizar esta operación, Hola `api-version` se especifica como un parámetro de consulta de dirección URL de hello independientemente de si se llama a **sugerencias** con GET o POST.
 
 **Encabezados de solicitud**
 
-En la lista siguiente se describen los encabezados de solicitud obligatorios y opcionales.
+Hola lista siguiente describe Hola necesarios y los encabezados de solicitud opcionales
 
-* `api-key`: `api-key` se usa para autenticar la solicitud en su servicio de búsqueda. Es un valor de cadena, único en su URL de servicio. La solicitud **Sugerencias** puede especificar una clave de administración o una clave de consulta como `api-key`.
+* `api-key`: Hola `api-key` es tooauthenticate usado Hola solicitud tooyour servicio de búsqueda. Es un valor de cadena único tooyour dirección URL del servicio. Hola **sugerencias** solicitud puede especificar una clave de administración o la clave de consulta como hello `api-key`.
 
-También necesitará el nombre del servicio para construir la dirección URL de la solicitud. Puede obtener el nombre de servicio y `api-key` desde el panel de servicio en el Portal de Azure. Consulte [Crear un servicio de Búsqueda de Azure en el portal](search-create-service-portal.md) para obtener ayuda sobre la navegación en páginas.
+También necesitará Hola nombre tooconstruct Hola solicitud dirección URL del servicio. Puede obtener el nombre del servicio de Hola y `api-key` desde el panel de servicio en hello Portal de Azure. Vea [crear un servicio de búsqueda de Azure en el portal de hello](search-create-service-portal.md) para obtener ayuda de navegación de página.
 
 **Cuerpo de la solicitud**
 
@@ -1918,7 +1918,7 @@ Para POST:
       "fuzzy": true | false (default),
       "highlightPreTag": "pre_tag",
       "highlightPostTag": "post_tag",
-      "minimumCoverage": # (% of index that must be covered to declare query successful; default 80),
+      "minimumCoverage": # (% of index that must be covered toodeclare query successful; default 80),
       "orderby": "orderby_expression",
       "search": "partial_search_input",
       "searchFields": "field_name_1, field_name_2, ...",
@@ -1932,7 +1932,7 @@ Para POST:
 Código de estado: al obtener una respuesta correcta, se visualiza 200 Correcto.
 
     {
-      "@search.coverage": # (if minimumCoverage was provided in the query),
+      "@search.coverage": # (if minimumCoverage was provided in hello query),
       "value": [
         {
           "@search.text": "...",
@@ -1942,10 +1942,10 @@ Código de estado: al obtener una respuesta correcta, se visualiza 200 Correcto.
       ]
     }
 
-Si se utiliza la opción de proyección para recuperar campos que están incluidos en cada elemento de la matriz:
+Si es de opción de proyección de hello tooretrieve usado campos se incluyen en cada elemento de matriz de hello:
 
     {
-      "@search.coverage": # (if minimumCoverage was provided in the query),
+      "@search.coverage": # (if minimumCoverage was provided in hello query),
       "value": [
         {
           "@search.text": "...",
@@ -1958,7 +1958,7 @@ Si se utiliza la opción de proyección para recuperar campos que están incluid
 
 **Ejemplo**
 
-Recupere 5 sugerencias en las que la entrada de búsqueda parcial sea "lux"
+Recuperar 5 sugerencias donde hello entrada de búsqueda parcial es 'lux'
 
     GET /indexes/hotels/docs/suggest?search=lux&$top=5&suggesterName=sg&api-version=2015-02-28-Preview
 

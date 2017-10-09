@@ -1,6 +1,6 @@
 ---
-title: "Obtención de ayuda del soporte técnico por chat en directo de Machine Learning | Microsoft Docs"
-description: "Obtenga ayuda en tiempo real para el Aprendizaje automático en la nube con la característica de soporte técnico por chat en tiempo real."
+title: "Ayuda de aaaGet de aprendizaje Live Chat asistencia de la máquina | Documentos de Microsoft"
+description: "Obtener ayuda en tiempo real para el aprendizaje automático en la nube de hello con característica de compatibilidad de Chat en vivo de Hola."
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2017
 ms.author: garye
-ms.openlocfilehash: f8e624b54578009e55921606a9e37f884faf50c7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7307fb5a91fc58b32872d480b48305d690c14b92
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-help-from-machine-learning-live-chat-support"></a>Obtener ayuda del soporte técnico por chat en tiempo real del Aprendizaje automático
-[Estudio de aprendizaje automático de Azure](machine-learning-what-is-ml-studio.md) proporciona una interfaz intuitiva para la creación de módulos de aprendizaje automático. Hay una [galería](machine-learning-gallery-how-to-use-contribute-publish.md) de ejemplos aportados por la comunidad que lo ayudarán a empezar a trabajar. Y hay un [foro](https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning) donde puede hacer preguntas para ayudarle a seguir avanzando. 
+[Estudio de aprendizaje automático de Azure](machine-learning-what-is-ml-studio.md) proporciona una interfaz intuitiva para la creación de módulos de aprendizaje automático. Hay un [galería](machine-learning-gallery-how-to-use-contribute-publish.md) de ejemplos aportados por hello Comunidad toohelp empezar a trabajar. Y no hay un [foro](https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning) donde pueda hacer preguntas toohelp continúe revisando. 
 
-Pero a veces solo es necesario formular una pregunta rápida para continuar. En [Machine Learning Studio](http://studio.azureml.net/Home), busque el icono de chat en la barra de navegación superior.  Si ve este icono, significa que un miembro del equipo del producto está en línea para ayudarle en tiempo real.
+Pero a veces basta con tooask una pregunta rápida toounblock. En [estudio de aprendizaje automático](http://studio.azureml.net/Home) busque icono de chat de hello en Hola de navegación superior.  Si ve este icono, lo que significa que un miembro del equipo de producto de hello es toohelp en línea en tiempo real.
 
 ![Chat de AT de Azure](./media/machine-learning-live-chat/AzureMLChatNavBar.png)
 
@@ -31,11 +31,11 @@ Escriba su pregunta y obtendrá respuestas.
 
 ![Cuadro de diálogo de chat de AT de Azure](./media/machine-learning-live-chat/AzureMLChat.png)
 
-**¿No se ve el icono de Chat activo?**
+**¿No ve Hola Live icono Chat?**
 
-El chat en directo está formado por miembros del equipo de Machine Learning. Si no ve el icono de chat en directo, es porque el equipo no está disponible en ese momento. Por ejemplo, puede que ya haya concluido la jornada laboral normal. 
+Hello Chat en directo está formado por los miembros del equipo de aprendizaje automático de Hola. Si no ve el icono de chat en vivo de hello es porque el equipo de hello no está disponible actualmente. Por ejemplo, puede que ya haya concluido la jornada laboral normal. 
 
-Siempre puede publicar sus preguntas en el [foro de Machine Learning](https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning), donde la verán los miembros del equipo de Machine Learning y otros desarrolladores y científicos de datos de conocimientos.
+Siempre puede publicar sus preguntas en hello [foro de aprendizaje de máquina](https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning), donde se verán los miembros del equipo de aprendizaje automático de Hola y otros científicos de datos de conocimientos y a los desarrolladores.
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 

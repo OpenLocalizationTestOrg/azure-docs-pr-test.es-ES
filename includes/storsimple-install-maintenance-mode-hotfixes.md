@@ -1,17 +1,17 @@
 <!--author=SharS last changed: 9/17/15-->
 
-#### <a name="to-install-maintenance-mode-hotfixes-via-windows-powershell-for-storsimple"></a>Para instalar revisiones en el modo de mantenimiento a través de Windows PowerShell para StorSimple
+#### <a name="tooinstall-maintenance-mode-hotfixes-via-windows-powershell-for-storsimple"></a>tooinstall revisiones de modo de mantenimiento mediante Windows PowerShell para StorSimple
 > [!IMPORTANT]
-> En el modo de mantenimiento, deberá aplicar la revisión primero en un controlador y, a continuación, en el otro controlador.
+> En el modo de mantenimiento, primero es necesario tooapply Hola revisión en un controlador y, a continuación, en Hola otro controlador.
 > 
 > 
 
-1. Active el modo de mantenimiento del dispositivo. Consulte [Paso 2: Acceso al modo de mantenimiento](../articles/storsimple/storsimple-update-device.md#step2) para obtener instrucciones sobre cómo acceder al modo de mantenimiento.
-2. Para aplicar la revisión, escriba:
+1. Coloque el dispositivo de hello en modo de mantenimiento. Vea [paso 2: modo de mantenimiento escriba](../articles/storsimple/storsimple-update-device.md#step2) para obtener instrucciones sobre cómo tooenter modo de mantenimiento.
+2. revisión de hello tooapply, tipo:
    
      `Start-HcsHotfix` 
-3. Cuando se le solicite, proporcione la ruta de acceso a la carpeta compartida de red que contiene los archivos de la revisión.
-4. Se le pedirá confirmación. Escriba **Y** para continuar con la instalación de la revisión.
-5. Después de aplicar la revisión en un controlador, inicie sesión en el otro controlador. Aplique la revisión tal y como lo hizo con el controlador anterior.
-6. Una vez aplicadas las revisiones, salga del modo de mantenimiento. Consulte [Paso 4: Salida del modo de mantenimiento](../articles/storsimple/storsimple-update-device.md#step4) para obtener instrucciones.
+3. Cuando se le solicite, proporcione Hola ruta de acceso toohello carpeta compartida de red que contiene los archivos de revisión de Hola.
+4. Se le pedirá confirmación. Tipo de **Y** tooproceed con la instalación de revisión de Hola.
+5. Una vez aplicada Hola revisión en un controlador, toohello de inicio de sesión otro controlador. Aplique la revisión de Hola que hizo controlador anterior Hola.
+6. Después de aplican las revisiones de hello, salga del modo de mantenimiento. Consulte [Paso 4: Salida del modo de mantenimiento](../articles/storsimple/storsimple-update-device.md#step4) para obtener instrucciones.
 

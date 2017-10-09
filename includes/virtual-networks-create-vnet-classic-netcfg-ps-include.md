@@ -1,10 +1,10 @@
-## <a name="how-to-create-a-virtual-network-using-a-network-config-file-from-powershell"></a>Creación de una red virtual mediante un archivo de configuración de red desde PowerShell
-Azure utiliza un archivo xml para definir todas las redes virtuales disponibles para una suscripción. Dicho archivo se puede descargar y editarlo para modificar o eliminar las redes virtuales existentes, y crear otras nuevas. En este tutorial, aprenderá a descargar dicho archivo, denominado archivo de configuración de red (o netcfg) y a editarlo para crear una red virtual nueva. Para más información acerca del archivo de configuración de red, consulte el artículo [Azure Virtual Network Configuration Schema](https://msdn.microsoft.com/library/azure/jj157100.aspx) (Esquema de configuración de Azure Virtual Network).
+## <a name="how-toocreate-a-virtual-network-using-a-network-config-file-from-powershell"></a>¿Cómo toocreate archivos de una red virtual con una configuración de red de PowerShell
+Azure utiliza un toodefine de archivo xml suscripción de tooa disponibles de todas las redes virtuales. Puede descargar este archivo, editar toomodify o eliminar las redes virtuales existentes y crear nuevas redes virtuales. En este tutorial, aprenderá cómo toodownload este archivo, denominado archivo de configuración (o netcfg) de red tooas y editarlo toocreate una nueva red virtual. toolearn más información acerca del archivo de configuración de red de hello, vea hello [esquema de configuración de red virtual de Azure](https://msdn.microsoft.com/library/azure/jj157100.aspx).
 
-Para crear una red virtual con un archivo netcfg mediante PowerShell, realice los siguientes pasos:
+toocreate una red virtual con un archivo netcfg con PowerShell, Hola completa pasos:
 
-1. Si es la primera vez que usa Azure PowerShell, siga los pasos del artículo [Overview of Azure PowerShell](/powershell/azureps-cmdlets-docs) (Introducción a Azure PowerShell), inicie sesión en Azure y seleccione su suscripción.
-2. En la consola de Azure PowerShell, use el cmdlet **AzureVnetConfig Get** para descargar el archivo de configuración de red a un directorio del equipo, para lo que debe ejecutar el siguiente comando: 
+1. Si nunca ha usado PowerShell de Azure, Hola completa los pasos de hello [cómo tooInstall y configurar Azure PowerShell](/powershell/azureps-cmdlets-docs) artículo, a continuación, inicie sesión en tooAzure y seleccione su suscripción.
+2. Desde la consola de PowerShell de Azure de hello, utilizar hello **AzureVnetConfig Get** cmdlet toodownload Hola red archivo tooa directorio de configuración de en el equipo mediante la ejecución de hello siguiente comando: 
    
    ```powershell
    Get-AzureVNetConfig -ExportToFile c:\azure\NetworkConfig.xml
@@ -18,8 +18,8 @@ Para crear una red virtual con un archivo netcfg mediante PowerShell, realice lo
       <?xml version="1.0" encoding="utf-8"?>...
       ```
 
-3. Abra el archivo que guardó en el paso 2 con cualquier aplicación de edición de texto o XML, y busque el elemento **<VirtualNetworkSites>**. Si ya tiene otras redes creadas, cada una de ellas se muestra como su propio elemento **<VirtualNetworkSite>**.
-4. Para crear la red virtual que se describe en este escenario, agregue el siguiente código XML justo debajo del elemento **<VirtualNetworkSites>** :
+3. Abrir archivo de Hola que guardó en el paso 2 con cualquier aplicación de editor de texto o XML y buscar hello  **<VirtualNetworkSites>**  elemento. Si ya tiene otras redes creadas, cada una de ellas se muestra como su propio elemento **<VirtualNetworkSite>**.
+4. red virtual de toocreate Hola descrita en este escenario, agregar Hola después XML justo debajo de hello  **<VirtualNetworkSites>**  elemento:
 
    ```xml
         <VirtualNetworkSite name="TestVNet" Location="East US">
@@ -37,8 +37,8 @@ Para crear una red virtual con un archivo netcfg mediante PowerShell, realice lo
         </VirtualNetworkSite>
    ```
    
-5. Guarde el archivo de configuración de red.
-6. En la consola de Azure PowerShell, use el cmdlet **Set-AzureVnetConfig** para cargar el archivo de configuración de red, para lo que se debe ejecutar el siguiente comando: 
+5. Guarde el archivo de configuración de red de Hola.
+6. Desde la consola de PowerShell de Azure de hello, utilizar hello **AzureVnetConfig conjunto** cmdlet tooupload Hola del archivo de configuración mediante la ejecución de hello siguiente comando: 
    
    ```powershell
    Set-AzureVNetConfig -ConfigurationPath c:\azure\NetworkConfig.xml
@@ -52,15 +52,15 @@ Para crear una red virtual con un archivo netcfg mediante PowerShell, realice lo
       Set-AzureVNetConfig  <Id>                                 Succeeded 
       ```
    
-   Si el valor de **OperationStatus** no es *Correcto* en la salida devuelta, compruebe si el archivo xml contiene errores y vuelva a realizar el paso 6.
+   Si **OperationStatus** no *correcto* Hola devolvía los resultados, vuelva a archivo xml de hello para errores y realiza el paso 6.
 
-7. En la consola de Azure PowerShell, use el cmdlet **Get-AzureVnetSite** para comprobar que se ha agregado la nueva red, para lo que debe ejecutar el siguiente comando: 
+7. Desde la consola de PowerShell de Azure de hello, utilizar hello **Get AzureVnetSite** tooverify de cmdlet que Hola nueva red se agregó al ejecutar Hola siguiente comando: 
 
    ```powershell
    Get-AzureVNetSite -VNetName TestVNet
    ```
    
-   La salida devuelta (abreviada) incluye el texto siguiente:
+   Hola devuelve resultados (abreviado) incluyen Hola siguiente texto:
   
       ```
       AddressSpacePrefixes : {192.168.0.0/16}

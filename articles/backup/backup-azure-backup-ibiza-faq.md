@@ -1,6 +1,6 @@
 ---
-title: "Preguntas más frecuentes sobre el almacén de Recovery Services | Microsoft Docs"
-description: "Esta versión de las preguntas más frecuentes es compatible con la versión de vista previa pública del servicio Copia de seguridad de Azure. Respuestas a las preguntas más frecuentes sobre agente de copia de seguridad, copia de seguridad y retención, recuperación, seguridad y otras preguntas comunes sobre la solución de Copia de seguridad de Azure."
+title: "Preguntas más frecuentes del almacén de servicios de aaaRecovery | Documentos de Microsoft"
+description: "Esta versión de hello preguntas más frecuentes sobre admite la versión de vista previa de Hola de hello servicio de copia de seguridad de Azure. Respuestas toofrequently preguntas más frecuentes sobre el agente de copia de seguridad de hello, copia de seguridad y retención, recuperación, seguridad y otras preguntas comunes sobre Hola soluciones de copia de seguridad de Azure."
 services: backup
 documentationcenter: 
 author: markgalioto
@@ -15,30 +15,30 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/21/2016
 ms.author: markgal;trinadhk;
-ms.openlocfilehash: e5ef305d926a57e32cdebd44f3dbe2185c735dd4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 882b2e67ed424dc9f3681a8870e6b4c7b4cdcaec
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="recovery-services-vault---faq"></a>Almacén de Servicios de recuperación: preguntas más frecuentes
-En este artículo se proporciona información específica acerca del almacén de Servicios de recuperación y complementa el artículo con las [preguntas más frecuentes acerca de Copia de seguridad de Azure](backup-azure-backup-faq.md). La sección de preguntas más frecuentes acerca de Copia de seguridad de Azure proporciona el conjunto completo de preguntas y respuestas sobre este servicio.  
+Este artículo proporciona el almacén de servicios de información tooRecovery específico y lo complementa hello [preguntas más frecuentes de copia de seguridad de Azure](backup-azure-backup-faq.md). Hola preguntas más frecuentes de copia de seguridad de Azure proporciona el conjunto completo de Hola de preguntas y respuestas sobre Hola servicio de copia de seguridad de Azure.  
 
-Las preguntas acerca de Copia de seguridad de Azure se pueden realizar en la sección Disqus de este artículo o de otros artículos relacionados. También se pueden publicar preguntas sobre el servicio Copia de seguridad de Azure en el [foro de debate](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
+Puede hacer preguntas sobre copias de seguridad de Azure en hello Disqus sección de este artículo o un artículo relacionado. También puede publicar preguntas sobre Hola servicio de copia de seguridad de Azure en hello [foro de discusión](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
 
 ## <a name="recovery-services-vaults-are-resource-manager-based-are-backup-vaults-classic-mode-still-supported-br"></a>Los almacenes de Recovery Services se basan en Resource Manager. ¿Se admiten aún los almacenes de Backup (modo clásico)? <br/>
-Sí, los almacenes de Copia de seguridad son todavía compatibles. Cree almacenes de Copia de seguridad en el [portal de clásico](https://manage.windowsazure.com). Cree almacenes de Servicios de recuperación en el [Portal de Azure](https://portal.azure.com). Sin embargo, se recomienda encarecidamente crear el almacén de Servicios de recuperación, ya que todas las futuras mejoras solo estarán disponibles en dicho almacén.
+Sí, los almacenes de Copia de seguridad son todavía compatibles. Crear almacenes de copia de seguridad en hello [portal clásico](https://manage.windowsazure.com). Crear almacenes de servicios de recuperación en hello [portal de Azure](https://portal.azure.com). Sin embargo se recomienda encarecidamente toocreate servicios almacén de recuperación como todas las futuras mejoras estará disponible sólo en el almacén de servicios de recuperación.
 
-## <a name="can-i-migrate-a-backup-vault-to-a-recovery-services-vault-br"></a>¿Se puede migrar un almacén de Copia de seguridad a un almacén de Servicios de recuperación? <br/>
-Por desgracia no, en este momento no puede migrar el contenido de un almacén de Copia de seguridad a un almacén de Servicios de recuperación. Estamos trabajando para agregar esta funcionalidad, pero no está disponible como parte de la versión previa pública.
+## <a name="can-i-migrate-a-backup-vault-tooa-recovery-services-vault-br"></a>¿Puedo migrar un almacén de servicios de recuperación de tooa de almacén de copia de seguridad? <br/>
+Lamentablemente no, en este momento no puede migrar contenido de Hola de un tooa de almacén de copia de seguridad que del almacén de servicios de recuperación. Estamos trabajando para agregar esta funcionalidad, pero no está disponible como parte de la versión previa pública.
 
 ## <a name="do-recovery-services-vaults-support-classic-vms-or-resource-manager-based-vms-br"></a>¿Admiten los almacenes de Servicios de recuperación máquinas virtuales implementadas con el modelo clásico o máquinas virtuales implementadas con Resource Manager? <br/>
-Los almacenes de Servicios de recuperación admiten ambos modelos.  Puede hacer copias de seguridad de una máquina virtual creada en el portal clásico (que son las máquinas virtuales del modo clásico) o una máquina virtual creada en el Portal de Azure (que se basan en Resource Manager) en un almacén de Servicios de recuperación.
+Los almacenes de Servicios de recuperación admiten ambos modelos.  Puede realizar copias de seguridad de una máquina virtual creada en portal clásico de hello (que son máquinas virtuales de modo clásico), o una máquina virtual que se crea en hello portal de Azure (que son en función de administrador de recursos) del almacén de servicios de recuperación de tooa.
 
-## <a name="i-have-backed-up-my-classic-vms-in-backup-vault-now-i-want-to-migrate-my-vms-from-classic-mode-to-resource-manager-mode--how-can-i-backup-them-in-recovery-services-vault"></a>He realizado copias de seguridad de mis máquinas virtuales clásicas en el almacén de Copia de seguridad. Ahora deseo migrar mis máquinas virtuales del modo clásico al modo de Resource Manager.  ¿Cómo puedo realizar una copia de seguridad de ellas en el almacén de Servicios de recuperación?
-Las copias de seguridad de las máquinas virtuales clásicas del almacén de Copia de seguridad no se migrarán automáticamente al almacén de Servicios de recuperación al migrar las máquinas virtuales desde el modo clásico al de Resource Manager. Para realizar la migración de las copias de seguridad de máquinas virtuales, siga estos pasos:
+## <a name="i-have-backed-up-my-classic-vms-in-backup-vault-now-i-want-toomigrate-my-vms-from-classic-mode-tooresource-manager-mode--how-can-i-backup-them-in-recovery-services-vault"></a>He realizado copias de seguridad de mis máquinas virtuales clásicas en el almacén de Copia de seguridad. Ahora deseo toomigrate Mis máquinas virtuales desde el modo de administrador de tooResource de modo clásico.  ¿Cómo puedo realizar una copia de seguridad de ellas en el almacén de Servicios de recuperación?
+Copias de seguridad de máquinas virtuales clásicas en el almacén de copia de seguridad no migran automáticamente toorecovery el almacén de servicios cuando se migra hello las máquinas virtuales de clásico tooResource modo de administrador de. Para realizar la migración de las copias de seguridad de máquinas virtuales, siga estos pasos:
 
-1. En el almacén de Copia de seguridad, vaya a la pestaña **Elementos protegidos** y seleccione la máquina virtual. Haga clic en [Detener la protección](backup-azure-manage-vms-classic.md#stop-protecting-virtual-machines). Deje la opción *Eliminar los datos de copia de seguridad asociados***desactivada**.
-2. En [Azure Portal](https://portal.azure.com), vaya al menú **Extensiones** de la máquina virtual y desinstale la extensión **VMSnapshot/VMSnapshotLinux**.
-3. Migre la máquina virtual del modo clásico al modo de Resource Manager. Asegúrese de que tanto el almacenamiento como la red correspondientes a la máquina virtual también se migran al modo de Resource Manager.
-4. Cree un almacén de Servicios de recuperación y configure la copia de seguridad de la máquina virtual migrada mediante la acción **Copia de seguridad** sobre el panel del almacén. Más información acerca de cómo [habilitar la copia de seguridad en el almacén de Servicios de recuperación](backup-azure-vms-first-look-arm.md)
+1. En el almacén de copia de seguridad, vaya demasiado**elementos protegidos** pestaña y seleccione Hola máquina virtual. Haga clic en [Detener la protección](backup-azure-manage-vms-classic.md#stop-protecting-virtual-machines). Deje la opción *Eliminar los datos de copia de seguridad asociados***desactivada**.
+2. Hola [portal de Azure](https://portal.azure.com), vaya toohello **extensiones** menú Hola VM y desinstalar hello **VMSnapshot/VMSnapshotLinux** extensión.
+3. Migrar máquina virtual de Hola de modo de administrador de tooResource de modo clásico. Garantizar la validez almacenamiento y red correspondiente máquina toovirtual también el modo de administrador tooResource migrados.
+4. Crear un almacén de servicios de recuperación y configurar copia de seguridad en hello migrar máquina virtual usando **copia de seguridad** acción sobre el panel almacén. Más información acerca de cómo demasiado[habilitar copia de seguridad en el almacén de servicios de recuperación](backup-azure-vms-first-look-arm.md)

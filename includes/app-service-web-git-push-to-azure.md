@@ -1,15 +1,15 @@
-## <a name="push-to-azure-from-git"></a>Inserción en Azure desde Git
+## <a name="push-tooazure-from-git"></a>TooAzure de inserción de Git
 
-Agregue una instancia remota de Azure en el repositorio de Git local.
+Agregue un repositorio de Git local de Azure tooyour remoto.
 
 ```bash
 git remote add azure <URI from previous step>
 ```
 
-Inserte en la instancia remota de Azure para implementar la aplicación. Se le pedirá la contraseña que proporcionó anteriormente al crear el usuario de implementación. Asegúrese de escribir la contraseña que creó en [Configuración de un usuario de implementación](#configure-a-deployment-user), no la contraseña que usa para iniciar sesión en Azure Portal.
+Insertar toohello Azure toodeploy remoto de la aplicación. Se le pediremos que creó anteriormente cuando se creó el usuario de la implementación de Hola de contraseña de Hola. Asegúrese de escribir contraseña de Hola que creó en [configurar un usuario de implementación](#configure-a-deployment-user), contraseña de hello no usar toolog en toohello portal de Azure.
 
 ```bash
 git push azure master
 ```
 
-El comando anterior muestra información similar a la del ejemplo siguiente:
+Hola anterior comando muestra información similar toohello siguiente ejemplo:

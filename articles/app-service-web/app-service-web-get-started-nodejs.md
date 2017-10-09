@@ -1,5 +1,5 @@
 ---
-title: "Creación de una aplicación web de Node.js en Azure | Microsoft Docs"
+title: "aaaCreate una aplicación web de Node.js en Azure | Documentos de Microsoft"
 description: "Implementación de su primera aplicación Hola mundo de Node.js en Azure App Service Web Apps en cuestión de minutos."
 services: app-service\web
 documentationcenter: 
@@ -15,26 +15,26 @@ ms.topic: quickstart
 ms.date: 05/05/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: ce845da09a7c088b8a2ba29b818a46a3b41aa4e7
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 163edf83b2353755fc9fa2d75aed489038cf7c81
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Creación de una aplicación web de Node.js en Azure
 
-[Azure Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) proporciona un servicio de hospedaje web muy escalable y con aplicación de revisiones de un modo automático.  En esta guía de inicio rápido se explica cómo se implementa una aplicación de Node.js en Azure Web Apps. Se crea la aplicación web con la [CLI de Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) y se usa Git para implementar el código Node.js de ejemplo en la aplicación web.
+[Azure Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) proporciona un servicio de hospedaje web muy escalable y con aplicación de revisiones de un modo automático.  Este tutorial rápido muestra cómo toodeploy una tooAzure de aplicación Node.js aplicaciones Web. Crear una aplicación de web de hello usando hello [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli), y usar Git toodeploy ejemplo Node.js código toohello web app.
 
 ![Aplicación de ejemplo que se ejecuta en Azure](media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
 
-Estos pasos se pueden realizar con un equipo Mac, Windows o Linux. Una vez instalados los requisitos previos, tardará aproximadamente cinco minutos en completar los pasos.   
+Puede seguir pasos de hello siguientes a través de un equipo Mac, Windows o Linux. Una vez instalados los requisitos previos de hello, tarda aproximadamente cinco minutos toocomplete pasos Hola.   
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-for-Node-Developers/Create-a-Nodejs-app-in-Azure-Quickstart/player]   
 
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Para completar esta guía de inicio rápido:
+toocomplete este tutorial rápido:
 
 * [Instalación de Git](https://git-scm.com/)
 * [Instalación de Node.js y NPM](https://nodejs.org/)
@@ -43,41 +43,41 @@ Para completar esta guía de inicio rápido:
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Si decide instalar y usar la CLI localmente, para este tema es preciso que ejecute la CLI de Azure versión 2.0 o posterior. Ejecute `az --version` para encontrar la versión. Si necesita instalarla o actualizarla, consulte [Instalación de la CLI de Azure 2.0]( /cli/azure/install-azure-cli). 
+Si elige tooinstall y usar hello CLI localmente, en este tema requiere que se ejecuten hello Azure CLI versión 2.0 o posterior. Ejecutar `az --version` toofind versión de Hola. Si necesita tooinstall o una actualización, consulte [instalar Azure CLI 2.0]( /cli/azure/install-azure-cli). 
 
-## <a name="download-the-sample"></a>Descarga del ejemplo
+## <a name="download-hello-sample"></a>Descargar el ejemplo hello
 
-En una ventana de terminal, ejecute el siguiente comando para clonar el repositorio de la aplicación de ejemplo en el equipo local.
+En una ventana de terminal, ejecute hello después comando tooclone Hola ejemplo aplicación repositorio tooyour equipo local.
 
 ```bash
 git clone https://github.com/Azure-Samples/nodejs-docs-hello-world
 ```
 
-Utilice esta ventana de terminal para ejecutar todos los comandos de esta guía de inicio rápido.
+Utilice esta ventana de terminal toorun todos los comandos de hello en este tutorial rápido.
 
-Cambie al directorio que contiene el código de ejemplo.
+Cambie el directorio toohello que contiene código de ejemplo de Hola.
 
 ```bash
 cd nodejs-docs-hello-world
 ```
 
-## <a name="run-the-app-locally"></a>Ejecución de la aplicación de forma local
+## <a name="run-hello-app-locally"></a>Ejecutar la aplicación hello localmente
 
-Ejecute la aplicación localmente abriendo una ventana de terminal y utilizando el script `npm start` para iniciar el servidor HTTP de Node.js integrado.
+Ejecutar la aplicación hello localmente o abriendo una ventana de terminal y utilizando hello `npm start` hello toolaunch de secuencia de comandos integrada en el servidor HTTP de Node.js.
 
 ```bash
 npm start
 ```
 
-Abra un explorador web y navegue a la aplicación de ejemplo en http://localhost:1337.
+Abra un explorador web y navegar por la aplicación de ejemplo de toohello en http://localhost:1337.
 
-Verá el mensaje **Hola mundo** de la aplicación de ejemplo que aparece en la página.
+Vea hello **Hello World** mensaje desde la aplicación de ejemplo de Hola mostrado en la página de Hola.
 
 ![Aplicación de ejemplo que se ejecuta localmente](media/app-service-web-get-started-nodejs-poc/localhost-hello-world-in-browser.png)
 
-En la ventana de terminal, presione **Ctrl + C** para salir del servidor web.
+En la ventana de terminal, presione **Ctrl + C** servidor web de tooexit Hola.
 
-[!INCLUDE [Log in to Azure](../../includes/login-to-azure.md)] 
+[!INCLUDE [Log in tooAzure](../../includes/login-to-azure.md)] 
 
 [!INCLUDE [Configure deployment user](../../includes/configure-deployment-user.md)] 
 
@@ -93,11 +93,11 @@ Ha creado una nueva aplicación web vacía en Azure.
 
 [!INCLUDE [Configure local git](../../includes/app-service-web-configure-local-git.md)] 
 
-[!INCLUDE [Push to Azure](../../includes/app-service-web-git-push-to-azure.md)] 
+[!INCLUDE [Push tooAzure](../../includes/app-service-web-git-push-to-azure.md)] 
 
 ```bash
 Counting objects: 23, done.
-Delta compression using up to 4 threads.
+Delta compression using up too4 threads.
 Compressing objects: 100% (21/21), done.
 Writing objects: 100% (23/23), 3.71 KiB | 0 bytes/s, done.
 Total 23 (delta 8), reused 7 (delta 1)
@@ -119,62 +119,62 @@ remote: Copying file: 'process.json'
 remote: Deleting file: 'hostingstart.html'
 remote: Ignoring: .git
 remote: Using start-up script index.js from package.json.
-remote: Node.js versions available on the platform are: 4.4.7, 4.5.0, 6.2.2, 6.6.0, 6.9.1.
-remote: Selected node.js version 6.9.1. Use package.json file to choose a different version.
+remote: Node.js versions available on hello platform are: 4.4.7, 4.5.0, 6.2.2, 6.6.0, 6.9.1.
+remote: Selected node.js version 6.9.1. Use package.json file toochoose a different version.
 remote: Selected npm version 3.10.8
 remote: Finished successfully.
 remote: Running post deployment command(s)...
 remote: Deployment successful.
-To https://<app_name>.scm.azurewebsites.net:443/<app_name>.git
+toohttps://<app_name>.scm.azurewebsites.net:443/<app_name>.git
  * [new branch]      master -> master
 ```
 
-## <a name="browse-to-the-app"></a>Navegación hasta la aplicación
+## <a name="browse-toohello-app"></a>Examinar toohello aplicación
 
-Vaya a la aplicación implementada mediante el explorador web.
+Examinar toohello implementa la aplicación mediante el explorador web.
 
 ```bash
 http://<app_name>.azurewebsites.net
 ```
 
-El código de ejemplo de Node.js se está ejecutando en una aplicación web de Azure App Service.
+Hola Node.js código de ejemplo se ejecuta en una aplicación web de servicio de aplicaciones de Azure.
 
 ![Aplicación de ejemplo que se ejecuta en Azure](media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
 
-**¡Enhorabuena!** Ha implementado la primera aplicación de Node.js en App Service.
+**¡Enhorabuena!** Ha implementado la primera tooApp de aplicación Node.js servicio.
 
-## <a name="update-and-redeploy-the-code"></a>Actualización del código y nueva implementación
+## <a name="update-and-redeploy-hello-code"></a>Actualizar y volver a implementar código de hello
 
-Con un editor de texto, abra el archivo `index.js` en la aplicación de Node.js y realice un pequeño cambio en el texto en la llamada a `response.end`:
+Con un editor de texto, abra hello `index.js` de archivos de aplicación de Node.js hello y realizar un pequeño cambio de texto toohello en llamada de hello demasiado`response.end`:
 
 ```nodejs
 response.end("Hello Azure!");
 ```
 
-Confirme los cambios en Git y, después, inserte los cambios de código en Azure.
+Confirmar los cambios de Git y, a continuación, insertar tooAzure de cambios de código de hello.
 
 ```bash
 git commit -am "updated output"
 git push azure master
 ```
 
-Una vez que la implementación haya finalizado, vuelva a cambiar la ventana del explorador que se abrió en el paso **Navegación hasta la aplicación** y actualice la vista.
+Una vez completada la implementación, cambie toohello atrás ventana del explorador que abrió en hello **examinar toohello aplicación** paso a paso y actualice la vista.
 
 ![Aplicación de ejemplo actualizada que se ejecuta en Azure](media/app-service-web-get-started-nodejs-poc/hello-azure-in-browser.png)
 
 ## <a name="manage-your-new-azure-web-app"></a>Administración de la nueva aplicación web de Azure
 
-Vaya a <a href="https://portal.azure.com" target="_blank">Azure Portal</a> para administrar la aplicación web que ha creado.
+Vaya toohello <a href="https://portal.azure.com" target="_blank">portal de Azure</a> toomanage hello web aplicación que creó.
 
-En el menú izquierdo, haga clic en **App Services** y, a continuación, haga clic en el nombre de la aplicación web de Azure.
+Hola menú izquierdo, haga clic en **servicios de aplicaciones**y, a continuación, haga clic en nombre de saludo de la aplicación web de Azure.
 
-![Navegación desde el portal a la aplicación web de Azure](./media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-list.png)
+![Aplicación de navegación del portal tooAzure web](./media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-list.png)
 
 Podrá ver la página de información general de la aplicación web. En este caso, puede realizar tareas de administración básicas como examinar, detener, iniciar, reiniciar y eliminar. 
 
 ![Hoja de App Service en Azure Portal](media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-detail.png)
 
-El menú izquierdo proporciona distintas páginas para configurar la aplicación. 
+menú de la izquierda Hola proporciona distintas páginas para configurar la aplicación. 
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 

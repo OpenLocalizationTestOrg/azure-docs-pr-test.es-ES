@@ -1,6 +1,6 @@
 ---
-title: "Protección de un clúster de Service Fabric | Microsoft Docs"
-description: "Describe los escenarios de seguridad de un clúster de Service Fabric y las diferentes tecnologías que se utilizan para implementarlos."
+title: "un clúster de Service Fabric aaaSecure | Documentos de Microsoft"
+description: "Estos escenarios se describen escenarios de seguridad de Hola para un tooimplement de diferentes tecnologías que se usan de hello y clúster de Service Fabric."
 services: service-fabric
 documentationcenter: .net
 author: ChackDan
@@ -14,34 +14,34 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2017
 ms.author: chackdan
-ms.openlocfilehash: 5afbe575a8affc37b8f902c0988585a83921e3d2
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 249a9e85b8fbe174e2accee85a94d95b2872a3af
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Escenarios de seguridad de los clústeres de Service Fabric
-Un clúster de Service Fabric es un recurso que usted posee. Los clústeres deben estar protegidos para evitar que usuarios no autorizados se conecten a su clúster, especialmente cuando en él se están ejecutando cargas de trabajo de producción. Aunque es posible crear un clúster no protegido, si lo hace, permitirá que cualquier usuario anónimo se conecte a él si expone los puntos de conexión de administración al Internet público. 
+Un clúster de Service Fabric es un recurso que usted posee. Clústeres deben ser segura tooprevent no autorizado a los usuarios conecten clúster tooyour, especialmente cuando tiene las cargas de trabajo de producción en ejecución. Aunque es posible toocreate un clúster no seguro, si lo hace, permite a los usuarios anónimos tooconnect tooit, si expone toohello de puntos de conexión de administración pública de Internet. 
 
-En este artículo se proporciona información general sobre los escenarios de seguridad de los clústeres que se ejecutan en Azure o de forma independiente, así como sobre las diversas tecnologías que se utilizan para implementar estos escenarios. Estos son los escenarios de seguridad de clúster:
+Este artículo proporciona información general del programa Hola a escenarios de seguridad para los clústeres que se ejecutan en Azure o independiente y Hola tooimplement de varias tecnologías que se usan esos escenarios. escenarios de seguridad de clúster de Hello son:
 
 * Seguridad de nodo a nodo
 * Seguridad de cliente a nodo
 * Control de acceso basado en roles (RBAC)
 
 ## <a name="node-to-node-security"></a>Seguridad de nodo a nodo
-Protege la comunicación entre las máquinas virtuales o las máquinas del clúster. De esta forma se garantiza que solo los equipos que están autorizados a unirse al clúster pueden participar en el hospedaje de aplicaciones y servicios en el clúster.
+Protege la comunicación entre máquinas virtuales de Hola o las máquinas de clúster de Hola. Esto garantiza que sólo los equipos que son clústeres de hello toojoin autorizados pueden participar en hospedaje de aplicaciones y servicios en clúster de Hola.
 
 ![Diagrama de comunicación de nodo a nodo][Node-to-Node]
 
 Los clústeres que se ejecutan en Azure o los independientes que se ejecutan en Windows pueden utilizar una [seguridad basada en certificados](https://msdn.microsoft.com/library/ff649801.aspx) o la [seguridad de Windows](https://msdn.microsoft.com/library/ff649396.aspx) para las máquinas con Windows Server.
 
 ### <a name="node-to-node-certificate-security"></a>Seguridad basada en certificados de nodo a nodo
-Service Fabric usa certificados de servidor X.509 que se especifican como parte de las configuraciones del tipo de nodo cuando se crea un clúster. Al final de este artículo, se proporciona una descripción rápida de qué son estos certificados y cómo se pueden adquirir o crear.
+Service Fabric utiliza los certificados de servidor X.509 que especifique como parte de las configuraciones de tipo de nodo de hello cuando se crea un clúster. Se proporciona una introducción rápida de estos certificados son y cómo puede adquirir o crearlos final Hola de este artículo.
 
-La seguridad basada en certificados se configura al crear el clúster mediante Azure Portal, las plantillas de Azure Resource Manager o una plantilla JSON independiente. Puede especificar un certificado principal y uno secundario opcional que se utiliza para la sustitución del certificado. Los certificados principales y secundarios que especifique deben ser diferentes de los certificados de cliente de solo lectura y los de cliente de administración que determine para la [seguridad de cliente a nodo](#client-to-node-security).
+Seguridad de los certificados se configura al crear el clúster de hello ya sea a través del portal de Azure hello, plantillas del Administrador de recursos de Azure o una plantilla JSON independiente. Puede especificar un certificado principal y uno secundario opcional que se utiliza para la sustitución del certificado. Hello certificados principales y secundarios que especifique deben ser diferentes de cliente de administración de Hola y certificados de cliente de solo lectura que especifique para [seguridad del nodo de cliente](#client-to-node-security).
 
-En el caso de Azure, lea [Configuración de un clúster de Service Fabric con una plantilla de Azure Resource Manager](service-fabric-cluster-creation-via-arm.md) para descubrir cómo configurar la seguridad de certificado en un clúster.
+Para lee de Azure [configurar un clúster usando una plantilla de Azure Resource Manager](service-fabric-cluster-creation-via-arm.md) toolearn cómo tooconfigure certificado seguridad en un clúster.
 
 Para Windows Server de modo independiente, lea [Protección de un clúster de Windows independiente mediante certificados ](service-fabric-windows-cluster-x509-security.md)
 
@@ -49,63 +49,63 @@ Para Windows Server de modo independiente, lea [Protección de un clúster de Wi
 Para Windows Server de modo independiente, lea [Protección de un clúster independiente en Windows mediante la seguridad de Windows](service-fabric-windows-cluster-windows-security.md)
 
 ## <a name="client-to-node-security"></a>Seguridad de cliente a nodo
-Autentica los clientes y protege la comunicación entre un cliente y los nodos individuales del clúster. Este tipo de seguridad autentica y protege las comunicaciones de cliente, lo que garantiza que solo los usuarios autorizados pueden acceder al clúster y a las aplicaciones implementadas en él. Los clientes se identifican exclusivamente mediante sus credenciales de seguridad de Windows o las credenciales de seguridad del certificado.
+Autentica a los clientes y protege la comunicación entre un cliente y los nodos individuales en el clúster de Hola. Este tipo de seguridad se autentica y protege la comunicación de cliente, lo que garantiza que sólo los usuarios autorizados puedan acceder a clúster de Hola y aplicaciones de hello implementadas en clúster de Hola. Los clientes se identifican exclusivamente mediante sus credenciales de seguridad de Windows o las credenciales de seguridad del certificado.
 
 ![Diagrama de comunicación de cliente a nodo][Client-to-Node]
 
 Los clústeres que se ejecutan en Azure o los independientes que se ejecutan en Windows pueden utilizar una [seguridad basada en certificados](https://msdn.microsoft.com/library/ff649801.aspx) o la [seguridad de Windows](https://msdn.microsoft.com/library/ff649396.aspx).
 
 ### <a name="client-to-node-certificate-security"></a>Seguridad basada en certificados de cliente a nodo
- La seguridad basada en certificados de cliente a nodo se configura al crear el clúster mediante Azure Portal, las plantillas de Resource Manager o una plantilla JSON independiente, especificando un certificado de cliente de administración y uno de cliente de usuario.  Es recomendable que los certificados de cliente de administración y de cliente de usuario que especifique sean diferentes de los certificados principales y secundarios que determine para la seguridad de [nodo a nodo](#node-to-node-security). De forma predeterminada, los certificados de clúster para la seguridad de nodo a nodo se agregan a la lista de certificados de administración de cliente permitidos.
+ Seguridad de los certificados de cliente para el nodo se configura al crear el clúster de hello ya sea a través del portal de Azure hello, plantillas de administrador de recursos o una plantilla JSON independiente mediante la especificación de un certificado de cliente de administración o un certificado de cliente.  Hello Administrador cliente y al usuario los certificados de cliente que especifique deben ser diferentes de hello principal y secundarios certificados que especifique para [seguridad de nodo a nodo](#node-to-node-security) como procedimiento recomendado. De forma predeterminada, los certificados de clúster de hello para la seguridad de nodo a nodo se agregan toohello permitida a cliente lista de certificados de administración.
 
-Los clientes que se conectan al clúster mediante el certificado de administración tienen acceso completo a las funcionalidades de administración.  Los clientes que se conectan al clúster mediante el certificado de cliente de usuario de solo lectura tienen acceso de este tipo a las funcionalidades de administración. Es decir, estos certificados se usan para el control de acceso basado en rol (RBAC) que se describen más adelante en este artículo.
+Los clientes se conectan mediante Hola certificado de administración de clúster de toohello tienen capacidades de toomanagement de acceso completo.  Los clientes se conectan clúster toohello mediante certificado de cliente de usuario de solo lectura de hello tienen solo las capacidades de toomanagement de acceso de lectura. En otras palabras, estos certificados se usan para hello bases de datos de control de acceso roles (RBAC) se describe más adelante en este artículo.
 
-En el caso de Azure, lea [Configuración de un clúster de Service Fabric con una plantilla de Azure Resource Manager](service-fabric-cluster-creation-via-arm.md) para descubrir cómo configurar la seguridad de certificado en un clúster.
+Para lee de Azure [configurar un clúster usando una plantilla de Azure Resource Manager](service-fabric-cluster-creation-via-arm.md) toolearn cómo tooconfigure certificado seguridad en un clúster.
 
 Para Windows Server de modo independiente, lea [Protección de un clúster de Windows independiente mediante certificados ](service-fabric-windows-cluster-x509-security.md)
 
 ### <a name="client-to-node-azure-active-directory-aad-security-on-azure"></a>Seguridad de Azure Active Directory (AAD) de cliente a nodo en Azure
-Los clústeres que se ejecutan en Azure también pueden proteger el acceso a los puntos de conexión de administración con Azure Active Directory (AAD). Consulte [Configuración de un clúster de Service Fabric con una plantilla de Azure Resource Manager](service-fabric-cluster-creation-via-arm.md) para obtener más información sobre cómo crear los artefactos de AAD necesarios, cómo rellenarlos durante la creación de clústeres y cómo conectar dichos clústeres después.
+Clústeres que se ejecutan en Azure también pueden proteger el acceso toohello extremos de administración con Azure Active Directory (AAD). Vea [configurar un clúster usando una plantilla de Azure Resource Manager](service-fabric-cluster-creation-via-arm.md) para obtener información sobre cómo toocreate Hola artefactos necesarios de AAD, cómo toopopulate ellas durante las operaciones de clúster creación y cómo tooconnect toothose clústeres posteriormente.
 
 ## <a name="security-recommendations"></a>Recomendaciones de seguridad
-Para los clústeres de Azure, se recomienda utilizar la seguridad de AAD para autenticar clientes y certificados para la seguridad de nodo a nodo.
+Para los clústeres de Azure, se recomienda usar los clientes tooauthenticate de seguridad AAD y certificados para la seguridad de nodo a nodo.
 
 Para los clústeres Windows Server independientes, se recomienda que utilice la seguridad de Windows con las cuentas administradas de grupo (GMA) si tiene Windows Server 2012 R2 y Active Directory. De lo contrario, use la seguridad de Windows con cuentas de Windows.
 
 ## <a name="role-based-access-control-rbac"></a>Control de acceso basado en roles (RBAC)
-El control de acceso permite al administrador de clústeres limitar el acceso a determinadas operaciones de clúster para distintos grupos de usuarios, lo que aumenta la seguridad del clúster. Se admiten dos tipos de control de acceso diferentes para los clientes que se conectan a un clúster: administrador y usuario.
+Control de acceso permite Hola clúster administrador toolimit acceso toocertain las operaciones del clúster para los diferentes grupos de usuarios, mejorar la seguridad de clúster de Hola. Se admiten dos tipos de control de acceso diferente para clientes que se conectan tooa clúster: rol de administrador y el rol de usuario.
 
-Los administradores tienen acceso total a las capacidades de administración (incluidas las capacidades de lectura y escritura). Los usuarios, de forma predeterminada, tienen acceso de solo lectura a las capacidades de administración (por ejemplo, capacidad de consulta) y a la capacidad para resolver las aplicaciones y los servicios.
+Los administradores tienen capacidades de toomanagement de acceso completa (incluidas las capacidades de lectura/escritura). Los usuarios, de forma predeterminada, tienen sólo capacidades de toomanagement de acceso de lectura (por ejemplo, capacidades de consulta) y las aplicaciones de tooresolve de capacidad de Hola y servicios.
 
-Especifique los roles de cliente de usuario y administrador cuando cree el clúster con identidades independientes (certificados, AAD, etc.) para cada uno. Para más información sobre la configuración del control de acceso predeterminada y cómo cambiarla, consulte [Control de acceso basado en roles para clientes de Service Fabric](service-fabric-cluster-security-roles.md).
+Especificado los roles de cliente de administrador y usuario de hello en el tiempo de Hola de creación del clúster proporcionando identidades diferentes (certificados, etc. AAD) para cada uno. Para obtener más información sobre la configuración predeterminada de control de acceso de Hola y cómo toochange Hola valores predeterminados, consulte [el control de acceso basado en roles para los clientes de Service Fabric](service-fabric-cluster-security-roles.md).
 
 ## <a name="x509-certificates-and-service-fabric"></a>Certificados X.509 y Service Fabric
-Los certificados digitales X509 se usan habitualmente para autenticar a clientes y servidores y para cifrar y firmar mensajes digitalmente. Para más información sobre estos certificados, vaya a [Trabajar con certificados](http://msdn.microsoft.com/library/ms731899.aspx).
+Los certificados digitales X.509 son servidores y clientes de tooauthenticate utilizadas y tooencrypt y firmar digitalmente los mensajes. Para obtener más detalles sobre estos certificados, vaya demasiado[trabajar con certificados](http://msdn.microsoft.com/library/ms731899.aspx).
 
-Algunos puntos importantes que hay que tener en cuenta:
+Algunos tooconsider aspectos importantes:
 
 * Los certificados usados en clústeres que ejecutan cargas de trabajo de producción deberán crearse mediante un servicio de certificados de Windows Server correctamente configurado u obtenerse de una [entidad de certificación (CA)](https://en.wikipedia.org/wiki/Certificate_authority)autorizada.
 * No use nunca certificados temporales o de pruebas en producción creados con herramientas como MakeCert.exe.
 * Puede usar un certificado autofirmado, pero solo para los clústeres de prueba y no para los que se encuentran en fase de producción.
 
 ### <a name="server-x509-certificates"></a>Certificados de servidor X.509
-Los certificados de servidor tienen la tarea principal de autenticar un servidor (nodo) en los clientes o de autenticar un servidor (nodo) en un servidor (nodo). Una de las comprobaciones iniciales cuando un nodo o un cliente autentica un nodo consiste en comprobar el valor del nombre común en el campo Sujeto. Este nombre común o uno de los nombres alternativos del sujeto del certificado debe estar presente en la lista de nombres comunes permitidos.
+Certificados de servidor tienen la tarea principal de hello de autenticar un servidor (nodo) tooclients o autenticar un servidor de servidor (nodo) tooa (nodo). Una de las comprobaciones iniciales de hello cuando un nodo o un cliente se autentica un nodo es el valor de Hola de toocheck de nombre común de hello en el campo de asunto Hola. Este nombre común o uno de los nombres alternativos del firmante de los certificados Hola debe encontrarse en la lista de Hola de nombres comunes permitidos.
 
-En el siguiente artículo se describe cómo generar certificados con nombres alternativos de firmante (SAN): [Cómo agregar un nombre alternativo del firmante a un certificado LDAP seguro](http://support.microsoft.com/kb/931351).
+Hello siguiente artículo describe cómo toogenerate certificados con nombres alternativos del firmante (SAN): [cómo tooadd un tooa de nombre alternativo de sujeto proteger certificado LDAP](http://support.microsoft.com/kb/931351).
 
-El campo de sujeto puede contener varios valores, cada uno con un prefijo de inicialización para indicar el tipo de valor. Normalmente, la inicialización es "CN" para nombre común, por ejemplo, "CN = www.contoso.com". El campo Sujeto también puede estar en blanco. Si el campo opcional Nombre alternativo de sujeto está relleno, debe contener tanto el nombre común del certificado como una entrada por nombre alternativo de sujeto. Estos se especifican como valores de nombre DNS.
+campo de asunto Hola puede contener varios valores, cada uno prefijado con un tipo de valor de inicialización tooindicate Hola. Normalmente, la inicialización de hello es "CN" nombre común; Por ejemplo, "CN = www.contoso.com". También es posible hello toobe de campo de asunto en blanco. Si se rellena el campo de nombre alternativo del sujeto opcional hello, debe contener nombre común de hello del certificado de hello y una entrada por cada nombre alternativo del sujeto. Estos se especifican como valores de nombre DNS.
 
-El valor del campo Propósitos planteados del certificado debe incluir un valor apropiado, como "Autenticación de servidor" o "Autenticación de cliente".
+valor de Hello del campo de propósitos planteados de hello del certificado de hello debe incluir un valor apropiado, como "Autenticación de servidor" o "Autenticación de cliente".
 
 ### <a name="client-x509-certificates"></a>Certificados de cliente X.509
-Los certificados de cliente normalmente no los emite una entidad de certificación de terceros. En su lugar, el almacén Personal de la ubicación del usuario actual contiene normalmente los certificados de cliente colocados ahí por una entidad de certificación raíz, con un propósito planteado de "Autenticación de cliente". El cliente puede usar este tipo de certificado cuando se requiere autenticación mutua.
+Los certificados de cliente normalmente no los emite una entidad de certificación de terceros. En su lugar, hello almacén Personal de la ubicación del usuario actual Hola normalmente contiene certificados de cliente colocados ahí por una entidad emisora raíz, con un propósito planteado de "Autenticación de cliente". cliente de Hello puede utilizar este tipo de certificado cuando se requiere autenticación mutua.
 
 > [!NOTE]
 > Todas las operaciones de administración en el clúster de Service Fabric requieren certificados de servidor. No se pueden usar certificados de cliente para la administración.
 > 
 > 
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
+<!--Every topic should have next steps and links toohello next logical set of content tookeep hello customer engaged-->
 
 
 ## <a name="next-steps"></a>Pasos siguientes

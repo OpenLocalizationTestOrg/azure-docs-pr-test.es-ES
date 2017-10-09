@@ -1,6 +1,6 @@
 ## <a name="clean-up-deployment"></a>Limpieza de la implementación 
 
-Después de ejecutar el script de ejemplo, se puede usar el comando siguiente para quitar el grupo de recursos, las instancias de Azure Redis Cache y todos los recursos relacionados en el grupo de recursos.
+Después de ejecutar el ejemplo de secuencia de comandos de hello, el comando de seguimiento de hello puede ser grupo de recursos de hello tooremove usado, instancia de caché en Redis de Azure y cualquier recurso relacionado en el grupo de recursos de Hola.
 
 ```azurecli
 az group delete --name contosoGroup

@@ -5,5 +5,5 @@
 | Puntos de conexión de CDN por perfil |10 |
 | Dominios personalizados por punto de conexión |10 |
 
-Solicite una actualización de los límites flexibles de la suscripción abriendo una incidencia de soporte técnico.
+Solicitar los límites flexibles de una suscripción de tooyour de actualización, abra una incidencia de soporte técnico.
 

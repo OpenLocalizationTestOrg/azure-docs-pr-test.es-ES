@@ -1,6 +1,6 @@
 ---
-title: "Supervisión y administración de canalizaciones de datos - Azure | Microsoft Docs"
-description: "Aprenda a usar la aplicación de supervisión y administración para supervisar y administrar factorías de datos y canalizaciones de Azure."
+title: aaaMonitor y administrar las canalizaciones de datos - Azure | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toouse Hola toomonitor de aplicación de supervisión y administración y administrar las canalizaciones y los generadores de datos de Azure."
 services: data-factory
 documentationcenter: 
 author: spelluru
@@ -14,309 +14,309 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: spelluru
-ms.openlocfilehash: d5a2d1f3d85b8a2212326cfcfd0ba5d80356b769
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5e4ef6ec5fb8ebc9bda0be7899a39a51d58403d1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Supervisión y administración de canalizaciones de Azure Data Factory mediante la aplicación de supervisión y administración
+# <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-hello-monitoring-and-management-app"></a>Supervisar y administrar las canalizaciones de factoría de datos de Azure mediante la aplicación de supervisión y administración de hello
 > [!div class="op_single_selector"]
 > * [Uso de Azure Portal/Azure PowerShell](data-factory-monitor-manage-pipelines.md)
 > * [Uso de la aplicación de supervisión y administración](data-factory-monitor-manage-app.md)
 >
 >
 
-En este artículo se describe cómo usar la aplicación de supervisión y administración para supervisar, administrar y depurar las canalizaciones de Data Factory. También proporciona información acerca de cómo crear alertas para recibir notificaciones cuando se produzcan errores. Para empezar a usar la aplicación, vea el vídeo siguiente:
+Este artículo describe cómo toouse Hola toomonitor de aplicación de supervisión y administración, administrar y depurar las canalizaciones de factoría de datos. También se proporciona información sobre cómo toocreate alertas tooget una notificación cuando se produzcan errores. Puede empezar con el uso de la aplicación hello por ver Hola después de vídeo:
 
 > [!NOTE]
-> La interfaz de usuario que se muestra en el vídeo puede no coincidir exactamente con la que se ve en el portal. Es algo anterior, pero los conceptos siguen siendo los mismos. 
+> interfaz de usuario de Hola que se muestra en hello vídeo puede no coincidir lo que se ve en el portal de Hola. Es ligeramente más antiguo, pero conceptos permanecen Hola mismo. 
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Azure-Data-Factory-Monitoring-and-Managing-Big-Data-Piplines/player]
 >
 
-## <a name="launch-the-monitoring-and-management-app"></a>Inicio de la aplicación de supervisión y administración
-Para iniciar la aplicación de supervisión y administración, haga clic en el icono **Monitoring & Manage** (Supervisión y administración), de la hoja **Factoría de datos** de su factoría de datos.
+## <a name="launch-hello-monitoring-and-management-app"></a>Inicie la aplicación de supervisión y administración de hello
+Hola toolaunch Monitor y la aplicación de administración, haga clic en hello **Monitor & administrar** icono hello **factoría de datos** hoja de la factoría de datos.
 
-![Icono de supervisión en la página de inicio de Factoría de datos](./media/data-factory-monitor-manage-app/MonitoringAppTile.png)
+![Icono página principal de hello factoría de datos de supervisión](./media/data-factory-monitor-manage-app/MonitoringAppTile.png)
 
-La aplicación de supervisión y administración debería abrirse en una ventana independiente.  
+Debería ver aplicación de supervisión y administración de hello abrir en una ventana independiente.  
 
 ![Aplicación de supervisión y administración](./media/data-factory-monitor-manage-app/AppLaunched.png)
 
 > [!NOTE]
-> Si ve que el explorador web está atascado en "Autorizando...", desactive la casilla **Block third party cookies and site data** (Bloquear cookies y datos de sitios de terceros), o déjela activada y cree una excepción para **login.microsoftonline.com** e intente volver a abrir la aplicación.
+> Si ve ese explorador web de hello está atascado en "Autorizar …", desactive hello **bloquear las cookies de terceros y datos de sitio** casilla de verificación--o mantener aún seleccionada, cree una excepción para **login.microsoftonline.com** y, a continuación, vuelva a intentarlo tooopen Hola aplicación.
 
 
-En la lista Activity Windows (Ventanas de actividad) del panel central, verá una ventana de actividad cada vez que se ejecuta una actividad. Por ejemplo, si la actividad está programada para ejecutarse cada hora durante cinco horas, verá cinco ventanas de actividad asociadas a cinco segmentos de datos. Si no ve las ventanas de actividad en la parte inferior de la lista, haga lo siguiente:
+En la lista de ventanas de la actividad de hello en el panel central de hello, verá una ventana de actividad para cada ejecución de una actividad. Por ejemplo, si tiene Hola actividad programada toorun cada hora durante cinco horas, verá cinco ventanas de la actividad asociadas a segmentos de datos de cinco. Si no ve las ventanas de la actividad en la lista de hello en parte inferior de hello, Hola siguientes:
  
-- Actualice los filtros de **hora de inicio** y **hora de finalización** en la parte superior para que coincidan con las horas de inicio y finalización de la canalización y, después, haga clic en el botón **Aplicar**.  
-- La lista Activity Windows (Ventanas de actividad) no se actualiza automáticamente. Haga clic en el botón **Refresh** (Actualizar) de la barra de herramientas de la lista **Activity Windows** (Ventanas de actividad).  
+- Hola de actualización **hora de inicio** y **hora de finalización** filtros en Hola toomatch superior Hola inicio y finalización de la canalización y, a continuación, haga clic en hello **aplicar** botón.  
+- lista de ventanas de la actividad de Hello no se actualiza automáticamente. Haga clic en hello **actualizar** botón de barra de herramientas Hola Hola **Windows actividad** lista.  
 
-Si no tiene una aplicación de Data Factory con la que probar estos pasos, realice el tutorial: [Copia de datos de Blob Storage en SQL Database mediante Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+Si no tiene un tootest de aplicación de la factoría de datos de estos pasos con, Hola tutorial: [copiar los datos de almacenamiento de blobs tooSQL con factoría de datos de la base de datos](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
-## <a name="understand-the-monitoring-and-management-app"></a>Descripción de la aplicación de supervisión y administración
-Hay tres pestañas a la izquierda: **Explorador de recursos**, **Vistas de supervisión de** y **Alertas**. La primera pestaña (**Explorador de recursos**) está activada de forma predeterminada.
+## <a name="understand-hello-monitoring-and-management-app"></a>Entender la aplicación de supervisión y administración de hello
+Hay tres pestañas de hello izquierda: **Resource Explorer**, **vistas de supervisión de**, y **alertas**. primera pestaña de Hello (**Resource Explorer**) está activada de forma predeterminada.
 
 ### <a name="resource-explorer"></a>Explorador de recursos
-Verá lo siguiente:
+Se ve Hola siguiente:
 
-* La **vista de árbol** del Explorador de recursos en el panel izquierdo.
-* El **vista de diagrama** en la parte superior del panel central.
-* La lista **Activity Windows** (Ventanas de actividad) en la parte inferior del panel central.
-* Las pestañas **Properties** (Propiedades), **Activity Window Explorer** (Explorador de ventanas de actividad) y **Script** en el panel derecho.
+* Hola Resource Explorer **vista de árbol** en el panel izquierdo de Hola.
+* Hola **vista de diagrama** en parte superior de hello en el panel central de Hola.
+* Hola **Windows actividad** lista final hello en el panel central de Hola.
+* Hola **propiedades**, **Explorer de la ventana de actividad**, y **Script** fichas en el panel derecho de Hola.
 
-En el Explorador de recursos, aparecen todos los recursos (canalizaciones, conjuntos de datos, servicios vinculados) de la factoría de datos en una vista de árbol. Al seleccionar un objeto en el Explorador de recursos:
+En el Explorador de recursos, verá todos los recursos (canalizaciones, los conjuntos de datos, servicios vinculados) de la factoría de datos de hello en una vista de árbol. Al seleccionar un objeto en el Explorador de recursos:
 
-* Se resalta la entidad de Factoría de datos asociada en la vista de diagrama.
-* Las [ventanas de actividad asociadas](data-factory-scheduling-and-execution.md) se resaltan en la lista Activity Windows (Ventanas de actividad) de la parte inferior.  
-* Las propiedades del objeto seleccionado aparecen en la ventana Propiedades (panel derecho).
-* Aparece la definición de JSON del objeto seleccionado, si procede. Por ejemplo: un servicio vinculado, un conjunto de datos o una canalización.
+* Hola asociado factoría de datos de entidad se resalta en hello vista de diagrama.
+* [Asociados de ventanas de la actividad](data-factory-scheduling-and-execution.md) se resaltan en la lista de ventanas de la actividad de hello en parte inferior de Hola.  
+* propiedades Hola del objeto seleccionado Hola se muestran en la ventana de propiedades de hello en el panel derecho de Hola.
+* se muestra la definición JSON del objeto seleccionado Hola Hola, si procede. Por ejemplo: un servicio vinculado, un conjunto de datos o una canalización.
 
 ![Explorador de recursos](./media/data-factory-monitor-manage-app/ResourceExplorer.png)
 
-Consulte el artículo sobre [programación y ejecución](data-factory-scheduling-and-execution.md) para información conceptual detallada sobre las ventanas de actividad.
+Vea hello [ejecución y programación](data-factory-scheduling-and-execution.md) artículo para obtener información conceptual detallada sobre las ventanas de actividad.
 
 ### <a name="diagram-view"></a>Vista de diagrama
-La vista de diagrama de una factoría de datos es un panel único para supervisar y administrar una factoría de datos y sus recursos. Cuando seleccione una entidad de Factoría de datos (conjunto de datos o canalización) en la vista de diagrama:
+Hola vista de diagrama de una factoría de datos proporciona un único panel de vidrio toomonitor y administrar una factoría de datos y sus activos. Cuando se selecciona una entidad de factoría de datos (conjunto de datos y canalización) en la vista de diagrama de hello:
 
-* La entidad de la factoría de datos se selecciona en la vista de árbol.
-* Las ventanas de actividad asociadas se resaltan en la lista Activity Windows (Ventanas de actividad).
-* Las propiedades del objeto seleccionado aparecen en la ventana Propiedades.
+* entidad de factoría de datos de Hello está seleccionado en la vista de árbol de Hola.
+* Hola asociado actividad windows se resaltan en la lista de ventanas de la actividad de Hola.
+* propiedades de Hello del objeto seleccionado Hola se muestran en la ventana de propiedades de Hola.
 
-Si la canalización está habilitada (es decir, no en estado de pausa), se indicará con una línea verde:
+Cuando se habilita la canalización de hello (no en un estado pausado), se muestra con una línea verde:
 
 ![Canalización en ejecución](./media/data-factory-monitor-manage-app/PipelineRunning.png)
 
-Para pausar, reanudar o terminar una canalización, selecciónela en la vista de diagrama y utilice los botones de la barra de comandos.
+Puede pausar, reanudar o finalizar una canalización seleccionándolo en la vista de diagrama de Hola y con los botones de hello en la barra de comandos de Hola.
 
-![Pausa/reanudación en la barra de comandos](./media/data-factory-monitor-manage-app/SuspendResumeOnCommandBar.png)
+![Pausar y reanudar en la barra de comandos de Hola](./media/data-factory-monitor-manage-app/SuspendResumeOnCommandBar.png)
  
-En la vista de diagrama hay tres botones en la barra de comandos para la canalización. Puede usar el segundo botón para pausar la canalización. La pausa no termina las actividades que se estén ejecutando, estas continúan hasta su finalización. El tercer botón pausa la canalización y termina las actividades que se están ejecutando. El primer botón reanuda la canalización. Cuando la canalización está en pausa, su color cambia. Por ejemplo, la siguiente imagen muestra una canalización en pausa: 
+Hay tres botones de barra de comandos de la canalización de Hola Hola vista de diagrama. Puede usar la canalización de hello segundo botón toopause Hola. Pausar Hola actividades en ejecución, no termina y les permite continuar toocompletion. tercer botón de Hola detiene la canalización de Hola y finaliza su ejecución de actividades existentes. botón primera Hola reanuda la canalización de Hola. Cuando la canalización está en pausa, se cambia el color de Hola de canalización de Hola. Por ejemplo, una canalización en pausa es similar en hello después de imagen: 
 
 ![Canalización en pausa](./media/data-factory-monitor-manage-app/PipelinePaused.png)
 
-Con la tecla Ctrl puede realizar una selección múltiple de dos o más canalizaciones. Puede utilizar los botones de la barra de comandos para pausar y reanudar varias canalizaciones a la vez.
+Puede seleccionar varias canalizaciones de dos o más mediante el uso de la tecla Ctrl de Hola. Puede usar botones de barra de comandos hello toopause/reanudar varias canalizaciones a la vez.
 
-También puede hacer clic con el botón derecho en una canalización y seleccionar las opciones apropiadas para suspender, reanudar o terminar una canalización. 
+También puede hacer clic una canalización y seleccione las opciones toosuspend, reanudar o finalizar una canalización. 
 
 ![Menú contextual de la canalización](./media/data-factory-monitor-manage-app/right-click-menu-for-pipeline.png)
 
-Haga clic en la opción **Abrir canalización** para ver todas las actividades de la canalización. 
+Haga clic en hello **canalización abierto** opción toosee todas las actividades de hello en la canalización de Hola. 
 
 ![Menú Abrir canalización](./media/data-factory-monitor-manage-app/OpenPipelineMenu.png)
 
-En la vista de canalización que se abre, verá todas las actividades de la canalización. En este ejemplo, solamente hay una actividad: la actividad de copia. 
+En la vista de la canalización de hello abierto, verá todas las actividades de canalización de Hola. En este ejemplo, solamente hay una actividad: la actividad de copia. 
 
 ![Canalización abierta](./media/data-factory-monitor-manage-app/OpenedPipeline.png)
 
-Para volver a la vista anterior, haga clic en el nombre de la factoría de datos en el menú de la ruta de navegación en la parte superior.
+toogo realizar copias toohello vista anterior, haga clic en nombre de generador de datos de hello en el menú de la ruta de navegación de hello en la parte superior de Hola.
 
-En la vista de canalización, cuando se selecciona un conjunto de datos de salida o cuando se pasa el mouse sobre él, se ve la ventana emergente Activity Windows (Ventanas de actividad) de dicho conjunto de datos.
+En la vista de la canalización de hello, cuando se selecciona un conjunto de datos de salida o al mover el mouse sobre el conjunto de datos de salida de hello, vea ventana emergente de actividad Windows hello para ese conjunto de datos.
 
 ![Ventana emergente Activity Windows (Ventanas de actividad)](./media/data-factory-monitor-manage-app/ActivityWindowsPopup.png)
 
-Puede hacer clic en una ventana de actividad para ver sus detalles en la ventana **Propiedades** del panel derecho.
+Puede hacer clic en los detalles de toosee de ventana de una actividad para él en hello **propiedades** ventana en el panel derecho de Hola.
 
 ![Propiedades de la ventana de actividad](./media/data-factory-monitor-manage-app/ActivityWindowProperties.png)
 
-En el panel derecho, cambie a la pestaña **Activity Window Explorer** (Explorador de ventanas de actividad) para ver más información.
+En el panel derecho de hello, cambie toohello **Explorer de la ventana de actividad** ficha toosee más detalles.
 
 ![Activity Window Explorer](./media/data-factory-monitor-manage-app/ActivityWindowExplorer.png)
 
-También verá las **variables resueltas** de cada intento de ejecución de una actividad en la sección **Intentos**.
+Consulte también **resuelve las variables** para cada intento de ejecución de una actividad en hello **intentos** sección.
 
 ![Variables resueltas](./media/data-factory-monitor-manage-app/ResolvedVariables.PNG)
 
-Cambie a la pestaña **Script** para ver la definición del script de JSON del objeto seleccionado.   
+Cambiar toohello **Script** ficha Definición de script toosee Hola JSON para el objeto seleccionado de Hola.   
 
 ![Pestaña de script](./media/data-factory-monitor-manage-app/ScriptTab.png)
 
 Puede ver las ventanas de actividad en tres lugares:
 
-* En el elemento emergente Activity Windows (Ventanas de actividad) en la vista de diagrama (panel central).
-* En Activity Window Explorer (Explorador de ventanas de actividad) en el panel derecho.
-* En la lista Activity Windows (Ventanas de actividad) en el panel inferior.
+* Hola ventanas emergentes Hola vista de diagrama (panel central) de la actividad.
+* Hola Explorador de la ventana de actividad en el panel derecho de Hola.
+* lista de ventanas de la actividad de Hello en el panel inferior de Hola.
 
-En el elemento emergente Activity Windows (Ventanas de actividad) y Activity Window Explorer (Explorador de ventanas de actividad) puede desplazarse a la semana anterior o siguiente con las flechas izquierda y derecha.
+En la ventana emergente de ventanas de la actividad de Hola y el Explorador de ventana de actividad, puede desplazarse a toohello la semana anterior y Hola semanas siguientes mediante el uso de Hola flechas izquierda y derecha.
 
 ![Flechas izquierda/derecha de Activity Window Explorer (Explorador de ventanas de actividad)](./media/data-factory-monitor-manage-app/ActivityWindowExplorerLeftRightArrows.png)
 
-En la parte inferior de la vista de diagrama aparecen estos botones: acercar, alejar, ajustar, 100 % y bloquear el diseño. El botón para **bloquear el diseño** mover tablas y canalizaciones por error en la vista de diagrama. Está activado de forma predeterminada. Puede desactivarlo y mover las entidades por el diagrama. Si lo desactiva, puede usar el último botón para colocar automáticamente las tablas y las canalizaciones. También puede acercar o alejar con la rueda del mouse.
+En parte inferior de Hola de hello vista de diagrama, verá estos botones: Acercar, alejar, Zoom tooFit, Zoom 100%, diseño de bloqueo. Hola **diseño de bloqueo** botón impide que se muevan accidentalmente tablas y canalizaciones en hello vista de diagrama. Está activado de forma predeterminada. Puede desactivarla y mover las entidades en el diagrama de Hola. Cuando se lo desactiva, puede utilizar las canalizaciones y tablas de hello último botón tooautomatically posición. También puede acercar o alejar mediante el uso de la rueda del mouse de Hola.
 
 ![Comandos de ampliación de la vista de diagrama](./media/data-factory-monitor-manage-app/DiagramViewZoomCommands.png)
 
 ### <a name="activity-windows-list"></a>Lista Activity Windows (Ventanas de actividad)
-La lista Activity Windows (Ventanas de actividad) de la parte inferior del panel central muestra todas las ventanas de actividad del conjunto de datos seleccionado en el Explorador de recursos o en la vista de diagrama. De forma predeterminada, la lista está en orden descendente, lo que significa que en la parte superior aparece la ventana de actividad más reciente.
+Hola actividad Windows lista Hola parte inferior del panel central de hello muestra todas las ventanas de actividad de conjunto de datos de Hola que seleccionó en el Explorador de recursos de Hola o hello vista de diagrama. De forma predeterminada, lista de hello está en orden descendente, lo que significa que aparece la ventana de actividad más reciente de hello en la parte superior de Hola.
 
 ![Lista Activity Windows (Ventanas de actividad)](./media/data-factory-monitor-manage-app/ActivityWindowsList.png)
 
-Esta lista no se actualiza automáticamente, por lo que debe usar el botón Actualizar de la barra de herramientas para hacerlo manualmente.  
+Esta lista no se actualiza automáticamente, por lo que el botón de actualización de uso hello en toomanually de barra de herramientas de hello actualizarlo.  
 
-Las ventanas de actividad pueden estar en uno de los siguientes estados:
+Ventanas de la actividad pueden estar en uno de hello siguientes estados:
 
 <table>
 <tr>
     <th align="left">Estado</th><th align="left">Subestado</th><th align="left">Description</th>
 </tr>
 <tr>
-    <td rowspan="8">En espera</td><td>ScheduleTime</td><td>Aún no es momento de ejecutar la ventana de actividad.</td>
+    <td rowspan="8">En espera</td><td>ScheduleTime</td><td>no se ha llegado el momento de Hola para toorun de ventana de actividad de Hola.</td>
 </tr>
 <tr>
-<td>DatasetDependencies</td><td>Las dependencias de nivel superior no están listas.</td>
+<td>DatasetDependencies</td><td>dependencias de nivel superior de Hello no están preparadas.</td>
 </tr>
 <tr>
-<td>ComputeResources</td><td>No están disponibles los recursos de proceso.</td>
+<td>ComputeResources</td><td>recursos de proceso de Hello no están disponibles.</td>
 </tr>
 <tr>
-<td>ConcurrencyLimit</td> <td>Todas las instancias de actividad están ocupadas con la ejecución de otras ventanas de actividad.</td>
+<td>ConcurrencyLimit</td> <td>Todas las instancias de actividad de hello están ocupadas ejecutando otras ventanas de la actividad.</td>
 </tr>
 <tr>
-<td>ActivityResume</td><td>La actividad está en pausa y no puede ejecutar las ventanas de actividad hasta que se reanude.</td>
+<td>ActivityResume</td><td>actividad Hello está en pausa y no puede ejecutar windows de la actividad de hello hasta que se reanude.</td>
 </tr>
 <tr>
-<td>Retry</td><td>Se está volviendo a intentar la ejecución de la actividad.</td>
+<td>Retry</td><td>se vuelve a intentar la ejecución de la actividad de Hola.</td>
 </tr>
 <tr>
 <td>Validación</td><td>Aún no ha iniciado la validación.</td>
 </tr>
 <tr>
-<td>ValidationRetry</td><td>La validación está esperando un reintento.</td>
+<td>ValidationRetry</td><td>La validación es toobe espera vuelve a intentar.</td>
 </tr>
 <tr>
 <tr>
 <td rowspan="2">InProgress</td><td>Validating</td><td>Validación en curso.</td>
 </tr>
 <td>-</td>
-<td>La ventana de actividad se está procesando.</td>
+<td>ventana de actividad de saludo se está procesando.</td>
 </tr>
 <tr>
-<td rowspan="4">Con error</td><td>TimedOut</td><td>La ejecución de la actividad tardó más tiempo del permitido por la actividad.</td>
+<td rowspan="4">Con error</td><td>TimedOut</td><td>ejecución de la actividad de Hello ha tardado más de las permitidas por actividad hello.</td>
 </tr>
 <tr>
-<td>Canceled</td><td>La ventana de actividad fue cancelada por acción del usuario.</td>
+<td>Canceled</td><td>ventana de actividad de Hello fue cancelada por acción del usuario.</td>
 </tr>
 <tr>
 <td>Validación</td><td>Error de validación.</td>
 </tr>
 <tr>
-<td>-</td><td>No se pudo generar o validar la ventana de actividad.</td>
+<td>-</td><td>ventana de actividad de Hello no pudo toobe generado o validar.</td>
 </tr>
-<td>Ready</td><td>-</td><td>La ventana de actividad está lista para su uso.</td>
-</tr>
-<tr>
-<td>Skipped</td><td>-</td><td>La ventana de actividad no se ha procesado.</td>
+<td>Ready</td><td>-</td><td>ventana de actividad de Hello está listo para su uso.</td>
 </tr>
 <tr>
-<td>None</td><td>-</td><td>Una ventana de actividad que existía con un estado distinto, pero que se ha restablecido.</td>
+<td>Skipped</td><td>-</td><td>ventana de actividad de Hello no se procesa.</td>
+</tr>
+<tr>
+<td>None</td><td>-</td><td>Una ventana de actividad utiliza tooexist con un estado diferente, pero se ha restablecido.</td>
 </tr>
 </table>
 
 
-Al hacer clic en una de las ventanas de actividad de la lista, verá sus detalles en **Activity Windows Explorer** (Explorador de ventanas de actividad) o en la ventana **Propiedades** de la derecha.
+Al hacer clic en una ventana de actividad en la lista de hello, puede ver detalles sobre él en hello **el Explorador de Windows de actividad** o hello **propiedades** ventana en hello derecho.
 
 ![Activity Window Explorer](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-2.png)
 
 ### <a name="refresh-activity-windows"></a>Actualizar las ventanas de actividad
-Los detalles no se actualizan automáticamente, por lo que debe usar el segundo botón, Actualizar, de la barra de comandos para actualizar manualmente la lista de ventanas de actividad.  
+detalles de Hello no se actualizan automáticamente, así que usa Hola actualización botón (Hola segundo) en la lista de windows de toomanually actualización Hola actividad de la barra de comandos de Hola.  
 
 ### <a name="properties-window"></a>Ventana Propiedades
-La ventana Propiedades está en el panel del extremo derecho de la Aplicación de supervisión y administración.
+ventana de propiedades de Hello es en panel de hello más a la derecha de la aplicación de supervisión y administración de hello.
 
 ![Ventana Propiedades](./media/data-factory-monitor-manage-app/PropertiesWindow.png)
 
-Muestra las propiedades del elemento seleccionado en el Explorador de recursos (en la vista de árbol), la vista de diagrama o la lista Activity Windows (Ventanas de actividad).
+Muestra propiedades de elemento de Hola que seleccionó en hello Explorador de recursos (vista de árbol), vista de diagrama o la lista de ventanas de la actividad.
 
 ### <a name="activity-window-explorer"></a>Activity Window Explorer
-La ventana **Activity Window Explorer** (Explorador de ventanas de actividad) se encuentra en el panel más a la derecha de la aplicación de supervisión y administración. Muestra detalles de la ventana de actividad seleccionada en la ventana emergente Activity Windows (Ventanas de actividad) o en la lista Activity Windows (Ventanas de actividad).
+Hola **actividad ventana Explorer** ventana está en el panel de hello más a la derecha de la aplicación de supervisión y administración de hello. Muestra detalles acerca de la ventana de actividad de Hola que seleccionó en la ventana emergente de ventanas de la actividad de Hola o una lista de ventanas de la actividad de Hola.
 
 ![Activity Window Explorer](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-3.png)
 
-Puede cambiar a una ventana de actividad diferente haciendo clic en ella en la vista de calendario de la parte superior. También puede usar los botones de flecha izquierda/flecha derecha de la parte superior para ver las ventanas de actividad de la semana anterior o siguiente.
+Puede cambiar la ventana de actividad de tooanother haciendo clic en él en la vista de calendario de hello en la parte superior de Hola. También puede usar los botones de flecha derecha o flecha izquierda hello en ventanas de la actividad de hello toosee superior de hello semana anterior u Hola semanas siguientes.
 
-Puede usar los botones de la barra de herramientas del panel inferior para volver a ejecutar la ventana de actividad o actualizar los detalles del panel.
+Puede usar botones de barra de herramientas de hello en ventana de actividad de hello toorerun del panel de la parte inferior Hola o actualizar los detalles de hello en el panel de Hola.
 
 ### <a name="script"></a>Script
-Puede usar la pestaña **Script** para ver la definición de JSON de la entidad de Factoría de datos seleccionada (servicio vinculado, conjunto de datos o canalización).
+Puede usar hello **Script** Hola de tooview ficha Definición JSON de hello seleccionado entidad de la factoría de datos (el servicio vinculado, el conjunto de datos o la canalización).
 
 ![Pestaña de script](./media/data-factory-monitor-manage-app/ScriptTab.png)
 
 ## <a name="use-system-views"></a>Vistas de uso del sistema
-La aplicación de supervisión y administración incluye vistas del sistema pregeneradas (**Recent activity windows** [Ventanas de actividad recientes], **Failed activity windows** [Ventanas de actividades con error] y **In-Progress activity windows** [Ventanas de actividad en curso]) que permiten ver las ventanas de actividad recientes, las que contienen errores o las que están en curso de su factoría de datos.
+Supervisión y administración de la aplicación Hello incluye vistas del sistema pregenerado (**ventanas de la actividad reciente**, **no se pudo ventanas de la actividad**, **ventanas de la actividad en curso**) que Permitir ventanas de la actividad reciente/error/en curso de tooview de la factoría de datos.
 
-Cambie a la pestaña **Monitoring Views** (Vistas de supervisión) de la izquierda haciendo clic en ella.
+Cambiar toohello **vistas de supervisión de** ficha izquierda Hola haciendo clic en él.
 
 ![Pestaña Vistas de supervisión](./media/data-factory-monitor-manage-app/MonitoringViewsTab.png)
 
-Actualmente, hay tres vistas del sistema compatibles. Seleccione una opción para ver las ventanas de actividad recientes, las ventanas de actividad con error o las ventanas de actividad en curso en la lista Activity Windows (Ventanas de actividad) (en la parte inferior del panel central).
+Actualmente, hay tres vistas del sistema compatibles. Seleccione una opción toosee ventanas de la actividad reciente, windows de una actividad con errores o ventanas de la actividad en curso en lista de ventanas de la actividad de hello (en hello parte inferior del panel central de hello).
 
-Al seleccionar la opción **Recent activity windows** (Ventanas de actividad reciente), se ven todas las ventanas de actividad reciente en orden descendente de **hora del último intento**.
+Cuando selecciona hello **ventanas de la actividad reciente** opción, verá todas las ventanas de la actividad reciente en orden descendente de hello **último intento tiempo**.
 
-Puede usar la vista **Failed activity windows** (Ventanas de actividad con error) para ver todas las ventanas de actividad que contengan errores de la lista. Seleccione una ventana de actividad con error de la lista para ver sus detalles en la ventana **Propiedades** o en **Activity Window Explorer** (Explorador de ventanas de actividad). También puede descargar los registros de una ventana de actividad con error.
+Puede usar hello **no se pudo ventanas de la actividad** ver toosee error de todas las ventanas de la actividad en la lista de Hola. Seleccione una ventana de actividad con errores en hello lista toosee obtener información detallada sobre él en hello **propiedades** ventana o hello **Explorer de la ventana de actividad**. También puede descargar los registros de una ventana de actividad con error.
 
 ## <a name="sort-and-filter-activity-windows"></a>Ordenado y filtrado de las ventanas de actividad
-Cambie la configuración de **hora de inicio** y **hora de finalización** en la barra de comandos para filtrar las ventanas de actividad. Después de cambiar la hora de inicio y de finalización, haga clic en el botón situado junto a la hora de finalización para actualizar la lista Activity Windows (Ventanas de actividad).
+Hola de cambio **hora de inicio** y **hora de finalización** configuración de ventanas de la actividad de toofilter la barra de comandos de Hola. Después de cambiar la hora de inicio de Hola y hora de finalización, haga clic en hello botón siguiente toohello final tiempo toorefresh Hola ventanas de la actividad.
 
 ![Horas de inicio y finalización](./media/data-factory-monitor-manage-app/StartAndEndTimes.png)
 
 > [!NOTE]
-> Actualmente, en la aplicación de supervisión y administración todas las horas están en formato UTC.
+> Actualmente, todas las horas están en formato UTC en la aplicación de supervisión y administración de hello.
 >
 >
 
-En la **lista de ventanas de actividad**, haga clic en el nombre de una columna (por ejemplo, Estado).
+Hola **lista de ventanas de la actividad**, haga clic en nombre de Hola de una columna (por ejemplo: estado).
 
 ![Menú de columna de la lista Activity Windows (Ventanas de actividad)](./media/data-factory-monitor-manage-app/ActivityWindowsListColumnMenu.png)
 
-Puede realizar las siguientes acciones:
+Puede hacer siguiente hello:
 
 * Ordenar en orden ascendente.
 * Ordenar en orden descendente.
 * Filtrar por uno o más valores (Ready [Listo], Waiting [En espera], etc.).
 
-Cuando especifique un filtro en una columna, verá que el botón de filtro se habilita para esa columna, lo cual indica que los valores de la columna están filtrados.
+Cuando se especifica un filtro en una columna, verá el botón de filtro de hello habilitado para esa columna, lo que indica que los valores de hello en columna de hello son valores filtrados.
 
-![Filtro de columna de la lista Activity Windows (Ventanas de actividad)](./media/data-factory-monitor-manage-app/ActivityWindowsListFilterInColumn.png)
+![Filtrar una columna de la lista de ventanas de la actividad de Hola](./media/data-factory-monitor-manage-app/ActivityWindowsListFilterInColumn.png)
 
-Puede usar la misma ventana emergente para borrar filtros. Para borrar todos los filtros de la lista Activity Windows (Ventanas de actividad), haga clic en el botón para borrar el filtro de la barra de comandos.
+Puede usar Hola mismos filtros de tooclear de la ventana emergente. tooclear todos los filtros de la lista de ventanas de la actividad de hello, haga clic en el botón Borrar filtro de hello en la barra de comandos de Hola.
 
-![Borrado de todos los filtros de la lista Activity Windows (Ventanas de actividad)](./media/data-factory-monitor-manage-app/ClearAllFiltersActivityWindowsList.png)
+![Borrar todos los filtros de la lista de ventanas de la actividad de Hola](./media/data-factory-monitor-manage-app/ClearAllFiltersActivityWindowsList.png)
 
 ## <a name="perform-batch-actions"></a>Acciones por lotes
 ### <a name="rerun-selected-activity-windows"></a>Volver a ejecutar las ventanas de actividad seleccionadas
-Seleccione una ventana de actividad, haga clic en la flecha hacia abajo del primer botón de la barra de comandos y seleccione **Rerun** (Volver a ejecutar) / **Rerun with upstream in pipeline** (Volver a ejecutar con canal de subida en la canalización). Al seleccionar la opción **Rerun with upstream in pipeline** (Volver a ejecutar con canal de subida en la canalización), también se vuelven a ejecutar todas las ventanas de actividad con canal de subida.
+Seleccione una ventana de actividad, haga clic en hello flecha abajo en el primer botón de barra de comandos hello y seleccione **vuelva a ejecutar** / **vuelva a ejecutar con en dirección ascendente de canalización**. Cuando selecciona hello **vuelva a ejecutar con en dirección ascendente de canalización** opción, vuelve a ejecutar todas las ventanas de nivel superior de actividad.
     ![Volver a ejecutar una ventana de actividad](./media/data-factory-monitor-manage-app/ReRunSlice.png)
 
-También puede seleccionar varias ventanas de actividad en la lista y volver a ejecutarlas al mismo tiempo. Puede filtrar las ventanas de actividad según el estado (por ejemplo, **Failed** [Con error]) y volver a ejecutar las ventanas de actividad con error tras corregir el problema que provocaba el error en las ventanas de actividad. Vea la siguiente sección para obtener más información sobre el filtrado de ventanas de actividad en la lista.  
+También puede seleccionar varias ventanas de la actividad en la lista de Hola y volver a ejecutarlos en hello mismo tiempo. Conviene ventanas de la actividad toofilter acuerdos con el estado de hello (por ejemplo: **error**)--y, a continuación, vuelva a ejecutar windows de la actividad de hello no se pudo después de corregir el problema de Hola que provoca Hola actividad windows toofail. Vea Hola pasos de la sección para obtener más información acerca del filtrado de windows de la actividad en la lista de Hola.  
 
 ### <a name="pauseresume-multiple-pipelines"></a>Pausar y reanudar varias canalizaciones
-También puede realizar una selección múltiple de dos o más canalizaciones con la tecla Ctrl. Puede utilizar los botones de la barra de comandos (que se resaltan en el rectángulo rojo en la imagen siguiente) para pausarlas o reanudarlas.
+Puede realizar una selección múltiple canalizaciones de dos o más mediante el uso de la tecla Ctrl de Hola. Puede usar los botones de barra de comandos de hello (que se resaltan en el rectángulo rojo Hola Hola después de la imagen) toopause/reanudar ellos.
 
-![Pausa/reanudación en la barra de comandos](./media/data-factory-monitor-manage-app/SuspendResumeOnCommandBar.png)
+![Pausar y reanudar en la barra de comandos de Hola](./media/data-factory-monitor-manage-app/SuspendResumeOnCommandBar.png)
 
 ## <a name="create-alerts"></a>Creación de alertas
-La página **Alertas** le permite crear una alerta nueva, así como ver, editar o eliminar las alertas existentes. También puede habilitar o deshabilitar una alerta. Haga clic en la pestaña Alertas para ver la pestaña **Alertas**.
+Hola **alertas** página le permite crear una alerta y ver, editar o eliminar las alertas existentes. También puede habilitar o deshabilitar una alerta. toosee Hola página de alertas, haga clic en hello **alertas** ficha.
 
 ![Pestaña Alertas](./media/data-factory-monitor-manage-app/AlertsTab.png)
 
-### <a name="to-create-an-alert"></a>Para crear una alerta
-1. Haga clic en **Agregar alerta** para agregar una alerta. Verá la página **Detalles**.
+### <a name="toocreate-an-alert"></a>toocreate una alerta
+1. Haga clic en **Agregar alerta** tooadd una alerta. Vea hello **detalles** página.
 
     ![Crear alertas: página de detalles](./media/data-factory-monitor-manage-app/CreateAlertDetailsPage.png)
-2. Especifique el **nombre** y la **descripción** de la alerta y haga clic en **Siguiente**. Verá la página **Filtros** .
+2. Especificar hello **nombre** y **descripción** alerta hello y haga clic en **siguiente**. Debería ver Hola **filtros** página.
 
     ![Crear alertas: página de filtros](./media/data-factory-monitor-manage-app/CreateAlertFiltersPage.png)
-3. Seleccione el **evento**, el **estado** y el **subestado** (opcional) sobre los que desea que el servicio Data Factory le alerte y haga clic en **Siguiente**. Verá la página **Destinatarios** .
+3. Seleccione hello **eventos**, **estado**, y **subestado** (opcional) que desea toocreate un servicio de factoría de datos de alertas para y haga clic en **siguiente**. Debería ver Hola **destinatarios** página.
 
     ![Crear alertas: página de destinatarios](./media/data-factory-monitor-manage-app/CreateAlertRecipientsPage.png)
-4. Seleccione la opción **Email subscription admins** (Administradores de suscripciones de correo electrónico) o escriba un **correo electrónico de administrador adicional** y haga clic en **Finish** (Finalizar). Debería ver la alerta en la lista.
+4. Seleccione hello **los administradores de suscripciones de correo electrónico** opción o escriba una **correo electrónico de administrador adicional**y haga clic en **finalizar**. Debería ver la alerta de hello en la lista de Hola.
 
     ![Lista de alertas](./media/data-factory-monitor-manage-app/AlertsList.png)
 
-En la lista de alertas, use los botones asociados con la alerta para editarla, eliminarla, habilitarla o deshabilitarla.
+En la lista de alertas de hello, utilice los botones de Hola que están asociados a Hola alerta tooedit/delete/deshabilitar/Habilitar una alerta.
 
 ### <a name="eventstatussubstatus"></a>Evento/estado/subestado
-En la tabla siguiente se ofrece una lista de los eventos y los estados (y subestados) disponibles.
+Hello tabla siguiente proporciona Hola lista de eventos disponibles y Estados (y sub-estados).
 
 | Nombre del evento | Estado | Subestado |
 | --- | --- | --- |
@@ -327,8 +327,8 @@ En la tabla siguiente se ofrece una lista de los eventos y los estados (y subest
 | Creación correcta de clúster de HDI a petición |Correcto |-|
 | Clúster de HDI a petición eliminado |Correcto |-|
 
-### <a name="to-edit-delete-or-disable-an-alert"></a>Edición, eliminación o deshabilitación de alertas
+### <a name="tooedit-delete-or-disable-an-alert"></a>tooedit, eliminar o deshabilitar una alerta
 
-Utilice los siguientes botones (resaltados en rojo) para editar, eliminar o deshabilitar una alerta.
+Usar hello después tooedit botones (resaltados en rojo), eliminar o deshabilitar una alerta.
 
 ![Botones de alertas](./media/data-factory-monitor-manage-app/AlertButtons.png)

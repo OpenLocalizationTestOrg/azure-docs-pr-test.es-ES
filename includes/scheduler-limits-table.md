@@ -1,19 +1,19 @@
-En la tabla siguiente se describe cada uno de los principales aceleradores, valores predeterminados, límites y cuotas de Programador de Azure.
+Hello en la tabla siguiente describe cada una de las principales cuotas de hello, límites, valores predeterminados y limitaciones de Azure Scheduler.
 
 | Recurso | Descripción de límites |
 | --- | --- |
 | **Tamaño del trabajo** |El tamaño máximo del trabajo es 16 K. Si una solicitud PUT o PATCH produce un trabajo mayor que estos límites, se devuelve un código de estado 400 Solicitud incorrecta. |
-| **Tamaño de la dirección URL de la solicitud** |El tamaño máximo de la dirección URL de la solicitud es de 2048 caracteres. |
+| **Tamaño de la dirección URL de la solicitud** |Tamaño máximo de la dirección URL de solicitud de hello es de 2048 caracteres. |
 | **Tamaño del encabezado de agregado** |El tamaño máximo del encabezado de agregado es de 4096 caracteres. |
 | **Recuento de encabezados** |El recuento máximo de encabezados es de 50 encabezados. |
 | **Tamaño del cuerpo** |El tamaño máximo del cuerpo es de 8192 caracteres. |
 | **Intervalo de periodicidad** |El intervalo máximo de periodicidad es de 18 meses. |
-| **Tiempo hasta la hora de inicio** |El "tiempo hasta la hora de inicio" máximo es de 18 meses. |
+| **Tiempo de toostart** |"Hora toostart horario" máximo es de 18 meses. |
 | **Historial de trabajos** |El tamaño máximo del cuerpo de la respuesta que se almacena en el historial de trabajos es de 2048 bytes. |
-| **Frecuencia** |La cuota máxima de frecuencia predeterminada es de 1 hora en una colección de trabajos gratuita y de 1 minuto en una colección de trabajos estándar. La frecuencia máxima se puede configurar en una colección de trabajos para que sea inferior al máximo. Todos los trabajos de la colección de trabajos se limitan al valor establecido en la colección de trabajos. Si intenta crear un trabajo con una frecuencia mayor que la frecuencia máxima en la colección de trabajos, la solicitud generará un error con un código de estado 409 Conflicto. |
-| **Trabajos** |La cuota máxima de trabajos predeterminada es de 5 trabajos en una colección de trabajos gratuita y de 50 trabajos en una colección de trabajos estándar. El número máximo de trabajos se puede configurar en una colección de trabajos. Todos los trabajos de la colección de trabajos se limitan al valor establecido en la colección de trabajos. Si intenta crear un número de trabajos superior a la cuota máxima de trabajos, la solicitud genera un error con un código de estado 409 Conflicto. |
+| **Frecuencia** |cuota de frecuencia máxima de Hello predeterminada es 1 hora en una colección de trabajos gratuitas y 1 minuto en una colección de trabajos estándar. frecuencia máxima de Hello es configurable en un toobe de colección de trabajo inferior Hola máximo. Todos los trabajos en la colección de trabajos de hello son valor limitado Hola establecer en la colección de trabajos de Hola. Si intentas toocreate un trabajo con una frecuencia mayor que la frecuencia máxima de hello en la colección de trabajos de hello solicitud dará error con un código de estado 409 conflicto. |
+| **Trabajos** |cuota de trabajos máxima predeterminada de Hello es de 5 trabajos en una colección de trabajos gratuitas y 50 trabajos en una colección de trabajos estándar. Hola número máximo de trabajos es configurable en una colección de trabajos. Todos los trabajos en la colección de trabajos de hello son valor limitado Hola establecer en la colección de trabajos de Hola. Si intentas toocreate más trabajos que cuota máxima de trabajos de hello, solicitud de hello produce un error con un código de estado 409 conflicto. |
 | **Colecciones de trabajos** |El número máximo de colecciones de trabajos por suscripción es 200 000. |
-| **Retención de historial de trabajos** |El historial de trabajos se conserva hasta 2 meses o hasta las últimas 1000 ejecuciones. |
+| **Retención de historial de trabajos** |Historial de trabajos se conserva durante los meses de too2 o la toohello último 1000 ejecuciones. |
 | **Retención de trabajos completados y con errores** |Los trabajos completados y con errores se conservan durante 60 días. |
-| **Tiempo de espera** |Hay un tiempo de espera de solicitud estático (no configurable) de 60 segundos para las acciones de HTTP. Para operaciones de ejecución más larga, siga los protocolos HTTP asincrónicos; por ejemplo, devolver inmediatamente un 202 pero continuar trabajando en segundo plano. |
+| **Tiempo de espera** |Hay un tiempo de espera de solicitud estático (no configurable) de 60 segundos para las acciones de HTTP. Para las operaciones de ejecución más largas, siga los protocolos HTTP asincrónicos; Por ejemplo, devolver inmediatamente un 202 pero seguir trabajando en segundo plano de Hola. |
 

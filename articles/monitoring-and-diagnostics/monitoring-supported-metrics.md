@@ -1,5 +1,5 @@
 ---
-title: "Métricas de Azure Monitor admitidas por tipo de recurso | Microsoft Docs"
+title: "métricas de supervisión - métricas admitidas por el tipo de recurso aaaAzure | Documentos de Microsoft"
 description: "Lista de métricas disponibles para cada tipo de recurso con Azure Monitor."
 author: johnkemnetz
 manager: orenr
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/05/2017
 ms.author: johnkem
-ms.openlocfilehash: 4cd72c8193d66f164d9afa53af4b5203369b32dc
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 66834238a1a4fcd7db1464cc023c18ee2563517a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Métricas compatibles con Azure Monitor
-Azure Monitor proporciona varias maneras de interactuar con las métricas, como la representación en gráficos en el portal, el acceso a ellas a través de la API de REST o consultarlas con PowerShell o la CLI. A continuación se muestra una lista completa de todas las métricas disponibles actualmente en la canalización de métricas de Azure Monitor.
+El Monitor de Azure proporciona toointeract de varias maneras con las métricas, incluidos para ellos diagramas en el portal de hello, obtener acceso a ellos a través de la API de REST de Hola o consultar ellos usando PowerShell o CLI. A continuación se muestra una lista completa de todas las métricas disponibles actualmente en la canalización de métricas de Azure Monitor.
 
 > [!NOTE]
-> Otras métricas pueden estar disponibles en el portal o mediante las API heredadas. Esta lista incluye solo las métricas de versión preliminar pública disponibles con la versión preliminar pública de la canalización de métricas consolidado de Azure Monitor.
+> Otras métricas pueden estar disponibles en el portal de Hola o con las API heredadas. Esta lista solo incluye las métricas de versión preliminar pública disponibles con la versión preliminar pública de Hola de canalización de métrica de Monitor de Azure de hello consolidado.
 >
 >
 
@@ -38,40 +38,40 @@ Azure Monitor proporciona varias maneras de interactuar con las métricas, como 
 |SuccessfullConnectionsPerSec|Conexiones correctas por segundo|CountPerSecond|Media|Tasa de finalizaciones de conexión correctas.|
 |TotalConnectionFailures|Número total de errores de conexión|Recuento|Media|Número total de intentos de conexión con error.|
 |CurrentUserSessions|Sesiones de usuario actuales|Recuento|Media|Número actual de sesiones de usuario establecidas.|
-|QueryPoolBusyThreads|Subprocesos ocupados de grupo de consultas|Recuento|Media|Número de subprocesos ocupados del grupo de subprocesos de consulta.|
-|CommandPoolJobQueueLength|Longitud de cola de trabajos de grupo de comandos|Recuento|Media|Número de trabajos en la cola del grupo de subprocesos de comandos.|
-|ProcessingPoolJobQueueLength|Longitud de cola de trabajos de grupo de procesamiento|Recuento|Media|Número de trabajos que no son de E/S en la cola del grupo de subprocesos de procesamiento.|
+|QueryPoolBusyThreads|Subprocesos ocupados de grupo de consultas|Recuento|Media|Número de subprocesos ocupados en el grupo de subprocesos de consulta de Hola.|
+|CommandPoolJobQueueLength|Longitud de cola de trabajos de grupo de comandos|Recuento|Media|Número de trabajos en cola de hello del grupo de subprocesos de comando de Hola.|
+|ProcessingPoolJobQueueLength|Longitud de cola de trabajos de grupo de procesamiento|Recuento|Media|Número de trabajos no son de e/s en cola Hola de hello grupo de subprocesos de procesamiento.|
 |CurrentConnections|Conexión: conexiones actuales|Recuento|Media|Número actual de conexiones de cliente establecidas.|
-|CleanerCurrentPrice|Memoria: precio actual de limpieza|Recuento|Media|Precio actual de memoria, USD/byte/tiempo, normalizado a 1000.|
-|CleanerMemoryShrinkable|Memoria: memoria de limpieza reducible|Bytes|Media|Cantidad de memoria, en bytes, que purgará el limpiador en segundo plano.|
-|CleanerMemoryNonshrinkable|Memoria: memoria de limpieza no reducible|Bytes|Media|Cantidad de memoria, en bytes, que no purgará el limpiador en segundo plano.|
-|MemoryUsage|Memoria: uso de memoria|Bytes|Media|Uso de memoria del proceso de servidor tal como se usa para calcular el precio de la memoria del limpiador. Es igual al contador Proceso\Bytes privados más el tamaño de los datos asignados a la memoria; se ignora la memoria que ha asignado VertiPaq superior al límite de memoria de VertiPaq.|
+|CleanerCurrentPrice|Memoria: precio actual de limpieza|Recuento|Media|Precio actual de memoria, $/ byte/tiempo, normalizado too1000.|
+|CleanerMemoryShrinkable|Memoria: memoria de limpieza reducible|Bytes|Media|Cantidad de memoria, en bytes, asunto toopurging limpiador en segundo plano Hola.|
+|CleanerMemoryNonshrinkable|Memoria: memoria de limpieza no reducible|Bytes|Media|Cantidad de memoria, en bytes, no el asunto toopurging limpiador en segundo plano Hola.|
+|MemoryUsage|Memoria: uso de memoria|Bytes|Media|Uso de memoria de proceso de servidor hello tal y como se usa para calcular el precio de memoria de limpiador. Toocounter igual Proceso\Bytes privados más hello de datos asignado a la memoria, se omite la memoria que se ha asignado por el motor de análisis en memoria de xVelocity (VertiPaq) de Hola que sobrepasen el motor xVelocity de hello límite de memoria.|
 |MemoryLimitHard|Memoria: límite de memoria física|Bytes|Media|Límite de memoria física del archivo de configuración.|
 |MemoryLimitHigh|Memoria: límite alto de memoria|Bytes|Media|Límite alto de memoria del archivo de configuración.|
 |MemoryLimitLow|Memoria: límite bajo de memoria|Bytes|Media|Límite bajo de memoria del archivo de configuración.|
 |MemoryLimitVertiPaq|Memoria: VertiPaq de límite de memoria|Bytes|Media|Límite en memoria del archivo de configuración.|
 |Quota|Memoria: cuota|Bytes|Media|Cuota de memoria actual, en bytes. La cuota de memoria también se denomina concesión de memoria o reserva de memoria.|
 |QuotaBlocked|Memoria: cuota bloqueada|Recuento|Media|Número actual de solicitudes de cuota que están bloqueadas hasta que se liberen otras cuotas de memoria.|
-|VertiPaqNonpaged|Memoria: VertiPaq no paginado|Bytes|Media|Bytes de memoria bloqueados en el espacio de trabajo para que los use el motor en memoria.|
+|VertiPaqNonpaged|Memoria: VertiPaq no paginado|Bytes|Media|Bytes de memoria bloqueada en espacio de trabajo de Hola para su uso por el motor de hello en memoria.|
 |VertiPaqPaged|Memoria: VertiPaq paginado|Bytes|Media|Bytes de memoria paginada en uso para datos en memoria.|
 |RowsReadPerSec|Procesamiento: filas leídas por segundo|CountPerSecond|Media|Velocidad de filas leídas de todas las bases de datos relacionales.|
 |RowsConvertedPerSec|Procesamiento: filas convertidas por segundo|CountPerSecond|Media|Velocidad de filas convertidas durante el procesamiento.|
 |RowsWrittenPerSec|Procesamiento: filas escritas por segundo|CountPerSecond|Media|Velocidad de filas escritas durante el procesamiento.|
-|CommandPoolBusyThreads|Subprocesos: subprocesos ocupados del grupo de comandos|Recuento|Media|Número de subprocesos ocupados del grupo de subprocesos de comandos.|
-|CommandPoolIdleThreads|Subprocesos: subprocesos inactivos del grupo de comandos|Recuento|Media|Número de subprocesos inactivos del grupo de subprocesos de comandos.|
-|LongParsingBusyThreads|Subprocesos: subprocesos ocupados en análisis largos|Recuento|Media|Número de subprocesos ocupados del grupo de subprocesos de análisis largos.|
-|LongParsingIdleThreads|Subprocesos: subprocesos inactivos en análisis largos|Recuento|Media|Número de subprocesos inactivos del grupo de subprocesos en análisis largos.|
-|LongParsingJobQueueLength|Subprocesos: longitud de cola de trabajos en análisis largos|Recuento|Media|Número de trabajos en la cola del grupo de subprocesos en análisis largos.|
-|ProcessingPoolBusyIOJobThreads|Subprocesos: subprocesos de trabajo de E/S ocupados del grupo de procesamiento|Recuento|Media|Número de subprocesos que ejecutan trabajos de E/S en el grupo de subprocesos de procesamiento.|
-|ProcessingPoolBusyNonIOThreads|Subprocesos: subprocesos de trabajo ocupados que no son de E/S del grupo de procesamiento|Recuento|Media|Número de subprocesos que ejecutan trabajos que no son de E/S del grupo de subprocesos de procesamiento.|
-|ProcessingPoolIOJobQueueLength|Subprocesos: longitud de cola de trabajos de E/S del grupo de procesamiento|Recuento|Media|Número de trabajos de E/S en la cola del grupo de subprocesos de procesamiento.|
-|ProcessingPoolIdleIOJobThreads|Subprocesos: subprocesos de trabajo de E/S inactivos del grupo de procesamiento|Recuento|Media|Número de subprocesos inactivos para trabajos de E/S en el grupo de subprocesos de procesamiento.|
-|ProcessingPoolIdleNonIOThreads|Subprocesos: subprocesos de trabajo inactivos que no son de E/S del grupo de procesamiento|Recuento|Media|Número de subprocesos inactivos del grupo de subprocesos de procesamiento dedicado a trabajos que no son de E/S.|
-|QueryPoolIdleThreads|Subprocesos: subprocesos inactivos del grupo de consultas|Recuento|Media|Número de subprocesos inactivos para trabajos de E/S en el grupo de subprocesos de procesamiento.|
-|QueryPoolJobQueueLength|Subprocesos: longitud de cola de trabajos del grupo de consultas|Recuento|Media|Número de trabajos en la cola del grupo de subprocesos de consultas.|
-|ShortParsingBusyThreads|Subprocesos: subprocesos ocupados en análisis cortos|Recuento|Media|Número de subprocesos ocupados del grupo de subprocesos de análisis cortos.|
-|ShortParsingIdleThreads|Subprocesos: subprocesos inactivos en análisis cortos|Recuento|Media|Número de subprocesos inactivos del grupo de subprocesos de análisis cortos.|
-|ShortParsingJobQueueLength|Subprocesos: longitud de cola de trabajos en análisis cortos|Recuento|Media|Número de trabajos en la cola del grupo de subprocesos en análisis cortos.|
+|CommandPoolBusyThreads|Subprocesos: subprocesos ocupados del grupo de comandos|Recuento|Media|Número de subprocesos ocupados en el grupo de subprocesos de comando de Hola.|
+|CommandPoolIdleThreads|Subprocesos: subprocesos inactivos del grupo de comandos|Recuento|Media|Número de subprocesos inactivos en el grupo de subprocesos de comando de Hola.|
+|LongParsingBusyThreads|Subprocesos: subprocesos ocupados en análisis largos|Recuento|Media|Número de subprocesos ocupados en el grupo de subprocesos de análisis largo de Hola.|
+|LongParsingIdleThreads|Subprocesos: subprocesos inactivos en análisis largos|Recuento|Media|Número de subprocesos inactivos en hello grupo de subprocesos de análisis largo.|
+|LongParsingJobQueueLength|Subprocesos: longitud de cola de trabajos en análisis largos|Recuento|Media|Número de trabajos en cola de Hola de hello grupo de subprocesos de análisis largo.|
+|ProcessingPoolBusyIOJobThreads|Subprocesos: subprocesos de trabajo de E/S ocupados del grupo de procesamiento|Recuento|Media|Número de subprocesos que se ejecutan trabajos de E/S en el grupo de subprocesos de procesamiento de Hola.|
+|ProcessingPoolBusyNonIOThreads|Subprocesos: subprocesos de trabajo ocupados que no son de E/S del grupo de procesamiento|Recuento|Media|Número de subprocesos que se ejecutan los trabajos no son de e/s en el grupo de subprocesos de procesamiento de Hola.|
+|ProcessingPoolIOJobQueueLength|Subprocesos: longitud de cola de trabajos de E/S del grupo de procesamiento|Recuento|Media|Número de trabajos de E/S en cola de hello del grupo de subprocesos de procesamiento de Hola.|
+|ProcessingPoolIdleIOJobThreads|Subprocesos: subprocesos de trabajo de E/S inactivos del grupo de procesamiento|Recuento|Media|Número de subprocesos inactivos de trabajos de E/S en el grupo de subprocesos de procesamiento de Hola.|
+|ProcessingPoolIdleNonIOThreads|Subprocesos: subprocesos de trabajo inactivos que no son de E/S del grupo de procesamiento|Recuento|Media|Número de subprocesos inactivos en el grupo de subprocesos de procesamiento de hello dedicado trabajos toonon de e/s.|
+|QueryPoolIdleThreads|Subprocesos: subprocesos inactivos del grupo de consultas|Recuento|Media|Número de subprocesos inactivos de trabajos de E/S en el grupo de subprocesos de procesamiento de Hola.|
+|QueryPoolJobQueueLength|Subprocesos: longitud de cola de trabajos del grupo de consultas|Recuento|Media|Número de trabajos en cola de hello del grupo de subprocesos de consulta de Hola.|
+|ShortParsingBusyThreads|Subprocesos: subprocesos ocupados en análisis cortos|Recuento|Media|Número de subprocesos ocupados en hello grupo de subprocesos de análisis corto.|
+|ShortParsingIdleThreads|Subprocesos: subprocesos inactivos en análisis cortos|Recuento|Media|Número de subprocesos inactivos en hello grupo de subprocesos de análisis corto.|
+|ShortParsingJobQueueLength|Subprocesos: longitud de cola de trabajos en análisis cortos|Recuento|Media|Número de trabajos en cola de Hola de hello grupo de subprocesos de análisis corto.|
 |memory_thrashing_metric|Paginación excesiva de memoria|Percent|Media|Paginación excesiva media de memoria.|
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
@@ -88,20 +88,20 @@ Azure Monitor proporciona varias maneras de interactuar con las métricas, como 
 
 |Métrica|Nombre de métrica para mostrar|Unidad|Tipo de agregación|Description|
 |---|---|---|---|---|
-|CoreCount|Recuento de núcleos dedicados|Recuento|Total|Número total de núcleos dedicados de la cuenta de Batch|
-|TotalNodeCount|Recuento de nodos dedicados|Recuento|Total|Número total de nodos dedicados de la cuenta de Batch|
-|LowPriorityCoreCount|Recuento de núcleos de baja prioridad|Recuento|Total|Número total de núcleos de baja prioridad de la cuenta de Batch|
-|TotalLowPriorityNodeCount|Recuento de nodos de baja prioridad|Recuento|Total|Número total de nodos de baja prioridad de la cuenta de Batch|
+|CoreCount|Recuento de núcleos dedicados|Recuento|Total|Número total de núcleos dedicados en la cuenta de lote de Hola|
+|TotalNodeCount|Recuento de nodos dedicados|Recuento|Total|Número total de nodos dedicados en la cuenta de lote de Hola|
+|LowPriorityCoreCount|Recuento de núcleos de baja prioridad|Recuento|Total|Número total de núcleos de prioridad baja en la cuenta de lote de Hola|
+|TotalLowPriorityNodeCount|Recuento de nodos de baja prioridad|Recuento|Total|Número total de nodos de prioridad baja en la cuenta de lote de Hola|
 |CreatingNodeCount|Recuento de nodos creados|Recuento|Total|Número de nodos que se van a crear|
 |StartingNodeCount|Recuento de nodos de inicio|Recuento|Total|Número de nodos que se van a iniciar|
-|WaitingForStartTaskNodeCount|Recuento de nodos esperando a la tarea de inicio|Recuento|Total|Número de nodos que esperan a que se complete la tarea de inicio|
-|StartTaskFailedNodeCount|Recuento de nodos con error de la tarea de inicio|Recuento|Total|Número de nodos con error en la tarea de inicio|
+|WaitingForStartTaskNodeCount|Recuento de nodos esperando a la tarea de inicio|Recuento|Total|Número de nodos esperando Hola Iniciar tarea toocomplete|
+|StartTaskFailedNodeCount|Recuento de nodos con error de la tarea de inicio|Recuento|Total|Número de nodos que ha fallado Hola Iniciar tarea|
 |IdleNodeCount|Recuento de nodos inactivos|Recuento|Total|Número de nodos inactivos|
 |OfflineNodeCount|Recuento de nodos sin conexión|Recuento|Total|Número de nodos sin conexión|
 |RebootingNodeCount|Recuento de nodos de reinicio|Recuento|Total|Número de nodos de reinicio|
 |ReimagingNodeCount|Recuento de nodos de restablecimiento de imagen inicial|Recuento|Total|Número de nodos de restablecimiento de imagen inicial|
 |RunningNodeCount|Recuento de nodos en ejecución|Recuento|Total|Número de nodos en ejecución|
-|LeavingPoolNodeCount|Recuento de nodos que salen del grupo|Recuento|Total|Número de nodos que abandonan el grupo|
+|LeavingPoolNodeCount|Recuento de nodos que salen del grupo|Recuento|Total|Número de nodos dejando Hola grupo|
 |UnusableNodeCount|Recuento de nodos no utilizables|Recuento|Total|Número de nodos inutilizables|
 |PreemptedNodeCount|Recuento de nodos con prioridad|Recuento|Total|Número de nodos con prioridad|
 |TaskStartEvent|Eventos de inicio de tarea|Recuento|Total|Número total de tareas que se han iniciado|
@@ -301,36 +301,36 @@ Azure Monitor proporciona varias maneras de interactuar con las métricas, como 
 
 |Métrica|Nombre de métrica para mostrar|Unidad|Tipo de agregación|Description|
 |---|---|---|---|---|
-|Percentage CPU|Porcentaje de CPU|Percent|Media|El porcentaje de unidades de proceso asignadas que las máquinas virtuales usan actualmente|
-|Network In|Red interna|Bytes|Total|El número de bytes recibidos en todas las interfaces de red por las máquinas virtuales (tráfico entrante)|
-|Network Out|Red interna|Bytes|Total|El número de bytes enviados en todas las interfaces de red por las máquinas virtuales (tráfico saliente)|
+|Percentage CPU|Porcentaje de CPU|Percent|Media|porcentaje de Hola de unidades de proceso asignados que están actualmente en uso por hello máquinas virtuales|
+|Red interna|Red interna|Bytes|Total|número de Hola de bytes recibidos en todas las interfaces de red por hello máquinas virtuales (tráfico entrante)|
+|Red interna|Red interna|Bytes|Total|número de Hola de bytes en todas las interfaces de red por hello máquinas virtuales (tráfico saliente)|
 |Bytes de lectura de disco|Bytes de lectura de disco|Bytes|Total|Número total de bytes que se leen desde el disco durante el período de supervisión|
-|Bytes de escritura de disco|Bytes de escritura de disco|Bytes|Total|Número total de bytes que se escriben en el disco durante el período de supervisión|
-|Disk Read Operations/Sec|Operaciones de lectura de disco por segundo|CountPerSecond|Media|E/S por segundo de lectura de disco|
+|Bytes de escritura de disco|Bytes de escritura de disco|Bytes|Total|Número total de bytes escrito toodisk durante el período de supervisión|
+|Operaciones de lectura de disco por segundo|Operaciones de lectura de disco por segundo|CountPerSecond|Media|E/S por segundo de lectura de disco|
 |Disk Write Operations/Sec|Operaciones de escritura por segundo en disco|CountPerSecond|Media|E/S por segundo de escritura en disco|
 
 ## <a name="microsoftcomputevirtualmachinescalesets"></a>Microsoft.Compute/virtualMachineScaleSets
 
 |Métrica|Nombre de métrica para mostrar|Unidad|Tipo de agregación|Description|
 |---|---|---|---|---|
-|Percentage CPU|Porcentaje de CPU|Percent|Media|El porcentaje de unidades de proceso asignadas que las máquinas virtuales usan actualmente|
-|Network In|Red interna|Bytes|Total|El número de bytes recibidos en todas las interfaces de red por las máquinas virtuales (tráfico entrante)|
-|Network Out|Red interna|Bytes|Total|El número de bytes enviados en todas las interfaces de red por las máquinas virtuales (tráfico saliente)|
+|Percentage CPU|Porcentaje de CPU|Percent|Media|porcentaje de Hola de unidades de proceso asignados que están actualmente en uso por hello máquinas virtuales|
+|Red interna|Red interna|Bytes|Total|número de Hola de bytes recibidos en todas las interfaces de red por hello máquinas virtuales (tráfico entrante)|
+|Red interna|Red interna|Bytes|Total|número de Hola de bytes en todas las interfaces de red por hello máquinas virtuales (tráfico saliente)|
 |Bytes de lectura de disco|Bytes de lectura de disco|Bytes|Total|Número total de bytes que se leen desde el disco durante el período de supervisión|
-|Bytes de escritura de disco|Bytes de escritura de disco|Bytes|Total|Número total de bytes que se escriben en el disco durante el período de supervisión|
-|Disk Read Operations/Sec|Operaciones de lectura de disco por segundo|CountPerSecond|Media|E/S por segundo de lectura de disco|
+|Bytes de escritura de disco|Bytes de escritura de disco|Bytes|Total|Número total de bytes escrito toodisk durante el período de supervisión|
+|Operaciones de lectura de disco por segundo|Operaciones de lectura de disco por segundo|CountPerSecond|Media|E/S por segundo de lectura de disco|
 |Disk Write Operations/Sec|Operaciones de escritura por segundo en disco|CountPerSecond|Media|E/S por segundo de escritura en disco|
 
 ## <a name="microsoftcomputevirtualmachinescalesetsvirtualmachines"></a>Microsoft.Compute/virtualMachineScaleSets/virtualMachines
 
 |Métrica|Nombre de métrica para mostrar|Unidad|Tipo de agregación|Description|
 |---|---|---|---|---|
-|Percentage CPU|Porcentaje de CPU|Percent|Media|El porcentaje de unidades de proceso asignadas que las máquinas virtuales usan actualmente|
-|Network In|Red interna|Bytes|Total|El número de bytes recibidos en todas las interfaces de red por las máquinas virtuales (tráfico entrante)|
-|Network Out|Red interna|Bytes|Total|El número de bytes enviados en todas las interfaces de red por las máquinas virtuales (tráfico saliente)|
+|Percentage CPU|Porcentaje de CPU|Percent|Media|porcentaje de Hola de unidades de proceso asignados que están actualmente en uso por hello máquinas virtuales|
+|Red interna|Red interna|Bytes|Total|número de Hola de bytes recibidos en todas las interfaces de red por hello máquinas virtuales (tráfico entrante)|
+|Red interna|Red interna|Bytes|Total|número de Hola de bytes en todas las interfaces de red por hello máquinas virtuales (tráfico saliente)|
 |Bytes de lectura de disco|Bytes de lectura de disco|Bytes|Total|Número total de bytes que se leen desde el disco durante el período de supervisión|
-|Bytes de escritura de disco|Bytes de escritura de disco|Bytes|Total|Número total de bytes que se escriben en el disco durante el período de supervisión|
-|Disk Read Operations/Sec|Operaciones de lectura de disco por segundo|CountPerSecond|Media|E/S por segundo de lectura de disco|
+|Bytes de escritura de disco|Bytes de escritura de disco|Bytes|Total|Número total de bytes escrito toodisk durante el período de supervisión|
+|Operaciones de lectura de disco por segundo|Operaciones de lectura de disco por segundo|CountPerSecond|Media|E/S por segundo de lectura de disco|
 |Disk Write Operations/Sec|Operaciones de escritura por segundo en disco|CountPerSecond|Media|E/S por segundo de escritura en disco|
 
 ## <a name="microsoftcustomerinsightshubs"></a>Microsoft.CustomerInsights/hubs
@@ -407,58 +407,58 @@ Azure Monitor proporciona varias maneras de interactuar con las métricas, como 
 
 |Métrica|Nombre de métrica para mostrar|Unidad|Tipo de agregación|Description|
 |---|---|---|---|---|
-|d2c.telemetry.ingress.allProtocol|Intentos de envío de mensajes de telemetría|Recuento|Total|Número de mensajes de telemetría de dispositivo a la nube para enviar a IoT Hub|
-|d2c.telemetry.ingress.success|Mensajes de telemetría enviados|Recuento|Total|Número de mensajes de telemetría de dispositivo a la nube enviados correctamente a IoT Hub|
-|c2d.commands.egress.complete.success|Comandos completados|Recuento|Total|Número de comandos de la nube al dispositivo que el dispositivo ha completado correctamente|
-|c2d.commands.egress.abandon.success|Comandos abandonados|Recuento|Total|Número de comandos de la nube al dispositivo que el dispositivo ha abandonado|
-|c2d.commands.egress.reject.success|Comandos rechazados|Recuento|Total|Número de comandos de la nube al dispositivo que el dispositivo ha rechazado|
-|devices.totalDevices|Número total de dispositivos|Recuento|Total|Número de dispositivos registrados en IoT Hub|
-|devices.connectedDevices.allProtocol|Dispositivos conectados|Recuento|Total|Número de dispositivos conectados a IoT Hub|
-|d2c.telemetry.egress.success|Mensajes de telemetría entregados|Recuento|Total|Número de veces que los mensajes se han escrito correctamente mensajes en los puntos de conexión (total)|
-|d2c.telemetry.egress.dropped|Mensajes descartados|Recuento|Total|Número de mensajes quitados porque el punto de conexión de entrega estaba inactivo|
-|d2c.telemetry.egress.orphaned|Mensajes huérfanos|Recuento|Total|El recuento de mensajes no coincide con ninguna ruta, incluida la ruta de reserva|
-|d2c.telemetry.egress.invalid|Mensajes no válidos|Recuento|Total|El recuento de mensajes no entregados debido a incompatibilidad con el punto de conexión|
-|d2c.telemetry.egress.fallback|Mensajes que coinciden con la condición de reserva|Recuento|Total|Número de mensajes escritos en el punto de conexión de reserva|
-|d2c.endpoints.egress.eventHubs|Mensajes entregados a los puntos de conexión de Event Hub|Recuento|Total|Número de veces que los mensajes se han escrito correctamente en los puntos de conexión de Event Hub|
-|d2c.endpoints.latency.eventHubs|Latencia de mensajes para los puntos de conexión del Centro de eventos|Milisegundos|Media|La latencia media entre la entrada de mensajes en el centro de IoT y la entrada de mensajes en un punto de conexión de Event Hubs, en milisegundos|
-|d2c.endpoints.egress.serviceBusQueues|Mensajes entregados a los puntos de conexión de la cola de Service Bus|Recuento|Total|Número de veces que los mensajes se han escrito correctamente en los puntos de conexión de la cola de Service Bus|
-|d2c.endpoints.latency.serviceBusQueues|Latencia de mensajes para los puntos de conexión de la cola de Service Bus|Milisegundos|Media|La latencia media entre la entrada de mensajes en el centro de IoT y la entrada de mensajes en un punto de conexión de la cola de Service Bus, en milisegundos|
-|d2c.endpoints.egress.serviceBusTopics|Mensajes entregados a los puntos de conexión del tema de Service Bus|Recuento|Total|Número de veces que los mensajes se han escrito correctamente en los puntos de conexión del tema de Service Bus|
-|d2c.endpoints.latency.serviceBusTopics|Latencia de mensajes para los puntos de conexión del tema de Service Bus|Milisegundos|Media|La latencia media entre la entrada de mensajes en el centro de IoT y la entrada de mensajes en un punto de conexión del tema de Service Bus, en milisegundos|
-|d2c.endpoints.egress.builtIn.events|Mensajes entregados al punto de conexión integrado (mensajes y eventos)|Recuento|Total|Número de veces que los mensajes se han escrito correctamente en el punto de conexión integrado (mensajes y eventos)|
-|d2c.endpoints.latency.builtIn.events|Latencia de mensajes para el punto de conexión integrado (mensajes y eventos)|Milisegundos|Media|La latencia media entre la entrada de mensajes en el centro de IoT y la entrada de mensajes en el punto de conexión integrado (mensajes/eventos), en milisegundos |
-|d2c.twin.read.success|Lecturas gemelas correctas de los dispositivos|Recuento|Total|El recuento de todas las lecturas gemelas correctas iniciadas por el dispositivo.|
-|d2c.twin.read.failure|Lecturas gemelas con error de los dispositivos|Recuento|Total|El recuento de todas las lecturas gemelas con error iniciadas por el dispositivo.|
-|d2c.twin.read.size|Tamaño de la respuesta de las lecturas gemelas de dispositivos|Bytes|Media|El valor medio, mínimo y máximo de todas las lecturas gemelas correctas iniciadas por el dispositivo.|
-|d2c.twin.update.success|Actualizaciones gemelas correctas de los dispositivos|Recuento|Total|El recuento de todas las actualizaciones gemelas correctas iniciadas por el dispositivo.|
-|d2c.twin.update.failure|Actualizaciones gemelas con error de los dispositivos|Recuento|Total|El recuento de todas las actualizaciones gemelas con error iniciadas por el dispositivo.|
-|d2c.twin.update.size|Tamaño de las actualizaciones gemelas de los dispositivos|Bytes|Media|El tamaño medio, mínimo y máximo de todas las actualizaciones gemelas correctas iniciadas por el dispositivo.|
-|c2d.methods.success|Invocaciones correctas al método directo|Recuento|Total|El número de todas las llamadas correctas al método directo.|
-|c2d.methods.failure|Invocaciones al método directo con error|Recuento|Total|El número de todas las llamadas al método directo con error.|
-|c2d.methods.requestSize|Tamaño de la solicitud de las invocaciones a métodos directos|Bytes|Media|El valor medio, mínimo y máximo de todas las solicitudes correctas de método directo.|
-|c2d.methods.responseSize|Tamaño de la respuesta de las invocaciones a métodos directos|Bytes|Media|El valor medio, mínimo y máximo de todas las respuestas correctas de método directo.|
-|c2d.twin.read.success|Lecturas gemelas correctas del back-end|Recuento|Total|El recuento de todas las lecturas gemelas correctas iniciadas por el back-end.|
-|c2d.twin.read.failure|Lecturas gemelas con error del back-end|Recuento|Total|El recuento de todas las lecturas gemelas con error iniciadas por el back-end.|
-|c2d.twin.read.size|Tamaño de la respuesta de las lecturas gemelas del back-end|Bytes|Media|El valor medio, mínimo y máximo de todas las lecturas gemelas correctas iniciadas por el back-end.|
-|c2d.twin.update.success|Actualizaciones gemelas correctas del back-end|Recuento|Total|El recuento de todas las actualizaciones gemelas correctas iniciadas por el back-end.|
-|c2d.twin.update.failure|Actualizaciones gemelas con error del back-end|Recuento|Total|El recuento de todas las actualizaciones gemelas con error iniciadas por el back-end.|
-|c2d.twin.update.size|Tamaño de las actualizaciones gemelas del back-end|Bytes|Media|El tamaño medio, mínimo y máximo de todas las actualizaciones gemelas correctas iniciadas por el back-end.|
-|twinQueries.success|Consultas gemelas correctas|Recuento|Total|El recuento de todas las consultas gemelas correctas.|
-|twinQueries.failure|Consultas gemelas con error|Recuento|Total|El recuento de todas las consultas gemelas con error.|
-|twinQueries.resultSize|Tamaño de resultado de consultas gemelas|Bytes|Media|El valor medio, mínimo y máximo del tamaño del resultado de todas las consultas gemelas correctas.|
-|jobs.createTwinUpdateJob.success|Creaciones correctas de trabajos de actualización gemelos|Recuento|Total|El recuento de todas las creaciones correctas de trabajos de actualización gemelos.|
-|jobs.createTwinUpdateJob.failure|Creaciones con error de trabajos de actualización gemelos|Recuento|Total|El recuento de todas las creaciones con error de trabajos de actualización gemelos.|
-|jobs.createDirectMethodJob.success|Creaciones correctas de trabajos de invocación de método|Recuento|Total|El recuento de todas las creaciones correctas de los trabajos de invocación de método directos.|
-|jobs.createDirectMethodJob.failure|Creaciones con error de trabajos de invocación de método|Recuento|Total|El recuento de todas las creaciones con error de los trabajos de invocación de método directos.|
-|jobs.listJobs.success|Llamadas correctas para enumerar trabajos|Recuento|Total|El recuento de todas las llamadas correctas para enumerar trabajos.|
-|jobs.listJobs.failure|Llamadas con error para enumerar trabajos|Recuento|Total|El recuento de todas las llamadas con error para enumerar trabajos.|
-|jobs.cancelJob.success|Cancelaciones de trabajos correctas|Recuento|Total|El recuento de todas las llamadas correctas para cancelar un trabajo.|
-|jobs.cancelJob.failure|Cancelaciones de trabajos con error|Recuento|Total|El recuento de todas las llamadas con error para cancelar un trabajo.|
-|jobs.queryJobs.success|Consultas de trabajo correctas|Recuento|Total|El recuento de todas las llamadas correctas para consultar trabajos.|
-|jobs.queryJobs.failure|Consultas de trabajo con error|Recuento|Total|El recuento de todas las llamadas con error para consultar trabajos.|
-|jobs.completed|Trabajos completados|Recuento|Total|El recuento de todos los trabajos completados.|
-|jobs.failed|Trabajos con error|Recuento|Total|El recuento de todos los trabajos con error.|
-|d2c.telemetry.ingress.sendThrottle|Número de errores de limitación|Recuento|Total|Número de errores de limitación debido a las limitaciones de rendimiento del dispositivo|
+|d2c.telemetry.ingress.allProtocol|Intentos de envío de mensajes de telemetría|Recuento|Total|Número de toobe intento de telemetría de dispositivo para la nube mensajes enviados tooyour centro de IoT|
+|d2c.telemetry.ingress.success|Mensajes de telemetría enviados|Recuento|Total|Número de mensajes de telemetría de dispositivo para la nube enviado correctamente el centro de IoT tooyour|
+|c2d.commands.egress.complete.success|Comandos completados|Recuento|Total|Número de comandos en la nube al dispositivo que se completó correctamente por dispositivo de Hola|
+|c2d.commands.egress.abandon.success|Comandos abandonados|Recuento|Total|Número de comandos en la nube al dispositivo abandonados por el dispositivo de Hola|
+|c2d.commands.egress.reject.success|Comandos rechazados|Recuento|Total|Número de comandos en la nube al dispositivo rechazado por dispositivo de Hola|
+|devices.totalDevices|Número total de dispositivos|Recuento|Total|Número de dispositivos registrados tooyour centro de IoT|
+|devices.connectedDevices.allProtocol|Dispositivos conectados|Recuento|Total|Centro de IoT tooyour el número de dispositivos conectados|
+|d2c.telemetry.egress.success|Mensajes de telemetría entregados|Recuento|Total|Número de veces que los mensajes se han escrito correctamente tooendpoints (total)|
+|d2c.telemetry.egress.dropped|Mensajes descartados|Recuento|Total|Número de mensajes descartados porque el punto de conexión de hello entrega estaba inactivo|
+|d2c.telemetry.egress.orphaned|Mensajes huérfanos|Recuento|Total|recuento de Hola de mensajes no coincide con ninguna ruta incluida la ruta de reserva de Hola|
+|d2c.telemetry.egress.invalid|Mensajes no válidos|Recuento|Total|Hello número de mensajes no entregados debido tooincompatibility con punto de conexión de Hola|
+|d2c.telemetry.egress.fallback|Mensajes que coinciden con la condición de reserva|Recuento|Total|Número de mensajes enviados de extremo de reserva toohello|
+|d2c.endpoints.egress.eventHubs|Mensajes entregan tooEvent los extremos del centro|Recuento|Total|Número de veces que los mensajes se trataban tooEvent escrito correctamente los extremos del centro|
+|d2c.endpoints.latency.eventHubs|Latencia de mensajes para los puntos de conexión del Centro de eventos|Milisegundos|Media|Hola promedio de latencia entre la entrada de mensaje y el centro de IoT toohello de mensaje de entrada en un punto de conexión de concentrador de eventos, en milisegundos|
+|d2c.endpoints.egress.serviceBusQueues|Mensajes entregan tooService puntos de conexión de la cola de Bus|Recuento|Total|Número de veces mensajes se trataban como puntos de conexión de la cola de Bus tooService escrito correctamente|
+|d2c.endpoints.latency.serviceBusQueues|Latencia de mensajes para los puntos de conexión de la cola de Service Bus|Milisegundos|Media|Hola promedio de latencia entre la entrada de mensaje y el centro de IoT toohello de mensaje de entrada en un punto de conexión de la cola de Bus de servicio, en milisegundos|
+|d2c.endpoints.egress.serviceBusTopics|Mensajes entregan tooService puntos de conexión de tema de Bus|Recuento|Total|Número de veces mensajes se trataban como puntos de conexión de tema de Bus tooService escrito correctamente|
+|d2c.endpoints.latency.serviceBusTopics|Latencia de mensajes para los puntos de conexión del tema de Service Bus|Milisegundos|Media|Hola promedio de latencia entre la entrada de mensaje y el centro de IoT toohello de mensaje de entrada en un punto de conexión de tema de Bus de servicio, en milisegundos|
+|d2c.endpoints.egress.builtIn.events|Mensajes entregados extremo predefinido toohello (mensajes y eventos)|Recuento|Total|Número de veces que los mensajes se trataban extremo predefinido toohello correctamente escrito (mensajes y eventos)|
+|d2c.endpoints.latency.builtIn.events|Latencia de mensajes para punto de conexión Hola integrados (mensajes y eventos)|Milisegundos|Media|Hola promedio de latencia entre la entrada de mensaje y el centro de IoT de mensaje de entrada toohello en extremo predefinido hello (mensajes y eventos), en milisegundos |
+|d2c.twin.read.success|Lecturas gemelas correctas de los dispositivos|Recuento|Total|recuento de Hola de correctamente todas las lecturas gemelos iniciadas por el dispositivo.|
+|d2c.twin.read.failure|Lecturas gemelas con error de los dispositivos|Recuento|Total|recuento de Hola de todas las no pudo lecturas gemelos iniciadas por el dispositivo.|
+|d2c.twin.read.size|Tamaño de la respuesta de las lecturas gemelas de dispositivos|Bytes|Media|promedio de Hello, min y max del todo correcta iniciadas por el dispositivo dos lecturas.|
+|d2c.twin.update.success|Actualizaciones gemelas correctas de los dispositivos|Recuento|Total|recuento de Hola de correctamente todas las actualizaciones de gemelas iniciadas por el dispositivo.|
+|d2c.twin.update.failure|Actualizaciones gemelas con error de los dispositivos|Recuento|Total|recuento de Hola de todas las actualizaciones de gemelas iniciadas por el dispositivo con error.|
+|d2c.twin.update.size|Tamaño de las actualizaciones gemelas de los dispositivos|Bytes|Media|Hola average, min y el tamaño máximo de todos los correcta iniciadas por el dispositivo dos actualizaciones.|
+|c2d.methods.success|Invocaciones correctas al método directo|Recuento|Total|recuento de Hola de correctamente todas las llamadas a métodos directas.|
+|c2d.methods.failure|Invocaciones al método directo con error|Recuento|Total|recuento de Hola de todas las no pudo llamadas directas.|
+|c2d.methods.requestSize|Tamaño de la solicitud de las invocaciones a métodos directos|Bytes|Media|Hola average, min y número máximo de solicitudes de método directo todas correctas.|
+|c2d.methods.responseSize|Tamaño de la respuesta de las invocaciones a métodos directos|Bytes|Media|promedio de Hello, min y max de todas las respuestas de método directo correcta.|
+|c2d.twin.read.success|Lecturas gemelas correctas del back-end|Recuento|Total|recuento de Hola de correctamente todas las lecturas gemelos iniciado por back-end.|
+|c2d.twin.read.failure|Lecturas gemelas con error del back-end|Recuento|Total|recuento de Hola de todas las no pudo lecturas gemelos iniciado por back-end.|
+|c2d.twin.read.size|Tamaño de la respuesta de las lecturas gemelas del back-end|Bytes|Media|promedio de Hello, min y max del todo correcta iniciadas por el back end dos lecturas.|
+|c2d.twin.update.success|Actualizaciones gemelas correctas del back-end|Recuento|Total|recuento de Hola de correctamente todas las actualizaciones de gemelas iniciado por back-end.|
+|c2d.twin.update.failure|Actualizaciones gemelas con error del back-end|Recuento|Total|recuento de Hola de todas las actualizaciones de gemelas iniciado por back-end con error.|
+|c2d.twin.update.size|Tamaño de las actualizaciones gemelas del back-end|Bytes|Media|Hola average, min y tamaño máximo de todos los correcta iniciadas por el back end dos actualizaciones.|
+|twinQueries.success|Consultas gemelas correctas|Recuento|Total|recuento de Hola de todas las consultas de gemelas correcta.|
+|twinQueries.failure|Consultas gemelas con error|Recuento|Total|recuento de Hola de todas las consultas de dos errores.|
+|twinQueries.resultSize|Tamaño de resultado de consultas gemelas|Bytes|Media|Hola average, min y máximo de tamaño de los resultados de todas las consultas de gemelas correcta Hola.|
+|jobs.createTwinUpdateJob.success|Creaciones correctas de trabajos de actualización gemelos|Recuento|Total|recuento de Hola de toda la creación correcta de los trabajos de actualización gemelas.|
+|jobs.createTwinUpdateJob.failure|Creaciones con error de trabajos de actualización gemelos|Recuento|Total|recuento de Hola de todos los error en la creación de trabajos de actualización de gemelas.|
+|jobs.createDirectMethodJob.success|Creaciones correctas de trabajos de invocación de método|Recuento|Total|recuento de Hola de toda la creación correcta de los trabajos de invocación de método directo.|
+|jobs.createDirectMethodJob.failure|Creaciones con error de trabajos de invocación de método|Recuento|Total|recuento de Hola de todos los error en la creación de trabajos de invocación de método directo.|
+|jobs.listJobs.success|Trabajos de toolist de llamadas correctas|Recuento|Total|recuento de Hola de todos los trabajos de toolist de llamadas correctas.|
+|jobs.listJobs.failure|Errores llamadas toolist trabajos|Recuento|Total|recuento de Hola de todos los trabajos de toolist de errores de llamadas.|
+|jobs.cancelJob.success|Cancelaciones de trabajos correctas|Recuento|Total|recuento de Hello correctos todas las llamadas a toocancel un trabajo.|
+|jobs.cancelJob.failure|Cancelaciones de trabajos con error|Recuento|Total|recuento de Hola de todos los errores llamadas toocancel un trabajo.|
+|jobs.queryJobs.success|Consultas de trabajo correctas|Recuento|Total|recuento de Hola de todos los trabajos de tooquery de llamadas correctas.|
+|jobs.queryJobs.failure|Consultas de trabajo con error|Recuento|Total|recuento de Hola de todos los trabajos de tooquery de errores de llamadas.|
+|jobs.completed|Trabajos completados|Recuento|Total|recuento de Hola de todos los trabajos completados.|
+|jobs.failed|Trabajos con error|Recuento|Total|recuento de Hola de todos los trabajos con errores.|
+|d2c.telemetry.ingress.sendThrottle|Número de errores de limitación|Recuento|Total|Número de errores de limitación debido a limitaciones de rendimiento toodevice|
 |dailyMessageQuotaUsed|Número total de mensajes usados|Recuento|Media|Número de mensajes totales usados hoy|
 
 ## <a name="microsofteventhubnamespaces"></a>Microsoft.EventHub/namespaces
@@ -531,12 +531,12 @@ Azure Monitor proporciona varias maneras de interactuar con las métricas, como 
 
 |Métrica|Nombre de métrica para mostrar|Unidad|Tipo de agregación|Descripción|
 |---|---|---|---|---|
-|registration.all|Operación de registro|Recuento|Total|El recuento de todas las operaciones de registro correctas (creaciones, actualizaciones, consultas y eliminaciones). |
-|registration.create|Operaciones de creación de registros|Recuento|Total|El recuento de todas las creaciones de registros correctas.|
-|registration.update|Operaciones de actualización de registros|Recuento|Total|El recuento de todas las actualizaciones de registros correctas.|
-|registration.get|Operaciones de lectura de registros|Recuento|Total|El recuento de todas las consultas de registros correctas.|
-|registration.delete|Operaciones de eliminación de registros|Recuento|Total|El recuento de todas las eliminaciones de registros correctas.|
-|incoming|Mensajes entrantes|Recuento|Total|El recuento de todas las llamadas a la API de envío. |
+|registration.all|Operación de registro|Recuento|Total|recuento de Hola de todas las operaciones de registro correctas (creaciones actualizaciones consultas y eliminaciones). |
+|registration.create|Operaciones de creación de registros|Recuento|Total|recuento de Hola de todas las creaciones de registro correctas.|
+|registration.update|Operaciones de actualización de registros|Recuento|Total|recuento de Hola de todas las actualizaciones de registro correctas.|
+|registration.get|Operaciones de lectura de registros|Recuento|Total|recuento de Hola de todas las consultas de registro correctas.|
+|registration.delete|Operaciones de eliminación de registros|Recuento|Total|recuento de Hola de todas las eliminaciones de registro correctas.|
+|incoming|Mensajes entrantes|Recuento|Total|recuento de Hello del todo correcta enviar llamadas API. |
 |incoming.scheduled|Notificaciones push programadas enviadas|Recuento|Total|Notificaciones push programadas canceladas|
 |incoming.scheduled.cancel|Notificaciones push programadas canceladas|Recuento|Total|Notificaciones push programadas canceladas|
 |scheduled.pending|Notificaciones programadas pendientes|Recuento|Total|Notificaciones programadas pendientes|
@@ -545,52 +545,52 @@ Azure Monitor proporciona varias maneras de interactuar con las métricas, como 
 |installation.upsert|Crear o actualizar operaciones de instalación|Recuento|Total|Crear o actualizar operaciones de instalación|
 |installation.patch|Aplicar revisión a operaciones de instalación|Recuento|Total|Aplicar revisión a operaciones de instalación|
 |installation.delete|Eliminar operaciones de instalación|Recuento|Total|Eliminar operaciones de instalación|
-|outgoing.allpns.success|Notificaciones correctas|Recuento|Total|El recuento de todas las notificaciones correctas.|
-|outgoing.allpns.invalidpayload|Errores de carga útil|Recuento|Total|El recuento de las inserciones que provocaron un error porque el PNS devolvió un error de carga útil incorrecta.|
-|outgoing.allpns.pnserror|Errores del sistema de notificación externo|Recuento|Total|El recuento de inserciones que provocaron un error porque se produjo un problema al comunicarse con el PNS (excluye los problemas de autenticación).|
-|outgoing.allpns.channelerror|Errores de canal|Recuento|Total|El recuento de inserciones que provocaron un error porque el canal no era válido no está asociado a la aplicación correcta limitada o expirada.|
-|outgoing.allpns.badorexpiredchannel|Errores de canal incorrecto o expirado|Recuento|Total|El recuento de inserciones que provocaron un error porque el canal/token/registrationId del registro ha expirado o no es válido.|
-|outgoing.wns.success|Notificaciones de WNS correctas|Recuento|Total|El recuento de todas las notificaciones correctas.|
-|outgoing.wns.invalidcredentials|Errores de autorización de WNS (credenciales no válidas)|Recuento|Total|El recuento de inserciones que provocaron un error porque el PNS no aceptó las credenciales proporcionadas o las credenciales están bloqueadas. (Windows Live no reconoce las credenciales).|
-|outgoing.wns.badchannel|Error de canal incorrecto de WNS|Recuento|Total|El recuento de inserciones que provocaron un error porque no se reconoció ChannelURI en el registro (estado de WNS: 404 No encontrado).|
-|outgoing.wns.expiredchannel|Error de canal expirado de WNS|Recuento|Total|El recuento de inserciones que provocaron un error porque ChannelURI expiró (estado de WNS: 410 Ya no existe).|
-|outgoing.wns.throttled|Notificaciones limitadas de WNS|Recuento|Total|El recuento de inserciones que provocaron un error porque WNS limita esta aplicación (estado de WNS: 406 No aceptable).|
+|outgoing.allpns.success|Notificaciones correctas|Recuento|Total|recuento de Hola de todas las notificaciones correctas.|
+|outgoing.allpns.invalidpayload|Errores de carga útil|Recuento|Total|recuento de Hola de inserciones que dieron error porque hello PNS devolvió un error de carga.|
+|outgoing.allpns.pnserror|Errores del sistema de notificación externo|Recuento|Total|recuento de Hola de inserciones que dieron error porque se produjo un problema al comunicarse con hello PNS (excluye los problemas de autenticación).|
+|outgoing.allpns.channelerror|Errores de canal|Recuento|Total|recuento de Hola de inserciones que dieron error porque el canal de hello no era válido no esté asociado a Hola correcta aplicación limitado o expirado.|
+|outgoing.allpns.badorexpiredchannel|Errores de canal incorrecto o expirado|Recuento|Total|recuento de Hola de inserciones que dieron error porque Hola canal token o el identificador en el registro de hello ha expirado o no es válido.|
+|outgoing.wns.success|Notificaciones de WNS correctas|Recuento|Total|recuento de Hola de todas las notificaciones correctas.|
+|outgoing.wns.invalidcredentials|Errores de autorización de WNS (credenciales no válidas)|Recuento|Total|recuento de Hola de inserciones que dieron error porque hello PNS no aceptó Hola proporcionado credenciales u Hola están bloqueados. (Windows Live no reconoce las credenciales de hello).|
+|outgoing.wns.badchannel|Error de canal incorrecto de WNS|Recuento|Total|Hola recuento de inserciones que dieron error porque no se reconoció Hola URI del canal en el registro de hello (estado de WNS: 404 no encontrado).|
+|outgoing.wns.expiredchannel|Error de canal expirado de WNS|Recuento|Total|Hola recuento de inserciones que dieron error porque hello ChannelURI ha expirado (estado de WNS: 410 desaparecido).|
+|outgoing.wns.throttled|Notificaciones limitadas de WNS|Recuento|Total|Hola recuento de inserciones que dieron error porque WNS está limitando esta aplicación (estado de WNS: 406 No aceptable).|
 |outgoing.wns.tokenproviderunreachable|Errores de autorización de WNS (inaccesible)|Recuento|Total|No se puede acceder a Windows Live.|
-|outgoing.wns.invalidtoken|Errores de autorización de WNS (token no válido)|Recuento|Total|El token que se proporciona a WNS no es válido (estado de WNS: 401 No autorizado).|
-|outgoing.wns.wrongtoken|Errores de autorización de WNS (token erróneo)|Recuento|Total|El token que se proporciona a WNS es válido, pero para otra aplicación (estado de WNS: 403 Prohibido). Esto puede ocurrir si la instancia de ChannelURI en el registro está asociada a otra aplicación. Compruebe que la aplicación cliente está asociada a la misma aplicación cuyas credenciales están en el centro de notificaciones.|
-|outgoing.wns.invalidnotificationformat|Formato de notificación no válido de WNS|Recuento|Total|El formato de la notificación no es válido (estado de WNS: 400). Tenga en cuenta que WNS no rechaza todas las cargas útiles no válidas.|
-|outgoing.wns.invalidnotificationsize|Error de tamaño de notificación no válido de WNS|Recuento|Total|La carga útil de la notificación es demasiado grande (estado de WNS: 413).|
-|outgoing.wns.channelthrottled|Canal de WNS limitado|Recuento|Total|La notificación se descartó porque la instancia de ChannelURI del registro está limitada (encabezado de respuesta WNS: X-WNS-NotificationStatus:channelThrottled).|
-|outgoing.wns.channeldisconnected|Canal de WNS desconectado|Recuento|Total|La notificación se descartó porque la instancia de ChannelURI del registro está limitada (encabezado de respuesta WNS: X-WNS-DeviceConnectionStatus: desconectado).|
-|outgoing.wns.dropped|Notificaciones descartadas de WNS|Recuento|Total|La notificación se descartó porque la instancia de ChannelURI del registro está limitada (X-WNS-NotificationStatus: descartado pero no X-WNS-DeviceConnectionStatus: desconectado).|
+|outgoing.wns.invalidtoken|Errores de autorización de WNS (token no válido)|Recuento|Total|Hello proporciona token tooWNS no es válido (estado de WNS: 401 no autorizado).|
+|outgoing.wns.wrongtoken|Errores de autorización de WNS (token erróneo)|Recuento|Total|Hola token proporcionado por tooWNS es válido, pero para otra aplicación (estado de WNS: 403 Prohibido). Esto puede ocurrir si Hola URI del canal en el registro de hello está asociado a otra aplicación. Compruebe que esa aplicación de cliente hello está asociada con hello misma aplicación cuyas credenciales están en el centro de notificaciones de Hola.|
+|outgoing.wns.invalidnotificationformat|Formato de notificación no válido de WNS|Recuento|Total|formato de Hola de notificación de hello no es válido (estado de WNS: 400). Tenga en cuenta que WNS no rechaza todas las cargas útiles no válidas.|
+|outgoing.wns.invalidnotificationsize|Error de tamaño de notificación no válido de WNS|Recuento|Total|carga de notificaciones de Hello es demasiado grande (estado de WNS: 413).|
+|outgoing.wns.channelthrottled|Canal de WNS limitado|Recuento|Total|Hola notificación se eliminó porque Hola URI del canal en el registro de hello está limitado (encabezado de respuesta WNS: X-WNS-Channelthrottled).|
+|outgoing.wns.channeldisconnected|Canal de WNS desconectado|Recuento|Total|Hola notificación se eliminó porque Hola URI del canal en el registro de hello está limitado (encabezado de respuesta WNS: X-WNS-DeviceConnectionStatus: desconectado).|
+|outgoing.wns.dropped|Notificaciones descartadas de WNS|Recuento|Total|Hola notificación se eliminó porque Hola URI del canal en el registro de hello está limitado (X-WNS-NotificationStatus: colocarlo pero no X-WNS-DeviceConnectionStatus: desconectado).|
 |outgoing.wns.pnserror|Errores de WNS|Recuento|Total|La notificación no se entregó debido a errores de comunicación con WNS.|
 |outgoing.wns.authenticationerror|Errores de autenticación de WNS|Recuento|Total|La notificación no se entregó debido a errores de comunicación con Windows Live, credenciales no válidas o token erróneo.|
-|outgoing.apns.success|Notificaciones de APNS correctas|Recuento|Total|El recuento de todas las notificaciones correctas.|
-|outgoing.apns.invalidcredentials|Errores de autorización de APNS|Recuento|Total|El recuento de inserciones que provocaron un error porque el PNS no aceptó las credenciales proporcionadas o las credenciales están bloqueadas.|
-|outgoing.apns.badchannel|Error de canal incorrecto de APNS|Recuento|Total|El recuento de inserciones que provocaron un error porque el token no es válido (código de estado de APNS: 8).|
-|outgoing.apns.expiredchannel|Error de canal expirado de APNS|Recuento|Total|El recuento de tokens invalidados por el canal de comentarios de APNS.|
-|outgoing.apns.invalidnotificationsize|Error de tamaño de notificación no válido de APNS|Recuento|Total|El recuento de inserciones que provocaron un error porque la carga útil era demasiado grande (código de estado de APNS: 7).|
-|outgoing.apns.pnserror|Errores de APNS|Recuento|Total|El recuento de inserciones que provocaron un error debido a errores de comunicación con APNS.|
-|outgoing.gcm.success|Notificaciones de GCM correctas|Recuento|Total|El recuento de todas las notificaciones correctas.|
-|outgoing.gcm.invalidcredentials|Errores de autorización de GCM (credenciales no válidas)|Recuento|Total|El recuento de inserciones que provocaron un error porque el PNS no aceptó las credenciales proporcionadas o las credenciales están bloqueadas.|
-|outgoing.gcm.badchannel|Error de canal incorrecto de GCM|Recuento|Total|El recuento de inserciones que provocaron un error porque la instancia de registrationId del registro no se ha reconocido (resultado de GCM: registro no válido).|
-|outgoing.gcm.expiredchannel|Error de canal expirado de GCM|Recuento|Total|El recuento de inserciones que provocaron un error porque la instancia de registrationId del registro ha expirado (resultado de GCM: NotRegistered).|
-|outgoing.gcm.throttled|Notificaciones limitadas de GCM|Recuento|Total|El recuento de inserciones que provocaron un error porque GCM limitó esta aplicación (código de estado de GCM: 501-599 o resultado: no disponible).|
-|outgoing.gcm.invalidnotificationformat|Formato de notificación no válido de GCM|Recuento|Total|El recuento de inserciones que provocaron un error porque la carga útil no tenía el formato correcto (resultado de GCM: InvalidDataKey o InvalidDataKey o InvalidTtl).|
-|outgoing.gcm.invalidnotificationsize|Error de tamaño de notificación no válido de GCM|Recuento|Total|El recuento de inserciones que provocaron un error porque la carga útil era demasiado grande (resultado de GCM: MessageTooBig).|
-|outgoing.gcm.wrongchannel|Error de canal incorrecto de GCM|Recuento|Total|El recuento de inserciones que provocaron un error porque la instancia de registrationId del registro no está asociado a la aplicación actual (resultado de GCM: InvalidPackageName).|
-|outgoing.gcm.pnserror|Errores de GCM|Recuento|Total|El recuento de inserciones que provocaron un error debido a errores de comunicación con GCM.|
-|outgoing.gcm.authenticationerror|Errores de autenticación de GCM|Recuento|Total|El recuento de inserciones que provocaron un error debido a que el PNS no aceptó las credenciales proporcionadas, las credenciales están bloqueadas o el Id. del remitente no está configurado correctamente en la aplicación (resultado de GCM: MismatchedSenderId).|
-|outgoing.mpns.success|Notificaciones de MPNS correctas|Recuento|Total|El recuento de todas las notificaciones correctas.|
-|outgoing.mpns.invalidcredentials|Credenciales no válidas de MPNS|Recuento|Total|El recuento de inserciones que provocaron un error porque el PNS no aceptó las credenciales proporcionadas o las credenciales están bloqueadas.|
-|outgoing.mpns.badchannel|Error de canal incorrecto de MPNS|Recuento|Total|El recuento de inserciones que provocaron un error porque no se reconoció ChannelURI en el registro (estado de MPNS: 404 No encontrado).|
-|outgoing.mpns.throttled|Notificaciones limitadas de MPNS|Recuento|Total|El recuento de inserciones que provocaron un error porque MPNS limita esta aplicación (MPNS de WNS: 406 No aceptable).|
-|outgoing.mpns.invalidnotificationformat|Formato de notificación no válido de MPNS|Recuento|Total|El recuento de inserciones que provocaron un error porque la carga útil de la notificación era demasiado grande.|
-|outgoing.mpns.channeldisconnected|Canal de MPNS desconectado|Recuento|Total|El recuento de inserciones que provocaron un error porque se desconectó la instancia ChannelURI en el registro (estado de MPNS: 412 No encontrado).|
-|outgoing.mpns.dropped|Notificaciones descartadas de MPNS|Recuento|Total|El recuento de inserciones que MPNS ha descartado (encabezado de respuesta MPNS: X-NotificationStatus: QueueFull o Suppressed).|
-|outgoing.mpns.pnserror|Errores de MPNS|Recuento|Total|El recuento de inserciones que provocaron un error debido a errores de comunicación con MPNS.|
-|outgoing.mpns.authenticationerror|Errores de autenticación de MPNS|Recuento|Total|El recuento de inserciones que provocaron un error porque el PNS no aceptó las credenciales proporcionadas o las credenciales están bloqueadas.|
-|notificationhub.pushes|Todas las notificaciones salientes|Recuento|Total|Todas las notificaciones salientes del Centro de notificaciones|
+|outgoing.apns.success|Notificaciones de APNS correctas|Recuento|Total|recuento de Hola de todas las notificaciones correctas.|
+|outgoing.apns.invalidcredentials|Errores de autorización de APNS|Recuento|Total|recuento de Hola de inserciones que dieron error porque hello PNS no aceptó Hola proporcionado credenciales u Hola están bloqueados.|
+|outgoing.apns.badchannel|Error de canal incorrecto de APNS|Recuento|Total|Hola recuento de inserciones que dieron error porque Hola token no es válido (código de estado APNS: 8).|
+|outgoing.apns.expiredchannel|Error de canal expirado de APNS|Recuento|Total|recuento de Hola de tokens invalidados por canal de comentarios APNS Hola.|
+|outgoing.apns.invalidnotificationsize|Error de tamaño de notificación no válido de APNS|Recuento|Total|Hola recuento de inserciones que dieron error porque Hola carga era demasiado grande (código de estado APNS: 7).|
+|outgoing.apns.pnserror|Errores de APNS|Recuento|Total|recuento de Hola de inserciones que dieron error debido a errores de comunicación con APNS.|
+|outgoing.gcm.success|Notificaciones de GCM correctas|Recuento|Total|recuento de Hola de todas las notificaciones correctas.|
+|outgoing.gcm.invalidcredentials|Errores de autorización de GCM (credenciales no válidas)|Recuento|Total|recuento de Hola de inserciones que dieron error porque hello PNS no aceptó Hola proporcionado credenciales u Hola están bloqueados.|
+|outgoing.gcm.badchannel|Error de canal incorrecto de GCM|Recuento|Total|Hola recuento de inserciones que dieron error porque no se reconoció el identificador hello registro de hello (resultado de GCM: registro no válido).|
+|outgoing.gcm.expiredchannel|Error de canal expirado de GCM|Recuento|Total|Hola recuento de inserciones que dieron error porque el identificador hello registro de hello había expirado (resultado de GCM: no registrado).|
+|outgoing.gcm.throttled|Notificaciones limitadas de GCM|Recuento|Total|Hola recuento de inserciones que dieron error porque GCM limitó esta aplicación (código de estado GCM: 501-599 o resultado: no disponible).|
+|outgoing.gcm.invalidnotificationformat|Formato de notificación no válido de GCM|Recuento|Total|Hola recuento de inserciones que dieron error porque la carga de hello no tenía el formato correcto (resultado de GCM: InvalidDataKey o InvalidTtl).|
+|outgoing.gcm.invalidnotificationsize|Error de tamaño de notificación no válido de GCM|Recuento|Total|Hola recuento de inserciones que dieron error porque Hola carga era demasiado grande (resultado de GCM: MessageTooBig).|
+|outgoing.gcm.wrongchannel|Error de canal incorrecto de GCM|Recuento|Total|recuento de Hola de inserciones que dieron error porque no es el identificador hello registro de hello asociados toohello de aplicación actual (resultado de GCM: InvalidPackageName).|
+|outgoing.gcm.pnserror|Errores de GCM|Recuento|Total|recuento de Hola de inserciones que dieron error debido a errores de comunicación con GCM.|
+|outgoing.gcm.authenticationerror|Errores de autenticación de GCM|Recuento|Total|Hola recuento de inserciones que dieron error porque hello PNS no aceptó Hola proporcionado credenciales Hola credenciales están bloqueadas o hello Id. de remitente no está configurado correctamente en la aplicación hello (resultado de GCM: MismatchedSenderId).|
+|outgoing.mpns.success|Notificaciones de MPNS correctas|Recuento|Total|recuento de Hola de todas las notificaciones correctas.|
+|outgoing.mpns.invalidcredentials|Credenciales no válidas de MPNS|Recuento|Total|recuento de Hola de inserciones que dieron error porque hello PNS no aceptó Hola proporcionado credenciales u Hola están bloqueados.|
+|outgoing.mpns.badchannel|Error de canal incorrecto de MPNS|Recuento|Total|Hola recuento de inserciones que dieron error porque no se reconoció Hola URI del canal en el registro de hello (estado de MPNS: 404 no encontrado).|
+|outgoing.mpns.throttled|Notificaciones limitadas de MPNS|Recuento|Total|Hola recuento de inserciones que dieron error porque MPNS está limitando esta aplicación (WNS MPNS: 406 No aceptable).|
+|outgoing.mpns.invalidnotificationformat|Formato de notificación no válido de MPNS|Recuento|Total|recuento de Hola de inserciones que dieron error porque la carga de Hola de notificación de hello era demasiado grande.|
+|outgoing.mpns.channeldisconnected|Canal de MPNS desconectado|Recuento|Total|Hola recuento de inserciones que dieron error porque se desconectó Hola URI del canal en el registro de hello (estado de MPNS: 412 no encontrado).|
+|outgoing.mpns.dropped|Notificaciones descartadas de MPNS|Recuento|Total|Hola recuento de inserciones que eliminó MPNS (encabezado de respuesta MPNS: X-NotificationStatus: QueueFull o Suppressed).|
+|outgoing.mpns.pnserror|Errores de MPNS|Recuento|Total|recuento de Hola de inserciones que dieron error debido a errores de comunicación con MPNS.|
+|outgoing.mpns.authenticationerror|Errores de autenticación de MPNS|Recuento|Total|recuento de Hola de inserciones que dieron error porque hello PNS no aceptó Hola proporcionado credenciales u Hola están bloqueados.|
+|notificationhub.pushes|Todas las notificaciones salientes|Recuento|Total|Todas las notificaciones salientes de centro de notificaciones de Hola|
 |incoming.all.requests|Todas las solicitudes entrantes|Recuento|Total|Solicitudes entrantes totales de un centro de notificaciones|
 |incoming.all.failedrequests|Todas las solicitudes entrantes con error|Recuento|Total|Solicitudes entrantes totales con error de un centro de notificaciones|
 
@@ -604,49 +604,49 @@ Azure Monitor proporciona varias maneras de interactuar con las métricas, como 
 |SuccessfullConnectionsPerSec|Conexiones correctas por segundo|CountPerSecond|Media|Tasa de finalizaciones de conexión correctas.|
 |TotalConnectionFailures|Número total de errores de conexión|Recuento|Media|Número total de intentos de conexión con error.|
 |CurrentUserSessions|Sesiones de usuario actuales|Recuento|Media|Número actual de sesiones de usuario establecidas.|
-|QueryPoolBusyThreads|Subprocesos ocupados de grupo de consultas|Recuento|Media|Número de subprocesos ocupados del grupo de subprocesos de consulta.|
-|CommandPoolJobQueueLength|Longitud de cola de trabajos de grupo de comandos|Recuento|Media|Número de trabajos en la cola del grupo de subprocesos de comandos.|
-|ProcessingPoolJobQueueLength|Longitud de cola de trabajos de grupo de procesamiento|Recuento|Media|Número de trabajos que no son de E/S en la cola del grupo de subprocesos de procesamiento.|
+|QueryPoolBusyThreads|Subprocesos ocupados de grupo de consultas|Recuento|Media|Número de subprocesos ocupados en el grupo de subprocesos de consulta de Hola.|
+|CommandPoolJobQueueLength|Longitud de cola de trabajos de grupo de comandos|Recuento|Media|Número de trabajos en cola de hello del grupo de subprocesos de comando de Hola.|
+|ProcessingPoolJobQueueLength|Longitud de cola de trabajos de grupo de procesamiento|Recuento|Media|Número de trabajos no son de e/s en cola Hola de hello grupo de subprocesos de procesamiento.|
 |CurrentConnections|Conexión: conexiones actuales|Recuento|Media|Número actual de conexiones de cliente establecidas.|
-|CleanerCurrentPrice|Memoria: precio actual de limpieza|Recuento|Media|Precio actual de memoria, USD/byte/tiempo, normalizado a 1000.|
-|CleanerMemoryShrinkable|Memoria: memoria de limpieza reducible|Bytes|Media|Cantidad de memoria, en bytes, que purgará el limpiador en segundo plano.|
-|CleanerMemoryNonshrinkable|Memoria: memoria de limpieza no reducible|Bytes|Media|Cantidad de memoria, en bytes, que no purgará el limpiador en segundo plano.|
-|MemoryUsage|Memoria: uso de memoria|Bytes|Media|Uso de memoria del proceso de servidor tal como se usa para calcular el precio de la memoria del limpiador. Es igual al contador Proceso\Bytes privados más el tamaño de los datos asignados a la memoria; se ignora la memoria que ha asignado VertiPaq superior al límite de memoria de VertiPaq.|
+|CleanerCurrentPrice|Memoria: precio actual de limpieza|Recuento|Media|Precio actual de memoria, $/ byte/tiempo, normalizado too1000.|
+|CleanerMemoryShrinkable|Memoria: memoria de limpieza reducible|Bytes|Media|Cantidad de memoria, en bytes, asunto toopurging limpiador en segundo plano Hola.|
+|CleanerMemoryNonshrinkable|Memoria: memoria de limpieza no reducible|Bytes|Media|Cantidad de memoria, en bytes, no el asunto toopurging limpiador en segundo plano Hola.|
+|MemoryUsage|Memoria: uso de memoria|Bytes|Media|Uso de memoria de proceso de servidor hello tal y como se usa para calcular el precio de memoria de limpiador. Toocounter igual Proceso\Bytes privados más hello de datos asignado a la memoria, se omite la memoria que se ha asignado por el motor de análisis en memoria de xVelocity (VertiPaq) de Hola que sobrepasen el motor xVelocity de hello límite de memoria.|
 |MemoryLimitHard|Memoria: límite de memoria física|Bytes|Media|Límite de memoria física del archivo de configuración.|
 |MemoryLimitHigh|Memoria: límite alto de memoria|Bytes|Media|Límite alto de memoria del archivo de configuración.|
 |MemoryLimitLow|Memoria: límite bajo de memoria|Bytes|Media|Límite bajo de memoria del archivo de configuración.|
 |MemoryLimitVertiPaq|Memoria: VertiPaq de límite de memoria|Bytes|Media|Límite en memoria del archivo de configuración.|
 |Quota|Memoria: cuota|Bytes|Media|Cuota de memoria actual, en bytes. La cuota de memoria también se denomina concesión de memoria o reserva de memoria.|
 |QuotaBlocked|Memoria: cuota bloqueada|Recuento|Media|Número actual de solicitudes de cuota que están bloqueadas hasta que se liberen otras cuotas de memoria.|
-|VertiPaqNonpaged|Memoria: VertiPaq no paginado|Bytes|Media|Bytes de memoria bloqueados en el espacio de trabajo para que los use el motor en memoria.|
+|VertiPaqNonpaged|Memoria: VertiPaq no paginado|Bytes|Media|Bytes de memoria bloqueada en espacio de trabajo de Hola para su uso por el motor de hello en memoria.|
 |VertiPaqPaged|Memoria: VertiPaq paginado|Bytes|Media|Bytes de memoria paginada en uso para datos en memoria.|
 |RowsReadPerSec|Procesamiento: filas leídas por segundo|CountPerSecond|Media|Velocidad de filas leídas de todas las bases de datos relacionales.|
 |RowsConvertedPerSec|Procesamiento: filas convertidas por segundo|CountPerSecond|Media|Velocidad de filas convertidas durante el procesamiento.|
 |RowsWrittenPerSec|Procesamiento: filas escritas por segundo|CountPerSecond|Media|Velocidad de filas escritas durante el procesamiento.|
-|CommandPoolBusyThreads|Subprocesos: subprocesos ocupados del grupo de comandos|Recuento|Media|Número de subprocesos ocupados del grupo de subprocesos de comandos.|
-|CommandPoolIdleThreads|Subprocesos: subprocesos inactivos del grupo de comandos|Recuento|Media|Número de subprocesos inactivos del grupo de subprocesos de comandos.|
-|LongParsingBusyThreads|Subprocesos: subprocesos ocupados en análisis largos|Recuento|Media|Número de subprocesos ocupados del grupo de subprocesos de análisis largos.|
-|LongParsingIdleThreads|Subprocesos: subprocesos inactivos en análisis largos|Recuento|Media|Número de subprocesos inactivos del grupo de subprocesos en análisis largos.|
-|LongParsingJobQueueLength|Subprocesos: longitud de cola de trabajos en análisis largos|Recuento|Media|Número de trabajos en la cola del grupo de subprocesos en análisis largos.|
-|ProcessingPoolBusyIOJobThreads|Subprocesos: subprocesos de trabajo de E/S ocupados del grupo de procesamiento|Recuento|Media|Número de subprocesos que ejecutan trabajos de E/S en el grupo de subprocesos de procesamiento.|
-|ProcessingPoolBusyNonIOThreads|Subprocesos: subprocesos de trabajo ocupados que no son de E/S del grupo de procesamiento|Recuento|Media|Número de subprocesos que ejecutan trabajos que no son de E/S del grupo de subprocesos de procesamiento.|
-|ProcessingPoolIOJobQueueLength|Subprocesos: longitud de cola de trabajos de E/S del grupo de procesamiento|Recuento|Media|Número de trabajos de E/S en la cola del grupo de subprocesos de procesamiento.|
-|ProcessingPoolIdleIOJobThreads|Subprocesos: subprocesos de trabajo de E/S inactivos del grupo de procesamiento|Recuento|Media|Número de subprocesos inactivos para trabajos de E/S en el grupo de subprocesos de procesamiento.|
-|ProcessingPoolIdleNonIOThreads|Subprocesos: subprocesos de trabajo inactivos que no son de E/S del grupo de procesamiento|Recuento|Media|Número de subprocesos inactivos del grupo de subprocesos de procesamiento dedicado a trabajos que no son de E/S.|
-|QueryPoolIdleThreads|Subprocesos: subprocesos inactivos del grupo de consultas|Recuento|Media|Número de subprocesos inactivos para trabajos de E/S en el grupo de subprocesos de procesamiento.|
-|QueryPoolJobQueueLength|Subprocesos: longitud de cola de trabajos del grupo de consultas|Recuento|Media|Número de trabajos en la cola del grupo de subprocesos de consultas.|
-|ShortParsingBusyThreads|Subprocesos: subprocesos ocupados en análisis cortos|Recuento|Media|Número de subprocesos ocupados del grupo de subprocesos de análisis cortos.|
-|ShortParsingIdleThreads|Subprocesos: subprocesos inactivos en análisis cortos|Recuento|Media|Número de subprocesos inactivos del grupo de subprocesos de análisis cortos.|
-|ShortParsingJobQueueLength|Subprocesos: longitud de cola de trabajos en análisis cortos|Recuento|Media|Número de trabajos en la cola del grupo de subprocesos en análisis cortos.|
+|CommandPoolBusyThreads|Subprocesos: subprocesos ocupados del grupo de comandos|Recuento|Media|Número de subprocesos ocupados en el grupo de subprocesos de comando de Hola.|
+|CommandPoolIdleThreads|Subprocesos: subprocesos inactivos del grupo de comandos|Recuento|Media|Número de subprocesos inactivos en el grupo de subprocesos de comando de Hola.|
+|LongParsingBusyThreads|Subprocesos: subprocesos ocupados en análisis largos|Recuento|Media|Número de subprocesos ocupados en el grupo de subprocesos de análisis largo de Hola.|
+|LongParsingIdleThreads|Subprocesos: subprocesos inactivos en análisis largos|Recuento|Media|Número de subprocesos inactivos en hello grupo de subprocesos de análisis largo.|
+|LongParsingJobQueueLength|Subprocesos: longitud de cola de trabajos en análisis largos|Recuento|Media|Número de trabajos en cola de Hola de hello grupo de subprocesos de análisis largo.|
+|ProcessingPoolBusyIOJobThreads|Subprocesos: subprocesos de trabajo de E/S ocupados del grupo de procesamiento|Recuento|Media|Número de subprocesos que se ejecutan trabajos de E/S en el grupo de subprocesos de procesamiento de Hola.|
+|ProcessingPoolBusyNonIOThreads|Subprocesos: subprocesos de trabajo ocupados que no son de E/S del grupo de procesamiento|Recuento|Media|Número de subprocesos que se ejecutan los trabajos no son de e/s en el grupo de subprocesos de procesamiento de Hola.|
+|ProcessingPoolIOJobQueueLength|Subprocesos: longitud de cola de trabajos de E/S del grupo de procesamiento|Recuento|Media|Número de trabajos de E/S en cola de hello del grupo de subprocesos de procesamiento de Hola.|
+|ProcessingPoolIdleIOJobThreads|Subprocesos: subprocesos de trabajo de E/S inactivos del grupo de procesamiento|Recuento|Media|Número de subprocesos inactivos de trabajos de E/S en el grupo de subprocesos de procesamiento de Hola.|
+|ProcessingPoolIdleNonIOThreads|Subprocesos: subprocesos de trabajo inactivos que no son de E/S del grupo de procesamiento|Recuento|Media|Número de subprocesos inactivos en el grupo de subprocesos de procesamiento de hello dedicado trabajos toonon de e/s.|
+|QueryPoolIdleThreads|Subprocesos: subprocesos inactivos del grupo de consultas|Recuento|Media|Número de subprocesos inactivos de trabajos de E/S en el grupo de subprocesos de procesamiento de Hola.|
+|QueryPoolJobQueueLength|Subprocesos: longitud de cola de trabajos del grupo de consultas|Recuento|Media|Número de trabajos en cola de hello del grupo de subprocesos de consulta de Hola.|
+|ShortParsingBusyThreads|Subprocesos: subprocesos ocupados en análisis cortos|Recuento|Media|Número de subprocesos ocupados en hello grupo de subprocesos de análisis corto.|
+|ShortParsingIdleThreads|Subprocesos: subprocesos inactivos en análisis cortos|Recuento|Media|Número de subprocesos inactivos en hello grupo de subprocesos de análisis corto.|
+|ShortParsingJobQueueLength|Subprocesos: longitud de cola de trabajos en análisis cortos|Recuento|Media|Número de trabajos en cola de Hola de hello grupo de subprocesos de análisis corto.|
 |memory_thrashing_metric|Paginación excesiva de memoria|Percent|Media|Paginación excesiva media de memoria.|
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.Search/searchServices
 
 |Métrica|Nombre de métrica para mostrar|Unidad|Tipo de agregación|Descripción|
 |---|---|---|---|---|
-|SearchLatency|Latencia de búsqueda|Segundos|Media|Promedio de latencia de búsqueda para el servicio de búsqueda|
-|SearchQueriesPerSecond|Consultas de búsqueda por segundo|CountPerSecond|Media|Consultas de búsqueda por segundo para el servicio de búsqueda|
-|ThrottledSearchQueriesPercentage|Porcentaje de consultas de búsqueda limitadas|Percent|Media|Porcentaje de consultas de búsqueda limitadas para el servicio de búsqueda|
+|SearchLatency|Latencia de búsqueda|Segundos|Media|Latencia promedio de búsqueda para el servicio de búsqueda de Hola|
+|SearchQueriesPerSecond|Consultas de búsqueda por segundo|CountPerSecond|Media|Consultas de búsqueda por segundo para el servicio de búsqueda de Hola|
+|ThrottledSearchQueriesPercentage|Porcentaje de consultas de búsqueda limitadas|Percent|Media|Porcentaje de consultas de búsqueda que se limitaran para servicio de búsqueda de Hola|
 
 ## <a name="microsoftservicebusnamespaces"></a>Microsoft.ServiceBus/namespaces
 
@@ -797,4 +797,4 @@ Azure Monitor proporciona varias maneras de interactuar con las métricas, como 
 ## <a name="next-steps"></a>Pasos siguientes
 * [Lea información sobre las métricas en Azure Monitor](monitoring-overview-metrics.md)
 * [Creación de alertas basadas en métricas](insights-receive-alert-notifications.md)
-* [Exportación de métricas a cuentas de almacenamiento, Event Hubs o Log Analytics](monitoring-overview-of-diagnostic-logs.md)
+* [Puede exportar las métricas toostorage, centro de eventos o análisis de registros](monitoring-overview-of-diagnostic-logs.md)

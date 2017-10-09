@@ -1,1 +1,1 @@
-Este tema usa como punto de inicio los recursos creados en [Creación de su primera función desde Azure Portal](../articles/azure-functions/functions-create-first-azure-function.md). Si aún no lo hecho, lleve a cabo estos pasos ahora para crear la aplicación de función.
+Este tema se utiliza como sus recursos de Hola de punto de partida creados en [crear la primera función de hello portal de Azure](../articles/azure-functions/functions-create-first-azure-function.md). Si aún no lo ha hecho, complete estos toocreate de pasos ahora la aplicación de la función.

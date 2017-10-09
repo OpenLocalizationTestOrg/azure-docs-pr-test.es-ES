@@ -1,6 +1,6 @@
 ---
-title: "Creación de claves suplentes mediante IDENTIDAD | Microsoft Docs"
-description: Aprenda a usar IDENTIDAD para crear claves suplentes en las tablas.
+title: las claves suplentes de aaaCreate mediante identidad | Documentos de Microsoft
+description: "Obtenga información acerca de cómo las claves suplentes de toouse identidad toocreate en las tablas."
 services: sql-data-warehouse
 documentationcenter: NA
 author: jrowlandjones
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 06/13/2017
 ms.author: jrj;barbkess
-ms.openlocfilehash: 3ab5d159e6eaeb830135fe134e108b0e4de4b7d6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 502cdd2b510b229b2a19c1f78b11862a7386ae3b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-surrogate-keys-by-using-identity"></a>Creación de claves suplentes mediante IDENTITY
 > [!div class="op_single_selector"]
@@ -33,10 +33,10 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-A muchos modeladores de datos les gusta crear claves suplentes en las tablas cuando diseñan modelos de almacenamiento de datos. Puede usar la propiedad IDENTITY para lograr este objetivo de manera sencilla y eficaz sin afectar al rendimiento de carga. 
+Muchos de los modeladores de datos, como las claves suplentes de toocreate en sus tablas cuando diseñan modelos de almacenamiento de datos. Puede usar tooachieve de propiedad de identidad de hello este objetivo simple y eficaz sin afectar al rendimiento de carga. 
 
 ## <a name="get-started-with-identity"></a>Introducción a IDENTITY
-Puede definir una tabla que tenga la propiedad IDENTITY al crear la tabla mediante una sintaxis similar a la de la siguiente instrucción:
+Puede definir una tabla como con la propiedad de identidad de hello cuando primero crear tabla de hello mediante la sintaxis que sea similar toohello siguiente instrucción:
 
 ```sql
 CREATE TABLE dbo.T1
@@ -50,15 +50,15 @@ WITH
 ;
 ```
 
-Luego puede usar `INSERT..SELECT` para rellenar la tabla.
+A continuación, puede usar `INSERT..SELECT` tabla de hello toopopulate.
 
 ## <a name="behavior"></a>Comportamiento
-La propiedad IDENTITY está diseñada para escalar horizontalmente en todas las distribuciones de almacenamiento de datos sin afectar al rendimiento de carga. Por consiguiente, la implementación de IDENTITY está orientada a la consecución de estos objetivos. En esta sección se resaltan los matices de la implementación para ayudarle a comprenderlos de manera más completa.  
+Hola propiedad IDENTITY es diseñada tooscale out en todas las distribuciones de Hola Hola almacenamiento de datos sin afectar al rendimiento de carga. Por lo tanto, la implementación de Hola de identidad es orientada a lograr estos objetivos. Esta sección resalta los matices de Hola de hello implementación toohelp entienda más completa.  
 
 ### <a name="allocation-of-values"></a>Asignación de valores
-La propiedad IDENTITY no garantiza el orden en que se asignan las claves suplentes, lo que refleja el comportamiento de SQL Server y Azure SQL Database. Pero, en Azure SQL Data Warehouse, la ausencia de garantías es más marcada. 
+Hola propiedad IDENTITY no garantiza el orden de hello en qué Hola se asignan los valores de suplente, que reflejan el comportamiento de Hola de SQL Server y base de datos de SQL Azure. Sin embargo, en el almacén de datos de SQL Azure, ausencia de Hola de garantía es mayor. 
 
-El ejemplo siguiente sirve de muestra:
+Hola siguiente ejemplo es una ilustración:
 
 ```sql
 CREATE TABLE dbo.T1
@@ -83,29 +83,29 @@ FROM dbo.T1;
 DBCC PDW_SHOWSPACEUSED('dbo.T1');
 ```
 
-En el ejemplo anterior, dos filas quedaron en la distribución 1. La primera fila tiene el valor suplente de 1 en la columna `C1` y la segunda fila tiene el valor suplente de 61. Estos dos valores se generaron con la propiedad IDENTITY. Pero la asignación de los valores no es contigua. Este comportamiento es así por diseño.
+En el anterior ejemplo de Hola, dos filas desembarquen en la distribución de 1. primera fila de Hello tiene el valor de suplente de Hola de 1 en la columna `C1`, y Hola segunda fila tiene el valor de suplente de Hola de 61. Estos dos valores generados por hello propiedad IDENTITY. Sin embargo, la asignación de Hola de valores de hello no es contiguo. Este comportamiento es así por diseño.
 
 ### <a name="skewed-data"></a>Datos sesgados 
-El intervalo de valores del tipo de datos se reparte uniformemente entre las distribuciones. Si una tabla distribuida adolece de datos sesgados, el intervalo de valores disponible para el tipo de datos se puede agotar antes de tiempo. Por ejemplo, si todos los datos terminan en una sola distribución, en la práctica, la tabla tiene acceso a únicamente la sexta parte de los valores del tipo de datos. Por este motivo, la propiedad IDENTITY se limita exclusivamente a los tipos de datos `INT` y `BIGINT`.
+intervalo de Hola de valores de tipo de datos de hello están repartidos por igual entre las distribuciones de Hola. Si se produce una tabla distribuida de datos sesgados, Hola, a continuación, el intervalo de valores disponibles toohello tipo de datos se puede agotar prematuramente. Por ejemplo, si todos los datos de hello terminan en una sola distribución, a continuación, eficazmente Hola tabla tiene acceso tooonly sesentavo de uno de los valores de Hola Hola del tipo de datos. Por esta razón, Hola propiedad de identidad se limita demasiado`INT` y `BIGINT` sólo los tipos de datos.
 
 ### <a name="selectinto"></a>SELECT..INTO
-Cuando se selecciona una columna IDENTITY existente en una nueva tabla, la nueva columna hereda la propiedad IDENTITY, a no ser que se cumpla alguna de las siguientes condiciones:
-- La instrucción SELECT contiene una combinación.
+Cuando se selecciona una columna de identidad existente en una tabla nueva, Hola nueva columna hereda propiedades de identidad de hello, a menos que una de hello condiciones siguientes es verdadera:
+- instrucción SELECT de Hello contiene una combinación.
 - Varias instrucciones SELECT se combinan mediante UNION.
-- La columna IDENTITY aparece más de una vez en la lista de SELECT.
-- La columna IDENTITY forma parte de una expresión.
+- columna de identidad de Hello aparece más de una vez en la lista de selección de Hola.
+- columna de identidad de Hello es parte de una expresión.
     
-Si ninguna de estas condiciones se cumple, la columna se crea como NOT NULL en lugar de heredar la propiedad IDENTITY.
+Si alguna de estas condiciones es true, columna Hola se crea NOT NULL en lugar de heredar la propiedad IDENTITY de Hola.
 
 ### <a name="create-table-as-select"></a>CREATE TABLE AS SELECT
-CREATE TABLE AS SELECT (CTAS) sigue el mismo comportamiento de SQL Server que se documenta para SELECT..INTO. Pero no se puede especificar una propiedad IDENTITY en la definición de columna de la parte `CREATE TABLE` de la instrucción. Tampoco se puede usar la función IDENTITY en la parte `SELECT` de la CTAS. Para rellenar una tabla, hay que usar `CREATE TABLE` para definir la tabla seguido de `INSERT..SELECT` para rellenarla.
+Crear tabla AS seleccione (CTAS) sigue Hola mismo comportamiento SQL Server que se documenta para SELECT... A. Sin embargo, no se puede especificar una propiedad de identidad en la definición de columna de Hola de hello `CREATE TABLE` forma parte de la instrucción de Hola. Tampoco puede utilizar función de identidad de hello en hello `SELECT` forma parte de hello CTAS. toopopulate una tabla, deberá toouse `CREATE TABLE` seguido de la tabla de hello toodefine `INSERT..SELECT` toopopulate lo.
 
 ## <a name="explicitly-insert-values-into-an-identity-column"></a>Inserción explícita de valores en una columna IDENTITY 
-SQL Data Warehouse admite la sintaxis `SET IDENTITY_INSERT <your table> ON|OFF`. Puede usarse esta sintaxis para insertar valores explícitamente en la columna IDENTITY.
+SQL Data Warehouse admite la sintaxis `SET IDENTITY_INSERT <your table> ON|OFF`. Puede usar este sintaxis tooexplicitly insertar los valores en la columna de identidad de Hola.
 
-A muchos modeladores de datos les gusta usar valores negativos predefinidos para determinadas filas en las dimensiones. Un ejemplo es el valor -1 de la fila de "miembro desconocido". 
+Muchos modeladores de datos como toouse predefinidos negativo para ciertos valores de filas en sus dimensiones. Un ejemplo es Hola -1 o fila de "miembro desconocido". 
 
-En el siguiente script se muestra cómo agregar explícitamente esta fila mediante SET IDENTITY_INSERT:
+script de Hola siguiente muestra cómo tooexplicitly agrega esta fila mediante el uso de SET IDENTITY_INSERT:
 
 ```sql
 SET IDENTITY_INSERT dbo.T1 ON;
@@ -126,12 +126,12 @@ FROM    dbo.T1
 
 ## <a name="load-data-into-a-table-with-identity"></a>Carga de datos en una tabla con IDENTITY
 
-La presencia de la propiedad IDENTITY tiene algunas implicaciones en el código de carga de datos. En esta sección se resaltan algunos patrones básicos para cargar datos en tablas mediante IDENTITY. 
+presencia de Hola de hello propiedad de identidad tiene algún código de carga de datos de tooyour implicaciones. En esta sección se resaltan algunos patrones básicos para cargar datos en tablas mediante IDENTITY. 
 
 ### <a name="load-data-with-polybase"></a>Carga de datos con PolyBase
-Para cargar datos en una tabla y generar una clave suplente mediante IDENTITY, cree la tabla y use INSERT..SELECT o INSERT..VALUES para realizar la carga.
+datos de tooload en una tabla y generar una clave suplente mediante el uso de identidad, crear tabla de hello y, a continuación, utilice INSERT... SELECT o INSERT... VALORES tooperform Hola carga.
 
-En el siguiente ejemplo se resalta el patrón básico:
+Hello en el ejemplo siguiente se resalta patrón básico de hello:
  
 ```sql
 --CREATE TABLE with IDENTITY
@@ -145,7 +145,7 @@ WITH
 )
 ;
 
---Use INSERT..SELECT to populate the table from an external table
+--Use INSERT..SELECT toopopulate hello table from an external table
 INSERT INTO dbo.T1
 (C2)
 SELECT  C2
@@ -160,28 +160,28 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 ```
 
 > [!NOTE] 
-> Actualmente no se puede usar `CREATE TABLE AS SELECT` al cargar datos en una tabla con una columna IDENTITY.
+> No es posible toouse `CREATE TABLE AS SELECT` actualmente al cargar datos en una tabla con una columna de identidad.
 > 
 
-Para más información sobre cómo cargar datos mediante la herramienta programa de copia masiva (BCP), vea los artículos siguientes:
+Para obtener más información sobre cómo cargar datos mediante el uso de la herramienta de programa de (copia masiva BCP) de copia masiva de hello, vea Hola siguientes artículos:
 
 - [Carga con PolyBase][]
 - [Procedimientos recomendados para PolyBase][]
 
 ### <a name="load-data-with-bcp"></a>Carga de datos con BCP
-BCP es una herramienta de línea de comandos que se puede usar para cargar datos en SQL Data Warehouse. Uno de sus parámetros (-E) controla el comportamiento de BCP al cargar datos en una tabla con una columna IDENTITY. 
+BCP es una herramienta de línea de comandos que puede utilizar datos de tooload en almacenamiento de datos de SQL. Uno de sus parámetros (-E) controles Hola comportamiento de BCP al cargar datos en una tabla con una columna de identidad. 
 
-Cuando se especifica -E, se conservan los valores contenidos en el archivo de entrada para la columna con IDENTITY. Si -E *no* se especifica, se omiten los valores de esta columna. Si no se incluye la columna IDENTITY, los datos se cargan con normalidad. Los valores se generan según la política de inicialización e incremento de la propiedad.
+Cuando se especifica -E, se conservan los valores de hello mantenidos en archivo de entrada de hello para la columna de hello con la identidad. Si es -E *no* se especifica, se omiten los valores de hello en esta columna. Si no se incluye la columna de identidad de hello, datos de Hola se cargan con normalidad. se generan valores de Hello según la directiva de incremento y el valor de inicialización de toohello de propiedad Hola.
 
-Para más información sobre cómo cargar datos mediante BCP, vea los artículos siguientes:
+Para obtener más información sobre cómo cargar datos mediante la utilidad BCP, vea Hola siguientes artículos:
 
 - [Carga con BCP][]
 - [BCP en MSDN][]
 
 ## <a name="catalog-views"></a>Vistas de catálogo
-SQL Data Warehouse admite la vista de catálogo `sys.identity_columns`. Esta vista puede usarse para identificar una columna que tiene la propiedad IDENTITY.
+Almacenamiento de datos SQL admite hello `sys.identity_columns` vista de catálogo. Esta vista puede ser tooidentify usa una columna que tiene la propiedad de identidad de Hola.
 
-Para ayudarle a comprender mejor el esquema de la base de datos, en este ejemplo se muestra cómo integrar `sys.identity_columns` con otras vistas de catálogo del sistema:
+toohelp se comprender mejor el esquema de base de datos de hello, este ejemplo se muestra cómo toointegrate `sys.identity_columns` con otras vistas de catálogo del sistema:
 
 ```sql
 SELECT  sm.name
@@ -202,12 +202,12 @@ AND     tb.name = 'T1'
 ```
 
 ## <a name="limitations"></a>Limitaciones
-La propiedad IDENTITY no se puede usar en los siguientes escenarios:
-- Cuando el tipo de datos de la columna no es INT ni BIGINT
-- Cuando la columna es también la clave de distribución
-- Cuando la tabla es una tabla externa 
+Hola propiedad IDENTITY no se puede usar en hello los escenarios siguientes:
+- En tipo de datos de columna de hello no es INT o BIGINT
+- Donde la columna de hello también es la clave de distribución de Hola
+- En la tabla hello es una tabla externa 
 
-No se admiten las siguientes funciones relacionadas en SQL Data Warehouse:
+Hola siguientes funciones relacionadas no se admite en el almacén de datos de SQL:
 
 - [IDENTITY()][]
 - [@@IDENTITY][]
@@ -219,22 +219,22 @@ No se admiten las siguientes funciones relacionadas en SQL Data Warehouse:
 
 ## <a name="tasks"></a>Tareas
 
-En esta sección se ofrecen algunos ejemplos de código que se pueden usar para realizar tareas comunes al trabajar con columnas IDENTITY.
+Esta sección proporciona ejemplos de código puede usar tareas comunes de tooperform cuando se trabaja con las columnas de identidad.
 
 > [!NOTE] 
-> La columna C1 es la de IDENTITY en todas las tareas siguientes.
+> Columna C1 es hello identidad Hola todas las siguientes tareas.
 > 
  
-### <a name="find-the-highest-allocated-value-for-a-table"></a>Búsqueda del valor más alto asignado en una tabla
-Use la función `MAX()` para determinar el valor más alto asignado en una tabla distribuida:
+### <a name="find-hello-highest-allocated-value-for-a-table"></a>Buscar el valor de hello más alto asignado para una tabla
+Hola de uso `MAX()` función toodetermine Hola valor más alto asignado para una tabla distribuida:
 
 ```sql
 SELECT  MAX(C1)
 FROM    dbo.T1
 ``` 
 
-### <a name="find-the-seed-and-increment-for-the-identity-property"></a>Búsqueda del valor de inicialización e incremento de la propiedad IDENTITY
-Puede usar las vistas de catálogo para detectar los valores de configuración de inicialización e incremento de identidad en una tabla mediante la siguiente consulta: 
+### <a name="find-hello-seed-and-increment-for-hello-identity-property"></a>Busque Hola inicialización e incremento Hola propiedad IDENTITY
+Puede usar Hola catálogo vistas toodiscover Hola identidad de incremento y valor de inicialización de valores de configuración para una tabla mediante Hola después de consulta: 
 
 ```sql
 SELECT  sm.name
@@ -254,7 +254,7 @@ AND     tb.name = 'T1'
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-* Para obtener más información sobre el desarrollo de tablas, vea [Introducción a las tablas][Overview], [Tipos de datos de tabla][Data Types], [Distribución de tablas][Distribute], [Indexación de tablas][Index], [Creación de particiones de tabla][Partition] y [Tablas temporales][Temporary]. 
+* toolearn más sobre el desarrollo de tablas, vea [información general de la tabla][Overview], [tipos de datos de tabla][Data Types], [distribuir una tabla] [ Distribute], [Una tabla de índice][Index], [crear particiones de una tabla][Partition], y [ Tablas temporales][Temporary]. 
 * Para más información sobre los procedimientos recomendados, vea [Procedimientos recomendados para SQL Data Warehouse][SQL Data Warehouse Best Practices].  
 
 <!--Image references-->

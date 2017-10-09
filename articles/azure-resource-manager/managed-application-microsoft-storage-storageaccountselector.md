@@ -1,6 +1,6 @@
 ---
-title: Elemento de interfaz de usuario StorageAccountSelector de aplicaciones administradas de Azure | Microsoft Docs
-description: Describe el elemento de la interfaz de usuario Microsoft.Storage.StorageAccountSelector para aplicaciones administradas de Azure
+title: "elemento de interfaz de usuario de StorageAccountSelector de aplicación administrado aaaAzure | Documentos de Microsoft"
+description: Describe Hola elemento de interfaz de usuario de Microsoft.Storage.StorageAccountSelector para administrar aplicaciones de Azure
 services: azure-resource-manager
 documentationcenter: na
 author: tabrezm
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/12/2017
 ms.author: tabrezm;tomfitz
-ms.openlocfilehash: 15e69c0deb4bce64b7413b557eb69db5165bde73
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a2c9545feed4c4afb3c64b30b42c94d5382a108d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="microsoftstoragestorageaccountselector-ui-element"></a>Elemento de interfaz de usuario Microsoft.Storage.StorageAccountSelector
 Un control para seleccionar una cuenta de almacenamiento nueva o existente. Use este elemento al [crear una aplicación administrada de Azure](managed-application-publishing.md).
@@ -48,11 +48,11 @@ Un control para seleccionar una cuenta de almacenamiento nueva o existente. Use 
 ```
 
 ## <a name="remarks"></a>Comentarios
-- Si se especifica, se valida automáticamente la unicidad de `defaultValue.name`. Si el nombre de cuenta de almacenamiento no es único, el usuario debe especificar otro nombre diferente o elegir una cuenta de almacenamiento existente.
-- El valor predeterminado de `defaultValue.type` es **Premium_LRS**.
+- Si se especifica, se valida automáticamente la unicidad de `defaultValue.name`. Si el nombre de cuenta de almacenamiento de hello no es único, usuario de hello debe especificar un nombre diferente o elija una cuenta de almacenamiento existente.
+- Hola valor predeterminado de `defaultValue.type` es **Premium_LRS**.
 - Los tipos no especificados en `constraints.allowedTypes` está oculto, mientras que los tipos no especificado en `constraints.excludedTypes` se muestran.
 Tanto `constraints.allowedTypes` como `constraints.excludedTypes` son opcionales, pero no se pueden usar simultáneamente.
-- Si el valor de `options.hideExisting` es **true**, el usuario no puede elegir una cuenta de almacenamiento existente. El valor predeterminado es **false**.
+- Si `options.hideExisting` es **true**, usuario de hello no puede elegir una cuenta de almacenamiento existente. es el valor predeterminado de Hello **false**.
 
 
 ## <a name="sample-output"></a>Salida de ejemplo
@@ -66,6 +66,6 @@ Tanto `constraints.allowedTypes` como `constraints.excludedTypes` son opcionales
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Para una introducción a las aplicaciones administradas, consulte la [introducción a las aplicaciones administradas de Azure](managed-application-overview.md).
-* Para ver una introducción sobre la creación de definiciones de interfaz de usuario, consulte [Introducción a CreateUiDefinition](managed-application-createuidefinition-overview.md).
+* Para una aplicación de toomanaged introducción, consulte [Introducción a la aplicación administrada de Azure](managed-application-overview.md).
+* Para obtener definiciones una interfaz de usuario de toocreating de introducción, vea [Introducción a CreateUiDefinition](managed-application-createuidefinition-overview.md).
 * Para ver una descripción de las propiedades comunes de los elementos de interfaz de usuario, consulte [Elementos CreateUiDefinition](managed-application-createuidefinition-elements.md).

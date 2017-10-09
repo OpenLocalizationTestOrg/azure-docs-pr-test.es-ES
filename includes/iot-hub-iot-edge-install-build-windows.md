@@ -1,26 +1,26 @@
-## <a name="install-the-prerequisites"></a>Instalación de los requisitos previos
+## <a name="install-hello-prerequisites"></a>Instalar requisitos previos de Hola
 
-1. Instale [Visual Studio 2015 o 2017](https://www.visualstudio.com). Puede usar la versión gratuita Community Edition si cumple los requisitos de concesión de licencias. No olvide incluir Visual C++ y el Administrador de paquetes NuGet.
+1. Instale [Visual Studio 2015 o 2017](https://www.visualstudio.com). Puede usar hello libre Community Edition si se cumplen los requisitos de licencia de Hola. Ser seguro tooinclude Visual C++ y el Administrador de paquetes de NuGet.
 
-1. Instale [git](http://www.git-scm.com) y asegúrese de que puede ejecutar git.exe desde la línea de comandos.
+1. Instalar [git](http://www.git-scm.com) y asegúrese de que puede ejecutar git.exe desde la línea de comandos de Hola.
 
-1. Instale [CMake](https://cmake.org/download/) y asegúrese de que puede ejecutar cmake.exe desde la línea de comandos. Se recomienda usar CMake versión 3.7.2 o posterior. El instalador **.msi** es la opción más sencilla en Windows. Agregue CMake a PATH al menos para el usuario actual cuando el instalador se lo solicite.
+1. Instalar [CMake](https://cmake.org/download/) y asegúrese de que puede ejecutar cmake.exe desde la línea de comandos de Hola. Se recomienda usar CMake versión 3.7.2 o posterior. Hola **.msi** installer es la opción más sencilla de hello en Windows. Agregar CMake toohello ruta de acceso para al menos Hola usuario actual cuando Hola instalador le preguntará.
 
-1. Instale [Python 2.7](https://www.python.org/downloads/release/python-27). Asegúrese de que agrega Python a su variable de entorno `PATH` en el **Panel de control -> Sistema -> Configuración avanzada del sistema -> Variables de entorno**.
+1. Instale [Python 2.7](https://www.python.org/downloads/release/python-27). Asegúrese de agregar Python tooyour `PATH` variable de entorno en **el Panel de Control -> sistema -> Opciones avanzadas configuración del sistema -> Variables de entorno**.
 
-1. En un símbolo del sistema, ejecute el siguiente comando para clonar el repositorio de GitHub de Azure IoT Edge en la máquina local:
+1. En un símbolo del sistema, ejecute hello siguiendo el equipo local del tooyour de repositorio de comando tooclone hello Azure IoT borde GitHub:
 
     ```cmd
     git clone https://github.com/Azure/iot-edge.git
     ```
 
-## <a name="how-to-build-the-sample"></a>Compilación del ejemplo
+## <a name="how-toobuild-hello-sample"></a>¿Cómo toobuild Hola ejemplo
 
-Ya puede compilar el runtime de IoT Edge y los ejemplos en la máquina local:
+Ahora puede compilar hello borde IoT en tiempo de ejecución y ejemplos en el equipo local:
 
 1. Abra un **símbolo del sistema para desarrolladores de VS2015** o un **símbolo del sistema para desarrolladores de VS2017**.
 
-1. Vaya a la carpeta raíz en la copia local del repositorio **iot-edge**.
+1. Desplazarse por las carpetas raíz de toohello en su copia local de hello **iot borde** repositorio.
 
 1. Ejecute el script de compilación como sigue:
 
@@ -28,7 +28,7 @@ Ya puede compilar el runtime de IoT Edge y los ejemplos en la máquina local:
     tools\build.cmd --disable-native-remote-modules
     ```
 
-Este script crea un archivo de solución de Visual Studio y compila la solución. Puede encontrar la solución de Visual Studio en la carpeta **build** de su copia local del repositorio **iot-edge**. Si desea compilar y ejecutar las pruebas unitarias, agregue el parámetro `--run-unittests`. Si desea compilar y ejecutar pruebas de extremo a extremo, agregue `--run-e2e-tests`.
+Este script crea un archivo de solución de Visual Studio y compile Hola solución. Encontrará la solución de Visual Studio de hello en hello **generar** carpeta de la copia local de hello **iot borde** repositorio. Si desea toobuild y ejecutar pruebas unitarias de hello, agregar hello `--run-unittests` parámetro. Si desea toobuild y ejecutar pruebas de hello final tooend, agregar hello `--run-e2e-tests`.
 
 > [!NOTE]
-> Cada vez que ejecute el script **build.cmd**, elimine y luego vuelva a crear la carpeta **build** en la carpeta raíz de la copia local del repositorio **iot-edge**.
+> Cada vez que ejecute hello **build.cmd** secuencia de comandos, elimina y, a continuación, vuelve a crear hello **compilar** carpeta raíz de Hola de su copia local de hello **iot borde** repositorio.

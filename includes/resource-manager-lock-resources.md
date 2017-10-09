@@ -1,13 +1,13 @@
-1. En la hoja Configuración del recurso, del grupo de recursos o de la suscripción que desea bloquear, seleccione **Bloqueos**.
+1. En la hoja de configuración de hello para el recurso de hello, al grupo de recursos o suscripción que desea toolock, seleccione **bloquea**.
    
       ![seleccionar bloqueo](./media/resource-manager-lock-resources/select-lock.png)
-2. Para agregar un bloqueo, seleccione **Agregar**. Si desea crear un bloqueo en un nivel primario, seleccione el elemento primario. El recurso seleccionado actualmente hereda el bloqueo del elemento primario. Por ejemplo, podría bloquear el grupo de recursos para aplicar un bloqueo a todos sus recursos.
+2. Seleccione tooadd un bloqueo, **agregar**. Si desea toocreate un bloqueo en el nivel primario, seleccione a miembro primario de Hola. recursos de Hello seleccionado actualmente hereda bloqueo Hola de hello primario. Por ejemplo, podría bloquear tooapply de grupo de recursos de hello un bloqueo tooall sus recursos.
    
       ![agregar bloqueo](./media/resource-manager-lock-resources/add-lock.png) 
-3. Asigne al bloqueo un nombre y un nivel. Opcionalmente, puede agregar notas que describan el bloqueo.
+3. Ofrecer un nivel de nombre y bloqueo de bloqueo Hola. Si lo desea, puede agregar notas que describen el bloqueo de Hola.
    
       ![establecer bloqueo](./media/resource-manager-lock-resources/set-lock.png) 
-4. Para eliminar el bloqueo, seleccione los puntos suspensivos y **Eliminar** en las opciones disponibles.
+4. bloqueo de hello toodelete, puntos suspensivos seleccione hello y **eliminar** de opciones disponibles de Hola.
    
       ![eliminar bloqueo](./media/resource-manager-lock-resources/delete-lock.png) 
 

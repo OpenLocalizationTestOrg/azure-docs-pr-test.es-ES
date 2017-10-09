@@ -1,6 +1,6 @@
 ---
-title: "Conmutación por recuperación de máquinas virtuales de VMware de Azure al sitio local | Microsoft Docs"
-description: "Aprenda a conmutar por recuperación al sitio local después de conmutar por error las máquinas virtuales de VMware y los servidores físicos a Azure."
+title: "aaaFailback máquinas virtuales de VMware desde Azure tooon-local | Documentos de Microsoft"
+description: "Obtenga información sobre errores toohello atrás al sitio local después de la conmutación por error de máquinas virtuales de VMware y servidores físicos tooAzure."
 services: site-recovery
 documentationcenter: 
 author: ruturaj
@@ -14,159 +14,159 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 03/27/2017
 ms.author: ruturajd
-ms.openlocfilehash: dde0bb6b4f6bc10afdd7d40adc6689d42b37de81
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 258f5a55252083135b2040e5a235fa1ffbf3b9d0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="fail-back-vmware-virtual-machines-and-physical-servers-to-the-on-premises-site"></a>Conmutación por recuperación de máquinas virtuales de VMware y servidores físicos al sitio local
+# <a name="fail-back-vmware-virtual-machines-and-physical-servers-toohello-on-premises-site"></a>Frente a errores atrás máquinas virtuales de VMware y el sitio local de servidores físicos toohello
 
 
-En este artículo se describe cómo conmutar por recuperación máquinas virtuales de Azure al sitio local. Siga las instrucciones que se describen aquí cuando esté listo para conmutar por recuperación máquinas virtuales de VMware o servidores físicos de Windows o Linux después de que haya vuelto a proteger las máquinas mediante esta [referencia](site-recovery-how-to-reprotect.md).
+Este artículo se describe cómo toofailback Azure máquinas virtuales desde el sitio de Azure toohello local. Siga las instrucciones de hello aquí cuando esté listo toofail realizar copias de sus máquinas virtuales de VMware o servidores físicos de Windows o Linux después de haber protegido volver a las máquinas con este [referencia](site-recovery-how-to-reprotect.md).
 
 >[!NOTE]
->Si usa el Portal de Azure clásico, consulte las instrucciones mencionadas [aquí](site-recovery-failback-azure-to-vmware-classic.md) para obtener una arquitectura mejorada de VMware a Azure y [aquí](site-recovery-failback-azure-to-vmware-classic-legacy.md) para obtener la arquitectura heredada
+>Si usas el portal de Azure clásico hello, consulte tooinstructions mencionado [aquí](site-recovery-failback-azure-to-vmware-classic.md) de arquitectura de tooAzure mejorada de VMware y [aquí](site-recovery-failback-azure-to-vmware-classic-legacy.md) para arquitectura de hello heredado
 
 ## <a name="overview"></a>Información general
-Los diagramas de esta sección muestran la arquitectura de conmutación por recuperación en este escenario.
+diagramas de Hello en esta sección muestran la arquitectura de conmutación por recuperación de Hola para este escenario.
 
-Cuando el servidor de procesos sea local y se esté usando una conexión de Azure ExpressRoute, use esta arquitectura:
+Cuando Hola servidor de procesos es local y se usa una conexión de ExpressRoute de Azure, use esta arquitectura:
 
 ![Diagrama de la arquitectura de ExpressRoute](./media/site-recovery-failback-azure-to-vmware-classic/architecture.png)
 
-Cuando el servidor de procesos esté en Azure y tenga una VPN o una conexión de ExpressRoute, use esta arquitectura:
+Cuando hello es el servidor de procesos en Azure y tienen una VPN o una conexión ExpressRoute, use esta arquitectura:
 
 ![Diagrama de la arquitectura de VPN](./media/site-recovery-failback-azure-to-vmware-classic/architecture2.png)
 
-Para ver la lista completa de puertos y el diagrama de la arquitectura de la conmutación por recuperación, consulte la imagen siguiente:
+Para obtener una lista completa de puertos y diagrama de arquitectura de conmutación por recuperación de hello, consulte toohello siguiente imagen:
 
 ![Lista de conmutación por error/recuperación de todos los puertos](./media/site-recovery-failback-azure-to-vmware-classic/Failover-Failback.png)
 
-Después de conmutar por error a Azure, conmuta por recuperación a su sitio local en tres fases:
+Después de que ha conmutado tooAzure, se producirá un error en sitio local de tooyour atrás en tres fases:
 
-* **Fase 1**: proteja de nuevo las máquinas virtuales de Azure de modo que comiencen a replicarse otra vez en las de VMware que se ejecutan en el sitio local.
-* **Fase 2**: una vez que las máquinas virtuales de Azure se estén replicando en el sitio local, ejecute una conmutación por error para conmutar por recuperación desde Azure.
-* **Fase 3**: después de que los datos se hayan conmutado por recuperación, vuelva a proteger las máquinas virtuales locales a las que conmutó por recuperación, para que comiencen a replicarse en Azure.
+* **Fase 1**: proteger máquinas virtuales de Azure de Hola para que inicien replicar máquinas virtuales de VMware toohello espera que se ejecutan en el sitio local.
+* **Fase 2**: una vez que las máquinas virtuales de Azure se tooyour replicados al sitio local, ejecutar una conmutación por error toofail copia de Azure.
+* **Fase 3**: cuando se produzca error volver los datos, proteger Hola máquinas virtuales locales que no pudo volver a para que se inicie replicar tooAzure.
 
-### <a name="fail-back-to-the-original-location-or-an-alternate-location"></a>Conmutación por recuperación a la ubicación original o a una ubicación alternativa
-Después de conmutar por error una máquina virtual de VMware, puede conmutar por recuperación a la misma máquina virtual de origen si aún existe en el entorno local. En este escenario solo se conmutarán por recuperación las diferencias.
+### <a name="fail-back-toohello-original-location-or-an-alternate-location"></a>Generar un error toohello atrás de ubicación original o una ubicación alternativa
+Después de conmutar una VM de VMware, puede producir un error toohello atrás el mismo origen de máquina virtual si todavía existe en local. En este escenario, solo los deltas de Hola se recuperarán tras los errores.
 
-Si conmutó por error servidores físicos, la conmutación por recuperación siempre se hace a una nueva máquina virtual de VMware. Antes de conmutar por recuperación una máquina física, tenga en cuenta lo siguiente:
-* Las máquinas físicas protegidas volverán como virtuales cuando se conmuten por recuperación de Azure a VMware. Si las máquinas físicas de Windows Server 2008 R2 SP1 están protegidas y conmutan por error a Azure, no se puede realizar la conmutación por recuperación. Las máquinas Windows Server 2008 R2 SP1 que se inicien como máquinas virtuales locales podrán realizar la conmutación por recuperación.
-* Asegúrese de detectar al menos un servidor de destino principal junto con los hosts ESX/ESXi a los que necesita conmutar por recuperación.
+Si produce un error a través de servidores físicos, la conmutación por recuperación siempre es tooa nueva VM de VMware. Antes de conmutar por recuperación una máquina física, tenga en cuenta lo siguiente:
+* Una máquina física protegida se devolverán como una máquina virtual cuando se conmuta de tooVMware de Azure. Una máquina física de Windows Server 2008 R2 SP1, si está protegido y conmutado por error tooAzure, no se recuperarán tras los errores. Una máquina de Windows Server 2008 R2 SP1 que se inició como una máquina virtual local será capaz de toofail back.
+* Asegúrese de que detectar al menos un servidor de destino maestro junto con hello hosts ESX/ESXi necesarios que necesita toofail nuevo a.
 
-Si conmuta por recuperación a la máquina virtual original, se necesita lo siguiente:
+Si se produce un error toohello atrás de la VM original, se necesita la siguiente de hello:
 
-* Si la máquina virtual está administrada por un servidor vCenter, el host ESX del destino principal debe tener acceso al almacén de datos de máquinas virtuales.
-* Si la máquina virtual está en un host ESX, pero no está administrada por vCenter, el disco duro de la máquina virtual debe estar en un almacén de datos accesible para el host de MT.
-* Si la máquina virtual está en un host ESX y no usa vCenter, debe completar la detección del host ESX de MT antes de volver a protegerla. Lo mismo se aplica si también conmuta por recuperación a servidores físicos.
-* Otra opción (si existe la máquina virtual local) es eliminarla antes de realizar una conmutación por recuperación. En este caso, la conmutación por recuperación crea una nueva máquina virtual en el mismo host que el host ESX de destino maestro.
+* Si hello máquina virtual está administrada por un servidor vCenter, hello ESX host del destino maestro debe tener el almacén de datos de access toohello máquinas virtuales.
+* Si hello VM está en un host ESX, pero no está administrada por vCenter, disco duro de Hola de hello VM debe ser en un almacén de datos que sea accesible desde el host de hello del MT.
+* Si la máquina virtual está en un host ESX y no usa vCenter, debería completar la detección de host ESX Hola de hello MT antes de que vuelva a proteger. Lo mismo se aplica si también conmuta por recuperación a servidores físicos.
+* Otra opción (si Hola local existe VM) es toodelete, antes de realizar una conmutación por recuperación. Conmutación por recuperación, a continuación, crea una nueva máquina virtual en mismo host como host ESX de destino maestro Hola de Hola.
 
-Cuando se conmuta por recuperación a una ubicación alternativa, los datos se recuperan en el mismo almacén de datos y el mismo host ESX que los usados por el servidor de destino principal local.
+Cuando se produce un error de ubicación alternativa tooan atrás, datos de hello están toohello recuperada mismo hello y almacén de datos mismo host ESX usada por el servidor de destino maestro local Hola.
 
 ## <a name="prerequisites"></a>Requisitos previos
-* Para conmutar por recuperación máquinas virtuales de VMware y servidores físicos, necesita un entorno de VMware. No se admite la conmutación por recuperación a un servidor físico.
-* Para realizar la conmutación por recuperación, debe haber creado una red de Azure cuando configuró inicialmente la protección. La conmutación por recuperación necesita una conexión VPN o ExpressRoute desde la red de Azure, en la que se encuentran las máquinas virtuales de Azure, hasta el sitio local.
-* Si las máquinas virtuales que desea conmutar por recuperación las administra un servidor vCenter, asegúrese de tener los permisos necesarios para la detección de máquinas virtuales en servidores vCenter. Para obtener más información, consulte [Replicación de máquinas virtuales de VMware y servidores físicos en Azure con Azure Site Recovery](site-recovery-vmware-to-azure-classic.md).
-* Si existen instantáneas en una máquina virtual, la reprotección dará error. Puede eliminar las instantáneas o los discos.
+* toofail back máquinas virtuales de VMware y servidores físicos, necesita un entorno de VMware. Errores de back-tooa servidor físico no es compatible.
+* toofail nuevo, debe haber creado una red de Azure cuando configura inicialmente la protección. Conmutación por recuperación necesita una conexión VPN o ExpressRoute de hello Azure red en el que Hola máquinas virtuales de Azure son toohello encuentra un sitio local.
+* Si hello las máquinas virtuales que desea toofail copias tooare administrado por un servidor vCenter, asegúrese de que dispone de permisos de hello necesario para la detección de máquinas virtuales en servidores vCenter. Para obtener más información, consulte [tooAzure de servidores físicos con Azure Site Recovery y de máquinas virtuales de VMware replicar](site-recovery-vmware-to-azure-classic.md).
+* Si existen instantáneas en una máquina virtual, la reprotección dará error. Puede eliminar las instantáneas de Hola o discos de Hola.
 * Antes de realizar conmutación por recuperación, cree estos componentes:
-  * **Cree un servidor de procesos en Azure**. Este componente es una máquina virtual de Azure que creará y mantendrá en ejecución durante la conmutación por recuperación. Puede eliminar la máquina virtual una vez completada la operación.
-  * **Cree un servidor de destino maestro**: este servidor envía y recibe datos de conmutación por recuperación. El servidor de administración que creó de forma local tiene instalado de forma predeterminada un servidor de destino principal. Sin embargo, según el volumen de tráfico conmutado por recuperación, puede que deba crear un servidor de destino principal distinto para esta operación.
-  * Para crear un servidor de destino principal adicional que se ejecute en Linux, configure la máquina virtual de Linux antes de instalar al servidor de destino principal, como se describe más adelante.
-* El servidor de configuración es necesario localmente cuando realiza una conmutación por recuperación. Durante la conmutación por recuperación, la máquina virtual debe encontrarse en la base de datos del servidor de configuración. Si la base de datos del servidor de configuración no contiene ninguna máquina virtual, no se puede realizar la conmutación por recuperación. Por lo tanto, asegúrese de realizar copias de seguridad programadas periódicas del servidor. En caso de desastre, tiene que restaurarla con la misma dirección IP para que funcione la conmutación por recuperación.
-* Establezca la opción disk.enableUUID=true de **Parámetros de configuración** de la máquina virtual de destino principal en VMware. Si la fila no existe, agréguela. Esta configuración es necesaria para proporcionar un identificador único universal (UUID) coherente para el archivo de disco de la máquina virtual (VMDK) para que este se monte correctamente.
-* Observe si se muestra la condición "Master target server cannot be storage vMotioned" (El servidor de destino principal no puede almacenarse en vMotion), que puede provocar un error en la conmutación por recuperación. La máquina virtual no puede iniciarse porque no tiene disponibles los discos.
-* Agregue una unidad, llamada unidad de retención, en el servidor de destino principal. Agregue un nuevo disco y formatee la unidad.
+  * **Cree un servidor de procesos en Azure**. Este componente es una máquina virtual de Azure que creará y mantendrá en ejecución durante la conmutación por recuperación. Puede eliminar Hola VM una vez completada la conmutación por recuperación.
+  * **Crear un servidor de destino maestro**: servidor de destino maestro Hola envía y recibe datos de conmutación por recuperación. servidor de administración de Hola que había creada de forma local tiene un servidor de destino maestro que se instala de forma predeterminada. Sin embargo, según volumen Hola de tráfico de conmutar por recuperación, deberá toocreate un servidor de destino maestro independiente de conmutación por recuperación.
+  * toocreate un servidor de destino maestro adicional que se ejecuta en Linux, configure Hola Linux VM antes de instalar el servidor de destino maestro de hello, tal y como se describe más adelante.
+* El servidor de configuración es necesario localmente cuando realiza una conmutación por recuperación. Durante la conmutación por recuperación, máquina virtual de hello debe existir en la base de datos del servidor de configuración de Hola. Si la base de datos del servidor de configuración de hello no contiene ninguna máquina virtual, no se puede realizar la conmutación por recuperación. Por lo tanto, asegúrese de realizar copias de seguridad programadas periódicas del servidor. En un desastre, debe toorestore con hello direcciones IP mismo funciona dicha conmutación por recuperación.
+* Establecer configuración de hello disk.enableUUID=true en **parámetros de configuración** del maestro de Hola de máquina virtual de VMware de destino. Si la fila no existe, agréguela. Esta opción es tooprovide requiere un archivo de disco (VMDK) coherente de identificador único universal (UUID) toohello máquina virtual donde se montó correctamente.
+* Tenga en cuenta un "maestro de servidor de destino no puede ser vMotioned de almacenamiento" condición, lo que puede producir hello toofail de conmutación por recuperación. Hola máquina virtual no puede iniciarse porque discos hello no se realizan tooit disponible.
+* Agregar una unidad, llamada a una unidad de retención, en el servidor de destino maestro Hola. Agregue un disco y formatear la unidad de Hola.
 
 ## <a name="failback-policy"></a>Directiva de conmutación por recuperación
-Para volver a replicar en el entorno local, necesitará una directiva de conmutación por recuperación. La directiva se crea automáticamente al crear una directiva de dirección de avance y se asocia automáticamente con el servidor de configuración. Esta directiva no es editable y tiene la siguiente configuración de replicación:
+tooreplicate atrás tooon local, necesita una directiva de conmutación por recuperación. Directiva de Hola se crea automáticamente cuando se crea una directiva de dirección hacia delante y se asocia automáticamente con el servidor de configuración de Hola. Esta directiva no es editable Directiva de Hello tiene Hola después de la configuración de replicación:
 
 * Umbral RPO = 15 minutos
 * Retención de punto de recuperación = 24 horas
 * Frecuencia de las instantáneas coherentes con la aplicación = 60 minutos
 
- ![Configuración de replicación de la directiva de conmutación por recuperación](./media/site-recovery-failback-azure-to-vmware-new/failback-policy.png)
+ ![Configuración de replicación de la directiva de conmutación por recuperación de Hola](./media/site-recovery-failback-azure-to-vmware-new/failback-policy.png)
 
 ## <a name="set-up-a-process-server-in-azure"></a>Configuración de un servidor de procesos en Azure
-Instale un servidor de procesos en Azure para que las máquinas virtuales de Azure puedan devolver los datos a un servidor de destino principal local.
+Instale un servidor de proceso de Azure para que las máquinas virtuales de Azure de hello pueda enviar Hola datos atrás toohello local de servidor de destino maestro.
 
-Si ha protegido las máquinas virtuales como recursos clásicos (es decir, la máquina virtual recuperada en Azure se creó usando el modelo de implementación clásico), necesitará un servidor de procesos clásico en Azure. Si se han recuperado las máquinas virtuales con Azure Resource Manager como el tipo de implementación, el servidor de procesos debe tener el administrador de recursos como el tipo de implementación. El tipo de implementación se selecciona mediante la red virtual de Azure en la que se implementa el servidor de procesos.
+Si ha protegido las máquinas virtuales como recursos clásicos (es decir, hello recupera VM en Azure es una máquina virtual que se creó mediante el modelo de implementación clásica de hello), necesitará un servidor de proceso de Azure. Si se han recuperado hello las máquinas virtuales con Azure Resource Manager como tipo de implementación de hello, Hola servidor de proceso debe tener el Administrador de recursos como tipo de implementación de Hola. Hello tipo de implementación se selecciona por hello Azure red virtual que se implementa Hola servidor de procesos.
 
-1. En **Almacén** > **Configuración** > **Infraestructura de Site Recovery** (en **Administrar**) > **Servidores de configuración** (en **For VMware and Physical Machines** [Para VMware y máquinas físicas]), seleccione el servidor de configuración.
+1. En **almacén** > **configuración** > **infraestructura de recuperación de sitios** (en **administrar**) > **Servidores de configuración** (en **para VMware y máquinas físicas**), seleccione servidor de configuración de Hola.
 2. Haga clic en **Servidor de procesos**.
 
   ![Botón Servidor de procesos](./media/site-recovery-failback-azure-to-vmware-classic/add-processserver.png)
-3. Elija la opción de implementación del servidor de procesos **Deploy a failback process server in Azure** (Implementación de un servidor de procesos de conmutación por recuperación en Azure).
-4. Seleccione la suscripción en la que se han recuperado las máquinas virtuales.
-5. Seleccione la red de Azure en la que se han recuperado las máquinas virtuales. El servidor de procesos debe estar en la misma red para que las máquinas virtuales recuperadas y el servidor de procesos puedan comunicarse.
-6. Si ha seleccionado una red de *modelo de implementación clásica*, cree una máquina virtual con Azure Marketplace y después instale en ella el servidor de procesos.
+3. Elija toodeploy Hola servidor de procesos como **implementar un servidor de procesos en Azure de conmutación por recuperación**.
+4. Seleccione la suscripción de Hola que se han recuperado hello las máquinas virtuales a.
+5. Seleccione Hola red de Azure que se han recuperado hello las máquinas virtuales a. Hola toobe de necesidades de servidor de procesos en hello que igual de red para que Hola recupera las máquinas virtuales y hello servidor de procesos se pueden comunicar.
+6. Si ha seleccionado un *modelo de implementación clásica* de red, crear una máquina virtual a través de hello Azure Marketplace y después instalar Hola servidor de procesos en ella.
 
- ![Ventana "Agregar servidores de procesos"](./media/site-recovery-failback-azure-to-vmware-classic/add-classic.png)
+ ![ventana de "Agregar servidor de procesos" Hello](./media/site-recovery-failback-azure-to-vmware-classic/add-classic.png)
 
- Dado que está creando el servidor de procesos, preste atención a lo siguiente:
- * El nombre de la imagen es *Microsoft Azure Site Recovery Process Server V2*(Servidor de procesos de Microsoft Azure Site Recovery, versión 2). Seleccione **Clásico** como el modelo de implementación.
+ Tal y como se va a crear servidor de procesos de Hola, preste siguiente toohello de atención:
+ * Hola nombre de imagen de hello es *recuperación de sitio de Microsoft Azure proceso servidor V2*. Seleccione **clásico** como modelo de implementación de Hola.
 
-       ![Select "Classic" as the Process Server deployment model](./media/site-recovery-failback-azure-to-vmware-classic/templatename.png)
- * Instale el servidor de procesos siguiendo las instrucciones de [Replicación de máquinas virtuales de VMware y servidores físicos en Azure con Azure Site Recovery](site-recovery-vmware-to-azure-classic.md).
-7. Si selecciona la red de Azure *Resource Manager*, implemente el servidor de procesos indicando la siguiente información:
+       ![Select "Classic" as hello Process Server deployment model](./media/site-recovery-failback-azure-to-vmware-classic/templatename.png)
+ * Hola servidor de proceso correspondiente toohello las instrucciones de instalación en [tooAzure de servidores físicos con Azure Site Recovery y de máquinas virtuales de VMware replicar](site-recovery-vmware-to-azure-classic.md).
+7. Si selecciona hello *el Administrador de recursos* Azure de red, implementar Hola proceso servidor proporcionando Hola siguiente información:
 
-  * El nombre del grupo de recursos en el que desea implementar el servidor.
-  * El nombre del servidor.
-  * Un nombre de usuario y una contraseña para iniciar sesión en el servidor.
-  * La cuenta de almacenamiento en la que desea implementar el servidor.
-  * La subred y la interfaz de red a las que quiere conectarla.
+  * nombre de Hola Hola del grupo de recursos que desea que el servidor hello toodeploy
+  * nombre de saludo del servidor de Hola
+  * Un nombre de usuario y una contraseña para iniciar sesión en el servidor de toohello
+  * cuenta de almacenamiento de Hola que desea que el servidor hello toodeploy
+  * subred de Hola y de interfaz de red de Hola que desea tooconnect tooit
    >[!NOTE]
-   >Debe crear su propia [interfaz de red](../virtual-network/virtual-networks-multiple-nics.md) (NIC) y seleccionarla durante la implementación del servidor de procesos.
+   >Debe crear su propio [interfaz de red](../virtual-network/virtual-networks-multiple-nics.md) (NIC) y selecciónelo durante la implementación de servidor de procesos de Hola.
 
-    ![Escribir la información en el cuadro de diálogo "Agregar servidor de procesos"](./media/site-recovery-failback-azure-to-vmware-classic/psinputsadd.png)
+    ![Escriba información en el cuadro de diálogo "Agregar servidor de procesos" hello](./media/site-recovery-failback-azure-to-vmware-classic/psinputsadd.png)
 
-8. Haga clic en **Aceptar**. Esta acción desencadena un trabajo que crea una máquina virtual con el tipo de implementación de Resource Manager durante la instalación del servidor de procesos. Para registrar el servidor en el servidor de configuración, ejecute el programa de instalación dentro de la máquina virtual siguiendo las instrucciones de [Replicación de máquinas virtuales de VMware y servidores físicos en Azure con Azure Site Recovery](site-recovery-vmware-to-azure-classic.md). Se desencadenará también un trabajo para implementar el servidor de procesos.
+8. Haga clic en **Aceptar**. Esta acción desencadena un trabajo que crea una máquina de virtual del tipo de implementación de administrador de recursos durante la instalación del servidor de procesos de Hola. tooregister hello toohello Configuración servidor, el programa de instalación de ejecución Hola dentro de Hola VM siguiendo las instrucciones de hello en [tooAzure de servidores físicos con Azure Site Recovery y de máquinas virtuales de VMware replicar](site-recovery-vmware-to-azure-classic.md). También se desencadena una Hola de toodeploy servidor de procesos de trabajo.
 
-  El servidor de procesos aparece en la pestaña **Servidores de configuración** > **Servidores asociados** > **Servidores de procesos**.
+  Hello servidor de proceso aparece en hello **servidores de configuración** > **asociados servidores** > **servidores de procesos** ficha.
 
     ![](./media/site-recovery-failback-azure-to-vmware-new/pslistingincs.png)
 
     > [!NOTE]
-    > El servidor de procesos no está visible en **Propiedades de la máquina virtual**. Solo está visible en la pestaña **Servidores** del servidor de administración en el que está registrado. Puede tardar entre 10 y 15 minutos en aparecer el servidor de procesos.
+    > Hello servidor de procesos no está visible en **propiedades de la máquina virtual**. Está visible solo en hello **servidores** ficha en el servidor de administración de Hola que esté registrada en. Pueden tardar 10 minutos too15 hello tooappear de servidor de procesos.
 
 
-## <a name="set-up-the-master-target-server-on-premises"></a>Configuración del servidor de destino maestro local
-El servidor de destino maestro recibe los datos de conmutación por recuperación. El servidor se instala automáticamente en el servidor de administración local, pero si va a conmutar por recuperación muchos datos, puede que tenga que configurar un servidor de destino principal adicional. Para configurar un servidor de destino maestro local, haga lo siguiente:
+## <a name="set-up-hello-master-target-server-on-premises"></a>Configurar Hola destino maestro servidor local
+servidor de destino maestro Hola recibe datos de conmutación por recuperación de saludo. servidor Hola se instala automáticamente en el servidor de administración local de hello, pero si está fallando volver demasiados datos, tendrá que tooset de un servidor de destino maestro adicionales. tooset seguridad un patrón tienen como destino server local, Hola siguientes:
 
 > [!NOTE]
-> Para configurar un servidor de destino principal en Linux, vaya al procedimiento siguiente. Use solo el sistema operativo mínimo CentOS 6.6 como el sistema operativo de destino principal.
+> tooset un servidor de destino maestro en Linux, omitir el procedimiento siguiente toohello. Usar solo CentOS 6.6 sistema operativo mínimo como Hola SO de destino maestro.
 
-1. Si está configurando el servidor de destino principal en Windows, abra la página de inicio rápido de la máquina virtual en la que está instalando el servidor de destino principal.
-2. Descargue el archivo de instalación del Asistente para instalación unificada de Azure Site Recovery.
-3. Ejecute el programa de instalación y, en **Antes de comenzar**, seleccione **Add additional process servers to scale out deployment** (Agregar servidores de procesos adicionales para el escalado horizontal de la implementación).
-4. Complete el asistente tal y como hizo cuando [instaló el servidor de administración](site-recovery-vmware-to-azure-classic.md). En la página **Configuration Server Details** (Detalles del servidor de configuración), especifique la dirección IP de este servidor de destino principal y una frase de contraseña para acceder a la máquina virtual.
+1. Si está configurando el servidor de destino maestro de hello en Windows, abra la página de inicio rápido de Hola de máquina virtual que se está instalando el servidor de destino maestro Hola Hola.
+2. Descargue el archivo de instalación de hello para el Asistente para configuración de Azure Site Recovery unificado de Hola.
+3. Ejecute el programa de instalación de hello y, en **antes de comenzar**, seleccione **agregar tooscale de servidores de procesos adicional horizontalmente la implementación**.
+4. Asistente de hello completa en hello misma manera que cuando se [configurar el servidor de administración de hello](site-recovery-vmware-to-azure-classic.md). En hello **detalles del servidor de configuración** página, especifique Hola dirección IP del servidor de destino maestro de Hola y escriba un Hola de tooaccess VM de frase de contraseña.
 
-### <a name="set-up-a-linux-vm-as-the-master-target-server"></a>Configuración de una máquina virtual de Linux como servidor de destino maestro
-Para configurar el servidor de administración que ejecuta el servidor de destino principal como una máquina virtual de Linux, instale el sistema operativo mínimo CentOS 6.6. A continuación, recupere los identificadores de SCSI para todos los discos duros SCSI, instale paquetes adicionales y aplique cambios personalizados.
+### <a name="set-up-a-linux-vm-as-hello-master-target-server"></a>Configurar una VM de Linux como servidor de destino maestro de Hola
+tooset de servidor de administración de hello ejecutando el servidor de destino maestro hello como una VM de Linux, instale Hola CentOS 6.6 mínima para el sistema operativo. A continuación, recuperar los Id. de SCSI de Hola para todos los discos duros SCSI, instalar algunos paquetes adicionales y aplicar algunos cambios personalizados.
 
 #### <a name="install-centos-66"></a>Instalación de CentOS 6.6
 
-1. Instale el sistema operativo mínimo CentOS 6.6 en la máquina virtual del servidor de administración. Guarde la imagen ISO en una unidad de DVD y arranque el sistema. Omita la comprobación de medios físicos. Seleccione **Inglés de Estados Unidos** como el idioma, elija **Basic Storage Devices** (Dispositivos de almacenamiento básico), compruebe que el disco duro no tenga información importante, haga clic en **Sí** y descarte los datos. Escriba el nombre de host del servidor de administración y seleccione el adaptador de red del servidor.  En el cuadro de diálogo **Editing System** (Sistema de edición), seleccione **Conectar automáticamente** y agregue una dirección IP estática, una red y parámetros de configuración de DNS. Especifique una zona horaria. Para tener acceso al servidor de administración, escriba la contraseña raíz.
-2. Cuando se le pregunte por el tipo de instalación que quiere, seleccione **Create Custom Layout** (Crear diseño personalizado) como partición. Haga clic en **Siguiente**. Seleccione **Libre** y, a continuación, haga clic en **Crear**. Cree **/**, **/var/crash** y **/home partitions** con **FS Type:** **ext4**. Cree la partición de intercambio como **FS Type: swap**(Tipo FS: intercambio).
-3. Si se encuentran dispositivos ya existentes, aparecerá un mensaje de advertencia. Haga clic en **Formato** para formatear la unidad con la configuración de partición. Haga clic en **Write change to disk** (Escribir cambios en el disco) para aplicar los cambios de partición.
-4. Seleccione **Install boot loader (Instalar cargador de arranque)** > **Siguiente** para instalar el cargador de arranque en la partición raíz.
-5. Cuando la instalación se haya completado, haga clic en **Reiniciar**.
+1. Instalar sistema operativo mínimo de hello CentOS 6.6 en máquina virtual del servidor de administración de Hola. Mantener Hola ISO en una unidad de DVD y Hola sistema de arranque. Omitir la comprobación de medios de Hola. Seleccione **inglés de Estados Unidos** como lenguaje de hello, seleccione **básica de los dispositivos de almacenamiento**, compruebe que Hola unidad de disco duro no tiene ningún dato importante, haga clic en **Sí**y se eliminará cualquier dato. Escriba nombre de host de Hola Hola del servidor de administración y seleccione el adaptador de red del servidor de Hola.  Hola **sistema de edición** cuadro de diálogo, seleccione **conectarse automáticamente**y, a continuación, agregue una dirección IP estática, la red y la configuración DNS. Especifique una zona horaria. tooaccess Hola servidor de administración, escriba la contraseña de la raíz de Hola.
+2. Cuando se le pregunte qué tipo de instalación que desea, seleccione **crear diseño personalizado** como partición de Hola. Haga clic en **Siguiente**. Seleccione **Libre** y, a continuación, haga clic en **Crear**. Cree **/**, **/var/crash** y **/home partitions** con **FS Type:** **ext4**. Crear la partición de intercambio de hello como **FS tipo: intercambio**.
+3. Si se encuentran dispositivos ya existentes, aparecerá un mensaje de advertencia. Haga clic en **formato** unidad de hello tooformat con valores de la partición de Hola. Haga clic en **escritura cambiar toodisk** cambios en las particiones tooapply Hola.
+4. Seleccione **cargador de arranque de instalación** > **siguiente** tooinstall cargador de arranque de hello en la partición raíz Hola.
+5. Una vez completada la instalación de hello, haga clic en **reiniciar**.
 
-#### <a name="retrieve-the-scsi-ids"></a>Recuperación de los id. SCSI
+#### <a name="retrieve-hello-scsi-ids"></a>Recuperar los Id. de SCSI de Hola
 
-1. Después de la instalación, recupere los identificadores SCSI de cada disco duro SCSI de la máquina virtual. Para ello, apague la máquina virtual del servidor de administración. En las propiedades de la máquina virtual en VMware, haga clic con el botón derecho en la entrada de la máquina virtual > **Editar configuración** > **Opciones**.
-2. Seleccione **Avanzadas** > **General item** (Elemento general) y haga clic en **Configuration Parameters** (Parámetros de configuración). Esta opción no estará disponible cuando se ejecute la máquina. Para que la opción esté disponible, debe apagar la máquina.
-3. Realice cualquiera de las siguientes acciones:
- * Si existe la fila **disk.EnableUUID**, asegúrese de que el valor esté establecido en **True** (distingue mayúsculas de minúsculas). Si el valor ya está establecido en True, puede cancelar y probar el comando SCSI en un sistema operativo invitado después de arrancar.
- * Si la fila **disk.EnableUUID** no existe, haga clic en **Agregar fila** y agréguela con el valor **True**. No utilice comillas dobles.
+1. Después de la instalación de hello, recuperar los Id. de SCSI de Hola para cada disco duro SCSI Hola máquina virtual. toodo apaga por lo tanto, de la máquina virtual del servidor de administración de Hola. En Propiedades de máquina virtual de hello en VMware, haga clic en entrada de la máquina virtual de hello > **modificar configuración** > **opciones**.
+2. Seleccione **Avanzadas** > **General item** (Elemento general) y haga clic en **Configuration Parameters** (Parámetros de configuración). Esta opción no está disponible cuando se está ejecutando la máquina de Hola. Para la opción de hello toobe disponible, debe cerrarse máquina Hola.
+3. Realice una de las siguientes de hello:
+ * Si hello fila **disco. EnableUUID** existe, asegúrese de que el valor de Hola se establece demasiado**True** (con distinción entre mayúsculas y minúsculas). Si el valor de Hola se ha establecido tooTrue, puede cancelar y probar el comando de SCSI de hello dentro de un sistema operativo invitado después de arrancar.
+ * Si hello fila **disco. EnableUUID** no existe, haga clic en **Agregar fila**y, a continuación, agréguelo con hello **True** valor. No utilice comillas dobles.
 
 #### <a name="install-additional-packages"></a>Instalación de paquetes adicionales
 Descargue e instale los paquetes adicionales.
 
-1. Asegúrese de que el servidor de destino maestro esté conectado a Internet.
-2. Para descargar e instalar 15 paquetes desde el repositorio de CentOS, ejecute este comando: `# yum install –y xfsprogs perl lsscsi rsync wget kexec-tools`.
-3. Si las máquinas de origen que va a proteger ejecutan Linux con el sistema de archivos Reiser o XFS en el dispositivo raíz o de arranque, descargue e instale paquetes adicionales de la manera siguiente:
+1. Asegúrese de que el servidor de destino maestro hello es toohello conectado Internet.
+2. toodownload y 15 paquetes de instalación del repositorio de CentOS hello, ejecute este comando: `# yum install –y xfsprogs perl lsscsi rsync wget kexec-tools`.
+3. Si las máquinas de origen Hola protege ejecutan Linux con un Reiser o XFS filesystem para dispositivo de arranque o raíz de hello, descargue e instale paquetes adicionales como se indica a continuación:
 
    * \# cd /usr/local
    * \# wget [http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/kmod-reiserfs-0.0-1.el6.elrepo.x86_64.rpm](http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/kmod-reiserfs-0.0-1.el6.elrepo.x86_64.rpm)
@@ -174,72 +174,72 @@ Descargue e instale los paquetes adicionales.
    * \#rpm –ivh kmod-reiserfs-0.0-1.el6.elrepo.x86_64.rpm reiserfs-utils-3.6.21-1.el6.elrepo.x86_64.rpm
    * \#wget [http://mirror.centos.org/centos/6.6/os/x86_64/Packages/xfsprogs-3.1.1-16.el6.x86_65.rpm](http://mirror.centos.org/centos/6.6/os/x86_64/Packages/xfsprogs-3.1.1-16.el6.x86_65.rpm)
    * \#rpm –ivh xfsprogs-3.1.1-16.el6.x86_64.rpm
-   * \# yum install device-mapper-multipath (se requiere para habilitar paquetes de múltiples rutas en el servidor de destino principal)
+   * \#yum instalar (tooenable necesario paquetes de múltiples rutas de acceso en el servidor de destino maestro de hello) de dispositivo asignador-múltiples rutas
 
 #### <a name="apply-custom-changes"></a>Aplicación de cambios personalizados
-Después de haber completado los pasos posteriores a la instalación y haber instalado los paquetes, aplique los cambios personalizados realizando estos pasos:
+Después de haber completado los pasos posteriores a la instalación de Hola y paquetes de saludo instalado, se aplican cambios personalizados haciendo Hola siguiente:
 
-1. Copie al binario de RHEL 6-64 Unified Agent en la máquina virtual. Ejecute este comando para descomprimir el archivo binario: `tar –zxvf <file name>`.
-2. Para conceder permisos, ejecute este comando: `# chmod 755 ./ApplyCustomChanges.sh`.
-3. Ejecute el siguiente script: `# ./ApplyCustomChanges.sh`. Ejecútelo una sola vez. Después de que el script se haya ejecutado correctamente, reinicie el servidor.
+1. Copie Hola RHEL 6-64 unificado agente binario toohello máquina virtual. Hola de toountar binario, ejecute este comando: `tar –zxvf <file name>`.
+2. permisos de toogive, ejecute este comando: `# chmod 755 ./ApplyCustomChanges.sh`.
+3. Ejecución hello después de la secuencia de comandos: `# ./ApplyCustomChanges.sh`. Ejecútelo una sola vez. Una vez que se ejecuta correctamente, reinicie el servidor de Hola.
 
-## <a name="run-the-failback"></a>Ejecución de la conmutación por recuperación
-### <a name="reprotect-the-azure-vms"></a>Reprotección de las máquinas virtuales de Azure
-1. En **Almacén** > **Elementos replicados**, haga clic con el botón derecho en máquina virtual que ha sido objeto de la conmutación por error y seleccione **Reproteger**.
-2. En la hoja, puede ver que la dirección de protección **De Azure a local** ya está seleccionada.
-3. En **Servidor de destino maestro** y **Servidor de procesos**, seleccione el servidor de destino maestro local y el servidor de procesos de la máquina virtual de Azure.
-4. Seleccione el almacén de datos en el que desea recuperar los discos en el entorno local. Use esta cuando elimine la máquina virtual local y sea necesario crear discos nuevos. Omita esta opción si los discos ya existen, pero debe especificar un valor.
-5. Utilice una unidad de retención para detener los puntos en el tiempo cuando la máquina virtual se replica en local. A continuación se enumeran algunos criterios de una unidad de retención. Sin estos criterios no se muestra la unidad para el servidor de destino maestro.
+## <a name="run-hello-failback"></a>Ejecute hello conmutación por recuperación
+### <a name="reprotect-hello-azure-vms"></a>Vuelva a proteger máquinas virtuales de Azure de Hola
+1. En **almacén**, en **replican elementos**, haga clic en hello máquina virtual que ha se ha conmutado por error y, a continuación, seleccione **volver a proteger**.
+2. En la hoja de hello, puede ver esa dirección Hola de protección **locales de tooOn Azure** ya está seleccionado.
+3. En **servidor de destino maestro** y **servidor de proceso**, seleccione el servidor de destino maestro local de Hola y Hola servidor de proceso de máquina virtual de Azure.
+4. Hola seleccione almacén de datos que desea que los discos de hello toorecover locales. Utilice esta opción cuando Hola local se elimina la máquina virtual y deberá toocreate nuevos discos. Omitir la opción de hello si hello discos ya existen, pero seguirá necesitando toospecify un valor.
+5. Utilice una retención de unidad toostop Hola puntos en el tiempo cuando Hola VM es replicada local tooon back. A continuación se enumeran algunos criterios de una unidad de retención. Sin estos criterios, unidades de hello no se muestra para el servidor de destino maestro Hola.
 
   * El volumen no debe utilizarse para ningún otro propósito (destino de replicación, etc.).
   * El volumen no debe estar en modo de bloqueo.
-  * El volumen no debe ser el volumen de memoria caché. (La instalación del destino maestro no debe existir en dicho volumen. El volumen de instalación personalizada del servidor de procesos con destino maestro no es apto para el volumen de retención. En este caso, el volumen de servidor de procesos con destino maestro es el volumen de caché del destino maestro).
-  * El tipo de sistema de archivos de volumen no debe ser FAT ni FAT32.
-  * La capacidad del volumen debe ser distinta de cero.
-  * El volumen de retención predeterminado para Windows es el volumen R.
-  * El volumen de retención predeterminado para Linux es /mnt/retention.
+  * El volumen no debe ser el volumen de memoria caché. (instalación de destino maestro hello no debe existir en el volumen. Hola servidor de proceso más master volumen de instalación personalizada de destino no es apto para el volumen de retención. En este caso, Hola instalado a servidor de procesos más volumen de destino maestro es el volumen de caché de hello del destino maestro de Hola.)
+  * no debe ser el tipo de sistema de archivo de Hello volumen FAT y FAT32.
+  * capacidad del volumen Hola debe ser distinto de cero.
+  * volumen de retención predeterminado de Hola para Windows es R.
+  * volumen de retención predeterminado de Hola para Linux es /mnt/retention.
 
-6. La directiva de conmutación por recuperación se selecciona automáticamente.
-7. Tras hacer clic en **Aceptar** para comenzar la reprotección, comienza un trabajo para replicar la máquina virtual de Azure en el sitio local. Puede realizar el seguimiento del progreso en la pestaña **Trabajos** .
+6. Directiva de conmutación por recuperación de Hola se selecciona automáticamente.
+7. Tras hacer clic en **Aceptar** toobegin conmutada, un trabajo comienza tooreplicate Hola VM desde el sitio de Azure toohello local. Puede realizar el seguimiento del progreso de hello en hello **trabajos** ficha.
 
-Si desea recuperar en una ubicación alternativa, seleccione la unidad de retención y el almacén de datos configurado para el servidor de destino maestro. Cuando se conmuta por recuperación al sitio local, las máquinas virtuales de VMware del plan de protección de conmutación por recuperación utilizarán el mismo almacén de datos que el servidor de destino maestro. Si desea recuperar la réplica de la máquina virtual de Azure en la misma máquina virtual local, la máquina virtual local ya debe estar en el mismo almacén de datos que el servidor de destino maestro. Si no hay ninguna máquina virtual local, se creará una nueva durante la reprotección.
+Si desea que la ubicación alternativa de toorecover tooan, seleccione unidad de retención de Hola y almacén de datos que están configurados para el servidor de destino maestro Hola. Cuando se produce un error de sitio local de toohello atrás, Hola máquinas virtuales de VMware en el plan de protección de conmutación por recuperación de hello usar hello mismo almacén de datos como servidor de destino maestro Hola. Si desea que toorecover Hola réplica Azure VM toohello mismo local máquina virtual, máquina virtual debe ya estar en Hola igual a local de hello almacén de datos como servidor de destino maestro Hola. Si no hay ninguna máquina virtual local, se creará una nueva durante la reprotección.
 
-![Seleccione "Azure a local" en el menú desplegable](./media/site-recovery-failback-azure-to-vmware-new/reprotectinputs.png)
+![Seleccione "Tooon locales de Azure" en el menú desplegable de Hola](./media/site-recovery-failback-azure-to-vmware-new/reprotectinputs.png)
 
-También puede volver a proteger a nivel de un plan de recuperación. Si tiene un grupo de replicación, este solo se puede volver a proteger con un plan de recuperación. Cuando vuelva a proteger con un plan de recuperación, utilice los valores anteriores para todos los equipos protegidos.
+También puede volver a proteger a nivel de un plan de recuperación. Si tiene un grupo de replicación, este solo se puede volver a proteger con un plan de recuperación. Cuando vuelva a efectuar mediante el uso de un plan de recuperación, utilice los valores anteriores de hello en todos los equipos protegidos.
 
 > [!NOTE]
-> Los grupos de replicación deben volver a protegerse con el mismo destino maestro. Si se han vuelto a proteger con servidores de destino maestro distintos, no se puede determinar un momento dado común para ellos.
+> Grupos de replicación deben protegerse con hello mismo destino maestro. Si se han vuelto a proteger con servidores de destino maestro distintos, no se puede determinar un momento dado común para ellos.
 
-### <a name="run-a-failover-to-the-on-premises-site"></a>Ejecución de una conmutación por error en el sitio local
-Después de volver a proteger una máquina virtual, puede iniciar una conmutación por error desde Azure a un sitio local.
+### <a name="run-a-failover-toohello-on-premises-site"></a>Ejecutar un sitio local de toohello de conmutación por error
+Después de que se vuelva a efectuar Hola VM, puede iniciar una conmutación por error de Azure tooon local.
 
-1. En la página de elementos replicados, haga clic con el botón derecho en la máquina virtual y seleccione **Conmutación por error no planeada**.
-2. En **Confirmar conmutación por error**, compruebe la dirección de conmutación por error (de Azure) y seleccione el punto de recuperación que quiere usar para la conmutación por error (el último o el último coherente con la aplicación). Un punto de recuperación coherente con la aplicación se produce antes del punto más reciente en el tiempo y provocará pérdida de datos.
-3. Durante la conmutación por error, se cerrarán las máquinas virtuales de Azure en Site Recovery. Después de comprobar que la conmutación por recuperación se ha completado como se esperaba, puede comprobar que las máquinas virtuales de Azure se han cerrado según lo previsto.
+1. En la página de los elementos replicados de hello, haga clic en la máquina virtual de hello y, a continuación, seleccione **conmutación por error imprevista**.
+2. En **confirmar conmutación por error**, compruebe la dirección de conmutación por error de hello (de Azure) y, a continuación, seleccione el punto de recuperación de Hola que quiere toouse de conmutación por error de hello (Hola más reciente o punto de recuperación más reciente coherente con la aplicación hello). Se produce un punto de recuperación coherente con la aplicación antes de punto más reciente de Hola en el tiempo y provocará la pérdida de datos.
+3. Durante la conmutación por error, Site Recovery se cierra Hola máquinas virtuales de Azure. Después de comprobar que conmutación por recuperación se ha completado como se esperaba, puede comprobar tooensure que hello Azure VM que se haya cerrado según lo previsto.
 
-### <a name="reprotect-the-on-premises-site"></a>Reprotección del sitio local
-Una vez finalizada la conmutación por recuperación, confirme la máquina virtual para asegurarse de que se eliminen las máquinas virtuales recuperadas en Azure. Para ello, haga clic con el botón derecho en el elemento protegido y haga clic en **Confirmar**. Esta acción desencadena un trabajo que quita las anteriores máquinas virtuales recuperadas en Azure.
+### <a name="reprotect-hello-on-premises-site"></a>Sitio local de hello, vuelva a proteger
+Una vez completada la conmutación por recuperación, se eliminan tooensure de máquina virtual de Hola de confirmación que Hola máquinas virtuales de recuperación en Azure. toodo por lo tanto, haga clic en el elemento de hello protegido y, a continuación, haga clic en **confirmar**. Esta acción desencadena un trabajo que quita hello las máquinas virtuales recuperada anterior en Azure.
 
-Una vez completada la confirmación, los datos deberían volver al sitio local, pero no estarán protegidos. Para volver a iniciar la replicación en Azure, vuelva a hacer lo siguiente:
+Una vez completada la confirmación de hello, los datos deben estar en sitio local de hello, pero no estará protegido. toostart replicación tooAzure nuevo, Hola siguientes:
 
-1. En **Almacén** > **Configuración** > **Elementos replicados**, seleccione las máquinas virtuales que han sido objeto de la conmutación por recuperación y haga clic en **Reproteger**.
-2. Asigne el valor de servidor de procesos que debe utilizarse para volver a enviar datos a Azure.
+1. En **almacén**, en **configuración** > **replican elementos**, seleccione las máquinas virtuales de Hola que no se han podido volver y, a continuación, haga clic en **volver a proteger**.
+2. Dele el valor Hola Hola servidor de procesos que necesita toobe utiliza toosend datos back-tooAzure.
 3. Haga clic en **Aceptar**.
 
-Una vez completada la reprotección, la máquina virtual se vuelve a replicar en Azure y puede realizar una conmutación por error.
+Una vez completada la conmutada hello, Hola VM replica tooAzure atrás y realiza una conmutación por error.
 
 ### <a name="resolve-common-failback-issues"></a>Resolución de problemas habituales de la conmutación por recuperación
-* Si realiza la detección de usuarios de solo lectura de vCenter y protege las máquinas virtuales, se ejecutará correctamente y la conmutación por error funcionará. Durante la reprotección, se produce un error de conmutación por error porque no se pueden detectar los almacenes de datos. El síntoma de este problema es que no se ven los almacenes de datos enumerados durante la reprotección. Para resolverlo, puede actualizar las credenciales de vCenter con la cuenta adecuada que tenga permisos y tratar de realizar el trabajo de nuevo. Para obtener más información, consulte [Replicación de máquinas virtuales de VMware y servidores físicos en Azure con Azure Site Recovery](site-recovery-vmware-to-azure-classic.md).
-* Cuando conmuta por recuperación una máquina virtual de Linux y la ejecuta localmente, verá que se ha desinstalado el paquete del administrador de red de la máquina. Esto se debe a que el paquete del administrador de red se elimina cuando se recupera la VM en Azure.
-* Cuando una máquina virtual se configura con una dirección IP estática y se conmuta por error a Azure, se adquiere la dirección IP mediante DHCP. Al conmutar por error a un entorno local, la VM seguirá utilizando DHCP para obtener la dirección IP. Inicie sesión manualmente en el equipo y vuelva a establecer la dirección IP en una dirección estática si es necesario.
-* Si utiliza las ediciones gratuitas de ESXi 5.5 o vSphere Hypervisor 6, la conmutación por error se llevará a cabo correctamente, pero la conmutación por recuperación, no. Para habilitar la conmutación por recuperación, tendrá que actualizar los programas con una licencia de evaluación.
-* Si no puede ponerse en contacto con el servidor de configuración desde el servidor de procesos, compruebe la conectividad con el servidor de configuración por Telnet con el equipo del servidor de configuración en el puerto 443. También puede tratar de hacer ping en el servidor de configuración desde la máquina del servidor de procesos. Un servidor de procesos debe tener también un latido cuando esté conectado al servidor de configuración.
-* Si está tratando de realizar la conmutación por recuperación en un vCenter alternativo, asegúrese de que se detectan tanto el nuevo vCenter como el servidor de destino maestro. Un síntoma típico es que los almacenes de datos no están accesibles ni visibles en el cuadro de diálogo de **Reprotect** (Reproteger).
-* Las máquinas WS2008R2SP1 protegidas como máquinas físicas locales no pueden conmutar por recuperación desde Azure a un entorno local.
+* Si realiza la detección de usuarios de solo lectura de vCenter y protege las máquinas virtuales, se ejecutará correctamente y la conmutación por error funcionará. Durante la conmutada, se produce un error de conmutación por error porque no se pueden detectar Hola almacenes de datos. Como un síntoma, no verá Hola almacenes de datos muestran durante conmutada. tooresolve este problema, puede actualizar la credencial de vCenter Hola con una cuenta adecuada que tenga permisos y vuelva a intentar el trabajo de Hola. Para obtener más información, vea [máquinas virtuales de VMware replicar y tooAzure servidores físicos con Azure Site Recovery](site-recovery-vmware-to-azure-classic.md)
+* Al realizar la conmutación por una VM de Linux y ejecutar de forma local, puede ver que ese paquete del Administrador de red de Hola se ha desinstalado del equipo de Hola. Esta desinstalación se produce porque el paquete del Administrador de red de Hola se quita cuando se recupera Hola VM en Azure.
+* Cuando una máquina virtual se configura con una dirección IP estática y se ha conmutado tooAzure, dirección IP de Hola se adquiere a través de DHCP. Cuando la conmutación por error local tooon atrás, Hola VM continúa dirección IP de toouse DHCP tooacquire Hola. Manualmente, inicie sesión en toohello máquina y configurar la dirección estática del tooa atrás de dirección IP Hola si es necesario.
+* Si utiliza las ediciones gratuitas de ESXi 5.5 o vSphere Hypervisor 6, la conmutación por error se llevará a cabo correctamente, pero la conmutación por recuperación, no. tooenable conmutación por recuperación, licencia de evaluación del programa de actualización tooeither.
+* Si no se puede conectar con servidor de configuración de Hola de hello servidor de procesos, compruebe el servidor de configuración de conectividad toohello máquina de servidor de configuración de toohello de Telnet en el puerto 443. También puede probar el servidor de configuración de hello tooping de la máquina del servidor de procesos de Hola. Un servidor de procesos también debe tener un latido cuando llega el servidor de configuración de toohello conectado.
+* Si está tratando de toofail tooan atrás alternativo vCenter, asegúrese de que la nueva vCenter está detectado y también se detecta ese servidor de destino maestro Hola. Un síntoma habitual es que Hola almacenes de datos no son accesibles o visibles en hello **Reproteger** cuadro de diálogo.
+* Una máquina de WS2008R2SP1 que está protegida como una máquina física local no puede ser no se pudo desde Azure tooon local.
 
 ## <a name="fail-back-with-expressroute"></a>Conmutación por recuperación con ExpressRoute
-Puede conmutar por recuperación a través de una conexión VPN o usando una conexión ExpressRoute. Si desea usar ExpressRoute, tenga en cuenta lo siguiente:
+Puede conmutar por recuperación a través de una conexión VPN o usando una conexión ExpressRoute. Si desea toouse una conexión ExpressRoute, observe Hola siguiente:
 
-* La conexión ExpressRoute se debe configurar en la red virtual de Azure a la que conmutarán por error las máquinas de origen, y en la que se encuentran las máquinas virtuales de Azure después de que tenga lugar este proceso.
-* Los datos se replican en una cuenta de almacenamiento de Azure en un punto de conexión público. Para usar una conexión ExpressRoute, realice la configuración entre pares públicos en ExpressRoute con el centro de datos de destino para la replicación de Site Recovery.
+* Hola conexión ExpressRoute se debe configurar en la red virtual de Azure que tooand conmutar las máquinas de origen Hola Hola donde se encuentran Hola máquinas virtuales de Azure después de producirse la conmutación por error de Hola.
+* Los datos están replicado tooan cuenta de almacenamiento de Azure en un punto de conexión público. toouse una conexión ExpressRoute, configurar el emparejamiento público en ExpressRoute con el centro de datos de destino de hello para la replicación de Site Recovery.

@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: integración de Azure Active Directory con DocuSign | Microsoft Docs"
-description: "Aprenda a configurar el inicio de sesión único entre Azure Active Directory y DocuSign."
+description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y DocuSign."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,82 +13,82 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 3b509ffa934949200277ae431761d2accd4a02d6
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.openlocfilehash: 8562a8f9e05fb72d3331507b7da5c6afee38f9b8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-configuring-docusign-for-user-provisioning"></a>Tutorial: Configuración de DocuSign para el aprovisionamiento de usuarios
 
-El objetivo de este tutorial es explicar los pasos que hay que realizar en DocuSign y Azure AD para aprovisionar y cancelar automáticamente el aprovisionamiento de cuentas de usuario de Azure AD en DocuSign.
+objetivo de Hola de este tutorial es tooshow Hola pasos que debe tooperform en DocuSign y Azure AD tooautomatically aprovisionar y eliminación de aprovisionar cuentas de usuario de Azure AD tooDocuSign.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-En la situación descrita en este tutorial se supone que ya cuenta con los elementos siguientes:
+escenario de Hello descrito en este tutorial se da por supuesto que ya tiene Hola siguientes elementos:
 
 *   Un inquilino de Azure Active Directory.
 *   Una suscripción habilitada para el inicio de sesión único en DocuSign.
 *   Una cuenta de usuario de DocuSign con permisos de administrador de equipo.
 
-## <a name="assigning-users-to-docusign"></a>Asignación de usuarios a DocuSign
+## <a name="assigning-users-toodocusign"></a>Asignar usuarios tooDocuSign
 
-Azure Active Directory usa un concepto que se denomina "asignaciones" para determinar qué usuarios deben recibir acceso a determinadas aplicaciones. En el contexto de aprovisionamiento automático de cuentas de usuario, solo se sincronizarán los usuarios y grupos que se han "asignado" a una aplicación en Azure AD.
+Azure Active Directory utiliza un concepto que se denomina toodetermine "asignaciones" que los usuarios deben recibir acceso tooselected aplicaciones. En el contexto de Hola de aprovisionamiento de cuentas de usuario automática, se sincronizan sólo los usuarios de Hola y grupos que se han "asignados" tooan aplicación en Azure AD.
 
-Antes de configurar y habilitar el servicio de aprovisionamiento, debe decidir qué usuarios o grupos de Azure AD representan a los usuarios que necesitan acceso a la aplicación DocuSign. Una vez decidido, puede asignar estos usuarios a la aplicación de DocuSign siguiendo estas instrucciones:
+Antes de configurar y habilitar el aprovisionamiento del servicio de hello, necesita toodecide qué usuarios o grupos de usuarios de Azure AD representan Hola que necesitan tener acceso a la aplicación de DocuSign tooyour. Una vez decidido, puede asignar estas aplicaciones de DocuSign tooyour de usuarios siguiendo las instrucciones de hello aquí:
 
-[Asignar un usuario o grupo a una aplicación empresarial](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Asignar un usuario o grupo tooan su aplicación empresarial](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-docusign"></a>Sugerencias importantes para asignar usuarios a DocuSign
+### <a name="important-tips-for-assigning-users-toodocusign"></a>Sugerencias importantes para asignar usuarios tooDocuSign
 
-*   Se recomienda asignar un único usuario de Azure AD a DocuSign para probar la configuración de aprovisionamiento. Más tarde, se pueden asignar otros usuarios o grupos.
+*   Se recomienda que un único usuario de Azure AD se asigna tooDocuSign tootest Hola aprovisionamiento de configuración. Más tarde, se pueden asignar otros usuarios o grupos.
 
-*   Al asignar a un usuario a DocuSign, debe seleccionar un rol de usuario válido. El rol "Acceso predeterminado" no funciona para realizar el aprovisionamiento.
+*   Al asignar una tooDocuSign de usuario, debe seleccionar un rol de usuario válido. rol de "Acceso predeterminado" Hello no funciona para el aprovisionamiento.
 
 ## <a name="enable-user-provisioning"></a>Habilitación del aprovisionamiento de usuarios
 
-Esta sección lo guía a través de los pasos necesarios para conectar la API de aprovisionamiento de cuentas de usuario de DocuSign, así como para configurar el servicio de aprovisionamiento con el fin de crear, actualizar y deshabilitar cuentas de usuario asignadas en DocuSign en función de la asignación de grupos y usuarios de Azure AD.
+Esta sección le guía a través de conexión de API de aprovisionamiento de cuentas de usuario de su tooDocuSign de Azure AD y configurar hello toocreate de servicio de aprovisionamiento, actualizar y deshabilitar cuentas de usuario asignado en DocuSign en función de asignación de usuario y de grupo en Azure AD.
 
 > [!Tip]
-> También puede habilitar el inicio de sesión único basado en SAML para DocuSign siguiendo las instrucciones de [Azure Portal](https://portal.azure.com). El inicio de sesión único puede configurarse independientemente del aprovisionamiento automático, aunque estas dos características se complementan entre sí.
+> También puede elegir tooenabled basado en SAML Single Sign-On para DocuSign, siguiendo las instrucciones Hola proporcionadas en [portal de Azure](https://portal.azure.com). El inicio de sesión único puede configurarse independientemente del aprovisionamiento automático, aunque estas dos características se complementan entre sí.
 
-### <a name="to-configure-user-account-provisioning"></a>Para configurar el aprovisionamiento automático de cuentas de usuario:
+### <a name="tooconfigure-user-account-provisioning"></a>tooconfigure aprovisionamiento de cuentas de usuario:
 
-El objetivo de esta sección es describir cómo habilitar el aprovisionamiento de usuarios de Active Directory para DocuSign.
+objetivo de Hola de esta sección es toooutline cómo tooenable el aprovisionamiento de usuarios de usuario de Active Directory cuentas tooDocuSign.
 
-1. En [Azure Portal](https://portal.azure.com), vaya a la sección **Azure Active Directory > Aplicaciones empresariales > Todas las aplicaciones**.
+1. Hola [portal de Azure](https://portal.azure.com), examinar toohello **Azure Active Directory > aplicaciones empresariales > todas las aplicaciones** sección.
 
-2. Si ya ha configurado DocuSign para el inicio de sesión único, busque la instancia de DocuSign mediante el campo de búsqueda. En caso contrario, seleccione **Agregar** y busque **DocuSign** en la galería de aplicaciones. Seleccione DocuSign en los resultados de búsqueda y agréguelo a la lista de aplicaciones.
+2. Si ya ha configurado DocuSign para el inicio de sesión único, busque la instancia de DocuSign con el campo de búsqueda de Hola. En caso contrario, seleccione **agregar** y busque **DocuSign** en Galería de aplicaciones de Hola. Seleccione DocuSign de resultados de la búsqueda de Hola y agregarlo a tooyour lista de aplicaciones.
 
-3. Seleccione la instancia de DocuSign y luego, la pestaña **Aprovisionamiento**.
+3. Seleccione la instancia de DocuSign, a continuación, seleccione hello **Provisioning** ficha.
 
-4. Establezca el **modo de aprovisionamiento** en **Automático**. 
+4. Conjunto hello **modo de aprovisionamiento** demasiado**automática**. 
 
     ![Aprovisionamiento](./media/active-directory-saas-docusign-provisioning-tutorial/provisioning.png)
 
-5. En la sección **Credenciales de administrador**, proporcione los siguientes valores de configuración:
+5. En hello **las credenciales de administrador** sección, proporcione Hola siguientes opciones de configuración:
    
-    a. En el cuadro de texto **Nombre de usuario administrador**, escriba un nombre de cuenta de DocuSign que tenga asignado el perfil **Administrador del sistema** en DocuSign.com.
+    a. Hola **nombre de usuario administrador** cuadro de texto, tipo de un DocuSign nombre de cuenta que ha Hola **administrador del sistema** perfil asignado en DocuSign.com.
    
-    b. En el cuadro de texto **Contraseña de administrador**, escriba la contraseña de esta cuenta.
+    b. Hola **contraseña de administrador** cuadro de texto, escriba la contraseña de Hola para esta cuenta.
 
-6. En Azure Portal, haga clic en **Probar conexión** para asegurarse de que Azure AD puede conectarse a la aplicación de DocuSign.
+6. Hola portal de Azure, haga clic en **Probar conexión** tooensure Azure AD puede conectar la aplicación de DocuSign de tooyour.
 
-7. Escriba la dirección de correo electrónico de una persona o grupo que debe recibir las notificaciones de error aprovisionamiento en el campo **Correo electrónico de notificación** y active la casilla.
+7. Hola **correo electrónico de notificación** , escriba la dirección de correo electrónico de Hola de una persona o grupo que debe recibir notificaciones de error de aprovisionamiento y active casilla Hola.
 
 8. Haga clic en **Guardar**.
 
-9. En la sección Asignaciones, seleccione **Synchronize Azure Active Directory Users to DocuSign** (Sincronizar usuarios de Azure Active Directory con DocuSign).
+9. En la sección asignaciones de hello, seleccione **tooDocuSign sincronizar Azure usuarios de Active Directory.**
 
-10. En la sección **Attribute Mappings** (Asignaciones de atributos), revise los atributos de usuario que se sincronizan entre Azure AD y DocuSign. Los atributos seleccionados como propiedades de **Coincidencia** se usan para buscar coincidencias con las cuentas de usuario de DocuSign con el objetivo de realizar operaciones de actualización. Seleccione el botón Guardar para confirmar los cambios.
+10. Hola **asignaciones de atributos** sección, revise los atributos de usuario de Hola que se sincronizan desde tooDocuSign de Azure AD. Hola atributos seleccionados como **coincidencia** propiedades son cuentas de usuario del hello toomatch utilizados en DocuSign las operaciones de actualización. Seleccione toocommit de botón de hello guardar los cambios.
 
-11. Para habilitar el servicio de aprovisionamiento de Azure AD para DocuSign, cambie el **Estado de aprovisionamiento** a **Activado** en la sección Configuración.
+11. tooenable Hola servicio de aprovisionamiento de Azure AD para DocuSign, cambio hello **estado de aprovisionamiento** demasiado**en** en hello sección de configuración
 
 12. Haga clic en **Guardar**.
 
-Esta acción inicia la sincronización inicial de todos los usuarios y grupos asignados a DocuSign en la sección Usuarios y grupos. La sincronización inicial tardará más tiempo en realizarse que las posteriores, que se producen aproximadamente cada 20 minutos, si se está ejecutando el servicio. Puede usar la sección **Detalles de sincronización** para supervisar el progreso y hacer clic en los vínculos a los informes de actividad de aprovisionamiento, que describen todas las acciones que ha llevado a cabo el servicio de aprovisionamiento en la aplicación de DocuSign.
+Inicia la sincronización inicial de Hola de todos los usuarios y grupos asignados tooDocuSign Hola a los usuarios y la sección de grupos. la sincronización inicial Hola toma tooperform más que las sincronizaciones posteriores, que se producen aproximadamente cada 20 minutos mientras se ejecuta el servicio de Hola. Puede usar hello **detalles de sincronización** sección toomonitor progreso y siga los informes de actividad del tooprovisioning vínculos, que describen todas las acciones realizadas por hello aprovisionamiento del servicio en la aplicación de DocuSign.
 
-Ahora puede crear una cuenta de prueba. Espere 20 minutos para comprobar que la cuenta se ha sincronizado con DocuSign.
+Ahora puede crear una cuenta de prueba. Espere a que los minutos de too20 tooverify que cuenta Hola se ha había sincronizado tooDocuSign.
 
 ## <a name="additional-resources"></a>Recursos adicionales
 

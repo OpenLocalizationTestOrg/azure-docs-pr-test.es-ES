@@ -1,6 +1,6 @@
 ---
-title: "Introducción a Azure Table Storage | Microsoft Docs"
-description: "Almacene datos estructurados en la nube con el Almacenamiento de tablas de Azure, un almacén de datos NoSQL."
+title: aaaOverview del almacenamiento de tabla de Azure | Documentos de Microsoft
+description: "Almacenar datos estructurados de la nube de hello mediante el almacenamiento de tabla de Azure, un almacén de datos NoSQL."
 services: cosmos-db
 documentationcenter: .net
 author: mimig1
@@ -14,29 +14,29 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/23/2017
 ms.author: mimig
-ms.openlocfilehash: 9099e90c402185b371495379db943d64fb82cdb8
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 8643cc666f000e078644981381a086e1ccc44067
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-table-storage-overview"></a>Introducción a Azure Table Storage
 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
 
-Azure Table Storage es un servicio que almacena datos NoSQL estructurados en la nube y proporciona un almacén de claves y atributos con un diseño sin esquema. Como Almacenamiento de tablas carece de esquema, es fácil adaptar los datos a medida que evolucionan las necesidades de la aplicación. El acceso a los datos de Table Storage es rápido y rentable para muchos tipos de aplicaciones y, por lo general, el costo es normalmente menor que con el SQL tradicional para volúmenes parecidos de datos.
+El almacenamiento de tabla es un servicio que almacena NoSQL estructurado con un diseño schemaless del almacén de datos en la nube de hello, que proporciona un atributo de clave. Dado que el almacenamiento de tabla es schemaless, resulta fácil tooadapt necesidades de los datos como Hola de evolucionar de la aplicación. Acceder a los datos de almacenamiento tooTable es rápido y rentable para muchos tipos de aplicaciones y es normalmente menores costo SQL tradicional para similar volúmenes de datos.
 
-Table Storage se puede usar para almacenar conjuntos de datos flexibles, como datos de usuarios para aplicaciones web, libretas de direcciones, información de dispositivos u otros tipos de metadatos que el servicio requiera. Una tabla puede almacenar un número cualquiera de entidades y una cuenta de almacenamiento puede incluir un número cualquiera de tablas, hasta alcanzar el límite de capacidad de este tipo de cuenta.
+Puede usar la tabla almacenamiento toostore flexible los conjuntos de datos como datos de usuario para aplicaciones web, libretas de direcciones, información de dispositivo u otros tipos de metadatos que se requiere el servicio. Puede almacenar cualquier número de entidades en una tabla y una cuenta de almacenamiento puede contener cualquier número de tablas, una toohello el límite de capacidad de la cuenta de almacenamiento de Hola.
 
 [!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-* El [Explorador de Microsoft Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md) es una aplicación independiente y gratuita de Microsoft que permite trabajar visualmente con los datos de Azure Storage en Windows, macOS y Linux.
+* [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) es una aplicación independiente disponible, de Microsoft que le permite toowork visualmente con datos del almacenamiento de Azure en Windows, Mac OS y Linux.
 
 * [Introducción a Azure Table Storage mediante .NET](table-storage-how-to-use-dotnet.md)
 
-* Consulte la documentación de referencia del servicio de tabla para obtener información detallada acerca de las API disponibles:
+* Ver la documentación de referencia de servicio de tabla de Hola para obtener información detallada acerca de las API disponibles:
 
     * [Referencia de la biblioteca de clientes de almacenamiento para .NET](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
 

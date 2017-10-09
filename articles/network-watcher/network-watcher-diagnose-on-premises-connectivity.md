@@ -1,6 +1,6 @@
 ---
-title: "Diagnóstico de la conectividad local a través de VPN Gateway con Azure Network Watcher | Microsoft Docs"
-description: "En este artículo se describe cómo diagnosticar la conectividad local a través de VPN Gateway con la solución de problemas de recursos de Azure Network Watcher."
+title: "aaaDiagnose conectividad de local a través de puerta de enlace VPN con Monitor de red de Azure | Documentos de Microsoft"
+description: "Este artículo describe cómo toodiagnose local conectividad a través de puerta de enlace VPN con la solución de problemas de recursos de Monitor de red de Azure."
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,30 +14,30 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-ms.openlocfilehash: 8f5534c83adf2ee4a696131afb45a658c89dd298
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 9941c5d1b49bec29062210684dae8653cbdb84b9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Diagnóstico de la conectividad local a través de puertas de enlace de VPN
 
-Azure VPN Gateway le permite crear soluciones híbridas que dan soluciones a la necesidad de una conexión segura entre su red local y la red virtual de Azure. Como sus necesidades son únicas, también lo es la elección del dispositivo VPN local. Azure admite actualmente [varios dispositivos VPN](../vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable) que se validan constantemente en asociación con los proveedores de los dispositivos. Revise los valores de configuración específicos del dispositivo antes de configurar el dispositivo VPN local. Igualmente, Azure VPN Gateway está configurado con un conjunto de [parámetros de IPsec admitidos](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec) que se utilizan para establecer conexiones. Actualmente no hay ninguna manera de especificar o seleccionar una combinación específica de parámetros de IPsec desde Azure VPN Gateway. Para establecer una conexión correcta entre la red local y Azure, la configuración del dispositivo VPN local debe estar de acuerdo con los parámetros de IPsec prescritos por Azure VPN Gateway. Si la configuración es incorrecta, se produce una pérdida de conectividad y además, hasta ahora, solucionar estos problemas no era algo trivial y normalmente se tardaban horas en identificar y corregir el problema.
+Puerta de enlace de VPN de Azure permite solución híbrida de toocreate necesidades de Hola para una conexión segura entre su red local y la red virtual de Azure. Como sus requisitos son únicos, por lo que es la opción de hello de dispositivo VPN local. Azure admite actualmente [varios dispositivos VPN](../vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable) que constantemente se validan en colaboración con proveedores de dispositivos de Hola. Revise los valores de configuración específicos de dispositivo de hello antes de configurar el dispositivo VPN local. Igualmente, Azure VPN Gateway está configurado con un conjunto de [parámetros de IPsec admitidos](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec) que se utilizan para establecer conexiones. Actualmente no hay ninguna manera de toospecify o seleccione una combinación específica de parámetros de IPsec de hello puerta de enlace de VPN de Azure. Para establecer una conexión correcta entre local y Azure, Hola local de configuración del dispositivo VPN deberá ser conformes con los parámetros de IPsec Hola prescritos por puerta de enlace de VPN de Azure. Si hello configuración es correcta, hay una pérdida de conectividad y hasta ahora para solucionar estos problemas, no es trivial y normalmente tardó horas problema hello tooidentify y corrección.
 
-Con la característica de solución de problemas de Azure Network Watcher, es posible diagnosticar cualquier problema de la puerta de enlace y las conexiones y, en cuestión de minutos, disponer de información suficiente para tomar una decisión informada para rectificar el problema.
+Con Monitor de red de Azure hello solucionar problemas de característica, es capaz de toodiagnose cualquier problema con la puerta de enlace y las conexiones y en minutos tiene suficiente toomake información un problema de hello toorectify decisión informada.
 
 ## <a name="scenario"></a>Escenario
 
-Quiere configurar una conexión de sitio a sitio entre Azure y la red local con FortiGate como la instancia de VPN Gateway local. Para lograr este escenario, necesitará la siguiente configuración:
+Desea conexión tooconfigure un sitio a sitio entre Azure y locales mediante FortiGate como Hola puerta de enlace de VPN local. tooachieve este escenario, necesitaría Hola después de la instalación:
 
-1. Puerta de enlace de red virtual: la instancia de VPN Gateway en Azure
-1. Puerta de enlace de red local: la representación de la[ instancia de VPN Gateway local (FortiGate](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway)) en la nube de Azure
-1. Conexión de sitio a sitio (basada en directivas): [conexión entre VPN Gateway y el enrutador local](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#createconnection)
+1. Puerta de enlace de red virtual: Hola puerta de enlace de VPN en Azure
+1. Puerta de enlace de red local - Hola [(FortiGate) puerta de enlace de VPN local](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway) representación en la nube de Azure
+1. Conexión de sitio a sitio (basado en directiva) - [conexión entre la puerta de enlace VPN de Hola y Hola enrutador local](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#createconnection)
 1. [Configuración de FortiGate](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/Site-to-Site_VPN_using_FortiGate.md)
 
-Encontrará instrucciones paso a paso para definir una configuración de sitio a sitio si visita: [Creación de una red virtual con una conexión de sitio a sitio mediante Azure Portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+Encontrará instrucciones paso a paso detalladas para establecer una configuración de sitio a sitio, visita: [crear una red virtual con una conexión de sitio a sitio mediante el portal de Azure de hello](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
 
-Uno de los pasos de configuración más importantes es la configuración de los parámetros de comunicación de IPsec, ya que una configuración incorrecta conlleva una pérdida de conectividad entre la red local y Azure. Actualmente, las instancias de Azure VPN Gateway están configuradas para admitir los siguientes parámetros de IPsec durante la fase 1. Tenga en cuenta que, como ya se mencionó anteriormente, esta configuración no se puede modificar.  Como puede ver en la tabla siguiente, los algoritmos de cifrado admitidos por Azure VPN Gateway son AES256 y AES128 y 3DES.
+Uno de los pasos de configuración crítica de hello es la configuración de parámetros de comunicación de IPsec de hello, cualquier error de configuración conduce tooloss de conectividad entre la red local de Hola y Azure. Actualmente, las puertas de enlace VPN de Azure son hello toosupport configurado siguiendo los parámetros de IPsec durante la fase 1. Tenga en cuenta que, como ya se mencionó anteriormente, esta configuración no se puede modificar.  Como puede ver en la siguiente tabla se hello, algoritmos de cifrado de hello admitidos por la puerta de enlace de VPN de Azure son AES256 y AES128, 3DES.
 
 ### <a name="ike-phase-1-setup"></a>Configuración de la fase 1 de IKE
 
@@ -50,30 +50,30 @@ Uno de los pasos de configuración más importantes es la configuración de los 
 | Algoritmo hash |SHA1(SHA128) |SHA1(SHA128), SHA2(SHA256) |
 | Vida útil (tiempo) de la asociación de seguridad (SA) de la fase 1 |28.800 segundos |10.800 segundos |
 
-Como usuario, se le pedirá que configure FortiGate. Puede encontrar un ejemplo de configuración en [GitHub](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/fortigate_show%20full-configuration.txt). Sin saberlo, ya configuró FortiGate para que use SHA-512 como algoritmo hash. Como este algoritmo no es un algoritmo compatible con las conexiones basadas en directivas, la conexión VPN funciona.
+Como un usuario, sería necesario tooconfigure su FortiGate, un ejemplo de configuración puede encontrarse en [GitHub](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/fortigate_show%20full-configuration.txt). Sin saberlo configuró su toouse FortiGate SHA-512 como Hola algoritmo hash. Como este algoritmo no es un algoritmo compatible con las conexiones basadas en directivas, la conexión VPN funciona.
 
-Estos problemas son difíciles de solucionar y las causas principales suelen ser poco intuitivas. En este caso puede abrir un vale de soporte técnico para obtener ayuda acerca de cómo resolver el problema. Pero con la API de solución de problemas de Azure Network Watcher puede identificar estos problemas por su cuenta.
+Estos problemas son tootroubleshoot de disco duro y causas raíz suelen ser poco intuitivo. En este caso, puede abrir una ayuda de soporte técnico de vale tooget acerca de cómo resolver el problema de Hola. Pero con la API de solución de problemas de Azure Network Watcher puede identificar estos problemas por su cuenta.
 
 ## <a name="troubleshooting-using-azure-network-watcher"></a>Solución de problemas mediante Azure Network Watcher
 
-Para diagnosticar la conexión, conéctese a Azure PowerShell e inicie el cmdlet `Start-AzureRmNetworkWatcherResourceTroubleshooting`. Puede encontrar los detalles sobre el uso de este cmdlet en [Solución de problemas de las conexiones y la puerta de enlace de Virtual Network mediante PowerShell](network-watcher-troubleshoot-manage-powershell.md). Este cmdlet puede tardar varios minutos en completarse.
+toodiagnose la conexión, conectar tooAzure PowerShell e iniciar hello `Start-AzureRmNetworkWatcherResourceTroubleshooting` cmdlet. Puede encontrar Hola detalles sobre el uso de este cmdlet en [solucionar problemas de la puerta de enlace de red Virtual y conexiones, PowerShell](network-watcher-troubleshoot-manage-powershell.md). Este cmdlet puede tardar toofew minutos toocomplete.
 
-Una vez completado el cmdlet, puede navegar a la ubicación de almacenamiento especificada en el cmdlet para obtener información detallada sobre el problema y los registros. Azure Network Watcher crea una carpeta zip que contiene los archivos de registro siguientes:
+Una vez completado el cmdlet de hello, puede navegar toohello ubicación de almacenamiento especificada en cmdlet hello tooget información detallada en sobre el problema de Hola y los registros. Monitor de red de Azure crea una carpeta zip que contiene los siguientes archivos de registro de hello:
 
 ![1][1]
 
-Abra el archivo denominado IKEErrors.txt que muestra el siguiente error que indica un problema con una configuración incorrecta de IKE local.
+Archivo de hello abierto denominado IKEErrors.txt y muestra hello siguiente error, que indica un problema con una configuración incorrecta de IKE configuración local.
 
 ```
 Error: On-premises device rejected Quick Mode settings. Check values.
      based on log : Peer sent NO_PROPOSAL_CHOSEN notify
 ```
 
-Puede obtener información detallada sobre el error a partir del archivo Scrubbed-wfpdiag.txt, ya que en este caso menciona que se ha producido un error `ERROR_IPSEC_IKE_POLICY_MATCH` que hace que la conexión no funcione correctamente.
+Puede obtener información detallada de hello Scrubbed wfpdiag.txt sobre error de hello, como en este caso menciona que ha habido `ERROR_IPSEC_IKE_POLICY_MATCH` ese tooconnection responsable no funciona correctamente.
 
-Otro error de configuración común es la especificación de claves compartidas incorrectas. Si ha especificado diferentes claves compartidas en el ejemplo anterior, el archivo IKEErrors.txt mostrará el siguiente error: `Error: Authentication failed. Check shared key`.
+Otro error de configuración común es hello especificar claves compartidas incorrectas. En el caso de hello anterior ejemplo hubiera especificado diferentes claves compartidas, hello IKEErrors.txt muestra hello siguiente error: `Error: Authentication failed. Check shared key`.
 
-La característica de solución de problemas de Azure Network Watcher le permite diagnosticar y solucionar problemas de VPN Gateway y problemas de conexión con la facilidad de un simple cmdlet de PowerShell. En la actualidad se admite el diagnóstico de las siguientes condiciones y en el futuro se agregarán más.
+Característica de solución de problemas de Monitor de red de Azure permite toodiagnose y solucionar problemas de la puerta de enlace de VPN y la conexión con facilidad Hola de un sencillo cmdlet de PowerShell. Actualmente se admite Hola diagnosticar condiciones siguientes y están trabajando para agregar condición más.
 
 ### <a name="gateway"></a>Puerta de enlace
 
@@ -83,12 +83,12 @@ La característica de solución de problemas de Azure Network Watcher le permite
 | GatewayNotFound | No se encuentra la puerta de enlace o no está aprovisionada. |No|
 | PlannedMaintenance |  La instancia de puerta de enlace está en mantenimiento.  |No|
 | UserDrivenUpdate | Cuando hay una actualización del usuario en curso. Podría tratarse de una operación de cambio de tamaño. | No |
-| VipUnResponsive | No se puede alcanzar la instancia principal de la puerta de enlace. Esto sucede cuando se produce un error en el sondeo de estado. | No |
-| PlatformInActive | Hay un problema con la plataforma. | No|
-| ServiceNotRunning | No se está ejecutando el servicio subyacente. | No|
-| NoConnectionsFoundForGateway | No existe ninguna conexión en la puerta de enlace. Esto es solo una advertencia.| No|
-| ConnectionsNotConnected | No está conectada ninguna de las conexiones. Esto es solo una advertencia.| Sí|
-| GatewayCPUUsageExceeded | El uso de CPU de la puerta de enlace actual es >95 %. | Sí |
+| VipUnResponsive | No se puede llegar a la instancia principal de Hola de hello puerta de enlace. Esto sucede cuando se produce un error de sondeo de estado de Hola. | No |
+| PlatformInActive | Hay un problema con la plataforma de Hola. | No|
+| ServiceNotRunning | no se está ejecutando el servicio subyacente Hola. | No|
+| NoConnectionsFoundForGateway | No hay ninguna conexión existe en la puerta de enlace de Hola. Esto es solo una advertencia.| No|
+| ConnectionsNotConnected | Ninguna de las conexiones de hello están conectada. Esto es solo una advertencia.| Sí|
+| GatewayCPUUsageExceeded | uso actual de puerta de enlace de Hello el uso de CPU es > 95%. | Sí |
 
 ### <a name="connection"></a>Conexión
 
@@ -98,18 +98,18 @@ La característica de solución de problemas de Azure Network Watcher le permite
 | GatewayNotFound | No se encuentra la puerta de enlace o no está aprovisionada. |No|
 | PlannedMaintenance | La instancia de puerta de enlace está en mantenimiento.  |No|
 | UserDrivenUpdate | Cuando hay una actualización del usuario en curso. Podría tratarse de una operación de cambio de tamaño.  | No |
-| VipUnResponsive | No se puede alcanzar la instancia principal de la puerta de enlace. Sucede cuando se produce un error en el sondeo de estado. | No |
+| VipUnResponsive | No se puede llegar a la instancia principal de Hola de hello puerta de enlace. Se produce cuando se produce un error de sondeo de estado de Hola. | No |
 | ConnectionEntityNotFound | Falta una configuración de conexión. | No |
-| ConnectionIsMarkedDisconnected | La conexión está marcada como "desconectada". |No|
-| ConnectionNotConfiguredOnGateway | El servicio subyacente no tiene configurada la conexión. | Sí |
-| ConnectionMarkedStandy | El servicio subyacente está marcado como en espera activa.| Sí|
+| ConnectionIsMarkedDisconnected | Hola conexión está marcada como "desconectada". |No|
+| ConnectionNotConfiguredOnGateway | servicio de Hello subyacente no tiene Hola que conexión configurada. | Sí |
+| ConnectionMarkedStandy | Hola servicio subyacente está marcada como en espera.| Sí|
 | Autenticación | Error de coincidencia de clave previamente compartida. | Sí|
-| PeerReachability | La puerta de enlace del mismo nivel no está accesible. | Sí|
-| IkePolicyMismatch | La puerta de enlace del mismo nivel tiene directivas IKE que no son compatibles con Azure. | Sí|
-| Error de WfpParse | Se produjo un error al analizar el registro de WFP. |Sí|
+| PeerReachability | puerta de enlace de Hello del mismo nivel no está accesible. | Sí|
+| IkePolicyMismatch | puerta de enlace de Hello del mismo nivel tiene directivas IKE que no son compatibles con Azure. | Sí|
+| Error de WfpParse | Error al registro WFP Hola análisis. |Sí|
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Aprenda a comprobar la conectividad de VPN Gateway con PowerShell y Azure Automation visitando [Supervisión de las puertas de enlace de VPN con la solución de problemas de Azure Network Watcher](network-watcher-monitor-with-azure-automation.md)
+Obtenga información acerca de conectividad de puerta de enlace VPN toocheck con PowerShell y automatización de Azure visitando [puertas de enlace de VPN de Monitor con la solución de problemas de Monitor de red de Azure](network-watcher-monitor-with-azure-automation.md)
 
 [1]: ./media/network-watcher-diagnose-on-premises-connectivity/figure1.png

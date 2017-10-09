@@ -1,6 +1,6 @@
 ---
-title: "Configuración del enrutamiento (emparejamiento) de un circuito ExpressRoute: Resource Manager (Azure) | Microsoft Docs"
-description: "Este artículo le guiará por los pasos necesarios para crear y aprovisionar las configuraciones entre pares privados, públicos y de Microsoft de un circuito ExpressRoute. Este artículo también muestra cómo comprobar el estado, actualizar, o eliminar configuraciones entre pares en el circuito."
+title: "¿Cómo tooconfigure enrutamiento (emparejamiento) por un circuito ExpressRoute: el Administrador de recursos: Azure | Documentos de Microsoft"
+description: "En este artículo le guiará por los pasos de Hola para crear y aprovisionamiento Hola privado, público y emparejamiento de Microsoft de un circuito de ExpressRoute. Este artículo también muestra cómo toocheck estado de hello, actualizar o eliminar emparejamientos para el circuito."
 documentationcenter: na
 services: expressroute
 author: cherylmc
@@ -15,186 +15,186 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: cherylmc
-ms.openlocfilehash: 55ccadfea55b8098ee58dcaef942f6ba54093665
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: a8ca25f488dde728cb3b06cd2c91873f3069feaf
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>Creación y modificación del emparejamiento de un circuito ExpressRoute
 
-Este artículo le ayuda a crear y administrar la configuración de enrutamiento de un circuito ExpressRoute en el modelo de implementación de Resource Manager mediante Azure Portal. También puede ver cómo comprobar el estado de los emparejamientos de un circuito ExpressRoute, así como el modo de actualizarlos o eliminarlos y desaprovisionarlos. Si quiere usar un método diferente para trabajar con el circuito, seleccione un artículo de la lista siguiente:
+En este artículo le ayuda a crear y administrar la configuración de enrutamiento para un circuito ExpressRoute en modelo de implementación de administrador de recursos de hello mediante Hola portal de Azure. También puede comprobar el estado de hello, update o delete y desaprovisionar los emparejamientos de un circuito de ExpressRoute. Si desea toouse una toowork otro método con el circuito, seleccione un artículo de hello lista siguiente:
 
 
 ## <a name="configuration-prerequisites"></a>Requisitos previos de configuración
 
-* Antes de comenzar la configuración, asegúrese de que ha revisado la página de [requisitos previos](expressroute-prerequisites.md), la página de [requisitos de enrutamiento](expressroute-routing.md) y la página de [flujos de trabajo](expressroute-workflows.md).
-* Tiene que tener un circuito ExpressRoute activo. Antes de continuar, siga las instrucciones para [crear un circuito ExpressRoute](expressroute-howto-circuit-portal-resource-manager.md) y para que el proveedor de conectividad habilite el circuito. El circuito ExpressRoute debe estar en un estado habilitado y aprovisionado para poder ejecutar los cmdlets de las secciones siguientes.
-* Si tiene pensado usar una clave compartida o un hash MD5, asegúrese de utilizarlos en ambos lados del túnel y limite el número de caracteres a 25 como máximo.
+* Asegúrese de que ha revisado hello [requisitos previos](expressroute-prerequisites.md) página hello [requisitos de enrutamiento](expressroute-routing.md) hello y página [flujos de trabajo](expressroute-workflows.md) página antes de comenzar la configuración.
+* Tiene que tener un circuito ExpressRoute activo. Siga las instrucciones de hello demasiado[crear un circuito ExpressRoute](expressroute-howto-circuit-portal-resource-manager.md) y tener circuito de hello habilitada por el proveedor de conectividad antes de continuar. Hola circuito de ExpressRoute debe estar en un estado habilitado y aprovisionado para usted toobe toorun capaz de hello cmdlets en las secciones siguientes se Hola.
+* Si tiene previsto toouse un hash MD5/clave compartido, ser seguro toouse esto en ambos lados del Hola túnel y límite Hola el número máximo de caracteres tooa de 25.
 
-Estas instrucciones se aplican solo a los circuitos creados con proveedores de servicios que ofrecen servicios de conectividad de capa 2. Si usa un proveedor de servicios que ofrece servicios administrados de nivel 3 (normalmente VPN IP, como MPLS), el mismo proveedor de conectividad configura y administra el enrutamiento. 
+Estas instrucciones aplican solo toocircuits creado con proveedores de servicios que ofrece servicios de conectividad de nivel 2. Si usa un proveedor de servicios que ofrece servicios administrados de nivel 3 (normalmente VPN IP, como MPLS), el mismo proveedor de conectividad configura y administra el enrutamiento. 
 
 > [!IMPORTANT]
-> Actualmente no anunciamos los emparejamientos configurados por proveedores de servicios a través del Portal de administración de servicios. Se está trabajando para habilitar esta funcionalidad pronto. Antes de configurar los emparejamientos BGP, realice las comprobaciones pertinentes con su proveedor de servicios.
+> Se actualmente no se publica emparejamientos configurados por los proveedores de servicios a través del portal de administración de servicios de Hola. Se está trabajando para habilitar esta funcionalidad pronto. Antes de configurar los emparejamientos BGP, realice las comprobaciones pertinentes con su proveedor de servicios.
 > 
 > 
 
-Puede configurar una, dos o las tres configuraciones entre pares (Azure privado, Azure público y Microsoft) para un circuito ExpressRoute. Puede establecer las configuraciones entre pares en cualquier orden. Pero tiene que asegurarse de que completa cada configuración entre pares de una en una.
+Puede configurar una, dos o las tres configuraciones entre pares (Azure privado, Azure público y Microsoft) para un circuito ExpressRoute. Puede establecer las configuraciones entre pares en cualquier orden. Sin embargo, debe asegurarse de completar configuración de Hola de cada uno de ellos emparejamiento a la vez.
 
 ## <a name="azure-private-peering"></a>Configuración entre pares privados de Azure
 
-Esta sección le ayuda a crear, obtener, actualizar y eliminar la configuración de emparejamiento privado de Azure para un circuito ExpressRoute.
+En esta sección le ayuda a crear, obtener, actualizar y eliminar hello Azure configuración privada de emparejamiento de un circuito de ExpressRoute.
 
-### <a name="to-create-azure-private-peering"></a>Creación de un emparejamiento privado de Azure
+### <a name="toocreate-azure-private-peering"></a>toocreate emparejamiento privado de Azure
 
-1. Configure el circuito de ExpressRoute. Antes de continuar, asegúrese de que el proveedor de conectividad ha aprovisionado el circuito por completo.
+1. Configurar circuito de ExpressRoute Hola. Asegúrese de que el circuito de hello está aprovisionado por completo por el proveedor de conectividad de hello antes de continuar.
 
   ![list](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
-2. Establecimiento de la configuración entre pares privados de Azure para el circuito. Asegúrese de que tiene los elementos siguientes antes de continuar con los siguientes pasos:
+2. Configurar Azure intercambio de tráfico privado para el circuito de Hola. Asegúrese de que dispone de hello siguientes elementos antes de continuar con los pasos siguientes de hello:
 
-  * Una subred /30 para el vínculo principal. La subred no debe ser parte de ningún espacio de direcciones reservado para redes virtuales.
-  * Una subred /30 para el vínculo secundario. La subred no debe ser parte de ningún espacio de direcciones reservado para redes virtuales.
-  * Un identificador VLAN válido para establecer esta configuración entre pares. Asegúrese de que ninguna otra configuración entre pares en el circuito usa el mismo identificador de VLAN.
+  * / 30 subred para el vínculo principal Hola. subred de Hello no debe formar parte de cualquier espacio de direcciones reservada para las redes virtuales.
+  * / 30 subred para el vínculo secundario Hola. subred de Hello no debe formar parte de cualquier espacio de direcciones reservada para las redes virtuales.
+  * Un tooestablish de Id. de VLAN válido este emparejamiento correctamente. No Asegúrese de que ningún otro emparejamiento en el circuito de hello usa Hola mismo identificador de VLAN.
   * Número de sistema autónomo (AS) para la configuración entre pares. Puede usar 2 bytes o 4 bytes como números AS. Puede usar un número AS privado para esta configuración entre pares. Asegúrese de que no usa 65515.
-  * **Opcional:** un hash MD5 si elige usar uno.
-3. Seleccione la fila de emparejamiento privado de Azure, como se muestra en el ejemplo siguiente:
+  * **Opcional:** un hash MD5 si elige toouse uno.
+3. Seleccione la fila de emparejamiento privada de Azure de hello, como se muestra en el siguiente ejemplo de Hola:
 
   ![privado](./media/expressroute-howto-routing-portal-resource-manager/rprivate1.png)
-4. Configure el emparejamiento privado. La siguiente imagen muestra un ejemplo de configuración:
+4. Configure el emparejamiento privado. Hola siguiente imagen muestra un ejemplo de configuración:
 
   ![configurar el emparejamiento privado](./media/expressroute-howto-routing-portal-resource-manager/rprivate2.png)
-5. Guarde la configuración una vez que haya especificado todos los parámetros. Una vez que la configuración se haya aceptado correctamente, verá algo similar al siguiente ejemplo:
+5. Guardar configuración de hello una vez que haya especificado todos los parámetros. Una vez que ha aceptado correctamente la configuración de hello, verá algo similar toohello siguiente ejemplo:
 
   ![guardar emparejamiento privado](./media/expressroute-howto-routing-portal-resource-manager/rprivate3.png)
 
-### <a name="to-view-azure-private-peering-details"></a>Visualización de los detalles del emparejamiento privado
+### <a name="tooview-azure-private-peering-details"></a>tooview privada emparejamiento detalles de Azure
 
-Para ver las propiedades del emparejamiento privado de Azure seleccione el emparejamiento.
+Puede ver propiedades de Hola de emparejamiento privado Azure seleccionando Hola emparejamiento.
 
 ![ver emparejamiento privado](./media/expressroute-howto-routing-portal-resource-manager/rprivate3.png)
 
-### <a name="to-update-azure-private-peering-configuration"></a>Actualización del establecimiento de configuración del emparejamiento privado de Azure
+### <a name="tooupdate-azure-private-peering-configuration"></a>tooupdate configuración de emparejamiento privada de Azure
 
-Puede seleccionar la fila del emparejamiento y modificar las propiedades del mismo.
+Puede seleccionar la fila de hello para el emparejamiento y modificar las propiedades de emparejamiento de Hola.
 
 ![actualizar emparejamiento privado](./media/expressroute-howto-routing-portal-resource-manager/rprivate2.png)
 
-### <a name="to-delete-azure-private-peering"></a>Eliminación del emparejamiento privado de Azure
+### <a name="toodelete-azure-private-peering"></a>toodelete emparejamiento privado de Azure
 
-Para quitar la configuración de emparejamiento, seleccione el icono de eliminación, como se muestra a continuación:
+Puede quitar la configuración de emparejamiento seleccionando el icono de eliminación de hello, como se muestra en hello después de imagen:
 
 ![eliminar emparejamiento privado](./media/expressroute-howto-routing-portal-resource-manager/rprivate4.png)
 
 ## <a name="azure-public-peering"></a>Configuración entre pares públicos de Azure
 
-Esta sección le ayuda a crear, obtener, actualizar y eliminar la configuración de emparejamiento público de Azure para un circuito ExpressRoute.
+En esta sección le ayuda a crear, obtener, actualizar y eliminar hello Azure configuración de emparejamiento público de un circuito de ExpressRoute.
 
-### <a name="to-create-azure-public-peering"></a>Creación de un emparejamiento público de Azure
+### <a name="toocreate-azure-public-peering"></a>toocreate pares públicos de Azure
 
-1. Configure un circuito de ExpressRoute. Antes de continuar, asegúrese de que el proveedor de que el proveedor de conectividad ha aprovisionado el circuito por completo.
+1. Configure un circuito de ExpressRoute. Asegúrese de que el circuito de hello está aprovisionado por completo por el proveedor de conectividad de hello antes de continuar más.
 
   ![mostrar emparejamiento público](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
-2. Establezca la configuración del emparejamiento publico de Azure para el circuito. Asegúrese de que tiene los elementos siguientes antes de continuar con los siguientes pasos:
+2. Configure pares públicos de Azure para el circuito de Hola. Asegúrese de que dispone de hello siguientes elementos antes de continuar con los pasos siguientes de hello:
 
-  * Una subred /30 para el vínculo principal. Tiene que ser un prefijo IPv4 público válido.
-  * Una subred /30 para el vínculo secundario. Tiene que ser un prefijo IPv4 público válido.
-  * Un identificador VLAN válido para establecer esta configuración entre pares. Asegúrese de que ninguna otra configuración entre pares en el circuito usa el mismo identificador de VLAN.
+  * / 30 subred para el vínculo principal Hola. Tiene que ser un prefijo IPv4 público válido.
+  * / 30 subred para el vínculo secundario Hola. Tiene que ser un prefijo IPv4 público válido.
+  * Un tooestablish de Id. de VLAN válido este emparejamiento correctamente. No Asegúrese de que ningún otro emparejamiento en el circuito de hello usa Hola mismo identificador de VLAN.
   * Número de sistema autónomo (AS) para la configuración entre pares. Puede usar 2 bytes o 4 bytes como números AS.
-  * **Opcional:** un hash MD5 si elige usar uno.
-3. Seleccione la fila de emparejamiento público de Azure, como se muestra en la siguiente imagen:
+  * **Opcional:** un hash MD5 si elige toouse uno.
+3. Seleccione hello Azure fila emparejamiento público, tal como se muestra en hello después de imagen:
 
   ![seleccionar fila de emparejamiento público](./media/expressroute-howto-routing-portal-resource-manager/rpublic1.png)
-4. Configure el emparejamiento público. La siguiente imagen muestra un ejemplo de configuración:
+4. Configure el emparejamiento público. Hola siguiente imagen muestra un ejemplo de configuración:
 
   ![Configuración del emparejamiento público](./media/expressroute-howto-routing-portal-resource-manager/rpublic2.png)
-5. Guarde la configuración una vez que haya especificado todos los parámetros. Una vez que la configuración se haya aceptado correctamente, verá algo similar al siguiente ejemplo:
+5. Guardar configuración de hello una vez que haya especificado todos los parámetros. Una vez que ha aceptado correctamente la configuración de hello, verá algo similar toohello siguiente ejemplo:
 
   ![Guardado de configuración de emparejamiento público](./media/expressroute-howto-routing-portal-resource-manager/rpublic3.png)
 
-### <a name="to-view-azure-public-peering-details"></a>Visualización de detalles de un emparejamiento público de Azure
+### <a name="tooview-azure-public-peering-details"></a>tooview Azure pública emparejamiento detalles
 
-Para ver las propiedades de un emparejamiento público de Azure, seleccione el emparejamiento.
+Puede ver propiedades de Hola de emparejamiento público Azure seleccionando Hola emparejamiento.
 
 ![ver propiedades de emparejamiento público](./media/expressroute-howto-routing-portal-resource-manager/rpublic3.png)
 
-### <a name="to-update-azure-public-peering-configuration"></a>Actualización del establecimiento de configuración del emparejamiento público de Azure
+### <a name="tooupdate-azure-public-peering-configuration"></a>tooupdate configuración de interconexión pública de Azure
 
-Puede seleccionar la fila del emparejamiento y modificar las propiedades del mismo.
+Puede seleccionar la fila de hello para el emparejamiento y modificar las propiedades de emparejamiento de Hola.
 
 ![seleccionar fila de emparejamiento público](./media/expressroute-howto-routing-portal-resource-manager/rpublic2.png)
 
-### <a name="to-delete-azure-public-peering"></a>Eliminación del emparejamiento público de Azure
+### <a name="toodelete-azure-public-peering"></a>toodelete pares públicos de Azure
 
-Para quitar la configuración de emparejamiento, seleccione el icono de eliminación, como se muestra en el ejemplo siguiente:
+Puede quitar la configuración de emparejamiento seleccionando el icono de eliminación de hello, como se muestra en el siguiente ejemplo de Hola:
 
 ![eliminar emparejamiento público](./media/expressroute-howto-routing-portal-resource-manager/rpublic4.png)
 
 ## <a name="microsoft-peering"></a>Emparejamiento de Microsoft
 
-Esta sección le ayuda a crear, obtener, actualizar y eliminar la configuración de emparejamiento de Microsoft para un circuito ExpressRoute.
+En esta sección le ayuda a crear, obtener, actualizar y eliminar la configuración de emparejamiento de Microsoft de Hola por un circuito ExpressRoute.
 
 > [!IMPORTANT]
-> Se anunciarán todos los prefijos de servicio para el emparejamiento de Microsoft de los circuitos ExpressRoute que se configuraron antes del 1 de agosto de 2017, incluso si no se definen filtros de ruta. No se anunciará ningún prefijo para el emparejamiento de Microsoft de los circuitos ExpressRoute que se configuraron el 1 de agosto de 2017 o con posterioridad, hasta que se asocie un filtro de ruta al circuito. Para más información, consulte [Configuración de un filtro de ruta para el emparejamiento de Microsoft](how-to-routefilter-powershell.md).
+> Emparejamiento de Microsoft de circuitos ExpressRoute que estaban configurados anterior tooAugust 1, 2017 tendrá todos los prefijos de servicio implementados a través de emparejamiento de Microsoft hello, incluso si no se definen los filtros de ruta. Emparejamiento de Microsoft de circuitos ExpressRoute configurados en o después del 1 de agosto de 2017 no tendrá todos los prefijos anunciados hasta que se conecte un filtro de ruta toohello circuito. Para más información, consulte [Configuración de un filtro de ruta para el emparejamiento de Microsoft](how-to-routefilter-powershell.md).
 > 
 > 
 
-### <a name="to-create-microsoft-peering"></a>Creación del emparejamiento de Microsoft
+### <a name="toocreate-microsoft-peering"></a>emparejamiento de Microsoft toocreate
 
-1. Configure un circuito de ExpressRoute. Antes de continuar, asegúrese de que el proveedor de que el proveedor de conectividad ha aprovisionado el circuito por completo.
+1. Configure un circuito de ExpressRoute. Asegúrese de que el circuito de hello está aprovisionado por completo por el proveedor de conectividad de hello antes de continuar más.
 
   ![mostrar emparejamiento de Microsoft](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
-2. Establezca la configuración del emparejamiento de Microsoft para el circuito. Asegúrese de que tiene la siguiente información antes de empezar:
+2. Configurar Microsoft emparejamiento para el circuito de Hola. Asegúrese de que haya Hola siguiente información antes de continuar.
 
-  * Una subred /30 para el vínculo principal. Debe ser un prefijo de IPv4 público válido que sea de su propiedad y esté registrado en un Registro regional de Internet (RIR) o un Registro de enrutamiento de Internet (IRR).
-  * Una subred /30 para el vínculo secundario. Debe ser un prefijo de IPv4 público válido que sea de su propiedad y esté registrado en un Registro regional de Internet (RIR) o un Registro de enrutamiento de Internet (IRR).
-  * Un identificador VLAN válido para establecer esta configuración entre pares. Asegúrese de que ninguna otra configuración entre pares en el circuito usa el mismo identificador de VLAN.
+  * / 30 subred para el vínculo principal Hola. Debe ser un prefijo de IPv4 público válido que sea de su propiedad y esté registrado en un Registro regional de Internet (RIR) o un Registro de enrutamiento de Internet (IRR).
+  * / 30 subred para el vínculo secundario Hola. Debe ser un prefijo de IPv4 público válido que sea de su propiedad y esté registrado en un Registro regional de Internet (RIR) o un Registro de enrutamiento de Internet (IRR).
+  * Un tooestablish de Id. de VLAN válido este emparejamiento correctamente. No Asegúrese de que ningún otro emparejamiento en el circuito de hello usa Hola mismo identificador de VLAN.
   * Número de sistema autónomo (AS) para la configuración entre pares. Puede usar 2 bytes o 4 bytes como números AS.
-  * Prefijos anunciados: tiene que proporcionar una lista de todos los prefijos que planea anunciar en la sesión BGP. Se aceptan solo prefijos de direcciones IP públicas. Si tiene pensado enviar un conjunto de prefijos, puede enviar una lista separada por comas. Estos prefijos tienen que estar registrados a su nombre en un Registro regional de Internet (RIR) o un Registro de enrutamiento de Internet (IRR).
-  * **Opcional:** Cliente ASN: si los prefijos anunciados no están registrados en el número AS de emparejamiento, puede especificar el número de AS en el que están registrados.
-  * Nombre del enrutamiento del Registro: puede especificar el RIR o TIR en el que están registrados el número AS y los prefijos.
-  * **Opcional:** un hash MD5 si elige usar uno.
-3. Puede seleccionar el emparejamiento que desea configurar, como se muestra en el ejemplo siguiente. Seleccione la fila del emparejamiento de Microsoft.
+  * Anuncian prefijos: debe proporcionar una lista de todos los prefijos piensa tooadvertise en las sesiones BGP Hola. Se aceptan solo prefijos de direcciones IP públicas. Si tiene previsto toosend un conjunto de prefijos, puede enviar una lista separada por comas. Estos prefijos deben ser tooyou registrado en un RIR / IRR.
+  * **Opcional:** cliente ASN: si es que los prefijos de publicidad que no están registrado toohello emparejamiento como número, puede especificar hello como número toowhich están registrados.
+  * Nombre del enrutamiento del registro: Puede especificar Hola RIR / IRR en qué hello como número y los prefijos registrados.
+  * **Opcional:** un hash MD5 si elige toouse uno.
+3. Puede seleccionar Hola emparejamiento desea tooconfigure, como se muestra en hello después de ejemplo. Seleccione la fila de emparejamiento de Microsoft de Hola.
 
   ![seleccionar fila de emparejamiento de Microsoft](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft1.png)
-4. Configure el emparejamiento de Microsoft La siguiente imagen muestra un ejemplo de configuración:
+4. Configure el emparejamiento de Microsoft Hola siguiente imagen muestra un ejemplo de configuración:
 
   ![configurar emparejamiento de Microsoft](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft2.png)
-5. Guarde la configuración una vez que haya especificado todos los parámetros.
+5. Guardar configuración de hello una vez que haya especificado todos los parámetros.
 
-  Si el circuito llega a un estado de validación necesaria (como se muestra en la imagen), debe abrir una incidencia de soporte técnico para mostrar la prueba de propiedad de los prefijos a nuestro equipo de soporte técnico.
+  Si el circuito obtiene tooa 'Validación necesaria' estado (como se muestra en la imagen de hello), debe abrir una tooshow de vale de soporte técnico de prueba de posesión del equipo de soporte técnico de hello prefijos tooour.
 
   ![Guardado de la configuración de emparejamiento de Microsoft](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft5.png)
 
-  Puede abrir un vale de soporte técnico directamente desde el portal, tal como se muestra en el ejemplo siguiente:
+  Puede abrir una incidencia de soporte técnico directamente desde el portal de hello, como se muestra en el siguiente ejemplo de Hola:
 
   ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft6.png)
 
 
-1. Después de que la configuración se haya aceptado correctamente, verá algo similar a la imagen siguiente:
+1. Una vez que ha aceptado correctamente la configuración de hello, verá algo similar toohello después de imagen:
 
   ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft7.png)
 
-### <a name="to-view-microsoft-peering-details"></a>Visualización de detalles del emparejamiento de Microsoft
+### <a name="tooview-microsoft-peering-details"></a>detalles de emparejamiento de Microsoft tooview
 
-Para ver las propiedades de un emparejamiento público de Azure, seleccione el emparejamiento.
+Puede ver propiedades de Hola de emparejamiento público Azure seleccionando Hola emparejamiento.
 
 ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft3.png)
 
-### <a name="to-update-microsoft-peering-configuration"></a>Actualización de la configuración de emparejamiento de Microsoft
+### <a name="tooupdate-microsoft-peering-configuration"></a>configuración de emparejamiento de Microsoft tooupdate
 
-Puede seleccionar la fila del emparejamiento y modificar las propiedades del mismo.
+Puede seleccionar la fila de hello para el emparejamiento y modificar las propiedades de emparejamiento de Hola.
 
 ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft7.png)
 
-### <a name="to-delete-microsoft-peering"></a>Eliminación del emparejamiento de Microsoft
+### <a name="toodelete-microsoft-peering"></a>emparejamiento de Microsoft toodelete
 
-Para quitar la configuración de emparejamiento, seleccione el icono de eliminación, como se muestra a continuación:
+Puede quitar la configuración de emparejamiento seleccionando el icono de eliminación de hello, como se muestra en hello después de imagen:
 
 ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft4.png)
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Siguiente paso, [Conexión de una red virtual a un circuito ExpressRoute](expressroute-howto-linkvnet-portal-resource-manager.md)
+Siguiente paso, [vincular un circuito de ExpressRoute de tooan de red virtual](expressroute-howto-linkvnet-portal-resource-manager.md)
 * Para más información sobre los flujos de trabajo de ExpressRoute, vea [Flujos de trabajo de ExpressRoute](expressroute-workflows.md).
 * Para más información sobre el emparejamiento de circuitos, vea [Circuitos y dominios de enrutamiento de ExpressRoute](expressroute-circuit-peerings.md).
 * Para más información sobre redes virtuales, vea [Información general sobre redes virtuales](../virtual-network/virtual-networks-overview.md).
