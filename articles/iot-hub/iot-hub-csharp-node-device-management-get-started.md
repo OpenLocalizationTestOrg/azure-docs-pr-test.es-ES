@@ -1,6 +1,6 @@
 ---
-title: "Introducción a la administración de dispositivos de IoT Hub de Azure (:NET y Node) | Microsoft Docs"
-description: "Describe cómo usar la administración de dispositivos de IoT Hub de Azure para iniciar un reinicio del dispositivo remoto. Usará el SDK de dispositivo IoT de Azure para Node.js con el fin de implementar una aplicación de dispositivo simulado que incluye un método directo, además del SDK de servicio IoT de Azure para .NET con el objetivo de implementar una aplicación de servicio que invoque el método directo."
+title: "aaaGet comenzar con la administración de dispositivos del centro de IoT de Azure (nodo/.NET) | Documentos de Microsoft"
+description: "¿Cómo tooinitiate de administración de dispositivos de centro de IoT de Azure toouse reiniciar un dispositivo remoto. Usar dispositivos de IoT de Azure de hello SDK para Node.js tooimplement una aplicación de dispositivo simulado que incluye un método directo y el servicio IoT de Azure SDK para .NET tooimplement una aplicación de servicio que invoca el método directo Hola Hola."
 services: iot-hub
 documentationcenter: .net
 author: juanjperez
@@ -14,55 +14,55 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/17/2016
 ms.author: juanpere
-ms.openlocfilehash: d97fc5493570985f94c23032c870628d6a089dcd
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: ea6d50dfac1c222d7836e3bf5503c6c9b8c89dfa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-started-with-device-management-netnode"></a><span data-ttu-id="8feda-104">Introducción a la administración de dispositivos (.NET y Node)</span><span class="sxs-lookup"><span data-stu-id="8feda-104">Get started with device management (.NET/Node)</span></span>
+# <a name="get-started-with-device-management-netnode"></a><span data-ttu-id="0e9ae-104">Introducción a la administración de dispositivos (.NET y Node)</span><span class="sxs-lookup"><span data-stu-id="0e9ae-104">Get started with device management (.NET/Node)</span></span>
 
 [!INCLUDE [iot-hub-selector-dm-getstarted](../../includes/iot-hub-selector-dm-getstarted.md)]
 
-<span data-ttu-id="8feda-105">En este tutorial se muestra cómo realizar las siguientes acciones:</span><span class="sxs-lookup"><span data-stu-id="8feda-105">This tutorial shows you how to:</span></span>
+<span data-ttu-id="0e9ae-105">En este tutorial se muestra cómo realizar las siguientes acciones:</span><span class="sxs-lookup"><span data-stu-id="0e9ae-105">This tutorial shows you how to:</span></span>
 
-* <span data-ttu-id="8feda-106">Usar Azure Portal para un IoT Hub y una identidad de dispositivo en este.</span><span class="sxs-lookup"><span data-stu-id="8feda-106">Use the Azure portal to create an IoT Hub and create a device identity in your IoT hub.</span></span>
-* <span data-ttu-id="8feda-107">Crear una aplicación de dispositivo simulado que contiene un método directo que reinicia ese dispositivo.</span><span class="sxs-lookup"><span data-stu-id="8feda-107">Create a simulated device app that contains a direct method that reboots that device.</span></span> <span data-ttu-id="8feda-108">Los métodos directos se invocan desde la nube.</span><span class="sxs-lookup"><span data-stu-id="8feda-108">Direct methods are invoked from the cloud.</span></span>
-* <span data-ttu-id="8feda-109">Crear una aplicación de consola de .NET que llame a un método directo de reinicio en la aplicación de dispositivo simulado mediante su centro de IoT Hub.</span><span class="sxs-lookup"><span data-stu-id="8feda-109">Create a .NET console app that calls the reboot direct method in the simulated device app through your IoT hub.</span></span>
+* <span data-ttu-id="0e9ae-106">Usar hello toocreate portal Azure un centro de IoT y cree una identidad de dispositivo en el centro de IoT.</span><span class="sxs-lookup"><span data-stu-id="0e9ae-106">Use hello Azure portal toocreate an IoT Hub and create a device identity in your IoT hub.</span></span>
+* <span data-ttu-id="0e9ae-107">Crear una aplicación de dispositivo simulado que contiene un método directo que reinicia ese dispositivo.</span><span class="sxs-lookup"><span data-stu-id="0e9ae-107">Create a simulated device app that contains a direct method that reboots that device.</span></span> <span data-ttu-id="0e9ae-108">Se invocan métodos directos de nube de Hola.</span><span class="sxs-lookup"><span data-stu-id="0e9ae-108">Direct methods are invoked from hello cloud.</span></span>
+* <span data-ttu-id="0e9ae-109">Crear una aplicación de consola .NET que llama a métodos directas de reinicio de hello en la aplicación de dispositivo simulado de hello a través de su centro de IoT.</span><span class="sxs-lookup"><span data-stu-id="0e9ae-109">Create a .NET console app that calls hello reboot direct method in hello simulated device app through your IoT hub.</span></span>
 
-<span data-ttu-id="8feda-110">Al final de este tutorial, tendrá una aplicación de dispositivo de consola de Node.js y una aplicación back-end de consola .NET (C#):</span><span class="sxs-lookup"><span data-stu-id="8feda-110">At the end of this tutorial, you have a Node.js console device app and a .NET (C#) console back-end app:</span></span>
+<span data-ttu-id="0e9ae-110">Al final de Hola de este tutorial, tendrá una aplicación de dispositivo de consola de Node.js y una aplicación de back-end de consola .NET (C#):</span><span class="sxs-lookup"><span data-stu-id="0e9ae-110">At hello end of this tutorial, you have a Node.js console device app and a .NET (C#) console back-end app:</span></span>
 
-<span data-ttu-id="8feda-111">**dmpatterns_getstarted_device.js**, que se conecta al IoT Hub con la identidad del dispositivo creada anteriormente, recibe un método directo de reinicio, simula un reinicio físico y notifica la hora del último reinicio.</span><span class="sxs-lookup"><span data-stu-id="8feda-111">**dmpatterns_getstarted_device.js**, which connects to your IoT hub with the device identity created earlier, receives a reboot direct method, simulates a physical reboot, and reports the time for the last reboot.</span></span>
+<span data-ttu-id="0e9ae-111">**dmpatterns_getstarted_device.js**, centro de IoT tooyour que conecta con la identidad del dispositivo Hola creado anteriormente, recibe un método directo de reinicio, simula reiniciar el equipo físico e informa Hola el tiempo de último reinicio de Hola.</span><span class="sxs-lookup"><span data-stu-id="0e9ae-111">**dmpatterns_getstarted_device.js**, which connects tooyour IoT hub with hello device identity created earlier, receives a reboot direct method, simulates a physical reboot, and reports hello time for hello last reboot.</span></span>
 
-<span data-ttu-id="8feda-112">**TriggerReboot**, que llama a un método directo en la aplicación de dispositivo simulado, muestra la respuesta y muestra las propiedades notificadas actualizadas.</span><span class="sxs-lookup"><span data-stu-id="8feda-112">**TriggerReboot**, which calls a direct method in the simulated device app, displays the response, and displays the updated reported properties.</span></span>
+<span data-ttu-id="0e9ae-112">**TriggerReboot**, que llama a un método directo en la aplicación de dispositivo simulado de hello, muestra la respuesta de Hola y Hola muestra actualizado notificado propiedades.</span><span class="sxs-lookup"><span data-stu-id="0e9ae-112">**TriggerReboot**, which calls a direct method in hello simulated device app, displays hello response, and displays hello updated reported properties.</span></span>
 
-<span data-ttu-id="8feda-113">Para completar este tutorial, necesitará lo siguiente:</span><span class="sxs-lookup"><span data-stu-id="8feda-113">To complete this tutorial, you need the following:</span></span>
+<span data-ttu-id="0e9ae-113">toocomplete este tutorial, necesita Hola siguientes:</span><span class="sxs-lookup"><span data-stu-id="0e9ae-113">toocomplete this tutorial, you need hello following:</span></span>
 
-* <span data-ttu-id="8feda-114">Visual Studio 2015 o Visual Studio 2017.</span><span class="sxs-lookup"><span data-stu-id="8feda-114">Visual Studio 2015 or Visual Studio 2017.</span></span>
-* <span data-ttu-id="8feda-115">Node.js versión 0.12.x o posteriores.</span><span class="sxs-lookup"><span data-stu-id="8feda-115">Node.js version 0.12.x or later,</span></span> <br/>  <span data-ttu-id="8feda-116">En [Preparación del entorno de desarrollo][lnk-dev-setup] se describe cómo instalar Node.js para este tutorial en Windows o Linux.</span><span class="sxs-lookup"><span data-stu-id="8feda-116">[Prepare your development environment][lnk-dev-setup] describes how to install Node.js for this tutorial on either Windows or Linux.</span></span>
-* <span data-ttu-id="8feda-117">Una cuenta de Azure activa.</span><span class="sxs-lookup"><span data-stu-id="8feda-117">An active Azure account.</span></span> <span data-ttu-id="8feda-118">(En caso de no tenerla, puede crear una [cuenta gratuita][lnk-free-trial] en solo unos minutos).</span><span class="sxs-lookup"><span data-stu-id="8feda-118">(If you don't have an account, you can create a [free account][lnk-free-trial] in just a couple of minutes.)</span></span>
+* <span data-ttu-id="0e9ae-114">Visual Studio 2015 o Visual Studio 2017.</span><span class="sxs-lookup"><span data-stu-id="0e9ae-114">Visual Studio 2015 or Visual Studio 2017.</span></span>
+* <span data-ttu-id="0e9ae-115">Node.js versión 0.12.x o posteriores.</span><span class="sxs-lookup"><span data-stu-id="0e9ae-115">Node.js version 0.12.x or later,</span></span> <br/>  <span data-ttu-id="0e9ae-116">[Preparar el entorno de desarrollo] [ lnk-dev-setup] describe cómo tooinstall Node.js para este tutorial en Windows o Linux.</span><span class="sxs-lookup"><span data-stu-id="0e9ae-116">[Prepare your development environment][lnk-dev-setup] describes how tooinstall Node.js for this tutorial on either Windows or Linux.</span></span>
+* <span data-ttu-id="0e9ae-117">Una cuenta de Azure activa.</span><span class="sxs-lookup"><span data-stu-id="0e9ae-117">An active Azure account.</span></span> <span data-ttu-id="0e9ae-118">(En caso de no tenerla, puede crear una [cuenta gratuita][lnk-free-trial] en solo unos minutos).</span><span class="sxs-lookup"><span data-stu-id="0e9ae-118">(If you don't have an account, you can create a [free account][lnk-free-trial] in just a couple of minutes.)</span></span>
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
-## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a><span data-ttu-id="8feda-119">Desencadenar un reinicio remoto en el dispositivo con un método directo</span><span class="sxs-lookup"><span data-stu-id="8feda-119">Trigger a remote reboot on the device using a direct method</span></span>
-<span data-ttu-id="8feda-120">En esta sección, creará una aplicación de consola de .NET (mediante C#) que inicia una actualización remota en un dispositivo mediante un método directo.</span><span class="sxs-lookup"><span data-stu-id="8feda-120">In this section, you create a .NET console app (using C#) that initiates a remote reboot on a device using a direct method.</span></span> <span data-ttu-id="8feda-121">La aplicación usa las consultas gemelas de dispositivo para detectar la hora en que se reinició por última vez el dispositivo.</span><span class="sxs-lookup"><span data-stu-id="8feda-121">The app uses device twin queries to discover the last reboot time for that device.</span></span>
+## <a name="trigger-a-remote-reboot-on-hello-device-using-a-direct-method"></a><span data-ttu-id="0e9ae-119">Desencadenar un reinicio remoto en dispositivo Hola utilizando un método directo</span><span class="sxs-lookup"><span data-stu-id="0e9ae-119">Trigger a remote reboot on hello device using a direct method</span></span>
+<span data-ttu-id="0e9ae-120">En esta sección, creará una aplicación de consola de .NET (mediante C#) que inicia una actualización remota en un dispositivo mediante un método directo.</span><span class="sxs-lookup"><span data-stu-id="0e9ae-120">In this section, you create a .NET console app (using C#) that initiates a remote reboot on a device using a direct method.</span></span> <span data-ttu-id="0e9ae-121">aplicación Hello usa Hola de toodiscover de consultas última hora de reinicio de dispositivo gemelas para dicho dispositivo.</span><span class="sxs-lookup"><span data-stu-id="0e9ae-121">hello app uses device twin queries toodiscover hello last reboot time for that device.</span></span>
 
-1. <span data-ttu-id="8feda-122">En Visual Studio, agregue un proyecto de escritorio clásico de Windows de Visual C# a una nueva solución mediante la plantilla de proyecto **Aplicación de consola (.NET Framework)**.</span><span class="sxs-lookup"><span data-stu-id="8feda-122">In Visual Studio, add a Visual C# Windows Classic Desktop project to a new solution by using the **Console App (.NET Framework)** project template.</span></span> <span data-ttu-id="8feda-123">Asegúrese de que la versión de .NET Framework sea 4.5.1 o una posterior.</span><span class="sxs-lookup"><span data-stu-id="8feda-123">Make sure the .NET Framework version is 4.5.1 or later.</span></span> <span data-ttu-id="8feda-124">Asigne al proyecto el nombre **TriggerReboot**.</span><span class="sxs-lookup"><span data-stu-id="8feda-124">Name the project **TriggerReboot**.</span></span>
+1. <span data-ttu-id="0e9ae-122">En Visual Studio, agregue una nueva solución de Visual C# escritorio clásico de Windows proyecto tooa mediante el uso de hello **aplicación de consola (.NET Framework)** plantilla de proyecto.</span><span class="sxs-lookup"><span data-stu-id="0e9ae-122">In Visual Studio, add a Visual C# Windows Classic Desktop project tooa new solution by using hello **Console App (.NET Framework)** project template.</span></span> <span data-ttu-id="0e9ae-123">Asegúrese de que la versión de .NET Framework de hello es 4.5.1 o posterior.</span><span class="sxs-lookup"><span data-stu-id="0e9ae-123">Make sure hello .NET Framework version is 4.5.1 or later.</span></span> <span data-ttu-id="0e9ae-124">Proyecto de hello Name **TriggerReboot**.</span><span class="sxs-lookup"><span data-stu-id="0e9ae-124">Name hello project **TriggerReboot**.</span></span>
 
     ![Nuevo proyecto de escritorio clásico de Windows de Visual C#][img-createapp]
 
-2. <span data-ttu-id="8feda-126">En el Explorador de soluciones, haga clic con el botón derecho en el proyecto **TriggerReboot** y, luego, haga clic en **Administrar paquetes NuGet**.</span><span class="sxs-lookup"><span data-stu-id="8feda-126">In Solution Explorer, right-click the **TriggerReboot** project, and then click **Manage NuGet Packages**.</span></span>
-3. <span data-ttu-id="8feda-127">En la ventana **Administrador de paquetes NuGet**, seleccione **Examinar**, busque **microsoft.azure.devices**, seleccione **Instalar** para instalar el paquete **Microsoft.Azure.Devices** y acepte los términos de uso.</span><span class="sxs-lookup"><span data-stu-id="8feda-127">In the **NuGet Package Manager** window, select **Browse**, search for **microsoft.azure.devices**, select **Install** to install the **Microsoft.Azure.Devices** package, and accept the terms of use.</span></span> <span data-ttu-id="8feda-128">Este procedimiento permite descargar, instalar y agregar una referencia al [paquete NuGet del SDK de dispositivo de IoT de Azure][lnk-nuget-service-sdk] y sus dependencias.</span><span class="sxs-lookup"><span data-stu-id="8feda-128">This procedure downloads, installs, and adds a reference to the [Azure IoT service SDK][lnk-nuget-service-sdk] NuGet package and its dependencies.</span></span>
+2. <span data-ttu-id="0e9ae-126">En el Explorador de soluciones, haga clic en hello **TriggerReboot** del proyecto y, a continuación, haga clic en **administrar paquetes de NuGet**.</span><span class="sxs-lookup"><span data-stu-id="0e9ae-126">In Solution Explorer, right-click hello **TriggerReboot** project, and then click **Manage NuGet Packages**.</span></span>
+3. <span data-ttu-id="0e9ae-127">Hola **Administrador de paquetes de NuGet** ventana, seleccione **examinar**, busque **microsoft.azure.devices**, seleccione **instalar** tooinstall Hola **Microsoft.Azure.Devices** empaquetar y acepte los términos de Hola de uso.</span><span class="sxs-lookup"><span data-stu-id="0e9ae-127">In hello **NuGet Package Manager** window, select **Browse**, search for **microsoft.azure.devices**, select **Install** tooinstall hello **Microsoft.Azure.Devices** package, and accept hello terms of use.</span></span> <span data-ttu-id="0e9ae-128">Este procedimiento se descarga, se instala y se agrega una referencia toohello [IoT de Azure SDK del servicio] [ lnk-nuget-service-sdk] NuGet paquete y sus dependencias.</span><span class="sxs-lookup"><span data-stu-id="0e9ae-128">This procedure downloads, installs, and adds a reference toohello [Azure IoT service SDK][lnk-nuget-service-sdk] NuGet package and its dependencies.</span></span>
 
     ![Ventana del Administrador de paquetes NuGet][img-servicenuget]
-4. <span data-ttu-id="8feda-130">Agregue las siguientes instrucciones `using` al principio del archivo **Program.cs** :</span><span class="sxs-lookup"><span data-stu-id="8feda-130">Add the following `using` statements at the top of the **Program.cs** file:</span></span>
+4. <span data-ttu-id="0e9ae-130">Agregue los siguiente hello `using` las instrucciones en la parte superior de Hola de hello **Program.cs** archivo:</span><span class="sxs-lookup"><span data-stu-id="0e9ae-130">Add hello following `using` statements at hello top of hello **Program.cs** file:</span></span>
    
         using Microsoft.Azure.Devices;
         using Microsoft.Azure.Devices.Shared;
         
-5. <span data-ttu-id="8feda-131">Agregue los campos siguientes a la clase **Program** .</span><span class="sxs-lookup"><span data-stu-id="8feda-131">Add the following fields to the **Program** class.</span></span> <span data-ttu-id="8feda-132">Sustituya el valor de marcador de posición por la cadena de conexión de IoT Hub que creó en la sección anterior y el dispositivo de destino.</span><span class="sxs-lookup"><span data-stu-id="8feda-132">Replace the placeholder value with the IoT Hub connection string for the hub that you created in the previous section and the target device.</span></span>
+5. <span data-ttu-id="0e9ae-131">Agregar Hola después campos toohello **programa** clase.</span><span class="sxs-lookup"><span data-stu-id="0e9ae-131">Add hello following fields toohello **Program** class.</span></span> <span data-ttu-id="0e9ae-132">Sustituya el valor de marcador de posición de hello con la cadena de conexión de centro de IoT para los concentradores de Hola que creó en la sección anterior de Hola y el dispositivo de destino de Hola Hola.</span><span class="sxs-lookup"><span data-stu-id="0e9ae-132">Replace hello placeholder value with hello IoT Hub connection string for hello hub that you created in hello previous section and hello target device.</span></span>
    
         static RegistryManager registryManager;
         static string connString = "{iot hub connection string}";
@@ -70,7 +70,7 @@ ms.lasthandoff: 08/18/2017
         static JobClient jobClient;
         static string targetDevice = "{deviceIdForTargetDevice}";
         
-6. <span data-ttu-id="8feda-133">Agregue el método siguiente a la clase **Program**.</span><span class="sxs-lookup"><span data-stu-id="8feda-133">Add the following method to the **Program** class.</span></span>  <span data-ttu-id="8feda-134">Este código obtiene el dispositivo gemelo para el dispositivo de reinicio y genera las propiedades notificadas.</span><span class="sxs-lookup"><span data-stu-id="8feda-134">This code gets the device twin for the rebooting device and outputs the reported properties.</span></span>
+6. <span data-ttu-id="0e9ae-133">Agregar Hola siguiendo el método toohello **programa** clase.</span><span class="sxs-lookup"><span data-stu-id="0e9ae-133">Add hello following method toohello **Program** class.</span></span>  <span data-ttu-id="0e9ae-134">Este gemelas de dispositivo de código obtiene Hola para reiniciar el sistema hello de dispositivo y las salidas de hello informó de propiedades.</span><span class="sxs-lookup"><span data-stu-id="0e9ae-134">This code gets hello device twin for hello rebooting device and outputs hello reported properties.</span></span>
    
         public static async Task QueryTwinRebootReported()
         {
@@ -78,7 +78,7 @@ ms.lasthandoff: 08/18/2017
             Console.WriteLine(twin.Properties.Reported.ToJson());
         }
         
-7. <span data-ttu-id="8feda-135">Agregue el método siguiente a la clase **Program**.</span><span class="sxs-lookup"><span data-stu-id="8feda-135">Add the following method to the **Program** class.</span></span>  <span data-ttu-id="8feda-136">Este código inicia el reinicio en el dispositivo mediante un método directo.</span><span class="sxs-lookup"><span data-stu-id="8feda-136">This code initiates the reboot on the device using a direct method.</span></span>
+7. <span data-ttu-id="0e9ae-135">Agregar Hola siguiendo el método toohello **programa** clase.</span><span class="sxs-lookup"><span data-stu-id="0e9ae-135">Add hello following method toohello **Program** class.</span></span>  <span data-ttu-id="0e9ae-136">Este código inicia el reinicio de hello en dispositivo Hola utilizando un método directo.</span><span class="sxs-lookup"><span data-stu-id="0e9ae-136">This code initiates hello reboot on hello device using a direct method.</span></span>
 
         public static async Task StartReboot()
         {
@@ -91,35 +91,35 @@ ms.lasthandoff: 08/18/2017
             Console.WriteLine("Invoked firmware update on device.");
         }
 
-7. <span data-ttu-id="8feda-137">Por último, agregue las líneas siguientes al método **Main** :</span><span class="sxs-lookup"><span data-stu-id="8feda-137">Finally, add the following lines to the **Main** method:</span></span>
+7. <span data-ttu-id="0e9ae-137">Por último, agregue Hola después líneas toohello **Main** método:</span><span class="sxs-lookup"><span data-stu-id="0e9ae-137">Finally, add hello following lines toohello **Main** method:</span></span>
    
         registryManager = RegistryManager.CreateFromConnectionString(connString);
         StartReboot().Wait();
         QueryTwinRebootReported().Wait();
-        Console.WriteLine("Press ENTER to exit.");
+        Console.WriteLine("Press ENTER tooexit.");
         Console.ReadLine();
         
-8. <span data-ttu-id="8feda-138">Compile la solución.</span><span class="sxs-lookup"><span data-stu-id="8feda-138">Build the solution.</span></span>
+8. <span data-ttu-id="0e9ae-138">Compile la solución de Hola.</span><span class="sxs-lookup"><span data-stu-id="0e9ae-138">Build hello solution.</span></span>
 
-## <a name="create-a-simulated-device-app"></a><span data-ttu-id="8feda-139">Creación de una aplicación de dispositivo simulado</span><span class="sxs-lookup"><span data-stu-id="8feda-139">Create a simulated device app</span></span>
-<span data-ttu-id="8feda-140">En esta sección:</span><span class="sxs-lookup"><span data-stu-id="8feda-140">In this section, you will</span></span>
+## <a name="create-a-simulated-device-app"></a><span data-ttu-id="0e9ae-139">Creación de una aplicación de dispositivo simulado</span><span class="sxs-lookup"><span data-stu-id="0e9ae-139">Create a simulated device app</span></span>
+<span data-ttu-id="0e9ae-140">En esta sección:</span><span class="sxs-lookup"><span data-stu-id="0e9ae-140">In this section, you will</span></span>
 
-* <span data-ttu-id="8feda-141">Creará una aplicación de consola de Node.js que responda a un método directo que se llama desde la nube.</span><span class="sxs-lookup"><span data-stu-id="8feda-141">Create a Node.js console app that responds to a direct method called by the cloud</span></span>
-* <span data-ttu-id="8feda-142">Desencadenará un reinicio del dispositivo simulado.</span><span class="sxs-lookup"><span data-stu-id="8feda-142">Trigger a simulated device reboot</span></span>
-* <span data-ttu-id="8feda-143">Usará las propiedades notificadas para permitir consultas de dispositivo gemelo a fin de identificar los dispositivos y cuándo se reiniciaron por última vez.</span><span class="sxs-lookup"><span data-stu-id="8feda-143">Use the reported properties to enable device twin queries to identify devices and when they last rebooted</span></span>
+* <span data-ttu-id="0e9ae-141">Crear una aplicación de consola de Node.js que responde tooa método directo llamado en la nube Hola</span><span class="sxs-lookup"><span data-stu-id="0e9ae-141">Create a Node.js console app that responds tooa direct method called by hello cloud</span></span>
+* <span data-ttu-id="0e9ae-142">Desencadenará un reinicio del dispositivo simulado.</span><span class="sxs-lookup"><span data-stu-id="0e9ae-142">Trigger a simulated device reboot</span></span>
+* <span data-ttu-id="0e9ae-143">Hola uso notificado propiedades tooenable dispositivos gemelas consultas tooidentify dispositivos y cuándo reinició por última vez</span><span class="sxs-lookup"><span data-stu-id="0e9ae-143">Use hello reported properties tooenable device twin queries tooidentify devices and when they last rebooted</span></span>
 
-1. <span data-ttu-id="8feda-144">Cree una nueva carpeta vacía denominada "**manageddevice**".</span><span class="sxs-lookup"><span data-stu-id="8feda-144">Create a new empty folder called **manageddevice**.</span></span>  <span data-ttu-id="8feda-145">En la carpeta **manageddevice** , cree un archivo package.json con el siguiente comando en el símbolo del sistema.</span><span class="sxs-lookup"><span data-stu-id="8feda-145">In the **manageddevice** folder, create a package.json file using the following command at your command prompt.</span></span>  <span data-ttu-id="8feda-146">Acepte todos los valores predeterminados:</span><span class="sxs-lookup"><span data-stu-id="8feda-146">Accept all the defaults:</span></span>
+1. <span data-ttu-id="0e9ae-144">Cree una nueva carpeta vacía denominada "**manageddevice**".</span><span class="sxs-lookup"><span data-stu-id="0e9ae-144">Create a new empty folder called **manageddevice**.</span></span>  <span data-ttu-id="0e9ae-145">Hola **manageddevice** carpeta, cree un archivo de package.json mediante Hola siguiente comando en el símbolo del sistema.</span><span class="sxs-lookup"><span data-stu-id="0e9ae-145">In hello **manageddevice** folder, create a package.json file using hello following command at your command prompt.</span></span>  <span data-ttu-id="0e9ae-146">Acepte todos los valores predeterminados de hello:</span><span class="sxs-lookup"><span data-stu-id="0e9ae-146">Accept all hello defaults:</span></span>
    
     ```
     npm init
     ```
-2. <span data-ttu-id="8feda-147">En el símbolo del sistema, en la carpeta **manageddevice**, ejecute el siguiente comando para instalar el paquete del SDK de dispositivo **azure-iot-device** y el paquete **azure-iot-device-mqtt**:</span><span class="sxs-lookup"><span data-stu-id="8feda-147">At your command prompt in the **manageddevice** folder, run the following command to install the **azure-iot-device** Device SDK package and **azure-iot-device-mqtt** package:</span></span>
+2. <span data-ttu-id="0e9ae-147">En el símbolo del sistema en hello **manageddevice** carpeta, ejecute hello después comando tooinstall hello **dispositivos de iot de azure** paquete del SDK de dispositivo y **azure iot dispositivo-mqtt**paquete:</span><span class="sxs-lookup"><span data-stu-id="0e9ae-147">At your command prompt in hello **manageddevice** folder, run hello following command tooinstall hello **azure-iot-device** Device SDK package and **azure-iot-device-mqtt** package:</span></span>
    
     ```
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
-3. <span data-ttu-id="8feda-148">Con un editor de texto, cree un nuevo archivo **dmpatterns_getstarted_device.js** en la carpeta **manageddevice**.</span><span class="sxs-lookup"><span data-stu-id="8feda-148">Using a text editor, create a new **dmpatterns_getstarted_device.js** file in the **manageddevice** folder.</span></span>
-4. <span data-ttu-id="8feda-149">Agregue las siguientes instrucciones "require" al principio del archivo **dmpatterns_getstarted_device.js**:</span><span class="sxs-lookup"><span data-stu-id="8feda-149">Add the following 'require' statements at the start of the **dmpatterns_getstarted_device.js** file:</span></span>
+3. <span data-ttu-id="0e9ae-148">Con un editor de texto, cree un nuevo **dmpatterns_getstarted_device.js** archivo Hola **manageddevice** carpeta.</span><span class="sxs-lookup"><span data-stu-id="0e9ae-148">Using a text editor, create a new **dmpatterns_getstarted_device.js** file in hello **manageddevice** folder.</span></span>
+4. <span data-ttu-id="0e9ae-149">Agregar siguiente hello 'requiere' instrucciones al principio de Hola de hello **dmpatterns_getstarted_device.js** archivo:</span><span class="sxs-lookup"><span data-stu-id="0e9ae-149">Add hello following 'require' statements at hello start of hello **dmpatterns_getstarted_device.js** file:</span></span>
    
     ```
     'use strict';
@@ -127,27 +127,27 @@ ms.lasthandoff: 08/18/2017
     var Client = require('azure-iot-device').Client;
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
-5. <span data-ttu-id="8feda-150">Agregue una variable **connectionString** y utilícela para crear una instancia de **cliente**.</span><span class="sxs-lookup"><span data-stu-id="8feda-150">Add a **connectionString** variable and use it to create a **Client** instance.</span></span>  <span data-ttu-id="8feda-151">Reemplace la cadena de conexión por la cadena de conexión del dispositivo.</span><span class="sxs-lookup"><span data-stu-id="8feda-151">Replace the connection string with your device connection string.</span></span>  
+5. <span data-ttu-id="0e9ae-150">Agregar un **connectionString** variable y utilizar toocreate un **cliente** instancia.</span><span class="sxs-lookup"><span data-stu-id="0e9ae-150">Add a **connectionString** variable and use it toocreate a **Client** instance.</span></span>  <span data-ttu-id="0e9ae-151">Reemplace la cadena de conexión de hello con la cadena de conexión del dispositivo.</span><span class="sxs-lookup"><span data-stu-id="0e9ae-151">Replace hello connection string with your device connection string.</span></span>  
    
     ```
     var connectionString = 'HostName={youriothostname};DeviceId=myDeviceId;SharedAccessKey={yourdevicekey}';
     var client = Client.fromConnectionString(connectionString, Protocol);
     ```
-6. <span data-ttu-id="8feda-152">Agregue la siguiente función para implementar el método directo en el dispositivo</span><span class="sxs-lookup"><span data-stu-id="8feda-152">Add the following function to implement the direct method on the device</span></span>
+6. <span data-ttu-id="0e9ae-152">Agregar Hola siguiendo métodos directas de función tooimplement hello en dispositivo Hola</span><span class="sxs-lookup"><span data-stu-id="0e9ae-152">Add hello following function tooimplement hello direct method on hello device</span></span>
    
     ```
     var onReboot = function(request, response) {
    
-        // Respond the cloud app for the direct method
+        // Respond hello cloud app for hello direct method
         response.send(200, 'Reboot started', function(err) {
             if (!err) {
                 console.error('An error occured when sending a method response:\n' + err.toString());
             } else {
-                console.log('Response to method \'' + request.methodName + '\' sent successfully.');
+                console.log('Response toomethod \'' + request.methodName + '\' sent successfully.');
             }
         });
    
-        // Report the reboot before the physical restart
+        // Report hello reboot before hello physical restart
         var date = new Date();
         var patch = {
             iothubDM : {
@@ -174,7 +174,7 @@ ms.lasthandoff: 08/18/2017
         console.log('Rebooting!');
     };
     ```
-7. <span data-ttu-id="8feda-153">Agregue el siguiente código para abrir la conexión al centro de IoT e iniciar la escucha del método directo:</span><span class="sxs-lookup"><span data-stu-id="8feda-153">Add the following code to open the connection to your IoT hub and start the direct method listener:</span></span>
+7. <span data-ttu-id="0e9ae-153">Agregue código centro de IoT de tooopen Hola conexión tooyour siguiente de Hola e inicia el agente de escucha de hello método directo:</span><span class="sxs-lookup"><span data-stu-id="0e9ae-153">Add hello following code tooopen hello connection tooyour IoT hub and start hello direct method listener:</span></span>
    
     ```
     client.open(function(err) {
@@ -186,23 +186,23 @@ ms.lasthandoff: 08/18/2017
         }
     });
     ```
-8. <span data-ttu-id="8feda-154">Guarde y cierre el archivo **dmpatterns_getstarted_device.js**.</span><span class="sxs-lookup"><span data-stu-id="8feda-154">Save and close the **dmpatterns_getstarted_device.js** file.</span></span>
+8. <span data-ttu-id="0e9ae-154">Guarde y cierre hello **dmpatterns_getstarted_device.js** archivo.</span><span class="sxs-lookup"><span data-stu-id="0e9ae-154">Save and close hello **dmpatterns_getstarted_device.js** file.</span></span>
    
 > [!NOTE]
-> <span data-ttu-id="8feda-155">Por simplificar, este tutorial no implementa ninguna directiva de reintentos.</span><span class="sxs-lookup"><span data-stu-id="8feda-155">To keep things simple, this tutorial does not implement any retry policy.</span></span> <span data-ttu-id="8feda-156">En el código de producción, deberá implementar directivas de reintentos (por ejemplo, retroceso exponencial), tal y como se sugiere en el artículo de MSDN [Transient Fault Handling][lnk-transient-faults] (Tratamiento de errores temporales).</span><span class="sxs-lookup"><span data-stu-id="8feda-156">In production code, you should implement retry policies (such as an exponential backoff), as suggested in the MSDN article [Transient Fault Handling][lnk-transient-faults].</span></span>
+> <span data-ttu-id="0e9ae-155">tookeep cosas simples, este tutorial no implementa ninguna directiva de reintento.</span><span class="sxs-lookup"><span data-stu-id="0e9ae-155">tookeep things simple, this tutorial does not implement any retry policy.</span></span> <span data-ttu-id="0e9ae-156">En el código de producción, debe implementar directivas de reintento (por ejemplo, un retroceso exponencial), como se indica en el artículo de MSDN de hello [control de errores transitorios][lnk-transient-faults].</span><span class="sxs-lookup"><span data-stu-id="0e9ae-156">In production code, you should implement retry policies (such as an exponential backoff), as suggested in hello MSDN article [Transient Fault Handling][lnk-transient-faults].</span></span>
 
 
-## <a name="run-the-apps"></a><span data-ttu-id="8feda-157">Ejecución de las aplicaciones</span><span class="sxs-lookup"><span data-stu-id="8feda-157">Run the apps</span></span>
-<span data-ttu-id="8feda-158">Ya está preparado para ejecutar las aplicaciones.</span><span class="sxs-lookup"><span data-stu-id="8feda-158">You are now ready to run the apps.</span></span>
+## <a name="run-hello-apps"></a><span data-ttu-id="0e9ae-157">Ejecutar aplicaciones de Hola</span><span class="sxs-lookup"><span data-stu-id="0e9ae-157">Run hello apps</span></span>
+<span data-ttu-id="0e9ae-158">Ya estás listo toorun Hola aplicaciones.</span><span class="sxs-lookup"><span data-stu-id="0e9ae-158">You are now ready toorun hello apps.</span></span>
 
-1. <span data-ttu-id="8feda-159">En el símbolo del sistema dentro de la carpeta **manageddevice**, ejecute el siguiente comando para iniciar la escucha del método directo de reinicio.</span><span class="sxs-lookup"><span data-stu-id="8feda-159">At the command prompt in the **manageddevice** folder, run the following command to begin listening for the reboot direct method.</span></span>
+1. <span data-ttu-id="0e9ae-159">En línea de comandos de Hola Hola **manageddevice** carpeta, ejecute hello después toobegin comando realizar escuchas de método directo de reinicio de Hola.</span><span class="sxs-lookup"><span data-stu-id="0e9ae-159">At hello command prompt in hello **manageddevice** folder, run hello following command toobegin listening for hello reboot direct method.</span></span>
    
     ```
     node dmpatterns_getstarted_device.js
     ```
-2. <span data-ttu-id="8feda-160">Ejecute la aplicación de consola de C# **TriggerReboot**.</span><span class="sxs-lookup"><span data-stu-id="8feda-160">Run the C# console app **TriggerReboot**.</span></span> <span data-ttu-id="8feda-161">Haga clic en el proyecto **TriggerReboot**, seleccione **Depurar** y luego seleccione **Iniciar nueva instancia**.</span><span class="sxs-lookup"><span data-stu-id="8feda-161">Right-click the **TriggerReboot** project, select **Debug**, and then select **Start new instance**.</span></span>
+2. <span data-ttu-id="0e9ae-160">Aplicación de consola de hello ejecución C# **TriggerReboot**.</span><span class="sxs-lookup"><span data-stu-id="0e9ae-160">Run hello C# console app **TriggerReboot**.</span></span> <span data-ttu-id="0e9ae-161">Menú contextual hello **TriggerReboot** proyecto, seleccione **depurar**y, a continuación, seleccione **Iniciar nueva instancia**.</span><span class="sxs-lookup"><span data-stu-id="0e9ae-161">Right-click hello **TriggerReboot** project, select **Debug**, and then select **Start new instance**.</span></span>
 
-3. <span data-ttu-id="8feda-162">Verá la respuesta del dispositivo al método directo en la consola.</span><span class="sxs-lookup"><span data-stu-id="8feda-162">You see the device response to the direct method in the console.</span></span>
+3. <span data-ttu-id="0e9ae-162">Consulte dispositivo respuesta toohello directo método hello en la consola de Hola.</span><span class="sxs-lookup"><span data-stu-id="0e9ae-162">You see hello device response toohello direct method in hello console.</span></span>
 
 [!INCLUDE [iot-hub-dm-followup](../../includes/iot-hub-dm-followup.md)]
 
@@ -216,7 +216,7 @@ ms.lasthandoff: 08/18/2017
 
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [Azure portal]: https://portal.azure.com/
-[Using resource groups to manage your Azure resources]: ../azure-portal/resource-group-portal.md
+[Using resource groups toomanage your Azure resources]: ../azure-portal/resource-group-portal.md
 [lnk-dm-github]: https://github.com/Azure/azure-iot-device-management
 
 [lnk-devtwin]: iot-hub-devguide-device-twins.md

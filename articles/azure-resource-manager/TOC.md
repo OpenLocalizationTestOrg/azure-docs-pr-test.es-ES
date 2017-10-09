@@ -22,7 +22,7 @@
 ## Crear plantillas
 ### [Procedimientos recomendados para las plantillas](resource-manager-template-best-practices.md)
 ### [Secciones de plantilla](resource-group-authoring-templates.md)
-### [Vínculo a otras plantillas](resource-group-linked-templates.md)
+### [Plantillas de tooother de vínculo](resource-group-linked-templates.md)
 ### [Definición de las dependencias entre recursos](resource-group-define-dependencies.md)
 ### [Creación de varias instancias](resource-group-create-multiple.md)
 ### [Establecimiento de la ubicación](resource-manager-template-location.md)
@@ -52,9 +52,9 @@
 ### [PowerShell](powershell-azure-resource-manager.md)
 ### [CLI de Azure](xplat-cli-azure-resource-manager.md)
 ### [Portal](resource-group-portal.md)
-### [API de REST](resource-manager-rest-api.md)
-### [Uso de etiquetas para organizar los recursos](resource-group-using-tags.md)
-### [Traslado de recursos a una suscripción o grupo nuevo](resource-group-move-resources.md)
+### [API DE REST](resource-manager-rest-api.md)
+### [Usar etiquetas tooorganize recursos](resource-group-using-tags.md)
+### [Mueve el grupo de recursos toonew o suscripción](resource-group-move-resources.md)
 ### [Ejemplos de gobierno](resource-manager-subscription-examples.md)
 
 ## Control de acceso
@@ -63,13 +63,13 @@
 #### [CLI de Azure 2.0](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 #### [CLI de Azure 1.0](resource-group-authenticate-service-principal-cli.md)
 #### [Portal](resource-group-create-service-principal-portal.md)
-### [API de autenticación para acceder a las suscripciones](resource-manager-api-authentication.md)
+### [Suscripciones de tooaccess de API de autenticación](resource-manager-api-authentication.md)
 ### [Bloqueo de recursos](resource-group-lock-resources.md)
 
 ## Establecimiento de directivas de recursos
 ### [¿Qué son las directivas de recursos?](resource-manager-policy.md)
-### [Uso del portal para asignar directivas](resource-manager-policy-portal.md)
-### [Uso de scripts para asignar directivas](resource-manager-policy-create-assign.md)
+### [Usar la directiva de tooassign portal](resource-manager-policy-portal.md)
+### [Usar la directiva de tooassign de secuencias de comandos](resource-manager-policy-create-assign.md)
 ### Ejemplos
 #### [Etiquetas](resource-manager-policy-tags.md)
 #### [Convenciones de nomenclatura](resource-manager-policy-naming-convention.md)

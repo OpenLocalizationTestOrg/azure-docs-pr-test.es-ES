@@ -1,5 +1,5 @@
 ---
-title: Controladores de SQL Data Warehouse | Microsoft Docs
+title: aaaDrivers para almacenamiento de datos SQL | Documentos de Microsoft
 description: "Cadenas de conexión y controladores de Almacenamiento de datos SQL"
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,42 +15,42 @@ ms.workload: data-services
 ms.custom: connect
 ms.date: 10/31/2016
 ms.author: anvang;barbkess
-ms.openlocfilehash: e71ea1d23f68ed41c03bbce88b08863d2831c1bd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a808839a8cfc49c2d7b16038c88ffb39a9f97825
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="drivers-for-azure-sql-data-warehouse"></a><span data-ttu-id="025d6-103">Controladores de Almacenamiento de datos SQL de Azure</span><span class="sxs-lookup"><span data-stu-id="025d6-103">Drivers for Azure SQL Data Warehouse</span></span>
-<span data-ttu-id="025d6-104">Puede conectarse a SQL Data Warehouse con varios protocolos de aplicación diferentes, como [ADO.NET][ADO.NET], [ODBC][ODBC], [PHP][PHP] y [JDBC][JDBC].</span><span class="sxs-lookup"><span data-stu-id="025d6-104">You can connect to SQL Data Warehouse with several different application protocols such as, [ADO.NET][ADO.NET], [ODBC][ODBC], [PHP][PHP] and [JDBC][JDBC].</span></span> <span data-ttu-id="025d6-105">A continuación se muestran algunos ejemplos de cadenas de conexión para cada protocolo.</span><span class="sxs-lookup"><span data-stu-id="025d6-105">Below are some examples of connections strings for each protocol.</span></span>  <span data-ttu-id="025d6-106">También puede usar el Portal de Azure para crear la cadena de conexión.</span><span class="sxs-lookup"><span data-stu-id="025d6-106">You can also use the Azure portal to build your connection string.</span></span>  <span data-ttu-id="025d6-107">Para generar la cadena de conexión mediante Azure Portal, vaya a la hoja de la base de datos en *Aspectos básicos* y haga clic en *Mostrar cadenas de conexión de base de datos*.</span><span class="sxs-lookup"><span data-stu-id="025d6-107">To build your connection string using the Azure portal, navigate to your database blade, under *Essentials* click on *Show database connection strings*.</span></span>
+# <a name="drivers-for-azure-sql-data-warehouse"></a><span data-ttu-id="5e16c-103">Controladores de Almacenamiento de datos SQL de Azure</span><span class="sxs-lookup"><span data-stu-id="5e16c-103">Drivers for Azure SQL Data Warehouse</span></span>
+<span data-ttu-id="5e16c-104">Puede conectar tooSQL almacenamiento de datos con varios protocolos de aplicación diferente como, [ADO.NET][ADO.NET], [ODBC][ODBC], [PHP] [ PHP] y [JDBC][JDBC].</span><span class="sxs-lookup"><span data-stu-id="5e16c-104">You can connect tooSQL Data Warehouse with several different application protocols such as, [ADO.NET][ADO.NET], [ODBC][ODBC], [PHP][PHP] and [JDBC][JDBC].</span></span> <span data-ttu-id="5e16c-105">A continuación se muestran algunos ejemplos de cadenas de conexión para cada protocolo.</span><span class="sxs-lookup"><span data-stu-id="5e16c-105">Below are some examples of connections strings for each protocol.</span></span>  <span data-ttu-id="5e16c-106">También puede utilizar hello toobuild portal Azure de la cadena de conexión.</span><span class="sxs-lookup"><span data-stu-id="5e16c-106">You can also use hello Azure portal toobuild your connection string.</span></span>  <span data-ttu-id="5e16c-107">toobuild la cadena de conexión mediante Hola portal de Azure, navegue en hoja de la base de datos de tooyour, *Essentials* haga clic en *mostrar cadenas de conexión de base de datos*.</span><span class="sxs-lookup"><span data-stu-id="5e16c-107">toobuild your connection string using hello Azure portal, navigate tooyour database blade, under *Essentials* click on *Show database connection strings*.</span></span>
 
-## <a name="sample-adonet-connection-string"></a><span data-ttu-id="025d6-108">Cadena de conexión ADO.NET de ejemplo</span><span class="sxs-lookup"><span data-stu-id="025d6-108">Sample ADO.NET connection string</span></span>
+## <a name="sample-adonet-connection-string"></a><span data-ttu-id="5e16c-108">Cadena de conexión ADO.NET de ejemplo</span><span class="sxs-lookup"><span data-stu-id="5e16c-108">Sample ADO.NET connection string</span></span>
 ```C#
 Server=tcp:{your_server}.database.windows.net,1433;Database={your_database};User ID={your_user_name};Password={your_password_here};Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
 ```
 
-## <a name="sample-odbc-connection-string"></a><span data-ttu-id="025d6-109">Cadena de conexión ODBC de ejemplo</span><span class="sxs-lookup"><span data-stu-id="025d6-109">Sample ODBC connection string</span></span>
+## <a name="sample-odbc-connection-string"></a><span data-ttu-id="5e16c-109">Cadena de conexión ODBC de ejemplo</span><span class="sxs-lookup"><span data-stu-id="5e16c-109">Sample ODBC connection string</span></span>
 ```C#
 Driver={SQL Server Native Client 11.0};Server=tcp:{your_server}.database.windows.net,1433;Database={your_database};Uid={your_user_name};Pwd={your_password_here};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;
 ```
 
-## <a name="sample-php-connection-string"></a><span data-ttu-id="025d6-110">Cadena de conexión PHP de ejemplo</span><span class="sxs-lookup"><span data-stu-id="025d6-110">Sample PHP connection string</span></span>
+## <a name="sample-php-connection-string"></a><span data-ttu-id="5e16c-110">Cadena de conexión PHP de ejemplo</span><span class="sxs-lookup"><span data-stu-id="5e16c-110">Sample PHP connection string</span></span>
 ```PHP
-Server: {your_server}.database.windows.net,1433 \r\nSQL Database: {your_database}\r\nUser Name: {your_user_name}\r\n\r\nPHP Data Objects(PDO) Sample Code:\r\n\r\ntry {\r\n   $conn = new PDO ( \"sqlsrv:server = tcp:{your_server}.database.windows.net,1433; Database = {your_database}\", \"{your_user_name}\", \"{your_password_here}\");\r\n    $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );\r\n}\r\ncatch ( PDOException $e ) {\r\n   print( \"Error connecting to SQL Server.\" );\r\n   die(print_r($e));\r\n}\r\n\rSQL Server Extension Sample Code:\r\n\r\n$connectionInfo = array(\"UID\" => \"{your_user_name}\", \"pwd\" => \"{your_password_here}\", \"Database\" => \"{your_database}\", \"LoginTimeout\" => 30, \"Encrypt\" => 1, \"TrustServerCertificate\" => 0);\r\n$serverName = \"tcp:{your_server}.database.windows.net,1433\";\r\n$conn = sqlsrv_connect($serverName, $connectionInfo);
+Server: {your_server}.database.windows.net,1433 \r\nSQL Database: {your_database}\r\nUser Name: {your_user_name}\r\n\r\nPHP Data Objects(PDO) Sample Code:\r\n\r\ntry {\r\n   $conn = new PDO ( \"sqlsrv:server = tcp:{your_server}.database.windows.net,1433; Database = {your_database}\", \"{your_user_name}\", \"{your_password_here}\");\r\n    $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );\r\n}\r\ncatch ( PDOException $e ) {\r\n   print( \"Error connecting tooSQL Server.\" );\r\n   die(print_r($e));\r\n}\r\n\rSQL Server Extension Sample Code:\r\n\r\n$connectionInfo = array(\"UID\" => \"{your_user_name}\", \"pwd\" => \"{your_password_here}\", \"Database\" => \"{your_database}\", \"LoginTimeout\" => 30, \"Encrypt\" => 1, \"TrustServerCertificate\" => 0);\r\n$serverName = \"tcp:{your_server}.database.windows.net,1433\";\r\n$conn = sqlsrv_connect($serverName, $connectionInfo);
 ```
 
-## <a name="sample-jdbc-connection-string"></a><span data-ttu-id="025d6-111">Cadena de conexión JDBC de ejemplo</span><span class="sxs-lookup"><span data-stu-id="025d6-111">Sample JDBC connection string</span></span>
+## <a name="sample-jdbc-connection-string"></a><span data-ttu-id="5e16c-111">Cadena de conexión JDBC de ejemplo</span><span class="sxs-lookup"><span data-stu-id="5e16c-111">Sample JDBC connection string</span></span>
 ```Java
 jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user={your_user_name};password={your_password_here};encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
 ```
 
 > [!NOTE]
-> <span data-ttu-id="025d6-112">Considere la posibilidad de establecer el tiempo de espera de conexión en 300 segundos para permitir que la conexión sobreviva durante breves períodos de falta de disponibilidad.</span><span class="sxs-lookup"><span data-stu-id="025d6-112">Consider setting the connection timeout to 300 seconds in order to allow the connection to survive short periods of  unavailability.</span></span>
+> <span data-ttu-id="5e16c-112">Considere la posibilidad de configuración Hola conexión tiempo de espera too300 segundos en orden tooallow Hola conexión toosurvive breves períodos de falta de disponibilidad.</span><span class="sxs-lookup"><span data-stu-id="5e16c-112">Consider setting hello connection timeout too300 seconds in order tooallow hello connection toosurvive short periods of  unavailability.</span></span>
 > 
 > 
 
-## <a name="next-steps"></a><span data-ttu-id="025d6-113">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="025d6-113">Next steps</span></span>
-<span data-ttu-id="025d6-114">Para empezar a realizar consultas en el almacenamiento de datos con Visual Studio y otras aplicaciones, consulte [Query with Visual Studio][Query with Visual Studio] (Realización de consultas con Visual Studio).</span><span class="sxs-lookup"><span data-stu-id="025d6-114">To start querying your data warehouse with Visual Studio and other applications, see [Query with Visual Studio][Query with Visual Studio].</span></span>
+## <a name="next-steps"></a><span data-ttu-id="5e16c-113">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="5e16c-113">Next steps</span></span>
+<span data-ttu-id="5e16c-114">toostart consultar el almacenamiento de datos con Visual Studio y otras aplicaciones, consulte [consulta con Visual Studio][Query with Visual Studio].</span><span class="sxs-lookup"><span data-stu-id="5e16c-114">toostart querying your data warehouse with Visual Studio and other applications, see [Query with Visual Studio][Query with Visual Studio].</span></span>
 
 <!--Image references-->
 

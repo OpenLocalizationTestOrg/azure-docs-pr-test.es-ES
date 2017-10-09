@@ -1,6 +1,6 @@
 ---
 title: "C#: introducción a Azure SQL Database | Microsoft Docs"
-description: Pruebe la Base de datos SQL para desarrollar aplicaciones SQL y C# y crear una Base de datos SQL de Azure con C# mediante la biblioteca de Base de datos SQL para. NET.
+description: Probar la base de datos SQL para desarrollar aplicaciones SQL y C# y crear una base de datos de SQL Azure con C# mediante Hola biblioteca de base de datos de SQL para. NET.
 keywords: probar sql, sql c#
 services: sql-database
 documentationcenter: 
@@ -16,53 +16,53 @@ ms.tgt_pltfrm: csharp
 ms.workload: data-management
 ms.date: 10/04/2016
 ms.author: sstein
-ms.openlocfilehash: c8a2703da1ee3687f8d134e768dd8d31dc4f316b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e880ebabd53546bea37a13186b0f1a13db35b684
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-c-to-create-a-sql-database-with-the-sql-database-library-for-net"></a><span data-ttu-id="5ce85-104">Uso de C# para crear una instancia de SQL Database con la biblioteca de SQL Database para .NET</span><span class="sxs-lookup"><span data-stu-id="5ce85-104">Use C# to create a SQL database with the SQL Database Library for .NET</span></span>
+# <a name="use-c-toocreate-a-sql-database-with-hello-sql-database-library-for-net"></a><span data-ttu-id="a14f9-104">Usar C# toocreate una base de datos SQL con hello biblioteca de base de datos de SQL para .NET</span><span class="sxs-lookup"><span data-stu-id="a14f9-104">Use C# toocreate a SQL database with hello SQL Database Library for .NET</span></span>
 
-<span data-ttu-id="5ce85-105">Aprenda a usar C# para crear una instancia de Azure SQL Database con la [biblioteca de administración de Microsoft Azure SQL para .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql).</span><span class="sxs-lookup"><span data-stu-id="5ce85-105">Learn how to use C# to create an Azure SQL database with the [Microsoft Azure SQL Management Library for .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql).</span></span> <span data-ttu-id="5ce85-106">En este artículo se describe cómo crear una base de datos única con SQL y C#.</span><span class="sxs-lookup"><span data-stu-id="5ce85-106">This article describes how to create a single database with SQL and C#.</span></span> <span data-ttu-id="5ce85-107">Para crear grupos elásticos, consulte [Creación de un grupo elástico](sql-database-elastic-pool-manage-csharp.md).</span><span class="sxs-lookup"><span data-stu-id="5ce85-107">To create elastic pools, see [Create an elastic pool](sql-database-elastic-pool-manage-csharp.md).</span></span>
+<span data-ttu-id="a14f9-105">Obtenga información acerca de cómo toocreate toouse C# SQL Azure base de datos con hello [biblioteca de administración de SQL de Microsoft Azure para .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql).</span><span class="sxs-lookup"><span data-stu-id="a14f9-105">Learn how toouse C# toocreate an Azure SQL database with hello [Microsoft Azure SQL Management Library for .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql).</span></span> <span data-ttu-id="a14f9-106">Este artículo describe cómo toocreate una sola base de datos con SQL y C#.</span><span class="sxs-lookup"><span data-stu-id="a14f9-106">This article describes how toocreate a single database with SQL and C#.</span></span> <span data-ttu-id="a14f9-107">toocreate grupos elásticos, consulte [crear un grupo elástico](sql-database-elastic-pool-manage-csharp.md).</span><span class="sxs-lookup"><span data-stu-id="a14f9-107">toocreate elastic pools, see [Create an elastic pool](sql-database-elastic-pool-manage-csharp.md).</span></span>
 
-<span data-ttu-id="5ce85-108">La biblioteca de administración de Azure SQL Database para .NET ofrece una API basada en [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) que encapsula la [API de REST de SQL Database basada en Resource Manager](https://docs.microsoft.com/rest/api/sql/).</span><span class="sxs-lookup"><span data-stu-id="5ce85-108">The Azure SQL Database Management Library for .NET provides an [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)-based API that wraps the [Resource Manager-based SQL Database REST API](https://docs.microsoft.com/rest/api/sql/).</span></span>
-
-> [!NOTE]
-> <span data-ttu-id="5ce85-109">Muchas de las nuevas características de SQL Database solo se admiten cuando se utiliza el [modelo de implementación de Azure Resource Manager](../azure-resource-manager/resource-group-overview.md), por lo que siempre debe usar la **biblioteca de administración más reciente de Azure SQL Database para .NET ([documentos](https://docs.microsoft.com/dotnet/api/overview/azure/sql?view=azure-dotnet) | [Paquete NuGet](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql))**.</span><span class="sxs-lookup"><span data-stu-id="5ce85-109">Many new features of SQL Database are only supported when you are using the [Azure Resource Manager deployment model](../azure-resource-manager/resource-group-overview.md), so you should always use the latest **Azure SQL Database Management Library for .NET ([docs](https://docs.microsoft.com/dotnet/api/overview/azure/sql?view=azure-dotnet) | [NuGet Package](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql))**.</span></span> <span data-ttu-id="5ce85-110">Las [bibliotecas basadas en el modelo de implementación clásica](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Sql) (más antiguas), se admiten por razones de compatibilidad con versiones anteriores, por lo que se recomienda que utilice las bibliotecas basadas en Resource Manager que son más recientes.</span><span class="sxs-lookup"><span data-stu-id="5ce85-110">The older [classic deployment model based libraries](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Sql) are supported for backward compatibility only, so we recommend you use the newer Resource Manager based libraries.</span></span>
-> 
-> 
-
-<span data-ttu-id="5ce85-111">Necesitará lo siguiente para completar los pasos de este artículo:</span><span class="sxs-lookup"><span data-stu-id="5ce85-111">To complete the steps in this article, you need the following:</span></span>
-
-* <span data-ttu-id="5ce85-112">Una suscripción de Azure.</span><span class="sxs-lookup"><span data-stu-id="5ce85-112">An Azure subscription.</span></span> <span data-ttu-id="5ce85-113">Si necesita una suscripción a Azure, haga clic en la opción **CUENTA GRATUITA** de la parte superior de la página y, después, vuelva para finalizar este artículo.</span><span class="sxs-lookup"><span data-stu-id="5ce85-113">If you need an Azure subscription simply click **FREE ACCOUNT** at the top of this page, and then come back to finish this article.</span></span>
-* <span data-ttu-id="5ce85-114">Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="5ce85-114">Visual Studio.</span></span> <span data-ttu-id="5ce85-115">Para obtener una copia gratis de Visual Studio, consulte la página [Descargas de Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs) .</span><span class="sxs-lookup"><span data-stu-id="5ce85-115">For a free copy of Visual Studio, see the [Visual Studio Downloads](https://www.visualstudio.com/downloads/download-visual-studio-vs) page.</span></span>
+<span data-ttu-id="a14f9-108">Hola biblioteca de administración de base de datos de SQL Azure para .NET proporciona un [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)-en función de API que ajusta hello [basado en el Administrador de recursos de la API de REST de la base de datos de SQL](https://docs.microsoft.com/rest/api/sql/).</span><span class="sxs-lookup"><span data-stu-id="a14f9-108">hello Azure SQL Database Management Library for .NET provides an [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)-based API that wraps hello [Resource Manager-based SQL Database REST API](https://docs.microsoft.com/rest/api/sql/).</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="5ce85-116">Este artículo permite crear una nueva base de datos SQL en blanco.</span><span class="sxs-lookup"><span data-stu-id="5ce85-116">This article creates a new, blank SQL database.</span></span> <span data-ttu-id="5ce85-117">Modifique el método *CreateOrUpdateDatabase(...)* en el ejemplo siguiente para copiar bases de datos, escalarlas, crear una base de datos en un grupo, etc.</span><span class="sxs-lookup"><span data-stu-id="5ce85-117">Modify the *CreateOrUpdateDatabase(...)* method in the following sample to copy databases, scale databases, create a database in a pool, etc.</span></span>  
+> <span data-ttu-id="a14f9-109">Muchas características nuevas de la base de datos SQL solo se admiten cuando se usa hello [modelo de implementación de Azure Resource Manager](../azure-resource-manager/resource-group-overview.md), por lo que se debe utilizar siempre hello más reciente **biblioteca de administración de base de datos de SQL Azure para .NET ([documentos](https://docs.microsoft.com/dotnet/api/overview/azure/sql?view=azure-dotnet) | [paquete NuGet](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql))**.</span><span class="sxs-lookup"><span data-stu-id="a14f9-109">Many new features of SQL Database are only supported when you are using hello [Azure Resource Manager deployment model](../azure-resource-manager/resource-group-overview.md), so you should always use hello latest **Azure SQL Database Management Library for .NET ([docs](https://docs.microsoft.com/dotnet/api/overview/azure/sql?view=azure-dotnet) | [NuGet Package](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql))**.</span></span> <span data-ttu-id="a14f9-110">Hola anterior [bibliotecas basadas en el modelo de implementación clásica](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Sql) se admiten por razones de compatibilidad, por lo que recomendamos usar bibliotecas más recientes de administrador de recursos en función de Hola.</span><span class="sxs-lookup"><span data-stu-id="a14f9-110">hello older [classic deployment model based libraries](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Sql) are supported for backward compatibility only, so we recommend you use hello newer Resource Manager based libraries.</span></span>
+> 
 > 
 
-## <a name="create-a-console-app-and-install-the-required-libraries"></a><span data-ttu-id="5ce85-118">Creación de una aplicación de consola e instalación de las bibliotecas necesarias</span><span class="sxs-lookup"><span data-stu-id="5ce85-118">Create a console app and install the required libraries</span></span>
-1. <span data-ttu-id="5ce85-119">Inicie Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="5ce85-119">Start Visual Studio.</span></span>
-2. <span data-ttu-id="5ce85-120">Haga clic en **Archivo** > **Nuevo** > **Proyecto**.</span><span class="sxs-lookup"><span data-stu-id="5ce85-120">Click **File** > **New** > **Project**.</span></span>
-3. <span data-ttu-id="5ce85-121">Cree una **aplicación de consola** C# y asígnele el nombre *SqlDbConsoleApp*</span><span class="sxs-lookup"><span data-stu-id="5ce85-121">Create a C# **Console Application** and name it: *SqlDbConsoleApp*</span></span>
+<span data-ttu-id="a14f9-111">pasos de hello toocomplete en este artículo, necesita siguiente de hello:</span><span class="sxs-lookup"><span data-stu-id="a14f9-111">toocomplete hello steps in this article, you need hello following:</span></span>
 
-<span data-ttu-id="5ce85-122">Para crear una base de datos SQL con C#, cargue las bibliotecas de administración necesarias (mediante la [consola del administrador de paquetes](http://docs.nuget.org/Consume/Package-Manager-Console)):</span><span class="sxs-lookup"><span data-stu-id="5ce85-122">To create a SQL database with C#, load the required management libraries (using the [package manager console](http://docs.nuget.org/Consume/Package-Manager-Console)):</span></span>
-
-1. <span data-ttu-id="5ce85-123">Haga clic en **Herramientas** > **Administrador de paquetes NuGet** > **Consola del administrador de paquetes**.</span><span class="sxs-lookup"><span data-stu-id="5ce85-123">Click **Tools** > **NuGet Package Manager** > **Package Manager Console**.</span></span>
-2. <span data-ttu-id="5ce85-124">Escriba `Install-Package Microsoft.Azure.Management.Sql -Pre` para instalar la [biblioteca de administración de Microsoft Azure SQL](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql) más reciente.</span><span class="sxs-lookup"><span data-stu-id="5ce85-124">Type `Install-Package Microsoft.Azure.Management.Sql -Pre` to install the latest [Microsoft Azure SQL Management Library](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql).</span></span>
-3. <span data-ttu-id="5ce85-125">Escriba `Install-Package Microsoft.Azure.Management.ResourceManager -Pre` para instalar la [biblioteca de Microsoft Azure Resource Manager](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager).</span><span class="sxs-lookup"><span data-stu-id="5ce85-125">Type `Install-Package Microsoft.Azure.Management.ResourceManager -Pre` to install the [Microsoft Azure Resource Manager Library](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager).</span></span>
-4. <span data-ttu-id="5ce85-126">Escriba `Install-Package Microsoft.Azure.Common.Authentication -Pre` para instalar la [biblioteca de autenticación común de Microsoft Azure](https://www.nuget.org/packages/Microsoft.Azure.Common.Authentication).</span><span class="sxs-lookup"><span data-stu-id="5ce85-126">Type `Install-Package Microsoft.Azure.Common.Authentication -Pre` to install the [Microsoft Azure Common Authentication Library](https://www.nuget.org/packages/Microsoft.Azure.Common.Authentication).</span></span> 
+* <span data-ttu-id="a14f9-112">Una suscripción de Azure.</span><span class="sxs-lookup"><span data-stu-id="a14f9-112">An Azure subscription.</span></span> <span data-ttu-id="a14f9-113">Si tiene una suscripción de Azure simplemente haga clic en **cuenta gratuita** princip Hola de esta página y, a continuación, vuelven a estar toofinish en este artículo.</span><span class="sxs-lookup"><span data-stu-id="a14f9-113">If you need an Azure subscription simply click **FREE ACCOUNT** at hello top of this page, and then come back toofinish this article.</span></span>
+* <span data-ttu-id="a14f9-114">Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="a14f9-114">Visual Studio.</span></span> <span data-ttu-id="a14f9-115">Para obtener una copia gratuita de Visual Studio, vea hello [descargas de Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs) página.</span><span class="sxs-lookup"><span data-stu-id="a14f9-115">For a free copy of Visual Studio, see hello [Visual Studio Downloads](https://www.visualstudio.com/downloads/download-visual-studio-vs) page.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="5ce85-127">En los ejemplos de este artículo se usa un formulario sincrónico de cada solicitud de API y se bloquea hasta que finaliza la llamada de REST en el servicio subyacente.</span><span class="sxs-lookup"><span data-stu-id="5ce85-127">The examples in this article use a synchronous form of each API request and block until completion of the REST call on the underlying service.</span></span> <span data-ttu-id="5ce85-128">Hay métodos asincrónicos disponibles.</span><span class="sxs-lookup"><span data-stu-id="5ce85-128">There are async methods available.</span></span>
+> <span data-ttu-id="a14f9-116">Este artículo permite crear una nueva base de datos SQL en blanco.</span><span class="sxs-lookup"><span data-stu-id="a14f9-116">This article creates a new, blank SQL database.</span></span> <span data-ttu-id="a14f9-117">Modificar hello *CreateOrUpdateDatabase(...)*  método hello siguiendo las bases de datos de ejemplo toocopy, escalar las bases de datos, cree una base de datos en un grupo, etcetera.</span><span class="sxs-lookup"><span data-stu-id="a14f9-117">Modify hello *CreateOrUpdateDatabase(...)* method in hello following sample toocopy databases, scale databases, create a database in a pool, etc.</span></span>  
+> 
+
+## <a name="create-a-console-app-and-install-hello-required-libraries"></a><span data-ttu-id="a14f9-118">Crear una aplicación de consola e instalar las bibliotecas de hello necesario</span><span class="sxs-lookup"><span data-stu-id="a14f9-118">Create a console app and install hello required libraries</span></span>
+1. <span data-ttu-id="a14f9-119">Inicie Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="a14f9-119">Start Visual Studio.</span></span>
+2. <span data-ttu-id="a14f9-120">Haga clic en **Archivo** > **Nuevo** > **Proyecto**.</span><span class="sxs-lookup"><span data-stu-id="a14f9-120">Click **File** > **New** > **Project**.</span></span>
+3. <span data-ttu-id="a14f9-121">Cree una **aplicación de consola** C# y asígnele el nombre *SqlDbConsoleApp*</span><span class="sxs-lookup"><span data-stu-id="a14f9-121">Create a C# **Console Application** and name it: *SqlDbConsoleApp*</span></span>
+
+<span data-ttu-id="a14f9-122">toocreate una base de datos SQL con C#, Hola de carga requiere las bibliotecas de administración (con hello [consola del Administrador de paquetes](http://docs.nuget.org/Consume/Package-Manager-Console)):</span><span class="sxs-lookup"><span data-stu-id="a14f9-122">toocreate a SQL database with C#, load hello required management libraries (using hello [package manager console](http://docs.nuget.org/Consume/Package-Manager-Console)):</span></span>
+
+1. <span data-ttu-id="a14f9-123">Haga clic en **Herramientas** > **Administrador de paquetes NuGet** > **Consola del administrador de paquetes**.</span><span class="sxs-lookup"><span data-stu-id="a14f9-123">Click **Tools** > **NuGet Package Manager** > **Package Manager Console**.</span></span>
+2. <span data-ttu-id="a14f9-124">Tipo de `Install-Package Microsoft.Azure.Management.Sql -Pre` tooinstall hello más reciente [biblioteca de administración de Microsoft Azure SQL](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql).</span><span class="sxs-lookup"><span data-stu-id="a14f9-124">Type `Install-Package Microsoft.Azure.Management.Sql -Pre` tooinstall hello latest [Microsoft Azure SQL Management Library](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql).</span></span>
+3. <span data-ttu-id="a14f9-125">Tipo de `Install-Package Microsoft.Azure.Management.ResourceManager -Pre` tooinstall hello [biblioteca del Administrador de recursos de Microsoft Azure](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager).</span><span class="sxs-lookup"><span data-stu-id="a14f9-125">Type `Install-Package Microsoft.Azure.Management.ResourceManager -Pre` tooinstall hello [Microsoft Azure Resource Manager Library](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager).</span></span>
+4. <span data-ttu-id="a14f9-126">Tipo de `Install-Package Microsoft.Azure.Common.Authentication -Pre` tooinstall hello [biblioteca de autenticación común de Microsoft Azure](https://www.nuget.org/packages/Microsoft.Azure.Common.Authentication).</span><span class="sxs-lookup"><span data-stu-id="a14f9-126">Type `Install-Package Microsoft.Azure.Common.Authentication -Pre` tooinstall hello [Microsoft Azure Common Authentication Library](https://www.nuget.org/packages/Microsoft.Azure.Common.Authentication).</span></span> 
+
+> [!NOTE]
+> <span data-ttu-id="a14f9-127">Hello ejemplos de este artículo usan una forma sincrónica de cada solicitud de API y el bloque hasta la finalización de la llamada REST de hello en hello servicio subyacente.</span><span class="sxs-lookup"><span data-stu-id="a14f9-127">hello examples in this article use a synchronous form of each API request and block until completion of hello REST call on hello underlying service.</span></span> <span data-ttu-id="a14f9-128">Hay métodos asincrónicos disponibles.</span><span class="sxs-lookup"><span data-stu-id="a14f9-128">There are async methods available.</span></span>
 > 
 > 
 
-## <a name="create-a-sql-database-server-firewall-rule-and-sql-database---c-example"></a><span data-ttu-id="5ce85-129">Creación de un servidor de SQL Database, una regla de firewall y una base de datos SQL: ejemplo de C#</span><span class="sxs-lookup"><span data-stu-id="5ce85-129">Create a SQL Database server, firewall rule, and SQL database - C# example</span></span>
-<span data-ttu-id="5ce85-130">En el ejemplo siguiente se crea un grupo de recursos, un servidor, una regla de firewall y una base de datos SQL.</span><span class="sxs-lookup"><span data-stu-id="5ce85-130">The following sample creates a resource group, server, firewall rule, and a SQL database.</span></span> <span data-ttu-id="5ce85-131">Consulte [Creación de una entidad de servicio para acceder a recursos](#create-a-service-principal-to-access-resources) para obtener las variables `_subscriptionId, _tenantId, _applicationId, and _applicationSecret`.</span><span class="sxs-lookup"><span data-stu-id="5ce85-131">See, [Create a service principal to access resources](#create-a-service-principal-to-access-resources) to get the `_subscriptionId, _tenantId, _applicationId, and _applicationSecret` variables.</span></span>
+## <a name="create-a-sql-database-server-firewall-rule-and-sql-database---c-example"></a><span data-ttu-id="a14f9-129">Creación de un servidor de SQL Database, una regla de firewall y una base de datos SQL: ejemplo de C#</span><span class="sxs-lookup"><span data-stu-id="a14f9-129">Create a SQL Database server, firewall rule, and SQL database - C# example</span></span>
+<span data-ttu-id="a14f9-130">Hola siguiendo el ejemplo crea un grupo de recursos, servidor, regla de firewall y una base de datos SQL.</span><span class="sxs-lookup"><span data-stu-id="a14f9-130">hello following sample creates a resource group, server, firewall rule, and a SQL database.</span></span> <span data-ttu-id="a14f9-131">Ver, [crear un tooaccess de entidad de seguridad de servicio recursos](#create-a-service-principal-to-access-resources) tooget hello `_subscriptionId, _tenantId, _applicationId, and _applicationSecret` variables.</span><span class="sxs-lookup"><span data-stu-id="a14f9-131">See, [Create a service principal tooaccess resources](#create-a-service-principal-to-access-resources) tooget hello `_subscriptionId, _tenantId, _applicationId, and _applicationSecret` variables.</span></span>
 
-<span data-ttu-id="5ce85-132">Reemplace el contenido de **Program.cs** por lo siguiente y actualice `{variables}` con los valores de la aplicación (sin incluir `{}`).</span><span class="sxs-lookup"><span data-stu-id="5ce85-132">Replace the contents of **Program.cs** with the following, and update the `{variables}` with your app values (do not include the `{}`).</span></span>
+<span data-ttu-id="a14f9-132">Reemplace el contenido de Hola de **Program.cs** con siguiente de Hola y Hola de actualización `{variables}` con sus valores de la aplicación (no incluya hello `{}`).</span><span class="sxs-lookup"><span data-stu-id="a14f9-132">Replace hello contents of **Program.cs** with hello following, and update hello `{variables}` with your app values (do not include hello `{}`).</span></span>
 
     using Microsoft.Azure;
     using Microsoft.Azure.Management.ResourceManager;
@@ -83,7 +83,7 @@ ms.lasthandoff: 07/11/2017
         static string _applicationId = "{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}";
         static string _applicationSecret = "{your-password}";
 
-        // Create management clients for the Azure resources your app needs to work with.
+        // Create management clients for hello Azure resources your app needs toowork with.
         // This app works with Resource Groups, and Azure SQL Database.
         static ResourceManagementClient _resourceMgmtClient;
         static SqlManagementClient _sqlMgmtClient;
@@ -137,7 +137,7 @@ ms.lasthandoff: 07/11/2017
             Console.WriteLine("Database: " + dbr.Id);
 
 
-            Console.WriteLine("Press any key to continue...");
+            Console.WriteLine("Press any key toocontinue...");
             Console.ReadKey();
         }
 
@@ -178,7 +178,7 @@ ms.lasthandoff: 07/11/2017
 
         static Database CreateOrUpdateDatabase(SqlManagementClient sqlMgmtClient, string resourceGroupName, string serverName, string databaseName, string databaseEdition, string databasePerfLevel)
         {
-            // Retrieve the server that will host this database
+            // Retrieve hello server that will host this database
             Server currentServer = sqlMgmtClient.Servers.Get(resourceGroupName, serverName);
 
             // Create a database: configure create or update parameters and properties explicitly
@@ -209,19 +209,19 @@ ms.lasthandoff: 07/11/2017
 
 
 
-## <a name="create-a-service-principal-to-access-resources"></a><span data-ttu-id="5ce85-133">Creación de una entidad de servicio para acceder a recursos</span><span class="sxs-lookup"><span data-stu-id="5ce85-133">Create a service principal to access resources</span></span>
-<span data-ttu-id="5ce85-134">El siguiente script de PowerShell crea la aplicación de Active Directory (AD) y la entidad de servicio que se necesitan para autenticar la aplicación de C#.</span><span class="sxs-lookup"><span data-stu-id="5ce85-134">The following PowerShell script creates the Active Directory (AD) application and the service principal that we need to authenticate our C# app.</span></span> <span data-ttu-id="5ce85-135">En la salida del script, se encuentran los valores que se necesitan para el anterior ejemplo de C#.</span><span class="sxs-lookup"><span data-stu-id="5ce85-135">The script outputs values we need for the preceding C# sample.</span></span> <span data-ttu-id="5ce85-136">Para ver información detallada, consulte [Uso de Azure PowerShell para crear una entidad de servicio para acceder a recursos](../azure-resource-manager/resource-group-authenticate-service-principal.md).</span><span class="sxs-lookup"><span data-stu-id="5ce85-136">For detailed information, see [Use Azure PowerShell to create a service principal to access resources](../azure-resource-manager/resource-group-authenticate-service-principal.md).</span></span>
+## <a name="create-a-service-principal-tooaccess-resources"></a><span data-ttu-id="a14f9-133">Crear un tooaccess de entidad de seguridad de servicio de recursos</span><span class="sxs-lookup"><span data-stu-id="a14f9-133">Create a service principal tooaccess resources</span></span>
+<span data-ttu-id="a14f9-134">Hello siguiente script de PowerShell crea aplicación de Active Directory (AD) de Hola y el servicio de hello principal que necesitamos tooauthenticate nuestra aplicación de C#.</span><span class="sxs-lookup"><span data-stu-id="a14f9-134">hello following PowerShell script creates hello Active Directory (AD) application and hello service principal that we need tooauthenticate our C# app.</span></span> <span data-ttu-id="a14f9-135">script de Hola genera valores que necesitamos Hola anterior a C# de ejemplo.</span><span class="sxs-lookup"><span data-stu-id="a14f9-135">hello script outputs values we need for hello preceding C# sample.</span></span> <span data-ttu-id="a14f9-136">Para obtener información detallada, vea [toocreate de PowerShell de Azure Use una entidad de servicio tooaccess recursos](../azure-resource-manager/resource-group-authenticate-service-principal.md).</span><span class="sxs-lookup"><span data-stu-id="a14f9-136">For detailed information, see [Use Azure PowerShell toocreate a service principal tooaccess resources](../azure-resource-manager/resource-group-authenticate-service-principal.md).</span></span>
 
-    # Sign in to Azure.
+    # Sign in tooAzure.
     Add-AzureRmAccount
 
-    # If you have multiple subscriptions, uncomment and set to the subscription you want to work with.
+    # If you have multiple subscriptions, uncomment and set toohello subscription you want toowork with.
     #$subscriptionId = "{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}"
     #Set-AzureRmContext -SubscriptionId $subscriptionId
 
     # Provide these values for your new AAD app.
-    # $appName is the display name for your app, must be unique in your directory.
-    # $uri does not need to be a real uri.
+    # $appName is hello display name for your app, must be unique in your directory.
+    # $uri does not need toobe a real uri.
     # $secret is a password you create.
 
     $appName = "{app-name}"
@@ -231,19 +231,19 @@ ms.lasthandoff: 07/11/2017
     # Create a AAD app
     $azureAdApplication = New-AzureRmADApplication -DisplayName $appName -HomePage $Uri -IdentifierUris $Uri -Password $secret
 
-    # Create a Service Principal for the app
+    # Create a Service Principal for hello app
     $svcprincipal = New-AzureRmADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
 
-    # To avoid a PrincipalNotFound error, I pause here for 15 seconds.
+    # tooavoid a PrincipalNotFound error, I pause here for 15 seconds.
     Start-Sleep -s 15
 
-    # If you still get a PrincipalNotFound error, then rerun the following until successful. 
+    # If you still get a PrincipalNotFound error, then rerun hello following until successful. 
     $roleassignment = New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $azureAdApplication.ApplicationId.Guid
 
 
-    # Output the values we need for our C# application to successfully authenticate
+    # Output hello values we need for our C# application toosuccessfully authenticate
 
-    Write-Output "Copy these values into the C# sample app"
+    Write-Output "Copy these values into hello C# sample app"
 
     Write-Output "_subscriptionId:" (Get-AzureRmContext).Subscription.SubscriptionId
     Write-Output "_tenantId:" (Get-AzureRmContext).Tenant.TenantId
@@ -252,14 +252,14 @@ ms.lasthandoff: 07/11/2017
 
 
 
-## <a name="next-steps"></a><span data-ttu-id="5ce85-137">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="5ce85-137">Next steps</span></span>
-<span data-ttu-id="5ce85-138">Ahora que probó la Base de datos SQL y configuró una base de datos con C#, está listo para los artículos siguientes:</span><span class="sxs-lookup"><span data-stu-id="5ce85-138">Now that you've tried SQL Database and set up a database with C#, you're ready for the following articles:</span></span>
+## <a name="next-steps"></a><span data-ttu-id="a14f9-137">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="a14f9-137">Next steps</span></span>
+<span data-ttu-id="a14f9-138">Ahora que has intentado base de datos SQL y configurar una base de datos con C#, todo está listo para hello siguientes artículos:</span><span class="sxs-lookup"><span data-stu-id="a14f9-138">Now that you've tried SQL Database and set up a database with C#, you're ready for hello following articles:</span></span>
 
-* [<span data-ttu-id="5ce85-139">Conexión a la Base de datos SQL con SQL Server Management Studio y realización de una consulta de T-SQL de ejemplo</span><span class="sxs-lookup"><span data-stu-id="5ce85-139">Connect to SQL Database with SQL Server Management Studio and perform a sample T-SQL query</span></span>](sql-database-connect-query-ssms.md)
+* [<span data-ttu-id="a14f9-139">Conectarse tooSQL base de datos con SQL Server Management Studio y realizar una consulta de T-SQL de ejemplo</span><span class="sxs-lookup"><span data-stu-id="a14f9-139">Connect tooSQL Database with SQL Server Management Studio and perform a sample T-SQL query</span></span>](sql-database-connect-query-ssms.md)
 
-## <a name="additional-resources"></a><span data-ttu-id="5ce85-140">Recursos adicionales</span><span class="sxs-lookup"><span data-stu-id="5ce85-140">Additional Resources</span></span>
-* [<span data-ttu-id="5ce85-141">Base de datos SQL</span><span class="sxs-lookup"><span data-stu-id="5ce85-141">SQL Database</span></span>](https://azure.microsoft.com/documentation/services/sql-database/)
-* [<span data-ttu-id="5ce85-142">Database (clase)</span><span class="sxs-lookup"><span data-stu-id="5ce85-142">Database Class</span></span>](https://msdn.microsoft.com/library/azure/microsoft.azure.management.sql.models.database.aspx)
+## <a name="additional-resources"></a><span data-ttu-id="a14f9-140">Recursos adicionales</span><span class="sxs-lookup"><span data-stu-id="a14f9-140">Additional Resources</span></span>
+* [<span data-ttu-id="a14f9-141">Base de datos SQL</span><span class="sxs-lookup"><span data-stu-id="a14f9-141">SQL Database</span></span>](https://azure.microsoft.com/documentation/services/sql-database/)
+* [<span data-ttu-id="a14f9-142">Database (clase)</span><span class="sxs-lookup"><span data-stu-id="a14f9-142">Database Class</span></span>](https://msdn.microsoft.com/library/azure/microsoft.azure.management.sql.models.database.aspx)
 
 <!--Image references-->
 [1]: ./media/sql-database-get-started-csharp/aad.png

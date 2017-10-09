@@ -1,6 +1,6 @@
 ---
-title: "Ejemplo de topología de Apache Storm en Java - Azure HDInsight | Microsoft Docs"
-description: "Aprenda a crear topologías de Apache Storm en Java al crear una topología de recuento de palabras de ejemplo."
+title: "aaaApache Storm topología de ejemplo Java - HDInsight de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo las topologías de Apache Storm toocreate mediante la creación de una palabra de ejemplo en Java contar topología."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -17,75 +17,75 @@ ms.workload: big-data
 ms.date: 07/07/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 36285fbaf1da3c566d338bd5612eebad327eaf50
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 54fa9dc3c93ddad83ac861f3101f50f80117d804
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-an-apache-storm-topology-in-java"></a><span data-ttu-id="b71df-104">Crear una topología de Apache Storm en Java</span><span class="sxs-lookup"><span data-stu-id="b71df-104">Create an Apache Storm topology in Java</span></span>
+# <a name="create-an-apache-storm-topology-in-java"></a><span data-ttu-id="852ca-104">Crear una topología de Apache Storm en Java</span><span class="sxs-lookup"><span data-stu-id="852ca-104">Create an Apache Storm topology in Java</span></span>
 
-<span data-ttu-id="b71df-105">Aprenda a crear una topología de Apache Storm basada en Java.</span><span class="sxs-lookup"><span data-stu-id="b71df-105">Learn how to create a Java-based topology for Apache Storm.</span></span> <span data-ttu-id="b71df-106">Vamos a crear una topología de Storm que implemente una aplicación de recuento de palabras.</span><span class="sxs-lookup"><span data-stu-id="b71df-106">You create a Storm topology that implements a word-count application.</span></span> <span data-ttu-id="b71df-107">Para compilar y empaquetar el proyecto, usaremos Maven.</span><span class="sxs-lookup"><span data-stu-id="b71df-107">You use Maven to build and package the project.</span></span> <span data-ttu-id="b71df-108">Después, aprende a definir la topología con el marco de trabajo Flux.</span><span class="sxs-lookup"><span data-stu-id="b71df-108">Then, you learn how to define the topology using the Flux framework.</span></span>
-
-> [!NOTE]
-> <span data-ttu-id="b71df-109">El marco de trabajo Flux está disponible en Storm 0.10.0 o versiones posteriores.</span><span class="sxs-lookup"><span data-stu-id="b71df-109">The Flux framework is available in Storm 0.10.0 or later.</span></span> <span data-ttu-id="b71df-110">Storm 0.10.0 está disponible con HDInsight 3.3 y 3.4.</span><span class="sxs-lookup"><span data-stu-id="b71df-110">Storm 0.10.0 is available with HDInsight 3.3 and 3.4.</span></span>
-
-<span data-ttu-id="b71df-111">Después de completar los pasos descritos en este documento, puede implementar la topología en Apache Storm en HDInsight.</span><span class="sxs-lookup"><span data-stu-id="b71df-111">After completing the steps in this document, you can deploy the topology to Apache Storm on HDInsight.</span></span>
+<span data-ttu-id="852ca-105">Obtenga información acerca de cómo toocreate una topología basada en Java para Apache Storm.</span><span class="sxs-lookup"><span data-stu-id="852ca-105">Learn how toocreate a Java-based topology for Apache Storm.</span></span> <span data-ttu-id="852ca-106">Vamos a crear una topología de Storm que implemente una aplicación de recuento de palabras.</span><span class="sxs-lookup"><span data-stu-id="852ca-106">You create a Storm topology that implements a word-count application.</span></span> <span data-ttu-id="852ca-107">Utilice Maven toobuild y paquete hello en el proyecto.</span><span class="sxs-lookup"><span data-stu-id="852ca-107">You use Maven toobuild and package hello project.</span></span> <span data-ttu-id="852ca-108">A continuación, aprenderá cómo toodefine Hola topología utilizando Hola framework de un flujo.</span><span class="sxs-lookup"><span data-stu-id="852ca-108">Then, you learn how toodefine hello topology using hello Flux framework.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="b71df-112">En [https://github.com/Azure-Samples/hdinsight-java-storm-wordcount](https://github.com/Azure-Samples/hdinsight-java-storm-wordcount) encontrará una versión completa de los ejemplos de topologías de Storm creadas en este documento.</span><span class="sxs-lookup"><span data-stu-id="b71df-112">A completed version of the Storm topology examples created in this document is available at [https://github.com/Azure-Samples/hdinsight-java-storm-wordcount](https://github.com/Azure-Samples/hdinsight-java-storm-wordcount).</span></span>
+> <span data-ttu-id="852ca-109">marco de trabajo de un flujo de Hello está disponible en Storm 0.10.0 o posterior.</span><span class="sxs-lookup"><span data-stu-id="852ca-109">hello Flux framework is available in Storm 0.10.0 or later.</span></span> <span data-ttu-id="852ca-110">Storm 0.10.0 está disponible con HDInsight 3.3 y 3.4.</span><span class="sxs-lookup"><span data-stu-id="852ca-110">Storm 0.10.0 is available with HDInsight 3.3 and 3.4.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="b71df-113">Requisitos previos</span><span class="sxs-lookup"><span data-stu-id="b71df-113">Prerequisites</span></span>
+<span data-ttu-id="852ca-111">Después de completar los pasos de hello en este documento, puede implementar Hola topología tooApache Storm en HDInsight.</span><span class="sxs-lookup"><span data-stu-id="852ca-111">After completing hello steps in this document, you can deploy hello topology tooApache Storm on HDInsight.</span></span>
 
-* [<span data-ttu-id="b71df-114">Kit de desarrolladores de Java (JDK) versión 7</span><span class="sxs-lookup"><span data-stu-id="b71df-114">Java Developer Kit (JDK) version 7</span></span>](https://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html)
+> [!NOTE]
+> <span data-ttu-id="852ca-112">Una versión completa de ejemplos de topología de Storm Hola creado en este documento está disponible en [https://github.com/Azure-Samples/hdinsight-java-storm-wordcount](https://github.com/Azure-Samples/hdinsight-java-storm-wordcount).</span><span class="sxs-lookup"><span data-stu-id="852ca-112">A completed version of hello Storm topology examples created in this document is available at [https://github.com/Azure-Samples/hdinsight-java-storm-wordcount](https://github.com/Azure-Samples/hdinsight-java-storm-wordcount).</span></span>
 
-* <span data-ttu-id="b71df-115">[Maven (https://maven.apache.org/download.cgi)](https://maven.apache.org/download.cgi): Maven es un sistema de compilación de proyectos para proyectos de Java.</span><span class="sxs-lookup"><span data-stu-id="b71df-115">[Maven (https://maven.apache.org/download.cgi)](https://maven.apache.org/download.cgi): Maven is a project build system for Java projects.</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="852ca-113">Requisitos previos</span><span class="sxs-lookup"><span data-stu-id="852ca-113">Prerequisites</span></span>
 
-* <span data-ttu-id="b71df-116">Un editor de texto o IDE.</span><span class="sxs-lookup"><span data-stu-id="b71df-116">A text editor or IDE.</span></span>
+* [<span data-ttu-id="852ca-114">Kit de desarrolladores de Java (JDK) versión 7</span><span class="sxs-lookup"><span data-stu-id="852ca-114">Java Developer Kit (JDK) version 7</span></span>](https://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html)
 
-## <a name="configure-environment-variables"></a><span data-ttu-id="b71df-117">Configuración de las variables de entorno</span><span class="sxs-lookup"><span data-stu-id="b71df-117">Configure environment variables</span></span>
+* <span data-ttu-id="852ca-115">[Maven (https://maven.apache.org/download.cgi)](https://maven.apache.org/download.cgi): Maven es un sistema de compilación de proyectos para proyectos de Java.</span><span class="sxs-lookup"><span data-stu-id="852ca-115">[Maven (https://maven.apache.org/download.cgi)](https://maven.apache.org/download.cgi): Maven is a project build system for Java projects.</span></span>
 
-<span data-ttu-id="b71df-118">Pueden establecer las siguientes variables de entorno al instalar Java y el JDK.</span><span class="sxs-lookup"><span data-stu-id="b71df-118">The following environment variables may be set when you install Java and the JDK.</span></span> <span data-ttu-id="b71df-119">Sin embargo, debe comprobar que existen y que contienen los valores correctos para su sistema.</span><span class="sxs-lookup"><span data-stu-id="b71df-119">However, you should check that they exist and that they contain the correct values for your system.</span></span>
+* <span data-ttu-id="852ca-116">Un editor de texto o IDE.</span><span class="sxs-lookup"><span data-stu-id="852ca-116">A text editor or IDE.</span></span>
 
-* <span data-ttu-id="b71df-120">**JAVA_HOME**: debe apuntar al directorio donde está instalado Java Runtime Environment (JRE).</span><span class="sxs-lookup"><span data-stu-id="b71df-120">**JAVA_HOME** - should point to the directory where the Java runtime environment (JRE) is installed.</span></span> <span data-ttu-id="b71df-121">Por ejemplo, en una distribución de Unix o Linux, debe tener un valor similar a `/usr/lib/jvm/java-7-oracle`.</span><span class="sxs-lookup"><span data-stu-id="b71df-121">For example, in a Unix or Linux distribution, it should have a value similar to `/usr/lib/jvm/java-7-oracle`.</span></span> <span data-ttu-id="b71df-122">En Windows, tendría un valor similar a `c:\Program Files (x86)\Java\jre1.7`</span><span class="sxs-lookup"><span data-stu-id="b71df-122">In Windows, it would have a value similar to `c:\Program Files (x86)\Java\jre1.7`</span></span>
+## <a name="configure-environment-variables"></a><span data-ttu-id="852ca-117">Configuración de las variables de entorno</span><span class="sxs-lookup"><span data-stu-id="852ca-117">Configure environment variables</span></span>
 
-* <span data-ttu-id="b71df-123">**PATH** : debe contener las rutas de acceso siguientes:</span><span class="sxs-lookup"><span data-stu-id="b71df-123">**PATH** - should contain the following paths:</span></span>
+<span data-ttu-id="852ca-118">Hello siguientes variables de entorno pueden establecerse al instalar hello JDK y Java.</span><span class="sxs-lookup"><span data-stu-id="852ca-118">hello following environment variables may be set when you install Java and hello JDK.</span></span> <span data-ttu-id="852ca-119">Sin embargo, debe comprobar que existan y que contienen valores correctos de hello para el sistema.</span><span class="sxs-lookup"><span data-stu-id="852ca-119">However, you should check that they exist and that they contain hello correct values for your system.</span></span>
 
-  * <span data-ttu-id="b71df-124">**JAVA_HOME** (o la ruta de acceso equivalente).</span><span class="sxs-lookup"><span data-stu-id="b71df-124">**JAVA_HOME** (or the equivalent path)</span></span>
+* <span data-ttu-id="852ca-120">**JAVA_HOME** -debe apuntar el directorio toohello donde está instalado Hola de Java runtime environment (JRE).</span><span class="sxs-lookup"><span data-stu-id="852ca-120">**JAVA_HOME** - should point toohello directory where hello Java runtime environment (JRE) is installed.</span></span> <span data-ttu-id="852ca-121">Por ejemplo, en una distribución de Unix o Linux, debe tener un valor similar demasiado`/usr/lib/jvm/java-7-oracle`.</span><span class="sxs-lookup"><span data-stu-id="852ca-121">For example, in a Unix or Linux distribution, it should have a value similar too`/usr/lib/jvm/java-7-oracle`.</span></span> <span data-ttu-id="852ca-122">En Windows, tendría un valor similar demasiado`c:\Program Files (x86)\Java\jre1.7`</span><span class="sxs-lookup"><span data-stu-id="852ca-122">In Windows, it would have a value similar too`c:\Program Files (x86)\Java\jre1.7`</span></span>
 
-  * <span data-ttu-id="b71df-125">**JAVA_HOME\bin** (o la ruta de acceso equivalente).</span><span class="sxs-lookup"><span data-stu-id="b71df-125">**JAVA_HOME\bin** (or the equivalent path)</span></span>
+* <span data-ttu-id="852ca-123">**Ruta de acceso** -debe contener Hola siguiendo las rutas de acceso:</span><span class="sxs-lookup"><span data-stu-id="852ca-123">**PATH** - should contain hello following paths:</span></span>
 
-  * <span data-ttu-id="b71df-126">El directorio donde está instalado Maven</span><span class="sxs-lookup"><span data-stu-id="b71df-126">The directory where Maven is installed</span></span>
+  * <span data-ttu-id="852ca-124">**JAVA_HOME** (o ruta de acceso equivalente hello)</span><span class="sxs-lookup"><span data-stu-id="852ca-124">**JAVA_HOME** (or hello equivalent path)</span></span>
 
-## <a name="create-a-maven-project"></a><span data-ttu-id="b71df-127">Creación de un proyecto de Maven</span><span class="sxs-lookup"><span data-stu-id="b71df-127">Create a Maven project</span></span>
+  * <span data-ttu-id="852ca-125">**JAVA_HOME\bin** (o ruta de acceso equivalente hello)</span><span class="sxs-lookup"><span data-stu-id="852ca-125">**JAVA_HOME\bin** (or hello equivalent path)</span></span>
 
-<span data-ttu-id="b71df-128">En la línea de comandos, use el siguiente comando para crear un proyecto de Maven llamado **WordCount**:</span><span class="sxs-lookup"><span data-stu-id="b71df-128">From the command line, use the following command to create a Maven project named **WordCount**:</span></span>
+  * <span data-ttu-id="852ca-126">directorio de Hola donde está instalado Maven</span><span class="sxs-lookup"><span data-stu-id="852ca-126">hello directory where Maven is installed</span></span>
+
+## <a name="create-a-maven-project"></a><span data-ttu-id="852ca-127">Creación de un proyecto de Maven</span><span class="sxs-lookup"><span data-stu-id="852ca-127">Create a Maven project</span></span>
+
+<span data-ttu-id="852ca-128">Desde la línea de comandos de hello, use Hola siguiente comando toocreate un proyecto de Maven **WordCount**:</span><span class="sxs-lookup"><span data-stu-id="852ca-128">From hello command line, use hello following command toocreate a Maven project named **WordCount**:</span></span>
 
 ```bash
 mvn archetype:generate -DarchetypeArtifactId=maven-archetype-quickstart -DgroupId=com.microsoft.example -DartifactId=WordCount -DinteractiveMode=false
 ```
 
 > [!NOTE]
-> <span data-ttu-id="b71df-129">Si va a usar PowerShell, deberá poner comillas dobles alrededor de los parámetros `-D`.</span><span class="sxs-lookup"><span data-stu-id="b71df-129">If you are using PowerShell, you must surround the`-D` parameters with double quotes.</span></span>
+> <span data-ttu-id="852ca-129">Si va a usar PowerShell, deberá poner comillas dobles alrededor de los parámetros `-D`.</span><span class="sxs-lookup"><span data-stu-id="852ca-129">If you are using PowerShell, you must surround the`-D` parameters with double quotes.</span></span>
 >
 > `mvn archetype:generate "-DarchetypeArtifactId=maven-archetype-quickstart" "-DgroupId=com.microsoft.example" "-DartifactId=WordCount" "-DinteractiveMode=false"`
 
-<span data-ttu-id="b71df-130">Este comando crea un directorio denominado `WordCount` en la ubicación actual, que contiene un proyecto de Maven básico.</span><span class="sxs-lookup"><span data-stu-id="b71df-130">This command creates a directory named `WordCount` at the current location, which contains a basic Maven project.</span></span> <span data-ttu-id="b71df-131">El directorio `WordCount` contiene los siguientes elementos:</span><span class="sxs-lookup"><span data-stu-id="b71df-131">The `WordCount` directory contains the following items:</span></span>
+<span data-ttu-id="852ca-130">Este comando crea un directorio denominado `WordCount` en la ubicación actual de hello, que contiene un proyecto básico de Maven.</span><span class="sxs-lookup"><span data-stu-id="852ca-130">This command creates a directory named `WordCount` at hello current location, which contains a basic Maven project.</span></span> <span data-ttu-id="852ca-131">Hola `WordCount` directorio contiene Hola siguientes elementos:</span><span class="sxs-lookup"><span data-stu-id="852ca-131">hello `WordCount` directory contains hello following items:</span></span>
 
-* <span data-ttu-id="b71df-132">`pom.xml`: Contiene la configuración del proyecto de Maven.</span><span class="sxs-lookup"><span data-stu-id="b71df-132">`pom.xml`: Contains settings for the Maven project.</span></span>
-* <span data-ttu-id="b71df-133">`src\main\java\com\microsoft\example`: Contiene el código de la aplicación.</span><span class="sxs-lookup"><span data-stu-id="b71df-133">`src\main\java\com\microsoft\example`: Contains your application code.</span></span>
-* <span data-ttu-id="b71df-134">`src\test\java\com\microsoft\example`: Contiene pruebas para la aplicación.</span><span class="sxs-lookup"><span data-stu-id="b71df-134">`src\test\java\com\microsoft\example`: Contains tests for your application.</span></span> 
+* <span data-ttu-id="852ca-132">`pom.xml`: Contiene la configuración para proyectos de Maven Hola.</span><span class="sxs-lookup"><span data-stu-id="852ca-132">`pom.xml`: Contains settings for hello Maven project.</span></span>
+* <span data-ttu-id="852ca-133">`src\main\java\com\microsoft\example`: Contiene el código de la aplicación.</span><span class="sxs-lookup"><span data-stu-id="852ca-133">`src\main\java\com\microsoft\example`: Contains your application code.</span></span>
+* <span data-ttu-id="852ca-134">`src\test\java\com\microsoft\example`: Contiene pruebas para la aplicación.</span><span class="sxs-lookup"><span data-stu-id="852ca-134">`src\test\java\com\microsoft\example`: Contains tests for your application.</span></span> 
 
-### <a name="remove-the-generated-example-code"></a><span data-ttu-id="b71df-135">Eliminar el código de ejemplo generado</span><span class="sxs-lookup"><span data-stu-id="b71df-135">Remove the generated example code</span></span>
+### <a name="remove-hello-generated-example-code"></a><span data-ttu-id="852ca-135">Quitar el código de ejemplo de Hola generado</span><span class="sxs-lookup"><span data-stu-id="852ca-135">Remove hello generated example code</span></span>
 
-<span data-ttu-id="b71df-136">Elimine la prueba generada y los archivos de aplicación:</span><span class="sxs-lookup"><span data-stu-id="b71df-136">Delete the generated test and the application files:</span></span>
+<span data-ttu-id="852ca-136">Eliminar pruebas Hola generado y archivos de la aplicación hello:</span><span class="sxs-lookup"><span data-stu-id="852ca-136">Delete hello generated test and hello application files:</span></span>
 
-* <span data-ttu-id="b71df-137">**src\test\java\com\microsoft\example\AppTest.java**</span><span class="sxs-lookup"><span data-stu-id="b71df-137">**src\test\java\com\microsoft\example\AppTest.java**</span></span>
-* <span data-ttu-id="b71df-138">**src\main\java\com\microsoft\example\App.java**</span><span class="sxs-lookup"><span data-stu-id="b71df-138">**src\main\java\com\microsoft\example\App.java**</span></span>
+* <span data-ttu-id="852ca-137">**src\test\java\com\microsoft\example\AppTest.java**</span><span class="sxs-lookup"><span data-stu-id="852ca-137">**src\test\java\com\microsoft\example\AppTest.java**</span></span>
+* <span data-ttu-id="852ca-138">**src\main\java\com\microsoft\example\App.java**</span><span class="sxs-lookup"><span data-stu-id="852ca-138">**src\main\java\com\microsoft\example\App.java**</span></span>
 
-## <a name="add-maven-repositories"></a><span data-ttu-id="b71df-139">Agregar repositorios de Maven</span><span class="sxs-lookup"><span data-stu-id="b71df-139">Add Maven repositories</span></span>
+## <a name="add-maven-repositories"></a><span data-ttu-id="852ca-139">Agregar repositorios de Maven</span><span class="sxs-lookup"><span data-stu-id="852ca-139">Add Maven repositories</span></span>
 
-<span data-ttu-id="b71df-140">HDInsight se basa en Hortonworks Data Platform (HDP), por lo que se recomienda usar el repositorio de Hortonworks para descargar las dependencias correspondientes a los proyectos de Apache Storm.</span><span class="sxs-lookup"><span data-stu-id="b71df-140">HDInsight is based on the Hortonworks Data Platform (HDP), so we recommend using the Hortonworks repository to download dependencies for your Apache Storm projects.</span></span> <span data-ttu-id="b71df-141">En el archivo __pom.xml__, agregue el siguiente texto XML después de la línea `<url>http://maven.apache.org</url>`:</span><span class="sxs-lookup"><span data-stu-id="b71df-141">In the __pom.xml__ file, add the following XML after the `<url>http://maven.apache.org</url>` line:</span></span>
+<span data-ttu-id="852ca-140">HDInsight se basa en hello Hortonworks Data Platform (HDP), por lo que se recomienda utilizar las dependencias de hello Hortonworks repositorio toodownload para los proyectos de Apache Storm.</span><span class="sxs-lookup"><span data-stu-id="852ca-140">HDInsight is based on hello Hortonworks Data Platform (HDP), so we recommend using hello Hortonworks repository toodownload dependencies for your Apache Storm projects.</span></span> <span data-ttu-id="852ca-141">Hola __pom.xml__ , agregue Hola continuación de XML después de hello `<url>http://maven.apache.org</url>` línea:</span><span class="sxs-lookup"><span data-stu-id="852ca-141">In hello __pom.xml__ file, add hello following XML after hello `<url>http://maven.apache.org</url>` line:</span></span>
 
 ```xml
 <repositories>
@@ -124,44 +124,44 @@ mvn archetype:generate -DarchetypeArtifactId=maven-archetype-quickstart -DgroupI
 </repositories>
 ```
 
-## <a name="add-properties"></a><span data-ttu-id="b71df-142">Agregar propiedades</span><span class="sxs-lookup"><span data-stu-id="b71df-142">Add properties</span></span>
+## <a name="add-properties"></a><span data-ttu-id="852ca-142">Agregar propiedades</span><span class="sxs-lookup"><span data-stu-id="852ca-142">Add properties</span></span>
 
-<span data-ttu-id="b71df-143">Maven permite definir los valores de nivel de proyecto llamados propiedades.</span><span class="sxs-lookup"><span data-stu-id="b71df-143">Maven allows you to define project-level values called properties.</span></span> <span data-ttu-id="b71df-144">En __pom.xml__, agregue el siguiente texto después de la línea `</repositories>`:</span><span class="sxs-lookup"><span data-stu-id="b71df-144">In the __pom.xml__, add the following text after the `</repositories>` line:</span></span>
+<span data-ttu-id="852ca-143">Maven permite valores de nivel de proyecto de toodefine denominados propiedades.</span><span class="sxs-lookup"><span data-stu-id="852ca-143">Maven allows you toodefine project-level values called properties.</span></span> <span data-ttu-id="852ca-144">Hola __pom.xml__, agregar Hola después texto después de hello `</repositories>` línea:</span><span class="sxs-lookup"><span data-stu-id="852ca-144">In hello __pom.xml__, add hello following text after hello `</repositories>` line:</span></span>
 
 ```xml
 <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <!--
-    This is a version of Storm from the Hortonworks repository that is compatible with HDInsight.
+    This is a version of Storm from hello Hortonworks repository that is compatible with HDInsight.
     -->
     <storm.version>1.0.1.2.5.3.0-37</storm.version>
 </properties>
 ```
 
-<span data-ttu-id="b71df-145">Ahora puede usar este valor en otras secciones de `pom.xml`.</span><span class="sxs-lookup"><span data-stu-id="b71df-145">You can now use this value in other sections of the `pom.xml`.</span></span> <span data-ttu-id="b71df-146">Por ejemplo, al especificar la versión de los componentes de Storm, puede usar `${storm.version}` en lugar de codificar un valor de forma rígida.</span><span class="sxs-lookup"><span data-stu-id="b71df-146">For example, when specifying the version of Storm components, you can use `${storm.version}` instead of hard coding a value.</span></span>
+<span data-ttu-id="852ca-145">Ahora puede usar este valor en otras secciones de hello `pom.xml`.</span><span class="sxs-lookup"><span data-stu-id="852ca-145">You can now use this value in other sections of hello `pom.xml`.</span></span> <span data-ttu-id="852ca-146">Por ejemplo, al especificar la versión de Hola de componentes de Storm, puede utilizar `${storm.version}` en lugar de codificar de forma rígida un valor.</span><span class="sxs-lookup"><span data-stu-id="852ca-146">For example, when specifying hello version of Storm components, you can use `${storm.version}` instead of hard coding a value.</span></span>
 
-## <a name="add-dependencies"></a><span data-ttu-id="b71df-147">Adición de dependencias</span><span class="sxs-lookup"><span data-stu-id="b71df-147">Add dependencies</span></span>
+## <a name="add-dependencies"></a><span data-ttu-id="852ca-147">Adición de dependencias</span><span class="sxs-lookup"><span data-stu-id="852ca-147">Add dependencies</span></span>
 
-<span data-ttu-id="b71df-148">Agregue una dependencia para componentes de Storm.</span><span class="sxs-lookup"><span data-stu-id="b71df-148">Add a dependency for Storm components.</span></span> <span data-ttu-id="b71df-149">Abra el archivo `pom.xml` y agregue el código siguiente en la sección `<dependencies>`:</span><span class="sxs-lookup"><span data-stu-id="b71df-149">Open the `pom.xml` file and add the following code in the `<dependencies>` section:</span></span>
+<span data-ttu-id="852ca-148">Agregue una dependencia para componentes de Storm.</span><span class="sxs-lookup"><span data-stu-id="852ca-148">Add a dependency for Storm components.</span></span> <span data-ttu-id="852ca-149">Abra hello `pom.xml` de archivos y agregar Hola después el código de hello `<dependencies>` sección:</span><span class="sxs-lookup"><span data-stu-id="852ca-149">Open hello `pom.xml` file and add hello following code in hello `<dependencies>` section:</span></span>
 
 ```xml
 <dependency>
     <groupId>org.apache.storm</groupId>
     <artifactId>storm-core</artifactId>
     <version>${storm.version}</version>
-    <!-- keep storm out of the jar-with-dependencies -->
+    <!-- keep storm out of hello jar-with-dependencies -->
     <scope>provided</scope>
 </dependency>
 ```
 
-<span data-ttu-id="b71df-150">En tiempo de compilación, Maven usa esta información para buscar `storm-core` en el repositorio de Maven.</span><span class="sxs-lookup"><span data-stu-id="b71df-150">At compile time, Maven uses this information to look up `storm-core` in the Maven repository.</span></span> <span data-ttu-id="b71df-151">Busca primero en el repositorio del equipo local.</span><span class="sxs-lookup"><span data-stu-id="b71df-151">It first looks in the repository on your local computer.</span></span> <span data-ttu-id="b71df-152">Si los archivos no están allí, Maven los descarga desde el repositorio de Maven público y los almacena en el repositorio local.</span><span class="sxs-lookup"><span data-stu-id="b71df-152">If the files aren't there, Maven downloads them from the public Maven repository and stores them in the local repository.</span></span>
+<span data-ttu-id="852ca-150">En tiempo de compilación, Maven Utilice esta información toolook `storm-core` en el repositorio de Maven Hola.</span><span class="sxs-lookup"><span data-stu-id="852ca-150">At compile time, Maven uses this information toolook up `storm-core` in hello Maven repository.</span></span> <span data-ttu-id="852ca-151">Primero busca en el repositorio de hello en el equipo local.</span><span class="sxs-lookup"><span data-stu-id="852ca-151">It first looks in hello repository on your local computer.</span></span> <span data-ttu-id="852ca-152">Si archivos hello no existe, experto en descarga de repositorio público de Maven de Hola y almacenarlos en el repositorio local de Hola.</span><span class="sxs-lookup"><span data-stu-id="852ca-152">If hello files aren't there, Maven downloads them from hello public Maven repository and stores them in hello local repository.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="b71df-153">Observe la línea `<scope>provided</scope>` en esta sección.</span><span class="sxs-lookup"><span data-stu-id="b71df-153">Notice the `<scope>provided</scope>` line in this section.</span></span> <span data-ttu-id="b71df-154">Esta opción indica a Maven que excluya **storm-core** de los archivos JAR creados, ya que el sistema lo proporciona.</span><span class="sxs-lookup"><span data-stu-id="b71df-154">This setting tells Maven to exclude **storm-core** from any JAR files that are created, because it is provided by the system.</span></span>
+> <span data-ttu-id="852ca-153">Hola aviso `<scope>provided</scope>` línea en esta sección.</span><span class="sxs-lookup"><span data-stu-id="852ca-153">Notice hello `<scope>provided</scope>` line in this section.</span></span> <span data-ttu-id="852ca-154">Esta configuración le comunica Maven tooexclude **aluvión de núcleo** de ningún archivo JAR que se crea, dado que se proporciona al sistema de Hola.</span><span class="sxs-lookup"><span data-stu-id="852ca-154">This setting tells Maven tooexclude **storm-core** from any JAR files that are created, because it is provided by hello system.</span></span>
 
-## <a name="build-configuration"></a><span data-ttu-id="b71df-155">Configuración de compilación</span><span class="sxs-lookup"><span data-stu-id="b71df-155">Build configuration</span></span>
+## <a name="build-configuration"></a><span data-ttu-id="852ca-155">Configuración de compilación</span><span class="sxs-lookup"><span data-stu-id="852ca-155">Build configuration</span></span>
 
-<span data-ttu-id="b71df-156">Los complementos de Maven permiten personalizar las fases de compilación del proyecto,</span><span class="sxs-lookup"><span data-stu-id="b71df-156">Maven plug-ins allow you to customize the build stages of the project.</span></span> <span data-ttu-id="b71df-157">por ejemplo, cómo se compila el proyecto o cómo este se empaqueta en un archivo JAR.</span><span class="sxs-lookup"><span data-stu-id="b71df-157">For example, how the project is compiled or how to package it into a JAR file.</span></span> <span data-ttu-id="b71df-158">Abra el archivo `pom.xml` y agregue el código siguiente directamente encima de la línea `</project>`.</span><span class="sxs-lookup"><span data-stu-id="b71df-158">Open the `pom.xml` file and add the following code directly above the `</project>` line.</span></span>
+<span data-ttu-id="852ca-156">Complementos de maven le permiten fases de compilación de hello toocustomize del proyecto de Hola.</span><span class="sxs-lookup"><span data-stu-id="852ca-156">Maven plug-ins allow you toocustomize hello build stages of hello project.</span></span> <span data-ttu-id="852ca-157">Por ejemplo, cómo se compila el proyecto de Hola o cómo toopackage en un archivo JAR.</span><span class="sxs-lookup"><span data-stu-id="852ca-157">For example, how hello project is compiled or how toopackage it into a JAR file.</span></span> <span data-ttu-id="852ca-158">Abra hello `pom.xml` de archivos y agregar Hola después el código directamente encima de hello `</project>` línea.</span><span class="sxs-lookup"><span data-stu-id="852ca-158">Open hello `pom.xml` file and add hello following code directly above hello `</project>` line.</span></span>
 
 ```xml
 <build>
@@ -172,11 +172,11 @@ mvn archetype:generate -DarchetypeArtifactId=maven-archetype-quickstart -DgroupI
 </build>
 ```
 
-<span data-ttu-id="b71df-159">Esta sección se usa para agregar complementos, recursos y otras opciones de configuración de compilación.</span><span class="sxs-lookup"><span data-stu-id="b71df-159">This section is used to add plug-ins, resources, and other build configuration options.</span></span> <span data-ttu-id="b71df-160">Para obtener una referencia completa del archivo **pom.xml**, consulte [http://maven.apache.org/pom.html](http://maven.apache.org/pom.html).</span><span class="sxs-lookup"><span data-stu-id="b71df-160">For a full reference of the **pom.xml** file, see [http://maven.apache.org/pom.html](http://maven.apache.org/pom.html).</span></span>
+<span data-ttu-id="852ca-159">Esta sección es tooadd usa complementos, los recursos y otras opciones de configuración de compilación.</span><span class="sxs-lookup"><span data-stu-id="852ca-159">This section is used tooadd plug-ins, resources, and other build configuration options.</span></span> <span data-ttu-id="852ca-160">Para obtener una referencia completa de hello **pom.xml** de archivos, consulte [http://maven.apache.org/pom.html](http://maven.apache.org/pom.html).</span><span class="sxs-lookup"><span data-stu-id="852ca-160">For a full reference of hello **pom.xml** file, see [http://maven.apache.org/pom.html](http://maven.apache.org/pom.html).</span></span>
 
-### <a name="add-plug-ins"></a><span data-ttu-id="b71df-161">Agregar complementos</span><span class="sxs-lookup"><span data-stu-id="b71df-161">Add plug-ins</span></span>
+### <a name="add-plug-ins"></a><span data-ttu-id="852ca-161">Agregar complementos</span><span class="sxs-lookup"><span data-stu-id="852ca-161">Add plug-ins</span></span>
 
-<span data-ttu-id="b71df-162">En el caso de las topologías de Apache Storm implementadas en Java, el [Complemento Exec Maven](http://www.mojohaus.org/exec-maven-plugin/) es útil porque le permite ejecutar fácilmente la topología de manera local en su entorno de desarrollo.</span><span class="sxs-lookup"><span data-stu-id="b71df-162">For Apache Storm topologies implemented in Java, the [Exec Maven Plugin](http://www.mojohaus.org/exec-maven-plugin/) is useful because it allows you to easily run the topology locally in your development environment.</span></span> <span data-ttu-id="b71df-163">Agregue lo siguiente a la sección `<plugins>` del archivo `pom.xml` para incluir el complemento Exec Maven:</span><span class="sxs-lookup"><span data-stu-id="b71df-163">Add the following to the `<plugins>` section of the `pom.xml` file to include the Exec Maven plugin:</span></span>
+<span data-ttu-id="852ca-162">Para las topologías de Apache Storm implementadas en Java, Hola [Exec Maven complemento](http://www.mojohaus.org/exec-maven-plugin/) es útil porque permite tooeasily ejecuta topología Hola localmente en el entorno de desarrollo.</span><span class="sxs-lookup"><span data-stu-id="852ca-162">For Apache Storm topologies implemented in Java, hello [Exec Maven Plugin](http://www.mojohaus.org/exec-maven-plugin/) is useful because it allows you tooeasily run hello topology locally in your development environment.</span></span> <span data-ttu-id="852ca-163">Agregar Hola después toohello `<plugins>` sección de hello `pom.xml` archivo tooinclude Hola Exec Maven complemento:</span><span class="sxs-lookup"><span data-stu-id="852ca-163">Add hello following toohello `<plugins>` section of hello `pom.xml` file tooinclude hello Exec Maven plugin:</span></span>
 
 ```xml
 <plugin>
@@ -201,13 +201,13 @@ mvn archetype:generate -DarchetypeArtifactId=maven-archetype-quickstart -DgroupI
 </plugin>
 ```
 
-<span data-ttu-id="b71df-164">Otro complemento útil es el [Complemento Apache Maven Compiler](http://maven.apache.org/plugins/maven-compiler-plugin/), que se usa para cambiar las opciones de compilación.</span><span class="sxs-lookup"><span data-stu-id="b71df-164">Another useful plug-in is the [Apache Maven Compiler Plugin](http://maven.apache.org/plugins/maven-compiler-plugin/), which is used to change compilation options.</span></span> <span data-ttu-id="b71df-165">Se cambia la versión de Java que usa Maven para el origen y destino de la aplicación.</span><span class="sxs-lookup"><span data-stu-id="b71df-165">The changes the Java version that Maven uses for the source and target for your application.</span></span>
+<span data-ttu-id="852ca-164">Otro útil es complemento hello [Apache Maven compilador complemento](http://maven.apache.org/plugins/maven-compiler-plugin/), que es usado toochange opciones de compilación.</span><span class="sxs-lookup"><span data-stu-id="852ca-164">Another useful plug-in is hello [Apache Maven Compiler Plugin](http://maven.apache.org/plugins/maven-compiler-plugin/), which is used toochange compilation options.</span></span> <span data-ttu-id="852ca-165">cambios de Hola Hola versión de Java que Maven se usa para el origen de Hola y de destino para la aplicación.</span><span class="sxs-lookup"><span data-stu-id="852ca-165">hello changes hello Java version that Maven uses for hello source and target for your application.</span></span>
 
-* <span data-ttu-id="b71df-166">Para HDInsight __3.4 o una versión anterior__, establezca la versión de origen y destino de Java en __1.7__.</span><span class="sxs-lookup"><span data-stu-id="b71df-166">For HDInsight __3.4 or earlier__, set the source and target Java version to __1.7__.</span></span>
+* <span data-ttu-id="852ca-166">Para HDInsight __3.4 o una versión anterior__, establezca Hola origen y destino too__1.7__ de versión de Java.</span><span class="sxs-lookup"><span data-stu-id="852ca-166">For HDInsight __3.4 or earlier__, set hello source and target Java version too__1.7__.</span></span>
 
-* <span data-ttu-id="b71df-167">Para HDInsight __3.5__, establezca la versión de origen y destino de Java en __1.8__.</span><span class="sxs-lookup"><span data-stu-id="b71df-167">For HDInsight __3.5__, set the source and target Java version to __1.8__.</span></span>
+* <span data-ttu-id="852ca-167">Para HDInsight __3.5__, establezca Hola origen y destino too__1.8__ de versión de Java.</span><span class="sxs-lookup"><span data-stu-id="852ca-167">For HDInsight __3.5__, set hello source and target Java version too__1.8__.</span></span>
 
-<span data-ttu-id="b71df-168">Agregue el siguiente texto en la sección `<plugins>` del archivo `pom.xml` para incluir el complemento Apache Maven Compiler.</span><span class="sxs-lookup"><span data-stu-id="b71df-168">Add the following text in the `<plugins>` section of the `pom.xml` file to include the Apache Maven Compiler plugin.</span></span> <span data-ttu-id="b71df-169">Este ejemplo especifica 1.8, por lo que la versión de HDInsight de destino es 3.5.</span><span class="sxs-lookup"><span data-stu-id="b71df-169">This example specifies 1.8, so the target HDInsight version is 3.5.</span></span>
+<span data-ttu-id="852ca-168">Agregar Hola después texto Hola `<plugins>` sección de hello `pom.xml` tooinclude Hola Apache Maven compilador complemento de archivos.</span><span class="sxs-lookup"><span data-stu-id="852ca-168">Add hello following text in hello `<plugins>` section of hello `pom.xml` file tooinclude hello Apache Maven Compiler plugin.</span></span> <span data-ttu-id="852ca-169">Este ejemplo especifica 1.8, por lo que la versión de HDInsight de destino de hello es 3.5.</span><span class="sxs-lookup"><span data-stu-id="852ca-169">This example specifies 1.8, so hello target HDInsight version is 3.5.</span></span>
 
 ```xml
 <plugin>
@@ -221,9 +221,9 @@ mvn archetype:generate -DarchetypeArtifactId=maven-archetype-quickstart -DgroupI
 </plugin>
 ```
 
-### <a name="configure-resources"></a><span data-ttu-id="b71df-170">Configure resources</span><span class="sxs-lookup"><span data-stu-id="b71df-170">Configure resources</span></span>
+### <a name="configure-resources"></a><span data-ttu-id="852ca-170">Configure resources</span><span class="sxs-lookup"><span data-stu-id="852ca-170">Configure resources</span></span>
 
-<span data-ttu-id="b71df-171">Gracias a la sección de recursos, podrá incluir recursos no basados en códigos, como los archivos de configuración que necesitan los componentes de la topología.</span><span class="sxs-lookup"><span data-stu-id="b71df-171">The resources section allows you to include non-code resources such as configuration files needed by components in the topology.</span></span> <span data-ttu-id="b71df-172">En este ejemplo, agregue el texto siguiente en la sección `<resources>` del archivo pom.xml.</span><span class="sxs-lookup"><span data-stu-id="b71df-172">For this example, add the following text in the `<resources>` section of the \`pom.xml file.</span></span>
+<span data-ttu-id="852ca-171">sección de recursos de Hello permite tooinclude recursos de código como archivos de configuración necesarios para componentes de topología de Hola.</span><span class="sxs-lookup"><span data-stu-id="852ca-171">hello resources section allows you tooinclude non-code resources such as configuration files needed by components in hello topology.</span></span> <span data-ttu-id="852ca-172">En este ejemplo, agregar Hola después texto Hola `<resources>` sección de hello ' archivo pom.xml.</span><span class="sxs-lookup"><span data-stu-id="852ca-172">For this example, add hello following text in hello `<resources>` section of hello \`pom.xml file.</span></span>
 
 ```xml
 <resource>
@@ -235,29 +235,29 @@ mvn archetype:generate -DarchetypeArtifactId=maven-archetype-quickstart -DgroupI
 </resource>
 ```
 
-<span data-ttu-id="b71df-173">Este ejemplo agrega el directorio de recursos en la raíz del proyecto (`${basedir}`) como una ubicación que contiene recursos e incluye el archivo denominado `log4j2.xml`.</span><span class="sxs-lookup"><span data-stu-id="b71df-173">This example adds the resources directory in the root of the project (`${basedir}`) as a location that contains resources, and includes the file named `log4j2.xml`.</span></span> <span data-ttu-id="b71df-174">Este archivo se utiliza para configurar la información que registra la topología.</span><span class="sxs-lookup"><span data-stu-id="b71df-174">This file is used to configure what information is logged by the topology.</span></span>
+<span data-ttu-id="852ca-173">En este ejemplo agrega el directorio de recursos de hello en raíz de Hola de proyecto de hello (`${basedir}`) como una ubicación que contiene recursos e incluye el archivo hello denominado `log4j2.xml`.</span><span class="sxs-lookup"><span data-stu-id="852ca-173">This example adds hello resources directory in hello root of hello project (`${basedir}`) as a location that contains resources, and includes hello file named `log4j2.xml`.</span></span> <span data-ttu-id="852ca-174">Este archivo es tooconfigure usado topología Hola registra la información.</span><span class="sxs-lookup"><span data-stu-id="852ca-174">This file is used tooconfigure what information is logged by hello topology.</span></span>
 
-## <a name="create-the-topology"></a><span data-ttu-id="b71df-175">Creación de la topología</span><span class="sxs-lookup"><span data-stu-id="b71df-175">Create the topology</span></span>
+## <a name="create-hello-topology"></a><span data-ttu-id="852ca-175">Crear topología de Hola</span><span class="sxs-lookup"><span data-stu-id="852ca-175">Create hello topology</span></span>
 
-<span data-ttu-id="b71df-176">Una topología de Apache Storm basada en Java consta de tres componentes que debe crear (o hacer referencia) como una dependencia.</span><span class="sxs-lookup"><span data-stu-id="b71df-176">A Java-based Apache Storm topology consists of three components that you must author (or reference) as a dependency.</span></span>
+<span data-ttu-id="852ca-176">Una topología de Apache Storm basada en Java consta de tres componentes que debe crear (o hacer referencia) como una dependencia.</span><span class="sxs-lookup"><span data-stu-id="852ca-176">A Java-based Apache Storm topology consists of three components that you must author (or reference) as a dependency.</span></span>
 
-* <span data-ttu-id="b71df-177">**Spouts**: lee datos de orígenes externos y emite flujos de datos a la topología.</span><span class="sxs-lookup"><span data-stu-id="b71df-177">**Spouts**: Reads data from external sources and emits streams of data into the topology.</span></span>
+* <span data-ttu-id="852ca-177">**Spouts**: lee los orígenes de datos desde externo y emite flujos de datos en la topología de Hola.</span><span class="sxs-lookup"><span data-stu-id="852ca-177">**Spouts**: Reads data from external sources and emits streams of data into hello topology.</span></span>
 
-* <span data-ttu-id="b71df-178">**Bolts**: realiza el procesamiento en flujos que emite spouts u otros bolts, y emite uno o varios flujos.</span><span class="sxs-lookup"><span data-stu-id="b71df-178">**Bolts**: Performs processing on streams emitted by spouts or other bolts, and emits one or more streams.</span></span>
+* <span data-ttu-id="852ca-178">**Bolts**: realiza el procesamiento en flujos que emite spouts u otros bolts, y emite uno o varios flujos.</span><span class="sxs-lookup"><span data-stu-id="852ca-178">**Bolts**: Performs processing on streams emitted by spouts or other bolts, and emits one or more streams.</span></span>
 
-* <span data-ttu-id="b71df-179">**Topology**: define cómo se organizan los spouts y bolts, y proporciona el punto de entrada de la topología.</span><span class="sxs-lookup"><span data-stu-id="b71df-179">**Topology**: Defines how the spouts and bolts are arranged, and provides the entry point for the topology.</span></span>
+* <span data-ttu-id="852ca-179">**Topología**: define el modo spouts hello y tornillos se organizan y proporciona el punto de entrada de hello para la topología de Hola.</span><span class="sxs-lookup"><span data-stu-id="852ca-179">**Topology**: Defines how hello spouts and bolts are arranged, and provides hello entry point for hello topology.</span></span>
 
-### <a name="create-the-spout"></a><span data-ttu-id="b71df-180">Creación del spout</span><span class="sxs-lookup"><span data-stu-id="b71df-180">Create the spout</span></span>
+### <a name="create-hello-spout"></a><span data-ttu-id="852ca-180">Crear pitorro Hola</span><span class="sxs-lookup"><span data-stu-id="852ca-180">Create hello spout</span></span>
 
-<span data-ttu-id="b71df-181">Para reducir los requisitos de la configuración de los orígenes de datos externos, el spout siguiente simplemente emite frases aleatorias.</span><span class="sxs-lookup"><span data-stu-id="b71df-181">To reduce requirements for setting up external data sources, the following spout simply emits random sentences.</span></span> <span data-ttu-id="b71df-182">Se trata de una versión modificada de un spout que se proporciona con los [ejemplos de Storm-Starter](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter).</span><span class="sxs-lookup"><span data-stu-id="b71df-182">It is a modified version of a spout that is provided with the [Storm-Starter examples](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter).</span></span>
+<span data-ttu-id="852ca-181">requisitos de tooreduce para configurar orígenes de datos externos, Hola siguiendo pitorro simplemente emite frases aleatorias.</span><span class="sxs-lookup"><span data-stu-id="852ca-181">tooreduce requirements for setting up external data sources, hello following spout simply emits random sentences.</span></span> <span data-ttu-id="852ca-182">Es una versión modificada de un pitorro que se proporciona con hello [ejemplos de Storm Starter](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter).</span><span class="sxs-lookup"><span data-stu-id="852ca-182">It is a modified version of a spout that is provided with hello [Storm-Starter examples](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter).</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="b71df-183">Para ver un ejemplo de un spout que lee desde un origen de datos externos, consulte uno de los siguientes ejemplos:</span><span class="sxs-lookup"><span data-stu-id="b71df-183">For an example of a spout that reads from an external data source, see one of the following examples:</span></span>
+> <span data-ttu-id="852ca-183">Para obtener un ejemplo de un pitorro que lee de un origen de datos externo, consulte uno de hello en los ejemplos siguientes:</span><span class="sxs-lookup"><span data-stu-id="852ca-183">For an example of a spout that reads from an external data source, see one of hello following examples:</span></span>
 >
-> * <span data-ttu-id="b71df-184">[TwitterSampleSpout](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter/spout/TwitterSampleSpout.java): un spout de ejemplo que lee desde Twitter.</span><span class="sxs-lookup"><span data-stu-id="b71df-184">[TwitterSampleSPout](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter/spout/TwitterSampleSpout.java): An example spout that reads from Twitter</span></span>
-> * <span data-ttu-id="b71df-185">[Storm Kafka](https://github.com/apache/storm/tree/0.10.x-branch/external/storm-kafka): un spout que lee desde Kafka.</span><span class="sxs-lookup"><span data-stu-id="b71df-185">[Storm-Kafka](https://github.com/apache/storm/tree/0.10.x-branch/external/storm-kafka): A spout that reads from Kafka</span></span>
+> * <span data-ttu-id="852ca-184">[TwitterSampleSpout](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter/spout/TwitterSampleSpout.java): un spout de ejemplo que lee desde Twitter.</span><span class="sxs-lookup"><span data-stu-id="852ca-184">[TwitterSampleSPout](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter/spout/TwitterSampleSpout.java): An example spout that reads from Twitter</span></span>
+> * <span data-ttu-id="852ca-185">[Storm Kafka](https://github.com/apache/storm/tree/0.10.x-branch/external/storm-kafka): un spout que lee desde Kafka.</span><span class="sxs-lookup"><span data-stu-id="852ca-185">[Storm-Kafka](https://github.com/apache/storm/tree/0.10.x-branch/external/storm-kafka): A spout that reads from Kafka</span></span>
 
-<span data-ttu-id="b71df-186">Para spout, cree un archivo llamado `RandomSentenceSpout.java` en el directorio `src\main\java\com\microsoft\example` y use el siguiente código Java como contenido:</span><span class="sxs-lookup"><span data-stu-id="b71df-186">For the spout, create a file named `RandomSentenceSpout.java` in the `src\main\java\com\microsoft\example` directory and use the following Java code as the contents:</span></span>
+<span data-ttu-id="852ca-186">Para pitorro hello, cree un archivo denominado `RandomSentenceSpout.java` en hello `src\main\java\com\microsoft\example` Hola directorio y use después el código Java como contenido de hello:</span><span class="sxs-lookup"><span data-stu-id="852ca-186">For hello spout, create a file named `RandomSentenceSpout.java` in hello `src\main\java\com\microsoft\example` directory and use hello following Java code as hello contents:</span></span>
 
 ```java
 package com.microsoft.example;
@@ -275,31 +275,31 @@ import java.util.Random;
 
 //This spout randomly emits sentences
 public class RandomSentenceSpout extends BaseRichSpout {
-  //Collector used to emit output
+  //Collector used tooemit output
   SpoutOutputCollector _collector;
-  //Used to generate a random number
+  //Used toogenerate a random number
   Random _rand;
 
-  //Open is called when an instance of the class is created
+  //Open is called when an instance of hello class is created
   @Override
   public void open(Map conf, TopologyContext context, SpoutOutputCollector collector) {
-  //Set the instance collector to the one passed in
+  //Set hello instance collector toohello one passed in
     _collector = collector;
     //For randomness
     _rand = new Random();
   }
 
-  //Emit data to the stream
+  //Emit data toohello stream
   @Override
   public void nextTuple() {
   //Sleep for a bit
     Utils.sleep(100);
-    //The sentences that are randomly emitted
-    String[] sentences = new String[]{ "the cow jumped over the moon", "an apple a day keeps the doctor away",
-        "four score and seven years ago", "snow white and the seven dwarfs", "i am at two with nature" };
+    //hello sentences that are randomly emitted
+    String[] sentences = new String[]{ "hello cow jumped over hello moon", "an apple a day keeps hello doctor away",
+        "four score and seven years ago", "snow white and hello seven dwarfs", "i am at two with nature" };
     //Randomly pick a sentence
     String sentence = sentences[_rand.nextInt(sentences.length)];
-    //Emit the sentence
+    //Emit hello sentence
     _collector.emit(new Values(sentence));
   }
 
@@ -313,7 +313,7 @@ public class RandomSentenceSpout extends BaseRichSpout {
   public void fail(Object id) {
   }
 
-  //Declare the output fields. In this case, an sentence
+  //Declare hello output fields. In this case, an sentence
   @Override
   public void declareOutputFields(OutputFieldsDeclarer declarer) {
     declarer.declare(new Fields("sentence"));
@@ -322,22 +322,22 @@ public class RandomSentenceSpout extends BaseRichSpout {
 ```
 
 > [!NOTE]
-> <span data-ttu-id="b71df-187">Aunque esta topología solo usa un spout, otras pueden tener varios que alimenten datos desde orígenes distintos en la topología.</span><span class="sxs-lookup"><span data-stu-id="b71df-187">Although this topology uses only one spout, others may have several that feed data from different sources into the topology.</span></span>
+> <span data-ttu-id="852ca-187">Aunque esta topología usa sola pitorro, otros usuarios pueden tener varios que introducir datos de orígenes diferentes en la topología de Hola.</span><span class="sxs-lookup"><span data-stu-id="852ca-187">Although this topology uses only one spout, others may have several that feed data from different sources into hello topology.</span></span>
 
-### <a name="create-the-bolts"></a><span data-ttu-id="b71df-188">Creación de los bolts</span><span class="sxs-lookup"><span data-stu-id="b71df-188">Create the bolts</span></span>
+### <a name="create-hello-bolts"></a><span data-ttu-id="852ca-188">Crear Hola tornillos</span><span class="sxs-lookup"><span data-stu-id="852ca-188">Create hello bolts</span></span>
 
-<span data-ttu-id="b71df-189">Los bolts controlan el procesamiento de datos.</span><span class="sxs-lookup"><span data-stu-id="b71df-189">Bolts handle the data processing.</span></span> <span data-ttu-id="b71df-190">Esta topología utiliza dos bolts:</span><span class="sxs-lookup"><span data-stu-id="b71df-190">This topology uses two bolts:</span></span>
+<span data-ttu-id="852ca-189">Tornillos controlen el procesamiento de datos de Hola.</span><span class="sxs-lookup"><span data-stu-id="852ca-189">Bolts handle hello data processing.</span></span> <span data-ttu-id="852ca-190">Esta topología utiliza dos bolts:</span><span class="sxs-lookup"><span data-stu-id="852ca-190">This topology uses two bolts:</span></span>
 
-* <span data-ttu-id="b71df-191">**SplitSentence**: divide las frases que emite **RandomSentenceSpout** en palabras individuales.</span><span class="sxs-lookup"><span data-stu-id="b71df-191">**SplitSentence**: Splits the sentences emitted by **RandomSentenceSpout** into individual words.</span></span>
+* <span data-ttu-id="852ca-191">**SplitSentence**: divide las frases de hello emitidas por **RandomSentenceSpout** en palabras individuales.</span><span class="sxs-lookup"><span data-stu-id="852ca-191">**SplitSentence**: Splits hello sentences emitted by **RandomSentenceSpout** into individual words.</span></span>
 
-* <span data-ttu-id="b71df-192">**WordCount**: cuenta cuántas veces se ha repetido cada palabra.</span><span class="sxs-lookup"><span data-stu-id="b71df-192">**WordCount**: Counts how many times each word has occurred.</span></span>
+* <span data-ttu-id="852ca-192">**WordCount**: cuenta cuántas veces se ha repetido cada palabra.</span><span class="sxs-lookup"><span data-stu-id="852ca-192">**WordCount**: Counts how many times each word has occurred.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="b71df-193">Los bolts pueden hacer cualquier cosa; por ejemplo, cálculo, persistencia o hablar con componentes externos.</span><span class="sxs-lookup"><span data-stu-id="b71df-193">Bolts can do anything, for example, computation, persistence, or talking to external components.</span></span>
+> <span data-ttu-id="852ca-193">Tornillos pueden hacer cualquier cosa, por ejemplo, cálculo, persistencia o hablar tooexternal componentes.</span><span class="sxs-lookup"><span data-stu-id="852ca-193">Bolts can do anything, for example, computation, persistence, or talking tooexternal components.</span></span>
 
-<span data-ttu-id="b71df-194">Cree dos nuevos archivos, `SplitSentence.java` y `WordCount.java` en el directorio `src\main\java\com\microsoft\example`.</span><span class="sxs-lookup"><span data-stu-id="b71df-194">Create two new files, `SplitSentence.java` and `WordCount.java` in the `src\main\java\com\microsoft\example` directory.</span></span> <span data-ttu-id="b71df-195">Use el siguiente texto como contenido para los archivos:</span><span class="sxs-lookup"><span data-stu-id="b71df-195">Use the following text as the contents for the files:</span></span>
+<span data-ttu-id="852ca-194">Cree dos nuevos archivos, `SplitSentence.java` y `WordCount.java` en hello `src\main\java\com\microsoft\example` directory.</span><span class="sxs-lookup"><span data-stu-id="852ca-194">Create two new files, `SplitSentence.java` and `WordCount.java` in hello `src\main\java\com\microsoft\example` directory.</span></span> <span data-ttu-id="852ca-195">Usar hello después de texto como contenido de Hola para archivos de hello:</span><span class="sxs-lookup"><span data-stu-id="852ca-195">Use hello following text as hello contents for hello files:</span></span>
 
-#### <a name="splitsentence"></a><span data-ttu-id="b71df-196">SplitSentence</span><span class="sxs-lookup"><span data-stu-id="b71df-196">SplitSentence</span></span>
+#### <a name="splitsentence"></a><span data-ttu-id="852ca-196">SplitSentence</span><span class="sxs-lookup"><span data-stu-id="852ca-196">SplitSentence</span></span>
 
 ```java
 package com.microsoft.example;
@@ -354,20 +354,20 @@ import org.apache.storm.tuple.Values;
 //There are a variety of bolt types. In this case, use BaseBasicBolt
 public class SplitSentence extends BaseBasicBolt {
 
-  //Execute is called to process tuples
+  //Execute is called tooprocess tuples
   @Override
   public void execute(Tuple tuple, BasicOutputCollector collector) {
-    //Get the sentence content from the tuple
+    //Get hello sentence content from hello tuple
     String sentence = tuple.getString(0);
-    //An iterator to get each word
+    //An iterator tooget each word
     BreakIterator boundary=BreakIterator.getWordInstance();
-    //Give the iterator the sentence
+    //Give hello iterator hello sentence
     boundary.setText(sentence);
-    //Find the beginning first word
+    //Find hello beginning first word
     int start=boundary.first();
-    //Iterate over each word and emit it to the output stream
+    //Iterate over each word and emit it toohello output stream
     for (int end=boundary.next(); end != BreakIterator.DONE; start=end, end=boundary.next()) {
-      //get the word
+      //get hello word
       String word=sentence.substring(start,end);
       //If a word is whitespace characters, replace it with empty
       word=word.replaceAll("\\s+","");
@@ -386,7 +386,7 @@ public class SplitSentence extends BaseBasicBolt {
 }
 ```
 
-#### <a name="wordcount"></a><span data-ttu-id="b71df-197">WordCount</span><span class="sxs-lookup"><span data-stu-id="b71df-197">WordCount</span></span>
+#### <a name="wordcount"></a><span data-ttu-id="852ca-197">WordCount</span><span class="sxs-lookup"><span data-stu-id="852ca-197">WordCount</span></span>
 
 ```java
 package com.microsoft.example;
@@ -414,12 +414,12 @@ public class WordCount extends BaseBasicBolt {
   private static final Logger logger = LogManager.getLogger(WordCount.class);
   //For holding words and counts
   Map<String, Integer> counts = new HashMap<String, Integer>();
-  //How often to emit a count of words
+  //How often tooemit a count of words
   private Integer emitFrequency;
 
   // Default constructor
   public WordCount() {
-      emitFrequency=5; // Default to 60 seconds
+      emitFrequency=5; // Default too60 seconds
   }
 
   // Constructor that sets emit frequency
@@ -429,7 +429,7 @@ public class WordCount extends BaseBasicBolt {
 
   //Configure frequency of tick tuples for this bolt
   //This delivers a 'tick' tuple on a specific interval,
-  //which is used to trigger certain actions
+  //which is used tootrigger certain actions
   @Override
   public Map<String, Object> getComponentConfiguration() {
       Config conf = new Config();
@@ -437,7 +437,7 @@ public class WordCount extends BaseBasicBolt {
       return conf;
   }
 
-  //execute is called to process tuples
+  //execute is called tooprocess tuples
   @Override
   public void execute(Tuple tuple, BasicOutputCollector collector) {
     //If it's a tick tuple, emit all words and counts
@@ -449,13 +449,13 @@ public class WordCount extends BaseBasicBolt {
         logger.info("Emitting a count of " + count + " for word " + word);
       }
     } else {
-      //Get the word contents from the tuple
+      //Get hello word contents from hello tuple
       String word = tuple.getString(0);
       //Have we counted any already?
       Integer count = counts.get(word);
       if (count == null)
         count = 0;
-      //Increment the count and store it
+      //Increment hello count and store it
       count++;
       counts.put(word, count);
     }
@@ -469,15 +469,15 @@ public class WordCount extends BaseBasicBolt {
 }
 ```
 
-### <a name="define-the-topology"></a><span data-ttu-id="b71df-198">Definición de la topología</span><span class="sxs-lookup"><span data-stu-id="b71df-198">Define the topology</span></span>
+### <a name="define-hello-topology"></a><span data-ttu-id="852ca-198">Definir la topología de Hola</span><span class="sxs-lookup"><span data-stu-id="852ca-198">Define hello topology</span></span>
 
-<span data-ttu-id="b71df-199">La topología vincula los spouts y los bolts juntos en un gráfico, que define cómo fluyen los datos entre los componentes.</span><span class="sxs-lookup"><span data-stu-id="b71df-199">The topology ties the spouts and bolts together into a graph, which defines how data flows between the components.</span></span> <span data-ttu-id="b71df-200">También proporciona sugerencias de paralelismos que utiliza Storm al crear instancias de los componentes dentro del clúster.</span><span class="sxs-lookup"><span data-stu-id="b71df-200">It also provides parallelism hints that Storm uses when creating instances of the components within the cluster.</span></span>
+<span data-ttu-id="852ca-199">topología de Hello une spouts hello y los tornillos juntos en un gráfico, que define cómo fluyen los datos entre los componentes de Hola.</span><span class="sxs-lookup"><span data-stu-id="852ca-199">hello topology ties hello spouts and bolts together into a graph, which defines how data flows between hello components.</span></span> <span data-ttu-id="852ca-200">También proporciona sugerencias de paralelismo que Storm utiliza al crear instancias de componentes de hello en clúster de Hola.</span><span class="sxs-lookup"><span data-stu-id="852ca-200">It also provides parallelism hints that Storm uses when creating instances of hello components within hello cluster.</span></span>
 
-<span data-ttu-id="b71df-201">La siguiente imagen es un diagrama básico del gráfico de componentes para esta topología.</span><span class="sxs-lookup"><span data-stu-id="b71df-201">The following image is a basic diagram of the graph of components for this topology.</span></span>
+<span data-ttu-id="852ca-201">Hello imagen siguiente es un diagrama básico de gráfico de Hola de componentes para esta topología.</span><span class="sxs-lookup"><span data-stu-id="852ca-201">hello following image is a basic diagram of hello graph of components for this topology.</span></span>
 
-![diagrama que muestra la disposición de los spouts y bolts](./media/hdinsight-storm-develop-java-topology/wordcount-topology.png)
+![Hola de diagrama que muestra spouts y los tornillos de organización](./media/hdinsight-storm-develop-java-topology/wordcount-topology.png)
 
-<span data-ttu-id="b71df-203">Para implementar la topología, cree un archivo llamado `WordCountTopology.java` en el directorio `src\main\java\com\microsoft\example`.</span><span class="sxs-lookup"><span data-stu-id="b71df-203">To implement the topology, create a file named `WordCountTopology.java` in the `src\main\java\com\microsoft\example` directory.</span></span> <span data-ttu-id="b71df-204">Use el siguiente código Java como contenido del archivo:</span><span class="sxs-lookup"><span data-stu-id="b71df-204">Use the following Java code as the contents of the file:</span></span>
+<span data-ttu-id="852ca-203">tooimplement Hola topología, cree un archivo denominado `WordCountTopology.java` en hello `src\main\java\com\microsoft\example` directory.</span><span class="sxs-lookup"><span data-stu-id="852ca-203">tooimplement hello topology, create a file named `WordCountTopology.java` in hello `src\main\java\com\microsoft\example` directory.</span></span> <span data-ttu-id="852ca-204">Usar hello después el código Java como contenido de Hola de archivo hello:</span><span class="sxs-lookup"><span data-stu-id="852ca-204">Use hello following Java code as hello contents of hello file:</span></span>
 
 ```java
 package com.microsoft.example;
@@ -492,58 +492,58 @@ import com.microsoft.example.RandomSentenceSpout;
 
 public class WordCountTopology {
 
-  //Entry point for the topology
+  //Entry point for hello topology
   public static void main(String[] args) throws Exception {
-  //Used to build the topology
+  //Used toobuild hello topology
     TopologyBuilder builder = new TopologyBuilder();
-    //Add the spout, with a name of 'spout'
+    //Add hello spout, with a name of 'spout'
     //and parallelism hint of 5 executors
     builder.setSpout("spout", new RandomSentenceSpout(), 5);
-    //Add the SplitSentence bolt, with a name of 'split'
+    //Add hello SplitSentence bolt, with a name of 'split'
     //and parallelism hint of 8 executors
-    //shufflegrouping subscribes to the spout, and equally distributes
-    //tuples (sentences) across instances of the SplitSentence bolt
+    //shufflegrouping subscribes toohello spout, and equally distributes
+    //tuples (sentences) across instances of hello SplitSentence bolt
     builder.setBolt("split", new SplitSentence(), 8).shuffleGrouping("spout");
-    //Add the counter, with a name of 'count'
+    //Add hello counter, with a name of 'count'
     //and parallelism hint of 12 executors
-    //fieldsgrouping subscribes to the split bolt, and
-    //ensures that the same word is sent to the same instance (group by field 'word')
+    //fieldsgrouping subscribes toohello split bolt, and
+    //ensures that hello same word is sent toohello same instance (group by field 'word')
     builder.setBolt("count", new WordCount(), 12).fieldsGrouping("split", new Fields("word"));
 
     //new configuration
     Config conf = new Config();
-    //Set to false to disable debug information when
+    //Set toofalse toodisable debug information when
     // running in production on a cluster
     conf.setDebug(false);
 
     //If there are arguments, we are running on a cluster
     if (args != null && args.length > 0) {
-      //parallelism hint to set the number of workers
+      //parallelism hint tooset hello number of workers
       conf.setNumWorkers(3);
-      //submit the topology
+      //submit hello topology
       StormSubmitter.submitTopology(args[0], conf, builder.createTopology());
     }
     //Otherwise, we are running locally
     else {
-      //Cap the maximum number of executors that can be spawned
-      //for a component to 3
+      //Cap hello maximum number of executors that can be spawned
+      //for a component too3
       conf.setMaxTaskParallelism(3);
-      //LocalCluster is used to run locally
+      //LocalCluster is used toorun locally
       LocalCluster cluster = new LocalCluster();
-      //submit the topology
+      //submit hello topology
       cluster.submitTopology("word-count", conf, builder.createTopology());
       //sleep
       Thread.sleep(10000);
-      //shut down the cluster
+      //shut down hello cluster
       cluster.shutdown();
     }
   }
 }
 ```
 
-### <a name="configure-logging"></a><span data-ttu-id="b71df-205">registro</span><span class="sxs-lookup"><span data-stu-id="b71df-205">Configure logging</span></span>
+### <a name="configure-logging"></a><span data-ttu-id="852ca-205">registro</span><span class="sxs-lookup"><span data-stu-id="852ca-205">Configure logging</span></span>
 
-<span data-ttu-id="b71df-206">Storm utiliza Apache Log4j para registrar información.</span><span class="sxs-lookup"><span data-stu-id="b71df-206">Storm uses Apache Log4j to log information.</span></span> <span data-ttu-id="b71df-207">Si no configura el registro, la topología emite información de diagnóstico.</span><span class="sxs-lookup"><span data-stu-id="b71df-207">If you do not configure logging, the topology emits diagnostic information.</span></span> <span data-ttu-id="b71df-208">Para controlar lo que se registra, cree un archivo denominado `log4j2.xml` en el directorio `resources`.</span><span class="sxs-lookup"><span data-stu-id="b71df-208">To control what is logged, create a file named `log4j2.xml` in the `resources` directory.</span></span> <span data-ttu-id="b71df-209">Use el siguiente XML como contenido del archivo.</span><span class="sxs-lookup"><span data-stu-id="b71df-209">Use the following XML as the contents of the file.</span></span>
+<span data-ttu-id="852ca-206">Storm utiliza Apache Log4j toolog información.</span><span class="sxs-lookup"><span data-stu-id="852ca-206">Storm uses Apache Log4j toolog information.</span></span> <span data-ttu-id="852ca-207">Si no configura el registro, la topología de hello emite información de diagnóstico.</span><span class="sxs-lookup"><span data-stu-id="852ca-207">If you do not configure logging, hello topology emits diagnostic information.</span></span> <span data-ttu-id="852ca-208">toocontrol lo que se registra, cree un archivo denominado `log4j2.xml` en hello `resources` directory.</span><span class="sxs-lookup"><span data-stu-id="852ca-208">toocontrol what is logged, create a file named `log4j2.xml` in hello `resources` directory.</span></span> <span data-ttu-id="852ca-209">Usar hello continuación de XML como contenido de Hola de archivo hello.</span><span class="sxs-lookup"><span data-stu-id="852ca-209">Use hello following XML as hello contents of hello file.</span></span>
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -564,24 +564,24 @@ public class WordCountTopology {
 </Configuration>
 ```
 
-<span data-ttu-id="b71df-210">Este XML configura un nuevo registrador para la clase `com.microsoft.example`, que incluye los componentes de esta topología de ejemplo.</span><span class="sxs-lookup"><span data-stu-id="b71df-210">This XML configures a new logger for the `com.microsoft.example` class, which includes the components in this example topology.</span></span> <span data-ttu-id="b71df-211">El nivel está establecido para realizar un seguimiento de este registrador, que captura cualquier información de registro que generen los componentes de esta topología.</span><span class="sxs-lookup"><span data-stu-id="b71df-211">The level is set to trace for this logger, which captures any logging information emitted by components in this topology.</span></span>
+<span data-ttu-id="852ca-210">Este código XML configura un nuevo registrador para hello `com.microsoft.example` (clase), que incluye componentes de hello en esta topología de ejemplo.</span><span class="sxs-lookup"><span data-stu-id="852ca-210">This XML configures a new logger for hello `com.microsoft.example` class, which includes hello components in this example topology.</span></span> <span data-ttu-id="852ca-211">nivel de Hola se establece tootrace para este registrador, que captura la información de registro de emitidos por componentes en esta topología.</span><span class="sxs-lookup"><span data-stu-id="852ca-211">hello level is set tootrace for this logger, which captures any logging information emitted by components in this topology.</span></span>
 
-<span data-ttu-id="b71df-212">La sección `<Root level="error">` configura el nivel de registro raíz (todo lo que no esté en `com.microsoft.example`) para registrar solo la información de los errores.</span><span class="sxs-lookup"><span data-stu-id="b71df-212">The `<Root level="error">` section configures the root level of logging (everything not in `com.microsoft.example`) to only log error information.</span></span>
+<span data-ttu-id="852ca-212">Hola `<Root level="error">` sección configura el nivel de raíz de Hola de registro (todo lo que no está en `com.microsoft.example`) tooonly información de error de registro.</span><span class="sxs-lookup"><span data-stu-id="852ca-212">hello `<Root level="error">` section configures hello root level of logging (everything not in `com.microsoft.example`) tooonly log error information.</span></span>
 
-<span data-ttu-id="b71df-213">Para obtener más información sobre la configuración de registro de Log4j, consulte [http://logging.apache.org/log4j/2.x/manual/configuration.html](http://logging.apache.org/log4j/2.x/manual/configuration.html).</span><span class="sxs-lookup"><span data-stu-id="b71df-213">For more information on configuring logging for Log4j, see [http://logging.apache.org/log4j/2.x/manual/configuration.html](http://logging.apache.org/log4j/2.x/manual/configuration.html).</span></span>
+<span data-ttu-id="852ca-213">Para obtener más información sobre la configuración de registro de Log4j, consulte [http://logging.apache.org/log4j/2.x/manual/configuration.html](http://logging.apache.org/log4j/2.x/manual/configuration.html).</span><span class="sxs-lookup"><span data-stu-id="852ca-213">For more information on configuring logging for Log4j, see [http://logging.apache.org/log4j/2.x/manual/configuration.html](http://logging.apache.org/log4j/2.x/manual/configuration.html).</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="b71df-214">La versión 0.10.0 y superiores de Storm utilizan Log4j 2.x.</span><span class="sxs-lookup"><span data-stu-id="b71df-214">Storm version 0.10.0 and higher use Log4j 2.x.</span></span> <span data-ttu-id="b71df-215">Las versiones anteriores de Storm usaban Log4j 1.x, que empleaba otro formato de configuración del registro.</span><span class="sxs-lookup"><span data-stu-id="b71df-215">Older versions of storm used Log4j 1.x, which used a different format for log configuration.</span></span> <span data-ttu-id="b71df-216">Para obtener información sobre la configuración anterior, consulte [http://wiki.apache.org/logging-log4j/Log4jXmlFormat](http://wiki.apache.org/logging-log4j/Log4jXmlFormat).</span><span class="sxs-lookup"><span data-stu-id="b71df-216">For information on the older configuration, see [http://wiki.apache.org/logging-log4j/Log4jXmlFormat](http://wiki.apache.org/logging-log4j/Log4jXmlFormat).</span></span>
+> <span data-ttu-id="852ca-214">La versión 0.10.0 y superiores de Storm utilizan Log4j 2.x.</span><span class="sxs-lookup"><span data-stu-id="852ca-214">Storm version 0.10.0 and higher use Log4j 2.x.</span></span> <span data-ttu-id="852ca-215">Las versiones anteriores de Storm usaban Log4j 1.x, que empleaba otro formato de configuración del registro.</span><span class="sxs-lookup"><span data-stu-id="852ca-215">Older versions of storm used Log4j 1.x, which used a different format for log configuration.</span></span> <span data-ttu-id="852ca-216">Para obtener información sobre la configuración anterior de hello, consulte [http://wiki.apache.org/logging-log4j/Log4jXmlFormat](http://wiki.apache.org/logging-log4j/Log4jXmlFormat).</span><span class="sxs-lookup"><span data-stu-id="852ca-216">For information on hello older configuration, see [http://wiki.apache.org/logging-log4j/Log4jXmlFormat](http://wiki.apache.org/logging-log4j/Log4jXmlFormat).</span></span>
 
-## <a name="test-the-topology-locally"></a><span data-ttu-id="b71df-217">Prueba de la topología de manera local</span><span class="sxs-lookup"><span data-stu-id="b71df-217">Test the topology locally</span></span>
+## <a name="test-hello-topology-locally"></a><span data-ttu-id="852ca-217">Topología de hello pruebas localmente</span><span class="sxs-lookup"><span data-stu-id="852ca-217">Test hello topology locally</span></span>
 
-<span data-ttu-id="b71df-218">Después de guardar los archivos, use el comando siguiente para probar localmente la topología.</span><span class="sxs-lookup"><span data-stu-id="b71df-218">After you save the files, use the following command to test the topology locally.</span></span>
+<span data-ttu-id="852ca-218">Después de guardar los archivos de hello, utilice Hola después topología localmente de comando tootest Hola.</span><span class="sxs-lookup"><span data-stu-id="852ca-218">After you save hello files, use hello following command tootest hello topology locally.</span></span>
 
 ```bash
 mvn compile exec:java -Dstorm.topology=com.microsoft.example.WordCountTopology
 ```
 
-<span data-ttu-id="b71df-219">Mientras se ejecuta, la topología muestra información de inicio.</span><span class="sxs-lookup"><span data-stu-id="b71df-219">As it runs, the topology displays startup information.</span></span> <span data-ttu-id="b71df-220">El siguiente texto es un ejemplo de la salida del recuento de palabras:</span><span class="sxs-lookup"><span data-stu-id="b71df-220">The following text is an example of the word count output:</span></span>
+<span data-ttu-id="852ca-219">Mientras se ejecuta, topología hello muestra información de inicio.</span><span class="sxs-lookup"><span data-stu-id="852ca-219">As it runs, hello topology displays startup information.</span></span> <span data-ttu-id="852ca-220">Hello texto siguiente es un ejemplo de salida de recuento de hello word:</span><span class="sxs-lookup"><span data-stu-id="852ca-220">hello following text is an example of hello word count output:</span></span>
 
     17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 56 for word snow
     17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 56 for word white
@@ -591,29 +591,29 @@ mvn compile exec:java -Dstorm.topology=com.microsoft.example.WordCountTopology
     17:33:27 [Thread-30-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word dwarfs
     17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word snow
 
-<span data-ttu-id="b71df-221">Este registro de ejemplo indica que la palabra «and» se ha emitido 113 veces.</span><span class="sxs-lookup"><span data-stu-id="b71df-221">This example log indicates that the word 'and' has been emitted 113 times.</span></span> <span data-ttu-id="b71df-222">El recuento continúa aumentando mientras se ejecute la topología porque el spout emite continuamente las mismas frases.</span><span class="sxs-lookup"><span data-stu-id="b71df-222">The count continues to go up as long as the topology runs because the spout continuously emits the same sentences.</span></span>
+<span data-ttu-id="852ca-221">Este registro de ejemplo indica esa palabra Hola ' y ' se emitió 113 veces.</span><span class="sxs-lookup"><span data-stu-id="852ca-221">This example log indicates that hello word 'and' has been emitted 113 times.</span></span> <span data-ttu-id="852ca-222">Hello recuento continúa toogo hasta como topología Hola se ejecuta porque pitorro Hola continuamente emite Hola mismas frases.</span><span class="sxs-lookup"><span data-stu-id="852ca-222">hello count continues toogo up as long as hello topology runs because hello spout continuously emits hello same sentences.</span></span>
 
-<span data-ttu-id="b71df-223">Hay un intervalo de 5 segundos entre la emisión de las palabras y los recuentos.</span><span class="sxs-lookup"><span data-stu-id="b71df-223">There is a 5-second interval between emission of words and counts.</span></span> <span data-ttu-id="b71df-224">El componente **WordCount** está configurado para emitir la información solo cuando llegue una tupla de marca.</span><span class="sxs-lookup"><span data-stu-id="b71df-224">The **WordCount** component is configured to only emit information when a tick tuple arrives.</span></span> <span data-ttu-id="b71df-225">Solicita que esas tuplas se entreguen solo cada cinco segundos.</span><span class="sxs-lookup"><span data-stu-id="b71df-225">It requests that tick tuples are only delivered every five seconds.</span></span>
+<span data-ttu-id="852ca-223">Hay un intervalo de 5 segundos entre la emisión de las palabras y los recuentos.</span><span class="sxs-lookup"><span data-stu-id="852ca-223">There is a 5-second interval between emission of words and counts.</span></span> <span data-ttu-id="852ca-224">Hola **WordCount** componente está configurado tooonly emitir información cuando llega una tupla de graduación.</span><span class="sxs-lookup"><span data-stu-id="852ca-224">hello **WordCount** component is configured tooonly emit information when a tick tuple arrives.</span></span> <span data-ttu-id="852ca-225">Solicita que esas tuplas se entreguen solo cada cinco segundos.</span><span class="sxs-lookup"><span data-stu-id="852ca-225">It requests that tick tuples are only delivered every five seconds.</span></span>
 
-## <a name="convert-the-topology-to-flux"></a><span data-ttu-id="b71df-226">Conversión de la topología a Flux</span><span class="sxs-lookup"><span data-stu-id="b71df-226">Convert the topology to Flux</span></span>
+## <a name="convert-hello-topology-tooflux"></a><span data-ttu-id="852ca-226">Convertir Hola topología tooFlux</span><span class="sxs-lookup"><span data-stu-id="852ca-226">Convert hello topology tooFlux</span></span>
 
-<span data-ttu-id="b71df-227">Flux es un nuevo marco de trabajo disponible con Storm 0.10.0 y versiones superiores que permite separar la configuración de la implementación.</span><span class="sxs-lookup"><span data-stu-id="b71df-227">Flux is a new framework available with Storm 0.10.0 and higher, which allows you to separate configuration from implementation.</span></span> <span data-ttu-id="b71df-228">Los componentes se siguen definiendo en Java, pero la topología se define con un archivo YAML.</span><span class="sxs-lookup"><span data-stu-id="b71df-228">Your components are still defined in Java, but the topology is defined using a YAML file.</span></span> <span data-ttu-id="b71df-229">Puede empaquetar una definición de topología predeterminada con el proyecto, o bien usar un archivo independiente al enviar la topología.</span><span class="sxs-lookup"><span data-stu-id="b71df-229">You can package a default topology definition with your project, or use a standalone file when submitting the topology.</span></span> <span data-ttu-id="b71df-230">Al enviar la topología a Storm, puede usar variables de entorno o archivos de configuración para rellenar los valores de la definición de la topología de YAML.</span><span class="sxs-lookup"><span data-stu-id="b71df-230">When submitting the topology to Storm, you can use environment variables or configuration files to populate values in the YAML topology definition.</span></span>
+<span data-ttu-id="852ca-227">Un flujo es un nuevo marco disponible con Storm 0.10.0 y versiones posterior, lo que permite tooseparate configuración de implementación.</span><span class="sxs-lookup"><span data-stu-id="852ca-227">Flux is a new framework available with Storm 0.10.0 and higher, which allows you tooseparate configuration from implementation.</span></span> <span data-ttu-id="852ca-228">Los componentes aún están definidos en Java, pero topología Hola se define utilizando un archivo YAML.</span><span class="sxs-lookup"><span data-stu-id="852ca-228">Your components are still defined in Java, but hello topology is defined using a YAML file.</span></span> <span data-ttu-id="852ca-229">Puede empaquetar una definición de topología de manera predeterminada con el proyecto, o usar un archivo independiente al enviar la topología de Hola.</span><span class="sxs-lookup"><span data-stu-id="852ca-229">You can package a default topology definition with your project, or use a standalone file when submitting hello topology.</span></span> <span data-ttu-id="852ca-230">Al enviar Hola topología tooStorm, puede utilizar variables de entorno o valores de toopopulate de archivos de configuración en la definición de la topología YAML Hola.</span><span class="sxs-lookup"><span data-stu-id="852ca-230">When submitting hello topology tooStorm, you can use environment variables or configuration files toopopulate values in hello YAML topology definition.</span></span>
 
-<span data-ttu-id="b71df-231">El archivo YAML define los componentes que se usarán para la topología y el flujo de datos entre ellos.</span><span class="sxs-lookup"><span data-stu-id="b71df-231">The YAML file defines the components to use for the topology and the data flow between them.</span></span> <span data-ttu-id="b71df-232">Puede incluir un archivo YAML como parte del archivo jar o puede usar un archivo YAML externo.</span><span class="sxs-lookup"><span data-stu-id="b71df-232">You can include a YAML file as part of the jar file or you can use an external YAML file.</span></span>
+<span data-ttu-id="852ca-231">archivo de Hello YAML define Hola componentes toouse de topología de Hola y Hola de flujo de datos entre ellos.</span><span class="sxs-lookup"><span data-stu-id="852ca-231">hello YAML file defines hello components toouse for hello topology and hello data flow between them.</span></span> <span data-ttu-id="852ca-232">Puede incluir un archivo YAML como parte del archivo jar de Hola o puede usar un archivo YAML externo.</span><span class="sxs-lookup"><span data-stu-id="852ca-232">You can include a YAML file as part of hello jar file or you can use an external YAML file.</span></span>
 
-<span data-ttu-id="b71df-233">Para más información sobre Flux, vea este documento sobre el [marco de trabajo de Flux (https://storm.apache.org/releases/0.10.0/flux.html)](https://storm.apache.org/releases/0.10.0/flux.html).</span><span class="sxs-lookup"><span data-stu-id="b71df-233">For more information on Flux, see [Flux framework (https://storm.apache.org/releases/0.10.0/flux.html)](https://storm.apache.org/releases/0.10.0/flux.html).</span></span>
+<span data-ttu-id="852ca-233">Para más información sobre Flux, vea este documento sobre el [marco de trabajo de Flux (https://storm.apache.org/releases/0.10.0/flux.html)](https://storm.apache.org/releases/0.10.0/flux.html).</span><span class="sxs-lookup"><span data-stu-id="852ca-233">For more information on Flux, see [Flux framework (https://storm.apache.org/releases/0.10.0/flux.html)](https://storm.apache.org/releases/0.10.0/flux.html).</span></span>
 
 > [!WARNING]
-> <span data-ttu-id="b71df-234">Debido a un [error (https://issues.apache.org/jira/browse/STORM-2055)](https://issues.apache.org/jira/browse/STORM-2055) con Storm 1.0.1, es posible que deba instalar un [entorno de desarrollo de Storm](https://storm.apache.org/releases/1.0.1/Setting-up-development-environment.html) para ejecutar topologías de un flujo de forma local.</span><span class="sxs-lookup"><span data-stu-id="b71df-234">Due to a [bug (https://issues.apache.org/jira/browse/STORM-2055)](https://issues.apache.org/jira/browse/STORM-2055) with Storm 1.0.1, you may need to install a [Storm development environment](https://storm.apache.org/releases/1.0.1/Setting-up-development-environment.html) to run Flux topologies locally.</span></span>
+> <span data-ttu-id="852ca-234">Due tooa [error (https://issues.apache.org/jira/browse/STORM-2055)](https://issues.apache.org/jira/browse/STORM-2055) con Storm 1.0.1, puede que necesite tooinstall una [entorno de desarrollo de Storm](https://storm.apache.org/releases/1.0.1/Setting-up-development-environment.html) localmente las topologías de un flujo de toorun.</span><span class="sxs-lookup"><span data-stu-id="852ca-234">Due tooa [bug (https://issues.apache.org/jira/browse/STORM-2055)](https://issues.apache.org/jira/browse/STORM-2055) with Storm 1.0.1, you may need tooinstall a [Storm development environment](https://storm.apache.org/releases/1.0.1/Setting-up-development-environment.html) toorun Flux topologies locally.</span></span>
 
-1. <span data-ttu-id="b71df-235">Saque el archivo `WordCountTopology.java` del proyecto.</span><span class="sxs-lookup"><span data-stu-id="b71df-235">Move the `WordCountTopology.java` file out of the project.</span></span> <span data-ttu-id="b71df-236">Anteriormente, este archivo definía la topología, pero no es necesario con Flux.</span><span class="sxs-lookup"><span data-stu-id="b71df-236">Previously, this file defined the topology, but isn't needed with Flux.</span></span>
+1. <span data-ttu-id="852ca-235">Mover hello `WordCountTopology.java` archivo fuera del proyecto de Hola.</span><span class="sxs-lookup"><span data-stu-id="852ca-235">Move hello `WordCountTopology.java` file out of hello project.</span></span> <span data-ttu-id="852ca-236">Anteriormente, este archivo define la topología de hello, pero no es necesario con un flujo.</span><span class="sxs-lookup"><span data-stu-id="852ca-236">Previously, this file defined hello topology, but isn't needed with Flux.</span></span>
 
-2. <span data-ttu-id="b71df-237">En el directorio `resources`, cree un archivo denominado `topology.yaml`.</span><span class="sxs-lookup"><span data-stu-id="b71df-237">In the `resources` directory, create a file named `topology.yaml`.</span></span> <span data-ttu-id="b71df-238">Use el siguiente texto como contenido de este archivo.</span><span class="sxs-lookup"><span data-stu-id="b71df-238">Use the following text as the contents of this file.</span></span>
+2. <span data-ttu-id="852ca-237">Hola `resources` directorio, cree un archivo denominado `topology.yaml`.</span><span class="sxs-lookup"><span data-stu-id="852ca-237">In hello `resources` directory, create a file named `topology.yaml`.</span></span> <span data-ttu-id="852ca-238">Usar hello después de texto como contenido de Hola de este archivo.</span><span class="sxs-lookup"><span data-stu-id="852ca-238">Use hello following text as hello contents of this file.</span></span>
 
-        name: "wordcount"       # friendly name for the topology
+        name: "wordcount"       # friendly name for hello topology
         
         config:                 # Topology configuration
-        topology.workers: 1     # Hint for the number of workers to create
+        topology.workers: 1     # Hint for hello number of workers toocreate
         
         spouts:                 # Spout definitions
         - id: "sentence-spout"
@@ -633,8 +633,8 @@ mvn compile exec:java -Dstorm.topology=com.microsoft.example.WordCountTopology
         
         streams:                # Stream definitions
             - name: "Spout --> Splitter" # name isn't used (placeholder for logging, UI, etc.)
-            from: "sentence-spout"       # The stream emitter
-            to: "splitter-bolt"          # The stream consumer
+            from: "sentence-spout"       # hello stream emitter
+            to: "splitter-bolt"          # hello stream consumer
             grouping:                    # Grouping type
                 type: SHUFFLE
           
@@ -643,21 +643,21 @@ mvn compile exec:java -Dstorm.topology=com.microsoft.example.WordCountTopology
             to: "counter-bolt"
             grouping:
             type: FIELDS
-                args: ["word"]           # field(s) to group on
+                args: ["word"]           # field(s) toogroup on
 
-3. <span data-ttu-id="b71df-239">Realice los siguientes cambios en el archivo `pom.xml`.</span><span class="sxs-lookup"><span data-stu-id="b71df-239">Make the following changes to the `pom.xml` file.</span></span>
+3. <span data-ttu-id="852ca-239">Realizar Hola después cambios toohello `pom.xml` archivo.</span><span class="sxs-lookup"><span data-stu-id="852ca-239">Make hello following changes toohello `pom.xml` file.</span></span>
    
-   * <span data-ttu-id="b71df-240">Agregue la siguiente dependencia nueva en la sección `<dependencies>` :</span><span class="sxs-lookup"><span data-stu-id="b71df-240">Add the following new dependency in the `<dependencies>` section:</span></span>
+   * <span data-ttu-id="852ca-240">Agregar Hola después nuevas dependencias en hello `<dependencies>` sección:</span><span class="sxs-lookup"><span data-stu-id="852ca-240">Add hello following new dependency in hello `<dependencies>` section:</span></span>
      
         ```xml
-        <!-- Add a dependency on the Flux framework -->
+        <!-- Add a dependency on hello Flux framework -->
         <dependency>
             <groupId>org.apache.storm</groupId>
             <artifactId>flux-core</artifactId>
             <version>${storm.version}</version>
         </dependency>
         ```
-   * <span data-ttu-id="b71df-241">Agregue el complemento siguiente a la sección `<plugins>` .</span><span class="sxs-lookup"><span data-stu-id="b71df-241">Add the following plugin to the `<plugins>` section.</span></span> <span data-ttu-id="b71df-242">Este complemento administra la creación de un paquete (archivo jar) para el proyecto y aplica algunas transformaciones específicas a Flux cuando se crea el paquete.</span><span class="sxs-lookup"><span data-stu-id="b71df-242">This plugin handles the creation of a package (jar file) for the project, and applies some transformations specific to Flux when creating the package.</span></span>
+   * <span data-ttu-id="852ca-241">Agregar Hola después complemento toohello `<plugins>` sección.</span><span class="sxs-lookup"><span data-stu-id="852ca-241">Add hello following plugin toohello `<plugins>` section.</span></span> <span data-ttu-id="852ca-242">Este complemento controla la creación de hello de un paquete (archivo jar) para el proyecto de Hola y aplica algunos tooFlux específico de transformaciones al crear paquetes de saludo.</span><span class="sxs-lookup"><span data-stu-id="852ca-242">This plugin handles hello creation of a package (jar file) for hello project, and applies some transformations specific tooFlux when creating hello package.</span></span>
      
         ```xml
         <!-- build an uber jar -->
@@ -670,7 +670,7 @@ mvn compile exec:java -Dstorm.topology=com.microsoft.example.WordCountTopology
                     <!-- Keep us from getting a "can't overwrite file error" -->
                     <transformer implementation="org.apache.maven.plugins.shade.resource.ApacheLicenseResourceTransformer" />
                     <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
-                    <!-- We're using Flux, so refer to it as main -->
+                    <!-- We're using Flux, so refer tooit as main -->
                     <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                         <mainClass>org.apache.storm.flux.Flux</mainClass>
                     </transformer>
@@ -698,41 +698,41 @@ mvn compile exec:java -Dstorm.topology=com.microsoft.example.WordCountTopology
         </plugin>
         ```
 
-   * <span data-ttu-id="b71df-243">En la sección **exec-maven-plugin**`<configuration>`, cambie el valor de `<mainClass>` por `org.apache.storm.flux.Flux`.</span><span class="sxs-lookup"><span data-stu-id="b71df-243">In the **exec-maven-plugin** `<configuration>` section, change the value for `<mainClass>` to `org.apache.storm.flux.Flux`.</span></span> <span data-ttu-id="b71df-244">Esta opción permite a Flux controlar la ejecución de la topología localmente en el entorno de desarrollo.</span><span class="sxs-lookup"><span data-stu-id="b71df-244">This setting allows Flux to handle running the topology locally in development.</span></span>
+   * <span data-ttu-id="852ca-243">Hola **exec-maven-plugin** `<configuration>` sección, cambie el valor de Hola para `<mainClass>` demasiado`org.apache.storm.flux.Flux`.</span><span class="sxs-lookup"><span data-stu-id="852ca-243">In hello **exec-maven-plugin** `<configuration>` section, change hello value for `<mainClass>` too`org.apache.storm.flux.Flux`.</span></span> <span data-ttu-id="852ca-244">Esta configuración permite toohandle flujo ejecuta topología Hola localmente en el desarrollo.</span><span class="sxs-lookup"><span data-stu-id="852ca-244">This setting allows Flux toohandle running hello topology locally in development.</span></span>
 
-   * <span data-ttu-id="b71df-245">En la sección `<resources>`, agregue lo siguiente a `<includes>`.</span><span class="sxs-lookup"><span data-stu-id="b71df-245">In the `<resources>` section, add the following to the `<includes>`.</span></span> <span data-ttu-id="b71df-246">Este XML incluye el archivo YAML que define la topología como parte del proyecto.</span><span class="sxs-lookup"><span data-stu-id="b71df-246">This XML includes the YAML file that defines the topology as part of the project.</span></span>
+   * <span data-ttu-id="852ca-245">Hola `<resources>` sección, agregue Hola después toohello `<includes>`.</span><span class="sxs-lookup"><span data-stu-id="852ca-245">In hello `<resources>` section, add hello following toohello `<includes>`.</span></span> <span data-ttu-id="852ca-246">Este código XML incluye el archivo hello YAML que define la topología de hello como parte del proyecto de Hola.</span><span class="sxs-lookup"><span data-stu-id="852ca-246">This XML includes hello YAML file that defines hello topology as part of hello project.</span></span>
 
         ```xml
         <include>topology.yaml</include>
         ```
 
-## <a name="test-the-flux-topology-locally"></a><span data-ttu-id="b71df-247">Prueba local de la topología</span><span class="sxs-lookup"><span data-stu-id="b71df-247">Test the flux topology locally</span></span>
+## <a name="test-hello-flux-topology-locally"></a><span data-ttu-id="852ca-247">Topología de un flujo de Hola de prueba localmente</span><span class="sxs-lookup"><span data-stu-id="852ca-247">Test hello flux topology locally</span></span>
 
-1. <span data-ttu-id="b71df-248">Use lo siguiente para compilar y ejecutar la topología de Flux con Maven:</span><span class="sxs-lookup"><span data-stu-id="b71df-248">Use the following to compile and execute the Flux topology using Maven:</span></span>
+1. <span data-ttu-id="852ca-248">Use Hola después toocompile y ejecute la topología de un flujo de hello mediante Maven:</span><span class="sxs-lookup"><span data-stu-id="852ca-248">Use hello following toocompile and execute hello Flux topology using Maven:</span></span>
 
     ```bash
     mvn compile exec:java -Dexec.args="--local -R /topology.yaml"
     ```
 
-    <span data-ttu-id="b71df-249">Si usa PowerShell, utilice el comando siguiente:</span><span class="sxs-lookup"><span data-stu-id="b71df-249">If you are using PowerShell, use the following command:</span></span>
+    <span data-ttu-id="852ca-249">Si usa PowerShell, use Hola siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="852ca-249">If you are using PowerShell, use hello following command:</span></span>
 
     ```bash
     mvn compile exec:java "-Dexec.args=--local -R /topology.yaml"
     ```
 
     > [!WARNING]
-    > <span data-ttu-id="b71df-250">Este comando produce un error si la topología usa bits de Storm 1.0.1.</span><span class="sxs-lookup"><span data-stu-id="b71df-250">If your topology uses Storm 1.0.1 bits, this command fails.</span></span> <span data-ttu-id="b71df-251">Este error se debe a [https://issues.apache.org/jira/browse/STORM-2055](https://issues.apache.org/jira/browse/STORM-2055).</span><span class="sxs-lookup"><span data-stu-id="b71df-251">This failure is caused by [https://issues.apache.org/jira/browse/STORM-2055](https://issues.apache.org/jira/browse/STORM-2055).</span></span> <span data-ttu-id="b71df-252">En su lugar, [instale Storm en su entorno de desarrollo](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html) y emplee la siguiente información.</span><span class="sxs-lookup"><span data-stu-id="b71df-252">Instead, [install Storm in your development environment](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html) and use the following information.</span></span>
+    > <span data-ttu-id="852ca-250">Este comando produce un error si la topología usa bits de Storm 1.0.1.</span><span class="sxs-lookup"><span data-stu-id="852ca-250">If your topology uses Storm 1.0.1 bits, this command fails.</span></span> <span data-ttu-id="852ca-251">Este error se debe a [https://issues.apache.org/jira/browse/STORM-2055](https://issues.apache.org/jira/browse/STORM-2055).</span><span class="sxs-lookup"><span data-stu-id="852ca-251">This failure is caused by [https://issues.apache.org/jira/browse/STORM-2055](https://issues.apache.org/jira/browse/STORM-2055).</span></span> <span data-ttu-id="852ca-252">En su lugar, [instalar Storm en su entorno de desarrollo](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html) y use Hola siguiendo la información.</span><span class="sxs-lookup"><span data-stu-id="852ca-252">Instead, [install Storm in your development environment](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html) and use hello following information.</span></span>
 
-    <span data-ttu-id="b71df-253">Si tiene [instalado Storm en el entorno de desarrollo](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html), puede usar en su lugar los siguientes comandos:</span><span class="sxs-lookup"><span data-stu-id="b71df-253">If you have [installed Storm in your development environment](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html), you can use the following commands instead:</span></span>
+    <span data-ttu-id="852ca-253">Si tiene [instalado Storm en el entorno de desarrollo](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html), puede usar Hola siguientes comandos en su lugar:</span><span class="sxs-lookup"><span data-stu-id="852ca-253">If you have [installed Storm in your development environment](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html), you can use hello following commands instead:</span></span>
 
     ```bash
     mvn compile package
     storm jar target/WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --local -R /topology.yaml
     ```
 
-    <span data-ttu-id="b71df-254">El parámetro `--local` ejecuta la topología en modo local en el entorno de desarrollo.</span><span class="sxs-lookup"><span data-stu-id="b71df-254">The `--local` parameter runs the topology in local mode on your development environment.</span></span> <span data-ttu-id="b71df-255">El parámetro `-R /topology.yaml` usa el recurso de archivo `topology.yaml` del archivo jar para definir la topología.</span><span class="sxs-lookup"><span data-stu-id="b71df-255">The `-R /topology.yaml` parameter uses the `topology.yaml` file resource from the jar file to define the topology.</span></span>
+    <span data-ttu-id="852ca-254">Hola `--local` parámetro topología Hola ejecuta en modo local en el entorno de desarrollo.</span><span class="sxs-lookup"><span data-stu-id="852ca-254">hello `--local` parameter runs hello topology in local mode on your development environment.</span></span> <span data-ttu-id="852ca-255">Hola `-R /topology.yaml` parámetro utiliza hello `topology.yaml` recursos de archivos de topología de hello jar archivo toodefine Hola.</span><span class="sxs-lookup"><span data-stu-id="852ca-255">hello `-R /topology.yaml` parameter uses hello `topology.yaml` file resource from hello jar file toodefine hello topology.</span></span>
 
-    <span data-ttu-id="b71df-256">Mientras se ejecuta, la topología muestra información de inicio.</span><span class="sxs-lookup"><span data-stu-id="b71df-256">As it runs, the topology displays startup information.</span></span> <span data-ttu-id="b71df-257">El siguiente texto es un ejemplo de la salida:</span><span class="sxs-lookup"><span data-stu-id="b71df-257">The following text is an example of the output:</span></span>
+    <span data-ttu-id="852ca-256">Mientras se ejecuta, topología hello muestra información de inicio.</span><span class="sxs-lookup"><span data-stu-id="852ca-256">As it runs, hello topology displays startup information.</span></span> <span data-ttu-id="852ca-257">Hola después de texto es un ejemplo de salida de hello:</span><span class="sxs-lookup"><span data-stu-id="852ca-257">hello following text is an example of hello output:</span></span>
 
         17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 56 for word snow
         17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 56 for word white
@@ -741,9 +741,9 @@ mvn compile exec:java -Dstorm.topology=com.microsoft.example.WordCountTopology
         17:33:27 [Thread-30-count] INFO  com.microsoft.example.WordCount - Emitting a count of 113 for word and
         17:33:27 [Thread-30-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word dwarfs
 
-    <span data-ttu-id="b71df-258">Hay un retraso de 10 segundos entre los distintos lotes de la información registrada.</span><span class="sxs-lookup"><span data-stu-id="b71df-258">There is a 10-second delay between batches of logged information.</span></span>
+    <span data-ttu-id="852ca-258">Hay un retraso de 10 segundos entre los distintos lotes de la información registrada.</span><span class="sxs-lookup"><span data-stu-id="852ca-258">There is a 10-second delay between batches of logged information.</span></span>
 
-2. <span data-ttu-id="b71df-259">Realice una copia del archivo `topology.yaml` del proyecto.</span><span class="sxs-lookup"><span data-stu-id="b71df-259">Make a copy of the `topology.yaml` file from the project.</span></span> <span data-ttu-id="b71df-260">Asigne el nombre `newtopology.yaml` al archivo nuevo.</span><span class="sxs-lookup"><span data-stu-id="b71df-260">Name the new file `newtopology.yaml`.</span></span> <span data-ttu-id="b71df-261">En el archivo `newtopology.yaml`, busque la siguiente sección y cambie el valor de `10` por `5`.</span><span class="sxs-lookup"><span data-stu-id="b71df-261">In the `newtopology.yaml` file, find the following section and change the value of `10` to `5`.</span></span> <span data-ttu-id="b71df-262">Esta modificación altera el intervalo entre la emisión de lotes de recuentos de palabras de 10 segundos a 5.</span><span class="sxs-lookup"><span data-stu-id="b71df-262">This modification changes the interval between emitting batches of word counts from 10 seconds to 5.</span></span>
+2. <span data-ttu-id="852ca-259">Realizar una copia de hello `topology.yaml` archivo de proyecto de Hola.</span><span class="sxs-lookup"><span data-stu-id="852ca-259">Make a copy of hello `topology.yaml` file from hello project.</span></span> <span data-ttu-id="852ca-260">Nuevo archivo de nombre hello `newtopology.yaml`.</span><span class="sxs-lookup"><span data-stu-id="852ca-260">Name hello new file `newtopology.yaml`.</span></span> <span data-ttu-id="852ca-261">Hola `newtopology.yaml` de archivos, busque la siguiente Hola sección y cambie el valor Hola de `10` demasiado`5`.</span><span class="sxs-lookup"><span data-stu-id="852ca-261">In hello `newtopology.yaml` file, find hello following section and change hello value of `10` too`5`.</span></span> <span data-ttu-id="852ca-262">Este intervalo de saludo de modificación cambios entre la emisión de lotes de word cuenta de too5 de 10 segundos.</span><span class="sxs-lookup"><span data-stu-id="852ca-262">This modification changes hello interval between emitting batches of word counts from 10 seconds too5.</span></span>
 
     ```yaml
     - id: "counter-bolt"
@@ -753,41 +753,41 @@ mvn compile exec:java -Dstorm.topology=com.microsoft.example.WordCountTopology
     parallelism: 1
     ```yaml
 
-3. To run the topology, use the following command:
+3. toorun hello topology, use hello following command:
 
     ```bash
     mvn exec:java -Dexec.args="--local /path/to/newtopology.yaml"
     ```
 
-    <span data-ttu-id="b71df-263">También puede hacer lo siguiente si tiene Storm en el entorno de desarrollo:</span><span class="sxs-lookup"><span data-stu-id="b71df-263">Or, if you have Storm on your development environment:</span></span>
+    <span data-ttu-id="852ca-263">También puede hacer lo siguiente si tiene Storm en el entorno de desarrollo:</span><span class="sxs-lookup"><span data-stu-id="852ca-263">Or, if you have Storm on your development environment:</span></span>
 
     ```bash
     storm jar target/WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --local /path/to/newtopology.yaml
     ```
 
-    <span data-ttu-id="b71df-264">Cambie `/path/to/newtopology.yaml` por la ruta de acceso al archivo newtopology.yaml que creó en el paso anterior.</span><span class="sxs-lookup"><span data-stu-id="b71df-264">Change the `/path/to/newtopology.yaml` to the path to the newtopology.yaml file you created in the previous step.</span></span> <span data-ttu-id="b71df-265">Este comando usa newtopology.yaml como definición de la topología.</span><span class="sxs-lookup"><span data-stu-id="b71df-265">This command uses the newtopology.yaml as the topology definition.</span></span> <span data-ttu-id="b71df-266">Puesto que no se incluyó el parámetro `compile`, Maven usa la versión del proyecto compilada en los pasos anteriores.</span><span class="sxs-lookup"><span data-stu-id="b71df-266">Since we didn't include the `compile` parameter, Maven uses the version of the project built in previous steps.</span></span>
+    <span data-ttu-id="852ca-264">Hola de cambio `/path/to/newtopology.yaml` toohello ruta toohello newtopology.yaml archivo creado en el paso anterior de Hola.</span><span class="sxs-lookup"><span data-stu-id="852ca-264">Change hello `/path/to/newtopology.yaml` toohello path toohello newtopology.yaml file you created in hello previous step.</span></span> <span data-ttu-id="852ca-265">Este comando usa hello newtopology.yaml como definición de topología de Hola.</span><span class="sxs-lookup"><span data-stu-id="852ca-265">This command uses hello newtopology.yaml as hello topology definition.</span></span> <span data-ttu-id="852ca-266">Puesto que no incluimos hello `compile` parámetro, Maven utiliza Hola versión de Hola proyecto creado en los pasos anteriores.</span><span class="sxs-lookup"><span data-stu-id="852ca-266">Since we didn't include hello `compile` parameter, Maven uses hello version of hello project built in previous steps.</span></span>
 
-    <span data-ttu-id="b71df-267">Una vez iniciada la topología, observará que el tiempo entre los lotes emitidos ha cambiado y ahora refleja el valor de newtopology.yaml.</span><span class="sxs-lookup"><span data-stu-id="b71df-267">Once the topology starts, you should notice that the time between emitted batches has changed to reflect the value in newtopology.yaml.</span></span> <span data-ttu-id="b71df-268">Esto demuestra que puede cambiar la configuración a través de un archivo YAML sin tener que volver a compilar la topología.</span><span class="sxs-lookup"><span data-stu-id="b71df-268">So you can see that you can change your configuration through a YAML file without having to recompile the topology.</span></span>
+    <span data-ttu-id="852ca-267">Una vez Hola topología se inicia, debe tener en cuenta que tiempo Hola entre los distintos lotes emitidos ha cambiado el valor de Hola de tooreflect en newtopology.yaml.</span><span class="sxs-lookup"><span data-stu-id="852ca-267">Once hello topology starts, you should notice that hello time between emitted batches has changed tooreflect hello value in newtopology.yaml.</span></span> <span data-ttu-id="852ca-268">Para que pueda ver que puede cambiar la configuración a través de un archivo YAML sin necesidad de topología de hello toorecompile.</span><span class="sxs-lookup"><span data-stu-id="852ca-268">So you can see that you can change your configuration through a YAML file without having toorecompile hello topology.</span></span>
 
-<span data-ttu-id="b71df-269">Para más información sobre estas y otras características del marco de trabajo Flux, consulte [Flux (https://storm.apache.org/releases/0.10.0/flux.html)](https://storm.apache.org/releases/0.10.0/flux.html).</span><span class="sxs-lookup"><span data-stu-id="b71df-269">For more information on these and other features of the Flux framework, see [Flux (https://storm.apache.org/releases/0.10.0/flux.html)](https://storm.apache.org/releases/0.10.0/flux.html).</span></span>
+<span data-ttu-id="852ca-269">Para obtener más información sobre estas y otras características del marco de trabajo de un flujo de hello, consulte [flujo (https://storm.apache.org/releases/0.10.0/flux.html)](https://storm.apache.org/releases/0.10.0/flux.html).</span><span class="sxs-lookup"><span data-stu-id="852ca-269">For more information on these and other features of hello Flux framework, see [Flux (https://storm.apache.org/releases/0.10.0/flux.html)](https://storm.apache.org/releases/0.10.0/flux.html).</span></span>
 
-## <a name="trident"></a><span data-ttu-id="b71df-270">Trident</span><span class="sxs-lookup"><span data-stu-id="b71df-270">Trident</span></span>
+## <a name="trident"></a><span data-ttu-id="852ca-270">Trident</span><span class="sxs-lookup"><span data-stu-id="852ca-270">Trident</span></span>
 
-<span data-ttu-id="b71df-271">Trident es una abstracción de alto nivel que ofrece Storm.</span><span class="sxs-lookup"><span data-stu-id="b71df-271">Trident is a high-level abstraction that is provided by Storm.</span></span> <span data-ttu-id="b71df-272">Admite el procesamiento con estado.</span><span class="sxs-lookup"><span data-stu-id="b71df-272">It supports stateful processing.</span></span> <span data-ttu-id="b71df-273">La principal ventaja de Trident es que puede garantizar que todos los mensajes que entran en la topología se procesan una sola vez.</span><span class="sxs-lookup"><span data-stu-id="b71df-273">The primary advantage of Trident is that it can guarantee that every message that enters the topology is processed only once.</span></span> <span data-ttu-id="b71df-274">Si no se usa Trident, la topología solo puede garantizar que los mensajes se procesan al menos una vez.</span><span class="sxs-lookup"><span data-stu-id="b71df-274">Without using Trident, your topology can only guarantee that messages are processed at least once.</span></span> <span data-ttu-id="b71df-275">También hay otras diferencias, como los componentes integrados que se pueden usar en lugar de crear bolts.</span><span class="sxs-lookup"><span data-stu-id="b71df-275">There are also other differences, such as built-in components that can be used instead of creating bolts.</span></span> <span data-ttu-id="b71df-276">De hecho, los bolts se reemplazan por componentes menos genéricos, como filtros, proyecciones y funciones.</span><span class="sxs-lookup"><span data-stu-id="b71df-276">In fact, bolts are replaced by less-generic components, such as filters, projections, and functions.</span></span>
+<span data-ttu-id="852ca-271">Trident es una abstracción de alto nivel que ofrece Storm.</span><span class="sxs-lookup"><span data-stu-id="852ca-271">Trident is a high-level abstraction that is provided by Storm.</span></span> <span data-ttu-id="852ca-272">Admite el procesamiento con estado.</span><span class="sxs-lookup"><span data-stu-id="852ca-272">It supports stateful processing.</span></span> <span data-ttu-id="852ca-273">Hola principal ventaja de Trident es que puede garantizar que cada mensaje que entra en la topología de Hola se procesa solo una vez.</span><span class="sxs-lookup"><span data-stu-id="852ca-273">hello primary advantage of Trident is that it can guarantee that every message that enters hello topology is processed only once.</span></span> <span data-ttu-id="852ca-274">Si no se usa Trident, la topología solo puede garantizar que los mensajes se procesan al menos una vez.</span><span class="sxs-lookup"><span data-stu-id="852ca-274">Without using Trident, your topology can only guarantee that messages are processed at least once.</span></span> <span data-ttu-id="852ca-275">También hay otras diferencias, como los componentes integrados que se pueden usar en lugar de crear bolts.</span><span class="sxs-lookup"><span data-stu-id="852ca-275">There are also other differences, such as built-in components that can be used instead of creating bolts.</span></span> <span data-ttu-id="852ca-276">De hecho, los bolts se reemplazan por componentes menos genéricos, como filtros, proyecciones y funciones.</span><span class="sxs-lookup"><span data-stu-id="852ca-276">In fact, bolts are replaced by less-generic components, such as filters, projections, and functions.</span></span>
 
-<span data-ttu-id="b71df-277">Las aplicaciones de Trident se pueden crear mediante proyectos de Maven.</span><span class="sxs-lookup"><span data-stu-id="b71df-277">Trident applications can be created by using Maven projects.</span></span> <span data-ttu-id="b71df-278">Siga los mismos pasos básicos que se mostraron anteriormente en este artículo; lo único diferente es el código.</span><span class="sxs-lookup"><span data-stu-id="b71df-278">You use the same basic steps as presented earlier in this article—only the code is different.</span></span> <span data-ttu-id="b71df-279">Actualmente, tampoco puede usarse Trident con el marco de trabajo Flux.</span><span class="sxs-lookup"><span data-stu-id="b71df-279">Trident also cannot (currently) be used with the Flux framework.</span></span>
+<span data-ttu-id="852ca-277">Las aplicaciones de Trident se pueden crear mediante proyectos de Maven.</span><span class="sxs-lookup"><span data-stu-id="852ca-277">Trident applications can be created by using Maven projects.</span></span> <span data-ttu-id="852ca-278">Usar hello basic mismo pasos tal como se presenta anteriormente en este artículo, solo el código de hello es diferente.</span><span class="sxs-lookup"><span data-stu-id="852ca-278">You use hello same basic steps as presented earlier in this article—only hello code is different.</span></span> <span data-ttu-id="852ca-279">Trident también no (actualmente) puede utilizarse con marco de trabajo de un flujo de Hola.</span><span class="sxs-lookup"><span data-stu-id="852ca-279">Trident also cannot (currently) be used with hello Flux framework.</span></span>
 
-<span data-ttu-id="b71df-280">Para obtener más información sobre Trident, consulte [Información general sobre la API de Trident](http://storm.apache.org/documentation/Trident-API-Overview.html).</span><span class="sxs-lookup"><span data-stu-id="b71df-280">For more information about Trident, see the [Trident API Overview](http://storm.apache.org/documentation/Trident-API-Overview.html).</span></span>
+<span data-ttu-id="852ca-280">Para obtener más información acerca de Trident, vea hello [Introducción a la API Trident](http://storm.apache.org/documentation/Trident-API-Overview.html).</span><span class="sxs-lookup"><span data-stu-id="852ca-280">For more information about Trident, see hello [Trident API Overview](http://storm.apache.org/documentation/Trident-API-Overview.html).</span></span>
 
-<span data-ttu-id="b71df-281">Para ver un ejemplo de una aplicación de Trident, consulte [Tendencias de Twitter con Apache Storm en HDInsight](hdinsight-storm-twitter-trending.md).</span><span class="sxs-lookup"><span data-stu-id="b71df-281">For an example of a Trident application, see [Twitter trending topics with Apache Storm on HDInsight](hdinsight-storm-twitter-trending.md).</span></span>
+<span data-ttu-id="852ca-281">Para ver un ejemplo de una aplicación de Trident, consulte [Tendencias de Twitter con Apache Storm en HDInsight](hdinsight-storm-twitter-trending.md).</span><span class="sxs-lookup"><span data-stu-id="852ca-281">For an example of a Trident application, see [Twitter trending topics with Apache Storm on HDInsight](hdinsight-storm-twitter-trending.md).</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="b71df-282">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="b71df-282">Next Steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="852ca-282">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="852ca-282">Next Steps</span></span>
 
-<span data-ttu-id="b71df-283">Ha aprendido a crear una topología de Storm con Java.</span><span class="sxs-lookup"><span data-stu-id="b71df-283">You have learned how to create a Storm topology by using Java.</span></span> <span data-ttu-id="b71df-284">Ahora obtenga información sobre:</span><span class="sxs-lookup"><span data-stu-id="b71df-284">Now learn how to:</span></span>
+<span data-ttu-id="852ca-283">Ha aprendido cómo toocreate una topología Storm con Java.</span><span class="sxs-lookup"><span data-stu-id="852ca-283">You have learned how toocreate a Storm topology by using Java.</span></span> <span data-ttu-id="852ca-284">Ahora obtenga información sobre:</span><span class="sxs-lookup"><span data-stu-id="852ca-284">Now learn how to:</span></span>
 
-* [<span data-ttu-id="b71df-285">Implementación y administración de topologías de Apache Storm en HDInsight</span><span class="sxs-lookup"><span data-stu-id="b71df-285">Deploy and manage Apache Storm topologies on HDInsight</span></span>](hdinsight-storm-deploy-monitor-topology.md)
+* [<span data-ttu-id="852ca-285">Implementación y administración de topologías de Apache Storm en HDInsight</span><span class="sxs-lookup"><span data-stu-id="852ca-285">Deploy and manage Apache Storm topologies on HDInsight</span></span>](hdinsight-storm-deploy-monitor-topology.md)
 
-* [<span data-ttu-id="b71df-286">Desarrollo de topologías de C# para Apache Storm en HDInsight con Visual Studio</span><span class="sxs-lookup"><span data-stu-id="b71df-286">Develop C# topologies for Apache Storm on HDInsight using Visual Studio</span></span>](hdinsight-storm-develop-csharp-visual-studio-topology.md)
+* [<span data-ttu-id="852ca-286">Desarrollo de topologías de C# para Apache Storm en HDInsight con Visual Studio</span><span class="sxs-lookup"><span data-stu-id="852ca-286">Develop C# topologies for Apache Storm on HDInsight using Visual Studio</span></span>](hdinsight-storm-develop-csharp-visual-studio-topology.md)
 
-<span data-ttu-id="b71df-287">Puede encontrar más topologías de ejemplo de Storm en [Topologías de ejemplo para Storm en HDInsight](hdinsight-storm-example-topology.md).</span><span class="sxs-lookup"><span data-stu-id="b71df-287">You can find more example Storm topologies by visiting [Example topologies for Storm on HDInsight](hdinsight-storm-example-topology.md).</span></span>
+<span data-ttu-id="852ca-287">Puede encontrar más topologías de ejemplo de Storm en [Topologías de ejemplo para Storm en HDInsight](hdinsight-storm-example-topology.md).</span><span class="sxs-lookup"><span data-stu-id="852ca-287">You can find more example Storm topologies by visiting [Example topologies for Storm on HDInsight](hdinsight-storm-example-topology.md).</span></span>
 

@@ -1,6 +1,6 @@
 ---
-title: "Migración de aplicaciones lógicas a la versión de esquema 2015-08-01-preview | Microsoft Docs"
-description: "Puede migrar fácilmente las aplicaciones lógicas a la última versión de esquema. Simplemente, siga estos pasos:"
+title: "aaaHow toomigrate lógica aplicaciones tooschema versión 2015-08-01-vista previa | Documentos de Microsoft"
+description: "Puede migrar fácilmente la versión más reciente de esquema de la lógica aplicaciones toohello. Simplemente, siga estos pasos:"
 services: logic-apps
 documentationcenter: 
 author: MSFTMAN
@@ -15,33 +15,33 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/23/2016
 ms.author: deonhe
-ms.openlocfilehash: a5a73a9f124e5339b61dbc49021444a208a471f0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c7b42aaec547eddd28b0c649a3c0625047f9f805
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-migrate-logic-apps-to-schema-version-2015-08-01-preview"></a><span data-ttu-id="b5e3c-104">Migración de aplicaciones lógicas a la versión de esquema 2015-08-01-preview</span><span class="sxs-lookup"><span data-stu-id="b5e3c-104">How to migrate logic apps to schema version 2015-08-01-preview</span></span>
-<span data-ttu-id="b5e3c-105">Para mover las aplicaciones lógicas existentes al nuevo esquema, realice lo siguiente:</span><span class="sxs-lookup"><span data-stu-id="b5e3c-105">To move your existing logic apps to the new schema, do the following:</span></span>  
+# <a name="how-toomigrate-logic-apps-tooschema-version-2015-08-01-preview"></a><span data-ttu-id="374a7-104">¿Cómo toomigrate lógica aplicaciones tooschema versión 2015-08-01-versión preliminar</span><span class="sxs-lookup"><span data-stu-id="374a7-104">How toomigrate logic apps tooschema version 2015-08-01-preview</span></span>
+<span data-ttu-id="374a7-105">toomove su lógica aplicaciones toohello nuevo esquema existente, Hola siguientes:</span><span class="sxs-lookup"><span data-stu-id="374a7-105">toomove your existing logic apps toohello new schema, do hello following:</span></span>  
 
-1. <span data-ttu-id="b5e3c-106">Abra la aplicación lógica en el Portal de Azure</span><span class="sxs-lookup"><span data-stu-id="b5e3c-106">Open your logic app in the Azure portal</span></span>  
-2. <span data-ttu-id="b5e3c-107">Haga clic en Actualizar esquema:</span><span class="sxs-lookup"><span data-stu-id="b5e3c-107">Click Update Schema:</span></span>
+1. <span data-ttu-id="374a7-106">Abra la aplicación lógica en hello portal de Azure</span><span class="sxs-lookup"><span data-stu-id="374a7-106">Open your logic app in hello Azure portal</span></span>  
+2. <span data-ttu-id="374a7-107">Haga clic en Actualizar esquema:</span><span class="sxs-lookup"><span data-stu-id="374a7-107">Click Update Schema:</span></span>
    
-   <span data-ttu-id="b5e3c-108">![Icono de API][step1] </span><span class="sxs-lookup"><span data-stu-id="b5e3c-108">![API Icon][step1] </span></span>  
-   <span data-ttu-id="b5e3c-109">La página Actualizar esquema aparece y ofrece un vínculo a un documento que proporciona más información acerca de las mejoras del nuevo esquema: ![Icono de API][step2]</span><span class="sxs-lookup"><span data-stu-id="b5e3c-109">The Update Schema page displays and provides a link to a document that provide details on the improvements in the new schema: ![API Icon][step2]</span></span>
+   <span data-ttu-id="374a7-108">![Icono de API][step1] </span><span class="sxs-lookup"><span data-stu-id="374a7-108">![API Icon][step1] </span></span>  
+   <span data-ttu-id="374a7-109">página de esquema de actualización de Hello muestra y proporciona un documento de tooa de vínculo que proporcionan los detalles sobre las mejoras de hello en el nuevo esquema de hello: ![icono de la API][step2]</span><span class="sxs-lookup"><span data-stu-id="374a7-109">hello Update Schema page displays and provides a link tooa document that provide details on hello improvements in hello new schema: ![API Icon][step2]</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="b5e3c-110">Al seleccionar **Actualizar esquema**, automáticamente se ejecutan los pasos de migración y se le proporciona la salida de código.</span><span class="sxs-lookup"><span data-stu-id="b5e3c-110">When you select **Update Schema**, we automatically run the migration steps and provide the code output for you.</span></span> <span data-ttu-id="b5e3c-111">Con ello puede actualizar la definición, sin embargo, asegúrese de seguir las buenas prácticas de codificación descritas en la sección **Procedimientos recomendados** de más adelante.</span><span class="sxs-lookup"><span data-stu-id="b5e3c-111">You can use this to update your definition, however, ensure you follow good coding practices such as those outlined in the **Best practices** section below.</span></span>
+> <span data-ttu-id="374a7-110">Cuando se selecciona **actualizar esquema**, se ejecuta los pasos de migración de Hola automáticamente y se proporcionan salida de código de hello automáticamente.</span><span class="sxs-lookup"><span data-stu-id="374a7-110">When you select **Update Schema**, we automatically run hello migration steps and provide hello code output for you.</span></span> <span data-ttu-id="374a7-111">Puede usar este tooupdate la definición, sin embargo, asegúrese de seguir buenas prácticas de codificación como las que se describen en hello **prácticas recomendadas** sección más adelante.</span><span class="sxs-lookup"><span data-stu-id="374a7-111">You can use this tooupdate your definition, however, ensure you follow good coding practices such as those outlined in hello **Best practices** section below.</span></span>
 > 
 > 
 
-## <a name="best-practices-when-migrating-your-logic-apps-to-the-latest-schema-version"></a><span data-ttu-id="b5e3c-112">Procedimientos recomendados al migrar las aplicaciones lógicas a la última versión de esquema:</span><span class="sxs-lookup"><span data-stu-id="b5e3c-112">Best practices when migrating your Logic apps to the latest schema version:</span></span>
-* <span data-ttu-id="b5e3c-113">Copie el script migrado a una nueva aplicación lógica: no sobrescriba el antiguo hasta que haya completado las pruebas y confirmado que la aplicación migrada funciona según lo previsto.</span><span class="sxs-lookup"><span data-stu-id="b5e3c-113">Copy the migrated script to a new Logic App - don't overwrite the old one until you've completed your testing and confirmed the migrated app works as expected.</span></span>
-* <span data-ttu-id="b5e3c-114">Pruebe la aplicación lógica **antes de** ponerla en producción</span><span class="sxs-lookup"><span data-stu-id="b5e3c-114">Test your Logic app **before** putting in production</span></span>
-* <span data-ttu-id="b5e3c-115">Una vez finalizada la migración, comience la actualización de las aplicaciones lógicas para usar las [API administradas](apis-list.md) siempre que sea posible.</span><span class="sxs-lookup"><span data-stu-id="b5e3c-115">After migration completes, start updating your Logic apps to use the [managed APIs](apis-list.md) where possible.</span></span> <span data-ttu-id="b5e3c-116">Por ejemplo, puede empezar a utilizar Dropbox v2, en cualquier ocasión que esté utilizando DropBox v1.</span><span class="sxs-lookup"><span data-stu-id="b5e3c-116">For example, you can start using Dropbox v2, whereever you are using DropBox v1.</span></span>
+## <a name="best-practices-when-migrating-your-logic-apps-toohello-latest-schema-version"></a><span data-ttu-id="374a7-112">Prácticas recomendadas para migrar la versión más reciente de esquema de la lógica aplicaciones toohello:</span><span class="sxs-lookup"><span data-stu-id="374a7-112">Best practices when migrating your Logic apps toohello latest schema version:</span></span>
+* <span data-ttu-id="374a7-113">Hola copia migrado script tooa nueva lógica de aplicación: no se sobrescriben Hola antiguo uno hasta que haya completado la aplicación migrada hello confirmada y prueba funciona según lo previsto.</span><span class="sxs-lookup"><span data-stu-id="374a7-113">Copy hello migrated script tooa new Logic App - don't overwrite hello old one until you've completed your testing and confirmed hello migrated app works as expected.</span></span>
+* <span data-ttu-id="374a7-114">Pruebe la aplicación lógica **antes de** ponerla en producción</span><span class="sxs-lookup"><span data-stu-id="374a7-114">Test your Logic app **before** putting in production</span></span>
+* <span data-ttu-id="374a7-115">Una vez completada la migración, empieza a actualizar su Hola de lógica aplicaciones toouse [API administradas](apis-list.md) siempre que sea posible.</span><span class="sxs-lookup"><span data-stu-id="374a7-115">After migration completes, start updating your Logic apps toouse hello [managed APIs](apis-list.md) where possible.</span></span> <span data-ttu-id="374a7-116">Por ejemplo, puede empezar a utilizar Dropbox v2, en cualquier ocasión que esté utilizando DropBox v1.</span><span class="sxs-lookup"><span data-stu-id="374a7-116">For example, you can start using Dropbox v2, whereever you are using DropBox v1.</span></span>
 
-## <a name="whats-next"></a><span data-ttu-id="b5e3c-117">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="b5e3c-117">What's next</span></span>
-* [<span data-ttu-id="b5e3c-118">Obtenga información sobre cómo migrar las aplicaciones lógicas de forma manual</span><span class="sxs-lookup"><span data-stu-id="b5e3c-118">Learn how to manually migrate your Logic apps</span></span>](../logic-apps/logic-apps-schema-2015-08-01.md)
+## <a name="whats-next"></a><span data-ttu-id="374a7-117">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="374a7-117">What's next</span></span>
+* [<span data-ttu-id="374a7-118">Obtenga información acerca de cómo toomanually migrar las aplicaciones lógicas</span><span class="sxs-lookup"><span data-stu-id="374a7-118">Learn how toomanually migrate your Logic apps</span></span>](../logic-apps/logic-apps-schema-2015-08-01.md)
 
 <!--Icon references-->
 [step1]: ./media/connectors-schema-migration/migrateschema1.png

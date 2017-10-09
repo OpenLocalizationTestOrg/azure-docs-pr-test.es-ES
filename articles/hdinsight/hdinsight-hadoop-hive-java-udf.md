@@ -1,6 +1,6 @@
 ---
-title: "Uso de una función definida por el usuario (UDF) de Java con Hive en HDInsight - Azure | Microsoft Docs"
-description: "Aprenda cómo crear una función basada en Java y definida por el usuario (UDF) que funcione con Hive. Esta función de ejemplo definida por el usuario convierte una tabla de cadenas de texto en minúsculas."
+title: "aaaJava definido por el usuario (función) (UDF) con Hive en HDInsight - Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toocreate basados en Java definidos por el usuario (función) (UDF) que funciona con Hive. En este ejemplo UDF convierte una tabla de toolowercase de cadenas de texto."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -15,50 +15,50 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/26/2017
 ms.author: larryfr
-ms.openlocfilehash: 481d234eaf88bdb210821084ee4154159470eda0
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 392b4cfb73299d2f6c1e8e825a4201b48d501388
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-a-java-udf-with-hive-in-hdinsight"></a><span data-ttu-id="37fe2-104">Utilización de una función definida por el usuario de Java con Hive en HDInsight</span><span class="sxs-lookup"><span data-stu-id="37fe2-104">Use a Java UDF with Hive in HDInsight</span></span>
+# <a name="use-a-java-udf-with-hive-in-hdinsight"></a><span data-ttu-id="67516-104">Utilización de una función definida por el usuario de Java con Hive en HDInsight</span><span class="sxs-lookup"><span data-stu-id="67516-104">Use a Java UDF with Hive in HDInsight</span></span>
 
-<span data-ttu-id="37fe2-105">Aprenda cómo crear una función basada en Java y definida por el usuario (UDF) que funcione con Hive.</span><span class="sxs-lookup"><span data-stu-id="37fe2-105">Learn how to create a Java-based user-defined function (UDF) that works with Hive.</span></span> <span data-ttu-id="37fe2-106">La función de Java definida por el usuario de este ejemplo convierte una tabla de cadenas de texto a caracteres en minúscula.</span><span class="sxs-lookup"><span data-stu-id="37fe2-106">The Java UDF in this example converts a table of text strings to all-lowercase characters.</span></span>
+<span data-ttu-id="67516-105">Obtenga información acerca de cómo toocreate basados en Java definidos por el usuario (función) (UDF) que funciona con Hive.</span><span class="sxs-lookup"><span data-stu-id="67516-105">Learn how toocreate a Java-based user-defined function (UDF) that works with Hive.</span></span> <span data-ttu-id="67516-106">Hola UDF de Java en este ejemplo convierte una tabla de caracteres de tooall minúsculas de las cadenas de texto.</span><span class="sxs-lookup"><span data-stu-id="67516-106">hello Java UDF in this example converts a table of text strings tooall-lowercase characters.</span></span>
 
-## <a name="requirements"></a><span data-ttu-id="37fe2-107">Requisitos</span><span class="sxs-lookup"><span data-stu-id="37fe2-107">Requirements</span></span>
+## <a name="requirements"></a><span data-ttu-id="67516-107">Requisitos</span><span class="sxs-lookup"><span data-stu-id="67516-107">Requirements</span></span>
 
-* <span data-ttu-id="37fe2-108">Un clúster de HDInsight.</span><span class="sxs-lookup"><span data-stu-id="37fe2-108">An HDInsight cluster</span></span> 
-
-    > [!IMPORTANT]
-    > <span data-ttu-id="37fe2-109">Linux es el único sistema operativo que se usa en la versión 3.4 de HDInsight, o en las superiores.</span><span class="sxs-lookup"><span data-stu-id="37fe2-109">Linux is the only operating system used on HDInsight version 3.4 or greater.</span></span> <span data-ttu-id="37fe2-110">Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).</span><span class="sxs-lookup"><span data-stu-id="37fe2-110">For more information, see [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).</span></span>
-
-    <span data-ttu-id="37fe2-111">La mayoría de los pasos de este documento funcionan tanto en clústeres basados en Windows como en Linux.</span><span class="sxs-lookup"><span data-stu-id="37fe2-111">Most steps in this document work on both Windows- and Linux-based clusters.</span></span> <span data-ttu-id="37fe2-112">Sin embargo, los pasos utilizados para cargar la función definida por el usuario compilada al clúster y ejecutarla son específicos de los clústeres basados en Linux.</span><span class="sxs-lookup"><span data-stu-id="37fe2-112">However, the steps used to upload the compiled UDF to the cluster and run it are specific to Linux-based clusters.</span></span> <span data-ttu-id="37fe2-113">Se proporcionan vínculos a información que puede utilizarse con clústeres basados en Windows.</span><span class="sxs-lookup"><span data-stu-id="37fe2-113">Links are provided to information that can be used with Windows-based clusters.</span></span>
-
-* <span data-ttu-id="37fe2-114">[Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) 8 o posterior (o un equivalente como OpenJDK).</span><span class="sxs-lookup"><span data-stu-id="37fe2-114">[Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) 8 or later (or an equivalent, such as OpenJDK)</span></span>
-
-* [<span data-ttu-id="37fe2-115">Apache Maven</span><span class="sxs-lookup"><span data-stu-id="37fe2-115">Apache Maven</span></span>](http://maven.apache.org/)
-
-* <span data-ttu-id="37fe2-116">Un editor de texto o IDE de Java</span><span class="sxs-lookup"><span data-stu-id="37fe2-116">A text editor or Java IDE</span></span>
+* <span data-ttu-id="67516-108">Un clúster de HDInsight.</span><span class="sxs-lookup"><span data-stu-id="67516-108">An HDInsight cluster</span></span> 
 
     > [!IMPORTANT]
-    > <span data-ttu-id="37fe2-117">Si crea los archivos de Python en un cliente Windows, debe usar un editor que emplee LF como final de línea.</span><span class="sxs-lookup"><span data-stu-id="37fe2-117">If you create the Python files on a Windows client, you must use an editor that uses LF as a line ending.</span></span> <span data-ttu-id="37fe2-118">Si no está seguro de si el editor usa LF o CRLF, vea la sección [Solución de problemas](#troubleshooting) para conocer los pasos a seguir para quitar el carácter CR.</span><span class="sxs-lookup"><span data-stu-id="37fe2-118">If you are not sure whether your editor uses LF or CRLF, see the [Troubleshooting](#troubleshooting) section for steps on removing the CR character.</span></span>
+    > <span data-ttu-id="67516-109">Linux es Hola único sistema operativo usado en HDInsight versión 3.4 o superior.</span><span class="sxs-lookup"><span data-stu-id="67516-109">Linux is hello only operating system used on HDInsight version 3.4 or greater.</span></span> <span data-ttu-id="67516-110">Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).</span><span class="sxs-lookup"><span data-stu-id="67516-110">For more information, see [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).</span></span>
 
-## <a name="create-an-example-java-udf"></a><span data-ttu-id="37fe2-119">Crear una función de Java definida por el usuario de ejemplo</span><span class="sxs-lookup"><span data-stu-id="37fe2-119">Create an example Java UDF</span></span> 
+    <span data-ttu-id="67516-111">La mayoría de los pasos de este documento funcionan tanto en clústeres basados en Windows como en Linux.</span><span class="sxs-lookup"><span data-stu-id="67516-111">Most steps in this document work on both Windows- and Linux-based clusters.</span></span> <span data-ttu-id="67516-112">Sin embargo, Hola pasos utilizados tooupload Hola compilados de clúster UDF toohello y ejecución son los clústeres de tooLinux-based específicos.</span><span class="sxs-lookup"><span data-stu-id="67516-112">However, hello steps used tooupload hello compiled UDF toohello cluster and run it are specific tooLinux-based clusters.</span></span> <span data-ttu-id="67516-113">Se proporcionan vínculos tooinformation que puede utilizarse con clústeres basados en Windows.</span><span class="sxs-lookup"><span data-stu-id="67516-113">Links are provided tooinformation that can be used with Windows-based clusters.</span></span>
 
-1. <span data-ttu-id="37fe2-120">Desde una línea de comandos, utilice lo siguiente para crear un nuevo proyecto de Maven:</span><span class="sxs-lookup"><span data-stu-id="37fe2-120">From a command line, use the following to create a new Maven project:</span></span>
+* <span data-ttu-id="67516-114">[Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) 8 o posterior (o un equivalente como OpenJDK).</span><span class="sxs-lookup"><span data-stu-id="67516-114">[Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) 8 or later (or an equivalent, such as OpenJDK)</span></span>
+
+* [<span data-ttu-id="67516-115">Apache Maven</span><span class="sxs-lookup"><span data-stu-id="67516-115">Apache Maven</span></span>](http://maven.apache.org/)
+
+* <span data-ttu-id="67516-116">Un editor de texto o IDE de Java</span><span class="sxs-lookup"><span data-stu-id="67516-116">A text editor or Java IDE</span></span>
+
+    > [!IMPORTANT]
+    > <span data-ttu-id="67516-117">Si crea archivos de Python en un cliente de Windows hello, debe utilizar un editor que utiliza LF como un final de línea.</span><span class="sxs-lookup"><span data-stu-id="67516-117">If you create hello Python files on a Windows client, you must use an editor that uses LF as a line ending.</span></span> <span data-ttu-id="67516-118">Si no está seguro de si el editor utiliza LF o CRLF, vea hello [solución de problemas](#troubleshooting) sección para pasos acerca de cómo quitar Hola caracteres CR.</span><span class="sxs-lookup"><span data-stu-id="67516-118">If you are not sure whether your editor uses LF or CRLF, see hello [Troubleshooting](#troubleshooting) section for steps on removing hello CR character.</span></span>
+
+## <a name="create-an-example-java-udf"></a><span data-ttu-id="67516-119">Crear una función de Java definida por el usuario de ejemplo</span><span class="sxs-lookup"><span data-stu-id="67516-119">Create an example Java UDF</span></span> 
+
+1. <span data-ttu-id="67516-120">Desde una línea de comandos, use Hola después toocreate un nuevo proyecto de Maven:</span><span class="sxs-lookup"><span data-stu-id="67516-120">From a command line, use hello following toocreate a new Maven project:</span></span>
 
     ```bash
     mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=ExampleUDF -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
    > [!NOTE]
-   > <span data-ttu-id="37fe2-121">Si va a usar PowerShell, deberá colocar comillas alrededor de los parámetros.</span><span class="sxs-lookup"><span data-stu-id="37fe2-121">If you are using PowerShell, you must put quotes around the parameters.</span></span> <span data-ttu-id="37fe2-122">Por ejemplo: `mvn archetype:generate "-DgroupId=com.microsoft.examples" "-DartifactId=ExampleUDF" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DinteractiveMode=false"`.</span><span class="sxs-lookup"><span data-stu-id="37fe2-122">For example, `mvn archetype:generate "-DgroupId=com.microsoft.examples" "-DartifactId=ExampleUDF" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DinteractiveMode=false"`.</span></span>
+   > <span data-ttu-id="67516-121">Si usa PowerShell, debe incluir las comillas alrededor de los parámetros de Hola.</span><span class="sxs-lookup"><span data-stu-id="67516-121">If you are using PowerShell, you must put quotes around hello parameters.</span></span> <span data-ttu-id="67516-122">Por ejemplo: `mvn archetype:generate "-DgroupId=com.microsoft.examples" "-DartifactId=ExampleUDF" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DinteractiveMode=false"`.</span><span class="sxs-lookup"><span data-stu-id="67516-122">For example, `mvn archetype:generate "-DgroupId=com.microsoft.examples" "-DartifactId=ExampleUDF" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DinteractiveMode=false"`.</span></span>
 
-    <span data-ttu-id="37fe2-123">Este comando crea un directorio denominado **exampleudf**, que contiene el proyecto Maven.</span><span class="sxs-lookup"><span data-stu-id="37fe2-123">This command creates a directory named **exampleudf**, which contains the Maven project.</span></span>
+    <span data-ttu-id="67516-123">Este comando crea un directorio denominado **exampleudf**, que contiene proyectos de Maven Hola.</span><span class="sxs-lookup"><span data-stu-id="67516-123">This command creates a directory named **exampleudf**, which contains hello Maven project.</span></span>
 
-2. <span data-ttu-id="37fe2-124">Una vez creado el proyecto, elimine el directorio **exampleudf/src/test** que se creó como parte del proyecto.</span><span class="sxs-lookup"><span data-stu-id="37fe2-124">Once the project has been created, delete the **exampleudf/src/test** directory that was created as part of the project.</span></span>
+2. <span data-ttu-id="67516-124">Una vez que se ha creado el proyecto de hello, eliminar hello **exampleudf/src/test** directorio creado como parte del proyecto de Hola.</span><span class="sxs-lookup"><span data-stu-id="67516-124">Once hello project has been created, delete hello **exampleudf/src/test** directory that was created as part of hello project.</span></span>
 
-3. <span data-ttu-id="37fe2-125">Abra **exampleudf/pom.xml** y sustituya la entrada `<dependencies>` existente por el XML siguiente:</span><span class="sxs-lookup"><span data-stu-id="37fe2-125">Open the **exampleudf/pom.xml**, and replace the existing `<dependencies>` entry with the following XML:</span></span>
+3. <span data-ttu-id="67516-125">Abra hello **exampleudf/pom.xml**y reemplace Hola existente `<dependencies>` entrada con hello continuación de XML:</span><span class="sxs-lookup"><span data-stu-id="67516-125">Open hello **exampleudf/pom.xml**, and replace hello existing `<dependencies>` entry with hello following XML:</span></span>
 
     ```xml
     <dependencies>
@@ -77,9 +77,9 @@ ms.lasthandoff: 08/03/2017
     </dependencies>
     ```
 
-    <span data-ttu-id="37fe2-126">Estas entradas especifican la versión de Hadoop y Hive incluida con el clúster de HDInsight 3.5.</span><span class="sxs-lookup"><span data-stu-id="37fe2-126">These entries specify the version of Hadoop and Hive included with HDInsight 3.5.</span></span> <span data-ttu-id="37fe2-127">Puede encontrar información sobre las versiones de Hadoop y Hive proporcionadas con HDInsight en el artículo [¿Cuáles son los diferentes componentes de Hadoop disponibles con HDInsight?](hdinsight-component-versioning.md) .</span><span class="sxs-lookup"><span data-stu-id="37fe2-127">You can find information on the versions of Hadoop and Hive provided with HDInsight from the [HDInsight component versioning](hdinsight-component-versioning.md) document.</span></span>
+    <span data-ttu-id="67516-126">Estas entradas especifican versión de Hola de Hadoop y Hive incluido con HDInsight 3.5.</span><span class="sxs-lookup"><span data-stu-id="67516-126">These entries specify hello version of Hadoop and Hive included with HDInsight 3.5.</span></span> <span data-ttu-id="67516-127">Puede encontrar información sobre las versiones de Hadoop y Hive proporcionada con HDInsight de Hola Hola [versiones de componentes de HDInsight](hdinsight-component-versioning.md) documento.</span><span class="sxs-lookup"><span data-stu-id="67516-127">You can find information on hello versions of Hadoop and Hive provided with HDInsight from hello [HDInsight component versioning](hdinsight-component-versioning.md) document.</span></span>
 
-    <span data-ttu-id="37fe2-128">Agregue una sección `<build>` antes de la línea `</project>` al final del archivo.</span><span class="sxs-lookup"><span data-stu-id="37fe2-128">Add a `<build>` section before the `</project>` line at the end of the file.</span></span> <span data-ttu-id="37fe2-129">Esta sección debe contener el siguiente XML:</span><span class="sxs-lookup"><span data-stu-id="37fe2-129">This section should contain the following XML:</span></span>
+    <span data-ttu-id="67516-128">Agregar un `<build>` sección antes de hello `</project>` línea hello final de archivo hello.</span><span class="sxs-lookup"><span data-stu-id="67516-128">Add a `<build>` section before hello `</project>` line at hello end of hello file.</span></span> <span data-ttu-id="67516-129">Esta sección debe contener Hola continuación de XML:</span><span class="sxs-lookup"><span data-stu-id="67516-129">This section should contain hello following XML:</span></span>
 
     ```xml
     <build>
@@ -133,13 +133,13 @@ ms.lasthandoff: 08/03/2017
     </build>
     ```
 
-    <span data-ttu-id="37fe2-130">Estas entradas definen cómo compilar el proyecto.</span><span class="sxs-lookup"><span data-stu-id="37fe2-130">These entries define how to build the project.</span></span> <span data-ttu-id="37fe2-131">Específicamente, la versión de Java que el proyecto usa y cómo compilar un archivo uberjar para implementarlo en el clúster.</span><span class="sxs-lookup"><span data-stu-id="37fe2-131">Specifically, the version of Java that the project uses and how to build an uberjar for deployment to the cluster.</span></span>
+    <span data-ttu-id="67516-130">Estas entradas definen cómo toobuild Hola proyecto.</span><span class="sxs-lookup"><span data-stu-id="67516-130">These entries define how toobuild hello project.</span></span> <span data-ttu-id="67516-131">En concreto, la versión de Hola de Java que Hola que usa project y cómo toobuild una uberjar para clúster toohello de implementación.</span><span class="sxs-lookup"><span data-stu-id="67516-131">Specifically, hello version of Java that hello project uses and how toobuild an uberjar for deployment toohello cluster.</span></span>
 
-    <span data-ttu-id="37fe2-132">Guarde el archivo una vez hechos los cambios.</span><span class="sxs-lookup"><span data-stu-id="37fe2-132">Save the file once the changes have been made.</span></span>
+    <span data-ttu-id="67516-132">Guardar archivo hello una vez que se han realizado cambios de Hola.</span><span class="sxs-lookup"><span data-stu-id="67516-132">Save hello file once hello changes have been made.</span></span>
 
-4. <span data-ttu-id="37fe2-133">Cambie el nombre de **exampleudf/src/main/java/com/microsoft/examples/App.java** a **ExampleUDF.java** y, después, abra el archivo en el editor.</span><span class="sxs-lookup"><span data-stu-id="37fe2-133">Rename **exampleudf/src/main/java/com/microsoft/examples/App.java** to **ExampleUDF.java**, and then open the file in your editor.</span></span>
+4. <span data-ttu-id="67516-133">Cambiar el nombre de **exampleudf/src/main/java/com/microsoft/examples/App.java** demasiado**ExampleUDF.java**y, a continuación, abra el archivo hello en el editor.</span><span class="sxs-lookup"><span data-stu-id="67516-133">Rename **exampleudf/src/main/java/com/microsoft/examples/App.java** too**ExampleUDF.java**, and then open hello file in your editor.</span></span>
 
-5. <span data-ttu-id="37fe2-134">Reemplace el contenido del archivo **ExampleUDF.java** por el código siguiente y, a continuación, guarde el archivo.</span><span class="sxs-lookup"><span data-stu-id="37fe2-134">Replace the contents of the **ExampleUDF.java** file with the following, then save the file.</span></span>
+5. <span data-ttu-id="67516-134">Reemplazar contenido Hola de hello **ExampleUDF.java** archivos con siguiente hello, a continuación, guarde el archivo hello.</span><span class="sxs-lookup"><span data-stu-id="67516-134">Replace hello contents of hello **ExampleUDF.java** file with hello following, then save hello file.</span></span>
 
     ```java
     package com.microsoft.examples;
@@ -148,69 +148,69 @@ ms.lasthandoff: 08/03/2017
     import org.apache.hadoop.hive.ql.exec.UDF;
     import org.apache.hadoop.io.*;
 
-    // Description of the UDF
+    // Description of hello UDF
     @Description(
         name="ExampleUDF",
-        value="returns a lower case version of the input string.",
+        value="returns a lower case version of hello input string.",
         extended="select ExampleUDF(deviceplatform) from hivesampletable limit 10;"
     )
     public class ExampleUDF extends UDF {
         // Accept a string input
         public String evaluate(String input) {
-            // If the value is null, return a null
+            // If hello value is null, return a null
             if(input == null)
                 return null;
-            // Lowercase the input string and return it
+            // Lowercase hello input string and return it
             return input.toLowerCase();
         }
     }
     ```
 
-    <span data-ttu-id="37fe2-135">Este código implementa una función definida por el usuario que acepta un valor de cadena y devuelve una versión en minúsculas de esta.</span><span class="sxs-lookup"><span data-stu-id="37fe2-135">This code implements a UDF that accepts a string value, and returns a lowercase version of the string.</span></span>
+    <span data-ttu-id="67516-135">Este código implementa un UDF que acepta un valor de cadena y devuelve una versión en minúsculas de la cadena de Hola.</span><span class="sxs-lookup"><span data-stu-id="67516-135">This code implements a UDF that accepts a string value, and returns a lowercase version of hello string.</span></span>
 
-## <a name="build-and-install-the-udf"></a><span data-ttu-id="37fe2-136">Compilación e instalación de la función definida por el usuario</span><span class="sxs-lookup"><span data-stu-id="37fe2-136">Build and install the UDF</span></span>
+## <a name="build-and-install-hello-udf"></a><span data-ttu-id="67516-136">Compilar e instalar Hola UDF</span><span class="sxs-lookup"><span data-stu-id="67516-136">Build and install hello UDF</span></span>
 
-1. <span data-ttu-id="37fe2-137">Utilice el siguiente comando para compilar y empaquetar la función definida por el usuario:</span><span class="sxs-lookup"><span data-stu-id="37fe2-137">Use the following command to compile and package the UDF:</span></span>
+1. <span data-ttu-id="67516-137">Comando toocompile siguiente de Hola de uso y empaquetar Hola UDF:</span><span class="sxs-lookup"><span data-stu-id="67516-137">Use hello following command toocompile and package hello UDF:</span></span>
 
     ```bash
     mvn compile package
     ```
 
-    <span data-ttu-id="37fe2-138">Este comando compila y empaqueta la función definida por el usuario en el archivo `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar`.</span><span class="sxs-lookup"><span data-stu-id="37fe2-138">This command builds and packages the UDF into the `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` file.</span></span>
+    <span data-ttu-id="67516-138">Este comando genera y paquetes Hola UDF en hello `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` archivo.</span><span class="sxs-lookup"><span data-stu-id="67516-138">This command builds and packages hello UDF into hello `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` file.</span></span>
 
-2. <span data-ttu-id="37fe2-139">Utilice el comando `scp` para copiar el archivo en el clúster de HDInsight.</span><span class="sxs-lookup"><span data-stu-id="37fe2-139">Use the `scp` command to copy the file to the HDInsight cluster.</span></span>
+2. <span data-ttu-id="67516-139">Hola de uso `scp` clúster de HDInsight de toohello de archivo de comandos toocopy Hola.</span><span class="sxs-lookup"><span data-stu-id="67516-139">Use hello `scp` command toocopy hello file toohello HDInsight cluster.</span></span>
 
     ```bash
     scp ./target/ExampleUDF-1.0-SNAPSHOT.jar myuser@mycluster-ssh.azurehdinsight
     ```
 
-    <span data-ttu-id="37fe2-140">Sustituya `myuser` por la cuenta de usuario SSH del clúster.</span><span class="sxs-lookup"><span data-stu-id="37fe2-140">Replace `myuser` with the SSH user account for your cluster.</span></span> <span data-ttu-id="37fe2-141">Reemplace `mycluster` por el nombre del clúster.</span><span class="sxs-lookup"><span data-stu-id="37fe2-141">Replace `mycluster` with the cluster name.</span></span> <span data-ttu-id="37fe2-142">Si usa una contraseña para proteger la cuenta SSH, se le solicita que escriba la contraseña.</span><span class="sxs-lookup"><span data-stu-id="37fe2-142">If you used a password to secure the SSH account, you are prompted to enter the password.</span></span> <span data-ttu-id="37fe2-143">Si utilizó un certificado, tal vez tenga que usar el parámetro `-i` para especificar el archivo de claves privadas.</span><span class="sxs-lookup"><span data-stu-id="37fe2-143">If you used a certificate, you may need to use the `-i` parameter to specify the private key file.</span></span>
+    <span data-ttu-id="67516-140">Reemplace `myuser` con hello cuenta de usuario SSH para el clúster.</span><span class="sxs-lookup"><span data-stu-id="67516-140">Replace `myuser` with hello SSH user account for your cluster.</span></span> <span data-ttu-id="67516-141">Reemplace `mycluster` con el nombre del clúster de Hola.</span><span class="sxs-lookup"><span data-stu-id="67516-141">Replace `mycluster` with hello cluster name.</span></span> <span data-ttu-id="67516-142">Si ha usado un hello toosecure de contraseña SSH cuenta, son contraseña de hello tooenter solicitadas.</span><span class="sxs-lookup"><span data-stu-id="67516-142">If you used a password toosecure hello SSH account, you are prompted tooenter hello password.</span></span> <span data-ttu-id="67516-143">Si usa un certificado, puede que necesite toouse hello `-i` archivo de clave privada de parámetro toospecify Hola.</span><span class="sxs-lookup"><span data-stu-id="67516-143">If you used a certificate, you may need toouse hello `-i` parameter toospecify hello private key file.</span></span>
 
-3. <span data-ttu-id="37fe2-144">Conéctese al clúster con SSH.</span><span class="sxs-lookup"><span data-stu-id="37fe2-144">Connect to the cluster using SSH.</span></span>
+3. <span data-ttu-id="67516-144">Conecte el clúster toohello mediante SSH.</span><span class="sxs-lookup"><span data-stu-id="67516-144">Connect toohello cluster using SSH.</span></span>
 
     ```bash
     ssh myuser@mycluster-ssh.azurehdinsight.net
     ```
 
-    <span data-ttu-id="37fe2-145">Para más información, consulte [Uso SSH con HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).</span><span class="sxs-lookup"><span data-stu-id="37fe2-145">For more information, see [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).</span></span>
+    <span data-ttu-id="67516-145">Para más información, consulte [Uso SSH con HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).</span><span class="sxs-lookup"><span data-stu-id="67516-145">For more information, see [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).</span></span>
 
-4. <span data-ttu-id="37fe2-146">Desde la sesión SSH, copie el archivo jar en el almacenamiento de HDInsight.</span><span class="sxs-lookup"><span data-stu-id="37fe2-146">From the SSH session, copy the jar file to HDInsight storage.</span></span>
+4. <span data-ttu-id="67516-146">Desde la sesión de SSH de hello, copie almacenamiento de tooHDInsight de archivos jar de Hola.</span><span class="sxs-lookup"><span data-stu-id="67516-146">From hello SSH session, copy hello jar file tooHDInsight storage.</span></span>
 
     ```bash
     hdfs dfs -put ExampleUDF-1.0-SNAPSHOT.jar /example/jars
     ```
 
-## <a name="use-the-udf-from-hive"></a><span data-ttu-id="37fe2-147">Uso de la función definida por el usuario desde Hive</span><span class="sxs-lookup"><span data-stu-id="37fe2-147">Use the UDF from Hive</span></span>
+## <a name="use-hello-udf-from-hive"></a><span data-ttu-id="67516-147">Usar hello UDF de Hive</span><span class="sxs-lookup"><span data-stu-id="67516-147">Use hello UDF from Hive</span></span>
 
-1. <span data-ttu-id="37fe2-148">Use lo siguiente para iniciar el cliente Beeline desde la sesión SSH.</span><span class="sxs-lookup"><span data-stu-id="37fe2-148">Use the following to start the Beeline client from the SSH session.</span></span>
+1. <span data-ttu-id="67516-148">Usar hello después de cliente de Beeline toostart Hola de sesión SSH Hola.</span><span class="sxs-lookup"><span data-stu-id="67516-148">Use hello following toostart hello Beeline client from hello SSH session.</span></span>
 
     ```bash
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin
     ```
 
-    <span data-ttu-id="37fe2-149">Este comando supone que usó el valor predeterminado de **admin** para la cuenta de inicio de sesión del clúster.</span><span class="sxs-lookup"><span data-stu-id="37fe2-149">This command assumes that you used the default of **admin** for the login account for your cluster.</span></span>
+    <span data-ttu-id="67516-149">Este comando se da por supuesto que usar valor predeterminado es hello **administrador** para la cuenta de inicio de sesión de hello para el clúster.</span><span class="sxs-lookup"><span data-stu-id="67516-149">This command assumes that you used hello default of **admin** for hello login account for your cluster.</span></span>
 
-2. <span data-ttu-id="37fe2-150">Una vez alcanzado el aviso `jdbc:hive2://localhost:10001/>` , escriba lo siguiente para agregar la función definida por el usuario a Hive y exponerla como una función.</span><span class="sxs-lookup"><span data-stu-id="37fe2-150">Once you arrive at the `jdbc:hive2://localhost:10001/>` prompt, enter the following to add the UDF to Hive and expose it as a function.</span></span>
+2. <span data-ttu-id="67516-150">Una vez que llegan a hello `jdbc:hive2://localhost:10001/>` símbolo del sistema, escriba Hola después tooadd Hola UDF tooHive y exponerlo como una función.</span><span class="sxs-lookup"><span data-stu-id="67516-150">Once you arrive at hello `jdbc:hive2://localhost:10001/>` prompt, enter hello following tooadd hello UDF tooHive and expose it as a function.</span></span>
 
     ```hiveql
     ADD JAR wasb:///example/jars/ExampleUDF-1.0-SNAPSHOT.jar;
@@ -218,15 +218,15 @@ ms.lasthandoff: 08/03/2017
     ```
 
     > [!NOTE]
-    > <span data-ttu-id="37fe2-151">En este ejemplo se da por supuesto que el almacenamiento predeterminado para el clúster es Azure Storage.</span><span class="sxs-lookup"><span data-stu-id="37fe2-151">This example assumes that Azure Storage is default storage for the cluster.</span></span> <span data-ttu-id="37fe2-152">Si su clúster utiliza Data Lake Store en su lugar, cambie el valor `wasb:///` a `adl:///`.</span><span class="sxs-lookup"><span data-stu-id="37fe2-152">If your cluster uses Data Lake Store instead, change the `wasb:///` value to `adl:///`.</span></span>
+    > <span data-ttu-id="67516-151">En este ejemplo se da por supuesto que el almacenamiento de Azure es almacenamiento predeterminado para el clúster de Hola.</span><span class="sxs-lookup"><span data-stu-id="67516-151">This example assumes that Azure Storage is default storage for hello cluster.</span></span> <span data-ttu-id="67516-152">Si su clúster usa el almacén de Data Lake en su lugar, cambie hello `wasb:///` valor demasiado`adl:///`.</span><span class="sxs-lookup"><span data-stu-id="67516-152">If your cluster uses Data Lake Store instead, change hello `wasb:///` value too`adl:///`.</span></span>
 
-3. <span data-ttu-id="37fe2-153">Use la función definida por el usuario para convertir los valores recuperados de una tabla a cadenas de minúsculas.</span><span class="sxs-lookup"><span data-stu-id="37fe2-153">Use the UDF to convert values retrieved from a table to lower case strings.</span></span>
+3. <span data-ttu-id="67516-153">Use Hola UDF tooconvert valores recuperados de una tabla toolower caso las cadenas.</span><span class="sxs-lookup"><span data-stu-id="67516-153">Use hello UDF tooconvert values retrieved from a table toolower case strings.</span></span>
 
     ```hiveql
     SELECT tolower(deviceplatform) FROM hivesampletable LIMIT 10;
     ```
 
-    <span data-ttu-id="37fe2-154">Esta consulta seleccionará la plataforma del dispositivo (Android, Windows, iOS, etc.) de la tabla, convertirá la cadena a minúsculas y, a continuación, las mostrará.</span><span class="sxs-lookup"><span data-stu-id="37fe2-154">This query selects the device platform (Android, Windows, iOS, etc.) from the table, convert the string to lower case, and then display them.</span></span> <span data-ttu-id="37fe2-155">La salida es similar al siguiente texto:</span><span class="sxs-lookup"><span data-stu-id="37fe2-155">The output appears similar to the following text:</span></span>
+    <span data-ttu-id="67516-154">Esta consulta selecciona Hola plataforma de dispositivo (Android, Windows, iOS, etc.) de la tabla de hello, convertir case de toolower la cadena hello y, a continuación, mostrarlas.</span><span class="sxs-lookup"><span data-stu-id="67516-154">This query selects hello device platform (Android, Windows, iOS, etc.) from hello table, convert hello string toolower case, and then display them.</span></span> <span data-ttu-id="67516-155">salida de Hello aparece toohello similar siguiente texto:</span><span class="sxs-lookup"><span data-stu-id="67516-155">hello output appears similar toohello following text:</span></span>
 
         +----------+--+
         |   _c0    |
@@ -243,8 +243,8 @@ ms.lasthandoff: 08/03/2017
         | android  |
         +----------+--+
 
-## <a name="next-steps"></a><span data-ttu-id="37fe2-156">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="37fe2-156">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="67516-156">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="67516-156">Next steps</span></span>
 
-<span data-ttu-id="37fe2-157">Para conocer otras formas de trabajar con Hive, consulte [Usar Hive y HiveQL con Hadoop en HDInsight para analizar un archivo log4j de Apache de muestra](hdinsight-use-hive.md).</span><span class="sxs-lookup"><span data-stu-id="37fe2-157">For other ways to work with Hive, see [Use Hive with HDInsight](hdinsight-use-hive.md).</span></span>
+<span data-ttu-id="67516-157">Para otro toowork maneras con Hive, consulte [uso de Hive con HDInsight](hdinsight-use-hive.md).</span><span class="sxs-lookup"><span data-stu-id="67516-157">For other ways toowork with Hive, see [Use Hive with HDInsight](hdinsight-use-hive.md).</span></span>
 
-<span data-ttu-id="37fe2-158">Para más información sobre las funciones definidas por el usuario de Hive, consulte la sección [Hive Operators and User-Defined Functions](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) (Operadores de Hive y funciones definidas por el usuario) de la wiki de Hive en apache.org.</span><span class="sxs-lookup"><span data-stu-id="37fe2-158">For more information on Hive User-Defined Functions, see [Hive Operators and User-Defined Functions](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) section of the Hive wiki at apache.org.</span></span>
+<span data-ttu-id="67516-158">Para obtener más información sobre las funciones de Hive User-Defined, consulte [Hive operadores y funciones definidas por el usuario](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) sección de wiki de Hive hello en apache.org.</span><span class="sxs-lookup"><span data-stu-id="67516-158">For more information on Hive User-Defined Functions, see [Hive Operators and User-Defined Functions](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) section of hello Hive wiki at apache.org.</span></span>

@@ -1,6 +1,6 @@
 ---
-title: "Configuración de la directiva SSL en Azure Application Gateway mediante PowerShell | Microsoft Docs"
-description: "Esta página proporciona instrucciones para configurar la directiva SSL en Azure Application Gateway"
+title: "Directiva SSL de aaaConfigure en la puerta de enlace de la aplicación de Azure - PowerShell | Documentos de Microsoft"
+description: "Esta página proporciona instrucciones tooconfigure directiva SSL en la puerta de enlace de aplicaciones de Azure"
 documentationcenter: na
 services: application-gateway
 author: georgewallace
@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/19/2017
 ms.author: gwallace
-ms.openlocfilehash: ece2549a607ffa06602c26cf77db93f67112d029
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 7802ad3d3191a2fe9d88dddcb7c65bc4a70a419c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="configure-ssl-policy-versions-and-cipher-suites-on-application-gateway"></a><span data-ttu-id="1d568-103">Configurar versiones de directivas SSL y conjuntos de cifrado en Application Gateway</span><span class="sxs-lookup"><span data-stu-id="1d568-103">Configure SSL policy versions and cipher suites on Application Gateway</span></span>
+# <a name="configure-ssl-policy-versions-and-cipher-suites-on-application-gateway"></a><span data-ttu-id="b9e1f-103">Configurar versiones de directivas SSL y conjuntos de cifrado en Application Gateway</span><span class="sxs-lookup"><span data-stu-id="b9e1f-103">Configure SSL policy versions and cipher suites on Application Gateway</span></span>
 
-<span data-ttu-id="1d568-104">Aprenda a configurar versiones de directivas SSL y conjuntos de cifrado en Application Gateway.</span><span class="sxs-lookup"><span data-stu-id="1d568-104">Learn how to configure SSL policy versions and cipher suites on Application Gateway.</span></span> <span data-ttu-id="1d568-105">Puede seleccionar entre una [lista de directivas predefinidas](#predefined-ssl-policies) que contienen diferentes configuraciones de las versiones de directivas SSL y conjuntos de cifrado habilitados.</span><span class="sxs-lookup"><span data-stu-id="1d568-105">You can select from a [list of predefined policies](#predefined-ssl-policies) that contain different configurations of SSL policy versions and enabled cipher suites.</span></span> <span data-ttu-id="1d568-106">También tiene la posibilidad de definir una [directiva SSL personalizada](#configure-a-custom-ssl-policy) según sus requisitos.</span><span class="sxs-lookup"><span data-stu-id="1d568-106">You also have the ability to define a [custom SSL policy](#configure-a-custom-ssl-policy) based on your requirements.</span></span>
+<span data-ttu-id="b9e1f-104">Obtenga información acerca de cómo tooconfigure versiones de directivas SSL y conjuntos de puerta de enlace de aplicaciones de cifrado.</span><span class="sxs-lookup"><span data-stu-id="b9e1f-104">Learn how tooconfigure SSL policy versions and cipher suites on Application Gateway.</span></span> <span data-ttu-id="b9e1f-105">Puede seleccionar entre una [lista de directivas predefinidas](#predefined-ssl-policies) que contienen diferentes configuraciones de las versiones de directivas SSL y conjuntos de cifrado habilitados.</span><span class="sxs-lookup"><span data-stu-id="b9e1f-105">You can select from a [list of predefined policies](#predefined-ssl-policies) that contain different configurations of SSL policy versions and enabled cipher suites.</span></span> <span data-ttu-id="b9e1f-106">También tiene Hola capacidad toodefine una [directiva personalizada de SSL](#configure-a-custom-ssl-policy) según sus requisitos.</span><span class="sxs-lookup"><span data-stu-id="b9e1f-106">You also have hello ability toodefine a [custom SSL policy](#configure-a-custom-ssl-policy) based on your requirements.</span></span>
 
-## <a name="get-available-ssl-options"></a><span data-ttu-id="1d568-107">Obtención de las opciones SSL disponibles</span><span class="sxs-lookup"><span data-stu-id="1d568-107">Get available SSL options</span></span>
+## <a name="get-available-ssl-options"></a><span data-ttu-id="b9e1f-107">Obtención de las opciones SSL disponibles</span><span class="sxs-lookup"><span data-stu-id="b9e1f-107">Get available SSL options</span></span>
 
-<span data-ttu-id="1d568-108">El cmdlet `Get-AzureRMApplicationGatewayAvailableSslOptions` proporciona una lista de directivas predefinidas y conjuntos de cifrado disponibles, y de versiones de protocolo que se pueden configurar.</span><span class="sxs-lookup"><span data-stu-id="1d568-108">The `Get-AzureRMApplicationGatewayAvailableSslOptions` cmdlet provides a listing of available pre-defined policies, available cipher suites, and protocol versions that can be configured.</span></span> <span data-ttu-id="1d568-109">El ejemplo siguiente muestra una salida de ejemplo de la ejecución del cmdlet.</span><span class="sxs-lookup"><span data-stu-id="1d568-109">The following example shows an example output from running the cmdlet.</span></span>
+<span data-ttu-id="b9e1f-108">Hola `Get-AzureRMApplicationGatewayAvailableSslOptions` cmdlet proporciona una lista de directivas predefinidas disponibles, conjuntos de cifrado disponibles y las versiones de protocolo que se pueden configurar.</span><span class="sxs-lookup"><span data-stu-id="b9e1f-108">hello `Get-AzureRMApplicationGatewayAvailableSslOptions` cmdlet provides a listing of available pre-defined policies, available cipher suites, and protocol versions that can be configured.</span></span> <span data-ttu-id="b9e1f-109">Hello en el ejemplo siguiente se muestra un ejemplo de ejecución del cmdlet Hola salida.</span><span class="sxs-lookup"><span data-stu-id="b9e1f-109">hello following example shows an example output from running hello cmdlet.</span></span>
 
 ```
 DefaultPolicy: AppGwSslPolicy20150501
@@ -73,11 +73,11 @@ AvailableProtocols:
     TLSv1_2
 ```
 
-## <a name="list-pre-defined-ssl-policies"></a><span data-ttu-id="1d568-110">Listado de directivas SSL predefinidas</span><span class="sxs-lookup"><span data-stu-id="1d568-110">List pre-defined SSL Policies</span></span>
+## <a name="list-pre-defined-ssl-policies"></a><span data-ttu-id="b9e1f-110">Listado de directivas SSL predefinidas</span><span class="sxs-lookup"><span data-stu-id="b9e1f-110">List pre-defined SSL Policies</span></span>
 
-<span data-ttu-id="1d568-111">Application Gateway incluye 3 directivas predefinidas que se pueden utilizar.</span><span class="sxs-lookup"><span data-stu-id="1d568-111">Application gateway comes with 3 pre-defined policies that can be used.</span></span> <span data-ttu-id="1d568-112">El cmdlet `Get-AzureRmApplicationGatewaySslPredefinedPolicy` permite recuperar estas directivas.</span><span class="sxs-lookup"><span data-stu-id="1d568-112">The `Get-AzureRmApplicationGatewaySslPredefinedPolicy` cmdlet retrieves these policies.</span></span> <span data-ttu-id="1d568-113">Cada directiva tiene diferentes versiones de protocolo y conjuntos de cifrado habilitados.</span><span class="sxs-lookup"><span data-stu-id="1d568-113">Each policy has different protocol versions and cipher suites enabled.</span></span> <span data-ttu-id="1d568-114">Estas directivas predefinidas se pueden utilizar para configurar rápidamente una directiva SSL en Application Gateway.</span><span class="sxs-lookup"><span data-stu-id="1d568-114">These pre-defined policies can be used to quickly configure an SSL policy on your application gateway.</span></span> <span data-ttu-id="1d568-115">De forma predeterminada se selecciona **AppGwSslPolicy20170401** si no se ha definido ninguna directiva SSL específica.</span><span class="sxs-lookup"><span data-stu-id="1d568-115">By default **AppGwSslPolicy20170401** is selected if no specific SSL policy is defined.</span></span>
+<span data-ttu-id="b9e1f-111">Application Gateway incluye 3 directivas predefinidas que se pueden utilizar.</span><span class="sxs-lookup"><span data-stu-id="b9e1f-111">Application gateway comes with 3 pre-defined policies that can be used.</span></span> <span data-ttu-id="b9e1f-112">Hola `Get-AzureRmApplicationGatewaySslPredefinedPolicy` cmdlet recupera estas directivas.</span><span class="sxs-lookup"><span data-stu-id="b9e1f-112">hello `Get-AzureRmApplicationGatewaySslPredefinedPolicy` cmdlet retrieves these policies.</span></span> <span data-ttu-id="b9e1f-113">Cada directiva tiene diferentes versiones de protocolo y conjuntos de cifrado habilitados.</span><span class="sxs-lookup"><span data-stu-id="b9e1f-113">Each policy has different protocol versions and cipher suites enabled.</span></span> <span data-ttu-id="b9e1f-114">Se pueden usar estas directivas predefinidas tooquickly configurar una directiva de SSL en la puerta de enlace de la aplicación.</span><span class="sxs-lookup"><span data-stu-id="b9e1f-114">These pre-defined policies can be used tooquickly configure an SSL policy on your application gateway.</span></span> <span data-ttu-id="b9e1f-115">De forma predeterminada se selecciona **AppGwSslPolicy20170401** si no se ha definido ninguna directiva SSL específica.</span><span class="sxs-lookup"><span data-stu-id="b9e1f-115">By default **AppGwSslPolicy20170401** is selected if no specific SSL policy is defined.</span></span>
 
-<span data-ttu-id="1d568-116">A continuación se muestra un ejemplo de la ejecución de `Get-AzureRmApplicationGatewaySslPredefinedPolicy`.</span><span class="sxs-lookup"><span data-stu-id="1d568-116">The following is an example of running `Get-AzureRmApplicationGatewaySslPredefinedPolicy`.</span></span>
+<span data-ttu-id="b9e1f-116">Hello aquí te mostramos un ejemplo de ejecución `Get-AzureRmApplicationGatewaySslPredefinedPolicy`.</span><span class="sxs-lookup"><span data-stu-id="b9e1f-116">hello following is an example of running `Get-AzureRmApplicationGatewaySslPredefinedPolicy`.</span></span>
 
 ```
 Name: AppGwSslPolicy20150501
@@ -108,42 +108,42 @@ CipherSuites:
 ...
 ```
 
-## <a name="configure-a-custom-ssl-policy"></a><span data-ttu-id="1d568-117">Configuración de una directiva SSL personalizada</span><span class="sxs-lookup"><span data-stu-id="1d568-117">Configure a custom SSL policy</span></span>
+## <a name="configure-a-custom-ssl-policy"></a><span data-ttu-id="b9e1f-117">Configuración de una directiva SSL personalizada</span><span class="sxs-lookup"><span data-stu-id="b9e1f-117">Configure a custom SSL policy</span></span>
 
-<span data-ttu-id="1d568-118">En el ejemplo siguiente se establece una directiva SSL personalizada en una instancia de Application Gateway.</span><span class="sxs-lookup"><span data-stu-id="1d568-118">The following example sets a custom SSL policy on an application gateway.</span></span> <span data-ttu-id="1d568-119">Establece la versión mínima del protocolo en `TLSv1_1` y habilita los siguientes conjuntos de cifrado:</span><span class="sxs-lookup"><span data-stu-id="1d568-119">It sets the minimum protocol version to `TLSv1_1` and enables the following cipher suites:</span></span>
+<span data-ttu-id="b9e1f-118">Hola de ejemplo siguiente establece una directiva personalizada de SSL en una puerta de enlace de la aplicación.</span><span class="sxs-lookup"><span data-stu-id="b9e1f-118">hello following example sets a custom SSL policy on an application gateway.</span></span> <span data-ttu-id="b9e1f-119">Establece la versión de protocolo mínimo de Hola de demasiado`TLSv1_1` y habilita Hola siguiendo conjuntos de cifrado:</span><span class="sxs-lookup"><span data-stu-id="b9e1f-119">It sets hello minimum protocol version too`TLSv1_1` and enables hello following cipher suites:</span></span>
 
-* <span data-ttu-id="1d568-120">TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384</span><span class="sxs-lookup"><span data-stu-id="1d568-120">TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384</span></span>
-* <span data-ttu-id="1d568-121">TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256</span><span class="sxs-lookup"><span data-stu-id="1d568-121">TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256</span></span>
+* <span data-ttu-id="b9e1f-120">TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384</span><span class="sxs-lookup"><span data-stu-id="b9e1f-120">TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384</span></span>
+* <span data-ttu-id="b9e1f-121">TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256</span><span class="sxs-lookup"><span data-stu-id="b9e1f-121">TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256</span></span>
 
 > [!IMPORTANT]
-> <span data-ttu-id="1d568-122">Se debe seleccionar al menos un conjunto de cifrado de la siguiente lista al configurar una directiva SSL personalizada.</span><span class="sxs-lookup"><span data-stu-id="1d568-122">At least one cipher suite from the following list must be selected when configuring a custom SSL policy.</span></span> <span data-ttu-id="1d568-123">Application Gateway usa conjuntos de cifrado RSA SHA256 para la administración de back-end.</span><span class="sxs-lookup"><span data-stu-id="1d568-123">Application gateway uses RSA SHA256 cipher suites for backend management.</span></span>
-> * <span data-ttu-id="1d568-124">TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256</span><span class="sxs-lookup"><span data-stu-id="1d568-124">TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256</span></span> 
-> * <span data-ttu-id="1d568-125">TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256</span><span class="sxs-lookup"><span data-stu-id="1d568-125">TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256</span></span>
-> * <span data-ttu-id="1d568-126">TLS_DHE_RSA_WITH_AES_128_GCM_SHA256</span><span class="sxs-lookup"><span data-stu-id="1d568-126">TLS_DHE_RSA_WITH_AES_128_GCM_SHA256</span></span>
-> * <span data-ttu-id="1d568-127">TLS_RSA_WITH_AES_128_GCM_SHA256</span><span class="sxs-lookup"><span data-stu-id="1d568-127">TLS_RSA_WITH_AES_128_GCM_SHA256</span></span>
-> * <span data-ttu-id="1d568-128">TLS_RSA_WITH_AES_256_CBC_SHA256</span><span class="sxs-lookup"><span data-stu-id="1d568-128">TLS_RSA_WITH_AES_256_CBC_SHA256</span></span>
-> * <span data-ttu-id="1d568-129">TLS_RSA_WITH_AES_128_CBC_SHA256</span><span class="sxs-lookup"><span data-stu-id="1d568-129">TLS_RSA_WITH_AES_128_CBC_SHA256</span></span>
+> <span data-ttu-id="b9e1f-122">Conjunto de al menos un cifrado de hello lista siguiente debe seleccionarse al configurar una directiva personalizada de SSL.</span><span class="sxs-lookup"><span data-stu-id="b9e1f-122">At least one cipher suite from hello following list must be selected when configuring a custom SSL policy.</span></span> <span data-ttu-id="b9e1f-123">Application Gateway usa conjuntos de cifrado RSA SHA256 para la administración de back-end.</span><span class="sxs-lookup"><span data-stu-id="b9e1f-123">Application gateway uses RSA SHA256 cipher suites for backend management.</span></span>
+> * <span data-ttu-id="b9e1f-124">TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256</span><span class="sxs-lookup"><span data-stu-id="b9e1f-124">TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256</span></span> 
+> * <span data-ttu-id="b9e1f-125">TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256</span><span class="sxs-lookup"><span data-stu-id="b9e1f-125">TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256</span></span>
+> * <span data-ttu-id="b9e1f-126">TLS_DHE_RSA_WITH_AES_128_GCM_SHA256</span><span class="sxs-lookup"><span data-stu-id="b9e1f-126">TLS_DHE_RSA_WITH_AES_128_GCM_SHA256</span></span>
+> * <span data-ttu-id="b9e1f-127">TLS_RSA_WITH_AES_128_GCM_SHA256</span><span class="sxs-lookup"><span data-stu-id="b9e1f-127">TLS_RSA_WITH_AES_128_GCM_SHA256</span></span>
+> * <span data-ttu-id="b9e1f-128">TLS_RSA_WITH_AES_256_CBC_SHA256</span><span class="sxs-lookup"><span data-stu-id="b9e1f-128">TLS_RSA_WITH_AES_256_CBC_SHA256</span></span>
+> * <span data-ttu-id="b9e1f-129">TLS_RSA_WITH_AES_128_CBC_SHA256</span><span class="sxs-lookup"><span data-stu-id="b9e1f-129">TLS_RSA_WITH_AES_128_CBC_SHA256</span></span>
 
 ```powershell
 # get an application gateway resource
 $gw = Get-AzureRmApplicationGateway -Name AdatumAppGateway -ResourceGroup AdatumAppGatewayRG
 
-# set the SSL policy on the application gateway
+# set hello SSL policy on hello application gateway
 Set-AzureRmApplicationGatewaySslPolicy -ApplicationGateway $gw -PolicyType Custom -MinProtocolVersion TLSv1_1 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256"
 ```
 
-## <a name="create-an-application-gateway-with-a-pre-defined-ssl-policy"></a><span data-ttu-id="1d568-130">Creación de una puerta de enlace de aplicaciones con una directiva SSL predefinida</span><span class="sxs-lookup"><span data-stu-id="1d568-130">Create an application gateway with a pre-defined SSL policy</span></span>
+## <a name="create-an-application-gateway-with-a-pre-defined-ssl-policy"></a><span data-ttu-id="b9e1f-130">Creación de una puerta de enlace de aplicaciones con una directiva SSL predefinida</span><span class="sxs-lookup"><span data-stu-id="b9e1f-130">Create an application gateway with a pre-defined SSL policy</span></span>
 
-<span data-ttu-id="1d568-131">En el ejemplo siguiente se crea una nueva puerta de enlace de aplicaciones con una directiva SSL predefinida.</span><span class="sxs-lookup"><span data-stu-id="1d568-131">The following example creates a new application gateway with a pre-defined SSL policy.</span></span>
+<span data-ttu-id="b9e1f-131">Hello en el ejemplo siguiente se crea una nueva puerta de enlace de la aplicación con una directiva predefinida de SSL.</span><span class="sxs-lookup"><span data-stu-id="b9e1f-131">hello following example creates a new application gateway with a pre-defined SSL policy.</span></span>
 
 ```powershell
 # Create a resource group
 $rg = New-AzureRmResourceGroup -Name ContosoRG -Location "East US"
-# Create a subnet for the application gateway
+# Create a subnet for hello application gateway
 $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.0.0.0/24
 # Create a virtual network with a 10.0.0.0/16 address space
 $vnet = New-AzureRmVirtualNetwork -Name appgwvnet -ResourceGroupName $rg.ResourceGroupName -Location "East US" -AddressPrefix 10.0.0.0/16 -Subnet $subnet
-# Retrieve the subnet object for later use
+# Retrieve hello subnet object for later use
 $subnet = $vnet.Subnets[0]
 # Create a public IP address
 $publicip = New-AzureRmPublicIpAddress -ResourceGroupName $rg.ResourceGroupName -name publicIP01 -location "East US" -AllocationMethod Dynamic
@@ -151,26 +151,26 @@ $publicip = New-AzureRmPublicIpAddress -ResourceGroupName $rg.ResourceGroupName 
 $gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet
 # Create a backend pool for backend web servers
 $pool = New-AzureRmApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 134.170.185.46, 134.170.188.221,134.170.185.50
-# Define the backend http settings to be used.
+# Define hello backend http settings toobe used.
 $poolSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name poolsetting01 -Port 80 -Protocol Http -CookieBasedAffinity Enabled
 # Create a new port for SSL
 $fp = New-AzureRmApplicationGatewayFrontendPort -Name frontendport01  -Port 443
 # Upload an existing pfx certificate for SSL offload
 $cert = New-AzureRmApplicationGatewaySslCertificate -Name cert01 -CertificateFile C:\folder\contoso.pfx -Password "P@ssw0rd"
-# Create a frontend IP configuration for the public IP address
+# Create a frontend IP configuration for hello public IP address
 $fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name fipconfig01 -PublicIPAddress $publicip
-# Create a new listener with the certificate, port, and frontend ip.
+# Create a new listener with hello certificate, port, and frontend ip.
 $listener = New-AzureRmApplicationGatewayHttpListener -Name listener01  -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp -SslCertificate $cert
 # Create a new rule for backend traffic routing
 $rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name rule01 -RuleType Basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
-# Define the size of the application gateway
+# Define hello size of hello application gateway
 $sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
-# Configure the SSL policy to use a different pre-defined policy
+# Configure hello SSL policy toouse a different pre-defined policy
 $policy = New-AzureRmApplicationGatewaySslPolicy -PolicyType Predefined -PolicyName AppGwSslPolicy20170401S
-# Create the application gateway.
+# Create hello application gateway.
 $appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName $rg.ResourceGroupName -Location "East US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SslCertificates $cert -SslPolicy $policy
 ```
 
-## <a name="next-steps"></a><span data-ttu-id="1d568-132">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="1d568-132">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="b9e1f-132">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="b9e1f-132">Next steps</span></span>
 
-<span data-ttu-id="1d568-133">Visite [Introducción a la redirección de Application Gateway](application-gateway-redirect-overview.md) para aprender a redirigir el tráfico HTTP a un punto de conexión HTTPS.</span><span class="sxs-lookup"><span data-stu-id="1d568-133">Visit [Application Gateway redirect overview](application-gateway-redirect-overview.md) to learn how to redirect HTTP traffic to a HTTPS endpoint.</span></span>
+<span data-ttu-id="b9e1f-133">Visite [introducción de redirección de puerta de enlace de aplicaciones](application-gateway-redirect-overview.md) toolearn cómo tooredirect HTTP tráfico tooa extremo HTTPS.</span><span class="sxs-lookup"><span data-stu-id="b9e1f-133">Visit [Application Gateway redirect overview](application-gateway-redirect-overview.md) toolearn how tooredirect HTTP traffic tooa HTTPS endpoint.</span></span>

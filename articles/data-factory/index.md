@@ -1,6 +1,6 @@
 ---
-title: "Documentación sobre Azure Data Factory: tutoriales y referencia de API | Microsoft Docs"
-description: "Aprenda a usar Data Factory para configurar canalizaciones de datos automatizadas entre recursos locales y en la nube para mover y procesar datos para el análisis."
+title: "aaaAzure documentación del generador de datos - tutoriales, referencia de API | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toouse factoría de datos tooset datos automatizadas canalizaciones tooand del entorno local y los orígenes de datos de pedidos toomove y proceso para el análisis en la nube."
 services: data-factory
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: bf280db3ab7f9a4b3742dafcdbb0fb7c79cc963c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2b785093780a5eb5c23924a9c3c3f5d8675f0f96
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-data-factory-documentation"></a>Documentación de Azure Data Factory
 
-Aprenda a usar Data Factory, un servicio de integración de datos en la nube, para crear servicios de almacenamiento, traslado y procesamiento de datos en canalizaciones de datos automatizadas. En los tutoriales y otra documentación, se muestra cómo configurar y administrar canalizaciones de datos, además de cómo mover y transformar datos para el análisis.
+Obtenga información acerca de cómo toouse factoría de datos, un servicio de integración de datos en la nube, almacenamiento de datos de toocompose, movimiento y procesamiento de servicios en las canalizaciones de datos automatizado. Tutoriales y otra documentación mostrarle cómo tooset una copia de seguridad y administrar las canalizaciones de datos, así como mover y transformar datos para el análisis.
 
 <ul class="panelContent cardsFTitle">
    <li>

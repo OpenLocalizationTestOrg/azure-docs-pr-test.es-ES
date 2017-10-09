@@ -1,6 +1,6 @@
 ---
-title: Carga de archivos VHD en Azure DevTest Labs mediante AzCopy | Microsoft Docs
-description: Carga de archivos VHD en la cuenta de almacenamiento del laboratorio mediante AzCopy
+title: aaaUpload VHD archivo laboratorios de desarrollo y pruebas de tooAzure con AzCopy | Documentos de Microsoft
+description: Cargar la cuenta de almacenamiento del disco duro virtual archivo toolab con AzCopy
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: tomarcher
@@ -14,71 +14,71 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2017
 ms.author: tarcher
-ms.openlocfilehash: a4f43354740d9f17570932b0b9c753f46d67dc33
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 14f9e933b0bd27451f6bcb94841ecc381213e578
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="upload-vhd-file-to-labs-storage-account-using-azcopy"></a><span data-ttu-id="e9882-103">Carga de archivos VHD en la cuenta de almacenamiento del laboratorio mediante AzCopy</span><span class="sxs-lookup"><span data-stu-id="e9882-103">Upload VHD file to lab's storage account using AzCopy</span></span>
+# <a name="upload-vhd-file-toolabs-storage-account-using-azcopy"></a><span data-ttu-id="7be21-103">Cargar la cuenta de almacenamiento del disco duro virtual archivo toolab con AzCopy</span><span class="sxs-lookup"><span data-stu-id="7be21-103">Upload VHD file toolab's storage account using AzCopy</span></span>
 
 [!INCLUDE [devtest-lab-upload-vhd-selector](../../includes/devtest-lab-upload-vhd-selector.md)]
 
-<span data-ttu-id="e9882-104">En Azure DevTest Labs, se pueden usar archivos VHD para crear imágenes personalizadas, que se usan para aprovisionar máquinas virtuales.</span><span class="sxs-lookup"><span data-stu-id="e9882-104">In Azure DevTest Labs, VHD files can be used to create custom images, which are used to provision virtual machines.</span></span> <span data-ttu-id="e9882-105">Los siguientes pasos le guían en el uso de la utilidad de línea de comandos AzCopy para cargar un archivo VHD en una cuenta de almacenamiento del laboratorio.</span><span class="sxs-lookup"><span data-stu-id="e9882-105">The following steps walk you through using the AzCopy command-line utility to upload a VHD file to a lab's storage account.</span></span> <span data-ttu-id="e9882-106">Cuando haya cargado el archivo VHD, en la sección de [pasos siguientes](#next-steps) se muestran algunos artículos que ilustran cómo crear una imagen personalizada a partir del archivo VHD cargado.</span><span class="sxs-lookup"><span data-stu-id="e9882-106">Once you've uploaded your VHD file, the [Next steps section](#next-steps) lists some articles that illustrate how to create a custom image from the uploaded VHD file.</span></span> <span data-ttu-id="e9882-107">Para más información sobre discos y discos duros virtuales en Azure, consulte [Acerca de los discos y los discos duros virtuales para máquinas virtuales](../virtual-machines/linux/about-disks-and-vhds.md).</span><span class="sxs-lookup"><span data-stu-id="e9882-107">For more information about disks and VHDs in Azure, see [About disks and VHDs for virtual machines](../virtual-machines/linux/about-disks-and-vhds.md)</span></span>
+<span data-ttu-id="7be21-104">En los laboratorios de desarrollo y pruebas de Azure, archivos de disco duro virtual pueden ser toocreate usa imágenes personalizadas, que son máquinas virtuales de tooprovision usado.</span><span class="sxs-lookup"><span data-stu-id="7be21-104">In Azure DevTest Labs, VHD files can be used toocreate custom images, which are used tooprovision virtual machines.</span></span> <span data-ttu-id="7be21-105">Hola pasos orientará sobre el uso de tooupload de utilidad de línea de comandos de AzCopy Hola la cuenta de almacenamiento del laboratorio tooa de archivo de disco duro virtual.</span><span class="sxs-lookup"><span data-stu-id="7be21-105">hello following steps walk you through using hello AzCopy command-line utility tooupload a VHD file tooa lab's storage account.</span></span> <span data-ttu-id="7be21-106">Una vez que haya cargado el archivo VHD, Hola [pasos siguientes sección](#next-steps) enumera algunos artículos que ilustran cómo toocreate una imagen personalizada de hello carga archivo de disco duro virtual.</span><span class="sxs-lookup"><span data-stu-id="7be21-106">Once you've uploaded your VHD file, hello [Next steps section](#next-steps) lists some articles that illustrate how toocreate a custom image from hello uploaded VHD file.</span></span> <span data-ttu-id="7be21-107">Para más información sobre discos y discos duros virtuales en Azure, consulte [Acerca de los discos y los discos duros virtuales para máquinas virtuales](../virtual-machines/linux/about-disks-and-vhds.md).</span><span class="sxs-lookup"><span data-stu-id="7be21-107">For more information about disks and VHDs in Azure, see [About disks and VHDs for virtual machines](../virtual-machines/linux/about-disks-and-vhds.md)</span></span>
 
 > [!NOTE] 
 >  
-> <span data-ttu-id="e9882-108">AzCopy es una utilidad de línea de comandos solo de Windows.</span><span class="sxs-lookup"><span data-stu-id="e9882-108">AzCopy is a Windows-only command-line utility.</span></span>
+> <span data-ttu-id="7be21-108">AzCopy es una utilidad de línea de comandos solo de Windows.</span><span class="sxs-lookup"><span data-stu-id="7be21-108">AzCopy is a Windows-only command-line utility.</span></span>
 
-## <a name="step-by-step-instructions"></a><span data-ttu-id="e9882-109">Instrucciones paso a paso</span><span class="sxs-lookup"><span data-stu-id="e9882-109">Step-by-step instructions</span></span>
+## <a name="step-by-step-instructions"></a><span data-ttu-id="7be21-109">Instrucciones paso a paso</span><span class="sxs-lookup"><span data-stu-id="7be21-109">Step-by-step instructions</span></span>
 
-<span data-ttu-id="e9882-110">Los siguientes pasos le guían en la carga de un archivo VHD en Azure DevTest Labs mediante [AzCopy](http://aka.ms/downloadazcopy).</span><span class="sxs-lookup"><span data-stu-id="e9882-110">The following steps walk you through uploading a VHD file to Azure DevTest Labs using [AzCopy](http://aka.ms/downloadazcopy).</span></span> 
+<span data-ttu-id="7be21-110">Hola después de recorrido de pasos a través de la carga de un disco duro virtual archivo laboratorios de desarrollo y pruebas de tooAzure con [AzCopy](http://aka.ms/downloadazcopy).</span><span class="sxs-lookup"><span data-stu-id="7be21-110">hello following steps walk you through uploading a VHD file tooAzure DevTest Labs using [AzCopy](http://aka.ms/downloadazcopy).</span></span> 
 
-1. <span data-ttu-id="e9882-111">Obtenga el nombre de la cuenta de almacenamiento del laboratorio mediante el portal de Azure:</span><span class="sxs-lookup"><span data-stu-id="e9882-111">Get the name of the lab's storage account using the Azure portal:</span></span>
+1. <span data-ttu-id="7be21-111">Obtener nombre de Hola de cuenta de almacenamiento del laboratorio de hello mediante Hola portal de Azure:</span><span class="sxs-lookup"><span data-stu-id="7be21-111">Get hello name of hello lab's storage account using hello Azure portal:</span></span>
 
-1. <span data-ttu-id="e9882-112">Inicie sesión en el [Portal de Azure](http://go.microsoft.com/fwlink/p/?LinkID=525040).</span><span class="sxs-lookup"><span data-stu-id="e9882-112">Sign in to the [Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).</span></span>
+1. <span data-ttu-id="7be21-112">Inicie sesión en toohello [portal de Azure](http://go.microsoft.com/fwlink/p/?LinkID=525040).</span><span class="sxs-lookup"><span data-stu-id="7be21-112">Sign in toohello [Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).</span></span>
 
-1. <span data-ttu-id="e9882-113">Seleccione **Más servicios** y, luego, **DevTest Labs** en la lista.</span><span class="sxs-lookup"><span data-stu-id="e9882-113">Select **More services**, and then select **DevTest Labs** from the list.</span></span>
+1. <span data-ttu-id="7be21-113">Seleccione **más servicios**y, a continuación, seleccione **laboratorios de desarrollo y pruebas** de lista de Hola.</span><span class="sxs-lookup"><span data-stu-id="7be21-113">Select **More services**, and then select **DevTest Labs** from hello list.</span></span>
 
-1. <span data-ttu-id="e9882-114">En la lista de laboratorios, seleccione el laboratorio que desee.</span><span class="sxs-lookup"><span data-stu-id="e9882-114">From the list of labs, select the desired lab.</span></span>  
+1. <span data-ttu-id="7be21-114">En lista de Hola de laboratorios, seleccione laboratorio deseado Hola.</span><span class="sxs-lookup"><span data-stu-id="7be21-114">From hello list of labs, select hello desired lab.</span></span>  
 
-1. <span data-ttu-id="e9882-115">En la hoja del laboratorio, seleccione **Configuración**.</span><span class="sxs-lookup"><span data-stu-id="e9882-115">On the lab's blade, select **Configuration**.</span></span> 
+1. <span data-ttu-id="7be21-115">En la hoja del laboratorio de hello, seleccione **configuración**.</span><span class="sxs-lookup"><span data-stu-id="7be21-115">On hello lab's blade, select **Configuration**.</span></span> 
 
-1. <span data-ttu-id="e9882-116">En la hoja **Configuración** del laboratorio, seleccione **Custom images (VHDs)** (Imágenes personalizadas [VHD]).</span><span class="sxs-lookup"><span data-stu-id="e9882-116">On the lab **Configuration** blade, select **Custom images (VHDs)**.</span></span>
+1. <span data-ttu-id="7be21-116">En el laboratorio de hello **configuración** hoja, seleccione **imágenes personalizadas (VHD)**.</span><span class="sxs-lookup"><span data-stu-id="7be21-116">On hello lab **Configuration** blade, select **Custom images (VHDs)**.</span></span>
 
-1. <span data-ttu-id="e9882-117">En la hoja **Custom images** (Imágenes personalizadas), seleccione **+Agregar**.</span><span class="sxs-lookup"><span data-stu-id="e9882-117">On the **Custom images** blade, Select **+Add**.</span></span> 
+1. <span data-ttu-id="7be21-117">En hello **imágenes personalizadas** hoja, seleccione **+ agregar**.</span><span class="sxs-lookup"><span data-stu-id="7be21-117">On hello **Custom images** blade, Select **+Add**.</span></span> 
 
-1. <span data-ttu-id="e9882-118">En la hoja **Custom images** (Imágenes personalizadas), seleccione **+Agregar**.</span><span class="sxs-lookup"><span data-stu-id="e9882-118">On the **Custom image** blade, select **VHD**.</span></span>
+1. <span data-ttu-id="7be21-118">En hello **imagen personalizada** hoja, seleccione **VHD**.</span><span class="sxs-lookup"><span data-stu-id="7be21-118">On hello **Custom image** blade, select **VHD**.</span></span>
 
-1. <span data-ttu-id="e9882-119">En la hoja **VHD**, seleccione **Upload a VHD using PowerShell** (Cargar un VHD mediante PowerShell).</span><span class="sxs-lookup"><span data-stu-id="e9882-119">On the **VHD** blade, select **Upload a VHD using PowerShell**.</span></span>
+1. <span data-ttu-id="7be21-119">En hello **VHD** hoja, seleccione **cargar un VHD con PowerShell**.</span><span class="sxs-lookup"><span data-stu-id="7be21-119">On hello **VHD** blade, select **Upload a VHD using PowerShell**.</span></span>
 
     ![Carga del VHD mediante PowerShell](./media/devtest-lab-upload-vhd-using-azcopy/upload-image-using-psh.png)
 
-1. <span data-ttu-id="e9882-121">La hoja **Upload an image using PowerShell** (Cargar una imagen mediante PowerShell) muestra una llamada al cmdlet **Add-AzureVhd**.</span><span class="sxs-lookup"><span data-stu-id="e9882-121">The **Upload an image using PowerShell** blade displays a call to the **Add-AzureVhd** cmdlet.</span></span> <span data-ttu-id="e9882-122">El primer parámetro (*Destination*) contiene el URI de un contenedor de blobs (*uploads*) en el siguiente formato:</span><span class="sxs-lookup"><span data-stu-id="e9882-122">The first parameter (*Destination*) contains the URI for a blob container (*uploads*) in the following format:</span></span>
+1. <span data-ttu-id="7be21-121">Hola **cargar una imagen con PowerShell** hoja muestra una llamada toohello **Add-AzureVhd** cmdlet.</span><span class="sxs-lookup"><span data-stu-id="7be21-121">hello **Upload an image using PowerShell** blade displays a call toohello **Add-AzureVhd** cmdlet.</span></span> <span data-ttu-id="7be21-122">Hola primer parámetro (*destino*) contiene Hola URI para un contenedor de blobs (*carga*) Hola siguiendo el formato:</span><span class="sxs-lookup"><span data-stu-id="7be21-122">hello first parameter (*Destination*) contains hello URI for a blob container (*uploads*) in hello following format:</span></span>
 
     ```
     https://<STORAGE-ACCOUNT-NAME>.blob.core.windows.net/uploads/...
     ``` 
 
-1. <span data-ttu-id="e9882-123">Anote el URI completo tal como se usa en pasos posteriores.</span><span class="sxs-lookup"><span data-stu-id="e9882-123">Make note of the full URI as it is used in later steps.</span></span>
+1. <span data-ttu-id="7be21-123">Tome nota de hello completa de URI como se utiliza en pasos posteriores.</span><span class="sxs-lookup"><span data-stu-id="7be21-123">Make note of hello full URI as it is used in later steps.</span></span>
 
-1. <span data-ttu-id="e9882-124">Carga del archivo VHD mediante AzCopy:</span><span class="sxs-lookup"><span data-stu-id="e9882-124">Upload the VHD file using AzCopy:</span></span>
+1. <span data-ttu-id="7be21-124">Cargar archivo de disco duro virtual de hello mediante AzCopy:</span><span class="sxs-lookup"><span data-stu-id="7be21-124">Upload hello VHD file using AzCopy:</span></span>
  
-1. <span data-ttu-id="e9882-125">[Descargue e instale la versión más reciente de AzCopy](http://aka.ms/downloadazcopy).</span><span class="sxs-lookup"><span data-stu-id="e9882-125">[Download and install the latest version of AzCopy](http://aka.ms/downloadazcopy).</span></span>
+1. <span data-ttu-id="7be21-125">[Descargue e instale la versión más reciente de Hola de AzCopy](http://aka.ms/downloadazcopy).</span><span class="sxs-lookup"><span data-stu-id="7be21-125">[Download and install hello latest version of AzCopy](http://aka.ms/downloadazcopy).</span></span>
 
-1. <span data-ttu-id="e9882-126">Abra una ventana de comandos y vaya al directorio de instalación de AzCopy.</span><span class="sxs-lookup"><span data-stu-id="e9882-126">Open a command window and navigate to the AzCopy installation directory.</span></span> <span data-ttu-id="e9882-127">Opcionalmente, puede agregar la ubicación de instalación de AzCopy a la ruta de acceso del sistema.</span><span class="sxs-lookup"><span data-stu-id="e9882-127">Optionally, you can add the AzCopy installation location to your system path.</span></span> <span data-ttu-id="e9882-128">De forma predeterminada, AzCopy se instala en el directorio siguiente:</span><span class="sxs-lookup"><span data-stu-id="e9882-128">By default, AzCopy is installed to the following directory:</span></span>
+1. <span data-ttu-id="7be21-126">Abra una ventana de comandos y desplácese toohello directorio de instalación de AzCopy.</span><span class="sxs-lookup"><span data-stu-id="7be21-126">Open a command window and navigate toohello AzCopy installation directory.</span></span> <span data-ttu-id="7be21-127">Si lo desea, puede agregar hello AzCopy tooyour sistema ruta de instalación.</span><span class="sxs-lookup"><span data-stu-id="7be21-127">Optionally, you can add hello AzCopy installation location tooyour system path.</span></span> <span data-ttu-id="7be21-128">De forma predeterminada, AzCopy está instalado toohello siguiente directorio:</span><span class="sxs-lookup"><span data-stu-id="7be21-128">By default, AzCopy is installed toohello following directory:</span></span>
 
     ```command-line
     %ProgramFiles(x86)%\Microsoft SDKs\Azure\AzCopy
     ```
 
-1. <span data-ttu-id="e9882-129">Mediante la clave de la cuenta de almacenamiento y el URI del contenedor de blobs, ejecute el siguiente comando en el símbolo del sistema.</span><span class="sxs-lookup"><span data-stu-id="e9882-129">Using the storage account key and blob container URI, run the following command at the command prompt.</span></span> <span data-ttu-id="e9882-130">El valor *vhdFileName* debe incluirse entre comillas.</span><span class="sxs-lookup"><span data-stu-id="e9882-130">The *vhdFileName* value needs to be in quotes.</span></span> <span data-ttu-id="e9882-131">El proceso de cargar un archivo VHD puede ser largo en función de su tamaño y de la velocidad de conexión.</span><span class="sxs-lookup"><span data-stu-id="e9882-131">The process of uploading a VHD file can be lengthy depending on the size of the VHD file and your connection speed.</span></span>   
+1. <span data-ttu-id="7be21-129">Ejecute hello siguiente comando en el símbolo del sistema de hello con hello cuenta clave y el blob en contenedor de almacenamiento de URI.</span><span class="sxs-lookup"><span data-stu-id="7be21-129">Using hello storage account key and blob container URI, run hello following command at hello command prompt.</span></span> <span data-ttu-id="7be21-130">Hola *vhdFileName* valor necesita toobe entre comillas.</span><span class="sxs-lookup"><span data-stu-id="7be21-130">hello *vhdFileName* value needs toobe in quotes.</span></span> <span data-ttu-id="7be21-131">proceso de Hola de cargar un archivo de disco duro virtual puede ser larga según el tamaño de hello del archivo de disco duro virtual de hello y la velocidad de conexión.</span><span class="sxs-lookup"><span data-stu-id="7be21-131">hello process of uploading a VHD file can be lengthy depending on hello size of hello VHD file and your connection speed.</span></span>   
 
     ```command-line
     AzCopy /Source:<sourceDirectory> /Dest:<blobContainerUri> /DestKey:<storageAccountKey> /Pattern:"<vhdFileName>" /BlobType:page
     ```
 
-## <a name="next-steps"></a><span data-ttu-id="e9882-132">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="e9882-132">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="7be21-132">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="7be21-132">Next steps</span></span>
 
-- [<span data-ttu-id="e9882-133">Creación de una imagen personalizada en Azure DevTest Labs a partir de un archivo VHD mediante el portal de Azure</span><span class="sxs-lookup"><span data-stu-id="e9882-133">Create a custom image in Azure DevTest Labs from a VHD file using the Azure portal</span></span>](devtest-lab-create-template.md)
-- [<span data-ttu-id="e9882-134">Creación de una imagen personalizada en Azure DevTest Labs a partir de un archivo VHD mediante PowerShell</span><span class="sxs-lookup"><span data-stu-id="e9882-134">Create a custom image in Azure DevTest Labs from a VHD file using PowerShell</span></span>](devtest-lab-create-custom-image-from-vhd-using-powershell.md)
+- [<span data-ttu-id="7be21-133">Crear una imagen personalizada en los laboratorios de desarrollo y pruebas de Azure desde un archivo de disco duro virtual mediante Hola portal de Azure</span><span class="sxs-lookup"><span data-stu-id="7be21-133">Create a custom image in Azure DevTest Labs from a VHD file using hello Azure portal</span></span>](devtest-lab-create-template.md)
+- [<span data-ttu-id="7be21-134">Creación de una imagen personalizada en Azure DevTest Labs a partir de un archivo VHD mediante PowerShell</span><span class="sxs-lookup"><span data-stu-id="7be21-134">Create a custom image in Azure DevTest Labs from a VHD file using PowerShell</span></span>](devtest-lab-create-custom-image-from-vhd-using-powershell.md)

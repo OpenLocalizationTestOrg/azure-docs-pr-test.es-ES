@@ -1,7 +1,7 @@
 ---
 featureFlags: usabilla
-title: "Conexión de Raspberry Pi (Node) a Azure IoT: Lección 1: Implementación de la aplicación | Microsoft Docs"
-description: "Clone la aplicación Node.js de ejemplo de GitHub y use Gulp para implementar esta aplicación en la placa de Raspberry Pi 3. Esta aplicación de ejemplo hace parpadear el LED conectado a la placa cada dos segundos."
+title: "Conectar frambuesa Pi (nodo) tooAzure IoT - lección 1: implementar la aplicación | Documentos de Microsoft"
+description: "Clonar Node.js aplicación de ejemplo de Hola desde GitHub y gulp toodeploy este panel de tooyour frambuesa Pi 3 de la aplicación. Esta aplicación de ejemplo parpadea Hola LED conectado toohello panel cada dos segundos."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -18,54 +18,54 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 8b73000c166950172c07b8e188025dc9da5bc011
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9732df3009b8342d4872fe2318a975a6251e772b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-and-deploy-the-blink-application"></a><span data-ttu-id="85dd8-105">Creación e implementación de la aplicación de intermitencia</span><span class="sxs-lookup"><span data-stu-id="85dd8-105">Create and deploy the blink application</span></span>
-## <a name="what-you-will-do"></a><span data-ttu-id="85dd8-106">Lo que hará</span><span class="sxs-lookup"><span data-stu-id="85dd8-106">What you will do</span></span>
-<span data-ttu-id="85dd8-107">Clone la aplicación de Node.js de ejemplo de GitHub y use la herramienta Gulp para implementar la aplicación de ejemplo en Raspberry Pi 3.</span><span class="sxs-lookup"><span data-stu-id="85dd8-107">Clone the sample Node.js application from GitHub and use the gulp tool to deploy the sample application to your Raspberry Pi 3.</span></span> <span data-ttu-id="85dd8-108">La aplicación de ejemplo hace parpadear el LED conectado a la placa cada dos segundos.</span><span class="sxs-lookup"><span data-stu-id="85dd8-108">The sample application blinks the LED connected to the board every two seconds.</span></span> <span data-ttu-id="85dd8-109">Si tiene problemas, busque soluciones en la [página de solución de problemas](iot-hub-raspberry-pi-kit-node-troubleshooting.md).</span><span class="sxs-lookup"><span data-stu-id="85dd8-109">If you have any problems, look for solutions on the [troubleshooting page](iot-hub-raspberry-pi-kit-node-troubleshooting.md).</span></span>
+# <a name="create-and-deploy-hello-blink-application"></a><span data-ttu-id="a58b2-105">Crear e implementar la aplicación de hello parpadeo</span><span class="sxs-lookup"><span data-stu-id="a58b2-105">Create and deploy hello blink application</span></span>
+## <a name="what-you-will-do"></a><span data-ttu-id="a58b2-106">Lo que hará</span><span class="sxs-lookup"><span data-stu-id="a58b2-106">What you will do</span></span>
+<span data-ttu-id="a58b2-107">Clonar Node.js aplicación de ejemplo de Hola desde GitHub y use hello gulp herramienta toodeploy Hola ejemplo aplicación tooyour frambuesa Pi 3.</span><span class="sxs-lookup"><span data-stu-id="a58b2-107">Clone hello sample Node.js application from GitHub and use hello gulp tool toodeploy hello sample application tooyour Raspberry Pi 3.</span></span> <span data-ttu-id="a58b2-108">aplicación de ejemplo de Hola parpadea Hola LED conectado toohello panel cada dos segundos.</span><span class="sxs-lookup"><span data-stu-id="a58b2-108">hello sample application blinks hello LED connected toohello board every two seconds.</span></span> <span data-ttu-id="a58b2-109">Si tiene problemas, buscar soluciones en hello [página solución de problemas](iot-hub-raspberry-pi-kit-node-troubleshooting.md).</span><span class="sxs-lookup"><span data-stu-id="a58b2-109">If you have any problems, look for solutions on hello [troubleshooting page](iot-hub-raspberry-pi-kit-node-troubleshooting.md).</span></span>
 
-## <a name="what-you-will-learn"></a><span data-ttu-id="85dd8-110">Lo qué aprenderá</span><span class="sxs-lookup"><span data-stu-id="85dd8-110">What you will learn</span></span>
-<span data-ttu-id="85dd8-111">En este artículo, aprenderá lo siguiente:</span><span class="sxs-lookup"><span data-stu-id="85dd8-111">In this article, you will learn:</span></span>
+## <a name="what-you-will-learn"></a><span data-ttu-id="a58b2-110">Lo qué aprenderá</span><span class="sxs-lookup"><span data-stu-id="a58b2-110">What you will learn</span></span>
+<span data-ttu-id="a58b2-111">En este artículo, aprenderá lo siguiente:</span><span class="sxs-lookup"><span data-stu-id="a58b2-111">In this article, you will learn:</span></span>
 
-* <span data-ttu-id="85dd8-112">Cómo utilizar la herramienta `device-discover-cli` para recuperar la información de red de Pi</span><span class="sxs-lookup"><span data-stu-id="85dd8-112">How to use the `device-discover-cli` tool to retrieve networking information about Pi.</span></span>
-* <span data-ttu-id="85dd8-113">Cómo implementar y ejecutar la aplicación de ejemplo en Pi</span><span class="sxs-lookup"><span data-stu-id="85dd8-113">How to deploy and run the sample application on Pi.</span></span>
-* <span data-ttu-id="85dd8-114">Cómo implementar y depurar aplicaciones que se ejecutan de forma remota en Pi</span><span class="sxs-lookup"><span data-stu-id="85dd8-114">How to deploy and debug applications running remotely on Pi.</span></span>
+* <span data-ttu-id="a58b2-112">¿Cómo toouse hello `device-discover-cli` tooretrieve de herramienta de la red sobre Pi.</span><span class="sxs-lookup"><span data-stu-id="a58b2-112">How toouse hello `device-discover-cli` tool tooretrieve networking information about Pi.</span></span>
+* <span data-ttu-id="a58b2-113">La ejecución hello y toodeploy aplicación sobre Pi de ejemplo.</span><span class="sxs-lookup"><span data-stu-id="a58b2-113">How toodeploy and run hello sample application on Pi.</span></span>
+* <span data-ttu-id="a58b2-114">¿Cómo toodeploy y depurar las aplicaciones ejecutando de forma remota en Pi.</span><span class="sxs-lookup"><span data-stu-id="a58b2-114">How toodeploy and debug applications running remotely on Pi.</span></span>
 
-## <a name="what-you-need"></a><span data-ttu-id="85dd8-115">Lo que necesita</span><span class="sxs-lookup"><span data-stu-id="85dd8-115">What you need</span></span>
-<span data-ttu-id="85dd8-116">Debe haber completado correctamente las siguientes operaciones:</span><span class="sxs-lookup"><span data-stu-id="85dd8-116">You must have successfully completed the following operations:</span></span>
+## <a name="what-you-need"></a><span data-ttu-id="a58b2-115">Lo que necesita</span><span class="sxs-lookup"><span data-stu-id="a58b2-115">What you need</span></span>
+<span data-ttu-id="a58b2-116">Debe haber completado correctamente hello las siguientes operaciones:</span><span class="sxs-lookup"><span data-stu-id="a58b2-116">You must have successfully completed hello following operations:</span></span>
 
-* [<span data-ttu-id="85dd8-117">Configuración del dispositivo</span><span class="sxs-lookup"><span data-stu-id="85dd8-117">Configure your device</span></span>](iot-hub-raspberry-pi-kit-node-lesson1-configure-your-device.md)
-* [<span data-ttu-id="85dd8-118">Obtener las herramientas</span><span class="sxs-lookup"><span data-stu-id="85dd8-118">Get the tools</span></span>](iot-hub-raspberry-pi-kit-node-lesson1-get-the-tools-win32.md)
+* [<span data-ttu-id="a58b2-117">Configuración del dispositivo</span><span class="sxs-lookup"><span data-stu-id="a58b2-117">Configure your device</span></span>](iot-hub-raspberry-pi-kit-node-lesson1-configure-your-device.md)
+* [<span data-ttu-id="a58b2-118">Obtener herramientas de Hola</span><span class="sxs-lookup"><span data-stu-id="a58b2-118">Get hello tools</span></span>](iot-hub-raspberry-pi-kit-node-lesson1-get-the-tools-win32.md)
 
-## <a name="obtain-the-ip-address-and-host-name-of-pi"></a><span data-ttu-id="85dd8-119">Obtención de la dirección IP y el nombre de host de Pi</span><span class="sxs-lookup"><span data-stu-id="85dd8-119">Obtain the IP address and host name of Pi</span></span>
-<span data-ttu-id="85dd8-120">Abra un símbolo del sistema en Windows o una ventana de terminal de Mac OS o Ubuntu y, después, ejecute el siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="85dd8-120">Open a command prompt in Windows or a terminal in macOS or Ubuntu, and then run the following command:</span></span>
+## <a name="obtain-hello-ip-address-and-host-name-of-pi"></a><span data-ttu-id="a58b2-119">Obtener nombre de host y dirección IP de Hola de Pi</span><span class="sxs-lookup"><span data-stu-id="a58b2-119">Obtain hello IP address and host name of Pi</span></span>
+<span data-ttu-id="a58b2-120">Abra un símbolo del sistema en Windows o un terminal de Mac OS o Ubuntu y, a continuación, ejecute el siguiente comando de hello:</span><span class="sxs-lookup"><span data-stu-id="a58b2-120">Open a command prompt in Windows or a terminal in macOS or Ubuntu, and then run hello following command:</span></span>
 
 ```bash
 devdisco list --eth
 ```
 
-<span data-ttu-id="85dd8-121">Debería ver una salida similar a la siguiente:</span><span class="sxs-lookup"><span data-stu-id="85dd8-121">You should see an output that is similar to the following:</span></span>
+<span data-ttu-id="a58b2-121">Debería ver un resultado similar siguiente toohello:</span><span class="sxs-lookup"><span data-stu-id="a58b2-121">You should see an output that is similar toohello following:</span></span>
 
 ![Detección de dispositivos](media/iot-hub-raspberry-pi-lessons/lesson1/device_discovery.png)
 
-<span data-ttu-id="85dd8-123">Tome nota de los valores de `IP address` y `hostname` de Pi.</span><span class="sxs-lookup"><span data-stu-id="85dd8-123">Take note of the `IP address` and `hostname` of Pi.</span></span> <span data-ttu-id="85dd8-124">Necesitará esta información posteriormente en este artículo.</span><span class="sxs-lookup"><span data-stu-id="85dd8-124">You need this information later in this article.</span></span>
+<span data-ttu-id="a58b2-123">Tome nota de hello `IP address` y `hostname` de Pi.</span><span class="sxs-lookup"><span data-stu-id="a58b2-123">Take note of hello `IP address` and `hostname` of Pi.</span></span> <span data-ttu-id="a58b2-124">Necesitará esta información posteriormente en este artículo.</span><span class="sxs-lookup"><span data-stu-id="a58b2-124">You need this information later in this article.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="85dd8-125">Asegúrese de que la Pi se conecta a la misma red que el equipo.</span><span class="sxs-lookup"><span data-stu-id="85dd8-125">Make sure that Pi is connected to the same network as your computer.</span></span> <span data-ttu-id="85dd8-126">Por ejemplo, si el equipo está conectado a una red inalámbrica mientras Pi está conectada a una red cableada, es posible que no vea la dirección IP en la salida de devdisco.</span><span class="sxs-lookup"><span data-stu-id="85dd8-126">For example, if your computer is connected to a wireless network while Pi is connected to a wired network, you might not see the IP address in the devdisco output.</span></span>
+> <span data-ttu-id="a58b2-125">Asegúrese de que ese Pi está conectado toohello misma red que el equipo.</span><span class="sxs-lookup"><span data-stu-id="a58b2-125">Make sure that Pi is connected toohello same network as your computer.</span></span> <span data-ttu-id="a58b2-126">Por ejemplo, si el equipo está conectado tooa red inalámbrica mientras Pi es tooa conectado por cable de red, no verá Hola IP dirección en la salida de hello devdisco.</span><span class="sxs-lookup"><span data-stu-id="a58b2-126">For example, if your computer is connected tooa wireless network while Pi is connected tooa wired network, you might not see hello IP address in hello devdisco output.</span></span>
 
-## <a name="clone-the-sample-application"></a><span data-ttu-id="85dd8-127">Clonación de la aplicación de ejemplo</span><span class="sxs-lookup"><span data-stu-id="85dd8-127">Clone the sample application</span></span>
-<span data-ttu-id="85dd8-128">Para ejecutar el código de ejemplo, siga estos pasos:</span><span class="sxs-lookup"><span data-stu-id="85dd8-128">To open the sample code, follow these steps:</span></span>
+## <a name="clone-hello-sample-application"></a><span data-ttu-id="a58b2-127">Clonar aplicación de ejemplo de Hola</span><span class="sxs-lookup"><span data-stu-id="a58b2-127">Clone hello sample application</span></span>
+<span data-ttu-id="a58b2-128">Hola tooopen código de ejemplo, siga estos pasos:</span><span class="sxs-lookup"><span data-stu-id="a58b2-128">tooopen hello sample code, follow these steps:</span></span>
 
-1. <span data-ttu-id="85dd8-129">Clone el repositorio de ejemplo de GitHub ejecutando el comando siguiente:</span><span class="sxs-lookup"><span data-stu-id="85dd8-129">Clone the sample repository from GitHub by running the following command:</span></span>
+1. <span data-ttu-id="a58b2-129">Clonar el repositorio de ejemplo de Hola desde GitHub ejecutando Hola siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="a58b2-129">Clone hello sample repository from GitHub by running hello following command:</span></span>
    
    ```bash
    git clone https://github.com/Azure-Samples/iot-hub-node-raspberrypi-getting-started.git
    ```
-2. <span data-ttu-id="85dd8-130">Abra la aplicación de ejemplo en Visual Studio Code ejecutando los comandos siguientes:</span><span class="sxs-lookup"><span data-stu-id="85dd8-130">Open the sample application in Visual Studio Code by running the following commands:</span></span>
+2. <span data-ttu-id="a58b2-130">Abra la aplicación de ejemplo de Hola en código de Visual Studio mediante la ejecución de hello siguientes comandos:</span><span class="sxs-lookup"><span data-stu-id="a58b2-130">Open hello sample application in Visual Studio Code by running hello following commands:</span></span>
    
    ```bash
    cd iot-hub-node-raspberrypi-getting-started
@@ -75,27 +75,27 @@ devdisco list --eth
 
 ![Estructura del repositorio](media/iot-hub-raspberry-pi-lessons/lesson1/vscode-blink-mac.png)
 
-<span data-ttu-id="85dd8-132">El archivo `app.js` de la subcarpeta `app` es el archivo de origen de la clave que contiene el código para controlar el LED.</span><span class="sxs-lookup"><span data-stu-id="85dd8-132">The `app.js` file in the `app` subfolder is the key source file that contains the code to control the LED.</span></span>
+<span data-ttu-id="a58b2-132">Hola `app.js` archivo Hola `app` subcarpeta es el archivo de origen de la clave de Hola que contiene Hola código toocontrol Hola LED.</span><span class="sxs-lookup"><span data-stu-id="a58b2-132">hello `app.js` file in hello `app` subfolder is hello key source file that contains hello code toocontrol hello LED.</span></span>
 
-### <a name="install-application-dependencies"></a><span data-ttu-id="85dd8-133">Instalación de las dependencias de aplicaciones</span><span class="sxs-lookup"><span data-stu-id="85dd8-133">Install application dependencies</span></span>
-<span data-ttu-id="85dd8-134">Instale las bibliotecas y otros módulos que necesite para la aplicación de ejemplo ejecutando el comando siguiente:</span><span class="sxs-lookup"><span data-stu-id="85dd8-134">Install the libraries and other modules you need for the sample application by running the following command:</span></span>
+### <a name="install-application-dependencies"></a><span data-ttu-id="a58b2-133">Instalación de las dependencias de aplicaciones</span><span class="sxs-lookup"><span data-stu-id="a58b2-133">Install application dependencies</span></span>
+<span data-ttu-id="a58b2-134">Instalar bibliotecas de Hola y otros módulos que necesita para la aplicación de ejemplo de Hola ejecutando el siguiente comando de hello:</span><span class="sxs-lookup"><span data-stu-id="a58b2-134">Install hello libraries and other modules you need for hello sample application by running hello following command:</span></span>
 
 ```bash
 npm install
 ```
 
-## <a name="configure-the-device-connection"></a><span data-ttu-id="85dd8-135">Configuración de la conexión de dispositivos</span><span class="sxs-lookup"><span data-stu-id="85dd8-135">Configure the device connection</span></span>
-<span data-ttu-id="85dd8-136">Para configurar la conexión de dispositivos, siga estos pasos:</span><span class="sxs-lookup"><span data-stu-id="85dd8-136">To configure the device connection, follow these steps:</span></span>
+## <a name="configure-hello-device-connection"></a><span data-ttu-id="a58b2-135">Configurar conexión de dispositivo de Hola</span><span class="sxs-lookup"><span data-stu-id="a58b2-135">Configure hello device connection</span></span>
+<span data-ttu-id="a58b2-136">tooconfigure Hola conexión del dispositivo, siga estos pasos:</span><span class="sxs-lookup"><span data-stu-id="a58b2-136">tooconfigure hello device connection, follow these steps:</span></span>
 
-1. <span data-ttu-id="85dd8-137">Genere el archivo de configuración de dispositivos mediante la ejecución del comando siguiente:</span><span class="sxs-lookup"><span data-stu-id="85dd8-137">Generate the device configuration file by running the following command:</span></span>
+1. <span data-ttu-id="a58b2-137">Generar archivo de configuración de dispositivo de hello ejecutando Hola siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="a58b2-137">Generate hello device configuration file by running hello following command:</span></span>
    
    ```bash
    gulp init
    ```
    
-   <span data-ttu-id="85dd8-138">El archivo de configuración `config-raspberrypi.json` contiene las credenciales de usuario que use para iniciar sesión en Pi.</span><span class="sxs-lookup"><span data-stu-id="85dd8-138">The configuration file `config-raspberrypi.json` contains the user credentials you use to log in to Pi.</span></span> <span data-ttu-id="85dd8-139">Para evitar la pérdida de las credenciales de usuario, se genera el archivo de configuración en la subcarpeta `.iot-hub-getting-started` de la carpeta principal del equipo.</span><span class="sxs-lookup"><span data-stu-id="85dd8-139">To avoid the leak of user credentials, the configuration file is generated in the subfolder `.iot-hub-getting-started` of the home folder on your computer.</span></span>
+   <span data-ttu-id="a58b2-138">archivo de configuración de Hello `config-raspberrypi.json` contiene las credenciales de usuario de hello usar toolog en tooPi.</span><span class="sxs-lookup"><span data-stu-id="a58b2-138">hello configuration file `config-raspberrypi.json` contains hello user credentials you use toolog in tooPi.</span></span> <span data-ttu-id="a58b2-139">pérdida de hello tooavoid de credenciales de usuario, se genera el archivo de configuración de hello en subcarpeta hello `.iot-hub-getting-started` de la carpeta particular de hello en el equipo.</span><span class="sxs-lookup"><span data-stu-id="a58b2-139">tooavoid hello leak of user credentials, hello configuration file is generated in hello subfolder `.iot-hub-getting-started` of hello home folder on your computer.</span></span>
 
-2. <span data-ttu-id="85dd8-140">Abra el archivo de configuración de dispositivos en Visual Studio Code ejecutando el comando siguiente:</span><span class="sxs-lookup"><span data-stu-id="85dd8-140">Open the device configuration file in Visual Studio Code by running the following command:</span></span>
+2. <span data-ttu-id="a58b2-140">Abra el archivo de configuración de dispositivo de hello en código de Visual Studio mediante la ejecución de hello siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="a58b2-140">Open hello device configuration file in Visual Studio Code by running hello following command:</span></span>
    
    ```bash
    # For Windows command prompt
@@ -105,51 +105,51 @@ npm install
    code ~/.iot-hub-getting-started/config-raspberrypi.json
    ```
    
-3. <span data-ttu-id="85dd8-141">Reemplace el marcador de posición `[device hostname or IP address]` con la dirección IP o el nombre de host que obtuvo anteriormente en "Obtención de la dirección IP y el nombre de host de Pi".</span><span class="sxs-lookup"><span data-stu-id="85dd8-141">Replace the placeholder `[device hostname or IP address]` with the IP address or the host name that you got previously in "Obtain the IP address and host name of Pi."</span></span>
+3. <span data-ttu-id="a58b2-141">Reemplace el marcador de posición de hello `[device hostname or IP address]` con dirección IP de Hola o nombre de host de hello obtenido anteriormente en "Obtener Hola IP dirección y nombre de host de Pi."</span><span class="sxs-lookup"><span data-stu-id="a58b2-141">Replace hello placeholder `[device hostname or IP address]` with hello IP address or hello host name that you got previously in "Obtain hello IP address and host name of Pi."</span></span>
    
    ![Config.json](media/iot-hub-raspberry-pi-lessons/lesson1/vscode-config-mac.png)
 
 > [!NOTE]
-> <span data-ttu-id="85dd8-143">Puede usar la clave SSH en lugar del nombre de usuario y la contraseña al conectarse a Raspberry Pi.</span><span class="sxs-lookup"><span data-stu-id="85dd8-143">You can use SSH key instead of user name and password when connecting to Raspberry Pi.</span></span> <span data-ttu-id="85dd8-144">Para ello se deben generar la clave mediante **ssh-keygen** y **ssh-copy-Id. pi @\<dirección del dispositivo\>**.</span><span class="sxs-lookup"><span data-stu-id="85dd8-144">In order to do this you will have to generate the key using **ssh-keygen** and **ssh-copy-id pi@\<device address\>**.</span></span>
+> <span data-ttu-id="a58b2-143">Puede usar la clave SSH en lugar del nombre de usuario y contraseña al conectar tooRaspberry Pi.</span><span class="sxs-lookup"><span data-stu-id="a58b2-143">You can use SSH key instead of user name and password when connecting tooRaspberry Pi.</span></span> <span data-ttu-id="a58b2-144">En Ordenar toodo esto tendrá toogenerate Hola clave utilizando **ssh-keygen** y **ssh-copy-Id. pi @\<dirección del dispositivo\>**.</span><span class="sxs-lookup"><span data-stu-id="a58b2-144">In order toodo this you will have toogenerate hello key using **ssh-keygen** and **ssh-copy-id pi@\<device address\>**.</span></span>
 >
-> <span data-ttu-id="85dd8-145">En Windows, estos comandos están disponibles en **Git Bash**.</span><span class="sxs-lookup"><span data-stu-id="85dd8-145">On Windows these commands are available in **Git Bash**.</span></span>
+> <span data-ttu-id="a58b2-145">En Windows, estos comandos están disponibles en **Git Bash**.</span><span class="sxs-lookup"><span data-stu-id="a58b2-145">On Windows these commands are available in **Git Bash**.</span></span>
 >
-> <span data-ttu-id="85dd8-146">En Mac OS, debe ejecutar **brew install ssh-copy-id**.</span><span class="sxs-lookup"><span data-stu-id="85dd8-146">On MacOS you need to run **brew install ssh-copy-id**.</span></span>
+> <span data-ttu-id="a58b2-146">En Mac OS necesita toorun **cerveza instalar ssh-copy-id**.</span><span class="sxs-lookup"><span data-stu-id="a58b2-146">On MacOS you need toorun **brew install ssh-copy-id**.</span></span>
 >
-> <span data-ttu-id="85dd8-147">Después de cargar correctamente la clave en Raspberry Pi, reemplace **device_password** por la propiedad **device_key_path** en **config-raspberrypi.json**.</span><span class="sxs-lookup"><span data-stu-id="85dd8-147">After successfully uploading the key to the Raspberry Pi, replace **device_password** with **device_key_path** property in **config-raspberrypi.json**.</span></span>
+> <span data-ttu-id="a58b2-147">Después de cargar correctamente Hola clave toohello frambuesa Pi, reemplace **device_password** con **device_key_path** propiedad en **raspberrypi.json config**.</span><span class="sxs-lookup"><span data-stu-id="a58b2-147">After successfully uploading hello key toohello Raspberry Pi, replace **device_password** with **device_key_path** property in **config-raspberrypi.json**.</span></span>
 >
-> <span data-ttu-id="85dd8-148">Las líneas actualizadas deben presentar el siguiente aspecto:</span><span class="sxs-lookup"><span data-stu-id="85dd8-148">Updated lines should look as below:</span></span>
+> <span data-ttu-id="a58b2-148">Las líneas actualizadas deben presentar el siguiente aspecto:</span><span class="sxs-lookup"><span data-stu-id="a58b2-148">Updated lines should look as below:</span></span>
 > ```javascript
 > "device_user_name": "pi",
 > "device_key_path": "id_rsa",
 > ```
 
-<span data-ttu-id="85dd8-149">¡Enhorabuena!</span><span class="sxs-lookup"><span data-stu-id="85dd8-149">Congratulations!</span></span> <span data-ttu-id="85dd8-150">Ha creado correctamente la primera aplicación de ejemplo para Pi.</span><span class="sxs-lookup"><span data-stu-id="85dd8-150">You've successfully created the first sample application for Pi.</span></span>
+<span data-ttu-id="a58b2-149">¡Enhorabuena!</span><span class="sxs-lookup"><span data-stu-id="a58b2-149">Congratulations!</span></span> <span data-ttu-id="a58b2-150">Ha creado correctamente la primera aplicación de ejemplo hello de Pi.</span><span class="sxs-lookup"><span data-stu-id="a58b2-150">You've successfully created hello first sample application for Pi.</span></span>
 
-## <a name="deploy-and-run-the-sample-application"></a><span data-ttu-id="85dd8-151">Implementación y ejecución de la aplicación de ejemplo</span><span class="sxs-lookup"><span data-stu-id="85dd8-151">Deploy and run the sample application</span></span>
-### <a name="install-nodejs-and-npm-on-pi"></a><span data-ttu-id="85dd8-152">Instalación de Node.js y NPM en Pi</span><span class="sxs-lookup"><span data-stu-id="85dd8-152">Install Node.js and NPM on Pi</span></span>
-<span data-ttu-id="85dd8-153">Instale Node.js y NPM en Pi ejecutando el comando siguiente:</span><span class="sxs-lookup"><span data-stu-id="85dd8-153">Install Node.js and NPM on Pi by running the following command:</span></span>
+## <a name="deploy-and-run-hello-sample-application"></a><span data-ttu-id="a58b2-151">Implementar y ejecutar la aplicación de ejemplo de Hola</span><span class="sxs-lookup"><span data-stu-id="a58b2-151">Deploy and run hello sample application</span></span>
+### <a name="install-nodejs-and-npm-on-pi"></a><span data-ttu-id="a58b2-152">Instalación de Node.js y NPM en Pi</span><span class="sxs-lookup"><span data-stu-id="a58b2-152">Install Node.js and NPM on Pi</span></span>
+<span data-ttu-id="a58b2-153">Instalar Node.js y NPM en Pi ejecutando Hola siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="a58b2-153">Install Node.js and NPM on Pi by running hello following command:</span></span>
 
 ```bash
 gulp install-tools
 ```
 
-<span data-ttu-id="85dd8-154">Esta tarea podría tardar 10 minutos en completarse la primera vez que la ejecute.</span><span class="sxs-lookup"><span data-stu-id="85dd8-154">This task might take 10 minutes to complete the first time you run it.</span></span>
+<span data-ttu-id="a58b2-154">Esta tarea puede tomar hello toocomplete de 10 minutos por primera vez que se ejecuta.</span><span class="sxs-lookup"><span data-stu-id="a58b2-154">This task might take 10 minutes toocomplete hello first time you run it.</span></span>
 
-### <a name="deploy-and-run-the-sample-app"></a><span data-ttu-id="85dd8-155">Implementación y ejecución de la aplicación de ejemplo</span><span class="sxs-lookup"><span data-stu-id="85dd8-155">Deploy and run the sample app</span></span>
-<span data-ttu-id="85dd8-156">Implemente y ejecute la aplicación de ejemplo usando el comando siguiente:</span><span class="sxs-lookup"><span data-stu-id="85dd8-156">Deploy and run the sample application by running the following command:</span></span>
+### <a name="deploy-and-run-hello-sample-app"></a><span data-ttu-id="a58b2-155">Implementar y ejecutar la aplicación de ejemplo de Hola</span><span class="sxs-lookup"><span data-stu-id="a58b2-155">Deploy and run hello sample app</span></span>
+<span data-ttu-id="a58b2-156">Implementar y ejecutar la aplicación de ejemplo de Hola ejecutando Hola siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="a58b2-156">Deploy and run hello sample application by running hello following command:</span></span>
 
 ```bash
 gulp deploy && gulp run
 ```
 
-### <a name="verify-the-app-works"></a><span data-ttu-id="85dd8-157">Comprobación del funcionamiento de la aplicación</span><span class="sxs-lookup"><span data-stu-id="85dd8-157">Verify the app works</span></span>
-<span data-ttu-id="85dd8-158">Ahora debería ver que el LED de Pi parpadea cada dos segundos.</span><span class="sxs-lookup"><span data-stu-id="85dd8-158">You should now see the LED on Pi blinking every two seconds.</span></span>  <span data-ttu-id="85dd8-159">En caso contrario, consulte la [guía de solución de problemas](iot-hub-raspberry-pi-kit-node-troubleshooting.md) para ver soluciones a problemas comunes.</span><span class="sxs-lookup"><span data-stu-id="85dd8-159">If you don’t see the LED blinking, see the [troubleshooting guide](iot-hub-raspberry-pi-kit-node-troubleshooting.md) for solutions to common problems.</span></span>
-<span data-ttu-id="85dd8-160">![Intermitencia del LED](media/iot-hub-raspberry-pi-lessons/lesson1/led_blinking.jpg)</span><span class="sxs-lookup"><span data-stu-id="85dd8-160">![LED blinking](media/iot-hub-raspberry-pi-lessons/lesson1/led_blinking.jpg)</span></span>
+### <a name="verify-hello-app-works"></a><span data-ttu-id="a58b2-157">Compruebe que funciona de la aplicación de Hola</span><span class="sxs-lookup"><span data-stu-id="a58b2-157">Verify hello app works</span></span>
+<span data-ttu-id="a58b2-158">Ahora debería ver Hola LED en Pi parpadea cada dos segundos.</span><span class="sxs-lookup"><span data-stu-id="a58b2-158">You should now see hello LED on Pi blinking every two seconds.</span></span>  <span data-ttu-id="a58b2-159">Si no ve Hola LED parpadea, vea hello [Guía de solución de problemas](iot-hub-raspberry-pi-kit-node-troubleshooting.md) para soluciones toocommon problemas.</span><span class="sxs-lookup"><span data-stu-id="a58b2-159">If you don’t see hello LED blinking, see hello [troubleshooting guide](iot-hub-raspberry-pi-kit-node-troubleshooting.md) for solutions toocommon problems.</span></span>
+<span data-ttu-id="a58b2-160">![Intermitencia del LED](media/iot-hub-raspberry-pi-lessons/lesson1/led_blinking.jpg)</span><span class="sxs-lookup"><span data-stu-id="a58b2-160">![LED blinking](media/iot-hub-raspberry-pi-lessons/lesson1/led_blinking.jpg)</span></span>
 
-## <a name="summary"></a><span data-ttu-id="85dd8-161">Resumen</span><span class="sxs-lookup"><span data-stu-id="85dd8-161">Summary</span></span>
-<span data-ttu-id="85dd8-162">Ha instalado las herramientas necesarias para usar Pi e implementado una aplicación de ejemplo para que Pi haga parpadear el LED.</span><span class="sxs-lookup"><span data-stu-id="85dd8-162">You've installed the required tools to work with Pi and deployed a sample application to Pi to blink the LED.</span></span> <span data-ttu-id="85dd8-163">Ahora puede crear, implementar y ejecutar otra aplicación de ejemplo que conecte Pi a Azure IoT Hub para enviar y recibir mensajes.</span><span class="sxs-lookup"><span data-stu-id="85dd8-163">You can now create, deploy, and run another sample application that connects Pi to Azure IoT Hub to send and receive messages.</span></span>
+## <a name="summary"></a><span data-ttu-id="a58b2-161">Resumen</span><span class="sxs-lookup"><span data-stu-id="a58b2-161">Summary</span></span>
+<span data-ttu-id="a58b2-162">Ha instalado Hola requerido herramientas toowork con Pi e implementado un Hola de tooblink tooPi de aplicación de ejemplo LED.</span><span class="sxs-lookup"><span data-stu-id="a58b2-162">You've installed hello required tools toowork with Pi and deployed a sample application tooPi tooblink hello LED.</span></span> <span data-ttu-id="a58b2-163">Ahora puede crear, implementar y ejecutar otra aplicación de ejemplo que se conecta Pi tooAzure toosend centro de IoT y recibir mensajes.</span><span class="sxs-lookup"><span data-stu-id="a58b2-163">You can now create, deploy, and run another sample application that connects Pi tooAzure IoT Hub toosend and receive messages.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="85dd8-164">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="85dd8-164">Next steps</span></span>
-[<span data-ttu-id="85dd8-165">Obtención de las herramientas de Azure</span><span class="sxs-lookup"><span data-stu-id="85dd8-165">Get the Azure tools</span></span>](iot-hub-raspberry-pi-kit-node-lesson2-get-azure-tools-win32.md)
+## <a name="next-steps"></a><span data-ttu-id="a58b2-164">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="a58b2-164">Next steps</span></span>
+[<span data-ttu-id="a58b2-165">Obtener hello Azure tools</span><span class="sxs-lookup"><span data-stu-id="a58b2-165">Get hello Azure tools</span></span>](iot-hub-raspberry-pi-kit-node-lesson2-get-azure-tools-win32.md)
 

@@ -46,11 +46,11 @@
 ### [Máquinas virtuales Windows](../../virtual-machines/virtual-machines-windows-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ## [Introducción a Service Fabric](../../service-fabric/service-fabric-overview.md)
 
-# Guías de procedimientos
+# Cómo tooguides
 ## Plan
 ### [Arquitecturas de aplicaciones web](../../guidance/guidance-ra-app-service.md)
 ### [Arquitecturas de máquinas virtuales](../../guidance/guidance-ra-compute.md)
-### [Conexión a redes locales](../../guidance/guidance-ra-hybrid-networking.md)
+### [Conectar redes locales tooon](../../guidance/guidance-ra-hybrid-networking.md)
 ### [Patrones y escenarios de microservicios](../../service-fabric/service-fabric-patterns-and-scenarios.md)
 ## Desarrollo
 ### [Aplicaciones de WordPress](../../app-service-web/web-sites-php-web-site-gallery.md)

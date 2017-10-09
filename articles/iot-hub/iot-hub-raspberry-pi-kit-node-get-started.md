@@ -1,12 +1,12 @@
 ---
-title: 'Raspberry Pi a la nube (Node.js): Conectar Raspberry Pi a Azure IoT Hub | Microsoft Docs'
-description: "Con este tutorial aprenderá a configurar y conectar Raspberry Pi a Azure IoT Hub para que envíe datos a la plataforma en la nube de Azure."
+title: aaaRaspberry Pi toocloud (Node.js) - conectar frambuesa Pi tooAzure centro de IoT | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toosetup y conectarse frambuesa Pi tooAzure centro de IoT para la plataforma de nube de Azure de frambuesa Pi toosend datos toohello en este tutorial."
 services: iot-hub
 documentationcenter: 
 author: shizn
 manager: timlt
 tags: 
-keywords: "azure iot raspberry pi, raspberry pi iot hub, raspberry pi envía datos a la nube, raspberry pi a la nube"
+keywords: "Azure iot frambuesas pi, frambuesas pi iot hub, frambuesas pi envío datos toocloud, frambuesas pi toocloud"
 ms.assetid: b0e14bfa-8e64-440a-a6ec-e507ca0f76ba
 ms.service: iot-hub
 ms.devlang: node
@@ -16,179 +16,179 @@ ms.workload: na
 ms.date: 5/27/2017
 ms.author: xshi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f48c4bd27b1df1d02090ed51172f943e50c76c3e
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 57a15ab3984021a9c18ff0aa1316a4d4c6ebdec1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a><span data-ttu-id="465d2-104">Conectar Raspberry Pi a Azure IoT Hub (Node.js)</span><span class="sxs-lookup"><span data-stu-id="465d2-104">Connect Raspberry Pi to Azure IoT Hub (Node.js)</span></span>
+# <a name="connect-raspberry-pi-tooazure-iot-hub-nodejs"></a><span data-ttu-id="00397-104">Conectar frambuesa Pi tooAzure centro de IoT (Node.js)</span><span class="sxs-lookup"><span data-stu-id="00397-104">Connect Raspberry Pi tooAzure IoT Hub (Node.js)</span></span>
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-<span data-ttu-id="465d2-105">En este tutorial, empezará por aprender los principios básicos del uso de Raspberry Pi que ejecuta Raspbian.</span><span class="sxs-lookup"><span data-stu-id="465d2-105">In this tutorial, you begin by learning the basics of working with Raspberry Pi that's running Raspbian.</span></span> <span data-ttu-id="465d2-106">A continuación, aprenderá a conectar sin problemas los dispositivos en la nube con [Azure IoT Hub](iot-hub-what-is-iot-hub.md).</span><span class="sxs-lookup"><span data-stu-id="465d2-106">You then learn how to seamlessly connect your devices to the cloud by using [Azure IoT Hub](iot-hub-what-is-iot-hub.md).</span></span> <span data-ttu-id="465d2-107">Para obtener ejemplos de Windows 10 IoT Core, vaya al [Centro de desarrollo de Windows](http://www.windowsondevices.com/).</span><span class="sxs-lookup"><span data-stu-id="465d2-107">For Windows 10 IoT Core samples, go to the [Windows Dev Center](http://www.windowsondevices.com/).</span></span>
+<span data-ttu-id="00397-105">En este tutorial, empiece por obtener información sobre fundamentos de hello sobre cómo trabajar con frambuesa Pi que se está ejecutando Raspbian.</span><span class="sxs-lookup"><span data-stu-id="00397-105">In this tutorial, you begin by learning hello basics of working with Raspberry Pi that's running Raspbian.</span></span> <span data-ttu-id="00397-106">A continuación, aprenderá cómo tooseamlessly conectar la nube de toohello de dispositivos mediante el uso de [centro de IoT de Azure](iot-hub-what-is-iot-hub.md).</span><span class="sxs-lookup"><span data-stu-id="00397-106">You then learn how tooseamlessly connect your devices toohello cloud by using [Azure IoT Hub](iot-hub-what-is-iot-hub.md).</span></span> <span data-ttu-id="00397-107">Para obtener ejemplos de Windows 10 IoT Core, vaya toohello [centro de desarrollo de Windows](http://www.windowsondevices.com/).</span><span class="sxs-lookup"><span data-stu-id="00397-107">For Windows 10 IoT Core samples, go toohello [Windows Dev Center](http://www.windowsondevices.com/).</span></span>
 
-<span data-ttu-id="465d2-108">¿Aún no tiene un kit?</span><span class="sxs-lookup"><span data-stu-id="465d2-108">Don't have a kit yet?</span></span> <span data-ttu-id="465d2-109">Pruebe el [simulador en línea de Rapsberry Pi](iot-hub-raspberry-pi-web-simulator-get-started.md).</span><span class="sxs-lookup"><span data-stu-id="465d2-109">Try [Raspberry Pi online simulator](iot-hub-raspberry-pi-web-simulator-get-started.md).</span></span> <span data-ttu-id="465d2-110">También puede comprar un nuevo kit [aquí](https://azure.microsoft.com/develop/iot/starter-kits).</span><span class="sxs-lookup"><span data-stu-id="465d2-110">Or buy a new kit [here](https://azure.microsoft.com/develop/iot/starter-kits).</span></span>
+<span data-ttu-id="00397-108">¿Aún no tiene un kit?</span><span class="sxs-lookup"><span data-stu-id="00397-108">Don't have a kit yet?</span></span> <span data-ttu-id="00397-109">Pruebe el [simulador en línea de Rapsberry Pi](iot-hub-raspberry-pi-web-simulator-get-started.md).</span><span class="sxs-lookup"><span data-stu-id="00397-109">Try [Raspberry Pi online simulator](iot-hub-raspberry-pi-web-simulator-get-started.md).</span></span> <span data-ttu-id="00397-110">También puede comprar un nuevo kit [aquí](https://azure.microsoft.com/develop/iot/starter-kits).</span><span class="sxs-lookup"><span data-stu-id="00397-110">Or buy a new kit [here](https://azure.microsoft.com/develop/iot/starter-kits).</span></span>
 
 
-## <a name="what-you-do"></a><span data-ttu-id="465d2-111">Qué debe hacer</span><span class="sxs-lookup"><span data-stu-id="465d2-111">What you do</span></span>
+## <a name="what-you-do"></a><span data-ttu-id="00397-111">Qué debe hacer</span><span class="sxs-lookup"><span data-stu-id="00397-111">What you do</span></span>
 
-* <span data-ttu-id="465d2-112">Cree un Centro de IoT.</span><span class="sxs-lookup"><span data-stu-id="465d2-112">Create an IoT hub.</span></span>
-* <span data-ttu-id="465d2-113">Registre un dispositivo para Pi en IoT Hub.</span><span class="sxs-lookup"><span data-stu-id="465d2-113">Register a device for Pi in your IoT hub.</span></span>
-* <span data-ttu-id="465d2-114">Configure Raspberry Pi.</span><span class="sxs-lookup"><span data-stu-id="465d2-114">Setup Raspberry Pi.</span></span>
-* <span data-ttu-id="465d2-115">Ejecute una aplicación de ejemplo en Pi para enviar datos de sensor a IoT Hub.</span><span class="sxs-lookup"><span data-stu-id="465d2-115">Run a sample application on Pi to send sensor data to your IoT hub.</span></span>
+* <span data-ttu-id="00397-112">Cree un Centro de IoT.</span><span class="sxs-lookup"><span data-stu-id="00397-112">Create an IoT hub.</span></span>
+* <span data-ttu-id="00397-113">Registre un dispositivo para Pi en IoT Hub.</span><span class="sxs-lookup"><span data-stu-id="00397-113">Register a device for Pi in your IoT hub.</span></span>
+* <span data-ttu-id="00397-114">Configure Raspberry Pi.</span><span class="sxs-lookup"><span data-stu-id="00397-114">Setup Raspberry Pi.</span></span>
+* <span data-ttu-id="00397-115">Ejecutar una aplicación de ejemplo en el centro de IoT de Pi toosend sensor datos tooyour.</span><span class="sxs-lookup"><span data-stu-id="00397-115">Run a sample application on Pi toosend sensor data tooyour IoT hub.</span></span>
 
-<span data-ttu-id="465d2-116">Conecte Raspberry Pi al IoT Hub que ha creado.</span><span class="sxs-lookup"><span data-stu-id="465d2-116">Connect Raspberry Pi to an IoT hub that you create.</span></span> <span data-ttu-id="465d2-117">Luego ejecute una aplicación de ejemplo en Pi para recopilar datos de temperatura y humedad de un sensor BME280.</span><span class="sxs-lookup"><span data-stu-id="465d2-117">Then you run a sample application on Pi to collect temperature and humidity data from a BME280 sensor.</span></span> <span data-ttu-id="465d2-118">Por último, envíe los datos del sensor a IoT Hub.</span><span class="sxs-lookup"><span data-stu-id="465d2-118">Finally, you send the sensor data to your IoT hub.</span></span>
+<span data-ttu-id="00397-116">Conectar el centro de IoT de frambuesa Pi tooan creados por usted.</span><span class="sxs-lookup"><span data-stu-id="00397-116">Connect Raspberry Pi tooan IoT hub that you create.</span></span> <span data-ttu-id="00397-117">A continuación, ejecutar una aplicación de ejemplo en los datos de temperatura y humedad toocollect Pi de un sensor BME280.</span><span class="sxs-lookup"><span data-stu-id="00397-117">Then you run a sample application on Pi toocollect temperature and humidity data from a BME280 sensor.</span></span> <span data-ttu-id="00397-118">Por último, envíe centro de IoT de hello sensor datos tooyour.</span><span class="sxs-lookup"><span data-stu-id="00397-118">Finally, you send hello sensor data tooyour IoT hub.</span></span>
 
-## <a name="what-you-learn"></a><span data-ttu-id="465d2-119">Conocimientos que adquirirá</span><span class="sxs-lookup"><span data-stu-id="465d2-119">What you learn</span></span>
+## <a name="what-you-learn"></a><span data-ttu-id="00397-119">Conocimientos que adquirirá</span><span class="sxs-lookup"><span data-stu-id="00397-119">What you learn</span></span>
 
-* <span data-ttu-id="465d2-120">Cómo crear Azure IoT Hub y obtener la cadena de conexión del nuevo dispositivo.</span><span class="sxs-lookup"><span data-stu-id="465d2-120">How to create an Azure IoT hub and get your new device connection string.</span></span>
-* <span data-ttu-id="465d2-121">Cómo conectar Pi con un sensor BME280.</span><span class="sxs-lookup"><span data-stu-id="465d2-121">How to connect Pi with a BME280 sensor.</span></span>
-* <span data-ttu-id="465d2-122">Cómo recopilar datos del sensor al ejecutar una aplicación de ejemplo en Pi.</span><span class="sxs-lookup"><span data-stu-id="465d2-122">How to collect sensor data by running a sample application on Pi.</span></span>
-* <span data-ttu-id="465d2-123">Cómo enviar los datos del sensor a IoT Hub.</span><span class="sxs-lookup"><span data-stu-id="465d2-123">How to send sensor data to your IoT hub.</span></span>
+* <span data-ttu-id="00397-120">¿Cómo toocreate un centro de IoT de Azure y obtener la cadena de conexión de dispositivo de nuevo.</span><span class="sxs-lookup"><span data-stu-id="00397-120">How toocreate an Azure IoT hub and get your new device connection string.</span></span>
+* <span data-ttu-id="00397-121">¿Cómo tooconnect Pi con un sensor BME280.</span><span class="sxs-lookup"><span data-stu-id="00397-121">How tooconnect Pi with a BME280 sensor.</span></span>
+* <span data-ttu-id="00397-122">¿Cómo toocollect datos del sensor mediante la ejecución de una aplicación de ejemplo de Pi.</span><span class="sxs-lookup"><span data-stu-id="00397-122">How toocollect sensor data by running a sample application on Pi.</span></span>
+* <span data-ttu-id="00397-123">Cómo centro de IoT de toosend sensor datos tooyour.</span><span class="sxs-lookup"><span data-stu-id="00397-123">How toosend sensor data tooyour IoT hub.</span></span>
 
-## <a name="what-you-need"></a><span data-ttu-id="465d2-124">Lo que necesita</span><span class="sxs-lookup"><span data-stu-id="465d2-124">What you need</span></span>
+## <a name="what-you-need"></a><span data-ttu-id="00397-124">Lo que necesita</span><span class="sxs-lookup"><span data-stu-id="00397-124">What you need</span></span>
 
 ![Lo que necesita](media/iot-hub-raspberry-pi-kit-node-get-started/0_starter_kit.jpg)
 
-* <span data-ttu-id="465d2-126">La placa de Raspberry Pi 2 o Raspberry Pi 3.</span><span class="sxs-lookup"><span data-stu-id="465d2-126">The Raspberry Pi 2 or Raspberry Pi 3 board.</span></span>
-* <span data-ttu-id="465d2-127">Una suscripción de Azure activa.</span><span class="sxs-lookup"><span data-stu-id="465d2-127">An active Azure subscription.</span></span> <span data-ttu-id="465d2-128">Si no tiene ninguna cuenta de Azure, [cree una cuenta de evaluación gratuita de Azure](https://azure.microsoft.com/free/) en solo unos minutos.</span><span class="sxs-lookup"><span data-stu-id="465d2-128">If you don't have an Azure account, [create a free Azure trial account](https://azure.microsoft.com/free/) in just a few minutes.</span></span>
-* <span data-ttu-id="465d2-129">Un monitor, un teclado USB y un mouse que se conecten a Pi.</span><span class="sxs-lookup"><span data-stu-id="465d2-129">A monitor, a USB keyboard, and mouse that connect to Pi.</span></span>
-* <span data-ttu-id="465d2-130">Un equipo PC o Mac con Windows o Linux.</span><span class="sxs-lookup"><span data-stu-id="465d2-130">A Mac or a PC that is running Windows or Linux.</span></span>
-* <span data-ttu-id="465d2-131">Una conexión a Internet.</span><span class="sxs-lookup"><span data-stu-id="465d2-131">An Internet connection.</span></span>
-* <span data-ttu-id="465d2-132">Una tarjeta microSD de 16 GB o más.</span><span class="sxs-lookup"><span data-stu-id="465d2-132">A 16 GB or above microSD card.</span></span>
-* <span data-ttu-id="465d2-133">Un adaptador de USB a SD o una tarjeta microSD para grabar la imagen del sistema operativo en la tarjeta microSD.</span><span class="sxs-lookup"><span data-stu-id="465d2-133">A USB-SD adapter or microSD card to burn the operating system image onto the microSD card.</span></span>
-* <span data-ttu-id="465d2-134">Una fuente de alimentación de 5 V y 2 A con un cable microUSB de 6 pies.</span><span class="sxs-lookup"><span data-stu-id="465d2-134">A 5-volt 2-amp power supply with the 6-foot micro USB cable.</span></span>
+* <span data-ttu-id="00397-126">Hola frambuesa Pi 2 o 3 de Pi de frambuesa al panel.</span><span class="sxs-lookup"><span data-stu-id="00397-126">hello Raspberry Pi 2 or Raspberry Pi 3 board.</span></span>
+* <span data-ttu-id="00397-127">Una suscripción de Azure activa.</span><span class="sxs-lookup"><span data-stu-id="00397-127">An active Azure subscription.</span></span> <span data-ttu-id="00397-128">Si no tiene ninguna cuenta de Azure, [cree una cuenta de evaluación gratuita de Azure](https://azure.microsoft.com/free/) en solo unos minutos.</span><span class="sxs-lookup"><span data-stu-id="00397-128">If you don't have an Azure account, [create a free Azure trial account](https://azure.microsoft.com/free/) in just a few minutes.</span></span>
+* <span data-ttu-id="00397-129">Un monitor, un teclado USB y mouse (ratón) que se conectan tooPi.</span><span class="sxs-lookup"><span data-stu-id="00397-129">A monitor, a USB keyboard, and mouse that connect tooPi.</span></span>
+* <span data-ttu-id="00397-130">Un equipo PC o Mac con Windows o Linux.</span><span class="sxs-lookup"><span data-stu-id="00397-130">A Mac or a PC that is running Windows or Linux.</span></span>
+* <span data-ttu-id="00397-131">Una conexión a Internet.</span><span class="sxs-lookup"><span data-stu-id="00397-131">An Internet connection.</span></span>
+* <span data-ttu-id="00397-132">Una tarjeta microSD de 16 GB o más.</span><span class="sxs-lookup"><span data-stu-id="00397-132">A 16 GB or above microSD card.</span></span>
+* <span data-ttu-id="00397-133">Un SD USB adaptador o microSD tarjeta tooburn Hola imagen de sistema operativo en tarjeta microSD de Hola.</span><span class="sxs-lookup"><span data-stu-id="00397-133">A USB-SD adapter or microSD card tooburn hello operating system image onto hello microSD card.</span></span>
+* <span data-ttu-id="00397-134">Alimentación de amp 2 de 5 voltios con cable de hello pie 6 micro USB.</span><span class="sxs-lookup"><span data-stu-id="00397-134">A 5-volt 2-amp power supply with hello 6-foot micro USB cable.</span></span>
 
-<span data-ttu-id="465d2-135">Los elementos siguientes son opcionales:</span><span class="sxs-lookup"><span data-stu-id="465d2-135">The following items are optional:</span></span>
+<span data-ttu-id="00397-135">Hola siguientes elementos es opcional:</span><span class="sxs-lookup"><span data-stu-id="00397-135">hello following items are optional:</span></span>
 
-* <span data-ttu-id="465d2-136">Un sensor de temperatura, presión y humedad Adafruit BME280 ensamblado.</span><span class="sxs-lookup"><span data-stu-id="465d2-136">An assembled Adafruit BME280 temperature, pressure, and humidity sensor.</span></span>
-* <span data-ttu-id="465d2-137">La placa de pruebas.</span><span class="sxs-lookup"><span data-stu-id="465d2-137">A breadboard.</span></span>
-* <span data-ttu-id="465d2-138">Cables de puente M/6 F.</span><span class="sxs-lookup"><span data-stu-id="465d2-138">6 F/M jumper wires.</span></span>
-* <span data-ttu-id="465d2-139">Un LED difuso de 10 mm.</span><span class="sxs-lookup"><span data-stu-id="465d2-139">A diffused 10-mm LED.</span></span>
+* <span data-ttu-id="00397-136">Un sensor de temperatura, presión y humedad Adafruit BME280 ensamblado.</span><span class="sxs-lookup"><span data-stu-id="00397-136">An assembled Adafruit BME280 temperature, pressure, and humidity sensor.</span></span>
+* <span data-ttu-id="00397-137">La placa de pruebas.</span><span class="sxs-lookup"><span data-stu-id="00397-137">A breadboard.</span></span>
+* <span data-ttu-id="00397-138">Cables de puente M/6 F.</span><span class="sxs-lookup"><span data-stu-id="00397-138">6 F/M jumper wires.</span></span>
+* <span data-ttu-id="00397-139">Un LED difuso de 10 mm.</span><span class="sxs-lookup"><span data-stu-id="00397-139">A diffused 10-mm LED.</span></span>
 
 
 > [!NOTE] 
-<span data-ttu-id="465d2-140">Estos elementos son opcionales porque el ejemplo de código simula los datos del sensor.</span><span class="sxs-lookup"><span data-stu-id="465d2-140">These items are optional because the code sample support simulated sensor data.</span></span>
+<span data-ttu-id="00397-140">Estos elementos son opcionales, porque la compatibilidad de ejemplo de código de hello había simulado los datos de sensor.</span><span class="sxs-lookup"><span data-stu-id="00397-140">These items are optional because hello code sample support simulated sensor data.</span></span>
 
 [!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
 
-## <a name="setup-raspberry-pi"></a><span data-ttu-id="465d2-141">Configurar Raspberry Pi</span><span class="sxs-lookup"><span data-stu-id="465d2-141">Setup Raspberry Pi</span></span>
+## <a name="setup-raspberry-pi"></a><span data-ttu-id="00397-141">Configurar Raspberry Pi</span><span class="sxs-lookup"><span data-stu-id="00397-141">Setup Raspberry Pi</span></span>
 
-### <a name="install-the-raspbian-operating-system-for-pi"></a><span data-ttu-id="465d2-142">Instalar el sistema operativo Raspbian para Pi</span><span class="sxs-lookup"><span data-stu-id="465d2-142">Install the Raspbian operating system for Pi</span></span>
+### <a name="install-hello-raspbian-operating-system-for-pi"></a><span data-ttu-id="00397-142">Instalar el sistema operativo de hello Raspbian de Pi</span><span class="sxs-lookup"><span data-stu-id="00397-142">Install hello Raspbian operating system for Pi</span></span>
 
-<span data-ttu-id="465d2-143">Prepare la tarjeta microSD para instalar la imagen de Raspbian.</span><span class="sxs-lookup"><span data-stu-id="465d2-143">Prepare the microSD card for installation of the Raspbian image.</span></span>
+<span data-ttu-id="00397-143">Preparar la tarjeta microSD de hello para la instalación de la imagen de Raspbian Hola.</span><span class="sxs-lookup"><span data-stu-id="00397-143">Prepare hello microSD card for installation of hello Raspbian image.</span></span>
 
-1. <span data-ttu-id="465d2-144">Descargue Raspbian.</span><span class="sxs-lookup"><span data-stu-id="465d2-144">Download Raspbian.</span></span>
-   1. <span data-ttu-id="465d2-145">[Descargue Raspbian Jessie con el escritorio](https://www.raspberrypi.org/downloads/raspbian/) (el archivo .zip).</span><span class="sxs-lookup"><span data-stu-id="465d2-145">[Download Raspbian Jessie with Desktop](https://www.raspberrypi.org/downloads/raspbian/) (the .zip file).</span></span>
-   1. <span data-ttu-id="465d2-146">Extraiga la imagen de Raspbian en una carpeta del equipo.</span><span class="sxs-lookup"><span data-stu-id="465d2-146">Extract the Raspbian image to a folder on your computer.</span></span>
-1. <span data-ttu-id="465d2-147">Instale Raspbian en la tarjeta microSD.</span><span class="sxs-lookup"><span data-stu-id="465d2-147">Install Raspbian to the microSD card.</span></span>
-   1. <span data-ttu-id="465d2-148">[Descargue e instale la utilidad de grabadora de tarjetas SD Etcher](https://etcher.io/).</span><span class="sxs-lookup"><span data-stu-id="465d2-148">[Download and install the Etcher SD card burner utility](https://etcher.io/).</span></span>
-   1. <span data-ttu-id="465d2-149">Ejecute Etcher y seleccione la imagen de Raspbian que extrajo en el paso 1.</span><span class="sxs-lookup"><span data-stu-id="465d2-149">Run Etcher and select the Raspbian image that you extracted in step 1.</span></span>
-   1. <span data-ttu-id="465d2-150">Seleccione la unidad de la tarjeta microSD.</span><span class="sxs-lookup"><span data-stu-id="465d2-150">Select the microSD card drive.</span></span> <span data-ttu-id="465d2-151">Tenga en cuenta que es posible que Etcher ya haya seleccionado la unidad correcta.</span><span class="sxs-lookup"><span data-stu-id="465d2-151">Note that Etcher may have already selected the correct drive.</span></span>
-   1. <span data-ttu-id="465d2-152">Haga clic en Flash para instalar Raspbian en la tarjeta microSD.</span><span class="sxs-lookup"><span data-stu-id="465d2-152">Click Flash to install Raspbian to the microSD card.</span></span>
-   1. <span data-ttu-id="465d2-153">Quite la tarjeta microSD del equipo cuando se complete la instalación.</span><span class="sxs-lookup"><span data-stu-id="465d2-153">Remove the microSD card from your computer when installation is complete.</span></span> <span data-ttu-id="465d2-154">Es seguro quitar la tarjeta microSD directamente porque Etcher expulsa o desmonta la tarjeta microSD automáticamente al acabar.</span><span class="sxs-lookup"><span data-stu-id="465d2-154">It's safe to remove the microSD card directly because Etcher automatically ejects or unmounts the microSD card upon completion.</span></span>
-   1. <span data-ttu-id="465d2-155">Inserte la tarjeta microSD en la Pi.</span><span class="sxs-lookup"><span data-stu-id="465d2-155">Insert the microSD card into Pi.</span></span>
+1. <span data-ttu-id="00397-144">Descargue Raspbian.</span><span class="sxs-lookup"><span data-stu-id="00397-144">Download Raspbian.</span></span>
+   1. <span data-ttu-id="00397-145">[Descargar Raspbian Jessie con el escritorio](https://www.raspberrypi.org/downloads/raspbian/) (archivo .zip de hello).</span><span class="sxs-lookup"><span data-stu-id="00397-145">[Download Raspbian Jessie with Desktop](https://www.raspberrypi.org/downloads/raspbian/) (hello .zip file).</span></span>
+   1. <span data-ttu-id="00397-146">Extraer hello Raspbian imagen tooa carpeta del equipo.</span><span class="sxs-lookup"><span data-stu-id="00397-146">Extract hello Raspbian image tooa folder on your computer.</span></span>
+1. <span data-ttu-id="00397-147">Instalar Raspbian toohello microSD tarjeta.</span><span class="sxs-lookup"><span data-stu-id="00397-147">Install Raspbian toohello microSD card.</span></span>
+   1. <span data-ttu-id="00397-148">[Descargar e instalar la utilidad de grabadora de tarjeta de SD de creación de hello](https://etcher.io/).</span><span class="sxs-lookup"><span data-stu-id="00397-148">[Download and install hello Etcher SD card burner utility](https://etcher.io/).</span></span>
+   1. <span data-ttu-id="00397-149">Ejecute creación y seleccione la imagen de Raspbian Hola que ha extraído en el paso 1.</span><span class="sxs-lookup"><span data-stu-id="00397-149">Run Etcher and select hello Raspbian image that you extracted in step 1.</span></span>
+   1. <span data-ttu-id="00397-150">Seleccione la unidad de tarjeta microSD Hola.</span><span class="sxs-lookup"><span data-stu-id="00397-150">Select hello microSD card drive.</span></span> <span data-ttu-id="00397-151">Tenga en cuenta que creación probablemente ya seleccionó unidad correcta Hola.</span><span class="sxs-lookup"><span data-stu-id="00397-151">Note that Etcher may have already selected hello correct drive.</span></span>
+   1. <span data-ttu-id="00397-152">Haga clic en Flash tooinstall Raspbian toohello microSD tarjeta.</span><span class="sxs-lookup"><span data-stu-id="00397-152">Click Flash tooinstall Raspbian toohello microSD card.</span></span>
+   1. <span data-ttu-id="00397-153">Quitar tarjeta microSD de hello del equipo cuando se completa la instalación.</span><span class="sxs-lookup"><span data-stu-id="00397-153">Remove hello microSD card from your computer when installation is complete.</span></span> <span data-ttu-id="00397-154">Es tarjeta microSD de tooremove seguro Hola directamente porque creación expulsa automáticamente o desmonta tarjeta microSD de hello tras la finalización.</span><span class="sxs-lookup"><span data-stu-id="00397-154">It's safe tooremove hello microSD card directly because Etcher automatically ejects or unmounts hello microSD card upon completion.</span></span>
+   1. <span data-ttu-id="00397-155">Inserte la tarjeta microSD de hello en Pi.</span><span class="sxs-lookup"><span data-stu-id="00397-155">Insert hello microSD card into Pi.</span></span>
 
-### <a name="enable-ssh-and-i2c"></a><span data-ttu-id="465d2-156">Habilitar SSH e I2C</span><span class="sxs-lookup"><span data-stu-id="465d2-156">Enable SSH and I2C</span></span>
+### <a name="enable-ssh-and-i2c"></a><span data-ttu-id="00397-156">Habilitar SSH e I2C</span><span class="sxs-lookup"><span data-stu-id="00397-156">Enable SSH and I2C</span></span>
 
-1. <span data-ttu-id="465d2-157">Conecte Pi al monitor, el teclado y el mouse, inicie Pi y luego inicie sesión en Raspbian con `pi` como nombre de usuario y `raspberry` como contraseña.</span><span class="sxs-lookup"><span data-stu-id="465d2-157">Connect Pi to the monitor, keyboard and mouse, start Pi and then log in Raspbian by using `pi` as the user name and `raspberry` as the password.</span></span>
-1. <span data-ttu-id="465d2-158">Haga clic en el icono de Raspberry > **Preferencias** > **Configuración de Raspberry Pi**.</span><span class="sxs-lookup"><span data-stu-id="465d2-158">Click the Raspberry icon > **Preferences** > **Raspberry Pi Configuration**.</span></span>
+1. <span data-ttu-id="00397-157">Conecte el monitor de toohello de Pi, teclado y mouse (ratón), inicie Pi y, a continuación, inicie sesión en Raspbian con `pi` como nombre de usuario de Hola y `raspberry` como contraseña de Hola.</span><span class="sxs-lookup"><span data-stu-id="00397-157">Connect Pi toohello monitor, keyboard and mouse, start Pi and then log in Raspbian by using `pi` as hello user name and `raspberry` as hello password.</span></span>
+1. <span data-ttu-id="00397-158">Haga clic en icono frambuesas hello > **preferencias** > **frambuesa Pi configuración**.</span><span class="sxs-lookup"><span data-stu-id="00397-158">Click hello Raspberry icon > **Preferences** > **Raspberry Pi Configuration**.</span></span>
 
-   ![Menú Preferencias de Raspbian](media/iot-hub-raspberry-pi-kit-node-get-started/1_raspbian-preferences-menu.png)
+   ![menú de Hello Raspbian preferencias](media/iot-hub-raspberry-pi-kit-node-get-started/1_raspbian-preferences-menu.png)
 
-1. <span data-ttu-id="465d2-160">En la pestaña **Interfaces**, establezca **I2C** y **SSH** en **Habilitar** y luego haga clic en **Aceptar**.</span><span class="sxs-lookup"><span data-stu-id="465d2-160">On the **Interfaces** tab, set **I2C** and **SSH** to **Enable**, and then click **OK**.</span></span> <span data-ttu-id="465d2-161">Si no tiene sensores físicos y desea usar datos de detección simulados, este paso es opcional.</span><span class="sxs-lookup"><span data-stu-id="465d2-161">If you don't have physical sensors and want to use simulated sensor data, this step is optional.</span></span>
+1. <span data-ttu-id="00397-160">En hello **Interfaces** pestaña, establezca **I2C** y **SSH** demasiado**habilitar**y, a continuación, haga clic en **Aceptar**.</span><span class="sxs-lookup"><span data-stu-id="00397-160">On hello **Interfaces** tab, set **I2C** and **SSH** too**Enable**, and then click **OK**.</span></span> <span data-ttu-id="00397-161">Si no tiene sensores físicos y desea que los datos de sensor toouse simulado, este paso es opcional.</span><span class="sxs-lookup"><span data-stu-id="00397-161">If you don't have physical sensors and want toouse simulated sensor data, this step is optional.</span></span>
 
    ![Habilitar I2C y SSH en Raspberry Pi](media/iot-hub-raspberry-pi-kit-node-get-started/2_enable-i2c-ssh-on-raspberry-pi.png)
 
 > [!NOTE] 
-<span data-ttu-id="465d2-163">Para habilitar SSH e I2C, puede buscar más documentos de referencia en [raspberrypi.org](https://www.raspberrypi.org/documentation/remote-access/ssh/) y [Adafruit.com](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c).</span><span class="sxs-lookup"><span data-stu-id="465d2-163">To enable SSH and I2C, you can find more reference documents on [raspberrypi.org](https://www.raspberrypi.org/documentation/remote-access/ssh/) and [Adafruit.com](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c).</span></span>
+<span data-ttu-id="00397-163">tooenable SSH y I2C, puede encontrar varios documentos de referencia en [raspberrypi.org](https://www.raspberrypi.org/documentation/remote-access/ssh/) y [Adafruit.com](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c).</span><span class="sxs-lookup"><span data-stu-id="00397-163">tooenable SSH and I2C, you can find more reference documents on [raspberrypi.org](https://www.raspberrypi.org/documentation/remote-access/ssh/) and [Adafruit.com](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c).</span></span>
 
-### <a name="connect-the-sensor-to-pi"></a><span data-ttu-id="465d2-164">Conectar el sensor a Pi</span><span class="sxs-lookup"><span data-stu-id="465d2-164">Connect the sensor to Pi</span></span>
+### <a name="connect-hello-sensor-toopi"></a><span data-ttu-id="00397-164">Conectar Hola sensor tooPi</span><span class="sxs-lookup"><span data-stu-id="00397-164">Connect hello sensor tooPi</span></span>
 
-<span data-ttu-id="465d2-165">Use la placa de pruebas y los cables de puente para conectar un LED y un BME280 a Pi como se indica a continuación.</span><span class="sxs-lookup"><span data-stu-id="465d2-165">Use the breadboard and jumper wires to connect an LED and a BME280 to Pi as follows.</span></span> <span data-ttu-id="465d2-166">Si no tiene el sensor, [omita esta sección](#connect-pi-to-the-network).</span><span class="sxs-lookup"><span data-stu-id="465d2-166">If you don’t have the sensor, [skip this section](#connect-pi-to-the-network).</span></span>
+<span data-ttu-id="00397-165">Utilice hello breadboard y puentes cables tooconnect un LED y un tooPi BME280 como se indica a continuación.</span><span class="sxs-lookup"><span data-stu-id="00397-165">Use hello breadboard and jumper wires tooconnect an LED and a BME280 tooPi as follows.</span></span> <span data-ttu-id="00397-166">Si no dispone de sensor hello, [omitir esta sección](#connect-pi-to-the-network).</span><span class="sxs-lookup"><span data-stu-id="00397-166">If you don’t have hello sensor, [skip this section](#connect-pi-to-the-network).</span></span>
 
-![Conexión de Raspberry Pi y el sensor](media/iot-hub-raspberry-pi-kit-node-get-started/3_raspberry-pi-sensor-connection.png)
+![Hola frambuesa Pi y sensor de conexión](media/iot-hub-raspberry-pi-kit-node-get-started/3_raspberry-pi-sensor-connection.png)
 
-<span data-ttu-id="465d2-168">El sensor BME280 recopila datos sobre la temperatura y la humedad,</span><span class="sxs-lookup"><span data-stu-id="465d2-168">The BME280 sensor can collect temperature and humidity data.</span></span> <span data-ttu-id="465d2-169">y el LED parpadea si se produce comunicación entre el dispositivo y la nube.</span><span class="sxs-lookup"><span data-stu-id="465d2-169">And the LED will blink if there is a communication between device and the cloud.</span></span> 
+<span data-ttu-id="00397-168">sensor de Hello BME280 puede recopilar datos de temperatura y humedad.</span><span class="sxs-lookup"><span data-stu-id="00397-168">hello BME280 sensor can collect temperature and humidity data.</span></span> <span data-ttu-id="00397-169">Y Hola LED parpadea si se produce una comunicación entre el dispositivo y hello en la nube.</span><span class="sxs-lookup"><span data-stu-id="00397-169">And hello LED will blink if there is a communication between device and hello cloud.</span></span> 
 
-<span data-ttu-id="465d2-170">En las patillas del sensor, use el siguiente cableado:</span><span class="sxs-lookup"><span data-stu-id="465d2-170">For sensor pins, use the following wiring:</span></span>
+<span data-ttu-id="00397-170">Para el PIN de sensor, use Hola después de conectar:</span><span class="sxs-lookup"><span data-stu-id="00397-170">For sensor pins, use hello following wiring:</span></span>
 
-| <span data-ttu-id="465d2-171">Inicio (sensor y LED)</span><span class="sxs-lookup"><span data-stu-id="465d2-171">Start (Sensor & LED)</span></span>     | <span data-ttu-id="465d2-172">Fin (placa)</span><span class="sxs-lookup"><span data-stu-id="465d2-172">End (Board)</span></span>            | <span data-ttu-id="465d2-173">Color de cable</span><span class="sxs-lookup"><span data-stu-id="465d2-173">Cable Color</span></span>   |
+| <span data-ttu-id="00397-171">Inicio (sensor y LED)</span><span class="sxs-lookup"><span data-stu-id="00397-171">Start (Sensor & LED)</span></span>     | <span data-ttu-id="00397-172">Fin (placa)</span><span class="sxs-lookup"><span data-stu-id="00397-172">End (Board)</span></span>            | <span data-ttu-id="00397-173">Color de cable</span><span class="sxs-lookup"><span data-stu-id="00397-173">Cable Color</span></span>   |
 | -----------------------  | ---------------------- | ------------: |
-| <span data-ttu-id="465d2-174">VDD (patilla 5G)</span><span class="sxs-lookup"><span data-stu-id="465d2-174">VDD (Pin 5G)</span></span>             | <span data-ttu-id="465d2-175">Potencia 3,3 V (patilla 1)</span><span class="sxs-lookup"><span data-stu-id="465d2-175">3.3V PWR (Pin 1)</span></span>       | <span data-ttu-id="465d2-176">Cable blanco</span><span class="sxs-lookup"><span data-stu-id="465d2-176">White cable</span></span>   |
-| <span data-ttu-id="465d2-177">GND (patilla 7G)</span><span class="sxs-lookup"><span data-stu-id="465d2-177">GND (Pin 7G)</span></span>             | <span data-ttu-id="465d2-178">GND (patilla 6)</span><span class="sxs-lookup"><span data-stu-id="465d2-178">GND (Pin 6)</span></span>            | <span data-ttu-id="465d2-179">Cable marrón</span><span class="sxs-lookup"><span data-stu-id="465d2-179">Brown cable</span></span>   |
-| <span data-ttu-id="465d2-180">SDI (patilla 10G)</span><span class="sxs-lookup"><span data-stu-id="465d2-180">SDI (Pin 10G)</span></span>            | <span data-ttu-id="465d2-181">I2C1 SDA (patilla 3)</span><span class="sxs-lookup"><span data-stu-id="465d2-181">I2C1 SDA (Pin 3)</span></span>       | <span data-ttu-id="465d2-182">Cable rojo</span><span class="sxs-lookup"><span data-stu-id="465d2-182">Red cable</span></span>     |
-| <span data-ttu-id="465d2-183">SCK (patilla 8G)</span><span class="sxs-lookup"><span data-stu-id="465d2-183">SCK (Pin 8G)</span></span>             | <span data-ttu-id="465d2-184">I2C1 SCL (patilla 5)</span><span class="sxs-lookup"><span data-stu-id="465d2-184">I2C1 SCL (Pin 5)</span></span>       | <span data-ttu-id="465d2-185">Cable naranja</span><span class="sxs-lookup"><span data-stu-id="465d2-185">Orange cable</span></span>  |
-| <span data-ttu-id="465d2-186">LED VDD (patilla 18F)</span><span class="sxs-lookup"><span data-stu-id="465d2-186">LED VDD (Pin 18F)</span></span>        | <span data-ttu-id="465d2-187">GPIO 24 (patilla 18)</span><span class="sxs-lookup"><span data-stu-id="465d2-187">GPIO 24 (Pin 18)</span></span>       | <span data-ttu-id="465d2-188">Cable blanco</span><span class="sxs-lookup"><span data-stu-id="465d2-188">White cable</span></span>   |
-| <span data-ttu-id="465d2-189">LED GND (patilla 17F)</span><span class="sxs-lookup"><span data-stu-id="465d2-189">LED GND (Pin 17F)</span></span>        | <span data-ttu-id="465d2-190">GND (patilla 20)</span><span class="sxs-lookup"><span data-stu-id="465d2-190">GND (Pin 20)</span></span>           | <span data-ttu-id="465d2-191">Cable negro</span><span class="sxs-lookup"><span data-stu-id="465d2-191">Black cable</span></span>   |
+| <span data-ttu-id="00397-174">VDD (patilla 5G)</span><span class="sxs-lookup"><span data-stu-id="00397-174">VDD (Pin 5G)</span></span>             | <span data-ttu-id="00397-175">Potencia 3,3 V (patilla 1)</span><span class="sxs-lookup"><span data-stu-id="00397-175">3.3V PWR (Pin 1)</span></span>       | <span data-ttu-id="00397-176">Cable blanco</span><span class="sxs-lookup"><span data-stu-id="00397-176">White cable</span></span>   |
+| <span data-ttu-id="00397-177">GND (patilla 7G)</span><span class="sxs-lookup"><span data-stu-id="00397-177">GND (Pin 7G)</span></span>             | <span data-ttu-id="00397-178">GND (patilla 6)</span><span class="sxs-lookup"><span data-stu-id="00397-178">GND (Pin 6)</span></span>            | <span data-ttu-id="00397-179">Cable marrón</span><span class="sxs-lookup"><span data-stu-id="00397-179">Brown cable</span></span>   |
+| <span data-ttu-id="00397-180">SDI (patilla 10G)</span><span class="sxs-lookup"><span data-stu-id="00397-180">SDI (Pin 10G)</span></span>            | <span data-ttu-id="00397-181">I2C1 SDA (patilla 3)</span><span class="sxs-lookup"><span data-stu-id="00397-181">I2C1 SDA (Pin 3)</span></span>       | <span data-ttu-id="00397-182">Cable rojo</span><span class="sxs-lookup"><span data-stu-id="00397-182">Red cable</span></span>     |
+| <span data-ttu-id="00397-183">SCK (patilla 8G)</span><span class="sxs-lookup"><span data-stu-id="00397-183">SCK (Pin 8G)</span></span>             | <span data-ttu-id="00397-184">I2C1 SCL (patilla 5)</span><span class="sxs-lookup"><span data-stu-id="00397-184">I2C1 SCL (Pin 5)</span></span>       | <span data-ttu-id="00397-185">Cable naranja</span><span class="sxs-lookup"><span data-stu-id="00397-185">Orange cable</span></span>  |
+| <span data-ttu-id="00397-186">LED VDD (patilla 18F)</span><span class="sxs-lookup"><span data-stu-id="00397-186">LED VDD (Pin 18F)</span></span>        | <span data-ttu-id="00397-187">GPIO 24 (patilla 18)</span><span class="sxs-lookup"><span data-stu-id="00397-187">GPIO 24 (Pin 18)</span></span>       | <span data-ttu-id="00397-188">Cable blanco</span><span class="sxs-lookup"><span data-stu-id="00397-188">White cable</span></span>   |
+| <span data-ttu-id="00397-189">LED GND (patilla 17F)</span><span class="sxs-lookup"><span data-stu-id="00397-189">LED GND (Pin 17F)</span></span>        | <span data-ttu-id="00397-190">GND (patilla 20)</span><span class="sxs-lookup"><span data-stu-id="00397-190">GND (Pin 20)</span></span>           | <span data-ttu-id="00397-191">Cable negro</span><span class="sxs-lookup"><span data-stu-id="00397-191">Black cable</span></span>   |
 
-<span data-ttu-id="465d2-192">Haga clic para ver [Raspberry Pi 2 & 3 Pin mappings (Asignaciones de patillas de Raspberry Pi 2 y 3)](https://developer.microsoft.com/windows/iot/docs/pinmappingsrpi) para su referencia.</span><span class="sxs-lookup"><span data-stu-id="465d2-192">Click to view [Raspberry Pi 2 & 3 Pin mappings](https://developer.microsoft.com/windows/iot/docs/pinmappingsrpi) for your reference.</span></span>
+<span data-ttu-id="00397-192">Haga clic en tooview [frambuesa Pi 2 y 3 asignaciones de Pin](https://developer.microsoft.com/windows/iot/docs/pinmappingsrpi) para su referencia.</span><span class="sxs-lookup"><span data-stu-id="00397-192">Click tooview [Raspberry Pi 2 & 3 Pin mappings](https://developer.microsoft.com/windows/iot/docs/pinmappingsrpi) for your reference.</span></span>
 
-<span data-ttu-id="465d2-193">Una vez que haya conectado correctamente BME280 a Raspberry Pi, su aspecto debería ser el de la imagen siguiente.</span><span class="sxs-lookup"><span data-stu-id="465d2-193">After you've successfully connected BME280 to your Raspberry Pi, it should be like below image.</span></span>
+<span data-ttu-id="00397-193">Una vez se haya conectado correctamente BME280 tooyour frambuesa Pi, debería ser como debajo de imagen.</span><span class="sxs-lookup"><span data-stu-id="00397-193">After you've successfully connected BME280 tooyour Raspberry Pi, it should be like below image.</span></span>
 
 ![Pi y BME280 conectados](media/iot-hub-raspberry-pi-kit-node-get-started/4_connected-pi.jpg)
 
-### <a name="connect-pi-to-the-network"></a><span data-ttu-id="465d2-195">Conexión de Pi a la red</span><span class="sxs-lookup"><span data-stu-id="465d2-195">Connect Pi to the network</span></span>
+### <a name="connect-pi-toohello-network"></a><span data-ttu-id="00397-195">Conectar red toohello de Pi</span><span class="sxs-lookup"><span data-stu-id="00397-195">Connect Pi toohello network</span></span>
 
-<span data-ttu-id="465d2-196">Encienda la Pi mediante un cable microUSB y la fuente de alimentación.</span><span class="sxs-lookup"><span data-stu-id="465d2-196">Turn on Pi by using the micro USB cable and the power supply.</span></span> <span data-ttu-id="465d2-197">Use el cable Ethernet para conectar Pi a la red cableada o siga las [instrucciones de Raspberry Pi Foundation](https://www.raspberrypi.org/learning/software-guide/wifi/) para conectar Pi a la red inalámbrica.</span><span class="sxs-lookup"><span data-stu-id="465d2-197">Use the Ethernet cable to connect Pi to your wired network or follow the [instructions from the Raspberry Pi Foundation](https://www.raspberrypi.org/learning/software-guide/wifi/) to connect Pi to your wireless network.</span></span> <span data-ttu-id="465d2-198">Después de que Pi se ha conectado correctamente a la red, debe anotar la [dirección IP de su Pi](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address).</span><span class="sxs-lookup"><span data-stu-id="465d2-198">After your Pi has been successfully connected to the network, you need to take a note of the [IP address of your Pi](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address).</span></span>
+<span data-ttu-id="00397-196">Activar Pi mediante cable USB micro de Hola y fuente de alimentación de Hola.</span><span class="sxs-lookup"><span data-stu-id="00397-196">Turn on Pi by using hello micro USB cable and hello power supply.</span></span> <span data-ttu-id="00397-197">Use Hola Ethernet por cable tooconnect Pi tooyour con cable de red o siga hello [las instrucciones de hello frambuesa Pi Foundation](https://www.raspberrypi.org/learning/software-guide/wifi/) red inalámbrica de tooconnect Pi tooyour.</span><span class="sxs-lookup"><span data-stu-id="00397-197">Use hello Ethernet cable tooconnect Pi tooyour wired network or follow hello [instructions from hello Raspberry Pi Foundation](https://www.raspberrypi.org/learning/software-guide/wifi/) tooconnect Pi tooyour wireless network.</span></span> <span data-ttu-id="00397-198">Después de que el instalador de plataforma ha sido red toohello conectado correctamente, deberá tootake una nota de hello [dirección IP de su Pi](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address).</span><span class="sxs-lookup"><span data-stu-id="00397-198">After your Pi has been successfully connected toohello network, you need tootake a note of hello [IP address of your Pi](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address).</span></span>
 
-![Conectado a la red cableada](media/iot-hub-raspberry-pi-kit-node-get-started/5_power-on-pi.jpg)
+![Red toowired conectado](media/iot-hub-raspberry-pi-kit-node-get-started/5_power-on-pi.jpg)
 
 > [!NOTE]
-> <span data-ttu-id="465d2-200">Asegúrese de que la Pi se conecta a la misma red que el equipo.</span><span class="sxs-lookup"><span data-stu-id="465d2-200">Make sure that Pi is connected to the same network as your computer.</span></span> <span data-ttu-id="465d2-201">Por ejemplo, si el equipo está conectado a una red inalámbrica mientras Pi está conectada a una red cableada, es posible que no vea la dirección IP en la salida de devdisco.</span><span class="sxs-lookup"><span data-stu-id="465d2-201">For example, if your computer is connected to a wireless network while Pi is connected to a wired network, you might not see the IP address in the devdisco output.</span></span>
+> <span data-ttu-id="00397-200">Asegúrese de que ese Pi está conectado toohello misma red que el equipo.</span><span class="sxs-lookup"><span data-stu-id="00397-200">Make sure that Pi is connected toohello same network as your computer.</span></span> <span data-ttu-id="00397-201">Por ejemplo, si el equipo está conectado tooa red inalámbrica mientras Pi es tooa conectado por cable de red, no verá Hola IP dirección en la salida de hello devdisco.</span><span class="sxs-lookup"><span data-stu-id="00397-201">For example, if your computer is connected tooa wireless network while Pi is connected tooa wired network, you might not see hello IP address in hello devdisco output.</span></span>
 
-## <a name="run-a-sample-application-on-pi"></a><span data-ttu-id="465d2-202">Ejecutar una aplicación de ejemplo en Pi</span><span class="sxs-lookup"><span data-stu-id="465d2-202">Run a sample application on Pi</span></span>
+## <a name="run-a-sample-application-on-pi"></a><span data-ttu-id="00397-202">Ejecutar una aplicación de ejemplo en Pi</span><span class="sxs-lookup"><span data-stu-id="00397-202">Run a sample application on Pi</span></span>
 
-### <a name="clone-sample-application-and-install-the-prerequisite-packages"></a><span data-ttu-id="465d2-203">Clonar una aplicación de ejemplo e instalar los paquetes de requisitos previos</span><span class="sxs-lookup"><span data-stu-id="465d2-203">Clone sample application and install the prerequisite packages</span></span>
+### <a name="clone-sample-application-and-install-hello-prerequisite-packages"></a><span data-ttu-id="00397-203">Clonar aplicación de ejemplo e instalar paquetes de requisitos previos de Hola</span><span class="sxs-lookup"><span data-stu-id="00397-203">Clone sample application and install hello prerequisite packages</span></span>
 
-1. <span data-ttu-id="465d2-204">Use uno de los siguientes clientes SSH del equipo host para conectar con Raspberry Pi.</span><span class="sxs-lookup"><span data-stu-id="465d2-204">Use one of the following SSH clients from your host computer to connect to your Raspberry Pi.</span></span>
+1. <span data-ttu-id="00397-204">Utilice uno de hello siguiendo a los clientes SSH de su tooyour de tooconnect del equipo host frambuesa Pi.</span><span class="sxs-lookup"><span data-stu-id="00397-204">Use one of hello following SSH clients from your host computer tooconnect tooyour Raspberry Pi.</span></span>
    
-   <span data-ttu-id="465d2-205">**Usuarios de Windows**</span><span class="sxs-lookup"><span data-stu-id="465d2-205">**Windows Users**</span></span>
-   1. <span data-ttu-id="465d2-206">Descargue e instale [PuTTY](http://www.putty.org/) para Windows.</span><span class="sxs-lookup"><span data-stu-id="465d2-206">Download and install [PuTTY](http://www.putty.org/) for Windows.</span></span> 
-   1. <span data-ttu-id="465d2-207">Copie la dirección IP de Pi en la sección de nombre de host (o dirección IP) y seleccione SSH como el tipo de conexión.</span><span class="sxs-lookup"><span data-stu-id="465d2-207">Copy the IP address of your Pi into the Host name (or IP address) section and select SSH as the connection type.</span></span>
+   <span data-ttu-id="00397-205">**Usuarios de Windows**</span><span class="sxs-lookup"><span data-stu-id="00397-205">**Windows Users**</span></span>
+   1. <span data-ttu-id="00397-206">Descargue e instale [PuTTY](http://www.putty.org/) para Windows.</span><span class="sxs-lookup"><span data-stu-id="00397-206">Download and install [PuTTY](http://www.putty.org/) for Windows.</span></span> 
+   1. <span data-ttu-id="00397-207">Copie la dirección IP de saludo de la sección de Pi en nombre de Host de hello (o dirección IP) y seleccione SSH como tipo de conexión de Hola.</span><span class="sxs-lookup"><span data-stu-id="00397-207">Copy hello IP address of your Pi into hello Host name (or IP address) section and select SSH as hello connection type.</span></span>
    
    ![PuTTy](media/iot-hub-raspberry-pi-kit-node-get-started/7_putty-windows.png)
    
-   <span data-ttu-id="465d2-209">**Usuarios de Mac y Ubuntu**</span><span class="sxs-lookup"><span data-stu-id="465d2-209">**Mac and Ubuntu Users**</span></span>
+   <span data-ttu-id="00397-209">**Usuarios de Mac y Ubuntu**</span><span class="sxs-lookup"><span data-stu-id="00397-209">**Mac and Ubuntu Users**</span></span>
    
-   <span data-ttu-id="465d2-210">Use el cliente de SSH integrado en Ubuntu o macOS.</span><span class="sxs-lookup"><span data-stu-id="465d2-210">Use the built-in SSH client on Ubuntu or macOS.</span></span> <span data-ttu-id="465d2-211">Quizás deba ejecutar `ssh pi@<ip address of pi>` para conectar Pi mediante SSH.</span><span class="sxs-lookup"><span data-stu-id="465d2-211">You might need to run `ssh pi@<ip address of pi>` to connect Pi via SSH.</span></span>
+   <span data-ttu-id="00397-210">Use el cliente SSH integrado de hello en Ubuntu o macOS.</span><span class="sxs-lookup"><span data-stu-id="00397-210">Use hello built-in SSH client on Ubuntu or macOS.</span></span> <span data-ttu-id="00397-211">Es posible que tenga toorun `ssh pi@<ip address of pi>` tooconnect Pi mediante SSH.</span><span class="sxs-lookup"><span data-stu-id="00397-211">You might need toorun `ssh pi@<ip address of pi>` tooconnect Pi via SSH.</span></span>
    > [!NOTE] 
-   <span data-ttu-id="465d2-212">El nombre de usuario predeterminado es `pi` y la contraseña es `raspberry`.</span><span class="sxs-lookup"><span data-stu-id="465d2-212">The default username is `pi` , and the password is `raspberry`.</span></span>
+   <span data-ttu-id="00397-212">el nombre de usuario de Hello predeterminada es `pi` , y es la contraseña de hello `raspberry`.</span><span class="sxs-lookup"><span data-stu-id="00397-212">hello default username is `pi` , and hello password is `raspberry`.</span></span>
 
-1. <span data-ttu-id="465d2-213">Instale Node.js y NPM en Pi.</span><span class="sxs-lookup"><span data-stu-id="465d2-213">Install Node.js and NPM to your Pi.</span></span>
+1. <span data-ttu-id="00397-213">Instalar Node.js y NPM tooyour Pi.</span><span class="sxs-lookup"><span data-stu-id="00397-213">Install Node.js and NPM tooyour Pi.</span></span>
    
-   <span data-ttu-id="465d2-214">Primero debe comprobar la versión de Node.js con el siguiente comando.</span><span class="sxs-lookup"><span data-stu-id="465d2-214">First you should check your Node.js version with the following command.</span></span> 
+   <span data-ttu-id="00397-214">Primero debe comprobar la versión de Node.js con el siguiente comando de Hola.</span><span class="sxs-lookup"><span data-stu-id="00397-214">First you should check your Node.js version with hello following command.</span></span> 
    
    ```bash
    node -v
    ```
 
-   <span data-ttu-id="465d2-215">Si la versión es inferior a 4.x o no hay ningún Node.js en el Pi, ejecute entonces el siguiente comando para instalar o actualizar Node.js.</span><span class="sxs-lookup"><span data-stu-id="465d2-215">If the version is lower than 4.x or there is no Node.js on your Pi, then run the following command to install or update Node.js.</span></span>
+   <span data-ttu-id="00397-215">Si la versión de hello es inferior a 4.x o no hay ningún Node.js en el Pi, a continuación, ejecute hello después tooinstall de comando o actualizar Node.js.</span><span class="sxs-lookup"><span data-stu-id="00397-215">If hello version is lower than 4.x or there is no Node.js on your Pi, then run hello following command tooinstall or update Node.js.</span></span>
 
    ```bash
    curl -sL http://deb.nodesource.com/setup_4.x | sudo -E bash
    sudo apt-get -y install nodejs
    ```
 
-1. <span data-ttu-id="465d2-216">Clone la aplicación de ejemplo mediante el comando siguiente:</span><span class="sxs-lookup"><span data-stu-id="465d2-216">Clone the sample application by running the following command:</span></span>
+1. <span data-ttu-id="00397-216">Clonar aplicación de ejemplo de Hola ejecutando Hola siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="00397-216">Clone hello sample application by running hello following command:</span></span>
 
    ```bash
    git clone https://github.com/Azure-Samples/iot-hub-node-raspberrypi-client-app
    ```
 
-1. <span data-ttu-id="465d2-217">Instale todos los paquetes mediante el comando siguiente.</span><span class="sxs-lookup"><span data-stu-id="465d2-217">Install all packages by the following command.</span></span> <span data-ttu-id="465d2-218">Incluye el SDK de dispositivo IoT de Azure, la biblioteca del sensor BME280 y la biblioteca de cableado de Pi.</span><span class="sxs-lookup"><span data-stu-id="465d2-218">It includes Azure IoT device SDK, BME280 Sensor library and Wiring Pi library.</span></span>
+1. <span data-ttu-id="00397-217">Instale todos los paquetes mediante el siguiente comando de Hola.</span><span class="sxs-lookup"><span data-stu-id="00397-217">Install all packages by hello following command.</span></span> <span data-ttu-id="00397-218">Incluye el SDK de dispositivo IoT de Azure, la biblioteca del sensor BME280 y la biblioteca de cableado de Pi.</span><span class="sxs-lookup"><span data-stu-id="00397-218">It includes Azure IoT device SDK, BME280 Sensor library and Wiring Pi library.</span></span>
 
    ```bash
    cd iot-hub-node-raspberrypi-client-app
    sudo npm install
    ```
    > [!NOTE] 
-   <span data-ttu-id="465d2-219">Este proceso de instalación puede llevar varios minutos en función de la conexión de red.</span><span class="sxs-lookup"><span data-stu-id="465d2-219">It might take several minutes to finish this installation process depending on your network connection.</span></span>
+   <span data-ttu-id="00397-219">Es posible que tarde varios toofinish minutos dependiendo de la conexión de red en este proceso de instalación.</span><span class="sxs-lookup"><span data-stu-id="00397-219">It might take several minutes toofinish this installation process depending on your network connection.</span></span>
 
-### <a name="configure-the-sample-application"></a><span data-ttu-id="465d2-220">Configurar la aplicación de ejemplo</span><span class="sxs-lookup"><span data-stu-id="465d2-220">Configure the sample application</span></span>
+### <a name="configure-hello-sample-application"></a><span data-ttu-id="00397-220">Configurar la aplicación de ejemplo de Hola</span><span class="sxs-lookup"><span data-stu-id="00397-220">Configure hello sample application</span></span>
 
-1. <span data-ttu-id="465d2-221">Abra el archivo config mediante la ejecución de los comandos siguientes:</span><span class="sxs-lookup"><span data-stu-id="465d2-221">Open the config file by running the following commands:</span></span>
+1. <span data-ttu-id="00397-221">Abra el archivo de configuración de hello ejecutando Hola siguientes comandos:</span><span class="sxs-lookup"><span data-stu-id="00397-221">Open hello config file by running hello following commands:</span></span>
 
    ```bash
    nano config.json
@@ -196,30 +196,30 @@ ms.lasthandoff: 08/29/2017
 
    ![Archivo config](media/iot-hub-raspberry-pi-kit-node-get-started/6_config-file.png)
 
-   <span data-ttu-id="465d2-223">Hay dos elementos en este archivo que se pueden configurar.</span><span class="sxs-lookup"><span data-stu-id="465d2-223">There are two items in this file you can configurate.</span></span> <span data-ttu-id="465d2-224">La primera es `interval`, que define el intervalo de tiempo (en milisegundos) entre dos mensajes que se envían a la nube.</span><span class="sxs-lookup"><span data-stu-id="465d2-224">The first one is `interval`, which defines the time interval (in milliseconds) between two messages that send to cloud.</span></span> <span data-ttu-id="465d2-225">La segunda es `simulatedData`, un valor booleano que indica si se usan los datos de sensor simulados o no.</span><span class="sxs-lookup"><span data-stu-id="465d2-225">The second one `simulatedData`,which is a Boolean value for whether to use simulated sensor data or not.</span></span>
+   <span data-ttu-id="00397-223">Hay dos elementos en este archivo que se pueden configurar.</span><span class="sxs-lookup"><span data-stu-id="00397-223">There are two items in this file you can configurate.</span></span> <span data-ttu-id="00397-224">Hello primero uno es `interval`, que define el intervalo de tiempo de hello (en milisegundos) entre los dos mensajes que envían toocloud.</span><span class="sxs-lookup"><span data-stu-id="00397-224">hello first one is `interval`, which defines hello time interval (in milliseconds) between two messages that send toocloud.</span></span> <span data-ttu-id="00397-225">Hola otra `simulatedData`, que es un valor booleano para si toouse simulado los datos de sensor o no.</span><span class="sxs-lookup"><span data-stu-id="00397-225">hello second one `simulatedData`,which is a Boolean value for whether toouse simulated sensor data or not.</span></span>
 
-   <span data-ttu-id="465d2-226">Si **no tiene el sensor**, establezca el valor `simulatedData` en `true` para que la aplicación de ejemplo cree y use datos de sensor simulados.</span><span class="sxs-lookup"><span data-stu-id="465d2-226">If you **don't have the sensor**, set the `simulatedData` value to `true` to make the sample application create and use simulated sensor data.</span></span>
+   <span data-ttu-id="00397-226">Si se **no tiene el sensor de hello**, hello establezca `simulatedData` valor demasiado`true` aplicación de ejemplo de Hola toomake crear y utilizar datos de detección simulada.</span><span class="sxs-lookup"><span data-stu-id="00397-226">If you **don't have hello sensor**, set hello `simulatedData` value too`true` toomake hello sample application create and use simulated sensor data.</span></span>
 
-1. <span data-ttu-id="465d2-227">Guarde y salga al presionar Control-O > Entrar > Control-X.</span><span class="sxs-lookup"><span data-stu-id="465d2-227">Save and exit by pressing Control-O > Enter > Control-X.</span></span>
+1. <span data-ttu-id="00397-227">Guarde y salga al presionar Control-O > Entrar > Control-X.</span><span class="sxs-lookup"><span data-stu-id="00397-227">Save and exit by pressing Control-O > Enter > Control-X.</span></span>
 
-### <a name="run-the-sample-application"></a><span data-ttu-id="465d2-228">Ejecutar la aplicación de ejemplo</span><span class="sxs-lookup"><span data-stu-id="465d2-228">Run the sample application</span></span>
+### <a name="run-hello-sample-application"></a><span data-ttu-id="00397-228">Ejecutar la aplicación de ejemplo de Hola</span><span class="sxs-lookup"><span data-stu-id="00397-228">Run hello sample application</span></span>
 
-<span data-ttu-id="465d2-229">Ejecute la aplicación de ejemplo mediante el comando siguiente:</span><span class="sxs-lookup"><span data-stu-id="465d2-229">Run the sample application by running the following command:</span></span>
+<span data-ttu-id="00397-229">Ejecute la aplicación de ejemplo de Hola con hello siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="00397-229">Run hello sample application by running hello following command:</span></span>
 
    ```bash
    sudo node index.js '<YOUR AZURE IOT HUB DEVICE CONNECTION STRING>'
    ```
 
    > [!NOTE] 
-   <span data-ttu-id="465d2-230">Asegúrese de que copia y pega la cadena de conexión del dispositivo entre las comillas simples.</span><span class="sxs-lookup"><span data-stu-id="465d2-230">Make sure you copy-paste the device connection string into the single quotes.</span></span>
+   <span data-ttu-id="00397-230">Asegúrese de que copia y pegar cadena de conexión de dispositivo de hello en comillas simples de Hola.</span><span class="sxs-lookup"><span data-stu-id="00397-230">Make sure you copy-paste hello device connection string into hello single quotes.</span></span>
 
 
-<span data-ttu-id="465d2-231">Debería ver el resultado siguiente, que muestra los datos del sensor y los mensajes que se envían a IoT Hub.</span><span class="sxs-lookup"><span data-stu-id="465d2-231">You should see the following output that shows the sensor data and the messages that are sent to your IoT hub.</span></span>
+<span data-ttu-id="00397-231">Debería ver la siguiente Hola de salida que muestra Hola mensajes hello y datos del sensor que se envían tooyour centro de IoT.</span><span class="sxs-lookup"><span data-stu-id="00397-231">You should see hello following output that shows hello sensor data and hello messages that are sent tooyour IoT hub.</span></span>
 
-![Resultado: datos de sensor enviados desde Raspberry Pi a IoT Hub](media/iot-hub-raspberry-pi-kit-node-get-started/8_run-output.png)
+![Salida: datos de sensor enviados desde el centro de IoT de frambuesa Pi tooyour](media/iot-hub-raspberry-pi-kit-node-get-started/8_run-output.png)
 
-## <a name="next-steps"></a><span data-ttu-id="465d2-233">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="465d2-233">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="00397-233">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="00397-233">Next steps</span></span>
 
-<span data-ttu-id="465d2-234">Ha ejecutado una aplicación de ejemplo para recopilar datos de sensor y enviarlos a IoT Hub.</span><span class="sxs-lookup"><span data-stu-id="465d2-234">You’ve run a sample application to collect sensor data and send it to your IoT hub.</span></span> <span data-ttu-id="465d2-235">Para ver los mensajes que ha enviado Raspberry Pi a IoT Hub o para enviar mensajes a Raspberry Pi en una interfaz de la línea de comandos, consulte el tutorial [Administración de los mensajes de dispositivo con iothub-explorer](https://docs.microsoft.com/en-gb/azure/iot-hub/iot-hub-explorer-cloud-device-messaging).</span><span class="sxs-lookup"><span data-stu-id="465d2-235">To see the messages that your Raspberry Pi has sent to your IoT hub or send messages to your Raspberry Pi in a command line interface, see the [Manage cloud device messaging with iothub-explorer tutorial](https://docs.microsoft.com/en-gb/azure/iot-hub/iot-hub-explorer-cloud-device-messaging).</span></span>
+<span data-ttu-id="00397-234">Se han ejecutado un datos de sensor de toocollect de aplicación de ejemplo y se envía tooyour centro de IoT.</span><span class="sxs-lookup"><span data-stu-id="00397-234">You’ve run a sample application toocollect sensor data and send it tooyour IoT hub.</span></span> <span data-ttu-id="00397-235">mensajes de saludo de toosee que el instalador de plataforma de frambuesa ha enviado IoT de tooyour concentrador o envío tooyour de mensajes frambuesa Pi en una interfaz de línea de comandos, vea hello [administrar nube dispositivo mensajería con el centro de IOT explorer, tutorial](https://docs.microsoft.com/en-gb/azure/iot-hub/iot-hub-explorer-cloud-device-messaging).</span><span class="sxs-lookup"><span data-stu-id="00397-235">toosee hello messages that your Raspberry Pi has sent tooyour IoT hub or send messages tooyour Raspberry Pi in a command line interface, see hello [Manage cloud device messaging with iothub-explorer tutorial](https://docs.microsoft.com/en-gb/azure/iot-hub/iot-hub-explorer-cloud-device-messaging).</span></span>
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

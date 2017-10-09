@@ -1,6 +1,6 @@
 ---
-title: "Funciones lógicas de la plantilla de Azure Resource Manager | Microsoft Docs"
-description: "Describe las funciones que se pueden usar en una plantilla de Azure Resource Manager para determinar valores lógicos."
+title: "funciones de plantilla de administrador de recursos aaaAzure - lógicas | Documentos de Microsoft"
+description: "Describe hello toouse de funciones en una lógica de valores de toodetermine de plantilla Azure Resource Manager."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,41 +14,41 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2017
 ms.author: tomfitz
-ms.openlocfilehash: 313601ad99cdc12c4b50f5469959d37a9fa70d35
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: aec6341fbde00b4eba3b4539ff9a9aec774333fd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="logical-functions-for-azure-resource-manager-templates"></a><span data-ttu-id="0844e-103">Funciones lógicas para las plantillas de Azure Resource Manager</span><span class="sxs-lookup"><span data-stu-id="0844e-103">Logical functions for Azure Resource Manager templates</span></span>
+# <a name="logical-functions-for-azure-resource-manager-templates"></a><span data-ttu-id="ad968-103">Funciones lógicas para las plantillas de Azure Resource Manager</span><span class="sxs-lookup"><span data-stu-id="ad968-103">Logical functions for Azure Resource Manager templates</span></span>
 
-<span data-ttu-id="0844e-104">Resource Manager proporciona varias funciones para realizar comparaciones en las plantillas.</span><span class="sxs-lookup"><span data-stu-id="0844e-104">Resource Manager provides several functions for making comparisons in your templates.</span></span>
+<span data-ttu-id="ad968-104">Resource Manager proporciona varias funciones para realizar comparaciones en las plantillas.</span><span class="sxs-lookup"><span data-stu-id="ad968-104">Resource Manager provides several functions for making comparisons in your templates.</span></span>
 
-* [<span data-ttu-id="0844e-105">and</span><span class="sxs-lookup"><span data-stu-id="0844e-105">and</span></span>](#and)
-* [<span data-ttu-id="0844e-106">bool</span><span class="sxs-lookup"><span data-stu-id="0844e-106">bool</span></span>](#bool)
-* [<span data-ttu-id="0844e-107">if</span><span class="sxs-lookup"><span data-stu-id="0844e-107">if</span></span>](#if)
-* [<span data-ttu-id="0844e-108">not</span><span class="sxs-lookup"><span data-stu-id="0844e-108">not</span></span>](#not)
-* [<span data-ttu-id="0844e-109">or</span><span class="sxs-lookup"><span data-stu-id="0844e-109">or</span></span>](#or)
+* [<span data-ttu-id="ad968-105">and</span><span class="sxs-lookup"><span data-stu-id="ad968-105">and</span></span>](#and)
+* [<span data-ttu-id="ad968-106">bool</span><span class="sxs-lookup"><span data-stu-id="ad968-106">bool</span></span>](#bool)
+* [<span data-ttu-id="ad968-107">if</span><span class="sxs-lookup"><span data-stu-id="ad968-107">if</span></span>](#if)
+* [<span data-ttu-id="ad968-108">not</span><span class="sxs-lookup"><span data-stu-id="ad968-108">not</span></span>](#not)
+* [<span data-ttu-id="ad968-109">or</span><span class="sxs-lookup"><span data-stu-id="ad968-109">or</span></span>](#or)
 
-## <a name="and"></a><span data-ttu-id="0844e-110">y</span><span class="sxs-lookup"><span data-stu-id="0844e-110">and</span></span>
+## <a name="and"></a><span data-ttu-id="ad968-110">y</span><span class="sxs-lookup"><span data-stu-id="ad968-110">and</span></span>
 `and(arg1, arg2)`
 
-<span data-ttu-id="0844e-111">Comprueba si los dos valores de parámetro son verdaderos.</span><span class="sxs-lookup"><span data-stu-id="0844e-111">Checks whether both parameter values are true.</span></span>
+<span data-ttu-id="ad968-111">Comprueba si los dos valores de parámetro son verdaderos.</span><span class="sxs-lookup"><span data-stu-id="ad968-111">Checks whether both parameter values are true.</span></span>
 
-### <a name="parameters"></a><span data-ttu-id="0844e-112">parameters</span><span class="sxs-lookup"><span data-stu-id="0844e-112">Parameters</span></span>
+### <a name="parameters"></a><span data-ttu-id="ad968-112">parameters</span><span class="sxs-lookup"><span data-stu-id="ad968-112">Parameters</span></span>
 
-| <span data-ttu-id="0844e-113">Parámetro</span><span class="sxs-lookup"><span data-stu-id="0844e-113">Parameter</span></span> | <span data-ttu-id="0844e-114">Obligatorio</span><span class="sxs-lookup"><span data-stu-id="0844e-114">Required</span></span> | <span data-ttu-id="0844e-115">Tipo</span><span class="sxs-lookup"><span data-stu-id="0844e-115">Type</span></span> | <span data-ttu-id="0844e-116">Descripción</span><span class="sxs-lookup"><span data-stu-id="0844e-116">Description</span></span> |
+| <span data-ttu-id="ad968-113">Parámetro</span><span class="sxs-lookup"><span data-stu-id="ad968-113">Parameter</span></span> | <span data-ttu-id="ad968-114">Obligatorio</span><span class="sxs-lookup"><span data-stu-id="ad968-114">Required</span></span> | <span data-ttu-id="ad968-115">Tipo</span><span class="sxs-lookup"><span data-stu-id="ad968-115">Type</span></span> | <span data-ttu-id="ad968-116">Descripción</span><span class="sxs-lookup"><span data-stu-id="ad968-116">Description</span></span> |
 |:--- |:--- |:--- |:--- |
-| <span data-ttu-id="0844e-117">arg1</span><span class="sxs-lookup"><span data-stu-id="0844e-117">arg1</span></span> |<span data-ttu-id="0844e-118">Sí</span><span class="sxs-lookup"><span data-stu-id="0844e-118">Yes</span></span> |<span data-ttu-id="0844e-119">boolean</span><span class="sxs-lookup"><span data-stu-id="0844e-119">boolean</span></span> |<span data-ttu-id="0844e-120">Primer valor cuya veracidad se comprueba.</span><span class="sxs-lookup"><span data-stu-id="0844e-120">The first value to check whether is true.</span></span> |
-| <span data-ttu-id="0844e-121">arg2</span><span class="sxs-lookup"><span data-stu-id="0844e-121">arg2</span></span> |<span data-ttu-id="0844e-122">Sí</span><span class="sxs-lookup"><span data-stu-id="0844e-122">Yes</span></span> |<span data-ttu-id="0844e-123">boolean</span><span class="sxs-lookup"><span data-stu-id="0844e-123">boolean</span></span> |<span data-ttu-id="0844e-124">Segundo valor cuya veracidad se comprueba.</span><span class="sxs-lookup"><span data-stu-id="0844e-124">The second value to check whether is true.</span></span> |
+| <span data-ttu-id="ad968-117">arg1</span><span class="sxs-lookup"><span data-stu-id="ad968-117">arg1</span></span> |<span data-ttu-id="ad968-118">Sí</span><span class="sxs-lookup"><span data-stu-id="ad968-118">Yes</span></span> |<span data-ttu-id="ad968-119">boolean</span><span class="sxs-lookup"><span data-stu-id="ad968-119">boolean</span></span> |<span data-ttu-id="ad968-120">Hola primera toocheck valor si es true.</span><span class="sxs-lookup"><span data-stu-id="ad968-120">hello first value toocheck whether is true.</span></span> |
+| <span data-ttu-id="ad968-121">arg2</span><span class="sxs-lookup"><span data-stu-id="ad968-121">arg2</span></span> |<span data-ttu-id="ad968-122">Sí</span><span class="sxs-lookup"><span data-stu-id="ad968-122">Yes</span></span> |<span data-ttu-id="ad968-123">boolean</span><span class="sxs-lookup"><span data-stu-id="ad968-123">boolean</span></span> |<span data-ttu-id="ad968-124">Hola segundo toocheck valor si es true.</span><span class="sxs-lookup"><span data-stu-id="ad968-124">hello second value toocheck whether is true.</span></span> |
 
-### <a name="return-value"></a><span data-ttu-id="0844e-125">Valor devuelto</span><span class="sxs-lookup"><span data-stu-id="0844e-125">Return value</span></span>
+### <a name="return-value"></a><span data-ttu-id="ad968-125">Valor devuelto</span><span class="sxs-lookup"><span data-stu-id="ad968-125">Return value</span></span>
 
-<span data-ttu-id="0844e-126">Devuelve **True** si ambos valores son verdaderos; en caso contrario, devuelve **False**.</span><span class="sxs-lookup"><span data-stu-id="0844e-126">Returns **True** if both values are true; otherwise, **False**.</span></span>
+<span data-ttu-id="ad968-126">Devuelve **True** si ambos valores son verdaderos; en caso contrario, devuelve **False**.</span><span class="sxs-lookup"><span data-stu-id="ad968-126">Returns **True** if both values are true; otherwise, **False**.</span></span>
 
-### <a name="examples"></a><span data-ttu-id="0844e-127">Ejemplos</span><span class="sxs-lookup"><span data-stu-id="0844e-127">Examples</span></span>
+### <a name="examples"></a><span data-ttu-id="ad968-127">Ejemplos</span><span class="sxs-lookup"><span data-stu-id="ad968-127">Examples</span></span>
 
-<span data-ttu-id="0844e-128">En el ejemplo siguiente se muestra cómo usar las funciones lógicas.</span><span class="sxs-lookup"><span data-stu-id="0844e-128">The following example shows how to use logical functions.</span></span>
+<span data-ttu-id="ad968-128">Hola siguiente ejemplo se muestra cómo las funciones lógicas de toouse.</span><span class="sxs-lookup"><span data-stu-id="ad968-128">hello following example shows how toouse logical functions.</span></span>
 
 ```json
 {
@@ -72,32 +72,32 @@ ms.lasthandoff: 08/03/2017
 }
 ```
 
-<span data-ttu-id="0844e-129">El resultado del ejemplo anterior es:</span><span class="sxs-lookup"><span data-stu-id="0844e-129">The output from the preceding example is:</span></span>
+<span data-ttu-id="ad968-129">resultado Hola Hola anterior ejemplo es:</span><span class="sxs-lookup"><span data-stu-id="ad968-129">hello output from hello preceding example is:</span></span>
 
-| <span data-ttu-id="0844e-130">Nombre</span><span class="sxs-lookup"><span data-stu-id="0844e-130">Name</span></span> | <span data-ttu-id="0844e-131">Tipo</span><span class="sxs-lookup"><span data-stu-id="0844e-131">Type</span></span> | <span data-ttu-id="0844e-132">Valor</span><span class="sxs-lookup"><span data-stu-id="0844e-132">Value</span></span> |
+| <span data-ttu-id="ad968-130">Nombre</span><span class="sxs-lookup"><span data-stu-id="ad968-130">Name</span></span> | <span data-ttu-id="ad968-131">Tipo</span><span class="sxs-lookup"><span data-stu-id="ad968-131">Type</span></span> | <span data-ttu-id="ad968-132">Valor</span><span class="sxs-lookup"><span data-stu-id="ad968-132">Value</span></span> |
 | ---- | ---- | ----- |
-| <span data-ttu-id="0844e-133">andExampleOutput</span><span class="sxs-lookup"><span data-stu-id="0844e-133">andExampleOutput</span></span> | <span data-ttu-id="0844e-134">Booleano</span><span class="sxs-lookup"><span data-stu-id="0844e-134">Bool</span></span> | <span data-ttu-id="0844e-135">False</span><span class="sxs-lookup"><span data-stu-id="0844e-135">False</span></span> |
-| <span data-ttu-id="0844e-136">orExampleOutput</span><span class="sxs-lookup"><span data-stu-id="0844e-136">orExampleOutput</span></span> | <span data-ttu-id="0844e-137">Booleano</span><span class="sxs-lookup"><span data-stu-id="0844e-137">Bool</span></span> | <span data-ttu-id="0844e-138">True</span><span class="sxs-lookup"><span data-stu-id="0844e-138">True</span></span> |
-| <span data-ttu-id="0844e-139">notExampleOutput</span><span class="sxs-lookup"><span data-stu-id="0844e-139">notExampleOutput</span></span> | <span data-ttu-id="0844e-140">Booleano</span><span class="sxs-lookup"><span data-stu-id="0844e-140">Bool</span></span> | <span data-ttu-id="0844e-141">False</span><span class="sxs-lookup"><span data-stu-id="0844e-141">False</span></span> |
+| <span data-ttu-id="ad968-133">andExampleOutput</span><span class="sxs-lookup"><span data-stu-id="ad968-133">andExampleOutput</span></span> | <span data-ttu-id="ad968-134">Booleano</span><span class="sxs-lookup"><span data-stu-id="ad968-134">Bool</span></span> | <span data-ttu-id="ad968-135">False</span><span class="sxs-lookup"><span data-stu-id="ad968-135">False</span></span> |
+| <span data-ttu-id="ad968-136">orExampleOutput</span><span class="sxs-lookup"><span data-stu-id="ad968-136">orExampleOutput</span></span> | <span data-ttu-id="ad968-137">Booleano</span><span class="sxs-lookup"><span data-stu-id="ad968-137">Bool</span></span> | <span data-ttu-id="ad968-138">True</span><span class="sxs-lookup"><span data-stu-id="ad968-138">True</span></span> |
+| <span data-ttu-id="ad968-139">notExampleOutput</span><span class="sxs-lookup"><span data-stu-id="ad968-139">notExampleOutput</span></span> | <span data-ttu-id="ad968-140">Booleano</span><span class="sxs-lookup"><span data-stu-id="ad968-140">Bool</span></span> | <span data-ttu-id="ad968-141">False</span><span class="sxs-lookup"><span data-stu-id="ad968-141">False</span></span> |
 
 
-## <a name="bool"></a><span data-ttu-id="0844e-142">booleano</span><span class="sxs-lookup"><span data-stu-id="0844e-142">bool</span></span>
+## <a name="bool"></a><span data-ttu-id="ad968-142">booleano</span><span class="sxs-lookup"><span data-stu-id="ad968-142">bool</span></span>
 `bool(arg1)`
 
-<span data-ttu-id="0844e-143">Convierte el parámetro en un booleano.</span><span class="sxs-lookup"><span data-stu-id="0844e-143">Converts the parameter to a boolean.</span></span>
+<span data-ttu-id="ad968-143">Convierte Hola tooa parámetro booleano.</span><span class="sxs-lookup"><span data-stu-id="ad968-143">Converts hello parameter tooa boolean.</span></span>
 
-### <a name="parameters"></a><span data-ttu-id="0844e-144">parameters</span><span class="sxs-lookup"><span data-stu-id="0844e-144">Parameters</span></span>
+### <a name="parameters"></a><span data-ttu-id="ad968-144">parameters</span><span class="sxs-lookup"><span data-stu-id="ad968-144">Parameters</span></span>
 
-| <span data-ttu-id="0844e-145">Parámetro</span><span class="sxs-lookup"><span data-stu-id="0844e-145">Parameter</span></span> | <span data-ttu-id="0844e-146">Obligatorio</span><span class="sxs-lookup"><span data-stu-id="0844e-146">Required</span></span> | <span data-ttu-id="0844e-147">Tipo</span><span class="sxs-lookup"><span data-stu-id="0844e-147">Type</span></span> | <span data-ttu-id="0844e-148">Descripción</span><span class="sxs-lookup"><span data-stu-id="0844e-148">Description</span></span> |
+| <span data-ttu-id="ad968-145">Parámetro</span><span class="sxs-lookup"><span data-stu-id="ad968-145">Parameter</span></span> | <span data-ttu-id="ad968-146">Obligatorio</span><span class="sxs-lookup"><span data-stu-id="ad968-146">Required</span></span> | <span data-ttu-id="ad968-147">Tipo</span><span class="sxs-lookup"><span data-stu-id="ad968-147">Type</span></span> | <span data-ttu-id="ad968-148">Descripción</span><span class="sxs-lookup"><span data-stu-id="ad968-148">Description</span></span> |
 |:--- |:--- |:--- |:--- |
-| <span data-ttu-id="0844e-149">arg1</span><span class="sxs-lookup"><span data-stu-id="0844e-149">arg1</span></span> |<span data-ttu-id="0844e-150">Sí</span><span class="sxs-lookup"><span data-stu-id="0844e-150">Yes</span></span> |<span data-ttu-id="0844e-151">cadena o entero</span><span class="sxs-lookup"><span data-stu-id="0844e-151">string or int</span></span> |<span data-ttu-id="0844e-152">El valor para convertir en booleano.</span><span class="sxs-lookup"><span data-stu-id="0844e-152">The value to convert to a boolean.</span></span> |
+| <span data-ttu-id="ad968-149">arg1</span><span class="sxs-lookup"><span data-stu-id="ad968-149">arg1</span></span> |<span data-ttu-id="ad968-150">Sí</span><span class="sxs-lookup"><span data-stu-id="ad968-150">Yes</span></span> |<span data-ttu-id="ad968-151">cadena o entero</span><span class="sxs-lookup"><span data-stu-id="ad968-151">string or int</span></span> |<span data-ttu-id="ad968-152">Hola tooa tooconvert de valor booleano.</span><span class="sxs-lookup"><span data-stu-id="ad968-152">hello value tooconvert tooa boolean.</span></span> |
 
-### <a name="return-value"></a><span data-ttu-id="0844e-153">Valor devuelto</span><span class="sxs-lookup"><span data-stu-id="0844e-153">Return value</span></span>
-<span data-ttu-id="0844e-154">Valor booleano del valor convertido.</span><span class="sxs-lookup"><span data-stu-id="0844e-154">A boolean of the converted value.</span></span>
+### <a name="return-value"></a><span data-ttu-id="ad968-153">Valor devuelto</span><span class="sxs-lookup"><span data-stu-id="ad968-153">Return value</span></span>
+<span data-ttu-id="ad968-154">Un valor booleano de hello valor convertido.</span><span class="sxs-lookup"><span data-stu-id="ad968-154">A boolean of hello converted value.</span></span>
 
-### <a name="examples"></a><span data-ttu-id="0844e-155">Ejemplos</span><span class="sxs-lookup"><span data-stu-id="0844e-155">Examples</span></span>
+### <a name="examples"></a><span data-ttu-id="ad968-155">Ejemplos</span><span class="sxs-lookup"><span data-stu-id="ad968-155">Examples</span></span>
 
-<span data-ttu-id="0844e-156">En el ejemplo siguiente se muestra cómo usar bool con una cadena o un entero.</span><span class="sxs-lookup"><span data-stu-id="0844e-156">The following example shows how to use bool with a string or integer.</span></span>
+<span data-ttu-id="ad968-156">Hola siguiente ejemplo se muestra cómo bool toouse con una cadena o un entero.</span><span class="sxs-lookup"><span data-stu-id="ad968-156">hello following example shows how toouse bool with a string or integer.</span></span>
 
 ```json
 {
@@ -125,35 +125,35 @@ ms.lasthandoff: 08/03/2017
 }
 ```
 
-<span data-ttu-id="0844e-157">La salida del ejemplo anterior con los valores predeterminados es:</span><span class="sxs-lookup"><span data-stu-id="0844e-157">The output from the preceding example with the default values is:</span></span>
+<span data-ttu-id="ad968-157">Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:</span><span class="sxs-lookup"><span data-stu-id="ad968-157">hello output from hello preceding example with hello default values is:</span></span>
 
-| <span data-ttu-id="0844e-158">Nombre</span><span class="sxs-lookup"><span data-stu-id="0844e-158">Name</span></span> | <span data-ttu-id="0844e-159">Tipo</span><span class="sxs-lookup"><span data-stu-id="0844e-159">Type</span></span> | <span data-ttu-id="0844e-160">Valor</span><span class="sxs-lookup"><span data-stu-id="0844e-160">Value</span></span> |
+| <span data-ttu-id="ad968-158">Nombre</span><span class="sxs-lookup"><span data-stu-id="ad968-158">Name</span></span> | <span data-ttu-id="ad968-159">Tipo</span><span class="sxs-lookup"><span data-stu-id="ad968-159">Type</span></span> | <span data-ttu-id="ad968-160">Valor</span><span class="sxs-lookup"><span data-stu-id="ad968-160">Value</span></span> |
 | ---- | ---- | ----- |
-| <span data-ttu-id="0844e-161">trueString</span><span class="sxs-lookup"><span data-stu-id="0844e-161">trueString</span></span> | <span data-ttu-id="0844e-162">Booleano</span><span class="sxs-lookup"><span data-stu-id="0844e-162">Bool</span></span> | <span data-ttu-id="0844e-163">True</span><span class="sxs-lookup"><span data-stu-id="0844e-163">True</span></span> |
-| <span data-ttu-id="0844e-164">falseString</span><span class="sxs-lookup"><span data-stu-id="0844e-164">falseString</span></span> | <span data-ttu-id="0844e-165">Booleano</span><span class="sxs-lookup"><span data-stu-id="0844e-165">Bool</span></span> | <span data-ttu-id="0844e-166">False</span><span class="sxs-lookup"><span data-stu-id="0844e-166">False</span></span> |
-| <span data-ttu-id="0844e-167">trueInt</span><span class="sxs-lookup"><span data-stu-id="0844e-167">trueInt</span></span> | <span data-ttu-id="0844e-168">Booleano</span><span class="sxs-lookup"><span data-stu-id="0844e-168">Bool</span></span> | <span data-ttu-id="0844e-169">True</span><span class="sxs-lookup"><span data-stu-id="0844e-169">True</span></span> |
-| <span data-ttu-id="0844e-170">falseInt</span><span class="sxs-lookup"><span data-stu-id="0844e-170">falseInt</span></span> | <span data-ttu-id="0844e-171">Booleano</span><span class="sxs-lookup"><span data-stu-id="0844e-171">Bool</span></span> | <span data-ttu-id="0844e-172">False</span><span class="sxs-lookup"><span data-stu-id="0844e-172">False</span></span> |
+| <span data-ttu-id="ad968-161">trueString</span><span class="sxs-lookup"><span data-stu-id="ad968-161">trueString</span></span> | <span data-ttu-id="ad968-162">Booleano</span><span class="sxs-lookup"><span data-stu-id="ad968-162">Bool</span></span> | <span data-ttu-id="ad968-163">True</span><span class="sxs-lookup"><span data-stu-id="ad968-163">True</span></span> |
+| <span data-ttu-id="ad968-164">falseString</span><span class="sxs-lookup"><span data-stu-id="ad968-164">falseString</span></span> | <span data-ttu-id="ad968-165">Booleano</span><span class="sxs-lookup"><span data-stu-id="ad968-165">Bool</span></span> | <span data-ttu-id="ad968-166">False</span><span class="sxs-lookup"><span data-stu-id="ad968-166">False</span></span> |
+| <span data-ttu-id="ad968-167">trueInt</span><span class="sxs-lookup"><span data-stu-id="ad968-167">trueInt</span></span> | <span data-ttu-id="ad968-168">Booleano</span><span class="sxs-lookup"><span data-stu-id="ad968-168">Bool</span></span> | <span data-ttu-id="ad968-169">True</span><span class="sxs-lookup"><span data-stu-id="ad968-169">True</span></span> |
+| <span data-ttu-id="ad968-170">falseInt</span><span class="sxs-lookup"><span data-stu-id="ad968-170">falseInt</span></span> | <span data-ttu-id="ad968-171">Booleano</span><span class="sxs-lookup"><span data-stu-id="ad968-171">Bool</span></span> | <span data-ttu-id="ad968-172">False</span><span class="sxs-lookup"><span data-stu-id="ad968-172">False</span></span> |
 
-## <a name="if"></a><span data-ttu-id="0844e-173">if</span><span class="sxs-lookup"><span data-stu-id="0844e-173">if</span></span>
+## <a name="if"></a><span data-ttu-id="ad968-173">if</span><span class="sxs-lookup"><span data-stu-id="ad968-173">if</span></span>
 `if(condition, trueValue, falseValue)`
 
-<span data-ttu-id="0844e-174">Devuelve un valor dependiendo de si una condición es verdadera o falsa.</span><span class="sxs-lookup"><span data-stu-id="0844e-174">Returns a value based on whether a condition is true or false.</span></span>
+<span data-ttu-id="ad968-174">Devuelve un valor dependiendo de si una condición es verdadera o falsa.</span><span class="sxs-lookup"><span data-stu-id="ad968-174">Returns a value based on whether a condition is true or false.</span></span>
 
-### <a name="parameters"></a><span data-ttu-id="0844e-175">parameters</span><span class="sxs-lookup"><span data-stu-id="0844e-175">Parameters</span></span>
+### <a name="parameters"></a><span data-ttu-id="ad968-175">parameters</span><span class="sxs-lookup"><span data-stu-id="ad968-175">Parameters</span></span>
 
-| <span data-ttu-id="0844e-176">Parámetro</span><span class="sxs-lookup"><span data-stu-id="0844e-176">Parameter</span></span> | <span data-ttu-id="0844e-177">Obligatorio</span><span class="sxs-lookup"><span data-stu-id="0844e-177">Required</span></span> | <span data-ttu-id="0844e-178">Tipo</span><span class="sxs-lookup"><span data-stu-id="0844e-178">Type</span></span> | <span data-ttu-id="0844e-179">Descripción</span><span class="sxs-lookup"><span data-stu-id="0844e-179">Description</span></span> |
+| <span data-ttu-id="ad968-176">Parámetro</span><span class="sxs-lookup"><span data-stu-id="ad968-176">Parameter</span></span> | <span data-ttu-id="ad968-177">Obligatorio</span><span class="sxs-lookup"><span data-stu-id="ad968-177">Required</span></span> | <span data-ttu-id="ad968-178">Tipo</span><span class="sxs-lookup"><span data-stu-id="ad968-178">Type</span></span> | <span data-ttu-id="ad968-179">Descripción</span><span class="sxs-lookup"><span data-stu-id="ad968-179">Description</span></span> |
 |:--- |:--- |:--- |:--- |
-| <span data-ttu-id="0844e-180">condition</span><span class="sxs-lookup"><span data-stu-id="0844e-180">condition</span></span> |<span data-ttu-id="0844e-181">Sí</span><span class="sxs-lookup"><span data-stu-id="0844e-181">Yes</span></span> |<span data-ttu-id="0844e-182">boolean</span><span class="sxs-lookup"><span data-stu-id="0844e-182">boolean</span></span> |<span data-ttu-id="0844e-183">Valor cuya veracidad se comprueba.</span><span class="sxs-lookup"><span data-stu-id="0844e-183">The value to check whether it is true.</span></span> |
-| <span data-ttu-id="0844e-184">trueValue</span><span class="sxs-lookup"><span data-stu-id="0844e-184">trueValue</span></span> |<span data-ttu-id="0844e-185">Sí</span><span class="sxs-lookup"><span data-stu-id="0844e-185">Yes</span></span> | <span data-ttu-id="0844e-186">cadena, int, objeto o matriz</span><span class="sxs-lookup"><span data-stu-id="0844e-186">string, int, object, or array</span></span> |<span data-ttu-id="0844e-187">Valor que se devuelve cuando la condición es verdadera.</span><span class="sxs-lookup"><span data-stu-id="0844e-187">The value to return when the condition is true.</span></span> |
-| <span data-ttu-id="0844e-188">falseValue</span><span class="sxs-lookup"><span data-stu-id="0844e-188">falseValue</span></span> |<span data-ttu-id="0844e-189">Sí</span><span class="sxs-lookup"><span data-stu-id="0844e-189">Yes</span></span> | <span data-ttu-id="0844e-190">cadena, int, objeto o matriz</span><span class="sxs-lookup"><span data-stu-id="0844e-190">string, int, object, or array</span></span> |<span data-ttu-id="0844e-191">Valor que se devuelve cuando la condición es falsa.</span><span class="sxs-lookup"><span data-stu-id="0844e-191">The value to return when the condition is false.</span></span> |
+| <span data-ttu-id="ad968-180">condition</span><span class="sxs-lookup"><span data-stu-id="ad968-180">condition</span></span> |<span data-ttu-id="ad968-181">Sí</span><span class="sxs-lookup"><span data-stu-id="ad968-181">Yes</span></span> |<span data-ttu-id="ad968-182">boolean</span><span class="sxs-lookup"><span data-stu-id="ad968-182">boolean</span></span> |<span data-ttu-id="ad968-183">Hola toocheck valor si es true.</span><span class="sxs-lookup"><span data-stu-id="ad968-183">hello value toocheck whether it is true.</span></span> |
+| <span data-ttu-id="ad968-184">trueValue</span><span class="sxs-lookup"><span data-stu-id="ad968-184">trueValue</span></span> |<span data-ttu-id="ad968-185">Sí</span><span class="sxs-lookup"><span data-stu-id="ad968-185">Yes</span></span> | <span data-ttu-id="ad968-186">cadena, int, objeto o matriz</span><span class="sxs-lookup"><span data-stu-id="ad968-186">string, int, object, or array</span></span> |<span data-ttu-id="ad968-187">Hola valor tooreturn cuando Hola condición sea verdadera.</span><span class="sxs-lookup"><span data-stu-id="ad968-187">hello value tooreturn when hello condition is true.</span></span> |
+| <span data-ttu-id="ad968-188">falseValue</span><span class="sxs-lookup"><span data-stu-id="ad968-188">falseValue</span></span> |<span data-ttu-id="ad968-189">Sí</span><span class="sxs-lookup"><span data-stu-id="ad968-189">Yes</span></span> | <span data-ttu-id="ad968-190">cadena, int, objeto o matriz</span><span class="sxs-lookup"><span data-stu-id="ad968-190">string, int, object, or array</span></span> |<span data-ttu-id="ad968-191">Hola valor tooreturn cuando Hola condición es false.</span><span class="sxs-lookup"><span data-stu-id="ad968-191">hello value tooreturn when hello condition is false.</span></span> |
 
-### <a name="return-value"></a><span data-ttu-id="0844e-192">Valor devuelto</span><span class="sxs-lookup"><span data-stu-id="0844e-192">Return value</span></span>
+### <a name="return-value"></a><span data-ttu-id="ad968-192">Valor devuelto</span><span class="sxs-lookup"><span data-stu-id="ad968-192">Return value</span></span>
 
-<span data-ttu-id="0844e-193">Devuelve el segundo parámetro si el primer parámetro es **True**; en caso contrario, devuelve el tercer parámetro.</span><span class="sxs-lookup"><span data-stu-id="0844e-193">Returns second parameter when first parameter is **True**; otherwise, returns third parameter.</span></span>
+<span data-ttu-id="ad968-193">Devuelve el segundo parámetro si el primer parámetro es **True**; en caso contrario, devuelve el tercer parámetro.</span><span class="sxs-lookup"><span data-stu-id="ad968-193">Returns second parameter when first parameter is **True**; otherwise, returns third parameter.</span></span>
 
-### <a name="remarks"></a><span data-ttu-id="0844e-194">Comentarios</span><span class="sxs-lookup"><span data-stu-id="0844e-194">Remarks</span></span>
+### <a name="remarks"></a><span data-ttu-id="ad968-194">Comentarios</span><span class="sxs-lookup"><span data-stu-id="ad968-194">Remarks</span></span>
 
-<span data-ttu-id="0844e-195">Puede usar esta función para establecer una propiedad de recurso de forma condicional.</span><span class="sxs-lookup"><span data-stu-id="0844e-195">You can use this function to conditionally set a resource property.</span></span> <span data-ttu-id="0844e-196">El siguiente ejemplo no es una plantilla completa, pero en él se muestran las partes relevantes para establecer el conjunto de disponibilidad de forma condicional.</span><span class="sxs-lookup"><span data-stu-id="0844e-196">The following example is not a full template, but it shows the relevant portions for conditionally setting the availability set.</span></span>
+<span data-ttu-id="ad968-195">Puede utilizar este conjunto de tooconditionally de función de una propiedad de recurso.</span><span class="sxs-lookup"><span data-stu-id="ad968-195">You can use this function tooconditionally set a resource property.</span></span> <span data-ttu-id="ad968-196">Hello en el ejemplo siguiente no se es una plantilla completa, pero muestra las partes relevantes de Hola para establecer condicionalmente el conjunto de disponibilidad de Hola.</span><span class="sxs-lookup"><span data-stu-id="ad968-196">hello following example is not a full template, but it shows hello relevant portions for conditionally setting hello availability set.</span></span>
 
 ```json
 {
@@ -197,9 +197,9 @@ ms.lasthandoff: 08/03/2017
 }
 ```
 
-### <a name="examples"></a><span data-ttu-id="0844e-197">Ejemplos</span><span class="sxs-lookup"><span data-stu-id="0844e-197">Examples</span></span>
+### <a name="examples"></a><span data-ttu-id="ad968-197">Ejemplos</span><span class="sxs-lookup"><span data-stu-id="ad968-197">Examples</span></span>
 
-<span data-ttu-id="0844e-198">En el ejemplo siguiente se muestra cómo usar la función `if`.</span><span class="sxs-lookup"><span data-stu-id="0844e-198">The following example shows how to use the `if` function.</span></span>
+<span data-ttu-id="ad968-198">Hola siguiente ejemplo se muestra cómo toouse hello `if` función.</span><span class="sxs-lookup"><span data-stu-id="ad968-198">hello following example shows how toouse hello `if` function.</span></span>
 
 ```json
 {
@@ -220,33 +220,33 @@ ms.lasthandoff: 08/03/2017
 }
 ```
 
-<span data-ttu-id="0844e-199">El resultado del ejemplo anterior es:</span><span class="sxs-lookup"><span data-stu-id="0844e-199">The output from the preceding example is:</span></span>
+<span data-ttu-id="ad968-199">resultado Hola Hola anterior ejemplo es:</span><span class="sxs-lookup"><span data-stu-id="ad968-199">hello output from hello preceding example is:</span></span>
 
-| <span data-ttu-id="0844e-200">Nombre</span><span class="sxs-lookup"><span data-stu-id="0844e-200">Name</span></span> | <span data-ttu-id="0844e-201">Tipo</span><span class="sxs-lookup"><span data-stu-id="0844e-201">Type</span></span> | <span data-ttu-id="0844e-202">Valor</span><span class="sxs-lookup"><span data-stu-id="0844e-202">Value</span></span> |
+| <span data-ttu-id="ad968-200">Nombre</span><span class="sxs-lookup"><span data-stu-id="ad968-200">Name</span></span> | <span data-ttu-id="ad968-201">Tipo</span><span class="sxs-lookup"><span data-stu-id="ad968-201">Type</span></span> | <span data-ttu-id="ad968-202">Valor</span><span class="sxs-lookup"><span data-stu-id="ad968-202">Value</span></span> |
 | ---- | ---- | ----- |
-| <span data-ttu-id="0844e-203">yesOutput</span><span class="sxs-lookup"><span data-stu-id="0844e-203">yesOutput</span></span> | <span data-ttu-id="0844e-204">String</span><span class="sxs-lookup"><span data-stu-id="0844e-204">String</span></span> | <span data-ttu-id="0844e-205">yes</span><span class="sxs-lookup"><span data-stu-id="0844e-205">yes</span></span> |
-| <span data-ttu-id="0844e-206">noOutput</span><span class="sxs-lookup"><span data-stu-id="0844e-206">noOutput</span></span> | <span data-ttu-id="0844e-207">String</span><span class="sxs-lookup"><span data-stu-id="0844e-207">String</span></span> | <span data-ttu-id="0844e-208">no</span><span class="sxs-lookup"><span data-stu-id="0844e-208">no</span></span> |
+| <span data-ttu-id="ad968-203">yesOutput</span><span class="sxs-lookup"><span data-stu-id="ad968-203">yesOutput</span></span> | <span data-ttu-id="ad968-204">String</span><span class="sxs-lookup"><span data-stu-id="ad968-204">String</span></span> | <span data-ttu-id="ad968-205">yes</span><span class="sxs-lookup"><span data-stu-id="ad968-205">yes</span></span> |
+| <span data-ttu-id="ad968-206">noOutput</span><span class="sxs-lookup"><span data-stu-id="ad968-206">noOutput</span></span> | <span data-ttu-id="ad968-207">String</span><span class="sxs-lookup"><span data-stu-id="ad968-207">String</span></span> | <span data-ttu-id="ad968-208">no</span><span class="sxs-lookup"><span data-stu-id="ad968-208">no</span></span> |
 
 
-## <a name="not"></a><span data-ttu-id="0844e-209">not</span><span class="sxs-lookup"><span data-stu-id="0844e-209">not</span></span>
+## <a name="not"></a><span data-ttu-id="ad968-209">not</span><span class="sxs-lookup"><span data-stu-id="ad968-209">not</span></span>
 `not(arg1)`
 
-<span data-ttu-id="0844e-210">Convierte el valor booleano en su valor opuesto.</span><span class="sxs-lookup"><span data-stu-id="0844e-210">Converts boolean value to its opposite value.</span></span>
+<span data-ttu-id="ad968-210">Convierte el valor booleano tooits opuesto valor.</span><span class="sxs-lookup"><span data-stu-id="ad968-210">Converts boolean value tooits opposite value.</span></span>
 
-### <a name="parameters"></a><span data-ttu-id="0844e-211">parameters</span><span class="sxs-lookup"><span data-stu-id="0844e-211">Parameters</span></span>
+### <a name="parameters"></a><span data-ttu-id="ad968-211">parameters</span><span class="sxs-lookup"><span data-stu-id="ad968-211">Parameters</span></span>
 
-| <span data-ttu-id="0844e-212">Parámetro</span><span class="sxs-lookup"><span data-stu-id="0844e-212">Parameter</span></span> | <span data-ttu-id="0844e-213">Obligatorio</span><span class="sxs-lookup"><span data-stu-id="0844e-213">Required</span></span> | <span data-ttu-id="0844e-214">Tipo</span><span class="sxs-lookup"><span data-stu-id="0844e-214">Type</span></span> | <span data-ttu-id="0844e-215">Descripción</span><span class="sxs-lookup"><span data-stu-id="0844e-215">Description</span></span> |
+| <span data-ttu-id="ad968-212">Parámetro</span><span class="sxs-lookup"><span data-stu-id="ad968-212">Parameter</span></span> | <span data-ttu-id="ad968-213">Obligatorio</span><span class="sxs-lookup"><span data-stu-id="ad968-213">Required</span></span> | <span data-ttu-id="ad968-214">Tipo</span><span class="sxs-lookup"><span data-stu-id="ad968-214">Type</span></span> | <span data-ttu-id="ad968-215">Descripción</span><span class="sxs-lookup"><span data-stu-id="ad968-215">Description</span></span> |
 |:--- |:--- |:--- |:--- |
-| <span data-ttu-id="0844e-216">arg1</span><span class="sxs-lookup"><span data-stu-id="0844e-216">arg1</span></span> |<span data-ttu-id="0844e-217">Sí</span><span class="sxs-lookup"><span data-stu-id="0844e-217">Yes</span></span> |<span data-ttu-id="0844e-218">boolean</span><span class="sxs-lookup"><span data-stu-id="0844e-218">boolean</span></span> |<span data-ttu-id="0844e-219">Valor que se va a convertir.</span><span class="sxs-lookup"><span data-stu-id="0844e-219">The value to convert.</span></span> |
+| <span data-ttu-id="ad968-216">arg1</span><span class="sxs-lookup"><span data-stu-id="ad968-216">arg1</span></span> |<span data-ttu-id="ad968-217">Sí</span><span class="sxs-lookup"><span data-stu-id="ad968-217">Yes</span></span> |<span data-ttu-id="ad968-218">boolean</span><span class="sxs-lookup"><span data-stu-id="ad968-218">boolean</span></span> |<span data-ttu-id="ad968-219">Hola tooconvert de valor.</span><span class="sxs-lookup"><span data-stu-id="ad968-219">hello value tooconvert.</span></span> |
 
 
-### <a name="return-value"></a><span data-ttu-id="0844e-220">Valor devuelto</span><span class="sxs-lookup"><span data-stu-id="0844e-220">Return value</span></span>
+### <a name="return-value"></a><span data-ttu-id="ad968-220">Valor devuelto</span><span class="sxs-lookup"><span data-stu-id="ad968-220">Return value</span></span>
 
-<span data-ttu-id="0844e-221">Devuelve **True** si el parámetro es **False**.</span><span class="sxs-lookup"><span data-stu-id="0844e-221">Returns **True** when parameter is **False**.</span></span> <span data-ttu-id="0844e-222">Devuelve **False** si el parámetro es **True**.</span><span class="sxs-lookup"><span data-stu-id="0844e-222">Returns **False** when parameter is **True**.</span></span>
+<span data-ttu-id="ad968-221">Devuelve **True** si el parámetro es **False**.</span><span class="sxs-lookup"><span data-stu-id="ad968-221">Returns **True** when parameter is **False**.</span></span> <span data-ttu-id="ad968-222">Devuelve **False** si el parámetro es **True**.</span><span class="sxs-lookup"><span data-stu-id="ad968-222">Returns **False** when parameter is **True**.</span></span>
 
-### <a name="examples"></a><span data-ttu-id="0844e-223">Ejemplos</span><span class="sxs-lookup"><span data-stu-id="0844e-223">Examples</span></span>
+### <a name="examples"></a><span data-ttu-id="ad968-223">Ejemplos</span><span class="sxs-lookup"><span data-stu-id="ad968-223">Examples</span></span>
 
-<span data-ttu-id="0844e-224">En el ejemplo siguiente se muestra cómo usar las funciones lógicas.</span><span class="sxs-lookup"><span data-stu-id="0844e-224">The following example shows how to use logical functions.</span></span>
+<span data-ttu-id="ad968-224">Hola siguiente ejemplo se muestra cómo las funciones lógicas de toouse.</span><span class="sxs-lookup"><span data-stu-id="ad968-224">hello following example shows how toouse logical functions.</span></span>
 
 ```json
 {
@@ -270,15 +270,15 @@ ms.lasthandoff: 08/03/2017
 }
 ```
 
-<span data-ttu-id="0844e-225">El resultado del ejemplo anterior es:</span><span class="sxs-lookup"><span data-stu-id="0844e-225">The output from the preceding example is:</span></span>
+<span data-ttu-id="ad968-225">resultado Hola Hola anterior ejemplo es:</span><span class="sxs-lookup"><span data-stu-id="ad968-225">hello output from hello preceding example is:</span></span>
 
-| <span data-ttu-id="0844e-226">Nombre</span><span class="sxs-lookup"><span data-stu-id="0844e-226">Name</span></span> | <span data-ttu-id="0844e-227">Tipo</span><span class="sxs-lookup"><span data-stu-id="0844e-227">Type</span></span> | <span data-ttu-id="0844e-228">Valor</span><span class="sxs-lookup"><span data-stu-id="0844e-228">Value</span></span> |
+| <span data-ttu-id="ad968-226">Nombre</span><span class="sxs-lookup"><span data-stu-id="ad968-226">Name</span></span> | <span data-ttu-id="ad968-227">Tipo</span><span class="sxs-lookup"><span data-stu-id="ad968-227">Type</span></span> | <span data-ttu-id="ad968-228">Valor</span><span class="sxs-lookup"><span data-stu-id="ad968-228">Value</span></span> |
 | ---- | ---- | ----- |
-| <span data-ttu-id="0844e-229">andExampleOutput</span><span class="sxs-lookup"><span data-stu-id="0844e-229">andExampleOutput</span></span> | <span data-ttu-id="0844e-230">Booleano</span><span class="sxs-lookup"><span data-stu-id="0844e-230">Bool</span></span> | <span data-ttu-id="0844e-231">False</span><span class="sxs-lookup"><span data-stu-id="0844e-231">False</span></span> |
-| <span data-ttu-id="0844e-232">orExampleOutput</span><span class="sxs-lookup"><span data-stu-id="0844e-232">orExampleOutput</span></span> | <span data-ttu-id="0844e-233">Booleano</span><span class="sxs-lookup"><span data-stu-id="0844e-233">Bool</span></span> | <span data-ttu-id="0844e-234">True</span><span class="sxs-lookup"><span data-stu-id="0844e-234">True</span></span> |
-| <span data-ttu-id="0844e-235">notExampleOutput</span><span class="sxs-lookup"><span data-stu-id="0844e-235">notExampleOutput</span></span> | <span data-ttu-id="0844e-236">Booleano</span><span class="sxs-lookup"><span data-stu-id="0844e-236">Bool</span></span> | <span data-ttu-id="0844e-237">False</span><span class="sxs-lookup"><span data-stu-id="0844e-237">False</span></span> |
+| <span data-ttu-id="ad968-229">andExampleOutput</span><span class="sxs-lookup"><span data-stu-id="ad968-229">andExampleOutput</span></span> | <span data-ttu-id="ad968-230">Booleano</span><span class="sxs-lookup"><span data-stu-id="ad968-230">Bool</span></span> | <span data-ttu-id="ad968-231">False</span><span class="sxs-lookup"><span data-stu-id="ad968-231">False</span></span> |
+| <span data-ttu-id="ad968-232">orExampleOutput</span><span class="sxs-lookup"><span data-stu-id="ad968-232">orExampleOutput</span></span> | <span data-ttu-id="ad968-233">Booleano</span><span class="sxs-lookup"><span data-stu-id="ad968-233">Bool</span></span> | <span data-ttu-id="ad968-234">True</span><span class="sxs-lookup"><span data-stu-id="ad968-234">True</span></span> |
+| <span data-ttu-id="ad968-235">notExampleOutput</span><span class="sxs-lookup"><span data-stu-id="ad968-235">notExampleOutput</span></span> | <span data-ttu-id="ad968-236">Booleano</span><span class="sxs-lookup"><span data-stu-id="ad968-236">Bool</span></span> | <span data-ttu-id="ad968-237">False</span><span class="sxs-lookup"><span data-stu-id="ad968-237">False</span></span> |
 
-<span data-ttu-id="0844e-238">En el siguiente ejemplo se usa **not** con [equals](resource-group-template-functions-comparison.md#equals).</span><span class="sxs-lookup"><span data-stu-id="0844e-238">The following example uses **not** with [equals](resource-group-template-functions-comparison.md#equals).</span></span>
+<span data-ttu-id="ad968-238">Hello siguiente ejemplo se utiliza **no** con [es igual a](resource-group-template-functions-comparison.md#equals).</span><span class="sxs-lookup"><span data-stu-id="ad968-238">hello following example uses **not** with [equals](resource-group-template-functions-comparison.md#equals).</span></span>
 
 ```json
 {
@@ -294,32 +294,32 @@ ms.lasthandoff: 08/03/2017
     }
 ```
 
-<span data-ttu-id="0844e-239">El resultado del ejemplo anterior es:</span><span class="sxs-lookup"><span data-stu-id="0844e-239">The output from the preceding example is:</span></span>
+<span data-ttu-id="ad968-239">resultado Hola Hola anterior ejemplo es:</span><span class="sxs-lookup"><span data-stu-id="ad968-239">hello output from hello preceding example is:</span></span>
 
-| <span data-ttu-id="0844e-240">Nombre</span><span class="sxs-lookup"><span data-stu-id="0844e-240">Name</span></span> | <span data-ttu-id="0844e-241">Tipo</span><span class="sxs-lookup"><span data-stu-id="0844e-241">Type</span></span> | <span data-ttu-id="0844e-242">Valor</span><span class="sxs-lookup"><span data-stu-id="0844e-242">Value</span></span> |
+| <span data-ttu-id="ad968-240">Nombre</span><span class="sxs-lookup"><span data-stu-id="ad968-240">Name</span></span> | <span data-ttu-id="ad968-241">Tipo</span><span class="sxs-lookup"><span data-stu-id="ad968-241">Type</span></span> | <span data-ttu-id="ad968-242">Valor</span><span class="sxs-lookup"><span data-stu-id="ad968-242">Value</span></span> |
 | ---- | ---- | ----- |
-| <span data-ttu-id="0844e-243">checkNotEquals</span><span class="sxs-lookup"><span data-stu-id="0844e-243">checkNotEquals</span></span> | <span data-ttu-id="0844e-244">Booleano</span><span class="sxs-lookup"><span data-stu-id="0844e-244">Bool</span></span> | <span data-ttu-id="0844e-245">True</span><span class="sxs-lookup"><span data-stu-id="0844e-245">True</span></span> |
+| <span data-ttu-id="ad968-243">checkNotEquals</span><span class="sxs-lookup"><span data-stu-id="ad968-243">checkNotEquals</span></span> | <span data-ttu-id="ad968-244">Booleano</span><span class="sxs-lookup"><span data-stu-id="ad968-244">Bool</span></span> | <span data-ttu-id="ad968-245">True</span><span class="sxs-lookup"><span data-stu-id="ad968-245">True</span></span> |
 
 
-## <a name="or"></a><span data-ttu-id="0844e-246">o</span><span class="sxs-lookup"><span data-stu-id="0844e-246">or</span></span>
+## <a name="or"></a><span data-ttu-id="ad968-246">o</span><span class="sxs-lookup"><span data-stu-id="ad968-246">or</span></span>
 `or(arg1, arg2)`
 
-<span data-ttu-id="0844e-247">Comprueba si cualquiera de los valores de parámetro es verdadero.</span><span class="sxs-lookup"><span data-stu-id="0844e-247">Checks whether either parameter value is true.</span></span>
+<span data-ttu-id="ad968-247">Comprueba si cualquiera de los valores de parámetro es verdadero.</span><span class="sxs-lookup"><span data-stu-id="ad968-247">Checks whether either parameter value is true.</span></span>
 
-### <a name="parameters"></a><span data-ttu-id="0844e-248">parameters</span><span class="sxs-lookup"><span data-stu-id="0844e-248">Parameters</span></span>
+### <a name="parameters"></a><span data-ttu-id="ad968-248">parameters</span><span class="sxs-lookup"><span data-stu-id="ad968-248">Parameters</span></span>
 
-| <span data-ttu-id="0844e-249">Parámetro</span><span class="sxs-lookup"><span data-stu-id="0844e-249">Parameter</span></span> | <span data-ttu-id="0844e-250">Obligatorio</span><span class="sxs-lookup"><span data-stu-id="0844e-250">Required</span></span> | <span data-ttu-id="0844e-251">Tipo</span><span class="sxs-lookup"><span data-stu-id="0844e-251">Type</span></span> | <span data-ttu-id="0844e-252">Descripción</span><span class="sxs-lookup"><span data-stu-id="0844e-252">Description</span></span> |
+| <span data-ttu-id="ad968-249">Parámetro</span><span class="sxs-lookup"><span data-stu-id="ad968-249">Parameter</span></span> | <span data-ttu-id="ad968-250">Obligatorio</span><span class="sxs-lookup"><span data-stu-id="ad968-250">Required</span></span> | <span data-ttu-id="ad968-251">Tipo</span><span class="sxs-lookup"><span data-stu-id="ad968-251">Type</span></span> | <span data-ttu-id="ad968-252">Descripción</span><span class="sxs-lookup"><span data-stu-id="ad968-252">Description</span></span> |
 |:--- |:--- |:--- |:--- |
-| <span data-ttu-id="0844e-253">arg1</span><span class="sxs-lookup"><span data-stu-id="0844e-253">arg1</span></span> |<span data-ttu-id="0844e-254">Sí</span><span class="sxs-lookup"><span data-stu-id="0844e-254">Yes</span></span> |<span data-ttu-id="0844e-255">boolean</span><span class="sxs-lookup"><span data-stu-id="0844e-255">boolean</span></span> |<span data-ttu-id="0844e-256">Primer valor cuya veracidad se comprueba.</span><span class="sxs-lookup"><span data-stu-id="0844e-256">The first value to check whether is true.</span></span> |
-| <span data-ttu-id="0844e-257">arg2</span><span class="sxs-lookup"><span data-stu-id="0844e-257">arg2</span></span> |<span data-ttu-id="0844e-258">Sí</span><span class="sxs-lookup"><span data-stu-id="0844e-258">Yes</span></span> |<span data-ttu-id="0844e-259">boolean</span><span class="sxs-lookup"><span data-stu-id="0844e-259">boolean</span></span> |<span data-ttu-id="0844e-260">Segundo valor cuya veracidad se comprueba.</span><span class="sxs-lookup"><span data-stu-id="0844e-260">The second value to check whether is true.</span></span> |
+| <span data-ttu-id="ad968-253">arg1</span><span class="sxs-lookup"><span data-stu-id="ad968-253">arg1</span></span> |<span data-ttu-id="ad968-254">Sí</span><span class="sxs-lookup"><span data-stu-id="ad968-254">Yes</span></span> |<span data-ttu-id="ad968-255">boolean</span><span class="sxs-lookup"><span data-stu-id="ad968-255">boolean</span></span> |<span data-ttu-id="ad968-256">Hola primera toocheck valor si es true.</span><span class="sxs-lookup"><span data-stu-id="ad968-256">hello first value toocheck whether is true.</span></span> |
+| <span data-ttu-id="ad968-257">arg2</span><span class="sxs-lookup"><span data-stu-id="ad968-257">arg2</span></span> |<span data-ttu-id="ad968-258">Sí</span><span class="sxs-lookup"><span data-stu-id="ad968-258">Yes</span></span> |<span data-ttu-id="ad968-259">boolean</span><span class="sxs-lookup"><span data-stu-id="ad968-259">boolean</span></span> |<span data-ttu-id="ad968-260">Hola segundo toocheck valor si es true.</span><span class="sxs-lookup"><span data-stu-id="ad968-260">hello second value toocheck whether is true.</span></span> |
 
-### <a name="return-value"></a><span data-ttu-id="0844e-261">Valor devuelto</span><span class="sxs-lookup"><span data-stu-id="0844e-261">Return value</span></span>
+### <a name="return-value"></a><span data-ttu-id="ad968-261">Valor devuelto</span><span class="sxs-lookup"><span data-stu-id="ad968-261">Return value</span></span>
 
-<span data-ttu-id="0844e-262">Devuelve **True** si cualquiera de los valores es verdadero; en caso contrario, devuelve **False**.</span><span class="sxs-lookup"><span data-stu-id="0844e-262">Returns **True** if either value is true; otherwise, **False**.</span></span>
+<span data-ttu-id="ad968-262">Devuelve **True** si cualquiera de los valores es verdadero; en caso contrario, devuelve **False**.</span><span class="sxs-lookup"><span data-stu-id="ad968-262">Returns **True** if either value is true; otherwise, **False**.</span></span>
 
-### <a name="examples"></a><span data-ttu-id="0844e-263">Ejemplos</span><span class="sxs-lookup"><span data-stu-id="0844e-263">Examples</span></span>
+### <a name="examples"></a><span data-ttu-id="ad968-263">Ejemplos</span><span class="sxs-lookup"><span data-stu-id="ad968-263">Examples</span></span>
 
-<span data-ttu-id="0844e-264">En el ejemplo siguiente se muestra cómo usar las funciones lógicas.</span><span class="sxs-lookup"><span data-stu-id="0844e-264">The following example shows how to use logical functions.</span></span>
+<span data-ttu-id="ad968-264">Hola siguiente ejemplo se muestra cómo las funciones lógicas de toouse.</span><span class="sxs-lookup"><span data-stu-id="ad968-264">hello following example shows how toouse logical functions.</span></span>
 
 ```json
 {
@@ -343,18 +343,18 @@ ms.lasthandoff: 08/03/2017
 }
 ```
 
-<span data-ttu-id="0844e-265">El resultado del ejemplo anterior es:</span><span class="sxs-lookup"><span data-stu-id="0844e-265">The output from the preceding example is:</span></span>
+<span data-ttu-id="ad968-265">resultado Hola Hola anterior ejemplo es:</span><span class="sxs-lookup"><span data-stu-id="ad968-265">hello output from hello preceding example is:</span></span>
 
-| <span data-ttu-id="0844e-266">Nombre</span><span class="sxs-lookup"><span data-stu-id="0844e-266">Name</span></span> | <span data-ttu-id="0844e-267">Tipo</span><span class="sxs-lookup"><span data-stu-id="0844e-267">Type</span></span> | <span data-ttu-id="0844e-268">Valor</span><span class="sxs-lookup"><span data-stu-id="0844e-268">Value</span></span> |
+| <span data-ttu-id="ad968-266">Nombre</span><span class="sxs-lookup"><span data-stu-id="ad968-266">Name</span></span> | <span data-ttu-id="ad968-267">Tipo</span><span class="sxs-lookup"><span data-stu-id="ad968-267">Type</span></span> | <span data-ttu-id="ad968-268">Valor</span><span class="sxs-lookup"><span data-stu-id="ad968-268">Value</span></span> |
 | ---- | ---- | ----- |
-| <span data-ttu-id="0844e-269">andExampleOutput</span><span class="sxs-lookup"><span data-stu-id="0844e-269">andExampleOutput</span></span> | <span data-ttu-id="0844e-270">Booleano</span><span class="sxs-lookup"><span data-stu-id="0844e-270">Bool</span></span> | <span data-ttu-id="0844e-271">False</span><span class="sxs-lookup"><span data-stu-id="0844e-271">False</span></span> |
-| <span data-ttu-id="0844e-272">orExampleOutput</span><span class="sxs-lookup"><span data-stu-id="0844e-272">orExampleOutput</span></span> | <span data-ttu-id="0844e-273">Booleano</span><span class="sxs-lookup"><span data-stu-id="0844e-273">Bool</span></span> | <span data-ttu-id="0844e-274">True</span><span class="sxs-lookup"><span data-stu-id="0844e-274">True</span></span> |
-| <span data-ttu-id="0844e-275">notExampleOutput</span><span class="sxs-lookup"><span data-stu-id="0844e-275">notExampleOutput</span></span> | <span data-ttu-id="0844e-276">Booleano</span><span class="sxs-lookup"><span data-stu-id="0844e-276">Bool</span></span> | <span data-ttu-id="0844e-277">False</span><span class="sxs-lookup"><span data-stu-id="0844e-277">False</span></span> |
+| <span data-ttu-id="ad968-269">andExampleOutput</span><span class="sxs-lookup"><span data-stu-id="ad968-269">andExampleOutput</span></span> | <span data-ttu-id="ad968-270">Booleano</span><span class="sxs-lookup"><span data-stu-id="ad968-270">Bool</span></span> | <span data-ttu-id="ad968-271">False</span><span class="sxs-lookup"><span data-stu-id="ad968-271">False</span></span> |
+| <span data-ttu-id="ad968-272">orExampleOutput</span><span class="sxs-lookup"><span data-stu-id="ad968-272">orExampleOutput</span></span> | <span data-ttu-id="ad968-273">Booleano</span><span class="sxs-lookup"><span data-stu-id="ad968-273">Bool</span></span> | <span data-ttu-id="ad968-274">True</span><span class="sxs-lookup"><span data-stu-id="ad968-274">True</span></span> |
+| <span data-ttu-id="ad968-275">notExampleOutput</span><span class="sxs-lookup"><span data-stu-id="ad968-275">notExampleOutput</span></span> | <span data-ttu-id="ad968-276">Booleano</span><span class="sxs-lookup"><span data-stu-id="ad968-276">Bool</span></span> | <span data-ttu-id="ad968-277">False</span><span class="sxs-lookup"><span data-stu-id="ad968-277">False</span></span> |
 
 
-## <a name="next-steps"></a><span data-ttu-id="0844e-278">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="0844e-278">Next steps</span></span>
-* <span data-ttu-id="0844e-279">Para obtener una descripción de las secciones de una plantilla de Azure Resource Manager, vea [Creación de plantillas de Azure Resource Manager](resource-group-authoring-templates.md).</span><span class="sxs-lookup"><span data-stu-id="0844e-279">For a description of the sections in an Azure Resource Manager template, see [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md).</span></span>
-* <span data-ttu-id="0844e-280">Para combinar varias plantillas, vea [Uso de plantillas vinculadas con Azure Resource Manager](resource-group-linked-templates.md).</span><span class="sxs-lookup"><span data-stu-id="0844e-280">To merge multiple templates, see [Using linked templates with Azure Resource Manager](resource-group-linked-templates.md).</span></span>
-* <span data-ttu-id="0844e-281">Para iterar una cantidad de veces específica al crear un tipo de recurso, vea [Creación de varias instancias de recursos en el Administrador de recursos de Azure](resource-group-create-multiple.md).</span><span class="sxs-lookup"><span data-stu-id="0844e-281">To iterate a specified number of times when creating a type of resource, see [Create multiple instances of resources in Azure Resource Manager](resource-group-create-multiple.md).</span></span>
-* <span data-ttu-id="0844e-282">Para saber cómo implementar la plantilla que creó, consulte [Implementación de una aplicación con la plantilla de Azure Resource Manager](resource-group-template-deploy.md).</span><span class="sxs-lookup"><span data-stu-id="0844e-282">To see how to deploy the template you have created, see [Deploy an application with Azure Resource Manager template](resource-group-template-deploy.md).</span></span>
+## <a name="next-steps"></a><span data-ttu-id="ad968-278">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="ad968-278">Next steps</span></span>
+* <span data-ttu-id="ad968-279">Para obtener una descripción de las secciones de hello en una plantilla de Azure Resource Manager, consulte [plantillas del Administrador de recursos de Azure de creación](resource-group-authoring-templates.md).</span><span class="sxs-lookup"><span data-stu-id="ad968-279">For a description of hello sections in an Azure Resource Manager template, see [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md).</span></span>
+* <span data-ttu-id="ad968-280">toomerge varias plantillas, consulte [mediante plantillas vinculadas con el Administrador de recursos de Azure](resource-group-linked-templates.md).</span><span class="sxs-lookup"><span data-stu-id="ad968-280">toomerge multiple templates, see [Using linked templates with Azure Resource Manager](resource-group-linked-templates.md).</span></span>
+* <span data-ttu-id="ad968-281">tooiterate un número especificado de veces al crear un tipo de recurso, vea [crear varias instancias de recursos en el Administrador de recursos de Azure](resource-group-create-multiple.md).</span><span class="sxs-lookup"><span data-stu-id="ad968-281">tooiterate a specified number of times when creating a type of resource, see [Create multiple instances of resources in Azure Resource Manager](resource-group-create-multiple.md).</span></span>
+* <span data-ttu-id="ad968-282">toosee cómo toodeploy plantilla de Hola que haya creado, vea [implementar una aplicación con la plantilla de Azure Resource Manager](resource-group-template-deploy.md).</span><span class="sxs-lookup"><span data-stu-id="ad968-282">toosee how toodeploy hello template you have created, see [Deploy an application with Azure Resource Manager template](resource-group-template-deploy.md).</span></span>
 

@@ -1,6 +1,6 @@
 ---
-title: "Documentación sobre Azure Security Center: tutoriales y referencia de API | Microsoft Docs"
-description: "Aprenda a configurar la supervisión de la seguridad y la administración de directivas para recursos de Azure. Tutoriales, referencia de API de REST y otra documentación."
+title: "aaaAzure documentación del centro de seguridad - tutoriales, referencia de API | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo tooset la administración de supervisión y la directiva de seguridad para recursos de Azure. Tutoriales, referencia de API de REST y otra documentación."
 services: security-center
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 324192324831cbda13f23b784b37efcfd14808d3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b2bed6a128c7c767687871389f982d6155c6161d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="security-center-documentation"></a>Documentación de Security Center
 
-Aprenda a usar Security Center para obtener visibilidad y control sobre la seguridad de los recursos de Azure.  En los tutoriales, la referencia de API de REST y otra documentación, se muestra cómo configurar la supervisión de seguridad y la administración de directivas de forma que funcionen con un amplio ecosistema de soluciones de seguridad.
+Obtenga información acerca de cómo toouse centro de seguridad tooget visibilidad y control sobre Hola seguridad de los recursos de Azure.  Tutoriales, una referencia de API de REST y otra documentación mostrarle cómo tooset la administración de supervisión y la directiva de seguridad que funciona con un amplio ecosistema de soluciones de seguridad.
 
 <ul class="panelContent cardsFTitle">
     <li>

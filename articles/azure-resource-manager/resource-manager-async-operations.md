@@ -1,6 +1,6 @@
 ---
-title: "Operaciones asincrónicas de Azure | Microsoft Docs"
-description: "Describe cómo realizar un seguimiento de las operaciones asincrónicas en Azure."
+title: "operaciones asincrónicas aaaAzure | Documentos de Microsoft"
+description: "Describe cómo tootrack operaciones asincrónicas en Azure."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,48 +14,48 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/11/2017
 ms.author: tomfitz
-ms.openlocfilehash: 9fe3d98cd345aae45722295b6c1b7fc3e9036e95
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b81254196013adf87998eff11a50993efa52d40d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="track-asynchronous-azure-operations"></a><span data-ttu-id="722c7-103">Seguimiento de las operaciones asincrónicas de Azure</span><span class="sxs-lookup"><span data-stu-id="722c7-103">Track asynchronous Azure operations</span></span>
-<span data-ttu-id="722c7-104">Algunas operaciones de REST de Azure se ejecutan asincrónicamente porque la operación no se puede completar rápidamente.</span><span class="sxs-lookup"><span data-stu-id="722c7-104">Some Azure REST operations run asynchronously because the operation cannot be completed quickly.</span></span> <span data-ttu-id="722c7-105">En este tema se describe cómo realizar un seguimiento del estado de las operaciones asincrónicas a través de los valores devueltos en la respuesta.</span><span class="sxs-lookup"><span data-stu-id="722c7-105">This topic describes how to track the status of asynchronous operations through values returned in the response.</span></span>  
+# <a name="track-asynchronous-azure-operations"></a><span data-ttu-id="94579-103">Seguimiento de las operaciones asincrónicas de Azure</span><span class="sxs-lookup"><span data-stu-id="94579-103">Track asynchronous Azure operations</span></span>
+<span data-ttu-id="94579-104">Algunas operaciones de REST de Azure se ejecutan asincrónicamente porque no se puede completar la operación de hello rápidamente.</span><span class="sxs-lookup"><span data-stu-id="94579-104">Some Azure REST operations run asynchronously because hello operation cannot be completed quickly.</span></span> <span data-ttu-id="94579-105">Este tema describe cómo se devuelve el estado de Hola de tootrack de operaciones asincrónicas a través de los valores de respuesta de Hola.</span><span class="sxs-lookup"><span data-stu-id="94579-105">This topic describes how tootrack hello status of asynchronous operations through values returned in hello response.</span></span>  
 
-## <a name="status-codes-for-asynchronous-operations"></a><span data-ttu-id="722c7-106">Códigos de estado para las operaciones asincrónicas</span><span class="sxs-lookup"><span data-stu-id="722c7-106">Status codes for asynchronous operations</span></span>
-<span data-ttu-id="722c7-107">Una operación asincrónica devuelve inicialmente un código de estado HTTP de alguno de estos tipos:</span><span class="sxs-lookup"><span data-stu-id="722c7-107">An asynchronous operation initially returns an HTTP status code of either:</span></span>
+## <a name="status-codes-for-asynchronous-operations"></a><span data-ttu-id="94579-106">Códigos de estado para las operaciones asincrónicas</span><span class="sxs-lookup"><span data-stu-id="94579-106">Status codes for asynchronous operations</span></span>
+<span data-ttu-id="94579-107">Una operación asincrónica devuelve inicialmente un código de estado HTTP de alguno de estos tipos:</span><span class="sxs-lookup"><span data-stu-id="94579-107">An asynchronous operation initially returns an HTTP status code of either:</span></span>
 
-* <span data-ttu-id="722c7-108">201 (Created)</span><span class="sxs-lookup"><span data-stu-id="722c7-108">201 (Created)</span></span>
-* <span data-ttu-id="722c7-109">202 (Accepted)</span><span class="sxs-lookup"><span data-stu-id="722c7-109">202 (Accepted)</span></span> 
+* <span data-ttu-id="94579-108">201 (Created)</span><span class="sxs-lookup"><span data-stu-id="94579-108">201 (Created)</span></span>
+* <span data-ttu-id="94579-109">202 (Accepted)</span><span class="sxs-lookup"><span data-stu-id="94579-109">202 (Accepted)</span></span> 
 
-<span data-ttu-id="722c7-110">Cuando la operación se completa correctamente, devuelve:</span><span class="sxs-lookup"><span data-stu-id="722c7-110">When the operation successfully completes, it returns either:</span></span>
+<span data-ttu-id="94579-110">Cuando se complete correctamente la operación de hello, devuelve:</span><span class="sxs-lookup"><span data-stu-id="94579-110">When hello operation successfully completes, it returns either:</span></span>
 
-* <span data-ttu-id="722c7-111">200 (OK)</span><span class="sxs-lookup"><span data-stu-id="722c7-111">200 (OK)</span></span>
-* <span data-ttu-id="722c7-112">204 (No Content)</span><span class="sxs-lookup"><span data-stu-id="722c7-112">204 (No Content)</span></span> 
+* <span data-ttu-id="94579-111">200 (OK)</span><span class="sxs-lookup"><span data-stu-id="94579-111">200 (OK)</span></span>
+* <span data-ttu-id="94579-112">204 (No Content)</span><span class="sxs-lookup"><span data-stu-id="94579-112">204 (No Content)</span></span> 
 
-<span data-ttu-id="722c7-113">Consulte la [documentación de la API de REST](/rest/api/) para ver respuestas para la operación que está ejecutando.</span><span class="sxs-lookup"><span data-stu-id="722c7-113">Refer to the [REST API documentation](/rest/api/) to see the responses for the operation you are executing.</span></span> 
+<span data-ttu-id="94579-113">Consulte toohello [documentación de la API de REST](/rest/api/) toosee las respuestas de hello para la operación de Hola se esté ejecutando.</span><span class="sxs-lookup"><span data-stu-id="94579-113">Refer toohello [REST API documentation](/rest/api/) toosee hello responses for hello operation you are executing.</span></span> 
 
-## <a name="monitor-status-of-operation"></a><span data-ttu-id="722c7-114">Supervisión del estado de la operación</span><span class="sxs-lookup"><span data-stu-id="722c7-114">Monitor status of operation</span></span>
-<span data-ttu-id="722c7-115">Las operaciones asincrónicas de REST devuelven valores de encabezado, que se utilizan para determinar el estado de la operación.</span><span class="sxs-lookup"><span data-stu-id="722c7-115">The asynchronous REST operations return header values, which you use to determine the status of the operation.</span></span> <span data-ttu-id="722c7-116">Hay potencialmente tres valores de encabezado para examinar:</span><span class="sxs-lookup"><span data-stu-id="722c7-116">There are potentially three header values to examine:</span></span>
+## <a name="monitor-status-of-operation"></a><span data-ttu-id="94579-114">Supervisión del estado de la operación</span><span class="sxs-lookup"><span data-stu-id="94579-114">Monitor status of operation</span></span>
+<span data-ttu-id="94579-115">Hola asincrónica REST operaciones devuelto valores de encabezado, que se utiliza el estado de hello toodetermine de Hola operación.</span><span class="sxs-lookup"><span data-stu-id="94579-115">hello asynchronous REST operations return header values, which you use toodetermine hello status of hello operation.</span></span> <span data-ttu-id="94579-116">Potencialmente existen tooexamine de encabezado de tres valores:</span><span class="sxs-lookup"><span data-stu-id="94579-116">There are potentially three header values tooexamine:</span></span>
 
-* <span data-ttu-id="722c7-117">`Azure-AsyncOperation`: dirección URL para comprobar el estado actual de la operación.</span><span class="sxs-lookup"><span data-stu-id="722c7-117">`Azure-AsyncOperation` - URL for checking the ongoing status of the operation.</span></span> <span data-ttu-id="722c7-118">Si la operación devuelve este valor, utilícelo siempre (en lugar de Location) para realizar un seguimiento del estado de la operación.</span><span class="sxs-lookup"><span data-stu-id="722c7-118">If your operation returns this value, always use it (instead of Location) to track the status of the operation.</span></span>
-* <span data-ttu-id="722c7-119">`Location`: dirección URL para determinar cuándo se ha completado una operación.</span><span class="sxs-lookup"><span data-stu-id="722c7-119">`Location` - URL for determining when an operation has completed.</span></span> <span data-ttu-id="722c7-120">Use este valor sólo cuando no se devuelva Azure-AsyncOperation.</span><span class="sxs-lookup"><span data-stu-id="722c7-120">Use this value only when Azure-AsyncOperation is not returned.</span></span>
-* <span data-ttu-id="722c7-121">`Retry-After`: el número de segundos que deben transcurrir antes de comprobar el estado de la operación asincrónica.</span><span class="sxs-lookup"><span data-stu-id="722c7-121">`Retry-After` - The number of seconds to wait before checking the status of the asynchronous operation.</span></span>
+* <span data-ttu-id="94579-117">`Azure-AsyncOperation`-Dirección URL para comprobar el estado actual de la operación de Hola Hola.</span><span class="sxs-lookup"><span data-stu-id="94579-117">`Azure-AsyncOperation` - URL for checking hello ongoing status of hello operation.</span></span> <span data-ttu-id="94579-118">Si la operación devuelve este valor, utilice siempre el estado de Hola de TI (en lugar de ubicación) tootrack de operación de Hola.</span><span class="sxs-lookup"><span data-stu-id="94579-118">If your operation returns this value, always use it (instead of Location) tootrack hello status of hello operation.</span></span>
+* <span data-ttu-id="94579-119">`Location`: dirección URL para determinar cuándo se ha completado una operación.</span><span class="sxs-lookup"><span data-stu-id="94579-119">`Location` - URL for determining when an operation has completed.</span></span> <span data-ttu-id="94579-120">Use este valor sólo cuando no se devuelva Azure-AsyncOperation.</span><span class="sxs-lookup"><span data-stu-id="94579-120">Use this value only when Azure-AsyncOperation is not returned.</span></span>
+* <span data-ttu-id="94579-121">`Retry-After`-Hola número de segundos toowait antes de comprobar el estado de saludo de la operación asincrónica de Hola.</span><span class="sxs-lookup"><span data-stu-id="94579-121">`Retry-After` - hello number of seconds toowait before checking hello status of hello asynchronous operation.</span></span>
 
-<span data-ttu-id="722c7-122">Sin embargo, no todas las operaciones asincrónicas devuelven todos estos valores.</span><span class="sxs-lookup"><span data-stu-id="722c7-122">However, not every asynchronous operation returns all these values.</span></span> <span data-ttu-id="722c7-123">Por ejemplo, debe evaluar el valor del encabezado Azure-AsyncOperation para una operación y el valor del encabezado Location para otra operación.</span><span class="sxs-lookup"><span data-stu-id="722c7-123">For example, you may need to evaluate the Azure-AsyncOperation header value for one operation, and the Location header value for another operation.</span></span> 
+<span data-ttu-id="94579-122">Sin embargo, no todas las operaciones asincrónicas devuelven todos estos valores.</span><span class="sxs-lookup"><span data-stu-id="94579-122">However, not every asynchronous operation returns all these values.</span></span> <span data-ttu-id="94579-123">Por ejemplo, puede necesitar valor del encabezado tooevaluate Hola AsyncOperation de Azure para una operación y el valor del encabezado de ubicación de Hola para otra operación.</span><span class="sxs-lookup"><span data-stu-id="94579-123">For example, you may need tooevaluate hello Azure-AsyncOperation header value for one operation, and hello Location header value for another operation.</span></span> 
 
-<span data-ttu-id="722c7-124">Puede recuperar los valores de encabezado como recuperaría cualquier valor de encabezado de una solicitud.</span><span class="sxs-lookup"><span data-stu-id="722c7-124">You retrieve the header values as you would retrieve any header value for a request.</span></span> <span data-ttu-id="722c7-125">Por ejemplo, en C#, recupere el valor del encabezado de un objeto `HttpWebResponse` denominado `response` con el código siguiente:</span><span class="sxs-lookup"><span data-stu-id="722c7-125">For example, in C#, you retrieve the header value from an `HttpWebResponse` object named `response` with the following code:</span></span>
+<span data-ttu-id="94579-124">Recuperar valores de encabezado de hello como recuperaría cualquier valor de encabezado de una solicitud.</span><span class="sxs-lookup"><span data-stu-id="94579-124">You retrieve hello header values as you would retrieve any header value for a request.</span></span> <span data-ttu-id="94579-125">Por ejemplo, en C#, recuperar el valor de encabezado de Hola desde una `HttpWebResponse` objeto denominado `response` con hello siguiente código:</span><span class="sxs-lookup"><span data-stu-id="94579-125">For example, in C#, you retrieve hello header value from an `HttpWebResponse` object named `response` with hello following code:</span></span>
 
 ```cs
 response.Headers.GetValues("Azure-AsyncOperation").GetValue(0)
 ```
 
-## <a name="azure-asyncoperation-request-and-response"></a><span data-ttu-id="722c7-126">Solicitud y respuesta de Azure-AsyncOperation</span><span class="sxs-lookup"><span data-stu-id="722c7-126">Azure-AsyncOperation request and response</span></span>
+## <a name="azure-asyncoperation-request-and-response"></a><span data-ttu-id="94579-126">Solicitud y respuesta de Azure-AsyncOperation</span><span class="sxs-lookup"><span data-stu-id="94579-126">Azure-AsyncOperation request and response</span></span>
 
-<span data-ttu-id="722c7-127">Para obtener el estado de la operación asincrónica, envíe una solicitud GET a la dirección URL en el valor del encabezado Azure-AsyncOperation.</span><span class="sxs-lookup"><span data-stu-id="722c7-127">To get the status of the asynchronous operation, send a GET request to the URL in Azure-AsyncOperation header value.</span></span>
+<span data-ttu-id="94579-127">estado de hello tooget de operación asincrónica de hello, enviar una dirección URL toohello GET en el valor del encabezado de AsyncOperation de Azure.</span><span class="sxs-lookup"><span data-stu-id="94579-127">tooget hello status of hello asynchronous operation, send a GET request toohello URL in Azure-AsyncOperation header value.</span></span>
 
-<span data-ttu-id="722c7-128">El cuerpo de la respuesta de esta operación contiene información sobre la operación.</span><span class="sxs-lookup"><span data-stu-id="722c7-128">The body of the response from this operation contains information about the operation.</span></span> <span data-ttu-id="722c7-129">El ejemplo siguiente muestra los posibles valores devueltos por la operación:</span><span class="sxs-lookup"><span data-stu-id="722c7-129">The following example shows the possible values returned from the operation:</span></span>
+<span data-ttu-id="94579-128">Hola cuerpo de respuesta de Hola de esta operación contiene información acerca de la operación de Hola.</span><span class="sxs-lookup"><span data-stu-id="94579-128">hello body of hello response from this operation contains information about hello operation.</span></span> <span data-ttu-id="94579-129">Hello en el ejemplo siguiente se muestra los valores posibles de hello procedentes de la operación de hello:</span><span class="sxs-lookup"><span data-stu-id="94579-129">hello following example shows hello possible values returned from hello operation:</span></span>
 
 ```json
 {
@@ -75,42 +75,42 @@ response.Headers.GetValues("Azure-AsyncOperation").GetValue(0)
 }
 ```
 
-<span data-ttu-id="722c7-130">Solo se devuelve `status` para todas las respuestas.</span><span class="sxs-lookup"><span data-stu-id="722c7-130">Only `status` is returned for all responses.</span></span> <span data-ttu-id="722c7-131">El objeto de error se devuelve cuando el estado es Failed o Canceled.</span><span class="sxs-lookup"><span data-stu-id="722c7-131">The error object is returned when the status is Failed or Canceled.</span></span> <span data-ttu-id="722c7-132">Todos los demás valores son opcionales; por lo tanto, la respuesta que reciba puede ser diferente del ejemplo.</span><span class="sxs-lookup"><span data-stu-id="722c7-132">All other values are optional; therefore, the response you receive may look different than the example.</span></span>
+<span data-ttu-id="94579-130">Solo se devuelve `status` para todas las respuestas.</span><span class="sxs-lookup"><span data-stu-id="94579-130">Only `status` is returned for all responses.</span></span> <span data-ttu-id="94579-131">objeto de error de Hola se devuelve al estado de hello es error o cancelado.</span><span class="sxs-lookup"><span data-stu-id="94579-131">hello error object is returned when hello status is Failed or Canceled.</span></span> <span data-ttu-id="94579-132">Todos los demás valores son opcionales; por lo tanto, respuesta de hello que recibirá puede ser diferente de ejemplo de Hola.</span><span class="sxs-lookup"><span data-stu-id="94579-132">All other values are optional; therefore, hello response you receive may look different than hello example.</span></span>
 
-## <a name="provisioningstate-values"></a><span data-ttu-id="722c7-133">Valores ProvisioningState</span><span class="sxs-lookup"><span data-stu-id="722c7-133">provisioningState values</span></span>
+## <a name="provisioningstate-values"></a><span data-ttu-id="94579-133">Valores ProvisioningState</span><span class="sxs-lookup"><span data-stu-id="94579-133">provisioningState values</span></span>
 
-<span data-ttu-id="722c7-134">Las operaciones que crean, actualizan o eliminan (PUT, PATCH, DELETE) un recurso, normalmente devuelven un valor `provisioningState`.</span><span class="sxs-lookup"><span data-stu-id="722c7-134">Operations that create, update, or delete (PUT, PATCH, DELETE) a resource typically return a `provisioningState` value.</span></span> <span data-ttu-id="722c7-135">Cuando una operación ha finalizado, se devuelve uno de tres valores siguientes:</span><span class="sxs-lookup"><span data-stu-id="722c7-135">When an operation has completed, one of following three values is returned:</span></span> 
+<span data-ttu-id="94579-134">Las operaciones que crean, actualizan o eliminan (PUT, PATCH, DELETE) un recurso, normalmente devuelven un valor `provisioningState`.</span><span class="sxs-lookup"><span data-stu-id="94579-134">Operations that create, update, or delete (PUT, PATCH, DELETE) a resource typically return a `provisioningState` value.</span></span> <span data-ttu-id="94579-135">Cuando una operación ha finalizado, se devuelve uno de tres valores siguientes:</span><span class="sxs-lookup"><span data-stu-id="94579-135">When an operation has completed, one of following three values is returned:</span></span> 
 
-* <span data-ttu-id="722c7-136">Correcto</span><span class="sxs-lookup"><span data-stu-id="722c7-136">Succeeded</span></span>
-* <span data-ttu-id="722c7-137">Con error</span><span class="sxs-lookup"><span data-stu-id="722c7-137">Failed</span></span>
-* <span data-ttu-id="722c7-138">Canceled</span><span class="sxs-lookup"><span data-stu-id="722c7-138">Canceled</span></span>
+* <span data-ttu-id="94579-136">Correcto</span><span class="sxs-lookup"><span data-stu-id="94579-136">Succeeded</span></span>
+* <span data-ttu-id="94579-137">Con error</span><span class="sxs-lookup"><span data-stu-id="94579-137">Failed</span></span>
+* <span data-ttu-id="94579-138">Canceled</span><span class="sxs-lookup"><span data-stu-id="94579-138">Canceled</span></span>
 
-<span data-ttu-id="722c7-139">Todos los demás valores indican que la operación todavía se está ejecutando.</span><span class="sxs-lookup"><span data-stu-id="722c7-139">All other values indicate the operation is still running.</span></span> <span data-ttu-id="722c7-140">El proveedor de recursos puede devolver un valor personalizado que indica su estado.</span><span class="sxs-lookup"><span data-stu-id="722c7-140">The resource provider can return a customized value that indicates its state.</span></span> <span data-ttu-id="722c7-141">Por ejemplo, puede recibir **Accepted** cuando la solicitud se ha recibido y está en ejecución.</span><span class="sxs-lookup"><span data-stu-id="722c7-141">For example, you may receive **Accepted** when the request is received and running.</span></span>
+<span data-ttu-id="94579-139">Todos los otros valores indican la operación de hello todavía se está ejecutando.</span><span class="sxs-lookup"><span data-stu-id="94579-139">All other values indicate hello operation is still running.</span></span> <span data-ttu-id="94579-140">proveedor de recursos de Hello puede devolver un valor personalizado que indica su estado.</span><span class="sxs-lookup"><span data-stu-id="94579-140">hello resource provider can return a customized value that indicates its state.</span></span> <span data-ttu-id="94579-141">Por ejemplo, puede recibir **aceptado** cuando solicitud hello es recibido y en ejecución.</span><span class="sxs-lookup"><span data-stu-id="94579-141">For example, you may receive **Accepted** when hello request is received and running.</span></span>
 
-## <a name="example-requests-and-responses"></a><span data-ttu-id="722c7-142">Solicitudes y respuestas de ejemplo</span><span class="sxs-lookup"><span data-stu-id="722c7-142">Example requests and responses</span></span>
+## <a name="example-requests-and-responses"></a><span data-ttu-id="94579-142">Solicitudes y respuestas de ejemplo</span><span class="sxs-lookup"><span data-stu-id="94579-142">Example requests and responses</span></span>
 
-### <a name="start-virtual-machine-202-with-azure-asyncoperation"></a><span data-ttu-id="722c7-143">Inicio de máquina virtual (202 con Azure-AsyncOperation)</span><span class="sxs-lookup"><span data-stu-id="722c7-143">Start virtual machine (202 with Azure-AsyncOperation)</span></span>
-<span data-ttu-id="722c7-144">En este ejemplo se muestra cómo determinar el estado de la operación **start** para máquinas virtuales.</span><span class="sxs-lookup"><span data-stu-id="722c7-144">This example shows how to determine the status of **start** operation for virtual machines.</span></span> <span data-ttu-id="722c7-145">La solicitud inicial está en el formato siguiente:</span><span class="sxs-lookup"><span data-stu-id="722c7-145">The initial request is in the following format:</span></span>
+### <a name="start-virtual-machine-202-with-azure-asyncoperation"></a><span data-ttu-id="94579-143">Inicio de máquina virtual (202 con Azure-AsyncOperation)</span><span class="sxs-lookup"><span data-stu-id="94579-143">Start virtual machine (202 with Azure-AsyncOperation)</span></span>
+<span data-ttu-id="94579-144">Este ejemplo muestra cómo toodetermine Hola estado de **iniciar** operación para las máquinas virtuales.</span><span class="sxs-lookup"><span data-stu-id="94579-144">This example shows how toodetermine hello status of **start** operation for virtual machines.</span></span> <span data-ttu-id="94579-145">solicitud de saludo inicial está en hello siguiendo el formato:</span><span class="sxs-lookup"><span data-stu-id="94579-145">hello initial request is in hello following format:</span></span>
 
 ```HTTP
 POST 
 https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Compute/virtualMachines/{vm-name}/start?api-version=2016-03-30
 ```
 
-<span data-ttu-id="722c7-146">Devuelve el código de estado 202.</span><span class="sxs-lookup"><span data-stu-id="722c7-146">It returns status code 202.</span></span> <span data-ttu-id="722c7-147">Entre los valores de encabezado, verá:</span><span class="sxs-lookup"><span data-stu-id="722c7-147">Among the header values, you see:</span></span>
+<span data-ttu-id="94579-146">Devuelve el código de estado 202.</span><span class="sxs-lookup"><span data-stu-id="94579-146">It returns status code 202.</span></span> <span data-ttu-id="94579-147">Entre los valores de encabezado de hello, verá:</span><span class="sxs-lookup"><span data-stu-id="94579-147">Among hello header values, you see:</span></span>
 
 ```HTTP
 Azure-AsyncOperation : https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Compute/locations/{region}/operations/{operation-id}?api-version=2016-03-30
 ```
 
-<span data-ttu-id="722c7-148">Para comprobar el estado de la operación asincrónica, envíe otra solicitud a esa dirección URL.</span><span class="sxs-lookup"><span data-stu-id="722c7-148">To check the status of the asynchronous operation, sending another request to that URL.</span></span>
+<span data-ttu-id="94579-148">estado de hello toocheck de operación asincrónica de hello, enviar otra solicitud toothat URL.</span><span class="sxs-lookup"><span data-stu-id="94579-148">toocheck hello status of hello asynchronous operation, sending another request toothat URL.</span></span>
 
 ```HTTP
 GET 
 https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Compute/locations/{region}/operations/{operation-id}?api-version=2016-03-30
 ```
 
-<span data-ttu-id="722c7-149">El cuerpo de respuesta contiene el estado de la operación:</span><span class="sxs-lookup"><span data-stu-id="722c7-149">The response body contains the status of the operation:</span></span>
+<span data-ttu-id="94579-149">cuerpo de respuesta de Hello contiene estado Hola de operación de hello:</span><span class="sxs-lookup"><span data-stu-id="94579-149">hello response body contains hello status of hello operation:</span></span>
 
 ```json
 {
@@ -120,79 +120,79 @@ https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft
 }
 ```
 
-### <a name="deploy-resources-201-with-azure-asyncoperation"></a><span data-ttu-id="722c7-150">Implementación de recursos (201 con Azure-AsyncOperation)</span><span class="sxs-lookup"><span data-stu-id="722c7-150">Deploy resources (201 with Azure-AsyncOperation)</span></span>
+### <a name="deploy-resources-201-with-azure-asyncoperation"></a><span data-ttu-id="94579-150">Implementación de recursos (201 con Azure-AsyncOperation)</span><span class="sxs-lookup"><span data-stu-id="94579-150">Deploy resources (201 with Azure-AsyncOperation)</span></span>
 
-<span data-ttu-id="722c7-151">En este ejemplo se muestra cómo determinar el estado de la operación **deployments** para implementar recursos en Azure.</span><span class="sxs-lookup"><span data-stu-id="722c7-151">This example shows how to determine the status of **deployments** operation for deploying resources to Azure.</span></span> <span data-ttu-id="722c7-152">La solicitud inicial está en el formato siguiente:</span><span class="sxs-lookup"><span data-stu-id="722c7-152">The initial request is in the following format:</span></span>
+<span data-ttu-id="94579-151">Este ejemplo muestra cómo toodetermine Hola estado de **implementaciones** operación para la implementación de tooAzure de recursos.</span><span class="sxs-lookup"><span data-stu-id="94579-151">This example shows how toodetermine hello status of **deployments** operation for deploying resources tooAzure.</span></span> <span data-ttu-id="94579-152">solicitud de saludo inicial está en hello siguiendo el formato:</span><span class="sxs-lookup"><span data-stu-id="94579-152">hello initial request is in hello following format:</span></span>
 
 ```HTTP
 PUT
 https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/microsoft.resources/deployments/{deployment-name}?api-version=2016-09-01
 ```
 
-<span data-ttu-id="722c7-153">Devuelve el código de estado 201.</span><span class="sxs-lookup"><span data-stu-id="722c7-153">It returns status code 201.</span></span> <span data-ttu-id="722c7-154">El cuerpo de la respuesta incluye:</span><span class="sxs-lookup"><span data-stu-id="722c7-154">The body of the response includes:</span></span>
+<span data-ttu-id="94579-153">Devuelve el código de estado 201.</span><span class="sxs-lookup"><span data-stu-id="94579-153">It returns status code 201.</span></span> <span data-ttu-id="94579-154">Hola cuerpo de respuesta de hello incluye:</span><span class="sxs-lookup"><span data-stu-id="94579-154">hello body of hello response includes:</span></span>
 
 ```json
 "provisioningState":"Accepted",
 ```
 
-<span data-ttu-id="722c7-155">Entre los valores de encabezado, verá:</span><span class="sxs-lookup"><span data-stu-id="722c7-155">Among the header values, you see:</span></span>
+<span data-ttu-id="94579-155">Entre los valores de encabezado de hello, verá:</span><span class="sxs-lookup"><span data-stu-id="94579-155">Among hello header values, you see:</span></span>
 
 ```HTTP
 Azure-AsyncOperation: https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Resources/deployments/{deployment-name}/operationStatuses/{operation-id}?api-version=2016-09-01
 ```
 
-<span data-ttu-id="722c7-156">Para comprobar el estado de la operación asincrónica, envíe otra solicitud a esa dirección URL.</span><span class="sxs-lookup"><span data-stu-id="722c7-156">To check the status of the asynchronous operation, sending another request to that URL.</span></span>
+<span data-ttu-id="94579-156">estado de hello toocheck de operación asincrónica de hello, enviar otra solicitud toothat URL.</span><span class="sxs-lookup"><span data-stu-id="94579-156">toocheck hello status of hello asynchronous operation, sending another request toothat URL.</span></span>
 
 ```HTTP
 GET 
 https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Resources/deployments/{deployment-name}/operationStatuses/{operation-id}?api-version=2016-09-01
 ```
 
-<span data-ttu-id="722c7-157">El cuerpo de respuesta contiene el estado de la operación:</span><span class="sxs-lookup"><span data-stu-id="722c7-157">The response body contains the status of the operation:</span></span>
+<span data-ttu-id="94579-157">cuerpo de respuesta de Hello contiene estado Hola de operación de hello:</span><span class="sxs-lookup"><span data-stu-id="94579-157">hello response body contains hello status of hello operation:</span></span>
 
 ```json
 {"status":"Running"}
 ```
 
-<span data-ttu-id="722c7-158">Cuando haya finalizado la implementación, la respuesta contiene:</span><span class="sxs-lookup"><span data-stu-id="722c7-158">When the deployment is finished, the response contains:</span></span>
+<span data-ttu-id="94579-158">Cuando haya finalizado la implementación de hello, respuesta de hello contiene:</span><span class="sxs-lookup"><span data-stu-id="94579-158">When hello deployment is finished, hello response contains:</span></span>
 
 ```json
 {"status":"Succeeded"}
 ```
 
-### <a name="create-storage-account-202-with-location-and-retry-after"></a><span data-ttu-id="722c7-159">Creación de cuenta de almacenamiento (202 con Location y Retry-After)</span><span class="sxs-lookup"><span data-stu-id="722c7-159">Create storage account (202 with Location and Retry-After)</span></span>
+### <a name="create-storage-account-202-with-location-and-retry-after"></a><span data-ttu-id="94579-159">Creación de cuenta de almacenamiento (202 con Location y Retry-After)</span><span class="sxs-lookup"><span data-stu-id="94579-159">Create storage account (202 with Location and Retry-After)</span></span>
 
-<span data-ttu-id="722c7-160">Este ejemplo muestra cómo determinar el estado de la operación **create** para cuentas de almacenamiento.</span><span class="sxs-lookup"><span data-stu-id="722c7-160">This example shows how to determine the status of the **create** operation for storage accounts.</span></span> <span data-ttu-id="722c7-161">La solicitud inicial está en el formato siguiente:</span><span class="sxs-lookup"><span data-stu-id="722c7-161">The initial request is in the following format:</span></span>
+<span data-ttu-id="94579-160">Este ejemplo muestra cómo toodetermine Hola estado de hello **crear** operación las cuentas de almacenamiento.</span><span class="sxs-lookup"><span data-stu-id="94579-160">This example shows how toodetermine hello status of hello **create** operation for storage accounts.</span></span> <span data-ttu-id="94579-161">solicitud de saludo inicial está en hello siguiendo el formato:</span><span class="sxs-lookup"><span data-stu-id="94579-161">hello initial request is in hello following format:</span></span>
 
 ```HTTP
 PUT
 https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}?api-version=2016-01-01
 ```
 
-<span data-ttu-id="722c7-162">Y el cuerpo de solicitud contiene las propiedades de la cuenta de almacenamiento:</span><span class="sxs-lookup"><span data-stu-id="722c7-162">And the request body contains properties for the storage account:</span></span>
+<span data-ttu-id="94579-162">Y cuerpo de la solicitud de hello contiene las propiedades de cuenta de almacenamiento de hello:</span><span class="sxs-lookup"><span data-stu-id="94579-162">And hello request body contains properties for hello storage account:</span></span>
 
 ```json
 { "location": "South Central US", "properties": {}, "sku": { "name": "Standard_LRS" }, "kind": "Storage" }
 ```
 
-<span data-ttu-id="722c7-163">Devuelve el código de estado 202.</span><span class="sxs-lookup"><span data-stu-id="722c7-163">It returns status code 202.</span></span> <span data-ttu-id="722c7-164">Entre los valores de encabezado, vea los dos valores siguientes:</span><span class="sxs-lookup"><span data-stu-id="722c7-164">Among the header values, you see the following two values:</span></span>
+<span data-ttu-id="94579-163">Devuelve el código de estado 202.</span><span class="sxs-lookup"><span data-stu-id="94579-163">It returns status code 202.</span></span> <span data-ttu-id="94579-164">Entre los valores de encabezado de hello, vea Hola después de dos valores:</span><span class="sxs-lookup"><span data-stu-id="94579-164">Among hello header values, you see hello following two values:</span></span>
 
 ```HTTP
 Location: https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Storage/operations/{operation-id}?monitor=true&api-version=2016-01-01
 Retry-After: 17
 ```
 
-<span data-ttu-id="722c7-165">Después de esperar el número de segundos especificados en Retry-After, compruebe el estado de la operación asincrónica mediante el envío de otra solicitud a esa dirección URL.</span><span class="sxs-lookup"><span data-stu-id="722c7-165">After waiting for number of seconds specified in Retry-After, check the status of the asynchronous operation by sending another request to that URL.</span></span>
+<span data-ttu-id="94579-165">Después de esperar el número de segundos especifiquen en Retry-After, compruebe el estado de Hola de operación asincrónica de hello mediante el envío de otra dirección URL de toothat de solicitud.</span><span class="sxs-lookup"><span data-stu-id="94579-165">After waiting for number of seconds specified in Retry-After, check hello status of hello asynchronous operation by sending another request toothat URL.</span></span>
 
 ```HTTP
 GET 
 https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Storage/operations/{operation-id}?monitor=true&api-version=2016-01-01
 ```
 
-<span data-ttu-id="722c7-166">Si la solicitud aún se está ejecutando, recibe un código de estado 202.</span><span class="sxs-lookup"><span data-stu-id="722c7-166">If the request is still running, you receive a status code 202.</span></span> <span data-ttu-id="722c7-167">Si la solicitud se ha completado, recibe un código de estado 200 y el cuerpo de la respuesta contiene las propiedades de la cuenta de almacenamiento que se ha creado.</span><span class="sxs-lookup"><span data-stu-id="722c7-167">If the request has completed, your receive a status code 200, and the body of the response contains the properties of the storage account that has been created.</span></span>
+<span data-ttu-id="94579-166">Si la solicitud de saludo se está ejecutando, recibirá un código de estado 202.</span><span class="sxs-lookup"><span data-stu-id="94579-166">If hello request is still running, you receive a status code 202.</span></span> <span data-ttu-id="94579-167">Si ha completado la solicitud de hello, el recibir un código de estado 200 y cuerpo de Hola de respuesta de hello contiene propiedades de Hola de cuenta de almacenamiento de Hola que se ha creado.</span><span class="sxs-lookup"><span data-stu-id="94579-167">If hello request has completed, your receive a status code 200, and hello body of hello response contains hello properties of hello storage account that has been created.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="722c7-168">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="722c7-168">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="94579-168">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="94579-168">Next steps</span></span>
 
-* <span data-ttu-id="722c7-169">Para obtener documentación sobre cada operación de REST, consulte la [documentación de la API de REST](/rest/api/).</span><span class="sxs-lookup"><span data-stu-id="722c7-169">For documentation about each REST operation, see [REST API documentation](/rest/api/).</span></span>
-* <span data-ttu-id="722c7-170">Para obtener información acerca de cómo administrar los recursos a través de la API de REST de Resource Manager, consulte [API de REST de Resource Manager](resource-manager-rest-api.md).</span><span class="sxs-lookup"><span data-stu-id="722c7-170">For information about managing resources through the Resource Manager REST API, see [Using the Resource Manager REST API](resource-manager-rest-api.md).</span></span>
-* <span data-ttu-id="722c7-171">Para obtener información acerca de la implementación de plantillas a través de la API de REST de Resource Manager, consulte [Implementación de recursos con las plantillas de Resource Manager y la API de REST de Resource Manager](resource-group-template-deploy-rest.md).</span><span class="sxs-lookup"><span data-stu-id="722c7-171">for information about deploying templates through the Resource Manager REST API, see [Deploy resources with Resource Manager templates and Resource Manager REST API](resource-group-template-deploy-rest.md).</span></span>
+* <span data-ttu-id="94579-169">Para obtener documentación sobre cada operación de REST, consulte la [documentación de la API de REST](/rest/api/).</span><span class="sxs-lookup"><span data-stu-id="94579-169">For documentation about each REST operation, see [REST API documentation](/rest/api/).</span></span>
+* <span data-ttu-id="94579-170">Para obtener información acerca de cómo administrar los recursos a través de hello API de REST del Administrador de recursos, consulte [hello mediante API de REST del Administrador de recursos](resource-manager-rest-api.md).</span><span class="sxs-lookup"><span data-stu-id="94579-170">For information about managing resources through hello Resource Manager REST API, see [Using hello Resource Manager REST API](resource-manager-rest-api.md).</span></span>
+* <span data-ttu-id="94579-171">Para obtener información acerca de la implementación de plantillas a través de hello API de REST del Administrador de recursos, consulte [implementar los recursos con plantillas de administrador de recursos y API de REST del Administrador de recursos](resource-group-template-deploy-rest.md).</span><span class="sxs-lookup"><span data-stu-id="94579-171">for information about deploying templates through hello Resource Manager REST API, see [Deploy resources with Resource Manager templates and Resource Manager REST API](resource-group-template-deploy-rest.md).</span></span>

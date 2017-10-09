@@ -1,6 +1,6 @@
 ---
-title: "Uso del SDK de iOS para Aplicaciones móviles de Azure"
-description: "Uso del SDK de iOS para Aplicaciones móviles de Azure"
+title: "aaaHow tooUse iOS SDK para aplicaciones móviles de Azure"
+description: "¿Cómo tooUse iOS SDK para aplicaciones móviles de Azure"
 services: app-service\mobile
 documentationcenter: ios
 author: ysxu
@@ -14,65 +14,65 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: yuaxu
-ms.openlocfilehash: 65817208e1b26fb5f9eb56d164f48b44d57dce56
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: fa299ab3f152bad12d821832fa9fb5495d1fa296
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a><span data-ttu-id="7b900-103">Uso de la biblioteca de cliente de iOS para Aplicaciones móviles de Azure</span><span class="sxs-lookup"><span data-stu-id="7b900-103">How to Use iOS Client Library for Azure Mobile Apps</span></span>
+# <a name="how-toouse-ios-client-library-for-azure-mobile-apps"></a><span data-ttu-id="4e8cd-103">¿Cómo tooUse iOS biblioteca de cliente para aplicaciones móviles de Azure</span><span class="sxs-lookup"><span data-stu-id="4e8cd-103">How tooUse iOS Client Library for Azure Mobile Apps</span></span>
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
-<span data-ttu-id="7b900-104">Esta guía muestra cómo realizar algunas tareas comunes a través del [SDK de iOS de Azure Mobile Apps][1].</span><span class="sxs-lookup"><span data-stu-id="7b900-104">This guide teaches you to perform common scenarios using the latest [Azure Mobile Apps iOS SDK][1].</span></span> <span data-ttu-id="7b900-105">Si está familiarizado con Aplicaciones móviles de Azure, complete primero [Inicio rápido de Aplicaciones móviles de Azure] para crear un back-end, crear una tabla y descargar un proyecto de Xcode para iOS pregenerada.</span><span class="sxs-lookup"><span data-stu-id="7b900-105">If you are new to Azure Mobile Apps, first complete [Azure Mobile Apps Quick Start] to create a backend, create a table, and download a pre-built iOS Xcode project.</span></span> <span data-ttu-id="7b900-106">En esta guía, nos centramos en el SDK de iOS de cliente.</span><span class="sxs-lookup"><span data-stu-id="7b900-106">In this guide, we focus on the client-side iOS SDK.</span></span> <span data-ttu-id="7b900-107">Para obtener más información sobre el SDK de servidor para el back-end, consulte los procedimientos del SDK de servidor.</span><span class="sxs-lookup"><span data-stu-id="7b900-107">To learn more about the server-side SDK for the backend, see the Server SDK HOWTOs.</span></span>
+<span data-ttu-id="4e8cd-104">Esta guía le enseña con hello más reciente de escenarios comunes de tooperform [iOS de aplicaciones móviles de Azure SDK][1].</span><span class="sxs-lookup"><span data-stu-id="4e8cd-104">This guide teaches you tooperform common scenarios using hello latest [Azure Mobile Apps iOS SDK][1].</span></span> <span data-ttu-id="4e8cd-105">Si estás nuevas aplicaciones de Mobile tooAzure, complete primero [inicio rápido de Azure Mobile Apps] toocreate un back-end, cree una tabla y descargar un proyecto de Xcode pregenerado iOS.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-105">If you are new tooAzure Mobile Apps, first complete [Azure Mobile Apps Quick Start] toocreate a backend, create a table, and download a pre-built iOS Xcode project.</span></span> <span data-ttu-id="4e8cd-106">En esta guía se centra en SDK de iOS de Hola de cliente.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-106">In this guide, we focus on hello client-side iOS SDK.</span></span> <span data-ttu-id="4e8cd-107">toolearn Obtenga más información sobre Hola SDK de servidor de back-end de hello, vea Hola Server SDK explicativa.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-107">toolearn more about hello server-side SDK for hello backend, see hello Server SDK HOWTOs.</span></span>
 
-## <a name="reference-documentation"></a><span data-ttu-id="7b900-108">Documentación de referencia</span><span class="sxs-lookup"><span data-stu-id="7b900-108">Reference documentation</span></span>
-<span data-ttu-id="7b900-109">La documentación de referencia para el SDK de cliente de iOS se encuentra aquí: [Referencia de cliente de iOS de Azure Mobile Apps][2].</span><span class="sxs-lookup"><span data-stu-id="7b900-109">The reference documentation for the iOS client SDK is located here: [Azure Mobile Apps iOS Client Reference][2].</span></span>
+## <a name="reference-documentation"></a><span data-ttu-id="4e8cd-108">Documentación de referencia</span><span class="sxs-lookup"><span data-stu-id="4e8cd-108">Reference documentation</span></span>
+<span data-ttu-id="4e8cd-109">Hello documentación de referencia de SDK de cliente de iOS de Hola se encuentra aquí: [aplicaciones móviles de Azure iOS referencia de cliente][2].</span><span class="sxs-lookup"><span data-stu-id="4e8cd-109">hello reference documentation for hello iOS client SDK is located here: [Azure Mobile Apps iOS Client Reference][2].</span></span>
 
-## <a name="supported-platforms"></a><span data-ttu-id="7b900-110">Plataformas compatibles</span><span class="sxs-lookup"><span data-stu-id="7b900-110">Supported Platforms</span></span>
-<span data-ttu-id="7b900-111">El SDK de iOS admite proyectos de Objective-C, Swift 2.2 y Swift 2.3 para iOS 8.0 o posterior.</span><span class="sxs-lookup"><span data-stu-id="7b900-111">The iOS SDK supports Objective-C projects, Swift 2.2 projects, and Swift 2.3 projects for iOS versions 8.0 or later.</span></span>
+## <a name="supported-platforms"></a><span data-ttu-id="4e8cd-110">Plataformas compatibles</span><span class="sxs-lookup"><span data-stu-id="4e8cd-110">Supported Platforms</span></span>
+<span data-ttu-id="4e8cd-111">SDK de iOS de Hello admite proyectos Objective-C, Swift 2.2 proyectos y proyectos de Swift 2.3 para iOS versiones 8.0 o posteriores.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-111">hello iOS SDK supports Objective-C projects, Swift 2.2 projects, and Swift 2.3 projects for iOS versions 8.0 or later.</span></span>
 
-<span data-ttu-id="7b900-112">La autenticación de flujo de servidor utiliza una vista web para la interfaz de usuario presentada.</span><span class="sxs-lookup"><span data-stu-id="7b900-112">The "server-flow" authentication uses a WebView for the presented UI.</span></span>  <span data-ttu-id="7b900-113">Si el dispositivo no puede presentar una interfaz de usuario de vista web, hay que utilizar otros métodos de autenticación que están fuera del ámbito del producto.</span><span class="sxs-lookup"><span data-stu-id="7b900-113">If the device is not able to present a WebView UI, then another method of authentication is required that is outside the scope of the product.</span></span>  
-<span data-ttu-id="7b900-114">Por tanto, este SDK no es adecuado para dispositivos de tipo reloj o con restricciones similares.</span><span class="sxs-lookup"><span data-stu-id="7b900-114">This SDK is thus not suitable for Watch-type or similarly restricted devices.</span></span>
+<span data-ttu-id="4e8cd-112">la autenticación de "flujo de servidor" Hello usa un WebView para hello presentada la interfaz de usuario.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-112">hello "server-flow" authentication uses a WebView for hello presented UI.</span></span>  <span data-ttu-id="4e8cd-113">Si el dispositivo de hello no es capaz de toopresent una UI WebView, se requiere el otro método de autenticación es fuera Hola ámbito del producto Hola.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-113">If hello device is not able toopresent a WebView UI, then another method of authentication is required that is outside hello scope of hello product.</span></span>  
+<span data-ttu-id="4e8cd-114">Por tanto, este SDK no es adecuado para dispositivos de tipo reloj o con restricciones similares.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-114">This SDK is thus not suitable for Watch-type or similarly restricted devices.</span></span>
 
-## <span data-ttu-id="7b900-115"><a name="Setup"></a>Configuración y requisitos previos</span><span class="sxs-lookup"><span data-stu-id="7b900-115"><a name="Setup"></a>Setup and Prerequisites</span></span>
-<span data-ttu-id="7b900-116">En esta guía se asume que ha creado un back-end con una tabla.</span><span class="sxs-lookup"><span data-stu-id="7b900-116">This guide assumes that you have created a backend with a table.</span></span> <span data-ttu-id="7b900-117">En esta guía se asume que la tabla tiene el mismo esquema que las tablas de dichos tutoriales.</span><span class="sxs-lookup"><span data-stu-id="7b900-117">This guide assumes that the table has the same schema as the tables in those tutorials.</span></span> <span data-ttu-id="7b900-118">En esta guía también se supone que en el código se hace referencia a `MicrosoftAzureMobile.framework` e importa `MicrosoftAzureMobile/MicrosoftAzureMobile.h`.</span><span class="sxs-lookup"><span data-stu-id="7b900-118">This guide also assumes that in your code, you reference `MicrosoftAzureMobile.framework` and import `MicrosoftAzureMobile/MicrosoftAzureMobile.h`.</span></span>
+## <span data-ttu-id="4e8cd-115"><a name="Setup"></a>Configuración y requisitos previos</span><span class="sxs-lookup"><span data-stu-id="4e8cd-115"><a name="Setup"></a>Setup and Prerequisites</span></span>
+<span data-ttu-id="4e8cd-116">En esta guía se asume que ha creado un back-end con una tabla.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-116">This guide assumes that you have created a backend with a table.</span></span> <span data-ttu-id="4e8cd-117">Esta guía se da por supuesto que esa tabla hello tiene el mismo esquema como tablas de hello en los tutoriales.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-117">This guide assumes that hello table has the same schema as hello tables in those tutorials.</span></span> <span data-ttu-id="4e8cd-118">En esta guía también se supone que en el código se hace referencia a `MicrosoftAzureMobile.framework` e importa `MicrosoftAzureMobile/MicrosoftAzureMobile.h`.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-118">This guide also assumes that in your code, you reference `MicrosoftAzureMobile.framework` and import `MicrosoftAzureMobile/MicrosoftAzureMobile.h`.</span></span>
 
-## <span data-ttu-id="7b900-119"><a name="create-client"></a>Creación del cliente</span><span class="sxs-lookup"><span data-stu-id="7b900-119"><a name="create-client"></a>How to: Create Client</span></span>
-<span data-ttu-id="7b900-120">Para obtener acceso al back-end de Aplicaciones móviles de Azure en el proyecto, cree un `MSClient`.</span><span class="sxs-lookup"><span data-stu-id="7b900-120">To access an Azure Mobile Apps backend in your project, create an `MSClient`.</span></span> <span data-ttu-id="7b900-121">Reemplace `AppUrl` por la dirección URL de la aplicación.</span><span class="sxs-lookup"><span data-stu-id="7b900-121">Replace `AppUrl` with the app URL.</span></span> <span data-ttu-id="7b900-122">Puede dejar `gatewayURLString` y `applicationKey` vacías.</span><span class="sxs-lookup"><span data-stu-id="7b900-122">You may leave `gatewayURLString` and `applicationKey` empty.</span></span> <span data-ttu-id="7b900-123">Si configura una puerta de enlace para la autenticación, rellene `gatewayURLString` con la dirección URL de la puerta de enlace.</span><span class="sxs-lookup"><span data-stu-id="7b900-123">If you set up a gateway for authentication, populate `gatewayURLString` with the gateway URL.</span></span>
+## <span data-ttu-id="4e8cd-119"><a name="create-client"></a>Creación del cliente</span><span class="sxs-lookup"><span data-stu-id="4e8cd-119"><a name="create-client"></a>How to: Create Client</span></span>
+<span data-ttu-id="4e8cd-120">tooaccess un back-end de aplicaciones móviles de Azure en el proyecto, crear un `MSClient`.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-120">tooaccess an Azure Mobile Apps backend in your project, create an `MSClient`.</span></span> <span data-ttu-id="4e8cd-121">Reemplace `AppUrl` con la URL de la aplicación hello.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-121">Replace `AppUrl` with hello app URL.</span></span> <span data-ttu-id="4e8cd-122">Puede dejar `gatewayURLString` y `applicationKey` vacías.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-122">You may leave `gatewayURLString` and `applicationKey` empty.</span></span> <span data-ttu-id="4e8cd-123">Si configura una puerta de enlace para la autenticación, rellenar `gatewayURLString` con la dirección URL de puerta de enlace de Hola.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-123">If you set up a gateway for authentication, populate `gatewayURLString` with hello gateway URL.</span></span>
 
-<span data-ttu-id="7b900-124">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="7b900-124">**Objective-C**:</span></span>
+<span data-ttu-id="4e8cd-124">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-124">**Objective-C**:</span></span>
 
 ```
 MSClient *client = [MSClient clientWithApplicationURLString:@"AppUrl"];
 ```
 
-<span data-ttu-id="7b900-125">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="7b900-125">**Swift**:</span></span>
+<span data-ttu-id="4e8cd-125">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-125">**Swift**:</span></span>
 
 ```
 let client = MSClient(applicationURLString: "AppUrl")
 ```
 
 
-## <span data-ttu-id="7b900-126"><a name="table-reference"></a>Creación de una referencia de tabla</span><span class="sxs-lookup"><span data-stu-id="7b900-126"><a name="table-reference"></a>How to: Create Table Reference</span></span>
-<span data-ttu-id="7b900-127">Para acceder a los datos o actualizarlos, cree una referencia a la tabla de back-end.</span><span class="sxs-lookup"><span data-stu-id="7b900-127">To access or update data, create a reference to the backend table.</span></span> <span data-ttu-id="7b900-128">Reemplace `TodoItem` por el nombre de la tabla.</span><span class="sxs-lookup"><span data-stu-id="7b900-128">Replace `TodoItem` with the name of your table</span></span>
+## <span data-ttu-id="4e8cd-126"><a name="table-reference"></a>Creación de una referencia de tabla</span><span class="sxs-lookup"><span data-stu-id="4e8cd-126"><a name="table-reference"></a>How to: Create Table Reference</span></span>
+<span data-ttu-id="4e8cd-127">tooaccess o actualizar los datos, cree una tabla de referencia toohello back-end.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-127">tooaccess or update data, create a reference toohello backend table.</span></span> <span data-ttu-id="4e8cd-128">Reemplace `TodoItem` con nombre hello de la tabla</span><span class="sxs-lookup"><span data-stu-id="4e8cd-128">Replace `TodoItem` with hello name of your table</span></span>
 
-<span data-ttu-id="7b900-129">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="7b900-129">**Objective-C**:</span></span>
+<span data-ttu-id="4e8cd-129">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-129">**Objective-C**:</span></span>
 
 ```
 MSTable *table = [client tableWithName:@"TodoItem"];
 ```
 
-<span data-ttu-id="7b900-130">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="7b900-130">**Swift**:</span></span>
+<span data-ttu-id="4e8cd-130">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-130">**Swift**:</span></span>
 
 ```
 let table = client.tableWithName("TodoItem")
 ```
 
 
-## <span data-ttu-id="7b900-131"><a name="querying"></a>Consulta de datos</span><span class="sxs-lookup"><span data-stu-id="7b900-131"><a name="querying"></a>How to: Query Data</span></span>
-<span data-ttu-id="7b900-132">Para crear una consulta de base de datos, consulte el objeto `MSTable` .</span><span class="sxs-lookup"><span data-stu-id="7b900-132">To create a database query, query the `MSTable` object.</span></span> <span data-ttu-id="7b900-133">La consulta siguiente obtiene todos los elementos de `TodoItem` y registra el texto de cada elemento.</span><span class="sxs-lookup"><span data-stu-id="7b900-133">The following query gets all the items in `TodoItem` and logs the text of each item.</span></span>
+## <span data-ttu-id="4e8cd-131"><a name="querying"></a>Consulta de datos</span><span class="sxs-lookup"><span data-stu-id="4e8cd-131"><a name="querying"></a>How to: Query Data</span></span>
+<span data-ttu-id="4e8cd-132">toocreate una consulta de base de datos, Hola consulta `MSTable` objeto.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-132">toocreate a database query, query hello `MSTable` object.</span></span> <span data-ttu-id="4e8cd-133">Hello consulta siguiente obtiene todos los elementos de hello `TodoItem` y registros de Hola texto de cada elemento.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-133">hello following query gets all hello items in `TodoItem` and logs hello text of each item.</span></span>
 
-<span data-ttu-id="7b900-134">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="7b900-134">**Objective-C**:</span></span>
+<span data-ttu-id="4e8cd-134">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-134">**Objective-C**:</span></span>
 
 ```
 [table readWithCompletion:^(MSQueryResult *result, NSError *error) {
@@ -86,7 +86,7 @@ let table = client.tableWithName("TodoItem")
 }];
 ```
 
-<span data-ttu-id="7b900-135">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="7b900-135">**Swift**:</span></span>
+<span data-ttu-id="4e8cd-135">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-135">**Swift**:</span></span>
 
 ```
 table.readWithCompletion { (result, error) in
@@ -100,17 +100,17 @@ table.readWithCompletion { (result, error) in
 }
 ```
 
-## <span data-ttu-id="7b900-136"><a name="filtering"></a>Filtro de datos devueltos</span><span class="sxs-lookup"><span data-stu-id="7b900-136"><a name="filtering"></a>How to: Filter Returned Data</span></span>
-<span data-ttu-id="7b900-137">Para filtrar los resultados, hay muchas opciones disponibles.</span><span class="sxs-lookup"><span data-stu-id="7b900-137">To filter results, there are many available options.</span></span>
+## <span data-ttu-id="4e8cd-136"><a name="filtering"></a>Filtro de datos devueltos</span><span class="sxs-lookup"><span data-stu-id="4e8cd-136"><a name="filtering"></a>How to: Filter Returned Data</span></span>
+<span data-ttu-id="4e8cd-137">resultados de toofilter, hay muchas opciones disponibles.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-137">toofilter results, there are many available options.</span></span>
 
-<span data-ttu-id="7b900-138">Para filtrar mediante un predicado, use un `NSPredicate` y `readWithPredicate`.</span><span class="sxs-lookup"><span data-stu-id="7b900-138">To filter using a predicate, use an `NSPredicate` and `readWithPredicate`.</span></span> <span data-ttu-id="7b900-139">Los siguientes filtros devolvieron datos para buscar solo los elementos Todo incompletos.</span><span class="sxs-lookup"><span data-stu-id="7b900-139">The following filters returned data to find only incomplete Todo items.</span></span>
+<span data-ttu-id="4e8cd-138">toofilter mediante un predicado, use un `NSPredicate` y `readWithPredicate`.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-138">toofilter using a predicate, use an `NSPredicate` and `readWithPredicate`.</span></span> <span data-ttu-id="4e8cd-139">siguiente Hola filtra los elementos de lista de tareas de datos devueltos toofind solo incompletos.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-139">hello following filters returned data toofind only incomplete Todo items.</span></span>
 
-<span data-ttu-id="7b900-140">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="7b900-140">**Objective-C**:</span></span>
+<span data-ttu-id="4e8cd-140">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-140">**Objective-C**:</span></span>
 
 ```
 // Create a predicate that finds items where complete is false
 NSPredicate * predicate = [NSPredicate predicateWithFormat:@"complete == NO"];
-// Query the TodoItem table
+// Query hello TodoItem table
 [table readWithPredicate:predicate completion:^(MSQueryResult *result, NSError *error) {
         if(error) {
                 NSLog(@"ERROR %@", error);
@@ -122,12 +122,12 @@ NSPredicate * predicate = [NSPredicate predicateWithFormat:@"complete == NO"];
 }];
 ```
 
-<span data-ttu-id="7b900-141">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="7b900-141">**Swift**:</span></span>
+<span data-ttu-id="4e8cd-141">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-141">**Swift**:</span></span>
 
 ```
 // Create a predicate that finds items where complete is false
 let predicate =  NSPredicate(format: "complete == NO")
-// Query the TodoItem table
+// Query hello TodoItem table
 table.readWithPredicate(predicate) { (result, error) in
     if let err = error {
         print("ERROR ", err)
@@ -139,38 +139,38 @@ table.readWithPredicate(predicate) { (result, error) in
 }
 ```
 
-## <span data-ttu-id="7b900-142"><a name="query-object"></a>Uso de MSQuery</span><span class="sxs-lookup"><span data-stu-id="7b900-142"><a name="query-object"></a>How to: Use MSQuery</span></span>
-<span data-ttu-id="7b900-143">Para realizar una consulta compleja (como de ordenación y paginación), cree un objeto `MSQuery` directamente o mediante un predicado:</span><span class="sxs-lookup"><span data-stu-id="7b900-143">To perform a complex query (including sorting and paging), create an `MSQuery` object, directly or by using a predicate:</span></span>
+## <span data-ttu-id="4e8cd-142"><a name="query-object"></a>Uso de MSQuery</span><span class="sxs-lookup"><span data-stu-id="4e8cd-142"><a name="query-object"></a>How to: Use MSQuery</span></span>
+<span data-ttu-id="4e8cd-143">tooperform crear una consulta compleja (incluida la clasificación y paginación), un `MSQuery` de objeto, directamente o mediante un predicado:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-143">tooperform a complex query (including sorting and paging), create an `MSQuery` object, directly or by using a predicate:</span></span>
 
-<span data-ttu-id="7b900-144">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="7b900-144">**Objective-C**:</span></span>
+<span data-ttu-id="4e8cd-144">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-144">**Objective-C**:</span></span>
 
 ```
 MSQuery *query = [table query];
 MSQuery *query = [table queryWithPredicate: [NSPredicate predicateWithFormat:@"complete == NO"]];
 ```
 
-<span data-ttu-id="7b900-145">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="7b900-145">**Swift**:</span></span>
+<span data-ttu-id="4e8cd-145">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-145">**Swift**:</span></span>
 
 ```
 let query = table.query()
 let query = table.queryWithPredicate(NSPredicate(format: "complete == NO"))
 ```
 
-<span data-ttu-id="7b900-146">`MSQuery` permite controlar varios comportamientos de consulta.</span><span class="sxs-lookup"><span data-stu-id="7b900-146">`MSQuery` lets you control several query behaviors.</span></span>
+<span data-ttu-id="4e8cd-146">`MSQuery` permite controlar varios comportamientos de consulta.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-146">`MSQuery` lets you control several query behaviors.</span></span>
 
-* <span data-ttu-id="7b900-147">Especificar el orden de los resultados</span><span class="sxs-lookup"><span data-stu-id="7b900-147">Specify order of results</span></span>
-* <span data-ttu-id="7b900-148">Limitar qué campos se devuelven</span><span class="sxs-lookup"><span data-stu-id="7b900-148">Limit which fields to return</span></span>
-* <span data-ttu-id="7b900-149">Limitar el número de registros que se devolverán</span><span class="sxs-lookup"><span data-stu-id="7b900-149">Limit how many records to return</span></span>
-* <span data-ttu-id="7b900-150">Especificar el recuento total en la respuesta</span><span class="sxs-lookup"><span data-stu-id="7b900-150">Specify total count in response</span></span>
-* <span data-ttu-id="7b900-151">Especificar parámetros de la cadena de consulta personalizados en la solicitud</span><span class="sxs-lookup"><span data-stu-id="7b900-151">Specify custom query string parameters in request</span></span>
-* <span data-ttu-id="7b900-152">Aplicar funciones adicionales</span><span class="sxs-lookup"><span data-stu-id="7b900-152">Apply additional functions</span></span>
+* <span data-ttu-id="4e8cd-147">Especificar el orden de los resultados</span><span class="sxs-lookup"><span data-stu-id="4e8cd-147">Specify order of results</span></span>
+* <span data-ttu-id="4e8cd-148">Límite de campos tooreturn</span><span class="sxs-lookup"><span data-stu-id="4e8cd-148">Limit which fields tooreturn</span></span>
+* <span data-ttu-id="4e8cd-149">Limitar el número de registros tooreturn</span><span class="sxs-lookup"><span data-stu-id="4e8cd-149">Limit how many records tooreturn</span></span>
+* <span data-ttu-id="4e8cd-150">Especificar el recuento total en la respuesta</span><span class="sxs-lookup"><span data-stu-id="4e8cd-150">Specify total count in response</span></span>
+* <span data-ttu-id="4e8cd-151">Especificar parámetros de la cadena de consulta personalizados en la solicitud</span><span class="sxs-lookup"><span data-stu-id="4e8cd-151">Specify custom query string parameters in request</span></span>
+* <span data-ttu-id="4e8cd-152">Aplicar funciones adicionales</span><span class="sxs-lookup"><span data-stu-id="4e8cd-152">Apply additional functions</span></span>
 
-<span data-ttu-id="7b900-153">Ejecutar una consulta `MSQuery` llamando a `readWithCompletion` en el objeto.</span><span class="sxs-lookup"><span data-stu-id="7b900-153">Execute an `MSQuery` query by calling `readWithCompletion` on the object.</span></span>
+<span data-ttu-id="4e8cd-153">Ejecutar un `MSQuery` consulta mediante una llamada a `readWithCompletion` en el objeto de Hola.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-153">Execute an `MSQuery` query by calling `readWithCompletion` on hello object.</span></span>
 
-## <span data-ttu-id="7b900-154"><a name="sorting"></a>Ordenación de datos con MSQuery</span><span class="sxs-lookup"><span data-stu-id="7b900-154"><a name="sorting"></a>How to: Sort Data with MSQuery</span></span>
-<span data-ttu-id="7b900-155">Para ordenar los resultados, echemos un vistazo a un ejemplo.</span><span class="sxs-lookup"><span data-stu-id="7b900-155">To sort results, let's look at an example.</span></span> <span data-ttu-id="7b900-156">Para ordenar por orden ascendente el campo text y, luego, por orden descendente el campo complete, invoque `MSQuery` de la siguiente manera:</span><span class="sxs-lookup"><span data-stu-id="7b900-156">To sort by field 'text' ascending, then by 'complete' descending, invoke `MSQuery` like so:</span></span>
+## <span data-ttu-id="4e8cd-154"><a name="sorting"></a>Ordenación de datos con MSQuery</span><span class="sxs-lookup"><span data-stu-id="4e8cd-154"><a name="sorting"></a>How to: Sort Data with MSQuery</span></span>
+<span data-ttu-id="4e8cd-155">resultados de toosort, echemos un vistazo a un ejemplo.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-155">toosort results, let's look at an example.</span></span> <span data-ttu-id="4e8cd-156">invocar toosort por texto' campo' ascendente y luego por 'complete' en orden descendente, `MSQuery` así:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-156">toosort by field 'text' ascending, then by 'complete' descending, invoke `MSQuery` like so:</span></span>
 
-<span data-ttu-id="7b900-157">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="7b900-157">**Objective-C**:</span></span>
+<span data-ttu-id="4e8cd-157">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-157">**Objective-C**:</span></span>
 
 ```
 [query orderByAscending:@"text"];
@@ -186,7 +186,7 @@ let query = table.queryWithPredicate(NSPredicate(format: "complete == NO"))
 }];
 ```
 
-<span data-ttu-id="7b900-158">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="7b900-158">**Swift**:</span></span>
+<span data-ttu-id="4e8cd-158">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-158">**Swift**:</span></span>
 
 ```
 query.orderByAscending("text")
@@ -203,24 +203,24 @@ query.readWithCompletion { (result, error) in
 ```
 
 
-## <span data-ttu-id="7b900-159"><a name="selecting"></a><a name="parameters"></a>Limitación de campos y expansión de los parámetros de cadena de consulta con MSQuery</span><span class="sxs-lookup"><span data-stu-id="7b900-159"><a name="selecting"></a><a name="parameters"></a>How to: Limit Fields and Expand Query String Parameters with MSQuery</span></span>
-<span data-ttu-id="7b900-160">Para limitar los campos que se devolverán en una consulta, especifique los nombres de los campos en la propiedad **selectFields** .</span><span class="sxs-lookup"><span data-stu-id="7b900-160">To limit fields to be returned in a query, specify the names of the fields in the **selectFields** property.</span></span> <span data-ttu-id="7b900-161">En este ejemplo solamente se devuelven los campos de texto y aquellos que se hayan rellenado:</span><span class="sxs-lookup"><span data-stu-id="7b900-161">This example returns only the text and completed fields:</span></span>
+## <span data-ttu-id="4e8cd-159"><a name="selecting"></a><a name="parameters"></a>Limitación de campos y expansión de los parámetros de cadena de consulta con MSQuery</span><span class="sxs-lookup"><span data-stu-id="4e8cd-159"><a name="selecting"></a><a name="parameters"></a>How to: Limit Fields and Expand Query String Parameters with MSQuery</span></span>
+<span data-ttu-id="4e8cd-160">toolimit toobe de campos devuelto en una consulta, se especifican nombres de Hola de campos de Hola Hola **selectFields** propiedad.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-160">toolimit fields toobe returned in a query, specify hello names of hello fields in hello **selectFields** property.</span></span> <span data-ttu-id="4e8cd-161">Este ejemplo devuelve solo texto hello y campos completados:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-161">This example returns only hello text and completed fields:</span></span>
 
-<span data-ttu-id="7b900-162">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="7b900-162">**Objective-C**:</span></span>
+<span data-ttu-id="4e8cd-162">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-162">**Objective-C**:</span></span>
 
 ```
 query.selectFields = @[@"text", @"complete"];
 ```
 
-<span data-ttu-id="7b900-163">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="7b900-163">**Swift**:</span></span>
+<span data-ttu-id="4e8cd-163">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-163">**Swift**:</span></span>
 
 ```
 query.selectFields = ["text", "complete"]
 ```
 
-<span data-ttu-id="7b900-164">Para incluir parámetros de cadena de consulta adicionales en la solicitud al servidor (por ejemplo, porque los utiliza un script de servidor personalizado), introduzca `query.parameters` :</span><span class="sxs-lookup"><span data-stu-id="7b900-164">To include additional query string parameters in the server request (for example, because a custom server-side script uses them), populate `query.parameters` like so:</span></span>
+<span data-ttu-id="4e8cd-164">parámetros de cadena de consulta adicionales tooinclude en servidor hello solicitan (por ejemplo, porque utiliza un script de servidor personalizado), rellenar `query.parameters` así:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-164">tooinclude additional query string parameters in hello server request (for example, because a custom server-side script uses them), populate `query.parameters` like so:</span></span>
 
-<span data-ttu-id="7b900-165">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="7b900-165">**Objective-C**:</span></span>
+<span data-ttu-id="4e8cd-165">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-165">**Objective-C**:</span></span>
 
 ```
 query.parameters = @{
@@ -229,26 +229,26 @@ query.parameters = @{
 };
 ```
 
-<span data-ttu-id="7b900-166">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="7b900-166">**Swift**:</span></span>
+<span data-ttu-id="4e8cd-166">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-166">**Swift**:</span></span>
 
 ```
 query.parameters = ["myKey1": "value1", "myKey2": "value2"]
 ```
 
-## <span data-ttu-id="7b900-167"><a name="paging"></a>Procedimiento: configuración del tamaño de página</span><span class="sxs-lookup"><span data-stu-id="7b900-167"><a name="paging"></a>How to: Configure Page Size</span></span>
-<span data-ttu-id="7b900-168">Con Azure Mobile Apps, el tamaño de página controla el número de registros que se extraen de las tablas de back-end al mismo tiempo.</span><span class="sxs-lookup"><span data-stu-id="7b900-168">With Azure Mobile Apps, the page size controls the number of records that are pulled at a time from the backend tables.</span></span> <span data-ttu-id="7b900-169">Luego, una llamada a los datos de `pull` enviaría dichos datos en lotes, basándose en este tamaño de página, hasta que no haya más registros para extraer.</span><span class="sxs-lookup"><span data-stu-id="7b900-169">A call to `pull` data would then batch up data, based on this page size, until there are no more records to pull.</span></span>
+## <span data-ttu-id="4e8cd-167"><a name="paging"></a>Procedimiento: configuración del tamaño de página</span><span class="sxs-lookup"><span data-stu-id="4e8cd-167"><a name="paging"></a>How to: Configure Page Size</span></span>
+<span data-ttu-id="4e8cd-168">Con aplicaciones de Azure Mobile, controles de tamaño de página de Hola Hola número de registros que se extraigan de tablas de back-end de hello al mismo tiempo.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-168">With Azure Mobile Apps, hello page size controls hello number of records that are pulled at a time from hello backend tables.</span></span> <span data-ttu-id="4e8cd-169">Llamar demasiado`pull` datos, a continuación, podrían crear lotes de datos, basada en este tamaño de página, hasta que no haya ningún más toopull de registros.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-169">A call too`pull` data would then batch up data, based on this page size, until there are no more records toopull.</span></span>
 
-<span data-ttu-id="7b900-170">Es posible configurar un tamaño de página con **MSPullSettings** tal como se muestra a continuación.</span><span class="sxs-lookup"><span data-stu-id="7b900-170">It's possible to configure a page size using **MSPullSettings** as shown below.</span></span> <span data-ttu-id="7b900-171">El tamaño de página predeterminado es 50 y en el ejemplo siguiente se cambia a 3.</span><span class="sxs-lookup"><span data-stu-id="7b900-171">The default page size is 50, and the example below changes it to 3.</span></span>
+<span data-ttu-id="4e8cd-170">Es posible tooconfigure un tamaño de página con **MSPullSettings** tal y como se muestra a continuación.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-170">It's possible tooconfigure a page size using **MSPullSettings** as shown below.</span></span> <span data-ttu-id="4e8cd-171">tamaño de página predeterminado de Hello es 50 y ejemplo de Hola siguiente cambia too3.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-171">hello default page size is 50, and hello example below changes it too3.</span></span>
 
-<span data-ttu-id="7b900-172">Para mejorar el rendimiento es posible configurar otro tamaño de página.</span><span class="sxs-lookup"><span data-stu-id="7b900-172">You could configure a different page size for performance reasons.</span></span> <span data-ttu-id="7b900-173">Si tiene un gran número de registros de datos pequeños, un tamaño de página elevado reduce el número de idas y vueltas del servidor.</span><span class="sxs-lookup"><span data-stu-id="7b900-173">If you have a large number of small data records, a high page size reduces the number of server round-trips.</span></span>
+<span data-ttu-id="4e8cd-172">Para mejorar el rendimiento es posible configurar otro tamaño de página.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-172">You could configure a different page size for performance reasons.</span></span> <span data-ttu-id="4e8cd-173">Si tiene un gran número de registros de datos pequeños, un tamaño de página alta reduce el número de Hola de ida y vuelta del servidor.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-173">If you have a large number of small data records, a high page size reduces hello number of server round-trips.</span></span>
 
-<span data-ttu-id="7b900-174">Este valor controla el tamaño de página en el cliente.</span><span class="sxs-lookup"><span data-stu-id="7b900-174">This setting controls only the page size on the client side.</span></span> <span data-ttu-id="7b900-175">Si el cliente pide un tamaño de página mayor que el que admite el back-end de Mobile Apps, se limita al máximo que el back-end está configurado para admitir.</span><span class="sxs-lookup"><span data-stu-id="7b900-175">If the client asks for a larger page size than the Mobile Apps backend supports, the page size is capped at the maximum the backend is configured to support.</span></span>
+<span data-ttu-id="4e8cd-174">Esta configuración controla sólo tamaño de página de hello en el lado del cliente de Hola.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-174">This setting controls only hello page size on hello client side.</span></span> <span data-ttu-id="4e8cd-175">Si el cliente de hello pide un tamaño de página que admite aplicaciones móviles de hello back-end, el tamaño de página de hello es limitado a back-end de Hola Hola máximo es toosupport configurado.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-175">If hello client asks for a larger page size than hello Mobile Apps backend supports, hello page size is capped at hello maximum hello backend is configured toosupport.</span></span>
 
-<span data-ttu-id="7b900-176">Este valor es también el *número* de registros de datos, no el *tamaño en bytes*.</span><span class="sxs-lookup"><span data-stu-id="7b900-176">This setting is also the *number* of data records, not the *byte size*.</span></span>
+<span data-ttu-id="4e8cd-176">Esta configuración también es hello *número* de registros de datos, no Hola *tamaño en bytes*.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-176">This setting is also hello *number* of data records, not hello *byte size*.</span></span>
 
-<span data-ttu-id="7b900-177">Si aumenta el tamaño de página del cliente, también debe aumentar el tamaño de página en el servidor.</span><span class="sxs-lookup"><span data-stu-id="7b900-177">If you increase the client page size, you should also increase the page size on the server.</span></span> <span data-ttu-id="7b900-178">Para saber qué pasos debe dar para hacerlo, consulte ["Cómo ajustar el tamaño de paginación de la tabla"](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).</span><span class="sxs-lookup"><span data-stu-id="7b900-178">See ["How to: Adjust the table paging size"](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) for the steps to do this.</span></span>
+<span data-ttu-id="4e8cd-177">Si aumenta el tamaño de página de cliente hello, también debe aumentar el tamaño de página de hello en el servidor de Hola.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-177">If you increase hello client page size, you should also increase hello page size on hello server.</span></span> <span data-ttu-id="4e8cd-178">Vea ["Cómo: ajustar el tamaño de paginación de tabla Hola"](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) para hello pasos toodo esto.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-178">See ["How to: Adjust hello table paging size"](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) for hello steps toodo this.</span></span>
 
-<span data-ttu-id="7b900-179">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="7b900-179">**Objective-C**:</span></span>
+<span data-ttu-id="4e8cd-179">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-179">**Objective-C**:</span></span>
 
 ```
   MSPullSettings *pullSettings = [[MSPullSettings alloc] initWithPageSize:3];
@@ -261,7 +261,7 @@ query.parameters = ["myKey1": "value1", "myKey2": "value2"]
 ```
 
 
-<span data-ttu-id="7b900-180">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="7b900-180">**Swift**:</span></span>
+<span data-ttu-id="4e8cd-180">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-180">**Swift**:</span></span>
 
 ```
 let pullSettings = MSPullSettings(pageSize: 3)
@@ -272,14 +272,14 @@ table.pullWithQuery(query, queryId:nil, settings: pullSettings) { (error) in
 }
 ```
 
-## <span data-ttu-id="7b900-181"><a name="inserting"></a>Insertar datos</span><span class="sxs-lookup"><span data-stu-id="7b900-181"><a name="inserting"></a>How to: Insert Data</span></span>
-<span data-ttu-id="7b900-182">Para insertar una nueva fila en la tabla, cree un elemento `NSDictionary` e invoque `table insert`.</span><span class="sxs-lookup"><span data-stu-id="7b900-182">To insert a new table row, create a `NSDictionary` and invoke `table insert`.</span></span> <span data-ttu-id="7b900-183">Si el [esquema dinámico] está habilitado, el back-end móvil de Azure App Service genera automáticamente columnas nuevas basadas en `NSDictionary`.</span><span class="sxs-lookup"><span data-stu-id="7b900-183">If [Dynamic Schema] is enabled, the Azure App Service mobile backend automatically generates new columns based on the `NSDictionary`.</span></span>
+## <span data-ttu-id="4e8cd-181"><a name="inserting"></a>Insertar datos</span><span class="sxs-lookup"><span data-stu-id="4e8cd-181"><a name="inserting"></a>How to: Insert Data</span></span>
+<span data-ttu-id="4e8cd-182">crear una nueva fila de tabla, tooinsert una `NSDictionary` e invocar `table insert`.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-182">tooinsert a new table row, create a `NSDictionary` and invoke `table insert`.</span></span> <span data-ttu-id="4e8cd-183">Si [esquema dinámico] está habilitada, back-end de hello servicio de aplicaciones de Azure mobile genera automáticamente nuevas columnas en función de hello `NSDictionary`.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-183">If [Dynamic Schema] is enabled, hello Azure App Service mobile backend automatically generates new columns based on hello `NSDictionary`.</span></span>
 
-<span data-ttu-id="7b900-184">Si no se proporciona `id` , el backend genera automáticamente un nuevo identificador único.</span><span class="sxs-lookup"><span data-stu-id="7b900-184">If `id` is not provided, the backend automatically generates a new unique ID.</span></span> <span data-ttu-id="7b900-185">Proporcione su propio `id` para utilizar direcciones de correo electrónico, nombres de usuario o sus propios valores personalizados como Id.</span><span class="sxs-lookup"><span data-stu-id="7b900-185">Provide your own `id` to use email addresses, usernames, or your own custom values as ID.</span></span> <span data-ttu-id="7b900-186">Proporcionar su propio ID puede facilitar las combinaciones y la lógica de la base de datos de tipo empresarial.</span><span class="sxs-lookup"><span data-stu-id="7b900-186">Providing your own ID may ease joins and business-oriented database logic.</span></span>
+<span data-ttu-id="4e8cd-184">Si `id` es no siempre, Hola back-end genera automáticamente un nuevo identificador único.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-184">If `id` is not provided, hello backend automatically generates a new unique ID.</span></span> <span data-ttu-id="4e8cd-185">Proporcionar su propia `id` toouse de correo electrónico direcciones, nombres de usuario o sus propios valores personalizados como identificador.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-185">Provide your own `id` toouse email addresses, usernames, or your own custom values as ID.</span></span> <span data-ttu-id="4e8cd-186">Proporcionar su propio ID puede facilitar las combinaciones y la lógica de la base de datos de tipo empresarial.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-186">Providing your own ID may ease joins and business-oriented database logic.</span></span>
 
-<span data-ttu-id="7b900-187">`result` contiene el nuevo elemento insertado.</span><span class="sxs-lookup"><span data-stu-id="7b900-187">The `result` contains the new item that was inserted.</span></span> <span data-ttu-id="7b900-188">En función de la lógica del servidor, puede tener datos modificados o adicionales en comparación con lo que se pasó al servidor.</span><span class="sxs-lookup"><span data-stu-id="7b900-188">Depending on your server logic, it may have additional or modified data compared to what was passed to the server.</span></span>
+<span data-ttu-id="4e8cd-187">Hola `result` contiene Hola nuevo elemento que se ha insertado.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-187">hello `result` contains hello new item that was inserted.</span></span> <span data-ttu-id="4e8cd-188">Según la lógica del servidor, toowhat de datos modificados en comparación con se ha pasado toohello server o puede tener adicionales.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-188">Depending on your server logic, it may have additional or modified data compared toowhat was passed toohello server.</span></span>
 
-<span data-ttu-id="7b900-189">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="7b900-189">**Objective-C**:</span></span>
+<span data-ttu-id="4e8cd-189">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-189">**Objective-C**:</span></span>
 
 ```
 NSDictionary *newItem = @{@"id": @"custom-id", @"text": @"my new item", @"complete" : @NO};
@@ -292,7 +292,7 @@ NSDictionary *newItem = @{@"id": @"custom-id", @"text": @"my new item", @"comple
 }];
 ```
 
-<span data-ttu-id="7b900-190">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="7b900-190">**Swift**:</span></span>
+<span data-ttu-id="4e8cd-190">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-190">**Swift**:</span></span>
 
 ```
 let newItem = ["id": "custom-id", "text": "my new item", "complete": false]
@@ -305,10 +305,10 @@ table.insert(newItem) { (result, error) in
 }
 ```
 
-## <span data-ttu-id="7b900-191"><a name="modifying"></a>Modificación de datos</span><span class="sxs-lookup"><span data-stu-id="7b900-191"><a name="modifying"></a>How to: Modify Data</span></span>
-<span data-ttu-id="7b900-192">Para actualizar una fila existente, modifique un elemento y llame a `update`:</span><span class="sxs-lookup"><span data-stu-id="7b900-192">To update an existing row, modify an item and call `update`:</span></span>
+## <span data-ttu-id="4e8cd-191"><a name="modifying"></a>Modificación de datos</span><span class="sxs-lookup"><span data-stu-id="4e8cd-191"><a name="modifying"></a>How to: Modify Data</span></span>
+<span data-ttu-id="4e8cd-192">tooupdate una fila existente, modificar un elemento y la llamada `update`:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-192">tooupdate an existing row, modify an item and call `update`:</span></span>
 
-<span data-ttu-id="7b900-193">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="7b900-193">**Objective-C**:</span></span>
+<span data-ttu-id="4e8cd-193">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-193">**Objective-C**:</span></span>
 
 ```
 NSMutableDictionary *newItem = [oldItem mutableCopy]; // oldItem is NSDictionary
@@ -322,7 +322,7 @@ NSMutableDictionary *newItem = [oldItem mutableCopy]; // oldItem is NSDictionary
 }];
 ```
 
-<span data-ttu-id="7b900-194">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="7b900-194">**Swift**:</span></span>
+<span data-ttu-id="4e8cd-194">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-194">**Swift**:</span></span>
 
 ```
 if let newItem = oldItem.mutableCopy() as? NSMutableDictionary {
@@ -337,9 +337,9 @@ if let newItem = oldItem.mutableCopy() as? NSMutableDictionary {
 }
 ```
 
-<span data-ttu-id="7b900-195">Como alternativa, proporcione el identificador de fila y el campo actualizado:</span><span class="sxs-lookup"><span data-stu-id="7b900-195">Alternatively, supply the row ID and the updated field:</span></span>
+<span data-ttu-id="4e8cd-195">O bien, especifique Id. de fila de Hola y campo Hola actualizado:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-195">Alternatively, supply hello row ID and hello updated field:</span></span>
 
-<span data-ttu-id="7b900-196">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="7b900-196">**Objective-C**:</span></span>
+<span data-ttu-id="4e8cd-196">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-196">**Objective-C**:</span></span>
 
 ```
 [table update:@{@"id":@"custom-id", @"text":"my EDITED item"} completion:^(NSDictionary *result, NSError *error) {
@@ -351,7 +351,7 @@ if let newItem = oldItem.mutableCopy() as? NSMutableDictionary {
 }];
 ```
 
-<span data-ttu-id="7b900-197">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="7b900-197">**Swift**:</span></span>
+<span data-ttu-id="4e8cd-197">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-197">**Swift**:</span></span>
 
 ```
 table.update(["id": "custom-id", "text": "my EDITED item"]) { (result, error) in
@@ -363,12 +363,12 @@ table.update(["id": "custom-id", "text": "my EDITED item"]) { (result, error) in
 }
 ```
 
-<span data-ttu-id="7b900-198">Como mínimo, debe establecerse el atributo `id` al realizar actualizaciones.</span><span class="sxs-lookup"><span data-stu-id="7b900-198">At minimum, the `id` attribute must be set when making updates.</span></span>
+<span data-ttu-id="4e8cd-198">Como mínimo, Hola `id` atributo debe establecerse al realizar las actualizaciones.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-198">At minimum, hello `id` attribute must be set when making updates.</span></span>
 
-## <span data-ttu-id="7b900-199"><a name="deleting"></a>Eliminación de datos</span><span class="sxs-lookup"><span data-stu-id="7b900-199"><a name="deleting"></a>How to: Delete Data</span></span>
-<span data-ttu-id="7b900-200">Para eliminar un elemento, invoque `delete` con el elemento:</span><span class="sxs-lookup"><span data-stu-id="7b900-200">To delete an item, invoke `delete` with the item:</span></span>
+## <span data-ttu-id="4e8cd-199"><a name="deleting"></a>Eliminación de datos</span><span class="sxs-lookup"><span data-stu-id="4e8cd-199"><a name="deleting"></a>How to: Delete Data</span></span>
+<span data-ttu-id="4e8cd-200">toodelete un elemento, invocar `delete` con elemento hello:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-200">toodelete an item, invoke `delete` with hello item:</span></span>
 
-<span data-ttu-id="7b900-201">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="7b900-201">**Objective-C**:</span></span>
+<span data-ttu-id="4e8cd-201">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-201">**Objective-C**:</span></span>
 
 ```
 [table delete:item completion:^(id itemId, NSError *error) {
@@ -380,7 +380,7 @@ table.update(["id": "custom-id", "text": "my EDITED item"]) { (result, error) in
 }];
 ```
 
-<span data-ttu-id="7b900-202">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="7b900-202">**Swift**:</span></span>
+<span data-ttu-id="4e8cd-202">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-202">**Swift**:</span></span>
 
 ```
 table.delete(newItem as [NSObject: AnyObject]) { (itemId, error) in
@@ -392,9 +392,9 @@ table.delete(newItem as [NSObject: AnyObject]) { (itemId, error) in
 }
 ```
 
-<span data-ttu-id="7b900-203">O bien elimínelo proporcionando un identificador de fila:</span><span class="sxs-lookup"><span data-stu-id="7b900-203">Alternatively, delete by providing a row ID:</span></span>
+<span data-ttu-id="4e8cd-203">O bien elimínelo proporcionando un identificador de fila:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-203">Alternatively, delete by providing a row ID:</span></span>
 
-<span data-ttu-id="7b900-204">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="7b900-204">**Objective-C**:</span></span>
+<span data-ttu-id="4e8cd-204">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-204">**Objective-C**:</span></span>
 
 ```
 [table deleteWithId:@"37BBF396-11F0-4B39-85C8-B319C729AF6D" completion:^(id itemId, NSError *error) {
@@ -406,7 +406,7 @@ table.delete(newItem as [NSObject: AnyObject]) { (itemId, error) in
 }];
 ```
 
-<span data-ttu-id="7b900-205">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="7b900-205">**Swift**:</span></span>
+<span data-ttu-id="4e8cd-205">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-205">**Swift**:</span></span>
 
 ```
 table.deleteWithId("37BBF396-11F0-4B39-85C8-B319C729AF6D") { (itemId, error) in
@@ -418,14 +418,14 @@ table.deleteWithId("37BBF396-11F0-4B39-85C8-B319C729AF6D") { (itemId, error) in
 }
 ```
 
-<span data-ttu-id="7b900-206">Como mínimo, el atributo `id` debe establecerse a la hora de efectuar eliminaciones.</span><span class="sxs-lookup"><span data-stu-id="7b900-206">At minimum, the `id` attribute must be set when making deletes.</span></span>
+<span data-ttu-id="4e8cd-206">Como mínimo, Hola `id` atributo debe establecerse al hacer que se elimina.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-206">At minimum, hello `id` attribute must be set when making deletes.</span></span>
 
-## <span data-ttu-id="7b900-207"><a name="customapi"></a>Llamada a una API personalizada</span><span class="sxs-lookup"><span data-stu-id="7b900-207"><a name="customapi"></a>How to: Call Custom API</span></span>
-<span data-ttu-id="7b900-208">Con una API personalizada, puede exponer cualquier funcionalidad de back-end.</span><span class="sxs-lookup"><span data-stu-id="7b900-208">With a custom API, you can expose any backend functionality.</span></span> <span data-ttu-id="7b900-209">No necesita asignar a una operación de tabla.</span><span class="sxs-lookup"><span data-stu-id="7b900-209">It doesn't have to map to a table operation.</span></span> <span data-ttu-id="7b900-210">No solo obtendrá más control sobre la mensajería, también podrá leer o establecer encabezados y cambiar el formato del cuerpo de la respuesta.</span><span class="sxs-lookup"><span data-stu-id="7b900-210">Not only do you gain more control over messaging, you can even read/set headers and change the response body format.</span></span> <span data-ttu-id="7b900-211">Para aprender cómo crear una API personalizada en el back-end, lea [API personalizadas](app-service-mobile-node-backend-how-to-use-server-sdk.md#work-easy-apis)</span><span class="sxs-lookup"><span data-stu-id="7b900-211">To learn how to create a custom API on the backend, read [Custom APIs](app-service-mobile-node-backend-how-to-use-server-sdk.md#work-easy-apis)</span></span>
+## <span data-ttu-id="4e8cd-207"><a name="customapi"></a>Llamada a una API personalizada</span><span class="sxs-lookup"><span data-stu-id="4e8cd-207"><a name="customapi"></a>How to: Call Custom API</span></span>
+<span data-ttu-id="4e8cd-208">Con una API personalizada, puede exponer cualquier funcionalidad de back-end.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-208">With a custom API, you can expose any backend functionality.</span></span> <span data-ttu-id="4e8cd-209">No tiene toomap tooa la operación de tabla.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-209">It doesn't have toomap tooa table operation.</span></span> <span data-ttu-id="4e8cd-210">No sólo obtendrá más control sobre la mensajería, incluso puede leer o establecer los encabezados y cambiar el formato del cuerpo de respuesta de Hola.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-210">Not only do you gain more control over messaging, you can even read/set headers and change hello response body format.</span></span> <span data-ttu-id="4e8cd-211">toolearn cómo leer toocreate una API personalizada en el back-end de hello, [API personalizadas](app-service-mobile-node-backend-how-to-use-server-sdk.md#work-easy-apis)</span><span class="sxs-lookup"><span data-stu-id="4e8cd-211">toolearn how toocreate a custom API on hello backend, read [Custom APIs](app-service-mobile-node-backend-how-to-use-server-sdk.md#work-easy-apis)</span></span>
 
-<span data-ttu-id="7b900-212">Para invocar a una API personalizada, llame a `MSClient.invokeAPI`.</span><span class="sxs-lookup"><span data-stu-id="7b900-212">To call a custom API, call `MSClient.invokeAPI`.</span></span> <span data-ttu-id="7b900-213">El contenido de la solicitud y la respuesta se tratan como JSON.</span><span class="sxs-lookup"><span data-stu-id="7b900-213">The request and response content are treated as JSON.</span></span> <span data-ttu-id="7b900-214">Para utilizar otros tipos de soportes físicos, [use la otra sobrecarga de `invokeAPI`][5].</span><span class="sxs-lookup"><span data-stu-id="7b900-214">To use other media types, [use the other overload of `invokeAPI`][5].</span></span>  <span data-ttu-id="7b900-215">Para realizar una solicitud `GET` en lugar de una solicitud `POST`, establezca el parámetro `HTTPMethod` en `"GET"` y el parámetro `body` en `nil` (puesto que las solicitudes GET no tienen cuerpos de mensaje). Si la API personalizada es compatible con otros verbos HTTP, cambie `HTTPMethod` de acuerdo a ello.</span><span class="sxs-lookup"><span data-stu-id="7b900-215">To make a `GET` request instead of a `POST` request, set parameter `HTTPMethod` to `"GET"` and parameter `body` to `nil` (since GET requests do not have message bodies.) If your custom API supports other HTTP verbs, change `HTTPMethod` appropriately.</span></span>
+<span data-ttu-id="4e8cd-212">llamar una API personalizada, toocall `MSClient.invokeAPI`.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-212">toocall a custom API, call `MSClient.invokeAPI`.</span></span> <span data-ttu-id="4e8cd-213">solicitud de Hola y el contenido de la respuesta se tratan como JSON.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-213">hello request and response content are treated as JSON.</span></span> <span data-ttu-id="4e8cd-214">toouse otros tipos de medios, [uso Hola otra sobrecarga de `invokeAPI` ] [ 5].</span><span class="sxs-lookup"><span data-stu-id="4e8cd-214">toouse other media types, [use hello other overload of `invokeAPI`][5].</span></span>  <span data-ttu-id="4e8cd-215">toomake una `GET` solicitar en lugar de un `POST` solicitar, parámetro de conjunto de `HTTPMethod` demasiado`"GET"` y parámetro `body` demasiado`nil` (ya que las solicitudes GET no tener cuerpos de mensaje). Si la API personalizada es compatible con otros verbos HTTP, cambie `HTTPMethod` de acuerdo a ello.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-215">toomake a `GET` request instead of a `POST` request, set parameter `HTTPMethod` too`"GET"` and parameter `body` too`nil` (since GET requests do not have message bodies.) If your custom API supports other HTTP verbs, change `HTTPMethod` appropriately.</span></span>
 
-<span data-ttu-id="7b900-216">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="7b900-216">**Objective-C**:</span></span>
+<span data-ttu-id="4e8cd-216">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-216">**Objective-C**:</span></span>
 
 ```
 [self.client invokeAPI:@"sendEmail"
@@ -442,7 +442,7 @@ table.deleteWithId("37BBF396-11F0-4B39-85C8-B319C729AF6D") { (itemId, error) in
             }];
 ```
 
-<span data-ttu-id="7b900-217">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="7b900-217">**Swift**:</span></span>
+<span data-ttu-id="4e8cd-217">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-217">**Swift**:</span></span>
 
 ```
 client.invokeAPI("sendEmail",
@@ -460,10 +460,10 @@ client.invokeAPI("sendEmail",
         }
 ```
 
-## <span data-ttu-id="7b900-218"><a name="templates"></a>Procedimiento: Registro de plantillas push para enviar notificaciones entre plataformas</span><span class="sxs-lookup"><span data-stu-id="7b900-218"><a name="templates"></a>How to: Register push templates to send cross-platform notifications</span></span>
-<span data-ttu-id="7b900-219">Para registrar plantillas, pase las plantillas con el método **client.push registerDeviceToken** en la aplicación cliente.</span><span class="sxs-lookup"><span data-stu-id="7b900-219">To register templates, pass templates with your **client.push registerDeviceToken** method in your client app.</span></span>
+## <span data-ttu-id="4e8cd-218"><a name="templates"></a>Cómo: notificaciones de registro inserción plantillas toosend multiplataforma</span><span class="sxs-lookup"><span data-stu-id="4e8cd-218"><a name="templates"></a>How to: Register push templates toosend cross-platform notifications</span></span>
+<span data-ttu-id="4e8cd-219">plantillas de tooregister, pasar plantillas con su **client.push registerDeviceToken** método en la aplicación cliente.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-219">tooregister templates, pass templates with your **client.push registerDeviceToken** method in your client app.</span></span>
 
-<span data-ttu-id="7b900-220">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="7b900-220">**Objective-C**:</span></span>
+<span data-ttu-id="4e8cd-220">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-220">**Objective-C**:</span></span>
 
 ```
 [client.push registerDeviceToken:deviceToken template:iOSTemplate completion:^(NSError *error) {
@@ -473,7 +473,7 @@ client.invokeAPI("sendEmail",
 }];
 ```
 
-<span data-ttu-id="7b900-221">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="7b900-221">**Swift**:</span></span>
+<span data-ttu-id="4e8cd-221">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-221">**Swift**:</span></span>
 
 ```
     client.push?.registerDeviceToken(NSData(), template: iOSTemplate, completion: { (error) in
@@ -483,75 +483,75 @@ client.invokeAPI("sendEmail",
     })
 ```
 
-<span data-ttu-id="7b900-222">Las plantillas serán de tipo NSDictionary y pueden contener varias plantillas con el formato siguiente:</span><span class="sxs-lookup"><span data-stu-id="7b900-222">Your templates are of type NSDictionary and can contain multiple templates in the following format:</span></span>
+<span data-ttu-id="4e8cd-222">Las plantillas son del tipo NSDictionary y pueden contener varias plantillas en hello siguiendo el formato:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-222">Your templates are of type NSDictionary and can contain multiple templates in hello following format:</span></span>
 
-<span data-ttu-id="7b900-223">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="7b900-223">**Objective-C**:</span></span>
+<span data-ttu-id="4e8cd-223">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-223">**Objective-C**:</span></span>
 
 ```
 NSDictionary *iOSTemplate = @{ @"templateName": @{ @"body": @{ @"aps": @{ @"alert": @"$(message)" } } } };
 ```
 
-<span data-ttu-id="7b900-224">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="7b900-224">**Swift**:</span></span>
+<span data-ttu-id="4e8cd-224">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-224">**Swift**:</span></span>
 
 ```
 let iOSTemplate = ["templateName": ["body": ["aps": ["alert": "$(message)"]]]]
 ```
 
-<span data-ttu-id="7b900-225">Por seguridad, se eliminan todas las etiquetas de la solicitud.</span><span class="sxs-lookup"><span data-stu-id="7b900-225">All tags are stripped from the request for security.</span></span>  <span data-ttu-id="7b900-226">Para agregar etiquetas a las instalaciones o a las plantillas de las instalaciones, consulte [Trabajar con el SDK del servidor back-end de .NET para Azure Mobile Apps][4].</span><span class="sxs-lookup"><span data-stu-id="7b900-226">To add tags to installations or templates within installations, see [Work with the .NET backend server SDK for Azure Mobile Apps][4].</span></span>  <span data-ttu-id="7b900-227">Para enviar notificaciones mediante estas plantillas registradas, trabaje con [API de Notification Hubs][3].</span><span class="sxs-lookup"><span data-stu-id="7b900-227">To send notifications using these registered templates, work with [Notification Hubs APIs][3].</span></span>
+<span data-ttu-id="4e8cd-225">Se eliminan todas las etiquetas de solicitud de hello para la seguridad.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-225">All tags are stripped from hello request for security.</span></span>  <span data-ttu-id="4e8cd-226">tooadd etiquetas tooinstallations o plantillas en las instalaciones, consulte [trabajar con el servidor back-end de .NET Hola SDK para aplicaciones móviles de Azure][4].</span><span class="sxs-lookup"><span data-stu-id="4e8cd-226">tooadd tags tooinstallations or templates within installations, see [Work with hello .NET backend server SDK for Azure Mobile Apps][4].</span></span>  <span data-ttu-id="4e8cd-227">notificaciones de toosend mediante estas plantillas registradas, trabajar con [API de los centros de notificación][3].</span><span class="sxs-lookup"><span data-stu-id="4e8cd-227">toosend notifications using these registered templates, work with [Notification Hubs APIs][3].</span></span>
 
-## <span data-ttu-id="7b900-228"><a name="errors"></a>Gestión de errores</span><span class="sxs-lookup"><span data-stu-id="7b900-228"><a name="errors"></a>How to: Handle Errors</span></span>
-<span data-ttu-id="7b900-229">Al realizar una llamada a un back-end móvil de Azure App Service, el bloque de finalización contiene un parámetro `NSError` .</span><span class="sxs-lookup"><span data-stu-id="7b900-229">When you call an Azure App Service mobile backend, the completion block contains an `NSError` parameter.</span></span> <span data-ttu-id="7b900-230">En caso de producirse un error, este parámetro no será nulo.</span><span class="sxs-lookup"><span data-stu-id="7b900-230">When an error occurs, this parameter is non-nil.</span></span> <span data-ttu-id="7b900-231">En su código, debe marcar este parámetro y administrar el error según sea necesario, como se muestra en los fragmentos de código anteriores.</span><span class="sxs-lookup"><span data-stu-id="7b900-231">In your code, you should check this parameter and handle the error as needed, as demonstrated in the preceding code snippets.</span></span>
+## <span data-ttu-id="4e8cd-228"><a name="errors"></a>Gestión de errores</span><span class="sxs-lookup"><span data-stu-id="4e8cd-228"><a name="errors"></a>How to: Handle Errors</span></span>
+<span data-ttu-id="4e8cd-229">Cuando se llama a un servicio de aplicaciones de Azure de back-end móvil, bloque de finalización de hello contiene un `NSError` parámetro.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-229">When you call an Azure App Service mobile backend, hello completion block contains an `NSError` parameter.</span></span> <span data-ttu-id="4e8cd-230">En caso de producirse un error, este parámetro no será nulo.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-230">When an error occurs, this parameter is non-nil.</span></span> <span data-ttu-id="4e8cd-231">En el código, debe comprobar este parámetro y controlar el error de hello según sea necesario, como se muestra en hello anterior fragmentos de código.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-231">In your code, you should check this parameter and handle hello error as needed, as demonstrated in hello preceding code snippets.</span></span>
 
-<span data-ttu-id="7b900-232">El archivo [`<WindowsAzureMobileServices/MSError.h>`][6] define las constantes `MSErrorResponseKey`, `MSErrorRequestKey` y `MSErrorServerItemKey`.</span><span class="sxs-lookup"><span data-stu-id="7b900-232">The file [`<WindowsAzureMobileServices/MSError.h>`][6] defines the constants `MSErrorResponseKey`, `MSErrorRequestKey`, and `MSErrorServerItemKey`.</span></span> <span data-ttu-id="7b900-233">Para obtener más datos relacionados con el error:</span><span class="sxs-lookup"><span data-stu-id="7b900-233">To get more data related to the error:</span></span>
+<span data-ttu-id="4e8cd-232">archivo hello [ `<WindowsAzureMobileServices/MSError.h>` ] [ 6] define las constantes de hello `MSErrorResponseKey`, `MSErrorRequestKey`, y `MSErrorServerItemKey`.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-232">hello file [`<WindowsAzureMobileServices/MSError.h>`][6] defines hello constants `MSErrorResponseKey`, `MSErrorRequestKey`, and `MSErrorServerItemKey`.</span></span> <span data-ttu-id="4e8cd-233">tooget más datos relacionados con error de toohello:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-233">tooget more data related toohello error:</span></span>
 
-<span data-ttu-id="7b900-234">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="7b900-234">**Objective-C**:</span></span>
+<span data-ttu-id="4e8cd-234">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-234">**Objective-C**:</span></span>
 
 ```
 NSDictionary *serverItem = [error.userInfo objectForKey:MSErrorServerItemKey];
 ```
 
-<span data-ttu-id="7b900-235">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="7b900-235">**Swift**:</span></span>
+<span data-ttu-id="4e8cd-235">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-235">**Swift**:</span></span>
 
 ```
 let serverItem = error.userInfo[MSErrorServerItemKey]
 ```
 
-<span data-ttu-id="7b900-236">Además, el archivo define constantes para cada código de error:</span><span class="sxs-lookup"><span data-stu-id="7b900-236">In addition, the file defines constants for each error code:</span></span>
+<span data-ttu-id="4e8cd-236">Además, el archivo hello define constantes para cada código de error:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-236">In addition, hello file defines constants for each error code:</span></span>
 
-<span data-ttu-id="7b900-237">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="7b900-237">**Objective-C**:</span></span>
-
-```
-if (error.code == MSErrorPreconditionFailed) {
-```
-
-<span data-ttu-id="7b900-238">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="7b900-238">**Swift**:</span></span>
+<span data-ttu-id="4e8cd-237">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-237">**Objective-C**:</span></span>
 
 ```
 if (error.code == MSErrorPreconditionFailed) {
 ```
 
-## <span data-ttu-id="7b900-239"><a name="adal"></a>Autenticación de usuarios con la biblioteca de autenticación de Active Directory</span><span class="sxs-lookup"><span data-stu-id="7b900-239"><a name="adal"></a>How to: Authenticate users with the Active Directory Authentication Library</span></span>
-<span data-ttu-id="7b900-240">Puede utilizar la biblioteca de autenticación de Active Directory (ADAL) para iniciar la sesión de los usuarios en su aplicación con Azure Active Directory.</span><span class="sxs-lookup"><span data-stu-id="7b900-240">You can use the Active Directory Authentication Library (ADAL) to sign users into your application using Azure Active Directory.</span></span> <span data-ttu-id="7b900-241">Se prefiere la autenticación de flujo de cliente mediante un SDK de proveedor de identidades al uso del método `loginWithProvider:completion:` .</span><span class="sxs-lookup"><span data-stu-id="7b900-241">Client flow authentication using an identity provider SDK is preferable to using the `loginWithProvider:completion:` method.</span></span>  <span data-ttu-id="7b900-242">Este tipo de autenticación proporciona una experiencia de usuario más nativa y permite realizar más personalizaciones.</span><span class="sxs-lookup"><span data-stu-id="7b900-242">Client flow authentication provides a more native UX feel and allows for additional customization.</span></span>
+<span data-ttu-id="4e8cd-238">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-238">**Swift**:</span></span>
 
-1. <span data-ttu-id="7b900-243">Configure su back-end de aplicación móvil para el inicio de sesión en AAD siguiendo el tutorial [Configuración de la aplicación de App Service para usar el inicio de sesión de Azure Active Directory][7].</span><span class="sxs-lookup"><span data-stu-id="7b900-243">Configure your mobile app backend for AAD sign-in by following the [How to configure App Service for Active Directory login][7] tutorial.</span></span> <span data-ttu-id="7b900-244">Asegúrese de completar el paso opcional de registrar una aplicación cliente nativa.</span><span class="sxs-lookup"><span data-stu-id="7b900-244">Make sure to complete the optional step of registering a native client application.</span></span> <span data-ttu-id="7b900-245">Para iOS, se recomienda que el URI de redireccionamiento tenga el formato `<app-scheme>://<bundle-id>`.</span><span class="sxs-lookup"><span data-stu-id="7b900-245">For iOS, we recommend that the redirect URI is of the form `<app-scheme>://<bundle-id>`.</span></span> <span data-ttu-id="7b900-246">Para más información, consulte la [guía de inicio rápido de iOS para ADAL][8].</span><span class="sxs-lookup"><span data-stu-id="7b900-246">For more information, see the [ADAL iOS quickstart][8].</span></span>
-2. <span data-ttu-id="7b900-247">Instale ADAL mediante Cocoapods.</span><span class="sxs-lookup"><span data-stu-id="7b900-247">Install ADAL using Cocoapods.</span></span> <span data-ttu-id="7b900-248">Edite el podfile para incluir la siguiente definición; sustituya **YOUR-PROJECT** por el nombre de su proyecto de Xcode:</span><span class="sxs-lookup"><span data-stu-id="7b900-248">Edit your Podfile to include the following definition, replacing **YOUR-PROJECT** with the name of your Xcode project:</span></span>
+```
+if (error.code == MSErrorPreconditionFailed) {
+```
+
+## <span data-ttu-id="4e8cd-239"><a name="adal"></a>Cómo: autenticar a los usuarios con hello biblioteca de autenticación de Active Directory</span><span class="sxs-lookup"><span data-stu-id="4e8cd-239"><a name="adal"></a>How to: Authenticate users with hello Active Directory Authentication Library</span></span>
+<span data-ttu-id="4e8cd-240">Puede usar los usuarios de toosign de hello biblioteca de autenticación de Active Directory (ADAL) en la aplicación con Azure Active Directory.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-240">You can use hello Active Directory Authentication Library (ADAL) toosign users into your application using Azure Active Directory.</span></span> <span data-ttu-id="4e8cd-241">Autenticación de flujo del cliente mediante un proveedor de identidades SDK es preferible toousing hello `loginWithProvider:completion:` método.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-241">Client flow authentication using an identity provider SDK is preferable toousing hello `loginWithProvider:completion:` method.</span></span>  <span data-ttu-id="4e8cd-242">Este tipo de autenticación proporciona una experiencia de usuario más nativa y permite realizar más personalizaciones.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-242">Client flow authentication provides a more native UX feel and allows for additional customization.</span></span>
+
+1. <span data-ttu-id="4e8cd-243">Configurar el aplicación móvil de back-end para el inicio de sesión AAD Hola siguiente [cómo tooconfigure aplicación de servicio de inicio de sesión de Active Directory] [ 7] tutorial.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-243">Configure your mobile app backend for AAD sign-in by following hello [How tooconfigure App Service for Active Directory login][7] tutorial.</span></span> <span data-ttu-id="4e8cd-244">Asegúrese de que paso opcional de Hola de toocomplete de registrar una aplicación cliente nativa.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-244">Make sure toocomplete hello optional step of registering a native client application.</span></span> <span data-ttu-id="4e8cd-245">Para iOS, se recomienda que redirección Hola URI tiene forma de Hola `<app-scheme>://<bundle-id>`.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-245">For iOS, we recommend that hello redirect URI is of hello form `<app-scheme>://<bundle-id>`.</span></span> <span data-ttu-id="4e8cd-246">Para obtener más información, vea hello [inicio rápido de iOS ADAL][8].</span><span class="sxs-lookup"><span data-stu-id="4e8cd-246">For more information, see hello [ADAL iOS quickstart][8].</span></span>
+2. <span data-ttu-id="4e8cd-247">Instale ADAL mediante Cocoapods.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-247">Install ADAL using Cocoapods.</span></span> <span data-ttu-id="4e8cd-248">Editar el Hola de tooinclude Podfile después de la definición, reemplazar **su proyecto** con nombre de Hola de su proyecto de Xcode:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-248">Edit your Podfile tooinclude hello following definition, replacing **YOUR-PROJECT** with hello name of your Xcode project:</span></span>
 
         source 'https://github.com/CocoaPods/Specs.git'
         link_with ['YOUR-PROJECT']
         xcodeproj 'YOUR-PROJECT'
 
-   <span data-ttu-id="7b900-249">y el POD:</span><span class="sxs-lookup"><span data-stu-id="7b900-249">and the Pod:</span></span>
+   <span data-ttu-id="4e8cd-249">hello Pod y:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-249">and hello Pod:</span></span>
 
         pod 'ADALiOS'
-3. <span data-ttu-id="7b900-250">Mediante el Terminal, ejecute `pod install` desde el directorio que contiene el proyecto y abra el área de trabajo del Xcode generado (no el proyecto).</span><span class="sxs-lookup"><span data-stu-id="7b900-250">Using the Terminal, run `pod install` from the directory containing your project, and then open the generated Xcode workspace (not the project).</span></span>
-4. <span data-ttu-id="7b900-251">Agregue el siguiente código a la aplicación, según el lenguaje que esté utilizando.</span><span class="sxs-lookup"><span data-stu-id="7b900-251">Add the following code to your application, according to the language you are using.</span></span> <span data-ttu-id="7b900-252">En cada uno, realice estas sustituciones:</span><span class="sxs-lookup"><span data-stu-id="7b900-252">In each, make these replacements:</span></span>
+3. <span data-ttu-id="4e8cd-250">Usar Hola Terminal, ejecute `pod install` desde el directorio de hello, que contiene el proyecto y abra Hola genera Xcode área de trabajo (no en proyecto de hello).</span><span class="sxs-lookup"><span data-stu-id="4e8cd-250">Using hello Terminal, run `pod install` from hello directory containing your project, and then open hello generated Xcode workspace (not hello project).</span></span>
+4. <span data-ttu-id="4e8cd-251">Agregar Hola tras la aplicación de código tooyour, según el idioma de toohello que está usando.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-251">Add hello following code tooyour application, according toohello language you are using.</span></span> <span data-ttu-id="4e8cd-252">En cada uno, realice estas sustituciones:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-252">In each, make these replacements:</span></span>
 
-   * <span data-ttu-id="7b900-253">Reemplace **INSERT-AUTHORITY-HERE** por el nombre del inquilino en el que aprovisionó la aplicación.</span><span class="sxs-lookup"><span data-stu-id="7b900-253">Replace **INSERT-AUTHORITY-HERE** with the name of the tenant in which you provisioned your application.</span></span> <span data-ttu-id="7b900-254">El formato debería ser https://login.microsoftonline.com/contoso.onmicrosoft.com.</span><span class="sxs-lookup"><span data-stu-id="7b900-254">The format should be https://login.microsoftonline.com/contoso.onmicrosoft.com.</span></span> <span data-ttu-id="7b900-255">Este valor se puede copiar de la pestaña Dominio de Azure Active Directory en el [Portal de Azure clásico].</span><span class="sxs-lookup"><span data-stu-id="7b900-255">This value can be copied from the Domain tab in your Azure Active Directory in the [Azure classic portal].</span></span>
-   * <span data-ttu-id="7b900-256">Reemplace **INSERT-RESOURCE-ID-HERE** por el Id. de cliente del back-end de la aplicación móvil.</span><span class="sxs-lookup"><span data-stu-id="7b900-256">Replace **INSERT-RESOURCE-ID-HERE** with the client ID for your mobile app backend.</span></span> <span data-ttu-id="7b900-257">El Id. de cliente en la pestaña **Opciones avanzadas** de **Configuración de Azure Active Directory** en el portal.</span><span class="sxs-lookup"><span data-stu-id="7b900-257">You can obtain the client ID from the **Advanced** tab under **Azure Active Directory Settings** in the portal.</span></span>
-   * <span data-ttu-id="7b900-258">Reemplace **INSERT-CLIENT-ID-HERE** por el Id. de cliente que copió de la aplicación cliente nativa.</span><span class="sxs-lookup"><span data-stu-id="7b900-258">Replace **INSERT-CLIENT-ID-HERE** with the client ID you copied from the native client application.</span></span>
-   * <span data-ttu-id="7b900-259">Reemplace **INSERT-REDIRECT-URI-HERE** por el punto de conexión */.auth/login/done* del sitio, mediante el esquema HTTPS.</span><span class="sxs-lookup"><span data-stu-id="7b900-259">Replace **INSERT-REDIRECT-URI-HERE** with your site's */.auth/login/done* endpoint, using the HTTPS scheme.</span></span> <span data-ttu-id="7b900-260">Este valor debe ser similar a *https://contoso.azurewebsites.net/.auth/login/done*.</span><span class="sxs-lookup"><span data-stu-id="7b900-260">This value should be similar to *https://contoso.azurewebsites.net/.auth/login/done*.</span></span>
+   * <span data-ttu-id="4e8cd-253">Reemplace **aquí de autoridad de INSERCIÓN** por nombre de Hola de inquilino de hello en el que se aprovisiona la aplicación.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-253">Replace **INSERT-AUTHORITY-HERE** with hello name of hello tenant in which you provisioned your application.</span></span> <span data-ttu-id="4e8cd-254">El formato debería ser https://login.microsoftonline.com/contoso.onmicrosoft.com. Este valor se puede copiar desde la pestaña del dominio hello en Azure Active Directory en hello [portal de Azure clásico].</span><span class="sxs-lookup"><span data-stu-id="4e8cd-254">The format should be https://login.microsoftonline.com/contoso.onmicrosoft.com. This value can be copied from hello Domain tab in your Azure Active Directory in hello [Azure classic portal].</span></span>
+   * <span data-ttu-id="4e8cd-255">Reemplace **Insertar recurso identificador aquí** con el identificador de cliente de Hola para su aplicación móvil de back-end.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-255">Replace **INSERT-RESOURCE-ID-HERE** with hello client ID for your mobile app backend.</span></span> <span data-ttu-id="4e8cd-256">Puede obtener el identificador de cliente de hello **avanzadas** en la ficha **configuración de Azure Active Directory** en el portal de Hola.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-256">You can obtain the client ID from hello **Advanced** tab under **Azure Active Directory Settings** in hello portal.</span></span>
+   * <span data-ttu-id="4e8cd-257">Reemplace **INSERT-CLIENT-ID-aquí** con el Id. de cliente de Hola que copió de la aplicación de cliente nativo de Hola.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-257">Replace **INSERT-CLIENT-ID-HERE** with hello client ID you copied from hello native client application.</span></span>
+   * <span data-ttu-id="4e8cd-258">Reemplace **INSERT-REDIRECT-URI-aquí** con su sitio */.auth/login/done* punto de conexión, mediante el esquema de hello HTTPS.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-258">Replace **INSERT-REDIRECT-URI-HERE** with your site's */.auth/login/done* endpoint, using hello HTTPS scheme.</span></span> <span data-ttu-id="4e8cd-259">Este valor debe ser similar demasiado*https://contoso.azurewebsites.net/.auth/login/done*.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-259">This value should be similar too*https://contoso.azurewebsites.net/.auth/login/done*.</span></span>
 
-<span data-ttu-id="7b900-261">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="7b900-261">**Objective-C**:</span></span>
+<span data-ttu-id="4e8cd-260">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-260">**Objective-C**:</span></span>
 
     #import <ADALiOS/ADAuthenticationContext.h>
     #import <ADALiOS/ADAuthenticationSettings.h>
@@ -586,9 +586,9 @@ if (error.code == MSErrorPreconditionFailed) {
     }
 
 
-<span data-ttu-id="7b900-262">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="7b900-262">**Swift**:</span></span>
+<span data-ttu-id="4e8cd-261">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-261">**Swift**:</span></span>
 
-    // add the following imports to your bridging header:
+    // add hello following imports tooyour bridging header:
     //        #import <ADALiOS/ADAuthenticationContext.h>
     //        #import <ADALiOS/ADAuthenticationSettings.h>
 
@@ -612,14 +612,14 @@ if (error.code == MSErrorPreconditionFailed) {
             }
     }
 
-## <span data-ttu-id="7b900-263"><a name="facebook-sdk"></a>Autenticación de usuarios con SDK de Facebook para iOS</span><span class="sxs-lookup"><span data-stu-id="7b900-263"><a name="facebook-sdk"></a>How to: Authenticate users with the Facebook SDK for iOS</span></span>
-<span data-ttu-id="7b900-264">Puede usar el SDK de Facebook para iOS para que los usuarios inicien sesión en su aplicación con Facebook.</span><span class="sxs-lookup"><span data-stu-id="7b900-264">You can use the Facebook SDK for iOS to sign users into your application using Facebook.</span></span>  <span data-ttu-id="7b900-265">Es preferible usar la autenticación de flujo de cliente al método `loginWithProvider:completion:` .</span><span class="sxs-lookup"><span data-stu-id="7b900-265">Using a client flow authentication is preferable to using the `loginWithProvider:completion:` method.</span></span>  <span data-ttu-id="7b900-266">Este tipo de autenticación proporciona una experiencia de usuario más nativa y permite realizar más personalizaciones.</span><span class="sxs-lookup"><span data-stu-id="7b900-266">The client flow authentication provides a more native UX feel and allows for additional customization.</span></span>
+## <span data-ttu-id="4e8cd-262"><a name="facebook-sdk"></a>Cómo: autenticar a los usuarios con hello Facebook SDK para iOS</span><span class="sxs-lookup"><span data-stu-id="4e8cd-262"><a name="facebook-sdk"></a>How to: Authenticate users with hello Facebook SDK for iOS</span></span>
+<span data-ttu-id="4e8cd-263">Puede usar Hola Facebook SDK para los usuarios de toosign de iOS en la aplicación con Facebook.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-263">You can use hello Facebook SDK for iOS toosign users into your application using Facebook.</span></span>  <span data-ttu-id="4e8cd-264">Mediante la autenticación de un flujo de cliente es preferible toousing hello `loginWithProvider:completion:` método.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-264">Using a client flow authentication is preferable toousing hello `loginWithProvider:completion:` method.</span></span>  <span data-ttu-id="4e8cd-265">autenticación de flujo de cliente de Hello proporciona una idea UX más nativa y permite la personalización adicional.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-265">hello client flow authentication provides a more native UX feel and allows for additional customization.</span></span>
 
-1. <span data-ttu-id="7b900-267">Configure el back-end de aplicación móvil para el inicio de sesión en Facebook siguiendo el tutorial [Configuración de la aplicación de App Service para usar el inicio de sesión de Facebook][9].</span><span class="sxs-lookup"><span data-stu-id="7b900-267">Configure your mobile app backend for Facebook sign-in by following the [How to configure App Service for Facebook login][9] tutorial.</span></span>
-2. <span data-ttu-id="7b900-268">Instale el SDK de Facebook para iOS siguiendo la documentación [SDK de Facebook para iOS: primeros pasos][10].</span><span class="sxs-lookup"><span data-stu-id="7b900-268">Install the Facebook SDK for iOS by following the [Facebook SDK for iOS - Getting Started][10] documentation.</span></span> <span data-ttu-id="7b900-269">En lugar de crear una aplicación, puede agregar la plataforma iOS en el registro existente.</span><span class="sxs-lookup"><span data-stu-id="7b900-269">Instead of creating an app, you can add the iOS platform to your existing registration.</span></span>
-3. <span data-ttu-id="7b900-270">La documentación de Facebook incluye algún código de Objective-C en el delegado de la aplicación.</span><span class="sxs-lookup"><span data-stu-id="7b900-270">Facebook's documentation includes some Objective-C code in the App Delegate.</span></span> <span data-ttu-id="7b900-271">Si utiliza **Swift**, puede usar las siguientes traducciones para AppDelegate.swift:</span><span class="sxs-lookup"><span data-stu-id="7b900-271">If you are using **Swift**, you can use the following translations for AppDelegate.swift:</span></span>
+1. <span data-ttu-id="4e8cd-266">Configure su aplicación móvil de back-end para el inicio de sesión Facebook siguiendo el [cómo tooconfigure aplicación de servicio de inicio de sesión de Facebook] [ 9] tutorial.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-266">Configure your mobile app backend for Facebook sign-in by following the [How tooconfigure App Service for Facebook login][9] tutorial.</span></span>
+2. <span data-ttu-id="4e8cd-267">Instalar Hola Facebook SDK para iOS por hello siguiente [Facebook SDK para iOS: Introducción a] [ 10] documentación.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-267">Install hello Facebook SDK for iOS by following hello [Facebook SDK for iOS - Getting Started][10] documentation.</span></span> <span data-ttu-id="4e8cd-268">En lugar de crear una aplicación, puede agregar el registro existente de tooyour la plataforma iOS Hola.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-268">Instead of creating an app, you can add hello iOS platform tooyour existing registration.</span></span>
+3. <span data-ttu-id="4e8cd-269">Documentación de Facebook incluye algún código Objective-C en hello delegado de la aplicación.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-269">Facebook's documentation includes some Objective-C code in hello App Delegate.</span></span> <span data-ttu-id="4e8cd-270">Si utilizas **Swift**, puede usar Hola siguiendo las traducciones de AppDelegate.swift:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-270">If you are using **Swift**, you can use hello following translations for AppDelegate.swift:</span></span>
 
-        // Add the following import to your bridging header:
+        // Add hello following import tooyour bridging header:
         //        #import <FBSDKCoreKit/FBSDKCoreKit.h>
 
         func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
@@ -633,10 +633,10 @@ if (error.code == MSErrorPreconditionFailed) {
             // Add any custom logic here.
             return handled
         }
-4. <span data-ttu-id="7b900-272">Además de agregar `FBSDKCoreKit.framework` al proyecto, también puede agregar una referencia a `FBSDKLoginKit.framework` de la misma manera.</span><span class="sxs-lookup"><span data-stu-id="7b900-272">In addition to adding `FBSDKCoreKit.framework` to your project, also add a reference to `FBSDKLoginKit.framework` in the same way.</span></span>
-5. <span data-ttu-id="7b900-273">Agregue el siguiente código a la aplicación, según el lenguaje que esté utilizando.</span><span class="sxs-lookup"><span data-stu-id="7b900-273">Add the following code to your application, according to the language you are using.</span></span>
+4. <span data-ttu-id="4e8cd-271">En suma tooadding `FBSDKCoreKit.framework` tooyour proyecto de equipo y agregar una referencia demasiado`FBSDKLoginKit.framework` Hola igual.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-271">In addition tooadding `FBSDKCoreKit.framework` tooyour project, also add a reference too`FBSDKLoginKit.framework` in hello same way.</span></span>
+5. <span data-ttu-id="4e8cd-272">Agregar Hola tras la aplicación de código tooyour, según el idioma de toohello que está usando.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-272">Add hello following code tooyour application, according toohello language you are using.</span></span>
 
-<span data-ttu-id="7b900-274">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="7b900-274">**Objective-C**:</span></span>
+<span data-ttu-id="4e8cd-273">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-273">**Objective-C**:</span></span>
 
     #import <FBSDKLoginKit/FBSDKLoginKit.h>
     #import <FBSDKCoreKit/FBSDKAccessToken.h>
@@ -662,9 +662,9 @@ if (error.code == MSErrorPreconditionFailed) {
          }];
     }
 
-<span data-ttu-id="7b900-275">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="7b900-275">**Swift**:</span></span>
+<span data-ttu-id="4e8cd-274">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-274">**Swift**:</span></span>
 
-    // Add the following imports to your bridging header:
+    // Add hello following imports tooyour bridging header:
     //        #import <FBSDKLoginKit/FBSDKLoginKit.h>
     //        #import <FBSDKCoreKit/FBSDKAccessToken.h>
 
@@ -684,20 +684,20 @@ if (error.code == MSErrorPreconditionFailed) {
         }
     }
 
-## <span data-ttu-id="7b900-276"><a name="twitter-fabric"></a>Autenticación de usuarios con Fabric de Twitter para iOS</span><span class="sxs-lookup"><span data-stu-id="7b900-276"><a name="twitter-fabric"></a>How to: Authenticate users with Twitter Fabric for iOS</span></span>
-<span data-ttu-id="7b900-277">Puede usar Fabric para iOS para que los usuarios inicien sesión en su aplicación con Twitter.</span><span class="sxs-lookup"><span data-stu-id="7b900-277">You can use Fabric for iOS to sign users into your application using Twitter.</span></span> <span data-ttu-id="7b900-278">La autenticación de flujo de cliente es preferible al uso del método `loginWithProvider:completion:` , ya que proporciona una experiencia de usuario más nativa y permite realizar más personalizaciones.</span><span class="sxs-lookup"><span data-stu-id="7b900-278">Client Flow authentication is preferable to using the `loginWithProvider:completion:` method, as it provides a more native UX feel and allows for additional customization.</span></span>
+## <span data-ttu-id="4e8cd-275"><a name="twitter-fabric"></a>Autenticación de usuarios con Fabric de Twitter para iOS</span><span class="sxs-lookup"><span data-stu-id="4e8cd-275"><a name="twitter-fabric"></a>How to: Authenticate users with Twitter Fabric for iOS</span></span>
+<span data-ttu-id="4e8cd-276">Puede usar a tejido para los usuarios de toosign de iOS en la aplicación con Twitter.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-276">You can use Fabric for iOS toosign users into your application using Twitter.</span></span> <span data-ttu-id="4e8cd-277">Flujo de autenticación del cliente es preferible toousing hello `loginWithProvider:completion:` método, tal como se proporciona una idea UX más nativa y permite la personalización adicional.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-277">Client Flow authentication is preferable toousing hello `loginWithProvider:completion:` method, as it provides a more native UX feel and allows for additional customization.</span></span>
 
-1. <span data-ttu-id="7b900-279">Configure su back-end de aplicación móvil para el inicio de sesión en Twitter siguiendo el tutorial [Configuración de la aplicación Servicio de aplicaciones para usar el inicio de sesión de Twitter](app-service-mobile-how-to-configure-twitter-authentication.md) .</span><span class="sxs-lookup"><span data-stu-id="7b900-279">Configure your mobile app backend for Twitter sign-in by following the [How to configure App Service for Twitter login](app-service-mobile-how-to-configure-twitter-authentication.md) tutorial.</span></span>
-2. <span data-ttu-id="7b900-280">Agregue Fabric al proyecto siguiendo el documento [Fabric for iOS - Getting Started] (Primeros pasos en Fabric para iOS) y configurando TwitterKit.</span><span class="sxs-lookup"><span data-stu-id="7b900-280">Add Fabric to your project by following the [Fabric for iOS - Getting Started] documentation and setting up TwitterKit.</span></span>
+1. <span data-ttu-id="4e8cd-278">Configurar el aplicación móvil de back-end para el inicio de sesión Twitter Hola después [cómo tooconfigure aplicación de servicio de inicio de sesión de Twitter](app-service-mobile-how-to-configure-twitter-authentication.md) tutorial.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-278">Configure your mobile app backend for Twitter sign-in by following hello [How tooconfigure App Service for Twitter login](app-service-mobile-how-to-configure-twitter-authentication.md) tutorial.</span></span>
+2. <span data-ttu-id="4e8cd-279">Agregar proyecto de tejido tooyour Hola siguiente [tejidos para iOS: Getting Started] documentación y la configuración de TwitterKit.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-279">Add Fabric tooyour project by following hello [Fabric for iOS - Getting Started] documentation and setting up TwitterKit.</span></span>
 
    > [!NOTE]
-   > <span data-ttu-id="7b900-281">De forma predeterminada, Fabric creará automáticamente una aplicación de Twitter.</span><span class="sxs-lookup"><span data-stu-id="7b900-281">By default, Fabric creates a Twitter application for you.</span></span> <span data-ttu-id="7b900-282">Puede evitar que se cree registrando la clave de usuario y el secreto de consumidor que creó anteriormente mediante los fragmentos de código siguientes.</span><span class="sxs-lookup"><span data-stu-id="7b900-282">You can avoid creating an application by registering the Consumer Key and Consumer Secret you created earlier using the following code snippets.</span></span>    <span data-ttu-id="7b900-283">Asimismo, puede reemplazar los valores de clave de usuario y de secreto de consumidor que proporcione al Servicio de aplicaciones por los valores que aparecen en [Fabric Dashboard](Panel de Fabric).</span><span class="sxs-lookup"><span data-stu-id="7b900-283">Alternatively, you can replace the Consumer Key and Consumer Secret values that you provide to App Service with the values you see in the [Fabric Dashboard].</span></span> <span data-ttu-id="7b900-284">Si elige esta opción, asegúrese de establecer la dirección URL de devolución de llamada en un valor de marcador de posición, como `https://<yoursitename>.azurewebsites.net/.auth/login/twitter/callback`.</span><span class="sxs-lookup"><span data-stu-id="7b900-284">If you choose this option, be sure to set the callback URL to a placeholder value, such as `https://<yoursitename>.azurewebsites.net/.auth/login/twitter/callback`.</span></span>
+   > <span data-ttu-id="4e8cd-280">De forma predeterminada, Fabric creará automáticamente una aplicación de Twitter.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-280">By default, Fabric creates a Twitter application for you.</span></span> <span data-ttu-id="4e8cd-281">Puede evitar la creación de una aplicación registrando hello clave de consumidor y secreto de consumidor que se creó anteriormente con hello siguientes fragmentos de código.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-281">You can avoid creating an application by registering hello Consumer Key and Consumer Secret you created earlier using hello following code snippets.</span></span>    <span data-ttu-id="4e8cd-282">Como alternativa, puede reemplazar Hola clave de consumidor y valores de secreto de consumidor que proporcione valores tooApp servicio con hello, vea Hola [panel del tejido].</span><span class="sxs-lookup"><span data-stu-id="4e8cd-282">Alternatively, you can replace hello Consumer Key and Consumer Secret values that you provide tooApp Service with hello values you see in hello [Fabric Dashboard].</span></span> <span data-ttu-id="4e8cd-283">Si elige esta opción, ser seguro tooset Hola devolución de llamada URL tooa valor marcador de posición, como `https://<yoursitename>.azurewebsites.net/.auth/login/twitter/callback`.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-283">If you choose this option, be sure tooset hello callback URL tooa placeholder value, such as `https://<yoursitename>.azurewebsites.net/.auth/login/twitter/callback`.</span></span>
    >
    >
 
-    <span data-ttu-id="7b900-285">Si decide utilizar los secretos que creó anteriormente, agregue el siguiente código al delegado de la aplicación:</span><span class="sxs-lookup"><span data-stu-id="7b900-285">If you choose to use the secrets you created earlier, add the following code to your App Delegate:</span></span>
+    <span data-ttu-id="4e8cd-284">Si elige toouse secretos de Hola que creó anteriormente, agregue Hola después código tooyour delegado de la aplicación:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-284">If you choose toouse hello secrets you created earlier, add hello following code tooyour App Delegate:</span></span>
 
-    <span data-ttu-id="7b900-286">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="7b900-286">**Objective-C**:</span></span>
+    <span data-ttu-id="4e8cd-285">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-285">**Objective-C**:</span></span>
 
         #import <Fabric/Fabric.h>
         #import <TwitterKit/TwitterKit.h>
@@ -710,7 +710,7 @@ if (error.code == MSErrorPreconditionFailed) {
             return YES;
         }
 
-    <span data-ttu-id="7b900-287">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="7b900-287">**Swift**:</span></span>
+    <span data-ttu-id="4e8cd-286">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-286">**Swift**:</span></span>
 
         import Fabric
         import TwitterKit
@@ -721,9 +721,9 @@ if (error.code == MSErrorPreconditionFailed) {
             // Add any custom logic here.
             return true
         }
-3. <span data-ttu-id="7b900-288">Agregue el siguiente código a la aplicación, según el lenguaje que esté utilizando.</span><span class="sxs-lookup"><span data-stu-id="7b900-288">Add the following code to your application, according to the language you are using.</span></span>
+3. <span data-ttu-id="4e8cd-287">Agregar Hola tras la aplicación de código tooyour, según el idioma de toohello que está usando.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-287">Add hello following code tooyour application, according toohello language you are using.</span></span>
 
-<span data-ttu-id="7b900-289">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="7b900-289">**Objective-C**:</span></span>
+<span data-ttu-id="4e8cd-288">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-288">**Objective-C**:</span></span>
 
     #import <TwitterKit/TwitterKit.h>
     // ...
@@ -742,7 +742,7 @@ if (error.code == MSErrorPreconditionFailed) {
         }];
     }
 
-<span data-ttu-id="7b900-290">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="7b900-290">**Swift**:</span></span>
+<span data-ttu-id="4e8cd-289">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-289">**Swift**:</span></span>
 
     import TwitterKit
     // ...
@@ -758,14 +758,14 @@ if (error.code == MSErrorPreconditionFailed) {
         }
     }
 
-## <span data-ttu-id="7b900-291"><a name="google-sdk"></a>Autenticación de usuarios con el SDK de inicio de sesión de Google para iOS</span><span class="sxs-lookup"><span data-stu-id="7b900-291"><a name="google-sdk"></a>How to: Authenticate users with the Google Sign-In SDK for iOS</span></span>
-<span data-ttu-id="7b900-292">Puede usar el SDK de inicio de sesión de Google para iOS para que los usuarios inicien sesión en su aplicación con una cuenta de Google.</span><span class="sxs-lookup"><span data-stu-id="7b900-292">You can use the Google Sign-In SDK for iOS to sign users into your application using a Google account.</span></span>  <span data-ttu-id="7b900-293">Google anunció recientemente cambios en sus directivas de seguridad de OAuth.</span><span class="sxs-lookup"><span data-stu-id="7b900-293">Google recently announced changes to their OAuth security policies.</span></span>  <span data-ttu-id="7b900-294">Estos cambios obligarán a usar el SDK de Google en el futuro.</span><span class="sxs-lookup"><span data-stu-id="7b900-294">These policy changes will require the use of the Google SDK in the future.</span></span>
+## <span data-ttu-id="4e8cd-290"><a name="google-sdk"></a>Cómo: autenticar a los usuarios con hello SDK de inicio de sesión de Google para iOS</span><span class="sxs-lookup"><span data-stu-id="4e8cd-290"><a name="google-sdk"></a>How to: Authenticate users with hello Google Sign-In SDK for iOS</span></span>
+<span data-ttu-id="4e8cd-291">Puede usar Hola SDK de inicio de sesión de Google para los usuarios de toosign de iOS en su aplicación mediante una cuenta de Google.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-291">You can use hello Google Sign-In SDK for iOS toosign users into your application using a Google account.</span></span>  <span data-ttu-id="4e8cd-292">Google ha anunciado recientemente directivas de seguridad de OAuth de tootheir de cambios.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-292">Google recently announced changes tootheir OAuth security policies.</span></span>  <span data-ttu-id="4e8cd-293">Estos cambios de directiva requerirá el uso de hello del SDK de Google en hello futuras.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-293">These policy changes will require hello use of the Google SDK in hello future.</span></span>
 
-1. <span data-ttu-id="7b900-295">Configure su back-end de aplicación móvil para el inicio de sesión en Google siguiendo el tutorial [Configuración de la aplicación Servicio de aplicaciones para usar el inicio de sesión de Google](app-service-mobile-how-to-configure-google-authentication.md) .</span><span class="sxs-lookup"><span data-stu-id="7b900-295">Configure your mobile app backend for Google sign-in by following the [How to configure App Service for Google login](app-service-mobile-how-to-configure-google-authentication.md) tutorial.</span></span>
-2. <span data-ttu-id="7b900-296">Instale el SDK de Google para iOS siguiendo la documentación de [Google Sign-In for iOS - Start integrating](https://developers.google.com/identity/sign-in/ios/start-integrating) (Inicio de sesión de Google para iOS: Empiece a integrar).</span><span class="sxs-lookup"><span data-stu-id="7b900-296">Install the Google SDK for iOS by following the [Google Sign-In for iOS - Start integrating](https://developers.google.com/identity/sign-in/ios/start-integrating) documentation.</span></span> <span data-ttu-id="7b900-297">Puede omitir la sección Authenticate with a Backend Server (Autenticar con un servidor back-end).</span><span class="sxs-lookup"><span data-stu-id="7b900-297">You may skip the "Authenticate with a Backend Server" section.</span></span>
-3. <span data-ttu-id="7b900-298">Agregue el siguiente código al método `signIn:didSignInForUser:withError:` del delegado según el lenguaje que esté utilizando.</span><span class="sxs-lookup"><span data-stu-id="7b900-298">Add the following to your delegate's `signIn:didSignInForUser:withError:` method, according to the language you are using.</span></span>
+1. <span data-ttu-id="4e8cd-294">Configurar el aplicación móvil de back-end para el inicio de sesión en Google Hola siguiente [cómo tooconfigure aplicación de servicio de inicio de sesión de Google](app-service-mobile-how-to-configure-google-authentication.md) tutorial.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-294">Configure your mobile app backend for Google sign-in by following hello [How tooconfigure App Service for Google login](app-service-mobile-how-to-configure-google-authentication.md) tutorial.</span></span>
+2. <span data-ttu-id="4e8cd-295">Instalar Hola Google SDK para iOS por hello siguiente [Google Sign-In for iOS: empezar a integrar](https://developers.google.com/identity/sign-in/ios/start-integrating) documentación.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-295">Install hello Google SDK for iOS by following hello [Google Sign-In for iOS - Start integrating](https://developers.google.com/identity/sign-in/ios/start-integrating) documentation.</span></span> <span data-ttu-id="4e8cd-296">Puede omitir la sección de "Autenticar con un servidor de back-end" Hola.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-296">You may skip hello "Authenticate with a Backend Server" section.</span></span>
+3. <span data-ttu-id="4e8cd-297">Agregar Hola después del delegado tooyour `signIn:didSignInForUser:withError:` método, según el idioma de toohello que está usando.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-297">Add hello following tooyour delegate's `signIn:didSignInForUser:withError:` method, according toohello language you are using.</span></span>
 
-<span data-ttu-id="7b900-299">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="7b900-299">**Objective-C**:</span></span>
+<span data-ttu-id="4e8cd-298">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-298">**Objective-C**:</span></span>
 
         NSDictionary *payload = @{
                                   @"id_token":user.authentication.idToken,
@@ -776,27 +776,27 @@ if (error.code == MSErrorPreconditionFailed) {
             // ...
         }];
 
-<span data-ttu-id="7b900-300">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="7b900-300">**Swift**:</span></span>
+<span data-ttu-id="4e8cd-299">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-299">**Swift**:</span></span>
 
         let payload: [String: String] = ["id_token": user.authentication.idToken, "authorization_code": user.serverAuthCode]
         client.loginWithProvider("google", token: payload) { (user, error) in
             // ...
         }
 
-1. <span data-ttu-id="7b900-301">Asegúrese de agregar también lo siguiente a `application:didFinishLaunchingWithOptions:` en el delegado de la aplicación, reemplazando "SERVER_CLIENT_ID" por el mismo identificador que usó para configurar el Servicio de aplicaciones en el paso 1.</span><span class="sxs-lookup"><span data-stu-id="7b900-301">Make sure you also add the following to `application:didFinishLaunchingWithOptions:` in your app delegate, replacing "SERVER_CLIENT_ID" with the same ID that you used to configure App Service in step 1.</span></span>
+1. <span data-ttu-id="4e8cd-300">Asegúrese de que también agregar Hola después demasiado`application:didFinishLaunchingWithOptions:` en su aplicación, delegado, sustituyendo "SERVER_CLIENT_ID" hello mismo identificador que utilizó tooconfigure servicio de aplicaciones en el paso 1.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-300">Make sure you also add hello following too`application:didFinishLaunchingWithOptions:` in your app delegate, replacing "SERVER_CLIENT_ID" with hello same ID that you used tooconfigure App Service in step 1.</span></span>
 
-<span data-ttu-id="7b900-302">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="7b900-302">**Objective-C**:</span></span>
+<span data-ttu-id="4e8cd-301">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-301">**Objective-C**:</span></span>
 
          [GIDSignIn sharedInstance].serverClientID = @"SERVER_CLIENT_ID";
 
- <span data-ttu-id="7b900-303">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="7b900-303">**Swift**:</span></span>
+ <span data-ttu-id="4e8cd-302">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-302">**Swift**:</span></span>
 
         GIDSignIn.sharedInstance().serverClientID = "SERVER_CLIENT_ID"
 
 
-1. <span data-ttu-id="7b900-304">Agregue el siguiente código a la aplicación en un UIViewController que permita implementar el protocolo `GIDSignInUIDelegate` según el lenguaje que esté utilizando.</span><span class="sxs-lookup"><span data-stu-id="7b900-304">Add the following code to your application in a UIViewController that implements the `GIDSignInUIDelegate` protocol, according to the language you are using.</span></span>  <span data-ttu-id="7b900-305">La sesión se cierra antes de volver a iniciar sesión y, aunque no es necesario que vuelva a escribir sus credenciales, verá un cuadro de diálogo de consentimiento.</span><span class="sxs-lookup"><span data-stu-id="7b900-305">You are signed out before being signed in again, and although you don't need to enter your credentials again, you see a consent dialog.</span></span>  <span data-ttu-id="7b900-306">Solo llame a este método si el token de sesión ha expirado.</span><span class="sxs-lookup"><span data-stu-id="7b900-306">Only call this method when the session token has expired.</span></span>
+1. <span data-ttu-id="4e8cd-303">Agregar Hola tras la aplicación de tooyour de código en un UIViewController que implementa hello `GIDSignInUIDelegate` protocolo, según el idioma de toohello que está usando.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-303">Add hello following code tooyour application in a UIViewController that implements hello `GIDSignInUIDelegate` protocol, according toohello language you are using.</span></span>  <span data-ttu-id="4e8cd-304">Cierre sesión antes de iniciar sesión nuevo y, aunque no es necesario tooenter sus credenciales de nuevo, verá un cuadro de diálogo de consentimiento.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-304">You are signed out before being signed in again, and although you don't need tooenter your credentials again, you see a consent dialog.</span></span>  <span data-ttu-id="4e8cd-305">Solo llame a este método cuando ha expirado el token de sesión Hola.</span><span class="sxs-lookup"><span data-stu-id="4e8cd-305">Only call this method when hello session token has expired.</span></span>
 
-   <span data-ttu-id="7b900-307">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="7b900-307">**Objective-C**:</span></span>
+   <span data-ttu-id="4e8cd-306">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-306">**Objective-C**:</span></span>
 
        #import <Google/SignIn.h>
        // ...
@@ -807,7 +807,7 @@ if (error.code == MSErrorPreconditionFailed) {
                [[GIDSignIn sharedInstance] signIn];
         }
 
-   <span data-ttu-id="7b900-308">**Swift**:</span><span class="sxs-lookup"><span data-stu-id="7b900-308">**Swift**:</span></span>
+   <span data-ttu-id="4e8cd-307">**Swift**:</span><span class="sxs-lookup"><span data-stu-id="4e8cd-307">**Swift**:</span></span>
 
        // ...
        func authenticate() {
@@ -821,14 +821,14 @@ if (error.code == MSErrorPreconditionFailed) {
 [What is Mobile Services]: #what-is
 [Concepts]: #concepts
 [Setup and Prerequisites]: #Setup
-[How to: Create the Mobile Services client]: #create-client
+[How to: Create hello Mobile Services client]: #create-client
 [How to: Create a table reference]: #table-reference
 [How to: Query data from a mobile service]: #querying
 [Filter returned data]: #filtering
 [Sort returned data]: #sorting
 [Return data in pages]: #paging
 [Select specific columns]: #selecting
-[How to: Bind data to the user interface]: #binding
+[How to: Bind data toohello user interface]: #binding
 [How to: Insert data into a mobile service]: #inserting
 [How to: Modify data in a mobile service]: #modifying
 [How to: Authenticate users]: #authentication
@@ -836,7 +836,7 @@ if (error.code == MSErrorPreconditionFailed) {
 [How to: Upload images and large files]: #blobs
 [How to: Handle errors]: #errors
 [How to: Design unit tests]: #unit-testing
-[How to: Customize the client]: #customizing
+[How to: Customize hello client]: #customizing
 [Customize request headers]: #custom-headers
 [Customize data type serialization]: #custom-serialization
 [Next Steps]: #next-steps
@@ -845,9 +845,9 @@ if (error.code == MSErrorPreconditionFailed) {
 <!-- Images. -->
 
 <!-- URLs. -->
-<span data-ttu-id="7b900-309">[Inicio rápido de Aplicaciones móviles de Azure]: app-service-mobile-ios-get-started.md</span><span class="sxs-lookup"><span data-stu-id="7b900-309">[Azure Mobile Apps Quick Start]: app-service-mobile-ios-get-started.md</span></span>
+[inicio rápido de Azure Mobile Apps]: app-service-mobile-ios-get-started.md
 
-[Add Mobile Services to Existing App]: /develop/mobile/tutorials/get-started-data
+[Add Mobile Services tooExisting App]: /develop/mobile/tutorials/get-started-data
 [Get started with Mobile Services]: /develop/mobile/tutorials/get-started-ios
 [Validate and modify data in Mobile Services by using server scripts]: /develop/mobile/tutorials/validate-modify-and-augment-data-ios
 [Mobile Services SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
@@ -858,17 +858,17 @@ if (error.code == MSErrorPreconditionFailed) {
 [Live Connect SDK]: http://go.microsoft.com/fwlink/p/?LinkId=301960
 [Permissions]: http://msdn.microsoft.com/library/windowsazure/jj193161.aspx
 [Service-side Authorization]: mobile-services-javascript-backend-service-side-authorization.md
-[Use scripts to authorize users]: /develop/mobile/tutorials/authorize-users-in-scripts-ios
-<span data-ttu-id="7b900-310">[esquema dinámico]: http://go.microsoft.com/fwlink/p/?LinkId=296271</span><span class="sxs-lookup"><span data-stu-id="7b900-310">[Dynamic Schema]: http://go.microsoft.com/fwlink/p/?LinkId=296271</span></span>
+[Use scripts tooauthorize users]: /develop/mobile/tutorials/authorize-users-in-scripts-ios
+[esquema dinámico]: http://go.microsoft.com/fwlink/p/?LinkId=296271
 [How to: access custom parameters]: /develop/mobile/how-to-guides/work-with-server-scripts#access-headers
 [Create a table]: http://msdn.microsoft.com/library/windowsazure/jj193162.aspx
 [NSDictionary object]: http://go.microsoft.com/fwlink/p/?LinkId=301965
 [ASCII control codes C0 and C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
-[CLI to manage Mobile Services tables]: /cli/azure/get-started-with-az-cli2
+[CLI toomanage Mobile Services tables]: /cli/azure/get-started-with-az-cli2
 [Conflict-Handler]: mobile-services-ios-handling-conflicts-offline-data.md#add-conflict-handling
 
-<span data-ttu-id="7b900-311">[Fabric Dashboard]: https://www.fabric.io/home</span><span class="sxs-lookup"><span data-stu-id="7b900-311">[Fabric Dashboard]: https://www.fabric.io/home</span></span>
-<span data-ttu-id="7b900-312">[Fabric for iOS - Getting Started]: https://docs.fabric.io/ios/fabric/getting-started.html</span><span class="sxs-lookup"><span data-stu-id="7b900-312">[Fabric for iOS - Getting Started]: https://docs.fabric.io/ios/fabric/getting-started.html</span></span>
+[panel del tejido]: https://www.fabric.io/home
+[tejidos para iOS: Getting Started]: https://docs.fabric.io/ios/fabric/getting-started.html
 [1]: https://github.com/Azure/azure-mobile-apps-ios-client/blob/master/README.md#ios-client-sdk
 [2]: http://azure.github.io/azure-mobile-apps-ios-client/
 [3]: https://msdn.microsoft.com/library/azure/dn495101.aspx

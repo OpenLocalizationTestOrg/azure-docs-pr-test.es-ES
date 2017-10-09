@@ -1,12 +1,12 @@
 ---
-title: "Conexión de Intel Edison (Node) a Azure IoT: Lección 3: Envío de mensajes | Microsoft Docs"
-description: "Implemente y ejecute una aplicación de ejemplo para Intel Edison que envíe mensajes a IoT Hub y haga parpadear el LED."
+title: "Conectar Intel Edison (nodo) tooAzure IoT - lección 3: enviar mensajes | Documentos de Microsoft"
+description: "Implemente y ejecute un tooIntel de aplicación de ejemplo Edison que envía el centro de IoT tooyour de mensajes y parpadea Hola LED."
 services: iot-hub
 documentationcenter: 
 author: shizn
 manager: timtl
 tags: 
-keywords: "servicio en la nube de IoT, envío de datos de Arduino a la nube"
+keywords: servicio de nube de IOT, arduino enviar datos toocloud
 ROBOTS: NOINDEX
 redirect_url: /azure/iot-hub/iot-hub-intel-edison-kit-node-get-started
 ms.assetid: 1b3b1074-f4d4-42ac-b32c-55f18b304b44
@@ -17,58 +17,58 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: d4b520b9a1852a285b1e10b5b35447a54313af9d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ebd4c7558544d64086fb4cd615cee546aeed2fc1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="run-a-sample-application-to-send-device-to-cloud-messages"></a><span data-ttu-id="1f6eb-104">Ejecución de una aplicación de ejemplo para enviar mensajes de dispositivo a nube</span><span class="sxs-lookup"><span data-stu-id="1f6eb-104">Run a sample application to send device-to-cloud messages</span></span>
-## <a name="what-you-will-do"></a><span data-ttu-id="1f6eb-105">Lo que hará</span><span class="sxs-lookup"><span data-stu-id="1f6eb-105">What you will do</span></span>
-<span data-ttu-id="1f6eb-106">En este artículo, se explica cómo implementar y ejecutar una aplicación de ejemplo en Intel Edison que envía mensajes a IoT Hub.</span><span class="sxs-lookup"><span data-stu-id="1f6eb-106">This article will show you how to deploy and run a sample application on Intel Edison that sends messages to your IoT hub.</span></span> <span data-ttu-id="1f6eb-107">Si tiene problemas, busque soluciones en [esta página][troubleshooting].</span><span class="sxs-lookup"><span data-stu-id="1f6eb-107">If you have any problems, look for solutions on the [troubleshooting page][troubleshooting].</span></span>
+# <a name="run-a-sample-application-toosend-device-to-cloud-messages"></a><span data-ttu-id="8c95f-104">Ejecutar un toosend de la aplicación de ejemplo mensajes del dispositivo a la nube</span><span class="sxs-lookup"><span data-stu-id="8c95f-104">Run a sample application toosend device-to-cloud messages</span></span>
+## <a name="what-you-will-do"></a><span data-ttu-id="8c95f-105">Lo que hará</span><span class="sxs-lookup"><span data-stu-id="8c95f-105">What you will do</span></span>
+<span data-ttu-id="8c95f-106">En este artículo le mostrará cómo toodeploy y ejecute una aplicación de ejemplo en Edison de Intel que envía mensajes tooyour centro de IoT.</span><span class="sxs-lookup"><span data-stu-id="8c95f-106">This article will show you how toodeploy and run a sample application on Intel Edison that sends messages tooyour IoT hub.</span></span> <span data-ttu-id="8c95f-107">Si tiene problemas, buscar soluciones en hello [solución de problemas de página][troubleshooting].</span><span class="sxs-lookup"><span data-stu-id="8c95f-107">If you have any problems, look for solutions on hello [troubleshooting page][troubleshooting].</span></span>
 
-## <a name="what-you-will-learn"></a><span data-ttu-id="1f6eb-108">Lo qué aprenderá</span><span class="sxs-lookup"><span data-stu-id="1f6eb-108">What you will learn</span></span>
-<span data-ttu-id="1f6eb-109">Aprenderá a utilizar la herramienta de Gulp para implementar y ejecutar la aplicación de ejemplo en C en Intel Edison.</span><span class="sxs-lookup"><span data-stu-id="1f6eb-109">You will learn how to use the gulp tool to deploy and run the sample C application on Edison.</span></span>
+## <a name="what-you-will-learn"></a><span data-ttu-id="8c95f-108">Lo qué aprenderá</span><span class="sxs-lookup"><span data-stu-id="8c95f-108">What you will learn</span></span>
+<span data-ttu-id="8c95f-109">Aprenderá cómo hello toouse gulp toodeploy de herramienta y ejecutar la aplicación de C de ejemplo de Hola en Edison.</span><span class="sxs-lookup"><span data-stu-id="8c95f-109">You will learn how toouse hello gulp tool toodeploy and run hello sample C application on Edison.</span></span>
 
-## <a name="what-you-need"></a><span data-ttu-id="1f6eb-110">Lo que necesita</span><span class="sxs-lookup"><span data-stu-id="1f6eb-110">What you need</span></span>
-* <span data-ttu-id="1f6eb-111">Para comenzar esta tarea, debe haber completado correctamente el tutorial [Creación de una instancia de Azure Function App y una cuenta de Azure Storage para procesar y guardar mensajes de IoT Hub][process-and-store-iot-hub-messages].</span><span class="sxs-lookup"><span data-stu-id="1f6eb-111">Before you start this task, you must have successfully completed [Create an Azure function app and a storage account to process and store IoT hub messages][process-and-store-iot-hub-messages].</span></span>
+## <a name="what-you-need"></a><span data-ttu-id="8c95f-110">Lo que necesita</span><span class="sxs-lookup"><span data-stu-id="8c95f-110">What you need</span></span>
+* <span data-ttu-id="8c95f-111">Antes de iniciar esta tarea, debe haber completado correctamente [crear una aplicación de Azure de función y un centro de IoT de almacenamiento cuenta tooprocess y el almacén de mensajes][process-and-store-iot-hub-messages].</span><span class="sxs-lookup"><span data-stu-id="8c95f-111">Before you start this task, you must have successfully completed [Create an Azure function app and a storage account tooprocess and store IoT hub messages][process-and-store-iot-hub-messages].</span></span>
 
-## <a name="get-your-iot-hub-and-device-connection-strings"></a><span data-ttu-id="1f6eb-112">Obtención de las cadenas de conexión de IoT Hub y del dispositivo</span><span class="sxs-lookup"><span data-stu-id="1f6eb-112">Get your IoT hub and device connection strings</span></span>
-<span data-ttu-id="1f6eb-113">La cadena de conexión del dispositivo se utiliza para conectar Intel Edison con IoT Hub.</span><span class="sxs-lookup"><span data-stu-id="1f6eb-113">The device connection string is used to connect Edison to your IoT hub.</span></span> <span data-ttu-id="1f6eb-114">La cadena de conexión de IoT Hub se utiliza para conectar el centro de IoT Hub con la identidad de dispositivo que representa a Intel Edison en IoT Hub.</span><span class="sxs-lookup"><span data-stu-id="1f6eb-114">The IoT hub connection string is used to connect your IoT hub to the device identity that represents Edison in the IoT hub.</span></span>
+## <a name="get-your-iot-hub-and-device-connection-strings"></a><span data-ttu-id="8c95f-112">Obtención de las cadenas de conexión de IoT Hub y del dispositivo</span><span class="sxs-lookup"><span data-stu-id="8c95f-112">Get your IoT hub and device connection strings</span></span>
+<span data-ttu-id="8c95f-113">cadena de conexión de dispositivo de Hello es usado tooconnect centro de IoT Edison tooyour.</span><span class="sxs-lookup"><span data-stu-id="8c95f-113">hello device connection string is used tooconnect Edison tooyour IoT hub.</span></span> <span data-ttu-id="8c95f-114">Hola la cadena de conexión de base de datos central de IoT es tooconnect usado su identidad de dispositivos de IoT hub toohello que representa Edison en el centro de IoT Hola.</span><span class="sxs-lookup"><span data-stu-id="8c95f-114">hello IoT hub connection string is used tooconnect your IoT hub toohello device identity that represents Edison in hello IoT hub.</span></span>
 
-* <span data-ttu-id="1f6eb-115">Enumere todos los centros de IoT Hub del grupo de recursos ejecutando el siguiente comando de la CLI de Azure:</span><span class="sxs-lookup"><span data-stu-id="1f6eb-115">List all your IoT hubs in your resource group by running the following Azure CLI command:</span></span>
+* <span data-ttu-id="8c95f-115">Lista de todos los centros de IoT. en el grupo de recursos si ejecuta Hola siguiente comando de CLI de Azure:</span><span class="sxs-lookup"><span data-stu-id="8c95f-115">List all your IoT hubs in your resource group by running hello following Azure CLI command:</span></span>
 
 ```bash
 az iot hub list -g iot-sample --query [].name
 ```
 
-<span data-ttu-id="1f6eb-116">Use `iot-sample` como valor de `{resource group name}`, si no lo modificó previamente.</span><span class="sxs-lookup"><span data-stu-id="1f6eb-116">Use `iot-sample` as the value of `{resource group name}` if you didn't change the value.</span></span>
+<span data-ttu-id="8c95f-116">Use `iot-sample` como valor de Hola de `{resource group name}` si no cambia el valor de Hola.</span><span class="sxs-lookup"><span data-stu-id="8c95f-116">Use `iot-sample` as hello value of `{resource group name}` if you didn't change hello value.</span></span>
 
-* <span data-ttu-id="1f6eb-117">Obtenga la cadena de conexión de IoT Hub ejecutando el siguiente comando de la CLI de Azure:</span><span class="sxs-lookup"><span data-stu-id="1f6eb-117">Get the IoT hub connection string by running the following Azure CLI command:</span></span>
+* <span data-ttu-id="8c95f-117">Obtener la cadena de conexión de base de datos central de hello IoT ejecutando el siguiente comando de CLI de Azure de hello:</span><span class="sxs-lookup"><span data-stu-id="8c95f-117">Get hello IoT hub connection string by running hello following Azure CLI command:</span></span>
 
 ```bash
 az iot hub show-connection-string --name {my hub name}
 ```
 
-<span data-ttu-id="1f6eb-118">`{my hub name}` es el nombre que especificó cuando creó el centro de IoT Hub y registró Intel Edison.</span><span class="sxs-lookup"><span data-stu-id="1f6eb-118">`{my hub name}` is the name that you specified when you created your IoT hub and registered Edison.</span></span>
+<span data-ttu-id="8c95f-118">`{my hub name}`es el nombre de Hola que especificó cuando creó el centro de IoT y había registrado a Edison.</span><span class="sxs-lookup"><span data-stu-id="8c95f-118">`{my hub name}` is hello name that you specified when you created your IoT hub and registered Edison.</span></span>
 
-* <span data-ttu-id="1f6eb-119">Obtenga la cadena de conexión de dispositivos ejecutando el siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="1f6eb-119">Get the device connection string by running the following command:</span></span>
+* <span data-ttu-id="8c95f-119">Obtener la cadena de conexión de dispositivo de hello ejecutando Hola siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="8c95f-119">Get hello device connection string by running hello following command:</span></span>
 
 ```bash
 az iot device show-connection-string --hub-name {my hub name} --device-id myinteledison
 ```
 
-<span data-ttu-id="1f6eb-120">Use `myinteledison` como valor de `{device id}`, si no lo modificó previamente.</span><span class="sxs-lookup"><span data-stu-id="1f6eb-120">Use `myinteledison` as the value of `{device id}` if you didn't change the value.</span></span>
+<span data-ttu-id="8c95f-120">Use `myinteledison` como valor de Hola de `{device id}` si no cambia el valor de Hola.</span><span class="sxs-lookup"><span data-stu-id="8c95f-120">Use `myinteledison` as hello value of `{device id}` if you didn't change hello value.</span></span>
 
-## <a name="configure-the-device-connection"></a><span data-ttu-id="1f6eb-121">Configuración de la conexión de dispositivos</span><span class="sxs-lookup"><span data-stu-id="1f6eb-121">Configure the device connection</span></span>
-1. <span data-ttu-id="1f6eb-122">Inicialice el archivo de configuración con los siguientes comandos:</span><span class="sxs-lookup"><span data-stu-id="1f6eb-122">Initialize the configuration file by running the following commands:</span></span>
+## <a name="configure-hello-device-connection"></a><span data-ttu-id="8c95f-121">Configurar conexión de dispositivo de Hola</span><span class="sxs-lookup"><span data-stu-id="8c95f-121">Configure hello device connection</span></span>
+1. <span data-ttu-id="8c95f-122">Inicializar el archivo de configuración de hello ejecutando Hola siguientes comandos:</span><span class="sxs-lookup"><span data-stu-id="8c95f-122">Initialize hello configuration file by running hello following commands:</span></span>
 
    ```bash
    npm install
    gulp init
    ```
 
-2. <span data-ttu-id="1f6eb-123">Abra el archivo de configuración de dispositivos `config-edison.json` en Visual Studio Code ejecutando el comando siguiente:</span><span class="sxs-lookup"><span data-stu-id="1f6eb-123">Open the device configuration file `config-edison.json` in Visual Studio Code by running the following command:</span></span>
+2. <span data-ttu-id="8c95f-123">Archivo de configuración de dispositivos de hello abierto `config-edison.json` en código de Visual Studio mediante la ejecución de hello siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="8c95f-123">Open hello device configuration file `config-edison.json` in Visual Studio Code by running hello following command:</span></span>
 
    ```bash
    # For Windows command prompt
@@ -79,32 +79,32 @@ az iot device show-connection-string --hub-name {my hub name} --device-id myinte
    ```
 
    ![config.json](media/iot-hub-intel-edison-lessons/lesson3/config.png)
-3. <span data-ttu-id="1f6eb-125">Realice las sustituciones siguientes en el archivo `config-edison.json`:</span><span class="sxs-lookup"><span data-stu-id="1f6eb-125">Make the following replacements in the `config-edison.json` file:</span></span>
+3. <span data-ttu-id="8c95f-125">Realizar Hola después reemplazos en hello `config-edison.json` archivo:</span><span class="sxs-lookup"><span data-stu-id="8c95f-125">Make hello following replacements in hello `config-edison.json` file:</span></span>
 
-   * <span data-ttu-id="1f6eb-126">Reemplace **[nombre de host del dispositivo o dirección IP]** por la dirección IP del dispositivo que anotó cuando configuró el dispositivo.</span><span class="sxs-lookup"><span data-stu-id="1f6eb-126">Replace **[device hostname or IP address]** with the device IP address you marked down when you configured your device.</span></span>
-   * <span data-ttu-id="1f6eb-127">Reemplace **[IoT device connection string]** con el valor de `device connection string` que ha obtenido.</span><span class="sxs-lookup"><span data-stu-id="1f6eb-127">Replace **[IoT device connection string]** with the `device connection string` you obtained.</span></span>
-   * <span data-ttu-id="1f6eb-128">Reemplace **[IoT hub connection string]** con el valor de `iot hub connection string` que ha obtenido.</span><span class="sxs-lookup"><span data-stu-id="1f6eb-128">Replace **[IoT hub connection string]** with the `iot hub connection string` you obtained.</span></span>
+   * <span data-ttu-id="8c95f-126">Reemplace **[nombre de host de dispositivo o dirección IP]** con la dirección IP del dispositivo Hola marcados como inactivos cuando se configura el dispositivo.</span><span class="sxs-lookup"><span data-stu-id="8c95f-126">Replace **[device hostname or IP address]** with hello device IP address you marked down when you configured your device.</span></span>
+   * <span data-ttu-id="8c95f-127">Reemplace **[cadena de conexión de dispositivos de IoT]** con hello `device connection string` obtenidas.</span><span class="sxs-lookup"><span data-stu-id="8c95f-127">Replace **[IoT device connection string]** with hello `device connection string` you obtained.</span></span>
+   * <span data-ttu-id="8c95f-128">Reemplace **[cadena de conexión de base de datos central de IoT]** con hello `iot hub connection string` obtenidas.</span><span class="sxs-lookup"><span data-stu-id="8c95f-128">Replace **[IoT hub connection string]** with hello `iot hub connection string` you obtained.</span></span>
 
    > [!NOTE]
-   > <span data-ttu-id="1f6eb-129">`azure_storage_connection_string` no es necesario en este artículo.</span><span class="sxs-lookup"><span data-stu-id="1f6eb-129">You don't need `azure_storage_connection_string` in this article.</span></span> <span data-ttu-id="1f6eb-130">Déjelo como está.</span><span class="sxs-lookup"><span data-stu-id="1f6eb-130">Keep it as is.</span></span>
+   > <span data-ttu-id="8c95f-129">`azure_storage_connection_string` no es necesario en este artículo.</span><span class="sxs-lookup"><span data-stu-id="8c95f-129">You don't need `azure_storage_connection_string` in this article.</span></span> <span data-ttu-id="8c95f-130">Déjelo como está.</span><span class="sxs-lookup"><span data-stu-id="8c95f-130">Keep it as is.</span></span>
 
-## <a name="deploy-and-run-the-sample-application"></a><span data-ttu-id="1f6eb-131">Implementación y ejecución de la aplicación de ejemplo</span><span class="sxs-lookup"><span data-stu-id="1f6eb-131">Deploy and run the sample application</span></span>
-<span data-ttu-id="1f6eb-132">Implemente y ejecute la aplicación de ejemplo en Intel Edison usando el comando siguiente:</span><span class="sxs-lookup"><span data-stu-id="1f6eb-132">Deploy and run the sample application on Edison by running the following command:</span></span>
+## <a name="deploy-and-run-hello-sample-application"></a><span data-ttu-id="8c95f-131">Implementar y ejecutar la aplicación de ejemplo de Hola</span><span class="sxs-lookup"><span data-stu-id="8c95f-131">Deploy and run hello sample application</span></span>
+<span data-ttu-id="8c95f-132">Implementar y ejecutar la aplicación de ejemplo de Hola en Edison ejecutando Hola siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="8c95f-132">Deploy and run hello sample application on Edison by running hello following command:</span></span>
 
 ```bash
 gulp deploy && gulp run
 ```
 
-## <a name="verify-that-the-sample-application-works"></a><span data-ttu-id="1f6eb-133">Comprobación del funcionamiento de la aplicación de ejemplo</span><span class="sxs-lookup"><span data-stu-id="1f6eb-133">Verify that the sample application works</span></span>
-<span data-ttu-id="1f6eb-134">El LED conectado a Intel Edison debería parpadear cada dos segundos.</span><span class="sxs-lookup"><span data-stu-id="1f6eb-134">You should see the LED that is connected to Edison blinking every two seconds.</span></span> <span data-ttu-id="1f6eb-135">Cada vez que el LED parpadea, la aplicación de ejemplo envía un mensaje a IoT Hub y comprueba que el mensaje se envió correctamente a IoT Hub.</span><span class="sxs-lookup"><span data-stu-id="1f6eb-135">Every time the LED blinks, the sample application sends a message to your IoT hub and verifies that the message has been successfully sent to your IoT hub.</span></span> <span data-ttu-id="1f6eb-136">Además, todos los mensajes que reciba IoT Hub se imprimirán en la ventana de consola.</span><span class="sxs-lookup"><span data-stu-id="1f6eb-136">In addition, each message received by the IoT hub is printed in the console window.</span></span> <span data-ttu-id="1f6eb-137">La aplicación de ejemplo se finaliza automáticamente después de enviar 20 mensajes.</span><span class="sxs-lookup"><span data-stu-id="1f6eb-137">The sample application terminates automatically after sending 20 messages.</span></span>
+## <a name="verify-that-hello-sample-application-works"></a><span data-ttu-id="8c95f-133">Compruebe que la aplicación de ejemplo de Hola funciona</span><span class="sxs-lookup"><span data-stu-id="8c95f-133">Verify that hello sample application works</span></span>
+<span data-ttu-id="8c95f-134">Debería ver Hola LED que está conectado tooEdison parpadea cada dos segundos.</span><span class="sxs-lookup"><span data-stu-id="8c95f-134">You should see hello LED that is connected tooEdison blinking every two seconds.</span></span> <span data-ttu-id="8c95f-135">Cada vez que Hola LED parpadea, aplicación de ejemplo de Hola envía un centro de IoT tooyour de mensaje y comprueba que ese mensaje Hola se ha enviado correctamente tooyour centro de IoT.</span><span class="sxs-lookup"><span data-stu-id="8c95f-135">Every time hello LED blinks, hello sample application sends a message tooyour IoT hub and verifies that hello message has been successfully sent tooyour IoT hub.</span></span> <span data-ttu-id="8c95f-136">Además, cada mensaje recibido por el centro de IoT Hola se imprime en la ventana de la consola de Hola.</span><span class="sxs-lookup"><span data-stu-id="8c95f-136">In addition, each message received by hello IoT hub is printed in hello console window.</span></span> <span data-ttu-id="8c95f-137">aplicación de ejemplo de Hola finaliza automáticamente después de enviar 20 mensajes.</span><span class="sxs-lookup"><span data-stu-id="8c95f-137">hello sample application terminates automatically after sending 20 messages.</span></span>
 
 ![Aplicación de ejemplo con mensajes enviados y recibidos][sample-application-with-sent-and-received-messages]
 
-## <a name="summary"></a><span data-ttu-id="1f6eb-139">Resumen</span><span class="sxs-lookup"><span data-stu-id="1f6eb-139">Summary</span></span>
-<span data-ttu-id="1f6eb-140">Ha implementado y ejecutado la nueva aplicación de ejemplo de activación del parpadeo en Intel Edison para enviar al centro de IoT Hub mensajes de dispositivo a nube.</span><span class="sxs-lookup"><span data-stu-id="1f6eb-140">You've deployed and run the new blink sample application on Edison to send device-to-cloud messages to your IoT hub.</span></span> <span data-ttu-id="1f6eb-141">Ahora, puede supervisar los mensajes a medida que se escriben en la cuenta de almacenamiento.</span><span class="sxs-lookup"><span data-stu-id="1f6eb-141">You now monitor your messages as they are written to the storage account.</span></span>
+## <a name="summary"></a><span data-ttu-id="8c95f-139">Resumen</span><span class="sxs-lookup"><span data-stu-id="8c95f-139">Summary</span></span>
+<span data-ttu-id="8c95f-140">Se ha implementado y ejecutar nueva aplicación de ejemplo de intermitencia hello en Edison centro de IoT de tooyour toosend mensajes del dispositivo a la nube.</span><span class="sxs-lookup"><span data-stu-id="8c95f-140">You've deployed and run hello new blink sample application on Edison toosend device-to-cloud messages tooyour IoT hub.</span></span> <span data-ttu-id="8c95f-141">Ahora, supervisar los mensajes tal y como se escriben toohello cuenta de almacenamiento.</span><span class="sxs-lookup"><span data-stu-id="8c95f-141">You now monitor your messages as they are written toohello storage account.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="1f6eb-142">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="1f6eb-142">Next steps</span></span>
-<span data-ttu-id="1f6eb-143">[Lectura de los mensajes que se conservan en Azure Storage][read-messages-persisted-in-azure-storage]</span><span class="sxs-lookup"><span data-stu-id="1f6eb-143">[Read messages persisted in Azure Storage][read-messages-persisted-in-azure-storage]</span></span>
+## <a name="next-steps"></a><span data-ttu-id="8c95f-142">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="8c95f-142">Next steps</span></span>
+<span data-ttu-id="8c95f-143">[Lectura de los mensajes que se conservan en Azure Storage][read-messages-persisted-in-azure-storage]</span><span class="sxs-lookup"><span data-stu-id="8c95f-143">[Read messages persisted in Azure Storage][read-messages-persisted-in-azure-storage]</span></span>
 <!-- Images and links -->
 
 [troubleshooting]: iot-hub-intel-edison-kit-node-troubleshooting.md

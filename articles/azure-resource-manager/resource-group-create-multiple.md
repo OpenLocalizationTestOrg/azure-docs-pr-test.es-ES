@@ -1,6 +1,6 @@
 ---
-title: "Implementación de varias instancias de recursos de Azure | Microsoft Docs"
-description: "Use la operación de copia y matrices en una plantilla del Administrador de recursos de Azure para iterar varias veces al implementar recursos."
+title: aaaDeploy varias instancias de recursos de Azure | Documentos de Microsoft
+description: "Usar operación de copia y matrices en un tooiterate de plantilla de Azure Resource Manager varias veces al implementar los recursos."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/26/2017
 ms.author: tomfitz
-ms.openlocfilehash: ed8e3081d2b2e07938d7cf3aa5f95f6dde81bc66
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a3bd42f694053317c30b639c33dc4efae41a9a9b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="deploy-multiple-instances-of-a-resource-or-property-in-azure-resource-manager-templates"></a><span data-ttu-id="41140-103">Implementación de varias instancias de un recurso o una propiedad en plantillas de Azure Resource Manager</span><span class="sxs-lookup"><span data-stu-id="41140-103">Deploy multiple instances of a resource or property in Azure Resource Manager templates</span></span>
-<span data-ttu-id="41140-104">En este tema se muestra cómo iterar en la plantilla de Azure Resource Manager para crear varias instancias de un recurso o varias instancias de una propiedad de un recurso.</span><span class="sxs-lookup"><span data-stu-id="41140-104">This topic shows you how to iterate in your Azure Resource Manager template to create multiple instances of a resource, or multiple instances of a property on a resource.</span></span>
+# <a name="deploy-multiple-instances-of-a-resource-or-property-in-azure-resource-manager-templates"></a><span data-ttu-id="5100e-103">Implementación de varias instancias de un recurso o una propiedad en plantillas de Azure Resource Manager</span><span class="sxs-lookup"><span data-stu-id="5100e-103">Deploy multiple instances of a resource or property in Azure Resource Manager templates</span></span>
+<span data-ttu-id="5100e-104">Este tema muestra cómo tooiterate en su toocreate de plantilla de Azure Resource Manager varias instancias de un recurso, o varias instancias de una propiedad en un recurso.</span><span class="sxs-lookup"><span data-stu-id="5100e-104">This topic shows you how tooiterate in your Azure Resource Manager template toocreate multiple instances of a resource, or multiple instances of a property on a resource.</span></span>
 
-<span data-ttu-id="41140-105">Si tiene que agregar lógica a la plantilla que le permita especificar si se ha implementado un recurso, vea [Implementar recursos de forma condicional](#conditionally-deploy-resource).</span><span class="sxs-lookup"><span data-stu-id="41140-105">If you need to add logic to your template that enables you to specify whether a resource is deployed, see [Conditionally deploy resource](#conditionally-deploy-resource).</span></span>
+<span data-ttu-id="5100e-105">Si necesita tooadd lógica tooyour plantilla que le permite toospecify si se implementa un recurso, vea [implementar de forma condicional recursos](#conditionally-deploy-resource).</span><span class="sxs-lookup"><span data-stu-id="5100e-105">If you need tooadd logic tooyour template that enables you toospecify whether a resource is deployed, see [Conditionally deploy resource](#conditionally-deploy-resource).</span></span>
 
-## <a name="resource-iteration"></a><span data-ttu-id="41140-106">Iteración de recursos</span><span class="sxs-lookup"><span data-stu-id="41140-106">Resource iteration</span></span>
-<span data-ttu-id="41140-107">Para crear varias instancias de un tipo de recurso, agregue un elemento `copy` al tipo de recurso.</span><span class="sxs-lookup"><span data-stu-id="41140-107">To create multiple instances of a resource type, add a `copy` element to the resource type.</span></span> <span data-ttu-id="41140-108">En el elemento de copia, especifique el número de iteraciones y un nombre para este bucle.</span><span class="sxs-lookup"><span data-stu-id="41140-108">In the copy element, you specify the number of iterations and a name for this loop.</span></span> <span data-ttu-id="41140-109">El valor de recuento debe ser un número entero positivo y no puede ser superior a 800.</span><span class="sxs-lookup"><span data-stu-id="41140-109">The count value must be a positive integer and cannot exceed 800.</span></span> <span data-ttu-id="41140-110">Resource Manager crea los recursos en paralelo.</span><span class="sxs-lookup"><span data-stu-id="41140-110">Resource Manager creates the resources in parallel.</span></span> <span data-ttu-id="41140-111">Por lo tanto, no se garantiza el orden en el que se crean.</span><span class="sxs-lookup"><span data-stu-id="41140-111">Therefore, the order in which they are created is not guaranteed.</span></span> <span data-ttu-id="41140-112">Para crear recursos iterados en secuencia, consulte [Copia en serie](#serial-copy).</span><span class="sxs-lookup"><span data-stu-id="41140-112">To create iterated resources in sequence, see [Serial copy](#serial-copy).</span></span> 
+## <a name="resource-iteration"></a><span data-ttu-id="5100e-106">Iteración de recursos</span><span class="sxs-lookup"><span data-stu-id="5100e-106">Resource iteration</span></span>
+<span data-ttu-id="5100e-107">toocreate varias instancias de un tipo de recurso, agregue un `copy` tipo de recurso de toohello de elemento.</span><span class="sxs-lookup"><span data-stu-id="5100e-107">toocreate multiple instances of a resource type, add a `copy` element toohello resource type.</span></span> <span data-ttu-id="5100e-108">En el elemento de la copia de hello, especificar número de Hola de iteraciones y un nombre para este bucle.</span><span class="sxs-lookup"><span data-stu-id="5100e-108">In hello copy element, you specify hello number of iterations and a name for this loop.</span></span> <span data-ttu-id="5100e-109">el valor del recuento de Hello debe ser un entero positivo y no puede superar los 800.</span><span class="sxs-lookup"><span data-stu-id="5100e-109">hello count value must be a positive integer and cannot exceed 800.</span></span> <span data-ttu-id="5100e-110">El Administrador de recursos crea recursos de hello en paralelo.</span><span class="sxs-lookup"><span data-stu-id="5100e-110">Resource Manager creates hello resources in parallel.</span></span> <span data-ttu-id="5100e-111">Por lo tanto, no se garantiza el orden de hello en el que se crean.</span><span class="sxs-lookup"><span data-stu-id="5100e-111">Therefore, hello order in which they are created is not guaranteed.</span></span> <span data-ttu-id="5100e-112">toocreate recorren en iteración los recursos de secuencia, vea [serie copia](#serial-copy).</span><span class="sxs-lookup"><span data-stu-id="5100e-112">toocreate iterated resources in sequence, see [Serial copy](#serial-copy).</span></span> 
 
-<span data-ttu-id="41140-113">El recurso para crear varias veces tiene el formato siguiente:</span><span class="sxs-lookup"><span data-stu-id="41140-113">The resource to create multiple times takes the following format:</span></span>
+<span data-ttu-id="5100e-113">Hola recursos toocreate varias veces toma Hola siguiendo el formato:</span><span class="sxs-lookup"><span data-stu-id="5100e-113">hello resource toocreate multiple times takes hello following format:</span></span>
 
 ```json
 {
@@ -55,31 +55,31 @@ ms.lasthandoff: 07/11/2017
 }
 ```
 
-<span data-ttu-id="41140-114">Tenga en cuenta que el nombre de cada recurso incluye la función `copyIndex()`, que devuelve la iteración actual del bucle.</span><span class="sxs-lookup"><span data-stu-id="41140-114">Notice that the name of each resource includes the `copyIndex()` function, which returns the current iteration in the loop.</span></span> <span data-ttu-id="41140-115">`copyIndex()` es de base cero.</span><span class="sxs-lookup"><span data-stu-id="41140-115">`copyIndex()` is zero-based.</span></span> <span data-ttu-id="41140-116">Así, en el ejemplo siguiente:</span><span class="sxs-lookup"><span data-stu-id="41140-116">So, the following example:</span></span>
+<span data-ttu-id="5100e-114">Tenga en cuenta que Hola nombre de cada recurso incluye hello `copyIndex()` función, que devuelve la iteración actual de hello en bucle Hola.</span><span class="sxs-lookup"><span data-stu-id="5100e-114">Notice that hello name of each resource includes hello `copyIndex()` function, which returns hello current iteration in hello loop.</span></span> <span data-ttu-id="5100e-115">`copyIndex()` es de base cero.</span><span class="sxs-lookup"><span data-stu-id="5100e-115">`copyIndex()` is zero-based.</span></span> <span data-ttu-id="5100e-116">Por lo tanto, Hola siguiente ejemplo:</span><span class="sxs-lookup"><span data-stu-id="5100e-116">So, hello following example:</span></span>
 
 ```json
 "name": "[concat('storage', copyIndex())]",
 ```
 
-<span data-ttu-id="41140-117">Crea estos nombres:</span><span class="sxs-lookup"><span data-stu-id="41140-117">Creates these names:</span></span>
+<span data-ttu-id="5100e-117">Crea estos nombres:</span><span class="sxs-lookup"><span data-stu-id="5100e-117">Creates these names:</span></span>
 
-* <span data-ttu-id="41140-118">storage0</span><span class="sxs-lookup"><span data-stu-id="41140-118">storage0</span></span>
-* <span data-ttu-id="41140-119">storage1</span><span class="sxs-lookup"><span data-stu-id="41140-119">storage1</span></span>
-* <span data-ttu-id="41140-120">storage2.</span><span class="sxs-lookup"><span data-stu-id="41140-120">storage2.</span></span>
+* <span data-ttu-id="5100e-118">storage0</span><span class="sxs-lookup"><span data-stu-id="5100e-118">storage0</span></span>
+* <span data-ttu-id="5100e-119">storage1</span><span class="sxs-lookup"><span data-stu-id="5100e-119">storage1</span></span>
+* <span data-ttu-id="5100e-120">storage2.</span><span class="sxs-lookup"><span data-stu-id="5100e-120">storage2.</span></span>
 
-<span data-ttu-id="41140-121">Para desplazar el valor de índice, puede pasar un valor de la función copyIndex().</span><span class="sxs-lookup"><span data-stu-id="41140-121">To offset the index value, you can pass a value in the copyIndex() function.</span></span> <span data-ttu-id="41140-122">El número de iteraciones que se deben realizar todavía se especifica en el elemento copy, pero el valor de copyIndex se desplaza el valor especificado.</span><span class="sxs-lookup"><span data-stu-id="41140-122">The number of iterations to perform is still specified in the copy element, but the value of copyIndex is offset by the specified value.</span></span> <span data-ttu-id="41140-123">Así, en el ejemplo siguiente:</span><span class="sxs-lookup"><span data-stu-id="41140-123">So, the following example:</span></span>
+<span data-ttu-id="5100e-121">valor de índice de hello toooffset, puede pasar un valor en función de copyIndex() Hola.</span><span class="sxs-lookup"><span data-stu-id="5100e-121">toooffset hello index value, you can pass a value in hello copyIndex() function.</span></span> <span data-ttu-id="5100e-122">Hello número de iteraciones tooperform todavía está especificada en el elemento de la copia de hello, pero valor Hola de copyIndex se desplaza por hello especificado valor.</span><span class="sxs-lookup"><span data-stu-id="5100e-122">hello number of iterations tooperform is still specified in hello copy element, but hello value of copyIndex is offset by hello specified value.</span></span> <span data-ttu-id="5100e-123">Por lo tanto, Hola siguiente ejemplo:</span><span class="sxs-lookup"><span data-stu-id="5100e-123">So, hello following example:</span></span>
 
 ```json
 "name": "[concat('storage', copyIndex(1))]",
 ```
 
-<span data-ttu-id="41140-124">Crea estos nombres:</span><span class="sxs-lookup"><span data-stu-id="41140-124">Creates these names:</span></span>
+<span data-ttu-id="5100e-124">Crea estos nombres:</span><span class="sxs-lookup"><span data-stu-id="5100e-124">Creates these names:</span></span>
 
-* <span data-ttu-id="41140-125">storage1</span><span class="sxs-lookup"><span data-stu-id="41140-125">storage1</span></span>
-* <span data-ttu-id="41140-126">storage2</span><span class="sxs-lookup"><span data-stu-id="41140-126">storage2</span></span>
-* <span data-ttu-id="41140-127">storage3</span><span class="sxs-lookup"><span data-stu-id="41140-127">storage3</span></span>
+* <span data-ttu-id="5100e-125">storage1</span><span class="sxs-lookup"><span data-stu-id="5100e-125">storage1</span></span>
+* <span data-ttu-id="5100e-126">storage2</span><span class="sxs-lookup"><span data-stu-id="5100e-126">storage2</span></span>
+* <span data-ttu-id="5100e-127">storage3</span><span class="sxs-lookup"><span data-stu-id="5100e-127">storage3</span></span>
 
-<span data-ttu-id="41140-128">La operación de copia es útil al trabajar con matrices, ya que puede iterar a través de cada elemento de la matriz.</span><span class="sxs-lookup"><span data-stu-id="41140-128">The copy operation is helpful when working with arrays because you can iterate through each element in the array.</span></span> <span data-ttu-id="41140-129">Use la función `length` en la matriz para especificar el número de iteraciones, y `copyIndex` para recuperar el índice actual de la matriz.</span><span class="sxs-lookup"><span data-stu-id="41140-129">Use the `length` function on the array to specify the count for iterations, and `copyIndex` to retrieve the current index in the array.</span></span> <span data-ttu-id="41140-130">Así, en el ejemplo siguiente:</span><span class="sxs-lookup"><span data-stu-id="41140-130">So, the following example:</span></span>
+<span data-ttu-id="5100e-128">operación de copia de Hello es útil al trabajar con matrices, ya que puede recorrer en iteración cada elemento de matriz de Hola.</span><span class="sxs-lookup"><span data-stu-id="5100e-128">hello copy operation is helpful when working with arrays because you can iterate through each element in hello array.</span></span> <span data-ttu-id="5100e-129">Hola de uso `length` función en hello matriz toospecify Hola un recuento de iteraciones, y `copyIndex` índice actual de hello tooretrieve de matriz de Hola.</span><span class="sxs-lookup"><span data-stu-id="5100e-129">Use hello `length` function on hello array toospecify hello count for iterations, and `copyIndex` tooretrieve hello current index in hello array.</span></span> <span data-ttu-id="5100e-130">Por lo tanto, Hola siguiente ejemplo:</span><span class="sxs-lookup"><span data-stu-id="5100e-130">So, hello following example:</span></span>
 
 ```json
 "parameters": { 
@@ -104,17 +104,17 @@ ms.lasthandoff: 07/11/2017
 ]
 ```
 
-<span data-ttu-id="41140-131">Crea estos nombres:</span><span class="sxs-lookup"><span data-stu-id="41140-131">Creates these names:</span></span>
+<span data-ttu-id="5100e-131">Crea estos nombres:</span><span class="sxs-lookup"><span data-stu-id="5100e-131">Creates these names:</span></span>
 
-* <span data-ttu-id="41140-132">storagecontoso</span><span class="sxs-lookup"><span data-stu-id="41140-132">storagecontoso</span></span>
-* <span data-ttu-id="41140-133">storagefabrikam</span><span class="sxs-lookup"><span data-stu-id="41140-133">storagefabrikam</span></span>
-* <span data-ttu-id="41140-134">storagecoho</span><span class="sxs-lookup"><span data-stu-id="41140-134">storagecoho</span></span>
+* <span data-ttu-id="5100e-132">storagecontoso</span><span class="sxs-lookup"><span data-stu-id="5100e-132">storagecontoso</span></span>
+* <span data-ttu-id="5100e-133">storagefabrikam</span><span class="sxs-lookup"><span data-stu-id="5100e-133">storagefabrikam</span></span>
+* <span data-ttu-id="5100e-134">storagecoho</span><span class="sxs-lookup"><span data-stu-id="5100e-134">storagecoho</span></span>
 
-## <a name="serial-copy"></a><span data-ttu-id="41140-135">Copia en serie</span><span class="sxs-lookup"><span data-stu-id="41140-135">Serial copy</span></span>
+## <a name="serial-copy"></a><span data-ttu-id="5100e-135">Copia en serie</span><span class="sxs-lookup"><span data-stu-id="5100e-135">Serial copy</span></span>
 
-<span data-ttu-id="41140-136">Al usar el elemento de copia para crear varias instancias de un tipo de recurso, Resource Manager implementa esas instancias en paralelo de forma predeterminada.</span><span class="sxs-lookup"><span data-stu-id="41140-136">When you use the copy element to create multiple instances of a resource type, Resource Manager, by default, deploys those instances in parallel.</span></span> <span data-ttu-id="41140-137">Sin embargo, es posible que quiera especificar que los recursos se implementen en secuencia.</span><span class="sxs-lookup"><span data-stu-id="41140-137">However, you may want to specify that the resources are deployed in sequence.</span></span> <span data-ttu-id="41140-138">Por ejemplo, al actualizar un entorno de producción, puede que quiera escalonar las actualizaciones para que solo una cantidad determinada se actualice al mismo tiempo.</span><span class="sxs-lookup"><span data-stu-id="41140-138">For example, when updating a production environment, you may want to stagger the updates so only a certain number are updated at any one time.</span></span>
+<span data-ttu-id="5100e-136">Cuando usas Hola copiar elemento toocreate varias instancias de un tipo de recurso, el Administrador de recursos de forma predeterminada, implementa esas instancias en paralelo.</span><span class="sxs-lookup"><span data-stu-id="5100e-136">When you use hello copy element toocreate multiple instances of a resource type, Resource Manager, by default, deploys those instances in parallel.</span></span> <span data-ttu-id="5100e-137">Sin embargo, puede que desee toospecify ese Hola recursos se implementan en secuencia.</span><span class="sxs-lookup"><span data-stu-id="5100e-137">However, you may want toospecify that hello resources are deployed in sequence.</span></span> <span data-ttu-id="5100e-138">Por ejemplo, al actualizar un entorno de producción, puede que desee toostagger Hola actualiza tan solo un número determinado se actualizan al mismo tiempo.</span><span class="sxs-lookup"><span data-stu-id="5100e-138">For example, when updating a production environment, you may want toostagger hello updates so only a certain number are updated at any one time.</span></span>
 
-<span data-ttu-id="41140-139">Resource Manager proporciona las propiedades sobre el elemento de copia que le permiten implementar varias instancias en serie.</span><span class="sxs-lookup"><span data-stu-id="41140-139">Resource Manager provides properties on the copy element that enable you to serially deploy multiple instances.</span></span> <span data-ttu-id="41140-140">En el elemento de copia, establezca `mode` en **serial** y `batchSize` en el número de instancias que se implementarán a la vez.</span><span class="sxs-lookup"><span data-stu-id="41140-140">In the copy element, set `mode` to **serial** and `batchSize` to the number of instances to deploy at a time.</span></span> <span data-ttu-id="41140-141">Con mode establecido en serial, Resource Manager crea una dependencia en las instancias anteriores del bucle, por lo que no se inicia ningún lote hasta que se completa el lote anterior.</span><span class="sxs-lookup"><span data-stu-id="41140-141">With serial mode, Resource Manager creates a dependency on earlier instances in the loop, so it does not start one batch until the previous batch completes.</span></span>
+<span data-ttu-id="5100e-139">Administrador de recursos proporciona propiedades de elemento de la copia de Hola que permiten tooserially implementan varias instancias.</span><span class="sxs-lookup"><span data-stu-id="5100e-139">Resource Manager provides properties on hello copy element that enable you tooserially deploy multiple instances.</span></span> <span data-ttu-id="5100e-140">En conjunto de elementos de la copia de hello, `mode` demasiado**serie** y `batchSize` toohello número de instancias toodeploy a la vez.</span><span class="sxs-lookup"><span data-stu-id="5100e-140">In hello copy element, set `mode` too**serial** and `batchSize` toohello number of instances toodeploy at a time.</span></span> <span data-ttu-id="5100e-141">Con el modo de serie, el Administrador de recursos crea una dependencia en las instancias anteriores de bucle de hello, por lo que no se inicia un proceso por lotes hasta que se completa el lote anterior Hola.</span><span class="sxs-lookup"><span data-stu-id="5100e-141">With serial mode, Resource Manager creates a dependency on earlier instances in hello loop, so it does not start one batch until hello previous batch completes.</span></span>
 
 ```json
 "copy": {
@@ -125,9 +125,9 @@ ms.lasthandoff: 07/11/2017
 },
 ```
 
-<span data-ttu-id="41140-142">La propiedad mode también acepta **parallel**, que es el valor predeterminado.</span><span class="sxs-lookup"><span data-stu-id="41140-142">The mode property also accepts **parallel**, which is the default value.</span></span>
+<span data-ttu-id="5100e-142">Hello propiedad mode también acepta **paralelo**, que es el valor predeterminado de Hola.</span><span class="sxs-lookup"><span data-stu-id="5100e-142">hello mode property also accepts **parallel**, which is hello default value.</span></span>
 
-<span data-ttu-id="41140-143">Para probar la copia en serie sin crear recursos reales, use la siguiente plantilla, que implementa plantillas anidadas vacías:</span><span class="sxs-lookup"><span data-stu-id="41140-143">To test serial copy without creating actual resources, use the following template that deploys empty nested templates:</span></span>
+<span data-ttu-id="5100e-143">tootest serie copia sin crear recursos reales, Hola de uso después de plantilla que implementa las plantillas anidadas vacías:</span><span class="sxs-lookup"><span data-stu-id="5100e-143">tootest serial copy without creating actual resources, use hello following template that deploys empty nested templates:</span></span>
 
 ```json
 {
@@ -170,11 +170,11 @@ ms.lasthandoff: 07/11/2017
 }
 ```
 
-<span data-ttu-id="41140-144">En el historial de implementación, observe que las implementaciones anidadas se procesan en secuencia.</span><span class="sxs-lookup"><span data-stu-id="41140-144">In the deployment history, notice that the nested deployments are processed in sequence.</span></span>
+<span data-ttu-id="5100e-144">En el historial de implementación de hello, tenga en cuenta que Hola implementaciones anidadas se procesan en secuencia.</span><span class="sxs-lookup"><span data-stu-id="5100e-144">In hello deployment history, notice that hello nested deployments are processed in sequence.</span></span>
 
 ![implementación en serie](./media/resource-group-create-multiple/serial-copy.png)
 
-<span data-ttu-id="41140-146">Para un escenario más realista, en el ejemplo siguiente se implementan dos instancias a la vez de una VM de Linux a partir de una plantilla anidada:</span><span class="sxs-lookup"><span data-stu-id="41140-146">For a more realistic scenario, the following example deploys two instances at a time of a Linux VM from a nested template:</span></span>
+<span data-ttu-id="5100e-146">Para un escenario más realista, Hola siguiente ejemplo implementa dos instancias en el momento de una VM de Linux desde una plantilla anidada:</span><span class="sxs-lookup"><span data-stu-id="5100e-146">For a more realistic scenario, hello following example deploys two instances at a time of a Linux VM from a nested template:</span></span>
 
 ```json
 {
@@ -184,19 +184,19 @@ ms.lasthandoff: 07/11/2017
         "adminUsername": {
             "type": "string",
             "metadata": {
-                "description": "User name for the Virtual Machine."
+                "description": "User name for hello Virtual Machine."
             }
         },
         "adminPassword": {
             "type": "securestring",
             "metadata": {
-                "description": "Password for the Virtual Machine."
+                "description": "Password for hello Virtual Machine."
             }
         },
         "dnsLabelPrefix": {
             "type": "string",
             "metadata": {
-                "description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
+                "description": "Unique DNS Name for hello Public IP used tooaccess hello Virtual Machine."
             }
         },
         "ubuntuOSVersion": {
@@ -209,7 +209,7 @@ ms.lasthandoff: 07/11/2017
                 "16.04.0-LTS"
             ],
             "metadata": {
-                "description": "The Ubuntu version for the VM. This will pick a fully patched image of this given Ubuntu version."
+                "description": "hello Ubuntu version for hello VM. This will pick a fully patched image of this given Ubuntu version."
             }
         }
     },
@@ -256,15 +256,15 @@ ms.lasthandoff: 07/11/2017
 }
 ```
 
-## <a name="property-iteration"></a><span data-ttu-id="41140-147">Iteración de propiedades</span><span class="sxs-lookup"><span data-stu-id="41140-147">Property iteration</span></span>
+## <a name="property-iteration"></a><span data-ttu-id="5100e-147">Iteración de propiedades</span><span class="sxs-lookup"><span data-stu-id="5100e-147">Property iteration</span></span>
 
-<span data-ttu-id="41140-148">Para crear varios valores para una propiedad de un recurso, agregue una matriz `copy` en el elemento properties.</span><span class="sxs-lookup"><span data-stu-id="41140-148">To create multiple values for a property on a resource, add a `copy` array in the properties element.</span></span> <span data-ttu-id="41140-149">Esta matriz contiene objetos, y cada objeto tiene las siguientes propiedades:</span><span class="sxs-lookup"><span data-stu-id="41140-149">This array contains objects, and each object has the following properties:</span></span>
+<span data-ttu-id="5100e-148">toocreate varios valores para una propiedad en un recurso, agregue un `copy` matriz en elemento de propiedades de Hola.</span><span class="sxs-lookup"><span data-stu-id="5100e-148">toocreate multiple values for a property on a resource, add a `copy` array in hello properties element.</span></span> <span data-ttu-id="5100e-149">Esta matriz contiene objetos, y cada objeto tiene Hola propiedades siguientes:</span><span class="sxs-lookup"><span data-stu-id="5100e-149">This array contains objects, and each object has hello following properties:</span></span>
 
-* <span data-ttu-id="41140-150">nombre: el nombre de la propiedad para la que se van a crear varios valores</span><span class="sxs-lookup"><span data-stu-id="41140-150">name - the name of the property to create multiple values for</span></span>
-* <span data-ttu-id="41140-151">recuento: el número de valores que se van a crear</span><span class="sxs-lookup"><span data-stu-id="41140-151">count - the number of values to create</span></span>
-* <span data-ttu-id="41140-152">entrada: un objeto que contiene los valores que se van a asignar a la propiedad</span><span class="sxs-lookup"><span data-stu-id="41140-152">input - an object that contains the values to assign to the property</span></span>  
+* <span data-ttu-id="5100e-150">nombre: nombre de Hola de hello propiedad toocreate varios valores para</span><span class="sxs-lookup"><span data-stu-id="5100e-150">name - hello name of hello property toocreate multiple values for</span></span>
+* <span data-ttu-id="5100e-151">número - número de Hola de toocreate de valores</span><span class="sxs-lookup"><span data-stu-id="5100e-151">count - hello number of values toocreate</span></span>
+* <span data-ttu-id="5100e-152">entrada: un objeto que contiene la propiedad Hola valores tooassign toohello</span><span class="sxs-lookup"><span data-stu-id="5100e-152">input - an object that contains hello values tooassign toohello property</span></span>  
 
-<span data-ttu-id="41140-153">En el ejemplo siguiente se muestra cómo aplicar `copy` a la propiedad dataDisks en una máquina virtual:</span><span class="sxs-lookup"><span data-stu-id="41140-153">The following example shows how to apply `copy` to the dataDisks property on a virtual machine:</span></span>
+<span data-ttu-id="5100e-153">Hola siguiente ejemplo se muestra cómo tooapply `copy` toohello dataDisks propiedad en una máquina virtual:</span><span class="sxs-lookup"><span data-stu-id="5100e-153">hello following example shows how tooapply `copy` toohello dataDisks property on a virtual machine:</span></span>
 
 ```json
 {
@@ -285,9 +285,9 @@ ms.lasthandoff: 07/11/2017
       ...
 ```
 
-<span data-ttu-id="41140-154">Tenga en cuenta que, cuando se usa `copyIndex` dentro de una iteración de propiedad, debe proporcionar el nombre de la iteración.</span><span class="sxs-lookup"><span data-stu-id="41140-154">Notice that when using `copyIndex` inside a property iteration, you must provide the name of the iteration.</span></span> <span data-ttu-id="41140-155">No tiene que proporcionar el nombre cuando se usa con la iteración de recursos.</span><span class="sxs-lookup"><span data-stu-id="41140-155">You do not have to provide the name when used with resource iteration.</span></span>
+<span data-ttu-id="5100e-154">Tenga en cuenta que, cuando se usa `copyIndex` dentro de una iteración de la propiedad, debe proporcionar el nombre de Hola de iteración de Hola.</span><span class="sxs-lookup"><span data-stu-id="5100e-154">Notice that when using `copyIndex` inside a property iteration, you must provide hello name of hello iteration.</span></span> <span data-ttu-id="5100e-155">No tiene nombre de hello tooprovide cuando se usa con la iteración de recursos.</span><span class="sxs-lookup"><span data-stu-id="5100e-155">You do not have tooprovide hello name when used with resource iteration.</span></span>
 
-<span data-ttu-id="41140-156">Resource Manager expande la matriz `copy` durante la implementación.</span><span class="sxs-lookup"><span data-stu-id="41140-156">Resource Manager expands the `copy` array during deployment.</span></span> <span data-ttu-id="41140-157">El nombre de la matriz se convierte en el nombre de la propiedad.</span><span class="sxs-lookup"><span data-stu-id="41140-157">The name of the array becomes the name of the property.</span></span> <span data-ttu-id="41140-158">Los valores de entrada se convierten en las propiedades del objeto.</span><span class="sxs-lookup"><span data-stu-id="41140-158">The input values become the object properties.</span></span> <span data-ttu-id="41140-159">La plantilla implementada se convierte en:</span><span class="sxs-lookup"><span data-stu-id="41140-159">The deployed template becomes:</span></span>
+<span data-ttu-id="5100e-156">El Administrador de recursos se expande hello `copy` matriz durante la implementación.</span><span class="sxs-lookup"><span data-stu-id="5100e-156">Resource Manager expands hello `copy` array during deployment.</span></span> <span data-ttu-id="5100e-157">nombre de Hola de matriz de Hola se convierte en nombre de Hola de propiedad Hola.</span><span class="sxs-lookup"><span data-stu-id="5100e-157">hello name of hello array becomes hello name of hello property.</span></span> <span data-ttu-id="5100e-158">los valores de entrada de Hola se convierten en Propiedades del objeto Hola.</span><span class="sxs-lookup"><span data-stu-id="5100e-158">hello input values become hello object properties.</span></span> <span data-ttu-id="5100e-159">plantilla de Hello implementado se convierte en:</span><span class="sxs-lookup"><span data-stu-id="5100e-159">hello deployed template becomes:</span></span>
 
 ```json
 {
@@ -316,7 +316,7 @@ ms.lasthandoff: 07/11/2017
       ...
 ```
 
-<span data-ttu-id="41140-160">Puede usar la iteración de recursos y propiedades conjuntamente.</span><span class="sxs-lookup"><span data-stu-id="41140-160">You can use resource and property iteration together.</span></span> <span data-ttu-id="41140-161">Haga referencia a la iteración de la propiedad por el nombre.</span><span class="sxs-lookup"><span data-stu-id="41140-161">Reference the property iteration by name.</span></span>
+<span data-ttu-id="5100e-160">Puede usar la iteración de recursos y propiedades conjuntamente.</span><span class="sxs-lookup"><span data-stu-id="5100e-160">You can use resource and property iteration together.</span></span> <span data-ttu-id="5100e-161">Iteración de propiedad de Hola de referencia por su nombre.</span><span class="sxs-lookup"><span data-stu-id="5100e-161">Reference hello property iteration by name.</span></span>
 
 ```json
 {
@@ -350,7 +350,7 @@ ms.lasthandoff: 07/11/2017
 }
 ```
 
-<span data-ttu-id="41140-162">Solo puede incluir un elemento de copia en las propiedades de cada recurso.</span><span class="sxs-lookup"><span data-stu-id="41140-162">You can only include one copy element in the properties for each resource.</span></span> <span data-ttu-id="41140-163">Para especificar un bucle de iteración para más de una propiedad, defina varios objetos en la matriz de copia.</span><span class="sxs-lookup"><span data-stu-id="41140-163">To specify an iteration loop for more than one property, define multiple objects in the copy array.</span></span> <span data-ttu-id="41140-164">Cada objeto se recorre en iteración por separado.</span><span class="sxs-lookup"><span data-stu-id="41140-164">Each object is iterated separately.</span></span> <span data-ttu-id="41140-165">Por ejemplo, para crear varias instancias de las propiedades `frontendIPConfigurations` y `loadBalancingRules` en un equilibrador de carga, defina los dos objetos en un solo elemento de copia:</span><span class="sxs-lookup"><span data-stu-id="41140-165">For example, to create multiple instances of both the `frontendIPConfigurations` property and the `loadBalancingRules` property on a load balancer, define both objects in a single copy element:</span></span> 
+<span data-ttu-id="5100e-162">Solo puede incluir un elemento de la copia en Propiedades de Hola para cada recurso.</span><span class="sxs-lookup"><span data-stu-id="5100e-162">You can only include one copy element in hello properties for each resource.</span></span> <span data-ttu-id="5100e-163">toospecify un bucle de iteración de más de una propiedad, se definen varios objetos de matriz de copia de Hola.</span><span class="sxs-lookup"><span data-stu-id="5100e-163">toospecify an iteration loop for more than one property, define multiple objects in hello copy array.</span></span> <span data-ttu-id="5100e-164">Cada objeto se recorre en iteración por separado.</span><span class="sxs-lookup"><span data-stu-id="5100e-164">Each object is iterated separately.</span></span> <span data-ttu-id="5100e-165">Por ejemplo, toocreate varias instancias de ambos hello `frontendIPConfigurations` hello y propiedad `loadBalancingRules` propiedad en un equilibrador de carga, definir los objetos en un elemento de solo copia:</span><span class="sxs-lookup"><span data-stu-id="5100e-165">For example, toocreate multiple instances of both hello `frontendIPConfigurations` property and hello `loadBalancingRules` property on a load balancer, define both objects in a single copy element:</span></span> 
 
 ```json
 {
@@ -397,8 +397,8 @@ ms.lasthandoff: 07/11/2017
 }
 ```
 
-## <a name="depend-on-resources-in-a-loop"></a><span data-ttu-id="41140-166">Dependencia de los recursos de un bucle</span><span class="sxs-lookup"><span data-stu-id="41140-166">Depend on resources in a loop</span></span>
-<span data-ttu-id="41140-167">Especifique que un recurso se implemente después de otro recurso mediante el elemento `dependsOn`.</span><span class="sxs-lookup"><span data-stu-id="41140-167">You specify that a resource is deployed after another resource by using the `dependsOn` element.</span></span> <span data-ttu-id="41140-168">Para implementar un recurso que dependa de la colección de recursos de un bucle, proporcione el nombre del bucle copy en el elemento dependsOn.</span><span class="sxs-lookup"><span data-stu-id="41140-168">To deploy a resource that depends on the collection of resources in a loop, provide the name of the copy loop in the dependsOn element.</span></span> <span data-ttu-id="41140-169">En el ejemplo siguiente se muestra cómo implementar tres cuentas de almacenamiento antes de implementar la máquina virtual.</span><span class="sxs-lookup"><span data-stu-id="41140-169">The following example shows how to deploy three storage accounts before deploying the Virtual Machine.</span></span> <span data-ttu-id="41140-170">La definición de la máquina virtual no se muestra.</span><span class="sxs-lookup"><span data-stu-id="41140-170">The full Virtual Machine definition is not shown.</span></span> <span data-ttu-id="41140-171">Tenga en cuenta que el elemento copy tiene el nombre establecido en `storagecopy` y el elemento dependsOn para las máquinas virtuales también se establece en `storagecopy`.</span><span class="sxs-lookup"><span data-stu-id="41140-171">Notice that the copy element has name set to `storagecopy` and the dependsOn element for the Virtual Machines is also set to `storagecopy`.</span></span>
+## <a name="depend-on-resources-in-a-loop"></a><span data-ttu-id="5100e-166">Dependencia de los recursos de un bucle</span><span class="sxs-lookup"><span data-stu-id="5100e-166">Depend on resources in a loop</span></span>
+<span data-ttu-id="5100e-167">Especifica que se ha implementado un recurso después de otro recurso mediante el uso de hello `dependsOn` elemento.</span><span class="sxs-lookup"><span data-stu-id="5100e-167">You specify that a resource is deployed after another resource by using hello `dependsOn` element.</span></span> <span data-ttu-id="5100e-168">toodeploy un recurso que dependa de colección de Hola de recursos en un bucle, proporcionar nombre Hola de bucle de copia de hello en el elemento dependsOn de Hola.</span><span class="sxs-lookup"><span data-stu-id="5100e-168">toodeploy a resource that depends on hello collection of resources in a loop, provide hello name of hello copy loop in hello dependsOn element.</span></span> <span data-ttu-id="5100e-169">Hola de ejemplo siguiente muestra cómo toodeploy tres cuentas de almacenamiento antes de implementar Hola Máquina Virtual.</span><span class="sxs-lookup"><span data-stu-id="5100e-169">hello following example shows how toodeploy three storage accounts before deploying hello Virtual Machine.</span></span> <span data-ttu-id="5100e-170">no se muestra la definición de máquina Virtual completa Hola.</span><span class="sxs-lookup"><span data-stu-id="5100e-170">hello full Virtual Machine definition is not shown.</span></span> <span data-ttu-id="5100e-171">Observe que ese elemento de la copia de hello tiene nombre establecido demasiado`storagecopy` y elemento de dependsOn de Hola para hello máquinas virtuales también se establece demasiado`storagecopy`.</span><span class="sxs-lookup"><span data-stu-id="5100e-171">Notice that hello copy element has name set too`storagecopy` and hello dependsOn element for hello Virtual Machines is also set too`storagecopy`.</span></span>
 
 ```json
 {
@@ -433,10 +433,10 @@ ms.lasthandoff: 07/11/2017
 }
 ```
 
-## <a name="create-multiple-instances-of-a-child-resource"></a><span data-ttu-id="41140-172">Creación de varias instancias de un recurso secundario</span><span class="sxs-lookup"><span data-stu-id="41140-172">Create multiple instances of a child resource</span></span>
-<span data-ttu-id="41140-173">No puede usar un bucle copy en un recurso secundario.</span><span class="sxs-lookup"><span data-stu-id="41140-173">You cannot use a copy loop for a child resource.</span></span> <span data-ttu-id="41140-174">Para crear varias instancias de un recurso que se define normalmente como anidado dentro de otro recurso, debe crear en su lugar dicho recurso como uno de nivel superior.</span><span class="sxs-lookup"><span data-stu-id="41140-174">To create multiple instances of a resource that you typically define as nested within another resource, you must instead create that resource as a top-level resource.</span></span> <span data-ttu-id="41140-175">La relación con el recurso principal se define a través de las propiedades type y name.</span><span class="sxs-lookup"><span data-stu-id="41140-175">You define the relationship with the parent resource through the type and name properties.</span></span>
+## <a name="create-multiple-instances-of-a-child-resource"></a><span data-ttu-id="5100e-172">Creación de varias instancias de un recurso secundario</span><span class="sxs-lookup"><span data-stu-id="5100e-172">Create multiple instances of a child resource</span></span>
+<span data-ttu-id="5100e-173">No puede usar un bucle copy en un recurso secundario.</span><span class="sxs-lookup"><span data-stu-id="5100e-173">You cannot use a copy loop for a child resource.</span></span> <span data-ttu-id="5100e-174">toocreate varias instancias de un recurso que se define normalmente como anidados dentro de otro recurso, en su lugar, debe crear ese recurso como un recurso de nivel superior.</span><span class="sxs-lookup"><span data-stu-id="5100e-174">toocreate multiple instances of a resource that you typically define as nested within another resource, you must instead create that resource as a top-level resource.</span></span> <span data-ttu-id="5100e-175">Definir relación Hola con recurso primario de Hola a través de las propiedades de tipo y el nombre de Hola.</span><span class="sxs-lookup"><span data-stu-id="5100e-175">You define hello relationship with hello parent resource through hello type and name properties.</span></span>
 
-<span data-ttu-id="41140-176">Por ejemplo, supongamos que suele definir un conjunto de datos como un recurso secundario dentro de una factoría de datos.</span><span class="sxs-lookup"><span data-stu-id="41140-176">For example, suppose you typically define a dataset as a child resource within a data factory.</span></span>
+<span data-ttu-id="5100e-176">Por ejemplo, supongamos que suele definir un conjunto de datos como un recurso secundario dentro de una factoría de datos.</span><span class="sxs-lookup"><span data-stu-id="5100e-176">For example, suppose you typically define a dataset as a child resource within a data factory.</span></span>
 
 ```json
 "resources": [
@@ -456,11 +456,11 @@ ms.lasthandoff: 07/11/2017
 }]
 ```
 
-<span data-ttu-id="41140-177">Para crear varias instancias de conjuntos de datos, muévalos fuera de la factoría de datos.</span><span class="sxs-lookup"><span data-stu-id="41140-177">To create multiple instances of data sets, move it outside of the data factory.</span></span> <span data-ttu-id="41140-178">El conjunto de datos debe estar en el mismo nivel que la factoría de datos, pero seguirá siendo un recurso secundario de la factoría de datos.</span><span class="sxs-lookup"><span data-stu-id="41140-178">The dataset must be at the same level as the data factory, but it is still a child resource of the data factory.</span></span> <span data-ttu-id="41140-179">La relación entre el conjunto de datos y la factoría de datos se conserva a través de los parámetros type y name.</span><span class="sxs-lookup"><span data-stu-id="41140-179">You preserve the relationship between data set and data factory through the type and name properties.</span></span> <span data-ttu-id="41140-180">Puesto que la propiedad de type ya no se puede inferir de su posición en la plantilla, debe proporcionar el nombre completo del tipo con el formato: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`.</span><span class="sxs-lookup"><span data-stu-id="41140-180">Since type can no longer be inferred from its position in the template, you must provide the fully qualified type in the format: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`.</span></span>
+<span data-ttu-id="5100e-177">toocreate varias instancias de conjuntos de datos, muévala fuera de la factoría de datos de Hola.</span><span class="sxs-lookup"><span data-stu-id="5100e-177">toocreate multiple instances of data sets, move it outside of hello data factory.</span></span> <span data-ttu-id="5100e-178">Hola conjunto de datos debe estar en hello como factoría de datos de Hola de mismo nivel, pero sigue siendo un recurso secundario Hola factoría de datos.</span><span class="sxs-lookup"><span data-stu-id="5100e-178">hello dataset must be at hello same level as hello data factory, but it is still a child resource of hello data factory.</span></span> <span data-ttu-id="5100e-179">Conservar la relación de hello entre factoría de datos a través de las propiedades de tipo y el nombre de Hola y el conjunto de datos.</span><span class="sxs-lookup"><span data-stu-id="5100e-179">You preserve hello relationship between data set and data factory through hello type and name properties.</span></span> <span data-ttu-id="5100e-180">Puesto que ya no se puede inferir el tipo de su posición en la plantilla de hello, debe proporcionar el tipo hello completo en formato de hello: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`.</span><span class="sxs-lookup"><span data-stu-id="5100e-180">Since type can no longer be inferred from its position in hello template, you must provide hello fully qualified type in hello format: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`.</span></span>
 
-<span data-ttu-id="41140-181">Para establecer una relación de principal-secundario con una instancia de la factoría de datos, proporcione un nombre para el conjunto de datos que incluya el nombre de recurso principal.</span><span class="sxs-lookup"><span data-stu-id="41140-181">To establish a parent/child relationship with an instance of the data factory, provide a name for the data set that includes the parent resource name.</span></span> <span data-ttu-id="41140-182">Utilice el formato: `{parent-resource-name}/{child-resource-name}`.</span><span class="sxs-lookup"><span data-stu-id="41140-182">Use the format: `{parent-resource-name}/{child-resource-name}`.</span></span>  
+<span data-ttu-id="5100e-181">tooestablish una relación primaria-secundaria con una instancia de la factoría de datos de hello, proporcione un nombre para el conjunto de datos de Hola que incluye el nombre del recurso primario Hola.</span><span class="sxs-lookup"><span data-stu-id="5100e-181">tooestablish a parent/child relationship with an instance of hello data factory, provide a name for hello data set that includes hello parent resource name.</span></span> <span data-ttu-id="5100e-182">Usar el formato de hello: `{parent-resource-name}/{child-resource-name}`.</span><span class="sxs-lookup"><span data-stu-id="5100e-182">Use hello format: `{parent-resource-name}/{child-resource-name}`.</span></span>  
 
-<span data-ttu-id="41140-183">En el siguiente ejemplo se muestra la implementación:</span><span class="sxs-lookup"><span data-stu-id="41140-183">The following example shows the implementation:</span></span>
+<span data-ttu-id="5100e-183">Hello en el ejemplo siguiente se muestra hello implementación:</span><span class="sxs-lookup"><span data-stu-id="5100e-183">hello following example shows hello implementation:</span></span>
 
 ```json
 "resources": [
@@ -483,9 +483,9 @@ ms.lasthandoff: 07/11/2017
 }]
 ```
 
-## <a name="conditionally-deploy-resource"></a><span data-ttu-id="41140-184">Implementar recursos de forma condicional</span><span class="sxs-lookup"><span data-stu-id="41140-184">Conditionally deploy resource</span></span>
+## <a name="conditionally-deploy-resource"></a><span data-ttu-id="5100e-184">Implementar recursos de forma condicional</span><span class="sxs-lookup"><span data-stu-id="5100e-184">Conditionally deploy resource</span></span>
 
-<span data-ttu-id="41140-185">Para especificar si se ha implementado un recurso, use el elemento `condition`.</span><span class="sxs-lookup"><span data-stu-id="41140-185">To specify whether a resource is deployed, use the `condition` element.</span></span> <span data-ttu-id="41140-186">El valor de este elemento se resuelve como true o false.</span><span class="sxs-lookup"><span data-stu-id="41140-186">The value for this element resolves to true or false.</span></span> <span data-ttu-id="41140-187">Cuando el valor es true, el recurso se implementa.</span><span class="sxs-lookup"><span data-stu-id="41140-187">When the value is true, the resource is deployed.</span></span> <span data-ttu-id="41140-188">Cuando el valor es false, el recurso no se implementa.</span><span class="sxs-lookup"><span data-stu-id="41140-188">When the value is false, the resource is not deployed.</span></span> <span data-ttu-id="41140-189">Por ejemplo, para especificar si se implementa una nueva cuenta de almacenamiento o se usa una cuenta de almacenamiento existente, use:</span><span class="sxs-lookup"><span data-stu-id="41140-189">For example, to specify whether a new storage account is deployed or an existing storage account is used, use:</span></span>
+<span data-ttu-id="5100e-185">toospecify si se implementa un recurso, usar hello `condition` elemento.</span><span class="sxs-lookup"><span data-stu-id="5100e-185">toospecify whether a resource is deployed, use hello `condition` element.</span></span> <span data-ttu-id="5100e-186">valor de Hola de este elemento resuelve tootrue o false.</span><span class="sxs-lookup"><span data-stu-id="5100e-186">hello value for this element resolves tootrue or false.</span></span> <span data-ttu-id="5100e-187">Hola valor es true, se implementa el recurso de Hola.</span><span class="sxs-lookup"><span data-stu-id="5100e-187">When hello value is true, hello resource is deployed.</span></span> <span data-ttu-id="5100e-188">Hola valor es false, no se implementa el recurso de Hola.</span><span class="sxs-lookup"><span data-stu-id="5100e-188">When hello value is false, hello resource is not deployed.</span></span> <span data-ttu-id="5100e-189">Por ejemplo, toospecify si se implementa una nueva cuenta de almacenamiento o se utiliza una cuenta de almacenamiento existente, use:</span><span class="sxs-lookup"><span data-stu-id="5100e-189">For example, toospecify whether a new storage account is deployed or an existing storage account is used, use:</span></span>
 
 ```json
 {
@@ -502,11 +502,11 @@ ms.lasthandoff: 07/11/2017
 }
 ```
 
-<span data-ttu-id="41140-190">Para obtener un ejemplo del uso de un recurso nuevo o existente, vea la [plantilla de condición nueva o existente](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResources.NewOrExisting.json).</span><span class="sxs-lookup"><span data-stu-id="41140-190">For an example of using a new or existing resource, see [New or existing condition template](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResources.NewOrExisting.json).</span></span>
+<span data-ttu-id="5100e-190">Para obtener un ejemplo del uso de un recurso nuevo o existente, vea la [plantilla de condición nueva o existente](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResources.NewOrExisting.json).</span><span class="sxs-lookup"><span data-stu-id="5100e-190">For an example of using a new or existing resource, see [New or existing condition template](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResources.NewOrExisting.json).</span></span>
 
-<span data-ttu-id="41140-191">Para obtener un ejemplo del uso de una contraseña o clave SSH para implementar la máquina virtual, vea la [plantilla de condición de nombre de usuario o SSH](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResourcesUsernameOrSsh.json).</span><span class="sxs-lookup"><span data-stu-id="41140-191">For an example of using a password or SSH key to deploy virtual machine, see [Username or SSH condition template](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResourcesUsernameOrSsh.json).</span></span>
+<span data-ttu-id="5100e-191">Para obtener un ejemplo del uso de una contraseña o una máquina virtual de toodeploy clave de SSH, consulte [plantilla de condición de nombre de usuario o SSH](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResourcesUsernameOrSsh.json).</span><span class="sxs-lookup"><span data-stu-id="5100e-191">For an example of using a password or SSH key toodeploy virtual machine, see [Username or SSH condition template](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResourcesUsernameOrSsh.json).</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="41140-192">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="41140-192">Next steps</span></span>
-* <span data-ttu-id="41140-193">Para obtener información sobre las secciones de una plantilla, consulte el artículo sobre cómo [crear plantillas de Azure Resource Manager](resource-group-authoring-templates.md).</span><span class="sxs-lookup"><span data-stu-id="41140-193">If you want to learn about the sections of a template, see [Authoring Azure Resource Manager Templates](resource-group-authoring-templates.md).</span></span>
-* <span data-ttu-id="41140-194">Para obtener información sobre cómo implementar la plantilla, consulte [Implementación de una aplicación con la plantilla del Administrador de recursos de Azure](resource-group-template-deploy.md).</span><span class="sxs-lookup"><span data-stu-id="41140-194">To learn how to deploy your template, see [Deploy an application with Azure Resource Manager Template](resource-group-template-deploy.md).</span></span>
+## <a name="next-steps"></a><span data-ttu-id="5100e-192">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="5100e-192">Next steps</span></span>
+* <span data-ttu-id="5100e-193">Si desea toolearn sobre secciones de Hola de una plantilla, consulte [creación de plantillas de administrador de recursos de Azure](resource-group-authoring-templates.md).</span><span class="sxs-lookup"><span data-stu-id="5100e-193">If you want toolearn about hello sections of a template, see [Authoring Azure Resource Manager Templates](resource-group-authoring-templates.md).</span></span>
+* <span data-ttu-id="5100e-194">toolearn cómo toodeploy la plantilla, vea [implementar una aplicación con la plantilla de administrador de recursos de Azure](resource-group-template-deploy.md).</span><span class="sxs-lookup"><span data-stu-id="5100e-194">toolearn how toodeploy your template, see [Deploy an application with Azure Resource Manager Template](resource-group-template-deploy.md).</span></span>
 

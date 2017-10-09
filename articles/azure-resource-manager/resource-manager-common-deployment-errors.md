@@ -1,13 +1,13 @@
 ---
-title: "Solución de errores comunes de implementación de Azure | Microsoft Docs"
-description: "Describe cómo solucionar errores comunes al implementar recursos en Azure con Azure Resource Manager."
+title: "aaaTroubleshoot los errores comunes de la implementación de Azure | Documentos de Microsoft"
+description: "Describe cómo tooresolve errores comunes al implementar tooAzure de recursos con el Administrador de recursos de Azure."
 services: azure-resource-manager
 documentationcenter: 
 tags: top-support-issue
 author: tfitzmac
 manager: timlt
 editor: tysonn
-keywords: "error de implementación, implementación de Azure, implementar en Azure"
+keywords: "error de implementación, implementación de azure, implementar tooazure"
 ms.assetid: c002a9be-4de5-4963-bd14-b54aa3d8fa59
 ms.service: azure-resource-manager
 ms.devlang: na
@@ -16,61 +16,61 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/17/2017
 ms.author: tomfitz
-ms.openlocfilehash: 30adc10d01290f14a3e116813b19916fa36ab0bc
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 8571e9941879eb5586e4258a785b6a09247da771
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a><span data-ttu-id="26448-104">Solución de errores comunes de implementación de Azure con Azure Resource Manager</span><span class="sxs-lookup"><span data-stu-id="26448-104">Troubleshoot common Azure deployment errors with Azure Resource Manager</span></span>
-<span data-ttu-id="26448-105">En este tema se describe cómo resolver algunos errores comunes con los que puede encontrarse al realizar una implementación de Azure.</span><span class="sxs-lookup"><span data-stu-id="26448-105">This topic describes how you can resolve some common Azure deployment errors you may encounter.</span></span>
+# <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a><span data-ttu-id="5cdd1-104">Solución de errores comunes de implementación de Azure con Azure Resource Manager</span><span class="sxs-lookup"><span data-stu-id="5cdd1-104">Troubleshoot common Azure deployment errors with Azure Resource Manager</span></span>
+<span data-ttu-id="5cdd1-105">En este tema se describe cómo resolver algunos errores comunes con los que puede encontrarse al realizar una implementación de Azure.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-105">This topic describes how you can resolve some common Azure deployment errors you may encounter.</span></span>
 
-<span data-ttu-id="26448-106">En este tema se describen los códigos de error siguientes:</span><span class="sxs-lookup"><span data-stu-id="26448-106">The following error codes are described in this topic:</span></span>
+<span data-ttu-id="5cdd1-106">Hola siguientes códigos de error se describe en este tema:</span><span class="sxs-lookup"><span data-stu-id="5cdd1-106">hello following error codes are described in this topic:</span></span>
 
-* [<span data-ttu-id="26448-107">AccountNameInvalid</span><span class="sxs-lookup"><span data-stu-id="26448-107">AccountNameInvalid</span></span>](#accountnameinvalid)
-* [<span data-ttu-id="26448-108">Error de autorización</span><span class="sxs-lookup"><span data-stu-id="26448-108">Authorization failed</span></span>](#authorization-failed)
-* [<span data-ttu-id="26448-109">BadRequest</span><span class="sxs-lookup"><span data-stu-id="26448-109">BadRequest</span></span>](#badrequest)
-* [<span data-ttu-id="26448-110">DeploymentFailed</span><span class="sxs-lookup"><span data-stu-id="26448-110">DeploymentFailed</span></span>](#deploymentfailed)
-* [<span data-ttu-id="26448-111">DisallowedOperation</span><span class="sxs-lookup"><span data-stu-id="26448-111">DisallowedOperation</span></span>](#disallowedoperation)
-* [<span data-ttu-id="26448-112">InvalidContentLink</span><span class="sxs-lookup"><span data-stu-id="26448-112">InvalidContentLink</span></span>](#invalidcontentlink)
-* [<span data-ttu-id="26448-113">InvalidTemplate</span><span class="sxs-lookup"><span data-stu-id="26448-113">InvalidTemplate</span></span>](#invalidtemplate)
-* [<span data-ttu-id="26448-114">MissingSubscriptionRegistration</span><span class="sxs-lookup"><span data-stu-id="26448-114">MissingSubscriptionRegistration</span></span>](#noregisteredproviderfound)
-* [<span data-ttu-id="26448-115">NotFound</span><span class="sxs-lookup"><span data-stu-id="26448-115">NotFound</span></span>](#notfound)
-* [<span data-ttu-id="26448-116">NoRegisteredProviderFound</span><span class="sxs-lookup"><span data-stu-id="26448-116">NoRegisteredProviderFound</span></span>](#noregisteredproviderfound)
-* [<span data-ttu-id="26448-117">OperationNotAllowed</span><span class="sxs-lookup"><span data-stu-id="26448-117">OperationNotAllowed</span></span>](#quotaexceeded)
-* [<span data-ttu-id="26448-118">ParentResourceNotFound</span><span class="sxs-lookup"><span data-stu-id="26448-118">ParentResourceNotFound</span></span>](#parentresourcenotfound)
-* [<span data-ttu-id="26448-119">QuotaExceeded</span><span class="sxs-lookup"><span data-stu-id="26448-119">QuotaExceeded</span></span>](#quotaexceeded)
-* [<span data-ttu-id="26448-120">RequestDisallowedByPolicy</span><span class="sxs-lookup"><span data-stu-id="26448-120">RequestDisallowedByPolicy</span></span>](#requestdisallowedbypolicy)
-* [<span data-ttu-id="26448-121">ResourceNotFound</span><span class="sxs-lookup"><span data-stu-id="26448-121">ResourceNotFound</span></span>](#notfound)
-* [<span data-ttu-id="26448-122">SkuNotAvailable</span><span class="sxs-lookup"><span data-stu-id="26448-122">SkuNotAvailable</span></span>](#skunotavailable)
-* [<span data-ttu-id="26448-123">StorageAccountAlreadyExists</span><span class="sxs-lookup"><span data-stu-id="26448-123">StorageAccountAlreadyExists</span></span>](#storagenamenotunique)
-* [<span data-ttu-id="26448-124">StorageAccountAlreadyTaken</span><span class="sxs-lookup"><span data-stu-id="26448-124">StorageAccountAlreadyTaken</span></span>](#storagenamenotunique)
+* [<span data-ttu-id="5cdd1-107">AccountNameInvalid</span><span class="sxs-lookup"><span data-stu-id="5cdd1-107">AccountNameInvalid</span></span>](#accountnameinvalid)
+* [<span data-ttu-id="5cdd1-108">Error de autorización</span><span class="sxs-lookup"><span data-stu-id="5cdd1-108">Authorization failed</span></span>](#authorization-failed)
+* [<span data-ttu-id="5cdd1-109">BadRequest</span><span class="sxs-lookup"><span data-stu-id="5cdd1-109">BadRequest</span></span>](#badrequest)
+* [<span data-ttu-id="5cdd1-110">DeploymentFailed</span><span class="sxs-lookup"><span data-stu-id="5cdd1-110">DeploymentFailed</span></span>](#deploymentfailed)
+* [<span data-ttu-id="5cdd1-111">DisallowedOperation</span><span class="sxs-lookup"><span data-stu-id="5cdd1-111">DisallowedOperation</span></span>](#disallowedoperation)
+* [<span data-ttu-id="5cdd1-112">InvalidContentLink</span><span class="sxs-lookup"><span data-stu-id="5cdd1-112">InvalidContentLink</span></span>](#invalidcontentlink)
+* [<span data-ttu-id="5cdd1-113">InvalidTemplate</span><span class="sxs-lookup"><span data-stu-id="5cdd1-113">InvalidTemplate</span></span>](#invalidtemplate)
+* [<span data-ttu-id="5cdd1-114">MissingSubscriptionRegistration</span><span class="sxs-lookup"><span data-stu-id="5cdd1-114">MissingSubscriptionRegistration</span></span>](#noregisteredproviderfound)
+* [<span data-ttu-id="5cdd1-115">NotFound</span><span class="sxs-lookup"><span data-stu-id="5cdd1-115">NotFound</span></span>](#notfound)
+* [<span data-ttu-id="5cdd1-116">NoRegisteredProviderFound</span><span class="sxs-lookup"><span data-stu-id="5cdd1-116">NoRegisteredProviderFound</span></span>](#noregisteredproviderfound)
+* [<span data-ttu-id="5cdd1-117">OperationNotAllowed</span><span class="sxs-lookup"><span data-stu-id="5cdd1-117">OperationNotAllowed</span></span>](#quotaexceeded)
+* [<span data-ttu-id="5cdd1-118">ParentResourceNotFound</span><span class="sxs-lookup"><span data-stu-id="5cdd1-118">ParentResourceNotFound</span></span>](#parentresourcenotfound)
+* [<span data-ttu-id="5cdd1-119">QuotaExceeded</span><span class="sxs-lookup"><span data-stu-id="5cdd1-119">QuotaExceeded</span></span>](#quotaexceeded)
+* [<span data-ttu-id="5cdd1-120">RequestDisallowedByPolicy</span><span class="sxs-lookup"><span data-stu-id="5cdd1-120">RequestDisallowedByPolicy</span></span>](#requestdisallowedbypolicy)
+* [<span data-ttu-id="5cdd1-121">ResourceNotFound</span><span class="sxs-lookup"><span data-stu-id="5cdd1-121">ResourceNotFound</span></span>](#notfound)
+* [<span data-ttu-id="5cdd1-122">SkuNotAvailable</span><span class="sxs-lookup"><span data-stu-id="5cdd1-122">SkuNotAvailable</span></span>](#skunotavailable)
+* [<span data-ttu-id="5cdd1-123">StorageAccountAlreadyExists</span><span class="sxs-lookup"><span data-stu-id="5cdd1-123">StorageAccountAlreadyExists</span></span>](#storagenamenotunique)
+* [<span data-ttu-id="5cdd1-124">StorageAccountAlreadyTaken</span><span class="sxs-lookup"><span data-stu-id="5cdd1-124">StorageAccountAlreadyTaken</span></span>](#storagenamenotunique)
 
-## <a name="deploymentfailed"></a><span data-ttu-id="26448-125">DeploymentFailed</span><span class="sxs-lookup"><span data-stu-id="26448-125">DeploymentFailed</span></span>
+## <a name="deploymentfailed"></a><span data-ttu-id="5cdd1-125">DeploymentFailed</span><span class="sxs-lookup"><span data-stu-id="5cdd1-125">DeploymentFailed</span></span>
 
-<span data-ttu-id="26448-126">Este código de error indica un error de implementación general, pero no es el código de error que necesita para empezar a solucionar problemas.</span><span class="sxs-lookup"><span data-stu-id="26448-126">This error code indicates a general deployment error, but it is not the error code you need to start troubleshooting.</span></span> <span data-ttu-id="26448-127">El código de error que realmente le ayuda a resolver el problema suele estar un nivel por debajo de este error.</span><span class="sxs-lookup"><span data-stu-id="26448-127">The error code that actually helps you resolve the issue is usually one level below this error.</span></span> <span data-ttu-id="26448-128">Por ejemplo, la siguiente imagen muestra el código de error **RequestDisallowedByPolicy** que se encuentra debajo del error de implementación.</span><span class="sxs-lookup"><span data-stu-id="26448-128">For example, the following image shows the **RequestDisallowedByPolicy** error code that is under the deployment error.</span></span>
+<span data-ttu-id="5cdd1-126">Este código de error indica un error de implementación general, pero no es código de error de Hola que necesita toostart solución de problemas.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-126">This error code indicates a general deployment error, but it is not hello error code you need toostart troubleshooting.</span></span> <span data-ttu-id="5cdd1-127">código de error de Hola que realmente le ayuda a resolver el problema de hello suele ser un nivel por debajo de este error.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-127">hello error code that actually helps you resolve hello issue is usually one level below this error.</span></span> <span data-ttu-id="5cdd1-128">Por ejemplo, hello siguiente imagen muestra hello **RequestDisallowedByPolicy** código de error que está por debajo del error de implementación de Hola.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-128">For example, hello following image shows hello **RequestDisallowedByPolicy** error code that is under hello deployment error.</span></span>
 
 ![Visualización del código de error](./media/resource-manager-common-deployment-errors/error-code.png)
 
-## <a name="skunotavailable"></a><span data-ttu-id="26448-130">SkuNotAvailable</span><span class="sxs-lookup"><span data-stu-id="26448-130">SkuNotAvailable</span></span>
+## <a name="skunotavailable"></a><span data-ttu-id="5cdd1-130">SkuNotAvailable</span><span class="sxs-lookup"><span data-stu-id="5cdd1-130">SkuNotAvailable</span></span>
 
-<span data-ttu-id="26448-131">Al implementar un recurso (normalmente una máquina virtual), puede recibir el siguiente código y mensaje de error:</span><span class="sxs-lookup"><span data-stu-id="26448-131">When deploying a resource (typically a virtual machine), you may receive the following error code and error message:</span></span>
+<span data-ttu-id="5cdd1-131">Al implementar un recurso (normalmente una máquina virtual), puede recibir Hola mensaje de error y de código de error siguiente:</span><span class="sxs-lookup"><span data-stu-id="5cdd1-131">When deploying a resource (typically a virtual machine), you may receive hello following error code and error message:</span></span>
 
 ```
 Code: SkuNotAvailable
-Message: The requested tier for resource '<resource>' is currently not available in location '<location>' 
-for subscription '<subscriptionID>'. Please try another tier or deploy to a different location.
+Message: hello requested tier for resource '<resource>' is currently not available in location '<location>' 
+for subscription '<subscriptionID>'. Please try another tier or deploy tooa different location.
 ```
 
-<span data-ttu-id="26448-132">Recibirá este error si la SKU del recurso que ha seleccionado (como, por ejemplo, el tamaño de máquina virtual) no está disponible para la ubicación seleccionada.</span><span class="sxs-lookup"><span data-stu-id="26448-132">You receive this error when the resource SKU you have selected (such as VM size) is not available for the location you have selected.</span></span> <span data-ttu-id="26448-133">Para resolver este problema, debe determinar qué SKU están disponibles en una región.</span><span class="sxs-lookup"><span data-stu-id="26448-133">To resolve this issue, you need to determine which SKUs are available in a region.</span></span> <span data-ttu-id="26448-134">Puede usar PowerShell, el portal o una operación REST para buscar las SKU disponibles.</span><span class="sxs-lookup"><span data-stu-id="26448-134">You can use PowerShell, the portal, or a REST operation to find available SKUs.</span></span>
+<span data-ttu-id="5cdd1-132">Recibirá este error cuando el recurso de hello SKU que seleccionó (por ejemplo, el tamaño de máquina virtual) no está disponible para la ubicación de Hola que seleccionó.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-132">You receive this error when hello resource SKU you have selected (such as VM size) is not available for hello location you have selected.</span></span> <span data-ttu-id="5cdd1-133">tooresolve este problema, necesita toodetermine que SKU están disponibles en una región.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-133">tooresolve this issue, you need toodetermine which SKUs are available in a region.</span></span> <span data-ttu-id="5cdd1-134">También puede usar PowerShell, portal de Hola o un toofind de operación de resto SKU disponibles.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-134">You can use PowerShell, hello portal, or a REST operation toofind available SKUs.</span></span>
 
-- <span data-ttu-id="26448-135">Para PowerShell, use [Get-AzureRmComputeResourceSku](/powershell/module/azurerm.compute/get-azurermcomputeresourcesku) y filtre por ubicación.</span><span class="sxs-lookup"><span data-stu-id="26448-135">For PowerShell, use [Get-AzureRmComputeResourceSku](/powershell/module/azurerm.compute/get-azurermcomputeresourcesku) and filter by location.</span></span> <span data-ttu-id="26448-136">Debe tener la versión más reciente de PowerShell para que funcione este comando.</span><span class="sxs-lookup"><span data-stu-id="26448-136">You must have the latest version of PowerShell for this command.</span></span>
+- <span data-ttu-id="5cdd1-135">Para PowerShell, use [Get-AzureRmComputeResourceSku](/powershell/module/azurerm.compute/get-azurermcomputeresourcesku) y filtre por ubicación.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-135">For PowerShell, use [Get-AzureRmComputeResourceSku](/powershell/module/azurerm.compute/get-azurermcomputeresourcesku) and filter by location.</span></span> <span data-ttu-id="5cdd1-136">Debe tener la versión más reciente de Hola de PowerShell para este comando.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-136">You must have hello latest version of PowerShell for this command.</span></span>
 
   ```powershell
   Get-AzureRmComputeResourceSku | where {$_.Locations.Contains("southcentralus")}
   ```
 
-  <span data-ttu-id="26448-137">Los resultados incluyen una lista de SKU para la ubicación y las restricciones de esas SKU.</span><span class="sxs-lookup"><span data-stu-id="26448-137">The results include a list of SKUs for the location and any restrictions for that SKU.</span></span>
+  <span data-ttu-id="5cdd1-137">resultados de Hello incluyen una lista de SKU para la ubicación de Hola y las restricciones para esa SKU.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-137">hello results include a list of SKUs for hello location and any restrictions for that SKU.</span></span>
 
   ```powershell
   ResourceType                Name      Locations Restriction                      Capability Value
@@ -82,18 +82,18 @@ for subscription '<subscriptionID>'. Please try another tier or deploy to a diff
   virtualMachines      Standard_A2 southcentralus
   ```
 
-- <span data-ttu-id="26448-138">Para usar el [portal](https://portal.azure.com), inicie sesión en el portal y agregue un recurso mediante la interfaz.</span><span class="sxs-lookup"><span data-stu-id="26448-138">To use the [portal](https://portal.azure.com), log in to the portal and add a resource through the interface.</span></span> <span data-ttu-id="26448-139">A medida que establezca los valores, verá las SKU disponibles para ese recurso.</span><span class="sxs-lookup"><span data-stu-id="26448-139">As you set the values, you see the available SKUs for that resource.</span></span> <span data-ttu-id="26448-140">No tiene que completar la implementación.</span><span class="sxs-lookup"><span data-stu-id="26448-140">You do not need to complete the deployment.</span></span>
+- <span data-ttu-id="5cdd1-138">Hola toouse [portal](https://portal.azure.com), inicie sesión en el portal de toohello y agregue un recurso a través de la interfaz de Hola.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-138">toouse hello [portal](https://portal.azure.com), log in toohello portal and add a resource through hello interface.</span></span> <span data-ttu-id="5cdd1-139">Cuando se establecen valores de hello, vea Hola SKU disponibles para ese recurso.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-139">As you set hello values, you see hello available SKUs for that resource.</span></span> <span data-ttu-id="5cdd1-140">No es necesario toocomplete implementación de Hola.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-140">You do not need toocomplete hello deployment.</span></span>
 
     ![SKU disponibles](./media/resource-manager-common-deployment-errors/view-sku.png)
 
-- <span data-ttu-id="26448-142">Para usar la API de REST para máquinas virtuales, envíe la solicitud siguiente:</span><span class="sxs-lookup"><span data-stu-id="26448-142">To use the REST API for virtual machines, send the following request:</span></span>
+- <span data-ttu-id="5cdd1-142">Hola toouse API de REST para máquinas virtuales, enviar Hola después de solicitud:</span><span class="sxs-lookup"><span data-stu-id="5cdd1-142">toouse hello REST API for virtual machines, send hello following request:</span></span>
 
   ```HTTP 
   GET
   https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Compute/skus?api-version=2016-03-30
   ```
 
-  <span data-ttu-id="26448-143">Se devuelven las SKU y las regiones disponibles en el formato siguiente:</span><span class="sxs-lookup"><span data-stu-id="26448-143">It returns available SKUs and regions in the following format:</span></span>
+  <span data-ttu-id="5cdd1-143">Devuelve disponible SKU y regiones en hello siguiendo el formato:</span><span class="sxs-lookup"><span data-stu-id="5cdd1-143">It returns available SKUs and regions in hello following format:</span></span>
 
   ```json
   {
@@ -123,75 +123,75 @@ for subscription '<subscriptionID>'. Please try another tier or deploy to a diff
   }    
   ```
 
-<span data-ttu-id="26448-144">Si no puede encontrar una SKU adecuada en esa región ni en ninguna región alternativa que satisfaga las necesidades de su negocio, envíe una [solicitud de SKU](https://aka.ms/skurestriction) al soporte técnico de Azure.</span><span class="sxs-lookup"><span data-stu-id="26448-144">If you are unable to find a suitable SKU in that region or an alternative region that meets your business needs, submit a [SKU request](https://aka.ms/skurestriction) to Azure Support.</span></span>
+<span data-ttu-id="5cdd1-144">Si no se puede toofind una SKU adecuada en dicha región o una región alternativa que satisfaga sus necesidades empresariales, enviar un [solicitud SKU](https://aka.ms/skurestriction) tooAzure soporte técnico.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-144">If you are unable toofind a suitable SKU in that region or an alternative region that meets your business needs, submit a [SKU request](https://aka.ms/skurestriction) tooAzure Support.</span></span>
 
-## <a name="disallowedoperation"></a><span data-ttu-id="26448-145">DisallowedOperation</span><span class="sxs-lookup"><span data-stu-id="26448-145">DisallowedOperation</span></span>
+## <a name="disallowedoperation"></a><span data-ttu-id="5cdd1-145">DisallowedOperation</span><span class="sxs-lookup"><span data-stu-id="5cdd1-145">DisallowedOperation</span></span>
 
 ```
 Code: DisallowedOperation
-Message: The current subscription type is not permitted to perform operations on any provider 
+Message: hello current subscription type is not permitted tooperform operations on any provider 
 namespace. Please use a different subscription.
 ```
 
-<span data-ttu-id="26448-146">Si recibe este error es que está usando una suscripción a la que no se le permite acceder a ningún servicio de Azure, excepto a Azure Active Directory.</span><span class="sxs-lookup"><span data-stu-id="26448-146">If you receive this error, you are using a subscription that is not permitted to access any Azure services other than Azure Active Directory.</span></span> <span data-ttu-id="26448-147">Puede tener este tipo de suscripción si necesita acceder al portal clásico, pero no se le permitirá implementar recursos.</span><span class="sxs-lookup"><span data-stu-id="26448-147">You might have this type of subscription when you need to access the classic portal but are not permitted to deploy resources.</span></span> <span data-ttu-id="26448-148">Para resolver este problema, debe usar una suscripción que tenga permiso para implementar recursos.</span><span class="sxs-lookup"><span data-stu-id="26448-148">To resolve this issue, you must use a subscription that has permission to deploy resources.</span></span>  
+<span data-ttu-id="5cdd1-146">Si recibe este error, usa una suscripción que no está permitido tooaccess los servicios de Azure que no sea de Azure Active Directory.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-146">If you receive this error, you are using a subscription that is not permitted tooaccess any Azure services other than Azure Active Directory.</span></span> <span data-ttu-id="5cdd1-147">Cuando se necesita el portal clásico de hello tooaccess pero no se permiten toodeploy recursos tendrá este tipo de suscripción.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-147">You might have this type of subscription when you need tooaccess hello classic portal but are not permitted toodeploy resources.</span></span> <span data-ttu-id="5cdd1-148">tooresolve este problema, debe usar una suscripción que disponga de permisos de los recursos toodeploy.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-148">tooresolve this issue, you must use a subscription that has permission toodeploy resources.</span></span>  
 
-<span data-ttu-id="26448-149">Para ver las suscripciones disponibles con PowerShell, use:</span><span class="sxs-lookup"><span data-stu-id="26448-149">To view your available subscriptions with PowerShell, use:</span></span>
+<span data-ttu-id="5cdd1-149">tooview las suscripciones disponibles con PowerShell, use:</span><span class="sxs-lookup"><span data-stu-id="5cdd1-149">tooview your available subscriptions with PowerShell, use:</span></span>
 
 ```powershell
 Get-AzureRmSubscription
 ```
 
-<span data-ttu-id="26448-150">Y, para establecer la suscripción actual, use:</span><span class="sxs-lookup"><span data-stu-id="26448-150">And, to set the current subscription, use:</span></span>
+<span data-ttu-id="5cdd1-150">Y suscripción actual tooset hello, use:</span><span class="sxs-lookup"><span data-stu-id="5cdd1-150">And, tooset hello current subscription, use:</span></span>
 
 ```powershell
 Set-AzureRmContext -SubscriptionName {subscription-name}
 ```
 
-<span data-ttu-id="26448-151">Para ver las suscripciones disponibles con la CLI de Azure 2.0, use:</span><span class="sxs-lookup"><span data-stu-id="26448-151">To view your available subscriptions with Azure CLI 2.0, use:</span></span>
+<span data-ttu-id="5cdd1-151">tooview las suscripciones disponibles con CLI de Azure 2.0, use:</span><span class="sxs-lookup"><span data-stu-id="5cdd1-151">tooview your available subscriptions with Azure CLI 2.0, use:</span></span>
 
 ```azurecli
 az account list
 ```
 
-<span data-ttu-id="26448-152">Y, para establecer la suscripción actual, use:</span><span class="sxs-lookup"><span data-stu-id="26448-152">And, to set the current subscription, use:</span></span>
+<span data-ttu-id="5cdd1-152">Y suscripción actual tooset hello, use:</span><span class="sxs-lookup"><span data-stu-id="5cdd1-152">And, tooset hello current subscription, use:</span></span>
 
 ```azurecli
 az account set --subscription {subscription-name}
 ```
 
-## <a name="invalidtemplate"></a><span data-ttu-id="26448-153">InvalidTemplate</span><span class="sxs-lookup"><span data-stu-id="26448-153">InvalidTemplate</span></span>
-<span data-ttu-id="26448-154">Este error puede tener distintos orígenes.</span><span class="sxs-lookup"><span data-stu-id="26448-154">This error can result from several different types of errors.</span></span>
+## <a name="invalidtemplate"></a><span data-ttu-id="5cdd1-153">InvalidTemplate</span><span class="sxs-lookup"><span data-stu-id="5cdd1-153">InvalidTemplate</span></span>
+<span data-ttu-id="5cdd1-154">Este error puede tener distintos orígenes.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-154">This error can result from several different types of errors.</span></span>
 
-- <span data-ttu-id="26448-155">Error de sintaxis</span><span class="sxs-lookup"><span data-stu-id="26448-155">Syntax error</span></span>
+- <span data-ttu-id="5cdd1-155">Error de sintaxis</span><span class="sxs-lookup"><span data-stu-id="5cdd1-155">Syntax error</span></span>
 
-   <span data-ttu-id="26448-156">Si recibe un mensaje de error que indica que la plantilla no superó la validación, puede que esta tenga un problema de sintaxis.</span><span class="sxs-lookup"><span data-stu-id="26448-156">If you receive an error message that indicates the template failed validation, you may have a syntax problem in your template.</span></span>
+   <span data-ttu-id="5cdd1-156">Si recibe un mensaje de error que indica la validación de la plantilla no se pudo de hello, puede tener un problema de sintaxis en la plantilla.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-156">If you receive an error message that indicates hello template failed validation, you may have a syntax problem in your template.</span></span>
 
   ```
   Code=InvalidTemplate
   Message=Deployment template validation failed
   ```
 
-   <span data-ttu-id="26448-157">Es fácil cometer este error porque las expresiones de plantilla pueden ser complejas.</span><span class="sxs-lookup"><span data-stu-id="26448-157">This error is easy to make because template expressions can be intricate.</span></span> <span data-ttu-id="26448-158">Por ejemplo, la siguiente asignación de nombre de una cuenta de almacenamiento contiene un conjunto de corchetes, tres funciones, tres conjuntos de paréntesis, un conjunto de comillas simples y una propiedad:</span><span class="sxs-lookup"><span data-stu-id="26448-158">For example, the following name assignment for a storage account contains one set of brackets, three functions, three sets of parentheses, one set of single quotes, and one property:</span></span>
+   <span data-ttu-id="5cdd1-157">Este error es fácil toomake porque las expresiones de plantilla pueden ser complejas.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-157">This error is easy toomake because template expressions can be intricate.</span></span> <span data-ttu-id="5cdd1-158">Por ejemplo, hello siguiente asignación de nombre de una cuenta de almacenamiento contiene un conjunto de corchetes, tres funciones, tres conjuntos de paréntesis, un conjunto de comillas simples y una propiedad:</span><span class="sxs-lookup"><span data-stu-id="5cdd1-158">For example, hello following name assignment for a storage account contains one set of brackets, three functions, three sets of parentheses, one set of single quotes, and one property:</span></span>
 
   ```json
   "name": "[concat('storage', uniqueString(resourceGroup().id))]",
   ```
 
-   <span data-ttu-id="26448-159">Si no proporciona toda la sintaxis de coincidencia, la plantilla generará un valor que será diferente del que esperaba.</span><span class="sxs-lookup"><span data-stu-id="26448-159">If you do not provide the matching syntax, the template produces a value that is different than your intention.</span></span>
+   <span data-ttu-id="5cdd1-159">Si no proporciona la sintaxis de coincidencia de hello, plantilla de hello genera un valor que es diferente de su intención.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-159">If you do not provide hello matching syntax, hello template produces a value that is different than your intention.</span></span>
 
-   <span data-ttu-id="26448-160">Si recibe este tipo de error, revise cuidadosamente la sintaxis de las expresiones.</span><span class="sxs-lookup"><span data-stu-id="26448-160">When you receive this type of error, carefully review the expression syntax.</span></span> <span data-ttu-id="26448-161">Considere la posibilidad de utilizar un editor JSON como [Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) o [Visual Studio Code](resource-manager-vs-code.md) que puede avisarlo de los errores de sintaxis.</span><span class="sxs-lookup"><span data-stu-id="26448-161">Consider using a JSON editor like [Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) or [Visual Studio Code](resource-manager-vs-code.md), which can warn you about syntax errors.</span></span>
+   <span data-ttu-id="5cdd1-160">Cuando reciba este tipo de error, revise cuidadosamente la sintaxis de expresiones de Hola.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-160">When you receive this type of error, carefully review hello expression syntax.</span></span> <span data-ttu-id="5cdd1-161">Considere la posibilidad de utilizar un editor JSON como [Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) o [Visual Studio Code](resource-manager-vs-code.md) que puede avisarlo de los errores de sintaxis.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-161">Consider using a JSON editor like [Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) or [Visual Studio Code](resource-manager-vs-code.md), which can warn you about syntax errors.</span></span>
 
-- <span data-ttu-id="26448-162">Longitudes de segmentos incorrectas</span><span class="sxs-lookup"><span data-stu-id="26448-162">Incorrect segment lengths</span></span>
+- <span data-ttu-id="5cdd1-162">Longitudes de segmentos incorrectas</span><span class="sxs-lookup"><span data-stu-id="5cdd1-162">Incorrect segment lengths</span></span>
 
-   <span data-ttu-id="26448-163">Cuando el nombre del recurso no tiene el formato correcto, se produce otro error de plantilla no válida.</span><span class="sxs-lookup"><span data-stu-id="26448-163">Another invalid template error occurs when the resource name is not in the correct format.</span></span>
+   <span data-ttu-id="5cdd1-163">Cuando el nombre del recurso de hello no está en formato correcto de hello, se produce otro error de plantilla no válido.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-163">Another invalid template error occurs when hello resource name is not in hello correct format.</span></span>
 
   ```
   Code=InvalidTemplate
-  Message=Deployment template validation failed: 'The template resource {resource-name}'
+  Message=Deployment template validation failed: 'hello template resource {resource-name}'
   for type {resource-type} has incorrect segment lengths.
   ```
 
-   <span data-ttu-id="26448-164">Un recurso de nivel de raíz debe tener un segmento menos en el nombre que en el tipo de recurso.</span><span class="sxs-lookup"><span data-stu-id="26448-164">A root level resource must have one less segment in the name than in the resource type.</span></span> <span data-ttu-id="26448-165">Cada segmento se distingue por una barra diagonal.</span><span class="sxs-lookup"><span data-stu-id="26448-165">Each segment is differentiated by a slash.</span></span> <span data-ttu-id="26448-166">En el ejemplo siguiente, el tipo tiene 2 segmentos y el nombre, 1, por lo que es un **nombre válido**.</span><span class="sxs-lookup"><span data-stu-id="26448-166">In the following example, the type has two segments and the name has one segment, so it is a **valid name**.</span></span>
+   <span data-ttu-id="5cdd1-164">Un recurso de nivel de raíz debe tener un segmento de menos en nombre de Hola que en el tipo de recurso de Hola.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-164">A root level resource must have one less segment in hello name than in hello resource type.</span></span> <span data-ttu-id="5cdd1-165">Cada segmento se distingue por una barra diagonal.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-165">Each segment is differentiated by a slash.</span></span> <span data-ttu-id="5cdd1-166">En el siguiente ejemplo de Hola, tipo de hello tiene dos segmentos y nombre de hello tiene un segmento, por lo que es un **nombre válido**.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-166">In hello following example, hello type has two segments and hello name has one segment, so it is a **valid name**.</span></span>
 
   ```json
   {
@@ -201,7 +201,7 @@ az account set --subscription {subscription-name}
   }
   ```
 
-   <span data-ttu-id="26448-167">Pero el ejemplo siguiente **no es un nombre válido** porque el nombre tiene el mismo número de segmentos que el tipo.</span><span class="sxs-lookup"><span data-stu-id="26448-167">But the next example is **not a valid name** because it has the same number of segments as the type.</span></span>
+   <span data-ttu-id="5cdd1-167">Pero es el siguiente ejemplo de Hola **no es un nombre válido** porque tiene Hola tantos segmentos como tipo hello.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-167">But hello next example is **not a valid name** because it has hello same number of segments as hello type.</span></span>
 
   ```json
   {
@@ -211,7 +211,7 @@ az account set --subscription {subscription-name}
   }
   ```
 
-   <span data-ttu-id="26448-168">Para los recursos secundarios, el tipo y el nombre deben tener el mismo número de segmentos.</span><span class="sxs-lookup"><span data-stu-id="26448-168">For child resources, the type and name have the same number of segments.</span></span> <span data-ttu-id="26448-169">Este número de segmentos tiene sentido, ya que el tipo y el nombre completo del elemento secundario incluyen el tipo y el nombre del elemento primario.</span><span class="sxs-lookup"><span data-stu-id="26448-169">This number of segments makes sense because the full name and type for the child includes the parent name and type.</span></span> <span data-ttu-id="26448-170">Por lo tanto, el nombre completo sigue teniendo un segmento menos que el tipo completo.</span><span class="sxs-lookup"><span data-stu-id="26448-170">Therefore, the full name still has one less segment than the full type.</span></span>
+   <span data-ttu-id="5cdd1-168">Para obtener recursos secundarios, tipo de Hola y el nombre tienen Hola mismo número de segmentos.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-168">For child resources, hello type and name have hello same number of segments.</span></span> <span data-ttu-id="5cdd1-169">Este número de segmentos tiene sentido porque el nombre completo de Hola y el tipo secundario Hola incluye el tipo y el nombre del elemento primario de Hola.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-169">This number of segments makes sense because hello full name and type for hello child includes hello parent name and type.</span></span> <span data-ttu-id="5cdd1-170">Por lo tanto, nombre completo de hello aún tiene un segmento de menos de tipo completo de Hola.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-170">Therefore, hello full name still has one less segment than hello full type.</span></span>
 
   ```json
   "resources": [
@@ -230,7 +230,7 @@ az account set --subscription {subscription-name}
   ]
   ```
 
-   <span data-ttu-id="26448-171">Obtener los segmentos correctos puede resultar complicado con los tipos de Resource Manager que se aplican en los proveedores de recursos.</span><span class="sxs-lookup"><span data-stu-id="26448-171">Getting the segments right can be tricky with Resource Manager types that are applied across resource providers.</span></span> <span data-ttu-id="26448-172">Por ejemplo, para aplicar un bloqueo de recurso a un sitio web, el tipo debe tener 4 segmentos.</span><span class="sxs-lookup"><span data-stu-id="26448-172">For example, applying a resource lock to a web site requires a type with four segments.</span></span> <span data-ttu-id="26448-173">Por lo tanto, el nombre tiene 3 segmentos:</span><span class="sxs-lookup"><span data-stu-id="26448-173">Therefore, the name is three segments:</span></span>
+   <span data-ttu-id="5cdd1-171">Al obtener segmentos Hola derecho pueden ser complicadas con tipos de administrador de recursos que se aplican a través de proveedores de recursos.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-171">Getting hello segments right can be tricky with Resource Manager types that are applied across resource providers.</span></span> <span data-ttu-id="5cdd1-172">Por ejemplo, aplicar un sitio web de recurso bloqueo tooa requiere un tipo con cuatro segmentos.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-172">For example, applying a resource lock tooa web site requires a type with four segments.</span></span> <span data-ttu-id="5cdd1-173">Por lo tanto, el nombre de hello es tres segmentos:</span><span class="sxs-lookup"><span data-stu-id="5cdd1-173">Therefore, hello name is three segments:</span></span>
 
   ```json
   {
@@ -240,37 +240,37 @@ az account set --subscription {subscription-name}
   }
   ```
 
-- <span data-ttu-id="26448-174">Copy index is not expected (Índice de copia no esperado)</span><span class="sxs-lookup"><span data-stu-id="26448-174">Copy index is not expected</span></span>
+- <span data-ttu-id="5cdd1-174">Copy index is not expected (Índice de copia no esperado)</span><span class="sxs-lookup"><span data-stu-id="5cdd1-174">Copy index is not expected</span></span>
 
-   <span data-ttu-id="26448-175">Este error **InvalidTemplate** se produce cuando se ha aplicado el elemento **copy** a una parte de la plantilla que no lo admite.</span><span class="sxs-lookup"><span data-stu-id="26448-175">You encounter this **InvalidTemplate** error when you have applied the **copy** element to a part of the template that does not support this element.</span></span> <span data-ttu-id="26448-176">Solo se puede aplicar el elemento copy a un tipo de recurso.</span><span class="sxs-lookup"><span data-stu-id="26448-176">You can only apply the copy element to a resource type.</span></span> <span data-ttu-id="26448-177">No se puede aplicar el elemento copy a una propiedad de un tipo de recurso.</span><span class="sxs-lookup"><span data-stu-id="26448-177">You cannot apply copy to a property within a resource type.</span></span> <span data-ttu-id="26448-178">Por ejemplo, puede aplicar el elemento copy a una máquina virtual, pero no puede aplicarlo a los discos del sistema operativo de una máquina virtual.</span><span class="sxs-lookup"><span data-stu-id="26448-178">For example, you apply copy to a virtual machine, but you cannot apply it to the OS disks for a virtual machine.</span></span> <span data-ttu-id="26448-179">En algunos casos, puede convertir un recurso secundario en un recurso primario para crear un bucle del elemento copy.</span><span class="sxs-lookup"><span data-stu-id="26448-179">In some cases, you can convert a child resource to a parent resource to create a copy loop.</span></span> <span data-ttu-id="26448-180">Para más información sobre cómo usar este elemento, consulte [Creación de varias instancias de recursos en Azure Resource Manager](resource-group-create-multiple.md).</span><span class="sxs-lookup"><span data-stu-id="26448-180">For more information about using copy, see [Create multiple instances of resources in Azure Resource Manager](resource-group-create-multiple.md).</span></span>
+   <span data-ttu-id="5cdd1-175">Esto ocurre **InvalidTemplate** error cuando se haya aplicado hello **copia** tooa parte del elemento de plantilla de Hola que no admite este elemento.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-175">You encounter this **InvalidTemplate** error when you have applied hello **copy** element tooa part of hello template that does not support this element.</span></span> <span data-ttu-id="5cdd1-176">Sólo puede aplicar el tipo de recurso de hello copiar elemento tooa.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-176">You can only apply hello copy element tooa resource type.</span></span> <span data-ttu-id="5cdd1-177">No se puede aplicar copia tooa propiedad dentro de un tipo de recurso.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-177">You cannot apply copy tooa property within a resource type.</span></span> <span data-ttu-id="5cdd1-178">Por ejemplo, aplicar copia tooa virtual machine, pero no se puede aplicar toohello OS discos para una máquina virtual.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-178">For example, you apply copy tooa virtual machine, but you cannot apply it toohello OS disks for a virtual machine.</span></span> <span data-ttu-id="5cdd1-179">En algunos casos, puede convertir un recurso de primario de secundarios recursos tooa toocreate un bucle de copia.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-179">In some cases, you can convert a child resource tooa parent resource toocreate a copy loop.</span></span> <span data-ttu-id="5cdd1-180">Para más información sobre cómo usar este elemento, consulte [Creación de varias instancias de recursos en Azure Resource Manager](resource-group-create-multiple.md).</span><span class="sxs-lookup"><span data-stu-id="5cdd1-180">For more information about using copy, see [Create multiple instances of resources in Azure Resource Manager](resource-group-create-multiple.md).</span></span>
 
-- <span data-ttu-id="26448-181">El parámetro no es válido</span><span class="sxs-lookup"><span data-stu-id="26448-181">Parameter is not valid</span></span>
+- <span data-ttu-id="5cdd1-181">El parámetro no es válido</span><span class="sxs-lookup"><span data-stu-id="5cdd1-181">Parameter is not valid</span></span>
 
-   <span data-ttu-id="26448-182">Si la plantilla especifica los valores permitidos de un parámetro y proporciona un valor que no es uno de esos, recibirá un mensaje similar al siguiente error:</span><span class="sxs-lookup"><span data-stu-id="26448-182">If the template specifies permitted values for a parameter, and you provide a value that is not one of those values, you receive a message similar to the following error:</span></span>
+   <span data-ttu-id="5cdd1-182">Si plantilla Hola especifica los valores permitidos para un parámetro y proporciona un valor que no es uno de esos valores, recibirá un toohello similar de mensaje siguiente error:</span><span class="sxs-lookup"><span data-stu-id="5cdd1-182">If hello template specifies permitted values for a parameter, and you provide a value that is not one of those values, you receive a message similar toohello following error:</span></span>
 
   ```
   Code=InvalidTemplate;
-  Message=Deployment template validation failed: 'The provided value {parameter value}
-  for the template parameter {parameter name} is not valid. The parameter value is not
-  part of the allowed values
+  Message=Deployment template validation failed: 'hello provided value {parameter value}
+  for hello template parameter {parameter name} is not valid. hello parameter value is not
+  part of hello allowed values
   ``` 
 
-   <span data-ttu-id="26448-183">Compruebe los valores permitidos de la plantilla y proporcione uno durante la implementación.</span><span class="sxs-lookup"><span data-stu-id="26448-183">Double check the allowed values in the template, and provide one during deployment.</span></span>
+   <span data-ttu-id="5cdd1-183">Vuelve a revisar Hola valores permitidos en la plantilla de Hola y proporcionar una durante la implementación.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-183">Double check hello allowed values in hello template, and provide one during deployment.</span></span>
 
-- <span data-ttu-id="26448-184">Se detectó una dependencia circular</span><span class="sxs-lookup"><span data-stu-id="26448-184">Circular dependency detected</span></span>
+- <span data-ttu-id="5cdd1-184">Se detectó una dependencia circular</span><span class="sxs-lookup"><span data-stu-id="5cdd1-184">Circular dependency detected</span></span>
 
-   <span data-ttu-id="26448-185">Este error se recibe cuando los recursos dependen unos de otros de una forma que impide que se inicie la implementación.</span><span class="sxs-lookup"><span data-stu-id="26448-185">You receive this error when resources depend on each other in a way that prevents the deployment from starting.</span></span> <span data-ttu-id="26448-186">Una combinación de interdependencias hace que dos o más recursos esperen otros recursos que también están esperando.</span><span class="sxs-lookup"><span data-stu-id="26448-186">A combination of interdependencies makes two or more resource wait for other resources that are also waiting.</span></span> <span data-ttu-id="26448-187">Por ejemplo, resource1 depende de resource3, resource2 depende de resource1 y resource3 depende de resource2.</span><span class="sxs-lookup"><span data-stu-id="26448-187">For example, resource1 depends on resource3, resource2 depends on resource1, and resource3 depends on resource2.</span></span> <span data-ttu-id="26448-188">Para resolver este problema, normalmente se eliminan las dependencias innecesarias.</span><span class="sxs-lookup"><span data-stu-id="26448-188">You can usually solve this problem by removing unnecessary dependencies.</span></span> 
+   <span data-ttu-id="5cdd1-185">Recibirá este error cuando recursos dependen de ellos de forma que impide la implementación de Hola se inicie.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-185">You receive this error when resources depend on each other in a way that prevents hello deployment from starting.</span></span> <span data-ttu-id="5cdd1-186">Una combinación de interdependencias hace que dos o más recursos esperen otros recursos que también están esperando.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-186">A combination of interdependencies makes two or more resource wait for other resources that are also waiting.</span></span> <span data-ttu-id="5cdd1-187">Por ejemplo, resource1 depende de resource3, resource2 depende de resource1 y resource3 depende de resource2.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-187">For example, resource1 depends on resource3, resource2 depends on resource1, and resource3 depends on resource2.</span></span> <span data-ttu-id="5cdd1-188">Para resolver este problema, normalmente se eliminan las dependencias innecesarias.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-188">You can usually solve this problem by removing unnecessary dependencies.</span></span> 
 
 <a id="notfound" />
-### <a name="notfound-and-resourcenotfound"></a><span data-ttu-id="26448-189">NotFound y ResourceNotFound</span><span class="sxs-lookup"><span data-stu-id="26448-189">NotFound and ResourceNotFound</span></span>
-<span data-ttu-id="26448-190">Cuando la plantilla incluye el nombre de un recurso que no se puede resolver, recibirá un error similar al siguiente:</span><span class="sxs-lookup"><span data-stu-id="26448-190">When your template includes the name of a resource that cannot be resolved, you receive an error similar to:</span></span>
+### <a name="notfound-and-resourcenotfound"></a><span data-ttu-id="5cdd1-189">NotFound y ResourceNotFound</span><span class="sxs-lookup"><span data-stu-id="5cdd1-189">NotFound and ResourceNotFound</span></span>
+<span data-ttu-id="5cdd1-190">Cuando la plantilla incluye nombre Hola de un recurso que no se puede resolver, recibirá un error similar al:</span><span class="sxs-lookup"><span data-stu-id="5cdd1-190">When your template includes hello name of a resource that cannot be resolved, you receive an error similar to:</span></span>
 
 ```
 Code=NotFound;
 Message=Cannot find ServerFarm with name exampleplan.
 ```
 
-<span data-ttu-id="26448-191">Si está tratando de implementar el recurso que falta en la plantilla, compruebe si tiene que agregar una dependencia.</span><span class="sxs-lookup"><span data-stu-id="26448-191">If you are attempting to deploy the missing resource in the template, check whether you need to add a dependency.</span></span> <span data-ttu-id="26448-192">Cuando es posible, Resource Manager optimiza la implementación mediante la creación de recursos en paralelo.</span><span class="sxs-lookup"><span data-stu-id="26448-192">Resource Manager optimizes deployment by creating resources in parallel, when possible.</span></span> <span data-ttu-id="26448-193">Si un recurso se debe implementar después de otro recurso, debe usar el elemento **dependsOn** en la plantilla para crear una dependencia en el otro recurso.</span><span class="sxs-lookup"><span data-stu-id="26448-193">If one resource must be deployed after another resource, you need to use the **dependsOn** element in your template to create a dependency on the other resource.</span></span> <span data-ttu-id="26448-194">Por ejemplo, al implementar una aplicación web, debe existir el plan de Servicio de aplicaciones.</span><span class="sxs-lookup"><span data-stu-id="26448-194">For example, when deploying a web app, the App Service plan must exist.</span></span> <span data-ttu-id="26448-195">Si no ha especificado que la aplicación web dependa del plan de App Service, Resource Manager creará ambos recursos al mismo tiempo.</span><span class="sxs-lookup"><span data-stu-id="26448-195">If you have not specified that the web app depends on the App Service plan, Resource Manager creates both resources at the same time.</span></span> <span data-ttu-id="26448-196">Recibirá un error que indica que no se encuentra el recurso del plan de App Service, porque aún no existe cuando se trata de establecer una propiedad en la aplicación web.</span><span class="sxs-lookup"><span data-stu-id="26448-196">You receive an error stating that the App Service plan resource cannot be found, because it does not exist yet when attempting to set a property on the web app.</span></span> <span data-ttu-id="26448-197">Este error se puede evitar estableciendo la dependencia en la aplicación web.</span><span class="sxs-lookup"><span data-stu-id="26448-197">You prevent this error by setting the dependency in the web app.</span></span>
+<span data-ttu-id="5cdd1-191">Si estás intentando hello toodeploy falta el recurso de plantilla de hello, compruebe si tiene una dependencia de tooadd.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-191">If you are attempting toodeploy hello missing resource in hello template, check whether you need tooadd a dependency.</span></span> <span data-ttu-id="5cdd1-192">Cuando es posible, Resource Manager optimiza la implementación mediante la creación de recursos en paralelo.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-192">Resource Manager optimizes deployment by creating resources in parallel, when possible.</span></span> <span data-ttu-id="5cdd1-193">Si un recurso se debe implementar después de otro recurso, necesita hello toouse **dependsOn** Hola de elemento en su toocreate plantilla una dependencia en otro recurso.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-193">If one resource must be deployed after another resource, you need toouse hello **dependsOn** element in your template toocreate a dependency on hello other resource.</span></span> <span data-ttu-id="5cdd1-194">Por ejemplo, al implementar una aplicación web, debe existir Hola plan de servicio de aplicaciones.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-194">For example, when deploying a web app, hello App Service plan must exist.</span></span> <span data-ttu-id="5cdd1-195">Si no ha especificado Hola plan de servicio de aplicaciones depende de dicha aplicación Hola, Administrador de recursos crea los recursos en hello mismo tiempo.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-195">If you have not specified that hello web app depends on hello App Service plan, Resource Manager creates both resources at hello same time.</span></span> <span data-ttu-id="5cdd1-196">Recibirá un error que indica que hello no se encuentra el recurso de plan de servicio de aplicaciones, porque no existe todavía al intentar tooset una propiedad en la aplicación web de Hola.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-196">You receive an error stating that hello App Service plan resource cannot be found, because it does not exist yet when attempting tooset a property on hello web app.</span></span> <span data-ttu-id="5cdd1-197">Evitar este error estableciendo la dependencia de hello en hello web app.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-197">You prevent this error by setting hello dependency in hello web app.</span></span>
 
 ```json
 {
@@ -283,9 +283,9 @@ Message=Cannot find ServerFarm with name exampleplan.
 }
 ```
 
-<span data-ttu-id="26448-198">Para obtener sugerencias sobre cómo solucionar los errores de dependencia, consulte [Comprobación de la secuencia de implementación](#check-deployment-sequence).</span><span class="sxs-lookup"><span data-stu-id="26448-198">For suggestions on troubleshooting dependency errors, see [Check deployment sequence](#check-deployment-sequence).</span></span>
+<span data-ttu-id="5cdd1-198">Para obtener sugerencias sobre cómo solucionar los errores de dependencia, consulte [Comprobación de la secuencia de implementación](#check-deployment-sequence).</span><span class="sxs-lookup"><span data-stu-id="5cdd1-198">For suggestions on troubleshooting dependency errors, see [Check deployment sequence](#check-deployment-sequence).</span></span>
 
-<span data-ttu-id="26448-199">También verá este error cuando el recurso se encuentra en otro grupo de recursos que donde se está implementando.</span><span class="sxs-lookup"><span data-stu-id="26448-199">You also see this error when the resource exists in a different resource group than the one being deployed to.</span></span> <span data-ttu-id="26448-200">En ese caso, use la [función resourceId](resource-group-template-functions-resource.md#resourceid) para obtener el nombre completo del recurso.</span><span class="sxs-lookup"><span data-stu-id="26448-200">In that case, use the [resourceId function](resource-group-template-functions-resource.md#resourceid) to get the fully qualified name of the resource.</span></span>
+<span data-ttu-id="5cdd1-199">También verá este error al recurso de hello existe en otro grupo de recursos que Hola uno está implementando en el.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-199">You also see this error when hello resource exists in a different resource group than hello one being deployed to.</span></span> <span data-ttu-id="5cdd1-200">En ese caso, use hello [función resourceId](resource-group-template-functions-resource.md#resourceid) nombre completo de hello tooget del recurso de Hola.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-200">In that case, use hello [resourceId function](resource-group-template-functions-resource.md#resourceid) tooget hello fully qualified name of hello resource.</span></span>
 
 ```json
 "properties": {
@@ -294,26 +294,26 @@ Message=Cannot find ServerFarm with name exampleplan.
 }
 ```
 
-<span data-ttu-id="26448-201">Si trata de usar las funciones [reference](resource-group-template-functions-resource.md#reference) o [listKeys](resource-group-template-functions-resource.md#listkeys) con un recurso que no se puede resolver, recibirá el error siguiente:</span><span class="sxs-lookup"><span data-stu-id="26448-201">If you attempt to use the [reference](resource-group-template-functions-resource.md#reference) or [listKeys](resource-group-template-functions-resource.md#listkeys) functions with a resource that cannot be resolved, you receive the following error:</span></span>
+<span data-ttu-id="5cdd1-201">Si intentas hello toouse [referencia](resource-group-template-functions-resource.md#reference) o [listKeys](resource-group-template-functions-resource.md#listkeys) funciones con un recurso que no se puede resolver, recibirá Hola siguiente error:</span><span class="sxs-lookup"><span data-stu-id="5cdd1-201">If you attempt toouse hello [reference](resource-group-template-functions-resource.md#reference) or [listKeys](resource-group-template-functions-resource.md#listkeys) functions with a resource that cannot be resolved, you receive hello following error:</span></span>
 
 ```
 Code=ResourceNotFound;
-Message=The Resource 'Microsoft.Storage/storageAccounts/{storage name}' under resource
+Message=hello Resource 'Microsoft.Storage/storageAccounts/{storage name}' under resource
 group {resource group name} was not found.
 ```
 
-<span data-ttu-id="26448-202">Busque una expresión que incluya la función **reference**.</span><span class="sxs-lookup"><span data-stu-id="26448-202">Look for an expression that includes the **reference** function.</span></span> <span data-ttu-id="26448-203">Compruebe que los valores de parámetro son correctos.</span><span class="sxs-lookup"><span data-stu-id="26448-203">Double check that the parameter values are correct.</span></span>
+<span data-ttu-id="5cdd1-202">Busque una expresión que incluya hello **referencia** función.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-202">Look for an expression that includes hello **reference** function.</span></span> <span data-ttu-id="5cdd1-203">Compruebe que los valores de parámetro hello son correctos.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-203">Double check that hello parameter values are correct.</span></span>
 
-## <a name="parentresourcenotfound"></a><span data-ttu-id="26448-204">ParentResourceNotFound</span><span class="sxs-lookup"><span data-stu-id="26448-204">ParentResourceNotFound</span></span>
+## <a name="parentresourcenotfound"></a><span data-ttu-id="5cdd1-204">ParentResourceNotFound</span><span class="sxs-lookup"><span data-stu-id="5cdd1-204">ParentResourceNotFound</span></span>
 
-<span data-ttu-id="26448-205">Cuando un recurso es un elemento primario de otro recurso, el primario debe existir antes de crear el secundario.</span><span class="sxs-lookup"><span data-stu-id="26448-205">When one resource is a parent to another resource, the parent resource must exist before creating the child resource.</span></span> <span data-ttu-id="26448-206">Si aún no existe, recibirá el error siguiente:</span><span class="sxs-lookup"><span data-stu-id="26448-206">If it does not yet exist, you receive the following error:</span></span>
+<span data-ttu-id="5cdd1-205">Cuando un recurso es un recurso de tooanother primario, recurso primario de hello debe existir antes de crear el recurso de hello secundario.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-205">When one resource is a parent tooanother resource, hello parent resource must exist before creating hello child resource.</span></span> <span data-ttu-id="5cdd1-206">Si aún no existe, recibirá Hola siguiente error:</span><span class="sxs-lookup"><span data-stu-id="5cdd1-206">If it does not yet exist, you receive hello following error:</span></span>
 
 ```
 Code=ParentResourceNotFound;
 Message=Can not perform requested operation on nested resource. Parent resource 'exampleserver' not found."
 ```
 
-<span data-ttu-id="26448-207">El nombre del recurso secundario incluye el nombre primario.</span><span class="sxs-lookup"><span data-stu-id="26448-207">The name of the child resource includes the parent name.</span></span> <span data-ttu-id="26448-208">Por ejemplo, se podría definir una base de datos SQL como:</span><span class="sxs-lookup"><span data-stu-id="26448-208">For example, a SQL Database might be defined as:</span></span>
+<span data-ttu-id="5cdd1-207">Hola nombre de recurso de hello secundario incluye Hola primario.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-207">hello name of hello child resource includes hello parent name.</span></span> <span data-ttu-id="5cdd1-208">Por ejemplo, se podría definir una base de datos SQL como:</span><span class="sxs-lookup"><span data-stu-id="5cdd1-208">For example, a SQL Database might be defined as:</span></span>
 
 ```json
 {
@@ -322,7 +322,7 @@ Message=Can not perform requested operation on nested resource. Parent resource 
   ...
 ```
 
-<span data-ttu-id="26448-209">Sin embargo, si no especifica una dependencia del recurso primario, el secundario puede implementarse antes del primario.</span><span class="sxs-lookup"><span data-stu-id="26448-209">But, if you do not specify a dependency on the parent resource, the child resource may get deployed before the parent.</span></span> <span data-ttu-id="26448-210">Para resolver este error, incluya una dependencia.</span><span class="sxs-lookup"><span data-stu-id="26448-210">To resolve this error, include a dependency.</span></span>
+<span data-ttu-id="5cdd1-209">Sin embargo, si no especifica una dependencia en el recurso primario de hello, pueden obtener implementar recursos secundarios de hello antes que la primaria Hola.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-209">But, if you do not specify a dependency on hello parent resource, hello child resource may get deployed before hello parent.</span></span> <span data-ttu-id="5cdd1-210">tooresolve este error incluyen una dependencia.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-210">tooresolve this error, include a dependency.</span></span>
 
 ```json
 "dependsOn": [
@@ -332,34 +332,34 @@ Message=Can not perform requested operation on nested resource. Parent resource 
 
 <a id="storagenamenotunique" />
 
-## <a name="storageaccountalreadyexists-and-storageaccountalreadytaken"></a><span data-ttu-id="26448-211">StorageAccountAlreadyExists y StorageAccountAlreadyTaken</span><span class="sxs-lookup"><span data-stu-id="26448-211">StorageAccountAlreadyExists and StorageAccountAlreadyTaken</span></span>
-<span data-ttu-id="26448-212">Para las cuentas de almacenamiento, debe proporcionar un nombre al recurso que sea único en Azure.</span><span class="sxs-lookup"><span data-stu-id="26448-212">For storage accounts, you must provide a name for the resource that is unique across Azure.</span></span> <span data-ttu-id="26448-213">Si no lo hace, recibirá un error como el siguiente:</span><span class="sxs-lookup"><span data-stu-id="26448-213">If you do not provide a unique name, you receive an error like:</span></span>
+## <a name="storageaccountalreadyexists-and-storageaccountalreadytaken"></a><span data-ttu-id="5cdd1-211">StorageAccountAlreadyExists y StorageAccountAlreadyTaken</span><span class="sxs-lookup"><span data-stu-id="5cdd1-211">StorageAccountAlreadyExists and StorageAccountAlreadyTaken</span></span>
+<span data-ttu-id="5cdd1-212">Las cuentas de almacenamiento, debe proporcionar un nombre para el recurso de Hola que es único en Azure.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-212">For storage accounts, you must provide a name for hello resource that is unique across Azure.</span></span> <span data-ttu-id="5cdd1-213">Si no lo hace, recibirá un error como el siguiente:</span><span class="sxs-lookup"><span data-stu-id="5cdd1-213">If you do not provide a unique name, you receive an error like:</span></span>
 
 ```
 Code=StorageAccountAlreadyTaken
-Message=The storage account named mystorage is already taken.
+Message=hello storage account named mystorage is already taken.
 ```
 
-<span data-ttu-id="26448-214">Puede crear un nombre único concatenando la convención de nomenclatura con el resultado de la función [uniqueString](resource-group-template-functions-string.md#uniquestring) .</span><span class="sxs-lookup"><span data-stu-id="26448-214">You can create a unique name by concatenating your naming convention with the result of the [uniqueString](resource-group-template-functions-string.md#uniquestring) function.</span></span>
+<span data-ttu-id="5cdd1-214">Puede crear un nombre único mediante la concatenación de la convención de nomenclatura con el resultado de hello de hello [uniqueString](resource-group-template-functions-string.md#uniquestring) (función).</span><span class="sxs-lookup"><span data-stu-id="5cdd1-214">You can create a unique name by concatenating your naming convention with hello result of hello [uniqueString](resource-group-template-functions-string.md#uniquestring) function.</span></span>
 
 ```json
 "name": "[concat('storage', uniqueString(resourceGroup().id))]",
 "type": "Microsoft.Storage/storageAccounts",
 ```
 
-<span data-ttu-id="26448-215">Si implementa una cuenta de almacenamiento con el mismo nombre que una que ya hay en la suscripción, pero proporciona una ubicación diferente, recibirá un error que indica que la cuenta de almacenamiento ya se encuentra en otra ubicación.</span><span class="sxs-lookup"><span data-stu-id="26448-215">If you deploy a storage account with the same name as an existing storage account in your subscription, but provide a different location, you receive an error indicating the storage account already exists in a different location.</span></span> <span data-ttu-id="26448-216">Elimine la cuenta de almacenamiento que ya existe o proporcione la misma ubicación que la de la cuenta de almacenamiento.</span><span class="sxs-lookup"><span data-stu-id="26448-216">Either delete the existing storage account, or provide the same location as the existing storage account.</span></span>
+<span data-ttu-id="5cdd1-215">Si implementa una cuenta de almacenamiento con hello el mismo nombre como una cuenta de almacenamiento existente en su suscripción, pero proporciona una ubicación diferente, recibirá un error en la cuenta de almacenamiento de Hola que indica que ya existe en una ubicación diferente.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-215">If you deploy a storage account with hello same name as an existing storage account in your subscription, but provide a different location, you receive an error indicating hello storage account already exists in a different location.</span></span> <span data-ttu-id="5cdd1-216">Elimine la cuenta de almacenamiento existente de hello, o proporcione Hola misma ubicación como Hola cuenta de almacenamiento existente.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-216">Either delete hello existing storage account, or provide hello same location as hello existing storage account.</span></span>
 
-## <a name="accountnameinvalid"></a><span data-ttu-id="26448-217">AccountNameInvalid</span><span class="sxs-lookup"><span data-stu-id="26448-217">AccountNameInvalid</span></span>
-<span data-ttu-id="26448-218">Verá el error **AccountNameInvalid** al tratar de proporcionar a una cuenta de almacenamiento un nombre que incluya caracteres prohibidos.</span><span class="sxs-lookup"><span data-stu-id="26448-218">You see the **AccountNameInvalid** error when attempting to give a storage account a name that includes prohibited characters.</span></span> <span data-ttu-id="26448-219">Los nombres de cuentas de almacenamiento deben tener entre 3 y 24 caracteres, y usar solo números y letras minúsculas.</span><span class="sxs-lookup"><span data-stu-id="26448-219">Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.</span></span> <span data-ttu-id="26448-220">La función [uniqueString](resource-group-template-functions-string.md#uniquestring) devuelve 13 caracteres.</span><span class="sxs-lookup"><span data-stu-id="26448-220">The [uniqueString](resource-group-template-functions-string.md#uniquestring) function returns 13 characters.</span></span> <span data-ttu-id="26448-221">Si concatena un prefijo con el resultado **uniqueString**, proporcione un prefijo que tenga 11 caracteres o menos.</span><span class="sxs-lookup"><span data-stu-id="26448-221">If you concatenate a prefix to the **uniqueString** result, provide a prefix that is 11 characters or less.</span></span>
+## <a name="accountnameinvalid"></a><span data-ttu-id="5cdd1-217">AccountNameInvalid</span><span class="sxs-lookup"><span data-stu-id="5cdd1-217">AccountNameInvalid</span></span>
+<span data-ttu-id="5cdd1-218">Vea hello **AccountNameInvalid** error al intentar toogive un almacenamiento cuenta un nombre que incluya caracteres prohibidos.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-218">You see hello **AccountNameInvalid** error when attempting toogive a storage account a name that includes prohibited characters.</span></span> <span data-ttu-id="5cdd1-219">Los nombres de cuentas de almacenamiento deben tener entre 3 y 24 caracteres, y usar solo números y letras minúsculas.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-219">Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.</span></span> <span data-ttu-id="5cdd1-220">Hola [uniqueString](resource-group-template-functions-string.md#uniquestring) función devuelve 13 caracteres.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-220">hello [uniqueString](resource-group-template-functions-string.md#uniquestring) function returns 13 characters.</span></span> <span data-ttu-id="5cdd1-221">Si concatenar un prefijo toohello **uniqueString** como resultado, proporcione un prefijo que es de 11 caracteres o menos.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-221">If you concatenate a prefix toohello **uniqueString** result, provide a prefix that is 11 characters or less.</span></span>
 
-## <a name="badrequest"></a><span data-ttu-id="26448-222">BadRequest</span><span class="sxs-lookup"><span data-stu-id="26448-222">BadRequest</span></span>
+## <a name="badrequest"></a><span data-ttu-id="5cdd1-222">BadRequest</span><span class="sxs-lookup"><span data-stu-id="5cdd1-222">BadRequest</span></span>
 
-<span data-ttu-id="26448-223">Puede encontrar un estado BadRequest al proporcionar un valor no válido para una propiedad.</span><span class="sxs-lookup"><span data-stu-id="26448-223">You may encounter a BadRequest status when you provide an invalid value for a property.</span></span> <span data-ttu-id="26448-224">Por ejemplo, si proporciona un valor incorrecto de SKU para una cuenta de almacenamiento, se produce un error en la implementación.</span><span class="sxs-lookup"><span data-stu-id="26448-224">For example, if you provide an incorrect SKU value for a storage account, the deployment fails.</span></span> <span data-ttu-id="26448-225">Para determinar valores válidos para la propiedad, examine la [API de REST](/rest/api) del tipo de recurso que se va a implementar.</span><span class="sxs-lookup"><span data-stu-id="26448-225">To determine valid values for property, look at the [REST API](/rest/api) for the resource type you are deploying.</span></span>
+<span data-ttu-id="5cdd1-223">Puede encontrar un estado BadRequest al proporcionar un valor no válido para una propiedad.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-223">You may encounter a BadRequest status when you provide an invalid value for a property.</span></span> <span data-ttu-id="5cdd1-224">Por ejemplo, si proporciona un valor incorrecto de SKU para una cuenta de almacenamiento, se produce un error en implementación Hola.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-224">For example, if you provide an incorrect SKU value for a storage account, hello deployment fails.</span></span> <span data-ttu-id="5cdd1-225">toodetermine los valores válidos para la propiedad, mire hello [API de REST](/rest/api) para tipo de recurso de Hola que va a implementar.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-225">toodetermine valid values for property, look at hello [REST API](/rest/api) for hello resource type you are deploying.</span></span>
 
 <a id="noregisteredproviderfound" />
 
-## <a name="noregisteredproviderfound-and-missingsubscriptionregistration"></a><span data-ttu-id="26448-226">NoRegisteredProviderFound y MissingSubscriptionRegistration</span><span class="sxs-lookup"><span data-stu-id="26448-226">NoRegisteredProviderFound and MissingSubscriptionRegistration</span></span>
-<span data-ttu-id="26448-227">Al implementar recursos, puede recibir el siguiente código y mensaje de error:</span><span class="sxs-lookup"><span data-stu-id="26448-227">When deploying resource, you may receive the following error code and message:</span></span>
+## <a name="noregisteredproviderfound-and-missingsubscriptionregistration"></a><span data-ttu-id="5cdd1-226">NoRegisteredProviderFound y MissingSubscriptionRegistration</span><span class="sxs-lookup"><span data-stu-id="5cdd1-226">NoRegisteredProviderFound and MissingSubscriptionRegistration</span></span>
+<span data-ttu-id="5cdd1-227">Al implementar el recurso, puede recibir Hola siguiente código de error y de mensajes:</span><span class="sxs-lookup"><span data-stu-id="5cdd1-227">When deploying resource, you may receive hello following error code and message:</span></span>
 
 ```
 Code: NoRegisteredProviderFound
@@ -367,74 +367,74 @@ Message: No registered resource provider found for location {location}
 and API version {api-version} for type {resource-type}.
 ```
 
-<span data-ttu-id="26448-228">O bien, puede recibir un mensaje similar que indica:</span><span class="sxs-lookup"><span data-stu-id="26448-228">Or, you may receive a similar message that states:</span></span>
+<span data-ttu-id="5cdd1-228">O bien, puede recibir un mensaje similar que indica:</span><span class="sxs-lookup"><span data-stu-id="5cdd1-228">Or, you may receive a similar message that states:</span></span>
 
 ```
 Code: MissingSubscriptionRegistration
-Message: The subscription is not registered to use namespace {resource-provider-namespace}
+Message: hello subscription is not registered toouse namespace {resource-provider-namespace}
 ```
 
-<span data-ttu-id="26448-229">Recibirá estos errores por uno de estos tres motivos:</span><span class="sxs-lookup"><span data-stu-id="26448-229">You receive these errors for one of three reasons:</span></span>
+<span data-ttu-id="5cdd1-229">Recibirá estos errores por uno de estos tres motivos:</span><span class="sxs-lookup"><span data-stu-id="5cdd1-229">You receive these errors for one of three reasons:</span></span>
 
-1. <span data-ttu-id="26448-230">El proveedor de recursos no se ha registrado para la suscripción</span><span class="sxs-lookup"><span data-stu-id="26448-230">The resource provider has not been registered for your subscription</span></span>
-2. <span data-ttu-id="26448-231">No se permite esta versión de API para el tipo de recurso</span><span class="sxs-lookup"><span data-stu-id="26448-231">API version not supported for the resource type</span></span>
-3. <span data-ttu-id="26448-232">No se permite esta ubicación para el tipo de recurso</span><span class="sxs-lookup"><span data-stu-id="26448-232">Location not supported for the resource type</span></span>
+1. <span data-ttu-id="5cdd1-230">no se ha registrado el proveedor de recursos de Hello para la suscripción</span><span class="sxs-lookup"><span data-stu-id="5cdd1-230">hello resource provider has not been registered for your subscription</span></span>
+2. <span data-ttu-id="5cdd1-231">Versión de API que no se admite para el tipo de recurso de Hola</span><span class="sxs-lookup"><span data-stu-id="5cdd1-231">API version not supported for hello resource type</span></span>
+3. <span data-ttu-id="5cdd1-232">No se admite para el tipo de recurso de Hola de ubicación</span><span class="sxs-lookup"><span data-stu-id="5cdd1-232">Location not supported for hello resource type</span></span>
 
-<span data-ttu-id="26448-233">El mensaje de error debería proporcionarle sugerencias con respecto a las versiones de API y a las ubicaciones admitidas.</span><span class="sxs-lookup"><span data-stu-id="26448-233">The error message should give you suggestions for the supported locations and API versions.</span></span> <span data-ttu-id="26448-234">Puede cambiar la plantilla a uno de los valores sugeridos.</span><span class="sxs-lookup"><span data-stu-id="26448-234">You can change your template to one of the suggested values.</span></span> <span data-ttu-id="26448-235">La mayoría de los proveedores se registran automáticamente mediante el Portal de Azure o la interfaz de línea de comandos que esté utilizando; pero no ocurre con todos.</span><span class="sxs-lookup"><span data-stu-id="26448-235">Most providers are registered automatically by the Azure portal or the command-line interface you are using, but not all.</span></span> <span data-ttu-id="26448-236">Si no ha utilizado un proveedor de recursos determinado antes, debe registrar dicho proveedor.</span><span class="sxs-lookup"><span data-stu-id="26448-236">If you have not used a particular resource provider before, you may need to register that provider.</span></span> <span data-ttu-id="26448-237">Puede obtener más información sobre los proveedores de recursos a través de PowerShell o la CLI de Azure.</span><span class="sxs-lookup"><span data-stu-id="26448-237">You can discover more about resource providers through PowerShell or Azure CLI.</span></span>
+<span data-ttu-id="5cdd1-233">mensaje de error de Hello debe proporcionarle sugerencias para ubicaciones de hello compatible y versiones de API.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-233">hello error message should give you suggestions for hello supported locations and API versions.</span></span> <span data-ttu-id="5cdd1-234">Puede cambiar su tooone plantilla de hello valores sugeridos.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-234">You can change your template tooone of hello suggested values.</span></span> <span data-ttu-id="5cdd1-235">Mayoría de los proveedores se registra automáticamente por hello Azure interfaz de línea de comandos de portal o hello usa, pero no todas.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-235">Most providers are registered automatically by hello Azure portal or hello command-line interface you are using, but not all.</span></span> <span data-ttu-id="5cdd1-236">Si no ha utilizado un proveedor de recursos determinado antes, deberá tooregister ese proveedor.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-236">If you have not used a particular resource provider before, you may need tooregister that provider.</span></span> <span data-ttu-id="5cdd1-237">Puede obtener más información sobre los proveedores de recursos a través de PowerShell o la CLI de Azure.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-237">You can discover more about resource providers through PowerShell or Azure CLI.</span></span>
 
-<span data-ttu-id="26448-238">**Portal**</span><span class="sxs-lookup"><span data-stu-id="26448-238">**Portal**</span></span>
+<span data-ttu-id="5cdd1-238">**Portal**</span><span class="sxs-lookup"><span data-stu-id="5cdd1-238">**Portal**</span></span>
 
-<span data-ttu-id="26448-239">Puede ver el estado de registro y registrar un espacio de nombres de proveedor de recursos a través del portal.</span><span class="sxs-lookup"><span data-stu-id="26448-239">You can see the registration status and register a resource provider namespace through the portal.</span></span>
+<span data-ttu-id="5cdd1-239">Puede ver el estado de registro de hello y registrar un espacio de nombres de proveedor de recursos a través del portal de Hola.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-239">You can see hello registration status and register a resource provider namespace through hello portal.</span></span>
 
-1. <span data-ttu-id="26448-240">Para la suscripción, seleccione **Proveedores de recursos**.</span><span class="sxs-lookup"><span data-stu-id="26448-240">For your subscription, select **Resource providers**.</span></span>
+1. <span data-ttu-id="5cdd1-240">Para la suscripción, seleccione **Proveedores de recursos**.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-240">For your subscription, select **Resource providers**.</span></span>
 
    ![seleccionar proveedores de recursos](./media/resource-manager-common-deployment-errors/select-resource-provider.png)
 
-2. <span data-ttu-id="26448-242">Examine la lista de proveedores de recursos y, si es necesario, seleccione el vínculo **Registrar** para registrar el proveedor de recursos del tipo que está intentando implementar.</span><span class="sxs-lookup"><span data-stu-id="26448-242">Look at the list of resource providers, and if necessary, select the **Register** link to register the resource provider of the type you are trying to deploy.</span></span>
+2. <span data-ttu-id="5cdd1-242">Mire Hola lista de proveedores de recursos y, si es necesario, seleccione hello **registrar** proveedor de recursos de vínculo tooregister Hola de tipo hello que estamos toodeploy.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-242">Look at hello list of resource providers, and if necessary, select hello **Register** link tooregister hello resource provider of hello type you are trying toodeploy.</span></span>
 
    ![Enumeración de proveedores de recursos](./media/resource-manager-common-deployment-errors/list-resource-providers.png)
 
-<span data-ttu-id="26448-244">**PowerShell**</span><span class="sxs-lookup"><span data-stu-id="26448-244">**PowerShell**</span></span>
+<span data-ttu-id="5cdd1-244">**PowerShell**</span><span class="sxs-lookup"><span data-stu-id="5cdd1-244">**PowerShell**</span></span>
 
-<span data-ttu-id="26448-245">Para ver el estado de su registro, use **Get-AzureRmResourceProvider**.</span><span class="sxs-lookup"><span data-stu-id="26448-245">To see your registration status, use **Get-AzureRmResourceProvider**.</span></span>
+<span data-ttu-id="5cdd1-245">toosee el estado de registro, use **AzureRmResourceProvider Get**.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-245">toosee your registration status, use **Get-AzureRmResourceProvider**.</span></span>
 
 ```powershell
 Get-AzureRmResourceProvider -ListAvailable
 ```
 
-<span data-ttu-id="26448-246">Para registrar un proveedor, use **Register-AzureRmResourceProvider** e indique el nombre del proveedor de recursos que desea registrar.</span><span class="sxs-lookup"><span data-stu-id="26448-246">To register a provider, use **Register-AzureRmResourceProvider** and provide the name of the resource provider you wish to register.</span></span>
+<span data-ttu-id="5cdd1-246">tooregister un proveedor, utilice **AzureRmResourceProvider Register** y proporcione el nombre de Hola de proveedor de recursos de hello desea tooregister.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-246">tooregister a provider, use **Register-AzureRmResourceProvider** and provide hello name of hello resource provider you wish tooregister.</span></span>
 
 ```powershell
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Cdn
 ```
 
-<span data-ttu-id="26448-247">Para conocer las ubicaciones admitidas para un tipo determinado de recurso, use:</span><span class="sxs-lookup"><span data-stu-id="26448-247">To get the supported locations for a particular type of resource, use:</span></span>
+<span data-ttu-id="5cdd1-247">ubicaciones de hello admite tooget para un determinado tipo de recurso, use:</span><span class="sxs-lookup"><span data-stu-id="5cdd1-247">tooget hello supported locations for a particular type of resource, use:</span></span>
 
 ```powershell
 ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).Locations
 ```
 
-<span data-ttu-id="26448-248">Para conocer las versiones de API admitidas para un tipo determinado de recurso, use:</span><span class="sxs-lookup"><span data-stu-id="26448-248">To get the supported API versions for a particular type of resource, use:</span></span>
+<span data-ttu-id="5cdd1-248">Hola tooget admite versiones de API para un determinado tipo de recurso, use:</span><span class="sxs-lookup"><span data-stu-id="5cdd1-248">tooget hello supported API versions for a particular type of resource, use:</span></span>
 
 ```powershell
 ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).ApiVersions
 ```
 
-<span data-ttu-id="26448-249">**CLI de Azure**</span><span class="sxs-lookup"><span data-stu-id="26448-249">**Azure CLI**</span></span>
+<span data-ttu-id="5cdd1-249">**CLI de Azure**</span><span class="sxs-lookup"><span data-stu-id="5cdd1-249">**Azure CLI**</span></span>
 
-<span data-ttu-id="26448-250">Para ver si el proveedor está registrado, utilice el comando `azure provider list` .</span><span class="sxs-lookup"><span data-stu-id="26448-250">To see whether the provider is registered, use the `azure provider list` command.</span></span>
+<span data-ttu-id="5cdd1-250">toosee si se registra el proveedor de hello, usar hello `azure provider list` comando.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-250">toosee whether hello provider is registered, use hello `azure provider list` command.</span></span>
 
 ```azurecli
 az provider list
 ```
 
-<span data-ttu-id="26448-251">Para registrar un proveedor de recursos, use el comando `azure provider register` y especifique el *espacio de nombres* que desea registrar.</span><span class="sxs-lookup"><span data-stu-id="26448-251">To register a resource provider, use the `azure provider register` command, and specify the *namespace* to register.</span></span>
+<span data-ttu-id="5cdd1-251">tooregister un proveedor de recursos, utilice hello `azure provider register` comando y especifique hello *espacio de nombres* tooregister.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-251">tooregister a resource provider, use hello `azure provider register` command, and specify hello *namespace* tooregister.</span></span>
 
 ```azurecli
 az provider register --namespace Microsoft.Cdn
 ```
 
-<span data-ttu-id="26448-252">Para ver las ubicaciones y las versiones de API admitidas para un tipo de recursos, use:</span><span class="sxs-lookup"><span data-stu-id="26448-252">To see the supported locations and API versions for a resource type, use:</span></span>
+<span data-ttu-id="5cdd1-252">ubicaciones de hello admite toosee y versiones de API para un tipo de recurso, use:</span><span class="sxs-lookup"><span data-stu-id="5cdd1-252">toosee hello supported locations and API versions for a resource type, use:</span></span>
 
 ```azurecli
 az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites'].locations"
@@ -442,17 +442,17 @@ az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites']
 
 <a id="quotaexceeded" />
 
-## <a name="quotaexceeded-and-operationnotallowed"></a><span data-ttu-id="26448-253">QuotaExceeded y OperationNotAllowed</span><span class="sxs-lookup"><span data-stu-id="26448-253">QuotaExceeded and OperationNotAllowed</span></span>
-<span data-ttu-id="26448-254">Podría tener problemas cuando una implementación supera una cuota, lo que podría suceder por grupo de recursos, suscripciones, cuentas y otros ámbitos.</span><span class="sxs-lookup"><span data-stu-id="26448-254">You might have issues when deployment exceeds a quota, which could be per resource group, subscriptions, accounts, and other scopes.</span></span> <span data-ttu-id="26448-255">Por ejemplo, la suscripción puede configurarse para limitar el número de núcleos para una región.</span><span class="sxs-lookup"><span data-stu-id="26448-255">For example, your subscription may be configured to limit the number of cores for a region.</span></span> <span data-ttu-id="26448-256">Si trata de implementar una máquina virtual con más núcleos que los permitidos, recibirá un error que indica que se ha superado la cuota.</span><span class="sxs-lookup"><span data-stu-id="26448-256">If you attempt to deploy a virtual machine with more cores than the permitted amount, you receive an error stating the quota has been exceeded.</span></span>
-<span data-ttu-id="26448-257">Para obtener información completa de las cuotas, consulte [Límites, cuotas y restricciones de suscripción y servicios de Microsoft Azure](../azure-subscription-service-limits.md).</span><span class="sxs-lookup"><span data-stu-id="26448-257">For complete quota information, see [Azure subscription and service limits, quotas, and constraints](../azure-subscription-service-limits.md).</span></span>
+## <a name="quotaexceeded-and-operationnotallowed"></a><span data-ttu-id="5cdd1-253">QuotaExceeded y OperationNotAllowed</span><span class="sxs-lookup"><span data-stu-id="5cdd1-253">QuotaExceeded and OperationNotAllowed</span></span>
+<span data-ttu-id="5cdd1-254">Podría tener problemas cuando una implementación supera una cuota, lo que podría suceder por grupo de recursos, suscripciones, cuentas y otros ámbitos.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-254">You might have issues when deployment exceeds a quota, which could be per resource group, subscriptions, accounts, and other scopes.</span></span> <span data-ttu-id="5cdd1-255">Por ejemplo, puede ser su suscripción configurado toolimit Hola número de núcleos de una región.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-255">For example, your subscription may be configured toolimit hello number of cores for a region.</span></span> <span data-ttu-id="5cdd1-256">Si intentas toodeploy una máquina virtual con más núcleos que permiten la cantidad de hello, recibirá un error que se superó la cuota de Hola que indica.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-256">If you attempt toodeploy a virtual machine with more cores than hello permitted amount, you receive an error stating hello quota has been exceeded.</span></span>
+<span data-ttu-id="5cdd1-257">Para obtener información completa de las cuotas, consulte [Límites, cuotas y restricciones de suscripción y servicios de Microsoft Azure](../azure-subscription-service-limits.md).</span><span class="sxs-lookup"><span data-stu-id="5cdd1-257">For complete quota information, see [Azure subscription and service limits, quotas, and constraints](../azure-subscription-service-limits.md).</span></span>
 
-<span data-ttu-id="26448-258">Para examinar las cuotas de núcleos de su suscripción, puede usar el comando `azure vm list-usage` en la CLI de Azure.</span><span class="sxs-lookup"><span data-stu-id="26448-258">To examine your subscription's quotas for cores, you can use the `azure vm list-usage` command in the Azure CLI.</span></span> <span data-ttu-id="26448-259">En el siguiente ejemplo se muestra que la cuota de núcleos para una cuenta de evaluación gratuita es 4:</span><span class="sxs-lookup"><span data-stu-id="26448-259">The following example illustrates that the core quota for a free trial account is 4:</span></span>
+<span data-ttu-id="5cdd1-258">tooexamine las cuotas de suscripción para núcleos, puede usar hello `azure vm list-usage` comando hello CLI de Azure.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-258">tooexamine your subscription's quotas for cores, you can use hello `azure vm list-usage` command in hello Azure CLI.</span></span> <span data-ttu-id="5cdd1-259">Hola de ejemplo siguiente muestra esa cuota de núcleos de Hola para una cuenta de evaluación gratuita es 4:</span><span class="sxs-lookup"><span data-stu-id="5cdd1-259">hello following example illustrates that hello core quota for a free trial account is 4:</span></span>
 
 ```azurecli
 az vm list-usage --location "South Central US"
 ```
 
-<span data-ttu-id="26448-260">Que devuelve:</span><span class="sxs-lookup"><span data-stu-id="26448-260">Which returns:</span></span>
+<span data-ttu-id="5cdd1-260">Que devuelve:</span><span class="sxs-lookup"><span data-stu-id="5cdd1-260">Which returns:</span></span>
 
 ```azurecli
 [
@@ -468,7 +468,7 @@ az vm list-usage --location "South Central US"
 ]
 ```
 
-<span data-ttu-id="26448-261">Si implementa una plantilla que crea más de 4 núcleos en la región oeste de EE. UU., obtendrá un error de implementación similar al siguiente:</span><span class="sxs-lookup"><span data-stu-id="26448-261">If you deploy a template that creates more than four cores in the West US region, you get a deployment error that looks like:</span></span>
+<span data-ttu-id="5cdd1-261">Si implementa una plantilla que crea más de cuatro núcleos en la región del oeste de Estados Unidos de hello, obtendrá un error de implementación que el siguiente aspecto:</span><span class="sxs-lookup"><span data-stu-id="5cdd1-261">If you deploy a template that creates more than four cores in hello West US region, you get a deployment error that looks like:</span></span>
 
 ```
 Code=OperationNotAllowed
@@ -476,13 +476,13 @@ Message=Operation results in exceeding quota limits of Core.
 Maximum allowed: 4, Current in use: 4, Additional requested: 2.
 ```
 
-<span data-ttu-id="26448-262">O bien en PowerShell, puede emplear el cmdlet **Get-AzureRmVMUsage** .</span><span class="sxs-lookup"><span data-stu-id="26448-262">Or in PowerShell, you can use the **Get-AzureRmVMUsage** cmdlet.</span></span>
+<span data-ttu-id="5cdd1-262">O bien en PowerShell, puede usar hello **AzureRmVMUsage Get** cmdlet.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-262">Or in PowerShell, you can use hello **Get-AzureRmVMUsage** cmdlet.</span></span>
 
 ```powershell
 Get-AzureRmVMUsage
 ```
 
-<span data-ttu-id="26448-263">Que devuelve:</span><span class="sxs-lookup"><span data-stu-id="26448-263">Which returns:</span></span>
+<span data-ttu-id="5cdd1-263">Que devuelve:</span><span class="sxs-lookup"><span data-stu-id="5cdd1-263">Which returns:</span></span>
 
 ```powershell
 ...
@@ -496,53 +496,53 @@ Unit         : null
 ...
 ```
 
-<span data-ttu-id="26448-264">En estos casos, debe ir al portal y archivar un problema de soporte técnico para aumentar su cuota para la región en la que desea realizar la implementación.</span><span class="sxs-lookup"><span data-stu-id="26448-264">In these cases, you should go to the portal and file a support issue to raise your quota for the region into which you want to deploy.</span></span>
+<span data-ttu-id="5cdd1-264">En estos casos, debe ir toohello portal y archivo un tooraise de problema de soporte técnico de su cuota de región de hello en el que desea toodeploy.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-264">In these cases, you should go toohello portal and file a support issue tooraise your quota for hello region into which you want toodeploy.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="26448-265">Recuerde que para los grupos de recursos, la cuota para cada región individual, no para toda la suscripción.</span><span class="sxs-lookup"><span data-stu-id="26448-265">Remember that for resource groups, the quota is for each individual region, not for the entire subscription.</span></span> <span data-ttu-id="26448-266">Si necesita implementar 30 núcleos en el oeste de Estados Unidos, debe pedir 30 núcleos de administrador de recursos en el oeste de Estados Unidos.</span><span class="sxs-lookup"><span data-stu-id="26448-266">If you need to deploy 30 cores in West US, you have to ask for 30 Resource Manager cores in West US.</span></span> <span data-ttu-id="26448-267">Si necesita implementar 30 núcleos en cualquiera de las regiones para las que tiene acceso, debe pedir 30 núcleos de Resource Manager en todas las regiones.</span><span class="sxs-lookup"><span data-stu-id="26448-267">If you need to deploy 30 cores in any of the regions to which you have access, you should ask for 30 Resource Manager cores in all regions.</span></span>
+> <span data-ttu-id="5cdd1-265">Recuerde que para los grupos de recursos, cuota de hello es para cada región individual, no para la suscripción completa de Hola.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-265">Remember that for resource groups, hello quota is for each individual region, not for hello entire subscription.</span></span> <span data-ttu-id="5cdd1-266">Si necesita toodeploy 30 núcleos zona horaria del Pacífico occidental, deberá tooask para 30 núcleos de administrador de recursos zona horaria del Pacífico occidental.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-266">If you need toodeploy 30 cores in West US, you have tooask for 30 Resource Manager cores in West US.</span></span> <span data-ttu-id="5cdd1-267">Si necesita toodeploy 30 núcleos en cualquiera de hello regiones toowhich tiene acceso, deberá solicitar 30 núcleos de administrador de recursos en todas las regiones.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-267">If you need toodeploy 30 cores in any of hello regions toowhich you have access, you should ask for 30 Resource Manager cores in all regions.</span></span>
 >
 >
 
-## <a name="invalidcontentlink"></a><span data-ttu-id="26448-268">InvalidContentLink</span><span class="sxs-lookup"><span data-stu-id="26448-268">InvalidContentLink</span></span>
-<span data-ttu-id="26448-269">Si recibe el mensaje de error:</span><span class="sxs-lookup"><span data-stu-id="26448-269">When you receive the error message:</span></span>
+## <a name="invalidcontentlink"></a><span data-ttu-id="5cdd1-268">InvalidContentLink</span><span class="sxs-lookup"><span data-stu-id="5cdd1-268">InvalidContentLink</span></span>
+<span data-ttu-id="5cdd1-269">Cuando reciba mensajes de bienvenida del error:</span><span class="sxs-lookup"><span data-stu-id="5cdd1-269">When you receive hello error message:</span></span>
 
 ```
 Code=InvalidContentLink
-Message=Unable to download deployment content from ...
+Message=Unable toodownload deployment content from ...
 ```
 
-<span data-ttu-id="26448-270">Probablemente ha tratado de agregar un vínculo a una plantilla anidada que no está disponible.</span><span class="sxs-lookup"><span data-stu-id="26448-270">You have most likely attempted to link to a nested template that is not available.</span></span> <span data-ttu-id="26448-271">Compruebe el URI proporcionado para la plantilla anidada.</span><span class="sxs-lookup"><span data-stu-id="26448-271">Double check the URI you provided for the nested template.</span></span> <span data-ttu-id="26448-272">Si la plantilla se encuentra en una cuenta de almacenamiento, asegúrese de que puede accederse al URI.</span><span class="sxs-lookup"><span data-stu-id="26448-272">If the template exists in a storage account, make sure the URI is accessible.</span></span> <span data-ttu-id="26448-273">Debe transmitir un token SAS.</span><span class="sxs-lookup"><span data-stu-id="26448-273">You may need to pass a SAS token.</span></span> <span data-ttu-id="26448-274">Para más información, consulte [Uso de plantillas vinculadas con el Administrador de recursos de Azure](resource-group-linked-templates.md).</span><span class="sxs-lookup"><span data-stu-id="26448-274">For more information, see [Using linked templates with Azure Resource Manager](resource-group-linked-templates.md).</span></span>
+<span data-ttu-id="5cdd1-270">Probablemente ha intentado toolink tooa plantillas anidadas que no está disponible.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-270">You have most likely attempted toolink tooa nested template that is not available.</span></span> <span data-ttu-id="5cdd1-271">Vuelve a revisar hello URI proporcionado para plantillas anidadas Hola.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-271">Double check hello URI you provided for hello nested template.</span></span> <span data-ttu-id="5cdd1-272">Si existe en la plantilla de hello en una cuenta de almacenamiento, asegúrese de hello URI es accesible.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-272">If hello template exists in a storage account, make sure hello URI is accessible.</span></span> <span data-ttu-id="5cdd1-273">Puede que necesite toopass un token de SAS.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-273">You may need toopass a SAS token.</span></span> <span data-ttu-id="5cdd1-274">Para más información, consulte [Uso de plantillas vinculadas con el Administrador de recursos de Azure](resource-group-linked-templates.md).</span><span class="sxs-lookup"><span data-stu-id="5cdd1-274">For more information, see [Using linked templates with Azure Resource Manager](resource-group-linked-templates.md).</span></span>
 
-## <a name="requestdisallowedbypolicy"></a><span data-ttu-id="26448-275">RequestDisallowedByPolicy</span><span class="sxs-lookup"><span data-stu-id="26448-275">RequestDisallowedByPolicy</span></span>
-<span data-ttu-id="26448-276">Recibirá este error cuando la suscripción incluye una directiva de recursos que impide una acción que está tratando de realizar durante la implementación.</span><span class="sxs-lookup"><span data-stu-id="26448-276">You receive this error when your subscription includes a resource policy that prevents an action you are trying to perform during deployment.</span></span> <span data-ttu-id="26448-277">En el mensaje de error, busque el identificador de directiva.</span><span class="sxs-lookup"><span data-stu-id="26448-277">In the error message, look for the policy identifier.</span></span>
+## <a name="requestdisallowedbypolicy"></a><span data-ttu-id="5cdd1-275">RequestDisallowedByPolicy</span><span class="sxs-lookup"><span data-stu-id="5cdd1-275">RequestDisallowedByPolicy</span></span>
+<span data-ttu-id="5cdd1-276">Recibirá este error cuando la suscripción incluye una directiva de recursos que impide que una acción que está intentando tooperform durante la implementación.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-276">You receive this error when your subscription includes a resource policy that prevents an action you are trying tooperform during deployment.</span></span> <span data-ttu-id="5cdd1-277">En el mensaje de error de hello, busque el identificador de directiva de Hola.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-277">In hello error message, look for hello policy identifier.</span></span>
 
 ```
 Policy identifier(s): '/subscriptions/{guid}/providers/Microsoft.Authorization/policyDefinitions/regionPolicyDefinition'
 ```
 
-<span data-ttu-id="26448-278">En **PowerShell**, proporcione ese identificador de directiva como el parámetro **Id** para recuperar los detalles de la directiva que bloqueó la implementación.</span><span class="sxs-lookup"><span data-stu-id="26448-278">In **PowerShell**, provide that policy identifier as the **Id** parameter to retrieve details about the policy that blocked your deployment.</span></span>
+<span data-ttu-id="5cdd1-278">En **PowerShell**, proporcionar ese identificador de directiva como hello **identificador** detalles del parámetro tooretrieve acerca de la directiva de Hola que bloquea la implementación.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-278">In **PowerShell**, provide that policy identifier as hello **Id** parameter tooretrieve details about hello policy that blocked your deployment.</span></span>
 
 ```powershell
 (Get-AzureRmPolicyDefinition -Id "/subscriptions/{guid}/providers/Microsoft.Authorization/policyDefinitions/regionPolicyDefinition").Properties.policyRule | ConvertTo-Json
 ```
 
-<span data-ttu-id="26448-279">En la **CLI de Azure**, proporcione el nombre de la definición de directiva:</span><span class="sxs-lookup"><span data-stu-id="26448-279">In **Azure CLI**, provide the name of the policy definition:</span></span>
+<span data-ttu-id="5cdd1-279">En **Azure CLI**, proporcione Hola nombre de definición de directiva de hello:</span><span class="sxs-lookup"><span data-stu-id="5cdd1-279">In **Azure CLI**, provide hello name of hello policy definition:</span></span>
 
 ```azurecli
 az policy definition show --name regionPolicyAssignment
 ```
 
-<span data-ttu-id="26448-280">Para más información, consulte los siguientes artículos.</span><span class="sxs-lookup"><span data-stu-id="26448-280">For more information, see the following articles:</span></span>
+<span data-ttu-id="5cdd1-280">Para obtener más información, vea Hola siguientes artículos:</span><span class="sxs-lookup"><span data-stu-id="5cdd1-280">For more information, see hello following articles:</span></span>
 
-- [<span data-ttu-id="26448-281">Error RequestDisallowedByPolicy</span><span class="sxs-lookup"><span data-stu-id="26448-281">RequestDisallowedByPolicy error</span></span>](resource-manager-policy-requestdisallowedbypolicy-error.md)
-- <span data-ttu-id="26448-282">[Uso de directivas para administrar los recursos y controlar el acceso](resource-manager-policy.md)</span><span class="sxs-lookup"><span data-stu-id="26448-282">[Use Policy to manage resources and control access](resource-manager-policy.md).</span></span>
+- [<span data-ttu-id="5cdd1-281">Error RequestDisallowedByPolicy</span><span class="sxs-lookup"><span data-stu-id="5cdd1-281">RequestDisallowedByPolicy error</span></span>](resource-manager-policy-requestdisallowedbypolicy-error.md)
+- <span data-ttu-id="5cdd1-282">[Usar Directiva toomanage recursos y controlar el acceso](resource-manager-policy.md).</span><span class="sxs-lookup"><span data-stu-id="5cdd1-282">[Use Policy toomanage resources and control access](resource-manager-policy.md).</span></span>
 
-## <a name="authorization-failed"></a><span data-ttu-id="26448-283">Error de autorización</span><span class="sxs-lookup"><span data-stu-id="26448-283">Authorization failed</span></span>
-<span data-ttu-id="26448-284">Puede recibir un error durante la implementación porque la cuenta o la entidad de servicio que intenta implementar los recursos no tiene acceso para realizar esas acciones.</span><span class="sxs-lookup"><span data-stu-id="26448-284">You may receive an error during deployment because the account or service principal attempting to deploy the resources does not have access to perform those actions.</span></span> <span data-ttu-id="26448-285">Azure Active Directory permite al usuario o al administrador controlar qué identidades pueden acceder a qué recursos con un alto grado de precisión.</span><span class="sxs-lookup"><span data-stu-id="26448-285">Azure Active Directory enables you or your administrator to control which identities can access what resources with a great degree of precision.</span></span> <span data-ttu-id="26448-286">Por ejemplo, si su cuenta se asigna al rol Lector, no podrá crear recursos.</span><span class="sxs-lookup"><span data-stu-id="26448-286">For example, if your account is assigned to the Reader role, you are not able to create resources.</span></span> <span data-ttu-id="26448-287">En ese caso, debería ver un mensaje de error que indica que hubo un error de autorización.</span><span class="sxs-lookup"><span data-stu-id="26448-287">In that case, you see an error message indicating that authorization failed.</span></span>
+## <a name="authorization-failed"></a><span data-ttu-id="5cdd1-283">Error de autorización</span><span class="sxs-lookup"><span data-stu-id="5cdd1-283">Authorization failed</span></span>
+<span data-ttu-id="5cdd1-284">Puede recibir un error durante la implementación porque hello cuenta o intentar recursos de hello toodeploy entidad de servicio no tiene acceso tooperform esas acciones.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-284">You may receive an error during deployment because hello account or service principal attempting toodeploy hello resources does not have access tooperform those actions.</span></span> <span data-ttu-id="5cdd1-285">Azure Active Directory permite a usted o su toocontrol administrador qué identidades pueden tener acceso a los recursos con un alto grado de precisión.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-285">Azure Active Directory enables you or your administrator toocontrol which identities can access what resources with a great degree of precision.</span></span> <span data-ttu-id="5cdd1-286">Por ejemplo, si su cuenta se asigna el rol de lector toohello, no está toocreate capaz de recursos.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-286">For example, if your account is assigned toohello Reader role, you are not able toocreate resources.</span></span> <span data-ttu-id="5cdd1-287">En ese caso, debería ver un mensaje de error que indica que hubo un error de autorización.</span><span class="sxs-lookup"><span data-stu-id="5cdd1-287">In that case, you see an error message indicating that authorization failed.</span></span>
 
-<span data-ttu-id="26448-288">Para más información sobre el control de acceso basado en roles, consulte [Control de acceso basado en roles de Azure](../active-directory/role-based-access-control-configure.md).</span><span class="sxs-lookup"><span data-stu-id="26448-288">For more information about role-based access control, see [Azure Role-Based Access Control](../active-directory/role-based-access-control-configure.md).</span></span>
+<span data-ttu-id="5cdd1-288">Para más información sobre el control de acceso basado en roles, consulte [Control de acceso basado en roles de Azure](../active-directory/role-based-access-control-configure.md).</span><span class="sxs-lookup"><span data-stu-id="5cdd1-288">For more information about role-based access control, see [Azure Role-Based Access Control](../active-directory/role-based-access-control-configure.md).</span></span>
 
 
-## <a name="next-steps"></a><span data-ttu-id="26448-289">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="26448-289">Next steps</span></span>
-* <span data-ttu-id="26448-290">Para más información sobre las acciones de auditoría, consulte [Operaciones de auditoría con Resource Manager](resource-group-audit.md).</span><span class="sxs-lookup"><span data-stu-id="26448-290">To learn about auditing actions, see [Audit operations with Resource Manager](resource-group-audit.md).</span></span>
-* <span data-ttu-id="26448-291">Si desea conocer más detalles sobre las acciones que permiten determinar los errores durante la implementación, consulte [Visualización de operaciones de implementación con el Portal de Azure](resource-manager-deployment-operations.md).</span><span class="sxs-lookup"><span data-stu-id="26448-291">To learn about actions to determine the errors during deployment, see [View deployment operations](resource-manager-deployment-operations.md).</span></span>
+## <a name="next-steps"></a><span data-ttu-id="5cdd1-289">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="5cdd1-289">Next steps</span></span>
+* <span data-ttu-id="5cdd1-290">toolearn acerca de la auditoría de acciones, vea [auditoría de las operaciones con el Administrador de recursos](resource-group-audit.md).</span><span class="sxs-lookup"><span data-stu-id="5cdd1-290">toolearn about auditing actions, see [Audit operations with Resource Manager](resource-group-audit.md).</span></span>
+* <span data-ttu-id="5cdd1-291">toolearn acerca de los errores de hello toodetermine de acciones durante la implementación, consulte [ver las operaciones de implementación](resource-manager-deployment-operations.md).</span><span class="sxs-lookup"><span data-stu-id="5cdd1-291">toolearn about actions toodetermine hello errors during deployment, see [View deployment operations](resource-manager-deployment-operations.md).</span></span>

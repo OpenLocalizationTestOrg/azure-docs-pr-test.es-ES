@@ -1,6 +1,6 @@
 ---
-title: "Protección de aplicaciones de una página mediante el flujo implícito de Azure AD v2.0 | Microsoft Docs"
-description: "Creación de aplicaciones web mediante la implementación del flujo implícito de la versión 2.0 de Azure AD para aplicaciones de una sola página."
+title: "aplicaciones de una página de aaaSecure mediante flujo implícito de hello Azure AD v2.0 | Documentos de Microsoft"
+description: "Creación de aplicaciones web con implementación de v2.0 de Azure AD de flujo implícitos de Hola para aplicaciones de la misma página."
 services: active-directory
 documentationcenter: 
 author: dstrockis
@@ -15,37 +15,37 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 3bd8256814036a357b30b69286da6bb7c974162f
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 2cdce4eee88be4af54966d15204b79fa4992a58e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# Protocolos de la versión 2.0: uso del flujo implícito para las SPA
-Con el punto de conexión v2.0, puede iniciar la sesión de los usuarios en sus aplicaciones de una página tanto con cuentas de Microsoft personales como profesionales o educativas.  Las aplicaciones de una sola página y otras aplicaciones JavaScript que se ejecutan principalmente en un explorador, se enfrentan con algunos retos interesantes por lo que se refiere a la autenticación:
+# V2.0 protocolos - SPAs mediante flujo implícito Hola
+Con el punto de conexión de hello v2.0, puede iniciar sesión a los usuarios en sus aplicaciones de página única con cuentas personales y de trabajo o educativa de Microsoft.  Página única y otras aplicaciones de JavaScript que se ejecutan principalmente en una cara de explorador interesantes algunos desafíos cuando se incluye tooauthentication:
 
-* Las características de seguridad de estas aplicaciones son significativamente diferentes de las de las aplicaciones web tradicionales basadas en el servidor.
+* características de seguridad de Hola de estas aplicaciones son significativamente diferentes de aplicaciones web de servidor tradicional basado.
 * Muchos proveedores de identidades y servidores de autorización no admiten solicitudes CORS.
-* Los redireccionamientos del explorador a una página completa fuera de la aplicación se vuelven especialmente invasivos para la experiencia del usuario.
+* Página completa explorador redirecciones fuera de la aplicación hello se convierten en toohello especialmente invasiva experiencia del usuario.
 
-Para estas aplicaciones (por ejemplo, AngularJS, Ember.js, React.js, etc.), Azure AD admite el flujo de concesión implícita de OAuth 2.0.  El flujo implícito se describe en la [especificación de OAuth 2.0](http://tools.ietf.org/html/rfc6749#section-4.2).  Su principal ventaja es que hace posible que la aplicación obtenga tokens de Azure AD sin necesidad de realizar un intercambio de credenciales con el servidor back-end.  De esta forma, la aplicación puede iniciar la sesión del usuario, mantenerla y recibir tokens para otras API web, y todo dentro del código de cliente de JavaScript.  Existen algunas consideraciones de seguridad importantes que se deben tener en cuenta al usar el flujo implícito, especialmente en lo referente a la suplantación de identidad del [cliente](http://tools.ietf.org/html/rfc6749#section-10.3) y el [usuario](http://tools.ietf.org/html/rfc6749#section-10.3).
+Para estas aplicaciones (pensar: AngularJS, Ember.js, React.js, etcetera), Azure AD admite el flujo de concesión implícita OAuth 2.0 Hola.  flujo implícito Hola se describe en hello [especificación de OAuth 2.0](http://tools.ietf.org/html/rfc6749#section-4.2).  La principal ventaja es que permite tokens de tooget aplicación Hola de Azure AD sin tener que realizar un intercambio de credenciales de servidor back-end.  Esto permite toosign de aplicación hello en usuario hello, mantener la sesión y obtener tokens tooother web API todo dentro de código de JavaScript de cliente de Hola.  Hay unos tootake de consideraciones de seguridad importantes en cuenta cuando se usa específicamente alrededor de flujo implícitos de hello - [cliente](http://tools.ietf.org/html/rfc6749#section-10.3) y [suplantación de usuario](http://tools.ietf.org/html/rfc6749#section-10.3).
 
-Si quiere usar el flujo implícito y Azure AD para agregar autenticación a la aplicación JavaScript, se recomienda el uso de nuestra biblioteca JavaScript de código abierto, [adal.js](https://github.com/AzureAD/azure-activedirectory-library-for-js).  Puede encontrar [aquí](active-directory-appmodel-v2-overview.md#getting-started) algunos tutoriales de AngularJS que le ayudarán a empezar.  
+Si desea flujo implícito de toouse hello y aplicación de Azure AD tooadd autenticación tooyour JavaScript, se recomienda utilizar nuestra biblioteca de JavaScript de código abierto, [adal.js](https://github.com/AzureAD/azure-activedirectory-library-for-js).  Hay muy pocos tutoriales de AngularJS [aquí](active-directory-appmodel-v2-overview.md#getting-started) toohelp empezar a trabajar.  
 
-Sin embargo, si prefiere no usar una biblioteca en su aplicación de una página y enviar mensajes de protocolo usted mismo, siga estos pasos generales.
+Sin embargo, si prefiere no toouse una biblioteca en los mensajes de protocolo de aplicación y envío de página única usted mismo, siga Hola general pasos.
 
 > [!NOTE]
-> No todas las características y escenarios de Azure Active Directory son compatibles con el punto de conexión v2.0.  Para determinar si debe usar el punto de conexión v2.0, lea acerca de las [limitaciones de v2.0](active-directory-v2-limitations.md).
+> No todas las características y escenarios de Azure Active Directory son compatibles con el punto de conexión de hello v2.0.  toodetermine si debe utilizar Hola v2.0 extremo, que conozca [v2.0 limitaciones](active-directory-v2-limitations.md).
 > 
 > 
 
 ## Diagrama de protocolo
-El conjunto del flujo de inicio de sesión implícito tiene un aspecto similar a lo que se indica a continuación. Cada uno de los pasos se describe en detalle más adelante.
+Hello todo inicio de sesión implícito en el flujo es algo parecido a esto, cada uno de los pasos de Hola se describen en detalle a continuación.
 
 ![Calles OpenId Connect](../../media/active-directory-v2-flows/convergence_scenarios_implicit.png)
 
-## Envío de la solicitud de inicio de sesión
-Al principio, para iniciar la sesión del usuario en la aplicación, puede enviar una solicitud de autorización [OpenID Connect](active-directory-v2-protocols-oidc.md) y obtener un `id_token` del punto de conexión v2.0:
+## Enviar solicitud de inicio de sesión de Hola
+inicio de sesión de tooinitially hello usuario en la aplicación, puede enviar un [OpenID Connect](active-directory-v2-protocols-oidc.md) solicitud de autorización y obtener un `id_token` desde el punto de conexión de hello v2.0:
 
 ```
 // Line breaks for legibility only
@@ -61,31 +61,31 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 
 > [!TIP]
-> Para ejecutar esta solicitud, haga clic en el vínculo siguiente. Después de iniciar sesión, el explorador se redirigirá a `https://localhost/myapp/` con un elemento `id_token` en la barra de direcciones.
+> Haga clic en vínculo hello tooexecute esta solicitud. Después de iniciar sesión, el explorador se debe redirigir demasiado`https://localhost/myapp/` con un `id_token` en la barra de direcciones de Hola.
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token+token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&response_mode=fragment&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 > 
 > 
 
 | Parámetro |  | Description |
 | --- | --- | --- |
-| tenant |requerido |El valor `{tenant}` de la ruta de acceso de la solicitud se puede usar para controlar quién puede iniciar sesión en la aplicación.  Los valores permitidos son `common`, `organizations`, `consumers` y los identificadores de inquilinos.  Para obtener más información, consulte los [conceptos básicos sobre el protocolo](active-directory-v2-protocols.md#endpoints). |
-| client_id |requerido |El identificador de la aplicación que el portal de registro ([apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)) asignó a su aplicación. |
-| response_type |requerido |Debe incluir `id_token` para el inicio de sesión en OpenID Connect.  También puede incluir el `token` response_type. El uso de `token` aquí permitirá a la aplicación recibir un token de acceso inmediatamente desde el punto de conexión autorizado sin tener que realizar una segunda solicitud para autorizar el punto de conexión.  Si usa el `token` response_type, el parámetro `scope` debe contener un ámbito que indica para qué recurso se va a emitir el token. |
-| redirect_uri |recomendado |El redirect_uri de su aplicación, a donde su aplicación puede enviar y recibir las respuestas de autenticación.  Debe coincidir exactamente con uno de los redirect_uris que registró en el portal, con la excepción de que debe estar codificado como URL. |
-| ámbito |requerido |Una lista de ámbitos separada por espacios.  Asegúrese de incluir el ámbito `openid`para OpenID Connect, lo que se traduce en el permiso de inicio de sesión en la interfaz de usuario de consentimiento.  Opcionalmente, también puede incluir los [ámbitos](active-directory-v2-scopes.md) `email` o `profile` para obtener acceso a datos de usuario adicionales.  También puede incluir otros ámbitos en esta solicitud para solicitar consentimiento para diversos recursos. |
-| response_mode |recomendado |Especifica el método que debe usarse para enviar el token resultante de nuevo a la aplicación.  Debe ser `fragment` para el flujo implícito. |
-| state |recomendado |Un valor incluido en la solicitud que se devolverá también en la respuesta del token.  Puede ser una cadena de cualquier contenido que desee.  Normalmente se usa un valor único generado de forma aleatoria para [evitar los ataques de falsificación de solicitudes entre sitios](http://tools.ietf.org/html/rfc6749#section-10.12).  El estado también se usa para codificar información sobre el estado del usuario en la aplicación antes de que se haya producido la solicitud de autenticación, por ejemplo, la página o vista en la que estaban. |
-| valor de seguridad |requerido |Un valor incluido en la solicitud, generada por la aplicación, que se incluirá en el id_token resultante como una notificación.  La aplicación puede comprobar este valor para mitigar los ataques de reproducción de token.  Normalmente, el valor es una cadena única aleatoria que puede utilizarse para identificar el origen de la solicitud. |
-| símbolo del sistema |opcional |Indica el tipo de interacción necesaria con el usuario.  Los únicos valores válidos en este momento son 'login', 'none' y 'consent'.  `prompt=login` obligará al usuario a escribir sus credenciales en esa solicitud, negando el inicio de sesión único.  `prompt=none` se asegurará de que al usuario no se le presenta ninguna solicitud interactiva del tipo que sea.  Si no se puede completar la solicitud sin notificaciones mediante el inicio de sesión único, el punto de conexión v2.0 devolverá un error.  `prompt=consent` desencadenará el cuadro de diálogo de consentimiento de OAuth después de que el usuario inicia sesión, y solicitará a este que conceda permisos a la aplicación. |
-| login_hint |opcional |Puede usarse para rellenar previamente el campo de nombre de usuario y dirección de correo electrónico de la página de inicio de sesión del usuario, si sabe su nombre de usuario con antelación.  A menudo las aplicaciones usarán este parámetro durante la reautenticación, dado que ya han extraído el nombre de usuario de un inicio de sesión anterior mediante la notificación `preferred_username`. |
-| domain_hint |opcional |Puede ser `consumers` o `organizations`.  Si se incluye, omitirá el proceso de detección basado en correo electrónico por el que pasa el usuario en la página de inicio de sesión de v2.0, con lo que la experiencia de usuario será ligeramente más sencilla.  A menudo las aplicaciones usarán este parámetro durante la reautenticación, para lo que extraerán la notificación `tid` de id_token.  Si el valor de la notificación `tid` es `9188040d-6c67-4c5b-b112-36a304b66dad`, debe usar `domain_hint=consumers`.  De lo contrario, use `domain_hint=organizations`. |
+| tenant |requerido |Hola `{tenant}` valor de ruta de acceso de saludo de solicitud de hello puede ser usado toocontrol que puede iniciar sesión en la aplicación hello.  Hola valores permitidos son `common`, `organizations`, `consumers`y los identificadores de inquilinos.  Para obtener más información, consulte los [conceptos básicos sobre el protocolo](active-directory-v2-protocols.md#endpoints). |
+| client_id |requerido |Hola Id. de aplicación ese portal de registro de hello ([apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)) asignado a la aplicación. |
+| response_type |requerido |Debe incluir `id_token` para el inicio de sesión en OpenID Connect.  También puede incluir hello response_type `token`. Usar `token` aquí le permitirá la tooreceive de aplicación un token de acceso inmediatamente Hola extremo authorize sin necesidad de toomake autorizar a un segundo toohello solicitud extremo.  Si usas hello `token` response_type, hello `scope` parámetro debe contener un ámbito que indica qué token de recurso tooissue Hola para. |
+| redirect_uri |recomendado |Hola redirect_uri de la aplicación, donde las respuestas de autenticación pueden ser enviadas y recibidas por la aplicación.  Debe coincidir exactamente con uno de redirect_uris Hola que registró en el portal de hello, salvo que debe ser la dirección url codificada. |
+| ámbito |requerido |Una lista de ámbitos separada por espacios.  Para OpenID Connect, debe incluir el ámbito de hello `openid`, que traduce toohello "Iniciar sesión en" permiso en la IU de consentimiento del saludo.  Opcionalmente, puede que también desee hello tooinclude `email` o `profile` [ámbitos](active-directory-v2-scopes.md) para obtener acceso a datos de usuario de tooadditional.  También puede incluir otros ámbitos en esta solicitud para solicitar el consentimiento toovarious recursos. |
+| response_mode |recomendado |Especifica el método de Hola que debe ser usado toosend Hola resultante token tooyour back-app.  Debe ser `fragment` para flujo implícito Hola. |
+| state |recomendado |Un valor incluido en la solicitud de Hola que también se devolverán en respuesta de token de Hola.  Puede ser una cadena de cualquier contenido que desee.  Normalmente se usa un valor único generado de forma aleatoria para [evitar los ataques de falsificación de solicitudes entre sitios](http://tools.ietf.org/html/rfc6749#section-10.12).  estado de Hello también es tooencode usa información acerca del estado del usuario de hello en la aplicación hello antes de que se ha producido en solicitud de autenticación de hello, como página de Hola o que estaban en la vista. |
+| valor de seguridad |requerido |Un valor incluido en solicitud de hello, generado por la aplicación hello, que se incluirán en hello id_token resultante como una notificación.  aplicación Hello, a continuación, puede comprobar que los ataques de reproducción de tokens de toomitigate este valor.  valor de Hello suele ser una cadena aleatoria única que puede ser usado tooidentify Hola origen de solicitud de Hola. |
+| símbolo del sistema |opcional |Indica el tipo de hello de interacción del usuario que es necesario.  Hola solo en este momento los valores válidos son 'login', 'none' y 'da su consentimiento'.  `prompt=login`se fuerza Hola a tooenter usuario sus credenciales en esa solicitud, niega el inicio de sesión único en.  `prompt=none`es Hola opuesto: se asegurará de que el usuario hello no se presenta con cualquier mensaje interactivo ningún tipo..  Si no se puede completar de solicitud Hola a través de inicio de sesión único en modo silencioso, el punto de conexión de hello v2.0 devolverá un error.  `prompt=consent`acepta Hola desencadenador OAuth diálogo después de los signos de usuario de hello, pidiendo permisos toohello aplicación de hello usuario toogrant. |
+| login_hint |opcional |Puede ser campo de dirección de nombre de usuario y de correo electrónico usado toopre-relleno Hola del programa Hola a iniciar sesión página de usuario de hello, si conoce su nombre de usuario antes de tiempo.  A menudo las aplicaciones utilizarán este parámetro durante la reautenticación, tener extraído ya el nombre de usuario de Hola desde un inicio de sesión anterior con hello `preferred_username` de notificación. |
+| domain_hint |opcional |Puede ser `consumers` o `organizations`.  Si se incluye, se omitirán proceso de detección basada en correo electrónico de Hola que el usuario pasa por de inicio de sesión de hello v2.0 en la página, a la izquierda tooa ligeramente más una mejor experiencia del usuario.  A menudo las aplicaciones utilizarán este parámetro durante la reautenticación, extrayendo hello `tid` notificación de hello id_token.  Si hello `tid` es el valor de notificación `9188040d-6c67-4c5b-b112-36a304b66dad`, debe usar `domain_hint=consumers`.  De lo contrario, use `domain_hint=organizations`. |
 
-En este punto, se le pedirá al usuario que escriba sus credenciales y que complete la autenticación.  El punto de conexión v2.0 también garantiza que el usuario ha dado su consentimiento a los permisos indicados en el parámetro de la consulta `scope` .  Si el usuario no ha dado su consentimiento a alguno de esos permisos, se le solicitará al usuario su consentimiento para los permisos necesarios.  Aquí puede encontrar información detallada sobre los [permisos, el consentimiento y las aplicaciones multiempresa](active-directory-v2-scopes.md).
+En este punto, el usuario de hello será más frecuentes tooenter sus credenciales y autenticación de hello completa.  Hello v2.0 extremo también garantizarán ese usuario Hola ha dado su consentimiento permisos de toohello indicados en hello `scope` parámetro de consulta.  Si hello no haya consentido tooany de estos permisos, le preguntará Hola usuario tooconsent toohello requerido permisos.  Aquí puede encontrar información detallada sobre los [permisos, el consentimiento y las aplicaciones multiempresa](active-directory-v2-scopes.md).
 
-Una vez que el usuario se autentica y otorga su consentimiento, el punto de conexión v2.0 devuelve una respuesta a su aplicación en el `redirect_uri` indicado mediante el método especificado en el parámetro `response_mode`.
+Una vez que el usuario de Hola se autentica y concede el consentimiento, el punto de conexión de hello v2.0 devolverá una aplicación de tooyour de respuesta en hello indicado `redirect_uri`, mediante el método hello especificado en hello `response_mode` parámetro.
 
 #### Respuesta correcta
-Una respuesta correcta que usa `response_mode=fragment` y `response_type=id_token+token` es como la siguiente, con saltos de línea para mejorar la legibilidad:
+Una respuesta correcta mediante `response_mode=fragment` y `response_type=id_token+token` siguiente hello, saltos de línea por legibilidad aspecto:
 
 ```
 GET https://localhost/myapp/#
@@ -99,15 +99,15 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 
 | Parámetro | Description |
 | --- | --- |
-| access_token |Incluido si `response_type` incluye `token`. El token de acceso que la aplicación ha solicitado, en este caso para Microsoft Graph.  El token de acceso no se debe descodificar o inspeccionar en forma alguna, se puede tratar como una cadena opaca. |
+| access_token |Incluido si `response_type` incluye `token`. token de acceso de Hola Hola de aplicación solicitado, en este caso para Hola Microsoft Graph.  token de acceso de Hello no se debe descodificar o inspeccionar en caso contrario, se puede tratar como una cadena opaca. |
 | token_type |Incluido si `response_type` incluye `token`.  Siempre será `Bearer`. |
-| expires_in |Incluido si `response_type` incluye `token`.  Indica el número de segundos que el token es válido para el almacenamiento en caché. |
-| ámbito |Incluido si `response_type` incluye `token`.  Indica los ámbitos para los que será válido access_token. |
-| ID_token |El id_token que solicitó la aplicación. Puede usar el id_token para comprobar la identidad del usuario y comenzar una sesión con el usuario.  En [Protocolos de la versión 2.0: OpenID Connect](active-directory-v2-tokens.md), se incluyen más detalles acerca de id_tokens y su contenido. |
-| state |Si se incluye un parámetro de estado en la solicitud, debería aparecer el mismo valor en la respuesta. La aplicación debe comprobar que los valores de estado de la solicitud y de la respuesta son idénticos. |
+| expires_in |Incluido si `response_type` incluye `token`.  Indica el número de Hola de token de hello es válido, para almacenar en caché con fines de segundos. |
+| ámbito |Incluido si `response_type` incluye `token`.  Indica los ámbitos de Hola para qué hello access_token será válido. |
+| ID_token |Hola id_token que Hola aplicación solicitada. Puede usar la identidad del usuario de hello id_token tooverify hello y empezar una sesión de usuario de Hola.  Obtener más detalles sobre id_tokens y su contenido se incluye en hello [v2.0 referencia del token de punto de conexión](active-directory-v2-tokens.md). |
+| state |Si un parámetro de estado se incluye en la solicitud de hello, Hola debe aparecer el mismo valor en respuesta de Hola. aplicación Hello debe comprobar que los valores de estado de hello en hello solicitud y respuesta son idénticos. |
 
 #### Respuesta de error
-Las respuestas de error también pueden enviarse al `redirect_uri` para que la aplicación pueda controlarlas adecuadamente:
+Las respuestas de error también se pueden enviar toohello `redirect_uri` por lo que puede controlar aplicación hello correctamente:
 
 ```
 GET https://localhost/myapp/#
@@ -115,31 +115,31 @@ error=access_denied
 &error_description=the+user+canceled+the+authentication
 ```
 
-| . | Description |
+| Parámetro | Description |
 | --- | --- |
-| error |Una cadena de código de error que puede utilizarse para clasificar los tipos de errores que se producen y para reaccionar ante ellos. |
-| error_description |Un mensaje de error específico que puede ayudar a un desarrollador a identificar la causa de un error de autenticación. |
+| error |Una cadena de código de error que puede ser utilizados tooclassify tipos de errores que se producen y puede ser usado tooreact tooerrors. |
+| error_description |Un mensaje de error específico que puede ayudar a un desarrollador para identificar la causa de Hola de un error de autenticación. |
 
-## Validar el id_token
-Recibir un solo id_token no es suficiente para autenticar al usuario; debe validar la firma del id_token y comprobar las notificaciones en el token según los requisitos de su aplicación.  El punto de conexión v2.0 usa [tokens web JSON (JWT)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) y criptografía de clave pública para firmar los tokens y comprobar que son válidos.
+## Validar hello id_token
+Simplemente recibe un id_token no es suficiente tooauthenticate Hola usuario debe validar la firma del id_token hello y comprobar notificaciones de Hola de token de hello según los requisitos de la aplicación.  Hola v2.0 extremo utiliza [Tokens de Web JSON (Jwt)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) y públicos tokens toosign de criptografía de clave y compruebe que son válidos.
 
-Puede elegir validar el `id_token` en el código de cliente, pero lo habitual es enviar el `id_token` a un servidor back-end y realizar allí la validación.  Una vez haya validado la firma del id_token, se le solicitará que compruebe algunas notificaciones:  Para más información, consulte [Referencia de los tokens de v2.0](active-directory-v2-tokens.md), incluidas las secciones [Validación de los tokens](active-directory-v2-tokens.md#validating-tokens) e [Información importante sobre la sustitución de la clave de firma](active-directory-v2-tokens.md#validating-tokens).  Hay al menos una disponible para la mayoría de los lenguajes y las plataformas.
-<!--TODO: Improve the information on this-->
+Puede elegir hello toovalidate `id_token` en el código de cliente, pero una práctica común es hello toosend `id_token` tooa servidor de back-end y realizar la validación de hello no existe.  Una vez que haya validado firma Hola de hello id_token, hay algunas notificaciones que será necesario tooverify.  Vea hello [referencia del token v2.0](active-directory-v2-tokens.md) para obtener más información, incluidos los [validar Tokens](active-directory-v2-tokens.md#validating-tokens) y [importante información sobre la firma de sustitución de clave](active-directory-v2-tokens.md#validating-tokens).  Hay al menos una disponible para la mayoría de los lenguajes y las plataformas.
+<!--TODO: Improve hello information on this-->
 
-Se recomienda que valide notificaciones adicionales según su escenario.  Algunas validaciones comunes incluyen:
+También puede llamar toovalidate demandas adicionales según el escenario.  Algunas validaciones comunes incluyen:
 
-* Asegurarse de que la organización/el usuario se ha registrado en la aplicación.
-* Asegurarse de que el usuario tiene la autorización/los privilegios adecuados
+* Garantizar Hola usuario u organización ha registrado para la aplicación hello.
+* Usuario de hello asegurar que tiene autorización o los privilegios adecuados
 * Asegurarse de que se haya producido un determinado nivel de autenticación, como la autenticación multifactor.
 
-Para más información sobre las notificaciones en un id_token, consulte [Referencia de los tokens de v2.0](active-directory-v2-tokens.md).
+Para obtener más información sobre notificaciones de hello en un id_token, vea hello [v2.0 referencia del token de punto de conexión](active-directory-v2-tokens.md).
 
-Una vez que haya validado completamente el id_token, puede iniciar una sesión con el usuario y usar las notificaciones en el id_token para obtener información sobre el usuario en su aplicación.  Esta información puede utilizarse para su visualización, registros, autorizaciones, etc.
+Una vez que haya validado completamente id_token hello, puede empezar una sesión de usuario de Hola y utilizar notificaciones de hello en hello id_token tooobtain saber usuario hello en la aplicación.  Esta información puede utilizarse para su visualización, registros, autorizaciones, etc.
 
 ## Obtención de tokens de acceso
-Ahora que ha iniciado la sesión del usuario en su aplicación de una página, puede obtener tokens de acceso para llamar a las API web protegidas por Azure AD, como las de [Microsoft Graph](https://graph.microsoft.io).  Incluso si ya recibió un token mediante el `token` response_type, puede usar este método para adquirir tokens para recursos adicionales sin tener que redirigir al usuario para que vuelva a iniciar sesión.
+Ahora que ha firmado usuario hello en su aplicación de una página, puede obtener tokens de acceso web que realiza la llamada API protegidas por Azure AD, como hello [Microsoft Graph](https://graph.microsoft.io).  Incluso si ya recibió un token con hello `token` response_type, se pueden utilizar este método tooacquire tokens tooadditional los recursos sin tener tooredirect Hola usuario toosign nuevo.
 
-En el flujo normal de OpenID Connect y OAuth, haría esto mediante una solicitud al punto de conexión v2.0 `/token` .  Sin embargo, el punto de conexión v2.0 no admite solicitudes CORS, así que las llamadas a AJAX para obtener y actualizar los tokens están fuera de nuestro alcance.  En su lugar, puede usar el flujo implícito en un iframe oculto para obtener nuevos tokens para otras API web: 
+En el flujo OpenID Connect y OAuth normal hello, para hacerlo realizando un v2.0 de toohello solicitud `/token` punto de conexión.  Sin embargo, el punto de conexión de hello v2.0 no compatibilidad con CORS las solicitudes, para realizar AJAX llamadas tooget y tokens de actualización está fuera del pregunta Hola.  En su lugar, puede usar flujo implícito de hello en un iframe oculto tooget nuevos tokens para otras API web: 
 
 ```
 // Line breaks for legibility only
@@ -156,7 +156,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 
 > [!TIP]
-> Pruebe a copiar y pegar la siguiente solicitud en una pestaña del explorador. (No olvide reemplazar los valores `domain_hint` y `login_hint` por los valores correctos para el usuario).
+> Intente copiar & Pegar Hola por debajo de la solicitud en una pestaña del explorador. (No olvide hello tooreplace `domain_hint` hello y `login_hint` valores con hello corrigen valores para el usuario)
 > 
 > 
 
@@ -166,19 +166,19 @@ https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de7
 
 | Parámetro |  | Description |
 | --- | --- | --- |
-| tenant |requerido |El valor `{tenant}` de la ruta de acceso de la solicitud se puede usar para controlar quién puede iniciar sesión en la aplicación.  Los valores permitidos son `common`, `organizations`, `consumers` y los identificadores de inquilinos.  Para obtener más información, consulte los [conceptos básicos sobre el protocolo](active-directory-v2-protocols.md#endpoints). |
-| client_id |requerido |El identificador de la aplicación que el portal de registro ([apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)) asignó a su aplicación. |
+| tenant |requerido |Hola `{tenant}` valor de ruta de acceso de saludo de solicitud de hello puede ser usado toocontrol que puede iniciar sesión en la aplicación hello.  Hola valores permitidos son `common`, `organizations`, `consumers`y los identificadores de inquilinos.  Para obtener más información, consulte los [conceptos básicos sobre el protocolo](active-directory-v2-protocols.md#endpoints). |
+| client_id |requerido |Hola Id. de aplicación ese portal de registro de hello ([apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)) asignado a la aplicación. |
 | response_type |requerido |Debe incluir `id_token` para el inicio de sesión en OpenID Connect.  También puede incluir otros elementos response_type como `code`. |
-| redirect_uri |recomendado |El redirect_uri de su aplicación, a donde su aplicación puede enviar y recibir las respuestas de autenticación.  Debe coincidir exactamente con uno de los redirect_uris que registró en el portal, con la excepción de que debe estar codificado como URL. |
-| ámbito |requerido |Una lista de ámbitos separada por espacios.  Para obtener los tokens, incluya todos los [ámbitos](active-directory-v2-scopes.md) que necesita para el recurso de interés. |
-| response_mode |recomendado |Especifica el método que debe usarse para enviar el token resultante de nuevo a la aplicación.  Puede ser `query`, `form_post` o `fragment`. |
-| state |recomendado |Un valor incluido en la solicitud que se devolverá también en la respuesta del token.  Puede ser una cadena de cualquier contenido que desee.  Se utiliza normalmente un valor único generado de forma aleatoria para evitar los ataques de falsificación de solicitudes entre sitios.  El estado también se usa para codificar información sobre el estado del usuario en la aplicación antes de que se haya producido la solicitud de autenticación, por ejemplo, la página o vista en la que estaban. |
-| valor de seguridad |requerido |Un valor incluido en la solicitud, generada por la aplicación, que se incluirá en el id_token resultante como una notificación.  La aplicación puede comprobar este valor para mitigar los ataques de reproducción de token.  Normalmente, el valor es una cadena única aleatoria que puede utilizarse para identificar el origen de la solicitud. |
-| símbolo del sistema |requerido |Para actualizar y obtener tokens en un iframe oculto, debe usar `prompt=none` para asegurarse de que el iframe no se bloquea en la página de inicio de sesión de v2.0 y vuelve inmediatamente. |
-| login_hint |requerido |Para actualizar y obtener tokens en un iframe oculto, tiene que incluir el nombre de usuario en esta sugerencia para distinguir entre varias sesiones que el usuario pueda tener en un momento dado. Puede extraer el nombre de usuario de un inicio de sesión anterior mediante la notificación `preferred_username`. |
-| domain_hint |requerido |Puede ser `consumers` o `organizations`.  Para actualizar y obtener tokens en un iframe oculto, tiene que incluir el domain_hint en la solicitud.  Debe extraer la notificación `tid` de id_token de un inicio de sesión anterior para determinar qué valor va a usar.  Si el valor de la notificación `tid` es `9188040d-6c67-4c5b-b112-36a304b66dad`, debe usar `domain_hint=consumers`.  De lo contrario, use `domain_hint=organizations`. |
+| redirect_uri |recomendado |Hola redirect_uri de la aplicación, donde las respuestas de autenticación pueden ser enviadas y recibidas por la aplicación.  Debe coincidir exactamente con uno de redirect_uris Hola que registró en el portal de hello, salvo que debe ser la dirección url codificada. |
+| ámbito |requerido |Una lista de ámbitos separada por espacios.  Para obtener los tokens, incluir todos los [ámbitos](active-directory-v2-scopes.md) requieren para el recurso de Hola de interés. |
+| response_mode |recomendado |Especifica el método de Hola que debe ser usado toosend Hola resultante token tooyour back-app.  Puede ser `query`, `form_post` o `fragment`. |
+| state |recomendado |Un valor incluido en la solicitud de Hola que también se devolverán en respuesta de token de Hola.  Puede ser una cadena de cualquier contenido que desee.  Se utiliza normalmente un valor único generado de forma aleatoria para evitar los ataques de falsificación de solicitudes entre sitios.  estado de Hello también es tooencode usa información acerca del estado del usuario de hello en la aplicación hello antes de que se ha producido en solicitud de autenticación de hello, como página de Hola o que estaban en la vista. |
+| valor de seguridad |requerido |Un valor incluido en solicitud de hello, generado por la aplicación hello, que se incluirán en hello id_token resultante como una notificación.  aplicación Hello, a continuación, puede comprobar que los ataques de reproducción de tokens de toomitigate este valor.  valor de Hello suele ser una cadena aleatoria única que puede ser usado tooidentify Hola origen de solicitud de Hola. |
+| símbolo del sistema |requerido |Para actualizar y obtener tokens en un iframe oculto, debe usar `prompt=none` tooensure que Hola iframe no responder al inicio de sesión de hello v2.0 en la página y se devuelve inmediatamente. |
+| login_hint |requerido |Para actualizar y obtener tokens en un iframe oculto, debe incluir Hola nombre del usuario con hello en esta sugerencia en orden toodistinguish entre varias sesiones de usuario de hello puede tener en un momento dado en el tiempo. Puede extraer el nombre de usuario de Hola desde un inicio de sesión anterior con hello `preferred_username` de notificación. |
+| domain_hint |requerido |Puede ser `consumers` o `organizations`.  Para actualizar y obtener tokens en un iframe oculto, debe incluir domain_hint hello en solicitud de Hola.  Debe extraer hello `tid` qué toouse valor de notificación de hello id_token de un toodetermine de inicio de sesión anterior.  Si hello `tid` es el valor de notificación `9188040d-6c67-4c5b-b112-36a304b66dad`, debe usar `domain_hint=consumers`.  De lo contrario, use `domain_hint=organizations`. |
 
-Gracias al parámetro `prompt=none` , esta solicitud tendrá éxito o dará error inmediatamente y volverá a la aplicación.  Se enviará una respuesta correcta a la aplicación en el `redirect_uri` indicado, mediante el método especificado en el parámetro `response_mode`.
+Gracias toohello `prompt=none` parámetro, esta solicitud ya sea correctamente o produce un error inmediato y devolver la aplicación de tooyour.  Se enviará a una respuesta correcta aplicación tooyour en hello indicado `redirect_uri`, mediante el método hello especificado en hello `response_mode` parámetro.
 
 #### Respuesta correcta
 Una respuesta correcta al usar `response_mode=fragment` tiene el siguiente aspecto:
@@ -194,14 +194,14 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 
 | . | Description |
 | --- | --- |
-| access_token |El token que solicitó la aplicación. |
+| access_token |Hola símbolo (token) de esa aplicación hello solicitada. |
 | token_type |Siempre será `Bearer`. |
-| state |Si se incluye un parámetro de estado en la solicitud, debería aparecer el mismo valor en la respuesta. La aplicación debe comprobar que los valores de estado de la solicitud y de la respuesta son idénticos. |
-| expires_in |Durante cuánto tiempo es válido el token de acceso (en segundos). |
-| ámbito |Los ámbitos para los que el token de acceso es válido. |
+| state |Si un parámetro de estado se incluye en la solicitud de hello, Hola debe aparecer el mismo valor en respuesta de Hola. aplicación Hello debe comprobar que los valores de estado de hello en hello solicitud y respuesta son idénticos. |
+| expires_in |¿Durante cuánto tiempo el token de acceso de hello es válida (en segundos). |
+| ámbito |ámbitos de Hola Hola token de acceso es válida para. |
 
 #### Respuesta de error
-Las respuestas de error también pueden enviarse al `redirect_uri` para que la aplicación pueda controlarlas adecuadamente.  En el caso de `prompt=none`, un error esperado será:
+Las respuestas de error también se pueden enviar toohello `redirect_uri` por lo que la aplicación hello puede controlarlos adecuadamente.  En caso de hello de `prompt=none`, será un error inesperado:
 
 ```
 GET https://localhost/myapp/#
@@ -211,16 +211,16 @@ error=user_authentication_required
 
 | Parámetro | Description |
 | --- | --- |
-| error |Una cadena de código de error que puede utilizarse para clasificar los tipos de errores que se producen y para reaccionar ante ellos. |
-| error_description |Un mensaje de error específico que puede ayudar a un desarrollador a identificar la causa de un error de autenticación. |
+| error |Una cadena de código de error que puede ser utilizados tooclassify tipos de errores que se producen y puede ser usado tooreact tooerrors. |
+| error_description |Un mensaje de error específico que puede ayudar a un desarrollador para identificar la causa de Hola de un error de autenticación. |
 
-Si recibe este error en la solicitud de iframe, el usuario debe iniciar sesión de nuevo de manera interactiva para recuperar un nuevo token.  Puede elegir tratar este caso de la manera que más sentido tenga para su aplicación.
+Si recibe este error en la solicitud de iframe de hello, Hola usuario debe iniciar interactivamente en nuevo tooretrieve un nuevo token.  Puede elegir toohandle este caso en la forma que tenga sentido para la aplicación.
 
 ## Actualización de tokens
-Tanto los elementos `id_token` como `access_token` caducan tras un corto período de tiempo, así que su aplicación debe estar preparada para actualizar estos tokens de manera periódica.  Para actualizar cualquier tipo de token, puede realizar la misma solicitud de iframe oculto que antes mediante el parámetro `prompt=none` para controlar el comportamiento de Azure AD.  Si quiere recibir un nuevo `id_token`, asegúrese de usar `response_type=id_token` y `scope=openid`, así como un parámetro `nonce`.
+Ambos `id_token`s y `access_token`s expirará tras un breve período de tiempo, por lo que la aplicación debe estar preparada toorefresh estos tokens periódicamente.  toorefresh escriba de símbolo (token), puede realizar Hola misma solicitud iframe oculto desde encima utilizar hello `prompt=none` parámetro comportamiento toocontrol de Azure AD.  Si desea que tooreceive un nuevo `id_token`, ser seguro toouse `response_type=id_token` y `scope=openid`, así como un `nonce` parámetro.
 
 ## Envío de una solicitud de cierre de sesión
-OpenIdConnect `end_session_endpoint` permite que la aplicación envíe una solicitud al punto de conexión v2.0 para finalizar una sesión de usuario y borrar las cookies establecidas por el punto de conexión v2.0.  Para que un usuario cierre por completo la sesión de una aplicación web, la aplicación debe finalizar su propia sesión con el usuario (normalmente borrando una caché de tokens o eliminando las cookies) y luego redirigir el explorador para:
+Hola OpenIdConnect `end_session_endpoint` permite que su aplicación toosend un tooend de punto de conexión de solicitud toohello v2.0 sesión y borrar cookies de un usuario establecen el punto de conexión de hello v2.0.  toofully inicie sesión un usuario de una aplicación web, la aplicación debe finalizar su propia sesión de usuario de hello (normalmente al borrar una caché de tokens o quitar las cookies) y, a continuación, redirigir el Explorador de Hola a:
 
 ```
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/logout?post_logout_redirect_uri=https://localhost/myapp/
@@ -228,5 +228,5 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/logout?post_logout_redire
 
 | Parámetro |  | Description |
 | --- | --- | --- |
-| tenant |requerido |El valor `{tenant}` de la ruta de acceso de la solicitud se puede usar para controlar quién puede iniciar sesión en la aplicación.  Los valores permitidos son `common`, `organizations`, `consumers` y los identificadores de inquilinos.  Para obtener más información, consulte los [conceptos básicos sobre el protocolo](active-directory-v2-protocols.md#endpoints). |
-| post_logout_redirect_uri | recomendado | La dirección URL a la que se debe redirigir al usuario después de completar el cierre de sesión. Este valor debe coincidir con uno de los URI de redirección registrados en la aplicación. Si no se incluye, el usuario verá un mensaje genérico del punto de conexión v2.0. |
+| tenant |requerido |Hola `{tenant}` valor de ruta de acceso de saludo de solicitud de hello puede ser usado toocontrol que puede iniciar sesión en la aplicación hello.  Hola valores permitidos son `common`, `organizations`, `consumers`y los identificadores de inquilinos.  Para obtener más información, consulte los [conceptos básicos sobre el protocolo](active-directory-v2-protocols.md#endpoints). |
+| post_logout_redirect_uri | recomendado | dirección URL de Hola que Hola usuario se debe devolver tooafter cierre de sesión se completa. Este valor debe coincidir con uno de redirección de hello que URI registrado para la aplicación hello. Si no se incluye usuario Hola se mostrará un mensaje genérico por el punto de conexión de hello v2.0. |

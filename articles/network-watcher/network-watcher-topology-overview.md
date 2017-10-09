@@ -1,6 +1,6 @@
 ---
-title: "Introducción a la topología de Azure Network Watcher | Microsoft Docs"
-description: "En esta página se proporciona una introducción a las funcionalidades de la topología de Network Watcher."
+title: aaaIntroduction tootopology en Monitor de red de Azure | Documentos de Microsoft
+description: "Esta página proporciona una visión general de las capacidades de topología de Monitor de red de Hola"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,31 +14,31 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-ms.openlocfilehash: 42443f614b76b8180ac163b9889163021adbf048
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7fa1c5518e4a25a5db999d898a9ee19fd0121db7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="introduction-to-topology-in-azure-network-watcher"></a><span data-ttu-id="df90a-103">Introducción a la topología de Azure Network Watcher</span><span class="sxs-lookup"><span data-stu-id="df90a-103">Introduction to topology in Azure Network Watcher</span></span>
+# <a name="introduction-tootopology-in-azure-network-watcher"></a><span data-ttu-id="177a4-103">Introducción tootopology en Monitor de red de Azure</span><span class="sxs-lookup"><span data-stu-id="177a4-103">Introduction tootopology in Azure Network Watcher</span></span>
 
-<span data-ttu-id="df90a-104">La topología devuelve un gráfo de recursos de red de una red virtual.</span><span class="sxs-lookup"><span data-stu-id="df90a-104">Topology returns a graph of network resources in a virtual network.</span></span> <span data-ttu-id="df90a-105">El grafo traza la interconexión entre los recursos para representar la conectividad de red de un extremo a otro.</span><span class="sxs-lookup"><span data-stu-id="df90a-105">The graph depicts the interconnection between the resources to represent the end to end network connectivity.</span></span>
+<span data-ttu-id="177a4-104">La topología devuelve un gráfo de recursos de red de una red virtual.</span><span class="sxs-lookup"><span data-stu-id="177a4-104">Topology returns a graph of network resources in a virtual network.</span></span> <span data-ttu-id="177a4-105">gráfico de Hola traza la interconexión Hola entre conectividad de red tooend de hello recursos toorepresent Hola final.</span><span class="sxs-lookup"><span data-stu-id="177a4-105">hello graph depicts hello interconnection between hello resources toorepresent hello end tooend network connectivity.</span></span>
 
 ![información general de la topología][1]
 
-<span data-ttu-id="df90a-107">En el portal, la topología devuelve los objetos de recursos por cada red virtual.</span><span class="sxs-lookup"><span data-stu-id="df90a-107">In the portal, Topology returns the resource objects on a per virtual network basis.</span></span> <span data-ttu-id="df90a-108">Las relaciones se representan mediante líneas entre los recursos. No se mostrarán los recursos fuera de la región de Network Watcher, aunque estén en el grupo de recursos.</span><span class="sxs-lookup"><span data-stu-id="df90a-108">The relationships are depicted by lines between the resources Resources outside of the Network Watcher region, even if in the resource group will not be displayed.</span></span> <span data-ttu-id="df90a-109">Los recursos que se devuelven en la vista de portal son un subconjunto de los componentes de red que se representan.</span><span class="sxs-lookup"><span data-stu-id="df90a-109">The resources returned in the portal view are a subset of the networking components that are graphed.</span></span> <span data-ttu-id="df90a-110">Para ver la lista completa de los recursos de red, puede usar [PowerShell](network-watcher-topology-powershell.md) o [REST](network-watcher-topology-rest.md).</span><span class="sxs-lookup"><span data-stu-id="df90a-110">To see the full list of networking resources you can use [PowerShell](network-watcher-topology-powershell.md) or [REST](network-watcher-topology-rest.md)</span></span>
+<span data-ttu-id="177a4-107">En el portal de hello, topología devuelve objetos de recursos de hello en un cada red virtual.</span><span class="sxs-lookup"><span data-stu-id="177a4-107">In hello portal, Topology returns hello resource objects on a per virtual network basis.</span></span> <span data-ttu-id="177a4-108">relaciones de Hola se representan mediante líneas entre recursos de hello recursos fuera de la región de Monitor de red de hello, aunque en recursos de hello grupo no se mostrará.</span><span class="sxs-lookup"><span data-stu-id="177a4-108">hello relationships are depicted by lines between hello resources Resources outside of hello Network Watcher region, even if in hello resource group will not be displayed.</span></span> <span data-ttu-id="177a4-109">recursos de Hola devueltos en la vista de hello portal son un subconjunto de los componentes de red de Hola que se representan.</span><span class="sxs-lookup"><span data-stu-id="177a4-109">hello resources returned in hello portal view are a subset of hello networking components that are graphed.</span></span> <span data-ttu-id="177a4-110">lista completa de hello toosee de recursos de red puede usar [PowerShell](network-watcher-topology-powershell.md) o [REST](network-watcher-topology-rest.md)</span><span class="sxs-lookup"><span data-stu-id="177a4-110">toosee hello full list of networking resources you can use [PowerShell](network-watcher-topology-powershell.md) or [REST](network-watcher-topology-rest.md)</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="df90a-111">Se requiere una instancia de Network Watcher en cada región en que desea ejecutar la topología.</span><span class="sxs-lookup"><span data-stu-id="df90a-111">An instance of Network Watcher is required in each region that you want to run Topology on.</span></span>
+> <span data-ttu-id="177a4-111">Se requiere una instancia del Monitor de red en cada región que desee toorun topología en.</span><span class="sxs-lookup"><span data-stu-id="177a4-111">An instance of Network Watcher is required in each region that you want toorun Topology on.</span></span>
 
-<span data-ttu-id="df90a-112">Mientras los recursos devuelven la conexión entre ellos, se modelan con dos relaciones.</span><span class="sxs-lookup"><span data-stu-id="df90a-112">As resources are returned the connection between them are modeled under two relationships.</span></span>
+<span data-ttu-id="177a4-112">Los recursos se devuelven conexión Hola entre ellos se modelan en dos relaciones.</span><span class="sxs-lookup"><span data-stu-id="177a4-112">As resources are returned hello connection between them are modeled under two relationships.</span></span>
 
-- <span data-ttu-id="df90a-113">**Contención**: por ejemplo, la red virtual contiene un subconjunto que incluye una NIC.</span><span class="sxs-lookup"><span data-stu-id="df90a-113">**Containment** - Example: Virtual Network contains a Subnet which contains a NIC</span></span>
-- <span data-ttu-id="df90a-114">**Asociación**: por ejemplo, una NIC está asociada a una máquina virtual.</span><span class="sxs-lookup"><span data-stu-id="df90a-114">**Associated** - Example: A NIC is associated with a VM</span></span>
+- <span data-ttu-id="177a4-113">**Contención**: por ejemplo, la red virtual contiene un subconjunto que incluye una NIC.</span><span class="sxs-lookup"><span data-stu-id="177a4-113">**Containment** - Example: Virtual Network contains a Subnet which contains a NIC</span></span>
+- <span data-ttu-id="177a4-114">**Asociación**: por ejemplo, una NIC está asociada a una máquina virtual.</span><span class="sxs-lookup"><span data-stu-id="177a4-114">**Associated** - Example: A NIC is associated with a VM</span></span>
 
-### <a name="next-steps"></a><span data-ttu-id="df90a-115">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="df90a-115">Next steps</span></span>
+### <a name="next-steps"></a><span data-ttu-id="177a4-115">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="177a4-115">Next steps</span></span>
 
-<span data-ttu-id="df90a-116">Para obtener información sobre cómo usar PowerShell para recuperar la vista de topología, visite [Visualización de la topología de Network Watcher con PowerShell](network-watcher-topology-powershell.md).</span><span class="sxs-lookup"><span data-stu-id="df90a-116">Learn how to use PowerShell to retrieve the Topology view by visiting [Network Watcher topology with PowerShell](network-watcher-topology-powershell.md)</span></span>
+<span data-ttu-id="177a4-116">Obtenga información acerca de cómo ver toouse PowerShell tooretrieve Hola topología visitando [topología de Monitor de red con PowerShell](network-watcher-topology-powershell.md)</span><span class="sxs-lookup"><span data-stu-id="177a4-116">Learn how toouse PowerShell tooretrieve hello Topology view by visiting [Network Watcher topology with PowerShell](network-watcher-topology-powershell.md)</span></span>
 
 <!--Image references-->
 

@@ -1,6 +1,6 @@
 ---
-title: Extender el experimento con R | Microsoft Docs
-description: "Cómo extender la funcionalidad de Estudio de aprendizaje automático de Azure mediante el lenguaje R con el módulo Ejecutar script de R."
+title: aaaExtend su experimento con R | Documentos de Microsoft
+description: "La funcionalidad de hello tooextend de estudio de aprendizaje automático de Azure a través del lenguaje de hello R utilizando Hola módulo ejecutar Script de R."
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,46 +14,46 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: garye
-ms.openlocfilehash: fe207ef917980be8b554ad9c08176d108b19fb71
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 396489f26f367a744922af65e04f056c7afa1399
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="extend-your-experiment-with-r"></a><span data-ttu-id="a7954-103">Extender el experimento con R</span><span class="sxs-lookup"><span data-stu-id="a7954-103">Extend your experiment with R</span></span>
-<span data-ttu-id="a7954-104">Puede extender la funcionalidad de Azure Machine Learning Studio mediante el lenguaje R con el módulo [Ejecutar script de R][execute-r-script].</span><span class="sxs-lookup"><span data-stu-id="a7954-104">You can extend the functionality of Azure Machine Learning Studio through the R language by using the [Execute R Script][execute-r-script] module.</span></span>
+# <a name="extend-your-experiment-with-r"></a><span data-ttu-id="4dd77-103">Extender el experimento con R</span><span class="sxs-lookup"><span data-stu-id="4dd77-103">Extend your experiment with R</span></span>
+<span data-ttu-id="4dd77-104">Puede ampliar la funcionalidad de Hola de estudio de aprendizaje automático de Azure a través del lenguaje de hello R utilizando hello [ejecutar Script de R] [ execute-r-script] módulo.</span><span class="sxs-lookup"><span data-stu-id="4dd77-104">You can extend hello functionality of Azure Machine Learning Studio through hello R language by using hello [Execute R Script][execute-r-script] module.</span></span>
 
-<span data-ttu-id="a7954-105">Este módulo acepta varios conjuntos de datos de entrada y genera un solo conjunto de datos como salida.</span><span class="sxs-lookup"><span data-stu-id="a7954-105">This module accepts multiple input datasets and yields a single dataset as output.</span></span> <span data-ttu-id="a7954-106">Puede escribir un script de R en el parámetro **Script de R** del módulo [Ejecutar script de R][execute-r-script].</span><span class="sxs-lookup"><span data-stu-id="a7954-106">You can type an R script into the **R Script** parameter of the [Execute R Script][execute-r-script] module.</span></span>
+<span data-ttu-id="4dd77-105">Este módulo acepta varios conjuntos de datos de entrada y genera un solo conjunto de datos como salida.</span><span class="sxs-lookup"><span data-stu-id="4dd77-105">This module accepts multiple input datasets and yields a single dataset as output.</span></span> <span data-ttu-id="4dd77-106">Puede escribir un script de R en hello **Script de R** parámetro de hello [ejecutar Script de R] [ execute-r-script] módulo.</span><span class="sxs-lookup"><span data-stu-id="4dd77-106">You can type an R script into hello **R Script** parameter of hello [Execute R Script][execute-r-script] module.</span></span>
 
-<span data-ttu-id="a7954-107">Para tener acceso a cada puerto de entrada del módulo, se usa un código similar al siguiente:</span><span class="sxs-lookup"><span data-stu-id="a7954-107">You access each input port of the module by using code similar to the following:</span></span>
+<span data-ttu-id="4dd77-107">Para acceder a cada puerto de entrada del módulo de hello mediante código similar toohello siguiente:</span><span class="sxs-lookup"><span data-stu-id="4dd77-107">You access each input port of hello module by using code similar toohello following:</span></span>
 
     dataset1 <- maml.mapInputPort(1)
 
-## <a name="listing-all-currently-installed-packages"></a><span data-ttu-id="a7954-108">Enumeración de todos los paquetes actualmente instalados</span><span class="sxs-lookup"><span data-stu-id="a7954-108">Listing all currently-installed packages</span></span>
-<span data-ttu-id="a7954-109">La lista de paquetes instalados puede cambiar.</span><span class="sxs-lookup"><span data-stu-id="a7954-109">The list of installed packages can change.</span></span> <span data-ttu-id="a7954-110">Puede encontrar una lista de los paquetes instalados actualmente en [R Packages Supported by Azure Machine Learning](https://msdn.microsoft.com/library/azure/mt741980.aspx) (Paquetes de R compatibles con Azure Machine Learning).</span><span class="sxs-lookup"><span data-stu-id="a7954-110">A list of currently installed packages can be found in [R Packages Supported by Azure Machine Learning](https://msdn.microsoft.com/library/azure/mt741980.aspx).</span></span>
+## <a name="listing-all-currently-installed-packages"></a><span data-ttu-id="4dd77-108">Enumeración de todos los paquetes actualmente instalados</span><span class="sxs-lookup"><span data-stu-id="4dd77-108">Listing all currently-installed packages</span></span>
+<span data-ttu-id="4dd77-109">puede cambiar la lista de Hola de paquetes instalados.</span><span class="sxs-lookup"><span data-stu-id="4dd77-109">hello list of installed packages can change.</span></span> <span data-ttu-id="4dd77-110">Puede encontrar una lista de los paquetes instalados actualmente en [R Packages Supported by Azure Machine Learning](https://msdn.microsoft.com/library/azure/mt741980.aspx) (Paquetes de R compatibles con Azure Machine Learning).</span><span class="sxs-lookup"><span data-stu-id="4dd77-110">A list of currently installed packages can be found in [R Packages Supported by Azure Machine Learning](https://msdn.microsoft.com/library/azure/mt741980.aspx).</span></span>
 
-<span data-ttu-id="a7954-111">También puede obtener la lista completa y actual de los paquetes instalados especificando el código siguiente en el módulo [Ejecutar script de R][execute-r-script]:</span><span class="sxs-lookup"><span data-stu-id="a7954-111">You also can get the complete, current list of installed packages by entering the following code into the [Execute R Script][execute-r-script] module:</span></span>
+<span data-ttu-id="4dd77-111">También puede obtener lista de completa y actualizada de Hola de los paquetes instalados escribiendo Hola siguiente código en hello [ejecutar Script de R] [ execute-r-script] módulo:</span><span class="sxs-lookup"><span data-stu-id="4dd77-111">You also can get hello complete, current list of installed packages by entering hello following code into hello [Execute R Script][execute-r-script] module:</span></span>
 
     out <- data.frame(installed.packages(,,,fields="Description"))
     maml.mapOutputPort("out")
 
-<span data-ttu-id="a7954-112">Esto acción envía la lista de paquetes al puerto de salida del módulo [Ejecutar script R][execute-r-script].</span><span class="sxs-lookup"><span data-stu-id="a7954-112">This sends the list of packages to the output port of the [Execute R Script][execute-r-script] module.</span></span>
-<span data-ttu-id="a7954-113">Para ver la lista de paquetes, conecte un módulo de conversión, como [Convertir a CSV][convert-to-csv] con la salida izquierda del módulo [Ejecutar script R][execute-r-script], ejecute el experimento y luego haga clic en la salida del módulo de conversión y seleccione **Descargar**.</span><span class="sxs-lookup"><span data-stu-id="a7954-113">To view the package list, connect a conversion module such as [Convert to CSV][convert-to-csv] to the left output of the [Execute R Script][execute-r-script] module, run the experiment, then click the output of the conversion module and select **Download**.</span></span> 
+<span data-ttu-id="4dd77-112">Esto envía la lista de hello paquetes toohello de puerto de salida de hello [ejecutar Script de R] [ execute-r-script] módulo.</span><span class="sxs-lookup"><span data-stu-id="4dd77-112">This sends hello list of packages toohello output port of hello [Execute R Script][execute-r-script] module.</span></span>
+<span data-ttu-id="4dd77-113">paquete de hello tooview lista, conecte un módulo de conversión como [convertir tooCSV] [ convert-to-csv] toohello dejado la salida de hello [ejecutar Script de R] [ execute-r-script]módulo, ejecute el experimento de hello, a continuación, haga clic en la salida de hello del módulo de conversión de Hola y seleccione **descargar**.</span><span class="sxs-lookup"><span data-stu-id="4dd77-113">tooview hello package list, connect a conversion module such as [Convert tooCSV][convert-to-csv] toohello left output of hello [Execute R Script][execute-r-script] module, run hello experiment, then click hello output of hello conversion module and select **Download**.</span></span> 
 
-![Descarga de los resultados del módulo Convertir en CSV](./media/machine-learning-extend-your-experiment-with-r/download-package-list.png)
+![Descargar la salida del módulo "Convertir tooCSV"](./media/machine-learning-extend-your-experiment-with-r/download-package-list.png)
 
 
 <!--
-For convenience, here is the [current full list with version numbers in Excel format](http://az754797.vo.msecnd.net/docs/RPackages.xlsx).
+For convenience, here is hello [current full list with version numbers in Excel format](http://az754797.vo.msecnd.net/docs/RPackages.xlsx).
 -->
 
-## <a name="importing-packages"></a><span data-ttu-id="a7954-115">Importación de paquetes</span><span class="sxs-lookup"><span data-stu-id="a7954-115">Importing packages</span></span>
-<span data-ttu-id="a7954-116">Puede importar paquetes que no se hayan instalado mediante el uso de los siguientes comandos en el módulo [Ejecutar script de R][execute-r-script]:</span><span class="sxs-lookup"><span data-stu-id="a7954-116">You can import packages that are not already installed by using the following commands in the [Execute R Script][execute-r-script] module:</span></span>
+## <a name="importing-packages"></a><span data-ttu-id="4dd77-115">Importación de paquetes</span><span class="sxs-lookup"><span data-stu-id="4dd77-115">Importing packages</span></span>
+<span data-ttu-id="4dd77-116">Puede importar paquetes que no se hayan instalado mediante el uso de hello siguientes comandos de hello [ejecutar Script de R] [ execute-r-script] módulo:</span><span class="sxs-lookup"><span data-stu-id="4dd77-116">You can import packages that are not already installed by using hello following commands in hello [Execute R Script][execute-r-script] module:</span></span>
 
     install.packages("src/my_favorite_package.zip", lib = ".", repos = NULL, verbose = TRUE)
     success <- library("my_favorite_package", lib.loc = ".", logical.return = TRUE, verbose = TRUE)
 
-<span data-ttu-id="a7954-117">donde el archivo `my_favorite_package.zip` contiene el paquete.</span><span class="sxs-lookup"><span data-stu-id="a7954-117">where the `my_favorite_package.zip` file contains your package.</span></span>
+<span data-ttu-id="4dd77-117">Hola donde `my_favorite_package.zip` archivo contiene el paquete.</span><span class="sxs-lookup"><span data-stu-id="4dd77-117">where hello `my_favorite_package.zip` file contains your package.</span></span>
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 

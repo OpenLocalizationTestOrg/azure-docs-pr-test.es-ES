@@ -1,6 +1,6 @@
 ---
-title: "Creación de un equilibrador de carga con conexión a Internet de Azure: PowerShell | Microsoft Docs"
-description: Aprenda a crear un equilibrador de carga accesible desde Internet en Resource Manager con PowerShell
+title: aaaCreate un orientado a Internet de Azure carga equilibrador - PowerShell | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toocreate una conexión a Internet equilibrador de carga en el Administrador de recursos mediante el uso de PowerShell"
 services: load-balancer
 documentationcenter: na
 author: kumudd
@@ -14,118 +14,118 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
-ms.openlocfilehash: f610afbdfac7b5dd9a1a5eb6812c86d8ce0d63e3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e4e0e5271bc83c23fc62c0910e784c57d2b30065
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <span data-ttu-id="249af-103"><a name="get-started"></a>Creación de un equilibrador de carga orientado a Internet en Resource Manager mediante PowerShell</span><span class="sxs-lookup"><span data-stu-id="249af-103"><a name="get-started"></a>Creating an Internet-facing load balancer in Resource Manager by using PowerShell</span></span>
+# <span data-ttu-id="bfabe-103"><a name="get-started"></a>Creación de un equilibrador de carga orientado a Internet en Resource Manager mediante PowerShell</span><span class="sxs-lookup"><span data-stu-id="bfabe-103"><a name="get-started"></a>Creating an Internet-facing load balancer in Resource Manager by using PowerShell</span></span>
 
 > [!div class="op_single_selector"]
-> * [<span data-ttu-id="249af-104">Portal</span><span class="sxs-lookup"><span data-stu-id="249af-104">Portal</span></span>](../load-balancer/load-balancer-get-started-internet-portal.md)
-> * [<span data-ttu-id="249af-105">PowerShell</span><span class="sxs-lookup"><span data-stu-id="249af-105">PowerShell</span></span>](../load-balancer/load-balancer-get-started-internet-arm-ps.md)
-> * [<span data-ttu-id="249af-106">CLI de Azure</span><span class="sxs-lookup"><span data-stu-id="249af-106">Azure CLI</span></span>](../load-balancer/load-balancer-get-started-internet-arm-cli.md)
-> * [<span data-ttu-id="249af-107">Plantilla</span><span class="sxs-lookup"><span data-stu-id="249af-107">Template</span></span>](../load-balancer/load-balancer-get-started-internet-arm-template.md)
+> * [<span data-ttu-id="bfabe-104">Portal</span><span class="sxs-lookup"><span data-stu-id="bfabe-104">Portal</span></span>](../load-balancer/load-balancer-get-started-internet-portal.md)
+> * [<span data-ttu-id="bfabe-105">PowerShell</span><span class="sxs-lookup"><span data-stu-id="bfabe-105">PowerShell</span></span>](../load-balancer/load-balancer-get-started-internet-arm-ps.md)
+> * [<span data-ttu-id="bfabe-106">CLI de Azure</span><span class="sxs-lookup"><span data-stu-id="bfabe-106">Azure CLI</span></span>](../load-balancer/load-balancer-get-started-internet-arm-cli.md)
+> * [<span data-ttu-id="bfabe-107">Plantilla</span><span class="sxs-lookup"><span data-stu-id="bfabe-107">Template</span></span>](../load-balancer/load-balancer-get-started-internet-arm-template.md)
 
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-<span data-ttu-id="249af-108">Este artículo trata sobre el modelo de implementación del Administrador de recursos.</span><span class="sxs-lookup"><span data-stu-id="249af-108">This article covers the Resource Manager deployment model.</span></span> <span data-ttu-id="249af-109">También puede [aprender a crear un equilibrador de carga con acceso desde Internet mediante el modelo de implementación clásica](load-balancer-get-started-internet-classic-cli.md).</span><span class="sxs-lookup"><span data-stu-id="249af-109">You can also [learn how to create an Internet-facing load balancer by using the classic deployment model](load-balancer-get-started-internet-classic-cli.md).</span></span>
+<span data-ttu-id="bfabe-108">Este artículo trata el modelo de implementación del Administrador de recursos de Hola.</span><span class="sxs-lookup"><span data-stu-id="bfabe-108">This article covers hello Resource Manager deployment model.</span></span> <span data-ttu-id="bfabe-109">También puede [Obtenga información acerca de cómo toocreate una conexión a Internet el equilibrador de carga utilizando el modelo de implementación clásica de hello](load-balancer-get-started-internet-classic-cli.md).</span><span class="sxs-lookup"><span data-stu-id="bfabe-109">You can also [learn how toocreate an Internet-facing load balancer by using hello classic deployment model](load-balancer-get-started-internet-classic-cli.md).</span></span>
 
 [!INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
-## <a name="deploying-the-solution-by-using-azure-powershell"></a><span data-ttu-id="249af-110">Implementación de la solución mediante Azure PowerShell</span><span class="sxs-lookup"><span data-stu-id="249af-110">Deploying the solution by using Azure PowerShell</span></span>
+## <a name="deploying-hello-solution-by-using-azure-powershell"></a><span data-ttu-id="bfabe-110">Implementar soluciones de hello mediante Azure PowerShell</span><span class="sxs-lookup"><span data-stu-id="bfabe-110">Deploying hello solution by using Azure PowerShell</span></span>
 
-<span data-ttu-id="249af-111">Los siguientes procedimientos explican cómo crear un equilibrador de carga accesible desde Internet mediante Azure Resource Manager con PowerShell.</span><span class="sxs-lookup"><span data-stu-id="249af-111">The following procedures explain how to create an Internet-facing load balancer by using Azure Resource Manager with PowerShell.</span></span> <span data-ttu-id="249af-112">Con Azure Resource Manager, cada recurso se crea y configura de forma individual, y luego se juntan para crear un equilibrador de carga.</span><span class="sxs-lookup"><span data-stu-id="249af-112">With Azure Resource Manager, each resource is created and configured individually, and then put together to create a load balancer.</span></span>
+<span data-ttu-id="bfabe-111">Hola procedimientos siguientes explica cómo toocreate una conexión a Internet el equilibrador de carga mediante el Administrador de recursos de Azure con PowerShell.</span><span class="sxs-lookup"><span data-stu-id="bfabe-111">hello following procedures explain how toocreate an Internet-facing load balancer by using Azure Resource Manager with PowerShell.</span></span> <span data-ttu-id="bfabe-112">Con el Administrador de recursos de Azure, cada recurso se crea y configura individualmente y, a continuación, reunir toocreate un equilibrador de carga.</span><span class="sxs-lookup"><span data-stu-id="bfabe-112">With Azure Resource Manager, each resource is created and configured individually, and then put together toocreate a load balancer.</span></span>
 
-<span data-ttu-id="249af-113">Para implementar un equilibrador de carga, debe crear y configurar los siguientes objetos:</span><span class="sxs-lookup"><span data-stu-id="249af-113">You must create and configure the following objects to deploy a load balancer:</span></span>
+<span data-ttu-id="bfabe-113">Debe crear y configurar Hola después objetos toodeploy un equilibrador de carga:</span><span class="sxs-lookup"><span data-stu-id="bfabe-113">You must create and configure hello following objects toodeploy a load balancer:</span></span>
 
-* <span data-ttu-id="249af-114">Configuración de direcciones IP front-end: contiene direcciones IP públicas (PIP) para el tráfico de red entrante.</span><span class="sxs-lookup"><span data-stu-id="249af-114">Front-end IP configuration: contains public IP (PIP) addresses for incoming network traffic.</span></span>
-* <span data-ttu-id="249af-115">Grupo de direcciones de back-end: contiene interfaces de red (NIC) para que las máquinas virtuales reciban tráfico de red del equilibrador de carga.</span><span class="sxs-lookup"><span data-stu-id="249af-115">Back-end address pool: contains network interfaces (NICs) for the virtual machines to receive network traffic from the load balancer.</span></span>
-* <span data-ttu-id="249af-116">Reglas de equilibrio de carga: contiene reglas que asignan un puerto público en el equilibrador de carga a un puerto del grupo de direcciones de back-end.</span><span class="sxs-lookup"><span data-stu-id="249af-116">Load-balancing rules: contains rules that map a public port on the load balancer to a port in the back-end address pool.</span></span>
-* <span data-ttu-id="249af-117">Reglas NAT de entrada: contiene reglas que asignan un puerto público en el equilibrador de carga a un puerto de una máquina virtual específica en el grupo de direcciones de back-end.</span><span class="sxs-lookup"><span data-stu-id="249af-117">Inbound NAT rules: contains rules that map a public port on the load balancer to a port for a specific virtual machine in the back-end address pool.</span></span>
-* <span data-ttu-id="249af-118">Sondeos: contiene sondeos de estado que se usan para comprobar la disponibilidad de las instancias de máquina virtual del grupo de direcciones de back-end.</span><span class="sxs-lookup"><span data-stu-id="249af-118">Probes: contains health probes used to check availability of virtual machine instances in the back-end address pool.</span></span>
+* <span data-ttu-id="bfabe-114">Configuración de direcciones IP front-end: contiene direcciones IP públicas (PIP) para el tráfico de red entrante.</span><span class="sxs-lookup"><span data-stu-id="bfabe-114">Front-end IP configuration: contains public IP (PIP) addresses for incoming network traffic.</span></span>
+* <span data-ttu-id="bfabe-115">Grupo de direcciones de back-end: contiene interfaces de red (NIC) de tráfico de red de tooreceive de máquinas virtuales de Hola Hola equilibrador de carga.</span><span class="sxs-lookup"><span data-stu-id="bfabe-115">Back-end address pool: contains network interfaces (NICs) for hello virtual machines tooreceive network traffic from hello load balancer.</span></span>
+* <span data-ttu-id="bfabe-116">Las reglas de equilibrio de carga: contiene reglas que se asignan a un puerto público en el puerto de tooa de equilibrador de carga de hello en grupo de direcciones de back-end de Hola.</span><span class="sxs-lookup"><span data-stu-id="bfabe-116">Load-balancing rules: contains rules that map a public port on hello load balancer tooa port in hello back-end address pool.</span></span>
+* <span data-ttu-id="bfabe-117">Reglas NAT de entrada: contiene reglas que se asignan a un puerto público en el puerto de tooa de equilibrador de carga de Hola para una máquina virtual específica en el grupo de direcciones de back-end de Hola.</span><span class="sxs-lookup"><span data-stu-id="bfabe-117">Inbound NAT rules: contains rules that map a public port on hello load balancer tooa port for a specific virtual machine in hello back-end address pool.</span></span>
+* <span data-ttu-id="bfabe-118">Sondeos: contiene toocheck disponibilidad de sondeos que se usan de mantenimiento de instancias de máquina virtual en el grupo de direcciones de back-end de Hola.</span><span class="sxs-lookup"><span data-stu-id="bfabe-118">Probes: contains health probes used toocheck availability of virtual machine instances in hello back-end address pool.</span></span>
 
-<span data-ttu-id="249af-119">Para más información, consulte [Compatibilidad de Azure Resource Manager con el equilibrador de carga](load-balancer-arm.md).</span><span class="sxs-lookup"><span data-stu-id="249af-119">For more information, see [Azure Resource Manager support for Load Balancer](load-balancer-arm.md).</span></span>
+<span data-ttu-id="bfabe-119">Para más información, consulte [Compatibilidad de Azure Resource Manager con el equilibrador de carga](load-balancer-arm.md).</span><span class="sxs-lookup"><span data-stu-id="bfabe-119">For more information, see [Azure Resource Manager support for Load Balancer](load-balancer-arm.md).</span></span>
 
-## <a name="set-up-powershell-to-use-resource-manager"></a><span data-ttu-id="249af-120">Configuración de PowerShell para usar Resource Manager</span><span class="sxs-lookup"><span data-stu-id="249af-120">Set up PowerShell to use Resource Manager</span></span>
+## <a name="set-up-powershell-toouse-resource-manager"></a><span data-ttu-id="bfabe-120">Configurar PowerShell toouse el Administrador de recursos</span><span class="sxs-lookup"><span data-stu-id="bfabe-120">Set up PowerShell toouse Resource Manager</span></span>
 
-<span data-ttu-id="249af-121">Asegúrese de que tiene la última versión de producción del módulo Azure Resource Manager para PowerShell:</span><span class="sxs-lookup"><span data-stu-id="249af-121">Make sure you have the latest production version of the Azure Resource Manager module for PowerShell:</span></span>
+<span data-ttu-id="bfabe-121">Asegúrese de que dispone de hello última versión de producción del módulo de Azure Resource Manager Hola de PowerShell:</span><span class="sxs-lookup"><span data-stu-id="bfabe-121">Make sure you have hello latest production version of hello Azure Resource Manager module for PowerShell:</span></span>
 
-1. <span data-ttu-id="249af-122">Inicie sesión en Azure.</span><span class="sxs-lookup"><span data-stu-id="249af-122">Sign in to Azure.</span></span>
+1. <span data-ttu-id="bfabe-122">Inicie sesión en tooAzure.</span><span class="sxs-lookup"><span data-stu-id="bfabe-122">Sign in tooAzure.</span></span>
 
     ```powershell
     Login-AzureRmAccount
     ```
 
-    <span data-ttu-id="249af-123">Escriba sus credenciales cuando se le solicite.</span><span class="sxs-lookup"><span data-stu-id="249af-123">Enter your credentials when prompted.</span></span>
+    <span data-ttu-id="bfabe-123">Escriba sus credenciales cuando se le solicite.</span><span class="sxs-lookup"><span data-stu-id="bfabe-123">Enter your credentials when prompted.</span></span>
 
-2. <span data-ttu-id="249af-124">Compruebe las suscripciones para la cuenta.</span><span class="sxs-lookup"><span data-stu-id="249af-124">Check the subscriptions for the account.</span></span>
+2. <span data-ttu-id="bfabe-124">Compruebe las suscripciones de hello para la cuenta de hello.</span><span class="sxs-lookup"><span data-stu-id="bfabe-124">Check hello subscriptions for hello account.</span></span>
 
     ```powershell
     Get-AzureRmSubscription
     ```
 
-3. <span data-ttu-id="249af-125">Elección de la suscripción de Azure que se va a usar.</span><span class="sxs-lookup"><span data-stu-id="249af-125">Choose which of your Azure subscriptions to use.</span></span>
+3. <span data-ttu-id="bfabe-125">Elija qué su toouse de las suscripciones de Azure.</span><span class="sxs-lookup"><span data-stu-id="bfabe-125">Choose which of your Azure subscriptions toouse.</span></span>
 
     ```powershell
     Select-AzureRmSubscription -SubscriptionId 'GUID of subscription'
     ```
 
-4. <span data-ttu-id="249af-126">Cree un grupo de recursos.</span><span class="sxs-lookup"><span data-stu-id="249af-126">Create a resource group.</span></span> <span data-ttu-id="249af-127">(Si utiliza un grupo de recursos existente, puede omitir este paso).</span><span class="sxs-lookup"><span data-stu-id="249af-127">(Skip this step if you're using an existing resource group.)</span></span>
+4. <span data-ttu-id="bfabe-126">Cree un grupo de recursos.</span><span class="sxs-lookup"><span data-stu-id="bfabe-126">Create a resource group.</span></span> <span data-ttu-id="bfabe-127">(Si utiliza un grupo de recursos existente, puede omitir este paso).</span><span class="sxs-lookup"><span data-stu-id="bfabe-127">(Skip this step if you're using an existing resource group.)</span></span>
 
     ```powershell
     New-AzureRmResourceGroup -Name NRP-RG -location "West US"
     ```
 
-## <a name="create-a-virtual-network-and-a-public-ip-address-for-the-front-end-ip-pool"></a><span data-ttu-id="249af-128">Creación de una red virtual y una dirección IP pública para el grupo de direcciones IP front-end</span><span class="sxs-lookup"><span data-stu-id="249af-128">Create a virtual network and a public IP address for the front-end IP pool</span></span>
+## <a name="create-a-virtual-network-and-a-public-ip-address-for-hello-front-end-ip-pool"></a><span data-ttu-id="bfabe-128">Crear una red virtual y una dirección IP pública para el grupo de direcciones IP de front-end de Hola</span><span class="sxs-lookup"><span data-stu-id="bfabe-128">Create a virtual network and a public IP address for hello front-end IP pool</span></span>
 
-1. <span data-ttu-id="249af-129">Cree una subred y una red virtual.</span><span class="sxs-lookup"><span data-stu-id="249af-129">Create a subnet and a virtual network.</span></span>
+1. <span data-ttu-id="bfabe-129">Cree una subred y una red virtual.</span><span class="sxs-lookup"><span data-stu-id="bfabe-129">Create a subnet and a virtual network.</span></span>
 
     ```powershell
     $backendSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name LB-Subnet-BE -AddressPrefix 10.0.2.0/24
     New-AzureRmvirtualNetwork -Name NRPVNet -ResourceGroupName NRP-RG -Location 'West US' -AddressPrefix 10.0.0.0/16 -Subnet $backendSubnet
     ```
 
-2. <span data-ttu-id="249af-130">Cree un recurso de dirección IP pública de Azure, llamado **PublicIP**, para que lo use un grupo de direcciones IP front-end con el nombre DNS **loadbalancernrp.westus.cloudapp.azure.com**.</span><span class="sxs-lookup"><span data-stu-id="249af-130">Create an Azure public IP address resource, named **PublicIP**, to be used by a front-end IP pool with the DNS name **loadbalancernrp.westus.cloudapp.azure.com**.</span></span> <span data-ttu-id="249af-131">El siguiente comando usa el tipo de asignación estática.</span><span class="sxs-lookup"><span data-stu-id="249af-131">The following command uses the static allocation type.</span></span>
+2. <span data-ttu-id="bfabe-130">Crear un Azure público recurso de dirección IP, denominado **PublicIP**, toobe utilizado por un grupo IP front-end con el nombre DNS de hello **loadbalancernrp.westus.cloudapp.azure.com**. Hola siguiente comando usa Hola tipo de asignación estático.</span><span class="sxs-lookup"><span data-stu-id="bfabe-130">Create an Azure public IP address resource, named **PublicIP**, toobe used by a front-end IP pool with hello DNS name **loadbalancernrp.westus.cloudapp.azure.com**. hello following command uses hello static allocation type.</span></span>
 
     ```powershell
     $publicIP = New-AzureRmPublicIpAddress -Name PublicIp -ResourceGroupName NRP-RG -Location 'West US' -AllocationMethod Static -DomainNameLabel loadbalancernrp
     ```
 
    > [!IMPORTANT]
-   > <span data-ttu-id="249af-132">El equilibrador de carga usa la etiqueta de dominio de la dirección IP pública como prefijo para su FQDN.</span><span class="sxs-lookup"><span data-stu-id="249af-132">The load balancer uses the domain label of the public IP as a prefix for its FQDN.</span></span> <span data-ttu-id="249af-133">Esto es diferente del modelo de implementación clásica, que usa el servicio en la nube como FQDN del equilibrador de carga.</span><span class="sxs-lookup"><span data-stu-id="249af-133">This is different from the classic deployment model, which uses the cloud service as the load balancer FQDN.</span></span>
-   > <span data-ttu-id="249af-134">En este ejemplo, el FQDN es **loadbalancernrp.westus.cloudapp.azure.com**.</span><span class="sxs-lookup"><span data-stu-id="249af-134">In this example, the FQDN is **loadbalancernrp.westus.cloudapp.azure.com**.</span></span>
+   > <span data-ttu-id="bfabe-131">equilibrador de carga de Hello usa la etiqueta de Hola de dominio de la dirección IP pública de hello como prefijo para su FQDN.</span><span class="sxs-lookup"><span data-stu-id="bfabe-131">hello load balancer uses hello domain label of hello public IP as a prefix for its FQDN.</span></span> <span data-ttu-id="bfabe-132">Esto es diferente del modelo de implementación clásica de hello, que utiliza el servicio de nube de hello como Hola FQDN del equilibrador de carga.</span><span class="sxs-lookup"><span data-stu-id="bfabe-132">This is different from hello classic deployment model, which uses hello cloud service as hello load balancer FQDN.</span></span>
+   > <span data-ttu-id="bfabe-133">En este ejemplo, hello FQDN es **loadbalancernrp.westus.cloudapp.azure.com**.</span><span class="sxs-lookup"><span data-stu-id="bfabe-133">In this example, hello FQDN is **loadbalancernrp.westus.cloudapp.azure.com**.</span></span>
 
-## <a name="create-a-front-end-ip-pool-and-a-back-end-address-pool"></a><span data-ttu-id="249af-135">Creación de un grupo de direcciones IP front-end y un grupo de direcciones back-end</span><span class="sxs-lookup"><span data-stu-id="249af-135">Create a front-end IP pool and a back-end address pool</span></span>
+## <a name="create-a-front-end-ip-pool-and-a-back-end-address-pool"></a><span data-ttu-id="bfabe-134">Creación de un grupo de direcciones IP front-end y un grupo de direcciones back-end</span><span class="sxs-lookup"><span data-stu-id="bfabe-134">Create a front-end IP pool and a back-end address pool</span></span>
 
-1. <span data-ttu-id="249af-136">Cree un grupo de direcciones IP front-end llamado **LB-Frontend** que use el recurso **PublicIp**.</span><span class="sxs-lookup"><span data-stu-id="249af-136">Create a front-end IP pool named **LB-Frontend** that uses the **PublicIp** resource.</span></span>
+1. <span data-ttu-id="bfabe-135">Cree un grupo IP front-end denominado **front-end de LB** que usa hello **PublicIp** recursos.</span><span class="sxs-lookup"><span data-stu-id="bfabe-135">Create a front-end IP pool named **LB-Frontend** that uses hello **PublicIp** resource.</span></span>
 
     ```powershell
     $frontendIP = New-AzureRmLoadBalancerFrontendIpConfig -Name LB-Frontend -PublicIpAddress $publicIP
     ```
 
-2. <span data-ttu-id="249af-137">Cree un grupo de direcciones de back-end llamado **LB-backend**.</span><span class="sxs-lookup"><span data-stu-id="249af-137">Create a back-end address pool named **LB-backend**.</span></span>
+2. <span data-ttu-id="bfabe-136">Cree un grupo de direcciones de back-end llamado **LB-backend**.</span><span class="sxs-lookup"><span data-stu-id="bfabe-136">Create a back-end address pool named **LB-backend**.</span></span>
 
     ```powershell
     $beaddresspool = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name LB-backend
     ```
 
-## <a name="create-nat-rules-a-load-balancer-rule-a-probe-and-a-load-balancer"></a><span data-ttu-id="249af-138">Creación de reglas NAT, una regla de equilibrador de carga, un sondeo y un equilibrador de carga</span><span class="sxs-lookup"><span data-stu-id="249af-138">Create NAT rules, a load balancer rule, a probe, and a load balancer</span></span>
+## <a name="create-nat-rules-a-load-balancer-rule-a-probe-and-a-load-balancer"></a><span data-ttu-id="bfabe-137">Creación de reglas NAT, una regla de equilibrador de carga, un sondeo y un equilibrador de carga</span><span class="sxs-lookup"><span data-stu-id="bfabe-137">Create NAT rules, a load balancer rule, a probe, and a load balancer</span></span>
 
-<span data-ttu-id="249af-139">En este ejemplo se crean los siguientes elementos:</span><span class="sxs-lookup"><span data-stu-id="249af-139">This example creates the following items:</span></span>
+<span data-ttu-id="bfabe-138">Este ejemplo crea Hola siguientes elementos:</span><span class="sxs-lookup"><span data-stu-id="bfabe-138">This example creates hello following items:</span></span>
 
-* <span data-ttu-id="249af-140">Una regla NAT para trasladar todo el tráfico entrante del puerto 3441 al puerto 3389.</span><span class="sxs-lookup"><span data-stu-id="249af-140">A NAT rule to translate all incoming traffic on port 3441 to port 3389</span></span>
-* <span data-ttu-id="249af-141">Una regla NAT para trasladar todo el tráfico entrante del puerto 3442 al puerto 3389.</span><span class="sxs-lookup"><span data-stu-id="249af-141">A NAT rule to translate all incoming traffic on port 3442 to port 3389</span></span>
-* <span data-ttu-id="249af-142">Una regla de sondeo para comprobar el estado de mantenimiento en una página llamada **HealthProbe.aspx**</span><span class="sxs-lookup"><span data-stu-id="249af-142">A probe rule to check the health status on a page named **HealthProbe.aspx**</span></span>
-* <span data-ttu-id="249af-143">Una regla de equilibrador de carga para equilibrar todo el tráfico entrante del puerto 80 al puerto 80 en las direcciones del grupo de back-end.</span><span class="sxs-lookup"><span data-stu-id="249af-143">A load balancer rule to balance all incoming traffic on port 80 to port 80 on the addresses in the back-end pool</span></span>
-* <span data-ttu-id="249af-144">Un equilibrador de carga que usa todos estos objetos.</span><span class="sxs-lookup"><span data-stu-id="249af-144">A load balancer that uses all these objects</span></span>
+* <span data-ttu-id="bfabe-139">Un tootranslate de regla NAT entrante todos tráfico en puerto 3441 tooport 3389</span><span class="sxs-lookup"><span data-stu-id="bfabe-139">A NAT rule tootranslate all incoming traffic on port 3441 tooport 3389</span></span>
+* <span data-ttu-id="bfabe-140">Un tootranslate de regla NAT entrante todos tráfico en puerto 3442 tooport 3389</span><span class="sxs-lookup"><span data-stu-id="bfabe-140">A NAT rule tootranslate all incoming traffic on port 3442 tooport 3389</span></span>
+* <span data-ttu-id="bfabe-141">Un estado de mantenimiento de sondeo regla toocheck hello en una página denominada **HealthProbe.aspx**</span><span class="sxs-lookup"><span data-stu-id="bfabe-141">A probe rule toocheck hello health status on a page named **HealthProbe.aspx**</span></span>
+* <span data-ttu-id="bfabe-142">Un toobalance de regla de equilibrador de carga todo el tráfico entrante en el puerto 80 tooport 80 en hello direcciones de grupo de back-end de Hola</span><span class="sxs-lookup"><span data-stu-id="bfabe-142">A load balancer rule toobalance all incoming traffic on port 80 tooport 80 on hello addresses in hello back-end pool</span></span>
+* <span data-ttu-id="bfabe-143">Un equilibrador de carga que usa todos estos objetos.</span><span class="sxs-lookup"><span data-stu-id="bfabe-143">A load balancer that uses all these objects</span></span>
 
-<span data-ttu-id="249af-145">Siga estos pasos:</span><span class="sxs-lookup"><span data-stu-id="249af-145">Use these steps:</span></span>
+<span data-ttu-id="bfabe-144">Siga estos pasos:</span><span class="sxs-lookup"><span data-stu-id="bfabe-144">Use these steps:</span></span>
 
-1. <span data-ttu-id="249af-146">Cree las reglas NAT.</span><span class="sxs-lookup"><span data-stu-id="249af-146">Create the NAT rules.</span></span>
+1. <span data-ttu-id="bfabe-145">Crear hello las reglas NAT.</span><span class="sxs-lookup"><span data-stu-id="bfabe-145">Create hello NAT rules.</span></span>
 
     ```powershell
     $inboundNATRule1= New-AzureRmLoadBalancerInboundNatRuleConfig -Name RDP1 -FrontendIpConfiguration $frontendIP -Protocol TCP -FrontendPort 3441 -BackendPort 3389
@@ -133,60 +133,60 @@ ms.lasthandoff: 07/11/2017
     $inboundNATRule2= New-AzureRmLoadBalancerInboundNatRuleConfig -Name RDP2 -FrontendIpConfiguration $frontendIP -Protocol TCP -FrontendPort 3442 -BackendPort 3389
     ```
 
-2. <span data-ttu-id="249af-147">Cree un sondeo de estado.</span><span class="sxs-lookup"><span data-stu-id="249af-147">Create a health probe.</span></span> <span data-ttu-id="249af-148">Hay dos formas de configurar un sondeo:</span><span class="sxs-lookup"><span data-stu-id="249af-148">There are two ways to configure a probe:</span></span>
+2. <span data-ttu-id="bfabe-146">Cree un sondeo de estado.</span><span class="sxs-lookup"><span data-stu-id="bfabe-146">Create a health probe.</span></span> <span data-ttu-id="bfabe-147">Hay dos tooconfigure formas un sondeo:</span><span class="sxs-lookup"><span data-stu-id="bfabe-147">There are two ways tooconfigure a probe:</span></span>
 
-    <span data-ttu-id="249af-149">Sondeo HTTP</span><span class="sxs-lookup"><span data-stu-id="249af-149">HTTP probe</span></span>
+    <span data-ttu-id="bfabe-148">Sondeo HTTP</span><span class="sxs-lookup"><span data-stu-id="bfabe-148">HTTP probe</span></span>
 
     ```powershell
     $healthProbe = New-AzureRmLoadBalancerProbeConfig -Name HealthProbe -RequestPath 'HealthProbe.aspx' -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
     ```
 
-    <span data-ttu-id="249af-150">Sondeo TCP</span><span class="sxs-lookup"><span data-stu-id="249af-150">TCP probe</span></span>
+    <span data-ttu-id="bfabe-149">Sondeo TCP</span><span class="sxs-lookup"><span data-stu-id="bfabe-149">TCP probe</span></span>
 
     ```powershell
     $healthProbe = New-AzureRmLoadBalancerProbeConfig -Name HealthProbe -Protocol Tcp -Port 80 -IntervalInSeconds 15 -ProbeCount 2
     ```
 
-3. <span data-ttu-id="249af-151">Cree una regla de equilibrador de carga.</span><span class="sxs-lookup"><span data-stu-id="249af-151">Create a load balancer rule.</span></span>
+3. <span data-ttu-id="bfabe-150">Cree una regla de equilibrador de carga.</span><span class="sxs-lookup"><span data-stu-id="bfabe-150">Create a load balancer rule.</span></span>
 
     ```powershell
     $lbrule = New-AzureRmLoadBalancerRuleConfig -Name HTTP -FrontendIpConfiguration $frontendIP -BackendAddressPool  $beAddressPool -Probe $healthProbe -Protocol Tcp -FrontendPort 80 -BackendPort 80
     ```
 
-4. <span data-ttu-id="249af-152">Cree el equilibrador de carga mediante los objetos creados anteriormente.</span><span class="sxs-lookup"><span data-stu-id="249af-152">Create the load balancer by using the previously created objects.</span></span>
+4. <span data-ttu-id="bfabe-151">Crea el equilibrador de carga de hello mediante objetos de Hola que creó anteriormente.</span><span class="sxs-lookup"><span data-stu-id="bfabe-151">Create hello load balancer by using hello previously created objects.</span></span>
 
     ```powershell
     $NRPLB = New-AzureRmLoadBalancer -ResourceGroupName NRP-RG -Name NRP-LB -Location 'West US' -FrontendIpConfiguration $frontendIP -InboundNatRule $inboundNATRule1,$inboundNatRule2 -LoadBalancingRule $lbrule -BackendAddressPool $beAddressPool -Probe $healthProbe
     ```
 
-## <a name="create-nics"></a><span data-ttu-id="249af-153">Cree tarjetas NIC</span><span class="sxs-lookup"><span data-stu-id="249af-153">Create NICs</span></span>
+## <a name="create-nics"></a><span data-ttu-id="bfabe-152">Cree tarjetas NIC</span><span class="sxs-lookup"><span data-stu-id="bfabe-152">Create NICs</span></span>
 
-<span data-ttu-id="249af-154">Cree interfaces de red (o modifique las existentes) y asócielas a reglas NAT, reglas de equilibrador de carga y sondeos:</span><span class="sxs-lookup"><span data-stu-id="249af-154">Create network interfaces (or modify existing ones) and then associate them to NAT rules, load balancer rules, and probes:</span></span>
+<span data-ttu-id="bfabe-153">Crear interfaces de red (o modificar los existentes) y después asociar reglas de tooNAT, reglas de equilibrador de carga y sondeos:</span><span class="sxs-lookup"><span data-stu-id="bfabe-153">Create network interfaces (or modify existing ones) and then associate them tooNAT rules, load balancer rules, and probes:</span></span>
 
-1. <span data-ttu-id="249af-155">Obtenga la red virtual y una subred de red virtual, donde deben crearse las NIC.</span><span class="sxs-lookup"><span data-stu-id="249af-155">Get the virtual network and a virtual network subnet, where the NICs need to be created.</span></span>
+1. <span data-ttu-id="bfabe-154">Obtener la red virtual de hello y una subred de red virtual, donde hello NIC necesitan toobe creado.</span><span class="sxs-lookup"><span data-stu-id="bfabe-154">Get hello virtual network and a virtual network subnet, where hello NICs need toobe created.</span></span>
 
     ```powershell
     $vnet = Get-AzureRmVirtualNetwork -Name NRPVNet -ResourceGroupName NRP-RG
     $backendSubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name LB-Subnet-BE -VirtualNetwork $vnet
     ```
 
-2. <span data-ttu-id="249af-156">Cree una NIC llamada **lb-nic1-be**y asóciela con la primera regla NAT y el primer (y único) grupo de direcciones de back-end.</span><span class="sxs-lookup"><span data-stu-id="249af-156">Create a NIC named **lb-nic1-be**, and associate it with the first NAT rule and the first (and only) back-end address pool.</span></span>
+2. <span data-ttu-id="bfabe-155">Cree una NIC denominada **nic1 de carga equilibrada puede**y lo asocia a la primera regla NAT de Hola y el grupo de direcciones de back-end de primer (y único) de Hola.</span><span class="sxs-lookup"><span data-stu-id="bfabe-155">Create a NIC named **lb-nic1-be**, and associate it with hello first NAT rule and hello first (and only) back-end address pool.</span></span>
 
     ```powershell
     $backendnic1= New-AzureRmNetworkInterface -ResourceGroupName NRP-RG -Name lb-nic1-be -Location 'West US' -PrivateIpAddress 10.0.2.6 -Subnet $backendSubnet -LoadBalancerBackendAddressPool $nrplb.BackendAddressPools[0] -LoadBalancerInboundNatRule $nrplb.InboundNatRules[0]
     ```
 
-3. <span data-ttu-id="249af-157">Cree una NIC llamada **lb-nic2-be**y asóciela con la segunda regla NAT y el primer (y único) grupo de direcciones de back-end.</span><span class="sxs-lookup"><span data-stu-id="249af-157">Create a NIC named **lb-nic2-be**, and associate it with the second NAT rule and the first (and only) back-end address pool.</span></span>
+3. <span data-ttu-id="bfabe-156">Cree una NIC denominada **nic2 de carga equilibrada puede**y lo asocia a la segunda regla NAT de Hola y el grupo de direcciones de back-end de primer (y único) de Hola.</span><span class="sxs-lookup"><span data-stu-id="bfabe-156">Create a NIC named **lb-nic2-be**, and associate it with hello second NAT rule and hello first (and only) back-end address pool.</span></span>
 
     ```powershell
     $backendnic2= New-AzureRmNetworkInterface -ResourceGroupName NRP-RG -Name lb-nic2-be -Location 'West US' -PrivateIpAddress 10.0.2.7 -Subnet $backendSubnet -LoadBalancerBackendAddressPool $nrplb.BackendAddressPools[0] -LoadBalancerInboundNatRule $nrplb.InboundNatRules[1]
     ```
 
-4. <span data-ttu-id="249af-158">Compruebe las tarjetas NIC.</span><span class="sxs-lookup"><span data-stu-id="249af-158">Check the NICs.</span></span>
+4. <span data-ttu-id="bfabe-157">Compruebe Hola NIC.</span><span class="sxs-lookup"><span data-stu-id="bfabe-157">Check hello NICs.</span></span>
 
         $backendnic1
 
-    <span data-ttu-id="249af-159">Resultado esperado:</span><span class="sxs-lookup"><span data-stu-id="249af-159">Expected output:</span></span>
+    <span data-ttu-id="bfabe-158">Resultado esperado:</span><span class="sxs-lookup"><span data-stu-id="bfabe-158">Expected output:</span></span>
 
         Name                 : lb-nic1-be
         ResourceGroupName    : NRP-RG
@@ -235,83 +235,83 @@ ms.lasthandoff: 07/11/2017
         NetworkSecurityGroup : null
         Primary              :
 
-5. <span data-ttu-id="249af-160">Use el cmdlet `Add-AzureRmVMNetworkInterface` para asignar las tarjetas NIC a distintas máquinas virtuales.</span><span class="sxs-lookup"><span data-stu-id="249af-160">Use the `Add-AzureRmVMNetworkInterface` cmdlet to assign the NICs to different VMs.</span></span>
+5. <span data-ttu-id="bfabe-159">Hola de uso `Add-AzureRmVMNetworkInterface` cmdlet tooassign Hola NIC toodifferent máquinas virtuales.</span><span class="sxs-lookup"><span data-stu-id="bfabe-159">Use hello `Add-AzureRmVMNetworkInterface` cmdlet tooassign hello NICs toodifferent VMs.</span></span>
 
-## <a name="create-a-virtual-machine"></a><span data-ttu-id="249af-161">de una máquina virtual</span><span class="sxs-lookup"><span data-stu-id="249af-161">Create a virtual machine</span></span>
+## <a name="create-a-virtual-machine"></a><span data-ttu-id="bfabe-160">de una máquina virtual</span><span class="sxs-lookup"><span data-stu-id="bfabe-160">Create a virtual machine</span></span>
 
-<span data-ttu-id="249af-162">Para instrucciones sobre cómo crear una máquina virtual y asignar una NIC, consulte el artículo sobre cómo [crear una máquina virtual de Azure con PowerShell](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="249af-162">For guidance on creating a virtual machine and assigning a NIC, see [Create an Azure VM using PowerShell](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json).</span></span>
+<span data-ttu-id="bfabe-161">Para instrucciones sobre cómo crear una máquina virtual y asignar una NIC, consulte el artículo sobre cómo [crear una máquina virtual de Azure con PowerShell](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="bfabe-161">For guidance on creating a virtual machine and assigning a NIC, see [Create an Azure VM using PowerShell](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json).</span></span>
 
-## <a name="add-the-network-interface-to-the-load-balancer"></a><span data-ttu-id="249af-163">Adición de la interfaz de red al equilibrador de carga</span><span class="sxs-lookup"><span data-stu-id="249af-163">Add the network interface to the load balancer</span></span>
+## <a name="add-hello-network-interface-toohello-load-balancer"></a><span data-ttu-id="bfabe-162">Agregar equilibrador de carga de toohello de interfaz de red de Hola</span><span class="sxs-lookup"><span data-stu-id="bfabe-162">Add hello network interface toohello load balancer</span></span>
 
-1. <span data-ttu-id="249af-164">Recupere el equilibrador de carga de Azure.</span><span class="sxs-lookup"><span data-stu-id="249af-164">Retrieve the load balancer from Azure.</span></span>
+1. <span data-ttu-id="bfabe-163">Recuperar el equilibrador de carga de Hola de Azure.</span><span class="sxs-lookup"><span data-stu-id="bfabe-163">Retrieve hello load balancer from Azure.</span></span>
 
-    <span data-ttu-id="249af-165">Cargue el recurso de equilibrador de carga en una variable (si no lo ha hecho todavía).</span><span class="sxs-lookup"><span data-stu-id="249af-165">Load the load balancer resource into a variable (if you haven't done that yet).</span></span> <span data-ttu-id="249af-166">La variable se denomina **$lb**. Use los mismos nombres del recurso de equilibrador de carga que creó anteriormente.</span><span class="sxs-lookup"><span data-stu-id="249af-166">The variable is called **$lb**. Use the same names from the load balancer resource that you created earlier.</span></span>
+    <span data-ttu-id="bfabe-164">Cargar recursos de equilibrador de carga de hello en una variable (si aún no lo ha hecho todavía).</span><span class="sxs-lookup"><span data-stu-id="bfabe-164">Load hello load balancer resource into a variable (if you haven't done that yet).</span></span> <span data-ttu-id="bfabe-165">Hola variable se denomina **$lb**. Usar hello mismos nombres de recurso de equilibrador de carga de Hola que creó anteriormente.</span><span class="sxs-lookup"><span data-stu-id="bfabe-165">hello variable is called **$lb**. Use hello same names from hello load balancer resource that you created earlier.</span></span>
 
     ```powershell
     $lb= get-azurermloadbalancer -name NRP-LB -resourcegroupname NRP-RG
     ```
 
-2. <span data-ttu-id="249af-167">Cargue la configuración de back-end en una variable.</span><span class="sxs-lookup"><span data-stu-id="249af-167">Load the back-end configuration to a variable.</span></span>
+2. <span data-ttu-id="bfabe-166">Variable de tooa de configuración de back-end de Hola de carga.</span><span class="sxs-lookup"><span data-stu-id="bfabe-166">Load hello back-end configuration tooa variable.</span></span>
 
     ```powershell
     $backend=Get-AzureRmLoadBalancerBackendAddressPoolConfig -name LB-backend -LoadBalancer $lb
     ```
 
-3. <span data-ttu-id="249af-168">Cargue la interfaz de red ya creada en una variable.</span><span class="sxs-lookup"><span data-stu-id="249af-168">Load the already created network interface into a variable.</span></span> <span data-ttu-id="249af-169">El nombre de la variable es **$nic**.</span><span class="sxs-lookup"><span data-stu-id="249af-169">The variable name is **$nic**.</span></span> <span data-ttu-id="249af-170">El nombre de la interfaz de red es el mismo que el del ejemplo anterior.</span><span class="sxs-lookup"><span data-stu-id="249af-170">The network interface name is the same one from the earlier example.</span></span>
+3. <span data-ttu-id="bfabe-167">Cargar la interfaz de red de hello ya creado en una variable.</span><span class="sxs-lookup"><span data-stu-id="bfabe-167">Load hello already created network interface into a variable.</span></span> <span data-ttu-id="bfabe-168">nombre de variable de Hello es **$nic**.</span><span class="sxs-lookup"><span data-stu-id="bfabe-168">hello variable name is **$nic**.</span></span> <span data-ttu-id="bfabe-169">Hello nombre de la interfaz de red es Hola misma de hello ejemplo anterior.</span><span class="sxs-lookup"><span data-stu-id="bfabe-169">hello network interface name is hello same one from hello earlier example.</span></span>
 
     ```powershell
     $nic =get-azurermnetworkinterface -name lb-nic1-be -resourcegroupname NRP-RG
     ```
 
-4. <span data-ttu-id="249af-171">Cambie la configuración de back-end en la interfaz de red.</span><span class="sxs-lookup"><span data-stu-id="249af-171">Change the back-end configuration on the network interface.</span></span>
+4. <span data-ttu-id="bfabe-170">Cambiar configuración de back-end de hello en la interfaz de red de Hola.</span><span class="sxs-lookup"><span data-stu-id="bfabe-170">Change hello back-end configuration on hello network interface.</span></span>
 
     ```powershell
     $nic.IpConfigurations[0].LoadBalancerBackendAddressPools=$backend
     ```
 
-5. <span data-ttu-id="249af-172">Guarde el objeto de interfaz de red.</span><span class="sxs-lookup"><span data-stu-id="249af-172">Save the network interface object.</span></span>
+5. <span data-ttu-id="bfabe-171">Guardar el objeto de interfaz de red de Hola.</span><span class="sxs-lookup"><span data-stu-id="bfabe-171">Save hello network interface object.</span></span>
 
     ```powershell
     Set-AzureRmNetworkInterface -NetworkInterface $nic
     ```
 
-    <span data-ttu-id="249af-173">Después de agregar una interfaz de red al grupo de back-end del equilibrador de carga, comienza la recepción del tráfico de red según la reglas de equilibrio de carga para ese recurso de equilibrador de carga.</span><span class="sxs-lookup"><span data-stu-id="249af-173">After a network interface is added to the load balancer back-end pool, it starts receiving network traffic based on the load-balancing rules for that load balancer resource.</span></span>
+    <span data-ttu-id="bfabe-172">Después de una interfaz de red se agrega el grupo de back-end de equilibradores de carga de toohello, comienza a recibir tráfico de red en función de reglas de equilibrio de carga de Hola para ese recurso de equilibrador de carga.</span><span class="sxs-lookup"><span data-stu-id="bfabe-172">After a network interface is added toohello load balancer back-end pool, it starts receiving network traffic based on hello load-balancing rules for that load balancer resource.</span></span>
 
-## <a name="update-an-existing-load-balancer"></a><span data-ttu-id="249af-174">Actualización de un equilibrador de carga existente</span><span class="sxs-lookup"><span data-stu-id="249af-174">Update an existing load balancer</span></span>
+## <a name="update-an-existing-load-balancer"></a><span data-ttu-id="bfabe-173">Actualización de un equilibrador de carga existente</span><span class="sxs-lookup"><span data-stu-id="bfabe-173">Update an existing load balancer</span></span>
 
-1. <span data-ttu-id="249af-175">Con el equilibrador de carga del ejemplo anterior, asigne un objeto de equilibrador de carga a la variable **$slb** con `Get-AzureLoadBalancer`.</span><span class="sxs-lookup"><span data-stu-id="249af-175">By using the load balancer from the earlier example, assign a load balancer object to the variable **$slb** by using `Get-AzureLoadBalancer`.</span></span>
+1. <span data-ttu-id="bfabe-174">Equilibrador de carga mediante el uso de Hola Hola ejemplo anterior, asigne una variable de toohello del objeto de equilibrador de carga **$slb** utilizando `Get-AzureLoadBalancer`.</span><span class="sxs-lookup"><span data-stu-id="bfabe-174">By using hello load balancer from hello earlier example, assign a load balancer object toohello variable **$slb** by using `Get-AzureLoadBalancer`.</span></span>
 
     ```powershell
     $slb = get-AzureRmLoadBalancer -Name NRP-LB -ResourceGroupName NRP-RG
     ```
 
-2. <span data-ttu-id="249af-176">En el ejemplo siguiente, agregará una nueva regla NAT de entrada, mediante el puerto 81 en el grupo de front-end y el puerto 8181 en el grupo de back-end, a un equilibrador de carga existente.</span><span class="sxs-lookup"><span data-stu-id="249af-176">In the following example, you add an inbound NAT rule--by using port 81 in the front-end pool and port 8181 for the back-end pool--to an existing load balancer.</span></span>
+2. <span data-ttu-id="bfabe-175">En el siguiente ejemplo de Hola, agregará una regla NAT de entrada--mediante el puerto 81 en grupo de servidores front-end de Hola y puerto 8181 para grupo de back-end de hello--tooan equilibrador de carga existente.</span><span class="sxs-lookup"><span data-stu-id="bfabe-175">In hello following example, you add an inbound NAT rule--by using port 81 in hello front-end pool and port 8181 for hello back-end pool--tooan existing load balancer.</span></span>
 
     ```powershell
     $slb | Add-AzureRmLoadBalancerInboundNatRuleConfig -Name NewRule -FrontendIpConfiguration $slb.FrontendIpConfigurations[0] -FrontendPort 81  -BackendPort 8181 -Protocol TCP
     ```
 
-3. <span data-ttu-id="249af-177">Guarde la nueva configuración mediante `Set-AzureLoadBalancer`.</span><span class="sxs-lookup"><span data-stu-id="249af-177">Save the new configuration by using `Set-AzureLoadBalancer`.</span></span>
+3. <span data-ttu-id="bfabe-176">Guardar la nueva configuración de hello mediante `Set-AzureLoadBalancer`.</span><span class="sxs-lookup"><span data-stu-id="bfabe-176">Save hello new configuration by using `Set-AzureLoadBalancer`.</span></span>
 
     ```powershell
     $slb | Set-AzureRmLoadBalancer
     ```
 
-## <a name="remove-a-load-balancer"></a><span data-ttu-id="249af-178">Elimine un equilibrador de carga</span><span class="sxs-lookup"><span data-stu-id="249af-178">Remove a load balancer</span></span>
+## <a name="remove-a-load-balancer"></a><span data-ttu-id="bfabe-177">Elimine un equilibrador de carga</span><span class="sxs-lookup"><span data-stu-id="bfabe-177">Remove a load balancer</span></span>
 
-<span data-ttu-id="249af-179">Use el comando`Remove-AzureLoadBalancer` para eliminar un equilibrador de carga creado previamente denominado **NRP-LB** en un grupo de recursos llamado **NRP-RG**.</span><span class="sxs-lookup"><span data-stu-id="249af-179">Use the command `Remove-AzureLoadBalancer` to delete a previously created load balancer named **NRP-LB** in a resource group called **NRP-RG**.</span></span>
+<span data-ttu-id="bfabe-178">Use el comando de hello `Remove-AzureLoadBalancer` toodelete un equilibrador de carga previamente creada denominado **NRP LB** en un grupo de recursos denominado **NRP RG**.</span><span class="sxs-lookup"><span data-stu-id="bfabe-178">Use hello command `Remove-AzureLoadBalancer` toodelete a previously created load balancer named **NRP-LB** in a resource group called **NRP-RG**.</span></span>
 
 ```powershell
 Remove-AzureRmLoadBalancer -Name NRP-LB -ResourceGroupName NRP-RG
 ```
 
 > [!NOTE]
-> <span data-ttu-id="249af-180">Puede usar el modificador opcional **-Force** para evitar la solicitud de eliminación.</span><span class="sxs-lookup"><span data-stu-id="249af-180">You can use the optional switch **-Force** to avoid the prompt for deletion.</span></span>
+> <span data-ttu-id="bfabe-179">Puede usar el modificador opcional hello **-Force** tooavoid mensaje de Hola para su eliminación.</span><span class="sxs-lookup"><span data-stu-id="bfabe-179">You can use hello optional switch **-Force** tooavoid hello prompt for deletion.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="249af-181">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="249af-181">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="bfabe-180">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="bfabe-180">Next steps</span></span>
 
-[<span data-ttu-id="249af-182">Introducción a la configuración de un equilibrador de carga interno</span><span class="sxs-lookup"><span data-stu-id="249af-182">Get started configuring an internal load balancer</span></span>](load-balancer-get-started-ilb-arm-ps.md)
+[<span data-ttu-id="bfabe-181">Introducción a la configuración de un equilibrador de carga interno</span><span class="sxs-lookup"><span data-stu-id="bfabe-181">Get started configuring an internal load balancer</span></span>](load-balancer-get-started-ilb-arm-ps.md)
 
-[<span data-ttu-id="249af-183">Configuración de un modo de distribución del equilibrador de carga</span><span class="sxs-lookup"><span data-stu-id="249af-183">Configure a load balancer distribution mode</span></span>](load-balancer-distribution-mode.md)
+[<span data-ttu-id="bfabe-182">Configuración de un modo de distribución del equilibrador de carga</span><span class="sxs-lookup"><span data-stu-id="bfabe-182">Configure a load balancer distribution mode</span></span>](load-balancer-distribution-mode.md)
 
-[<span data-ttu-id="249af-184">Configuración de opciones de tiempo de espera de inactividad de TCP para el equilibrador de carga</span><span class="sxs-lookup"><span data-stu-id="249af-184">Configure idle TCP timeout settings for your load balancer</span></span>](load-balancer-tcp-idle-timeout.md)
+[<span data-ttu-id="bfabe-183">Configuración de opciones de tiempo de espera de inactividad de TCP para el equilibrador de carga</span><span class="sxs-lookup"><span data-stu-id="bfabe-183">Configure idle TCP timeout settings for your load balancer</span></span>](load-balancer-tcp-idle-timeout.md)

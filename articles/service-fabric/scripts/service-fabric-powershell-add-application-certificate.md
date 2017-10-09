@@ -1,6 +1,6 @@
 ---
-title: "Ejemplo de script de Azure PowerShell: agregar certificado de aplicación a un clúster | Microsoft Docs"
-description: "Ejemplo de script de Azure PowerShell: agregar un certificado de aplicación a un clúster de Service Fabric."
+title: "Ejemplo de Script de PowerShell - aaaAzure Agregar aplicación cert tooa clúster | Documentos de Microsoft"
+description: "Script de Azure PowerShell de ejemplo: agregar un clúster de Service Fabric application certificado tooa."
 services: service-fabric
 documentationcenter: 
 author: rwike77
@@ -15,32 +15,32 @@ ms.topic: article
 ms.date: 06/20/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 9ccd6bb0458bc03e52103fa70cad26bd6bf98bd5
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.openlocfilehash: aba62598e2e4775012f89b5070bef5e61aec64f6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="add-an-application-certificate-to-a-service-fabric-cluster"></a><span data-ttu-id="fe284-103">Incorporación de un certificado de aplicación a un clúster de Service Fabric</span><span class="sxs-lookup"><span data-stu-id="fe284-103">Add an application certificate to a Service Fabric cluster</span></span>
+# <a name="add-an-application-certificate-tooa-service-fabric-cluster"></a><span data-ttu-id="f4615-103">Agregar un clúster de Service Fabric application certificado tooa</span><span class="sxs-lookup"><span data-stu-id="f4615-103">Add an application certificate tooa Service Fabric cluster</span></span>
 
-<span data-ttu-id="fe284-104">Este script de ejemplo crea un certificado autofirmado en el almacén de claves de Azure especificado y lo instala en todos los nodos del clúster de Service Fabric.</span><span class="sxs-lookup"><span data-stu-id="fe284-104">This sample script creates a self-signed certificate in the specified Azure key vault and installs it to all nodes of the Service Fabric cluster.</span></span> <span data-ttu-id="fe284-105">El certificado también se descarga en una carpeta local.</span><span class="sxs-lookup"><span data-stu-id="fe284-105">The certificate also downloads to a local folder.</span></span> <span data-ttu-id="fe284-106">El nombre del certificado descargado es el mismo que el nombre del certificado del almacén de claves.</span><span class="sxs-lookup"><span data-stu-id="fe284-106">The name of the downloaded certificate is the same as the name of the certificate in the key vault.</span></span> <span data-ttu-id="fe284-107">Personalice los parámetros según sea necesario.</span><span class="sxs-lookup"><span data-stu-id="fe284-107">Customize the parameters as needed.</span></span>
+<span data-ttu-id="f4615-104">Este script de ejemplo crea un certificado autofirmado en el almacén de claves Azure especificado hello y lo instala tooall nodos de clúster de Service Fabric Hola.</span><span class="sxs-lookup"><span data-stu-id="f4615-104">This sample script creates a self-signed certificate in hello specified Azure key vault and installs it tooall nodes of hello Service Fabric cluster.</span></span> <span data-ttu-id="f4615-105">certificado de Hello también descarga tooa de carpeta local.</span><span class="sxs-lookup"><span data-stu-id="f4615-105">hello certificate also downloads tooa local folder.</span></span> <span data-ttu-id="f4615-106">nombre de Hola de hello Descargar certificado es Hola mismo que el nombre del certificado de hello en el almacén de claves de Hola Hola.</span><span class="sxs-lookup"><span data-stu-id="f4615-106">hello name of hello downloaded certificate is hello same as hello name of hello certificate in hello key vault.</span></span> <span data-ttu-id="f4615-107">Personalizar los parámetros de hello según sea necesario.</span><span class="sxs-lookup"><span data-stu-id="f4615-107">Customize hello parameters as needed.</span></span>
 
-<span data-ttu-id="fe284-108">Si es necesario, instale Azure PowerShell con la instrucción que se encuentra en la [guía de Azure PowerShell](/powershell/azure/overview) y luego ejecute `Login-AzureRmAccount` para crear una conexión con Azure.</span><span class="sxs-lookup"><span data-stu-id="fe284-108">If needed, install the Azure PowerShell using the instruction found in the [Azure PowerShell guide](/powershell/azure/overview) and then run `Login-AzureRmAccount` to create a connection with Azure.</span></span> 
+<span data-ttu-id="f4615-108">Si es necesario, instale hello Azure PowerShell con hello instrucción se encuentra en hello [Guía de Azure PowerShell](/powershell/azure/overview) y, a continuación, ejecute `Login-AzureRmAccount` toocreate una conexión con Azure.</span><span class="sxs-lookup"><span data-stu-id="f4615-108">If needed, install hello Azure PowerShell using hello instruction found in hello [Azure PowerShell guide](/powershell/azure/overview) and then run `Login-AzureRmAccount` toocreate a connection with Azure.</span></span> 
 
-## <a name="sample-script"></a><span data-ttu-id="fe284-109">Script de ejemplo</span><span class="sxs-lookup"><span data-stu-id="fe284-109">Sample script</span></span>
+## <a name="sample-script"></a><span data-ttu-id="f4615-109">Script de ejemplo</span><span class="sxs-lookup"><span data-stu-id="f4615-109">Sample script</span></span>
 
-<span data-ttu-id="fe284-110">[!code-powershell[main](../../../powershell_scripts/service-fabric/add-application-certificate/add-new-application-certificate.ps1 "Incorporación de un certificado de aplicación a un clúster")]</span><span class="sxs-lookup"><span data-stu-id="fe284-110">[!code-powershell[main](../../../powershell_scripts/service-fabric/add-application-certificate/add-new-application-certificate.ps1 "Add an application certificate to a cluster")]</span></span>
+[!code-powershell[main](../../../powershell_scripts/service-fabric/add-application-certificate/add-new-application-certificate.ps1 "Add an application certificate tooa cluster")]
 
-## <a name="script-explanation"></a><span data-ttu-id="fe284-111">Explicación del script</span><span class="sxs-lookup"><span data-stu-id="fe284-111">Script explanation</span></span>
+## <a name="script-explanation"></a><span data-ttu-id="f4615-110">Explicación del script</span><span class="sxs-lookup"><span data-stu-id="f4615-110">Script explanation</span></span>
 
-<span data-ttu-id="fe284-112">Cada script utiliza los comandos siguientes: cada comando de la tabla crea un vínculo a documentación específica del comando.</span><span class="sxs-lookup"><span data-stu-id="fe284-112">This script uses the following commands: Each command in the table links to command specific documentation.</span></span>
+<span data-ttu-id="f4615-111">Este script utiliza Hola siguientes comandos: cada comando en la tabla de hello vincula documentación específica de toocommand.</span><span class="sxs-lookup"><span data-stu-id="f4615-111">This script uses hello following commands: Each command in hello table links toocommand specific documentation.</span></span>
 
-| <span data-ttu-id="fe284-113">Comando</span><span class="sxs-lookup"><span data-stu-id="fe284-113">Command</span></span> | <span data-ttu-id="fe284-114">Notas</span><span class="sxs-lookup"><span data-stu-id="fe284-114">Notes</span></span> |
+| <span data-ttu-id="f4615-112">Comando</span><span class="sxs-lookup"><span data-stu-id="f4615-112">Command</span></span> | <span data-ttu-id="f4615-113">Notas</span><span class="sxs-lookup"><span data-stu-id="f4615-113">Notes</span></span> |
 |---|---|
-| [<span data-ttu-id="fe284-115">Add-AzureRmServiceFabricApplicationCertificate</span><span class="sxs-lookup"><span data-stu-id="fe284-115">Add-AzureRmServiceFabricApplicationCertificate</span></span>](/powershell/module/azurerm.servicefabric/Add-AzureRmServiceFabricApplicationCertificate) | <span data-ttu-id="fe284-116">Agregue un nuevo certificado de aplicación al conjunto de escalado de máquinas virtuales que componen el clúster.</span><span class="sxs-lookup"><span data-stu-id="fe284-116">Add a new application certificate to the virtual machine scale set that make up the cluster.</span></span>  |
+| [<span data-ttu-id="f4615-114">Add-AzureRmServiceFabricApplicationCertificate</span><span class="sxs-lookup"><span data-stu-id="f4615-114">Add-AzureRmServiceFabricApplicationCertificate</span></span>](/powershell/module/azurerm.servicefabric/Add-AzureRmServiceFabricApplicationCertificate) | <span data-ttu-id="f4615-115">Agregar que una nueva escala de máquinas virtuales de aplicación certificado toohello conjuntos que componen el clúster de Hola.</span><span class="sxs-lookup"><span data-stu-id="f4615-115">Add a new application certificate toohello virtual machine scale set that make up hello cluster.</span></span>  |
 
-## <a name="next-steps"></a><span data-ttu-id="fe284-117">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="fe284-117">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="f4615-116">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="f4615-116">Next steps</span></span>
 
-<span data-ttu-id="fe284-118">Para obtener más información sobre el módulo de Azure PowerShell, consulte la [documentación de Azure PowerShell](/powershell/azure/overview).</span><span class="sxs-lookup"><span data-stu-id="fe284-118">For more information on the Azure PowerShell module, see [Azure PowerShell documentation](/powershell/azure/overview).</span></span>
+<span data-ttu-id="f4615-117">Para obtener más información sobre el módulo de PowerShell de Azure de hello, consulte [documentación de Azure PowerShell](/powershell/azure/overview).</span><span class="sxs-lookup"><span data-stu-id="f4615-117">For more information on hello Azure PowerShell module, see [Azure PowerShell documentation](/powershell/azure/overview).</span></span>
 
-<span data-ttu-id="fe284-119">Puede encontrar ejemplos de Azure PowerShell para Azure Service Fabric en los [ejemplos de PowerShell](../service-fabric-powershell-samples.md).</span><span class="sxs-lookup"><span data-stu-id="fe284-119">Additional Azure Powershell samples for Azure Service Fabric can be found in the [Azure PowerShell samples](../service-fabric-powershell-samples.md).</span></span>
+<span data-ttu-id="f4615-118">Encontrará más ejemplos de Azure Powershell para Azure Service Fabric en hello [ejemplos de PowerShell de Azure](../service-fabric-powershell-samples.md).</span><span class="sxs-lookup"><span data-stu-id="f4615-118">Additional Azure Powershell samples for Azure Service Fabric can be found in hello [Azure PowerShell samples](../service-fabric-powershell-samples.md).</span></span>

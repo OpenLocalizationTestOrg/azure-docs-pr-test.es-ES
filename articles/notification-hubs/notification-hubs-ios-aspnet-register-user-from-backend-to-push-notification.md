@@ -1,6 +1,6 @@
 ---
-title: Registro del usuario actual para notificaciones push mediante una API web | Microsoft Docs
-description: "Obtenga información acerca de cómo solicitar el registro de notificaciones de inserción en una aplicación iOS con los Centros de notificaciones de Azure al realizar el registro por la API web de ASP.NET."
+title: "usuario actual de hello aaaRegister para las notificaciones de inserción a través de Web API | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toorequest Insertar registro de notificaciones en una aplicación de iOS con centros de notificaciones de Azure cuando se realiza registro por la API Web de ASP.NET."
 services: notification-hubs
 documentationcenter: ios
 author: ysxu
@@ -14,51 +14,51 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: fd56bb2dd627b31f00363851a4e76484aa382988
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f859feb436093e703d7e1db38354dd356fff8efe
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="register-the-current-user-for-push-notifications-by-using-aspnet"></a><span data-ttu-id="59018-103">Registro del usuario actual para las notificaciones de inserción mediante ASP.NET</span><span class="sxs-lookup"><span data-stu-id="59018-103">Register the current user for push notifications by using ASP.NET</span></span>
+# <a name="register-hello-current-user-for-push-notifications-by-using-aspnet"></a><span data-ttu-id="c556a-103">Registrar al usuario actual de hello las notificaciones de inserción mediante ASP.NET</span><span class="sxs-lookup"><span data-stu-id="c556a-103">Register hello current user for push notifications by using ASP.NET</span></span>
 > [!div class="op_single_selector"]
-> * [<span data-ttu-id="59018-104">iOS</span><span class="sxs-lookup"><span data-stu-id="59018-104">iOS</span></span>](notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification.md)
+> * [<span data-ttu-id="c556a-104">iOS</span><span class="sxs-lookup"><span data-stu-id="c556a-104">iOS</span></span>](notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification.md)
 > 
 > 
 
-## <a name="overview"></a><span data-ttu-id="59018-105">Información general</span><span class="sxs-lookup"><span data-stu-id="59018-105">Overview</span></span>
-<span data-ttu-id="59018-106">En este tema se describe cómo solicitar el registro de las notificaciones de inserción con los Centros de notificaciones de Azure al realizar el registro mediante ASP.NET Web API.</span><span class="sxs-lookup"><span data-stu-id="59018-106">This topic shows you how to request push notification registration with Azure Notification Hubs when registration is performed by ASP.NET Web API.</span></span> <span data-ttu-id="59018-107">Este tema amplía el tutorial [Notificación a los usuarios con los Centros de notificaciones].</span><span class="sxs-lookup"><span data-stu-id="59018-107">This topic extends the tutorial [Notify users with Notification Hubs].</span></span> <span data-ttu-id="59018-108">Debe haber completado ya los pasos necesarios de ese tutorial para crear el servicio móvil autenticado.</span><span class="sxs-lookup"><span data-stu-id="59018-108">You must have already completed the required steps in that tutorial to create the authenticated mobile service.</span></span> <span data-ttu-id="59018-109">Para obtener más información acerca del escenario de notificación a los usuarios, consulte [Notificación a los usuarios con los Centros de notificaciones].</span><span class="sxs-lookup"><span data-stu-id="59018-109">For more information on the notify users scenario, see [Notify users with Notification Hubs].</span></span>
+## <a name="overview"></a><span data-ttu-id="c556a-105">Información general</span><span class="sxs-lookup"><span data-stu-id="c556a-105">Overview</span></span>
+<span data-ttu-id="c556a-106">Este tema muestra cómo toorequest Insertar registro de notificaciones con centros de notificaciones de Azure cuando el registro se realiza por la API Web de ASP.NET.</span><span class="sxs-lookup"><span data-stu-id="c556a-106">This topic shows you how toorequest push notification registration with Azure Notification Hubs when registration is performed by ASP.NET Web API.</span></span> <span data-ttu-id="c556a-107">Este tema amplían tutorial Hola [notificar a los usuarios con centros de notificaciones].</span><span class="sxs-lookup"><span data-stu-id="c556a-107">This topic extends hello tutorial [Notify users with Notification Hubs].</span></span> <span data-ttu-id="c556a-108">Debe haber completado pasos Hola necesario en ese servicio móvil de toocreate tutorial Hola autenticado.</span><span class="sxs-lookup"><span data-stu-id="c556a-108">You must have already completed hello required steps in that tutorial toocreate hello authenticated mobile service.</span></span> <span data-ttu-id="c556a-109">Para obtener más información sobre Hola notificar al escenario de los usuarios, consulte [notificar a los usuarios con centros de notificaciones].</span><span class="sxs-lookup"><span data-stu-id="c556a-109">For more information on hello notify users scenario, see [Notify users with Notification Hubs].</span></span>
 
-## <a name="update-your-app"></a><span data-ttu-id="59018-110">Actualización de la aplicación</span><span class="sxs-lookup"><span data-stu-id="59018-110">Update your app</span></span>
-1. <span data-ttu-id="59018-111">En su MainStoryboard_iPhone.storyboard, agregue los siguientes componentes desde la biblioteca de objetos:</span><span class="sxs-lookup"><span data-stu-id="59018-111">In your MainStoryboard_iPhone.storyboard, add the following components from the object library:</span></span>
+## <a name="update-your-app"></a><span data-ttu-id="c556a-110">Actualización de la aplicación</span><span class="sxs-lookup"><span data-stu-id="c556a-110">Update your app</span></span>
+1. <span data-ttu-id="c556a-111">En su MainStoryboard_iPhone.storyboard, agregue Hola de los componentes siguientes de la biblioteca de objetos de hello:</span><span class="sxs-lookup"><span data-stu-id="c556a-111">In your MainStoryboard_iPhone.storyboard, add hello following components from hello object library:</span></span>
    
-   * <span data-ttu-id="59018-112">**Etiqueta**: "Push to User with Notification Hubs"</span><span class="sxs-lookup"><span data-stu-id="59018-112">**Label**: "Push to User with Notification Hubs"</span></span>
-   * <span data-ttu-id="59018-113">**Etiqueta**: "InstallationId"</span><span class="sxs-lookup"><span data-stu-id="59018-113">**Label**: "InstallationId"</span></span>
-   * <span data-ttu-id="59018-114">**Etiqueta**: "User"</span><span class="sxs-lookup"><span data-stu-id="59018-114">**Label**: "User"</span></span>
-   * <span data-ttu-id="59018-115">**Campo de texto**: "User"</span><span class="sxs-lookup"><span data-stu-id="59018-115">**Text Field**: "User"</span></span>
-   * <span data-ttu-id="59018-116">**Etiqueta**: "Password"</span><span class="sxs-lookup"><span data-stu-id="59018-116">**Label**: "Password"</span></span>
-   * <span data-ttu-id="59018-117">**Campo de texto**: "Password"</span><span class="sxs-lookup"><span data-stu-id="59018-117">**Text Field**: "Password"</span></span>
-   * <span data-ttu-id="59018-118">**Botón**: "Login"</span><span class="sxs-lookup"><span data-stu-id="59018-118">**Button**: "Login"</span></span>
+   * <span data-ttu-id="c556a-112">**Etiqueta**: "TooUser con centros de notificaciones de inserción"</span><span class="sxs-lookup"><span data-stu-id="c556a-112">**Label**: "Push tooUser with Notification Hubs"</span></span>
+   * <span data-ttu-id="c556a-113">**Etiqueta**: "InstallationId"</span><span class="sxs-lookup"><span data-stu-id="c556a-113">**Label**: "InstallationId"</span></span>
+   * <span data-ttu-id="c556a-114">**Etiqueta**: "User"</span><span class="sxs-lookup"><span data-stu-id="c556a-114">**Label**: "User"</span></span>
+   * <span data-ttu-id="c556a-115">**Campo de texto**: "User"</span><span class="sxs-lookup"><span data-stu-id="c556a-115">**Text Field**: "User"</span></span>
+   * <span data-ttu-id="c556a-116">**Etiqueta**: "Password"</span><span class="sxs-lookup"><span data-stu-id="c556a-116">**Label**: "Password"</span></span>
+   * <span data-ttu-id="c556a-117">**Campo de texto**: "Password"</span><span class="sxs-lookup"><span data-stu-id="c556a-117">**Text Field**: "Password"</span></span>
+   * <span data-ttu-id="c556a-118">**Botón**: "Login"</span><span class="sxs-lookup"><span data-stu-id="c556a-118">**Button**: "Login"</span></span>
      
-     <span data-ttu-id="59018-119">En este punto, su storyboard debe presentar la siguiente apariencia:</span><span class="sxs-lookup"><span data-stu-id="59018-119">At this point, your storyboard looks like the following:</span></span>
+     <span data-ttu-id="c556a-119">En este momento, el guión gráfico Hola siguiente aspecto:</span><span class="sxs-lookup"><span data-stu-id="c556a-119">At this point, your storyboard looks like hello following:</span></span>
      
       ![][0]
-2. <span data-ttu-id="59018-120">En el editor del asistente, cree salidas para todos los controles cambiados y llámelos, conecte los campos de texto con el controlador de vista (delegado) y cree una **acción** para el botón de **inicio de sesión**.</span><span class="sxs-lookup"><span data-stu-id="59018-120">In the assistant editor, create outlets for all the switched controls and call them, connect the text fields with the View Controller (delegate), and create an **Action** for the **login** button.</span></span>
+2. <span data-ttu-id="c556a-120">En el editor de Asistente de hello, crear las salidas de todos los controles de hello cambiado y llamarlos, conectar los campos de texto hello con hello View-Controller (delegado) y crear un **acción** para hello **inicio de sesión** botón.</span><span class="sxs-lookup"><span data-stu-id="c556a-120">In hello assistant editor, create outlets for all hello switched controls and call them, connect hello text fields with hello View Controller (delegate), and create an **Action** for hello **login** button.</span></span>
    
        ![][1]
    
-       Your BreakingNewsViewController.h file should now contain the following code:
+       Your BreakingNewsViewController.h file should now contain hello following code:
    
         @property (weak, nonatomic) IBOutlet UILabel *installationId;
         @property (weak, nonatomic) IBOutlet UITextField *User;
         @property (weak, nonatomic) IBOutlet UITextField *Password;
    
         - (IBAction)login:(id)sender;
-3. <span data-ttu-id="59018-121">Cree una clase llamada **DeviceInfo**y copie el siguiente código en la sección de la interfaz del archivo DeviceInfo.h:</span><span class="sxs-lookup"><span data-stu-id="59018-121">Create a class named **DeviceInfo**, and copy the following code into the interface section of the file DeviceInfo.h:</span></span>
+3. <span data-ttu-id="c556a-121">Cree una clase denominada **DeviceInfo**, y Hola copia siguiendo el código en la sección de la interfaz de Hola de archivo hello DeviceInfo.h:</span><span class="sxs-lookup"><span data-stu-id="c556a-121">Create a class named **DeviceInfo**, and copy hello following code into hello interface section of hello file DeviceInfo.h:</span></span>
    
         @property (readonly, nonatomic) NSString* installationId;
         @property (nonatomic) NSData* deviceToken;
-4. <span data-ttu-id="59018-122">Copie el siguiente código en la sección de implementación del archivo DeviceInfo.m:</span><span class="sxs-lookup"><span data-stu-id="59018-122">Copy the following code in the implementation section of the DeviceInfo.m file:</span></span>
+4. <span data-ttu-id="c556a-122">Copie Hola después el código de sección de implementación de Hola de archivo de hello DeviceInfo.m:</span><span class="sxs-lookup"><span data-stu-id="c556a-122">Copy hello following code in hello implementation section of hello DeviceInfo.m file:</span></span>
    
             @synthesize installationId = _installationId;
    
@@ -73,7 +73,7 @@ ms.lasthandoff: 07/11/2017
                     _installationId = (__bridge_transfer NSString *)CFUUIDCreateString(kCFAllocatorDefault, newUUID);
                     CFRelease(newUUID);
    
-                    //store the install ID so we don't generate a new one next time
+                    //store hello install ID so we don't generate a new one next time
                     [defaults setObject:_installationId forKey:@"PushToUserInstallationId"];
                     [defaults synchronize];
                 }
@@ -89,32 +89,32 @@ ms.lasthandoff: 07/11/2017
                                       ntohl(tokenBytes[6]), ntohl(tokenBytes[7])];
                 return hexToken;
             }
-5. <span data-ttu-id="59018-123">En PushToUserAppDelegate.h, agregue la siguiente propiedad singleton:</span><span class="sxs-lookup"><span data-stu-id="59018-123">In PushToUserAppDelegate.h, add the following property singleton:</span></span>
+5. <span data-ttu-id="c556a-123">En PushToUserAppDelegate.h, agregue Hola después singleton de propiedad:</span><span class="sxs-lookup"><span data-stu-id="c556a-123">In PushToUserAppDelegate.h, add hello following property singleton:</span></span>
    
         @property (strong, nonatomic) DeviceInfo* deviceInfo;
-6. <span data-ttu-id="59018-124">En el método **didFinishLaunchingWithOptions** en PushToUserAppDelegate.m, agregue el siguiente código:</span><span class="sxs-lookup"><span data-stu-id="59018-124">In the **didFinishLaunchingWithOptions** method in PushToUserAppDelegate.m, add the following code:</span></span>
+6. <span data-ttu-id="c556a-124">Hola **didFinishLaunchingWithOptions** método PushToUserAppDelegate.m, agregar Hola siguiente código:</span><span class="sxs-lookup"><span data-stu-id="c556a-124">In hello **didFinishLaunchingWithOptions** method in PushToUserAppDelegate.m, add hello following code:</span></span>
    
         self.deviceInfo = [[DeviceInfo alloc] init];
    
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
    
-    <span data-ttu-id="59018-125">La primera línea inicializa el singleton **DeviceInfo** .</span><span class="sxs-lookup"><span data-stu-id="59018-125">The first line initializes the **DeviceInfo** singleton.</span></span> <span data-ttu-id="59018-126">La segunda línea inicia el registro de notificaciones de inserción, que ya existe si ya ha completado el tutorial [Introducción a los Centros de notificaciones] .</span><span class="sxs-lookup"><span data-stu-id="59018-126">The second line starts the registration for push notifications, which is already present is you have already completed the [Get Started with Notification Hubs] tutorial.</span></span>
-7. <span data-ttu-id="59018-127">En PushToUserAppDelegate.m, implemente el método **didRegisterForRemoteNotificationsWithDeviceToken** en su AppDelegate y agregue el siguiente código:</span><span class="sxs-lookup"><span data-stu-id="59018-127">In PushToUserAppDelegate.m, implement the method **didRegisterForRemoteNotificationsWithDeviceToken** in your AppDelegate and add the following code:</span></span>
+    <span data-ttu-id="c556a-125">primera línea de Hello inicializa hello **DeviceInfo** singleton.</span><span class="sxs-lookup"><span data-stu-id="c556a-125">hello first line initializes hello **DeviceInfo** singleton.</span></span> <span data-ttu-id="c556a-126">Hola segunda línea inicia Hola registro para las notificaciones de inserción, que ya está presente es ya completados hello [empezar a trabajar con los centros de notificaciones] tutorial.</span><span class="sxs-lookup"><span data-stu-id="c556a-126">hello second line starts hello registration for push notifications, which is already present is you have already completed hello [Get Started with Notification Hubs] tutorial.</span></span>
+7. <span data-ttu-id="c556a-127">En PushToUserAppDelegate.m, implemente el método hello **didRegisterForRemoteNotificationsWithDeviceToken** en su AppDelegate y agregue el siguiente código de hello:</span><span class="sxs-lookup"><span data-stu-id="c556a-127">In PushToUserAppDelegate.m, implement hello method **didRegisterForRemoteNotificationsWithDeviceToken** in your AppDelegate and add hello following code:</span></span>
    
         self.deviceInfo.deviceToken = deviceToken;
    
-    <span data-ttu-id="59018-128">De este modo se configura el token del dispositivo para la solicitud.</span><span class="sxs-lookup"><span data-stu-id="59018-128">This sets the device token for the request.</span></span>
+    <span data-ttu-id="c556a-128">Esto establece el token del dispositivo Hola para solicitud de Hola.</span><span class="sxs-lookup"><span data-stu-id="c556a-128">This sets hello device token for hello request.</span></span>
    
    > [!NOTE]
-   > <span data-ttu-id="59018-129">En este punto, no debería haber ningún otro código en este método.</span><span class="sxs-lookup"><span data-stu-id="59018-129">At this point, there should not be any other code in this method.</span></span> <span data-ttu-id="59018-130">Si ya tiene una llamada al método **registerNativeWithDeviceToken** que se agregó cuando realizó el tutorial [Introducción a los Centros de notificaciones](/manage/services/notification-hubs/get-started-notification-hubs-ios/) , debe convertir la llamada en comentario o borrarla.</span><span class="sxs-lookup"><span data-stu-id="59018-130">If you already have a call to the **registerNativeWithDeviceToken** method that was added when you completed the [Get Started with Notification Hubs](/manage/services/notification-hubs/get-started-notification-hubs-ios/) tutorial, you must comment-out or remove that call.</span></span>
+   > <span data-ttu-id="c556a-129">En este punto, no debería haber ningún otro código en este método.</span><span class="sxs-lookup"><span data-stu-id="c556a-129">At this point, there should not be any other code in this method.</span></span> <span data-ttu-id="c556a-130">Si ya tiene una llamada toohello **registerNativeWithDeviceToken** método que se agregó al completar hello [empezar a trabajar con los centros de notificaciones](/manage/services/notification-hubs/get-started-notification-hubs-ios/) tutorial debe Comente o quite que llamar a.</span><span class="sxs-lookup"><span data-stu-id="c556a-130">If you already have a call toohello **registerNativeWithDeviceToken** method that was added when you completed hello [Get Started with Notification Hubs](/manage/services/notification-hubs/get-started-notification-hubs-ios/) tutorial, you must comment-out or remove that call.</span></span>
    > 
    > 
-8. <span data-ttu-id="59018-131">En el archivo PushToUserAppDelegate.m, agregue el siguiente método de controlador:</span><span class="sxs-lookup"><span data-stu-id="59018-131">In the PushToUserAppDelegate.m file, add the following handler method:</span></span>
+8. <span data-ttu-id="c556a-131">En archivo de PushToUserAppDelegate.m de hello, agregue Hola siguiendo el método de controlador:</span><span class="sxs-lookup"><span data-stu-id="c556a-131">In hello PushToUserAppDelegate.m file, add hello following handler method:</span></span>
    
-   * <span data-ttu-id="59018-132">información de usuario de aplicación (void):(UIApplication *) aplicación didReceiveRemoteNotification:(NSDictionary *) {NSLog (@"% @", información de usuario);   UIAlertView * alerta = [[UIAlertView alloc] initWithTitle:@"Notification" mensaje: [información de usuario objectForKey:@"inAppMessage]" delegado: nil cancelButtonTitle: @ otherButtonTitles:nil "Aceptar", nulo];   [Mostrar alerta]; }</span><span class="sxs-lookup"><span data-stu-id="59018-132">(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {   NSLog(@"%@", userInfo);   UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notification" message:                         [userInfo objectForKey:@"inAppMessage"] delegate:nil cancelButtonTitle:                         @"OK" otherButtonTitles:nil, nil];   [alert show]; }</span></span>
+   * <span data-ttu-id="c556a-132">información de usuario de aplicación (void):(UIApplication *) aplicación didReceiveRemoteNotification:(NSDictionary *) {NSLog (@"% @", información de usuario);   UIAlertView * alerta = [[UIAlertView alloc] initWithTitle:@"Notification" mensaje: [información de usuario objectForKey:@"inAppMessage]" delegado: nil cancelButtonTitle: @ otherButtonTitles:nil "Aceptar", nulo];   [Mostrar alerta]; }</span><span class="sxs-lookup"><span data-stu-id="c556a-132">(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {   NSLog(@"%@", userInfo);   UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notification" message:                         [userInfo objectForKey:@"inAppMessage"] delegate:nil cancelButtonTitle:                         @"OK" otherButtonTitles:nil, nil];   [alert show]; }</span></span>
    
-   <span data-ttu-id="59018-133">Este método muestra una alerta en la interfaz de usuario cuando su aplicación recibe notificaciones durante su ejecución.</span><span class="sxs-lookup"><span data-stu-id="59018-133">This method displays an alert in the UI when your app receives notifications while it is running.</span></span>
-9. <span data-ttu-id="59018-134">Abra el archivo PushToUserViewController.m y escriba la siguiente implementación:</span><span class="sxs-lookup"><span data-stu-id="59018-134">Open the PushToUserViewController.m file, and return the keyboard in the following implementation:</span></span>
+   <span data-ttu-id="c556a-133">Este método muestra una alerta en la interfaz de usuario de hello cuando la aplicación recibe notificaciones mientras se está ejecutando.</span><span class="sxs-lookup"><span data-stu-id="c556a-133">This method displays an alert in hello UI when your app receives notifications while it is running.</span></span>
+9. <span data-ttu-id="c556a-134">Abrir archivo de PushToUserViewController.m hello y teclado Hola devuelto en hello después de la implementación:</span><span class="sxs-lookup"><span data-stu-id="c556a-134">Open hello PushToUserViewController.m file, and return hello keyboard in hello following implementation:</span></span>
    
         - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
             if (theTextField == self.User || theTextField == self.Password) {
@@ -122,15 +122,15 @@ ms.lasthandoff: 07/11/2017
             }
             return YES;
         }
-10. <span data-ttu-id="59018-135">En el método **viewDidLoad** del archivo PushToUserViewController.m, inicialice la etiqueta installationId como se muestra a continuación:</span><span class="sxs-lookup"><span data-stu-id="59018-135">In the **viewDidLoad** method in the PushToUserViewController.m file, initialize the installationId label as follows:</span></span>
+10. <span data-ttu-id="c556a-135">Hola **viewDidLoad** método hello PushToUserViewController.m archivo, inicializar etiqueta installationId de hello como sigue:</span><span class="sxs-lookup"><span data-stu-id="c556a-135">In hello **viewDidLoad** method in hello PushToUserViewController.m file, initialize hello installationId label as follows:</span></span>
     
          DeviceInfo* deviceInfo = [(PushToUserAppDelegate*)[[UIApplication sharedApplication]delegate] deviceInfo];
          Self.installationId.text = deviceInfo.installationId;
-11. <span data-ttu-id="59018-136">Agregue las siguientes propiedades en la interfaz en PushToUserViewController.m:</span><span class="sxs-lookup"><span data-stu-id="59018-136">Add the following properties in interface in PushToUserViewController.m:</span></span>
+11. <span data-ttu-id="c556a-136">Agregue Hola propiedades de interfaz en PushToUserViewController.m siguientes:</span><span class="sxs-lookup"><span data-stu-id="c556a-136">Add hello following properties in interface in PushToUserViewController.m:</span></span>
     
         @property (readonly) NSOperationQueue* downloadQueue;
         - (NSString*)base64forData:(NSData*)theData;
-12. <span data-ttu-id="59018-137">Luego, agregue la siguiente implementación:</span><span class="sxs-lookup"><span data-stu-id="59018-137">Then, add the following implementation:</span></span>
+12. <span data-ttu-id="c556a-137">A continuación, agregue Hola después de la implementación:</span><span class="sxs-lookup"><span data-stu-id="c556a-137">Then, add hello following implementation:</span></span>
     
             - (NSOperationQueue *)downloadQueue {
                 if (!_downloadQueue) {
@@ -173,7 +173,7 @@ ms.lasthandoff: 07/11/2017
     
                 return [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
             }
-13. <span data-ttu-id="59018-138">Copie el siguiente código en el método controlador **login** creado por XCode:</span><span class="sxs-lookup"><span data-stu-id="59018-138">Copy the following code into the **login** handler method created by XCode:</span></span>
+13. <span data-ttu-id="c556a-138">Copia Hola siguiente de código en hello **inicio de sesión** método de controlador creado por XCode:</span><span class="sxs-lookup"><span data-stu-id="c556a-138">Copy hello following code into hello **login** handler method created by XCode:</span></span>
     
             DeviceInfo* deviceInfo = [(PushToUserAppDelegate*)[[UIApplication sharedApplication]delegate] deviceInfo];
     
@@ -206,9 +206,9 @@ ms.lasthandoff: 07/11/2017
                 }
             }];
     
-    <span data-ttu-id="59018-139">Este método obtiene un ID de instalación y un canal para las notificaciones de inserción y los envía, junto con el tipo de dispositivo, al método de Web API autenticado que crea un registro en los Centros de notificaciones.</span><span class="sxs-lookup"><span data-stu-id="59018-139">This method gets both an installation ID and channel for push notifications and sends it, along with the device type, to the authenticated Web API method that creates a registration in Notification Hubs.</span></span> <span data-ttu-id="59018-140">Esta API web se definió en [Notificación a los usuarios con los Centros de notificaciones].</span><span class="sxs-lookup"><span data-stu-id="59018-140">This Web API was defined in [Notify users with Notification Hubs].</span></span>
+    <span data-ttu-id="c556a-139">Este método obtiene un identificador de instalación y el canal de notificaciones de inserción y lo envía, junto con el tipo de dispositivo de hello, toohello autentica el método API de Web que crea un registro en los centros de notificaciones.</span><span class="sxs-lookup"><span data-stu-id="c556a-139">This method gets both an installation ID and channel for push notifications and sends it, along with hello device type, toohello authenticated Web API method that creates a registration in Notification Hubs.</span></span> <span data-ttu-id="c556a-140">Esta API web se definió en [notificar a los usuarios con centros de notificaciones].</span><span class="sxs-lookup"><span data-stu-id="c556a-140">This Web API was defined in [Notify users with Notification Hubs].</span></span>
 
-<span data-ttu-id="59018-141">Ahora que la aplicación de cliente se ha actualizado, regrese a [Notificación a los usuarios con los Centros de notificaciones] y actualice el servicio móvil para enviar notificaciones mediante Centros de notificaciones.</span><span class="sxs-lookup"><span data-stu-id="59018-141">Now that the client app has been updated, return to the [Notify users with Notification Hubs] and update the mobile service to send notifications by using Notification Hubs.</span></span>
+<span data-ttu-id="c556a-141">Ahora que hello aplicación cliente se ha actualizado, devolver toohello [notificar a los usuarios con centros de notificaciones] y actualizar notificaciones de toosend de hello servicio móvil con centros de notificaciones.</span><span class="sxs-lookup"><span data-stu-id="c556a-141">Now that hello client app has been updated, return toohello [Notify users with Notification Hubs] and update hello mobile service toosend notifications by using Notification Hubs.</span></span>
 
 <!-- Anchors. -->
 
@@ -217,6 +217,6 @@ ms.lasthandoff: 07/11/2017
 [1]: ./media/notification-hubs-ios-aspnet-register-user-push-notifications/notification-hub-user-aspnet-ios2.png
 
 <!-- URLs. -->
-<span data-ttu-id="59018-142">[Notificación a los usuarios con los Centros de notificaciones]: /manage/services/notification-hubs/notify-users-aspnet</span><span class="sxs-lookup"><span data-stu-id="59018-142">[Notify users with Notification Hubs]: /manage/services/notification-hubs/notify-users-aspnet</span></span>
+[notificar a los usuarios con centros de notificaciones]: /manage/services/notification-hubs/notify-users-aspnet
 
-<span data-ttu-id="59018-143">[Introducción a los Centros de notificaciones]: /manage/services/notification-hubs/get-started-notification-hubs-ios</span><span class="sxs-lookup"><span data-stu-id="59018-143">[Get Started with Notification Hubs]: /manage/services/notification-hubs/get-started-notification-hubs-ios</span></span>
+[empezar a trabajar con los centros de notificaciones]: /manage/services/notification-hubs/get-started-notification-hubs-ios

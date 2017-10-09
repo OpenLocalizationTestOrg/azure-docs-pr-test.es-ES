@@ -1,6 +1,6 @@
 ---
-title: "Creación de una máquina virtual de prueba en Azure Stack | Microsoft Docs"
-description: "Aprenda a aprovisionar una máquina virtual de prueba en Azure Stack como un operador en la nube."
+title: "aaaCreate una prueba de la máquina virtual en la pila de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo tooprovision una prueba de la máquina virtual en la pila de Azure como un operador en la nube."
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -14,29 +14,29 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 7/21/2017
 ms.author: erikje
-ms.openlocfilehash: 4e3f90fe35b7fb2509db0eb7a467305f4c4167ef
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 9633cc20852e16283ad4522da78971133028efdd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-test-virtual-machine-in-azure-stack"></a><span data-ttu-id="2dd01-103">Creación de una máquina virtual en Azure Stack</span><span class="sxs-lookup"><span data-stu-id="2dd01-103">Create a test virtual machine in Azure Stack</span></span>
-<span data-ttu-id="2dd01-104">Como un operador en la nube, puede crear una máquina virtual de prueba para validar la implementación de Azure Stack.</span><span class="sxs-lookup"><span data-stu-id="2dd01-104">As a cloud operator, you can create a test virtual machine to validate your Azure Stack deployment.</span></span>
+# <a name="create-a-test-virtual-machine-in-azure-stack"></a><span data-ttu-id="97374-103">Creación de una máquina virtual en Azure Stack</span><span class="sxs-lookup"><span data-stu-id="97374-103">Create a test virtual machine in Azure Stack</span></span>
+<span data-ttu-id="97374-104">Como un operador en la nube, puede crear un toovalidate de máquina virtual de prueba de la implementación de la pila de Azure.</span><span class="sxs-lookup"><span data-stu-id="97374-104">As a cloud operator, you can create a test virtual machine toovalidate your Azure Stack deployment.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="2dd01-105">Antes de poder aprovisionar las máquinas virtuales, debe [agregar la imagen de evaluación de Windows Server 2016 en Marketplace de Azure Stack](azure-stack-add-default-image.md).</span><span class="sxs-lookup"><span data-stu-id="2dd01-105">Before you can provision virtual machines, you must [add the Windows Server 2016 Evaluation image to the Azure Stack marketplace](azure-stack-add-default-image.md).</span></span>
+> <span data-ttu-id="97374-105">Antes de poder aprovisionar máquinas virtuales, debe [agregar marketplace de pila de Azure de hello evaluación de Windows Server 2016 imagen toohello](azure-stack-add-default-image.md).</span><span class="sxs-lookup"><span data-stu-id="97374-105">Before you can provision virtual machines, you must [add hello Windows Server 2016 Evaluation image toohello Azure Stack marketplace](azure-stack-add-default-image.md).</span></span>
 > 
 > 
 
-## <a name="create-a-virtual-machine"></a><span data-ttu-id="2dd01-106">de una máquina virtual</span><span class="sxs-lookup"><span data-stu-id="2dd01-106">Create a virtual machine</span></span>
-1. <span data-ttu-id="2dd01-107">En servidor host de Azure Stack Development Kit, [inicie sesión en](azure-stack-connect-azure-stack.md) el portal del administrador (`https://adminportal.local.azurestack.external`) y, a continuación, haga clic en **Nuevo** > **Proceso** > **Windows Server 2016 Datacenter Eval** > **Crear**.</span><span class="sxs-lookup"><span data-stu-id="2dd01-107">On the Azure Stack Development Kit host, [sign in](azure-stack-connect-azure-stack.md) to the administrator portal (`https://adminportal.local.azurestack.external`), and then click **New** > **Compute** > **Windows Server 2016 Datacenter Eval** > **Create**.</span></span>  
-2. <span data-ttu-id="2dd01-108">En la hoja **Aspectos básicos**, escriba un **Nombre**, **Nombre de usuario** y **Contraseña**.</span><span class="sxs-lookup"><span data-stu-id="2dd01-108">In the **Basics** blade, type a **Name**, **User name**, and **Password**.</span></span> <span data-ttu-id="2dd01-109">Elija una **suscripción**.</span><span class="sxs-lookup"><span data-stu-id="2dd01-109">Choose a **Subscription**.</span></span> <span data-ttu-id="2dd01-110">Cree un **grupo de recursos** o seleccione uno existente y, a continuación, haga clic en **Aceptar**.</span><span class="sxs-lookup"><span data-stu-id="2dd01-110">Create a **Resource group**, or select an existing one, and then click **OK**.</span></span>  
-3. <span data-ttu-id="2dd01-111">En la hoja **Elegir un tamaño**, haga clic en **A1 Estándar** y, después, en **Seleccionar**.</span><span class="sxs-lookup"><span data-stu-id="2dd01-111">In the **Choose a size** blade, click **A1 Standard**, and then click **Select**.</span></span>  
-4. <span data-ttu-id="2dd01-112">En la hoja de **configuración**, acepte los valores predeterminados y haga clic en **Aceptar**.</span><span class="sxs-lookup"><span data-stu-id="2dd01-112">In the **Settings** blade, accept the defaults and click **OK**</span></span>
-5. <span data-ttu-id="2dd01-113">En la hoja **Resumen**, haga clic en **Aceptar** para crear la máquina virtual.</span><span class="sxs-lookup"><span data-stu-id="2dd01-113">In the **Summary** blade, click **OK** to create the virtual machine.</span></span>  
-6. <span data-ttu-id="2dd01-114">Para ver la nueva máquina virtual, haga clic en **Todos los recursos** y, a continuación, busque la máquina virtual y haga clic en su nombre.</span><span class="sxs-lookup"><span data-stu-id="2dd01-114">To see your new virtual machine, click **All resources**, then search for the virtual machine and click its name.</span></span>
+## <a name="create-a-virtual-machine"></a><span data-ttu-id="97374-106">de una máquina virtual</span><span class="sxs-lookup"><span data-stu-id="97374-106">Create a virtual machine</span></span>
+1. <span data-ttu-id="97374-107">En el host del Kit de desarrollo de pila de Azure de hello, [iniciar sesión en](azure-stack-connect-azure-stack.md) toohello portal del administrador (`https://adminportal.local.azurestack.external`) y, a continuación, haga clic en **New** > **proceso**  >  **Datacenter de Windows Server 2016 Eval** > **crear**.</span><span class="sxs-lookup"><span data-stu-id="97374-107">On hello Azure Stack Development Kit host, [sign in](azure-stack-connect-azure-stack.md) toohello administrator portal (`https://adminportal.local.azurestack.external`), and then click **New** > **Compute** > **Windows Server 2016 Datacenter Eval** > **Create**.</span></span>  
+2. <span data-ttu-id="97374-108">Hola **Fundamentos** hoja, escriba un **nombre**, **nombre de usuario**, y **contraseña**.</span><span class="sxs-lookup"><span data-stu-id="97374-108">In hello **Basics** blade, type a **Name**, **User name**, and **Password**.</span></span> <span data-ttu-id="97374-109">Elija una **suscripción**.</span><span class="sxs-lookup"><span data-stu-id="97374-109">Choose a **Subscription**.</span></span> <span data-ttu-id="97374-110">Cree un **grupo de recursos** o seleccione uno existente y, a continuación, haga clic en **Aceptar**.</span><span class="sxs-lookup"><span data-stu-id="97374-110">Create a **Resource group**, or select an existing one, and then click **OK**.</span></span>  
+3. <span data-ttu-id="97374-111">Hola **elegir un tamaño de** hoja, haga clic en **estándar A1**y, a continuación, haga clic en **seleccione**.</span><span class="sxs-lookup"><span data-stu-id="97374-111">In hello **Choose a size** blade, click **A1 Standard**, and then click **Select**.</span></span>  
+4. <span data-ttu-id="97374-112">Hola **configuración** hoja, acepte los valores predeterminados de Hola y haga clic en **Aceptar**</span><span class="sxs-lookup"><span data-stu-id="97374-112">In hello **Settings** blade, accept hello defaults and click **OK**</span></span>
+5. <span data-ttu-id="97374-113">Hola **resumen** hoja, haga clic en **Aceptar** máquina virtual de toocreate Hola.</span><span class="sxs-lookup"><span data-stu-id="97374-113">In hello **Summary** blade, click **OK** toocreate hello virtual machine.</span></span>  
+6. <span data-ttu-id="97374-114">toosee la nueva máquina virtual, haga clic en **todos los recursos**, a continuación, busque la máquina virtual de Hola y haga clic en su nombre.</span><span class="sxs-lookup"><span data-stu-id="97374-114">toosee your new virtual machine, click **All resources**, then search for hello virtual machine and click its name.</span></span>
     ![](media/azure-stack-provision-vm/image06.png)
 
 
-## <a name="next-steps"></a><span data-ttu-id="2dd01-115">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="2dd01-115">Next steps</span></span>
-[<span data-ttu-id="2dd01-116">Usar los portales de administración y de usuarios en Azure Stack</span><span class="sxs-lookup"><span data-stu-id="2dd01-116">Using the administrator and user portals in Azure Stack</span></span>](azure-stack-manage-portals.md)
+## <a name="next-steps"></a><span data-ttu-id="97374-115">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="97374-115">Next steps</span></span>
+[<span data-ttu-id="97374-116">Uso de portales de administrador y usuario de hello en la pila de Azure</span><span class="sxs-lookup"><span data-stu-id="97374-116">Using hello administrator and user portals in Azure Stack</span></span>](azure-stack-manage-portals.md)

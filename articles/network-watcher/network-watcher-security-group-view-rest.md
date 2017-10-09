@@ -1,6 +1,6 @@
 ---
-title: "Análisis de la seguridad de red con la vista de grupos de seguridad de Azure Network Watcher (API de REST) | Microsoft Docs"
-description: "En este artículo se describe cómo utilizar PowerShell para analizar la seguridad de máquinas virtuales con la vista de grupos de seguridad."
+title: 'seguridad de red de aaaAnalyze con vista grupo Monitor de seguridad de Azure red: API de REST | Documentos de Microsoft'
+description: "En este artículo se describe cómo toouse PowerShell tooanalyze un virtual máquinas seguridad con vista de grupo de seguridad."
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,44 +14,44 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-ms.openlocfilehash: afced52b3ae6f3b7f400364f5ec7d049aa166590
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0858a64a9454816e05f06dadb9536ad0c755e90e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="analyze-your-virtual-machine-security-with-security-group-view-using-rest-api"></a><span data-ttu-id="3bf3c-103">Análisis de la seguridad de una máquina virtual con la vista de grupos de seguridad mediante la API de REST</span><span class="sxs-lookup"><span data-stu-id="3bf3c-103">Analyze your Virtual Machine security with Security Group View using REST API</span></span>
+# <a name="analyze-your-virtual-machine-security-with-security-group-view-using-rest-api"></a><span data-ttu-id="c2bfa-103">Análisis de la seguridad de una máquina virtual con la vista de grupos de seguridad mediante la API de REST</span><span class="sxs-lookup"><span data-stu-id="c2bfa-103">Analyze your Virtual Machine security with Security Group View using REST API</span></span>
 
 > [!div class="op_single_selector"]
-> - [<span data-ttu-id="3bf3c-104">PowerShell</span><span class="sxs-lookup"><span data-stu-id="3bf3c-104">PowerShell</span></span>](network-watcher-security-group-view-powershell.md)
-> - [<span data-ttu-id="3bf3c-105">CLI 1.0</span><span class="sxs-lookup"><span data-stu-id="3bf3c-105">CLI 1.0</span></span>](network-watcher-security-group-view-cli-nodejs.md)
-> - [<span data-ttu-id="3bf3c-106">CLI 2.0</span><span class="sxs-lookup"><span data-stu-id="3bf3c-106">CLI 2.0</span></span>](network-watcher-security-group-view-cli.md)
-> - [<span data-ttu-id="3bf3c-107">API DE REST</span><span class="sxs-lookup"><span data-stu-id="3bf3c-107">REST API</span></span>](network-watcher-security-group-view-rest.md)
+> - [<span data-ttu-id="c2bfa-104">PowerShell</span><span class="sxs-lookup"><span data-stu-id="c2bfa-104">PowerShell</span></span>](network-watcher-security-group-view-powershell.md)
+> - [<span data-ttu-id="c2bfa-105">CLI 1.0</span><span class="sxs-lookup"><span data-stu-id="c2bfa-105">CLI 1.0</span></span>](network-watcher-security-group-view-cli-nodejs.md)
+> - [<span data-ttu-id="c2bfa-106">CLI 2.0</span><span class="sxs-lookup"><span data-stu-id="c2bfa-106">CLI 2.0</span></span>](network-watcher-security-group-view-cli.md)
+> - [<span data-ttu-id="c2bfa-107">API DE REST</span><span class="sxs-lookup"><span data-stu-id="c2bfa-107">REST API</span></span>](network-watcher-security-group-view-rest.md)
 
-<span data-ttu-id="3bf3c-108">La vista de grupos de seguridad devuelve las reglas de seguridad de red configuradas y vigentes que se aplican a una máquina virtual.</span><span class="sxs-lookup"><span data-stu-id="3bf3c-108">Security group view returns configured and effective network security rules that are applied to a virtual machine.</span></span> <span data-ttu-id="3bf3c-109">Esta funcionalidad resulta útil para auditar y diagnosticar los grupos de seguridad de red y las reglas que están configuradas en una máquina virtual para asegurarse de que el tráfico se está permitiendo o denegando correctamente.</span><span class="sxs-lookup"><span data-stu-id="3bf3c-109">This capability is useful to audit and diagnose Network Security Groups and rules that are configured on a VM to ensure traffic is being correctly allowed or denied.</span></span> <span data-ttu-id="3bf3c-110">En este artículo se muestra cómo recuperar las reglas de seguridad configuradas y vigentes para una máquina virtual mediante la API de REST.</span><span class="sxs-lookup"><span data-stu-id="3bf3c-110">In this article, we show you how to retrieve the effective and applied security rules to a virtual machine using REST API</span></span>
+<span data-ttu-id="c2bfa-108">Vista de grupo de seguridad devuelve reglas de seguridad de red configurada y eficaz que están aplicados tooa virtual machine.</span><span class="sxs-lookup"><span data-stu-id="c2bfa-108">Security group view returns configured and effective network security rules that are applied tooa virtual machine.</span></span> <span data-ttu-id="c2bfa-109">Esta capacidad es útil tooaudit y diagnosticar los grupos de seguridad de red y las reglas que se configuran en el tráfico de tooensure de una máquina virtual se está correctamente permitirá o denegará.</span><span class="sxs-lookup"><span data-stu-id="c2bfa-109">This capability is useful tooaudit and diagnose Network Security Groups and rules that are configured on a VM tooensure traffic is being correctly allowed or denied.</span></span> <span data-ttu-id="c2bfa-110">En este artículo, le mostraremos cómo tooretrieve Hola efectivo y aplica la seguridad las reglas de máquina virtual de tooa mediante API de REST</span><span class="sxs-lookup"><span data-stu-id="c2bfa-110">In this article, we show you how tooretrieve hello effective and applied security rules tooa virtual machine using REST API</span></span>
 
-## <a name="before-you-begin"></a><span data-ttu-id="3bf3c-111">Antes de empezar</span><span class="sxs-lookup"><span data-stu-id="3bf3c-111">Before you begin</span></span>
+## <a name="before-you-begin"></a><span data-ttu-id="c2bfa-111">Antes de empezar</span><span class="sxs-lookup"><span data-stu-id="c2bfa-111">Before you begin</span></span>
 
-<span data-ttu-id="3bf3c-112">En este escenario, llame a la API de REST de Network Watcher para obtener la vista de grupos de seguridad de una máquina virtual.</span><span class="sxs-lookup"><span data-stu-id="3bf3c-112">In this scenario, you call the Network Watcher Rest API to get the security group view for a virtual machine.</span></span> <span data-ttu-id="3bf3c-113">ARMclient se usa para llamar a la API de REST con PowerShell.</span><span class="sxs-lookup"><span data-stu-id="3bf3c-113">ARMclient is used to call the REST API using PowerShell.</span></span> <span data-ttu-id="3bf3c-114">ARMClient se encuentra en Chocolatey en [ARMClient en Chocolatey](https://chocolatey.org/packages/ARMClient)</span><span class="sxs-lookup"><span data-stu-id="3bf3c-114">ARMClient is found on chocolatey at [ARMClient on Chocolatey](https://chocolatey.org/packages/ARMClient)</span></span>
+<span data-ttu-id="c2bfa-112">En este escenario, llame a vista de grupo de seguridad de Hola Hola API de Rest de Monitor de red tooget para una máquina virtual.</span><span class="sxs-lookup"><span data-stu-id="c2bfa-112">In this scenario, you call hello Network Watcher Rest API tooget hello security group view for a virtual machine.</span></span> <span data-ttu-id="c2bfa-113">ARMclient es la API de REST de hello toocall utilizados mediante PowerShell.</span><span class="sxs-lookup"><span data-stu-id="c2bfa-113">ARMclient is used toocall hello REST API using PowerShell.</span></span> <span data-ttu-id="c2bfa-114">ARMClient se encuentra en Chocolatey en [ARMClient en Chocolatey](https://chocolatey.org/packages/ARMClient)</span><span class="sxs-lookup"><span data-stu-id="c2bfa-114">ARMClient is found on chocolatey at [ARMClient on Chocolatey](https://chocolatey.org/packages/ARMClient)</span></span>
 
-<span data-ttu-id="3bf3c-115">En este escenario, se da por hecho que ya ha seguido los pasos descritos en [Create an Azure Network Watcher instance](network-watcher-create.md) (Creación de una instancia de Azure Network Watcher) para crear una instancia de Network Watcher.</span><span class="sxs-lookup"><span data-stu-id="3bf3c-115">This scenario assumes you have already followed the steps in [Create a Network Watcher](network-watcher-create.md) to create a Network Watcher.</span></span> <span data-ttu-id="3bf3c-116">En este escenario también se da por hecho que existe un grupo de recursos con una máquina virtual válida.</span><span class="sxs-lookup"><span data-stu-id="3bf3c-116">The scenario also assumes that a Resource Group with a valid virtual machine exists to be used.</span></span>
+<span data-ttu-id="c2bfa-115">Este escenario se supone que ya ha seguido los pasos de hello en [crear un monitor de red](network-watcher-create.md) toocreate un monitor de red.</span><span class="sxs-lookup"><span data-stu-id="c2bfa-115">This scenario assumes you have already followed hello steps in [Create a Network Watcher](network-watcher-create.md) toocreate a Network Watcher.</span></span> <span data-ttu-id="c2bfa-116">escenario de Hello también supone que un grupo de recursos con una máquina virtual válida existe toobe usa.</span><span class="sxs-lookup"><span data-stu-id="c2bfa-116">hello scenario also assumes that a Resource Group with a valid virtual machine exists toobe used.</span></span>
 
-## <a name="scenario"></a><span data-ttu-id="3bf3c-117">Escenario</span><span class="sxs-lookup"><span data-stu-id="3bf3c-117">Scenario</span></span>
+## <a name="scenario"></a><span data-ttu-id="c2bfa-117">Escenario</span><span class="sxs-lookup"><span data-stu-id="c2bfa-117">Scenario</span></span>
 
-<span data-ttu-id="3bf3c-118">El escenario descrito en este artículo recupera las reglas de seguridad aplicadas y vigentes para una máquina virtual dada.</span><span class="sxs-lookup"><span data-stu-id="3bf3c-118">The scenario covered in this article retrieves the effective and applied security rules for a given virtual machine.</span></span>
+<span data-ttu-id="c2bfa-118">escenario de Hello descrito en este artículo recupera reglas de seguridad eficaz y aplicada de Hola para una máquina virtual dada.</span><span class="sxs-lookup"><span data-stu-id="c2bfa-118">hello scenario covered in this article retrieves hello effective and applied security rules for a given virtual machine.</span></span>
 
-## <a name="log-in-with-armclient"></a><span data-ttu-id="3bf3c-119">Inicio de sesión con ARMClient</span><span class="sxs-lookup"><span data-stu-id="3bf3c-119">Log in with ARMClient</span></span>
+## <a name="log-in-with-armclient"></a><span data-ttu-id="c2bfa-119">Inicio de sesión con ARMClient</span><span class="sxs-lookup"><span data-stu-id="c2bfa-119">Log in with ARMClient</span></span>
 
 ```PowerShell
 armclient login
 ```
 
-## <a name="retrieve-a-virtual-machine"></a><span data-ttu-id="3bf3c-120">Recuperación de una máquina virtual</span><span class="sxs-lookup"><span data-stu-id="3bf3c-120">Retrieve a virtual machine</span></span>
+## <a name="retrieve-a-virtual-machine"></a><span data-ttu-id="c2bfa-120">Recuperación de una máquina virtual</span><span class="sxs-lookup"><span data-stu-id="c2bfa-120">Retrieve a virtual machine</span></span>
 
-<span data-ttu-id="3bf3c-121">Ejecute el siguiente script para devolver una máquina virtual. El siguiente código necesita variables:</span><span class="sxs-lookup"><span data-stu-id="3bf3c-121">Run the following script to return a virtual machineThe following code needs variables:</span></span>
+<span data-ttu-id="c2bfa-121">Ejecute hello después de la secuencia de comandos tooreturn un machineThe virtual después de código debe variables:</span><span class="sxs-lookup"><span data-stu-id="c2bfa-121">Run hello following script tooreturn a virtual machineThe following code needs variables:</span></span>
 
-- <span data-ttu-id="3bf3c-122">**subscriptionId**: el identificador de la suscripción también puede recuperarse con el cmdlet **Get-AzureRMSubscription**.</span><span class="sxs-lookup"><span data-stu-id="3bf3c-122">**subscriptionId** - The subscription id can also be retrieved with the **Get-AzureRMSubscription** cmdlet.</span></span>
-- <span data-ttu-id="3bf3c-123">**resourceGroupName**: el nombre de un grupo de recursos que contiene máquinas virtuales.</span><span class="sxs-lookup"><span data-stu-id="3bf3c-123">**resourceGroupName** - The name of a resource group that contains virtual machines.</span></span>
+- <span data-ttu-id="c2bfa-122">**Id. de suscripción** -también se puede recuperar el Id. de suscripción de hello con hello **AzureRMSubscription Get** cmdlet.</span><span class="sxs-lookup"><span data-stu-id="c2bfa-122">**subscriptionId** - hello subscription id can also be retrieved with hello **Get-AzureRMSubscription** cmdlet.</span></span>
+- <span data-ttu-id="c2bfa-123">**resourceGroupName** : hello nombre de un grupo de recursos que contiene máquinas virtuales.</span><span class="sxs-lookup"><span data-stu-id="c2bfa-123">**resourceGroupName** - hello name of a resource group that contains virtual machines.</span></span>
 
 ```powershell
 $subscriptionId = '<subscription id>'
@@ -60,7 +60,7 @@ $resourceGroupName = '<resource group name>'
 armclient get https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Compute/virtualMachines?api-version=2015-05-01-preview
 ```
 
-<span data-ttu-id="3bf3c-124">La información necesaria se corresponde con el **Id** que aparece debajo del tipo `Microsoft.Compute/virtualMachines` en la respuesta, como se observa en el ejemplo siguiente:</span><span class="sxs-lookup"><span data-stu-id="3bf3c-124">The information that is needed is the **id** under the type `Microsoft.Compute/virtualMachines` in response, as seen in the following example:</span></span>
+<span data-ttu-id="c2bfa-124">información que se necesita Hello es hello **identificador** bajo tipo hello `Microsoft.Compute/virtualMachines` en respuesta, tal como se muestra en el siguiente ejemplo de Hola:</span><span class="sxs-lookup"><span data-stu-id="c2bfa-124">hello information that is needed is hello **id** under hello type `Microsoft.Compute/virtualMachines` in response, as seen in hello following example:</span></span>
 
 ```json
 ...,
@@ -90,9 +90,9 @@ pute/virtualMachines/{vmName}/extensions/CustomScriptExtension"
 }
 ```
 
-## <a name="get-security-group-view-for-virtual-machine"></a><span data-ttu-id="3bf3c-125">Obtención de la vista de grupos de seguridad para una máquina virtual</span><span class="sxs-lookup"><span data-stu-id="3bf3c-125">Get security group view for virtual machine</span></span>
+## <a name="get-security-group-view-for-virtual-machine"></a><span data-ttu-id="c2bfa-125">Obtención de la vista de grupos de seguridad para una máquina virtual</span><span class="sxs-lookup"><span data-stu-id="c2bfa-125">Get security group view for virtual machine</span></span>
 
-<span data-ttu-id="3bf3c-126">El ejemplo siguiente solicita la vista de grupos de seguridad de una máquina virtual específica.</span><span class="sxs-lookup"><span data-stu-id="3bf3c-126">The following example requests the security group view of a targeted virtual machine.</span></span> <span data-ttu-id="3bf3c-127">Los resultados de este ejemplo pueden usarse para compararlos con las reglas y la seguridad definidas en el origen para buscar desfases de configuración.</span><span class="sxs-lookup"><span data-stu-id="3bf3c-127">The results from this example can be used to compare to the rules and security defined by the origination to look for configuration drift.</span></span>
+<span data-ttu-id="c2bfa-126">Hola ejemplo siguiente solicita la vista de grupo de seguridad de Hola de una máquina virtual de destino.</span><span class="sxs-lookup"><span data-stu-id="c2bfa-126">hello following example requests hello security group view of a targeted virtual machine.</span></span> <span data-ttu-id="c2bfa-127">resultados de Hola de este ejemplo pueden ser utilizados toocompare toohello reglas y definido por toolook de creación de hello para el desfase de la configuración de seguridad.</span><span class="sxs-lookup"><span data-stu-id="c2bfa-127">hello results from this example can be used toocompare toohello rules and security defined by hello origination toolook for configuration drift.</span></span>
 
 ```powershell
 $subscriptionId = "<subscription id>"
@@ -109,9 +109,9 @@ $requestBody = @"
 armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/securityGroupView?api-version=2016-12-01" $requestBody -verbose
 ```
 
-## <a name="view-the-response"></a><span data-ttu-id="3bf3c-128">Visualización de la respuesta</span><span class="sxs-lookup"><span data-stu-id="3bf3c-128">View the response</span></span>
+## <a name="view-hello-response"></a><span data-ttu-id="c2bfa-128">Respuesta de hello de vista</span><span class="sxs-lookup"><span data-stu-id="c2bfa-128">View hello response</span></span>
 
-<span data-ttu-id="3bf3c-129">El ejemplo siguiente es la respuesta devuelta por el comando anterior.</span><span class="sxs-lookup"><span data-stu-id="3bf3c-129">The following sample is the response returned from the preceding command.</span></span> <span data-ttu-id="3bf3c-130">Los resultados muestran todas las reglas de seguridad vigentes y aplicadas en la máquina virtual, clasificadas en los grupos **NetworkInterfaceSecurityRules**, **DefaultSecurityRules** y **EffectiveSecurityRules**.</span><span class="sxs-lookup"><span data-stu-id="3bf3c-130">The results show all the effective and applied security rules on the virtual machine broken down in groups of **NetworkInterfaceSecurityRules**, **DefaultSecurityRules**, and **EffectiveSecurityRules**.</span></span>
+<span data-ttu-id="c2bfa-129">Hola según muestra es la respuesta de hello procedente de hello anterior comando.</span><span class="sxs-lookup"><span data-stu-id="c2bfa-129">hello following sample is hello response returned from hello preceding command.</span></span> <span data-ttu-id="c2bfa-130">Hello resultados muestran todas las reglas de seguridad eficaz y aplicado hello en la máquina virtual de hello desglosado en grupos de **NetworkInterfaceSecurityRules**, **DefaultSecurityRules**, y  **EffectiveSecurityRules**.</span><span class="sxs-lookup"><span data-stu-id="c2bfa-130">hello results show all hello effective and applied security rules on hello virtual machine broken down in groups of **NetworkInterfaceSecurityRules**, **DefaultSecurityRules**, and **EffectiveSecurityRules**.</span></span>
 
 ```json
 
@@ -179,8 +179,8 @@ armclient post "https://management.azure.com/subscriptions/${subscriptionId}/Res
 }
 ```
 
-## <a name="next-steps"></a><span data-ttu-id="3bf3c-131">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="3bf3c-131">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="c2bfa-131">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="c2bfa-131">Next steps</span></span>
 
-<span data-ttu-id="3bf3c-132">Visite [Automate NSG auditing with Azure Network Watcher Security group view](network-watcher-security-group-view-powershell.md) (Automatización de la auditoría de grupos de seguridad de red (NSG) con la vista de grupos de seguridad de Azure Network Watcher) para aprender a automatizar la validación de grupos de seguridad de red.</span><span class="sxs-lookup"><span data-stu-id="3bf3c-132">Visit [Auditing Network Security Groups (NSG) with Network Watcher](network-watcher-security-group-view-powershell.md) to learn how to automate validation of Network Security Groups.</span></span>
+<span data-ttu-id="c2bfa-132">Visite [auditoría red seguridad grupos (NSG) con el Monitor de red](network-watcher-security-group-view-powershell.md) toolearn cómo tooautomate validación de grupos de seguridad de red.</span><span class="sxs-lookup"><span data-stu-id="c2bfa-132">Visit [Auditing Network Security Groups (NSG) with Network Watcher](network-watcher-security-group-view-powershell.md) toolearn how tooautomate validation of Network Security Groups.</span></span>
 
 

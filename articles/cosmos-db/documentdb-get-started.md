@@ -1,6 +1,6 @@
 ---
 title: "Azure Cosmos DB: tutorial de introducción a las API de DocumentDB | Microsoft Docs"
-description: "Tutorial en el que se crea una base de datos en línea y la aplicación de consola de C# con la API de DocumentDB."
+description: "Un tutorial que crea una base de datos en línea y la aplicación de consola de C# con hello API de documentos."
 keywords: "tutorial de nosql, base de datos en línea, aplicación de consola de c#"
 services: cosmos-db
 documentationcenter: .net
@@ -15,126 +15,126 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: anhoh
-ms.openlocfilehash: 72f66081a6409f980ec6bca5188f585489245a36
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 65a181f715a670987492ad7815ef2ec94498e84d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-cosmos-db-documentdb-api-getting-started-tutorial"></a><span data-ttu-id="ce16e-104">Azure Cosmos DB: tutorial de introducción a las API de DocumentDB</span><span class="sxs-lookup"><span data-stu-id="ce16e-104">Azure Cosmos DB: DocumentDB API getting started tutorial</span></span>
+# <a name="azure-cosmos-db-documentdb-api-getting-started-tutorial"></a><span data-ttu-id="48834-104">Azure Cosmos DB: tutorial de introducción a las API de DocumentDB</span><span class="sxs-lookup"><span data-stu-id="48834-104">Azure Cosmos DB: DocumentDB API getting started tutorial</span></span>
 > [!div class="op_single_selector"]
-> * [<span data-ttu-id="ce16e-105">.NET</span><span class="sxs-lookup"><span data-stu-id="ce16e-105">.NET</span></span>](documentdb-get-started.md)
-> * [<span data-ttu-id="ce16e-106">.NET Core</span><span class="sxs-lookup"><span data-stu-id="ce16e-106">.NET Core</span></span>](documentdb-dotnetcore-get-started.md)
-> * [<span data-ttu-id="ce16e-107">Node.js para MongoDB</span><span class="sxs-lookup"><span data-stu-id="ce16e-107">Node.js for MongoDB</span></span>](mongodb-samples.md)
-> * [<span data-ttu-id="ce16e-108">Node.js</span><span class="sxs-lookup"><span data-stu-id="ce16e-108">Node.js</span></span>](documentdb-nodejs-get-started.md)
-> * [<span data-ttu-id="ce16e-109">Java</span><span class="sxs-lookup"><span data-stu-id="ce16e-109">Java</span></span>](documentdb-java-get-started.md)
-> * [<span data-ttu-id="ce16e-110">C++</span><span class="sxs-lookup"><span data-stu-id="ce16e-110">C++</span></span>](documentdb-cpp-get-started.md)
+> * [<span data-ttu-id="48834-105">.NET</span><span class="sxs-lookup"><span data-stu-id="48834-105">.NET</span></span>](documentdb-get-started.md)
+> * [<span data-ttu-id="48834-106">.NET Core</span><span class="sxs-lookup"><span data-stu-id="48834-106">.NET Core</span></span>](documentdb-dotnetcore-get-started.md)
+> * [<span data-ttu-id="48834-107">Node.js para MongoDB</span><span class="sxs-lookup"><span data-stu-id="48834-107">Node.js for MongoDB</span></span>](mongodb-samples.md)
+> * [<span data-ttu-id="48834-108">Node.js</span><span class="sxs-lookup"><span data-stu-id="48834-108">Node.js</span></span>](documentdb-nodejs-get-started.md)
+> * [<span data-ttu-id="48834-109">Java</span><span class="sxs-lookup"><span data-stu-id="48834-109">Java</span></span>](documentdb-java-get-started.md)
+> * [<span data-ttu-id="48834-110">C++</span><span class="sxs-lookup"><span data-stu-id="48834-110">C++</span></span>](documentdb-cpp-get-started.md)
 >  
 > 
 
-<span data-ttu-id="ce16e-111">Le damos la bienvenida al tutorial de introducción a las API de DocumentDB.</span><span class="sxs-lookup"><span data-stu-id="ce16e-111">Welcome to the Azure Cosmos DB DocumentDB API getting started tutorial!</span></span> <span data-ttu-id="ce16e-112">Después de seguir este tutorial, tendrá una aplicación de consola que crea recursos de Azure Cosmos DB y los consulta.</span><span class="sxs-lookup"><span data-stu-id="ce16e-112">After following this tutorial, you'll have a console application that creates and queries Azure Cosmos DB resources.</span></span>
+<span data-ttu-id="48834-111">Bienvenida toohello API de documentos de base de datos de Azure Cosmos tutorial de introducción.</span><span class="sxs-lookup"><span data-stu-id="48834-111">Welcome toohello Azure Cosmos DB DocumentDB API getting started tutorial!</span></span> <span data-ttu-id="48834-112">Después de seguir este tutorial, tendrá una aplicación de consola que crea recursos de Azure Cosmos DB y los consulta.</span><span class="sxs-lookup"><span data-stu-id="48834-112">After following this tutorial, you'll have a console application that creates and queries Azure Cosmos DB resources.</span></span>
 
-<span data-ttu-id="ce16e-113">Describiremos:</span><span class="sxs-lookup"><span data-stu-id="ce16e-113">We'll cover:</span></span>
+<span data-ttu-id="48834-113">Describiremos:</span><span class="sxs-lookup"><span data-stu-id="48834-113">We'll cover:</span></span>
 
-* <span data-ttu-id="ce16e-114">Creación de una cuenta de Azure Cosmos DB y conexión a ella</span><span class="sxs-lookup"><span data-stu-id="ce16e-114">Creating and connecting to an Azure Cosmos DB account</span></span>
-* <span data-ttu-id="ce16e-115">Configuración de la solución de Visual Studio</span><span class="sxs-lookup"><span data-stu-id="ce16e-115">Configuring your Visual Studio Solution</span></span>
-* <span data-ttu-id="ce16e-116">Creación de una base de datos en línea</span><span class="sxs-lookup"><span data-stu-id="ce16e-116">Creating an online database</span></span>
-* <span data-ttu-id="ce16e-117">Creación de una colección</span><span class="sxs-lookup"><span data-stu-id="ce16e-117">Creating a collection</span></span>
-* <span data-ttu-id="ce16e-118">Creación de documentos JSON</span><span class="sxs-lookup"><span data-stu-id="ce16e-118">Creating JSON documents</span></span>
-* <span data-ttu-id="ce16e-119">Consulta de la colección</span><span class="sxs-lookup"><span data-stu-id="ce16e-119">Querying the collection</span></span>
-* <span data-ttu-id="ce16e-120">Sustitución de un documento</span><span class="sxs-lookup"><span data-stu-id="ce16e-120">Replacing a document</span></span>
-* <span data-ttu-id="ce16e-121">Eliminación de un documento</span><span class="sxs-lookup"><span data-stu-id="ce16e-121">Deleting a document</span></span>
-* <span data-ttu-id="ce16e-122">Eliminación de la base de datos</span><span class="sxs-lookup"><span data-stu-id="ce16e-122">Deleting the database</span></span>
+* <span data-ttu-id="48834-114">Creación y conexión de cuenta de base de datos de Azure Cosmos tooan</span><span class="sxs-lookup"><span data-stu-id="48834-114">Creating and connecting tooan Azure Cosmos DB account</span></span>
+* <span data-ttu-id="48834-115">Configuración de la solución de Visual Studio</span><span class="sxs-lookup"><span data-stu-id="48834-115">Configuring your Visual Studio Solution</span></span>
+* <span data-ttu-id="48834-116">Creación de una base de datos en línea</span><span class="sxs-lookup"><span data-stu-id="48834-116">Creating an online database</span></span>
+* <span data-ttu-id="48834-117">Creación de una colección</span><span class="sxs-lookup"><span data-stu-id="48834-117">Creating a collection</span></span>
+* <span data-ttu-id="48834-118">Creación de documentos JSON</span><span class="sxs-lookup"><span data-stu-id="48834-118">Creating JSON documents</span></span>
+* <span data-ttu-id="48834-119">Consultar la colección de Hola</span><span class="sxs-lookup"><span data-stu-id="48834-119">Querying hello collection</span></span>
+* <span data-ttu-id="48834-120">Sustitución de un documento</span><span class="sxs-lookup"><span data-stu-id="48834-120">Replacing a document</span></span>
+* <span data-ttu-id="48834-121">Eliminación de un documento</span><span class="sxs-lookup"><span data-stu-id="48834-121">Deleting a document</span></span>
+* <span data-ttu-id="48834-122">Eliminar base de datos de Hola</span><span class="sxs-lookup"><span data-stu-id="48834-122">Deleting hello database</span></span>
 
-<span data-ttu-id="ce16e-123">¿No tiene tiempo?</span><span class="sxs-lookup"><span data-stu-id="ce16e-123">Don't have time?</span></span> <span data-ttu-id="ce16e-124">¡No se preocupe!</span><span class="sxs-lookup"><span data-stu-id="ce16e-124">Don't worry!</span></span> <span data-ttu-id="ce16e-125">La solución completa está disponible en [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started).</span><span class="sxs-lookup"><span data-stu-id="ce16e-125">The complete solution is available on [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started).</span></span> <span data-ttu-id="ce16e-126">Para obtener instrucciones rápidas, diríjase a la [sección Obtener la solución completa del tutorial de NoSQL](#GetSolution).</span><span class="sxs-lookup"><span data-stu-id="ce16e-126">Jump to the [Get the complete NoSQL tutorial solution section](#GetSolution) for quick instructions.</span></span>
+<span data-ttu-id="48834-123">¿No tiene tiempo?</span><span class="sxs-lookup"><span data-stu-id="48834-123">Don't have time?</span></span> <span data-ttu-id="48834-124">¡No se preocupe!</span><span class="sxs-lookup"><span data-stu-id="48834-124">Don't worry!</span></span> <span data-ttu-id="48834-125">está disponible en la solución completa de Hello [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started).</span><span class="sxs-lookup"><span data-stu-id="48834-125">hello complete solution is available on [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started).</span></span> <span data-ttu-id="48834-126">Saltar toohello [Obtenga una sección de solución del tutorial de NoSQL completa hello](#GetSolution) para obtener instrucciones rápidas.</span><span class="sxs-lookup"><span data-stu-id="48834-126">Jump toohello [Get hello complete NoSQL tutorial solution section](#GetSolution) for quick instructions.</span></span>
 
-<span data-ttu-id="ce16e-127">Después, utilice los botones de votación situados en la parte superior o inferior de esta página para proporcionarnos sus comentarios.</span><span class="sxs-lookup"><span data-stu-id="ce16e-127">Afterwards, please use the voting buttons at the top or bottom of this page to give us feedback.</span></span> <span data-ttu-id="ce16e-128">Si quiere que nos pongamos en contacto directamente con usted, puede incluir su dirección de correo electrónico en los comentarios.</span><span class="sxs-lookup"><span data-stu-id="ce16e-128">If you'd like us to contact you directly, feel free to include your email address in your comments.</span></span>
+<span data-ttu-id="48834-127">Después, por favor, use Hola botones de voto en hello superior o inferior de esta página toogive nos comentarios.</span><span class="sxs-lookup"><span data-stu-id="48834-127">Afterwards, please use hello voting buttons at hello top or bottom of this page toogive us feedback.</span></span> <span data-ttu-id="48834-128">Si desea que nos toocontact directamente, cree libre tooinclude dirección de su correo electrónico en sus comentarios.</span><span class="sxs-lookup"><span data-stu-id="48834-128">If you'd like us toocontact you directly, feel free tooinclude your email address in your comments.</span></span>
 
-<span data-ttu-id="ce16e-129">Comencemos.</span><span class="sxs-lookup"><span data-stu-id="ce16e-129">Now let's get started!</span></span>
+<span data-ttu-id="48834-129">Comencemos.</span><span class="sxs-lookup"><span data-stu-id="48834-129">Now let's get started!</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="ce16e-130">Requisitos previos</span><span class="sxs-lookup"><span data-stu-id="ce16e-130">Prerequisites</span></span>
-<span data-ttu-id="ce16e-131">Asegúrese de que dispone de lo siguiente:</span><span class="sxs-lookup"><span data-stu-id="ce16e-131">Please make sure you have the following:</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="48834-130">Requisitos previos</span><span class="sxs-lookup"><span data-stu-id="48834-130">Prerequisites</span></span>
+<span data-ttu-id="48834-131">Asegúrese de que tiene Hola siguientes:</span><span class="sxs-lookup"><span data-stu-id="48834-131">Please make sure you have hello following:</span></span>
 
-* <span data-ttu-id="ce16e-132">Una cuenta de Azure activa.</span><span class="sxs-lookup"><span data-stu-id="ce16e-132">An active Azure account.</span></span> <span data-ttu-id="ce16e-133">Si no tiene una, puede registrarse para obtener una [cuenta gratuita](https://azure.microsoft.com/free/).</span><span class="sxs-lookup"><span data-stu-id="ce16e-133">If you don't have one, you can sign up for a [free account](https://azure.microsoft.com/free/).</span></span> 
-    * <span data-ttu-id="ce16e-134">Como alternativa, en este tutorial puede usar el [Emulador de Azure Cosmos DB](local-emulator.md).</span><span class="sxs-lookup"><span data-stu-id="ce16e-134">Alternatively, you can use the [Azure Cosmos DB Emulator](local-emulator.md) for this tutorial.</span></span>
-* <span data-ttu-id="ce16e-135">[Visual Studio Community 2017](http://www.visualstudio.com/).</span><span class="sxs-lookup"><span data-stu-id="ce16e-135">[Visual Studio Community 2017](http://www.visualstudio.com/).</span></span>
+* <span data-ttu-id="48834-132">Una cuenta de Azure activa.</span><span class="sxs-lookup"><span data-stu-id="48834-132">An active Azure account.</span></span> <span data-ttu-id="48834-133">Si no tiene una, puede registrarse para obtener una [cuenta gratuita](https://azure.microsoft.com/free/).</span><span class="sxs-lookup"><span data-stu-id="48834-133">If you don't have one, you can sign up for a [free account](https://azure.microsoft.com/free/).</span></span> 
+    * <span data-ttu-id="48834-134">Como alternativa, puede usar hello [emulador de base de datos de Azure Cosmos](local-emulator.md) para este tutorial.</span><span class="sxs-lookup"><span data-stu-id="48834-134">Alternatively, you can use hello [Azure Cosmos DB Emulator](local-emulator.md) for this tutorial.</span></span>
+* <span data-ttu-id="48834-135">[Visual Studio Community 2017](http://www.visualstudio.com/).</span><span class="sxs-lookup"><span data-stu-id="48834-135">[Visual Studio Community 2017](http://www.visualstudio.com/).</span></span>
 
-## <a name="step-1-create-an-azure-cosmos-db-account"></a><span data-ttu-id="ce16e-136">Paso 1: Creación de una cuenta de Azure Cosmos DB</span><span class="sxs-lookup"><span data-stu-id="ce16e-136">Step 1: Create an Azure Cosmos DB account</span></span>
-<span data-ttu-id="ce16e-137">Vamos a crear una cuenta de Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="ce16e-137">Let's create an Azure Cosmos DB account.</span></span> <span data-ttu-id="ce16e-138">Si ya tiene una cuenta que desea usar, puede ir directamente a [Configuración de la solución de Visual Studio](#SetupVS).</span><span class="sxs-lookup"><span data-stu-id="ce16e-138">If you already have an account you want to use, you can skip ahead to [Setup your Visual Studio Solution](#SetupVS).</span></span> <span data-ttu-id="ce16e-139">Si usa el Emulador de Azure Cosmos DB, siga los pasos que se indican en [Emulador de Azure Cosmos DB](local-emulator.md) para configurar el emulador y vaya directamente a [Configuración de la solución de Visual Studio](#SetupVS).</span><span class="sxs-lookup"><span data-stu-id="ce16e-139">If you are using the Azure Cosmos DB Emulator, please follow the steps at [Azure Cosmos DB Emulator](local-emulator.md) to setup the emulator and skip ahead to [Setup your Visual Studio Solution](#SetupVS).</span></span>
+## <a name="step-1-create-an-azure-cosmos-db-account"></a><span data-ttu-id="48834-136">Paso 1: Creación de una cuenta de Azure Cosmos DB</span><span class="sxs-lookup"><span data-stu-id="48834-136">Step 1: Create an Azure Cosmos DB account</span></span>
+<span data-ttu-id="48834-137">Vamos a crear una cuenta de Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="48834-137">Let's create an Azure Cosmos DB account.</span></span> <span data-ttu-id="48834-138">Si ya tiene una cuenta que desee toouse, puede pasar demasiado[la instalación de la solución de Visual Studio](#SetupVS).</span><span class="sxs-lookup"><span data-stu-id="48834-138">If you already have an account you want toouse, you can skip ahead too[Setup your Visual Studio Solution](#SetupVS).</span></span> <span data-ttu-id="48834-139">Si usas hello Azure Cosmos DB emulador, siga los pasos de hello en [emulador de base de datos de Azure Cosmos](local-emulator.md) toosetup Hola emulador y pase demasiado[la instalación de la solución de Visual Studio](#SetupVS).</span><span class="sxs-lookup"><span data-stu-id="48834-139">If you are using hello Azure Cosmos DB Emulator, please follow hello steps at [Azure Cosmos DB Emulator](local-emulator.md) toosetup hello emulator and skip ahead too[Setup your Visual Studio Solution](#SetupVS).</span></span>
 
 [!INCLUDE [create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <span data-ttu-id="ce16e-140"><a id="SetupVS"></a>Paso 2: Configuración de la solución de Visual Studio</span><span class="sxs-lookup"><span data-stu-id="ce16e-140"><a id="SetupVS"></a>Step 2: Setup your Visual Studio solution</span></span>
-1. <span data-ttu-id="ce16e-141">Abra **Visual Studio 2017** en el equipo.</span><span class="sxs-lookup"><span data-stu-id="ce16e-141">Open **Visual Studio 2017** on your computer.</span></span>
-2. <span data-ttu-id="ce16e-142">En el menú **Archivo**, seleccione **Nuevo** y elija **Proyecto**.</span><span class="sxs-lookup"><span data-stu-id="ce16e-142">On the **File** menu, select **New**, and then choose **Project**.</span></span>
-3. <span data-ttu-id="ce16e-143">En el cuadro de diálogo **Nuevo proyecto**, seleccione **Plantillas** / **Visual C#** / **Aplicación de consola**, asigne un nombre al proyecto y haga clic en **Aceptar**.</span><span class="sxs-lookup"><span data-stu-id="ce16e-143">In the **New Project** dialog, select **Templates** / **Visual C#** / **Console Application**, name your project, and then click **OK**.</span></span>
-   <span data-ttu-id="ce16e-144">![Captura de pantalla de la ventana Nuevo proyecto](./media/documentdb-get-started/nosql-tutorial-new-project-2.png)</span><span class="sxs-lookup"><span data-stu-id="ce16e-144">![Screen shot of the New Project window](./media/documentdb-get-started/nosql-tutorial-new-project-2.png)</span></span>
-4. <span data-ttu-id="ce16e-145">En el **Explorador de soluciones**, haga clic con el botón derecho en la nueva aplicación de la consola, que se encuentra en la solución de Visual Studio y, a continuación, haga clic en **Administrar paquetes NuGet...**</span><span class="sxs-lookup"><span data-stu-id="ce16e-145">In the **Solution Explorer**, right click on your new console application, which is under your Visual Studio solution, and then click **Manage NuGet Packages...**</span></span>
+## <span data-ttu-id="48834-140"><a id="SetupVS"></a>Paso 2: Configuración de la solución de Visual Studio</span><span class="sxs-lookup"><span data-stu-id="48834-140"><a id="SetupVS"></a>Step 2: Setup your Visual Studio solution</span></span>
+1. <span data-ttu-id="48834-141">Abra **Visual Studio 2017** en el equipo.</span><span class="sxs-lookup"><span data-stu-id="48834-141">Open **Visual Studio 2017** on your computer.</span></span>
+2. <span data-ttu-id="48834-142">En hello **archivo** menú, seleccione **New**y, a continuación, elija **proyecto**.</span><span class="sxs-lookup"><span data-stu-id="48834-142">On hello **File** menu, select **New**, and then choose **Project**.</span></span>
+3. <span data-ttu-id="48834-143">Hola **nuevo proyecto** cuadro de diálogo, seleccione **plantillas** / **Visual C#** / **aplicación de consola**, nombre el proyecto y, a continuación, haga clic en **Aceptar**.</span><span class="sxs-lookup"><span data-stu-id="48834-143">In hello **New Project** dialog, select **Templates** / **Visual C#** / **Console Application**, name your project, and then click **OK**.</span></span>
+   <span data-ttu-id="48834-144">![Captura de pantalla de ventana nuevo proyecto de hello](./media/documentdb-get-started/nosql-tutorial-new-project-2.png)</span><span class="sxs-lookup"><span data-stu-id="48834-144">![Screen shot of hello New Project window](./media/documentdb-get-started/nosql-tutorial-new-project-2.png)</span></span>
+4. <span data-ttu-id="48834-145">Hola **el Explorador de soluciones**, haga clic con el botón secundario en la nueva aplicación de consola, que se encuentra en la solución de Visual Studio, y, a continuación, haga clic en **administrar paquetes de NuGet...**</span><span class="sxs-lookup"><span data-stu-id="48834-145">In hello **Solution Explorer**, right click on your new console application, which is under your Visual Studio solution, and then click **Manage NuGet Packages...**</span></span>
     
-    ![Captura de pantalla del menú contextual del proyecto](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges.png)
-5. <span data-ttu-id="ce16e-147">En la pestaña **Nuget** haga clic en **Examinar** y escriba **azure documentdb** en el cuadro de búsqueda.</span><span class="sxs-lookup"><span data-stu-id="ce16e-147">In the **Nuget** tab, click **Browse**, and type **azure documentdb** in the search box.</span></span>
-6. <span data-ttu-id="ce16e-148">En los resultados, busque **Microsoft.Azure.DocumentDB** y haga clic en **Instalar**.</span><span class="sxs-lookup"><span data-stu-id="ce16e-148">Within the results, find **Microsoft.Azure.DocumentDB** and click **Install**.</span></span>
-   <span data-ttu-id="ce16e-149">El identificador del paquete de la biblioteca de cliente de API de DocumentDB de Azure Cosmos DB es la [biblioteca de cliente de Microsoft Azure DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/).</span><span class="sxs-lookup"><span data-stu-id="ce16e-149">The package ID for the Azure Cosmos DB DocumentDB API Client Library is [Microsoft Azure DocumentDB Client Library](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/).</span></span>
-   <span data-ttu-id="ce16e-150">![Captura de pantalla del menú de NuGet para encontrar el SDK de cliente de Azure Cosmos DB](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges-2.png)</span><span class="sxs-lookup"><span data-stu-id="ce16e-150">![Screen shot of the Nuget Menu for finding Azure Cosmos DB Client SDK](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges-2.png)</span></span>
+    ![Captura de pantalla de hello derecha menú Clicked Hola proyecto](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges.png)
+5. <span data-ttu-id="48834-147">Hola **Nuget** , haga clic en **examinar**y el tipo de **documentdb de azure** en el cuadro de búsqueda de Hola.</span><span class="sxs-lookup"><span data-stu-id="48834-147">In hello **Nuget** tab, click **Browse**, and type **azure documentdb** in hello search box.</span></span>
+6. <span data-ttu-id="48834-148">En los resultados de hello, buscar **Microsoft.Azure.DocumentDB** y haga clic en **instalar**.</span><span class="sxs-lookup"><span data-stu-id="48834-148">Within hello results, find **Microsoft.Azure.DocumentDB** and click **Install**.</span></span>
+   <span data-ttu-id="48834-149">Id. de paquete de Hola para hello biblioteca cliente de API de documentos de base de datos de Azure Cosmos es [biblioteca de cliente de Microsoft Azure DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/).</span><span class="sxs-lookup"><span data-stu-id="48834-149">hello package ID for hello Azure Cosmos DB DocumentDB API Client Library is [Microsoft Azure DocumentDB Client Library](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/).</span></span>
+   <span data-ttu-id="48834-150">![Captura de pantalla de hello Nuget menú para buscar el SDK de cliente de base de datos de Azure Cosmos](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges-2.png)</span><span class="sxs-lookup"><span data-stu-id="48834-150">![Screen shot of hello Nuget Menu for finding Azure Cosmos DB Client SDK](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges-2.png)</span></span>
 
-    <span data-ttu-id="ce16e-151">Si recibe un mensaje acerca de la revisión de los cambios de la solución, haga clic en **Aceptar**.</span><span class="sxs-lookup"><span data-stu-id="ce16e-151">If you get a messages about reviewing changes to the solution, click **OK**.</span></span> <span data-ttu-id="ce16e-152">Si recibe un mensaje acerca de la aceptación de licencia, haga clic en **Acepto**.</span><span class="sxs-lookup"><span data-stu-id="ce16e-152">If you get a message about license acceptance, click **I accept**.</span></span>
+    <span data-ttu-id="48834-151">Si aparece un mensaje acerca de la revisión de la solución de toohello de cambios, haga clic en **Aceptar**.</span><span class="sxs-lookup"><span data-stu-id="48834-151">If you get a messages about reviewing changes toohello solution, click **OK**.</span></span> <span data-ttu-id="48834-152">Si recibe un mensaje acerca de la aceptación de licencia, haga clic en **Acepto**.</span><span class="sxs-lookup"><span data-stu-id="48834-152">If you get a message about license acceptance, click **I accept**.</span></span>
 
-<span data-ttu-id="ce16e-153">Estupendo.</span><span class="sxs-lookup"><span data-stu-id="ce16e-153">Great!</span></span> <span data-ttu-id="ce16e-154">Ahora que hemos terminado la configuración, comencemos a escribir algo de código.</span><span class="sxs-lookup"><span data-stu-id="ce16e-154">Now that we finished the setup, let's start writing some code.</span></span> <span data-ttu-id="ce16e-155">Puede buscar un proyecto con código completo de este tutorial en [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started/blob/master/src/Program.cs).</span><span class="sxs-lookup"><span data-stu-id="ce16e-155">You can find a completed code project of this tutorial at [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started/blob/master/src/Program.cs).</span></span>
+<span data-ttu-id="48834-153">Estupendo.</span><span class="sxs-lookup"><span data-stu-id="48834-153">Great!</span></span> <span data-ttu-id="48834-154">Ahora que hemos terminado el programa de instalación de hello, vamos a empezar a escribir código.</span><span class="sxs-lookup"><span data-stu-id="48834-154">Now that we finished hello setup, let's start writing some code.</span></span> <span data-ttu-id="48834-155">Puede buscar un proyecto con código completo de este tutorial en [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started/blob/master/src/Program.cs).</span><span class="sxs-lookup"><span data-stu-id="48834-155">You can find a completed code project of this tutorial at [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started/blob/master/src/Program.cs).</span></span>
 
-## <span data-ttu-id="ce16e-156"><a id="Connect"></a>Paso 3: Conexión a una cuenta de Azure Cosmos DB</span><span class="sxs-lookup"><span data-stu-id="ce16e-156"><a id="Connect"></a>Step 3: Connect to an Azure Cosmos DB account</span></span>
-<span data-ttu-id="ce16e-157">En primer lugar, agregue estas referencias al principio de la aplicación de C#, en el archivo Program.cs:</span><span class="sxs-lookup"><span data-stu-id="ce16e-157">First, add these references to the beginning of your C# application, in the Program.cs file:</span></span>
+## <span data-ttu-id="48834-156"><a id="Connect"></a>Paso 3: Conectar la cuenta de base de datos de Azure Cosmos tooan</span><span class="sxs-lookup"><span data-stu-id="48834-156"><a id="Connect"></a>Step 3: Connect tooan Azure Cosmos DB account</span></span>
+<span data-ttu-id="48834-157">En primer lugar, agregue estas referencias toohello a partir de la aplicación de C#, en el archivo Program.cs de hello:</span><span class="sxs-lookup"><span data-stu-id="48834-157">First, add these references toohello beginning of your C# application, in hello Program.cs file:</span></span>
 
     using System;
     using System.Linq;
     using System.Threading.Tasks;
 
-    // ADD THIS PART TO YOUR CODE
+    // ADD THIS PART tooYOUR CODE
     using System.Net;
     using Microsoft.Azure.Documents;
     using Microsoft.Azure.Documents.Client;
     using Newtonsoft.Json;
 
 > [!IMPORTANT]
-> <span data-ttu-id="ce16e-158">Para poder completar este tutorial, asegúrese de que agrega las dependencias anteriores.</span><span class="sxs-lookup"><span data-stu-id="ce16e-158">In order to complete the tutorial, make sure you add the dependencies above.</span></span>
+> <span data-ttu-id="48834-158">En el tutorial de orden toocomplete hello, asegúrese de que agregar dependencias de hello anteriores.</span><span class="sxs-lookup"><span data-stu-id="48834-158">In order toocomplete hello tutorial, make sure you add hello dependencies above.</span></span>
 > 
 > 
 
-<span data-ttu-id="ce16e-159">Ahora, agregue estas dos constantes y la variable *client* debajo de la clase pública *Program*.</span><span class="sxs-lookup"><span data-stu-id="ce16e-159">Now, add these two constants and your *client* variable underneath your public class *Program*.</span></span>
+<span data-ttu-id="48834-159">Ahora, agregue estas dos constantes y la variable *client* debajo de la clase pública *Program*.</span><span class="sxs-lookup"><span data-stu-id="48834-159">Now, add these two constants and your *client* variable underneath your public class *Program*.</span></span>
 
     public class Program
     {
-        // ADD THIS PART TO YOUR CODE
+        // ADD THIS PART tooYOUR CODE
         private const string EndpointUrl = "<your endpoint URL>";
         private const string PrimaryKey = "<your primary key>";
         private DocumentClient client;
 
-<span data-ttu-id="ce16e-160">A continuación, vuelva a [Azure Portal](https://portal.azure.com) para recuperar la dirección URL del punto de conexión y la clave principal.</span><span class="sxs-lookup"><span data-stu-id="ce16e-160">Next, head back to the [Azure Portal](https://portal.azure.com) to retrieve your endpoint URL and primary key.</span></span> <span data-ttu-id="ce16e-161">La dirección URL del punto de conexión y la clave principal son necesarias para que la aplicación sepa a dónde debe conectarse y para que Azure Cosmos DB confíe en la conexión de la aplicación.</span><span class="sxs-lookup"><span data-stu-id="ce16e-161">The endpoint URL and primary key are necessary for your application to understand where to connect to, and for Azure Cosmos DB to trust your application's connection.</span></span>
+<span data-ttu-id="48834-160">A continuación, hacer copia de head toohello [Portal de Azure](https://portal.azure.com) tooretrieve la dirección URL del extremo y la clave principal.</span><span class="sxs-lookup"><span data-stu-id="48834-160">Next, head back toohello [Azure Portal](https://portal.azure.com) tooretrieve your endpoint URL and primary key.</span></span> <span data-ttu-id="48834-161">dirección URL del extremo de Hola y clave principal son necesarios para su aplicación toounderstand donde tooconnect y para la base de datos de Azure Cosmos tootrust conexión de la aplicación.</span><span class="sxs-lookup"><span data-stu-id="48834-161">hello endpoint URL and primary key are necessary for your application toounderstand where tooconnect to, and for Azure Cosmos DB tootrust your application's connection.</span></span>
 
-<span data-ttu-id="ce16e-162">En Azure Portal, vaya a la cuenta de Azure Cosmos DB y haga clic en **Claves**.</span><span class="sxs-lookup"><span data-stu-id="ce16e-162">In the Azure Portal, navigate to your Azure Cosmos DB account, and then click **Keys**.</span></span>
+<span data-ttu-id="48834-162">Hola Portal de Azure, navegar por la cuenta de base de datos de Azure Cosmos tooyour y, a continuación, haga clic en **claves**.</span><span class="sxs-lookup"><span data-stu-id="48834-162">In hello Azure Portal, navigate tooyour Azure Cosmos DB account, and then click **Keys**.</span></span>
 
-<span data-ttu-id="ce16e-163">Copie el URI desde el Portal y péguelo en `<your endpoint URL>` en el archivo program.cs.</span><span class="sxs-lookup"><span data-stu-id="ce16e-163">Copy the URI from the portal and paste it into `<your endpoint URL>` in the program.cs file.</span></span> <span data-ttu-id="ce16e-164">Después, copie la CLAVE PRINCIPAL del Portal y péguela en `<your primary key>`.</span><span class="sxs-lookup"><span data-stu-id="ce16e-164">Then copy the PRIMARY KEY from the portal and paste it into `<your primary key>`.</span></span>
+<span data-ttu-id="48834-163">Copiar Hola URI desde el portal de Hola y pegarlos en `<your endpoint URL>` en el archivo program.cs de Hola.</span><span class="sxs-lookup"><span data-stu-id="48834-163">Copy hello URI from hello portal and paste it into `<your endpoint URL>` in hello program.cs file.</span></span> <span data-ttu-id="48834-164">A continuación, copia Hola clave principal del portal de Hola y péguelo en `<your primary key>`.</span><span class="sxs-lookup"><span data-stu-id="48834-164">Then copy hello PRIMARY KEY from hello portal and paste it into `<your primary key>`.</span></span>
 
-![Captura de pantalla del Portal de Azure usada por el tutorial de NoSQL para crear una aplicación de consola de C#.][keys]
+![Captura de pantalla de hello Portal de Azure usan Hola NoSQL tutorial toocreate una aplicación de consola de C#.][keys]
 
-<span data-ttu-id="ce16e-167">A continuación, se iniciará la aplicación, para lo que crearemos una nueva instancia de **DocumentClient**.</span><span class="sxs-lookup"><span data-stu-id="ce16e-167">Next, we'll start the application by creating a new instance of the **DocumentClient**.</span></span>
+<span data-ttu-id="48834-167">A continuación, comenzaremos aplicación hello mediante la creación de una nueva instancia de hello **DocumentClient**.</span><span class="sxs-lookup"><span data-stu-id="48834-167">Next, we'll start hello application by creating a new instance of hello **DocumentClient**.</span></span>
 
-<span data-ttu-id="ce16e-168">Debajo del método **Main**, agregue esta nueva tarea asincrónica denominada **GetStartedDemo**, que creará una instancia del nuevo **DocumentClient**.</span><span class="sxs-lookup"><span data-stu-id="ce16e-168">Below the **Main** method, add this new asynchronous task called **GetStartedDemo**, which will instantiate our new **DocumentClient**.</span></span>
+<span data-ttu-id="48834-168">A continuación hello **Main** método, agregar esta nueva tarea asincrónica denominada **GetStartedDemo**, que creará una instancia de nuestro nuevo **DocumentClient**.</span><span class="sxs-lookup"><span data-stu-id="48834-168">Below hello **Main** method, add this new asynchronous task called **GetStartedDemo**, which will instantiate our new **DocumentClient**.</span></span>
 
     static void Main(string[] args)
     {
     }
 
-    // ADD THIS PART TO YOUR CODE
+    // ADD THIS PART tooYOUR CODE
     private async Task GetStartedDemo()
     {
         this.client = new DocumentClient(new Uri(EndpointUrl), PrimaryKey);
     }
 
-<span data-ttu-id="ce16e-169">Agregue el siguiente código para ejecutar la tarea asincrónica desde el método **Main** .</span><span class="sxs-lookup"><span data-stu-id="ce16e-169">Add the following code to run your asynchronous task from your **Main** method.</span></span> <span data-ttu-id="ce16e-170">El método **Main** detectará las excepciones y las escribirá en la consola.</span><span class="sxs-lookup"><span data-stu-id="ce16e-170">The **Main** method will catch exceptions and write them to the console.</span></span>
+<span data-ttu-id="48834-169">Agregar código de hello siguiente toorun su tarea asincrónica de la **Main** método.</span><span class="sxs-lookup"><span data-stu-id="48834-169">Add hello following code toorun your asynchronous task from your **Main** method.</span></span> <span data-ttu-id="48834-170">Hola **Main** método detectará las excepciones y escribirlos toohello consola.</span><span class="sxs-lookup"><span data-stu-id="48834-170">hello **Main** method will catch exceptions and write them toohello console.</span></span>
 
     static void Main(string[] args)
     {
-            // ADD THIS PART TO YOUR CODE
+            // ADD THIS PART tooYOUR CODE
             try
             {
                     Program p = new Program();
@@ -152,78 +152,78 @@ ms.lasthandoff: 08/18/2017
             }
             finally
             {
-                    Console.WriteLine("End of demo, press any key to exit.");
+                    Console.WriteLine("End of demo, press any key tooexit.");
                     Console.ReadKey();
             }
 
-<span data-ttu-id="ce16e-171">Presione **F5** para ejecutar la aplicación.</span><span class="sxs-lookup"><span data-stu-id="ce16e-171">Press **F5** to run your application.</span></span> <span data-ttu-id="ce16e-172">La salida de la ventana de consola muestra el mensaje `End of demo, press any key to exit.` que confirma que se realizó la conexión.</span><span class="sxs-lookup"><span data-stu-id="ce16e-172">The console window output displays the message `End of demo, press any key to exit.` confirming that the connection was made.</span></span>  <span data-ttu-id="ce16e-173">A continuación, puede cerrar la ventana de consola.</span><span class="sxs-lookup"><span data-stu-id="ce16e-173">You can then close the console window.</span></span> 
+<span data-ttu-id="48834-171">Presione **F5** toorun la aplicación.</span><span class="sxs-lookup"><span data-stu-id="48834-171">Press **F5** toorun your application.</span></span> <span data-ttu-id="48834-172">salida de la ventana Consola Hello muestra mensajes de bienvenida `End of demo, press any key tooexit.` confirmar que se ha realizado la conexión de Hola.</span><span class="sxs-lookup"><span data-stu-id="48834-172">hello console window output displays hello message `End of demo, press any key tooexit.` confirming that hello connection was made.</span></span>  <span data-ttu-id="48834-173">A continuación, puede cerrar la ventana de la consola de Hola.</span><span class="sxs-lookup"><span data-stu-id="48834-173">You can then close hello console window.</span></span> 
 
-<span data-ttu-id="ce16e-174">¡Enhorabuena!</span><span class="sxs-lookup"><span data-stu-id="ce16e-174">Congratulations!</span></span> <span data-ttu-id="ce16e-175">Se ha conectado correctamente a una cuenta de Azure Cosmos DB y ahora se explicará cómo trabajar con recursos de Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="ce16e-175">You have successfully connected to an Azure Cosmos DB account, let's now take a look at working with Azure Cosmos DB resources.</span></span>  
+<span data-ttu-id="48834-174">¡Enhorabuena!</span><span class="sxs-lookup"><span data-stu-id="48834-174">Congratulations!</span></span> <span data-ttu-id="48834-175">Se ha conectado correctamente la cuenta de base de datos de Azure Cosmos tooan, ahora Echemos un vistazo a trabajar con los recursos de base de datos de Azure Cosmos.</span><span class="sxs-lookup"><span data-stu-id="48834-175">You have successfully connected tooan Azure Cosmos DB account, let's now take a look at working with Azure Cosmos DB resources.</span></span>  
 
-## <a name="step-4-create-a-database"></a><span data-ttu-id="ce16e-176">Paso 4: Creación de una base de datos</span><span class="sxs-lookup"><span data-stu-id="ce16e-176">Step 4: Create a database</span></span>
-<span data-ttu-id="ce16e-177">Antes de agregar el código para crear una base de datos, agregue un método auxiliar para escribirlo en la consola.</span><span class="sxs-lookup"><span data-stu-id="ce16e-177">Before you add the code for creating a database, add a helper method for writing to the console.</span></span>
+## <a name="step-4-create-a-database"></a><span data-ttu-id="48834-176">Paso 4: Creación de una base de datos</span><span class="sxs-lookup"><span data-stu-id="48834-176">Step 4: Create a database</span></span>
+<span data-ttu-id="48834-177">Antes de agregar código de hello para la creación de una base de datos, agregue un método auxiliar para escribir toohello consola.</span><span class="sxs-lookup"><span data-stu-id="48834-177">Before you add hello code for creating a database, add a helper method for writing toohello console.</span></span>
 
-<span data-ttu-id="ce16e-178">Copie y pegue el método **WriteToConsoleAndPromptToContinue** después del método **GetStartedDemo**.</span><span class="sxs-lookup"><span data-stu-id="ce16e-178">Copy and paste the **WriteToConsoleAndPromptToContinue** method after the **GetStartedDemo** method.</span></span>
+<span data-ttu-id="48834-178">Copie y pegue hello **WriteToConsoleAndPromptToContinue** método después de hello **GetStartedDemo** método.</span><span class="sxs-lookup"><span data-stu-id="48834-178">Copy and paste hello **WriteToConsoleAndPromptToContinue** method after hello **GetStartedDemo** method.</span></span>
 
-    // ADD THIS PART TO YOUR CODE
+    // ADD THIS PART tooYOUR CODE
     private void WriteToConsoleAndPromptToContinue(string format, params object[] args)
     {
             Console.WriteLine(format, args);
-            Console.WriteLine("Press any key to continue ...");
+            Console.WriteLine("Press any key toocontinue ...");
             Console.ReadKey();
     }
 
-<span data-ttu-id="ce16e-179">Puede crearse una [base de datos](documentdb-resources.md#databases) de Azure Cosmos DB mediante el método [CreateDatabaseIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdatabaseifnotexistsasync.aspx) de la clase **DocumentClient**.</span><span class="sxs-lookup"><span data-stu-id="ce16e-179">Your Azure Cosmos DB [database](documentdb-resources.md#databases) can be created by using the [CreateDatabaseIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdatabaseifnotexistsasync.aspx) method of the **DocumentClient** class.</span></span> <span data-ttu-id="ce16e-180">Una base de datos es un contenedor lógico de almacenamiento de documentos JSON particionado en recopilaciones.</span><span class="sxs-lookup"><span data-stu-id="ce16e-180">A database is the logical container of JSON document storage partitioned across collections.</span></span>
+<span data-ttu-id="48834-179">La base de datos de Azure Cosmos [base de datos](documentdb-resources.md#databases) pueden crearse mediante el uso de hello [CreateDatabaseIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdatabaseifnotexistsasync.aspx) método de hello **DocumentClient** clase.</span><span class="sxs-lookup"><span data-stu-id="48834-179">Your Azure Cosmos DB [database](documentdb-resources.md#databases) can be created by using hello [CreateDatabaseIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdatabaseifnotexistsasync.aspx) method of hello **DocumentClient** class.</span></span> <span data-ttu-id="48834-180">Una base de datos es el contenedor lógico de Hola de almacenamiento de documentos JSON particionado entre colecciones.</span><span class="sxs-lookup"><span data-stu-id="48834-180">A database is hello logical container of JSON document storage partitioned across collections.</span></span>
 
-<span data-ttu-id="ce16e-181">Copie y pegue el código siguiente en el método **GetStartedDemo** después de la creación del cliente.</span><span class="sxs-lookup"><span data-stu-id="ce16e-181">Copy and paste the following code to your **GetStartedDemo** method after the client creation.</span></span> <span data-ttu-id="ce16e-182">Así se creará una base de datos denominada *FamilyDB*.</span><span class="sxs-lookup"><span data-stu-id="ce16e-182">This will create a database named *FamilyDB*.</span></span>
+<span data-ttu-id="48834-181">Copiar y pegar siguiente de hello código tooyour **GetStartedDemo** método después de la creación de cliente de Hola.</span><span class="sxs-lookup"><span data-stu-id="48834-181">Copy and paste hello following code tooyour **GetStartedDemo** method after hello client creation.</span></span> <span data-ttu-id="48834-182">Así se creará una base de datos denominada *FamilyDB*.</span><span class="sxs-lookup"><span data-stu-id="48834-182">This will create a database named *FamilyDB*.</span></span>
 
     private async Task GetStartedDemo()
     {
         this.client = new DocumentClient(new Uri(EndpointUrl), PrimaryKey);
 
-        // ADD THIS PART TO YOUR CODE
+        // ADD THIS PART tooYOUR CODE
         await this.client.CreateDatabaseIfNotExistsAsync(new Database { Id = "FamilyDB" });
 
-<span data-ttu-id="ce16e-183">Presione **F5** para ejecutar la aplicación.</span><span class="sxs-lookup"><span data-stu-id="ce16e-183">Press **F5** to run your application.</span></span>
+<span data-ttu-id="48834-183">Presione **F5** toorun la aplicación.</span><span class="sxs-lookup"><span data-stu-id="48834-183">Press **F5** toorun your application.</span></span>
 
-<span data-ttu-id="ce16e-184">¡Enhorabuena!</span><span class="sxs-lookup"><span data-stu-id="ce16e-184">Congratulations!</span></span> <span data-ttu-id="ce16e-185">Ha creado correctamente una base de datos de Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="ce16e-185">You have successfully created an Azure Cosmos DB database.</span></span>  
+<span data-ttu-id="48834-184">¡Enhorabuena!</span><span class="sxs-lookup"><span data-stu-id="48834-184">Congratulations!</span></span> <span data-ttu-id="48834-185">Ha creado correctamente una base de datos de Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="48834-185">You have successfully created an Azure Cosmos DB database.</span></span>  
 
-## <span data-ttu-id="ce16e-186"><a id="CreateColl"></a>Paso 5: Creación de una colección</span><span class="sxs-lookup"><span data-stu-id="ce16e-186"><a id="CreateColl"></a>Step 5: Create a collection</span></span>
+## <span data-ttu-id="48834-186"><a id="CreateColl"></a>Paso 5: Creación de una colección</span><span class="sxs-lookup"><span data-stu-id="48834-186"><a id="CreateColl"></a>Step 5: Create a collection</span></span>
 > [!WARNING]
-> <span data-ttu-id="ce16e-187">**CreateDocumentCollectionIfNotExistsAsync** creará una nueva colección con un rendimiento reservado, lo que tiene implicaciones en los precios.</span><span class="sxs-lookup"><span data-stu-id="ce16e-187">**CreateDocumentCollectionIfNotExistsAsync** will create a new collection with reserved throughput, which has pricing implications.</span></span> <span data-ttu-id="ce16e-188">Para obtener más información, visite nuestra [página de precios](https://azure.microsoft.com/pricing/details/cosmos-db/).</span><span class="sxs-lookup"><span data-stu-id="ce16e-188">For more details, please visit our [pricing page](https://azure.microsoft.com/pricing/details/cosmos-db/).</span></span>
+> <span data-ttu-id="48834-187">**CreateDocumentCollectionIfNotExistsAsync** creará una nueva colección con un rendimiento reservado, lo que tiene implicaciones en los precios.</span><span class="sxs-lookup"><span data-stu-id="48834-187">**CreateDocumentCollectionIfNotExistsAsync** will create a new collection with reserved throughput, which has pricing implications.</span></span> <span data-ttu-id="48834-188">Para obtener más información, visite nuestra [página de precios](https://azure.microsoft.com/pricing/details/cosmos-db/).</span><span class="sxs-lookup"><span data-stu-id="48834-188">For more details, please visit our [pricing page](https://azure.microsoft.com/pricing/details/cosmos-db/).</span></span>
 > 
 > 
 
-<span data-ttu-id="ce16e-189">Para crear un objeto [collection](documentdb-resources.md#collections) se puede utilizar el método [CreateDocumentCollectionIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentcollectionifnotexistsasync.aspx) de la clase **DocumentClient**.</span><span class="sxs-lookup"><span data-stu-id="ce16e-189">A [collection](documentdb-resources.md#collections) can be created by using the [CreateDocumentCollectionIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentcollectionifnotexistsasync.aspx) method of the **DocumentClient** class.</span></span> <span data-ttu-id="ce16e-190">Una colección es un contenedor de documentos JSON asociado a la lógica de aplicación de JavaScript.</span><span class="sxs-lookup"><span data-stu-id="ce16e-190">A collection is a container of JSON documents and associated JavaScript application logic.</span></span>
+<span data-ttu-id="48834-189">A [colección](documentdb-resources.md#collections) pueden crearse mediante el uso de hello [CreateDocumentCollectionIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentcollectionifnotexistsasync.aspx) método de hello **DocumentClient** clase.</span><span class="sxs-lookup"><span data-stu-id="48834-189">A [collection](documentdb-resources.md#collections) can be created by using hello [CreateDocumentCollectionIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentcollectionifnotexistsasync.aspx) method of hello **DocumentClient** class.</span></span> <span data-ttu-id="48834-190">Una colección es un contenedor de documentos JSON asociado a la lógica de aplicación de JavaScript.</span><span class="sxs-lookup"><span data-stu-id="48834-190">A collection is a container of JSON documents and associated JavaScript application logic.</span></span>
 
-<span data-ttu-id="ce16e-191">Copie y pegue el código siguiente en el método **GetStartedDemo** después de la creación de la base de datos.</span><span class="sxs-lookup"><span data-stu-id="ce16e-191">Copy and paste the following code to your **GetStartedDemo** method after the database creation.</span></span> <span data-ttu-id="ce16e-192">Esto creará una colección de documentos llamada *FamilyCollection*.</span><span class="sxs-lookup"><span data-stu-id="ce16e-192">This will create a document collection named *FamilyCollection*.</span></span>
+<span data-ttu-id="48834-191">Copiar y pegar siguiente de hello código tooyour **GetStartedDemo** método después de la creación de la base de datos de Hola.</span><span class="sxs-lookup"><span data-stu-id="48834-191">Copy and paste hello following code tooyour **GetStartedDemo** method after hello database creation.</span></span> <span data-ttu-id="48834-192">Esto creará una colección de documentos llamada *FamilyCollection*.</span><span class="sxs-lookup"><span data-stu-id="48834-192">This will create a document collection named *FamilyCollection*.</span></span>
 
         this.client = new DocumentClient(new Uri(EndpointUrl), PrimaryKey);
 
         await this.client.CreateDatabaseIfNotExistsAsync(new Database { Id = "FamilyDB" });
 
-        // ADD THIS PART TO YOUR CODE
+        // ADD THIS PART tooYOUR CODE
          await this.client.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri("FamilyDB"), new DocumentCollection { Id = "FamilyCollection" });
 
-<span data-ttu-id="ce16e-193">Presione **F5** para ejecutar la aplicación.</span><span class="sxs-lookup"><span data-stu-id="ce16e-193">Press **F5** to run your application.</span></span>
+<span data-ttu-id="48834-193">Presione **F5** toorun la aplicación.</span><span class="sxs-lookup"><span data-stu-id="48834-193">Press **F5** toorun your application.</span></span>
 
-<span data-ttu-id="ce16e-194">¡Enhorabuena!</span><span class="sxs-lookup"><span data-stu-id="ce16e-194">Congratulations!</span></span> <span data-ttu-id="ce16e-195">Ha creado correctamente una colección de documentos de Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="ce16e-195">You have successfully created an Azure Cosmos DB document collection.</span></span>  
+<span data-ttu-id="48834-194">¡Enhorabuena!</span><span class="sxs-lookup"><span data-stu-id="48834-194">Congratulations!</span></span> <span data-ttu-id="48834-195">Ha creado correctamente una colección de documentos de Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="48834-195">You have successfully created an Azure Cosmos DB document collection.</span></span>  
 
-## <span data-ttu-id="ce16e-196"><a id="CreateDoc"></a>Paso 6: Creación de documentos JSON</span><span class="sxs-lookup"><span data-stu-id="ce16e-196"><a id="CreateDoc"></a>Step 6: Create JSON documents</span></span>
-<span data-ttu-id="ce16e-197">Un [documento](documentdb-resources.md#documents) puede crearse mediante el método [CreateDocumentAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx) de la clase **DocumentClient**.</span><span class="sxs-lookup"><span data-stu-id="ce16e-197">A [document](documentdb-resources.md#documents) can be created by using the [CreateDocumentAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx) method of the **DocumentClient** class.</span></span> <span data-ttu-id="ce16e-198">Los documentos son contenido JSON definido por el usuario (arbitrario).</span><span class="sxs-lookup"><span data-stu-id="ce16e-198">Documents are user defined (arbitrary) JSON content.</span></span> <span data-ttu-id="ce16e-199">Ahora podemos insertar uno o varios documentos.</span><span class="sxs-lookup"><span data-stu-id="ce16e-199">We can now insert one or more documents.</span></span> <span data-ttu-id="ce16e-200">Si ya dispone de datos que desea almacenar en la base de datos, puede usar la [herramienta de migración de datos](import-data.md) de Azure Cosmos DB para importar los datos en una base de datos.</span><span class="sxs-lookup"><span data-stu-id="ce16e-200">If you already have data you'd like to store in your database, you can use the Azure Cosmos DB [Data Migration tool](import-data.md) to import the data into a database.</span></span>
+## <span data-ttu-id="48834-196"><a id="CreateDoc"></a>Paso 6: Creación de documentos JSON</span><span class="sxs-lookup"><span data-stu-id="48834-196"><a id="CreateDoc"></a>Step 6: Create JSON documents</span></span>
+<span data-ttu-id="48834-197">A [documento](documentdb-resources.md#documents) pueden crearse mediante el uso de hello [CreateDocumentAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx) método de hello **DocumentClient** clase.</span><span class="sxs-lookup"><span data-stu-id="48834-197">A [document](documentdb-resources.md#documents) can be created by using hello [CreateDocumentAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx) method of hello **DocumentClient** class.</span></span> <span data-ttu-id="48834-198">Los documentos son contenido JSON definido por el usuario (arbitrario).</span><span class="sxs-lookup"><span data-stu-id="48834-198">Documents are user defined (arbitrary) JSON content.</span></span> <span data-ttu-id="48834-199">Ahora podemos insertar uno o varios documentos.</span><span class="sxs-lookup"><span data-stu-id="48834-199">We can now insert one or more documents.</span></span> <span data-ttu-id="48834-200">Si ya tiene datos que le gustaría toostore en la base de datos, puede usar base de datos de Azure Cosmos hello [herramienta de migración de datos](import-data.md) datos de hello tooimport en una base de datos.</span><span class="sxs-lookup"><span data-stu-id="48834-200">If you already have data you'd like toostore in your database, you can use hello Azure Cosmos DB [Data Migration tool](import-data.md) tooimport hello data into a database.</span></span>
 
-<span data-ttu-id="ce16e-201">En primer lugar, es preciso crear una clase denominada **Family** que represente los objetos almacenados en Azure Cosmos DB en este ejemplo.</span><span class="sxs-lookup"><span data-stu-id="ce16e-201">First, we need to create a **Family** class that will represent objects stored within Azure Cosmos DB in this sample.</span></span> <span data-ttu-id="ce16e-202">También se crearán las subclases **Parent**, **Child**, **Pet**, **Address** que se usan dentro de **Family**.</span><span class="sxs-lookup"><span data-stu-id="ce16e-202">We will also create **Parent**, **Child**, **Pet**, **Address** subclasses that are used within **Family**.</span></span> <span data-ttu-id="ce16e-203">Tenga en cuenta que los documentos deben tener una propiedad **Id** serializada como **id** en JSON.</span><span class="sxs-lookup"><span data-stu-id="ce16e-203">Note that documents must have an **Id** property serialized as **id** in JSON.</span></span> <span data-ttu-id="ce16e-204">Para agregar estas clases, agregue las siguientes subclases internas después del método **GetStartedDemo** .</span><span class="sxs-lookup"><span data-stu-id="ce16e-204">Create these classes by adding the following internal sub-classes after the **GetStartedDemo** method.</span></span>
+<span data-ttu-id="48834-201">En primer lugar, necesitamos toocreate una **familia** clases que representan objetos almacenados en la base de datos de Azure Cosmos en este ejemplo.</span><span class="sxs-lookup"><span data-stu-id="48834-201">First, we need toocreate a **Family** class that will represent objects stored within Azure Cosmos DB in this sample.</span></span> <span data-ttu-id="48834-202">También se crearán las subclases **Parent**, **Child**, **Pet**, **Address** que se usan dentro de **Family**.</span><span class="sxs-lookup"><span data-stu-id="48834-202">We will also create **Parent**, **Child**, **Pet**, **Address** subclasses that are used within **Family**.</span></span> <span data-ttu-id="48834-203">Tenga en cuenta que los documentos deben tener una propiedad **Id** serializada como **id** en JSON.</span><span class="sxs-lookup"><span data-stu-id="48834-203">Note that documents must have an **Id** property serialized as **id** in JSON.</span></span> <span data-ttu-id="48834-204">Crear estas clases mediante la adición de hello siguientes subclases internos después de hello **GetStartedDemo** método.</span><span class="sxs-lookup"><span data-stu-id="48834-204">Create these classes by adding hello following internal sub-classes after hello **GetStartedDemo** method.</span></span>
 
-<span data-ttu-id="ce16e-205">Copie y pegue las clases **Family**, **Parent**, **Child**, **Pet** y **Address** después del método **WriteToConsoleAndPromptToContinue**.</span><span class="sxs-lookup"><span data-stu-id="ce16e-205">Copy and paste the **Family**, **Parent**, **Child**, **Pet**, and **Address** classes after the **WriteToConsoleAndPromptToContinue** method.</span></span>
+<span data-ttu-id="48834-205">Copie y pegue hello **familia**, **primario**, **secundarios**, **mascota**, y **dirección** clases después Hola **WriteToConsoleAndPromptToContinue** método.</span><span class="sxs-lookup"><span data-stu-id="48834-205">Copy and paste hello **Family**, **Parent**, **Child**, **Pet**, and **Address** classes after hello **WriteToConsoleAndPromptToContinue** method.</span></span>
 
     private void WriteToConsoleAndPromptToContinue(string format, params object[] args)
     {
         Console.WriteLine(format, args);
-        Console.WriteLine("Press any key to continue ...");
+        Console.WriteLine("Press any key toocontinue ...");
         Console.ReadKey();
     }
 
-    // ADD THIS PART TO YOUR CODE
+    // ADD THIS PART tooYOUR CODE
     public class Family
     {
         [JsonProperty(PropertyName = "id")]
@@ -266,9 +266,9 @@ ms.lasthandoff: 08/18/2017
         public string City { get; set; }
     }
 
-<span data-ttu-id="ce16e-206">Copie y pegue el método **CreateFamilyDocumentIfNotExists** debajo de la clase **Address**.</span><span class="sxs-lookup"><span data-stu-id="ce16e-206">Copy and paste the **CreateFamilyDocumentIfNotExists** method underneath your **Address** class.</span></span>
+<span data-ttu-id="48834-206">Copie y pegue hello **CreateFamilyDocumentIfNotExists** método debajo de su **dirección** clase.</span><span class="sxs-lookup"><span data-stu-id="48834-206">Copy and paste hello **CreateFamilyDocumentIfNotExists** method underneath your **Address** class.</span></span>
 
-    // ADD THIS PART TO YOUR CODE
+    // ADD THIS PART tooYOUR CODE
     private async Task CreateFamilyDocumentIfNotExists(string databaseName, string collectionName, Family family)
     {
         try
@@ -290,16 +290,16 @@ ms.lasthandoff: 08/18/2017
         }
     }
 
-<span data-ttu-id="ce16e-207">E inserte dos documentos, uno para la familia Andersen y otro para la familia Wakefield.</span><span class="sxs-lookup"><span data-stu-id="ce16e-207">And insert two documents, one each for the Andersen Family and the Wakefield Family.</span></span>
+<span data-ttu-id="48834-207">E insertar otros dos documentos, uno para hello Andersen familia y hello Wakefield familia.</span><span class="sxs-lookup"><span data-stu-id="48834-207">And insert two documents, one each for hello Andersen Family and hello Wakefield Family.</span></span>
 
-<span data-ttu-id="ce16e-208">Copie y pegue el código siguiente en el método **GetStartedDemo** después de la creación de la colección de documentos.</span><span class="sxs-lookup"><span data-stu-id="ce16e-208">Copy and paste the following code to your **GetStartedDemo** method after the document collection creation.</span></span>
+<span data-ttu-id="48834-208">Copiar y pegar siguiente de hello código tooyour **GetStartedDemo** método después de la creación de colección de documentos de Hola.</span><span class="sxs-lookup"><span data-stu-id="48834-208">Copy and paste hello following code tooyour **GetStartedDemo** method after hello document collection creation.</span></span>
 
     await this.client.CreateDatabaseIfNotExistsAsync(new Database { Id = "FamilyDB" });
     
     await this.client.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri("FamilyDB"), new DocumentCollection { Id = "FamilyCollection" });
 
 
-    // ADD THIS PART TO YOUR CODE
+    // ADD THIS PART tooYOUR CODE
     Family andersenFamily = new Family
     {
             Id = "Andersen.1",
@@ -365,36 +365,36 @@ ms.lasthandoff: 08/18/2017
 
     await this.CreateFamilyDocumentIfNotExists("FamilyDB", "FamilyCollection", wakefieldFamily);
 
-<span data-ttu-id="ce16e-209">Presione **F5** para ejecutar la aplicación.</span><span class="sxs-lookup"><span data-stu-id="ce16e-209">Press **F5** to run your application.</span></span>
+<span data-ttu-id="48834-209">Presione **F5** toorun la aplicación.</span><span class="sxs-lookup"><span data-stu-id="48834-209">Press **F5** toorun your application.</span></span>
 
-<span data-ttu-id="ce16e-210">¡Enhorabuena!</span><span class="sxs-lookup"><span data-stu-id="ce16e-210">Congratulations!</span></span> <span data-ttu-id="ce16e-211">Ha creado correctamente dos documentos de Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="ce16e-211">You have successfully created two Azure Cosmos DB documents.</span></span>  
+<span data-ttu-id="48834-210">¡Enhorabuena!</span><span class="sxs-lookup"><span data-stu-id="48834-210">Congratulations!</span></span> <span data-ttu-id="48834-211">Ha creado correctamente dos documentos de Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="48834-211">You have successfully created two Azure Cosmos DB documents.</span></span>  
 
-![Diagrama que muestra la relación jerárquica entre la cuenta, la base de datos en línea, la colección y los documentos usados por el tutorial NoSQL para crear una aplicación de consola de C#.](./media/documentdb-get-started/nosql-tutorial-account-database.png)
+![Diagrama que ilustra relación jerárquica Hola entre la cuenta de hello, base de datos en línea hello, colección de Hola y documentos de hello usa Hola NoSQL tutorial toocreate una aplicación de consola de C#](./media/documentdb-get-started/nosql-tutorial-account-database.png)
 
-## <span data-ttu-id="ce16e-213"><a id="Query"></a>Paso 7: Consulta de los recursos de Azure Cosmos DB</span><span class="sxs-lookup"><span data-stu-id="ce16e-213"><a id="Query"></a>Step 7: Query Azure Cosmos DB resources</span></span>
-<span data-ttu-id="ce16e-214">Azure Cosmos DB admite [consultas](documentdb-sql-query.md) enriquecidas en los documentos JSON que se almacenan en las colecciones.</span><span class="sxs-lookup"><span data-stu-id="ce16e-214">Azure Cosmos DB supports rich [queries](documentdb-sql-query.md) against JSON documents stored in each collection.</span></span>  <span data-ttu-id="ce16e-215">En el siguiente ejemplo se muestran diversas consultas (usando la sintaxis SQL tanto de Azure Cosmos DB como de LINQ) que podemos ejecutar en los documentos que hemos insertado en el paso anterior.</span><span class="sxs-lookup"><span data-stu-id="ce16e-215">The following sample code shows various queries - using both Azure Cosmos DB SQL syntax as well as LINQ - that we can run against the documents we inserted in the previous step.</span></span>
+## <span data-ttu-id="48834-213"><a id="Query"></a>Paso 7: Consulta de los recursos de Azure Cosmos DB</span><span class="sxs-lookup"><span data-stu-id="48834-213"><a id="Query"></a>Step 7: Query Azure Cosmos DB resources</span></span>
+<span data-ttu-id="48834-214">Azure Cosmos DB admite [consultas](documentdb-sql-query.md) enriquecidas en los documentos JSON que se almacenan en las colecciones.</span><span class="sxs-lookup"><span data-stu-id="48834-214">Azure Cosmos DB supports rich [queries](documentdb-sql-query.md) against JSON documents stored in each collection.</span></span>  <span data-ttu-id="48834-215">Hello código de ejemplo siguiente muestra varias consultas: usar ambos SQL de base de datos de Azure Cosmos sintaxis, así como LINQ - que podemos ejecutar contra Hola se insertan en el paso anterior de hello documentos.</span><span class="sxs-lookup"><span data-stu-id="48834-215">hello following sample code shows various queries - using both Azure Cosmos DB SQL syntax as well as LINQ - that we can run against hello documents we inserted in hello previous step.</span></span>
 
-<span data-ttu-id="ce16e-216">Copie y pegue el método **ExecuteSimpleQuery** después del método **CreateFamilyDocumentIfNotExists**.</span><span class="sxs-lookup"><span data-stu-id="ce16e-216">Copy and paste the **ExecuteSimpleQuery** method after your **CreateFamilyDocumentIfNotExists** method.</span></span>
+<span data-ttu-id="48834-216">Copie y pegue hello **ExecuteSimpleQuery** método después de su **CreateFamilyDocumentIfNotExists** método.</span><span class="sxs-lookup"><span data-stu-id="48834-216">Copy and paste hello **ExecuteSimpleQuery** method after your **CreateFamilyDocumentIfNotExists** method.</span></span>
 
-    // ADD THIS PART TO YOUR CODE
+    // ADD THIS PART tooYOUR CODE
     private void ExecuteSimpleQuery(string databaseName, string collectionName)
     {
         // Set some common query options
         FeedOptions queryOptions = new FeedOptions { MaxItemCount = -1 };
 
-            // Here we find the Andersen family via its LastName
+            // Here we find hello Andersen family via its LastName
             IQueryable<Family> familyQuery = this.client.CreateDocumentQuery<Family>(
                     UriFactory.CreateDocumentCollectionUri(databaseName, collectionName), queryOptions)
                     .Where(f => f.LastName == "Andersen");
 
-            // The query is executed synchronously here, but can also be executed asynchronously via the IDocumentQuery<T> interface
+            // hello query is executed synchronously here, but can also be executed asynchronously via hello IDocumentQuery<T> interface
             Console.WriteLine("Running LINQ query...");
             foreach (Family family in familyQuery)
             {
                     Console.WriteLine("\tRead {0}", family);
             }
 
-            // Now execute the same query via direct SQL
+            // Now execute hello same query via direct SQL
             IQueryable<Family> familyQueryInSql = this.client.CreateDocumentQuery<Family>(
                     UriFactory.CreateDocumentCollectionUri(databaseName, collectionName),
                     "SELECT * FROM Family WHERE Family.LastName = 'Andersen'",
@@ -406,147 +406,147 @@ ms.lasthandoff: 08/18/2017
                     Console.WriteLine("\tRead {0}", family);
             }
 
-            Console.WriteLine("Press any key to continue ...");
+            Console.WriteLine("Press any key toocontinue ...");
             Console.ReadKey();
     }
 
-<span data-ttu-id="ce16e-217">Copie y pegue el código siguiente en el método **GetStartedDemo** después de la creación del segundo documento.</span><span class="sxs-lookup"><span data-stu-id="ce16e-217">Copy and paste the following code to your **GetStartedDemo** method after the second document creation.</span></span>
+<span data-ttu-id="48834-217">Copiar y pegar siguiente de hello código tooyour **GetStartedDemo** método después de la creación de hello segundo documento.</span><span class="sxs-lookup"><span data-stu-id="48834-217">Copy and paste hello following code tooyour **GetStartedDemo** method after hello second document creation.</span></span>
 
     await this.CreateFamilyDocumentIfNotExists("FamilyDB", "FamilyCollection", wakefieldFamily);
 
-    // ADD THIS PART TO YOUR CODE
+    // ADD THIS PART tooYOUR CODE
     this.ExecuteSimpleQuery("FamilyDB", "FamilyCollection");
 
-<span data-ttu-id="ce16e-218">Presione **F5** para ejecutar la aplicación.</span><span class="sxs-lookup"><span data-stu-id="ce16e-218">Press **F5** to run your application.</span></span>
+<span data-ttu-id="48834-218">Presione **F5** toorun la aplicación.</span><span class="sxs-lookup"><span data-stu-id="48834-218">Press **F5** toorun your application.</span></span>
 
-<span data-ttu-id="ce16e-219">¡Enhorabuena!</span><span class="sxs-lookup"><span data-stu-id="ce16e-219">Congratulations!</span></span> <span data-ttu-id="ce16e-220">Ha consultado correctamente una colección de Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="ce16e-220">You have successfully queried against an Azure Cosmos DB collection.</span></span>
+<span data-ttu-id="48834-219">¡Enhorabuena!</span><span class="sxs-lookup"><span data-stu-id="48834-219">Congratulations!</span></span> <span data-ttu-id="48834-220">Ha consultado correctamente una colección de Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="48834-220">You have successfully queried against an Azure Cosmos DB collection.</span></span>
 
-<span data-ttu-id="ce16e-221">El siguiente diagrama muestra la denominación de la sintaxis de la consulta SQL de Azure Cosmos DB en la colección creada y se aplica la misma lógica a la consulta LINQ.</span><span class="sxs-lookup"><span data-stu-id="ce16e-221">The following diagram illustrates how the Azure Cosmos DB SQL query syntax is called against the collection you created, and the same logic applies to the LINQ query as well.</span></span>
+<span data-ttu-id="48834-221">Hello siguiente diagrama ilustra cómo consulta de base de datos SQL de Azure Cosmos Hola sintaxis se llama en la colección de Hola que ha creado y hello misma lógica aplica también la consulta LINQ de toohello.</span><span class="sxs-lookup"><span data-stu-id="48834-221">hello following diagram illustrates how hello Azure Cosmos DB SQL query syntax is called against hello collection you created, and hello same logic applies toohello LINQ query as well.</span></span>
 
-![Diagrama que ilustra el ámbito y el significado de la consulta usada por el tutorial de NoSQL para crear una aplicación de consola de C#.](./media/documentdb-get-started/nosql-tutorial-collection-documents.png)
+![Diagrama que ilustra el ámbito de Hola y lo que significa de consulta de hello usa Hola NoSQL tutorial toocreate una aplicación de consola de C#](./media/documentdb-get-started/nosql-tutorial-collection-documents.png)
 
-<span data-ttu-id="ce16e-223">La palabra clave [FROM](documentdb-sql-query.md#FromClause) es opcional en la consulta porque las consultas de Azure Cosmos DB ya tienen como ámbito una única colección.</span><span class="sxs-lookup"><span data-stu-id="ce16e-223">The [FROM](documentdb-sql-query.md#FromClause) keyword is optional in the query because Azure Cosmos DB queries are already scoped to a single collection.</span></span> <span data-ttu-id="ce16e-224">Por lo tanto, «FROM Families f" se puede intercambiar por  "FROM root r", o cualquier otra variable de nombre que elija.</span><span class="sxs-lookup"><span data-stu-id="ce16e-224">Therefore, "FROM Families f" can be swapped with "FROM root r", or any other variable name you choose.</span></span> <span data-ttu-id="ce16e-225">Azure Cosmos DB deducirá la familia, la raíz o el nombre de variable elegido y hará referencia a la colección actual de forma predeterminada.</span><span class="sxs-lookup"><span data-stu-id="ce16e-225">Azure Cosmos DB will infer that Families, root, or the variable name you chose, reference the current collection by default.</span></span>
+<span data-ttu-id="48834-223">Hola [FROM](documentdb-sql-query.md#FromClause) palabra clave es opcional en la consulta de hello porque las consultas de base de datos de Azure Cosmos ya están tooa ámbito sola colección.</span><span class="sxs-lookup"><span data-stu-id="48834-223">hello [FROM](documentdb-sql-query.md#FromClause) keyword is optional in hello query because Azure Cosmos DB queries are already scoped tooa single collection.</span></span> <span data-ttu-id="48834-224">Por lo tanto, «FROM Families f" se puede intercambiar por  "FROM root r", o cualquier otra variable de nombre que elija.</span><span class="sxs-lookup"><span data-stu-id="48834-224">Therefore, "FROM Families f" can be swapped with "FROM root r", or any other variable name you choose.</span></span> <span data-ttu-id="48834-225">Base de datos de Azure Cosmos deducirá que familias, raíz o nombre de variable de hello eligió, referencia Hola colección actual de forma predeterminada.</span><span class="sxs-lookup"><span data-stu-id="48834-225">Azure Cosmos DB will infer that Families, root, or hello variable name you chose, reference hello current collection by default.</span></span>
 
-## <span data-ttu-id="ce16e-226"><a id="ReplaceDocument"></a>Paso 8: Reemplazar un documento JSON</span><span class="sxs-lookup"><span data-stu-id="ce16e-226"><a id="ReplaceDocument"></a>Step 8: Replace JSON document</span></span>
-<span data-ttu-id="ce16e-227">Azure Cosmos DB admite la sustitución de documentos JSON.</span><span class="sxs-lookup"><span data-stu-id="ce16e-227">Azure Cosmos DB supports replacing JSON documents.</span></span>  
+## <span data-ttu-id="48834-226"><a id="ReplaceDocument"></a>Paso 8: Reemplazar un documento JSON</span><span class="sxs-lookup"><span data-stu-id="48834-226"><a id="ReplaceDocument"></a>Step 8: Replace JSON document</span></span>
+<span data-ttu-id="48834-227">Azure Cosmos DB admite la sustitución de documentos JSON.</span><span class="sxs-lookup"><span data-stu-id="48834-227">Azure Cosmos DB supports replacing JSON documents.</span></span>  
 
-<span data-ttu-id="ce16e-228">Copie y pegue el método **ReplaceFamilyDocument** después del método **ExecuteSimpleQuery**.</span><span class="sxs-lookup"><span data-stu-id="ce16e-228">Copy and paste the **ReplaceFamilyDocument** method after your **ExecuteSimpleQuery** method.</span></span>
+<span data-ttu-id="48834-228">Copie y pegue hello **ReplaceFamilyDocument** método después de su **ExecuteSimpleQuery** método.</span><span class="sxs-lookup"><span data-stu-id="48834-228">Copy and paste hello **ReplaceFamilyDocument** method after your **ExecuteSimpleQuery** method.</span></span>
 
-    // ADD THIS PART TO YOUR CODE
+    // ADD THIS PART tooYOUR CODE
     private async Task ReplaceFamilyDocument(string databaseName, string collectionName, string familyName, Family updatedFamily)
     {
          await this.client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(databaseName, collectionName, familyName), updatedFamily);
          this.WriteToConsoleAndPromptToContinue("Replaced Family {0}", familyName);
     }
 
-<span data-ttu-id="ce16e-229">Copie y pegue el código siguiente en el método **GetStartedDemo** después de la ejecución de la consulta y al final del método.</span><span class="sxs-lookup"><span data-stu-id="ce16e-229">Copy and paste the following code to your **GetStartedDemo** method after the query execution, at the end of the method.</span></span> <span data-ttu-id="ce16e-230">Después de reemplazar el documento, este volverá a ejecutar la misma consulta para ver el documento modificado.</span><span class="sxs-lookup"><span data-stu-id="ce16e-230">After replacing the document, this will run the same query again to view the changed document.</span></span>
+<span data-ttu-id="48834-229">Copiar y pegar siguiente de hello código tooyour **GetStartedDemo** método después de la ejecución de consulta de hello, al final de hello del método hello.</span><span class="sxs-lookup"><span data-stu-id="48834-229">Copy and paste hello following code tooyour **GetStartedDemo** method after hello query execution, at hello end of hello method.</span></span> <span data-ttu-id="48834-230">Después de reemplazar el documento de hello, ejecutará Hola mismo volver a consultar tooview Hola cambiado documento.</span><span class="sxs-lookup"><span data-stu-id="48834-230">After replacing hello document, this will run hello same query again tooview hello changed document.</span></span>
 
     await this.CreateFamilyDocumentIfNotExists("FamilyDB", "FamilyCollection", wakefieldFamily);
 
     this.ExecuteSimpleQuery("FamilyDB", "FamilyCollection");
 
-    // ADD THIS PART TO YOUR CODE
-    // Update the Grade of the Andersen Family child
+    // ADD THIS PART tooYOUR CODE
+    // Update hello Grade of hello Andersen Family child
     andersenFamily.Children[0].Grade = 6;
 
     await this.ReplaceFamilyDocument("FamilyDB", "FamilyCollection", "Andersen.1", andersenFamily);
 
     this.ExecuteSimpleQuery("FamilyDB", "FamilyCollection");
 
-<span data-ttu-id="ce16e-231">Presione **F5** para ejecutar la aplicación.</span><span class="sxs-lookup"><span data-stu-id="ce16e-231">Press **F5** to run your application.</span></span>
+<span data-ttu-id="48834-231">Presione **F5** toorun la aplicación.</span><span class="sxs-lookup"><span data-stu-id="48834-231">Press **F5** toorun your application.</span></span>
 
-<span data-ttu-id="ce16e-232">¡Enhorabuena!</span><span class="sxs-lookup"><span data-stu-id="ce16e-232">Congratulations!</span></span> <span data-ttu-id="ce16e-233">Ha sustituido correctamente un documento de Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="ce16e-233">You have successfully replaced an Azure Cosmos DB document.</span></span>
+<span data-ttu-id="48834-232">¡Enhorabuena!</span><span class="sxs-lookup"><span data-stu-id="48834-232">Congratulations!</span></span> <span data-ttu-id="48834-233">Ha sustituido correctamente un documento de Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="48834-233">You have successfully replaced an Azure Cosmos DB document.</span></span>
 
-## <span data-ttu-id="ce16e-234"><a id="DeleteDocument"></a>Paso 9: Eliminar documento JSON</span><span class="sxs-lookup"><span data-stu-id="ce16e-234"><a id="DeleteDocument"></a>Step 9: Delete JSON document</span></span>
-<span data-ttu-id="ce16e-235">Azure Cosmos DB admite la eliminación de documentos JSON.</span><span class="sxs-lookup"><span data-stu-id="ce16e-235">Azure Cosmos DB supports deleting JSON documents.</span></span>  
+## <span data-ttu-id="48834-234"><a id="DeleteDocument"></a>Paso 9: Eliminar documento JSON</span><span class="sxs-lookup"><span data-stu-id="48834-234"><a id="DeleteDocument"></a>Step 9: Delete JSON document</span></span>
+<span data-ttu-id="48834-235">Azure Cosmos DB admite la eliminación de documentos JSON.</span><span class="sxs-lookup"><span data-stu-id="48834-235">Azure Cosmos DB supports deleting JSON documents.</span></span>  
 
-<span data-ttu-id="ce16e-236">Copie y pegue el método **DeleteFamilyDocument** después del método **ReplaceFamilyDocument**.</span><span class="sxs-lookup"><span data-stu-id="ce16e-236">Copy and paste the **DeleteFamilyDocument** method after your **ReplaceFamilyDocument** method.</span></span>
+<span data-ttu-id="48834-236">Copie y pegue hello **DeleteFamilyDocument** método después de su **ReplaceFamilyDocument** método.</span><span class="sxs-lookup"><span data-stu-id="48834-236">Copy and paste hello **DeleteFamilyDocument** method after your **ReplaceFamilyDocument** method.</span></span>
 
-    // ADD THIS PART TO YOUR CODE
+    // ADD THIS PART tooYOUR CODE
     private async Task DeleteFamilyDocument(string databaseName, string collectionName, string documentName)
     {
          await this.client.DeleteDocumentAsync(UriFactory.CreateDocumentUri(databaseName, collectionName, documentName));
          Console.WriteLine("Deleted Family {0}", documentName);
     }
 
-<span data-ttu-id="ce16e-237">Copie y pegue el código siguiente en el método **GetStartedDemo** después de la ejecución de la segunda consulta y al final del método.</span><span class="sxs-lookup"><span data-stu-id="ce16e-237">Copy and paste the following code to your **GetStartedDemo** method after the second query execution, at the end of the method.</span></span>
+<span data-ttu-id="48834-237">Copiar y pegar siguiente de hello código tooyour **GetStartedDemo** método después de la ejecución de consulta segundo hello, al final de hello del método hello.</span><span class="sxs-lookup"><span data-stu-id="48834-237">Copy and paste hello following code tooyour **GetStartedDemo** method after hello second query execution, at hello end of hello method.</span></span>
 
     await this.ReplaceFamilyDocument("FamilyDB", "FamilyCollection", "Andersen.1", andersenFamily);
     
     this.ExecuteSimpleQuery("FamilyDB", "FamilyCollection");
     
-    // ADD THIS PART TO CODE
+    // ADD THIS PART tooCODE
     await this.DeleteFamilyDocument("FamilyDB", "FamilyCollection", "Andersen.1");
 
-<span data-ttu-id="ce16e-238">Presione **F5** para ejecutar la aplicación.</span><span class="sxs-lookup"><span data-stu-id="ce16e-238">Press **F5** to run your application.</span></span>
+<span data-ttu-id="48834-238">Presione **F5** toorun la aplicación.</span><span class="sxs-lookup"><span data-stu-id="48834-238">Press **F5** toorun your application.</span></span>
 
-<span data-ttu-id="ce16e-239">¡Enhorabuena!</span><span class="sxs-lookup"><span data-stu-id="ce16e-239">Congratulations!</span></span> <span data-ttu-id="ce16e-240">Ha eliminado correctamente un documento de Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="ce16e-240">You have successfully deleted an Azure Cosmos DB document.</span></span>
+<span data-ttu-id="48834-239">¡Enhorabuena!</span><span class="sxs-lookup"><span data-stu-id="48834-239">Congratulations!</span></span> <span data-ttu-id="48834-240">Ha eliminado correctamente un documento de Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="48834-240">You have successfully deleted an Azure Cosmos DB document.</span></span>
 
-## <span data-ttu-id="ce16e-241"><a id="DeleteDatabase"></a>Paso 10: Eliminar la base de datos</span><span class="sxs-lookup"><span data-stu-id="ce16e-241"><a id="DeleteDatabase"></a>Step 10: Delete the database</span></span>
-<span data-ttu-id="ce16e-242">La eliminación de la base de datos creada quitará la base de datos y todos los recursos secundarios (colecciones, documentos, etc.).</span><span class="sxs-lookup"><span data-stu-id="ce16e-242">Deleting the created database will remove the database and all children resources (collections, documents, etc.).</span></span>
+## <span data-ttu-id="48834-241"><a id="DeleteDatabase"></a>Paso 10: Eliminar base de datos de Hola</span><span class="sxs-lookup"><span data-stu-id="48834-241"><a id="DeleteDatabase"></a>Step 10: Delete hello database</span></span>
+<span data-ttu-id="48834-242">Eliminando Hola creada la base de datos quitará la base de datos de Hola y todos los recursos de los elementos secundarios (colecciones, documentos, etcetera).</span><span class="sxs-lookup"><span data-stu-id="48834-242">Deleting hello created database will remove hello database and all children resources (collections, documents, etc.).</span></span>
 
-<span data-ttu-id="ce16e-243">Copie y pegue el código siguiente en el método **GetStartedDemo** después de la sección "delete" del documento para eliminar toda la base de datos y todos los recursos secundarios.</span><span class="sxs-lookup"><span data-stu-id="ce16e-243">Copy and paste the following code to your **GetStartedDemo** method after the document delete to delete the entire database and all children resources.</span></span>
+<span data-ttu-id="48834-243">Copiar y pegar siguiente de hello código tooyour **GetStartedDemo** método después documento Hola Eliminar base de datos completa de toodelete hello y todos los recursos de los elementos secundarios.</span><span class="sxs-lookup"><span data-stu-id="48834-243">Copy and paste hello following code tooyour **GetStartedDemo** method after hello document delete toodelete hello entire database and all children resources.</span></span>
 
     this.ExecuteSimpleQuery("FamilyDB", "FamilyCollection");
 
     await this.DeleteFamilyDocument("FamilyDB", "FamilyCollection", "Andersen.1");
 
-    // ADD THIS PART TO CODE
-    // Clean up/delete the database
+    // ADD THIS PART tooCODE
+    // Clean up/delete hello database
     await this.client.DeleteDatabaseAsync(UriFactory.CreateDatabaseUri("FamilyDB"));
 
-<span data-ttu-id="ce16e-244">Presione **F5** para ejecutar la aplicación.</span><span class="sxs-lookup"><span data-stu-id="ce16e-244">Press **F5** to run your application.</span></span>
+<span data-ttu-id="48834-244">Presione **F5** toorun la aplicación.</span><span class="sxs-lookup"><span data-stu-id="48834-244">Press **F5** toorun your application.</span></span>
 
-<span data-ttu-id="ce16e-245">¡Enhorabuena!</span><span class="sxs-lookup"><span data-stu-id="ce16e-245">Congratulations!</span></span> <span data-ttu-id="ce16e-246">Ha eliminado correctamente una base de datos de Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="ce16e-246">You have successfully deleted an Azure Cosmos DB database.</span></span>
+<span data-ttu-id="48834-245">¡Enhorabuena!</span><span class="sxs-lookup"><span data-stu-id="48834-245">Congratulations!</span></span> <span data-ttu-id="48834-246">Ha eliminado correctamente una base de datos de Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="48834-246">You have successfully deleted an Azure Cosmos DB database.</span></span>
 
-## <span data-ttu-id="ce16e-247"><a id="Run"></a>Paso 11: Ejecutar la aplicación de consola de C#</span><span class="sxs-lookup"><span data-stu-id="ce16e-247"><a id="Run"></a>Step 11: Run your C# console application all together!</span></span>
-<span data-ttu-id="ce16e-248">Presione F5 en Visual Studio para compilar la aplicación en modo de depuración.</span><span class="sxs-lookup"><span data-stu-id="ce16e-248">Hit F5 in Visual Studio to build the application in debug mode.</span></span>
+## <span data-ttu-id="48834-247"><a id="Run"></a>Paso 11: Ejecutar la aplicación de consola de C#</span><span class="sxs-lookup"><span data-stu-id="48834-247"><a id="Run"></a>Step 11: Run your C# console application all together!</span></span>
+<span data-ttu-id="48834-248">Presione F5 en la aplicación de Visual Studio toobuild hello en modo de depuración.</span><span class="sxs-lookup"><span data-stu-id="48834-248">Hit F5 in Visual Studio toobuild hello application in debug mode.</span></span>
 
-<span data-ttu-id="ce16e-249">Ahora debería ver la salida de la aplicación de introducción en la ventana de la consola.</span><span class="sxs-lookup"><span data-stu-id="ce16e-249">You should see the output of your get started app in a console window.</span></span> <span data-ttu-id="ce16e-250">La salida mostrará los resultados de las consultas que hemos agregado y debe coincidir con el texto de ejemplo siguiente.</span><span class="sxs-lookup"><span data-stu-id="ce16e-250">The output will show the results of the queries we added and should match the example text below.</span></span>
+<span data-ttu-id="48834-249">Debería ver la salida de hello de la aplicación iniciada get en una ventana de consola.</span><span class="sxs-lookup"><span data-stu-id="48834-249">You should see hello output of your get started app in a console window.</span></span> <span data-ttu-id="48834-250">salida de Hello mostrará resultados Hola de hello las consultas se agregan y se debe coincidir con el texto de ejemplo de Hola a continuación.</span><span class="sxs-lookup"><span data-stu-id="48834-250">hello output will show hello results of hello queries we added and should match hello example text below.</span></span>
 
     Created FamilyDB
-    Press any key to continue ...
+    Press any key toocontinue ...
     Created FamilyCollection
-    Press any key to continue ...
+    Press any key toocontinue ...
     Created Family Andersen.1
-    Press any key to continue ...
+    Press any key toocontinue ...
     Created Family Wakefield.7
-    Press any key to continue ...
+    Press any key toocontinue ...
     Running LINQ query...
         Read {"id":"Andersen.1","LastName":"Andersen","District":"WA5","Parents":[{"FamilyName":null,"FirstName":"Thomas"},{"FamilyName":null,"FirstName":"Mary Kay"}],"Children":[{"FamilyName":null,"FirstName":"Henriette Thaulow","Gender":"female","Grade":5,"Pets":[{"GivenName":"Fluffy"}]}],"Address":{"State":"WA","County":"King","City":"Seattle"},"IsRegistered":true}
     Running direct SQL query...
         Read {"id":"Andersen.1","LastName":"Andersen","District":"WA5","Parents":[{"FamilyName":null,"FirstName":"Thomas"},{"FamilyName":null,"FirstName":"Mary Kay"}],"Children":[{"FamilyName":null,"FirstName":"Henriette Thaulow","Gender":"female","Grade":5,"Pets":[{"GivenName":"Fluffy"}]}],"Address":{"State":"WA","County":"King","City":"Seattle"},"IsRegistered":true}
     Replaced Family Andersen.1
-    Press any key to continue ...
+    Press any key toocontinue ...
     Running LINQ query...
         Read {"id":"Andersen.1","LastName":"Andersen","District":"WA5","Parents":[{"FamilyName":null,"FirstName":"Thomas"},{"FamilyName":null,"FirstName":"Mary Kay"}],"Children":[{"FamilyName":null,"FirstName":"Henriette Thaulow","Gender":"female","Grade":6,"Pets":[{"GivenName":"Fluffy"}]}],"Address":{"State":"WA","County":"King","City":"Seattle"},"IsRegistered":true}
     Running direct SQL query...
         Read {"id":"Andersen.1","LastName":"Andersen","District":"WA5","Parents":[{"FamilyName":null,"FirstName":"Thomas"},{"FamilyName":null,"FirstName":"Mary Kay"}],"Children":[{"FamilyName":null,"FirstName":"Henriette Thaulow","Gender":"female","Grade":6,"Pets":[{"GivenName":"Fluffy"}]}],"Address":{"State":"WA","County":"King","City":"Seattle"},"IsRegistered":true}
     Deleted Family Andersen.1
-    End of demo, press any key to exit.
+    End of demo, press any key tooexit.
 
-<span data-ttu-id="ce16e-251">¡Enhorabuena!</span><span class="sxs-lookup"><span data-stu-id="ce16e-251">Congratulations!</span></span> <span data-ttu-id="ce16e-252">Ha completado este tutorial y tiene una aplicación de consola de C# en funcionamiento.</span><span class="sxs-lookup"><span data-stu-id="ce16e-252">You've completed the tutorial and have a working C# console application!</span></span>
+<span data-ttu-id="48834-251">¡Enhorabuena!</span><span class="sxs-lookup"><span data-stu-id="48834-251">Congratulations!</span></span> <span data-ttu-id="48834-252">Ha completado el tutorial de Hola y tiene una aplicación de consola de C# de trabajo.</span><span class="sxs-lookup"><span data-stu-id="48834-252">You've completed hello tutorial and have a working C# console application!</span></span>
 
-## <span data-ttu-id="ce16e-253"><a id="GetSolution"></a> Obtención de la solución completa del tutorial</span><span class="sxs-lookup"><span data-stu-id="ce16e-253"><a id="GetSolution"></a> Get the complete tutorial solution</span></span>
-<span data-ttu-id="ce16e-254">Si no dispuso de tiempo para completar los pasos de este tutorial, o simplemente desea descargar los ejemplos de código, puede obtenerlos de [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started).</span><span class="sxs-lookup"><span data-stu-id="ce16e-254">If you didn't have time to complete the steps in this tutorial, or just want to download the code samples, you can get it from [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started).</span></span> 
+## <span data-ttu-id="48834-253"><a id="GetSolution"></a>Obtener la solución del tutorial completo Hola</span><span class="sxs-lookup"><span data-stu-id="48834-253"><a id="GetSolution"></a> Get hello complete tutorial solution</span></span>
+<span data-ttu-id="48834-254">Si no dispone de tiempo hello toocomplete los pasos de este tutorial o ejemplos de código desea toodownload Hola simplemente, puede obtenerlo de [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started).</span><span class="sxs-lookup"><span data-stu-id="48834-254">If you didn't have time toocomplete hello steps in this tutorial, or just want toodownload hello code samples, you can get it from [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started).</span></span> 
 
-<span data-ttu-id="ce16e-255">Para compilar la solución GetStarted, necesitará lo siguiente:</span><span class="sxs-lookup"><span data-stu-id="ce16e-255">To build the GetStarted solution, you will need the following:</span></span>
+<span data-ttu-id="48834-255">solución de GetStarted de toobuild hello, necesitará siguiente hello:</span><span class="sxs-lookup"><span data-stu-id="48834-255">toobuild hello GetStarted solution, you will need hello following:</span></span>
 
-* <span data-ttu-id="ce16e-256">Una cuenta de Azure activa.</span><span class="sxs-lookup"><span data-stu-id="ce16e-256">An active Azure account.</span></span> <span data-ttu-id="ce16e-257">Si no tiene una, puede registrarse para obtener una [cuenta gratuita](https://azure.microsoft.com/free/).</span><span class="sxs-lookup"><span data-stu-id="ce16e-257">If you don't have one, you can sign up for a [free account](https://azure.microsoft.com/free/).</span></span>
-* <span data-ttu-id="ce16e-258">Una [cuenta de Azure Cosmos DB][cosmos-db-create-account].</span><span class="sxs-lookup"><span data-stu-id="ce16e-258">An [Azure Cosmos DB account][cosmos-db-create-account].</span></span>
-* <span data-ttu-id="ce16e-259">La solución [GetStarted](https://github.com/Azure-Samples/documentdb-dotnet-getting-started) está disponible en GitHub.</span><span class="sxs-lookup"><span data-stu-id="ce16e-259">The [GetStarted](https://github.com/Azure-Samples/documentdb-dotnet-getting-started) solution available on GitHub.</span></span>
+* <span data-ttu-id="48834-256">Una cuenta de Azure activa.</span><span class="sxs-lookup"><span data-stu-id="48834-256">An active Azure account.</span></span> <span data-ttu-id="48834-257">Si no tiene una, puede registrarse para obtener una [cuenta gratuita](https://azure.microsoft.com/free/).</span><span class="sxs-lookup"><span data-stu-id="48834-257">If you don't have one, you can sign up for a [free account](https://azure.microsoft.com/free/).</span></span>
+* <span data-ttu-id="48834-258">Una [cuenta de Azure Cosmos DB][cosmos-db-create-account].</span><span class="sxs-lookup"><span data-stu-id="48834-258">An [Azure Cosmos DB account][cosmos-db-create-account].</span></span>
+* <span data-ttu-id="48834-259">Hola [GetStarted](https://github.com/Azure-Samples/documentdb-dotnet-getting-started) solución disponible en GitHub.</span><span class="sxs-lookup"><span data-stu-id="48834-259">hello [GetStarted](https://github.com/Azure-Samples/documentdb-dotnet-getting-started) solution available on GitHub.</span></span>
 
-<span data-ttu-id="ce16e-260">Para restaurar las referencias al SDK de .NET para Azure Cosmos DB en Visual Studio, haga clic con el botón derecho en la solución **GetStarted** en el Explorador de soluciones y, después, haga clic en **Enable NuGet Package Restore** (Habilitar la restauración del paquete NuGet).</span><span class="sxs-lookup"><span data-stu-id="ce16e-260">To restore the references to the Azure Cosmos DB .NET SDK in Visual Studio, right-click the **GetStarted** solution in Solution Explorer, and then click **Enable NuGet Package Restore**.</span></span> <span data-ttu-id="ce16e-261">A continuación, en el archivo App.config, actualice los valores EndpointUrl y AuthorizationKey como se describe en el artículo sobre la [Conexión a una cuenta de Azure Cosmos DB](#Connect).</span><span class="sxs-lookup"><span data-stu-id="ce16e-261">Next, in the App.config file, update the EndpointUrl and AuthorizationKey values as described in [Connect to an Azure Cosmos DB account](#Connect).</span></span>
+<span data-ttu-id="48834-260">toorestore Hola referencias toohello Cosmos DB .NET SDK de Azure en Visual Studio, haga clic en hello **GetStarted** solución en el Explorador de soluciones y, a continuación, haga clic en **habilite la restauración del paquete NuGet**.</span><span class="sxs-lookup"><span data-stu-id="48834-260">toorestore hello references toohello Azure Cosmos DB .NET SDK in Visual Studio, right-click hello **GetStarted** solution in Solution Explorer, and then click **Enable NuGet Package Restore**.</span></span> <span data-ttu-id="48834-261">A continuación, en el archivo App.config de hello, actualizar valores de hello EndpointUrl y AuthorizationKey tal y como se describe en [conectar la cuenta de base de datos de Azure Cosmos tooan](#Connect).</span><span class="sxs-lookup"><span data-stu-id="48834-261">Next, in hello App.config file, update hello EndpointUrl and AuthorizationKey values as described in [Connect tooan Azure Cosmos DB account](#Connect).</span></span>
 
-<span data-ttu-id="ce16e-262">Y, eso es todo, genérela y habrá terminado.</span><span class="sxs-lookup"><span data-stu-id="ce16e-262">That's it, build it and you're on your way!</span></span>
+<span data-ttu-id="48834-262">Y, eso es todo, genérela y habrá terminado.</span><span class="sxs-lookup"><span data-stu-id="48834-262">That's it, build it and you're on your way!</span></span>
 
 
-## <a name="next-steps"></a><span data-ttu-id="ce16e-263">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="ce16e-263">Next steps</span></span>
-* <span data-ttu-id="ce16e-264">¿Desea un tutorial de ASP.NET MVC más complejo?</span><span class="sxs-lookup"><span data-stu-id="ce16e-264">Want a more complex ASP.NET MVC tutorial?</span></span> <span data-ttu-id="ce16e-265">Consulte el [Tutorial de ASP.NET MVC: desarrollo de aplicaciones web con Azure Cosmos DB](documentdb-dotnet-application.md).</span><span class="sxs-lookup"><span data-stu-id="ce16e-265">See [ASP.NET MVC Tutorial: Web application development with Azure Cosmos DB](documentdb-dotnet-application.md).</span></span>
-* <span data-ttu-id="ce16e-266">¿Desea realizar pruebas de escala y de rendimiento con Azure Cosmos DB?</span><span class="sxs-lookup"><span data-stu-id="ce16e-266">Want to perform scale and performance testing with Azure Cosmos DB?</span></span> <span data-ttu-id="ce16e-267">Consulte [Pruebas de escala y rendimiento con Azure Cosmos DB](performance-testing.md).</span><span class="sxs-lookup"><span data-stu-id="ce16e-267">See [Performance and scale testing with Azure Cosmos DB](performance-testing.md)</span></span>
-* <span data-ttu-id="ce16e-268">Obtenga más información sobre cómo [supervisar las solicitudes, el uso y el almacenamiento de Azure Cosmos DB](monitor-accounts.md).</span><span class="sxs-lookup"><span data-stu-id="ce16e-268">Learn how to [monitor Azure Cosmos DB requests, usage, and storage](monitor-accounts.md).</span></span>
-* <span data-ttu-id="ce16e-269">Ejecute las consultas en nuestro conjunto de datos de ejemplo en el [área de consultas](https://www.documentdb.com/sql/demo).</span><span class="sxs-lookup"><span data-stu-id="ce16e-269">Run queries against our sample dataset in the [Query Playground](https://www.documentdb.com/sql/demo).</span></span>
-* <span data-ttu-id="ce16e-270">Para más información sobre Azure Cosmos DB, consulte [Bienvenido a Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/introduction).</span><span class="sxs-lookup"><span data-stu-id="ce16e-270">To learn more about Azure Cosmos DB, see [Welcome to Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/introduction).</span></span>
+## <a name="next-steps"></a><span data-ttu-id="48834-263">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="48834-263">Next steps</span></span>
+* <span data-ttu-id="48834-264">¿Desea un tutorial de ASP.NET MVC más complejo?</span><span class="sxs-lookup"><span data-stu-id="48834-264">Want a more complex ASP.NET MVC tutorial?</span></span> <span data-ttu-id="48834-265">Consulte el [Tutorial de ASP.NET MVC: desarrollo de aplicaciones web con Azure Cosmos DB](documentdb-dotnet-application.md).</span><span class="sxs-lookup"><span data-stu-id="48834-265">See [ASP.NET MVC Tutorial: Web application development with Azure Cosmos DB](documentdb-dotnet-application.md).</span></span>
+* <span data-ttu-id="48834-266">¿Desea tooperform escala y rendimiento de pruebas con la base de datos de Azure Cosmos?</span><span class="sxs-lookup"><span data-stu-id="48834-266">Want tooperform scale and performance testing with Azure Cosmos DB?</span></span> <span data-ttu-id="48834-267">Consulte [Pruebas de escala y rendimiento con Azure Cosmos DB](performance-testing.md).</span><span class="sxs-lookup"><span data-stu-id="48834-267">See [Performance and scale testing with Azure Cosmos DB](performance-testing.md)</span></span>
+* <span data-ttu-id="48834-268">Obtenga información acerca de cómo demasiado[supervisar las solicitudes, uso y almacenamiento de base de datos de Azure Cosmos](monitor-accounts.md).</span><span class="sxs-lookup"><span data-stu-id="48834-268">Learn how too[monitor Azure Cosmos DB requests, usage, and storage](monitor-accounts.md).</span></span>
+* <span data-ttu-id="48834-269">Ejecutar consultas en el conjunto de datos de ejemplo de Hola [Query Playground](https://www.documentdb.com/sql/demo).</span><span class="sxs-lookup"><span data-stu-id="48834-269">Run queries against our sample dataset in hello [Query Playground](https://www.documentdb.com/sql/demo).</span></span>
+* <span data-ttu-id="48834-270">toolearn más información acerca de la base de datos de Cosmos de Azure, consulte [Bienvenido tooAzure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/introduction).</span><span class="sxs-lookup"><span data-stu-id="48834-270">toolearn more about Azure Cosmos DB, see [Welcome tooAzure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/introduction).</span></span>
 
 [keys]: media/documentdb-get-started/nosql-tutorial-keys.png
 [cosmos-db-create-account]: create-documentdb-dotnet.md#create-account

@@ -32,7 +32,7 @@
 
 ## Planeamiento y diseño
 ### [Autenticación y autorización en Azure Mobile Apps](app-service-mobile-auth.md)
-### [Sincronización de datos sin conexión en Azure Mobile Apps](app-service-mobile-offline-data-sync.md)
+### [Sincronización de datos sin conexión en Aplicaciones móviles de Azure](app-service-mobile-offline-data-sync.md)
 ### [Procedimientos recomendados para Azure App Service](../app-service-web/app-service-best-practices.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [Azure App Service y los servicios de Azure existentes](../app-service-web/app-service-changes-existing-services.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [Información detallada de los planes de App Service](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
@@ -46,13 +46,13 @@
 #### [Habilitar la sincronización sin conexión](app-service-mobile-android-get-started-offline-data.md)
 #### [Adición de autenticación](app-service-mobile-android-get-started-users.md)
 #### [Adición de notificaciones de inserción](app-service-mobile-android-get-started-push.md)
-#### [Trabajar con el SDK de cliente](app-service-mobile-android-how-to-use-client-library.md)
+#### [Trabajar con el SDK de cliente de Hola](app-service-mobile-android-how-to-use-client-library.md)
 
 ### Cordova
 #### [Habilitar la sincronización sin conexión](app-service-mobile-cordova-get-started-offline-data.md)
 #### [Adición de autenticación](app-service-mobile-cordova-get-started-users.md)
 #### [Adición de notificaciones de inserción](app-service-mobile-cordova-get-started-push.md)
-#### Trabajar con el SDK de cliente
+#### Trabajar con el SDK de cliente de Hola
 ##### [Cordova](app-service-mobile-cordova-how-to-use-client-library.md)
 ##### [JavaScript/HTML](app-service-mobile-html-how-to-use-client-library.md)
 
@@ -60,52 +60,52 @@
 #### [Habilitar la sincronización sin conexión](app-service-mobile-ios-get-started-offline-data.md)
 #### [Adición de autenticación](app-service-mobile-ios-get-started-users.md)
 #### [Adición de notificaciones de inserción](app-service-mobile-ios-get-started-push.md)
-#### [Trabajar con el SDK de cliente](app-service-mobile-ios-how-to-use-client-library.md)
+#### [Trabajar con el SDK de cliente de Hola](app-service-mobile-ios-how-to-use-client-library.md)
 
 ### Windows
 #### [Habilitar la sincronización sin conexión](app-service-mobile-windows-store-dotnet-get-started-offline-data.md)
 #### [Adición de autenticación](app-service-mobile-windows-store-dotnet-get-started-users.md)
 #### [Adición de notificaciones de inserción](app-service-mobile-windows-store-dotnet-get-started-push.md)
-#### [Trabajar con el SDK de cliente](app-service-mobile-dotnet-how-to-use-client-library.md)
+#### [Trabajar con el SDK de cliente de Hola](app-service-mobile-dotnet-how-to-use-client-library.md)
 
 ### Xamarin.Android
 #### [Habilitar la sincronización sin conexión](app-service-mobile-xamarin-android-get-started-offline-data.md)
 #### [Adición de autenticación](app-service-mobile-xamarin-android-get-started-users.md)
 #### [Adición de notificaciones de inserción](app-service-mobile-xamarin-android-get-started-push.md)
-#### [Trabajar con el SDK de cliente](app-service-mobile-dotnet-how-to-use-client-library.md)
+#### [Trabajar con el SDK de cliente de Hola](app-service-mobile-dotnet-how-to-use-client-library.md)
 
 ### Xamarin.Forms
 #### [Habilitar la sincronización sin conexión](app-service-mobile-xamarin-forms-get-started-offline-data.md)
 #### [Adición de autenticación](app-service-mobile-xamarin-forms-get-started-users.md)
 #### [Adición de notificaciones de inserción](app-service-mobile-xamarin-forms-get-started-push.md)
-#### [Trabajar con el SDK de cliente](app-service-mobile-dotnet-how-to-use-client-library.md)
+#### [Trabajar con el SDK de cliente de Hola](app-service-mobile-dotnet-how-to-use-client-library.md)
 
 ### Xamarin.iOS
 #### [Habilitar la sincronización sin conexión](app-service-mobile-xamarin-ios-get-started-offline-data.md)
 #### [Adición de autenticación](app-service-mobile-xamarin-ios-get-started-users.md)
 #### [Adición de notificaciones de inserción](app-service-mobile-xamarin-ios-get-started-push.md)
-#### [Trabajar con el SDK de cliente](app-service-mobile-dotnet-how-to-use-client-library.md)
+#### [Trabajar con el SDK de cliente de Hola](app-service-mobile-dotnet-how-to-use-client-library.md)
 
-### Trabajar con el SDK de servidor
+### Trabajar con hello servidor SDK
 #### [Back-end de .NET](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)
 #### [Back-end de Node.js](app-service-mobile-node-backend-how-to-use-server-sdk.md)
 #### [Control de versiones de cliente y servidor](app-service-mobile-client-and-server-versioning.md)
 
-### WebJobs
-#### [Qué es el SDK de WebJobs de Azure](../app-service-web/websites-dotnet-webjobs-sdk.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### Trabajos web
+#### [¿Qué es hello SDK de WebJobs de Azure](../app-service-web/websites-dotnet-webjobs-sdk.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [Creación de un WebJob .NET en Azure App Service](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Uso del almacenamiento de blobs de Azure con el SDK de WebJobs](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Uso del almacenamiento de colas de Azure con el SDK de WebJobs](../app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Uso de Azure Service Bus con el SDK de WebJobs](../app-service-web/websites-dotnet-webjobs-sdk-service-bus.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Uso del almacenamiento de tablas de Azure con el SDK de WebJobs](../app-service-web/websites-dotnet-webjobs-sdk-storage-tables-how-to.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [¿Cómo toouse Azure blob storage con hello SDK de WebJobs](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [¿Cómo toouse Azure cola de almacenamiento con hello SDK de WebJobs](../app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Cómo toouse de Bus de servicio de Azure con Hola SDK de WebJobs](../app-service-web/websites-dotnet-webjobs-sdk-service-bus.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Cómo toouse Azure tabla almacenamiento con hello SDK de WebJobs](../app-service-web/websites-dotnet-webjobs-sdk-storage-tables-how-to.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ### Entorno de App Service
 #### [Creación de una aplicación web en un entorno de App Service](../app-service-web/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Creación de un ASE de un ILB mediante las plantillas de Azure Resource Manager](../app-service-web/app-service-app-service-environment-create-ilb-ase-resourcemanager.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [¿Cómo tooCreate un ILB ASE usar Azure Resource Manager plantillas](../app-service-web/app-service-app-service-environment-create-ilb-ase-resourcemanager.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [Uso de un equilibrador de carga interno](../app-service-web/app-service-environment-with-internal-load-balancer.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ## [Implementación](../app-service/app-service-deployment-readme.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Implementación en App Service](../app-service-web/web-sites-deploy.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [Implementar tooApp servicio](../app-service-web/web-sites-deploy.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [Implementación de sincronización en la nube](../app-service-web/app-service-deploy-content-sync.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [Implementación continua](../app-service-web/app-service-continuous-deployment.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [Entornos de ensayo](../app-service-web/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
@@ -137,14 +137,14 @@
 ### [Entorno de App Service](../app-service/app-service-app-service-environments-readme.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [Configuración](../app-service-web/app-service-web-configure-an-app-service-environment.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [Opciones de configuración personalizadas](../app-service-web/app-service-app-service-environment-custom-settings.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Control del tráfico entrante](../app-service-web/app-service-app-service-environment-control-inbound-traffic.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Cómo toocontrol el tráfico entrante](../app-service-web/app-service-app-service-environment-control-inbound-traffic.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [Introducción a la arquitectura de red](../app-service-web/app-service-app-service-environment-network-architecture-overview.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [Detalles de configuración de red con ExpressRoute](../app-service-web/app-service-app-service-environment-network-configuration-expressroute.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ## Migrar
-### [¿En qué se diferencia App Service de Mobile Services?](app-service-mobile-value-prop-migration-from-mobile-services.md)
-### [Migrar un servicio móvil existente a App Service](app-service-mobile-migrating-from-mobile-services.md)
-### Actualizar un servicio móvil existente a App Service
+### [¿Cómo se compara tooMobile servicios servicio de aplicaciones?](app-service-mobile-value-prop-migration-from-mobile-services.md)
+### [Migrar un tooApp de servicio móvil existente servicio](app-service-mobile-migrating-from-mobile-services.md)
+### Actualizar un tooApp de servicio móvil existente servicio
 #### [Back-end de .NET](app-service-mobile-net-upgrading-from-mobile-services.md)
 #### [Back-end de Node.js](app-service-mobile-node-backend-upgrading-from-mobile-services.md)
 
@@ -167,12 +167,12 @@
 ### Protección de un entorno de App Service
 #### [Configuración de un firewall de aplicación web](../app-service-web/app-service-app-service-environment-web-application-firewall.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [Implementación de una arquitectura de seguridad por niveles](../app-service-web/app-service-app-service-environment-layered-security.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Conexión de forma segura con recursos de back-end](../app-service-web/app-service-app-service-environment-securely-connecting-to-backend-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Conectarse de forma segura tooBackend recursos](../app-service-web/app-service-app-service-environment-securely-connecting-to-backend-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ## Backup
 ### [Realizar una copia de seguridad de la aplicación en Azure](../app-service-web/web-sites-backup.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [Restaurar una aplicación en Azure](../app-service-web/web-sites-restore.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Usar REST para realizar una copia de seguridad y restaurar las aplicaciones de App Service](../app-service-web/websites-csm-backup.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [Consumir tooback REST y restaurar aplicaciones de servicio de aplicaciones](../app-service-web/websites-csm-backup.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ## [Supervisión](../app-service-web/web-sites-monitor.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [Habilitación del registro de diagnósticos](../app-service-web/web-sites-enable-diagnostic-log.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
@@ -193,15 +193,15 @@
 
 ## Integrate
 ### [Acceso a recursos locales mediante conexiones híbridas](../app-service-web/web-sites-hybrid-connection-get-started.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Envío de correos electrónicos mediante SendGrid con Azure](../app-service-web/sendgrid-dotnet-how-to-send-email.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Exportación a PowerApps y Microsoft Flow](../app-service/app-service-export-api-to-powerapps-and-flow.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [Cómo toosend de correo electrónico con SendGrid de Azure](../app-service-web/sendgrid-dotnet-how-to-send-email.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [Exportar tooPowerApps y Microsoft Flow](../app-service/app-service-export-api-to-powerapps-and-flow.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ## Solución de problemas
 ### Solución de problemas generales de Mobile Apps
 #### [Back-end de .NET](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#how-to-debug-and-troubleshoot-the-net-server-sdk)
 #### [Back-end de Node.js](app-service-mobile-node-backend-how-to-use-server-sdk.md#Debugging)
 ### [Habilitación del registro de diagnósticos](../app-service-web/web-sites-enable-diagnostic-log.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Registros de streaming y la consola](../app-service-web/web-sites-streaming-logs-and-console.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [Los registros de streaming y la consola de Hola](../app-service-web/web-sites-streaming-logs-and-console.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [Solución de problemas con Visual Studio](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 # Referencia

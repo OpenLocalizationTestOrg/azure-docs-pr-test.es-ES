@@ -1,0 +1,53 @@
+---
+title: "orígenes de datos de aaaHow toodocument | Documentos de Microsoft"
+description: "Tooarticle cómo resaltar cómo toodocument activos de datos en el catálogo de datos."
+services: data-catalog
+documentationcenter: 
+author: spelluru
+manager: NA
+editor: 
+tags: 
+ms.assetid: 053b1701-b848-4ada-b726-6f485caa9961
+ms.service: data-catalog
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: data-catalog
+ms.date: 08/03/2017
+ms.author: spelluru
+ms.openlocfilehash: 4e46838d91ab4d0c0bc569ac526a0c729134bb10
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.translationtype: MT
+ms.contentlocale: es-ES
+ms.lasthandoff: 10/06/2017
+---
+# <a name="document-data-sources"></a><span data-ttu-id="d2265-103">Orígenes de datos de documentos</span><span class="sxs-lookup"><span data-stu-id="d2265-103">Document data sources</span></span>
+## <a name="introduction"></a><span data-ttu-id="d2265-104">Introducción</span><span class="sxs-lookup"><span data-stu-id="d2265-104">Introduction</span></span>
+<span data-ttu-id="d2265-105">**Catálogo de datos de Microsoft Azure** es un servicio en la nube totalmente administrado que actúa como sistema de registro y de detección de orígenes de datos empresariales.</span><span class="sxs-lookup"><span data-stu-id="d2265-105">**Microsoft Azure Data Catalog** is a fully managed cloud service that serves as a system of registration and system of discovery for enterprise data sources.</span></span> <span data-ttu-id="d2265-106">En otras palabras, **el catálogo de datos** consiste fundamentalmente en ayudar a las personas a detectar, *comprender*y usar orígenes de datos y ayudar a tooget de las organizaciones más valor de sus datos existentes.</span><span class="sxs-lookup"><span data-stu-id="d2265-106">In other words, **Azure Data Catalog** is all about helping people discover, *understand*, and use data sources, and helping organizations tooget more value from their existing data.</span></span>
+
+<span data-ttu-id="d2265-107">Cuando se registra un origen de datos con **el catálogo de datos**, sus metadatos se copian y se indizan por servicio de hello, pero el caso de hello no termina aquí.</span><span class="sxs-lookup"><span data-stu-id="d2265-107">When a data source is registered with **Azure Data Catalog**, its metadata is copied and indexed by hello service, but hello story doesn’t end there.</span></span> <span data-ttu-id="d2265-108">**Catálogo de datos de Azure** también permite a los usuarios tooprovide su propia documentación completa que se puede describir el uso de Hola y escenarios comunes para el origen de datos de Hola.</span><span class="sxs-lookup"><span data-stu-id="d2265-108">**Azure Data Catalog** also allows users tooprovide their own complete documentation that can describe hello usage and common scenarios for hello data source.</span></span>
+
+<span data-ttu-id="d2265-109">En [cómo orígenes de datos de tooannotate](data-catalog-how-to-annotate.md), verá que expertos que conozcan el origen de datos de hello pueden anotar con etiquetas y una descripción.</span><span class="sxs-lookup"><span data-stu-id="d2265-109">In [How tooannotate data sources](data-catalog-how-to-annotate.md), you learn that experts who know hello data source can annotate it with tags and a description.</span></span> <span data-ttu-id="d2265-110">Hola **el catálogo de datos** portal incluye un editor de texto enriquecido para que los usuarios pueden documentar totalmente activos de datos y los contenedores.</span><span class="sxs-lookup"><span data-stu-id="d2265-110">hello **Azure Data Catalog** portal includes a rich text editor so that users can fully document data assets and containers.</span></span> <span data-ttu-id="d2265-111">editor de Hello incluye formato de párrafo, como los títulos, formato de texto, tablas, listas con viñetas y listas numeradas.</span><span class="sxs-lookup"><span data-stu-id="d2265-111">hello editor includes paragraph formatting, such as headings, text formatting, bulleted lists, numbered lists, and tables.</span></span>
+
+<span data-ttu-id="d2265-112">Las etiquetas y descripciones son excelentes para anotaciones simples.</span><span class="sxs-lookup"><span data-stu-id="d2265-112">Tags and descriptions are great for simple annotations.</span></span> <span data-ttu-id="d2265-113">Sin embargo, los consumidores de datos de toohelp entender mejor el uso de Hola de un origen de datos y los escenarios empresariales para un origen de datos, un experto pueden proporcionar documentación completa y detallada.</span><span class="sxs-lookup"><span data-stu-id="d2265-113">However, toohelp data consumers better understand hello use of a data source, and business scenarios for a data source, an expert can provide complete, detailed documentation.</span></span> <span data-ttu-id="d2265-114">Es fácil toodocument un origen de datos.</span><span class="sxs-lookup"><span data-stu-id="d2265-114">It's easy toodocument a data source.</span></span> <span data-ttu-id="d2265-115">Simplemente, seleccione un recurso de datos o un contenedor y elija **Documentación**.</span><span class="sxs-lookup"><span data-stu-id="d2265-115">Select a data asset or container, and choose **Documentation**.</span></span>
+
+![](media/data-catalog-documentation/data-catalog-documentation.png)
+
+## <a name="documenting-data-assets"></a><span data-ttu-id="d2265-116">Documentación de los recursos de datos</span><span class="sxs-lookup"><span data-stu-id="d2265-116">Documenting data assets</span></span>
+<span data-ttu-id="d2265-117">Hola ventaja de **el catálogo de datos** documentación permite toouse los datos del catálogo como un repositorio de contenido toocreate una descripción completa de los activos de datos.</span><span class="sxs-lookup"><span data-stu-id="d2265-117">hello benefit of **Azure Data Catalog** documentation allows you toouse your Data Catalog as a content repository toocreate a complete narrative of your data assets.</span></span> <span data-ttu-id="d2265-118">Puede explorar el contenido detallado que describe los contenedores y las tablas.</span><span class="sxs-lookup"><span data-stu-id="d2265-118">You can explore detailed content that describes containers and tables.</span></span> <span data-ttu-id="d2265-119">Si ya tiene contenido en otro repositorio de contenido, como SharePoint o un recurso compartido de archivos, puede agregar toohello asset documentación vínculos tooreference este contenido existente.</span><span class="sxs-lookup"><span data-stu-id="d2265-119">If you already have content in another content repository, such as SharePoint or a file share, you can add toohello asset documentation links tooreference this existing content.</span></span> <span data-ttu-id="d2265-120">Esta característica hace que los documentos existentes sean más detectables.</span><span class="sxs-lookup"><span data-stu-id="d2265-120">This feature makes your existing documents more discoverable.</span></span>
+
+> [!NOTE]
+> <span data-ttu-id="d2265-121">La documentación no se incluye en el índice de búsqueda.</span><span class="sxs-lookup"><span data-stu-id="d2265-121">Documentation is not included in search index.</span></span>
+>
+>
+
+![](media/data-catalog-documentation/data-catalog-documentation2.png)
+
+<span data-ttu-id="d2265-122">Hello nivel de documentación puede estar comprendido entre donde se describen las características de Hola y el valor de los datos activos contenedor tooa descripción detallada del esquema de la tabla dentro de un contenedor.</span><span class="sxs-lookup"><span data-stu-id="d2265-122">hello level of documentation can range from describing hello characteristics and value of a data asset container tooa detailed description of table schema within a container.</span></span> <span data-ttu-id="d2265-123">nivel Hola de documentación proporcionada debe determinarse según las necesidades empresariales.</span><span class="sxs-lookup"><span data-stu-id="d2265-123">hello level of documentation provided should be driven by your business needs.</span></span> <span data-ttu-id="d2265-124">En general, hay algunas ventajas y desventajas de documentar los recursos de datos:</span><span class="sxs-lookup"><span data-stu-id="d2265-124">But in general, here are a few pros and cons of documenting data assets:</span></span>
+
+* <span data-ttu-id="d2265-125">Solo a un contenedor de documentos: todo el contenido de hello está en un solo lugar, pero posible que sea necesario falta detalles de toomake de los usuarios una decisión informada.</span><span class="sxs-lookup"><span data-stu-id="d2265-125">Document just a container: All hello content is in one place, but might lack necessary details for users toomake an informed decision.</span></span>
+* <span data-ttu-id="d2265-126">Las tablas de Hola de documentos: contenido es objeto de toothat específico, pero los usuarios tienen varios lugares de documentos.</span><span class="sxs-lookup"><span data-stu-id="d2265-126">Document just hello tables: Content is specific toothat object, but your users have multiple places for documents.</span></span>
+* <span data-ttu-id="d2265-127">Tablas y los contenedores de documentos: enfoque más completo, pero podría introducir más mantenimiento de documentos de Hola.</span><span class="sxs-lookup"><span data-stu-id="d2265-127">Document containers and tables: Most comprehensive approach, but might introduce more maintenance of hello documents.</span></span>
+
+## <a name="summary"></a><span data-ttu-id="d2265-128">Resumen</span><span class="sxs-lookup"><span data-stu-id="d2265-128">Summary</span></span>
+<span data-ttu-id="d2265-129">La documentación de orígenes de datos con el **Catálogo de datos de Azure** puede crear una descripción de los recursos de datos con el detalle que sea necesario.</span><span class="sxs-lookup"><span data-stu-id="d2265-129">Documenting data sources with **Azure Data Catalog** can create a narrative about your data assets in as much detail as you need.</span></span>  <span data-ttu-id="d2265-130">Mediante el uso de vínculos, puede vincular toocontent almacenada en un repositorio de contenido existente, que reúne los documentos existentes y los activos de datos.</span><span class="sxs-lookup"><span data-stu-id="d2265-130">By using links, you can link toocontent stored in an existing content repository, which brings your existing docs and data assets together.</span></span> <span data-ttu-id="d2265-131">Una vez que los usuarios descubran los recursos de datos adecuados, pueden tener un completo conjunto de documentación.</span><span class="sxs-lookup"><span data-stu-id="d2265-131">Once your users discover appropriate data assets, they can have a complete set of documentation.</span></span>

@@ -1,22 +1,22 @@
 # Información general
-## [Acerca de Azure Portal](../azure-portal-overview.md)
+## [Acerca de hello portal de Azure](../azure-portal-overview.md)
 # Tutoriales
-## [DevOps con Azure Portal](tutorial-azureportal-devops.md)
+## [DevOps con hello portal de Azure](tutorial-azureportal-devops.md)
 # Conceptos
 ## [Administrador de recursos de Azure](../azure-resource-manager/resource-group-overview.md)
 ## [Métodos abreviados de teclado](azure-portal-keyboard-shortcuts.md)
 ## [Exploradores y dispositivos compatibles](../azure-preview-portal-supported-browsers-devices.md)
-# Guías de procedimientos
+# Cómo tooguides
 ## Implementación
 ### [Creación de plantillas de Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md)
 ### [Implementación con una plantilla de Resource Manager](../azure-resource-manager/resource-group-template-deploy.md)
 ### [Creación y uso compartido de paneles de Azure](azure-portal-dashboards.md)
 ## Administrar
 ### [Activación del contraste alto o cambio de tema](azure-portal-change-theme-high-contrast.md)
-### [Uso del portal para administrar recursos](../azure-resource-manager/resource-group-portal.md)
+### [Usar recursos de portal toomanage](../azure-resource-manager/resource-group-portal.md)
 ### [Administración de accesos con el control de acceso basado en rol](../active-directory/role-based-access-control-configure.md)
 ### [Uso compartido de paneles con el control de acceso basado en rol](azure-portal-dashboard-share-access.md)
-### [Uso de etiquetas para organizar los recursos](../azure-resource-manager/resource-group-using-tags.md)
+### [Usar etiquetas tooorganize recursos](../azure-resource-manager/resource-group-using-tags.md)
 ### [Escalado de los recursos](../monitoring-and-diagnostics/insights-how-to-scale.md)
 ### [Creación de una entidad de servicio de Azure](../azure-resource-manager/resource-group-create-service-principal-portal.md)
 ## Supervisión
