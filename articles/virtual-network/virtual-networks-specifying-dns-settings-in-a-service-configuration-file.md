@@ -1,5 +1,5 @@
 ---
-title: "Especificación de la configuración DNS en un archivo de configuración de servicio | Microsoft Docs"
+title: "aaaSpecifying configuración de DNS en un archivo de configuración de servicio | Documentos de Microsoft"
 description: "Especificación de la configuración de DNS personalizada mediante un archivo de configuración de servicio para una red virtual"
 services: virtual-network
 documentationcenter: na
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2016
 ms.author: jdial
-ms.openlocfilehash: 0fba2ea06827aff29a7a092933edb8120d668b29
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f192e33566dd8e669da04e6378a0c8e4b0b35ecc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="specifying-dns-settings-in-a-service-configuration-file"></a><span data-ttu-id="11539-103">Especificar la configuración DNS en un archivo de configuración de servicio</span><span class="sxs-lookup"><span data-stu-id="11539-103">Specifying DNS Settings in a Service Configuration File</span></span>
-## <a name="dns-elements"></a><span data-ttu-id="11539-104">Elementos DNS</span><span class="sxs-lookup"><span data-stu-id="11539-104">DNS elements</span></span>
-<span data-ttu-id="11539-105">Un archivo de configuración de servicio puede contener un elemento DnsServers con una lista de direcciones IPv4 de los servidores de sistema de nombres de dominio (DNS) que el servicio usará.</span><span class="sxs-lookup"><span data-stu-id="11539-105">A service configuration file may contain a DnsServers element with a list of IPv4 addresses for the Domain Name System (DNS) servers that the service will use.</span></span> <span data-ttu-id="11539-106">La configuración en el archivo de configuración de servicio sobrescribirá la del archivo de configuración de red.</span><span class="sxs-lookup"><span data-stu-id="11539-106">Settings in the service configuration file take precedence over settings in the network configuration file.</span></span> <span data-ttu-id="11539-107">Para obtener más información, consulte [Esquema de configuración del servicio de Azure (archivo .cscfg)](https://msdn.microsoft.com/library/azure/ee758710.aspx).</span><span class="sxs-lookup"><span data-stu-id="11539-107">For more information, see [Azure Service Configuration Schema (.cscfg File)](https://msdn.microsoft.com/library/azure/ee758710.aspx).</span></span>
+# <a name="specifying-dns-settings-in-a-service-configuration-file"></a><span data-ttu-id="c80c5-103">Especificar la configuración DNS en un archivo de configuración de servicio</span><span class="sxs-lookup"><span data-stu-id="c80c5-103">Specifying DNS Settings in a Service Configuration File</span></span>
+## <a name="dns-elements"></a><span data-ttu-id="c80c5-104">Elementos DNS</span><span class="sxs-lookup"><span data-stu-id="c80c5-104">DNS elements</span></span>
+<span data-ttu-id="c80c5-105">Un archivo de configuración de servicio puede contener un elemento DnsServers con una lista de direcciones IPv4 para los servidores de sistema de nombres de dominio (DNS) de Hola Hola servicio va a usar.</span><span class="sxs-lookup"><span data-stu-id="c80c5-105">A service configuration file may contain a DnsServers element with a list of IPv4 addresses for hello Domain Name System (DNS) servers that hello service will use.</span></span> <span data-ttu-id="c80c5-106">Configuración de archivo de configuración de servicio de hello tiene prioridad sobre la configuración de archivo de configuración de red de Hola.</span><span class="sxs-lookup"><span data-stu-id="c80c5-106">Settings in hello service configuration file take precedence over settings in hello network configuration file.</span></span> <span data-ttu-id="c80c5-107">Para obtener más información, consulte [Esquema de configuración del servicio de Azure (archivo .cscfg)](https://msdn.microsoft.com/library/azure/ee758710.aspx).</span><span class="sxs-lookup"><span data-stu-id="c80c5-107">For more information, see [Azure Service Configuration Schema (.cscfg File)](https://msdn.microsoft.com/library/azure/ee758710.aspx).</span></span>
 
-<span data-ttu-id="11539-108">**Elemento NetworkConfiguration**</span><span class="sxs-lookup"><span data-stu-id="11539-108">**NetworkConfiguration element**</span></span>
+<span data-ttu-id="c80c5-108">**Elemento NetworkConfiguration**</span><span class="sxs-lookup"><span data-stu-id="c80c5-108">**NetworkConfiguration element**</span></span>
 
       <DnsServers>
         <DnsServer name="ID1" IPAddress="IPAddress1" />
@@ -33,16 +33,16 @@ ms.lasthandoff: 07/11/2017
       </DnsServers>
 
 > [!WARNING]
-> <span data-ttu-id="11539-109">El atributo **name** en el elemento **DnsServer** solo se usa como nombre de referencia.</span><span class="sxs-lookup"><span data-stu-id="11539-109">The **name** attribute in the **DnsServer** element is used only as a reference name.</span></span> <span data-ttu-id="11539-110">No representa el nombre de host del servidor DNS.</span><span class="sxs-lookup"><span data-stu-id="11539-110">It does not represent the host name for the DNS server.</span></span> <span data-ttu-id="11539-111">Cada valor del atributo **DnsServer** debe ser único en toda la suscripción de Microsoft Azure.</span><span class="sxs-lookup"><span data-stu-id="11539-111">Each **DnsServer** attribute value must be unique across the entire Microsoft Azure subscription.</span></span>
+> <span data-ttu-id="c80c5-109">Hola **nombre** atributo Hola **DnsServer** elemento solo se usa como un nombre de referencia.</span><span class="sxs-lookup"><span data-stu-id="c80c5-109">hello **name** attribute in hello **DnsServer** element is used only as a reference name.</span></span> <span data-ttu-id="c80c5-110">No representa el nombre de host de hello para el servidor DNS de Hola.</span><span class="sxs-lookup"><span data-stu-id="c80c5-110">It does not represent hello host name for hello DNS server.</span></span> <span data-ttu-id="c80c5-111">Cada **DnsServer** valor de atributo debe ser único en la suscripción de Microsoft Azure todo Hola.</span><span class="sxs-lookup"><span data-stu-id="c80c5-111">Each **DnsServer** attribute value must be unique across hello entire Microsoft Azure subscription.</span></span>
 > 
 > 
 
-## <a name="see-also"></a><span data-ttu-id="11539-112">Otras referencias</span><span class="sxs-lookup"><span data-stu-id="11539-112">See Also</span></span>
-[<span data-ttu-id="11539-113">Esquema de configuración del servicio de Azure (.cscfg)</span><span class="sxs-lookup"><span data-stu-id="11539-113">Azure Service Configuration Schema (.cscfg)</span></span>](https://msdn.microsoft.com/library/windowsazure/ee758710)
+## <a name="see-also"></a><span data-ttu-id="c80c5-112">Otras referencias</span><span class="sxs-lookup"><span data-stu-id="c80c5-112">See Also</span></span>
+[<span data-ttu-id="c80c5-113">Esquema de configuración del servicio de Azure (.cscfg)</span><span class="sxs-lookup"><span data-stu-id="c80c5-113">Azure Service Configuration Schema (.cscfg)</span></span>](https://msdn.microsoft.com/library/windowsazure/ee758710)
 
-[<span data-ttu-id="11539-114">Esquema de configuración de red virtual de Azure</span><span class="sxs-lookup"><span data-stu-id="11539-114">Azure Virtual Network Configuration Schema</span></span>](http://go.microsoft.com/fwlink/?LinkId=248093)
+[<span data-ttu-id="c80c5-114">Esquema de configuración de red virtual de Azure</span><span class="sxs-lookup"><span data-stu-id="c80c5-114">Azure Virtual Network Configuration Schema</span></span>](http://go.microsoft.com/fwlink/?LinkId=248093)
 
-[<span data-ttu-id="11539-115">Configuración de una red virtual mediante un archivo de configuración de red</span><span class="sxs-lookup"><span data-stu-id="11539-115">Configure a Virtual Network Using Network Configuration Files</span></span>](http://go.microsoft.com/fwlink/?LinkId=248094)
+[<span data-ttu-id="c80c5-115">Configuración de una red virtual mediante un archivo de configuración de red</span><span class="sxs-lookup"><span data-stu-id="c80c5-115">Configure a Virtual Network Using Network Configuration Files</span></span>](http://go.microsoft.com/fwlink/?LinkId=248094)
 
-[<span data-ttu-id="11539-116">Información acerca de la configuración de red virtual en el Portal de administración</span><span class="sxs-lookup"><span data-stu-id="11539-116">About Virtual Network settings in the Management Portal</span></span>](http://go.microsoft.com/fwlink/?LinkId=248092)
+[<span data-ttu-id="c80c5-116">Acerca de la configuración de red Virtual en el Portal de administración de Hola</span><span class="sxs-lookup"><span data-stu-id="c80c5-116">About Virtual Network settings in hello Management Portal</span></span>](http://go.microsoft.com/fwlink/?LinkId=248092)
 

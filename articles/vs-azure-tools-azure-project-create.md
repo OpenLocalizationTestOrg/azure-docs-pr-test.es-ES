@@ -1,6 +1,6 @@
 ---
-title: "Creación de un proyecto de servicio en la nube de Azure con Visual Studio | Microsoft Docs"
-description: "Obtenga información sobre cómo crear un proyecto de servicio en la nube de Azure con Visual Studio"
+title: un proyecto de servicio de nube de Azure con Visual Studio aaaCreating | Documentos de Microsoft
+description: "Obtenga información acerca de toocreate ahora un proyecto de servicio de nube de Azure con Visual Studio"
 services: visual-studio-online
 documentationcenter: na
 author: kraigb
@@ -14,46 +14,46 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/21/2017
 ms.author: kraigb
-ms.openlocfilehash: 1f6ded87b551f660853ea4eb0548f3d942e28fa8
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 3c357016aa423688199a7ab3a670115e33a98fe9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="creating-an-azure-cloud-service-project-with-visual-studio"></a><span data-ttu-id="e02ee-103">Creación de un proyecto de servicio en la nube de Azure con Visual Studio</span><span class="sxs-lookup"><span data-stu-id="e02ee-103">Creating an Azure cloud service project with Visual Studio</span></span>
-<span data-ttu-id="e02ee-104">Azure Tools para Visual Studio proporciona una plantilla de proyecto que permite crear un servicio en la nube de Azure.</span><span class="sxs-lookup"><span data-stu-id="e02ee-104">The Azure Tools for Visual Studio provides a project template that lets you create an Azure cloud service.</span></span> <span data-ttu-id="e02ee-105">Una vez creado el proyecto, Visual Studio le permite configurar, depurar e implementar el servicio en la nube en Azure.</span><span class="sxs-lookup"><span data-stu-id="e02ee-105">Once the project has been created, Visual Studio enables you to configure, debug, and deploy the cloud service to Azure.</span></span>
+# <a name="creating-an-azure-cloud-service-project-with-visual-studio"></a><span data-ttu-id="d93ca-103">Creación de un proyecto de servicio en la nube de Azure con Visual Studio</span><span class="sxs-lookup"><span data-stu-id="d93ca-103">Creating an Azure cloud service project with Visual Studio</span></span>
+<span data-ttu-id="d93ca-104">Hello Azure Tools para Visual Studio proporciona una plantilla de proyecto que le permite crear un servicio de nube de Azure.</span><span class="sxs-lookup"><span data-stu-id="d93ca-104">hello Azure Tools for Visual Studio provides a project template that lets you create an Azure cloud service.</span></span> <span data-ttu-id="d93ca-105">Una vez que se ha creado el proyecto de hello, Visual Studio le permite tooconfigure, depurar e implementar tooAzure de servicio de nube de Hola.</span><span class="sxs-lookup"><span data-stu-id="d93ca-105">Once hello project has been created, Visual Studio enables you tooconfigure, debug, and deploy hello cloud service tooAzure.</span></span>
 
-## <a name="steps-to-create-an-azure-cloud-service-project-in-visual-studio"></a><span data-ttu-id="e02ee-106">Pasos para crear un proyecto de servicio en la nube de Azure en Visual Studio</span><span class="sxs-lookup"><span data-stu-id="e02ee-106">Steps to create an Azure cloud service project in Visual Studio</span></span>
-<span data-ttu-id="e02ee-107">En esta sección se le enseñará cómo crear un proyecto de servicio en la nube de Azure en Visual Studio con uno o más roles web.</span><span class="sxs-lookup"><span data-stu-id="e02ee-107">This section walks you through creating an Azure cloud service project in Visual Studio with one or more web roles.</span></span>  
+## <a name="steps-toocreate-an-azure-cloud-service-project-in-visual-studio"></a><span data-ttu-id="d93ca-106">Pasos toocreate un proyecto de servicio de nube de Azure en Visual Studio</span><span class="sxs-lookup"><span data-stu-id="d93ca-106">Steps toocreate an Azure cloud service project in Visual Studio</span></span>
+<span data-ttu-id="d93ca-107">En esta sección se le enseñará cómo crear un proyecto de servicio en la nube de Azure en Visual Studio con uno o más roles web.</span><span class="sxs-lookup"><span data-stu-id="d93ca-107">This section walks you through creating an Azure cloud service project in Visual Studio with one or more web roles.</span></span>  
 
-1. <span data-ttu-id="e02ee-108">Inicie Visual Studio como administrador.</span><span class="sxs-lookup"><span data-stu-id="e02ee-108">Start Visual Studio as an administrator.</span></span>
+1. <span data-ttu-id="d93ca-108">Inicie Visual Studio como administrador.</span><span class="sxs-lookup"><span data-stu-id="d93ca-108">Start Visual Studio as an administrator.</span></span>
 
-1. <span data-ttu-id="e02ee-109">En el menú principal, seleccione **Archivo** > **Nuevo** > **Proyecto**.</span><span class="sxs-lookup"><span data-stu-id="e02ee-109">On the main menu, select **File** > **New** > **Project**.</span></span>
+1. <span data-ttu-id="d93ca-109">En el menú principal de hello, seleccione **archivo** > **New** > **proyecto**.</span><span class="sxs-lookup"><span data-stu-id="d93ca-109">On hello main menu, select **File** > **New** > **Project**.</span></span>
 
-1. <span data-ttu-id="e02ee-110">Seleccione **Nube** en los nodos de plantillas de proyectos de Visual C# o Visual Basic y, luego, seleccione **Servicio en la nube de Azure** en la lista de plantillas.</span><span class="sxs-lookup"><span data-stu-id="e02ee-110">Select **Cloud** from the Visual C# or Visual Basic project template nodes, and select **Azure Cloud Service** from the list of templates.</span></span>
+1. <span data-ttu-id="d93ca-110">Seleccione **nube** desde Hola Visual C# o Visual Basic nodos de la plantilla de proyecto y seleccione **servicio de nube de Azure** de lista de Hola de plantillas.</span><span class="sxs-lookup"><span data-stu-id="d93ca-110">Select **Cloud** from hello Visual C# or Visual Basic project template nodes, and select **Azure Cloud Service** from hello list of templates.</span></span>
 
     ![Nuevo servicio en la nube de Azure](./media/vs-azure-tools-azure-project-create/new-project-wizard-for-cloud-service.png)
 
-1. <span data-ttu-id="e02ee-112">Especifique la versión de .NET Framework que quiere usar para desarrollar el proyecto.</span><span class="sxs-lookup"><span data-stu-id="e02ee-112">Specify which version of the .NET Framework you want to use to develop your project.</span></span>
+1. <span data-ttu-id="d93ca-112">Especifique qué versión de Hola desea toouse toodevelop el proyecto de .NET Framework.</span><span class="sxs-lookup"><span data-stu-id="d93ca-112">Specify which version of hello .NET Framework you want toouse toodevelop your project.</span></span>
 
-1. <span data-ttu-id="e02ee-113">Escriba un nombre y una ubicación para el proyecto y un nombre para la solución.</span><span class="sxs-lookup"><span data-stu-id="e02ee-113">Enter a name and location for your project and a name for the solution.</span></span> 
+1. <span data-ttu-id="d93ca-113">Escriba un nombre y una ubicación para el proyecto y un nombre para la solución de Hola.</span><span class="sxs-lookup"><span data-stu-id="d93ca-113">Enter a name and location for your project and a name for hello solution.</span></span> 
 
-1. <span data-ttu-id="e02ee-114">Seleccione **Aceptar**.</span><span class="sxs-lookup"><span data-stu-id="e02ee-114">Select **OK**.</span></span>
+1. <span data-ttu-id="d93ca-114">Seleccione **Aceptar**.</span><span class="sxs-lookup"><span data-stu-id="d93ca-114">Select **OK**.</span></span>
 
-1. <span data-ttu-id="e02ee-115">En el cuadro de diálogo **Nuevo servicio en la nube de Microsoft Azure**, seleccione los roles que desea agregar y elija el botón de flecha a la derecha para agregarlos a la solución.</span><span class="sxs-lookup"><span data-stu-id="e02ee-115">In the **New Microsoft Azure Cloud Service** dialog, select the roles that you want to add, and choose the right arrow button to add them to your solution.</span></span>
+1. <span data-ttu-id="d93ca-115">Hola **nuevo servicio de nube de Microsoft Azure** cuadro de diálogo, roles de hello select que desee tooadd y elija tooadd de botón de flecha derecha Hola ellos tooyour solución.</span><span class="sxs-lookup"><span data-stu-id="d93ca-115">In hello **New Microsoft Azure Cloud Service** dialog, select hello roles that you want tooadd, and choose hello right arrow button tooadd them tooyour solution.</span></span>
 
     ![Selección de nuevos roles de servicio en la nube de Azure](./media/vs-azure-tools-azure-project-create/new-cloud-service.png)
 
-1. <span data-ttu-id="e02ee-117">Para cambiar el nombre de un rol que haya agregado, mantenga el puntero sobre el rol en el cuadro de diálogo **Nuevo servicio en la nube de Microsoft Azure** y, en el menú contextual, seleccione **Cambiar nombre**.</span><span class="sxs-lookup"><span data-stu-id="e02ee-117">To rename a role that you've added, hover on the role in the **New Microsoft Azure Cloud Service** dialog, and, from the context menu, select **Rename**.</span></span> <span data-ttu-id="e02ee-118">También puede cambiar el nombre de un rol dentro de la solución (en el **Explorador de soluciones**) una vez que lo haya agregado.</span><span class="sxs-lookup"><span data-stu-id="e02ee-118">You can also rename a role within your solution (in the **Solution Explorer**) after it has been added.</span></span>
+1. <span data-ttu-id="d93ca-117">un rol que se ha agregado al mantener el mouse en función del Hola Hola toorename **nuevo servicio de nube de Microsoft Azure** cuadro de diálogo y, en el menú contextual de hello, seleccione **cambiar el nombre de**.</span><span class="sxs-lookup"><span data-stu-id="d93ca-117">toorename a role that you've added, hover on hello role in hello **New Microsoft Azure Cloud Service** dialog, and, from hello context menu, select **Rename**.</span></span> <span data-ttu-id="d93ca-118">También puede cambiar el nombre un rol dentro de la solución (Hola **el Explorador de soluciones**) después de que se ha agregado.</span><span class="sxs-lookup"><span data-stu-id="d93ca-118">You can also rename a role within your solution (in hello **Solution Explorer**) after it has been added.</span></span>
 
     ![Cambio de nombre de rol de servicio en la nube de Azure](./media/vs-azure-tools-azure-project-create/new-cloud-service-rename.png)
 
-<span data-ttu-id="e02ee-120">El proyecto de Azure de Visual Studio tiene asociaciones a los proyectos de rol de la solución.</span><span class="sxs-lookup"><span data-stu-id="e02ee-120">The Visual Studio Azure project has associations to the role projects in the solution.</span></span> <span data-ttu-id="e02ee-121">El proyecto incluye también el *archivo de definición de servicio* y el *archivo de configuración de servicio*:</span><span class="sxs-lookup"><span data-stu-id="e02ee-121">The project also includes the *service definition file* and *service configuration file*:</span></span>
+<span data-ttu-id="d93ca-120">proyecto de Azure en Visual Studio Hello tiene proyectos de rol toohello asociaciones de solución de Hola.</span><span class="sxs-lookup"><span data-stu-id="d93ca-120">hello Visual Studio Azure project has associations toohello role projects in hello solution.</span></span> <span data-ttu-id="d93ca-121">proyecto de Hello también incluye hello *archivo de definición de servicio* y *archivo de configuración de servicio*:</span><span class="sxs-lookup"><span data-stu-id="d93ca-121">hello project also includes hello *service definition file* and *service configuration file*:</span></span>
 
-- <span data-ttu-id="e02ee-122">**Archivo de definición de servicio**: define la configuración del entorno de tiempo de ejecución de la aplicación, incluidos los roles que se requieren, los puntos de conexión y el tamaño de máquina virtual.</span><span class="sxs-lookup"><span data-stu-id="e02ee-122">**Service definition file** - Defines the runtime settings for your application, including what roles are required, endpoints, and virtual machine size.</span></span> 
-- <span data-ttu-id="e02ee-123">**Archivo de configuración de servicio**: configura el número de instancias de un rol que se ejecutan y los valores de la configuración definida para un rol.</span><span class="sxs-lookup"><span data-stu-id="e02ee-123">**Service configuration file** - Configures how many instances of a role are run and the values of the settings defined for a role.</span></span> 
+- <span data-ttu-id="d93ca-122">**Archivo de definición de servicio** -define los valores de tiempo de ejecución de Hola para su aplicación, incluidos los roles son necesarios, los puntos de conexión y el tamaño de máquina virtual.</span><span class="sxs-lookup"><span data-stu-id="d93ca-122">**Service definition file** - Defines hello runtime settings for your application, including what roles are required, endpoints, and virtual machine size.</span></span> 
+- <span data-ttu-id="d93ca-123">**Archivo de configuración de servicio** -configura el número de instancias de un rol se ejecuta y Hola valores de los valores de hello definidos para un rol.</span><span class="sxs-lookup"><span data-stu-id="d93ca-123">**Service configuration file** - Configures how many instances of a role are run and hello values of hello settings defined for a role.</span></span> 
 
-<span data-ttu-id="e02ee-124">Para más información sobre estos archivos, consulte [Configuración de los roles para un servicio en la nube de Azure con Visual Studio](vs-azure-tools-configure-roles-for-cloud-service.md).</span><span class="sxs-lookup"><span data-stu-id="e02ee-124">For more information about these files, see [Configure the Roles for an Azure cloud service with Visual Studio](vs-azure-tools-configure-roles-for-cloud-service.md).</span></span>
+<span data-ttu-id="d93ca-124">Para obtener más información acerca de estos archivos, consulte [configurar Roles de Hola para un servicio de nube de Azure con Visual Studio](vs-azure-tools-configure-roles-for-cloud-service.md).</span><span class="sxs-lookup"><span data-stu-id="d93ca-124">For more information about these files, see [Configure hello Roles for an Azure cloud service with Visual Studio](vs-azure-tools-configure-roles-for-cloud-service.md).</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="e02ee-125">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="e02ee-125">Next steps</span></span>
-- [<span data-ttu-id="e02ee-126">Administración de roles en los proyectos de servicio en la nube de Azure con Visual Studio</span><span class="sxs-lookup"><span data-stu-id="e02ee-126">Managing roles in Azure cloud service projects with Visual Studio</span></span>](./vs-azure-tools-cloud-service-project-managing-roles.md)
+## <a name="next-steps"></a><span data-ttu-id="d93ca-125">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="d93ca-125">Next steps</span></span>
+- [<span data-ttu-id="d93ca-126">Administración de roles en los proyectos de servicio en la nube de Azure con Visual Studio</span><span class="sxs-lookup"><span data-stu-id="d93ca-126">Managing roles in Azure cloud service projects with Visual Studio</span></span>](./vs-azure-tools-cloud-service-project-managing-roles.md)

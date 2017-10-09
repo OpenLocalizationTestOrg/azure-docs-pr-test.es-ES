@@ -1,5 +1,5 @@
 ---
-title: "Mantenimiento y actualización de máquinas virtuales Linux en Azure | Microsoft Docs"
+title: "aaaMaintenance y actualizaciones para máquinas virtuales de Linux en Azure | Documentos de Microsoft"
 description: "Información general sobre el mantenimiento y las actualizaciones de las máquinas virtuales Linux que se ejecutan en Azure."
 services: virtual-machines-linux
 documentationcenter: 
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2017
 ms.author: zivr
-ms.openlocfilehash: 6ead5f0b6a065710a70f1e44d9672c6d8cc4c1e2
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: b5fcf0211971a56ca04f4327a322dfc2e2c0941a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="planned-maintenance-for-linux-virtual-machines"></a><span data-ttu-id="e32e7-103">Mantenimiento planeado de máquinas virtuales Linux</span><span class="sxs-lookup"><span data-stu-id="e32e7-103">Planned maintenance for Linux virtual machines</span></span> 
+# <a name="planned-maintenance-for-linux-virtual-machines"></a><span data-ttu-id="8928f-103">Mantenimiento planeado de máquinas virtuales Linux</span><span class="sxs-lookup"><span data-stu-id="8928f-103">Planned maintenance for Linux virtual machines</span></span> 
 
 [!INCLUDE [virtual-machines-common-planned-maintenance](../../../includes/virtual-machines-common-planned-maintenance.md)]
 
-## <a name="next-steps"></a><span data-ttu-id="e32e7-104">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="e32e7-104">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="8928f-104">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="8928f-104">Next steps</span></span>
 
-<span data-ttu-id="e32e7-105">[Azure Metadata Service](instance-metadata-service.md) le permite descubrir información sobre una máquina virtual hospedada en Azure.</span><span class="sxs-lookup"><span data-stu-id="e32e7-105">The [Azure Metadata Service](instance-metadata-service.md) enables you to discover information about your Virtual Machine hosted in Azure.</span></span> 
+<span data-ttu-id="8928f-105">Hola [el servicio de metadatos de Azure](instance-metadata-service.md) permite toodiscover información acerca de la máquina Virtual hospedada en Azure.</span><span class="sxs-lookup"><span data-stu-id="8928f-105">hello [Azure Metadata Service](instance-metadata-service.md) enables you toodiscover information about your Virtual Machine hosted in Azure.</span></span> 
 

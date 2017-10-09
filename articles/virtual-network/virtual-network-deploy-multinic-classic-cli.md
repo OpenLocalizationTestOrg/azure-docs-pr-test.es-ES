@@ -1,6 +1,6 @@
 ---
-title: "Creación de una máquina virtual (clásica) con varias NIC: CLI de Azure 1.0 | Microsoft Docs"
-description: "Aprenda a crear una máquina virtual (clásica) con varias NIC mediante la interfaz de la línea de comandos (CLI) de Azure 1.0."
+title: "aaaCreate una máquina virtual (clásica) con varias NIC - 1.0 de CLI de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toocreate una máquina virtual (clásica) con varias NIC con hello Azure interfaz de línea de comandos (CLI) 1.0."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,48 +16,48 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b62421b7289650818748d0016dccfdf42ef0a768
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 181bfb28027caff33410ca94744e79206a2a0d0c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-vm-classic-with-multiple-nics-using-the-azure-cli-10"></a><span data-ttu-id="af32a-103">Creación de una máquina virtual (clásica) con varias NIC mediante la CLI de Azure 1.0</span><span class="sxs-lookup"><span data-stu-id="af32a-103">Create a VM (Classic) with multiple NICs using the Azure CLI 1.0</span></span>
+# <a name="create-a-vm-classic-with-multiple-nics-using-hello-azure-cli-10"></a><span data-ttu-id="02e6b-103">Crear una máquina virtual (clásica) con varias NIC con hello Azure CLI 1.0</span><span class="sxs-lookup"><span data-stu-id="02e6b-103">Create a VM (Classic) with multiple NICs using hello Azure CLI 1.0</span></span>
 
 [!INCLUDE [virtual-network-deploy-multinic-classic-selectors-include.md](../../includes/virtual-network-deploy-multinic-classic-selectors-include.md)]
 
-<span data-ttu-id="af32a-104">Puede crear máquinas virtuales (VM) en Azure y asociar varias interfaces de red (NIC) a cada una de las máquinas virtuales.</span><span class="sxs-lookup"><span data-stu-id="af32a-104">You can create virtual machines (VMs) in Azure and attach multiple network interfaces (NICs) to each of your VMs.</span></span> <span data-ttu-id="af32a-105">Varias NIC permiten la separación de tipos de tráfico a través de las NIC.</span><span class="sxs-lookup"><span data-stu-id="af32a-105">Multiple NICs enable separation of traffic types across NICs.</span></span> <span data-ttu-id="af32a-106">Por ejemplo, una NIC podría comunicarse con Internet, mientras que la otra solo se comunica con los recursos internos no conectados a Internet.</span><span class="sxs-lookup"><span data-stu-id="af32a-106">For example, one NIC might communicate with the Internet, while another communicates only with internal resources not connected to the Internet.</span></span> <span data-ttu-id="af32a-107">La capacidad de separar el tráfico de red a través de varias NIC es necesaria para muchos dispositivos virtuales de red, como la entrega de aplicaciones y soluciones para la optimización de WAN.</span><span class="sxs-lookup"><span data-stu-id="af32a-107">The ability to separate network traffic across multiple NICs is required for many network virtual appliances, such as application delivery and WAN optimization solutions.</span></span>
+<span data-ttu-id="02e6b-104">Puede crear máquinas virtuales (VM) en Azure y conectar múltiples tooeach (NIC) de interfaces de red de las máquinas virtuales.</span><span class="sxs-lookup"><span data-stu-id="02e6b-104">You can create virtual machines (VMs) in Azure and attach multiple network interfaces (NICs) tooeach of your VMs.</span></span> <span data-ttu-id="02e6b-105">Varias NIC permiten la separación de tipos de tráfico a través de las NIC.</span><span class="sxs-lookup"><span data-stu-id="02e6b-105">Multiple NICs enable separation of traffic types across NICs.</span></span> <span data-ttu-id="02e6b-106">Por ejemplo, una que NIC puede comunicarse con hello Internet, mientras que otra solo se comunica con los recursos internos no conectado toohello Internet.</span><span class="sxs-lookup"><span data-stu-id="02e6b-106">For example, one NIC might communicate with hello Internet, while another communicates only with internal resources not connected toohello Internet.</span></span> <span data-ttu-id="02e6b-107">tráfico de red de Hello capacidad tooseparate entre varios NIC es necesario para muchos dispositivos virtuales red, por ejemplo, la entrega de aplicaciones y soluciones de optimización de la WAN.</span><span class="sxs-lookup"><span data-stu-id="02e6b-107">hello ability tooseparate network traffic across multiple NICs is required for many network virtual appliances, such as application delivery and WAN optimization solutions.</span></span>
 
 > [!IMPORTANT]
-> <span data-ttu-id="af32a-108">Azure tiene dos modelos de implementación diferentes para crear recursos y trabajar con ellos: [Resource Manager y el clásico](../resource-manager-deployment-model.md).</span><span class="sxs-lookup"><span data-stu-id="af32a-108">Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md).</span></span> <span data-ttu-id="af32a-109">Este artículo trata del modelo de implementación clásico.</span><span class="sxs-lookup"><span data-stu-id="af32a-109">This article covers using the classic deployment model.</span></span> <span data-ttu-id="af32a-110">Microsoft recomienda que las implementaciones más recientes usen el modelo del Administrador de recursos.</span><span class="sxs-lookup"><span data-stu-id="af32a-110">Microsoft recommends that most new deployments use the Resource Manager model.</span></span> <span data-ttu-id="af32a-111">Obtenga información sobre cómo realizar estos pasos con el [modelo de implementación de Resource Manager](virtual-network-deploy-multinic-arm-cli.md).</span><span class="sxs-lookup"><span data-stu-id="af32a-111">Learn how to perform these steps using the [Resource Manager deployment model](virtual-network-deploy-multinic-arm-cli.md).</span></span>
+> <span data-ttu-id="02e6b-108">Azure tiene dos modelos de implementación diferentes para crear recursos y trabajar con ellos: [Resource Manager y el clásico](../resource-manager-deployment-model.md).</span><span class="sxs-lookup"><span data-stu-id="02e6b-108">Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md).</span></span> <span data-ttu-id="02e6b-109">Este artículo incluye el uso de modelo de implementación clásica de Hola.</span><span class="sxs-lookup"><span data-stu-id="02e6b-109">This article covers using hello classic deployment model.</span></span> <span data-ttu-id="02e6b-110">Microsoft recomienda que más nuevas implementaciones de usar el modelo del Administrador de recursos de Hola.</span><span class="sxs-lookup"><span data-stu-id="02e6b-110">Microsoft recommends that most new deployments use hello Resource Manager model.</span></span> <span data-ttu-id="02e6b-111">Obtenga información acerca de cómo tooperform estos pasos con hello [modelo de implementación del Administrador de recursos](virtual-network-deploy-multinic-arm-cli.md).</span><span class="sxs-lookup"><span data-stu-id="02e6b-111">Learn how tooperform these steps using hello [Resource Manager deployment model](virtual-network-deploy-multinic-arm-cli.md).</span></span>
 
 [!INCLUDE [virtual-network-deploy-multinic-scenario-include.md](../../includes/virtual-network-deploy-multinic-scenario-include.md)]
 
-<span data-ttu-id="af32a-112">En los pasos siguientes se usa un grupo de recursos denominado *IaaSStory* para los servidores web y un grupo de recursos denominado *IaaSStory-BackEnd* para los servidores de base de datos.</span><span class="sxs-lookup"><span data-stu-id="af32a-112">The following steps use a resource group named *IaaSStory* for the WEB servers and a resource group named *IaaSStory-BackEnd* for the DB servers.</span></span>
+<span data-ttu-id="02e6b-112">Hello pasos siguientes utiliza un grupo de recursos denominado *IaaSStory* para servidores WEB de Hola y un grupo de recursos denominado *IaaSStory-back-end* para servidores de Hola DB.</span><span class="sxs-lookup"><span data-stu-id="02e6b-112">hello following steps use a resource group named *IaaSStory* for hello WEB servers and a resource group named *IaaSStory-BackEnd* for hello DB servers.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="af32a-113">Requisitos previos</span><span class="sxs-lookup"><span data-stu-id="af32a-113">Prerequisites</span></span>
-<span data-ttu-id="af32a-114">Antes de crear los servidores de base de datos, necesita crear el grupo de recursos *IaaSStory* con todos los recursos necesarios para este escenario.</span><span class="sxs-lookup"><span data-stu-id="af32a-114">Before you can create the DB servers, you need to create the *IaaSStory* resource group with all the necessary resources for this scenario.</span></span> <span data-ttu-id="af32a-115">Para crear estos recursos, complete los pasos siguientes.</span><span class="sxs-lookup"><span data-stu-id="af32a-115">To create these resources, complete the steps that follow.</span></span> <span data-ttu-id="af32a-116">Cree una red virtual siguiendo los pasos del artículo [Creación de una red virtual](virtual-networks-create-vnet-classic-cli.md).</span><span class="sxs-lookup"><span data-stu-id="af32a-116">Create a virtual network by following the steps in the [Create a virtual network](virtual-networks-create-vnet-classic-cli.md) article.</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="02e6b-113">Requisitos previos</span><span class="sxs-lookup"><span data-stu-id="02e6b-113">Prerequisites</span></span>
+<span data-ttu-id="02e6b-114">Para poder crear Hola servidores de base de datos, necesita hello toocreate *IaaSStory* grupo de recursos con todos los recursos necesarios de Hola para este escenario.</span><span class="sxs-lookup"><span data-stu-id="02e6b-114">Before you can create hello DB servers, you need toocreate hello *IaaSStory* resource group with all hello necessary resources for this scenario.</span></span> <span data-ttu-id="02e6b-115">toocreate Hola a estos recursos, completados los pasos que siguen.</span><span class="sxs-lookup"><span data-stu-id="02e6b-115">toocreate these resources, complete hello steps that follow.</span></span> <span data-ttu-id="02e6b-116">Crear una red virtual, siga los pasos de Hola Hola [crear una red virtual](virtual-networks-create-vnet-classic-cli.md) artículo.</span><span class="sxs-lookup"><span data-stu-id="02e6b-116">Create a virtual network by following hello steps in hello [Create a virtual network](virtual-networks-create-vnet-classic-cli.md) article.</span></span>
 
 [!INCLUDE [azure-cli-prerequisites-include.md](../../includes/azure-cli-prerequisites-include.md)]
 
-## <a name="deploy-the-back-end-vms"></a><span data-ttu-id="af32a-117">Implementación de las máquinas virtuales de back-end</span><span class="sxs-lookup"><span data-stu-id="af32a-117">Deploy the back-end VMs</span></span>
-<span data-ttu-id="af32a-118">Las máquinas virtuales de back-end dependen de la creación de los siguientes recursos:</span><span class="sxs-lookup"><span data-stu-id="af32a-118">The back-end VMs depend on the creation of the following resources:</span></span>
+## <a name="deploy-hello-back-end-vms"></a><span data-ttu-id="02e6b-117">Hola back-end de implementar las máquinas virtuales</span><span class="sxs-lookup"><span data-stu-id="02e6b-117">Deploy hello back-end VMs</span></span>
+<span data-ttu-id="02e6b-118">Hola que dependen de las máquinas virtuales de back-end durante la creación de hello de hello recursos siguientes:</span><span class="sxs-lookup"><span data-stu-id="02e6b-118">hello back-end VMs depend on hello creation of hello following resources:</span></span>
 
-* <span data-ttu-id="af32a-119">**Cuenta de almacenamiento en discos de datos**.</span><span class="sxs-lookup"><span data-stu-id="af32a-119">**Storage account for data disks**.</span></span> <span data-ttu-id="af32a-120">Para mejorar el rendimiento, los discos de datos en los servidores de base de datos usarán la tecnología de unidad de estado sólido (SSD), que requiere una cuenta de almacenamiento Premium.</span><span class="sxs-lookup"><span data-stu-id="af32a-120">For better performance, the data disks on the database servers will use solid state drive (SSD) technology, which requires a premium storage account.</span></span> <span data-ttu-id="af32a-121">Asegúrese de que la ubicación de Azure que implementa admita el almacenamiento Premium.</span><span class="sxs-lookup"><span data-stu-id="af32a-121">Make sure the Azure location you deploy to support premium storage.</span></span>
-* <span data-ttu-id="af32a-122">**NIC**.</span><span class="sxs-lookup"><span data-stu-id="af32a-122">**NICs**.</span></span> <span data-ttu-id="af32a-123">Cada VM tendrá dos NIC, una para el acceso de la base de datos y otra para la administración.</span><span class="sxs-lookup"><span data-stu-id="af32a-123">Each VM will have two NICs, one for database access, and one for management.</span></span>
-* <span data-ttu-id="af32a-124">**Conjunto de disponibilidad**.</span><span class="sxs-lookup"><span data-stu-id="af32a-124">**Availability set**.</span></span> <span data-ttu-id="af32a-125">Todos los servidores de base de datos se agregarán al conjunto de disponibilidad único para asegurarse de que al menos una de las máquinas virtuales está activa y ejecutándose durante el mantenimiento.</span><span class="sxs-lookup"><span data-stu-id="af32a-125">All database servers will be added to a single availability set, to ensure at least one of the VMs is up and running during maintenance.</span></span>
+* <span data-ttu-id="02e6b-119">**Cuenta de almacenamiento en discos de datos**.</span><span class="sxs-lookup"><span data-stu-id="02e6b-119">**Storage account for data disks**.</span></span> <span data-ttu-id="02e6b-120">Para mejorar el rendimiento, los discos de datos de hello en los servidores de base de datos de hello usará la tecnología de estado sólido (SSD) de la unidad, que requiere una cuenta de almacenamiento premium.</span><span class="sxs-lookup"><span data-stu-id="02e6b-120">For better performance, hello data disks on hello database servers will use solid state drive (SSD) technology, which requires a premium storage account.</span></span> <span data-ttu-id="02e6b-121">Asegúrese de hello seguro implementar almacenamiento premium de toosupport de ubicación de Azure.</span><span class="sxs-lookup"><span data-stu-id="02e6b-121">Make sure hello Azure location you deploy toosupport premium storage.</span></span>
+* <span data-ttu-id="02e6b-122">**NIC**.</span><span class="sxs-lookup"><span data-stu-id="02e6b-122">**NICs**.</span></span> <span data-ttu-id="02e6b-123">Cada VM tendrá dos NIC, una para el acceso de la base de datos y otra para la administración.</span><span class="sxs-lookup"><span data-stu-id="02e6b-123">Each VM will have two NICs, one for database access, and one for management.</span></span>
+* <span data-ttu-id="02e6b-124">**Conjunto de disponibilidad**.</span><span class="sxs-lookup"><span data-stu-id="02e6b-124">**Availability set**.</span></span> <span data-ttu-id="02e6b-125">Todos los servidores de base de datos se agregarán tooa único conjunto de disponibilidad, tooensure al menos una de las máquinas virtuales de hello está en funcionamiento durante el mantenimiento.</span><span class="sxs-lookup"><span data-stu-id="02e6b-125">All database servers will be added tooa single availability set, tooensure at least one of hello VMs is up and running during maintenance.</span></span>
 
-### <a name="step-1---start-your-script"></a><span data-ttu-id="af32a-126">Paso 1: inicio del script</span><span class="sxs-lookup"><span data-stu-id="af32a-126">Step 1 - Start your script</span></span>
-<span data-ttu-id="af32a-127">Puede descargar el script de Bash completo que haya usado [aquí](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/classic/virtual-network-deploy-multinic-classic-cli.sh).</span><span class="sxs-lookup"><span data-stu-id="af32a-127">You can download the full bash script used [here](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/classic/virtual-network-deploy-multinic-classic-cli.sh).</span></span> <span data-ttu-id="af32a-128">Complete los pasos siguientes para cambiar el script de forma que funcione en su entorno:</span><span class="sxs-lookup"><span data-stu-id="af32a-128">Complete the following steps to change the script to work in your environment:</span></span>
+### <a name="step-1---start-your-script"></a><span data-ttu-id="02e6b-126">Paso 1: inicio del script</span><span class="sxs-lookup"><span data-stu-id="02e6b-126">Step 1 - Start your script</span></span>
+<span data-ttu-id="02e6b-127">Puede descargar script de Hola intensiva de errores completa utilizado [aquí](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/classic/virtual-network-deploy-multinic-classic-cli.sh).</span><span class="sxs-lookup"><span data-stu-id="02e6b-127">You can download hello full bash script used [here](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/classic/virtual-network-deploy-multinic-classic-cli.sh).</span></span> <span data-ttu-id="02e6b-128">Hola completa siguiendo los pasos toochange Hola script toowork en su entorno:</span><span class="sxs-lookup"><span data-stu-id="02e6b-128">Complete hello following steps toochange hello script toowork in your environment:</span></span>
 
-1. <span data-ttu-id="af32a-129">Cambie los valores de las variables siguientes en función de su grupo de recursos existente implementado anteriormente en [Requisitos previos](#Prerequisites).</span><span class="sxs-lookup"><span data-stu-id="af32a-129">Change the values of the variables below based on your existing resource group deployed above in [Prerequisites](#Prerequisites).</span></span>
+1. <span data-ttu-id="02e6b-129">Cambiar valores de hello de hello las variables siguientes basadas en el grupo de recursos existente implementado anteriormente en [requisitos previos](#Prerequisites).</span><span class="sxs-lookup"><span data-stu-id="02e6b-129">Change hello values of hello variables below based on your existing resource group deployed above in [Prerequisites](#Prerequisites).</span></span>
 
     ```azurecli
     location="useast2"
     vnetName="WTestVNet"
     backendSubnetName="BackEnd"
     ```
-2. <span data-ttu-id="af32a-130">Cambie los valores de las variables siguientes según los valores que desee usar para la implementación back-end.</span><span class="sxs-lookup"><span data-stu-id="af32a-130">Change the values of the variables below based on the values you want to use for your backend deployment.</span></span>
+2. <span data-ttu-id="02e6b-130">Cambiar los valores de hello de hello las variables siguientes basadas en valores de hello desea toouse para la implementación de back-end.</span><span class="sxs-lookup"><span data-stu-id="02e6b-130">Change hello values of hello variables below based on hello values you want toouse for your backend deployment.</span></span>
 
     ```azurecli
     backendCSName="IaaSStory-Backend"
@@ -76,15 +76,15 @@ ms.lasthandoff: 07/11/2017
     numberOfVMs=2
     ```
 
-### <a name="step-2---create-necessary-resources-for-your-vms"></a><span data-ttu-id="af32a-131">Paso 2: creación de los recursos necesarios para las máquinas virtuales</span><span class="sxs-lookup"><span data-stu-id="af32a-131">Step 2 - Create necessary resources for your VMs</span></span>
-1. <span data-ttu-id="af32a-132">Cree un nuevo servicio en la nube para todas las máquinas virtuales de back-end.</span><span class="sxs-lookup"><span data-stu-id="af32a-132">Create a new cloud service for all backend VMs.</span></span> <span data-ttu-id="af32a-133">Observe cómo se usa la variable `$backendCSName` para el nombre del grupo de recursos, y `$location` para la región de Azure.</span><span class="sxs-lookup"><span data-stu-id="af32a-133">Notice the use of the `$backendCSName` variable for the resource group name, and `$location` for the Azure region.</span></span>
+### <a name="step-2---create-necessary-resources-for-your-vms"></a><span data-ttu-id="02e6b-131">Paso 2: creación de los recursos necesarios para las máquinas virtuales</span><span class="sxs-lookup"><span data-stu-id="02e6b-131">Step 2 - Create necessary resources for your VMs</span></span>
+1. <span data-ttu-id="02e6b-132">Cree un nuevo servicio en la nube para todas las máquinas virtuales de back-end.</span><span class="sxs-lookup"><span data-stu-id="02e6b-132">Create a new cloud service for all backend VMs.</span></span> <span data-ttu-id="02e6b-133">Uso de Hola de aviso de hello `$backendCSName` variable nombre de grupo de recursos de hello, y `$location` para hello región de Azure.</span><span class="sxs-lookup"><span data-stu-id="02e6b-133">Notice hello use of hello `$backendCSName` variable for hello resource group name, and `$location` for hello Azure region.</span></span>
 
     ```azurecli
     azure service create --serviceName $backendCSName \
         --location $location
     ```
 
-2. <span data-ttu-id="af32a-134">Cree una cuenta de almacenamiento Premium para los discos de datos y sistemas operativos que usarán sus máquinas virtuales.</span><span class="sxs-lookup"><span data-stu-id="af32a-134">Create a premium storage account for the OS and data disks to be used by yours VMs.</span></span>
+2. <span data-ttu-id="02e6b-134">Crear una cuenta de almacenamiento premium para hello SO y toobe de discos de datos utilizado por el suyo máquinas virtuales.</span><span class="sxs-lookup"><span data-stu-id="02e6b-134">Create a premium storage account for hello OS and data disks toobe used by yours VMs.</span></span>
 
     ```azurecli
     azure storage account create $prmStorageAccountName \
@@ -92,15 +92,15 @@ ms.lasthandoff: 07/11/2017
         --type PLRS
     ```
 
-### <a name="step-3---create-vms-with-multiple-nics"></a><span data-ttu-id="af32a-135">Paso 3: crear máquinas virtuales con varias NIC</span><span class="sxs-lookup"><span data-stu-id="af32a-135">Step 3 - Create VMs with multiple NICs</span></span>
-1. <span data-ttu-id="af32a-136">Inicie un bucle para crear varias máquinas virtuales, según las variables `numberOfVMs` .</span><span class="sxs-lookup"><span data-stu-id="af32a-136">Start a loop to create multiple VMs, based on the `numberOfVMs` variables.</span></span>
+### <a name="step-3---create-vms-with-multiple-nics"></a><span data-ttu-id="02e6b-135">Paso 3: crear máquinas virtuales con varias NIC</span><span class="sxs-lookup"><span data-stu-id="02e6b-135">Step 3 - Create VMs with multiple NICs</span></span>
+1. <span data-ttu-id="02e6b-136">Iniciar un bucle toocreate varias máquinas virtuales, en función de hello `numberOfVMs` variables.</span><span class="sxs-lookup"><span data-stu-id="02e6b-136">Start a loop toocreate multiple VMs, based on hello `numberOfVMs` variables.</span></span>
 
     ```azurecli
     for ((suffixNumber=1;suffixNumber<=numberOfVMs;suffixNumber++));
     do
     ```
 
-2. <span data-ttu-id="af32a-137">Para cada máquina virtual, especifique el nombre y la dirección IP de cada una de las dos NIC.</span><span class="sxs-lookup"><span data-stu-id="af32a-137">For each VM, specify the name and IP address of each of the two NICs.</span></span>
+2. <span data-ttu-id="02e6b-137">Para cada máquina virtual, especifique el nombre de Hola y dirección IP de cada uno de hello dos NIC.</span><span class="sxs-lookup"><span data-stu-id="02e6b-137">For each VM, specify hello name and IP address of each of hello two NICs.</span></span>
 
     ```azurecli
     nic1Name=$vmNamePrefix$suffixNumber-DA
@@ -112,7 +112,7 @@ ms.lasthandoff: 07/11/2017
     ipAddress2=$ipAddressPrefix$x
     ```
 
-3. <span data-ttu-id="af32a-138">Cree la máquina virtual.</span><span class="sxs-lookup"><span data-stu-id="af32a-138">Create the VM.</span></span> <span data-ttu-id="af32a-139">Tenga en cuenta que deberá usar el parámetro `--nic-config` , el cual contiene una lista de todas las NIC con nombre, subred y dirección IP.</span><span class="sxs-lookup"><span data-stu-id="af32a-139">Notice the usage of the `--nic-config` parameter, containing a list of all NICs with name, subnet, and IP address.</span></span>
+3. <span data-ttu-id="02e6b-138">Crear Hola máquina virtual.</span><span class="sxs-lookup"><span data-stu-id="02e6b-138">Create hello VM.</span></span> <span data-ttu-id="02e6b-139">Observa Hola del uso de hello `--nic-config` parámetro, que contiene una lista de todas las NIC con nombre, la subred y la dirección IP.</span><span class="sxs-lookup"><span data-stu-id="02e6b-139">Notice hello usage of hello `--nic-config` parameter, containing a list of all NICs with name, subnet, and IP address.</span></span>
 
     ```azurecli
     azure vm create $backendCSName $image $username $password \
@@ -126,7 +126,7 @@ ms.lasthandoff: 07/11/2017
         --nic-config $nic1Name:$backendSubnetName:$ipAddress1::,$nic2Name:$backendSubnetName:$ipAddress2::
     ```
 
-4. <span data-ttu-id="af32a-140">Cree dos discos de datos por cada máquina virtual.</span><span class="sxs-lookup"><span data-stu-id="af32a-140">For each VM, create two data disks.</span></span>
+4. <span data-ttu-id="02e6b-140">Cree dos discos de datos por cada máquina virtual.</span><span class="sxs-lookup"><span data-stu-id="02e6b-140">For each VM, create two data disks.</span></span>
 
     ```azurecli
     azure vm disk attach-new $vmNamePrefix$suffixNumber \
@@ -139,10 +139,10 @@ ms.lasthandoff: 07/11/2017
     done
     ```
 
-### <a name="step-4---run-the-script"></a><span data-ttu-id="af32a-141">Paso 4: ejecución del script</span><span class="sxs-lookup"><span data-stu-id="af32a-141">Step 4 - Run the script</span></span>
-<span data-ttu-id="af32a-142">Ahora que descargó y cambió el script según sus necesidades, ejecute el script para crear las máquinas virtuales de la base de datos back-end con varias NIC.</span><span class="sxs-lookup"><span data-stu-id="af32a-142">Now that you downloaded and changed the script based on your needs, run the script to create the back end database VMs with multiple NICs.</span></span>
+### <a name="step-4---run-hello-script"></a><span data-ttu-id="02e6b-141">Paso 4: secuencia de comandos de ejecución Hola</span><span class="sxs-lookup"><span data-stu-id="02e6b-141">Step 4 - Run hello script</span></span>
+<span data-ttu-id="02e6b-142">Ahora que has descargado y cambia según sus necesidades, ejecutar copia Hola Hola de toocreate de secuencia de comandos de script de Hola finalizar máquinas virtuales de la base de datos con varias NIC.</span><span class="sxs-lookup"><span data-stu-id="02e6b-142">Now that you downloaded and changed hello script based on your needs, run hello script toocreate hello back end database VMs with multiple NICs.</span></span>
 
-1. <span data-ttu-id="af32a-143">Guarde el script y ejecútelo desde su terminal de **Bash** .</span><span class="sxs-lookup"><span data-stu-id="af32a-143">Save your script and run it from your **Bash** terminal.</span></span> <span data-ttu-id="af32a-144">Verá el resultado inicial, tal como se muestra a continuación.</span><span class="sxs-lookup"><span data-stu-id="af32a-144">You will see the initial output, as shown below.</span></span>
+1. <span data-ttu-id="02e6b-143">Guarde el script y ejecútelo desde su terminal de **Bash** .</span><span class="sxs-lookup"><span data-stu-id="02e6b-143">Save your script and run it from your **Bash** terminal.</span></span> <span data-ttu-id="02e6b-144">Verá Hola iniciales de salida, tal y como se muestra a continuación.</span><span class="sxs-lookup"><span data-stu-id="02e6b-144">You will see hello initial output, as shown below.</span></span>
 
         info:    Executing command service create
         info:    Creating cloud service
@@ -159,7 +159,7 @@ ms.lasthandoff: 07/11/2017
         info:    Looking up deployment
         info:    Creating VM
 
-2. <span data-ttu-id="af32a-145">Después de unos minutos, la ejecución finalizará y verá el resto del resultado como se muestra a continuación.</span><span class="sxs-lookup"><span data-stu-id="af32a-145">After a few minutes, the execution will end and you will see the rest of the output as shown below.</span></span>
+2. <span data-ttu-id="02e6b-145">Después de unos minutos, finalizará la ejecución de Hola y verá que el resto de Hola de salida de hello tal y como se muestra a continuación.</span><span class="sxs-lookup"><span data-stu-id="02e6b-145">After a few minutes, hello execution will end and you will see hello rest of hello output as shown below.</span></span>
 
         info:    OK
         info:    vm create command OK

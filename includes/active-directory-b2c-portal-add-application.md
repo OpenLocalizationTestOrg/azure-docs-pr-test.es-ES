@@ -1,0 +1,3 @@
+<span data-ttu-id="a2566-101">En la configuración de hello B2C, haga clic en **aplicaciones** y, a continuación, haga clic en **+ agregar**.</span><span class="sxs-lookup"><span data-stu-id="a2566-101">In hello B2C settings, click **Applications** and then click **+ Add**.</span></span>
+
+![Botón + Agregar de las aplicaciones](./media/active-directory-b2c-portal-add-application/b2c-applications-add.png)

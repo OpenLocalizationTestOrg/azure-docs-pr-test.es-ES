@@ -1,6 +1,6 @@
 ---
-title: "Implementación de LEMP en una máquina virtual Linux en Azure | Microsoft Docs"
-description: "Tutorial: Instalación de la pila LEMP en una máquina virtual Linux en Azure"
+title: "aaaDeploy LEMP en una máquina virtual de Linux en Azure | Documentos de Microsoft"
+description: "Tutorial: pila LEMP Hola de instalación en una VM de Linux en Azure"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: dlepow
@@ -15,89 +15,89 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 08/03/2017
 ms.author: danlep
-ms.openlocfilehash: 653af144eb12cacf955f96a5442efd73add38e88
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: d8f9d84c5e9c0df4e9e985c10fe10f63a2f88214
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="install-a-lemp-web-server-on-an-azure-vm"></a><span data-ttu-id="01f8a-103">Instalación de un servidor web LEMP en una máquina virtual de Azure</span><span class="sxs-lookup"><span data-stu-id="01f8a-103">Install a LEMP web server on an Azure VM</span></span>
-<span data-ttu-id="01f8a-104">En este artículo se ofrecen instrucciones paso a paso para implementar un servidor web NGINX, MySQL y PHP (la pila LEMP) en una máquina virtual de Ubuntu en Azure.</span><span class="sxs-lookup"><span data-stu-id="01f8a-104">This article walks you through how to deploy an NGINX web server, MySQL, and PHP (the LEMP stack) on an Ubuntu VM in Azure.</span></span> <span data-ttu-id="01f8a-105">La pila LEMP es una alternativa a la popular [pila LAMP](tutorial-lamp-stack.md), que también se puede instalar en Azure.</span><span class="sxs-lookup"><span data-stu-id="01f8a-105">The LEMP stack is an alternative to the popular [LAMP stack](tutorial-lamp-stack.md), which you can also install in Azure.</span></span> <span data-ttu-id="01f8a-106">Para ver el servidor LEMP en acción, si lo desea, puede instalar y configurar un sitio de WordPress.</span><span class="sxs-lookup"><span data-stu-id="01f8a-106">To see the LEMP server in action, you can optionally install and configure a WordPress site.</span></span> <span data-ttu-id="01f8a-107">En este tutorial, aprenderá a:</span><span class="sxs-lookup"><span data-stu-id="01f8a-107">In this tutorial you learn how to:</span></span>
+# <a name="install-a-lemp-web-server-on-an-azure-vm"></a><span data-ttu-id="294b2-103">Instalación de un servidor web LEMP en una máquina virtual de Azure</span><span class="sxs-lookup"><span data-stu-id="294b2-103">Install a LEMP web server on an Azure VM</span></span>
+<span data-ttu-id="294b2-104">Este artículo le guiará a través de cómo toodeploy una NGINX web server, MySQL y PHP (pila de hello LEMP) en una VM Ubuntu en Azure.</span><span class="sxs-lookup"><span data-stu-id="294b2-104">This article walks you through how toodeploy an NGINX web server, MySQL, and PHP (hello LEMP stack) on an Ubuntu VM in Azure.</span></span> <span data-ttu-id="294b2-105">pila de Hello LEMP es una alternativa toohello popular [pila LAMP](tutorial-lamp-stack.md), que también se puede instalar en Azure.</span><span class="sxs-lookup"><span data-stu-id="294b2-105">hello LEMP stack is an alternative toohello popular [LAMP stack](tutorial-lamp-stack.md), which you can also install in Azure.</span></span> <span data-ttu-id="294b2-106">servidor de toosee hello LEMP en acción, opcionalmente, puede instalar y configurar un sitio de WordPress.</span><span class="sxs-lookup"><span data-stu-id="294b2-106">toosee hello LEMP server in action, you can optionally install and configure a WordPress site.</span></span> <span data-ttu-id="294b2-107">En este tutorial, aprenderá a:</span><span class="sxs-lookup"><span data-stu-id="294b2-107">In this tutorial you learn how to:</span></span>
 
 > [!div class="checklist"]
-> * <span data-ttu-id="01f8a-108">Creación de una máquina virtual de Ubuntu (la "L" de la pila LEMP)</span><span class="sxs-lookup"><span data-stu-id="01f8a-108">Create an Ubuntu VM (the 'L' in the LEMP stack)</span></span>
-> * <span data-ttu-id="01f8a-109">Apertura del puerto 80 para el tráfico web</span><span class="sxs-lookup"><span data-stu-id="01f8a-109">Open port 80 for web traffic</span></span>
-> * <span data-ttu-id="01f8a-110">Instalación de NGINX, MySQL y PHP</span><span class="sxs-lookup"><span data-stu-id="01f8a-110">Install NGINX, MySQL, and PHP</span></span>
-> * <span data-ttu-id="01f8a-111">Comprobación de la instalación y configuración</span><span class="sxs-lookup"><span data-stu-id="01f8a-111">Verify installation and configuration</span></span>
-> * <span data-ttu-id="01f8a-112">Instalación de WordPress en el servidor LEMP</span><span class="sxs-lookup"><span data-stu-id="01f8a-112">Install WordPress on the LEMP server</span></span>
+> * <span data-ttu-id="294b2-108">Crear una VM de Ubuntu (Hola 'L' en la pila de hello LEMP)</span><span class="sxs-lookup"><span data-stu-id="294b2-108">Create an Ubuntu VM (hello 'L' in hello LEMP stack)</span></span>
+> * <span data-ttu-id="294b2-109">Apertura del puerto 80 para el tráfico web</span><span class="sxs-lookup"><span data-stu-id="294b2-109">Open port 80 for web traffic</span></span>
+> * <span data-ttu-id="294b2-110">Instalación de NGINX, MySQL y PHP</span><span class="sxs-lookup"><span data-stu-id="294b2-110">Install NGINX, MySQL, and PHP</span></span>
+> * <span data-ttu-id="294b2-111">Comprobación de la instalación y configuración</span><span class="sxs-lookup"><span data-stu-id="294b2-111">Verify installation and configuration</span></span>
+> * <span data-ttu-id="294b2-112">Instalar WordPress en servidor de hello LEMP</span><span class="sxs-lookup"><span data-stu-id="294b2-112">Install WordPress on hello LEMP server</span></span>
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-<span data-ttu-id="01f8a-113">Si decide instalar y usar la CLI localmente, para este tutorial es preciso que ejecute la CLI de Azure versión 2.0.4 o posterior.</span><span class="sxs-lookup"><span data-stu-id="01f8a-113">If you choose to install and use the CLI locally, this tutorial requires that you are running the Azure CLI version 2.0.4 or later.</span></span> <span data-ttu-id="01f8a-114">Ejecute `az --version` para encontrar la versión.</span><span class="sxs-lookup"><span data-stu-id="01f8a-114">Run `az --version` to find the version.</span></span> <span data-ttu-id="01f8a-115">Si necesita instalarla o actualizarla, consulte [Instalación de la CLI de Azure 2.0]( /cli/azure/install-azure-cli).</span><span class="sxs-lookup"><span data-stu-id="01f8a-115">If you need to install or upgrade, see [Install Azure CLI 2.0]( /cli/azure/install-azure-cli).</span></span> 
+<span data-ttu-id="294b2-113">Si elige tooinstall y usar hello CLI localmente, este tutorial requiere que se ejecuta la versión de CLI de Azure de hello 2.0.4 o versiones posteriores.</span><span class="sxs-lookup"><span data-stu-id="294b2-113">If you choose tooinstall and use hello CLI locally, this tutorial requires that you are running hello Azure CLI version 2.0.4 or later.</span></span> <span data-ttu-id="294b2-114">Ejecutar `az --version` toofind versión de Hola.</span><span class="sxs-lookup"><span data-stu-id="294b2-114">Run `az --version` toofind hello version.</span></span> <span data-ttu-id="294b2-115">Si necesita tooinstall o una actualización, consulte [instalar Azure CLI 2.0]( /cli/azure/install-azure-cli).</span><span class="sxs-lookup"><span data-stu-id="294b2-115">If you need tooinstall or upgrade, see [Install Azure CLI 2.0]( /cli/azure/install-azure-cli).</span></span> 
 
 [!INCLUDE [virtual-machines-linux-tutorial-stack-intro.md](../../../includes/virtual-machines-linux-tutorial-stack-intro.md)]
 
-## <a name="install-nginx-mysql-and-php"></a><span data-ttu-id="01f8a-116">Instalación de NGINX, MySQL y PHP</span><span class="sxs-lookup"><span data-stu-id="01f8a-116">Install NGINX, MySQL, and PHP</span></span>
+## <a name="install-nginx-mysql-and-php"></a><span data-ttu-id="294b2-116">Instalación de NGINX, MySQL y PHP</span><span class="sxs-lookup"><span data-stu-id="294b2-116">Install NGINX, MySQL, and PHP</span></span>
 
-<span data-ttu-id="01f8a-117">Ejecute el siguiente comando para actualizar los orígenes de paquetes de Ubuntu e instalar NGINX, MySQL y PHP.</span><span class="sxs-lookup"><span data-stu-id="01f8a-117">Run the following command to update Ubuntu package sources and install NGINX, MySQL, and PHP.</span></span> 
+<span data-ttu-id="294b2-117">Ejecute hello siguientes comando tooupdate Ubuntu paquete orígenes e instale NGINX, MySQL y PHP.</span><span class="sxs-lookup"><span data-stu-id="294b2-117">Run hello following command tooupdate Ubuntu package sources and install NGINX, MySQL, and PHP.</span></span> 
 
 ```bash
 sudo apt update && sudo apt install nginx mysql-server php-mysql php php-fpm
 ```
 
-<span data-ttu-id="01f8a-118">Se le pide que instale los paquetes y otras dependencias.</span><span class="sxs-lookup"><span data-stu-id="01f8a-118">You are prompted to install the packages and other dependencies.</span></span> <span data-ttu-id="01f8a-119">Cuando se le solicite, establezca una contraseña raíz para MySQL y, a continuación, presione [Entrar] para continuar.</span><span class="sxs-lookup"><span data-stu-id="01f8a-119">When prompted, set a root password for MySQL, and then [Enter] to continue.</span></span> <span data-ttu-id="01f8a-120">Siga el resto de instrucciones.</span><span class="sxs-lookup"><span data-stu-id="01f8a-120">Follow the remaining prompts.</span></span> <span data-ttu-id="01f8a-121">Este proceso instala las extensiones PHP mínimas necesarias para utilizar PHP con MySQL.</span><span class="sxs-lookup"><span data-stu-id="01f8a-121">This process installs the minimum required PHP extensions needed to use PHP with MySQL.</span></span> 
+<span data-ttu-id="294b2-118">Son paquetes de saludo tooinstall solicitada y otras dependencias.</span><span class="sxs-lookup"><span data-stu-id="294b2-118">You are prompted tooinstall hello packages and other dependencies.</span></span> <span data-ttu-id="294b2-119">Cuando se le solicite, establecer una contraseña de root para MySQL y, a continuación, toocontinue [ENTRAR].</span><span class="sxs-lookup"><span data-stu-id="294b2-119">When prompted, set a root password for MySQL, and then [Enter] toocontinue.</span></span> <span data-ttu-id="294b2-120">Siga Hola restantes mensajes.</span><span class="sxs-lookup"><span data-stu-id="294b2-120">Follow hello remaining prompts.</span></span> <span data-ttu-id="294b2-121">Este proceso instala Hola mínimo necesario PHP extensiones necesarias toouse PHP con MySQL.</span><span class="sxs-lookup"><span data-stu-id="294b2-121">This process installs hello minimum required PHP extensions needed toouse PHP with MySQL.</span></span> 
 
 ![Página de contraseña raíz de MySQL][1]
 
-## <a name="verify-installation-and-configuration"></a><span data-ttu-id="01f8a-123">Comprobación de la instalación y configuración</span><span class="sxs-lookup"><span data-stu-id="01f8a-123">Verify installation and configuration</span></span>
+## <a name="verify-installation-and-configuration"></a><span data-ttu-id="294b2-123">Comprobación de la instalación y configuración</span><span class="sxs-lookup"><span data-stu-id="294b2-123">Verify installation and configuration</span></span>
 
 
-### <a name="nginx"></a><span data-ttu-id="01f8a-124">NGINX</span><span class="sxs-lookup"><span data-stu-id="01f8a-124">NGINX</span></span>
+### <a name="nginx"></a><span data-ttu-id="294b2-124">NGINX</span><span class="sxs-lookup"><span data-stu-id="294b2-124">NGINX</span></span>
 
-<span data-ttu-id="01f8a-125">Compruebe la versión de NGINX con el comando siguiente:</span><span class="sxs-lookup"><span data-stu-id="01f8a-125">Check the version of NGINX with the following command:</span></span>
+<span data-ttu-id="294b2-125">Comprobar la versión de Hola de NGINX con hello siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="294b2-125">Check hello version of NGINX with hello following command:</span></span>
 ```bash
 nginx -v
 ```
 
-<span data-ttu-id="01f8a-126">Con NGINX instalado y el puerto 80 abierto para la máquina virtual, se puede acceder ahora al servidor web desde Internet.</span><span class="sxs-lookup"><span data-stu-id="01f8a-126">With NGINX installed, and port 80 open to your VM, the web server can now be accessed from the internet.</span></span> <span data-ttu-id="01f8a-127">Para ver la página de bienvenida de NGINX, abra un explorador web y escriba la dirección IP pública de la máquina virtual.</span><span class="sxs-lookup"><span data-stu-id="01f8a-127">To view the NGINX welcome page, open a web browser, and enter the public IP address of the VM.</span></span> <span data-ttu-id="01f8a-128">Use la dirección IP pública utilizada para SSH en la máquina virtual:</span><span class="sxs-lookup"><span data-stu-id="01f8a-128">Use the public IP address you used to SSH to the VM:</span></span>
+<span data-ttu-id="294b2-126">Con NGINX instalada y el puerto 80 abra tooyour VM, servidor web de hello ahora puede tener acceso desde Hola internet.</span><span class="sxs-lookup"><span data-stu-id="294b2-126">With NGINX installed, and port 80 open tooyour VM, hello web server can now be accessed from hello internet.</span></span> <span data-ttu-id="294b2-127">página de bienvenida de tooview hello NGINX, abra un explorador web y escriba la dirección IP pública de Hola de hello máquina virtual.</span><span class="sxs-lookup"><span data-stu-id="294b2-127">tooview hello NGINX welcome page, open a web browser, and enter hello public IP address of hello VM.</span></span> <span data-ttu-id="294b2-128">Usar dirección IP pública hello usa tooSSH toohello VM:</span><span class="sxs-lookup"><span data-stu-id="294b2-128">Use hello public IP address you used tooSSH toohello VM:</span></span>
 
 ![Página predeterminada de NGINX][3]
 
 
-### <a name="mysql"></a><span data-ttu-id="01f8a-130">MySQL</span><span class="sxs-lookup"><span data-stu-id="01f8a-130">MySQL</span></span>
+### <a name="mysql"></a><span data-ttu-id="294b2-130">MySQL</span><span class="sxs-lookup"><span data-stu-id="294b2-130">MySQL</span></span>
 
-<span data-ttu-id="01f8a-131">Compruebe la versión de MySQL con el siguiente comando (tenga en cuenta el parámetro `V` en mayúsculas):</span><span class="sxs-lookup"><span data-stu-id="01f8a-131">Check the version of MySQL with the following command (note the capital `V` parameter):</span></span>
+<span data-ttu-id="294b2-131">Comprobar la versión de Hola de MySQL con el siguiente comando de hello (tenga en cuenta mayúsculas hello `V` parámetro):</span><span class="sxs-lookup"><span data-stu-id="294b2-131">Check hello version of MySQL with hello following command (note hello capital `V` parameter):</span></span>
 
 ```bash
 msql -V
 ```
 
-<span data-ttu-id="01f8a-132">Se recomienda ejecutar el script siguiente para ayudar a proteger la instalación de MySQL:</span><span class="sxs-lookup"><span data-stu-id="01f8a-132">We recommend running the following script to help secure the installation of MySQL:</span></span>
+<span data-ttu-id="294b2-132">Se recomienda ejecutar Hola después de la instalación de secuencia de comandos toohelp Hola segura de MySQL:</span><span class="sxs-lookup"><span data-stu-id="294b2-132">We recommend running hello following script toohelp secure hello installation of MySQL:</span></span>
 
 ```bash
 mysql_secure_installation
 ```
 
-<span data-ttu-id="01f8a-133">Escriba la contraseña raíz de MySQL y configure la seguridad para su entorno.</span><span class="sxs-lookup"><span data-stu-id="01f8a-133">Enter your MySQL root password, and configure the security settings for your environment.</span></span>
+<span data-ttu-id="294b2-133">Escriba la contraseña de la raíz de MySQL y configurar opciones de seguridad de Hola para su entorno.</span><span class="sxs-lookup"><span data-stu-id="294b2-133">Enter your MySQL root password, and configure hello security settings for your environment.</span></span>
 
-<span data-ttu-id="01f8a-134">Si desea crear una base de datos MySQL, agregar usuarios o cambiar la configuración, inicie sesión en MySQL:</span><span class="sxs-lookup"><span data-stu-id="01f8a-134">If you want to create a MySQL database, add users, or change configuration settings, login to MySQL:</span></span>
+<span data-ttu-id="294b2-134">Si desea toocreate una base de datos MySQL, agregar usuarios o cambiar la configuración, tooMySQL de inicio de sesión:</span><span class="sxs-lookup"><span data-stu-id="294b2-134">If you want toocreate a MySQL database, add users, or change configuration settings, login tooMySQL:</span></span>
 
 ```bash
 mysql -u root -p
 ```
 
-<span data-ttu-id="01f8a-135">Cuando haya terminado, escriba `\q` para salir del símbolo del sistema de mysql.</span><span class="sxs-lookup"><span data-stu-id="01f8a-135">When done, exit the mysql prompt by typing `\q`.</span></span>
+<span data-ttu-id="294b2-135">Cuando haya finalizado, salir del símbolo del sistema de hello mysql escribiendo `\q`.</span><span class="sxs-lookup"><span data-stu-id="294b2-135">When done, exit hello mysql prompt by typing `\q`.</span></span>
 
-### <a name="php"></a><span data-ttu-id="01f8a-136">PHP</span><span class="sxs-lookup"><span data-stu-id="01f8a-136">PHP</span></span>
+### <a name="php"></a><span data-ttu-id="294b2-136">PHP</span><span class="sxs-lookup"><span data-stu-id="294b2-136">PHP</span></span>
 
-<span data-ttu-id="01f8a-137">Compruebe la versión de PHP con el comando siguiente:</span><span class="sxs-lookup"><span data-stu-id="01f8a-137">Check the version of PHP with the following command:</span></span>
+<span data-ttu-id="294b2-137">Hola de comprobación de versión de PHP con hello siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="294b2-137">Check hello version of PHP with hello following command:</span></span>
 
 ```bash
 php -v
 ```
 
-<span data-ttu-id="01f8a-138">Configure NGINX para usar el Administrador de procesos FastCGI para PHP (PHP-FPM).</span><span class="sxs-lookup"><span data-stu-id="01f8a-138">Configure NGINX to use the PHP FastCGI Process Manager (PHP-FPM).</span></span> <span data-ttu-id="01f8a-139">Ejecute los siguientes comandos para realizar la copia de seguridad del archivo de configuración del bloque de servidor NGINX original y, a continuación, edite el archivo original en el editor que prefiera:</span><span class="sxs-lookup"><span data-stu-id="01f8a-139">Run the following commands to back up the original NGINX server block config file and then edit the original file in an editor of your choice:</span></span>
+<span data-ttu-id="294b2-138">Configurar Hola de toouse NGINX Administrador de procesos de FastCGI de PHP (PHP-FPM).</span><span class="sxs-lookup"><span data-stu-id="294b2-138">Configure NGINX toouse hello PHP FastCGI Process Manager (PHP-FPM).</span></span> <span data-ttu-id="294b2-139">Ejecute hello después comandos tooback servidor NGINX original de hello bloquear el archivo de configuración y, a continuación, editar el archivo original de hello en un editor de su elección:</span><span class="sxs-lookup"><span data-stu-id="294b2-139">Run hello following commands tooback up hello original NGINX server block config file and then edit hello original file in an editor of your choice:</span></span>
 
 ```bash
 sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default_backup
@@ -105,7 +105,7 @@ sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default_ba
 sudo sensible-editor /etc/nginx/sites-available/default
 ```
 
-<span data-ttu-id="01f8a-140">En el editor, reemplace el contenido de `/etc/nginx/sites-available/default` por lo siguiente.</span><span class="sxs-lookup"><span data-stu-id="01f8a-140">In the editor, replace the contents of `/etc/nginx/sites-available/default` with the following.</span></span> <span data-ttu-id="01f8a-141">Vea los comentarios para obtener una explicación de la configuración.</span><span class="sxs-lookup"><span data-stu-id="01f8a-141">See the comments for explanation of the settings.</span></span> <span data-ttu-id="01f8a-142">Sustituya la dirección IP pública de la máquina virtual para *yourPublicIPAddress* y deje el resto de opciones de configuración.</span><span class="sxs-lookup"><span data-stu-id="01f8a-142">Substitute the public IP address of your VM for *yourPublicIPAddress*, and leave the remaining settings.</span></span> <span data-ttu-id="01f8a-143">A continuación, guarde el archivo.</span><span class="sxs-lookup"><span data-stu-id="01f8a-143">Then save the file.</span></span>
+<span data-ttu-id="294b2-140">En el editor de hello, reemplace el contenido de Hola de `/etc/nginx/sites-available/default` con siguiente Hola.</span><span class="sxs-lookup"><span data-stu-id="294b2-140">In hello editor, replace hello contents of `/etc/nginx/sites-available/default` with hello following.</span></span> <span data-ttu-id="294b2-141">Vea los comentarios de Hola para ver una explicación de la configuración de Hola.</span><span class="sxs-lookup"><span data-stu-id="294b2-141">See hello comments for explanation of hello settings.</span></span> <span data-ttu-id="294b2-142">Sustituya la dirección IP pública de saludo de la máquina virtual para *yourPublicIPAddress*y dejar Hola restantes de la configuración.</span><span class="sxs-lookup"><span data-stu-id="294b2-142">Substitute hello public IP address of your VM for *yourPublicIPAddress*, and leave hello remaining settings.</span></span> <span data-ttu-id="294b2-143">A continuación, guarde el archivo hello.</span><span class="sxs-lookup"><span data-stu-id="294b2-143">Then save hello file.</span></span>
 
 ```
 server {
@@ -130,19 +130,19 @@ server {
 }
 ```
 
-<span data-ttu-id="01f8a-144">Compruebe la configuración de NGINX para ver si hay errores de sintaxis:</span><span class="sxs-lookup"><span data-stu-id="01f8a-144">Check the NGINX configuration for syntax errors:</span></span>
+<span data-ttu-id="294b2-144">Compruebe la configuración de hello NGINX errores de sintaxis:</span><span class="sxs-lookup"><span data-stu-id="294b2-144">Check hello NGINX configuration for syntax errors:</span></span>
 
 ```bash
 sudo nginx -t
 ```
 
-<span data-ttu-id="01f8a-145">Si la sintaxis es correcta, reinicie NGINX con el siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="01f8a-145">If the syntax is correct, restart NGINX with the following command:</span></span>
+<span data-ttu-id="294b2-145">Si la sintaxis de hello es correcta, reinicie NGINX con hello siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="294b2-145">If hello syntax is correct, restart NGINX with hello following command:</span></span>
 
 ```bash
 sudo service nginx restart
 ```
 
-<span data-ttu-id="01f8a-146">Si desea realizar más pruebas, cree una página PHP de información rápida para verla en un explorador.</span><span class="sxs-lookup"><span data-stu-id="01f8a-146">If you want to test further, create a quick PHP info page to view in a browser.</span></span> <span data-ttu-id="01f8a-147">El siguiente comando crea la página de información de PHP:</span><span class="sxs-lookup"><span data-stu-id="01f8a-147">The following command creates the PHP info page:</span></span>
+<span data-ttu-id="294b2-146">Si desea más tootest, cree un rápido tooview de página de información PHP en un explorador.</span><span class="sxs-lookup"><span data-stu-id="294b2-146">If you want tootest further, create a quick PHP info page tooview in a browser.</span></span> <span data-ttu-id="294b2-147">Hola siguiente comando crea la página de información de hello PHP:</span><span class="sxs-lookup"><span data-stu-id="294b2-147">hello following command creates hello PHP info page:</span></span>
 
 ```bash
 sudo sh -c 'echo "<?php phpinfo(); ?>" > /var/www/html/info.php'
@@ -150,28 +150,28 @@ sudo sh -c 'echo "<?php phpinfo(); ?>" > /var/www/html/info.php'
 
 
 
-<span data-ttu-id="01f8a-148">Ahora puede comprobar la página de información de PHP que creó.</span><span class="sxs-lookup"><span data-stu-id="01f8a-148">Now you can check the PHP info page you created.</span></span> <span data-ttu-id="01f8a-149">Abra un explorador y vaya a `http://yourPublicIPAddress/info.php`.</span><span class="sxs-lookup"><span data-stu-id="01f8a-149">Open a browser and go to `http://yourPublicIPAddress/info.php`.</span></span> <span data-ttu-id="01f8a-150">Sustituya la dirección por la dirección IP pública de la máquina virtual.</span><span class="sxs-lookup"><span data-stu-id="01f8a-150">Substitute the public IP address of your VM.</span></span> <span data-ttu-id="01f8a-151">Debe tener un aspecto similar a esta imagen.</span><span class="sxs-lookup"><span data-stu-id="01f8a-151">It should look similar to this image.</span></span>
+<span data-ttu-id="294b2-148">Ahora puede comprobar la página de información de hello PHP que ha creado.</span><span class="sxs-lookup"><span data-stu-id="294b2-148">Now you can check hello PHP info page you created.</span></span> <span data-ttu-id="294b2-149">Abra un explorador y vaya demasiado`http://yourPublicIPAddress/info.php`.</span><span class="sxs-lookup"><span data-stu-id="294b2-149">Open a browser and go too`http://yourPublicIPAddress/info.php`.</span></span> <span data-ttu-id="294b2-150">Sustituya la dirección IP pública de saludo de la máquina virtual.</span><span class="sxs-lookup"><span data-stu-id="294b2-150">Substitute hello public IP address of your VM.</span></span> <span data-ttu-id="294b2-151">Debería ser una imagen toothis similar.</span><span class="sxs-lookup"><span data-stu-id="294b2-151">It should look similar toothis image.</span></span>
 
 ![Página de información de PHP][2]
 
 
 [!INCLUDE [virtual-machines-linux-tutorial-wordpress.md](../../../includes/virtual-machines-linux-tutorial-wordpress.md)]
 
-## <a name="next-steps"></a><span data-ttu-id="01f8a-153">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="01f8a-153">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="294b2-153">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="294b2-153">Next steps</span></span>
 
-<span data-ttu-id="01f8a-154">En este tutorial, implementó un servidor LEMP en Azure.</span><span class="sxs-lookup"><span data-stu-id="01f8a-154">In this tutorial, you deployed a LEMP server in Azure.</span></span> <span data-ttu-id="01f8a-155">Ha aprendido a:</span><span class="sxs-lookup"><span data-stu-id="01f8a-155">You learned how to:</span></span>
+<span data-ttu-id="294b2-154">En este tutorial, implementó un servidor LEMP en Azure.</span><span class="sxs-lookup"><span data-stu-id="294b2-154">In this tutorial, you deployed a LEMP server in Azure.</span></span> <span data-ttu-id="294b2-155">Ha aprendido a:</span><span class="sxs-lookup"><span data-stu-id="294b2-155">You learned how to:</span></span>
 
 > [!div class="checklist"]
-> * <span data-ttu-id="01f8a-156">Creación de una máquina virtual de Ubuntu</span><span class="sxs-lookup"><span data-stu-id="01f8a-156">Create an Ubuntu VM</span></span>
-> * <span data-ttu-id="01f8a-157">Apertura del puerto 80 para el tráfico web</span><span class="sxs-lookup"><span data-stu-id="01f8a-157">Open port 80 for web traffic</span></span>
-> * <span data-ttu-id="01f8a-158">Instalación de NGINX, MySQL y PHP</span><span class="sxs-lookup"><span data-stu-id="01f8a-158">Install NGINX, MySQL, and PHP</span></span>
-> * <span data-ttu-id="01f8a-159">Comprobación de la instalación y configuración</span><span class="sxs-lookup"><span data-stu-id="01f8a-159">Verify installation and configuration</span></span>
-> * <span data-ttu-id="01f8a-160">Instalación de WordPress en la pila LEMP</span><span class="sxs-lookup"><span data-stu-id="01f8a-160">Install WordPress on the LEMP stack</span></span>
+> * <span data-ttu-id="294b2-156">Creación de una máquina virtual de Ubuntu</span><span class="sxs-lookup"><span data-stu-id="294b2-156">Create an Ubuntu VM</span></span>
+> * <span data-ttu-id="294b2-157">Apertura del puerto 80 para el tráfico web</span><span class="sxs-lookup"><span data-stu-id="294b2-157">Open port 80 for web traffic</span></span>
+> * <span data-ttu-id="294b2-158">Instalación de NGINX, MySQL y PHP</span><span class="sxs-lookup"><span data-stu-id="294b2-158">Install NGINX, MySQL, and PHP</span></span>
+> * <span data-ttu-id="294b2-159">Comprobación de la instalación y configuración</span><span class="sxs-lookup"><span data-stu-id="294b2-159">Verify installation and configuration</span></span>
+> * <span data-ttu-id="294b2-160">Instalar WordPress en pila de hello LEMP</span><span class="sxs-lookup"><span data-stu-id="294b2-160">Install WordPress on hello LEMP stack</span></span>
 
-<span data-ttu-id="01f8a-161">Pase al siguiente tutorial para aprender a proteger servidores web con certificados SSL.</span><span class="sxs-lookup"><span data-stu-id="01f8a-161">Advance to the next tutorial to learn how to secure web servers with SSL certificates.</span></span>
+<span data-ttu-id="294b2-161">Avanzar toohello siguiente tutorial toolearn cómo toosecure los servidores web con certificados SSL.</span><span class="sxs-lookup"><span data-stu-id="294b2-161">Advance toohello next tutorial toolearn how toosecure web servers with SSL certificates.</span></span>
 
 > [!div class="nextstepaction"]
-> [<span data-ttu-id="01f8a-162">Protección de un servidor web con SSL</span><span class="sxs-lookup"><span data-stu-id="01f8a-162">Secure web server with SSL</span></span>](tutorial-secure-web-server.md)
+> [<span data-ttu-id="294b2-162">Protección de un servidor web con SSL</span><span class="sxs-lookup"><span data-stu-id="294b2-162">Secure web server with SSL</span></span>](tutorial-secure-web-server.md)
 
 [1]: ./media/tutorial-lemp-stack/configmysqlpassword-small.png
 [2]: ./media/tutorial-lemp-stack/phpsuccesspage.png

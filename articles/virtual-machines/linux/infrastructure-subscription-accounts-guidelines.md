@@ -1,6 +1,6 @@
 ---
-title: "Suscripción y cuenta para VM de Linux en Azure| Microsoft Docs"
-description: "Obtenga información sobre las instrucciones de implementación y diseño clave para las suscripciones y cuentas de Azure."
+title: "aaaSubscription y de la cuenta para las máquinas virtuales de Linux en Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de hello diseño e implementación de las instrucciones clave para las suscripciones y cuentas en Azure."
 documentationcenter: 
 services: virtual-machines-linux
 author: iainfoulds
@@ -16,55 +16,55 @@ ms.topic: article
 ms.date: 06/26/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 19695a9960d8e8f0dfca4bf0ca10761fe6ae7ff0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9025a40783c008310ebd0f674deb4a9001ae974a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-subscription-and-accounts-guidelines-for-linux-vms"></a><span data-ttu-id="90bc6-103">Directrices de suscripción y cuentas de Azure para máquinas virtuales Linux</span><span class="sxs-lookup"><span data-stu-id="90bc6-103">Azure subscription and accounts guidelines for Linux VMs</span></span>
+# <a name="azure-subscription-and-accounts-guidelines-for-linux-vms"></a><span data-ttu-id="635e2-103">Directrices de suscripción y cuentas de Azure para máquinas virtuales Linux</span><span class="sxs-lookup"><span data-stu-id="635e2-103">Azure subscription and accounts guidelines for Linux VMs</span></span>
 
 [!INCLUDE [virtual-machines-linux-infrastructure-guidelines-intro](../../../includes/virtual-machines-linux-infrastructure-guidelines-intro.md)]
 
-<span data-ttu-id="90bc6-104">Este artículo se centra en conocer cómo enfocar la administración de cuentas y suscripciones a medida que crece su entorno y su base de usuarios.</span><span class="sxs-lookup"><span data-stu-id="90bc6-104">This article focuses on understanding how to approach subscription and account management as your environment and user base grows.</span></span>
+<span data-ttu-id="635e2-104">En este artículo se centra en describir cómo tooapproach suscripción y administración de cuentas como su entorno y la base de usuarios crece.</span><span class="sxs-lookup"><span data-stu-id="635e2-104">This article focuses on understanding how tooapproach subscription and account management as your environment and user base grows.</span></span>
 
-## <a name="implementation-guidelines-for-subscriptions-and-accounts"></a><span data-ttu-id="90bc6-105">Instrucciones de implementación de suscripciones y cuentas</span><span class="sxs-lookup"><span data-stu-id="90bc6-105">Implementation guidelines for subscriptions and accounts</span></span>
-<span data-ttu-id="90bc6-106">Decisiones:</span><span class="sxs-lookup"><span data-stu-id="90bc6-106">Decisions:</span></span>
+## <a name="implementation-guidelines-for-subscriptions-and-accounts"></a><span data-ttu-id="635e2-105">Instrucciones de implementación de suscripciones y cuentas</span><span class="sxs-lookup"><span data-stu-id="635e2-105">Implementation guidelines for subscriptions and accounts</span></span>
+<span data-ttu-id="635e2-106">Decisiones:</span><span class="sxs-lookup"><span data-stu-id="635e2-106">Decisions:</span></span>
 
-* <span data-ttu-id="90bc6-107">¿Qué conjunto de suscripciones y cuentas necesita para hospedar su infraestructura o carga de trabajo de TI?</span><span class="sxs-lookup"><span data-stu-id="90bc6-107">What set of subscriptions and accounts do you need to host your IT workload or infrastructure?</span></span>
-* <span data-ttu-id="90bc6-108">¿Cómo sería la jerarquía para adaptarse a su organización?</span><span class="sxs-lookup"><span data-stu-id="90bc6-108">How to break down the hierarchy to fit your organization?</span></span>
+* <span data-ttu-id="635e2-107">¿Qué conjunto de suscripciones y cuentas ¿necesita toohost su infraestructura o la carga de trabajo de TI?</span><span class="sxs-lookup"><span data-stu-id="635e2-107">What set of subscriptions and accounts do you need toohost your IT workload or infrastructure?</span></span>
+* <span data-ttu-id="635e2-108">¿Cómo toobreak hacia abajo Hola jerarquía toofit su organización?</span><span class="sxs-lookup"><span data-stu-id="635e2-108">How toobreak down hello hierarchy toofit your organization?</span></span>
 
-<span data-ttu-id="90bc6-109">Tareas:</span><span class="sxs-lookup"><span data-stu-id="90bc6-109">Tasks:</span></span>
+<span data-ttu-id="635e2-109">Tareas:</span><span class="sxs-lookup"><span data-stu-id="635e2-109">Tasks:</span></span>
 
-* <span data-ttu-id="90bc6-110">Definir la jerarquía de organización lógica que desee administrar desde un nivel de suscripción.</span><span class="sxs-lookup"><span data-stu-id="90bc6-110">Define your logical organization hierarchy as you would like to manage it from a subscription level.</span></span>
-* <span data-ttu-id="90bc6-111">Definir las cuentas y las suscripciones necesarias de cada cuenta para que se correspondan con esta jerarquía lógica.</span><span class="sxs-lookup"><span data-stu-id="90bc6-111">To match this logical hierarchy, define the accounts required and subscriptions under each account.</span></span>
-* <span data-ttu-id="90bc6-112">Cree el conjunto de suscripciones y cuentas usando su convención de nomenclatura.</span><span class="sxs-lookup"><span data-stu-id="90bc6-112">Create the set of subscriptions and accounts using your naming convention.</span></span>
+* <span data-ttu-id="635e2-110">Definir la jerarquía de organización lógica como le gustaría toomanage desde un nivel de suscripción.</span><span class="sxs-lookup"><span data-stu-id="635e2-110">Define your logical organization hierarchy as you would like toomanage it from a subscription level.</span></span>
+* <span data-ttu-id="635e2-111">toomatch esta jerarquía lógica, definir cuentas Hola necesarias y las suscripciones en cada cuenta.</span><span class="sxs-lookup"><span data-stu-id="635e2-111">toomatch this logical hierarchy, define hello accounts required and subscriptions under each account.</span></span>
+* <span data-ttu-id="635e2-112">Crear conjunto de Hola de suscripciones y cuentas que utilizan la convención de nomenclatura.</span><span class="sxs-lookup"><span data-stu-id="635e2-112">Create hello set of subscriptions and accounts using your naming convention.</span></span>
 
-## <a name="subscriptions-and-accounts"></a><span data-ttu-id="90bc6-113">Suscripciones y cuentas </span><span class="sxs-lookup"><span data-stu-id="90bc6-113">Subscriptions and accounts</span></span>
-<span data-ttu-id="90bc6-114">Para trabajar con Azure, necesita una o más suscripciones a Azure.</span><span class="sxs-lookup"><span data-stu-id="90bc6-114">To work with Azure, you need one or more Azure subscriptions.</span></span> <span data-ttu-id="90bc6-115">Existen recursos como redes o máquinas virtuales en esas suscripciones.</span><span class="sxs-lookup"><span data-stu-id="90bc6-115">Resources like virtual machines (VMs) or virtual networks exist in of those subscriptions.</span></span>
+## <a name="subscriptions-and-accounts"></a><span data-ttu-id="635e2-113">Suscripciones y cuentas </span><span class="sxs-lookup"><span data-stu-id="635e2-113">Subscriptions and accounts</span></span>
+<span data-ttu-id="635e2-114">toowork con Azure, necesita una o varias suscripciones de Azure.</span><span class="sxs-lookup"><span data-stu-id="635e2-114">toowork with Azure, you need one or more Azure subscriptions.</span></span> <span data-ttu-id="635e2-115">Existen recursos como redes o máquinas virtuales en esas suscripciones.</span><span class="sxs-lookup"><span data-stu-id="635e2-115">Resources like virtual machines (VMs) or virtual networks exist in of those subscriptions.</span></span>
 
-* <span data-ttu-id="90bc6-116">Los clientes empresariales suelen tener una inscripción Enterprise, que es el recurso de nivel superior en la jerarquía y está asociado a una o varias cuentas.</span><span class="sxs-lookup"><span data-stu-id="90bc6-116">Enterprise customers typically have an Enterprise Enrollment, which is the top-most resource in the hierarchy, and is associated to one or more accounts.</span></span>
-* <span data-ttu-id="90bc6-117">Para los consumidores y clientes que no tienen una inscripción Enterprise, el recurso de nivel superior es la cuenta.</span><span class="sxs-lookup"><span data-stu-id="90bc6-117">For consumers and customers without an Enterprise Enrollment, the top-most resource is the account.</span></span>
-* <span data-ttu-id="90bc6-118">Las suscripciones están asociadas a las cuentas y puede haber una o más suscripciones por cuenta.</span><span class="sxs-lookup"><span data-stu-id="90bc6-118">Subscriptions are associated to accounts, and there can be one or more subscriptions per account.</span></span> <span data-ttu-id="90bc6-119">Azure registra la información de facturación por suscripción.</span><span class="sxs-lookup"><span data-stu-id="90bc6-119">Azure records billing information at the subscription level.</span></span>
+* <span data-ttu-id="635e2-116">Los clientes empresariales suelen tengan una inscripción Enterprise, que es Hola recurso de más arriba en la jerarquía de Hola y está asociado tooone o más cuentas.</span><span class="sxs-lookup"><span data-stu-id="635e2-116">Enterprise customers typically have an Enterprise Enrollment, which is hello top-most resource in hello hierarchy, and is associated tooone or more accounts.</span></span>
+* <span data-ttu-id="635e2-117">Para los consumidores y los clientes sin una inscripción Enterprise, recursos de nivel superior de hello es la cuenta de hello.</span><span class="sxs-lookup"><span data-stu-id="635e2-117">For consumers and customers without an Enterprise Enrollment, hello top-most resource is hello account.</span></span>
+* <span data-ttu-id="635e2-118">Las suscripciones son tooaccounts asociado, y puede haber una o varias suscripciones por cuenta.</span><span class="sxs-lookup"><span data-stu-id="635e2-118">Subscriptions are associated tooaccounts, and there can be one or more subscriptions per account.</span></span> <span data-ttu-id="635e2-119">Registros de Azure información en el nivel de suscripción de Hola de facturación.</span><span class="sxs-lookup"><span data-stu-id="635e2-119">Azure records billing information at hello subscription level.</span></span>
 
-<span data-ttu-id="90bc6-120">Debido al límite de dos niveles de jerarquía en la relación de cuenta/suscripción, es importante adaptar la convención de nomenclatura de las cuentas y las suscripciones a las necesidades de facturación.</span><span class="sxs-lookup"><span data-stu-id="90bc6-120">Due to the limit of two hierarchy levels on the Account/Subscription relationship, it is important to align the naming convention of accounts and subscriptions to the billing needs.</span></span> <span data-ttu-id="90bc6-121">Por ejemplo, si una empresa internacional usa Azure, puede optar por tener una cuenta por región y administrar las suscripciones a nivel regional:</span><span class="sxs-lookup"><span data-stu-id="90bc6-121">For instance, if a global company uses Azure, they might choose to have one account per region, and have subscriptions managed at the region level:</span></span>
+<span data-ttu-id="635e2-120">Pagar toohello el límite de niveles de jerarquía de dos de la relación de suscripción o cuenta de hello, es importante tooalign Hola convención de nomenclatura toohello suscripciones y cuentas de facturación necesidades.</span><span class="sxs-lookup"><span data-stu-id="635e2-120">Due toohello limit of two hierarchy levels on hello Account/Subscription relationship, it is important tooalign hello naming convention of accounts and subscriptions toohello billing needs.</span></span> <span data-ttu-id="635e2-121">Por ejemplo, si una empresa global usa Azure, puede elegir cuenta toohave uno por cada región y se administran las suscripciones en Hola nivel región:</span><span class="sxs-lookup"><span data-stu-id="635e2-121">For instance, if a global company uses Azure, they might choose toohave one account per region, and have subscriptions managed at hello region level:</span></span>
 
 ![](media/virtual-machines-common-infrastructure-service-guidelines/sub01.png)
 
-<span data-ttu-id="90bc6-122">Por ejemplo, podría usar esta estructura:</span><span class="sxs-lookup"><span data-stu-id="90bc6-122">For instance, you might use the following structure:</span></span>
+<span data-ttu-id="635e2-122">Por ejemplo, puede usar Hola siguiente estructura:</span><span class="sxs-lookup"><span data-stu-id="635e2-122">For instance, you might use hello following structure:</span></span>
 
 ![](media/virtual-machines-common-infrastructure-service-guidelines/sub02.png)
 
-<span data-ttu-id="90bc6-123">Si una región decide tener más de una suscripción asociada a un grupo determinado, la convención de nomenclatura debe incorporar un método para codificar los datos adicionales del nombre de cuenta o de suscripción.</span><span class="sxs-lookup"><span data-stu-id="90bc6-123">If a region decides to have more than one subscription associated to a particular group, the naming convention should incorporate a way to encode the extra data on either the account or the subscription name.</span></span> <span data-ttu-id="90bc6-124">Esta organización permite manipular los datos de facturación para generar los nuevos niveles de jerarquía durante los informes de facturación:</span><span class="sxs-lookup"><span data-stu-id="90bc6-124">This organization allows massaging billing data to generate the new levels of hierarchy during billing reports:</span></span>
+<span data-ttu-id="635e2-123">Si una región decide toohave más de grupo determinado de una suscripción tooa asociado, convención de nomenclatura de hello debe incorporar una tooencode de manera Hola datos adicionales en la cuenta de Hola o nombre de la suscripción de Hola.</span><span class="sxs-lookup"><span data-stu-id="635e2-123">If a region decides toohave more than one subscription associated tooa particular group, hello naming convention should incorporate a way tooencode hello extra data on either hello account or hello subscription name.</span></span> <span data-ttu-id="635e2-124">Esta organización permite corporativos facturación datos toogenerate Hola nuevos niveles de jerarquía durante la facturación de informes:</span><span class="sxs-lookup"><span data-stu-id="635e2-124">This organization allows massaging billing data toogenerate hello new levels of hierarchy during billing reports:</span></span>
 
 ![](media/virtual-machines-common-infrastructure-service-guidelines/sub03.png)
 
-<span data-ttu-id="90bc6-125">La organización podría tener un aspecto similar al del siguiente ejemplo:</span><span class="sxs-lookup"><span data-stu-id="90bc6-125">The organization could look like the following example:</span></span>
+<span data-ttu-id="635e2-125">organización de Hello podría verse como el siguiente ejemplo de Hola:</span><span class="sxs-lookup"><span data-stu-id="635e2-125">hello organization could look like hello following example:</span></span>
 
 ![](media/virtual-machines-common-infrastructure-service-guidelines/sub04.png)
 
-<span data-ttu-id="90bc6-126">Microsoft proporciona una facturación detallada a través de un archivo descargable para una sola cuenta o para todas las cuentas de un contrato Enterprise.</span><span class="sxs-lookup"><span data-stu-id="90bc6-126">We provide detailed billing via a downloadable file for a single account, or for all accounts in an enterprise agreement.</span></span>
+<span data-ttu-id="635e2-126">Microsoft proporciona una facturación detallada a través de un archivo descargable para una sola cuenta o para todas las cuentas de un contrato Enterprise.</span><span class="sxs-lookup"><span data-stu-id="635e2-126">We provide detailed billing via a downloadable file for a single account, or for all accounts in an enterprise agreement.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="90bc6-127">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="90bc6-127">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="635e2-127">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="635e2-127">Next steps</span></span>
 [!INCLUDE [virtual-machines-linux-infrastructure-guidelines-next-steps](../../../includes/virtual-machines-linux-infrastructure-guidelines-next-steps.md)]
 

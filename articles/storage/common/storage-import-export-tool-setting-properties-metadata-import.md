@@ -1,6 +1,6 @@
 ---
-title: "Configuración de propiedades y metadatos mediante Azure Import/Export | Microsoft Docs"
-description: "Obtenga información sobre cómo especificar las propiedades y los metadatos que se van a establecer en los blobs de destino cuando se ejecuta la herramienta Azure Import/Export para preparar las unidades."
+title: "aaaSetting propiedades y metadatos mediante la importación y exportación de Azure | Documentos de Microsoft"
+description: "Ver cómo toospecify propiedades y metadatos toobe han establecido en blobs de destino de hello cuando se ejecuta tooprepare de la herramienta de importación y exportación de Azure de hello las unidades de disco."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 1ba6d157402fae0c7d7bf841d2b4e4f6b1ee1084
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: c763237160f0e4b72ce88fd31e2958994bfe8e50
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="setting-properties-and-metadata-during-the-import-process"></a><span data-ttu-id="4d507-103">Establecimiento de las propiedades y los metadatos durante el proceso de importación</span><span class="sxs-lookup"><span data-stu-id="4d507-103">Setting properties and metadata during the import process</span></span>
+# <a name="setting-properties-and-metadata-during-hello-import-process"></a><span data-ttu-id="05b0a-103">Proceso de importación de establecer las propiedades y metadatos durante Hola</span><span class="sxs-lookup"><span data-stu-id="05b0a-103">Setting properties and metadata during hello import process</span></span>
 
-<span data-ttu-id="4d507-104">Al ejecutar la herramienta Microsoft Azure Import/Export para preparar las unidades, puede especificar propiedades y metadatos que se establecerán en los blobs de destino.</span><span class="sxs-lookup"><span data-stu-id="4d507-104">When you run the Microsoft Azure Import/Export Tool to prepare your drives, you can specify properties and metadata to be set on the destination blobs.</span></span> <span data-ttu-id="4d507-105">Siga estos pasos:</span><span class="sxs-lookup"><span data-stu-id="4d507-105">Follow these steps:</span></span>
+<span data-ttu-id="05b0a-104">Al ejecutar tooprepare de herramienta de importación y exportación de Microsoft Azure hello las unidades de disco, puede especificar propiedades y toobe de metadatos que se establezca en blobs de destino de Hola.</span><span class="sxs-lookup"><span data-stu-id="05b0a-104">When you run hello Microsoft Azure Import/Export Tool tooprepare your drives, you can specify properties and metadata toobe set on hello destination blobs.</span></span> <span data-ttu-id="05b0a-105">Siga estos pasos:</span><span class="sxs-lookup"><span data-stu-id="05b0a-105">Follow these steps:</span></span>
 
-1.  <span data-ttu-id="4d507-106">Para establecer propiedades de blob, cree un archivo de texto en el equipo local que especifique los valores y nombres de propiedad.</span><span class="sxs-lookup"><span data-stu-id="4d507-106">To set blob properties, create a text file on your local computer that specifies property names and values.</span></span>
-2.  <span data-ttu-id="4d507-107">Para establecer metadatos de blob, cree un archivo de texto en el equipo local que especifique los valores y nombres de metadatos.</span><span class="sxs-lookup"><span data-stu-id="4d507-107">To set blob metadata, create a text file on your local computer that specifies metadata names and values.</span></span>
-3.  <span data-ttu-id="4d507-108">Pase la ruta de acceso completa a uno de estos archivos o a ambos a la herramienta Azure Import/Export como parte de la operación `PrepImport`.</span><span class="sxs-lookup"><span data-stu-id="4d507-108">Pass the full path to one or both of these files to the Azure Import/Export Tool as part of the `PrepImport` operation.</span></span>
+1.  <span data-ttu-id="05b0a-106">propiedades del blob tooset, cree un archivo de texto en el equipo local que especifica los valores y nombres de propiedad.</span><span class="sxs-lookup"><span data-stu-id="05b0a-106">tooset blob properties, create a text file on your local computer that specifies property names and values.</span></span>
+2.  <span data-ttu-id="05b0a-107">tooset metadatos del blob, crear un archivo de texto en el equipo local que especifica los valores y nombres de los metadatos.</span><span class="sxs-lookup"><span data-stu-id="05b0a-107">tooset blob metadata, create a text file on your local computer that specifies metadata names and values.</span></span>
+3.  <span data-ttu-id="05b0a-108">Pasar tooone de ruta de acceso completa de Hola o ambos de estos toohello archivos herramienta de importación y exportación de Azure como parte del programa Hola `PrepImport` operación.</span><span class="sxs-lookup"><span data-stu-id="05b0a-108">Pass hello full path tooone or both of these files toohello Azure Import/Export Tool as part of hello `PrepImport` operation.</span></span>
 
 > [!NOTE]
->  <span data-ttu-id="4d507-109">Cuando se especifica un archivo de propiedades o metadatos como parte de una sesión de copia, esas propiedades o metadatos se establecen para cada blob que se importa como parte de esa sesión de copia.</span><span class="sxs-lookup"><span data-stu-id="4d507-109">When you specify a properties or metadata file as part of a copy session, those properties or metadata are set for every blob that is imported as part of that copy session.</span></span> <span data-ttu-id="4d507-110">Si desea especificar otro conjunto de propiedades o metadatos para algunos de los blobs que se importan, tendrá que crear una sesión de copia independiente con archivos de propiedades o metadatos diferentes.</span><span class="sxs-lookup"><span data-stu-id="4d507-110">If you want to specify a different set of properties or metadata for some of the blobs being imported, you'll need to create a separate copy session with different properties or metadata files.</span></span>
+>  <span data-ttu-id="05b0a-109">Cuando se especifica un archivo de propiedades o metadatos como parte de una sesión de copia, esas propiedades o metadatos se establecen para cada blob que se importa como parte de esa sesión de copia.</span><span class="sxs-lookup"><span data-stu-id="05b0a-109">When you specify a properties or metadata file as part of a copy session, those properties or metadata are set for every blob that is imported as part of that copy session.</span></span> <span data-ttu-id="05b0a-110">Si desea toospecify un conjunto diferente de propiedades o metadatos para algunos de los blobs Hola va a importar, necesitará toocreate otro copiar sesión con diferentes propiedades o los archivos de metadatos.</span><span class="sxs-lookup"><span data-stu-id="05b0a-110">If you want toospecify a different set of properties or metadata for some of hello blobs being imported, you'll need toocreate a separate copy session with different properties or metadata files.</span></span>
 
-## <a name="specify-blob-properties-in-a-text-file"></a><span data-ttu-id="4d507-111">Especificación de propiedades de blob en un archivo de texto</span><span class="sxs-lookup"><span data-stu-id="4d507-111">Specify blob properties in a text file</span></span>
+## <a name="specify-blob-properties-in-a-text-file"></a><span data-ttu-id="05b0a-111">Especificación de propiedades de blob en un archivo de texto</span><span class="sxs-lookup"><span data-stu-id="05b0a-111">Specify blob properties in a text file</span></span>
 
-<span data-ttu-id="4d507-112">Para especificar propiedades de blob, cree un archivo de texto local e incluya código XML que especifique los nombres de propiedad como elementos y los valores de propiedad como valores.</span><span class="sxs-lookup"><span data-stu-id="4d507-112">To specify blob properties, create a local text file, and include XML that specifies property names as elements, and property values as values.</span></span> <span data-ttu-id="4d507-113">Este es un ejemplo que especifica algunos valores de propiedad:</span><span class="sxs-lookup"><span data-stu-id="4d507-113">Here's an example that specifies some property values:</span></span>
+<span data-ttu-id="05b0a-112">propiedades del blob toospecify, cree un archivo de texto local e incluya código XML que especifica los nombres de propiedad como elementos y valores de propiedad como valores.</span><span class="sxs-lookup"><span data-stu-id="05b0a-112">toospecify blob properties, create a local text file, and include XML that specifies property names as elements, and property values as values.</span></span> <span data-ttu-id="05b0a-113">Este es un ejemplo que especifica algunos valores de propiedad:</span><span class="sxs-lookup"><span data-stu-id="05b0a-113">Here's an example that specifies some property values:</span></span>
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -44,11 +44,11 @@ ms.lasthandoff: 08/29/2017
 </Properties>
 ```
 
-<span data-ttu-id="4d507-114">Guarde el archivo en una ubicación local como `C:\WAImportExport\ImportProperties.txt`.</span><span class="sxs-lookup"><span data-stu-id="4d507-114">Save the file to a local location like `C:\WAImportExport\ImportProperties.txt`.</span></span>
+<span data-ttu-id="05b0a-114">Guardar archivo de hello tooa ubicación local como `C:\WAImportExport\ImportProperties.txt`.</span><span class="sxs-lookup"><span data-stu-id="05b0a-114">Save hello file tooa local location like `C:\WAImportExport\ImportProperties.txt`.</span></span>
 
-## <a name="specify-blob-metadata-in-a-text-file"></a><span data-ttu-id="4d507-115">Especificación de metadatos de blob en un archivo de texto</span><span class="sxs-lookup"><span data-stu-id="4d507-115">Specify blob metadata in a text file</span></span>
+## <a name="specify-blob-metadata-in-a-text-file"></a><span data-ttu-id="05b0a-115">Especificación de metadatos de blob en un archivo de texto</span><span class="sxs-lookup"><span data-stu-id="05b0a-115">Specify blob metadata in a text file</span></span>
 
-<span data-ttu-id="4d507-116">De forma similar, para especificar los metadatos de blob, cree un archivo de texto local que especifique los nombres de metadatos como elementos y los valores de metadatos como valores.</span><span class="sxs-lookup"><span data-stu-id="4d507-116">Similarly, to specify blob metadata, create a local text file that specifies metadata names as elements, and metadata values as values.</span></span> <span data-ttu-id="4d507-117">Este es un ejemplo que especifica algunos valores de metadatos:</span><span class="sxs-lookup"><span data-stu-id="4d507-117">Here's an example that specifies some metadata values:</span></span>
+<span data-ttu-id="05b0a-116">De forma similar, toospecify metadatos del blob, cree un archivo de texto local que especifica los nombres de metadatos como elementos y los valores de metadatos como valores.</span><span class="sxs-lookup"><span data-stu-id="05b0a-116">Similarly, toospecify blob metadata, create a local text file that specifies metadata names as elements, and metadata values as values.</span></span> <span data-ttu-id="05b0a-117">Este es un ejemplo que especifica algunos valores de metadatos:</span><span class="sxs-lookup"><span data-stu-id="05b0a-117">Here's an example that specifies some metadata values:</span></span>
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -59,9 +59,9 @@ ms.lasthandoff: 08/29/2017
 </Metadata>
 ```
 
-<span data-ttu-id="4d507-118">Guarde el archivo en una ubicación local como `C:\WAImportExport\ImportMetadata.txt`.</span><span class="sxs-lookup"><span data-stu-id="4d507-118">Save the file to a local location like `C:\WAImportExport\ImportMetadata.txt`.</span></span>
+<span data-ttu-id="05b0a-118">Guardar archivo de hello tooa ubicación local como `C:\WAImportExport\ImportMetadata.txt`.</span><span class="sxs-lookup"><span data-stu-id="05b0a-118">Save hello file tooa local location like `C:\WAImportExport\ImportMetadata.txt`.</span></span>
 
-## <a name="add-the-path-to-properties-and-metadata-files-in-datasetcsv"></a><span data-ttu-id="4d507-119">Agregar la ruta de acceso a archivos de metadatos y propiedades en dataset.csv</span><span class="sxs-lookup"><span data-stu-id="4d507-119">Add the path to properties and metadata files in dataset.csv</span></span>
+## <a name="add-hello-path-tooproperties-and-metadata-files-in-datasetcsv"></a><span data-ttu-id="05b0a-119">Agregar archivos de metadatos y tooproperties de la ruta de acceso de hello en dataset.csv</span><span class="sxs-lookup"><span data-stu-id="05b0a-119">Add hello path tooproperties and metadata files in dataset.csv</span></span>
 
 ```
 BasePath,DstBlobPathOrPrefix,BlobType,Disposition,MetadataFile,PropertiesFile
@@ -71,6 +71,6 @@ K:\Temp\FavoriteVideo.ISO,https://mystorageaccount.blob.core.windows.net/favorit
 \\myshare\john\music\,https://mystorageaccount.blob.core.windows.net/music/,BlockBlob,rename,None,H:\mydirectory\properties.xml
 ```
 
-## <a name="next-steps"></a><span data-ttu-id="4d507-120">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="4d507-120">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="05b0a-120">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="05b0a-120">Next steps</span></span>
 
-* [<span data-ttu-id="4d507-121">Formato de archivo de propiedades y metadatos del servicio Import-Export</span><span class="sxs-lookup"><span data-stu-id="4d507-121">Import/Export service metadata and properties file format</span></span>](../storage-import-export-file-format-metadata-and-properties.md)
+* [<span data-ttu-id="05b0a-121">Formato de archivo de propiedades y metadatos del servicio Import-Export</span><span class="sxs-lookup"><span data-stu-id="05b0a-121">Import/Export service metadata and properties file format</span></span>](../storage-import-export-file-format-metadata-and-properties.md)

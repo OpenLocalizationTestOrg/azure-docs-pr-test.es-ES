@@ -1,0 +1,3 @@
+## <a name="whats-changed"></a><span data-ttu-id="5a833-101">Lo que ha cambiado</span><span class="sxs-lookup"><span data-stu-id="5a833-101">What's changed</span></span>
+* <span data-ttu-id="5a833-102">Para una toohello guía consulte cambio con respecto a sitios Web tooApp servicio: [servicio de aplicaciones de Azure y su impacto en los servicios de Azure existente](http://go.microsoft.com/fwlink/?LinkId=529714)</span><span class="sxs-lookup"><span data-stu-id="5a833-102">For a guide toohello change from Websites tooApp Service see: [Azure App Service and Its Impact on Existing Azure Services](http://go.microsoft.com/fwlink/?LinkId=529714)</span></span>
+

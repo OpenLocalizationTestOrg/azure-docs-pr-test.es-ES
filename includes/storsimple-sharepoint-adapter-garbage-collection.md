@@ -1,0 +1,54 @@
+<!--author=SharS last changed: 9/17/15-->
+
+<span data-ttu-id="89416-101">En este procedimiento, hará lo siguiente:</span><span class="sxs-lookup"><span data-stu-id="89416-101">In this procedure, you will:</span></span>
+
+1. <span data-ttu-id="89416-102">[Preparar el archivo ejecutable de toorun Hola mantenedor](#to-prepare-to-run-the-maintainer) .</span><span class="sxs-lookup"><span data-stu-id="89416-102">[Prepare toorun hello Maintainer executable](#to-prepare-to-run-the-maintainer) .</span></span>
+2. <span data-ttu-id="89416-103">[Preparar la base de datos de contenido de Hola y Papelera de reciclaje para su eliminación inmediata de BLOBs huérfanos](#to-prepare-the-content-database-and-recycle-bin-to-immediately-delete-orphaned-blobs).</span><span class="sxs-lookup"><span data-stu-id="89416-103">[Prepare hello content database and Recycle Bin for immediate deletion of orphaned BLOBs](#to-prepare-the-content-database-and-recycle-bin-to-immediately-delete-orphaned-blobs).</span></span>
+3. <span data-ttu-id="89416-104">[Ejecutar Maintainer.exe](#to-run-the-maintainer).</span><span class="sxs-lookup"><span data-stu-id="89416-104">[Run Maintainer.exe](#to-run-the-maintainer).</span></span>
+4. <span data-ttu-id="89416-105">[Revertir la base de datos de contenido de Hola y configuración de la Papelera de reciclaje](#to-revert-the-content-database-and-recycle-bin-settings).</span><span class="sxs-lookup"><span data-stu-id="89416-105">[Revert hello content database and Recycle Bin settings](#to-revert-the-content-database-and-recycle-bin-settings).</span></span>
+
+#### <a name="tooprepare-toorun-hello-maintainer"></a><span data-ttu-id="89416-106">tooprepare toorun Hola mantenedor</span><span class="sxs-lookup"><span data-stu-id="89416-106">tooprepare toorun hello Maintainer</span></span>
+1. <span data-ttu-id="89416-107">En el servidor front-end Web de hello, abra Hola Shell de administración de SharePoint 2013 como administrador.</span><span class="sxs-lookup"><span data-stu-id="89416-107">On hello Web front-end server, open hello SharePoint 2013 Management Shell as an administrator.</span></span>
+2. <span data-ttu-id="89416-108">Desplazarse por las carpetas de toohello *unidad de arranque*: \Program 10.50\Maintainer de almacenamiento remoto de blobs de SQL\.</span><span class="sxs-lookup"><span data-stu-id="89416-108">Navigate toohello folder *boot drive*:\Program Files\Microsoft SQL Remote Blob Storage 10.50\Maintainer\.</span></span>
+3. <span data-ttu-id="89416-109">Cambiar el nombre de **Microsoft.Data.SqlRemoteBlobs.Maintainer.exe.config** demasiado**web.config**.</span><span class="sxs-lookup"><span data-stu-id="89416-109">Rename **Microsoft.Data.SqlRemoteBlobs.Maintainer.exe.config** too**web.config**.</span></span>
+4. <span data-ttu-id="89416-110">Use `aspnet_regiis -pdf connectionStrings` archivo web.config de toodecrypt Hola.</span><span class="sxs-lookup"><span data-stu-id="89416-110">Use `aspnet_regiis -pdf connectionStrings` toodecrypt hello web.config file.</span></span>
+5. <span data-ttu-id="89416-111">En archivo de web.config descifrada de hello, bajo hello `connectionStrings` nodo, agregar la cadena de conexión de hello para la instancia de SQL server y Hola nombre de base de datos de contenido.</span><span class="sxs-lookup"><span data-stu-id="89416-111">In hello decrypted web.config file, under hello `connectionStrings` node, add hello connection string for your SQL server instance and hello content database name.</span></span> <span data-ttu-id="89416-112">Vea el siguiente ejemplo de Hola.</span><span class="sxs-lookup"><span data-stu-id="89416-112">See hello following example.</span></span>
+   
+    `<add name=”RBSMaintainerConnectionWSSContent” connectionString="Data Source=SHRPT13-SQL12\SHRPT13;Initial Catalog=WSS_Content;Integrated Security=True;Application Name=&quot;Remote Blob Storage Maintainer for WSS_Content&quot;" providerName="System.Data.SqlClient" />`
+6. <span data-ttu-id="89416-113">Use `aspnet_regiis –pef connectionStrings` toore-cifrar el archivo web.config de Hola.</span><span class="sxs-lookup"><span data-stu-id="89416-113">Use `aspnet_regiis –pef connectionStrings` toore-encrypt hello web.config file.</span></span> 
+7. <span data-ttu-id="89416-114">Cambie el nombre tooMicrosoft.Data.SqlRemoteBlobs.Maintainer.exe.config de web.config.</span><span class="sxs-lookup"><span data-stu-id="89416-114">Rename web.config tooMicrosoft.Data.SqlRemoteBlobs.Maintainer.exe.config.</span></span> 
+
+#### <a name="tooprepare-hello-content-database-and-recycle-bin-tooimmediately-delete-orphaned-blobs"></a><span data-ttu-id="89416-115">base de datos de contenido de hello tooprepare y tooimmediately de Papelera de reciclaje eliminarán BLOBs huérfanos</span><span class="sxs-lookup"><span data-stu-id="89416-115">tooprepare hello content database and Recycle Bin tooimmediately delete orphaned BLOBs</span></span>
+1. <span data-ttu-id="89416-116">En SQL Server, en SQL Management Studio, Hola ejecute hello las siguientes consultas de actualización de base de datos de contenido de destino hello:</span><span class="sxs-lookup"><span data-stu-id="89416-116">On hello SQL Server, in SQL Management Studio, run hello following update queries for hello target content database:</span></span> 
+   
+       `use WSS_Content`
+   
+       `exec mssqlrbs.rbs_sp_set_config_value ‘garbage_collection_time_window’ , ’time 00:00:00’`
+   
+       `exec mssqlrbs.rbs_sp_set_config_value ‘delete_scan_period’ , ’time 00:00:00’`
+2. <span data-ttu-id="89416-117">En hello web en el servidor front-end, **Administración Central**, editar hello **configuración General de la aplicación Web** para hello deseado Hola de contenido de la base de datos tootemporarily deshabilitar la Papelera de reciclaje.</span><span class="sxs-lookup"><span data-stu-id="89416-117">On hello web front-end server, under **Central Administration**, edit hello **Web Application General Settings** for hello desired content database tootemporarily disable hello Recycle Bin.</span></span> <span data-ttu-id="89416-118">Esta acción también le hello vacía la Papelera de reciclaje para las colecciones de sitios relacionados.</span><span class="sxs-lookup"><span data-stu-id="89416-118">This action will also empty hello Recycle Bin for any related site collections.</span></span> <span data-ttu-id="89416-119">toodo, haga clic en **Administración Central** -> **administración de aplicaciones** -> **aplicaciones Web (administrar aplicaciones de web)**  ->  **SharePoint - 80** -> **configuración de aplicación General**.</span><span class="sxs-lookup"><span data-stu-id="89416-119">toodo this, click **Central Administration** -> **Application Management** -> **Web Applications (Manage web applications)** -> **SharePoint - 80** -> **General Application Settings**.</span></span> <span data-ttu-id="89416-120">Conjunto hello **estado de la Papelera de reciclaje** demasiado**OFF**.</span><span class="sxs-lookup"><span data-stu-id="89416-120">Set hello **Recycle Bin Status** too**OFF**.</span></span>
+   
+    ![Configuración general de la aplicación web](./media/storsimple-sharepoint-adapter-garbage-collection/HCS_WebApplicationGeneralSettings-include.png)
+
+#### <a name="toorun-hello-maintainer"></a><span data-ttu-id="89416-122">Hola toorun mantenedor</span><span class="sxs-lookup"><span data-stu-id="89416-122">toorun hello Maintainer</span></span>
+* <span data-ttu-id="89416-123">En el servidor front-end web de hello, Hola Shell de administración de SharePoint 2013, ejecute hello mantenedor como sigue:</span><span class="sxs-lookup"><span data-stu-id="89416-123">On hello web front-end server, in hello SharePoint 2013 Management Shell, run hello Maintainer as follows:</span></span>
+  
+      `Microsoft.Data.SqlRemoteBlobs.Maintainer.exe -ConnectionStringName RBSMaintainerConnectionWSSContent -Operation GarbageCollection -GarbageCollectionPhases rdo`
+  
+  > [!NOTE]
+  > <span data-ttu-id="89416-124">Hola solo `GarbageCollection` operación es compatible con StorSimple en este momento.</span><span class="sxs-lookup"><span data-stu-id="89416-124">Only hello `GarbageCollection` operation is supported for StorSimple at this time.</span></span> <span data-ttu-id="89416-125">Tenga en cuenta también que los parámetros de hello emitidos para Microsoft.Data.SqlRemoteBlobs.Maintainer.exe distinguen mayúsculas de minúsculas.</span><span class="sxs-lookup"><span data-stu-id="89416-125">Also note that hello parameters issued for Microsoft.Data.SqlRemoteBlobs.Maintainer.exe are case sensitive.</span></span> 
+  > 
+  > 
+
+#### <a name="toorevert-hello-content-database-and-recycle-bin-settings"></a><span data-ttu-id="89416-126">base de datos de contenido de hello toorevert y configuración de la Papelera de reciclaje</span><span class="sxs-lookup"><span data-stu-id="89416-126">toorevert hello content database and Recycle Bin settings</span></span>
+1. <span data-ttu-id="89416-127">En SQL Server, en SQL Management Studio, Hola ejecute hello las siguientes consultas de actualización de base de datos de contenido de destino hello:</span><span class="sxs-lookup"><span data-stu-id="89416-127">On hello SQL Server, in SQL Management Studio, run hello following update queries for hello target content database:</span></span>
+   
+      `use WSS_Content`
+   
+      `exec mssqlrbs.rbs_sp_set_config_value ‘garbage_collection_time_window’ , ‘days 30’`
+   
+      `exec mssqlrbs.rbs_sp_set_config_value ‘delete_scan_period’ , ’days 30’`
+   
+      `exec mssqlrbs.rbs_sp_set_config_value ‘orphan_scan_period’ , ’days 30’`
+2. <span data-ttu-id="89416-128">En el servidor front-end web de hello, en **Administración Central**, editar hello **configuración General de la aplicación Web** para hello deseado Hola de contenido de la base de datos toore habilitar Papelera de reciclaje.</span><span class="sxs-lookup"><span data-stu-id="89416-128">On hello web front-end server, in **Central Administration**, edit hello **Web Application General Settings** for hello desired content database toore-enable hello Recycle Bin.</span></span> <span data-ttu-id="89416-129">toodo, haga clic en **Administración Central** -> **administración de aplicaciones** -> **aplicaciones Web (administrar aplicaciones de web)**  ->  **SharePoint - 80** -> **configuración de aplicación General**.</span><span class="sxs-lookup"><span data-stu-id="89416-129">toodo this, click **Central Administration** -> **Application Management** -> **Web Applications (Manage web applications)** -> **SharePoint - 80** -> **General Application Settings**.</span></span> <span data-ttu-id="89416-130">Establecer estado de la Papelera de reciclaje de hello demasiado**ON**.</span><span class="sxs-lookup"><span data-stu-id="89416-130">Set hello Recycle Bin Status too**ON**.</span></span>
+

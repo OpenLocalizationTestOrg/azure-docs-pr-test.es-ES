@@ -1,6 +1,6 @@
 ---
-title: "Creación y carga de un VHD de Red Hat Enterprise Linux para su uso en Azure | Microsoft Docs"
-description: Aprenda a crear y cargar un disco duro virtual (VHD) de Azure que contiene un sistema operativo Red Hat Linux.
+title: aaaCreate y cargar un VHD de Red Hat Enterprise Linux para su uso en Azure | Documentos de Microsoft
+description: "Obtenga información acerca de toocreate y cargar un Azure disco duro virtual (VHD) que contiene un sistema operativo de Red Hat Linux."
 services: virtual-machines-linux
 documentationcenter: 
 author: szarkos
@@ -15,47 +15,47 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/28/2017
 ms.author: szark
-ms.openlocfilehash: b753c76b8c3d789c681d7fbff6aa07590b860be5
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: bdd1bbfbee55b5cc61d69a09b06b6bd2c3de362b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a><span data-ttu-id="0e7fc-103">Preparación de una máquina virtual basada en Red Hat para Azure</span><span class="sxs-lookup"><span data-stu-id="0e7fc-103">Prepare a Red Hat-based virtual machine for Azure</span></span>
-<span data-ttu-id="0e7fc-104">En este artículo, aprenderá a preparar una máquina virtual de Red Hat Enterprise Linux (RHEL) para usarla en Azure.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-104">In this article, you will learn how to prepare a Red Hat Enterprise Linux (RHEL) virtual machine for use in Azure.</span></span> <span data-ttu-id="0e7fc-105">Las versiones de RHEL que se tratan en este artículo son 6.7 y 7.1.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-105">The versions of RHEL that are covered in this article are 6.7+ and 7.1+.</span></span> <span data-ttu-id="0e7fc-106">Los hipervisores de preparación que se tratan en este artículo son Hyper-V, máquina virtual basada en kernel (KVM) y VMware.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-106">The hypervisors for preparation that are covered in this article are Hyper-V, kernel-based virtual machine (KVM), and VMware.</span></span> <span data-ttu-id="0e7fc-107">Para más información sobre los requisitos para poder participar en el programa de acceso a la nube de Red Hat, visite el sitio [web de acceso a la nube de Red Hat](http://www.redhat.com/en/technologies/cloud-computing/cloud-access) y [Ejecución de RHEL en Azure](https://access.redhat.com/ecosystem/ccsp/microsoft-azure).</span><span class="sxs-lookup"><span data-stu-id="0e7fc-107">For more information about eligibility requirements for participating in Red Hat's Cloud Access program, see [Red Hat's Cloud Access website](http://www.redhat.com/en/technologies/cloud-computing/cloud-access) and [Running RHEL on Azure](https://access.redhat.com/ecosystem/ccsp/microsoft-azure).</span></span>
+# <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a><span data-ttu-id="345a6-103">Preparación de una máquina virtual basada en Red Hat para Azure</span><span class="sxs-lookup"><span data-stu-id="345a6-103">Prepare a Red Hat-based virtual machine for Azure</span></span>
+<span data-ttu-id="345a6-104">En este artículo, aprenderá cómo tooprepare una máquina virtual de Red Hat Enterprise Linux (RHEL) para su uso en Azure.</span><span class="sxs-lookup"><span data-stu-id="345a6-104">In this article, you will learn how tooprepare a Red Hat Enterprise Linux (RHEL) virtual machine for use in Azure.</span></span> <span data-ttu-id="345a6-105">versiones de Hola de RHEL que se tratan en este artículo son 6.7 + y 7.1 +.</span><span class="sxs-lookup"><span data-stu-id="345a6-105">hello versions of RHEL that are covered in this article are 6.7+ and 7.1+.</span></span> <span data-ttu-id="345a6-106">hipervisores Hola de preparación que se tratan en este artículo son la máquina virtual de Hyper-V, en función de kernel (KVM) y VMware.</span><span class="sxs-lookup"><span data-stu-id="345a6-106">hello hypervisors for preparation that are covered in this article are Hyper-V, kernel-based virtual machine (KVM), and VMware.</span></span> <span data-ttu-id="345a6-107">Para más información sobre los requisitos para poder participar en el programa de acceso a la nube de Red Hat, visite el sitio [web de acceso a la nube de Red Hat](http://www.redhat.com/en/technologies/cloud-computing/cloud-access) y [Ejecución de RHEL en Azure](https://access.redhat.com/ecosystem/ccsp/microsoft-azure).</span><span class="sxs-lookup"><span data-stu-id="345a6-107">For more information about eligibility requirements for participating in Red Hat's Cloud Access program, see [Red Hat's Cloud Access website](http://www.redhat.com/en/technologies/cloud-computing/cloud-access) and [Running RHEL on Azure](https://access.redhat.com/ecosystem/ccsp/microsoft-azure).</span></span>
 
-## <a name="prepare-a-red-hat-based-virtual-machine-from-hyper-v-manager"></a><span data-ttu-id="0e7fc-108">Preparación de una máquina virtual basada en Red Hat desde el Administrador de Hyper-V</span><span class="sxs-lookup"><span data-stu-id="0e7fc-108">Prepare a Red Hat-based virtual machine from Hyper-V Manager</span></span>
+## <a name="prepare-a-red-hat-based-virtual-machine-from-hyper-v-manager"></a><span data-ttu-id="345a6-108">Preparación de una máquina virtual basada en Red Hat desde el Administrador de Hyper-V</span><span class="sxs-lookup"><span data-stu-id="345a6-108">Prepare a Red Hat-based virtual machine from Hyper-V Manager</span></span>
 
-### <a name="prerequisites"></a><span data-ttu-id="0e7fc-109">Requisitos previos</span><span class="sxs-lookup"><span data-stu-id="0e7fc-109">Prerequisites</span></span>
-<span data-ttu-id="0e7fc-110">En esta sección, se supone que ya obtuvo un archivo ISO en el sitio web de Red Hat y que ha instalado la imagen RHEL en un disco duro virtual (VHD).</span><span class="sxs-lookup"><span data-stu-id="0e7fc-110">This section assumes that you have already obtained an ISO file from the Red Hat website and installed the RHEL image to a virtual hard disk (VHD).</span></span> <span data-ttu-id="0e7fc-111">Para más información acerca de cómo usar el Administrador de Hyper-V para instalar una imagen de sistema operativo, vea [Instalar Hyper-V y crear una máquina virtual](http://technet.microsoft.com/library/hh846766.aspx).</span><span class="sxs-lookup"><span data-stu-id="0e7fc-111">For more details about how to use Hyper-V Manager to install an operating system image, see [Install the Hyper-V Role and Configure a Virtual Machine](http://technet.microsoft.com/library/hh846766.aspx).</span></span>
+### <a name="prerequisites"></a><span data-ttu-id="345a6-109">Requisitos previos</span><span class="sxs-lookup"><span data-stu-id="345a6-109">Prerequisites</span></span>
+<span data-ttu-id="345a6-110">En esta sección se da por supuesto que ya ha obtenido un archivo ISO de sitio Web de Red Hat de Hola y Hola instalado RHEL imagen tooa disco duro virtual (VHD).</span><span class="sxs-lookup"><span data-stu-id="345a6-110">This section assumes that you have already obtained an ISO file from hello Red Hat website and installed hello RHEL image tooa virtual hard disk (VHD).</span></span> <span data-ttu-id="345a6-111">Para obtener más información acerca de cómo toouse Administrador de Hyper-V tooinstall una imagen de sistema operativo, consulte [instalar Hola rol Hyper-V y configurar una máquina Virtual](http://technet.microsoft.com/library/hh846766.aspx).</span><span class="sxs-lookup"><span data-stu-id="345a6-111">For more details about how toouse Hyper-V Manager tooinstall an operating system image, see [Install hello Hyper-V Role and Configure a Virtual Machine](http://technet.microsoft.com/library/hh846766.aspx).</span></span>
 
-<span data-ttu-id="0e7fc-112">**Notas de instalación de RHEL**</span><span class="sxs-lookup"><span data-stu-id="0e7fc-112">**RHEL installation notes**</span></span>
+<span data-ttu-id="345a6-112">**Notas de instalación de RHEL**</span><span class="sxs-lookup"><span data-stu-id="345a6-112">**RHEL installation notes**</span></span>
 
-* <span data-ttu-id="0e7fc-113">Azure no admite el formato VHDX.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-113">Azure does not support the VHDX format.</span></span> <span data-ttu-id="0e7fc-114">Azure solo admite VHD fijo.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-114">Azure supports only fixed VHD.</span></span> <span data-ttu-id="0e7fc-115">Puede usar el Administrador de Hyper-V para convertir el disco al formato VHD, o puede usar el cmdlet convert-vhd.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-115">You can use Hyper-V Manager to convert the disk to VHD format, or you can use the convert-vhd cmdlet.</span></span> <span data-ttu-id="0e7fc-116">Si usa VirtualBox, seleccione **Tamaño fijo** a diferencia de la opción predeterminada asignada dinámicamente al crear el disco.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-116">If you use VirtualBox, select **Fixed size** as opposed to the default dynamically allocated option when you create the disk.</span></span>
-* <span data-ttu-id="0e7fc-117">Azure solo admite máquinas virtuales de la generación 1.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-117">Azure supports only generation 1 virtual machines.</span></span> <span data-ttu-id="0e7fc-118">Puede convertir una máquina virtual de generación 1 de VHDX para el formato de archivo VHD desde un disco de expansión dinámica a otro de tamaño fijo.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-118">You can convert a generation 1 virtual machine from VHDX to the VHD file format and from dynamically expanding to a fixed-size disk.</span></span> <span data-ttu-id="0e7fc-119">No puede cambiar la generación de una máquina virtual.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-119">You can't change a virtual machine's generation.</span></span> <span data-ttu-id="0e7fc-120">Para más información, consulte [¿Debería crear una máquina virtual de generación 1 o 2 en Hyper-V?](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).</span><span class="sxs-lookup"><span data-stu-id="0e7fc-120">For more information, see [Should I create a generation 1 or 2 virtual machine in Hyper-V?](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).</span></span>
-* <span data-ttu-id="0e7fc-121">El tamaño máximo permitido para los discos duros virtuales es de 1023 GB.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-121">The maximum size that's allowed for the VHD is 1,023 GB.</span></span>
-* <span data-ttu-id="0e7fc-122">Al instalar el sistema operativo Linux se recomienda usar las particiones estándar en lugar de Logical Volume Manager (LVM) que a menudo viene de forma predeterminada en muchas instalaciones.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-122">When you install the Linux operating system, we recommend that you use standard partitions rather than Logical Volume Manager (LVM), which is often the default for many installations.</span></span> <span data-ttu-id="0e7fc-123">Esta práctica evitará los conflictos de nombres LVM con máquinas virtuales clonadas, especialmente si alguna vez necesita conectar un disco de sistema operativo a otra máquina virtual idéntica para solucionar el problema.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-123">This practice will avoid LVM name conflicts with cloned virtual machines, particularly if you ever need to attach an operating system disk to another identical virtual machine for troubleshooting.</span></span> <span data-ttu-id="0e7fc-124">[LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) o [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) se pueden utilizar en discos de datos.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-124">[LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) or [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) may be used on data disks.</span></span>
-* <span data-ttu-id="0e7fc-125">Se requiere la compatibilidad de kernel para el montaje de sistemas de archivos de formato de disco universal (UDF).</span><span class="sxs-lookup"><span data-stu-id="0e7fc-125">Kernel support for mounting Universal Disk Format (UDF) file systems is required.</span></span> <span data-ttu-id="0e7fc-126">Al arrancar Azure la primera vez, los medios con formato UDF conectados al invitado pasan la configuración de aprovisionamiento a la máquina virtual Linux.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-126">At first boot on Azure, the UDF-formatted media that is attached to the guest passes the provisioning configuration to the Linux virtual machine.</span></span> <span data-ttu-id="0e7fc-127">El agente Linux de Azure debe poder montar el sistema de archivos UDF para leer su configuración y aprovisionar la máquina virtual.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-127">The Azure Linux Agent must be able to mount the UDF file system to read its configuration and provision the virtual machine.</span></span>
-* <span data-ttu-id="0e7fc-128">Las versiones del kernel de Linux anteriores a 2.6.37 no admiten el acceso a memoria no uniforme (NUMA) en Hyper-V con tamaños de máquina virtual mayores.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-128">Versions of the Linux kernel that are earlier than 2.6.37 do not support non-uniform memory access (NUMA) on Hyper-V with larger virtual machine sizes.</span></span> <span data-ttu-id="0e7fc-129">Este problema afecta principalmente a las distribuciones anteriores que usan el kernel Red Hat 2.6.32 de canal de subida y se ha corregido en RHEL 6.6 (kernel-2.6.32-504).</span><span class="sxs-lookup"><span data-stu-id="0e7fc-129">This issue primarily impacts older distributions that use the upstream Red Hat 2.6.32 kernel and was fixed in RHEL 6.6 (kernel-2.6.32-504).</span></span> <span data-ttu-id="0e7fc-130">Los sistemas que ejecutan kernels personalizados cuyas versiones son anteriores a la versión 2.6.37, o bien kernels basados en RHEL cuyas versiones son anteriores a la versión 2.6.32-504, deben establecer el parámetro de inicio `numa=off` en la línea de comandos de kernel en grub.conf.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-130">Systems that run custom kernels that are older than 2.6.37 or RHEL-based kernels that are older than 2.6.32-504 must set the `numa=off` boot parameter on the kernel command line in grub.conf.</span></span> <span data-ttu-id="0e7fc-131">Para más información, consulte Red Hat [KB 436883](https://access.redhat.com/solutions/436883).</span><span class="sxs-lookup"><span data-stu-id="0e7fc-131">For more information, see Red Hat [KB 436883](https://access.redhat.com/solutions/436883).</span></span>
-* <span data-ttu-id="0e7fc-132">No configure una partición de intercambio en el disco del sistema operativo.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-132">Do not configure a swap partition on the operating system disk.</span></span> <span data-ttu-id="0e7fc-133">El agente de Linux se puede configurar para crear un archivo de intercambio en el disco de recursos temporal.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-133">The Linux Agent can be configured to create a swap file on the temporary resource disk.</span></span>  <span data-ttu-id="0e7fc-134">Puede encontrar más información al respecto en los pasos siguientes.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-134">More information about this can be found in the following steps.</span></span>
-* <span data-ttu-id="0e7fc-135">El tamaño de todos los VHD debe ser múltiplo de 1 MB.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-135">All VHDs must have sizes that are multiples of 1 MB.</span></span>
+* <span data-ttu-id="345a6-113">Azure no admite el formato VHDX Hola.</span><span class="sxs-lookup"><span data-stu-id="345a6-113">Azure does not support hello VHDX format.</span></span> <span data-ttu-id="345a6-114">Azure solo admite VHD fijo.</span><span class="sxs-lookup"><span data-stu-id="345a6-114">Azure supports only fixed VHD.</span></span> <span data-ttu-id="345a6-115">Puede usar el Administrador de Hyper-V tooconvert Hola disco tooVHD formato o puede usar el cmdlet convert-vhd de Hola.</span><span class="sxs-lookup"><span data-stu-id="345a6-115">You can use Hyper-V Manager tooconvert hello disk tooVHD format, or you can use hello convert-vhd cmdlet.</span></span> <span data-ttu-id="345a6-116">Si usa VirtualBox, seleccione **tamaño fijo** diferencia predeterminado toohello asignadas dinámicamente opción al crear el disco de Hola.</span><span class="sxs-lookup"><span data-stu-id="345a6-116">If you use VirtualBox, select **Fixed size** as opposed toohello default dynamically allocated option when you create hello disk.</span></span>
+* <span data-ttu-id="345a6-117">Azure solo admite máquinas virtuales de la generación 1.</span><span class="sxs-lookup"><span data-stu-id="345a6-117">Azure supports only generation 1 virtual machines.</span></span> <span data-ttu-id="345a6-118">Puede convertir una máquina virtual de generación 1 desde el formato de archivo de disco duro virtual de VHDX toohello y de disco de tamaño fijo de tooa de expansión dinámica.</span><span class="sxs-lookup"><span data-stu-id="345a6-118">You can convert a generation 1 virtual machine from VHDX toohello VHD file format and from dynamically expanding tooa fixed-size disk.</span></span> <span data-ttu-id="345a6-119">No puede cambiar la generación de una máquina virtual.</span><span class="sxs-lookup"><span data-stu-id="345a6-119">You can't change a virtual machine's generation.</span></span> <span data-ttu-id="345a6-120">Para más información, consulte [¿Debería crear una máquina virtual de generación 1 o 2 en Hyper-V?](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).</span><span class="sxs-lookup"><span data-stu-id="345a6-120">For more information, see [Should I create a generation 1 or 2 virtual machine in Hyper-V?](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).</span></span>
+* <span data-ttu-id="345a6-121">tamaño máximo de Hola que se permite para hello VHD es 1.023 GB.</span><span class="sxs-lookup"><span data-stu-id="345a6-121">hello maximum size that's allowed for hello VHD is 1,023 GB.</span></span>
+* <span data-ttu-id="345a6-122">Cuando se instala el sistema operativo de Linux de hello, se recomienda que utilice particiones estándar en lugar de administrador de volúmenes lógicos (LVM), que a menudo es valor predeterminado de Hola para muchas instalaciones.</span><span class="sxs-lookup"><span data-stu-id="345a6-122">When you install hello Linux operating system, we recommend that you use standard partitions rather than Logical Volume Manager (LVM), which is often hello default for many installations.</span></span> <span data-ttu-id="345a6-123">Este procedimiento evitará conflictos de nombres LVM con máquinas virtuales clonadas, especialmente si alguna vez necesita una máquina de virtual idéntica de sistema operativo disco tooanother tooattach para solucionar el problema.</span><span class="sxs-lookup"><span data-stu-id="345a6-123">This practice will avoid LVM name conflicts with cloned virtual machines, particularly if you ever need tooattach an operating system disk tooanother identical virtual machine for troubleshooting.</span></span> <span data-ttu-id="345a6-124">[LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) o [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) se pueden utilizar en discos de datos.</span><span class="sxs-lookup"><span data-stu-id="345a6-124">[LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) or [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) may be used on data disks.</span></span>
+* <span data-ttu-id="345a6-125">Se requiere la compatibilidad de kernel para el montaje de sistemas de archivos de formato de disco universal (UDF).</span><span class="sxs-lookup"><span data-stu-id="345a6-125">Kernel support for mounting Universal Disk Format (UDF) file systems is required.</span></span> <span data-ttu-id="345a6-126">En el primer arranque en Azure, Hola soportes en formato UDF que está adjunto toohello invitado pasa Hola aprovisionamiento configuración toohello máquina virtual de Linux.</span><span class="sxs-lookup"><span data-stu-id="345a6-126">At first boot on Azure, hello UDF-formatted media that is attached toohello guest passes hello provisioning configuration toohello Linux virtual machine.</span></span> <span data-ttu-id="345a6-127">Hola agente Linux de Azure debe ser capaz de toomount Hola UDF archivo sistema tooread su configuración y aprovisionar la máquina virtual de Hola.</span><span class="sxs-lookup"><span data-stu-id="345a6-127">hello Azure Linux Agent must be able toomount hello UDF file system tooread its configuration and provision hello virtual machine.</span></span>
+* <span data-ttu-id="345a6-128">Versiones de kernel de Linux Hola anteriores a 2.6.37 no admiten el acceso a memoria no uniforme (NUMA) en Hyper-V con mayores tamaños de máquina virtual.</span><span class="sxs-lookup"><span data-stu-id="345a6-128">Versions of hello Linux kernel that are earlier than 2.6.37 do not support non-uniform memory access (NUMA) on Hyper-V with larger virtual machine sizes.</span></span> <span data-ttu-id="345a6-129">Este problema afecta principalmente distribuciones anteriores que usan hello en dirección ascendente kernel de Red Hat 2.6.32 y se ha corregido en RHEL 6.6 (kernel-2.6.32-504).</span><span class="sxs-lookup"><span data-stu-id="345a6-129">This issue primarily impacts older distributions that use hello upstream Red Hat 2.6.32 kernel and was fixed in RHEL 6.6 (kernel-2.6.32-504).</span></span> <span data-ttu-id="345a6-130">Sistemas que ejecutan kernels personalizados que sean más antiguos que 2.6.37 o kernels basado en RHEL que sean más antiguos que 2.6.32-504 deben establecer hello `numa=off` parámetro de arranque en línea de comandos de kernel de hello en grub.conf.</span><span class="sxs-lookup"><span data-stu-id="345a6-130">Systems that run custom kernels that are older than 2.6.37 or RHEL-based kernels that are older than 2.6.32-504 must set hello `numa=off` boot parameter on hello kernel command line in grub.conf.</span></span> <span data-ttu-id="345a6-131">Para más información, consulte Red Hat [KB 436883](https://access.redhat.com/solutions/436883).</span><span class="sxs-lookup"><span data-stu-id="345a6-131">For more information, see Red Hat [KB 436883](https://access.redhat.com/solutions/436883).</span></span>
+* <span data-ttu-id="345a6-132">No configure una partición de intercambio en el disco del sistema operativo de Hola.</span><span class="sxs-lookup"><span data-stu-id="345a6-132">Do not configure a swap partition on hello operating system disk.</span></span> <span data-ttu-id="345a6-133">Hola agente Linux puede ser toocreate configurado un archivo de intercambio en el disco de recursos temporal Hola.</span><span class="sxs-lookup"><span data-stu-id="345a6-133">hello Linux Agent can be configured toocreate a swap file on hello temporary resource disk.</span></span>  <span data-ttu-id="345a6-134">Para obtener más información acerca de esto puede encontrarse en hello siguiendo los pasos.</span><span class="sxs-lookup"><span data-stu-id="345a6-134">More information about this can be found in hello following steps.</span></span>
+* <span data-ttu-id="345a6-135">El tamaño de todos los VHD debe ser múltiplo de 1 MB.</span><span class="sxs-lookup"><span data-stu-id="345a6-135">All VHDs must have sizes that are multiples of 1 MB.</span></span>
 
-### <a name="prepare-a-rhel-6-virtual-machine-from-hyper-v-manager"></a><span data-ttu-id="0e7fc-136">Preparar una máquina virtual RHEL 6 desde el Administrador de Hyper-V</span><span class="sxs-lookup"><span data-stu-id="0e7fc-136">Prepare a RHEL 6 virtual machine from Hyper-V Manager</span></span>
+### <a name="prepare-a-rhel-6-virtual-machine-from-hyper-v-manager"></a><span data-ttu-id="345a6-136">Preparar una máquina virtual RHEL 6 desde el Administrador de Hyper-V</span><span class="sxs-lookup"><span data-stu-id="345a6-136">Prepare a RHEL 6 virtual machine from Hyper-V Manager</span></span>
 
-1. <span data-ttu-id="0e7fc-137">En el Administrador de Hyper-V, seleccione la máquina virtual.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-137">In Hyper-V Manager, select the virtual machine.</span></span>
+1. <span data-ttu-id="345a6-137">En el Administrador de Hyper-V, seleccione la máquina virtual de Hola.</span><span class="sxs-lookup"><span data-stu-id="345a6-137">In Hyper-V Manager, select hello virtual machine.</span></span>
 
-2. <span data-ttu-id="0e7fc-138">Haga clic en **Conectar** para abrir una ventana de consola de la máquina virtual.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-138">Click **Connect** to open a console window for the virtual machine.</span></span>
+2. <span data-ttu-id="345a6-138">Haga clic en **conectar** tooopen una ventana de consola para la máquina virtual de Hola.</span><span class="sxs-lookup"><span data-stu-id="345a6-138">Click **Connect** tooopen a console window for hello virtual machine.</span></span>
 
-3. <span data-ttu-id="0e7fc-139">En RHEL 6, NetworkManager puede interferir en el Agente de Linux de Azure.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-139">In RHEL 6, NetworkManager can interfere with the Azure Linux agent.</span></span> <span data-ttu-id="0e7fc-140">Desinstale el paquete ejecutando el comando siguiente:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-140">Uninstall this package by running the following command:</span></span>
+3. <span data-ttu-id="345a6-139">En RHEL 6, NetworkManager puede interferir con el agente de Linux de Azure de Hola.</span><span class="sxs-lookup"><span data-stu-id="345a6-139">In RHEL 6, NetworkManager can interfere with hello Azure Linux agent.</span></span> <span data-ttu-id="345a6-140">Desinstalar este paquete ejecutando Hola siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="345a6-140">Uninstall this package by running hello following command:</span></span>
    
         # sudo rpm -e --nodeps NetworkManager
 
-4. <span data-ttu-id="0e7fc-141">Cree o edite el archivo `/etc/sysconfig/network` y agregue el siguiente texto:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-141">Create or edit the `/etc/sysconfig/network` file, and add the following text:</span></span>
+4. <span data-ttu-id="345a6-141">Crear o editar hello `/etc/sysconfig/network` de archivos y agregue Hola siguiente texto:</span><span class="sxs-lookup"><span data-stu-id="345a6-141">Create or edit hello `/etc/sysconfig/network` file, and add hello following text:</span></span>
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-5. <span data-ttu-id="0e7fc-142">Cree o edite el archivo `/etc/sysconfig/network-scripts/ifcfg-eth0` y agregue el siguiente texto:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-142">Create or edit the `/etc/sysconfig/network-scripts/ifcfg-eth0` file, and add the following text:</span></span>
+5. <span data-ttu-id="345a6-142">Crear o editar hello `/etc/sysconfig/network-scripts/ifcfg-eth0` de archivos y agregue Hola siguiente texto:</span><span class="sxs-lookup"><span data-stu-id="345a6-142">Create or edit hello `/etc/sysconfig/network-scripts/ifcfg-eth0` file, and add hello following text:</span></span>
    
         DEVICE=eth0
         ONBOOT=yes
@@ -65,66 +65,66 @@ ms.lasthandoff: 08/18/2017
         PEERDNS=yes
         IPV6INIT=no
 
-6. <span data-ttu-id="0e7fc-143">Mueva (o elimine) las reglas udev para impedir que se generen reglas estáticas para la interfaz Ethernet.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-143">Move (or remove) the udev rules to avoid generating static rules for the Ethernet interface.</span></span> <span data-ttu-id="0e7fc-144">Estas reglas pueden causar problemas cuando clone una máquina virtual en Microsoft Azure o Hyper-V:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-144">These rules cause problems when you clone a virtual machine in Microsoft Azure or Hyper-V:</span></span>
+6. <span data-ttu-id="345a6-143">Mover Hola udev reglas tooavoid generar reglas estáticas de interfaz Ethernet de hello (o quitar).</span><span class="sxs-lookup"><span data-stu-id="345a6-143">Move (or remove) hello udev rules tooavoid generating static rules for hello Ethernet interface.</span></span> <span data-ttu-id="345a6-144">Estas reglas pueden causar problemas cuando clone una máquina virtual en Microsoft Azure o Hyper-V:</span><span class="sxs-lookup"><span data-stu-id="345a6-144">These rules cause problems when you clone a virtual machine in Microsoft Azure or Hyper-V:</span></span>
 
         # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
         
         # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
 
-7. <span data-ttu-id="0e7fc-145">Asegúrese de que el servicio de red se inicia en el arranque ejecutando el comando siguiente:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-145">Ensure that the network service will start at boot time by running the following command:</span></span>
+7. <span data-ttu-id="345a6-145">Asegúrese de que el servicio de red de Hola se iniciará al arrancar el sistema ejecutando el siguiente comando de hello:</span><span class="sxs-lookup"><span data-stu-id="345a6-145">Ensure that hello network service will start at boot time by running hello following command:</span></span>
 
         # sudo chkconfig network on
 
-8. <span data-ttu-id="0e7fc-146">Registre la suscripción de Red Hat para habilitar la instalación de paquetes desde el repositorio RHEL ejecutando el siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-146">Register your Red Hat subscription to enable the installation of packages from the RHEL repository by running the following command:</span></span>
+8. <span data-ttu-id="345a6-146">Registrar la instalación de Red Hat suscripción tooenable Hola de paquetes del repositorio RHEL Hola ejecutando Hola siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="345a6-146">Register your Red Hat subscription tooenable hello installation of packages from hello RHEL repository by running hello following command:</span></span>
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-9. <span data-ttu-id="0e7fc-147">El paquete WALinuxAgent `WALinuxAgent-<version>` se ha insertado en el repositorio de extras de Red Hat.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-147">The WALinuxAgent package, `WALinuxAgent-<version>`, has been pushed to the Red Hat extras repository.</span></span> <span data-ttu-id="0e7fc-148">Habilite el repositorio de extras ejecutando el comando siguiente:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-148">Enable the extras repository by running the following command:</span></span>
+9. <span data-ttu-id="345a6-147">paquete de Hello WALinuxAgent, `WALinuxAgent-<version>`, se ha insertado el repositorio de toohello Red Hat extras.</span><span class="sxs-lookup"><span data-stu-id="345a6-147">hello WALinuxAgent package, `WALinuxAgent-<version>`, has been pushed toohello Red Hat extras repository.</span></span> <span data-ttu-id="345a6-148">Habilitar repositorio de extras Hola ejecutando Hola siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="345a6-148">Enable hello extras repository by running hello following command:</span></span>
 
         # subscription-manager repos --enable=rhel-6-server-extras-rpms
 
-10. <span data-ttu-id="0e7fc-149">Modifique la línea de arranque de kernel de su configuración grub para que incluya parámetros de kernel adicionales para Azure.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-149">Modify the kernel boot line in your grub configuration to include additional kernel parameters for Azure.</span></span> <span data-ttu-id="0e7fc-150">Para realizar esta modificación, abra `/boot/grub/menu.lst` en un editor de texto y asegúrese de que el kernel predeterminado incluye los parámetros siguientes:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-150">To do this modification, open `/boot/grub/menu.lst` in a text editor, and ensure that the default kernel includes the following parameters:</span></span>
+10. <span data-ttu-id="345a6-149">Modificar línea de arranque de kernel de hello en los parámetros de núcleo adicionales grub tooinclude de configuración de Azure.</span><span class="sxs-lookup"><span data-stu-id="345a6-149">Modify hello kernel boot line in your grub configuration tooinclude additional kernel parameters for Azure.</span></span> <span data-ttu-id="345a6-150">toodo esta modificación, abra `/boot/grub/menu.lst` en un editor de texto y asegurarse de esa kernel predeterminada de hello incluye Hola parámetros siguientes:</span><span class="sxs-lookup"><span data-stu-id="345a6-150">toodo this modification, open `/boot/grub/menu.lst` in a text editor, and ensure that hello default kernel includes hello following parameters:</span></span>
     
         console=ttyS0 earlyprintk=ttyS0 rootdelay=300
     
-    <span data-ttu-id="0e7fc-151">Así también se asegurará de que todos los mensajes de la consola se envían al primer puerto serie, lo que puede ayudar al soporte técnico de Azure con los problemas de depuración de errores.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-151">This will also ensure that all console messages are sent to the first serial port, which can assist Azure support with debugging issues.</span></span>
+    <span data-ttu-id="345a6-151">Esto también se asegurará de que todos los mensajes de la consola se envían toohello primer puerto serie, que puede ayudar a Azure compatibilidad con la depuración de problemas.</span><span class="sxs-lookup"><span data-stu-id="345a6-151">This will also ensure that all console messages are sent toohello first serial port, which can assist Azure support with debugging issues.</span></span>
     
-    <span data-ttu-id="0e7fc-152">Además, se recomienda quitar los parámetros siguientes:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-152">In addition, we recommended that you remove the following parameters:</span></span>
+    <span data-ttu-id="345a6-152">Además, se recomienda que quite Hola parámetros siguientes:</span><span class="sxs-lookup"><span data-stu-id="345a6-152">In addition, we recommended that you remove hello following parameters:</span></span>
     
         rhgb quiet crashkernel=auto
     
-    <span data-ttu-id="0e7fc-153">Los arranques gráfico y silencioso no resultan útiles en un entorno de nube, donde queremos que todos los registros se envíen al puerto serie.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-153">Graphical and quiet boot are not useful in a cloud environment where we want all the logs to be sent to the serial port.</span></span>  <span data-ttu-id="0e7fc-154">Puede dejar la opción `crashkernel` configurada si lo desea.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-154">You can leave the `crashkernel` option configured if desired.</span></span> <span data-ttu-id="0e7fc-155">Tenga en cuenta que este parámetro reduce la cantidad de memoria disponible en la máquina virtual unos 128 MB o más.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-155">Note that this parameter reduces the amount of available memory in the virtual machine by 128 MB or more.</span></span> <span data-ttu-id="0e7fc-156">Esta configuración podría resultar problemática en tamaños de máquinas virtuales más pequeños.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-156">This configuration might be problematic on smaller virtual machine sizes.</span></span>
+    <span data-ttu-id="345a6-153">Arranque gráfica y silencioso no son útiles en un entorno de nube donde se desea que todos los toobe de registros de hello envía toohello de puerto serie.</span><span class="sxs-lookup"><span data-stu-id="345a6-153">Graphical and quiet boot are not useful in a cloud environment where we want all hello logs toobe sent toohello serial port.</span></span>  <span data-ttu-id="345a6-154">Puede dejar hello `crashkernel` opción configurado si lo desea.</span><span class="sxs-lookup"><span data-stu-id="345a6-154">You can leave hello `crashkernel` option configured if desired.</span></span> <span data-ttu-id="345a6-155">Tenga en cuenta que este parámetro reduce la cantidad de Hola de memoria disponible en la máquina virtual Hola 128 MB o más.</span><span class="sxs-lookup"><span data-stu-id="345a6-155">Note that this parameter reduces hello amount of available memory in hello virtual machine by 128 MB or more.</span></span> <span data-ttu-id="345a6-156">Esta configuración podría resultar problemática en tamaños de máquinas virtuales más pequeños.</span><span class="sxs-lookup"><span data-stu-id="345a6-156">This configuration might be problematic on smaller virtual machine sizes.</span></span>
 
     >[!Important]
-    <span data-ttu-id="0e7fc-157">RHEL 6.5 y las versiones anteriores también deben establecer el parámetro `numa=off` del kernel.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-157">RHEL 6.5 and earlier must also set the `numa=off` kernel parameter.</span></span> <span data-ttu-id="0e7fc-158">Consulte Red Hat [KB 436883](https://access.redhat.com/solutions/436883).</span><span class="sxs-lookup"><span data-stu-id="0e7fc-158">See Red Hat [KB 436883](https://access.redhat.com/solutions/436883).</span></span>
+    <span data-ttu-id="345a6-157">RHEL versión 6.5 y versiones anterior también debe establecer hello `numa=off` parámetro de kernel.</span><span class="sxs-lookup"><span data-stu-id="345a6-157">RHEL 6.5 and earlier must also set hello `numa=off` kernel parameter.</span></span> <span data-ttu-id="345a6-158">Consulte Red Hat [KB 436883](https://access.redhat.com/solutions/436883).</span><span class="sxs-lookup"><span data-stu-id="345a6-158">See Red Hat [KB 436883](https://access.redhat.com/solutions/436883).</span></span>
 
-11. <span data-ttu-id="0e7fc-159">Asegúrese de que el servidor Secure Shell (SSH) está instalado y configurado para iniciarse en el tiempo de arranque, que suele ser el predeterminado.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-159">Ensure that the secure shell (SSH) server is installed and configured to start at boot time, which is usually the default.</span></span> <span data-ttu-id="0e7fc-160">Modifique /etc/ssh/sshd_config para que incluya la siguiente línea:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-160">Modify /etc/ssh/sshd_config to include the following line:</span></span>
+11. <span data-ttu-id="345a6-159">Asegúrese de ese servidor de shell seguro (SSH) Hola se instala y configura toostart al arrancar el sistema, que normalmente es el predeterminado de Hola.</span><span class="sxs-lookup"><span data-stu-id="345a6-159">Ensure that hello secure shell (SSH) server is installed and configured toostart at boot time, which is usually hello default.</span></span> <span data-ttu-id="345a6-160">Modificar /etc/ssh/sshd_config tooinclude Hola después de línea:</span><span class="sxs-lookup"><span data-stu-id="345a6-160">Modify /etc/ssh/sshd_config tooinclude hello following line:</span></span>
 
         ClientAliveInterval 180
 
-12. <span data-ttu-id="0e7fc-161">Instale el Agente de Linux de Azure ejecutando el comando siguiente:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-161">Install the Azure Linux Agent by running the following command:</span></span>
+12. <span data-ttu-id="345a6-161">Instale Hola agente Linux de Azure con hello siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="345a6-161">Install hello Azure Linux Agent by running hello following command:</span></span>
 
         # sudo yum install WALinuxAgent
 
         # sudo chkconfig waagent on
 
-    <span data-ttu-id="0e7fc-162">La instalación del paquete WALinuxAgent elimina los paquetes NetworkManager y NetworkManager-gnome, si es que aún no se han quitado en el paso 3.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-162">Installing the WALinuxAgent package removes the NetworkManager and NetworkManager-gnome packages if they were not already removed in step 3.</span></span>
+    <span data-ttu-id="345a6-162">El paquete de instalación hello WALinuxAgent quita Hola NetworkManager y paquetes de gnome NetworkManager si no se han quitado en el paso 3.</span><span class="sxs-lookup"><span data-stu-id="345a6-162">Installing hello WALinuxAgent package removes hello NetworkManager and NetworkManager-gnome packages if they were not already removed in step 3.</span></span>
 
-13. <span data-ttu-id="0e7fc-163">No cree espacio de intercambio en el disco del sistema operativo.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-163">Do not create swap space on the operating system disk.</span></span>
+13. <span data-ttu-id="345a6-163">No cree el espacio de intercambio en el disco de sistema operativo de Hola.</span><span class="sxs-lookup"><span data-stu-id="345a6-163">Do not create swap space on hello operating system disk.</span></span>
 
-    <span data-ttu-id="0e7fc-164">El Agente de Linux de Azure puede configurar automáticamente un espacio de intercambio usando el disco de recursos local que se adjunta a la máquina virtual, después de que la máquina virtual se aprovisione en Azure.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-164">The Azure Linux Agent can automatically configure swap space by using the local resource disk that is attached to the virtual machine after the virtual machine is provisioned on Azure.</span></span> <span data-ttu-id="0e7fc-165">Tenga en cuenta que el disco de recursos local es un disco temporal que debe vaciarse cuando la máquina virtual se desaprovisiona.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-165">Note that the local resource disk is a temporary disk and that it might be emptied when the virtual machine is deprovisioned.</span></span> <span data-ttu-id="0e7fc-166">Después de instalar el agente de Linux de Azure en el paso anterior, modifique apropiadamente los parámetros siguientes en /etc/waagent.conf:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-166">After you install the Azure Linux Agent in the previous step, modify the following parameters in /etc/waagent.conf appropriately:</span></span>
+    <span data-ttu-id="345a6-164">Hola agente Linux de Azure puede configurar automáticamente el espacio de intercambio mediante el uso de disco del recurso local Hola que está adjunto toohello virtual machine después de aprovisionar la máquina virtual de hello en Azure.</span><span class="sxs-lookup"><span data-stu-id="345a6-164">hello Azure Linux Agent can automatically configure swap space by using hello local resource disk that is attached toohello virtual machine after hello virtual machine is provisioned on Azure.</span></span> <span data-ttu-id="345a6-165">Tenga en cuenta que Hola local recurso disco es temporal y que puede ser vaciada cuando se canceló el aprovisionamiento de máquina virtual de Hola.</span><span class="sxs-lookup"><span data-stu-id="345a6-165">Note that hello local resource disk is a temporary disk and that it might be emptied when hello virtual machine is deprovisioned.</span></span> <span data-ttu-id="345a6-166">Después de instalar Agente Linux de Azure de hello en el paso anterior de hello, modifique Hola parámetros en /etc/waagent.conf siguientes correctamente:</span><span class="sxs-lookup"><span data-stu-id="345a6-166">After you install hello Azure Linux Agent in hello previous step, modify hello following parameters in /etc/waagent.conf appropriately:</span></span>
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
         ResourceDisk.MountPoint=/mnt/resource
         ResourceDisk.EnableSwap=y
-        ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+        ResourceDisk.SwapSizeMB=2048    ## NOTE: set this toowhatever you need it toobe.
 
-14. <span data-ttu-id="0e7fc-167">Para anular el registro de la suscripción (si es necesario), ejecute el siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-167">Unregister the subscription (if necessary) by running the following command:</span></span>
+14. <span data-ttu-id="345a6-167">Anular el registro de suscripción de hello (si es necesario) mediante la ejecución de hello siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="345a6-167">Unregister hello subscription (if necessary) by running hello following command:</span></span>
 
         # sudo subscription-manager unregister
 
-15. <span data-ttu-id="0e7fc-168">Ejecute los comandos siguientes para desaprovisionar la máquina virtual y prepararla para aprovisionarse en Azure:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-168">Run the following commands to deprovision the virtual machine and prepare it for provisioning on Azure:</span></span>
+15. <span data-ttu-id="345a6-168">Ejecute hello después de la máquina virtual de comandos toodeprovision hello y prepararlo para el aprovisionamiento en Azure:</span><span class="sxs-lookup"><span data-stu-id="345a6-168">Run hello following commands toodeprovision hello virtual machine and prepare it for provisioning on Azure:</span></span>
 
         # sudo waagent -force -deprovision
 
@@ -132,21 +132,21 @@ ms.lasthandoff: 08/18/2017
 
         # logout
 
-16. <span data-ttu-id="0e7fc-169">Haga clic en **Acción**  >  **Apagar** en el Administrador de Hyper-V.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-169">Click **Action** > **Shut Down** in Hyper-V Manager.</span></span> <span data-ttu-id="0e7fc-170">El VHD de Linux ya está listo para cargarse en Azure.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-170">Your Linux VHD is now ready to be uploaded to Azure.</span></span>
+16. <span data-ttu-id="345a6-169">Haga clic en **Acción**  >  **Apagar** en el Administrador de Hyper-V.</span><span class="sxs-lookup"><span data-stu-id="345a6-169">Click **Action** > **Shut Down** in Hyper-V Manager.</span></span> <span data-ttu-id="345a6-170">El VHD de Linux está ahora listo toobe había cargado tooAzure.</span><span class="sxs-lookup"><span data-stu-id="345a6-170">Your Linux VHD is now ready toobe uploaded tooAzure.</span></span>
 
 
-### <a name="prepare-a-rhel-7-virtual-machine-from-hyper-v-manager"></a><span data-ttu-id="0e7fc-171">Preparar una máquina virtual RHEL 7 desde el Administrador de Hyper-V</span><span class="sxs-lookup"><span data-stu-id="0e7fc-171">Prepare a RHEL 7 virtual machine from Hyper-V Manager</span></span>
+### <a name="prepare-a-rhel-7-virtual-machine-from-hyper-v-manager"></a><span data-ttu-id="345a6-171">Preparar una máquina virtual RHEL 7 desde el Administrador de Hyper-V</span><span class="sxs-lookup"><span data-stu-id="345a6-171">Prepare a RHEL 7 virtual machine from Hyper-V Manager</span></span>
 
-1. <span data-ttu-id="0e7fc-172">En el Administrador de Hyper-V, seleccione la máquina virtual.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-172">In Hyper-V Manager, select the virtual machine.</span></span>
+1. <span data-ttu-id="345a6-172">En el Administrador de Hyper-V, seleccione la máquina virtual de Hola.</span><span class="sxs-lookup"><span data-stu-id="345a6-172">In Hyper-V Manager, select hello virtual machine.</span></span>
 
-2. <span data-ttu-id="0e7fc-173">Haga clic en **Conectar** para abrir una ventana de consola de la máquina virtual.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-173">Click **Connect** to open a console window for the virtual machine.</span></span>
+2. <span data-ttu-id="345a6-173">Haga clic en **conectar** tooopen una ventana de consola para la máquina virtual de Hola.</span><span class="sxs-lookup"><span data-stu-id="345a6-173">Click **Connect** tooopen a console window for hello virtual machine.</span></span>
 
-3. <span data-ttu-id="0e7fc-174">Cree o edite el archivo `/etc/sysconfig/network` y agregue el siguiente texto:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-174">Create or edit the `/etc/sysconfig/network` file, and add the following text:</span></span>
+3. <span data-ttu-id="345a6-174">Crear o editar hello `/etc/sysconfig/network` de archivos y agregue Hola siguiente texto:</span><span class="sxs-lookup"><span data-stu-id="345a6-174">Create or edit hello `/etc/sysconfig/network` file, and add hello following text:</span></span>
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-4. <span data-ttu-id="0e7fc-175">Cree o edite el archivo `/etc/sysconfig/network-scripts/ifcfg-eth0` y agregue el siguiente texto:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-175">Create or edit the `/etc/sysconfig/network-scripts/ifcfg-eth0` file, and add the following text:</span></span>
+4. <span data-ttu-id="345a6-175">Crear o editar hello `/etc/sysconfig/network-scripts/ifcfg-eth0` de archivos y agregue Hola siguiente texto:</span><span class="sxs-lookup"><span data-stu-id="345a6-175">Create or edit hello `/etc/sysconfig/network-scripts/ifcfg-eth0` file, and add hello following text:</span></span>
    
         DEVICE=eth0
         ONBOOT=yes
@@ -157,57 +157,57 @@ ms.lasthandoff: 08/18/2017
         IPV6INIT=no
         NM_CONTROLLED=no
 
-5. <span data-ttu-id="0e7fc-176">Asegúrese de que el servicio de red se inicia en el arranque ejecutando el comando siguiente:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-176">Ensure that the network service will start at boot time by running the following command:</span></span>
+5. <span data-ttu-id="345a6-176">Asegúrese de que el servicio de red de Hola se iniciará al arrancar el sistema ejecutando el siguiente comando de hello:</span><span class="sxs-lookup"><span data-stu-id="345a6-176">Ensure that hello network service will start at boot time by running hello following command:</span></span>
 
         # sudo chkconfig network on
 
-6. <span data-ttu-id="0e7fc-177">Registre la suscripción de Red Hat para habilitar la instalación de paquetes desde el repositorio RHEL ejecutando el siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-177">Register your Red Hat subscription to enable the installation of packages from the RHEL repository by running the following command:</span></span>
+6. <span data-ttu-id="345a6-177">Registrar la instalación de Red Hat suscripción tooenable Hola de paquetes del repositorio RHEL Hola ejecutando Hola siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="345a6-177">Register your Red Hat subscription tooenable hello installation of packages from hello RHEL repository by running hello following command:</span></span>
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-7. <span data-ttu-id="0e7fc-178">Modifique la línea de arranque de kernel de su configuración grub para que incluya parámetros de kernel adicionales para Azure.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-178">Modify the kernel boot line in your grub configuration to include additional kernel parameters for Azure.</span></span> <span data-ttu-id="0e7fc-179">Para realizar esta modificación, abra `/etc/default/grub` en un editor de texto y edite el parámetro `GRUB_CMDLINE_LINUX`.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-179">To do this modification, open `/etc/default/grub` in a text editor, and edit the `GRUB_CMDLINE_LINUX` parameter.</span></span> <span data-ttu-id="0e7fc-180">Por ejemplo:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-180">For example:</span></span>
+7. <span data-ttu-id="345a6-178">Modificar línea de arranque de kernel de hello en los parámetros de núcleo adicionales grub tooinclude de configuración de Azure.</span><span class="sxs-lookup"><span data-stu-id="345a6-178">Modify hello kernel boot line in your grub configuration tooinclude additional kernel parameters for Azure.</span></span> <span data-ttu-id="345a6-179">toodo esta modificación, abra `/etc/default/grub` en un editor de texto y editar hello `GRUB_CMDLINE_LINUX` parámetro.</span><span class="sxs-lookup"><span data-stu-id="345a6-179">toodo this modification, open `/etc/default/grub` in a text editor, and edit hello `GRUB_CMDLINE_LINUX` parameter.</span></span> <span data-ttu-id="345a6-180">Por ejemplo:</span><span class="sxs-lookup"><span data-stu-id="345a6-180">For example:</span></span>
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
-   <span data-ttu-id="0e7fc-181">Así también se asegurará de que todos los mensajes de la consola se envían al primer puerto serie, lo que puede ayudar al soporte técnico de Azure con los problemas de depuración de errores.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-181">This will also ensure that all console messages are sent to the first serial port, which can assist Azure support with debugging issues.</span></span> <span data-ttu-id="0e7fc-182">Esta configuración también desactiva las nuevas convenciones de nomenclatura de RHEL 7 para NIC.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-182">This configuration also turns off the new RHEL 7 naming conventions for NICs.</span></span> <span data-ttu-id="0e7fc-183">Además, se recomienda quitar los parámetros siguientes:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-183">In addition, we recommend that you remove the following parameters:</span></span>
+   <span data-ttu-id="345a6-181">Esto también se asegurará de que todos los mensajes de la consola se envían toohello primer puerto serie, que puede ayudar a Azure compatibilidad con la depuración de problemas.</span><span class="sxs-lookup"><span data-stu-id="345a6-181">This will also ensure that all console messages are sent toohello first serial port, which can assist Azure support with debugging issues.</span></span> <span data-ttu-id="345a6-182">Esta configuración también desactiva Hola nuevas RHEL 7 convenciones de nomenclatura de NIC.</span><span class="sxs-lookup"><span data-stu-id="345a6-182">This configuration also turns off hello new RHEL 7 naming conventions for NICs.</span></span> <span data-ttu-id="345a6-183">Además, se recomienda que quite Hola parámetros siguientes:</span><span class="sxs-lookup"><span data-stu-id="345a6-183">In addition, we recommend that you remove hello following parameters:</span></span>
    
         rhgb quiet crashkernel=auto
    
-    <span data-ttu-id="0e7fc-184">Los arranques gráfico y silencioso no resultan útiles en un entorno de nube, donde queremos que todos los registros se envíen al puerto serie.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-184">Graphical and quiet boot are not useful in a cloud environment where we want all the logs to be sent to the serial port.</span></span> <span data-ttu-id="0e7fc-185">Puede dejar la opción `crashkernel` configurada si lo desea.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-185">You can leave the `crashkernel` option configured if desired.</span></span> <span data-ttu-id="0e7fc-186">Tenga en cuenta que este parámetro reduce la cantidad de memoria disponible en la máquina virtual mediante 128 MB o más, lo que podría resultar problemática en tamaños de máquina virtual más pequeños.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-186">Note that this parameter reduces the amount of available memory in the virtual machine by 128 MB or more, which might be problematic on smaller virtual machine sizes.</span></span>
+    <span data-ttu-id="345a6-184">Arranque gráfica y silencioso no son útiles en un entorno de nube donde se desea que todos los toobe de registros de hello envía toohello de puerto serie.</span><span class="sxs-lookup"><span data-stu-id="345a6-184">Graphical and quiet boot are not useful in a cloud environment where we want all hello logs toobe sent toohello serial port.</span></span> <span data-ttu-id="345a6-185">Puede dejar hello `crashkernel` opción configurado si lo desea.</span><span class="sxs-lookup"><span data-stu-id="345a6-185">You can leave hello `crashkernel` option configured if desired.</span></span> <span data-ttu-id="345a6-186">Tenga en cuenta que este parámetro reduce Hola de memoria disponible en la máquina virtual Hola 128 MB o más, lo que podría resultar problemática en tamaños de máquina virtual más pequeños.</span><span class="sxs-lookup"><span data-stu-id="345a6-186">Note that this parameter reduces hello amount of available memory in hello virtual machine by 128 MB or more, which might be problematic on smaller virtual machine sizes.</span></span>
 
-8. <span data-ttu-id="0e7fc-187">Una vez que termine de editar `/etc/default/grub`, ejecute el comando siguiente para recompilar la configuración de GRUB:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-187">After you are done editing `/etc/default/grub`, run the following command to rebuild the grub configuration:</span></span>
+8. <span data-ttu-id="345a6-187">Una vez que haya edición `/etc/default/grub`, ejecute hello después de la configuración del comando toorebuild Hola grub:</span><span class="sxs-lookup"><span data-stu-id="345a6-187">After you are done editing `/etc/default/grub`, run hello following command toorebuild hello grub configuration:</span></span>
 
         # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
-9. <span data-ttu-id="0e7fc-188">Asegúrese de que el servidor SSH se haya instalado y configurado para iniciarse en el tiempo de arranque, que suele ser el predeterminado.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-188">Ensure that the SSH server is installed and configured to start at boot time, which is usually the default.</span></span> <span data-ttu-id="0e7fc-189">Modifique `/etc/ssh/sshd_config` para que incluya la siguiente línea:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-189">Modify `/etc/ssh/sshd_config` to include the following line:</span></span>
+9. <span data-ttu-id="345a6-188">Asegúrese de ese servidor SSH Hola se instala y configura toostart al arrancar el sistema, que normalmente es el predeterminado de Hola.</span><span class="sxs-lookup"><span data-stu-id="345a6-188">Ensure that hello SSH server is installed and configured toostart at boot time, which is usually hello default.</span></span> <span data-ttu-id="345a6-189">Modificar `/etc/ssh/sshd_config` hello tooinclude después de línea:</span><span class="sxs-lookup"><span data-stu-id="345a6-189">Modify `/etc/ssh/sshd_config` tooinclude hello following line:</span></span>
 
         ClientAliveInterval 180
 
-10. <span data-ttu-id="0e7fc-190">El paquete WALinuxAgent `WALinuxAgent-<version>` se ha insertado en el repositorio de extras de Red Hat.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-190">The WALinuxAgent package, `WALinuxAgent-<version>`, has been pushed to the Red Hat extras repository.</span></span> <span data-ttu-id="0e7fc-191">Habilite el repositorio de extras ejecutando el comando siguiente:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-191">Enable the extras repository by running the following command:</span></span>
+10. <span data-ttu-id="345a6-190">paquete de Hello WALinuxAgent, `WALinuxAgent-<version>`, se ha insertado el repositorio de toohello Red Hat extras.</span><span class="sxs-lookup"><span data-stu-id="345a6-190">hello WALinuxAgent package, `WALinuxAgent-<version>`, has been pushed toohello Red Hat extras repository.</span></span> <span data-ttu-id="345a6-191">Habilitar repositorio de extras Hola ejecutando Hola siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="345a6-191">Enable hello extras repository by running hello following command:</span></span>
 
         # subscription-manager repos --enable=rhel-7-server-extras-rpms
 
-11. <span data-ttu-id="0e7fc-192">Instale el Agente de Linux de Azure ejecutando el comando siguiente:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-192">Install the Azure Linux Agent by running the following command:</span></span>
+11. <span data-ttu-id="345a6-192">Instale Hola agente Linux de Azure con hello siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="345a6-192">Install hello Azure Linux Agent by running hello following command:</span></span>
 
         # sudo yum install WALinuxAgent
 
         # sudo systemctl enable waagent.service
 
-12. <span data-ttu-id="0e7fc-193">No cree espacio de intercambio en el disco del sistema operativo.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-193">Do not create swap space on the operating system disk.</span></span>
+12. <span data-ttu-id="345a6-193">No cree el espacio de intercambio en el disco de sistema operativo de Hola.</span><span class="sxs-lookup"><span data-stu-id="345a6-193">Do not create swap space on hello operating system disk.</span></span>
 
-    <span data-ttu-id="0e7fc-194">El Agente de Linux de Azure puede configurar automáticamente un espacio de intercambio usando el disco de recursos local que se adjunta a la máquina virtual, después de que la máquina virtual se aprovisione en Azure.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-194">The Azure Linux Agent can automatically configure swap space by using the local resource disk that is attached to the virtual machine after the virtual machine is provisioned on Azure.</span></span> <span data-ttu-id="0e7fc-195">Tenga en cuenta que el disco de recursos local es un disco temporal que debe vaciarse cuando la máquina virtual se desaprovisiona.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-195">Note that the local resource disk is a temporary disk, and it might be emptied when the virtual machine is deprovisioned.</span></span> <span data-ttu-id="0e7fc-196">Después de instalar el agente de Linux de Azure en el paso anterior, modifique apropiadamente los parámetros siguientes en `/etc/waagent.conf`:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-196">After you install the Azure Linux Agent in the previous step, modify the following parameters in `/etc/waagent.conf` appropriately:</span></span>
+    <span data-ttu-id="345a6-194">Hola agente Linux de Azure puede configurar automáticamente el espacio de intercambio mediante el uso de disco del recurso local Hola que está adjunto toohello virtual machine después de aprovisionar la máquina virtual de hello en Azure.</span><span class="sxs-lookup"><span data-stu-id="345a6-194">hello Azure Linux Agent can automatically configure swap space by using hello local resource disk that is attached toohello virtual machine after hello virtual machine is provisioned on Azure.</span></span> <span data-ttu-id="345a6-195">Tenga en cuenta que hello disco del recurso local es un disco temporal, y puede ser vaciada cuando máquina virtual de hello es deprovisioned.</span><span class="sxs-lookup"><span data-stu-id="345a6-195">Note that hello local resource disk is a temporary disk, and it might be emptied when hello virtual machine is deprovisioned.</span></span> <span data-ttu-id="345a6-196">Después de instalar Hola agente Linux de Azure en el paso anterior de hello, modificar Hola parámetros en siguientes `/etc/waagent.conf` correctamente:</span><span class="sxs-lookup"><span data-stu-id="345a6-196">After you install hello Azure Linux Agent in hello previous step, modify hello following parameters in `/etc/waagent.conf` appropriately:</span></span>
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
         ResourceDisk.MountPoint=/mnt/resource
         ResourceDisk.EnableSwap=y
-        ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+        ResourceDisk.SwapSizeMB=2048    ## NOTE: set this toowhatever you need it toobe.
 
-13. <span data-ttu-id="0e7fc-197">Si quiere anular el registro de la suscripción, ejecute el siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-197">If you want to unregister the subscription, run the following command:</span></span>
+13. <span data-ttu-id="345a6-197">Si desea que toounregister Hola suscripción, ejecute hello siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="345a6-197">If you want toounregister hello subscription, run hello following command:</span></span>
 
         # sudo subscription-manager unregister
 
-14. <span data-ttu-id="0e7fc-198">Ejecute los comandos siguientes para desaprovisionar la máquina virtual y prepararla para aprovisionarse en Azure:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-198">Run the following commands to deprovision the virtual machine and prepare it for provisioning on Azure:</span></span>
+14. <span data-ttu-id="345a6-198">Ejecute hello después de la máquina virtual de comandos toodeprovision hello y prepararlo para el aprovisionamiento en Azure:</span><span class="sxs-lookup"><span data-stu-id="345a6-198">Run hello following commands toodeprovision hello virtual machine and prepare it for provisioning on Azure:</span></span>
 
         # sudo waagent -force -deprovision
 
@@ -215,21 +215,21 @@ ms.lasthandoff: 08/18/2017
 
         # logout
 
-15. <span data-ttu-id="0e7fc-199">Haga clic en **Acción**  >  **Apagar** en el Administrador de Hyper-V.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-199">Click **Action** > **Shut Down** in Hyper-V Manager.</span></span> <span data-ttu-id="0e7fc-200">El VHD de Linux ya está listo para cargarse en Azure.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-200">Your Linux VHD is now ready to be uploaded to Azure.</span></span>
+15. <span data-ttu-id="345a6-199">Haga clic en **Acción**  >  **Apagar** en el Administrador de Hyper-V.</span><span class="sxs-lookup"><span data-stu-id="345a6-199">Click **Action** > **Shut Down** in Hyper-V Manager.</span></span> <span data-ttu-id="345a6-200">El VHD de Linux está ahora listo toobe había cargado tooAzure.</span><span class="sxs-lookup"><span data-stu-id="345a6-200">Your Linux VHD is now ready toobe uploaded tooAzure.</span></span>
 
 
-## <a name="prepare-a-red-hat-based-virtual-machine-from-kvm"></a><span data-ttu-id="0e7fc-201">Preparación de una máquina virtual basada en Red Hat desde KVM</span><span class="sxs-lookup"><span data-stu-id="0e7fc-201">Prepare a Red Hat-based virtual machine from KVM</span></span>
-### <a name="prepare-a-rhel-6-virtual-machine-from-kvm"></a><span data-ttu-id="0e7fc-202">Preparar una máquina virtual RHEL 6 desde KVM</span><span class="sxs-lookup"><span data-stu-id="0e7fc-202">Prepare a RHEL 6 virtual machine from KVM</span></span>
+## <a name="prepare-a-red-hat-based-virtual-machine-from-kvm"></a><span data-ttu-id="345a6-201">Preparación de una máquina virtual basada en Red Hat desde KVM</span><span class="sxs-lookup"><span data-stu-id="345a6-201">Prepare a Red Hat-based virtual machine from KVM</span></span>
+### <a name="prepare-a-rhel-6-virtual-machine-from-kvm"></a><span data-ttu-id="345a6-202">Preparar una máquina virtual RHEL 6 desde KVM</span><span class="sxs-lookup"><span data-stu-id="345a6-202">Prepare a RHEL 6 virtual machine from KVM</span></span>
 
-1. <span data-ttu-id="0e7fc-203">Descargue la imagen KVM de RHEL 6 desde el sitio web de Red Hat.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-203">Download the KVM image of RHEL 6 from the Red Hat website.</span></span>
+1. <span data-ttu-id="345a6-203">Descargar imagen KVM de Hola de RHEL 6 del sitio Web de Red Hat Hola.</span><span class="sxs-lookup"><span data-stu-id="345a6-203">Download hello KVM image of RHEL 6 from hello Red Hat website.</span></span>
 
-2. <span data-ttu-id="0e7fc-204">Establezca una contraseña raíz.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-204">Set a root password.</span></span>
+2. <span data-ttu-id="345a6-204">Establezca una contraseña raíz.</span><span class="sxs-lookup"><span data-stu-id="345a6-204">Set a root password.</span></span>
 
-    <span data-ttu-id="0e7fc-205">Genere una contraseña cifrada y copie el resultado del comando:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-205">Generate an encrypted password, and copy the output of the command:</span></span>
+    <span data-ttu-id="345a6-205">Generar una contraseña cifrada y copiar el resultado de hello de comando hello:</span><span class="sxs-lookup"><span data-stu-id="345a6-205">Generate an encrypted password, and copy hello output of hello command:</span></span>
 
         # openssl passwd -1 changeme
 
-    <span data-ttu-id="0e7fc-206">Establezca una contraseña raíz con guestfish:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-206">Set a root password with guestfish:</span></span>
+    <span data-ttu-id="345a6-206">Establezca una contraseña raíz con guestfish:</span><span class="sxs-lookup"><span data-stu-id="345a6-206">Set a root password with guestfish:</span></span>
         
         # guestfish --rw -a <image-name>
         > <fs> run
@@ -238,16 +238,16 @@ ms.lasthandoff: 08/18/2017
         > <fs> vi /etc/shadow
         > <fs> exit
 
-   <span data-ttu-id="0e7fc-207">Cambie el segundo campo del usuario raíz de "!!"</span><span class="sxs-lookup"><span data-stu-id="0e7fc-207">Change the second field of the root user from "!!"</span></span> <span data-ttu-id="0e7fc-208">a la contraseña cifrada.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-208">to the encrypted password.</span></span>
+   <span data-ttu-id="345a6-207">Segundo campo de Hola de cambio de usuario de la raíz de Hola de "!!"</span><span class="sxs-lookup"><span data-stu-id="345a6-207">Change hello second field of hello root user from "!!"</span></span> <span data-ttu-id="345a6-208">toohello contraseña cifrada.</span><span class="sxs-lookup"><span data-stu-id="345a6-208">toohello encrypted password.</span></span>
 
-3. <span data-ttu-id="0e7fc-209">Cree una máquina virtual en KVM a partir de la imagen qcow2.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-209">Create a virtual machine in KVM from the qcow2 image.</span></span> <span data-ttu-id="0e7fc-210">Establezca el tipo de disco en **qcow2** y el modelo de dispositivo de interfaz de red virtual en **virtio**.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-210">Set the disk type to **qcow2**, and set the virtual network interface device model to **virtio**.</span></span> <span data-ttu-id="0e7fc-211">Después, inicie la máquina virtual e inicie sesión como raíz.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-211">Then, start the virtual machine, and sign in as root.</span></span>
+3. <span data-ttu-id="345a6-209">Crear una máquina virtual en KVM de imagen de qcow2 Hola.</span><span class="sxs-lookup"><span data-stu-id="345a6-209">Create a virtual machine in KVM from hello qcow2 image.</span></span> <span data-ttu-id="345a6-210">Establecer tipo de disco de hello demasiado**qcow2**y establezca el modelo de dispositivo de interfaz de red virtual de hello demasiado**virtio**.</span><span class="sxs-lookup"><span data-stu-id="345a6-210">Set hello disk type too**qcow2**, and set hello virtual network interface device model too**virtio**.</span></span> <span data-ttu-id="345a6-211">A continuación, iniciar la máquina virtual de hello e inicie sesión como raíz.</span><span class="sxs-lookup"><span data-stu-id="345a6-211">Then, start hello virtual machine, and sign in as root.</span></span>
 
-4. <span data-ttu-id="0e7fc-212">Cree o edite el archivo `/etc/sysconfig/network` y agregue el siguiente texto:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-212">Create or edit the `/etc/sysconfig/network` file, and add the following text:</span></span>
+4. <span data-ttu-id="345a6-212">Crear o editar hello `/etc/sysconfig/network` de archivos y agregue Hola siguiente texto:</span><span class="sxs-lookup"><span data-stu-id="345a6-212">Create or edit hello `/etc/sysconfig/network` file, and add hello following text:</span></span>
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-5. <span data-ttu-id="0e7fc-213">Cree o edite el archivo `/etc/sysconfig/network-scripts/ifcfg-eth0` y agregue el siguiente texto:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-213">Create or edit the `/etc/sysconfig/network-scripts/ifcfg-eth0` file, and add the following text:</span></span>
+5. <span data-ttu-id="345a6-213">Crear o editar hello `/etc/sysconfig/network-scripts/ifcfg-eth0` de archivos y agregue Hola siguiente texto:</span><span class="sxs-lookup"><span data-stu-id="345a6-213">Create or edit hello `/etc/sysconfig/network-scripts/ifcfg-eth0` file, and add hello following text:</span></span>
    
         DEVICE=eth0
         ONBOOT=yes
@@ -257,81 +257,81 @@ ms.lasthandoff: 08/18/2017
         PEERDNS=yes
         IPV6INIT=no
 
-6. <span data-ttu-id="0e7fc-214">Mueva (o elimine) las reglas udev para impedir que se generen reglas estáticas para la interfaz Ethernet.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-214">Move (or remove) the udev rules to avoid generating static rules for the Ethernet interface.</span></span> <span data-ttu-id="0e7fc-215">Estas reglas pueden causar problemas cuando clone una máquina virtual en Azure o Hyper-V:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-215">These rules cause problems when you clone a virtual machine in Azure or Hyper-V:</span></span>
+6. <span data-ttu-id="345a6-214">Mover Hola udev reglas tooavoid generar reglas estáticas de interfaz Ethernet de hello (o quitar).</span><span class="sxs-lookup"><span data-stu-id="345a6-214">Move (or remove) hello udev rules tooavoid generating static rules for hello Ethernet interface.</span></span> <span data-ttu-id="345a6-215">Estas reglas pueden causar problemas cuando clone una máquina virtual en Azure o Hyper-V:</span><span class="sxs-lookup"><span data-stu-id="345a6-215">These rules cause problems when you clone a virtual machine in Azure or Hyper-V:</span></span>
 
         # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
 
         # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
 
-7. <span data-ttu-id="0e7fc-216">Asegúrese de que el servicio de red se inicia en el arranque ejecutando el comando siguiente:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-216">Ensure that the network service will start at boot time by running the following command:</span></span>
+7. <span data-ttu-id="345a6-216">Asegúrese de que el servicio de red de Hola se iniciará al arrancar el sistema ejecutando el siguiente comando de hello:</span><span class="sxs-lookup"><span data-stu-id="345a6-216">Ensure that hello network service will start at boot time by running hello following command:</span></span>
 
         # chkconfig network on
 
-8. <span data-ttu-id="0e7fc-217">Registre la suscripción de Red Hat para habilitar la instalación de paquetes desde el repositorio RHEL ejecutando el siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-217">Register your Red Hat subscription to enable the installation of packages from the RHEL repository by running the following command:</span></span>
+8. <span data-ttu-id="345a6-217">Registrar la instalación de Red Hat suscripción tooenable Hola de paquetes del repositorio RHEL Hola ejecutando Hola siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="345a6-217">Register your Red Hat subscription tooenable hello installation of packages from hello RHEL repository by running hello following command:</span></span>
 
         # subscription-manager register --auto-attach --username=XXX --password=XXX
 
-9. <span data-ttu-id="0e7fc-218">Modifique la línea de arranque de kernel de su configuración grub para que incluya parámetros de kernel adicionales para Azure.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-218">Modify the kernel boot line in your grub configuration to include additional kernel parameters for Azure.</span></span> <span data-ttu-id="0e7fc-219">Para realizar esta configuración, abra `/boot/grub/menu.lst` en un editor de texto y asegúrese de que el kernel predeterminado incluye los parámetros siguientes:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-219">To do this configuration, open `/boot/grub/menu.lst` in a text editor, and ensure that the default kernel includes the following parameters:</span></span>
+9. <span data-ttu-id="345a6-218">Modificar línea de arranque de kernel de hello en los parámetros de núcleo adicionales grub tooinclude de configuración de Azure.</span><span class="sxs-lookup"><span data-stu-id="345a6-218">Modify hello kernel boot line in your grub configuration tooinclude additional kernel parameters for Azure.</span></span> <span data-ttu-id="345a6-219">toodo esta configuración, abra `/boot/grub/menu.lst` en un editor de texto y asegurarse de esa kernel predeterminada de hello incluye Hola parámetros siguientes:</span><span class="sxs-lookup"><span data-stu-id="345a6-219">toodo this configuration, open `/boot/grub/menu.lst` in a text editor, and ensure that hello default kernel includes hello following parameters:</span></span>
     
         console=ttyS0 earlyprintk=ttyS0 rootdelay=300
     
-    <span data-ttu-id="0e7fc-220">Así también se asegurará de que todos los mensajes de la consola se envían al primer puerto serie, lo que puede ayudar al soporte técnico de Azure con los problemas de depuración de errores.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-220">This will also ensure that all console messages are sent to the first serial port, which can assist Azure support with debugging issues.</span></span>
+    <span data-ttu-id="345a6-220">Esto también se asegurará de que todos los mensajes de la consola se envían toohello primer puerto serie, que puede ayudar a Azure compatibilidad con la depuración de problemas.</span><span class="sxs-lookup"><span data-stu-id="345a6-220">This will also ensure that all console messages are sent toohello first serial port, which can assist Azure support with debugging issues.</span></span>
     
-    <span data-ttu-id="0e7fc-221">Además, se recomienda quitar los parámetros siguientes:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-221">In addition, we recommend that you remove the following parameters:</span></span>
+    <span data-ttu-id="345a6-221">Además, se recomienda que quite Hola parámetros siguientes:</span><span class="sxs-lookup"><span data-stu-id="345a6-221">In addition, we recommend that you remove hello following parameters:</span></span>
     
         rhgb quiet crashkernel=auto
     
-    <span data-ttu-id="0e7fc-222">Los arranques gráfico y silencioso no resultan útiles en un entorno de nube, donde queremos que todos los registros se envíen al puerto serie.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-222">Graphical and quiet boot are not useful in a cloud environment where we want all the logs to be sent to the serial port.</span></span> <span data-ttu-id="0e7fc-223">Puede dejar la opción `crashkernel` configurada si lo desea.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-223">You can leave the `crashkernel` option configured if desired.</span></span> <span data-ttu-id="0e7fc-224">Tenga en cuenta que este parámetro reduce la cantidad de memoria disponible en la máquina virtual mediante 128 MB o más, lo que podría resultar problemática en tamaños de máquina virtual más pequeños.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-224">Note that this parameter reduces the amount of available memory in the virtual machine by 128 MB or more, which might be problematic on smaller virtual machine sizes.</span></span>
+    <span data-ttu-id="345a6-222">Arranque gráfica y silencioso no son útiles en un entorno de nube donde se desea que todos los toobe de registros de hello envía toohello de puerto serie.</span><span class="sxs-lookup"><span data-stu-id="345a6-222">Graphical and quiet boot are not useful in a cloud environment where we want all hello logs toobe sent toohello serial port.</span></span> <span data-ttu-id="345a6-223">Puede dejar hello `crashkernel` opción configurado si lo desea.</span><span class="sxs-lookup"><span data-stu-id="345a6-223">You can leave hello `crashkernel` option configured if desired.</span></span> <span data-ttu-id="345a6-224">Tenga en cuenta que este parámetro reduce Hola de memoria disponible en la máquina virtual Hola 128 MB o más, lo que podría resultar problemática en tamaños de máquina virtual más pequeños.</span><span class="sxs-lookup"><span data-stu-id="345a6-224">Note that this parameter reduces hello amount of available memory in hello virtual machine by 128 MB or more, which might be problematic on smaller virtual machine sizes.</span></span>
 
     >[!Important]
-    <span data-ttu-id="0e7fc-225">RHEL 6.5 y las versiones anteriores también deben establecer el parámetro `numa=off` del kernel.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-225">RHEL 6.5 and earlier must also set the `numa=off` kernel parameter.</span></span> <span data-ttu-id="0e7fc-226">Consulte Red Hat [KB 436883](https://access.redhat.com/solutions/436883).</span><span class="sxs-lookup"><span data-stu-id="0e7fc-226">See Red Hat [KB 436883](https://access.redhat.com/solutions/436883).</span></span>
+    <span data-ttu-id="345a6-225">RHEL versión 6.5 y versiones anterior también debe establecer hello `numa=off` parámetro de kernel.</span><span class="sxs-lookup"><span data-stu-id="345a6-225">RHEL 6.5 and earlier must also set hello `numa=off` kernel parameter.</span></span> <span data-ttu-id="345a6-226">Consulte Red Hat [KB 436883](https://access.redhat.com/solutions/436883).</span><span class="sxs-lookup"><span data-stu-id="345a6-226">See Red Hat [KB 436883](https://access.redhat.com/solutions/436883).</span></span>
 
-10. <span data-ttu-id="0e7fc-227">Agregue módulos de Hyper-V a initramfs:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-227">Add Hyper-V modules to initramfs:</span></span>  
+10. <span data-ttu-id="345a6-227">Agregar tooinitramfs de módulos de Hyper-V:</span><span class="sxs-lookup"><span data-stu-id="345a6-227">Add Hyper-V modules tooinitramfs:</span></span>  
 
-    <span data-ttu-id="0e7fc-228">Edite `/etc/dracut.conf` y agregue el siguiente contenido:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-228">Edit `/etc/dracut.conf`, and add the following content:</span></span>
+    <span data-ttu-id="345a6-228">Editar `/etc/dracut.conf`y agregue Hola siguen contenido:</span><span class="sxs-lookup"><span data-stu-id="345a6-228">Edit `/etc/dracut.conf`, and add hello following content:</span></span>
 
         add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
 
-    <span data-ttu-id="0e7fc-229">Recompile initramfs:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-229">Rebuild initramfs:</span></span>
+    <span data-ttu-id="345a6-229">Recompile initramfs:</span><span class="sxs-lookup"><span data-stu-id="345a6-229">Rebuild initramfs:</span></span>
 
         # dracut -f -v
 
-11. <span data-ttu-id="0e7fc-230">Desinstale cloud-init:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-230">Uninstall cloud-init:</span></span>
+11. <span data-ttu-id="345a6-230">Desinstale cloud-init:</span><span class="sxs-lookup"><span data-stu-id="345a6-230">Uninstall cloud-init:</span></span>
 
         # yum remove cloud-init
 
-12. <span data-ttu-id="0e7fc-231">Asegúrese de que el servidor SSH esté instalado y configurado para iniciarse en el tiempo de arranque:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-231">Ensure that the SSH server is installed and configured to start at boot time:</span></span>
+12. <span data-ttu-id="345a6-231">Asegúrese de que el servidor SSH Hola se instala y configura toostart al arrancar el sistema:</span><span class="sxs-lookup"><span data-stu-id="345a6-231">Ensure that hello SSH server is installed and configured toostart at boot time:</span></span>
 
         # chkconfig sshd on
 
-    <span data-ttu-id="0e7fc-232">Modifique /etc/ssh/sshd_config para que incluya las siguientes líneas:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-232">Modify /etc/ssh/sshd_config to include the following lines:</span></span>
+    <span data-ttu-id="345a6-232">Modificar /etc/ssh/sshd_config tooinclude Hola siguientes líneas:</span><span class="sxs-lookup"><span data-stu-id="345a6-232">Modify /etc/ssh/sshd_config tooinclude hello following lines:</span></span>
 
         PasswordAuthentication yes
         ClientAliveInterval 180
 
-13. <span data-ttu-id="0e7fc-233">El paquete WALinuxAgent `WALinuxAgent-<version>` se ha insertado en el repositorio de extras de Red Hat.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-233">The WALinuxAgent package, `WALinuxAgent-<version>`, has been pushed to the Red Hat extras repository.</span></span> <span data-ttu-id="0e7fc-234">Habilite el repositorio de extras ejecutando el comando siguiente:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-234">Enable the extras repository by running the following command:</span></span>
+13. <span data-ttu-id="345a6-233">paquete de Hello WALinuxAgent, `WALinuxAgent-<version>`, se ha insertado el repositorio de toohello Red Hat extras.</span><span class="sxs-lookup"><span data-stu-id="345a6-233">hello WALinuxAgent package, `WALinuxAgent-<version>`, has been pushed toohello Red Hat extras repository.</span></span> <span data-ttu-id="345a6-234">Habilitar repositorio de extras Hola ejecutando Hola siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="345a6-234">Enable hello extras repository by running hello following command:</span></span>
 
         # subscription-manager repos --enable=rhel-6-server-extras-rpms
 
-14. <span data-ttu-id="0e7fc-235">Instale el Agente de Linux de Azure ejecutando el comando siguiente:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-235">Install the Azure Linux Agent by running the following command:</span></span>
+14. <span data-ttu-id="345a6-235">Instale Hola agente Linux de Azure con hello siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="345a6-235">Install hello Azure Linux Agent by running hello following command:</span></span>
 
         # yum install WALinuxAgent
 
         # chkconfig waagent on
 
-15. <span data-ttu-id="0e7fc-236">El Agente de Linux de Azure puede configurar automáticamente un espacio de intercambio usando el disco de recursos local que se adjunta a la máquina virtual, después de que la máquina virtual se aprovisione en Azure.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-236">The Azure Linux Agent can automatically configure swap space by using the local resource disk that is attached to the virtual machine after the virtual machine is provisioned on Azure.</span></span> <span data-ttu-id="0e7fc-237">Tenga en cuenta que el disco de recursos local es un disco temporal que debe vaciarse cuando la máquina virtual se desaprovisiona.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-237">Note that the local resource disk is a temporary disk, and it might be emptied when the virtual machine is deprovisioned.</span></span> <span data-ttu-id="0e7fc-238">Después de instalar el agente de Linux de Azure en el paso anterior, modifique apropiadamente los parámetros siguientes en **/etc/waagent.conf**:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-238">After you install the Azure Linux Agent in the previous step, modify the following parameters in **/etc/waagent.conf** appropriately:</span></span>
+15. <span data-ttu-id="345a6-236">Hola agente Linux de Azure puede configurar automáticamente el espacio de intercambio mediante el uso de disco del recurso local Hola que está adjunto toohello virtual machine después de aprovisionar la máquina virtual de hello en Azure.</span><span class="sxs-lookup"><span data-stu-id="345a6-236">hello Azure Linux Agent can automatically configure swap space by using hello local resource disk that is attached toohello virtual machine after hello virtual machine is provisioned on Azure.</span></span> <span data-ttu-id="345a6-237">Tenga en cuenta que hello disco del recurso local es un disco temporal, y puede ser vaciada cuando máquina virtual de hello es deprovisioned.</span><span class="sxs-lookup"><span data-stu-id="345a6-237">Note that hello local resource disk is a temporary disk, and it might be emptied when hello virtual machine is deprovisioned.</span></span> <span data-ttu-id="345a6-238">Después de instalar Hola agente Linux de Azure en el paso anterior de hello, modificar Hola parámetros en siguientes **/etc/waagent.conf** correctamente:</span><span class="sxs-lookup"><span data-stu-id="345a6-238">After you install hello Azure Linux Agent in hello previous step, modify hello following parameters in **/etc/waagent.conf** appropriately:</span></span>
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
         ResourceDisk.MountPoint=/mnt/resource
         ResourceDisk.EnableSwap=y
-        ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+        ResourceDisk.SwapSizeMB=2048    ## NOTE: set this toowhatever you need it toobe.
 
-16. <span data-ttu-id="0e7fc-239">Para anular el registro de la suscripción (si es necesario), ejecute el siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-239">Unregister the subscription (if necessary) by running the following command:</span></span>
+16. <span data-ttu-id="345a6-239">Anular el registro de suscripción de hello (si es necesario) mediante la ejecución de hello siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="345a6-239">Unregister hello subscription (if necessary) by running hello following command:</span></span>
 
         # subscription-manager unregister
 
-17. <span data-ttu-id="0e7fc-240">Ejecute los comandos siguientes para desaprovisionar la máquina virtual y prepararla para aprovisionarse en Azure:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-240">Run the following commands to deprovision the virtual machine and prepare it for provisioning on Azure:</span></span>
+17. <span data-ttu-id="345a6-240">Ejecute hello después de la máquina virtual de comandos toodeprovision hello y prepararlo para el aprovisionamiento en Azure:</span><span class="sxs-lookup"><span data-stu-id="345a6-240">Run hello following commands toodeprovision hello virtual machine and prepare it for provisioning on Azure:</span></span>
 
         # waagent -force -deprovision
 
@@ -339,15 +339,15 @@ ms.lasthandoff: 08/18/2017
 
         # logout
 
-18. <span data-ttu-id="0e7fc-241">Apague la máquina virtual en KVM.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-241">Shut down the virtual machine in KVM.</span></span>
+18. <span data-ttu-id="345a6-241">Apague la máquina virtual de hello en KVM.</span><span class="sxs-lookup"><span data-stu-id="345a6-241">Shut down hello virtual machine in KVM.</span></span>
 
-19. <span data-ttu-id="0e7fc-242">Convierta la imagen qcow2 al formato VHD.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-242">Convert the qcow2 image to the VHD format.</span></span>
+19. <span data-ttu-id="345a6-242">Convertir el formato de disco duro virtual de hello qcow2 imagen toohello.</span><span class="sxs-lookup"><span data-stu-id="345a6-242">Convert hello qcow2 image toohello VHD format.</span></span>
 
-    <span data-ttu-id="0e7fc-243">Primero convierta la imagen al formato raw:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-243">First convert the image to raw format:</span></span>
+    <span data-ttu-id="345a6-243">Convertir formato de hello imagen tooraw:</span><span class="sxs-lookup"><span data-stu-id="345a6-243">First convert hello image tooraw format:</span></span>
 
         # qemu-img convert -f qcow2 -O raw rhel-6.8.qcow2 rhel-6.8.raw
 
-    <span data-ttu-id="0e7fc-244">Asegúrese de que el tamaño de la imagen sin procesar está alineado con 1 MB.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-244">Make sure that the size of the raw image is aligned with 1 MB.</span></span> <span data-ttu-id="0e7fc-245">De lo contrario, redondee hacia arriba el tamaño para alinear con 1 MB:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-245">Otherwise, round up the size to align with 1 MB:</span></span>
+    <span data-ttu-id="345a6-244">Asegúrese de que el tamaño Hola de imagen raw de hello está alineado con 1 MB.</span><span class="sxs-lookup"><span data-stu-id="345a6-244">Make sure that hello size of hello raw image is aligned with 1 MB.</span></span> <span data-ttu-id="345a6-245">En caso contrario, se redondea hacia arriba Hola tamaño tooalign con 1 MB:</span><span class="sxs-lookup"><span data-stu-id="345a6-245">Otherwise, round up hello size tooalign with 1 MB:</span></span>
 
         # MB=$((1024*1024))
         # size=$(qemu-img info -f raw --output json "rhel-6.8.raw" | \
@@ -356,22 +356,22 @@ ms.lasthandoff: 08/18/2017
         # rounded_size=$((($size/$MB + 1)*$MB))
         # qemu-img resize rhel-6.8.raw $rounded_size
 
-    <span data-ttu-id="0e7fc-246">Convierta el disco sin procesar en un disco duro virtual (VHD) de tamaño fijo:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-246">Convert the raw disk to a fixed-sized VHD:</span></span>
+    <span data-ttu-id="345a6-246">Convertir tooa de disco sin procesar de hello fijo-tamaño de disco duro virtual:</span><span class="sxs-lookup"><span data-stu-id="345a6-246">Convert hello raw disk tooa fixed-sized VHD:</span></span>
 
         # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-6.8.raw rhel-6.8.vhd
 
 
-### <a name="prepare-a-rhel-7-virtual-machine-from-kvm"></a><span data-ttu-id="0e7fc-247">Preparar una máquina virtual RHEL 7 desde KVM</span><span class="sxs-lookup"><span data-stu-id="0e7fc-247">Prepare a RHEL 7 virtual machine from KVM</span></span>
+### <a name="prepare-a-rhel-7-virtual-machine-from-kvm"></a><span data-ttu-id="345a6-247">Preparar una máquina virtual RHEL 7 desde KVM</span><span class="sxs-lookup"><span data-stu-id="345a6-247">Prepare a RHEL 7 virtual machine from KVM</span></span>
 
-1. <span data-ttu-id="0e7fc-248">Descargue la imagen KVM de RHEL 7 desde el sitio web de Red Hat.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-248">Download the KVM image of RHEL 7 from the Red Hat website.</span></span> <span data-ttu-id="0e7fc-249">Este procedimiento utiliza RHEL 7 como el ejemplo.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-249">This procedure uses RHEL 7 as the example.</span></span>
+1. <span data-ttu-id="345a6-248">Descargar imagen KVM de Hola de RHEL 7 de sitio Web de Red Hat Hola.</span><span class="sxs-lookup"><span data-stu-id="345a6-248">Download hello KVM image of RHEL 7 from hello Red Hat website.</span></span> <span data-ttu-id="345a6-249">Este procedimiento utiliza RHEL 7 como ejemplo de Hola.</span><span class="sxs-lookup"><span data-stu-id="345a6-249">This procedure uses RHEL 7 as hello example.</span></span>
 
-2. <span data-ttu-id="0e7fc-250">Establezca una contraseña raíz.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-250">Set a root password.</span></span>
+2. <span data-ttu-id="345a6-250">Establezca una contraseña raíz.</span><span class="sxs-lookup"><span data-stu-id="345a6-250">Set a root password.</span></span>
 
-    <span data-ttu-id="0e7fc-251">Genere una contraseña cifrada y copie el resultado del comando:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-251">Generate an encrypted password, and copy the output of the command:</span></span>
+    <span data-ttu-id="345a6-251">Generar una contraseña cifrada y copiar el resultado de hello de comando hello:</span><span class="sxs-lookup"><span data-stu-id="345a6-251">Generate an encrypted password, and copy hello output of hello command:</span></span>
 
         # openssl passwd -1 changeme
 
-    <span data-ttu-id="0e7fc-252">Establezca una contraseña raíz con guestfish:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-252">Set a root password with guestfish:</span></span>
+    <span data-ttu-id="345a6-252">Establezca una contraseña raíz con guestfish:</span><span class="sxs-lookup"><span data-stu-id="345a6-252">Set a root password with guestfish:</span></span>
 
         # guestfish --rw -a <image-name>
         > <fs> run
@@ -380,16 +380,16 @@ ms.lasthandoff: 08/18/2017
         > <fs> vi /etc/shadow
         > <fs> exit
 
-   <span data-ttu-id="0e7fc-253">Cambie el segundo campo de usuario raíz de "!!"</span><span class="sxs-lookup"><span data-stu-id="0e7fc-253">Change the second field of root user from "!!"</span></span> <span data-ttu-id="0e7fc-254">a la contraseña cifrada.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-254">to the encrypted password.</span></span>
+   <span data-ttu-id="345a6-253">Segundo campo de Hola de cambio de usuario de la raíz de "!!"</span><span class="sxs-lookup"><span data-stu-id="345a6-253">Change hello second field of root user from "!!"</span></span> <span data-ttu-id="345a6-254">toohello contraseña cifrada.</span><span class="sxs-lookup"><span data-stu-id="345a6-254">toohello encrypted password.</span></span>
 
-3. <span data-ttu-id="0e7fc-255">Cree una máquina virtual en KVM a partir de la imagen qcow2.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-255">Create a virtual machine in KVM from the qcow2 image.</span></span> <span data-ttu-id="0e7fc-256">Establezca el tipo de disco en **qcow2** y el modelo de dispositivo de interfaz de red virtual en **virtio**.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-256">Set the disk type to **qcow2**, and set the virtual network interface device model to **virtio**.</span></span> <span data-ttu-id="0e7fc-257">Después, inicie la máquina virtual e inicie sesión como raíz.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-257">Then, start the virtual machine, and sign in as root.</span></span>
+3. <span data-ttu-id="345a6-255">Crear una máquina virtual en KVM de imagen de qcow2 Hola.</span><span class="sxs-lookup"><span data-stu-id="345a6-255">Create a virtual machine in KVM from hello qcow2 image.</span></span> <span data-ttu-id="345a6-256">Establecer tipo de disco de hello demasiado**qcow2**y establezca el modelo de dispositivo de interfaz de red virtual de hello demasiado**virtio**.</span><span class="sxs-lookup"><span data-stu-id="345a6-256">Set hello disk type too**qcow2**, and set hello virtual network interface device model too**virtio**.</span></span> <span data-ttu-id="345a6-257">A continuación, iniciar la máquina virtual de hello e inicie sesión como raíz.</span><span class="sxs-lookup"><span data-stu-id="345a6-257">Then, start hello virtual machine, and sign in as root.</span></span>
 
-4. <span data-ttu-id="0e7fc-258">Cree o edite el archivo `/etc/sysconfig/network` y agregue el siguiente texto:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-258">Create or edit the `/etc/sysconfig/network` file, and add the following text:</span></span>
+4. <span data-ttu-id="345a6-258">Crear o editar hello `/etc/sysconfig/network` de archivos y agregue Hola siguiente texto:</span><span class="sxs-lookup"><span data-stu-id="345a6-258">Create or edit hello `/etc/sysconfig/network` file, and add hello following text:</span></span>
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-5. <span data-ttu-id="0e7fc-259">Cree o edite el archivo `/etc/sysconfig/network-scripts/ifcfg-eth0` y agregue el siguiente texto:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-259">Create or edit the `/etc/sysconfig/network-scripts/ifcfg-eth0` file, and add the following text:</span></span>
+5. <span data-ttu-id="345a6-259">Crear o editar hello `/etc/sysconfig/network-scripts/ifcfg-eth0` de archivos y agregue Hola siguiente texto:</span><span class="sxs-lookup"><span data-stu-id="345a6-259">Create or edit hello `/etc/sysconfig/network-scripts/ifcfg-eth0` file, and add hello following text:</span></span>
    
         DEVICE=eth0
         ONBOOT=yes
@@ -400,78 +400,78 @@ ms.lasthandoff: 08/18/2017
         IPV6INIT=no
         NM_CONTROLLED=no
 
-6. <span data-ttu-id="0e7fc-260">Asegúrese de que el servicio de red se inicia en el arranque ejecutando el comando siguiente:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-260">Ensure that the network service will start at boot time by running the following command:</span></span>
+6. <span data-ttu-id="345a6-260">Asegúrese de que el servicio de red de Hola se iniciará al arrancar el sistema ejecutando el siguiente comando de hello:</span><span class="sxs-lookup"><span data-stu-id="345a6-260">Ensure that hello network service will start at boot time by running hello following command:</span></span>
 
         # chkconfig network on
 
-7. <span data-ttu-id="0e7fc-261">Registre la suscripción de RedHat para habilitar la instalación de paquetes desde el repositorio RHEL ejecutando el siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-261">Register your Red Hat subscription to enable installation of packages from the RHEL repository by running the following command:</span></span>
+7. <span data-ttu-id="345a6-261">Registrar la instalación de Red Hat suscripción tooenable de paquetes del repositorio RHEL Hola ejecutando Hola siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="345a6-261">Register your Red Hat subscription tooenable installation of packages from hello RHEL repository by running hello following command:</span></span>
 
         # subscription-manager register --auto-attach --username=XXX --password=XXX
 
-8. <span data-ttu-id="0e7fc-262">Modifique la línea de arranque de kernel de su configuración grub para que incluya parámetros de kernel adicionales para Azure.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-262">Modify the kernel boot line in your grub configuration to include additional kernel parameters for Azure.</span></span> <span data-ttu-id="0e7fc-263">Para realizar esta configuración, abra `/etc/default/grub` en un editor de texto y edite el parámetro `GRUB_CMDLINE_LINUX`.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-263">To do this configuration, open `/etc/default/grub` in a text editor, and edit the `GRUB_CMDLINE_LINUX` parameter.</span></span> <span data-ttu-id="0e7fc-264">Por ejemplo:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-264">For example:</span></span>
+8. <span data-ttu-id="345a6-262">Modificar línea de arranque de kernel de hello en los parámetros de núcleo adicionales grub tooinclude de configuración de Azure.</span><span class="sxs-lookup"><span data-stu-id="345a6-262">Modify hello kernel boot line in your grub configuration tooinclude additional kernel parameters for Azure.</span></span> <span data-ttu-id="345a6-263">toodo esta configuración, abra `/etc/default/grub` en un editor de texto y editar hello `GRUB_CMDLINE_LINUX` parámetro.</span><span class="sxs-lookup"><span data-stu-id="345a6-263">toodo this configuration, open `/etc/default/grub` in a text editor, and edit hello `GRUB_CMDLINE_LINUX` parameter.</span></span> <span data-ttu-id="345a6-264">Por ejemplo:</span><span class="sxs-lookup"><span data-stu-id="345a6-264">For example:</span></span>
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
-   <span data-ttu-id="0e7fc-265">Este comando también asegura que todos los mensajes de la consola se envían al primer puerto serie, lo que puede ayudar al soporte técnico de Azure con los problemas de depuración de errores.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-265">This command also ensures that all console messages are sent to the first serial port, which can assist Azure support with debugging issues.</span></span> <span data-ttu-id="0e7fc-266">El comando también desactiva las nuevas convenciones de nomenclatura de RHEL 7 para NIC.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-266">The command also turns off the new RHEL 7 naming conventions for NICs.</span></span> <span data-ttu-id="0e7fc-267">Además, se recomienda quitar los parámetros siguientes:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-267">In addition, we recommend that you remove the following parameters:</span></span>
+   <span data-ttu-id="345a6-265">Este comando también garantiza que todos los mensajes de la consola se envían toohello primer puerto serie, que puede ayudar a Azure compatibilidad con la depuración de problemas.</span><span class="sxs-lookup"><span data-stu-id="345a6-265">This command also ensures that all console messages are sent toohello first serial port, which can assist Azure support with debugging issues.</span></span> <span data-ttu-id="345a6-266">comando Hello también desactiva Hola nuevas RHEL 7 convenciones de nomenclatura de NIC.</span><span class="sxs-lookup"><span data-stu-id="345a6-266">hello command also turns off hello new RHEL 7 naming conventions for NICs.</span></span> <span data-ttu-id="345a6-267">Además, se recomienda que quite Hola parámetros siguientes:</span><span class="sxs-lookup"><span data-stu-id="345a6-267">In addition, we recommend that you remove hello following parameters:</span></span>
    
         rhgb quiet crashkernel=auto
    
-    <span data-ttu-id="0e7fc-268">Los arranques gráfico y silencioso no resultan útiles en un entorno de nube, donde queremos que todos los registros se envíen al puerto serie.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-268">Graphical and quiet boot are not useful in a cloud environment where we want all the logs to be sent to the serial port.</span></span> <span data-ttu-id="0e7fc-269">Puede dejar la opción `crashkernel` configurada si lo desea.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-269">You can leave the `crashkernel` option configured if desired.</span></span> <span data-ttu-id="0e7fc-270">Tenga en cuenta que este parámetro reduce la cantidad de memoria disponible en la máquina virtual mediante 128 MB o más, lo que podría resultar problemática en tamaños de máquina virtual más pequeños.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-270">Note that this parameter reduces the amount of available memory in the virtual machine by 128 MB or more, which might be problematic on smaller virtual machine sizes.</span></span>
+    <span data-ttu-id="345a6-268">Arranque gráfica y silencioso no son útiles en un entorno de nube donde se desea que todos los toobe de registros de hello envía toohello de puerto serie.</span><span class="sxs-lookup"><span data-stu-id="345a6-268">Graphical and quiet boot are not useful in a cloud environment where we want all hello logs toobe sent toohello serial port.</span></span> <span data-ttu-id="345a6-269">Puede dejar hello `crashkernel` opción configurado si lo desea.</span><span class="sxs-lookup"><span data-stu-id="345a6-269">You can leave hello `crashkernel` option configured if desired.</span></span> <span data-ttu-id="345a6-270">Tenga en cuenta que este parámetro reduce Hola de memoria disponible en la máquina virtual Hola 128 MB o más, lo que podría resultar problemática en tamaños de máquina virtual más pequeños.</span><span class="sxs-lookup"><span data-stu-id="345a6-270">Note that this parameter reduces hello amount of available memory in hello virtual machine by 128 MB or more, which might be problematic on smaller virtual machine sizes.</span></span>
 
-9. <span data-ttu-id="0e7fc-271">Una vez que termine de editar `/etc/default/grub`, ejecute el comando siguiente para recompilar la configuración de GRUB:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-271">After you are done editing `/etc/default/grub`, run the following command to rebuild the grub configuration:</span></span>
+9. <span data-ttu-id="345a6-271">Una vez que haya edición `/etc/default/grub`, ejecute hello después de la configuración del comando toorebuild Hola grub:</span><span class="sxs-lookup"><span data-stu-id="345a6-271">After you are done editing `/etc/default/grub`, run hello following command toorebuild hello grub configuration:</span></span>
 
         # grub2-mkconfig -o /boot/grub2/grub.cfg
 
-10. <span data-ttu-id="0e7fc-272">Agregue módulos de Hyper-V a initramfs.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-272">Add Hyper-V modules into initramfs.</span></span>
+10. <span data-ttu-id="345a6-272">Agregue módulos de Hyper-V a initramfs.</span><span class="sxs-lookup"><span data-stu-id="345a6-272">Add Hyper-V modules into initramfs.</span></span>
 
-    <span data-ttu-id="0e7fc-273">Edite `/etc/dracut.conf` y agregue contenido:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-273">Edit `/etc/dracut.conf` and add content:</span></span>
+    <span data-ttu-id="345a6-273">Edite `/etc/dracut.conf` y agregue contenido:</span><span class="sxs-lookup"><span data-stu-id="345a6-273">Edit `/etc/dracut.conf` and add content:</span></span>
 
         add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
 
-    <span data-ttu-id="0e7fc-274">Recompile initramfs:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-274">Rebuild initramfs:</span></span>
+    <span data-ttu-id="345a6-274">Recompile initramfs:</span><span class="sxs-lookup"><span data-stu-id="345a6-274">Rebuild initramfs:</span></span>
 
         # dracut -f -v
 
-11. <span data-ttu-id="0e7fc-275">Desinstale cloud-init:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-275">Uninstall cloud-init:</span></span>
+11. <span data-ttu-id="345a6-275">Desinstale cloud-init:</span><span class="sxs-lookup"><span data-stu-id="345a6-275">Uninstall cloud-init:</span></span>
 
         # yum remove cloud-init
 
-12. <span data-ttu-id="0e7fc-276">Asegúrese de que el servidor SSH esté instalado y configurado para iniciarse en el tiempo de arranque:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-276">Ensure that the SSH server is installed and configured to start at boot time:</span></span>
+12. <span data-ttu-id="345a6-276">Asegúrese de que el servidor SSH Hola se instala y configura toostart al arrancar el sistema:</span><span class="sxs-lookup"><span data-stu-id="345a6-276">Ensure that hello SSH server is installed and configured toostart at boot time:</span></span>
 
         # systemctl enable sshd
 
-    <span data-ttu-id="0e7fc-277">Modifique /etc/ssh/sshd_config para que incluya las siguientes líneas:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-277">Modify /etc/ssh/sshd_config to include the following lines:</span></span>
+    <span data-ttu-id="345a6-277">Modificar /etc/ssh/sshd_config tooinclude Hola siguientes líneas:</span><span class="sxs-lookup"><span data-stu-id="345a6-277">Modify /etc/ssh/sshd_config tooinclude hello following lines:</span></span>
 
         PasswordAuthentication yes
         ClientAliveInterval 180
 
-13. <span data-ttu-id="0e7fc-278">El paquete WALinuxAgent `WALinuxAgent-<version>` se ha insertado en el repositorio de extras de Red Hat.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-278">The WALinuxAgent package, `WALinuxAgent-<version>`, has been pushed to the Red Hat extras repository.</span></span> <span data-ttu-id="0e7fc-279">Habilite el repositorio de extras ejecutando el comando siguiente:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-279">Enable the extras repository by running the following command:</span></span>
+13. <span data-ttu-id="345a6-278">paquete de Hello WALinuxAgent, `WALinuxAgent-<version>`, se ha insertado el repositorio de toohello Red Hat extras.</span><span class="sxs-lookup"><span data-stu-id="345a6-278">hello WALinuxAgent package, `WALinuxAgent-<version>`, has been pushed toohello Red Hat extras repository.</span></span> <span data-ttu-id="345a6-279">Habilitar repositorio de extras Hola ejecutando Hola siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="345a6-279">Enable hello extras repository by running hello following command:</span></span>
 
         # subscription-manager repos --enable=rhel-7-server-extras-rpms
 
-14. <span data-ttu-id="0e7fc-280">Instale el Agente de Linux de Azure ejecutando el comando siguiente:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-280">Install the Azure Linux Agent by running the following command:</span></span>
+14. <span data-ttu-id="345a6-280">Instale Hola agente Linux de Azure con hello siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="345a6-280">Install hello Azure Linux Agent by running hello following command:</span></span>
 
         # yum install WALinuxAgent
 
-    <span data-ttu-id="0e7fc-281">Habilite el servicio waagent:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-281">Enable the waagent service:</span></span>
+    <span data-ttu-id="345a6-281">Habilitar hello waagent servicio:</span><span class="sxs-lookup"><span data-stu-id="345a6-281">Enable hello waagent service:</span></span>
 
         # systemctl enable waagent.service
 
-15. <span data-ttu-id="0e7fc-282">No cree espacio de intercambio en el disco del sistema operativo.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-282">Do not create swap space on the operating system disk.</span></span>
+15. <span data-ttu-id="345a6-282">No cree el espacio de intercambio en el disco de sistema operativo de Hola.</span><span class="sxs-lookup"><span data-stu-id="345a6-282">Do not create swap space on hello operating system disk.</span></span>
 
-    <span data-ttu-id="0e7fc-283">El Agente de Linux de Azure puede configurar automáticamente un espacio de intercambio usando el disco de recursos local que se adjunta a la máquina virtual, después de que la máquina virtual se aprovisione en Azure.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-283">The Azure Linux Agent can automatically configure swap space by using the local resource disk that is attached to the virtual machine after the virtual machine is provisioned on Azure.</span></span> <span data-ttu-id="0e7fc-284">Tenga en cuenta que el disco de recursos local es un disco temporal que debe vaciarse cuando la máquina virtual se desaprovisiona.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-284">Note that the local resource disk is a temporary disk, and it might be emptied when the virtual machine is deprovisioned.</span></span> <span data-ttu-id="0e7fc-285">Después de instalar el agente de Linux de Azure en el paso anterior, modifique apropiadamente los parámetros siguientes en `/etc/waagent.conf`:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-285">After you install the Azure Linux Agent in the previous step, modify the following parameters in `/etc/waagent.conf` appropriately:</span></span>
+    <span data-ttu-id="345a6-283">Hola agente Linux de Azure puede configurar automáticamente el espacio de intercambio mediante el uso de disco del recurso local Hola que está adjunto toohello virtual machine después de aprovisionar la máquina virtual de hello en Azure.</span><span class="sxs-lookup"><span data-stu-id="345a6-283">hello Azure Linux Agent can automatically configure swap space by using hello local resource disk that is attached toohello virtual machine after hello virtual machine is provisioned on Azure.</span></span> <span data-ttu-id="345a6-284">Tenga en cuenta que hello disco del recurso local es un disco temporal, y puede ser vaciada cuando máquina virtual de hello es deprovisioned.</span><span class="sxs-lookup"><span data-stu-id="345a6-284">Note that hello local resource disk is a temporary disk, and it might be emptied when hello virtual machine is deprovisioned.</span></span> <span data-ttu-id="345a6-285">Después de instalar Hola agente Linux de Azure en el paso anterior de hello, modificar Hola parámetros en siguientes `/etc/waagent.conf` correctamente:</span><span class="sxs-lookup"><span data-stu-id="345a6-285">After you install hello Azure Linux Agent in hello previous step, modify hello following parameters in `/etc/waagent.conf` appropriately:</span></span>
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
         ResourceDisk.MountPoint=/mnt/resource
         ResourceDisk.EnableSwap=y
-        ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+        ResourceDisk.SwapSizeMB=2048    ## NOTE: set this toowhatever you need it toobe.
 
-16. <span data-ttu-id="0e7fc-286">Para anular el registro de la suscripción (si es necesario), ejecute el siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-286">Unregister the subscription (if necessary) by running the following command:</span></span>
+16. <span data-ttu-id="345a6-286">Anular el registro de suscripción de hello (si es necesario) mediante la ejecución de hello siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="345a6-286">Unregister hello subscription (if necessary) by running hello following command:</span></span>
 
         # subscription-manager unregister
 
-17. <span data-ttu-id="0e7fc-287">Ejecute los comandos siguientes para desaprovisionar la máquina virtual y prepararla para aprovisionarse en Azure:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-287">Run the following commands to deprovision the virtual machine and prepare it for provisioning on Azure:</span></span>
+17. <span data-ttu-id="345a6-287">Ejecute hello después de la máquina virtual de comandos toodeprovision hello y prepararlo para el aprovisionamiento en Azure:</span><span class="sxs-lookup"><span data-stu-id="345a6-287">Run hello following commands toodeprovision hello virtual machine and prepare it for provisioning on Azure:</span></span>
 
         # sudo waagent -force -deprovision
 
@@ -479,15 +479,15 @@ ms.lasthandoff: 08/18/2017
 
         # logout
 
-18. <span data-ttu-id="0e7fc-288">Apague la máquina virtual en KVM.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-288">Shut down the virtual machine in KVM.</span></span>
+18. <span data-ttu-id="345a6-288">Apague la máquina virtual de hello en KVM.</span><span class="sxs-lookup"><span data-stu-id="345a6-288">Shut down hello virtual machine in KVM.</span></span>
 
-19. <span data-ttu-id="0e7fc-289">Convierta la imagen qcow2 al formato VHD.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-289">Convert the qcow2 image to the VHD format.</span></span>
+19. <span data-ttu-id="345a6-289">Convertir el formato de disco duro virtual de hello qcow2 imagen toohello.</span><span class="sxs-lookup"><span data-stu-id="345a6-289">Convert hello qcow2 image toohello VHD format.</span></span>
 
-    <span data-ttu-id="0e7fc-290">Primero convierta la imagen al formato raw:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-290">First convert the image to raw format:</span></span>
+    <span data-ttu-id="345a6-290">Convertir formato de hello imagen tooraw:</span><span class="sxs-lookup"><span data-stu-id="345a6-290">First convert hello image tooraw format:</span></span>
 
         # qemu-img convert -f qcow2 -O raw rhel-7.3.qcow2 rhel-7.3.raw
 
-    <span data-ttu-id="0e7fc-291">Asegúrese de que el tamaño de la imagen sin procesar está alineado con 1 MB.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-291">Make sure that the size of the raw image is aligned with 1 MB.</span></span> <span data-ttu-id="0e7fc-292">De lo contrario, redondee hacia arriba el tamaño para alinear con 1 MB:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-292">Otherwise, round up the size to align with 1 MB:</span></span>
+    <span data-ttu-id="345a6-291">Asegúrese de que el tamaño Hola de imagen raw de hello está alineado con 1 MB.</span><span class="sxs-lookup"><span data-stu-id="345a6-291">Make sure that hello size of hello raw image is aligned with 1 MB.</span></span> <span data-ttu-id="345a6-292">En caso contrario, se redondea hacia arriba Hola tamaño tooalign con 1 MB:</span><span class="sxs-lookup"><span data-stu-id="345a6-292">Otherwise, round up hello size tooalign with 1 MB:</span></span>
 
         # MB=$((1024*1024))
         # size=$(qemu-img info -f raw --output json "rhel-6.8.raw" | \
@@ -496,29 +496,29 @@ ms.lasthandoff: 08/18/2017
         # rounded_size=$((($size/$MB + 1)*$MB))
         # qemu-img resize rhel-6.8.raw $rounded_size
 
-    <span data-ttu-id="0e7fc-293">Convierta el disco sin procesar en un disco duro virtual (VHD) de tamaño fijo:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-293">Convert the raw disk to a fixed-sized VHD:</span></span>
+    <span data-ttu-id="345a6-293">Convertir tooa de disco sin procesar de hello fijo-tamaño de disco duro virtual:</span><span class="sxs-lookup"><span data-stu-id="345a6-293">Convert hello raw disk tooa fixed-sized VHD:</span></span>
 
         # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-7.3.raw rhel-7.3.vhd
 
-## <a name="prepare-a-red-hat-based-virtual-machine-from-vmware"></a><span data-ttu-id="0e7fc-294">Preparación de una máquina virtual basada en Red Hat para VMware</span><span class="sxs-lookup"><span data-stu-id="0e7fc-294">Prepare a Red Hat-based virtual machine from VMware</span></span>
-### <a name="prerequisites"></a><span data-ttu-id="0e7fc-295">Requisitos previos</span><span class="sxs-lookup"><span data-stu-id="0e7fc-295">Prerequisites</span></span>
-<span data-ttu-id="0e7fc-296">En esta sección se supone que ya instaló una máquina virtual RHEL en VMware.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-296">This section assumes that you have already installed a RHEL virtual machine in VMware.</span></span> <span data-ttu-id="0e7fc-297">Para más información acerca de cómo instalar un sistema operativo en VMware, consulte [VMware Guest Operating System Installation Guide](http://partnerweb.vmware.com/GOSIG/home.html)(Guía de instalación de sistema operativo invitado de VMware).</span><span class="sxs-lookup"><span data-stu-id="0e7fc-297">For details about how to install an operating system in VMware, see [VMware Guest Operating System Installation Guide](http://partnerweb.vmware.com/GOSIG/home.html).</span></span>
+## <a name="prepare-a-red-hat-based-virtual-machine-from-vmware"></a><span data-ttu-id="345a6-294">Preparación de una máquina virtual basada en Red Hat para VMware</span><span class="sxs-lookup"><span data-stu-id="345a6-294">Prepare a Red Hat-based virtual machine from VMware</span></span>
+### <a name="prerequisites"></a><span data-ttu-id="345a6-295">Requisitos previos</span><span class="sxs-lookup"><span data-stu-id="345a6-295">Prerequisites</span></span>
+<span data-ttu-id="345a6-296">En esta sección se supone que ya instaló una máquina virtual RHEL en VMware.</span><span class="sxs-lookup"><span data-stu-id="345a6-296">This section assumes that you have already installed a RHEL virtual machine in VMware.</span></span> <span data-ttu-id="345a6-297">Para obtener más información acerca de cómo tooinstall un sistema operativo en VMware, consulte [Guía de instalación de sistema operativo invitado de VMware](http://partnerweb.vmware.com/GOSIG/home.html).</span><span class="sxs-lookup"><span data-stu-id="345a6-297">For details about how tooinstall an operating system in VMware, see [VMware Guest Operating System Installation Guide](http://partnerweb.vmware.com/GOSIG/home.html).</span></span>
 
-* <span data-ttu-id="0e7fc-298">Al instalar el sistema Linux se recomienda usar las particiones estándar en lugar de un LVM, que a menudo viene de forma predeterminada en muchas instalaciones.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-298">When you install the Linux operating system, we recommend that you use standard partitions rather than LVM, which is often the default for many installations.</span></span> <span data-ttu-id="0e7fc-299">De este modo se impedirá que el nombre del LVM entre en conflicto con las máquinas virtuales clonadas, especialmente si en algún momento hace falta adjuntar un disco de sistema operativo a otra máquina virtual para solucionar problemas.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-299">This will avoid LVM name conflicts with cloned virtual machine, particularly if an operating system disk ever needs to be attached to another virtual machine for troubleshooting.</span></span> <span data-ttu-id="0e7fc-300">Para los discos de datos se puede utilizar LVM o RAID si así se prefiere.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-300">LVM or RAID can be used on data disks if preferred.</span></span>
-* <span data-ttu-id="0e7fc-301">No configure una partición de intercambio en el disco del sistema operativo.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-301">Do not configure a swap partition on the operating system disk.</span></span> <span data-ttu-id="0e7fc-302">Es posible configurar el agente de Linux para crear un archivo de intercambio en el disco de recursos temporal.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-302">You can configure the Linux agent to create a swap file on the temporary resource disk.</span></span> <span data-ttu-id="0e7fc-303">Puede encontrar más información al respecto en los pasos a continuación.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-303">You can find more information about this in the steps that follow.</span></span>
-* <span data-ttu-id="0e7fc-304">Cuando cree el disco duro virtual, seleccione **Almacenar disco virtual como un solo archivo**.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-304">When you create the virtual hard disk, select **Store virtual disk as a single file**.</span></span>
+* <span data-ttu-id="345a6-298">Cuando se instala el sistema operativo de Linux de hello, recomendamos que utilice particiones estándar en lugar de LVM, que suele ser predeterminado de Hola para muchas instalaciones.</span><span class="sxs-lookup"><span data-stu-id="345a6-298">When you install hello Linux operating system, we recommend that you use standard partitions rather than LVM, which is often hello default for many installations.</span></span> <span data-ttu-id="345a6-299">Esto evitará LVM nombre entra en conflicto con la máquina virtual clonada, especialmente si un disco del sistema operativo alguna vez necesita toobe adjunta tooanother virtual machine para solucionar el problema.</span><span class="sxs-lookup"><span data-stu-id="345a6-299">This will avoid LVM name conflicts with cloned virtual machine, particularly if an operating system disk ever needs toobe attached tooanother virtual machine for troubleshooting.</span></span> <span data-ttu-id="345a6-300">Para los discos de datos se puede utilizar LVM o RAID si así se prefiere.</span><span class="sxs-lookup"><span data-stu-id="345a6-300">LVM or RAID can be used on data disks if preferred.</span></span>
+* <span data-ttu-id="345a6-301">No configure una partición de intercambio en el disco del sistema operativo de Hola.</span><span class="sxs-lookup"><span data-stu-id="345a6-301">Do not configure a swap partition on hello operating system disk.</span></span> <span data-ttu-id="345a6-302">Puede configurar Hola Linux agente toocreate un archivo de intercambio en el disco de recursos temporal Hola.</span><span class="sxs-lookup"><span data-stu-id="345a6-302">You can configure hello Linux agent toocreate a swap file on hello temporary resource disk.</span></span> <span data-ttu-id="345a6-303">Puede buscar más información al respecto en los pasos de Hola que siguen.</span><span class="sxs-lookup"><span data-stu-id="345a6-303">You can find more information about this in hello steps that follow.</span></span>
+* <span data-ttu-id="345a6-304">Cuando se crea el disco duro virtual de hello, seleccione **disco virtual del almacén como un único archivo**.</span><span class="sxs-lookup"><span data-stu-id="345a6-304">When you create hello virtual hard disk, select **Store virtual disk as a single file**.</span></span>
 
-### <a name="prepare-a-rhel-6-virtual-machine-from-vmware"></a><span data-ttu-id="0e7fc-305">Preparar una máquina virtual RHEL 6 desde VMware</span><span class="sxs-lookup"><span data-stu-id="0e7fc-305">Prepare a RHEL 6 virtual machine from VMware</span></span>
-1. <span data-ttu-id="0e7fc-306">En RHEL 6, NetworkManager puede interferir en el Agente de Linux de Azure.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-306">In RHEL 6, NetworkManager can interfere with the Azure Linux agent.</span></span> <span data-ttu-id="0e7fc-307">Desinstale el paquete ejecutando el comando siguiente:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-307">Uninstall this package by running the following command:</span></span>
+### <a name="prepare-a-rhel-6-virtual-machine-from-vmware"></a><span data-ttu-id="345a6-305">Preparar una máquina virtual RHEL 6 desde VMware</span><span class="sxs-lookup"><span data-stu-id="345a6-305">Prepare a RHEL 6 virtual machine from VMware</span></span>
+1. <span data-ttu-id="345a6-306">En RHEL 6, NetworkManager puede interferir con el agente de Linux de Azure de Hola.</span><span class="sxs-lookup"><span data-stu-id="345a6-306">In RHEL 6, NetworkManager can interfere with hello Azure Linux agent.</span></span> <span data-ttu-id="345a6-307">Desinstalar este paquete ejecutando Hola siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="345a6-307">Uninstall this package by running hello following command:</span></span>
    
         # sudo rpm -e --nodeps NetworkManager
 
-2. <span data-ttu-id="0e7fc-308">Cree un archivo llamado **network** en el directorio /etc/sysconfig/ que contenga el texto siguiente:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-308">Create a file named **network** in the /etc/sysconfig/ directory that contains the following text:</span></span>
+2. <span data-ttu-id="345a6-308">Cree un archivo denominado **red** en hello/etc/sysconfig/directorio que contiene Hola siguiente texto:</span><span class="sxs-lookup"><span data-stu-id="345a6-308">Create a file named **network** in hello /etc/sysconfig/ directory that contains hello following text:</span></span>
 
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-3. <span data-ttu-id="0e7fc-309">Cree o edite el archivo `/etc/sysconfig/network-scripts/ifcfg-eth0` y agregue el siguiente texto:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-309">Create or edit the `/etc/sysconfig/network-scripts/ifcfg-eth0` file, and add the following text:</span></span>
+3. <span data-ttu-id="345a6-309">Crear o editar hello `/etc/sysconfig/network-scripts/ifcfg-eth0` de archivos y agregue Hola siguiente texto:</span><span class="sxs-lookup"><span data-stu-id="345a6-309">Create or edit hello `/etc/sysconfig/network-scripts/ifcfg-eth0` file, and add hello following text:</span></span>
    
         DEVICE=eth0
         ONBOOT=yes
@@ -528,69 +528,69 @@ ms.lasthandoff: 08/18/2017
         PEERDNS=yes
         IPV6INIT=no
 
-4. <span data-ttu-id="0e7fc-310">Mueva (o elimine) las reglas udev para impedir que se generen reglas estáticas para la interfaz Ethernet.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-310">Move (or remove) the udev rules to avoid generating static rules for the Ethernet interface.</span></span> <span data-ttu-id="0e7fc-311">Estas reglas pueden causar problemas cuando clone una máquina virtual en Azure o Hyper-V:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-311">These rules cause problems when you clone a virtual machine in Azure or Hyper-V:</span></span>
+4. <span data-ttu-id="345a6-310">Mover Hola udev reglas tooavoid generar reglas estáticas de interfaz Ethernet de hello (o quitar).</span><span class="sxs-lookup"><span data-stu-id="345a6-310">Move (or remove) hello udev rules tooavoid generating static rules for hello Ethernet interface.</span></span> <span data-ttu-id="345a6-311">Estas reglas pueden causar problemas cuando clone una máquina virtual en Azure o Hyper-V:</span><span class="sxs-lookup"><span data-stu-id="345a6-311">These rules cause problems when you clone a virtual machine in Azure or Hyper-V:</span></span>
 
         # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
 
         # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
 
-5. <span data-ttu-id="0e7fc-312">Asegúrese de que el servicio de red se inicia en el arranque ejecutando el comando siguiente:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-312">Ensure that the network service will start at boot time by running the following command:</span></span>
+5. <span data-ttu-id="345a6-312">Asegúrese de que el servicio de red de Hola se iniciará al arrancar el sistema ejecutando el siguiente comando de hello:</span><span class="sxs-lookup"><span data-stu-id="345a6-312">Ensure that hello network service will start at boot time by running hello following command:</span></span>
 
         # sudo chkconfig network on
 
-6. <span data-ttu-id="0e7fc-313">Registre la suscripción de Red Hat para habilitar la instalación de paquetes desde el repositorio RHEL ejecutando el siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-313">Register your Red Hat subscription to enable the installation of packages from the RHEL repository by running the following command:</span></span>
+6. <span data-ttu-id="345a6-313">Registrar la instalación de Red Hat suscripción tooenable Hola de paquetes del repositorio RHEL Hola ejecutando Hola siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="345a6-313">Register your Red Hat subscription tooenable hello installation of packages from hello RHEL repository by running hello following command:</span></span>
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-7. <span data-ttu-id="0e7fc-314">El paquete WALinuxAgent `WALinuxAgent-<version>` se ha insertado en el repositorio de extras de Red Hat.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-314">The WALinuxAgent package, `WALinuxAgent-<version>`, has been pushed to the Red Hat extras repository.</span></span> <span data-ttu-id="0e7fc-315">Habilite el repositorio de extras ejecutando el comando siguiente:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-315">Enable the extras repository by running the following command:</span></span>
+7. <span data-ttu-id="345a6-314">paquete de Hello WALinuxAgent, `WALinuxAgent-<version>`, se ha insertado el repositorio de toohello Red Hat extras.</span><span class="sxs-lookup"><span data-stu-id="345a6-314">hello WALinuxAgent package, `WALinuxAgent-<version>`, has been pushed toohello Red Hat extras repository.</span></span> <span data-ttu-id="345a6-315">Habilitar repositorio de extras Hola ejecutando Hola siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="345a6-315">Enable hello extras repository by running hello following command:</span></span>
 
         # subscription-manager repos --enable=rhel-6-server-extras-rpms
 
-8. <span data-ttu-id="0e7fc-316">Modifique la línea de arranque de kernel de su configuración grub para que incluya parámetros de kernel adicionales para Azure.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-316">Modify the kernel boot line in your grub configuration to include additional kernel parameters for Azure.</span></span> <span data-ttu-id="0e7fc-317">Para ello, abra `/etc/default/grub` en un editor de texto y edite el parámetro `GRUB_CMDLINE_LINUX`.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-317">To do this, open `/etc/default/grub` in a text editor, and edit the `GRUB_CMDLINE_LINUX` parameter.</span></span> <span data-ttu-id="0e7fc-318">Por ejemplo:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-318">For example:</span></span>
+8. <span data-ttu-id="345a6-316">Modificar línea de arranque de kernel de hello en los parámetros de núcleo adicionales grub tooinclude de configuración de Azure.</span><span class="sxs-lookup"><span data-stu-id="345a6-316">Modify hello kernel boot line in your grub configuration tooinclude additional kernel parameters for Azure.</span></span> <span data-ttu-id="345a6-317">toodo, abra `/etc/default/grub` en un editor de texto y editar hello `GRUB_CMDLINE_LINUX` parámetro.</span><span class="sxs-lookup"><span data-stu-id="345a6-317">toodo this, open `/etc/default/grub` in a text editor, and edit hello `GRUB_CMDLINE_LINUX` parameter.</span></span> <span data-ttu-id="345a6-318">Por ejemplo:</span><span class="sxs-lookup"><span data-stu-id="345a6-318">For example:</span></span>
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0"
    
-   <span data-ttu-id="0e7fc-319">Así también se asegurará de que todos los mensajes de la consola se envían al primer puerto serie, lo que puede ayudar al soporte técnico de Azure con los problemas de depuración de errores.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-319">This will also ensure that all console messages are sent to the first serial port, which can assist Azure support with debugging issues.</span></span> <span data-ttu-id="0e7fc-320">Además, se recomienda quitar los parámetros siguientes:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-320">In addition, we recommend that you remove the following parameters:</span></span>
+   <span data-ttu-id="345a6-319">Esto también se asegurará de que todos los mensajes de la consola se envían toohello primer puerto serie, que puede ayudar a Azure compatibilidad con la depuración de problemas.</span><span class="sxs-lookup"><span data-stu-id="345a6-319">This will also ensure that all console messages are sent toohello first serial port, which can assist Azure support with debugging issues.</span></span> <span data-ttu-id="345a6-320">Además, se recomienda que quite Hola parámetros siguientes:</span><span class="sxs-lookup"><span data-stu-id="345a6-320">In addition, we recommend that you remove hello following parameters:</span></span>
    
         rhgb quiet crashkernel=auto
    
-    <span data-ttu-id="0e7fc-321">Los arranques gráfico y silencioso no resultan útiles en un entorno de nube, donde queremos que todos los registros se envíen al puerto serie.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-321">Graphical and quiet boot are not useful in a cloud environment where we want all the logs to be sent to the serial port.</span></span> <span data-ttu-id="0e7fc-322">Puede dejar la opción `crashkernel` configurada si lo desea.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-322">You can leave the `crashkernel` option configured if desired.</span></span> <span data-ttu-id="0e7fc-323">Tenga en cuenta que este parámetro reduce la cantidad de memoria disponible en la máquina virtual mediante 128 MB o más, lo que podría resultar problemática en tamaños de máquina virtual más pequeños.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-323">Note that this parameter reduces the amount of available memory in the virtual machine by 128 MB or more, which might be problematic on smaller virtual machine sizes.</span></span>
+    <span data-ttu-id="345a6-321">Arranque gráfica y silencioso no son útiles en un entorno de nube donde se desea que todos los toobe de registros de hello envía toohello de puerto serie.</span><span class="sxs-lookup"><span data-stu-id="345a6-321">Graphical and quiet boot are not useful in a cloud environment where we want all hello logs toobe sent toohello serial port.</span></span> <span data-ttu-id="345a6-322">Puede dejar hello `crashkernel` opción configurado si lo desea.</span><span class="sxs-lookup"><span data-stu-id="345a6-322">You can leave hello `crashkernel` option configured if desired.</span></span> <span data-ttu-id="345a6-323">Tenga en cuenta que este parámetro reduce Hola de memoria disponible en la máquina virtual Hola 128 MB o más, lo que podría resultar problemática en tamaños de máquina virtual más pequeños.</span><span class="sxs-lookup"><span data-stu-id="345a6-323">Note that this parameter reduces hello amount of available memory in hello virtual machine by 128 MB or more, which might be problematic on smaller virtual machine sizes.</span></span>
 
-9. <span data-ttu-id="0e7fc-324">Agregue módulos de Hyper-V a initramfs:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-324">Add Hyper-V modules to initramfs:</span></span>
+9. <span data-ttu-id="345a6-324">Agregar tooinitramfs de módulos de Hyper-V:</span><span class="sxs-lookup"><span data-stu-id="345a6-324">Add Hyper-V modules tooinitramfs:</span></span>
 
-    <span data-ttu-id="0e7fc-325">Edite `/etc/dracut.conf` y agregue el siguiente contenido:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-325">Edit `/etc/dracut.conf`, and add the following content:</span></span>
+    <span data-ttu-id="345a6-325">Editar `/etc/dracut.conf`y agregue Hola siguen contenido:</span><span class="sxs-lookup"><span data-stu-id="345a6-325">Edit `/etc/dracut.conf`, and add hello following content:</span></span>
 
         add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
 
-    <span data-ttu-id="0e7fc-326">Recompile initramfs:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-326">Rebuild initramfs:</span></span>
+    <span data-ttu-id="345a6-326">Recompile initramfs:</span><span class="sxs-lookup"><span data-stu-id="345a6-326">Rebuild initramfs:</span></span>
 
         # dracut -f -v
 
-10. <span data-ttu-id="0e7fc-327">Asegúrese de que el servidor SSH se haya instalado y configurado para iniciarse en el tiempo de arranque, que suele ser el predeterminado.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-327">Ensure that the SSH server is installed and configured to start at boot time, which is usually the default.</span></span> <span data-ttu-id="0e7fc-328">Modifique `/etc/ssh/sshd_config` para que incluya la siguiente línea:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-328">Modify `/etc/ssh/sshd_config` to include the following line:</span></span>
+10. <span data-ttu-id="345a6-327">Asegúrese de ese servidor SSH Hola se instala y configura toostart al arrancar el sistema, que normalmente es el predeterminado de Hola.</span><span class="sxs-lookup"><span data-stu-id="345a6-327">Ensure that hello SSH server is installed and configured toostart at boot time, which is usually hello default.</span></span> <span data-ttu-id="345a6-328">Modificar `/etc/ssh/sshd_config` hello tooinclude después de línea:</span><span class="sxs-lookup"><span data-stu-id="345a6-328">Modify `/etc/ssh/sshd_config` tooinclude hello following line:</span></span>
 
-    <span data-ttu-id="0e7fc-329">ClientAliveInterval 180</span><span class="sxs-lookup"><span data-stu-id="0e7fc-329">ClientAliveInterval 180</span></span>
+    <span data-ttu-id="345a6-329">ClientAliveInterval 180</span><span class="sxs-lookup"><span data-stu-id="345a6-329">ClientAliveInterval 180</span></span>
 
-11. <span data-ttu-id="0e7fc-330">Instale el Agente de Linux de Azure ejecutando el comando siguiente:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-330">Install the Azure Linux Agent by running the following command:</span></span>
+11. <span data-ttu-id="345a6-330">Instale Hola agente Linux de Azure con hello siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="345a6-330">Install hello Azure Linux Agent by running hello following command:</span></span>
 
         # sudo yum install WALinuxAgent
 
         # sudo chkconfig waagent on
 
-12. <span data-ttu-id="0e7fc-331">No cree espacio de intercambio en el disco del sistema operativo.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-331">Do not create swap space on the operating system disk.</span></span>
+12. <span data-ttu-id="345a6-331">No cree el espacio de intercambio en el disco de sistema operativo de Hola.</span><span class="sxs-lookup"><span data-stu-id="345a6-331">Do not create swap space on hello operating system disk.</span></span>
 
-    <span data-ttu-id="0e7fc-332">El Agente de Linux de Azure puede configurar automáticamente un espacio de intercambio usando el disco de recursos local que se adjunta a la máquina virtual, después de que la máquina virtual se aprovisione en Azure.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-332">The Azure Linux Agent can automatically configure swap space by using the local resource disk that is attached to the virtual machine after the virtual machine is provisioned on Azure.</span></span> <span data-ttu-id="0e7fc-333">Tenga en cuenta que el disco de recursos local es un disco temporal que debe vaciarse cuando la máquina virtual se desaprovisiona.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-333">Note that the local resource disk is a temporary disk, and it might be emptied when the virtual machine is deprovisioned.</span></span> <span data-ttu-id="0e7fc-334">Después de instalar el agente de Linux de Azure en el paso anterior, modifique apropiadamente los parámetros siguientes en `/etc/waagent.conf`:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-334">After you install the Azure Linux Agent in the previous step, modify the following parameters in `/etc/waagent.conf` appropriately:</span></span>
+    <span data-ttu-id="345a6-332">Hola agente Linux de Azure puede configurar automáticamente el espacio de intercambio mediante el uso de disco del recurso local Hola que está adjunto toohello virtual machine después de aprovisionar la máquina virtual de hello en Azure.</span><span class="sxs-lookup"><span data-stu-id="345a6-332">hello Azure Linux Agent can automatically configure swap space by using hello local resource disk that is attached toohello virtual machine after hello virtual machine is provisioned on Azure.</span></span> <span data-ttu-id="345a6-333">Tenga en cuenta que hello disco del recurso local es un disco temporal, y puede ser vaciada cuando máquina virtual de hello es deprovisioned.</span><span class="sxs-lookup"><span data-stu-id="345a6-333">Note that hello local resource disk is a temporary disk, and it might be emptied when hello virtual machine is deprovisioned.</span></span> <span data-ttu-id="345a6-334">Después de instalar Hola agente Linux de Azure en el paso anterior de hello, modificar Hola parámetros en siguientes `/etc/waagent.conf` correctamente:</span><span class="sxs-lookup"><span data-stu-id="345a6-334">After you install hello Azure Linux Agent in hello previous step, modify hello following parameters in `/etc/waagent.conf` appropriately:</span></span>
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
         ResourceDisk.MountPoint=/mnt/resource
         ResourceDisk.EnableSwap=y
-        ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+        ResourceDisk.SwapSizeMB=2048    ## NOTE: set this toowhatever you need it toobe.
 
-13. <span data-ttu-id="0e7fc-335">Para anular el registro de la suscripción (si es necesario), ejecute el siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-335">Unregister the subscription (if necessary) by running the following command:</span></span>
+13. <span data-ttu-id="345a6-335">Anular el registro de suscripción de hello (si es necesario) mediante la ejecución de hello siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="345a6-335">Unregister hello subscription (if necessary) by running hello following command:</span></span>
 
         # sudo subscription-manager unregister
 
-14. <span data-ttu-id="0e7fc-336">Ejecute los comandos siguientes para desaprovisionar la máquina virtual y prepararla para aprovisionarse en Azure:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-336">Run the following commands to deprovision the virtual machine and prepare it for provisioning on Azure:</span></span>
+14. <span data-ttu-id="345a6-336">Ejecute hello después de la máquina virtual de comandos toodeprovision hello y prepararlo para el aprovisionamiento en Azure:</span><span class="sxs-lookup"><span data-stu-id="345a6-336">Run hello following commands toodeprovision hello virtual machine and prepare it for provisioning on Azure:</span></span>
 
         # sudo waagent -force -deprovision
 
@@ -598,13 +598,13 @@ ms.lasthandoff: 08/18/2017
 
         # logout
 
-15. <span data-ttu-id="0e7fc-337">Apague la máquina virtual y convierta el archivo VMDK en un archivo .vhd.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-337">Shut down the virtual machine, and convert the VMDK file to a .vhd file.</span></span>
+15. <span data-ttu-id="345a6-337">Apagar la máquina virtual de Hola y convertir el archivo .vhd de hello VMDK archivo tooa.</span><span class="sxs-lookup"><span data-stu-id="345a6-337">Shut down hello virtual machine, and convert hello VMDK file tooa .vhd file.</span></span>
 
-    <span data-ttu-id="0e7fc-338">Primero convierta la imagen al formato raw:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-338">First convert the image to raw format:</span></span>
+    <span data-ttu-id="345a6-338">Convertir formato de hello imagen tooraw:</span><span class="sxs-lookup"><span data-stu-id="345a6-338">First convert hello image tooraw format:</span></span>
 
         # qemu-img convert -f vmdk -O raw rhel-6.8.vmdk rhel-6.8.raw
 
-    <span data-ttu-id="0e7fc-339">Asegúrese de que el tamaño de la imagen sin procesar está alineado con 1 MB.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-339">Make sure that the size of the raw image is aligned with 1 MB.</span></span> <span data-ttu-id="0e7fc-340">De lo contrario, redondee hacia arriba el tamaño para alinear con 1 MB:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-340">Otherwise, round up the size to align with 1 MB:</span></span>
+    <span data-ttu-id="345a6-339">Asegúrese de que el tamaño Hola de imagen raw de hello está alineado con 1 MB.</span><span class="sxs-lookup"><span data-stu-id="345a6-339">Make sure that hello size of hello raw image is aligned with 1 MB.</span></span> <span data-ttu-id="345a6-340">En caso contrario, se redondea hacia arriba Hola tamaño tooalign con 1 MB:</span><span class="sxs-lookup"><span data-stu-id="345a6-340">Otherwise, round up hello size tooalign with 1 MB:</span></span>
 
         # MB=$((1024*1024))
         # size=$(qemu-img info -f raw --output json "rhel-6.8.raw" | \
@@ -613,17 +613,17 @@ ms.lasthandoff: 08/18/2017
         # rounded_size=$((($size/$MB + 1)*$MB))
         # qemu-img resize rhel-6.8.raw $rounded_size
 
-    <span data-ttu-id="0e7fc-341">Convierta el disco sin procesar en un disco duro virtual (VHD) de tamaño fijo:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-341">Convert the raw disk to a fixed-sized VHD:</span></span>
+    <span data-ttu-id="345a6-341">Convertir tooa de disco sin procesar de hello fijo-tamaño de disco duro virtual:</span><span class="sxs-lookup"><span data-stu-id="345a6-341">Convert hello raw disk tooa fixed-sized VHD:</span></span>
 
         # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-6.8.raw rhel-6.8.vhd
 
-### <a name="prepare-a-rhel-7-virtual-machine-from-vmware"></a><span data-ttu-id="0e7fc-342">Preparar una máquina virtual RHEL 7 desde VMware</span><span class="sxs-lookup"><span data-stu-id="0e7fc-342">Prepare a RHEL 7 virtual machine from VMware</span></span>
-1. <span data-ttu-id="0e7fc-343">Cree o edite el archivo `/etc/sysconfig/network` y agregue el siguiente texto:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-343">Create or edit the `/etc/sysconfig/network` file, and add the following text:</span></span>
+### <a name="prepare-a-rhel-7-virtual-machine-from-vmware"></a><span data-ttu-id="345a6-342">Preparar una máquina virtual RHEL 7 desde VMware</span><span class="sxs-lookup"><span data-stu-id="345a6-342">Prepare a RHEL 7 virtual machine from VMware</span></span>
+1. <span data-ttu-id="345a6-343">Crear o editar hello `/etc/sysconfig/network` de archivos y agregue Hola siguiente texto:</span><span class="sxs-lookup"><span data-stu-id="345a6-343">Create or edit hello `/etc/sysconfig/network` file, and add hello following text:</span></span>
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-2. <span data-ttu-id="0e7fc-344">Cree o edite el archivo `/etc/sysconfig/network-scripts/ifcfg-eth0` y agregue el siguiente texto:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-344">Create or edit the `/etc/sysconfig/network-scripts/ifcfg-eth0` file, and add the following text:</span></span>
+2. <span data-ttu-id="345a6-344">Crear o editar hello `/etc/sysconfig/network-scripts/ifcfg-eth0` de archivos y agregue Hola siguiente texto:</span><span class="sxs-lookup"><span data-stu-id="345a6-344">Create or edit hello `/etc/sysconfig/network-scripts/ifcfg-eth0` file, and add hello following text:</span></span>
    
         DEVICE=eth0
         ONBOOT=yes
@@ -634,67 +634,67 @@ ms.lasthandoff: 08/18/2017
         IPV6INIT=no
         NM_CONTROLLED=no
 
-3. <span data-ttu-id="0e7fc-345">Asegúrese de que el servicio de red se inicia en el arranque ejecutando el comando siguiente:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-345">Ensure that the network service will start at boot time by running the following command:</span></span>
+3. <span data-ttu-id="345a6-345">Asegúrese de que el servicio de red de Hola se iniciará al arrancar el sistema ejecutando el siguiente comando de hello:</span><span class="sxs-lookup"><span data-stu-id="345a6-345">Ensure that hello network service will start at boot time by running hello following command:</span></span>
 
         # sudo chkconfig network on
 
-4. <span data-ttu-id="0e7fc-346">Registre la suscripción de Red Hat para habilitar la instalación de paquetes desde el repositorio RHEL ejecutando el siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-346">Register your Red Hat subscription to enable the installation of packages from the RHEL repository by running the following command:</span></span>
+4. <span data-ttu-id="345a6-346">Registrar la instalación de Red Hat suscripción tooenable Hola de paquetes del repositorio RHEL Hola ejecutando Hola siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="345a6-346">Register your Red Hat subscription tooenable hello installation of packages from hello RHEL repository by running hello following command:</span></span>
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-5. <span data-ttu-id="0e7fc-347">Modifique la línea de arranque de kernel de su configuración grub para que incluya parámetros de kernel adicionales para Azure.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-347">Modify the kernel boot line in your grub configuration to include additional kernel parameters for Azure.</span></span> <span data-ttu-id="0e7fc-348">Para realizar esta modificación, abra `/etc/default/grub` en un editor de texto y edite el parámetro `GRUB_CMDLINE_LINUX`.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-348">To do this modification, open `/etc/default/grub` in a text editor, and edit the `GRUB_CMDLINE_LINUX` parameter.</span></span> <span data-ttu-id="0e7fc-349">Por ejemplo:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-349">For example:</span></span>
+5. <span data-ttu-id="345a6-347">Modificar línea de arranque de kernel de hello en los parámetros de núcleo adicionales grub tooinclude de configuración de Azure.</span><span class="sxs-lookup"><span data-stu-id="345a6-347">Modify hello kernel boot line in your grub configuration tooinclude additional kernel parameters for Azure.</span></span> <span data-ttu-id="345a6-348">toodo esta modificación, abra `/etc/default/grub` en un editor de texto y editar hello `GRUB_CMDLINE_LINUX` parámetro.</span><span class="sxs-lookup"><span data-stu-id="345a6-348">toodo this modification, open `/etc/default/grub` in a text editor, and edit hello `GRUB_CMDLINE_LINUX` parameter.</span></span> <span data-ttu-id="345a6-349">Por ejemplo:</span><span class="sxs-lookup"><span data-stu-id="345a6-349">For example:</span></span>
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
-   <span data-ttu-id="0e7fc-350">Esta configuración también asegura que todos los mensajes de la consola se envían al primer puerto serie, lo que puede ayudar al soporte técnico de Azure con los problemas de depuración de errores.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-350">This configuration also ensures that all console messages are sent to the first serial port, which can assist Azure support with debugging issues.</span></span> <span data-ttu-id="0e7fc-351">Esto también desactiva las nuevas convenciones de nomenclatura de RHEL 7 para NIC.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-351">It also turns off the new RHEL 7 naming conventions for NICs.</span></span> <span data-ttu-id="0e7fc-352">Además, se recomienda quitar los parámetros siguientes:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-352">In addition, we recommend that you remove the following parameters:</span></span>
+   <span data-ttu-id="345a6-350">Esta configuración también garantiza que todos los mensajes de la consola se envían toohello primer puerto serie, que puede ayudar a Azure compatibilidad con la depuración de problemas.</span><span class="sxs-lookup"><span data-stu-id="345a6-350">This configuration also ensures that all console messages are sent toohello first serial port, which can assist Azure support with debugging issues.</span></span> <span data-ttu-id="345a6-351">También desactiva Hola nuevas RHEL 7 convenciones de nomenclatura para la NIC.</span><span class="sxs-lookup"><span data-stu-id="345a6-351">It also turns off hello new RHEL 7 naming conventions for NICs.</span></span> <span data-ttu-id="345a6-352">Además, se recomienda que quite Hola parámetros siguientes:</span><span class="sxs-lookup"><span data-stu-id="345a6-352">In addition, we recommend that you remove hello following parameters:</span></span>
    
         rhgb quiet crashkernel=auto
    
-    <span data-ttu-id="0e7fc-353">Los arranques gráfico y silencioso no resultan útiles en un entorno de nube, donde queremos que todos los registros se envíen al puerto serie.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-353">Graphical and quiet boot are not useful in a cloud environment where we want all the logs to be sent to the serial port.</span></span> <span data-ttu-id="0e7fc-354">Puede dejar la opción `crashkernel` configurada si lo desea.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-354">You can leave the `crashkernel` option configured if desired.</span></span> <span data-ttu-id="0e7fc-355">Tenga en cuenta que este parámetro reduce la cantidad de memoria disponible en la máquina virtual mediante 128 MB o más, lo que podría resultar problemática en tamaños de máquina virtual más pequeños.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-355">Note that this parameter reduces the amount of available memory in the virtual machine by 128 MB or more, which might be problematic on smaller virtual machine sizes.</span></span>
+    <span data-ttu-id="345a6-353">Arranque gráfica y silencioso no son útiles en un entorno de nube donde se desea que todos los toobe de registros de hello envía toohello de puerto serie.</span><span class="sxs-lookup"><span data-stu-id="345a6-353">Graphical and quiet boot are not useful in a cloud environment where we want all hello logs toobe sent toohello serial port.</span></span> <span data-ttu-id="345a6-354">Puede dejar hello `crashkernel` opción configurado si lo desea.</span><span class="sxs-lookup"><span data-stu-id="345a6-354">You can leave hello `crashkernel` option configured if desired.</span></span> <span data-ttu-id="345a6-355">Tenga en cuenta que este parámetro reduce Hola de memoria disponible en la máquina virtual Hola 128 MB o más, lo que podría resultar problemática en tamaños de máquina virtual más pequeños.</span><span class="sxs-lookup"><span data-stu-id="345a6-355">Note that this parameter reduces hello amount of available memory in hello virtual machine by 128 MB or more, which might be problematic on smaller virtual machine sizes.</span></span>
 
-6. <span data-ttu-id="0e7fc-356">Una vez que termine de editar `/etc/default/grub`, ejecute el comando siguiente para recompilar la configuración de GRUB:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-356">After you are done editing `/etc/default/grub`, run the following command to rebuild the grub configuration:</span></span>
+6. <span data-ttu-id="345a6-356">Una vez que haya edición `/etc/default/grub`, ejecute hello después de la configuración del comando toorebuild Hola grub:</span><span class="sxs-lookup"><span data-stu-id="345a6-356">After you are done editing `/etc/default/grub`, run hello following command toorebuild hello grub configuration:</span></span>
 
         # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
-7. <span data-ttu-id="0e7fc-357">Agregue módulos de Hyper-V a initramfs.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-357">Add Hyper-V modules to initramfs.</span></span>
+7. <span data-ttu-id="345a6-357">Agregar tooinitramfs de módulos de Hyper-V.</span><span class="sxs-lookup"><span data-stu-id="345a6-357">Add Hyper-V modules tooinitramfs.</span></span>
 
-    <span data-ttu-id="0e7fc-358">Edite `/etc/dracut.conf`y agregue contenido:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-358">Edit `/etc/dracut.conf`, add content:</span></span>
+    <span data-ttu-id="345a6-358">Edite `/etc/dracut.conf`y agregue contenido:</span><span class="sxs-lookup"><span data-stu-id="345a6-358">Edit `/etc/dracut.conf`, add content:</span></span>
 
         add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
 
-    <span data-ttu-id="0e7fc-359">Recompile initramfs:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-359">Rebuild initramfs:</span></span>
+    <span data-ttu-id="345a6-359">Recompile initramfs:</span><span class="sxs-lookup"><span data-stu-id="345a6-359">Rebuild initramfs:</span></span>
 
         # dracut -f -v
 
-8. <span data-ttu-id="0e7fc-360">Asegúrese de que el servidor SSH se haya instalado y configurado para iniciarse en el tiempo de arranque.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-360">Ensure that the SSH server is installed and configured to start at boot time.</span></span> <span data-ttu-id="0e7fc-361">Esta configuración es normalmente el valor predeterminado.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-361">This setting is usually the default.</span></span> <span data-ttu-id="0e7fc-362">Modifique `/etc/ssh/sshd_config` para que incluya la siguiente línea:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-362">Modify `/etc/ssh/sshd_config` to include the following line:</span></span>
+8. <span data-ttu-id="345a6-360">Asegúrese de que el servidor SSH Hola se instala y configura toostart al arrancar el sistema.</span><span class="sxs-lookup"><span data-stu-id="345a6-360">Ensure that hello SSH server is installed and configured toostart at boot time.</span></span> <span data-ttu-id="345a6-361">Este valor suele ser predeterminada Hola.</span><span class="sxs-lookup"><span data-stu-id="345a6-361">This setting is usually hello default.</span></span> <span data-ttu-id="345a6-362">Modificar `/etc/ssh/sshd_config` hello tooinclude después de línea:</span><span class="sxs-lookup"><span data-stu-id="345a6-362">Modify `/etc/ssh/sshd_config` tooinclude hello following line:</span></span>
 
         ClientAliveInterval 180
 
-9. <span data-ttu-id="0e7fc-363">El paquete WALinuxAgent `WALinuxAgent-<version>` se ha insertado en el repositorio de extras de Red Hat.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-363">The WALinuxAgent package, `WALinuxAgent-<version>`, has been pushed to the Red Hat extras repository.</span></span> <span data-ttu-id="0e7fc-364">Habilite el repositorio de extras ejecutando el comando siguiente:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-364">Enable the extras repository by running the following command:</span></span>
+9. <span data-ttu-id="345a6-363">paquete de Hello WALinuxAgent, `WALinuxAgent-<version>`, se ha insertado el repositorio de toohello Red Hat extras.</span><span class="sxs-lookup"><span data-stu-id="345a6-363">hello WALinuxAgent package, `WALinuxAgent-<version>`, has been pushed toohello Red Hat extras repository.</span></span> <span data-ttu-id="345a6-364">Habilitar repositorio de extras Hola ejecutando Hola siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="345a6-364">Enable hello extras repository by running hello following command:</span></span>
 
         # subscription-manager repos --enable=rhel-7-server-extras-rpms
 
-10. <span data-ttu-id="0e7fc-365">Instale el Agente de Linux de Azure ejecutando el comando siguiente:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-365">Install the Azure Linux Agent by running the following command:</span></span>
+10. <span data-ttu-id="345a6-365">Instale Hola agente Linux de Azure con hello siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="345a6-365">Install hello Azure Linux Agent by running hello following command:</span></span>
 
         # sudo yum install WALinuxAgent
 
         # sudo systemctl enable waagent.service
 
-11. <span data-ttu-id="0e7fc-366">No cree espacio de intercambio en el disco del sistema operativo.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-366">Do not create swap space on the operating system disk.</span></span>
+11. <span data-ttu-id="345a6-366">No cree el espacio de intercambio en el disco de sistema operativo de Hola.</span><span class="sxs-lookup"><span data-stu-id="345a6-366">Do not create swap space on hello operating system disk.</span></span>
 
-    <span data-ttu-id="0e7fc-367">El Agente de Linux de Azure puede configurar automáticamente un espacio de intercambio usando el disco de recursos local que se adjunta a la máquina virtual, después de que la máquina virtual se aprovisione en Azure.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-367">The Azure Linux Agent can automatically configure swap space by using the local resource disk that is attached to the virtual machine after the virtual machine is provisioned on Azure.</span></span> <span data-ttu-id="0e7fc-368">Tenga en cuenta que el disco de recursos local es un disco temporal que debe vaciarse cuando la máquina virtual se desaprovisiona.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-368">Note that the local resource disk is a temporary disk, and it might be emptied when the virtual machine is deprovisioned.</span></span> <span data-ttu-id="0e7fc-369">Después de instalar el agente de Linux de Azure en el paso anterior, modifique apropiadamente los parámetros siguientes en `/etc/waagent.conf`:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-369">After you install the Azure Linux Agent in the previous step, modify the following parameters in `/etc/waagent.conf` appropriately:</span></span>
+    <span data-ttu-id="345a6-367">Hola agente Linux de Azure puede configurar automáticamente el espacio de intercambio mediante el uso de disco del recurso local Hola que está adjunto toohello virtual machine después de aprovisionar la máquina virtual de hello en Azure.</span><span class="sxs-lookup"><span data-stu-id="345a6-367">hello Azure Linux Agent can automatically configure swap space by using hello local resource disk that is attached toohello virtual machine after hello virtual machine is provisioned on Azure.</span></span> <span data-ttu-id="345a6-368">Tenga en cuenta que hello disco del recurso local es un disco temporal, y puede ser vaciada cuando máquina virtual de hello es deprovisioned.</span><span class="sxs-lookup"><span data-stu-id="345a6-368">Note that hello local resource disk is a temporary disk, and it might be emptied when hello virtual machine is deprovisioned.</span></span> <span data-ttu-id="345a6-369">Después de instalar Hola agente Linux de Azure en el paso anterior de hello, modificar Hola parámetros en siguientes `/etc/waagent.conf` correctamente:</span><span class="sxs-lookup"><span data-stu-id="345a6-369">After you install hello Azure Linux Agent in hello previous step, modify hello following parameters in `/etc/waagent.conf` appropriately:</span></span>
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
         ResourceDisk.MountPoint=/mnt/resource
         ResourceDisk.EnableSwap=y
-        ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+        ResourceDisk.SwapSizeMB=2048    ## NOTE: set this toowhatever you need it toobe.
 
-12. <span data-ttu-id="0e7fc-370">Si quiere anular el registro de la suscripción, ejecute el siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-370">If you want to unregister the subscription, run the following command:</span></span>
+12. <span data-ttu-id="345a6-370">Si desea que toounregister Hola suscripción, ejecute hello siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="345a6-370">If you want toounregister hello subscription, run hello following command:</span></span>
 
         # sudo subscription-manager unregister
 
-13. <span data-ttu-id="0e7fc-371">Ejecute los comandos siguientes para desaprovisionar la máquina virtual y prepararla para aprovisionarse en Azure:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-371">Run the following commands to deprovision the virtual machine and prepare it for provisioning on Azure:</span></span>
+13. <span data-ttu-id="345a6-371">Ejecute hello después de la máquina virtual de comandos toodeprovision hello y prepararlo para el aprovisionamiento en Azure:</span><span class="sxs-lookup"><span data-stu-id="345a6-371">Run hello following commands toodeprovision hello virtual machine and prepare it for provisioning on Azure:</span></span>
 
         # sudo waagent -force -deprovision
 
@@ -702,13 +702,13 @@ ms.lasthandoff: 08/18/2017
 
         # logout
 
-14. <span data-ttu-id="0e7fc-372">Apague la máquina virtual y convierta el archivo VMDK al formato VHD.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-372">Shut down the virtual machine, and convert the VMDK file to the VHD format.</span></span>
+14. <span data-ttu-id="345a6-372">Apagar la máquina virtual de Hola y convertir el formato de disco duro virtual de hello VMDK archivo toohello.</span><span class="sxs-lookup"><span data-stu-id="345a6-372">Shut down hello virtual machine, and convert hello VMDK file toohello VHD format.</span></span>
 
-    <span data-ttu-id="0e7fc-373">Primero convierta la imagen al formato raw:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-373">First convert the image to raw format:</span></span>
+    <span data-ttu-id="345a6-373">Convertir formato de hello imagen tooraw:</span><span class="sxs-lookup"><span data-stu-id="345a6-373">First convert hello image tooraw format:</span></span>
 
         # qemu-img convert -f vmdk -O raw rhel-7.3.vmdk rhel-7.3.raw
 
-    <span data-ttu-id="0e7fc-374">Asegúrese de que el tamaño de la imagen sin procesar está alineado con 1 MB.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-374">Make sure that the size of the raw image is aligned with 1 MB.</span></span> <span data-ttu-id="0e7fc-375">De lo contrario, redondee hacia arriba el tamaño para alinear con 1 MB:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-375">Otherwise, round up the size to align with 1 MB:</span></span>
+    <span data-ttu-id="345a6-374">Asegúrese de que el tamaño Hola de imagen raw de hello está alineado con 1 MB.</span><span class="sxs-lookup"><span data-stu-id="345a6-374">Make sure that hello size of hello raw image is aligned with 1 MB.</span></span> <span data-ttu-id="345a6-375">En caso contrario, se redondea hacia arriba Hola tamaño tooalign con 1 MB:</span><span class="sxs-lookup"><span data-stu-id="345a6-375">Otherwise, round up hello size tooalign with 1 MB:</span></span>
 
         # MB=$((1024*1024))
         # size=$(qemu-img info -f raw --output json "rhel-6.8.raw" | \
@@ -717,14 +717,14 @@ ms.lasthandoff: 08/18/2017
         # rounded_size=$((($size/$MB + 1)*$MB))
         # qemu-img resize rhel-6.8.raw $rounded_size
 
-    <span data-ttu-id="0e7fc-376">Convierta el disco sin procesar en un disco duro virtual (VHD) de tamaño fijo:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-376">Convert the raw disk to a fixed-sized VHD:</span></span>
+    <span data-ttu-id="345a6-376">Convertir tooa de disco sin procesar de hello fijo-tamaño de disco duro virtual:</span><span class="sxs-lookup"><span data-stu-id="345a6-376">Convert hello raw disk tooa fixed-sized VHD:</span></span>
 
         # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-7.3.raw rhel-7.3.vhd
 
-## <a name="prepare-a-red-hat-based-virtual-machine-from-an-iso-by-using-a-kickstart-file-automatically"></a><span data-ttu-id="0e7fc-377">Preparación de una máquina virtual basada en Red Hat desde una imagen ISO con un archivo kickstart automáticamente</span><span class="sxs-lookup"><span data-stu-id="0e7fc-377">Prepare a Red Hat-based virtual machine from an ISO by using a kickstart file automatically</span></span>
-### <a name="prepare-a-rhel-7-virtual-machine-from-a-kickstart-file"></a><span data-ttu-id="0e7fc-378">Preparar una máquina virtual RHEL 7 desde un archivo kickstart</span><span class="sxs-lookup"><span data-stu-id="0e7fc-378">Prepare a RHEL 7 virtual machine from a kickstart file</span></span>
+## <a name="prepare-a-red-hat-based-virtual-machine-from-an-iso-by-using-a-kickstart-file-automatically"></a><span data-ttu-id="345a6-377">Preparación de una máquina virtual basada en Red Hat desde una imagen ISO con un archivo kickstart automáticamente</span><span class="sxs-lookup"><span data-stu-id="345a6-377">Prepare a Red Hat-based virtual machine from an ISO by using a kickstart file automatically</span></span>
+### <a name="prepare-a-rhel-7-virtual-machine-from-a-kickstart-file"></a><span data-ttu-id="345a6-378">Preparar una máquina virtual RHEL 7 desde un archivo kickstart</span><span class="sxs-lookup"><span data-stu-id="345a6-378">Prepare a RHEL 7 virtual machine from a kickstart file</span></span>
 
-1.  <span data-ttu-id="0e7fc-379">Cree un archivo kickstart que incluye el contenido siguiente y guarde el archivo.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-379">Create a kickstart file that includes the following content, and save the file.</span></span> <span data-ttu-id="0e7fc-380">Para obtener información más detallada sobre la instalación de Kickstart, consulte la [guía de instalación de Kickstart](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Installation_Guide/chap-kickstart-installations.html).</span><span class="sxs-lookup"><span data-stu-id="0e7fc-380">For details about kickstart installation, see the [Kickstart Installation Guide](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Installation_Guide/chap-kickstart-installations.html).</span></span>
+1.  <span data-ttu-id="345a6-379">Crear un archivo que incluye Hola siguen contenido y guarde el archivo hello.</span><span class="sxs-lookup"><span data-stu-id="345a6-379">Create a kickstart file that includes hello following content, and save hello file.</span></span> <span data-ttu-id="345a6-380">Para obtener más información acerca de la instalación de comenzar, vea hello [ofrecen Installation Guide](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Installation_Guide/chap-kickstart-installations.html).</span><span class="sxs-lookup"><span data-stu-id="345a6-380">For details about kickstart installation, see hello [Kickstart Installation Guide](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Installation_Guide/chap-kickstart-installations.html).</span></span>
 
         # Kickstart for provisioning a RHEL 7 Azure VM
 
@@ -734,7 +734,7 @@ ms.lasthandoff: 08/18/2017
         # Use graphical install
         text
 
-        # Do not run the Setup Agent on first boot
+        # Do not run hello Setup Agent on first boot
         firstboot --disable
 
         # Keyboard layouts
@@ -758,7 +758,7 @@ ms.lasthandoff: 08/18/2017
         # Partition clearing information
         clearpart --all --initlabel
 
-        # Clear the MBR
+        # Clear hello MBR
         zerombr
 
         # Disk partitioning information
@@ -777,7 +777,7 @@ ms.lasthandoff: 08/18/2017
         # Don't configure X
         skipx
 
-        # Power down the machine after install
+        # Power down hello machine after install
         poweroff
 
         %packages
@@ -812,20 +812,20 @@ ms.lasthandoff: 08/18/2017
         # Enable waaagent at boot-up
         systemctl enable waagent
 
-        # Disable the root account
+        # Disable hello root account
         usermod root -p '!!'
 
         # Configure swap in WALinuxAgent
         sed -i 's/^\(ResourceDisk\.EnableSwap\)=[Nn]$/\1=y/g' /etc/waagent.conf
         sed -i 's/^\(ResourceDisk\.SwapSizeMB\)=[0-9]*$/\1=2048/g' /etc/waagent.conf
 
-        # Set the cmdline
+        # Set hello cmdline
         sed -i 's/^\(GRUB_CMDLINE_LINUX\)=".*"$/\1="console=tty1 console=ttyS0 earlyprintk=ttyS0 rootdelay=300"/g' /etc/default/grub
 
         # Enable SSH keepalive
         sed -i 's/^#\(ClientAliveInterval\).*$/\1 180/g' /etc/ssh/sshd_config
 
-        # Build the grub cfg
+        # Build hello grub cfg
         grub2-mkconfig -o /boot/grub2/grub.cfg
 
         # Configure network
@@ -845,44 +845,44 @@ ms.lasthandoff: 08/18/2017
 
         %end
 
-2. <span data-ttu-id="0e7fc-381">Coloque el archivo kickstart donde el sistema de la instalación puede acceder a él.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-381">Place the kickstart file where the installation system can access it.</span></span>
+2. <span data-ttu-id="345a6-381">Coloque el archivo de Hola que puedan acceder de sistema de la instalación de Hola.</span><span class="sxs-lookup"><span data-stu-id="345a6-381">Place hello kickstart file where hello installation system can access it.</span></span>
 
-3. <span data-ttu-id="0e7fc-382">En el Administrador de Hyper-V, cree una nueva máquina virtual.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-382">In Hyper-V Manager, create a new virtual machine.</span></span> <span data-ttu-id="0e7fc-383">En la página **Conectar disco duro virtual**, seleccione **Exponer un disco duro virtual más adelante** y complete el Asistente para crear nueva máquina virtual.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-383">On the **Connect Virtual Hard Disk** page, select **Attach a virtual hard disk later**, and complete the New Virtual Machine Wizard.</span></span>
+3. <span data-ttu-id="345a6-382">En el Administrador de Hyper-V, cree una nueva máquina virtual.</span><span class="sxs-lookup"><span data-stu-id="345a6-382">In Hyper-V Manager, create a new virtual machine.</span></span> <span data-ttu-id="345a6-383">En hello **conectar disco duro Virtual** página, seleccione **adjuntar un disco duro virtual más tarde**y Hola completo Asistente para nueva máquina Virtual.</span><span class="sxs-lookup"><span data-stu-id="345a6-383">On hello **Connect Virtual Hard Disk** page, select **Attach a virtual hard disk later**, and complete hello New Virtual Machine Wizard.</span></span>
 
-4. <span data-ttu-id="0e7fc-384">Abra la configuración de la máquina virtual:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-384">Open the virtual machine settings:</span></span>
+4. <span data-ttu-id="345a6-384">Abra Configuración de máquina virtual de hello:</span><span class="sxs-lookup"><span data-stu-id="345a6-384">Open hello virtual machine settings:</span></span>
 
-    <span data-ttu-id="0e7fc-385">a.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-385">a.</span></span>  <span data-ttu-id="0e7fc-386">Cargue un nuevo disco duro virtual en la máquina virtual.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-386">Attach a new virtual hard disk to the virtual machine.</span></span> <span data-ttu-id="0e7fc-387">Asegúrese de seleccionar **Formato VHD** y **Tamaño fijo**.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-387">Make sure to select **VHD Format** and **Fixed Size**.</span></span>
+    <span data-ttu-id="345a6-385">a.</span><span class="sxs-lookup"><span data-stu-id="345a6-385">a.</span></span>  <span data-ttu-id="345a6-386">Adjuntar una nueva máquina virtual de toohello de disco duro virtual.</span><span class="sxs-lookup"><span data-stu-id="345a6-386">Attach a new virtual hard disk toohello virtual machine.</span></span> <span data-ttu-id="345a6-387">Asegúrese de que tooselect **formato VHD** y **tamaño fijo**.</span><span class="sxs-lookup"><span data-stu-id="345a6-387">Make sure tooselect **VHD Format** and **Fixed Size**.</span></span>
 
-    <span data-ttu-id="0e7fc-388">b.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-388">b.</span></span>  <span data-ttu-id="0e7fc-389">Adjunte la imagen ISO de instalación a la unidad de DVD.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-389">Attach the installation ISO to the DVD drive.</span></span>
+    <span data-ttu-id="345a6-388">b.</span><span class="sxs-lookup"><span data-stu-id="345a6-388">b.</span></span>  <span data-ttu-id="345a6-389">Adjuntar instalación Hola unidad de DVD de ISO toohello.</span><span class="sxs-lookup"><span data-stu-id="345a6-389">Attach hello installation ISO toohello DVD drive.</span></span>
 
-    <span data-ttu-id="0e7fc-390">c.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-390">c.</span></span>  <span data-ttu-id="0e7fc-391">Configure el BIOS para que arranque desde el CD.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-391">Set the BIOS to boot from CD.</span></span>
+    <span data-ttu-id="345a6-390">c.</span><span class="sxs-lookup"><span data-stu-id="345a6-390">c.</span></span>  <span data-ttu-id="345a6-391">Establecer Hola BIOS tooboot desde el CD.</span><span class="sxs-lookup"><span data-stu-id="345a6-391">Set hello BIOS tooboot from CD.</span></span>
 
-5. <span data-ttu-id="0e7fc-392">Inicie la máquina virtual.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-392">Start the virtual machine.</span></span> <span data-ttu-id="0e7fc-393">Cuando aparezca la guía de instalación, presione la tecla **Tab** para configurar las opciones de arranque.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-393">When the installation guide appears, press **Tab** to configure the boot options.</span></span>
+5. <span data-ttu-id="345a6-392">Inicie la máquina virtual de Hola.</span><span class="sxs-lookup"><span data-stu-id="345a6-392">Start hello virtual machine.</span></span> <span data-ttu-id="345a6-393">Cuando aparezca la Guía de instalación de hello, presione **ficha** opciones de arranque de tooconfigure Hola.</span><span class="sxs-lookup"><span data-stu-id="345a6-393">When hello installation guide appears, press **Tab** tooconfigure hello boot options.</span></span>
 
-6. <span data-ttu-id="0e7fc-394">Escriba `inst.ks=<the location of the kickstart file>` al final de las opciones de arranque y presione **Entrar**.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-394">Enter `inst.ks=<the location of the kickstart file>` at the end of the boot options, and press **Enter**.</span></span>
+6. <span data-ttu-id="345a6-394">ENTRAR `inst.ks=<hello location of hello kickstart file>` final Hola de opciones de arranque de hello y presione **ENTRAR**.</span><span class="sxs-lookup"><span data-stu-id="345a6-394">Enter `inst.ks=<hello location of hello kickstart file>` at hello end of hello boot options, and press **Enter**.</span></span>
 
-7. <span data-ttu-id="0e7fc-395">Espere hasta que la instalación se complete.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-395">Wait for the installation to finish.</span></span> <span data-ttu-id="0e7fc-396">Cuando haya finalizado, la máquina virtual se apagará automáticamente.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-396">When it's finished, the virtual machine will be shut down automatically.</span></span> <span data-ttu-id="0e7fc-397">El VHD de Linux ya está listo para cargarse en Azure.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-397">Your Linux VHD is now ready to be uploaded to Azure.</span></span>
+7. <span data-ttu-id="345a6-395">Espere Hola instalación toofinish.</span><span class="sxs-lookup"><span data-stu-id="345a6-395">Wait for hello installation toofinish.</span></span> <span data-ttu-id="345a6-396">Cuando haya finalizado, máquina virtual de Hola se apagará automáticamente.</span><span class="sxs-lookup"><span data-stu-id="345a6-396">When it's finished, hello virtual machine will be shut down automatically.</span></span> <span data-ttu-id="345a6-397">El VHD de Linux está ahora listo toobe había cargado tooAzure.</span><span class="sxs-lookup"><span data-stu-id="345a6-397">Your Linux VHD is now ready toobe uploaded tooAzure.</span></span>
 
-## <a name="known-issues"></a><span data-ttu-id="0e7fc-398">Problemas conocidos</span><span class="sxs-lookup"><span data-stu-id="0e7fc-398">Known issues</span></span>
-### <a name="the-hyper-v-driver-could-not-be-included-in-the-initial-ram-disk-when-using-a-non-hyper-v-hypervisor"></a><span data-ttu-id="0e7fc-399">El controlador de Hyper-V no se pudo incluir en el disco RAM inicial al usar un hipervisor de Hyper-V</span><span class="sxs-lookup"><span data-stu-id="0e7fc-399">The Hyper-V driver could not be included in the initial RAM disk when using a non-Hyper-V hypervisor</span></span>
+## <a name="known-issues"></a><span data-ttu-id="345a6-398">Problemas conocidos</span><span class="sxs-lookup"><span data-stu-id="345a6-398">Known issues</span></span>
+### <a name="hello-hyper-v-driver-could-not-be-included-in-hello-initial-ram-disk-when-using-a-non-hyper-v-hypervisor"></a><span data-ttu-id="345a6-399">no se pudieron incluir controladores de Hyper-V de Hello en disco RAM inicial de hello cuando se usa un hipervisor de Hyper-V</span><span class="sxs-lookup"><span data-stu-id="345a6-399">hello Hyper-V driver could not be included in hello initial RAM disk when using a non-Hyper-V hypervisor</span></span>
 
-<span data-ttu-id="0e7fc-400">En algunos casos, los instaladores de Linux pueden no incluir los controladores de Hyper-V en el disco RAM inicial (initrd o initramfs) a menos que Linux detecte que se está ejecutando un entorno de Hyper-V.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-400">In some cases, Linux installers might not include the drivers for Hyper-V in the initial RAM disk (initrd or initramfs) unless Linux detects that it is running in a Hyper-V environment.</span></span>
+<span data-ttu-id="345a6-400">En algunos casos, instaladores de Linux no podrían incluir controladores de Hola para Hyper-V en hello inicial disco RAM (initrd o initramfs) a menos que detecte de Linux que se está ejecutando en un entorno de Hyper-V.</span><span class="sxs-lookup"><span data-stu-id="345a6-400">In some cases, Linux installers might not include hello drivers for Hyper-V in hello initial RAM disk (initrd or initramfs) unless Linux detects that it is running in a Hyper-V environment.</span></span>
 
-<span data-ttu-id="0e7fc-401">Cuando utilice un sistema de virtualización diferente (es decir, Virtualbox, KVM, etc.) para preparar su imagen de Linux, puede que necesite recompilar initrd para asegurarse de que al menos los módulos kernel hv_vmbus y hv_storvsc kernel están disponibles en el disco RAM inicial.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-401">When you're using a different virtualization system (that is, Virtualbox, Xen, etc.) to prepare your Linux image, you might need to rebuild initrd to ensure that at least the hv_vmbus and hv_storvsc kernel modules are available on the initial RAM disk.</span></span> <span data-ttu-id="0e7fc-402">Esto es un problema conocido al menos en sistemas basados en el nivel superior de distribución de Red Hat.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-402">This is a known issue at least on systems that are based on the upstream Red Hat distribution.</span></span>
+<span data-ttu-id="345a6-401">Cuando se usa un tooprepare del sistema (es decir, Virtualbox, Xen, etc.) de virtualización distinto la imagen de Linux, deberá toorebuild initrd tooensure que al menos Hola hv_vmbus y los módulos de kernel hv_storvsc están disponibles en el disco RAM inicial de Hola.</span><span class="sxs-lookup"><span data-stu-id="345a6-401">When you're using a different virtualization system (that is, Virtualbox, Xen, etc.) tooprepare your Linux image, you might need toorebuild initrd tooensure that at least hello hv_vmbus and hv_storvsc kernel modules are available on hello initial RAM disk.</span></span> <span data-ttu-id="345a6-402">Esto es un problema conocido al menos en sistemas que se basan en la distribución de Red Hat de nivel superior de Hola.</span><span class="sxs-lookup"><span data-stu-id="345a6-402">This is a known issue at least on systems that are based on hello upstream Red Hat distribution.</span></span>
 
-<span data-ttu-id="0e7fc-403">Para resolver este problema, agregue los módulos de Hyper-V en initramfs y recompilarlo:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-403">To resolve this issue, add Hyper-V modules to initramfs and rebuild it:</span></span>
+<span data-ttu-id="345a6-403">tooresolve este problema, agregue tooinitramfs de módulos de Hyper-V y vuelva a generarlo:</span><span class="sxs-lookup"><span data-stu-id="345a6-403">tooresolve this issue, add Hyper-V modules tooinitramfs and rebuild it:</span></span>
 
-<span data-ttu-id="0e7fc-404">Edite `/etc/dracut.conf` y agregue el siguiente contenido:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-404">Edit `/etc/dracut.conf`, and add the following content:</span></span>
+<span data-ttu-id="345a6-404">Editar `/etc/dracut.conf`y agregue Hola siguen contenido:</span><span class="sxs-lookup"><span data-stu-id="345a6-404">Edit `/etc/dracut.conf`, and add hello following content:</span></span>
 
         add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
 
-<span data-ttu-id="0e7fc-405">Recompile initramfs:</span><span class="sxs-lookup"><span data-stu-id="0e7fc-405">Rebuild initramfs:</span></span>
+<span data-ttu-id="345a6-405">Recompile initramfs:</span><span class="sxs-lookup"><span data-stu-id="345a6-405">Rebuild initramfs:</span></span>
 
         # dracut -f -v
 
-<span data-ttu-id="0e7fc-406">Para obtener más detalles, consulte la información sobre cómo [recompilar initramfs](https://access.redhat.com/solutions/1958).</span><span class="sxs-lookup"><span data-stu-id="0e7fc-406">For more details, see the information about [rebuilding initramfs](https://access.redhat.com/solutions/1958).</span></span>
+<span data-ttu-id="345a6-406">Para obtener más información, vea la información de hello sobre [volver a generar initramfs](https://access.redhat.com/solutions/1958).</span><span class="sxs-lookup"><span data-stu-id="345a6-406">For more details, see hello information about [rebuilding initramfs](https://access.redhat.com/solutions/1958).</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="0e7fc-407">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="0e7fc-407">Next steps</span></span>
-<span data-ttu-id="0e7fc-408">Ya está listo para usar el disco duro virtual de Red Hat Enterprise Linux para crear nuevas máquinas virtuales de Azure.</span><span class="sxs-lookup"><span data-stu-id="0e7fc-408">You're now ready to use your Red Hat Enterprise Linux virtual hard disk to create new virtual machines in Azure.</span></span> <span data-ttu-id="0e7fc-409">Si es la primera vez que carga el archivo .vhd en Azure, consulte los pasos 2 y 3 de [Creación y carga de un disco duro virtual que contiene el sistema operativo Linux](classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="0e7fc-409">If this is the first time that you're uploading the .vhd file to Azure, see steps 2 and 3 in [Creating and uploading a virtual hard disk that contains the Linux operating system](classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).</span></span>
+## <a name="next-steps"></a><span data-ttu-id="345a6-407">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="345a6-407">Next steps</span></span>
+<span data-ttu-id="345a6-408">Se está ahora listo toouse sus Red Hat Enterprise Linux disco duro virtual toocreate nuevas máquinas virtuales en Azure.</span><span class="sxs-lookup"><span data-stu-id="345a6-408">You're now ready toouse your Red Hat Enterprise Linux virtual hard disk toocreate new virtual machines in Azure.</span></span> <span data-ttu-id="345a6-409">Si se trata de hello primera vez que se está cargando tooAzure de archivo .vhd de hello, consulte los pasos 2 y 3 en [crear y cargar un disco duro virtual que contiene el sistema operativo de Linux de hello](classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="345a6-409">If this is hello first time that you're uploading hello .vhd file tooAzure, see steps 2 and 3 in [Creating and uploading a virtual hard disk that contains hello Linux operating system](classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).</span></span>
 
-<span data-ttu-id="0e7fc-410">Para obtener información más detallada sobre los hipervisores certificados para ejecutar Red Hat Enterprise Linux, visite el [sitio web de Red Hat](https://access.redhat.com/certified-hypervisors).</span><span class="sxs-lookup"><span data-stu-id="0e7fc-410">For more details about the hypervisors that are certified to run Red Hat Enterprise Linux, see [the Red Hat website](https://access.redhat.com/certified-hypervisors).</span></span>
+<span data-ttu-id="345a6-410">Para obtener más detalles sobre los hipervisores de Hola que están certificación toorun Red Hat Enterprise Linux, consulte [sitio Web de Red Hat hello](https://access.redhat.com/certified-hypervisors).</span><span class="sxs-lookup"><span data-stu-id="345a6-410">For more details about hello hypervisors that are certified toorun Red Hat Enterprise Linux, see [hello Red Hat website](https://access.redhat.com/certified-hypervisors).</span></span>

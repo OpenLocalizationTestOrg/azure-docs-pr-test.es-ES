@@ -1,0 +1,10 @@
+1. <span data-ttu-id="ba546-101">Hola abrir Administrador de Android SDK, haga clic en el icono de hello en la barra de herramientas de Hola de Android Studio o haciendo clic en **herramientas** > **Android** > **SDK Manager**en el menú de Hola.</span><span class="sxs-lookup"><span data-stu-id="ba546-101">Open hello Android SDK Manager by clicking hello icon on hello toolbar of Android Studio, or by clicking **Tools** > **Android** > **SDK Manager** on hello menu.</span></span> <span data-ttu-id="ba546-102">Haga clic en hello **iniciar Administrador de SDK independiente** vínculo.</span><span class="sxs-lookup"><span data-stu-id="ba546-102">Click hello **Launch Standalone SDK Manager** link.</span></span>
+2. <span data-ttu-id="ba546-103">Busque la versión de destino de Hola de hello SDK de Android que se usa en el proyecto y ábralo.</span><span class="sxs-lookup"><span data-stu-id="ba546-103">Locate hello target version of hello Android SDK that is used in your project, and open it.</span></span> <span data-ttu-id="ba546-104">Si las **API de Google** no están instaladas aún, selecciónelas y haga clic en **Instalar paquetes...**.</span><span class="sxs-lookup"><span data-stu-id="ba546-104">If **Google APIs** is not already installed, then select it and click **Install packages...**.</span></span>
+3. <span data-ttu-id="ba546-105">En Android Studio, elija **Archivo** > **Estructura de proyecto**.</span><span class="sxs-lookup"><span data-stu-id="ba546-105">In Android Studio, choose **File** > **Project Structure**.</span></span> <span data-ttu-id="ba546-106">Seleccione **Notificaciones**, seleccione **Google Cloud Messaging** y, después, haga clic en **Aceptar**.</span><span class="sxs-lookup"><span data-stu-id="ba546-106">Select **Notifications**, select **Google Cloud Messaging**, and then click **OK**.</span></span>
+
+<!--
+3. Open **AndroidManifest.xml** and add this tag toohello *application* tag.
+
+        <meta-data android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+-->

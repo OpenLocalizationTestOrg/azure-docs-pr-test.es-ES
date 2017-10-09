@@ -1,0 +1,9 @@
+## <a name="scenario"></a><span data-ttu-id="8560b-101">Escenario</span><span class="sxs-lookup"><span data-stu-id="8560b-101">Scenario</span></span>
+<span data-ttu-id="8560b-102">Este documento le guiará a través de una implementación que use una dirección IP pública estática asignada de la máquina virtual (VM) de tooa.</span><span class="sxs-lookup"><span data-stu-id="8560b-102">This document will walk through a deployment that uses a static public IP address allocated tooa virtual machine (VM).</span></span> <span data-ttu-id="8560b-103">En este escenario, tiene una sola máquina virtual con su propia dirección IP pública estática.</span><span class="sxs-lookup"><span data-stu-id="8560b-103">In this scenario, you have a single VM with its own static public IP address.</span></span> <span data-ttu-id="8560b-104">Hola VM forma parte de una subred denominada **front-end** y también tiene una dirección IP privada estática (**192.168.1.101**) en esa subred.</span><span class="sxs-lookup"><span data-stu-id="8560b-104">hello VM is part of a subnet named **FrontEnd** and also has a static private IP address (**192.168.1.101**) in that subnet.</span></span>
+
+<span data-ttu-id="8560b-105">Necesite una dirección IP estática para los servidores web que requieren conexiones SSL en qué Hola SSL certificado está vinculado tooan IP dirección.</span><span class="sxs-lookup"><span data-stu-id="8560b-105">You may need a static IP address for web servers that require SSL connections in which hello SSL certificate is linked tooan IP address.</span></span> 
+
+![DESCRIPCIÓN DE LA IMAGEN](./media/virtual-network-deploy-static-pip-scenario-include/figure1.png)
+
+<span data-ttu-id="8560b-107">Puede seguir pasos de hello debajo de entorno de hello toodeploy que se muestra en figura Hola anterior.</span><span class="sxs-lookup"><span data-stu-id="8560b-107">You can follow hello steps below toodeploy hello environment shown in hello figure above.</span></span>
+

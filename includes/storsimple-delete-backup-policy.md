@@ -1,0 +1,10 @@
+
+<!--author=SharS last changed: 11/06/15-->
+
+#### <a name="toodelete-a-storsimple-backup-policy"></a><span data-ttu-id="ce1b6-101">toodelete una directiva de copia de seguridad de StorSimple</span><span class="sxs-lookup"><span data-stu-id="ce1b6-101">toodelete a StorSimple backup policy</span></span>
+1. <span data-ttu-id="ce1b6-102">En el dispositivo de hello **inicio rápido** página, haga clic en hello **directivas de copia de seguridad** ficha. Esto le llevará toohello **directivas de copia de seguridad** página.</span><span class="sxs-lookup"><span data-stu-id="ce1b6-102">On hello device **Quick Start** page, click hello **Backup Policies** tab. This will take you toohello **Backup Policies** page.</span></span>
+2. <span data-ttu-id="ce1b6-103">Seleccione la directiva de hello haciendo clic en cualquier parte en la fila correspondiente, Hola excepto la primera columna de hello y, a continuación, haga clic en **eliminar** final Hola de página Hola.</span><span class="sxs-lookup"><span data-stu-id="ce1b6-103">Select hello policy by clicking anywhere in hello corresponding row except for hello first column, and then click **Delete** at hello bottom of hello page.</span></span>
+3. <span data-ttu-id="ce1b6-104">Se le pedirá confirmación.</span><span class="sxs-lookup"><span data-stu-id="ce1b6-104">You will be prompted for confirmation.</span></span> <span data-ttu-id="ce1b6-105">Tenga en cuenta que al eliminar una directiva de copia de seguridad eliminará Hola todas las copias de seguridad asociadas.</span><span class="sxs-lookup"><span data-stu-id="ce1b6-105">Keep in mind that deleting a backup policy will delete all hello associated backups.</span></span> <span data-ttu-id="ce1b6-106">Haga clic en **Sí** toodelete.</span><span class="sxs-lookup"><span data-stu-id="ce1b6-106">Click **Yes** toodelete.</span></span>
+
+<span data-ttu-id="ce1b6-107">Hola **directivas de copia de seguridad** página será la nueva lista de directivas de Hola de toodisplay actualizada.</span><span class="sxs-lookup"><span data-stu-id="ce1b6-107">hello **Backup Policies** page will be updated toodisplay hello new list of policies.</span></span>
+

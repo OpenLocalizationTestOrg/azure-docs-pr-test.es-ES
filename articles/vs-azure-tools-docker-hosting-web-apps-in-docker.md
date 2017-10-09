@@ -1,6 +1,6 @@
 ---
-title: "Implementación de un contenedor de Docker de ASP.NET Core para Linux en un host remoto de Docker | Microsoft Docs"
-description: "Aprenda a usar Visual Studio Tools para Docker para implementar una aplicación web de ASP.NET Core en un contenedor de Docker que se ejecute en una máquina virtual Linux de host de Docker de Azure"
+title: un host remoto de Docker de ASP.NET Core Linux Docker contenedor tooa aaaDeploy | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toouse Visual Studio Tools para Docker toodeploy un núcleo de ASP.NET web app tooa Docker que se ejecutan en una máquina virtual Linux de Host de Azure Docker"
 services: azure-container-service
 documentationcenter: .net
 author: mlearned
@@ -14,40 +14,40 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/08/2016
 ms.author: mlearned
-ms.openlocfilehash: 4a87ee69f23779bf4f6f5db40bc05edbcfc7668d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 27b0c6420628c73220200bc071b47a4cd89fff58
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="deploy-an-aspnet-container-to-a-remote-docker-host"></a><span data-ttu-id="d11f4-103">Implementación de un contenedor ASP.NET en un host remoto de Docker</span><span class="sxs-lookup"><span data-stu-id="d11f4-103">Deploy an ASP.NET container to a remote Docker host</span></span>
-## <a name="overview"></a><span data-ttu-id="d11f4-104">Información general</span><span class="sxs-lookup"><span data-stu-id="d11f4-104">Overview</span></span>
-<span data-ttu-id="d11f4-105">Docker es un motor de contenedor ligero, semejante de alguna manera a una máquina virtual, que puede utilizar para hospedar aplicaciones y servicios.</span><span class="sxs-lookup"><span data-stu-id="d11f4-105">Docker is a lightweight container engine, similar in some ways to a virtual machine, which you can use to host applications and services.</span></span>
-<span data-ttu-id="d11f4-106">Este tutorial le guiará a través del uso de la extensión de [Visual Studio Tools para Docker](https://docs.microsoft.com/en-us/dotnet/articles/core/docker/visual-studio-tools-for-docker) para implementar una aplicación ASP.NET Core en un host de Docker en Azure mediante PowerShell.</span><span class="sxs-lookup"><span data-stu-id="d11f4-106">This tutorial walks you through using the [Visual Studio Tools for Docker](https://docs.microsoft.com/en-us/dotnet/articles/core/docker/visual-studio-tools-for-docker) extension to deploy an ASP.NET Core app to a Docker host on Azure using PowerShell.</span></span>
+# <a name="deploy-an-aspnet-container-tooa-remote-docker-host"></a><span data-ttu-id="ded9a-103">Implementar un host remoto de Docker ASP.NET contenedor tooa</span><span class="sxs-lookup"><span data-stu-id="ded9a-103">Deploy an ASP.NET container tooa remote Docker host</span></span>
+## <a name="overview"></a><span data-ttu-id="ded9a-104">Información general</span><span class="sxs-lookup"><span data-stu-id="ded9a-104">Overview</span></span>
+<span data-ttu-id="ded9a-105">Docker es un motor ligero de contenedor, similar en algunas máquinas virtuales de tooa de formas, que puede usar toohost aplicaciones y servicios.</span><span class="sxs-lookup"><span data-stu-id="ded9a-105">Docker is a lightweight container engine, similar in some ways tooa virtual machine, which you can use toohost applications and services.</span></span>
+<span data-ttu-id="ded9a-106">Este tutorial le guía a través mediante hello [Visual Studio Tools para Docker](https://docs.microsoft.com/en-us/dotnet/articles/core/docker/visual-studio-tools-for-docker) extensión toodeploy un host de Docker de tooa de aplicación de ASP.NET Core en Azure con PowerShell.</span><span class="sxs-lookup"><span data-stu-id="ded9a-106">This tutorial walks you through using hello [Visual Studio Tools for Docker](https://docs.microsoft.com/en-us/dotnet/articles/core/docker/visual-studio-tools-for-docker) extension toodeploy an ASP.NET Core app tooa Docker host on Azure using PowerShell.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="d11f4-107">Requisitos previos</span><span class="sxs-lookup"><span data-stu-id="d11f4-107">Prerequisites</span></span>
-<span data-ttu-id="d11f4-108">El siguiente requisito es necesario para completar este tutorial:</span><span class="sxs-lookup"><span data-stu-id="d11f4-108">The following is required to complete this tutorial:</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="ded9a-107">Requisitos previos</span><span class="sxs-lookup"><span data-stu-id="ded9a-107">Prerequisites</span></span>
+<span data-ttu-id="ded9a-108">siguiente Hello es necesario toocomplete este tutorial:</span><span class="sxs-lookup"><span data-stu-id="ded9a-108">hello following is required toocomplete this tutorial:</span></span>
 
-* <span data-ttu-id="d11f4-109">Crear una VM de host de Docker de Azure tal y como se describe en [Uso de una máquina de Docker con el controlador de Azure](virtual-machines/linux/docker-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)</span><span class="sxs-lookup"><span data-stu-id="d11f4-109">Create an Azure Docker Host VM as described in [How to use docker-machine with Azure](virtual-machines/linux/docker-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)</span></span>
-* <span data-ttu-id="d11f4-110">Instalar la versión más reciente de [Visual Studio](https://www.visualstudio.com/downloads/)</span><span class="sxs-lookup"><span data-stu-id="d11f4-110">Install the latest version of [Visual Studio](https://www.visualstudio.com/downloads/)</span></span>
-* <span data-ttu-id="d11f4-111">Descargar [SDK de Microsoft ASP.NET Core 1.0](https://go.microsoft.com/fwlink/?LinkID=809122)</span><span class="sxs-lookup"><span data-stu-id="d11f4-111">Download the [Microsoft ASP.NET Core 1.0 SDK](https://go.microsoft.com/fwlink/?LinkID=809122)</span></span>
-* <span data-ttu-id="d11f4-112">Instalar [Docker para Windows](https://docs.docker.com/docker-for-windows/install/)</span><span class="sxs-lookup"><span data-stu-id="d11f4-112">Install [Docker for Windows](https://docs.docker.com/docker-for-windows/install/)</span></span>
+* <span data-ttu-id="ded9a-109">Crear una máquina virtual de Azure Docker Host como se describe en [cómo máquina docker toouse con Azure](virtual-machines/linux/docker-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)</span><span class="sxs-lookup"><span data-stu-id="ded9a-109">Create an Azure Docker Host VM as described in [How toouse docker-machine with Azure](virtual-machines/linux/docker-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)</span></span>
+* <span data-ttu-id="ded9a-110">Instalar la versión más reciente de Hola de [Visual Studio](https://www.visualstudio.com/downloads/)</span><span class="sxs-lookup"><span data-stu-id="ded9a-110">Install hello latest version of [Visual Studio](https://www.visualstudio.com/downloads/)</span></span>
+* <span data-ttu-id="ded9a-111">Descargar hello [Microsoft ASP.NET Core 1.0 SDK](https://go.microsoft.com/fwlink/?LinkID=809122)</span><span class="sxs-lookup"><span data-stu-id="ded9a-111">Download hello [Microsoft ASP.NET Core 1.0 SDK](https://go.microsoft.com/fwlink/?LinkID=809122)</span></span>
+* <span data-ttu-id="ded9a-112">Instalar [Docker para Windows](https://docs.docker.com/docker-for-windows/install/)</span><span class="sxs-lookup"><span data-stu-id="ded9a-112">Install [Docker for Windows](https://docs.docker.com/docker-for-windows/install/)</span></span>
 
-## <a name="1-create-an-aspnet-core-web-app"></a><span data-ttu-id="d11f4-113">1. Cree una aplicación web ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="d11f4-113">1. Create an ASP.NET Core web app</span></span>
-<span data-ttu-id="d11f4-114">Los siguientes pasos le guían en el proceso de creación de una aplicación ASP.NET Core básica que se usará en este tutorial.</span><span class="sxs-lookup"><span data-stu-id="d11f4-114">The following steps guide you through creating a basic ASP.NET Core app that will be used in this tutorial.</span></span>
+## <a name="1-create-an-aspnet-core-web-app"></a><span data-ttu-id="ded9a-113">1. Cree una aplicación web ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="ded9a-113">1. Create an ASP.NET Core web app</span></span>
+<span data-ttu-id="ded9a-114">Hello pasos siguientes le ayudarán a crear una aplicación de ASP.NET Core básica que se usará en este tutorial.</span><span class="sxs-lookup"><span data-stu-id="ded9a-114">hello following steps guide you through creating a basic ASP.NET Core app that will be used in this tutorial.</span></span>
 
 [!INCLUDE [create-aspnet5-app](../includes/create-aspnet5-app.md)]
 
-## <a name="2-add-docker-support"></a><span data-ttu-id="d11f4-115">2. Agregue compatibilidad con Docker</span><span class="sxs-lookup"><span data-stu-id="d11f4-115">2. Add Docker support</span></span>
+## <a name="2-add-docker-support"></a><span data-ttu-id="ded9a-115">2. Agregue compatibilidad con Docker</span><span class="sxs-lookup"><span data-stu-id="ded9a-115">2. Add Docker support</span></span>
 [!INCLUDE [create-aspnet5-app](../includes/vs-azure-tools-docker-add-docker-support.md)]
 
-## <a name="3-use-the-dockertaskps1-powershell-script"></a><span data-ttu-id="d11f4-116">3. Use el script de PowerShell DockerTask.ps1</span><span class="sxs-lookup"><span data-stu-id="d11f4-116">3. Use the DockerTask.ps1 PowerShell Script</span></span>
-1. <span data-ttu-id="d11f4-117">Abra un símbolo del sistema de PowerShell en el directorio raíz del proyecto.</span><span class="sxs-lookup"><span data-stu-id="d11f4-117">Open a PowerShell prompt to the root directory of your project.</span></span> 
+## <a name="3-use-hello-dockertaskps1-powershell-script"></a><span data-ttu-id="ded9a-116">3. Usar Script de PowerShell DockerTask.ps1 hello</span><span class="sxs-lookup"><span data-stu-id="ded9a-116">3. Use hello DockerTask.ps1 PowerShell Script</span></span>
+1. <span data-ttu-id="ded9a-117">Abra un directorio de raíz de PowerShell toohello símbolo del sistema del proyecto.</span><span class="sxs-lookup"><span data-stu-id="ded9a-117">Open a PowerShell prompt toohello root directory of your project.</span></span> 
    
    ```
    PS C:\Src\WebApplication1>
    ```
-2. <span data-ttu-id="d11f4-118">Asegúrese de que el host remoto se está ejecutando.</span><span class="sxs-lookup"><span data-stu-id="d11f4-118">Validate the remote host is running.</span></span> <span data-ttu-id="d11f4-119">Debería ver el estado = En ejecución</span><span class="sxs-lookup"><span data-stu-id="d11f4-119">You should see state = Running</span></span> 
+2. <span data-ttu-id="ded9a-118">Validar Hola remoto host se está ejecutando.</span><span class="sxs-lookup"><span data-stu-id="ded9a-118">Validate hello remote host is running.</span></span> <span data-ttu-id="ded9a-119">Debería ver el estado = En ejecución</span><span class="sxs-lookup"><span data-stu-id="ded9a-119">You should see state = Running</span></span> 
    
    ```
    docker-machine ls
@@ -55,7 +55,7 @@ ms.lasthandoff: 07/11/2017
    MyDockerHost -        azure    Running   tcp://xxx.xxx.xxx.xxx:2376         v1.10.3
    ```
    
-3. <span data-ttu-id="d11f4-120">Compile la aplicación con el parámetro -Build</span><span class="sxs-lookup"><span data-stu-id="d11f4-120">Build the app using the -Build parameter</span></span>
+3. <span data-ttu-id="ded9a-120">Aplicación Hola de compilación con Hola - parámetro de compilación</span><span class="sxs-lookup"><span data-stu-id="ded9a-120">Build hello app using hello -Build parameter</span></span>
    
    ```
    PS C:\Src\WebApplication1> .\Docker\DockerTask.ps1 -Build -Environment Release -Machine mydockerhost
@@ -66,7 +66,7 @@ ms.lasthandoff: 07/11/2017
    > ```  
    > 
    > 
-4. <span data-ttu-id="d11f4-121">Ejecute la aplicación mediante el parámetro -Run</span><span class="sxs-lookup"><span data-stu-id="d11f4-121">Run the app, using the -Run parameter</span></span>
+4. <span data-ttu-id="ded9a-121">Ejecutar la aplicación hello, utilizando Hola - parámetro de ejecución</span><span class="sxs-lookup"><span data-stu-id="ded9a-121">Run hello app, using hello -Run parameter</span></span>
    
    ```
    PS C:\Src\WebApplication1> .\Docker\DockerTask.ps1 -Run -Environment Release -Machine mydockerhost
@@ -78,7 +78,7 @@ ms.lasthandoff: 07/11/2017
    > 
    > 
    
-   <span data-ttu-id="d11f4-122">Una vez que Docker termina, debería ver resultados similares a los siguientes:</span><span class="sxs-lookup"><span data-stu-id="d11f4-122">Once docker completes, you should see results similar to the following:</span></span>
+   <span data-ttu-id="ded9a-122">Una vez completada la docker, debería ver resultados similares toohello siguiente:</span><span class="sxs-lookup"><span data-stu-id="ded9a-122">Once docker completes, you should see results similar toohello following:</span></span>
    
    ![Vea la aplicación.][3]
 

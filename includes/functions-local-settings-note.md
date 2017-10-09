@@ -1,0 +1,2 @@
+>[!Note]
+> <span data-ttu-id="82cb8-101">Se recomienda usar una cuenta de Azure Storage al desarrollar de forma local.</span><span class="sxs-lookup"><span data-stu-id="82cb8-101">We recommend that you use an Azure Storage account when developing locally.</span></span> <span data-ttu-id="82cb8-102">No se admite el uso de hello emulador de almacenamiento de Azure con herramientas de funciones de Azure.</span><span class="sxs-lookup"><span data-stu-id="82cb8-102">Use of hello Azure Storage Emulator is not supported by Azure Functions tools.</span></span>

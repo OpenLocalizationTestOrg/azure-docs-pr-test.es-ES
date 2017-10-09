@@ -1,0 +1,5 @@
+> [!IMPORTANT]
+> <span data-ttu-id="8e25c-101">Cuando se trabaja con subredes de puerta de enlace, evite asociar una subred de puerta de enlace de seguridad (NSG) del grupo toohello.</span><span class="sxs-lookup"><span data-stu-id="8e25c-101">When working with gateway subnets, avoid associating a network security group (NSG) toohello gateway subnet.</span></span> <span data-ttu-id="8e25c-102">Asociar una subred de toothis del grupo de seguridad de red puede provocar la toostop de puerta de enlace VPN que funciona según lo previsto.</span><span class="sxs-lookup"><span data-stu-id="8e25c-102">Associating a network security group toothis subnet may cause your VPN gateway toostop functioning as expected.</span></span> <span data-ttu-id="8e25c-103">Para más información acerca de los grupos de seguridad de red, consulte [¿Qué es un grupo de seguridad de red?](../articles/virtual-network/virtual-networks-nsg.md)</span><span class="sxs-lookup"><span data-stu-id="8e25c-103">For more information about network security groups, see [What is a network security group?](../articles/virtual-network/virtual-networks-nsg.md)</span></span>
+> 
+> 
+

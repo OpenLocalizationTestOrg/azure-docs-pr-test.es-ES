@@ -1,0 +1,8 @@
+<span data-ttu-id="3b0d0-101">Hola siguiendo los límites se aplica solo cuando se usa hello Azure Resource Manager y grupos de recursos de Azure.</span><span class="sxs-lookup"><span data-stu-id="3b0d0-101">hello following limits apply when using hello Azure Resource Manager and Azure Resource Groups only.</span></span>
+
+| <span data-ttu-id="3b0d0-102">Recurso</span><span class="sxs-lookup"><span data-stu-id="3b0d0-102">Resource</span></span> | <span data-ttu-id="3b0d0-103">Límite predeterminado</span><span class="sxs-lookup"><span data-stu-id="3b0d0-103">Default Limit</span></span> |
+| --- | --- |
+| <span data-ttu-id="3b0d0-104">Operaciones de administración de la cuenta de almacenamiento (lectura)</span><span class="sxs-lookup"><span data-stu-id="3b0d0-104">Storage account management operations (read)</span></span> |<span data-ttu-id="3b0d0-105">800 por cada 5 minutos</span><span class="sxs-lookup"><span data-stu-id="3b0d0-105">800 per 5 minutes</span></span> |
+| <span data-ttu-id="3b0d0-106">Operaciones de administración de la cuenta de almacenamiento (escritura)</span><span class="sxs-lookup"><span data-stu-id="3b0d0-106">Storage account management operations (write)</span></span> |<span data-ttu-id="3b0d0-107">200 por hora</span><span class="sxs-lookup"><span data-stu-id="3b0d0-107">200 per hour</span></span> |
+| <span data-ttu-id="3b0d0-108">Operaciones de administración de la cuenta de almacenamiento (lista)</span><span class="sxs-lookup"><span data-stu-id="3b0d0-108">Storage account management operations (list)</span></span> |<span data-ttu-id="3b0d0-109">100 por cada 5 minutos</span><span class="sxs-lookup"><span data-stu-id="3b0d0-109">100 per 5 minutes</span></span> |
+

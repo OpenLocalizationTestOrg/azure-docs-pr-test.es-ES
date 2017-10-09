@@ -1,6 +1,6 @@
 ---
-title: "Instalación de la CLI de DC/OS | Microsoft Docs"
-description: Instale la CLI de DC/OS.
+title: Hola aaaInstall DC/OS CLI | Documentos de Microsoft
+description: Instalar Hola DC/OS CLI.
 services: container-service
 documentationcenter: 
 author: rgardler
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/10/2016
 ms.author: rogardle
-ms.openlocfilehash: a8ea47f158c0d666340815d2e039995c7483257f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b077c05beff9a5638486ea5efe9df31089e32701
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 > [!NOTE]
-> <span data-ttu-id="48681-104">Este procedimiento se usa para trabajar con clústeres ACS basados en DC/OS.</span><span class="sxs-lookup"><span data-stu-id="48681-104">This is for working with DC/OS-based ACS clusters.</span></span> <span data-ttu-id="48681-105">No es necesario realizarlo en clústeres ACS basados en Swarm.</span><span class="sxs-lookup"><span data-stu-id="48681-105">There is no need to do this for Swarm-based ACS clusters.</span></span>
+> <span data-ttu-id="cdee5-104">Este procedimiento se usa para trabajar con clústeres ACS basados en DC/OS.</span><span class="sxs-lookup"><span data-stu-id="cdee5-104">This is for working with DC/OS-based ACS clusters.</span></span> <span data-ttu-id="cdee5-105">No hay ninguna necesidad de toodo esto para los clústeres de ACS basado en el conjunto de.</span><span class="sxs-lookup"><span data-stu-id="cdee5-105">There is no need toodo this for Swarm-based ACS clusters.</span></span>
 > 
 > 
 
-<span data-ttu-id="48681-106">En primer lugar, [conéctese a su clúster ACS basado en DC/OS](../articles/container-service/container-service-connect.md).</span><span class="sxs-lookup"><span data-stu-id="48681-106">First, [connect to your DC/OS-based ACS cluster](../articles/container-service/container-service-connect.md).</span></span> <span data-ttu-id="48681-107">Una vez que haya hecho esto, puede instalar la CLI de DC/OS en el equipo cliente con los siguientes comandos:</span><span class="sxs-lookup"><span data-stu-id="48681-107">Once you have done this, you can install the DC/OS CLI on your client machine with the commands below:</span></span>
+<span data-ttu-id="cdee5-106">En primer lugar, [conectar tooyour basadas en DC/OS ACS clúster](../articles/container-service/container-service-connect.md).</span><span class="sxs-lookup"><span data-stu-id="cdee5-106">First, [connect tooyour DC/OS-based ACS cluster](../articles/container-service/container-service-connect.md).</span></span> <span data-ttu-id="cdee5-107">Cuando lo haya hecho esto, puede instalar Hola DC/OS CLI en el equipo cliente con comandos de hello siguientes:</span><span class="sxs-lookup"><span data-stu-id="cdee5-107">Once you have done this, you can install hello DC/OS CLI on your client machine with hello commands below:</span></span>
 
 ```bash
 sudo pip install virtualenv
@@ -36,17 +36,17 @@ chmod +x install-optout-dcos-cli.sh
 ./install-optout-dcos-cli.sh . http://localhost --add-path yes
 ```
 
-<span data-ttu-id="48681-108">Si usa una versión antigua de Python, puede que observe algunos mensajes "InsecurePlatformWarnings".</span><span class="sxs-lookup"><span data-stu-id="48681-108">If you are using an old version of Python, you may notice some "InsecurePlatformWarnings".</span></span> <span data-ttu-id="48681-109">Puede omitir estos errores con seguridad.</span><span class="sxs-lookup"><span data-stu-id="48681-109">You can safely ignore these.</span></span>
+<span data-ttu-id="cdee5-108">Si usa una versión antigua de Python, puede que observe algunos mensajes "InsecurePlatformWarnings".</span><span class="sxs-lookup"><span data-stu-id="cdee5-108">If you are using an old version of Python, you may notice some "InsecurePlatformWarnings".</span></span> <span data-ttu-id="cdee5-109">Puede omitir estos errores con seguridad.</span><span class="sxs-lookup"><span data-stu-id="cdee5-109">You can safely ignore these.</span></span>
 
-<span data-ttu-id="48681-110">Para empezar a trabajar sin necesidad de reiniciar el shell, ejecute:</span><span class="sxs-lookup"><span data-stu-id="48681-110">In order to get started without restarting your shell, run:</span></span>
+<span data-ttu-id="cdee5-110">En orden tooget iniciado sin necesidad de reiniciar el shell, ejecute:</span><span class="sxs-lookup"><span data-stu-id="cdee5-110">In order tooget started without restarting your shell, run:</span></span>
 
 ```bash
 source ~/.bashrc
 ```
 
-<span data-ttu-id="48681-111">Este paso no será necesario si inicia shells nuevos.</span><span class="sxs-lookup"><span data-stu-id="48681-111">This step will not be necessary when you start new shells.</span></span>
+<span data-ttu-id="cdee5-111">Este paso no será necesario si inicia shells nuevos.</span><span class="sxs-lookup"><span data-stu-id="cdee5-111">This step will not be necessary when you start new shells.</span></span>
 
-<span data-ttu-id="48681-112">Ahora puede confirmar que la CLI está instalada:</span><span class="sxs-lookup"><span data-stu-id="48681-112">Now you can confirm that the CLI is installed:</span></span>
+<span data-ttu-id="cdee5-112">Ahora puede confirmar que Hola que CLI está instalado:</span><span class="sxs-lookup"><span data-stu-id="cdee5-112">Now you can confirm that hello CLI is installed:</span></span>
 
 ```bash
 dcos --help

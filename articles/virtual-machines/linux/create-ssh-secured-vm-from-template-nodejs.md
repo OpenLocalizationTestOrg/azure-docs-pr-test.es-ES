@@ -1,6 +1,6 @@
 ---
-title: "Creación de una máquina virtual Linux mediante una plantilla de Azure con la CLI de Azure 1.0 | Microsoft Docs"
-description: "En este artículo se explica cómo crear una máquina virtual Linux en Azure mediante una plantilla de Azure Resource Manager y la CLI de Azure 1.0."
+title: aaaCreate una VM de Linux con una plantilla de Azure 1.0 de CLI de Azure | Documentos de Microsoft
+description: Crear una VM de Linux en Azure con hello 1.0 de CLI de Azure y una plantilla de Azure Resource Manager.
 services: virtual-machines-linux
 documentationcenter: 
 author: vlivech
@@ -16,28 +16,28 @@ ms.topic: article
 ms.date: 05/12/2017
 ms.author: v-livech
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 33d4aaa78fcdf3bd9e2e236606f2d3049f464a8a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b694cc8247a8431b7ef4b24cc7dc2b4cdb9660ac
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-create-a-linux-vm-using-the-azure-cli-10-an-azure-resource-manager-template"></a><span data-ttu-id="72c38-103">Procedimiento para crear una máquina virtual Linux mediante una plantilla de Azure Resource Manager y la CLI de Azure 1.0</span><span class="sxs-lookup"><span data-stu-id="72c38-103">How to create a Linux VM using the Azure CLI 1.0 an Azure Resource Manager template</span></span>
-<span data-ttu-id="72c38-104">En este artículo se muestra cómo implementar rápidamente una máquina virtual Linux con plantillas de Azure Resource Manager y la CLI de Azure 1.0.</span><span class="sxs-lookup"><span data-stu-id="72c38-104">This article shows you how to quickly deploy a Linux Virtual Machine using the Azure CLI 1.0 and an Azure Resource Manager template.</span></span> <span data-ttu-id="72c38-105">Este artículo requiere:</span><span class="sxs-lookup"><span data-stu-id="72c38-105">The article requires:</span></span>
+# <a name="how-toocreate-a-linux-vm-using-hello-azure-cli-10-an-azure-resource-manager-template"></a><span data-ttu-id="b9390-103">¿Cómo toocreate una VM de Linux con hello Azure CLI 1.0 una plantilla de Azure Resource Manager</span><span class="sxs-lookup"><span data-stu-id="b9390-103">How toocreate a Linux VM using hello Azure CLI 1.0 an Azure Resource Manager template</span></span>
+<span data-ttu-id="b9390-104">Este artículo muestra cómo tooquickly implementar una máquina Virtual de Linux con hello 1.0 de CLI de Azure y una plantilla de Azure Resource Manager.</span><span class="sxs-lookup"><span data-stu-id="b9390-104">This article shows you how tooquickly deploy a Linux Virtual Machine using hello Azure CLI 1.0 and an Azure Resource Manager template.</span></span> <span data-ttu-id="b9390-105">Hola artículo requiere:</span><span class="sxs-lookup"><span data-stu-id="b9390-105">hello article requires:</span></span>
 
-* <span data-ttu-id="72c38-106">una cuenta de Azure ([obtenga aquí una prueba gratuita](https://azure.microsoft.com/pricing/free-trial/));</span><span class="sxs-lookup"><span data-stu-id="72c38-106">an Azure account ([get a free trial](https://azure.microsoft.com/pricing/free-trial/)).</span></span>
-* <span data-ttu-id="72c38-107">la [CLI de Azure 1.0](../../cli-install-nodejs.md) en la que se inició sesión con `azure login`;</span><span class="sxs-lookup"><span data-stu-id="72c38-107">the [Azure CLI 1.0](../../cli-install-nodejs.md) logged in with `azure login`.</span></span>
-* <span data-ttu-id="72c38-108">la CLI de Azure *debe estar en* el modo Azure Resource Manager `azure config mode arm`.</span><span class="sxs-lookup"><span data-stu-id="72c38-108">the Azure CLI *must be in* Azure Resource Manager mode `azure config mode arm`.</span></span>
+* <span data-ttu-id="b9390-106">una cuenta de Azure ([obtenga aquí una prueba gratuita](https://azure.microsoft.com/pricing/free-trial/));</span><span class="sxs-lookup"><span data-stu-id="b9390-106">an Azure account ([get a free trial](https://azure.microsoft.com/pricing/free-trial/)).</span></span>
+* <span data-ttu-id="b9390-107">Hola [Azure CLI 1.0](../../cli-install-nodejs.md) inició sesión `azure login`.</span><span class="sxs-lookup"><span data-stu-id="b9390-107">hello [Azure CLI 1.0](../../cli-install-nodejs.md) logged in with `azure login`.</span></span>
+* <span data-ttu-id="b9390-108">Hola CLI de Azure *debe estar en* modo Azure Resource Manager `azure config mode arm`.</span><span class="sxs-lookup"><span data-stu-id="b9390-108">hello Azure CLI *must be in* Azure Resource Manager mode `azure config mode arm`.</span></span>
 
-<span data-ttu-id="72c38-109">También puede implementar rápidamente una plantilla de máquina virtual Linux mediante [Azure Portal](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="72c38-109">You can also quickly deploy a Linux VM template by using the [Azure portal](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span></span>
+<span data-ttu-id="b9390-109">Puede implementar rápidamente una plantilla de VM de Linux mediante el uso de hello [portal de Azure](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="b9390-109">You can also quickly deploy a Linux VM template by using hello [Azure portal](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span></span>
 
-## <a name="cli-versions-to-complete-the-task"></a><span data-ttu-id="72c38-110">Versiones de la CLI para completar la tarea</span><span class="sxs-lookup"><span data-stu-id="72c38-110">CLI versions to complete the task</span></span>
-<span data-ttu-id="72c38-111">Puede completar la tarea mediante una de las siguientes versiones de la CLI:</span><span class="sxs-lookup"><span data-stu-id="72c38-111">You can complete the task using one of the following CLI versions:</span></span>
+## <a name="cli-versions-toocomplete-hello-task"></a><span data-ttu-id="b9390-110">Tarea CLI versiones toocomplete hello</span><span class="sxs-lookup"><span data-stu-id="b9390-110">CLI versions toocomplete hello task</span></span>
+<span data-ttu-id="b9390-111">Puede completar la tarea hello mediante uno de hello después de las versiones CLI:</span><span class="sxs-lookup"><span data-stu-id="b9390-111">You can complete hello task using one of hello following CLI versions:</span></span>
 
-- <span data-ttu-id="72c38-112">[CLI de Azure 1.0](#quick-command-summary): la CLI para los modelos de implementación clásico y de Resource Manager (este artículo)</span><span class="sxs-lookup"><span data-stu-id="72c38-112">[Azure CLI 1.0](#quick-command-summary) – our CLI for the classic and resource management deployment models (this article)</span></span>
-- <span data-ttu-id="72c38-113">[CLI de Azure 2.0](create-ssh-secured-vm-from-template.md): la CLI de última generación para el modelo de implementación de administración de recursos</span><span class="sxs-lookup"><span data-stu-id="72c38-113">[Azure CLI 2.0](create-ssh-secured-vm-from-template.md) - our next generation CLI for the resource management deployment model</span></span>
+- <span data-ttu-id="b9390-112">[Azure 1.0 de CLI](#quick-command-summary) – nuestro CLI para hello clásico y recursos administración modelos de implementación (en este artículo)</span><span class="sxs-lookup"><span data-stu-id="b9390-112">[Azure CLI 1.0](#quick-command-summary) – our CLI for hello classic and resource management deployment models (this article)</span></span>
+- <span data-ttu-id="b9390-113">[Azure 2.0 CLI](create-ssh-secured-vm-from-template.md) -nuestro CLI de próxima generación para el modelo de implementación de administración de recursos de Hola</span><span class="sxs-lookup"><span data-stu-id="b9390-113">[Azure CLI 2.0](create-ssh-secured-vm-from-template.md) - our next generation CLI for hello resource management deployment model</span></span>
 
-## <a name="quick-command-summary"></a><span data-ttu-id="72c38-114">Resumen rápido de comandos</span><span class="sxs-lookup"><span data-stu-id="72c38-114">Quick Command Summary</span></span>
+## <a name="quick-command-summary"></a><span data-ttu-id="b9390-114">Resumen rápido de comandos</span><span class="sxs-lookup"><span data-stu-id="b9390-114">Quick Command Summary</span></span>
 ```azurecli
 azure group create \
     -n myResourceGroup \
@@ -45,13 +45,13 @@ azure group create \
     --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json
 ```
 
-## <a name="detailed-walkthrough"></a><span data-ttu-id="72c38-115">Tutorial detallado</span><span class="sxs-lookup"><span data-stu-id="72c38-115">Detailed Walkthrough</span></span>
-<span data-ttu-id="72c38-116">Las plantillas permiten crear máquinas virtuales en Azure con la configuración que desea personalizar durante el inicio, por ejemplo, nombres de usuario y nombres de host.</span><span class="sxs-lookup"><span data-stu-id="72c38-116">Templates allow you to create VMs on Azure with settings that you want to customize during the launch, settings like usernames and hostnames.</span></span> <span data-ttu-id="72c38-117">En este artículo, hemos iniciado una plantilla de Azure mediante una máquina virtual de Ubuntu junto con un grupo de seguridad de red (NSG) con el puerto 22 abierto para SSH.</span><span class="sxs-lookup"><span data-stu-id="72c38-117">For this article, we are launching an Azure template utilizing an Ubuntu VM along with a network security group (NSG) with port 22 open for SSH.</span></span>
+## <a name="detailed-walkthrough"></a><span data-ttu-id="b9390-115">Tutorial detallado</span><span class="sxs-lookup"><span data-stu-id="b9390-115">Detailed Walkthrough</span></span>
+<span data-ttu-id="b9390-116">Las plantillas permiten toocreate las máquinas virtuales en Azure con la configuración que desee toocustomize durante el inicio de hello, opciones, como nombres de usuario y los nombres de host.</span><span class="sxs-lookup"><span data-stu-id="b9390-116">Templates allow you toocreate VMs on Azure with settings that you want toocustomize during hello launch, settings like usernames and hostnames.</span></span> <span data-ttu-id="b9390-117">En este artículo, hemos iniciado una plantilla de Azure mediante una máquina virtual de Ubuntu junto con un grupo de seguridad de red (NSG) con el puerto 22 abierto para SSH.</span><span class="sxs-lookup"><span data-stu-id="b9390-117">For this article, we are launching an Azure template utilizing an Ubuntu VM along with a network security group (NSG) with port 22 open for SSH.</span></span>
 
-<span data-ttu-id="72c38-118">Las plantillas de Azure Resource Manager son archivos JSON que se pueden usar para tareas sencillas y excepcionales, como iniciar una máquina virtual de Ubuntu, como lo hizo en este artículo.</span><span class="sxs-lookup"><span data-stu-id="72c38-118">Azure Resource Manager templates are JSON files that can be used for simple one-off tasks like launching an Ubuntu VM as done in this article.</span></span>  <span data-ttu-id="72c38-119">Las plantillas de Azure también se pueden utilizar para crear configuraciones de Azure complejas de entornos completos como una pila de implementación de prueba, desarrollo o producción.</span><span class="sxs-lookup"><span data-stu-id="72c38-119">Azure Templates can also be used to construct complex Azure configurations of entire environments like a testing, dev, or production deployment stack.</span></span>
+<span data-ttu-id="b9390-118">Las plantillas de Azure Resource Manager son archivos JSON que se pueden usar para tareas sencillas y excepcionales, como iniciar una máquina virtual de Ubuntu, como lo hizo en este artículo.</span><span class="sxs-lookup"><span data-stu-id="b9390-118">Azure Resource Manager templates are JSON files that can be used for simple one-off tasks like launching an Ubuntu VM as done in this article.</span></span>  <span data-ttu-id="b9390-119">Plantillas de Azure también pueden ser configuraciones complejas de Azure usa tooconstruct de entornos completas como una pila de implementación de prueba, desarrollo o de producción.</span><span class="sxs-lookup"><span data-stu-id="b9390-119">Azure Templates can also be used tooconstruct complex Azure configurations of entire environments like a testing, dev, or production deployment stack.</span></span>
 
-## <a name="create-the-linux-vm"></a><span data-ttu-id="72c38-120">Creación de la máquina virtual de Linux</span><span class="sxs-lookup"><span data-stu-id="72c38-120">Create the Linux VM</span></span>
-<span data-ttu-id="72c38-121">El ejemplo de código siguiente muestra cómo llamar a `azure group create` para crear un grupo de recursos e implementar una máquina virtual Linux protegida por SSH al mismo tiempo mediante [esta plantilla de Azure Resource Manager](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json).</span><span class="sxs-lookup"><span data-stu-id="72c38-121">The following code example shows how to call `azure group create` to create a resource group and deploy an SSH-secured Linux VM at the same time using [this Azure Resource Manager template](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json).</span></span> <span data-ttu-id="72c38-122">En el ejemplo, recuerde que debe usar nombres que sean únicos en su entorno.</span><span class="sxs-lookup"><span data-stu-id="72c38-122">Remember that in your example you need to use names that are unique to your environment.</span></span> <span data-ttu-id="72c38-123">En este ejemplo se usa *myResourceGroup* como nombre del grupo de recursos, y *myVM* como nombre de la máquina virtual.</span><span class="sxs-lookup"><span data-stu-id="72c38-123">This example uses *myResourceGroup* as the resource group name, and *myVM* as the VM name.</span></span>
+## <a name="create-hello-linux-vm"></a><span data-ttu-id="b9390-120">Crear hello VM de Linux</span><span class="sxs-lookup"><span data-stu-id="b9390-120">Create hello Linux VM</span></span>
+<span data-ttu-id="b9390-121">Hola siguiendo el ejemplo de código muestra cómo toocall `azure group create` toocreate un recurso de grupo e implementar una VM de Linux protegidas mediante SSH en hello mismo tiempo, use [esta plantilla de Azure Resource Manager](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json).</span><span class="sxs-lookup"><span data-stu-id="b9390-121">hello following code example shows how toocall `azure group create` toocreate a resource group and deploy an SSH-secured Linux VM at hello same time using [this Azure Resource Manager template](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json).</span></span> <span data-ttu-id="b9390-122">Recuerde que en el ejemplo, es preciso nombres toouse tooyour único entorno.</span><span class="sxs-lookup"><span data-stu-id="b9390-122">Remember that in your example you need toouse names that are unique tooyour environment.</span></span> <span data-ttu-id="b9390-123">Este ejemplo se utiliza *myResourceGroup* como nombre de grupo de recursos de hello, y *myVM* como nombre de la máquina virtual de Hola.</span><span class="sxs-lookup"><span data-stu-id="b9390-123">This example uses *myResourceGroup* as hello resource group name, and *myVM* as hello VM name.</span></span>
 
 ```azurecli
 azure group create \
@@ -60,14 +60,14 @@ azure group create \
     --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json
 ```
 
-<span data-ttu-id="72c38-124">La salida debe tener un aspecto similar al siguiente bloque de salida:</span><span class="sxs-lookup"><span data-stu-id="72c38-124">The output should look like the following output block:</span></span>
+<span data-ttu-id="b9390-124">salida de Hello debería ser similar Hola siguiente bloque de salida:</span><span class="sxs-lookup"><span data-stu-id="b9390-124">hello output should look like hello following output block:</span></span>
 
 ```azurecli
 info:    Executing command group create
 + Getting resource group myResourceGroup
 + Creating resource group myResourceGroup
 info:    Created resource group myResourceGroup
-info:    Supply values for the following parameters
+info:    Supply values for hello following parameters
 sshKeyData: ssh-rsa AAAAB3Nza<..ssh public key text..>VQgwjNjQ== myAdminUser@myVM
 + Initializing template configurations and parameters
 + Creating a deployment
@@ -81,8 +81,8 @@ data:
 info:    group create command OK
 ```
 
-<span data-ttu-id="72c38-125">Ese ejemplo implementó una máquina virtual mediante el parámetro `--template-uri` .</span><span class="sxs-lookup"><span data-stu-id="72c38-125">That example deployed a VM using the `--template-uri` parameter.</span></span>  <span data-ttu-id="72c38-126">Puede también descargar o crear una plantilla localmente y pasar la plantilla con el parámetro `--template-file` , indicando la ruta de acceso al archivo de plantilla como argumento.</span><span class="sxs-lookup"><span data-stu-id="72c38-126">You can also download or create a template locally and pass the template using the `--template-file` parameter with a path to the template file as an argument.</span></span> <span data-ttu-id="72c38-127">La CLI de Azure le pide que especifique los parámetros requeridos por la plantilla.</span><span class="sxs-lookup"><span data-stu-id="72c38-127">The Azure CLI prompts you for the parameters required by the template.</span></span>
+<span data-ttu-id="b9390-125">En el ejemplo que se implementa una máquina virtual mediante hello `--template-uri` parámetro.</span><span class="sxs-lookup"><span data-stu-id="b9390-125">That example deployed a VM using hello `--template-uri` parameter.</span></span>  <span data-ttu-id="b9390-126">También puede descargar o crear una plantilla de forma local y pasar la plantilla de hello con hello `--template-file` parámetro con un archivo de plantilla de ruta de acceso toohello como un argumento.</span><span class="sxs-lookup"><span data-stu-id="b9390-126">You can also download or create a template locally and pass hello template using hello `--template-file` parameter with a path toohello template file as an argument.</span></span> <span data-ttu-id="b9390-127">Hola CLI de Azure le pide parámetros de hello requeridos por plantilla de Hola.</span><span class="sxs-lookup"><span data-stu-id="b9390-127">hello Azure CLI prompts you for hello parameters required by hello template.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="72c38-128">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="72c38-128">Next steps</span></span>
-<span data-ttu-id="72c38-129">Busque en la [galería de plantillas](https://azure.microsoft.com/documentation/templates/) para ver qué entornos de aplicación implementará después.</span><span class="sxs-lookup"><span data-stu-id="72c38-129">Search the [templates gallery](https://azure.microsoft.com/documentation/templates/) to discover what app frameworks to deploy next.</span></span>
+## <a name="next-steps"></a><span data-ttu-id="b9390-128">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="b9390-128">Next steps</span></span>
+<span data-ttu-id="b9390-129">Hola de búsqueda [Galería de plantillas](https://azure.microsoft.com/documentation/templates/) toodiscover qué toodeploy de marcos de aplicación siguiente.</span><span class="sxs-lookup"><span data-stu-id="b9390-129">Search hello [templates gallery](https://azure.microsoft.com/documentation/templates/) toodiscover what app frameworks toodeploy next.</span></span>
 

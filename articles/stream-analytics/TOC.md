@@ -24,9 +24,9 @@
 ### [Integración de las UDF de JavaScript](stream-analytics-javascript-user-defined-functions.md)
 ### [Integración de la API de REST y Machine Learning](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
 ### [Creación de salidas](stream-analytics-define-outputs.md)
-### [Uso de Azure Functions como destino](stream-analytics-functions-redis.md)
-### [Uso de Data Lake Store como destino](stream-analytics-data-lake-output.md)
-### [Uso de DocumentDB como destino](stream-analytics-documentdb-output.md)
+### [Funciones de salida tooAzure](stream-analytics-functions-redis.md)
+### [Almacén de salida tooData Lake](stream-analytics-data-lake-output.md)
+### [TooDocumentDB de salida](stream-analytics-documentdb-output.md)
 
 ## Supervisión y optimización
 ### [Adición de alertas](stream-analytics-set-up-alerts.md)
@@ -34,7 +34,7 @@
 ### [Supervisión de trabajos mediante programación](stream-analytics-monitor-jobs.md)
 ### [Supervisión de trabajos con PowerShell](stream-analytics-monitor-and-manage-jobs-use-powershell.md)
 ### [Optimización de unidades de streaming](stream-analytics-streaming-unit-consumption.md)
-### [Escala para aumentar el rendimiento](stream-analytics-scale-jobs.md)
+### [Rendimiento de tooincrease de escala](stream-analytics-scale-jobs.md)
 ### [Escala con funciones de Machine Learning](stream-analytics-scale-with-machine-learning-functions.md)
 
 ## Administrar
@@ -52,7 +52,7 @@
 
 ## Automatizar
 ### [Herramientas para Visual Studio](stream-analytics-tools-for-visual-studio.md)
-### [Uso del SDK .NET de administración](stream-analytics-dotnet-management-sdk.md)
+### [Usar hello administración .NET SDK](stream-analytics-dotnet-management-sdk.md)
 ### [One click de PowerShell](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick)
 
 # Referencia

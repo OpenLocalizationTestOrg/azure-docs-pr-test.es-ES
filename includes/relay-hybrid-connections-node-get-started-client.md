@@ -1,14 +1,14 @@
-### <a name="create-a-nodejs-application"></a><span data-ttu-id="57164-101">Creación de una aplicación Node.js</span><span class="sxs-lookup"><span data-stu-id="57164-101">Create a Node.js application</span></span>
+### <a name="create-a-nodejs-application"></a><span data-ttu-id="9d8e8-101">Creación de una aplicación Node.js</span><span class="sxs-lookup"><span data-stu-id="9d8e8-101">Create a Node.js application</span></span>
 
-<span data-ttu-id="57164-102">Cree un nuevo archivo JavaScript denominado `sender.js`.</span><span class="sxs-lookup"><span data-stu-id="57164-102">Create a new JavaScript file called `sender.js`.</span></span>
+<span data-ttu-id="9d8e8-102">Cree un nuevo archivo JavaScript denominado `sender.js`.</span><span class="sxs-lookup"><span data-stu-id="9d8e8-102">Create a new JavaScript file called `sender.js`.</span></span>
 
-### <a name="add-the-relay-npm-package"></a><span data-ttu-id="57164-103">Adición del paquete Relay NPM</span><span class="sxs-lookup"><span data-stu-id="57164-103">Add the Relay NPM package</span></span>
+### <a name="add-hello-relay-npm-package"></a><span data-ttu-id="9d8e8-103">Agregar paquete de retransmisión NPM Hola</span><span class="sxs-lookup"><span data-stu-id="9d8e8-103">Add hello Relay NPM package</span></span>
 
-<span data-ttu-id="57164-104">Ejecute `npm install hyco-ws` desde un símbolo del sistema del nodo en la carpeta del proyecto.</span><span class="sxs-lookup"><span data-stu-id="57164-104">Run `npm install hyco-ws` from a Node command prompt in your project folder.</span></span>
+<span data-ttu-id="9d8e8-104">Ejecute `npm install hyco-ws` desde un símbolo del sistema del nodo en la carpeta del proyecto.</span><span class="sxs-lookup"><span data-stu-id="9d8e8-104">Run `npm install hyco-ws` from a Node command prompt in your project folder.</span></span>
 
-### <a name="write-some-code-to-send-messages"></a><span data-ttu-id="57164-105">Escritura de código para enviar mensajes</span><span class="sxs-lookup"><span data-stu-id="57164-105">Write some code to send messages</span></span>
+### <a name="write-some-code-toosend-messages"></a><span data-ttu-id="9d8e8-105">Escribir un cierto código toosend mensajes</span><span class="sxs-lookup"><span data-stu-id="9d8e8-105">Write some code toosend messages</span></span>
 
-1. <span data-ttu-id="57164-106">Agregue lo siguiente `constants` en la parte superior del archivo `sender.js`.</span><span class="sxs-lookup"><span data-stu-id="57164-106">Add the following `constants` to the top of the `sender.js` file.</span></span>
+1. <span data-ttu-id="9d8e8-106">Agregue los siguiente hello `constants` toohello arriba del programa Hola a `sender.js` archivo.</span><span class="sxs-lookup"><span data-stu-id="9d8e8-106">Add hello following `constants` toohello top of hello `sender.js` file.</span></span>
    
     ```js
     const WebSocket = require('hyco-ws');
@@ -18,14 +18,14 @@
             output: process.stdout
         });;
     ```
-2. <span data-ttu-id="57164-107">Agregue la siguientes constantes al archivo `sender.js` para los detalles de la conexión híbrida.</span><span class="sxs-lookup"><span data-stu-id="57164-107">Add the following constants to the `sender.js` file for the hybrid connection details.</span></span> <span data-ttu-id="57164-108">Reemplace los marcadores de posición entre corchetes por los valores que obtuvo al crear la conexión híbrida.</span><span class="sxs-lookup"><span data-stu-id="57164-108">Replace the placeholders in brackets with the values you obtained when you created the hybrid connection.</span></span>
+2. <span data-ttu-id="9d8e8-107">Agregar Hola siguientes constantes toohello `sender.js` en el archivo de conexión híbrida Hola.</span><span class="sxs-lookup"><span data-stu-id="9d8e8-107">Add hello following constants toohello `sender.js` file for hello hybrid connection details.</span></span> <span data-ttu-id="9d8e8-108">Reemplace los marcadores de posición de hello corchetes con valores de hello que obtuvo al crear conexión híbrida de Hola.</span><span class="sxs-lookup"><span data-stu-id="9d8e8-108">Replace hello placeholders in brackets with hello values you obtained when you created hello hybrid connection.</span></span>
    
-   1. <span data-ttu-id="57164-109">`const ns`: el espacio de nombres de Relay.</span><span class="sxs-lookup"><span data-stu-id="57164-109">`const ns` - The Relay namespace.</span></span> <span data-ttu-id="57164-110">Asegúrese de utilizar el nombre de espacio de nombres completo; por ejemplo, `{namespace}.servicebus.windows.net`.</span><span class="sxs-lookup"><span data-stu-id="57164-110">Be sure to use the fully qualified namespace name; for example, `{namespace}.servicebus.windows.net`.</span></span>
-   2. <span data-ttu-id="57164-111">`const path`: el nombre de la conexión híbrida.</span><span class="sxs-lookup"><span data-stu-id="57164-111">`const path` - The name of the hybrid connection.</span></span>
-   3. <span data-ttu-id="57164-112">`const keyrule`: el nombre de la clave SAS.</span><span class="sxs-lookup"><span data-stu-id="57164-112">`const keyrule` - The name of the SAS key.</span></span>
-   4. <span data-ttu-id="57164-113">`const key`: el valor de la clave SAS.</span><span class="sxs-lookup"><span data-stu-id="57164-113">`const key` - The SAS key value.</span></span>
+   1. <span data-ttu-id="9d8e8-109">`const ns`-Hola espacio de nombres de retransmisión.</span><span class="sxs-lookup"><span data-stu-id="9d8e8-109">`const ns` - hello Relay namespace.</span></span> <span data-ttu-id="9d8e8-110">Ser nombre de espacio de nombres completo de hello toouse seguro; Por ejemplo, `{namespace}.servicebus.windows.net`.</span><span class="sxs-lookup"><span data-stu-id="9d8e8-110">Be sure toouse hello fully qualified namespace name; for example, `{namespace}.servicebus.windows.net`.</span></span>
+   2. <span data-ttu-id="9d8e8-111">`const path`-nombre de Hola de conexión híbrida de Hola.</span><span class="sxs-lookup"><span data-stu-id="9d8e8-111">`const path` - hello name of hello hybrid connection.</span></span>
+   3. <span data-ttu-id="9d8e8-112">`const keyrule`-nombre de Hola de clave SAS de Hola.</span><span class="sxs-lookup"><span data-stu-id="9d8e8-112">`const keyrule` - hello name of hello SAS key.</span></span>
+   4. <span data-ttu-id="9d8e8-113">`const key`-Hola valor de clave de SAS.</span><span class="sxs-lookup"><span data-stu-id="9d8e8-113">`const key` - hello SAS key value.</span></span>
 
-3. <span data-ttu-id="57164-114">Agregue el siguiente código al archivo `sender.js`:</span><span class="sxs-lookup"><span data-stu-id="57164-114">Add the following code to the `sender.js` file:</span></span>
+3. <span data-ttu-id="9d8e8-114">Agregar Hola después código toohello `sender.js` archivo:</span><span class="sxs-lookup"><span data-stu-id="9d8e8-114">Add hello following code toohello `sender.js` file:</span></span>
    
     ```js
     WebSocket.relayedConnect(
@@ -44,7 +44,7 @@
         }
     );
     ```
-    <span data-ttu-id="57164-115">Este es el aspecto que debería tener el archivo sender.js:</span><span class="sxs-lookup"><span data-stu-id="57164-115">Here is what your sender.js file should look like:</span></span>
+    <span data-ttu-id="9d8e8-115">Este es el aspecto que debería tener el archivo sender.js:</span><span class="sxs-lookup"><span data-stu-id="9d8e8-115">Here is what your sender.js file should look like:</span></span>
    
     ```js
     const WebSocket = require('hyco-ws');
