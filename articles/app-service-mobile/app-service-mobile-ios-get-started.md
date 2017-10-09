@@ -1,6 +1,6 @@
 ---
-title: "Creación de una aplicación de iOS en Azure App Service Mobile Apps | Microsoft Docs"
-description: "Siga este tutorial para aprender a usar back-ends de la aplicación móvil de Azure para el desarrollo de iOS en Objective-C o Swift."
+title: "aaaCreate una aplicación de iOS en aplicaciones de Mobile de servicio de aplicación de Azure | Documentos de Microsoft"
+description: "Siga este tutorial tooget Introducción al uso de back-ends de aplicaciones móviles Azure para desarrollo de iOS en Objective-C o Swift"
 services: app-service\mobile
 documentationcenter: ios
 author: ggailey777
@@ -14,27 +14,27 @@ ms.devlang: objective-c
 ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: glenga
-ms.openlocfilehash: 36936ae66c458fcbedeec95cfa2f573a40c8af53
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 869fa971f7b5ab4a7119bbfa92808185d2ecdf8a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-an-ios-app"></a><span data-ttu-id="69705-103">Creación de una aplicación iOS</span><span class="sxs-lookup"><span data-stu-id="69705-103">Create an iOS app</span></span>
+# <a name="create-an-ios-app"></a><span data-ttu-id="fc060-103">Creación de una aplicación iOS</span><span class="sxs-lookup"><span data-stu-id="fc060-103">Create an iOS app</span></span>
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
-## <a name="overview"></a><span data-ttu-id="69705-104">Información general</span><span class="sxs-lookup"><span data-stu-id="69705-104">Overview</span></span>
-<span data-ttu-id="69705-105">En este tutorial se muestra cómo agregar [Aplicaciones móviles de Azure](app-service-mobile-value-prop.md), un servicio back-end basado en la nube, a una aplicación de iOS.</span><span class="sxs-lookup"><span data-stu-id="69705-105">This tutorial shows how to add [Azure Mobile Apps](app-service-mobile-value-prop.md), a cloud backend service, to an iOS app.</span></span> <span data-ttu-id="69705-106">En primer lugar, vamos a crear un nuevo back-end móvil.</span><span class="sxs-lookup"><span data-stu-id="69705-106">We'll first create a new mobile backend.</span></span> <span data-ttu-id="69705-107">Después, usaremos una sencilla aplicación de iOS de *lista de tareas* para almacenar datos en Azure.</span><span class="sxs-lookup"><span data-stu-id="69705-107">Then, we'll use a simple *Todo list* iOS app to store data in Azure.</span></span>
+## <a name="overview"></a><span data-ttu-id="fc060-104">Información general</span><span class="sxs-lookup"><span data-stu-id="fc060-104">Overview</span></span>
+<span data-ttu-id="fc060-105">Este tutorial se muestra cómo tooadd [aplicaciones móviles de Azure](app-service-mobile-value-prop.md), un servicio back-end de nube, la aplicación de iOS de tooan.</span><span class="sxs-lookup"><span data-stu-id="fc060-105">This tutorial shows how tooadd [Azure Mobile Apps](app-service-mobile-value-prop.md), a cloud backend service, tooan iOS app.</span></span> <span data-ttu-id="fc060-106">En primer lugar, vamos a crear un nuevo back-end móvil.</span><span class="sxs-lookup"><span data-stu-id="fc060-106">We'll first create a new mobile backend.</span></span> <span data-ttu-id="fc060-107">A continuación, vamos a usar un sencillo *lista de tareas* toostore datos de aplicación de iOS en Azure.</span><span class="sxs-lookup"><span data-stu-id="fc060-107">Then, we'll use a simple *Todo list* iOS app toostore data in Azure.</span></span>
 
-<span data-ttu-id="69705-108">Para completar este tutorial, es preciso tener un Mac y una [cuenta de Azure](https://azure.microsoft.com/pricing/free-trial/)</span><span class="sxs-lookup"><span data-stu-id="69705-108">To complete this tutorial, you need a Mac and [an Azure account](https://azure.microsoft.com/pricing/free-trial/)</span></span>
+<span data-ttu-id="fc060-108">toocomplete este tutorial, necesita un equipo Mac y [una cuenta de Azure](https://azure.microsoft.com/pricing/free-trial/)</span><span class="sxs-lookup"><span data-stu-id="fc060-108">toocomplete this tutorial, you need a Mac and [an Azure account](https://azure.microsoft.com/pricing/free-trial/)</span></span>
 
-## <a name="step-i-create-a-new-azure-mobile-app-backend"></a><span data-ttu-id="69705-109">Paso 1: Creación de un nuevo back-end de Aplicaciones móviles de Azure</span><span class="sxs-lookup"><span data-stu-id="69705-109">Step I: Create a new Azure mobile app backend</span></span>
+## <a name="step-i-create-a-new-azure-mobile-app-backend"></a><span data-ttu-id="fc060-109">Paso 1: Creación de un nuevo back-end de Aplicaciones móviles de Azure</span><span class="sxs-lookup"><span data-stu-id="fc060-109">Step I: Create a new Azure mobile app backend</span></span>
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-## <a name="step-ii-configure-the-backend-project"></a><span data-ttu-id="69705-110">Paso 2: Configuración del proyecto de back-end</span><span class="sxs-lookup"><span data-stu-id="69705-110">Step II: Configure the backend project</span></span>
+## <a name="step-ii-configure-hello-backend-project"></a><span data-ttu-id="fc060-110">Paso II: Configurar el proyecto de back-end de Hola</span><span class="sxs-lookup"><span data-stu-id="fc060-110">Step II: Configure hello backend project</span></span>
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="step-iii-download-and-run-the-ios-app"></a><span data-ttu-id="69705-111">Paso 3: Descarga y ejecución de la aplicación iOS</span><span class="sxs-lookup"><span data-stu-id="69705-111">Step III: Download and run the iOS app</span></span>
+## <a name="step-iii-download-and-run-hello-ios-app"></a><span data-ttu-id="fc060-111">Paso III: Descargue y ejecute la aplicación de iOS de hello</span><span class="sxs-lookup"><span data-stu-id="fc060-111">Step III: Download and run hello iOS app</span></span>
 [!INCLUDE [app-service-mobile-ios-run-app](../../includes/app-service-mobile-ios-run-app.md)]
 
 <!-- URLs -->

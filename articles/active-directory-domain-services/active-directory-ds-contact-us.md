@@ -1,6 +1,6 @@
 ---
 title: 'Azure Active Directory Domain Services: contacto | Microsoft Docs'
-description: "Póngase en contacto con el equipo de productos de Servicios de dominio de Azure AD"
+description: "Póngase en contacto con el equipo de producto de servicios de dominio de AD de Azure Hola"
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2017
 ms.author: maheshu
-ms.openlocfilehash: 0a4a08a58302c113405756ad7d3bb6487887a72a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 7a23d50a392549f6c7e1182bcd9a328a28e74bff
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-ad-domain-services---contact-us"></a><span data-ttu-id="f6b92-103">Azure AD Domain Services: contacto</span><span class="sxs-lookup"><span data-stu-id="f6b92-103">Azure AD Domain Services - Contact Us</span></span>
-## <a name="contact-the-product-team"></a><span data-ttu-id="f6b92-104">Póngase en contacto con el equipo de productos</span><span class="sxs-lookup"><span data-stu-id="f6b92-104">Contact the product team</span></span>
-<span data-ttu-id="f6b92-105">Si tiene problemas con su dominio administrado, compruebe si los pasos descritos en la [Guía de solución de problemas](active-directory-ds-troubleshooting.md) resuelven el problema.</span><span class="sxs-lookup"><span data-stu-id="f6b92-105">If you have issues with your managed domain, check to see if the steps outlined in the [Troubleshooting Guide](active-directory-ds-troubleshooting.md) resolve the issue.</span></span> <span data-ttu-id="f6b92-106">Si sigue teniendo problemas, no dude en ponerse en contacto con nosotros.</span><span class="sxs-lookup"><span data-stu-id="f6b92-106">If you're still having trouble, feel free to contact us.</span></span>
+# <a name="azure-ad-domain-services---contact-us"></a><span data-ttu-id="da2a5-103">Azure AD Domain Services: contacto</span><span class="sxs-lookup"><span data-stu-id="da2a5-103">Azure AD Domain Services - Contact Us</span></span>
+## <a name="contact-hello-product-team"></a><span data-ttu-id="da2a5-104">Equipo de producto de hello contacto</span><span class="sxs-lookup"><span data-stu-id="da2a5-104">Contact hello product team</span></span>
+<span data-ttu-id="da2a5-105">Si tiene problemas con su dominio administrado, comprobar toosee si pasos Hola describen en hello [Troubleshooting Guide](active-directory-ds-troubleshooting.md) resolver el problema de Hola.</span><span class="sxs-lookup"><span data-stu-id="da2a5-105">If you have issues with your managed domain, check toosee if hello steps outlined in hello [Troubleshooting Guide](active-directory-ds-troubleshooting.md) resolve hello issue.</span></span> <span data-ttu-id="da2a5-106">Si sigue teniendo problemas, puede toocontact libre nos.</span><span class="sxs-lookup"><span data-stu-id="da2a5-106">If you're still having trouble, feel free toocontact us.</span></span>
 
-<span data-ttu-id="f6b92-107">Puede enviarnos un correo electrónico a la sección de [comentarios sobre los Servicios de dominio de Azure AD](mailto:aaddsfb@microsoft.com).</span><span class="sxs-lookup"><span data-stu-id="f6b92-107">You may email us at: [Azure AD Domain Services Feedback](mailto:aaddsfb@microsoft.com).</span></span>
+<span data-ttu-id="da2a5-107">Puede enviarnos un correo electrónico a la sección de [comentarios sobre los Servicios de dominio de Azure AD](mailto:aaddsfb@microsoft.com).</span><span class="sxs-lookup"><span data-stu-id="da2a5-107">You may email us at: [Azure AD Domain Services Feedback](mailto:aaddsfb@microsoft.com).</span></span>
 
-<span data-ttu-id="f6b92-108">Asegúrese de incluir lo siguiente para que podamos investigar el problema.</span><span class="sxs-lookup"><span data-stu-id="f6b92-108">Ensure that you include the following, so we can investigate the issue.</span></span>
+<span data-ttu-id="da2a5-108">Asegúrese de que incluye siguiente hello, que nos permita investigar el problema de Hola.</span><span class="sxs-lookup"><span data-stu-id="da2a5-108">Ensure that you include hello following, so we can investigate hello issue.</span></span>
 
-* <span data-ttu-id="f6b92-109">El **identificador de inquilino o directorio** de su directorio de Azure AD.</span><span class="sxs-lookup"><span data-stu-id="f6b92-109">The **tenant ID/directory ID** for your Azure AD directory.</span></span> <span data-ttu-id="f6b92-110">El identificador de inquilino es el GUID que se ve en el campo del identificador de directorio en la [página de propiedades del directorio](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties).</span><span class="sxs-lookup"><span data-stu-id="f6b92-110">The tenant ID is the GUID you see in the directory ID field on the [Properties page for your directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)</span></span>
-* <span data-ttu-id="f6b92-111">El **nombre de dominio DNS** que ha configurado para el dominio administrado de Servicios de dominio de AAD.</span><span class="sxs-lookup"><span data-stu-id="f6b92-111">The **DNS domain name** you've configured for your AAD Domain Services managed domain.</span></span>
+* <span data-ttu-id="da2a5-109">Hola **identificador de Id. o directorio de inquilino** para su directorio Azure AD.</span><span class="sxs-lookup"><span data-stu-id="da2a5-109">hello **tenant ID/directory ID** for your Azure AD directory.</span></span> <span data-ttu-id="da2a5-110">Id. de inquilino de Hello es hello GUID que se ven en el campo de Id. de directorio de hello en hello [página de propiedades de su directorio](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)</span><span class="sxs-lookup"><span data-stu-id="da2a5-110">hello tenant ID is hello GUID you see in hello directory ID field on hello [Properties page for your directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)</span></span>
+* <span data-ttu-id="da2a5-111">Hola **nombre de dominio DNS** ha configurado para el dominio administrado de los servicios de dominio de AAD.</span><span class="sxs-lookup"><span data-stu-id="da2a5-111">hello **DNS domain name** you've configured for your AAD Domain Services managed domain.</span></span>
 
-## <a name="provide-feedback"></a><span data-ttu-id="f6b92-112">Envío de comentarios</span><span class="sxs-lookup"><span data-stu-id="f6b92-112">Provide Feedback</span></span>
-<span data-ttu-id="f6b92-113">Le agradecemos que nos haga llegar sus comentarios acerca de Azure AD Domain Services a través del **[canal UserVoice de Azure Active Directory](https://feedback.azure.com/forums/169401-azure-active-directory/)**.</span><span class="sxs-lookup"><span data-stu-id="f6b92-113">We welcome your feedback about Azure AD Domain Services via the **[Azure Active Directory User Voice channel](https://feedback.azure.com/forums/169401-azure-active-directory/)**.</span></span>
+## <a name="provide-feedback"></a><span data-ttu-id="da2a5-112">Envío de comentarios</span><span class="sxs-lookup"><span data-stu-id="da2a5-112">Provide Feedback</span></span>
+<span data-ttu-id="da2a5-113">Le agradecemos sus comentarios acerca de los servicios de dominio de Azure AD a través de hello  **[canal de Azure Active Directory User Voice](https://feedback.azure.com/forums/169401-azure-active-directory/)**.</span><span class="sxs-lookup"><span data-stu-id="da2a5-113">We welcome your feedback about Azure AD Domain Services via hello **[Azure Active Directory User Voice channel](https://feedback.azure.com/forums/169401-azure-active-directory/)**.</span></span>
 
-<span data-ttu-id="f6b92-114">Asegúrese de anteponer **"AADDS"**a su pregunta o sus comentarios para que nos lleguen.</span><span class="sxs-lookup"><span data-stu-id="f6b92-114">Ensure that you pre-pend your question or feedback with the words **'AADDS'**, for it to reach us.</span></span>
+<span data-ttu-id="da2a5-114">Asegúrese de que se pre-pendientes tu pregunta o comentarios con palabras hello **'AADDS'**, para él tooreach nosotros.</span><span class="sxs-lookup"><span data-stu-id="da2a5-114">Ensure that you pre-pend your question or feedback with hello words **'AADDS'**, for it tooreach us.</span></span>

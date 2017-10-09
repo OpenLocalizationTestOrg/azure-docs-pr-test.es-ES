@@ -1,6 +1,6 @@
 ---
-title: "Documentación sobre Azure Analysis Services: tutoriales y referencia de API | Microsoft Docs"
-description: "Aprenda a configurar el modelado de datos con Analysis Services en la nube. La documentación muestra cómo crear una solución de BI empresarial con datos tabulares."
+title: "aaaAzure documentación de Analysis Services - tutoriales, referencia de API | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo tooset de modelado de datos con Analysis Services en hello en la nube. Documentación le enseña cómo toocreate una solución de BI de enterprise con datos tabulares."
 services: analysis-services
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: f5358e2395d5380841894e62a694a6d1253c9126
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 077b13f9eb6eea87b96833452382b8e019f09a6f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="analysis-services-documentation"></a>Documentación de Analysis Services
 
-Aprenda a configurar y administrar modelado de datos con Analysis Services. Los tutoriales y otra documentación muestran cómo crear una solución de BI empresarial que usa datos tabulares en la nube o locales.
+Obtenga información acerca de cómo tooset una copia de seguridad y administrar los datos de modelado con Analysis Services. Tutoriales y otra documentación mostrarle cómo solución toocreate un BI empresarial con datos tabulares en la nube de Hola o de forma local.
 
 <ul class="panelContent cardsFTitle">
     <li>

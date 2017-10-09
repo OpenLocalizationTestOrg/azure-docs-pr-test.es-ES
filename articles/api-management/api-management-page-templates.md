@@ -1,6 +1,6 @@
 ---
-title: "Plantillas de página en Azure API Management | Microsoft Docs"
-description: "Aprenda a personalizar el contenido de las páginas del portal para desarrolladores mediante un conjunto de plantillas en Azure API Management."
+title: "plantillas de aaaPage en la administración de API de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toocustomize Hola contenido de páginas del portal para desarrolladores con un conjunto de plantillas en la administración de API de Azure."
 services: api-management
 documentationcenter: 
 author: miaojiang
@@ -14,32 +14,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 7f9ef37a694bce786b6acaa428df83f0cb23c2dc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 84bd971ad4bcacfdd36c2ebbe05b16063f2a547b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="page-templates-in-azure-api-management"></a><span data-ttu-id="bf007-103">Plantillas de página en Azure API Management</span><span class="sxs-lookup"><span data-stu-id="bf007-103">Page templates in Azure API Management</span></span>
-<span data-ttu-id="bf007-104">Azure API Management le ofrece la posibilidad de personalizar el contenido de las páginas del portal para desarrolladores mediante un conjunto de plantillas que configuran su contenido.</span><span class="sxs-lookup"><span data-stu-id="bf007-104">Azure API Management provides you the ability to customize the content of developer portal pages using a set of templates that configure their content.</span></span> <span data-ttu-id="bf007-105">Por medio de la sintaxis [DotLiquid](http://dotliquidmarkup.org/) y el editor que prefiera, como [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers) (DotLiquid para diseñadores), y un conjunto proporcionado de [recursos de cadena](api-management-template-resources.md#strings), [recursos de glifo](api-management-template-resources.md#glyphs) y [controles de página](api-management-page-controls.md) localizados, puede disponer de una gran flexibilidad para configurar el contenido de las páginas como considere oportuno mediante estas plantillas.</span><span class="sxs-lookup"><span data-stu-id="bf007-105">Using [DotLiquid](http://dotliquidmarkup.org/) syntax and the editor of your choice, such as [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), and a provided set of localized [String resources](api-management-template-resources.md#strings), [Glyph resources](api-management-template-resources.md#glyphs), and [Page controls](api-management-page-controls.md), you have great flexibility to configure the content of the pages as you see fit using these templates.</span></span>  
+# <a name="page-templates-in-azure-api-management"></a><span data-ttu-id="564aa-103">Plantillas de página en Azure API Management</span><span class="sxs-lookup"><span data-stu-id="564aa-103">Page templates in Azure API Management</span></span>
+<span data-ttu-id="564aa-104">Administración de API de Azure proporciona que Hola contenido de hello toocustomize de capacidad de páginas del portal para desarrolladores con un conjunto de plantillas que configure su contenido.</span><span class="sxs-lookup"><span data-stu-id="564aa-104">Azure API Management provides you hello ability toocustomize hello content of developer portal pages using a set of templates that configure their content.</span></span> <span data-ttu-id="564aa-105">Usar [DotLiquid](http://dotliquidmarkup.org/) editor hello y sintaxis de su elección, como [DotLiquid a los diseñadores](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), o cambie de tamaño un conjunto proporcionado de [los recursos de cadena](api-management-template-resources.md#strings), [ Recursos de glifo](api-management-template-resources.md#glyphs), y [página controles](api-management-page-controls.md), tienen contenido de gran flexibilidad tooconfigure Hola de páginas de Hola como considere oportuno mediante estas plantillas.</span><span class="sxs-lookup"><span data-stu-id="564aa-105">Using [DotLiquid](http://dotliquidmarkup.org/) syntax and hello editor of your choice, such as [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), and a provided set of localized [String resources](api-management-template-resources.md#strings), [Glyph resources](api-management-template-resources.md#glyphs), and [Page controls](api-management-page-controls.md), you have great flexibility tooconfigure hello content of hello pages as you see fit using these templates.</span></span>  
   
- <span data-ttu-id="bf007-106">Las plantillas de esta sección le permiten personalizar el contenido de las páginas de inicio de sesión, registro y página no encontrada del portal para desarrolladores.</span><span class="sxs-lookup"><span data-stu-id="bf007-106">The templates in this section allow you to customize the content of the sign in, sign up, and page not found pages in the developer portal.</span></span>  
+ <span data-ttu-id="564aa-106">Hola las plantillas de esta sección le permiten contenido de hello toocustomize de Hola de inicio de sesión, inicio de sesión una y página no encontrada páginas en el portal para desarrolladores de Hola.</span><span class="sxs-lookup"><span data-stu-id="564aa-106">hello templates in this section allow you toocustomize hello content of hello sign in, sign up, and page not found pages in hello developer portal.</span></span>  
   
--   [<span data-ttu-id="bf007-107">Sign in</span><span class="sxs-lookup"><span data-stu-id="bf007-107">Sign in</span></span>](#SignIn)  
+-   [<span data-ttu-id="564aa-107">Sign in</span><span class="sxs-lookup"><span data-stu-id="564aa-107">Sign in</span></span>](#SignIn)  
   
--   [<span data-ttu-id="bf007-108">Sign up</span><span class="sxs-lookup"><span data-stu-id="bf007-108">Sign up</span></span>](#SignUp)  
+-   [<span data-ttu-id="564aa-108">Sign up</span><span class="sxs-lookup"><span data-stu-id="564aa-108">Sign up</span></span>](#SignUp)  
   
--   [<span data-ttu-id="bf007-109">Page not found</span><span class="sxs-lookup"><span data-stu-id="bf007-109">Page not found</span></span>](#PageNotFound)  
+-   [<span data-ttu-id="564aa-109">Page not found</span><span class="sxs-lookup"><span data-stu-id="564aa-109">Page not found</span></span>](#PageNotFound)  
   
 > [!NOTE]
->  <span data-ttu-id="bf007-110">En la siguiente documentación se incluyen plantillas predeterminadas de ejemplo; sin embargo, están sujetas a cambios debido a mejoras continuas.</span><span class="sxs-lookup"><span data-stu-id="bf007-110">Sample default templates are included in the following documentation, but are subject to change due to continuous improvements.</span></span> <span data-ttu-id="bf007-111">Puede ver las plantillas predeterminadas en vivo en el portal para desarrolladores; para ello, vaya hasta a las plantillas individuales que desee.</span><span class="sxs-lookup"><span data-stu-id="bf007-111">You can view the live default templates in the developer portal by navigating to the desired individual templates.</span></span> <span data-ttu-id="bf007-112">Para más información sobre cómo trabajar con plantillas, consulte [Cómo personalizar el portal para desarrolladores de API Management mediante plantillas](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).</span><span class="sxs-lookup"><span data-stu-id="bf007-112">For more information about working with templates, see [How to customize the API Management developer portal using templates](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).</span></span>  
+>  <span data-ttu-id="564aa-110">Plantillas predeterminadas de ejemplo se incluyen en hello siguiendo documentación, pero están toochange asunto debido toocontinuous mejoras.</span><span class="sxs-lookup"><span data-stu-id="564aa-110">Sample default templates are included in hello following documentation, but are subject toochange due toocontinuous improvements.</span></span> <span data-ttu-id="564aa-111">Puede ver plantillas de hello predeterminado en vivo en el portal para desarrolladores de hello desplazándose plantillas individuales toohello deseado.</span><span class="sxs-lookup"><span data-stu-id="564aa-111">You can view hello live default templates in hello developer portal by navigating toohello desired individual templates.</span></span> <span data-ttu-id="564aa-112">Para obtener más información sobre cómo trabajar con plantillas, consulte [cómo toocustomize Hola portal de administración de API para desarrolladores con plantillas de](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).</span><span class="sxs-lookup"><span data-stu-id="564aa-112">For more information about working with templates, see [How toocustomize hello API Management developer portal using templates](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).</span></span>  
   
-##  <span data-ttu-id="bf007-113"><a name="SignIn"></a> Sign in</span><span class="sxs-lookup"><span data-stu-id="bf007-113"><a name="SignIn"></a> Sign in</span></span>  
- <span data-ttu-id="bf007-114">La plantilla **sign in** le permite personalizar la página de inicio de sesión en el portal para desarrolladores.</span><span class="sxs-lookup"><span data-stu-id="bf007-114">The **sign in** template allows you to customize the sign in page in the developer portal.</span></span>  
+##  <span data-ttu-id="564aa-113"><a name="SignIn"></a> Sign in</span><span class="sxs-lookup"><span data-stu-id="564aa-113"><a name="SignIn"></a> Sign in</span></span>  
+ <span data-ttu-id="564aa-114">Hola **iniciar sesión en** plantilla permite el inicio de sesión de toocustomize hello en la página de portal para desarrolladores de Hola.</span><span class="sxs-lookup"><span data-stu-id="564aa-114">hello **sign in** template allows you toocustomize hello sign in page in hello developer portal.</span></span>  
   
- <span data-ttu-id="bf007-115">![Página de inicio de sesión](./media/api-management-page-templates/APIM-Sign-In-Page-Developer-Portal-Templates.png "Plantillas del portal para desarrolladores de la página de inicio de sesión de APIM")</span><span class="sxs-lookup"><span data-stu-id="bf007-115">![Sign In Page](./media/api-management-page-templates/APIM-Sign-In-Page-Developer-Portal-Templates.png "APIM Sign In Page Developer Portal Templates")</span></span>  
+ <span data-ttu-id="564aa-115">![Página de inicio de sesión](./media/api-management-page-templates/APIM-Sign-In-Page-Developer-Portal-Templates.png "Plantillas del portal para desarrolladores de la página de inicio de sesión de APIM")</span><span class="sxs-lookup"><span data-stu-id="564aa-115">![Sign In Page](./media/api-management-page-templates/APIM-Sign-In-Page-Developer-Portal-Templates.png "APIM Sign In Page Developer Portal Templates")</span></span>  
   
-### <a name="default-template"></a><span data-ttu-id="bf007-116">Plantilla predeterminada</span><span class="sxs-lookup"><span data-stu-id="bf007-116">Default template</span></span>  
+### <a name="default-template"></a><span data-ttu-id="564aa-116">Plantilla predeterminada</span><span class="sxs-lookup"><span data-stu-id="564aa-116">Default template</span></span>  
   
 ```xml  
 <h2 class="text-center">{% localized "SigninStrings|WebAuthenticationSigninTitle" %}</h2>  
@@ -95,17 +95,17 @@ ms.lasthandoff: 07/11/2017
 </div>  
 ```  
   
-### <a name="controls"></a><span data-ttu-id="bf007-117">Controles</span><span class="sxs-lookup"><span data-stu-id="bf007-117">Controls</span></span>  
- <span data-ttu-id="bf007-118">Esta plantilla puede usar los siguientes [controles de página](api-management-page-controls.md).</span><span class="sxs-lookup"><span data-stu-id="bf007-118">This template may  use the following [page controls](api-management-page-controls.md).</span></span>  
+### <a name="controls"></a><span data-ttu-id="564aa-117">Controles</span><span class="sxs-lookup"><span data-stu-id="564aa-117">Controls</span></span>  
+ <span data-ttu-id="564aa-118">Esta plantilla puede utilizar la siguiente hello [página controles](api-management-page-controls.md).</span><span class="sxs-lookup"><span data-stu-id="564aa-118">This template may  use hello following [page controls](api-management-page-controls.md).</span></span>  
   
--   [<span data-ttu-id="bf007-119">basic-signin</span><span class="sxs-lookup"><span data-stu-id="bf007-119">basic-signin</span></span>](api-management-page-controls.md#basic-signin)  
+-   [<span data-ttu-id="564aa-119">basic-signin</span><span class="sxs-lookup"><span data-stu-id="564aa-119">basic-signin</span></span>](api-management-page-controls.md#basic-signin)  
   
--   [<span data-ttu-id="bf007-120">providers</span><span class="sxs-lookup"><span data-stu-id="bf007-120">providers</span></span>](api-management-page-controls.md#providers)  
+-   [<span data-ttu-id="564aa-120">providers</span><span class="sxs-lookup"><span data-stu-id="564aa-120">providers</span></span>](api-management-page-controls.md#providers)  
   
-### <a name="data-model"></a><span data-ttu-id="bf007-121">Modelo de datos</span><span class="sxs-lookup"><span data-stu-id="bf007-121">Data model</span></span>  
- <span data-ttu-id="bf007-122">Entidad [User sign in](api-management-template-data-model-reference.md#UseSignIn).</span><span class="sxs-lookup"><span data-stu-id="bf007-122">[User sign in](api-management-template-data-model-reference.md#UseSignIn) entity.</span></span>  
+### <a name="data-model"></a><span data-ttu-id="564aa-121">Modelo de datos</span><span class="sxs-lookup"><span data-stu-id="564aa-121">Data model</span></span>  
+ <span data-ttu-id="564aa-122">Entidad [User sign in](api-management-template-data-model-reference.md#UseSignIn).</span><span class="sxs-lookup"><span data-stu-id="564aa-122">[User sign in](api-management-template-data-model-reference.md#UseSignIn) entity.</span></span>  
   
-### <a name="sample-template-data"></a><span data-ttu-id="bf007-123">Ejemplo de datos de plantilla</span><span class="sxs-lookup"><span data-stu-id="bf007-123">Sample template data</span></span>  
+### <a name="sample-template-data"></a><span data-ttu-id="564aa-123">Ejemplo de datos de plantilla</span><span class="sxs-lookup"><span data-stu-id="564aa-123">Sample template data</span></span>  
   
 ```json  
 {  
@@ -133,12 +133,12 @@ ms.lasthandoff: 07/11/2017
 }  
 ```  
   
-##  <span data-ttu-id="bf007-124"><a name="SignUp"></a> Sign up</span><span class="sxs-lookup"><span data-stu-id="bf007-124"><a name="SignUp"></a> Sign up</span></span>  
- <span data-ttu-id="bf007-125">La plantilla **sign up** le permite personalizar la página de registro en el portal para desarrolladores.</span><span class="sxs-lookup"><span data-stu-id="bf007-125">The **sign up** template allows you to customize the sign up page in the developer portal.</span></span>  
+##  <span data-ttu-id="564aa-124"><a name="SignUp"></a> Sign up</span><span class="sxs-lookup"><span data-stu-id="564aa-124"><a name="SignUp"></a> Sign up</span></span>  
+ <span data-ttu-id="564aa-125">Hola **registrarse** plantilla permite hello toocustomize página de registro en el portal para desarrolladores de Hola.</span><span class="sxs-lookup"><span data-stu-id="564aa-125">hello **sign up** template allows you toocustomize hello sign up page in hello developer portal.</span></span>  
   
- <span data-ttu-id="bf007-126">![Página de registro](./media/api-management-page-templates/APIM-Sign-Up-Page-Developer-Portal-Templates.png "Plantillas del portal para desarrolladores de la página de registro de APIM")</span><span class="sxs-lookup"><span data-stu-id="bf007-126">![Sign Up Page](./media/api-management-page-templates/APIM-Sign-Up-Page-Developer-Portal-Templates.png "APIM Sign Up Page Developer Portal Templates")</span></span>  
+ <span data-ttu-id="564aa-126">![Página de registro](./media/api-management-page-templates/APIM-Sign-Up-Page-Developer-Portal-Templates.png "Plantillas del portal para desarrolladores de la página de registro de APIM")</span><span class="sxs-lookup"><span data-stu-id="564aa-126">![Sign Up Page](./media/api-management-page-templates/APIM-Sign-Up-Page-Developer-Portal-Templates.png "APIM Sign Up Page Developer Portal Templates")</span></span>  
   
-### <a name="default-template"></a><span data-ttu-id="bf007-127">Plantilla predeterminada</span><span class="sxs-lookup"><span data-stu-id="bf007-127">Default template</span></span>  
+### <a name="default-template"></a><span data-ttu-id="564aa-127">Plantilla predeterminada</span><span class="sxs-lookup"><span data-stu-id="564aa-127">Default template</span></span>  
   
 ```xml  
 <h2 class="text-center">{% localized "SignupStrings|PageTitleSignup" %}</h2>  
@@ -154,15 +154,15 @@ ms.lasthandoff: 07/11/2017
 </div>  
 ```  
   
-### <a name="controls"></a><span data-ttu-id="bf007-128">Controles</span><span class="sxs-lookup"><span data-stu-id="bf007-128">Controls</span></span>  
- <span data-ttu-id="bf007-129">Esta plantilla puede usar los siguientes [controles de página](api-management-page-controls.md).</span><span class="sxs-lookup"><span data-stu-id="bf007-129">This template may  use the following [page controls](api-management-page-controls.md).</span></span>  
+### <a name="controls"></a><span data-ttu-id="564aa-128">Controles</span><span class="sxs-lookup"><span data-stu-id="564aa-128">Controls</span></span>  
+ <span data-ttu-id="564aa-129">Esta plantilla puede utilizar la siguiente hello [página controles](api-management-page-controls.md).</span><span class="sxs-lookup"><span data-stu-id="564aa-129">This template may  use hello following [page controls](api-management-page-controls.md).</span></span>  
   
--   [<span data-ttu-id="bf007-130">sign-up</span><span class="sxs-lookup"><span data-stu-id="bf007-130">sign-up</span></span>](api-management-page-controls.md#sign-up)  
+-   [<span data-ttu-id="564aa-130">sign-up</span><span class="sxs-lookup"><span data-stu-id="564aa-130">sign-up</span></span>](api-management-page-controls.md#sign-up)  
   
-### <a name="data-model"></a><span data-ttu-id="bf007-131">Modelo de datos</span><span class="sxs-lookup"><span data-stu-id="bf007-131">Data model</span></span>  
- <span data-ttu-id="bf007-132">Entidad [User sign up](api-management-template-data-model-reference.md#UserSignUp).</span><span class="sxs-lookup"><span data-stu-id="bf007-132">[User sign up](api-management-template-data-model-reference.md#UserSignUp) entity.</span></span>  
+### <a name="data-model"></a><span data-ttu-id="564aa-131">Modelo de datos</span><span class="sxs-lookup"><span data-stu-id="564aa-131">Data model</span></span>  
+ <span data-ttu-id="564aa-132">Entidad [User sign up](api-management-template-data-model-reference.md#UserSignUp).</span><span class="sxs-lookup"><span data-stu-id="564aa-132">[User sign up](api-management-template-data-model-reference.md#UserSignUp) entity.</span></span>  
   
-### <a name="sample-template-data"></a><span data-ttu-id="bf007-133">Ejemplo de datos de plantilla</span><span class="sxs-lookup"><span data-stu-id="bf007-133">Sample template data</span></span>  
+### <a name="sample-template-data"></a><span data-ttu-id="564aa-133">Ejemplo de datos de plantilla</span><span class="sxs-lookup"><span data-stu-id="564aa-133">Sample template data</span></span>  
   
 ```json  
 {  
@@ -181,12 +181,12 @@ ms.lasthandoff: 07/11/2017
 }  
 ```  
   
-##  <span data-ttu-id="bf007-134"><a name="PageNotFound"></a> Page not found</span><span class="sxs-lookup"><span data-stu-id="bf007-134"><a name="PageNotFound"></a> Page not found</span></span>  
- <span data-ttu-id="bf007-135">La plantilla **page not found** le permite personalizar la página de página no encontrada en el portal para desarrolladores.</span><span class="sxs-lookup"><span data-stu-id="bf007-135">The **page not found** template allows you to customize the page not found page in the developer portal.</span></span>  
+##  <span data-ttu-id="564aa-134"><a name="PageNotFound"></a> Page not found</span><span class="sxs-lookup"><span data-stu-id="564aa-134"><a name="PageNotFound"></a> Page not found</span></span>  
+ <span data-ttu-id="564aa-135">Hola **página no encontrada** plantilla permite toocustomize Hola página no encontrada página en el portal para desarrolladores de Hola.</span><span class="sxs-lookup"><span data-stu-id="564aa-135">hello **page not found** template allows you toocustomize hello page not found page in hello developer portal.</span></span>  
   
- <span data-ttu-id="bf007-136">![Página no encontrada](./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "Plantillas del portal para desarrolladores de página no encontrada de APIM")</span><span class="sxs-lookup"><span data-stu-id="bf007-136">![Not Found Page](./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "APIM Not Found Page Developer Portal Templates")</span></span>  
+ <span data-ttu-id="564aa-136">![Página no encontrada](./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "Plantillas del portal para desarrolladores de página no encontrada de APIM")</span><span class="sxs-lookup"><span data-stu-id="564aa-136">![Not Found Page](./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "APIM Not Found Page Developer Portal Templates")</span></span>  
   
-### <a name="default-template"></a><span data-ttu-id="bf007-137">Plantilla predeterminada</span><span class="sxs-lookup"><span data-stu-id="bf007-137">Default template</span></span>  
+### <a name="default-template"></a><span data-ttu-id="564aa-137">Plantilla predeterminada</span><span class="sxs-lookup"><span data-stu-id="564aa-137">Default template</span></span>  
   
 ```xml  
 <h2>{% localized "NotFoundStrings|PageTitleNotFound" %}</h2>  
@@ -218,20 +218,20 @@ ms.lasthandoff: 07/11/2017
 </p>  
 ```  
   
-### <a name="controls"></a><span data-ttu-id="bf007-138">Controles</span><span class="sxs-lookup"><span data-stu-id="bf007-138">Controls</span></span>  
- <span data-ttu-id="bf007-139">Esta plantilla no puede usar ninguno de los [controles de página](api-management-page-controls.md).</span><span class="sxs-lookup"><span data-stu-id="bf007-139">This template may  not use any [page controls](api-management-page-controls.md).</span></span>  
+### <a name="controls"></a><span data-ttu-id="564aa-138">Controles</span><span class="sxs-lookup"><span data-stu-id="564aa-138">Controls</span></span>  
+ <span data-ttu-id="564aa-139">Esta plantilla no puede usar ninguno de los [controles de página](api-management-page-controls.md).</span><span class="sxs-lookup"><span data-stu-id="564aa-139">This template may  not use any [page controls](api-management-page-controls.md).</span></span>  
   
-### <a name="data-model"></a><span data-ttu-id="bf007-140">Modelo de datos</span><span class="sxs-lookup"><span data-stu-id="bf007-140">Data model</span></span>  
+### <a name="data-model"></a><span data-ttu-id="564aa-140">Modelo de datos</span><span class="sxs-lookup"><span data-stu-id="564aa-140">Data model</span></span>  
   
-|<span data-ttu-id="bf007-141">Propiedad</span><span class="sxs-lookup"><span data-stu-id="bf007-141">Property</span></span>|<span data-ttu-id="bf007-142">Escriba</span><span class="sxs-lookup"><span data-stu-id="bf007-142">Type</span></span>|<span data-ttu-id="bf007-143">Descripción</span><span class="sxs-lookup"><span data-stu-id="bf007-143">Description</span></span>|  
+|<span data-ttu-id="564aa-141">Propiedad</span><span class="sxs-lookup"><span data-stu-id="564aa-141">Property</span></span>|<span data-ttu-id="564aa-142">Escriba</span><span class="sxs-lookup"><span data-stu-id="564aa-142">Type</span></span>|<span data-ttu-id="564aa-143">Descripción</span><span class="sxs-lookup"><span data-stu-id="564aa-143">Description</span></span>|  
 |--------------|----------|-----------------|  
-|<span data-ttu-id="bf007-144">referenceCode</span><span class="sxs-lookup"><span data-stu-id="bf007-144">referenceCode</span></span>|<span data-ttu-id="bf007-145">string</span><span class="sxs-lookup"><span data-stu-id="bf007-145">string</span></span>|<span data-ttu-id="bf007-146">Código generado si esta página se mostró como resultado de un error interno.</span><span class="sxs-lookup"><span data-stu-id="bf007-146">Code generated if this page was displayed as the result of an internal error.</span></span>|  
-|<span data-ttu-id="bf007-147">errorCode</span><span class="sxs-lookup"><span data-stu-id="bf007-147">errorCode</span></span>|<span data-ttu-id="bf007-148">string</span><span class="sxs-lookup"><span data-stu-id="bf007-148">string</span></span>|<span data-ttu-id="bf007-149">Código generado si esta página se mostró como resultado de un error interno.</span><span class="sxs-lookup"><span data-stu-id="bf007-149">Code generated if this page was displayed as the result of an internal error.</span></span>|  
-|<span data-ttu-id="bf007-150">emailBody</span><span class="sxs-lookup"><span data-stu-id="bf007-150">emailBody</span></span>|<span data-ttu-id="bf007-151">string</span><span class="sxs-lookup"><span data-stu-id="bf007-151">string</span></span>|<span data-ttu-id="bf007-152">Cuerpo de correo electrónico generado si esta página se mostró como resultado de un error interno.</span><span class="sxs-lookup"><span data-stu-id="bf007-152">Email body generated if this page was displayed as the result of an internal error.</span></span>|  
-|<span data-ttu-id="bf007-153">requestedUrl</span><span class="sxs-lookup"><span data-stu-id="bf007-153">requestedUrl</span></span>|<span data-ttu-id="bf007-154">string</span><span class="sxs-lookup"><span data-stu-id="bf007-154">string</span></span>|<span data-ttu-id="bf007-155">La dirección URL solicitada cuando no se encontró la página.</span><span class="sxs-lookup"><span data-stu-id="bf007-155">The URL requested when the page was not found.</span></span>|  
-|<span data-ttu-id="bf007-156">referrerUrl</span><span class="sxs-lookup"><span data-stu-id="bf007-156">referrerUrl</span></span>|<span data-ttu-id="bf007-157">string</span><span class="sxs-lookup"><span data-stu-id="bf007-157">string</span></span>|<span data-ttu-id="bf007-158">La dirección URL de origen de referencia a la dirección URL solicitada.</span><span class="sxs-lookup"><span data-stu-id="bf007-158">The referrer URL to the requested URL.</span></span>|  
+|<span data-ttu-id="564aa-144">referenceCode</span><span class="sxs-lookup"><span data-stu-id="564aa-144">referenceCode</span></span>|<span data-ttu-id="564aa-145">cadena</span><span class="sxs-lookup"><span data-stu-id="564aa-145">string</span></span>|<span data-ttu-id="564aa-146">Código generado si esta página se muestra como resultado de hello de un error interno.</span><span class="sxs-lookup"><span data-stu-id="564aa-146">Code generated if this page was displayed as hello result of an internal error.</span></span>|  
+|<span data-ttu-id="564aa-147">errorCode</span><span class="sxs-lookup"><span data-stu-id="564aa-147">errorCode</span></span>|<span data-ttu-id="564aa-148">cadena</span><span class="sxs-lookup"><span data-stu-id="564aa-148">string</span></span>|<span data-ttu-id="564aa-149">Código generado si esta página se muestra como resultado de hello de un error interno.</span><span class="sxs-lookup"><span data-stu-id="564aa-149">Code generated if this page was displayed as hello result of an internal error.</span></span>|  
+|<span data-ttu-id="564aa-150">emailBody</span><span class="sxs-lookup"><span data-stu-id="564aa-150">emailBody</span></span>|<span data-ttu-id="564aa-151">cadena</span><span class="sxs-lookup"><span data-stu-id="564aa-151">string</span></span>|<span data-ttu-id="564aa-152">Cuerpo generado si esta página se muestra como resultado de hello de un error interno del correo electrónico.</span><span class="sxs-lookup"><span data-stu-id="564aa-152">Email body generated if this page was displayed as hello result of an internal error.</span></span>|  
+|<span data-ttu-id="564aa-153">requestedUrl</span><span class="sxs-lookup"><span data-stu-id="564aa-153">requestedUrl</span></span>|<span data-ttu-id="564aa-154">cadena</span><span class="sxs-lookup"><span data-stu-id="564aa-154">string</span></span>|<span data-ttu-id="564aa-155">dirección URL de Hello solicitada cuando no se encontró la página de Hola.</span><span class="sxs-lookup"><span data-stu-id="564aa-155">hello URL requested when hello page was not found.</span></span>|  
+|<span data-ttu-id="564aa-156">referrerUrl</span><span class="sxs-lookup"><span data-stu-id="564aa-156">referrerUrl</span></span>|<span data-ttu-id="564aa-157">cadena</span><span class="sxs-lookup"><span data-stu-id="564aa-157">string</span></span>|<span data-ttu-id="564aa-158">Hola referrer URL toohello la dirección URL solicitada.</span><span class="sxs-lookup"><span data-stu-id="564aa-158">hello referrer URL toohello requested URL.</span></span>|  
   
-### <a name="sample-template-data"></a><span data-ttu-id="bf007-159">Ejemplo de datos de plantilla</span><span class="sxs-lookup"><span data-stu-id="bf007-159">Sample template data</span></span>  
+### <a name="sample-template-data"></a><span data-ttu-id="564aa-159">Ejemplo de datos de plantilla</span><span class="sxs-lookup"><span data-stu-id="564aa-159">Sample template data</span></span>  
   
 ```json  
 {  
@@ -243,5 +243,5 @@ ms.lasthandoff: 07/11/2017
 }  
 ```
 
-## <a name="next-steps"></a><span data-ttu-id="bf007-160">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="bf007-160">Next steps</span></span>
-<span data-ttu-id="bf007-161">Para más información sobre cómo trabajar con plantillas, consulte [Cómo personalizar el portal para desarrolladores de API Management mediante plantillas](api-management-developer-portal-templates.md).</span><span class="sxs-lookup"><span data-stu-id="bf007-161">For more information about working with templates, see [How to customize the API Management developer portal using templates](api-management-developer-portal-templates.md).</span></span>
+## <a name="next-steps"></a><span data-ttu-id="564aa-160">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="564aa-160">Next steps</span></span>
+<span data-ttu-id="564aa-161">Para obtener más información sobre cómo trabajar con plantillas, consulte [cómo toocustomize Hola portal de administración de API para desarrolladores con plantillas de](api-management-developer-portal-templates.md).</span><span class="sxs-lookup"><span data-stu-id="564aa-161">For more information about working with templates, see [How toocustomize hello API Management developer portal using templates](api-management-developer-portal-templates.md).</span></span>

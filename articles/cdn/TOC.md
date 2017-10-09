@@ -10,7 +10,7 @@
 ### [Cloud Services](cdn-cloud-service-with-cdn.md)
 ### [Storage](cdn-create-a-storage-account-with-cdn.md)
 ### [Uso compartido de recursos entre orígenes](cdn-cors.md)
-### [Asignación de un dominio personalizado a una red CDN](cdn-map-content-to-custom-domain.md)
+### [Asignar un dominio personalizado tooCDN](cdn-map-content-to-custom-domain.md)
 ### [Habilitación de HTTPS en un dominio personalizado](cdn-custom-ssl.md)
 ## Optimización del contenido
 ### [Introducción a la optimización](cdn-optimization-overview.md)
