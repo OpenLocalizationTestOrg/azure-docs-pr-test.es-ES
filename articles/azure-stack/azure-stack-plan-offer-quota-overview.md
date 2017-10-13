@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 8/22/2017
 ms.author: erikje
 ms.openlocfilehash: 083ca2f0a06625810d2f90a682ba0b3110032e60
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.sourcegitcommit: 90e2cced6a773b1b52f999ba73cd8877305d270b
+ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="plan-offer-quota-and-subscription-overview"></a>Introducción a los planes, ofertas, cuotas y suscripciones
 
